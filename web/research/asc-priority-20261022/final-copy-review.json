@@ -1,0 +1,452 @@
+{
+  "decision": "APPROVED final pinned reviewer notes and50localized release notes",
+  "approvedFiles": [
+    {
+      "file": "review-notes-proposal.json",
+      "sha256": "c29a80d54504cd8be9ec7f1d6a3800d04aa8edfc02891fe955e2b7b407b30eca",
+      "approvedValue": "after",
+      "characters": 2605
+    },
+    {
+      "file": "whatsnew-proposal.json",
+      "sha256": "fc860807df4d1324dff7263d18799825d947d82c3dc0edb4188ca8babb90bd96",
+      "approvedValue": "values map, all50locales"
+    }
+  ],
+  "scope": "Read complete notes before/after and embedded current immutable proof. Read all50complete localized release notes without truncation; targeted reread of final JA/TH after corrections. This is no API apply or submission approval beyond editorial copy.",
+  "snapshotRawSha256": "46f7d5fa6748dc2e6a0867bc1d9fb45ee6a08d2ceb29cf7f15fffab2859493e2",
+  "checks": {
+    "localeSetExactlyMatchesLive50": true,
+    "notesBeforeExactlyMatchesLive": true,
+    "allWhatsNewBeforeNull": true,
+    "maxWhatsNewUnicodeCharacters": 165,
+    "notesResourceMatches": true
+  },
+  "resolvedCorrections": [
+    {
+      "locale": "ja",
+      "beforePhrase": "各言語の",
+      "afterPhrase": "翻訳された",
+      "reason": "Avoid implying each language received weather text fixes."
+    },
+    {
+      "locale": "th",
+      "beforePhrase": "ที่แปลเป็นภาษาต่างๆ",
+      "afterPhrase": "ที่แปลแล้ว",
+      "reason": "Avoid asserting multiple-language weather correction beyond source scope."
+    }
+  ],
+  "notesFindings": [
+    "Version1.7.4/build16 matches fresh saved ASC draft; no relabelling of public1.7.3.",
+    "Local basic use/noCloudaccount separate from provider and sharing sign-in; whole-calendar verified identity preserved without universal single-event sign-in.",
+    "AppClip preview/fullapp adding and emailQR distinct; no automatic handoff, no-network or immediate delivery guarantee.",
+    "Existing tier/products described without newproduct, universal plan switching or provider permission promises.",
+    "Notes make no privacy/retention/security guarantee. AppClip usable sample/reviewer identity and privacy declarations remain separate readiness checks."
+  ],
+  "releaseFindings": "All50 convey layout/display-size improvements, Live Activity presentation and corrected translated weather text. No new weather provider, fixed forecast coverage, unsupported no-account sharing or broad stability guarantee introduced. Source commit establishes these concrete changes.",
+  "rows": [
+    {
+      "locale": "ja",
+      "id": "ab762335-72a8-46b7-ae29-3f81e2f455f4",
+      "characters": 59,
+      "utf8Bytes": 177,
+      "textSha256": "0e2ff04f13011af4e64d48da8d782637cf5dc461d0342e197d3a79556c0fb69a",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ro",
+      "id": "3389ecf3-903f-46bd-8af0-45b591661311",
+      "characters": 123,
+      "utf8Bytes": 130,
+      "textSha256": "60f691ad0e9421a04cf85d908c62a112005e3b611efabc75c8eec6eabea086df",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "hu",
+      "id": "90e49b5b-cac5-4403-b411-c0114f969297",
+      "characters": 150,
+      "utf8Bytes": 171,
+      "textSha256": "c01552c02b5ccd21489848713a76c2dfa6f1058025cb94213bdad8438c7c4a2b",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "hr",
+      "id": "70e4ce9c-8ba0-45f5-8162-c31475c6215e",
+      "characters": 129,
+      "utf8Bytes": 132,
+      "textSha256": "bc6adedcbdcd6793e937142437590a21094dc02804ada973ecddc726fe1f29b0",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "zh-Hans",
+      "id": "d1b9bc90-83d6-4a44-abb3-8a1fa3a3d978",
+      "characters": 37,
+      "utf8Bytes": 111,
+      "textSha256": "502585b4efe011936e0f73d02b6f9f60ed34c3f6927281f53efd36c8c15261b1",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ur-PK",
+      "id": "e95c03c7-0155-4fdd-932a-3f844afb25d0",
+      "characters": 121,
+      "utf8Bytes": 206,
+      "textSha256": "d20477093a89c6faaa1cbef470b6863fa401305f3ff19e0c9f1284658f5e50d0",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "gu-IN",
+      "id": "6fbf996c-ce0f-4a39-9de1-f73b2ab244b8",
+      "characters": 125,
+      "utf8Bytes": 313,
+      "textSha256": "8cf2fcb7d67131c3fa25fc0e459bd06bcae085aab94952d4ef0f4c40515cfc40",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ca",
+      "id": "c7a8730b-6a11-46b4-b64e-9e2d69c474bd",
+      "characters": 152,
+      "utf8Bytes": 156,
+      "textSha256": "e9a39aadf83cb16e70c8b6d63482a0518ac919b8ad589af27d3e244082014636",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "cs",
+      "id": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+      "characters": 125,
+      "utf8Bytes": 136,
+      "textSha256": "a5813c86e3009b3c29f5ae0f02b2ac6d0f3b416094bddd345c3e2d62b58bf5e6",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "zh-Hant",
+      "id": "db9bd915-8d55-49c3-b765-09dd83985839",
+      "characters": 39,
+      "utf8Bytes": 117,
+      "textSha256": "1f9b38a0581a80c8d9b12fb2db840a977253e9ecd05f5969a3a5ceab4f663abb",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "bn-BD",
+      "id": "bec247b8-7092-405b-ad17-b595e4ba7f77",
+      "characters": 146,
+      "utf8Bytes": 370,
+      "textSha256": "026c6de1bd5fe4f740df5ebd8e23d8534ba2694a23c61fc1c101b1e838cd0e65",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ar-SA",
+      "id": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+      "characters": 92,
+      "utf8Bytes": 171,
+      "textSha256": "38fcb36bdd8f91e920c86584ecb2f2987ac7bf625f7fcdb04da95cd7bf1eb2ba",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "pl",
+      "id": "0bc52ccb-22c8-4b17-af7c-6783c1bd3428",
+      "characters": 141,
+      "utf8Bytes": 150,
+      "textSha256": "21d81cccac8ce9ca2a4f8ed823aa5c31ad1e8828db5d1c8f2b5a97d2a4e05155",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "nl-NL",
+      "id": "330744ac-9574-4c5b-b2ac-749a724d3da9",
+      "characters": 133,
+      "utf8Bytes": 133,
+      "textSha256": "52d1ea67084548e7909b675014460a6bc9dba996f4b77690b04e7d5d9fc830a4",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "en-AU",
+      "id": "b494decd-f50f-4eda-a44d-d93615681a21",
+      "characters": 111,
+      "utf8Bytes": 111,
+      "textSha256": "56e4c67e4b5ab148f3c4ddc2b59fa2dee89c7e3439d8e3398daf0e2098f0b5f2",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "or-IN",
+      "id": "49572c80-b4dd-4849-a234-7742c079656a",
+      "characters": 149,
+      "utf8Bytes": 385,
+      "textSha256": "39eda81ba7fac789d23d9a8b184e6bff8ff8888cf9b9e0a56a8e9d0992648b69",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "fr-CA",
+      "id": "79e62e99-3004-47ff-b072-bc8841f9e107",
+      "characters": 150,
+      "utf8Bytes": 163,
+      "textSha256": "6e660d8a6ad193b653f0d4d92885eb237098ed9aa2511234b024026da015445c",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "te-IN",
+      "id": "f74c4349-47cb-4dee-8e2e-80d37b92fdb6",
+      "characters": 146,
+      "utf8Bytes": 382,
+      "textSha256": "cdd751718aa7fde062affe5962c4908d0a4c9273db30988b9595e7209004e51f",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "pt-BR",
+      "id": "792d84c7-d17d-40b7-890b-e18a097ee741",
+      "characters": 145,
+      "utf8Bytes": 147,
+      "textSha256": "3edeef8c880515e10cc484acd33e51ebd5c8373070a341b521a67a0352f61fdc",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "en-GB",
+      "id": "a9544b38-ddc9-4c0b-8aa6-f60da6540693",
+      "characters": 111,
+      "utf8Bytes": 111,
+      "textSha256": "56e4c67e4b5ab148f3c4ddc2b59fa2dee89c7e3439d8e3398daf0e2098f0b5f2",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ru",
+      "id": "afc2183d-d280-4e21-8169-a08d65d4e1a6",
+      "characters": 124,
+      "utf8Bytes": 219,
+      "textSha256": "d3a11b82f601672dabbe3c0be22997be8df9c7a00afebd6fedfd61205579586a",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "fr-FR",
+      "id": "fc2a50aa-4f64-4c57-a6e9-6f427b144811",
+      "characters": 150,
+      "utf8Bytes": 163,
+      "textSha256": "6e660d8a6ad193b653f0d4d92885eb237098ed9aa2511234b024026da015445c",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "fi",
+      "id": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+      "characters": 116,
+      "utf8Bytes": 129,
+      "textSha256": "8b3431634fb26635685148892daf6e337678999e54f589b2be9d7800037490ea",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "es-MX",
+      "id": "3110b329-4291-4e1b-9cce-61500c38ff4f",
+      "characters": 154,
+      "utf8Bytes": 157,
+      "textSha256": "4b45d1b58cdc400704ca8f0a268d52e26faa8b1b2b37abed470d5fc9fb36d5d1",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ms",
+      "id": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+      "characters": 130,
+      "utf8Bytes": 130,
+      "textSha256": "b67e7c28b5b23006ceed1395aee565c2a1a27681fbf1973481d6228e199527db",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "da",
+      "id": "36c6b56c-545c-483e-92d9-c7a008289e00",
+      "characters": 118,
+      "utf8Bytes": 121,
+      "textSha256": "1f520bdd99c1b18f654feff577e5af1ebc2321207c0f994b222182a88a4e0f99",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "tr",
+      "id": "2d04a31c-069d-4692-bf6e-4c0c06948d4c",
+      "characters": 135,
+      "utf8Bytes": 149,
+      "textSha256": "c89e7138a9d885cb5bdb9c7dc2f0ce5c8f9389ff094de759509a997d9099ad26",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "no",
+      "id": "617eb54f-399c-486c-8c51-85ad936b0ec6",
+      "characters": 116,
+      "utf8Bytes": 119,
+      "textSha256": "1161b813c02db854de8e8460cce4fcf63e41c77bc295a6279df3bb2664c42358",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "th",
+      "id": "2e74d181-c85a-4c1e-a41e-340fdb64073e",
+      "characters": 112,
+      "utf8Bytes": 332,
+      "textSha256": "7f6c0f1d5a19dff5b93bdfb21f8646bbdfc815d574a69637795e21b18227549d",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "es-ES",
+      "id": "00a6748f-cdd1-4679-84bc-ac1e461426a0",
+      "characters": 165,
+      "utf8Bytes": 169,
+      "textSha256": "6128fc14123932cb40857731673af6405bcb6888914ea7ea5408d6fbf80095f4",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "mr-IN",
+      "id": "8329c516-9863-48ad-9030-b8fd1e47a081",
+      "characters": 127,
+      "utf8Bytes": 319,
+      "textSha256": "14adbf3194210e50a4981687b299d281fec927c285ef3224300d5a75e52193dc",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "en-CA",
+      "id": "5d59df7c-8b6e-471a-a9e5-597cd43d7426",
+      "characters": 111,
+      "utf8Bytes": 111,
+      "textSha256": "56e4c67e4b5ab148f3c4ddc2b59fa2dee89c7e3439d8e3398daf0e2098f0b5f2",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ml-IN",
+      "id": "3c5616c1-1dad-4e41-a7ec-771de0375308",
+      "characters": 147,
+      "utf8Bytes": 383,
+      "textSha256": "71b2091136b1066e415508c2e7c864ba0afeb5f488bcdef54449d0efc1e33256",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "en-US",
+      "id": "69e0e01f-9691-4044-b52c-acd3728d2721",
+      "characters": 111,
+      "utf8Bytes": 111,
+      "textSha256": "56e4c67e4b5ab148f3c4ddc2b59fa2dee89c7e3439d8e3398daf0e2098f0b5f2",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "sl-SI",
+      "id": "9012936e-3aa1-46b0-8a33-45723b683b00",
+      "characters": 133,
+      "utf8Bytes": 135,
+      "textSha256": "3ffae432284e508f191881afffa8d465b893662a3b742874a7aff5c5d872375c",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "de-DE",
+      "id": "f6802cbe-9871-490d-99e5-0c70bae5fd62",
+      "characters": 144,
+      "utf8Bytes": 149,
+      "textSha256": "ac2d783460e2f2fcad82fa8223353fae9f117681a8419e4c51ce792c247880de",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "vi",
+      "id": "7091d1fe-7462-481a-9735-0746ece5ce89",
+      "characters": 135,
+      "utf8Bytes": 183,
+      "textSha256": "66f16978302308b0b055b481bbe37c3bcc2d0dc5e3e8097a678d7b70248054ed",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "he",
+      "id": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+      "characters": 113,
+      "utf8Bytes": 206,
+      "textSha256": "db451bbdb45fc6ab14af3974728c91e6b0bd7ede5434f413517cb953f69f13e4",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "id",
+      "id": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+      "characters": 141,
+      "utf8Bytes": 141,
+      "textSha256": "216058cc68b76ff1e0c67e3f68d1c393d42de38d1eef3dbbd6067f43ad2b3495",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "it",
+      "id": "a02e99d4-e709-463e-96c5-26e226d73427",
+      "characters": 160,
+      "utf8Bytes": 161,
+      "textSha256": "53d698adfcda74149b9b10bc3bc7794c9c27a542bd515341986af687760292d8",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "pa-IN",
+      "id": "3dab41e0-6821-499d-9a93-49e07279b332",
+      "characters": 133,
+      "utf8Bytes": 327,
+      "textSha256": "9ad0ba80b8cb9f8c520426d2308fc38dedac2c05335a22d8a8cb2cec874cd3ac",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "sk",
+      "id": "88e9ac26-6898-432f-85db-5b71f0b553f0",
+      "characters": 125,
+      "utf8Bytes": 133,
+      "textSha256": "6f963864b712aba5633131e3258b994de865786093b5f5020d900e0499234f1f",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "uk",
+      "id": "bd1cdc00-d0df-458d-87b6-1474b2875f88",
+      "characters": 134,
+      "utf8Bytes": 239,
+      "textSha256": "5db235a1bc8406505e42651278936c7d57ff5ed6bf65f59b0984dde1f8e2dca5",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "el",
+      "id": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+      "characters": 155,
+      "utf8Bytes": 290,
+      "textSha256": "1205f72eb663689621b201f0bf9df2ac10e6d040eb81753663de2f08d738a696",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ko",
+      "id": "d1b5d0e0-4b29-4ac9-b98a-cc73c81bf9b6",
+      "characters": 63,
+      "utf8Bytes": 157,
+      "textSha256": "6a1252c7a9f9bafe17917c9d9f8285581c573f32144a81ce14988dbb988a91e1",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "kn-IN",
+      "id": "8841df1b-4735-4ed7-a8e3-0bf8f48f5ae4",
+      "characters": 155,
+      "utf8Bytes": 409,
+      "textSha256": "6aefc335d699b8ed95b4ea73d473f6c92aaabf92546d6a6cfdb0f73fadaca9d0",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "pt-PT",
+      "id": "deedce92-e15b-4742-be7f-4ca0af85c0ff",
+      "characters": 158,
+      "utf8Bytes": 165,
+      "textSha256": "79a6b7b16d4bab2aa921b93d22ce7cd86578064a31aafc141959cff9b80e551b",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "sv",
+      "id": "bcdb23cf-7623-4e3b-9c5a-37bd60bae990",
+      "characters": 119,
+      "utf8Bytes": 126,
+      "textSha256": "1e26ac7fdb89605ff7b4c0fbc7d9bfafb9bb42796cdc5ba6c82632822f4ea61b",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "ta-IN",
+      "id": "70413656-8f83-4140-b413-fbcdd8f85a84",
+      "characters": 145,
+      "utf8Bytes": 381,
+      "textSha256": "9303b9404727917e397cf6de368175920e5359ac68579715da4b739c98f8c62c",
+      "decision": "PASS bounded semantic review"
+    },
+    {
+      "locale": "hi",
+      "id": "5c3939c4-55f7-4baf-b574-ff78c31486f0",
+      "characters": 129,
+      "utf8Bytes": 317,
+      "textSha256": "c72693cbdb8295471317b99b71616eb8f78598d647c1cc8a63224de85ce09919",
+      "decision": "PASS bounded semantic review"
+    }
+  ],
+  "confidence": "Independent cross-agent own-language semantic review, not native-speaker certification. Higher confidence European languages; lower confidence Indic/RTL/Thai nuanced style, without identified remaining material error. No legal/privacy/runtime certification.",
+  "requiredChanges": [],
+  "mutation": "Only this review artifact written. No API/source/native/build/deployment action."
+}

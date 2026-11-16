@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-22T02:22:47.366959+00:00",
+  "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+  "storefront": "US",
+  "bodyReadRanges": [
+    [
+      18,
+      39
+    ],
+    [
+      69,
+      109
+    ],
+    [
+      209,
+      218
+    ]
+  ],
+  "displayedVersion": "1.7.3",
+  "publicPrices": {
+    "Advanced Monthly": "USD0.49",
+    "Advanced Yearly": "USD4.99",
+    "Premium Monthly": "USD4.99",
+    "Premium Yearly": "USD49.99"
+  },
+  "comparison": "Exact numeric strings match current PLANS in src/app/core/app-facts.ts. Pricing template currently displays bare$ across all30locales; proposed visibleUS$ clarification without numeric changes.",
+  "draftVsLive": "Public listing remains1.7.3; optimized1.7.4text is still a separate draft, no submission authorized/performed in this pass.",
+  "limits": "USpubliclistedIAP only, not allterritories/currentcheckout/promotion/accounteligibility/runtime or privacyverification."
+}

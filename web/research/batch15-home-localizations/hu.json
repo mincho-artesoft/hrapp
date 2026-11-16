@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Naptár és Microsoft Outlook, mindkét irányban szinkronizálva és színnel elválasztva egyetlen nézetben. Kapcsoljon ki bármelyik naptárat, ha nem akarja látni — a többi tovább működik.",
+    "after": "Tekintse meg együtt a kiválasztott iCloud- és Google-naptárakat; a Premium Microsoft-naptárakkal egészíti ki őket. A fiók jogosultságai szerint szerkesszen, és változtatás után ellenőrizze a forrásnaptárt."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Fogjon meg egy eseményt, és csúsztassa másik időpontra vagy másik napra. Húzza a felső vagy alsó szélét, hogy megváltoztassa a hosszát. Nincs ablak, nincs mentés gomb.",
+    "after": "Helyezze át a szerkeszthető eseményeket más időpontra vagy napra, illetve módosítsa időtartamukat az idővonalon. Ismétlődő eseménynél válassza ki a módosítandó alkalmakat, és ellenőrizze a mentett eredményt."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Ez a szerkesztés fő módja. Húzzon egy eseményt másik időpontra vagy másik napra, vagy húzza a felső, illetve alsó szélét az időtartam módosításához. A változások egyenesen visszakerülnek a forrásnaptárba.",
+    "after": "A szerkeszthető eseményeket áthelyezheti, és módosíthatja időtartamukat az idővonalon. Ellenőrizze az ismétlődésre vonatkozó választást és a mentett időpontot; a kapcsolt naptárak frissítése a jogosultságoktól és a sikeres szinkronizálástól függ."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Ugyanazok az események, aszerint elrendezve, amit valójában kérdez — és mindegyik hozza az előrejelzését.",
+    "after": "Válasszon áttekintést vagy részletes idővonalat, az ezt támogató nézetek mellett elérhető időjárási adatokkal."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Órarács, amelyben minden sor a saját előrejelzését hozza. A háromórai megbeszélést és a háromórai esőt ugyanabban a pillantásban látja — nincs második alkalmazás, nincs találgatás.",
+    "after": "Hasonlítsa össze a találkozókat az elérhető óránkénti előrejelzéssel ugyanabban a rácsban. Szabadtéri tervezéskor ellenőrizze a kiválasztott helyet és az előrejelzés dátumát."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "A havi nézet megjelöl minden napot, amelyen van valami. Az évi nézet tizenkét hónapot tesz egy képernyőre — a leggyorsabb módja egy szabad hét megtalálásának.",
+    "after": "Hasonlítsa össze a kiválasztott naptárak eseményeit a hónap vagy év során. Mielőtt szabadnak tekint egy napot, nyissa meg és nézze át minden találkozóját."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Érintsen meg bármely órát az időjárás-központban, és új esemény nyílik, már arra az időpontra állítva. Találja meg a száraz ablakot, és foglalja le.",
+    "after": "Válasszon egy elérhető előrejelzési órát egy eseménytervezet indításához, majd mentés előtt ellenőrizze a dátumot, időpontot és naptárt."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "{v} verzió — a megosztott események mostantól maguktól frissülnek",
+    "after": "{v} verzió — események és naptárak megosztása"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Az előfizetéseket az Apple kezeli, így az App Store-fiókja beállításaiban mondhatja le. Tegye meg legkésőbb 24 órával az időszak vége előtt, és nem terheljük meg újra.",
+    "after": "iPhone-on vagy iPaden nyissa meg a Beállításokat, koppintson a nevére, majd az Előfizetésekre. Válassza a Cloud Calendarst, és ott mondja le; ellenőrizze az Apple által jelzett lemondási vagy lejárati állapotot."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Az előfizetések automatikusan megújulnak, és az Apple ID-n keresztül számlázódnak. Bármikor lemondhatja az App Store-fiókja beállításaiban, legkésőbb 24 órával az időszak vége előtt.",
+    "after": "Az előfizetések automatikusan megújulnak az Apple-fiókján keresztül. Vásárlás előtt ellenőrizze a helyi árat és a számlázási időszakot. A lemondást a Beállításokban, a neve alatt, az Előfizetések menüben kezelheti."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Kétirányú",
+    "after": "Csatlakoztatva"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "A legnépszerűbb",
+    "after": "Kiemelt csomag"
+  }
+]

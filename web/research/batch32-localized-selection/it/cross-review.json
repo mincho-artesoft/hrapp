@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-22",
+  "locale": "it",
+  "status": "pass",
+  "reviewerRole": "Independent review of another agent’s Italian drafts; earlier English/Spanish research involvement disclosed. Own linguistic assessment, not independent native-speaker certification.",
+  "readScope": {
+    "completeObjects": [
+      "Both proposed Italian objects: all metadata, sections, paragraphs, practical steps, FAQ, source labels/URLs, related slugs and dates",
+      "Both Italian before objects",
+      "Both current English objects; source equality checked against complete read snapshots using TypeScript AST extraction"
+    ],
+    "supportingArtifacts": [
+      "research/batch32-localized-selection/it/read-snapshots.json",
+      "research/batch32-localized-selection/it/review-notes.json"
+    ],
+    "truncationHandling": "Initial concatenated evidence output truncated; missing English Exchange and Italian Exchange before bodies separately read in full. Both complete draft bodies were read in the preceding untruncated output.",
+    "currentSourceVerification": "Static TypeScript literal extraction, without executing application code; actual current Italian objects equal before snapshots and actual English objects equal read snapshots."
+  },
+  "checks": {
+    "three-calendar-apps-is-two-too-many": {
+      "currentEnglishEqualsReadSnapshot": true,
+      "currentItalianEqualsBefore": true,
+      "sourceGuards": {
+        "en": {
+          "rawSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+          "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+          "file": "src/app/content/en-US/articles-unify.ts"
+        },
+        "it": {
+          "rawSha256": "3f47e925a41d90327afc2f629e4bb64d823fc201b76bc93670964e7afb1b94aa",
+          "moduleSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+          "file": "src/app/content/it/articles.ts"
+        }
+      },
+      "draftRawSha256": "175b37ff6c88cebbd88658720b2b62e9690e56b561761090bb42e5b09a00c95a",
+      "draftJsonSha256": "ecdf02fff4dcec95d2454f6839aad810ea52db5682bb44f28026b5998b2dc39f",
+      "beforeRawSha256": "aaeaae8388cf62ca927a4d48d72058c3fd744a529e077ed64ccea60b67348d8e",
+      "beforeJsonSha256": "93b478980900916988767eb87baf2294feea7321066166eea2bd539bf1f74239",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2,
+        "description": 125
+      },
+      "sourceUrlsMatchEnglish": true,
+      "routes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "file": "src/app/content/it/articles.ts"
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "file": "src/app/content/it/articles-help.ts"
+        }
+      ]
+    },
+    "exchange-calendars-on-an-iphone": {
+      "currentEnglishEqualsReadSnapshot": true,
+      "currentItalianEqualsBefore": true,
+      "sourceGuards": {
+        "en": {
+          "rawSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+          "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+          "file": "src/app/content/en-US/articles-unify.ts"
+        },
+        "it": {
+          "rawSha256": "65e0c51c98ad9ae03e2c7bdeb9dd77b4ac619423b0b9e5ba13139513cdffc7e6",
+          "moduleSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+          "file": "src/app/content/it/articles.ts"
+        }
+      },
+      "draftRawSha256": "0574565ca68b970075cf41ecacc7c4cf35fe368d5df5b9443dcb755007c8ce3b",
+      "draftJsonSha256": "9815dcaafa8381d97fba354e4bd8d1fbb86e3fb401a04900a1fc3e3d9e890eb2",
+      "beforeRawSha256": "a8972d19b8b65b77e3b23f9879966fccc1db0a237056b88064e5e7dea446a6aa",
+      "beforeJsonSha256": "007d82d1dd5188e9ade913a81c73e8d8c8d20fdce5f208235fda413a7efdb798",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 3,
+        "description": 143
+      },
+      "sourceUrlsMatchEnglish": true,
+      "routes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "file": "src/app/content/it/articles.ts"
+        },
+        {
+          "slug": "what-a-subscription-actually-buys",
+          "file": "src/app/content/it/articles.ts"
+        }
+      ],
+      "diff": [
+        {
+          "path": "updated",
+          "before": "2026-10-21",
+          "after": "2026-10-22"
+        },
+        {
+          "path": "sections[1].body[1]",
+          "before": "Prima di aggiungere una connessione, controlla dove appare il calendario di lavoro esistente. Se in seguito vedi due versioni di una riunione, identifica le sorgenti e nascondine una temporaneamente. Non rimuovere account o eliminare eventi per diagnosticare quale connessione li abbia prodotti.",
+          "after": "Prima di aggiungere una connessione, controlla dove appare il calendario di lavoro esistente. Se in seguito vedi due versioni di una riunione, identifica le sorgenti e nascondine una temporaneamente. Non rimuovere account o eliminare eventi per diagnosticare quale connessione li abbia prodotti. In Cloud Calendars, annota la selezione iniziale e ripristinala dopo il confronto. La selezione può influire anche sui widget e sulla programmazione delle notifiche; non presumere che riguardi soltanto la visualizzazione."
+        }
+      ]
+    }
+  },
+  "materialFindings": [],
+  "requiredCorrections": [],
+  "combinedGuideAssessment": [
+    "Complete six-section modernization retains all twelve English paragraph distinctions, six practical steps and three FAQs. Legacy universal availability/no-copy/delete-other-apps advice is replaced substantively.",
+    "Workplace approval remains separate from paid access and from connection errors; required work apps are retained.",
+    "Provider mirrors in the iPhone calendar store are explicit. Multiple connection routes are checked rather than asserted interchangeable.",
+    "The two-direction test is confined to a writable owned disposable appointment without guests or recurrence and contains no refresh guarantee.",
+    "Temporary hiding is followed by restoration. Widgets, notification scheduling and Google synchronization consequences are retained without an all-provider pause/resume claim.",
+    "Base/Advanced/Premium distinctions and separate notification checks match current English. No automated availability copying or busy masking promise.",
+    "Italian prose is readable and task-focused. No material translation defect found. Developer disclosure retained."
+  ],
+  "exchangeAssessment": {
+    "pass": true,
+    "onlyChangedPaths": [
+      "updated",
+      "sections[1].body[1]"
+    ],
+    "paragraphChange": "Exact original paragraph retained as prefix, followed only by restore-selection/widgets/notification qualification.",
+    "otherFields": "All other fields deeply equal the actual current Italian before object.",
+    "boundary": "No added Microsoft synchronization pause/resume claim or universal Exchange compatibility promise."
+  },
+  "relatedRoutes": {
+    "allDraftRoutesExist": true,
+    "omittedEnglishRoute": "what-calendar-sync-actually-does",
+    "reason": "No current Italian article object for this route; existing overview and notification routes retained for combined guide, overview and subscription retained for Exchange."
+  },
+  "limits": [
+    "No fresh provider-document or native-source audit in this bounded localization review.",
+    "No runtime/released-app certification, builds, deployment, ASC or calendar operations.",
+    "No source or draft mutation; only this review artifact written."
+  ]
+}

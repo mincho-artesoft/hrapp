@@ -1,0 +1,34 @@
+{
+  "title": "Tre app di calendario sono due di troppo",
+  "short": "Tre app, due di troppo",
+  "description": "Passare da un'app di calendario all'altra non è un metodo di lavoro, è una tassa. Quanto costa e com'è fatto toglierla.",
+  "lede": "Nessuno ha scelto di avere tre app di calendario. È successo un account alla volta, e ogni aggiunta sembrava ragionevole.",
+  "commonBelief": "Che cambiare app sia un fastidio minore e non l'origine del problema vero.",
+  "sections": [
+    {
+      "heading": "Il costo non sono i tocchi",
+      "body": [
+        "Due secondi per cambiare non sono niente. Quello che costa è rispondere a domande di agenda con informazione parziale, perché controllare tutte e tre ogni volta è più fatica di quanta la domanda sembri meritarne.",
+        "Così rispondete da quella che avete aperta e correggete dopo. La correzione è la parte cara, e per giunta atterra nel calendario di qualcun altro."
+      ]
+    },
+    {
+      "heading": "Cosa deve essere vero",
+      "body": [
+        "Un posto deve poter dire sì o no sul vostro tempo. È tutto il requisito, e non lo soddisfa nessuna sistemazione in cui la risposta viva in più di un'app.",
+        "Tutto il resto — quale app, quali colori, quali viste — è gusto. Questo è struttura."
+      ]
+    }
+  ],
+  "claims": {
+    "accounts": "Tipi di account che una vista sola può contenere"
+  },
+  "practical": [
+    "Scegliete l'app che tiene tutti i vostri account, non quella che vi piace di più da sola.",
+    "Migrate aggiungendo account, non spostando eventi: gli eventi restano dove sono.",
+    "Cancellate le altre app quando la vista è completa, altrimenti continuerete a sbirciarci."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

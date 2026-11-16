@@ -1,0 +1,277 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+// Keep entrance animations inside the section, including RTL pages.
+.widgets { overflow-x: clip; }
+
+.widgets__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+  @include stage(1500px);
+
+  @include upto($bp-lg) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Copy
+--------------------------------------------------------------- */
+.widgets__copy { max-width: 36rem; }
+
+.section-lead { margin-bottom: 2.6rem; }
+
+.points {
+  list-style: none;
+  display: grid;
+  gap: 1.35rem;
+  text-align: left;
+}
+
+.points__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    font-size: 0.92rem;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+}
+
+.points__icon {
+  flex: 0 0 auto;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(150deg, rgba(77, 124, 255, 0.28), rgba(56, 224, 240, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: #cfe6ff;
+  }
+
+  /* 3-size widget grid glyph */
+  &[data-icon='grid'],
+  &[data-icon='stack'] {
+    &::before {
+      inset: 10px 9px auto 9px;
+      height: 8px;
+      border-radius: 3px;
+      opacity: 0.78;
+    }
+    &::after {
+      inset: auto 9px 10px 9px;
+      height: 10px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #cfe6ff 0 44%, transparent 44% 56%, rgba(207, 230, 255, 0.65) 56% 100%);
+    }
+  }
+
+  /* lock-screen Live Activity glyph */
+  &[data-icon='lock'] {
+    &::before {
+      width: 12px;
+      height: 9px;
+      top: 9px;
+      left: 13px;
+      background: transparent;
+      border: 2px solid #cfe6ff;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      box-sizing: border-box;
+    }
+    &::after {
+      inset: 17px 10px 10px 10px;
+      border-radius: 4px;
+    }
+  }
+
+  /* lightning glyph */
+  &[data-icon='bolt'] {
+    &::before {
+      inset: 9px 0 9px 0;
+      left: 50%;
+      translate: -50% 0;
+      width: 11px;
+      background: #cfe6ff;
+      clip-path: polygon(58% 0, 20% 56%, 46% 56%, 38% 100%, 82% 42%, 54% 42%);
+    }
+    &::after { display: none; }
+  }
+
+  /* bell glyph */
+  &[data-icon='bell'] {
+    &::before {
+      inset: 10px 12px 14px 12px;
+      border-radius: 8px 8px 3px 3px;
+    }
+    &::after {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      bottom: 12px;
+      left: 11px;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Stage
+--------------------------------------------------------------- */
+.widgets__stage {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.widgets__phone { transform-style: preserve-3d; }
+
+.widgets__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.widgets__caption {
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-family: var(--font-display);
+}
+
+/* The clip's only control. Native `controls` would come with a timeline —
+   `controlsList` can drop download, fullscreen and playback rate, but not
+   that — and a scrubber on a nine-second silent loop reads like a film
+   player. One button, and it never covers the footage. */
+.widgets__toggle {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink-3);
+  cursor: pointer;
+  transition:
+    background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--ink);
+  }
+
+  &:active { transform: scale(0.9); }
+
+  &:focus-visible {
+    outline: 2px solid var(--aurora-2);
+    outline-offset: 3px;
+  }
+}
+
+.widgets__glyph {
+  position: relative;
+  width: 10px;
+  height: 11px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+  }
+
+  /* Paused — a play triangle. */
+  &::before {
+    inset: 0;
+    clip-path: polygon(6% 0, 100% 50%, 6% 100%);
+  }
+  &::after { display: none; }
+
+  /* Playing — two bars. */
+  &.is-playing {
+    &::before {
+      inset: 0 auto 0 0;
+      width: 3px;
+      border-radius: 1px;
+      clip-path: none;
+    }
+    &::after {
+      display: block;
+      inset: 0 0 0 auto;
+      width: 3px;
+      border-radius: 1px;
+    }
+  }
+}
+
+/* ===============================================================
+   The recording
+
+   The bezel is derived from the footage, not the other way round. An
+   earlier version dropped the clip into a fixed-aspect frame and let
+   `object-fit` sort out the difference, which quietly sliced the status
+   bar and the dock off the ends of the phone. Here the video is a normal
+   block at `height: auto`, the shell is padding around it, and the two
+   cannot disagree.
+=============================================================== */
+.widgets__shell {
+  /* Capped by width on wide screens and by height on short ones. The height
+     term is written in the clip's own aspect ratio so the whole phone,
+     bezel included, always fits inside that share of the viewport. */
+  --shell-w: min(320px, 64vh * 640 / 1392);
+
+  width: var(--shell-w);
+  padding: calc(var(--shell-w) * 0.026);
+  /* A length, not a percentage: on a non-square box a percentage radius
+     resolves separately per axis and bends the corner into an ellipse. */
+  border-radius: calc(var(--shell-w) * 0.135);
+  background: #05060a;
+  box-shadow:
+    0 26px 44px rgba(0, 0, 0, 0.62),
+    0 60px 110px rgba(4, 8, 24, 0.72),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.home-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Reserves the right box before any metadata arrives — the element carries
+     preload="none", so without this the shell would collapse to the poster's
+     intrinsic size, or to nothing at all, until the clip is scrolled to. */
+  aspect-ratio: 640 / 1392;
+  object-fit: contain;
+  border-radius: calc(var(--shell-w) * 0.109);
+  background: #0b1d3a;   /* the wallpaper colour, so any seam is invisible */
+}
+
+@include upto($bp-lg) {
+  .points { max-width: 34rem; margin-inline: auto; }
+}

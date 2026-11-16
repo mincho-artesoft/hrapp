@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-22",
+  "locale": "ml-IN",
+  "field": "description",
+  "decision": "pass_narrow_semantic_correction",
+  "requiredChanges": [],
+  "readScope": "Complete saved Malayalam description read from afterLocalizations.ml-IN.attributes.description; complete before and after proposal read separately without truncation. Initial whole part-a print was truncated; no full part-a audit claimed.",
+  "sourceFiles": {
+    "batch29-aso-semantic/applied.json": "b3d921c1a9d6646b790379e47419f7bf438a23e085b99bfd6a8deb212f023252",
+    "batch30-aso-remaining/part-a.json": "51757f78686141014b0ed938dfc91b8b8dc1dc4ce63498bac6bf73900030c886"
+  },
+  "beforeExcerpt": "iCloud കലണ്ടറുകൾ ഉപയോഗിച്ച് Google Calendar ബന്ധിപ്പിക്കുക.",
+  "afterExcerpt": "iCloud കലണ്ടറുകൾ ഉപയോഗിക്കുക, Google Calendar ബന്ധിപ്പിക്കുക.",
+  "semanticAssessment": "ഉപയോഗിച്ച് is a dependent participial form meaning using/by using, so the original can read as connecting Google Calendar using iCloud calendars. ഉപയോഗിക്കുക is an independent directive, use. The revised comma separates two parallel directives: use iCloud calendars; connect Google Calendar. The comma is understandable in this short instructional list and introduces no new dependency, capability or UI label. No further wording change is required for this narrow correction.",
+  "identityChecks": {
+    "savedCurrentEqualsProposalBefore": true,
+    "beforeExcerptOccurrences": 1,
+    "fullAfterEqualsSingleExactReplacement": true,
+    "beforeFullUtf8Sha256": "a42503049341603d7c75b648422b64dc993235d9f46da8b51f84989c5ef1567a",
+    "afterFullUtf8Sha256": "3dfd8ae31b7071023a5431bdfd29b91390db603b20068962e02611801bcb7e1b",
+    "beforeExcerptUtf8Sha256": "9b54a3425c70665cc9d0c0f8477071e6f8e3ba43a5a8e7a7ffc98554d03d2d58",
+    "afterExcerptUtf8Sha256": "cff2fdbfe5ea12ba84c42ed1f424d709bb4083a815011733831e9335764618c4",
+    "afterUnicodeCharacters": 1413,
+    "afterUtf8Bytes": 3371,
+    "allOtherDescriptionCharactersPreserved": true
+  },
+  "preservedMeaning": [
+    "Local calendar creation without Cloud account and conditional sign-in for service connections/sharing.",
+    "Free Base Google/Meet/views/weather/widgets; Advanced ad removal; Premium Microsoft/Teams.",
+    "Forecast availability and widget-size descriptions.",
+    "Subscription terms, price-check wording, privacy and terms URLs."
+  ],
+  "languageConfidence": "Moderate own-language semantic assessment. Independent of the proposal author for this bounded review, not independent native-speaker certification.",
+  "limits": [
+    "Saved API body only; no current live ASC read.",
+    "No API, draft/source mutation, build, deployment, native or customer operation. Only this review artifact written.",
+    "This passes the exact one-excerpt replacement, not an instruction to modify any other field or locale."
+  ]
+}

@@ -1,0 +1,1063 @@
+{
+  "date": "2026-10-22",
+  "verdict": "no_source_change_required_for_reviewed_localized_bodies",
+  "readScope": "Complete current EN recovery and export objects read in one untruncated 5823-token output; complete DE/ES/FR/IT export objects read in one untruncated 8931-token output. Actual exported definitions inspected across all articles*.ts in five locales to locate exact slugs and absence. No claim of reading every other article body.",
+  "counts": {
+    "englishComparators": 2,
+    "localizedFullBodies": 4,
+    "absentRecoveryEditions": 4
+  },
+  "objects": [
+    {
+      "locale": "en-US",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7fba09bd3f72ac722dd3ad47a2cd1cf823c804d66aab48da375494e7907987f3",
+      "rawASTObjectSha256": "c34f82e3fb366ebb83853ed7f1640319c5fbb3ff3e7018df817c8277578c41e7",
+      "jsonStringifySha256": "4a459cc58b23a0e9e3208f93a8081d059ed50f7a779ec4348485310caca64347",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+        "short": "Recover a deleted calendar event",
+        "description": "Check whether an event is missing or deleted, then compare Google Trash with iCloud calendar recovery and their sharing and meeting consequences.",
+        "lede": "A missing appointment does not always need restoring. First establish where it was stored and whether it still exists there. If it was deleted, the recovery method depends on that provider. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Restoring a calendar always brings back just the missing appointment, with every invitation and sharing arrangement unchanged.",
+        "sections": [
+          {
+            "heading": "First separate a missing display from a deleted record",
+            "body": [
+              "Identify the account and calendar that held the appointment, then check its approximate date in the provider’s own calendar. Confirm the signed-in identity, especially when work and personal accounts have similar calendar names. If the event is still there, use the missing-calendar or search guide below. Do not restore data merely because one app cannot display or find it.",
+              "A shared calendar that you can no longer access is also a different problem from a deleted event. Ask the owner to confirm the calendar and your access before choosing a recovery operation. For a calendar stored only on a device, do not assume that Google or iCloud holds an independent copy. Avoid adding a second account connection or importing an old file while the original location is uncertain."
+            ]
+          },
+          {
+            "heading": "For Google, inspect the right calendar’s Trash on a computer",
+            "body": [
+              "Google documents recovery on a computer: open Google Calendar with the relevant account, then Settings > Trash. Each calendar has its own Trash. Restoring requires at least the calendar permission to make changes to events. Identify the intended record before using its Restore control; Google also provides restoration of selected records.",
+              "Google normally keeps trashed events for 30 days, but permanent deletion can remove that opportunity. Its spam checks can also place an invitation there. An empty Trash is not proof that you checked the right calendar or have the required access. Consult Google’s current instructions before acting."
+            ]
+          },
+          {
+            "heading": "Check Google recurrence and meeting consequences",
+            "body": [
+              "Google says instances removed with “This and following events” do not enter Trash and cannot be restored. Other recurring deletions may appear as one grouped row; restoring it can restore multiple deleted instances. Check the scope rather than assuming one row means one date.",
+              "When an event creator restores an event, Google says guests must RSVP again. A previously booked room may no longer be available. Compare the restored meeting with its intended participants, dates and resource arrangements before treating it as ready to attend."
+            ]
+          },
+          {
+            "heading": "For iCloud, understand calendar replacement before proceeding",
+            "body": [
+              "Apple’s iCloud recovery restores an earlier calendar version across devices, replacing the existing calendars. It saves the current version first, but recent changes may be lost. This is not Google’s selected-event Trash workflow. Read Apple’s linked instructions and assess the replacement consequences before choosing an archive.",
+              "Apple advises making a backup before restoring. Its documented route is iCloud.com > Data Recovery > Restore Calendars, where available versions are dated. Do not select a version solely because it predates the missing appointment: first consider other changes made since then and what you need to preserve."
+            ]
+          },
+          {
+            "heading": "Account for iCloud sharing and invitation effects",
+            "body": [
+              "Apple says calendar sharing settings are erased by restoration. You must share your calendars again or ask their owners to share them again. It also describes cases where invitation and cancellation messages are not sent again. Read those details rather than assuming that restoring the calendar reconstructs everyone’s current understanding.",
+              "Before deciding, record which calendars you share, who needs access and which arrangements changed recently. Afterward, check access with the people involved and confirm any uncertain meeting directly. Keep this record private; it is a checklist for rebuilding the intended arrangement, not a reason to redistribute invitation links or everyone’s event details."
+            ]
+          },
+          {
+            "heading": "Use the smallest recovery task that matches the evidence",
+            "body": [
+              "Suppose a club’s Tuesday planning meeting disappears from your phone after you changed next month’s venue. First check the club’s owning account and the Tuesday date. If the meeting remains there, investigate the phone’s view. If it was deleted, establish the provider and the available recovery scope. A dated archive deserves a broader review than a single identified record: the newer venue arrangement also matters.",
+              "Write down the intended outcome before acting: recover this appointment, preserve the later venue change and confirm the current participants. Do not turn the exercise into moving the club calendar to another account. After any recovery, compare those specific facts with the organiser rather than assuming that an event with the familiar title means the whole problem is solved."
+            ]
+          },
+          {
+            "heading": "Verify the result at the source before relying on your phone",
+            "body": [
+              "Recheck the owning calendar, the exact date and time, relevant recurring dates, access and meeting arrangements. Then compare the same event on the iPhone. If the source is correct but the app differs, return to connection, selection and date-coverage checks; do not repeat a recovery operation to force the display to change.",
+              "For support, keep a non-sensitive record of the provider, calendar type, approximate date, action taken and where the event is now visible. Omit private links, passwords and confidential notes. These are Google and iCloud procedures, not Cloud Calendars Trash or restore controls. They do not establish recovery options for Outlook, another provider, a device-only calendar or Cloud Calendars sharing data; consult the appropriate service rather than applying these steps to it."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Present at the owning provider, missing on the phone: investigate display, selection, connection and search scope before recovery.",
+          "Access to a shared calendar has disappeared: confirm identity and permission with its owner before assuming deletion.",
+          "Deleted from a Google calendar: review that calendar’s computer-based Trash and the documented access, recurrence and meeting limits.",
+          "Deleted from iCloud: assess the earlier-version replacement and sharing consequences before choosing a recovery version.",
+          "Stored somewhere else or location uncertain: identify the actual service and its recovery guidance; do not guess from the app displaying it.",
+          "After recovery: compare the original scheduling facts at the provider, confirm uncertain arrangements, then check the phone."
+        ],
+        "faq": [
+          {
+            "q": "The event still appears on the provider’s website. Should I restore a backup?",
+            "a": "Start with the phone’s account, selected calendar, date range and search behaviour. Preserve the existing provider record; a missing display alone does not establish that data needs restoring."
+          },
+          {
+            "q": "Can I follow these steps for a calendar someone shared with me?",
+            "a": "First distinguish lost access from deletion and identify who controls the calendar. Use the relevant provider’s permission rules, and involve the owner when needed. Receiving a shared calendar does not by itself establish authority to restore it."
+          },
+          {
+            "q": "Should I import an old ICS file if recovery is unavailable?",
+            "a": "Treat that as a separate copy/import decision. Check its date, destination and what it preserves using the export guide below. Do not assume that importing recreates the original meeting or its participants’ arrangements."
+          },
+          {
+            "q": "Does Cloud Calendars offer the recovery controls described here?",
+            "a": "The controls in this guide belong to Google Calendar and iCloud.com. No Cloud Calendars recovery procedure is established here. Identify the event’s storage service before deciding which instructions apply."
+          }
+        ],
+        "sourcesHeading": "Official recovery procedures and consequences",
+        "sources": [
+          {
+            "label": "Google: calendar Trash, restoration, recurrence and guest responses",
+            "url": "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en"
+          },
+          {
+            "label": "Apple: restore iCloud calendars and understand replacement and sharing effects",
+            "url": "https://support.apple.com/en-gb/102508"
+          }
+        ],
+        "seeAlso": [
+          "find-old-calendar-events-by-account-date-and-title",
+          "google-calendars-that-never-reach-your-iphone",
+          "calendar-export-ics-pdf-and-backup",
+          "why-a-shared-calendar-does-not-appear"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 7,
+        "paragraphs": 14,
+        "practical": 6,
+        "faq": 4,
+        "sources": 2
+      },
+      "decision": "current_comparator_full_read",
+      "related": [
+        {
+          "slug": "find-old-calendar-events-by-account-date-and-title",
+          "actualDefinition": "src/app/content/en-US/articles-help.ts"
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "actualDefinition": "src/app/content/en-US/articles-google.ts"
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "actualDefinition": "src/app/content/en-US/articles-help.ts"
+        },
+        {
+          "slug": "why-a-shared-calendar-does-not-appear",
+          "actualDefinition": "src/app/content/en-US/articles-google.ts"
+        }
+      ]
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7fba09bd3f72ac722dd3ad47a2cd1cf823c804d66aab48da375494e7907987f3",
+      "rawASTObjectSha256": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03",
+      "jsonStringifySha256": "2019588b0512ba28398d0cda4b8445f5eb2b5530cc5d3ea4a6ccd5ca43a9f49b",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+        "short": "Choose a calendar export format",
+        "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+        "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
+        "sections": [
+          {
+            "heading": "Choose the result before choosing a format",
+            "body": [
+              "Exporting a calendar can mean several different jobs. If you want another calendar app to read event records, choose a supported structured format such as ICS. If someone needs a readable schedule, choose a PDF or printed page. If they should receive later changes, investigate a subscription or permission-based sharing instead.",
+              "A PDF records the layout you saved; it is not an event import file. A downloaded ICS file holds calendar data at the time you obtained it. An ICS subscription uses an address that a calendar client checks again. The extension alone does not tell you whether the recipient imported a snapshot or subscribed to updates.",
+              "For example, a weekend itinerary sent as a PDF is easy to read. A colleague moving appointments to another account needs event data. A club member following next month’s changing fixtures needs an updating source. Decide which of these outcomes you need before sending anything."
+            ]
+          },
+          {
+            "heading": "Start with the account that holds the events",
+            "body": [
+              "On your iPhone, identify the calendar and account containing the events you need. A combined view may contain several accounts, shared calendars and subscriptions. Seeing all of them together does not mean there is one source calendar to export.",
+              "For Google Calendar, use a computer: Google does not offer export from its Calendar app. In the web calendar, open Settings, then Import & export, then Export. The downloaded ZIP contains individual ICS files. For one calendar, open its Settings and sharing and choose Export calendar. Google requires permission to manage changes and sharing; an organization can also restrict export.",
+              "For a calendar available in Calendar on your Mac, select its name in the sidebar and use File > Export > Export to save an ICS file. This is a Mac workflow, not a hidden iPhone export command. Check that you selected the intended calendar before saving."
+            ]
+          },
+          {
+            "heading": "When you need a PDF schedule",
+            "body": [
+              "In Calendar on Mac, use File > Print and choose the layout, date range and calendars to include. In the macOS print dialog, use the PDF menu and Save as PDF. Open the result before sending it: a small grid may omit or truncate details that matter to the recipient.",
+              "Include a clear date range and the relevant time zone in the message accompanying the document. Review private appointments, notes and locations before sharing. Later edits to your calendar will not rewrite a PDF already sent; label a revised copy clearly so recipients know which schedule to follow."
+            ]
+          },
+          {
+            "heading": "When you need calendar rows in CSV",
+            "body": [
+              "CSV is useful when the next task is a spreadsheet report rather than adding events to another calendar. BusyCal documents an iOS CSV export: choose calendars in its export settings, then save or share the generated file. Its rows represent individual event occurrences. This is a BusyCal workflow, not a Cloud Calendars export button.",
+              "For a monthly activity report, decide which calendars and dates belong in the report before sharing it. Open the resulting spreadsheet and inspect timestamps, repeated appointments, notes and any private details. A table that is convenient to filter is not automatically a complete backup or an updating calendar subscription.",
+              "Keep the distinction when moving data: exporting spreadsheet rows, importing editable events and subscribing to future changes are different operations. BusyCal’s iOS export documentation points to its Mac app for ICS import; do not infer that every export control also supplies the reverse import workflow."
+            ]
+          },
+          {
+            "heading": "Subscription and publishing are different from backup",
+            "body": [
+              "Microsoft documents the distinction explicitly for Outlook on the web: downloading and importing a published ICS file creates a copy without later updates; subscribing to the ICS address follows changes. Refresh timing depends on the recipient’s provider, and the published calendar is read-only.",
+              "Where available, Outlook’s Settings > Shared calendars > Publish a calendar lets you choose a calendar and detail level. Publishing exposes it for viewing or subscription, so use this for an intended audience rather than as a private backup technique. A saved link still depends on the source remaining available."
+            ]
+          },
+          {
+            "heading": "If a subscribed calendar stops updating",
+            "body": [
+              "First identify whether you imported a file or subscribed to an address. Google explicitly says imported events do not stay in sync between accounts; Microsoft makes the same distinction for published ICS files. Importing the same file again is not a subscription refresh and can add another set of records.",
+              "For an actual subscription, compare a known changed appointment in its owning calendar and the receiving calendar. Check the intended source and whether its publishing or sharing arrangement is still available. Microsoft says ICS refresh frequency depends on the recipient’s provider. If an intermediary processes the feed, its own refresh and the recipient’s refresh are separate stages; do not assume updating one instantly updates the other.",
+              "Before giving a calendar address to a conversion service, check whether you may share that feed and what data the service will receive. Do not publish a work calendar to bypass an organization’s access restriction. Keep private feed addresses out of public support posts; a service that does not request your account password can still receive the calendar content you provide."
+            ]
+          },
+          {
+            "heading": "What Cloud Calendars sharing provides",
+            "body": [
+              "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
+              "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
+            ]
+          },
+          {
+            "heading": "Check a copy before relying on it",
+            "body": [
+              "Keep the original calendar while checking an export. Record its account, calendar name and export date. If you test an import, use a separate destination calendar where supported, then compare an ordinary appointment, an all-day event and a recurring series with a changed occurrence.",
+              "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
+              "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
+            ]
+          },
+          {
+            "heading": "For Google, distinguish a copy from an ownership handoff",
+            "body": [
+              "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
+              "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the account and calendar you need, then choose a snapshot, printable schedule or updating subscription.",
+          "Use the documented export route and keep the original while checking the result.",
+          "Review the destination, sensitive details and representative events before sending or relying on the copy."
+        ],
+        "faq": [
+          {
+            "q": "Can I export Google Calendar directly from its iPhone app?",
+            "a": "No. Google’s documented export workflow requires a computer. Exporting a calendar also requires the appropriate sharing-management permission."
+          },
+          {
+            "q": "Does subscribing to an ICS address give me a backup?",
+            "a": "A subscription follows a source that can change or become unavailable. Save an independent export if you need a dated copy, and verify what that file preserves."
+          },
+          {
+            "q": "Should I choose ICS or PDF?",
+            "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
+          },
+          {
+            "q": "Will converting an ICS feed fix every one-hour difference?",
+            "a": "No. First compare the intended date, the event’s time zone, the display zone and the same recurring occurrence at the source and recipient. A format issue is a possibility to investigate, not the explanation for every time difference. Do not shift the original meeting merely to compensate for one display."
+          },
+          {
+            "q": "Google says “Processed zero events.” Should I import again?",
+            "a": "First check the calendar selected as the import destination. Google says this message can appear after a second click on Import when the first import already succeeded. Look for the expected events before retrying. The message alone does not prove that events are missing, and it is not a guarantee that repeated imports always avoid duplicates. If the result is still unclear, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything."
+          }
+        ],
+        "sourcesHeading": "Official instructions and format limitations",
+        "sources": [
+          {
+            "label": "Google: export calendar events",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google: import events and transfer limitations",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple: export ICS files and calendar archives on Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple: save a document as PDF on Mac",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft: publishing, importing and subscribing in Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          },
+          {
+            "label": "BusyCal: iOS CSV export and event-occurrence rows",
+            "url": "https://www.busymac.com/docs/busycalios/export-as-csv/"
+          },
+          {
+            "label": "Google: event and display time zones",
+            "url": "https://support.google.com/calendar/answer/37064?hl=en"
+          },
+          {
+            "label": "Google: transfer calendar ownership, move or copy events",
+            "url": "https://support.google.com/calendar/answer/78739?hl=en"
+          },
+          {
+            "label": "Google: fix problems importing calendar events",
+            "url": "https://support.google.com/calendar/answer/45654?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "time-zones-and-the-flight-you-booked",
+          "recover-deleted-calendar-events-iphone"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 9,
+        "paragraphs": 23,
+        "practical": 3,
+        "faq": 5,
+        "sources": 9
+      },
+      "decision": "current_comparator_full_read",
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": "src/app/content/en-US/articles-sharing.ts"
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": "src/app/content/en-US/articles-sharing.ts"
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "actualDefinition": "src/app/content/en-US/articles-google.ts"
+        },
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "actualDefinition": "src/app/content/en-US/articles-planning.ts"
+        },
+        {
+          "slug": "recover-deleted-calendar-events-iphone",
+          "actualDefinition": "src/app/content/en-US/articles-help.ts"
+        }
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "rawModuleSha256": "18cbad7be3bb206a45cb348df074a7e3319bf822484ca9cb2cb132440fac22ac",
+      "rawASTObjectSha256": "24db572668040c4d357f82c0db933bbbfd5fb76fec47c1129c7770ed521b0cd9",
+      "jsonStringifySha256": "e6daa223b1fea89aaf4b0da8fcb4088070cfba6e44d95cb9c5ff388f668c80cc",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
+        "short": "Kalenderexport und Sicherung",
+        "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
+        "lede": "Der Kalender auf Ihrem iPhone kann mehrere Konten anzeigen. Für eine brauchbare Kopie müssen Sie die Quelle kennen und entscheiden, ob Sie Ereignisdaten, einen lesbaren Zeitplan oder laufende Aktualisierungen brauchen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+        "sections": [
+          {
+            "heading": "Erst das Ergebnis, dann das Format wählen",
+            "body": [
+              "Ein Kalenderexport kann unterschiedliche Aufgaben erfüllen. Soll eine andere Kalender-App Ereignisdatensätze lesen, wählen Sie ein unterstütztes strukturiertes Format wie ICS. Für einen lesbaren Zeitplan eignet sich ein PDF oder Ausdruck. Für spätere Änderungen prüfen Sie ein Abonnement oder eine Freigabe mit Berechtigungen.",
+              "Ein PDF hält das gespeicherte Layout fest; es ist keine Importdatei für Termine. Eine heruntergeladene ICS-Datei enthält Daten zum Zeitpunkt des Downloads. Ein ICS-Abonnement verwendet eine Adresse, die der Kalender erneut abruft. Die Dateiendung allein unterscheidet nicht zwischen importierter Momentaufnahme und laufendem Abonnement.",
+              "Eine Wochenendreise als PDF lässt sich gut lesen. Ein Kollege, der Termine in ein anderes Konto überträgt, braucht Ereignisdaten. Ein Vereinsmitglied, das sich ändernde Spieltermine verfolgen möchte, braucht eine aktualisierte Quelle. Klären Sie das Ziel vor dem Versand."
+            ]
+          },
+          {
+            "heading": "Mit dem Konto beginnen, das die Termine enthält",
+            "body": [
+              "Identifizieren Sie auf dem iPhone Kalender und Konto mit den benötigten Ereignissen. Eine gemeinsame Ansicht kann mehrere Konten, Freigaben und Abonnements enthalten. Das macht daraus keinen einzelnen Quellkalender für den Export.",
+              "Für Google Kalender benötigen Sie einen Computer; die Google-Kalender-App bietet keinen Export. Öffnen Sie auf der Website „Settings“, „Import & export“ und „Export“. Die ZIP-Datei enthält einzelne ICS-Dateien. Für einen Kalender wählen Sie dessen „Settings and sharing“ und „Export calendar“. Google verlangt Berechtigung zur Verwaltung von Änderungen und Freigaben; auch eine Organisation kann den Export einschränken.",
+              "Ist der Kalender in Kalender auf dem Mac verfügbar, wählen Sie ihn in der Seitenleiste und nutzen „File > Export > Export“ für eine ICS-Datei. Dies ist ein Mac-Verfahren, kein versteckter iPhone-Befehl. Prüfen Sie vor dem Speichern den ausgewählten Kalender."
+            ]
+          },
+          {
+            "heading": "Wenn ein PDF-Zeitplan gebraucht wird",
+            "body": [
+              "Verwenden Sie in Kalender auf dem Mac „File > Print“ und wählen Sie Layout, Datumsbereich und Kalender. Im macOS-Druckdialog nutzen Sie das PDF-Menü und „Save as PDF“. Öffnen Sie das Ergebnis vor dem Versand: Ein kleines Raster kann wichtige Angaben abschneiden oder weglassen.",
+              "Nennen Sie im Begleittext den Zeitraum und die relevante Zeitzone. Prüfen Sie private Termine, Notizen und Orte vor der Weitergabe. Spätere Kalenderänderungen verändern kein bereits versandtes PDF. Kennzeichnen Sie eine überarbeitete Kopie eindeutig."
+            ]
+          },
+          {
+            "heading": "Abonnieren und Veröffentlichen ist keine Sicherung",
+            "body": [
+              "Microsoft unterscheidet für Outlook im Web ausdrücklich: Eine veröffentlichte ICS-Datei herunterzuladen und zu importieren erzeugt eine Kopie ohne spätere Aktualisierungen. Ein Abonnement der ICS-Adresse folgt Änderungen. Das Aktualisierungsintervall hängt vom Anbieter des Empfängers ab; der veröffentlichte Kalender ist schreibgeschützt.",
+              "Wo verfügbar, können Sie in Outlook über „Settings > Shared calendars > Publish a calendar“ Kalender und Detailgrad wählen. Veröffentlichung ermöglicht Ansicht oder Abonnement. Nutzen Sie das für eine beabsichtigte Zielgruppe, nicht als private Sicherung. Ein gespeicherter Link bleibt von der Verfügbarkeit der Quelle abhängig."
+            ]
+          },
+          {
+            "heading": "Was Cloud Calendars beim Teilen bereitstellt",
+            "body": [
+              "Wir entwickeln Cloud Calendars. Die Ereignisfreigabe bietet App Clip, E-Mail und QR-Code als Wege für Einladungslinks. Diese erfüllen einen anderen Zweck als der Download eines ganzen Kalenders. Ein Link kann zu einer Einladung oder einem Abonnement führen, ist aber kein portables Archiv aller angezeigten Kalender.",
+              "Dieser Leitfaden enthält keine Anleitung zum vollständigen ICS-, CSV- oder PDF-Export aus Cloud Calendars. Nutzen Sie dafür die dokumentierten Anbieter- oder Mac-Verfahren. Für einen einzelnen Termin hilft unser Freigabeleitfaden. Für einen laufenden gemeinsamen Zeitplan klären Sie zuerst, wer Zugriff, Aktualisierungen oder Bearbeitungsrechte braucht."
+            ]
+          },
+          {
+            "heading": "Eine Kopie prüfen, bevor Sie sich darauf verlassen",
+            "body": [
+              "Behalten Sie den Originalkalender während der Prüfung. Notieren Sie Konto, Kalendername und Exportdatum. Testen Sie einen Import nach Möglichkeit in einem eigenen Zielkalender. Vergleichen Sie einen normalen Termin, ein ganztägiges Ereignis und eine Serie mit einem geänderten Einzeltermin.",
+              "Eine Übertragung garantiert nicht den Erhalt aller Meetingfunktionen. Google weist darauf hin, dass importierte Ereignisse keine Gäste und Konferenzdaten enthalten und CSV-Wiederholungen zu einzelnen Terminen werden können. Prüfen Sie Einladungen, Meetinglinks und Wiederholungen vor Abschluss einer Migration.",
+              "Apple bietet auf dem Mac außerdem „File > Export > Calendar Archive“ für ein ICBU-Archiv. Das unterscheidet sich vom Export einer ICS-Datei. Apple warnt, dass ein Archivimport aktuelle Kalenderinformationen und Daten ersetzt. Verwenden Sie eine Archivwiederherstellung nicht als beiläufigen Importtest."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Bestimmen Sie Konto und Kalender sowie das Ziel: Momentaufnahme, Druckansicht oder aktualisiertes Abonnement.",
+          "Nutzen Sie den dokumentierten Exportweg und behalten Sie während der Prüfung das Original.",
+          "Prüfen Sie Ziel, sensible Angaben und repräsentative Termine vor Weitergabe oder Nutzung."
+        ],
+        "faq": [
+          {
+            "q": "Kann ich Google Kalender direkt aus seiner iPhone-App exportieren?",
+            "a": "Nein. Googles dokumentierter Export erfordert einen Computer sowie die passende Berechtigung zur Verwaltung der Freigaben."
+          },
+          {
+            "q": "Ist ein ICS-Abonnement eine Sicherung?",
+            "a": "Es folgt einer Quelle, die sich ändern oder wegfallen kann. Speichern Sie für eine datierte Kopie einen unabhängigen Export und prüfen Sie dessen Inhalt."
+          },
+          {
+            "q": "Soll ich ICS oder PDF wählen?",
+            "a": "ICS eignet sich für Ereignisdaten zum Import in einen kompatiblen Kalender. PDF eignet sich für einen lesbaren Zeitplan. Ein PDF liefert keine Aktualisierungen und stellt über die dokumentierten Importwege keine bearbeitbaren Termine wieder her."
+          }
+        ],
+        "sourcesHeading": "Offizielle Anleitungen und Formatgrenzen",
+        "sources": [
+          {
+            "label": "Google: Kalenderereignisse exportieren",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google: Ereignisse importieren und Übertragungsgrenzen",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple: ICS-Dateien und Kalenderarchive auf dem Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple: Dokumente auf dem Mac als PDF sichern",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft: Veröffentlichung, Import und Abonnement in Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "disconnect-calendar-integration-without-losing-track"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 15,
+        "practical": 3,
+        "faq": 3,
+        "sources": 5
+      },
+      "decision": "no_material_correction_required",
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": "src/app/content/de-DE/articles.ts"
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": null
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "actualDefinition": "src/app/content/de-DE/articles-google.ts"
+        },
+        {
+          "slug": "disconnect-calendar-integration-without-losing-track",
+          "actualDefinition": "src/app/content/de-DE/articles-help.ts"
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "rawModuleSha256": "7a3fc35865b658ad8a5e21017568fe9708b3a69bd2dd81b8e9bbd62ea8a5a4ac",
+      "rawASTObjectSha256": "0193cf1c9e154974dc3d013e9113b06cda42f25251ae93d554893c75a18e362f",
+      "jsonStringifySha256": "31c6b4605e97d96f0654ed919d61734ac7b7d116898f75b9b397215c21d53811",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Exportar un calendario: archivos ICS, PDF y suscripciones",
+        "short": "Exportación y copia de calendarios",
+        "description": "¿Necesitas un archivo de un calendario de tu iPhone? Elige ICS, PDF o una suscripción y sigue el proceso adecuado de Google, Mac u Outlook.",
+        "lede": "Un calendario en el iPhone puede mostrar varias cuentas. Para obtener una copia útil, identifica el origen y decide si necesitas datos de eventos, un horario legible o actualizaciones continuas.",
+        "sections": [
+          {
+            "heading": "Elige el resultado antes que el formato",
+            "body": [
+              "Exportar un calendario puede significar tareas distintas. Si quieres que otra app lea los registros de eventos, elige un formato estructurado compatible, como ICS. Si alguien necesita un horario legible, elige PDF o una página impresa. Si debe recibir cambios posteriores, estudia una suscripción o el uso compartido con permisos.",
+              "Un PDF conserva el diseño que guardaste; no es un archivo para importar eventos. Un ICS descargado contiene los datos del momento en que lo obtuviste. Una suscripción ICS usa una dirección que el cliente de calendario consulta de nuevo. La extensión por sí sola no indica si el destinatario importó una copia puntual o se suscribió a las actualizaciones.",
+              "Por ejemplo, un itinerario de fin de semana en PDF es fácil de leer. Un compañero que traslada citas a otra cuenta necesita datos de eventos. Un socio que sigue los encuentros cambiantes de un club el mes próximo necesita una fuente que se actualice. Decide qué resultado necesitas antes de enviar nada."
+            ]
+          },
+          {
+            "heading": "Empieza por la cuenta que contiene los eventos",
+            "body": [
+              "En el iPhone, identifica el calendario y la cuenta con los eventos que necesitas. Una vista conjunta puede incluir varias cuentas, calendarios compartidos y suscripciones. Verlos juntos no significa que exista un único calendario de origen que exportar.",
+              "Para Google Calendar, usa un ordenador: Google no permite exportar desde su app Calendar. En la web, abre «Settings», después «Import & export» y «Export». El ZIP descargado contiene archivos ICS individuales. Para un solo calendario, abre «Settings and sharing» y elige «Export calendar». Google exige permiso para gestionar cambios y uso compartido; una organización también puede restringir la exportación.",
+              "Para un calendario disponible en Calendario del Mac, selecciona su nombre en la barra lateral y usa «File > Export > Export» para guardar un ICS. Es un proceso del Mac, no un comando oculto del iPhone. Comprueba que has seleccionado el calendario correcto antes de guardar."
+            ]
+          },
+          {
+            "heading": "Cuando necesitas un horario en PDF",
+            "body": [
+              "En Calendario del Mac, usa «File > Print» y elige el diseño, el intervalo de fechas y los calendarios que incluir. En el cuadro de impresión de macOS, usa el menú «PDF» y «Save as PDF». Abre el resultado antes de enviarlo: una cuadrícula pequeña puede omitir o cortar detalles importantes para el destinatario.",
+              "Indica claramente el intervalo de fechas y la zona horaria pertinente en el mensaje que acompaña al documento. Revisa las citas privadas, notas y ubicaciones antes de compartir. Los cambios posteriores del calendario no reescriben un PDF ya enviado; identifica claramente las revisiones para que los destinatarios sepan qué horario seguir."
+            ]
+          },
+          {
+            "heading": "Suscribirse y publicar no equivale a hacer una copia de seguridad",
+            "body": [
+              "Microsoft documenta la diferencia en Outlook en la web: descargar e importar un ICS publicado crea una copia sin cambios posteriores; suscribirse a su dirección permite seguirlos. El tiempo de actualización depende del proveedor del destinatario, y el calendario publicado es de solo lectura.",
+              "Cuando esté disponible, «Settings > Shared calendars > Publish a calendar» de Outlook permite elegir calendario y nivel de detalle. Publicarlo lo expone para su consulta o suscripción; úsalo para un público previsto, no como técnica de copia privada. Un enlace guardado sigue dependiendo de que el origen permanezca disponible."
+            ]
+          },
+          {
+            "heading": "Qué ofrece el uso compartido de Cloud Calendars",
+            "body": [
+              "Desarrollamos Cloud Calendars. Su flujo para compartir eventos ofrece App Clip, correo electrónico y QR para entregar enlaces de invitación. Esos enlaces tienen una finalidad distinta a descargar todo el calendario en un archivo. Un enlace puede conducir a una invitación o suscripción; no es un archivo portátil de todos los calendarios que ves.",
+              "Esta guía no ofrece un procedimiento de Cloud Calendars para exportar calendarios completos a ICS, CSV o PDF. Para ello, usa las rutas documentadas del proveedor o del Mac anteriores. Para enviar un evento concreto, sigue nuestra guía de compartir eventos; para un calendario compartido continuo, decide primero quién debe acceder y si necesita actualizaciones o permisos de edición."
+            ]
+          },
+          {
+            "heading": "Comprueba la copia antes de depender de ella",
+            "body": [
+              "Conserva el calendario original mientras compruebas la exportación. Anota la cuenta, el nombre del calendario y la fecha de exportación. Si pruebas una importación, usa un calendario de destino separado cuando sea posible y compara una cita normal, un evento de todo el día y una serie recurrente con una ocurrencia modificada.",
+              "Transferir calendarios no garantiza conservar todas las funciones de las reuniones. Google indica que los eventos importados omiten invitados y datos de conferencias, y que las repeticiones CSV pueden convertirse en eventos individuales. Comprueba expresamente invitaciones, enlaces de reunión y recurrencias antes de dar por terminada la migración.",
+              "Apple también ofrece «File > Export > Calendar Archive» en el Mac, que genera un archivo ICBU. Es una operación distinta a exportar un ICS. Apple advierte de que importar un archivo de este tipo sustituye la información y los datos actuales del calendario; no uses su restauración como una prueba informal de importación."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifica la cuenta y el calendario necesarios y elige entre copia puntual, horario imprimible o suscripción actualizable.",
+          "Usa la ruta de exportación documentada y conserva el original mientras compruebas el resultado.",
+          "Revisa el destino, los datos sensibles y eventos representativos antes de enviar o confiar en la copia."
+        ],
+        "faq": [
+          {
+            "q": "¿Puedo exportar Google Calendar directamente desde su app de iPhone?",
+            "a": "No. El proceso de exportación documentado por Google requiere un ordenador. También necesitas el permiso adecuado para gestionar el uso compartido."
+          },
+          {
+            "q": "¿Suscribirme a una dirección ICS me proporciona una copia de seguridad?",
+            "a": "Una suscripción sigue un origen que puede cambiar o dejar de estar disponible. Guarda una exportación independiente si necesitas una copia fechada y verifica qué conserva el archivo."
+          },
+          {
+            "q": "¿Debo elegir ICS o PDF?",
+            "a": "Elige ICS para datos de eventos que un calendario compatible pueda importar. Elige PDF para un horario legible. Un PDF no ofrece actualizaciones ni reconstruye eventos editables mediante los procesos de importación documentados."
+          }
+        ],
+        "sourcesHeading": "Instrucciones oficiales y límites de los formatos",
+        "sources": [
+          {
+            "label": "Google: exportar eventos del calendario",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google: importar eventos y límites de transferencia",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple: exportar archivos ICS y archivos de calendario en Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple: guardar un documento como PDF en Mac",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft: publicar, importar y suscribirse en Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "disconnect-calendar-integration-without-losing-track"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 15,
+        "practical": 3,
+        "faq": 3,
+        "sources": 5
+      },
+      "decision": "no_material_correction_required",
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": "src/app/content/es-ES/articles.ts"
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": null
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "actualDefinition": "src/app/content/es-ES/articles-google.ts"
+        },
+        {
+          "slug": "disconnect-calendar-integration-without-losing-track",
+          "actualDefinition": "src/app/content/es-ES/articles-help.ts"
+        }
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "rawModuleSha256": "0efdd3c51bf9d420f111016490cff190bc8c5959b78e0e97c4babbc5ce8462a5",
+      "rawASTObjectSha256": "3abdb81b018b60640018795d1db57139d77eca1a80778f44a2ba4353cfeacbc6",
+      "jsonStringifySha256": "49513823a57330044c8a2d37b44c37898035d2dfb23305031a0cf50d7e0fa279",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Exporter un calendrier : fichiers ICS, PDF et abonnements",
+        "short": "Export et sauvegarde du calendrier",
+        "description": "Besoin d’un fichier de calendrier ? Choisissez ICS, PDF ou un abonnement, puis la procédure adaptée dans Google, sur Mac ou dans Outlook.",
+        "lede": "Le calendrier de votre iPhone peut afficher plusieurs comptes. Pour obtenir une copie utile, identifiez la source et choisissez entre données d’événements, planning lisible et mises à jour continues. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
+        "sections": [
+          {
+            "heading": "Choisir le résultat avant le format",
+            "body": [
+              "Exporter un calendrier peut répondre à plusieurs besoins. Pour transmettre des enregistrements à une autre app, choisissez un format structuré compatible, comme ICS. Pour un planning lisible, choisissez un PDF ou une impression. Pour recevoir les changements futurs, examinez un abonnement ou un partage avec autorisations.",
+              "Un PDF conserve la mise en page enregistrée ; ce n’est pas un fichier d’importation d’événements. Un ICS téléchargé contient les données au moment de son obtention. Un abonnement ICS utilise une adresse que le logiciel consulte de nouveau. L’extension seule ne dit pas si le destinataire a importé une copie ou s’est abonné aux changements.",
+              "Un itinéraire de week-end en PDF se lit facilement. Un collègue qui transfère des rendez-vous vers un autre compte a besoin des données d’événements. Un membre de club qui suit des rencontres susceptibles de changer a besoin d’une source actualisée. Déterminez ce résultat avant tout envoi."
+            ]
+          },
+          {
+            "heading": "Commencer par le compte qui contient les événements",
+            "body": [
+              "Sur l’iPhone, identifiez le calendrier et le compte concernés. Une vue combinée peut contenir plusieurs comptes, calendriers partagés et abonnements. Les voir ensemble ne signifie pas qu’ils forment un seul calendrier source à exporter.",
+              "Pour Google Agenda, utilisez un ordinateur : son app ne propose pas l’exportation. Sur le site, ouvrez « Settings », puis « Import & export » et « Export ». Le ZIP téléchargé contient des fichiers ICS individuels. Pour un seul calendrier, ouvrez ses « Settings and sharing » puis « Export calendar ». Google exige le droit de gérer les modifications et le partage ; une organisation peut aussi restreindre l’exportation.",
+              "Pour un calendrier disponible dans Calendrier sur Mac, sélectionnez son nom dans la barre latérale puis « File > Export > Export » afin de créer un ICS. C’est une procédure Mac, pas une commande cachée sur iPhone. Vérifiez le calendrier sélectionné avant d’enregistrer."
+            ]
+          },
+          {
+            "heading": "Quand un planning PDF est nécessaire",
+            "body": [
+              "Dans Calendrier sur Mac, utilisez « File > Print » et choisissez la présentation, la période et les calendriers inclus. Dans la boîte d’impression de macOS, utilisez le menu PDF et « Save as PDF ». Ouvrez le résultat avant de l’envoyer : une petite grille peut omettre ou tronquer des détails utiles.",
+              "Précisez la période et le fuseau horaire dans le message accompagnant le document. Relisez les rendez-vous privés, notes et lieux avant partage. Des modifications ultérieures ne réécrivent pas un PDF déjà envoyé ; identifiez clairement une copie révisée."
+            ]
+          },
+          {
+            "heading": "Abonnement et publication ne sont pas une sauvegarde",
+            "body": [
+              "Microsoft distingue explicitement les deux usages dans Outlook sur le Web : télécharger puis importer un ICS publié crée une copie sans mises à jour futures ; s’abonner à son adresse suit les changements. La fréquence dépend du fournisseur du destinataire, et le calendrier publié est en lecture seule.",
+              "Lorsque cette option est disponible, « Settings > Shared calendars > Publish a calendar » dans Outlook permet de choisir calendrier et niveau de détail. Publier l’expose à la consultation ou à l’abonnement. Utilisez cela pour une audience prévue, pas comme technique de sauvegarde privée. Un lien enregistré dépend toujours de la disponibilité de sa source."
+            ]
+          },
+          {
+            "heading": "Ce que propose le partage de Cloud Calendars",
+            "body": [
+              "Nous développons Cloud Calendars. Le partage d’événements propose App Clip, e-mail et QR pour transmettre des liens d’invitation. Ces liens servent un autre objectif que télécharger un calendrier entier. Ils peuvent ouvrir une invitation ou un abonnement, mais ne constituent pas une archive portable de tous les calendriers affichés.",
+              "Ce guide ne propose pas de procédure d’exportation complète en ICS, CSV ou PDF depuis Cloud Calendars. Utilisez les méthodes documentées du fournisseur ou du Mac. Pour un événement précis, consultez notre guide de partage ; pour un planning commun suivi dans le temps, décidez qui a besoin d’accès, de mises à jour ou de droits de modification."
+            ]
+          },
+          {
+            "heading": "Vérifier une copie avant de s’y fier",
+            "body": [
+              "Conservez le calendrier original pendant la vérification. Notez compte, nom du calendrier et date d’exportation. Pour tester un import, utilisez si possible un calendrier de destination distinct, puis comparez un rendez-vous ordinaire, un événement sur toute la journée et une série avec une occurrence modifiée.",
+              "Un transfert ne garantit pas la conservation de toutes les fonctions de réunion. Google indique que les événements importés omettent invités et données de conférence, et que les récurrences CSV peuvent devenir des événements ponctuels séparés. Vérifiez invitations, liens de réunion et répétitions avant de considérer la migration comme terminée.",
+              "Apple propose aussi « File > Export > Calendar Archive » sur Mac, qui produit une archive ICBU. Cette opération diffère de l’export d’un ICS. Apple avertit que l’importation d’une archive remplace les informations et données actuelles du calendrier. N’utilisez pas une restauration d’archive comme simple essai d’importation."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifiez compte et calendrier, puis choisissez une copie datée, un planning imprimable ou un abonnement actualisé.",
+          "Utilisez la procédure documentée et conservez l’original pendant la vérification.",
+          "Vérifiez destination, données sensibles et événements représentatifs avant partage ou utilisation."
+        ],
+        "faq": [
+          {
+            "q": "Puis-je exporter Google Agenda directement depuis son app iPhone ?",
+            "a": "Non. La procédure documentée par Google nécessite un ordinateur et l’autorisation appropriée de gestion du partage."
+          },
+          {
+            "q": "Un abonnement ICS constitue-t-il une sauvegarde ?",
+            "a": "Il suit une source qui peut changer ou disparaître. Pour une copie datée, enregistrez un export indépendant et vérifiez ce qu’il conserve."
+          },
+          {
+            "q": "Faut-il choisir ICS ou PDF ?",
+            "a": "ICS convient aux données importables dans un calendrier compatible. PDF convient à un planning lisible. Un PDF ne fournit pas de mises à jour et ne reconstitue pas des événements modifiables par les procédures d’importation documentées."
+          }
+        ],
+        "sourcesHeading": "Instructions officielles et limites des formats",
+        "sources": [
+          {
+            "label": "Google : exporter des événements de calendrier",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google : importation et limites des transferts",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple : fichiers ICS et archives de calendrier sur Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple : enregistrer un document en PDF sur Mac",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft : publication, importation et abonnement dans Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "disconnect-calendar-integration-without-losing-track"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 15,
+        "practical": 3,
+        "faq": 3,
+        "sources": 5
+      },
+      "decision": "no_material_correction_required",
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": "src/app/content/fr-FR/articles.ts"
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": null
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "actualDefinition": "src/app/content/fr-FR/articles-google.ts"
+        },
+        {
+          "slug": "disconnect-calendar-integration-without-losing-track",
+          "actualDefinition": "src/app/content/fr-FR/articles-help.ts"
+        }
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/it/articles-help.ts",
+      "rawModuleSha256": "abdd4c921183c4c64859bf5d04a0d5fe741a36cc6210415614ac7db945b7646c",
+      "rawASTObjectSha256": "d47dd47180c78d0bb636516a7b746edc6dca5f7b3faf41a67b4e2e933d29c909",
+      "jsonStringifySha256": "77d4e8cb9c77dfdb583e41b8a0bbd8dfe3cce0b51ea3dc775ae6e2408b4c0186",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Esportare un calendario: file ICS, PDF e iscrizioni",
+        "short": "Esportazione e backup dei calendari",
+        "description": "Ti serve un file del calendario di un account su iPhone? Scegli ICS, PDF o un’iscrizione e segui la procedura adatta di Google, Mac o Outlook.",
+        "lede": "Un calendario su iPhone può mostrare più account. Per ottenere una copia utile, identifica l’origine e decidi se ti servono dati degli eventi, un programma leggibile o aggiornamenti continui.",
+        "sections": [
+          {
+            "heading": "Scegli il risultato prima del formato",
+            "body": [
+              "Esportare un calendario può indicare lavori diversi. Se vuoi che un’altra app legga i dati degli eventi, scegli un formato strutturato supportato come ICS. Se qualcuno ha bisogno di un programma leggibile, scegli PDF o una pagina stampata. Se deve ricevere modifiche successive, valuta un’iscrizione o la condivisione con permessi.",
+              "Un PDF registra l’impaginazione salvata; non è un file per importare eventi. Un ICS scaricato contiene i dati del calendario al momento in cui lo hai ottenuto. Un’iscrizione ICS usa un indirizzo che il client ricontrolla. La sola estensione non dice se il destinatario abbia importato una copia statica o si sia iscritto agli aggiornamenti.",
+              "Per esempio, un itinerario del fine settimana in PDF è facile da leggere. Un collega che trasferisce appuntamenti a un altro account ha bisogno dei dati degli eventi. Il socio di un club che segue il programma variabile del prossimo mese ha bisogno di una fonte aggiornata. Decidi quale risultato ti serve prima di inviare qualcosa."
+            ]
+          },
+          {
+            "heading": "Parti dall’account che contiene gli eventi",
+            "body": [
+              "Su iPhone identifica il calendario e l’account che contengono gli eventi necessari. Una vista combinata può comprendere più account, calendari condivisi e iscrizioni. Vederli insieme non significa che ci sia un unico calendario di origine da esportare.",
+              "Per Google Calendar usa un computer: Google non offre l’esportazione dalla sua app Calendar. Sul web apri «Settings», poi «Import & export» e «Export». Lo ZIP scaricato contiene singoli file ICS. Per un calendario, apri «Settings and sharing» e scegli «Export calendar». Google richiede il permesso di gestire modifiche e condivisione; un’organizzazione può anche limitare l’esportazione.",
+              "Per un calendario disponibile in Calendario sul Mac, seleziona il nome nella barra laterale e usa «File > Export > Export» per salvare un ICS. È una procedura per Mac, non un comando nascosto su iPhone. Verifica di aver selezionato il calendario desiderato prima di salvare."
+            ]
+          },
+          {
+            "heading": "Quando serve un programma in PDF",
+            "body": [
+              "In Calendario sul Mac usa «File > Print» e scegli impaginazione, intervallo di date e calendari da includere. Nella finestra di stampa di macOS usa il menu «PDF» e «Save as PDF». Apri il risultato prima di inviarlo: una griglia piccola può omettere o troncare dettagli importanti per il destinatario.",
+              "Indica chiaramente intervallo di date e fuso orario pertinente nel messaggio che accompagna il documento. Controlla appuntamenti privati, note e luoghi prima di condividere. Le modifiche successive al calendario non riscrivono un PDF già inviato: identifica chiaramente una copia aggiornata, così chi la riceve sa quale programma seguire."
+            ]
+          },
+          {
+            "heading": "Iscrizione e pubblicazione sono diverse dal backup",
+            "body": [
+              "Microsoft documenta la differenza per Outlook sul web: scaricare e importare un ICS pubblicato crea una copia senza aggiornamenti successivi; iscriversi al suo indirizzo permette di seguirne i cambiamenti. La frequenza di aggiornamento dipende dal provider del destinatario e il calendario pubblicato è di sola lettura.",
+              "Dove disponibile, «Settings > Shared calendars > Publish a calendar» in Outlook consente di scegliere calendario e livello di dettaglio. Pubblicare lo rende accessibile per consultazione o iscrizione: usalo per un pubblico previsto, non come tecnica di backup privato. Un link salvato dipende ancora dalla disponibilità dell’origine."
+            ]
+          },
+          {
+            "heading": "Cosa offre la condivisione di Cloud Calendars",
+            "body": [
+              "Sviluppiamo Cloud Calendars. Il suo flusso di condivisione degli eventi offre App Clip, email e QR per distribuire link di invito. Questi link hanno uno scopo diverso dallo scaricare tutto il calendario come file. Un link può portare a un invito o a un’iscrizione; non è di per sé un archivio portatile di tutti i calendari visibili.",
+              "Questa guida non offre una procedura di Cloud Calendars per esportare un intero calendario in ICS, CSV o PDF. Per queste attività usa le procedure documentate del provider o del Mac indicate sopra. Per inviare un singolo evento segui la nostra guida alla condivisione; per un programma condiviso continuativo decidi prima chi deve accedere e se servono aggiornamenti o diritti di modifica."
+            ]
+          },
+          {
+            "heading": "Controlla una copia prima di farci affidamento",
+            "body": [
+              "Conserva il calendario originale mentre controlli l’esportazione. Annota account, nome del calendario e data di esportazione. Se provi un’importazione, usa un calendario di destinazione separato quando possibile, poi confronta un appuntamento normale, un evento di tutto il giorno e una serie ricorrente con un’occorrenza modificata.",
+              "Il trasferimento non promette di conservare ogni funzione delle riunioni. Google afferma che gli eventi importati omettono invitati e dati delle conferenze e che le ricorrenze CSV possono diventare singoli eventi non ripetuti. Controlla esplicitamente inviti, link delle riunioni e ricorrenze prima di considerare conclusa la migrazione.",
+              "Apple offre anche «File > Export > Calendar Archive» sul Mac, che produce un archivio ICBU. È un’operazione diversa dall’esportazione di un ICS. Apple avverte che importare un archivio sostituisce le informazioni e i dati attuali del calendario: non usare il ripristino di un archivio come una semplice prova di importazione."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifica account e calendario necessari, poi scegli tra copia statica, programma stampabile o iscrizione aggiornata.",
+          "Usa la procedura di esportazione documentata e conserva l’originale mentre controlli il risultato.",
+          "Controlla destinazione, dettagli sensibili ed eventi rappresentativi prima di inviare o affidarti alla copia."
+        ],
+        "faq": [
+          {
+            "q": "Posso esportare Google Calendar direttamente dalla sua app per iPhone?",
+            "a": "No. La procedura documentata da Google richiede un computer. Per esportare serve anche il permesso appropriato per gestire la condivisione."
+          },
+          {
+            "q": "Iscrivermi a un indirizzo ICS mi dà un backup?",
+            "a": "Un’iscrizione segue un’origine che può cambiare o diventare indisponibile. Salva un’esportazione indipendente se ti serve una copia datata e verifica ciò che il file conserva."
+          },
+          {
+            "q": "Devo scegliere ICS o PDF?",
+            "a": "Scegli ICS per dati di eventi importabili da un calendario compatibile. Scegli PDF per un programma leggibile. Un PDF non fornisce aggiornamenti né ricostruisce eventi modificabili tramite le procedure di importazione documentate."
+          }
+        ],
+        "sourcesHeading": "Istruzioni ufficiali e limiti dei formati",
+        "sources": [
+          {
+            "label": "Google: esportare eventi del calendario",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google: importare eventi e limiti del trasferimento",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple: esportare file ICS e archivi del calendario su Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple: salvare un documento come PDF su Mac",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft: pubblicare, importare e iscriversi in Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "disconnect-calendar-integration-without-losing-track"
+        ]
+      },
+      "completeRead": true,
+      "structure": {
+        "sections": 6,
+        "paragraphs": 15,
+        "practical": 3,
+        "faq": 3,
+        "sources": 5
+      },
+      "decision": "no_material_correction_required",
+      "related": [
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "actualDefinition": "src/app/content/it/articles.ts"
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "actualDefinition": null
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "actualDefinition": "src/app/content/it/articles-google.ts"
+        },
+        {
+          "slug": "disconnect-calendar-integration-without-losing-track",
+          "actualDefinition": "src/app/content/it/articles-help.ts"
+        }
+      ]
+    }
+  ],
+  "absent": [
+    {
+      "locale": "de-DE",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "reason": "No actual definition in any current locale articles*.ts module; no edition created."
+    },
+    {
+      "locale": "es-ES",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "reason": "No actual definition in any current locale articles*.ts module; no edition created."
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "reason": "No actual definition in any current locale articles*.ts module; no edition created."
+    },
+    {
+      "locale": "it",
+      "slug": "recover-deleted-calendar-events-iphone",
+      "reason": "No actual definition in any current locale articles*.ts module; no edition created."
+    }
+  ],
+  "definitionScan": [
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "rawModuleSha256": "2457ecd3845aa25ffaa376a52825da334f1f73dae0a871b83f18364c7d40fbd5"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7fba09bd3f72ac722dd3ad47a2cd1cf823c804d66aab48da375494e7907987f3"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "rawModuleSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "rawModuleSha256": "bbdc19d1b8025dc1eda84b3e99e033e9b57b94ebc75dbcb7d05294f6757ad686"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "rawModuleSha256": "280381c276c7f4923730c816861a84db5904fa29458187b1da117d34a0c29e6a"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "rawModuleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415"
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "rawModuleSha256": "dffb03e43a84f5786e29ff85b98fc53badd50a3eacba6aa6068adb8a003bb3b3"
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles-google.ts",
+      "rawModuleSha256": "1c975778aa34712dff5b4f5e7bf9baab3d6ca13c50ef07c00206b5499699cd7e"
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "rawModuleSha256": "18cbad7be3bb206a45cb348df074a7e3319bf822484ca9cb2cb132440fac22ac"
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles.ts",
+      "rawModuleSha256": "a4e1e68284d679e815185db4c1f934940c40428012472ef6c73251760b1b04dd"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles-google.ts",
+      "rawModuleSha256": "92102c0e3801d4510987e8a82b085583dc53f1b239d35164fd391f3fb90300f1"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "rawModuleSha256": "7a3fc35865b658ad8a5e21017568fe9708b3a69bd2dd81b8e9bbd62ea8a5a4ac"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles.ts",
+      "rawModuleSha256": "c3a216e4c262ae649ec37a41d648ac6629e3b134fb7e7211fb28096474a79a61"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles-google.ts",
+      "rawModuleSha256": "3024771b25f5247e65f4a524a5a544e764c0d854b25abb03e2a7c3cce5b3b151"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "rawModuleSha256": "0efdd3c51bf9d420f111016490cff190bc8c5959b78e0e97c4babbc5ce8462a5"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "rawModuleSha256": "d3e4438bc57d8f01b654c5eb35178836b99413902a623fe35a818f582bd336b2"
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/it/articles-google.ts",
+      "rawModuleSha256": "a721781d0ce18d5cda21cb91764f98a6558d06408a7b420720dc878bd486a13f"
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/it/articles-help.ts",
+      "rawModuleSha256": "abdd4c921183c4c64859bf5d04a0d5fe741a36cc6210415614ac7db945b7646c"
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/it/articles.ts",
+      "rawModuleSha256": "e2661bcf7aa530506aeab83b6a5531209e3fe4d70d0add62f3e20b141691e5d4"
+    }
+  ],
+  "semanticFindings": [
+    {
+      "scope": "All four localized export guides",
+      "decision": "pass",
+      "detail": "Account-source identification, computer-only Google export and sharing-management permission retained; organisation restrictions explicit. Mac ICS/PDF/ICBU controls correctly attributed, not invented iPhone or Cloud buttons."
+    },
+    {
+      "scope": "All four localized export guides",
+      "decision": "pass",
+      "detail": "PDF snapshot vs ICS imported copy vs updating subscription distinguished. Outlook read-only publishing and recipient-dependent refresh retained; no arbitrary edit access or instant updates guaranteed."
+    },
+    {
+      "scope": "All four localized export guides",
+      "decision": "pass",
+      "detail": "Keep originals, inspect representative ordinary/all-day/changed recurrence, guests/conference loss and CSV recurrence limitations retained. ICBU restore explicitly replaces current information and is not a casual test import."
+    },
+    {
+      "scope": "All four localized export guides",
+      "decision": "pass",
+      "detail": "Cloud sharing invitation links are not whole-calendar portable exports. App Clip/email/QR phrasing does not assert a universal no-install or whole-calendar-export capability."
+    }
+  ],
+  "scopeDrift": {
+    "status": "older_but_not_materially_misleading_within_stated_scope",
+    "allFourOmitCurrentEnglish": [
+      "BusyCal iOS CSV workflow section",
+      "Subscription-stops-updating diagnostics, intermediary refresh and private-feed disclosure section",
+      "Google ownership handoff section",
+      "One-hour offset FAQ",
+      "Google processed-zero-events FAQ"
+    ],
+    "interpretation": "These are useful later EN extensions, not corrections to false localized instructions. No localized title claims CSV export or comprehensive provider ownership/recovery instructions. Date21 is truthful version history; do not update date alone or mandate four full rewrites merely for parity.",
+    "recovery": "Current EN recovery is a distinct seven-section Google/iCloud procedure. None of four requested locales defines it; absence recorded, not permission to generate routes."
+  },
+  "requiredCorrections": [],
+  "optionalFutureWork": "If a later task deliberately expands localized export coverage, translate the approved diagnostic/ownership additions into these existing canonical guides with their exact provider scope. No new synonym page needed.",
+  "hashMethod": "SHA256 raw module bytes, raw TypeScript AST initializer text, and UTF8 JSON.stringify object in existing property order separately.",
+  "limits": [
+    "Bounded own-language editorial comparison, not native-speaker/runtime/released-version certification.",
+    "No fresh provider fetch needed: no concrete questionable new provider assertion found; authoritative current EN and already established research boundaries used.",
+    "No source edits, new routes, builds, deployment, native, ASC or customer operations."
+  ],
+  "relatedConsumerCheck": {
+    "file": "src/app/pages/article-page/article-page.component.ts",
+    "lines": "70–76",
+    "finding": "inviting-people-who-do-not-have-the-app has no actual definition in these four locales. Consumer filters entries absent from content.articles before rendering; no broken localized link is produced. Stale non-rendered seeAlso entry is optional housekeeping, not a material body or restore/access defect."
+  }
+}

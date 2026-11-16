@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-21",
+  "scope": {
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "slugs": [
+      "work-and-personal-without-two-apps",
+      "when-two-calendars-disagree"
+    ],
+    "locales": [
+      "en-US"
+    ],
+    "localeDiscovery": "Exact slug search across src/app/content found article objects only in en-US/articles-unify.ts; no other existing locale versions to correct.",
+    "unrelatedObjectsPreservedByteForByte": [
+      "icloud-google-and-outlook-in-one-view",
+      "three-calendar-apps-is-two-too-many",
+      "what-calendar-sync-actually-does",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "corrections": [
+    "Removed universal last-write-wins and no-repair-needed assertions.",
+    "Removed assertion that deleting any duplicate removes both copies.",
+    "Added hide-first ownership, organiser, time-zone and recurrence diagnosis.",
+    "Qualified provider/client-specific conflicts and edit permissions.",
+    "Removed paid cross-account-management claim and price claim row.",
+    "Corrected Advanced/Premium feature distinction and qualified workplace connection requirements."
+  ],
+  "sources": [
+    {
+      "label": "Apple: If you have duplicate events on your iCloud Calendar",
+      "url": "https://support.apple.com/en-us/102180",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    },
+    {
+      "label": "Apple: If your iCloud calendars won’t sync",
+      "url": "https://support.apple.com/en-us/102543",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    },
+    {
+      "label": "Apple: Set up multiple calendars on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    },
+    {
+      "label": "Google: Choose what others can do with your calendar",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    },
+    {
+      "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    },
+    {
+      "label": "Microsoft: Outlook shows conflict errors when updating or cancelling meetings",
+      "url": "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings",
+      "checked": "2026-10-21",
+      "type": "primary_support"
+    }
+  ],
+  "productEvidence": [
+    "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+    "/Users/minchomilev/work/hrapp/Calendar/Subscription/AdvanceSubscriptionView.swift",
+    "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+    "research/product-facts.json"
+  ],
+  "validation": {
+    "typescriptTranspile": "passed",
+    "untargetedArticleObjectComparison": "passed",
+    "runtimeTests": "not performed",
+    "build": "not run",
+    "deployment": "not performed"
+  },
+  "notes": [
+    "Microsoft historical conflict page used as a bounded example, not as evidence of a current universal bug.",
+    "Native source inspection is not runtime verification.",
+    "No shared article-facts, native code, home files, ASC or prices changed in this correction."
+  ]
+}

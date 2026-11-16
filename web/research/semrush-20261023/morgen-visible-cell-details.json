@@ -1,0 +1,832 @@
+[
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze schedule builder in Keyword Overview",
+          "text": "schedule builder",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=schedule%20builder&currency=usd"
+        }
+      ],
+      "text": "schedule builder"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [],
+      "text": "3"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for schedule builder",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=schedule+builder&domain=morgen.so&db=us&date=20261021&position=3&type=organic&serpId=b-f-97-1020-2932483483017983362"
+        }
+      ],
+      "text": "5"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "4K"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "21.35"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "90.5K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "13"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/schedule-builder",
+          "text": "www.morgen.so/schedule-builder",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fschedule-builder&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/schedule-builder",
+          "text": "",
+          "url": "https://www.morgen.so/schedule-builder"
+        }
+      ],
+      "text": "www.morgen.so/schedule-builder"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "3 days"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze morgen calendar in Keyword Overview",
+          "text": "morgen calendar",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=morgen%20calendar&currency=usd"
+        }
+      ],
+      "text": "morgen calendar"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "N"
+    },
+    {
+      "column": "4",
+      "links": [
+        {
+          "label": "Current position: Sitelinks",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/organic/positions/?db=us&q=morgen.so&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A6%7D%2C%22advanced%22%3A%7B%7D%7D"
+        }
+      ],
+      "text": "1"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for morgen calendar",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=morgen+calendar&domain=morgen.so&db=us&date=20261021&position=1&type=organic&serpId=b-e-97-0829-13846916195017754082"
+        }
+      ],
+      "text": "8"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "704"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "3.77"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "880"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "32"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/",
+          "text": "www.morgen.so/",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2F&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/",
+          "text": "",
+          "url": "https://www.morgen.so/"
+        }
+      ],
+      "text": "www.morgen.so/"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Aug 30"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze schedule builder in Keyword Overview",
+          "text": "schedule builder",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=schedule%20builder&currency=usd"
+        }
+      ],
+      "text": "schedule builder"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [
+        {
+          "label": "Current position: AI Overview",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/organic/positions/?db=us&q=morgen.so&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D"
+        }
+      ],
+      "text": ""
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for schedule builder",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=schedule+builder&domain=morgen.so&db=us&date=20261021&position=1&type=ai-overview&serpId=b-f-97-1020-2932483483017983362"
+        }
+      ],
+      "text": "5"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "470"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "2.52"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "90.5K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "13"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/schedule-builder",
+          "text": "www.morgen.so/schedule-builder",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fschedule-builder&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/schedule-builder",
+          "text": "",
+          "url": "https://www.morgen.so/schedule-builder"
+        }
+      ],
+      "text": "www.morgen.so/schedule-builder"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "3 days"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze schedule builder in Keyword Overview",
+          "text": "schedule builder",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=schedule%20builder&currency=usd"
+        }
+      ],
+      "text": "schedule builder"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [],
+      "text": "12"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for schedule builder",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=schedule+builder&domain=morgen.so&db=us&date=20261021&position=12&type=organic&serpId=b-f-97-1020-2932483483017983362"
+        }
+      ],
+      "text": "5"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "452"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "2.42"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "90.5K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "13"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/schedule-builder",
+          "text": "www.morgen.so/schedule-builder",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fschedule-builder&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/schedule-builder",
+          "text": "",
+          "url": "https://www.morgen.so/schedule-builder"
+        }
+      ],
+      "text": "www.morgen.so/schedule-builder"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "3 days"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze 20 minute timer in Keyword Overview",
+          "text": "20 minute timer",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=20%20minute%20timer&currency=usd"
+        }
+      ],
+      "text": "20 minute timer"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [],
+      "text": "25"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for 20 minute timer",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=20+minute+timer&domain=morgen.so&db=us&date=20261021&position=25&type=organic&serpId=b-g-97-1019-15068342288230461414"
+        }
+      ],
+      "text": "4"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "369"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.97"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "246K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "44"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/pomodoro-timer",
+          "text": "www.morgen.so/pomodoro-timer",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fpomodoro-timer&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/pomodoro-timer",
+          "text": "",
+          "url": "https://www.morgen.so/pomodoro-timer"
+        }
+      ],
+      "text": "www.morgen.so/pomodoro-timer"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "3 days"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze fantastical in Keyword Overview",
+          "text": "fantastical",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=fantastical&currency=usd"
+        }
+      ],
+      "text": "fantastical"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [],
+      "text": "4"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for fantastical",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=fantastical&domain=morgen.so&db=us&date=20261021&position=4&type=organic&serpId=b-f-97-1018-15328705587460529711"
+        }
+      ],
+      "text": "5"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "363"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.94"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "12.1K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "41"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/blog-posts/fantastical-pricing",
+          "text": "www.morgen.so/blog-posts/fantastical-pricing",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fblog-posts%2Ffantastical-pricing&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/blog-posts/fantastical-pricing",
+          "text": "",
+          "url": "https://www.morgen.so/blog-posts/fantastical-pricing"
+        }
+      ],
+      "text": "www.morgen.so/blog-posts/fantastical-pricing"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Oct 19"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze schedule calendar in Keyword Overview",
+          "text": "schedule calendar",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=schedule%20calendar&currency=usd"
+        }
+      ],
+      "text": "schedule calendar"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [
+        {
+          "label": "Current position: AI Overview",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/organic/positions/?db=us&q=morgen.so&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D"
+        }
+      ],
+      "text": ""
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for schedule calendar",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=schedule+calendar&domain=morgen.so&db=us&date=20261021&position=1&type=ai-overview&serpId=b-f-97-0908-11170078660440348274"
+        }
+      ],
+      "text": "6"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "313"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.67"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "1.6K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "93"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/schedule-builder",
+          "text": "www.morgen.so/schedule-builder",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fschedule-builder&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/schedule-builder",
+          "text": "",
+          "url": "https://www.morgen.so/schedule-builder"
+        }
+      ],
+      "text": "www.morgen.so/schedule-builder"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Sep 08"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze morgen calendar app in Keyword Overview",
+          "text": "morgen calendar app",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=morgen%20calendar%20app&currency=usd"
+        }
+      ],
+      "text": "morgen calendar app"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "N"
+    },
+    {
+      "column": "4",
+      "links": [
+        {
+          "label": "Current position: Sitelinks",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/organic/positions/?db=us&q=morgen.so&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A6%7D%2C%22advanced%22%3A%7B%7D%7D"
+        }
+      ],
+      "text": "1"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for morgen calendar app",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=morgen+calendar+app&domain=morgen.so&db=us&date=20261021&position=1&type=organic&serpId=b-f-97-0828-11769333509539691995"
+        }
+      ],
+      "text": "6"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "208"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.11"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "260"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "36"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/",
+          "text": "www.morgen.so/",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2F&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/",
+          "text": "",
+          "url": "https://www.morgen.so/"
+        }
+      ],
+      "text": "www.morgen.so/"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Aug 28"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze phone planner in Keyword Overview",
+          "text": "phone planner",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=phone%20planner&currency=usd"
+        }
+      ],
+      "text": "phone planner"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "C"
+    },
+    {
+      "column": "4",
+      "links": [],
+      "text": "8"
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for phone planner",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=phone+planner&domain=morgen.so&db=us&date=20261021&position=8&type=organic&serpId=b-g-97-1017-14755111436594738679"
+        }
+      ],
+      "text": "7"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "199"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.06"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "22.2K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "57"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/",
+          "text": "www.morgen.so/",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2F&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/",
+          "text": "",
+          "url": "https://www.morgen.so/"
+        }
+      ],
+      "text": "www.morgen.so/"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Oct 18"
+    }
+  ],
+  [
+    {
+      "column": "1",
+      "links": [],
+      "text": ""
+    },
+    {
+      "column": "2",
+      "links": [
+        {
+          "label": "Analyze calendar schedule in Keyword Overview",
+          "text": "calendar schedule",
+          "url": "https://www.semrush.com/analytics/keywordoverview/?db=us&device=0&q=calendar%20schedule&currency=usd"
+        }
+      ],
+      "text": "calendar schedule"
+    },
+    {
+      "column": "3",
+      "links": [],
+      "text": "I"
+    },
+    {
+      "column": "4",
+      "links": [
+        {
+          "label": "Current position: AI Overview",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/organic/positions/?db=us&q=morgen.so&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D"
+        }
+      ],
+      "text": ""
+    },
+    {
+      "column": "5",
+      "links": [
+        {
+          "label": "Go to SERP for calendar schedule",
+          "text": "",
+          "url": "https://www.semrush.com/analytics/serp?phrase=calendar+schedule&domain=morgen.so&db=us&date=20261021&position=1&type=ai-overview&serpId=b-i-97-0913-15836660832507010855"
+        }
+      ],
+      "text": "7"
+    },
+    {
+      "column": "6",
+      "links": [],
+      "text": "196"
+    },
+    {
+      "column": "7",
+      "links": [],
+      "text": "1.05"
+    },
+    {
+      "column": "8",
+      "links": [],
+      "text": "1K"
+    },
+    {
+      "column": "9",
+      "links": [],
+      "text": "83"
+    },
+    {
+      "column": "10",
+      "links": [
+        {
+          "label": "Analyze www.morgen.so/schedule-builder",
+          "text": "www.morgen.so/schedule-builder",
+          "url": "https://www.semrush.com/analytics/organic/overview/?db=us&q=https%3A%2F%2Fwww.morgen.so%2Fschedule-builder&searchType=url&currency=usd"
+        },
+        {
+          "label": "Go to www.morgen.so/schedule-builder",
+          "text": "",
+          "url": "https://www.morgen.so/schedule-builder"
+        }
+      ],
+      "text": "www.morgen.so/schedule-builder"
+    },
+    {
+      "column": "11",
+      "links": [],
+      "text": "Sep 13"
+    }
+  ]
+]

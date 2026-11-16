@@ -1,0 +1,32 @@
+Use Dark theme in Calendar
+In Google Calendar, you can switch the default bright background to a dark background.
+Turn on Dark theme in the Calendar app
+Important:
+You can use Dark theme in the Calendar app on Android 7 and up.
+Learn how to check your Android version
+.
+On your Android phone or tablet, open Calendar
+.
+Tap Menu
+Settings
+General
+.
+On the “General” page, tap
+Theme
+Dark
+.
+Tips:
+To change the theme of your Calendar widget and notifications,
+manage your Android screen and display settings
+.
+For Android 10 and up:
+If "battery saver mode" or "Dark theme" is enabled in your system settings, widgets and the Calendar automatically switch to a Dark theme.
+For Android 9 and lower:
+Widgets are always in Light theme.
+Related resources
+Change your Calendar settings
+Get started with Google Calendar
+Android phone & tablet
+Computer
+iPhone & iPad
+More

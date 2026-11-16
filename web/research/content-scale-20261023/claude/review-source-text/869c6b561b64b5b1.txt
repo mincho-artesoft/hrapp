@@ -1,0 +1,275 @@
+Add a birthday calendar and reminder in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2021
+Outlook 2019
+Outlook 2016
+Outlook.com
+New Outlook for Windows
+Get help with Copilot
+Guide me in setting up manage birthdays for contacts in new
+Show me how to open a calendar in side-by-side view in new
+Add a birthday calendar and reminder in Outlook for me.
+Outlook can assist you in keeping track of upcoming birthdays and anniversaries. Birthday calendars are available in new Outlook and web-browser versions of Outlook such as Outlook.com or Outlook on the web. If you enable a birthday calendar in new Outlook then toggle back to classic, the calendar appears under My Calendars. In classic Outlook, reminders are added by default when you add a birthday or anniversary to your Outlook contact.
+Select a tab option below for the version of Outlook you're using.
+What version of Outlook do I have?
+New Outlook
+Classic Outlook
+Web
+Note
+If the steps under this
+New Outlook
+tab don't work, you may not be using new Outlook for Windows yet. Select
+Classic Outlook
+and follow those steps instead.
+In new Outlook , you have the option to:
+Add a birthday calendar
+|
+Manage birthdays for contacts
+|
+Delete a birthday event
+Add a birthday calendar in new Outlook
+The birthday calendar uses the information in your contacts to help you keep track of birthdays. Before you can view birthdays, you need to add a birthday calendar. When you add a birthday calendar, events will be created for any birthdays already included in your contacts.
+Note
+It might take a few hours after adding the birthday calendar for birthdays from your contacts to be added to the calendar.
+Select
+Calendar
+from the navigation pane.
+Select
+Add calendar
+.
+From the Add calendar window, select
+Birthdays
+.
+Under
+Birthdays
+, select or confirm the account you want to add the birthday calendar to.
+Select the checkbox,
+Turn on the birthday calendar
+.
+View the birthday calendar in new Outlook
+After adding the birthday calendar, you can add it to your active calendars. To customize the calendar, select
+More options
+.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Expand
+My calendars
+and select the option for
+Birthdays
+. When this is selected, any birthdays you saved for a contact will show on the day.
+Hide the birthday calendar in new Outlook
+If you don't want to see birthdays displayed, you can turn off the birthday calendar view.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Expand
+My calendars
+and deselect the option for
+Birthdays
+. Use this radio button to turn birthdays on or off.
+Manage birthdays for your contacts in new Outlook
+The birthday calendar is connected to your contacts in People.
+If you add a birthday to an existing contact, the birthday will be added to your calendar. There might be a delay before the birthday is added to your calendar.
+When you add a birthday in Calendar, you're adding a new contact.
+Add a birthday to an existing contact in new Outlook
+From the Navigation pane, select
+People
+.
+Find the contact you want to add a birthday to.
+Right-click the contact and select
+Edit
+.
+Select
+Others
+, enter the birthday information, and select
+Save
+.
+Note
+There might be a delay before you'll see the birthday added to the birthday calendar.
+Add a birthday through the birthday calendar in new Outlook
+Adding a birthday directly to the birthday calendar will also create a new contact.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Select
+Birthday calendar
+>
+New birthday
+.
+A new contact form will open.
+Enter the person's name and birth date, and select
+Create
+.
+Note
+There might be a few minutes delay before the birthday is added to the birthday calendar.
+Edit the contact associated with a birthday event in new Outlook
+Select
+Calendar
+from the navigation pane to open the calendar view.
+In the
+Birthday calendar
+, find the birthday you want to edit, and then select
+Edit
+.
+Make the changes you want, then select
+Save
+.
+Delete a birthday event in new Outlook
+Select
+Calendar
+from the navigation pane to open the calendar view.
+In the
+Birthday calendar
+, find the birthday you want to remove, and then select
+Delete
+.
+Note
+Deleting the birthday will remove the event from your calendar, but it will not delete the contact.
+Birthdays and anniversaries can be tracked for each Outlook contact and are saved as all-day annually recurring events which appear in the calendar and To-Do Bar.
+Enter a birthday or anniversary in People in classic Outlook
+If this is an existing contact, from
+People
+, select a contact from the Contact list pane. Right-click and select
+Edit Contact
+. For a new contact, from the
+New
+group, select
+New Contact
+.
+On the
+Contact
+tab, in the
+Show
+group, select
+Details
+.
+Enter the date in the
+Birthday
+or
+Anniversary
+box.
+Note
+If you're adding a birthday to an existing contact, it may take a few minutes for it to appear on the birthday calendar. It's rare, but in the event a birthday added to an existing contact does not appear in the birthday calendar, you can remove the contact from People, re-add the contact, and the birthday will appear in the birthday calendar.
+Hide or delete the birthday calendar
+You can turn off the
+Birthdays
+calendar view or you can delete it altogether. Deleting the birthday calendar won't delete contacts or saved contact birthdays.
+In classic Outlook, go to your
+Calendar
+.
+Hide or show the
+Birthdays
+calendar by selecting the checkbox next to it.
+Delete the Birthdays calendar by right-clicking the Birthdays calendar name in the navigation pane, and selecting
+Delete Calendar
+.
+In Outlook on the web or Outlook.com , you have the option to:
+Add a birthday calendar
+|
+Manage birthdays for contacts
+|
+Delete a birthday event
+Add a birthday calendar in Outlook on the web or Outlook.com
+The birthday calendar uses the information in your contacts to help you keep track of birthdays. Before you can view birthdays, you need to add a birthday calendar. When you add a birthday calendar, events will be created for any birthdays already included in your contacts.
+Note
+It might take a few hours after adding the birthday calendar for birthdays from your contacts to be added to the calendar.
+Select
+Calendar
+from the navigation pane.
+Select
+Add calendar
+.
+From the Add calendar window, select
+Birthdays
+.
+Under
+Birthdays
+, select or confirm the account you want to add the birthday calendar to.
+Select the checkbox,
+Turn on the birthday calendar
+.
+View the birthday calendar in Outlook on the web or Outlook.com
+After adding the birthday calendar, you can add it to your active calendars. To customize the calendar, select
+More options
+.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Expand
+My calendars
+and select the option for
+Birthdays
+. When this is selected, any birthdays you saved for a contact will show on the day.
+Hide the birthday calendar in Outlook on the web or Outlook.com
+If you don't want to see birthdays displayed, you can turn off the birthday calendar view.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Expand
+My calendars
+and deselect the option for
+Birthdays
+. Use this radio button to turn birthdays on or off.
+Manage birthdays for your contacts in Outlook on the web or Outlook.com
+The birthday calendar is connected to your contacts in People.
+If you add a birthday to an existing contact, the birthday will be added to your calendar. There might be a delay before the birthday is added to your calendar.
+When you add a birthday in Calendar, you're adding a new contact.
+Add a birthday to an existing contact in Outlook on the web or Outlook.com
+From the Navigation pane, select
+People
+.
+Find the contact you want to add a birthday to.
+Right-click the contact and select
+Edit
+.
+Select
+Others
+, enter the birthday information, and select
+Save
+.
+Note
+There might be a delay before you'll see the birthday added to the birthday calendar.
+Add a birthday through the birthday calendar in Outlook on the web or Outlook.com
+Adding a birthday directly to the birthday calendar will also create a new contact.
+Select
+Calendar
+from the navigation pane to open the calendar view.
+Select
+Birthday calendar
+>
+New birthday
+.
+A new contact form will open.
+Enter the person's name and birth date, and select
+Create
+.
+Note
+There might be a few minutes delay before the birthday is added to the birthday calendar.
+Edit the contact associated with a birthday event in Outlook on the web or Outlook.com
+Select
+Calendar
+from the navigation pane to open the calendar view.
+In the
+Birthday calendar
+, find the birthday you want to edit, and then select
+Edit
+.
+Make the changes you want, then select
+Save
+.
+Delete a birthday event in Outlook on the web or Outlook.com
+Select
+Calendar
+from the navigation pane to open the calendar view.
+In the
+Birthday calendar
+, find the birthday you want to remove, and then select
+Delete
+.
+Note
+Deleting the birthday will remove the event from your calendar, but it will not delete the contact.
+Related articles
+Customizable birthday templates
+Customizable anniversary templates

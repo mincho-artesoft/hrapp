@@ -1,0 +1,15 @@
+{
+  "locale": "da",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Hver eneste kalender, du har — iCloud, Google, Microsoft — ét sted, med udsigten bygget ind i selve dagen. Hold op med at gætte, hvordan eftermiddagen ser ud.",
+      "after": "Se udvalgte iCloud- og Google-kalendere på iPhone og iPad med den tilgængelige vejrudsigt ved siden af dine planer. Premium tilføjer tilslutning af Microsoft-kalendere."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Dine kalendere og udsigten, ét sted. Bygget til iPhone og iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- og Google-kalendere, vejr og widgets på iPhone og iPad. Hent gratis; Premium tilføjer Microsoft-kalendere og Teams."
+    }
+  ]
+}

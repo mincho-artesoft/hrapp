@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+  "short": "CalDAV calendars on iPhone",
+  "description": "Add a CalDAV account through iPhone settings, then check calendar access and selection. Separate account sync from read-only feeds and duplicate copies.",
+  "lede": "A calendar can be present on its server but missing from an iPhone app. Work through the account, the device calendar system and the app’s selection in that order. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Any calendar URL is interchangeable with a CalDAV account, and adding it once makes every app able to read and edit it.",
+  "sections": [
+    {
+      "heading": "Identify an account, a subscription or an imported file",
+      "body": [
+        "Before entering anything, ask the provider which connection it supports on iPhone. A CalDAV account uses server and account information. An iCal subscription follows a calendar feed; opening an exported calendar file can create a separate copy. These routes answer different needs, even when they display appointments with the same titles.",
+        "For example, a club administrator who needs to update the shared timetable needs the provider’s permitted editing route. A member who only follows the timetable may have a subscription instead. The member should not keep trying a feed URL as a username or assume that seeing an event grants permission to change it."
+      ]
+    },
+    {
+      "heading": "Use the provider’s iPhone instructions and Apple’s account settings",
+      "body": [
+        "Apple’s current guide places CalDAV setup under Settings > Apps > Calendar > Calendar Accounts > Add Account > Add Other Account > CalDAV account. Enter the server and account information supplied by your provider. Labels can differ on older iOS versions. Use the service-specific account option when the provider’s instructions call for it.",
+        "Check the provider’s authentication requirements before entering a password: some services use an app-specific password or another approved setup process. Do not substitute instructions written for a different calendar app or guess a server address from an email domain. For a work account, use the organisation’s approved configuration rather than changing security controls to make a connection succeed."
+      ]
+    },
+    {
+      "heading": "Confirm the calendar reaches Apple Calendar first",
+      "body": [
+        "Open Apple Calendar and inspect its calendar list for the account and the particular calendar. Compare one ordinary appointment with the provider’s own view: title, calendar name, date and local time. A successful account sign-in is only the first observation; it does not identify which calendars and dates have actually reached the device.",
+        "If the appointment is already absent there, investigate the account with the provider before repeatedly adding it in another app. Apple describes a Fetch schedule for accounts without Push support. That is not a guarantee that every account or receiving app refreshes immediately. Note where the appointment is visible and the time of your check."
+      ]
+    },
+    {
+      "heading": "Check Cloud Calendars access and calendar selection",
+      "body": [
+        "Cloud Calendars reads device calendars through Apple’s calendar system. In iPhone Settings > Privacy & Security > Calendars, review its access. Full calendar access is needed to read existing events; permission only to add events does not give access to the existing schedule.",
+        "Then open the calendar list in Cloud Calendars. Look for the intended calendar, including the Other group, and check that it is selected. A calendar available on the device can still have provider-specific compatibility or sharing limitations. If it appears in Apple Calendar but is absent here, record that difference rather than creating a second account connection."
+      ]
+    },
+    {
+      "heading": "Verify writing and the destination separately",
+      "body": [
+        "An account can contain calendars with different permissions. Visibility is not proof that a provider will accept an edit, and an available local editor is not a permission grant. Keep a received invitation or an established recurring meeting in its original calendar while checking the connection.",
+        "If you own a writable calendar and need to test the route, use a clearly named, non-sensitive test appointment. Choose the destination calendar explicitly, save it and check the provider’s own view. Then make one small change and compare again. Do not test by moving a real shared meeting between calendars: that changes the arrangement you are trying to inspect."
+      ]
+    },
+    {
+      "heading": "Diagnose duplicates without deleting the source",
+      "body": [
+        "If the same appointment appears twice, note both calendar names and how each reached the phone. An account connection, a subscribed feed and an earlier import can coexist. Temporarily hide one calendar to identify which display it supplies; hiding is different from deleting an event or removing an account. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
+        "For a support report, describe the provider, iOS version, calendar name, connection route and where the test appointment is visible. Keep passwords, private feed URLs and sensitive event details out of screenshots. This guide covers a device-account workflow; it does not establish direct server-to-server CalDAV synchronisation or automatic availability copying between providers in Cloud Calendars."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify whether you have a CalDAV account, a feed subscription or an exported file.",
+    "Follow the provider’s approved iPhone setup and authentication instructions.",
+    "Check the intended calendar and a known appointment in Apple Calendar.",
+    "Review Cloud Calendars calendar access and select the intended calendar.",
+    "Use a disposable event in a calendar you own to check permitted writing.",
+    "Compare connection routes before hiding a duplicate display or asking for support."
+  ],
+  "faq": [
+    {
+      "q": "Is a CalDAV account the same as an iCal subscription?",
+      "a": "No. Account access and a subscribed calendar feed are different connections. Confirm which route your provider supplies and whether it permits editing."
+    },
+    {
+      "q": "Why can Apple Calendar show an event that Cloud Calendars does not?",
+      "a": "Check Cloud Calendars calendar permission and whether the particular calendar is selected. If it remains absent, record the account and calendar involved; visibility in one app is not a guarantee of every app’s behaviour."
+    },
+    {
+      "q": "Does this mean Cloud Calendars directly connects to any CalDAV server?",
+      "a": "No. This workflow adds the account through iPhone settings, then checks the device calendars available to the app. Provider compatibility, authentication and edit permissions still need checking."
+    }
+  ],
+  "sourcesHeading": "Official account and permission guidance",
+  "sources": [
+    {
+      "label": "Apple: calendar account settings, CalDAV setup and Fetch",
+      "url": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios"
+    },
+    {
+      "label": "Apple: review access to calendar information",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-calendar-sync-actually-does",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+}

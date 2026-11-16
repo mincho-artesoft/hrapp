@@ -1,0 +1,24 @@
+{
+  "//": "Buyer-intent prompts, not brand prompts. A branded query already works — searching 'Cloud Calendars' returns the App Store page and the site. What matters is whether the app appears when somebody describes the PROBLEM without knowing the product exists. Keep this list stable: changing the prompts resets the trend.",
+  "brand": "Cloud Calendars",
+  "aliases": ["Cloud Calendars", "CloudCalendars", "cloud-calendars.com", "id6744690319"],
+  "competitors": [
+    "Fantastical", "Calendars by Readdle", "Structured", "Timepage", "Weather Events",
+    "Weather Calendar Together", "Dejal", "Apple Calendar", "Google Calendar",
+    "Outlook", "Any.do", "Vimcal", "Notion Calendar", "Amie", "Morgen"
+  ],
+  "prompts": [
+    { "id": "weather-builtin",   "intent": "core",     "q": "best iPhone calendar app with weather built in" },
+    { "id": "weather-per-event", "intent": "core",     "q": "calendar app that shows the weather forecast next to each event on iOS" },
+    { "id": "weather-planning",  "intent": "core",     "q": "I plan outdoor things and keep getting rained on. Is there a calendar app that shows me the forecast for each day I have plans?" },
+    { "id": "merge-three",       "intent": "unify",    "q": "iPhone app to see iCloud, Google and Outlook calendars together in one view" },
+    { "id": "merge-pain",        "intent": "unify",    "q": "I am tired of switching between three calendar apps for work and personal. What should I use on iPhone?" },
+    { "id": "widgets",           "intent": "widgets",  "q": "iOS calendar widget that shows my next events and the weather on the home screen" },
+    { "id": "live-activity",     "intent": "widgets",  "q": "calendar app with a Live Activity that counts down to my next meeting" },
+    { "id": "drag-edit",         "intent": "editing",  "q": "iPhone calendar app where I can drag events to reschedule them" },
+    { "id": "free-google-sync",  "intent": "price",    "q": "free iPhone calendar app with Google Calendar sync and no ads" },
+    { "id": "fantastical-alt",   "intent": "compare",  "q": "cheaper alternative to Fantastical for iPhone" },
+    { "id": "ten-day",           "intent": "core",     "q": "calendar app with a ten day weather forecast inside it" },
+    { "id": "ipad-month",        "intent": "device",   "q": "best iPad calendar app with month view and weather" }
+  ]
+}

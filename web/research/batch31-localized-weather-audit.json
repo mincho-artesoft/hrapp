@@ -1,0 +1,1382 @@
+{
+  "date": "2026-10-22",
+  "headAtAudit": "db1e7ff047acf8ea5110e3a307536910c761ac72",
+  "status": "bounded_screen_complete_no_material_corrections",
+  "scope": {
+    "requestedLocales": [
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "it",
+      "bg",
+      "ja"
+    ],
+    "requestedSlugs": [
+      "weather-inside-your-calendar",
+      "forecast-beside-every-event"
+    ],
+    "englishFullObjects": 2,
+    "localizedFullObjects": 10,
+    "absentLocalizedObjects": 2,
+    "allExistingRequestedObjectsFullyRead": true
+  },
+  "readMethod": "Initial combined full-object output was truncated. Complete DE/ES and FR/IT objects were reread in two untruncated outputs. Both full English objects and complete BG/JAweather-inside objects were visible untruncated in initial output. No summary-only read counted as full.",
+  "conclusion": "No concrete misleading weather/product claim identified in the10existing requested localized bodies. They already retain material place/date/coverage/provider/draft limits. No source correction or blanket localization rewrite justified from this bounded comparison.",
+  "evidenceBasis": {
+    "currentEnglish": "Complete currentENcanonical objects embedded below, not historicaldrafts.",
+    "recordedWeatherEvidence": "Reused previously reviewed research/batch06-weather/evidence.json and batch16weather work: appWeatherKit selectedplace and finite returnedday/hour coverage, websiteOpenMeteo distinct, weatherhour action opens reviewable draft. No fresh native/runtime/provider verification.",
+    "riskTreatment": "commonBelief contains the misconception subsequently rebutted, not a stand-alone accepted product assertion. Dates, stylistic differences and alternate valid related links were not treated as material falsehoods."
+  },
+  "objects": [
+    {
+      "locale": "en-US",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "moduleRawSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "objectJsonStringifySha256": "bd24f07a80cf4e35b40d6b084e64d1865811ed89d902d4f7a74303df964b4748",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+        "short": "Use calendar and weather together",
+        "description": "Use calendar and weather together on iPhone and iPad. Check the selected place, available forecast hours and event details before saving a plan.",
+        "lede": "A calendar tells you when a commitment is scheduled. Weather helps answer a different question: what conditions are forecast for the place and period you need. Use the two together while keeping their locations and dates explicit. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Weather shown beside a calendar automatically describes every appointment’s address, every hour and every future date.",
+        "sections": [
+          {
+            "heading": "Choose a real planning question",
+            "body": [
+              "Start with a particular appointment, such as an afternoon visit to a park. Identify what could change: its time, venue, preparation or the decision to use an alternative. You do not need to rearrange the whole calendar just because the day’s symbol shows rain.",
+              "Write down the activity’s actual start and end, including setup if relevant. A calendar overview helps find possible dates, while the forecast check concerns a particular place and interval. Keep those two jobs distinct when comparing options."
+            ]
+          },
+          {
+            "heading": "Confirm the weather place before reading the values",
+            "body": [
+              "Cloud Calendars offers weather for the current or selected place. Check the displayed location rather than assuming an event’s address silently changes the forecast. An appointment in another city needs a comparison with that city’s weather.",
+              "For example, a visitor may be planning a museum arrival while the phone is still at home. Read the forecast location and the appointment’s local time before comparing them. Nearby-looking values are not proof that the schedule and weather use the same place."
+            ]
+          },
+          {
+            "heading": "Check hourly and daily coverage separately",
+            "body": [
+              "Use a daily entry for orientation and the available hourly entries for a question about part of a day. A booking from two until five needs more than a glance at one symbol. Check whether the relevant hours are actually present.",
+              "In the current app source, the daily list takes up to ten returned WeatherKit days. That is separate from calendar navigation and from the hours currently supplied. A future appointment does not extend weather coverage. If its period is absent, arrange a later weather review."
+            ]
+          },
+          {
+            "heading": "Read what the weather value means",
+            "body": [
+              "Apple documents WeatherKit data such as temperature, precipitation, wind and UV, with some products available only in selected regions. Read the values available for your chosen place rather than expecting every weather product everywhere.",
+              "The Met Office’s guidance illustrates why forecast period and variable definitions matter: some values refer to a moment and others to a period. Use the relevant provider’s labels. Rain probability, amount and duration are different questions, and no single number decides every outdoor activity."
+            ]
+          },
+          {
+            "heading": "Review a draft created from a weather hour",
+            "body": [
+              "Where the app offers creating an event from an hour, it opens a draft. The current source uses the weather location’s time zone, proposes a one-hour duration and selects the default new-event calendar. Inspect each value before saving.",
+              "Confirm the title, destination calendar, start, end and intended location. A forecast selection does not grant permission to edit a shared calendar, notify a venue or reserve a room. Check the saved event and obtain any agreement the plan needs."
+            ]
+          },
+          {
+            "heading": "Keep the website demonstration separate",
+            "body": [
+              "The website’s interactive weather demonstration uses Open-Meteo. The app uses Apple WeatherKit. A web demonstration is useful for exploring the presentation, but its place, data and available dates can differ from the app.",
+              "For a real decision, open the app and compare the intended appointment with its available forecast. If you change a shared plan, confirm the organiser, recurrence scope and participants. Keep an agreed alternative when the activity depends on conditions."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the appointment and the decision weather could change.",
+          "Confirm the weather location and the appointment’s local date and time.",
+          "Inspect available hourly coverage separately from the daily summary.",
+          "Read probability, amount and other relevant values using their labels.",
+          "Review all event-draft details and the destination calendar before saving.",
+          "Recheck at the decision time and confirm shared changes directly."
+        ],
+        "faq": [
+          {
+            "q": "Does weather beside my calendar follow each event address?",
+            "a": "Do not assume that. Confirm the displayed weather location and compare it with the venue; proximity on screen does not establish the match."
+          },
+          {
+            "q": "Does the app use the website’s weather provider?",
+            "a": "No. The app uses Apple WeatherKit; the website demonstration uses Open-Meteo separately."
+          },
+          {
+            "q": "Does choosing a forecast hour save an appointment automatically?",
+            "a": "It starts a draft where that action is offered. Check its date, time zone, duration, calendar and location, then save the intended event."
+          }
+        ],
+        "seeAlso": [
+          "forecast-beside-every-event",
+          "a-fourteen-day-view-of-the-weather",
+          "weather-where-the-event-is",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "sourcesHeading": "Official sources and further reading",
+        "sources": [
+          {
+            "label": "Apple: WeatherKit forecast information and regional availability",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office: forecast place, periods and weather values",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "current_complete_english_comparator",
+      "targetedRecommendations": []
+    },
+    {
+      "locale": "en-US",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "moduleRawSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "objectJsonStringifySha256": "a1c4473d0f9742d4a292cf9bb379997b366d38e187984ade92a5dc43a25985bf",
+      "fullObjectSnapshot": {
+        "title": "Compare an appointment with the hourly weather forecast",
+        "short": "Weather for appointment hours",
+        "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
+        "lede": "To compare weather with an appointment, match three things: the selected place, the forecast date and the hours your plan occupies. A nearby weather icon is not proof that all three match. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "That a daily weather icon on a calendar is the same feature as a forecast attached to an event.",
+        "sections": [
+          {
+            "heading": "Start with place and date",
+            "body": [
+              "Open the forecast for the intended location and compare its date with the calendar entry. Calendar weather can reflect the selected weather place, so check that it is appropriate for the appointment rather than assuming the event address controls it.",
+              "An appointment next month can exist before weather data for that date is available. Keep the appointment and return to the forecast nearer its date; a missing weather entry is not a clear-weather prediction."
+            ]
+          },
+          {
+            "heading": "Use hourly detail for an hourly question",
+            "body": [
+              "A daily summary and an hourly forecast answer different questions. If the appointment lasts from two until five, inspect the available hours covering that interval rather than treating one daily icon as the full picture.",
+              "If only part of the interval is available, leave the rest unresolved. The app does not promise complete hourly weather for every event you can create, and this guide does not promise that opening any event always presents its entire weather window."
+            ]
+          },
+          {
+            "heading": "Separate chance, amount and timing",
+            "body": [
+              "Read the label on the value you are checking. A precipitation probability is not rainfall amount or duration. Likewise, an hourly value and a daily summary cover different periods; compare like periods when weighing two possible times.",
+              "Choose a fallback appropriate to your plan instead of treating a single percentage as a universal go-or-cancel rule. Weather information can change, so revisit it when a decision needs to be made."
+            ]
+          },
+          {
+            "heading": "Review before saving a weather-based appointment",
+            "body": [
+              "The app can start an event draft from a forecast hour. Review the draft’s date, start, end and destination calendar before saving. Forecast selection does not replace a check that you are creating the right commitment.",
+              "If calendar access or the destination calendar prevents saving, resolve that permission separately from weather access. Finding a forecast does not grant editing rights to a shared calendar."
+            ]
+          },
+          {
+            "heading": "Use the full forecast when the summary is not enough",
+            "body": [
+              "For an activity outdoors, inspect the variables relevant to that activity and the location you actually chose. A current-weather widget or homepage demo is not a substitute for checking the app’s available forecast hours.",
+              "If you notice a discrepancy, compare the place and timestamp first. Different providers, selected places and forecast periods can produce different displays without proving that the calendar event changed."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Confirm location and event date.",
+          "Check the available hours across the activity.",
+          "Read probability and amount as different values.",
+          "Review the event draft before saving."
+        ],
+        "seeAlso": [
+          "weather-inside-your-calendar",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "updated": "2026-10-21",
+        "faq": [
+          {
+            "q": "Does every event have a complete forecast?",
+            "a": "No. Coverage depends on the selected place and available dates and hours."
+          },
+          {
+            "q": "Is the weather icon specific to the event address?",
+            "a": "Do not infer that from proximity to the event. Confirm the weather location separately."
+          },
+          {
+            "q": "Does tapping an hour save a new appointment?",
+            "a": "It starts an event draft where available. Review its date, time and calendar before saving."
+          }
+        ],
+        "sourcesHeading": "Weather sources and location settings",
+        "sources": [
+          {
+            "label": "Apple: WeatherKit forecasts and regional availability",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Apple: Privacy and Location Services",
+            "url": "https://support.apple.com/en-us/102515"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 5,
+        "paragraphs": 10,
+        "practical": 4,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "current_complete_english_comparator",
+      "targetedRecommendations": []
+    },
+    {
+      "locale": "de-DE",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/de-DE/articles.ts",
+      "moduleRawSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "objectJsonStringifySha256": "729400db0c6408154967393bf485448ea8aa7aca4828de0328b32f28cc5b020c",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Kalender mit Wetter auf iPhone und iPad: Pläne im Zusammenhang prüfen",
+        "short": "Kalender und Wetter gemeinsam nutzen",
+        "description": "Nutze Kalender und Wetter auf iPhone und iPad gemeinsam. Prüfe Ort, verfügbare Vorhersagestunden und Termindetails, bevor du einen Plan speicherst.",
+        "lede": "Ein Kalender zeigt, wann eine Verpflichtung ansteht. Wetterdaten beantworten eine andere Frage: Welche Bedingungen werden für den benötigten Ort und Zeitraum erwartet? Nutze beides gemeinsam und behalte Orte und Daten im Blick. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+        "commonBelief": "Wetter neben einem Kalender beschreibt automatisch jede Terminadresse, jede Stunde und jedes künftige Datum.",
+        "sections": [
+          {
+            "heading": "Mit einer konkreten Planungsfrage beginnen",
+            "body": [
+              "Beginne mit einem bestimmten Termin, etwa einem nachmittäglichen Parkbesuch. Kläre, was sich ändern könnte: Uhrzeit, Ort, Vorbereitung oder die Entscheidung für eine Alternative. Du musst nicht den ganzen Kalender umplanen, nur weil das Tagessymbol Regen zeigt.",
+              "Notiere den tatsächlichen Beginn und das Ende der Aktivität, gegebenenfalls einschließlich Aufbau. Eine Kalenderübersicht hilft bei der Suche nach möglichen Tagen; die Wetterprüfung betrifft einen bestimmten Ort und Zeitraum. Halte diese Aufgaben beim Vergleichen von Optionen auseinander."
+            ]
+          },
+          {
+            "heading": "Vor dem Lesen der Werte den Wetterort bestätigen",
+            "body": [
+              "Cloud Calendars bietet Wetter für den aktuellen oder ausgewählten Ort. Prüfe die angezeigte Ortsangabe, statt anzunehmen, eine Terminadresse ändere die Vorhersage im Hintergrund. Für einen Termin in einer anderen Stadt brauchst du den Vergleich mit deren Wetter.",
+              "Vielleicht planst du die Ankunft im Museum, während dein Telefon noch zu Hause ist. Lies den Vorhersageort und die lokale Terminzeit, bevor du sie vergleichst. Nebeneinander angezeigte Werte beweisen nicht, dass Terminplan und Wetter denselben Ort verwenden."
+            ]
+          },
+          {
+            "heading": "Stündliche und tägliche Abdeckung getrennt prüfen",
+            "body": [
+              "Nutze den Tageseintrag zur Orientierung und verfügbare Stundenwerte für Fragen zu einem Tagesabschnitt. Ein Termin von zwei bis fünf erfordert mehr als einen Blick auf ein Symbol. Prüfe, ob die betreffenden Stunden tatsächlich vorhanden sind.",
+              "Im aktuellen App-Quellcode übernimmt die Tagesliste bis zu zehn von WeatherKit zurückgegebene Tage. Das ist unabhängig von der Kalendernavigation und den aktuell gelieferten Stunden. Ein zukünftiger Termin erweitert die Wetterabdeckung nicht. Fehlt sein Zeitraum, plane eine spätere Wetterprüfung ein."
+            ]
+          },
+          {
+            "heading": "Die Bedeutung eines Wetterwerts verstehen",
+            "body": [
+              "Apple beschreibt WeatherKit-Daten wie Temperatur, Niederschlag, Wind und UV; einige Produkte sind nur in ausgewählten Regionen verfügbar. Lies die für deinen Ort verfügbaren Werte, statt überall jedes Wetterprodukt zu erwarten.",
+              "Die Hinweise des Met Office zeigen, warum Vorhersagezeitraum und Definitionen wichtig sind: Manche Werte beziehen sich auf einen Zeitpunkt, andere auf einen Zeitraum. Verwende die Bezeichnungen des jeweiligen Anbieters. Regenwahrscheinlichkeit, Menge und Dauer sind unterschiedliche Fragen; keine einzelne Zahl entscheidet über jede Aktivität im Freien."
+            ]
+          },
+          {
+            "heading": "Einen aus einer Wetterstunde erzeugten Entwurf prüfen",
+            "body": [
+              "Wo die App das Erstellen eines Termins aus einer Stunde anbietet, öffnet sie einen Entwurf. Der aktuelle Quellcode verwendet die Zeitzone des Wetterorts, schlägt eine Stunde Dauer vor und wählt den Standardkalender für neue Termine. Prüfe jeden Wert vor dem Speichern.",
+              "Bestätige Titel, Zielkalender, Beginn, Ende und vorgesehenen Ort. Eine Vorhersageauswahl erteilt weder Bearbeitungsrechte für einen geteilten Kalender noch benachrichtigt sie einen Veranstaltungsort oder reserviert einen Raum. Prüfe den gespeicherten Termin und hole notwendige Zustimmungen ein."
+            ]
+          },
+          {
+            "heading": "Die Website-Demonstration gesondert betrachten",
+            "body": [
+              "Die interaktive Wetterdemonstration der Website verwendet Open-Meteo, die App Apple WeatherKit. Die Web-Demo hilft beim Erkunden der Darstellung, doch Ort, Daten und verfügbare Tage können von der App abweichen.",
+              "Öffne für eine echte Entscheidung die App und vergleiche den vorgesehenen Termin mit der verfügbaren Vorhersage. Prüfe bei Änderungen eines gemeinsamen Plans Organisator, Wiederholungsumfang und Teilnehmer. Halte eine vereinbarte Alternative bereit, wenn die Aktivität von den Bedingungen abhängt."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Termin und die Entscheidung bestimmen, die das Wetter beeinflussen könnte.",
+          "Wetterort sowie lokales Datum und Uhrzeit des Termins bestätigen.",
+          "Verfügbare Stunden unabhängig von der Tagesübersicht prüfen.",
+          "Wahrscheinlichkeit, Menge und weitere Werte anhand ihrer Bezeichnungen lesen.",
+          "Vor dem Speichern alle Entwurfsdetails und den Zielkalender prüfen.",
+          "Zum Entscheidungszeitpunkt erneut prüfen und gemeinsame Änderungen direkt bestätigen."
+        ],
+        "faq": [
+          {
+            "q": "Folgt das Wetter neben dem Kalender jeder Terminadresse?",
+            "a": "Gehe nicht davon aus. Prüfe den angezeigten Wetterort und vergleiche ihn mit dem Veranstaltungsort; die Nähe auf dem Bildschirm belegt keine Übereinstimmung."
+          },
+          {
+            "q": "Verwendet die App den Wetteranbieter der Website?",
+            "a": "Nein. Die App nutzt Apple WeatherKit; die Website-Demonstration verwendet davon getrennt Open-Meteo."
+          },
+          {
+            "q": "Speichert die Auswahl einer Vorhersagestunde automatisch einen Termin?",
+            "a": "Wo diese Aktion angeboten wird, beginnt sie einen Entwurf. Prüfe Datum, Zeitzone, Dauer, Kalender und Ort und speichere dann den gewünschten Termin."
+          }
+        ],
+        "seeAlso": [
+          "forecast-beside-every-event",
+          "a-fourteen-day-view-of-the-weather",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
+        "sources": [
+          {
+            "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office: Vorhersageort, Zeiträume und Wetterwerte",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    },
+    {
+      "locale": "de-DE",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/de-DE/articles.ts",
+      "moduleRawSha256": "cca838ead2777a79b3a9d11fab0d6ac553595e659ce35b998115680e565e08cc",
+      "objectJsonStringifySha256": "fe574b9401bef67e2aab9abfeb1dd15b69021773200eb8c1b973bfc462f6df34",
+      "fullObjectSnapshot": {
+        "title": "Einen Termin mit der stündlichen Wettervorhersage vergleichen",
+        "short": "Wetter zu den Terminzeiten",
+        "description": "Prüfe Ort, Datum und verfügbare Vorhersagestunden für deinen Termin. Kontrolliere den Ereignisentwurf, bevor du einen wetterabhängigen Plan speicherst.",
+        "lede": "Um das Wetter mit einem Termin zu vergleichen, müssen drei Dinge zusammenpassen: der ausgewählte Ort, das Vorhersagedatum und die Stunden deines Vorhabens. Ein Wettersymbol neben dem Termin beweist das nicht. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+        "commonBelief": "Ein tägliches Wettersymbol im Kalender sei dasselbe wie eine einem Ereignis zugeordnete Vorhersage.",
+        "sections": [
+          {
+            "heading": "Beginne mit Ort und Datum",
+            "body": [
+              "Öffne die Vorhersage für den vorgesehenen Ort und vergleiche das Datum mit dem Kalendereintrag. Das Kalenderwetter kann sich auf den ausgewählten Wetterort beziehen. Prüfe deshalb, ob dieser zum Termin passt, statt anzunehmen, dass die Ereignisadresse ihn bestimmt.",
+              "Ein Termin für nächsten Monat kann schon existieren, bevor Wetterdaten für dieses Datum verfügbar sind. Behalte den Termin und prüfe die Vorhersage näher am Datum erneut. Ein fehlender Wettereintrag ist keine Vorhersage für schönes Wetter."
+            ]
+          },
+          {
+            "heading": "Nutze Stundendetails für Fragen zu bestimmten Stunden",
+            "body": [
+              "Eine Tagesübersicht und eine stündliche Vorhersage beantworten unterschiedliche Fragen. Dauert der Termin von zwei bis fünf Uhr, prüfe die verfügbaren Stunden dieses Zeitraums, statt ein einziges Tagessymbol als vollständiges Bild zu verstehen.",
+              "Ist nur ein Teil des Zeitraums verfügbar, bleibt der Rest offen. Die App verspricht keine lückenlose stündliche Vorhersage für jedes erstellbare Ereignis. Dieser Leitfaden verspricht auch nicht, dass beim Öffnen eines beliebigen Ereignisses immer das gesamte Wetterzeitfenster erscheint."
+            ]
+          },
+          {
+            "heading": "Unterscheide Wahrscheinlichkeit, Menge und Zeitpunkt",
+            "body": [
+              "Lies die Bezeichnung des Werts, den du prüfst. Eine Niederschlagswahrscheinlichkeit ist weder Regenmenge noch Regendauer. Ebenso beziehen sich ein Stundenwert und eine Tagesübersicht auf unterschiedliche Zeiträume. Vergleiche gleich lange Zeiträume, wenn du zwei mögliche Termine abwägst.",
+              "Wähle eine passende Alternative für dein Vorhaben, statt einen einzelnen Prozentwert als allgemeine Regel für Durchführung oder Absage zu behandeln. Wetterinformationen können sich ändern; prüfe sie erneut, wenn eine Entscheidung ansteht."
+            ]
+          },
+          {
+            "heading": "Prüfe einen wetterabhängigen Termin vor dem Speichern",
+            "body": [
+              "Die App kann aus einer Vorhersagestunde einen Ereignisentwurf beginnen. Prüfe dessen Datum, Beginn, Ende und Zielkalender vor dem Speichern. Eine gewählte Vorhersagestunde ersetzt nicht die Kontrolle, ob du den richtigen Termin anlegst.",
+              "Verhindert der Kalenderzugriff oder der Zielkalender das Speichern, kläre diese Berechtigung getrennt vom Wetterzugriff. Eine gefundene Vorhersage verleiht keine Bearbeitungsrechte für einen geteilten Kalender."
+            ]
+          },
+          {
+            "heading": "Öffne die vollständige Vorhersage, wenn die Übersicht nicht reicht",
+            "body": [
+              "Prüfe bei einer Aktivität im Freien die dafür wichtigen Wettergrößen und den tatsächlich ausgewählten Ort. Ein Widget für das aktuelle Wetter oder eine Demo auf der Startseite ersetzt nicht die Kontrolle der in der App verfügbaren Vorhersagestunden.",
+              "Bei einer Abweichung vergleiche zuerst Ort und Zeitstempel. Unterschiedliche Anbieter, ausgewählte Orte und Vorhersagezeiträume können unterschiedliche Anzeigen ergeben, ohne dass sich der Kalendereintrag geändert haben muss."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Bestätige Ort und Ereignisdatum.",
+          "Prüfe die verfügbaren Stunden für die gesamte Aktivität.",
+          "Lies Wahrscheinlichkeit und Menge als unterschiedliche Werte.",
+          "Prüfe den Ereignisentwurf vor dem Speichern."
+        ],
+        "seeAlso": [
+          "weather-inside-your-calendar",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "updated": "2026-10-21",
+        "faq": [
+          {
+            "q": "Hat jedes Ereignis eine vollständige Vorhersage?",
+            "a": "Nein. Die Abdeckung hängt vom ausgewählten Ort und den verfügbaren Tagen und Stunden ab."
+          },
+          {
+            "q": "Gilt das Wettersymbol für die Ereignisadresse?",
+            "a": "Schließe das nicht allein aus seiner Nähe zum Ereignis. Bestätige den Wetterort separat."
+          },
+          {
+            "q": "Speichert das Antippen einer Stunde einen neuen Termin?",
+            "a": "Wo verfügbar, öffnet es einen Ereignisentwurf. Prüfe Datum, Uhrzeit und Kalender vor dem Speichern."
+          }
+        ],
+        "sourcesHeading": "Wetterquellen und Standorteinstellungen",
+        "sources": [
+          {
+            "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Apple: Datenschutz und Ortungsdienste",
+            "url": "https://support.apple.com/en-us/102515"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 5,
+        "paragraphs": 10,
+        "practical": 4,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section0andFAQ1 require separate weather-location/date verification",
+        "coverage": "section1andFAQ0 explicitly deny complete hourly coverage for every event; missing hours remain unresolved",
+        "draft": "section3andFAQ2 describe reviewed draft and separate calendar permission",
+        "weatherValues": "section2 separates probability/amount/duration and rejects universal percentage go/cancel rules",
+        "comparisons": "section4 distinguishes currentwidget/homepagedemo from availableappforecast; place/timestamp/provider difference is not proof event changed"
+      }
+    },
+    {
+      "locale": "es-ES",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/es-ES/articles.ts",
+      "moduleRawSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "objectJsonStringifySha256": "b69d2e3fa235a64a84a4118e1195d6405e498f497e2e3822f165e9ca8e8cee3a",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendario con tiempo en iPhone y iPad: revisa tus planes en contexto",
+        "short": "Usa el calendario y el tiempo juntos",
+        "description": "Usa calendario y tiempo juntos en iPhone y iPad. Comprueba el lugar, las horas de previsión disponibles y los detalles antes de guardar un plan.",
+        "lede": "El calendario indica cuándo tienes un compromiso. El tiempo responde a otra pregunta: qué condiciones se prevén para el lugar y periodo que necesitas. Úsalos juntos sin perder de vista sus lugares y fechas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+        "commonBelief": "El tiempo junto al calendario describe automáticamente la dirección de cada cita, todas las horas y cualquier fecha futura.",
+        "sections": [
+          {
+            "heading": "Elige una pregunta concreta de planificación",
+            "body": [
+              "Empieza por una cita específica, como una visita al parque por la tarde. Identifica qué podría cambiar: hora, lugar, preparación o decisión de optar por una alternativa. No hace falta reorganizar todo el calendario porque el símbolo del día muestre lluvia.",
+              "Anota el inicio y final reales de la actividad, incluido el montaje si corresponde. La vista general ayuda a encontrar fechas posibles; la consulta meteorológica se refiere a un lugar y un intervalo concretos. Mantén separadas ambas tareas al comparar opciones."
+            ]
+          },
+          {
+            "heading": "Confirma el lugar del tiempo antes de leer los valores",
+            "body": [
+              "Cloud Calendars ofrece el tiempo de la ubicación actual o seleccionada. Comprueba el lugar mostrado en vez de asumir que la dirección de un evento cambia la previsión silenciosamente. Una cita en otra ciudad necesita compararse con el tiempo de esa ciudad.",
+              "Por ejemplo, puedes estar preparando la llegada a un museo mientras el teléfono sigue en casa. Lee el lugar de la previsión y la hora local de la cita antes de compararlos. La proximidad visual de los valores no demuestra que la agenda y el tiempo usen el mismo lugar."
+            ]
+          },
+          {
+            "heading": "Comprueba por separado la cobertura diaria y horaria",
+            "body": [
+              "Usa el dato diario como orientación y las horas disponibles para una parte del día. Una cita de dos a cinco necesita algo más que mirar un símbolo. Comprueba si esas horas están realmente presentes.",
+              "En el código actual, la lista diaria toma hasta diez días devueltos por WeatherKit. Es independiente de la navegación del calendario y de las horas recibidas. Una cita futura no amplía la cobertura del tiempo. Si su periodo no aparece, programa una revisión meteorológica posterior."
+            ]
+          },
+          {
+            "heading": "Entiende qué significa el valor meteorológico",
+            "body": [
+              "Apple documenta datos de WeatherKit como temperatura, precipitación, viento y UV, con algunos productos disponibles solo en determinadas regiones. Lee los valores disponibles para tu lugar, sin esperar todos los productos meteorológicos en cualquier zona.",
+              "La orientación de Met Office ilustra por qué importan el periodo y la definición de cada variable: unos valores corresponden a un instante y otros a un intervalo. Usa las etiquetas del proveedor correspondiente. Probabilidad, cantidad y duración de lluvia son preguntas diferentes; ningún número decide por sí solo toda actividad al aire libre."
+            ]
+          },
+          {
+            "heading": "Revisa el borrador creado desde una hora del tiempo",
+            "body": [
+              "Donde la aplicación permite crear un evento desde una hora, abre un borrador. El código actual usa la zona horaria del lugar del tiempo, propone una duración de una hora y selecciona el calendario predeterminado para eventos nuevos. Revisa cada valor antes de guardar.",
+              "Confirma título, calendario de destino, inicio, final y lugar previsto. Elegir una previsión no concede permisos para editar un calendario compartido, no avisa a un establecimiento ni reserva una sala. Comprueba el evento guardado y consigue los acuerdos necesarios."
+            ]
+          },
+          {
+            "heading": "Distingue la demostración del sitio web",
+            "body": [
+              "La demostración meteorológica interactiva del sitio usa Open-Meteo. La aplicación utiliza Apple WeatherKit. La demo sirve para explorar la presentación, pero el lugar, los datos y las fechas disponibles pueden diferir de los de la aplicación.",
+              "Para una decisión real, abre la aplicación y compara la cita prevista con su previsión disponible. Si cambias un plan compartido, confirma organizador, alcance de repetición y participantes. Mantén una alternativa acordada cuando la actividad dependa de las condiciones."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifica la cita y la decisión que podría cambiar el tiempo.",
+          "Confirma el lugar del tiempo y la fecha y hora locales de la cita.",
+          "Examina las horas disponibles por separado del resumen diario.",
+          "Lee probabilidad, cantidad y otros valores según sus etiquetas.",
+          "Revisa todos los detalles del borrador y el calendario de destino antes de guardar.",
+          "Vuelve a comprobar al decidir y confirma directamente los cambios compartidos."
+        ],
+        "faq": [
+          {
+            "q": "¿El tiempo junto al calendario sigue la dirección de cada evento?",
+            "a": "No lo supongas. Confirma la ubicación meteorológica mostrada y compárala con el lugar de la cita; estar cerca en pantalla no acredita que coincidan."
+          },
+          {
+            "q": "¿La aplicación usa el proveedor meteorológico del sitio web?",
+            "a": "No. La aplicación usa Apple WeatherKit y la demostración web utiliza Open-Meteo por separado."
+          },
+          {
+            "q": "¿Elegir una hora de previsión guarda una cita automáticamente?",
+            "a": "Inicia un borrador donde se ofrece esa acción. Comprueba fecha, zona horaria, duración, calendario y lugar, y después guarda el evento previsto."
+          }
+        ],
+        "seeAlso": [
+          "forecast-beside-every-event",
+          "a-fourteen-day-view-of-the-weather",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "sourcesHeading": "Fuentes oficiales y lecturas adicionales",
+        "sources": [
+          {
+            "label": "Apple: previsiones WeatherKit y disponibilidad regional",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office: lugar, periodos y valores de la previsión",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    },
+    {
+      "locale": "es-ES",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/es-ES/articles.ts",
+      "moduleRawSha256": "6965abaed93325ca667163c6ac6d6c1f341ea773604e326e96f44cef941e58da",
+      "objectJsonStringifySha256": "91250f446a2ccadf16ee7a60dff8b737c9856a5b21a1607a72ece10515972330",
+      "fullObjectSnapshot": {
+        "title": "Compara una cita con la previsión del tiempo por horas",
+        "short": "El tiempo a la hora de tu cita",
+        "description": "Comprueba el lugar, la fecha y las horas de previsión disponibles para tu cita. Revisa el borrador antes de guardar un plan basado en el tiempo.",
+        "lede": "Para comparar el tiempo con una cita, deben coincidir tres cosas: el lugar seleccionado, la fecha de la previsión y las horas que ocupa tu plan. Un icono del tiempo cercano no demuestra que coincidan. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+        "commonBelief": "Un icono diario del tiempo en el calendario es lo mismo que una previsión asociada a un evento.",
+        "sections": [
+          {
+            "heading": "Empieza por el lugar y la fecha",
+            "body": [
+              "Abre la previsión del lugar previsto y compara su fecha con la entrada del calendario. El tiempo del calendario puede corresponder al lugar seleccionado para la previsión. Comprueba que sea adecuado para la cita en lugar de suponer que lo determina la dirección del evento.",
+              "Puede existir una cita para el mes próximo antes de que haya datos meteorológicos para esa fecha. Conserva la cita y vuelve a consultar la previsión cuando se acerque; que falte una entrada meteorológica no significa que se prevea buen tiempo."
+            ]
+          },
+          {
+            "heading": "Usa el detalle horario para una pregunta sobre horas",
+            "body": [
+              "El resumen diario y la previsión por horas responden a preguntas distintas. Si la cita dura de dos a cinco, revisa las horas disponibles de ese intervalo en lugar de tratar un icono diario como una imagen completa.",
+              "Si solo hay datos para parte del intervalo, deja el resto sin resolver. La app no promete una previsión horaria completa para cada evento que puedas crear, y esta guía tampoco promete que abrir cualquier evento muestre siempre todo su intervalo meteorológico."
+            ]
+          },
+          {
+            "heading": "Distingue probabilidad, cantidad y momento",
+            "body": [
+              "Lee la etiqueta del valor que estás consultando. La probabilidad de precipitación no es la cantidad ni la duración de la lluvia. Del mismo modo, un valor horario y un resumen diario abarcan periodos distintos; compara periodos equivalentes al valorar dos posibles horarios.",
+              "Elige una alternativa apropiada para tu plan en lugar de usar un porcentaje como regla universal para seguir adelante o cancelar. La información meteorológica puede cambiar; revísala cuando llegue el momento de decidir."
+            ]
+          },
+          {
+            "heading": "Revisa la cita basada en el tiempo antes de guardarla",
+            "body": [
+              "La app puede iniciar un borrador de evento desde una hora de la previsión. Revisa su fecha, inicio, final y calendario de destino antes de guardarlo. Elegir una hora de la previsión no sustituye a comprobar que estás creando el compromiso correcto.",
+              "Si el acceso al calendario o el calendario de destino impide guardar, resuelve ese permiso por separado del acceso al tiempo. Encontrar una previsión no otorga permisos de edición sobre un calendario compartido."
+            ]
+          },
+          {
+            "heading": "Consulta la previsión completa si el resumen no basta",
+            "body": [
+              "Para una actividad al aire libre, revisa las variables relevantes para esa actividad y el lugar que realmente has elegido. Un widget del tiempo actual o una demo de la página de inicio no sustituye a comprobar las horas de previsión disponibles en la app.",
+              "Si observas una discrepancia, compara primero el lugar y la marca de tiempo. Distintos proveedores, lugares seleccionados y periodos de previsión pueden producir pantallas distintas sin demostrar que haya cambiado el evento."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Confirma el lugar y la fecha del evento.",
+          "Comprueba las horas disponibles durante toda la actividad.",
+          "Interpreta probabilidad y cantidad como valores diferentes.",
+          "Revisa el borrador del evento antes de guardarlo."
+        ],
+        "seeAlso": [
+          "weather-inside-your-calendar",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "updated": "2026-10-21",
+        "faq": [
+          {
+            "q": "¿Todos los eventos tienen una previsión completa?",
+            "a": "No. La cobertura depende del lugar seleccionado y de las fechas y horas disponibles."
+          },
+          {
+            "q": "¿El icono del tiempo corresponde a la dirección del evento?",
+            "a": "No lo deduzcas por su cercanía al evento. Confirma por separado el lugar de la previsión."
+          },
+          {
+            "q": "¿Tocar una hora guarda una cita nueva?",
+            "a": "Cuando está disponible, inicia un borrador de evento. Revisa fecha, hora y calendario antes de guardarlo."
+          }
+        ],
+        "sourcesHeading": "Fuentes meteorológicas y ajustes de ubicación",
+        "sources": [
+          {
+            "label": "Apple: previsiones de WeatherKit y disponibilidad regional",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Apple: privacidad y servicios de localización",
+            "url": "https://support.apple.com/en-us/102515"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 5,
+        "paragraphs": 10,
+        "practical": 4,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section0andFAQ1 require separate weather-location/date verification",
+        "coverage": "section1andFAQ0 explicitly deny complete hourly coverage for every event; missing hours remain unresolved",
+        "draft": "section3andFAQ2 describe reviewed draft and separate calendar permission",
+        "weatherValues": "section2 separates probability/amount/duration and rejects universal percentage go/cancel rules",
+        "comparisons": "section4 distinguishes currentwidget/homepagedemo from availableappforecast; place/timestamp/provider difference is not proof event changed"
+      }
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "moduleRawSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "objectJsonStringifySha256": "9418026ab2897d91042551b25219c8677affda7c02bc387f48facd8ebb9b1053",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendrier et météo sur iPhone et iPad : vérifier un projet dans son contexte",
+        "short": "Utiliser ensemble calendrier et météo",
+        "description": "Associez calendrier et météo sur iPhone et iPad. Vérifiez le lieu, les heures de prévision disponibles et les détails avant d’enregistrer un projet.",
+        "lede": "Le calendrier indique quand un engagement est prévu. La météo répond à une autre question : quelles conditions sont annoncées pour le lieu et la période utiles ? Utilisez les deux en gardant leurs lieux et dates explicites. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+        "commonBelief": "La météo affichée près du calendrier décrit automatiquement l’adresse de chaque rendez-vous, toutes les heures et toutes les dates futures.",
+        "sections": [
+          {
+            "heading": "Choisir une vraie question de planification",
+            "body": [
+              "Commencez par un rendez-vous précis, par exemple une visite au parc l’après-midi. Déterminez ce qui pourrait changer : heure, lieu, préparation ou choix d’une solution de repli. Inutile de réorganiser tout le calendrier parce que le symbole du jour annonce de la pluie.",
+              "Notez le début et la fin réels de l’activité, installation comprise si nécessaire. L’aperçu du calendrier aide à trouver des dates possibles, tandis que la vérification météo concerne un lieu et un intervalle précis. Distinguez ces deux tâches pour comparer les options."
+            ]
+          },
+          {
+            "heading": "Confirmer le lieu météo avant de lire les valeurs",
+            "body": [
+              "Cloud Calendars propose la météo du lieu actuel ou sélectionné. Vérifiez le lieu affiché sans supposer que l’adresse d’un événement change silencieusement les prévisions. Un rendez-vous dans une autre ville exige une comparaison avec la météo de cette ville.",
+              "Vous pouvez préparer une arrivée au musée alors que le téléphone est encore chez vous. Lisez le lieu des prévisions et l’heure locale du rendez-vous avant de les comparer. Des valeurs voisines à l’écran ne prouvent pas que planning et météo utilisent le même lieu."
+            ]
+          },
+          {
+            "heading": "Vérifier séparément les couvertures horaire et quotidienne",
+            "body": [
+              "Utilisez une donnée quotidienne pour vous orienter et les données horaires disponibles pour une partie de journée. Un rendez-vous de 14 h à 17 h demande plus qu’un regard sur un symbole. Vérifiez que les heures concernées sont présentes.",
+              "Dans le code actuel, la liste quotidienne retient jusqu’à dix jours renvoyés par WeatherKit. Cela reste distinct de la navigation du calendrier et des heures actuellement fournies. Un rendez-vous futur n’étend pas les prévisions. Si sa période manque, prévoyez une vérification météo ultérieure."
+            ]
+          },
+          {
+            "heading": "Comprendre la signification de la valeur météo",
+            "body": [
+              "Apple décrit les données WeatherKit telles que température, précipitations, vent et UV ; certains produits ne sont disponibles que dans certaines régions. Lisez les valeurs proposées pour le lieu choisi plutôt que d’attendre tous les produits partout.",
+              "Les conseils du Met Office illustrent l’importance de la période et de la définition des variables : certaines valeurs concernent un instant, d’autres une période. Utilisez les libellés du fournisseur concerné. Probabilité, quantité et durée de pluie sont des questions différentes ; aucun chiffre ne décide à lui seul de toutes les activités extérieures."
+            ]
+          },
+          {
+            "heading": "Examiner le brouillon créé depuis une heure météo",
+            "body": [
+              "Lorsque l’application propose de créer un événement depuis une heure, elle ouvre un brouillon. Le code actuel utilise le fuseau du lieu météo, propose une durée d’une heure et choisit le calendrier par défaut des nouveaux événements. Examinez chaque valeur avant d’enregistrer.",
+              "Confirmez titre, calendrier de destination, début, fin et lieu prévu. Choisir une prévision n’accorde pas de droit de modification sur un calendrier partagé, n’avertit pas un établissement et ne réserve pas une salle. Vérifiez l’événement enregistré et obtenez les accords nécessaires."
+            ]
+          },
+          {
+            "heading": "Distinguer la démonstration du site",
+            "body": [
+              "La démonstration météo interactive du site utilise Open-Meteo. L’application utilise Apple WeatherKit. La démonstration permet d’explorer la présentation, mais son lieu, ses données et ses dates disponibles peuvent différer de l’application.",
+              "Pour une vraie décision, ouvrez l’application et comparez le rendez-vous aux prévisions disponibles. Si vous modifiez un projet partagé, confirmez l’organisateur, la portée de récurrence et les participants. Gardez une solution de repli convenue lorsque l’activité dépend des conditions."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identifier le rendez-vous et la décision que la météo pourrait modifier.",
+          "Confirmer le lieu météo ainsi que la date et l’heure locales du rendez-vous.",
+          "Examiner les heures disponibles séparément du résumé quotidien.",
+          "Lire probabilité, quantité et autres valeurs selon leurs libellés.",
+          "Vérifier tous les détails du brouillon et le calendrier de destination avant l’enregistrement.",
+          "Revérifier au moment de décider et confirmer directement les changements partagés."
+        ],
+        "faq": [
+          {
+            "q": "La météo du calendrier suit-elle chaque adresse d’événement ?",
+            "a": "Ne le supposez pas. Confirmez le lieu météo affiché et comparez-le au lieu du rendez-vous ; la proximité à l’écran ne prouve pas leur correspondance."
+          },
+          {
+            "q": "L’application utilise-t-elle le fournisseur météo du site ?",
+            "a": "Non. L’application utilise Apple WeatherKit ; la démonstration web utilise séparément Open-Meteo."
+          },
+          {
+            "q": "Choisir une heure de prévision enregistre-t-il automatiquement un rendez-vous ?",
+            "a": "Cela ouvre un brouillon lorsque cette action est proposée. Vérifiez date, fuseau, durée, calendrier et lieu, puis enregistrez l’événement voulu."
+          }
+        ],
+        "seeAlso": [
+          "forecast-beside-every-event",
+          "a-fourteen-day-view-of-the-weather",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "sourcesHeading": "Sources officielles et lectures complémentaires",
+        "sources": [
+          {
+            "label": "Apple : prévisions WeatherKit et disponibilité régionale",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office : lieu, périodes et valeurs des prévisions",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "moduleRawSha256": "4ec1e59246b8bbe593ad20cbfcd4287fef94cc5f6425ca98faef4f501c44d209",
+      "objectJsonStringifySha256": "87d95f1fef1ffe1466888d8b39827d53a80d1ec1c85143424677df58962b85c9",
+      "fullObjectSnapshot": {
+        "title": "Comparer un rendez-vous aux prévisions météo heure par heure",
+        "short": "La météo aux heures du rendez-vous",
+        "description": "Vérifiez le lieu, la date et les heures de prévision disponibles pour votre rendez-vous. Relisez le brouillon avant d’enregistrer un projet lié à la météo.",
+        "lede": "Pour comparer la météo à un rendez-vous, faites correspondre trois éléments : le lieu sélectionné, la date des prévisions et les heures occupées par votre activité. Une icône météo à proximité ne prouve pas cette correspondance. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+        "commonBelief": "Une icône météo quotidienne dans le calendrier équivaudrait à une prévision rattachée à un événement.",
+        "sections": [
+          {
+            "heading": "Commencez par le lieu et la date",
+            "body": [
+              "Ouvrez les prévisions du lieu prévu et comparez leur date à l’entrée du calendrier. La météo du calendrier peut concerner le lieu sélectionné pour les prévisions. Vérifiez qu’il convient au rendez-vous, sans supposer que l’adresse de l’événement le détermine.",
+              "Un rendez-vous du mois prochain peut exister avant que les données météo de cette date soient disponibles. Conservez-le et consultez les prévisions à l’approche du jour prévu ; une donnée météo absente n’annonce pas du beau temps."
+            ]
+          },
+          {
+            "heading": "Utilisez les détails horaires pour une question horaire",
+            "body": [
+              "Un résumé quotidien et des prévisions heure par heure répondent à des questions différentes. Si le rendez-vous dure de deux à cinq heures, examinez les heures disponibles couvrant cet intervalle plutôt que de prendre une seule icône quotidienne pour un tableau complet.",
+              "Si une partie seulement de l’intervalle est disponible, laissez le reste indéterminé. L’app ne promet pas des données horaires complètes pour tous les événements que vous pouvez créer. Ce guide ne promet pas non plus qu’ouvrir n’importe quel événement affiche toujours toute sa plage météo."
+            ]
+          },
+          {
+            "heading": "Distinguez probabilité, quantité et moment",
+            "body": [
+              "Lisez le libellé de la valeur consultée. Une probabilité de précipitations n’est ni une quantité ni une durée de pluie. De même, une valeur horaire et un résumé quotidien couvrent des périodes différentes : comparez des périodes équivalentes pour départager deux horaires possibles.",
+              "Prévoyez une solution de repli adaptée à votre activité au lieu d’utiliser un pourcentage comme règle universelle pour maintenir ou annuler. Les informations météo peuvent évoluer ; consultez-les à nouveau au moment de décider."
+            ]
+          },
+          {
+            "heading": "Vérifiez le rendez-vous fondé sur la météo avant de l’enregistrer",
+            "body": [
+              "L’app peut ouvrir un brouillon d’événement à partir d’une heure des prévisions. Vérifiez la date, le début, la fin et le calendrier de destination avant de l’enregistrer. Sélectionner une prévision ne remplace pas la vérification de l’engagement que vous créez.",
+              "Si l’accès au calendrier ou le calendrier de destination empêche l’enregistrement, réglez cette autorisation séparément de l’accès à la météo. Trouver des prévisions ne donne pas de droits de modification sur un calendrier partagé."
+            ]
+          },
+          {
+            "heading": "Consultez les prévisions complètes si le résumé ne suffit pas",
+            "body": [
+              "Pour une activité en extérieur, examinez les variables pertinentes et le lieu effectivement choisi. Un widget de météo actuelle ou une démonstration sur la page d’accueil ne remplace pas la consultation des heures de prévision disponibles dans l’app.",
+              "En cas d’écart, comparez d’abord le lieu et l’horodatage. Des fournisseurs, lieux sélectionnés ou périodes de prévision différents peuvent produire des affichages différents sans prouver que l’événement du calendrier a changé."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Confirmez le lieu et la date de l’événement.",
+          "Vérifiez les heures disponibles sur toute la durée de l’activité.",
+          "Lisez la probabilité et la quantité comme deux valeurs distinctes.",
+          "Relisez le brouillon d’événement avant de l’enregistrer."
+        ],
+        "seeAlso": [
+          "weather-inside-your-calendar",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "updated": "2026-10-21",
+        "faq": [
+          {
+            "q": "Chaque événement dispose-t-il de prévisions complètes ?",
+            "a": "Non. La couverture dépend du lieu sélectionné ainsi que des dates et heures disponibles."
+          },
+          {
+            "q": "L’icône météo correspond-elle à l’adresse de l’événement ?",
+            "a": "Ne le déduisez pas de sa proximité avec l’événement. Confirmez séparément le lieu des prévisions."
+          },
+          {
+            "q": "Toucher une heure enregistre-t-il un nouveau rendez-vous ?",
+            "a": "Lorsque cette possibilité est disponible, cela ouvre un brouillon d’événement. Vérifiez sa date, son heure et son calendrier avant de l’enregistrer."
+          }
+        ],
+        "sourcesHeading": "Sources météo et réglages de localisation",
+        "sources": [
+          {
+            "label": "Apple : prévisions WeatherKit et disponibilité régionale",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Apple : confidentialité et services de localisation",
+            "url": "https://support.apple.com/en-us/102515"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 5,
+        "paragraphs": 10,
+        "practical": 4,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section0andFAQ1 require separate weather-location/date verification",
+        "coverage": "section1andFAQ0 explicitly deny complete hourly coverage for every event; missing hours remain unresolved",
+        "draft": "section3andFAQ2 describe reviewed draft and separate calendar permission",
+        "weatherValues": "section2 separates probability/amount/duration and rejects universal percentage go/cancel rules",
+        "comparisons": "section4 distinguishes currentwidget/homepagedemo from availableappforecast; place/timestamp/provider difference is not proof event changed"
+      }
+    },
+    {
+      "locale": "it",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/it/articles.ts",
+      "moduleRawSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+      "objectJsonStringifySha256": "4a80ed0a1eb5bbbb1913e5af7d89a2a2a92bf6a3a2cc4e2d691a3b56bc1dafba",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendario con meteo su iPhone e iPad: valuta il contesto di un programma",
+        "short": "Usa calendario e meteo insieme",
+        "description": "Usa calendario e meteo su iPhone e iPad. Controlla luogo, ore di previsione disponibili e dettagli dell’evento prima di salvare un programma.",
+        "lede": "Il calendario indica quando è previsto un impegno. Il meteo risponde a un’altra domanda: quali condizioni sono previste nel luogo e nel periodo che ti interessano. Usali insieme tenendo sempre chiari luoghi e date. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+        "commonBelief": "Il meteo accanto al calendario descrive automaticamente l’indirizzo di ogni appuntamento, ogni ora e ogni data futura.",
+        "sections": [
+          {
+            "heading": "Parti da una decisione concreta",
+            "body": [
+              "Scegli un appuntamento preciso, per esempio una visita pomeridiana al parco. Individua cosa potrebbe cambiare: orario, luogo, preparazione o scelta di un’alternativa. Non occorre riorganizzare tutto il calendario solo perché il simbolo giornaliero mostra pioggia.",
+              "Annota inizio e fine effettivi dell’attività, includendo la preparazione se serve. La panoramica del calendario aiuta a trovare possibili date; il controllo meteo riguarda un luogo e un intervallo precisi. Mantieni distinti questi due compiti quando confronti le opzioni."
+            ]
+          },
+          {
+            "heading": "Conferma il luogo del meteo prima di leggere i valori",
+            "body": [
+              "Cloud Calendars offre il meteo per il luogo attuale o selezionato. Controlla la località visualizzata invece di presumere che l’indirizzo di un evento cambi automaticamente la previsione. Un appuntamento in un’altra città richiede un confronto con il meteo di quella città.",
+              "Per esempio, potresti pianificare l’arrivo a un museo mentre il telefono è ancora a casa. Leggi la località della previsione e l’ora locale dell’appuntamento prima di confrontarle. Valori vicini sullo schermo non dimostrano che programma e meteo si riferiscano allo stesso luogo."
+            ]
+          },
+          {
+            "heading": "Controlla separatamente la copertura oraria e giornaliera",
+            "body": [
+              "Usa il dato giornaliero per orientarti e le voci orarie disponibili per una parte della giornata. Un impegno dalle due alle cinque richiede più di uno sguardo a un simbolo. Verifica che le ore pertinenti siano effettivamente presenti.",
+              "Nel codice attuale dell’app, l’elenco giornaliero prende fino a dieci giorni restituiti da WeatherKit. Questo limite è distinto dalla navigazione del calendario e dalle ore attualmente fornite. Un appuntamento futuro non estende le previsioni. Se il periodo manca, programma un controllo meteo successivo."
+            ]
+          },
+          {
+            "heading": "Comprendi il significato dei valori meteo",
+            "body": [
+              "Apple documenta dati WeatherKit come temperatura, precipitazioni, vento e UV; alcuni prodotti sono disponibili solo in determinate regioni. Leggi i valori disponibili per il luogo scelto senza aspettarti ogni prodotto meteo ovunque.",
+              "La guida del Met Office mostra perché contano il periodo della previsione e le definizioni delle variabili: alcuni valori riguardano un istante, altri un intervallo. Segui le etichette del relativo fornitore. Probabilità, quantità e durata della pioggia sono questioni diverse; nessun numero decide da solo ogni attività all’aperto."
+            ]
+          },
+          {
+            "heading": "Controlla la bozza creata da un’ora del meteo",
+            "body": [
+              "Dove l’app permette di creare un evento da un’ora, apre una bozza. Il codice attuale usa il fuso orario della località meteo, propone una durata di un’ora e seleziona il calendario predefinito per i nuovi eventi. Esamina ogni valore prima di salvare.",
+              "Conferma titolo, calendario di destinazione, inizio, fine e luogo desiderato. Selezionare una previsione non concede il permesso di modificare un calendario condiviso, non avvisa una struttura e non prenota una sala. Controlla l’evento salvato e ottieni gli accordi necessari."
+            ]
+          },
+          {
+            "heading": "Distingui la dimostrazione del sito",
+            "body": [
+              "La dimostrazione meteo interattiva del sito usa Open-Meteo. L’app usa Apple WeatherKit. La demo web serve a esplorare la presentazione, ma luogo, dati e date disponibili possono differire dall’app.",
+              "Per una decisione reale, apri l’app e confronta l’appuntamento desiderato con la previsione disponibile. Se cambi un programma condiviso, conferma organizzatore, ambito della ricorrenza e partecipanti. Concorda un’alternativa quando l’attività dipende dalle condizioni."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Individua l’appuntamento e la decisione che il meteo potrebbe cambiare.",
+          "Conferma la località meteo e la data e l’ora locali dell’appuntamento.",
+          "Esamina la copertura oraria disponibile separatamente dal riepilogo giornaliero.",
+          "Leggi probabilità, quantità e altri valori pertinenti usando le relative etichette.",
+          "Controlla tutti i dettagli della bozza e il calendario di destinazione prima di salvare.",
+          "Ricontrolla al momento della decisione e conferma direttamente i cambiamenti condivisi."
+        ],
+        "faq": [
+          {
+            "q": "Il meteo accanto al calendario segue l’indirizzo di ogni evento?",
+            "a": "Non darlo per scontato. Conferma la località meteo visualizzata e confrontala con il luogo dell’evento: la vicinanza sullo schermo non dimostra la corrispondenza."
+          },
+          {
+            "q": "L’app usa lo stesso fornitore meteo del sito?",
+            "a": "No. L’app usa Apple WeatherKit; la dimostrazione del sito usa separatamente Open-Meteo."
+          },
+          {
+            "q": "Scegliere un’ora della previsione salva automaticamente un appuntamento?",
+            "a": "Avvia una bozza dove questa azione è disponibile. Controlla data, fuso orario, durata, calendario e luogo, poi salva l’evento desiderato."
+          }
+        ],
+        "seeAlso": [
+          "forecast-beside-every-event",
+          "a-fourteen-day-view-of-the-weather",
+          "planning-outdoors-without-being-rained-on",
+          "month-view-on-a-bigger-screen"
+        ],
+        "sourcesHeading": "Fonti ufficiali e approfondimenti",
+        "sources": [
+          {
+            "label": "Apple: informazioni di previsione WeatherKit e disponibilità regionale",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office: località, periodi e valori delle previsioni",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    },
+    {
+      "locale": "it",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/it/articles.ts",
+      "moduleRawSha256": "5425d08acc449a06501a3b337cedc05f0f20dba2a067819e510b21b3d8e09bc4",
+      "objectJsonStringifySha256": "c5e175e313d94d79370755578fb6c1a7eefff969aaeff70af5057ac8b70c16cf",
+      "fullObjectSnapshot": {
+        "title": "Confronta un appuntamento con le previsioni meteo orarie",
+        "short": "Il meteo nelle ore del tuo appuntamento",
+        "description": "Verifica luogo, data e ore di previsione disponibili per l’appuntamento. Controlla la bozza prima di salvare un piano basato sul meteo.",
+        "lede": "Per confrontare il meteo con un appuntamento, fai coincidere tre elementi: luogo selezionato, data delle previsioni e ore occupate dal programma. Un’icona meteo vicina non dimostra che coincidano. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+        "commonBelief": "Un’icona meteo giornaliera nel calendario sarebbe la stessa funzione di una previsione associata a un evento.",
+        "sections": [
+          {
+            "heading": "Parti da luogo e data",
+            "body": [
+              "Apri le previsioni per il luogo previsto e confrontane la data con la voce del calendario. Il meteo nel calendario può riferirsi al luogo selezionato per le previsioni: verifica che sia adatto all’appuntamento, senza presumere che lo determini l’indirizzo dell’evento.",
+              "Un appuntamento del mese prossimo può esistere prima che siano disponibili i dati meteo per quella data. Mantienilo e ricontrolla le previsioni più vicino al giorno previsto: l’assenza di una voce meteo non è una previsione di bel tempo."
+            ]
+          },
+          {
+            "heading": "Usa i dettagli orari per una domanda sulle ore",
+            "body": [
+              "Un riepilogo giornaliero e una previsione oraria rispondono a domande diverse. Se l’appuntamento dura dalle due alle cinque, controlla le ore disponibili di quell’intervallo anziché considerare una sola icona giornaliera come il quadro completo.",
+              "Se è disponibile soltanto una parte dell’intervallo, lascia irrisolto il resto. L’app non promette un meteo orario completo per ogni evento che puoi creare. Questa guida non promette neppure che aprire qualsiasi evento mostri sempre tutta la sua finestra meteorologica."
+            ]
+          },
+          {
+            "heading": "Distingui probabilità, quantità e momento",
+            "body": [
+              "Leggi l’etichetta del valore che stai controllando. La probabilità di precipitazioni non è la quantità né la durata della pioggia. Allo stesso modo, un valore orario e un riepilogo giornaliero coprono periodi diversi: confronta periodi equivalenti quando valuti due possibili orari.",
+              "Scegli un’alternativa adatta al tuo programma anziché usare una percentuale come regola universale per procedere o annullare. Le informazioni meteo possono cambiare: ricontrollale quando devi decidere."
+            ]
+          },
+          {
+            "heading": "Controlla l’appuntamento basato sul meteo prima di salvarlo",
+            "body": [
+              "L’app può avviare una bozza di evento da un’ora delle previsioni. Controlla data, inizio, fine e calendario di destinazione prima di salvare. Selezionare una previsione non sostituisce la verifica che tu stia creando l’impegno giusto.",
+              "Se l’accesso al calendario o il calendario di destinazione impedisce il salvataggio, risolvi quel permesso separatamente dall’accesso al meteo. Trovare una previsione non conferisce diritti di modifica su un calendario condiviso."
+            ]
+          },
+          {
+            "heading": "Usa la previsione completa quando il riepilogo non basta",
+            "body": [
+              "Per un’attività all’aperto controlla le variabili pertinenti e il luogo effettivamente selezionato. Un widget del meteo attuale o una demo nella pagina iniziale non sostituisce la verifica delle ore di previsione disponibili nell’app.",
+              "Se noti una discrepanza, confronta prima luogo e data e ora dei dati. Provider, luoghi selezionati e periodi di previsione diversi possono produrre visualizzazioni diverse senza dimostrare che l’evento del calendario sia cambiato."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Conferma luogo e data dell’evento.",
+          "Controlla le ore disponibili per tutta l’attività.",
+          "Leggi probabilità e quantità come valori distinti.",
+          "Controlla la bozza dell’evento prima di salvare."
+        ],
+        "seeAlso": [
+          "weather-inside-your-calendar",
+          "planning-outdoors-without-being-rained-on"
+        ],
+        "updated": "2026-10-21",
+        "faq": [
+          {
+            "q": "Ogni evento ha una previsione completa?",
+            "a": "No. La copertura dipende dal luogo selezionato e dalle date e ore disponibili."
+          },
+          {
+            "q": "L’icona meteo si riferisce all’indirizzo dell’evento?",
+            "a": "Non dedurlo dalla vicinanza all’evento. Conferma separatamente il luogo delle previsioni."
+          },
+          {
+            "q": "Toccare un’ora salva un nuovo appuntamento?",
+            "a": "Dove disponibile, avvia una bozza di evento. Controlla data, ora e calendario prima di salvare."
+          }
+        ],
+        "sourcesHeading": "Fonti meteo e impostazioni di localizzazione",
+        "sources": [
+          {
+            "label": "Apple: previsioni WeatherKit e disponibilità regionale",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Apple: privacy e servizi di localizzazione",
+            "url": "https://support.apple.com/en-us/102515"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 5,
+        "paragraphs": 10,
+        "practical": 4,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section0andFAQ1 require separate weather-location/date verification",
+        "coverage": "section1andFAQ0 explicitly deny complete hourly coverage for every event; missing hours remain unresolved",
+        "draft": "section3andFAQ2 describe reviewed draft and separate calendar permission",
+        "weatherValues": "section2 separates probability/amount/duration and rejects universal percentage go/cancel rules",
+        "comparisons": "section4 distinguishes currentwidget/homepagedemo from availableappforecast; place/timestamp/provider difference is not proof event changed"
+      }
+    },
+    {
+      "locale": "bg",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/bg/articles.ts",
+      "moduleRawSha256": "f47bb5c198eb4ffbd2deff9ec8deb306e2fdc4cf606b39cd4614b33f79c413cd",
+      "objectJsonStringifySha256": "366674539b777d9d50124fce8bf7e22adcf2edba8fa7e0f5dfaa1c900ce5d67e",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Календар с прогноза за времето на iPhone и iPad: проверете плана",
+        "short": "Календар и прогноза за времето",
+        "description": "Планирайте с календар и прогноза за времето на iPhone и iPad. Проверете мястото, наличните прогнозни часове и събитието преди запазване.",
+        "lede": "Календарът показва кога е насрочен ангажимент. Прогнозата помага да прецените условията за нужните място и период. Използвайте ги заедно, като проверявате местата и датите им. Ръководството е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+        "commonBelief": "Прогнозата до календара автоматично описва адреса на всяка среща, всеки час и всяка бъдеща дата.",
+        "sections": [
+          {
+            "heading": "Изберете конкретен въпрос за планиране",
+            "body": [
+              "Започнете с определена среща, например следобедно посещение в парк. Установете какво може да се промени: часът, мястото, подготовката или решението за алтернатива. Не е нужно да пренареждате целия календар само защото дневният символ показва дъжд.",
+              "Запишете действителните начало и край на дейността, включително подготовка, ако е нужна. Общият календарен изглед помага да намерите дати, а проверката на прогнозата засяга конкретно място и интервал. Разграничавайте тези задачи при сравняване на варианти."
+            ]
+          },
+          {
+            "heading": "Потвърдете мястото на прогнозата преди стойностите",
+            "body": [
+              "Cloud Calendars предлага времето за текущото или избраното място. Проверете показаното местоположение, вместо да приемате, че адресът на събитие променя прогнозата незабелязано. Среща в друг град изисква сравнение с времето в този град.",
+              "Например посетител може да планира пристигане в музей, докато телефонът още е у дома. Прочетете мястото на прогнозата и местния час на срещата, преди да ги сравнявате. Съседни стойности на екрана не доказват, че програмата и времето използват едно място."
+            ]
+          },
+          {
+            "heading": "Проверете почасовото и дневното покритие отделно",
+            "body": [
+              "Използвайте дневен запис за ориентация, а наличните почасови записи — за част от деня. Ангажимент от два до пет изисква повече от поглед към един символ. Проверете дали съответните часове действително са налични.",
+              "В текущия код дневният списък взема до десет дни, върнати от WeatherKit. Това е отделно от календарната навигация и от предоставените часове. Бъдеща среща не разширява прогнозата. Ако периодът ѝ липсва, планирайте по-късна проверка на времето."
+            ]
+          },
+          {
+            "heading": "Разберете значението на стойността",
+            "body": [
+              "Apple описва данни на WeatherKit като температура, валежи, вятър и UV, като някои продукти са налични само в определени региони. Четете стойностите за избраното място, вместо да очаквате всички метеорологични продукти навсякъде.",
+              "Указанията на Met Office показват защо периодът и определенията на величините са важни: някои стойности се отнасят за момент, други за период. Използвайте обозначенията на съответния доставчик. Вероятност, количество и продължителност на дъжда са различни въпроси; едно число не решава всяка дейност на открито."
+            ]
+          },
+          {
+            "heading": "Прегледайте чернова, създадена от прогнозен час",
+            "body": [
+              "Където приложението предлага създаване на събитие от час, то отваря чернова. Текущият код използва часовата зона на мястото на прогнозата, предлага продължителност един час и избира стандартния календар за нови събития. Проверете всяка стойност преди запазване.",
+              "Потвърдете заглавието, целевия календар, началото, края и желаното място. Изборът на прогноза не дава право да редактирате споделен календар, не уведомява домакина и не резервира стая. Проверете запазеното събитие и получете необходимото съгласие."
+            ]
+          },
+          {
+            "heading": "Разграничавайте демонстрацията на сайта",
+            "body": [
+              "Интерактивната демонстрация на сайта използва Open-Meteo. Приложението използва Apple WeatherKit. Уеб демонстрацията е полезна за разглеждане на представянето, но мястото, данните и достъпните дати може да се различават от приложението.",
+              "За конкретен план отворете приложението и сравнете срещата с наличната прогноза. Ако променяте общ план, потвърдете организатора, обхвата на повторенията и участниците. Поддържайте уговорена алтернатива, когато дейността зависи от условията."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Установете срещата и решението, което времето може да промени.",
+          "Потвърдете мястото на прогнозата и местните дата и час на срещата.",
+          "Проверете наличните часове отделно от дневното обобщение.",
+          "Прочетете вероятност, количество и други стойности според обозначенията им.",
+          "Проверете всички подробности на черновата и целевия календар преди запазване.",
+          "Проверете отново при решението и потвърдете общите промени директно."
+        ],
+        "faq": [
+          {
+            "q": "Следва ли времето до календара адреса на всяко събитие?",
+            "a": "Не приемайте това. Потвърдете показаното място на прогнозата и го сравнете с мястото на срещата; близостта на екрана не доказва съвпадение."
+          },
+          {
+            "q": "Приложението използва ли доставчика на времето от сайта?",
+            "a": "Не. Приложението използва Apple WeatherKit, а демонстрацията на сайта — отделно Open-Meteo."
+          },
+          {
+            "q": "Изборът на прогнозен час запазва ли среща автоматично?",
+            "a": "Той започва чернова там, където действието се предлага. Проверете дата, часова зона, продължителност, календар и място, после запазете желаното събитие."
+          }
+        ],
+        "seeAlso": [
+          "the-widget-that-shows-what-is-next"
+        ],
+        "sourcesHeading": "Официални източници и допълнително четене",
+        "sources": [
+          {
+            "label": "Apple: прогнози WeatherKit и регионална наличност",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office: място, периоди и метеорологични стойности",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    },
+    {
+      "locale": "ja",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/ja/articles.ts",
+      "moduleRawSha256": "041f6485876fba1edd028c701ff6d81de0ce47b1438cb5dd2da7c759a3d7f482",
+      "objectJsonStringifySha256": "43bbdfbaf65e5caf5c94ea96fc5d9eee21bbc38d78e92e75a38b074bcdfa0e91",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "iPhoneとiPadの天気付きカレンダー：予定の条件を確認する",
+        "short": "カレンダーと天気を一緒に使う",
+        "description": "iPhoneとiPadでカレンダーと天気を活用。計画を保存する前に、選択した場所、利用可能な予報時間、予定の詳細を確認しましょう。",
+        "lede": "カレンダーは約束の日時を示します。天気は別の問い、つまり必要な場所と期間にどんな状況が予想されるかを考える助けになります。場所と日付を明確にしながら両方を使いましょう。このガイドはCloud Calendarsの開発元Arte Softが公開しています。",
+        "commonBelief": "カレンダーの横の天気は、すべての予定の住所、すべての時間、あらゆる将来の日付に自動で対応している。",
+        "sections": [
+          {
+            "heading": "具体的な計画上の問いから始める",
+            "body": [
+              "午後に公園へ行くなど、特定の予定を選びます。変えられるのは時刻、場所、準備、代替案の選択のどれかを考えてください。1日のマークが雨だからといって、カレンダー全体を組み直す必要はありません。",
+              "必要なら準備時間も含め、活動の実際の開始と終了を書き出します。カレンダーの概要は候補日を探すため、予報の確認は特定の場所と時間帯を調べるために使います。選択肢を比較するときはこの二つを区別してください。"
+            ]
+          },
+          {
+            "heading": "数値を読む前に天気の場所を確認する",
+            "body": [
+              "Cloud Calendarsでは現在地または選択した場所の天気を確認できます。予定の住所に合わせて予報が自動で切り替わると思わず、表示された場所を確認してください。別の都市の予定なら、その都市の天気と照合する必要があります。",
+              "たとえば美術館への到着を計画していても、電話はまだ自宅にあるかもしれません。比較する前に予報の場所と予定の現地時刻を読みます。画面上で近くにある数値だけでは、予定と天気が同じ場所を使っているとは分かりません。"
+            ]
+          },
+          {
+            "heading": "時間別と日別の予報範囲を分けて確認する",
+            "body": [
+              "日別の情報は全体の目安に、利用可能な時間別情報は1日の一部を調べるために使います。2時から5時までの予定には、一つのマークを見るだけでは足りません。必要な時間帯が実際にあるか確認してください。",
+              "現在のアプリのソースコードでは、日別一覧はWeatherKitから返された日を最大10日分使います。これはカレンダーの日付移動とも、現在提供される時間別情報とも別です。将来の予定を入れても予報範囲は延びません。その期間がなければ、後日もう一度確認する予定を立ててください。"
+            ]
+          },
+          {
+            "heading": "天気の数値が何を意味するか読む",
+            "body": [
+              "AppleはWeatherKitの気温、降水、風、UVなどの情報を説明しており、一部の情報は特定の地域だけで利用できます。すべての場所にすべての情報があると思わず、選択した場所で利用可能な値を読んでください。",
+              "Met Officeの案内は、予報の期間と項目の定義が重要な理由を示しています。ある値は一時点を、別の値は期間を表します。該当する提供元のラベルに従ってください。雨の確率、量、長さは別の問いであり、一つの数字だけですべての屋外活動は判断できません。"
+            ]
+          },
+          {
+            "heading": "天気の時間から作った下書きを確認する",
+            "body": [
+              "時間から予定を作る操作が用意されている場合、開くのは下書きです。現在のソースコードでは、天気の場所のタイムゾーンを使い、長さを1時間として提案し、新規予定のデフォルトカレンダーを選びます。保存前にすべて確認してください。",
+              "タイトル、保存先カレンダー、開始、終了、目的の場所を確認します。予報を選ぶだけでは共有カレンダーの編集権限は得られず、施設への連絡や部屋の予約も行われません。保存した予定を確認し、必要な合意を別途得てください。"
+            ]
+          },
+          {
+            "heading": "ウェブサイトのデモとは区別する",
+            "body": [
+              "ウェブサイトの操作できる天気デモはOpen-Meteoを使います。アプリはApple WeatherKitを使います。ウェブのデモは見せ方を試すのに役立ちますが、場所、データ、利用可能な日付はアプリと異なる場合があります。",
+              "実際の判断ではアプリを開き、目的の予定と利用可能な予報を比べてください。共有した計画を変える場合は、主催者、繰り返しの変更範囲、参加者を確認します。天候に左右される活動には、合意した代替案を用意しましょう。"
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "予定と、天気によって変わる判断を特定します。",
+          "天気の場所と、予定の現地の日付・時刻を確認します。",
+          "日別の概要とは別に、利用可能な時間別の範囲を調べます。",
+          "確率、量、その他の値をラベルに従って読みます。",
+          "保存前に下書きの全詳細と保存先カレンダーを確認します。",
+          "判断する時点で再確認し、共有計画の変更は直接伝えて確かめます。"
+        ],
+        "faq": [
+          {
+            "q": "カレンダーの横の天気は各予定の住所に連動しますか？",
+            "a": "そうとは限りません。表示された天気の場所と会場を照合してください。画面で隣り合っていても、場所が一致する証拠ではありません。"
+          },
+          {
+            "q": "アプリはウェブサイトと同じ天気提供元を使いますか？",
+            "a": "いいえ。アプリはApple WeatherKitを使い、ウェブサイトのデモは別にOpen-Meteoを使います。"
+          },
+          {
+            "q": "予報の時間を選ぶと予定が自動で保存されますか？",
+            "a": "その操作がある場合、下書きが始まります。日付、タイムゾーン、長さ、カレンダー、場所を確認してから目的の予定を保存してください。"
+          }
+        ],
+        "seeAlso": [
+          "month-view-on-a-bigger-screen",
+          "icloud-google-and-outlook-in-one-view",
+          "sharing-one-event-not-your-calendar",
+          "the-widget-that-shows-what-is-next"
+        ],
+        "sourcesHeading": "公式情報と関連資料",
+        "sources": [
+          {
+            "label": "Apple：WeatherKitの予報情報と地域別の提供範囲",
+            "url": "https://developer.apple.com/weatherkit/"
+          },
+          {
+            "label": "Met Office：予報の場所、期間、天気の数値",
+            "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+          }
+        ]
+      },
+      "readScope": "Complete object: all metadata, lede, commonBelief, section headings and paragraphs, claims, practical, FAQ, sources and seeAlso.",
+      "counts": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2
+      },
+      "decision": "no_material_misleading_claim_identified",
+      "targetedRecommendations": [],
+      "sourceUrlsMatchEnglish": true,
+      "boundaryReview": {
+        "place": "section1andFAQ0 explicitly distinguish selected weather place from appointment address",
+        "coverage": "section2 separately checks hourly coverage and up-to-ten returnedWeatherKitdays; future calendar navigation does not extend it",
+        "provider": "section5andFAQ1 distinguish websiteOpenMeteo from appWeatherKit",
+        "draft": "section4andFAQ2 retain conditional action, timezone/defaultcalendar/onehour draft review, no automatic savedbooking",
+        "weatherValues": "section3 separates probability/amount/duration, region limits and no universal decision threshold"
+      }
+    }
+  ],
+  "absent": [
+    {
+      "locale": "bg",
+      "slug": "forecast-beside-every-event",
+      "scope": "All actual articles*.ts module exports in locale inspected",
+      "decision": "Absent; not reviewed as a localized body and no new route recommended."
+    },
+    {
+      "locale": "ja",
+      "slug": "forecast-beside-every-event",
+      "scope": "All actual articles*.ts module exports in locale inspected",
+      "decision": "Absent; not reviewed as a localized body and no new route recommended."
+    }
+  ],
+  "materialFindings": [],
+  "recommendations": [],
+  "limitations": [
+    "Conclusion only covers these2slugs in these6locales where present, not453articles or alltranslatedweathercontent.",
+    "Own-language editorial semantic review; Japanese confidence moderate-to-high, no independent native-speaker certification.",
+    "Existing source/native evidence only; no API/network/runtime/privacy/customer action, build, deployment, source/draft/ledger mutation or newroute.",
+    "No ranking/citation/search-demand or forecast-accuracy certification."
+  ],
+  "hashMethod": "Module rawSHA256 hashes exactbytes. Object hashSHA256 hashes UTF8JSON.stringify(parsedobject) retaining property order; not sorted canonicalJSON. Full snapshots embedded for reproducibility."
+}

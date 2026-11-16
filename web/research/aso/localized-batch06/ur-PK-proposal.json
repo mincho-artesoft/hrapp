@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ur-PK",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "539e2578-2169-48ee-9e3f-88949df1b7d1",
+  "versionLocalizationId": "e95c03c7-0155-4fdd-932a-3f844afb25d0",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: کیلنڈر",
+      "characters": 23,
+      "utf8Bytes": 29,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "موسم اور منصوبہ بندی",
+      "characters": 20,
+      "utf8Bytes": 37,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "شیڈول,ملاقات,تقریب,یاددہانی,دعوت,اشتراک,ہفتہ,مہینہ,پیشگوئی,ویجٹ",
+      "characters": 63,
+      "utf8Bytes": 117,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "اپنے منصوبے اور موسم ایک ساتھ دیکھیں۔ مختلف منظر اور ہوم اسکرین ویجٹ استعمال کریں یا ایپ اکاؤنٹ کے بغیر مقامی کیلنڈر بنائیں۔",
+      "characters": 124,
+      "utf8Bytes": 226,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone اور iPad پر Cloud Calendars کے ساتھ کام اور ذاتی منصوبوں کے ساتھ موسم دیکھیں۔\n\niCloud کیلنڈر استعمال کریں اور Google Calendar منسلک کریں۔ دن، ہفتے، مہینے، سال یا فہرست کا منظر منتخب کریں۔ Cloud Calendars اکاؤنٹ کے بغیر بھی آلے پر مقامی کیلنڈر بنایا جا سکتا ہے۔ خدمات منسلک کرنے اور اشتراک کے لیے سائن ان ضروری ہو سکتا ہے۔ رسائی کی اجازتیں کیلنڈر اور دعوت کی قسم پر منحصر ہوتی ہیں۔\n\nمنصوبہ بناتے وقت موسم کی پیشگوئی دیکھیں۔ ہوم اسکرین ویجٹ چھوٹے، درمیانے اور بڑے سائز میں دستیاب ہیں۔ پیشگوئیوں کی دستیابی مقام اور موسم کی خدمت فراہم کرنے والے پر منحصر ہے۔\n\nمفت Base میں Google Calendar سنک، Google Meet، کیلنڈر کے مختلف منظر، موسم اور ویجٹ شامل ہیں۔ Advanced میں Base کی خصوصیات شامل ہیں اور اشتہارات ہٹا دیے جاتے ہیں۔ Premium میں Advanced کے ساتھ Microsoft کیلنڈر اور Microsoft Teams کی معاونت شامل ہے۔\n\nڈاؤن لوڈ مفت ہے؛ اختیاری سبسکرپشن خودکار طور پر تجدید ہوتی ہیں۔ لینے سے پہلے ایپ یا App Store میں موجودہ مقامی قیمت اور بلنگ کی مدت دیکھیں۔ موجودہ مدت ختم ہونے سے کم از کم 24 گھنٹے پہلے منسوخ نہ کرنے پر سبسکرپشن تجدید ہو جاتی ہے۔ App Store اکاؤنٹ کی ترتیبات میں انتظام یا منسوخی کریں۔\n\nرازداری: https://www.cloud-calendars.com/privacy-policy\nاستعمال کی شرائط: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1236,
+      "utf8Bytes": 1987,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ur-PK",
+      "name": "Cloud Calendars: کیلنڈر",
+      "subtitle": "سب کیلنڈر ایک ہی جگہ",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "کیلنڈر اور موسم کو ساتھ رکھ کر اپنے دن کی منصوبہ بندی کریں\n\nCloud Calendars آپ کے کیلنڈر اور موسم کو ایک ہی سلیقے والی جگہ پر لے آتا ہے۔\n\niCloud، Google Calendar اور Microsoft کیلنڈر ایک ہی ایپ میں سنبھالیں، اور پیش گوئی دیکھیں سیدھی اپنے شیڈول، وجیٹس اور منصوبہ بندی کے مناظر میں۔\n\nمیٹنگز، سفر، اسکول سے لینا، باہر کے کام اور مصروف دن — تیز منصوبہ بندی کے لیے بنائے گئے کیلنڈر مناظر کے ساتھ آگے رہیں۔\n\nہوم اسکرین وجیٹس\n\nایسے وجیٹ شامل کریں جن میں ساتھ ہو:\n• کیلنڈر کے ایونٹس\n• موسم کی پیش گوئی\n• آنے والا شیڈول\n• چاند کی حالت اور کیفیت\n• ہوا اور درجہ حرارت\n• دن کا خلاصہ\n\nکئی وجیٹ اسٹائلز میں سے چنیں اور ہوم اسکرین سے ہی اپنا دن دیکھیں۔\n\nCLOUD CALENDARS کیوں\n\n• iCloud، Google Calendar اور Microsoft کیلنڈر ایک ساتھ دیکھیں\n• اندر ہی موجود موسم کی پیش گوئی کے ساتھ منصوبہ بندی کریں\n• ہوم اسکرین پر خوبصورت وجیٹ استعمال کریں\n• ایونٹس کو آسانی سے کھینچیں، ہٹائیں اور سائز بدلیں\n• Google Meet اور Microsoft Teams لنکس بنائیں\n• دن، ہفتہ، مہینہ، سال اور فہرست مناظر کے درمیان بدلیں\n• کام اور ذاتی کیلنڈر ایک ہی جگہ سنبھالیں\n\nخصوصیات\n\nسب کیلنڈر ایک ساتھ\niCloud، Google Calendar اور Microsoft کے کیلنڈر جوڑیں اور رنگوں سے الگ نظر آنے والے صاف منظر میں سنبھالیں۔\n\nکیلنڈر کے اندر ہی موسم\nمنصوبہ بندی کرتے ہوئے ہی گھنٹہ وار اور روزانہ پیش گوئی دیکھیں — درجہ حرارت، کیفیت، چاند کی حالت، ہوا اور موسم کے نشانات۔\n\nکیلنڈر اور موسم کے وجیٹ\nاپنی پسند کے مطابق ترتیب دیے وجیٹ سے شیڈول اور موسم فوراً دیکھیں۔\n\nکئی کیلنڈر مناظر\nآپ وقت کیسے ترتیب دیتے ہیں، اس کے مطابق دن، ہفتہ، مہینہ، سال یا فہرست چنیں۔\n\nآسان ایونٹ ترمیم\nکیلنڈر پر ہی ٹیپ کر کے، کھینچ کر اور سائز بدل کر ایونٹ ٹھیک کریں۔\n\nالگ موسم منظر\nگھنٹہ وار کیفیت اور منصوبہ بندی میں کام آنے والی معلومات کے ساتھ تفصیلی پیش گوئی دیکھیں۔\n\nپیش گوئی سے ایونٹ\nپیش گوئی کے کسی گھنٹے پر ٹیپ کریں — اسی وقت کا نیا ایونٹ فوراً بن جائے گا۔\n\nاندر ہی میٹنگ لنکس\nایونٹس میں Google Meet اور Microsoft Teams لنکس تیزی سے شامل کریں۔\n\nکس کے لیے موزوں\n\n• کام اور ذاتی کیلنڈر سنبھالنے کے لیے\n• موسم کو مدِنظر رکھ کر منصوبہ بندی کے لیے\n• باہر کے کاموں اور سفر کے لیے\n• مصروف شیڈول اور خاندانی منصوبہ بندی کے لیے\n• Google Calendar اور iCloud استعمال کرنے والوں کے لیے\n• Microsoft کیلنڈر استعمال کرنے والوں کے لیے\n\nCloud Calendars آزما کر دیکھیں — ہر دن کی منصوبہ بندی آسان ہو جائے گی۔\n\nسبسکرپشن کی معلومات\n\nCloud Calendars خودکار طور پر تجدید ہونے والی سبسکرپشنز دیتا ہے۔\n\nمفت پلان\n• Google Calendar سنک\n• کئی کیلنڈر مناظر\n• موسم کی سہولیات\n• وجیٹس\n• Google Meet سپورٹ\nخریداری کی تصدیق کے وقت آپ کے Apple ID اکاؤنٹ سے رقم لی جائے گی۔ موجودہ مدت ختم ہونے سے کم از کم 24 گھنٹے پہلے منسوخ نہ کرنے پر سبسکرپشن خودبخود تجدید ہو جاتی ہے۔ موجودہ مدت ختم ہونے سے پہلے کے 24 گھنٹوں میں تجدید کی رقم آپ کے اکاؤنٹ سے لی جائے گی۔ App Store اکاؤنٹ کی ترتیبات میں سبسکرپشن سنبھالی اور منسوخ کی جا سکتی ہے۔\n\nپرائیویسی پالیسی: https://www.cloud-calendars.com/privacy-policy\nاستعمال کی شرائط: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ur-PK",
+      "keywords": "موسم,وجیٹ,شیڈول,منصوبہ بندی,پیش گوئی,iCloud,میٹنگ,ایونٹ,کام,لاک اسکرین,بارش,آج,ہفتہ,مہینہ,کیلنڈر,وقت",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

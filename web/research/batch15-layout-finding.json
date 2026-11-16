@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "initialPublicObservation": {
+    "url": "https://www.cloud-calendars.com/ar/",
+    "viewport": 575,
+    "documentWidth": 593,
+    "direction": "rtl",
+    "finding": "Root/body/main and widgets section report593scrollwidth. Pricing cards fit visibly. Several offscreen decorative/reveal transforms separately observed; exact browser overflow propagation not independently isolated."
+  },
+  "correction": {
+    "file": "src/app/components/widgets/widgets.component.scss",
+    "change": ".widgets { overflow-x: clip; }",
+    "purpose": "Contain widget-section entrance/decorative overflow within its own section; do not clip the whole website or alter text. Same section-level containment pattern already used by weather/pricing."
+  },
+  "verification": {
+    "url": "https://www.cloud-calendars.com/ar/",
+    "afterReload": {
+      "viewport": 575,
+      "documentWidth": 564,
+      "widgetsOverflow": "clip"
+    },
+    "afterPricingScroll": {
+      "viewport": 575,
+      "documentWidth": 564,
+      "direction": "rtl"
+    },
+    "screenshot": "/tmp/cloud-calendar-batch15-ar-pricing-final.png",
+    "status": "Observedpublicfixpassed; no blanketallbreakpointsaudit"
+  }
+}

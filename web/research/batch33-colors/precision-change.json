@@ -1,0 +1,7 @@
+{
+  "path": "sections[2].body[0]",
+  "before": "For an editable iOS calendar that offers the info control in the calendar list, open Edit Calendar. Leave Calendar Name unchanged for a color-only edit. Open COLOR, choose a preset or Custom..., return to the editor and choose Done. Cancel leaves that editor without applying this save. Labels and available controls can vary with the calendar type and installed version.",
+  "after": "For an editable iOS calendar that offers the info control in the calendar list, open Edit Calendar. Leave Calendar Name unchanged for a color-only edit. Under COLOR, tap the current color, choose a preset or Custom..., return to the editor and choose Done. Cancel leaves that editor without applying this save. Labels and available controls can vary with the calendar type and installed version.",
+  "reason": "COLOR is a section heading; tap its current-color row to open picker. Optional reviewer precision accepted.",
+  "finalRawSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2"
+}

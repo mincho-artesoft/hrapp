@@ -1,0 +1,52 @@
+Report assigned tasks as spam
+You can report an assigned task as spam from a shared surface, like a space or document.
+When you report an assigned task as spam, it’s:
+Removed from your personal list.
+No longer assigned to you in the shared space.
+Report an assigned task as spam in Google Tasks
+Go to
+Gmail
+,
+Calendar
+,
+Chat
+,
+Drive
+, or a file in Google
+Docs
+,
+Sheets
+, or
+Slides
+.
+In the side panel, on the right, click Tasks
+.
+Click the task you want to report.
+To the right of the task, click Open menu
+.
+Click
+Report as spam
+Report as spam
+.
+Report an assigned task as spam in Google Calendar
+On your computer, open
+Google Calendar
+.
+On the calendar grid, click the task you want to report.
+At the top right of the task, click Options
+.
+Click
+Report as spam
+Report as spam
+.
+Tip:
+To report an assigned task as spam, enter the keyboard shortcut:
+!
+Related resources
+Get started with Shared Google Tasks
+Create & assign tasks in a Google Chat space
+Assign tasks from Google Docs
+Computer
+Android phone & tablet
+iPhone & iPad
+More

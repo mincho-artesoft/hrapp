@@ -1,0 +1,188 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Sdílení jedné události: zvolte správný odkaz a oprávnění",
+    "short": "Sdílení jedné události",
+    "description": "Sdílejte událost bez celého kalendáře. Zjistěte, co znamenají role Reader, Writer a Owner, náhledy, aktualizace a omezení odebrání přístupu.",
+    "lede": "Poslat podrobnosti večeře, povolit spoluorganizátorovi úpravy a získat potvrzení účasti jsou různé úkoly. Nejdříve si vyberte potřebný výsledek, potom způsob sdílení. Tento návod připravila Arte Soft, vývojář Cloud Calendars.",
+    "commonBelief": "Každý odkaz na událost je údajně odběr kalendáře pouze pro čtení, který se okamžitě aktualizuje a zaznamená odpověď.",
+    "sections": [
+      {
+        "heading": "Začněte kontrolou jedné události",
+        "body": [
+          "Sdílení jednotlivé události se týká této události, nikoli celého kalendáře odesílatele. Před odesláním zkontrolujte název, časové pásmo, místo, poznámky a odkazy na schůzky. Údaj vhodný pro jednoho hosta nemusí patřit do široce šířeného odkazu.",
+          "Sdílení večeře nevyžaduje sdílet kalendář s návštěvami lékaře. Místo a odkazy samotné večeře se však sdílejí spolu s ní. Prověřte obsah události, nespoléhejte na soukromí okolního kalendáře."
+        ]
+      },
+      {
+        "heading": "Vyberte náhled, e-mailovou pozvánku nebo QR kód",
+        "body": [
+          "Cloud Calendars nabízí různé cesty sdílení. App Clip zobrazuje náhled; k přidání události touto cestou je potřeba plná aplikace. E-mailové a QR pozvánky používají webovou stránku nabízející otevření Cloud Calendars. Tyto odkazy nejsou zaměnitelné adresy odběru.",
+          "Pro synchronizované sdílení v aplikaci se odesílatel přihlašuje. Odkaz i QR kód lze přeposlat, proto je posílejte jen tam, kde je jejich obsah vhodný. QR kód předává odkaz, nedokazuje totožnost člověka, který jej otevřel."
+        ]
+      },
+      {
+        "heading": "Přidělte jen potřebná oprávnění",
+        "body": [
+          "U e-mailových pozvánek lze zvolit Reader, Writer nebo Owner. Reader může prohlížet a synchronizovat; Writer upravovat; Owner také sdílet a spravovat přístup. Nejde o tři názvy pro pouhé prohlížení. Pro člověka, který potřebuje pouze program, zvolte Reader.",
+          "Writer je vhodný pro spoluorganizátora, který má měnit událost. Owner přidělte jen tomu, kdo má spravovat i přístup ostatních. Vyšší oprávnění vyžadují odpovídající přihlášenou identitu příjemce. Anonymní příjemce není identifikovaný spoluvlastník."
+        ]
+      },
+      {
+        "heading": "Zjistěte, jak příjemce událost přidá",
+        "body": [
+          "V plné aplikaci vyžaduje přidání sdílené události oprávnění ke kalendářům a zapisovatelný cílový kalendář. Příjemce má před uložením zkontrolovat cíl. Přijatá kopie pak může být spojena se sdílenou událostí pro pozdější aktualizace.",
+          "To se liší od importu běžného souboru ICS do jiného kalendáře. Import vytvoří kopii, zatímco odběr pravidelně kontroluje kanál. Posíláte-li kanál ICS místo pozvánky aplikace, výslovně to vysvětlete a ověřte podporu v kalendáři příjemce."
+        ]
+      },
+      {
+        "heading": "Ověřte změny, než se na ně spolehnete",
+        "body": [
+          "Synchronizované sdílení může přenášet pozdější úpravy či zrušení, zařízení příjemce však musí dostat možnost je přijmout. Doporučený interval obnovení kanálu není termín doručení. Zařízení offline, neobnovený odběr nebo samostatná importovaná kopie mohou stále zobrazovat staré údaje.",
+          "Přesune-li se večeře těsně před začátkem, upravte událost a kontaktujte hosty přímo. Požádejte o potvrzení nového času. Odeslání aktualizace a získání odpovědi o účasti jsou samostatné kroky."
+        ]
+      },
+      {
+        "heading": "Spravujte přístup bez slibu vymazání kopií",
+        "body": [
+          "Prověřte oprávnění příjemců a odeberte nepotřebná. Odebrání příjemce a odvolání odkazu na kanál jsou různé operace. Ani jednu nepopisujte jako vzdálené vymazání snímků obrazovky, zpráv či všech kopií v kalendářích.",
+          "Rozšířil-li se odkaz mimo zamýšlený okruh, zjistěte, o který odkaz nebo oprávnění jde. Po změně přístupu ověřte dotčenou cestu. U dalších událostí nedávejte soukromé údaje do široce šířených odkazů, místo spoléhání na jejich pozdější odvolání."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Zkontrolujte podrobnosti a určete, zda potřebujete čtení, úpravy nebo odpovědi o účasti.",
+      "Zvolte správnou cestu sdílení a podle potřeby se přihlaste.",
+      "Pro čtenáře použijte Reader; Writer a Owner přidělujte podle skutečné odpovědnosti.",
+      "Požádejte příjemce, aby při přidávání ověřil čas a cílový kalendář.",
+      "Při naléhavé změně upravte událost a pošlete přímou zprávu.",
+      "Při ukončení sdílení prověřte zvlášť oprávnění příjemců a přístup přes odkazy."
+    ],
+    "faq": [
+      {
+        "q": "Zpřístupní sdílení události celý můj kalendář?",
+        "a": "Synchronizované sdílení jedné události je omezeno na ni. Přesto zvolenou cestou zpřístupňuje její vlastní podrobnosti. Zkontrolujte je a neposílejte pozvánku k celému kalendáři, chcete-li sdílet jen událost."
+      },
+      {
+        "q": "Může příjemce událost změnit?",
+        "a": "Ano, s odpovídající rolí Writer nebo Owner a podporovaným přihlášeným postupem. Reader slouží k prohlížení a synchronizaci. Běžný odběr ICS není stejný mechanismus úprav."
+      },
+      {
+        "q": "Zruší odebrání člověka vše, co už obdržel?",
+        "a": "Takovou záruku nepředpokládejte. Změna oprávnění ovlivňuje podporovaný vztah sdílení, ale uložené kopie, snímky obrazovky a zprávy mohou zůstat. Samostatně je třeba posoudit i adresu sdíleného kanálu."
+      }
+    ],
+    "sourcesHeading": "Zdroje k možnostem příjemce",
+    "sources": [
+      {
+        "label": "Apple: přehled App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: import událostí a jeho omezení",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: import kalendáře a přihlášení k odběru",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Oprávnění Kalendáře Google: ověřte skutečně udělený přístup",
+    "short": "Přístup a soukromí v Kalendáři Google",
+    "description": "Zvolte přístup k dostupnosti, podrobnostem nebo úpravám. Před sdílením prověřte veřejný a skupinový přístup i jednotlivá oprávnění.",
+    "lede": "Před sdílením kalendáře určete, co má druhý člověk dělat. Plánování podle vaší dostupnosti, čtení podrobností a správa kalendáře jsou různé úkoly. Návod vydává Arte Soft, vývojář Cloud Calendars.",
+    "commonBelief": "Omezení jednoho člověka údajně zaručuje, že podrobnosti neuvidí žádnou jinou cestou.",
+    "sections": [
+      {
+        "heading": "Přizpůsobte přístup úkolu",
+        "body": [
+          "Kolega hledající termín může potřebovat dostupnost bez podrobností schůzek. Spolupracovník udržující projektový plán potřebuje jiné uspořádání. Nejdříve určete úkol a potom zkontrolujte oprávnění v aktuálním nastavení sdílení kalendáře.",
+          "Google rozlišuje dostupnost, podrobnosti událostí a několik úrovní úprav. Jedna možnost omezuje přístup k soukromým událostem; jiná umožňuje úpravy a podrobnosti; nejširší také správu sdílení. Neberte všechny možnosti obsahující slovo změny jako rovnocenné."
+        ]
+      },
+      {
+        "heading": "Prověřte celý kalendář, nejen jednoho člověka",
+        "body": [
+          "Kromě jmenovaných lidí zjistěte, zda je kalendář veřejný, dostupný organizaci nebo sdílený skupině. Google uvádí, že širší přístup může mít přednost před užším: omezení jedné osoby nezruší už zveřejněné podrobnosti.",
+          "Představte si klubový rozvrh zveřejněný pro členy. Než do něj vložíte osobní schůzku, ověřte jeho publikum. Oprávnění vedle jednoho přítele není jediné důležité nastavení. Soukromé schůzky ukládejte do vhodného kalendáře."
+        ]
+      },
+      {
+        "heading": "Použijte nastavení správného kalendáře Google",
+        "body": [
+          "V Kalendáři Google na počítači najděte daný kalendář, otevřete jeho nabídku a nastavení sdílení. Google popisuje zvlášť osoby či skupiny a širší přístup. Před změnou ověřte název kalendáře a přihlášený účet.",
+          "Při pozvání potvrďte zamýšlenou identitu Google příjemce. Pokud kalendář nenajde, prověřte adresu a zprávu s pozvánkou místo rozšíření přístupu jen kvůli zobrazení. Chybějící zobrazení a nedostatečné právo upravovat jsou různé potíže."
+        ]
+      },
+      {
+        "heading": "Testujte bez soukromých schůzek",
+        "body": [
+          "Použijte běžnou testovací událost bez soukromého názvu, poznámek, místa a seznamu hostů. Požádejte příjemce, aby ověřil, co vidí, a pouze pokud jsou úpravy potřebné a povolené, co může změnit. K testu nesdílejte přihlašovací údaje svého účtu.",
+          "Poznamenejte si kalendář a udělenou roli a po změně ověřte výsledek. Tím kontrolujete zamýšlené uspořádání, nikoli zmizení dříve přečtených či zkopírovaných informací. Netestujte zveřejněním skutečného pracovního plánu."
+        ]
+      },
+      {
+        "heading": "Oddělte pracovní pravidla od tarifů aplikace",
+        "body": [
+          "Google uvádí, že správci firmy nebo školy mohou sdílení omezit. Není-li potřebné nastavení dostupné, použijte schválený postup organizace. Nezveřejňujte pracovní informace jako obcházení omezení účtu.",
+          "Cloud Calendars může zobrazit připojené kalendáře, názvy tarifů ale nemění oprávnění Google. Advanced odstraňuje reklamy; platba nedává jiné osobě přístup ke všem událostem Google. Ověřte sdílení u poskytovatele i přijatý výsledek, nespoléhejte jen na dostupný místní editor."
+        ]
+      },
+      {
+        "heading": "Zkontrolujte a odeberte nepotřebný přístup",
+        "body": [
+          "Po skončení projektu projděte skutečné příjemce, skupiny a širší zveřejnění. Existují-li další cesty přístupu, odebrání jednoho člověka je jen část kontroly. Dohodněte se, kdo plán udržuje a jak se budou řešit další změny přístupu.",
+          "Google zvlášť dokumentuje odebrání osob či skupin a vypnutí širšího sdílení. Odebrání přístupu nevrátí exportovaný soubor, snímek obrazovky ani informace zkopírované jinam. Řešte je s dotčenými lidmi samostatně, neslibujte vymazání všech kopií jedním přepínačem."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Určete kalendář a úkol příjemce.",
+      "Prověřte individuální, skupinový, organizační a veřejný přístup.",
+      "Vyberte oprávnění odpovídající úkolu v aktuálním nastavení Google.",
+      "Před změnou ověřte identitu příjemce.",
+      "Zkontrolujte neškodnou testovací událost z pohledu příjemce.",
+      "Prověřte staré cesty přístupu bez předpokladu, že se předchozí kopie vrátí."
+    ],
+    "faq": [
+      {
+        "q": "Má individuální omezení přednost před veřejným kalendářem?",
+        "a": "Ne. Google uvádí, že při konfliktu nastavení mají širší oprávnění kalendáře přednost. Zkontrolujte veřejné a organizační nastavení i záznam dané osoby."
+      },
+      {
+        "q": "Zpřístupňují všechny možnosti úprav soukromé události stejně?",
+        "a": "Ne. Google popisuje možnost úprav s omezeným přístupem k soukromým událostem odděleně od dalších možností úprav a správy sdílení. Před volbou si přečtěte přesné aktuální oprávnění."
+      },
+      {
+        "q": "Mění zakoupení Advanced práva sdílení Google?",
+        "a": "Ne. Advanced odstraňuje reklamy v Cloud Calendars. Přístup u poskytovatele závisí na oprávněních kalendáře a omezeních organizace."
+      }
+    ],
+    "sourcesHeading": "Aktuální pokyny Google k oprávněním a sdílení",
+    "sources": [
+      {
+        "label": "Google: výběr oprávnění kalendáře",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: sdílení kalendáře a odebrání přístupu",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "updated": "2026-10-21"
+  }
+}

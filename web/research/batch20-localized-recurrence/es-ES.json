@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-21",
+  "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",
+  "short": "Eventos recurrentes",
+  "description": "Comprueba el calendario, los permisos y el alcance antes de cambiar un evento recurrente. Revisa las excepciones sin borrar la serie.",
+  "lede": "Antes de cambiar una cita recurrente, decide exactamente qué fechas deben cambiar. Después, comprueba que el editor ofrece ese alcance. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Todos los editores de calendario preguntan si un cambio se aplica a una sola repetición o a toda la serie.",
+  "sections": [
+    {
+      "heading": "Describe el cambio antes de abrir el editor",
+      "body": [
+        "«Mover una hora la clase del próximo martes» cambia una sola repetición. «A partir del mes que viene, las clases serán los jueves» cambia el horario futuro. «Corregir la sala de todas las reuniones» puede tener un alcance más amplio. Son peticiones distintas, aunque partan de la misma pantalla de detalles del evento.",
+        "Anota la fecha de la repetición seleccionada y las fechas cercanas que deben quedar igual. Una breve lista del antes y el después facilita comprobar el resultado guardado. No uses una serie real para descubrir qué hace un botón de guardar que no conoces."
+      ]
+    },
+    {
+      "heading": "Comprueba el calendario y tus permisos de edición",
+      "body": [
+        "Identifica el calendario al que pertenece el evento y si eres su organizador, tienes permiso de edición o eres un invitado. Poder ver una serie compartida no concede por sí solo permiso para cambiar su horario. Google describe la modificación por parte de los invitados como un permiso que puede conceder el organizador: ver una invitación y gestionarla son capacidades distintas.",
+        "En Cloud Calendars, comprueba que el calendario de destino permite editar. Que un asistente pueda ver una reunión no significa que pueda modificar la invitación del organizador. Si no puedes realizar el cambio previsto, pídelo al organizador en lugar de crear otra invitación que compita con la original."
+      ]
+    },
+    {
+      "heading": "Comprueba el alcance antes de guardar en Cloud Calendars",
+      "body": [
+        "El editor de Cloud Calendars incluye patrones de repetición y el ajuste «End Repeat». Estos controles definen un calendario de repeticiones; no equivalen a elegir a cuáles afecta una edición. Cambiar un evento recurrente existente puede afectar a futuras repeticiones. No cambies la regla de repetición como sustituto de una excepción para una sola fecha.",
+        "Antes de guardar una excepción para una fecha concreta, busca una opción explícita que limite el cambio a esa repetición. Si tu editor no ofrece ese alcance, utiliza el evento original en un editor compatible de su proveedor de calendario. Después, comprueba la fecha afectada y las fechas cercanas en ambos lugares. Los calendarios locales y los proveedores conectados no tienen por qué gestionar las ediciones de series del mismo modo."
+      ]
+    },
+    {
+      "heading": "Utiliza un alcance compatible y comprueba fechas representativas",
+      "body": [
+        "Las instrucciones de Google Calendar para ordenador indican que debes editar el evento recurrente, guardar y elegir qué eventos de la serie reciben la actualización. Lee las opciones que aparecen realmente para ese evento, en lugar de suponer que todos los proveedores usan las mismas etiquetas o admiten los mismos cambios.",
+        "La guía de Calendario de Apple para Mac documenta por separado la frecuencia de repetición, los patrones personalizados y cuándo termina la repetición. Son controles de Calendario de Apple. Sea cual sea el editor compatible que utilices, revisa la fecha cambiada, una fecha anterior que deba permanecer igual y la siguiente repetición normal. Si se trata de una invitación, comprueba también el evento guardado por el organizador: un cambio en tu vista personal no confirma que la reunión se haya movido para todo el mundo."
+      ]
+    },
+    {
+      "heading": "Conserva las excepciones y elige las fechas de fin con criterio",
+      "body": [
+        "Una cita trasladada o una semana omitida son motivos para revisar una serie existente antes de cambiar su regla. Anota primero las excepciones importantes y compruébalas después. No es correcto prometer que cualquier edición de una serie conserva las excepciones, ni afirmar que toda edición las borra automáticamente: el resultado depende de la operación y del proveedor.",
+        "Utiliza una fecha final conocida para un curso o un turno temporal cuando coincida con el horario real. Es razonable que un cumpleaños anual o una reunión continua no tengan un final previsto. No impongas una fecha límite arbitraria a todas las repeticiones ni borres y vuelvas a crear una serie solo porque contiene varias excepciones."
+      ]
+    },
+    {
+      "heading": "Si el resultado es inesperado, conserva los datos para comprobarlo",
+      "body": [
+        "Compara el proveedor al que pertenece el calendario con Cloud Calendars en la fecha exacta afectada. Comprueba el nombre del calendario, la repetición seleccionada, el patrón de repetición y cualquier condición de finalización que puedas consultar. Los títulos similares o una cita copiada por separado pueden parecer un problema de recurrencia; primero identifica qué registro estás viendo.",
+        "Si el proveedor muestra el resultado correcto pero la app no, comunica las versiones de la app y de iOS, el tipo de calendario, el alcance previsto y las fechas afectadas. Si el proveedor también ha cambiado más fechas de las previstas, contacta con el organizador o con el soporte del proveedor antes de realizar más cambios amplios. Evita quitar cuentas, cancelar invitaciones o borrar una serie como pasos de diagnóstico."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Anota qué fechas de la serie deben cambiar y cuáles deben quedar igual.",
+    "Confirma el calendario al que pertenece el evento y quién lo organiza o qué permiso de edición tienes.",
+    "Para una excepción puntual, utiliza un editor que ofrezca explícitamente ese alcance.",
+    "Comprueba una fecha anterior, la fecha cambiada y la siguiente repetición normal.",
+    "Conserva las excepciones existentes y la invitación original mientras investigas una discrepancia."
+  ],
+  "faq": [
+    {"q": "¿Todas las ediciones de eventos recurrentes preguntan por el alcance?", "a": "No. No des por hecho que Cloud Calendars te pedirá elegir el alcance. Comprueba las opciones antes de guardar; si falta la opción para una sola fecha, utiliza un editor compatible del proveedor para esa excepción."},
+    {"q": "¿Todos los eventos recurrentes deberían tener una fecha de fin?", "a": "Utiliza una fecha de fin cuando el horario real la tenga. Los compromisos continuos no necesitan un límite inventado solo para que el calendario parezca más ordenado."},
+    {"q": "¿Cambiar la serie borrará sus excepciones?", "a": "No hay una respuesta universal para todos los proveedores y operaciones de edición. Anota las excepciones importantes y revísalas después del cambio; no supongas que se conservarán con garantía ni que se perderán automáticamente."}
+  ],
+  "sourcesHeading": "Guías oficiales sobre recurrencia y permisos de edición",
+  "sources": [
+    {"label": "Google: Crear y cambiar un evento recurrente en un ordenador", "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"},
+    {"label": "Apple: Configurar eventos de todo el día, de varios días o recurrentes en el Mac", "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"},
+    {"label": "Google: Colaborar en Calendar y permitir que los invitados modifiquen eventos", "url": "https://support.google.com/a/users/answer/13293412?hl=en"}
+  ],
+  "seeAlso": ["drag-an-event-to-move-it", "what-guests-can-do-to-your-event"]
+}

@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-21T22:59:22.452857+00:00",
+  "scope": "Two sources discovered in batch19, outside the original bounded 71-URL corpus. Complete homepage bodies reviewed; no linked documentation or authenticated product use claimed. No publication change based solely on these vendor claims.",
+  "sources": [
+    {
+      "url": "https://syncdate.app/",
+      "status": "full-homepage-body",
+      "readRanges": "42–403 and 452–531; full returned text including menus and testimonials inspected",
+      "publisherClaimSummary": "Calendar-copy rules, field visibility, client busy blocks, CalDAV and feed routes, conflict overwrite and removal options. Describes separate polling schedules and plan windows. Its competitor matrix, timing numbers, privacy and duplicate assurances are publisher claims, not independent findings.",
+      "existingCanonicals": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "disconnect-calendar-integration-without-losing-track"
+      ],
+      "nextAction": "Inspect linked rule/conflict documentation only if it adds a distinct task beyond the existing guides. Do not imply Cloud Calendars implements these automations."
+    },
+    {
+      "url": "https://calconverter.app/",
+      "status": "full-homepage-body",
+      "readRanges": "0–99; complete extracted homepage",
+      "publisherClaimSummary": "Rebuilds a published Outlook ICS feed for subscription elsewhere, describing Windows-to-IANA time-zone normalization, recurrence and encoding. Treat update guarantees, privacy and universal parser compatibility as unverified vendor claims.",
+      "existingIntentFamilies": [
+        "Outlook subscription versus import",
+        "ICS time zone and recurring-series troubleshooting"
+      ],
+      "nextAction": "Read the linked FAQ and primary Microsoft/Apple/Google feed behavior before deciding whether current import/time-zone guides lack a distinct feed-repair explanation. No private feed URL was entered."
+    }
+  ],
+  "limits": [
+    "No Google ranking position or search volume established.",
+    "No ChatGPT citation measurement.",
+    "No live calendar or account connected.",
+    "Original corpus counts remain unchanged."
+  ]
+}

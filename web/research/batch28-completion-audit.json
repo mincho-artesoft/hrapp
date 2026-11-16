@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-22T01:41:12.300178+00:00",
+  "previousGoalTurn": "progress: batch27 publication and batch28 readiness/preparation changed authoritative state; intervening LingoVela image verification was a separate user request.",
+  "currentGoalTurn": "progress: support source integration and two localized CalDAV guides published with full delivery checks.",
+  "objectiveComplete": false,
+  "requirementsEvidence": "batch28-readiness/requirements-audit.json",
+  "completedThisTurn": {
+    "date": "2026-10-22",
+    "newLocalizedGuides": 2,
+    "locales": [
+      "fr-FR",
+      "it"
+    ],
+    "englishGuidesPolished": 1,
+    "canonical": "caldav-calendar-on-iphone",
+    "relatedOnlyBacklinks": 2,
+    "supportContact": {
+      "localizedLabels": 30,
+      "address": "support@arte-soft.com",
+      "canonicalPagesUsingSharedFooter": 513,
+      "standaloneLegacyPageUnchanged": "/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+    },
+    "sitemapUrls": 514,
+    "publicArtifactsExactBuild": 517,
+    "sourceAndDeliveryEvidence": [
+      "batch28-source-qa.json",
+      "batch28-static-qa.json",
+      "batch28-metadata-qa.json",
+      "batch28-invalidation-status.json",
+      "batch28-public-qa.json",
+      "batch28-browser-qa.json",
+      "batch28-caldav-localization/root-primary-readback.json"
+    ],
+    "goalComplete": false,
+    "limits": "Delivery and bounded editorial/visual checks; no discovery lift, mailbox delivery, universal CalDAV support, native runtime or all-language quality claim."
+  },
+  "stillRequired": [
+    "Broader task/keyword research and remaining localized semantic review without duplicate synonym pages.",
+    "Actual new media integration once exact generation source is supplied.",
+    "Resolve release/source correspondence before privacy assurances or declarations.",
+    "Equal elapsed search/citation measurement rather than repeated same-day polling."
+  ],
+  "pendingOwnerInformation": [
+    "Released Cloud Calendars1.7.3 archive/commit provenance",
+    "Exact new screenshot/video generation task or folder"
+  ],
+  "notPerformed": [
+    "Native/backend changes or deployment",
+    "ASC changes or review submission",
+    "Production/customer data queries",
+    "New media generation/upload",
+    "Ranking or citation lift claim"
+  ]
+}

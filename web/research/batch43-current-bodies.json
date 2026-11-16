@@ -1,0 +1,361 @@
+{
+  "date": "2026-10-22",
+  "head": "7fb57c8da9eb19437ec4350e80d0419c6a754939",
+  "decision": "Genuine bounded explanatory gap in reviewed week/year/month guides for week-number convention, first displayed weekday and alternate calendar systems. No defect or Cloud feature existence inferred solely from absence.",
+  "completeReads": [
+    {
+      "locale": "en-US",
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "rawModuleSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+      "objectSha256": "e5d7b1596cc825297b63351fa8c72a2b981bf8bf68336de373caec9b94f7c647",
+      "readScope": "Complete actual current object, all metadata/sections/body/practical/FAQ/source/related; untruncated output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 13,
+        "practical": 6,
+        "faq": 3
+      },
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+        "short": "Read a week calendar clearly",
+        "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+        "lede": "A week grid helps compare when commitments begin and end. Start with the dates and calendars it represents, then use the details when a small block or shortened title leaves a question unanswered. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every visible gap is available time, and every commitment appears as a timed block.",
+        "sections": [
+          {
+            "heading": "Check which week and calendars you are reading",
+            "body": [
+              "Read the date range and day labels before placing an appointment. A selected range is not necessarily the week you had in mind. Check that the work, family or other calendars relevant to this decision are selected, rather than assuming every connected calendar is currently visible.",
+              "For example, a personal view may hide a work calendar to reduce clutter. The clear afternoon it shows does not establish that the work schedule is empty. Bring the relevant calendars into view before offering the slot, and confirm the account behind an unfamiliar colour."
+            ]
+          },
+          {
+            "heading": "Use blocks to compare time, then open the details",
+            "body": [
+              "Compare start, end and overlap on the hour grid. A narrow event can be hard to read, so open it to check the full title, location and calendar. Do not infer a precise duration from the apparent size of a small block alone.",
+              "If two appointments overlap, first establish whether they are separate commitments or two displays of the same record. Similar titles and matching times do not prove duplication. Temporarily hide one calendar to identify the source instead of deleting an invitation to clear the grid."
+            ]
+          },
+          {
+            "heading": "Read all-day events separately from the hourly gaps",
+            "body": [
+              "Cloud Calendars separates all-day events from timed events in its multi-day display. Inspect that area as well as the hour columns. A holiday, trip or all-day commitment can matter even when the timed grid looks empty.",
+              "An all-day label does not by itself tell you which hours you can offer to someone else. Open the event and understand its actual meaning. For travel over several days, check the start and end dates rather than assuming a single visible label describes every affected day."
+            ]
+          },
+          {
+            "heading": "Include the parts of the plan that are not yet appointments",
+            "body": [
+              "A calendar can only display the information available to it. A journey, preparation or recovery period may need its own agreed block if it affects a booking. Seeing space between two saved meetings does not establish that you can travel between their locations in that interval.",
+              "For a workshop after an existing appointment, write down the real travel and setup requirements before choosing a start. This is a planning method, not a claim that Cloud Calendars automatically calculates travel buffers or reserves time in colleagues’ scheduling systems.",
+              "For a confirmed shift from Monday at 22:00 to Tuesday at 06:00, record a timed event with Tuesday explicitly set as the ending date. Reopen the saved event to check both dates, times, calendar and relevant time zone. A Monday label alone does not communicate the Tuesday finish. Before offering a Tuesday morning appointment, allow for your actual journey home and recovery needs. Use the employer’s confirmed rota for the shift itself. If it repeats, follow the recurrence guide below and use a rule only when it matches that rota; a personal calendar change does not approve a shift swap."
+            ]
+          },
+          {
+            "heading": "Switch to a closer view before a consequential edit",
+            "body": [
+              "If the selected range needs more space than the viewport, Cloud Calendars can scroll the day columns rather than squeeze them all into view. Check the day labels as you scroll. Open the day or the event details when a particular commitment needs closer inspection.",
+              "Before dragging or resizing an event, check its calendar, intended local time and repeat scope. After saving a permitted change, reopen it and verify the result. A successful-looking gesture does not prove that the owning service and every participant have accepted the new arrangement."
+            ]
+          },
+          {
+            "heading": "Keep view controls and weather coverage in context",
+            "body": [
+              "Apple Calendar and Teamup document their own week-view controls. Teamup also distinguishes browser configuration from mobile views. Those instructions do not establish the same controls inside Cloud Calendars; choose the view from the app you are actually using.",
+              "A week of appointments is not a guarantee of complete weather information for every day or place. For an outdoor slot, check the selected forecast location and available date and hours separately. Then communicate the final arrangement through the agreed channel."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Check the date range and selected calendars.",
+          "Read exact start and end times when a block is unclear.",
+          "Inspect all-day commitments as well as timed events.",
+          "Account for real travel and preparation before offering a gap.",
+          "Confirm editing permission, local time and recurrence scope.",
+          "Reopen the saved event and confirm important changes directly."
+        ],
+        "faq": [
+          {
+            "q": "Does a blank part of the week mean everyone is free?",
+            "a": "No. It reflects the calendars and information currently displayed. Check hidden commitments and confirm availability with the people involved."
+          },
+          {
+            "q": "Why can a week look empty despite an all-day commitment?",
+            "a": "All-day events are displayed separately from timed blocks. Inspect that area and open the event before offering the time."
+          },
+          {
+            "q": "Should I drag an event whose title I cannot read?",
+            "a": "Open its details first. Confirm its identity, calendar, time and intended edit scope before changing it."
+          }
+        ],
+        "sourcesHeading": "Official view descriptions for comparison",
+        "sources": [
+          {
+            "label": "Apple: month, multiple-day and list views in Apple Calendar",
+            "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+          },
+          {
+            "label": "Teamup: view choices and browser versus mobile settings",
+            "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+          }
+        ],
+        "seeAlso": [
+          "month-view-on-a-bigger-screen",
+          "a-list-for-people-who-dislike-grids",
+          "drag-an-event-to-move-it",
+          "calendar-event-or-room-reservation",
+          "recurring-events-without-the-mess"
+        ]
+      }
+    },
+    {
+      "locale": "en-US",
+      "slug": "the-year-in-one-screen",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "rawModuleSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+      "objectSha256": "e1f3f320d856e84fc8d3104cbb7d51c05c08bd0176958a882d4818b37acec0d6",
+      "readScope": "Complete actual current object, all metadata/sections/body/practical/FAQ/source/related; untruncated output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3
+      },
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview",
+        "short": "Read a year calendar accurately",
+        "description": "Use year view to compare months and dates. Understand colour markers, selected calendars and multi-day events before treating an unmarked period as free.",
+        "lede": "A year overview helps you locate dates across months. It does not replace the event details needed to confirm a trip, deadline or available period. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "A colour marker counts appointments, and an unmarked date proves that nothing is scheduled.",
+        "sections": [
+          {
+            "heading": "Choose the year and check the calendar selection",
+            "body": [
+              "Read the displayed year before comparing a deadline with a holiday. Cloud Calendars has year navigation and month tiles; check that you are looking at the intended year and the calendars that matter to the decision.",
+              "For example, a course organiser can locate the first and final teaching dates before opening those months in detail. Keep the actual dates written down. A visual distance across month tiles is not an exact count of sessions or working days."
+            ]
+          },
+          {
+            "heading": "Read colour markers as an overview, not a count",
+            "body": [
+              "Cloud Calendars’ year cells use distinct event colours as markers. Several events with the same colour can therefore share a marker. Do not translate the number of dots into the number of appointments or occupied hours.",
+              "Colour is a cue to open the date, not an explanation of the commitment. Two calendars can also use a similar colour. Confirm the calendar name and the event’s title before deciding whether a marker represents work, family or a copied record."
+            ]
+          },
+          {
+            "heading": "Open the month and then the relevant event",
+            "body": [
+              "Tap the month to move from the overview towards its dates. Read any extra-event count in month view and open the day or event when a title or interval is unclear. The year tiles are not a full appointment list.",
+              "On iPad, the number of month columns changes with the space available; on a phone you may need to scroll. Do not assume that every month is visible at once, or that a smaller window changes the underlying event dates."
+            ]
+          },
+          {
+            "heading": "Inspect the full interval for trips and other multi-day events",
+            "body": [
+              "A trip beginning in one month and ending in the next needs both dates checked. The year overview groups event information by its start date, so it should not be read as a continuous availability chart for the entire trip.",
+              "Open the original event and compare its start, end and all-day status. If you need separate setup or return commitments, record the real plan deliberately. Do not extend or duplicate the original appointment merely to make more dates show coloured markers."
+            ]
+          },
+          {
+            "heading": "Keep repeating schedules and exact intervals separate",
+            "body": [
+              "A recurring meeting can have exceptions, an end condition or a clock change between two months. Inspect representative occurrences before assuming that a year-long pattern is unchanged. Use an editor with the intended scope when correcting a single date.",
+              "For an exact interval between deadlines, use the dates themselves rather than estimating by the tile layout. State whether you mean calendar days, weeks, working days or sessions; the overview does not automatically make those different counts equivalent."
+            ]
+          },
+          {
+            "heading": "Confirm availability beyond the personal overview",
+            "body": [
+              "A year view reflects the information available from selected calendars. An unmarked stretch is not proof that a colleague can attend, that a venue is open or that an account contains no events outside its synchronized range.",
+              "Teamup documents a different year-view configuration in its browser product. Its resource-planning options are not implied Cloud Calendars features. Once you have chosen candidate dates, inspect the actual appointments and confirm the arrangement with the people involved."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Confirm the year and selected calendars.",
+          "Treat colour markers as cues rather than event counts.",
+          "Open the relevant month, day and event for details.",
+          "Check both ends of multi-day commitments.",
+          "Inspect repeat exceptions and use actual dates for exact intervals.",
+          "Confirm candidate dates with participants and the relevant source calendar."
+        ],
+        "faq": [
+          {
+            "q": "Does one dot mean one event?",
+            "a": "No. The year overview uses distinct event colours. Several same-colour events can share a marker."
+          },
+          {
+            "q": "Does the entire year always fit on one screen?",
+            "a": "No. Available width and layout affect the number of columns, and scrolling may be needed. Open a month for readable event details."
+          },
+          {
+            "q": "Does an unmarked date prove I am available?",
+            "a": "No. Check selected calendars, data availability and events spanning dates, then confirm the intended arrangement."
+          }
+        ],
+        "sourcesHeading": "Official view descriptions for comparison",
+        "sources": [
+          {
+            "label": "Apple: month, multiple-day and list views in Apple Calendar",
+            "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+          },
+          {
+            "label": "Teamup: view choices and browser versus mobile settings",
+            "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+          }
+        ],
+        "seeAlso": [
+          "month-view-on-a-bigger-screen",
+          "recurring-events-without-the-mess",
+          "time-zones-and-the-flight-you-booked"
+        ]
+      }
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/bg/articles.ts",
+      "rawModuleSha256": "f47bb5c198eb4ffbd2deff9ec8deb306e2fdc4cf606b39cd4614b33f79c413cd",
+      "objectSha256": "5bbbbfdc0edba7473826e27848980b7f7206177de25b59058f28c2dc5c63d602",
+      "readScope": "Complete actual current object, all metadata/sections/body/practical/FAQ/source/related; untruncated output.",
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3
+      },
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Месечен календар на iPad и iPhone: вижте датите, после проверете подробностите",
+        "short": "Месечен изглед без пропуснати подробности",
+        "description": "Сравнете датите на iPad или iPhone. Проверете скритите събития, избраните календари и часовете, преди да местите споделени или повтарящи се срещи.",
+        "lede": "Месечният изглед показва на кои дати се падат ангажиментите. Той е по-неподходящ за доказване, че конкретен час е свободен. Изберете дата от общия изглед, после проверете деня и събитието, преди да се ангажирате. Ръководството е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+        "commonBelief": "По-голямата месечна мрежа показва всяка подробност, а привидно празна дата доказва, че всички са свободни.",
+        "sections": [
+          {
+            "heading": "Решете дали са ви нужни дати или точни часове",
+            "body": [
+              "Използвайте месеца, за да сравните краен срок, пътуване и семейна среща през няколко седмици. Ако въпросът е дали две срещи се застъпват в 14:30, преминете към ден или седмица и проверете точните начало и край. Месечната клетка няма времевата скала на часова мрежа.",
+              "Организатор на семинар например може първо да избегне седмица с пътуване. Следва проверка на деня: ангажименти, подготовка, придвижване и необходим край. Празна на вид клетка е възможност за проверка, не потвърдена резервация или сведения за чужда заетост."
+            ]
+          },
+          {
+            "heading": "Прочетете броя на допълнителните събития",
+            "body": [
+              "Текущата месечна клетка на Cloud Calendars показва ограничен брой етикети за събития и допълнителен брой, ако има още. Заглавията са на един ред и може да се съкратят. Отворете деня или събитието, когато са важни пълното заглавие или останалите ангажименти.",
+              "По-голям iPad може да улесни четенето, но не премахва непременно всички ограничения. Тесен прозорец или едър текст променят какво се побира. Проверявайте същото на iPhone: разгледайте деня, преди да приемете видимите етикети за цялата програма."
+            ]
+          },
+          {
+            "heading": "Проверете месеца, избраните календари и съседните дати",
+            "body": [
+              "Прочетете месеца и годината, преди да изберете дата. Мрежата може да включва дни от съседен месец за попълване на редовете. В Cloud Calendars използвайте навигацията по месеци и проверявайте избраната дата, не само позицията на квадратчето.",
+              "Проверете избраните календари. Скриването на работни събития улеснява семейния план, но премахва тези ангажименти от конкретния изглед. При проверка на дубликат скрийте временно един източник и сравнете; не изтривайте среща само за да разредите месеца."
+            ]
+          },
+          {
+            "heading": "Отворете събитието преди промяна на обща уговорка",
+            "body": [
+              "Потвърдете заглавие, собственик или календар, местен час и продължителност в подробностите. Цветът помага при преглед, но не заменя познаването на акаунта и правото за редактиране. Видима покана е различна от среща, която организирате сами.",
+              "Cloud Calendars позволява преместване на събития на друга дата чрез влачене в месечния изглед. Преди реален ангажимент уточнете желаната дата и обхвата на повторенията. След разрешена промяна отворете отново събитието; локален жест не доказва, че доставчикът или всички участници са приели новата уговорка."
+            ]
+          },
+          {
+            "heading": "Проверете повторенията и часовите зони отделно",
+            "body": [
+              "Ако се мести само урокът тази седмица, не променяйте случайно бъдещия модел. Прочетете избора за обхват и после проверете промененото и едно по-късно повторение. Месецът улеснява сравняването, но обхватът на редакция определя ефекта.",
+              "При пътуване или среща между часови зони проверете изрично местната дата и час. Преместването в друг ден не преобразува автоматично замисления час. Проверете смяната на лятно часово време, когато е приложимо, и потвърдете уговорения час с участниците."
+            ]
+          },
+          {
+            "heading": "Използвайте по-големия изглед без смесване на продукти",
+            "body": [
+              "Apple Calendar има свои месечни изгледи, а Teamup описва различни изгледи за браузър и мобилно приложение. Тези настройки принадлежат на съответните продукти. Не търсете браузърната конфигурация на Teamup или менюто на Apple в Cloud Calendars само заради еднакви имена.",
+              "Месец със срещи не е месец с прогнози за времето. За план на открито проверете отделно мястото, датата и достъпните прогнозни часове. Запазете окончателната среща в желания календар и потвърдете промените директно с участниците."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Изберете възможни дати в месеца, после проверете часовете в ден или седмица.",
+          "Отворете дни с допълнителен брой или съкратени заглавия.",
+          "Проверете месец, година и избрани календари преди извод за свободна дата.",
+          "Потвърдете календар, час, продължителност и право за редактиране.",
+          "Прочетете обхвата на повторението и проверете запазения резултат след местене.",
+          "Проверете прогнозата отделно и потвърдете промените с участниците."
+        ],
+        "faq": [
+          {
+            "q": "Месечният изглед на iPad показва ли всички срещи изцяло?",
+            "a": "Не приемайте това. Cloud Calendars ограничава етикетите в клетка и показва допълнителен брой. Отворете деня и събитието за пълната програма."
+          },
+          {
+            "q": "Празен ден означава ли, че съм свободен?",
+            "a": "Първо проверете избраните календари, датата и наличните данни на акаунта. Изгледът представя само текущо достъпната и показана информация."
+          },
+          {
+            "q": "Местенето на повтарящо се събитие променя ли само тази дата?",
+            "a": "Прочетете избора на обхват. След запазване проверете промененото и по-късно повторение, после потвърдете желаната уговорка."
+          }
+        ],
+        "sourcesHeading": "Сравнете официалните описания на изгледите",
+        "sources": [
+          {
+            "label": "Apple: месечен, многодневен и списъчен изглед",
+            "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+          },
+          {
+            "label": "Teamup: изгледи и конфигурация в браузър и приложение",
+            "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+          }
+        ],
+        "seeAlso": [
+          "recurring-events-without-the-mess"
+        ]
+      }
+    }
+  ],
+  "bgInventory": {
+    "weekGuidePresent": false,
+    "yearGuidePresent": false,
+    "relatedMonthRead": true,
+    "limits": "No synthetic missing editions; other Bulgarian bodies not fully reread."
+  },
+  "existingCoverage": [
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "coverage": "Date range/day labels, calendar selection, exact hours/overlap, all-day region, overnight shift Monday22–Tuesday06, scroll/date orientation, permission/repeat and weather bounds.",
+      "absent": "No week-number convention or year-boundary explanation, no first-weekday preference, no alternate-calendar explanation."
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "coverage": "Year navigation/month tiles, distinct-colour markers not counts, month/day drilldown, start-date grouping of multi-day events, recurrence and exact date intervals, personal overview not availability.",
+      "absent": "No numbered-week/year boundary or calendar-system interpretation. The interval instruction to say days/weeks/working days is not instruction about week numbering."
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "coverage": "Month/year/date selection, adjacent-month grid cells, extra-event counts/truncation, permissions/repeat/timezone and weather bounds.",
+      "absent": "No first weekday, numbered-week convention or alternate-calendar setting/content. Timezone discussion is not alternate-calendar coverage."
+    }
+  ],
+  "genuineTask": {
+    "readerQuestion": "Why does a week start on a different day or carry a different week number, and is an alternate calendar a display setting or another event source?",
+    "strongestPlacement": "Expand existing English week-view guide with one bounded explanatory section if verified source evidence supports it; year boundary may be a concise example there. Do not duplicate a generic guide merely for a keyword.",
+    "requiredEvidence": "Current immutable native source for actual Cloud controls, persistence and scope; exact official provider instructions for any Apple/Google controls. Distinguish first displayed weekday from week-number convention and calendar system from account/source; no inferred Cloud control from Apple menus.",
+    "noDraftYet": true
+  },
+  "searchScope": "Targeted lexical scan of English planning module and actual BG article modules for week number/first day/alternate calendar terms. One Bulgarian alternative-plan phrase was a false positive, not calendar-system evidence. Conclusions rest on the three complete body reads, not regex counts.",
+  "limits": [
+    "No fresh web/native/runtime inspection in this editorial task.",
+    "No claim that week numbering/alternate calendars are unsupported by Cloud; task gap is prose coverage only.",
+    "No broad all-language or entire-site approval.",
+    "No source/build/ASC edits; research JSON only."
+  ],
+  "hashMethod": "Raw exact file bytes and UTF8 JSON.stringify parsed object in insertion order."
+}

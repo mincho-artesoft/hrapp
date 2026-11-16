@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22T00:39:52.157Z",
+  "count": 1,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "sections": 9,
+      "faqs": 4,
+      "sources": 8,
+      "updated": "2026-10-22",
+      "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+      "descriptionCharacters": 150
+    }
+  ]
+}

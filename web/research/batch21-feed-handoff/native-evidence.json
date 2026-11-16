@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-22",
+  "scope": "Read-only current native source and full current English secret-address article. No runtime, released binary, OS URL selection, provider account or production-feed verification.",
+  "classification": "General external webcal/ICS subscription handoff into Cloud Calendars not established. Scoped Cloud invitation import and app-managed feed refresh established in source.",
+  "evidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "readRanges": [
+        [
+          165,
+          194
+        ]
+      ],
+      "finding": "Both browsing user activity and onOpenURL first parse a shared-calendar invitation, then resolve a shared-event payload and present the corresponding import sheet. No arbitrary URL subscription dispatch appears in these handlers."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportPayload.swift",
+      "sha256": "e054649e91629e750d0aec98157b4285b03fd2e67b0263d9aa8f3c6f54fea888",
+      "readRanges": [
+        [
+          55,
+          99
+        ]
+      ],
+      "finding": "Accepted route classes are Cloud shared-event custom scheme, scoped server invitation and matching App Clip link. Syncability requires eventID plus feedID. Arbitrary webcal, file and ordinary .ics HTTPS URLs do not match these guards."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventInvitationResolver.swift",
+      "sha256": "8513651ba012e6a2c782812d5a8b96bd0ac6db128ceb00e6a31c29bcb950d4f6",
+      "readRanges": [
+        [
+          1,
+          49
+        ]
+      ],
+      "finding": "Fallback resolution accepts the specific HTTPS event-invites/open path and allowed host, validates canonical IDs, fetches the app feed and selects an event by UID. It is not a general feed URL importer."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "readRanges": [
+        [
+          4,
+          46
+        ],
+        [
+          189,
+          230
+        ]
+      ],
+      "finding": "Calendar payload parses scoped shared-calendar routes and owner/calendar IDs. Accept requires an app session, invokes the app API, then applies app-local data or reconciles the shared calendar. It does not install an arbitrary calendar subscription URL."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "readRanges": [
+        [
+          18,
+          100
+        ]
+      ],
+      "finding": "Importer requests calendar access, chooses an existing writable calendar, writes an EKEvent and records identified app invitations for later refresh. It does not create an EventKit subscription calendar. Identified imports can remain app-tracked rather than being immutable snapshots."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportView.swift",
+      "sha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "readRanges": [
+        [
+          87,
+          98
+        ],
+        [
+          271,
+          312
+        ]
+      ],
+      "finding": "Open Settings opens the permission settings URL, not a calendar feed. Add invokes SharedEventImporter and destination choices are writable EventKit calendars."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedInviteRefresher.swift",
+      "sha256": "39aa3028f7e4e58a8feb9a4e933846229907a006e68854f9519f440442f52e18",
+      "readRanges": [
+        [
+          11,
+          34
+        ],
+        [
+          228,
+          251
+        ]
+      ],
+      "finding": "Refresh loops over app-tracked invites; builds the app HTTP feed URL from feedID, fetches ICS and finds the matching UID. Revoked tracked records are skipped. This is app-managed reconciliation, not OS subscription registration or an arbitrary external feed poller."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "readRanges": [
+        [
+          345,
+          390
+        ]
+      ],
+      "finding": "Endpoint helper can construct a webcal URL and an HTTPS /f/<id>.ics URL. Repository Swift search found the webcal helper definition but no caller. HTTP helper is used by the tracked-invite refresher. Construction alone proves neither launching nor installing a subscription."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "readRanges": [
+        [
+          617,
+          626
+        ]
+      ],
+      "finding": "Grant model contains feedUrl and webcal strings. Data-model fields do not prove a receiver UI or OS handoff."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/CloudCalendarsAppClip.swift",
+      "sha256": "081095c82b5d05f757feb35526f23d9ad094cca40466e90e1afb644e5b843e4e",
+      "readRanges": [
+        [
+          25,
+          59
+        ]
+      ],
+      "finding": "App Clip receives activity/openURL and routes to shared-calendar or event previews/handoff. These handlers do not establish global webcal registration or external ICS import."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Info.plist",
+      "sha256": "783e930bbc740ffbac3b09b7826e016cf165c2f59b72646df2339ee142cc4137",
+      "readRanges": [
+        [
+          22,
+          42
+        ]
+      ],
+      "finding": "Declared URL schemes are provider authentication callbacks plus cloudcalendars. No webcal scheme in this declaration. No ICS document type declaration found in inspected plist/project configuration."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        [
+          641,
+          742
+        ]
+      ],
+      "finding": "Inspected add/connect UI offers local calendar, iCloud calendar, app sharing, Google sign-in and Premium-gated Microsoft sign-in. No paste-feed/subscribed-calendar URL entry located in this section."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          667,
+          679
+        ]
+      ],
+      "finding": "Loads calendars exposed by EventKit. This can support rendering accessible system calendars but does not prove a particular external subscription will be visible or refreshed on every device."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/AppDelegate.swift",
+      "sha256": "696ce26a8f20413e769564f64e175a76ebd2ed560ca5074a7ce9ead18689ae40",
+      "readRanges": [
+        [
+          7,
+          48
+        ]
+      ],
+      "finding": "Launch/scene delegate setup inspected; focused method search did not identify an alternate general URL/document subscription handler."
+    }
+  ],
+  "searchScope": {
+    "roots": [
+      "Calendar",
+      "CalendarAppClip"
+    ],
+    "extensions": [
+      "swift",
+      "plist"
+    ],
+    "additionalConfiguration": "Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.pbxproj",
+    "terms": [
+      "webcal",
+      ".ics",
+      "onOpenURL",
+      "onContinueUserActivity",
+      "continueUserActivity",
+      "CFBundleDocumentTypes",
+      "LSItemContentTypes",
+      "public.ics",
+      "com.apple.ical",
+      "feedURL(",
+      "httpFeedURL",
+      "ICSEvent",
+      "subscription URL"
+    ],
+    "method": "Broad matches followed by actual handlers, payload guards, callers, importer and refresh implementations; excluded billing subscriptions from feed conclusions.",
+    "limitations": "Bounded negative searches are not a universal absence proof across OS interfaces/dependencies. Initial guessed project path failed; actual project path was located and searched. No customer URLs or account state read."
+  },
+  "establishedControls": [
+    "App invitation import sheet and writable-calendar selection.",
+    "Scoped shared-calendar acceptance, with sign-in when no session exists.",
+    "Google and Microsoft provider connection actions separate from feed addresses.",
+    "Location of EventKit calendar loading, without proving runtime external-feed coverage."
+  ],
+  "unestablishedBehavior": [
+    "Pasting a Google secret address into a Cloud Calendars subscription field.",
+    "Opening arbitrary webcal links directly in Cloud Calendars as the OS handler.",
+    "Importing an arbitrary downloaded ICS file through a registered document type.",
+    "A currently reachable action invoking the unused webcal-construction helper.",
+    "Whether any particular iOS/browser/default-app configuration routes an external feed to Apple Calendar or another application.",
+    "Universal visibility or timing of system-added subscriptions inside Cloud Calendars."
+  ],
+  "articleReview": {
+    "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-google.ts",
+    "sha256": "2b4ff65dc196cde951d3b122743ef120aaf0c4785137018cf1c89f8b665fa1e7",
+    "slug": "the-secret-address-of-a-google-calendar",
+    "readScope": "Complete current object: metadata, all six sections/twelve paragraphs, six practical steps, three FAQs, three sources and related routes.",
+    "decision": "No concrete false direct-import or paste-URL claim found. Optional clarification useful.",
+    "finding": "Article correctly distinguishes account connection, Google own-use read-only address, general subscription versus import, Cloud sharing roles and receiver timing. Its generic receiver instructions do not promise a Cloud subscription control.",
+    "qualification": "The broad sentence that an imported file creates a separate copy should not be applied to the special Cloud invitation flow as a claim that it can never update; identified app imports are tracked and refreshed.",
+    "proposedInsertion": "A Google secret address is not a Cloud Calendars invitation link. This guide does not establish a paste-address subscription control or direct webcal handoff in Cloud Calendars. Follow the receiving application’s supported subscription instructions, then check the calendar that actually appeared. Cloud Calendars invitations can create a copy that the app tracks for later changes; that is a separate flow from subscribing to an external Google feed.",
+    "suggestedPlacement": "After sections[3].body[0], or a shorter FAQ if keeping the six-section shape.",
+    "sourceBoundary": "Current article source URLs were read as article fields, not newly fetched provider documentation in this task."
+  },
+  "recommendation": "Do not publish Cloud-specific arbitrary feed installation steps from this evidence. Attribute any proposed Apple/provider subscription route to its own current official documentation and verify intended receiver behavior separately.",
+  "checks": {
+    "nativeWrites": 0,
+    "appOrCalendarActions": 0,
+    "builds": 0,
+    "deployments": 0,
+    "paidApis": 0,
+    "sourceIntegration": false
+  }
+}

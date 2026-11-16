@@ -1,0 +1,15 @@
+{
+  "locale": "hi",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "आपके पास जितने भी कैलेंडर हैं — iCloud, Google, Microsoft — सब एक जगह, और पूर्वानुमान ख़ुद उसी दिन के भीतर बना हुआ। दोपहर कैसी रहेगी, इसका अंदाज़ा लगाना बंद कीजिए।",
+      "after": "iPhone और iPad पर चुने हुए iCloud और Google कैलेंडर देखिए, अपनी योजनाओं के साथ उपलब्ध मौसम की जानकारी भी। Premium में Microsoft कैलेंडर जोड़ने की सुविधा मिलती है।"
+    },
+    {
+      "path": "metaDescription",
+      "before": "आपके कैलेंडर और पूर्वानुमान, एक ही जगह। iPhone और iPad के लिए बनाया गया। iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iPhone और iPad पर iCloud और Google कैलेंडर, मौसम और विजेट। मुफ़्त डाउनलोड; Premium में Microsoft कैलेंडर और Teams भी।"
+    }
+  ]
+}

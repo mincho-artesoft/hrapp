@@ -1,0 +1,101 @@
+View multiple calendars at the same time in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+Outlook.com
+New Outlook for Windows
+Outlook Web App
+Get help with Copilot
+How can I open a calendar in a new window in classic?
+Show me how I can't seem to create additional calendars.
+View multiple calendars at the same time in Outlook for me.
+You can view multiple calendars at the same time side-by-side or combined into a stacked overlay view to help you check availability across calendars.
+Select a tab option below for the version of Outlook you're using.
+What version of Outlook do I have?
+New Outlook
+Classic Outlook
+Web
+Note
+If the steps under this
+New Outlook
+tab don't work, you might not be using new Outlook for Windows yet. Select
+Classic Outlook
+and follow those steps instead.
+Open a calendar in side-by-side view in new Outlook
+On the navigation bar, select
+Calendar
+.
+From your Calendar list, select the other calendar(s) you want to view in addition to the default calendar.
+To view the calendar side-by-side, in the
+Arrange
+group, select
+Split view
+.
+Overlay the calendars in new Outlook
+To view multiple calendars in a single calendar view, in the
+Arrange
+group, deselect
+Split view
+.
+The calendar events appear overlayed on the default calendar with their assigned color.
+Open a calendar in a new window in classic Outlook
+In
+Calendar
+, in the
+Navigation Pane
+, right-click the name of the calendar that you want to view.
+Select
+Open in New Window
+.
+Open a calendar in side-by-side view in classic Outlook
+In
+Calendar
+, in the
+Navigation Pane
+, select the check box of another calendar that you want to view.
+The calendar that you selected opens next to the calendar that already appears.
+Overlay the calendars in classic Outlook
+In
+Calendar
+, in the
+Navigation Pane
+, select the check box of another calendar that you want to view.
+The calendar that you selected opens next to calendar that is already displayed. Each successive calendar opens next to the one most recently opened.
+On the calendar tab, select
+View in Overlay Mode
+.
+That calendar is now in overlay mode with the one you opened first — usually your default calendar.
+To add another calendar to the overlay, repeat step 2.
+Remove a calendar from the overlay stack in classic Outlook
+In
+Calendar
+, on the tab of the calendar that you want to remove from the overlay stack, select
+View in Side-by-Side Mode
+.
+The tab moves back to the side. The calendar that you selected no longer appears in overlay mode.
+To remove a calendar from view, clear its check box in the Navigation Pane or select
+Close
+on the calendar tab.
+Top of Page
+Open a calendar in side-by-side view in Outlook on the web or Outlook.com
+On the navigation bar in the web version of Outlook, select
+Calendar
+.
+From your Calendar list, select the other calendar(s) you want to view in addition to your default calendar.
+To view the calendar side-by-side, in the
+Arrange
+group, select
+Split view
+.
+Overlay the calendars in Outlook on the web or Outlook.com
+To view multiple calendars in a single calendar view, in the
+Arrange
+group, deselect
+Split view
+.
+The calendar events appear overlayed on the default calendar with their assigned color.
+Related articles
+View multiple calendars in Outlook for Mac

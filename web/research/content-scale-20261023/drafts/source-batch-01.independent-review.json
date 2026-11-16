@@ -1,0 +1,463 @@
+{
+  "reviewedAt": "2026-10-23T09:20:00.184806+00:00",
+  "reviewer": "Codex independent architecture/editorial agent",
+  "scope": "First8 technical drafts, exact cached official source bodies, current live source spot-checks, complete73-article English corpus lexical comparison and manual reading of closest full articles. No source edits, no publication approval, no API spending.",
+  "sourceBatchSha256": "dc1782e4913b923ff28d774841463f0cabade2fea5a52949be159500d68d9572",
+  "resultCounts": {
+    "approveEditorially": 7,
+    "revise": 1,
+    "hold": 0
+  },
+  "globalIntegrationCorrections": [
+    {
+      "severity": "required-before-publication",
+      "issue": "Bare rfc5545/rfc5546 URLs resolve to RFC information landing pages, while intended section anchors belong to full HTML documents.",
+      "correction": "Normalize each visible RFC citation and editorial evidence URL to https://www.rfc-editor.org/rfc/rfcNNNN.html#section-X. Cached plaintext already supports the claims; this fixes reader navigation."
+    },
+    {
+      "severity": "required-before-publication",
+      "issue": "Draft editorial evidence has retrievedAt, while build manifest expects verifiedAt and approval metadata.",
+      "correction": "After applying review fixes, add truthful verifiedAt dates and a named accountable reviewer/checkedAt. Keep draft status until root performs final integration review; do not mechanically mark all approved."
+    }
+  ],
+  "duplicateReviewMethod": {
+    "corpusEnglishArticles": 73,
+    "allFullTextsCompared": true,
+    "algorithm": "TF-IDF cosine over title,lede,all section paragraphs,practical steps and FAQ; removes common stopwords. Not a pass/fail threshold and not proof of intent uniqueness.",
+    "manualClosestFullArticlesRead": [
+      "what-an-all-day-event-really-means",
+      "time-zones-and-the-flight-you-booked",
+      "calendar-export-ics-pdf-and-backup",
+      "recurring-events-without-the-mess",
+      "what-calendar-sync-actually-does",
+      "a-calendar-that-is-yours-to-share",
+      "what-guests-can-do-to-your-event",
+      "sharing-one-event-not-your-calendar",
+      "keeping-track-of-who-replied"
+    ],
+    "decision": "No exact new-versus-existing duplicate identified. Dedicated Google ownership workflow has meaningful overlap with existing export subsection; cross-link and shorten the old subsection rather than maintain two equally deep handoff answers."
+  },
+  "sourceBodyFiles": {
+    "rfc5545": "primary-source-text/7113339eed1be6c4.txt",
+    "rfc5546": "primary-source-text/1d00380c66e7fa98.txt",
+    "googleOwnership": "primary-source-text/45412683e0412937.txt",
+    "googleMeetingNotes": "primary-source-text/146fa0bbe141fcb2.txt"
+  },
+  "articles": {
+    "ics-all-day-dtend-exclusive-end-date": {
+      "verdict": "approve",
+      "factsChecked": [
+        "DATE-valued DTSTART with explicit DTEND requires DATE end; DTSTART inclusive and DTEND non-inclusive.",
+        "DATE DTSTART with neither DTEND nor DURATION lasts one day.",
+        "Date-only values and UTC midnight timestamps are different representations, with no blanket provider import guarantee."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+          "section": "3.6.1",
+          "supportingSourceParaphrase": "VEVENT starts inclusively and ends non-inclusively; DATE DTSTART without end or duration implies one day."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "2026-11-02 is Monday; 2026-11-04 Wednesday; 2026-11-05 Thursday.",
+          "[2026-11-02,2026-11-05) contains 2,3,4 November.",
+          "[2026-11-02,2026-11-03) contains one date.",
+          "[2026-11-30,2026-12-03) contains30November,1December,2December."
+        ],
+        "method": "Independently calculated using Python datetime; illustrative, not tested app import."
+      },
+      "overlapDecision": "Keep as narrower file-format diagnostic. Existing all-day guide explains app dates/widgets and briefly warns about raw boundaries; new article adds raw DATE versus DATE-TIME examples and three calculated exclusive-boundary cases. Cross-link instead of duplicating the whole app guide.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "cosine": 0.2528
+        },
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "cosine": 0.1474
+        },
+        {
+          "slug": "a-list-for-people-who-dislike-grids",
+          "cosine": 0.1438
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "85f8948d987cd31b81cd990c25fe70588bb5020fbaaf4d6968dafcc50da54b24"
+    },
+    "icalendar-floating-time-utc-tzid": {
+      "verdict": "approve",
+      "factsChecked": [
+        "Bare DATE-TIME without Z or TZID is floating, regardless of other VTIMEZONE components.",
+        "Trailing Z is UTC; local DATE-TIME plus TZID references a zone. Numeric UTC offset suffix is not a permitted DATE-TIME form.",
+        "Fixed-offset examples are deliberately not asserted as a city DST table or complete VTIMEZONE file."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5",
+          "section": "3.3.5",
+          "supportingSourceParaphrase": "Defines local floating, UTC, and local-with-zone forms and rejects numeric UTC offsets in DATE-TIME values."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "09:00UTC plus02:00=11:00local.",
+          "09:00UTC plus09:00=18:00local.",
+          "Floating09:00 remains09:00local in each recipient zone, implying different instants."
+        ],
+        "method": "Independent fixed-offset arithmetic; not device testing."
+      },
+      "overlapDecision": "Keep as raw interchange-format task. Existing travel-zone guide distinguishes event/display time and provider controls; it does not explain three RFC timestamp syntaxes, malformed numeric offsets or bare timestamps unaffected by VTIMEZONE.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "cosine": 0.1688
+        },
+        {
+          "slug": "recurring-events-without-the-mess",
+          "cosine": 0.1037
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "cosine": 0.1015
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "c63c6e66edc493881ea901efce9e5878496ee8b03b7516eb221941d332b43e30"
+    },
+    "icalendar-uid-sequence-event-updates": {
+      "verdict": "revise",
+      "factsChecked": [
+        "UID is persistent and globally unique; title changes do not establish a new interchange identity.",
+        "SEQUENCE starts0 and organizer CUA increments it on significant revisions; it is not RSVP.",
+        "Moved recurrence identity refers to original start, and Google imports are not continuing sync."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.7",
+          "section": "3.8.4.7",
+          "supportingSourceParaphrase": "UID provides persistent globally unique component identity and correlation across scheduling messages."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4",
+          "section": "3.8.7.4",
+          "supportingSourceParaphrase": "Organizer significant revisions increment a sequence initially0; RSVP is a different attendee parameter."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4",
+          "section": "3.8.4.4",
+          "supportingSourceParaphrase": "RECURRENCE-ID is the original DTSTART of an instance and remains fixed for a given UID/SEQUENCE pair."
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37118?hl=en",
+          "section": "Import overview",
+          "supportingSourceParaphrase": "Imported events do not stay synchronized between source and destination accounts."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "Same UID,SEQUENCE0 at10:00Z followed bySEQUENCE1 at11:00Z is a coherent illustrative organizer revision.",
+          "Text correctly declines to promise universal repeated-file import replacement."
+        ]
+      },
+      "requiredCorrections": [
+        {
+          "location": "sources and editorial evidence",
+          "issue": "Moved-instance RECURRENCE-ID claim is important but its exact supporting section is absent from visible source list.",
+          "correction": "Add RFC5545.html#section-3.8.4.4 to visible sources and the editorial evidence record."
+        }
+      ],
+      "overlapDecision": "Keep; existing export/sync pages distinguish copies from updates but do not teach UID,SEQUENCE or instance identity. The narrowly named technical task and decision table add value.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "cosine": 0.1844
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "cosine": 0.1596
+        },
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "cosine": 0.1515
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "ccf7bccaab159fc61edf17d333533cb802146297f664969a20502dd7d11fcf0b"
+    },
+    "ics-method-cancel-versus-delete-event": {
+      "verdict": "approve",
+      "factsChecked": [
+        "Organizer sends METHOD:CANCEL to affected attendees; UID must match original REQUEST.",
+        "Whole recurring event cancellation omits RECURRENCE-ID; a single instance requires it.",
+        "DTSTAMP,ORGANIZER,SEQUENCE,UID required; cancellation increments sequence.",
+        "STATUS must be CANCELLED for entire-event cancellation and must be omitted when only uninviting specific attendees.",
+        "Familiar fields are not authentication; diagnostic article correctly avoids asserting arbitrary local delete sends provider cancellation."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-3.2.5",
+          "section": "3.2.5",
+          "supportingSourceParaphrase": "Defines CANCEL sender, affected attendees, instance/series scope and event-property requirements, including STATUS distinctions."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-6",
+          "section": "6",
+          "supportingSourceParaphrase": "Scheduling security covers authentication and unauthorized changes."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4",
+          "section": "3.8.4.4",
+          "supportingSourceParaphrase": "Moved occurrences retain original recurrence identity."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "Original16November occurrence moved to17November retains16November recurrence identity.",
+          "No complete hand-made message or claim of firsthand successful cancellation is supplied."
+        ]
+      },
+      "optionalCorrections": [
+        {
+          "location": "Inspect the fields without building an unauthorized message",
+          "suggestion": "For precision, replace \u201cSTATUS:CANCELLED is used\u201d with \u201cSTATUS:CANCELLED is required for whole-event cancellation and must be omitted when only selected attendees are uninvited.\u201d Existing wording is compatible but less explicit than normative source."
+        }
+      ],
+      "overlapDecision": "Keep as iTIP cancellation message investigation. Existing recurrence and sharing guides explain scope and updates without specifying CANCEL/STATUS identity rules.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "cosine": 0.1905
+        },
+        {
+          "slug": "calendar-event-or-room-reservation",
+          "cosine": 0.1838
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "cosine": 0.1619
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "1070286e440729660766e06f0f7a57b28b2facdfb93c553e345402a7815f144c"
+    },
+    "rrule-count-until-excluded-occurrences": {
+      "verdict": "approve",
+      "factsChecked": [
+        "DTSTART counts as first occurrence; COUNT and UNTIL cannot co-occur in one RRULE.",
+        "UNTIL inclusive and matches DTSTART value type; UTC or zone-referenced DTSTART requires UTC UNTIL.",
+        "EXDATE removes generated starts and takes precedence; it does not replenish COUNT."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+          "section": "3.3.10",
+          "supportingSourceParaphrase": "Defines mutually exclusive COUNT/UNTIL, inclusive boundary, DTSTART counted first and required time basis."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+          "section": "3.8.5.1",
+          "supportingSourceParaphrase": "Final recurrence set excludes EXDATE after inclusion generation, with exclusions taking precedence."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "StartingMonday2026-11-02, four weekly starts are2,9,16,23November.",
+          "UNTIL20261123T090000Z includes final09:00Z occurrence; UNTIL08:59:59Z excludes it.",
+          "COUNT4 minus9November leaves2,16,23:three sessions.",
+          "COUNT5 minus9November leaves2,16,23,30:four sessions."
+        ],
+        "method": "Independent date arithmetic, not app behavior certification."
+      },
+      "overlapDecision": "Keep as recurrence-set calculation. Existing recurrence guide teaches safe UI editing scope and end-date choice but does not calculate COUNT/UNTIL/EXDATE results.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "cosine": 0.1577
+        },
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "cosine": 0.146
+        },
+        {
+          "slug": "shift-work-calendar-iphone-rotating-schedules",
+          "cosine": 0.1277
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "2613ce714ded98309467824b43bbc3ede7a3ac784a1509991c320f10ef09c9f6"
+    },
+    "icalendar-exdate-recurrence-id-moved-instance": {
+      "verdict": "approve",
+      "factsChecked": [
+        "EXDATE excludes generated starts rather than assigning replacement start.",
+        "RECURRENCE-ID uses original scheduled start even when override DTSTART moves.",
+        "Separate added event may look equivalent without retaining series identity; RDATE union is distinct from an identified override."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4",
+          "section": "3.8.4.4",
+          "supportingSourceParaphrase": "RECURRENCE-ID identifies original DTSTART of recurrence instance; subsequent range uses recurrence identity rather than current scheduled start."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+          "section": "3.8.5.1",
+          "supportingSourceParaphrase": "EXDATE removes dates from inclusion set and takes precedence."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.2",
+          "section": "3.8.5.2",
+          "supportingSourceParaphrase": "RDATE supplies additional recurrence starts; it contributes a union with RRULE."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "2,9,16November2026 are Mondays;10November is Tuesday.",
+          "Removing09November09:00Z leaves02November09:00Z and16November09:00Z.",
+          "Moving09November09:00Z to10November14:00Z retains RECURRENCE-ID20261109T090000Z and assigns DTSTART20261110T140000Z."
+        ]
+      },
+      "overlapDecision": "Keep as instance-identity explanation. Existing move/recurrence pages tell readers to inspect scope and neighbors but do not show original identity versus new DTSTART or contrast EXDATE/RDATE.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "cosine": 0.1637
+        },
+        {
+          "slug": "drag-an-event-to-move-it",
+          "cosine": 0.152
+        },
+        {
+          "slug": "time-zones-and-the-flight-you-booked",
+          "cosine": 0.132
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "d0d8491bfa14c6ed2a976a791527f323f68a57d504d67a36322658c81ba3c751"
+    },
+    "google-calendar-ownership-transfer-pending-acceptance": {
+      "verdict": "approve",
+      "factsChecked": [
+        "Primary calendars cannot transfer; only current owner can transfer a secondary calendar.",
+        "Work/school recipient must belong to same organization.",
+        "Recipient has60days to accept and former owner remains owner until then.",
+        "Deleting account deletes calendars still owned by that account.",
+        "After acceptance former owner automatically has Make changes and manage sharing permission.",
+        "Event ownership and copying are separate operations; >200guest transfer constraint and conferencing policy note are stated only as event-specific."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://support.google.com/calendar/answer/78739?hl=en",
+          "section": "Before you transfer calendars or events in Google Calendar",
+          "supportingSourceParaphrase": "Lists secondary-calendar eligibility, account deletion consequence,60-day acceptance window and current ownership until acceptance."
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/78739?hl=en",
+          "section": "Transfer a calendar you own",
+          "supportingSourceParaphrase": "Lists current-owner and same-organization restrictions, desktop procedure and former-owner sharing-management permission after acceptance."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "20November request before planned30November closure does not establish acceptance or permit assuming safe deletion.",
+          "Handoff table correctly distinguishes request, pending acceptance, completion and former-owner access; no invented timing calculation."
+        ]
+      },
+      "optionalCorrections": [
+        {
+          "location": "existing calendar-export-ics-pdf-and-backup, For Google distinguish a copy from an ownership handoff",
+          "suggestion": "Existing article already covers eligibility and60-day acceptance. Reduce that subsection to concise copy-versus-ownership distinction and link this dedicated handoff guide, preventing competing full answers."
+        }
+      ],
+      "overlapDecision": "Keep dedicated workflow because source/acceptance/former-owner access and handoff checklist form distinct task, but cross-link from existing export subsection and avoid expanding both into identical transfer guides.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "cosine": 0.2668
+        },
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "cosine": 0.2141
+        },
+        {
+          "slug": "what-guests-can-do-to-your-event",
+          "cosine": 0.1957
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "6bb1268f853e616c140fcae7e4e96c30df7537c47174cca185e72fd60070420d"
+    },
+    "google-calendar-meeting-notes-not-updating": {
+      "verdict": "approve",
+      "factsChecked": [
+        "Google explicitly states meeting-note changes do not update Calendar and event changes do not update note details.",
+        "Document attendee list does not invite guests; document title does not rename Calendar event.",
+        "Organizer Share & attach differs from non-organizer Share, which does not attach.",
+        "Creating notes requires computer; existing event needs modification permission and another attached notes doc can prevent creation.",
+        "Drive file access separate from event details; save without sharing can expose filename without opening access."
+      ],
+      "sourceReferences": [
+        {
+          "url": "https://support.google.com/calendar/answer/6192039?hl=en",
+          "section": "Learn about Meeting notes",
+          "supportingSourceParaphrase": "Lists non-synchronization examples for attendees,title and event-detail changes."
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/6192039?hl=en",
+          "section": "Add meeting notes to events from Google Docs",
+          "supportingSourceParaphrase": "Distinguishes organizer Share & attach from non-organizer Share without attachment."
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/6192039?hl=en",
+          "section": "Sharing options and Troubleshooting",
+          "supportingSourceParaphrase": "Attachments are in Drive; event guests can lack access while seeing filename."
+        }
+      ],
+      "originalExampleCheck": {
+        "result": "pass",
+        "details": [
+          "Fictional10:00to11:00 workshop with addedSam correctly requires separate event guest/time edit, copied note-text edit, and Drive access check.",
+          "Table accurately states the non-implications of each independent change."
+        ]
+      },
+      "overlapDecision": "Keep the document-metadata synchronization task. Existing guest-permission guide covers file access, not stale copied attendee/time metadata or organizer/non-organizer attachment routes. Avoid duplicating full Drive troubleshooting beyond necessary context.",
+      "nearestExistingFullTextMatches": [
+        {
+          "slug": "what-guests-can-do-to-your-event",
+          "cosine": 0.3162
+        },
+        {
+          "slug": "sharing-one-event-not-your-calendar",
+          "cosine": 0.1557
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "cosine": 0.1548
+        }
+      ],
+      "substantiveFactResult": "No unsupported runtime, measured result or paid-feature claim found; citations checked as documented semantics.",
+      "publicationAuthorizedByThisReview": false,
+      "draftSha256": "3a8f063cbd75dccd18a14aab9e47450435c86b1b29956ad6254caa681c4a3af6"
+    }
+  },
+  "limits": [
+    "Editorial approval here is a recommendation only, not release authorization.",
+    "Provider documentation is not firsthand Cloud Calendars runtime testing.",
+    "No assurance of search volume, Google indexing, ranking or complete originality across the web."
+  ]
+}

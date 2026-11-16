@@ -1,0 +1,681 @@
+import type { LocalisedArticle } from '../types';
+
+export const PRIORITY_ID: Readonly<Record<string, LocalisedArticle>> = {
+  "forecast-beside-every-event": {
+    "title": "Periksa cuaca per jam untuk acara kalender di iPhone dan iPad",
+    "short": "Cuaca untuk jam acara",
+    "description": "Cocokkan lokasi, tanggal, dan jam acara Anda dengan prakiraan cuaca yang tersedia.",
+    "lede": "Untuk memeriksa cuaca bagi sebuah acara kalender, cocokkan tiga hal: tempat acara, tanggal lokalnya, dan rentang waktu dari mulai hingga selesai. Di Cloud Calendars, pilih lokasi cuaca dan periksa jam yang tersedia. Alamat acara dan ikon cuaca di dekatnya saja bukan bukti bahwa keduanya cocok. Arte Soft, pengembangnya, menerbitkan panduan ini.",
+    "commonBelief": "Bahwa ikon cuaca harian pada kalender adalah fitur yang sama dengan prakiraan yang terlampir pada sebuah acara.",
+    "sections": [
+      {
+        "heading": "Mulai dari lokasi dan tanggal",
+        "body": [
+          "Buka prakiraan untuk lokasi yang dituju dan bandingkan tanggalnya dengan entri kalender. Cuaca kalender dapat mencerminkan lokasi cuaca yang dipilih, jadi pastikan itu sesuai untuk acara tersebut, alih-alih berasumsi bahwa alamat acara yang menentukannya.",
+          "Sebuah acara bulan depan dapat sudah ada sebelum data cuaca untuk tanggal tersebut tersedia. Biarkan acaranya tetap ada dan lihat kembali prakiraan saat tanggalnya sudah lebih dekat; entri cuaca yang tidak ada bukan prediksi cuaca cerah."
+        ]
+      },
+      {
+        "heading": "Gunakan detail per jam untuk pertanyaan per jam",
+        "body": [
+          "Ringkasan harian dan prakiraan per jam menjawab pertanyaan yang berbeda. Jika acara berlangsung dari pukul dua hingga lima, periksa jam-jam yang tersedia dalam rentang itu, bukan menganggap satu ikon harian sebagai gambaran lengkap.",
+          "Jika hanya sebagian dari rentang waktu yang tersedia, biarkan sisanya belum terjawab. Aplikasi ini tidak menjanjikan cuaca per jam yang lengkap untuk setiap acara yang dapat Anda buat, dan panduan ini juga tidak menjanjikan bahwa membuka acara apa pun selalu menampilkan seluruh rentang cuacanya."
+        ]
+      },
+      {
+        "heading": "Pisahkan kemungkinan, jumlah, dan waktu",
+        "body": [
+          "Baca label pada nilai yang sedang Anda periksa. Probabilitas presipitasi bukan jumlah atau durasi curah hujan. Demikian pula, nilai per jam dan ringkasan harian mencakup periode yang berbeda; bandingkan periode yang sejenis saat mempertimbangkan dua kemungkinan waktu.",
+          "Pilih cadangan yang sesuai dengan paket Anda, alih-alih menganggap satu persentase sebagai aturan universal untuk tetap lanjut atau membatalkan. Informasi cuaca dapat berubah, jadi periksa kembali saat keputusan perlu dibuat."
+        ]
+      },
+      {
+        "heading": "Tinjau sebelum menyimpan acara berbasis cuaca",
+        "body": [
+          "Aplikasi dapat memulai draf acara dari satu jam prakiraan. Tinjau tanggal, waktu mulai, waktu selesai, dan kalender tujuan pada draf sebelum menyimpan. Memilih prakiraan tidak menggantikan pemeriksaan bahwa Anda membuat rencana yang benar.",
+          "Jika akses kalender atau kalender tujuan mencegah penyimpanan, selesaikan izin tersebut secara terpisah dari akses cuaca. Menemukan prakiraan tidak memberi hak edit pada kalender bersama."
+        ]
+      },
+      {
+        "heading": "Gunakan prakiraan lengkap saat ringkasan tidak cukup",
+        "body": [
+          "Untuk aktivitas luar ruangan, periksa variabel yang relevan untuk aktivitas itu dan lokasi yang benar-benar Anda pilih. Widget cuaca saat ini atau demo beranda bukan pengganti untuk memeriksa jam prakiraan yang tersedia di aplikasi.",
+          "Jika Anda melihat perbedaan, bandingkan dulu lokasi dan stempel waktunya. Penyedia, lokasi yang dipilih, dan periode prakiraan yang berbeda dapat menghasilkan tampilan berbeda tanpa membuktikan bahwa acara kalender telah berubah."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Konfirmasikan lokasi dan tanggal acara.",
+      "Periksa jam yang tersedia sepanjang aktivitas.",
+      "Baca probabilitas dan jumlah sebagai nilai yang berbeda.",
+      "Tinjau draf acara sebelum menyimpan."
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-23",
+    "faq": [
+      {
+        "q": "Apakah setiap acara memiliki prakiraan lengkap?",
+        "a": "Tidak. Cakupan bergantung pada lokasi yang dipilih serta tanggal dan jam yang tersedia."
+      },
+      {
+        "q": "Apakah ikon cuaca khusus untuk alamat acara?",
+        "a": "Jangan menyimpulkan itu hanya dari kedekatannya dengan acara. Konfirmasikan lokasi cuaca secara terpisah."
+      },
+      {
+        "q": "Apakah mengetuk satu jam akan menyimpan acara baru?",
+        "a": "Tindakan itu memulai draf acara jika tersedia. Tinjau tanggal, waktu, dan kalendernya sebelum menyimpan."
+      }
+    ],
+    "sourcesHeading": "Sumber cuaca dan pengaturan lokasi",
+    "sources": [
+      {
+        "label": "Apple: prakiraan WeatherKit dan ketersediaan menurut wilayah",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple: Privasi dan Layanan Lokasi",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ],
+    "comparison": {
+      "heading": "Pemeriksaan praktis sebelum acara luar ruangan",
+      "columns": [
+        "Pemeriksaan",
+        "Contoh",
+        "Keputusan"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Lokasi",
+            "Acara berlangsung di kota lain.",
+            "Pilih tujuan itu dalam tampilan cuaca dan baca namanya."
+          ]
+        },
+        {
+          "cells": [
+            "Periode",
+            "Kegiatan berlangsung dari 14:00 hingga 16:00.",
+            "Periksa kedua jam tersebut, beserta persiapan atau perjalanan yang relevan."
+          ]
+        },
+        {
+          "cells": [
+            "Cakupan",
+            "Hanya sebagian jam yang dibutuhkan yang tersedia.",
+            "Biarkan rencana tetap sementara dan jadwalkan pemeriksaan lain."
+          ]
+        },
+        {
+          "cells": [
+            "Acara yang disimpan",
+            "Anda memulai draf dari satu jam cuaca.",
+            "Tinjau tanggal, zona waktu, durasi, dan kalender tujuan sebelum menyimpan."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "week-left"
+    ],
+    "galleryCaption": "Tampilan cuaca dan mingguan menunjukkan bagian yang berbeda dari tugas perencanaan yang sama. Konfirmasikan lokasi prakiraan secara terpisah dari lokasi acara.",
+    "actionHeading": "Bandingkan prakiraan dengan acara Anda yang sebenarnya",
+    "actionText": "Gunakan Cloud Calendars di iPhone atau iPad untuk meninjau prakiraan yang tersedia dan jadwal Anda. Cuaca membantu pilihan Anda; cuaca tidak otomatis memindahkan acara atau mengonfirmasi perubahan kepada peserta.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Pahami tampilan kalender dan cuaca"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Pilih ringkasan Home Screen yang cepat"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Periksa kalender di balik jadwal Anda"
+      }
+    ]
+  },
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-23",
+    "title": "Widget kalender di iPhone dan iPad: acara mendatang dan cuaca",
+    "short": "Acara mendatang di Home Screen",
+    "description": "Pilih widget Cloud Calendars untuk acara mendatang, tanggal, atau cuaca.",
+    "lede": "Pilih Calendar Events atau Calendar Events Large jika Anda ingin melihat acara mendatang di Home Screen. Pilih Calendar & Weather untuk tampilan tanggal dan cuaca. Tata letak ini menjawab pertanyaan yang berbeda; pratinjau opsi yang tersedia di perangkat Anda sebelum menambahkannya. Panduan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Pilih dulu tata letak acara",
+        "body": [
+          "Di galeri widget Cloud Calendars, Calendar Events adalah tata letak daftar acara berukuran sedang. Calendar Events Large memberi ruang lebih untuk acara mendatang. Calendar & Weather adalah tata letak tanggal dan cuaca yang terpisah; ukuran kecilnya tidak menjanjikan baris acara berikutnya. Nama dapat tampil dalam terjemahan di perangkat Anda.",
+          "Di iPhone, tekan lama area kosong di Layar Utama, pilih Edit dan Add Widget, lalu cari Cloud Calendars dan pilih tata letak yang diinginkan. Bandingkan pratinjau sebelum menambahkannya. Petunjuk widget Apple membahas galeri sistem ini; galeri ini terpisah dari tampilan kalender di dalam app."
+        ]
+      },
+      {
+        "heading": "Tambahkan dan periksa widget di iPad",
+        "body": [
+          "Di iPad, gunakan galeri widget Layar Utama dari Apple: tekan lama latar belakang, buka Edit, lalu Add Widget. Cari Cloud Calendars, periksa gaya dan ukuran yang tersedia, tambahkan tata letak yang Anda perlukan, atur posisinya, lalu akhiri dengan Done. Ikuti kontrol yang ditampilkan oleh versi iPadOS Anda; pratinjau bukan konfirmasi bahwa data kalender Anda sudah dimuat.",
+          "Pilih Calendar Events atau Calendar Events Large saat Anda memerlukan acara. Bandingkan gaya yang ditawarkan oleh app yang terpasang; ubin tanggal dan cuaca menjawab kebutuhan yang berbeda dari daftar acara.",
+          "Buka Cloud Calendars di iPad tersebut dan cari satu acara berjadwal di masa mendatang yang Anda kenali dalam kalender yang dipilih. Tampilan yang benar di iPhone tidak memastikan akun, akses, atau data yang dimuat di iPad. Bandingkan judul, tanggal, dan waktu mulainya, lalu lanjutkan ke pemeriksaan kelayakan dan pembaruan di bawah jika widget berbeda."
+        ]
+      },
+      {
+        "heading": "Periksa apa yang dihitung sebagai mendatang",
+        "body": [
+          "Tampilan acara menggunakan kalender yang dipilih dan acara berjadwal di masa mendatang. Entri sepanjang hari dan acara yang waktu mulainya sudah lewat tidak disertakan dalam daftar mendatang ini. Karena itu, ulang tahun atau rapat yang sedang berlangsung dapat terlihat di app tetapi tidak muncul di sini.",
+          "Misalnya, jika satu-satunya entri Anda hari ini adalah label perjalanan sepanjang hari, daftar mendatang yang kosong tidak berarti label perjalanan itu hilang. Buka app untuk memeriksa hari secara lengkap. Demikian juga, acara berjadwal berikutnya bisa jadi besok atau lebih lambat; baca tanggalnya alih-alih menganggap setiap baris adalah hari ini."
+        ]
+      },
+      {
+        "heading": "Bedakan acara yang hilang dari daftar yang kehabisan baris",
+        "body": [
+          "Widget menampilkan jumlah terbatas acara mendatang. Jika acara yang lebih awal sudah memenuhi barisnya, acara yang lebih belakangan bisa tidak terlihat meskipun ada di app dan memenuhi syarat untuk daftar mendatang. Tata letak acara yang lebih besar dapat menampilkan lebih banyak baris; tetap saja itu bukan kalender lengkap.",
+          "Mulailah dari acara berjadwal terdekat di masa mendatang dalam kalender yang dipilih. Jika acara itu muncul tetapi acara yang lebih belakangan tidak, buka app untuk memeriksa sisa jadwal. Jika acara terdekat yang memenuhi syarat juga tidak ada, lanjutkan dengan pemeriksaan pemilihan kalender, akses, dan pembaruan. Jangan memindahkan atau menghapus acara hanya untuk membuat entri yang lebih belakangan muncul."
+        ]
+      },
+      {
+        "heading": "Jadikan app sebagai pembanding pertama",
+        "body": [
+          "Buka Cloud Calendars dan cari satu acara berjadwal tertentu di masa mendatang. Pastikan kalender pemiliknya dipilih dan app memiliki akses kalender yang diperlukan. Bandingkan judul, tanggal, dan waktu mulai dengan widget. Jika acara itu juga tidak ada di app, periksa dulu akun atau sinkronisasinya.",
+          "Gunakan acara uji yang aman di kalender milik Anda jika Anda memerlukan contoh yang jelas. Beri waktu mulai di masa mendatang dan judul yang mudah dikenali. Hindari mengubah undangan nyata atau menghapus akun hanya untuk menguji Layar Utama."
+        ]
+      },
+      {
+        "heading": "Berikan waktu untuk pembaruan tanpa menganggap ada batas waktu tetap",
+        "body": [
+          "Widget menampilkan informasi yang tersimpan dan tidak berjalan terus-menerus seperti app yang sedang dibuka. Apple mengatur jadwal pembaruannya. Membuka app dan memeriksa acara memberi Anda titik pembanding yang segar, tetapi itu tidak menetapkan jumlah detik yang pasti sebelum widget harus berubah.",
+          "Jika app tetap benar sementara widget masih salah, catat tata letak, kalender yang dipilih, waktu acara, serta versi app/iOS. Daftar kosong, acara lama, dan waktu yang salah adalah pengamatan yang berbeda; laporkan yang mana yang Anda lihat."
+        ]
+      },
+      {
+        "heading": "Baca cuaca sebagai ringkasan terpisah",
+        "body": [
+          "Cuaca di samping tanggal bukanlah prakiraan yang melekat pada lokasi dan waktu mulai tiap acara. Sebelum acara luar ruangan, buka tampilan cuaca dan periksa lokasi serta jam yang dimaksud. Ikon kondisi saat ini tidak dapat memastikan kondisi yang akan terjadi pada rapat di waktu yang lebih nanti.",
+          "Simpan widget ini untuk orientasi cepat. Gunakan kalender lengkap untuk komitmen sepanjang hari, detail acara, dan keputusan yang memerlukan seluruh jadwal."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Pilih Calendar Events atau Calendar Events Large untuk daftar acara.",
+      "Verifikasi satu acara berjadwal di masa mendatang dalam kalender yang dipilih.",
+      "Bandingkan tanggal dan waktunya di app sebelum menelusuri masalah widget.",
+      "Catat perbedaan yang tetap ada alih-alih menghapus data kalender."
+    ],
+    "faq": [
+      {
+        "q": "Mengapa ulang tahun saya tidak muncul?",
+        "a": "Daftar mendatang tidak menyertakan acara sepanjang hari. Periksa kalender lengkap untuk ulang tahun dan entri lain yang hanya berupa tanggal."
+      },
+      {
+        "q": "Apakah widget kecil menampilkan rapat berikutnya?",
+        "a": "Tata letak kecil Calendar & Weather menampilkan tanggal dan cuaca. Pilih tata letak daftar acara untuk acara."
+      },
+      {
+        "q": "Apakah tidak adanya acara mendatang berarti saya kosong hari ini?",
+        "a": "Tidak. Entri sepanjang hari, acara yang sedang berlangsung, kalender yang tidak dipilih, dan informasi yang belum diperbarui dapat mengubah kesimpulan itu."
+      }
+    ],
+    "sourcesHeading": "Sumber dan petunjuk Apple",
+    "sources": [
+      {
+        "label": "Apple: Menambahkan dan mengedit widget di iPhone",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple: Menjaga widget tetap terbaru",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      },
+      {
+        "label": "Apple: Menambahkan, mengedit, dan menghapus widget di iPad",
+        "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      }
+    ],
+    "seeAlso": [
+      "choosing-a-widget-size",
+      "a-countdown-to-your-next-meeting",
+      "calendar-on-apple-watch"
+    ],
+    "comparison": {
+      "heading": "Pilih tampilan yang benar-benar Anda butuhkan",
+      "columns": [
+        "Tampilan",
+        "Gunakan untuk",
+        "Periksa sebelum mengandalkannya"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar Events",
+            "Tampilan ringkas untuk acara berjadwal yang akan datang.",
+            "Acara itu termasuk dalam kalender yang dipilih dan belum dimulai."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar Events Large",
+            "Ruang lebih untuk acara mendatang.",
+            "Tata letak yang lebih besar tetap memiliki jumlah baris terbatas."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar & Weather",
+            "Ringkasan cepat tanggal dan cuaca.",
+            "Tata letak kecilnya tidak menjanjikan baris acara mendatang."
+          ]
+        },
+        {
+          "cells": [
+            "Live Activity",
+            "Hitung mundur acara berikutnya yang terpisah di area iPhone yang didukung.",
+            "Ini bukan widget Layar Utama atau tata letak widget Layar Terkunci khusus."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "widgets",
+      "live"
+    ],
+    "galleryCaption": "Widget Layar Utama dan Live Activity adalah tampilan yang terpisah. Pilih tata letak yang sesuai dengan informasi yang Anda perlukan.",
+    "actionHeading": "Tampilkan bagian jadwal Anda yang berguna di Layar Utama",
+    "actionText": "Buka Cloud Calendars, periksa acara berjadwal yang Anda kenali di masa mendatang, lalu tambahkan widget yang sesuai di iPhone atau iPad Anda. App tetap menjadi tempat untuk memeriksa kalender lengkap.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Tinjau cuaca di samping jadwal Anda"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Periksa jam acara luar ruangan"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Periksa akun kalender yang Anda hubungkan"
+      }
+    ]
+  },
+  "onecal-alternative-iphone-calendar-view-or-sync": {
+    "updated": "2026-10-23",
+    "title": "Cloud Calendars atau OneCal? Pilih tampilan gabungan atau sinkronisasi kalender",
+    "short": "Cloud Calendars dan OneCal berdasarkan alur kerja",
+    "description": "Bandingkan OneCal dan Cloud Calendars berdasarkan tampilan, acara yang disalin, kontrol seluler, dan paket.",
+    "lede": "Pilih berdasarkan hasil yang Anda butuhkan: meninjau beberapa jadwal sekaligus, mengedit acara asli, atau menyalin waktu sibuk ke akun lain. Cloud Calendars menyediakan tampilan perencanaan di iPhone dan iPad; OneCal mendokumentasikan Unified Calendar View dan aturan Calendar Sync yang terpisah. Perbandingan ini diterbitkan oleh Arte Soft, pengembang Cloud Calendars.",
+    "commonBelief": "Dua produk yang menampilkan kalender Google, iCloud, dan Outlook pasti menjaga sinkronisasi ketersediaan, edit acara, dan salinan dengan cara yang sama.",
+    "sections": [
+      {
+        "heading": "Pilih antara gambaran umum dan perubahan di akun lain",
+        "body": [
+          "Jika tujuan Anda adalah melihat janji pribadi di samping rapat kerja, Anda memerlukan tampilan gabungan. Jika kalender kerja Anda juga harus memuat blok sibuk untuk janji pribadi itu, Anda memerlukan alur kerja sumber-ke-tujuan yang jelas. Hasil pertama tidak otomatis menghasilkan hasil kedua.",
+          "Cloud Calendars menghadirkan kalender terpilih ke dalam tampilan perencanaan di iPhone dan iPad. OneCal mendokumentasikan Unified Calendar View secara terpisah dari Calendar Sync; penerbitnya menyatakan bahwa Anda dapat menggunakan tampilan itu tanpa mengonfigurasi aturan sinkronisasi. Tentukan hasil mana yang penting sebelum menghubungkan akun atau membandingkan nama langganan."
+        ]
+      },
+      {
+        "heading": "Pahami apa yang dapat diubah oleh acara yang disalin",
+        "body": [
+          "Dokumentasi Calendar Sync OneCal menjelaskan aturan satu arah dan multi-arah yang membuat acara klon. Panduan cakupan terpisahnya menyatakan bahwa edit pada klon tidak diteruskan kembali ke acara asli. Identifikasi acara asli dan kalender pemiliknya sebelum menganggap janji yang disalin sebagai tempat untuk menjadwal ulang rapat.",
+          "Koneksi penyedia Cloud Calendars juga dapat membuat kalender cerminan di penyimpanan iOS. Tampilan gabungan tidak membuktikan bahwa catatan telah digabungkan atau bahwa sebuah edit telah sampai ke penyedia. Untuk kalender yang Anda miliki dan boleh edit, periksa acara sekali pakai tanpa tamu di penyedia maupun di aplikasi."
+        ]
+      },
+      {
+        "heading": "Periksa kontrol pada perangkat yang benar-benar akan Anda gunakan",
+        "body": [
+          "Panduan seluler OneCal saat ini menjelaskan pembuatan dan pengeditan acara kalender, pilihan perulangan, RSVP, dan bergabung ke rapat. Secara terpisah, panduan itu juga menyatakan bahwa membuat, mengedit, menjeda, atau menghapus konfigurasi Calendar Sync dilakukan di aplikasi web; versi seluler menampilkan konfigurasi tersebut. Penyiapan booking link juga dijelaskan sebagai tugas web.",
+          "Cloud Calendars adalah aplikasi iPhone dan iPad dengan tampilan hari, minggu, bulan, tahun, dan daftar. Coba edit yang diperlukan di tampilan yang terpasang, baca setiap pilihan perulangan, dan konfirmasikan acara yang tersimpan. Jangan berasumsi bahwa menu seluler, alur pemesanan, atau kontrol otomatisasi milik produk lain ada di dalamnya."
+        ]
+      },
+      {
+        "heading": "Verifikasi cakupan alih-alih mengasumsikan riwayat tanpa batas",
+        "body": [
+          "Panduan cakupan OneCal saat ini mencantumkan jendela sinkronisasi ke depan hingga satu tahun untuk Google dan iCloud, serta hingga tiga bulan untuk Outlook. Panduan itu juga membedakan seri berulang di masa depan dari acara historis yang berdiri sendiri. Ini adalah batasan yang didokumentasikan oleh penerbit, bukan pengujian atas akun Anda secara khusus atau klaim tentang setiap fitur dalam tampilan kalendernya.",
+          "Cloud Calendars juga perlu memeriksa jalur akun, kalender yang dipilih, dan tanggal yang relevan. Jika rapat lama penting, bandingkan acara yang sudah diidentifikasi di penyedia dan di aplikasi. Aplikasi kalender tidak otomatis merupakan cadangan lengkap atau jaminan bahwa setiap catatan masa lalu telah diambil."
+        ]
+      },
+      {
+        "heading": "Bandingkan kebutuhan paket dan jalur penagihan",
+        "body": [
+          "Cloud Calendars menyertakan sinkronisasi Google Calendar dalam Base; Advanced menghapus iklan dan Premium menambahkan dukungan Microsoft Calendar dan Teams. Verifikasi izin akun secara terpisah dari paket. Periksa harga lokal dan periode penagihan saat ini sebelum membeli, alih-alih menggunakan perbandingan harga internasional tetap.",
+          "Panduan paket web OneCal menjelaskan paket per anggota dan uji coba empat belas hari, termasuk penghapusan klon saat masa uji coba berakhir. Panduan penagihan selulernya menjelaskan pembelian yang dikelola toko dan batasan dalam menambahkan anggota tim. Periksa fitur mana yang memerlukan paket berkelanjutan dan di mana pembelian dikelola; unduhan gratis saja tidak menjawab pertanyaan tersebut."
+        ]
+      },
+      {
+        "heading": "Uji alur kerja perencanaan Anda yang sebenarnya sebelum beralih",
+        "body": [
+          "Jika weather, widget, atau Live Activity penting, sertakan semuanya dalam uji coba di perangkat yang Anda gunakan. Cloud Calendars menawarkan permukaan perencanaan tersebut, dengan weather terbatas pada tanggal yang tersedia dan lokasi yang dipilih. Halaman OneCal yang ditinjau di sini tidak menetapkan kesetaraan fitur untuk permukaan tersebut; periksa produk saat ini alih-alih menyimpulkan ketidakhadiran hanya dari panduan.",
+          "Simpan aplikasi asli dan detail koneksi sampai Anda memeriksa hasil yang diperlukan. Catat apakah Anda memverifikasi visibilitas, pengeditan acara asli, waktu sibuk yang disalin, atau pengingat; semuanya adalah hasil yang berbeda. Sebelum memutuskan sebuah layanan, tinjau apa yang terjadi pada salinan yang sudah ada dan hindari bereksperimen pada undangan aktif atau rapat pelanggan sungguhan."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Tuliskan apakah Anda memerlukan tampilan gabungan atau acara yang disalin ke akun lain.",
+      "Identifikasi acara asli, salinan, dan akun yang memiliki setiap acara penting.",
+      "Periksa kontrol yang diperlukan pada ponsel, tablet, atau alur kerja web yang benar-benar Anda gunakan.",
+      "Bandingkan satu minggu biasa dan setiap tanggal historis yang Anda andalkan.",
+      "Periksa kebutuhan paket saat ini, harga lokal, dan penyedia pembelian.",
+      "Verifikasi satu acara uji coba dan tinjau aturan penghapusan salinan sebelum beralih."
+    ],
+    "faq": [
+      {
+        "q": "Apakah tampilan kalender gabungan sama dengan sinkronisasi waktu sibuk?",
+        "a": "Tidak. Tampilan gabungan memungkinkan Anda membandingkan komitmen. Membuat entri di akun lain memerlukan alur kerja terpisah yang didukung; OneCal mendokumentasikan aturan Calendar Sync secara terpisah dari Unified Calendar View miliknya."
+      },
+      {
+        "q": "Bisakah saya mengubah klon OneCal untuk menjadwal ulang rapat asli?",
+        "a": "Panduan cakupannya menyatakan bahwa edit pada klon tidak diteruskan ke acara asli. Identifikasi acara asli dan ikuti izin pengeditan serta penyelenggara pada kalendernya."
+      },
+      {
+        "q": "Aplikasi mana yang lebih murah untuk pengaturan saya?",
+        "a": "Itu bergantung pada fitur, akun, jalur penagihan, dan harga lokal yang Anda butuhkan. Cloud Calendars menyertakan sinkronisasi Google di Base dan dukungan Microsoft di Premium. Tinjau paket OneCal saat ini dan ketentuan penagihan selulernya untuk alur kerja yang Anda inginkan; panduan ini tidak mengklaim ada pemenang harga yang universal."
+      }
+    ],
+    "sourcesHeading": "Dokumentasi resmi OneCal tentang alur kerja dan paket",
+    "sources": [
+      {
+        "label": "OneCal: fitur seluler dan tugas konfigurasi yang hanya tersedia di web",
+        "url": "https://docs.onecal.io/docs/mobile-apps"
+      },
+      {
+        "label": "OneCal: Calendar Sync dan aturan sumber-ke-target",
+        "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+      },
+      {
+        "label": "OneCal: jendela sinkronisasi dan edit pada acara klon",
+        "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      },
+      {
+        "label": "OneCal: paket, uji coba, dan perilaku saat berakhir",
+        "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+      },
+      {
+        "label": "OneCal: langganan App Store dan Google Play",
+        "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "three-calendar-apps-is-two-too-many",
+      "free-google-sync-without-adverts",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-fantastical-costs-and-what-this-does"
+    ],
+    "comparison": {
+      "heading": "Bandingkan alur kerja sebelum berlangganan",
+      "columns": [
+        "Pertanyaan",
+        "Cloud Calendars",
+        "Dokumentasi OneCal"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Di mana saya meninjau jadwal saya?",
+            "Di iPhone dan iPad, dengan tampilan hari, minggu, bulan, tahun, dan daftar.",
+            "Unified Calendar View dipisahkan dari konfigurasi Calendar Sync."
+          ]
+        },
+        {
+          "cells": [
+            "Apakah saya memerlukan blok sibuk yang disalin antar akun?",
+            "Jangan menyimpulkannya dari tampilan gabungan; koneksi penyedia dapat mencerminkan kalender secara lokal.",
+            "Calendar Sync membuat acara klon menggunakan aturan satu arah atau multi-arah."
+          ]
+        },
+        {
+          "cells": [
+            "Di mana saya mengubah aturan sinkronisasi?",
+            "Gunakan kontrol yang didokumentasikan untuk koneksi akun aplikasi.",
+            "Panduan seluler yang ditinjau menetapkan perubahan konfigurasi sinkronisasi ke aplikasi web."
+          ]
+        },
+        {
+          "cells": [
+            "Paket Cloud Calendars mana yang saya perlukan?",
+            "Base mencakup sinkronisasi Google Calendar; Advanced menghapus iklan; Premium menambahkan Microsoft Calendar dan Teams.",
+            "Periksa paket OneCal saat ini dan jalur penagihannya untuk alur kerja yang diperlukan."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryCaption": "Layar kalender asli Cloud Calendars menampilkan tampilan perencanaan. Perbandingan ini membedakan tampilan tersebut dari aturan klon sisi server suatu layanan.",
+    "actionHeading": "Pilih hasil yang ingin Anda verifikasi",
+    "actionText": "Untuk gambaran umum di iPhone atau iPad dengan weather dan widget, cobalah Cloud Calendars dengan acara uji yang aman. Jika yang Anda perlukan adalah waktu sibuk yang disalin ke akun lain, nilai layanan yang secara eksplisit mendokumentasikan operasi tersebut.",
+    "articleLinks": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Siapkan tampilan kalender gabungan"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "Bandingkan opsi kalender iPhone lainnya"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Pilih tampilan Home Screen Anda"
+      }
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "Alternatif kalender iPhone: Cloud Calendars, Fantastical, Readdle, dan BusyCal",
+    "short": "Bandingkan alternatif kalender iPhone",
+    "description": "Bandingkan kalender iPhone berdasarkan cuaca, tampilan, tugas, dan alur kerja yang Anda butuhkan.",
+    "lede": "Pilih kalender berdasarkan pekerjaan yang ingin Anda selesaikan: meninjau acara dengan cuaca, memasukkan acara dengan cepat, mengelola tugas, atau menggabungkan tampilan akun. Cloud Calendars, Fantastical, Calendars by Readdle, Calendar 366, dan BusyCal berbeda dalam alur kerja ini serta persyaratan paketnya. Arte Soft mengembangkan Cloud Calendars dan menerbitkan perbandingan ini.",
+    "sections": [
+      {
+        "heading": "Tentukan apa yang wajib berfungsi sebelum membandingkan tampilan",
+        "body": [
+          "Catat penyedia kalender, perangkat, dan tiga tindakan yang paling penting bagi Anda. Contohnya: melihat kalender kerja dan pribadi bersama-sama, menyelesaikan pengingat, dan menambahkan rapat dengan cepat. Uji tindakan tersebut dengan data contoh pribadi sebelum mengimpor seluruh jadwal.",
+          "Produk yang mendukung nama penyedia Anda tidak berarti setiap metode koneksi memiliki izin atau fitur yang sama. Kalender perangkat, akun yang terhubung langsung, dan feed berlangganan dapat menampilkan entri yang tampak mirip, tetapi memungkinkan tindakan yang berbeda."
+        ]
+      },
+      {
+        "heading": "Gunakan kalender bawaan penyedia sebagai acuan",
+        "body": [
+          "Panduan memulai Google menjelaskan antarmuka kalendernya sendiri untuk penjadwalan, tugas, berbagi, dan beberapa kalender. Jika jadwal Anda sudah ada di sana, uji tindakan yang diperlukan di sumbernya terlebih dahulu sebelum memutuskan apakah Anda memerlukan aplikasi lain.",
+          "Sebagai contoh, bandingkan acara yang sama di Google Calendar dan Fantastical setelah menghubungkan akun yang dimaksud. Periksa apakah keunggulan yang Anda butuhkan adalah tampilan gabungan, koneksi tugas, entri cepat, atau antarmuka perangkat tertentu. Klien kalender yang berbeda tidak otomatis berarti migrasi ke penyedia yang berbeda."
+        ]
+      },
+      {
+        "heading": "Fantastical: periksa koneksi akun dan entri cepat",
+        "body": [
+          "Flexibits mendokumentasikan koneksi langsung ke akun kalender sekaligus opsi untuk kalender dan pengingat yang sudah dikonfigurasi di iOS. Panduan memulainya merekomendasikan koneksi langsung untuk penggunaan penuh fitur aplikasi. Pastikan jalur mana yang Anda pilih, alih-alih menghubungkan kalender yang sama dua kali tanpa alasan.",
+          "Fantastical juga mendokumentasikan entri berbasis kalimat serta templat acara atau tugas yang dapat digunakan kembali. Uji tanggal, durasi, dan kalender tujuan yang dinyatakan secara jelas, lalu periksa hasil yang tersimpan. Sintaksnya milik Fantastical; kolom teks di aplikasi lain dapat menafsirkan kalimat yang sama secara berbeda."
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle: periksa sumber tugas",
+        "body": [
+          "Readdle menghadirkan kalender Google, Outlook, dan iCloud bersama fitur tugas dan entri bahasa alami. Panduan penyiapan tugasnya menjelaskan pemilihan iOS Reminders atau Google Tasks di Task Options. Pilihan ini penting jika penyelesaian tugas di ponsel harus memperbarui daftar asal tertentu.",
+          "Gunakan tugas sekali pakai untuk menguji penyelesaian di kedua sisi, bukan hanya memeriksa apakah judul muncul pada linimasa. Jika Anda juga memerlukan tampilan atau tindakan di Mac selain di iPhone, uji juga di sana. Jangan menganggap kontrolnya sama hanya karena nama produknya sama."
+        ]
+      },
+      {
+        "heading": "Calendar 366: periksa akses sistem, set, dan lokasi cuaca",
+        "body": [
+          "Dokumentasi Calendar 366 membedakan akses ke kalender dan pengingat sistem dari integrasi akun langsung. Dokumentasi tersebut menjelaskan set kalender yang memilih kalender dan daftar yang terlihat. Set tersebut juga dapat menentukan kalender default, jadi periksa ke mana acara yang baru dibuat akan masuk.",
+          "Dokumentasi yang sama menjelaskan parser bahasa alaminya sendiri serta cuaca yang menggunakan Apple Weather, dengan pilihan lokasi sistem atau kustom. Untuk perencanaan luar ruang, pastikan tempat yang dipilih, jangan berasumsi prakiraan akan mengikuti alamat setiap acara. Ini adalah kemampuan yang didokumentasikan penerbit, bukan fitur yang diuji pada akun Anda."
+        ]
+      },
+      {
+        "heading": "BusyCal: periksa tampilan tugas dan tampilan yang digunakan untuk cuaca",
+        "body": [
+          "Panduan tugas iOS BusyCal membedakan tugas bertanggal, berwaktu, dan tanpa tanggal. Panduan itu menjelaskan kontrol penyelesaian dan pemindahan tugas bertanggal yang belum selesai ke hari berikutnya. Panduan cuacanya menempatkan prakiraan di tampilan List, Day, dan Month, jadi uji tampilan yang benar-benar Anda gunakan, jangan menganggap cuaca muncul di semua tempat.",
+          "BusyCal juga mendokumentasikan entri bahasa alami sebagai opsi dalam pengaturan default acara baru. Coba acara contoh pribadi yang sama seperti pada aplikasi lain, lalu periksa kalender dan waktu yang tersimpan. Ini adalah kontrol BusyCal, bukan perintah yang dibagikan oleh semua aplikasi kalender."
+        ]
+      },
+      {
+        "heading": "Periksa alur kerja Watch secara terpisah dari ponsel",
+        "body": [
+          "Panduan Watch Fantastical mendokumentasikan tampilan Up Next, List, dan Tasks, termasuk penyelesaian tugas. Panduan tugas BusyCal membedakan tugas bertanggal dan berwaktu yang ditampilkan di Watch dari tugas tanpa tanggal. Jika tumpukan tugas tanpa tanggal penting bagi Anda, sertakan itu dalam uji coba alih-alih hanya menguji acara berikutnya.",
+          "Komplikasi Watch adalah tampilan sekilas, sedangkan aplikasi Watch mungkin menawarkan tindakan tambahan. Verifikasi data dan tindakan pada watch serta ponsel yang sebenarnya, dan tinjau paket saat ini. Antarmuka desktop, ponsel, dan watch tidak saling menggantikan hanya karena menggunakan nama produk yang sama."
+        ]
+      },
+      {
+        "heading": "Perlakukan harga dan hak akses sebagai pemeriksaan terpisah",
+        "body": [
+          "Periksa layar pembelian lokal saat ini, fitur yang tersedia setelah masa uji coba berakhir, dan apakah pembelian sebelumnya mengubah hak akses Anda. Unduhan gratis, langganan berulang, dan pembelian lama belum tentu membuka set fitur yang sama.",
+          "Halaman penerbit dapat berubah pada waktu yang berbeda. FAQ produk Readdle saat ini menjelaskan beberapa kemampuan inti sebagai gratis, sementara halaman bantuan terpisah tentang versi gratis versus penuh mencantumkan pembagian yang berbeda. Daripada menganggap satu deskripsi sebagai janji universal, verifikasi tindakan yang diperlukan di aplikasi yang terpasang beserta ketentuan pembeliannya saat ini."
+        ]
+      },
+      {
+        "heading": "Posisi Cloud Calendars dalam daftar pilihan",
+        "body": [
+          "Cloud Calendars adalah opsi lain untuk iPhone dan iPad yang menawarkan kalender pilihan, beberapa tampilan perencanaan, cuaca, dan widget. Sinkronisasi Google disertakan dalam Base, Advanced menghapus iklan, dan Premium menambahkan dukungan Microsoft calendar. Periksa paket saat ini dan izin penyedia untuk pengaturan Anda.",
+          "Jika koneksi tugas khusus, perintah templat, atau alur kerja desktop merupakan hal yang wajib, gunakan produk yang mendokumentasikan dan berhasil menjalankan kebutuhan tersebut. Bandingkan hasil yang tersimpan dan upaya harian; daftar periksa seharusnya membantu Anda memilih, bukan menyiratkan bahwa setiap fitur yang disebutkan di sini ada di Cloud Calendars."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Daftarkan akun, perangkat, dan tindakan penting Anda.",
+      "Pilih satu jalur koneksi akun dan periksa kalender yang ditampilkannya.",
+      "Uji entri cepat dan penyelesaian tugas dengan contoh yang aman.",
+      "Verifikasi lokasi cuaca dan tampilan yang digunakan pada setiap perangkat.",
+      "Periksa ketentuan pembelian saat ini setelah masa uji coba atau hak akses lama apa pun."
+    ],
+    "faq": [
+      {
+        "q": "Apa alternatif terbaik untuk Fantastical?",
+        "a": "Itu bergantung pada alur kerja yang Anda perlukan. Bandingkan sumber kalender dan tugas, entri acara, dukungan perangkat, dan hak akses saat ini. Panduan ini tidak menetapkan satu pemenang performa untuk semua orang."
+      },
+      {
+        "q": "Apakah nama penyedia yang sama berarti setiap aplikasi melakukan sinkronisasi dengan cara yang sama?",
+        "a": "Tidak. Periksa koneksi langsung, kalender perangkat, feed, dan izin secara terpisah, lalu verifikasi satu perubahan contoh di sumbernya."
+      },
+      {
+        "q": "Bisakah saya menganggap setiap fitur yang diiklankan itu gratis?",
+        "a": "Tidak. Periksa aplikasi yang terpasang, layar pembelian lokal, dan fitur yang tetap tersedia setelah masa uji coba. Dokumentasi penerbit mungkin menjelaskan versi atau hak akses yang berbeda."
+      }
+    ],
+    "sourcesHeading": "Dokumentasi resmi yang diperiksa untuk panduan ini",
+    "sources": [
+      {
+        "label": "Fantastical: jalur koneksi akun",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical: entri bahasa alami dan templat",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle: kemampuan produk saat ini dan FAQ",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle: memilih sumber tugas",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle: panduan terpisah untuk paket gratis/penuh",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366: integrasi, set, entri cepat, dan cuaca",
+        "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal untuk iOS: tugas dan batas tugas di Watch",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal untuk iOS: cuaca dan tampilan yang didukung",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal untuk iOS: entri bahasa alami",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical: tampilan dan tindakan Apple Watch",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google: antarmuka berbasis akun milik Calendar sendiri",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "comparison": {
+      "heading": "Mulailah dari kebutuhan utama Anda",
+      "columns": [
+        "Kebutuhan",
+        "Opsi relevan yang perlu diperiksa",
+        "Perbedaan penting"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Acara dengan cuaca dan tampilan iPhone/iPad",
+            "Cloud Calendars dan tampilan cuaca yang didokumentasikan di aplikasi yang dibandingkan.",
+            "Periksa lokasi prakiraan, periode yang tersedia, dan tampilannya; cakupan cuaca tidak tanpa batas."
+          ]
+        },
+        {
+          "cells": [
+            "Entri acara dalam bahasa alami",
+            "Fantastical serta fitur Readdle atau BusyCal yang relevan.",
+            "Penguraian kalimat tidak sama dengan dikte atau pengeditan acara biasa."
+          ]
+        },
+        {
+          "cells": [
+            "Tugas di samping acara",
+            "Sumber tugas yang didokumentasikan di Readdle, Calendar 366, BusyCal, atau Fantastical.",
+            "Pengingat acara bukan integrasi penyelesaian tugas."
+          ]
+        },
+        {
+          "cells": [
+            "Sinkronisasi Google Calendar dan opsi penghapusan iklan",
+            "Cloud Calendars Base menyertakan sinkronisasi Google Calendar; Advanced menghapus iklan.",
+            "Dukungan Microsoft Calendar dan Teams memerlukan Premium."
+          ]
+        },
+        {
+          "cells": [
+            "Model pembelian yang berbeda",
+            "Listing store saat ini dan hak akses untuk setiap aplikasi dan platform.",
+            "Unduhan gratis bukan bukti bahwa semua fitur gratis; harga regional dan paket dapat berubah."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "week-right",
+      "widgets"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "Ini adalah layar Cloud Calendars untuk tampilan aplikasi, cuaca, dan widget. Ini bukan tangkapan layar produk lain dalam perbandingan ini.",
+    "actionHeading": "Coba kalender untuk satu kebutuhan perencanaan yang nyata",
+    "actionText": "Jika kebutuhan utama Anda adalah jadwal iPhone atau iPad dengan cuaca dan widget, nilai Cloud Calendars dengan acara sekali pakai. Pisahkan kebutuhan tugas khusus, pemesanan, dan bahasa alami saat membandingkan produk.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Lihat bagaimana cuaca sesuai dengan alur kerja kalender"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Bandingkan widget Cloud Calendars"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Bedakan tampilan gabungan dari waktu sibuk yang disalin"
+      }
+    ]
+  }
+};

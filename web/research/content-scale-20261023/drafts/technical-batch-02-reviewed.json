@@ -1,0 +1,999 @@
+{
+  "icalendar-dtstamp-last-modified-created": {
+    "updated": "2026-10-23",
+    "title": "ICS DTSTAMP, LAST-MODIFIED and CREATED: which timestamp explains a change?",
+    "short": "Read calendar revision timestamps",
+    "description": "Compare CREATED, LAST-MODIFIED and DTSTAMP in an ICS record. A new scheduling-message timestamp does not necessarily mean a meeting changed.",
+    "lede": "An ICS message generated today can describe an event that was last edited earlier. Before deciding that the meeting changed, check which timestamp you are reading and whether the calendar object specifies a METHOD.",
+    "sections": [
+      {
+        "heading": "Read the purpose before comparing the values",
+        "body": [
+          "RFC 5545 distinguishes the creation of a stored calendar record from the creation of an interchange message. CREATED records when the calendar information was created in the calendar store. LAST-MODIFIED records when that information was last revised. Both use UTC DATE-TIME values.",
+          "DTSTAMP has a context-dependent meaning. When the calendar object has a METHOD, it describes when that object instance was created. Without METHOD, it describes the component information’s last revision in the store and is equivalent in meaning to LAST-MODIFIED. Reading every DTSTAMP as “the meeting was edited at this moment” therefore misses an important distinction."
+        ]
+      },
+      {
+        "heading": "Work through a message produced after the edit",
+        "body": [
+          "Consider a fictional event created on 1 October at 10:00Z and edited on 20 October at 08:30Z. Its calendar system creates a METHOD:REQUEST object on 23 October at 12:00Z. CREATED:20261001T100000Z, LAST-MODIFIED:20261020T083000Z and DTSTAMP:20261023T120000Z can describe those three different moments.",
+          "The later message timestamp does not by itself establish that the start time, room or guests changed on 23 October. Compare the relevant fields and identity of the actual event revision. The example explains the specification; it does not certify what any particular export tool writes."
+        ]
+      },
+      {
+        "heading": "Do not substitute a file or download timestamp",
+        "body": [
+          "Your computer may show when an ICS file was downloaded, copied or saved. Those filesystem observations are outside the component timestamp definitions. A recent download can contain old calendar data; an older saved file can describe an event scheduled well into the future.",
+          "Keep UID and, for a recurring instance, RECURRENCE-ID with the timestamps when comparing records. Revision ordering can also involve SEQUENCE and the applicable scheduling protocol. Do not choose a record solely because one timestamp is numerically newest, and do not edit metadata to force a sync."
+        ]
+      },
+      {
+        "heading": "Report a bounded mismatch",
+        "body": [
+          "For a harmless example, note the owning calendar, UID, presence or absence of METHOD, all available timestamps and the actual field that differs. Preserve the original message or export. Avoid posting real attendee addresses or private descriptions in a public support report.",
+          "This is a format inspection guide, not a claim that Cloud Calendars exposes these fields or an audit history. Check the authoritative event in its provider and compare the record delivered to the app. A timestamp can help explain a mismatch; it is not proof that another person received or accepted an update."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative event and METHOD:REQUEST message",
+      "columns": [
+        "Field or observation",
+        "Example UTC value",
+        "What the example records"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "CREATED",
+            "20261001T100000Z",
+            "Stored calendar information was created"
+          ]
+        },
+        {
+          "cells": [
+            "LAST-MODIFIED",
+            "20261020T083000Z",
+            "Stored information was last revised"
+          ]
+        },
+        {
+          "cells": [
+            "DTSTAMP, with METHOD",
+            "20261023T120000Z",
+            "This scheduling-object instance was created"
+          ]
+        },
+        {
+          "cells": [
+            "File downloaded on 23 October",
+            "A filesystem observation",
+            "Not automatically an event revision timestamp"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check whether the enclosing VCALENDAR has METHOD.",
+      "Compare CREATED and LAST-MODIFIED separately from DTSTAMP.",
+      "Keep identity, occurrence and actual changed fields in the comparison.",
+      "Use the owning provider to verify the saved event instead of changing timestamps as a repair."
+    ],
+    "faq": [
+      {
+        "q": "Is DTSTAMP always the event’s last edit time?",
+        "a": "No. With METHOD it records creation of the interchange-object instance; without METHOD it has the same last-revision meaning as LAST-MODIFIED."
+      },
+      {
+        "q": "Can a fresh download prove the calendar data is fresh?",
+        "a": "No. Download or file-copy time is a different observation from timestamps and content inside the calendar record."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.8.7.1: CREATED",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.1"
+      },
+      {
+        "label": "RFC 5545 §3.8.7.2: DTSTAMP",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.2"
+      },
+      {
+        "label": "RFC 5545 §3.8.7.3: LAST-MODIFIED",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.3"
+      },
+      {
+        "label": "RFC 5545 §3.8.7.4: SEQUENCE",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the owning event and delivered copy"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Distinguish an export from an updating connection"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Include the correct recurrence instance"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "calendar-export-ics-pdf-and-backup",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "icalendar-duration-p1d-pt24h-dst": {
+    "updated": "2026-10-23",
+    "title": "iCalendar P1D versus PT24H: why a day can end at a different hour",
+    "short": "One day or exactly 24 hours?",
+    "description": "Compare nominal days with elapsed hours in ICS DURATION across a clock change. Decide whether a deadline follows local time or a fixed interval.",
+    "lede": "An event lasting one calendar day is not always an event lasting exactly 24 hours. When a time zone changes its clock, DURATION:P1D and DURATION:PT24H can lead to different local ending hours.",
+    "sections": [
+      {
+        "heading": "Choose the duration that matches the real commitment",
+        "body": [
+          "RFC 5545 section 3.3.6 distinguishes nominal durations expressed in weeks or days from accurate durations expressed in hours, minutes and seconds. A day’s exact elapsed length depends on its calendar position, including a daylight-saving transition. The specification adds larger components first when evaluating a mixed duration.",
+          "Use a nominal day when the intended end follows the local calendar-day position. Use an exact hour interval when the agreement really means that elapsed time. A timed appointment’s duration is different again from an all-day DATE label; do not change an event to all-day merely to hide a one-hour discrepancy."
+        ]
+      },
+      {
+        "heading": "Calculate a forward clock change",
+        "body": [
+          "Use a fictional zone that advances from UTC+01:00 to UTC+02:00 during the night between Day 1 and Day 2. Start at 12:00 on Day 1, which is 11:00Z. Adding one nominal day reaches 12:00 on Day 2, now 10:00Z: 23 elapsed hours later.",
+          "Adding PT24H instead reaches 11:00Z on Day 2, which is 13:00 in the new offset. Both calculations are internally consistent; they answer different questions. These are explicit assumed offsets, not current rules for a named city or an observed app result."
+        ]
+      },
+      {
+        "heading": "Check a backward change too",
+        "body": [
+          "Now assume a fictional zone changes from UTC+02:00 to UTC+01:00 during that night. Starting at 12:00 on Day 1 means 10:00Z. One nominal day reaches 12:00 on Day 2, or 11:00Z: 25 elapsed hours. Exactly 24 hours reaches 10:00Z on Day 2, or 11:00 local.",
+          "The difference is caused by the specified clock transition, not a rule that every P1D lasts 23 or 25 hours. On an ordinary day without a relevant offset change, the two examples can coincide. Real named-zone data and the exact start date are needed for a real calculation."
+        ]
+      },
+      {
+        "heading": "Keep an explicit end separate from a duration",
+        "body": [
+          "For a VEVENT, the RFC permits DURATION as an alternative to DTEND and prohibits specifying both in the same event. An explicit DTEND supplies the ending value; DURATION describes how to obtain the end from the start. DATE-based starts have additional restrictions: their duration uses day or week form.",
+          "This guide does not claim that Cloud Calendars offers raw DURATION syntax or chooses one representation for every provider. Inspect the original event and the supported provider editor. For an important overnight commitment, confirm the intended local endpoint and elapsed interval before making a correction."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative noon-to-noon calculation with assumed offset changes",
+      "columns": [
+        "Clock behavior overnight",
+        "P1D result",
+        "PT24H result"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "UTC+01:00→UTC+02:00",
+            "Day 2 at 12:00 local; 23 elapsed hours",
+            "Day 2 at 13:00 local; 24 elapsed hours"
+          ]
+        },
+        {
+          "cells": [
+            "UTC+02:00→UTC+01:00",
+            "Day 2 at 12:00 local; 25 elapsed hours",
+            "Day 2 at 11:00 local; 24 elapsed hours"
+          ]
+        },
+        {
+          "cells": [
+            "No relevant offset change",
+            "Next local day at 12:00; 24 hours",
+            "Next local day at 12:00; 24 hours"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Write the intended local ending time and whether elapsed hours are contractual.",
+      "Check the actual named zone and transition date.",
+      "Inspect whether the record uses DURATION or DTEND.",
+      "Compare both endpoints in the owning provider before shifting the event."
+    ],
+    "faq": [
+      {
+        "q": "Does P1D always mean 86400 seconds?",
+        "a": "No. The RFC treats days as nominal durations whose exact length depends on calendar position and relevant clock changes."
+      },
+      {
+        "q": "May a VEVENT contain both DTEND and DURATION?",
+        "a": "No. They are alternative ways of specifying its end under RFC 5545."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.3.6: duration semantics and clock discontinuities",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.6"
+      },
+      {
+        "label": "RFC 5545 §3.8.2.5: DURATION property",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5"
+      },
+      {
+        "label": "RFC 5545 §3.6.1: VEVENT endpoint constraints",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Separate event timing from display zones"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "Choose an all-day label or timed commitment"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the intended endpoints"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "what-an-all-day-event-really-means",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "icalendar-valarm-relative-absolute-trigger": {
+    "updated": "2026-10-23",
+    "title": "ICS alarm TRIGGER: before the start, after the end or at a fixed time?",
+    "short": "Read an alarm trigger",
+    "description": "Calculate relative and absolute VALARM triggers in an ICS file. Check RELATED=END and explain an alarm that stays fixed after a meeting moves.",
+    "lede": "A reminder at 09:45 can mean “15 minutes before a 10:00 meeting” or “at 09:45 UTC regardless of the meeting.” Those alarms look identical until the event moves. Read the trigger’s value type and reference point before diagnosing the reminder.",
+    "sections": [
+      {
+        "heading": "Find the reference point",
+        "body": [
+          "RFC 5545 section 3.8.6.3 defines TRIGGER inside VALARM. Its default value type is DURATION, measured relative to the associated event’s start unless RELATED specifies otherwise. A negative duration is before that point; a positive duration is after it.",
+          "For a fictional event from 10:00Z to 11:00Z, TRIGGER:-PT15M means 09:45Z. TRIGGER;RELATED=END:-PT15M means 10:45Z, while TRIGGER;RELATED=END:PT5M means 11:05Z. A displayed offset is incomplete until you know whether it is relative to START or END."
+        ]
+      },
+      {
+        "heading": "Distinguish a fixed absolute trigger",
+        "body": [
+          "TRIGGER;VALUE=DATE-TIME:20261102T094500Z specifies an absolute UTC instant. RELATED is not valid on that absolute form. If the meeting is moved from 10:00Z to 11:00Z, the absolute value still describes 09:45Z; a relative fifteen-minute-before-start rule would instead calculate 10:45Z from the new start.",
+          "The table shows calculated semantics, not a guarantee that an editor leaves absolute alarms unchanged during a reschedule. A provider may rewrite the alarm, so reopen the saved record before concluding what happened. On a recurring event, an absolute trigger describes that specified instant, with any explicit alarm repeats; it is not automatically a new alarm at that clock time for every occurrence."
+        ]
+      },
+      {
+        "heading": "Check that the necessary event fields exist",
+        "body": [
+          "A start-relative trigger requires DTSTART in its parent. An end-relative VEVENT alarm requires DTEND or the combination of DTSTART and DURATION. A raw END offset without a defined event end is not enough information to calculate a valid target.",
+          "DATE-only events use a midnight reference in the user’s configured zone under the RFC, with a UTC fallback when none is found. A generic “before this all-day event” therefore needs more care than assuming an ordinary daytime appointment. Use the provider’s supported all-day alert controls for the result you actually need."
+        ]
+      },
+      {
+        "heading": "Separate the calculated trigger from notification delivery",
+        "body": [
+          "VALARM also needs an ACTION; display alarms require their display text. A trigger property is not a whole alarm or proof that an operating system delivered it. Application support, permissions and notification delivery still need checking separately.",
+          "This guide does not promise that Cloud Calendars imports every alarm action or exposes raw START, END and absolute choices. Compare its saved alert settings and the owning provider, then use the notification troubleshooting guide if the calculation is correct but delivery fails."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative event moved from 10:00–11:00Z to 11:00–12:00Z",
+      "columns": [
+        "Trigger meaning",
+        "Before move",
+        "Calculated after move if trigger unchanged"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "START minus 15 minutes",
+            "09:45Z",
+            "10:45Z"
+          ]
+        },
+        {
+          "cells": [
+            "END minus 15 minutes",
+            "10:45Z",
+            "11:45Z"
+          ]
+        },
+        {
+          "cells": [
+            "END plus 5 minutes",
+            "11:05Z",
+            "12:05Z"
+          ]
+        },
+        {
+          "cells": [
+            "Absolute 09:45Z on the specified date",
+            "09:45Z",
+            "09:45Z"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the parent event’s start and end.",
+      "Read VALUE and RELATED before interpreting the offset.",
+      "Calculate the target time with the saved values.",
+      "Check ACTION and app support separately from notification permission and delivery."
+    ],
+    "faq": [
+      {
+        "q": "Is TRIGGER:-PT15M relative to the end?",
+        "a": "No. The default reference is the start. RELATED=END explicitly selects the end."
+      },
+      {
+        "q": "Does an absolute alarm automatically repeat with a weekly event?",
+        "a": "No. The RFC describes the specified absolute instant and any explicit alarm repeats, not an automatically recalculated weekly offset."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.8.6.3: TRIGGER reference and value type",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3"
+      },
+      {
+        "label": "RFC 5545 §3.6.6: VALARM action and structural requirements",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Diagnose notification delivery separately"
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "label": "Verify the saved event after a move"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "Check date-based event behavior"
+      }
+    ],
+    "seeAlso": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "drag-an-event-to-move-it",
+      "what-an-all-day-event-really-means"
+    ]
+  },
+  "icalendar-alarm-repeat-duration-count": {
+    "updated": "2026-10-23",
+    "title": "ICS REPEAT and DURATION: count repeated alarms without an off-by-one error",
+    "short": "How many times does an alarm repeat?",
+    "description": "Calculate a VALARM repeat schedule. REPEAT counts additional triggers, and DURATION is the delay between repeats—not the meeting length.",
+    "lede": "REPEAT:2 means two repeats after the first alarm: three trigger times in total. The event can still be a single appointment. Check the alarm component before treating several reminders as duplicate calendar events.",
+    "sections": [
+      {
+        "heading": "Read REPEAT inside the correct component",
+        "body": [
+          "RFC 5545 section 3.8.6.2 defines REPEAT as the number of additional alarm triggers after the initial one. Its default is zero. The alarm’s DURATION gives the delay before each repeat. For a repeating alarm the two properties belong together.",
+          "This is different from RRULE, which describes recurring event occurrences. It is also different from a DURATION attached to VEVENT, where it specifies event length. Identical property names in nested components do not have identical jobs."
+        ]
+      },
+      {
+        "heading": "Calculate one alarm sequence",
+        "body": [
+          "For a fictional 10:00Z meeting, start with a display alarm triggered 15 minutes before the start. Its initial target is 09:45Z. Add REPEAT:2 and DURATION:PT5M inside that VALARM. The following targets are 09:50Z and 09:55Z. That yields three calculated alarm actions for one occurrence.",
+          "Changing REPEAT to 4 would produce five targets: 09:45, 09:50, 09:55, 10:00 and 10:05Z. An alarm repeat interval does not automatically stop at the event’s start. These examples are specification calculations, not a measurement of notification behavior in any calendar app."
+        ]
+      },
+      {
+        "heading": "Check the pair and the independent alarms",
+        "body": [
+          "RFC 5545 section 3.6.6 requires both REPEAT and DURATION when either is used to define repeats. A DISPLAY alarm also requires ACTION:DISPLAY, TRIGGER and DESCRIPTION. An isolated REPEAT line is not a complete valid alarm.",
+          "A single event may contain multiple independent VALARM components. Two notifications might therefore reflect two alarms, one repeating alarm, two calendar apps or actual duplicate events. Inspect the component structure and sending app before deciding which explanation fits."
+        ]
+      },
+      {
+        "heading": "Do not repair a reminder problem by deleting a meeting",
+        "body": [
+          "For a harmless example, record the expected first target, repeat interval and repeat count. Compare observed alerts with the sender name and saved settings. If the file contains one alarm but the app delivers differently, report that bounded difference rather than claiming the file guarantees notification delivery.",
+          "This guide does not claim Cloud Calendars implements raw VALARM repeat controls or all imported repeat behavior. Use its supported Alert and Second Alert controls and the owning provider’s supported settings. Preserve real appointments while investigating extra notifications."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative initial trigger at 09:45Z with a 5 minute interval",
+      "columns": [
+        "REPEAT value",
+        "Calculated trigger times",
+        "Total actions"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "0 or omitted",
+            "09:45Z",
+            "1"
+          ]
+        },
+        {
+          "cells": [
+            "1",
+            "09:45Z; 09:50Z",
+            "2"
+          ]
+        },
+        {
+          "cells": [
+            "2",
+            "09:45Z; 09:50Z; 09:55Z",
+            "3"
+          ]
+        },
+        {
+          "cells": [
+            "4",
+            "09:45Z; 09:50Z; 09:55Z; 10:00Z; 10:05Z",
+            "5"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Find the VALARM containing the repeat properties.",
+      "Count the initial trigger plus REPEAT additional actions.",
+      "Use that alarm’s DURATION as the interval.",
+      "Identify the actual sender before changing supported reminder settings."
+    ],
+    "faq": [
+      {
+        "q": "Does REPEAT:2 mean two alarms total?",
+        "a": "No. It means two additional triggers after the initial one, for three total actions."
+      },
+      {
+        "q": "Does DURATION:PT5M inside VALARM make the meeting five minutes long?",
+        "a": "No. In that component it is the repeat interval; meeting duration belongs to the event component."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.8.6.2: additional repeat count",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.2"
+      },
+      {
+        "label": "RFC 5545 §3.8.2.5: DURATION in different components",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5"
+      },
+      {
+        "label": "RFC 5545 §3.6.6: VALARM structure and independent alarms",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Identify duplicate notification senders"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Keep meeting recurrence separate"
+      },
+      {
+        "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+        "label": "Distinguish tasks from event alerts"
+      }
+    ],
+    "seeAlso": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "recurring-events-without-the-mess",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ]
+  },
+  "icalendar-transp-class-busy-private": {
+    "updated": "2026-10-23",
+    "title": "ICS TRANSP versus CLASS: private and busy are different settings",
+    "short": "Private does not mean free",
+    "description": "Read ICS transparency separately from access classification. A PRIVATE entry may block availability; TRANSPARENT does not hide its details.",
+    "lede": "A private appointment can still block your availability. A transparent event can still contain readable details. In iCalendar, TRANSP answers a busy-time question; CLASS records an access-classification intention. They are not interchangeable privacy switches.",
+    "sections": [
+      {
+        "heading": "Use TRANSP to interpret busy-time searches",
+        "body": [
+          "RFC 5545 section 3.8.2.7 defines OPAQUE as consuming time for busy-time searches and TRANSPARENT as not consuming it. OPAQUE is the default when the property is omitted. This does not say that a transparent event is removed from an ordinary calendar view.",
+          "An illustrative birthday label may be transparent while a one-hour appointment is opaque. Choose according to the intended availability, not the event’s color or whether its title sounds personal. An all-day DATE representation is another separate characteristic."
+        ]
+      },
+      {
+        "heading": "Treat CLASS as an intention, not encryption",
+        "body": [
+          "Section 3.8.1.3 defines PUBLIC, PRIVATE and CONFIDENTIAL classifications. It expressly says classification alone cannot enforce access in a receiving system. Authentication, authorization, roles and other security mechanisms also matter.",
+          "The RFC’s default PUBLIC classification is not an instruction that uploads a local event to the public internet. Conversely, adding CLASS:PRIVATE to a plaintext file does not encrypt or erase the title, notes and location already contained in it. Review the real destination and access rules before distributing an export."
+        ]
+      },
+      {
+        "heading": "Compare the four combinations",
+        "body": [
+          "For a fictional 11:00–12:00 appointment, CLASS:PRIVATE with TRANSP:OPAQUE describes a private-classified event that consumes time in a busy search. CLASS:PRIVATE with TRANSP:TRANSPARENT expresses private classification without blocking that search.",
+          "A PUBLIC/OPAQUE event can expose intended public information while occupying time; a PUBLIC/TRANSPARENT one can be informational. These are format-level meanings. They do not establish exactly what a named colleague can see in Google, Microsoft, iCloud or an exported file."
+        ]
+      },
+      {
+        "heading": "Check availability and the audience separately",
+        "body": [
+          "At the owning provider, inspect the event’s actual availability and its calendar/recipient access. Use a harmless sample if an authorized colleague needs to confirm the result. Ask two separate questions: does this time appear occupied, and which details are visible?",
+          "This article does not claim Cloud Calendars offers raw CLASS or TRANSP editing or overrides provider permissions. Use the provider’s supported privacy and availability controls where necessary. Changing a busy-time flag is not an appropriate repair for unintended disclosure."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative combinations in an exchanged VEVENT",
+      "columns": [
+        "CLASS and TRANSP",
+        "Busy-time meaning",
+        "Privacy limitation"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "PRIVATE + OPAQUE",
+            "Consumes time",
+            "Classification alone does not enforce access"
+          ]
+        },
+        {
+          "cells": [
+            "PRIVATE + TRANSPARENT",
+            "Does not consume time",
+            "Not hidden or encrypted merely by these values"
+          ]
+        },
+        {
+          "cells": [
+            "PUBLIC + OPAQUE",
+            "Consumes time",
+            "Actual distribution depends on the system"
+          ]
+        },
+        {
+          "cells": [
+            "PUBLIC + TRANSPARENT",
+            "Does not consume time",
+            "Informational does not mean restricted"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Read TRANSP separately from CLASS.",
+      "Check the owning provider’s availability setting.",
+      "Review real calendar access and the export audience.",
+      "Verify occupied time and visible details as separate outcomes."
+    ],
+    "faq": [
+      {
+        "q": "Does TRANSPARENT hide the event?",
+        "a": "It makes the event transparent to busy-time searches. It is not a general instruction to conceal its details."
+      },
+      {
+        "q": "Is CLASS:PRIVATE safe to email publicly?",
+        "a": "No. Classification is not encryption or an enforceable access rule for every receiver. Inspect the actual file contents and intended audience."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.8.2.7: time transparency and default OPAQUE",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+      },
+      {
+        "label": "RFC 5545 §3.8.1.3: classification and enforcement limits",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.1.3"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Check actual provider permissions"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "Separate all-day dates from availability"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Review exported information before sharing"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-an-all-day-event-really-means",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "icalendar-vfreebusy-periods-not-event-details": {
+    "updated": "2026-10-23",
+    "title": "Why a free/busy calendar file contains time blocks but no meeting titles",
+    "short": "Read a free/busy calendar result",
+    "description": "Inspect VFREEBUSY intervals, UTC period forms and FBTYPE. A free/busy result is not a full event backup or proof that every blank slot is available.",
+    "lede": "A file can correctly report occupied time without carrying the meeting titles that caused it. If it contains VFREEBUSY rather than full VEVENT records, treat it as an availability result with a scope—not as an incomplete copy of your calendar.",
+    "sections": [
+      {
+        "heading": "Identify the component and its purpose",
+        "body": [
+          "RFC 5545 section 3.6.4 defines VFREEBUSY for requests, responses and published busy-time information. Its FREEBUSY properties contain periods rather than a full set of event details. A file using this component is not automatically an export of editable meetings.",
+          "Check which person or resource the result concerns and the requested or published time window. Do not infer an entire month’s availability from intervals supplied for a different range or a partial source. The absence of a meeting title is normal for this representation."
+        ]
+      },
+      {
+        "heading": "Calculate the periods",
+        "body": [
+          "Section 3.8.2.6 requires UTC values for FREEBUSY periods. One form gives start/end; the other gives start/positive-duration. For example, 20261102T090000Z/20261102T100000Z describes a one-hour period starting 09:00Z. The alternative 20261102T130000Z/PT30M describes 13:00–13:30Z.",
+          "These are original illustrative property values, not a live person’s availability. The slash separates the two parts of a period; a comma can separate multiple periods on one FREEBUSY property when their FBTYPE is the same."
+        ]
+      },
+      {
+        "heading": "Read the busy type rather than treating every block alike",
+        "body": [
+          "FBTYPE distinguishes FREE, BUSY, BUSY-UNAVAILABLE and BUSY-TENTATIVE. BUSY is the default. A tentative commitment and an interval marked unavailable communicate different status from an explicitly free period, even though several may be rendered as blocks.",
+          "The RFC does not permit RRULE, RDATE or EXDATE inside VFREEBUSY. A recurring meeting is expanded into its individual reported periods. If an importer expects a recurring VEVENT, this availability result does not supply an equivalent master meeting record."
+        ]
+      },
+      {
+        "heading": "Use availability as a bounded input",
+        "body": [
+          "In a fictional response for 09:00–17:00Z, busy periods 09:00–10:00 and 13:00–13:30 tell you which supplied intervals are occupied. Before proposing 10:30, confirm that the result covers the intended person, date and relevant calendars, and that the booking process still allows that time. An older availability snapshot is not a reservation.",
+          "This guide does not claim Cloud Calendars imports VFREEBUSY as editable events or provides a booking guarantee from it. Use the owning service’s scheduling and invitation process. If you need titles, notes and editable records for a migration, obtain an authorized event export rather than trying to reconstruct them from anonymous time periods."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative UTC free/busy periods",
+      "columns": [
+        "FBTYPE and time shorthand",
+        "Calculated interval",
+        "What it does not provide"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "BUSY; 09:00Z–10:00Z",
+            "One occupied hour",
+            "Meeting title or invitation"
+          ]
+        },
+        {
+          "cells": [
+            "BUSY; 13:00Z plus PT30M",
+            "Occupied 13:00–13:30Z",
+            "A recurring-event master"
+          ]
+        },
+        {
+          "cells": [
+            "FBTYPE=BUSY-TENTATIVE",
+            "A tentative busy interval",
+            "A confirmed reservation"
+          ]
+        },
+        {
+          "cells": [
+            "FBTYPE=FREE",
+            "An explicitly free interval in the supplied result",
+            "A guarantee that a later booking succeeds"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify VFREEBUSY versus VEVENT.",
+      "Confirm the person, time window and freshness of the result.",
+      "Read UTC periods and FBTYPE together.",
+      "Use an authorized booking or event-export workflow for the actual next task."
+    ],
+    "faq": [
+      {
+        "q": "Can I restore meeting titles from free/busy blocks?",
+        "a": "The periods do not supply those details. Obtain an authorized event export if a full migration or backup is required."
+      },
+      {
+        "q": "Does VFREEBUSY contain RRULE for weekly meetings?",
+        "a": "No. The RFC excludes recurrence rules from that component; recurring commitments are represented as individual periods."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.6.4: VFREEBUSY scope and recurrence exclusion",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.4"
+      },
+      {
+        "label": "RFC 5545 §3.8.2.6: FREEBUSY UTC periods",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.6"
+      },
+      {
+        "label": "RFC 5545 §3.2.9: FBTYPE meanings",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.2.9"
+      },
+      {
+        "label": "RFC 5545 §3.3.9: PERIOD value forms",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.9"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Choose a booking process or calendar access"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Obtain event data rather than an availability snapshot"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Distinguish a view from updating account data"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "calendar-export-ics-pdf-and-backup",
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "ics-line-folding-utf8-octets": {
+    "updated": "2026-10-23",
+    "title": "ICS line folding: 75 bytes, UTF-8 text and the continuation space",
+    "short": "Fix a folded ICS text line",
+    "description": "Read folded ICS content lines without adding spaces or losing Unicode text. Count octets, unfold first and distinguish wrapping from a real newline.",
+    "lede": "A long event title can be split across physical lines without containing a visible newline. In ICS, a CRLF followed by a space or tab is a fold marker. Understanding that marker helps diagnose broken titles and failed imports without changing the event’s wording.",
+    "sections": [
+      {
+        "heading": "Distinguish physical lines from a content line",
+        "body": [
+          "RFC 5545 section 3.1 defines CRLF line endings and recommends no more than 75 octets per physical content line, excluding the line break. Longer content lines should use folding: insert CRLF followed by a single space or horizontal tab. The parser unfolds before interpreting the property.",
+          "The fold marker is not a paragraph break. Removing only CRLF while leaving its continuation space can insert an unwanted character; treating the continuation as a new property can lose part of the value. The defined unfold operation removes CRLF and the one immediately following space or tab."
+        ]
+      },
+      {
+        "heading": "Check a word split without inventing a space",
+        "body": [
+          "Imagine the logical property SUMMARY:Quarterly review. It may be physically represented by a first piece SUMMARY:Quar, then CRLF, then a space followed by terly review. Unfolding restores SUMMARY:Quarterly review. It must not create “Quar terly”.",
+          "If a literal content space is needed exactly at the fold point, it must remain part of the value after the fold marker is removed. Do not trim all leading whitespace from continuation lines: that can remove intended content as well as the marker. The small example illustrates the parsing rule, not a complete import file."
+        ]
+      },
+      {
+        "heading": "Count encoded bytes, not displayed letters",
+        "body": [
+          "For UTF-8, one visible character may occupy multiple octets. SUMMARY: uses 8 ASCII octets. A value of 22 copies of the character 会 uses 66 more octets, making 74 total. 23 copies use 69 value octets and 77 total, crossing the recommended 75 octet boundary despite a short visual length.",
+          "Generate folds on valid character boundaries and account for the continuation marker in the physical line. The RFC notes that simple implementations may split inside a multibyte UTF-8 sequence; receivers must unfold in a way that restores the original sequence. Do not decode broken fragments independently and replace them with question marks before joining them."
+        ]
+      },
+      {
+        "heading": "Separate a formatting defect from changed calendar data",
+        "body": [
+          "Inspect an unchanged copy of the original bytes, unfold it, then compare the resulting title or description. A visually wrapped email or editor window is not proof that the file contains valid CRLF-plus-whitespace folding. Conversely, an apparent split word in the raw file can be entirely valid.",
+          "This is an export/import diagnostic, not a raw-file editing feature of Cloud Calendars. If a provider or conversion tool produces damaged output, preserve a harmless sample and report the exact export path and encoding. Avoid hand-rewriting an important invitation while investigating formatting."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative UTF-8 byte counts including the SUMMARY: prefix",
+      "columns": [
+        "Title value",
+        "Value octets",
+        "Complete unfolded line octets"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "60 ASCII letters",
+            "60",
+            "68"
+          ]
+        },
+        {
+          "cells": [
+            "22 copies of 会",
+            "66",
+            "74"
+          ]
+        },
+        {
+          "cells": [
+            "23 copies of 会",
+            "69",
+            "77; folding is recommended"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Preserve the original bytes before opening a repair copy.",
+      "Identify CRLF followed by one space or tab as a fold.",
+      "Unfold before parsing and decoding split UTF-8 fragments.",
+      "Count octets including the property prefix rather than counting visible characters."
+    ],
+    "faq": [
+      {
+        "q": "Does an ICS fold insert a visible newline?",
+        "a": "No. Folding is a physical-line representation removed during unfolding. An intended text newline uses the TEXT value’s separate escape rule."
+      },
+      {
+        "q": "May I remove every leading space from continuation lines?",
+        "a": "No. Remove the fold marker as specified. Additional whitespace may be actual content."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.1: content-line folding, unfolding and UTF-8 note",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1"
+      },
+      {
+        "label": "RFC 5545 §3.1.4: character-set requirements",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.4"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Check the original export and import route"
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "label": "Separate damaged text from a missing event"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the unchanged source record"
+      }
+    ],
+    "seeAlso": [
+      "calendar-export-ics-pdf-and-backup",
+      "find-old-calendar-events-by-account-date-and-title",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "ics-text-escaping-commas-semicolons-newlines": {
+    "updated": "2026-10-23",
+    "title": "ICS text escaping: commas, semicolons, backslashes and real newlines",
+    "short": "Keep punctuation in ICS text",
+    "description": "Encode an ICS TEXT value without corrupting punctuation. Separate literal commas and semicolons from syntax, and text newlines from folded lines.",
+    "lede": "A location such as “Room 2, East wing” should remain one location, not become two values or a broken property. In iCalendar, TEXT punctuation and line breaks have specific escaping rules. Those rules apply to the value type, not indiscriminately to every part of an ICS line.",
+    "sections": [
+      {
+        "heading": "Identify a TEXT value before escaping it",
+        "body": [
+          "RFC 5545 section 3.3.11 requires escaping a literal backslash, comma and semicolon in TEXT values. Use two backslashes for a literal backslash, backslash-comma for a comma and backslash-semicolon for a semicolon. An intentional formatted newline is represented by backslash-n or backslash-N.",
+          "A colon in a TEXT value must not be backslash-escaped under that rule. The first property/value delimiter and any parameter syntax still belong to the content-line structure. Applying “escape every punctuation character” to the entire line is not a valid substitute for understanding the property’s value type."
+        ]
+      },
+      {
+        "heading": "Work through one fictional description",
+        "body": [
+          "Imagine the intended two-line description is “Bring:a pen, paper;check-in” followed by “Folder C:\\Plans”. The encoded TEXT value is Bring:a pen\\, paper\\;check-in\\nFolder C:\\\\Plans. The colon remains literal; the comma and semicolon are escaped; the intended newline uses the two-character escape; the literal path backslash is doubled.",
+          "This displayed example is a value, not a complete ICS file. If software stores that value inside JSON or a programming-language string first, the outer format may require another layer of escaping. Compare the bytes of the final ICS output rather than copying how a debugging console displays the intermediate string."
+        ]
+      },
+      {
+        "heading": "Keep list delimiters and parameter values distinct",
+        "body": [
+          "Some iCalendar properties allow comma-separated lists. Their separating commas have structural meaning; a comma that belongs inside an individual TEXT item is escaped. Do not globally replace every comma in the file or change structured date and recurrence syntax.",
+          "Parameters have their own grammar. Section 3.1.1 requires certain parameter values containing colon, semicolon or comma to be quoted. This is not the same operation as escaping punctuation in the TEXT property value. Use a calendar library that implements the relevant property and parameter formats when generating files."
+        ]
+      },
+      {
+        "heading": "Do not confuse an intended newline with a physical fold",
+        "body": [
+          "The two-character TEXT escape backslash-n requests a visible line break in the value. A physical CRLF followed by a continuation space is removed during unfolding and does not request that break. Both may occur in a long description, but they operate at different layers.",
+          "When a description shows literal “\\n” or loses text after punctuation, preserve the original sample and identify the layer where encoding changed. This guide does not claim Cloud Calendars exposes raw TEXT editing or that every receiver displays formatted text identically. Compare the original export and supported provider display before changing a real event."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "How literal TEXT characters are represented",
+      "columns": [
+        "Intended content",
+        "ICS TEXT encoding",
+        "Important distinction"
+      ],
+      "rows": [
+        {
+          "cells": [
+            ",",
+            "\\,",
+            "Not a list separator inside the item"
+          ]
+        },
+        {
+          "cells": [
+            ";",
+            "\\;",
+            "Not an unescaped value delimiter"
+          ]
+        },
+        {
+          "cells": [
+            "\\",
+            "\\\\",
+            "Two backslashes encode one"
+          ]
+        },
+        {
+          "cells": [
+            "Visible newline",
+            "\\n or \\N",
+            "Not a physical fold"
+          ]
+        },
+        {
+          "cells": [
+            ":",
+            ":",
+            "Do not backslash-escape it as TEXT"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the property uses TEXT.",
+      "Escape literal backslashes, commas, semicolons and intentional newlines at the value layer.",
+      "Keep parameter and list syntax separate.",
+      "Inspect the final ICS bytes after any JSON or programming-language encoding."
+    ],
+    "faq": [
+      {
+        "q": "Should I encode a comma as %2C in a TEXT value?",
+        "a": "The RFC’s TEXT rule uses a backslash escape. URL percent-encoding is a different layer and is not a general replacement for TEXT escaping."
+      },
+      {
+        "q": "Does a physical line fold produce a paragraph break?",
+        "a": "No. It is removed during unfolding. An intended TEXT newline uses backslash-n or backslash-N."
+      }
+    ],
+    "sourcesHeading": "Primary specification checked for this guide",
+    "sources": [
+      {
+        "label": "RFC 5545 §3.3.11: TEXT escapes and colon rule",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.11"
+      },
+      {
+        "label": "RFC 5545 §3.1.1: list and parameter delimiters",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.1"
+      },
+      {
+        "label": "RFC 5545 §3.1: physical folding and unfolding",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Preserve the export while checking transfer"
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "label": "Check the actual searchable text"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Trace where the representation changed"
+      }
+    ],
+    "seeAlso": [
+      "calendar-export-ics-pdf-and-backup",
+      "find-old-calendar-events-by-account-date-and-title",
+      "when-two-calendars-disagree"
+    ]
+  }
+}

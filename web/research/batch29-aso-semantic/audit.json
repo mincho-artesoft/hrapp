@@ -1,0 +1,656 @@
+{
+  "date": "2026-10-22",
+  "head": "265f0d7",
+  "status": "bounded_editorial_audit_six_description_candidates_not_applied",
+  "scope": "Complete30textfields across six saved locale proposals. No production/API/web requests. No native/source/build/deploy/commit/customer operations. New file audit.json only.",
+  "evidenceProvenance": {
+    "readbackFile": "research/aso/all-locales-readback-batch18.json",
+    "rawSha256": "692b5aa0e407f2a6f16c8903fcecd50241c6074d7e65ad38787ced65cd1c6093",
+    "checkedAt": "2026-10-21T23:08:19.029387+00:00",
+    "version": "1.7.4",
+    "state": "PREPARE_FOR_SUBMISSION",
+    "schemaFinding": "Readback contains boolean equality checks, not metadata bodies. Complete bodies were read from the exact proposal paths used by verify-all-locales-20261021.py; all five fields per locale recorded true in savedbatch18.",
+    "verificationScript": "research/aso/verify-all-locales-20261021.py",
+    "scriptReadNotExecuted": true,
+    "limitation": "Saved equality evidence does not prove current live ASC values or native-language quality. No fresh API requested; targeted read needed before any future approved mutation.",
+    "initialFacts": "research/product-facts.json: selected complete fact records for tiers/accounts/weather/widgets/sharing read. Its early App Clip import wording is superseded by detailed batch08 evidence and current guide.",
+    "laterProductEvidence": "research/batch08-sharing/evidence.json read earlier in this audit sequence: EventClipPreviewView.swift60–96 explicitly preview-only; email/QR landing and full-app importer are distinct. Existing source audit, not fresh native/released runtime verification.",
+    "currentCompleteGuides": [
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "readScope": "Complete current object, all fields/body/FAQ/practical/sources/related",
+        "parsedObjectSha256": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "readScope": "Complete current object, all fields/body/FAQ/practical/sources/related",
+        "parsedObjectSha256": "bd24f07a80cf4e35b40d6b084e64d1865811ed89d902d4f7a74303df964b4748"
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "readScope": "Complete current object, all fields/body/FAQ/practical/sources/related",
+        "parsedObjectSha256": "e1748b7d61934b5ca6812e3c8e99f27c763774e7e09761b8b87747e7708a1b94"
+      }
+    ]
+  },
+  "summary": {
+    "locales": 6,
+    "completeFields": 30,
+    "descriptionCandidates": 6,
+    "keywordChangesJustified": 0,
+    "nameChangesJustified": 0,
+    "materialIssueClasses": 1,
+    "decision": "Prepare the six bounded App Clip clarifications. No additional metadata churn justified. Preserve names and keywords; persistence is not optimization-performance proof."
+  },
+  "currentWebsiteReconciliation": {
+    "support": "HEAD265f0d7 source now uses SUPPORT_EMAIL=support@arte-soft.com and footer.emailSupport is consumed. Previous missing-support-link diagnosis is closed at source; no repeat proposal or fresh live-delivery certification here.",
+    "caldav": "Current EN contains reader-facing full-access/provider-limits wording and original-selection restoration caveat from batch28. Do not treat its prior draft as unintegrated. No need to add CalDAV keywords or direct-server claims to these descriptions."
+  },
+  "assessments": [
+    {
+      "locale": "fr-FR",
+      "proposalFile": "research/aso/localized-batch02/fr-FR-proposal.json",
+      "proposalRawSha256": "586765f0c2cec69b1d384b9be83265bb3b3cb49282317550718279b3c7c359fe",
+      "readbackChecks": {
+        "locale": "fr-FR",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Météo, rendez-vous et widgets",
+        "keywords": "calendrier,planning,semaine,mois,rappel,réunion,événement,partage,invitation,prévisions,organisation",
+        "promotionalText": "Vos rendez-vous et la météo au même endroit. Découvrez les widgets et les vues du calendrier, ou créez un calendrier local sans compte dans l’app.",
+        "description": "Réunissez vos calendriers et la météo sur iPhone et iPad. Cloud Calendars vous aide à consulter vos rendez-vous professionnels et personnels pour préparer votre journée.\n\nVOS CALENDRIERS, PLUSIEURS VUES\nUtilisez vos calendriers iCloud et connectez Google Agenda. Premium ajoute la prise en charge des calendriers Microsoft. Passez des vues Jour et Semaine aux vues Mois, Année et Liste.\n\nVous pouvez aussi créer un calendrier local sur votre appareil sans compte Cloud Calendars. La connexion à un service et le partage peuvent nécessiter une identification.\n\nMÉTÉO ET WIDGETS\nConsultez les prévisions pendant que vous organisez vos activités. Choisissez des widgets petits, moyens ou grands pour l’écran d’accueil. Les prévisions disponibles dépendent du lieu et du fournisseur météo.\n\nRÉUNIONS ET PARTAGE\nUtilisez Google Meet avec Google Agenda. Premium ajoute Microsoft Teams. Partagez des événements et des calendriers, puis envoyez des invitations par e-mail, code QR ou App Clip. Les droits d’accès dépendent du calendrier et du type d’invitation.\n\nCHOISISSEZ VOTRE FORMULE\nBase est gratuit et comprend la synchronisation avec Google Agenda, Google Meet, plusieurs vues de calendrier, la météo et les widgets.\nAdvanced comprend les fonctions de Base et supprime les publicités.\nPremium comprend Advanced et ajoute les calendriers Microsoft et Microsoft Teams.\n\nLe téléchargement est gratuit, avec des abonnements facultatifs à renouvellement automatique. Consultez les prix en vigueur dans l’app ou l’App Store. Le paiement est débité de votre compte Apple à la confirmation de l’achat. L’abonnement se renouvelle automatiquement, sauf résiliation au moins 24 heures avant la fin de la période en cours. Le renouvellement est facturé dans les 24 heures précédant cette échéance. Gérez ou résiliez votre abonnement dans les réglages de votre compte App Store.\n\nConfidentialité : https://www.cloud-calendars.com/privacy-policy\nConditions d’utilisation : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "unicodeCharacters": 29,
+          "utf8Bytes": 31
+        },
+        "keywords": {
+          "unicodeCharacters": 100,
+          "utf8Bytes": 104
+        },
+        "promotionalText": {
+          "unicodeCharacters": 146,
+          "utf8Bytes": 153
+        },
+        "description": {
+          "unicodeCharacters": 2023,
+          "utf8Bytes": 2085
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Clear French with consistent vous voice. Calendar/planning/weather vocabulary is natural; no material readability correction beyond the sharing distinction."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "calendrier",
+          "planning",
+          "semaine",
+          "mois",
+          "rappel",
+          "réunion",
+          "événement",
+          "partage",
+          "invitation",
+          "prévisions",
+          "organisation"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "Réunissez vos calendriers et la météo sur iPhone et iPad. Cloud Calendars vous aide à consulter vos rendez-vous professionnels et personnels pour préparer votre journée.\n\nVOS CALENDRIERS, PLUSIEURS VUES\nUtilisez vos calendriers iCloud et connectez Google Agenda. Premium ajoute la prise en charge des calendriers Microsoft. Passez des vues Jour et Semaine aux vues Mois, Année et Liste.\n\nVous pouvez aussi créer un calendrier local sur votre appareil sans compte Cloud Calendars. La connexion à un service et le partage peuvent nécessiter une identification.\n\nMÉTÉO ET WIDGETS\nConsultez les prévisions pendant que vous organisez vos activités. Choisissez des widgets petits, moyens ou grands pour l’écran d’accueil. Les prévisions disponibles dépendent du lieu et du fournisseur météo.\n\nRÉUNIONS ET PARTAGE\nUtilisez Google Meet avec Google Agenda. Premium ajoute Microsoft Teams. Partagez des événements et des calendriers, puis envoyez des invitations par e-mail, code QR ou App Clip. Les droits d’accès dépendent du calendrier et du type d’invitation.\n\nCHOISISSEZ VOTRE FORMULE\nBase est gratuit et comprend la synchronisation avec Google Agenda, Google Meet, plusieurs vues de calendrier, la météo et les widgets.\nAdvanced comprend les fonctions de Base et supprime les publicités.\nPremium comprend Advanced et ajoute les calendriers Microsoft et Microsoft Teams.\n\nLe téléchargement est gratuit, avec des abonnements facultatifs à renouvellement automatique. Consultez les prix en vigueur dans l’app ou l’App Store. Le paiement est débité de votre compte Apple à la confirmation de l’achat. L’abonnement se renouvelle automatiquement, sauf résiliation au moins 24 heures avant la fin de la période en cours. Le renouvellement est facturé dans les 24 heures précédant cette échéance. Gérez ou résiliez votre abonnement dans les réglages de votre compte App Store.\n\nConfidentialité : https://www.cloud-calendars.com/privacy-policy\nConditions d’utilisation : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "Réunissez vos calendriers et la météo sur iPhone et iPad. Cloud Calendars vous aide à consulter vos rendez-vous professionnels et personnels pour préparer votre journée.\n\nVOS CALENDRIERS, PLUSIEURS VUES\nUtilisez vos calendriers iCloud et connectez Google Agenda. Premium ajoute la prise en charge des calendriers Microsoft. Passez des vues Jour et Semaine aux vues Mois, Année et Liste.\n\nVous pouvez aussi créer un calendrier local sur votre appareil sans compte Cloud Calendars. La connexion à un service et le partage peuvent nécessiter une identification.\n\nMÉTÉO ET WIDGETS\nConsultez les prévisions pendant que vous organisez vos activités. Choisissez des widgets petits, moyens ou grands pour l’écran d’accueil. Les prévisions disponibles dépendent du lieu et du fournisseur météo.\n\nRÉUNIONS ET PARTAGE\nUtilisez Google Meet avec Google Agenda. Premium ajoute Microsoft Teams. Partagez des événements et des calendriers avec des invitations par e-mail ou code QR. App Clip propose un aperçu de l’événement ; pour l’ajouter à un calendrier depuis cet aperçu, il faut l’app complète. Les droits d’accès dépendent du calendrier et du type d’invitation.\n\nCHOISISSEZ VOTRE FORMULE\nBase est gratuit et comprend la synchronisation avec Google Agenda, Google Meet, plusieurs vues de calendrier, la météo et les widgets.\nAdvanced comprend les fonctions de Base et supprime les publicités.\nPremium comprend Advanced et ajoute les calendriers Microsoft et Microsoft Teams.\n\nLe téléchargement est gratuit, avec des abonnements facultatifs à renouvellement automatique. Consultez les prix en vigueur dans l’app ou l’App Store. Le paiement est débité de votre compte Apple à la confirmation de l’achat. L’abonnement se renouvelle automatiquement, sauf résiliation au moins 24 heures avant la fin de la période en cours. Le renouvellement est facturé dans les 24 heures précédant cette échéance. Gérez ou résiliez votre abonnement dans les réglages de votre compte App Store.\n\nConfidentialité : https://www.cloud-calendars.com/privacy-policy\nConditions d’utilisation : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "Partagez des événements et des calendriers, puis envoyez des invitations par e-mail, code QR ou App Clip.",
+          "afterExcerpt": "Partagez des événements et des calendriers avec des invitations par e-mail ou code QR. App Clip propose un aperçu de l’événement ; pour l’ajouter à un calendrier depuis cet aperçu, il faut l’app complète.",
+          "afterUnicodeCharacters": 2122,
+          "afterUtf8Bytes": 2196,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    },
+    {
+      "locale": "it",
+      "proposalFile": "research/aso/localized-batch02/it-proposal.json",
+      "proposalRawSha256": "3a3f62dbd1e02577feed31b36da714d534c8088e0aaf0d93e020625105c802c0",
+      "readbackChecks": {
+        "locale": "it",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Meteo, impegni e widget",
+        "keywords": "agenda,pianificazione,settimana,mese,promemoria,riunione,evento,condivisione,invito,previsioni",
+        "promotionalText": "Impegni e meteo nello stesso posto. Scopri i widget e le diverse viste, oppure crea un calendario locale senza un account nell’app.",
+        "description": "Riunisci calendari e meteo su iPhone e iPad. Con Cloud Calendars puoi consultare gli impegni di lavoro e personali e organizzare la giornata.\n\nI TUOI CALENDARI, PIÙ VISTE\nUsa i calendari iCloud e collega Google Calendar. Premium aggiunge il supporto per i calendari Microsoft. Scegli tra le viste Giorno, Settimana, Mese, Anno ed Elenco.\n\nPuoi anche creare un calendario locale sul dispositivo senza un account Cloud Calendars. Il collegamento ai servizi e la condivisione possono richiedere l’accesso a un account.\n\nMETEO E WIDGET\nConsulta le previsioni mentre organizzi le tue attività. I widget per la schermata Home sono disponibili nei formati piccolo, medio e grande. La disponibilità delle previsioni dipende dal luogo e dal fornitore meteo.\n\nRIUNIONI E INVITI\nUsa Google Meet con Google Calendar. Premium supporta anche Microsoft Teams. Condividi eventi e calendari e invia inviti tramite email, codice QR o App Clip. I permessi dipendono dal calendario e dal tipo di invito.\n\nSCEGLI IL TUO PIANO\nBase è gratuito e include la sincronizzazione con Google Calendar, Google Meet, diverse viste del calendario, meteo e widget.\nAdvanced include le funzioni di Base e rimuove gli annunci.\nPremium include Advanced e aggiunge i calendari Microsoft e Microsoft Teams.\n\nIl download è gratuito, con abbonamenti facoltativi a rinnovo automatico. Consulta i prezzi attuali nell’app o nell’App Store. Il pagamento viene addebitato sul tuo account Apple alla conferma dell’acquisto. L’abbonamento si rinnova automaticamente, salvo disdetta almeno 24 ore prima della fine del periodo in corso. Il rinnovo viene addebitato nelle 24 ore precedenti la scadenza. Puoi gestire o annullare l’abbonamento nelle impostazioni del tuo account App Store.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 27,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "unicodeCharacters": 23,
+          "utf8Bytes": 23
+        },
+        "keywords": {
+          "unicodeCharacters": 94,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "unicodeCharacters": 131,
+          "utf8Bytes": 133
+        },
+        "description": {
+          "unicodeCharacters": 1880,
+          "utf8Bytes": 1897
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Clear Italian with consistent informal singular voice. Singular widget is natural as an Italian loanword; no forced plural or keyword expansion needed."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "agenda",
+          "pianificazione",
+          "settimana",
+          "mese",
+          "promemoria",
+          "riunione",
+          "evento",
+          "condivisione",
+          "invito",
+          "previsioni"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "Riunisci calendari e meteo su iPhone e iPad. Con Cloud Calendars puoi consultare gli impegni di lavoro e personali e organizzare la giornata.\n\nI TUOI CALENDARI, PIÙ VISTE\nUsa i calendari iCloud e collega Google Calendar. Premium aggiunge il supporto per i calendari Microsoft. Scegli tra le viste Giorno, Settimana, Mese, Anno ed Elenco.\n\nPuoi anche creare un calendario locale sul dispositivo senza un account Cloud Calendars. Il collegamento ai servizi e la condivisione possono richiedere l’accesso a un account.\n\nMETEO E WIDGET\nConsulta le previsioni mentre organizzi le tue attività. I widget per la schermata Home sono disponibili nei formati piccolo, medio e grande. La disponibilità delle previsioni dipende dal luogo e dal fornitore meteo.\n\nRIUNIONI E INVITI\nUsa Google Meet con Google Calendar. Premium supporta anche Microsoft Teams. Condividi eventi e calendari e invia inviti tramite email, codice QR o App Clip. I permessi dipendono dal calendario e dal tipo di invito.\n\nSCEGLI IL TUO PIANO\nBase è gratuito e include la sincronizzazione con Google Calendar, Google Meet, diverse viste del calendario, meteo e widget.\nAdvanced include le funzioni di Base e rimuove gli annunci.\nPremium include Advanced e aggiunge i calendari Microsoft e Microsoft Teams.\n\nIl download è gratuito, con abbonamenti facoltativi a rinnovo automatico. Consulta i prezzi attuali nell’app o nell’App Store. Il pagamento viene addebitato sul tuo account Apple alla conferma dell’acquisto. L’abbonamento si rinnova automaticamente, salvo disdetta almeno 24 ore prima della fine del periodo in corso. Il rinnovo viene addebitato nelle 24 ore precedenti la scadenza. Puoi gestire o annullare l’abbonamento nelle impostazioni del tuo account App Store.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "Riunisci calendari e meteo su iPhone e iPad. Con Cloud Calendars puoi consultare gli impegni di lavoro e personali e organizzare la giornata.\n\nI TUOI CALENDARI, PIÙ VISTE\nUsa i calendari iCloud e collega Google Calendar. Premium aggiunge il supporto per i calendari Microsoft. Scegli tra le viste Giorno, Settimana, Mese, Anno ed Elenco.\n\nPuoi anche creare un calendario locale sul dispositivo senza un account Cloud Calendars. Il collegamento ai servizi e la condivisione possono richiedere l’accesso a un account.\n\nMETEO E WIDGET\nConsulta le previsioni mentre organizzi le tue attività. I widget per la schermata Home sono disponibili nei formati piccolo, medio e grande. La disponibilità delle previsioni dipende dal luogo e dal fornitore meteo.\n\nRIUNIONI E INVITI\nUsa Google Meet con Google Calendar. Premium supporta anche Microsoft Teams. Condividi eventi e calendari con inviti tramite email o codice QR. App Clip mostra un’anteprima dell’evento; per aggiungerlo a un calendario da questa anteprima serve l’app completa. I permessi dipendono dal calendario e dal tipo di invito.\n\nSCEGLI IL TUO PIANO\nBase è gratuito e include la sincronizzazione con Google Calendar, Google Meet, diverse viste del calendario, meteo e widget.\nAdvanced include le funzioni di Base e rimuove gli annunci.\nPremium include Advanced e aggiunge i calendari Microsoft e Microsoft Teams.\n\nIl download è gratuito, con abbonamenti facoltativi a rinnovo automatico. Consulta i prezzi attuali nell’app o nell’App Store. Il pagamento viene addebitato sul tuo account Apple alla conferma dell’acquisto. L’abbonamento si rinnova automaticamente, salvo disdetta almeno 24 ore prima della fine del periodo in corso. Il rinnovo viene addebitato nelle 24 ore precedenti la scadenza. Puoi gestire o annullare l’abbonamento nelle impostazioni del tuo account App Store.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "Condividi eventi e calendari e invia inviti tramite email, codice QR o App Clip.",
+          "afterExcerpt": "Condividi eventi e calendari con inviti tramite email o codice QR. App Clip mostra un’anteprima dell’evento; per aggiungerlo a un calendario da questa anteprima serve l’app completa.",
+          "afterUnicodeCharacters": 1982,
+          "afterUtf8Bytes": 2005,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    },
+    {
+      "locale": "ja",
+      "proposalFile": "research/aso/localized-batch02/ja-proposal.json",
+      "proposalRawSha256": "f5aaf242bc7da41e531bd607b767b814bdff1e756117a88407a2d02ce7e58433",
+      "readbackChecks": {
+        "locale": "ja",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: カレンダー",
+        "subtitle": "天気・予定管理・ホーム画面ウィジェット",
+        "keywords": "スケジュール,手帳,日程,リマインダー,会議,イベント,共有,招待,週間表示,月間表示,予報,仕事,プライベート,同期",
+        "promotionalText": "予定と天気をまとめて確認。ホーム画面ウィジェットや多彩な表示を活用できます。アプリのアカウントを作らずに、端末内のローカルカレンダーから始めることもできます。",
+        "description": "iPhoneとiPadで、カレンダーと天気をまとめて確認。Cloud Calendarsで仕事とプライベートの予定を見ながら、一日の計画を立てられます。\n\nカレンダーをまとめて表示\niCloudのカレンダーを利用し、Google カレンダーを接続できます。PremiumではMicrosoftのカレンダーにも対応。日・週・月・年・リスト表示から、用途に合った表示を選べます。\n\nCloud Calendarsのアカウントを作らずに、端末内のローカルカレンダーを作成することもできます。サービスの接続や共有には、サインインが必要になる場合があります。\n\n天気とホーム画面ウィジェット\n予定を立てながら天気予報を確認できます。ホーム画面ウィジェットは小・中・大のサイズに対応しています。利用できる予報は地域や気象情報の提供元によって異なります。\n\n会議と共有\nGoogle カレンダーでGoogle Meetを利用できます。PremiumではMicrosoft Teamsにも対応。イベントやカレンダーを共有し、メール、QRコード、App Clipで招待できます。アクセス権はカレンダーや招待の種類によって異なります。\n\nプランについて\n無料のBaseには、Google カレンダーの同期、Google Meet、複数のカレンダー表示、天気、ウィジェットが含まれます。\nAdvancedにはBaseの機能が含まれ、広告が非表示になります。\nPremiumにはAdvancedの機能に加え、MicrosoftのカレンダーとMicrosoft Teamsへの対応が含まれます。\n\nダウンロードは無料です。任意で自動更新のサブスクリプションを購入できます。現在の価格はアプリ内またはApp Storeでご確認ください。購入確定時にAppleアカウントに請求されます。現在の期間が終了する24時間前までに解約しない限り、自動的に更新されます。更新料金は期間終了前の24時間以内に請求されます。サブスクリプションはApp Storeのアカウント設定で管理・解約できます。\n\nプライバシーポリシー: https://www.cloud-calendars.com/privacy-policy\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 22,
+          "utf8Bytes": 32
+        },
+        "subtitle": {
+          "unicodeCharacters": 19,
+          "utf8Bytes": 57
+        },
+        "keywords": {
+          "unicodeCharacters": 59,
+          "utf8Bytes": 151
+        },
+        "promotionalText": {
+          "unicodeCharacters": 79,
+          "utf8Bytes": 237
+        },
+        "description": {
+          "unicodeCharacters": 1010,
+          "utf8Bytes": 2320
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Readable Japanese. The name and subtitle clearly identify calendars, weather, schedule management and Home Screen widgets. Schedule/diary/date terms overlap semantically but are not proven wasted exact duplicates. No speculative kana/kanji rewrite."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "スケジュール",
+          "手帳",
+          "日程",
+          "リマインダー",
+          "会議",
+          "イベント",
+          "共有",
+          "招待",
+          "週間表示",
+          "月間表示",
+          "予報",
+          "仕事",
+          "プライベート",
+          "同期"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "iPhoneとiPadで、カレンダーと天気をまとめて確認。Cloud Calendarsで仕事とプライベートの予定を見ながら、一日の計画を立てられます。\n\nカレンダーをまとめて表示\niCloudのカレンダーを利用し、Google カレンダーを接続できます。PremiumではMicrosoftのカレンダーにも対応。日・週・月・年・リスト表示から、用途に合った表示を選べます。\n\nCloud Calendarsのアカウントを作らずに、端末内のローカルカレンダーを作成することもできます。サービスの接続や共有には、サインインが必要になる場合があります。\n\n天気とホーム画面ウィジェット\n予定を立てながら天気予報を確認できます。ホーム画面ウィジェットは小・中・大のサイズに対応しています。利用できる予報は地域や気象情報の提供元によって異なります。\n\n会議と共有\nGoogle カレンダーでGoogle Meetを利用できます。PremiumではMicrosoft Teamsにも対応。イベントやカレンダーを共有し、メール、QRコード、App Clipで招待できます。アクセス権はカレンダーや招待の種類によって異なります。\n\nプランについて\n無料のBaseには、Google カレンダーの同期、Google Meet、複数のカレンダー表示、天気、ウィジェットが含まれます。\nAdvancedにはBaseの機能が含まれ、広告が非表示になります。\nPremiumにはAdvancedの機能に加え、MicrosoftのカレンダーとMicrosoft Teamsへの対応が含まれます。\n\nダウンロードは無料です。任意で自動更新のサブスクリプションを購入できます。現在の価格はアプリ内またはApp Storeでご確認ください。購入確定時にAppleアカウントに請求されます。現在の期間が終了する24時間前までに解約しない限り、自動的に更新されます。更新料金は期間終了前の24時間以内に請求されます。サブスクリプションはApp Storeのアカウント設定で管理・解約できます。\n\nプライバシーポリシー: https://www.cloud-calendars.com/privacy-policy\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "iPhoneとiPadで、カレンダーと天気をまとめて確認。Cloud Calendarsで仕事とプライベートの予定を見ながら、一日の計画を立てられます。\n\nカレンダーをまとめて表示\niCloudのカレンダーを利用し、Google カレンダーを接続できます。PremiumではMicrosoftのカレンダーにも対応。日・週・月・年・リスト表示から、用途に合った表示を選べます。\n\nCloud Calendarsのアカウントを作らずに、端末内のローカルカレンダーを作成することもできます。サービスの接続や共有には、サインインが必要になる場合があります。\n\n天気とホーム画面ウィジェット\n予定を立てながら天気予報を確認できます。ホーム画面ウィジェットは小・中・大のサイズに対応しています。利用できる予報は地域や気象情報の提供元によって異なります。\n\n会議と共有\nGoogle カレンダーでGoogle Meetを利用できます。PremiumではMicrosoft Teamsにも対応。メールやQRコードによる招待で、イベントやカレンダーを共有できます。App Clipではイベントのプレビューを確認できます。このプレビューからカレンダーにイベントを追加するには、フルアプリが必要です。アクセス権はカレンダーや招待の種類によって異なります。\n\nプランについて\n無料のBaseには、Google カレンダーの同期、Google Meet、複数のカレンダー表示、天気、ウィジェットが含まれます。\nAdvancedにはBaseの機能が含まれ、広告が非表示になります。\nPremiumにはAdvancedの機能に加え、MicrosoftのカレンダーとMicrosoft Teamsへの対応が含まれます。\n\nダウンロードは無料です。任意で自動更新のサブスクリプションを購入できます。現在の価格はアプリ内またはApp Storeでご確認ください。購入確定時にAppleアカウントに請求されます。現在の期間が終了する24時間前までに解約しない限り、自動的に更新されます。更新料金は期間終了前の24時間以内に請求されます。サブスクリプションはApp Storeのアカウント設定で管理・解約できます。\n\nプライバシーポリシー: https://www.cloud-calendars.com/privacy-policy\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "イベントやカレンダーを共有し、メール、QRコード、App Clipで招待できます。",
+          "afterExcerpt": "メールやQRコードによる招待で、イベントやカレンダーを共有できます。App Clipではイベントのプレビューを確認できます。このプレビューからカレンダーにイベントを追加するには、フルアプリが必要です。",
+          "afterUnicodeCharacters": 1069,
+          "afterUtf8Bytes": 2497,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    },
+    {
+      "locale": "ko",
+      "proposalFile": "research/aso/localized-batch02/ko-proposal.json",
+      "proposalRawSha256": "d94e40f280407d5deb9a8512b2315d63bcb2ffa1e847a05f1e2a244f85f5ab68",
+      "readbackChecks": {
+        "locale": "ko",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: 캘린더",
+        "subtitle": "날씨와 일정 관리, 홈 화면 위젯",
+        "keywords": "스케줄,다이어리,플래너,알림,회의,이벤트,공유,초대,주간보기,월간보기,예보,업무,개인,동기화,약속,시간표",
+        "promotionalText": "일정과 날씨를 한곳에서 확인하세요. 홈 화면 위젯과 다양한 보기를 활용하거나, 앱 계정 없이 기기에 로컬 캘린더를 만들어 시작할 수 있어요.",
+        "description": "iPhone과 iPad에서 캘린더와 날씨를 함께 확인하세요. Cloud Calendars로 업무 일정과 개인 일정을 살펴보며 하루를 계획할 수 있어요.\n\n캘린더와 다양한 보기\niCloud 캘린더를 사용하고 Google Calendar를 연결하세요. Premium은 Microsoft 캘린더도 지원합니다. 일간, 주간, 월간, 연간, 목록 보기 중에서 원하는 방식을 선택할 수 있어요.\n\nCloud Calendars 계정을 만들지 않고 기기에 로컬 캘린더를 생성할 수도 있어요. 서비스 연결이나 공유 기능에는 로그인이 필요할 수 있습니다.\n\n날씨와 홈 화면 위젯\n계획을 세우면서 일기예보를 확인하세요. 홈 화면 위젯은 소형, 중형, 대형 크기를 지원합니다. 제공되는 예보는 위치와 기상 정보 제공업체에 따라 달라집니다.\n\n회의와 공유\nGoogle Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다.\n\n요금제 안내\n무료 Base에는 Google Calendar 동기화, Google Meet, 다양한 캘린더 보기, 날씨, 위젯이 포함됩니다.\nAdvanced에는 Base 기능이 포함되며 광고가 제거됩니다.\nPremium에는 Advanced 기능과 함께 Microsoft 캘린더 및 Microsoft Teams 지원이 포함됩니다.\n\n앱은 무료로 다운로드할 수 있으며, 자동 갱신 구독을 선택하여 구매할 수 있습니다. 현재 가격은 앱 또는 App Store에서 확인하세요. 구매 확정 시 Apple 계정으로 요금이 청구됩니다. 현재 구독 기간이 끝나기 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다. 갱신 요금은 기간 종료 전 24시간 이내에 청구됩니다. App Store 계정 설정에서 구독을 관리하거나 취소할 수 있습니다.\n\n개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 20,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "unicodeCharacters": 18,
+          "utf8Bytes": 42
+        },
+        "keywords": {
+          "unicodeCharacters": 58,
+          "utf8Bytes": 144
+        },
+        "promotionalText": {
+          "unicodeCharacters": 78,
+          "utf8Bytes": 190
+        },
+        "description": {
+          "unicodeCharacters": 1101,
+          "utf8Bytes": 2119
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Readable Korean. Polite conversational and formal endings coexist, but do not obscure tier or account requirements; no material rewrite justified solely for tone. Compact keyword compounds 주간보기 and 월간보기 are understandable; no unsupported indexing judgment."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "스케줄",
+          "다이어리",
+          "플래너",
+          "알림",
+          "회의",
+          "이벤트",
+          "공유",
+          "초대",
+          "주간보기",
+          "월간보기",
+          "예보",
+          "업무",
+          "개인",
+          "동기화",
+          "약속",
+          "시간표"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "iPhone과 iPad에서 캘린더와 날씨를 함께 확인하세요. Cloud Calendars로 업무 일정과 개인 일정을 살펴보며 하루를 계획할 수 있어요.\n\n캘린더와 다양한 보기\niCloud 캘린더를 사용하고 Google Calendar를 연결하세요. Premium은 Microsoft 캘린더도 지원합니다. 일간, 주간, 월간, 연간, 목록 보기 중에서 원하는 방식을 선택할 수 있어요.\n\nCloud Calendars 계정을 만들지 않고 기기에 로컬 캘린더를 생성할 수도 있어요. 서비스 연결이나 공유 기능에는 로그인이 필요할 수 있습니다.\n\n날씨와 홈 화면 위젯\n계획을 세우면서 일기예보를 확인하세요. 홈 화면 위젯은 소형, 중형, 대형 크기를 지원합니다. 제공되는 예보는 위치와 기상 정보 제공업체에 따라 달라집니다.\n\n회의와 공유\nGoogle Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다.\n\n요금제 안내\n무료 Base에는 Google Calendar 동기화, Google Meet, 다양한 캘린더 보기, 날씨, 위젯이 포함됩니다.\nAdvanced에는 Base 기능이 포함되며 광고가 제거됩니다.\nPremium에는 Advanced 기능과 함께 Microsoft 캘린더 및 Microsoft Teams 지원이 포함됩니다.\n\n앱은 무료로 다운로드할 수 있으며, 자동 갱신 구독을 선택하여 구매할 수 있습니다. 현재 가격은 앱 또는 App Store에서 확인하세요. 구매 확정 시 Apple 계정으로 요금이 청구됩니다. 현재 구독 기간이 끝나기 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다. 갱신 요금은 기간 종료 전 24시간 이내에 청구됩니다. App Store 계정 설정에서 구독을 관리하거나 취소할 수 있습니다.\n\n개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "iPhone과 iPad에서 캘린더와 날씨를 함께 확인하세요. Cloud Calendars로 업무 일정과 개인 일정을 살펴보며 하루를 계획할 수 있어요.\n\n캘린더와 다양한 보기\niCloud 캘린더를 사용하고 Google Calendar를 연결하세요. Premium은 Microsoft 캘린더도 지원합니다. 일간, 주간, 월간, 연간, 목록 보기 중에서 원하는 방식을 선택할 수 있어요.\n\nCloud Calendars 계정을 만들지 않고 기기에 로컬 캘린더를 생성할 수도 있어요. 서비스 연결이나 공유 기능에는 로그인이 필요할 수 있습니다.\n\n날씨와 홈 화면 위젯\n계획을 세우면서 일기예보를 확인하세요. 홈 화면 위젯은 소형, 중형, 대형 크기를 지원합니다. 제공되는 예보는 위치와 기상 정보 제공업체에 따라 달라집니다.\n\n회의와 공유\nGoogle Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이메일이나 QR 코드 초대로 이벤트와 캘린더를 공유하세요. App Clip에서는 이벤트를 미리 볼 수 있습니다. 이 미리보기에서 캘린더에 이벤트를 추가하려면 전체 앱이 필요합니다. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다.\n\n요금제 안내\n무료 Base에는 Google Calendar 동기화, Google Meet, 다양한 캘린더 보기, 날씨, 위젯이 포함됩니다.\nAdvanced에는 Base 기능이 포함되며 광고가 제거됩니다.\nPremium에는 Advanced 기능과 함께 Microsoft 캘린더 및 Microsoft Teams 지원이 포함됩니다.\n\n앱은 무료로 다운로드할 수 있으며, 자동 갱신 구독을 선택하여 구매할 수 있습니다. 현재 가격은 앱 또는 App Store에서 확인하세요. 구매 확정 시 Apple 계정으로 요금이 청구됩니다. 현재 구독 기간이 끝나기 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다. 갱신 요금은 기간 종료 전 24시간 이내에 청구됩니다. App Store 계정 설정에서 구독을 관리하거나 취소할 수 있습니다.\n\n개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy\n이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요.",
+          "afterExcerpt": "이메일이나 QR 코드 초대로 이벤트와 캘린더를 공유하세요. App Clip에서는 이벤트를 미리 볼 수 있습니다. 이 미리보기에서 캘린더에 이벤트를 추가하려면 전체 앱이 필요합니다.",
+          "afterUnicodeCharacters": 1155,
+          "afterUtf8Bytes": 2255,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    },
+    {
+      "locale": "pt-BR",
+      "proposalFile": "research/aso/localized-batch03/pt-BR-proposal.json",
+      "proposalRawSha256": "825a025a239b6e14b60e65ecd00b716d0b12b2cd5635d2b265d7f89e09139579",
+      "readbackChecks": {
+        "locale": "pt-BR",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: Calendário",
+        "subtitle": "Clima, compromissos e widgets",
+        "keywords": "agenda,planejador,horário,semana,mês,lembrete,reunião,evento,compartilhar,convite,previsão",
+        "promotionalText": "Veja seus compromissos e o clima em um só lugar. Explore widgets e diferentes visualizações ou crie um calendário local sem uma conta no app.",
+        "description": "Reúna seus calendários e o clima no iPhone e no iPad. Consulte compromissos de trabalho e planos pessoais com o Cloud Calendars.\n\nCALENDÁRIOS E VISUALIZAÇÕES\nUse calendários do iCloud e conecte o Google Agenda. O Premium também oferece suporte aos calendários da Microsoft. Escolha entre as visualizações de dia, semana, mês, ano e lista.\n\nVocê também pode criar um calendário local no dispositivo sem uma conta do Cloud Calendars. Conectar serviços e compartilhar conteúdo pode exigir login.\n\nCLIMA E WIDGETS\nConsulte a previsão do tempo ao planejar suas atividades. Os widgets para a Tela de Início estão disponíveis nos tamanhos pequeno, médio e grande. As previsões disponíveis dependem da localização e do provedor de dados meteorológicos.\n\nREUNIÕES E CONVITES\nUse o Google Meet com o Google Agenda. O Premium também oferece suporte ao Microsoft Teams. Compartilhe eventos e calendários e envie convites por e-mail, código QR ou App Clip. As permissões dependem do calendário e do tipo de convite.\n\nESCOLHA SEU PLANO\nO Base é gratuito e inclui sincronização com o Google Agenda, Google Meet, diferentes visualizações de calendário, clima e widgets.\nO Advanced inclui os recursos do Base e remove os anúncios.\nO Premium inclui o Advanced e adiciona calendários da Microsoft e Microsoft Teams.\n\nConfira o preço local e o período de cobrança no app ou na App Store antes de assinar.\n\nO download é gratuito. As assinaturas opcionais são renovadas automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período atual. Gerencie ou cancele sua assinatura nos ajustes da sua conta da App Store.\n\nPrivacidade: https://www.cloud-calendars.com/privacy-policy\nTermos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 27,
+          "utf8Bytes": 28
+        },
+        "subtitle": {
+          "unicodeCharacters": 29,
+          "utf8Bytes": 29
+        },
+        "keywords": {
+          "unicodeCharacters": 90,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "unicodeCharacters": 141,
+          "utf8Bytes": 145
+        },
+        "description": {
+          "unicodeCharacters": 1756,
+          "utf8Bytes": 1803
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Natural Brazilian Portuguese. Clima and previsão do tempo express the weather intent in context. Plan inheritance and local price/billing-period check are explicit."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "agenda",
+          "planejador",
+          "horário",
+          "semana",
+          "mês",
+          "lembrete",
+          "reunião",
+          "evento",
+          "compartilhar",
+          "convite",
+          "previsão"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "Reúna seus calendários e o clima no iPhone e no iPad. Consulte compromissos de trabalho e planos pessoais com o Cloud Calendars.\n\nCALENDÁRIOS E VISUALIZAÇÕES\nUse calendários do iCloud e conecte o Google Agenda. O Premium também oferece suporte aos calendários da Microsoft. Escolha entre as visualizações de dia, semana, mês, ano e lista.\n\nVocê também pode criar um calendário local no dispositivo sem uma conta do Cloud Calendars. Conectar serviços e compartilhar conteúdo pode exigir login.\n\nCLIMA E WIDGETS\nConsulte a previsão do tempo ao planejar suas atividades. Os widgets para a Tela de Início estão disponíveis nos tamanhos pequeno, médio e grande. As previsões disponíveis dependem da localização e do provedor de dados meteorológicos.\n\nREUNIÕES E CONVITES\nUse o Google Meet com o Google Agenda. O Premium também oferece suporte ao Microsoft Teams. Compartilhe eventos e calendários e envie convites por e-mail, código QR ou App Clip. As permissões dependem do calendário e do tipo de convite.\n\nESCOLHA SEU PLANO\nO Base é gratuito e inclui sincronização com o Google Agenda, Google Meet, diferentes visualizações de calendário, clima e widgets.\nO Advanced inclui os recursos do Base e remove os anúncios.\nO Premium inclui o Advanced e adiciona calendários da Microsoft e Microsoft Teams.\n\nConfira o preço local e o período de cobrança no app ou na App Store antes de assinar.\n\nO download é gratuito. As assinaturas opcionais são renovadas automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período atual. Gerencie ou cancele sua assinatura nos ajustes da sua conta da App Store.\n\nPrivacidade: https://www.cloud-calendars.com/privacy-policy\nTermos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "Reúna seus calendários e o clima no iPhone e no iPad. Consulte compromissos de trabalho e planos pessoais com o Cloud Calendars.\n\nCALENDÁRIOS E VISUALIZAÇÕES\nUse calendários do iCloud e conecte o Google Agenda. O Premium também oferece suporte aos calendários da Microsoft. Escolha entre as visualizações de dia, semana, mês, ano e lista.\n\nVocê também pode criar um calendário local no dispositivo sem uma conta do Cloud Calendars. Conectar serviços e compartilhar conteúdo pode exigir login.\n\nCLIMA E WIDGETS\nConsulte a previsão do tempo ao planejar suas atividades. Os widgets para a Tela de Início estão disponíveis nos tamanhos pequeno, médio e grande. As previsões disponíveis dependem da localização e do provedor de dados meteorológicos.\n\nREUNIÕES E CONVITES\nUse o Google Meet com o Google Agenda. O Premium também oferece suporte ao Microsoft Teams. Compartilhe eventos e calendários com convites por e-mail ou código QR. O App Clip mostra uma prévia do evento; para adicioná-lo a um calendário a partir dessa prévia, é necessário o app completo. As permissões dependem do calendário e do tipo de convite.\n\nESCOLHA SEU PLANO\nO Base é gratuito e inclui sincronização com o Google Agenda, Google Meet, diferentes visualizações de calendário, clima e widgets.\nO Advanced inclui os recursos do Base e remove os anúncios.\nO Premium inclui o Advanced e adiciona calendários da Microsoft e Microsoft Teams.\n\nConfira o preço local e o período de cobrança no app ou na App Store antes de assinar.\n\nO download é gratuito. As assinaturas opcionais são renovadas automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período atual. Gerencie ou cancele sua assinatura nos ajustes da sua conta da App Store.\n\nPrivacidade: https://www.cloud-calendars.com/privacy-policy\nTermos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "Compartilhe eventos e calendários e envie convites por e-mail, código QR ou App Clip.",
+          "afterExcerpt": "Compartilhe eventos e calendários com convites por e-mail ou código QR. O App Clip mostra uma prévia do evento; para adicioná-lo a um calendário a partir dessa prévia, é necessário o app completo.",
+          "afterUnicodeCharacters": 1867,
+          "afterUtf8Bytes": 1920,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    },
+    {
+      "locale": "nl-NL",
+      "proposalFile": "research/aso/localized-batch03/nl-NL-proposal.json",
+      "proposalRawSha256": "5c01d8b1e761e7b92a763c2fd04cd9eca5dbd795bcd7b6402fce6ba22541da51",
+      "readbackChecks": {
+        "locale": "nl-NL",
+        "verified": true,
+        "checks": {
+          "description": true,
+          "keywords": true,
+          "promotionalText": true,
+          "subtitle": true,
+          "name": true
+        }
+      },
+      "completeSavedFieldsReviewed": {
+        "name": "Cloud Calendars: Agenda",
+        "subtitle": "Weer, afspraken en widgets",
+        "keywords": "kalender,planner,schema,week,maand,herinnering,vergadering,evenement,delen,uitnodiging,verwachting",
+        "promotionalText": "Bekijk je afspraken en het weer samen. Gebruik widgets en verschillende weergaven, of begin met een lokale kalender zonder een account voor de app.",
+        "description": "Bekijk je werkafspraken, privéplannen en het weer op je iPhone en iPad. Met Cloud Calendars houd je verschillende kalenders bij elkaar.\n\nKALENDERS EN WEERGAVEN\nGebruik iCloud-kalenders en verbind Google Agenda. Premium voegt ondersteuning voor Microsoft-kalenders toe. Kies een dag-, week-, maand-, jaar- of lijstweergave.\n\nJe kunt ook een lokale kalender op je apparaat maken zonder een Cloud Calendars-account. Voor het verbinden van diensten en het delen van gegevens kan aanmelden nodig zijn.\n\nWEER EN WIDGETS\nRaadpleeg de weersverwachting terwijl je plannen maakt. Widgets voor het beginscherm zijn beschikbaar in klein, middelgroot en groot formaat. Beschikbare voorspellingen hangen af van je locatie en de weerprovider.\n\nVERGADERINGEN EN DELEN\nGebruik Google Meet met Google Agenda. Premium ondersteunt ook Microsoft Teams. Deel evenementen en kalenders en nodig anderen uit via e-mail, een QR-code of een App Clip. Toegangsrechten hangen af van de kalender en het type uitnodiging.\n\nKIES JE ABONNEMENT\nBase is gratis en bevat synchronisatie met Google Agenda, Google Meet, verschillende kalenderweergaven, weer en widgets.\nAdvanced bevat de functies van Base en verwijdert advertenties.\nPremium bevat Advanced en voegt Microsoft-kalenders en Microsoft Teams toe.\n\nControleer vóór aankoop de actuele lokale prijs en de factureringsperiode in de app of App Store.\n\nDe app is gratis te downloaden. Optionele abonnementen worden automatisch verlengd, tenzij je ze uiterlijk 24 uur voor het einde van de huidige periode opzegt. Je kunt je abonnement beheren of opzeggen via de instellingen van je App Store-account.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      },
+      "fieldLengths": {
+        "name": {
+          "unicodeCharacters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "unicodeCharacters": 26,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "unicodeCharacters": 98,
+          "utf8Bytes": 98
+        },
+        "promotionalText": {
+          "unicodeCharacters": 147,
+          "utf8Bytes": 147
+        },
+        "description": {
+          "unicodeCharacters": 1763,
+          "utf8Bytes": 1766
+        }
+      },
+      "semanticAssessment": {
+        "tiers": "Base Google/Meet/views/weather/widgets; Advanced Base plus ad removal; Premium Advanced plus Microsoft calendars/Teams correctly separated.",
+        "accounts": "No app account claim is limited to local calendars; connections/sharing qualified.",
+        "weatherWidgets": "Location/provider availability qualification, Home Screen sizes, no14day/instantrefresh/LockScreenwidget guarantee.",
+        "providerBounds": "No universalExchange/directCalDAV/all-providereditable claim.",
+        "sharing": "Needs preview-versus-add clarification. Current text does not literally promise no-install adding; classification is consequential ambiguity, not an explicit universal false guarantee.",
+        "readability": "Readable informal Dutch. Verwachting is broad alone but supports weather intent alongside Weer in subtitle; without query evidence this is not established wasted budget. No automatic compound-word replacement."
+      },
+      "keywordAudit": {
+        "commaSeparatedTerms": [
+          "kalender",
+          "planner",
+          "schema",
+          "week",
+          "maand",
+          "herinnering",
+          "vergadering",
+          "evenement",
+          "delen",
+          "uitnodiging",
+          "verwachting"
+        ],
+        "duplicateExactTerms": [],
+        "exactNameSubtitleTokenOverlap": [],
+        "method": "NFC lowercase comma entries checked for equality with other entries and letter/number name/subtitle tokens. No stemming, compound segmentation or assertion about Apple query combination. Japanese/Korean compounds also reviewed semantically; substring overlap alone not labelled waste.",
+        "decision": "retain unchanged; no concrete redundant allocation or supported higher-value replacement established",
+        "searchVolume": null,
+        "rankingEvidence": null
+      },
+      "proposals": [
+        {
+          "field": "description",
+          "before": "Bekijk je werkafspraken, privéplannen en het weer op je iPhone en iPad. Met Cloud Calendars houd je verschillende kalenders bij elkaar.\n\nKALENDERS EN WEERGAVEN\nGebruik iCloud-kalenders en verbind Google Agenda. Premium voegt ondersteuning voor Microsoft-kalenders toe. Kies een dag-, week-, maand-, jaar- of lijstweergave.\n\nJe kunt ook een lokale kalender op je apparaat maken zonder een Cloud Calendars-account. Voor het verbinden van diensten en het delen van gegevens kan aanmelden nodig zijn.\n\nWEER EN WIDGETS\nRaadpleeg de weersverwachting terwijl je plannen maakt. Widgets voor het beginscherm zijn beschikbaar in klein, middelgroot en groot formaat. Beschikbare voorspellingen hangen af van je locatie en de weerprovider.\n\nVERGADERINGEN EN DELEN\nGebruik Google Meet met Google Agenda. Premium ondersteunt ook Microsoft Teams. Deel evenementen en kalenders en nodig anderen uit via e-mail, een QR-code of een App Clip. Toegangsrechten hangen af van de kalender en het type uitnodiging.\n\nKIES JE ABONNEMENT\nBase is gratis en bevat synchronisatie met Google Agenda, Google Meet, verschillende kalenderweergaven, weer en widgets.\nAdvanced bevat de functies van Base en verwijdert advertenties.\nPremium bevat Advanced en voegt Microsoft-kalenders en Microsoft Teams toe.\n\nControleer vóór aankoop de actuele lokale prijs en de factureringsperiode in de app of App Store.\n\nDe app is gratis te downloaden. Optionele abonnementen worden automatisch verlengd, tenzij je ze uiterlijk 24 uur voor het einde van de huidige periode opzegt. Je kunt je abonnement beheren of opzeggen via de instellingen van je App Store-account.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "after": "Bekijk je werkafspraken, privéplannen en het weer op je iPhone en iPad. Met Cloud Calendars houd je verschillende kalenders bij elkaar.\n\nKALENDERS EN WEERGAVEN\nGebruik iCloud-kalenders en verbind Google Agenda. Premium voegt ondersteuning voor Microsoft-kalenders toe. Kies een dag-, week-, maand-, jaar- of lijstweergave.\n\nJe kunt ook een lokale kalender op je apparaat maken zonder een Cloud Calendars-account. Voor het verbinden van diensten en het delen van gegevens kan aanmelden nodig zijn.\n\nWEER EN WIDGETS\nRaadpleeg de weersverwachting terwijl je plannen maakt. Widgets voor het beginscherm zijn beschikbaar in klein, middelgroot en groot formaat. Beschikbare voorspellingen hangen af van je locatie en de weerprovider.\n\nVERGADERINGEN EN DELEN\nGebruik Google Meet met Google Agenda. Premium ondersteunt ook Microsoft Teams. Deel evenementen en kalenders met uitnodigingen via e-mail of een QR-code. App Clip toont een voorbeeld van het evenement; om het vanuit dat voorbeeld aan een kalender toe te voegen, is de volledige app nodig. Toegangsrechten hangen af van de kalender en het type uitnodiging.\n\nKIES JE ABONNEMENT\nBase is gratis en bevat synchronisatie met Google Agenda, Google Meet, verschillende kalenderweergaven, weer en widgets.\nAdvanced bevat de functies van Base en verwijdert advertenties.\nPremium bevat Advanced en voegt Microsoft-kalenders en Microsoft Teams toe.\n\nControleer vóór aankoop de actuele lokale prijs en de factureringsperiode in de app of App Store.\n\nDe app is gratis te downloaden. Optionele abonnementen worden automatisch verlengd, tenzij je ze uiterlijk 24 uur voor het einde van de huidige periode opzegt. Je kunt je abonnement beheren of opzeggen via de instellingen van je App Store-account.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+          "beforeExcerpt": "Deel evenementen en kalenders en nodig anderen uit via e-mail, een QR-code of een App Clip.",
+          "afterExcerpt": "Deel evenementen en kalenders met uitnodigingen via e-mail of een QR-code. App Clip toont een voorbeeld van het evenement; om het vanuit dat voorbeeld aan een kalender toe te voegen, is de volledige app nodig.",
+          "afterUnicodeCharacters": 1881,
+          "afterUtf8Bytes": 1884,
+          "within4000Characters": true,
+          "rationale": "Clarify App Clip event preview versus full-app add requirement; preserve email/QR invitation routes and existing access qualification. All other description text unchanged."
+        }
+      ],
+      "preserve": [
+        "name",
+        "subtitle",
+        "keywords",
+        "promotionalText",
+        "URLs",
+        "releaseNotes",
+        "privacyDeclarations",
+        "prices"
+      ],
+      "readiness": "description-only candidate for root editorial review; not applied; own-language assessment, not native-speaker certification"
+    }
+  ],
+  "limitations": [
+    "No native-speaker certification; FR/IT/PT-BR/NL relatively high editorial confidence, JA/KO moderate-to-high own-language semantic confidence.",
+    "No measured search demand, keyword indexing guarantee, ranking or conversion/citation claim.",
+    "No account billing/legal compliance certification; existing subscription boilerplate preserved.",
+    "All six after descriptions below4000Unicodecharacters; UTF8bytes separately reported, no invented universal byte restriction."
+  ],
+  "hashMethod": "Raw file hashes use exact UTF8bytes. Parsed guide hashes use JSON.stringify property order, not sorted canonicalization."
+}

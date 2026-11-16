@@ -1,0 +1,230 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+.pricing {
+  position: relative;
+  // Keep the background glow inside the section on narrow screens.
+  overflow-x: clip;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 -10% auto -10%;
+    height: 70%;
+    pointer-events: none;
+    background: radial-gradient(46% 50% at 50% 12%, rgba(77, 124, 255, 0.2), transparent 70%);
+    filter: blur(22px);
+  }
+}
+
+.pricing__head {
+  position: relative;
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
+
+  .eyebrow { justify-content: center; }
+  .section-title,
+  .section-lead { margin-inline: auto; }
+  .section-title { max-width: 100%; }
+}
+
+/* ---------------------------------------------------------------
+   Billing toggle
+--------------------------------------------------------------- */
+.toggle {
+  position: relative;
+  display: inline-flex;
+  margin-top: 2rem;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle__slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  border-radius: var(--r-pill);
+  background: linear-gradient(100deg, var(--aurora-2), var(--aurora-1));
+  box-shadow: 0 6px 20px -8px rgba(77, 124, 255, 0.95);
+  transition: translate 0.5s var(--ease-spring);
+
+  &.is-yearly { translate: 100% 0; }
+}
+
+.toggle__btn {
+  position: relative;
+  z-index: 1;
+  /* Equal widths, so the sliding pill can simply be 50% wide. */
+  flex: 1 1 0;
+  min-width: 8.5rem;
+  text-align: center;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  transition: color 0.4s var(--ease-out);
+  white-space: nowrap;
+  @include focus-ring;
+
+  &.is-active { color: #041022; }
+
+  em {
+    font-style: normal;
+    font-size: 0.68rem;
+    opacity: 0.8;
+    margin-left: 0.25rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Tiers
+--------------------------------------------------------------- */
+.tiers {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  align-items: stretch;
+  @include stage(1600px);
+
+  @include upto($bp-md) { grid-template-columns: 1fr; max-width: 26rem; margin-inline: auto; }
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: clamp(1.5rem, 2.6vw, 2.1rem);
+  /* the "most popular" flag sits outside the card's top edge */
+  overflow: visible;
+
+  &:hover { border-color: rgba(255, 255, 255, 0.22); }
+
+  &.is-featured {
+    border-color: rgba(93, 160, 255, 0.42);
+    background:
+      linear-gradient(160deg, rgba(77, 124, 255, 0.16), rgba(56, 224, 240, 0.06) 48%, rgba(165, 102, 255, 0.1));
+    box-shadow:
+      var(--shadow-mid),
+      0 0 70px -20px rgba(77, 124, 255, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24);
+
+    @include from($bp-md) { scale: 1.035; z-index: 2; }
+  }
+}
+
+.tier__flag {
+  position: absolute;
+  top: 0;
+  right: clamp(1.2rem, 2.4vw, 2rem);
+  translate: 0 -50%;
+  padding: 0.32rem 0.85rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #041022;
+  background: linear-gradient(100deg, var(--aurora-2), var(--aurora-1));
+  box-shadow: 0 8px 24px -8px rgba(56, 224, 240, 0.9);
+  z-index: 3;
+}
+
+.tier__name {
+  font-size: 1.3rem;
+  letter-spacing: -0.035em;
+  margin-bottom: 0.35rem;
+}
+
+.tier__tagline {
+  font-size: 0.86rem;
+  color: var(--ink-3);
+  line-height: 1.55;
+}
+
+.tier__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-family: var(--font-display);
+  color: var(--ink);
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--hair);
+}
+
+.tier__currency { font-size: 1.15rem; font-weight: 500; color: var(--ink-3); align-self: flex-start; margin-top: 0.55rem; }
+.tier__amount   { font-size: clamp(2.6rem, 5vw, 3.4rem); font-weight: 600; letter-spacing: -0.055em; line-height: 1; }
+.tier__period   { font-size: 0.86rem; font-weight: 400; color: var(--ink-3); margin-left: 0.25rem; }
+
+.tier__save {
+  align-self: flex-start;
+  margin-top: -0.5rem;
+  padding: 0.24rem 0.65rem;
+  border-radius: var(--r-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6ff0b8;
+  background: rgba(62, 230, 160, 0.12);
+  border: 1px solid rgba(62, 230, 160, 0.28);
+}
+
+.tier__inherits {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+
+  b { color: var(--ink-2); font-weight: 600; }
+}
+
+.tier__list {
+  list-style: none;
+  display: grid;
+  gap: 0.62rem;
+  flex: 1 1 auto;
+
+  li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+
+    svg {
+      flex: 0 0 auto;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      color: var(--ink-4);
+    }
+
+    &.is-strong {
+      color: var(--ink);
+      font-weight: 500;
+      svg { color: var(--aurora-2); }
+    }
+  }
+}
+
+.tier__cta {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.pricing__note {
+  position: relative;
+  max-width: 46rem;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-4);
+  line-height: 1.6;
+}

@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T04:32:42.249Z",
+  "allPassed": true,
+  "newArticles": [
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "draft": "research/batch37-watch/en-US.json",
+      "slug": "calendar-on-apple-watch"
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/bg/articles-help.ts",
+      "draft": "research/batch37-watch/bg.json",
+      "slug": "calendar-on-apple-watch"
+    }
+  ],
+  "relatedOnlyBacklinks": 3,
+  "newGlobalFactKey": 1,
+  "priorFactsPreserved": true,
+  "englishSelection": 57,
+  "original56SelectionOrderPreserved": true,
+  "unrelatedObjectsBodyMetadataDatesPreserved": true
+}

@@ -1,0 +1,273 @@
+{
+  "source": "gsc-query-observations.json",
+  "scope": "Editorial prioritisation of named high-signal groups from 150 available query rows, not complete mapping of all 150.",
+  "groups": [
+    {
+      "cluster": "cloud-calendar-definition",
+      "queries": [
+        "cloud calendar",
+        "cloud based calendar",
+        "cloud calendar software",
+        "calendar cloud",
+        "calendario en la nube",
+        "クラウドカレンダーとは"
+      ],
+      "canonical": "what-is-a-cloud-calendar",
+      "decision": "Publish a definition that separates the generic service from our app brand. No assumed branded intent.",
+      "observedRows": [
+        {
+          "query": "cloud calendar",
+          "clicks": 6,
+          "impressions": 43899,
+          "ctrDisplayed": "0%",
+          "averagePosition": 9.7
+        },
+        {
+          "query": "cloud based calendar",
+          "clicks": 0,
+          "impressions": 53,
+          "ctrDisplayed": "0%",
+          "averagePosition": 37.1
+        },
+        {
+          "query": "cloud calendar software",
+          "clicks": 0,
+          "impressions": 7,
+          "ctrDisplayed": "0%",
+          "averagePosition": 19.9
+        },
+        {
+          "query": "calendar cloud",
+          "clicks": 1,
+          "impressions": 193,
+          "ctrDisplayed": "0.5%",
+          "averagePosition": 10.1
+        },
+        {
+          "query": "calendario en la nube",
+          "clicks": 0,
+          "impressions": 5,
+          "ctrDisplayed": "0%",
+          "averagePosition": 11.8
+        },
+        {
+          "query": "クラウドカレンダーとは",
+          "clicks": 0,
+          "impressions": 13,
+          "ctrDisplayed": "0%",
+          "averagePosition": 4.8
+        }
+      ],
+      "selectedQueryImpressions": 44170,
+      "selectedQueryClicks": 7
+    },
+    {
+      "cluster": "weather-in-calendar",
+      "queries": [
+        "weather calendar for google",
+        "weather calendar subscription",
+        "googleカレンダーに天気を表示",
+        "google weather calendar",
+        "weather google calendar integration"
+      ],
+      "canonical": "weather-inside-your-calendar",
+      "decision": "Existing English topic. Review multilingual pages individually before lifting indexing hold.",
+      "observedRows": [
+        {
+          "query": "weather calendar for google",
+          "clicks": 0,
+          "impressions": 7,
+          "ctrDisplayed": "0%",
+          "averagePosition": 18.6
+        },
+        {
+          "query": "weather calendar subscription",
+          "clicks": 0,
+          "impressions": 4,
+          "ctrDisplayed": "0%",
+          "averagePosition": 4.5
+        },
+        {
+          "query": "googleカレンダーに天気を表示",
+          "clicks": 1,
+          "impressions": 3,
+          "ctrDisplayed": "33.3%",
+          "averagePosition": 5.7
+        },
+        {
+          "query": "google weather calendar",
+          "clicks": 0,
+          "impressions": 2,
+          "ctrDisplayed": "0%",
+          "averagePosition": 25.5
+        },
+        {
+          "query": "weather google calendar integration",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 62.0
+        }
+      ],
+      "selectedQueryImpressions": 17,
+      "selectedQueryClicks": 1
+    },
+    {
+      "cluster": "google-sharing-visibility",
+      "queries": [
+        "what happens when someone virws your google calendar",
+        "how can others see my google calendar",
+        "if someone shared their google calendar can they see yours",
+        "who can see your google calendar"
+      ],
+      "canonical": "who-can-see-what-in-google-calendar",
+      "decision": "Existing permissions guide; inspect exact visible snippet and intent match before rewriting.",
+      "observedRows": [
+        {
+          "query": "what happens when someone virws your google calendar",
+          "clicks": 0,
+          "impressions": 39,
+          "ctrDisplayed": "0%",
+          "averagePosition": 10.4
+        },
+        {
+          "query": "how can others see my google calendar",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 29.0
+        },
+        {
+          "query": "if someone shared their google calendar can they see yours",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 30.0
+        },
+        {
+          "query": "who can see your google calendar",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 40.0
+        }
+      ],
+      "selectedQueryImpressions": 42,
+      "selectedQueryClicks": 0
+    },
+    {
+      "cluster": "task-visibility",
+      "queries": [
+        "are tasks visible to others on google calendar",
+        "can others see my tasks in google calendar",
+        "are google calendar tasks visible to others"
+      ],
+      "canonical": "can-others-see-google-calendar-tasks",
+      "decision": "New source-backed guide distinguishes timed tasks, Busy blocks and visibility permissions.",
+      "observedRows": [
+        {
+          "query": "are tasks visible to others on google calendar",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 23.0
+        },
+        {
+          "query": "can others see my tasks in google calendar",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 31.0
+        },
+        {
+          "query": "are google calendar tasks visible to others",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 35.0
+        }
+      ],
+      "selectedQueryImpressions": 3,
+      "selectedQueryClicks": 0
+    },
+    {
+      "cluster": "provider-feeds",
+      "queries": [
+        "google calendar secret address",
+        "google calendar address"
+      ],
+      "canonical": "the-secret-address-of-a-google-calendar",
+      "decision": "Existing feed guide; not a public-link tutorial for private calendar addresses.",
+      "observedRows": [
+        {
+          "query": "google calendar secret address",
+          "clicks": 0,
+          "impressions": 4,
+          "ctrDisplayed": "0%",
+          "averagePosition": 8.3
+        },
+        {
+          "query": "google calendar address",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 9.0
+        }
+      ],
+      "selectedQueryImpressions": 5,
+      "selectedQueryClicks": 0
+    },
+    {
+      "cluster": "flight-local-time",
+      "queries": [
+        "what time zone are flights shown in",
+        "are flights in local time"
+      ],
+      "canonical": "time-zones-and-the-flight-you-booked",
+      "decision": "Existing travel guide; distinguish airline itinerary time from calendar display time.",
+      "observedRows": [
+        {
+          "query": "what time zone are flights shown in",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 34.0
+        },
+        {
+          "query": "are flights in local time",
+          "clicks": 0,
+          "impressions": 1,
+          "ctrDisplayed": "0%",
+          "averagePosition": 55.0
+        }
+      ],
+      "selectedQueryImpressions": 2,
+      "selectedQueryClicks": 0
+    },
+    {
+      "cluster": "irrelevant-infrastructure",
+      "queries": [
+        "appcloudcdn"
+      ],
+      "canonical": null,
+      "decision": "Exclude from calendar content opportunities even though it has 2011 impressions.",
+      "observedRows": [
+        {
+          "query": "appcloudcdn",
+          "clicks": 0,
+          "impressions": 2011,
+          "ctrDisplayed": "0%",
+          "averagePosition": 8.0
+        }
+      ],
+      "selectedQueryImpressions": 2011,
+      "selectedQueryClicks": 0
+    }
+  ],
+  "limitations": [
+    "Rows omitted by Google for privacy are unavailable.",
+    "The reporting period predates the new guides; no causal improvement claim.",
+    "Query impressions are own-site visibility, not total search demand.",
+    "Ambiguous cloud/calendar strings may have unrelated or generic intent."
+  ]
+}

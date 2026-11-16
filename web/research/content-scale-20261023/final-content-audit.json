@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-23",
+  "scope": "Independent integration audit of current 91-article pilot snapshot; no build or source edits",
+  "snapshotSha256": "95d8060ad4482e00cce9c8c6415e2679f06a642d37eb4909939b9db5a14ef067",
+  "counts": {
+    "pilotArticles": 91,
+    "manifestRecords": 91,
+    "factsRecords": 91,
+    "baseline": 73,
+    "uniqueSourceUrls": 132
+  },
+  "proofFilesRead": {
+    "drafts/apple-batch-01.independent-review.json": {
+      "sha256": "8399a0ebacb62299a5794c86c6efdb8fbf29dcfb1704f7c6b8824baa94102d65",
+      "topLevelKeys": [
+        "schemaVersion",
+        "reviewedAt",
+        "reviewer",
+        "scope",
+        "qualityBasis",
+        "summary",
+        "officialMarkdownEvidence",
+        "articles"
+      ]
+    },
+    "drafts/apple-batch-02.independent-review.json": {
+      "sha256": "93b9a35bf1798b8b7f6fbed6f41973fa4367ea57befdbd6999ca948bdf462a47",
+      "topLevelKeys": [
+        "reviewer",
+        "checkedAt",
+        "method",
+        "sourceEvidence",
+        "decisions",
+        "changes",
+        "firsthandTesting",
+        "overlapResolution",
+        "noNewCanonicalForDefaultCalendar"
+      ]
+    },
+    "drafts/technical-batch-02.independent-review.json": {
+      "sha256": "3d3d53dad62c6d0f8f0d84f227dcdbac8f53f1a584a2cd9e2f265317b5537113",
+      "topLevelKeys": [
+        "schemaVersion",
+        "reviewer",
+        "reviewedAt",
+        "scope",
+        "inputSha256",
+        "primarySource",
+        "summary",
+        "fixtureChecks",
+        "reviews",
+        "independentTestingBoundary",
+        "publicationBoundary",
+        "noPaidApiUsed"
+      ]
+    },
+    "claude/amendments-01-codex.json": {
+      "sha256": "58826dbc95ac4018972bdd54e5771038346a467464e0fa73bbef6be31b5f69c0",
+      "topLevelKeys": [
+        "amendedAt",
+        "sourceOriginal",
+        "output",
+        "originalSha256",
+        "reviewedSha256",
+        "scope",
+        "sourceEvidenceIndex",
+        "issuesAddressed",
+        "boundedContradictionRetained",
+        "fieldChanges",
+        "publicationApproved"
+      ]
+    },
+    "drafts/google-batch-02.independent-review.json": {
+      "sha256": "4ab3ea5a0d6d46dbd2ef65bf9f787dbdd0e8dd1cb2d6471b39d5164b519f883c",
+      "topLevelKeys": [
+        "schemaVersion",
+        "reviewedAt",
+        "reviewer",
+        "method",
+        "qualityBasis",
+        "summary",
+        "originalUnchanged",
+        "originalSha256",
+        "reviewedFile",
+        "changesFile",
+        "crossArticleIntegrationNotes",
+        "articles"
+      ]
+    },
+    "claude/amendments-02-codex.json": {
+      "sha256": "8c4d8a62d9f414a14364a87d31b7c8d0b8ef4fb3a81cc67305fff7ee5fc42c91",
+      "topLevelKeys": [
+        "amendedAt",
+        "originalFile",
+        "outputFile",
+        "originalSha256",
+        "reviewedSha256",
+        "scope",
+        "sourceEvidenceIndex",
+        "articles",
+        "boundedUncertainty",
+        "fieldChanges",
+        "publicationApproved"
+      ]
+    },
+    "claude/amendments-03-codex.json": {
+      "sha256": "42225b88f83b619b89a7f7f22e53dc0964ca5783c5b28a7488bc2a3125e3858b",
+      "topLevelKeys": "array"
+    },
+    "argon/review-01-codex.json": {
+      "sha256": "11c403726bf55e461ecdfe8474305f1ffb4149fe3841bfe09b358a3d425d04fa",
+      "topLevelKeys": [
+        "reviewer",
+        "date",
+        "actualDraftCount",
+        "claimedBriefCount",
+        "rawBatchPublishDecision",
+        "reviewedBatch",
+        "reviewedBatchStatus",
+        "limitations",
+        "articles",
+        "mathFixtures",
+        "sourceReading",
+        "countEvidence",
+        "sourceCorrections"
+      ]
+    }
+  },
+  "manifestEvidenceVisibleUrlMismatches": [],
+  "reviewedSnapshotChecks": [
+    {
+      "snapshot": "drafts/technical-batch-02-reviewed.json",
+      "presentCount": 8,
+      "differences": []
+    },
+    {
+      "snapshot": "drafts/apple-batch-02-reviewed.json",
+      "presentCount": 11,
+      "differences": []
+    },
+    {
+      "snapshot": "drafts/apple-batch-01-reviewed.json",
+      "presentCount": 6,
+      "differences": []
+    },
+    {
+      "snapshot": "drafts/google-batch-02-reviewed.json",
+      "presentCount": 12,
+      "differences": []
+    },
+    {
+      "snapshot": "drafts/source-batch-01-reviewed.json",
+      "presentCount": 8,
+      "differences": []
+    },
+    {
+      "snapshot": "claude/claude-drafts-03-reviewed.json",
+      "presentCount": 12,
+      "differences": []
+    },
+    {
+      "snapshot": "claude/claude-drafts-01-reviewed.json",
+      "presentCount": 12,
+      "differences": []
+    },
+    {
+      "snapshot": "claude/claude-drafts-02-reviewed.json",
+      "presentCount": 12,
+      "differences": []
+    },
+    {
+      "snapshot": "argon/argon-drafts-01-reviewed.json",
+      "presentCount": 10,
+      "differences": []
+    }
+  ],
+  "rawSnapshotChecks": [
+    {
+      "rawSnapshot": "argon/argon-drafts-01.json",
+      "exactBodyMatches": []
+    },
+    {
+      "rawSnapshot": "claude/claude-drafts-01.json",
+      "exactBodyMatches": []
+    },
+    {
+      "rawSnapshot": "claude/claude-drafts-02.json",
+      "exactBodyMatches": [
+        "google-calendar-holidays-by-country-and-religion"
+      ]
+    },
+    {
+      "rawSnapshot": "claude/claude-drafts-03.json",
+      "exactBodyMatches": [
+        "outlook-propose-new-meeting-time"
+      ]
+    },
+    {
+      "rawSnapshot": "drafts/technical-batch-02.json",
+      "exactBodyMatches": [
+        "icalendar-dtstamp-last-modified-created",
+        "icalendar-transp-class-busy-private"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "severity": "review-traceability",
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "icalendar-floating-time-utc-tzid",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "icalendar-uid-sequence-event-updates",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "ics-method-cancel-versus-delete-event",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "rrule-count-until-excluded-occurrences",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "review-traceability",
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "issue": "Approved manifest record has no explicit review.proof path."
+    },
+    {
+      "severity": "source-link",
+      "issue": "Source URL or anchor needs correction",
+      "result": {
+        "url": "https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook",
+        "error": "HTTP Error 404: Not Found"
+      }
+    }
+  ],
+  "urlChecksFile": "final-content-audit-url-checks.json",
+  "networkFailures": [
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "limitations": [
+    "HTTP accessibility is not a fresh full editorial reread of every previously reviewed source.",
+    "Every distinct proof file was parsed/read; content author-independent body reviews remain the linked per-batch records.",
+    "Snapshot may be superseded by root integration of remaining selected pages."
+  ],
+  "integrationVerdict": "One known source-link regression requires correction; no reviewed-body drift detected. Eight first-batch manifest records lack explicit proof links.",
+  "reviewedMathAndArgonChecks": {
+    "selectedIntegratedCount": 10,
+    "allTenEqualCorrectedSnapshots": true,
+    "allowedDifferences": [
+      "gallery metadata",
+      "RFC HTML anchor normalization"
+    ],
+    "excludedOverlapSlugs": [
+      "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "separate-start-and-end-time-zones-calendar-events"
+    ],
+    "excludedSlugsAbsent": true,
+    "fixtureVersion": "2026e-rearguard",
+    "verifiedFacts": [
+      "DuPont 72/72-hour gaps and 14 starts per 28 days",
+      "Kelly seventh-tour exception retains base dates; 120-hour gap",
+      "168-hour coverage minus non-overlapping 40+7 activity =121 hours",
+      "2026 US/UK mismatch four total weeks; 2027 three total weeks",
+      "Phoenix January/July/November conversions",
+      "Sydney seasonal compromise 17→16 New York yields07→08 Sydney"
+    ],
+    "incorrectRawArgonBodiesMatched": 0
+  },
+  "sourceUrlSummary": {
+    "uniqueUrls": 132,
+    "httpSuccesses": 131,
+    "failures": 1,
+    "rfcHtmlAnchorsChecked": 29,
+    "rfcHtmlAnchorsValid": 29,
+    "manifestEvidenceVisibleMismatchCount": 0,
+    "known404": {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "staleEvidenceUrl": "https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook",
+      "reviewedReplacement": "https://support.microsoft.com/en-us/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+      "rootCause": "Reviewed article fixed its URL, but raw editorial evidence URL was added again as Supporting primary documentation by integration."
+    }
+  },
+  "rawSnapshotInterpretation": "Four exact raw-body matches are unchanged articles approved without body amendments: Google holidays, Outlook propose time, DTSTAMP and TRANSP. Their approved reviewed snapshot bodies also match; these matches are not evidence of raw uncorrected integration."
+}

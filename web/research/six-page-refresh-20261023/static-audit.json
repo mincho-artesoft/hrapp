@@ -1,0 +1,1270 @@
+{
+  "passed": true,
+  "pages": 180,
+  "locales": 30,
+  "translatedPages": 174,
+  "heldArticleAndHubRoutes": 542,
+  "privacySHA256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "rows": [
+    {
+      "locale": "en-US",
+      "route": "/articles/weather-inside-your-calendar/",
+      "robots": "index,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/forecast-beside-every-event/",
+      "robots": "index,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/the-widget-that-shows-what-is-next/",
+      "robots": "index,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "index,follow",
+      "descriptionLength": 88,
+      "galleryImages": 2
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "index,follow",
+      "descriptionLength": 86,
+      "galleryImages": 2
+    },
+    {
+      "locale": "en-US",
+      "route": "/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "index,follow",
+      "descriptionLength": 76,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 55,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 56,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 70,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 62,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 102,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ar-SA",
+      "route": "/ar/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 71,
+      "galleryImages": 3
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 71,
+      "galleryImages": 2
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 84,
+      "galleryImages": 2
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 105,
+      "galleryImages": 2
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 91,
+      "galleryImages": 2
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 97,
+      "galleryImages": 3
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 69,
+      "galleryImages": 2
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 76,
+      "galleryImages": 2
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 79,
+      "galleryImages": 2
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 81,
+      "galleryImages": 2
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 112,
+      "galleryImages": 2
+    },
+    {
+      "locale": "cs",
+      "route": "/cs/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 103,
+      "galleryImages": 3
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 81,
+      "galleryImages": 2
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 78,
+      "galleryImages": 2
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 75,
+      "galleryImages": 2
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 102,
+      "galleryImages": 2
+    },
+    {
+      "locale": "da",
+      "route": "/da/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 95,
+      "galleryImages": 3
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 91,
+      "galleryImages": 2
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 92,
+      "galleryImages": 2
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 91,
+      "galleryImages": 2
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 108,
+      "galleryImages": 2
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 117,
+      "galleryImages": 2
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 99,
+      "galleryImages": 3
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 90,
+      "galleryImages": 2
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 107,
+      "galleryImages": 2
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 91,
+      "galleryImages": 2
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 108,
+      "galleryImages": 2
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 131,
+      "galleryImages": 2
+    },
+    {
+      "locale": "el",
+      "route": "/el/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 114,
+      "galleryImages": 3
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 76,
+      "galleryImages": 2
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 2
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 79,
+      "galleryImages": 2
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 104,
+      "galleryImages": 2
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 90,
+      "galleryImages": 2
+    },
+    {
+      "locale": "es-ES",
+      "route": "/es/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 95,
+      "galleryImages": 3
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 64,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 80,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 109,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fi",
+      "route": "/fi/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 92,
+      "galleryImages": 3
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 79,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 108,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 86,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 113,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 112,
+      "galleryImages": 2
+    },
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 113,
+      "galleryImages": 3
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 65,
+      "galleryImages": 2
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 71,
+      "galleryImages": 2
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 60,
+      "galleryImages": 2
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 84,
+      "galleryImages": 2
+    },
+    {
+      "locale": "he",
+      "route": "/he/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 81,
+      "galleryImages": 3
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 74,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 68,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 93,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 92,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hi",
+      "route": "/hi/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 93,
+      "galleryImages": 3
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 79,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 80,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 90,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 100,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 129,
+      "galleryImages": 2
+    },
+    {
+      "locale": "hu",
+      "route": "/hu/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 104,
+      "galleryImages": 3
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 82,
+      "galleryImages": 2
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 72,
+      "galleryImages": 2
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 107,
+      "galleryImages": 2
+    },
+    {
+      "locale": "id",
+      "route": "/id/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 97,
+      "galleryImages": 3
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 80,
+      "galleryImages": 2
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 75,
+      "galleryImages": 2
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 98,
+      "galleryImages": 2
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 87,
+      "galleryImages": 2
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 90,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 37,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 37,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 46,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 38,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 61,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 39,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 41,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 38,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 48,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 45,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 67,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ko",
+      "route": "/ko/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 50,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 85,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 78,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 72,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 85,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 100,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ms",
+      "route": "/ms/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 3
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 74,
+      "galleryImages": 2
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 90,
+      "galleryImages": 2
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 110,
+      "galleryImages": 2
+    },
+    {
+      "locale": "nl-NL",
+      "route": "/nl/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 86,
+      "galleryImages": 3
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 83,
+      "galleryImages": 2
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 81,
+      "galleryImages": 2
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 76,
+      "galleryImages": 2
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 74,
+      "galleryImages": 2
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 106,
+      "galleryImages": 2
+    },
+    {
+      "locale": "no",
+      "route": "/no/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 91,
+      "galleryImages": 3
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 71,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 72,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 75,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 80,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 105,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pl",
+      "route": "/pl/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 93,
+      "galleryImages": 3
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 85,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 89,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 78,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 2
+    },
+    {
+      "locale": "pt-BR",
+      "route": "/pt/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 111,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 80,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 75,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 101,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 102,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ro",
+      "route": "/ro/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 109,
+      "galleryImages": 3
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 75,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 68,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 92,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 106,
+      "galleryImages": 2
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 86,
+      "galleryImages": 3
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 72,
+      "galleryImages": 2
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 84,
+      "galleryImages": 2
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 78,
+      "galleryImages": 2
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 73,
+      "galleryImages": 2
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 2
+    },
+    {
+      "locale": "sv",
+      "route": "/sv/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 88,
+      "galleryImages": 3
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 71,
+      "galleryImages": 2
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 64,
+      "galleryImages": 2
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 68,
+      "galleryImages": 2
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 78,
+      "galleryImages": 2
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 96,
+      "galleryImages": 2
+    },
+    {
+      "locale": "th",
+      "route": "/th/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 82,
+      "galleryImages": 3
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 76,
+      "galleryImages": 2
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 87,
+      "galleryImages": 2
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 88,
+      "galleryImages": 2
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 95,
+      "galleryImages": 2
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 117,
+      "galleryImages": 2
+    },
+    {
+      "locale": "tr",
+      "route": "/tr/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 106,
+      "galleryImages": 3
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 76,
+      "galleryImages": 2
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 77,
+      "galleryImages": 2
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 79,
+      "galleryImages": 2
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 109,
+      "galleryImages": 2
+    },
+    {
+      "locale": "vi",
+      "route": "/vi/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 94,
+      "galleryImages": 3
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 36,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 25,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 39,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 27,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 48,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-hans/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 29,
+      "galleryImages": 3
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/weather-inside-your-calendar/",
+      "robots": "noindex,follow",
+      "descriptionLength": 34,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/forecast-beside-every-event/",
+      "robots": "noindex,follow",
+      "descriptionLength": 23,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/the-widget-that-shows-what-is-next/",
+      "robots": "noindex,follow",
+      "descriptionLength": 37,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/icloud-google-and-outlook-in-one-view/",
+      "robots": "noindex,follow",
+      "descriptionLength": 24,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "robots": "noindex,follow",
+      "descriptionLength": 49,
+      "galleryImages": 2
+    },
+    {
+      "locale": "zh-Hant",
+      "route": "/zh-hant/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "robots": "noindex,follow",
+      "descriptionLength": 32,
+      "galleryImages": 3
+    }
+  ]
+}

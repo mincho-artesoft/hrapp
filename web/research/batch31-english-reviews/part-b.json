@@ -1,0 +1,424 @@
+{
+  "date": "2026-10-22",
+  "head": "db1e7ff047acf8ea5110e3a307536910c761ac72",
+  "scope": "Fresh complete current English object read for ten named guides, including every metadata/body/practical/FAQ/source/related field. Prior unknown-review classification is an evidence gap, not a content defect.",
+  "method": "Three untruncated output batches: first three, next three, final four complete objects. Exact current raw object bytes hashed, plus compact JSON in original property order (JSON.stringify-equivalent for these objects). No Unicode/prose normalization.",
+  "hashDefinitions": {
+    "rawObjectSha256": "Exact UTF-8 object literal from opening { through matching } in current TypeScript module.",
+    "jsonSha256": "UTF-8 JSON serialization with original key order, ensure_ascii=False, compact separators.",
+    "moduleSha256": "Entire TypeScript file raw bytes."
+  },
+  "summary": {
+    "completeObjectsRead": 10,
+    "pass": 9,
+    "materialAmendmentProposed": 1,
+    "newPagesProposed": 0
+  },
+  "guides": [
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "lineRange": [
+        410,
+        504
+      ],
+      "rawObjectSha256": "51ad2d15fd591c2818c713e11e75c6d3819b9623752e0254435fb551566503c8",
+      "jsonSha256": "ed9c36028624af087070adaa342d6e2e3d3e3b9748ce326f98cb2a08a2fca820",
+      "moduleSha256": "ef1e7b23e8b810c38657496727bd2e255aa6d02212a43721dfef1fc5113bb02c",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Microsoft: Outlook calendar API and supported mailbox data",
+          "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+        },
+        {
+          "label": "Microsoft: user and administrator consent",
+          "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+        },
+        {
+          "label": "Apple: multiple calendars and read-only subscriptions",
+          "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-calendar-sync-actually-does",
+        "what-a-subscription-actually-buys"
+      ],
+      "assessment": "Mailbox hosting, device-versus-direct connection, Premium versus organisational approval, provider permission and mirror-storage limits are substantive and bounded. One incomplete hide-first diagnostic step needs the established selection side-effect and restoration qualification.",
+      "status": "material_clarity_amendment_proposed",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": [
+        {
+          "path": "sections[1].body[1]",
+          "before": "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them.",
+          "after": "Before adding another connection, inspect where the existing work calendar appears. If you later see two versions of a meeting, identify their calendar sources and hide one temporarily. Avoid using account removal or event deletion to diagnose which connection produced them. In Cloud Calendars, record the original selection and restore it after comparing. Selection can also affect widgets and notification scheduling; do not assume it is only a display preference.",
+          "rationale": "Existing instruction actively asks the reader to hide a source. Recorded selection consumers include widgets/notification scheduling, so leaving out restoration and downstream effect can disrupt the schedule beyond the diagnostic view. This is a bounded task-completeness defect, not a falsehood in Microsoft tier/compatibility prose.",
+          "evidence": "research/batch26-duplicates/product-evidence.json /evidence CalendarViewModel selection consumers and /distinctions Calendar selection",
+          "limits": "No universal provider pause/resume claim; no Microsoft synchronization timing or semantics inferred."
+        }
+      ]
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        13,
+        104
+      ],
+      "rawObjectSha256": "6fb9e57c66c8d19d5c7e37abfb50abbc37b1b5e1757729743ad37c6d162666d2",
+      "jsonSha256": "bd24f07a80cf4e35b40d6b084e64d1865811ed89d902d4f7a74303df964b4748",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecast information and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Met Office: forecast place, periods and weather values",
+          "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+        }
+      ],
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "assessment": "Selected weather place is distinct from event address; daily up-to-ten returned WeatherKit days and hourly coverage are separate; one-hour/default-calendar draft is not a reservation. Website Open-Meteo remains separate. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        188,
+        279
+      ],
+      "rawObjectSha256": "069435ac39284f108c6d5a95b33d1abc81c1da3729a9c498e7b9102cc5051cdc",
+      "jsonSha256": "f31a8eff8b72477a989691609a205ad0a816eca51a2519a303eba02df8c0bbfa",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecast information and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Open-Meteo: forecast parameters and available ranges",
+          "url": "https://open-meteo.com/en/docs"
+        }
+      ],
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "what-a-forecast-can-and-cannot-tell-you",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "assessment": "Actual listed dates govern; website fourteen-day request is explicitly not native WeatherKit coverage. Daily versus hourly periods, midnight and subsequent review are clear. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        281,
+        372
+      ],
+      "rawObjectSha256": "03df2936c31703db77fc45370001185fe53d033bdd1c65fa5aa0176283bfd1a2",
+      "jsonSha256": "93e479caf4334b7dab6970502def523aa2422523769acecc6a0e4a1af3dca99a",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecast information and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Met Office: forecast place, periods and weather values",
+          "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+        }
+      ],
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "reading-a-chance-of-rain",
+        "what-a-forecast-can-and-cannot-tell-you",
+        "the-commute-and-the-sky"
+      ],
+      "assessment": "No guaranteed dry window or arbitrary threshold; venue/authority/decision deadline and workable fallback are explicit. Shared editing and draft review preserve permissions. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        374,
+        464
+      ],
+      "rawObjectSha256": "2288eaa5f36835692504f40dec6e5206cfbcd3a371115b272f78542768045581",
+      "jsonSha256": "4016c59ba01ee40d978602528219c0fb6e7f16dd98f5a9f03b04f9820d9263b3",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Met Office: What is an ensemble forecast?",
+          "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/what-is-an-ensemble-forecast"
+        },
+        {
+          "label": "Met Office: Using ensemble forecasts in decision-making",
+          "url": "https://www.metoffice.gov.uk/research/weather/ensemble-forecasting/decision-making"
+        }
+      ],
+      "seeAlso": [
+        "reading-a-chance-of-rain",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "the-commute-and-the-sky"
+      ],
+      "assessment": "Ensemble discussion is attributed to Met Office, without claiming Cloud ensemble UI or hidden confidence. Probability/amount/period distinctions and manual decision workflow avoid safety thresholds. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "reading-a-chance-of-rain",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        466,
+        556
+      ],
+      "rawObjectSha256": "69f354ff1ec93e6c6fe7e08eb0f676d2ac87eebe4f9998665639cf8bef56f60d",
+      "jsonSha256": "e8dcd291157fc84d47e5f9b6d3d596af46f8a7dce4b217a9185efbe9751410a7",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "National Weather Service: precipitation probability and forecast periods",
+          "url": "https://www.weather.gov/lmk/pops?hl=en-US"
+        },
+        {
+          "label": "Apple WeatherKit: hourly precipitation chance",
+          "url": "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance"
+        }
+      ],
+      "seeAlso": [
+        "what-a-forecast-can-and-cannot-tell-you",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "assessment": "NWS product period/threshold is not generalized to Apple hourly data. Hourly probabilities are not simply added. App/web provider distinction, unavailable values and participant confirmation are explicit. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "weather-where-the-event-is",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        558,
+        638
+      ],
+      "rawObjectSha256": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140",
+      "jsonSha256": "43e35ed6a54f89a54a7912f7a8d1ced1e0de1ffd7567b7865d41cc8d944286b9",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 5,
+      "paragraphs": 10,
+      "practical": 4,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Apple: WeatherKit forecasts and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Apple: Privacy and Location Services",
+          "url": "https://support.apple.com/en-us/102515"
+        }
+      ],
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "assessment": "Selected destination versus recorded device GPS alerts and independent location/calendar/notification permissions match recorded source bounds. No automatic event-address lookup or destination alert guarantee. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        640,
+        731
+      ],
+      "rawObjectSha256": "36809ff17620d4c0b9ddfa037098371f674f0c34914279e08cd48d8b1c0d2a5a",
+      "jsonSha256": "3150881338c0605dff117431f7ef4740e462d4cfdaa18bec12ad041bf9380e6c",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Apple: future departure or arrival estimates in Maps",
+          "url": "https://support.apple.com/guide/iphone/get-driving-directions-ipha84a94043/ios"
+        },
+        {
+          "label": "Met Office: forecast times, precipitation and gust periods",
+          "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+        }
+      ],
+      "seeAlso": [
+        "weather-where-the-event-is",
+        "reading-a-chance-of-rain",
+        "calendar-notifications-missing-silent-or-duplicated",
+        "planning-a-week-in-ten-minutes"
+      ],
+      "assessment": "Journey, arrival requirement and actual meeting time are distinct. Apple Maps controls are attributed and optional Travel Time/reminder wording is conditional on installed editor, not a universal Cloud promise. No route-wide weather or exact dry interval implied. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "daylight-as-a-planning-constraint",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        733,
+        823
+      ],
+      "rawObjectSha256": "fc6daf721fed644f11ccd74e2409790304ae18ad658c231985bd4b332f238eb0",
+      "jsonSha256": "0062c49502203cd32ae3de160b948580a8d24f6305a22c13eed2a065232329f0",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "U.S. Naval Observatory: rise, set and twilight definitions",
+          "url": "https://aa.usno.navy.mil/faq/RST_defs"
+        },
+        {
+          "label": "NOAA: solar calculation assumptions and limitations",
+          "url": "https://gml.noaa.gov/grad/solcalc/calcdetails.html"
+        }
+      ],
+      "seeAlso": [
+        "weather-where-the-event-is",
+        "recurring-events-without-the-mess",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "assessment": "Solar position versus twilight/actual visibility is bounded by location/date, horizon and task constraints. NOAA no-longer-maintained tool is cited for limitations, not endorsed as certification. Recurrence does not guarantee daylight or an occurrence editor. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "lineRange": [
+        825,
+        915
+      ],
+      "rawObjectSha256": "f3e9f92525c226b171db19e72f3abb00c34074d2f651ed412648d6ac527b1a39",
+      "jsonSha256": "4c21c212291b30678072f92c4088c61b58a43997c9312faff77ee4cce98ad9bb",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "readScope": "Complete current object: all fields present, no excerpt-only body inference.",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "sources": [
+        {
+          "label": "Met Office: forecast wind speed, direction and gust definitions",
+          "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+        },
+        {
+          "label": "Apple WeatherKit: weather conditions, wind data and availability",
+          "url": "https://developer.apple.com/documentation/weatherkit"
+        }
+      ],
+      "seeAlso": [
+        "weather-where-the-event-is",
+        "reading-a-chance-of-rain",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "assessment": "Units, average speed/gust periods and provider arrow conventions remain explicit. No universal safety limit, route-wide observation or selected-destination notification guarantee. No material defect found.",
+      "status": "pass_no_material_defect_identified",
+      "confidence": "High semantic comparison confidence; moderate factual confidence bounded to recorded source evidence, not runtime.",
+      "proposals": []
+    }
+  ],
+  "recordedEvidenceReads": [
+    {
+      "file": "research/batch15-weather/evidence.json",
+      "sha256": "c458fb283ab901772f2530c8013a38be4b6bfb690e444662d8f8f18f9d8ef619",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    },
+    {
+      "file": "research/batch11-weather/evidence.json",
+      "sha256": "1f15028c6510107dad9bc3494d1b12facdef47cccb18f06a68218da76eb2ce67",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    },
+    {
+      "file": "research/batch06-weather/evidence.json",
+      "sha256": "46a2ff1ce5d447fef91f80dba6bd1777ccb652c023ceac7bd280927bf9d2adc3",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    },
+    {
+      "file": "research/batch26-duplicates/product-evidence.json",
+      "sha256": "69f2ac35e8f33a198a4e116cfbdbb199b128b29958bc556bbc62e66b1eb09bf7",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    },
+    {
+      "file": "research/batch07-providers/evidence.json",
+      "sha256": "e9575bc6b7b2bace761ce3c4df8d84c811b5edecbf710d4c23798a0d1387767d",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    },
+    {
+      "file": "research/batch10-planning/evidence.json",
+      "sha256": "0758a25c3f72e8ddd5830074e97fa8a06598ee17568b1560f875abd8b9480694",
+      "readScope": "Complete recorded evidence JSON; recorded source paths/ranges and findings, not newly inspected native files. Historical pending issues are not assumed current defects."
+    }
+  ],
+  "limits": [
+    "Own substantive editorial review; not native/runtime or released-build certification.",
+    "Recorded source/official-read evidence reviewed, not fresh native file inspection or new network fetch. Existing source reports contain scoped uncertainties; not all current provider products audited.",
+    "No actual forecast response, user calendar, account, alert or subscription operation.",
+    "No source integration, ASC/native/customer changes, build/deploy or commit. Only this evidence JSON written."
+  ]
+}

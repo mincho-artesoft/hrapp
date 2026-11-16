@@ -1,0 +1,1439 @@
+{
+  "outlook-propose-new-meeting-time": {
+    "updated": "2026-10-23",
+    "title": "Propose a new meeting time in Outlook, and accept one as organizer",
+    "short": "Propose a new time in Outlook",
+    "description": "Suggest another time for an Outlook meeting, see why the option can be missing, and accept or reject a proposal as the organizer in classic Outlook.",
+    "lede": "Outlook lets an attendee suggest a different time without editing the organizer’s meeting, but only for some meetings and some accounts. If the button is missing, the cause is usually one of three documented restrictions. Arte Soft, the developer of Cloud Calendars, wrote this guide; the controls are Microsoft’s.",
+    "commonBelief": "If I can’t make a meeting, I can always use Propose New Time.",
+    "sections": [
+      {
+        "heading": "Three reasons the option may not be there",
+        "body": [
+          "Microsoft documents that you can’t propose a new time for a recurring meeting. It also says the organizer can send a meeting request that restricts proposals; in that case Propose New Time isn’t available. And the feature is only for work or school accounts: Microsoft lists personal Microsoft accounts (outlook.com, hotmail.com, live.com, msn.com) and IMAP or POP accounts from other providers as not supported.",
+          "So check those three before assuming your Outlook is broken. If any applies, reply to the organizer by message instead of moving your copy of the meeting; Microsoft warns that moving a meeting you were invited to leaves the organizer uninformed and your calendar at the wrong time."
+        ]
+      },
+      {
+        "heading": "As an attendee in new Outlook for Windows",
+        "body": [
+          "Open the invitation, choose Propose new time, then pick I might attend or No, I won’t attend. Select the alternative slot, choose Done, add a message if useful, and select Send. Your choice of tentative or decline is sent along with the suggestion."
+        ]
+      },
+      {
+        "heading": "As an attendee in classic Outlook for Windows",
+        "body": [
+          "Choose Propose New Time, then Tentative and Propose New Time or Decline and Propose New Time. Pick the new time and select Propose Time. Microsoft says this opens a meeting response and adds “New Time Proposed” to the subject; select Send.",
+          "Microsoft’s page documents only these two Windows clients for proposing. For Outlook on the web, Mac or mobile, look for the equivalent control in that client, and if it is not there, message the organizer."
+        ]
+      },
+      {
+        "heading": "As the organizer: accept or reject",
+        "body": [
+          "In classic Outlook, open the proposal and choose Accept Proposal or View All Proposals. To accept, select Accept Proposal and then Send Update, which moves the meeting for everyone. To reject, Microsoft’s instruction is Delete. The page does not document the organizer flow for new Outlook, so check that client’s own options before relying on it.",
+          "Accepting one person’s suggestion can make the time worse for others. Before Send Update, check the other attendees’ availability for the proposed slot."
+        ]
+      },
+      {
+        "heading": "Worked example: one clash, two clients",
+        "body": [
+          "A fictional analyst on a work account in new Outlook is invited to a one-off review at 14:00 Thursday that clashes with training. They open the invitation, choose Propose new time, select I might attend, pick 10:00 Friday and add “Training until 15:00 Thursday”.",
+          "The organizer, using classic Outlook, opens the proposal, chooses View All Proposals to see whether anyone else suggested a time, checks the other two attendees are free at 10:00 Friday, then selects Accept Proposal and Send Update.",
+          "Check: the analyst’s calendar now shows the review at 10:00 Friday from the organizer’s update. If the review had been a weekly series, the analyst would have messaged the organizer instead."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Can you propose a new time?",
+      "columns": [
+        "Situation",
+        "Proposal available?",
+        "What to do instead"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "One-off meeting, work or school account, proposals allowed",
+            "Yes",
+            "—"
+          ]
+        },
+        {
+          "cells": [
+            "Recurring meeting",
+            "No (Microsoft)",
+            "Message the organizer"
+          ]
+        },
+        {
+          "cells": [
+            "Organizer restricted proposals",
+            "No",
+            "Message the organizer"
+          ]
+        },
+        {
+          "cells": [
+            "Outlook.com, Hotmail, Live, MSN, IMAP or POP account",
+            "Not supported",
+            "Reply with your availability"
+          ]
+        },
+        {
+          "cells": [
+            "Client other than new or classic Outlook for Windows",
+            "Not documented on Microsoft’s page",
+            "Check the client; otherwise message"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check the meeting is one-off and your account is work or school.",
+      "Use Propose new time with a tentative or decline response and a short reason.",
+      "Don’t move your copy of an invited meeting.",
+      "As organizer, review all proposals and other attendees’ availability before accepting.",
+      "Accept with Accept Proposal then Send Update (classic Outlook)."
+    ],
+    "faq": [
+      {
+        "q": "Why can’t I propose a new time for our weekly meeting?",
+        "a": "Microsoft says proposals aren’t available for recurring meetings. Contact the organizer."
+      },
+      {
+        "q": "Does proposing a time move the meeting?",
+        "a": "No. The organizer must accept the proposal and send an update."
+      },
+      {
+        "q": "I use an Outlook.com address. Why is the option missing?",
+        "a": "Microsoft lists personal Microsoft accounts and IMAP/POP accounts as not supported for this feature."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      {
+        "label": "Microsoft: propose a new meeting time in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook"
+      },
+      {
+        "label": "Microsoft: change an appointment, meeting or event in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      }
+    ],
+    "seeAlso": [
+      "keeping-track-of-who-replied",
+      "what-guests-can-do-to-your-event",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "outlook-end-recurring-meeting-early-keep-history": {
+    "updated": "2026-10-23",
+    "title": "End a recurring Outlook meeting early without wiping its history",
+    "short": "End an Outlook series early",
+    "description": "Stop a recurring Outlook meeting by changing its end date instead of cancelling it, know what changed occurrences lose, and how attendees should clean up.",
+    "lede": "Cancelling a whole recurring meeting removes its past occurrences along with the future ones. Microsoft recommends a different move: change the series end date. That keeps the record, but not everything. Arte Soft, the developer of Cloud Calendars, explains the trade-off.",
+    "commonBelief": "Cancel Series is the right way to stop a weekly meeting.",
+    "sections": [
+      {
+        "heading": "Why an end date beats cancelling",
+        "body": [
+          "Microsoft’s organisational best practice says that although you can cancel a recurring meeting, a better option is to change the end date for the series, because it lets you and the attendees keep a record of meetings that occurred; if you cancel altogether, that history is lost. Its delete guidance says the same: edit the series to change the end date and preserve all past meetings.",
+          "Only the organizer can send an update or cancellation to all attendees."
+        ]
+      },
+      {
+        "heading": "What you still lose",
+        "body": [
+          "Microsoft warns that ending a series early loses the exceptions associated with it — the individual occurrences you changed, such as a moved week or a different room. Its classic Outlook steps add that agenda, notes and attachments added to previous instances are deleted when you confirm.",
+          "If any past occurrence holds notes or files you need, save them elsewhere first. Microsoft separately recommends keeping attachments in OneDrive or SharePoint rather than in recurring meetings, because each exception carries its own copy."
+        ]
+      },
+      {
+        "heading": "Steps by client",
+        "body": [
+          "Classic Outlook (Microsoft lists Outlook for Microsoft 365, 2024 and 2021): open any occurrence, choose The entire series, select Recurrence, and under Range of recurrence choose End by with a date before the next meeting. Confirm, type a message for attendees and select Send Update.",
+          "New Outlook for Windows: Microsoft’s page directs you to Edit series and change the end date to before the next meeting, then Send. Microsoft’s pages do not give equivalent steps for the web, Mac or mobile; use the series editor in that client and confirm the end date before sending."
+        ]
+      },
+      {
+        "heading": "If you’re an attendee",
+        "body": [
+          "Microsoft warns that if you are not the organizer and delete the series from your calendar, past occurrences are removed too. To remove only future meetings while retaining the past, its documented attendee route is to delete the future occurrences individually. If the organizer sends a cancellation, Microsoft’s best practice is to use Remove from Calendar on the cancellation in your inbox rather than deleting items from the calendar directly."
+        ]
+      },
+      {
+        "heading": "Worked example: retiring a weekly stand-up",
+        "body": [
+          "A fictional team lead organises a Monday stand-up that started in January 2026; the team is reorganising on 1 December 2026. Three past occurrences were moved to Tuesdays and one had a slide deck attached.",
+          "The lead first saves the slide deck and any other needed occurrence notes elsewhere. Then, in classic Outlook, they open the series, set End by to 30 November 2026 and send the update with “Last stand-up is Monday 30 November; new team meetings will follow.”",
+          "Result to expect, per Microsoft: past occurrences remain as a record; the three moved Tuesday exceptions and anything attached to individual occurrences may be lost. Attendees process the update; nobody deletes the series from their own calendars."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Ways to stop a series",
+      "columns": [
+        "Action",
+        "Who",
+        "Past occurrences",
+        "Changed occurrences and their notes/files"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Change end date, Send Update",
+            "Organizer",
+            "Kept (Microsoft’s recommended route)",
+            "Lost"
+          ]
+        },
+        {
+          "cells": [
+            "Cancel Series",
+            "Organizer",
+            "Lost",
+            "Lost"
+          ]
+        },
+        {
+          "cells": [
+            "Delete series from own calendar",
+            "Attendee",
+            "Removed from that attendee’s calendar",
+            "—"
+          ]
+        },
+        {
+          "cells": [
+            "Remove from Calendar on the organizer’s cancellation",
+            "Attendee",
+            "Per the organizer’s cancellation",
+            "—"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Save notes and attachments from past occurrences you still need.",
+      "As organizer, change the series end date rather than cancelling the series.",
+      "Send the update with a short explanation.",
+      "As attendee, process cancellations with Remove from Calendar; don’t delete the series yourself.",
+      "For new series, set an end date from the start, as Microsoft recommends."
+    ],
+    "faq": [
+      {
+        "q": "Will changing the end date delete meetings that already happened?",
+        "a": "Microsoft says it keeps a record of past meetings, unlike cancelling. Changed occurrences (exceptions) and items attached to earlier instances may be lost."
+      },
+      {
+        "q": "Can an attendee end the series?",
+        "a": "No. Only the organizer can send updates or cancellations to all attendees."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: cancel all future meetings in a series",
+        "url": "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series"
+      },
+      {
+        "label": "Microsoft: cancel a recurring meeting series in Outlook",
+        "url": "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e"
+      },
+      {
+        "label": "Microsoft: delete an appointment or a meeting",
+        "url": "https://support.microsoft.com/en-US/Outlook/delete-an-appointment-or-a-meeting"
+      },
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      }
+    ],
+    "seeAlso": [
+      "recurring-events-without-the-mess",
+      "recover-deleted-calendar-events-iphone",
+      "keeping-track-of-who-replied"
+    ]
+  },
+  "outlook-change-meeting-organizer-or-copy-meeting": {
+    "updated": "2026-10-23",
+    "title": "You can’t change an Outlook meeting’s organizer: hand it over instead",
+    "short": "Change an Outlook organizer",
+    "description": "Outlook can’t reassign a meeting organizer, and recent classic builds block copying meetings. Hand over a series safely and reuse meeting details another way.",
+    "lede": "When the person who set up a recurring meeting leaves or changes role, the meeting stays theirs. Outlook has no switch to change that, and copying the meeting is no longer the workaround it once was. Arte Soft, the developer of Cloud Calendars, sets out Microsoft’s supported route.",
+    "commonBelief": "An admin or a delegate can change who organised a meeting.",
+    "sections": [
+      {
+        "heading": "What Microsoft says",
+        "body": [
+          "Microsoft’s organisational best practice states plainly that Outlook does not provide a way to change a meeting organizer. For a recurring meeting, end it by setting an earlier end date and sending the update to all attendees; then the new organizer creates a new recurring meeting.",
+          "This is the same end-date technique Microsoft recommends for stopping a series, so past occurrences remain as a record while changed occurrences are lost."
+        ]
+      },
+      {
+        "heading": "Why copying isn’t the answer",
+        "body": [
+          "Microsoft says copied meetings lose their link to the original by design, and that from classic Outlook Version 2311 copying meetings is blocked with the message “Copying meetings is not supported.” Microsoft documents a per-user registry value to re-enable copying but says its support team will not troubleshoot issues with copied meetings. Treat that as an administrator decision, not a fix.",
+          "To reuse useful text, have the new organizer create a fresh meeting and copy the agenda and intended location. Configure conferencing on that new meeting and check its join details before sending; pasting the old Teams arrangements is not proof that the successor owns the new conference."
+        ]
+      },
+      {
+        "heading": "Delegates are a different question",
+        "body": [
+          "If the departing person was a delegate rather than the organizer, the meeting does not need to move. Microsoft recommends changing the outgoing Editor delegate to Reviewer or none, then granting Editor to the replacement, and keeping only one Editor delegate."
+        ]
+      },
+      {
+        "heading": "Worked example: a programme meeting changes hands",
+        "body": [
+          "A fictional programme manager organises a fortnightly steering group and is moving roles at the end of March. Their successor will run it from April.",
+          "The outgoing manager saves the shared action log to SharePoint, opens the series, sets an end date of 31 March and sends “Series ends here; Sam will send the new invitation.” The successor creates a new fortnightly meeting starting in April, with an end date, the same attendees and a link to the action log, and sends it.",
+          "Check: attendees see the old series stop after March and the new one start in April, organised by the successor. Nobody copied the old meeting."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Handover options",
+      "columns": [
+        "Option",
+        "Supported?",
+        "Notes"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Change organizer on the meeting",
+            "No (Microsoft)",
+            "—"
+          ]
+        },
+        {
+          "cells": [
+            "End old series, successor creates new one",
+            "Yes (Microsoft’s route)",
+            "Past occurrences kept; exceptions lost"
+          ]
+        },
+        {
+          "cells": [
+            "Copy the meeting",
+            "Blocked from classic Version 2311",
+            "Registry re-enable is unsupported for troubleshooting"
+          ]
+        },
+        {
+          "cells": [
+            "Swap delegates",
+            "Yes",
+            "Only if the person was a delegate, not the organizer"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm who is the organizer and who is only a delegate.",
+      "Save shared files from the meeting to OneDrive or SharePoint.",
+      "End the old series with an earlier end date and an explanation.",
+      "Have the successor create a new series with an end date.",
+      "Don’t copy meetings; recreate them."
+    ],
+    "faq": [
+      {
+        "q": "Can IT change the organizer for us?",
+        "a": "Microsoft’s best-practice page says Outlook does not provide a way to change a meeting organizer. It recommends ending and recreating the series."
+      },
+      {
+        "q": "Why does Outlook say copying meetings isn’t supported?",
+        "a": "Microsoft blocked copying meetings from classic Outlook Version 2311 because copied meetings produce unexpected results."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: best practices for organisations using the Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      },
+      {
+        "label": "Microsoft: Outlook blocks copying meetings",
+        "url": "https://support.microsoft.com/en-us/Support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported"
+      }
+    ],
+    "seeAlso": [
+      "recurring-events-without-the-mess",
+      "event-saved-to-wrong-calendar",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "outlook-appointment-meeting-event-convert-and-update": {
+    "updated": "2026-10-23",
+    "title": "Outlook appointment, meeting or event: convert one to another and update correctly",
+    "short": "Appointment, meeting or event",
+    "description": "See how Outlook treats appointments, meetings and all-day events, convert between them, and send updates to everyone or only to added attendees.",
+    "lede": "In Outlook the same calendar entry can be an appointment, an event or a meeting, and the type decides whether others are notified and how the time shows. Converting is easy; updating without confusing people takes a little care. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "Changing any calendar entry automatically tells the people involved.",
+    "sections": [
+      {
+        "heading": "The three types",
+        "body": [
+          "Microsoft describes appointments as blocks of time you can mark free, busy, tentative, out of office or working elsewhere; events as like appointments but lasting at least one full day by default; and meetings as appointments or events with other attendees.",
+          "In classic Outlook, Microsoft says new all-day events show as free by default, while meetings and appointments show as busy."
+        ]
+      },
+      {
+        "heading": "Converting in classic Outlook",
+        "body": [
+          "Event to appointment: open it and untick All day event; Microsoft says Show As then changes to Busy. Appointment to meeting: add attendees. Save & Close for an appointment, Send Update for a meeting.",
+          "For a meeting you created, Microsoft says you must send an update to save changes."
+        ]
+      },
+      {
+        "heading": "Updating: everyone or only the changed people",
+        "body": [
+          "If you only add or remove attendees, new Outlook offers, after Send, to send the update only to added or removed attendees; others keep the event without an email. Classic Outlook lets you send to all attendees or just the added ones when adding people and making no other change.",
+          "For recurring items, new Outlook offers Edit the one event in the series, Edit series or Edit this and all following events. Classic Outlook asks Just this one or The entire series and notes limits: you cannot move an occurrence past an earlier or later one, and removing an attendee from one occurrence leaves them invited to the others."
+        ]
+      },
+      {
+        "heading": "What you can’t change",
+        "body": [
+          "Microsoft says you can’t change the details of meetings others invited you to; moving one only moves your copy and leaves the organizer uninformed.",
+          "Show As is personal. Microsoft says the organizer sets the initial availability for attendees, but status changes made later apply only to each person’s own calendar, and updates to the meeting won’t override an attendee’s status."
+        ]
+      },
+      {
+        "heading": "Worked example: a training day grows",
+        "body": [
+          "A fictional trainer using classic Outlook adds an all-day event “Course prep” on Wednesday; it shows as free. When the plan firms up to 09:00–13:00, they untick All day event; it becomes an appointment and shows as Busy.",
+          "They then add two co-trainers, turning it into a meeting, and send. A week later, now editing that meeting in new Outlook, they add a third co-trainer without other changes and choose to send the update only to the added attendee, so the first two aren’t emailed again.",
+          "Check: the third co-trainer has the invitation; the others still have the meeting unchanged."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Change and its effect (classic Outlook unless noted)",
+      "columns": [
+        "Change",
+        "Result",
+        "Who is notified"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Untick All day event on a personal event with no attendees",
+            "Event becomes appointment; Show As becomes Busy",
+            "No one"
+          ]
+        },
+        {
+          "cells": [
+            "Add attendees to an appointment",
+            "Becomes a meeting",
+            "Attendees, when you send"
+          ]
+        },
+        {
+          "cells": [
+            "Add people only to a meeting",
+            "Meeting updated",
+            "All or only added (classic); added/removed only option (new Outlook)"
+          ]
+        },
+        {
+          "cells": [
+            "Move an invited meeting on your calendar",
+            "Your copy only",
+            "Organizer not notified"
+          ]
+        },
+        {
+          "cells": [
+            "Change Show As after sending",
+            "Your calendar only",
+            "Attendees unaffected"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Decide whether the entry needs attendees; if yes, it’s a meeting.",
+      "Untick All day event to turn an event into a timed, busy appointment.",
+      "When only adding attendees, use the limited-recipient update option if offered. New Outlook also documents this option for attendee removals; classic Outlook’s cited instructions cover added attendees only.",
+      "Choose the occurrence scope deliberately for recurring items.",
+      "Never move a meeting you were invited to; contact the organizer."
+    ],
+    "faq": [
+      {
+        "q": "Why does my all-day event show me as free?",
+        "a": "In classic Outlook, Microsoft says new all-day events show as free by default. Change Show As if it should block time."
+      },
+      {
+        "q": "Can I avoid re-emailing everyone when I add one person?",
+        "a": "Yes. New Outlook offers sending only to added or removed attendees; classic Outlook offers sending to just the added attendees."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: change an appointment, meeting or event in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      },
+      {
+        "label": "Microsoft: get started with the Outlook calendar",
+        "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+      },
+      {
+        "label": "Microsoft: manage your availability in your Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      }
+    ],
+    "seeAlso": [
+      "what-an-all-day-event-really-means",
+      "recurring-events-without-the-mess",
+      "drag-an-event-to-move-it"
+    ]
+  },
+  "outlook-subscribe-or-import-ics-calendar": {
+    "updated": "2026-10-23",
+    "title": "Add an internet calendar to Outlook: subscribe for updates or import a snapshot",
+    "short": "Subscribe or import in Outlook",
+    "description": "Add a school, sports or team calendar to Outlook.com or Outlook on the web. Choose subscribe or import, and expect updates to take hours, sometimes over a day.",
+    "lede": "A link to a school or club calendar can be added to Outlook in two ways, and only one keeps up with changes. Even that one is not instant. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents for Outlook.com and Outlook on the web.",
+    "commonBelief": "A subscribed calendar updates as soon as the publisher changes it.",
+    "sections": [
+      {
+        "heading": "Snapshot or connection",
+        "body": [
+          "Microsoft explains that importing an .ics file gives you a snapshot of the events at the time of import; your calendar doesn’t refresh them even if the owner updates the calendar. It suggests import for things that won’t change, like tide tables or moon phases.",
+          "Subscribing connects the online calendar to yours, and Outlook updates it when the owner changes events. Microsoft suggests subscribing for things that change, like a school calendar."
+        ]
+      },
+      {
+        "heading": "How long updates take",
+        "body": [
+          "Microsoft gives different figures for the two web clients. For Outlook.com (personal accounts), it says updates should happen approximately every 3 hours but can take more than 24 hours. For Outlook on the web (work or school), it says approximately every 6 hours, and also more than 24 hours at times.",
+          "Treat these as Microsoft’s typical figures, not deadlines. For a same-day change, check the publisher’s site or ask the organiser."
+        ]
+      },
+      {
+        "heading": "Steps",
+        "body": [
+          "In Calendar, choose Add calendar. To subscribe, choose Subscribe from web, enter the URL and select Import (Outlook.com) or Import and Save (Outlook on the web). To import, choose Upload from file, pick the .ics file, choose which calendar it goes into, and select Import; Microsoft’s work/school instructions also show Save.",
+          "Microsoft suggests that if subscribing fails, you can import instead — accepting that you lose updates. Its instructions for classic Outlook on the web also mention removing an empty internet calendar and re-adding its URL with https rather than http. That is a legacy web-client troubleshooting note, not a desktop Outlook command; use the publisher’s valid HTTPS feed address rather than inventing an address."
+        ]
+      },
+      {
+        "heading": "Worked example: a school term calendar",
+        "body": [
+          "A fictional parent receives two things from a school: a link ending in .ics for the term calendar, and a one-off .ics file for sports day. They add the link with Subscribe from web so term changes arrive, and upload the sports-day file into their own Family calendar.",
+          "When the school moves an inset day on a Monday morning, the parent’s Outlook still shows the old date at lunchtime. Such a delay is consistent with Microsoft’s figures; they check the school website and adjust plans. The imported sports-day entry does not follow subsequent changes from the school.",
+          "Check: the subscribed calendar appears as its own calendar in the list; the imported event sits inside Family."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Subscribe or import",
+      "columns": [
+        "",
+        "Subscribe from web",
+        "Upload from file (import)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Gets later changes",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "cells": [
+            "Typical refresh (Microsoft)",
+            "Outlook.com ~3 h; Outlook on the web ~6 h; can exceed 24 h",
+            "Never"
+          ]
+        },
+        {
+          "cells": [
+            "Where events go",
+            "A separate subscribed calendar",
+            "A calendar you choose"
+          ]
+        },
+        {
+          "cells": [
+            "Best for",
+            "Calendars that change",
+            "Fixed dates"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Use Subscribe from web for a link to a changing calendar.",
+      "Use Upload from file for a fixed set of dates.",
+      "Expect hours, sometimes more than a day, before changes appear.",
+      "If a subscription is empty, verify the publisher’s current feed address and whether HTTPS is supported before changing or reconnecting it.",
+      "Confirm urgent changes at the source."
+    ],
+    "faq": [
+      {
+        "q": "My subscribed calendar is a day behind. Is it broken?",
+        "a": "Not necessarily. Microsoft says updates can take more than 24 hours."
+      },
+      {
+        "q": "I imported a calendar and nothing updates.",
+        "a": "That is how import works: Microsoft calls it a snapshot. If you need later updates, subscribe to the publisher’s current feed and verify it first. Only then identify and deliberately remove any unwanted imported copies; do not delete unrelated events from the destination calendar."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: import or subscribe to a calendar in Outlook.com or Outlook on the web",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: share your calendar in Outlook on the web (opening internet calendars)",
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "the-secret-address-of-a-google-calendar",
+      "calendar-export-ics-pdf-and-backup",
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "outlook-teams-meeting-button-missing": {
+    "updated": "2026-10-23",
+    "title": "No Teams meeting option in Outlook: check which Outlook you have first",
+    "short": "Teams option missing in Outlook",
+    "description": "Fix a missing Teams meeting option in Outlook: classic Outlook uses an add-in, new Outlook is built in. Plus why delegate meetings can lack join details.",
+    "lede": "The fix for a missing Teams button depends entirely on which Outlook you use. Classic Outlook relies on a COM add-in; new Outlook for Windows has Teams built in and doesn’t support that add-in at all. Arte Soft, the developer of Cloud Calendars, set out Microsoft’s checks.",
+    "commonBelief": "Reinstalling Teams always brings the button back.",
+    "sections": [
+      {
+        "heading": "New Outlook for Windows",
+        "body": [
+          "Microsoft says new Outlook doesn’t support the Teams COM add-in and instead has a native Teams meeting capability. Its help for a missing option lists two requirements: be signed in to both Outlook and Teams with the same work or school account, and use the new Teams client. The fix it gives is to close Outlook and Teams, restart Teams, then restart Outlook."
+        ]
+      },
+      {
+        "heading": "Classic Outlook: is the add-in enabled?",
+        "body": [
+          "Microsoft’s troubleshooting starts with File, Options, Add-ins. Look for Microsoft Teams Meeting Add-in for Microsoft Office under Active Application Add-ins. If it is under Disabled Application Add-ins, choose Manage, COM Add-ins, Go, tick it, select OK and restart Outlook.",
+          "Microsoft also lists prerequisites: the Teams desktop client must be installed (the add-in can’t be installed with only Teams on the web), Outlook 2016 or later, and current Outlook updates."
+        ]
+      },
+      {
+        "heading": "When it’s an administrator job",
+        "body": [
+          "Microsoft’s further steps — re-registering the add-in loader, checking registry load behaviour and trusted add-in policies, and reinstalling the add-in after a move from classic to new Teams — are written for administrators and involve PowerShell and the registry. Hand them over rather than attempting them on a managed work PC."
+        ]
+      },
+      {
+        "heading": "Delegate meetings without join details",
+        "body": [
+          "In its classic Outlook add-in troubleshooting, Microsoft documents a specific case: when a delegate schedules a Teams meeting on a manager’s calendar and the manager’s mailbox is hidden from the global address list, the meeting URL, ID, passcode and dial-in numbers aren’t added. For that diagnosed case, an administrator unhides the mailbox; the delegate then restarts Outlook and creates a new meeting request. A missing link alone does not establish this cause."
+        ]
+      },
+      {
+        "heading": "Worked example: two colleagues, two fixes",
+        "body": [
+          "A fictional colleague on classic Outlook finds no Teams button after an update. File, Options, Add-ins shows the Teams add-in under Disabled; they enable it through COM Add-ins and restart, then check whether the button has returned.",
+          "Another colleague on new Outlook has the same symptom. Their Teams is signed in with a personal account. They sign Teams in with the same work account as Outlook, restart Teams then Outlook, and check the event window for the Teams meeting toggle. If it is still absent, they report the client versions and account type to IT.",
+          "Check: create a draft meeting, add the Teams link, and confirm the join details appear in the body before inviting anyone."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Diagnose by client",
+      "columns": [
+        "Client",
+        "Teams integration",
+        "First checks",
+        "Escalate if"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "New Outlook for Windows",
+            "Built in; COM add-in not supported",
+            "Same work/school account in Outlook and Teams; new Teams; restart Teams then Outlook",
+            "Still missing"
+          ]
+        },
+        {
+          "cells": [
+            "Classic Outlook",
+            "Teams Meeting COM add-in",
+            "Add-in active or disabled; Teams desktop installed; Outlook 2016+ and updated",
+            "Re-registration, registry or policy steps"
+          ]
+        },
+        {
+          "cells": [
+            "Delegate on manager’s calendar",
+            "Classic Outlook add-in case documented by Microsoft",
+            "Join details present?",
+            "Manager’s mailbox hidden from GAL"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify new or classic Outlook.",
+      "New Outlook: same work account in Outlook and new Teams; restart Teams then Outlook.",
+      "Classic: re-enable the add-in under COM Add-ins and restart.",
+      "Confirm the Teams desktop client is installed for classic Outlook.",
+      "Send registry, PowerShell and GAL issues to your administrator."
+    ],
+    "faq": [
+      {
+        "q": "Can I install the Teams add-in in new Outlook?",
+        "a": "No. Microsoft says new Outlook doesn’t support the Teams COM add-in; it has Teams built in."
+      },
+      {
+        "q": "My delegate’s Teams meetings have no link. Why?",
+        "a": "One documented cause in classic Outlook is a manager’s mailbox hidden from the global address list. Ask IT to diagnose that case; if it applies, Microsoft directs an administrator to unhide the mailbox, then have the delegate restart Outlook and create a new request. Other missing-link cases need their own checks."
+      }
+    ],
+    "sourcesHeading": "Microsoft pages used",
+    "sources": [
+      {
+        "label": "Microsoft Learn: fix Teams Meeting add-in problems in classic Outlook",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues"
+      },
+      {
+        "label": "Microsoft: Teams meeting add-in missing in new Outlook",
+        "url": "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865"
+      }
+    ],
+    "seeAlso": [
+      "meeting-links-that-make-themselves",
+      "exchange-calendars-on-an-iphone",
+      "inviting-people-who-do-not-have-the-app"
+    ]
+  },
+  "outlook-birthday-calendar-from-contacts": {
+    "updated": "2026-10-23",
+    "title": "Outlook birthday calendar: turn it on, fix dates in contacts, hide it",
+    "short": "Outlook birthdays",
+    "description": "Turn on Outlook’s birthday calendar, add or fix birthdays through contacts, and hide or delete it without losing contacts, in new and classic Outlook.",
+    "lede": "Outlook’s birthdays come from your contacts, and the steps differ between new Outlook or the web and classic Outlook. Birthdays can also take hours to appear. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "commonBelief": "Deleting the birthday calendar deletes the birthdays from my contacts.",
+    "sections": [
+      {
+        "heading": "New Outlook, Outlook.com and Outlook on the web",
+        "body": [
+          "Turn it on: Calendar, Add calendar, Birthdays, confirm the account and tick Turn on the birthday calendar. Microsoft says events are created for birthdays already in your contacts, and it might take a few hours for them to appear.",
+          "Add or change a birthday in People: open the contact, Edit, add the birthday under Others, Save. Microsoft also offers New birthday from the birthday calendar, which opens a contact form. Microsoft notes a delay before a new birthday shows in the calendar.",
+          "Hide it by unticking Birthdays under My calendars."
+        ]
+      },
+      {
+        "heading": "Classic Outlook",
+        "body": [
+          "In classic Outlook, open People, edit a contact, then use Contact > Show > Details and enter the Birthday or Anniversary date. Microsoft says these are all-day annually recurring events and reminders are added by default. A separate Birthdays calendar enabled in new Outlook can also appear under My Calendars when you switch back to classic Outlook.",
+          "If a Birthdays calendar is listed, hide it by unticking its checkbox, or right-click its name and choose Delete Calendar. Microsoft states that deleting that calendar does not delete contacts or their saved birthdays. Check the selected calendar name before deleting."
+        ]
+      },
+      {
+        "heading": "Worked example: a wrong date",
+        "body": [
+          "A fictional user sees a colleague’s birthday on the wrong day in new Outlook. They open People, find the contact, choose Edit, correct the birthday under Others and save, then check the calendar again later, allowing for Microsoft’s documented delay.",
+          "Later they want birthdays off their work calendar view but kept in contacts. They untick Birthdays rather than deleting anything.",
+          "Check: the contact still holds the corrected birthday; the calendar shows it on the right date once synced."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Birthday actions",
+      "columns": [
+        "Want to",
+        "New Outlook / web",
+        "Classic Outlook"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Turn on",
+            "Add calendar → Birthdays → Turn on the birthday calendar",
+            "Contact dates create recurring events; a Birthdays calendar enabled in new Outlook can appear here"
+          ]
+        },
+        {
+          "cells": [
+            "Add or fix a date",
+            "People → contact → Edit → Others; or New birthday",
+            "Contact → Birthday or Anniversary box"
+          ]
+        },
+        {
+          "cells": [
+            "Hide",
+            "Untick Birthdays under My calendars",
+            "Untick Birthdays"
+          ]
+        },
+        {
+          "cells": [
+            "Remove the calendar",
+            "—",
+            "Delete Calendar; contacts and saved birthdays kept"
+          ]
+        },
+        {
+          "cells": [
+            "Expect a delay",
+            "Few hours after turning on; some delay after edits",
+            "—"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Turn on the birthday calendar in new Outlook or the web; allow a few hours.",
+      "Fix dates in the contact, not by creating a separate event.",
+      "Hide birthdays by unticking the calendar.",
+      "In classic Outlook, deleting the calendar keeps contacts and birthdays."
+    ],
+    "faq": [
+      {
+        "q": "I turned on birthdays and nothing appeared.",
+        "a": "Microsoft says it might take a few hours for birthdays from your contacts to be added."
+      },
+      {
+        "q": "Will deleting the birthday calendar remove birthdays from contacts?",
+        "a": "No. Microsoft says contacts and their saved birthdays are kept."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      {
+        "label": "Microsoft: add a birthday calendar and reminder in Outlook",
+        "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook"
+      }
+    ],
+    "seeAlso": [
+      "what-an-all-day-event-really-means",
+      "calendar-notifications-missing-silent-or-duplicated",
+      "change-calendar-color-iphone"
+    ]
+  },
+  "outlook-split-view-overlay-calendars": {
+    "updated": "2026-10-23",
+    "title": "View several Outlook calendars at once: split view or overlay",
+    "short": "Outlook split view and overlay",
+    "description": "Compare Outlook calendars side by side or stacked in one grid. Steps for new Outlook, the web and classic Outlook, plus how to read a combined view safely.",
+    "lede": "Comparing your calendar with a colleague’s or a team calendar is easier when you choose the right layout. Outlook offers side-by-side columns and an overlay, with different controls in new and classic Outlook. Arte Soft, the developer of Cloud Calendars, explains each.",
+    "commonBelief": "An overlay merges calendars, so moving an item moves it in all of them.",
+    "sections": [
+      {
+        "heading": "New Outlook and Outlook on the web",
+        "body": [
+          "Select the extra calendars in your calendar list. In the Arrange group, select Split view to show them side by side. Deselect Split view to see them in one grid; Microsoft says the events appear overlaid on the default calendar in their assigned colours."
+        ]
+      },
+      {
+        "heading": "Classic Outlook",
+        "body": [
+          "Tick another calendar in the Navigation Pane and it opens next to the current one. On that calendar’s tab, select View in Overlay Mode to stack it on the first (usually your default). To unstack, select View in Side-by-Side Mode on its tab. To remove it from view, clear its check box or select Close on its tab. You can also right-click a calendar and choose Open in New Window."
+        ]
+      },
+      {
+        "heading": "Which layout for which question",
+        "body": [
+          "Side by side helps answer “whose visible event is this?” because each calendar has its own column. Overlay helps spot overlaps in one grid, but colour and the opened item identify the owning calendar. Neither layout supplies calendar access you do not already have, and an empty-looking area alone is not confirmation that a person is free.",
+          "Showing calendars together doesn’t change ownership: each item still belongs to its own calendar and its own permissions."
+        ]
+      },
+      {
+        "heading": "Worked example: a team lead’s Tuesday",
+        "body": [
+          "A fictional team lead opens their own calendar and two colleagues’ shared calendars in new Outlook with Split view on. Both colleagues have no visible event between 15:00 and 16:00, but the lead’s own column contains an appointment at 15:30. They switch Split view off and see that appointment in the combined grid; opening it confirms it belongs to their own calendar.",
+          "Check: open the 15:30 item to confirm which calendar it belongs to before booking."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Controls by client",
+      "columns": [
+        "Action",
+        "New Outlook / web",
+        "Classic Outlook"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Add a calendar to the view",
+            "Select it in the calendar list",
+            "Tick it in the Navigation Pane"
+          ]
+        },
+        {
+          "cells": [
+            "Side by side",
+            "Arrange → Split view on",
+            "Default when ticking another calendar"
+          ]
+        },
+        {
+          "cells": [
+            "Overlay",
+            "Arrange → Split view off",
+            "View in Overlay Mode on the calendar tab"
+          ]
+        },
+        {
+          "cells": [
+            "Back to side by side",
+            "Split view on",
+            "View in Side-by-Side Mode"
+          ]
+        },
+        {
+          "cells": [
+            "Remove from view",
+            "Deselect it",
+            "Clear check box or Close"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Select the calendars to compare.",
+      "Use split or side-by-side view to see who is busy.",
+      "Use overlay to spot any clash; open items before acting.",
+      "Remove extra calendars from view when done."
+    ],
+    "faq": [
+      {
+        "q": "How do I overlay calendars in new Outlook?",
+        "a": "Select the calendars and turn Split view off in the Arrange group."
+      },
+      {
+        "q": "Does overlay mode combine the calendars?",
+        "a": "No. It only displays them together; each item stays in its own calendar."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      {
+        "label": "Microsoft: view multiple calendars at the same time in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook"
+      }
+    ],
+    "seeAlso": [
+      "icloud-google-and-outlook-in-one-view",
+      "a-week-view-that-fits-a-week",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "outlook-print-calendar-styles": {
+    "updated": "2026-10-23",
+    "title": "Print an Outlook calendar: pick the style that shows what you need",
+    "short": "Print an Outlook calendar",
+    "description": "Print or save an Outlook calendar as PDF in new Outlook, classic Outlook or Mac: choose layout or style, range and whether private details print.",
+    "lede": "Outlook printing differs by client: classic Outlook has named print styles, new Outlook and Mac use a simpler layout picker. The choice decides whether titles are cut off and whether private details appear. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "Any Outlook print style shows full meeting titles and details.",
+    "sections": [
+      {
+        "heading": "New Outlook for Windows",
+        "body": [
+          "In Calendar, on the Home tab, select Print. Choose the calendar, a View such as Work week or Month, the time range, whether to include a mini month, and whether to include a detailed agenda. Select Print, choose the printer, and Print again. Choose Microsoft Print to PDF to save a PDF."
+        ]
+      },
+      {
+        "heading": "Classic Outlook",
+        "body": [
+          "Select File, Print, then a style under Settings. Microsoft’s text documents examples including Weekly Agenda, Monthly and Calendar Details styles. For full titles choose Weekly Agenda Style; for full details Microsoft recommends Weekly Agenda Style or Calendar Details Style. Use Print Options for the date range and to choose a calendar.",
+          "To avoid printing private items’ details, tick Hide Details of private appointments. Microsoft notes you can print appointments from only one calendar at a time."
+        ]
+      },
+      {
+        "heading": "Outlook for Mac",
+        "body": [
+          "Choose the calendar and select File, Print. Choose the calendar, a layout such as Work week or Month, and the time range, then Print."
+        ]
+      },
+      {
+        "heading": "Worked example: a board-meeting week",
+        "body": [
+          "A fictional executive assistant needs a printed week of the director’s schedule for a board pack. In classic Outlook they choose Weekly Agenda Style for full meeting titles, set the range to the board week, and tick Hide Details of private appointments. They inspect the preview to confirm private information is not exposed before sharing the printout.",
+          "A colleague on new Outlook needs the same and chooses Work week with detailed agenda, then checks the preview for private items before printing, because the hide-private option is documented only for classic Outlook.",
+          "Check: read every page of the preview before it leaves the office."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Print options by client",
+      "columns": [
+        "Need",
+        "New Outlook",
+        "Classic Outlook",
+        "Mac"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Full titles",
+            "Detailed agenda (check preview)",
+            "Weekly Agenda Style",
+            "Check preview"
+          ]
+        },
+        {
+          "cells": [
+            "Full details",
+            "Detailed agenda",
+            "Weekly Agenda or Calendar Details Style",
+            "Not documented"
+          ]
+        },
+        {
+          "cells": [
+            "Hide private details",
+            "Not documented; check preview",
+            "Hide Details of private appointments",
+            "Not documented"
+          ]
+        },
+        {
+          "cells": [
+            "More than one calendar",
+            "Select the intended calendar; combined printing not established by this source",
+            "One calendar at a time",
+            "Select the intended calendar; combined printing not established by this source"
+          ]
+        },
+        {
+          "cells": [
+            "PDF",
+            "Microsoft Print to PDF",
+            "Microsoft Print to PDF",
+            "—"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify your Outlook client.",
+      "Choose the calendar and range first.",
+      "Pick Weekly Agenda (classic) or detailed agenda (new) for full titles.",
+      "Hide private details in classic Outlook; otherwise check the preview.",
+      "Save as PDF with Microsoft Print to PDF if needed."
+    ],
+    "faq": [
+      {
+        "q": "Why are meeting titles cut off?",
+        "a": "In classic Outlook, Microsoft recommends Weekly Agenda Style to print full titles."
+      },
+      {
+        "q": "Can I print two calendars together in classic Outlook?",
+        "a": "Microsoft says you can print appointments from only one calendar at a time."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support pages used",
+    "sources": [
+      {
+        "label": "Microsoft: print a calendar in Outlook (new, classic, Mac)",
+        "url": "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100"
+      },
+      {
+        "label": "Microsoft: print a calendar showing appointments and meetings (classic styles)",
+        "url": "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760"
+      }
+    ],
+    "seeAlso": [
+      "calendar-export-ics-pdf-and-backup",
+      "a-week-view-that-fits-a-week",
+      "month-view-on-a-bigger-screen"
+    ]
+  },
+  "outlook-shared-mailbox-calendar": {
+    "updated": "2026-10-23",
+    "title": "Shared mailbox calendar in Outlook: who can use it and its limits",
+    "short": "Shared mailbox calendar",
+    "description": "Use a Microsoft 365 shared mailbox calendar for a reception or support team: membership, the 25-user limit, no external users, and steps per Outlook client.",
+    "lede": "A shared mailbox gives a team one address and one calendar without anyone signing in as that mailbox. It suits a front desk or support rota, but Microsoft sets limits that push larger or mixed teams elsewhere. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "A shared mailbox is just an account the team shares a password for.",
+    "sections": [
+      {
+        "heading": "What it is and who can use it",
+        "body": [
+          "Microsoft describes shared mailboxes for addresses like information, support or reception. An administrator creates one and adds members. Members need their own licensed Exchange Online mailbox. For basic use the shared mailbox can hold up to 50 GB without a separate licence, but archiving, litigation hold and some advanced security or compliance features can require additional licensing.",
+          "Microsoft says a shared mailbox isn’t for direct sign-in; its account should have sign-in blocked. Only people inside your organisation can use it; Microsoft suggests a Microsoft 365 group if outside people need access."
+        ]
+      },
+      {
+        "heading": "Limits to check first",
+        "body": [
+          "Microsoft says a shared mailbox supports a maximum of 25 users; too many simultaneous users may see connection failures or duplicated messages. Microsoft recommends a Microsoft 365 group if more users are needed. Its deletion warning is about email messages: you cannot prevent members from deleting those messages. It separately documents that members can create, view and manage shared-calendar appointments. Microsoft also documents limitations on encryption of mail sent from a shared mailbox."
+        ]
+      },
+      {
+        "heading": "Using the calendar, by client",
+        "body": [
+          "New Outlook and classic Outlook: after the administrator adds you, restart Outlook; Microsoft says the shared calendar is added to your Calendars list automatically. Choose it in calendar view. Any member can create, view and manage appointments.",
+          "Outlook on the web: add the shared mailbox with Add shared folder or mailbox, then use its calendar. Microsoft notes that to get new-message notifications you open the mailbox in a separate browser window. Microsoft also documents Outlook for iOS and Android access."
+        ]
+      },
+      {
+        "heading": "Worked example: an office front desk",
+        "body": [
+          "A fictional office of 12 receptionists wants one visitor calendar. An administrator creates “Reception”, adds the 12 as members and leaves sign-in blocked. Each receptionist restarts Outlook and finds the Reception calendar listed.",
+          "A contractor at another company asks for access. Shared mailboxes can’t include external people, so the office instead sends the contractor specific invitations.",
+          "Check: one receptionist adds a test visitor slot and another confirms they can see and edit it; then the test is deleted."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Is a shared mailbox the right fit?",
+      "columns": [
+        "Requirement",
+        "Shared mailbox (per Microsoft)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "One team address and calendar",
+            "Yes"
+          ]
+        },
+        {
+          "cells": [
+            "Members inside the organisation only",
+            "Yes"
+          ]
+        },
+        {
+          "cells": [
+            "More than 25 users",
+            "No — Microsoft suggests a Microsoft 365 group"
+          ]
+        },
+        {
+          "cells": [
+            "External members",
+            "No — Microsoft suggests a group"
+          ]
+        },
+        {
+          "cells": [
+            "Prevent members deleting shared-mailbox email messages",
+            "No"
+          ]
+        },
+        {
+          "cells": [
+            "Sign in directly as the mailbox",
+            "Not intended; block sign-in"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Ask an administrator to create the mailbox and add members.",
+      "Keep sign-in to the shared account blocked.",
+      "Stay within 25 users and internal members.",
+      "Restart Outlook to see the calendar; in the web, add the shared mailbox.",
+      "Test an entry from two members’ accounts."
+    ],
+    "faq": [
+      {
+        "q": "Can someone outside our company use the shared calendar?",
+        "a": "No. Microsoft says only people inside your organisation can use a shared mailbox."
+      },
+      {
+        "q": "How many people can share one?",
+        "a": "Microsoft says a maximum of 25 users."
+      }
+    ],
+    "sourcesHeading": "Microsoft pages used",
+    "sources": [
+      {
+        "label": "Microsoft: open and use a shared mailbox in Outlook",
+        "url": "https://support.microsoft.com/en-us/office/open-and-use-a-shared-mailbox-in-outlook-98b5a90d-4e38-415d-a030-f09a4cd28207"
+      },
+      {
+        "label": "Microsoft Learn: about shared mailboxes",
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes"
+      }
+    ],
+    "seeAlso": [
+      "a-calendar-that-is-yours-to-share",
+      "exchange-calendars-on-an-iphone",
+      "why-a-shared-calendar-does-not-appear"
+    ]
+  },
+  "outlook-work-hours-and-location": {
+    "updated": "2026-10-23",
+    "title": "Outlook work hours and location: set office and remote days",
+    "short": "Outlook work hours and location",
+    "description": "Set different work hours and an office or remote location for each day in new Outlook or Outlook on the web, and see how classic Outlook shows them.",
+    "lede": "Outlook’s work hours and location setting tells colleagues which days you are in the office and when you work. It can only be set in some clients and shows up approximately in others. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "commonBelief": "I can set this anywhere I use Outlook, and everyone sees exactly my hours.",
+    "sections": [
+      {
+        "heading": "Who can set it, and where",
+        "body": [
+          "Microsoft says recurring work-hours setup is for work or school accounts with a qualifying Microsoft 365 subscription. Its documented recurring-plan setup is in new Outlook for Windows or Outlook on the web; classic Outlook can display work hours and location. The page separately documents changing today’s location from Teams, so that daily override should not be confused with configuring the full recurring plan. Microsoft also notes that the feature is not yet available for classic Outlook for Windows with GCC High."
+        ]
+      },
+      {
+        "heading": "Set your weekly plan",
+        "body": [
+          "Go to Settings, Calendar, Work hours and location. Tick the days you work, choose hours and a location for each (remote, office, or a specific building if your organisation has set up a building directory), optionally tick Share office location details, and Save. Microsoft also offers a no-location choice if you prefer not to share.",
+          "For one-off changes in the documented Outlook calendar workflow, open Work plan, adjust the relevant days or location and select Set. Microsoft says you can clear a location by deselecting it. For a Teams daily override, use the profile-picture menu: Microsoft says that location applies for the remainder of the working day and is reflected in Outlook and Teams. Availability of controls depends on the client and organisation."
+        ]
+      },
+      {
+        "heading": "Who sees it",
+        "body": [
+          "Microsoft says others see which days you work remotely or in the office. Your work location appears in the Scheduling Assistant and on your profile card next to your availability, and the daily location card shows who else is going in."
+        ]
+      },
+      {
+        "heading": "How classic Outlook approximates it",
+        "body": [
+          "Microsoft says the legacy experience supports only one start and end time for the whole week, so it approximates: with 08:00–17:00 on some days and 10:00–19:00 on others, legacy shows 08:00–19:00. Colleagues on classic clients may therefore see a wider working window than your real hours. Microsoft adds that a change to the legacy working-hours time zone updates the modern one."
+        ]
+      },
+      {
+        "heading": "Worked example: a hybrid week",
+        "body": [
+          "A fictional consultant works Monday and Wednesday in Building 2 from 08:00 to 17:00, and Tuesday and Thursday remotely from 10:00 to 19:00; Friday off. In Outlook on the web they set each day and Save.",
+          "A colleague in classic Outlook sees their hours as 08:00–19:00 every working day, per Microsoft’s approximation, so the consultant adds a note in team chat that remote days start at 10:00. When the consultant goes in on one Thursday, they change just that day through Work plan.",
+          "Check: open a test meeting in the Scheduling Assistant and confirm your location shows for each day."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Where you can set and see it (per Microsoft)",
+      "columns": [
+        "Client",
+        "Set work hours and location",
+        "View"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "New Outlook for Windows",
+            "Yes (work/school, qualifying subscription)",
+            "Yes"
+          ]
+        },
+        {
+          "cells": [
+            "Outlook on the web",
+            "Yes",
+            "Yes"
+          ]
+        },
+        {
+          "cells": [
+            "Classic Outlook for Windows",
+            "No",
+            "Yes, hours approximated to one weekly range"
+          ]
+        },
+        {
+          "cells": [
+            "Teams",
+            "Full recurring-plan setup not established here",
+            "Today’s location can be changed from profile menu"
+          ]
+        },
+        {
+          "cells": [
+            "Outlook for Mac / mobile",
+            "Not documented as the recurring-plan setup route on this page",
+            "Check the current client; source has rollout qualifications"
+          ]
+        },
+        {
+          "cells": [
+            "Personal Outlook.com account",
+            "No",
+            "—"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Use new Outlook or Outlook on the web with a work or school account.",
+      "Set hours and location for each working day; Save.",
+      "Use Work plan for one-off changes.",
+      "Choose no location if you don’t want to share it.",
+      "Tell classic-Outlook colleagues if your hours vary by day."
+    ],
+    "faq": [
+      {
+        "q": "Why can’t I find Work hours and location in classic Outlook?",
+        "a": "Microsoft says you must set it in new Outlook or Outlook on the web; classic Outlook can only view it."
+      },
+      {
+        "q": "Why do colleagues see longer hours than I set?",
+        "a": "Microsoft says classic clients show a single weekly range spanning your earliest start and latest end."
+      }
+    ],
+    "sourcesHeading": "Microsoft Support page used",
+    "sources": [
+      {
+        "label": "Microsoft: set your work hours and location in Outlook",
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6"
+      }
+    ],
+    "seeAlso": [
+      "work-and-personal-without-two-apps",
+      "exchange-calendars-on-an-iphone",
+      "planning-a-week-in-ten-minutes"
+    ]
+  },
+  "outlook-scheduling-assistant-read-colleague-availability": {
+    "updated": "2026-10-23",
+    "title": "Reading a colleague’s availability in Outlook’s Scheduling Assistant",
+    "short": "Read the Scheduling Assistant",
+    "description": "What Outlook’s Scheduling Assistant and a directory-opened calendar actually show about colleagues, why colours differ by client, and when to ask IT.",
+    "lede": "The Scheduling Assistant shows when people look busy, but the detail you see comes from their sharing defaults and their own Show As choices. Reading it well avoids double-booking and false alarms. Arte Soft, the developer of Cloud Calendars, explains.",
+    "commonBelief": "The Scheduling Assistant shows everything on a colleague’s calendar.",
+    "sections": [
+      {
+        "heading": "What the grid is based on",
+        "body": [
+          "Microsoft says the Scheduling Assistant and Room Finder are available with Microsoft 365 or Exchange accounts. Add attendees and open Scheduling Assistant to see a row per person. Its documented desktop workflow also offers AutoPick to search for times under selected criteria; menus and automatic suggestions vary by client, so do not assume that exact command exists everywhere.",
+          "The visible detail depends on calendar permissions and organisational sharing settings. Microsoft’s classic Outlook on the web guidance describes My organization as the default detail level for people in the organisation or federated organisations in Scheduling Assistant. It also says that opening an unshared colleague’s calendar from the directory uses that default. Those are legacy web instructions; use the current sharing controls available to your account rather than expecting the same label in every client."
+        ]
+      },
+      {
+        "heading": "Busy is a choice, not a fact",
+        "body": [
+          "What looks busy depends on Show As. Microsoft says the organizer sets the initial availability for attendees, and each person can change the status on their own calendar afterwards; later changes apply only to their calendar.",
+          "So a colleague’s reminder marked Busy blocks the grid, while a real commitment marked Free doesn’t. When it matters, ask."
+        ]
+      },
+      {
+        "heading": "Colours depend on the client",
+        "body": [
+          "Microsoft’s Scheduling Assistant page describes busy in dark blue, tentative as a light blue hashed block, and outside working hours in light grey. For new Outlook for Windows, Microsoft says the Busy, Tentative and Working Elsewhere patterns adjust to your selected calendar colour. Read the pattern and legend in your own client rather than relying on a colour.",
+          "If colleagues have set work hours and location, Microsoft says their location appears in the Scheduling Assistant too."
+        ]
+      },
+      {
+        "heading": "When to ask IT",
+        "body": [
+          "Microsoft documents a classic Outlook/Exchange Online case in which “We’re checking everyone’s calendars” can result from missing FreeBusySupport registry entries after Office installation or reinstallation. That cause must be verified; the error alone does not prove it. The documented repair options are reinstalling Office or restoring the missing entries, with registry backup precautions. Ask IT to diagnose it. Other availability gaps can involve permissions or organisational sharing settings."
+        ]
+      },
+      {
+        "heading": "Worked example: picking a slot for four",
+        "body": [
+          "A fictional project lead invites three colleagues and opens the Scheduling Assistant. One row shows 14:00–15:00 busy, another tentative, the third free all afternoon, and AutoPick suggests 15:30.",
+          "Before sending, they open the third colleague’s calendar from the directory and see only busy blocks, consistent with a My organization default of availability only. They send the 15:30 invitation and treat replies, not the grid, as the confirmation.",
+          "Check: watch responses; if someone declines, return to the grid."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "What a free-looking slot can mean",
+      "columns": [
+        "Situation",
+        "What you see",
+        "Next step"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Colleague genuinely free",
+            "Free",
+            "Invite"
+          ]
+        },
+        {
+          "cells": [
+            "Commitment marked Free",
+            "Free",
+            "Ask or confirm through replies; a commitment may not be represented"
+          ]
+        },
+        {
+          "cells": [
+            "Reminder marked Busy",
+            "Busy",
+            "Ask if the slot is negotiable"
+          ]
+        },
+        {
+          "cells": [
+            "Low My organization default",
+            "Busy blocks without detail",
+            "Ask the colleague, or request sharing"
+          ]
+        },
+        {
+          "cells": [
+            "“We’re checking everyone’s calendars” in classic Outlook",
+            "No availability",
+            "Ask IT (Microsoft’s registry fix)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Add attendees and open Scheduling Assistant. In the documented desktop workflow, try AutoPick if available.",
+      "Read patterns and the legend in your own client.",
+      "Remember busy and free reflect people’s Show As choices.",
+      "Use directory-opened calendars knowing they show the My organization level.",
+      "Treat responses as confirmation; escalate classic-Outlook errors to IT."
+    ],
+    "faq": [
+      {
+        "q": "Why do I see only busy blocks for a colleague?",
+        "a": "Availability-only permission is one possible reason. Microsoft’s classic web guidance describes a My organization default that can provide busy blocks without details. Check the owner’s sharing settings and your organisation’s policy; an empty or unavailable grid can require different checks."
+      },
+      {
+        "q": "Why are the colours different from my colleague’s screen?",
+        "a": "Microsoft says new Outlook adjusts the availability patterns to your selected calendar colour."
+      }
+    ],
+    "sourcesHeading": "Microsoft pages used",
+    "sources": [
+      {
+        "label": "Microsoft: Scheduling Assistant and Room Finder",
+        "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+      },
+      {
+        "label": "Microsoft: share your calendar in Outlook on the web (My organization default)",
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      },
+      {
+        "label": "Microsoft: manage your availability in your Outlook calendar",
+        "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      },
+      {
+        "label": "Microsoft: set your work hours and location in Outlook",
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6"
+      },
+      {
+        "label": "Microsoft Learn: ‘We’re checking everyone’s calendars’ error",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "keeping-track-of-who-replied",
+      "calendar-event-or-room-reservation"
+    ]
+  }
+}

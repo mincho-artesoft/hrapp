@@ -1,0 +1,15 @@
+{
+  "locale": "sv",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Varje kalender du har — iCloud, Google, Microsoft — på ett ställe, med prognosen inbyggd i själva dagen. Sluta gissa hur eftermiddagen ser ut.",
+      "after": "Se valda iCloud- och Google-kalendrar på iPhone och iPad, med tillgänglig väderprognos bredvid dina planer. Premium lägger till anslutningar till Microsoft-kalendrar."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Dina kalendrar och prognosen, på ett ställe. Byggt för iPhone och iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- och Google-kalendrar, väder och widgetar på iPhone och iPad. Ladda ner gratis; Premium lägger till Microsoft-kalendrar och Teams."
+    }
+  ]
+}

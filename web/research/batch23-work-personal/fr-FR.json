@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendriers professionnels et personnels dans une app : gardez leurs propriétaires distincts",
+  "short": "Travail et vie privée, une app",
+  "description": "Consultez vos calendriers professionnels et personnels ensemble. Vérifiez droits, destinations et offres avant de connecter vos comptes.",
+  "lede": "Une vue d’ensemble aide à repérer les conflits sans perdre de vue à qui appartient chaque événement. Vérifiez les calendriers affichés et les connexions de comptes utilisées pour stocker leurs copies. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Afficher les calendriers professionnels et personnels dans une app fusionne aussi leurs autorisations de partage.",
+  "sections": [
+    {
+      "heading": "Une vue d’ensemble ne vaut pas un accès partagé",
+      "body": [
+        "Une app peut afficher plusieurs calendriers sélectionnés ensemble, chacun conservant son compte et ses autorisations. Le guide d’Apple sur les calendriers multiples explique comment choisir les calendriers affichés, leur attribuer des couleurs et sélectionner un calendrier par défaut. Ces choix d’affichage ne transfèrent pas la propriété des événements.",
+        "Avant de connecter un compte professionnel, vérifiez les exigences de votre organisation. Google indique que les administrateurs peuvent restreindre le partage des calendriers. Une vue personnelle pratique ne vous autorise pas à publier des informations professionnelles ni à contourner les restrictions du compte.",
+        "Les connexions Google et Microsoft de Cloud Calendars utilisent des copies de calendriers dans le stockage des calendriers de l’iPhone. Les sources de calendrier disponibles peuvent influer sur l’emplacement de ces copies. L’autorisation de connecter un compte professionnel doit donc tenir compte du trajet réel des données, pas seulement du nom du compte affiché."
+      ]
+    },
+    {
+      "heading": "Utilisez les couleurs et la visibilité pour organiser la vue",
+      "body": [
+        "Attribuez des couleurs distinctes aux calendriers professionnels et personnels, puis examinez une journée chargée avec les deux visibles. Pour restreindre la vue, masquez un calendrier plutôt que de supprimer ses événements. Le guide d’Apple sur les doublons explique comment afficher et masquer les calendriers à l’aide de cases à cocher. Avant d’accepter un nouvel engagement, réaffichez les calendriers utiles à cette décision et comparez la semaine avec tous ces calendriers visibles. Une vue filtrée vide ne prouve pas que le créneau est libre.",
+        "Masquer un calendrier ne modifie pas les droits d’accès des autres personnes. Dans Cloud Calendars, la sélection des calendriers intervient aussi dans la synchronisation Google et la programmation des notifications : ne supposez donc pas que décocher un calendrier ne change que l’affichage. Vérifiez les changements importants auprès du service concerné et examinez séparément les notifications si vous souhaitez une soirée tranquille. Gardez une app professionnelle approuvée disponible si votre organisation l’exige."
+      ]
+    },
+    {
+      "heading": "Vérifiez la destination avant d’enregistrer",
+      "body": [
+        "Un calendrier par défaut est un point de départ utile, pas la garantie que chaque rendez-vous doit y être enregistré. Pour un rendez-vous personnel, vérifiez le calendrier sélectionné avant d’enregistrer. Pour une réunion professionnelle, utilisez le calendrier de travail et la procédure d’invitation de votre organisation.",
+        "Ne déplacez pas et ne copiez pas une invitation simplement pour la faire apparaître dans votre vue. Microsoft distingue les événements que vous avez créés des réunions organisées par quelqu’un d’autre : modifier votre propre copie affichée n’est pas une méthode fiable pour mettre à jour l’organisateur ou les participants. Conservez l’invitation d’origine et demandez à l’organisateur tout changement d’horaire."
+      ]
+    },
+    {
+      "heading": "Ce qu’ajoutent les offres Cloud Calendars",
+      "body": [
+        "Cloud Calendars propose des vues de calendrier sur iPhone et iPad. L’offre Base comprend la synchronisation Google Calendar et la vue de plusieurs calendriers. Advanced ajoute la suppression des publicités ; Premium ajoute la prise en charge de Microsoft Calendar et de Teams. Les prix locaux en vigueur figurent dans l’app et l’App Store.",
+        "Advanced n’est pas une autorisation payante de gérer tous les comptes. Un abonnement ne rend pas modifiable un calendrier en lecture seule et ne remplace pas les règles de votre employeur. Les calendriers locaux peuvent être utilisés sans compte ; les connexions aux services et le partage ont leurs propres exigences de connexion."
+      ]
+    },
+    {
+      "heading": "Vérifiez depuis l’autre côté un créneau occupé qui préserve votre vie privée",
+      "body": [
+        "Supposons qu’un rendez-vous personnel doive empêcher vos collègues de réserver ce créneau, sans leur en révéler le titre. Le voir à côté du travail sur votre téléphone ne constitue que votre vue d’ensemble. Vérifiez d’abord si votre compte professionnel contient une entrée de disponibilité, puis ce qu’un collègue concerné peut réellement voir.",
+        "Si votre organisation autorise la création manuelle d’un créneau d’indisponibilité professionnel, vérifiez sa destination, son titre, ses notes, son lieu, ses participants et son état de disponibilité avant d’enregistrer. N’y copiez pas les détails privés du rendez-vous. Il s’agit d’une organisation autorisée que vous créez et vérifiez, pas d’une fonction de masquage automatique de Cloud Calendars. Maintenez la cohérence lors des changements ultérieurs sans transformer la seconde entrée en nouvelle invitation."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Vérifiez que votre employeur autorise la connexion du compte.",
+    "Choisissez des couleurs distinctes et affichez les calendriers nécessaires à votre vue d’ensemble.",
+    "Vérifiez le calendrier de destination lors de la création d’un événement.",
+    "Masquez temporairement un calendrier pour restreindre la vue ; ne supprimez pas d’événements pour la ranger.",
+    "Vérifiez les droits de partage et les notifications séparément de la visibilité des calendriers."
+  ],
+  "faq": [
+    {
+      "q": "Mon employeur verra-t-il mes événements personnels simplement parce que les deux calendriers sont dans la même app ?",
+      "a": "Afficher les calendriers ensemble n’accorde pas en soi de droit de partage. Vérifiez le compte auquel appartient chaque événement, ses réglages de partage et les éventuelles règles de gestion des appareils de l’employeur. N’enregistrez pas accidentellement un rendez-vous privé dans un calendrier professionnel."
+    },
+    {
+      "q": "Faut-il Advanced pour voir ensemble mes calendriers Google et personnels ?",
+      "a": "La synchronisation Google Calendar et la vue de plusieurs calendriers font partie de Base. Advanced supprime les publicités. Microsoft Calendar est pris en charge avec Premium ; les autorisations des comptes continuent de s’appliquer."
+    },
+    {
+      "q": "Cloud Calendars remplace-t-il automatiquement les détails personnels par un créneau occupé au travail ?",
+      "a": "Ne comptez pas sur cela. Afficher les calendriers ensemble et créer des copies liées aux fournisseurs ne revient pas à appliquer une règle explicite de masquage des détails qui copie la disponibilité dans un autre compte. Vérifiez l’organisation autorisée par votre employeur."
+    }
+  ],
+  "sourcesHeading": "Sources et lectures complémentaires",
+  "sources": [
+    {
+      "label": "Apple : configurer plusieurs calendriers sur iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple : si des événements sont en double dans votre calendrier iCloud",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Google : choisir ce que les autres peuvent faire avec votre calendrier",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft : modifier un rendez-vous, une réunion ou un événement dans Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "who-can-see-what-in-google-calendar"
+  ]
+}

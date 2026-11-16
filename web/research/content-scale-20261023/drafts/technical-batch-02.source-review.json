@@ -1,0 +1,186 @@
+{
+  "source": "https://www.rfc-editor.org/rfc/rfc5545.txt",
+  "textSha256": "c256f809479d98aa23d71bbd1658b3800ea9f13f41ca56e59c8d2de1b31cbfcb",
+  "sections": [
+    {
+      "section": "3.8.7.1",
+      "heading": "3.8.7.1.  Date-Time Created",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.1",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "8c3d75be3ab7b4c400edba9cf662370812fc66df9a7e399d03bb458acdcc5011",
+      "bodyCharacters": 1229
+    },
+    {
+      "section": "3.8.7.2",
+      "heading": "3.8.7.2.  Date-Time Stamp",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.2",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "da6ab56e125d31e4aa95c3ee1e690be76f667e9809a8aadd85877749aff239da",
+      "bodyCharacters": 2058
+    },
+    {
+      "section": "3.8.7.3",
+      "heading": "3.8.7.3.  Last Modified",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.3",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "01803a0958622aaa394aacdb9cc04a073b8c3a426160371d22d176fb22a95d21",
+      "bodyCharacters": 971
+    },
+    {
+      "section": "3.8.7.4",
+      "heading": "3.8.7.4.  Sequence Number",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "bbb84db466106670090231893fc1f6fb9132649d65592c26cdd3e64d128a0c2d",
+      "bodyCharacters": 2097
+    },
+    {
+      "section": "3.3.6",
+      "heading": "3.3.6.  Duration",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.6",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "f94266d47622baa6f0d8bc990f66ae2b931676a1b775ba58854f406adecfa10e",
+      "bodyCharacters": 2362
+    },
+    {
+      "section": "3.8.2.5",
+      "heading": "3.8.2.5.  Duration",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "2f4c6c2957885e420eda842a6263669b10706912e80517d623e7147caaafc0ef",
+      "bodyCharacters": 1702
+    },
+    {
+      "section": "3.6.1",
+      "heading": "3.6.1.  Event Component",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "63fb772fcdea22a46f4b8cfd9edb323853704fd38932f4c042f8d7318aa234b5",
+      "bodyCharacters": 6829
+    },
+    {
+      "section": "3.8.6.3",
+      "heading": "3.8.6.3.  Trigger",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "d5dab5c041d401913f30ddc26dac8f218eff907e76b117aecdb1b3d5b1479eb0",
+      "bodyCharacters": 5171
+    },
+    {
+      "section": "3.6.6",
+      "heading": "3.6.6.  Alarm Component",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "6e9ad1a525b08e71b1ceaf8d8b8a143c8e63ddfce4d3ff11d4a09561c1b4d07b",
+      "bodyCharacters": 11018
+    },
+    {
+      "section": "3.8.6.2",
+      "heading": "3.8.6.2.  Repeat Count",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.2",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "105c39782428b35fdf6ce8f1ce4115a1c69f7c599f9716f1603375dbf2448063",
+      "bodyCharacters": 1062
+    },
+    {
+      "section": "3.8.2.7",
+      "heading": "3.8.2.7.  Time Transparency",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "741b876ae6d51944be3bd119b2115c548cfb711e10831070bd2287e00754fd65",
+      "bodyCharacters": 1766
+    },
+    {
+      "section": "3.8.1.3",
+      "heading": "3.8.1.3.  Classification",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.1.3",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "25875e109cc00070a550e10282b7999d14bab791465c3a76016925f0c0eac781",
+      "bodyCharacters": 2184
+    },
+    {
+      "section": "3.6.4",
+      "heading": "3.6.4.  Free/Busy Component",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.4",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "76a095d40c9f8a1c1bfb6a581fd5a1eb633dba13221dd90fd2f4edbe8c2957c0",
+      "bodyCharacters": 6171
+    },
+    {
+      "section": "3.8.2.6",
+      "heading": "3.8.2.6.  Free/Busy Time",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.6",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "12f9839ee9eaa44e9df5f69e66c7b0e04d9fffae3c73a019880bf9cf7a351a25",
+      "bodyCharacters": 2188
+    },
+    {
+      "section": "3.2.9",
+      "heading": "3.2.9.  Free/Busy Time Type",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.2.9",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "b59e337631503c1489f2958f907863c0ca428ef3f643da262cfec60b45e18d0a",
+      "bodyCharacters": 1637
+    },
+    {
+      "section": "3.3.9",
+      "heading": "3.3.9.  Period of Time",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.9",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "360dd2db45946ae6dd20627f2d96c291de12b8bc33c1fa668f734a1395491617",
+      "bodyCharacters": 2197
+    },
+    {
+      "section": "3.1",
+      "heading": "3.1.  Content Lines",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "0e2b1041358c6c40dc5225a7cd35885bf3dd55db9616b2a1dc18dd8af2168840",
+      "bodyCharacters": 4388
+    },
+    {
+      "section": "3.1.1",
+      "heading": "3.1.1.  List and Field Separators",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.1",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "a3d9e87f6f993d4fe06811cce6e6ec0c01a05a2fbe3ea3f550960b33e287ace8",
+      "bodyCharacters": 1368
+    },
+    {
+      "section": "3.1.4",
+      "heading": "3.1.4.  Character Set",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.4",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "a329dddd1d82fbeb5c69169242b898094a8050e8190fa893d52d2821f7fd297c",
+      "bodyCharacters": 306
+    },
+    {
+      "section": "3.3.11",
+      "heading": "3.3.11.  Text",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.11",
+      "retrievedAt": "2026-10-23",
+      "reviewed": "Relevant whole section body read; large component grammar and examples inspected as needed.",
+      "bodySha256": "abbc4df07918a7ae25665fe7cf028fda302ee27317edaaa06193d1470e060d76",
+      "bodyCharacters": 2548
+    }
+  ]
+}

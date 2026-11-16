@@ -1,0 +1,1902 @@
+{
+  "pitman-2-2-3-shift-schedule-calendar-setup": {
+    "updated": "2026-10-23",
+    "title": "Pitman 2-2-3 Shift Schedule Calendar Setup: How to Build the 14-Day Cycle",
+    "short": "Pitman 2-2-3 Shift Calendar",
+    "description": "Set up a 14-day Pitman 2-2-3 shift schedule in Apple, Google, or iCalendar using two alternating biweekly rules with an illustrative 4-team matrix.",
+    "lede": "A Pitman 2-2-3 schedule repeats every 14 days (2 on, 2 off, 3 on, 2 off, 2 on, 3 off), which looks uneven if you try to fit it into a single weekly rule. Because Week 1 and Week 2 are exact day-of-week inversions of each other, you can build the entire schedule in any standard calendar using just two biweekly recurring series.",
+    "commonBelief": "Standard calendar apps cannot repeat a 2-on, 2-off, 3-on Pitman pattern without typing every shift by hand.",
+    "sections": [
+      {
+        "heading": "Why the 14-day Pitman 2-2-3 cycle splits into two biweekly rules",
+        "body": [
+          "The Pitman schedule (often called 2-2-3 or 2-3-2) is a 14-day cycle used to staff 24/7 operations across four crews working 12-hour shifts. Across 14 calendar days, a crew works 2 days, rests 2 days, works 3 days (Friday through Sunday), rests 2 days, works 2 days, and rests 3 days (Friday through Sunday). That sequence contains four work blocks of unequal length (2, 3, 2), so a simple 'repeat every N days' rule cannot reproduce it.",
+          "When you split the 14 days into two 7-day calendar weeks starting on Monday, the symmetry becomes clear. In Week 1 ( the 60-hour long week), you work Monday, Tuesday, Friday, Saturday, and Sunday (5 shifts). In Week 2 (the 24-hour short week), you work only Wednesday and Thursday (2 shifts). Every odd week uses the exact same Monday/Tuesday/Friday/Saturday/Sunday pattern, and every even week uses the exact same Wednesday/Thursday pattern.",
+          "In iCalendar (RFC 5545 Section 3.3.10), any two-week day-of-week pattern is expressed with `FREQ=WEEKLY;INTERVAL=2` and a `BYDAY` list. Instead of creating 7 separate recurring events for the 7 shifts in the 14-day cycle, you only need two recurring series anchored to consecutive weeks: Series A for Week 1 (`BYDAY=MO,TU,FR,SA,SU`) and Series B for Week 2 (`BYDAY=WE,TH`)."
+        ]
+      },
+      {
+        "heading": "Illustrative 14-day four-team Pitman matrix and hour arithmetic",
+        "body": [
+          "Consider an illustrative four-crew schedule (Teams A, B, C, and D) beginning Monday, November 2, 2026, with 12-hour Day Shifts (`07:00–19:00`) and 12-hour Night Shifts (`19:00–07:00`). This example is purely illustrative to show the calendar arithmetic and does not constitute labor-law or medical scheduling advice.",
+          "In this illustrative cycle, Team A (Day Shift) and Team C (Night Shift) start on the 5-shift Week 1 pattern: they work Monday Nov 2, Tuesday Nov 3, Friday Nov 6, Saturday Nov 7, and Sunday Nov 8 (`5 shifts x 12 hours = 60 hours`), then work Wednesday Nov 11 and Thursday Nov 12 in Week 2 (`2 shifts x 12 hours = 24 hours`). Meanwhile, Team B (Day Shift) and Team D (Night Shift) start on the opposite week: they work Wednesday Nov 4 and Thursday Nov 5 in Week 1 (`24 hours`), then Monday Nov 9, Tuesday Nov 10, Friday Nov 13, Saturday Nov 14, and Sunday Nov 15 in Week 2 (`60 hours`).",
+          "Across the full 14-day period, each crew works exactly 7 shifts (`5 + 2 = 7`) totaling 84 hours, which averages 42.0 scheduled hours per 7-day week (`84 / 2 = 42`). Every crew receives a full 3-day Friday–Saturday–Sunday weekend off every other week, and no crew is scheduled for more than 3 consecutive 12-hour shifts inside the base pattern."
+        ]
+      },
+      {
+        "heading": "How to enter the two biweekly series in Google Calendar and Apple Calendar",
+        "body": [
+          "To build a fixed Pitman schedule in Google Calendar or Apple Calendar (iPhone, iPad, or Mac), create a dedicated subcalendar named `Shifts` so your work blocks can be toggled or shared separately from personal appointments. Next, create Event Series 1 on the Monday of your 5-shift week (in our illustrative example, Monday, November 2, 2026 from `07:00` to `19:00`).",
+          "Open the custom recurrence settings, choose `Repeat every 2 weeks`, and select `Monday`, `Tuesday`, `Friday`, `Saturday`, and `Sunday`. In RFC 5545 format, this generates `RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=MO,TU,FR,SA,SU`. Save that first series and verify that Week 2 is completely empty before adding the second rule.",
+          "Now create Event Series 2 on the Wednesday of Week 2 (in our illustrative example, Wednesday, November 11, 2026 from `07:00` to `19:00`). Set its custom recurrence to `Repeat every 2 weeks` on `Wednesday` and `Thursday` (`RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=WE,TH`). Together, those two series populate your entire 14-day Pitman calendar indefinitely—within Google Calendar's documented 730-occurrence cap per recurring series."
+        ]
+      },
+      {
+        "heading": "Rotating day-to-night Pitman variants and dedicated shift tools",
+        "body": [
+          "Some workplaces run a rotating Pitman (often called Panama 2-2-3) where a crew works one 14-day Pitman cycle on Days (`07:00–19:00`) and then flips to one 14-day Pitman cycle on Nights (`19:00–07:00`), making a 28-day master cycle. In a standard calendar, you represent that 28-day day/night rotation by changing the interval from 2 weeks to 4 weeks (`FREQ=WEEKLY;INTERVAL=4`): two 4-week rules for the Day weeks (`07:00–19:00`) and two 4-week rules for the Night weeks (`19:00–07:00`).",
+          "If your workplace rotates every 6 or 8 weeks rather than every 2 or 4 weeks, set the `UNTIL` end date of your two biweekly rules to the last day of that rotation block and create a new pair of rules for the next shift time. Dedicated shift apps such as Supershift also let you define a sequential 14-day rotation (`2D, 2O, 3D, 2O, 2D, 3O`) for up to 2 years per rotation entry and export the resulting events into an iOS or Google calendar."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative 14-Day Pitman 2-2-3 Cycle & Two-Rule Calendar Mapping (Nov 2–15, 2026)",
+      "columns": [
+        "Cycle Window",
+        "Team A (Days 07:00–19:00)",
+        "Team B (Days 07:00–19:00)",
+        "Team C (Nights 19:00–07:00)",
+        "Team D (Nights 19:00–07:00)",
+        "Team A Calendar Rule (`FREQ=WEEKLY;INTERVAL=2`)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Week 1: Mon Nov 2 – Tue Nov 3 (2 days)",
+            "ON (24h)",
+            "OFF",
+            "ON (24h)",
+            "OFF",
+            "Series 1 (`BYDAY=MO,TU,FR,SA,SU`, anchored Mon Nov 2)"
+          ]
+        },
+        {
+          "cells": [
+            "Week 1: Wed Nov 4 – Thu Nov 5 (2 days)",
+            "OFF",
+            "ON (24h)",
+            "OFF",
+            "ON (24h)",
+            "Off duty (covered by Team B / D)"
+          ]
+        },
+        {
+          "cells": [
+            "Week 1: Fri Nov 6 – Sun Nov 8 (3 days)",
+            "ON (36h)",
+            "OFF (3-day weekend)",
+            "ON (36h)",
+            "OFF (3-day weekend)",
+            "Series 1 (`BYDAY=MO,TU,FR,SA,SU`, Week 1 total = 60h)"
+          ]
+        },
+        {
+          "cells": [
+            "Week 2: Mon Nov 9 – Tue Nov 10 (2 days)",
+            "OFF",
+            "ON (24h)",
+            "OFF",
+            "ON (24h)",
+            "Off duty (covered by Team B / D)"
+          ]
+        },
+        {
+          "cells": [
+            "Week 2: Wed Nov 11 – Thu Nov 12 (2 days)",
+            "ON (24h)",
+            "OFF",
+            "ON (24h)",
+            "OFF",
+            "Series 2 (`BYDAY=WE,TH`, anchored Wed Nov 11, Week 2 total = 24h)"
+          ]
+        },
+        {
+          "cells": [
+            "Week 2: Fri Nov 13 – Sun Nov 15 (3 days)",
+            "OFF (3-day weekend)",
+            "ON (36h)",
+            "OFF (3-day weekend)",
+            "ON (36h)",
+            "14-day total: 7 shifts = 84h (42.0h/week average)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Verify whether your calendar week starts on Sunday or Monday before checking multi-day `BYDAY` boxes; if your calendar grid starts on Sunday, a Friday–Sunday 3-day block spans the end of one visual row and the start of the next.",
+      "Create Series 1 on the Monday of your 5-shift week (`Repeat every 2 weeks` on Mon, Tue, Fri, Sat, Sun) and Series 2 on the Wednesday of your 2-shift week (`Repeat every 2 weeks` on Wed, Thu).",
+      "For night-shift Pitman crews (`19:00` to `07:00`), set each event's start date on the evening the shift begins and its end date on the following morning at `07:00` so the `BYDAY` rule still anchors to the correct start weekday.",
+      "When swapping or dropping a single Pitman shift, always choose `This event only` so you add an single-date exception (`EXDATE` or `RECURRENCE-ID`) without shifting every future biweekly week."
+    ],
+    "faq": [
+      {
+        "q": "Why does my Sunday Pitman shift appear in the wrong week when I set `Repeat every 2 weeks`?",
+        "a": "In iCalendar (RFC 5545 Section 3.3.10), `WKST` (the week start day) determines which 7-day bucket Sunday belongs to when `INTERVAL=2` is used. If your calendar's week starts on Sunday, checking Sunday alongside Monday, Tuesday, Friday, and Saturday places Sunday at the beginning of Week 1 rather than the end of Week 1. Setting your calendar's week start to Monday—or anchoring Sunday properly within the active week row—keeps the Friday–Saturday–Sunday block together."
+      },
+      {
+        "q": "How many total shifts will Google Calendar generate for a Pitman series?",
+        "a": "Google Calendar enforces a maximum of 730 occurrences per recurring series. Because Series 1 has 5 shifts every 2 weeks, 730 occurrences cover 146 two-week cycles (about 5.6 years); Series 2 has 2 shifts every 2 weeks, covering 365 cycles (about 14 years)."
+      },
+      {
+        "q": "How do I switch from a fixed Pitman schedule to one that rotates between days and nights every 2 weeks?",
+        "a": "Change both series from `Repeat every 2 weeks` (`INTERVAL=2`) to `Repeat every 4 weeks` (`INTERVAL=4`), and add a second pair of 4-week series offset by 14 days with your night-shift start and end times."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR & Section 3.8.5.3 RRULE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Apple Support — Set up multiple calendars on iPhone",
+        "url": "https://support.apple.com/guide/iphone/iph69525c028/ios"
+      },
+      {
+        "label": "Supershift Help — Rotations and Calendar Export",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "recurring-events-without-the-mess",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "dupont-28-day-rotating-shift-calendar-cycle": {
+    "updated": "2026-10-23",
+    "title": "DuPont 28-Day Rotating Shift Schedule: Calendar Setup and 4-Week Cycle Math",
+    "short": "DuPont 28-Day Shift Calendar",
+    "description": "Map the 28-day DuPont rotating 12-hour shift schedule—including its 7-day stretch off—into Apple, Google, or iCalendar using 4-week recurring rules.",
+    "lede": "The DuPont 12-hour rotating shift schedule runs on a 28-day (4-week) cycle across four crews, combining four-shift and three-shift blocks of days and nights to create a full 7 consecutive days off once every four weeks. Because none of its four weeks have the same day/night pattern, modeling a DuPont roster in a standard calendar requires a 28-day (or 4-week) recurrence horizon rather than a weekly or biweekly rule.",
+    "commonBelief": "You can enter a DuPont shift schedule using the same 2-week alternating rule as a 2-2-3 Pitman schedule.",
+    "sections": [
+      {
+        "heading": "Anatomy of the 28-day DuPont rotation across four crews",
+        "body": [
+          "The classic DuPont schedule divides 28 calendar days (672 total hours) among four crews working 12-hour Day (`07:00–19:00`) and Night (`19:00–07:00`) shifts. Every crew steps through the exact same eight-segment sequence across 28 days: 4 Night shifts, 3 days off, 3 Day shifts, 1 day off, 3 Night shifts, 3 days off, 4 Day shifts, and finally 7 consecutive days off (`4 + 3 + 3 + 1 + 3 + 3 + 4 + 7 = 28 days`).",
+          "Summing the active segments gives `4 + 3 + 3 + 4 = 14 shifts` of 12 hours (`168 total hours`) per 28-day cycle, or an average of 42.0 scheduled hours per calendar week. However, the hours are distributed unevenly across the four individual Monday–Sunday weeks: depending on where the cycle starts, a single calendar week can contain 36, 48, or 0 scheduled hours (during the 7-day off block) or up to 60–72 hours across adjacent work stretches.",
+          "Each of the four crews (Crews A, B, C, and D) starts the 28-day table offset by 7 days (one week) from the next crew. At any given hour of any day in the 28-day cycle, exactly one crew is on the 12-hour Day shift, one crew is on the 12-hour Night shift, and two crews are off duty."
+        ]
+      },
+      {
+        "heading": "Illustrative 28-day DuPont calendar table (Days 1–28)",
+        "body": [
+          "To see how the four weeks align on a real calendar grid, consider an illustrative 28-day cycle for Crew A starting Friday, November 6, 2026, with Day Shifts from `07:00–19:00` and Night Shifts from `19:00–07:00`. This schedule is an illustrative calendar arithmetic example only and does not provide labor-law or fatigue-management advice.",
+          "In Week 1 (Fri Nov 6 – Thu Nov 12), Crew A works 4 Nights (Fri Nov 6 – Mon Nov 9, `48 hours`) and rests 3 days (Tue Nov 10 – Thu Nov 12). In Week 2 (Fri Nov 13 – Thu Nov 19), Crew A works 3 Days (Fri Nov 13 – Sun Nov 15, `36 hours`), rests 1 day (Mon Nov 16), and works 3 Nights (Tue Nov 17 – Thu Nov 19, `36 hours`, making `72 hours` inside that 7-day window). In Week 3 (Fri Nov 20 – Thu Nov 26), Crew A rests 3 days (Fri Nov 20 – Sun Nov 22) and works 4 Days (Mon Nov 23 – Thu Nov 26, `48 hours`). In Week 4 (Fri Nov 27 – Thu Dec 3), Crew A has all 7 consecutive days off (`0 hours`), returning to start the next 28-day cycle on Friday, December 4, 2026.",
+          "Notice the critical 24-hour turnaround on Monday, November 16 in Week 2: Crew A finishes its third Day shift on Sunday, November 15 at `19:00`, has Monday off, and starts its first Night shift on Tuesday, November 17 at `19:00` (exactly 48 hours from Sunday evening to Tuesday evening, spanning one full calendar date off)."
+        ]
+      },
+      {
+        "heading": "Two ways to build the 28-day cycle in Google, Apple, or iCalendar",
+        "body": [
+          "In standard calendar clients that support RFC 5545 recurrence rules, you have two clean ways to build a DuPont rotation without entering every shift manually for the rest of the year. Both methods rely on the fact that every shift in a DuPont schedule repeats on the exact same weekday every 28 days (`4 weeks`).",
+          "Method 1 uses four 4-week weekly rules (`RRULE:FREQ=WEEKLY;INTERVAL=4;BYDAY=...`)—one for each of the four work stretches in the 28-day cycle. Using our illustrative Crew A dates: Rule 1 is a Night Shift (`19:00–07:00`) starting Fri Nov 6 repeating every 4 weeks on `FR,SA,SU,MO` (note: if Friday–Monday spans your calendar's week-start boundary, make Fri–Sun one 4-week rule and Mon a second 4-week rule, or set week start so the four days stay in the same recurrence week). Rule 2 is a Day Shift (`07:00–19:00`) starting Fri Nov 13 repeating every 4 weeks on `FR,SA,SU`. Rule 3 is a Night Shift (`19:00–07:00`) starting Tue Nov 17 repeating every 4 weeks on `TU,WE,TH`. Rule 4 is a Day Shift (`07:00–19:00`) starting Mon Nov 23 repeating every 4 weeks on `MO,TU,WE,TH`.",
+          "Method 2 avoids `WKST` week-boundary edge cases altogether by creating 14 events in your first 28-day block (7 Day-shift dates and 7 Night-shift dates) and setting each one to `Repeat every 28 days` (`RRULE:FREQ=DAILY;INTERVAL=28`) or `Repeat every 4 weeks` on its single weekday. Because `INTERVAL=28` in a daily rule counts exact calendar days regardless of whether your week starts on Sunday or Monday, a Friday–Monday 4-night block never splits across rows unexpectedly."
+        ]
+      },
+      {
+        "heading": "Color-coding Day vs Night blocks and marking the 7-day stretch off",
+        "body": [
+          "Because the DuPont cycle alternates between 12-hour Days (`07:00–19:00`) and 12-hour Nights (`19:00–07:00`) twice within every 28 days, scanning a month grid is much easier when Day shifts and Night shifts have distinct visual labels (`Day Shift [07:00–19:00]` vs `Night Shift [19:00–07:00]`) or sit on two separate subcalendars (`DuPont Days` in amber and `DuPont Nights` in indigo).",
+          "Many DuPont shift workers also add a fifth recurring all-day banner event (`RRULE:FREQ=WEEKLY;INTERVAL=4`, marked `Show as: Free` / `TRANSP:TRANSPARENT`) spanning the 7-day off block in Week 4. Marking the 7-day break on the calendar prevents coworkers or family members from mistaking the empty week for an unentered roster while leaving all seven days open for personal scheduling."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative 28-Day Four-Crew DuPont Rotation Matrix (Starting Fri Nov 6, 2026)",
+      "columns": [
+        "Cycle Segment (Days 1–28)",
+        "Illustrative Dates (2026)",
+        "Crew A",
+        "Crew B (Offset +7d)",
+        "Crew C (Offset +14d)",
+        "Crew D (Offset +21d)",
+        "Crew A Hours & 4-Week Rule"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Days 1–4 (4 days)",
+            "Fri Nov 6 – Mon Nov 9",
+            "4 Nights (19:00–07:00)",
+            "7 Days OFF (Days 1–4 of 7)",
+            "3 Off (Fri–Sun) + Day 1 of 4D (Mon)",
+            "3 Days (Fri–Sun) + 1 Off (Mon)",
+            "48h Nights (`INTERVAL=4` wks)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 5–7 (3 days)",
+            "Tue Nov 10 – Thu Nov 12",
+            "3 Days OFF",
+            "7 Days OFF (Days 5–7 of 7)",
+            "Days 2–4 of 4 Days (07:00–19:00)",
+            "3 Nights (19:00–07:00)",
+            "0h (76h recovery before Fri 07:00)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 8–10 (3 days)",
+            "Fri Nov 13 – Sun Nov 15",
+            "3 Days (07:00–19:00)",
+            "4 Nights (Fri–Sun, Days 1–3)",
+            "7 Days OFF (Days 1–3 of 7)",
+            "3 Days OFF",
+            "36h Days (`BYDAY=FR,SA,SU;INTERVAL=4`)"
+          ]
+        },
+        {
+          "cells": [
+            "Day 11 (1 day)",
+            "Mon Nov 16",
+            "1 Day OFF (Turnaround)",
+            "Night 4 of 4 (Mon)",
+            "7 Days OFF (Day 4 of 7)",
+            "Day 1 of 4 Days (Mon)",
+            "0h (48h gap: Sun 19:00 to Tue 19:00)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 12–14 (3 days)",
+            "Tue Nov 17 – Thu Nov 19",
+            "3 Nights (19:00–07:00)",
+            "3 Days OFF",
+            "7 Days OFF (Days 5–7 of 7)",
+            "Days 2–4 of 4 Days",
+            "36h Nights (`BYDAY=TU,WE,TH;INTERVAL=4`)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 15–17 (3 days)",
+            "Fri Nov 20 – Sun Nov 22",
+            "3 Days OFF",
+            "3 Days (07:00–19:00)",
+            "4 Nights (Fri–Sun, Days 1–3)",
+            "7 Days OFF (Days 1–3 of 7)",
+            "0h (84h recovery: Fri 07:00 to Mon 07:00)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 18–21 (4 days)",
+            "Mon Nov 23 – Thu Nov 26",
+            "4 Days (07:00–19:00)",
+            "1 Off (Mon) + 3 Nights (Tue–Thu)",
+            "Night 4 (Mon) + 3 Off (Tue–Thu)",
+            "7 Days OFF (Days 4–7 of 7)",
+            "48h Days (`BYDAY=MO,TU,WE,TH;INTERVAL=4`)"
+          ]
+        },
+        {
+          "cells": [
+            "Days 22–28 (7 days)",
+            "Fri Nov 27 – Thu Dec 3",
+            "7 Consecutive Days OFF",
+            "3 Off (Fri–Sun) + 4 Days (Mon–Thu)",
+            "3 Days (Fri–Sun) + 1 Off + 3 Nights",
+            "4 Nights (Fri–Mon) + 3 Off (Tue–Thu)",
+            "0h (28-day total: 14 shifts = 168h, 42h/wk avg)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Audit your 28-day block before saving: count exactly 7 Day shifts (`84 hours`), 7 Night shifts (`84 hours`), and 14 off days (`168 total work hours` across 28 days).",
+      "Watch out for the 4-Night block (`Fri–Mon`) when using a single `FREQ=WEEKLY;INTERVAL=4;BYDAY=FR,SA,SU,MO` rule: if your calendar starts its week on Monday, Monday Nov 9 sits in the next week row, so split Fri–Sun and Mon into separate 4-week rules.",
+      "remember that your fourth Night shift on Monday evening (`19:00 Mon` to `07:00 Tue`) extends into Tuesday morning for 7 hours—your first full waking morning off is Wednesday.",
+      "Add a transparent (`Free`) 7-day all-day event every 4 weeks for the 7-day stretch off so long-weekend and travel planning is immediately visible in Month and Year views."
+    ],
+    "faq": [
+      {
+        "q": "Why does the first day of my 7-day DuPont break still show hours in the morning if it follows a Night block?",
+        "a": "In the standard DuPont order (`4N-3O-3D-1O-3N-3O-4D-7O`), the 7-day break follows four Day shifts (`07:00–19:00`), meaning you finish at `19:00` on Day 21 and get seven complete midnight-to-midnight dates off (Days 22–28). If your plant runs the reverse DuPont order where the 7-day break follows four Night shifts, the fourth Night shift ends at `07:00` on the morning of Day 22."
+      },
+      {
+        "q": "Why did my Monday night shift jump 3 weeks ahead when I checked `FR, SA, SU, MO` on a 4-week rule?",
+        "a": "When `INTERVAL=4` is combined with multiple `BYDAY` values in a calendar whose week starts on Monday (`WKST=MO`), the calendar applies `MO` to the Monday of the anchor week (4 days before Friday) rather than the Monday after Sunday. Creating a separate `Repeat every 4 weeks on Monday` rule on the actual Monday date avoids that jump."
+      },
+      {
+        "q": "Can I enter a 28-day DuPont pattern in a dedicated shift app and sync it to Apple or Google Calendar?",
+        "a": "Yes. In Supershift, you can define the 28-day sequence in the Rotation feature (which supports up to 2 years per entry) and enable Calendar Export to push those shifts to an iOS/iCloud or Google subcalendar from a single device."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR & Section 3.8.5.3 RRULE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Supershift Help — Rotations and Calendar Export",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "label": "Month View on a Bigger Screen"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "label": "The Year in One Screen"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "month-view-on-a-bigger-screen",
+      "the-year-in-one-screen"
+    ]
+  },
+  "firefighter-24-48-kelly-day-calendar-pattern": {
+    "updated": "2026-10-23",
+    "title": "24/48 Shift Calendar with Kelly Days: How to Schedule a 3-Platoon Rotation",
+    "short": "24/48 Shift & Kelly Day Calendar",
+    "description": "Set up a 24 hours on, 48 hours off three-platoon shift calendar (`INTERVAL=3`) and remove recurring Kelly Days without breaking your future rotation.",
+    "lede": "A 24/48 three-platoon schedule (24 hours on duty followed by 48 hours off duty) repeats every 3 calendar days, meaning your shift moves two weekdays later every week and realigns with the same weekday every 21 days. When your department pairs the base 24/48 cycle with a recurring Kelly Day—a scheduled 24-hour shift off every Nth tour—you can model both layers cleanly in a standard calendar using a 3-day base rule plus single-occurrence exceptions (`EXDATE`) or a secondary Kelly Day series.",
+    "commonBelief": "Deleting a Kelly Day on a digital calendar either deletes your entire 24/48 recurring series or forces every subsequent shift to slide forward by three days.",
+    "sections": [
+      {
+        "heading": "How the 3-day 24/48 cycle progresses across the 21-day weekday matrix",
+        "body": [
+          "In a three-platoon system (commonly labeled Platoons A, B, and C, or Red, Green, and Blue), each platoon works a 24-hour tour—for example, `07:00` on Day 1 to `07:00` on Day 2—followed by 48 hours (two full days) off duty while the other two platoons each work their 24-hour tours. Because the cycle length is 3 days (`72 hours`) and a calendar week is 7 days (`7 mod 3 = 1`), a platoon's workdays shift one day earlier in the 3-day cycle each week, which is equivalent to advancing by `+3` days across the weekday names (`Mon -> Thu -> Sun -> Wed -> Sat -> Tue -> Fri -> Mon`).",
+          "Because the least common multiple of 3 days and 7 weekdays is `LCM(3, 7) = 21 days`, a 24/48 schedule repeats its exact weekday sequence every 3 weeks (21 days). Within any 21-day block, an unadjusted 24/48 platoon works exactly `21 / 3 = 7` shifts of 24 hours (`168 hours` across 3 weeks), which equals an unadjusted mathematical average of `168 / 3 = 56.0 hours` per 7-day calendar week.",
+          "In iCalendar (RFC 5545 Section 3.3.10), the base 24/48 rotation is a single daily recurrence rule with an interval of 3: `RRULE:FREQ=DAILY;INTERVAL=3`."
+        ]
+      },
+      {
+        "heading": "What a Kelly Day does to the calendar math (without altering the platoon cycle)",
+        "body": [
+          "A Kelly Day (or Kelly shift) is a predetermined 24-hour tour where an individual member is scheduled off duty while their platoon still works its normal 24/48 rotation day. Crucially, a Kelly Day does not reset or shift the underlying 3-day platoon cadence: if Platoon A works Day 1, Day 4, Day 7, Day 10, and Day 13, and Day 10 is your assigned Kelly Day, your next scheduled shift is still Day 13 (`72 hours` after Day 10 ended), creating a 5-day (`120-hour`) continuous break between the end of your Day 7 shift and the start of your Day 13 shift.",
+          "From a calendar-arithmetic standpoint (purely illustrative calculation, not labor-law or contract advice), removing 1 shift out of every `N` shifts reduces the average weekly hours by `1 / N`: for example, a Kelly Day every 10th shift (`every 30 calendar days`) leaves 9 worked shifts per 30 days (`216 hours / 30 days x 7 = 50.4 hours/week`), a Kelly Day every 9th shift (`every 27 calendar days`) leaves 8 worked shifts per 27 days (`192 hours / 27 days x 7 = 49.78 hours/week`), and a Kelly Day every 7th shift (`every 21 calendar days`, fixed weekday Kelly) leaves 6 worked shifts per 21 days (`144 hours / 21 days x 7 = 48.0 hours/week`).",
+          "Because the Kelly Day repeats at a multi-week interval (`every 21, 27, 30, or 36 days`) on top of the 3-day base rule, you represent it in a calendar as an overlay or single-instance exception (`EXDATE`) rather than changing the `INTERVAL=3` rule."
+        ]
+      },
+      {
+        "heading": "Illustrative 21-day three-platoon 24/48 and Kelly Day schedule table",
+        "body": [
+          "Consider an illustrative 21-day window starting Sunday, November 1, 2026 (`07:00` to `07:00` next morning) for Platoon A (working Nov 1, 4, 7, 10, 13, 16, 19), Platoon B (working Nov 2, 5, 8, 11, 14, 17, 20), and Platoon C (working Nov 3, 6, 9, 12, 15, 18, 21). Suppose a firefighter on Platoon A has a recurring Wednesday Kelly Day (every 7th shift / every 21 days, falling on Wednesday, November 4, 2026) or an every-10th-shift Kelly Day (every 30 days, falling on Tuesday, November 10, 2026 and next on Thursday, December 10, 2026).",
+          "On the calendar, Platoon A's base series runs `RRULE:FREQ=DAILY;INTERVAL=3` starting `2026-11-01T07:00:00` and ending `2026-11-02T07:00:00`. When the Kelly Day on November 10 is removed using `Delete -> This event only`, the calendar writes `EXDATE;TZID=...:20261110T070000` into the recurring series. The Saturday Nov 7 shift (`ending Sun Nov 8 at 07:00`) and the Friday Nov 13 shift (`starting Fri Nov 13 at 07:00`) remain untouched, giving an exact 120-hour (5-day) off-duty window from `Sun Nov 8 07:00` to `Fri Nov 13 07:00`."
+        ]
+      },
+      {
+        "heading": "Step-by-step setup in Apple Calendar, Google Calendar, and Supershift",
+        "body": [
+          "1. Create the base 24/48 series: On your first on-duty date, create an event from `07:00` (or `08:00`) on Day 1 to `07:00` (or `08:00`) on Day 2, or an all-day platoon badge on Day 1 if you prefer single-tile Month view rendering. Set custom recurrence to `Repeat every 3 days` (`FREQ=DAILY;INTERVAL=3`).",
+          "2. Add a recurring Kelly Day tracker: Create a second recurring series on your first Kelly Day date and set its custom recurrence to match your Kelly cycle—for example, `Repeat every 21 days` (every 7th shift, fixed weekday), `Repeat every 27 days` (every 9th shift), or `Repeat every 30 days` (every 10th shift). Title it `Kelly Day (Off Duty)` and set its availability to `Free` (`TRANSP:TRANSPARENT`).",
+          "3. Remove or override the underlying Platoon shift on Kelly Days: Either delete the single Platoon shift instance on each Kelly Day (`Delete -> This event only`, which creates an RFC 5545 `EXDATE` without touching future shifts) or leave both visible if you also track platoon coverage for trades."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative 21-Day 24/48 Three-Platoon Cycle & Kelly Day Arithmetic (Nov 1–21, 2026)",
+      "columns": [
+        "Cycle Day & Date",
+        "Weekday",
+        "On-Duty Platoon (07:00–07:00 +1d)",
+        "Platoon A Base Rule (`INTERVAL=3`)",
+        "Platoon A with Kelly Day on Nov 10 (`EXDATE`)",
+        "Cumulative Platoon A Hours (Base vs Kelly)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Days 1–3 (Nov 1, 2, 3)",
+            "Sun, Mon, Tue",
+            "Sun: A | Mon: B | Tue: C",
+            "Shift 1 ON (Sun Nov 1, 24h)",
+            "Shift 1 ON (Sun Nov 1, 24h)",
+            "24h Base / 24h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 4–6 (Nov 4, 5, 6)",
+            "Wed, Thu, Fri",
+            "Wed: A | Thu: B | Fri: C",
+            "Shift 2 ON (Wed Nov 4, 24h)",
+            "Shift 2 ON (Wed Nov 4, 24h)",
+            "48h Base / 48h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 7–9 (Nov 7, 8, 9)",
+            "Sat, Sun, Mon",
+            "Sat: A | Sun: B | Mon: C",
+            "Shift 3 ON (Sat Nov 7, 24h)",
+            "Shift 3 ON (Sat Nov 7, ends Sun Nov 8 07:00)",
+            "72h Base / 72h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 10–12 (Nov 10, 11, 12)",
+            "Tue, Wed, Thu",
+            "Tue: A | Wed: B | Thu: C",
+            "Shift 4 ON (Tue Nov 10, 24h)",
+            "KELLY DAY OFF (`EXDATE` Nov 10 -> 120h off Sun 07:00–Fri 07:00)",
+            "96h Base / 72h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 13–15 (Nov 13, 14, 15)",
+            "Fri, Sat, Sun",
+            "Fri: A | Sat: B | Sun: C",
+            "Shift 5 ON (Fri Nov 13, 24h)",
+            "Shift 5 ON (Fri Nov 13, 24h)",
+            "120h Base / 96h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 16–18 (Nov 16, 17, 18)",
+            "Mon, Tue, Wed",
+            "Mon: A | Tue: B | Wed: C",
+            "Shift 6 ON (Mon Nov 16, 24h)",
+            "Shift 6 ON (Mon Nov 16, 24h)",
+            "144h Base / 120h with Kelly"
+          ]
+        },
+        {
+          "cells": [
+            "Days 19–21 (Nov 19, 20, 21)",
+            "Thu, Fri, Sat",
+            "Thu: A | Fri: B | Sat: C",
+            "Shift 7 ON (Thu Nov 19, 24h)",
+            "Shift 7 ON (Thu Nov 19, 24h)",
+            "168h (56.0h/wk) Base vs 144h (48.0h/wk if 1 per 7 shifts)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Use `Repeat every 3 days` (`FREQ=DAILY;INTERVAL=3`) for the base 24/48 platoon series; never use weekly `BYDAY` checkboxes because a 3-day cycle changes weekdays every week.",
+      "Calculate your Kelly Day interval in calendar days by multiplying your shift-count interval by 3: every 7th shift = `21 days` (always the same weekday), every 9th shift = `27 days`, every 10th shift = `30 days`, every 12th shift = `36 days`.",
+      "When removing a Kelly Day from your base 24/48 series, always select `Delete -> This event only` so only that date is added to `EXDATE` and your 3-day platoon alignment stays intact.",
+      "If you share your shift calendar with family, keep a separate `Kelly Day (Off)` badge visible on the removed shift date so everyone knows the 5-day break is a scheduled Kelly reduction rather than a missing calendar sync."
+    ],
+    "faq": [
+      {
+        "q": "Why does a 7-shift (21-day) Kelly Day always land on the same day of the week while a 9-shift or 10-shift Kelly Day rotates across weekdays?",
+        "a": "Because `7 shifts x 3 days = 21 calendar days`, and 21 is an exact multiple of 7 (`21 mod 7 = 0`), a Kelly Day every 7th shift always falls on the exact same weekday (for example, every third Wednesday). By contrast, `9 shifts x 3 days = 27 days` (`27 mod 7 = 6`, moving one weekday earlier each time) and `10 shifts x 3 days = 30 days` (`30 mod 7 = 2`, moving two weekdays later each time)."
+      },
+      {
+        "q": "Should I enter a 24-hour shift as `07:00 to 07:00 next day` or as an all-day event?",
+        "a": "If you rely on hourly Day/Week conflict checking for appointments on the morning you get off duty (`07:00`), enter the timed event (`07:00 Day 1` to `07:00 Day 2`). If you mainly look at Month or Year view to see which dates are Platoon A, B, or C, an all-day badge on the start date prevents the 24-hour shift from spanning two date cells in Month view."
+      },
+      {
+        "q": "What happens if I choose `Delete this and following events` on a Kelly Day by mistake?",
+        "a": "In iCalendar (RFC 5545 Section 3.3.10), deleting `this and following` truncates the series by setting `UNTIL` to the day before your Kelly Day, wiping out every future shift on your calendar. Always use `This event only` for Kelly Days and shift trades."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR & Section 3.8.5.1 EXDATE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Create and manage recurring events",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Apple Support — Set up multiple calendars on iPhone",
+        "url": "https://support.apple.com/guide/iphone/iph69525c028/ios"
+      },
+      {
+        "label": "Supershift Help — Rotations and Multi-Edit",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "label": "The Year in One Screen"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "recurring-events-without-the-mess",
+      "the-year-in-one-screen"
+    ]
+  },
+  "overnight-shift-crossing-midnight-calendar-end-date": {
+    "updated": "2026-10-23",
+    "title": "Overnight Shift Crossing Midnight on a Calendar: Start Date, End Date, and View Rules",
+    "short": "Overnight Shift Crossing Midnight",
+    "description": "Schedule overnight shifts (`19:00–07:00` or `23:00–07:00`) across midnight without placing shifts on the wrong date or breaking weekly `BYDAY` rules.",
+    "lede": "An overnight shift that starts at `19:00` or `23:00` on Monday and finishes at `07:00` on Tuesday spans two calendar dates, even though shift rosters refer to it by a single shift date. Understanding how calendars anchor `DTSTART`, `DTEND`, and recurring `BYDAY` rules across midnight keeps your night shifts from landing on the wrong day or hiding Tuesday morning's recovery hours.",
+    "commonBelief": "If most of your hours on a `23:00–07:00` night shift happen on Tuesday morning, you should enter the recurring shift on Tuesday in your calendar.",
+    "sections": [
+      {
+        "heading": "How `DTSTART` and `DTEND` work when a timed event crosses `00:00` midnight",
+        "body": [
+          "In the iCalendar standard (RFC 5545 Sections 3.8.2.2 and 3.8.2.4), every timed event has an inclusive start timestamp (`DTSTART`) and a non-inclusive end timestamp (`DTEND`), where `DTEND` must be later in time than `DTSTART`. When an overnight shift begins on Monday at `19:00` and lasts 12 hours, its `DTSTART` is `Monday 19:00:00` and its `DTEND` is `Tuesday 07:00:00` (or `DURATION:PT12H`).",
+          "Two common data-entry errors happen when creating cross-midnight shifts by hand. First, if you leave the End Date set to Monday while changing the End Time from `19:00` to `07:00`, the calendar either rejects the range (`End time cannot be before start time`) or auto-flips `07:00` to `19:00`. Second, if your workplace roster labels a `Sunday 23:00 – Monday 07:00` shift as the 'Monday Night Shift' (named after the date where 7 of the 8 hours occur) and you accidentally set `DTSTART` to `Monday 23:00`, every shift on your calendar is pushed 24 hours late.",
+          "Regardless of whether your employer names the shift after its start evening or its finish morning, a calendar event's `DTSTART` must always be the exact calendar date and wall-clock time you report for duty (`Sunday 23:00`, ending `Monday 07:00`)."
+        ]
+      },
+      {
+        "heading": "Why recurring `BYDAY` rules evaluate only the `DTSTART` weekday",
+        "body": [
+          "When you make an overnight shift repeat weekly or biweekly using `RRULE:FREQ=WEEKLY;BYDAY=...` (RFC 5545 Section 3.3.10), the calendar engine evaluates `BYDAY` strictly against the weekday of `DTSTART`, and then applies the event's original duration (`DTEND - DTSTART`, such as 8 or 12 hours) to each generated start instance.",
+          "For example, if you work three consecutive 12-hour night shifts starting Friday evening at `19:00`, Saturday evening at `19:00`, and Sunday evening at `19:00` (finishing Monday morning at `07:00`), your `BYDAY` rule is `BYDAY=FR,SA,SU`—never `FR,SA,SU,MO`. Even though you are physically on duty from `00:00` to `07:00` on Monday morning, those 7 hours belong to Sunday's `19:00` `DTSTART` instance. Checking `MO` in the recurrence dialog would create a fourth 12-hour shift starting Monday at `19:00` and ending Tuesday at `07:00`."
+        ]
+      },
+      {
+        "heading": "Illustrative comparison of the 3 calendar ways to enter a Cross-Midnight shift",
+        "body": [
+          "Consider an illustrative 12-hour night shift starting Monday, November 2, 2026 at `19:00` and ending Tuesday, November 3, 2026 at `07:00` (`5 hours` before midnight on Monday + `7 hours` after midnight on Tuesday = `12.0 hours`). This comparison is illustrative for calendar planning only.",
+          "Option 1 (Single Timed Cross-Midnight Event: `Mon Nov 2 19:00` to `Tue Nov 3 07:00`) is the protocol-accurate representation: in Day and Week views, it draws a continuous 5-hour block at the bottom of Monday and a continuous 7-hour block at the top of Tuesday, accurately blocking `00:00–07:00` on Tuesday morning against early-morning appointments. However, in Month view on many phones, a multi-date event renders as a 2-day horizontal bar spanning both Monday and Tuesday, which can make three consecutive night shifts (`Mon, Tue, Wed`) look like a solid 4-day bar (`Mon–Thu`).",
+          "Option 2 (Start-Date Single-Day Badge or `19:00–23:59` + Post-Shift Sleep Block) keeps Month view limited to one badge per shift start date, while Option 3 (Split Midnight Events: `Mon 19:00–24:00` and `Tue 00:00–07:00`) mirrors daily midnight-cutoff timesheets where Monday receives `5.0 hours` and Tuesday receives `7.0 hours`."
+        ]
+      },
+      {
+        "heading": "Blocking post-night-shift recovery hours on the finish morning",
+        "body": [
+          "The most common scheduling conflict for night-shift workers happens on the final morning of a night stretch—for example, when a Sunday `19:00` to Monday `07:00` shift finishes on Monday morning. On a Month grid that only highlights start dates, Monday looks completely empty ('Off'), tempting family members or colleagues to book an `09:30` or `11:00` Monday appointment right in the middle of your post-shift sleep window.",
+          "Using the true cross-midnight timed event (`Sun 19:00 – Mon 07:00`) plus a recurring `Post-Night Recovery` block on the finish morning (`Mon 07:30 – 15:00`, marked `Busy` / `TRANSP:OPAQUE`) protects both the `00:00–07:00` work hours and the daytime sleep window on the calendar grid."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Comparison: Three Ways to Enter a `Mon 19:00 – Tue 07:00` Night Shift (Nov 2–3, 2026)",
+      "columns": [
+        "Calendar Entry Method",
+        "`DTSTART` & `DTEND` Values",
+        "Week / Day Grid Display",
+        "Month Grid Display",
+        "Recurring `BYDAY` Rule",
+        "Best Used When"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1. Single Cross-Midnight Timed Event (Recommended)",
+            "`2026-11-02T19:00` to `2026-11-03T07:00` (12.0h)",
+            "Blocks Mon `19:00–24:00` (5h) and Tue `00:00–07:00` (7h)",
+            "May span Mon + Tue as a 2-day bar or show on Mon start date",
+            "`BYDAY=MO` (evaluates `DTSTART` weekday only)",
+            "You need accurate hourly availability on both Monday night and Tuesday morning"
+          ]
+        },
+        {
+          "cells": [
+            "2. Split Midnight Timesheet Blocks (5h + 7h)",
+            "Part A: `Mon 19:00–24:00` (5h); Part B: `Tue 00:00–07:00` (7h)",
+            "Two separate blocks touching at `00:00` midnight",
+            "Shows one timed item on Mon and one timed item on Tue",
+            "Part A: `BYDAY=MO`; Part B: `BYDAY=TU`",
+            "Your payroll or daily hour audit cuts off strictly at `00:00` midnight each day"
+          ]
+        },
+        {
+          "cells": [
+            "3. Start-Date Shift Badge + Separate Tue Morning Block",
+            "Shift badge on `Mon Nov 2` + Busy block `Tue 00:00–14:00`",
+            "All-day header on Mon; Busy block on Tue morning/afternoon",
+            "Clean 1-cell badge per shift start date in Month view",
+            "Badge: `BYDAY=MO`; Recovery block: `BYDAY=TU`",
+            "You scan Month view for shift counts but still want Tuesday morning blocked as Busy"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Always set `DTSTART` to the exact date and time you clock in (`23:00 Sunday` for a Sunday-into-Monday night shift), even if your workplace roster calls it the 'Monday shift'.",
+      "Check both the Start Date (`Day N`) and the End Date (`Day N+1`) before saving a timed overnight event so the calendar calculates the true 8-hour or 12-hour duration across midnight.",
+      "When setting up weekly or biweekly recurring night shifts, check only the weekdays when the shifts start (`FR, SA, SU` for Friday, Saturday, and Sunday night shifts)—never check the final finish morning (`MO`).",
+      "Add a recurring `Post-Shift Recovery` busy block (`07:30–15:00`) on the morning your night shift ends so Month and Week views do not show that morning as wide open."
+    ],
+    "faq": [
+      {
+        "q": "If my shift runs from `23:00 Sunday` to `07:00 Monday`, why does my employer call it a Monday shift while my calendar puts it on Sunday?",
+        "a": "Payroll systems often label a night shift by the calendar date where the majority of hours fall (7 hours on Monday vs 1 hour on Sunday). Calendars, however, must anchor `DTSTART` to the chronological moment the event begins (`Sunday 23:00`). You can bridge both conventions by titling the event `Night Shift (Mon Roster) [23:00–07:00]` with `DTSTART` on Sunday at `23:00`."
+      },
+      {
+        "q": "Why do three consecutive night shifts look like one continuous 4-day banner in Month view?",
+        "a": "Because a Monday night shift ends Tuesday at `07:00`, a Tuesday night shift ends Wednesday at `07:00`, and a Wednesday night shift ends Thursday at `07:00`, calendars that draw multi-date timed events as horizontal bars connect all four calendar dates (`Mon–Thu`). Switching to Week view or using dedicated shift badges keeps each 12-hour shift visually distinct."
+      },
+      {
+        "q": "Does a cross-midnight shift change duration on Daylight Saving Time switch nights?",
+        "a": "Yes—on the spring-forward and fall-back nights, a wall-clock shift from `19:00` to `07:00` spans 11 elapsed hours or 13 elapsed hours depending on whether the calendar stores a wall-clock `DTEND` or a fixed `DURATION`. On all other 363 nights of the year, `19:00 Day N` to `07:00 Day N+1` is exactly 12.0 hours."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Sections 3.3.10, 3.8.2.2 DTEND & 3.8.2.4 DTSTART)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Apple Support — Create and edit events in Calendar on iPhone",
+        "url": "https://support.apple.com/guide/iphone/iph3d110f84/ios"
+      },
+      {
+        "label": "Google Calendar Help — Create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Supershift Help — Shift Creation and Rotations",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "What an All-Day Event Really Means"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "what-an-all-day-event-really-means",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "split-shift-two-work-periods-calendar-blocking": {
+    "updated": "2026-10-23",
+    "title": "Split Shift Calendar Setup: How to Schedule Two Daily Work Blocks and the Midday Gap",
+    "short": "Split Shift Calendar Setup",
+    "description": "Schedule split shifts with two daily work blocks (such as `06:30–10:30` and `16:00–20:00`) so your unpaid midday break stays free and work hours stay accurate.",
+    "lede": "A split shift divides a single workday into two separate on-duty blocks—such as a morning peak run (`06:30–10:30`) and an late-afternoon peak run (`16:00–20:00`)—separated by a multi-hour off-duty gap. If you enter a split shift as one continuous `06:30–20:00` calendar block, your calendar falsely inflates an 8-hour workday into 13.5 hours and blocks your entire midday break as busy.",
+    "commonBelief": "A calendar can only store one work shift per date unless you stretch a single event from your morning start time to your evening finish time.",
+    "sections": [
+      {
+        "heading": "Why a single start-to-finish event breaks split-shift calendar math",
+        "body": [
+          "In transit, hospitality, school transportation, restaurant service, and dietary healthcare operations, split shifts match staffing to morning and evening peaks. Unlike a standard 30-minute or 60-minute meal break inside a continuous shift, a split shift has two distinct clock-in/clock-out periods separated by an unpaid multi-hour off-duty interval (often 3 to 6 hours).",
+          "From a calendar-arithmetic perspective (illustrative scheduling math only, not labor-law advice), a split shift has three distinct numbers every day: Active Work Block 1 (`D_1`), the Unpaid Off-Duty Split Gap (`G`), and Active Work Block 2 (`D_2`). The total paid work duration is `W = D_1 + D_2`, while the total daily spread of time (from first clock-in to final clock-out) is `S = D_1 + G + D_2`.",
+          "Because the iCalendar specification (RFC 5545 Section 3.6.1) defines each `VEVENT` as a single contiguous interval between `DTSTART` and `DTEND`, a single `VEVENT` cannot have a multi-hour hole inside it. Representing a split shift accurately in Apple Calendar, Google Calendar, or Outlook requires two distinct timed events per workday—Part A for the morning block and Part B for the afternoon/evening block."
+        ]
+      },
+      {
+        "heading": "Illustrative split-shift hour and availability comparison (`06:30–10:30` & `16:00–20:00`)",
+        "body": [
+          "Consider an illustrative weekday split shift running Monday through Friday with Morning Block Part A from `06:30 to 10:30` (`4.0 hours`) and Evening Block Part B from `16:00 to 20:00` (`4.0 hours`), separated by a `5.5-hour` off-duty gap from `10:30 to 16:00` (including `30 minutes` of commute buffer at each end of the break, leaving `11:00 to 15:30` free).",
+          "When entered as two linked recurring series (`Split Shift Part A [AM]` at `06:30–10:30` and `Split Shift Part B [PM]` at `16:00–20:00`, both with `RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` and `TRANSP:OPAQUE` / `Busy`), your daily worked duration totals exactly `4.0 + 4.0 = 8.0 hours` (`40.0 hours/week`), while the `10:30–16:00` window remains `Free` on your calendar grid for medical appointments, errands, or rest.",
+          "By contrast, if you enter a single `06:30–20:00` event, any calendar hour-total export or visual inspection reports `13.5 hours/day` (`67.5 hours/week`—an error of `+27.5 hours/week`) and marks `10:30–16:00` as unavailable."
+        ]
+      },
+      {
+        "heading": "How to build a two-part split shift in Google Calendar, Apple Calendar, and Supershift",
+        "body": [
+          "1. Create Series A (Morning Run / Block 1): Set `DTSTART` to `06:30` and `DTEND` to `10:30` on your first workday. Name it `Shift Part 1 (AM) [4h]` so the duration is visible even in compact Month view. Set recurrence (`Repeat weekly on Mon–Fri` or your specific rota pattern) and keep availability set to `Busy` (`TRANSP:OPAQUE`).",
+          "2. Create Series B (Evening Run / Block 2): On the same start date, set `DTSTART` to `16:00` and `DTEND` to `20:00`. Name it `Shift Part 2 (PM) [4h]` and apply the exact same recurrence rule (`BYDAY` and `INTERVAL`) as Series A.",
+          "3. Optional Midday Commute / Split Marker: If you need to protect travel time between the workplace and home at `10:30–11:00` and `15:30–16:00`, either include those 30-minute travel buffers or add an optional transparent (`Show as: Free` / `TRANSP:TRANSPARENT`) midday note (`Split Break: 10:30–16:00 [5.5h off]`) if you want to track total daily spread (`13.5h`) without blocking availability."
+        ]
+      },
+      {
+        "heading": "Calculating turnaround rest between Evening Block 2 and next day's Morning Block 1",
+        "body": [
+          "Because split shifts have a wide daily spread (`13.5 hours` in our illustrative example, from `06:30` to `20:00`), the overnight turnaround rest between finishing Part 2 on Day 1 (`20:00`) and starting Part 1 on Day 2 (`06:30`) is `24.0 - 13.5 = 10.5 hours`—noticeably shorter than the `16.0-hour` overnight rest between two standard `08:00–16:00` shifts.",
+          "Displaying Part 1 and Part 2 at their exact clock times on a Week view grid makes both gaps immediately visible to the eye: the `5.5-hour` midday split inside each day column (`10:30–16:00`) and the `10.5-hour` overnight turnaround across midnight (`20:00–06:30`)."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Split-Shift Calendar Modeling Comparison (`06:30–10:30` + `16:00–20:00`, Mon–Fri)",
+      "columns": [
+        "Metric / Calendar Behavior",
+        "Two-Event Split Model (Part A + Part B)",
+        "Two-Event + Transparent Midday Marker",
+        "Single Stretched Event (`06:30–20:00` — Anti-Pattern)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Morning Work Block (`DTSTART–DTEND`)",
+            "`06:30–10:30` (`4.0h`, `Busy` / `OPAQUE`)",
+            "`06:30–10:30` (`4.0h`, `Busy` / `OPAQUE`)",
+            "Merged into `06:30–20:00` block"
+          ]
+        },
+        {
+          "cells": [
+            "Midday Unpaid Split Gap (`10:30–16:00`)",
+            "Open grid (`5.5h Free` for appointments)",
+            "Labeled `Split Break [Free]` (`TRANSP:TRANSPARENT`)",
+            "Falsely blocked as `Busy` (`5.5h` lost)"
+          ]
+        },
+        {
+          "cells": [
+            "Afternoon/Evening Block (`DTSTART–DTEND`)",
+            "`16:00–20:00` (`4.0h`, `Busy` / `OPAQUE`)",
+            "`16:00–20:00` (`4.0h`, `Busy` / `OPAQUE`)",
+            "Merged into `06:30–20:00` block"
+          ]
+        },
+        {
+          "cells": [
+            "Daily / Weekly Paid Work Hour Total",
+            "`8.0h / day` (`40.0h / 5-day week` — exact)",
+            "`8.0h / day` Busy (`40.0h / week` — exact)",
+            "`13.5h / day` (`67.5h / week` — inflated by +27.5h)"
+          ]
+        },
+        {
+          "cells": [
+            "Daily Spread & Overnight Turnaround",
+            "Spread `13.5h` (`06:30–20:00`); Overnight gap `10.5h` (`20:00–06:30`)",
+            "Spread `13.5h` explicitly shown; Overnight gap `10.5h`",
+            "Hides where Part 1 ends and where Part 2 starts"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Always create two separate timed events (`Part 1 AM` and `Part 2 PM`) for a split shift so your calendar's busy blocks match your actual on-duty hours (`4.0h + 4.0h = 8.0h`).",
+      "Use identical recurrence rules (`FREQ`, `INTERVAL`, and `BYDAY`) on both Part 1 and Part 2 so the morning and evening halves stay synchronized across every week.",
+      "If you take a day off or swap a full split-shift day, remember to delete or update `This event only` on both the morning event and the afternoon event for that date.",
+      "Check the overnight turnaround gap (`Start of tomorrow's Part 1 minus End of today's Part 2`) whenever your evening block is extended late."
+    ],
+    "faq": [
+      {
+        "q": "What if I only swap the afternoon half of my split shift with a coworker?",
+        "a": "Because Part 1 (`06:30–10:30`) and Part 2 (`16:00–20:00`) are stored as two separate recurring series, you can edit or delete `This event only` on Part 2 for that Friday without touching your morning Part 1 shift."
+      },
+      {
+        "q": "Can I track both my 8.0 active work hours and my 13.5-hour total daily spread on the same calendar?",
+        "a": "Yes. Keep Part 1 (`06:30–10:30`) and Part 2 (`16:00–20:00`) on your `Work Shifts` subcalendar (`Show as: Busy`), and place an optional `10:30–16:00 Split Gap` event on a secondary `Break / Spread` subcalendar set to `Show as: Free` (`TRANSP:TRANSPARENT`)."
+      },
+      {
+        "q": "How do dedicated shift calendar apps handle split shifts?",
+        "a": "In apps like Supershift, you can either assign two shifts to the same calendar day or define a custom split shift template and adjust regular hours so your monthly hour summary counts only the worked hours (8.0h) rather than the unpaid break."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.6.1 VEVENT & Section 3.8.2.7 TRANSP)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Apple Support — Create and edit events in Calendar on iPhone",
+        "url": "https://support.apple.com/guide/iphone/iph3d110f84/ios"
+      },
+      {
+        "label": "Supershift Help — Overtime, Regular Hours, and Multi-Edit",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "label": "Planning a Week in Ten Minutes"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      },
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "a-week-view-that-fits-a-week",
+      "shift-work-calendar-iphone-rotating-schedules"
+    ]
+  },
+  "on-call-standby-calendar-versus-confirmed-shift": {
+    "updated": "2026-10-23",
+    "title": "On-Call Standby Calendar Setup: Tracking Pager Coverage Without Blocking Availability",
+    "short": "On-Call Standby vs Confirmed Shifts",
+    "description": "Separate `Free` (`TRANSP:TRANSPARENT`) on-call standby rotations from `Busy` (`TRANSP:OPAQUE`) confirmed shifts and active call-out blocks on your calendar.",
+    "lede": "Being on call for 24 hours or a 7-day pager rotation is not the same calendar state as working a confirmed on-site shift: you need to see that you are within response range, yet you still need your daytime calendar grid open for normal work or personal slots unless you are actively called in. Separating transparent standby banners (`Free`) from opaque confirmed shifts and active call-outs (`Busy`) prevents a 168-hour on-call week from turning your entire calendar into a solid wall of busy time.",
+    "commonBelief": "The only way to put a 7-day on-call rotation on your calendar is to create a 24-hour Busy event that blocks every hour of the week.",
+    "sections": [
+      {
+        "heading": "How iCalendar `TRANSP` (`OPAQUE` vs `TRANSPARENT`) separates Standby from Active Shifts",
+        "body": [
+          "The iCalendar standard (RFC 5545 Section 3.8.2.7 `Time Transparency`) defines a specific property—`TRANSP`—to distinguish events that consume time on a free/busy schedule from contextual events that merely provide information on the calendar date. Events with `TRANSP:OPAQUE` (labeled `Show as: Busy` in Google Calendar, Apple Calendar, and Outlook) block availability and count as occupied hours. Events with `TRANSP:TRANSPARENT` (labeled `Show as: Free`) appear visually on the calendar without marking the time range as busy.",
+          "In technical operations (SRE/DevOps primary/secondary pager duty), healthcare (surgical or anesthesia call), and utilities maintenance, a roster typically includes three distinct scheduling states: (1) Confirmed On-Site or Scheduled Shifts (`Busy` / `OPAQUE`), (2) Off-Premises Standby / On-Call Windows (`Free` / `TRANSPARENT`), and (3) Active Callbacks / Incident Responses when the pager actually fires (`Busy` / `OPAQUE`).",
+          "Mixing State 2 (Standby) and State 1/3 (Confirmed Work / Active Callbacks) using the same `Busy` timed block makes it impossible to tell whether you worked 40 hours or 168 hours that week."
+        ]
+      },
+      {
+        "heading": "Illustrative 7-day on-call week + active callback hour audit",
+        "body": [
+          "Consider an illustrative 7-day schedule (Monday, November 2 through Monday, November 9, 2026) for an engineer or clinician who works five regular 8-hour daytime shifts (`Mon–Fri 08:00–16:00`, totaling `40.0 regular hours`) and also holds the weekly `Primary On-Call` rotation from `Mon Nov 2 08:00` to `Mon Nov 9 08:00` (`168.0 total coverage hours`, comprising `40.0 hours` overlapping regular daytime shifts and `128.0 hours` of evening/night/weekend standby). This example is purely illustrative for calendar structure and hour tracking, with zero labor-law or payroll classification advice.",
+          "Suppose the pager triggers three active call-out responses during those 128 standby hours: Call-Out 1 on Tuesday Nov 3 from `21:30 to 23:00` (`1.5 hours`), Call-Out 2 on Saturday Nov 7 from `14:00 to 17:30` (`3.5 hours`), and Call-Out 3 on Sunday Nov 8 from `02:00 to 04:00` (`2.0 hours`).",
+          "With a two-layer calendar setup, the standby banner (`TRANSP:TRANSPARENT` / `Free`) tracks the `128.0 standby hours`, the regular shift series (`TRANSP:OPAQUE` / `Busy`) tracks the `40.0 base work hours`, and the three logged callback events (`TRANSP:OPAQUE` / `Busy`) track the `1.5 + 3.5 + 2.0 = 7.0 active callback hours` (`47.0 total active work hours`)."
+        ]
+      },
+      {
+        "heading": "Why All-Day banners vs Timed blocks matter for 7-day and 24-hour rotations",
+        "body": [
+          "For a week-long (`168-hour`) on-call rotation with a fixed handover hour (such as `Monday 09:00`), creating a single timed event from `Mon Nov 2 09:00` to `Mon Nov 9 09:00` paints a week-long vertical bar across every hour of every day in Week view, visually crowding your normal daytime appointments even if it is marked `Free`.",
+          "Instead, use an All-Day banner (`Mon Nov 2 – Sun Nov 8`, marked `Show as: Free`, titled `ON-CALL PRIMARY [Handover Mon 09:00]`) so the coverage indicator sits neatly in the top all-day header bar of Day and Week views, plus a short 15-minute or 30-minute timed handover event (`Mon 09:00–09:15 Pager Handover`) at the exact transition timestamp.",
+          "For single-night standby (such as `Tuesday 17:00` to `Wednesday 08:00`, `15.0 standby hours`), place the event on a dedicated `On-Call Standby` subcalendar with a distinct color (such as teal or purple) and set its default availability to `Free`."
+        ]
+      },
+      {
+        "heading": "Distinguishing Primary (1st Call) from Backup (2nd Call) when sharing calendars",
+        "body": [
+          "Many teams rotate from `Primary On-Call` in Week 1 to `Secondary / Backup On-Call` in Week 2 (`FREQ=WEEKLY;INTERVAL=4` or `INTERVAL=6` depending on team size). Prefixing the all-day banner title with the tier and response constraint—for example, `[1st Call - 15m SLA]` versus `[2nd Call - Backup]`—lets family members viewing your shared calendar see immediately whether an evening dinner plan needs to stay close to home or simply requires keeping a phone nearby."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Three-Layer On-Call & Confirmed Shift Calendar Architecture (Nov 2–9, 2026)",
+      "columns": [
+        "Schedule Layer",
+        "Illustrative Window (Nov 2–9, 2026)",
+        "iCalendar `TRANSP` / UI Setting",
+        "Calendar Placement",
+        "Hours in Layer",
+        "Effect on Free/Busy & Hour Totals"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Layer 1: Confirmed Regular Shifts",
+            "Mon–Fri `08:00–16:00` (5 shifts)",
+            "`TRANSP:OPAQUE` (`Show as: Busy`)",
+            "`Work Shifts` subcalendar (Timed grid)",
+            "`40.0h` active scheduled work",
+            "Blocks `08:00–16:00` as Busy; counts toward base shift hours"
+          ]
+        },
+        {
+          "cells": [
+            "Layer 2A: Weekly Standby Header",
+            "Mon Nov 2 `08:00` – Mon Nov 9 `08:00`",
+            "`TRANSP:TRANSPARENT` (`Show as: Free`)",
+            "`On-Call Standby` subcalendar (All-day header + `08:00` handover)",
+            "`128.0h` off-shift standby coverage",
+            "Visible at top of every day without blocking daytime or evening slots"
+          ]
+        },
+        {
+          "cells": [
+            "Layer 2B: Overnight Single-Night Call",
+            "e.g., Tue Nov 3 `17:00` – Wed Nov 4 `08:00`",
+            "`TRANSP:TRANSPARENT` (`Show as: Free`)",
+            "`On-Call Standby` subcalendar (Distinct color)",
+            "`15.0h` overnight standby",
+            "Shows exact standby hours while keeping evening readable"
+          ]
+        },
+        {
+          "cells": [
+            "Layer 3: Active Call-Out / Incident Work",
+            "Tue `21:30–23:00` (1.5h), Sat `14:00–17:30` (3.5h), Sun `02:00–04:00` (2.0h)",
+            "`TRANSP:OPAQUE` (`Show as: Busy`)",
+            "`Work Shifts` or `Call-Out Log` subcalendar (Timed grid)",
+            "`7.0h` active callback work (`47.0h` total active work)",
+            "Records exact worked callback intervals for timesheet and rest audit"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Create a separate `On-Call Standby` subcalendar in Apple, Google, or Outlook so you can color-code standby windows separately from confirmed on-site shifts.",
+      "Always set standby/pager windows to `Show as: Free` (`TRANSP:TRANSPARENT`) so a 24-hour or 7-day standby rotation does not block your entire daytime schedule.",
+      "Use an All-Day `Free` banner plus a 15-minute timed handover marker (`Mon 08:00` or `09:00`) for 7-day rotations so your hourly Week view grid stays uncluttered.",
+      "Log actual pager callbacks as separate `Busy` (`TRANSP:OPAQUE`) timed events (`Call-Out: 21:30–23:00 [1.5h]`) so you have an exact record of active callback hours and interrupted overnight rest."
+    ],
+    "faq": [
+      {
+        "q": "Why do people think I am unavailable all week when my PagerDuty or Opsgenie schedule syncs to Google Calendar?",
+        "a": "Many calendar integrations export on-call rotations as timed `VEVENT` items from `Monday 09:00` to `next Monday 09:00` with the default `TRANSP:OPAQUE` (`Busy`) status. Importing or subscribing to that feed in a separate secondary calendar—or setting the event visibility to `Free` (`TRANSP:TRANSPARENT`)—stops it from blocking your primary free/busy availability."
+      },
+      {
+        "q": "If I use an All-Day banner for a Monday-to-Monday on-call week, how do I prevent confusion on handover Monday?",
+        "a": "Run the All-Day banner from Monday through Sunday (7 dates), and place a 15-minute timed event at the exact handover hour on Monday morning (`09:00–09:15 On-Call Handover`). That way Monday daytime is not double-badged for both the outgoing and incoming engineers."
+      },
+      {
+        "q": "How do I track whether a late-night callback cut into my rest before tomorrow's confirmed `08:00` shift?",
+        "a": "By logging the active callback as a `Busy` timed event on the hourly grid (for example, `02:00–04:00`), Week view visually shows the exact 4-hour remaining gap between `04:00` and your `08:00` morning shift start."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.8.2.7 Time Transparency TRANSP)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Apple Support — Add or delete calendars on Mac",
+        "url": "https://support.apple.com/guide/calendar/icl1018/mac"
+      },
+      {
+        "label": "Google Calendar Help — Create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "label": "Supershift Help — Shift Calendars and Calendar Export",
+        "url": "https://www.supershift.app/help.html"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Booking Link or Shared Calendar"
+      },
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "What an All-Day Event Really Means"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "shift-work-calendar-iphone-rotating-schedules",
+      "what-an-all-day-event-really-means"
+    ]
+  },
+  "us-uk-dst-mismatch-weeks-recurring-meeting-calendar": {
+    "updated": "2026-10-23",
+    "title": "US vs UK/Europe DST Mismatch Weeks: Why Recurring Meetings Shift by One Hour",
+    "short": "US vs UK/Europe DST Mismatch Weeks",
+    "description": "See why recurring US and UK/European calendar meetings shift by 1 hour for 3 weeks in March and 1 week in autumn, with 2026–2027 dates and TZID rules.",
+    "lede": "Twice every year, the standard 5-hour time difference between New York and London (or the 6-hour difference between New York and Central Europe) shrinks by one hour because the United States and the UK/European Union change their clocks on different Sundays. During those four mismatch weeks—three weeks in March and one week in late October—any recurring meeting stays fixed in the organizer's time zone (`TZID`) and moves by one hour on the other side of the Atlantic.",
+    "commonBelief": "A recurring transatlantic meeting shifting by an hour in March or late October means your calendar app has a Daylight Saving Time sync bug.",
+    "sections": [
+      {
+        "heading": "Why the US and UK/Europe switch clocks on different Sundays",
+        "body": [
+          "Under U.S. federal law (15 U.S.C. Chapter 6 Subchapter IX, as amended by the Energy Policy Act of 2005 and documented by the U.S. Naval Observatory), Daylight Saving Time in the United States starts on the **second Sunday in March** at `02:00` local standard time and ends on the **first Sunday in November** at `02:00` local daylight time.",
+          "Under UK and European summer-time rules (as documented on GOV.UK for British Summer Time), clocks in the United Kingdom and the European Union move forward one hour on the **last Sunday in March** at `01:00 UTC` (`01:00 GMT -> 02:00 BST`) and move back one hour on the **last Sunday in October** at `01:00 UTC` (`02:00 BST -> 01:00 GMT`).",
+          "Because the second Sunday in March is always 2 or 3 weeks before the last Sunday in March, North America enters summer time first. And because the last Sunday in October is always 1 week before the first Sunday in November, the UK and Europe return to standard time first. During both transition windows, the transatlantic UTC offset gap narrows by 1 hour (`4 hours` between New York and London instead of the usual `5 hours`, and `5 hours` between New York and Paris/Berlin instead of `6 hours`)."
+        ]
+      },
+      {
+        "heading": "Illustrative 2026 and 2027 transatlantic DST mismatch calendar table",
+        "body": [
+          "Using the official U.S. Naval Observatory and GOV.UK dates for 2026 and 2027, we can trace an illustrative weekly recurring meeting between New York (`America/New_York`) and London (`Europe/London`). In 2026, the U.S. springs forward on **Sunday, March 8, 2026**, while the UK springs forward 21 days later on **Sunday, March 29, 2026**. In autumn 2026, the UK falls back on **Sunday, October 25, 2026**, while the U.S. falls back 7 days later on **Sunday, November 1, 2026** (in 2027, the spring gap runs **March 14–28, 2027** and the autumn gap runs **October 31–November 7, 2027`).",
+          "Suppose the meeting is normally held at `09:00 New York / 14:00 London`. During the 21-day spring mismatch window (**March 8–28, 2026**) and the 7-day autumn mismatch window (**October 25–31, 2026**), both cities are on `-04:00` (`EDT`) and `+00:00` (`GMT`) simultaneously, so the offset between them is `4 hours` instead of `5 hours`.",
+          "Therefore, `09:00 EDT` in New York is `13:00 GMT` in London (1 hour earlier for London), while `14:00 GMT` in London is `10:00 EDT` in New York (1 hour later for New York). It is mathematically impossible for a single meeting to stay at both `09:00 New York` and `14:00 London` during those four weeks."
+        ]
+      },
+      {
+        "heading": "How the organizer's `TZID` determines whose clock stays fixed",
+        "body": [
+          "As documented by both Google Calendar (`Use Google Calendar in different time zones`) and Microsoft Outlook (`Manage time zone settings in Outlook`), calendars store events in UTC (`Coordinated Universal Time`) while evaluating recurring rules in the **event creation / organizer time zone (`TZID`)** defined in `DTSTART;TZID=...` (RFC 5545 Section 3.8.5.3).",
+          "If a New York organizer creates the weekly series with `DTSTART;TZID=America/New_York:20260112T090000`, the series is anchored to `09:00` New York wall-clock time year-round. In January (`EST`, `UTC-5`), `09:00 EST` converts to `14:00:00Z` (`14:00 GMT` in London). On Monday, March 9, 2026 (after the U.S. springs forward to `EDT`, `UTC-4`), `09:00 EDT` converts to `13:00:00Z`. Because London is still on `GMT` (`UTC+0`) until March 29, London attendees see the meeting move from `14:00` to `13:00` for three weeks, then snap back to `14:00 BST` on Monday, March 30, 2026.",
+          "Conversely, if a London organizer creates the series with `DTSTART;TZID=Europe/London:20260112T140000`, London stays fixed at `14:00` year-round while New York attendees see the meeting shift from `09:00 EST` to `10:00 EDT` during March 8–28 and October 25–31, 2026."
+        ]
+      },
+      {
+        "heading": "How to prevent missed meetings during the March and October gap weeks",
+        "body": [
+          "First, decide explicitly which office owns the stable wall-clock hour (for example, when a customer-facing webinar or market-open briefing must stay fixed to London or New York local time) and make sure the calendar event's `TZID` matches that anchor city—even if the person creating the invite lives in the other region.",
+          "Second, if a UK or European participant needs a US-organized meeting to stay at their local `14:00` during the 3-week March window, the organizer should modify just those three instances (`This event only` on March 9, 16, and 23, 2026) to `10:00 EDT / 14:00 GMT` rather than editing the entire recurring series."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative 2026 US (`America/New_York`) vs UK (`Europe/London`) DST Offset & Meeting Table",
+      "columns": [
+        "2026 Date Window",
+        "New York Zone (`America/New_York`)",
+        "London Zone (`Europe/London`)",
+        "NY–London Offset",
+        "If Anchored to `09:00 NY` (`TZID=America/New_York`)",
+        "If Anchored to `14:00 London` (`TZID=Europe/London`)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Jan 1 – Mar 7, 2026 (Winter Standard)",
+            "`EST` (`UTC-05:00`)",
+            "`GMT` (`UTC+00:00`)",
+            "`5 hours`",
+            "`09:00 EST` NY = `14:00 GMT` London (`14:00Z`)",
+            "`14:00 GMT` London = `09:00 EST` NY (`14:00Z`)"
+          ]
+        },
+        {
+          "cells": [
+            "Mar 8 – Mar 28, 2026 (3-Week Spring Gap)",
+            "`EDT` (`UTC-04:00`, US sprung forward Mar 8)",
+            "`GMT` (`UTC+00:00`, UK switches Mar 29)",
+            "`4 hours` (Gap Week 1–3)",
+            "`09:00 EDT` NY = `13:00 GMT` London (`13:00Z`, 1h early in UK)",
+            "`14:00 GMT` London = `10:00 EDT` NY (`14:00Z`, 1h late in US)"
+          ]
+        },
+        {
+          "cells": [
+            "Mar 29 – Oct 24, 2026 (Summer Daylight)",
+            "`EDT` (`UTC-04:00`)",
+            "`BST` (`UTC+01:00`, UK sprung forward Mar 29)",
+            "`5 hours`",
+            "`09:00 EDT` NY = `14:00 BST` London (`13:00Z`)",
+            "`14:00 BST` London = `09:00 EDT` NY (`13:00Z`)"
+          ]
+        },
+        {
+          "cells": [
+            "Oct 25 – Oct 31, 2026 (1-Week Autumn Gap)",
+            "`EDT` (`UTC-04:00`, US switches Nov 1)",
+            "`GMT` (`UTC+00:00`, UK fell back Oct 25)",
+            "`4 hours` (Autumn Gap Week)",
+            "`09:00 EDT` NY = `13:00 GMT` London (`13:00Z`, 1h early in UK)",
+            "`14:00 GMT` London = `10:00 EDT` NY (`14:00Z`, 1h late in US)"
+          ]
+        },
+        {
+          "cells": [
+            "Nov 1 – Dec 31, 2026 (Winter Standard)",
+            "`EST` (`UTC-05:00`, US fell back Nov 1)",
+            "`GMT` (`UTC+00:00`)",
+            "`5 hours`",
+            "`09:00 EST` NY = `14:00 GMT` London (`14:00Z`)",
+            "`14:00 GMT` London = `09:00 EST` NY (`14:00Z`)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check the event's time zone (`TZID`) when creating a recurring US–UK/EU invite: whichever city is chosen as the event time zone keeps its fixed wall-clock hour during the 4 annual mismatch weeks.",
+      "Mark the two annual 2026 mismatch windows on your team calendar in advance: **March 8–28, 2026** (3 weeks) and **October 25–31, 2026** (1 week); for 2027, **March 14–27, 2027** (2 weeks) and **October 31–November 6, 2027** (1 week).",
+      "Enable a Secondary Time Zone column (`America/New_York` + `Europe/London`) in Google Calendar or Outlook Day/Week view so the 4-hour vs 5-hour ruler shift is visible before you book slots.",
+      "If you move a meeting during the 3-week March gap so it doesn't collide with another call, edit only those specific dates (`This event only`) rather than `This and following events`."
+    ],
+    "faq": [
+      {
+        "q": "Why is the March US–UK mismatch window sometimes 3 weeks long (like 2026) and sometimes 2 weeks long (like 2027)?",
+        "a": "The U.S. always switches on the second Sunday in March (between March 8 and March 14), while the UK and EU always switch on the last Sunday in March (between March 25 and March 31). When March has five Sundays (as in 2026, where Sundays fall on March 1, 8, 15, 22, and 29), the gap between the second Sunday (March 8) and the fifth/last Sunday (March 29) is 21 days (3 weeks). When the second Sunday is March 14 and the last Sunday is March 28 (as in 2027), the gap is 14 days (2 weeks)."
+      },
+      {
+        "q": "Does Continental Europe (Paris, Berlin, Amsterdam, Madrid) follow the exact same mismatch dates as London?",
+        "a": "Yes. Both the UK (`GMT`/`BST`) and the European Union (`CET`/`CEST`) change clocks simultaneously at `01:00 UTC` on the last Sunday in March and the last Sunday in October, so the US–Central Europe offset narrows from 6 hours to 5 hours during the exact same weeks."
+      },
+      {
+        "q": "Can I anchor a London-based meeting to London time even if my own calendar is set to New York?",
+        "a": "Yes. In Google Calendar, Apple Calendar, and Outlook, click the Time Zone selector next to the event start time while creating the series and pick `Europe/London` (`GMT`/`BST`). The series will then stay locked to London's wall clock year-round."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "U.S. Naval Observatory — Daylight Saving Time FAQ (U.S. Code Title 15 & Energy Policy Act of 2005)",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "GOV.UK — When do the clocks change? (British Summer Time dates)",
+        "url": "https://www.gov.uk/when-do-the-clocks-change"
+      },
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.8.5.3 RRULE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      },
+      {
+        "label": "Microsoft Support — Manage time zone settings in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "non-dst-time-zone-arizona-hawaii-recurring-calendar": {
+    "updated": "2026-10-23",
+    "title": "Arizona & Hawaii Non-DST Time Zones: Why Recurring Calendar Meetings Shift Twice a Year",
+    "short": "Arizona & Hawaii Non-DST Calendar Rules",
+    "description": "Learn why recurring meetings with Arizona (`America/Phoenix`) and Hawaii (`Pacific/Honolulu`) shift by 1 hour in March and November and which TZID to select.",
+    "lede": "Hawaii and most of Arizona observe standard time all year (`Pacific/Honolulu` at `UTC-10:00` and `America/Phoenix` at `UTC-07:00`). Because their UTC offsets never change while neighboring states shift forward in March and back in November, Arizona matches Mountain Time in winter and Pacific Time in summer—meaning any recurring meeting between a non-DST state and a DST state changes wall-clock alignment twice a year.",
+    "commonBelief": "Selecting any 'Mountain Time (`UTC-7`)' option such as `America/Denver` works for Phoenix, Arizona because both show `UTC-7` in January.",
+    "sections": [
+      {
+        "heading": "Why `America/Phoenix` and `America/Denver` are two completely different IANA rules",
+        "body": [
+          "As documented by the U.S. Naval Observatory (`Daylight Saving Time`) and the IANA Time Zone Database (`tzdb`), the Uniform Time Act allows states to exempt themselves from Daylight Saving Time if the entire state (or statutory portion) stays on standard time. Hawaii, U.S. insular territories, and Arizona (outside the Navajo Nation, which observes DST) remain on standard time 365 days a year.",
+          "In the IANA `tzdb` used by Apple Calendar, Google Calendar, and iCalendar (`TZID`), time zones are not defined by a single winter offset—they are defined by historical and seasonal rule sets tied to a reference location. Both `America/Denver` and `America/Phoenix` sit at `UTC-07:00` (`MST`) from the first Sunday in November until the second Sunday in March. However, on the second Sunday in March at `02:00`, `America/Denver` switches to `MDT` (`UTC-06:00`), whereas `America/Phoenix` has no `DAYLIGHT` transition rule and stays at `MST` (`UTC-07:00`).",
+          "If a user in Phoenix selects `Mountain Time - Denver` (`America/Denver`) in January because the winter clock matches, their calendar will jump one hour ahead of Phoenix wall-clock time for the entire eight-month period from March 8 to November 1, 2026."
+        ]
+      },
+      {
+        "heading": "Illustrative Winter vs Summer offset matrix for Phoenix and Honolulu",
+        "body": [
+          "Consider an illustrative recurring weekly meeting organized in New York (`America/New_York`) at `11:00 AM` local New York time (`DTSTART;TZID=America/New_York:20260114T110000`) with participants in Denver (`America/Denver`), Phoenix (`America/Phoenix`), Los Angeles (`America/Los_Angeles`), and Honolulu (`Pacific/Honolulu`).",
+          "During Winter Standard Time (**January 1 – March 7, 2026** and **November 1 – December 31, 2026**), `11:00 EST` (`UTC-5`, `16:00:00Z`) lands at `09:00 MST` in Denver (`-2h`), `09:00 MST` in Phoenix (`-2h`), `08:00 PST` in Los Angeles (`-3h`), and `06:00 HST` in Honolulu (`-5h`). Notice that Phoenix and Denver share the exact same `09:00` wall-clock hour in winter.",
+          "On **Sunday, March 8, 2026**, New York (`UTC-4`), Denver (`UTC-6`), and Los Angeles (`UTC-7`) all spring forward by one hour, shifting the meeting's UTC instant from `16:00:00Z` to `15:00:00Z`. For New York (`11:00 EDT`), Denver (`09:00 MDT`), and Los Angeles (`08:00 PDT`), the meeting stays at the exact same wall-clock hour. For Phoenix (`UTC-7` year-round) and Honolulu (`UTC-10` year-round), `15:00:00Z` is now `08:00 MST` in Phoenix (matching Los Angeles `08:00 PDT`, `-3h` from NY) and `05:00 HST` in Honolulu (`-6h` from NY)—one hour earlier on their local wall clocks until November 1, 2026."
+        ]
+      },
+      {
+        "heading": "What happens when the recurring series is anchored in `America/Phoenix` or `Pacific/Honolulu`",
+        "body": [
+          "Now invert the scenario: suppose a Phoenix clinic or Honolulu team organizes a recurring daily standup at `09:00` local time with `DTSTART;TZID=America/Phoenix:20260114T090000`. Because `America/Phoenix` never changes its `-07:00` offset, every occurrence of that series sits at a fixed UTC timestamp (`16:00:00Z`) all year.",
+          "For attendees in Phoenix and Honolulu, the meeting never moves (`09:00 MST` / `06:00 HST` all 52 weeks). For attendees in DST-observing states, the meeting shifts one hour **later** on their wall clocks from March 8 to November 1, 2026: Los Angeles moves from `08:00 PST` in winter to `09:00 PDT` in summer, Denver moves from `09:00 MST` to `10:00 MDT`, and New York moves from `11:00 EST` to `12:00 EDT`."
+        ]
+      },
+      {
+        "heading": "How to avoid post-March scheduling collisions in hybrid teams",
+        "body": [
+          "If a Phoenix or Honolulu participant has both local appointments (anchored in `America/Phoenix` or `Pacific/Honolulu`) and remote team meetings (anchored in `America/New_York` or `America/Los_Angeles`), those two sets of recurring events slide by one hour relative to each other every March and November. A remote call at `09:00 MST` in February becomes `08:00 MST` in March—which can collide directly with an `08:00 MST` local school drop-off or clinic appointment.",
+          "Auditing the week of **March 8, 2026** and the week of **November 1, 2026** in Week view lets you spot and resolve any local-versus-remote recurring overlap before the Sunday clock change occurs."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative 2026 Winter vs Summer Wall-Clock Alignment for Phoenix (`America/Phoenix`) & Honolulu (`Pacific/Honolulu`)",
+      "columns": [
+        "Location & IANA `TZID`",
+        "Winter Offset (Nov 1 – Mar 7)",
+        "Summer Offset (Mar 8 – Oct 31)",
+        "Meeting Anchored to `11:00 NY` (`TZID=America/New_York`)",
+        "Meeting Anchored to `09:00 Phoenix` (`TZID=America/Phoenix`)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "New York (`America/New_York`)",
+            "`UTC-05:00` (`EST`)",
+            "`UTC-04:00` (`EDT`)",
+            "Winter: `11:00 EST` | Summer: `11:00 EDT` (Fixed)",
+            "Winter: `11:00 EST` | Summer: `12:00 EDT` (+1h in summer)"
+          ]
+        },
+        {
+          "cells": [
+            "Denver (`America/Denver` — DST)",
+            "`UTC-07:00` (`MST`)",
+            "`UTC-06:00` (`MDT`)",
+            "Winter: `09:00 MST` | Summer: `09:00 MDT` (Fixed)",
+            "Winter: `09:00 MST` | Summer: `10:00 MDT` (+1h in summer)"
+          ]
+        },
+        {
+          "cells": [
+            "Phoenix (`America/Phoenix` — No DST)",
+            "`UTC-07:00` (`MST`)",
+            "`UTC-07:00` (`MST` year-round)",
+            "Winter: `09:00 MST` (matches Denver) | Summer: `08:00 MST` (matches LA, -1h)",
+            "Winter: `09:00 MST` | Summer: `09:00 MST` (Fixed at `16:00Z`)"
+          ]
+        },
+        {
+          "cells": [
+            "Los Angeles (`America/Los_Angeles` — DST)",
+            "`UTC-08:00` (`PST`)",
+            "`UTC-07:00` (`PDT`)",
+            "Winter: `08:00 PST` | Summer: `08:00 PDT` (Fixed)",
+            "Winter: `08:00 PST` | Summer: `09:00 PDT` (matches Phoenix in summer)"
+          ]
+        },
+        {
+          "cells": [
+            "Honolulu (`Pacific/Honolulu` — No DST)",
+            "`UTC-10:00` (`HST`)",
+            "`UTC-10:00` (`HST` year-round)",
+            "Winter: `06:00 HST` (-5h vs NY) | Summer: `05:00 HST` (-6h vs NY)",
+            "Winter: `06:00 HST` | Summer: `06:00 HST` (Fixed -3h vs Phoenix)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Always select `Mountain Standard Time - Phoenix` (`America/Phoenix`) rather than `Mountain Time - Denver` (`America/Denver`) for Arizona locations that do not observe DST.",
+      "Remember the Arizona mnemonic: `America/Phoenix` (`UTC-07:00`) shares wall-clock time with Denver (`MST`) from November to March, and shares wall-clock time with Los Angeles (`PDT`) from March to November.",
+      "For Hawaii (`Pacific/Honolulu`, `UTC-10:00`), remember that the gap to the U.S. West Coast is `2 hours` in winter (`08:00 PST = 06:00 HST`) and `3 hours` in summer (`08:00 PDT = 05:00 HST`), and `5 hours` vs `6 hours` to the U.S. East Coast.",
+      "Open Week view for the week of **March 8, 2026** and **November 1, 2026** to check whether any out-of-state recurring meetings slide into your local `America/Phoenix` or `Pacific/Honolulu` appointments."
+    ],
+    "faq": [
+      {
+        "q": "Why does the Navajo Nation in northeastern Arizona have a different calendar time zone rule from Phoenix?",
+        "a": "Because the Navajo Nation extends across Arizona, Utah, and New Mexico, it observes Daylight Saving Time (`MST`/`MDT`, matching `America/Denver` / `America/Shiprock`) so the entire reservation stays on a single time zone. Meanwhile, the Hopi Reservation (located entirely within Arizona) and the rest of Arizona follow `America/Phoenix` (`MST` year-round)."
+      },
+      {
+        "q": "If I live in Phoenix and want a recurring personal reminder to stay at 8:00 AM my time all year, how should I create it?",
+        "a": "Create the event with your calendar and event time zone set to `America/Phoenix` (`UTC-07:00`). Because `America/Phoenix` never observes DST, your local event stays at `08:00 MST` (`15:00:00Z`) all 12 months of the year."
+      },
+      {
+        "q": "What happens if an invite uses a hardcoded `UTC` start time (`DTSTART:...Z`) instead of a named time zone?",
+        "a": "A recurring series anchored in `UTC` (`Z`) behaves just like an event anchored in `America/Phoenix` or `Pacific/Honolulu`: it never changes in Phoenix or Honolulu, and it shifts by +1 hour in March and -1 hour in November for every DST-observing city."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "U.S. Naval Observatory — Daylight Saving Time FAQ (Arizona, Hawaii & Uniform Time Act)",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "IANA — Time Zone Database (`tzdb` / `zoneinfo`)",
+        "url": "https://www.iana.org/time-zones"
+      },
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.2.19 TZID & Section 3.6.5 VTIMEZONE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "overnight-event-across-dst-spring-forward-fall-back-duration": {
+    "updated": "2026-10-23",
+    "title": "Overnight Events & Night Shifts Across DST Changes: Why Duration Shifts to 7 or 9 Hours",
+    "short": "Overnight Events Across DST Transitions",
+    "description": "See how RFC 5545 `DTEND` vs `DURATION` calculates overnight shifts (`22:00–06:00`) across the 23-hour spring-forward and 25-hour fall-back DST nights.",
+    "lede": "When an overnight shift or maintenance window runs from `22:00` on Saturday to `06:00` on Sunday across a Daylight Saving Time transition, wall-clock end time and elapsed duration cannot both stay constant. On the spring-forward night, `22:00` to `06:00` is only 7 elapsed hours because `02:00` jumps straight to `03:00`; on the fall-back night, `22:00` to `06:00` is 9 elapsed hours because the `01:00` hour repeats.",
+    "commonBelief": "An event from `22:00` to `06:00` is always 8 hours long on every night of the year.",
+    "sections": [
+      {
+        "heading": "Nominal duration (`DTEND`) versus exact duration (`DURATION`) in RFC 5545",
+        "body": [
+          "The iCalendar specification (RFC 5545 Section 3.3.6 `DURATION`, Section 3.8.2.2 `DTEND`, Section 3.8.2.5 `DURATION`, and Section 3.8.5.3 `Recurrence Rule`) explicitly distinguishes between **nominal (wall-clock) duration** and **exact (elapsed) duration** when an event crosses a Daylight Saving Time discontinuity.",
+          "In a `VEVENT`, you can define the end of an event using either `DTEND` or `DURATION` (never both in the same component). When a calendar stores a zoned `DTSTART` and `DTEND` (for example, `DTSTART;TZID=America/New_York:20260307T220000` and `DTEND;TZID=America/New_York:20260308T060000`), it locks both endpoints to local wall-clock time (`22:00` and `06:00`). When a calendar stores `DTSTART` plus an exact `DURATION` (for example, `DURATION:PT8H`, meaning exactly 8 hours = 28,800 seconds), it counts exact elapsed time from `DTSTART`.",
+          "On 363 nights of the year, `22:00` to `06:00` and `PT8H` produce the exact same result. On the two annual DST switch nights, they diverge by `+1 hour` or `-1 hour`."
+        ]
+      },
+      {
+        "heading": "Illustrative calculation across the 2026 Spring-Forward and Fall-Back nights",
+        "body": [
+          "Let us trace an illustrative overnight event starting at `22:00` on Saturday and nominally ending at `06:00` on Sunday in `America/New_York` across both 2026 transitions (this is an illustrative calendar-protocol calculation only, not payroll or labor-law advice).",
+          "**Spring Forward (Saturday, March 7, 2026 `22:00 EST` into Sunday, March 8, 2026):** `DTSTART` is `2026-03-07T22:00:00-05:00`, which equals `2026-03-08T03:00:00Z` in UTC. At `02:00:00 EST` (`07:00:00Z`), clocks spring forward to `03:00:00 EDT` (`-04:00`). If the event ends at wall-clock `DTEND` `06:00:00 EDT` (`2026-03-08T10:00:00Z`), the elapsed time is `10:00:00Z - 03:00:00Z = 7.0 hours` (2 hours before midnight + 2 hours `00:00–02:00 EST` + 3 hours `03:00–06:00 EDT`). Conversely, if the event uses exact `DURATION:PT8H` (`03:00:00Z + 8 hours = 11:00:00Z`), it finishes at `07:00:00 EDT` on Sunday morning.",
+          "**Fall Back (Saturday, October 31, 2026 `22:00 EDT` into Sunday, November 1, 2026):** `DTSTART` is `2026-10-31T22:00:00-04:00`, which equals `2026-11-01T02:00:00Z` in UTC. At `02:00:00 EDT` (`06:00:00Z`), clocks fall back to `01:00:00 EST` (`-05:00`) and repeat the `01:00–02:00` hour. If the event ends at wall-clock `DTEND` `06:00:00 EST` (`2026-11-01T11:00:00Z`), the elapsed time is `11:00:00Z - 02:00:00Z = 9.0 hours` (2 hours before midnight + 2 hours `00:00–02:00 EDT` + 1 repeated hour `01:00–02:00 EST` + 4 hours `02:00–06:00 EST`). Conversely, if the event uses exact `DURATION:PT8H` (`02:00:00Z + 8 hours = 10:00:00Z`), it finishes after 8 elapsed hours at `05:00:00 EST` on Sunday morning."
+        ]
+      },
+      {
+        "heading": "What happens to events scheduled inside the nonexistent `02:00` gap or repeated `01:00` hour",
+        "body": [
+          "RFC 5545 Section 3.3.5 (`DATE-TIME`) also specifies exact deterministic rules when an event's `DTSTART` or `DTEND` itself lands inside the skipped spring-forward hour (`02:00:00` to `02:59:59` in the US, or `01:00:00` to `01:59:59` in the UK) or the repeated fall-back hour (`01:00:00` to `01:59:59`).",
+          "For a **nonexistent spring-forward time** (such as `02:30` on Sunday, March 8, 2026 in `America/New_York`), RFC 5545 states that the time is adjusted forward by the duration of the gap (`+01:00`), resolving `02:30` across the `02:00 -> 03:00` gap to `03:30 EDT` (`07:30:00Z`).",
+          "For an **ambiguous repeated fall-back time** (such as `01:30` on Sunday, November 1, 2026 in `America/New_York`, which occurs once at `01:30 EDT = 05:30:00Z` and again 60 minutes later at `01:30 EST = 06:30:00Z`), RFC 5545 specifies that the timestamp refers to the **first occurrence** of that wall-clock time (`01:30 EDT`, prior to the `02:00 -> 01:00` fallback)."
+        ]
+      },
+      {
+        "heading": "How to keep recurring night shifts aligned at `06:00` or `07:00` handover on DST Sundays",
+        "body": [
+          "In 24/7 shift handovers, the relief crew still reports at wall-clock `06:00` or `07:00` on Sunday morning, meaning the overnight crew works 7 elapsed hours in March and 9 elapsed hours in November (or 11 hours and 13 hours on a `19:00–07:00` 12-hour shift).",
+          "If a recurring calendar series was created with an exact 8-hour or 12-hour `DURATION` (`PT8H` / `PT12H`) and displays the Sunday morning end time as `07:00` instead of `06:00` on March 8 (or `05:00` instead of `06:00` on November 1), edit that single Sunday instance (`This event only`) so the handover time matches `06:00` local wall-clock time and note the `7.0h` or `9.0h` actual elapsed duration in the title."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Overnight Event (`22:00 Sat – 06:00 Sun`) Across 2026 US DST Transitions (`America/New_York`)",
+      "columns": [
+        "Transition Night (2026)",
+        "`DTSTART` (Local & UTC)",
+        "Clock Transition at `02:00`",
+        "Wall-Clock `DTEND` (`06:00` Local) Result",
+        "Exact `DURATION:PT8H` (8 Elapsed Hours) Result",
+        "`19:00–07:00` (12h Nominal Shift) Elapsed Hours"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Normal Night (e.g., Sat Feb 28 -> Sun Mar 1, 2026)",
+            "`22:00 EST` (`03:00:00Z`)",
+            "None (`02:00 EST` continues normally)",
+            "Ends `06:00 EST` (`11:00:00Z`) = **8.0 elapsed hours**",
+            "Ends `06:00 EST` (`11:00:00Z`) = **8.0 elapsed hours**",
+            "`19:00 EST` to `07:00 EST` = **12.0 elapsed hours**"
+          ]
+        },
+        {
+          "cells": [
+            "Spring Forward (Sat Mar 7 -> Sun Mar 8, 2026)",
+            "`22:00 EST` (`03:00:00Z`)",
+            "`02:00 EST` jumps to `03:00 EDT` (23-hour day)",
+            "Ends `06:00 EDT` (`10:00:00Z`) = **7.0 elapsed hours** (-1h)",
+            "Ends `07:00 EDT` (`11:00:00Z`) = **8.0 elapsed hours**",
+            "`19:00 EST` to `07:00 EDT` = **11.0 elapsed hours** (-1h)"
+          ]
+        },
+        {
+          "cells": [
+            "Fall Back (Sat Oct 31 -> Sun Nov 1, 2026)",
+            "`22:00 EDT` (`02:00:00Z`)",
+            "`02:00 EDT` falls back to `01:00 EST` (25-hour day)",
+            "Ends `06:00 EST` (`11:00:00Z`) = **9.0 elapsed hours** (+1h)",
+            "Ends `05:00 EST` (`10:00:00Z`) = **8.0 elapsed hours**",
+            "`19:00 EDT` to `07:00 EST` = **13.0 elapsed hours** (+1h)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Audit your Saturday-night-into-Sunday-morning calendar events on the two DST transition weekends (**March 7–8, 2026** and **October 31–November 1, 2026** in the US; **March 28–29, 2026** and **October 24–25, 2026** in the UK/EU).",
+      "Check whether your calendar client or shift export held the Sunday morning end time at wall-clock `06:00`/`07:00` (7h/11h in spring, 9h/13h in autumn) or held the elapsed duration at 8h/12h (shifting the Sunday morning end time by an hour).",
+      "In Supershift or hour-tracking calendars, adjust the single DST-night shift's recorded hours (`-1.0h` on spring-forward night, `+1.0h` on fall-back night) if you want your monthly hour total to reflect exact elapsed hours.",
+      "Avoid scheduling automated backups, cron jobs, or maintenance handovers between `01:00` and `02:59` local time on Sunday mornings; anchor technical maintenance windows in `UTC` if exact elapsed duration is required."
+    ],
+    "faq": [
+      {
+        "q": "Why did my recurring `22:00–06:00` calendar event show `22:00–07:00` on the Sunday morning of the spring-forward change?",
+        "a": "As noted in RFC 5545 Section 3.8.5.3, when a recurring event's duration is evaluated as exact elapsed time (`PT8H` = 8 hours from `22:00 EST` / `03:00Z`), adding 8 real hours lands at `11:00Z`, which is `07:00 EDT` after the `02:00 -> 03:00` jump. Editing `This event only` on that Sunday morning sets the handover back to `06:00 EDT` (7 elapsed hours)."
+      },
+      {
+        "q": "What happens in the UK when an overnight shift crosses the clock change?",
+        "a": "The exact same math applies one hour earlier on the clock: on Sunday, March 29, 2026, UK clocks jump from `01:00 GMT` to `02:00 BST` (making a `22:00–06:00` shift 7 elapsed hours), and on Sunday, October 25, 2026, UK clocks fall back from `02:00 BST` to `01:00 GMT` (making a `22:00–06:00` shift 9 elapsed hours)."
+      },
+      {
+        "q": "Which `01:30 AM` does a calendar alarm fire on when clocks fall back from `02:00` to `01:00`?",
+        "a": "Under RFC 5545 Section 3.3.5, an ambiguous local `DATE-TIME` during a fall-back transition resolves to the **first occurrence** of that wall-clock hour (while still in Daylight Saving Time, one hour before the second `01:30` in Standard Time)."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Sections 3.3.5 DATE-TIME, 3.3.6 DURATION & 3.8.5.3 RRULE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "U.S. Naval Observatory — Daylight Saving Time FAQ",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "GOV.UK — When do the clocks change?",
+        "url": "https://www.gov.uk/when-do-the-clocks-change"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Calendar Notifications Missing, Silent, or Duplicated"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "when-two-calendars-disagree",
+      "calendar-notifications-missing-silent-or-duplicated"
+    ]
+  },
+  "separate-start-and-end-time-zones-calendar-events": {
+    "updated": "2026-10-23",
+    "title": "Separate Start and End Time Zones on Calendar Events: How Dual-TZID Math Works",
+    "short": "Separate Start & End Time Zones",
+    "description": "Use separate start (`DTSTART;TZID`) and end (`DTEND;TZID`) time zones in Google Calendar, Outlook, and Apple Calendar so cross-zone events keep exact duration.",
+    "lede": "Most calendar events begin and end in the same city, so a single time zone selector is enough. When an event physically moves between time zones—such as a flight, an intercity train, or a long-haul coaching/transport leg—assigning separate `TZID` values to the start time and end time lets you type the exact departure and arrival wall-clock times from your ticket while the calendar computes the true elapsed UTC duration.",
+    "commonBelief": "A single calendar event can only have one time zone, so you have to convert the arrival time into your departure city's time zone in your head.",
+    "sections": [
+      {
+        "heading": "How RFC 5545 allows distinct `TZID` parameters on `DTSTART` and `DTEND`",
+        "body": [
+          "In the iCalendar protocol (RFC 5545 Sections 3.2.19 `TZID`, 3.8.2.2 `DTEND`, and 3.8.2.4 `DTSTART`), the time zone identifier (`TZID`) is a property parameter attached individually to `DTSTART` and `DTEND`—not a single global header on the `VEVENT`. That means an event is completely valid when `DTSTART` carries one IANA zone and `DTEND` carries another: `DTSTART;TZID=America/Los_Angeles:20261110T080000` and `DTEND;TZID=America/New_York:20261110T163000`.",
+          "As documented by Google Calendar (`Use Google Calendar in different time zones`) and Microsoft Outlook (`Manage time zone settings in Outlook`), the calendar engine converts both endpoints independently into UTC (`Coordinated Universal Time`). The true elapsed length of the event on your calendar grid is `UTC(DTEND) - UTC(DTSTART)`.",
+          "If you forget to change the end time zone and enter `08:00` to `16:30` with both endpoints set to `America/Los_Angeles`, the calendar records an **8.5-hour** event (`16:00Z` to `00:30Z +1d`) instead of the real **5.5-hour** flight (`16:00Z` to `21:30Z`), blocking three extra hours on your calendar after you have already landed in New York."
+        ]
+      },
+      {
+        "heading": "Illustrative UTC and grid-length calculations across Eastbound, Westbound, and Date-Line events",
+        "body": [
+          "Look at three illustrative cross-zone events on Tuesday, November 10, 2026 (standard time in North America and Europe) to see how dual `TZID` endpoints prevent negative or inflated durations:",
+          "1. **Eastbound (`America/Los_Angeles` `UTC-8` to `America/New_York` `UTC-5`):** Departure `08:00 PST` (`16:00:00Z`), Arrival `16:30 EST` (`21:30:00Z`). Elapsed UTC duration: `21:30Z - 16:00Z = 5.5 hours`. Leaving both zones as `Los Angeles` falsely creates an `8.5-hour` block (`+3h` error).",
+          "2. **Westbound (`Europe/London` `UTC+0` to `America/New_York` `UTC-5`):** Departure `11:00 GMT` (`11:00:00Z`), Arrival `14:00 EST` (`19:00:00Z`). Elapsed UTC duration: `19:00Z - 11:00Z = 8.0 hours`. Leaving both zones as `London` falsely creates a `3.0-hour` block (`-5h` error), leaving 5 hours of your actual flight unblocked.",
+          "3. **Westbound Across the International Date Line (`Asia/Tokyo` `UTC+9` to `America/Los_Angeles` `UTC-8`):** Departure `Tue Nov 10 17:00 JST` (`2026-11-10T08:00:00Z`), Arrival `Tue Nov 10 10:00 PST` (`2026-11-10T18:00:00Z`—7 hours earlier on the same calendar date!). Elapsed UTC duration: `18:00Z - 08:00Z = 10.0 hours`. Without separate start (`Asia/Tokyo`) and end (`America/Los_Angeles`) time zones, a calendar will not even allow you to enter an end time (`10:00`) that is earlier on the same date than the start time (`17:00`)."
+        ]
+      },
+      {
+        "heading": "How Google Calendar, Outlook, and Apple Calendar render a dual-TZID event before and after you travel",
+        "body": [
+          "Because calendar views only draw one primary time axis at a time, a dual-zone event is always rendered on the grid using your **currently active viewer time zone**:",
+          "- **While you are still in Los Angeles (`America/Los_Angeles`):** The `08:00 PST -> 16:30 EST` flight occupies `08:00 to 13:30 PST` (`5.5 hours` tall) on your Tuesday column, showing you that a colleague in California can reach you after `13:30 PST`.",
+          "- **Once you land in New York and your device switches to `America/New_York`:** The exact same event now occupies `11:00 to 16:30 EST` (`5.5 hours` tall) on your Tuesday column, so its bottom edge aligns at `16:30 EST` right before your `17:30 EST` Manhattan dinner.",
+          "- **Where to set it in each app:** In **Google Calendar** (Web), open the event editor, click `Time zone`, and check `Specify separate start and end time zones` (on mobile, tap the time zone row for Start and End separately). In **Microsoft Outlook**, click the `Time zones` button on the Event ribbon to reveal separate Start time zone and End time zone dropdowns."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Dual-TZID Endpoint Math Across Three Cross-Zone Routes (Nov 10, 2026)",
+      "columns": [
+        "Route & Direction",
+        "`DTSTART` (`TZID` & UTC)",
+        "`DTEND` (`TZID` & UTC)",
+        "True Elapsed UTC Duration",
+        "Grid Span in Departure Zone",
+        "Error if Entered in Single Departure Zone"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1. Eastbound: LA (`UTC-8`) -> NY (`UTC-5`)",
+            "`08:00 America/Los_Angeles` (`16:00Z`)",
+            "`16:30 America/New_York` (`21:30Z`)",
+            "**5.5 hours** (`16:00Z–21:30Z`)",
+            "`08:00–13:30 PST` (`11:00–16:30 EST` on arrival)",
+            "`8.5 hours` (`+3.0h` too long; blocks `16:30–19:30 EST`)"
+          ]
+        },
+        {
+          "cells": [
+            "2. Westbound: London (`UTC+0`) -> NY (`UTC-5`)",
+            "`11:00 Europe/London` (`11:00Z`)",
+            "`14:00 America/New_York` (`19:00Z`)",
+            "**8.0 hours** (`11:00Z–19:00Z`)",
+            "`11:00–19:00 GMT` (`06:00–14:00 EST` on arrival)",
+            "`3.0 hours` (`-5.0h` too short; leaves `14:00–19:00 GMT` unblocked)"
+          ]
+        },
+        {
+          "cells": [
+            "3. Transpacific: Tokyo (`UTC+9`) -> LA (`UTC-8`)",
+            "`Tue 17:00 Asia/Tokyo` (`08:00Z`)",
+            "`Tue 10:00 America/Los_Angeles` (`18:00Z`)",
+            "**10.0 hours** (`08:00Z–18:00Z`)",
+            "`Tue 17:00 – Wed 03:00 JST` (`Tue 00:00–10:00 PST` on arrival)",
+            "Rejected (`End time 10:00 is before Start time 17:00 on same date`)"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Always enable separate Start and End time zones whenever an event's physical start location and end location sit in different IANA time zones.",
+      "Copy the exact local departure time into Start (with the departure city's `TZID`) and the exact local arrival time into End (with the arrival city's `TZID`)—never pre-convert either number in your head.",
+      "Include both local wall-clock times in the event title (for example, `LAX -> JFK [08:00 PST – 16:30 EST]`) so you can read the arrival local hour even while your phone is still in the departure time zone.",
+      "Schedule your first post-arrival meeting in the destination city's `TZID` (`America/New_York` in our example) so it sits immediately below the arrival edge of the dual-zone flight event."
+    ],
+    "faq": [
+      {
+        "q": "Why does my `08:00 PST – 16:30 EST` flight look like it ends at `1:30 PM` while I am still in Los Angeles?",
+        "a": "Because your calendar grid in Los Angeles is drawn in Pacific Time (`PST`), and `16:30 EST` in New York is simultaneously `13:30 PST` in Los Angeles. As soon as your phone lands in New York and switches to Eastern Time, the block shifts to `11:00 AM – 4:30 PM EST`."
+      },
+      {
+        "q": "Can I use separate start and end time zones on a recurring event?",
+        "a": "In Google Calendar and Outlook, separate start and end time zones are designed for single cross-zone events; if a route occurs on multiple dates, duplicate the dual-zone event onto the specific travel dates so each date converts using its exact seasonal DST offset."
+      },
+      {
+        "q": "How do I enter a Tokyo-to-Los-Angeles flight that lands 7 hours 'before' it took off on the same calendar date?",
+        "a": "First set the Start Time Zone to `Asia/Tokyo` (`17:00 Tue Nov 10`) and the End Time Zone to `America/Los_Angeles` (`10:00 Tue Nov 10`). Because the calendar compares `08:00Z` and `18:00Z` in UTC, it accepts `10:00 PST` as 10 hours after `17:00 JST`."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Sections 3.2.19 TZID, 3.8.2.2 DTEND & 3.8.2.4 DTSTART)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      },
+      {
+        "label": "Microsoft Support — Manage time zone settings in Outlook",
+        "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      },
+      {
+        "label": "Apple Support — Set up multiple calendars and time zone settings on iPhone",
+        "url": "https://support.apple.com/guide/iphone/iph69525c028/ios"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "southern-hemisphere-reverse-dst-two-hour-meeting-shift": {
+    "updated": "2026-10-23",
+    "title": "Southern Hemisphere Reverse DST: Why Sydney & Auckland Meetings Shift by 2 Hours",
+    "short": "Southern Hemisphere 2-Hour DST Swing",
+    "description": "Understand why recurring meetings between North America/Europe and Sydney or Auckland swing by 2 full hours across four seasonal DST windows.",
+    "lede": "When you schedule a recurring meeting between North America or Europe and a DST-observing Southern Hemisphere city such as Sydney (`Australia/Sydney`) or Auckland (`Pacific/Auckland`), the time difference does not just wobble for a week or two—it swings by a **full two hours** between Northern summer and Northern winter. Because one hemisphere springs forward (+1h) while the other falls back (-1h), a late-afternoon call in New York or morning call in London slides across three different wall-clock hours over the course of a year.",
+    "commonBelief": "The time difference between New York or London and Sydney is constant except for a short one-week transition in spring and autumn.",
+    "sections": [
+      {
+        "heading": "Why opposite-hemisphere DST creates a 2-hour annual swing",
+        "body": [
+          "As noted by the U.S. Naval Observatory (`Daylight Saving Time`), summer in the Southern Hemisphere occurs between October and April—the exact opposite of the Northern Hemisphere's March-to-November summer. Consequently, jurisdictions in the Southern Hemisphere that observe Daylight Saving Time—including southeastern Australia (`Australia/Sydney`, `Australia/Melbourne`, `Australia/Adelaide`, `Australia/Hobart`) and New Zealand (`Pacific/Auckland`)—move their clocks **forward** in early October (or late September in New Zealand) and move their clocks **back** on the first Sunday in April.",
+          "Consider the algebraic offset difference `Offset(Sydney) - Offset(New_York)`: in Northern summer (June), New York is on `EDT` (`UTC-04:00`) while Sydney is on winter standard time `AEST` (`UTC+10:00`), giving a difference of `+10 - (-4) = 14 hours`. In Northern winter (December), New York falls back `-1 hour` to `EST` (`UTC-05:00`) while Sydney springs forward `+1 hour` to summer time `AEDT` (`UTC+11:00`), giving a difference of `+11 - (-5) = 16 hours`.",
+          "The same 2-hour swing happens between London (`Europe/London`) and Sydney: in June, London (`BST`, `UTC+1`) to Sydney (`AEST`, `UTC+10`) is **9 hours**; in December, London (`GMT`, `UTC+0`) to Sydney (`AEDT`, `UTC+11`) is **11 hours**."
+        ]
+      },
+      {
+        "heading": "Illustrative four-season matrix: New York, London, and Sydney across a full year",
+        "body": [
+          "Because the Northern and Southern switch Sundays do not happen on the exact same weekend, the annual calendar passes through **four distinct offset regimes** (stepping `14h -> 15h -> 16h -> 15h -> 14h` between New York and Sydney):",
+          "- **Regime 1 (Northern Summer / Southern Winter — First Sunday in April to First Sunday in October):** New York is `EDT` (`UTC-4`), London is `BST` (`UTC+1`), Sydney is `AEST` (`UTC+10`). Offset is **14 hours** (NY–Sydney) and **9 hours** (London–Sydney). A `16:00 EDT` Monday call in New York is `06:00 AEST` Tuesday in Sydney.",
+          "- **Regime 2 (October Shoulder — First Sunday in October to Late October / Early November):** Sydney springs forward to `AEDT` (`UTC+11`) on the first Sunday in October (October 4, 2026), while New York is still on `EDT` (`UTC-4`) until November 1, 2026 (and London is on `BST` until October 25, 2026). Offset is **15 hours** (NY–Sydney) and **10 hours** (London–Sydney). The `16:00 EDT` NY call is now `07:00 AEDT` Tuesday in Sydney.",
+          "- **Regime 3 (Northern Winter / Southern Summer — Early November to Mid/Late March):** New York is `EST` (`UTC-5`), London is `GMT` (`UTC+0`), Sydney is `AEDT` (`UTC+11`). Offset reaches its maximum of **16 hours** (NY–Sydney) and **11 hours** (London–Sydney). The `16:00 EST` NY call is now `08:00 AEDT` Tuesday in Sydney.",
+          "- **Regime 4 (March/April Shoulder — Second Sunday in March to First Sunday in April):** New York springs forward to `EDT` (`UTC-4`) on March 8, 2026, while Sydney remains on `AEDT` (`UTC+11`) until the first Sunday in April (April 5, 2026). Offset steps back to **15 hours** (`16:00 EDT` NY = `07:00 AEDT` Sydney) for four weeks until April 5 returns the gap to **14 hours**."
+        ]
+      },
+      {
+        "heading": "Why anchoring to one city pushes the other city outside business hours",
+        "body": [
+          "With a 1-hour same-hemisphere shift, a `09:00` meeting moving to `10:00` stays comfortably inside standard working hours. With a **2-hour opposite-hemisphere swing**, a meeting anchored at `17:00 New York` (`07:00 AEST` Sydney in June) moves to `09:00 AEDT` in December—or, if anchored the other way at `09:00 Sydney` in December (`17:00 EST` New York), moves to `19:00 EDT` in New York in June.",
+          "Even worse, between Europe (`UTC+0`/`+1` or `UTC+1`/`+2`) and Sydney (`UTC+10`/`+11`) or Auckland (`UTC+12`/`+13`), the narrow overlap window (`08:00 London = 17:00 Sydney` in June) stretches to `08:00 London = 19:00 Sydney` (and `21:00 Auckland`) in December."
+        ]
+      },
+      {
+        "heading": "How teams split the 2-hour seasonal swing using two 6-month series",
+        "body": [
+          "Instead of forcing one hemisphere to absorb the full 2-hour shift, distributed US/Europe–APAC teams often split the difference by running **two semi-annual recurring series** bounded with `UNTIL` dates: an April-to-October series and an October-to-April series that shifts each side by just 1 hour (`16:00 NY / 06:00–07:00 SYD` vs `17:00 NY / 08:00–09:00 SYD`), or by alternating morning and evening slots every second meeting (`FREQ=WEEKLY;INTERVAL=2`)."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Four-Season Offset & Meeting Matrix: New York (`America/New_York`), London (`Europe/London`) & Sydney (`Australia/Sydney`)",
+      "columns": [
+        "Seasonal Window (2026 Cycle)",
+        "New York & London Zones",
+        "Sydney Zone (`Australia/Sydney`)",
+        "NY–Sydney & UK–Sydney Offset",
+        "If Fixed at `16:00 NY` (`TZID=America/New_York`)",
+        "If Fixed at `08:00 Tue Sydney` (`TZID=Australia/Sydney`)"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1. Nov 1, 2026 – Mar 13, 2027 (Northern Winter / Southern Summer)",
+            "NY: `EST` (`UTC-5`); UK: `GMT` (`UTC+0`)",
+            "`AEDT` (`UTC+11`)",
+            "**+16h** vs NY / **+11h** vs UK",
+            "Mon `16:00 EST` NY = Tue `08:00 AEDT` Sydney",
+            "Tue `08:00 AEDT` Sydney = Mon `16:00 EST` NY (`21:00 GMT` UK)"
+          ]
+        },
+        {
+          "cells": [
+            "2. Mar 8 – Apr 4, 2026 (4-Week March/April Shoulder)",
+            "NY: `EDT` (`UTC-4`); UK: `GMT` -> `BST` Mar 29",
+            "`AEDT` (`UTC+11`, switches Apr 5)",
+            "**+15h** vs NY / **+11h -> +10h** vs UK",
+            "Mon `16:00 EDT` NY = Tue `07:00 AEDT` Sydney (-1h in SYD)",
+            "Tue `08:00 AEDT` Sydney = Mon `17:00 EDT` NY (+1h in NY)"
+          ]
+        },
+        {
+          "cells": [
+            "3. Apr 5 – Oct 3, 2026 (Northern Summer / Southern Winter)",
+            "NY: `EDT` (`UTC-4`); UK: `BST` (`UTC+1`)",
+            "`AEST` (`UTC+10`)",
+            "**+14h** vs NY / **+9h** vs UK",
+            "Mon `16:00 EDT` NY = Tue `06:00 AEST` Sydney (-2h vs Dec!)",
+            "Tue `08:00 AEST` Sydney = Mon `18:00 EDT` NY (+2h vs Dec!)"
+          ]
+        },
+        {
+          "cells": [
+            "4. Oct 4 – Oct 31, 2026 (4-Week October Shoulder)",
+            "NY: `EDT` (`UTC-4`); UK: `BST` -> `GMT` Oct 25",
+            "`AEDT` (`UTC+11`, sprung forward Oct 4)",
+            "**+15h** vs NY / **+10h -> +11h** vs UK",
+            "Mon `16:00 EDT` NY = Tue `07:00 AEDT` Sydney",
+            "Tue `08:00 AEDT` Sydney = Mon `17:00 EDT` NY"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Never assume a 1-hour seasonal shift for Sydney (`Australia/Sydney`), Melbourne, Adelaide, Hobart, Auckland (`Pacific/Auckland`), or Santiago (`America/Santiago`)—budget for a full **2-hour swing** between June and December.",
+      "Note that Brisbane/Queensland (`Australia/Brisbane`, `UTC+10` year-round) and Perth (`Australia/Perth`, `UTC+8` year-round) do **not** observe DST, so their offset to New York/London shifts by only **1 hour** per year while Sydney/Melbourne shift by **2 hours**.",
+      "Remember the International Date Line weekday offset: a Monday afternoon (`16:00` or `17:00`) meeting in North America is always **Tuesday morning** in Sydney and Auckland.",
+      "Use two 6-month recurring series (April–October and October–April) to split the 2-hour seasonal swing by 1 hour on each side so neither team is forced into a `05:30 AM` or `20:00 PM` call."
+    ],
+    "faq": [
+      {
+        "q": "Why does Brisbane (`Australia/Brisbane`) only shift by 1 hour relative to New York while Sydney (`Australia/Sydney`) shifts by 2 hours?",
+        "a": "Queensland (`Australia/Brisbane`) stays on Australian Eastern Standard Time (`AEST`, `UTC+10:00`) all year, just like Arizona stays on `UTC-07:00`. Therefore, only New York's clock changes between `America/New_York` and `Australia/Brisbane` (`14 hours` in June vs `15 hours` in December), whereas both New York and Sydney change clocks in opposite directions (`14 hours` in June vs `16 hours` in December)."
+      },
+      {
+        "q": "What is the time difference swing between New York or London and Auckland, New Zealand (`Pacific/Auckland`)?",
+        "a": "New Zealand observes `NZST` (`UTC+12:00`) from the first Sunday in April to the last Sunday in September and `NZDT` (`UTC+13:00`) from late September to early April. That creates a **16-to-18-hour swing** against New York (`UTC-4`/`UTC-5`) and an **11-to-13-hour swing** against London (`UTC+1`/`UTC+0`)."
+      },
+      {
+        "q": "If I edit the weekday of a New York–Sydney recurring invite while viewing it in Sydney on Tuesday morning, which weekday should be checked in `BYDAY`?",
+        "a": "If the event's `TZID` is `America/New_York`, the `BYDAY` rule is stored in the organizer's time zone (`BYDAY=MO` for Monday afternoon in New York, which renders on Tuesday morning in Sydney). Always check which `TZID` the series uses before toggling weekday checkboxes."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "U.S. Naval Observatory — Daylight Saving Time FAQ (Northern vs Southern Hemisphere summer time)",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "GOV.UK — When do the clocks change?",
+        "url": "https://www.gov.uk/when-do-the-clocks-change"
+      },
+      {
+        "label": "IANA — Time Zone Database (`tzdb` / `zoneinfo`)",
+        "url": "https://www.iana.org/time-zones"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "iana-tzdb-government-time-zone-rule-change-calendar": {
+    "updated": "2026-10-23",
+    "title": "When a Country or State Changes Time Zone Rules: Why Existing Calendar Events Shift by 1 Hour",
+    "short": "Time Zone Law Changes & Calendar Drift",
+    "description": "Learn why existing calendar events land 1 hour off after a government changes DST or UTC offset laws, how IANA `tzdb` updates work, and how to fix them.",
+    "lede": "Routine Daylight Saving Time switches follow predictable recurring rules already built into your operating system's time zone database. When a national or state government passes a new law—abolishing DST, adopting permanent summer time, or changing its DST start/end dates—events that were created **before** your device or calendar server received the updated IANA Time Zone Database (`tzdb`) can appear one hour off even after the OS updates.",
+    "commonBelief": "As soon as your phone updates its operating system for a new time zone law, every previously scheduled event on your calendar automatically corrects itself.",
+    "sections": [
+      {
+        "heading": "How the IANA Time Zone Database (`tzdb`) tracks political time zone changes",
+        "body": [
+          "As documented by the Internet Assigned Numbers Authority (`IANA Time Zone Database`), the `tz` (or `zoneinfo`) database maintains the history and predicted rules for UTC offsets and Daylight Saving Time across global regions, identified by `Area/Location` strings such as `America/New_York`, `America/Mexico_City`, or `Europe/Kyiv`. Whenever a legislature or ministry changes a country's UTC offset or DST schedule, IANA publishes a new `tzdb` release (such as `2026a`, `2026b`), which operating system vendors (Apple, Google, Microsoft, Linux distributions) then ship in OS and server updates.",
+          "Similarly, the U.S. Naval Observatory notes that time zone boundaries and DST rules are statutory decisions that can be amended by legislatures—sometimes with months of notice, and occasionally with only days or weeks of notice before the old switch date.",
+          "Between the day a government announces a rule change and the day every participant's laptop, phone, and calendar server installs the new `tzdb` package, different devices evaluate the same `TZID` using different offset tables."
+        ]
+      },
+      {
+        "heading": "Why Google Calendar warns that pre-change events can stay 1 hour off",
+        "body": [
+          "Even after every device installs the updated `tzdb`, previously created events can still sit at the wrong hour. In its official documentation (`Use Google Calendar in different time zones`), Google explicitly explains why: **Google Calendar converts every event from your local time zone into UTC (`Coordinated Universal Time`) at the moment the event is created**, using the time zone rules that were currently known at creation time.",
+          "If an area switches its time zone rules after an event was already saved, Google Calendar notes that **events created before the policy change was known may be in the wrong time zone (off by 1 hour)** because their stored UTC timestamp was computed using the old seasonal offset.",
+          "A second mechanism causes the same 1-hour drift in `.ics` email invites and CalDAV clients: under RFC 5545 Section 3.6.5, every zoned `.ics` invite embeds a snapshot of its `VTIMEZONE` component (`STANDARD` and `DAYLIGHT` subcomponents with `TZOFFSETFROM` and `TZOFFSETTO`) at the moment the invite is sent. If an invite sent six months ago embedded an old `VTIMEZONE` rule saying DST starts on the first Sunday in April, recipients whose mail clients honor that embedded `VTIMEZONE` will still shift the event in April even after the country abolished DST."
+        ]
+      },
+      {
+        "heading": "Illustrative trace: A `09:00` event created before vs after a DST abolition law",
+        "body": [
+          "Consider an illustrative region (`Region/Example_City`) that historically observed Winter Standard Time at `UTC-06:00` and Summer Daylight Time at `UTC-05:00` starting on the first Sunday in April. In January, a user schedules a future dentist appointment or recurring meeting for **Monday, May 11 at `09:00` local time**. Because the old rule says May is `UTC-05:00`, the calendar converts `09:00 (-05:00)` and stores the UTC instant `14:00:00Z`.",
+          "In February, the government passes a law abolishing summer time, keeping the region at `UTC-06:00` year-round. In March, the user's phone installs the updated IANA `tzdb` where May is now `UTC-06:00`.",
+          "When May 11 arrives, the calendar reads the stored UTC timestamp (`14:00:00Z`) and converts it to the newly updated local offset (`UTC-06:00`): `14:00:00Z - 6 hours = 08:00 local time`. The appointment that was originally typed as `09:00` now displays at **`08:00`** (one hour early), whereas a brand-new `09:00` event created after the `tzdb` update converts `09:00 (-06:00)` to `15:00:00Z` and displays at `09:00`."
+        ]
+      },
+      {
+        "heading": "Checklist: How to repair affected events and recurring series after a rule change",
+        "body": [
+          "1. **Verify that your OS and calendar app have the latest `tzdb` update:** On iPhone/iPad (`Settings > General > Date & Time`), verify that updated time zone definitions have downloaded before you edit any events—if you edit an event while your device still has the old `tzdb`, re-saving it simply recalculates the old UTC timestamp.",
+          "2. **Re-save affected single events created before the law change:** Open any future single event that shifted from `09:00` to `08:00` (or `10:00`), set the start time back to `09:00` under the updated `TZID`, and save so the calendar writes the corrected UTC timestamp (`15:00:00Z`).",
+          "3. **Split or re-save recurring series at the effective date of the new law:** If a recurring series crosses the date the new law takes effect, use `This and following events` starting on the first occurrence after the law change (or edit and re-save the series from the organizer's updated calendar) so an updated `VTIMEZONE` and UTC schedule are sent to all attendees."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Illustrative Trace: How Pre-Change vs Post-Change Calendar Events Behave After a Government Abolishes DST",
+      "columns": [
+        "Stage in Lifecycle",
+        "Active IANA `tzdb` Rule for May 11",
+        "User Input (`DTSTART` Local)",
+        "Stored UTC Timestamp",
+        "Displayed Local Time on May 11 (After `tzdb` Update to `UTC-06:00`)",
+        "Status & Required Fix"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1. Event A created in January (Before law change)",
+            "Old rule: May uses Summer DST (`UTC-05:00`)",
+            "`09:00` local time",
+            "`14:00:00Z` (`09:00 + 5h`)",
+            "**`08:00` local time** (`14:00Z - 6h` = 1h early!)",
+            "Stale UTC conversion; re-edit to `09:00` and save after `tzdb` update"
+          ]
+        },
+        {
+          "cells": [
+            "2. `.ics` Invite sent in January with embedded `VTIMEZONE`",
+            "Old `VTIMEZONE` (`DAYLIGHT` `-0600 -> -0500` in April)",
+            "`09:00` (`TZID` with old `VTIMEZONE`)",
+            "Evaluated via embedded `-0500` offset (`14:00:00Z`)",
+            "**`08:00` local time** for updated `UTC-06:00` viewers",
+            "Organizer must send an updated invite (`SEQUENCE+1`) with new `tzdb`"
+          ]
+        },
+        {
+          "cells": [
+            "3. Event B created in April (After OS/Server `tzdb` update)",
+            "New rule: May stays on Standard Time (`UTC-06:00`)",
+            "`09:00` local time",
+            "`15:00:00Z` (`09:00 + 6h`)",
+            "**`09:00` local time** (`15:00Z - 6h` = exact)",
+            "Accurate; created under the updated IANA `tzdb` rule"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Wait until your phone, Mac/PC, and web calendar have received the updated IANA `tzdb` definitions before manually shifting events—fixing them before the update will make them shift a second time once the update arrives.",
+      "Audit future events that were created **before** the government rule change was announced, paying special attention to dates between the old DST switch Sunday and the new switch Sunday (or the entire summer season if DST was abolished).",
+      "If a region was split off into a new IANA `Area/Location` identifier in `tzdb`, update your calendar's primary time zone setting to the specific city identifier that matches your municipality.",
+      "For multi-attendee meetings, have the **organizer** re-save and send an update from an updated client so stale embedded `VTIMEZONE` blocks in attendees' calendars are replaced."
+    ],
+    "faq": [
+      {
+        "q": "Why did brand-new events on my Google Calendar show the right time while appointments I booked three months ago were 1 hour off?",
+        "a": "As documented in Google Calendar's official time-zone help page, Google Calendar converts events to UTC using the time-zone rules known at the moment the event is created. Events created three months ago used the old seasonal offset to calculate UTC, whereas brand-new events use the updated offset."
+      },
+      {
+        "q": "Who maintains the official time zone rules used by Apple, Google, and iCalendar?",
+        "a": "The IANA Time Zone Database (`tzdb`, also called `zoneinfo` or the Olson database) maintains the canonical history and rule tables for global time zones (`Area/Location` names) and distributes updates whenever political bodies change their UTC offsets or DST laws."
+      },
+      {
+        "q": "Should I manually switch my phone's time zone to a neighboring country when my government changes DST rules?",
+        "a": "Only as a temporary emergency workaround if a law takes effect before an OS update ships. Once your OS installs the updated IANA `tzdb`, switch back to your true geographic `Area/Location` time zone so future historical and seasonal rules stay accurate."
+      }
+    ],
+    "sourcesHeading": "Primary specifications and official documentation",
+    "sources": [
+      {
+        "label": "IANA — Time Zone Database (`tzdb` / `zoneinfo`)",
+        "url": "https://www.iana.org/time-zones"
+      },
+      {
+        "label": "Google Calendar Help — Use Google Calendar in different time zones (How Google Calendar handles time zone policy changes)",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      },
+      {
+        "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.6.5 VTIMEZONE)",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545"
+      },
+      {
+        "label": "U.S. Naval Observatory — Daylight Saving Time FAQ",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "What Calendar Sync Actually Does"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked",
+      "what-calendar-sync-actually-does"
+    ]
+  }
+}

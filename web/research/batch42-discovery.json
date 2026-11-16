@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-22",
+  "head": "b87896efa32640f580a44f68bfe8db515b74c068",
+  "decision": "Improve existing keeping-track-of-who-replied with substantive guest time-proposal workflow; no new canonical justified.",
+  "intent": "Propose a different meeting time on iPhone without treating the proposal as an accepted reschedule or editing the wrong copy.",
+  "ledgerRead": {
+    "scope": "Complete remaining array and cluster IDs/statuses; targeted initial cluster text was truncated and not counted as full ledger review.",
+    "sha256": "09ef7352fda017454e9e717fd179eb9675bd12472eb979340e3a3eec04872a6f",
+    "finding": "Birthday-source branch already published; rejected birthday synonym page and switched to genuine proposal/approval gap."
+  },
+  "queries": [
+    {
+      "batch": [
+        "site:support.apple.com birthday calendar iPhone contacts change birthday",
+        "site:support.google.com/calendar birthdays contacts edit hide birthday"
+      ],
+      "observedSelectedUrls": [
+        "https://support.apple.com/en-ie/guide/icloud/mmfbbb2cf9/icloud",
+        "https://support.apple.com/en-ie/102180"
+      ],
+      "status": "Discovery only; no body read or new birthday recommendation."
+    },
+    {
+      "batch": [
+        "site:support.google.com/calendar \"Propose a new time\" \"200\"",
+        "site:support.apple.com \"Propose New Time\" \"calendar server\""
+      ],
+      "observedSelectedUrls": [
+        "https://support.google.com/calendar/answer/37135?hl=en-US-u-mu-fahrenhe",
+        "https://support.google.com/a/users/answer/9283119?hl=en",
+        "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DiOS&hl=en-MP",
+        "https://support.apple.com/en-gu/guide/iphone/iphc0eddfe3c/ios"
+      ],
+      "association": "Combined search output does not establish per-query association or Google rank. Selected results only."
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://support.google.com/calendar/answer/37135?co=GENIE.Platform%3DiOS&hl=en-MP",
+      "status": "full substantive body",
+      "scope": "17–75 of155",
+      "facts": [
+        "Google iPhone/iPad app offers a new-time proposal from the original invitation.",
+        "Unavailable for all-day events and events exceeding200guests.",
+        "Response notes are visible to all guests; do not describe them as private."
+      ],
+      "bounds": "Google app controls only; no Cloud feature inferred."
+    },
+    {
+      "url": "https://support.google.com/a/users/answer/9283119?hl=en",
+      "status": "full substantive body",
+      "scope": "25–101 of166; focus62–86",
+      "facts": [
+        "Guest proposal awaits organizer review and optional acceptance.",
+        "Organizer reviews proposed time and saves to change event.",
+        "Granted modification access permits direct rescheduling instead, a different action."
+      ],
+      "bounds": "Computer Workspace instructions; no automatic acceptance or universal notification promise."
+    },
+    {
+      "url": "https://support.apple.com/en-gu/guide/iphone/iphc0eddfe3c/ios",
+      "status": "full substantive body recovered on second range read",
+      "scope": "1125–1151 of1168 on final rendering; initial rendering1184lines mostlynavigation",
+      "facts": [
+        "Apple Calendar offers Propose New Time for a received meeting.",
+        "Server capabilities determine counterproposal versus email suggestion.",
+        "Apple response comments may be organizer-only, unlike Google response-note visibility."
+      ],
+      "bounds": "Apple app/server-specific; no interchangeable privacy rule across apps or guaranteed control for every calendar."
+    }
+  ],
+  "completeCurrentComparators": {
+    "artifact": "research/batch42-full-comparators.json",
+    "sha256": "7bf8ff9137bdb76efe576b174653da6e9908059d2b93977e63ea61cf98f7e882",
+    "scope": "Two freshly extracted complete current objects, all metadata/sections/practical/FAQ/sources/related. No claim of rereading all58EN bodies.",
+    "comparison": [
+      {
+        "slug": "keeping-track-of-who-replied",
+        "covered": "Six sections distinguish RSVP/access, unknown attendance, event identity, joining details and post-change confirmation.",
+        "gap": "No workflow for a guest who cannot attend original time, organizer proposal review, exclusion limits or response-note audience."
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "covered": "Six sections cover actual edits, ownership, permission, recurrence scope and saved-result verification.",
+        "gap": "A guest without editing permission is told to ask owner but not guided through supported proposal route; do not duplicate edit instructions."
+      }
+    ]
+  },
+  "nextAction": {
+    "canonical": "keeping-track-of-who-replied",
+    "type": "One substantial new section plus practical check and distinct FAQ if useful",
+    "placement": "After checking attendance in organizer invitation workflow",
+    "outline": [
+      "Identify original invited account/event; a personal copied block is not a proposal to organizer.",
+      "Explain Google iPhone proposal and Google computer organizer review; proposal sent is not saved new time, and >200guest/all-day exclusions apply.",
+      "Attribute Apple route and server-dependent counterproposal/email behavior separately.",
+      "For a client meeting, propose alternative time then verify organizer’s saved event and attendance instead of moving a copy. Avoid confidential detail in Google response notes.",
+      "If control unavailable, contact organizer directly; do not grant editing rights merely to suggest time."
+    ],
+    "relatedRoute": "drag-an-event-to-move-it",
+    "productGate": "No native inspection this batch and no Cloud proposal/RSVP-control claim; keep controls explicitly provider-attributed.",
+    "example": "Guest cannot make Tuesday15:00 and suggests Wednesday10:00. Until organizer accepts/saves and relevant participants confirm, Wednesday remains a proposal."
+  },
+  "limits": [
+    "No rank, volume, ChatGPT citation or exhaustive keyword evidence.",
+    "No source edit/build/deploy/native/customer/API mutations.",
+    "All selected primary URLs accessible; no known failed original URL retried.",
+    "One extraction command syntax error corrected before writing comparator artifact; final full output read."
+  ]
+}

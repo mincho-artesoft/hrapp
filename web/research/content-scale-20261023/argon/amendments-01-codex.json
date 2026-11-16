@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-23",
+  "originalSha256": "7b1ec4ccfcd1edf958a3adaaa6a9235d59725175bf053c89150436a4df51f9a0",
+  "reviewedSha256": "4639b7b8b823c372860287dbfd3ab59b558df48953b30649289bbdcdba779918",
+  "method": "Substantive rewrites in separate output; original untouched. Corrections are source-backed and dated examples are independently calculated.",
+  "articles": [
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "amendments": [
+        "Replaced unsupported universal editor instructions with conditional controls and a date audit.",
+        "Made WKST explicit; removed the false grid-preference equivalence.",
+        "Corrected four work blocks to three; removed unqualified full-weekend-off and indefinite recurrence promises."
+      ]
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "amendments": [
+        "Removed unsupported four-week UI controls and universal DuPont ordering.",
+        "Recomputed both night-to-day gaps as 72 hours; rewritten dates require fixture recheck.",
+        "Removed medical and payroll assertions."
+      ]
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "amendments": [
+        "Fixed weekday arithmetic and used an internally consistent seventh-tour exception.",
+        "Removed guaranteed EXDATE and UNTIL serialization claims.",
+        "Removed pay/rest prescriptions and distinguished wall-clock from elapsed hours."
+      ]
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "amendments": [
+        "Corrected mandatory-DTEND claim and removed untested universal rendering behavior.",
+        "Scoped 12-hour arithmetic to a specified no-transition date.",
+        "Removed sleep scheduling and universal 363-night claims."
+      ]
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "amendments": [
+        "Removed payroll, universal report and undocumented split-template claims.",
+        "Made free/busy conditional and separated occupied union from overall span."
+      ]
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "amendments": [
+        "Removed unsafe always-Free prescription.",
+        "Corrected remainder to 121 hours and distinguished coverage from activity/pay.",
+        "Removed undocumented integrations and calendar-default claims."
+      ]
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "amendments": [
+        "Corrected four-weeks-every-year and organizer-zone assumptions.",
+        "Verified inclusive dated ranges with zoneinfo 2026e.",
+        "Removed unsupported EU-wide and provider-storage generalizations."
+      ]
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "amendments": [
+        "Scoped permanent-offset language to current dated rules.",
+        "Removed unsourced Arizona subregion detail and all-cities transition claims.",
+        "Verified January, July and November conversion table."
+      ]
+    },
+    {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "amendments": [
+        "Corrected central DTEND recurrence error.",
+        "Verified 7/9-hour explicit intervals and 07:00/05:00 fixed-eight-hour endpoints.",
+        "Distinguished explicit gap timestamps from skipped generated starts."
+      ]
+    },
+    {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "amendments": [
+        "Removed unsupported mobile/Outlook UI paths.",
+        "Removed incorrect westbound description and verified all three UTC calculations.",
+        "Made import fragments and VTIMEZONE requirements explicit."
+      ]
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "amendments": [
+        "Replaced wrong three-hour compromise with verified 17→16 New York / 07→08 Sydney example.",
+        "Added actual NSW primary support and scoped claims to Sydney/New York.",
+        "Removed unsupported universal city lists and misleading regime count."
+      ]
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "amendments": [
+        "Removed universal fixed-UTC storage and snapshot claims.",
+        "Replaced risky bulk edits, neighboring-zone workaround and manual SEQUENCE advice with evidence-led escalation.",
+        "Separated legal rule authority, technical database and vendor delivery."
+      ]
+    }
+  ],
+  "evidenceFiles": [
+    "review-01-codex.json",
+    "math-fixtures-codex.json",
+    "reviewed-qa-01-codex.json",
+    "editorial-records-01-reviewed.json"
+  ]
+}

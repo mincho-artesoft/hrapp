@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ca",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "062259d7-9e41-48bc-abc0-2afc8dd2f862",
+  "versionLocalizationId": "c7a8730b-6a11-46b4-b64e-9e2d69c474bd",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Calendari",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Temps, cites i ginys",
+      "characters": 20,
+      "utf8Bytes": 20,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "agenda,planificador,horari,setmana,mes,recordatori,reunió,esdeveniment,compartir,invitació,previsió",
+      "characters": 99,
+      "utf8Bytes": 102,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Consulta els plans i el temps junts. Utilitza ginys i diferents vistes, o crea un calendari local sense un compte a l’app.",
+      "characters": 122,
+      "utf8Bytes": 124,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Consulta els plans de feina, les cites personals i el temps a l’iPhone i l’iPad amb Cloud Calendars.\n\nUtilitza calendaris de l’iCloud i connecta Google Calendar. Tria la vista de dia, setmana, mes, any o llista. També pots crear un calendari local al dispositiu sense un compte de Cloud Calendars. Connectar serveis i compartir pot requerir iniciar sessió. Els permisos depenen del calendari i del tipus d’invitació.\n\nConsulta la previsió mentre fas plans. Els ginys de la pantalla d’inici estan disponibles en mides petita, mitjana i gran. Les previsions disponibles depenen de la ubicació i del proveïdor meteorològic.\n\nBase és gratuït i inclou sincronització amb Google Calendar, Google Meet, diverses vistes de calendari, temps i ginys. Advanced inclou les funcions de Base i elimina els anuncis. Premium inclou Advanced i afegeix calendaris de Microsoft i Microsoft Teams.\n\nLa descàrrega és gratuïta, amb subscripcions opcionals de renovació automàtica. Abans de subscriure’t, comprova el preu local actual i el període de facturació a l’app o a l’App Store. La subscripció es renova si no la cancel·les almenys 24 hores abans del final del període actual. Pots gestionar-la o cancel·lar-la als ajustos del compte de l’App Store.\n\nPrivadesa: https://www.cloud-calendars.com/privacy-policy\nCondicions d’ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1376,
+      "utf8Bytes": 1418,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ca",
+      "name": "Cloud Calendars: Calendari",
+      "subtitle": "Tots els calendaris en un",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planifica el teu dia amb el calendari i el temps junts\n\nCloud Calendars reuneix els teus calendaris i el temps en una sola experiència de planificació ben endreçada.\n\nGestiona els calendaris d'iCloud, Google Calendar i Microsoft en una única app mentre veus les previsions dins mateix de l'agenda, els widgets i les vistes de planificació.\n\nArriba a temps a reunions, viatges, recollides a l'escola, activitats a l'aire lliure i dies plens amb vistes de calendari pensades per planificar més de pressa.\n\nWIDGETS A LA PANTALLA D'INICI\n\nAfegeix widgets que combinen:\n• Esdeveniments del calendari\n• Previsions meteorològiques\n• Agenda pròxima\n• Fase lunar i condicions\n• Vent i temperatura\n• Resum del dia\n\nTria entre diversos estils de widget per veure el teu dia des de la pantalla d'inici.\n\nPER QUÈ CLOUD CALENDARS\n\n• Consulta junts els calendaris d'iCloud, Google Calendar i Microsoft\n• Planifica amb previsions meteorològiques integrades\n• Fes servir widgets a la pantalla d'inici\n• Arrossega, mou i redimensiona esdeveniments amb naturalitat\n• Crea enllaços de Google Meet i Microsoft Teams\n• Canvia entre les vistes Dia, Setmana, Mes, Any i Llista\n• Gestiona la feina i la vida personal en un sol lloc\n\nFUNCIONS\n\nTots els calendaris junts\nConnecta i gestiona calendaris d'iCloud, Google Calendar i Microsoft en una experiència neta i amb colors.\n\nEl temps dins del calendari\nConsulta previsions per hores i per dies dins del teu flux de planificació: temperatura, condicions, fase lunar, vent i icones del temps.\n\nWidgets de calendari i temps\nMira l'agenda i el temps a l'instant des de widgets personalitzables.\n\nDiverses vistes de calendari\nTria Dia, Setmana, Mes, Any o Llista segons com planifiquis el temps.\n\nEdició fàcil d'esdeveniments\nToca, arrossega i redimensiona esdeveniments directament al calendari.\n\nVista del temps dedicada\nExplora previsions detallades amb condicions per hores i dades útils per planificar.\n\nCrea esdeveniments des de la previsió\nToca una hora de la previsió per crear a l'instant un esdeveniment amb aquella hora.\n\nEnllaços de reunió integrats\nAfegeix ràpidament enllaços de Google Meet i Microsoft Teams als esdeveniments.\n\nIDEAL PER A\n\n• Gestionar calendaris de feina i personals\n• Planificar tenint en compte el temps\n• Activitats a l'aire lliure i viatges\n• Agendes plenes i planificació familiar\n• Usuaris de Google Calendar i iCloud\n• Usuaris de calendaris de Microsoft\n\nProva Cloud Calendars i fes que cada dia sigui més fàcil de planificar.\n\nINFORMACIÓ SOBRE LA SUBSCRIPCIÓ\n\nCloud Calendars ofereix subscripcions de renovació automàtica.\n\nPla gratuït\n• Sincronització amb Google Calendar\n• Diverses vistes de calendari\n• Funcions meteorològiques\n• Widgets\n• Compatibilitat amb Google Meet\nEl pagament es carregarà al teu compte d'Apple ID en confirmar la compra. Les subscripcions es renoven automàticament tret que es cancel·lin com a mínim 24 hores abans del final del període actual. El teu compte es carregarà per a la renovació dins de les 24 hores anteriors al final del període actual. Pots gestionar i cancel·lar les subscripcions a la configuració del teu compte de l'App Store.\n\nPolítica de privadesa: https://www.cloud-calendars.com/privacy-policy\nCondicions d'ús: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ca",
+      "keywords": "temps,widget,horari,planificador,agenda,previsió,iCloud,reunions,esdeveniments,pantalla,pluja,alerta",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

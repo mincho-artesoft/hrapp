@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T05:17:07.403Z",
+  "allPassed": true,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "draft": "research/batch40-offline/en-US.json",
+      "type": "reviewed_additive_expansion"
+    },
+    {
+      "locale": "it",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/it/articles-help.ts",
+      "draft": "research/batch40-timezones/it.json",
+      "type": "new_localized_edition"
+    }
+  ],
+  "relatedOnlyBacklinks": 1,
+  "englishOldContentPreservedByInverseDelta": true,
+  "unrelatedArticlesBodyMetadataDatesPreserved": true,
+  "globalFactsEnglishSelectionPricingLegalMediaRobotsComponentsHomeUnchanged": true
+}

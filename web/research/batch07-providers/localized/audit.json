@@ -1,0 +1,200 @@
+{
+  "status": "8 translated objects ready for review",
+  "revisedExisting": 4,
+  "newLocalizedRoutes": 4,
+  "scope": "Only proposal JSON under batch07-providers/localized; no source integration or deployment. Exchange localization is new, not previously present.",
+  "sourceHashes": {
+    "icloud-google-and-outlook-in-one-view": "32ce5ab54930e366e360869e836cfb28e796070acbc10b2aa8e11f0621acb28c",
+    "exchange-calendars-on-an-iphone": "f34f57e9ee286501957d157fc6225baf04ee60051527aeab11f5e351e90d0c50"
+  },
+  "preserved": "All substantive sections/paragraphs, practical steps, FAQ, developer disclosure, source URLs, empty claims and date.",
+  "criticalQualifications": [
+    "Google/Microsoft use iPhone-system calendar copies whose destination can depend on available sources; no original-provider-only storage guarantee.",
+    "Visible events, available editors and successful local edits are not proof of remote permission or accepted provider updates.",
+    "Premium adds Microsoft/Teams features, not universal Exchange compatibility or employer-policy overrides.",
+    "Device-account route differs from in-app Microsoft sign-in. No invented server-address/password recipes.",
+    "No automatic anonymous busy-time sharing, no deletion-first diagnosis and no publishing work calendars to bypass restrictions."
+  ],
+  "relatedRoutePolicy": "Keep only exact localized article keys already present or the two batch objects being integrated. Registry has locale-level fallback only, not proof of per-article localized fallback. Omit unlocalized sync/disagreement links; retain reciprocal batch links and existing subscription guide.",
+  "relatedChanges": [
+    {
+      "locale": "de-DE",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "omittedUnavailable": [
+        "what-calendar-sync-actually-does"
+      ]
+    }
+  ],
+  "confidence": "medium-high model-authored; no independent native reviewer",
+  "validation": [
+    {
+      "locale": "de-DE",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "status": "revised_existing_article",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 159,
+      "related": [
+        "exchange-calendars-on-an-iphone"
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 146,
+      "related": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-a-subscription-actually-buys"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "status": "revised_existing_article",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 141,
+      "related": [
+        "exchange-calendars-on-an-iphone"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 148,
+      "related": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-a-subscription-actually-buys"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "status": "revised_existing_article",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 150,
+      "related": [
+        "exchange-calendars-on-an-iphone"
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 147,
+      "related": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-a-subscription-actually-buys"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "status": "revised_existing_article",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 149,
+      "related": [
+        "exchange-calendars-on-an-iphone"
+      ]
+    },
+    {
+      "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "status": "new_localized_route",
+      "sections": 6,
+      "paragraphs": 12,
+      "faq": 3,
+      "practical": 6,
+      "sources": 3,
+      "metaCharacters": 143,
+      "related": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-a-subscription-actually-buys"
+      ]
+    }
+  ]
+}

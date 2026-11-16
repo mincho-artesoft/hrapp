@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-21T23:49:12.802519+00:00",
+  "allPassed": true,
+  "pages": [
+    {
+      "locale": "bg",
+      "url": "https://www.cloud-calendars.com/bg/articles/recurring-events-without-the-mess/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch20-bg-recurrence.png"
+    },
+    {
+      "locale": "ja",
+      "url": "https://www.cloud-calendars.com/ja/articles/recurring-events-without-the-mess/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch20-ja-recurrence.png"
+    },
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "direction": "rtl",
+      "premiumHeroVisible": true,
+      "screenshot": "/tmp/cloud-calendar-batch20-ar-hero.png"
+    }
+  ],
+  "scope": "Representative public pages visually inspected after successful deploy/CF completion. Arabic screenshot recaptured after headline entrance animation settled. Viewport reset and tab kept. Not all-language visual/native-speaker or app runtime certification."
+}

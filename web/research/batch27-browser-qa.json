@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-22T01:21:45.695327+00:00",
+  "allPassed": true,
+  "route": "/articles/a-week-view-that-fits-a-week/",
+  "viewportWidth": 575,
+  "documentWidth": 564,
+  "articleSections": 6,
+  "faqs": 3,
+  "fullOvernightExampleVisible": true,
+  "screenshot": "/tmp/cloud-calendar-batch27-overnight-example.png",
+  "viewportReset": true,
+  "scope": "Complete new paragraph visually inspected on public mobile website, not a native shift creation/layout or payroll test."
+}

@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "pt-BR",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "1baf79fb-8ace-4db3-a357-b25c086aee23",
+  "versionLocalizationId": "792d84c7-d17d-40b7-890b-e18a097ee741",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Calendário",
+      "characters": 27,
+      "utf8Bytes": 28,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Clima, compromissos e widgets",
+      "characters": 29,
+      "utf8Bytes": 29,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "agenda,planejador,horário,semana,mês,lembrete,reunião,evento,compartilhar,convite,previsão",
+      "characters": 90,
+      "utf8Bytes": 94,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Veja seus compromissos e o clima em um só lugar. Explore widgets e diferentes visualizações ou crie um calendário local sem uma conta no app.",
+      "characters": 141,
+      "utf8Bytes": 145,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Reúna seus calendários e o clima no iPhone e no iPad. Consulte compromissos de trabalho e planos pessoais com o Cloud Calendars.\n\nCALENDÁRIOS E VISUALIZAÇÕES\nUse calendários do iCloud e conecte o Google Agenda. O Premium também oferece suporte aos calendários da Microsoft. Escolha entre as visualizações de dia, semana, mês, ano e lista.\n\nVocê também pode criar um calendário local no dispositivo sem uma conta do Cloud Calendars. Conectar serviços e compartilhar conteúdo pode exigir login.\n\nCLIMA E WIDGETS\nConsulte a previsão do tempo ao planejar suas atividades. Os widgets para a Tela de Início estão disponíveis nos tamanhos pequeno, médio e grande. As previsões disponíveis dependem da localização e do provedor de dados meteorológicos.\n\nREUNIÕES E CONVITES\nUse o Google Meet com o Google Agenda. O Premium também oferece suporte ao Microsoft Teams. Compartilhe eventos e calendários e envie convites por e-mail, código QR ou App Clip. As permissões dependem do calendário e do tipo de convite.\n\nESCOLHA SEU PLANO\nO Base é gratuito e inclui sincronização com o Google Agenda, Google Meet, diferentes visualizações de calendário, clima e widgets.\nO Advanced inclui os recursos do Base e remove os anúncios.\nO Premium inclui o Advanced e adiciona calendários da Microsoft e Microsoft Teams.\n\nConfira o preço local e o período de cobrança no app ou na App Store antes de assinar.\n\nO download é gratuito. As assinaturas opcionais são renovadas automaticamente, a menos que você cancele pelo menos 24 horas antes do fim do período atual. Gerencie ou cancele sua assinatura nos ajustes da sua conta da App Store.\n\nPrivacidade: https://www.cloud-calendars.com/privacy-policy\nTermos de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1756,
+      "utf8Bytes": 1803,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "pt-BR",
+      "name": "Cloud Calendars: Calendário",
+      "subtitle": "Todos os calendários em um só",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planeje seu dia com calendário e clima juntos\n\nO Cloud Calendars combina seus calendários e o clima em uma experiência de planejamento bonita e organizada.\n\nGerencie calendários do iCloud, Google Agenda e Microsoft em um único app e veja previsões diretamente na sua programação, nos widgets e nas visualizações de planejamento.\n\nAntecipe reuniões, viagens, saídas da escola, atividades ao ar livre e dias corridos com visualizações de calendário criadas para um planejamento mais rápido.\n\nWIDGETS DA TELA DE INÍCIO\n\nAdicione belos widgets que combinam:\n• Eventos do calendário\n• Previsões do tempo\n• Próximos compromissos\n• Fase da Lua e condições\n• Vento e temperatura\n• Visão geral da agenda diária\n\nEscolha entre vários estilos de widget para ver seu dia diretamente na Tela de Início.\n\nPOR QUE USAR O CLOUD CALENDARS\n\n• Veja calendários do iCloud, Google Agenda e Microsoft juntos\n• Planeje com previsões do tempo integradas\n• Use belos widgets na Tela de Início\n• Arraste, mova e redimensione eventos naturalmente\n• Crie links do Google Meet e Microsoft Teams\n• Alterne entre as visualizações Dia, Semana, Mês, Ano e Lista\n• Gerencie calendários de trabalho e pessoais em um só lugar\n\nRECURSOS\n\nTodos os seus calendários juntos\nConecte e gerencie calendários do iCloud, Google Agenda e Microsoft em uma experiência limpa e organizada por cores.\n\nClima integrado ao seu calendário\nVeja previsões por hora e diárias diretamente no seu planejamento, incluindo temperatura, condições, fase da Lua, vento e ícones do tempo.\n\nWidgets de calendário + clima\nVeja sua programação e o clima instantaneamente em widgets personalizáveis da Tela de Início.\n\nVárias visualizações de calendário\nEscolha a visualização Dia, Semana, Mês, Ano ou Lista de acordo com a forma como você planeja seu tempo.\n\nEdição fácil de eventos\nToque, arraste e redimensione eventos diretamente no calendário para um agendamento rápido e natural.\n\nVisualização dedicada do clima\nExplore previsões detalhadas com condições por hora e informações úteis para o planejamento.\n\nCrie eventos a partir das previsões\nToque em uma hora da previsão para criar instantaneamente um novo evento no horário escolhido.\n\nLinks de reunião integrados\nAdicione rapidamente links do Google Meet e Microsoft Teams aos eventos.\n\nPERFEITO PARA\n\n• Gerenciamento de calendários de trabalho e pessoais\n• Planejamento considerando o clima\n• Atividades ao ar livre e viagens\n• Rotinas corridas e planejamento familiar\n• Usuários do Google Agenda e iCloud\n• Usuários de calendários Microsoft\n\nExperimente o Cloud Calendars e facilite o planejamento de todos os dias.\n\nINFORMAÇÕES DA ASSINATURA\n\nO Cloud Calendars oferece assinaturas com renovação automática.\n\nPlano Gratuito\n• Sincronização do Google Agenda\n• Várias visualizações de calendário\n• Recursos de clima\n• Widgets\n• Suporte ao Google Meet\n\nO pagamento será cobrado da sua conta Apple ID na confirmação da compra. As assinaturas são renovadas automaticamente, a menos que sejam canceladas pelo menos 24 horas antes do fim do período atual. A renovação será cobrada nas 24 horas anteriores ao fim do período atual. Você pode gerenciar e cancelar assinaturas nos ajustes da sua conta da App Store.\n\nPolítica de Privacidade: https://www.cloud-calendars.com/privacy-policy\nTermos de Uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "pt-BR",
+      "keywords": "clima,widget,agenda,planejador,previsão,iCloud,compromissos,eventos,tempo,tela de bloqueio,chuva,mês",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

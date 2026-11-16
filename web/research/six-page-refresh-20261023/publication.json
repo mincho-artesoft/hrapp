@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-23",
+  "status": "published-and-verified",
+  "scope": "Six existing Cloud Calendars articles refreshed in all 30 site languages",
+  "slugs": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "the-widget-that-shows-what-is-next",
+    "icloud-google-and-outlook-in-one-view",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "fantastical-readdle-calendar366-iphone-comparison"
+  ],
+  "pages": 180,
+  "translatedPages": 174,
+  "newTranslatedArticleEntries": 106,
+  "siteArticleEntries": 586,
+  "englishArticleCount": 73,
+  "sitemapUrls": 107,
+  "heldTranslatedArticleAndHubRoutes": 542,
+  "media": "Existing S3-backed topic-filtered iPhone and iPad screenshots; no downloaded marketing media retained",
+  "translation": "OpenAI gpt-5.4 structured responses. Full prose, tables, captions and link labels translated; URLs and technical keys checked. Translated articles remain noindex pending individual editorial approval.",
+  "privacyPolicyUnchangedSHA256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "localChecks": [
+    "Production build and prerender",
+    "All internal links resolve",
+    "180 route canonical, robots, metadata and gallery checks",
+    "1044 S3/CDN image rendition HEAD checks",
+    "Visible English/Bulgarian/Arabic/Japanese layout checks"
+  ],
+  "preserved": [
+    "Owner-managed App Store Privacy",
+    "Existing website privacy policy",
+    "Localized product homepage indexability",
+    "Foreign research edits and verification files"
+  ],
+  "proof": {
+    "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/qa/six-pages-20261023.png",
+    "sha256": "737096ec1b1ddc66a8f03ea1a63fa482cdc94ac6acb695c09db90e549e217958",
+    "bytes": 53173,
+    "localScratchRemoved": true
+  },
+  "publicCheck": {
+    "pages": 180,
+    "englishIndexable": 6,
+    "translatedNoindex": 174
+  },
+  "cloudFrontInvalidation": "ILL8BHZJVLYAW7A2SFIQ5LYUM",
+  "liveDiscoveryCheck": {
+    "sitemapURLs": 107,
+    "llmsReferencedURLs": 78,
+    "passed": true
+  }
+}

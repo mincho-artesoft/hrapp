@@ -1,0 +1,26 @@
+{
+  "locale": "en-US",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Tomorrow already has",
+        "a forecast attached."
+      ],
+      "after": [
+        "Plan the next day.",
+        "Check the available forecast."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Seven columns, each headed by its own high, low and condition. Rotate to landscape for the full spread. Grab an event and slide it to another day.",
+      "after": "Compare the week’s appointments with available daily weather. Rotate to landscape for a wider view. Move editable events to another day, and check which occurrences to change for a repeating event."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Drag it. Stretch it. Done.",
+      "after": "Drag it. Resize it. Review it."
+    }
+  ]
+}

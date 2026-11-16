@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-22",
+  "scope": "Complete combined-calendar drafts only, not Exchange. Current complete EN object previously read during DE preparation; ES/FR complete draft outputs untruncated. Actual local definitions parsed for routes.",
+  "results": [
+    {
+      "locale": "es-ES",
+      "file": "research/batch32-localized-selection/es-ES/three-calendar-apps-is-two-too-many.json",
+      "rawFileSha256": "d70df73f836efe5f8c571ed42d72fe31cdbb4b6b702cf522f7570af8acdf81a4",
+      "jsonStringifySha256": "8081eef0684bf99fb02e2c898862e5d867071751049eaf7ac2a6938159686f21",
+      "completeObjectRead": true,
+      "decision": "pass_no_material_correction",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "descriptionCharacters": 135,
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualDefinition": true
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "actualDefinition": true
+        }
+      ],
+      "review": "All six EN distinctions retained: planning vs copying availability; workplace permissions/required apps; stored mirrors/duplicate routes; owned guest-free nonrecurring disposable bidirectional test without freshness guarantee; selection restoration and widget/notification/Google effects; independent alerts and Base/Advanced/Premium boundaries. No full-availability, no-copy or delete-other-app promise.",
+      "notes": []
+    },
+    {
+      "locale": "fr-FR",
+      "file": "research/batch32-localized-selection/fr-FR/three-calendar-apps-is-two-too-many.json",
+      "rawFileSha256": "9a67b909059c6ef3babc51f71dc6bc1a7c4ddc5af798d3dbb25add379464f830",
+      "jsonStringifySha256": "61482401e95db746beb573a78057dad376150a49aed5bf48689283dca4c017b5",
+      "completeObjectRead": true,
+      "decision": "pass_no_material_correction",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "descriptionCharacters": 136,
+      "related": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "actualDefinition": true
+        },
+        {
+          "slug": "exchange-calendars-on-an-iphone",
+          "actualDefinition": true
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "actualDefinition": true
+        }
+      ],
+      "review": "All six EN distinctions retained: planning vs copying availability; workplace permissions/required apps; stored mirrors/duplicate routes; owned guest-free nonrecurring disposable bidirectional test without freshness guarantee; selection restoration and widget/notification/Google effects; independent alerts and Base/Advanced/Premium boundaries. No full-availability, no-copy or delete-other-app promise.",
+      "notes": [
+        "Practical hiding step adds restoration already supported by EN body; helpful, not a new capability.",
+        "Copies synchronisées describes provider mirrors in context, without a refresh deadline or universal write-back guarantee."
+      ]
+    }
+  ],
+  "limits": [
+    "Bounded cross-agent own-language review, not independent native-speaker certification or runtime verification.",
+    "No source/draft edits or build/deploy/API actions."
+  ]
+}

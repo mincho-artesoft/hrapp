@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-22T16:34:14.382856+00:00",
+  "inspectedRoots": [
+    "public/assets",
+    "media-source",
+    "media-build",
+    "shots",
+    "art",
+    "exports",
+    "brand"
+  ],
+  "remainingMarketingMediaFiles": [],
+  "scope": "Named marketing source/output folders, excluding native resources and Git history. All new media processed in memory; existing archived local files were removed by root.",
+  "missingPreviewSetsInSelectedASCSource": [
+    "cs/iPad",
+    "da/iPad",
+    "el/iPad",
+    "fi/iPad",
+    "hu/iPad",
+    "id/iPad",
+    "ms/iPad",
+    "nl-NL/iPad",
+    "no/iPad",
+    "pl/iPad",
+    "ro/iPad",
+    "ru/iPad",
+    "sv/iPad",
+    "th/iPad",
+    "tr/iPad",
+    "vi/iPad"
+  ],
+  "missingPreviewBehavior": "No invented or English fallback video; Bulgarian retains existing English media mapping.",
+  "privacySourceSHA256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4"
+}

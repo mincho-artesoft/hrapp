@@ -1,0 +1,77 @@
+Propose a new meeting time in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+New Outlook for Windows
+Get help with Copilot
+Tell me about propose a new meeting time.
+Tell me about tips and suggestions for Propose a new
+If you receive a meeting request for a time you're not available, you can decline the request or propose a new meeting time. If you propose a new time, the meeting organizer can either accept or decline the proposal. You can't propose a new time for a recurring meeting. In addition, the meeting organizer can disable the ability to propose a new meeting time for any non-recurring meeting.
+Select a tab option below for the version of Outlook you're using.
+What version of Outlook do I have?
+New Outlook
+Classic Outlook
+Note
+If the steps under this
+New Outlook
+tab aren't working for you, you may not be using new Outlook for Windows yet. Select the
+Classic Outlook
+tab and follow those steps instead.
+This feature is only available for work or school accounts. Microsoft accounts using outlook.com, hotmail.com, live.com, and msn.com addresses, as well as IMAP or POP accounts from another provider are not supported.
+Propose a new time for a meeting in new Outlook for Windows
+Double-click the meeting invitation to open it.
+Select
+Propose new time
+in new Outlook, then select
+I might attend
+or
+No, I won't attend
+.
+Select a different time slot to propose, then choose
+Done
+.
+Under
+Propose new time
+, add a message if you like.
+Select
+Send
+.
+Propose a new time for a meeting in classic Outlook for Windows
+From the meeting request, select
+Propose New Time
+in classic Outlook, then select either
+Tentative and Propose New Time
+or
+Decline and Propose New Time
+.
+Note
+Meeting organizers can send meeting requests that restrict the ability to propose alternate meeting times. If the meeting organizer has restricted meeting proposals, the
+Propose New Time
+option isn't available. Also, you can't propose a new time for recurring meetings.
+From the
+Propose New Time
+window, choose a new time for your meeting.
+Select
+Propose Time
+. This opens a meeting response and adds "New Time Proposed" to the subject.
+Select
+Send
+to send your new time proposal.
+Accept or decline a proposed new meeting time in classic Outlook for Windows
+If you're the meeting organizer and a recipient proposes a new meeting time, you can decide whether to accept or decline the proposal.
+Double-click to open the new time proposal. You cannot accept a new time proposal from the Reading Pane.
+Select
+Accept Proposal
+or
+View All Proposals
+.
+If you accept the proposal, select
+Accept Proposal
+and then
+Send Update
+. If you decline the proposal, select
+Delete
+.

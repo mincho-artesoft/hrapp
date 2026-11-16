@@ -1,0 +1,77 @@
+Require payments for appointments
+To simplify payments and prevent last minute cancellations, you can ask customers to pay in advance on your appointment schedule in Google Calendar.
+Learn how paid appointments work
+Paid appointment bookings are a premium feature for appointment schedules and available to users with an eligible Google Workspace subscription.
+Compare premium features for appointment schedules
+.
+To require payments, you need to connect Google Calendar to a
+Stripe account
+.
+When customers choose a time slot on your booking page, they checkout and pay for the appointment using Stripe to complete the booking process.
+Customers can only select credit card payment, Apple Pay, and Google Pay as payment options.
+Currencies are provided by Stripe.
+Learn about accepted currencies on Stripe
+.
+If your Google Workspace account is managed by an organization, your administrator controls access to paid appointment bookings. If you don’t see this feature, contact your administrator.
+Connect Stripe to Google Calendar
+On your computer, open
+Google Calendar
+.
+In the top right, click Settings menu
+Settings
+.
+On the left, click
+General
+Appointment schedules
+.
+Click
+Connect Stripe
+.
+Connect Stripe in Calendar settings
+Set up your payments & cancellation policy
+Important:
+As the event organizer, it’s your responsibility to carry out your cancellation and refund policies.
+In Google Calendar, create or edit an appointment schedule.
+Expand the “Payments & cancellation policy” section.
+Check the box next to “Require payment when booking.”
+Enter the amount and currency required for the appointment.
+Optional: Add your cancellation policy.
+The cancellation policy appears on your booking form and in email reminders.
+Click
+Save
+.
+Create an appointment schedule
+Disconnect Stripe from Google Calendar
+Important:
+After you disconnect Stripe, all appointment schedules no longer require payment.
+In Google Calendar, at the top right, click Settings menu
+Settings
+.
+On the left, click
+General
+Appointment schedules
+.
+Select the option to disconnect Stripe.
+To confirm, click
+Disconnect Stripe
+.
+Learn about payments & refunds for appointments
+All payments and refunds are handled by Stripe. Google Calendar does not:
+Process or store any payment info, such as credit card numbers
+Charge any platform fees
+Assist with payment or refund issues
+When you cancel an appointment as the organizer or the customer, a refund isn’t processed automatically.
+If you’re the organizer:
+To refund the customer, go to your
+Stripe dashboard
+.
+If you’re the customer:
+To request a refund for an appointment cancellation, review the organizer’s cancellation policy first, then contact them to ask for a refund.
+Learn about information shared between Stripe & Calendar
+After you connect Stripe to Google Calendar, some appointment information is shared with Stripe, including:
+Price
+Appointment title
+Time slot
+To manage the data that Stripe uses, go to your
+Stripe dashboard
+. If you no longer want to use Stripe, disconnect Stripe from Google Calendar.

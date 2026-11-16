@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-22T02:02:33.413Z",
+  "allPassed": true,
+  "newLocalizedArticle": {
+    "locale": "bg",
+    "slug": "time-zones-and-the-flight-you-booked",
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "sources": 4,
+    "exactReviewedDraftParity": true
+  },
+  "changedArticleObjects": 2,
+  "relatedOnlyBacklinks": 1,
+  "allPriorBulgarianObjectsAndDatesPreserved": true,
+  "englishSharedFactsSelectionLegalUnchanged": true,
+  "scope": "Source preservation, not translation certification, provider controls/runtime or publication proof."
+}

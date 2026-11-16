@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-21",
+  "title": "Share one calendar event: choose the link and access you mean",
+  "short": "Sharing one event",
+  "description": "Share one event without sharing a whole calendar. Understand Reader, Writer and Owner access, preview links, updates and the limits of revocation.",
+  "lede": "Sharing dinner details, inviting a co-organizer to edit and collecting attendance answers are different tasks. Start with the one you need, then choose the sharing route. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every event link is a read-only calendar subscription that updates immediately and records a reply.",
+  "sections": [
+    {
+      "heading": "1. Start with one event and inspect its details",
+      "body": [
+        "A single-event share is scoped to that event rather than the sender’s entire calendar. Before sending it, review the title, time zone, location, notes and any meeting URL. Information useful to one guest may not belong in a link you intend to circulate widely.",
+        "For example, sharing a dinner event does not require sharing the calendar containing your medical appointments. However, the dinner’s own location and links still travel with the event. Check the event itself rather than relying on the privacy of the calendar around it."
+      ]
+    },
+    {
+      "heading": "2. Choose a preview, an email invitation or a QR route",
+      "body": [
+        "Cloud Calendars offers distinct sharing routes. Its App Clip presents an event preview; the full app is needed to add the event through that experience. Email and QR invitations use a web landing page that offers to open Cloud Calendars. Do not describe all these links as interchangeable subscription URLs.",
+        "The sender signs in for the app’s synchronized sharing flow. A link or QR code can be forwarded, so send it only where its contents are appropriate. A QR code is a way to convey a link, not proof of who opened it."
+      ]
+    },
+    {
+      "heading": "3. Assign only the access the recipient needs",
+      "body": [
+        "Email invitations let you choose Reader, Writer or Owner. Reader can view and sync; Writer can edit; Owner can also share and manage access. These are consequential choices, not three names for viewing the same invitation. Use Reader when someone only needs the schedule.",
+        "Choose Writer for a co-organizer who should change the event. Choose Owner only when that person should also manage other people’s access. The recipient needs the appropriate signed-in identity to receive elevated access. An anonymous recipient is not an identified co-owner."
+      ]
+    },
+    {
+      "heading": "4. Understand how the recipient adds it",
+      "body": [
+        "In the full app, adding a shared event needs calendar permission and a writable destination calendar. The recipient should check that destination before saving. A received copy can then be associated with the shared event for later updates.",
+        "This differs from importing an ordinary ICS file into another calendar. An import is a copy, while a subscription periodically checks a feed. If you are sending an ICS feed rather than an app invitation, explain that route explicitly and confirm the recipient’s calendar supports it."
+      ]
+    },
+    {
+      "heading": "5. Verify changes before relying on them",
+      "body": [
+        "A synchronized share can carry later edits or cancellation, but the recipient’s device needs an opportunity to receive them. A feed refresh hint is not a delivery deadline. An offline device, an unrefreshed subscription or a standalone imported copy can still show older information.",
+        "If dinner moves shortly before the start, update the event and contact the guests directly. Ask them to confirm the new time. Sending an update and receiving an attendance answer are separate steps."
+      ]
+    },
+    {
+      "heading": "6. Manage access without promising to erase copies",
+      "body": [
+        "Review the event’s recipient access and remove permissions that are no longer needed. Removing a recipient and revoking a feed link are distinct operations; neither should be described as remotely erasing screenshots, messages or every calendar copy.",
+        "If a link has circulated beyond its intended audience, identify which link or access grant is involved. Confirm the affected route after changing access. For future events, keep private details out of broadly distributed links rather than relying on later revocation to recover them."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Review the event details and decide whether you need viewing, editing or attendance replies.",
+    "Choose the intended sharing route and sign in when required.",
+    "Use Reader for viewers; grant Writer or Owner only for the corresponding responsibility.",
+    "Ask the recipient to check the event time and destination calendar when adding it.",
+    "For urgent changes, update the event and send a direct message.",
+    "Review recipient permissions and link access separately when sharing ends."
+  ],
+  "faq": [
+    {
+      "q": "Does sharing one event expose my whole calendar?",
+      "a": "The synchronized single-event route is scoped to the event. It still exposes the shared event’s own details through the chosen route. Review those details and avoid sending a whole-calendar invitation when you intend to send only one event."
+    },
+    {
+      "q": "Can the recipient change the event?",
+      "a": "Yes, if they have the appropriate Writer or Owner access and use the supported signed-in flow. Reader access is for viewing and syncing. An ordinary ICS subscription is not the same editing mechanism."
+    },
+    {
+      "q": "Does removing someone undo everything they have already received?",
+      "a": "No such guarantee should be assumed. Access changes affect the supported sharing relationship, but previously saved copies, screenshots and messages may remain. A shared feed URL also needs separate consideration."
+    }
+  ],
+  "sourcesHeading": "References for recipient options",
+  "sources": [
+    {
+      "label": "Apple: overview of App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: importing events and its limitations",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importing versus subscribing to a calendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "inviting-people-who-do-not-have-the-app",
+    "a-calendar-that-is-yours-to-share",
+    "keeping-track-of-who-replied"
+  ]
+}

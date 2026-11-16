@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-22",
+  "decision": "Useful description-only clarification; original is not an explicit universal no-install promise. Preserve remaining access qualification.",
+  "descriptionEvidence": {
+    "file": "/Users/minchomilev/cloud-calendars/research/aso/english-proposal-20261021.json",
+    "sha256": "f7068fa782ff3a74b10b433c49141cfb34c1293a11e5d59ef77d141a37b5a411",
+    "field": "fields.description.value",
+    "fullDescriptionRead": true,
+    "exactBefore": "Share events and calendars, and send invitations by email, QR code or App Clip.",
+    "contextParagraph": "MEETINGS AND SHARING\nUse Google Meet support with Google Calendar. Premium adds Microsoft Teams support. Share events and calendars, and send invitations by email, QR code or App Clip. Sharing access depends on the calendar and invitation type.",
+    "savedState": "Latest saved persistence evidence reconciled in batch28 aso-audit records draft1.7.4 PREPARE_FOR_SUBMISSION, checked2026-10-21T23:08:19.029387Z. Historical proposal_only_not_applied flag is stale; do not treat it as current state.",
+    "freshness": "This task read current local files, not fresh ASC or public listing. Public1.7.3 and draft1.7.4 are distinct."
+  },
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/CloudCalendarsAppClip.swift",
+      "sha256": "081095c82b5d05f757feb35526f23d9ad094cca40466e90e1afb644e5b843e4e",
+      "rangesRead": [
+        [
+          1,
+          67
+        ]
+      ],
+      "proof": "App Clip routes to event preview or calendar invitation preview; web activity/openURL handlers route payloads. No calendar save operation in this entry point."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/EventClipPreviewView.swift",
+      "sha256": "bbb8f645443b9d8b93964a709664ee27f511989500f37ee0c3bcd808164d5ee1",
+      "rangesRead": [
+        [
+          1,
+          107
+        ]
+      ],
+      "proof": "Full view read: title/date/time/location preview; primaryAction only App Store Link; explicit preview-only/add-through-full-app text. Lock-shield icon does not substantiate privacy/security assurances."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/CalendarShareClip.swift",
+      "sha256": "ff229acee5412dd6f9228d837e1b57a592d5158e2f0327ac70aaa9870f446ffc",
+      "rangesRead": [
+        [
+          1,
+          75
+        ],
+        [
+          125,
+          156
+        ]
+      ],
+      "proof": "Calendar invitation preview, App Store download link and explicit preview-only text. fullAppURL model property is not by itself proof of automatic installed-app handoff."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "rangesRead": [
+        [
+          165,
+          194
+        ]
+      ],
+      "proof": "Full app routes calendar and event invitation URLs into their separate acceptance/import sheets."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportView.swift",
+      "sha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "rangesRead": [
+        [
+          245,
+          295
+        ]
+      ],
+      "proof": "Full app Add to Calendar invokes importer with selected destination; handles permissionDenied/noWritableCalendar/failed results. Not universal successful instant adding."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "rangesRead": [
+        [
+          18,
+          29
+        ]
+      ],
+      "proof": "Adding event requires full calendar access; app session read independently. Do not generalize whole-calendar sign-in requirement to every single-event path from this excerpt."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "rangesRead": [
+        [
+          189,
+          214
+        ]
+      ],
+      "proof": "Whole-calendar acceptance requires app sharing session, otherwise sign-in; performs server acceptance and local reconciliation."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "rangesRead": [
+        [
+          47,
+          97
+        ]
+      ],
+      "proof": "Share method picker offers App Clip, Email and QR Code; email wording distinguishes assigning access. Supports retaining email/QR delivery description."
+    }
+  ],
+  "proposedReplacement": "Share events and calendars with email or QR invitations. App Clip previews shared events and calendar invitations; use the full app to add them.",
+  "retainedFollowingSentence": "Sharing access depends on the calendar and invitation type.",
+  "alternativeNarrower": "Share events and calendars with email or QR invitations. App Clip offers an event preview; adding the event through that experience requires the full app.",
+  "preferredReason": "Both event and whole-calendar preview paths are explicit in current code; preferred wording avoids implying App Clip performs acceptance or that it only supports event preview. No promise of universal App Clip availability, instant install/handoff, read-only-only access, security or delivery.",
+  "size": {
+    "beforeDescriptionCharacters": 2083,
+    "afterDescriptionCharacters": 2148,
+    "limit": 4000
+  },
+  "releaseBoundary": {
+    "currentLocalVersion": "Prior batch28 project match1.7.2/build12, not equivalent to public1.7.3.",
+    "requiredBeforeReleaseAssertion": "Owner must match target build/source and distributed App Clip experience before treating current-source behavior as released1.7.3 proof.",
+    "metadataAction": "Draft wording only; no ASC mutation, submission or release decision."
+  },
+  "notPerformed": [
+    "Native/backend edits",
+    "Builds",
+    "Simulators",
+    "Runtime tests",
+    "Production/customer queries",
+    "ASC reads/writes",
+    "Deployment",
+    "Privacy assurances",
+    "Provider-repair audit: no keyword-agent request received"
+  ],
+  "writes": [
+    "research/batch29-aso-semantic/appclip-facts.json only"
+  ]
+}

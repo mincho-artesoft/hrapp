@@ -1,0 +1,76 @@
+{
+  "zoneinfoBasis": "2026e-rearguard installed system database; date-specific author calculations",
+  "fractionalOffsetCases": [
+    {
+      "date": "2026-01-15",
+      "city": "Asia/Kolkata",
+      "london09Local": "2026-01-15T14:30:00+05:30",
+      "overlapHours": 3.5
+    },
+    {
+      "date": "2026-07-15",
+      "city": "Asia/Kolkata",
+      "london09Local": "2026-07-15T13:30:00+05:30",
+      "overlapHours": 4.5
+    },
+    {
+      "date": "2026-01-15",
+      "city": "Asia/Kathmandu",
+      "london09Local": "2026-01-15T14:45:00+05:45",
+      "overlapHours": 3.25
+    },
+    {
+      "date": "2026-07-15",
+      "city": "Asia/Kathmandu",
+      "london09Local": "2026-07-15T13:45:00+05:45",
+      "overlapHours": 4.25
+    },
+    {
+      "date": "2026-01-15",
+      "city": "America/St_Johns",
+      "london09Local": "2026-01-15T05:30:00-03:30",
+      "overlapHours": 5.5
+    },
+    {
+      "date": "2026-07-15",
+      "city": "America/St_Johns",
+      "london09Local": "2026-07-15T05:30:00-02:30",
+      "overlapHours": 5.5
+    },
+    {
+      "date": "2026-01-15",
+      "city": "Australia/Adelaide",
+      "london09Local": "2026-01-15T19:30:00+10:30",
+      "overlapHours": 0
+    },
+    {
+      "date": "2026-07-15",
+      "city": "Australia/Adelaide",
+      "london09Local": "2026-07-15T17:30:00+09:30",
+      "overlapHours": 0.5
+    }
+  ],
+  "backwardPlanning": {
+    "inclusiveWorkdates": [
+      "2026-10-30",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06",
+      "2026-11-09",
+      "2026-11-10",
+      "2026-11-12",
+      "2026-11-13",
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20"
+    ],
+    "excludedDate": "2026-11-11",
+    "inclusiveCalendarDates": 22,
+    "elapsedDays": 21
+  },
+  "existingPreflight": "batch02-preflight-codex.json"
+}

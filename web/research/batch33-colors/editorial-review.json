@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_required_editorial_correction",
+  "draft": {
+    "file": "research/batch33-colors/change-calendar-color-iphone.json",
+    "rawFileSha256": "bfb14c9caef85c8bfb90194fff43cfab74a9f0170a47536e748a64b2b0be302c",
+    "jsonStringifySha256": "37f358846aca24f17525877445a3b5c1431253e3069b18c810e325b35988e8f5",
+    "fullObjectRead": true
+  },
+  "readScope": "Complete draft and evidence.json were visible in initial combined output before truncation within the larger source audit. Source audit positiveFindings, truthfulWorkflowOutline, nativeEvidence and editorialDecision reread separately in untruncated output; websiteCoverage.fullReadConclusions separately read. Do not claim full 55-guide body review, full native file review or independent fresh primary fetch.",
+  "evidence": [
+    {
+      "file": "research/batch33-colors/evidence.json",
+      "rawFileSha256": "59eec4fed73632d671d6f3d826a3c79663dc017d3912130729885b23eed57f7b"
+    },
+    {
+      "file": "research/batch33-calendar-color-source.json",
+      "rawFileSha256": "27837d60e659adf636cd80ee84329a342e3e47c1c12606faab1276d3ab23cbf2"
+    }
+  ],
+  "checks": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 4,
+    "descriptionUnicodeCharacters": 150,
+    "date": "2026-10-22",
+    "claimsEmpty": true,
+    "related": [
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "actualDefinition": "articles-unify.ts"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "actualDefinition": "articles-help.ts"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "actualDefinition": "articles-unify.ts"
+      }
+    ]
+  },
+  "sectionReview": [
+    {
+      "section": 0,
+      "result": "Calendar-wide appearance, individual-event overrides and display styles distinguished; color not ownership, ACL, availability or RSVP evidence."
+    },
+    {
+      "section": 1,
+      "result": "Source/role qualification precedes workflow; absence of direct-provider edit control does not become a paid-tier claim or duplicate-calendar remedy."
+    },
+    {
+      "section": 2,
+      "result": "Conditional editable-device-calendar info path matches supplied source findings. COLOR/preset/Custom/Done and Cancel scope retained. Name unchanged avoids unintended title edit. No provider acceptance or immediate propagation promised."
+    },
+    {
+      "section": 3,
+      "result": "Received personal override and creator canonical color are expressly distinct; owned edits can affect shared metadata, without universal privacy or immediate sharing assertions."
+    },
+    {
+      "section": 4,
+      "result": "Google computer calendar color and iOS individual-event color controls attributed to Google, not Cloud. Server-driven background-color mirror replacement matches recorded implementation and is phrased conditionally."
+    },
+    {
+      "section": 5,
+      "result": "No Google event override, Outlook category, Microsoft color equivalence or Cloud tag feature promise. BusyCal text appearance explicitly competitor-specific; legibility advice does not claim product accessibility certification."
+    },
+    {
+      "section": 6,
+      "result": "Reopen/provider/device comparison is diagnostic, not freshness test. Moving events rejected as cosmetic remedy because destination/collaboration can change; support example avoids sensitive data without privacy guarantees."
+    }
+  ],
+  "otherFieldsReview": "Title, short and description accurately frame the task. Developer disclosure retained. All six practical steps and four FAQs preserve the body qualifications. Four source URLs correspond to supplied fresh root reads; additional BusyCal FAQ is research support, not required duplicate source entry. Three actual related guides verified.",
+  "distinctTask": "Supported by recorded complete comparison of work/personal, wrong-calendar and year-view guides: those discuss identity/destination/markers but lack calendar-edit steps, received override scope and provider-driven color persistence diagnosis. One combined setting/diagnosis canonical adds distinct task value; no demand/ranking inference.",
+  "requiredCorrections": [],
+  "limitations": [
+    "Independent editorial assessment of supplied source evidence, not independent native/runtime/released-binary certification.",
+    "No fresh web fetch: precise provider recipes accepted against root freshly read primary sources and recorded boundaries.",
+    "No source or draft edits, builds, deployments, ASC or customer actions."
+  ]
+}

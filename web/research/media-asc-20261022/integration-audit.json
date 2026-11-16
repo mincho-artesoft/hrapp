@@ -1,0 +1,390 @@
+{
+  "date": "2026-10-22",
+  "status": "READ_ONLY_CONDITIONAL_INTEGRATION_MAPPING",
+  "current": {
+    "manifestBase": "/media/panel",
+    "widths": {
+      "iPhone": [
+        340,
+        680
+      ],
+      "iPad": [
+        480,
+        960
+      ]
+    },
+    "manifestLocales": 31,
+    "siteLocales": 30,
+    "galleryConsumer": "Article page line51 instantiates ShotRail without device, hence iPhone only. No home ShotRail consumer found. iPad manifest data currently not surfaced by that caller.",
+    "localeFallback": "Explicit locale.media mapping only: Bulgarian uses en-US images with bg alt text. Other29 site locales use own images. Missing folder/device returns empty gallery, not automatic English fallback. en-CA/fr-CA manifest folders are not separate site locales.",
+    "altMapping": "Strips numeric prefix and looks up locale.code semantic label; absent alt throws. Current keys hook/week-left/week-right/widgets/live. New day/week/weather/sharing/devices are not compatible without reviewed labels/schema update.",
+    "layout": "Rail170CSSpx; current img dimensions340x736 for bothdevices. Correct intrinsic aspect dimensions necessary for iPad/Duo; actual pixel shape must be inspected. device is plain Input read inside computed, so runtime toggling alone is not a reactive dependency. Use separate static device instances or signal if introducing device switch."
+  },
+  "origin": {
+    "recordedAt": "2026-10-21T23:09:51.814653+00:00",
+    "bucket": "cloud-calendars-media",
+    "mapping": "CloudFront /media/* -> cloud-calendars-media S3 origin with no origin path; object keys preserve media/panel/",
+    "keyConvention": "S3 key includes media/ prefix; public URL https://www.cloud-calendars.com/<same key>. No origin-path stripping. Prior evidence, not fresh AWS request.",
+    "recommendedVersionPrefix": "media/panel/asc-174-20261022/",
+    "reason": "New immutable keys prevent stale content under old semantic filenames and preserve existing localizedsets. Keep under media/panel/ existing robots Allow. Do not change global manifest.base to versionprefix while oldlocales still use oldkeys."
+  },
+  "screenshots": [
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "3ac60d94-a16c-4892-befa-c19db25fe39c",
+      "sourceFilename": "01-day.png",
+      "sourceChecksum": "e636b8214e08704d06b5be16790cd37f",
+      "semantic": "day",
+      "proposedDevice": "iPad",
+      "proposedStem": "01-day",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/01-day-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "1166b2f1-bbce-4c9f-b6da-c05b0a051a3d",
+      "sourceFilename": "02-week.png",
+      "sourceChecksum": "d9e7dc99af2c7603751e56cc4d51cf99",
+      "semantic": "week",
+      "proposedDevice": "iPad",
+      "proposedStem": "02-week",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/02-week-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "cd34148e-0c21-49c9-bdc5-ff8854d96f61",
+      "sourceFilename": "03-weather.png",
+      "sourceChecksum": "a84ccab1f25f9b0424164a5d16b33ebf",
+      "semantic": "weather",
+      "proposedDevice": "iPad",
+      "proposedStem": "03-weather",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/03-weather-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "5b589951-d225-425f-9699-e80d1fadac64",
+      "sourceFilename": "04-widgets.png",
+      "sourceChecksum": "dcd4157561d889518c329156d49dfbd5",
+      "semantic": "widgets",
+      "proposedDevice": "iPad",
+      "proposedStem": "04-widgets",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/04-widgets-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "2beba5c0-3578-46d0-ba75-e0ab840d6f22",
+      "sourceFilename": "05-live.png",
+      "sourceChecksum": "1b45e2f70798da68f6a74e8e140e59fe",
+      "semantic": "live",
+      "proposedDevice": "iPad",
+      "proposedStem": "05-live",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/05-live-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "8e25b062-6718-49a3-b6af-bfea436d8149",
+      "sourceFilename": "06-sharing.png",
+      "sourceChecksum": "4027ce06cda0bd4835e58b345dd8b7bf",
+      "semantic": "sharing",
+      "proposedDevice": "iPad",
+      "proposedStem": "06-sharing",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/06-sharing-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPAD_PRO_3GEN_129",
+      "sourceAsset": "b86c7f81-7751-452c-b73b-c0d2fa24456f",
+      "sourceFilename": "07-devices.png",
+      "sourceChecksum": "31867ed762aeef452adb4096d9e5e09f",
+      "semantic": "devices",
+      "proposedDevice": "iPad",
+      "proposedStem": "07-devices",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPad/07-devices-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "8f984b9e-0646-41d4-b359-e76e109a7506",
+      "sourceFilename": "CC-174-Duo-en-US-01-day-0f30615cd1.png",
+      "sourceChecksum": "2a9345c7b67c6f2d999310c167897d61",
+      "semantic": "day",
+      "proposedDevice": "Duo",
+      "proposedStem": "01-day",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/01-day-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "10db73d7-a5d7-458f-bcff-688306a2bb6f",
+      "sourceFilename": "CC-174-Duo-en-US-02-week-cf7be8b080.png",
+      "sourceChecksum": "1386bec6653628ecbedb4d89c4176144",
+      "semantic": "week",
+      "proposedDevice": "Duo",
+      "proposedStem": "02-week",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/02-week-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "93eb4f63-f4e0-4f6e-a166-9be484af0975",
+      "sourceFilename": "CC-174-Duo-en-US-03-weather-51a67b6e41.png",
+      "sourceChecksum": "717d7ab27929ccbf9870848ddeceb274",
+      "semantic": "weather",
+      "proposedDevice": "Duo",
+      "proposedStem": "03-weather",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/03-weather-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "5b108e82-3d4c-4863-8038-1243212252f3",
+      "sourceFilename": "CC-174-Duo-en-US-04-widgets-46db00f44b.png",
+      "sourceChecksum": "63442b2089f26f77330c89446ab78c4b",
+      "semantic": "widgets",
+      "proposedDevice": "Duo",
+      "proposedStem": "04-widgets",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/04-widgets-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "8346b894-ad6c-4372-b932-1158b3961b09",
+      "sourceFilename": "CC-174-Duo-en-US-05-live-296f995387.png",
+      "sourceChecksum": "11e392d15c18c42c91e8f316fa05ccba",
+      "semantic": "live",
+      "proposedDevice": "Duo",
+      "proposedStem": "05-live",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/05-live-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "20a72704-edf1-4112-9e35-7df8d2a7a01c",
+      "sourceFilename": "CC-174-Duo-en-US-06-sharing-2031bc028a.png",
+      "sourceChecksum": "8454d5e7b50ae8e22da7a6fecb2a65ae",
+      "semantic": "sharing",
+      "proposedDevice": "Duo",
+      "proposedStem": "06-sharing",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/06-sharing-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_DUO",
+      "sourceAsset": "0e805df2-93d5-44cb-9fd2-1d4bac63d024",
+      "sourceFilename": "CC-174-Duo-en-US-07-devices-f75b47371c.png",
+      "sourceChecksum": "ec0e14ef1581b64aff406b56b6331e31",
+      "semantic": "devices",
+      "proposedDevice": "Duo",
+      "proposedStem": "07-devices",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/Duo/07-devices-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "d96d5099-df1f-42a1-8e21-2832a96f1540",
+      "sourceFilename": "01-day-medium.png",
+      "sourceChecksum": "af9b10a93ecf67bf471a5d3915525b65",
+      "semantic": "day",
+      "proposedDevice": "iPhone",
+      "proposedStem": "01-day",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/01-day-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "14ae282e-39bf-43dc-8053-059691459862",
+      "sourceFilename": "02-week-medium.png",
+      "sourceChecksum": "f13b17ca8eb1e79cfd651de5ead450ed",
+      "semantic": "week",
+      "proposedDevice": "iPhone",
+      "proposedStem": "02-week",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/02-week-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "b2fb8ed2-af7e-416e-ae11-9b730b54a34c",
+      "sourceFilename": "03-weather-medium.png",
+      "sourceChecksum": "88232be96b87c7c79d66c1c656aa6e36",
+      "semantic": "weather",
+      "proposedDevice": "iPhone",
+      "proposedStem": "03-weather",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/03-weather-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "0b98d3cc-99c2-4db8-89f6-173299e12c7f",
+      "sourceFilename": "04-widgets-medium.png",
+      "sourceChecksum": "5a14be7d6382b93824a2fb97141359eb",
+      "semantic": "widgets",
+      "proposedDevice": "iPhone",
+      "proposedStem": "04-widgets",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/04-widgets-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "6d9d4f40-6337-4b2f-8933-30e028fe0488",
+      "sourceFilename": "05-live-medium.png",
+      "sourceChecksum": "53e0234eb9a491925f904949f1beaf67",
+      "semantic": "live",
+      "proposedDevice": "iPhone",
+      "proposedStem": "05-live",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/05-live-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "41a60b28-d805-4c9c-8b06-47c67657ad9a",
+      "sourceFilename": "06-sharing-medium.png",
+      "sourceChecksum": "5cd1d154b245b3469447ca546c73d795",
+      "semantic": "sharing",
+      "proposedDevice": "iPhone",
+      "proposedStem": "06-sharing",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/06-sharing-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    },
+    {
+      "sourceSet": "APP_IPHONE_61",
+      "sourceAsset": "692905a7-ae0d-4be5-9abc-00191dacf8c7",
+      "sourceFilename": "07-devices-medium.png",
+      "sourceChecksum": "214d275cc8db231bef37bc8357c9a012",
+      "semantic": "devices",
+      "proposedDevice": "iPhone",
+      "proposedStem": "07-devices",
+      "proposedKeyTemplate": "media/panel/asc-174-20261022/en-US/iPhone/07-devices-{width}.{avif|webp}",
+      "condition": "Root visual acceptance and decoded dimensions; filename is not visual proof."
+    }
+  ],
+  "integrationProposal": [
+    "Introduce optional per-locale/per-set base override or explicit asset records; select English newversion base only after rootvisualacceptance. Keep currentglobalbase for all other locales. Bulgarian inherits English image changes throughmedia=en-US; supply reviewed Bulgarian altlabels for newsemantics.",
+    "Map PHONE61 to iPhone rail and iPad129 to explicit iPad gallery. Duo is distinct presentation, not a synonym for iPad or phone; add explicit support if root elects to display it. Do not force into fixedportraitphoneframe.",
+    "Preserve seven sourceorder slots; do not rename day to oldhook or week to week-left/right merely to reuse oldaltlabels. Preserve RTLlocalizedoldorder; no universalEnglish replacement.",
+    "Generate optimizedAVIF/WebP from acceptedoriginals; current build-media.py only accepts parentfolders iPhone/iPad and ignoresDuo. Needs deliberate extension or separatepreparation, not directunmodifiedscript on ASCfolders.",
+    "Homepage hero/showcase use independent assets/images/app-screenshots hardcodedpaths. Updatingmanifest affectsarticlegalleries only. Day/week/weather acceptedimages can map to corresponding homepanels only after checking promotionalposter vs rawUI fit; no matching newmonth/list image established.",
+    "Keep old widget-only clip until completepreviewvisualreview establishes a suitable replacement; general apppreview is not automatically a widgetdemo."
+  ],
+  "previews": [
+    {
+      "sourceDisplayType": "IPAD_PRO_3GEN_129",
+      "assets": [
+        {
+          "id": "9e168aea-c822-44b9-93c8-938ea0e351e9",
+          "fileName": "asd.mp4",
+          "fileSize": 19566292,
+          "assetDeliveryState": {
+            "errors": [],
+            "warnings": null,
+            "state": "COMPLETE"
+          },
+          "sourceFileChecksum": "09c4ebc3f92886dcf84347d9a7009aca"
+        }
+      ],
+      "proposedKey": "media/panel/asc-174-20261022/en-US/iPad/preview.mp4",
+      "posterKey": "Same devicefolder/preview-poster.webp",
+      "condition": "Visual/content/audio/duration/aspect/codecs reviewed first. No previewdownload or transcoding here."
+    },
+    {
+      "sourceDisplayType": "IPHONE_DUO",
+      "assets": [
+        {
+          "id": "12542961-b0ae-4451-aa93-9b1a34ef4160",
+          "fileName": "CC-174-Duo-en-US-duo-preview-appstore-47673ad0ff.mp4",
+          "fileSize": 4868604,
+          "assetDeliveryState": {
+            "errors": [],
+            "warnings": null,
+            "state": "COMPLETE"
+          },
+          "sourceFileChecksum": "561cf9bdfcf5ee184547ed409a2e44fa"
+        }
+      ],
+      "proposedKey": "media/panel/asc-174-20261022/en-US/Duo/preview.mp4",
+      "posterKey": "Same devicefolder/preview-poster.webp",
+      "condition": "Visual/content/audio/duration/aspect/codecs reviewed first. No previewdownload or transcoding here."
+    },
+    {
+      "sourceDisplayType": "IPHONE_61",
+      "assets": [
+        {
+          "id": "3714242b-0ba4-459d-a272-ba839415c606",
+          "fileName": "Cc_En.mp4",
+          "fileSize": 16989459,
+          "assetDeliveryState": {
+            "errors": [],
+            "warnings": null,
+            "state": "COMPLETE"
+          },
+          "sourceFileChecksum": "8228d8db17187558ec529b4aede8c4e4"
+        }
+      ],
+      "proposedKey": "media/panel/asc-174-20261022/en-US/iPhone/preview.mp4",
+      "posterKey": "Same devicefolder/preview-poster.webp",
+      "condition": "Visual/content/audio/duration/aspect/codecs reviewed first. No previewdownload or transcoding here."
+    }
+  ],
+  "videoBehavior": "Existing widgets video has lazy promotedposter, preloadnone, mutedloopplaysinline, playpausecontrol and reduced-motion guard via InViewVideoDirective. Reuse those loading/motion protections if suitable; new substantive preview may need normalcontrols/captions/audio decision rather than silentlylooping it. Current preview names/COMPLETE status do not establish suitable content.",
+  "verificationBeforePublish": [
+    "Rootvisualacceptance and source identity/dimensions for allselectedassets",
+    "Exactmanifestpaths resolve to generatedfiles; reviewedsemanticlabels for en-US andbg",
+    "S3upload/readbacksamekeys/contenttypes then publicURL200; no overwritingoldkeys needed",
+    "PageSSR/browser check EN+BG+unaffectedlocale, responsive iPad/Duo proportions and ALT coverage",
+    "Videoactualplayback/poster/reducedmotion and accessiblecontrols"
+  ],
+  "evidence": [
+    {
+      "file": "src/app/core/media-manifest.json",
+      "sha256": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679"
+    },
+    {
+      "file": "src/app/core/locales.ts",
+      "sha256": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96"
+    },
+    {
+      "file": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "c4cc32e4bdbe2f9bc3d94c231f2f01548cc57d41d50b1a22136e5cdcf49af7fe"
+    },
+    {
+      "file": "src/app/core/screenshot-descriptions.json",
+      "sha256": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a"
+    },
+    {
+      "file": "src/app/pages/article-page/article-page.component.html",
+      "sha256": "f9f48285927e0a58fb9343aeb17c96a7e4e02bd45588a8ce7d8e87ce66f27c06"
+    },
+    {
+      "file": "src/app/components/hero/hero.component.html",
+      "sha256": "66e12ad750c92981b79abefb60c5d0f8541e6cf4cacd285ce30465e6affbcae4"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "sha256": "e6fb3c70fdfecc2938b5d9207f89d665b36a6c96bd826f9d419b996acb693aa5"
+    },
+    {
+      "file": "src/app/components/widgets/widgets.component.html",
+      "sha256": "a108e39672f4b22a0334396682286cc397d7f8a0cc4949ae4715180edf216ffe"
+    },
+    {
+      "file": "src/app/core/in-view-video.directive.ts",
+      "sha256": "00a78b115123fec948ac9c796271fe325cce52ea67ccc30ac25dbf672a3e8ea0"
+    },
+    {
+      "file": "scripts/build-media.py",
+      "sha256": "8595d3b85e0689ded63ae7fda864dc25a6a565f0ae2826c26ca6d107b7895298"
+    },
+    {
+      "file": "research/media-origin-readback-20261022.json",
+      "sha256": "b44f86ec0160eaee19fb3bffb2d020e3d806ab605264a866812955b848e7e242"
+    },
+    {
+      "file": "research/asc-priority-20261022/media-readiness.json",
+      "sha256": "51ae1bb5bc1dea3380f391a49edacde46094bb15983697fa87ecbdff23a3c2d9"
+    }
+  ],
+  "limits": "No new pixels/video reviewed in this task; root owns visualreview. No source/API/S3 requests or mutations, no downloads/transcodes/builds. Prior entire1240origin evidence file parsed, onlytop-levelorigin summary used; no new origin verification. Privacy untouched."
+}

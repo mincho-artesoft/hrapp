@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-22T00:55:42.170392+00:00",
+  "allPassed": true,
+  "pages": [
+    {
+      "locale": "bg",
+      "route": "/bg/articles/the-widget-that-shows-what-is-next/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "articleSections": 7,
+      "faqs": 3,
+      "screenshot": "/tmp/cloud-calendar-batch25-bg-widgets.png"
+    },
+    {
+      "locale": "ja",
+      "route": "/ja/articles/the-widget-that-shows-what-is-next/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "articleSections": 7,
+      "faqs": 3,
+      "screenshot": "/tmp/cloud-calendar-batch25-ja-widgets.png"
+    },
+    {
+      "locale": "de-DE",
+      "route": "/de/articles/the-widget-that-shows-what-is-next/",
+      "viewportWidth": 834,
+      "documentWidth": 823,
+      "articleSections": 7,
+      "faqs": 3,
+      "screenshot": "/tmp/cloud-calendar-batch25-de-ipad-guide.png"
+    }
+  ],
+  "viewportReset": true,
+  "visualInspection": "All three screenshots inspected; stable headings, full new iPad section in German, no horizontal overflow.",
+  "scope": "Representative public website rendering, not an installed native iPad/widget test, all-language certification, ranking or indexing proof."
+}

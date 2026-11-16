@@ -1,0 +1,182 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Partajează un singur eveniment: alege linkul și accesul potrivit",
+    "short": "Partajarea unui eveniment",
+    "description": "Partajează un eveniment fără întregul calendar. Află ce permit Reader, Writer și Owner, previzualizarea, actualizările și retragerea accesului.",
+    "lede": "Trimiterea detaliilor unei cine, editarea de către un coorganizator și colectarea răspunsurilor de participare sunt sarcini diferite. Alege întâi sarcina, apoi metoda. Ghid scris de Arte Soft, dezvoltatorul Cloud Calendars.",
+    "commonBelief": "Orice link de eveniment este un abonament doar pentru citire, actualizat imediat, care înregistrează un răspuns.",
+    "sections": [
+      {
+        "heading": "Începe cu un eveniment și verifică detaliile",
+        "body": [
+          "Partajarea unui singur eveniment se limitează la acesta, nu la întregul calendar al expeditorului. Verifică titlul, fusul orar, locul, notele și linkul întâlnirii. Detaliile utile unui invitat pot fi nepotrivite într-un link distribuit larg.",
+          "De exemplu, o cină nu necesită partajarea calendarului cu programările medicale. Totuși, locul și linkurile cinei însoțesc evenimentul. Verifică evenimentul în sine, nu te baza pe confidențialitatea calendarului din jur."
+        ]
+      },
+      {
+        "heading": "Alege previzualizare, e-mail sau QR",
+        "body": [
+          "Cloud Calendars oferă metode distincte. App Clip prezintă o previzualizare; pentru adăugare prin acea experiență este necesară aplicația completă. Invitațiile prin e-mail și QR folosesc o pagină web care propune deschiderea Cloud Calendars. Nu considera toate linkurile adrese de abonare interschimbabile.",
+          "Expeditorul se autentifică pentru partajarea sincronizată. Linkul sau codul QR poate fi redirecționat, deci trimite-l doar unde conținutul este potrivit. Codul QR transmite un link, nu dovedește cine l-a deschis."
+        ]
+      },
+      {
+        "heading": "Acordă doar accesul necesar",
+        "body": [
+          "Invitațiile prin e-mail permit alegerea Reader, Writer sau Owner. Reader poate vizualiza și sincroniza; Writer poate edita; Owner poate și partaja și gestiona accesul. Sunt alegeri cu efecte reale, nu trei nume pentru aceeași vizualizare. Folosește Reader pentru cine are nevoie doar de program.",
+          "Alege Writer pentru un coorganizator care trebuie să modifice evenimentul. Alege Owner doar dacă trebuie să gestioneze și accesul altora. Drepturile superioare necesită identitatea autentificată potrivită. Un destinatar anonim nu este un coproprietar identificat."
+        ]
+      },
+      {
+        "heading": "Înțelege cum îl adaugă destinatarul",
+        "body": [
+          "În aplicația completă, adăugarea necesită permisiune pentru calendar și o destinație editabilă. Destinatarul trebuie să verifice calendarul înainte de salvare. Copia primită poate fi apoi asociată evenimentului partajat pentru actualizări.",
+          "Aceasta diferă de importul unui fișier ICS obișnuit în alt calendar. Importul este o copie; abonamentul verifică periodic un flux. Dacă trimiți un flux ICS în locul invitației aplicației, explică metoda și confirmă compatibilitatea calendarului destinatarului."
+        ]
+      },
+      {
+        "heading": "Verifică modificările înainte să te bazezi pe ele",
+        "body": [
+          "Partajarea sincronizată poate transmite editări sau anulări, dar dispozitivul destinatarului trebuie să aibă ocazia să le primească. O indicație de reîmprospătare a fluxului nu este un termen de livrare. Un dispozitiv offline, abonament nereîmprospătat sau import separat poate arăta informații vechi.",
+          "Dacă cina se mută cu puțin înainte de începere, actualizează evenimentul și contactează direct invitații. Cere confirmarea noii ore. Trimiterea actualizării și primirea unui răspuns de participare sunt pași separați."
+        ]
+      },
+      {
+        "heading": "Gestionează accesul fără promisiuni de ștergere a copiilor",
+        "body": [
+          "Revizuiește destinatarii și retrage drepturile inutile. Eliminarea unui destinatar și revocarea linkului unui flux sunt operații distincte; niciuna nu trebuie prezentată ca ștergând de la distanță capturi, mesaje sau toate copiile calendarului.",
+          "Dacă linkul a depășit publicul dorit, identifică linkul sau dreptul implicat. Verifică metoda afectată după schimbarea accesului. Pe viitor, nu include detalii private în linkuri larg distribuite, în loc să te bazezi pe revocare ulterioară."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Verifică detaliile și alege între vizualizare, editare și răspunsuri de participare.",
+      "Alege metoda și autentifică-te când este necesar.",
+      "Folosește Reader pentru vizualizare; acordă Writer sau Owner doar pentru responsabilitatea respectivă.",
+      "Cere destinatarului să verifice ora și calendarul de destinație la adăugare.",
+      "Pentru schimbări urgente, actualizează evenimentul și trimite un mesaj direct.",
+      "La încheiere, verifică separat drepturile destinatarilor și accesul linkurilor."
+    ],
+    "faq": [
+      {
+        "q": "Partajarea unui eveniment expune tot calendarul?",
+        "a": "Metoda sincronizată pentru un eveniment se limitează la acesta. Detaliile proprii sunt totuși expuse prin metoda aleasă. Verifică-le și nu trimite o invitație pentru tot calendarul dacă intenționezi doar un eveniment."
+      },
+      {
+        "q": "Poate destinatarul modifica evenimentul?",
+        "a": "Da, cu acces Writer sau Owner potrivit și fluxul autentificat acceptat. Reader permite vizualizare și sincronizare. Un abonament ICS obișnuit nu este același mecanism de editare."
+      },
+      {
+        "q": "Eliminarea cuiva retrage tot ce a primit deja?",
+        "a": "Nu trebuie presupusă o asemenea garanție. Accesul afectează relația de partajare, dar copiile salvate, capturile și mesajele pot rămâne. Adresa unui flux partajat trebuie analizată separat."
+      }
+    ],
+    "sourcesHeading": "Referințe pentru opțiunile destinatarului",
+    "sources": [
+      {
+        "label": "Apple: prezentarea App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: importul evenimentelor și limitări",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: import sau abonare la calendar",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": []
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Permisiuni Google Calendar: verifică accesul acordat efectiv",
+    "short": "Acces și confidențialitate în Google Calendar",
+    "description": "Alege acces la disponibilitate, detalii sau editare. Verifică accesul public și prin grupuri, nu doar permisiunile individuale, înainte de partajare.",
+    "lede": "Înainte de partajare, decide ce trebuie să facă cealaltă persoană. Găsirea unei ore, citirea detaliilor și întreținerea calendarului sunt sarcini diferite. Ghid publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+    "commonBelief": "O permisiune individuală limitată garantează că persoana nu poate vedea detalii prin altă cale.",
+    "sections": [
+      {
+        "heading": "Potrivește accesul cu sarcina",
+        "body": [
+          "Un coleg care stabilește o oră poate avea nevoie doar de disponibilitate, fără detalii. Un colaborator care întreține un program de proiect are alte nevoi. Decide sarcina și apoi verifică permisiunea din setările curente de partajare.",
+          "Google distinge disponibilitatea, detaliile și mai multe niveluri de editare. Unul limitează accesul la evenimente private; altul permite editarea și detaliile, iar cel mai larg și administrarea partajării. Opțiunile care menționează modificări nu sunt echivalente."
+        ]
+      },
+      {
+        "heading": "Verifică accesul întregului calendar și al persoanei",
+        "body": [
+          "Pe lângă persoane, verifică dacă este public, disponibil organizației sau partajat unui grup. Google spune că accesul mai larg poate prevala asupra unei acordări restrânse: limitarea unei persoane nu retrage detalii deja publice.",
+          "Gândește-te la programul unui club publicat pentru membri. Înainte de o programare personală, verifică publicul calendarului, nu doar permisiunea din dreptul unui prieten. Păstrează programările private într-o destinație potrivită."
+        ]
+      },
+      {
+        "heading": "Folosește setările Google ale calendarului exact",
+        "body": [
+          "Pe computer, găsește calendarul între calendarele tale în Google Calendar, deschide meniul și setările de partajare. Google documentează zone separate pentru persoane sau grupuri și acces mai larg. Verifică numele și contul autentificat înainte de modificare.",
+          "Confirmă identitatea Google dorită a destinatarului. Dacă nu găsește calendarul, verifică adresa și mesajul invitației în loc să extinzi accesul ca să apară. Lipsa afișării și drepturile insuficiente de editare sunt probleme diferite."
+        ]
+      },
+      {
+        "heading": "Testează fără programări private",
+        "body": [
+          "Folosește o programare de test fără titlu privat, note, loc sau invitați. Cere destinatarului să confirme ce vede și, numai când este necesar și permis, ce poate modifica. Nu distribui datele de autentificare pentru test.",
+          "Notează calendarul și rolul, apoi verifică rezultatul după schimbarea setării. Astfel verifici configurația dorită, nu dispariția informațiilor citite sau copiate anterior. Nu testa publicând un program real de lucru."
+        ]
+      },
+      {
+        "heading": "Separă politicile de lucru de planurile aplicației",
+        "body": [
+          "Google precizează că administratorii de lucru sau școală pot restricționa partajarea. Dacă lipsește setarea, folosește metoda aprobată de organizație. Nu publica informații de lucru pentru a ocoli restricțiile contului.",
+          "Cloud Calendars poate afișa calendare conectate, dar planurile nu redefinesc permisiunile Google. Advanced elimină reclamele, nu cumpără acces pentru altcineva la toate evenimentele. Verifică partajarea furnizorului și rezultatul acceptat, nu doar existența unui editor local."
+        ]
+      },
+      {
+        "heading": "Revizuiește și elimină accesul inutil",
+        "body": [
+          "La sfârșitul proiectului, verifică destinatari, grupuri și publicări mai largi. Eliminarea unei persoane este doar o parte dacă există alte căi. Stabiliți cine întreține programul și cum se vor gestiona schimbările de acces.",
+          "Google documentează separat eliminarea persoanelor sau grupurilor și dezactivarea partajării mai largi. Retragerea nu recuperează exporturi, capturi sau informații copiate altundeva. Urmărește separat aceste situații cu cei implicați, fără promisiunea că un comutator șterge toate copiile vechi."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifică calendarul și sarcina destinatarului.",
+      "Verifică accesul individual, prin grup, organizație și public.",
+      "Alege permisiunea potrivită în setările Google curente.",
+      "Verifică identitatea înainte să schimbi accesul.",
+      "Testează un eveniment inofensiv din perspectiva destinatarului.",
+      "Revizuiește căile vechi fără a presupune recuperarea copiilor."
+    ],
+    "faq": [
+      {
+        "q": "O permisiune individuală restrânsă prevalează asupra unui calendar public?",
+        "a": "Nu. Google documentează prioritatea permisiunilor mai largi când setările se contrazic. Verifică accesul public și al organizației, nu doar persoana."
+      },
+      {
+        "q": "Toate permisiunile de editare expun la fel evenimentele private?",
+        "a": "Nu. Google documentează separat o opțiune care limitează accesul privat și alte opțiuni de editare sau administrare. Citește permisiunea actuală exactă."
+      },
+      {
+        "q": "Advanced schimbă drepturile de partajare Google?",
+        "a": "Nu. Advanced elimină reclamele în Cloud Calendars. Accesul depinde de permisiunile calendarului și restricțiile organizației."
+      }
+    ],
+    "sourcesHeading": "Ghidurile Google actuale despre permisiuni și partajare",
+    "sources": [
+      {
+        "label": "Google: alegerea permisiunilor calendarului",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: partajarea calendarului și retragerea accesului",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear"
+    ],
+    "updated": "2026-10-21"
+  }
+}

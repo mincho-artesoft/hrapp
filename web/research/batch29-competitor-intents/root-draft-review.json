@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-22T01:50:54.705994+00:00",
+  "draft": "research/batch29-competitor-intents/recover-deleted-calendar-events-iphone.json",
+  "rawDraftSha256": "c26bd855ffa4cadb3718d409a11af1ba55e2357abc98689b9e308f2af6a9539c",
+  "readScope": "Full7sections14paragraphs6practical4FAQ2sources/metadata/related read by root. Fresh complete Google substantive17\u2013123 and Apple calendar45\u201363 plus backup32 reviewed.",
+  "providerFindings": [
+    "Google Trash30days, percalendar and at least make-changes permission; explicit permanent recurrence exception and grouped row scope.",
+    "Creator restore guests RSVP again and room availability can differ.",
+    "iCloud calendar version replaces existing calendars across devices, current version saved first; recent changes and sharing/notification consequences explained before restore route."
+  ],
+  "sourceUrls": [
+    "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en",
+    "https://support.apple.com/en-gb/102508"
+  ],
+  "decision": "Root factual gate satisfied and independent final review passes; exact draft integrated after review.",
+  "limits": "No restore, account access or customer data; provider instructions not a Cloud restore feature or general recoverability assurance.",
+  "independentReview": "final-review.json"
+}

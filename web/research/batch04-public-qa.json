@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-21T17:29:41.814017+00:00",
+  "all_passed": true,
+  "pagesAndText": [
+    {
+      "path": "/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "54a74c1453f3081d374520ce0b87c95bafb70bbbd12a367702946948abe44ca2",
+      "matchesBuild": true
+    },
+    {
+      "path": "/articles/time-zones-and-the-flight-you-booked/",
+      "status": 200,
+      "sha256": "4598d399587362f1134374a6a23d5acc2ec8e5432e24c9b743212992005c03e5",
+      "matchesBuild": true
+    },
+    {
+      "path": "/bg/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "76e7e7502cb575b6a939d0c85667752c61e392b3a68cc2141e9684519ce357f9",
+      "matchesBuild": true
+    },
+    {
+      "path": "/bg/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "ed6bf1f84ce56b92d0320291428010b03e0dac60a87dd29debbe75362204e420",
+      "matchesBuild": true
+    },
+    {
+      "path": "/bg/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "aad2b93d80460e297402396ab9f3ad69d2465b97c85522595d34e27840f950e9",
+      "matchesBuild": true
+    },
+    {
+      "path": "/de/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "6608db127f57f28ffe4201013b8a0fb49090a117b2004b2797a99c4eea385848",
+      "matchesBuild": true
+    },
+    {
+      "path": "/de/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "5c9eeeace31a3d5d052d0d243e17fb6b1937bde344a7eeb7593cf1b6893153dd",
+      "matchesBuild": true
+    },
+    {
+      "path": "/de/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "7b1da30069699d0f48cf342d3777899f8a3201e82a962de5ce34ffaa64f6070b",
+      "matchesBuild": true
+    },
+    {
+      "path": "/fr/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "a49270603a93f43adeb7d30fd643bdbc068df2a2708531349c8d24f4332c63d6",
+      "matchesBuild": true
+    },
+    {
+      "path": "/fr/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "45c6f50ee0600a851f59f3817478407baad97cd205462c311744d905a54a2434",
+      "matchesBuild": true
+    },
+    {
+      "path": "/fr/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "4531c2089d69c35a643f0816e1a2a85d0305a43aad50a1b02fe7b6ea5a548356",
+      "matchesBuild": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "4453978e81b2892a0478c3c20643db4ab46cd07636b7fe5670b4e130993be165",
+      "matchesBuild": true
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "sha256": "25bd0a968b2cde2427ba4e1fd8e0d91fd60de8c92da3d310cefff01e15458ce3",
+      "matchesBuild": true
+    },
+    {
+      "path": "/llms-full.txt",
+      "status": 200,
+      "sha256": "664ff412d8cd993521b84544c3ef5ee6182513c3c8e5695dea8ab50ddcc2b318",
+      "matchesBuild": true
+    }
+  ],
+  "sitemapChecked": 442,
+  "llmsRefsChecked": 384,
+  "visualSamples": [
+    "bg notifications",
+    "de export",
+    "fr historical search"
+  ],
+  "viewport": 575,
+  "documentWidth": 564,
+  "invalidation": "I4ZIZ5QKW14HKTVCR1JFOEQ3IX"
+}

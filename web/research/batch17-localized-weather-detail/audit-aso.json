@@ -1,0 +1,106 @@
+{
+  "count": 4,
+  "source": "src/app/content/en-US/articles-weather.ts",
+  "datePreserved": "2026-10-22",
+  "validation": "Passed exact fields, duplicate keys, structure 6/12/6/3/2, descriptions <=155 Unicode characters, exact URLs/date/empty claims/disclosure and actual-module related routes",
+  "meaningReview": [
+    "App up to ten returned WeatherKit daily entries versus website fourteen-day Open-Meteo request, without guaranteed full range.",
+    "Hourly coverage checked separately, including local midnight.",
+    "Forecast unavailable means unresolved, not clear weather; no percentage or safety threshold invented.",
+    "Alternatives require actual availability and agreement.",
+    "Draft review, permission, recurrence and provider/participant acceptance boundaries retained."
+  ],
+  "sourceFidelityNote": "The current two English objects require draft/time/local-calendar review but do not restate the base guide’s one-hour/default-calendar/timezone implementation paragraph. Translations follow these exact objects without inserting additional claims.",
+  "scope": "Four existing localized article replacements as research only; no source integration, build, deployment, native changes or paid API.",
+  "reviewCaveats": "Full own-language model translations; no native-speaker certification.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "de-DE--a-fourteen-day-view-of-the-weather.json",
+      "descriptionCharacters": 146,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "omittedRelatedSlugs": [
+        "what-a-forecast-can-and-cannot-tell-you"
+      ],
+      "sourceObjectSha256": "d5cfe4ca7b9a7255b67f01eec43c669a9bf672b6386dd37139c273a90a556efc",
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "sha256": "9526623d4d28eddb4437534c7e8781dd75f0654150891b97537ff3453ad22c5b",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "es-ES--a-fourteen-day-view-of-the-weather.json",
+      "descriptionCharacters": 152,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "forecast-beside-every-event",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "omittedRelatedSlugs": [
+        "what-a-forecast-can-and-cannot-tell-you"
+      ],
+      "sourceObjectSha256": "d5cfe4ca7b9a7255b67f01eec43c669a9bf672b6386dd37139c273a90a556efc",
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "sha256": "49e8812ace48295b535d4f090dc6ff263955e6591d97a1ef7b9ffa2596e753ce",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "de-DE--planning-outdoors-without-being-rained-on.json",
+      "descriptionCharacters": 148,
+      "seeAlso": [
+        "forecast-beside-every-event"
+      ],
+      "omittedRelatedSlugs": [
+        "reading-a-chance-of-rain",
+        "what-a-forecast-can-and-cannot-tell-you",
+        "the-commute-and-the-sky"
+      ],
+      "sourceObjectSha256": "701e15ff129561d82620ba88ed7493b72e7d70569a398322e0c027e0f9aa32b9",
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "sha256": "7399dfa0b0b8beff667666c58e4af7efb9cef65f593f8d5757688c724ca9302a",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "es-ES--planning-outdoors-without-being-rained-on.json",
+      "descriptionCharacters": 148,
+      "seeAlso": [
+        "forecast-beside-every-event"
+      ],
+      "omittedRelatedSlugs": [
+        "reading-a-chance-of-rain",
+        "what-a-forecast-can-and-cannot-tell-you",
+        "the-commute-and-the-sky"
+      ],
+      "sourceObjectSha256": "701e15ff129561d82620ba88ed7493b72e7d70569a398322e0c027e0f9aa32b9",
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "sha256": "dc8f017c09be091b3e8e8856539c26c1ecb820e2c5994bb326901f9d1dd93671",
+      "translationConfidence": "medium-high"
+    }
+  ]
+}

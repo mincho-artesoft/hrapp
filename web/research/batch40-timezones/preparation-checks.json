@@ -1,0 +1,44 @@
+{
+  "locale": "it",
+  "slug": "time-zones-and-the-flight-you-booked",
+  "draftRawSha256": "0970cbba38c7bfbb2af5c984271655a943aa4474235c375e9a88fcbc00840857",
+  "sourceSnapshotRawSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+  "sourceModuleRawSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+  "fullRead": "Entire current English object freshly read; complete Italian translation and self-review including all metadata, seven sections and later feed diagnostic section, practical, FAQs and sources.",
+  "structure": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "sources": 4
+  },
+  "matchesSourceStructure": true,
+  "descriptionUnicodeChars": 138,
+  "exactSourceURLs": true,
+  "dateMatches": true,
+  "claimsEmpty": true,
+  "wasAbsent": true,
+  "related": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "exists": true
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "exists": true
+    }
+  ],
+  "omittedRelated": {
+    "slug": "weather-where-the-event-is",
+    "reason": "No actual Italian definition; omitted rather than creating a route."
+  },
+  "evidence": "Reviewed English source plus prior batch38/39 provider and native source evidence; no fresh Italian discovery or web reads claimed.",
+  "boundaries": [
+    "Event zone distinct from display zone.",
+    "Apple Calendar override and Google desktop endpoint settings not promised Cloud controls.",
+    "Saved event/device zone fallback conditional.",
+    "Flight endpoints, recurrence DST, all-day dates, import snapshot/subscription source and preservation checks retained."
+  ],
+  "review": "Own full semantic self-review, not native-speaker or runtime certification; independent product review requested.",
+  "writes": "Research draft, source snapshot and checks only."
+}

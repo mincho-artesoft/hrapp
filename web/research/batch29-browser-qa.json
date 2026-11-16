@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-22T01:56:05.586843+00:00",
+  "allPassed": true,
+  "url": "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/",
+  "viewport": 575,
+  "documentWidth": 564,
+  "scrollWidth": 564,
+  "h1Exact": "Deleted calendar events on iPhone: Google and iCloud recovery",
+  "sectionHeadingsPresent": 7,
+  "visualReview": [
+    "Stable article top and missing-vs-deleted gate",
+    "Google recurrence/RSVP and iCloud replacement/backup/restore-route paragraphs"
+  ],
+  "screenshot": "/tmp/cloud-calendar-batch29-recovery.png",
+  "viewportRestored": true,
+  "tabMarkedDeliverable": true,
+  "scope": "Representative rendered web article layout/text, not provider restoration or native runtime."
+}

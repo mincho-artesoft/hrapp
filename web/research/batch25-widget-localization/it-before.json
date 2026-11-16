@@ -1,0 +1,79 @@
+{
+  "updated": "2026-10-21",
+  "title": "I prossimi appuntamenti sulla schermata Home di iPhone",
+  "short": "Prossimi appuntamenti nel widget",
+  "description": "Scegli un widget con eventi e controlla i calendari selezionati e gli appuntamenti mancanti. Una lista vuota non dimostra che l’agenda sia libera.",
+  "lede": "Per vedere il prossimo appuntamento, scegli un widget che elenchi gli eventi. Una scheda con data e meteo risponde a una domanda diversa. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Scegli prima la disposizione con eventi",
+      "body": [
+        "«Calendar Events» è la disposizione media con l’elenco degli appuntamenti. «Calendar Events Large» offre più spazio. «Calendar & Weather» è una disposizione separata per data e meteo: il formato piccolo non promette il prossimo evento. I nomi possono essere tradotti sul dispositivo.",
+        "Tieni premuta un’area vuota della schermata Home e apri la galleria dei widget dalle opzioni di modifica. Cerca Cloud Calendars e confronta l’anteprima prima di aggiungerlo. Questa galleria di iPhone è separata dalle viste del calendario nell’app."
+      ]
+    },
+    {
+      "heading": "Quali eventi sono considerati prossimi",
+      "body": [
+        "L’elenco usa i calendari selezionati e gli appuntamenti con un orario di inizio futuro. Esclude gli eventi di tutto il giorno e quelli già iniziati. Un compleanno o una riunione in corso possono quindi essere presenti nell’app ma non nel widget.",
+        "Se oggi hai solo un viaggio segnato per tutto il giorno, una lista vuota non indica che sia andato perso. Apri la giornata completa. Leggi anche la data della prossima voce: potrebbe essere domani o più avanti."
+      ]
+    },
+    {
+      "heading": "Confronta prima con l’app",
+      "body": [
+        "Trova un appuntamento futuro preciso in Cloud Calendars. Controlla il calendario a cui appartiene, che sia selezionato e che l’app abbia l’accesso necessario. Confronta titolo, data e inizio. Se manca anche nell’app, verifica prima account e sincronizzazione.",
+        "Per una prova semplice, crea un appuntamento senza invitati in un calendario tuo, con un titolo riconoscibile e un inizio futuro. Non modificare un invito reale e non rimuovere account per provare il widget."
+      ]
+    },
+    {
+      "heading": "Non presumere un aggiornamento immediato",
+      "body": [
+        "I widget mostrano informazioni salvate e non funzionano continuamente come un’app aperta. iOS decide quando aggiornarli. Aprire l’app e controllare l’evento offre un riferimento, ma non garantisce un intervallo preciso prima che cambi il widget.",
+        "Se l’app resta corretta e il widget no, annota disposizione, calendario, orario e versioni dell’app e di iOS. Una lista vuota, un appuntamento vecchio e un orario sbagliato sono problemi diversi."
+      ]
+    },
+    {
+      "heading": "Leggi il meteo come un riepilogo separato",
+      "body": [
+        "Il meteo accanto alla data non è una previsione per il luogo e l’ora di ciascun appuntamento. Prima di un’attività all’aperto, controlla la località e la fascia oraria corrette nella vista meteo.",
+        "Usa il widget per orientarti rapidamente e il calendario completo per gli eventi di tutto il giorno, i dettagli e le decisioni che richiedono l’intera agenda."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Scegli una disposizione con elenco eventi.",
+    "Verifica un appuntamento futuro in un calendario selezionato.",
+    "Confronta data e ora con l’app.",
+    "Documenta le differenze persistenti senza cancellare dati."
+  ],
+  "faq": [
+    {
+      "q": "Perché manca il mio compleanno?",
+      "a": "L’elenco esclude gli eventi di tutto il giorno. Controlla il calendario completo."
+    },
+    {
+      "q": "Il widget piccolo mostra la prossima riunione?",
+      "a": "Il formato piccolo di «Calendar & Weather» mostra data e meteo. Per gli appuntamenti scegli un elenco eventi."
+    },
+    {
+      "q": "Una lista vuota significa che oggi sono libero?",
+      "a": "No. Possono mancare eventi di tutto il giorno, riunioni in corso, calendari non selezionati o aggiornamenti recenti."
+    }
+  ],
+  "sourcesHeading": "Fonti e istruzioni Apple",
+  "sources": [
+    {
+      "label": "Apple: aggiungere e modificare widget su iPhone",
+      "url": "https://support.apple.com/118610"
+    },
+    {
+      "label": "Apple: mantenere aggiornato un widget",
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    }
+  ],
+  "seeAlso": [
+    "a-countdown-to-your-next-meeting"
+  ]
+}

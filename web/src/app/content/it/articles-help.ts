@@ -1,0 +1,781 @@
+import { LocalisedArticle } from '../types';
+
+export const HELP_IT: Readonly<Record<string, LocalisedArticle>> = {
+  "time-zones-and-the-flight-you-booked": {
+  "updated": "2026-10-22",
+  "title": "Fusi orari nel calendario: controlla gli eventi prima di partire",
+  "short": "Fusi orari e viaggi",
+  "description": "Distingui il fuso dell’evento da quello di visualizzazione. Controlla voli, appuntamenti e chiamate ricorrenti prima di modificarne l’ora.",
+  "lede": "Un’ora diversa dopo un volo non significa necessariamente che l’appuntamento sia stato spostato. Prima chiarisci a quale luogo si riferisce l’evento e quale fuso orario mostra l’app. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Cambiare il fuso orario visualizzato dal calendario equivale a modificare l’appuntamento stesso.",
+  "sections": [
+    {
+      "heading": "Parti dall’appuntamento, poi controlla la visualizzazione",
+      "body": [
+        "Una riunione fissata per un preciso istante può comparire con ore diverse in luoghi diversi. Un appuntamento dal dentista alle 09:00 nella città di destinazione ha uno scopo diverso da un promemoria personale per fare stretching alle 09:00 ovunque ti trovi. Annota quale significato ti serve prima di modificare qualcosa.",
+        "Confronta la prenotazione o la conferma dell’organizzatore con la data, l’ora di inizio e il fuso indicato nell’evento. Poi controlla il fuso usato per visualizzare il calendario. Non trascinare l’evento a un’altra ora solo perché l’ora mostrata è cambiata dopo il viaggio: potresti modificare l’appuntamento anziché la sua rappresentazione."
+      ]
+    },
+    {
+      "heading": "Usa i controlli del provider quando serve un fuso preciso",
+      "body": [
+        "Apple descrive un campo per il fuso orario durante la creazione o la modifica di un evento in Calendario di Apple su iPhone. L’impostazione separata che consente di fissare un fuso orario cambia il fuso mostrato in Calendario di Apple. Queste istruzioni riguardano Calendario di Apple: non promettono che le stesse impostazioni controllino Cloud Calendars.",
+        "In Google Calendar su computer, il controllo del fuso orario nell’editor dell’evento permette di scegliere un fuso. Google descrive anche fusi distinti per l’inizio e la fine di un evento. Sono controlli di Google. Usa l’account a cui appartiene l’evento e verifica di avere il permesso di modificarlo prima di cambiarne il fuso."
+      ]
+    },
+    {
+      "heading": "Controlla l’evento salvato in Cloud Calendars",
+      "body": [
+        "Un evento esistente può mantenere il proprio fuso orario salvato nell’editor di Cloud Calendars. Se l’evento non ne fornisce uno, l’editor può usare il fuso attuale del dispositivo. Prima di creare un appuntamento a destinazione, controlla il fuso del dispositivo e la data e l’ora locali desiderate. Riapri l’evento salvato e confrontalo con la prenotazione.",
+        "Per fusi distinti di partenza e arrivo, usa un editor che li supporti esplicitamente. Non presumere che i normali campi di inizio e fine offrano fusi indipendenti. Se il tuo editor di Cloud Calendars non presenta il controllo necessario, usa un editor del provider a cui appartiene l’evento che supporti questa funzione. Poi riapri l’evento in Cloud Calendars e confronta sia l’inizio sia la fine."
+      ]
+    },
+    {
+      "heading": "Un volo e un appuntamento a destinazione richiedono controlli diversi",
+      "body": [
+        "Per un volo, conserva insieme i dati della compagnia aerea: data di partenza, ora all’aeroporto di partenza, data di arrivo e ora all’aeroporto di arrivo. L’arrivo il giorno successivo conta quanto l’ora. Se l’editor supporta fusi separati per l’inizio e la fine, associa ciascuno all’aeroporto corrispondente. Altrimenti usa un editor del provider che consenta la rappresentazione necessaria: non presumere che due normali campi orari ricavino autonomamente due luoghi diversi.",
+        "Per un appuntamento a destinazione, verifica con la prenotazione la data e l’ora locali della città. Annota la città nei dettagli dell’evento se può aiutarti a controllare in seguito. Un luogo scritto nelle note è un promemoria utile, ma non dimostra che il vero campo del fuso orario sia stato impostato. Riapri l’evento salvato prima di farvi affidamento."
+      ]
+    },
+    {
+      "heading": "Controlla separatamente chiamate ricorrenti ed eventi di tutto il giorno",
+      "body": [
+        "Per una chiamata internazionale regolare, concordate quale città debba mantenere fissa la propria ora locale. Controlla la prossima occorrenza e anche una vicina al cambio stagionale dell’ora di ciascun partecipante. Un confronto su una sola data non dimostra che la differenza di orario resti identica tutto l’anno.",
+        "Un evento di viaggio di tutto il giorno può aiutare a organizzare l’itinerario, ma non sostituisce gli orari di partenza, gli appuntamenti o le scadenze del check-in. Controllane le date dopo il passaggio tra provider. Non dare per scontato che ogni evento di tutto il giorno importato venga visualizzato nello stesso modo in tutti i calendari."
+      ]
+    },
+    {
+      "heading": "Quando sbaglia solo un calendario importato o a cui sei iscritto",
+      "body": [
+        "Identifica il percorso prima di modificare l’appuntamento: un file importato è un’istantanea, mentre un’iscrizione segue una fonte pubblicata. Confronta la stessa occorrenza nel calendario di origine e presso il destinatario, includendo data, fuso dell’evento e fuso di visualizzazione. Se l’evento si ripete, controlla una data vicina a un cambio stagionale dell’ora. Lascia invariato l’originale mentre individui dove compare la differenza.",
+        "Se il calendario del proprietario è corretto ma un destinatario vede un orario sbagliato, documenta quel confronto preciso per l’assistenza. Un’interpretazione diversa del formato del feed è una possibile causa, ma non spiega ogni orario spostato. Verifica gli accessi e il trattamento dei dati del calendario prima di provare un servizio che elabori i feed. Non sostituisce una connessione autorizzata all’account, e spostare l’evento originale può modificare l’appuntamento reale per tutti."
+      ]
+    },
+    {
+      "heading": "Se gli orari continuano a non coincidere",
+      "body": [
+        "Confronta lo stesso evento nel provider a cui appartiene e in Cloud Calendars, annotando in entrambi calendario, data, fuso e ora visualizzata. Controlla di non aver aperto una copia con un titolo simile. Se il provider è corretto ma un’altra visualizzazione differisce, segnala il confronto prima di riscrivere l’appuntamento.",
+        "Includi le versioni dell’app e di iOS, i fusi interessati e l’eventuale ripetizione dell’evento. Non pubblicare riferimenti di prenotazione o dettagli dei partecipanti. Non occorre rimuovere un account o ricreare un invito reale per stabilire quale visualizzazione differisca."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Annota la data, l’ora locali e la città previste nella prenotazione.",
+    "Distingui il fuso salvato nell’evento dal fuso di visualizzazione.",
+    "Usa i controlli del fuso del provider interessato quando necessario; non presumere che esistano controlli equivalenti in Cloud Calendars.",
+    "Controlla sia la partenza sia l’arrivo del volo e un’occorrenza successiva di un evento ricorrente.",
+    "Riapri l’evento salvato e confrontalo prima di cambiarne nuovamente l’ora."
+  ],
+  "faq": [
+    {
+      "q": "Impostare un fuso fisso in Calendario di Apple modifica Cloud Calendars?",
+      "a": "Apple descrive questa impostazione per la visualizzazione in Calendario di Apple. Questa guida non stabilisce che Cloud Calendars la segua."
+    },
+    {
+      "q": "Posso inserire fusi diversi di partenza e arrivo in Cloud Calendars?",
+      "a": "Non presumere che i normali campi di inizio e fine consentano di scegliere fusi separati. Se il tuo editor di Cloud Calendars non li offre, usa un editor del provider che li supporti. Google descrive fusi distinti di inizio e fine in Google Calendar su computer."
+    },
+    {
+      "q": "Devo riportare una riunione alla vecchia ora dopo un viaggio?",
+      "a": "Controlla prima l’istante previsto e il fuso di visualizzazione. Un’ora locale diversa può essere la rappresentazione corretta dello stesso appuntamento."
+    },
+    {
+      "q": "Devo spostare l’evento originale se un’iscrizione ICS mostra l’ora sbagliata?",
+      "a": "Confronta prima quella occorrenza alla fonte e presso il destinatario, con i fusi dell’evento e di visualizzazione. Stabilisci se il problema riguarda l’appuntamento o solo la visualizzazione che lo riceve. Non modificare la riunione reale per compensare la differenza di un solo calendario."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali sui fusi degli eventi e di visualizzazione",
+  "sources": [
+    {
+      "label": "Apple: programmare o visualizzare eventi in un altro fuso orario su iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: usare Google Calendar in diversi fusi orari",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: gli eventi importati non restano sincronizzati",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft: calendari ICS pubblicati, importazioni e iscrizioni",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+},
+
+  "caldav-calendar-on-iphone": {
+  "updated": "2026-10-22",
+  "title": "Calendario CalDAV su iPhone: configurazione, permessi ed eventi mancanti",
+  "short": "Calendari CalDAV su iPhone",
+  "description": "Aggiungi un account CalDAV nelle impostazioni di iPhone e controlla accesso e calendari selezionati. Distingui account, abbonamenti e copie.",
+  "lede": "Un calendario può essere presente sul server ma non comparire in un’app per iPhone. Controlla nell’ordine l’account, il sistema di calendari del dispositivo e la selezione nell’app. Questa guida è pubblicata da Arte Soft, lo sviluppatore di Cloud Calendars.",
+  "commonBelief": "Qualsiasi URL di calendario equivale a un account CalDAV e basta aggiungerlo una volta perché tutte le app possano leggerlo e modificarlo.",
+  "sections": [
+    {
+      "heading": "Distinguere un account, un abbonamento e un file importato",
+      "body": [
+        "Prima di inserire qualsiasi dato, chiedi al fornitore quale connessione supporta su iPhone. Un account CalDAV usa informazioni sul server e sull’account. Un abbonamento iCal segue un feed di calendario; aprire un file di calendario esportato può creare una copia separata. Questi metodi rispondono a esigenze diverse, anche quando mostrano appuntamenti con gli stessi titoli.",
+        "Per esempio, chi amministra un’associazione e deve aggiornare il programma condiviso ha bisogno di un metodo di modifica consentito dal fornitore. Un socio che si limita a seguire il programma potrebbe invece avere un abbonamento. Non dovrebbe continuare a provare l’URL del feed come nome utente, né presumere che vedere un evento dia il permesso di modificarlo."
+      ]
+    },
+    {
+      "heading": "Seguire le istruzioni iPhone del fornitore e le impostazioni account di Apple",
+      "body": [
+        "La guida attuale di Apple indica questo percorso per configurare CalDAV: Settings > Apps > Calendar > Calendar Accounts > Add Account > Add Other Account > CalDAV account. Inserisci le informazioni sul server e sull’account fornite dal servizio. Le etichette possono differire nelle versioni precedenti di iOS. Usa l’opzione di account specifica del servizio quando le istruzioni del fornitore lo richiedono.",
+        "Controlla i requisiti di autenticazione del fornitore prima di inserire una password: alcuni servizi usano una password specifica per app o un’altra procedura approvata. Non sostituire queste istruzioni con quelle scritte per un’altra app di calendario e non dedurre l’indirizzo del server dal dominio di un’e-mail. Per un account di lavoro, usa la configurazione approvata dall’organizzazione anziché modificare i controlli di sicurezza per riuscire a collegarlo."
+      ]
+    },
+    {
+      "heading": "Verificare prima che il calendario arrivi in Calendario di Apple",
+      "body": [
+        "Apri Calendario di Apple e cerca l’account e il calendario interessato nell’elenco dei calendari. Confronta un normale appuntamento con la vista del fornitore: titolo, nome del calendario, data e ora locale. Un accesso riuscito all’account è solo la prima osservazione; non indica quali calendari e date siano effettivamente arrivati sul dispositivo.",
+        "Se l’appuntamento manca già lì, esamina l’account con il fornitore prima di aggiungerlo ripetutamente in un’altra app. Apple descrive una frequenza di recupero dei dati per gli account senza supporto Push. Questo non garantisce che ogni account o app ricevente si aggiorni immediatamente. Annota dove è visibile l’appuntamento e l’ora del controllo."
+      ]
+    },
+    {
+      "heading": "Controllare l’accesso di Cloud Calendars e i calendari selezionati",
+      "body": [
+        "Cloud Calendars legge i calendari del dispositivo tramite il sistema di calendari di Apple. Nelle impostazioni di privacy e sicurezza di iPhone, controlla il suo accesso ai calendari. Per leggere gli eventi esistenti serve l’accesso completo al calendario; il permesso di aggiungere eventi non dà accesso agli impegni esistenti.",
+        "Apri poi l’elenco dei calendari in Cloud Calendars. Cerca il calendario desiderato, anche nel gruppo Other, e verifica che sia selezionato. Un calendario disponibile sul dispositivo può comunque avere limitazioni di compatibilità o condivisione specifiche del fornitore. Se compare in Calendario di Apple ma qui manca, annota la differenza anziché creare un secondo collegamento all’account."
+      ]
+    },
+    {
+      "heading": "Verificare separatamente la modifica e la destinazione",
+      "body": [
+        "Un account può contenere calendari con permessi diversi. La visibilità non dimostra che il fornitore accetterà una modifica e la disponibilità di un editor locale non concede alcun permesso. Durante la verifica della connessione, lascia un invito ricevuto o una riunione ricorrente già stabilita nel calendario originale.",
+        "Se possiedi un calendario modificabile e devi provare il collegamento, usa un appuntamento di prova con un nome chiaro e senza dati sensibili. Scegli esplicitamente il calendario di destinazione, salva e controlla la vista del fornitore. Apporta poi una piccola modifica e confronta di nuovo. Non fare prove spostando una vera riunione condivisa tra calendari: cambieresti la situazione che stai cercando di esaminare."
+      ]
+    },
+    {
+      "heading": "Individuare i duplicati senza eliminare la sorgente",
+      "body": [
+        "Se lo stesso appuntamento compare due volte, annota i nomi di entrambi i calendari e come ciascuno sia arrivato sul telefono. Un collegamento a un account, un abbonamento a un feed e una precedente importazione possono coesistere. Nascondi temporaneamente un calendario per capire quale visualizzazione fornisca; nascondere è diverso dall’eliminare un evento o rimuovere un account. Annota la selezione originale e ripristinala dopo il confronto. In Cloud Calendars, la selezione può influire anche sui widget, sulla programmazione delle notifiche e sulla sincronizzazione Google.",
+        "Per una richiesta di assistenza, descrivi il fornitore, la versione di iOS, il nome del calendario, il metodo di connessione e dove è visibile l’appuntamento di prova. Non includere password, URL privati dei feed o dettagli sensibili degli eventi negli screenshot. Questa guida descrive una procedura basata su un account del dispositivo; non dimostra che Cloud Calendars offra una sincronizzazione CalDAV diretta tra server o una copia automatica delle disponibilità tra fornitori."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica se disponi di un account CalDAV, di un abbonamento a un feed o di un file esportato.",
+    "Segui le istruzioni di configurazione e autenticazione per iPhone approvate dal fornitore.",
+    "Controlla il calendario desiderato e un appuntamento noto in Calendario di Apple.",
+    "Verifica l’accesso di Cloud Calendars ai calendari e seleziona quello desiderato.",
+    "Usa un evento di prova eliminabile in un calendario di tua proprietà per verificare le modifiche consentite.",
+    "Confronta i metodi di connessione prima di nascondere una visualizzazione duplicata o chiedere assistenza."
+  ],
+  "faq": [
+    {
+      "q": "Un account CalDAV equivale a un abbonamento iCal?",
+      "a": "No. L’accesso a un account e l’abbonamento a un feed di calendario sono connessioni diverse. Verifica quale metodo offre il fornitore e se permette le modifiche."
+    },
+    {
+      "q": "Perché Calendario di Apple può mostrare un evento che Cloud Calendars non mostra?",
+      "a": "Controlla il permesso di accesso ai calendari di Cloud Calendars e verifica che il calendario interessato sia selezionato. Se continua a mancare, annota l’account e il calendario coinvolti; la visibilità in un’app non garantisce il comportamento di tutte le altre."
+    },
+    {
+      "q": "Questo significa che Cloud Calendars si collega direttamente a qualsiasi server CalDAV?",
+      "a": "No. Questa procedura aggiunge l’account tramite le impostazioni di iPhone, quindi controlla i calendari del dispositivo disponibili per l’app. Compatibilità del fornitore, autenticazione e permessi di modifica restano da verificare."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali su account e permessi",
+  "sources": [
+    {
+      "label": "Apple: impostazioni degli account calendario, configurazione CalDAV e recupero dei dati",
+      "url": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios"
+    },
+    {
+      "label": "Apple: controllare l’accesso alle informazioni del calendario",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+},
+
+  "work-and-personal-without-two-apps": {
+  "updated": "2026-10-22",
+  "title": "Calendari di lavoro e personali in un’app: mantieni distinta la proprietà",
+  "short": "Lavoro e vita privata, un’app",
+  "description": "Vedi insieme calendari di lavoro e personali. Controlla permessi, destinazione degli eventi e piani Cloud Calendars prima di collegare gli account.",
+  "lede": "Una panoramica può aiutarti a individuare sovrapposizioni mantenendo chiaro a chi appartiene ogni evento. Controlla sia i calendari visualizzati sia le connessioni degli account usate per conservarne le copie. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Riunire calendari di lavoro e personali in un’app combina anche i loro permessi di condivisione.",
+  "sections": [
+    {
+      "heading": "Una panoramica è diversa dall’accesso condiviso",
+      "body": [
+        "Un’app può mostrare insieme i calendari selezionati mentre ciascuno mantiene il proprio account e i propri permessi. La guida Apple sui calendari multipli spiega come scegliere quelli da visualizzare, assegnare colori e selezionare un calendario predefinito. Queste scelte di visualizzazione non trasferiscono la proprietà degli eventi.",
+        "Prima di collegare un account di lavoro, controlla i requisiti della tua organizzazione. Google documenta che gli amministratori possono limitare la condivisione dei calendari. Una comoda panoramica personale non ti autorizza a pubblicare informazioni di lavoro o ad aggirare le restrizioni dell’account.",
+        "Le connessioni Google e Microsoft di Cloud Calendars usano copie dei calendari nell’archivio calendari dell’iPhone. Le sorgenti di calendario disponibili possono influire sulla posizione in cui queste copie sono conservate. Il collegamento di un account di lavoro richiede quindi l’approvazione del flusso effettivo dei dati, non soltanto del nome dell’account mostrato nella panoramica."
+      ]
+    },
+    {
+      "heading": "Usa colori e visibilità per organizzare la panoramica",
+      "body": [
+        "Assegna colori diversi ai calendari di lavoro e personali, poi esamina una giornata piena con entrambi visibili. Quando vuoi restringere la vista, nascondi un calendario invece di eliminarne gli eventi. La guida Apple sui calendari duplicati spiega come mostrarli e nasconderli tramite caselle di selezione. Prima di accettare un nuovo impegno, rendi di nuovo visibili i calendari rilevanti per quella decisione e confronta la settimana con tutti presenti. Una vista filtrata vuota non dimostra che quel momento sia libero.",
+        "Nascondere un calendario non cambia chi ha il permesso di accedervi. In Cloud Calendars, la selezione dei calendari conta anche per la sincronizzazione Google e la programmazione delle notifiche: non presumere quindi che deselezionare un calendario cambi soltanto l’immagine sullo schermo. Controlla le modifiche importanti nel servizio di origine e verifica separatamente le notifiche se vuoi una serata tranquilla. Mantieni disponibile un’app di lavoro approvata se la tua organizzazione lo richiede."
+      ]
+    },
+    {
+      "heading": "Controlla la destinazione prima di salvare",
+      "body": [
+        "Un calendario predefinito è un utile punto di partenza, non una garanzia che ogni appuntamento debba finirci. Per un appuntamento personale, controlla il calendario selezionato prima di salvare. Per una riunione di lavoro, usa il calendario professionale e la procedura di invito dell’organizzazione.",
+        "Non spostare o copiare un invito soltanto per farlo apparire nella panoramica. Microsoft distingue gli eventi creati da te dalle riunioni organizzate da altre persone: modificare la copia che visualizzi non è un modo affidabile per aggiornare l’organizzatore o i partecipanti. Conserva l’invito originale e chiedi all’organizzatore eventuali cambiamenti di orario."
+      ]
+    },
+    {
+      "heading": "Cosa aggiungono i piani Cloud Calendars",
+      "body": [
+        "Cloud Calendars offre viste del calendario su iPhone e iPad. Il piano Base include la sincronizzazione Google Calendar e la vista con più calendari. Advanced aggiunge la rimozione degli annunci; Premium aggiunge il supporto per Microsoft Calendar e Teams. I prezzi locali attuali sono indicati nell’app e nell’App Store.",
+        "Advanced non è un permesso a pagamento per gestire ogni account. Un abbonamento non rende modificabile un calendario di sola lettura e non scavalca le regole aziendali. I calendari locali si possono usare senza account; le connessioni ai servizi e la condivisione hanno requisiti di accesso propri."
+      ]
+    },
+    {
+      "heading": "Controlla dall’altra parte un blocco di indisponibilità che tutela la privacy",
+      "body": [
+        "Supponiamo che un appuntamento personale debba impedire ai colleghi di prenotare quell’orario senza rivelarne il titolo. Vederlo accanto al lavoro sul telefono è soltanto la tua panoramica. Verifica prima se nell’account di lavoro esiste una voce relativa alla disponibilità, poi controlla cosa può vedere un collega interessato.",
+        "Se l’organizzazione consente un blocco manuale di indisponibilità nel calendario di lavoro, controlla destinazione, titolo, note, luogo, partecipanti e stato di disponibilità prima di salvare. Evita di copiarvi dettagli privati dell’appuntamento. È una soluzione approvata che crei e verifichi, non una funzione automatica di mascheramento di Cloud Calendars. Mantieni coerenti le modifiche successive senza trasformare la seconda voce in un altro invito."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Controlla se il tuo datore di lavoro consente il collegamento dell’account.",
+    "Scegli colori distinti e visualizza i calendari necessari alla panoramica.",
+    "Verifica il calendario di destinazione quando crei un evento.",
+    "Nascondi temporaneamente un calendario per restringere la vista; non eliminare eventi per riordinarla.",
+    "Controlla permessi di condivisione e notifiche separatamente dalla visibilità dei calendari."
+  ],
+  "faq": [
+    {
+      "q": "Il mio datore di lavoro vedrà gli eventi personali solo perché entrambi i calendari sono nella stessa app?",
+      "a": "Visualizzare insieme i calendari non concede di per sé permessi di condivisione. Controlla a quale account appartiene ogni evento, le impostazioni di condivisione e le eventuali regole aziendali di gestione del dispositivo. Non salvare per sbaglio un appuntamento privato in un calendario di lavoro."
+    },
+    {
+      "q": "Serve Advanced per vedere insieme i calendari Google e personali?",
+      "a": "La sincronizzazione Google Calendar e la vista con più calendari sono funzioni Base. Advanced rimuove gli annunci. Il supporto Microsoft Calendar fa parte di Premium; i permessi degli account continuano ad applicarsi."
+    },
+    {
+      "q": "Cloud Calendars sostituisce automaticamente i dettagli personali con un blocco occupato nel calendario di lavoro?",
+      "a": "Non farci affidamento. Visualizzare insieme i calendari e creare copie collegate ai servizi è diverso da una regola esplicita che nasconde i dettagli privati e copia la disponibilità in un altro account. Verifica la soluzione consentita dalla tua organizzazione."
+    }
+  ],
+  "sourcesHeading": "Fonti e approfondimenti",
+  "sources": [
+    {
+      "label": "Apple: configurare più calendari su iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Apple: se hai eventi duplicati nel calendario iCloud",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Google: scegliere cosa possono fare gli altri con il calendario",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: modificare un appuntamento, una riunione o un evento in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "who-can-see-what-in-google-calendar"
+  ]
+},
+
+  "recurring-events-without-the-mess": {
+  "updated": "2026-10-21",
+  "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+  "short": "Eventi ricorrenti",
+  "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
+  "lede": "Prima di modificare un appuntamento ricorrente, stabilisci esattamente quali date devono cambiare. Poi verifica che l’editor consenta di limitare la modifica a quelle occorrenze. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni editor di calendario chiede se una modifica riguarda una sola occorrenza o l’intera serie.",
+  "sections": [
+    {
+      "heading": "Descrivi la modifica prima di aprire l’editor",
+      "body": [
+        "“Spostare di un’ora la lezione di martedì prossimo” riguarda una sola occorrenza. “Dal mese prossimo le lezioni saranno il giovedì” cambia il programma futuro. “Correggere la sala per tutte le riunioni” può avere un effetto più ampio. Sono richieste diverse, anche quando partono dalla stessa schermata dei dettagli dell’evento.",
+        "Annota la data dell’occorrenza selezionata e le date vicine che devono restare invariate. Un breve elenco prima e dopo facilita il controllo del risultato salvato. Non usare una serie reale per scoprire cosa fa un pulsante Salva che non conosci."
+      ]
+    },
+    {
+      "heading": "Controlla il calendario e i tuoi permessi di modifica",
+      "body": [
+        "Individua il calendario a cui appartiene l’evento e verifica se sei l’organizzatore, una persona con diritti di modifica o un invitato. Vedere una serie condivisa non concede di per sé il permesso di cambiarne gli orari. Google descrive la modifica da parte degli invitati come un’autorizzazione che l’organizzatore può concedere: visualizzare un invito e gestirlo sono capacità diverse.",
+        "In Cloud Calendars, verifica che il calendario di destinazione consenta le modifiche. Il fatto che un partecipante possa vedere una riunione non significa che possa cambiare l’invito dell’organizzatore. Se non puoi apportare la modifica desiderata, chiedi all’organizzatore invece di creare un invito concorrente."
+      ]
+    },
+    {
+      "heading": "Controlla le occorrenze interessate prima di salvare in Cloud Calendars",
+      "body": [
+        "L’editor di Cloud Calendars include schemi di ripetizione e un’impostazione per la fine della ripetizione. Questi controlli definiscono un programma; non equivalgono alla scelta delle occorrenze interessate da una modifica. Cambiare un evento ricorrente esistente può influire sulle occorrenze future. Non sostituire un’eccezione per una sola data con una modifica alla regola di ripetizione.",
+        "Prima di salvare un’eccezione per una sola data, cerca una scelta esplicita che limiti la modifica a quell’occorrenza. Se l’editor non la offre, usa l’evento originale nell’editor supportato dal servizio a cui appartiene. Poi controlla la data interessata e quelle vicine in entrambi i posti. I calendari locali e i servizi collegati non gestiscono necessariamente le modifiche alle serie nello stesso modo."
+      ]
+    },
+    {
+      "heading": "Usa una scelta supportata e verifica alcune date rappresentative",
+      "body": [
+        "Le istruzioni di Google Calendar per computer indicano di modificare l’evento ricorrente, salvare e scegliere gli eventi della serie a cui applicare l’aggiornamento. Leggi le opzioni effettivamente mostrate per quell’evento senza presumere che tutti i servizi usino le stesse etichette o supportino le stesse modifiche.",
+        "La guida di Calendario di Apple per Mac descrive separatamente frequenza, ripetizioni personalizzate e termine della ripetizione. Sono controlli di Calendario di Apple. Qualunque editor supportato tu usi, verifica la data modificata, una data precedente che deve restare invariata e l’occorrenza ordinaria successiva. Per un invito, controlla anche l’evento salvato dall’organizzatore: una modifica alla tua visualizzazione personale non conferma che la riunione sia stata spostata per tutti."
+      ]
+    },
+    {
+      "heading": "Preserva le eccezioni e scegli consapevolmente le date di fine",
+      "body": [
+        "Un appuntamento spostato o una settimana saltata sono motivi per esaminare la serie esistente prima di cambiarne la regola. Annota prima le eccezioni importanti e controllale dopo. Non è corretto promettere che ogni modifica alla serie preservi le eccezioni, né affermare che le cancelli automaticamente: il risultato dipende dall’operazione e dal servizio.",
+        "Usa una data finale nota per un corso o una turnazione temporanea quando corrisponde al programma reale. Un compleanno annuale o una riunione continuativa possono ragionevolmente non avere una fine prevista. Non imporre una scadenza arbitraria a ogni ripetizione e non eliminare e ricreare una serie soltanto perché contiene diverse eccezioni."
+      ]
+    },
+    {
+      "heading": "Se il risultato è inatteso, conserva gli elementi utili alla verifica",
+      "body": [
+        "Confronta il servizio a cui appartiene l’evento con Cloud Calendars nella data esatta interessata. Controlla il nome del calendario, l’occorrenza selezionata, lo schema di ripetizione e le eventuali condizioni di fine consultabili. Titoli simili o un appuntamento copiato separatamente possono sembrare un problema di ricorrenza: stabilisci prima quale evento stai guardando.",
+        "Se l’evento è corretto nel servizio ma diverso nell’app, segnala le versioni dell’app e di iOS, il tipo di calendario, le occorrenze che volevi modificare e le date interessate. Se anche il servizio ha cambiato più date del previsto, contatta l’organizzatore o l’assistenza del servizio prima di apportare altre modifiche estese. Evita di rimuovere account, annullare inviti o eliminare una serie come tentativi di diagnosi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Annota le date delle occorrenze da modificare e quelle che devono restare invariate.",
+    "Conferma il calendario a cui appartiene l’evento e l’organizzatore o i permessi di modifica.",
+    "Per un’eccezione singola, usa un editor che offra esplicitamente questa scelta.",
+    "Controlla una data precedente, la data modificata e l’occorrenza ordinaria successiva.",
+    "Conserva le eccezioni esistenti e l’invito originale mentre verifichi una discrepanza."
+  ],
+  "faq": [
+    {
+      "q": "Ogni modifica a un evento ricorrente chiede quali occorrenze cambiare?",
+      "a": "No. Non presumere che Cloud Calendars ti chieda di scegliere le occorrenze interessate. Verifica le opzioni prima di salvare; se la scelta manca, usa un editor supportato dal servizio per un’eccezione relativa a una sola data."
+    },
+    {
+      "q": "Ogni evento ricorrente deve avere una data di fine?",
+      "a": "Usa una data di fine quando il programma reale ne prevede una. Gli impegni continuativi non hanno bisogno di una scadenza inventata soltanto per rendere il calendario più ordinato."
+    },
+    {
+      "q": "Cambiare la serie cancellerà le sue eccezioni?",
+      "a": "Non esiste una risposta universale per tutti i servizi e tutte le operazioni di modifica. Annota le eccezioni importanti e controllale dopo il cambiamento; non dare per scontate né la conservazione garantita né la perdita automatica."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali su ricorrenze e permessi di modifica",
+  "sources": [
+    {
+      "label": "Google: creare e modificare un evento ricorrente su computer",
+      "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Apple: impostare eventi di un giorno, più giorni o ricorrenti su Mac",
+      "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+    },
+    {
+      "label": "Google: collaborare in Calendar e consentire agli invitati di modificare gli eventi",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "drag-an-event-to-move-it",
+    "what-guests-can-do-to-your-event",
+    "time-zones-and-the-flight-you-booked"
+  ]
+},
+
+  "disconnect-calendar-integration-without-losing-track": {
+  "updated": "2026-10-22",
+  "title": "Disconnettere un’integrazione del calendario: accesso, sincronizzazione e copie esistenti",
+  "short": "Disconnetti un’integrazione con attenzione",
+  "description": "Distingui uscita, accesso del fornitore e copie esistenti. Controlla i collegamenti Cloud Calendars prima di disconnettere o rimuovere un calendario.",
+  "lede": "Interrompere un collegamento e rimuoverne le copie del calendario sono decisioni diverse. Identifica il percorso utilizzato e conserva le informazioni necessarie prima di scegliere una disconnessione. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Uscire sospende soltanto gli aggiornamenti, revoca ogni permesso collegato e lascia tutti i dati del calendario esattamente come prima.",
+  "sections": [
+    {
+      "heading": "Identifica il collegamento che vuoi interrompere",
+      "body": [
+        "Parti dall’account e dal calendario che contengono gli eventi. Un account del fornitore aggiunto nelle impostazioni dell’iPhone, un collegamento diretto in Cloud Calendars, un abbonamento iCalendar e l’identità di condivisione dell’app sono percorsi separati. Lo stesso indirizzo email non rende intercambiabili i loro controlli.",
+        "Annota i nomi dei calendari e il percorso che li visualizza, senza condividere dettagli privati. Decidi se vuoi interrompere l’accesso futuro, lasciare una condivisione o rimuovere una copia. Se indaghi un evento mancante o duplicato, disconnettere non è il primo passo diagnostico."
+      ]
+    },
+    {
+      "heading": "Controlla cosa rimuove l’uscita dall’app",
+      "body": [
+        "L’implementazione esaminata tenta di disconnettere il profilo Google selezionato e rimuoverne le copie di calendario associate dall’archivio calendari di iOS. Considerala una rimozione, non una pausa. Può comunque verificarsi un errore di connessione: verifica separatamente lo stato dell’accesso presso il fornitore senza presumere che tutti i permessi siano revocati.",
+        "Anche l’uscita dal profilo di calendario Microsoft tenta di rimuovere i calendari associati e i dati locali del collegamento. Non presumere che le copie restino visibili. La loro collocazione può dipendere dalle sorgenti disponibili sul dispositivo: controlla la sorgente e conserva le informazioni necessarie prima di procedere."
+      ]
+    },
+    {
+      "heading": "Esamina separatamente l’accesso futuro presso il fornitore",
+      "body": [
+        "I controlli Google per le app collegate distinguono Accedi con Google dall’accesso ai dati dell’Account Google. Controlla app, account e tipo di collegamento desiderati. Rimuovere l’accesso ai dati e interrompere un collegamento di accesso rispondono a domande diverse; uscire nell’app non prova che ogni connessione sia sparita.",
+        "Per gli account Microsoft aziendali o scolastici, Microsoft descrive My Apps > Manage your application per esaminare i permessi. Puoi revocare quelli concessi personalmente, ma quelli concessi dall’amministratore richiedono l’amministratore dell’organizzazione. Sono indicazioni per lavoro o scuola, non una procedura universale per gli account Microsoft personali."
+      ]
+    },
+    {
+      "heading": "Distingui l’identità di condivisione dalla sincronizzazione del fornitore",
+      "body": [
+        "Cloud Calendars ha anche un account per la condivisione. Il codice attuale gestisce l’uscita da questo account separatamente dai profili di calendario: cancella la sessione locale di condivisione e riduce allo stato di lettore gli accessi condivisi tracciati localmente. Questo non significa che tutti i dati sul server siano stati eliminati.",
+        "Con più identità di condivisione collegate, disconnetterne una conserva l’account attraverso un’altra identità. Con l’ultima, il percorso attuale chiude la sessione locale e mantiene il collegamento sul server per il recupero. Non usare l’uscita al posto di una richiesta di cancellazione dei dati né presumere che disconnetta ogni fornitore di calendari."
+      ]
+    },
+    {
+      "heading": "Gestisci abbonamenti e vecchie copie secondo le rispettive regole",
+      "body": [
+        "Apple documenta l’annullamento dell’iscrizione a un calendario esterno separatamente dalla scelta dei calendari da mostrare. Se si tratta di un abbonamento in sola lettura, identificalo prima di usare il relativo comando. Nascondere un calendario, annullare l’iscrizione a un feed ed eliminare un calendario modificabile sono operazioni diverse.",
+        "Google osserva che rimuovere l’accesso di un’app può richiedere una domanda separata per cancellare i dati già in possesso dello sviluppatore. Un file esportato o la copia di un’altra persona non vengono richiamati cambiando un permesso. Separa il seguito su privacy e conservazione dall’autorizzazione a nuovi aggiornamenti."
+      ]
+    },
+    {
+      "heading": "Conferma il risultato prima di altre operazioni di pulizia",
+      "body": [
+        "Dopo un cambiamento voluto, controlla lo stato del collegamento presso il fornitore e confronta il calendario originale con l’app. Identifica cosa ha smesso di aggiornarsi, cosa è scomparso localmente e cosa resta altrove. Non eliminare eventi simili soltanto perché il nome di una connessione non compare più.",
+        "Se il risultato è inatteso, interrompi la pulizia e contatta l’assistenza indicando percorso dell’account, sorgente del calendario e azione usata. Non inviare password, token di accesso, URL privati di feed o schermate di appuntamenti sensibili. Spiega se il calendario originale conserva gli eventi, così da distinguere un problema di connessione da una copia mancante."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica esattamente account, calendario e percorso di collegamento.",
+    "Decidi se vuoi interrompere l’accesso, lasciare una condivisione o rimuovere una copia.",
+    "Conserva le informazioni necessarie tramite un percorso verificato di esportazione o backup.",
+    "Prima di usarla, leggi cosa rimuove l’azione di uscita o disconnessione installata.",
+    "Controlla separatamente i permessi del fornitore; coinvolgi l’amministratore per gli accessi gestiti.",
+    "Verifica il risultato presso il fornitore e nell’app prima di altre operazioni di pulizia."
+  ],
+  "faq": [
+    {
+      "q": "Uscire da una connessione diretta Cloud Calendars mantiene le copie dei calendari?",
+      "a": "Non darlo per scontato. I percorsi Google e Microsoft esaminati tentano di rimuovere i calendari associati dall’archivio iOS. Controlla la sorgente e conserva le informazioni necessarie prima di disconnettere."
+    },
+    {
+      "q": "Rimuovere l’accesso Google di un’app elimina i dati già copiati?",
+      "a": "Google dice che può essere necessario chiedere separatamente la cancellazione dei dati già conservati dallo sviluppatore. Considera accesso futuro e dati mantenuti come risultati distinti."
+    },
+    {
+      "q": "Uscire dall’account di condivisione equivale a eliminarlo?",
+      "a": "No. Il percorso attuale cancella una sessione locale e conserva il comportamento di recupero; è distinto dall’uscita dai fornitori di calendari e non prova la cancellazione dei dati sul server."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali su accesso e abbonamenti",
+  "sources": [
+    {
+      "label": "Google: gestire app collegate e diversi tipi di connessione",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "label": "Google: accesso e dati già conservati da un’app collegata",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "label": "Microsoft: permessi My Apps per account aziendali o scolastici",
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+    },
+    {
+      "label": "Apple: selezione dei calendari e abbonamenti su iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "calendar-export-ics-pdf-and-backup",
+    "taking-back-a-calendar-you-shared",
+    "the-secret-address-of-a-google-calendar",
+    "icloud-google-and-outlook-in-one-view",
+    "google-calendars-that-never-reach-your-iphone"
+  ]
+},
+
+  "calendar-notifications-missing-silent-or-duplicated": {
+    "updated": "2026-10-21",
+    "title": "Notifiche del calendario su iPhone: assenti, silenziose o duplicate?",
+    "short": "Risolvere i problemi delle notifiche",
+    "description": "Distingui avvisi degli eventi, impostazioni di Cloud Calendars e controlli di iPhone. Verifica promemoria assenti, silenziosi o doppi senza eliminare dati.",
+    "lede": "Parti da ciò che è successo: mancava l’evento, non è arrivata la notifica, è apparsa senza suono o ti hanno avvisato due app? Ogni caso richiede un controllo diverso. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+    "commonBelief": "Se un evento compare nel calendario, tutti gli avvisi e i permessi per le notifiche devono essere già configurati.",
+    "sections": [
+      {
+        "heading": "Individua prima il tipo di problema",
+        "body": [
+          "Se manca l’evento stesso, controlla l’account a cui appartiene e il calendario selezionato prima di modificare i suoni. Un avviso non permette di stabilire se l’evento corretto è arrivato nell’app. Per questo problema distinto, consulta la guida alla sincronizzazione.",
+          "Se l’evento è visibile ma non compare una notifica, controlla l’avviso salvato ed entrambi i controlli delle notifiche descritti sotto. Se la notifica è silenziosa, concentrati sulle impostazioni di consegna e audio di iPhone. Se ne ricevi più di una, identifica ogni app mittente e ogni avviso configurato prima di rimuovere qualcosa."
+        ]
+      },
+      {
+        "heading": "Nessuna notifica: controlla l’evento e l’app",
+        "body": [
+          "Apri l’evento e controlla l’orario dell’avviso. L’editor di Cloud Calendars include «Alert» e, quando applicabile, «Second Alert», con «None» e opzioni precedenti all’evento. Un secondo avviso può essere voluto. Ricontrolla l’evento salvato dopo una modifica, soprattutto se il provider o i permessi di un calendario condiviso limitano ciò che puoi cambiare.",
+          "Nelle impostazioni di Cloud Calendars cerca «Event Notifications». Le impostazioni distinguono anche le notifiche di inviti e meteo: attivarne una non dimostra che siano attivi i normali promemoria degli eventi. Controlla sia «Event Notifications» nell’app sia il permesso per le notifiche in iOS.",
+          "Conta anche la selezione del calendario: il funzionamento attuale programma gli avvisi dei calendari selezionati. Verifica che quello interessato sia selezionato. Non presumere che nasconderlo cambi soltanto la visualizzazione in questa app e non eliminare eventi per fermare i promemoria."
+        ]
+      },
+      {
+        "heading": "Avviso silenzioso o in ritardo: controlla la consegna su iPhone",
+        "body": [
+          "Nell’app delle impostazioni di iPhone apri la sezione delle notifiche e scegli Cloud Calendars. Controlla «Allow Notifications», le posizioni disponibili per gli avvisi e i controlli audio. Verifica se «Scheduled Summary» o una modalità «Focus» attiva modifica la consegna. Sono impostazioni di sistema Apple, non il menu «Alert» dell’evento. Le etichette possono variare con la versione di iOS.",
+          "Vedere un banner senza suono è diverso dal non trovare alcuna notifica. Annota se è apparso sulla schermata di blocco o nel centro notifiche, se stavi usando il telefono e quale modalità di concentrazione era attiva. Cambia una sola impostazione pertinente alla volta, così il risultato successivo sarà informativo. Il conto alla rovescia di un’Attività in tempo reale è un’altra superficie: vederlo non dimostra che arriverà un promemoria sonoro."
+        ]
+      },
+      {
+        "heading": "Due avvisi: identifica i mittenti prima di modificare l’evento",
+        "body": [
+          "Leggi il nome dell’app su ciascuna notifica. Calendario di Apple, Google Calendar e Cloud Calendars possono inviare notifiche separatamente anche se mostrano eventi collegati. Due notifiche non bastano a dimostrare che esistano due registrazioni dell’evento. Confronta anche gli orari: un promemoria il giorno prima e uno vicino all’inizio possono corrispondere agli avvisi salvati.",
+          "La guida di Google spiega che le sue impostazioni delle notifiche sono personali per l’account e che quelle di un evento possono differire dalle impostazioni predefinite del calendario. Le istruzioni riguardano Google Calendar, non le impostazioni di Cloud Calendars. Controlla il mittente pertinente anziché supporre che un interruttore in un’app controlli tutte le altre.",
+          "Scegli quale app deve avvisarti, poi modifica solo il promemoria o la preferenza di notifica pertinente. Se rimangono due veri eventi, confronta calendari e titolarità seguendo la guida ai duplicati. Non annullare una riunione reale solo per silenziare un avviso in più."
+        ]
+      },
+      {
+        "heading": "Usa un solo evento di prova per circoscrivere il problema",
+        "body": [
+          "Crea un appuntamento di prova con un nome chiaro in un calendario tuo e modificabile. Imposta l’inizio abbastanza avanti perché anche l’orario dell’avviso scelto sia ancora futuro. Conferma che il calendario sia selezionato, l’avviso sia salvato ed entrambi i controlli delle notifiche siano attivi. Annota l’orario previsto e quale app dovrebbe inviarlo.",
+          "Osserva separatamente se compare una notifica e se emette un suono. Ripeti solo dopo aver modificato un’impostazione sospetta. Usa un normale evento di prova senza partecipanti, non una riunione importante o una serie ricorrente. Conserva il risultato con le versioni dell’app e di iOS per confrontarlo in seguito."
+        ]
+      },
+      {
+        "heading": "Se il risultato resta incoerente",
+        "body": [
+          "L’app programma un insieme limitato di avvisi imminenti: non fare affidamento su una coda illimitata di promemoria lontani. Controlla i comandi della versione installata e registra le consegne irregolari. Segnala le versioni dell’app e di iOS, il tipo di calendario, l’anticipo dell’avviso salvato, l’orario previsto e il risultato osservato.",
+          "Non includere titoli privati, indirizzi dei partecipanti o link di iscrizione ai calendari in una segnalazione pubblica. Reinstallare, svuotare lo spazio locale o rimuovere account non è il primo passo diagnostico. Mantieni eventi e configurazione degli account mentre l’assistenza indaga."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Classifica il problema: evento mancante, notifica assente, consegna silenziosa o avvisi duplicati.",
+      "Controlla l’avviso salvato e il calendario selezionato.",
+      "Verifica «Event Notifications» di Cloud Calendars separatamente dal permesso per le notifiche di iPhone.",
+      "Per i duplicati, confronta le app mittenti e gli orari degli avvisi configurati.",
+      "Usa un solo evento futuro di prova e registra il risultato senza cambiare inviti reali."
+    ],
+    "faq": [
+      {
+        "q": "Attivare le notifiche meteo abilita i promemoria degli eventi?",
+        "a": "No. L’app distingue le notifiche di eventi, inviti e meteo. Per i normali avvisi degli eventi controlla «Event Notifications» e il permesso iOS."
+      },
+      {
+        "q": "Devo eliminare un evento se arrivano due avvisi?",
+        "a": "Identifica prima le app mittenti e gli orari. Più notifiche possono provenire da app diverse o da più avvisi sullo stesso evento. Eliminare non è un modo sicuro di diagnosticarlo."
+      },
+      {
+        "q": "Impostare un avviso ne garantisce la consegna?",
+        "a": "No. È solo una parte del processo. Contano anche preferenze dell’app, permessi di sistema e impostazioni di consegna: verifica il risultato sul dispositivo."
+      }
+    ],
+    "sourcesHeading": "Fonti e impostazioni delle notifiche",
+    "sources": [
+      {
+        "label": "Apple: modificare le impostazioni delle notifiche su iPhone",
+        "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios"
+      },
+      {
+        "label": "Google: modificare le notifiche di Google Calendar su iPhone e iPad",
+        "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "find-old-calendar-events-by-account-date-and-title": {
+    "updated": "2026-10-21",
+    "title": "Trovare un vecchio evento: controlla account, date e campi di ricerca",
+    "short": "Trovare eventi passati",
+    "description": "Una ricerca vuota non prova che un evento sia stato eliminato. Controlla account, date e campi cercati prima di consultare l’archivio del provider.",
+    "lede": "Se ricordi una riunione ma non la trovi, separa tre domande: quale account la conteneva, quali date copre la vista attuale e quali campi confronta la ricerca. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+    "commonBelief": "Ogni casella di ricerca di un’app calendario cerca in tutti i campi di ogni evento mai salvato dal provider.",
+    "sections": [
+      {
+        "heading": "Annota l’indizio utile più semplice",
+        "body": [
+          "Inizia con un mese o anno approssimativo, una parola caratteristica del titolo e l’account probabilmente usato. Tieni separati questi indizi. Il nome di un collega poteva essere tra i partecipanti anziché nel titolo; un indirizzo poteva trovarsi solo nel campo del luogo.",
+          "Prova un breve frammento del titolo prima di una frase lunga. Un risultato negativo non indica se il dato manca, è fuori dalle date caricate o si trova in un campo non cercato."
+        ]
+      },
+      {
+        "heading": "Controlla l’account di origine e il calendario selezionato",
+        "body": [
+          "Cerca l’account e il calendario a cui apparteneva l’evento. Un calendario Google di lavoro, uno iCloud personale e uno locale sul dispositivo sono destinazioni diverse, anche se un’app li mostrava insieme. Verifica di avere ancora accesso all’account previsto e che il suo calendario sia selezionato.",
+          "Non creare una nuova copia solo perché la ricerca è vuota. Se trovi l’evento navigando alla data approssimativa, controlla titolo, calendario e organizzatore. Avrai così elementi da confrontare con la ricerca senza modificare il dato."
+        ]
+      },
+      {
+        "heading": "Controlla date e campi usati dalla ricerca di Cloud Calendars",
+        "body": [
+          "Cloud Calendars cerca nei titoli degli eventi caricati senza distinguere maiuscole e minuscole. Usa una parola caratteristica del titolo. Non aspettarti che un luogo, l’indirizzo di un partecipante o una nota vengano trovati solo perché compaiono altrove nell’evento.",
+          "L’attuale vista di ricerca carica gli eventi dell’anno solare in corso dai calendari selezionati. Una riunione di un anno precedente può quindi non apparire nella ricerca pur esistendo ancora presso il provider. Controlla l’intervallo prima di interpretare un risultato vuoto.",
+          "Navigare a una data passata e cercare in un anno passato sono azioni diverse. Per la ricerca storica, usa gli strumenti del provider dove disponibili e verifica lo stesso account. Controlla i comandi della versione installata anziché supporre che la ricerca copra tutti gli anni."
+        ]
+      },
+      {
+        "heading": "Usa gli strumenti del provider per i campi e le date documentati",
+        "body": [
+          "Su Google Calendar da computer, le opzioni consentono di filtrare per calendario, informazioni dell’evento, persone, luogo e intervallo di date. Google consiglia una ricerca avanzata delimitata per data quando non compaiono eventi vecchi e documenta un limite di 200 risultati. Dividi una ricerca ampia in intervalli più piccoli anziché presumere che il primo insieme di risultati sia completo.",
+          "Questi sono controlli di Google Calendar sul web, non una descrizione di Cloud Calendars. Analogamente, la guida di Calendario di Apple dice che la sua ricerca su iPhone può trovare titoli, invitati, luoghi e note. Descrive la ricerca propria di Calendario di Apple. Usare EventKit in un’altra app non le conferisce automaticamente la stessa interfaccia o le stesse regole di ricerca."
+        ]
+      },
+      {
+        "heading": "Interpreta dove compare l’evento e dove non compare",
+        "body": [
+          "Presente presso il provider ma assente in Cloud Calendars: controlla identità dell’account, calendario selezionato, date coperte e titolo cercato. Conserva il dato del provider. La domanda successiva riguarda ciò che l’app ha caricato o trovato, non se occorra ricreare l’appuntamento.",
+          "Presente navigando per data ma assente dalla ricerca: confronta il titolo effettivo con la query e annota la data. È un indizio utile su un problema di ambito o corrispondenza della ricerca. Non cambiare il titolo di una vecchia riunione solo per far riuscire una prova.",
+          "Assente anche presso il provider: conferma account, accesso al calendario e intervallo di date prima di indagare con quel provider su conservazione o eliminazione. Per un calendario locale, il sito di un provider non è una copia indipendente se non hai stabilito un collegamento separato. Non presumere che esista un archivio cloud per ogni evento locale."
+        ]
+      },
+      {
+        "heading": "Conserva una traccia utile senza esporre l’evento",
+        "body": [
+          "Per l’assistenza annota versione dell’app, provider del calendario o tipo di archiviazione locale, anno approssimativo e presenza dell’evento presso il provider o navigando per data. Specifica se la query era una parola del titolo, un luogo o un partecipante. È più utile che dire soltanto che la ricerca non funziona.",
+          "Evita di inviare note private, link di invito o URL segreti dei feed di calendario. Mantieni intatti account e dati locali: svuotare lo spazio o importare di nuovo un vecchio file può aggiungere incertezza."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifica il probabile account di origine e la data approssimativa.",
+      "Controlla che il calendario sia selezionato e accessibile.",
+      "Prova una parola caratteristica del titolo.",
+      "Distingui la ricerca dell’anno attuale nell’app dalla ricerca nell’archivio del provider.",
+      "Usa i filtri per data di Google Calendar sul web o i campi documentati di Calendario di Apple quando pertinenti.",
+      "Registra dove compare l’evento prima di modificare dati."
+    ],
+    "faq": [
+      {
+        "q": "Un risultato vuoto significa che il vecchio evento è stato eliminato?",
+        "a": "No. Un account errato, un calendario non selezionato, una data fuori dall’intervallo caricato o un campo non cercato possono spiegare il risultato vuoto. Controlla il provider e la data approssimativa."
+      },
+      {
+        "q": "Posso cercare in Cloud Calendars l’email di un partecipante o una nota?",
+        "a": "La ricerca attuale confronta il testo del titolo degli eventi. Per partecipanti, note o luoghi usa gli strumenti del provider che documentano la ricerca in quei campi."
+      },
+      {
+        "q": "Navigare all’anno scorso fa cercare anche nell’anno scorso?",
+        "a": "Non farci affidamento. La vista di ricerca attuale carica l’anno in corso quando si apre. Per i dati storici usa la ricerca per intervallo del provider, senza presumere che l’app cerchi in una cronologia illimitata."
+      }
+    ],
+    "sourcesHeading": "Fonti e assistenza per la ricerca dei provider",
+    "sources": [
+      {
+        "label": "Google: cercare su Google Calendar da computer",
+        "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
+      },
+      {
+        "label": "Apple: cercare eventi in Calendario su iPhone",
+        "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "a-list-for-people-who-dislike-grids",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "calendar-export-ics-pdf-and-backup": {
+  "updated": "2026-10-21",
+  "title": "Esportare un calendario: file ICS, PDF e iscrizioni",
+  "short": "Esportazione e backup dei calendari",
+  "description": "Ti serve un file del calendario di un account su iPhone? Scegli ICS, PDF o un’iscrizione e segui la procedura adatta di Google, Mac o Outlook.",
+  "lede": "Un calendario su iPhone può mostrare più account. Per ottenere una copia utile, identifica l’origine e decidi se ti servono dati degli eventi, un programma leggibile o aggiornamenti continui.",
+  "sections": [
+    {
+      "heading": "Scegli il risultato prima del formato",
+      "body": [
+        "Esportare un calendario può indicare lavori diversi. Se vuoi che un’altra app legga i dati degli eventi, scegli un formato strutturato supportato come ICS. Se qualcuno ha bisogno di un programma leggibile, scegli PDF o una pagina stampata. Se deve ricevere modifiche successive, valuta un’iscrizione o la condivisione con permessi.",
+        "Un PDF registra l’impaginazione salvata; non è un file per importare eventi. Un ICS scaricato contiene i dati del calendario al momento in cui lo hai ottenuto. Un’iscrizione ICS usa un indirizzo che il client ricontrolla. La sola estensione non dice se il destinatario abbia importato una copia statica o si sia iscritto agli aggiornamenti.",
+        "Per esempio, un itinerario del fine settimana in PDF è facile da leggere. Un collega che trasferisce appuntamenti a un altro account ha bisogno dei dati degli eventi. Il socio di un club che segue il programma variabile del prossimo mese ha bisogno di una fonte aggiornata. Decidi quale risultato ti serve prima di inviare qualcosa."
+      ]
+    },
+    {
+      "heading": "Parti dall’account che contiene gli eventi",
+      "body": [
+        "Su iPhone identifica il calendario e l’account che contengono gli eventi necessari. Una vista combinata può comprendere più account, calendari condivisi e iscrizioni. Vederli insieme non significa che ci sia un unico calendario di origine da esportare.",
+        "Per Google Calendar usa un computer: Google non offre l’esportazione dalla sua app Calendar. Sul web apri «Settings», poi «Import & export» e «Export». Lo ZIP scaricato contiene singoli file ICS. Per un calendario, apri «Settings and sharing» e scegli «Export calendar». Google richiede il permesso di gestire modifiche e condivisione; un’organizzazione può anche limitare l’esportazione.",
+        "Per un calendario disponibile in Calendario sul Mac, seleziona il nome nella barra laterale e usa «File > Export > Export» per salvare un ICS. È una procedura per Mac, non un comando nascosto su iPhone. Verifica di aver selezionato il calendario desiderato prima di salvare."
+      ]
+    },
+    {
+      "heading": "Quando serve un programma in PDF",
+      "body": [
+        "In Calendario sul Mac usa «File > Print» e scegli impaginazione, intervallo di date e calendari da includere. Nella finestra di stampa di macOS usa il menu «PDF» e «Save as PDF». Apri il risultato prima di inviarlo: una griglia piccola può omettere o troncare dettagli importanti per il destinatario.",
+        "Indica chiaramente intervallo di date e fuso orario pertinente nel messaggio che accompagna il documento. Controlla appuntamenti privati, note e luoghi prima di condividere. Le modifiche successive al calendario non riscrivono un PDF già inviato: identifica chiaramente una copia aggiornata, così chi la riceve sa quale programma seguire."
+      ]
+    },
+    {
+      "heading": "Iscrizione e pubblicazione sono diverse dal backup",
+      "body": [
+        "Microsoft documenta la differenza per Outlook sul web: scaricare e importare un ICS pubblicato crea una copia senza aggiornamenti successivi; iscriversi al suo indirizzo permette di seguirne i cambiamenti. La frequenza di aggiornamento dipende dal provider del destinatario e il calendario pubblicato è di sola lettura.",
+        "Dove disponibile, «Settings > Shared calendars > Publish a calendar» in Outlook consente di scegliere calendario e livello di dettaglio. Pubblicare lo rende accessibile per consultazione o iscrizione: usalo per un pubblico previsto, non come tecnica di backup privato. Un link salvato dipende ancora dalla disponibilità dell’origine."
+      ]
+    },
+    {
+      "heading": "Cosa offre la condivisione di Cloud Calendars",
+      "body": [
+        "Sviluppiamo Cloud Calendars. Il suo flusso di condivisione degli eventi offre App Clip, email e QR per distribuire link di invito. Questi link hanno uno scopo diverso dallo scaricare tutto il calendario come file. Un link può portare a un invito o a un’iscrizione; non è di per sé un archivio portatile di tutti i calendari visibili.",
+        "Questa guida non offre una procedura di Cloud Calendars per esportare un intero calendario in ICS, CSV o PDF. Per queste attività usa le procedure documentate del provider o del Mac indicate sopra. Per inviare un singolo evento segui la nostra guida alla condivisione; per un programma condiviso continuativo decidi prima chi deve accedere e se servono aggiornamenti o diritti di modifica."
+      ]
+    },
+    {
+      "heading": "Controlla una copia prima di farci affidamento",
+      "body": [
+        "Conserva il calendario originale mentre controlli l’esportazione. Annota account, nome del calendario e data di esportazione. Se provi un’importazione, usa un calendario di destinazione separato quando possibile, poi confronta un appuntamento normale, un evento di tutto il giorno e una serie ricorrente con un’occorrenza modificata.",
+        "Il trasferimento non promette di conservare ogni funzione delle riunioni. Google afferma che gli eventi importati omettono invitati e dati delle conferenze e che le ricorrenze CSV possono diventare singoli eventi non ripetuti. Controlla esplicitamente inviti, link delle riunioni e ricorrenze prima di considerare conclusa la migrazione.",
+        "Apple offre anche «File > Export > Calendar Archive» sul Mac, che produce un archivio ICBU. È un’operazione diversa dall’esportazione di un ICS. Apple avverte che importare un archivio sostituisce le informazioni e i dati attuali del calendario: non usare il ripristino di un archivio come una semplice prova di importazione."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica account e calendario necessari, poi scegli tra copia statica, programma stampabile o iscrizione aggiornata.",
+    "Usa la procedura di esportazione documentata e conserva l’originale mentre controlli il risultato.",
+    "Controlla destinazione, dettagli sensibili ed eventi rappresentativi prima di inviare o affidarti alla copia."
+  ],
+  "faq": [
+    {
+      "q": "Posso esportare Google Calendar direttamente dalla sua app per iPhone?",
+      "a": "No. La procedura documentata da Google richiede un computer. Per esportare serve anche il permesso appropriato per gestire la condivisione."
+    },
+    {
+      "q": "Iscrivermi a un indirizzo ICS mi dà un backup?",
+      "a": "Un’iscrizione segue un’origine che può cambiare o diventare indisponibile. Salva un’esportazione indipendente se ti serve una copia datata e verifica ciò che il file conserva."
+    },
+    {
+      "q": "Devo scegliere ICS o PDF?",
+      "a": "Scegli ICS per dati di eventi importabili da un calendario compatibile. Scegli PDF per un programma leggibile. Un PDF non fornisce aggiornamenti né ricostruisce eventi modificabili tramite le procedure di importazione documentate."
+    }
+  ],
+  "sourcesHeading": "Istruzioni ufficiali e limiti dei formati",
+  "sources": [
+    {
+      "label": "Google: esportare eventi del calendario",
+      "url": "https://support.google.com/calendar/answer/37111?hl=en"
+    },
+    {
+      "label": "Google: importare eventi e limiti del trasferimento",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Apple: esportare file ICS e archivi del calendario su Mac",
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+    },
+    {
+      "label": "Apple: salvare un documento come PDF su Mac",
+      "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+    },
+    {
+      "label": "Microsoft: pubblicare, importare e iscriversi in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "the-secret-address-of-a-google-calendar",
+    "disconnect-calendar-integration-without-losing-track"
+  ]
+}
+};

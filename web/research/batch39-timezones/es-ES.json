@@ -1,0 +1,108 @@
+{
+  "updated": "2026-10-22",
+  "title": "Zonas horarias del calendario: revisa tus eventos antes de viajar",
+  "short": "Zonas horarias y viajes",
+  "description": "Distingue la zona del evento de la zona de visualización. Revisa vuelos, citas y llamadas recurrentes antes de cambiar su hora.",
+  "lede": "Que aparezca otra hora después de un vuelo no significa necesariamente que la cita haya cambiado. Primero identifica a qué lugar corresponde el evento y qué zona horaria muestra la app. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Cambiar la zona horaria que muestra el calendario equivale a cambiar la cita en sí.",
+  "sections": [
+    {
+      "heading": "Empieza por la cita y después revisa cómo se muestra",
+      "body": [
+        "Una reunión fijada para un instante concreto puede mostrarse con horas distintas en lugares diferentes. Una cita con el dentista a las 09:00 en la ciudad de destino no tiene la misma intención que un recordatorio personal para estirarte a las 09:00 estés donde estés. Anota qué significado necesitas antes de ajustar nada.",
+        "Compara la reserva o la confirmación del organizador con la fecha, la hora de inicio y la zona horaria indicada en el evento. Después comprueba la zona con la que se muestra el calendario. No arrastres el evento a otra hora solo porque la hora que aparece haya cambiado tras viajar: podrías modificar la cita en lugar de su presentación."
+      ]
+    },
+    {
+      "heading": "Usa los controles del proveedor cuando necesites una zona concreta",
+      "body": [
+        "Apple documenta un campo de zona horaria al crear o editar un evento en Calendario de Apple en el iPhone. Su ajuste independiente para fijar la zona horaria cambia la zona que muestra Calendario de Apple. Estas instrucciones corresponden a Calendario de Apple; no prometen que esos mismos ajustes controlen Cloud Calendars.",
+        "En Google Calendar en un ordenador, el control de zona horaria del editor de eventos permite seleccionar una zona. Google también documenta zonas distintas para el inicio y el final de un evento. Son controles de Google. Usa la cuenta a la que pertenece el evento y confirma que tienes permiso para editarlo antes de cambiar su zona."
+      ]
+    },
+    {
+      "heading": "Comprueba el evento guardado en Cloud Calendars",
+      "body": [
+        "Un evento existente puede conservar su zona horaria guardada al abrirse en el editor de Cloud Calendars. Si el evento no proporciona una, el editor puede usar la zona actual del dispositivo. Antes de crear una cita en el destino, comprueba la zona del dispositivo y la fecha y hora locales previstas. Vuelve a abrir el evento guardado y compáralo con la reserva.",
+        "Para usar zonas distintas de salida y llegada, utiliza un editor que las admita expresamente. No des por hecho que los campos habituales de inicio y fin ofrecen zonas independientes. Si tu editor de Cloud Calendars no muestra el control que necesitas, usa un editor compatible del proveedor al que pertenece el evento. Después vuelve a abrirlo en Cloud Calendars y compara tanto el inicio como el final."
+      ]
+    },
+    {
+      "heading": "Un vuelo y una cita en destino requieren comprobaciones diferentes",
+      "body": [
+        "Para un vuelo, conserva juntos los datos de la aerolínea: fecha de salida, hora en el aeropuerto de salida, fecha de llegada y hora en el aeropuerto de llegada. Llegar al día siguiente importa tanto como la hora. Cuando el editor admita zonas independientes para el inicio y el final, asigna a cada uno la del aeropuerto correspondiente. Si no, usa un editor del proveedor que permita la representación necesaria; no supongas que dos campos de hora normales deducen dos lugares por separado.",
+        "Para una cita en destino, confirma con la reserva la fecha y la hora locales de la ciudad. Anota esa ciudad en los detalles del evento si te ayuda a comprobarlo más adelante. Un lugar escrito en las notas sirve de recordatorio, pero no demuestra que se haya configurado el campo real de zona horaria. Vuelve a abrir el evento guardado antes de confiar en él."
+      ]
+    },
+    {
+      "heading": "Revisa por separado las llamadas recurrentes y los eventos de todo el día",
+      "body": [
+        "Para una llamada internacional periódica, acordad la ciudad cuya hora local debe mantenerse fija. Comprueba la próxima repetición y también una cercana al cambio estacional de hora de cada participante. Comparar una sola fecha no demuestra que la diferencia horaria sea idéntica durante todo el año.",
+        "Un evento de viaje de todo el día puede ayudar a organizar el itinerario, pero no sustituye las horas de salida, las citas ni los límites para facturar o registrarse. Revisa sus fechas después de transferirlo entre proveedores. No des por hecho que todos los eventos de todo el día importados se muestran igual en todos los calendarios."
+      ]
+    },
+    {
+      "heading": "Cuando solo falla un calendario importado o una suscripción",
+      "body": [
+        "Identifica la vía antes de cambiar la cita: un archivo importado es una instantánea, mientras que una suscripción sigue una fuente publicada. Compara la misma repetición en el calendario de origen y en el del destinatario, con su fecha, la zona del evento y la zona de visualización. Si el evento se repite, comprueba una fecha cercana a un cambio estacional de hora. Mantén el original intacto mientras determinas dónde aparece la diferencia.",
+        "Si el calendario del propietario es correcto pero un destinatario lo ve mal, documenta esa comparación concreta para soporte. Una interpretación distinta del formato de la fuente es una posible causa, pero no explica todas las horas desplazadas. Revisa el acceso y el tratamiento de los datos del calendario antes de probar un servicio que procese fuentes de calendario. No sustituye una conexión autorizada a la cuenta, y mover el evento original puede cambiar la cita real para todos."
+      ]
+    },
+    {
+      "heading": "Si las horas siguen sin coincidir",
+      "body": [
+        "Compara el mismo evento en el proveedor al que pertenece y en Cloud Calendars, anotando en ambos el calendario, la fecha, la zona y la hora mostrada. Comprueba que no has abierto una copia con un título parecido. Si en el proveedor es correcto pero otra vista difiere, comunica esa comparación antes de reescribir la cita.",
+        "Incluye las versiones de la app y de iOS, las zonas afectadas y si el evento se repite. No publiques referencias de reserva ni datos de los asistentes. No hace falta eliminar una cuenta ni recrear una invitación real para determinar qué vista difiere."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Anota la fecha, la hora locales y la ciudad previstas en la reserva.",
+    "Distingue la zona guardada en el evento de la zona de visualización.",
+    "Usa los controles de zona del proveedor correspondiente cuando sea necesario; no presupongas que Cloud ofrece los mismos.",
+    "Comprueba la salida y la llegada del vuelo y una repetición posterior de un evento recurrente.",
+    "Vuelve a abrir el evento guardado y compáralo antes de cambiar otra vez su hora."
+  ],
+  "faq": [
+    {
+      "q": "¿Fijar la zona horaria en Calendario de Apple cambia Cloud Calendars?",
+      "a": "Apple documenta ese ajuste para la visualización en Calendario de Apple. Esta guía no establece que Cloud Calendars lo siga."
+    },
+    {
+      "q": "¿Puedo introducir zonas distintas de salida y llegada en Cloud Calendars?",
+      "a": "No presupongas que los campos habituales de inicio y fin permiten elegir zonas por separado. Si tu editor de Cloud Calendars no las ofrece, usa un editor compatible del proveedor. Google documenta zonas independientes de inicio y fin en Google Calendar en un ordenador."
+    },
+    {
+      "q": "¿Debo devolver una reunión a su hora anterior después de viajar?",
+      "a": "Comprueba primero el instante previsto y la zona de visualización. Una hora local distinta puede ser la representación correcta de la misma cita."
+    },
+    {
+      "q": "¿Debo mover el evento original si una suscripción ICS muestra una hora incorrecta?",
+      "a": "Compara primero esa repetición en su origen y en el destinatario, con las zonas del evento y de visualización. Determina si el problema está en la cita o solo en la vista que la recibe. No cambies la reunión real para compensar la diferencia de un único calendario."
+    }
+  ],
+  "sourcesHeading": "Indicaciones oficiales sobre zonas horarias de eventos y de visualización",
+  "sources": [
+    {
+      "label": "Apple: programar o mostrar eventos en otra zona horaria en el iPhone",
+      "url": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios"
+    },
+    {
+      "label": "Google: usar Google Calendar en distintas zonas horarias",
+      "url": "https://support.google.com/calendar/answer/37064?hl=en"
+    },
+    {
+      "label": "Google: los eventos importados no permanecen sincronizados",
+      "url": "https://support.google.com/calendar/answer/37118?hl=en"
+    },
+    {
+      "label": "Microsoft: calendarios ICS publicados, importaciones y suscripciones",
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "recurring-events-without-the-mess",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+}

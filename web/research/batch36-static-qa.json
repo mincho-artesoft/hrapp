@@ -1,0 +1,55 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 519,
+  "all518PreviousCanonicalsPreserved": true,
+  "newItalianRoute": "https://www.cloud-calendars.com/it/articles/a-calendar-that-is-yours-to-share/",
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/free-google-sync-without-adverts/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 4,
+      "faq": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/what-a-subscription-actually-buys/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 5,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/a-calendar-that-is-yours-to-share/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 6,
+      "faq": 3
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/free-google-sync-without-adverts/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 4,
+      "faq": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/free-google-sync-without-adverts/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 4,
+      "faq": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/free-google-sync-without-adverts/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 4,
+      "faq": 2
+    }
+  ],
+  "homeExactVisiblePatches": 4,
+  "relatedOnlyBacklink": 1,
+  "english56GuideExportUnchanged": true,
+  "robotsUnchanged": true,
+  "scope": "Full6reviewedguidevisiblebody/steps/FAQ/source/related,4homepagefields,newrouteand canonicalset; not ranking/runtime/native-speaker proof."
+}

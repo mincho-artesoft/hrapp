@@ -1,0 +1,210 @@
+{
+  "allPassed": true,
+  "changedArticles": 32,
+  "localizedFullRevisions": 29,
+  "newEnglishArticles": 1,
+  "relatedOnlyChanges": 2,
+  "sitemapUrls": 492,
+  "preservedPreviousCanonicals": 491,
+  "articles": [
+    {
+      "locale": "ar-SA",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ar/articles/weather-inside-your-calendar/",
+      "sha256": "6db3e4ef44e3aab35cab6f9da259580e070cf22947e2303319922793136a76aa"
+    },
+    {
+      "locale": "bg",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/bg/articles/weather-inside-your-calendar/",
+      "sha256": "6fa295ef4f22ff19368141c7a5aa69eff707908800e11b5f74a9a9a448da6898"
+    },
+    {
+      "locale": "cs",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/cs/articles/weather-inside-your-calendar/",
+      "sha256": "56eae00530309148f20c8d1c9ef4d4bb78611b603a11b994658d83a8416d35d3"
+    },
+    {
+      "locale": "da",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/da/articles/weather-inside-your-calendar/",
+      "sha256": "d2118c77210421730cfd0a195ccda85c570678e3d2551b9f443bca1c7caaae9e"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/de/articles/weather-inside-your-calendar/",
+      "sha256": "72d0fa96a2df3e45bb5b46a171dd99c79c10fc9c44a5b3f3df9f7bebc940199a"
+    },
+    {
+      "locale": "el",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/el/articles/weather-inside-your-calendar/",
+      "sha256": "5bf76c598cf8fae11524bf127b498f257139e48657ca2ce05eacdbd146a5639d"
+    },
+    {
+      "locale": "en-US",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "url": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
+      "sha256": "d15292663888e40b56c21856f2404da323cc6d4f705cfb1a5dde7475b4921ff6"
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "sha256": "d68903bf3ee1c3e4ab41c6bb0e54497dca1086bd5aaa4d46c8c8c3d97839786f"
+    },
+    {
+      "locale": "en-US",
+      "slug": "when-two-calendars-disagree",
+      "url": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
+      "sha256": "26e31352ba5d58b531d52b14e9557eb10cc73487ec06446f0bf055f2b1598872"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/es/articles/weather-inside-your-calendar/",
+      "sha256": "44ad5d582d964354adeab77454b5f7b6fd25a1936f6c9393df6e3ce1ba002c7a"
+    },
+    {
+      "locale": "fi",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/fi/articles/weather-inside-your-calendar/",
+      "sha256": "afd29bc2d8858431856c9592d64037c4ffd3e1e7cc2d14be4df0c243715c45dc"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/fr/articles/weather-inside-your-calendar/",
+      "sha256": "0820324bc77b467a488f74cac9080f08bb921906271f6e2ff5c704af5d38aff1"
+    },
+    {
+      "locale": "he",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/he/articles/weather-inside-your-calendar/",
+      "sha256": "ce0772ea8b503e723bef705dd88d913cbbc4df0bcee99333f677cee375f22d4e"
+    },
+    {
+      "locale": "hi",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/hi/articles/weather-inside-your-calendar/",
+      "sha256": "bc0d35d782f6cd765ec0652cfc25aa2aad6f3080491d5fb73c14a27f93b1f45e"
+    },
+    {
+      "locale": "hu",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/hu/articles/weather-inside-your-calendar/",
+      "sha256": "1a4f9c3326a5c6731a1dac3029226bd505b2dd1f51f9d9340ca11c69bfbd2a3d"
+    },
+    {
+      "locale": "id",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/id/articles/weather-inside-your-calendar/",
+      "sha256": "97997d816d939f161838bb48102ba630a99a45fece5d5d86027f0f7501cbd2c9"
+    },
+    {
+      "locale": "it",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/it/articles/weather-inside-your-calendar/",
+      "sha256": "f9825615dd580a07f7767c2557df7d8bc742e8513572eb861fa696dd62f0896a"
+    },
+    {
+      "locale": "ja",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ja/articles/weather-inside-your-calendar/",
+      "sha256": "1862a07a2c86a4f47fff6acd8c729545e2f79ec0ac9ab0d289fac21e3834bd83"
+    },
+    {
+      "locale": "ko",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ko/articles/weather-inside-your-calendar/",
+      "sha256": "ce6b5ea9ed26b34e20e95387bc4b4fa4f99d0c5fb732081736d79bd7de3dbb92"
+    },
+    {
+      "locale": "ms",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ms/articles/weather-inside-your-calendar/",
+      "sha256": "5ca85ad9f306d440d69407e5f8a21fe574332294a985b4ac10fd5446060d3ec5"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/nl/articles/weather-inside-your-calendar/",
+      "sha256": "c1883f39c4d705ba9e1ac9ccd780bf18963c672cefc4a5490cad9b5b7ff526dd"
+    },
+    {
+      "locale": "no",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/no/articles/weather-inside-your-calendar/",
+      "sha256": "a33396b96664f1ed93d3f07a4103442340ade9602cb1b2368761cbdea974632a"
+    },
+    {
+      "locale": "pl",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/pl/articles/weather-inside-your-calendar/",
+      "sha256": "0ce109974b3d5652f994a4fa197545048eeca728359a707f7b6905acc39cfd9f"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/pt/articles/weather-inside-your-calendar/",
+      "sha256": "4a4ceffa94969e6951a0138423a64ff5a430cd11ab59b886c32520b58ee4f311"
+    },
+    {
+      "locale": "ro",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ro/articles/weather-inside-your-calendar/",
+      "sha256": "4f08bf1fbbe562543a39e974071cc0682478ea02e6ffe8421738685c03a4111d"
+    },
+    {
+      "locale": "ru",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/ru/articles/weather-inside-your-calendar/",
+      "sha256": "36dfefa82c03c4de63485efc0dfb5c64b2695b794b88a2fdc23bee0989dfc718"
+    },
+    {
+      "locale": "sv",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/sv/articles/weather-inside-your-calendar/",
+      "sha256": "5931b33627290e90b3e3715f28fe3b6ff5b1dc8a0a989dc2da05d848bc6bf0a4"
+    },
+    {
+      "locale": "th",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/th/articles/weather-inside-your-calendar/",
+      "sha256": "239df3d93024f277ec9f894653967612dd3e16c9bddd2f49320eddc0b16f7224"
+    },
+    {
+      "locale": "tr",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/tr/articles/weather-inside-your-calendar/",
+      "sha256": "e4a071848aa15ef41087914d89991b9400f74b529dd6876bb56cb6b19304fa81"
+    },
+    {
+      "locale": "vi",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/vi/articles/weather-inside-your-calendar/",
+      "sha256": "21dd0db7a3f0a87300a413c48fec381965e0a89226f1999612166080ef1a6174"
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/weather-inside-your-calendar/",
+      "sha256": "b31187299b0b096a82c1709d0f8018fd066ece5258e8234f7611460f4810cafc"
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "weather-inside-your-calendar",
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/weather-inside-your-calendar/",
+      "sha256": "a68bb842d3d7115d3048f7b96d1b3bd4a54b721efdec2307322e49fbe77f94e7"
+    }
+  ],
+  "weatherLocalesVerified": 30,
+  "viewRouteCounts": {
+    "disconnect-calendar-integration-without-losing-track": 1
+  },
+  "localizedShellPagesVerified": 491,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual32changedobjects/30fullweatherguides/491old+1newcanonical/allshellskipbrandsectionandlanglinks;2related-onlyscopes independently checked. Notnative-speaker, releasedproductruntime, indexing orrankingcertification."
+}

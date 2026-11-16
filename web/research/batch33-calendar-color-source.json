@@ -1,0 +1,810 @@
+{
+  "date": "2026-10-22",
+  "decision": "A distinct calendar-color task is justified as a candidate after root primary-source review; no draft or route created.",
+  "task": "Change the color of a calendar, identify whether a change is personal or shared, and diagnose color differences between Cloud and a provider without moving events merely to recolor them.",
+  "scope": "Read-only native caller/save/model inspection and all-field lexical scan of all55English article objects. Three directly relevant complete guide bodies read; remaining matching fields inspected without claiming all55complete bodies read.",
+  "positiveFindings": [
+    {
+      "id": "calendar_not_event",
+      "finding": "The reviewed EventKit event wrapper reads color from realEvent.calendar.cgColor. App-local event descriptors read calendar.displayColorHex. The reviewed shared picker edits a calendar, not an independent event color.",
+      "proof": [
+        "EKMultiDayWrapper28–45",
+        "AppLocalCalendarStore608–620",
+        "EditCalendarView42–59,91–118"
+      ],
+      "boundary": "No general per-event color picker or Google event-color/Outlook category preservation established. Do not instruct moving an event into another calendar merely to obtain a color; that changes destination/ownership context."
+    },
+    {
+      "id": "ordinary_calendar_edit",
+      "finding": "Local/iCloud calendar rows connect their info action to EditCalendarView. CalendarRowView renders that action only when showEditButton and allowsContentModifications are true. Editor has COLOR -> Calendar Color, preset choices and Custom..., then Done saves EKCalendar title/color through EventKit and reloads. Cancel dismisses before this save call.",
+      "proof": [
+        "CalendarsSheetView150–158,240–261",
+        "CalendarRowView49–57",
+        "EditCalendarView42–118",
+        "CalendarColorSelectionView16–23,43–118"
+      ],
+      "boundary": "EventKit save is not proof that every provider accepts or propagates the color, nor a universal read-only calendar recoloring promise. Name also saves; a color-only workflow should leave calendar name unchanged. No event/date/account deletion required."
+    },
+    {
+      "id": "app_local_owned_received",
+      "finding": "Owned app-local calendar editing sets title/colorHex and persists. Received app-local calendar editing uses localColorOverrideHex, with Default from creator versus Custom on this device. Display color prefers local override.",
+      "proof": [
+        "AppLocalCalendarViews105–210",
+        "AppLocalCalendarStore374–387,488–503,608–620"
+      ],
+      "boundary": "Owned canonical metadata can participate in Cloud sharing sync. Do not describe every calendar color as device-only: syncOwned/syncSnapshot can send canonical colorHex when appropriate. Received override is a separate display value."
+    },
+    {
+      "id": "received_eventkit_override",
+      "finding": "Received shared-calendar info offers Default from creator/Custom on this device and Done calls setLocalColorOverride. That saves mirror color and local override mapping, then resets the sync baseline so personal color is not treated as changed canonical metadata.",
+      "proof": [
+        "CalendarsSheetView1000–1096",
+        "SharedICloudCalendarLocalStore512–537"
+      ],
+      "boundary": "Current source intent/path, not proof of released behavior, all-sharing-role semantics or every recipient device. Do not generalize received override to original creator edits."
+    },
+    {
+      "id": "google",
+      "finding": "Direct Google rows hide the existing-calendar edit button. During synchronization, Google calendar backgroundColor is used and can replace mirror color. The separate Add Google Calendar flow offers color, creates the calendar, and PATCHes calendarList backgroundColor with colorRgbFormat=true.",
+      "proof": [
+        "CalendarsSheetView480–515,196–213",
+        "AddGoogleCalendarView1–67",
+        "CalendarViewModel1186–1244,2179–2223,5031–5060,5063–5119"
+      ],
+      "boundary": "patchCalendarColor has only the creation caller in the bounded search; it logs errors and returns no success result. A local chosen color is not proof the provider saved it. Do not present this create operation as changing an existing Google calendar, or recommend creating a duplicate calendar as a color fix. No event-specific colorId is modeled by GoogleEventItem."
+    },
+    {
+      "id": "microsoft",
+      "finding": "Direct Microsoft rows also hide edit buttons. Current sync uses UIColor.systemBlue for calendar copies and writes it to an existing mirror if different. MSCalendarItem models id/name; reviewed event model does not expose categories.",
+      "proof": [
+        "CalendarsSheetView592–620",
+        "CalendarViewModel3248–3294,4227–4260"
+      ],
+      "boundary": "No Microsoft color/category write-back workflow established. Do not promise Outlook colors match Cloud or that a local recolor will survive synchronization."
+    },
+    {
+      "id": "shared_metadata",
+      "finding": "Ordinary EventKit editor saves locally and conditionally updates existing Cloud-sharing metadata with the new title/color when an existing session/shared record is found. App-local owned metadata sync separately sends canonical color, not received override.",
+      "proof": [
+        "EditCalendarView91–172",
+        "AppLocalCalendarSyncService88–112,130–168"
+      ],
+      "boundary": "Do not promise all color changes affect only the viewer or that everyone immediately sees the same color. Backend/runtime not inspected for this task."
+    }
+  ],
+  "truthfulWorkflowOutline": [
+    "Identify the owning calendar and connection route first; calendar name/color alone does not establish the account.",
+    "For an editable local/iCloud calendar with the info control available, open Edit Calendar, choose COLOR, select a preset or Custom..., return and choose Done; keep the name unchanged for a color-only edit. English labels come from inspected source, not verified localized/released UI.",
+    "For a received calendar, distinguish Default from creator from Custom on this device where those options actually appear.",
+    "For existing direct Google/Microsoft calendars, do not invent an in-app edit button. Use provider-labelled guidance from fresh official sources for provider settings, then compare actual Cloud appearance without promising equivalence or timing.",
+    "Check several events from that calendar after saving and compare intended source; if color differs or returns, identify mirror/provider path rather than moving, deleting or duplicating events."
+  ],
+  "negativeSearchScope": {
+    "nativeRoots": [
+      "Calendar/Calendar",
+      "Calendar/AppLocal",
+      "Calendar/Sources/CalendarViewModel.swift",
+      "Calendar/MonthView"
+    ],
+    "terms": [
+      "ColorPicker",
+      "CalendarColorSelectionView",
+      "patchCalendarColor",
+      "colorId",
+      "categories",
+      "hexColor",
+      "displayColorHex",
+      "localColorOverrideHex"
+    ],
+    "findings": "Picker references found at calendar creation/edit/share surfaces; no event-color editor established in inspected paths. Google event DTO lacks colorId despite calendar DTO having it. Microsoft event model lacks categories. This is bounded source evidence, not global absence across dependencies/system editors.",
+    "backend": "Not inspected: native handling suffices for these source-bounded findings; no backend/customer/API calls."
+  },
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "rawSha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "ranges": [
+        {
+          "first": 150,
+          "last": 183,
+          "rangeRawSha256": "654e776d4ed44b6422d7c17fb3a526d2ebe61306222e1c48e028479d656a3211"
+        },
+        {
+          "first": 196,
+          "last": 213,
+          "rangeRawSha256": "e0901fa236a3599682e58ad1dc58c7e1252a014f6224a799af04b0a667470726"
+        },
+        {
+          "first": 240,
+          "last": 261,
+          "rangeRawSha256": "16186472bca476b51da24062466dedb880d5f52069d3dc70f3291137fb64b2fb"
+        },
+        {
+          "first": 282,
+          "last": 302,
+          "rangeRawSha256": "cc6d281dcd9b20a21dcde25d8a089b1f6901954c60038ac5ca1fe448a0e1d670"
+        },
+        {
+          "first": 480,
+          "last": 515,
+          "rangeRawSha256": "77b8b5851b6f6e2c3d0594df0f37c3bc7f01cb12fd539d455aa179b26547549d"
+        },
+        {
+          "first": 592,
+          "last": 620,
+          "rangeRawSha256": "87d1fdd2c62b45b1bfad0e7ad10ae9c23f3a648eab853baba3c02e859e77a615"
+        },
+        {
+          "first": 1000,
+          "last": 1096,
+          "rangeRawSha256": "50bf621efa02a601634e4b519ec42b05882b4226778e867e4ba38c3ab2cf2183"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarRowView.swift",
+      "rawSha256": "33d41287f150b9b2cf8247782669f40eb62c8e96d3eb97e70f328d1f12b57ac0",
+      "ranges": [
+        {
+          "first": 42,
+          "last": 62,
+          "rangeRawSha256": "188472ff817c03faf38a2b0b206651cb762a784d89a27afb3e23421e68558aeb"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/EditCalendarView.swift",
+      "rawSha256": "076b2b7df9c7a24f5049cc38faa8b513499e97cf708f415fde0865af568754f4",
+      "ranges": [
+        {
+          "first": 1,
+          "last": 175,
+          "rangeRawSha256": "0ae42562c778c6fc531c483ad3734d1c5665ed1674cafb0c42949979ef0816be"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarColorSelectionView.swift",
+      "rawSha256": "991ddfc52d0c1e621880db28b325dfa2458aca643b831d35bc7a056293e5aa21",
+      "ranges": [
+        {
+          "first": 1,
+          "last": 145,
+          "rangeRawSha256": "991ddfc52d0c1e621880db28b325dfa2458aca643b831d35bc7a056293e5aa21"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/AddGoogleCalendarView.swift",
+      "rawSha256": "9a1cf1b9530bbd49a0435502b01ed69c7ff687785d7be97991fdc3503d4d021d",
+      "ranges": [
+        {
+          "first": 1,
+          "last": 67,
+          "rangeRawSha256": "9a1cf1b9530bbd49a0435502b01ed69c7ff687785d7be97991fdc3503d4d021d"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarViews.swift",
+      "rawSha256": "b446a7338036f8d9cfe7883ac55e5d3f0f919d1dd5a9fbc8fec54ddb6abbc16d",
+      "ranges": [
+        {
+          "first": 105,
+          "last": 210,
+          "rangeRawSha256": "ca69bffeb6047a229bc85b92c5526b72943b9c476d3d4effd06edcd5a53ea461"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "rawSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "ranges": [
+        {
+          "first": 20,
+          "last": 68,
+          "rangeRawSha256": "268e2fd8a52e655370de26557a3b204eddc847a8ad637c04ddcdd42cd65922f7"
+        },
+        {
+          "first": 374,
+          "last": 387,
+          "rangeRawSha256": "fa941149f52efd30215c6852bdbcbaa8bd1bce31a3bb75c5622077bc636f5752"
+        },
+        {
+          "first": 488,
+          "last": 503,
+          "rangeRawSha256": "256c275a1369b6f86999576e4c8f890318b314d82b616b184909bccb103eb2e5"
+        },
+        {
+          "first": 608,
+          "last": 620,
+          "rangeRawSha256": "45d4c3c132ad547c85d7db56df251b4d8f5ae63f249ee7b53d3ef8552b4866c7"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarSyncService.swift",
+      "rawSha256": "414e8b953fbdc50e624f9df6696d168f38d0f2aeb94a56aec13527d3e311b683",
+      "ranges": [
+        {
+          "first": 88,
+          "last": 112,
+          "rangeRawSha256": "e664e0fad754020fa99976513a5cc68c84b7dcf5190493bc7c41e86b10bdc901"
+        },
+        {
+          "first": 130,
+          "last": 168,
+          "rangeRawSha256": "30da5b3b00d5b559e44dfe4a63f848afeccdd9b266fa1a77558efe9d22c851dc"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedICloudCalendarLocalStore.swift",
+      "rawSha256": "5f8f3b04f3feb9112051982ac1649ba97c295b390f73730a7297903c99e8c262",
+      "ranges": [
+        {
+          "first": 512,
+          "last": 537,
+          "rangeRawSha256": "12b58301d171fb08c06c9745864f4f656d1da60aa5f057de052e7f1834b16d56"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EKMultiDayWrapper.swift",
+      "rawSha256": "e16c3c912a059498a490140ee9751ef01a56a306754ec5132955c5b310dd4c54",
+      "ranges": [
+        {
+          "first": 28,
+          "last": 45,
+          "rangeRawSha256": "6c8275f5adb3075c001f039ac6b8a04696929736a7a74246dbcbeb5214a11706"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "rawSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "ranges": [
+        {
+          "first": 1186,
+          "last": 1244,
+          "rangeRawSha256": "0de0a763e35479c7afbe25d6405465dde1a0d615848b68dff9c05b116833ce2d"
+        },
+        {
+          "first": 2179,
+          "last": 2223,
+          "rangeRawSha256": "877b54f75515206f5160d9f2dae6a89376181652f84481f09e56bafe68be9a6a"
+        },
+        {
+          "first": 3248,
+          "last": 3294,
+          "rangeRawSha256": "6b4f41861fae8593c558845b6f0f2618f0809083f8d04d8299fdb48e19914a80"
+        },
+        {
+          "first": 4227,
+          "last": 4260,
+          "rangeRawSha256": "94b8e3a8f9ba23630003fb23e57bc44c03655b55674ea4af7f93972ff2313366"
+        },
+        {
+          "first": 5031,
+          "last": 5060,
+          "rangeRawSha256": "2ef2c0fdd95c38b03a7b8d54b4d8be9821bc416dfbf6a031027a8f89b63ac5b6"
+        },
+        {
+          "first": 5063,
+          "last": 5119,
+          "rangeRawSha256": "b4e14258b831c7c55096807dc5be112c7e87aae48b3fd92006cbd63e0e5f5b9b"
+        }
+      ]
+    }
+  ],
+  "websiteCoverage": {
+    "count": 55,
+    "method": "TypeScript AST extracted every actual English article object; recursively searched every string field for color/colour (regex colou?r), including metadata, section headings/bodies, practical, FAQs, source labels and related strings. Case-insensitive lexical scan; not semantic search for every synonym.",
+    "matchingArticles": 7,
+    "allArticles": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "251c8b8f7e04e436fc8a7828f042bc509780fbba7a9de293e8a8b9822bff899f",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "free-google-sync-without-adverts",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "1a0b3dc30cfcf17491bc72928a71a861d264447df23a4fe81f69e4f3c417a739",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-fantastical-costs-and-what-this-does",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "c5fb0faf7583c225a65b61c99a0275d3467fa0c255a5c5229e4bac44a9c9bee5",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-you-get-without-paying-anything",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "1f2fb684b92cc5b75f551c22bdc03a66a1765bd1baa6c8baa5c29bb03a1d609a",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-a-subscription-actually-buys",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "rawObjectSha256": "bbd78c2c4afd95826abadd14e4366947716c42d0058429622dd695422e01242a",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "700ffb28cc2b606294737e591ee2ad0a0da283f5b0a34012fa279ce8c913d552",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "the-secret-address-of-a-google-calendar",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "4522a943481c86b0b18e57ac88cecf41a540893e27aee240a599da79122f8f16",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "7e16a971b42d8d92a47dc3aa6c75c057c80e052d8620a4fa144d0dc3fd7f4668",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "rawObjectSha256": "8eea3407c2cdec5dca89e00158882fa9df4a502d64880e937e81c45cf5191f8f",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "c34f82e3fb366ebb83853ed7f1640319c5fbb3ff3e7018df817c8277578c41e7",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "1e6b337eb958e369ba1cd7ec07c4880a78d4dbe5a46b3ce8d20cf1c046dcda5d",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "6002d4f3b2b75970b73b8a85f74d2af4b31fdcdbfa263e57657ee157929b0306",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "2724575c4208d9c8839dd0320647e0200a58d5b933aee7b84791aa1d81bdd936",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "f85ec2c3362343a2894ceb49fe582a04dfa4c5176abac282f5f70b610c8903f0",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "c1ed8c5654d2724b0a20b3145980de8490af0041e3bc5638031a7ad1847d750e",
+        "matchingFields": [
+          {
+            "path": "sections.0.heading",
+            "text": "Identify the record, not just its color"
+          },
+          {
+            "path": "sections.0.body.0",
+            "text": "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
+          },
+          {
+            "path": "practical.0",
+            "text": "Identify the event’s saved calendar and account, not just its title or color."
+          }
+        ],
+        "reviewScope": "complete object read"
+      },
+      {
+        "slug": "family-pickup-calendar-handoff",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "rawObjectSha256": "48c6ac4d6abbcf40f4184aea067e3e5b9366e899dad0973556b0b9fc08db42bd",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "3b4aa50d7fb952df35327ea7924780116d7b38393c0746a5986cfcaf659189bc",
+        "matchingFields": [
+          {
+            "path": "sections.3.body.1",
+            "text": "Keep the calendar unchanged when you only mean to change the time. In a view with multiple calendar columns, crossing to another calendar is a different decision: it can change the account or people who can see the event. Check the Calendar value after the operation, especially when similarly coloured calendars are adjacent."
+          }
+        ],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "9cabea12904a876b3684b9bc53a9c6d92b3a0eb8d8c56790263c71a79f5f1964",
+        "matchingFields": [
+          {
+            "path": "sections.0.body.1",
+            "text": "For example, a personal view may hide a work calendar to reduce clutter. The clear afternoon it shows does not establish that the work schedule is empty. Bring the relevant calendars into view before offering the slot, and confirm the account behind an unfamiliar colour."
+          }
+        ],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "1101dcadfe6af951d8a9bd0ea7075cca6a5db8a17d58cbe47649f80cd4284c6a",
+        "matchingFields": [
+          {
+            "path": "sections.3.body.0",
+            "text": "Confirm the title, owner or calendar, local time and duration in the event details. A colour is useful for scanning, but it is not a substitute for knowing the account or whether you may edit the event. A visible invitation is different from an appointment you organise yourself."
+          }
+        ],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "9c9ef1538b97f2aabc2cf2efe69f90667752a874870be9cf97e43861f57a97a6",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "18614ec9491017594ab907ab568f37c40955b8594598c13ca2cac2e864d89f10",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "ea13808b5d6de5f3235a0a77927974d71d9f74584741327f1f440e2926358148",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "620c5a088b12f6d71a7c6f4e5fde243fcb1622b2c914851158294e4002d6e709",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "a-list-for-people-who-dislike-grids",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "01af60a3bfa72f15649c2f8a2da217fed0c28be4a99b1b81c8ae52d8dcd7ac37",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "rawObjectSha256": "570930c6db1d504a419c47931ccd6d3b6fead2ec9ae2a57f4733bcca4cfe6388",
+        "matchingFields": [
+          {
+            "path": "description",
+            "text": "Use year view to compare months and dates. Understand colour markers, selected calendars and multi-day events before treating an unmarked period as free."
+          },
+          {
+            "path": "commonBelief",
+            "text": "A colour marker counts appointments, and an unmarked date proves that nothing is scheduled."
+          },
+          {
+            "path": "sections.1.heading",
+            "text": "Read colour markers as an overview, not a count"
+          },
+          {
+            "path": "sections.1.body.0",
+            "text": "Cloud Calendars’ year cells use distinct event colours as markers. Several events with the same colour can therefore share a marker. Do not translate the number of dots into the number of appointments or occupied hours."
+          },
+          {
+            "path": "sections.1.body.1",
+            "text": "Colour is a cue to open the date, not an explanation of the commitment. Two calendars can also use a similar colour. Confirm the calendar name and the event’s title before deciding whether a marker represents work, family or a copied record."
+          },
+          {
+            "path": "sections.3.body.1",
+            "text": "Open the original event and compare its start, end and all-day status. If you need separate setup or return commitments, record the real plan deliberately. Do not extend or duplicate the original appointment merely to make more dates show coloured markers."
+          },
+          {
+            "path": "practical.1",
+            "text": "Treat colour markers as cues rather than event counts."
+          },
+          {
+            "path": "faq.0.a",
+            "text": "No. The year overview uses distinct event colours. Several same-colour events can share a marker."
+          }
+        ],
+        "reviewScope": "complete object read"
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "b28727f7e19b5657948f86ef35dedda9bb8bc0a750980f2a9aac3682a5277b59",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "inviting-people-who-do-not-have-the-app",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "8757e6e6b40cd88b814ff9e175593ad79d552dc1618dd860ec4a28a1d2493222",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "rawObjectSha256": "6c45da36b7e2c97dd54c6c0efea3e5850fdbe6b30c7766df0e17e8197d758d55",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "59c1312f6ea394f7edf6e1498bf3259efd0053c904f2b0c3d53267c81866e2f2",
+        "matchingFields": [
+          {
+            "path": "sections.0.body.0",
+            "text": "Start with one ordinary event from each provider. Note the signed-in email address, calendar name and whether you own the event or received an invitation. Two calendars called “Calendar” can belong to entirely different accounts. A colour helps you scan a week; the account and calendar identify where an edit should go."
+          }
+        ],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "three-calendar-apps-is-two-too-many",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "06e1ccc907cf04143cae3ba4a727be7659cacbcb2876d1e060b2a774693abfa4",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "0f9f8317cd57c6ddd26cf31f5bdf9d8a497ed39a655cbfa77e8757293fc67cac",
+        "matchingFields": [
+          {
+            "path": "sections.0.body.0",
+            "text": "A calendar app can display selected calendars together while each keeps its own account and permissions. Apple’s multiple-calendar guide describes choosing calendars to display, assigning colours and selecting a default calendar. Those display choices are not a transfer of event ownership."
+          },
+          {
+            "path": "sections.1.heading",
+            "text": "Use colour and visibility for the overview"
+          },
+          {
+            "path": "sections.1.body.0",
+            "text": "Give work and personal calendars distinct colours, then check a busy day with both visible. When you want a narrower view, hide a calendar rather than deleting its events. Apple’s duplicate-calendar guide explains how to show and hide calendars with checkboxes. Before accepting a new commitment, restore the calendars relevant to that decision and compare the week with all of them visible. An empty filtered view does not establish that the time is free."
+          },
+          {
+            "path": "practical.1",
+            "text": "Choose distinct colours and display the calendars you need for an overview."
+          }
+        ],
+        "reviewScope": "complete object read"
+      },
+      {
+        "slug": "exchange-calendars-on-an-iphone",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "rawObjectSha256": "24241d00e1ece4cf67efb13d8b6588e28b0267adecdf2f3e48f87119a17fcd4d",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "6fb9e57c66c8d19d5c7e37abfb50abbc37b1b5e1757729743ad37c6d162666d2",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "a11cfc9e4b31b1361747c36816e79346f9869274fe512d1e897268ac4e8524f6",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "a-fourteen-day-view-of-the-weather",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "069435ac39284f108c6d5a95b33d1abc81c1da3729a9c498e7b9102cc5051cdc",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "planning-outdoors-without-being-rained-on",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "03df2936c31703db77fc45370001185fe53d033bdd1c65fa5aa0176283bfd1a2",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "what-a-forecast-can-and-cannot-tell-you",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "2288eaa5f36835692504f40dec6e5206cfbcd3a371115b272f78542768045581",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "reading-a-chance-of-rain",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "69f354ff1ec93e6c6fe7e08eb0f676d2ac87eebe4f9998665639cf8bef56f60d",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "weather-where-the-event-is",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "the-commute-and-the-sky",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "36809ff17620d4c0b9ddfa037098371f674f0c34914279e08cd48d8b1c0d2a5a",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "daylight-as-a-planning-constraint",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "fc6daf721fed644f11ccd74e2409790304ae18ad658c231985bd4b332f238eb0",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "wind-the-forecast-nobody-reads",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "rawObjectSha256": "f3e9f92525c226b171db19e72f3abb00c34074d2f651ed412648d6ac527b1a39",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "d604425c45a83392067d10284c0a4db29418ddaae05c89886cbdf891c89ae546",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "a-countdown-to-your-next-meeting",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "7dec3827b8167a0f894066a0e4eb37f8b225a9488ef7cc65c7118af125741393",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "lock-screen-without-unlocking",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "6cebcf3c5a03da60010b266850ad0cf9121b185bed7b4cc716c2dd59de49e3e6",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "choosing-a-widget-size",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "d55ca6551a8e7796e779fac7bfa04d070683a1b37743a94b0026170c19262453",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      },
+      {
+        "slug": "the-calendar-on-a-bedside-table",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "rawObjectSha256": "54f65c1ca0c911b0d1d1944663d08e069afaac6192aacc63161488a8bf786600",
+        "matchingFields": [],
+        "reviewScope": "all-field lexical scan; matching fields read, not complete body"
+      }
+    ],
+    "fullReadConclusions": [
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "finding": "Advises distinct calendar colors, selection and ownership. No actual color-control workflow or local/provider/received override distinction."
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "finding": "Substantive account/destination/immediate-move precautions. Color only an unreliable identity cue; not a color-settings guide."
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "finding": "Explains distinct-color markers rather than event counts. Does not cover setting colors, per-event provider colors or persistence."
+      }
+    ]
+  },
+  "editorialDecision": {
+    "recommendation": "One original calendar-color guide can be distinct, conditional on root validating provider-specific instructions.",
+    "whyStandalone": "The task needs a choice among calendar-wide display, individual event expectations, device override versus shared canonical color, hidden direct-provider controls and source-driven changes. Existing three complete guides discuss identification/ownership/markers, not this setting and diagnosis workflow. Appending all these branches to work/personal or year view would distract from their existing tasks.",
+    "avoidDuplicates": "One canonical covering setting and mismatches; not separate color coding/custom colors/not syncing keyword pages. No claim of measured search demand.",
+    "candidateSections": [
+      "Choose calendar-wide color versus an individual event request",
+      "Identify the source and editable control",
+      "Change an available calendar color and save",
+      "Understand received-calendar personal overrides",
+      "Compare Google/Microsoft provider appearance without assuming write-back",
+      "Diagnose changed-back colors without moving events"
+    ],
+    "fallback": "If provider primary support cannot establish useful platform-specific next steps, limit publication to a concise calendar-control section in work/personal and keep the direct-provider branch as a qualification rather than inventing a recipe."
+  },
+  "limits": [
+    "Current source is not released App Store binary or runtime proof.",
+    "No account, calendar, event, Contacts, provider or production data queried or changed.",
+    "No site/native/backend source changes, builds, simulator actions, deployment, credentials, commits or paid APIs.",
+    "No new external fetch; root owns fresh primary research.",
+    "Some combined outputs truncated; decisive handlers/models/picker fields were separately read. No claim of complete native-file review except the fully displayed picker/add-Google view."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "sourceFilesUnchanged": 8,
+  "previousEnglishSourceMatchesHEAD": true,
+  "rootReadNativeRanges": {
+    "Calendar/Sources/CalendarViewModel.swift": [
+      [
+        1150,
+        1169
+      ],
+      [
+        1244,
+        1258
+      ]
+    ]
+  },
+  "rootProviderReads": [
+    "https://support.google.com/calendar/answer/37648?hl=en",
+    "https://support.google.com/a/users/answer/13293412?hl=en",
+    "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list",
+    "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS",
+    "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+  ],
+  "verifiedFindings": [
+    "Secret address for own applications; named collaboration separate; reset invalidates old address",
+    "Guest event modification and default guest permissions both documented",
+    "Google list pagination exists; hidden entries excluded by default",
+    "Device account calendars toggle and app calendar visibility distinct",
+    "Native request unparameterized, list model omits pagination token"
+  ],
+  "scopeLimits": [
+    "Read-only source/provider review, not released app or deployed backend verification",
+    "No live account, calendar feed, customer data or runtime test",
+    "Localized equivalents of these 3English guides remain unreviewed beyond shared numeric table removal"
+  ],
+  "integratedSlugs": [
+    "what-guests-can-do-to-your-event",
+    "the-secret-address-of-a-google-calendar",
+    "google-calendars-that-never-reach-your-iphone"
+  ],
+  "baseCommitForPreviousEnglishSource": "f04796a5e1115580e71993cc928234368fbb4b29"
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-22",
+  "status": "draft_only",
+  "sourceFile": "src/app/content/en-US/articles-help.ts",
+  "slug": "calendar-export-ics-pdf-and-backup",
+  "beforeObjectSha256": "ca0299338e8853d58a383e77bedb31e33f93f00c386ee53a9394ba0a2537f25c",
+  "afterObjectSha256": "df3f57c53aada5e56285b5911fa8fd5096ee5a4fd366ecaf7c43aa3b2bd29d23",
+  "placement": "Append one Google-specific subsection immediately after the existing final Check a copy before relying on it section. All eight existing sections remain byte-equivalent as parsed objects, in their original order.",
+  "addition": {
+    "heading": "For Google, distinguish a copy from an ownership handoff",
+    "body": [
+      "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
+      "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+    ]
+  },
+  "appendedSource": {
+    "label": "Google: transfer calendar ownership, move or copy events",
+    "url": "https://support.google.com/calendar/answer/78739?hl=en"
+  },
+  "addedWordsIncludingHeading": 152,
+  "faqDecision": "No FAQ added: repeating eligibility or acceptance would duplicate the concise subsection.",
+  "evidence": [
+    {
+      "file": "research/batch24-migration/intent-research.json",
+      "scope": "Complete record read. Google ownership body18–70 recorded as full main body; provider import/export and corpus lexical scope retained without expanding those claims."
+    },
+    {
+      "file": "research/batch24-migration/product-evidence.json",
+      "scope": "Complete record read, including truncated middle read separately. No whole-calendar transfer UI established; no native feature added to this draft."
+    },
+    {
+      "source": "Root supplied fresh primary read",
+      "url": "https://support.google.com/calendar/answer/78739?hl=en",
+      "date": "2026-10-22",
+      "scope": "Main body lines18–70 freshly read by root, confirms primary exclusion, current-owner requirement, same-organisation work/school rule and 60-day acceptance. This author uses that supplied verification; no independent fresh web fetch claimed."
+    }
+  ],
+  "validation": {
+    "originalEightSectionsUnchanged": true,
+    "originalSourcesRetainedInOrder": true,
+    "onlyNewSource": "https://support.google.com/calendar/answer/78739?hl=en",
+    "metadataPracticalFaqClaimsRelatedUnchanged": true,
+    "sourceDatePreserved": "2026-10-22",
+    "sectionCountBefore": 8,
+    "sectionCountAfter": 9,
+    "addedBodyParagraphs": 2,
+    "within200Words": true
+  },
+  "boundaries": [
+    "Google-specific process, no cross-provider ownership guarantee.",
+    "No Cloud transfer menu or general file-import control claimed.",
+    "No account-deletion recommendation, guest-count tangent or vCard anomaly repeated.",
+    "Wrong-calendar guide and secondary native invitation paragraph not edited; outside this draft scope.",
+    "Only before.json, full proposed article JSON and this draft-notes.json written. No source integration, build, deploy, native, ASC or customer operation."
+  ]
+}

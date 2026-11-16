@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-21",
+  "scope": "Draft-only equivalent rewrites of8existing widget articles in de-DE/es-ES/fr-FR/it. No live source, new translated routes, native changes, runtime testing, builds, publication or paid API.",
+  "basis": "Five EN draft articles and native/Apple evidence in research/batch05-widgets/evidence.json; these translations cover only the existing first2canonical slugs.",
+  "translationLimits": [
+    "AI editorial translation, not native-speaker certification.",
+    "Quoted English controls/layout names match verified source labels; installed localized wording not certified.",
+    "No installed-version/runtime behavior verified."
+  ],
+  "files": [
+    {
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/localized/de-DE.json",
+      "sha256": "e43912a11fb02be09ef52441ba4e14de72e6f859bc7730cd90d80eeb43ac7435",
+      "existingLiveModule": "/Users/minchomilev/cloud-calendars/src/app/content/de-DE/articles.ts",
+      "existingLiveModuleSha256": "dc461f93409a13d144cae4d030641f310c12feebcaca39d6b3bf68d1fb0bef60",
+      "articles": [
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "descriptionCharacters": 145,
+          "bodyWords": 344,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8"
+        },
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "descriptionCharacters": 143,
+          "bodyWords": 302,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "47ba183431e62c4416c772673fcebed0f2555542693e6df3a69168d09cfcf27b"
+        }
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/localized/es-ES.json",
+      "sha256": "b6aedf6e1420c0e6cad4a3018d2a70a8847450a51e58a2e67fbc76a0d5694b6f",
+      "existingLiveModule": "/Users/minchomilev/cloud-calendars/src/app/content/es-ES/articles.ts",
+      "existingLiveModuleSha256": "f20ceb5f61aa708dd44f725cc3bb81b68e9eec0f4f37a9aad11e3c8104e78dcf",
+      "articles": [
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "descriptionCharacters": 148,
+          "bodyWords": 392,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8"
+        },
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "descriptionCharacters": 143,
+          "bodyWords": 352,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "47ba183431e62c4416c772673fcebed0f2555542693e6df3a69168d09cfcf27b"
+        }
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/localized/fr-FR.json",
+      "sha256": "90f491fa427a0dabafb6e21b1feac3f20ee90f3570c9cbaa5609aba02cfb51cd",
+      "existingLiveModule": "/Users/minchomilev/cloud-calendars/src/app/content/fr-FR/articles.ts",
+      "existingLiveModuleSha256": "8d3378541eacfe480a1f30d3caf3fcda1bc49b6d0a8b3139b1d16b8593388774",
+      "articles": [
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "descriptionCharacters": 136,
+          "bodyWords": 392,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8"
+        },
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "descriptionCharacters": 148,
+          "bodyWords": 352,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "47ba183431e62c4416c772673fcebed0f2555542693e6df3a69168d09cfcf27b"
+        }
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/localized/it.json",
+      "sha256": "88e290222f7cf39dd70812e1ca03a1269a1d82dffe95cd6159f19373f7102459",
+      "existingLiveModule": "/Users/minchomilev/cloud-calendars/src/app/content/it/articles.ts",
+      "existingLiveModuleSha256": "6a6ed4ba72080f1fac4eea62ff126bb8bf1db61bef27c835456c977313cbbb36",
+      "articles": [
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "descriptionCharacters": 146,
+          "bodyWords": 352,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8"
+        },
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "descriptionCharacters": 143,
+          "bodyWords": 321,
+          "sections": 5,
+          "paragraphs": 10,
+          "faqs": 3,
+          "englishBasisSha256": "47ba183431e62c4416c772673fcebed0f2555542693e6df3a69168d09cfcf27b"
+        }
+      ]
+    }
+  ],
+  "validation": "All4JSON records parse;8canonical articles confirmed existing; descriptions<160characters,5sections/10paragraphs/3FAQs per article; primary-source URLs preserved; crosslinks limited to existing localized counterparts."
+}

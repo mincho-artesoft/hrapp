@@ -1,0 +1,89 @@
+<section class="features section" id="features">
+  <div class="shell">
+    <header class="features__head">
+      <p class="eyebrow" appReveal="fade">{{ copy().eyebrow }}</p>
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        {{ copy().title[0] }}<br />
+        <span class="grad-viole">{{ copy().title[1] }}</span>
+      </h2>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">{{ copy().lead }}</p>
+    </header>
+
+    <div class="bento">
+      <!-- ============================================ unified sources -->
+      <article class="card bento__tile bento__tile--wide" appReveal="zoom" appTilt [tiltMax]="5">
+        <div class="tile__text">
+          <h3>{{ copy().unified.title }}</h3>
+          <p>{{ copy().unified.body }}</p>
+        </div>
+
+        <!-- Orbiting sources -->
+        <div class="orbit" aria-hidden="true">
+          <span class="orbit__ring orbit__ring--1"></span>
+          <span class="orbit__ring orbit__ring--2"></span>
+          <span class="orbit__ring orbit__ring--3"></span>
+
+          <img class="orbit__core" src="icons/mark-128.webp" alt="" />
+
+          @for (s of sources(); track s.id; let i = $index) {
+            <span class="orbit__node" [attr.data-src]="s.id" [style.--i]="i">
+              <span class="orbit__chip">
+                <b>{{ s.name }}</b>
+                <i>{{ s.note }}</i>
+              </span>
+            </span>
+          }
+        </div>
+      </article>
+
+      <!-- ============================================ gestures -->
+      <article class="card bento__tile bento__tile--tall" appReveal="zoom" appTilt [tiltMax]="6">
+        <div class="tile__text">
+          <h3>{{ copy().gestures.title }}</h3>
+          <p>{{ copy().gestures.body }}</p>
+        </div>
+
+        <!-- A tiny, looping demonstration of the gesture -->
+        <div class="gesture" aria-hidden="true">
+          <div class="gesture__grid">
+            @for (h of [9,10,11,12,13,14]; track h) {
+              <span class="gesture__row"><em>{{ h }}:00</em></span>
+            }
+          </div>
+
+          <div class="gesture__event gesture__event--static">
+            <b>Standup</b>
+            <i>9:00 – 9:15</i>
+          </div>
+
+          <div class="gesture__event gesture__event--live">
+            <span class="gesture__handle gesture__handle--top"></span>
+            <b>Design review</b>
+            <i>3:00 PM – 4:00 PM</i>
+            <span class="gesture__handle gesture__handle--bottom"></span>
+          </div>
+
+          <span class="gesture__cursor"></span>
+        </div>
+      </article>
+
+      <!-- ============================================ small tiles -->
+      @for (t of smallTiles(); track t.title) {
+        <article
+          class="card bento__tile bento__tile--sm"
+          appReveal="zoom"
+          appTilt
+          [tiltMax]="7"
+          [tiltLift]="12"
+        >
+          <span class="tile__badge">{{ t.badge }}</span>
+          <div class="tile__text">
+            <h3>{{ t.title }}</h3>
+            <p>{{ t.body }}</p>
+          </div>
+          <span class="tile__sheen" aria-hidden="true"></span>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{
+  "status": "LINKS_IMPLEMENTED_SOURCE_REVIEW_PASS",
+  "reviewedFiles": [
+    {
+      "path": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "a0ba7345f4a4b4e4c7a9a1991a9471db35bd5ff9fb3251578ca56769fae2586d"
+    },
+    {
+      "path": "src/app/components/store-media/store-media.component.ts",
+      "sha256": "c0fb5ec5b9a0f8ae1309070effd45fa534a252e1154ff45e2d3bbc3f0c6750e9"
+    },
+    {
+      "path": "src/app/core/store-media.ts",
+      "sha256": "d5ab3153d794afc2b29b1a88c2212ad2a71cd946c086052f0235a5662967391d"
+    }
+  ],
+  "change": "Each screenshot picture wrapped in link to largest WebP rendition, target_blank relnoopener. Accessible name supplied by existing descriptive image alt; keyboard focus outline added. Nativeaspect/nocrop maintained.",
+  "sourceReview": [
+    "No window/document access in new computedmedia logic; SSR uses staticmanifest/signals.",
+    "Emptylocales yields emptyhomepage section; article rail falls back to oldiPhone/iPad arrays. No missingfolderindex crash under declaredschema.",
+    "Typeassertion supports emptylocales and optionalvideo; rootmanifest must match screenshotarray+widthscontract.",
+    "Signaldeviceinput and active-locale signal triggercomputation. Homevideo nodes tracked bylocale.media/device reset across mediachanges; BG/ENsameasset intentionally samekey.",
+    "Homepage heading joined string from localizedshowcase title; no articlemoduleimport.",
+    "Missingnewsemanticdescription or emptywidths deliberately failsfast; finalmanifestvalidation stillrootresponsibility."
+  ],
+  "pending": "No build/browser tests perinstruction. Root verifies finalmanifestshape/assets, SSRbuild and visualplayback. No source/runtime guarantee from source-only review.",
+  "untouched": "Root scripts/manifests and privacy unchanged in this follow-up."
+}

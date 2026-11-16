@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-21",
+  "scope": [
+    {
+      "file": "src/app/content/bg/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/de-DE/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/de-DE/articles.ts",
+      "slug": "forecast-beside-every-event"
+    },
+    {
+      "file": "src/app/content/de-DE/articles.ts",
+      "slug": "planning-outdoors-without-being-rained-on"
+    },
+    {
+      "file": "src/app/content/de-DE/articles.ts",
+      "slug": "a-fourteen-day-view-of-the-weather"
+    },
+    {
+      "file": "src/app/content/es-ES/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/es-ES/articles.ts",
+      "slug": "forecast-beside-every-event"
+    },
+    {
+      "file": "src/app/content/es-ES/articles.ts",
+      "slug": "planning-outdoors-without-being-rained-on"
+    },
+    {
+      "file": "src/app/content/es-ES/articles.ts",
+      "slug": "a-fourteen-day-view-of-the-weather"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "slug": "forecast-beside-every-event"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "slug": "planning-outdoors-without-being-rained-on"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "slug": "a-fourteen-day-view-of-the-weather"
+    },
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "forecast-beside-every-event"
+    },
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "planning-outdoors-without-being-rained-on"
+    },
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "a-fourteen-day-view-of-the-weather"
+    },
+    {
+      "file": "src/app/content/ar-SA/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/cs/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/da/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/el/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/fi/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/he/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/hi/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/hu/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/id/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/ja/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/ko/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/ms/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/nl-NL/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/no/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/pl/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/pt-BR/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/ro/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/ru/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/sv/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/th/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/tr/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/vi/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/zh-Hans/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/zh-Hant/articles.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "weather-inside-your-calendar"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "forecast-beside-every-event"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "a-fourteen-day-view-of-the-weather"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "planning-outdoors-without-being-rained-on"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "what-a-forecast-can-and-cannot-tell-you"
+    },
+    {
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "slug": "weather-where-the-event-is"
+    },
+    {
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "slug": "month-view-on-a-bigger-screen"
+    }
+  ],
+  "sharedFacts": {
+    "file": "src/app/content/article-facts.ts",
+    "removedFixedFourteenDayRows": 6
+  },
+  "primarySources": [
+    {
+      "url": "https://developer.apple.com/weatherkit/",
+      "checked": "2026-10-21",
+      "finding": "Apple advertises10day hourly WeatherKit service; not proof every app request returns complete coverage."
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "lines": [
+        100,
+        102,
+        125,
+        126,
+        498
+      ],
+      "finding": "Requests hourly and daily WeatherKit data; daily list uses days.prefix(min(days.count,10))."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "lines": [
+        1294,
+        1309
+      ],
+      "finding": "Daily card iterates vm.dailyForecast; labels alone not treated as coverage proof."
+    }
+  ],
+  "validation": {
+    "typescriptSyntax": "Passed 31 article modules",
+    "runtime": "not tested",
+    "build": "not run",
+    "deployment": "not performed",
+    "unrelatedArticleObjects": "119 objects byte-for-byte unchanged against HEAD; only named scope objects edited",
+    "whitespace": "git diff --check passed"
+  },
+  "preserved": "Canonical slugs, unrelated article objects, native code and homepage remain unchanged.",
+  "outstanding": [
+    "Other weather claims about per-event automatic location selection, precise meteorological confidence, outdoor safety and overview weather in other article families were not established by this horizon-only audit.",
+    "Homepage ten-day labels remain consistent with intended daily UI but are not an every-request completeness guarantee."
+  ],
+  "localizedCoverage": {
+    "coreLocales": 30,
+    "additionalExistingHorizonLocales": 4,
+    "uncorrectedKnownFixedFourteenDayWeatherObjects": 0,
+    "totalChangedArticleObjects": 48
+  }
+}

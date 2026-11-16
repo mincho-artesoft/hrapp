@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22",
+  "changedCanonicals": [
+    "calendar-export-ics-pdf-and-backup",
+    "time-zones-and-the-flight-you-booked"
+  ],
+  "decision": "Extend two existing canonicals with bounded feed-diagnosis branches; no converter-brand page justified.",
+  "primaryReads": [
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+      "readRanges": "183–200 and268–288",
+      "supports": "Published ICS can be imported without later updates or subscribed to read-only; refresh frequency belongs to recipient provider. No fixed refresh promise adopted.",
+      "scope": "Targeted publishing sections, not whole page."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37118?hl=en",
+      "readRanges": "18–155",
+      "supports": "Imports are snapshots rather than cross-account synchronization; individual imports and recurrence/conference limitations.",
+      "scope": "Full substantive import body inspected."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37100?hl=en",
+      "readRanges": "17–67",
+      "supports": "Subscription routes distinguish Google shared access and a published URL added in computer browser.",
+      "scope": "Full substantive body; no new UI procedure copied."
+    },
+    {
+      "url": "https://calconverter.app/faq",
+      "readRanges": "3–30",
+      "supports": "Discovery of a useful feed-format question and separate refresh stages; root reread. Publisher universal diagnosis/compatibility/no-duplicates and timing claims are not adopted.",
+      "scope": "Full substantive FAQ, no runtime test."
+    }
+  ],
+  "relatedEvidence": [
+    "research/competitors/batch22-calconverter-feed-primary-20261022.json",
+    "research/competitors/batch21-syncdate-calconverter-primary-20261022.json"
+  ],
+  "editorialReasoning": "Compare source and recipient, intended dates and zones before changing an actual appointment. Distinguish imported records from subscriptions, permission to share a feed from merely knowing a URL, and intermediate processing from receiving-provider refresh. Do not treat every one-hour mismatch as Windows/IANA parsing or prescribe a conversion service as a guaranteed fix.",
+  "runtimeActions": false,
+  "privateFeedSubmitted": false,
+  "noNewCloudFeatureClaim": true
+}

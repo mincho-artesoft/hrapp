@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "articles": [
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "primaryKeyword": "ics dtend exclusive",
+      "intentKey": "format/icalendar/all-day-exclusive-boundary",
+      "readerOutcome": "Interpret and check a DATE-valued range without an off-by-one repair.",
+      "distinctValue": "Three calculated boundary examples plus an inspection checklist; narrow file-format task rather than a second general all-day guide.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5545 §3.6.1 read in full relevant semantic paragraphs from complete official plaintext."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "what-an-all-day-event-really-means",
+        "calendar-export-ics-pdf-and-backup",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "primaryKeyword": "icalendar floating time",
+      "intentKey": "format/icalendar/floating-versus-fixed-instant",
+      "readerOutcome": "Identify the timestamp representation and avoid an unintended reschedule.",
+      "distinctValue": "Two-recipient fixed-offset calculation, property-level examples and explicit malformed-offset warning.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.5",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5545 §3.3.5 forms and timezone interpretation paragraphs read from official plaintext."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "primaryKeyword": "ics uid sequence",
+      "intentKey": "format/icalendar/update-identity",
+      "readerOutcome": "Tell an intended event revision from a new identity or recurrence exception.",
+      "distinctValue": "Four-case identity decision table and a fictional same-UID revision example, explicitly separated from import behavior.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.7",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5545 §§3.8.4.7 and3.8.7.4 read; Google import body retrieved and substantive import-not-sync statement checked."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.7.4",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5545 §§3.8.4.7 and3.8.7.4 read; Google import body retrieved and substantive import-not-sync statement checked."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37118?hl=en",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5545 §§3.8.4.7 and3.8.7.4 read; Google import body retrieved and substantive import-not-sync statement checked."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "what-calendar-sync-actually-does",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "primaryKeyword": "ics method cancel",
+      "intentKey": "format/itip/cancellation-scope",
+      "readerOutcome": "Choose a valid organizer cancellation route and distinguish it from local removal.",
+      "distinctValue": "Scope matrix covering full series, moved occurrence, uninviting and independent copies; authenticated-authority distinction.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5546#section-3.2.5",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5546 §3.2.5 cancellation constraints and§6 security read; RFC5545 recurrence identity paragraphs checked."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5546#section-6",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5546 §3.2.5 cancellation constraints and§6 security read; RFC5545 recurrence identity paragraphs checked."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.4",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC 5546 §3.2.5 cancellation constraints and§6 security read; RFC5545 recurrence identity paragraphs checked."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "recurring-events-without-the-mess",
+        "keeping-track-of-who-replied",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "primaryKeyword": "rrule count until",
+      "intentKey": "format/icalendar/recurrence-end-boundary",
+      "readerOutcome": "Calculate the final occurrence set for a finite weekly schedule with a skipped date.",
+      "distinctValue": "Explicit four-row recurrence calculation that distinguishes generated dates from completed sessions.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC5545 §3.3.10 COUNT/UNTIL and§3.8.5.1 EXDATE paragraphs read in complete official plaintext."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC5545 §3.3.10 COUNT/UNTIL and§3.8.5.1 EXDATE paragraphs read in complete official plaintext."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "recurring-events-without-the-mess",
+        "shift-work-calendar-iphone-rotating-schedules",
+        "when-two-calendars-disagree"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "primaryKeyword": "exdate recurrence id",
+      "intentKey": "format/icalendar/skip-versus-move-instance",
+      "readerOutcome": "Distinguish removing a generated date from moving an identified recurrence instance.",
+      "distinctValue": "Original-to-new occurrence mapping and neighboring-date checklist; explains identity beyond a visually identical grid.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.4.4",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC5545 §§3.8.4.4,3.8.5.1,3.8.5.2 relevant paragraphs read from complete official plaintext."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC5545 §§3.8.4.4,3.8.5.1,3.8.5.2 relevant paragraphs read from complete official plaintext."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.2",
+          "retrievedAt": "2026-10-23",
+          "note": "RFC5545 §§3.8.4.4,3.8.5.1,3.8.5.2 relevant paragraphs read from complete official plaintext."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "recurring-events-without-the-mess",
+        "drag-an-event-to-move-it",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "primaryKeyword": "google calendar transfer ownership pending",
+      "intentKey": "google/calendar/ownership-pending-handoff",
+      "readerOutcome": "Complete and document acceptance before retiring an owning account, then review retained access.",
+      "distinctValue": "Operational state table with a dated fictional account-closure handoff, rather than another generic export comparison.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/78739?hl=en",
+          "retrievedAt": "2026-10-23",
+          "note": "Complete substantive Google ownership-transfer body read, including60dayacceptance,primarycalendarrestriction,andformerownerrole."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "calendar-export-ics-pdf-and-backup",
+        "who-can-see-what-in-google-calendar",
+        "disconnect-calendar-integration-without-losing-track"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "primaryKeyword": "google calendar meeting notes not updating",
+      "intentKey": "google/meeting-notes/snapshot-metadata",
+      "readerOutcome": "Repair stale meeting-note details without mistaking a document edit for a reschedule or invitation.",
+      "distinctValue": "A four-action record-of-authority matrix with a concrete reschedule/new-guest example; distinct from existing guest-permission coverage.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/6192039?hl=en",
+          "retrievedAt": "2026-10-23",
+          "note": "Complete substantive Google attachment and meeting-notes documentation read; explicit non-sync examples andorganizer/nonorganizerattachmentdifference checked."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial and integration review; no firsthand runtime testing claimed."
+      },
+      "adjacentArticlesRead": [
+        "what-guests-can-do-to-your-event",
+        "keeping-track-of-who-replied",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "originalExampleStatus": "Author-created illustrative example derived from source semantics; not a measured app result.",
+      "firsthandTesting": false
+    }
+  ]
+}

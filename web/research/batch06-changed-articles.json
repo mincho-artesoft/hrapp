@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-21T19:00:31.474Z",
+  "count": 13,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Einen Termin mit der stündlichen Wettervorhersage vergleichen",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Prüfe Ort, Datum und verfügbare Vorhersagestunden für deinen Termin. Kontrolliere den Ereignisentwurf, bevor du einen wetterabhängigen Plan speicherst.",
+      "descriptionCharacters": 151
+    },
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Aktivitäten im Freien planen, ohne im Regen zu stehen",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Eine praktische Methode für Aktivitäten im Freien: Nutze deinen bestehenden Kalender, statt eine separate Wetterroutine aufzubauen.",
+      "descriptionCharacters": 131
+    },
+    {
+      "locale": "en-US",
+      "slug": "weather-inside-your-calendar",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "title": "A calendar with the weather already in it",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Use hourly and daily weather alongside iPhone and iPad calendars. Check the selected place, forecast dates and appointment time before planning.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "en-US",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "title": "Compare an appointment with the hourly weather forecast",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
+      "descriptionCharacters": 138
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "title": "How far ahead does the available forecast reach?",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Check the dates a forecast actually covers. Calendar navigation, daily forecasts and hourly detail are different ranges in Cloud Calendars.",
+      "descriptionCharacters": 139
+    },
+    {
+      "locale": "en-US",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "title": "Planning outdoor things without getting rained on",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "A practical method for scheduling anything that happens outside, using the calendar you already keep rather than a separate weather routine.",
+      "descriptionCharacters": 140
+    },
+    {
+      "locale": "en-US",
+      "slug": "weather-where-the-event-is",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "title": "The weather where the event is, not where you are",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Choose weather for a meeting destination, check its local dates and hours, and distinguish selected-place forecasts from device-location alerts.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "es-ES",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Compara una cita con la previsión del tiempo por horas",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Comprueba el lugar, la fecha y las horas de previsión disponibles para tu cita. Revisa el borrador antes de guardar un plan basado en el tiempo.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Planificar actividades al aire libre sin acabar bajo la lluvia",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Un método práctico para organizar actividades al aire libre con el calendario que ya utilizas, sin crear otra rutina para consultar el tiempo.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Comparer un rendez-vous aux prévisions météo heure par heure",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Vérifiez le lieu, la date et les heures de prévision disponibles pour votre rendez-vous. Relisez le brouillon avant d’enregistrer un projet lié à la météo.",
+      "descriptionCharacters": 155
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Organiser des activités en extérieur sans finir sous la pluie",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Une méthode pratique pour organiser vos activités en extérieur avec votre calendrier habituel, sans ajouter une routine météo distincte.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "it",
+      "slug": "forecast-beside-every-event",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Confronta un appuntamento con le previsioni meteo orarie",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Verifica luogo, data e ore di previsione disponibili per l’appuntamento. Controlla la bozza prima di salvare un piano basato sul meteo.",
+      "descriptionCharacters": 135
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Organizzare attività all’aperto senza finire sotto la pioggia",
+      "sections": 3,
+      "faqs": 3,
+      "sources": 1,
+      "updated": "2026-10-21",
+      "description": "Un metodo pratico per organizzare attività all’aperto con il calendario che usi già, senza aggiungere una routine meteo separata.",
+      "descriptionCharacters": 129
+    }
+  ]
+}

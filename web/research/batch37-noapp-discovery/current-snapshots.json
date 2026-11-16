@@ -1,0 +1,802 @@
+{
+  "en-US:sharing-one-event-not-your-calendar": {
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Share one calendar event: choose the link and access you mean",
+      "short": "Sharing one event",
+      "description": "Share one event without sharing a whole calendar. Understand Reader, Writer and Owner access, preview links, updates and the limits of revocation.",
+      "lede": "Sharing dinner details, inviting a co-organizer to edit and collecting attendance answers are different tasks. Start with the one you need, then choose the sharing route. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Every event link is a read-only calendar subscription that updates immediately and records a reply.",
+      "sections": [
+        {
+          "heading": "Start with one event and inspect its details",
+          "body": [
+            "A single-event share is scoped to that event rather than the sender’s entire calendar. Before sending it, review the title, time zone, location, notes and any meeting URL. Information useful to one guest may not belong in a link you intend to circulate widely.",
+            "For example, sharing a dinner event does not require sharing the calendar containing your medical appointments. However, the dinner’s own location and links still travel with the event. Check the event itself rather than relying on the privacy of the calendar around it."
+          ]
+        },
+        {
+          "heading": "Choose a preview, an email invitation or a QR route",
+          "body": [
+            "Cloud Calendars offers distinct sharing routes. Its App Clip presents an event preview; the full app is needed to add the event through that experience. Email and QR invitations use a web landing page that offers to open Cloud Calendars. Do not describe all these links as interchangeable subscription URLs.",
+            "The sender signs in for the app’s synchronized sharing flow. A link or QR code can be forwarded, so send it only where its contents are appropriate. A QR code is a way to convey a link, not proof of who opened it."
+          ]
+        },
+        {
+          "heading": "Assign only the access the recipient needs",
+          "body": [
+            "Email invitations let you choose Reader, Writer or Owner. Reader can view and sync; Writer can edit; Owner can also share and manage access. These are consequential choices, not three names for viewing the same invitation. Use Reader when someone only needs the schedule.",
+            "Choose Writer for a co-organizer who should change the event. Choose Owner only when that person should also manage other people’s access. The recipient needs the appropriate signed-in identity to receive elevated access. An anonymous recipient is not an identified co-owner."
+          ]
+        },
+        {
+          "heading": "Understand how the recipient adds it",
+          "body": [
+            "In the full app, adding a shared event needs calendar permission and a writable destination calendar. The recipient should check that destination before saving. A received copy can then be associated with the shared event for later updates.",
+            "This differs from importing an ordinary ICS file into another calendar. An import is a copy, while a subscription periodically checks a feed. If you are sending an ICS feed rather than an app invitation, explain that route explicitly and confirm the recipient’s calendar supports it."
+          ]
+        },
+        {
+          "heading": "Verify changes before relying on them",
+          "body": [
+            "A synchronized share can carry later edits or cancellation, but the recipient’s device needs an opportunity to receive them. A feed refresh hint is not a delivery deadline. An offline device, an unrefreshed subscription or a standalone imported copy can still show older information.",
+            "If dinner moves shortly before the start, update the event and contact the guests directly. Ask them to confirm the new time. Sending an update and receiving an attendance answer are separate steps."
+          ]
+        },
+        {
+          "heading": "Manage access without promising to erase copies",
+          "body": [
+            "Review the event’s recipient access and remove permissions that are no longer needed. Removing a recipient and revoking a feed link are distinct operations; neither should be described as remotely erasing screenshots, messages or every calendar copy.",
+            "If a link has circulated beyond its intended audience, identify which link or access grant is involved. Confirm the affected route after changing access. For future events, keep private details out of broadly distributed links rather than relying on later revocation to recover them."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Review the event details and decide whether you need viewing, editing or attendance replies.",
+        "Choose the intended sharing route and sign in when required.",
+        "Use Reader for viewers; grant Writer or Owner only for the corresponding responsibility.",
+        "Ask the recipient to check the event time and destination calendar when adding it.",
+        "For urgent changes, update the event and send a direct message.",
+        "Review recipient permissions and link access separately when sharing ends."
+      ],
+      "faq": [
+        {
+          "q": "Does sharing one event expose my whole calendar?",
+          "a": "The synchronized single-event route is scoped to the event. It still exposes the shared event’s own details through the chosen route. Review those details and avoid sending a whole-calendar invitation when you intend to send only one event."
+        },
+        {
+          "q": "Can the recipient change the event?",
+          "a": "Yes, if they have the appropriate Writer or Owner access and use the supported signed-in flow. Reader access is for viewing and syncing. An ordinary ICS subscription is not the same editing mechanism."
+        },
+        {
+          "q": "Does removing someone undo everything they have already received?",
+          "a": "No such guarantee should be assumed. Access changes affect the supported sharing relationship, but previously saved copies, screenshots and messages may remain. A shared feed URL also needs separate consideration."
+        }
+      ],
+      "sourcesHeading": "References for recipient options",
+      "sources": [
+        {
+          "label": "Apple: overview of App Clips",
+          "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+        },
+        {
+          "label": "Google: importing events and its limitations",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Microsoft: importing versus subscribing to a calendar",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    "rawSha256": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8"
+  },
+  "en-US:inviting-people-who-do-not-have-the-app": {
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Sharing an event with someone who does not have Cloud Calendars",
+      "short": "Sharing without the app",
+      "description": "Understand event previews, App Clips, full-app imports and ICS subscriptions before sending an invitation to someone who does not use Cloud Calendars.",
+      "lede": "Someone may only need to read the time and place, while another person needs an updating calendar entry or editing access. Those needs lead to different recipient experiences. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Any invitation link can instantly add an updating event on every phone without an app, account or permission.",
+      "sections": [
+        {
+          "heading": "Ask what the recipient needs to do",
+          "body": [
+            "A preview, a saved calendar entry, a subscription and permission to edit are different results. Tell the recipient what you are sending and what you expect them to do. A short explanation is more useful than promising that every calendar will handle the same link identically.",
+            "For a friend checking a venue, a preview may be enough. For a co-organizer changing the time, a preview is insufficient. For a guest whose attendance matters, ask for an explicit reply rather than assuming that opening the link confirms attendance."
+          ]
+        },
+        {
+          "heading": "Know what the App Clip actually offers",
+          "body": [
+            "On a supported iPhone, an App Clip can provide a small experience without downloading the full app. Cloud Calendars uses its event App Clip as a preview. Its action points to downloading Cloud Calendars to add the event to a calendar.",
+            "That distinction matters when choosing your wording: “preview the event” is accurate; “add it with no installation” is not a promise this flow supports. Availability also depends on the device and how the link is opened, so do not promise an immediate App Clip launch on every platform."
+          ]
+        },
+        {
+          "heading": "Explain email and QR links separately",
+          "body": [
+            "Cloud Calendars email and QR event invitations open a web preview route with an option to open the full app. They are not simply another way of invoking the App Clip. A calendar invitation has its own preview and opens the app to add the shared calendar.",
+            "If someone cannot continue, first identify what opened: a browser preview, the App Clip or the full app. Then check what action they want to complete. Repeatedly sending the same link will not change a device’s available app or permissions."
+          ]
+        },
+        {
+          "heading": "Adding an event has additional requirements",
+          "body": [
+            "The full-app event import needs calendar access and an available writable calendar. The recipient chooses where the copy belongs. Some event reception can be recorded anonymously; that does not grant the identified Writer or Owner role assigned to an email address.",
+            "For an email invitation with editing access, use the intended account identity. Whole-calendar acceptance requires a signed-in account with a verified email identity. Do not apply the single-event preview’s low-friction behavior to every sharing operation."
+          ]
+        },
+        {
+          "heading": "Use the right instructions for ICS",
+          "body": [
+            "A genuine ICS file or calendar feed is different from a Cloud Calendars invitation page. Outlook distinguishes importing a file from subscribing to a URL: importing creates a copy; subscribing can receive later updates on the client’s schedule. Do not paste an arbitrary invitation page into a subscription field and expect it to behave as a feed.",
+            "Google also documents limitations for imported events, including lack of continued synchronization and omitted guest or conference data. If the recipient chooses a provider import route, check the time, location and call link afterward. Do not promise that all invitation features survive the conversion."
+          ]
+        },
+        {
+          "heading": "Choose a practical fallback",
+          "body": [
+            "If the recipient only needs the details, include the date, time zone, place and an explicit way to reply in your message. If they need a normal provider meeting invitation, use the organizer’s approved calendar invitation workflow. Keep that distinct from sharing an app preview.",
+            "For later changes, update the source and notify the person through a channel they use. A recipient who chose a standalone copy may need to update it manually. Check the outcome with one person before circulating a schedule to a larger group."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Ask whether the recipient needs a preview, a saved event, updates or editing access.",
+        "Name the route you are sending instead of calling every URL a subscription.",
+        "Explain that the Cloud Calendars App Clip previews and the full app adds the event.",
+        "For elevated email access, check the intended sign-in identity.",
+        "If using ICS, distinguish a one-time import from a supported feed subscription.",
+        "Include a direct reply method and communicate urgent changes separately."
+      ],
+      "faq": [
+        {
+          "q": "Can someone without Cloud Calendars see the event?",
+          "a": "A supported App Clip or web invitation preview can show details without the full app. That does not mean the preview adds the event, grants editing access or works identically on every device."
+        },
+        {
+          "q": "Is every Cloud Calendars link an ICS subscription?",
+          "a": "No. App Clip links, email or QR landing pages, app deep links and ICS feed URLs serve different purposes. Use a feed only where a calendar application asks for a subscription URL."
+        },
+        {
+          "q": "Can I promise that an imported file will stay updated?",
+          "a": "No. A file import is a copy. A subscription can refresh, but its timing depends on the receiving client. Check which action the recipient actually completed."
+        }
+      ],
+      "sourcesHeading": "Recipient platform references",
+      "sources": [
+        {
+          "label": "Apple: overview of App Clips",
+          "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+        },
+        {
+          "label": "Google: importing events and its limitations",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Microsoft: importing versus subscribing to a calendar",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar",
+        "a-calendar-that-is-yours-to-share"
+      ]
+    },
+    "rawSha256": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45"
+  },
+  "de-DE:sharing-one-event-not-your-calendar": {
+    "file": "src/app/content/de-DE/articles.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Ein Kalenderereignis teilen: Link und Zugriffsrechte bewusst wählen",
+      "short": "Ein Ereignis teilen",
+      "description": "Teilen Sie einen Termin statt des ganzen Kalenders. Verstehen Sie Reader, Writer und Owner, Vorschauen, Aktualisierungen und die Grenzen eines Widerrufs.",
+      "lede": "Details zum Abendessen senden, Mitorganisatoren Änderungen erlauben und Zusagen sammeln sind unterschiedliche Aufgaben. Wählen Sie zuerst Ihr Ziel und dann den Freigabeweg. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+      "commonBelief": "Jeder Ereignislink ist ein schreibgeschütztes Kalenderabonnement, das sofort aktualisiert wird und eine Antwort erfasst.",
+      "sections": [
+        {
+          "heading": "Prüfen Sie zuerst das einzelne Ereignis",
+          "body": [
+            "Eine Freigabe für ein einzelnes Ereignis umfasst dieses Ereignis und nicht den gesamten Kalender. Prüfen Sie Titel, Zeitzone, Ort, Notizen und Besprechungslinks. Angaben für einen Gast eignen sich nicht unbedingt für einen weit verbreiteten Link.",
+            "Für ein Abendessen müssen Sie nicht den Kalender mit Ihren Arztterminen freigeben. Ort und Links des Abendessens werden aber mitgeteilt. Prüfen Sie deshalb den Inhalt selbst."
+          ]
+        },
+        {
+          "heading": "Wählen Sie Vorschau, E-Mail oder QR-Code",
+          "body": [
+            "Der App Clip von Cloud Calendars zeigt eine Vorschau. Zum Hinzufügen über diesen Weg wird die vollständige App benötigt. E-Mail- und QR-Einladungen öffnen eine Webseite mit einer Option zum Öffnen von Cloud Calendars. Diese Links sind keine austauschbaren Abonnementadressen.",
+            "Für die synchronisierte Freigabe meldet sich der Absender an. Links und QR-Codes lassen sich weiterleiten. Ein QR-Code übermittelt einen Link, beweist aber nicht, wer ihn geöffnet hat."
+          ]
+        },
+        {
+          "heading": "Vergeben Sie nur die nötigen Rechte",
+          "body": [
+            "Bei E-Mail-Einladungen wählen Sie Reader, Writer oder Owner. Reader darf ansehen und synchronisieren, Writer darf bearbeiten, Owner zusätzlich teilen und Zugriffe verwalten. Für jemanden, der nur den Zeitplan benötigt, reicht Reader.",
+            "Writer passt zu einem Mitorganisator, der das Ereignis ändern soll. Owner ist für Personen gedacht, die auch fremde Zugriffe verwalten sollen. Höhere Rechte erfordern die passende angemeldete Identität. Ein anonymer Empfänger ist kein identifizierter Mitinhaber."
+          ]
+        },
+        {
+          "heading": "Klären Sie, wie das Ereignis hinzugefügt wird",
+          "body": [
+            "Die vollständige App benötigt Kalenderzugriff und einen beschreibbaren Zielkalender. Der Empfänger sollte das Ziel vor dem Speichern prüfen. Die empfangene Kopie kann für spätere Änderungen mit dem geteilten Ereignis verknüpft werden.",
+            "Ein gewöhnlicher ICS-Import in einen anderen Kalender ist etwas anderes: Er erstellt eine Kopie, während ein Abonnement regelmäßig einen Feed abruft. Wenn Sie einen ICS-Feed senden, erklären Sie diesen Weg und prüfen Sie, ob der Kalender des Empfängers ihn unterstützt."
+          ]
+        },
+        {
+          "heading": "Verlassen Sie sich erst nach Prüfung auf Änderungen",
+          "body": [
+            "Eine synchronisierte Freigabe kann Änderungen und Absagen übermitteln, aber das Gerät muss sie empfangen können. Ein Aktualisierungshinweis für einen Feed ist keine Zustellfrist. Offlinegeräte, noch nicht aktualisierte Abonnements und unabhängige importierte Kopien können alte Angaben zeigen.",
+            "Verschiebt sich das Abendessen kurzfristig, aktualisieren Sie das Ereignis und kontaktieren Sie die Gäste direkt. Lassen Sie die neue Uhrzeit bestätigen. Eine Aktualisierung zu erhalten ist keine Zusage zur Teilnahme."
+          ]
+        },
+        {
+          "heading": "Zugriff ändern heißt nicht alle Kopien löschen",
+          "body": [
+            "Prüfen Sie Empfängerrechte und entfernen Sie nicht mehr benötigte Berechtigungen. Einen Empfänger zu entfernen und einen Feed-Link zu widerrufen sind getrennte Schritte. Keiner davon löscht zuverlässig alle Screenshots, Nachrichten oder Kalenderkopien aus der Ferne.",
+            "Wurde ein Link weiterverbreitet, bestimmen Sie den betroffenen Link oder Zugriff und prüfen Sie das Ergebnis nach der Änderung. Lassen Sie private Angaben künftig aus breit verteilten Links heraus, statt auf einen späteren Widerruf zu vertrauen."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Prüfen Sie Details und entscheiden Sie, ob es um Ansicht, Bearbeitung oder Teilnahmeantworten geht.",
+        "Wählen Sie den Freigabeweg und melden Sie sich bei Bedarf an.",
+        "Vergeben Sie Reader zum Ansehen und Writer oder Owner nur für die passende Verantwortung.",
+        "Bitten Sie den Empfänger, Uhrzeit und Zielkalender zu prüfen.",
+        "Aktualisieren Sie dringende Änderungen und senden Sie zusätzlich eine direkte Nachricht.",
+        "Prüfen Sie zum Abschluss Empfängerrechte und Linkzugriff getrennt."
+      ],
+      "faq": [
+        {
+          "q": "Wird mein gesamter Kalender sichtbar?",
+          "a": "Die synchronisierte Einzelfreigabe ist auf das Ereignis begrenzt. Seine eigenen Details werden dennoch geteilt. Prüfen Sie sie und senden Sie keine Einladung zum gesamten Kalender, wenn nur ein Termin gemeint ist."
+        },
+        {
+          "q": "Darf der Empfänger das Ereignis ändern?",
+          "a": "Mit den passenden Writer- oder Owner-Rechten und dem unterstützten angemeldeten Ablauf ja. Reader dient zum Ansehen und Synchronisieren. Ein gewöhnliches ICS-Abonnement verwendet nicht diesen Bearbeitungsmechanismus."
+        },
+        {
+          "q": "Macht das Entfernen alles bereits Empfangene rückgängig?",
+          "a": "Das ist nicht garantiert. Der Zugriff auf die Freigabe ändert sich, gespeicherte Kopien, Screenshots und Nachrichten können aber bleiben. Eine geteilte Feed-Adresse ist gesondert zu prüfen."
+        }
+      ],
+      "sourcesHeading": "Referenzen für Empfänger",
+      "sources": [
+        {
+          "label": "Apple: Überblick über App Clips",
+          "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+        },
+        {
+          "label": "Google: Ereignisse importieren und Einschränkungen",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Microsoft: Kalender importieren oder abonnieren",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "keeping-track-of-who-replied",
+        "who-can-see-what-in-google-calendar"
+      ]
+    },
+    "rawSha256": "c074025bfb28b9699345f836a2cd7f92688983ad09ef156d5db46d2b9c48db44"
+  },
+  "es-ES:sharing-one-event-not-your-calendar": {
+    "file": "src/app/content/es-ES/articles.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Comparte un evento: elige el enlace y el acceso adecuados",
+      "short": "Compartir un evento",
+      "description": "Comparte un evento sin todo el calendario. Entiende Reader, Writer y Owner, las vistas previas, actualizaciones y límites de retirar acceso.",
+      "lede": "Compartir los detalles de una cena, permitir que un coorganizador edite y recoger respuestas de asistencia son tareas distintas. Elige primero la tarea y después la vía. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+      "commonBelief": "Todo enlace de evento es una suscripción de solo lectura que se actualiza inmediatamente y registra una respuesta.",
+      "sections": [
+        {
+          "heading": "Empieza por un evento y revisa sus detalles",
+          "body": [
+            "Compartir un evento se limita a ese evento, no al calendario completo del remitente. Antes de enviarlo, revisa título, zona horaria, ubicación, notas y URL de reunión. La información útil para un invitado puede no ser apropiada para un enlace distribuido ampliamente.",
+            "Compartir una cena no exige compartir el calendario con tus citas médicas. Sin embargo, la ubicación y los enlaces de la cena sí acompañan al evento. Revisa el evento en sí, sin depender de la privacidad del calendario que lo contiene."
+          ]
+        },
+        {
+          "heading": "Elige vista previa, invitación por correo o QR",
+          "body": [
+            "Cloud Calendars ofrece vías distintas. Su App Clip muestra una vista previa; para añadir el evento desde esa experiencia hace falta la app completa. Las invitaciones por correo y QR usan una página web que ofrece abrir Cloud Calendars. No describas todos estos enlaces como URL de suscripción intercambiables.",
+            "El remitente inicia sesión para el proceso sincronizado. Un enlace o QR puede reenviarse: envíalo solo donde su contenido sea apropiado. Un QR transmite un enlace, no demuestra quién lo abrió."
+          ]
+        },
+        {
+          "heading": "Concede solo el acceso necesario",
+          "body": [
+            "Las invitaciones por correo permiten elegir Reader, Writer u Owner. Reader puede ver y sincronizar; Writer puede editar; Owner además puede compartir y administrar acceso. Son decisiones con consecuencias, no tres nombres para ver lo mismo. Usa Reader para quien solo necesita el horario.",
+            "Elige Writer para un coorganizador que deba modificar el evento. Elige Owner solo si también debe gestionar el acceso de otros. Los permisos superiores requieren la identidad adecuada con sesión iniciada. Un destinatario anónimo no es un copropietario identificado."
+          ]
+        },
+        {
+          "heading": "Entiende cómo lo añade el destinatario",
+          "body": [
+            "En la app completa, añadir requiere permiso de calendario y un destino editable. El destinatario debe comprobarlo antes de guardar. La copia recibida puede asociarse después al evento compartido para recibir actualizaciones.",
+            "Esto difiere de importar un ICS normal a otro calendario. La importación es una copia; una suscripción consulta periódicamente un feed. Si envías un feed ICS y no una invitación de la app, explica esa vía y confirma que el calendario del destinatario la admite."
+          ]
+        },
+        {
+          "heading": "Verifica los cambios antes de depender de ellos",
+          "body": [
+            "El acceso sincronizado puede transmitir ediciones o cancelaciones, pero el dispositivo debe tener oportunidad de recibirlas. Una indicación de refresco del feed no es un plazo de entrega. Un dispositivo sin conexión, una suscripción sin actualizar o una copia importada independiente pueden seguir mostrando datos antiguos.",
+            "Si la cena cambia poco antes del inicio, actualiza el evento y contacta directamente con los invitados. Pide que confirmen la nueva hora. Enviar una actualización y recibir una respuesta de asistencia son pasos separados."
+          ]
+        },
+        {
+          "heading": "Gestiona el acceso sin prometer borrar copias",
+          "body": [
+            "Revisa los destinatarios y retira permisos innecesarios. Quitar un destinatario y revocar un enlace de feed son acciones distintas; ninguna debe describirse como borrado remoto de capturas, mensajes o todas las copias.",
+            "Si el enlace circuló más allá del público previsto, identifica qué enlace o permiso está implicado. Comprueba la vía afectada después de cambiar el acceso. Para futuros eventos, evita detalles privados en enlaces amplios en lugar de confiar en recuperarlos mediante revocación."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Revisa los detalles y decide si necesitas visualización, edición o respuestas de asistencia.",
+        "Elige la vía e inicia sesión cuando corresponda.",
+        "Usa Reader para lectores; concede Writer u Owner solo por la responsabilidad correspondiente.",
+        "Pide al destinatario que compruebe hora y calendario de destino al añadir.",
+        "Para cambios urgentes, actualiza el evento y envía un mensaje directo.",
+        "Al terminar, revisa permisos de destinatarios y acceso de enlaces por separado."
+      ],
+      "faq": [
+        {
+          "q": "¿Compartir un evento expone todo mi calendario?",
+          "a": "La vía sincronizada de un evento se limita a él. Sus propios detalles sí se muestran por la vía elegida. Revísalos y no envíes una invitación de todo el calendario si solo quieres compartir un evento."
+        },
+        {
+          "q": "¿Puede el destinatario modificarlo?",
+          "a": "Sí, con acceso Writer u Owner apropiado mediante el proceso compatible con sesión iniciada. Reader permite ver y sincronizar. Una suscripción ICS normal no es el mismo mecanismo de edición."
+        },
+        {
+          "q": "¿Eliminar a alguien deshace todo lo que ya recibió?",
+          "a": "No debe suponerse tal garantía. Los cambios afectan la relación compartida admitida, pero pueden quedar copias, capturas y mensajes. Una URL de feed compartido también requiere revisión separada."
+        }
+      ],
+      "sourcesHeading": "Referencias sobre las opciones del destinatario",
+      "sources": [
+        {
+          "label": "Apple: descripción de App Clips",
+          "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+        },
+        {
+          "label": "Google: importar eventos y sus limitaciones",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Microsoft: importar o suscribirse a un calendario",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "keeping-track-of-who-replied"
+      ]
+    },
+    "rawSha256": "e97fa433b5bb440e70af8c08eb30cd653e8b8f09dc5b9873ce964c6c9d6e4734"
+  },
+  "de-DE:calendar-export-ics-pdf-and-backup": {
+    "file": "src/app/content/de-DE/articles-help.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
+      "short": "Kalenderexport und Sicherung",
+      "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
+      "lede": "Der Kalender auf Ihrem iPhone kann mehrere Konten anzeigen. Für eine brauchbare Kopie müssen Sie die Quelle kennen und entscheiden, ob Sie Ereignisdaten, einen lesbaren Zeitplan oder laufende Aktualisierungen brauchen. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Erst das Ergebnis, dann das Format wählen",
+          "body": [
+            "Ein Kalenderexport kann unterschiedliche Aufgaben erfüllen. Soll eine andere Kalender-App Ereignisdatensätze lesen, wählen Sie ein unterstütztes strukturiertes Format wie ICS. Für einen lesbaren Zeitplan eignet sich ein PDF oder Ausdruck. Für spätere Änderungen prüfen Sie ein Abonnement oder eine Freigabe mit Berechtigungen.",
+            "Ein PDF hält das gespeicherte Layout fest; es ist keine Importdatei für Termine. Eine heruntergeladene ICS-Datei enthält Daten zum Zeitpunkt des Downloads. Ein ICS-Abonnement verwendet eine Adresse, die der Kalender erneut abruft. Die Dateiendung allein unterscheidet nicht zwischen importierter Momentaufnahme und laufendem Abonnement.",
+            "Eine Wochenendreise als PDF lässt sich gut lesen. Ein Kollege, der Termine in ein anderes Konto überträgt, braucht Ereignisdaten. Ein Vereinsmitglied, das sich ändernde Spieltermine verfolgen möchte, braucht eine aktualisierte Quelle. Klären Sie das Ziel vor dem Versand."
+          ]
+        },
+        {
+          "heading": "Mit dem Konto beginnen, das die Termine enthält",
+          "body": [
+            "Identifizieren Sie auf dem iPhone Kalender und Konto mit den benötigten Ereignissen. Eine gemeinsame Ansicht kann mehrere Konten, Freigaben und Abonnements enthalten. Das macht daraus keinen einzelnen Quellkalender für den Export.",
+            "Für Google Kalender benötigen Sie einen Computer; die Google-Kalender-App bietet keinen Export. Öffnen Sie auf der Website „Settings“, „Import & export“ und „Export“. Die ZIP-Datei enthält einzelne ICS-Dateien. Für einen Kalender wählen Sie dessen „Settings and sharing“ und „Export calendar“. Google verlangt Berechtigung zur Verwaltung von Änderungen und Freigaben; auch eine Organisation kann den Export einschränken.",
+            "Ist der Kalender in Kalender auf dem Mac verfügbar, wählen Sie ihn in der Seitenleiste und nutzen „File > Export > Export“ für eine ICS-Datei. Dies ist ein Mac-Verfahren, kein versteckter iPhone-Befehl. Prüfen Sie vor dem Speichern den ausgewählten Kalender."
+          ]
+        },
+        {
+          "heading": "Wenn ein PDF-Zeitplan gebraucht wird",
+          "body": [
+            "Verwenden Sie in Kalender auf dem Mac „File > Print“ und wählen Sie Layout, Datumsbereich und Kalender. Im macOS-Druckdialog nutzen Sie das PDF-Menü und „Save as PDF“. Öffnen Sie das Ergebnis vor dem Versand: Ein kleines Raster kann wichtige Angaben abschneiden oder weglassen.",
+            "Nennen Sie im Begleittext den Zeitraum und die relevante Zeitzone. Prüfen Sie private Termine, Notizen und Orte vor der Weitergabe. Spätere Kalenderänderungen verändern kein bereits versandtes PDF. Kennzeichnen Sie eine überarbeitete Kopie eindeutig."
+          ]
+        },
+        {
+          "heading": "Abonnieren und Veröffentlichen ist keine Sicherung",
+          "body": [
+            "Microsoft unterscheidet für Outlook im Web ausdrücklich: Eine veröffentlichte ICS-Datei herunterzuladen und zu importieren erzeugt eine Kopie ohne spätere Aktualisierungen. Ein Abonnement der ICS-Adresse folgt Änderungen. Das Aktualisierungsintervall hängt vom Anbieter des Empfängers ab; der veröffentlichte Kalender ist schreibgeschützt.",
+            "Wo verfügbar, können Sie in Outlook über „Settings > Shared calendars > Publish a calendar“ Kalender und Detailgrad wählen. Veröffentlichung ermöglicht Ansicht oder Abonnement. Nutzen Sie das für eine beabsichtigte Zielgruppe, nicht als private Sicherung. Ein gespeicherter Link bleibt von der Verfügbarkeit der Quelle abhängig."
+          ]
+        },
+        {
+          "heading": "Was Cloud Calendars beim Teilen bereitstellt",
+          "body": [
+            "Wir entwickeln Cloud Calendars. Die Ereignisfreigabe bietet App Clip, E-Mail und QR-Code als Wege für Einladungslinks. Diese erfüllen einen anderen Zweck als der Download eines ganzen Kalenders. Ein Link kann zu einer Einladung oder einem Abonnement führen, ist aber kein portables Archiv aller angezeigten Kalender.",
+            "Dieser Leitfaden enthält keine Anleitung zum vollständigen ICS-, CSV- oder PDF-Export aus Cloud Calendars. Nutzen Sie dafür die dokumentierten Anbieter- oder Mac-Verfahren. Für einen einzelnen Termin hilft unser Freigabeleitfaden. Für einen laufenden gemeinsamen Zeitplan klären Sie zuerst, wer Zugriff, Aktualisierungen oder Bearbeitungsrechte braucht."
+          ]
+        },
+        {
+          "heading": "Eine Kopie prüfen, bevor Sie sich darauf verlassen",
+          "body": [
+            "Behalten Sie den Originalkalender während der Prüfung. Notieren Sie Konto, Kalendername und Exportdatum. Testen Sie einen Import nach Möglichkeit in einem eigenen Zielkalender. Vergleichen Sie einen normalen Termin, ein ganztägiges Ereignis und eine Serie mit einem geänderten Einzeltermin.",
+            "Eine Übertragung garantiert nicht den Erhalt aller Meetingfunktionen. Google weist darauf hin, dass importierte Ereignisse keine Gäste und Konferenzdaten enthalten und CSV-Wiederholungen zu einzelnen Terminen werden können. Prüfen Sie Einladungen, Meetinglinks und Wiederholungen vor Abschluss einer Migration.",
+            "Apple bietet auf dem Mac außerdem „File > Export > Calendar Archive“ für ein ICBU-Archiv. Das unterscheidet sich vom Export einer ICS-Datei. Apple warnt, dass ein Archivimport aktuelle Kalenderinformationen und Daten ersetzt. Verwenden Sie eine Archivwiederherstellung nicht als beiläufigen Importtest."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Bestimmen Sie Konto und Kalender sowie das Ziel: Momentaufnahme, Druckansicht oder aktualisiertes Abonnement.",
+        "Nutzen Sie den dokumentierten Exportweg und behalten Sie während der Prüfung das Original.",
+        "Prüfen Sie Ziel, sensible Angaben und repräsentative Termine vor Weitergabe oder Nutzung."
+      ],
+      "faq": [
+        {
+          "q": "Kann ich Google Kalender direkt aus seiner iPhone-App exportieren?",
+          "a": "Nein. Googles dokumentierter Export erfordert einen Computer sowie die passende Berechtigung zur Verwaltung der Freigaben."
+        },
+        {
+          "q": "Ist ein ICS-Abonnement eine Sicherung?",
+          "a": "Es folgt einer Quelle, die sich ändern oder wegfallen kann. Speichern Sie für eine datierte Kopie einen unabhängigen Export und prüfen Sie dessen Inhalt."
+        },
+        {
+          "q": "Soll ich ICS oder PDF wählen?",
+          "a": "ICS eignet sich für Ereignisdaten zum Import in einen kompatiblen Kalender. PDF eignet sich für einen lesbaren Zeitplan. Ein PDF liefert keine Aktualisierungen und stellt über die dokumentierten Importwege keine bearbeitbaren Termine wieder her."
+        }
+      ],
+      "sourcesHeading": "Offizielle Anleitungen und Formatgrenzen",
+      "sources": [
+        {
+          "label": "Google: Kalenderereignisse exportieren",
+          "url": "https://support.google.com/calendar/answer/37111?hl=en"
+        },
+        {
+          "label": "Google: Ereignisse importieren und Übertragungsgrenzen",
+          "url": "https://support.google.com/calendar/answer/37118?hl=en"
+        },
+        {
+          "label": "Apple: ICS-Dateien und Kalenderarchive auf dem Mac",
+          "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+        },
+        {
+          "label": "Apple: Dokumente auf dem Mac als PDF sichern",
+          "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+        },
+        {
+          "label": "Microsoft: Veröffentlichung, Import und Abonnement in Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar",
+        "inviting-people-who-do-not-have-the-app",
+        "the-secret-address-of-a-google-calendar",
+        "disconnect-calendar-integration-without-losing-track"
+      ]
+    },
+    "rawSha256": "24db572668040c4d357f82c0db933bbbfd5fb76fec47c1129c7770ed521b0cd9"
+  },
+  "de-DE:keeping-track-of-who-replied": {
+    "file": "src/app/content/de-DE/articles.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Kalenderantworten: Teilnahme und Freigabezugriff unterscheiden",
+      "short": "Wer geantwortet hat und wer Zugriff hat",
+      "description": "Unterscheide Teilnahmeantworten von offenen Einladungen, anonymen Empfängern und angenommenen Freigaben. Bestätige Teilnahme ohne geschätzte Gästezahlen.",
+      "lede": "Eine Person kann einen Link öffnen, ein Ereignis hinzufügen oder Kalenderzugriff annehmen, ohne ihre Teilnahme zuzusagen. Kläre vor dem Lesen einer Empfängerliste, welche Antwort du brauchst. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+      "commonBelief": "Alle verzeichneten Empfänger oder angenommenen Freigaben seien bestätigte Teilnehmende; aus Schweigen lasse sich zuverlässig eine Zahl ableiten.",
+      "sections": [
+        {
+          "heading": "1. Bestimme die Art der Einladung",
+          "body": [
+            "Eine Besprechungseinladung des Anbieters fragt nach Teilnahme. Eine Cloud-Calendars-Freigabe gibt Zugriff auf Ereignisdetails oder einen Kalender, möglicherweise mit Bearbeitungsrechten. Ein ICS-Abonnement folgt Informationen. Diese Vorgänge können dieselbe Besprechung betreffen, ohne dieselbe Entscheidung zu erfassen.",
+            "Eine freiwillig helfende Person kann etwa „Writer“-Zugriff zur Aktualisierung eines Ereignisses annehmen, ohne teilzunehmen. Ein Gast liest vielleicht die Webvorschau und antwortet anschließend per Nachricht. Zähle keinen dieser Fälle allein anhand der Zugriffsverwaltung."
+          ]
+        },
+        {
+          "heading": "2. Lies Freigabeempfänger als Zugriffsinformation",
+          "body": [
+            "Die Empfängerinformationen in Cloud Calendars unterscheiden offene E-Mail-Einladungen, identifizierte und anonyme Empfänger sowie Zugriffsrollen. Bei einer offenen Einladung kann erneutes Senden angeboten werden. „Reader“, „Writer“ und „Owner“ beschreiben die Möglichkeiten im Umgang mit geteilten Informationen.",
+            "Das Freigabesystem erfasst Annahme oder Empfang beim Hinzufügen beziehungsweise Zugreifen. Das hilft, die Freigabebeziehung zu verstehen, ist aber keine Teilnahmeantwort Ja/Vielleicht/Nein. Auch anonymer Empfang identifiziert keinen namentlichen Gast für deine Teilnehmerzahl."
+          ]
+        },
+        {
+          "heading": "3. Prüfe Teilnahme im Einladungsablauf des Organisators",
+          "body": [
+            "Google dokumentiert für Besprechungseinladungen ausdrückliche Antworten „Yes“, „No“ und „Maybe“. Apple Kalender unterscheidet bei unterstützten Einladungen ebenfalls „Accept“, „Maybe“ und „Decline“. Prüfe Antworten am entsprechenden Ereignis und Konto des Organisators.",
+            "Fehlt eine Antwort oder wirkt sie falsch, bestätige mit der Person die eingeladene E-Mail-Adresse und Ereignisversion. Eine importierte Kopie, ein weitergeleiteter Link oder ein Ereignis in einem anderen Konto muss nicht die ursprüngliche Einladung abbilden. Nicht jede Drittanbieteranzeige enthält zwingend die neueste Antwort."
+          ]
+        },
+        {
+          "heading": "4. Lass unbekannte Teilnahme unbekannt",
+          "body": [
+            "Eine offene Freigabe, fehlende Antwort oder ungelesene Nachricht ist weder zuverlässige Zusage noch Absage. Erfasse ausdrücklich bestätigte Personen, Absagen und weiterhin unbekannte Antworten getrennt. Addiere keinen festen Anteil schweigender Empfänger zur bestätigten Zahl.",
+            "Nenne bei einem Essen mit Buchungsfrist das Datum, bis zu dem du eine Antwort brauchst, und frage die übrigen Personen direkt. Das Nachfassen hängt vom Ereignis ab; es gibt keine allgemeine Regel, dass eine Erinnerung zwei Tage vorher genügt."
+          ]
+        },
+        {
+          "heading": "5. Behandle Besprechungslinks als Beitrittsinformationen",
+          "body": [
+            "Eine Google-Meet- oder Microsoft-Teams-URL zeigt, wo jemand beitreten kann, nicht ob er zugesagt hat oder teilnehmen wird. Cloud Calendars führt Google Meet unter Base und Microsoft Teams unter Premium, abhängig vom Konto und Anbieterablauf. Ein höherer Tarif macht die Teilnehmerzahl nicht zuverlässiger.",
+            "Prüfe, ob der richtige Link im Ereignis steht und für die vorgesehene Zielgruppe funktioniert. Dateiimporte und Umwandlungen können Konferenzinformationen verlieren. Änderst du die Besprechung, teile den Beteiligten Ereignis und Link mit, statt ihren alten Zugriffsdatensatz als Bestätigung zu deuten."
+          ]
+        },
+        {
+          "heading": "6. Bestätige wichtige Änderungen erneut",
+          "body": [
+            "Verschiebt sich ein Ereignis wesentlich, aktualisiere es über den zuständigen Kalender oder Freigabeablauf. Informiere anschließend die Personen, auf deren Teilnahme es ankommt, und bitte bei Bedarf um erneute Bestätigung. Eine frühere Antwort auf Dienstag gilt nicht unbedingt für Donnerstag.",
+            "Halte die endgültige Teilnehmerliste getrennt von der Zugriffsliste. Bearbeitungsrechte zu entfernen sagt die Teilnahme nicht ab; geteilten Zugriff abzulehnen lehnt nicht zwangsläufig das Treffen ab. Formuliere Nachrichten klar, damit alle wissen, welche Entscheidung gefragt ist."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Bestimme, ob du eine Anbietereinladung, eine App-Freigabe oder einen Feed gesendet hast.",
+        "Nutze die Freigabeliste für Zugriffe und offene Einladungen, nicht für Teilnehmerzahlen.",
+        "Prüfe gegebenenfalls die Anbieterantwort am tatsächlichen Ereignis des Organisators.",
+        "Trenne unbekannte Antworten von Zusagen und Absagen.",
+        "Bitte um eine direkte Antwort bis zu einer passenden Frist.",
+        "Bestätige nach wesentlichen Änderungen die neue Vereinbarung und den Beitrittslink mit betroffenen Gästen."
+      ],
+      "faq": [
+        {
+          "q": "Bedeutet angenommener Kalenderzugriff, dass die Person kommt?",
+          "a": "Nein. Damit wurde eine Freigabebeziehung über diesen Ablauf angenommen. Teilnahme erfordert eine Anbieterantwort oder eine ausdrückliche Rückmeldung der Person."
+        },
+        {
+          "q": "Kann ich anonyme Empfänger als bestätigte Gäste zählen?",
+          "a": "Nein. Anonymer Empfang ist keine identifizierte Teilnahmezusage. Er kann die Nutzung eines geteilten Ereignisses beschreiben, liefert aber keine verlässliche namentliche Gästeliste."
+        },
+        {
+          "q": "Brauche ich Premium, um zu sehen, wer geantwortet hat?",
+          "a": "Setze einen App-Tarif nicht mit zuverlässigen Teilnahmeantworten gleich. Premium ergänzt Microsoft-Kalender und Teams; Zugriffsbestätigungen und Anbieterantworten bleiben unterschiedliche Informationen. Prüfe ursprüngliche Einladung und Organisatorkonto."
+        }
+      ],
+      "sourcesHeading": "Quellen zu Teilnahme und Import",
+      "sources": [
+        {
+          "label": "Google: auf Ereigniseinladungen antworten",
+          "url": "https://support.google.com/calendar/answer/37135?hl=en"
+        },
+        {
+          "label": "Apple: auf Kalendereinladungen am iPhone antworten",
+          "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+        },
+        {
+          "label": "Google: Ereignisimport und Einschränkungen",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    },
+    "rawSha256": "788fce1c4ada837a9e895779e70ee7b1ff75928bfc6f61c3c2a29dfcf803d981"
+  },
+  "es-ES:calendar-export-ics-pdf-and-backup": {
+    "file": "src/app/content/es-ES/articles-help.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Exportar un calendario: archivos ICS, PDF y suscripciones",
+      "short": "Exportación y copia de calendarios",
+      "description": "¿Necesitas un archivo de un calendario de tu iPhone? Elige ICS, PDF o una suscripción y sigue el proceso adecuado de Google, Mac u Outlook.",
+      "lede": "Un calendario en el iPhone puede mostrar varias cuentas. Para obtener una copia útil, identifica el origen y decide si necesitas datos de eventos, un horario legible o actualizaciones continuas.",
+      "sections": [
+        {
+          "heading": "Elige el resultado antes que el formato",
+          "body": [
+            "Exportar un calendario puede significar tareas distintas. Si quieres que otra app lea los registros de eventos, elige un formato estructurado compatible, como ICS. Si alguien necesita un horario legible, elige PDF o una página impresa. Si debe recibir cambios posteriores, estudia una suscripción o el uso compartido con permisos.",
+            "Un PDF conserva el diseño que guardaste; no es un archivo para importar eventos. Un ICS descargado contiene los datos del momento en que lo obtuviste. Una suscripción ICS usa una dirección que el cliente de calendario consulta de nuevo. La extensión por sí sola no indica si el destinatario importó una copia puntual o se suscribió a las actualizaciones.",
+            "Por ejemplo, un itinerario de fin de semana en PDF es fácil de leer. Un compañero que traslada citas a otra cuenta necesita datos de eventos. Un socio que sigue los encuentros cambiantes de un club el mes próximo necesita una fuente que se actualice. Decide qué resultado necesitas antes de enviar nada."
+          ]
+        },
+        {
+          "heading": "Empieza por la cuenta que contiene los eventos",
+          "body": [
+            "En el iPhone, identifica el calendario y la cuenta con los eventos que necesitas. Una vista conjunta puede incluir varias cuentas, calendarios compartidos y suscripciones. Verlos juntos no significa que exista un único calendario de origen que exportar.",
+            "Para Google Calendar, usa un ordenador: Google no permite exportar desde su app Calendar. En la web, abre «Settings», después «Import & export» y «Export». El ZIP descargado contiene archivos ICS individuales. Para un solo calendario, abre «Settings and sharing» y elige «Export calendar». Google exige permiso para gestionar cambios y uso compartido; una organización también puede restringir la exportación.",
+            "Para un calendario disponible en Calendario del Mac, selecciona su nombre en la barra lateral y usa «File > Export > Export» para guardar un ICS. Es un proceso del Mac, no un comando oculto del iPhone. Comprueba que has seleccionado el calendario correcto antes de guardar."
+          ]
+        },
+        {
+          "heading": "Cuando necesitas un horario en PDF",
+          "body": [
+            "En Calendario del Mac, usa «File > Print» y elige el diseño, el intervalo de fechas y los calendarios que incluir. En el cuadro de impresión de macOS, usa el menú «PDF» y «Save as PDF». Abre el resultado antes de enviarlo: una cuadrícula pequeña puede omitir o cortar detalles importantes para el destinatario.",
+            "Indica claramente el intervalo de fechas y la zona horaria pertinente en el mensaje que acompaña al documento. Revisa las citas privadas, notas y ubicaciones antes de compartir. Los cambios posteriores del calendario no reescriben un PDF ya enviado; identifica claramente las revisiones para que los destinatarios sepan qué horario seguir."
+          ]
+        },
+        {
+          "heading": "Suscribirse y publicar no equivale a hacer una copia de seguridad",
+          "body": [
+            "Microsoft documenta la diferencia en Outlook en la web: descargar e importar un ICS publicado crea una copia sin cambios posteriores; suscribirse a su dirección permite seguirlos. El tiempo de actualización depende del proveedor del destinatario, y el calendario publicado es de solo lectura.",
+            "Cuando esté disponible, «Settings > Shared calendars > Publish a calendar» de Outlook permite elegir calendario y nivel de detalle. Publicarlo lo expone para su consulta o suscripción; úsalo para un público previsto, no como técnica de copia privada. Un enlace guardado sigue dependiendo de que el origen permanezca disponible."
+          ]
+        },
+        {
+          "heading": "Qué ofrece el uso compartido de Cloud Calendars",
+          "body": [
+            "Desarrollamos Cloud Calendars. Su flujo para compartir eventos ofrece App Clip, correo electrónico y QR para entregar enlaces de invitación. Esos enlaces tienen una finalidad distinta a descargar todo el calendario en un archivo. Un enlace puede conducir a una invitación o suscripción; no es un archivo portátil de todos los calendarios que ves.",
+            "Esta guía no ofrece un procedimiento de Cloud Calendars para exportar calendarios completos a ICS, CSV o PDF. Para ello, usa las rutas documentadas del proveedor o del Mac anteriores. Para enviar un evento concreto, sigue nuestra guía de compartir eventos; para un calendario compartido continuo, decide primero quién debe acceder y si necesita actualizaciones o permisos de edición."
+          ]
+        },
+        {
+          "heading": "Comprueba la copia antes de depender de ella",
+          "body": [
+            "Conserva el calendario original mientras compruebas la exportación. Anota la cuenta, el nombre del calendario y la fecha de exportación. Si pruebas una importación, usa un calendario de destino separado cuando sea posible y compara una cita normal, un evento de todo el día y una serie recurrente con una ocurrencia modificada.",
+            "Transferir calendarios no garantiza conservar todas las funciones de las reuniones. Google indica que los eventos importados omiten invitados y datos de conferencias, y que las repeticiones CSV pueden convertirse en eventos individuales. Comprueba expresamente invitaciones, enlaces de reunión y recurrencias antes de dar por terminada la migración.",
+            "Apple también ofrece «File > Export > Calendar Archive» en el Mac, que genera un archivo ICBU. Es una operación distinta a exportar un ICS. Apple advierte de que importar un archivo de este tipo sustituye la información y los datos actuales del calendario; no uses su restauración como una prueba informal de importación."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identifica la cuenta y el calendario necesarios y elige entre copia puntual, horario imprimible o suscripción actualizable.",
+        "Usa la ruta de exportación documentada y conserva el original mientras compruebas el resultado.",
+        "Revisa el destino, los datos sensibles y eventos representativos antes de enviar o confiar en la copia."
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo exportar Google Calendar directamente desde su app de iPhone?",
+          "a": "No. El proceso de exportación documentado por Google requiere un ordenador. También necesitas el permiso adecuado para gestionar el uso compartido."
+        },
+        {
+          "q": "¿Suscribirme a una dirección ICS me proporciona una copia de seguridad?",
+          "a": "Una suscripción sigue un origen que puede cambiar o dejar de estar disponible. Guarda una exportación independiente si necesitas una copia fechada y verifica qué conserva el archivo."
+        },
+        {
+          "q": "¿Debo elegir ICS o PDF?",
+          "a": "Elige ICS para datos de eventos que un calendario compatible pueda importar. Elige PDF para un horario legible. Un PDF no ofrece actualizaciones ni reconstruye eventos editables mediante los procesos de importación documentados."
+        }
+      ],
+      "sourcesHeading": "Instrucciones oficiales y límites de los formatos",
+      "sources": [
+        {
+          "label": "Google: exportar eventos del calendario",
+          "url": "https://support.google.com/calendar/answer/37111?hl=en"
+        },
+        {
+          "label": "Google: importar eventos y límites de transferencia",
+          "url": "https://support.google.com/calendar/answer/37118?hl=en"
+        },
+        {
+          "label": "Apple: exportar archivos ICS y archivos de calendario en Mac",
+          "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+        },
+        {
+          "label": "Apple: guardar un documento como PDF en Mac",
+          "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+        },
+        {
+          "label": "Microsoft: publicar, importar y suscribirse en Outlook",
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar",
+        "inviting-people-who-do-not-have-the-app",
+        "the-secret-address-of-a-google-calendar",
+        "disconnect-calendar-integration-without-losing-track"
+      ]
+    },
+    "rawSha256": "0193cf1c9e154974dc3d013e9113b06cda42f25251ae93d554893c75a18e362f"
+  },
+  "es-ES:keeping-track-of-who-replied": {
+    "file": "src/app/content/es-ES/articles.ts",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Respuestas del calendario: distingue asistencia y acceso compartido",
+      "short": "Quién respondió y quién tiene acceso",
+      "description": "Distingue respuestas de asistencia, invitaciones pendientes, destinatarios anónimos y acceso aceptado. Confirma asistentes sin inventar cifras.",
+      "lede": "Una persona puede abrir un enlace, añadir un evento o aceptar acceso al calendario sin prometer que asistirá. Decide qué respuesta necesitas antes de interpretar la lista de destinatarios. Esta guía la escribe Arte Soft, desarrollador de Cloud Calendars.",
+      "commonBelief": "Toda persona registrada como destinataria o acceso aceptado es un asistente confirmado, y el silencio permite hacer una estimación fiable.",
+      "sections": [
+        {
+          "heading": "1. Identifica el tipo de invitación",
+          "body": [
+            "Una invitación de reunión del proveedor pide una respuesta de asistencia. Un enlace compartido de Cloud Calendars da acceso a detalles o a un calendario, quizá con permisos de edición. Una suscripción ICS sigue información. Estas acciones pueden referirse a la misma reunión sin registrar la misma decisión.",
+            "Por ejemplo, un voluntario puede aceptar acceso «Writer» para actualizar un evento sin asistir. Un invitado puede leer los detalles en una vista web y responder por mensaje. Ningún caso debe contarse solo desde una pantalla de gestión de acceso."
+          ]
+        },
+        {
+          "heading": "2. Interpreta los destinatarios como información de acceso",
+          "body": [
+            "La información de destinatarios de Cloud Calendars distingue invitaciones por correo pendientes, destinatarios identificados, anónimos y roles de acceso. Una invitación pendiente puede ofrecer reenvío. «Reader», «Writer» y «Owner» describen lo que se puede hacer con la información compartida.",
+            "El sistema registra aceptación o recepción durante los procesos de añadir o acceder. Sirve para entender la relación de acceso, pero no es una respuesta de asistencia Sí/Quizá/No. La recepción anónima tampoco identifica a un invitado concreto para el recuento."
+          ]
+        },
+        {
+          "heading": "3. Consulta la asistencia en el proceso de invitación del organizador",
+          "body": [
+            "Google documenta respuestas explícitas «Yes», «No» y «Maybe» para sus invitaciones. Calendario de Apple distingue «Accept», «Maybe» y «Decline» en invitaciones compatibles. Usa el evento y la cuenta correspondientes del organizador para comprobarlas.",
+            "Si una respuesta falta o parece incorrecta, confirma con la persona el correo invitado y la versión del evento. Una copia importada, un enlace reenviado o un evento de otra cuenta pueden no representar la invitación original. No supongas que toda visualización de terceros tiene la respuesta más reciente."
+          ]
+        },
+        {
+          "heading": "4. Mantén desconocida la asistencia que no se conoce",
+          "body": [
+            "Un acceso pendiente, la falta de respuesta o un mensaje sin leer no equivalen a aceptar ni rechazar de forma fiable. Registra por separado confirmaciones expresas, rechazos y respuestas aún desconocidas. No sumes una fracción fija de destinatarios silenciosos al total confirmado.",
+            "Para una comida con fecha límite de reserva, indica cuándo necesitas respuesta y pregunta directamente a quienes faltan. El seguimiento depende del evento; no existe una regla universal según la cual baste un recordatorio dos días antes."
+          ]
+        },
+        {
+          "heading": "5. Trata los enlaces de reunión como datos para unirse",
+          "body": [
+            "Una URL de Google Meet o Microsoft Teams indica dónde unirse, no si alguien aceptó o asistirá. Cloud Calendars incluye Google Meet en Base y Microsoft Teams en Premium, según la cuenta y el proceso del proveedor. Un plan superior no aporta un recuento más fiable.",
+            "Comprueba que el enlace previsto exista en el evento y funcione para el público previsto. Las importaciones y conversiones pueden perder información de conferencia. Si cambias la reunión, indica qué evento y enlace usar en lugar de interpretar el antiguo registro de acceso como confirmación."
+          ]
+        },
+        {
+          "heading": "6. Confirma de nuevo después de un cambio importante",
+          "body": [
+            "Si un evento cambia sustancialmente de horario, actualízalo desde su calendario de origen o proceso para compartir. Después avisa a quienes deban asistir y pide confirmación renovada cuando haga falta. Una respuesta al martes no es necesariamente una respuesta al jueves.",
+            "Separa la lista final de asistentes de la lista de acceso. Quitar permisos de edición no cancela la asistencia de un invitado, y rechazar acceso compartido no implica rechazar el encuentro. Usa mensajes claros para que sepan qué decisión les estás pidiendo."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identifica si enviaste una invitación de reunión del proveedor, un acceso de la app o un feed.",
+        "Usa la lista compartida para consultar acceso e invitaciones pendientes, no totales de asistentes.",
+        "Comprueba la respuesta del proveedor en el evento real del organizador cuando corresponda.",
+        "Separa respuestas desconocidas, confirmaciones y rechazos.",
+        "Pide una respuesta directa con un plazo adecuado al evento.",
+        "Tras un cambio importante, confirma la nueva organización y el enlace con los invitados afectados."
+      ],
+      "faq": [
+        {
+          "q": "¿Aceptar acceso al calendario significa que la persona viene?",
+          "a": "No. Significa que aceptó una relación de acceso mediante ese proceso. La asistencia necesita una respuesta en la invitación del proveedor o una confirmación explícita."
+        },
+        {
+          "q": "¿Puedo contar destinatarios anónimos como invitados confirmados?",
+          "a": "No. La recepción anónima no es un compromiso de asistencia identificado. Puede describir el uso de un evento compartido, pero no proporciona una lista fiable de invitados con nombre."
+        },
+        {
+          "q": "¿Necesito Premium para saber quién respondió?",
+          "a": "No equipares el nivel de la app con la fiabilidad de las respuestas. Premium añade Microsoft Calendar y Teams; los registros de acceso y las respuestas de asistencia siguen siendo información distinta. Revisa la invitación original y la cuenta del organizador."
+        }
+      ],
+      "sourcesHeading": "Referencias sobre asistencia e importación",
+      "sources": [
+        {
+          "label": "Google: responder a invitaciones de eventos",
+          "url": "https://support.google.com/calendar/answer/37135?hl=en"
+        },
+        {
+          "label": "Apple: responder a invitaciones de Calendario en iPhone",
+          "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+        },
+        {
+          "label": "Google: importar eventos y sus limitaciones",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar"
+      ]
+    },
+    "rawSha256": "55b141ff84bf3db9291a6ddb7bdbae61927e36e5cf3ae5b1cf5d1e5c033cbc5f"
+  }
+}

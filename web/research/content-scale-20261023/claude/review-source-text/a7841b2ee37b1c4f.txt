@@ -1,0 +1,396 @@
+Open and use a shared mailbox in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+Office 365 Small Business
+Microsoft 365 admin
+New Outlook for Windows
+Get help with Copilot
+How do I send automatic replies from a shared mailbox?
+Can I manage settings for the shared mailbox?
+Write shared mailbox guidelines for my team
+A shared mailbox makes it easy for a group of people to monitor and send email from a public email alias like info@contoso.com. When a person in the group replies to a message sent to the shared mailbox, the email appears to be from the shared address, not from the individual user. You can also use the shared mailbox as a shared team calendar. A shared mailbox is also suitable for use as a "noreply" email account.
+Tip
+If you're a small business owner looking for more information on how to get Microsoft 365 set up, visit
+Small business help & learning
+.
+A shared mailbox isn't designed for anyone who's sharing the mailbox to sign in directly to the account. The account for the shared mailbox itself should stay in a disabled state.
+Tip
+Before you can use a shared mailbox, the Microsoft 365 admin for your organization has to create it and add you as a member. For more information, see
+Create a shared mailbox
+, which describes what the admin needs to do.
+Select a tab option below for the version of Outlook you're using.
+What version of Outlook do I have?
+New Outlook
+Classic Outlook
+Outlook on the web
+Note
+If the steps under this
+New Outlook
+tab don't work, you may not be using new Outlook for Windows yet. Select the
+Classic Outlook
+tab and follow those steps instead.
+Tip
+To help executive assistants and delegates better navigate mailbox management in the new Outlook, here are the some
+mail tips
+.
+Add a shared mailbox to new Outlook
+After your admin has added you as a member of a shared mailbox, close and then restart new Outlook. The shared mailbox should automatically display in your Folder pane.
+What if it didn't work?
+If your admin only recently added you to a shared mailbox, it may take a few minutes before the shared mailbox appears. Wait a bit and then close and restart the new Outlook again. Or, add the shared box manually.
+Select
+Mail
+from the navigation pane in new Outlook.
+In the Folder pane, right-click your account name, and select
+Add shared folder or mailbox
+.
+In the
+Add shared folder or mailbox
+window, type the name of the mailbox you want to access, for example,
+info@contoso.com
+.
+Note
+You can add the shared mailbox at any time, but before you can start using it, your IT admin must add you as a member.
+Find the shared mailbox in the folder pane
+In the folder pane on the left, locate the
+Shared with me
+folder. Select the folder to expand it. Your shared mailbox is a subfolder under
+Shared with me
+. When you select the name of the shared mailbox there, it will expand to show the standard email folders, such as
+Inbox
+,
+Drafts
+, and
+Sent Items
+.
+Send mail from the shared mailbox
+Select
+Mail
+from the navigation pane in new Outlook for Windows.
+On the
+Home
+tab, select
+New
+>
+Mail
+.
+If you don't see the
+From
+field at the top of your message (next to
+Send
+), on the
+Options
+tab, select
+Show From
+.
+Select
+From
+in the message and change to the shared email address. If you don't see your shared email address, choose
+Other email address
+and then type in the shared email address.
+Finish typing your message, then choose
+Send
+.
+From now on when you want to send a message from your shared mailbox, the address will be available in your
+From
+drop down list.
+Whenever you send a message from a shared mailbox, your recipients only see the shared email address in the message.
+Reply to mail sent to the shared mailbox
+Open new Outlook for Windows.
+Open the email message you want to reply to.
+In the
+From
+field at the top of your message, you should see the name of your shared mailbox. If you don't, choose the
+From
+dropdown box and choose your shared mailbox.
+Finish typing your message, then choose
+Send
+.
+When you want to send a message from your shared mailbox, the address will be available in your
+From
+drop down list.
+Whenever you send a message from your shared mailbox, your recipients will only see the shared email address in the message.
+Search on the shared mailbox
+Once a shared mailbox is added to new Outlook, searching within it is similar to searching on a primary mailbox.
+Open new Outlook for Windows.
+Select a folder within the shared mailbox in the folder pane.
+In the Search box at the top of the Outlook window, type the query you want to use for searching, then press Enter.
+The message list will show results based on the search from that selected folder in the shared mailbox.
+Use the shared calendar from the shared mailbox
+After your admin has added you as a member of shared mailbox, close and then restart Outlook. The shared calendar associated with the shared mailbox is automatically added to your
+Calendars
+list.
+In new Outlook, go to calendar view, and choose the shared mailbox.
+When you enter appointments, everyone who is a member of the shared mailbox will be able to see them.
+Any member of the shared mailbox can create, view, and manage appointments on the calendar, just like they would their personal appointments. Everyone who is a member of shared mailbox can see their changes to the shared calendar.
+Use the shared contact list in the mailbox
+Contacts for shared mailboxes, and other user's mailboxes, is currently unavailable in new Outlook. Microsoft's Outlook organization is actively working on updating this.
+Add-in availability in shared mailboxes
+In new Outlook on Windows, add-in support in shared mailboxes varies depending on the particular scenario and whether the shared mailbox was promoted to a full account. To learn more about these scenarios, see
+Use add-ins in Outlook
+.
+What else do I need to know about shared mailboxes in the new Outlook?
+To learn more about how to add a shared mailbox as an account, see
+here.
+Adding a shared mailbox as an account will provide support for the following capabilities :
+Notifications
+Unread count
+Automatic replies
+Categories
+Preference for accessible content
+Focused inbox
+Message format
+Attachment preference
+Rules
+Conditional formatting
+Sweep
+Junk mail
+Quick steps
+Forwarding
+Retention policies
+Events and invitations
+Work hours
+Other capabilities that are not available today for shared mailboxes, but will be added in a future update:
+Granting new delegated access to a mailbox
+Here are some mail tips to help executive assistants and delegates better navigate mailbox management in the new Outlook .
+Mail tips
+Mail filters and rules for executive admins
+In the new Outlook, executive admins can use the
+has calendar invites
+email filter to easily find meeting invites.
+You can also set up an
+Email received for others
+rule for your executive's account and automatically move it to a separate folder and categorize it as you like.
+Drag and drop emails to create tasks
+Effortlessly stay on top of things by dragging emails to My Day to turn them into tasks.
+Pin emails for quick access
+You can now pin an email to appear at the top of your inbox, saving you time from having to go back and search for it. Hover or right-click on the email and select
+Pin
+to pin it.
+Schedule when to send email
+In today's hybrid work world, your day might be someone else's night, so you don't want to send an email to someone in the middle of the night. With the new Outlook, it's simple to send an email when you want to. Just select the dropdown arrow next to
+Send
+and choose
+Schedule send
+.
+Snooze email
+Sometimes email is very important, but not yet. With the Snooze feature, you can schedule a time for the email to be re-delivered to your inbox, appearing at the time you want it to, so you can handle it when it's the right time for you. Just right-click any message and choose
+Snooze
+or select
+Snooze
+from the ribbon. Then choose the time you want it to be delivered.
+Add a shared mailbox to classic Outlook
+After your admin has added you as a member of a shared mailbox, close and then restart Outlook. The shared mailbox should automatically appear in your Folder pane in classic Outlook.
+What if it didn't work?
+If your admin only recently added you to a shared mailbox, it may take a few minutes before the shared mailbox appears. Wait a bit and then close and restart Outlook again.
+If that didn't work, then manually add the shared mailbox to Outlook:
+Open classic Outlook.
+Select the
+File
+tab on the ribbon, then select
+Account Settings
+>
+Account Settings
+.
+Select the
+Email
+tab.
+Make sure the correct account is highlighted, then choose
+Change
+.
+Choose
+More Settings
+>
+Advanced
+>
+Add
+.
+Type the shared email address, such as info@contoso.com.
+Choose
+OK
+>
+OK
+.
+Choose
+Next
+>
+Finish
+>
+Close
+.
+Send mail from the shared mailbox
+Open classic Outlook.
+Choose
+New Email
+.
+If you don't see the
+From
+field at the top of your message, choose
+Options
+>
+From
+.
+Select
+From
+in the message and change to the shared email address. If you don't see your shared email address, choose
+Other email address
+and then type in the shared email address.
+Choose
+OK
+.
+Finish typing your message and then choose
+Send
+.
+From now on when you want to send a message from your shared mailbox, the address will be available in your
+From
+drop down list.
+Whenever you send a message from your shared mailbox, your recipients will only see the shared email address in the message.
+Reply to mail sent to the shared mailbox
+Open classic Outlook.
+Open the email message you want to reply to.
+In the
+From
+field at the top of your message, you should see the name of your shared mailbox. If you don't, choose the From dropdown box and choose your shared mailbox.
+Finish typing your message and then choose
+Send
+.
+When you want to send a message from your shared mailbox, the address will be available in your
+From
+drop down list.
+Whenever you send a message from your shared mailbox, your recipients will only see the shared email address in the message.
+Search on the shared mailbox
+Once a Shared Mailbox is added to Outlook, searching within it is similar to searching on a Primary Mailbox.
+Open classic Outlook.
+Select a folder within the Shared Mailbox on the
+Folder Panel
+on the left.
+Type the query in the
+Search Box
+on top of the Ribbon (Tool Bar).
+Begin the Search by pressing
+Enter
+or selecting the
+Magnifier Button
+on the right of the Search Box.
+The Message List will return results based on the Search from the selected folder on the Shared Mailbox.
+Use the shared calendar
+After your admin has added you as a member of shared mailbox, close and then restart Outlook. The shared calendar associated with the shared mailbox is automatically added to your
+Calendars
+list.
+In classic Outlook go to calendar view and choose the shared mailbox.
+When you enter appointments, everyone who is a member of the shared mailbox will be able to see them.
+Any member of the shared mailbox can create, view, and manage appointments on the calendar, just like they would their personal appointments. Everyone who is a member of shared mailbox can see their changes to the shared calendar.
+Use the shared contact list
+After your admin has added you as a member of shared mailbox, close and then restart Outlook. The shared contact list associated with the shared mailbox is automatically added to your
+My Contacts
+list.
+In classic Outlook, choose
+People
+.
+Under
+My Contacts
+, choose the contacts folder for the shared contacts list.
+Add-in availability in shared mailboxes
+In classic Outlook on Windows, add-in support in shared mailboxes varies depending on the particular scenario. To learn more about these scenarios, see
+Use add-ins in Outlook
+.
+Add the shared mailbox so it displays under your primary mailbox
+If you want to monitor the email from your primary mailbox and the shared mailbox at the same time, use this method. After you complete this task, the shared mailbox and its folders are displayed in the left navigation pane each time you open Outlook on the web.
+Sign in to your account in Outlook on the web.
+For Exchange Online mailboxes, right-click
+Folders
+in the left navigation pane, and then choose
+Add shared folder or mailbox
+. For Exchange on-premises mailboxes, right-click the name of your primary mailbox (such as Molly Dempsey) in the left navigation pane, and then choose
+Add shared folder or mailbox
+.
+In the
+Add shared folder
+dialog box, type the name of the shared mailbox you are a member of, such as info@contoso.com.
+The shared mailbox displays in your Folder list in Outlook on the web. You can expand or collapse the shared mailbox folders as you can with your primary mailbox. You also can remove the shared mailbox from your Folder list. To remove it, right-click the shared mailbox, and then select
+Remove shared folder
+.
+Receive notifications of new messages in a shared mailbox
+To receive notifications of new messages in the Inbox of a shared mailbox, you must
+open the shared mailbox in a separate browser window.
+Open the shared mailbox in a separate browser window
+Use this method if you want to view and manage the email for the shared mailbox in its own browser window. This method also lets you receive notifications of new items in the Inbox of the shared mailbox.
+Sign in to your account in Outlook on the web.
+On the Outlook on the web navigation bar, select your name. A list appears.
+Select
+Open another mailbox
+.
+Type the email address of the other mailbox that you want to open, and then select
+Open
+. Another Outlook on the web session opens in a separate window, allowing access to the other mailbox.
+Tip
+If you mistype the email address of the mailbox, the result is "No match was found". Try typing the email address again.
+Send email from the shared mailbox
+Choose
+New mail
+above the folder list. A new message form opens in the reading pane.
+At the top of the message, choose
+>
+Show From
+.
+This option shows you that the people who receive the email message will see it comes from the shared mailbox and not from your own email account.
+The first time you use the shared mailbox, you need to add the address to the options available in the
+From
+drop-down list:
+Right-click the
+From
+address and choose
+Remove
+.
+Type the shared address. The next time you reply from the shared mailbox, its address will appear as an option in the
+From
+drop-down list.
+To add recipients, type the name of anyone who is in your contacts folder or organization's address list, or type the email address in the
+To
+or
+Cc
+box. The first time you enter a person's name, Outlook on the web searches for that person's address. In the future, the name is cached so it resolves quickly.
+Type a subject.
+Type the message you want to send.
+When your message is ready to go, select
+Send
+.
+Reply to mail sent to the shared mailbox
+The first time you reply to a message sent to the shared mailbox, you need to add the shared address to the
+From
+drop-down box. Here's how to do that:
+Open Outlook on the web and go to your shared mailbox.
+Open a message that was sent to the shared address.
+Select
+Reply
+.
+At the top of the message, choose
+>
+Show From
+.
+Right-click the
+From
+address and choose
+Remove
+.
+Type the shared address and send the message. The next time you reply from the shared mailbox, its address will appear as an option in the
+From
+drop-down list.
+Send automatic replies from a shared mailbox
+Only your Microsoft 365 admin has permissions to set up the ability to send automatic replies from a shared mailbox. For instructions, ask your admin to see
+Create a shared mailbox
+.
+Add-in availability in shared mailboxes
+In Outlook on the web, add-in support in shared mailboxes varies depending on the particular scenario and how the shared mailbox is accessed. To learn more about these scenarios, see
+Use add-ins in Outlook
+.
+Send automatic replies from a shared mailbox
+Only your Microsoft 365 admin has permissions to set this up. For instructions, see
+Create a shared mailbox
+.
+See also
+Add a shared mailbox to Outlook mobile
+Open a shared Mail, Calendar or People folder in Outlook for Mac

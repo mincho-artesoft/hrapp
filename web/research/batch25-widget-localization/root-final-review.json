@@ -1,0 +1,19 @@
+{
+  "reviewedAt": "2026-10-22T00:55:42.169922+00:00",
+  "decision": "pass",
+  "fullDraftReads": [
+    "bg",
+    "ja"
+  ],
+  "criticalSectionsAndFaqRead": [
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "it"
+  ],
+  "criticalScope": "Title/description, exact layout distinctions and gallery controls, all iPad steps, future-timed eligibility, finite-row diagnostic, refresh qualification and all FAQs. Other complete-draft cross-agent reviews retained separately.",
+  "currentRawHashesMatchPreparationReview": true,
+  "independentNativeSpeakerCertification": false,
+  "materialCorrectionsRequired": [],
+  "sourceIntegrationScope": "Two new articles, four full updated editions, two related-only links; source guard and full built text checks separate."
+}

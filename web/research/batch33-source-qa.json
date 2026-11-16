@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-22T03:24:50.647Z",
+  "allPassed": true,
+  "newArticles": [
+    {
+      "locale": "en-US",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "draft": "research/batch33-colors/change-calendar-color-iphone.json",
+      "rawDraftSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2"
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/bg/articles-help.ts",
+      "draft": "research/batch33-colors/bg.json",
+      "rawDraftSha256": "83241bf384905368c0e3df98c9dbee151de4a9a9673162ccb989fba757860e30"
+    }
+  ],
+  "slug": "change-calendar-color-iphone",
+  "newFactsKeys": 1,
+  "englishSelectionCount": 56,
+  "relatedOnlyBacklinks": 3,
+  "allPriorArticleObjectsBodiesDatesPreserved": true,
+  "sharedAppFactsPricingLegalUnchanged": true,
+  "scope": "Exact reviewed drafts,existingobject/date/selection/facts preservation. Not publication,runtime,native-speaker or search-performance proof."
+}

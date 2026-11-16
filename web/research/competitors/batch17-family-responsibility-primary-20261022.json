@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-22",
+  "scope": "Three previously pending exact URLs from original bounded71URLcorpus; full substantive text only, no linked pages or runtime.",
+  "bodyReviews": [
+    {
+      "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
+      "publisher": "FamilyWall",
+      "textCoverage": "Full substantive body1-48; page modified2023, no current pricing or runtime certification.",
+      "readRefs": [
+        "turn126view0",
+        "turn134view0"
+      ],
+      "candidateIntents": [
+        "shared calendar vs chores/list assignment",
+        "family access across devices",
+        "calendar source integration vs paid extras"
+      ],
+      "boundary": "Separate calendar visibility, to-do assignment, locator and messaging. Do not copy marketing guarantees or historic plan limits into Cloud."
+    },
+    {
+      "url": "https://kidpickup.com/",
+      "publisher": "Kid Pickup",
+      "textCoverage": "Full substantive body2-310 via turn126view1 and turn127view0; fresh firstsection turn134view1. Footer/link destinations not audited.",
+      "readRefs": [
+        "turn126view1",
+        "turn127view0",
+        "turn134view1"
+      ],
+      "candidateIntents": [
+        "shared pickup responsibility",
+        "notification versus actual collection",
+        "helper permission versus attendance",
+        "readonly subscription versus editable schedule"
+      ],
+      "boundary": "Posted/claimed/nudged flows are publisher claims; Cloud copy uses explicit manual agreement, not automatic assignment or escalation."
+    },
+    {
+      "url": "https://www.famcove.com/free-family-calendar",
+      "publisher": "FamCove",
+      "textCoverage": "Full substantive body28-293 via turn126view2 and turn127view1; composite homepage/free-plan extraction. Fresh intro turn134view2.",
+      "readRefs": [
+        "turn126view2",
+        "turn127view1",
+        "turn134view2"
+      ],
+      "candidateIntents": [
+        "coverage responsibility",
+        "school flyer review before calendar import",
+        "free family calendar versus extra household functions"
+      ],
+      "boundary": "No Cloud OCR/chores/locator/legal audit/tax receipt features inferred. Prices/testimonials/statistics/absolute free or privacy guarantees not independently verified."
+    }
+  ],
+  "existingCanonicals": [
+    "family-pickup-calendar-handoff",
+    "planning-a-week-in-ten-minutes",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "editorialDecision": "Existing family handoff guide already addresses manual responsible adult/direct confirmation/access. Strengthen weekly review. Do not add a duplicate thin handoff article merely to increase count.",
+  "noClaims": [
+    "Not all competitor keywords or rankings.",
+    "No search volume evidence.",
+    "No new ChatGPT citation or indexing proof."
+  ]
+}

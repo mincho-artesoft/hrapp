@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "articleCount": 12,
+  "completeRequiredFields": true,
+  "allMetaDescriptionsUnder160": true,
+  "threeExistingContextLinksEach": true,
+  "noSlugCollisionWithBaselineOrOtherDraftBatches": true,
+  "allSourceEvidenceVisible": true,
+  "fictionalExamplesLabelled": true,
+  "firsthandClaims": false,
+  "reviewStatus": "draft",
+  "independentReviewRequired": true
+}

@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-22",
+  "decision": "targeted_addition_to_existing_guide",
+  "distinctness": "iPad installation has a supported official workflow, but the core layout, eligibility, selected-calendar and stale-data tasks are already covered. New prose fits one focused section; a standalone substantive guide would repeat the current two guides or require unsupported device-specific claims.",
+  "fullCurrentObjectReads": [
+    {
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "23152083b7fb564d5944af3409fd5c19276931e4f427a5f6c4595660d3b9836e",
+      "scope": "Complete object read: metadata, all five sections/ten paragraphs, four practical steps, three FAQs, sources and related routes."
+    },
+    {
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "slug": "choosing-a-widget-size",
+      "fileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+      "objectSha256": "5481049130ce9965298d4e52e6664c55767190573b3a0696ccec3ba1a075ac84",
+      "scope": "Complete object read: metadata, all five sections/ten paragraphs, four practical steps, three FAQs, sources and related routes."
+    }
+  ],
+  "webReads": [
+    {
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados",
+      "resolvedUrl": "https://support.apple.com/en-euro/guide/ipad/ipadb0de8630/ipados",
+      "status": "full_substantive_body",
+      "readRanges": [
+        [
+          1029,
+          1084
+        ]
+      ],
+      "totalLines": 1100,
+      "finding": "Home Screen gallery flow, available styles/sizes, optional editing, stack controls and Today View. Generic Apple features are not automatically Cloud features.",
+      "boundary": "Initial canonical response used a different 1152-line extraction. Reopen redirected and substantive body was read in its 1100-line version. Select the installed OS version in Apple documentation."
+    },
+    {
+      "url": "https://support.apple.com/guide/ipad/customize-apps-and-widgets-on-the-home-screen-ipad1b2665da/ipados",
+      "status": "full_substantive_body",
+      "readRanges": [
+        [
+          1071,
+          1107
+        ]
+      ],
+      "totalLines": 1122,
+      "finding": "Apple explicitly qualifies widget sizes by app; appearance customization is separate from content configuration.",
+      "boundary": "Version selector and default guide can change. No Clear/tint control is required or attributed to Cloud in the proposal."
+    },
+    {
+      "url": "https://support.apple.com/en-ie/118610",
+      "status": "partial_discovery_read",
+      "readRanges": [
+        [
+          26,
+          125
+        ]
+      ],
+      "totalLines": 163,
+      "boundary": "iPhone page used during discovery, not evidence of iPad setup. No claim of its unread remainder."
+    }
+  ],
+  "rejectedDiscoverySources": "Search included non-Apple iframe mirrors; no claims rely on those mirrors. Official Apple URLs were opened directly.",
+  "nativeReads": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "readRanges": [
+        [
+          1107,
+          1147
+        ]
+      ],
+      "finding": "Shared StaticConfiguration layouts declare small/medium date-weather, medium events and large events. No systemExtraLarge or accessory families in these declarations. Static configuration does not establish a per-widget calendar-choice editor."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Cloud Calendars for Google, Microsoft and iCloud.xcodeproj/project.pbxproj",
+      "sha256": "47a3450edd0e3067dbf2e94706c5f6ac29d6da967de56bd11068b22feef46bf3",
+      "readRanges": [
+        [
+          642,
+          705
+        ]
+      ],
+      "finding": "Widget Debug/Release configurations specify targeted device family 1,2 and deployment target18.0. Build settings establish intended device support, not installed gallery availability or released-binary equivalence."
+    }
+  ],
+  "remainingLimits": [
+    "No device, simulator, screenshots or playback inspected.",
+    "No guarantee that a particular installed release/device presents every declared layout.",
+    "No iPad accessory Lock Screen support inferred from Apple generic documentation.",
+    "No stack interaction, inline action, calendar picker or immediate-refresh Cloud capability inferred from Apple examples.",
+    "No separate iPad widget route proposed; existing canonical retains its intent."
+  ],
+  "validation": {
+    "targetedAdditionJsonParsed": true,
+    "sourceIntegration": false,
+    "build": false,
+    "deployment": false,
+    "nativeWrites": false,
+    "customerActions": false
+  }
+}

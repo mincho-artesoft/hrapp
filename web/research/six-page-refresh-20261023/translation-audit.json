@@ -1,0 +1,151 @@
+{
+  "passed": true,
+  "locales": {
+    "it": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "9fbd8da2d1d37a4736f8c4dd64101c5931e6529c7e5e9c22a207e453536baf16"
+    },
+    "fi": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "3d4be27744858d2373734a524ef4eeff07984a19770945d38e819ba03b7c3694"
+    },
+    "pl": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "4868ce807a62adf5349095d9e6b4363ea06d871ddedaa0c022cbc49b00889d1d"
+    },
+    "ru": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "8a3abd8525b01446a74802c8fd9a04e6759d244cd69a4238f134d48bd8b4706f"
+    },
+    "zh-Hant": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "3bfefba88fbf1326cd61f07ffc704ccfe4b47d8a4ec5a4cd4e41dc3085564476"
+    },
+    "ms": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "a629833d62bef772a2d15cf6ba34fc46f03f87b7f54f96bd9f97d7a4a9620802"
+    },
+    "ja": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "74cbd338f5271af90e9fca55a923cd8e82b617dd13f7466f1ce4633c7088f7fc"
+    },
+    "ar-SA": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "62139548837d7b3f0f3f38dc9ff762dbb8395a6fc6f6c2dd8f063497804be713"
+    },
+    "zh-Hans": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "8acdee378fdc1bbda35606f6c6755330b1ff0432e5d2d3a1a7bce4b19eab2dcc"
+    },
+    "tr": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "df2dae7387bd14f76d9c2d386b8aaa82f4178f558da7f30e043ce3d5e4d0b6a3"
+    },
+    "hu": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "efbbfa03357f61510f1c4d068c006bcb7f1de4b677b2f0b90f60c31ece343619"
+    },
+    "es-ES": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "3d766351e4a145e07db9fcc493bb6c0b4a291b378c19ee6ef24d4c6c6e6cdda4"
+    },
+    "pt-BR": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "57290fd65e25b7e529526f367f1ecc84c804e1a2bb46819ddd1ed0618e737b19"
+    },
+    "de-DE": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "10b74384594ab74c88629d719e8d57c5f0018137c6a052ee0abb0ec1ed96a9ed"
+    },
+    "sv": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "758d74e8d97b30b681b19625dbf3654d0deb8ded70f5e949cd5f974a9a100414"
+    },
+    "fr-FR": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "5bae8f7d08ed605596defdb2717947ede92e9bb538713cfa928a8addf81c0b98"
+    },
+    "th": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "eb80c5d1d2e3224ef6c7e00528442bc4a02da8835cb99dfaf8b873813e44ef12"
+    },
+    "cs": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "0405c79856239b7e7362a2487022ab63395668dd24a4065cc459c964d7a9508b"
+    },
+    "vi": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "2e79c4462df239d74c3be225cba8bee23ddb4f6cf15c34c083fce592c33324c8"
+    },
+    "no": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "292b8c63aba6f75f6097711d261af63642296f504c82a30c85506d988dc16308"
+    },
+    "da": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "3185726e0b2b99f30ef8405df461630eed42a0de4e6e0b44222fa717dad08f71"
+    },
+    "id": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "658209fd997f7210537684e711aad49a373969cad02f7362e7cfcd3cf3f14467"
+    },
+    "ro": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "3f33fde43db5cad15d705252ba1b97ac5011e6bf263ab86d94b0245d4b5f7e11"
+    },
+    "bg": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "a662f7f5f7f0b850953dd09fb7eed2a7e662d6b12a26f286733edae7ad3637d0"
+    },
+    "hi": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "e3ab40485bb7b251ee430de4c2f700686e987462ba4bc270a6313fc16eb440ca"
+    },
+    "el": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "c7bc61d9bfda44e0a5811a8a70098f8753018c8fe288cee323cb957e2e5c0fdb"
+    },
+    "he": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "8cef683f11d068fb4da6693d77023b8efe23fb1608e75cd1f764d98d6d03fedf"
+    },
+    "ko": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "970252545ac0b1a85c752ee5bbe285609b2edc83c2e33416c2441fc3c0b7ff43"
+    },
+    "nl-NL": {
+      "pages": 6,
+      "sections": 39,
+      "sha256": "65a677d601db7dd67f1488294b19620efdf2533a75b1a3e41c79fdb611d0bf58"
+    }
+  },
+  "method": "OpenAI structured translation; full paragraphs, headings, tables, captions and link labels; URL/structure checks; translations remain noindex pending editorial approval"
+}

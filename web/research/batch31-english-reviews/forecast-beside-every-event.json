@@ -1,0 +1,81 @@
+{
+  "title": "Compare an appointment with the hourly weather forecast",
+  "short": "Weather for appointment hours",
+  "description": "Match your appointment to the selected place, date and available forecast hours. Check the event draft before saving a weather-based plan.",
+  "lede": "To compare weather with an appointment, match three things: the selected place, the forecast date and the hours your plan occupies. A nearby weather icon is not proof that all three match. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "That a daily weather icon on a calendar is the same feature as a forecast attached to an event.",
+  "sections": [
+    {
+      "heading": "Start with place and date",
+      "body": [
+        "Open the forecast for the intended location and compare its date with the calendar entry. Calendar weather can reflect the selected weather place, so check that it is appropriate for the appointment rather than assuming the event address controls it.",
+        "An appointment next month can exist before weather data for that date is available. Keep the appointment and return to the forecast nearer its date; a missing weather entry is not a clear-weather prediction."
+      ]
+    },
+    {
+      "heading": "Use hourly detail for an hourly question",
+      "body": [
+        "A daily summary and an hourly forecast answer different questions. If the appointment lasts from two until five, inspect the available hours covering that interval rather than treating one daily icon as the full picture.",
+        "If only part of the interval is available, leave the rest unresolved. The app does not promise complete hourly weather for every event you can create, and this guide does not promise that opening any event always presents its entire weather window."
+      ]
+    },
+    {
+      "heading": "Separate chance, amount and timing",
+      "body": [
+        "Read the label on the value you are checking. A precipitation probability is not rainfall amount or duration. Likewise, an hourly value and a daily summary cover different periods; compare like periods when weighing two possible times.",
+        "Choose a fallback appropriate to your plan instead of treating a single percentage as a universal go-or-cancel rule. Weather information can change, so revisit it when a decision needs to be made."
+      ]
+    },
+    {
+      "heading": "Review before saving a weather-based appointment",
+      "body": [
+        "The app can start an event draft from a forecast hour. Review the draft’s date, start, end and destination calendar before saving. Forecast selection does not replace a check that you are creating the right commitment.",
+        "If calendar access or the destination calendar prevents saving, resolve that permission separately from weather access. Finding a forecast does not grant editing rights to a shared calendar."
+      ]
+    },
+    {
+      "heading": "Use the full forecast when the summary is not enough",
+      "body": [
+        "For an activity outdoors, inspect the variables relevant to that activity and the location you actually chose. A current-weather widget or homepage demo is not a substitute for checking the app’s available forecast hours.",
+        "If you notice a discrepancy, compare the place and timestamp first. Different providers, selected places and forecast periods can produce different displays without proving that the calendar event changed."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Confirm location and event date.",
+    "Check the available hours across the activity.",
+    "Read probability and amount as different values.",
+    "Review the event draft before saving."
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-21",
+  "faq": [
+    {
+      "q": "Does every event have a complete forecast?",
+      "a": "No. Coverage depends on the selected place and available dates and hours."
+    },
+    {
+      "q": "Is the weather icon specific to the event address?",
+      "a": "Do not infer that from proximity to the event. Confirm the weather location separately."
+    },
+    {
+      "q": "Does tapping an hour save a new appointment?",
+      "a": "It starts an event draft where available. Review its date, time and calendar before saving."
+    }
+  ],
+  "sourcesHeading": "Weather sources and location settings",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit forecasts and regional availability",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Apple: Privacy and Location Services",
+      "url": "https://support.apple.com/en-us/102515"
+    }
+  ]
+}

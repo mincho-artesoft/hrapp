@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "batch": "competitor-discovery-03",
+  "scope": {
+    "newUniqueUrlsAttempted": 17,
+    "newAccessibleUrlsReviewed": 14,
+    "completeSubstantiveBodies": 10,
+    "indexOrPartialBodyOnly": 4,
+    "failedNewUrls": 3,
+    "maximumRequestedUrls": 50,
+    "exhaustive": false,
+    "discoveryMethod": "Followed observed links in primary support indexes and previously read primary feature/help pages; attempted three new index/sitemap URLs. No successful sitemap parse. Reused previously discovered links without re-reading prior bodies.",
+    "priorFilesConsulted": [
+      "research/keyword-coverage-ledger.json",
+      "research/content-inventory-20261021.json",
+      "research/competitors/primary-page-review-20261021-batch01.json",
+      "research/competitors/intent-clusters-20261021-batch01.json",
+      "research/competitors/existing-canonical-review-20261021-batch02.json",
+      "research/competitors/help-intent-discovery-20261021-batch02.json"
+    ],
+    "notRetried": [
+      "https://flexibits.com/fantastical/help/overview",
+      "https://support.readdle.com/calendars/troubleshooting/widgets-dont-update-or-load"
+    ]
+  },
+  "bodyReviews": [
+    {
+      "id": "busycal-filters",
+      "url": "https://www.busymac.com/docs/busycal/70612-smart-filters/",
+      "status": "body-reviewed",
+      "readScope": "Complete substantive Mac help body, lines 91–238; navigation/footer excluded.",
+      "observedPublisherContent": "Saved filters combine calendar groups, conditions and view settings. Temporary calendar visibility changes require saving to persist.",
+      "limits": "Mac features; do not assume equivalent iOS or Cloud Calendars support."
+    },
+    {
+      "id": "readdle-export",
+      "url": "https://support.readdle.com/calendars/calendars-tutorials/how-to-export-calendars",
+      "status": "body-reviewed",
+      "readScope": "Complete body, lines 103–125.",
+      "observedPublisherContent": "Describes two app export/share paths and options for date range and working hours.",
+      "limits": "Does not establish an ICS or CSV export format or restorable backup."
+    },
+    {
+      "id": "timepage-alerts",
+      "url": "https://bonobolabs.com/support/timepage/what-are-smart-alerts/",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 45–96.",
+      "observedPublisherContent": "Separates weather thresholds, briefings, followups, time-to-leave, event and all-day event alerts.",
+      "limits": "Competitor-specific categories and controls; not evidence Cloud Calendars offers these."
+    },
+    {
+      "id": "readdle-search",
+      "url": "https://support.readdle.com/calendars/calendars-tutorials/how-to-search",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 103–108.",
+      "observedPublisherContent": "Explains search entry and a distinct gesture for older events; states its own historical search horizon.",
+      "limits": "Do not transplant its search horizon to Cloud Calendars."
+    },
+    {
+      "id": "fantastical-notifications",
+      "url": "https://flexibits.com/fantastical-ios/help/notifications",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 61–97.",
+      "observedPublisherContent": "Per-calendar ignored alerts differ from shared-calendar change notifications. Notification actions include snoozing, completing tasks and responding to invitations.",
+      "limits": "Hiding a calendar is not established as an alert mute. Cloud controls must be checked."
+    },
+    {
+      "id": "fantastical-widgets",
+      "url": "https://flexibits.com/fantastical-ios/help/widgets",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 58–107.",
+      "observedPublisherContent": "Explains home/lock-screen widget options and calendar sets; also describes creating event information from a share extension.",
+      "limits": "Published widget counts conflict internally and with previously read homepage counts; do not use counts as comparative facts."
+    },
+    {
+      "id": "busycal-recurrence",
+      "url": "https://www.busymac.com/docs/busycalios/70661-repeating-events-and-to-dos/",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 53–64.",
+      "observedPublisherContent": "Describes standard recurrence and distinguishes repeating events from tasks that surface the next incomplete occurrence.",
+      "limits": "Page describes custom rules created on Mac syncing to iOS; not a claim about Cloud or every provider."
+    },
+    {
+      "id": "busycal-timezones",
+      "url": "https://www.busymac.com/docs/busycalios/70671-date-and-time-options/",
+      "status": "body-reviewed",
+      "readScope": "Complete main body, lines 57–130 across two views.",
+      "observedPublisherContent": "Separates event time zone, display override, device time zone and floating time. Notes provider compatibility issues with floating events.",
+      "limits": "Page carries a June 2016 update date despite some modern wording. Reverify provider behavior and current settings in current primary provider documentation."
+    },
+    {
+      "id": "fantastical-privacy",
+      "url": "https://flexibits.com/privacy/faq",
+      "status": "body-reviewed",
+      "readScope": "Complete substantive FAQ lines 14–123; changelog lines 126–249 also displayed and reviewed.",
+      "observedPublisherContent": "Separates provider credentials and calendar data from app-account information; describes feature-specific server handling, location and analytics.",
+      "limits": "Privacy statements are publisher claims about Fantastical only. Cloud needs its own verified data-flow explanation matched to policy, implementation and ASC."
+    },
+    {
+      "id": "busycal-widgets",
+      "url": "https://www.busymac.com/docs/busycalios/145201-widgets/",
+      "status": "body-reviewed",
+      "readScope": "Complete main body lines 57–147.",
+      "observedPublisherContent": "Distinguishes widget families and sizes; describes one shared calendar-set choice for widgets/watch and a blank-widget checklist.",
+      "limits": "Its global calendar-set behavior and refresh suggestions are competitor-specific; no refresh-time guarantee for Cloud."
+    }
+  ],
+  "indexReviews": [
+    {
+      "url": "https://flexibits.com/support",
+      "status": "index-reviewed",
+      "readScope": "Support landing index; followed Help Book."
+    },
+    {
+      "url": "https://flexibits.com/fantastical/help",
+      "status": "index-reviewed",
+      "readScope": "Mac Help Book navigation and short introduction; followed iOS Help Book."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help",
+      "status": "index-reviewed",
+      "readScope": "iOS help index; selected Notifications, Widgets and Privacy FAQ."
+    },
+    {
+      "url": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "status": "index-and-partial-body-reviewed",
+      "readScope": "Navigation plus lines 57–249 of 310; not counted as complete body. Provides links to recurrence, time/date, widgets, alarms, search and CSV export."
+    }
+  ],
+  "failedAttempts": [
+    {
+      "url": "https://www.busymac.com/support/",
+      "status": "inaccessible",
+      "bodyReviewed": false
+    },
+    {
+      "url": "https://bonobolabs.com/sitemap.xml",
+      "status": "inaccessible",
+      "bodyReviewed": false
+    },
+    {
+      "url": "https://readdle.com/sitemap.xml",
+      "status": "unsupported-application-xml",
+      "bodyReviewed": false
+    }
+  ],
+  "additionalTitleDiscovery": [
+    {
+      "sourceIndex": "https://flexibits.com/fantastical-ios/help",
+      "linkLabels": [
+        "Travel Time and Time to Leave Notifications",
+        "Urgent Alarms",
+        "Focus Filters",
+        "Calendar Mirroring",
+        "Live Activities"
+      ],
+      "status": "index-label-only; destination bodies not reviewed; no inferred URL"
+    },
+    {
+      "sourceIndex": "https://www.busymac.com/docs/busycalios/70656-getting-started-with-busycal-for-ios/",
+      "linkLabels": [
+        "Alarms",
+        "Export as CSV",
+        "Finding Events",
+        "Using BusyCal with Reminders",
+        "Using BusyCal with Apple Calendar"
+      ],
+      "status": "index-label-only; destination bodies not reviewed; no inferred URL"
+    },
+    {
+      "sourceIndex": "https://bonobolabs.com/support/timepage/what-are-smart-alerts/",
+      "linkLabels": [
+        "Edit Smart Alerts",
+        "Location and Travel",
+        "Weather"
+      ],
+      "status": "index-label-only; destination bodies not reviewed; no inferred URL"
+    }
+  ],
+  "evidenceLimits": {
+    "searchRankEvidence": null,
+    "searchVolumeEvidence": null,
+    "chatgptCitationEvidence": null,
+    "interpretation": "Publisher documentation reveals supported user tasks and candidate vocabulary. It does not prove demand, ranking, citation frequency or Cloud Calendars feature parity.",
+    "contentFreshness": "Current ledger/inventory consulted; prior full-body audit is point-in-time and is not a fresh reread of all Cloud articles after concurrent corrections."
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "date": "2026-10-21",
+  "status": "Draft-only, all5EN current article objects read in full. No live modules, native files, build, simulator, deployment or commit changed.",
+  "originalSource": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-widgets.ts",
+  "originalSourceSha256": "9fd9f6cd37687e6cd4566e8088c3a9bedb76bfcaaef9faf722cd172ea9c0c773",
+  "drafts": [
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/a-countdown-to-your-next-meeting.json",
+      "descriptionCharacters": 146,
+      "bodyWords": 416,
+      "sections": 5,
+      "faqs": 3,
+      "sha256": "47ba183431e62c4416c772673fcebed0f2555542693e6df3a69168d09cfcf27b"
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/the-calendar-on-a-bedside-table.json",
+      "descriptionCharacters": 150,
+      "bodyWords": 425,
+      "sections": 5,
+      "faqs": 3,
+      "sha256": "dc9fcd55083d520b4be906af34b997a6f47539972590d9d74dcb2a98a1651d67"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/the-widget-that-shows-what-is-next.json",
+      "descriptionCharacters": 149,
+      "bodyWords": 428,
+      "sections": 5,
+      "faqs": 3,
+      "sha256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8"
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/choosing-a-widget-size.json",
+      "descriptionCharacters": 153,
+      "bodyWords": 403,
+      "sections": 5,
+      "faqs": 3,
+      "sha256": "98ca856852bd4b187225b4c997e8be66a0acc4a1f6c1fe1029f5f13d9239101d"
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "path": "/Users/minchomilev/cloud-calendars/research/batch05-widgets/lock-screen-without-unlocking.json",
+      "descriptionCharacters": 156,
+      "bodyWords": 429,
+      "sections": 5,
+      "faqs": 3,
+      "sha256": "c6f49cc3020f799fecf68fd873d8f30be914668301c1b23da7b70f2b5a3e9f60"
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "lines": [
+        [
+          1099,
+          1147
+        ]
+      ],
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "finding": "Bundle has three static Home Screen widget variants plus ActivityConfiguration. Calendar & Weather small/medium; Calendar Events medium; Calendar Events Large large. No accessoryCircular/Rectangular/Inline families declared."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarWidget.swift",
+      "lines": [
+        [
+          107,
+          116
+        ],
+        [
+          220,
+          235
+        ],
+        [
+          435,
+          465
+        ]
+      ],
+      "sha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "finding": "Provider reads saved app-group event/weather/settings values; requests timeline after15min, not guaranteed scheduling. Large events view dynamically caps visible rows at11; event list is not a week grid."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "lines": [
+        [
+          174,
+          231
+        ],
+        [
+          235,
+          280
+        ]
+      ],
+      "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "finding": "Uses selected calendar identities; EventKit full-access gate; combines native/local events, removes cancelled/revoked entries, excludes all-day and started events, sorts and limits future feed. Snapshot written to shared defaults then reload requested."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarLiveActivityManager.swift",
+      "lines": [
+        [
+          38,
+          83
+        ],
+        [
+          115,
+          189
+        ]
+      ],
+      "sha256": "0c558abc2c57c6fc07a45fbd76b1dc149a3b303117d4edef6e301fe57d1247db",
+      "finding": "Activity authorization gate and start/stop/update; current source creates pushType:nil; retains at most3future timed events, staleDate next start. Not continuous provider polling or unlimited queue."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/CalendarWidget/CalendarLiveActivityWidget.swift",
+      "lines": [
+        [
+          300,
+          360
+        ],
+        [
+          438,
+          465
+        ]
+      ],
+      "sha256": "d6e512b62218f0d3319368e68362c6b5b27f45c25ba4f6326729fbfe6e0b844b",
+      "finding": "Lock Screen ActivityConfiguration plus DynamicIsland; countdown uses periodic60second view, not proof of fresh provider data. Distinct from static accessory widget."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "lines": [
+        [
+          379,
+          435
+        ]
+      ],
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "finding": "Background refresh earliest request5min and availability gate; no guarantee that iOS runs at that interval."
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Main/RootView.swift",
+      "lines": [
+        [
+          320,
+          329
+        ]
+      ],
+      "sha256": "5fe397a4b213f6cdfe9a428e9ed41c9fe68e96feaec721cc8170441e4670a68e",
+      "finding": "Live/Stop control invokes manager toggle when supported."
+    }
+  ],
+  "translationCorrectionCount": 8,
+  "translationsRequiringCorrection": [
+    {
+      "locale": "fr-FR",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/fr-FR/articles.ts",
+      "slug": "a-countdown-to-your-next-meeting",
+      "objectLines": [
+        269,
+        299
+      ],
+      "fileSha256": "8d3378541eacfe480a1f30d3caf3fcda1bc49b6d0a8b3139b1d16b8593388774",
+      "needsCorrection": [
+        "Always-current countdown promise",
+        "Encourages replacing or discounting alerts",
+        "Missing future-timed-only and update limitations"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/fr-FR/articles.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "objectLines": [
+        235,
+        268
+      ],
+      "fileSha256": "8d3378541eacfe480a1f30d3caf3fcda1bc49b6d0a8b3139b1d16b8593388774",
+      "needsCorrection": [
+        "Home Screen and no-unlock confusion",
+        "No explicit correct event layout distinction",
+        "Weather should not imply appointment-specific venue/time forecast"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "de-DE",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/de-DE/articles.ts",
+      "slug": "a-countdown-to-your-next-meeting",
+      "objectLines": [
+        314,
+        344
+      ],
+      "fileSha256": "dc461f93409a13d144cae4d030641f310c12feebcaca39d6b3bf68d1fb0bef60",
+      "needsCorrection": [
+        "Always-current countdown promise",
+        "Encourages replacing or discounting alerts",
+        "Missing future-timed-only and update limitations"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "de-DE",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/de-DE/articles.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "objectLines": [
+        280,
+        313
+      ],
+      "fileSha256": "dc461f93409a13d144cae4d030641f310c12feebcaca39d6b3bf68d1fb0bef60",
+      "needsCorrection": [
+        "Home Screen and no-unlock confusion",
+        "No explicit correct event layout distinction",
+        "Weather should not imply appointment-specific venue/time forecast"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "es-ES",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/es-ES/articles.ts",
+      "slug": "a-countdown-to-your-next-meeting",
+      "objectLines": [
+        269,
+        299
+      ],
+      "fileSha256": "f20ceb5f61aa708dd44f725cc3bb81b68e9eec0f4f37a9aad11e3c8104e78dcf",
+      "needsCorrection": [
+        "Always-current countdown promise",
+        "Encourages replacing or discounting alerts",
+        "Missing future-timed-only and update limitations"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "es-ES",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/es-ES/articles.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "objectLines": [
+        235,
+        268
+      ],
+      "fileSha256": "f20ceb5f61aa708dd44f725cc3bb81b68e9eec0f4f37a9aad11e3c8104e78dcf",
+      "needsCorrection": [
+        "Home Screen and no-unlock confusion",
+        "No explicit correct event layout distinction",
+        "Weather should not imply appointment-specific venue/time forecast"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "it",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/it/articles.ts",
+      "slug": "a-countdown-to-your-next-meeting",
+      "objectLines": [
+        268,
+        298
+      ],
+      "fileSha256": "6a6ed4ba72080f1fac4eea62ff126bb8bf1db61bef27c835456c977313cbbb36",
+      "needsCorrection": [
+        "Always-current countdown promise",
+        "Encourages replacing or discounting alerts",
+        "Missing future-timed-only and update limitations"
+      ],
+      "changed": false
+    },
+    {
+      "locale": "it",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/it/articles.ts",
+      "slug": "the-widget-that-shows-what-is-next",
+      "objectLines": [
+        234,
+        267
+      ],
+      "fileSha256": "6a6ed4ba72080f1fac4eea62ff126bb8bf1db61bef27c835456c977313cbbb36",
+      "needsCorrection": [
+        "Home Screen and no-unlock confusion",
+        "No explicit correct event layout distinction",
+        "Weather should not imply appointment-specific venue/time forecast"
+      ],
+      "changed": false
+    }
+  ],
+  "translationCoverage": "Exact canonical slug search across existing src/app/content locale article modules found8translated objects (de-DE/es-ES/fr-FR/it, first2slugs each). Remaining3slugs have no translated object found. No translations edited.",
+  "primarySources": [
+    {
+      "url": "https://support.apple.com/118610",
+      "supports": "System widget gallery/add/remove; does not establish Cloud accessory support."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date",
+      "supports": "System-controlled refresh budgets/scheduling; extension not continuously active."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios",
+      "supports": "Live Activities and per-app controls distinct from notifications."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios",
+      "supports": "Dynamic Island supported-model qualification."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/use-standby-iph878d77632/ios",
+      "supports": "StandBy charging/landscape/stationary setup, display/model settings; not a Cloud-specific compatibility certification."
+    }
+  ],
+  "remainingUncertainties": [
+    "No runtime validation, released-binary equivalence, localization-label certification or native visual QA.",
+    "Cloud StandBy gallery/layout availability is explicitly conditional; no separate tomorrow selector or evening switch established.",
+    "No exact widget, countdown or background refresh interval guaranteed.",
+    "Whether installed iOS preserves/displays stale activity and transitions events as intended not tested.",
+    "Widget weather shown from saved snapshot; no guaranteed per-event destination/start forecast."
+  ],
+  "correctedUnsafeClaims": [
+    "Small means next event / medium rest of today / large week.",
+    "Home Screen event widget supplies unlocked information automatically.",
+    "Accessory Lock Screen widget assumed.",
+    "Always correct countdown and replacement of needed near-event alerts.",
+    "StandBy largest Home Screen layout or automatic tomorrow agenda assumed."
+  ],
+  "validation": "All5draft JSON parsed, descriptions below160characters, five distinct sections and3FAQs each; evidence includes file hashes/lines. Native source only read; no tests executed."
+}

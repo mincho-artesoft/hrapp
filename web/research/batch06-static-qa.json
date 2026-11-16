@@ -1,0 +1,283 @@
+{
+  "allPassed": true,
+  "changedArticles": 13,
+  "homeLocales": 30,
+  "curatedExportGuides": 26,
+  "sitemapUrls": 453,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "forecast-beside-every-event",
+      "file": "de/articles/forecast-beside-every-event/index.html",
+      "sha256": "d6950a7394e5fc4d8efb2d4e393147f7c7027eb6b8039fb498a2f1f76c811a4a",
+      "faq": 3
+    },
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "de/articles/planning-outdoors-without-being-rained-on/index.html",
+      "sha256": "c8593f3c53754829b05b009910246e5b05bf5327ebc4297f28ef976b698d41da",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "weather-inside-your-calendar",
+      "file": "articles/weather-inside-your-calendar/index.html",
+      "sha256": "bb0d244a55b94dae9d0ed75e937fd3f6732c7b290bd73c38b7b6ea4bd1023bc4",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "forecast-beside-every-event",
+      "file": "articles/forecast-beside-every-event/index.html",
+      "sha256": "9a955e0eec08e7d1b4b731384d191c5d98df79aa5da6cda604f9444a0ef86aec",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "file": "articles/a-fourteen-day-view-of-the-weather/index.html",
+      "sha256": "f76596311a0a8da138586fc42a9df3c30fc89df61843ca5b5d3ab8150bd60ece",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "articles/planning-outdoors-without-being-rained-on/index.html",
+      "sha256": "479a0c3181a5473ca2c0b363e4988a3e259ef5599802cd4050013b2b838b10d9",
+      "faq": 3
+    },
+    {
+      "locale": "en-US",
+      "slug": "weather-where-the-event-is",
+      "file": "articles/weather-where-the-event-is/index.html",
+      "sha256": "8bad164d27eb72d07e7e82d76d7a26a301f410d8a15c3a92d79a6e3f9c7b721a",
+      "faq": 3
+    },
+    {
+      "locale": "es-ES",
+      "slug": "forecast-beside-every-event",
+      "file": "es/articles/forecast-beside-every-event/index.html",
+      "sha256": "851a2ca7ef678b418d23b2fd20697828eb252fa376c9443d9ca250c50dea7c60",
+      "faq": 3
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "es/articles/planning-outdoors-without-being-rained-on/index.html",
+      "sha256": "b533ace1fd8ce650d2ba0f239744e329659d6471433e60df9653bfcaacaa291d",
+      "faq": 3
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "forecast-beside-every-event",
+      "file": "fr/articles/forecast-beside-every-event/index.html",
+      "sha256": "ac41209f3f43216e18fcee125183757871b062e0dc1d42a28ecfcd5dd074ad6b",
+      "faq": 3
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "fr/articles/planning-outdoors-without-being-rained-on/index.html",
+      "sha256": "9ed2a0042faeb24f5edbe88eea50526406e322a44ec3a7c173eca056a1bd8b4d",
+      "faq": 3
+    },
+    {
+      "locale": "it",
+      "slug": "forecast-beside-every-event",
+      "file": "it/articles/forecast-beside-every-event/index.html",
+      "sha256": "a26624ef24a35fe38a96f65958e59ad30b3348905e6070a744a01f616c5bf6ea",
+      "faq": 3
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "file": "it/articles/planning-outdoors-without-being-rained-on/index.html",
+      "sha256": "b710afccea23022f82bab4ec0e844dbe1fb4f4aac919e6cc07dd115915b767fc",
+      "faq": 3
+    }
+  ],
+  "homes": [
+    {
+      "locale": "en-US",
+      "path": "index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "bg",
+      "path": "bg/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "de-DE",
+      "path": "de/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "es-ES",
+      "path": "es/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "fr-FR",
+      "path": "fr/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "it",
+      "path": "it/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "nl-NL",
+      "path": "nl/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "pt-BR",
+      "path": "pt/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "pl",
+      "path": "pl/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ru",
+      "path": "ru/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "sv",
+      "path": "sv/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "da",
+      "path": "da/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "no",
+      "path": "no/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "fi",
+      "path": "fi/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "cs",
+      "path": "cs/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "hu",
+      "path": "hu/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ro",
+      "path": "ro/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "el",
+      "path": "el/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "tr",
+      "path": "tr/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "id",
+      "path": "id/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ms",
+      "path": "ms/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "vi",
+      "path": "vi/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ja",
+      "path": "ja/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ko",
+      "path": "ko/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "zh-hans/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "zh-hant/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "hi",
+      "path": "hi/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "th",
+      "path": "th/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "ar-SA",
+      "path": "ar/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    },
+    {
+      "locale": "he",
+      "path": "he/index.html",
+      "demoLabelPresent": true,
+      "dailyLabelPresent": true
+    }
+  ],
+  "scope": "Static published-build text/schema; separate browser sample/live tests; no independent translation or native-runtime certification"
+}

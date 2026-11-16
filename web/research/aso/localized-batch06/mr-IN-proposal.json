@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "mr-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "415652ad-e3ef-4f03-b026-b9ca471fddaf",
+  "versionLocalizationId": "8329c516-9863-48ad-9030-b8fd1e47a081",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: कॅलेंडर",
+      "characters": 24,
+      "utf8Bytes": 38,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "हवामान आणि नियोजन",
+      "characters": 17,
+      "utf8Bytes": 47,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "वेळापत्रक,बैठक,कार्यक्रम,स्मरण,आमंत्रण,शेअर,आठवडा,महिना,अंदाज,विजेट",
+      "characters": 67,
+      "utf8Bytes": 183,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "नियोजन आणि हवामान एकत्र पाहा. वेगवेगळी दृश्ये आणि होम स्क्रीन विजेट वापरा किंवा ॲप खाते न बनवता स्थानिक कॅलेंडर तयार करा.",
+      "characters": 121,
+      "utf8Bytes": 319,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone आणि iPad वर Cloud Calendars वापरून कामाचे आणि वैयक्तिक नियोजन हवामानासह पाहा.\n\niCloud कॅलेंडर वापरा आणि Google Calendar जोडा. दिवस, आठवडा, महिना, वर्ष किंवा सूची दृश्य निवडा. Cloud Calendars खाते न बनवता डिव्हाइसवर स्थानिक कॅलेंडर तयार करता येते. सेवा जोडण्यासाठी आणि शेअर करण्यासाठी साइन इन करावे लागू शकते. प्रवेशाच्या परवानग्या कॅलेंडर आणि आमंत्रणाच्या प्रकारावर अवलंबून असतात.\n\nनियोजन करताना हवामानाचा अंदाज पाहा. होम स्क्रीन विजेट लहान, मध्यम आणि मोठ्या आकारांत उपलब्ध आहेत. अंदाजांची उपलब्धता स्थान आणि हवामान सेवा पुरवठादारावर अवलंबून असते.\n\nमोफत Base मध्ये Google Calendar सिंक, Google Meet, वेगवेगळी कॅलेंडर दृश्ये, हवामान आणि विजेट समाविष्ट आहेत. Advanced मध्ये Base ची वैशिष्ट्ये आहेत आणि जाहिराती काढल्या जातात. Premium मध्ये Advanced सोबत Microsoft कॅलेंडर आणि Microsoft Teams समर्थन मिळते.\n\nडाउनलोड मोफत आहे; ऐच्छिक सदस्यता आपोआप नूतनीकृत होतात. घेण्यापूर्वी ॲप किंवा App Store मध्ये सध्याची स्थानिक किंमत आणि बिलिंग कालावधी तपासा. चालू कालावधी संपण्याच्या किमान 24 तास आधी रद्द न केल्यास सदस्यता नूतनीकृत होते. App Store खात्याच्या सेटिंग्जमध्ये व्यवस्थापित किंवा रद्द करा.\n\nगोपनीयता: https://www.cloud-calendars.com/privacy-policy\nवापराच्या अटी: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1234,
+      "utf8Bytes": 2782,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "mr-IN",
+      "name": "Cloud Calendars: कॅलेंडर",
+      "subtitle": "सर्व कॅलेंडर एकाच ठिकाणी",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "कॅलेंडर आणि हवामान एकत्र घेऊन दिवसाचे नियोजन करा\n\nCloud Calendars तुमची कॅलेंडर आणि हवामान एकाच नीटनेटक्या जागी आणते.\n\niCloud, Google Calendar आणि Microsoft कॅलेंडर एकाच अॅपमध्ये सांभाळा, आणि अंदाज पाहा थेट तुमच्या वेळापत्रकात, विजेटमध्ये आणि नियोजनाच्या दृश्यांत.\n\nबैठका, प्रवास, शाळेतून आणणे, बाहेरचे उपक्रम आणि गजबजलेले दिवस — वेगवान नियोजनासाठी बनवलेल्या कॅलेंडर दृश्यांसह पुढे राहा.\n\nहोम स्क्रीन विजेट\n\nही एकत्र दाखवणारी विजेट जोडा:\n• कॅलेंडरमधील इव्हेंट\n• हवामानाचा अंदाज\n• पुढचे वेळापत्रक\n• चंद्रकला आणि स्थिती\n• वारा आणि तापमान\n• दिवसाचा आढावा\n\nअनेक विजेट शैलींमधून निवडा आणि होम स्क्रीनवरूनच तुमचा दिवस पाहा.\n\nCLOUD CALENDARS का\n\n• iCloud, Google Calendar आणि Microsoft कॅलेंडर एकत्र पाहा\n• आतच असलेल्या हवामान अंदाजासह नियोजन करा\n• होम स्क्रीनवर सुंदर विजेट वापरा\n• इव्हेंट सहजपणे ओढा, हलवा आणि आकार बदला\n• Google Meet आणि Microsoft Teams दुवे तयार करा\n• दिवस, आठवडा, महिना, वर्ष आणि यादी दृश्यांमध्ये बदला\n• कामाची आणि वैयक्तिक कॅलेंडर एकाच ठिकाणी सांभाळा\n\nवैशिष्ट्ये\n\nसर्व कॅलेंडर एकत्र\niCloud, Google Calendar आणि Microsoft ची कॅलेंडर जोडा आणि रंगांनी वेगळ्या दिसणाऱ्या स्वच्छ दृश्यात सांभाळा.\n\nकॅलेंडरमध्येच हवामान\nनियोजन करतानाच तासावार आणि दिवसावार अंदाज पाहा — तापमान, स्थिती, चंद्रकला, वारा आणि हवामानाची चिन्हे.\n\nकॅलेंडर आणि हवामान विजेट\nतुमच्या पसंतीने मांडलेल्या विजेटमधून वेळापत्रक आणि हवामान लगेच पाहा.\n\nअनेक कॅलेंडर दृश्ये\nतुम्ही वेळ कसा आखता त्यानुसार दिवस, आठवडा, महिना, वर्ष किंवा यादी निवडा.\n\nसोपे इव्हेंट संपादन\nकॅलेंडरवरच टॅप करून, ओढून आणि आकार बदलून इव्हेंट जुळवा.\n\nस्वतंत्र हवामान दृश्य\nतासावार स्थिती आणि नियोजनाला उपयोगी माहितीसह सविस्तर अंदाज पाहा.\n\nअंदाजातून इव्हेंट\nअंदाजातील एखाद्या तासावर टॅप करा — त्या वेळेचा नवा इव्हेंट लगेच तयार होईल.\n\nआतच असलेले बैठक दुवे\nइव्हेंटमध्ये Google Meet आणि Microsoft Teams दुवे पटकन जोडा.\n\nयांच्यासाठी योग्य\n\n• कामाची आणि वैयक्तिक कॅलेंडर सांभाळण्यासाठी\n• हवामान लक्षात घेऊन नियोजनासाठी\n• बाहेरचे उपक्रम आणि प्रवासासाठी\n• गजबजलेली वेळापत्रके आणि कौटुंबिक नियोजनासाठी\n• Google Calendar आणि iCloud वापरणाऱ्यांसाठी\n• Microsoft कॅलेंडर वापरणाऱ्यांसाठी\n\nCloud Calendars वापरून पाहा — प्रत्येक दिवसाचे नियोजन सोपे होईल.\n\nसदस्यत्वाची माहिती\n\nCloud Calendars आपोआप नूतनीकरण होणारी सदस्यत्वे देते.\n\nमोफत योजना\n• Google Calendar सिंक\n• अनेक कॅलेंडर दृश्ये\n• हवामान वैशिष्ट्ये\n• विजेट\n• Google Meet समर्थन\nखरेदी निश्चित करताना तुमच्या Apple ID खात्यातून रक्कम घेतली जाईल. चालू कालावधी संपण्याच्या किमान २४ तास आधी रद्द न केल्यास सदस्यत्व आपोआप नूतनीकरण होते. चालू कालावधी संपण्यापूर्वीच्या २४ तासांत नूतनीकरणाची रक्कम तुमच्या खात्यातून घेतली जाईल. App Store खात्याच्या सेटिंग्जमध्ये सदस्यत्व सांभाळता आणि रद्द करता येते.\n\nगोपनीयता धोरण: https://www.cloud-calendars.com/privacy-policy\nवापराच्या अटी: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "mr-IN",
+      "keywords": "हवामान,विजेट,वेळापत्रक,नियोजन,अंदाज,iCloud,बैठक,इव्हेंट,काम,लॉक स्क्रीन,पाऊस,आज,आठवडा,महिना,दिन,वर्ष",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

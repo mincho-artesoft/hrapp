@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T01:41:12.300178+00:00",
+  "sources": [
+    {
+      "url": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+      "freshRead": "CalDAV body and Fetch note",
+      "supports": [
+        "Current Settings > Apps > Calendar > Calendar Accounts path",
+        "Add Account > Add Other Account > CalDAV account",
+        "Provider server/account details",
+        "Non-Push account Fetch scheduling"
+      ]
+    },
+    {
+      "url": "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios",
+      "freshRead": "Access review body",
+      "supports": [
+        "Settings > Privacy & Security > Calendars app access review"
+      ],
+      "limit": "This general help body does not itself distinguish full versus add-only access; earlier native/framework evidence remains the basis for that distinction."
+    }
+  ],
+  "noNewNativeRuntimeClaim": true
+}

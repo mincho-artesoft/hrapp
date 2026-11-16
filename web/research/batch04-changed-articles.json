@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-21T17:20:21.248Z",
+  "count": 11,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "title": "Recurring calendar events: change one date or the series safely",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Check ownership and edit scope before changing a recurring calendar event. Handle one-off changes, future schedules and exceptions without deleting the series.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "en-US",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "title": "Calendar time zones: check the event before you travel",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Separate an event’s time zone from the calendar’s display zone. Check flights, destination appointments and recurring calls without shifting the wrong time.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Известия от календара на iPhone: липсват, без звук или се повтарят?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Разграничете напомнянията за събития, настройките на Cloud Calendars и известията на iPhone. Проверете проблема, без да изтривате данни.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "bg",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Намерете старо събитие: профил, дати и полета за търсене",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Празният резултат не доказва изтриване. Проверете профила, периода и полетата за търсене, преди да потърсите в архива на доставчика.",
+      "descriptionCharacters": 132
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Експортиране на календар: ICS, PDF и абонаменти",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-21",
+      "description": "Нужен ви е файл с календар? Изберете ICS, PDF или абонамент и използвайте правилните инструменти на Google, Mac или Outlook.",
+      "descriptionCharacters": 124
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Kalender-Mitteilungen auf dem iPhone: fehlend, lautlos oder doppelt?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Prüfen Sie Ereignishinweise, Cloud Calendars und die iPhone-Mitteilungen getrennt. Finden Sie die Ursache fehlender oder doppelter Hinweise ohne Datenlöschung.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "de-DE",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Alte Kalendertermine finden: Konto, Zeitraum und Suchfelder prüfen",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Ein leeres Suchergebnis beweist keine Löschung. Prüfen Sie Konto, Zeitraum und Suchfelder, bevor Sie im Archiv des Anbieters suchen.",
+      "descriptionCharacters": 132
+    },
+    {
+      "locale": "de-DE",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Kalender exportieren: ICS-Dateien, PDFs und Abonnements",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-21",
+      "description": "Kalenderdaten vom iPhone-Konto sichern oder teilen? Wählen Sie ICS, PDF oder ein Abonnement und den passenden Weg über Google, Mac oder Outlook.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Notifications de calendrier sur iPhone : absentes, silencieuses ou en double ?",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Distinguez les alertes des événements, Cloud Calendars et les réglages de l’iPhone. Diagnostiquez les rappels sans supprimer de données.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Retrouver un ancien événement : compte, dates et champs de recherche",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Un résultat vide ne prouve pas une suppression. Vérifiez le compte, la période et les champs recherchés avant de consulter l’archive du fournisseur.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Exporter un calendrier : fichiers ICS, PDF et abonnements",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-21",
+      "description": "Besoin d’un fichier de calendrier ? Choisissez ICS, PDF ou un abonnement, puis la procédure adaptée dans Google, sur Mac ou dans Outlook.",
+      "descriptionCharacters": 137
+    }
+  ]
+}

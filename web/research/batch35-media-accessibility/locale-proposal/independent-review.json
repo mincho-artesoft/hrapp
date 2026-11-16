@@ -1,0 +1,1065 @@
+{
+  "date": "2026-10-22",
+  "status": "pass_no_material_corrections",
+  "reviewType": "Independent semantic review of another agent’s descriptions; own language assessment, not independent native-speaker certification.",
+  "source": {
+    "file": "research/batch35-media-accessibility/locale-proposal/screenshot-descriptions.json",
+    "rawSha256": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a",
+    "englishReference": "research/batch35-media-accessibility/proposed-en-labels.json",
+    "englishRawSha256": "aa233898bdfb3a387ef99dd34b99b7937ed5fe216804e5b345f9e48819fe051c",
+    "authorNotes": "research/batch35-media-accessibility/locale-proposal/proposal.json"
+  },
+  "readScope": "All 150 complete proposed strings (30 locales × five keys) and all five English reference labels were read in one untruncated output. Complete author proposal also read. No reliance on validation booleans as a substitute for reading.",
+  "counts": {
+    "locales": 30,
+    "strings": 150
+  },
+  "structuralChecks": {
+    "englishMatchesExactly": true,
+    "allKeysExact": true,
+    "allStringsNonempty": true,
+    "perLocaleDistinct": true
+  },
+  "findings": [],
+  "requiredFixes": [],
+  "semanticChecks": [
+    "All translations retain day calendar versus week calendar versus weather-view subjects.",
+    "Hourly and daily weather wording does not add a numeric horizon, guaranteed availability or forecast accuracy.",
+    "Every widgets string describes the Home Screen; every live string describes a Lock Screen Live Activity and time remaining until the next event starts. No widget/Live Activity swap found.",
+    "Upcoming-event wording describes the pictured subject without claiming every event is shown, alerts are guaranteed or refresh is immediate.",
+    "Bulgarian descriptions describe the subject in Bulgarian and do not claim the underlying English fallback image has Bulgarian UI.",
+    "No calendar permissions, plan prices, provider support, security or runtime promises introduced."
+  ],
+  "bulgarianFallback": {
+    "status": "pass",
+    "scope": "BG text about the depicted English-image subject is clear; “време” in the weather-widget list is understandable as weather in context. No material correction needed.",
+    "implementationBoundary": "Integration must select description by locale code bg, not media en-US; semantic key must follow screenshot identity rather than numbered order."
+  },
+  "perLocale": [
+    {
+      "locale": "en-US",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "f078e20dbd1973739d5952258a9d7de6a007db88a2414ada5f6542f6aa575d62",
+          "unicodeCharacters": 42
+        },
+        "week-left": {
+          "sha256": "ecb00e97f629daedd67fa2ed596a622199e4aefe4bd572854c30b0f38fed30e7",
+          "unicodeCharacters": 43
+        },
+        "week-right": {
+          "sha256": "d32d87be81562eac3fb205ee057c72256641dfa601c8549a7992f4ec3aae55bf",
+          "unicodeCharacters": 44
+        },
+        "widgets": {
+          "sha256": "5ffcd30c98d5ea8ee0eb4e4fdc64b563f9916ede9884b20aa655d636518dd44b",
+          "unicodeCharacters": 62
+        },
+        "live": {
+          "sha256": "ed81ee8e0d4cc74c1413fc5d66bbf2397795cb725868edca283ef0482fb6477d",
+          "unicodeCharacters": 73
+        }
+      }
+    },
+    {
+      "locale": "bg",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "f9dec4b1c8b5b5132d74a73f9ae1fe4581f52f3d030c0f18574edcebed25d721",
+          "unicodeCharacters": 51
+        },
+        "week-left": {
+          "sha256": "e559f7f62a69fc909cf5b2e799541bd4fc865796fab648b44d10de70f969c7e5",
+          "unicodeCharacters": 53
+        },
+        "week-right": {
+          "sha256": "15126802bad8a730908af462ca8b6829ef6595f5decf083e16fcc05818966dd3",
+          "unicodeCharacters": 46
+        },
+        "widgets": {
+          "sha256": "777eac6ab0c1e5a0f75f438dd1b160704cbb4ddd6f4fd7c000286d0ecdc6e88a",
+          "unicodeCharacters": 60
+        },
+        "live": {
+          "sha256": "effbb7ae026f717b8201e056397f6832e287bf753a4ce4c52557b12f9e181a2c",
+          "unicodeCharacters": 81
+        }
+      }
+    },
+    {
+      "locale": "de-DE",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "67d88885bc91bd2aa5264a9a355126fc40f39693c9cc81e7f7c46715d7ea67c5",
+          "unicodeCharacters": 37
+        },
+        "week-left": {
+          "sha256": "546946d0c57a3b8a43d07385a992c7a297e73b706cd370c52e7303d2ebdc9237",
+          "unicodeCharacters": 53
+        },
+        "week-right": {
+          "sha256": "38a7bcd1b739886d141341cd9059d625807208c196a2a6a5c650bb7491bfef49",
+          "unicodeCharacters": 54
+        },
+        "widgets": {
+          "sha256": "71233dcfe677f52992690ea9cdd943d56599bddd305d796c7978b75ec9277cb0",
+          "unicodeCharacters": 75
+        },
+        "live": {
+          "sha256": "b62ea481c9bc86560624d900e2d6cc95be106d88656519affdd4c034fd443ac9",
+          "unicodeCharacters": 92
+        }
+      }
+    },
+    {
+      "locale": "es-ES",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "2222f95bcc7b30765d893f34825b2d160baed6a0b36a6e02ed5ca5fbc45b94cd",
+          "unicodeCharacters": 36
+        },
+        "week-left": {
+          "sha256": "67e1480d1482f72d813212c68cb6278ed769b2fe7ed30c8037cf3935efe1f63d",
+          "unicodeCharacters": 54
+        },
+        "week-right": {
+          "sha256": "663e415c1c83e3655463016d2fa079e76ff8ecb43e2d0e4a48c647a2e57b0f21",
+          "unicodeCharacters": 49
+        },
+        "widgets": {
+          "sha256": "12967f53677e12114522730795aab3e5a1cc29b6745661cc0695c439399a7290",
+          "unicodeCharacters": 75
+        },
+        "live": {
+          "sha256": "ee69b0dd85ff7782ff0d775bdf12d326f0f5c1c52a2471fed56503cd10a44a6d",
+          "unicodeCharacters": 95
+        }
+      }
+    },
+    {
+      "locale": "fr-FR",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "64875b662f46e460d02b3969e55b6ba270750a2dab48f3bc7cd6f54cb9cd7dcc",
+          "unicodeCharacters": 46
+        },
+        "week-left": {
+          "sha256": "aac34ed92e0f9e604a68daf7b149c17ff713621f55dbf94c01da9b92b232553c",
+          "unicodeCharacters": 65
+        },
+        "week-right": {
+          "sha256": "d2e4d381d233c3e9570614f9fe7631ba787a32e583b2cc952cc9f21c781f97b9",
+          "unicodeCharacters": 50
+        },
+        "widgets": {
+          "sha256": "3b0eb7219adcfdcf3a962f01539c55209b8a7873b8ebbd096df45aacb5fa2fc2",
+          "unicodeCharacters": 77
+        },
+        "live": {
+          "sha256": "429d280fd6f103905e37b2b3703f1e9c7a63c333fc4e59638864c6f9f997bc57",
+          "unicodeCharacters": 96
+        }
+      }
+    },
+    {
+      "locale": "it",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "58aed957125da65be15a80794c5923d6207ea3d5f485c6664b1c0950766c0cae",
+          "unicodeCharacters": 47
+        },
+        "week-left": {
+          "sha256": "74fdc4b933a8361518242c3be3f0a988f0c0cac7117220bafac86685b07f5667",
+          "unicodeCharacters": 59
+        },
+        "week-right": {
+          "sha256": "d858404e7b06a4f5917db657b5f6ba89f342946831b69047a02de8600734b2df",
+          "unicodeCharacters": 47
+        },
+        "widgets": {
+          "sha256": "c469fbf566702ba26e8d75d1523aa7e0dfaa550a684d360018b016b06381ca77",
+          "unicodeCharacters": 66
+        },
+        "live": {
+          "sha256": "b9323ab23807670f1bb8742fea253f8ce81396adc71e4219cb7d2a328555fae5",
+          "unicodeCharacters": 97
+        }
+      }
+    },
+    {
+      "locale": "nl-NL",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "ed6f44881e54059fe3864290f2c7b0f145050a35d3c01fc15d599f9fe99fd834",
+          "unicodeCharacters": 33
+        },
+        "week-left": {
+          "sha256": "fcd34c5e41c8d74d1975f0b08fe1121876f22a3d0c68d1533f03be82a04edd62",
+          "unicodeCharacters": 51
+        },
+        "week-right": {
+          "sha256": "1d715f358188b8b4be87cbed8b7272d717cf432bbada21f192be065aa8545399",
+          "unicodeCharacters": 50
+        },
+        "widgets": {
+          "sha256": "05476e856da765af0ac13f72600b82507a81c422a4430d788d2403a0666d050d",
+          "unicodeCharacters": 63
+        },
+        "live": {
+          "sha256": "ecd71423d48aba3668d195370b54366cf44610dc5642f0b7dc34bad983f80061",
+          "unicodeCharacters": 86
+        }
+      }
+    },
+    {
+      "locale": "pt-BR",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "417de67b868bdef7582d43cb7bfaed4149d87f24a71818a5215423807be30651",
+          "unicodeCharacters": 54
+        },
+        "week-left": {
+          "sha256": "287d763a365d03467a6fcc2ce719ec1e10e45fe0b82ab44d66c160b6b76a33d8",
+          "unicodeCharacters": 59
+        },
+        "week-right": {
+          "sha256": "f1d214d3c117d0a19c72a54551957e833675e89c57b7151d540c406256863986",
+          "unicodeCharacters": 54
+        },
+        "widgets": {
+          "sha256": "acc235a3843f908968db7b11504a01c59896a7b443917310f1509f9cc1b654e5",
+          "unicodeCharacters": 60
+        },
+        "live": {
+          "sha256": "f055c6dff24b0741dab2118e1d949c0727caf1150022a6e7a77681d944d467bc",
+          "unicodeCharacters": 81
+        }
+      }
+    },
+    {
+      "locale": "pl",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "ac6d99b6ade81da55a23d8f2c1b2fd1b53c2d95f3c24fee0adcbd8309bdad080",
+          "unicodeCharacters": 38
+        },
+        "week-left": {
+          "sha256": "992296a783aceb78a4d944ace399ff1bd6a2ba112cbf947e4ce86c804f3bb09a",
+          "unicodeCharacters": 53
+        },
+        "week-right": {
+          "sha256": "ae9d858692b0830659ae0460aa3ab32f37d7cb7b55b7d6f5f9a3d66f04e4dcb7",
+          "unicodeCharacters": 43
+        },
+        "widgets": {
+          "sha256": "196a0546a00d140f3418193f4ef6b37fdae9545e2057c9e47626ed366035ddde",
+          "unicodeCharacters": 74
+        },
+        "live": {
+          "sha256": "948bff07790ebfc428f6959b33a91254f00cd9a6f45dec3f8180ae7797a29251",
+          "unicodeCharacters": 89
+        }
+      }
+    },
+    {
+      "locale": "ru",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "1c9eeb5685a8506b6c9a34d27140acb0a9f3b8d8c92a812124dfcaa170f77e42",
+          "unicodeCharacters": 40
+        },
+        "week-left": {
+          "sha256": "43a9edf8014378b4ba45cf4211c50ed54a918fe053aab4cee20fdef290c8140f",
+          "unicodeCharacters": 61
+        },
+        "week-right": {
+          "sha256": "43fcf42526e1ffe0d35a7bfc1eb97dbdb43935bc95adcc3a993cd3bc515c8018",
+          "unicodeCharacters": 47
+        },
+        "widgets": {
+          "sha256": "3039bd81fab7b23aad3177a0ca6eca75f284b842dcd20697bfcc995a775934e8",
+          "unicodeCharacters": 67
+        },
+        "live": {
+          "sha256": "739f9766c4c69a90908a9947087c362e7033f51d085f437ecd50f8093bebdd87",
+          "unicodeCharacters": 81
+        }
+      }
+    },
+    {
+      "locale": "sv",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "50b867dbe2ecf385fa3e5a84aa4f1475c9dfb8ff78c7c1a1e1d36496b66d05e8",
+          "unicodeCharacters": 32
+        },
+        "week-left": {
+          "sha256": "a88be9adfc05250d442da99b0e95bc986a85399ae7beb1092c6d690fc34c0ccc",
+          "unicodeCharacters": 34
+        },
+        "week-right": {
+          "sha256": "4f880f712f9d9638c764c29906981a0c33f19d15cbc7cd808372ade0bfb2ffaa",
+          "unicodeCharacters": 39
+        },
+        "widgets": {
+          "sha256": "b27c97ac6c17283a885803fe4f6c5027ea0fe8dd934d3edbaab5916db96189dd",
+          "unicodeCharacters": 62
+        },
+        "live": {
+          "sha256": "eef7485a702b15777b1f002e46f7c420485581190197ddeb79e48de03437a103",
+          "unicodeCharacters": 72
+        }
+      }
+    },
+    {
+      "locale": "da",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "d0f3fa35e87e86b056c5236bd5146eb0dcb63ee9e9b6ea2e3d7d5bb31b813c4d",
+          "unicodeCharacters": 32
+        },
+        "week-left": {
+          "sha256": "63be374cad8f7bd3e41dee060b6948f37a033796461da7442b5fbcf28facc259",
+          "unicodeCharacters": 35
+        },
+        "week-right": {
+          "sha256": "4f21b55698f70dd3275ec23312f0cff13d21159c5d6160cfea66d3b266122c73",
+          "unicodeCharacters": 38
+        },
+        "widgets": {
+          "sha256": "5036c70e757d0be6c33c84cbae6905515a4f4475d8951a8a4918c1d0aa727b80",
+          "unicodeCharacters": 64
+        },
+        "live": {
+          "sha256": "9dfb70fc8ef7346766da5e431de075011a87efd699af448e2c742c2c7ad411b1",
+          "unicodeCharacters": 73
+        }
+      }
+    },
+    {
+      "locale": "no",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "6995e4f50e1ddb9db206c0b6c33a6238438f054394531c807b1d21402e9befd7",
+          "unicodeCharacters": 31
+        },
+        "week-left": {
+          "sha256": "b90134129d1d318d70398329b7bd2c35d2875f21d1917b7424748b68c167ca34",
+          "unicodeCharacters": 35
+        },
+        "week-right": {
+          "sha256": "30c13ea77eaeeb6cc2647d1ccbd664c17daad0d082a45ac8c4d7a6a1ba209dba",
+          "unicodeCharacters": 35
+        },
+        "widgets": {
+          "sha256": "b3d7a4119677113820b9917a350baeb2b62f887d76976891e572dabaef0eda3d",
+          "unicodeCharacters": 61
+        },
+        "live": {
+          "sha256": "4fdf21e024509a301d5f113013fc4dca91347902e8120c79b2ca90f5652705b5",
+          "unicodeCharacters": 76
+        }
+      }
+    },
+    {
+      "locale": "fi",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "8fdbbfc9f7c7cc4f23df405b87dc5e82a25aaf0500e696abf96030e0d84fcb30",
+          "unicodeCharacters": 48
+        },
+        "week-left": {
+          "sha256": "1726b50471f65586ce992fef0e6a63b5449ecf7db37e22e56209066ebd3acf15",
+          "unicodeCharacters": 54
+        },
+        "week-right": {
+          "sha256": "fd228e8d2248f325225f745ab4c86373477079c0a0759c376208b55233e0776d",
+          "unicodeCharacters": 44
+        },
+        "widgets": {
+          "sha256": "b1523155f5c300de4b197b8699ad77855d6458b92b6cc68fc2cf367faef2b860",
+          "unicodeCharacters": 75
+        },
+        "live": {
+          "sha256": "390b83dfbeae16c1a584e1df0233564e353f13b9f9589173fb44c97b46e40db8",
+          "unicodeCharacters": 85
+        }
+      }
+    },
+    {
+      "locale": "cs",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "38cb106013a7006eff0f9739691e540e0c3ff3f8e2f1e6ed6ad80a3c1d58f723",
+          "unicodeCharacters": 37
+        },
+        "week-left": {
+          "sha256": "68264f385e128623797d3eed500306c52d084e715a2f91e3918ae247bdb9d479",
+          "unicodeCharacters": 48
+        },
+        "week-right": {
+          "sha256": "76f59fa9fe402158d08e277d8bf0e0125c417bf90d9853026f300aa60e7cd3a0",
+          "unicodeCharacters": 47
+        },
+        "widgets": {
+          "sha256": "1320a054aff73c9e658ca9529b10411ad545bea62ba087eaf0bb3a76ea1b2ef5",
+          "unicodeCharacters": 60
+        },
+        "live": {
+          "sha256": "fed52d0e99e42b726bca5d93314a00b5664248dfd60418a294e7ac208ae2aa3a",
+          "unicodeCharacters": 78
+        }
+      }
+    },
+    {
+      "locale": "hu",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "4f38595c4209e41c912cb16b71998d4a33af71d9a6df22a08c4b0a78fd8a2d3b",
+          "unicodeCharacters": 40
+        },
+        "week-left": {
+          "sha256": "d0b0f094ee99c18564cc7e84bc0afa2008d993d365c989978c9eacc5570a7e60",
+          "unicodeCharacters": 42
+        },
+        "week-right": {
+          "sha256": "a029ca410478a39d54327fc5aef76fb0f450f2c19e6e4db4edd2a35df6e2a438",
+          "unicodeCharacters": 46
+        },
+        "widgets": {
+          "sha256": "8ca693a4e8b5465218bead7c068a4e711e5e9fca311090035186501868f2707e",
+          "unicodeCharacters": 66
+        },
+        "live": {
+          "sha256": "3c56a96c002bddb6c164ba34a7769dc7055df3af8c0729bf78c858f534aaa0ee",
+          "unicodeCharacters": 90
+        }
+      }
+    },
+    {
+      "locale": "ro",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "28136522a874a4a8937e67bf28e87ecced50e237754e263df65f87aef37bbec0",
+          "unicodeCharacters": 37
+        },
+        "week-left": {
+          "sha256": "a4ea7fbb4164a77cb105aefa192bc77db99705f24177699e6330b9ea26cd05c0",
+          "unicodeCharacters": 57
+        },
+        "week-right": {
+          "sha256": "13038eb2d04ff978d832b302ad67f24dfbcaf227a6dba29cb9624e7d02df29ad",
+          "unicodeCharacters": 46
+        },
+        "widgets": {
+          "sha256": "018b671bd3070026f8aa79469627184f63b579c6f682e34effc514e53219842c",
+          "unicodeCharacters": 71
+        },
+        "live": {
+          "sha256": "e126232bafea31842dcf3eeb3e687b185969e33c2faeca42933a2f61999d38fe",
+          "unicodeCharacters": 88
+        }
+      }
+    },
+    {
+      "locale": "el",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "ad0d7281085bc27980f75e731b0074cd9dffe726a16508dc59a2e24895ad579f",
+          "unicodeCharacters": 41
+        },
+        "week-left": {
+          "sha256": "b9ab2efa4a2e08cdf6c38b7f2d3804a415094f5359587c61d92960a7de0bec78",
+          "unicodeCharacters": 57
+        },
+        "week-right": {
+          "sha256": "201df7f84620e61866412200254d3070bdf73bec288825116a44f709a8a8be7a",
+          "unicodeCharacters": 50
+        },
+        "widgets": {
+          "sha256": "235be6773870f3f2fe5bc27652f3971b3dc2a45c0f58e3d1c50d4830b5140acb",
+          "unicodeCharacters": 69
+        },
+        "live": {
+          "sha256": "7f9453146ee1665ed17d9b6df0875f0887c3e17c12050b42da045dca0b1e080d",
+          "unicodeCharacters": 101
+        }
+      }
+    },
+    {
+      "locale": "tr",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "c4a219beb772d9dda8f86433f5768ea87f45b078a4208bb0274d1132f189838a",
+          "unicodeCharacters": 46
+        },
+        "week-left": {
+          "sha256": "b0269f50cae8f5a1b02305dffcaa1a89f1b6d447bdefb31b69ad1b3d8bc17e70",
+          "unicodeCharacters": 52
+        },
+        "week-right": {
+          "sha256": "39c71bfc7a5f905429d5c2c6b4075e4fe578b5466bae63690b244ce0dfd93385",
+          "unicodeCharacters": 55
+        },
+        "widgets": {
+          "sha256": "7acf213da007b6b4b83ac8717589007bab1f04488ff5e5a2a546b10b9b286f18",
+          "unicodeCharacters": 77
+        },
+        "live": {
+          "sha256": "0c8d523655a5a093e63a7c5fb4303a364decb82afb4c7cf133960a044ff4cebd",
+          "unicodeCharacters": 84
+        }
+      }
+    },
+    {
+      "locale": "id",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "1104ba12b1a02fb15994bd88004061ae425e7d1f2ced80dc1a6f8320cadcba65",
+          "unicodeCharacters": 43
+        },
+        "week-left": {
+          "sha256": "a6ce04d3e219f6683414477ccbcc4ea2e305583d03b24170c9216b4701874026",
+          "unicodeCharacters": 49
+        },
+        "week-right": {
+          "sha256": "b285e782ff65c051de21aaae5a75d6d0c50d998bff391ce7c62f81d190956a2c",
+          "unicodeCharacters": 50
+        },
+        "widgets": {
+          "sha256": "b230e53dac09d2705e4c8e7d492f0881d497d7a098115649e2bda175b139a7d8",
+          "unicodeCharacters": 61
+        },
+        "live": {
+          "sha256": "3e59f8d770e03eccadb1d9b8a6c2f0963e18a4776fa258fdb4d17672813cfc7b",
+          "unicodeCharacters": 95
+        }
+      }
+    },
+    {
+      "locale": "ms",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "a9e4e73027371a9b370c879f536e3fd1e9d3b0f9b584d31f72c125cfadc2c8d9",
+          "unicodeCharacters": 43
+        },
+        "week-left": {
+          "sha256": "f904e0f84a95d57842e429d4c7eeb8b520b666370bfe47fb2af332aa16dd0f96",
+          "unicodeCharacters": 48
+        },
+        "week-right": {
+          "sha256": "69c46a8639ce2f610abc6c117bc742fbf1a7aa280dd00cb1a454034b5782b448",
+          "unicodeCharacters": 50
+        },
+        "widgets": {
+          "sha256": "cbd896b2160637788e969cc497fa8cf3113fb425b5a1a0f4a59af9a0b0747478",
+          "unicodeCharacters": 61
+        },
+        "live": {
+          "sha256": "de84ca0e80f3f72f396696b40ac84b1501b08cda2d67dffe6972c3efbcabf3c2",
+          "unicodeCharacters": 97
+        }
+      }
+    },
+    {
+      "locale": "vi",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "12d5097b4a5f8007b426cdf9e6360fd03c22c02df59daaacaa17b1ce5802fa34",
+          "unicodeCharacters": 39
+        },
+        "week-left": {
+          "sha256": "7072b07505cd6ea1a19fe951c1a1e592ebdf1c82a83a5fb773046dc710cb7ae3",
+          "unicodeCharacters": 50
+        },
+        "week-right": {
+          "sha256": "6d8d515bf7b43ba7fd069bd117588334309f9db1699f396528d29bf5b6bf1979",
+          "unicodeCharacters": 53
+        },
+        "widgets": {
+          "sha256": "9ed24334680d7e311935ad99642bf2d01d237dbea5238389b399a569c268cb9b",
+          "unicodeCharacters": 71
+        },
+        "live": {
+          "sha256": "31f24a33ef30b541b89b64050b1fc720b24e7a7827902e2f4fd5c460174da52b",
+          "unicodeCharacters": 94
+        }
+      }
+    },
+    {
+      "locale": "ja",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "fddc3e9d7fc65697c97b937960790a69d101aa467dd560f227927b58218d24ac",
+          "unicodeCharacters": 18
+        },
+        "week-left": {
+          "sha256": "c339d33cfea3a5d223b17064deda51dfdbd5f5c990dc9f22e5db2adf51787c9f",
+          "unicodeCharacters": 16
+        },
+        "week-right": {
+          "sha256": "cbdad3ccf6b4bc566520365bb072fb8e09e9618f70e5f2c83376712536a4ccf6",
+          "unicodeCharacters": 20
+        },
+        "widgets": {
+          "sha256": "e1bc808f1ca0b0ec0d5f0b3d47c3566593898a7e1597ab82536ff7496febf1d0",
+          "unicodeCharacters": 28
+        },
+        "live": {
+          "sha256": "8a1e5fbdcac2b6db48df3f545db0fce27835beef7357e81350fefec097dbeec9",
+          "unicodeCharacters": 33
+        }
+      }
+    },
+    {
+      "locale": "ko",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "4a9bf86915640faaabef03b9ca05d83956195854a2aa58030db2e7fc083b8fe7",
+          "unicodeCharacters": 18
+        },
+        "week-left": {
+          "sha256": "0bb311a4280ca075afbf0b8198e27f221d9c67d726bbcc0d4360c71594b16b3b",
+          "unicodeCharacters": 19
+        },
+        "week-right": {
+          "sha256": "7799270843d5e362ab600f9609f45810c95c5225f1b5412e27cb389e5f79cf3c",
+          "unicodeCharacters": 22
+        },
+        "widgets": {
+          "sha256": "bd56aa524d5845555d4cdaf472132035a6246bf6110c914d7945a4d5a5a05f94",
+          "unicodeCharacters": 30
+        },
+        "live": {
+          "sha256": "b601aa08ac57fe94844cfc837feab40388dd03825fe20a51881feb10345973d8",
+          "unicodeCharacters": 38
+        }
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "fd6c82e4c47dbe3cecc2c8970729da0dbf641b9b20e05f77db615601f7fdebe4",
+          "unicodeCharacters": 13
+        },
+        "week-left": {
+          "sha256": "6cbc5e8958b5daf3c3c38a77c945cc2a958f79fb22eff3faf365d6073b02884e",
+          "unicodeCharacters": 13
+        },
+        "week-right": {
+          "sha256": "15b812e07aa6da3c18e8a9578ed833049f93f40a5413449fdd0de345347889a7",
+          "unicodeCharacters": 15
+        },
+        "widgets": {
+          "sha256": "8193846d14e13c73edb64b0f731418292c7bfc15d8b70ce274c6e25b6b40ee24",
+          "unicodeCharacters": 22
+        },
+        "live": {
+          "sha256": "d23629db91856cabed45f90201854e85011b015b0b359418ed8b6ed5ce22c1fc",
+          "unicodeCharacters": 22
+        }
+      }
+    },
+    {
+      "locale": "zh-Hant",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Good semantic confidence for these short descriptive labels; not native-speaker approval.",
+      "fields": {
+        "hook": {
+          "sha256": "28334493e8e2e072cb79c4bc77c60cebc255e051e8e2887da40e6b59ee50c32e",
+          "unicodeCharacters": 13
+        },
+        "week-left": {
+          "sha256": "f3b3fbfb5e67e3346ea3bd924bf465752f4ed388f7ce661255ad541e1bb45ef8",
+          "unicodeCharacters": 13
+        },
+        "week-right": {
+          "sha256": "2ba6537a882b6ecf1f4ca8ebe6f86d1570550b4e6c03b6b24591c33461cfbebc",
+          "unicodeCharacters": 15
+        },
+        "widgets": {
+          "sha256": "08867edf0f466e74b7163b35af3f745eb353a6ba4dc589d0811a2be05b8c3db6",
+          "unicodeCharacters": 22
+        },
+        "live": {
+          "sha256": "d0a233561588ae1cae67cd82f54137ed26cb933a63fd9216a7e410820f6eabaa",
+          "unicodeCharacters": 22
+        }
+      }
+    },
+    {
+      "locale": "hi",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "75753c5f74aa673a7dedac1180ac73a8329adc62cb1324a61695595815a26c75",
+          "unicodeCharacters": 36
+        },
+        "week-left": {
+          "sha256": "ca231855f2c3507ce13f81caf40277099bbae17e86e344714c933c12a6b42787",
+          "unicodeCharacters": 51
+        },
+        "week-right": {
+          "sha256": "a11bdbe4785f9f819fb2f6948b4a45126136433fbfdf4c91de2a196cfcf5dc16",
+          "unicodeCharacters": 44
+        },
+        "widgets": {
+          "sha256": "ff34da4661e522cd4e940b190017138a07b5459da84b47c51717efc3a1f8fc4e",
+          "unicodeCharacters": 59
+        },
+        "live": {
+          "sha256": "a4754548ab1ae923b1065fbb1d145ee44557ec7bff0305558a0afe818bfe8fb4",
+          "unicodeCharacters": 77
+        }
+      }
+    },
+    {
+      "locale": "th",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "743b3a753b2710890de01eccb7d43005055bdf65a114582741894d8d8f7185da",
+          "unicodeCharacters": 36
+        },
+        "week-left": {
+          "sha256": "1837912515c9a72ea770f99b53d7e594bbc43b691df01b0996de1b8b48451531",
+          "unicodeCharacters": 40
+        },
+        "week-right": {
+          "sha256": "629cb8433997c562eb6a0e1427dc3e2f0a2e6a0fa009775fe359b9e55a1dfe6d",
+          "unicodeCharacters": 46
+        },
+        "widgets": {
+          "sha256": "e53fd93f0afd8902a03e2540bf51686e3868ff413d2d37b9f455fcbea0e3a05f",
+          "unicodeCharacters": 65
+        },
+        "live": {
+          "sha256": "71ba5bd373e1ebcd165cfc8d66c310ab7a53e3eb209b574ad2135591a0754c46",
+          "unicodeCharacters": 64
+        }
+      }
+    },
+    {
+      "locale": "ar-SA",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "bca5eac27c3fe5173a6abe381eb0dcc05fc4f44f10b2e86cdaf9cbe777ee82fd",
+          "unicodeCharacters": 31
+        },
+        "week-left": {
+          "sha256": "0c4159183cb46ba256f78fe7d8cb85135023ead323a1080c9d939c5bb3625fd0",
+          "unicodeCharacters": 40
+        },
+        "week-right": {
+          "sha256": "f668adc5c4419c57fe0322d8b345d68f4d479f3e3c810c3f9e7dfeb8fd8f2107",
+          "unicodeCharacters": 37
+        },
+        "widgets": {
+          "sha256": "5c3fed3956ba3f8fd1a4ac86a113a81c40eea2d0741ca2d174a6166d10a45808",
+          "unicodeCharacters": 62
+        },
+        "live": {
+          "sha256": "8c53062e6381164902312716ad3f274ab7b29fd6a1e74b751ff1cb7f431a0304",
+          "unicodeCharacters": 69
+        }
+      }
+    },
+    {
+      "locale": "he",
+      "readKeys": [
+        "hook",
+        "week-left",
+        "week-right",
+        "widgets",
+        "live"
+      ],
+      "status": "pass",
+      "confidence": "Moderate semantic confidence; locale-specific UI terminology not independently certified.",
+      "fields": {
+        "hook": {
+          "sha256": "6bfd3d311adb75e557d71a0ae1145dc1bc9e3b6540443ac70045a90811c93db7",
+          "unicodeCharacters": 36
+        },
+        "week-left": {
+          "sha256": "fc03577946022f39404cc95d39181fa2c14f8ee0ad00daf7441f4c3edeece89b",
+          "unicodeCharacters": 42
+        },
+        "week-right": {
+          "sha256": "2f03e2b3288f666f302d6f54a938d036b8d61245013a1bcc423fde67bc8afcf0",
+          "unicodeCharacters": 42
+        },
+        "widgets": {
+          "sha256": "938c4bbd24f429769d3cc6fcc73a9db4886c9e9b7a97041b014cdca4a07dae36",
+          "unicodeCharacters": 56
+        },
+        "live": {
+          "sha256": "7a19f07a88a6e0aaf045aa1a4b2c9dbb371093b4d3f7f8624c15ed98c21ed545",
+          "unicodeCharacters": 62
+        }
+      }
+    }
+  ],
+  "limits": [
+    "No independent screenshot/pixel inspection in this language review; English label-to-image match relies on separate visual review.",
+    "No browser, screen-reader or runtime certification. RTL and semantic-key association are integration checks for root.",
+    "No source or proposal mutation; only this review artifact written."
+  ]
+}

@@ -1,0 +1,2291 @@
+{
+  "originalSha256": "c018509b142ecac8161b394fcd8f894bc0a49a7f1c39305880e29499619b09cc",
+  "reviewedSha256": "94c0bd411d9c9b6d906ce70ae18e4042143a4528bb892fe5a0ccc76d969e9238",
+  "changes": {
+    "display-multiple-time-zone-columns-google-calendar-outlook": [
+      {
+        "path": "/description",
+        "before": "Show 2 or 3 time zones side by side in Google Calendar and Outlook Day/Week view, compare version limits, and see why display columns never move saved events.",
+        "after": "Add parallel time-zone rulers in Google Calendar and Outlook. Check classic Outlook version limits, labels and the view without changing event times."
+      },
+      {
+        "path": "/title",
+        "before": "How to Display 2 or 3 Time Zones in Google Calendar and Outlook (Limits & Views)",
+        "after": "Show additional time zones in Google Calendar and Outlook"
+      },
+      {
+        "path": "/lede",
+        "before": "When you coordinate across two or three offices every day, mentally adding and subtracting UTC offsets leads to booking errors. Both Google Calendar and Microsoft Outlook let you display up to three time-zone ruler columns along the left edge of your calendar grid—and knowing which views and Outlook versions support a third column keeps your multi-zone grid readable without changing any stored event times.",
+        "after": "Extra time-zone rulers let you read one meeting slot in several cities without editing the meeting. Google documents a primary, secondary and tertiary zone. Outlook controls differ by version; do not apply the classic Outlook limit to every Outlook client."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Adding a second or third time zone in your calendar settings changes the stored time zone of your existing meetings.",
+        "after": ""
+      },
+      {
+        "path": "/sources/0/label",
+        "before": "Google Calendar Help — Use Google Calendar in different time zones (Show additional time zones & World clock)",
+        "after": "Google: additional time zones and world clock"
+      },
+      {
+        "path": "/sources/1/label",
+        "before": "Microsoft Support — Manage time zone settings in Outlook (New Outlook, Classic Outlook & Web)",
+        "after": "Microsoft: version-specific time-zone controls"
+      },
+      {
+        "path": "/practical/0",
+        "before": "Switch to **Day** or **Week** view whenever you want to see your secondary or tertiary time-zone columns; Month view hides the vertical hour axis.",
+        "after": "Identify the Outlook client and version."
+      },
+      {
+        "path": "/practical/1",
+        "before": "Give each time-zone column a short 2–4 character label (such as `PT`, `ET`, `UK` or `LAX`, `NYC`, `LON`) so the left gutter stays narrow on laptop screens.",
+        "after": "Use named city zones and short, meaningful labels."
+      },
+      {
+        "path": "/practical/2",
+        "before": "In Google Calendar, use the 3 grid columns for your top three daily meeting hubs and put occasional regions into `Settings > General > World clock`.",
+        "after": "Return to an hourly Day or Week view to inspect additional rulers."
+      },
+      {
+        "path": "/practical/3",
+        "before": "In Classic Outlook, note that `Swap Time Zones` shifts which zone controls the primary calendar ruler; in New Outlook and Outlook on the web, `Move up` and `Move down` reorder the `Other time zones` list separately from `Display my calendar in time zone`.",
+        "after": "Compare a known event before editing any meeting."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why can I only add a second time zone in Classic Outlook, with no checkbox for a third time zone?",
+            "a": "According to Microsoft's official Outlook time-zone documentation, displaying up to three time zones in Classic Outlook requires the latest version of Outlook for Microsoft 365 (or New Outlook / Outlook on the web). Classic Outlook 2019 LTSC and Outlook 2016 support a maximum of two time zones."
+          },
+          {
+            "q": "Does adding a secondary time zone in Google Calendar or Outlook change the time zone of events I create?",
+            "a": "No. New events default to your primary display time zone unless you explicitly pick another time zone inside the event editor. The secondary and tertiary columns only display parallel hour labels along the left margin."
+          },
+          {
+            "q": "Why did my second time zone disappear when I switched Outlook to Month view?",
+            "a": "Microsoft documents that additional time zones are visible only in Day or Week view, because those are the views that render a vertical hourly scale."
+          }
+        ],
+        "after": [
+          {
+            "q": "Does new Outlook have the same three-zone limit as classic Outlook?",
+            "a": "The cited Microsoft page gives a three-zone limit for the latest classic Outlook for Microsoft 365, not a universal cap for new Outlook or web. Use the controls in your current client."
+          },
+          {
+            "q": "Does adding a second ruler change a saved meeting?",
+            "a": "It adds another way to read the same instant. Changing an event’s own time zone is a separate edit."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Illustrative 3-Column Time-Axis Ruler & Platform Capability Matrix (Winter Standard Time)",
+        "after": "January 15, 2026: one row read in three cities"
+      },
+      {
+        "path": "/comparison/rows",
+        "before": [
+          {
+            "cells": [
+              "Maximum Grid Time-Axis Columns",
+              "Primary time zone",
+              "Secondary time zone",
+              "Tertiary time zone",
+              "Up to **3 columns** + sidebar `World clock`",
+              "**3 columns** in M365 / New / Web; **2 columns** max in Outlook 2019 LTSC & 2016"
+            ]
+          },
+          {
+            "cells": [
+              "Views Showing Extra Columns",
+              "Day & Week views",
+              "Day & Week views",
+              "Day & Week views",
+              "Left side of Day/Week hourly grid",
+              "Visible **only in Day or Week view**"
+            ]
+          },
+          {
+            "cells": [
+              "Early Morning Row (EU/East Coast Open)",
+              "`06:00 PST` (Pre-work)",
+              "`09:00 EST` (Workday starts)",
+              "`14:00 GMT` (Afternoon)",
+              "Row aligns at `14:00Z`",
+              "Row aligns at `14:00Z`"
+            ]
+          },
+          {
+            "cells": [
+              "3-Office Overlap Window (2 Hours)",
+              "`08:00–10:00 PST`",
+              "`11:00–13:00 EST`",
+              "`16:00–18:00 GMT`",
+              "All 3 offices inside `08:00–18:00` local hours",
+              "Organizer's zone serves as reference point"
+            ]
+          },
+          {
+            "cells": [
+              "Afternoon Row (After UK Close)",
+              "`14:00 PST`",
+              "`17:00 EST` (End of day)",
+              "`22:00 GMT` (After hours)",
+              "Row aligns at `22:00Z`",
+              "Row aligns at `22:00Z`"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "cells": [
+              "06:00",
+              "09:00",
+              "14:00",
+              "14:00Z"
+            ]
+          },
+          {
+            "cells": [
+              "08:00–10:00",
+              "11:00–13:00",
+              "16:00–18:00",
+              "16:00–18:00Z"
+            ]
+          },
+          {
+            "cells": [
+              "14:00",
+              "17:00",
+              "22:00",
+              "22:00Z"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Grid Row / Capability",
+          "Column 1: Primary (`Los Angeles` `UTC-8`)",
+          "Column 2: Secondary (`New York` `UTC-5`)",
+          "Column 3: Tertiary (`London` `UTC+0`)",
+          "Google Calendar Web",
+          "Outlook (M365 / New / Web vs 2019 / 2016)"
+        ],
+        "after": [
+          "Los Angeles",
+          "New York",
+          "London",
+          "UTC"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "Why additional time-zone columns are a ruler overlay, not an event edit",
+        "after": "Google Calendar: additional rulers or the world clock"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "As documented by both Google Calendar (`Use Google Calendar in different time zones`) and Microsoft Outlook (`Manage time zone settings in Outlook`), calendar items are saved in Coordinated Universal Time (`UTC`) and positioned vertically on your grid according to your **primary display time zone**.",
+          "When you enable a second or third time zone on your calendar grid, you are not modifying any event's `DTSTART`, `DTEND`, or `TZID`. Instead, the calendar draws one or two extra vertical hour rulers beside your primary hour ruler on the left side of the Day or Week grid. An event at `14:00` in your primary Pacific Time column (`UTC-08:00`) stays in the exact same horizontal row; the adjacent Mountain Time (`UTC-07:00`) and Eastern Time (`UTC-05:00`) ruler columns simply label that same horizontal row as `15:00` and `17:00`.",
+          "Microsoft explicitly notes an important view rule: **additional time-zone columns are visible only when you view the calendar in Day or Week view** (where a vertical hourly ruler exists). In Month view or Year view, there is no vertical hour axis, so only one date grid is shown."
+        ],
+        "after": [
+          "On a computer, open Settings, then General and Time zone. Google documents Show additional time zones, a Secondary time zone and an optional Tertiary time zone. Return to an hourly calendar view and inspect the parallel labels.",
+          "For other cities, General > World clock offers Show world clock and Add time zone. This is a sidebar clock, a different display from an extra calendar ruler."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "How to show Primary, Secondary, and Tertiary time zones in Google Calendar",
+        "after": "Outlook: identify the client before following its menus"
+      },
+      {
+        "path": "/sections/1/body/0",
+        "before": "In Google Calendar on a computer, official documentation distinguishes two separate ways to see extra time zones without changing your calendar's primary zone:",
+        "after": "In new Outlook and Outlook on the web, Microsoft documents Settings > Calendar > View, then Add time zone. Choose the city under Other time zones, optionally give it a label, enable Show in calendar and save. Move up and Move down reorder the additional zones. The cited page does not establish a maximum of three for these clients; its web instructions explicitly discuss three or more."
+      },
+      {
+        "path": "/sections/1/body/1",
+        "before": "1. **Up to three time-zone columns on the calendar grid (`Primary`, `Secondary`, and `Tertiary`):** Open Google Calendar on your computer, click `Settings menu > Settings` in the top right, and select `Time zone` under `General` on the left. Check the box next to `Show additional time zones`, choose your `Secondary time zone`, and optionally choose a `Tertiary time zone`. All three columns (`Primary`, `Secondary`, and `Tertiary`) appear along the left edge of your Day and Week grid.",
+        "after": "For classic Outlook, use File > Options > Calendar > Time zones. Microsoft says the latest Outlook for Microsoft 365 supports up to three zones; other classic versions, including Outlook 2019 LTSC and Outlook 2016, support two. Use the second/third-zone checkboxes actually available in that version."
+      },
+      {
+        "path": "/sections/1/body/2",
+        "before": "2. **More than three zones via the `World clock` sidebar:** If you track four or more regions, stay in `Settings > General > World clock`, check `Show world clock`, and click `Add time zone` for each additional city. The World clock appears in the left-hand sidebar rather than widening the vertical time-axis gutter on the grid.",
+        "after": "Microsoft says the second zone is visible in day or week view. If a label disappears in another view, return to Day or Week before changing event data."
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "How to add and swap 2 or 3 time zones across Microsoft Outlook versions",
+        "after": "Worked winter check: three offices, one instant"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "Microsoft's official documentation (`Manage time zone settings in Outlook`) specifies different maximum column limits and menu paths depending on which version of Outlook you run:",
+          "- **New Outlook for Windows, Outlook on the web, and Outlook.com (up to 3 time zones):** Select `Settings > Calendar > View > Time zones`. Your main zone is set under `Display my calendar in time zone` (with a `Label` field). To add a second or third column, click `Add time zone` under `Other time zones`, search for the city, add a custom `Label`, check `Show in calendar`, and click `Save`. You can reorder columns using `Move up` or `Move down`.",
+          "- **Classic Outlook for Microsoft 365 (up to 3 time zones) vs Outlook 2019 LTSC and Outlook 2016 (maximum 2 time zones):** In Classic Outlook, open `File > Options > Calendar` and scroll to `Time zones`. In the latest versions of Outlook for Microsoft 365, you can check both `Show a second time zone` and `Show a third time zone`. In Classic **Outlook 2019 LTSC and Outlook 2016**, Microsoft documents that **you can only display two time zones**. Clicking `Swap Time Zones` exchanges the column positions."
+        ],
+        "after": [
+          "For this author-calculated example, use January 15, 2026 and 08:00 in Los Angeles. That is 16:00 UTC, 11:00 in New York and 16:00 in London. All three labels describe one instant.",
+          "With illustrative working hours of 08:00–18:00 in each city, the shared interval is 08:00–10:00 Los Angeles, 11:00–13:00 New York and 16:00–18:00 London: two hours. This is a calculation for the stated date and hours, not a measurement of anyone’s availability."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "Illustrative 3-column hour alignment (`Los Angeles`, `New York`, `London`)",
+        "after": "Verify a ruler without moving a meeting"
+      },
+      {
+        "path": "/sections/3/body",
+        "before": [
+          "Suppose your primary display zone is `America/Los_Angeles` (`PST`, `UTC-08:00`), your secondary column is `America/New_York` (`EST`, `UTC-05:00`), and your tertiary column is `Europe/London` (`GMT`, `UTC+00:00`) during standard winter time. This illustrative ruler table shows how a single horizontal slot aligns across all three columns and identifies the 2-hour daily window (`08:00–10:00 PST`) where standard `08:00–18:00` workdays overlap across all three offices."
+        ],
+        "after": [
+          "Record one harmless event’s date and start, add the display columns, and compare that same event. Adding a secondary display label is different from changing the event’s own time zone.",
+          "Changing the primary display zone can move where events appear on your grid; verify the saved event instant rather than assuming a different visible hour means the meeting was rescheduled."
+        ]
+      }
+    ],
+    "non-integer-30-and-45-minute-utc-offset-calendar-scheduling": [
+      {
+        "path": "/description",
+        "before": "Schedule cleanly across `:30` and `:45` UTC offsets (`Asia/Kolkata` `+05:30`, `America/St_Johns` `-03:30`, `Asia/Kathmandu` `+05:45`) and calculate working-hours overlap.",
+        "after": "Check dated meeting conversions for India, Nepal, Newfoundland and Adelaide. Calculate overlap from local working hours instead of assuming whole-hour offsets."
+      },
+      {
+        "path": "/title",
+        "before": "Half-Hour (`:30`) and 45-Minute (`:45`) Time Zones: Calendar Grid & Working-Hours Math",
+        "after": "Half-hour and quarter-hour time zones: calculate a meeting that fits"
+      },
+      {
+        "path": "/lede",
+        "before": "Most time zones differ from UTC by whole hours, so a meeting starting at `:00` (top of the hour) in New York or London also starts at `:00` in Berlin, Tokyo, and Sydney. Several major regions, however—including India and Sri Lanka (`UTC+05:30`), central Australia (`UTC+09:30` / `+10:30`), Newfoundland (`UTC-03:30` / `-02:30`), and Nepal (`UTC+05:45`)—use 30-minute or 45-minute offsets, meaning every top-of-the-hour slot in a whole-hour zone lands on a `:30`, `:15`, or `:45` minute boundary on the other side.",
+        "after": "An hour line in London need not be an hour line in India or Nepal. Use the date and named city zone, then check the whole meeting against each person’s working hours. Fractional offsets and seasonal changes both matter."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "All official time zones are separated by whole hours (`1, 2, 3...`), so a 1-hour meeting from `09:00` to `10:00` always aligns with an hour line on every attendee's calendar grid.",
+        "after": ""
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.14 UTC-OFFSET)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          },
+          {
+            "label": "IANA — Time Zone Database (`tzdb` / `zoneinfo`)",
+            "url": "https://www.iana.org/time-zones"
+          },
+          {
+            "label": "Google Calendar Help — Use Google Calendar in different time zones",
+            "url": "https://support.google.com/calendar/answer/37064?hl=en"
+          },
+          {
+            "label": "Google Calendar Help — Set your working hours",
+            "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop"
+          }
+        ],
+        "after": [
+          {
+            "label": "IANA: Time Zone Database",
+            "url": "https://www.iana.org/time-zones"
+          },
+          {
+            "label": "RFC 5545: UTC-OFFSET",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.14"
+          },
+          {
+            "label": "RFC 5545: DATE-TIME forms",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5"
+          },
+          {
+            "label": "Google: time zones",
+            "url": "https://support.google.com/calendar/answer/37064?hl=en"
+          },
+          {
+            "label": "Google: work or school working hours",
+            "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "When booking a 30-minute or 60-minute call with colleagues in India (`Asia/Kolkata`, `UTC+05:30`) or Newfoundland (`America/St_Johns`, `UTC-03:30`), check whether starting at `:30` in your whole-hour zone fits better against their `18:00` end-of-day boundary.",
+        "after": "Use an exact date and named city zone."
+      },
+      {
+        "path": "/practical/1",
+        "before": "Add `Asia/Kolkata` (`+05:30`) as a secondary time-zone column in Google Calendar or Outlook Day/Week view so you can see the half-hour offset alignment visually next to your `:00` ruler.",
+        "after": "Convert the full start–end interval."
+      },
+      {
+        "path": "/practical/2",
+        "before": "Remember that two `:30` zones (such as `Asia/Kolkata` `+05:30` and `Australia/Adelaide` `+09:30`/`+10:30`, or `America/St_Johns` `-03:30`) differ by a **whole number of hours**, so `:00` in one is `:00` in the other.",
+        "after": "Intersect the two local workdays."
+      },
+      {
+        "path": "/practical/3",
+        "before": "For Nepal (`Asia/Kathmandu`, `UTC+05:45`), enable `15-minute` grid slot increments in your calendar view so `:15` and `:45` meeting boundaries are easy to drag and inspect.",
+        "after": "Confirm a suitable slot with the recipient; a calculated overlap is not a booking."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why does a 1-hour meeting from `12:00 to 13:00 GMT` trigger an out-of-working-hours warning for an attendee in India whose hours end at `18:00 IST`?",
+            "a": "Because `UTC+05:30` adds 5 hours and 30 minutes to `GMT`: `12:00–13:00 GMT` is `17:30–18:30 IST`, pushing the second half of the meeting 30 minutes past `18:00 IST`. Moving the meeting to `11:30–12:30 GMT` places it at `17:00–18:00 IST`."
+          },
+          {
+            "q": "Does India (`Asia/Kolkata`) ever change its offset for Daylight Saving Time?",
+            "a": "No. India observes Indian Standard Time (`IST`, `UTC+05:30`) year-round. When the US or UK switches to summer time, the gap to India shrinks by 1 full hour (for example, from `10 hours 30 minutes` to `9 hours 30 minutes` against New York, and from `5 hours 30 minutes` to `4 hours 30 minutes` against London)."
+          },
+          {
+            "q": "Why does the time difference between New York and St. John's, Newfoundland stay at 1 hour 30 minutes all year?",
+            "a": "Because both `America/New_York` (`UTC-05:00` -> `UTC-04:00`) and `America/St_Johns` (`UTC-03:30` -> `UTC-02:30`) switch to Daylight Saving Time on the second Sunday in March and return to Standard Time on the first Sunday in November, maintaining a constant `+1h 30m` offset."
+          }
+        ],
+        "after": [
+          {
+            "q": "What is the London–Adelaide overlap for 09:00–18:00 workdays?",
+            "a": "On January 15, 2026 there is none. On July 15 there is half an hour, 09:00–09:30 London / 17:30–18:00 Adelaide. Different hours or dates require a fresh calculation."
+          },
+          {
+            "q": "Do fractional zones always shift every meeting by 30 minutes?",
+            "a": "No. Compare both zones on the date. India and Nepal differ by 15 minutes; two half-hour-offset zones can differ by a whole number of hours."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Illustrative Fractional UTC Offset (`:30` & `:45`) Conversion & Working-Hours (`09:00–18:00`) Overlap Table",
+        "after": "Pairwise 09:00–18:00 working hours, calculated for two dates"
+      },
+      {
+        "path": "/comparison/rows/0/cells",
+        "before": [
+          "India / Sri Lanka (`Asia/Kolkata`, `Asia/Colombo`)",
+          "`UTC+05:30` year-round (No DST)",
+          "vs UK: `+5h 30m` (Win) / `+4h 30m` (Sum); vs NY: `+10h 30m` (Win) / `+9h 30m` (Sum)",
+          "**`14:30 IST`**",
+          "Start at **`:30`** in UK/US (e.g., `09:30 GMT` = `15:00 IST`)",
+          "`09:00–12:30 GMT` = `14:30–18:00 IST` (**3.5 hours** in winter; **4.5 hours** in summer)"
+        ],
+        "after": [
+          "Kolkata",
+          "14:30",
+          "09:00–12:30 London (3.5 h)",
+          "13:30",
+          "09:00–13:30 London (4.5 h)"
+        ]
+      },
+      {
+        "path": "/comparison/rows/1/cells",
+        "before": [
+          "Nepal (`Asia/Kathmandu`)",
+          "`UTC+05:45` year-round (No DST)",
+          "vs UK: `+5h 45m` (Win) / `+4h 45m` (Sum); vs India: `+0h 15m`",
+          "**`14:45 NPT`**",
+          "Start at **`:15`** in UK/US (e.g., `09:15 GMT` = `15:00 NPT`)",
+          "`09:00–12:15 GMT` = `14:45–18:00 NPT` (**3.25 hours** in winter)"
+        ],
+        "after": [
+          "Kathmandu",
+          "14:45",
+          "09:00–12:15 London (3.25 h)",
+          "13:45",
+          "09:00–13:15 London (4.25 h)"
+        ]
+      },
+      {
+        "path": "/comparison/rows/2/cells",
+        "before": [
+          "Newfoundland (`America/St_Johns`)",
+          "`UTC-03:30` (`NST`) / `UTC-02:30` (`NDT`, US/CA DST dates)",
+          "vs UK: `-3h 30m` (mostly); vs NY: `+1h 30m` year-round",
+          "**`05:30 NST`** (`09:00 EST` NY = `10:30 NST`)",
+          "Start at **`:30`** in UK/NY (e.g., `09:30 EST` NY = `11:00 NST`)",
+          "`12:30–18:00 GMT` = `09:00–14:30 NST` (**5.5 hours** vs UK; **7.5 hours** vs NY)"
+        ],
+        "after": [
+          "St John’s",
+          "05:30",
+          "12:30–18:00 London (5.5 h)",
+          "05:30",
+          "12:30–18:00 London (5.5 h)"
+        ]
+      },
+      {
+        "path": "/comparison/rows/3/cells",
+        "before": [
+          "South Australia (`Australia/Adelaide`)",
+          "`UTC+09:30` (`ACST` Apr–Oct) / `UTC+10:30` (`ACDT` Oct–Apr)",
+          "vs UK: `+8h 30m` (Jun) to `+10h 30m` (Dec); vs India: `+4h 00m` / `+5h 00m`",
+          "**`19:30 ACDT`** (Jan) / **`18:30 ACST`** (Jul)",
+          "Start at **`:30`** in UK/US; start at **`:00`** in India (`+05:30`)",
+          "`08:00–08:30 BST` = `16:30–17:00 ACST` in Jun (**0.5h–1.5h** narrow window vs UK)"
+        ],
+        "after": [
+          "Adelaide",
+          "19:30",
+          "No 09:00–18:00 overlap",
+          "17:30",
+          "09:00–09:30 London (0.5 h)"
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "IANA Time Zone (`TZID`)",
+          "Winter / Summer UTC Offset",
+          "Difference vs London (`GMT` / `BST`) & NY (`EST` / `EDT`)",
+          "When London is `09:00 GMT` (`09:00Z`)",
+          "Local Start Needed to Hit `:00` in Fractional Zone",
+          "`09:00–18:00` Working-Hours Overlap vs London (`GMT`)"
+        ],
+        "after": [
+          "City",
+          "Jan 15: London 09:00 locally",
+          "Jan 15: London overlap",
+          "Jul 15: London 09:00 locally",
+          "Jul 15: London overlap"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "How RFC 5545 and IANA `tzdb` represent `:30` and `:45` UTC offsets",
+        "after": "Use a city and date, not an offset remembered from another season"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "In the iCalendar standard (RFC 5545 Section 3.3.14 `UTC-OFFSET`), a time-zone offset is formatted as `(+/-)hhmm` (or `(+/-)hhmmss`), explicitly supporting non-zero minute components inside `VTIMEZONE` `TZOFFSETFROM` and `TZOFFSETTO` properties. In the IANA Time Zone Database (`tzdb`), active civil jurisdictions use three fractional minute offsets:",
+          "- **`:30` (30-minute) offsets:** India (`Asia/Kolkata`, `UTC+05:30` year-round), Sri Lanka (`Asia/Colombo`, `UTC+05:30` year-round), Afghanistan (`Asia/Kabul`, `UTC+04:30`), Iran (`Asia/Tehran`, `UTC+03:30`), Myanmar (`Asia/Yangon`, `UTC+06:30`), Marquesas Islands (`Pacific/Marquesas`, `UTC-09:30`), Australian Central Time (`Australia/Darwin` at `UTC+09:30` year-round; `Australia/Adelaide` at `UTC+09:30` in winter and `UTC+10:30` in summer), and Newfoundland (`America/St_Johns` at `UTC-03:30` in winter and `UTC-02:30` in summer).",
+          "- **`:45` (45-minute) offsets:** Nepal (`Asia/Kathmandu`, `UTC+05:45` year-round), New Zealand's Chatham Islands (`Pacific/Chatham`, `UTC+12:45` in winter and `UTC+13:45` in summer), and Eucla in Western Australia (`Australia/Eucla`, `UTC+08:45`)."
+        ],
+        "after": [
+          "IANA maintains civil time-zone rules. The calculations here use Python zoneinfo with the installed 2026e-rearguard database and named zones. They are worked examples, not live availability checks; future rule changes can change results.",
+          "RFC 5545 section 3.3.14 permits minute components in UTC offsets. That does not mean a DATE-TIME can be written with an arbitrary numeric offset: section 3.3.5 distinguishes UTC, floating time and a local time with TZID. Use those valid forms when inspecting an ICS file."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "Why `:00` top-of-the-hour meetings straddle hour lines and meal/working-hour boundaries",
+        "after": "A meeting can start inside working hours and end outside them"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "When you schedule between a `:00` whole-hour zone (such as `Europe/London` at `UTC+00:00` or `America/New_York` at `UTC-05:00`) and a `:30` half-hour zone (such as `Asia/Kolkata` at `UTC+05:30`), every `:00` hour mark in one zone maps to `:30` in the other, and vice versa.",
+          "As documented in Google Calendar's working-hours guide (`Set your working hours`), users with work or school accounts configure their weekly `Working hours` (for example, `09:00 to 17:30` or `09:00 to 18:00` local time) so collaborators see when they are available. If an engineer in Bengaluru (`Asia/Kolkata`, `UTC+05:30`) sets working hours ending at `18:00 IST` (`12:30:00Z`) and a London colleague (`UTC+00:00`) books a 1-hour meeting at `12:00–13:00 GMT` (`12:00Z–13:00Z`), that meeting runs from **`17:30 to 18:30 IST`**—straddling the `18:00 IST` end-of-day boundary by 30 minutes and triggering an out-of-working-hours warning.",
+          "Scheduling that 1-hour meeting at **`11:30–12:30 GMT`** in London aligns it cleanly with **`17:00–18:00 IST`** in India so it finishes right at the `18:00 IST` working-hours boundary."
+        ],
+        "after": [
+          "On January 15, 2026, 12:00–13:00 London is 17:30–18:30 Kolkata. If the Kolkata workday ends at 18:00, half the meeting lies outside it. Moving the London slot to 11:30–12:30 produces 17:00–18:00 in Kolkata.",
+          "Google’s working-hours help documents the feature for work or school accounts and notes that an administrator may not enable it. Configuring those hours helps collaborators schedule; the arithmetic alone does not guarantee that every client displays a warning or rejects an invitation."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Illustrative slot-conversion and working-hours overlap matrix",
+        "after": "Find the intersection, not just the converted start"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "The illustrative table below computes exact winter and summer UTC offsets, `:00` vs `:30`/`:45` minute alignments, and the daily overlap window for standard `09:00–18:00` local working hours between London (`Europe/London`), New York (`America/New_York`), and four fractional-offset zones (`Asia/Kolkata`, `Asia/Kathmandu`, `America/St_Johns`, and `Australia/Adelaide`)."
+        ],
+        "after": [
+          "For each city, convert both ends of an assumed 09:00–18:00 workday to the same reference zone. The overlap starts at the later start and ends at the earlier end. If the end is no later than the start, there is no positive overlap.",
+          "The table applies that calculation to London and each city separately on January 15 and July 15, 2026. These are pairwise windows; they are not one window shared by all five cities."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "How two fractional-offset zones interact with each other",
+        "after": "Check the minute boundary before sending"
+      },
+      {
+        "path": "/sections/3/body/0",
+        "before": "A helpful calendar arithmetic shortcut occurs when **two `:30` zones** meet: because `0.5 + 0.5 = 1.0` (and `0.5 - 0.5 = 0.0`), the time difference between any two `:30` time zones is once again a **whole number of hours**! For example, between Bengaluru (`Asia/Kolkata`, `UTC+05:30`) and Adelaide (`Australia/Adelaide`, `UTC+09:30` winter / `UTC+10:30` summer), the difference is exactly **`4.0 hours` in winter** and **`5.0 hours` in summer** (`09:00 IST = 13:00 ACST` / `14:00 ACDT`), and between Bengaluru (`+05:30`) and St. John's, Newfoundland (`-03:30` winter / `-02:30` summer), the difference is **`9.0 hours` in winter** and **`8.0 hours` in summer**.",
+        "after": "India and Nepal differ by 15 minutes: 10:00 Kolkata is 10:15 Kathmandu on these dates. A whole-hour London start maps to :30 in Kolkata and :45 in Kathmandu. To reach an exact hour in Kathmandu, use :15 in London on these dates."
+      },
+      {
+        "path": "/sections/3/body/1",
+        "before": "Between India (`+05:30`) and Nepal (`Asia/Kathmandu`, `+05:45`), the difference is exactly **`+15 minutes`**: a `10:00 IST` meeting in Delhi/Bengaluru starts at **`10:15 NPT`** in Kathmandu.",
+        "after": "Inspect the saved start and end with the recipient’s city zone. Do not assume your calendar offers a specific 15-minute grid control; enter exact times in its supported editor if needed."
+      }
+    ],
+    "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch": [
+      {
+        "path": "/description",
+        "before": "See why two calendars show different week numbers for the same date when comparing ISO `First 4-day week` (Monday start) against `Starts on Jan 1` (Sunday start).",
+        "after": "Diagnose different week numbers with dated examples. Separate ISO week years, the first weekday and a January 1 rule before changing calendar events."
+      },
+      {
+        "path": "/title",
+        "before": "Why Calendar Week Numbers Disagree: ISO Monday-Start vs Sunday-Start (`Jan 1`) Rules",
+        "after": "Calendar week numbers disagree: compare the year rule and first weekday"
+      },
+      {
+        "path": "/lede",
+        "before": "Turning on 'Week numbers' in two different calendar apps—or comparing a U.S. Sunday-start calendar against a European Monday-start calendar—often produces two different week numbers for the exact same week. That mismatch is not a calculation error: calendar apps use three distinct week-numbering conventions (`First 4-day week`, `Starts on Jan 1`, and `First full week`) combined with different first-day-of-week (`WKST`) boundaries.",
+        "after": "Two calendars can show the same appointment date with different week labels. Compare both the first weekday and the rule for week 1. A Sunday-first grid alone does not tell you which numbering rule the calendar uses."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "There is only one universal week-number system, so 'Week 2' or 'Week 10' always means the exact same seven dates on every calendar.",
+        "after": ""
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: WKST & BYWEEKNO)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          },
+          {
+            "label": "Apple Support — Change your Calendar settings on iPhone",
+            "url": "https://support.apple.com/guide/iphone/iphc37be2016/ios"
+          },
+          {
+            "label": "Microsoft Support — Get started with the Outlook Calendar",
+            "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+          }
+        ],
+        "after": [
+          {
+            "label": "RFC 5545: BYWEEKNO and WKST",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+          },
+          {
+            "label": "Apple: Week Numbers and Start Week On",
+            "url": "https://support.apple.com/guide/iphone/iphc37be2016/ios"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "Whenever a week number is off by 1 between two calendars, check two settings: whether the year started on a **Friday or Saturday** (as in **2027** and **2028**, which makes `Starts on Jan 1` `+1 week` higher all year than ISO `First 4-day week`), and whether you are looking at a **Sunday** (`WKST=SU` vs `WKST=MO`).",
+        "after": "Compare the same exact calendar date."
+      },
+      {
+        "path": "/practical/1",
+        "before": "In Classic Outlook (`File > Options > Calendar`), set `First day of week` to `Monday` and `First week of year` to `First 4-day week` if you coordinate with ISO-numbered schedules.",
+        "after": "Record the first weekday and the week-1 rule separately."
+      },
+      {
+        "path": "/practical/2",
+        "before": "On iPhone and iPad, remember that `Start Week On` (`Settings > Apps > Calendar`) changes which day starts the visual row; pair every week-number reference in invitations with the explicit Monday date (`W10 — Mon Mar 8, 2027`).",
+        "after": "Check the week-year near December and January."
+      },
+      {
+        "path": "/practical/3",
+        "before": "Never move a saved appointment just because its week-number badge differs from a colleague's screenshot—verify the calendar date (`YYYY-MM-DD`) first.",
+        "after": "Put an explicit date in shared plans."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why do my US Outlook calendar and my colleague's European calendar show different week numbers for every single week of 2027?",
+            "a": "Because January 1, 2027 is a Friday. Under the U.S. `Starts on Jan 1` rule, Friday Jan 1 and Saturday Jan 2 count as `Week 1`, making Monday Jan 4 `Week 2`. Under the European ISO `First 4-day week` rule, `Jan 1–3, 2027` belongs to `2026-W53`, so Monday Jan 4, 2027 is `Week 1` (`2027-W01`)—keeping the two calendars 1 week number apart for all of 2027."
+          },
+          {
+            "q": "Why do our two calendars show the same week number Monday through Saturday in 2026, but show different week numbers on Sunday?",
+            "a": "Because in 2026 (`Jan 1 = Thursday`), both ISO (`First 4-day week`) and `Starts on Jan 1` assign `Week 1` to the opening week and `Week 2` to `Mon Jan 5 – Sat Jan 10`. However, a Sunday-start calendar starts the next week row on **Sunday**, whereas a Monday-start calendar keeps Sunday as the 7th day of the current week."
+          },
+          {
+            "q": "Does turning on Week Numbers or changing Start Week On in Apple Calendar move any of my saved events?",
+            "a": "No. As Apple's Calendar settings documentation confirms, `Week Numbers` and `Start Week On` are display-only grid settings; your stored event dates and times do not change."
+          }
+        ],
+        "after": [
+          {
+            "q": "Does a Sunday-first grid always mean January 1 is in week 1?",
+            "a": "No. First weekday and first-week rule are different decisions. Identify both."
+          },
+          {
+            "q": "Should I move an event if its week number differs?",
+            "a": "Compare its actual saved date and time first. A different display convention is not evidence that the appointment moved."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Verified Comparison: How Three Week-Numbering Rules Label Early 2026 vs Early 2027",
+        "after": "Worked dates under two explicitly defined rules"
+      },
+      {
+        "path": "/comparison/rows/0/cells",
+        "before": [
+          "**Thu Jan 1 – Sat Jan 3, 2026**",
+          "**`2026-W01`** (`Dec 29 – Jan 4` has 4 days in Jan)",
+          "**`Week 1`** (`Dec 28 – Jan 3` contains Jan 1)",
+          "`Week 52` of 2025 (Not a full 7-day Jan week)",
+          "Rule A and Rule B both label `Thu Jan 1 – Sat Jan 3, 2026` as Week 1"
+        ],
+        "after": [
+          "2026-01-01",
+          "2026-W01",
+          "2026 week 1"
+        ]
+      },
+      {
+        "path": "/comparison/rows/1/cells",
+        "before": [
+          "**Sun Jan 4, 2026 (Sunday Boundary)**",
+          "**`2026-W01`** (Day 7 of ISO Week 1)",
+          "**`Week 2`** (Day 1 of Sunday-start Week 2!)",
+          "`Week 52` of 2025 (Last day before Jan 5)",
+          "Every Sunday in 2026 is `+1` week higher on a Sunday-start grid"
+        ],
+        "after": [
+          "2026-01-04 (Sunday)",
+          "2026-W01",
+          "2026 week 2"
+        ]
+      },
+      {
+        "path": "/comparison/rows/2/cells",
+        "before": [
+          "**Mon Jan 5 – Sat Jan 10, 2026**",
+          "**`2026-W02`**",
+          "**`Week 2`**",
+          "**`Week 1`** (1st full Mon–Sun week in Jan)",
+          "Rule A and Rule B match (`Week 2`) on Mon–Sat throughout 2026"
+        ],
+        "after": [
+          "2026-01-05 (Monday)",
+          "2026-W02",
+          "2026 week 2"
+        ]
+      },
+      {
+        "path": "/comparison/rows/3/cells",
+        "before": [
+          "**Fri Jan 1 – Sat Jan 2, 2027**",
+          "**`2026-W53`** (Only 3 Jan days in `Dec 28 – Jan 3`)",
+          "**`Week 1` of 2027** (`Dec 27 – Jan 2` contains Jan 1)",
+          "`Week 52` of 2026",
+          "Rule B starts `Week 1` on Jan 1; ISO keeps `Jan 1–3, 2027` in `2026-W53`"
+        ],
+        "after": [
+          "2027-01-01",
+          "2026-W53",
+          "2027 week 1"
+        ]
+      },
+      {
+        "path": "/comparison/rows/4/cells",
+        "before": [
+          "**Sun Jan 3, 2027**",
+          "**`2026-W53`** (Day 7 of `2026-W53`)",
+          "**`Week 2` of 2027** (Starts Week 2 on Sunday!)",
+          "`Week 52` of 2026",
+          "2-step gap on Sun Jan 3, 2027: `W53` (ISO) vs `Week 2` (US Jan-1)"
+        ],
+        "after": [
+          "2027-01-03 (Sunday)",
+          "2026-W53",
+          "2027 week 2"
+        ]
+      },
+      {
+        "path": "/comparison/rows/5/cells",
+        "before": [
+          "**Mon Jan 4 – Sat Jan 9, 2027 (All of 2027)**",
+          "**`2027-W01`** (1st week with `>=4` days in 2027)",
+          "**`Week 2` of 2027** (`+1` higher all year!)",
+          "**`Week 1` of 2027**",
+          "Whenever Jan 1 is Fri or Sat, Rule B is **+1 week higher all year** than ISO!"
+        ],
+        "after": [
+          "2027-01-04 (Monday)",
+          "2027-W01",
+          "2027 week 2"
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Calendar Date & Weekday",
+          "Rule A: ISO 8601 (`First 4-day week`, `WKST=MO`)",
+          "Rule B: US `Starts on Jan 1` (`WKST=SU`)",
+          "Rule C: `First full 7-day week` (`WKST=MO`)",
+          "Why They Agree or Diverge"
+        ],
+        "after": [
+          "Date",
+          "ISO Monday / first four days",
+          "Sunday / week containing Jan 1"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "The two independent variables behind every week number: `First Week Rule` and `Start Week On` (`WKST`)",
+        "after": "Separate two settings before comparing numbers"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "As defined in RFC 5545 Section 3.3.10 (`WKST` and `BYWEEKNO`) and exposed in calendar settings (such as Apple Calendar's `Week Numbers` and `Start Week On` in `Settings > Apps > Calendar`, and Outlook's `First day of week` and `First week of year` options), any calendar week-numbering system depends on two separate settings:",
+          "1. **Which weekday starts a new row (`WKST`):** Usually **Monday (`WKST=MO`)** in ISO 8601 and European business calendars, **Sunday (`WKST=SU`)** in traditional North American calendars, or **Saturday (`WKST=SA`)** in parts of the Middle East.",
+          "2. **Which rule defines `Week 1` of the new year:**",
+          "- **Rule A — `First 4-day week` (ISO 8601 / RFC 5545 `BYWEEKNO`):** Week 1 is the first week with **at least 4 days (`>= 4`)** in the new year (equivalently, the week containing January 4).",
+          "- **Rule B — `Starts on Jan 1` (North American / U.S. convention):** Week 1 is always the week containing **January 1**, even if January 1 is a Friday or Saturday and that week contains only 1 or 2 days in the new year.",
+          "- **Rule C — `First full week` (`>= 7` days in January):** Week 1 does not start until the first complete 7-day week entirely inside January."
+        ],
+        "after": [
+          "ISO weeks start Monday, and week 1 contains January 4. RFC 5545 section 3.3.10 defines BYWEEKNO using a first-week rule of at least four days, with WKST identifying the start of the week. A Sunday WKST is not, by itself, a command to make the week containing January 1 be week 1.",
+          "For comparison, this article defines a different illustrative convention: Sunday-start weeks, with the week containing January 1 counted as week 1. These are explicit calculation assumptions, not a claim that every US calendar or Outlook installation uses them."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "Why the same year can be aligned in 2026 (except Sundays) and off by +1 week for all of 2027",
+        "after": "Use dates that expose both differences"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "Compare how Rule A (`ISO Monday-start, First 4-day week`) and Rule B (`US Sunday-start, Starts on Jan 1`) number the weeks of **2026** versus **2027**:",
+          "- **In 2026 (where `Jan 1, 2026` is Thursday):** Because Thursday, January 1 has 4 days (`Thu–Sun`) in the Monday-start week (`Dec 29 – Jan 4`) and 3 days (`Thu–Sat`) in the Sunday-start week (`Dec 28 – Jan 3`), **both** systems call Monday–Saturday (`Jan 5–10, 2026`) **Week 2**! However, on **every Sunday in 2026**, the two calendars disagree by 1 because a Sunday-start calendar begins the **next** week on Sunday (for example, **Sunday, January 4, 2026** is the **last day of `W01`** on a Monday-start ISO calendar, but is already the **first day of `Week 2`** on a Sunday-start calendar).",
+          "- **In 2027 (where `Jan 1, 2027` is Friday):** Here the two systems diverge by **1 full week across the entire year**! Under Rule B (`Starts on Jan 1, Sunday start`), `Fri Jan 1 – Sat Jan 2, 2027` is **Week 1**, so the week starting `Sun Jan 3 / Mon Jan 4, 2027` becomes **Week 2**. Under Rule A (`ISO First 4-day week, Monday start`), `Fri Jan 1 – Sun Jan 3, 2027` has only 3 days in January, so it remains **`2026-W53`**, and `Mon Jan 4 – Sun Jan 10, 2027` is **ISO Week 1 (`2027-W01`)**. As a result, for **all 52 weeks of 2027**, a `Starts on Jan 1` calendar is **+1 week number higher** on Monday–Saturday than an ISO calendar (e.g., `Mon Jan 4, 2027` is `W01` in ISO and `Week 2` in Jan-1 numbering)!"
+        ],
+        "after": [
+          "January 4, 2026 is a Sunday. It is the last day of ISO 2026-W01, but the first day of week 2 in the illustrative Sunday/January-1 convention. On Monday January 5, both label the date week 2.",
+          "January 1, 2027 is a Friday in ISO 2026-W53. Monday January 4 is ISO 2027-W01, but week 2 under the Sunday/January-1 convention. At the year boundary, compare the week-year as well as the number; subtracting 53 from 1 does not describe a useful one-week offset."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Illustrative 2026 vs 2027 week-number divergence lookup table",
+        "after": "Use an explicit lookup instead of an all-year slogan"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "The illustrative table below traces exact calendar dates in early January 2026 and early January 2027 across all three week-numbering rules (`ISO 4-Day + Monday Start`, `Jan-1 + Sunday Start`, and `First Full Week + Monday Start`) so you can immediately diagnose why two devices show `Week 1` vs `Week 2` (or `Week 53` vs `Week 1`)."
+        ],
+        "after": [
+          "The table lists individual dates. It deliberately avoids claiming that the two numbers differ by exactly one on every day of 2027: Sundays and week-year rollover require their own check.",
+          "ISO 2026 has 53 weeks: week 53 runs December 28, 2026–January 3, 2027. ISO 2027 week 1 starts January 4. The calculated boundaries explain the labels without moving any events."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "How to align week numbers across iPhone, Mac, Outlook, and Google Calendar",
+        "after": "Inspect app controls without assuming they share a week-year policy"
+      },
+      {
+        "path": "/sections/3/body",
+        "before": [
+          "As noted in our baseline iOS display guide (`iphone-calendar-language-alternate-calendar-settings`), enabling `Week Numbers` on iPhone or iPad (`Settings > Apps > Calendar > Week Numbers`) displays a number beside each week without moving your events, while `Settings > General > Language & Region` and `Start Week On` control regional calendar formatting.",
+          "In Classic Microsoft Outlook (`File > Options > Calendar > Work time`), Outlook provides explicit dropdowns for both `First day of week` and `First week of year` (`Starts on Jan 1`, `First 4-day week`, or `First full week`). If your organization uses European ISO week numbers (`W01–W52/53`), set `First day of week` to `Monday` and `First week of year` to `First 4-day week`."
+        ],
+        "after": [
+          "Apple’s iPhone guide separates Week Numbers from Start Week On. The former displays labels and the latter changes the first displayed weekday. That source does not establish that changing the first column selects every alternative week-numbering algorithm.",
+          "Check the help for the installed calendar and version if it offers a first-week-of-year option. The generic Outlook getting-started page cited in the raw draft does not document the exact dropdown labels, so this guide does not supply an unverified menu path.",
+          "When arranging a meeting, write the date as well as a week label, for example Monday January 4, 2027 (ISO 2027-W01). Do not reschedule an appointment to make two screen badges agree."
+        ]
+      }
+    ],
+    "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date": [
+      {
+        "path": "/description",
+        "before": "Compare monthly calendar recurrence on the 31st (`BYMONTHDAY=31`), last calendar day (`BYMONTHDAY=-1`), last Friday (`BYDAY=-1FR`), and last workday (`BYSETPOS=-1`).",
+        "after": "Compare the 31st, last calendar day, last Friday and final Monday–Friday date. See the 2026 results and why weekday rules do not exclude public holidays."
+      },
+      {
+        "path": "/title",
+        "before": "Repeat on the Last Weekday of the Month vs the 31st: Monthly Recurrence Rules Explained",
+        "after": "Last weekday of the month or the 31st? Check the recurrence rule"
+      },
+      {
+        "path": "/lede",
+        "before": "If you create a monthly recurring event on January 31 and choose 'Monthly on day 31', the iCalendar protocol does not move that event to February 28 or April 30—it **skips February, April, June, September, and November entirely**. Choosing the right monthly rule depends on whether you need the **last calendar day** (`28th/29th/30th/31st`), the **last Friday** (`BYDAY=-1FR`), or the **last Monday–Friday business day** (`BYSETPOS=-1`)—and knowing which rules can be created directly in your app's UI versus imported via `.ics`.",
+        "after": "The 31st, the last calendar day and the last Monday–Friday date are different recurrence requests. An RFC 5545 rule targeting day 31 skips months without it. A weekday-only rule excludes weekends, but does not know your public holidays."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Scheduling a monthly recurring event on the 31st automatically places the event on the 28th or 30th in shorter months.",
+        "after": ""
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: BYMONTHDAY, BYDAY & BYSETPOS)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          },
+          {
+            "label": "Apple Support — Set up all-day, multiday, or repeating events in Calendar on Mac",
+            "url": "https://support.apple.com/guide/calendar/icl1018/mac"
+          },
+          {
+            "label": "Microsoft Support — Get started with the Outlook Calendar (Monthly recurrence options)",
+            "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+          },
+          {
+            "label": "Google Calendar Help — Create a recurring event",
+            "url": "https://support.google.com/calendar/answer/37115?hl=en"
+          }
+        ],
+        "after": [
+          {
+            "label": "RFC 5545: monthly recurrence and invalid dates",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+          },
+          {
+            "label": "RFC 5545: DTSTART value types",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.4"
+          },
+          {
+            "label": "Apple: custom monthly repetition",
+            "url": "https://support.apple.com/guide/calendar/icl1018/mac"
+          },
+          {
+            "label": "Microsoft: monthly recurrence examples",
+            "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+          },
+          {
+            "label": "Google: recurring events",
+            "url": "https://support.google.com/calendar/answer/37115?hl=en"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "Never choose `Monthly on day 31` (`BYMONTHDAY=31`) for a billing, payroll, or reporting task that must happen in all 12 months—it will skip February, April, June, September, and November.",
+        "after": "Write whether the requirement means last date, last Friday or last Monday–Friday date."
+      },
+      {
+        "path": "/practical/1",
+        "before": "If you want an all-GUI rule that works in Google Calendar, Outlook, and Apple Calendar without importing an `.ics` file, schedule the event on the **Last Friday of the month** (`BYDAY=-1FR`) or on the **1st of every month** (`BYMONTHDAY=1`).",
+        "after": "Check a short month and a weekend month end."
+      },
+      {
+        "path": "/practical/2",
+        "before": "In Apple Calendar on Mac (`Custom` repeat) or Classic Outlook (`Monthly > The last > weekday / day`), use the built-in ordinal selector to create a true last-day or last-weekday rule that syncs to your iPhone and iPad.",
+        "after": "Apply a separately confirmed holiday policy if needed."
+      },
+      {
+        "path": "/practical/3",
+        "before": "If you import an `.ics` file into Google Calendar with `RRULE:FREQ=MONTHLY;BYMONTHDAY=-1` or `RRULE:FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`, avoid re-opening the recurrence dropdown in Google Calendar's web editor later so you do not overwrite the imported rule with a standard fixed-date rule.",
+        "after": "Verify saved occurrences in the source account and recipient app."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why did my monthly reminder set on January 31 completely disappear in February and April?",
+            "a": "Because a rule set to `Monthly on day 31` (`BYMONTHDAY=31`) only matches months that have a 31st day. Under RFC 5545 Section 3.3.10, months with 28, 29, or 30 days generate an invalid date and must be skipped."
+          },
+          {
+            "q": "What is the difference between `BYDAY=-1FR` and `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`?",
+            "a": "`BYDAY=-1FR` always lands on the **last Friday** of the month (for example, Friday, March 27, 2026, four days before Tuesday, March 31). `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1` lands on the **very last Monday–Friday business day** of the month (Tuesday, March 31, 2026, and Friday, January 30, 2026 when January 31 is a Saturday)."
+          },
+          {
+            "q": "Does iPhone Calendar have a text box to type raw `BYSETPOS=-1` or `RRULE` strings?",
+            "a": "No. iPhone Calendar does not provide a raw `RRULE` text editor. You can either configure custom ordinal monthly repeats in Apple Calendar on Mac (which syncs via iCloud to iPhone) or import an `.ics` event containing the `RRULE`."
+          }
+        ],
+        "after": [
+          {
+            "q": "Does the final weekday rule avoid holidays?",
+            "a": "No. MO,TU,WE,TH,FR excludes Saturdays and Sundays only. A holiday on a weekday still matches unless handled separately."
+          },
+          {
+            "q": "Why is a monthly-on-31 rule missing in April?",
+            "a": "April has no 31st. RFC 5545 ignores that invalid recurrence date rather than moving it to April 30."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Verified 2026 Monthly Resolution Table: `BYMONTHDAY=31` vs `BYMONTHDAY=-1` vs `BYDAY=-1FR` vs Last Workday (`BYSETPOS=-1`)",
+        "after": "Verified 2026 Monthly Resolution Table: `BYMONTHDAY=31` vs `BYMONTHDAY=-1` vs `BYDAY=-1FR` vs Last Mon–Fri Date (`BYSETPOS=-1`)"
+      },
+      {
+        "path": "/comparison/columns/4",
+        "before": "`BYDAY=MO..FR;BYSETPOS=-1` (Last Workday)",
+        "after": "`BYDAY=MO..FR;BYSETPOS=-1` (Last Mon–Fri Date)"
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "Why `BYMONTHDAY=31` skips 5 months of every year under RFC 5545",
+        "after": "Invalid dates are skipped, not rolled back"
+      },
+      {
+        "path": "/sections/0/body/0",
+        "before": "The iCalendar specification (RFC 5545 Section 3.3.10 `RECUR`) is explicit about what happens when a recurrence rule generates a date that does not exist in a given month: **'Recurrence rules may generate recurrence instances with an invalid date (e.g., February 30)... Such recurrence instances MUST be ignored and MUST NOT be counted as part of the recurrence set.'**",
+        "after": "RFC 5545 section 3.3.10 says recurrence instances with invalid dates are ignored and not counted. FREQ=MONTHLY;BYMONTHDAY=31 therefore produces seven dates in a full 2026 year: January, March, May, July, August, October and December 31."
+      },
+      {
+        "path": "/sections/0/body/1",
+        "before": "Therefore, when an event starts on January 31 (`DTSTART:20260131`) with `RRULE:FREQ=MONTHLY;BYMONTHDAY=31`, a compliant calendar generates only **7 occurrences per year** (January 31, March 31, May 31, July 31, August 31, October 31, and December 31) and completely omits February, April, June, September, and November. Similarly, `BYMONTHDAY=30` runs 11 times per year and skips February.",
+        "after": "Do not confuse that rule with BYMONTHDAY=-1, which selects the final date of every month. If expressing an all-day start in an ICS file, use DTSTART;VALUE=DATE:20260131 rather than an eight-digit value with the default DATE-TIME type."
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "The four distinct end-of-month recurrence rules in RFC 5545",
+        "after": "Four patterns answer four different questions"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "RFC 5545 Section 3.3.10 defines four distinct ways to express end-of-month recurrence, each producing a different set of dates across a 12-month calendar year:",
+          "1. **Fixed Date 31st (`RRULE:FREQ=MONTHLY;BYMONTHDAY=31`):** Fires only in the 7 months that have 31 days; skips Feb, Apr, Jun, Sep, and Nov.",
+          "2. **Last Calendar Day of Every Month (`RRULE:FREQ=MONTHLY;BYMONTHDAY=-1`):** Uses the negative month-day ordinal `-1` ('the last day of the month'). It fires in all 12 months on the `28th` (or `29th` in a leap year), `30th`, or `31st`—including Saturdays and Sundays (for example, in 2026, Jan 31 is Saturday, Feb 28 is Saturday, May 31 is Sunday, and Oct 31 is Saturday).",
+          "3. **Last Specific Weekday of Every Month (e.g., Last Friday: `RRULE:FREQ=MONTHLY;BYDAY=-1FR`):** Uses the negative weekday ordinal `-1FR`. It fires in all 12 months on the final Friday of the month (falling between the `22nd` and the `31st`).",
+          "4. **Last Monday–Friday Workday of Every Month (`RRULE:FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`):** Quoted verbatim in RFC 5545 Section 3.3.10 ('For example, \"the last work day of the month\" could be represented as: `FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`'). In months where the `28th/30th/31st` falls on a Monday–Friday, it picks that final date; whenever the month ends on a Saturday or Sunday, `BYSETPOS=-1` automatically steps back to that Friday!"
+        ],
+        "after": [
+          "FREQ=MONTHLY;BYMONTHDAY=31 selects the 31st where it exists. FREQ=MONTHLY;BYMONTHDAY=-1 selects the last calendar date. FREQ=MONTHLY;BYDAY=-1FR selects the last Friday.",
+          "FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1 selects the final Monday–Friday date from that month’s weekday set. It does not exclude a public holiday or a personal day off. Do not present it as a universal last business-day rule."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Verified 12-month 2026 date table across all four rules",
+        "after": "Read the calculated 2026 dates before choosing"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "The verified 2026 calendar table below shows the exact Gregorian date and weekday produced in every month of 2026 (`Jan–Dec 2026`) by each of the four rules. Notice how in **January, February, May, and October 2026**, the last calendar day (`BYMONTHDAY=-1`) lands on a weekend (`Sat Jan 31`, `Sat Feb 28`, `Sun May 31`, `Sat Oct 31`), whereas `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1` automatically lands on `Fri Jan 30`, `Fri Feb 27`, `Fri May 29`, and `Fri Oct 30`."
+        ],
+        "after": [
+          "The table is calculated from Gregorian month lengths and weekdays. Four 2026 month ends fall on weekends: January 31, February 28, May 31 and October 31. The final Monday–Friday date moves back in those months.",
+          "In March, the last Friday is March 27, but the final Monday–Friday date is Tuesday March 31. That difference matters when the requirement is truly the final weekday rather than a Friday meeting."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "Which calendar apps expose these rules in their UI vs `.ics` import",
+        "after": "Check the editor and save a disposable example"
+      },
+      {
+        "path": "/sections/3/body",
+        "before": [
+          "Do not assume every calendar app has a graphical button for every RFC 5545 rule—check what each official editor actually documents:",
+          "- **Apple Calendar on Mac (`https://support.apple.com/guide/calendar/icl1018/mac`):** Apple's Mac guide documents custom monthly repetition by calendar day or by ordinal weekday pattern (including repeating on the **last weekday** or **last Friday** each month).",
+          "- **Microsoft Outlook (`https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar`):** Outlook's `Recurrence > Monthly` dialog documents repeating on a specific day of the month or ordinal patterns such as the `first Wednesday`, `second Thursday`, or `last Monday` (and `last weekday` / `day` in Classic Outlook's ordinal dropdown).",
+          "- **Google Calendar (`https://support.google.com/calendar/answer/37115?hl=en`) & iPhone Calendar:** When you create a monthly event on the `31st` or on the final Friday in Google Calendar's web editor, the dropdown offers `Monthly on day 31` or `Monthly on the last Friday` (`BYDAY=-1FR`), but does **not** expose a GUI builder for `BYMONTHDAY=-1` or `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`. Similarly, iPhone Calendar does not provide a raw `RRULE`/`BYSETPOS` text box. To use `BYMONTHDAY=-1` or `BYSETPOS=-1` in Google Calendar or on iPhone, create the rule on Mac/Outlook or import a tiny `.ics` file containing that `RRULE`."
+        ],
+        "after": [
+          "Apple’s Mac guide documents Custom repeat, Frequency and an On the pattern, including the last weekday of a month. Microsoft’s cited guide documents monthly specific-day and ordinal-weekday examples. Google’s guide documents choosing a repeat frequency and end, without listing every raw RRULE its editor or importer preserves.",
+          "Use the options actually present in the app, then inspect the next several saved dates. A standard’s ability to express a rule is not proof that every app exposes, imports or preserves it unchanged. Use a disposable calendar before relying on a complex imported rule."
+        ]
+      }
+    ],
+    "google-calendar-task-deadline-versus-scheduled-time-block": [
+      {
+        "path": "/description",
+        "before": "Compare Google Calendar Task Deadlines (`All day`, 9 AM alert), timed Tasks (`Start date and time`), Focus Time, and `VEVENT` blocks so work fits before due dates.",
+        "after": "Separate a Google task deadline from start and end times. Plan three work blocks, check Busy availability and verify what the booking tool actually reads."
+      },
+      {
+        "path": "/title",
+        "before": "Task Deadline vs Scheduled Work Block in Google Calendar & iCalendar: Reserve Real Capacity",
+        "after": "Google task deadline or work block? Reserve the time before it is due"
+      },
+      {
+        "path": "/lede",
+        "before": "Putting a project's Friday due date on your calendar tells you when the deliverable must be finished, but reserves **zero minutes** of working time to actually produce it. Both Google Calendar's official Task settings and the iCalendar protocol (`VTODO` vs `VEVENT`) separate a **Deadline (`DUE`)** from a **Scheduled Work Block (`DTSTART`–`DTEND`)**—and auditing your open hours against estimated effort before the deadline prevents 'calendar bankruptcy' on Friday afternoon.",
+        "after": "A deadline tells you when work is due; it does not estimate or reserve the time needed to finish it. Google Calendar separately documents a task’s deadline, planned start and time spent. Use that distinction to plan the work, then verify availability in the calendar or booking tool that matters."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Adding a task with a Friday deadline on your calendar reserves the hours needed to complete that task.",
+        "after": ""
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "Google Calendar Help — Create & manage tasks in Google Calendar (Start date and time vs Deadline)",
+            "url": "https://support.google.com/calendar/answer/9901136?hl=en"
+          },
+          {
+            "label": "Google Calendar Help — Use focus time in Google Calendar",
+            "url": "https://support.google.com/calendar/answer/11190973?hl=en"
+          },
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Sections 3.6.1 VEVENT, 3.6.2 VTODO, 3.8.2.3 DUE & 3.8.2.7 TRANSP)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          }
+        ],
+        "after": [
+          {
+            "label": "Google: task deadline, timed tasks and notifications",
+            "url": "https://support.google.com/calendar/answer/9901136?hl=en"
+          },
+          {
+            "label": "Google: Focus time eligibility and decline controls",
+            "url": "https://support.google.com/calendar/answer/11190973?hl=en"
+          },
+          {
+            "label": "RFC 5545: VTODO",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.2"
+          },
+          {
+            "label": "RFC 5545: TRANSP",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "Never leave a task that requires `> 30 minutes` of work as an all-day `Deadline` alone: pair the deadline marker with one or more `Busy` work blocks scheduled **at least 1 day before** the due date.",
+        "after": "Estimate effort independently of the due date."
+      },
+      {
+        "path": "/practical/1",
+        "before": "In Google Calendar on a computer, use `Start date and time` -> `Advanced settings` -> `Busy` if you want a one-off timed task to block availability, or use a regular `Busy` event if the work repeats (since Google Calendar does not allow an end time on recurring tasks).",
+        "after": "Inspect task start/end and Free/Busy."
+      },
+      {
+        "path": "/practical/2",
+        "before": "Break large deliverables (`4+ hours`) into 60-to-90-minute calendar blocks (`Part 1/3`, `Part 2/3`, `Part 3/3`) so they fit into realistic weekday gaps without requiring an empty 5-hour day.",
+        "after": "Check plan and account eligibility for automatic decline."
+      },
+      {
+        "path": "/practical/3",
+        "before": "Schedule your final execution block at least 24 hours before the hard deadline so an unexpected urgent meeting on due-date morning does not cause a late delivery.",
+        "after": "Test the actual availability consumer."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why did my Google Calendar task deadline notify me at 9:00 AM on the due date, when it was already too late to start a 4-hour project?",
+            "a": "Google Calendar's official documentation states that for tasks without a time and tasks with a `Deadline`, notifications appear at **9:00 AM in your local time on the day of the deadline**. To get alerted when you actually need to start working, schedule a timed work block (or `Start date and time`) on the earlier day you plan to do the work."
+          },
+          {
+            "q": "Why can't I set a duration or end time on a repeating task in Google Calendar?",
+            "a": "Google Calendar's official task guide explicitly notes: 'You can't add an end time for recurring tasks.' If you need a recurring 60-minute or 90-minute work block on your grid every week, create a recurring calendar **event** (or recurring `Focus time` event) instead."
+          },
+          {
+            "q": "Who can use 'Do not disturb' and 'Automatically decline meetings' on Google Calendar tasks and Focus time?",
+            "a": "Google documents that only eligible **work or school (Google Workspace) accounts** can use the `Do not disturb` and `Automatically decline meetings` options."
+          }
+        ],
+        "after": [
+          {
+            "q": "Why did a deadline notify me at 09:00?",
+            "a": "Google documents a 09:00 local-time notification on the deadline date. Add an earlier planned work session if you need to start sooner."
+          },
+          {
+            "q": "Does marking an event Busy reject all meeting invitations?",
+            "a": "No universal rejection follows from Busy. Automatic decline is a separate supported setting; verify the specific account and feature."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Illustrative Comparison: Four Ways to Represent a 4.5-Hour Deliverable Due Friday at 17:00",
+        "after": "Three sessions in the illustrative report plan"
+      },
+      {
+        "path": "/comparison/rows/0/cells",
+        "before": [
+          "1. Google Task with `Deadline` Only (`DUE`)",
+          "`All day` header on Friday Nov 13",
+          "**`0 minutes`** (Does not block hourly slots)",
+          "Fires at **`09:00 AM` local time** on the day of the deadline",
+          "Tracking the final target date without reserving work hours"
+        ],
+        "after": [
+          "Task deadline",
+          "Friday Nov 13, 2026; record 17:00 cut-off explicitly",
+          "Track completion date"
+        ]
+      },
+      {
+        "path": "/comparison/rows/1/cells",
+        "before": [
+          "2. Google Task with `Start date and time`",
+          "Timed block on the hourly grid (Non-recurring tasks only)",
+          "`Free` or `Busy` (Configurable under `Advanced settings`)",
+          "Fires at the scheduled `Start date and time`",
+          "Single-session tasks in Google Calendar web (cannot set end time on recurring tasks)"
+        ],
+        "after": [
+          "Draft",
+          "Tuesday Nov 10, 09:30–11:00",
+          "90 minutes"
+        ]
+      },
+      {
+        "path": "/comparison/rows/2/cells",
+        "before": [
+          "3. Google Workspace `Focus time` Event",
+          "Timed block with headphones icon (Created from Day/Week view)",
+          "**`Busy`** (Can auto-decline meetings & mute Chat `<24h`)",
+          "Standard event reminders",
+          "Work/school accounts needing automatic meeting decline during deep-work blocks"
+        ],
+        "after": [
+          "Tables",
+          "Wednesday Nov 11, 14:00–15:30",
+          "90 minutes"
+        ]
+      },
+      {
+        "path": "/comparison/rows/3/cells",
+        "before": [
+          "4. Split `Busy` Work Events (`VEVENT`) + Friday `Deadline`",
+          "Tue `09:30–11:00`, Wed `14:00–15:30`, Thu `09:00–10:30` + Fri Header",
+          "**`4.5 hours` (`3 x 90m`) `OPAQUE` / `Busy`** across all calendar clients",
+          "Alerts before each 90m work session + Friday deadline check",
+          "Multi-day deliverables where execution hours must be protected across all devices"
+        ],
+        "after": [
+          "Review",
+          "Thursday Nov 12, 09:00–10:30",
+          "90 minutes; 30.5 hours before cut-off"
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Calendar Object Type",
+          "Where It Appears on Grid",
+          "Time Reserved on Free/Busy Grid",
+          "Notification Behavior",
+          "Best Role in Workflow"
+        ],
+        "after": [
+          "Item",
+          "Time or date",
+          "Purpose"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "How Google Calendar separates a task's `Deadline` from its `Start date and time`",
+        "after": "Google’s deadline is a date, not an hourly reservation"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "In Google Calendar's official documentation (`Create & manage tasks in Google Calendar`), a single task record has two distinct date/time concepts that behave differently on your calendar grid and in notifications:",
+          "- **`Deadline` (All-Day Due Marker):** Google defines `Deadline` as *'the date you expect to complete the task'* and states: **'The deadline appears on the \"All day\" section of Calendar.'** For notifications, Google documents: **'For tasks with a deadline, you get a notification to complete the task on the day of the deadline at 9 AM in your local time.'** Because an all-day deadline sits in the top header banner, it reserves `0 minutes` on your hourly grid.",
+          "- **`Start date and time` (Scheduled Execution Window):** Google defines `Start date and time` as *'the start date and how much time you plan to spend on the task.'* Under `Advanced settings` for a timed task, you can set availability to **`Free` or `Busy`** (and, on eligible work or school accounts, enable `Do not disturb` and `Automatically decline meetings` when availability is `Busy`). However, Google also notes an important limitation: **'You can't add an end time for recurring tasks.'**"
+        ],
+        "after": [
+          "Google’s task settings guide says Deadline is the date you expect to complete the task and appears in the All day section. Its deadline notification is at 09:00 local time on that date. Record an exact contractual cut-off in the description or a separate timed deadline event if needed; an all-day date marker is not an encoded 17:00 cut-off.",
+          "Start date and time lets you specify the start and how much time you plan to spend. Advanced settings offers Free or Busy; Do not disturb and Automatically decline meetings are work/school options. The same guide says recurring tasks cannot have an end time."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "Why iCalendar `VTODO` (`DUE`) and `VEVENT` (`DTSTART`–`DTEND`) serve different protocol roles",
+        "after": "Do not confuse a Google task with an ICS promise"
+      },
+      {
+        "path": "/sections/1/body/0",
+        "before": "At the protocol level (RFC 5545 Section 3.6.1 `Event Component`, Section 3.6.2 `To-Do Component`, Section 3.8.2.3 `Date-Time Due`, and Section 3.8.2.7 `Time Transparency`), a `VTODO` component represents an action item with an optional `DTSTART` and `DUE` (or `DURATION`) and completion status (`STATUS:COMPLETED` / `PERCENT-COMPLETE`), whereas a `VEVENT` component represents a scheduled block of time between `DTSTART` and `DTEND`.",
+        "after": "RFC 5545 describes VTODO, including optional DTSTART and DUE, separately from VEVENT. Its TRANSP property applies to VEVENT. These standard component definitions do not prove how Google exports its current timed tasks or how a third-party booking system treats them."
+      },
+      {
+        "path": "/sections/1/body/1",
+        "before": "Crucially, RFC 5545 Section 3.8.2.7 specifies that the `TRANSP` (`OPAQUE` / `TRANSPARENT`) free/busy property belongs to `VEVENT` components. In cross-platform calendar views, booking pages, and iPhone/iPad calendar apps that read calendar events (`VEVENT`), only a timed `Busy` event (or Google Workspace `Focus time` event, documented in `Use focus time in Google Calendar`) guarantees that those execution hours are blocked against incoming meeting invites.",
+        "after": "Google documents Busy timed tasks within its own interface. If another system reads calendar events rather than Tasks, test the specific connection. A Busy event is information for availability; it does not universally prevent a person from inviting you or guarantee that every connected service checks that calendar."
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Illustrative capacity math: Fitting a 4.5-hour deliverable before a Friday 17:00 deadline",
+        "after": "Worked plan: 270 minutes before Friday’s cut-off"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "Consider an illustrative week (Monday, November 9 through Friday, November 13, 2026) where a quarterly report is due **Friday at `17:00`** and requires **4.5 hours (`270 minutes`)** of focused writing and review. This illustrative calculation shows how to audit open capacity (`Available_Hours - Existing_Meetings >= Required_Effort`):",
+          "Suppose your Thursday and Friday already have 6.5 hours of meetings each, leaving only chopped 15-minute gaps between calls. If you only place a `Deadline` on Friday Nov 13, your Tuesday and Wednesday remain wide open for colleagues to book over, and at `09:00 AM` on Friday (when the deadline notification fires) you have `0 uninterrupted blocks` left to write a 4.5-hour report.",
+          "By keeping the **Deadline** marker in the all-day header for Friday Nov 13 (`[DUE Fri 17:00] Quarterly Report`) and scheduling **three 90-minute `Busy` work blocks** earlier in the week—Block 1 on Tuesday `09:30–11:00` (`1.5h` draft), Block 2 on Wednesday `14:00–15:30` (`1.5h` data tables), and Block 3 on Thursday `09:00–10:30` (`1.5h` final edit, finishing 30.5 hours before the Friday `17:00` deadline)—all `4.5 hours` of execution capacity are protected on your free/busy grid."
+        ],
+        "after": [
+          "Assume a report is due Friday November 13, 2026 at 17:00 and needs 270 minutes of work. Schedule three 90-minute sessions: Tuesday November 10, 09:30–11:00; Wednesday November 11, 14:00–15:30; and Thursday November 12, 09:00–10:30. These are illustrative available times, not dates checked against a real person’s meetings or local holidays.",
+          "The three blocks total 4.5 hours. Thursday 10:30 to Friday 17:00 is 30.5 hours. Keep the Friday task deadline date, record the 17:00 requirement explicitly, and check the source calendar for conflicts before committing the blocks."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "Choosing between Timed Tasks, `Focus time`, and standard `Busy` Calendar Events",
+        "after": "Choose the execution item and verify its effect"
+      },
+      {
+        "path": "/sections/3/body",
+        "before": [
+          "As noted in our baseline iPhone tasks guide (`iphone-calendar-tasks-reminders-versus-event-alerts`), third-party calendar apps and cross-account free/busy checks do not all read Google Tasks or Apple Reminders lists identically. If your primary goal is **blocking meeting availability across all connected devices and booking links**, use a standard `Busy` calendar event (`VEVENT`) or Google Workspace `Focus time` (available in Day and Week views on eligible work/school accounts) for the execution blocks, while keeping the completion checkbox on the task itself."
+        ],
+        "after": [
+          "For a one-off task in Google Calendar, inspect its start/end and Advanced settings availability. For repeated work requiring a duration, consider a recurring event instead of assuming a repeating task supports an end time.",
+          "Google Focus time is a separate feature for eligible work/school accounts. The official guide requires Day or Week view and specific start/end times, and documents meeting-decline settings. A normal Busy event is not automatically the same as Focus time with decline enabled.",
+          "Check a neutral work block from the actual scheduling or booking flow. Confirm that the relevant calendar is included, the time is treated as unavailable, and details have the intended visibility."
+        ]
+      }
+    ],
+    "backward-planning-project-deadlines-across-weekends-and-holidays": [
+      {
+        "path": "/description",
+        "before": "Count backward from a fixed project deadline across weekends and holidays (`N` business days vs calendar days) with a verified weekday offset table and schedule.",
+        "after": "Count a project backward from a dated deadline. State whether the final day counts, skip the chosen days off and verify every stage before creating work blocks."
+      },
+      {
+        "path": "/title",
+        "before": "Backward Planning Project Deadlines on a Calendar: Business Days vs Calendar Days Math",
+        "after": "Plan backward across weekends and days off: a counted example"
+      },
+      {
+        "path": "/lede",
+        "before": "When a contract, filing, or product launch requires '10 business days of review' before a Friday deadline, simply subtracting 10 from the calendar date lands you two weekends short of the real start date. Backward planning on a calendar requires converting **working business days (`MO–FR` minus holidays)** into **total calendar days**—and placing each milestone's start block on the calendar grid before you commit to the schedule.",
+        "after": "Before subtracting business days, define which days can be worked and whether the deadline date itself counts. A calendar cannot infer your organisation’s holidays or how a contract counts days. This is an illustrative planning method, not a legal deadline calculator."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Subtracting 10 working days from the 20th of the month means starting on the 10th of the month.",
+        "after": ""
+      },
+      {
+        "path": "/sources/0/url",
+        "before": "https://www.rfc-editor.org/rfc/rfc5545",
+        "after": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+      },
+      {
+        "path": "/sources/0/label",
+        "before": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: BYDAY=MO..FR & Section 3.8.5.1 EXDATE)",
+        "after": "RFC 5545: recurrence rules"
+      },
+      {
+        "path": "/sources/1/url",
+        "before": "https://support.google.com/calendar/answer/9901136?hl=en",
+        "after": "https://support.google.com/calendar/answer/37115?hl=en"
+      },
+      {
+        "path": "/sources/1/label",
+        "before": "Google Calendar Help — Create & manage tasks in Google Calendar",
+        "after": "Google: recurring events and edit scope"
+      },
+      {
+        "path": "/sources/2/label",
+        "before": "Microsoft Support — Get started with the Outlook Calendar (Every weekday recurrence)",
+        "after": "Microsoft: weekday and recurrence controls"
+      },
+      {
+        "path": "/practical/0",
+        "before": "Clarify whether your deadline is **morning (`09:00`)** or **end-of-day (`17:00`)**: if a deliverable is due at `09:00 AM` on Friday, Friday itself provides **0 working days** before the deadline, so Thursday is your final full business day.",
+        "after": "Define workdays, days off and the cut-off hour."
+      },
+      {
+        "path": "/practical/1",
+        "before": "Use the **Multiple-of-5 Shortcut**: every 5 business days is exactly **7 calendar days (1 full week)** backward on the same weekday (`10 business days = 14 calendar days`, `15 business days = 21 calendar days`), and then adjust for any remainder (`1–4 days`) and public holidays.",
+        "after": "State inclusive counting or prior-day subtraction."
+      },
+      {
+        "path": "/practical/2",
+        "before": "Always step backward an extra **1 working day** (`+1` or `+3` calendar days if crossing a weekend) for every weekday public holiday or scheduled vacation day inside your project window.",
+        "after": "Walk dates backward and skip every ineligible date."
+      },
+      {
+        "path": "/practical/3",
+        "before": "Add an explicit `Internal Freeze / Buffer Day` 1–2 business days before the external client deadline so review overruns do not eat into your final delivery day.",
+        "after": "Check real capacity before saving execution blocks."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why does subtracting 2 business days from a Tuesday deadline take 4 calendar days (`previous Friday`), while subtracting 2 business days from a Thursday deadline takes only 2 calendar days (`Tuesday`)?",
+            "a": "Because counting backward 2 working days from Tuesday steps over Monday (1 working day) and then must skip both Sunday and Saturday (`+2 weekend days`) to reach Friday (`4 calendar days` earlier). Counting backward 2 working days from Thursday lands on Wednesday and Tuesday within the same week (`2 calendar days`)."
+          },
+          {
+            "q": "How do I create an event that repeats only on Monday–Friday working days for a 2-week project sprint?",
+            "a": "In Microsoft Outlook, open `Recurrence > Daily`, select `Every weekday`, and set the `End by` date to the last day of the sprint. In Google Calendar on a computer, open `Does not repeat > Custom`, choose `Repeat every 1 week`, select `M, T, W, T, F`, and set `Ends -> On [Sprint End Date]`."
+          },
+          {
+            "q": "How do I exclude a public holiday that falls in the middle of a weekday recurring project block?",
+            "a": "Click the single occurrence on the holiday date, select `Delete`, and choose `This event only` (which writes an RFC 5545 `EXDATE` exception for that holiday without changing the rest of the weekday sprint)."
+          }
+        ],
+        "after": [
+          {
+            "q": "Can I add one calendar day per holiday to a weekday formula?",
+            "a": "That shortcut can cross another weekend or another excluded day. Walk the eligible dates again instead."
+          },
+          {
+            "q": "Does a Monday–Friday recurrence exclude public holidays?",
+            "a": "No. You need an explicitly confirmed holiday list and exceptions or separately bounded work blocks."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Verified Backward-Planning Lookup Table: Calendar Days (`-C`) to Subtract for `B` Prior Business Days (Before Holiday Adjustment)",
+        "after": "Inclusive work dates, ending November 20, 2026"
+      },
+      {
+        "path": "/comparison/rows",
+        "before": [
+          {
+            "cells": [
+              "**1 business day prior** (`B = 1`)",
+              "**`-3` cal days** (Prev Fri)",
+              "`-1` cal day (Mon)",
+              "`-1` cal day (Tue)",
+              "`-1` cal day (Wed)",
+              "`-1` cal day (Thu)"
+            ]
+          },
+          {
+            "cells": [
+              "**2 business days prior** (`B = 2`)",
+              "**`-4` cal days** (Prev Thu)",
+              "**`-4` cal days** (Prev Fri)",
+              "`-2` cal days (Mon)",
+              "`-2` cal days (Tue)",
+              "`-2` cal days (Wed)"
+            ]
+          },
+          {
+            "cells": [
+              "**3 business days prior** (`B = 3`)",
+              "**`-5` cal days** (Prev Wed)",
+              "**`-5` cal days** (Prev Thu)",
+              "**`-5` cal days** (Prev Fri)",
+              "`-3` cal days (Mon)",
+              "`-3` cal days (Tue)"
+            ]
+          },
+          {
+            "cells": [
+              "**4 business days prior** (`B = 4`)",
+              "**`-6` cal days** (Prev Tue)",
+              "**`-6` cal days** (Prev Wed)",
+              "**`-6` cal days** (Prev Thu)",
+              "**`-6` cal days** (Prev Fri)",
+              "`-4` cal days (Mon)"
+            ]
+          },
+          {
+            "cells": [
+              "**5 business days prior** (`B = 5`, 1 workweek)",
+              "**`-7` cal days** (Prev Mon)",
+              "**`-7` cal days** (Prev Tue)",
+              "**`-7` cal days** (Prev Wed)",
+              "**`-7` cal days** (Prev Thu)",
+              "**`-7` cal days** (Prev Fri)"
+            ]
+          },
+          {
+            "cells": [
+              "**10 business days prior** (`B = 10`, 2 workweeks)",
+              "**`-14` cal days** (2 Mondays ago)",
+              "**`-14` cal days** (2 Tuesdays ago)",
+              "**`-14` cal days** (2 Wednesdays ago)",
+              "**`-14` cal days** (2 Thursdays ago)",
+              "**`-14` cal days** (2 Fridays ago)"
+            ]
+          },
+          {
+            "cells": [
+              "**15 business days prior** (`B = 15`, 3 workweeks)",
+              "**`-21` cal days** (+ holidays)",
+              "**`-21` cal days** (+ holidays)",
+              "**`-21` cal days** (+ holidays)",
+              "**`-21` cal days** (+ holidays)",
+              "**`-21` cal days** (+ holidays)"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "cells": [
+              "Scope",
+              "Oct 30; Nov 2",
+              "2"
+            ]
+          },
+          {
+            "cells": [
+              "Production",
+              "Nov 3, 4, 5, 6, 9, 10",
+              "6"
+            ]
+          },
+          {
+            "cells": [
+              "Review",
+              "Nov 12, 13, 16, 17, 18",
+              "5"
+            ]
+          },
+          {
+            "cells": [
+              "QA",
+              "Nov 19, 20",
+              "2"
+            ]
+          },
+          {
+            "cells": [
+              "Excluded inside the span",
+              "Oct 31; Nov 1, 7, 8, 14, 15 weekends; Nov 11 chosen day off",
+              "7 calendar dates"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Business Days Before Deadline (`B`)",
+          "If Deadline is MONDAY",
+          "If Deadline is TUESDAY",
+          "If Deadline is WEDNESDAY",
+          "If Deadline is THURSDAY",
+          "If Deadline is FRIDAY"
+        ],
+        "after": [
+          "Stage",
+          "Chosen working dates",
+          "Count"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "Why `N` business days equals `N + 2*floor(N/5)` (plus 0, 2, or 4 weekend days and holidays)",
+        "after": "Choose the counting convention first"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "In standard Monday–Friday business schedules (represented in iCalendar RFC 5545 Section 3.3.10 as `BYDAY=MO,TU,WE,TH,FR` and in Microsoft Outlook's recurrence dialog as `Daily -> Every weekday`), every 5 working days span **7 calendar days** because Saturday and Sunday contain zero business days.",
+          "When you count **backward** `B` business days from a deadline falling on a Monday–Friday workday (where `Day 0` is the deadline date itself, or `Day 1` is the final full working day depending on whether the deadline is morning or end-of-day):",
+          "- Every complete block of **5 business days (`5k`)** steps backward by exactly **`7k` calendar days** (one full week per 5 business days) plus **`+1 calendar day` per weekday public holiday (`H`)** that falls inside that range.",
+          "- Any remaining business days (`r = B mod 5`, from `1 to 4`) step backward by **`r` calendar days** if they do not cross a Sunday/Saturday weekend, or **`r + 2` calendar days** if they step backward across Monday into the previous Friday (`+2` weekend days for Saturday and Sunday)."
+        ],
+        "after": [
+          "For this example, working days are Monday–Friday except November 11, 2026, which this fictional team has explicitly chosen as a day off. Do not assume that date is a holiday for every reader. The deadline is Friday November 20 at 17:00 and includes a full final workday.",
+          "If the cut-off were Friday at 09:00, Friday would not supply a full working day before it. Agree that convention before placing the first work block. For formal filing or contractual deadlines, use the governing rule rather than this generic example."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "Illustrative backward-planning walkthrough: A 15-business-day launch due Friday, November 20, 2026",
+        "after": "Count dates one by one when exclusions exist"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "Walk through an illustrative four-stage deliverable due **Friday, November 20, 2026 at `17:00`** that requires **15 total business days** of sequential work across a period containing **1 weekday holiday** (Wednesday, November 11, 2026). Counting Friday Nov 20 as the final working day (`Business Day 15`):",
+          "- **Stage 4 — Final QA & Sign-Off (`2 business days`):** Occupies **Thursday, Nov 19** and **Friday, Nov 20, 2026** (`2 calendar days`). Must begin **Thu Nov 19 at `09:00`**.",
+          "- **Stage 3 — Stakeholder Review & Revisions (`5 business days`):** Counting backward 5 working days from Wednesday Nov 18 crosses the weekend of **Sat Nov 14 – Sun Nov 15** AND the Wednesday holiday on **Nov 11**. The 5 working days are: Wed Nov 18, Tue Nov 17, Mon Nov 16, Fri Nov 13, and Thu Nov 12 (`7 calendar days` elapsed because of the weekend, with Wed Nov 11 skipped). Must begin **Thu Nov 12 at `09:00`**.",
+          "- **Stage 2 — Core Production & Drafting (`6 business days`):** Counting backward 6 working days prior to Wednesday Nov 11 (holiday) crosses the weekend of **Sat Nov 7 – Sun Nov 8**. The 6 working days are: Tue Nov 10, Mon Nov 9, Fri Nov 6, Thu Nov 5, Wed Nov 4, and Tue Nov 3 (`8 calendar days` plus the Nov 11 holiday). Must begin **Tue Nov 3 at `09:00`**.",
+          "- **Stage 1 — Scope & Kickoff (`2 business days`):** Counting backward 2 working days from Tue Nov 3 crosses the weekend of **Sat Oct 31 – Sun Nov 1**: the 2 working days are **Mon Nov 2** and **Fri Oct 30, 2026**. Total calendar span from **Friday, October 30 (`09:00`)** to **Friday, November 20 (`17:00`)** is **22 calendar days** (`15 working days + 6 weekend days + 1 weekday holiday = 22 calendar days`)!"
+        ],
+        "after": [
+          "Starting at the chosen final eligible day, count it, step backward one date, skip every weekend or listed day off, and repeat until the required count is reached. This handles consecutive holidays and any newly crossed weekend without a fragile add-one-calendar-day shortcut.",
+          "Without holidays, subtracting five prior weekdays from a weekday lands seven calendar days earlier. That is a different operation from counting five working dates inclusively ending on the deadline. Label your count so those conventions do not get mixed."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Verified Lookup Table: Subtracting `1 to 15 Business Days` by Deadline Weekday",
+        "after": "Worked example: fifteen working dates in four stages"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "Use the verified mathematical lookup table below to convert any backward count of `B` business days (prior to the deadline day, assuming 0 holidays) directly into exact **calendar days (`-C`)** depending on whether your deadline is on a Monday, Tuesday, Wednesday, Thursday, or Friday. Afterward, subtract **1 additional calendar day** (or 3 calendar days if that step lands on a Sunday) for each weekday public holiday inside the window."
+        ],
+        "after": [
+          "Count November 20 as working date 15. Final QA uses November 19–20 (two dates). Stakeholder review uses November 12, 13, 16, 17 and 18 (five dates). Production uses November 3, 4, 5, 6, 9 and 10 (six dates). Scope uses October 30 and November 2 (two dates).",
+          "That is 2 + 5 + 6 + 2 = 15 working dates. October 30 through November 20 inclusive spans 22 calendar dates: 15 working dates, six weekend dates and the chosen November 11 day off. The elapsed midnight-to-midnight difference is 21 days; inclusive dates and elapsed duration are not the same count."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "How to enter backward-planned milestones in Google Calendar, Outlook, and Apple Calendar",
+        "after": "Put the plan into a calendar, then check capacity"
+      },
+      {
+        "path": "/sections/3/body/0",
+        "before": "1. **Anchor the hard deadline first:** Place the final delivery event (`[DEADLINE] Launch Delivery`) at the exact cut-off hour on the target date (or as a Google Calendar Task `Deadline` if you also want the 9:00 AM due-day notification).",
+        "after": "Create the agreed deadline and the stage boundaries. Reserve actual work intervals on the eligible dates; counting a day as available is not proof that eight hours are free. Check meetings, partial days and who is responsible for each handoff."
+      },
+      {
+        "path": "/sections/3/body/1",
+        "before": "2. **Turn on your regional Holiday calendar before counting backward:** Make sure your public holiday calendar and any personal `Out of office` blocks are visible in Month or Week view so you never count a bank holiday or PTO day as an available working day.",
+        "after": "Google and Outlook document recurring-event controls, including choosing where a series ends. An RFC weekday pattern selects weekdays but does not import your holiday policy. Review every occurrence around the days off."
+      },
+      {
+        "path": "/sections/3/body/2",
+        "before": "3. **Create a multi-day weekday series (`BYDAY=MO,TU,WE,TH,FR`) for each stage's work blocks:** In Outlook (`Recurrence > Daily > Every weekday`) or Google Calendar (`Custom recurrence > Repeat weekly on Mon, Tue, Wed, Thu, Fri` ending on the stage's last day), reserve the daily 1–2 hour execution blocks and delete (`This event only` / `EXDATE`) any weekday holiday inside the span.",
+        "after": "If you delete one recurring occurrence, that removes a date rather than automatically shifting all later work. The source service may represent an exception differently internally; do not claim every GUI deletion literally writes an EXDATE file."
+      }
+    ],
+    "calendar-travel-time-versus-separate-buffer-event-blocks": [
+      {
+        "path": "/articleLinks/0/label",
+        "before": "The Commute and the Sky",
+        "after": "Plan the actual journey and check conditions"
+      },
+      {
+        "path": "/articleLinks/1/label",
+        "before": "Drag an Event to Move It",
+        "after": "Booking link or shared calendar"
+      },
+      {
+        "path": "/articleLinks/1/slug",
+        "before": "drag-an-event-to-move-it",
+        "after": "booking-link-or-shared-calendar"
+      },
+      {
+        "path": "/articleLinks/2/label",
+        "before": "Booking Link or Shared Calendar",
+        "after": "Recurring event edit scope"
+      },
+      {
+        "path": "/articleLinks/2/slug",
+        "before": "booking-link-or-shared-calendar",
+        "after": "recurring-events-without-the-mess"
+      },
+      {
+        "path": "/description",
+        "before": "Compare Apple Calendar native Travel Time, Google Appointment Schedule Buffer Time, and standalone Busy `VEVENT` buffer blocks for pre- and post-meeting travel.",
+        "after": "Separate a travel reminder, booking-page buffer and Busy calendar block. Plan an outbound and return journey without promising universal availability blocking."
+      },
+      {
+        "path": "/title",
+        "before": "Calendar Travel Time vs Buffer Blocks: Protecting Commutes and Transitions Across Apps",
+        "after": "Calendar travel time or separate buffers? Check both journeys"
+      },
+      {
+        "path": "/lede",
+        "before": "A 60-minute offsite meeting from `14:00 to 15:00` with a 30-minute drive each way actually consumes **two full hours (`13:30 to 15:30`)** of your afternoon. Calendar platforms offer three very different ways to represent that transition time—Apple Calendar's native **Travel Time** field, Google Calendar Appointment Schedule's **Buffer time** setting, and **standalone `Busy` (`VEVENT`) buffer blocks**—and choosing the wrong one can leave your return commute completely exposed to back-to-back bookings.",
+        "after": "A 14:00–15:00 visit with thirty minutes of travel each way occupies 13:30–15:30 in your personal plan. The shared meeting, a travel reminder and the availability used by a booking page are separate things. Check each rather than assuming one field covers both journeys."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Setting 'Travel Time' on an event in Apple Calendar blocks both your outbound trip and your return trip across every calendar service.",
+        "after": ""
+      },
+      {
+        "path": "/seeAlso/1",
+        "before": "drag-an-event-to-move-it",
+        "after": "booking-link-or-shared-calendar"
+      },
+      {
+        "path": "/seeAlso/2",
+        "before": "booking-link-or-shared-calendar",
+        "after": "recurring-events-without-the-mess"
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "Apple Support — Add, modify, or delete events in Calendar on Mac (Location and Travel Time)",
+            "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac"
+          },
+          {
+            "label": "Google Calendar Help — Create an appointment schedule (Buffer time & Check calendars for availability)",
+            "url": "https://support.google.com/calendar/answer/10729749?hl=en"
+          },
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Sections 3.6.1 VEVENT, 3.6.4 VFREEBUSY & 3.8.2.7 TRANSP)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          }
+        ],
+        "after": [
+          {
+            "label": "Apple: Travel Time and location-change caveat",
+            "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac"
+          },
+          {
+            "label": "Google: appointment schedule buffers",
+            "url": "https://support.google.com/calendar/answer/10729749?hl=en"
+          },
+          {
+            "label": "Google: booking availability calendar selection",
+            "url": "https://support.google.com/calendar/answer/16287054?hl=en"
+          },
+          {
+            "label": "RFC 5545: time transparency",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "Never stretch a shared meeting invitation to include your personal commute (`13:30–15:30` for a `14:00–15:00` meeting)—keep the shared invite at `14:00–15:00` and add separate personal `Busy` events for `13:30–14:00` and `15:00–15:30`.",
+        "after": "Keep the shared meeting at the agreed time."
+      },
+      {
+        "path": "/practical/1",
+        "before": "Whenever you use Apple Calendar's native `Travel Time` for the outbound trip (`13:30–14:00`), still add a standalone `Busy` event after the meeting (`15:00–15:30`) if you have a return trip before your next desk call.",
+        "after": "Plan outbound and return intervals explicitly."
+      },
+      {
+        "path": "/practical/2",
+        "before": "If you move an offsite event to a new date or time, remember to drag both the outbound and return buffer blocks with it (and on Mac, recheck native `Travel Time` if the venue address changed).",
+        "after": "Check saved calendar, availability and sharing."
+      },
+      {
+        "path": "/practical/3",
+        "before": "In Google Calendar Appointment Schedules, combine `Buffer time` (to space out external bookings) with `Check calendars for availability` so your personal `Busy` commute blocks also remove conflicting booking slots.",
+        "after": "Test the actual booking flow after an edit."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why did someone book a 3:00 PM Zoom call with me right when my 2:00–3:00 PM across-town appointment ended, even though I set Travel Time?",
+            "a": "Because Apple Calendar's `Travel Time` field only reserves travel time **before** the event starts (`1:30–2:00 PM`). It does not add a return-trip block after `3:00 PM`. To protect your return drive from `3:00 to 3:30 PM`, add a separate `Busy` calendar event from `3:00 to 3:30 PM`."
+          },
+          {
+            "q": "Does Google Calendar's Appointment Schedule 'Buffer time' stop internal coworkers from placing meetings back-to-back on my calendar?",
+            "a": "No. Google's `Buffer time` setting inside an Appointment Schedule only spaces out slots offered on that booking page. Internal coworkers using `Find a time` see your calendar grid directly and will only see a blocked gap if there is an actual `Busy` event on your calendar."
+          },
+          {
+            "q": "Should I mark my personal commute buffer blocks as Public or Private on a shared work calendar?",
+            "a": "Set their availability to **`Busy`** (`TRANSP:OPAQUE`) and their visibility to **`Private`** (`CLASS:PRIVATE`) if you want colleagues to see that `13:30–14:00` and `15:00–15:30` are unavailable without exposing your travel route or destination."
+          }
+        ],
+        "after": [
+          {
+            "q": "Does a travel-time menu prove the return trip is blocked everywhere?",
+            "a": "No. Inspect the return period and the exact calendar/availability service. Add and verify a separate personal block when needed."
+          },
+          {
+            "q": "Does Busy stop someone sending me a conflicting invitation?",
+            "a": "It can inform availability checks; it is not a universal invitation-rejection rule."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Illustrative Comparison: Three Ways to Buffer a `14:00–15:00` Offsite Meeting (`30m` Outbound + `30m` Return)",
+        "after": "Illustrative 14:00–15:00 visit"
+      },
+      {
+        "path": "/comparison/rows",
+        "before": [
+          {
+            "cells": [
+              "Protects Outbound Slot (`13:30–14:00`)?",
+              "**Yes** (In Apple Calendar views and alerts)",
+              "Between booked appointment slots on that booking page",
+              "**Yes** (`13:30–14:00` `TRANSP:OPAQUE` `VEVENT`)"
+            ]
+          },
+          {
+            "cells": [
+              "Protects Return / Post-Event Slot (`15:00–15:30`)?",
+              "**No** (Applies only before event start)",
+              "Yes, before the next booking-page slot only",
+              "**Yes** (`15:00–15:30` `TRANSP:OPAQUE` `VEVENT`)"
+            ]
+          },
+          {
+            "cells": [
+              "Blocks Colleagues in Google `Find a time` & Outlook `Scheduling Assistant`?",
+              "Not guaranteed across non-Apple servers for return leg (`15:00–15:30` is open)",
+              "**No** (Only throttles your public booking page)",
+              "**Yes** (Both `13:30–14:00` and `15:00–15:30` report as `Busy` in `VFREEBUSY`)"
+            ]
+          },
+          {
+            "cells": [
+              "Keeps Shared Invite Time Accurate (`14:00–15:00`) for Guests?",
+              "**Yes** (Invite stays `14:00–15:00`)",
+              "**Yes** (Booked slot stays `14:00–15:00`)",
+              "**Yes** (Keep buffers as private personal events; keep invite at `14:00–15:00`)"
+            ]
+          },
+          {
+            "cells": [
+              "True Occupied Capacity Shown on Grid",
+              "`90 minutes` (`13:30–15:00`; misses `30m` return)",
+              "`60 minutes` on grid (`14:00–15:00`)",
+              "**`120 minutes` (`13:30–15:30` — exact 2.0h commitment)**"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "cells": [
+              "Outbound personal block",
+              "13:30–14:00",
+              "Saved Busy state and calendar included by availability tool"
+            ]
+          },
+          {
+            "cells": [
+              "Shared meeting",
+              "14:00–15:00",
+              "Actual agreed guest start/end"
+            ]
+          },
+          {
+            "cells": [
+              "Return personal block",
+              "15:00–15:30",
+              "Return window visible to the intended availability check"
+            ]
+          },
+          {
+            "cells": [
+              "Booking-page buffer",
+              "Configured in appointment schedule",
+              "Spacing on that booking page; do not infer a separate global Busy event"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Capability / Check",
+          "1. Apple Native `Travel Time` (`30 min`)",
+          "2. Google Appointment Schedule `Buffer time` (`30 min`)",
+          "3. Standalone `Busy` (`VEVENT`) Pre + Post Blocks"
+        ],
+        "after": [
+          "Record",
+          "Time",
+          "What to verify"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "How the three calendar buffer mechanisms differ in scope and direction",
+        "after": "What the documented controls actually say"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "Reading the official Apple Calendar documentation (`Add, modify, or delete events in Calendar on Mac` and `Create and edit events in Calendar on iPhone`), Google Calendar's Appointment Schedule guide (`Create an appointment schedule`), and the iCalendar protocol (`RFC 5545` Sections 3.6.1 `VEVENT`, 3.6.4 `VFREEBUSY`, and 3.8.2.7 `TRANSP`) shows that the three features solve different problems:",
+          "1. **Apple Calendar Native `Travel Time` (Pre-Event Only):** Apple's event editor on Mac and iPhone provides a dedicated `Travel Time` menu attached to an event. It reserves time **immediately before** the event's start time (`DTSTART`), shifts relative alerts earlier by that travel allowance, and supports `Time to Leave` notifications when a location is entered (note that Apple explicitly states changing an event's location on Mac does not automatically recalculate `Travel Time`). Crucially, native `Travel Time` **only covers the outbound trip before the event**—it never adds a return-trip block after `DTEND`, and `Travel Time` is an Apple extension rather than a standard RFC 5545 `VEVENT` duration property.",
+          "2. **Google Calendar Appointment Schedule `Buffer time` (Booking Pages Only):** In Google Calendar on a computer (`Create > Appointment schedule > Booked appointment settings`), Google documents a `Buffer time` option to *'Add time between appointments on your calendar.'* That buffer prevents external guests on your booking page from booking two appointment slots back to back, but it applies **only** to slots offered on that specific Google Appointment Schedule—not to internal meetings colleagues place directly on your calendar via `Find a time` or Outlook's `Scheduling Assistant`.",
+          "3. **Standalone `Busy` (`TRANSP:OPAQUE`) Buffer / Commute Events (`VEVENT`):** Creating explicit timed `VEVENT` blocks before (`13:30–14:00 Outbound Commute`) and after (`15:00–15:30 Return Commute`) an offsite meeting writes standard `TRANSP:OPAQUE` busy periods into your calendar store, blocking availability in **every** calendar client, `VFREEBUSY` lookup, and booking tool."
+        ],
+        "after": [
+          "Apple’s Mac event guide documents a Travel Time menu and warns that its value does not update automatically after a location change. That alone does not establish how a Google or Exchange availability service interprets the field, or prove a return trip has been reserved. Inspect the saved event and return window explicitly.",
+          "Google’s appointment-schedule guide describes Buffer time as adding time between appointments. This is a booking-schedule control, not evidence that the same time becomes a separate Busy event for every internal scheduling tool."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "Why post-event return commutes are the #1 cause of double-booked afternoons",
+        "after": "A worked three-block plan"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "Suppose you have an in-person client visit across town from `14:00 to 15:00` requiring `30 minutes` of travel each way (`13:30–14:00` outbound and `15:00–15:30` return). Even if you set `30 minutes` of native `Travel Time` on the `14:00–15:00` event, the event still ends at **`15:00`**.",
+          "To any colleague checking your availability in Google Calendar (`Find a time`) or Microsoft Outlook (`Scheduling Assistant`), your calendar shows `15:00 to 16:00` as wide open (`Free`). When someone books a `15:00` video call, you are still walking out of the client's building at `15:00` with a 30-minute drive ahead of you.",
+          "Only a standalone `Busy` (`TRANSP:OPAQUE`) return-travel event from **`15:00 to 15:30`** protects that 30-minute return window."
+        ],
+        "after": [
+          "For the illustrative 14:00–15:00 visit, place personal outbound travel at 13:30–14:00 and return travel at 15:00–15:30. Meeting 60 minutes + outbound 30 + return 30 = 120 minutes total. These durations are assumptions for the plan, not navigation estimates.",
+          "Keep the invitation at the actual agreed 14:00–15:00 time. Separate personal buffers avoid telling guests that the meeting itself starts at 13:30. If time or venue changes, review both travel blocks and any native Travel Time value."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Illustrative comparison: Protecting a `14:00–15:00` offsite visit (`+30m` outbound / `+30m` return)",
+        "after": "Busy indicates availability; it is not an enforcement guarantee"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "The illustrative table below compares how a `14:00–15:00` offsite appointment (`60m` meeting + `30m` outbound + `30m` return = `120m` total commitment from `13:30 to 15:30`) behaves across all three methods."
+        ],
+        "after": [
+          "RFC 5545 describes VEVENT and its TRANSP setting: opaque events can be considered in busy-time searches; transparent events do not block them. The standard does not guarantee that every provider reads every calendar, imports every field, or rejects conflicting invitations.",
+          "Save buffers in a calendar that your intended scheduling or booking flow actually checks. For Google appointment schedules, the availability-checking calendar choices also matter. Test a neutral block from the booking page or with a consenting colleague rather than declaring all clients protected."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "When to use recurring daily commute blocks vs event-specific travel blocks",
+        "after": "Check details and visibility separately"
+      },
+      {
+        "path": "/sections/3/body/0",
+        "before": "For a predictable daily commute between home and an office (for example, `08:00–08:45` and `17:15–18:00` Monday through Friday, or on the specific weekdays your hybrid `Working location` is set to `Office`), use a **recurring weekday `Busy` series** (`RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`) so early-morning and late-afternoon transit windows are automatically protected against meetings.",
+        "after": "Use a neutral travel-block title if route details are unnecessary. Inspect both item visibility and calendar sharing; an ICS CLASS value alone is not a universal access-control guarantee."
+      },
+      {
+        "path": "/sections/3/body/1",
+        "before": "For one-off midday offsite appointments (doctor visits, client lunches, site inspections), create the **three-block sandwich**: (1) `Outbound Travel` (`Busy`), (2) `Appointment` (`Busy`, at the exact agreed start and end time so invited guests see the real `14:00–15:00` meeting time), and (3) `Return Travel` (`Busy`). Never stretch the shared meeting invite itself to `13:30–15:30`, or your guests will think the meeting starts at `13:30`!",
+        "after": "Keep this availability check separate from route/weather planning. The existing journey-planning guide addresses estimates and conditions; this guide focuses on which record a booking flow sees."
+      }
+    ],
+    "alternating-a-b-week-school-timetable-calendar-vacation-exceptions": [
+      {
+        "path": "/articleLinks/0/label",
+        "before": "Recurring Events Without the Mess",
+        "after": "Recurring events without the mess"
+      },
+      {
+        "path": "/articleLinks/1/label",
+        "before": "A Week View That Fits a Week",
+        "after": "Rrule count until excluded occurrences"
+      },
+      {
+        "path": "/articleLinks/1/slug",
+        "before": "a-week-view-that-fits-a-week",
+        "after": "rrule-count-until-excluded-occurrences"
+      },
+      {
+        "path": "/articleLinks/2/label",
+        "before": "Cozi or TimeTree for an iPhone and Android Family?",
+        "after": "Icalendar exdate recurrence id moved instance"
+      },
+      {
+        "path": "/articleLinks/2/slug",
+        "before": "cozi-timetree-family-calendar-iphone-android",
+        "after": "icalendar-exdate-recurrence-id-moved-instance"
+      },
+      {
+        "path": "/description",
+        "before": "Set up an alternating Week A / Week B school or college schedule (`INTERVAL=2`) and handle 1-week school breaks whether they keep or flip Week A/B parity.",
+        "after": "Plan an every-two-weeks timetable around a one-week break. Compare a fixed calendar cadence with a paused teaching cycle and verify the first weeks after it."
+      },
+      {
+        "path": "/title",
+        "before": "Alternating Week A / Week B School Timetable on a Calendar: Handling Vacation Breaks",
+        "after": "Alternating A/B week timetable: decide what a holiday skips"
+      },
+      {
+        "path": "/lede",
+        "before": "Setting up a two-week alternating school, college, or teaching timetable (`Week A` and `Week B`) is simple at the start of term: Week A classes repeat every 2 weeks (`INTERVAL=2`) from Week 1, and Week B classes repeat every 2 weeks from Week 2. The moment a 1-week half-term or Thanksgiving break arrives, however, schools split into two opposite rules—**Calendar-Locked A/B Weeks** vs **Pause-and-Resume A/B Weeks**—and using the wrong calendar edit will put every class after the break onto the wrong week!",
+        "after": "A two-week recurrence keeps counting calendar weeks even when a class is removed. If a school pauses its A/B rotation during a holiday, deleting the holiday’s lessons alone will not create the intended post-break timetable. Confirm the school’s published schedule first."
+      },
+      {
+        "path": "/commonBelief",
+        "before": "Deleting the classes during a 1-week school break automatically shifts Week B to the week after the holiday.",
+        "after": ""
+      },
+      {
+        "path": "/seeAlso/1",
+        "before": "a-week-view-that-fits-a-week",
+        "after": "rrule-count-until-excluded-occurrences"
+      },
+      {
+        "path": "/seeAlso/2",
+        "before": "cozi-timetree-family-calendar-iphone-android",
+        "after": "icalendar-exdate-recurrence-id-moved-instance"
+      },
+      {
+        "path": "/sources",
+        "before": [
+          {
+            "label": "IETF RFC 5545 — Internet Calendaring and Scheduling Core Object Specification (Section 3.3.10 RECUR: INTERVAL=2, UNTIL & Section 3.8.5.1 EXDATE)",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545"
+          },
+          {
+            "label": "Google Calendar Help — Create and edit a recurring event",
+            "url": "https://support.google.com/calendar/answer/37115?hl=en"
+          },
+          {
+            "label": "Microsoft Support — Get started with the Outlook Calendar (Weekly recurrence every X weeks)",
+            "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+          }
+        ],
+        "after": [
+          {
+            "label": "RFC 5545: weekly interval and UNTIL types",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10"
+          },
+          {
+            "label": "RFC 5545: EXDATE",
+            "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1"
+          },
+          {
+            "label": "Google: recurring events",
+            "url": "https://support.google.com/calendar/answer/37115?hl=en"
+          },
+          {
+            "label": "Microsoft: every-other-Monday recurrence",
+            "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+          }
+        ]
+      },
+      {
+        "path": "/practical/0",
+        "before": "Check your school's printed term calendar for the Monday **immediately after** each 1-week break before creating your recurring series: if the week before a 1-week break is `Week A` and the week after the break is `Week B`, your school uses **Model 2 (Pause-and-Resume)**.",
+        "after": "Read the school’s actual first post-break timetable."
+      },
+      {
+        "path": "/practical/1",
+        "before": "For **Model 1 (Calendar-Locked)**, create `Repeat every 2 weeks` series for the full term and simply delete single vacation occurrences (`Delete -> This event only` / `EXDATE`).",
+        "after": "Choose the intended cadence before creating series."
+      },
+      {
+        "path": "/practical/2",
+        "before": "For **Model 2 (Pause-and-Resume)**, set the `Ends -> On [Date]` (`UNTIL`) of every recurring class to the **last Friday before each 1-week break**, and start a fresh half-term series on the Monday after the break.",
+        "after": "Bound old series before re-anchoring to avoid duplicates."
+      },
+      {
+        "path": "/practical/3",
+        "before": "Keep all timetable events in a dedicated `School Timetable` subcalendar so you can share it with family or hide it during summer vacation with a single tap.",
+        "after": "Verify the first two post-break teaching weeks."
+      },
+      {
+        "path": "/faq",
+        "before": [
+          {
+            "q": "Why did deleting the classes during our 1-week school break leave the wrong Week A / Week B schedule for the rest of the semester?",
+            "a": "Because deleting a single week of occurrences (`Delete -> This event only`, which adds an `EXDATE` in RFC 5545) only removes those dates—it does not shift the underlying `Repeat every 2 weeks` (`INTERVAL=2`) cadence. If your school paused the rotation during the 1-week break so `Week B` moved to the week after the holiday, end the pre-break series on the Friday before the holiday (`This and following events` or `UNTIL`) and start the post-break series on the new week."
+          },
+          {
+            "q": "Why does a 2-week winter or spring break NOT flip Week A and Week B under either system?",
+            "a": "Because 2 weeks is `14 days`, which is an exact multiple of the 2-week (`14-day`) `INTERVAL=2` cycle. If the last teaching week before a 2-week break is `Week A`, skipping two calendar weeks lands naturally on `Week B` when school resumes."
+          },
+          {
+            "q": "What if my school uses a 6-day or 10-day rotating Day 1–Day 6 schedule that skips weekends and holidays instead of Week A / Week B?",
+            "a": "A weekday-only `Day 1–Day 6` rotation changes weekdays every week and shifts by 1 day after every single Monday/Friday holiday; it is best entered either via your school portal's subscribed `.ics` calendar feed or by bounding short blocks between holidays."
+          }
+        ],
+        "after": [
+          {
+            "q": "Why does deleting the break not swap A and B?",
+            "a": "An excluded occurrence does not reset the recurrence interval. Restart at the intended post-break anchor if that is what the school publishes."
+          },
+          {
+            "q": "Can every school use the same two-week rule?",
+            "a": "No. A day rotation, partial-week closure or school-specific reset can follow a different policy. Use its official timetable."
+          }
+        ]
+      },
+      {
+        "path": "/comparison/heading",
+        "before": "Illustrative 8-Week School Term Comparison: Calendar-Locked (Model 1) vs Pause-and-Resume (Model 2) Across a 1-Week Break",
+        "after": "Monday-only worked timetable, November–December 2026"
+      },
+      {
+        "path": "/comparison/rows",
+        "before": [
+          {
+            "cells": [
+              "Week 1: Mon Nov 2 – Fri Nov 6",
+              "Week A",
+              "**Week A** (Teaching Week 1)",
+              "Start `Week A` (`INTERVAL=2`)",
+              "**Week A** (Teaching Week 1)",
+              "Start Half-Term 1 `Week A` (`UNTIL=Nov 20`)"
+            ]
+          },
+          {
+            "cells": [
+              "Week 2: Mon Nov 9 – Fri Nov 13",
+              "Week B",
+              "**Week B** (Teaching Week 2)",
+              "Start `Week B` (`INTERVAL=2`)",
+              "**Week B** (Teaching Week 2)",
+              "Start Half-Term 1 `Week B` (`UNTIL=Nov 20`)"
+            ]
+          },
+          {
+            "cells": [
+              "Week 3: Mon Nov 16 – Fri Nov 20",
+              "Week A",
+              "**Week A** (Teaching Week 3)",
+              "Generated automatically",
+              "**Week A** (Teaching Week 3)",
+              "Final week of Half-Term 1 (`UNTIL=Nov 20`)"
+            ]
+          },
+          {
+            "cells": [
+              "**Week 4: Mon Nov 23 – Fri Nov 27 (1-Week Break)**",
+              "Would generate Week B",
+              "**VACATION BREAK** (Replaces Week B)",
+              "Delete Week 4 classes (`This event only` / `EXDATE`)",
+              "**VACATION BREAK** (Pauses cycle)",
+              "Automatically empty (Half-Term 1 ended Nov 20)"
+            ]
+          },
+          {
+            "cells": [
+              "**Week 5: Mon Nov 30 – Fri Dec 4 (Post-Break!)**",
+              "Generates Week A",
+              "**Week A** (Matches `INTERVAL=2`!)",
+              "No change needed; stays aligned",
+              "**Week B** (Teaching Week 4 — **Parity Flipped!**)",
+              "Start Half-Term 2 `Week B` on **Mon Nov 30** (`INTERVAL=2`)"
+            ]
+          },
+          {
+            "cells": [
+              "Week 6: Mon Dec 7 – Fri Dec 11",
+              "Generates Week B",
+              "**Week B**",
+              "No change needed",
+              "**Week A** (Teaching Week 5 — **Parity Flipped!**)",
+              "Start Half-Term 2 `Week A` on **Mon Dec 7** (`INTERVAL=2`)"
+            ]
+          },
+          {
+            "cells": [
+              "Weeks 7–8: Dec 14–18 & Dec 21–25",
+              "W7: A | W8: B",
+              "W7: **Week A** | W8: Break",
+              "Delete W8 (`EXDATE`)",
+              "W7: **Week B** | W8: Break",
+              "Half-Term 2 ends **Fri Dec 18** (`UNTIL`)"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "cells": [
+              "Nov 2",
+              "A",
+              "A",
+              "A"
+            ]
+          },
+          {
+            "cells": [
+              "Nov 9",
+              "B",
+              "B",
+              "B"
+            ]
+          },
+          {
+            "cells": [
+              "Nov 16",
+              "A",
+              "A",
+              "A"
+            ]
+          },
+          {
+            "cells": [
+              "Nov 23",
+              "B",
+              "Break: remove occurrence",
+              "Break: pre-break series ended"
+            ]
+          },
+          {
+            "cells": [
+              "Nov 30",
+              "A",
+              "A",
+              "B: fresh post-break series"
+            ]
+          },
+          {
+            "cells": [
+              "Dec 7",
+              "B",
+              "B",
+              "A: fresh post-break series"
+            ]
+          },
+          {
+            "cells": [
+              "Dec 14",
+              "A",
+              "A",
+              "B"
+            ]
+          },
+          {
+            "cells": [
+              "Dec 21",
+              "Outside teaching block",
+              "No class in this example",
+              "No class in this example"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "/comparison/columns",
+        "before": [
+          "Calendar Week (Nov–Dec 2026)",
+          "Unadjusted `INTERVAL=2` Series",
+          "Model 1: Calendar-Locked Parity",
+          "Model 1 Calendar Action",
+          "Model 2: Pause-and-Resume Parity",
+          "Model 2 Calendar Action"
+        ],
+        "after": [
+          "Monday",
+          "Unchanged two-week phase",
+          "Fixed cadence after removing break",
+          "Paused cycle"
+        ]
+      },
+      {
+        "path": "/sections/0/heading",
+        "before": "How the base 2-week Week A / Week B timetable maps to `FREQ=WEEKLY;INTERVAL=2`",
+        "after": "Two recurrence patterns, one policy question"
+      },
+      {
+        "path": "/sections/0/body",
+        "before": [
+          "In a 10-day (`two-week`) academic timetable, `Week A` (Monday–Friday of odd term weeks) and `Week B` (Monday–Friday of even term weeks) have different class periods, lab blocks, or teaching rooms. In iCalendar (RFC 5545 Section 3.3.10), Google Calendar (`Create a recurring event` -> `Custom -> Repeat every 2 weeks`), and Microsoft Outlook (`Recurrence -> Weekly -> Recur every 2 week(s)`), you build the timetable with two sets of recurring events:",
+          "- **Week A Series:** Created during the first week of term (`Term Week 1`) with `Repeat every 2 weeks` (`RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=...`).",
+          "- **Week B Series:** Created during the second week of term (`Term Week 2`) with `Repeat every 2 weeks` (`RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=...`).",
+          "Adding an all-day transparent (`Show as: Free`) header event on Monday–Friday of each week titled **`[WEEK A]`** and **`[WEEK B]`** lets students, teachers, and parents see at a glance which timetable week is active in Month and Week views."
+        ],
+        "after": [
+          "RFC 5545 can express weekly recurrence with INTERVAL=2. Outlook’s guide explicitly gives an every-other-Monday example. Google documents choosing the repeat frequency and ending date. The particular school decides whether a holiday consumes a rotation week; the calendar standard does not.",
+          "For this fictional Monday-only class example, A starts November 2, 2026 and B starts November 9. Both repeat every two weeks. November 23–27 is a chosen one-week break, and the example’s second teaching block ends December 18. This is not a real school holiday calendar."
+        ]
+      },
+      {
+        "path": "/sections/1/heading",
+        "before": "The crucial holiday question: Does a 1-week break keep parity or flip parity?",
+        "after": "Fixed calendar cadence: remove the break, keep the phase"
+      },
+      {
+        "path": "/sections/1/body",
+        "before": [
+          "Before you edit a single vacation week on your calendar, check your school's official academic calendar for the week immediately **after** a 1-week break (note: a **2-week break** is 14 days = an even number of weeks, so both systems stay aligned after a 2-week break! A **1-week break** or **3-week break** is an odd number of weeks, where the two systems diverge):",
+          "- **Model 1 — Calendar-Locked Parity (Holiday Replaces the Scheduled Week):** Each calendar week of the year is pre-assigned as A or B. If Week 3 is `Week A`, Week 4 is a 1-week Vacation (which *would* have been `Week B`), and Week 5 resumes as **`Week A`**, then the odd/even calendar cadence never changed! Under RFC 5545 Section 3.8.5.1 (`EXDATE`), deleting the classes on Week 4 using `Delete -> This event only` leaves Week 5 as `Week A` automatically.",
+          "- **Model 2 — Instructional-Week Pause-and-Resume (Holiday Pauses the Cycle and Flips Parity):** Only active teaching weeks count. If Week 3 is `Week A`, Week 4 is a 1-week Vacation, and the school resumes in Week 5 with **`Week B`** (pushing every subsequent A and B week forward by 7 days), simply deleting Week 4 with `This event only` (`EXDATE`) will **fail**—because an `INTERVAL=2` rule still puts `Week A` on Week 5!"
+        ],
+        "after": [
+          "With no re-anchoring, A would occur November 2, 16 and 30, then December 14; B would occur November 9 and 23, then December 7. Removing B on November 23 leaves November 30 as A.",
+          "RFC EXDATE removes matching recurrence instances; it does not restart the two-week interval. A provider’s single-occurrence deletion can implement an exception without literally exposing an ICS file, so verify the resulting dates in the source account."
+        ]
+      },
+      {
+        "path": "/sections/2/heading",
+        "before": "Illustrative 8-week term table comparing Model 1 (`EXDATE`) vs Model 2 (`UNTIL` + Parity Flip)",
+        "after": "Paused teaching cycle: bound and restart deliberately"
+      },
+      {
+        "path": "/sections/2/body",
+        "before": [
+          "Consider an illustrative 8-week autumn term segment running **Monday, November 2 through Friday, December 25, 2026**, with a **1-week break in Calendar Week 4 (Monday, November 23 – Friday, November 27, 2026)**. Compare how Model 1 and Model 2 assign `Week A` and `Week B` in Weeks 5–8 (`Nov 30 – Dec 25, 2026`), and see the exact calendar actions required for each model."
+        ],
+        "after": [
+          "If the school instead requires November 30 to be B, bound the pre-break series to the final teaching date before the break, then create post-break B on November 30 and A on December 7, each repeating every two weeks through December 18. Inspect for duplicates from any old unbounded series.",
+          "Use the editor’s supported ending-date control. If generating raw ICS, UNTIL has value-type and UTC requirements depending on DTSTART; do not write a placeholder such as UNTIL=Nov 20. The COUNT/UNTIL guide explains those requirements.",
+          "For classes on several weekdays, create the actual weekday/time records, not a single Monday class and an assumption that the rest appear. Use the published timetable to verify each one."
+        ]
+      },
+      {
+        "path": "/sections/3/heading",
+        "before": "How to set up Model 2 (Parity Flip) without creating mid-term editing messes",
+        "after": "Verify the first two teaching weeks after every break"
+      },
+      {
+        "path": "/sections/3/body",
+        "before": [
+          "If your school uses **Model 2 (Pause-and-Resume)** where a 1-week break flips odd/even weeks for the next half-term, never create a single `Repeat every 2 weeks` series spanning the entire September-to-June school year.",
+          "Instead, **bound each half-term block with its own `Ends -> On [Last Friday Before Break]` (`UNTIL`) date** when you first enter the timetable:",
+          "- **Half-Term 1 (`Nov 2 – Nov 20, 2026`):** `Week A` starts `Mon Nov 2` (`Ends On Fri Nov 20`); `Week B` starts `Mon Nov 9` (`Ends On Fri Nov 20`).",
+          "- **Vacation Week (`Nov 23 – Nov 27, 2026`):** Zero classes generated automatically (`No EXDATE deletions needed!`).",
+          "- **Half-Term 2 (`Nov 30 – Dec 18, 2026`):** Duplicate the `Week B` series onto `Mon Nov 30` (`Ends On Fri Dec 18`) and the `Week A` series onto `Mon Dec 7` (`Ends On Fri Dec 18`). Bounding each half-term with `UNTIL` takes less than a minute and guarantees that a 1-week holiday never puts the rest of the semester on the wrong week."
+        ],
+        "after": [
+          "In the fictional example, fixed cadence produces A on November 30 and B on December 7. A paused cycle produces B on November 30 and A on December 7. That pair of dates is a more reliable check than a vague label such as odd week.",
+          "An even two-week break preserves the phase difference under these two explicitly defined models; an odd one-week break changes it. Partial-week closures, day rotations and school-specific resets need their own published rules."
+        ]
+      }
+    ]
+  },
+  "excludedSlugs": {
+    "viewer-display-time-zone-versus-event-time-zone-calendar": [
+      "time-zones-and-the-flight-you-booked",
+      "Same decision: distinguish display zone from event zone; per-calendar ownership detail can enrich the existing guide."
+    ],
+    "recurring-calendar-event-anchored-in-utc-versus-local-tzid": [
+      "icalendar-floating-time-utc-tzid",
+      "UTC/TZID recurrence and DST are already the baseline standards guide’s core distinction; merge the worked dates instead of another intent."
+    ],
+    "iso-week-1-and-week-53-calendar-boundary-dates": [
+      "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "ISO year-boundary calculations belong in the week-number diagnostic guide selected for this wave."
+    ],
+    "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math": [
+      "deferred-retail-policy-source-review",
+      "Root excludes retail calendar from this wave. Generic RFC/Google sources do not establish fiscal-year policy. NRF has an explicit 4-5-4 policy; do not pretend the arbitrary 2031 illustration is its official year."
+    ]
+  },
+  "noSourceEditsBuildDeploy": true,
+  "evidenceSections": [
+    {
+      "source": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+      "section": "Add additional time zones (Classic); Swap time zone positions (Web)",
+      "support": "Classic: latest M365 up to3; other classic including2019LTSC/2016two. Web explicitly describes three or more. No universal new/web cap."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/37064?hl=en",
+      "section": "Show additional time zones; Show world clock",
+      "support": "Secondary and Tertiary are documented separately from world-clock sidebar."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+      "section": "BYWEEKNO, WKST, BYSETPOS and invalid recurrence dates",
+      "support": "First week at least4days depends on WKST; invalid dates ignored; BYSETPOS selects within interval. None of those provisions gives a national default or holiday policy."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.4",
+      "section": "DTSTART value type",
+      "support": "Default DATE-TIME; VALUE=DATE used for eight-digit all-day sample."
+    },
+    {
+      "source": "https://support.apple.com/guide/calendar/icl1018/mac",
+      "section": "Set up a repeating event",
+      "support": "Custom Frequency and On the menus include last weekday monthly; source does not establish every importing platform’s preservation."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/9901136?hl=en",
+      "section": "Learn about task settings; Edit start/end time; Learn about task notifications",
+      "support": "Deadline in All day, timed Free/Busy, no end time recurring tasks, deadline9AMlocal. No proof that timed task is exported as literal VTODO."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/11190973?hl=en",
+      "section": "Learn who can use focus time; Schedule focus time; Change how meetings are declined",
+      "support": "Eligible work/school plans; Day/Week with specific endpoints; decline settings separate from generic Busy."
+    },
+    {
+      "source": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+      "section": "Add/edit duration, location, travel time",
+      "support": "Travel Time menu; value does not update automatically on location change. Not evidence for cross-provider freebusy or a universal return-trip block."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/10729749?hl=en",
+      "section": "Booked appointment settings / Buffer time",
+      "support": "Add time between appointments within appointment schedule. Not a promise of a standalone universal Busy event."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+      "section": "Time Transparency",
+      "support": "VEVENT opaque/transparent informs busy search; does not mandate invitation rejection or a client integration."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+      "section": "EXDATE recurrence set exclusion",
+      "support": "Excludes matching instances from a recurrence set; does not re-anchor interval. GUI provider storage mapping unproven."
+    },
+    {
+      "source": "https://support.google.com/calendar/answer/16287054?hl=en",
+      "section": "Learn how Calendar checks for conflicts; Review secondary calendars for conflicts",
+      "support": "Busy removes booking slots only from reviewed calendars; secondary-calendar checking requires an eligible plan. Calendar choices are material."
+    }
+  ]
+}

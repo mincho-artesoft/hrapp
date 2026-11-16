@@ -1,0 +1,105 @@
+{
+  "updated": "2026-10-22",
+  "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+  "short": "Cloud Calendars and OneCal by workflow",
+  "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
+  "lede": "Seeing several calendars together is different from copying their events into other accounts. Start with that distinction before comparing an iPhone calendar app with a calendar-sync service. Arte Soft develops Cloud Calendars and publishes this comparison; it is not an independent performance benchmark.",
+  "commonBelief": "Two products that show Google, iCloud and Outlook calendars necessarily keep availability, event edits and copies in sync in the same way.",
+  "sections": [
+    {
+      "heading": "Choose between an overview and a change in another account",
+      "body": [
+        "If your aim is to see a personal appointment beside a work meeting, you need a combined view. If your work calendar must also contain a busy block for the personal appointment, you need a defined source-to-destination workflow. The first result does not establish the second.",
+        "Cloud Calendars brings selected calendars into an iPhone and iPad planning view. OneCal documents a Unified Calendar View separately from Calendar Sync; its publisher says you can use that view without configuring sync rules. Decide which outcome matters before connecting accounts or comparing subscription names."
+      ]
+    },
+    {
+      "heading": "Understand what a copied event can change",
+      "body": [
+        "OneCal’s Calendar Sync documentation describes one-way and multi-way rules that create clone events. Its separate coverage guide says edits to a clone are not propagated back to the original. Identify the original and its owning calendar before treating a copied appointment as the place to reschedule a meeting.",
+        "Cloud Calendars provider connections can also create mirrored calendars in the iOS store. A combined display does not prove that records were merged or that an edit reached the provider. For a calendar you own and may edit, check a disposable event without guests at the provider as well as in the app."
+      ]
+    },
+    {
+      "heading": "Check the controls on the device you will actually use",
+      "body": [
+        "OneCal’s current mobile guide describes creating and editing calendar events, recurrence choices, RSVP and joining meetings. It separately says that creating, editing, pausing or deleting Calendar Sync configurations happens in the web app; mobile shows those configurations. Booking-link setup is also described as a web task.",
+        "Cloud Calendars is an iPhone and iPad app with day, week, month, year and list views. Try the needed edit in your installed view, read any recurrence choice and confirm the saved event. Do not assume another product’s mobile menu, booking workflow or automation controls exist in it."
+      ]
+    },
+    {
+      "heading": "Verify coverage instead of assuming unlimited history",
+      "body": [
+        "OneCal’s current coverage guide lists a future sync window of up to a year for Google and iCloud and up to three months for Outlook. It also distinguishes future recurring series from standalone historical events. These are publisher-documented limits, not a test of your particular account or a claim about every feature in its calendar view.",
+        "Cloud Calendars also needs a check of the account route, selected calendars and relevant dates. If old meetings are essential, compare an identified event in the provider and the app. A calendar app is not automatically a complete backup or a guarantee that every past record has been retrieved."
+      ]
+    },
+    {
+      "heading": "Compare plan requirements and the billing route",
+      "body": [
+        "Cloud Calendars includes Google Calendar sync in Base; Advanced removes ads and Premium adds Microsoft Calendar and Teams support. Verify account permissions separately from the plan. Check the current local price and billing period before purchase rather than using a fixed international price comparison.",
+        "OneCal’s web plan guide describes per-member plans and a fourteen-day trial, including clone removal when the trial expires. Its mobile billing guide describes store-managed purchases and constraints on adding team members. Check which features need an ongoing plan and where the purchase is managed; a free download alone does not answer those questions."
+      ]
+    },
+    {
+      "heading": "Test your actual planning workflow before switching",
+      "body": [
+        "If weather, widgets or a Live Activity are important, include them in the trial on the device you use. Cloud Calendars offers those planning surfaces, with weather limited to available dates and the selected place. The OneCal pages reviewed here do not establish feature parity for those surfaces; check its current product rather than inferring absence from a guide.",
+        "Keep the original apps and connection details until you have checked the required outcome. Record whether you verified visibility, original-event editing, copied busy time or a reminder; they are different results. Before disconnecting a service, review what happens to existing copies and avoid experimenting on a live invitation or a real customer meeting."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Write down whether you need a combined view or events copied into another account.",
+    "Identify originals, copies and the account that owns each important event.",
+    "Check the required controls on your actual phone, tablet or web workflow.",
+    "Compare one ordinary week and any historical dates you rely on.",
+    "Check current plan requirements, local price and the purchase provider.",
+    "Verify a disposable event and review copy-removal rules before switching."
+  ],
+  "faq": [
+    {
+      "q": "Is a combined calendar view the same as synchronising busy time?",
+      "a": "No. A combined view lets you compare commitments. Creating an entry in another account requires a separate supported workflow; OneCal documents Calendar Sync rules separately from its Unified Calendar View."
+    },
+    {
+      "q": "Can I change a OneCal clone to reschedule the original meeting?",
+      "a": "Its coverage guide says clone edits are not propagated to the original. Identify the original event and follow its calendar’s editing and organiser permissions."
+    },
+    {
+      "q": "Which app is cheaper for my setup?",
+      "a": "That depends on the features, accounts, billing route and local price you need. Cloud Calendars includes Google sync in Base and Microsoft support in Premium. Review OneCal’s current plan and mobile billing terms for your intended workflow; this guide does not claim a universal price winner."
+    }
+  ],
+  "sourcesHeading": "OneCal’s official workflow and plan documentation",
+  "sources": [
+    {
+      "label": "OneCal: mobile features and web-only configuration tasks",
+      "url": "https://docs.onecal.io/docs/mobile-apps"
+    },
+    {
+      "label": "OneCal: Calendar Sync and source-to-target rules",
+      "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+    },
+    {
+      "label": "OneCal: sync windows and edits to clone events",
+      "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+    },
+    {
+      "label": "OneCal: plans, trial and expiry behaviour",
+      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+    },
+    {
+      "label": "OneCal: App Store and Google Play subscriptions",
+      "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "three-calendar-apps-is-two-too-many",
+    "free-google-sync-without-adverts",
+    "disconnect-calendar-integration-without-losing-track",
+    "what-fantastical-costs-and-what-this-does"
+  ]
+}

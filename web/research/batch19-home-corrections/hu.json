@@ -1,0 +1,26 @@
+{
+  "locale": "hu",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "A holnap már",
+        "előrejelzéssel érkezik."
+      ],
+      "after": [
+        "Tervezze meg a következő napot.",
+        "Nézze meg az elérhető előrejelzést."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Hét oszlop, mindegyik élén a saját maximumával, minimumával és körülményeivel. Fordítsa fekvőbe a teljes szélességért. Fogjon meg egy eseményt, és csúsztassa másik napra.",
+      "after": "Vesse össze a heti programokat az elérhető napi időjárás-előrejelzéssel. A szélesebb nézethez fordítsa a készüléket fekvő helyzetbe. Helyezze át a szerkeszthető eseményeket másik napra, és ismétlődő eseménynél ellenőrizze, mely alkalmakat szeretné módosítani."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Húzza. Nyújtsa. Kész.",
+      "after": "Húzza. Méretezze át. Ellenőrizze."
+    }
+  ]
+}

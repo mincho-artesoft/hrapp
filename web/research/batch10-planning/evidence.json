@@ -1,0 +1,48 @@
+{
+  "rootReadOnlySourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MultiCalendar/TwoWayPinnedSingleDayMultiCalendarWrapper.swift",
+      "sha256": "3554e41499d082f40a525f63aef555814cd2cfd21c7c41891a333872a8b66a38",
+      "ranges": [
+        [
+          433,
+          485
+        ],
+        [
+          583,
+          632
+        ],
+        [
+          644,
+          681
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift",
+      "sha256": "7a8e61a6da46fa4a6df2182cc2e49af048c7d0a781624fdc1eee7b36a016a8a6",
+      "ranges": [
+        [
+          460,
+          489
+        ],
+        [
+          532,
+          587
+        ]
+      ]
+    }
+  ],
+  "corrections": [
+    "Remove unsupported90percent and most-calendar-work numerical/frequency claims",
+    "Distinguish move versus resize and editing permission",
+    "Recurring scope and saved/provider result need checking",
+    "Cross-calendar transfer distinct from a time-only edit",
+    "Apple and Google gesture docs are attributed to those apps"
+  ],
+  "limits": [
+    "Current code inspection only; not released build or device/runtime verification",
+    "No app source edits, simulator or real calendar changes",
+    "Local save acceptance is not provider ACL or recipient delivery proof"
+  ]
+}

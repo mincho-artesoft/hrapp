@@ -1,0 +1,31 @@
+{
+  "allPassed": true,
+  "samples": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch19-room.png",
+      "review": "Full visible article body, FAQs, sources and related links inspected; screenshot visually checked."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/#get",
+      "viewport": 575,
+      "documentWidth": 564,
+      "screenshot": "/tmp/cloud-calendar-batch19-bg-cta.png",
+      "review": "New closing title fully readable, sensible wrapping, button and account qualifications visible."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/#get",
+      "viewport": 575,
+      "documentWidth": 564,
+      "direction": "rtl",
+      "screenshot": "/tmp/cloud-calendar-batch19-ar-cta.png",
+      "review": "RTL closing title, button, qualifiers and no horizontal overflow inspected."
+    }
+  ],
+  "viewportReset": true,
+  "localServerCreated": false,
+  "limits": "Selected browser samples only. Full30locale string delivery is static/public QA, not visual approval of every locale or native-speaker certification. Root observed remaining older BG/AR hero lead wording; scheduled for separate alignment, not falsely covered by the three-field change."
+}

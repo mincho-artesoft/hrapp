@@ -1,0 +1,654 @@
+{
+  "date": "2026-10-22",
+  "scope": "English homepage first; recommendations only",
+  "homepage_file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+  "homepage_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+  "issues": [
+    {
+      "id": "unified",
+      "priority": "high",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "features.unified.body",
+      "line": 154,
+      "before": "iCloud, Google Calendar and Microsoft Outlook, synced two ways and colour-coded in a single view. Toggle any calendar off when you don’t want to see it — the rest keeps working.",
+      "proposed": "View selected iCloud and Google calendars together; Premium adds Microsoft calendars. Edit where your account permissions allow, and check the source calendar after changes.",
+      "reason": "Direct outbound/inbound paths exist, but read-only calendars, selected-calendar filtering and provider errors defeat blanket two-way/rest-working wording. Hiding a calendar affects more than rendering, including Google uploads and notification input.",
+      "proof_ids": [
+        "google-sync",
+        "google-list",
+        "notifications",
+        "gesture"
+      ]
+    },
+    {
+      "id": "gesture-modal",
+      "priority": "high",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "features.gestures.body",
+      "line": 158,
+      "before": "Grab an event and slide it to a new time or a different day. Pull its top or bottom edge to change how long it runs. No modal, no save button.",
+      "proposed": "Move editable events to another time or day, or resize them in the timeline. For a repeating event, choose which occurrences to change and review the saved result.",
+      "reason": "Recurring EventKit edits explicitly show an action sheet; read-only events rejected. Do not replace with claim all gestures need manual save.",
+      "proof_ids": [
+        "gesture",
+        "month"
+      ]
+    },
+    {
+      "id": "faq-sync",
+      "priority": "high",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "faq.items[3].a",
+      "line": 245,
+      "before": "That is the main way to edit. Drag an event to another time or another day, or pull its top or bottom edge to change the duration. Changes sync straight back to the source calendar.",
+      "proposed": "You can move editable events and resize them in the timeline. Check the recurrence choice and saved time; connected-calendar updates depend on permissions and successful synchronization.",
+      "reason": "Straight back implies reliable immediate provider success. Gesture/UI save and provider acceptance are separate. No evidence supports main way as user behavior.",
+      "proof_ids": [
+        "gesture",
+        "google-sync"
+      ]
+    },
+    {
+      "id": "all-weather",
+      "priority": "medium",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "showcase.lead",
+      "line": 62,
+      "before": "The same events, arranged for the question you are actually asking — and every one of them carrying the forecast.",
+      "proposed": "Choose an overview or a detailed timeline, with available weather alongside supported views.",
+      "reason": "Forecast data finite; year mini-view has no weather data input. Every event/view carrying forecast is unsupported.",
+      "proof_ids": [
+        "weather-data",
+        "year"
+      ]
+    },
+    {
+      "id": "row-weather",
+      "priority": "medium",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "showcase.panels[0].body",
+      "line": 67,
+      "before": "An hourly grid where every row carries its own forecast. You see the 3pm meeting and the 3pm rain in the same glance — no second app, no guessing.",
+      "proposed": "Compare appointments with available hourly weather in the same grid. Check the selected place and forecast date when planning outdoors.",
+      "reason": "Every row/no guessing overstates finite returned weather and forecast uncertainty.",
+      "proof_ids": [
+        "weather-data"
+      ]
+    },
+    {
+      "id": "free-week",
+      "priority": "medium",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "showcase.panels[3].body",
+      "line": 88,
+      "before": "Month view marks every day that has something on it. Year view puts twelve months on one screen — the fastest way to find a free week.",
+      "proposed": "Compare selected-calendar events across the month or year. Open a day to inspect all its appointments before deciding that it is free.",
+      "reason": "Selection and underlying available data limit overview; visible free week not proven availability. Month chips truncate. Fastest has no comparison evidence.",
+      "proof_ids": [
+        "month-cells",
+        "year",
+        "google-sync"
+      ]
+    },
+    {
+      "id": "forecast-book",
+      "priority": "medium",
+      "status": "overbroad claim contradicted by inspected code",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "features.tiles[1].body",
+      "line": 168,
+      "before": "Tap any hour in the weather hub and a new event opens, already set to that time. Find the dry window, then book it.",
+      "proposed": "Choose an available forecast hour to start an event draft, then review its date, time and calendar before saving.",
+      "reason": "Calendar permission required; draft not saved booking. Main hourly callback supplies today; avoid universal any-hour/date claim. This aligns existing weather.tapAnHour copy.",
+      "proof_ids": [
+        "weather-draft"
+      ]
+    },
+    {
+      "id": "shared-badge",
+      "priority": "medium",
+      "status": "unsupported universal/release implication",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "hero.badge",
+      "line": 31,
+      "before": "Version {v} — shared events now keep themselves up to date",
+      "proposed": "Version {v} — sharing for events and calendars",
+      "reason": "Source supports tracked invite refresh, not universal automatic updates for any shared copy; released behavior of current tree not established. Version-specific feature claim needs release-note evidence.",
+      "proof_ids": [
+        "sharing"
+      ]
+    },
+    {
+      "id": "cancel",
+      "priority": "medium",
+      "status": "outdated/imprecise route and billing guarantee",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "faq.items[6].a",
+      "line": 257,
+      "before": "Subscriptions are handled by Apple, so you cancel in your App Store account settings. Do it at least 24 hours before the period ends and you will not be charged again.",
+      "proposed": "On iPhone or iPad, open Settings, tap your name, then Subscriptions. Choose Cloud Calendars and cancel there; check the cancellation or expiry status shown by Apple.",
+      "reason": "Official current Apple instructions are Settings > name > Subscriptions. No blanket future charge guarantee needed; confirm resulting status.",
+      "proof_ids": [
+        "store-price"
+      ]
+    },
+    {
+      "id": "price-note",
+      "priority": "medium",
+      "status": "missing local-price context; numeric prices not reverified",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "pricing.note",
+      "line": 195,
+      "before": "Subscriptions renew automatically and are billed through your Apple ID. Cancel any time in your App Store account settings, at least 24 hours before the period ends.",
+      "proposed": "Subscriptions renew automatically through your Apple Account. Check the local price and billing period before purchase. Manage cancellation in Settings under your name → Subscriptions.",
+      "reason": "Site displays literal dollar figures across locales while app uses StoreKit price; local price and period disclosure is missing. Do not assert existing US figures wrong without a fresh storefront comparison.",
+      "proof_ids": [
+        "store-price",
+        "site-prices",
+        "site-currency"
+      ]
+    },
+    {
+      "id": "popular",
+      "priority": "low",
+      "status": "unverified marketing ranking",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "file_sha256": "0cb21c55bb22ce549c9803ded173b0f4d17346298bdf02e5b7f75f5953f41b06",
+      "field_path": "pricing.mostPopular",
+      "line": 188,
+      "before": "Most popular",
+      "proposed": "Remove this badge, or use a neutral plan label.",
+      "reason": "Featured is static configuration. No purchase-distribution evidence reviewed; popularity ranking unsubstantiated.",
+      "proof_ids": [
+        "site-prices"
+      ]
+    }
+  ],
+  "proofs": {
+    "google-sync": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "ranges": [
+        [
+          1330,
+          1364
+        ],
+        [
+          1367,
+          1382
+        ],
+        [
+          1398,
+          1415
+        ]
+      ],
+      "finding": "Inbound and outbound Google operations exist, but only selected mirrors upload; errors caught. Mirror source fallback may use CalDAV. Fetch date range bounded. Two-way capability is supported, universal and instant success is not.",
+      "excerpts": [
+        {
+          "start": 1330,
+          "end": 1364,
+          "text": "        let accessToken = validUser.accessToken\n        if accessToken.isEmpty { return }\n\n        do {\n            // Google → Local\n            self.oldGoogleToLocalEventMap = googleToLocalEventMap(for: validUser.uniqueID)\n            let googleCalendars = try await fetchGoogleCalendarList(accessToken: accessToken)\n            await syncGoogleCalendars(googleCalendars, forUser: validUser, accessToken: accessToken)\n\n            // Local → Google\n            let map = googleToLocalCalendarMap(for: validUser.uniqueID)\n            for (gCalID, localCalID) in map {\n                // --- NEW: пропускаме holiday календар ---\n                if gCalID.contains(\"holiday@group.v.calendar.google.com\") {\n                    continue\n                }\n                // --- END ---\n\n                // Пропускаме, ако не е селектиран\n                guard selectedCalendarIDs.contains(localCalID) else { continue }\n\n                if let localCal = eventStore.calendar(withIdentifier: localCalID) {\n                    await uploadLocalChangesToGoogle(\n                        googleCalId: gCalID,\n                        userID: validUser.uniqueID,\n                        accessToken: accessToken,\n                        localCalendar: localCal\n                    )\n                }\n            }\n\n        } catch {\n            print(\"performGoogleCalendarSync error:\", error.localizedDescription)\n        }\n    }"
+        },
+        {
+          "start": 1367,
+          "end": 1382,
+          "text": "\n    private func createLocalCalendar(googleCalendarName: String,\n                                     googleCalendarColor: UIColor?) -> EKCalendar? {\n        guard accessGranted else { return nil }\n        \n        let newCal = EKCalendar(for: .event, eventStore: eventStore)\n        newCal.title = googleCalendarName\n        \n        if let localSource = eventStore.sources.first(where: { $0.sourceType == .local }) {\n            newCal.source = localSource\n        } else if let icloudSource = eventStore.sources.first(where: { $0.sourceType == .calDAV }) {\n            newCal.source = icloudSource\n        } else {\n            newCal.source = eventStore.defaultCalendarForNewEvents?.source\n        }\n        "
+        },
+        {
+          "start": 1398,
+          "end": 1415,
+          "text": "    /// Изтегля всички събития от Google Calendar и ги синхронизира в локалния EKCalendar.\n    /// Ако `gevent.updated` се различава от запаметеното в `updMap[gevent.id]`,\n    /// значи има промяна (title/description/location/attendees и т.н.) и се ъпдейтва.\n    private func downloadAllEvents(\n        forGoogleCalendarID googleCalId: String,\n        userID: UUID,\n        localCalendar: EKCalendar,\n        accessToken: String\n    ) async {\n        // Примерен диапазон от -180 дни до +360 дни\n        let now = Date()\n        let startDate = Calendar.current.date(byAdding: .day, value: -180, to: now)!\n        let endDate   = Calendar.current.date(byAdding: .day, value: 360, to: now)!\n\n        do {\n            // 1) Изтегляме всички Google събития (с възможни страници pageToken)\n            let allGEvents = try await fetchAllGoogleEvents(\n                googleCalId: googleCalId,"
+        }
+      ]
+    },
+    "google-list": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "ranges": [
+        [
+          1150,
+          1169
+        ],
+        [
+          2176,
+          2191
+        ]
+      ],
+      "finding": "List retrieval has no pagination/hidden query; decoded response omits continuation. Not all accessible calendars guaranteed.",
+      "excerpts": [
+        {
+          "start": 1150,
+          "end": 1169,
+          "text": "    private func fetchGoogleCalendarList(accessToken: String) async throws -> [GoogleCalendarItem] {\n        guard let url = URL(string: \"https://www.googleapis.com/calendar/v3/users/me/calendarList\") else {\n            throw SyncError.invalidURL\n        }\n        var request = URLRequest(url: url)\n        request.httpMethod = \"GET\"\n        request.setValue(\"Bearer \\(accessToken)\", forHTTPHeaderField: \"Authorization\")\n        \n        let (data, response) = try await URLSession.shared.data(for: request)\n        if let httpResp = response as? HTTPURLResponse {\n            if httpResp.statusCode == 403 || httpResp.statusCode == 429 {\n                throw SyncError.rateLimit\n            } else if httpResp.statusCode >= 400 {\n                throw SyncError.networkError(\"HTTP \\(httpResp.statusCode)\")\n            }\n        }\n        \n        let decoded = try JSONDecoder().decode(GoogleCalendarListResponse.self, from: data)\n        return decoded.items\n    }"
+        },
+        {
+          "start": 2176,
+          "end": 2191,
+          "text": "struct GoogleCalendarListResponse: Codable {\n    let kind: String\n    let etag: String\n    let items: [GoogleCalendarItem]\n}\n\nstruct GoogleCalendarItem: Codable {\n    let kind: String\n    let etag: String\n    let id: String\n    let summary: String\n    let timeZone: String?\n    let colorId: String?\n    let backgroundColor: String?\n    let foregroundColor: String?\n}"
+        }
+      ]
+    },
+    "gesture": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift",
+      "sha256": "7a8e61a6da46fa4a6df2182cc2e49af048c7d0a781624fdc1eee7b36a016a8a6",
+      "ranges": [
+        [
+          460,
+          492
+        ],
+        [
+          531,
+          559
+        ]
+      ],
+      "finding": "Read-only guard; recurring drag/resize explicitly presents action sheet with this-event/future/cancel choices. Direct contradiction of universal No modal.",
+      "excerpts": [
+        {
+          "start": 460,
+          "end": 492,
+          "text": "        @MainActor public func handleEventDragOrResize(\n            descriptor: EventDescriptor,\n            newDate: Date,\n            isResize: Bool,\n            isAllDay: Bool\n        ) {\n            if let local = descriptor as? AppLocalEventDescriptor {\n                // The timeline already resolved BOTH edges, including top-\n                // handle resizing and conversions between timed/all-day.\n                local.commitTimelineChange(isResize: isResize)\n                // Replace gesture-mutated slices even after a no-op or a\n                // rejected destination; the store remains authoritative.\n                lastRenderedEvents = []\n                reloadCurrentRange()\n                return\n            }\n            if let multi = descriptor as? EKMultiDayWrapper {\n                let ev = multi.realEvent\n                guard !SharedInviteTracker.isReadOnly(ev) else {\n                    reloadCurrentRange()\n                    return\n                }\n                if ev.hasRecurrenceRules {\n                    askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)\n                } else {\n                    if !isResize {\n                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent, isAllDay: isAllDay)\n                    } else {\n                        applyResizeChanges(ev, descriptor: multi, forcedNewDate: newDate, span: .thisEvent)\n                    }\n                }\n            }\n        }"
+        },
+        {
+          "start": 531,
+          "end": 559,
+          "text": "        \n        @MainActor public func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {\n            let alert = UIAlertController(\n                title: NSLocalizedString(\"Recurring Event\", comment: \"\"),\n                message: NSLocalizedString(\"This event is part of a series. Update which events?\", comment: \"\"),\n                preferredStyle: .actionSheet\n            )\n            alert.addAction(UIAlertAction(title: NSLocalizedString(\"This Event Only\", comment: \"\"), style: .default, handler: { _ in\n                if !isResize {\n                    self.applyDragChanges(event, newStartDate: newDate, span: .thisEvent, isAllDay: false)\n                } else {\n                    self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .thisEvent)\n                }\n            }))\n            alert.addAction(UIAlertAction(title: NSLocalizedString(\"All Future Events\", comment: \"\"), style: .default, handler: { _ in\n                if !isResize {\n                    self.applyDragChanges(event, newStartDate: newDate, span: .futureEvents, isAllDay: false)\n                } else {\n                    self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .futureEvents)\n                }\n            }))\n            alert.addAction(UIAlertAction(title: NSLocalizedString(\"Cancel\", comment: \"\"), style: .cancel, handler: { _ in\n                self.reloadCurrentRange()\n            }))\n            \n            if let windowScene = UIApplication.shared.connectedScenes\n                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,\n               let window = windowScene.windows.first(where: { $0.isKeyWindow }),\n               let root = window.rootViewController {"
+        }
+      ]
+    },
+    "month": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MonthView/MonthCalendarView.swift",
+      "sha256": "f9f0cd342733a801a00408d7a0991caf09cee4c824c12c5b144776f1e34b0ff5",
+      "ranges": [
+        [
+          187,
+          201
+        ],
+        [
+          230,
+          254
+        ]
+      ],
+      "finding": "Month recurrence dialog and read-only/edit guards.",
+      "excerpts": [
+        {
+          "start": 187,
+          "end": 201,
+          "text": "        .confirmationDialog(LocalizedStringKey(\"This is a repeating event.\"),\n                            isPresented: $showRepeatingDialog,\n                            titleVisibility: .visible) {\n            Button(LocalizedStringKey(\"Save for This Event Only\")) {\n                if let ev = repeatingEvent, let day = repeatingNewDate {\n                    moveEvent(ev, to: day, span: .thisEvent)\n                }\n            }\n            Button(LocalizedStringKey(\"Save for Future Events\")) {\n                if let ev = repeatingEvent, let day = repeatingNewDate {\n                    moveEvent(ev, to: day, span: .futureEvents)\n                }\n            }\n            Button(LocalizedStringKey(\"Cancel\"), role: .cancel) {}\n        }"
+        },
+        {
+          "start": 230,
+          "end": 254,
+          "text": "              !SharedInviteTracker.isReadOnly(droppedEvent)\n        else { return }\n\n        if let local = droppedEvent as? AppLocalEventDescriptor {\n            moveAppLocalEvent(local, to: newDate)\n            return\n        }\n\n        guard let wrapper = droppedEvent as? EKMultiDayWrapper else { return }\n        let event = wrapper.ekEvent\n        \n        if event.hasRecurrenceRules {\n            repeatingEvent = event\n            repeatingNewDate = newDate\n            showRepeatingDialog = true\n        } else {\n            moveEvent(event, to: newDate, span: .thisEvent)\n        }\n    }\n\n    private func moveAppLocalEvent(_ descriptor: AppLocalEventDescriptor, to newDate: Date) {\n        guard let event = AppLocalCalendarStore.shared.event(id: descriptor.eventID),\n              AppLocalCalendarStore.shared.calendar(id: event.calendarID)?.canEditEvents == true\n        else { return }\n        let duration = event.endDate.timeIntervalSince(event.startDate)"
+        }
+      ]
+    },
+    "month-cells": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MonthView/DayCellView.swift",
+      "sha256": "fbb00a573d2c14fadaa67ec87f106760e7dde2db89486cb21dc28c7b88f4377e",
+      "ranges": [
+        [
+          34,
+          62
+        ]
+      ],
+      "finding": "At most three chips then additional count; no full schedule proof.",
+      "excerpts": [
+        {
+          "start": 34,
+          "end": 62,
+          "text": "            // 2) Показваме деня и (до 3) събития\n            VStack(spacing: 4) {\n                // Reserve the same date header in every cell. Today's circle\n                // must not push its date or event chips below the other days.\n                Text(dayNumber(day))\n                    .font(.subheadline)\n                    .foregroundColor(calendar.isDateInToday(day)\n                        ? .white : (isInCurrentMonth(day) ? .primary : .gray))\n                    .frame(width: dayHeaderSize, height: dayHeaderSize)\n                    .background {\n                        if calendar.isDateInToday(day) {\n                            Circle().fill(Color.red)\n                        }\n                    }\n\n                // Събития\n                if events.count <= 3 {\n                    ForEach(events, id: \\.calendarGridIdentifier) { event in\n                        eventCapsule(event)\n                    }\n                } else {\n                    ForEach(events.prefix(3), id: \\.calendarGridIdentifier) { event in\n                        eventCapsule(event)\n                    }\n                    Text(localizedFormat(\"... +%d\", events.count - 3))\n                        .font(.caption2)\n                        .foregroundColor(.blue)\n                }\n"
+        }
+      ]
+    },
+    "year": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/YearView/YearMonthMiniView.swift",
+      "sha256": "f4fc685613b10913f11bfce5bf2cd3b119a85ec878c6cf76aab1b76ec6acc7a6",
+      "ranges": [
+        [
+          3,
+          7
+        ],
+        [
+          57,
+          71
+        ]
+      ],
+      "finding": "Year mini month renders eventsByDay, not universal weather or all-provider availability.",
+      "excerpts": [
+        {
+          "start": 3,
+          "end": 7,
+          "text": "struct YearMonthMiniView: View {\n    let monthDate: Date\n    let eventsByDay: [Date: [EventDescriptor]]\n    let width: CGFloat\n    let onMonthTapped: (Date) -> Void"
+        },
+        {
+          "start": 57,
+          "end": 71,
+          "text": "                    // 2) Дни от месеца\n                    ForEach(allGridDays, id: \\.self) { day in\n                        let dayKey = calendar.startOfDay(for: day)\n                        let dayEvents = eventsByDay[dayKey] ?? []\n                        let isInCurrentMonth = calendar.isDate(day, equalTo: monthDate, toGranularity: .month)\n\n                        if isInCurrentMonth {\n                            MiniDayCellView(day: day, referenceMonth: monthDate, events: dayEvents)\n                        } else {\n                            Rectangle()\n                                .fill(Color.clear)\n                                .frame(width: 30, height: 32)\n                        }\n                    }\n                }"
+        }
+      ]
+    },
+    "weather-draft": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "ranges": [
+        [
+          1678,
+          1710
+        ],
+        [
+          1778,
+          1786
+        ]
+      ],
+      "finding": "Hour tap sets one-hour event draft/default calendar and requires EventKit authorization. Main card callback uses Date() as day; explicit review needed. Does not book on tap.",
+      "excerpts": [
+        {
+          "start": 1678,
+          "end": 1710,
+          "text": "        let eventEnd = eventStart.addingTimeInterval(3600)\n        let newEvent = EKEvent(eventStore: viewModel.eventStore)\n        newEvent.startDate = eventStart\n        newEvent.endDate = eventEnd\n        newEvent.title = NSLocalizedString(\"New Event\", comment: \"Default title for newly created events\")\n        newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents\n        \n        eventToEdit = newEvent\n    }\n\n    /// Функция, която се извиква при тап върху елемент от hourlyForecastCard.\n    /// Тук трябва да извлечете избрания час (например от модела на елемента) и да подадете и деня.\n    private func createAndEditNewEvent(from tappedHour: Int, for day: Date) {\n        // Проверяваме статуса на достъпа до календар (примерно както имате в оригиналния метод)\n        let status = EKEventStore.authorizationStatus(for: .event)\n        if #available(iOS 17.0, *) {\n            switch status {\n            case .fullAccess, .writeOnly:\n                presentNewEvent(on: day, selectedHour: tappedHour)\n            case .notDetermined:\n                print(\"Още не е поискан достъп.\")\n            default:\n                print(\"Нямате достъп до календара.\")\n            }\n        } else {\n            if status == .authorized {\n                presentNewEvent(on: day, selectedHour: tappedHour)\n            } else if status == .notDetermined {\n                print(\"Още не е поискан достъп.\")\n            } else {\n                print(\"Нямате достъп до календара.\")\n            }\n        }"
+        },
+        {
+          "start": 1778,
+          "end": 1786,
+          "text": "    private var hourlyForecastCard: some View {\n        HourlyForecastCard(\n            vm: vm,\n            onHourTap: { tappedHour in\n                print(tappedHour)\n                ReviewManager.eventCreated()\n                createAndEditNewEvent(from: tappedHour, for: Date())\n            }\n        )"
+        }
+      ]
+    },
+    "weather-data": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "ranges": [
+        [
+          380,
+          388
+        ],
+        [
+          422,
+          427
+        ]
+      ],
+      "finding": "Only returned hours are mapped, with empty result if none; not weather on every arbitrary calendar row/date.",
+      "excerpts": [
+        {
+          "start": 380,
+          "end": 388,
+          "text": "\n        // 3. Вземаме slice за следващите 24 ч.\n        guard let startIndex = hours.firstIndex(where: { $0.date >= startOfHour }) else {\n            hourlyForecast = []\n            next24HourlyForecast = []\n            return\n        }\n        let slice = hours[startIndex..<min(startIndex + 24, hours.count)]\n"
+        },
+        {
+          "start": 422,
+          "end": 427,
+          "text": "        hourlyForecast = hours.map { h in\n            let rawPpt = h.precipitationAmount.value\n            let rawSnow = h.snowfallAmount.value\n            return HourlyForecastItem(\n                id: h.date,\n                date: h.date,"
+        }
+      ]
+    },
+    "notifications": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+      "sha256": "d664f53078277e526245eca8aa38de1660faed643f5b992e761f4db4566ce26a",
+      "ranges": [
+        [
+          230,
+          257
+        ],
+        [
+          260,
+          292
+        ]
+      ],
+      "finding": "Scheduling gated by toggle/authorization, capped requests and selected calendars. Hidden calendar also affects scheduled notification inputs; cannot promise rest keeps working without qualification.",
+      "excerpts": [
+        {
+          "start": 230,
+          "end": 257,
+          "text": "    private func scheduleVisibleEventNotificationsIfNeeded(budget: Int) {\n        guard eventNotificationsEnabled, notificationsAllowed else { return }\n\n        let requests = storedEventNotificationRequests()\n        guard !requests.isEmpty else { return }\n\n        for request in requests.prefix(budget) {\n            UNUserNotificationCenter.current().add(request) { error in\n                if let error {\n                    print(\"Local event notification scheduling error:\", error.localizedDescription)\n                }\n            }\n        }\n    }\n\n    private func storedEventNotificationRequests() -> [UNNotificationRequest] {\n        guard\n            let data = UserDefaults.standard.data(forKey: Self.storedEventNotificationsKey),\n            let stored = try? JSONDecoder().decode([StoredEventNotification].self, from: data)\n        else {\n            return []\n        }\n\n        let now = Date()\n        return stored\n            .filter { $0.fireDate > now }\n            .prefix(maxScheduledNotifications - CalendarTravelReminderManager.shared.reservedNotificationSlots)\n            .map(\\.request)"
+        },
+        {
+          "start": 260,
+          "end": 292,
+          "text": "    private func makeUpcomingStoredEventNotifications() -> [StoredEventNotification] {\n        let viewModel = CalendarViewModel.shared\n        let now = Date()\n        guard let end = Calendar.current.date(byAdding: .year, value: 1, to: now) else { return [] }\n        var scheduled: [StoredEventNotification] = []\n\n        if viewModel.isCalendarAccessGranted() {\n            if viewModel.allCalendars.isEmpty {\n                viewModel.reloadCalendars()\n            }\n\n            let allowedCalendars = viewModel.allCalendars.filter {\n                viewModel.selectedCalendarIDs.contains($0.calendarIdentifier)\n            }\n\n            if !allowedCalendars.isEmpty {\n                let predicate = viewModel.eventStore.predicateForEvents(\n                    withStart: now,\n                    end: end,\n                    calendars: allowedCalendars\n                )\n\n                scheduled.append(contentsOf: viewModel.eventStore.events(matching: predicate)\n                    .flatMap { storedNotifications(for: $0, now: now) })\n            }\n        }\n\n        let appLocalStore = AppLocalCalendarStore.shared\n        scheduled.append(contentsOf: appLocalStore.events(\n            from: now,\n            to: end,\n            selectedCalendarIDs: viewModel.selectedCalendarIDs\n        ).flatMap { storedNotifications(for: $0, now: now) })"
+        }
+      ]
+    },
+    "travel": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Travel/CalendarTravelReminderManager.swift",
+      "sha256": "7aedcee37470e739aec2d2e8bdae945a8fb1c306424f2b298b4d2c5214e439bd",
+      "ranges": [
+        [
+          65,
+          78
+        ],
+        [
+          241,
+          271
+        ]
+      ],
+      "finding": "Travel enablement per selection and location/notification permissions; active candidates bounded; no arrival guarantee.",
+      "excerpts": [
+        {
+          "start": 65,
+          "end": 78,
+          "text": "    func isEnabled(key: String?) -> Bool { key.map { selections[$0] != nil } ?? false }\n\n    func settings(for key: String?) -> TravelReminderSettings {\n        key.flatMap { selections[$0]?.settings } ?? TravelReminderSettings()\n    }\n\n    func status(for key: String?) -> String {\n        if locationManager.authorizationStatus != .authorizedAlways\n            || !EventNotificationManager.shared.eventNotificationsEnabled {\n            return \"travel.permissions\"\n        }\n        guard let key else { return \"travel.pending\" }\n        return statuses[key] ?? \"travel.pending\"\n    }"
+        },
+        {
+          "start": 241,
+          "end": 271,
+          "text": "        let active = allowed ? Array(candidates.prefix(8)) : []\n        let validIDs = Set(active.map(\\.notificationID))\n        let pending = await center.pendingNotificationRequests()\n        guard !Task.isCancelled else { return }\n        let signatures = Dictionary(active.map { ($0.notificationID, $0.signature) }, uniquingKeysWith: { first, _ in first })\n        let obsolete = pending.filter {\n            $0.identifier.hasPrefix(Self.prefix) && (!validIDs.contains($0.identifier)\n                || (scheduled[$0.identifier] != nil && scheduled[$0.identifier]?.signature != signatures[$0.identifier]))\n        }.map(\\.identifier)\n        center.removePendingNotificationRequests(withIdentifiers: obsolete)\n        for id in obsolete { scheduled.removeValue(forKey: id) }\n        scheduled = scheduled.filter { $0.value.eventStart > now }\n        lastCalculation = lastCalculation.filter { validIDs.contains($0.key) }\n        persist()\n        guard !active.isEmpty else {\n            locationManager.stopMonitoringSignificantLocationChanges()\n            locationManager.stopMonitoringVisits()\n            return\n        }\n        configureMonitoring()\n        let settings = await center.notificationSettings()\n        guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else {\n            message = \"travel.permissions\"\n            for candidate in active { statuses[candidate.key] = message }; return\n        }\n        guard let origin = currentLocation, abs(origin.timestamp.timeIntervalSinceNow) < 300 else {\n            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {\n                locationManager.requestLocation()\n            }\n            message = \"travel.pending\"\n            for candidate in active { statuses[candidate.key] = scheduled[candidate.notificationID] == nil ? message : \"travel.scheduled\" }; return"
+        }
+      ]
+    },
+    "sharing": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedInviteRefresher.swift",
+      "sha256": "39aa3028f7e4e58a8feb9a4e933846229907a006e68854f9519f440442f52e18",
+      "ranges": [
+        [
+          11,
+          34
+        ],
+        [
+          88,
+          103
+        ]
+      ],
+      "finding": "Only tracked invitations refresh; revoked copies stop; receipt failures retry later. No universal self-updating event guarantee.",
+      "excerpts": [
+        {
+          "start": 11,
+          "end": 34,
+          "text": "\n    @discardableResult\n    static func refreshAll() async -> Int {\n        let invites = SharedInviteTracker.tracked().values\n        guard !invites.isEmpty else { return 0 }\n\n        let store = CalendarViewModel.shared.eventStore\n        for invite in invites {\n            if let event = store.event(withIdentifier: invite.localEventIdentifier) {\n                EventShareIdentity.removeLegacyMarker(from: event, store: store)\n            }\n        }\n\n        var changed = 0\n        for invite in invites where await refresh(invite) {\n            changed += 1\n        }\n        return changed\n    }\n\n    /// Returns true when the local copy was actually altered.\n    private static func refresh(_ original: SharedInviteTracker.Invite) async -> Bool {\n        // Revocation freezes the recipient's copy. It remains in their chosen\n        // calendar until they delete it locally, but no longer talks to S3."
+        },
+        {
+          "start": 88,
+          "end": 103,
+          "text": "                SharedInviteTracker.update(invite)\n            } catch CloudCalendarsAPI.Failure.http(let code, let body)\n                where code == 403 && body.localizedCaseInsensitiveContains(\"removed by the owner\") {\n                // This exact server response is authoritative. Other 403s\n                // (for example an ACL that is still being created) are\n                // retryable and must not revoke a freshly scanned invite.\n                return markRevokedInvite(invite)\n            } catch {\n                print(\"Invite receipt could not be recorded for \\(invite.eventID) - \\(error.localizedDescription)\")\n                // Do not ask the access endpoint until registration has\n                // succeeded. A newly scanned invite can otherwise receive a\n                // transient 404 (\"not registered\") and be frozen as revoked\n                // even though its scoped feed is valid. Keep the local copy\n                // active and retry on the next foreground sync instead.\n                return false\n            }"
+        }
+      ]
+    },
+    "base": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+      "sha256": "912bfe90241312a385e357b9c1c21856ed681fb9f7f1e623af4ca56b5434ccf1",
+      "ranges": [
+        [
+          10,
+          19
+        ]
+      ],
+      "finding": "Base lists calendar views, weather, Google and Meet.",
+      "excerpts": [
+        {
+          "start": 10,
+          "end": 19,
+          "text": "            VStack(alignment: .leading, spacing: 8) {\n                FeatureRow(feature: \"Single-day calendar view\")\n                FeatureRow(feature: \"Multi-day calendar view\")\n                FeatureRow(feature: \"Monthly calendar view\")\n                FeatureRow(feature: \"Yearly overview\")\n                FeatureRow(feature: \"List view for events\")\n                FeatureRow(feature: \"Weather view\")\n                FeatureRow(feature: \"Multi-calendar view\")\n                FeatureRow(feature: \"Sync with Google Calendar\")\n                FeatureRow(feature: \"Sync meets from Google Meet\")"
+        }
+      ]
+    },
+    "advanced": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/AdvanceSubscriptionView.swift",
+      "sha256": "b30672c8bf7b70536c86693fbe6608e087e70076537239621149d3d71fe9437d",
+      "ranges": [
+        [
+          10,
+          13
+        ]
+      ],
+      "finding": "Advanced Base plus ads removed.",
+      "excerpts": [
+        {
+          "start": 10,
+          "end": 13,
+          "text": "            VStack(alignment: .leading, spacing: 8) {\n                FeatureRow(feature: \"All Base Plan features\")\n                FeatureRow(feature: \"Ads Free\")\n            }"
+        }
+      ]
+    },
+    "premium": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+      "sha256": "a490229597f2516c4d35b666a21c2d2caa18b6e8eb6d2ab9e2c81fc332ca2a1c",
+      "ranges": [
+        [
+          11,
+          15
+        ]
+      ],
+      "finding": "Premium Advanced plus Microsoft Calendar and Teams.",
+      "excerpts": [
+        {
+          "start": 11,
+          "end": 15,
+          "text": "                FeatureRow(feature: \"All Advanced Plan features\")\n                FeatureRow(feature: \"Sync with Microsoft Calendar\")\n                FeatureRow(feature: \"Sync meets from Microsoft Teams\")\n            }\n"
+        }
+      ]
+    },
+    "store-price": {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionCard.swift",
+      "sha256": "b13e46f39f4ea738dab659f8128e483c44c7ce9a6ab6030d98834e93f94bd739",
+      "ranges": [
+        [
+          13,
+          21
+        ]
+      ],
+      "finding": "Native renders StoreKit product.displayPrice rather than site fixed dollar figures.",
+      "excerpts": [
+        {
+          "start": 13,
+          "end": 21,
+          "text": "            HStack(spacing: 10) {\n                VStack(alignment: .leading, spacing: 5) {\n                    Text(product.periodUnitOnly)\n                        .font(.headline)\n                        .lineLimit(2)\n                        .fixedSize(horizontal: false, vertical: true)\n                    Text(product.displayPrice)\n                        .font(.title2.weight(.semibold))\n                        .lineLimit(1)"
+        }
+      ]
+    },
+    "site-prices": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/core/app-facts.ts",
+      "sha256": "0d342dbbff992e44a2fbc93781424793e10c2de8d83aa5dfc671c94cb24db466",
+      "ranges": [
+        [
+          74,
+          104
+        ]
+      ],
+      "finding": "Site fixed Advanced/Premium numerical prices and annual discount labels; not a live local StoreKit quotation.",
+      "excerpts": [
+        {
+          "start": 74,
+          "end": 104,
+          "text": "    name: 'Premium',\n    tagline: 'For work calendars that live in Microsoft.',\n    monthly: '4.99',\n    yearly: '49.99',\n    yearlyNote: 'Save 16% yearly',\n    inherits: 'Advanced',\n    features: [\n      { label: 'Microsoft Calendar sync', strong: true },\n      { label: 'Microsoft Teams links', strong: true },\n    ],\n  },\n];"
+        }
+      ]
+    },
+    "site-currency": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/components/pricing/pricing.component.html",
+      "sha256": "babfc3a6ade6d5ab9a8afd6678377bd32d29452dfcaadefe7bc276dbabf98a57",
+      "ranges": [
+        [
+          48,
+          58
+        ]
+      ],
+      "finding": "Literal dollar symbol for every locale; no local purchase currency lookup here.",
+      "excerpts": [
+        {
+          "start": 48,
+          "end": 58,
+          "text": "\n          <p class=\"tier__price\">\n            <span class=\"tier__currency\">$</span>\n            <span class=\"tier__amount\">{{ price(plan) }}</span>\n            <span class=\"tier__period\">{{ period(plan) }}</span>\n          </p>\n\n          @if (plan.yearlyNote && cycle() === 'yearly') {\n            <span class=\"tier__save\">{{ plan.yearlyNote }}</span>\n          }\n"
+        }
+      ]
+    },
+    "source-badges": {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/components/features/features.component.ts",
+      "sha256": "52b61374a7caf912f9da183944202449a1dbc311a36138ae201d93d2a97507dd",
+      "ranges": [
+        [
+          20,
+          28
+        ]
+      ],
+      "finding": "Two-way badge applied to iCloud and Google.",
+      "excerpts": [
+        {
+          "start": 20,
+          "end": 28,
+          "text": "   *  stay as they are; only the note beside each one is translated. */\n  readonly sources = computed(() => {\n    const n = this.copy().sourceNotes;\n    return [\n      { id: 'icloud', name: 'iCloud', note: n.twoWay },\n      { id: 'google', name: 'Google', note: n.twoWay },\n      { id: 'microsoft', name: 'Microsoft', note: n.premium },\n    ];\n  });"
+        }
+      ]
+    }
+  },
+  "additional_component_action": {
+    "file": "src/app/components/features/features.component.ts",
+    "field": "sources[].note using copy.sourceNotes.twoWay",
+    "before": "Two-way",
+    "proposed": "Connected",
+    "reason": "Remove unqualified two-way badges alongside unified copy; capability can be explained with edit permission and sync success conditions."
+  },
+  "official_sources": [
+    {
+      "url": "https://developers.google.com/workspace/calendar/api/guides/errors",
+      "checked": "2026-10-22",
+      "supports": "Google documents invalid credentials, quotas/rate limits and forbidden updates. Provider writes can fail; not immediate universal acceptance."
+    },
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "checked": "2026-10-22",
+      "supports": "iPhone/iPad Settings > name > Subscriptions; cancel and verify cancellation/expiration status."
+    }
+  ],
+  "reviewed_without_correction": [
+    {
+      "field": "widgets.items[2]",
+      "finding": "Current reminders copy asks user to choose alerts/settings and check travel; appropriately qualified. No new smart-arrival claim found in English."
+    },
+    {
+      "field": "pricing.plans",
+      "finding": "Free/Base Google+views+weather+Meet, Advanced ads removed, Premium Microsoft+Teams match native plan feature screens. Storefront availability/prices not reverified."
+    },
+    {
+      "field": "weather.demoLabel and faq.items[2]",
+      "finding": "Existing Open-Meteo versus WeatherKit distinction and availability qualification should be retained; no need revert batch06 correction."
+    }
+  ],
+  "release_runtime_limits": [
+    "Current working-tree source inspection only; not proof of released 1.7.3 behavior, deployed backend, or production performance.",
+    "No native build, simulator run, live customer record, provider account or backend query used.",
+    "No current authenticated App Store price lookup; fixed US prices not declared incorrect.",
+    "No universal deletion, guaranteed notification delivery, unlimited history or instantaneous sync claim should be introduced.",
+    "Remaining locale equivalents require separate field-level translation audit after English wording approved.",
+    "No integrated source, metadata, deployment or ASC changed."
+  ],
+  "recommended_order": [
+    "Correct unified body, two-way badges, gesture body and drag FAQ together.",
+    "Add local-price context and current cancellation path.",
+    "Qualify forecast coverage/draft creation, selected-calendar month overview and shared-event badge."
+  ]
+}

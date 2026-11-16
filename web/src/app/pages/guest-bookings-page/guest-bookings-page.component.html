@@ -1,0 +1,186 @@
+<section class="guest-page">
+  <div class="shell">
+    <!-- Top Role Header (Explicitly Separated Guest vs Host Panel) -->
+    <div class="guest-hdr">
+      <div>
+        <span class="eyebrow-pill">GUEST &amp; INVITEE PORTAL</span>
+        <h1>My Booked Meetings</h1>
+        <p>View, join video calls, reschedule, or cancel appointments you booked with any Cloud Calendars host.</p>
+      </div>
+
+      <div class="guest-hdr__switch">
+        <a class="switch-link" [href]="calendarHref()">Open Full Calendar</a>
+        <a class="switch-link switch-link--accent" [href]="hostStudioHref()">
+          Publish Your Own Booking Hours (Host Panel) →
+        </a>
+        @if (api.profile()?.isAdmin) {
+          <a class="switch-link" [href]="adminHref()">Admin Console</a>
+        }
+      </div>
+    </div>
+
+    @if (!api.isSignedInWithAccount()) {
+      <div class="guest-auth-wrap">
+        <app-platform-auth-card
+          badgeText="INVITEE PORTAL"
+          title="Sign in to view your booked appointments"
+          subtitle="Sign in with the Google, Microsoft, or email address you used when booking. All your upcoming & past meetings appear automatically."
+          [includeCalendarScopeOnOAuth]="false"
+          (signedIn)="onSignedIn()"
+        />
+      </div>
+    } @else {
+      <div class="portal-card">
+        <div class="portal-card__bar">
+          <div class="filter-tabs">
+            <button type="button" [class.is-on]="filter() === 'upcoming'" (click)="filter.set('upcoming')">
+              Upcoming
+            </button>
+            <button type="button" [class.is-on]="filter() === 'past'" (click)="filter.set('past')">
+              Past
+            </button>
+            <button type="button" [class.is-on]="filter() === 'cancelled'" (click)="filter.set('cancelled')">
+              Cancelled
+            </button>
+          </div>
+
+          <div class="signed-badge">
+            <span>Signed in as <strong>{{ api.profile()?.email }}</strong></span>
+            <button type="button" (click)="api.signOut()">Sign out</button>
+          </div>
+        </div>
+
+        @if (loading()) {
+          <p class="empty-msg">Loading your appointments…</p>
+        } @else if (filteredBookings().length === 0) {
+          <div class="empty-box">
+            <h3>No {{ filter() }} appointments found</h3>
+            <p>Any meeting you book using {{ api.profile()?.email }} will automatically appear right here.</p>
+          </div>
+        } @else {
+          <div class="booking-cards">
+            @for (b of filteredBookings(); track b.bookingId) {
+              <article class="b-card" [ngStyle]="cardStyle(b.color)">
+                <span class="b-card__bar"></span>
+                <div class="b-card__info">
+                  <div class="b-card__top">
+                    <h2>{{ b.title }}</h2>
+                    <span class="status-tag" [class.is-cancelled]="b.status === 'cancelled'">
+                      {{ b.status }}
+                    </span>
+                  </div>
+                  <p class="b-card__when">{{ formatWhen(b) }}</p>
+                  <p class="b-card__host">Host: <strong>{{ b.hostName }}</strong> (&#64;{{ b.hostHandle }})</p>
+
+                  <div class="b-card__exports">
+                    <button type="button" (click)="downloadBookingIcs(b)">.ics</button>
+                    <a [href]="googleHref(b)" target="_blank" rel="noopener noreferrer">Google Cal ↗</a>
+                    <a [href]="outlookHref(b)" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+                    @if (b.webcalUrl) {
+                      <a [href]="b.webcalUrl">webcal://</a>
+                    }
+                  </div>
+                </div>
+
+                <div class="b-card__actions">
+                  @if (b.videoCallURL && b.status !== 'cancelled') {
+                    <a
+                      class="btn btn--primary b-join"
+                      [href]="b.videoCallURL"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Join Video Call ↗
+                    </a>
+                  }
+                  @if (b.status !== 'cancelled') {
+                    <button type="button" class="act-btn" (click)="openRescheduleModal(b)">
+                      Reschedule
+                    </button>
+                    <button type="button" class="act-btn act-btn--danger" (click)="openCancelModal(b)">
+                      Cancel
+                    </button>
+                  }
+                </div>
+              </article>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Reschedule / Cancel Modal -->
+  @if (activeBooking(); as ab) {
+    <div class="modal-backdrop" (click)="closeModal()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        @if (modalMode() === 'reschedule') {
+          <h3>Reschedule with {{ ab.hostName }}</h3>
+          @if (loadingSlots()) {
+            <p class="modal-hint">Fetching live open slots…</p>
+          } @else if (liveSlots().length === 0) {
+            <p class="modal-hint">No alternative slots are currently open for this meeting type.</p>
+          } @else {
+            <label class="m-field">
+              <span>Select a new open time</span>
+              <select [ngModel]="chosenNewStart()" (ngModelChange)="chosenNewStart.set($event)">
+                @for (s of liveSlots(); track s.start) {
+                  <option [value]="s.start">{{ formatSlotLabel(s, ab.guestTimeZone) }}</option>
+                }
+              </select>
+            </label>
+            <label class="m-field">
+              <span>Note to host (optional)</span>
+              <input
+                type="text"
+                placeholder="Reason for moving…"
+                [ngModel]="actionReason()"
+                (ngModelChange)="actionReason.set($event)"
+              />
+            </label>
+          }
+          <div class="modal-actions">
+            <button type="button" class="act-btn" (click)="closeModal()">Close</button>
+            <button
+              type="button"
+              class="btn btn--primary"
+              [disabled]="acting() || !chosenNewStart()"
+              (click)="confirmReschedule()"
+            >
+              {{ acting() ? 'Updating…' : 'Confirm New Time' }}
+            </button>
+          </div>
+        } @else if (modalMode() === 'cancel') {
+          <h3>Cancel Appointment?</h3>
+          <p class="modal-hint">
+            {{ ab.hostName }} will be notified immediately and the calendar slot will be released.
+          </p>
+          <label class="m-field">
+            <span>Cancellation note (optional)</span>
+            <input
+              type="text"
+              placeholder="Optional message…"
+              [ngModel]="actionReason()"
+              (ngModelChange)="actionReason.set($event)"
+            />
+          </label>
+          <div class="modal-actions">
+            <button type="button" class="act-btn" (click)="closeModal()">Keep Meeting</button>
+            <button
+              type="button"
+              class="act-btn act-btn--danger"
+              [disabled]="acting()"
+              (click)="confirmCancel()"
+            >
+              {{ acting() ? 'Cancelling…' : 'Cancel Meeting' }}
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (toast()) {
+    <div class="portal-toast">{{ toast() }}</div>
+  }
+</section>

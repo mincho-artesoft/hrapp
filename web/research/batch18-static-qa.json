@@ -1,0 +1,75 @@
+{
+  "allPassed": true,
+  "changedArticles": 10,
+  "newLocalizedGuides": 4,
+  "expandedEnglishGuides": 2,
+  "relatedOnlyChanges": 4,
+  "sitemapUrls": 497,
+  "preservedPreviousCanonicals": 493,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/de/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "9cf37d9b221c37b377278d309759d1ed0d59b910d190d6ed2bc3d9b0b1905dae"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "url": "https://www.cloud-calendars.com/de/articles/disconnect-calendar-integration-without-losing-track/",
+      "sha256": "b283fa56c2e1af2fcff0b98c8da7ae95f0255fdea194e7b24c14f92006032846"
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "356c78cd59961e21fbf1878d064e36e9d4c37963bca57d58ef72013bbd6c4428"
+    },
+    {
+      "locale": "en-US",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "url": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "sha256": "290f06152be1ecb3a4fee45f05624fb42f063861c7db88e52ecdb4a479f371e4"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/es/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "42d7b5147833185016f6f194f5eb2a096aa72458da72e1262a8c426c4ec59aec"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "url": "https://www.cloud-calendars.com/es/articles/disconnect-calendar-integration-without-losing-track/",
+      "sha256": "57555406441731ab7c4cbb7d9e765cf044fdf586d403d8e0597fc45a95f13428"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/fr/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "9a15471be40e6f4919c17fb53d599cc21f9e989c1e1724e2ed42a9bac8ba4f9d"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "url": "https://www.cloud-calendars.com/fr/articles/disconnect-calendar-integration-without-losing-track/",
+      "sha256": "c726bb19684aee98db0de1657709fa826ead9934662cfbc746935e48a2b697a1"
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "url": "https://www.cloud-calendars.com/it/articles/calendar-export-ics-pdf-and-backup/",
+      "sha256": "ef8256bffcf15cda980640a05fee2a4e2e4adb2e0a130eea1e08e43d64ad4971"
+    },
+    {
+      "locale": "it",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "url": "https://www.cloud-calendars.com/it/articles/disconnect-calendar-integration-without-losing-track/",
+      "sha256": "f050d886f7ecb2c72b60d6c5017e224d60a28b219a8f9ea8e9e0b734c473b1d1"
+    }
+  ],
+  "offboardingLocales": 5,
+  "localizedShellPagesVerified": 496,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual ten changed objects, complete new/revised body and FAQ text, sources, all prior canonicals and localized shell links. Not native-speaker, runtime or search-ranking certification."
+}

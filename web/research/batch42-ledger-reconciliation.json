@@ -1,0 +1,1393 @@
+{
+  "date": "2026-10-22",
+  "head": "b87896efa32640f580a44f68bfe8db515b74c068",
+  "scope": "Five explicit remainingIntentGaps across combine-calendars and sync-troubleshooting; not all cluster assertions or all localized bodies.",
+  "ledgerRawSha256": "09ef7352fda017454e9e717fd179eb9675bd12472eb979340e3a3eec04872a6f",
+  "inventory": {
+    "method": "Read-only actual article-locales aggregates evaluated with real imports and override order; no build/generator.",
+    "locales": 30,
+    "articles": 463,
+    "english": 58,
+    "uniqueSlugs": 58,
+    "perLocale": {
+      "ar-SA": 11,
+      "bg": 20,
+      "cs": 11,
+      "da": 11,
+      "de-DE": 28,
+      "el": 11,
+      "en-US": 58,
+      "es-ES": 28,
+      "fi": 11,
+      "fr-FR": 29,
+      "he": 11,
+      "hi": 11,
+      "hu": 11,
+      "id": 11,
+      "it": 30,
+      "ja": 14,
+      "ko": 11,
+      "ms": 11,
+      "nl-NL": 11,
+      "no": 11,
+      "pl": 11,
+      "pt-BR": 14,
+      "ro": 11,
+      "ru": 11,
+      "sv": 11,
+      "th": 11,
+      "tr": 11,
+      "vi": 11,
+      "zh-Hans": 11,
+      "zh-Hant": 11
+    }
+  },
+  "readEvidence": [
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "route": "/articles/icloud-google-and-outlook-in-one-view/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleRawSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+      "objectSha256": "247e2c75295a5b966eb16baac402a6cb767f5d950565c6ce541188a71ae00e51",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+        "short": "Three providers, one view",
+        "description": "View iCloud, Google and Microsoft calendars together. Check account selection, edit permissions and copies before moving events or relying on availability.",
+        "lede": "A family appointment, a client call and a work meeting can overlap even when they belong to different accounts. A combined calendar view helps you spot that collision, but it does not turn the accounts into one shared calendar. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Putting several calendars in one app automatically keeps their availability, sharing and event copies in agreement.",
+        "sections": [
+          {
+            "heading": "Identify the account and calendar behind each event",
+            "body": [
+              "Start with one ordinary event from each provider. Note the signed-in email address, calendar name and whether you own the event or received an invitation. Two calendars called “Calendar” can belong to entirely different accounts. A colour helps you scan a week; the account and calendar identify where an edit should go.",
+              "For example, a dentist appointment in your personal iCloud calendar and a project meeting in Microsoft can appear together for you. That does not, by itself, make the dentist appointment visible to your colleagues or reserve that time in their scheduling tools.",
+              "Choose the outcome before changing a connection. To move event data to another account, use “Choose a calendar export format” below to find a supported transfer route and check representative events before relying on the destination. To compare times, keep the existing calendar owners and display selected sources together. If another account must receive busy time, “Cloud Calendars and OneCal by workflow” explains how availability copying differs from a personal overview."
+            ]
+          },
+          {
+            "heading": "Connect through the appropriate route",
+            "body": [
+              "For iCloud, first enable iCloud Calendar on the iPhone under the intended Apple Account. Apple’s setup guide explains the device settings. Cloud Calendars accesses calendars available through the iPhone’s calendar system and needs calendar access to read them. An account connected on another device is not enough.",
+              "Cloud Calendars also has “Sign in with Google” and “Sign in with Microsoft” actions. Check which account you select at sign-in, then open its calendar group and select the calendars you need. Signing in to the right provider with the wrong personal or work identity can produce a perfectly valid but unexpected calendar list."
+            ]
+          },
+          {
+            "heading": "Understand the plans without confusing them with permissions",
+            "body": [
+              "The Base plan includes Google Calendar sync and the calendar views. Advanced adds ad removal to Base. Premium adds Microsoft Calendar and Microsoft Teams features. Review the current local price and billing period before purchasing.",
+              "A plan changes which app features are available; it does not grant ownership of somebody else’s calendar. Google distinguishes permission to see events from permission to change them. Employer policies and the permissions attached to a Microsoft calendar still apply. A visible event or an available editor is not proof that the provider will accept an update."
+            ]
+          },
+          {
+            "heading": "A combined view can include calendar copies",
+            "body": [
+              "Google and Microsoft connections use calendar copies in the iPhone calendar system to present and synchronize events. Do not assume that connecting an account leaves no copy outside the original provider. The destination used for those copies can depend on the calendar sources available on the device.",
+              "If the same account also reaches the phone through another route, inspect the calendar names and sources before treating repeated appointments as separate events. Temporarily hide one calendar to identify which display it supplies. Do not delete an event or calendar merely to make the screen look tidy: a connected copy can send changes back to its provider."
+            ]
+          },
+          {
+            "heading": "Keep choosing the destination when you create an event",
+            "body": [
+              "Before saving, check the event’s calendar as carefully as its date and time. For a family appointment, choose the calendar the family actually uses; for a work meeting, use the permitted work destination. Seeing both calendars together does not make either one the automatic destination for every new event.",
+              "Changing an event’s calendar or dragging it between calendars can be a move, not a harmless second view. Keep invitations and recurring meetings in their established calendar while diagnosing a display problem. If you need a change, first establish who owns the event and which calendar can accept it."
+            ]
+          },
+          {
+            "heading": "Verify the overview before relying on it",
+            "body": [
+              "Compare a recent event in the provider’s own calendar with the corresponding event in Cloud Calendars. Check the date, time zone, title and selected calendar. For an editable calendar you own, a disposable event without guests is a better check than changing a live meeting. Confirm the result at the provider before considering the connection ready.",
+              "Do not rely on the combined view to create anonymous busy blocks in another account automatically. If you need colleagues to see you as unavailable without seeing personal details, use an explicitly approved availability arrangement and verify it from their side. A clear personal overview and shared availability are separate tasks."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "List the exact account and calendar for one event from each provider.",
+          "Enable the intended iCloud calendars on the device and review calendar access.",
+          "Use the appropriate Google or Microsoft sign-in and select the intended calendars.",
+          "Compare one recent event with its provider view before changing anything.",
+          "Hide a suspected duplicate source temporarily; keep the underlying events intact.",
+          "Check the destination calendar on each new event, and separately verify any busy-time sharing you need."
+        ],
+        "faq": [
+          {
+            "q": "Will my work colleagues see my personal events because I display both calendars?",
+            "a": "Displaying calendars together is not a sharing instruction or an automatic busy-time bridge. Check each calendar’s actual sharing settings. Provider connections can create calendar copies on the device, so a combined view is also not a guarantee that event data exists only at its original provider."
+          },
+          {
+            "q": "Why can I see an event but not successfully edit it?",
+            "a": "The calendar may be read-only, the event may belong to another organizer, or the provider may reject the update. Check ownership and permissions in the provider’s calendar. Buying a higher app plan does not change those permissions."
+          },
+          {
+            "q": "Should I connect the same Google account through every available route?",
+            "a": "First check how it already appears on the phone. Multiple routes can complicate identifying calendar copies. Choose the route you intend to use, verify its events, and hide an extra display while investigating rather than deleting data or disconnecting accounts as a first step."
+          }
+        ],
+        "sourcesHeading": "Sources and setup references",
+        "sources": [
+          {
+            "label": "Apple: set up iCloud Calendar on your devices",
+            "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud"
+          },
+          {
+            "label": "Google: calendar sharing and permissions",
+            "url": "https://support.google.com/calendar/answer/37082?hl=en"
+          },
+          {
+            "label": "Microsoft: Outlook calendar API and supported mailbox data",
+            "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+          }
+        ],
+        "seeAlso": [
+          "exchange-calendars-on-an-iphone",
+          "what-calendar-sync-actually-does",
+          "when-two-calendars-disagree",
+          "caldav-calendar-on-iphone",
+          "calendar-export-ics-pdf-and-backup",
+          "onecal-alternative-iphone-calendar-view-or-sync"
+        ]
+      }
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "route": "/articles/what-calendar-sync-actually-does/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleRawSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+      "objectSha256": "e3958569912d6ed8257d85ad59e27080edb344b1817f95c5cda80fabe9c2fd99",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+        "short": "Calendar sync explained",
+        "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+        "lede": "A missing appointment can mean the wrong account, a hidden calendar, an old imported copy or a connection problem. First identify where the event belongs. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Seeing the same events in two apps means those apps have merged their calendars, and every event must be stored online.",
+        "sections": [
+          {
+            "heading": "Start with the calendar that owns the event",
+            "body": [
+              "An account, a calendar and a calendar app are different things. Your Google account can contain several calendars; an app can display several accounts. Showing them in one week does not move all their events into one shared calendar.",
+              "Open an event and inspect its calendar name and account. A work appointment can belong to a work Google calendar while a family appointment belongs to iCloud. A local calendar can instead belong to the device. The correct next step depends on this destination, not on which app you used to create the event."
+            ]
+          },
+          {
+            "heading": "Four connections that can look similar",
+            "body": [
+              "A provider account connects to calendars held by a service such as iCloud, Google or Microsoft. Whether you can change a particular calendar depends on your permission. Having connected an account does not make a calendar shared with you editable.",
+              "A subscribed calendar feed is a continuing, normally read-only view published by someone else. Apple describes external subscription calendars as read-only. A sports schedule or holiday feed is a useful example: follow the published schedule rather than expecting your edits to change its source.",
+              "Importing a calendar file creates a copy rather than a continuing relationship with the original file. Ask whether the operation says import or subscribe before relying on future updates. A URL ending in .ics alone is not enough to determine what the app will do with it.",
+              "An app account is a separate identity used for that app’s services. It is not proof that your provider calendars are connected. Cloud Calendars also supports local calendars on the device; provider connections and sharing have their own sign-in requirements.",
+              "Cloud Calendars’ Google and Microsoft connections also create mirrored calendars in the iPhone calendar store. Their storage destination depends on the calendar sources available on the device. Do not assume that an app connection only reads the original provider without creating another representation. Check the calendar source before connecting sensitive accounts."
+            ]
+          },
+          {
+            "heading": "Run a small two-device sync check",
+            "body": [
+              "Use a harmless new test event with a distinctive name, such as Calendar connection check. Choose the intended writable calendar explicitly. On the second device, confirm the same provider account and calendar are selected, then look for that exact event.",
+              "Change only the test event’s title on the second device and check the first again. This separates seeing an existing copy from successfully writing back. Record which direction fails and whether the provider’s own calendar shows the change. Do not use a real invitation or an important recurring meeting for this check.",
+              "The result is diagnostic, not a speed benchmark. Network access, account permissions, refresh behavior and organisation policies can affect it. No fixed number of seconds proves that every calendar connection is healthy."
+            ]
+          },
+          {
+            "heading": "Prepare before using a calendar offline",
+            "body": [
+              "Before travelling or losing connectivity, identify the app, account and calendar you will use. While online, open the dates and event details you need. For an important itinerary, consider a dated readable copy through the export guide below, and check that you can open that copy on the device. Seeing today’s events does not establish that every past or future appointment is available offline.",
+              "Google documents offline event creation, editing and responses in its own iPhone and iPad Calendar app after online setup, sign-in and synchronization. Changes do not reach your computer or other people’s calendars until you are online again, and you cannot email guests while offline. Its mobile-browser guidance differs: creating or editing events requires an internet connection. Do not assume a browser has the same offline capabilities as the installed Google app, or that either description establishes Cloud Calendars’ behaviour.",
+              "Check the actual app and calendar with a disposable event you own, without guests or a recurring series. Compare what remains visible without a connection and, if the app permits it, a harmless title change. A locally displayed edit is not proof of a queued update, successful conflict handling or delivery to another account. Do not sign out or remove a connection to simulate being offline.",
+              "Once connectivity returns, check a provider-backed event in its owning service and then on the receiving device. For example, changing tomorrow’s meeting time on a phone during a flight does not establish that participants received the change. Verify the provider’s saved result before relying on it, and confirm important arrangements through the appropriate invitation or communication route. A local-only calendar has no provider destination to check; saving there does not establish that another device received the event. Do not assume an immediate background update or repeatedly recreate the event while its status is unclear."
+            ]
+          },
+          {
+            "heading": "Separate hidden, absent and read-only calendars",
+            "body": [
+              "A calendar listed but unchecked is hidden. A calendar absent from the account list needs a different check: verify the signed-in identity, that access was granted to that identity, and whether the account connection includes that calendar.",
+              "Google’s iPhone help explains how to show or hide subscribed calendars and how to open a calendar shared by email. It separately says that subscribing to a new calendar requires a computer browser. These are distinct operations; do not assume every missing-calendar problem needs a desktop or that accepting an email fixes every connection.",
+              "An event that appears but cannot be edited may be working correctly under read-only permissions. Request the appropriate access from the owner if editing is necessary. Repeatedly reconnecting an account will not grant permissions that its owner has not given."
+            ]
+          },
+          {
+            "heading": "Investigate duplicates without deleting the source",
+            "body": [
+              "Two similar events may be two records, or one source calendar displayed through two routes. Inspect both entries: compare calendar, account, organiser, start time and recurrence before deciding which explanation fits.",
+              "Temporarily hide one calendar to see which copy disappears. Hiding changes visibility; deleting an event can change the underlying calendar for other devices and participants. Do not delete an account, cancel a meeting or erase local data as a first troubleshooting step. In Cloud Calendars, record and restore the original selection: it can also affect widgets, notification scheduling and Google synchronization. See “When calendars disagree” below.",
+              "If you imported the same file more than once, preserve a backup and identify the imported destination before cleaning anything. A recurring series needs particular care because changing one occurrence and changing the whole series have different consequences."
+            ]
+          },
+          {
+            "heading": "Where Cloud Calendars fits",
+            "body": [
+              "Cloud Calendars brings calendar views and weather together on iPhone and iPad. The Base plan includes Google Calendar sync, multiple views, weather and Home Screen widgets. Advanced removes ads; Premium adds Microsoft Calendar and Teams support. Check current local subscription prices before purchasing.",
+              "Use the app to see your selected calendars together while keeping their ownership clear. This is not a promise to bypass workplace restrictions or turn every read-only feed into an editable calendar. Local calendars, provider calendars and shared content should be checked according to their actual connection."
+            ]
+          },
+          {
+            "heading": "Combining a view is different from copying availability",
+            "body": [
+              "A useful personal overview can show work and family commitments together without making either account aware of every commitment. If a colleague checks your work availability, the fact that your phone displays a personal event does not establish that the work system receives a busy block.",
+              "A calendar-to-calendar copying service needs a source, destination and explicit rules for what is replicated. Cloud Calendars’ provider mirrors do not establish a general rule that every personal appointment is copied into every work account with its details hidden. Define the result you need and verify it from the recipient’s account before relying on it."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Calendar absent from the list: identify its account or local source before changing a connection. For a provider calendar, confirm the same identity and access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+          "Calendar listed but unchecked: select it for display, then check a known event. If it remains missing, follow the date or search branch rather than treating visibility as proof that synchronization succeeded.",
+          "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
+          "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
+          "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
+          "Before going offline, check the needed dates in the actual app and calendar. Use only a disposable owned event without guests for testing. After reconnecting, verify a provider-backed change at its provider; a local-only save does not prove delivery to another device.",
+          "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
+        ],
+        "faq": [
+          {
+            "q": "Does combining Google and iCloud calendars move my events?",
+            "a": "A combined view is not itself a merge of provider accounts. Cloud Calendars’ Google and Microsoft connections use mirrored calendars in the iPhone calendar store; check the actual source and destination rather than assuming no copies are created."
+          },
+          {
+            "q": "Why can I see a subscribed calendar but not edit it?",
+            "a": "An external calendar subscription is normally read-only. Its owner publishes the schedule. Editing requires a writable calendar and the appropriate permission, not just a subscription link."
+          },
+          {
+            "q": "Will a local calendar appear on my other iPhone automatically?",
+            "a": "Do not assume that it will. Local storage is different from a connected provider account. Verify the calendar’s connection and use a disposable test event before relying on another device."
+          },
+          {
+            "q": "Should I delete and add my account again?",
+            "a": "First check identity, calendar selection, permissions and the provider’s own view. Reconnection may be relevant later, but deleting local data or an account can complicate diagnosis and should not be the first step."
+          },
+          {
+            "q": "Does seeing an offline edit mean other people received it?",
+            "a": "No. Google’s iPhone app documentation separates offline changes from synchronization after connectivity returns. Its mobile-browser editor requires internet access. For a provider-backed calendar, verify the saved event at the owning provider after reconnecting. A local-only calendar has no provider destination to check, and its local display does not prove delivery to another device."
+          }
+        ],
+        "sourcesHeading": "Sources and further reading",
+        "sources": [
+          {
+            "label": "Apple: Set up multiple calendars on iPhone",
+            "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+          },
+          {
+            "label": "Google: Subscribe to someone else’s calendar — iPhone and iPad",
+            "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: offline Calendar use on iPhone and iPad",
+            "url": "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en"
+          },
+          {
+            "label": "Google: mobile-browser calendar capabilities and limits",
+            "url": "https://support.google.com/calendar/answer/65923?hl=en-7"
+          }
+        ],
+        "seeAlso": [
+          "google-calendars-that-never-reach-your-iphone",
+          "why-a-shared-calendar-does-not-appear",
+          "find-old-calendar-events-by-account-date-and-title",
+          "when-two-calendars-disagree",
+          "icloud-google-and-outlook-in-one-view",
+          "disconnect-calendar-integration-without-losing-track",
+          "onecal-alternative-iphone-calendar-view-or-sync",
+          "calendar-export-ics-pdf-and-backup"
+        ]
+      }
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "route": "/articles/when-two-calendars-disagree/",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleRawSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+      "objectSha256": "69a1bb6728eb548dc853e28e9853f232a739713246d40e50d606ddde3b23645d",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "When calendar events disagree: check ownership before editing",
+        "short": "When calendars disagree",
+        "description": "Different times or duplicate events? Check the owning calendar, time zone and provider view, then hide one source before making changes or deleting anything.",
+        "lede": "If an appointment shows two different times, pause before changing either copy. First establish whether you are looking at the same event, two separate records or one event displayed differently. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every calendar service resolves competing edits by keeping whichever change arrived last.",
+        "sections": [
+          {
+            "heading": "Record the difference before trying to fix it",
+            "body": [
+              "Open both entries and compare the account, calendar name, organiser, date, time zone and recurrence. A matching title alone does not establish that two entries are the same record. Note which device or app shows each version without sharing private event details.",
+              "Check the provider’s own calendar view when available, using the same account. For iCloud, Apple recommends checking service status, account consistency and device date and time. Refresh through the relevant app’s supported controls before deciding a saved change has been lost."
+            ]
+          },
+          {
+            "heading": "There is no universal conflict rule",
+            "body": [
+              "Concurrent edits, old local data, permissions and provider-specific behaviour can lead to different symptoms. Do not assume the newest-looking copy is authoritative or that one more edit will repair the connection.",
+              "Microsoft’s support article about an Outlook Desktop conflict describes a case where the conflict was local and the server copy was unaffected. It documents a specific issue and fix, not a rule for Google, iCloud or Cloud Calendars. Follow guidance for your actual provider and client version rather than applying its repair steps everywhere."
+            ]
+          },
+          {
+            "heading": "Hide first when two entries look duplicated",
+            "body": [
+              "Temporarily hide one calendar and observe which entry disappears. Apple documents calendar checkboxes for this purpose. Restore visibility afterward so you do not mistake a hidden appointment for missing data.",
+              "In Cloud Calendars, note the original selection before this check. Calendar selection also affects widgets, notification scheduling and Google synchronization. Restore the calendars you need after comparing the entries, then recheck the schedule before relying on availability or alerts. Do not assume every provider connection pauses and resumes in the same way.",
+              "Two entries may be independent records, imported copies or the same source shown through different connections. Deleting one does not always delete both; deleting a source event can nevertheless affect other devices or people. Establish ownership and preserve needed information before any cleanup. Avoid cancelling a meeting, removing an account or clearing local storage as an initial diagnostic step."
+            ]
+          },
+          {
+            "heading": "Confirm who is allowed to change the event",
+            "body": [
+              "Google distinguishes viewing permission from editing permission; some editing permissions exclude private events, and work administrators can restrict settings. Being able to see an appointment does not prove you can correct it.",
+              "For an Outlook meeting organised by someone else, Microsoft warns that moving your copy does not notify the organiser and can leave your calendar showing the wrong time. Ask the organiser to confirm the intended schedule. For a recurring meeting, identify whether the discrepancy concerns one occurrence or the series."
+            ]
+          },
+          {
+            "heading": "Make a controlled correction only after diagnosis",
+            "body": [
+              "If you own the event or have the required permission, confirm the intended details, make one correction from one client, then check the provider view and other device. If it fails again, stop repeating edits and report the affected client, account type and error to the provider or administrator.",
+              "For a separate connection check, use a disposable event in a calendar you own rather than experimenting on an important invitation. This is a suggested diagnostic workflow, not a runtime test performed by us or a promise about how quickly changes will arrive."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Compare account, calendar, organiser, time zone and recurrence for both entries.",
+          "Check the same account in the provider’s own view when available.",
+          "Temporarily hide one calendar to trace duplicates; restore it after checking.",
+          "Confirm ownership and edit permissions before changing an invitation.",
+          "Make one authorised correction and verify it; seek provider-specific help if the disagreement returns."
+        ],
+        "faq": [
+          {
+            "q": "Should I delete the duplicate event?",
+            "a": "First determine whether the entries are independent records or two views of the same source. Hide a calendar temporarily to trace them. Deletion can affect the underlying calendar and other participants; it is not a safe first diagnostic step."
+          },
+          {
+            "q": "Does the last edit always win?",
+            "a": "Do not rely on that rule across providers and clients. Check the owning calendar, permissions and the provider’s current troubleshooting guidance. A client-local conflict can differ from the event held by the service."
+          },
+          {
+            "q": "Can Cloud Calendars force a work meeting to accept my change?",
+            "a": "A calendar app cannot grant the organiser’s authority or override account permissions. Check the original invitation and contact the organiser or administrator when needed."
+          }
+        ],
+        "sourcesHeading": "Sources and further reading",
+        "sources": [
+          {
+            "label": "Apple: If you have duplicate events on your iCloud Calendar",
+            "url": "https://support.apple.com/en-us/102180"
+          },
+          {
+            "label": "Apple: If your iCloud calendars won’t sync",
+            "url": "https://support.apple.com/en-us/102543"
+          },
+          {
+            "label": "Google: Choose what others can do with your calendar",
+            "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+          },
+          {
+            "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+          },
+          {
+            "label": "Microsoft: Outlook shows conflict errors when updating or cancelling meetings",
+            "url": "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "work-and-personal-without-two-apps",
+          "disconnect-calendar-integration-without-losing-track"
+        ]
+      }
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "route": "/articles/calendar-export-ics-pdf-and-backup/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "moduleRawSha256": "bc5bd6113214afd35ee9d19ba0a3001145a7deadef269d452a96838e1bf333aa",
+      "objectSha256": "2019588b0512ba28398d0cda4b8445f5eb2b5530cc5d3ea4a6ccd5ca43a9f49b",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+        "short": "Choose a calendar export format",
+        "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+        "lede": "A calendar on your iPhone can be a view of several accounts. Getting a useful copy starts with identifying the source and deciding whether you need event data, a readable schedule or continuing updates.",
+        "sections": [
+          {
+            "heading": "Choose the result before choosing a format",
+            "body": [
+              "Exporting a calendar can mean several different jobs. If you want another calendar app to read event records, choose a supported structured format such as ICS. If someone needs a readable schedule, choose a PDF or printed page. If they should receive later changes, investigate a subscription or permission-based sharing instead.",
+              "A PDF records the layout you saved; it is not an event import file. A downloaded ICS file holds calendar data at the time you obtained it. An ICS subscription uses an address that a calendar client checks again. The extension alone does not tell you whether the recipient imported a snapshot or subscribed to updates.",
+              "For example, a weekend itinerary sent as a PDF is easy to read. A colleague moving appointments to another account needs event data. A club member following next month’s changing fixtures needs an updating source. Decide which of these outcomes you need before sending anything."
+            ]
+          },
+          {
+            "heading": "Start with the account that holds the events",
+            "body": [
+              "On your iPhone, identify the calendar and account containing the events you need. A combined view may contain several accounts, shared calendars and subscriptions. Seeing all of them together does not mean there is one source calendar to export.",
+              "For Google Calendar, use a computer: Google does not offer export from its Calendar app. In the web calendar, open Settings, then Import & export, then Export. The downloaded ZIP contains individual ICS files. For one calendar, open its Settings and sharing and choose Export calendar. Google requires permission to manage changes and sharing; an organization can also restrict export.",
+              "For a calendar available in Calendar on your Mac, select its name in the sidebar and use File > Export > Export to save an ICS file. This is a Mac workflow, not a hidden iPhone export command. Check that you selected the intended calendar before saving."
+            ]
+          },
+          {
+            "heading": "When you need a PDF schedule",
+            "body": [
+              "In Calendar on Mac, use File > Print and choose the layout, date range and calendars to include. In the macOS print dialog, use the PDF menu and Save as PDF. Open the result before sending it: a small grid may omit or truncate details that matter to the recipient.",
+              "Include a clear date range and the relevant time zone in the message accompanying the document. Review private appointments, notes and locations before sharing. Later edits to your calendar will not rewrite a PDF already sent; label a revised copy clearly so recipients know which schedule to follow."
+            ]
+          },
+          {
+            "heading": "When you need calendar rows in CSV",
+            "body": [
+              "CSV is useful when the next task is a spreadsheet report rather than adding events to another calendar. BusyCal documents an iOS CSV export: choose calendars in its export settings, then save or share the generated file. Its rows represent individual event occurrences. This is a BusyCal workflow, not a Cloud Calendars export button.",
+              "For a monthly activity report, decide which calendars and dates belong in the report before sharing it. Open the resulting spreadsheet and inspect timestamps, repeated appointments, notes and any private details. A table that is convenient to filter is not automatically a complete backup or an updating calendar subscription.",
+              "Keep the distinction when moving data: exporting spreadsheet rows, importing editable events and subscribing to future changes are different operations. BusyCal’s iOS export documentation points to its Mac app for ICS import; do not infer that every export control also supplies the reverse import workflow."
+            ]
+          },
+          {
+            "heading": "Subscription and publishing are different from backup",
+            "body": [
+              "Microsoft documents the distinction explicitly for Outlook on the web: downloading and importing a published ICS file creates a copy without later updates; subscribing to the ICS address follows changes. Refresh timing depends on the recipient’s provider, and the published calendar is read-only.",
+              "Where available, Outlook’s Settings > Shared calendars > Publish a calendar lets you choose a calendar and detail level. Publishing exposes it for viewing or subscription, so use this for an intended audience rather than as a private backup technique. A saved link still depends on the source remaining available."
+            ]
+          },
+          {
+            "heading": "If a subscribed calendar stops updating",
+            "body": [
+              "First identify whether you imported a file or subscribed to an address. Google explicitly says imported events do not stay in sync between accounts; Microsoft makes the same distinction for published ICS files. Importing the same file again is not a subscription refresh and can add another set of records.",
+              "For an actual subscription, compare a known changed appointment in its owning calendar and the receiving calendar. Check the intended source and whether its publishing or sharing arrangement is still available. Microsoft says ICS refresh frequency depends on the recipient’s provider. If an intermediary processes the feed, its own refresh and the recipient’s refresh are separate stages; do not assume updating one instantly updates the other.",
+              "Before giving a calendar address to a conversion service, check whether you may share that feed and what data the service will receive. Do not publish a work calendar to bypass an organization’s access restriction. Keep private feed addresses out of public support posts; a service that does not request your account password can still receive the calendar content you provide."
+            ]
+          },
+          {
+            "heading": "What Cloud Calendars sharing provides",
+            "body": [
+              "We develop Cloud Calendars. Its event-sharing flow offers App Clip, email and QR delivery paths for invitation links. Those links serve a different purpose from downloading your entire calendar as a file. A link may lead into an invitation or subscription workflow; it is not itself a portable archive of every calendar you see.",
+              "This guide does not offer a Cloud Calendars whole-calendar ICS, CSV or PDF export procedure. Use the documented provider or Mac routes above for those tasks. For sending a particular event, follow our event-sharing guide; for a continuing shared schedule, first decide who should have access and whether they need updates or editing rights."
+            ]
+          },
+          {
+            "heading": "Check a copy before relying on it",
+            "body": [
+              "Keep the original calendar while checking an export. Record its account, calendar name and export date. If you test an import, use a separate destination calendar where supported, then compare an ordinary appointment, an all-day event and a recurring series with a changed occurrence.",
+              "Calendar transfer is not a promise to preserve every meeting feature. Google says imported events omit guests and conference data, and CSV recurrence can become separate one-time events. Check invitations, meeting links and recurrence explicitly before treating a migration as complete.",
+              "Apple also offers File > Export > Calendar Archive on Mac, producing an ICBU archive. This is a different operation from exporting one ICS file. Apple warns that importing an archive replaces current calendar information and data; do not use an archive restore as a casual test import."
+            ]
+          },
+          {
+            "heading": "For Google, distinguish a copy from an ownership handoff",
+            "body": [
+              "Exporting and importing event data creates a copy; it does not transfer ownership of the original Google calendar. If another person should take responsibility for an existing calendar, check Google’s ownership-transfer instructions on a computer. You must be its current owner, and a primary calendar cannot be transferred. For a work or school calendar, the new owner must belong to the same organisation.",
+              "Sending the transfer email does not complete the handoff. Google gives the recipient 60 days to accept, and you remain the owner until they do. Confirm acceptance before treating the responsibility as transferred. This is a Google calendar-ownership process, not a Cloud Calendars transfer control or a way to move ownership between providers. If you instead need copied events in another service, use the import checks above; do not assume that ownership, invitations or meeting features transfer with the file."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the account and calendar you need, then choose a snapshot, printable schedule or updating subscription.",
+          "Use the documented export route and keep the original while checking the result.",
+          "Review the destination, sensitive details and representative events before sending or relying on the copy."
+        ],
+        "faq": [
+          {
+            "q": "Can I export Google Calendar directly from its iPhone app?",
+            "a": "No. Google’s documented export workflow requires a computer. Exporting a calendar also requires the appropriate sharing-management permission."
+          },
+          {
+            "q": "Does subscribing to an ICS address give me a backup?",
+            "a": "A subscription follows a source that can change or become unavailable. Save an independent export if you need a dated copy, and verify what that file preserves."
+          },
+          {
+            "q": "Should I choose ICS or PDF?",
+            "a": "Choose ICS for event data that a compatible calendar can import. Choose PDF for a readable schedule. A PDF does not provide calendar updates or reconstruct editable events through the documented import workflows."
+          },
+          {
+            "q": "Will converting an ICS feed fix every one-hour difference?",
+            "a": "No. First compare the intended date, the event’s time zone, the display zone and the same recurring occurrence at the source and recipient. A format issue is a possibility to investigate, not the explanation for every time difference. Do not shift the original meeting merely to compensate for one display."
+          },
+          {
+            "q": "Google says “Processed zero events.” Should I import again?",
+            "a": "First check the calendar selected as the import destination. Google says this message can appear after a second click on Import when the first import already succeeded. Look for the expected events before retrying. The message alone does not prove that events are missing, and it is not a guarantee that repeated imports always avoid duplicates. If the result is still unclear, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything."
+          }
+        ],
+        "sourcesHeading": "Official instructions and format limitations",
+        "sources": [
+          {
+            "label": "Google: export calendar events",
+            "url": "https://support.google.com/calendar/answer/37111?hl=en"
+          },
+          {
+            "label": "Google: import events and transfer limitations",
+            "url": "https://support.google.com/calendar/answer/37118?hl=en"
+          },
+          {
+            "label": "Apple: export ICS files and calendar archives on Mac",
+            "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac"
+          },
+          {
+            "label": "Apple: save a document as PDF on Mac",
+            "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac"
+          },
+          {
+            "label": "Microsoft: publishing, importing and subscribing in Outlook",
+            "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+          },
+          {
+            "label": "BusyCal: iOS CSV export and event-occurrence rows",
+            "url": "https://www.busymac.com/docs/busycalios/export-as-csv/"
+          },
+          {
+            "label": "Google: event and display time zones",
+            "url": "https://support.google.com/calendar/answer/37064?hl=en"
+          },
+          {
+            "label": "Google: transfer calendar ownership, move or copy events",
+            "url": "https://support.google.com/calendar/answer/78739?hl=en"
+          },
+          {
+            "label": "Google: fix problems importing calendar events",
+            "url": "https://support.google.com/calendar/answer/45654?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "sharing-one-event-not-your-calendar",
+          "inviting-people-who-do-not-have-the-app",
+          "the-secret-address-of-a-google-calendar",
+          "time-zones-and-the-flight-you-booked",
+          "recover-deleted-calendar-events-iphone"
+        ]
+      }
+    },
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "route": "/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "moduleRawSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "objectSha256": "3c28e7d15dd525c206d50354e99b48296c7554d03b203c9800664e7fd5872266",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+        "short": "Cloud Calendars and OneCal by workflow",
+        "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
+        "lede": "Seeing several calendars together is different from copying their events into other accounts. Start with that distinction before comparing an iPhone calendar app with a calendar-sync service. Arte Soft develops Cloud Calendars and publishes this comparison; it is not an independent performance benchmark.",
+        "commonBelief": "Two products that show Google, iCloud and Outlook calendars necessarily keep availability, event edits and copies in sync in the same way.",
+        "sections": [
+          {
+            "heading": "Choose between an overview and a change in another account",
+            "body": [
+              "If your aim is to see a personal appointment beside a work meeting, you need a combined view. If your work calendar must also contain a busy block for the personal appointment, you need a defined source-to-destination workflow. The first result does not establish the second.",
+              "Cloud Calendars brings selected calendars into an iPhone and iPad planning view. OneCal documents a Unified Calendar View separately from Calendar Sync; its publisher says you can use that view without configuring sync rules. Decide which outcome matters before connecting accounts or comparing subscription names."
+            ]
+          },
+          {
+            "heading": "Understand what a copied event can change",
+            "body": [
+              "OneCal’s Calendar Sync documentation describes one-way and multi-way rules that create clone events. Its separate coverage guide says edits to a clone are not propagated back to the original. Identify the original and its owning calendar before treating a copied appointment as the place to reschedule a meeting.",
+              "Cloud Calendars provider connections can also create mirrored calendars in the iOS store. A combined display does not prove that records were merged or that an edit reached the provider. For a calendar you own and may edit, check a disposable event without guests at the provider as well as in the app."
+            ]
+          },
+          {
+            "heading": "Check the controls on the device you will actually use",
+            "body": [
+              "OneCal’s current mobile guide describes creating and editing calendar events, recurrence choices, RSVP and joining meetings. It separately says that creating, editing, pausing or deleting Calendar Sync configurations happens in the web app; mobile shows those configurations. Booking-link setup is also described as a web task.",
+              "Cloud Calendars is an iPhone and iPad app with day, week, month, year and list views. Try the needed edit in your installed view, read any recurrence choice and confirm the saved event. Do not assume another product’s mobile menu, booking workflow or automation controls exist in it."
+            ]
+          },
+          {
+            "heading": "Verify coverage instead of assuming unlimited history",
+            "body": [
+              "OneCal’s current coverage guide lists a future sync window of up to a year for Google and iCloud and up to three months for Outlook. It also distinguishes future recurring series from standalone historical events. These are publisher-documented limits, not a test of your particular account or a claim about every feature in its calendar view.",
+              "Cloud Calendars also needs a check of the account route, selected calendars and relevant dates. If old meetings are essential, compare an identified event in the provider and the app. A calendar app is not automatically a complete backup or a guarantee that every past record has been retrieved."
+            ]
+          },
+          {
+            "heading": "Compare plan requirements and the billing route",
+            "body": [
+              "Cloud Calendars includes Google Calendar sync in Base; Advanced removes ads and Premium adds Microsoft Calendar and Teams support. Verify account permissions separately from the plan. Check the current local price and billing period before purchase rather than using a fixed international price comparison.",
+              "OneCal’s web plan guide describes per-member plans and a fourteen-day trial, including clone removal when the trial expires. Its mobile billing guide describes store-managed purchases and constraints on adding team members. Check which features need an ongoing plan and where the purchase is managed; a free download alone does not answer those questions."
+            ]
+          },
+          {
+            "heading": "Test your actual planning workflow before switching",
+            "body": [
+              "If weather, widgets or a Live Activity are important, include them in the trial on the device you use. Cloud Calendars offers those planning surfaces, with weather limited to available dates and the selected place. The OneCal pages reviewed here do not establish feature parity for those surfaces; check its current product rather than inferring absence from a guide.",
+              "Keep the original apps and connection details until you have checked the required outcome. Record whether you verified visibility, original-event editing, copied busy time or a reminder; they are different results. Before disconnecting a service, review what happens to existing copies and avoid experimenting on a live invitation or a real customer meeting."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Write down whether you need a combined view or events copied into another account.",
+          "Identify originals, copies and the account that owns each important event.",
+          "Check the required controls on your actual phone, tablet or web workflow.",
+          "Compare one ordinary week and any historical dates you rely on.",
+          "Check current plan requirements, local price and the purchase provider.",
+          "Verify a disposable event and review copy-removal rules before switching."
+        ],
+        "faq": [
+          {
+            "q": "Is a combined calendar view the same as synchronising busy time?",
+            "a": "No. A combined view lets you compare commitments. Creating an entry in another account requires a separate supported workflow; OneCal documents Calendar Sync rules separately from its Unified Calendar View."
+          },
+          {
+            "q": "Can I change a OneCal clone to reschedule the original meeting?",
+            "a": "Its coverage guide says clone edits are not propagated to the original. Identify the original event and follow its calendar’s editing and organiser permissions."
+          },
+          {
+            "q": "Which app is cheaper for my setup?",
+            "a": "That depends on the features, accounts, billing route and local price you need. Cloud Calendars includes Google sync in Base and Microsoft support in Premium. Review OneCal’s current plan and mobile billing terms for your intended workflow; this guide does not claim a universal price winner."
+          }
+        ],
+        "sourcesHeading": "OneCal’s official workflow and plan documentation",
+        "sources": [
+          {
+            "label": "OneCal: mobile features and web-only configuration tasks",
+            "url": "https://docs.onecal.io/docs/mobile-apps"
+          },
+          {
+            "label": "OneCal: Calendar Sync and source-to-target rules",
+            "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+          },
+          {
+            "label": "OneCal: sync windows and edits to clone events",
+            "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+          },
+          {
+            "label": "OneCal: plans, trial and expiry behaviour",
+            "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+          },
+          {
+            "label": "OneCal: App Store and Google Play subscriptions",
+            "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "three-calendar-apps-is-two-too-many",
+          "free-google-sync-without-adverts",
+          "disconnect-calendar-integration-without-losing-track",
+          "what-fantastical-costs-and-what-this-does"
+        ]
+      }
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "route": "/articles/disconnect-calendar-integration-without-losing-track/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "moduleRawSha256": "bc5bd6113214afd35ee9d19ba0a3001145a7deadef269d452a96838e1bf333aa",
+      "objectSha256": "4415b0b0202c4fd4ecde4eafb1c46db3d9f627b10ef1b6e7e1282c291aa23539",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-22",
+        "title": "Disconnect a calendar integration: access, sync and existing copies",
+        "short": "Disconnect a calendar integration carefully",
+        "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+        "lede": "Stopping a connection and removing its calendar copies are different decisions. Identify the route you use and preserve needed information before choosing a disconnect action. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Signing out only pauses updates, revokes every related permission and leaves all existing calendar data exactly as it was.",
+        "sections": [
+          {
+            "heading": "Identify the connection you intend to stop",
+            "body": [
+              "Start with the account and calendar that own the events. A provider account added through iPhone settings, a direct connection in Cloud Calendars, an iCalendar subscription and the app’s sharing identity are separate routes. The same email address does not make their controls interchangeable.",
+              "Write down the calendar names and which route displays them, without sharing private event details. Decide whether your aim is to stop future access, leave a shared arrangement or remove a copy. If you are investigating a missing or duplicate event, disconnecting is not the first diagnostic step."
+            ]
+          },
+          {
+            "heading": "Check what the app’s sign-out action removes",
+            "body": [
+              "The implementation reviewed for this guide attempts to disconnect the selected Google calendar profile and remove its mapped calendar copies from the iOS calendar store. Treat this as a removal action, not a pause. A connection error can still occur, so check the provider’s access status separately rather than assuming every permission was revoked.",
+              "The Microsoft calendar-profile sign-out path also attempts to remove its mapped calendars and local connection records. Do not assume those copies will remain visible. Calendar-copy storage can depend on the device’s available sources, so check the source and preserve needed information before proceeding."
+            ]
+          },
+          {
+            "heading": "Review future access at the provider separately",
+            "body": [
+              "Google’s linked-app controls distinguish Sign in with Google from access to Google Account data. Review the intended app, account and link type. Removing the relevant data access and stopping a sign-in link answer different questions; an app-level sign-out alone is not proof that every connection is gone.",
+              "For a Microsoft work or school account, Microsoft documents My Apps > Manage your application to review permissions. You can revoke permissions you personally granted, but administrator-granted access needs the organisation’s administrator. This is work-or-school guidance, not a universal procedure for personal Microsoft accounts."
+            ]
+          },
+          {
+            "heading": "Separate a sharing identity from calendar-provider sync",
+            "body": [
+              "Cloud Calendars also has an account used for sharing. Its current source treats signing out of that account separately from the calendar-profile connections: it clears the local sharing session and reduces locally tracked shared access to reader status. That is not a declaration that all server data has been deleted.",
+              "When multiple sharing identities are linked, disconnecting one retains the account through another identity. With the final identity, the current path signs out locally and leaves the server link for recovery. Do not use signing out as a substitute for a data-deletion request or assume it also disconnects every calendar provider."
+            ]
+          },
+          {
+            "heading": "Handle subscriptions and previous copies by their own rules",
+            "body": [
+              "Apple documents unsubscribing from an external calendar separately from selecting which calendars to display. If the item is a read-only subscription, identify that subscription before using its unsubscribe control. Hiding a calendar, unsubscribing from a feed and deleting an editable calendar are different operations.",
+              "Google notes that removing an app’s access may still require a separate request to delete data the developer already holds. Likewise, a previously exported file or another person’s copy is not recalled by a permission switch. Keep privacy or retention follow-up separate from whether new updates are still authorised."
+            ]
+          },
+          {
+            "heading": "Confirm the outcome before cleaning up anything else",
+            "body": [
+              "After an intentional change, check the provider’s connection status and compare the original calendar with the app. Identify what stopped updating, what disappeared locally and what remains elsewhere. Do not delete lookalike events merely because a connection name no longer appears.",
+              "If the result is unexpected, stop further cleanup and contact support with the account route, calendar source and the action you used. Do not send passwords, access tokens, private feed URLs or screenshots of sensitive appointments. Explain whether the original provider calendar still has the events so support can distinguish a connection problem from a missing copy."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the exact account, calendar and connection route.",
+          "Decide whether you want to stop access, leave sharing or remove a copy.",
+          "Preserve needed information through a verified export or backup route.",
+          "Read what the installed sign-out or disconnect action removes before using it.",
+          "Review provider permissions separately; involve an administrator for managed access.",
+          "Check the result at the provider and app before any further cleanup."
+        ],
+        "faq": [
+          {
+            "q": "Does signing out of a direct Cloud Calendars connection keep its calendar copies?",
+            "a": "Do not assume that. The inspected Google and Microsoft calendar-profile paths attempt to remove their mapped calendars from the iOS store. Review the source and preserve needed information before disconnecting."
+          },
+          {
+            "q": "Does removing an app’s Google access delete data it already copied?",
+            "a": "Google says you may need to request deletion of data already held by the developer separately. Review future access and retained data as different outcomes."
+          },
+          {
+            "q": "Is signing out of the sharing account the same as deleting it?",
+            "a": "No. The current sharing path clears a local session and retains recovery behaviour; it is separate from the calendar-provider sign-out paths and is not proof of server-data deletion."
+          }
+        ],
+        "sourcesHeading": "Official access and subscription guidance",
+        "sources": [
+          {
+            "label": "Google: manage linked apps and different connection types",
+            "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+          },
+          {
+            "label": "Google: access and data already held by a linked app",
+            "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+          },
+          {
+            "label": "Microsoft: work or school My Apps permissions",
+            "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+          },
+          {
+            "label": "Apple: calendar selection and subscriptions on iPhone",
+            "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "calendar-export-ics-pdf-and-backup",
+          "taking-back-a-calendar-you-shared",
+          "the-secret-address-of-a-google-calendar",
+          "when-two-calendars-disagree",
+          "unwanted-calendar-events-iphone"
+        ]
+      }
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "route": "/articles/google-calendars-that-never-reach-your-iphone/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "moduleRawSha256": "ff42a33adb545673901c1257b7b2c9c15dad1c0bf5e10625e50534bf707ead8f",
+      "objectSha256": "9dd8865cffbeb8a48a4ccc344d0e9532b1b7a2274b83297eaf00c4eac25bfe3e",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "title": "A Google calendar is missing on iPhone: check the connection and selection",
+        "short": "Google calendars missing on iPhone",
+        "description": "Find a missing Google calendar by checking account access, calendar visibility and the connection used by Apple Calendar or Cloud Calendars.",
+        "lede": "When one Google calendar appears and another does not, first establish where the missing schedule is available. Account access, calendar selection and event availability are different checks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every missing Google calendar has one hidden sync-list cause, and connecting directly guarantees that everything appears.",
+        "sections": [
+          {
+            "heading": "Confirm that the calendar exists for this account",
+            "body": [
+              "Open Google Calendar on the web with the same account you intend to use on your phone. Look for the calendar itself, not just a familiar event title. Two accounts may have similarly named calendars, and an invitation addressed to your work email does not establish access for your personal account.",
+              "If the calendar is absent there too, start with the owner or the sharing invitation. For a group-based arrangement, confirm membership and the group receiving permission. Do not delete the phone account while the underlying access question is still unresolved."
+            ]
+          },
+          {
+            "heading": "Distinguish a hidden calendar from an absent one",
+            "body": [
+              "In the Google Calendar app, Google documents using the menu to select calendars for display. A listed but unchecked calendar is a visibility problem. A calendar missing from the list needs a different investigation, such as the invited identity, approval or connection.",
+              "An emailed calendar-sharing invitation and a subscription address are also different routes. Google describes adding a new subscription through a computer browser separately from opening a calendar already shared by email. Keep the original invitation available, but do not forward private links into public troubleshooting posts."
+            ]
+          },
+          {
+            "heading": "Identify how this iPhone application receives Google data",
+            "body": [
+              "Apple Calendar can connect through the Google account configured on the device. Google’s instructions include enabling Calendars for that account. Follow the current provider instructions for your iOS version; changing the settings of a separate application is not the same as changing this device account.",
+              "Cloud Calendars also offers a direct Google sign-in path. Establish which account and route you are actually using before adding another connection. If the same schedule arrives by both a device calendar and a direct connection, compare the calendar identities before concluding that an event was duplicated at Google."
+            ]
+          },
+          {
+            "heading": "Check Cloud Calendars selection without assuming complete coverage",
+            "body": [
+              "In Cloud Calendars, review the calendars associated with the intended Google account and select the ones you want to use. Its Google synchronization checks calendar selection. A successful sign-in alone does not establish that every calendar has been selected or that every requested update completed.",
+              "A direct connection is another way to receive Google data, not a promise that every accessible calendar appears. If a calendar is present on Google’s website but absent from Cloud Calendars, record the account, calendar name and connection method for support. Keep using the original provider for urgent scheduling while the discrepancy is investigated."
+            ]
+          },
+          {
+            "heading": "Separate a missing calendar from missing dates",
+            "body": [
+              "If the calendar is listed but a particular appointment is missing, compare that exact date in Google Calendar. Check whether the item belongs to the calendar you selected, and whether you are looking at the same occurrence of a recurring meeting. A similar title in another calendar is not the same source record.",
+              "Do not assume that an application has downloaded all historical or distant future events. Cloud Calendars’ Google synchronization uses a bounded date request. An empty historical search therefore does not prove that the event was deleted from Google; verify the original provider before changing or recreating anything."
+            ]
+          },
+          {
+            "heading": "Escalate with a useful comparison, not a reset",
+            "body": [
+              "Write down the app, account type, calendar name, example date and where the schedule is visible. Include an error message if one appears, with private information removed. This separates permission, selection and synchronization issues far better than saying that the entire account is broken.",
+              "For time-sensitive plans, confirm the current event with the organiser. Avoid deleting accounts, importing repeated copies or moving events between calendars as initial tests. Once the connection issue is understood, verify the result against the same example before changing any additional settings."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Compare the intended account and calendar in Google Calendar on the web.",
+          "Check whether the calendar is absent or merely unselected.",
+          "Identify device Google sync, direct app connection or subscription.",
+          "Review the calendars selected for the intended account in Cloud Calendars.",
+          "Compare one exact event date at the original provider.",
+          "Report the discrepancy without sharing private addresses or resetting accounts."
+        ],
+        "faq": [
+          {
+            "q": "Will direct Google sign-in show every calendar?",
+            "a": "Do not assume complete coverage. The account, calendar list, selection and successful synchronization all matter. Compare a missing calendar with Google Calendar on the web."
+          },
+          {
+            "q": "Should I delete the account and add it again?",
+            "a": "First check identity, access, visibility and the connection route. Reconnecting cannot supply a permission the owner has not granted."
+          },
+          {
+            "q": "Does a missing old event mean it was deleted?",
+            "a": "No. Check its original Google calendar and date. An application’s available date range or search behavior may differ from the provider’s stored history."
+          }
+        ],
+        "sourcesHeading": "Provider guidance and further reading",
+        "sources": [
+          {
+            "label": "Google: adding Google events to Apple Calendar",
+            "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: subscriptions and calendar visibility",
+            "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: calendar-list behavior",
+            "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+          }
+        ],
+        "seeAlso": [
+          "why-a-shared-calendar-does-not-appear",
+          "icloud-google-and-outlook-in-one-view",
+          "what-calendar-sync-actually-does"
+        ],
+        "updated": "2026-10-21"
+      }
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "route": "/articles/why-a-shared-calendar-does-not-appear/",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "moduleRawSha256": "ff42a33adb545673901c1257b7b2c9c15dad1c0bf5e10625e50534bf707ead8f",
+      "objectSha256": "002fdb0820828b0fab0c1005bd7b0818dae3ad485677c82899630fadf98b5cf8",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-21",
+        "title": "A calendar was shared with you and it is not there",
+        "short": "Shared calendar not appearing",
+        "description": "Find a missing shared Google calendar: check the invited account, group access, calendar visibility and the type of link you received.",
+        "lede": "This guide is written by Arte Soft, the developer of Cloud Calendars. Start by separating an access problem from a calendar that is simply hidden.",
+        "commonBelief": "That accepting a shared calendar puts it on your phone.",
+        "sections": [
+          {
+            "heading": "Check the account and the group",
+            "body": [
+              "Compare the invitation’s recipient with the Google account signed in on your phone and in your browser. Open the calendar link in the invitation with the intended account. Google supports sharing with people and Google Groups. If access comes through a group, ask its manager to confirm your membership and ask the calendar owner to check that the correct group has access. A forwarded email alone does not establish that permission."
+            ]
+          },
+          {
+            "heading": "Hidden, missing or restricted?",
+            "body": [
+              "In Google Calendar on iPhone or iPad, open the menu and look for the calendar. If it is listed but unchecked, select it. If it is absent, ask the owner to verify access; requesting access is not the same as receiving it. Work or school policies may restrict sharing. Compare the same account in Google Calendar on the web. If it works there but not in another app, check that app’s connected account and calendar selection. Read-only access does not allow editing."
+            ]
+          },
+          {
+            "heading": "Identify the link before waiting",
+            "body": [
+              "An emailed sharing invitation also contains a link, so a link is not automatically an ICS subscription. Ask the sender whether it grants access to a Google calendar or publishes a read-only feed. Google says a new calendar subscription requires a computer browser; opening a calendar already shared by email is a separate action. A feed’s updates depend on the receiving service’s refresh behavior. There is no universal arrival time; confirm urgent changes with the organiser."
+            ]
+          }
+        ],
+        "claims": {},
+        "faq": [
+          {
+            "q": "Can a Google Group receive calendar access?",
+            "a": "Yes. Check the group selected by the owner, your membership and any organisation restrictions. Do not assume a forwarded group email grants access."
+          },
+          {
+            "q": "Should I delete and reconnect the account?",
+            "a": "First check identity, permissions and visibility, then compare the web calendar. Reconnecting cannot grant missing permission and should not be the first diagnostic step."
+          }
+        ],
+        "practical": [
+          "Confirm the invited account and any group membership.",
+          "Select the calendar if it is listed but hidden.",
+          "Ask the owner to verify access before changing connections."
+        ],
+        "sourcesHeading": "Sources and further reading",
+        "sources": [
+          {
+            "label": "Google: Check the account and the group",
+            "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Hidden, missing or restricted?",
+            "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Identify the link before waiting",
+            "url": "https://support.google.com/calendar/answer/37648?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "who-can-see-what-in-google-calendar",
+          "google-calendars-that-never-reach-your-iphone"
+        ]
+      }
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "route": "/articles/find-old-calendar-events-by-account-date-and-title/",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "moduleRawSha256": "bc5bd6113214afd35ee9d19ba0a3001145a7deadef269d452a96838e1bf333aa",
+      "objectSha256": "83df31db59ade9ecc3ed48a41d60c61eda5384914531f0d427e9b9ab0c296708",
+      "completeRead": true,
+      "scope": "Full current object read without truncation: metadata, all paragraphs, practical, FAQs, sources and related.",
+      "snapshot": {
+        "updated": "2026-10-21",
+        "title": "Find an old calendar event: check the account, dates and search fields",
+        "short": "Find past calendar events",
+        "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+        "lede": "When you remember a meeting but cannot find it, separate three questions: which account held it, which dates the current view covers, and which fields the search matches. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every search box in a calendar app searches every field of every event ever stored by the provider.",
+        "sections": [
+          {
+            "heading": "Write down the smallest useful clue",
+            "body": [
+              "Start with an approximate month or year, a distinctive word from the title, and the account you probably used. Keep those clues separate. A colleague’s name may have been an attendee rather than part of the title; a street address may have lived only in the location field.",
+              "Try a short title fragment before a long phrase. A negative result does not tell you whether the record is absent, outside the loaded dates or in a field that is not searched."
+            ]
+          },
+          {
+            "heading": "Check ownership and calendar selection",
+            "body": [
+              "Look for the account and calendar that originally owned the event. A work Google calendar, a personal iCloud calendar and a local calendar on the device are different destinations, even if one app displayed them together. Confirm you still have access to the expected account and that its calendar is selected.",
+              "Do not create a new copy just because the search is empty. If you can locate the event by browsing its approximate date, inspect its title, calendar and organiser. That gives you evidence to compare with the search result without changing the record."
+            ]
+          },
+          {
+            "heading": "Check the dates and fields used by Cloud Calendars search",
+            "body": [
+              "Cloud Calendars searches the titles of loaded events without requiring the same letter case. Use a distinctive title word. Do not expect a location, attendee address or note to match merely because it appears elsewhere in an event.",
+              "The current search view loads events for the current calendar year from selected calendars. A meeting from a previous year can therefore be absent from this search while still existing with the provider. Check the date range before interpreting an empty result.",
+              "Browsing to an older date and searching an older year are different actions. For historical search, use the provider’s own tools where available and verify the same account. Check the controls in your installed app version rather than assuming the search covers every year."
+            ]
+          },
+          {
+            "heading": "Use provider tools for their documented fields and dates",
+            "body": [
+              "In Google Calendar on a computer, the search options let you narrow by calendar, event information, people, location and date range. Google recommends a date-limited advanced search when older events do not appear and documents a limit of 200 search results. Divide a broad search into smaller date ranges instead of assuming the first result set is complete.",
+              "Those are Google Calendar web controls, not a description of Cloud Calendars. Likewise, Apple’s Calendar guide says its iPhone search can match titles, invitees, locations and notes. That describes Apple Calendar’s own search. Using Apple’s EventKit in another app does not automatically give that app the same search interface or matching rules."
+            ]
+          },
+          {
+            "heading": "Interpret where the event does and does not appear",
+            "body": [
+              "Found in the provider, absent in Cloud Calendars: check account identity, selected calendar, date coverage and the title being searched. Preserve the provider record. The next question is what the app has loaded or matched, not whether the appointment needs recreating.",
+              "Found by browsing, absent from search: compare the actual title with the query and note the date. This is useful evidence of a search-scope or matching issue. Do not alter an old meeting title solely to make a diagnostic test pass.",
+              "Absent from the provider too: confirm the account, calendar access and date range before investigating retention or deletion with that provider. For a local calendar, a provider website is not an independent copy unless you established a separate connection. Do not assume a cloud archive exists for every local event."
+            ]
+          },
+          {
+            "heading": "Keep a useful search record without exposing the event",
+            "body": [
+              "For support, record the app version, calendar provider or local-storage type, approximate event year and whether the event appears in the provider or by date browsing. Say whether the query was a title word, a location or an attendee. This is more useful than simply reporting that search is broken.",
+              "Avoid sending private notes, invitation links or secret calendar-feed URLs. Keep accounts and local data intact; clearing storage or importing an old file again can add uncertainty."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the likely owning account and approximate date.",
+          "Check that the calendar is selected and accessible.",
+          "Try a distinctive word from the event title.",
+          "Treat current-year app search separately from provider archive search.",
+          "Use Google Calendar web date filters or Apple Calendar’s documented fields when relevant.",
+          "Record where the event appears before changing any data."
+        ],
+        "faq": [
+          {
+            "q": "Does an empty result mean my old event was deleted?",
+            "a": "No. The wrong account, an unselected calendar, a date outside the loaded range or a field that is not searched can all explain an empty result. Check the provider and the event’s approximate date."
+          },
+          {
+            "q": "Can I search Cloud Calendars by an attendee’s email or a note?",
+            "a": "The current search path matches event-title text. For attendee, note or location queries, use the appropriate provider’s documented search tools for those fields."
+          },
+          {
+            "q": "Will browsing to last year make the search cover last year?",
+            "a": "Do not rely on that. The current search view loads the current year when it opens. Use a provider’s date-range search for historical records rather than assuming an unlimited history search in the app."
+          }
+        ],
+        "sourcesHeading": "Sources and provider search help",
+        "sources": [
+          {
+            "label": "Google: Search on Google Calendar — computer",
+            "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
+          },
+          {
+            "label": "Apple: Search for events in Calendar on iPhone",
+            "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "a-list-for-people-who-dislike-grids",
+          "when-two-calendars-disagree",
+          "recover-deleted-calendar-events-iphone"
+        ]
+      }
+    }
+  ],
+  "originalClusters": [
+    {
+      "id": "combine-calendars",
+      "keywordCandidates": [
+        "merge calendars iPhone",
+        "combine Google Outlook calendars",
+        "multiple calendars one view"
+      ],
+      "sourceIds": [
+        "readdle-merge",
+        "readdle",
+        "busycal"
+      ],
+      "proposedTitle": "Combine calendars without accidentally copying your events",
+      "originalContribution": "Distinguish displaying multiple sources from migrating events; use work/personal color labels and destination-calendar checks. Do not prescribe account deletion.",
+      "publicationGate": "Verify whether Cloud Calendars aggregates device calendars, connects providers, or both.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/icloud-google-and-outlook-in-one-view/",
+      "supportingRoutes": [
+        "/articles/three-calendar-apps-is-two-too-many/",
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/what-calendar-sync-actually-does/"
+      ],
+      "bodyReviewEvidence": "research/batch20-ledger-reconciliation-aso.json",
+      "intentAssessment": [
+        {
+          "intent": "Multiple calendars in one view / combine Google and Outlook for personal planning",
+          "status": "substantively_covered",
+          "evidence": "Provider overview sections 1–6 identify accounts, iOS versus direct connection, Google/Base and Microsoft/Premium, provider permissions, mirror sources, selected destinations and verification."
+        },
+        {
+          "intent": "Replace app switching without deleting accounts or confusing copies",
+          "status": "substantively_covered",
+          "evidence": "Three-calendar-apps sections 1–6 keep workplace apps, inspect existing routes, test a disposable owned appointment and separate notifications from view selection."
+        },
+        {
+          "intent": "Work/personal colour labels, destinations and shared availability",
+          "status": "substantively_covered_for_overview_and_bounded_manual_workflow",
+          "evidence": "Work-and-personal sections 1–5 explain colours, visibility, destination, approved manual busy block and recipient-side verification without asserting automated masking."
+        },
+        {
+          "intent": "Merge/migrate stored events into one destination calendar",
+          "status": "distinction_covered_full_migration_workflow_not_established_in_reviewed_bodies",
+          "evidence": "Current guides explain why an overview is not a merge and why a move can affect the source. They do not provide a provider-specific transfer validation/rollback procedure. This is not evidence the entire site lacks export guidance."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "A reader using merge to mean actual migration still needs a clear next action.",
+          "action": "In the existing provider overview, add a compact goal choice: view selected sources / move owned events / replicate availability. Refer actual transfer seekers to the existing export guide after reviewing that guide; do not invent a Cloud bulk merge control or repeat an import procedure without provider support.",
+          "priority": "medium"
+        },
+        {
+          "gap": "Automatic cross-account availability replication is not established as a Cloud capability.",
+          "action": "Keep the explicit boundary and existing sync/OneCal related guide. Do not create a generic automation article from competitor discovery alone.",
+          "priority": "boundary_not_missing_feature"
+        }
+      ],
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Added goal routing to actual existing export and availability-copying guides. No Cloud bulk merge control inferred.",
+      "migrationFollowup": {
+        "evidence": "batch24-migration/intent-research.json",
+        "publishedCanonical": "calendar-export-ics-pdf-and-backup",
+        "status": "conditional_provider_ownership_vs_copy_distinction_published",
+        "limits": "Google-specific, no Cloud transfer UI or cross-provider ownership claim. Native cross-store move advice remains unintegrated pending root review."
+      }
+    },
+    {
+      "id": "sync-troubleshooting",
+      "keywordCandidates": [
+        "calendar events missing iPhone iPad",
+        "calendar not syncing",
+        "old calendar events missing"
+      ],
+      "sourceIds": [
+        "readdle-troubleshooting-index",
+        "timepage-sync",
+        "google-apple"
+      ],
+      "proposedTitle": "Find which layer is hiding a calendar event",
+      "originalContribution": "Decision sequence: locate owning provider, verify event exists there, check account and calendar visibility, compare another device, then provider-specific support. Distinguish missing history from lost data.",
+      "publicationGate": "Read full official troubleshooting bodies; do not copy destructive reset/full-sync advice or guarantee recoverability.",
+      "status": "english_existing_bodies_reviewed_substantive_diagnostics_coverage_provider_specific_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/what-calendar-sync-actually-does/",
+      "supportingRoutes": [
+        "/articles/when-two-calendars-disagree/",
+        "/articles/google-calendars-that-never-reach-your-iphone/",
+        "/articles/find-old-calendar-events-by-account-date-and-title/"
+      ],
+      "bodyReviewEvidence": "research/batch20-ledger-reconciliation-aso.json",
+      "intentAssessment": [
+        {
+          "intent": "Calendar not syncing between iPhone and iPad",
+          "status": "substantively_covered_as_non_destructive_diagnosis",
+          "evidence": "Sync guide sections 1–5 distinguish connection types and perform a harmless provider/direction comparison, without a fixed refresh promise or reset-first advice."
+        },
+        {
+          "intent": "A Google calendar or event is missing",
+          "status": "substantively_covered",
+          "evidence": "Google missing-calendar guide sections 1–6 separately checks web identity/access, hidden versus absent calendars, iOS versus direct routes, selection, exact dates and support escalation. It does not promise every accessible calendar appears."
+        },
+        {
+          "intent": "Old calendar events are missing",
+          "status": "substantively_covered_as_search_and_date_scope_diagnosis",
+          "evidence": "Old-event guide sections 1–6 identifies title matching, current-year app search, provider advanced search, browsing versus search and local calendar absence of an assumed cloud archive. No guarantee of recovery."
+        },
+        {
+          "intent": "Two copies disagree or appear duplicated",
+          "status": "substantively_covered_with_one_useful_example_remaining",
+          "evidence": "Disagreement guide sections 1–5 checks record identity, provider view, time zone, recurrence and permissions, rejects universal last-edit-wins, hides/restores visibility and verifies one authorised correction."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "Readers have to assemble the symptom branches from several guides.",
+          "action": "Add a short diagnostic routing list to what-calendar-sync-actually-does: calendar absent / listed but unchecked / exact event date absent / title search empty / two entries differ. Link each to the existing specific guide. This is navigation of existing depth, not a demand for another article.",
+          "priority": "medium"
+        },
+        {
+          "gap": "A generated destination copy from a separate replication service is not worked through as an explicit example in the disagreement guide.",
+          "action": "Add one bounded example under Hide first: identify the original provider event, the separate destination calendar and the service that created it; hiding a displayed calendar does not remove a stored destination copy. Point disconnect decisions to the existing disconnect guide; do not invent clone markers or cleanup outcomes.",
+          "priority": "medium",
+          "evidenceRecord": "research/competitors/batch11-export-duplicates-primary-20261021.json"
+        },
+        {
+          "gap": "Exact provider/client repair procedures and service-specific history limits remain outside this body review.",
+          "action": "Do not claim universal iCloud/Microsoft/shared-resource troubleshooting, full archive loading or recovery. Before expanding a provider branch, reread its current official help and the existing Exchange/help guides. Readdle troubleshooting remains an index-only original discovery; it is not a completed substantive source read.",
+          "priority": "research_gate"
+        }
+      ],
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "diagnosticRoutingFollowup": {
+        "date": "2026-10-22",
+        "evidence": [
+          "batch21-sync-routing/audit-aso.json",
+          "batch21-sync-routing/root-polish.json",
+          "batch21-static-qa.json"
+        ],
+        "change": "Five symptom branches now point to actual existing guide labels/related links; local calendars remain distinct from provider accounts. Main sections/FAQ/sources unchanged.",
+        "remaining": "Provider-specific repair/recovery and migration gaps remain; branch routing is not universal repair."
+      },
+      "duplicateImportFollowup": {
+        "status": "scoped_selection_caveat_and_google_import_faq_published",
+        "canonicals": [
+          "when-two-calendars-disagree",
+          "what-calendar-sync-actually-does",
+          "calendar-export-ics-pdf-and-backup"
+        ],
+        "evidence": "batch26-duplicates/final-review.json",
+        "limits": "No general cleanup, universal repeat-import dedup, provider pause/resume identity or released-runtime certification."
+      }
+    }
+  ],
+  "proposedReconciliation": [
+    {
+      "cluster": "combine-calendars",
+      "suggestedStatus": "english_substantive_overview_and_transfer_routing_covered_with_explicit_automation_boundary",
+      "gaps": [
+        {
+          "originalIndex": 0,
+          "status": "fulfilled_remove_from_actionable_gaps",
+          "evidence": [
+            {
+              "slug": "icloud-google-and-outlook-in-one-view",
+              "fields": [
+                "sections[0].body[2]",
+                "seeAlso"
+              ]
+            },
+            {
+              "slug": "calendar-export-ics-pdf-and-backup",
+              "fields": [
+                "sections[0–8] especially copy validation and Google ownership handoff"
+              ]
+            },
+            {
+              "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+              "fields": [
+                "sections[0–1]"
+              ]
+            }
+          ],
+          "reason": "The provider overview now explicitly chooses move event data / display selected sources / replicate availability, names the existing export and OneCal guides and links both. Full destination reads establish substantive format/provider/representative-copy checks and overview-versus-replication guidance. This fulfills clear next action; not universal transfer rollback."
+        },
+        {
+          "originalIndex": 1,
+          "status": "retain_as_capability_boundary_not_actionable_content_gap",
+          "evidence": [
+            {
+              "slug": "icloud-google-and-outlook-in-one-view",
+              "fields": [
+                "sections[5].body[1]"
+              ]
+            },
+            {
+              "slug": "what-calendar-sync-actually-does",
+              "fields": [
+                "sections[7]"
+              ]
+            },
+            {
+              "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+              "fields": [
+                "sections[0–1]",
+                "faq[0–1]"
+              ]
+            }
+          ],
+          "reason": "Automatic busy-time replication remains explicitly distinct from Cloud overview/mirrors. Keeping this boundary is correct; competitor discovery does not justify a Cloud automation guide."
+        }
+      ]
+    },
+    {
+      "cluster": "sync-troubleshooting",
+      "suggestedStatus": "english_diagnostic_routing_covered_one_specific_copy_example_remains_provider_repair_research_gated",
+      "gaps": [
+        {
+          "originalIndex": 0,
+          "status": "fulfilled_remove_from_actionable_gaps",
+          "evidence": [
+            {
+              "slug": "what-calendar-sync-actually-does",
+              "fields": [
+                "practical[0–4]",
+                "seeAlso"
+              ]
+            },
+            {
+              "slugs": [
+                "google-calendars-that-never-reach-your-iphone",
+                "why-a-shared-calendar-does-not-appear",
+                "find-old-calendar-events-by-account-date-and-title"
+              ],
+              "fields": [
+                "complete objects"
+              ]
+            },
+            {
+              "slug": "when-two-calendars-disagree",
+              "fields": [
+                "complete object"
+              ]
+            }
+          ],
+          "reason": "All five requested branches exist: calendar absent, listed unchecked, specific date missing, title search empty, two entries disagree. Named short labels match actual related guide objects. Full destination reads verify useful depth beyond route existence."
+        },
+        {
+          "originalIndex": 1,
+          "status": "specific_requested_example_still_absent_with_partial_coverage_elsewhere",
+          "evidence": [
+            {
+              "slug": "when-two-calendars-disagree",
+              "fields": [
+                "sections[2]",
+                "seeAlso"
+              ]
+            },
+            {
+              "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+              "fields": [
+                "sections[1]",
+                "faq[1]"
+              ]
+            },
+            {
+              "slug": "disconnect-calendar-integration-without-losing-track",
+              "fields": [
+                "complete object"
+              ]
+            }
+          ],
+          "reason": "Disagreement explains independent/imported/display copies and selection restoration, but lacks the requested worked original-provider-event + destination-calendar + copying-service example and explicit hiding-does-not-remove-stored-copy statement. OneCal already explains clone behavior; disconnect is a real substantive destination. Selection/import follow-ups do not complete this specific example.",
+          "remainingAction": "If still prioritized, one short qualified example in existing disagreement guide under Hide first, using existing disconnect route. No duplicate page or invented clone markers/cleanup outcome."
+        },
+        {
+          "originalIndex": 2,
+          "status": "retain_as_scoped_research_gate_not_blanket_absence_claim",
+          "evidence": [
+            {
+              "slug": "what-calendar-sync-actually-does",
+              "fields": [
+                "sections[2–5] including newer offline workflow",
+                "faq[4]"
+              ]
+            },
+            {
+              "slug": "when-two-calendars-disagree",
+              "fields": [
+                "sections[0–1]"
+              ]
+            },
+            {
+              "slug": "find-old-calendar-events-by-account-date-and-title",
+              "fields": [
+                "sections[3–4]"
+              ]
+            }
+          ],
+          "reason": "Current guides offer bounded diagnosis, provider references and newer offline guidance, not exhaustive provider/client repair, full history or guaranteed recovery. Recovery/Exchange guides exist but are not fully reread in this task; do not claim absent or globally unreviewed.",
+          "remainingAction": "Only expand a concrete unresolved provider task after reviewing its current primary help and existing guide. No generic repair page justified."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "explicitGaps": 5,
+    "fulfilledActionable": 2,
+    "capabilityBoundary": 1,
+    "remainingSpecificExample": 1,
+    "researchGate": 1
+  },
+  "limits": [
+    "Nine complete English objects read in three untruncated outputs.",
+    "No fresh primary/network/native/API/runtime verification; current-body reconciliation only.",
+    "No ledger/source edits, builds, deployment or commits.",
+    "No ranking, measured demand or citation claims; no blanket localization approval."
+  ],
+  "hashMethod": "Raw hashes use exact bytes; object hashes use UTF8 JSON.stringify of actual parsed aggregate object preserving property order."
+}

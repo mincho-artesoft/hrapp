@@ -1,0 +1,227 @@
+{
+  "date": "2026-11-04",
+  "archivedAndRemoved": [
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/.DS_Store",
+      "bytes": 8196,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/.DS_Store",
+      "sha256": "bc65258257a360a0572819f51a07f367ca7f63358d31adf1b7f6be7830237dc3"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/build2.log",
+      "bytes": 439,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/build2.log",
+      "sha256": "112b00bf74d8ddb9fceec2b5a87de18ba74aa74c6495eb75eea6e500b61f510e"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/build_v3.py",
+      "bytes": 12205,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/build_v3.py",
+      "sha256": "b16d7a1799cd75df46807aaf325b2814d76ea3508312aed34149c2a30c923ab1"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/capture-v3.log",
+      "bytes": 475,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/capture-v3.log",
+      "sha256": "c78ef2300396c3e7f25a7dcec2a25e884eb03186f4954d5df4bb4b5786bfceba"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/capture_v3.py",
+      "bytes": 3462,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/capture_v3.py",
+      "sha256": "0a249a384650524748e64709570a39543669075fd7f082afd93311246c27bebd"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/cli-test.log",
+      "bytes": 381,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/cli-test.log",
+      "sha256": "a441e1ff65fc21f5059d5e9cf7f3bc9b766cf2381698f09435f9531cd0e575ea"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export-v3.log",
+      "bytes": 3244,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export-v3.log",
+      "sha256": "450401762fa5d7c04f7f90e96638b8b6526057f39449a25296b5cd976ebd37cf"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export-v3b.log",
+      "bytes": 3348,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export-v3b.log",
+      "sha256": "7661c6617bdf670352ab97e5d07ac82717d31416e8b2eb3f6a17cf8532e32af2"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export_v3.py",
+      "bytes": 2512,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/export_v3.py",
+      "sha256": "be1148aae07851f6a75fa2b705263860ef473e13827a2e49fa62a6e7b869c68b"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/.DS_Store",
+      "bytes": 6148,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/.DS_Store",
+      "sha256": "d65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/01-voice.png",
+      "bytes": 1382332,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/01-voice.png",
+      "sha256": "9e32c9ba918be8e8d03cb722f964b49129f75ed5aa1646de544889bfe0bcb4f8"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/02-meeting.png",
+      "bytes": 1392262,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/02-meeting.png",
+      "sha256": "a9ea8470e581efcd901235defa600d274004d1a77f9a7154c8e41e973eb31f1d"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/03-vision.png",
+      "bytes": 1349823,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/03-vision.png",
+      "sha256": "511fde39e8d32a9c47baee14be8de223bd80b8b164379a8a0183d2a468ed1416"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/04-translation.png",
+      "bytes": 1322663,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/04-translation.png",
+      "sha256": "d7d645b86ba90fb396861918629c40a410e6b960bd18361d379570c4372ab52a"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/05-plan.png",
+      "bytes": 1560694,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/ipad-13/05-plan.png",
+      "sha256": "e999ebb534ca0f41c53ea353d5c96cfe3f76ae0cfd1c76b2c7c1a6e4fb0f3f8a"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/01-voice.png",
+      "bytes": 1344176,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/01-voice.png",
+      "sha256": "9069f47ca10529fa701520bc7700b165ec5a515b6cdef55c8054d210b694dbb4"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/02-meeting.png",
+      "bytes": 1356870,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/02-meeting.png",
+      "sha256": "b91989924e03c9abf8170c8f4345f1f1f8fcb64932fd92e915a75ca94be8cc1f"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/03-vision.png",
+      "bytes": 1321652,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/03-vision.png",
+      "sha256": "e7a9829ae64d5d8f680084bfdfba5eb1df02cc5f3f1def40ce767d009da88913"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/04-translation.png",
+      "bytes": 1110896,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/04-translation.png",
+      "sha256": "9033f83376e0ac6c84966384e025c4bdc29bda405034fd3a48625cc742799cdb"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/05-plan.png",
+      "bytes": 1348752,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/iphone-6.5/05-plan.png",
+      "sha256": "cb9dbc43fea685e2576ef2fdd1c9dd5bdb202e1dd4ebf9fc74693407579f518f"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/01-voice.png",
+      "bytes": 2060561,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/01-voice.png",
+      "sha256": "ef8cd7633c97bcaaa18cad9f10d6671b206154ff42b29ce515673372f430fc94"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/02-meeting.png",
+      "bytes": 2180907,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/02-meeting.png",
+      "sha256": "48662105f65c7fdaaa04b96e5baf9b84efbb8f0003f7e555cbf14bf464f50a2f"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/03-vision.png",
+      "bytes": 2229326,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/03-vision.png",
+      "sha256": "bd0b55ee6732eab05130133bcd2aec3e2c43a6469458b8ab5b63270a49730c07"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/04-translation.png",
+      "bytes": 1831980,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/04-translation.png",
+      "sha256": "185e7c500ad38874052a93af873e9c7c16e6277691cc628017fff0ca3e2ded28"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/05-plan.png",
+      "bytes": 2083376,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/final-locales/en-US/mac/05-plan.png",
+      "sha256": "4315580e4a4072db34eef1a2650ba8aa8e61822c8a29c59f1f41ef9b44789690"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-capture.log",
+      "bytes": 355,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-capture.log",
+      "sha256": "a7568a5ce4f75f193e8b734e69b2d0def231577b52432656f0d1865378e68efa"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-compose.log",
+      "bytes": 634,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-compose.log",
+      "sha256": "15d40cd04e8d2a0db2b7422d7db41b5aaab8a81c52b99458f63a2ee9e1546060"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-compose2.log",
+      "bytes": 634,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-compose2.log",
+      "sha256": "15d40cd04e8d2a0db2b7422d7db41b5aaab8a81c52b99458f63a2ee9e1546060"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-control.json",
+      "bytes": 72,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac-control.json",
+      "sha256": "7ef474bf52d36a769386b33f74ae39343c3bedbacb77ddb929ca5878dd5358f1"
+    },
+    {
+      "path": "/Users/minchomilev/Desktop/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac_v3.py",
+      "bytes": 7520,
+      "bucket": "gpt-realtime-assistant-media",
+      "key": "private-archive/cleanup-20261104/GPT-Realtime-Assistant-StoreFront-EN-2026-09-24/mac_v3.py",
+      "sha256": "39eab1551dedf92e9b3298615079a3286a691573cc7140d8b4e9365c3a077907"
+    }
+  ],
+  "generatedBuildsRemoved": [
+    {
+      "path": "/Users/minchomilev/cloud-calendars/dist",
+      "bytes": 71030635
+    },
+    {
+      "path": "/Users/minchomilev/work/arte-soft-sites/dist/gpt-realtime-assistant",
+      "bytes": 77264127
+    }
+  ],
+  "preserved": "Tracked source, native assets, site public resources, research and recovery manifests",
+  "bytesFreed": 172220657
+}

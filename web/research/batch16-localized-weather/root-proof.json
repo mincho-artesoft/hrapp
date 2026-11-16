@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "translationScope": "29fullweatherrewrites+unchangedcorrectEN =30locales",
+  "sourceParity": "All29sourceURLs/date/6sections12paras6steps3FAQ/emptyclaims/description<=155 andactualrelatedroutes verified beforeintegration. RootBulgarianpolishfollowedbynewdraftparityguard.",
+  "rootReview": "FullBG plus JA/AR/PTBRcoverage,draftandproviderdistinctionparagraphs; own translations not independentnative-speakerapproval.",
+  "sourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "readRanges": [
+        [
+          493,
+          505
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "readRanges": [
+        [
+          1664,
+          1688
+        ]
+      ]
+    }
+  ],
+  "sharedFacts": "Removednow-unused5view/0pricefactrows onlyafterall30weatherobjects hadclaims{}. Otherfactsunchangedapartfromnewoffboardingroute.",
+  "limits": "Currentcodeinspection, not releasedbinary orcustomer-calendaroperation; appWeatherKitvswebsiteOpenMeteoremainsseparate."
+}

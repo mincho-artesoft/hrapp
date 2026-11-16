@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-22T03:44:50.284489+00:00",
+  "change": "Allow public /media/panel/ under retained /media/ exclusion",
+  "manifestScreenshotPaths": 1240,
+  "locales": 31,
+  "allPathsAllowed": true,
+  "otherMediaExcluded": true,
+  "pageBundleAdsAndSitemapAllowed": true,
+  "semantics": "Longest matching path wins; allow wins equal-length ties. All rules are simple prefixes, no wildcard cases.",
+  "publicBeforeSha256": "1b821bb0ff3c4d5d3e175e80dad956128b51add2a8987d23b9f23942ee88eda5",
+  "afterSha256": "bf4ecce532a30e8feccb7b14bbce992dd5163f3668304778b702fe67f59bd513",
+  "primarySources": [
+    "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+    "https://developers.google.com/search/docs/appearance/google-images"
+  ],
+  "scope": "Crawl permission only, not Google indexing, ranking or ChatGPT citation proof; no assets replaced."
+}

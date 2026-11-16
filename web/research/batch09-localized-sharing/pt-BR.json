@@ -1,0 +1,188 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Compartilhe um evento: escolha o link e o acesso adequados",
+    "short": "Compartilhar um evento",
+    "description": "Compartilhe um evento sem compartilhar todo o calendário. Entenda os acessos Reader, Writer e Owner, prévias, atualizações e limites da revogação.",
+    "lede": "Enviar os detalhes de um jantar, permitir que outro organizador edite e coletar confirmações de presença são tarefas diferentes. Defina o que precisa antes de escolher como compartilhar. Este guia foi escrito pela Arte Soft, desenvolvedora do Cloud Calendars.",
+    "commonBelief": "Todo link de evento seria uma assinatura somente de leitura, com atualização imediata e registro de resposta.",
+    "sections": [
+      {
+        "heading": "Comece conferindo os detalhes de um evento",
+        "body": [
+          "O compartilhamento de um único evento abrange esse evento, não todo o calendário do remetente. Antes de enviar, confira título, fuso horário, local, notas e links de reunião. Uma informação útil para um convidado pode não ser adequada para um link distribuído amplamente.",
+          "Compartilhar um jantar não exige compartilhar o calendário das suas consultas médicas. Porém, o local e os links do jantar acompanham o evento. Confira o conteúdo do próprio evento, sem depender da privacidade do calendário em que ele está."
+        ]
+      },
+      {
+        "heading": "Escolha uma prévia, um convite por e-mail ou um código QR",
+        "body": [
+          "O Cloud Calendars oferece caminhos distintos. O App Clip apresenta uma prévia; para adicionar o evento por esse caminho, é necessário o aplicativo completo. Convites por e-mail e QR usam uma página web que oferece abrir o Cloud Calendars. Esses links não são URLs de assinatura intercambiáveis.",
+          "O remetente entra na conta para usar o compartilhamento sincronizado do aplicativo. Um link ou código QR pode ser encaminhado: envie-o apenas onde seu conteúdo for apropriado. O QR transmite um link, mas não comprova quem o abriu."
+        ]
+      },
+      {
+        "heading": "Conceda apenas o acesso necessário",
+        "body": [
+          "Convites por e-mail permitem escolher Reader, Writer ou Owner. Reader pode visualizar e sincronizar; Writer pode editar; Owner também pode compartilhar e gerenciar acessos. São permissões com consequências diferentes. Use Reader para quem só precisa consultar a programação.",
+          "Use Writer para um coorganizador que deve alterar o evento. Reserve Owner para quem também deve administrar o acesso de outras pessoas. O destinatário precisa entrar com a identidade correta para receber permissões ampliadas. Um destinatário anônimo não é um coproprietário identificado."
+        ]
+      },
+      {
+        "heading": "Entenda como o destinatário adiciona o evento",
+        "body": [
+          "No aplicativo completo, adicionar um evento compartilhado exige permissão de calendário e um calendário de destino que aceite alterações. O destinatário deve conferir o destino antes de salvar. A cópia recebida pode então ser associada ao evento compartilhado para atualizações futuras.",
+          "Isso difere de importar um arquivo ICS comum em outro calendário. A importação cria uma cópia; uma assinatura consulta periodicamente um feed. Se você enviar um feed ICS em vez de um convite do aplicativo, explique esse caminho e confirme que o calendário do destinatário oferece suporte a ele."
+        ]
+      },
+      {
+        "heading": "Confira as alterações antes de depender delas",
+        "body": [
+          "Um compartilhamento sincronizado pode transmitir edições e cancelamentos, mas o dispositivo do destinatário precisa ter oportunidade de recebê-los. Uma indicação de atualização do feed não é um prazo de entrega. Um dispositivo offline, uma assinatura não atualizada ou uma cópia importada independente ainda pode mostrar informações antigas.",
+          "Se o jantar mudar pouco antes do início, atualize o evento e contate os convidados diretamente. Peça confirmação do novo horário. Enviar uma atualização e receber uma resposta de presença são etapas separadas."
+        ]
+      },
+      {
+        "heading": "Gerencie o acesso sem prometer apagar cópias",
+        "body": [
+          "Revise o acesso dos destinatários e remova permissões desnecessárias. Remover um destinatário e revogar um link de feed são operações distintas. Nenhuma deve ser descrita como capaz de apagar remotamente capturas de tela, mensagens ou todas as cópias do calendário.",
+          "Se um link circular além do público previsto, identifique o link ou a permissão envolvida. Confirme o caminho afetado após alterar o acesso. Em eventos futuros, mantenha informações privadas fora de links amplamente distribuídos, em vez de confiar na revogação posterior para recuperá-las."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Revise o evento e defina se precisa de visualização, edição ou respostas de presença.",
+      "Escolha o caminho de compartilhamento e entre na conta quando necessário.",
+      "Use Reader para consulta; conceda Writer ou Owner apenas para a responsabilidade correspondente.",
+      "Peça ao destinatário que confira o horário e o calendário de destino ao adicionar.",
+      "Em alterações urgentes, atualize o evento e envie uma mensagem direta.",
+      "Ao encerrar o compartilhamento, revise separadamente permissões e acesso por link."
+    ],
+    "faq": [
+      {
+        "q": "Compartilhar um evento expõe todo o meu calendário?",
+        "a": "O compartilhamento sincronizado de um único evento se limita a ele. Ainda assim, seus próprios detalhes ficam disponíveis pelo caminho escolhido. Confira essas informações e não envie um convite para todo o calendário quando pretende compartilhar somente um evento."
+      },
+      {
+        "q": "O destinatário pode alterar o evento?",
+        "a": "Sim, se tiver acesso Writer ou Owner adequado e usar o fluxo conectado compatível. Reader permite visualizar e sincronizar. Uma assinatura ICS comum não é o mesmo mecanismo de edição."
+      },
+      {
+        "q": "Remover alguém desfaz tudo o que essa pessoa já recebeu?",
+        "a": "Não presuma essa garantia. Alterações de acesso afetam a relação de compartilhamento compatível, mas cópias salvas, capturas de tela e mensagens podem permanecer. Uma URL de feed compartilhado também exige análise separada."
+      }
+    ],
+    "sourcesHeading": "Referências sobre opções para o destinatário",
+    "sources": [
+      {
+        "label": "Apple: visão geral dos App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: importação de eventos e suas limitações",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: importar um calendário ou assinar um calendário",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Permissões do Google Agenda: confira o acesso que você concede",
+    "short": "Acesso e privacidade no Google Agenda",
+    "description": "Escolha acesso à disponibilidade, aos detalhes ou à edição no Google Agenda. Antes de compartilhar, confira também acessos públicos e por grupos.",
+    "lede": "Antes de compartilhar um calendário, defina o que a outra pessoa precisa fazer. Consultar sua disponibilidade, ler detalhes e manter a agenda são tarefas diferentes. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+    "commonBelief": "Restringir uma pessoa garantiria que ela não veja detalhes por nenhum outro caminho.",
+    "sections": [
+      {
+        "heading": "Combine a permissão com a tarefa",
+        "body": [
+          "Um colega que procura um horário pode precisar apenas da disponibilidade, sem os detalhes dos compromissos. Quem mantém a programação de um projeto precisa de outro tipo de acesso. Defina a tarefa e depois confira a permissão nas configurações atuais de compartilhamento.",
+          "O Google diferencia disponibilidade, detalhes e vários níveis de edição. Uma opção limita o acesso a eventos privados; outra permite editar eventos e consultar detalhes; a mais ampla também permite administrar o compartilhamento. Não trate todas as opções que mencionam alterações como equivalentes."
+        ]
+      },
+      {
+        "heading": "Confira o acesso geral, além do acesso individual",
+        "body": [
+          "Verifique se o calendário é público, está disponível para a organização ou é compartilhado com grupos, além das pessoas nomeadas. O Google informa que o acesso mais amplo pode prevalecer: restringir uma pessoa não desfaz detalhes já publicados.",
+          "Pense em uma programação de clube publicada para os membros. Antes de incluir um compromisso pessoal, confira o público do calendário, sem presumir que a permissão ao lado de um amigo seja a única configuração relevante. Guarde compromissos privados no destino adequado."
+        ]
+      },
+      {
+        "heading": "Use as configurações do calendário correto no Google",
+        "body": [
+          "No Google Agenda em um computador, localize o calendário, abra seu menu e acesse as configurações de compartilhamento. O Google documenta áreas separadas para pessoas ou grupos e acesso mais amplo. Confira o nome do calendário e a conta conectada antes de alterar algo.",
+          "Confirme a identidade Google pretendida do destinatário ao convidá-lo. Se ele não encontrar o calendário, verifique o endereço e a mensagem de convite, em vez de ampliar o acesso para fazê-lo aparecer. Falta de exibição e falta de permissão para editar são problemas diferentes."
+        ]
+      },
+      {
+        "heading": "Teste sem usar compromissos privados",
+        "body": [
+          "Crie um compromisso de teste sem título, notas, local ou lista de convidados privados. Peça ao destinatário que confirme o que consegue ver e, somente quando necessário e permitido, o que consegue editar. Não compartilhe as credenciais da sua conta para fazer esse teste.",
+          "Anote o calendário e a função concedida, depois confira o resultado ao mudar a configuração. Isso verifica o acesso pretendido, mas não comprova que informações já lidas ou copiadas desapareceram. Não teste publicando uma agenda real de trabalho."
+        ]
+      },
+      {
+        "heading": "Separe políticas de trabalho dos planos do aplicativo",
+        "body": [
+          "O Google informa que administradores de empresas ou escolas podem restringir o compartilhamento. Se uma configuração não estiver disponível, use o caminho aprovado pela organização. Não publique informações de trabalho para contornar uma restrição da conta.",
+          "O Cloud Calendars pode mostrar calendários conectados, mas os nomes dos planos não redefinem permissões do Google. Advanced remove anúncios; não é um pagamento que concede a outra pessoa acesso a todos os eventos. Confira o compartilhamento no provedor e o resultado aceito, sem depender apenas de um editor local disponível."
+        ]
+      },
+      {
+        "heading": "Revise e remova acessos desnecessários",
+        "body": [
+          "Ao terminar um projeto, confira destinatários, grupos e qualquer publicação mais ampla. Remover uma pessoa é apenas parte da revisão quando existem outros caminhos de acesso. Combine quem mantém a programação e como futuras alterações de acesso serão tratadas.",
+          "O Google documenta separadamente a remoção de pessoas ou grupos e a desativação do compartilhamento mais amplo. Remover acesso não recupera arquivos exportados, capturas de tela ou informações copiadas. Trate isso separadamente com os envolvidos, sem prometer que uma opção apaga todas as cópias anteriores."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifique o calendário e a tarefa do destinatário.",
+      "Confira acessos individuais, por grupo, da organização e públicos.",
+      "Escolha a permissão adequada nas configurações atuais do Google.",
+      "Verifique a identidade do destinatário antes de alterar acessos.",
+      "Confira um evento de teste inofensivo pelo lado do destinatário.",
+      "Revise caminhos de acesso antigos sem presumir que cópias anteriores serão recuperadas."
+    ],
+    "faq": [
+      {
+        "q": "Uma restrição individual prevalece sobre um calendário público?",
+        "a": "Não. O Google informa que permissões mais amplas prevalecem quando configurações entram em conflito. Revise as opções públicas e da organização, além da entrada individual."
+      },
+      {
+        "q": "Todas as permissões de edição expõem eventos privados da mesma forma?",
+        "a": "Não. O Google documenta uma opção de edição que limita acesso a eventos privados, separada das demais opções de edição e administração. Leia a permissão atual exata antes de escolher."
+      },
+      {
+        "q": "Comprar Advanced altera os direitos de compartilhamento do Google?",
+        "a": "Não. Advanced remove anúncios no Cloud Calendars. O acesso no provedor depende das permissões do calendário e das restrições da organização."
+      }
+    ],
+    "sourcesHeading": "Orientações atuais do Google sobre permissões e compartilhamento",
+    "sources": [
+      {
+        "label": "Google: escolher permissões do calendário",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: compartilhar um calendário e remover acesso",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "updated": "2026-10-21"
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "date": "2026-10-23",
+  "scope": "Root-authorized final source delta; no build/deploy. Original reviewed drafts remain available; final Argon02 copy snapshot retains full source-review chain.",
+  "copyCorrections": [
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "path": [
+        "sections",
+        3,
+        "body",
+        1
+      ],
+      "before": "Check the help for the installed calendar and version if it offers a first-week-of-year option. The generic Outlook getting-started page cited in the raw draft does not document the exact dropdown labels, so this guide does not supply an unverified menu path.",
+      "proposedAfter": "Check the help for your installed calendar and version for a first-week-of-year option. The cited sources do not establish a universal Outlook menu path for that setting.",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "path": [
+        "short"
+      ],
+      "before": "`:30` and `:45` UTC Offset Scheduling",
+      "proposedAfter": ":30 and :45 UTC Offset Scheduling",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "heading"
+      ],
+      "before": "Verified 2026 Monthly Resolution Table: `BYMONTHDAY=31` vs `BYMONTHDAY=-1` vs `BYDAY=-1FR` vs Last Mon–Fri Date (`BYSETPOS=-1`)",
+      "proposedAfter": "Verified 2026 Monthly Resolution Table: BYMONTHDAY=31 vs BYMONTHDAY=-1 vs BYDAY=-1FR vs Last Mon–Fri Date (BYSETPOS=-1)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "columns",
+        1
+      ],
+      "before": "`BYMONTHDAY=31` (Fixed 31st)",
+      "proposedAfter": "BYMONTHDAY=31 (Fixed 31st)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "columns",
+        2
+      ],
+      "before": "`BYMONTHDAY=-1` (Last Calendar Day)",
+      "proposedAfter": "BYMONTHDAY=-1 (Last Calendar Day)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "columns",
+        3
+      ],
+      "before": "`BYDAY=-1FR` (Last Friday)",
+      "proposedAfter": "BYDAY=-1FR (Last Friday)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "columns",
+        4
+      ],
+      "before": "`BYDAY=MO..FR;BYSETPOS=-1` (Last Mon–Fri Date)",
+      "proposedAfter": "BYDAY=MO..FR;BYSETPOS=-1 (Last Mon–Fri Date)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        0,
+        "cells",
+        4
+      ],
+      "before": "**Fri Jan 30** (Steps back from Sat 31)",
+      "proposedAfter": "Fri Jan 30 (Steps back from Sat 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        1,
+        "cells",
+        1
+      ],
+      "before": "**SKIPPED** (No Feb 31)",
+      "proposedAfter": "SKIPPED (No Feb 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        1,
+        "cells",
+        4
+      ],
+      "before": "**Fri Feb 27** (Steps back from Sat 28)",
+      "proposedAfter": "Fri Feb 27 (Steps back from Sat 28)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        2,
+        "cells",
+        4
+      ],
+      "before": "**Tue Mar 31**",
+      "proposedAfter": "Tue Mar 31",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        3,
+        "cells",
+        1
+      ],
+      "before": "**SKIPPED** (No Apr 31)",
+      "proposedAfter": "SKIPPED (No Apr 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        3,
+        "cells",
+        4
+      ],
+      "before": "**Thu Apr 30**",
+      "proposedAfter": "Thu Apr 30",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        4,
+        "cells",
+        4
+      ],
+      "before": "**Fri May 29** (Steps back from Sun 31)",
+      "proposedAfter": "Fri May 29 (Steps back from Sun 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        5,
+        "cells",
+        1
+      ],
+      "before": "**SKIPPED** (No Jun 31)",
+      "proposedAfter": "SKIPPED (No Jun 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        5,
+        "cells",
+        4
+      ],
+      "before": "**Tue Jun 30**",
+      "proposedAfter": "Tue Jun 30",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        6,
+        "cells",
+        4
+      ],
+      "before": "**Fri Jul 31 & Mon Aug 31**",
+      "proposedAfter": "Fri Jul 31 & Mon Aug 31",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        7,
+        "cells",
+        1
+      ],
+      "before": "**SKIPPED** (No Sep 31)",
+      "proposedAfter": "SKIPPED (No Sep 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        7,
+        "cells",
+        4
+      ],
+      "before": "**Wed Sep 30**",
+      "proposedAfter": "Wed Sep 30",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        8,
+        "cells",
+        4
+      ],
+      "before": "**Fri Oct 30** (Steps back from Sat 31)",
+      "proposedAfter": "Fri Oct 30 (Steps back from Sat 31)",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        9,
+        "cells",
+        1
+      ],
+      "before": "Nov: **SKIPPED** | Dec: Thu Dec 31",
+      "proposedAfter": "Nov: SKIPPED | Dec: Thu Dec 31",
+      "severity": "reader-facing-copy"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "path": [
+        "comparison",
+        "rows",
+        9,
+        "cells",
+        4
+      ],
+      "before": "**Mon Nov 30 & Thu Dec 31**",
+      "proposedAfter": "Mon Nov 30 & Thu Dec 31",
+      "severity": "reader-facing-copy"
+    }
+  ],
+  "visibleAndEvidenceSourceRemovals": [
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+      "reason": "Reviewed copy explicitly avoids unsupported menu details; generic raw-source citation was removed in corrected snapshot."
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "url": "https://support.google.com/calendar/answer/9901136?hl=en",
+      "reason": "Raw Focus-time source was not retained in corrected backward-counting workflow; no corresponding provider-specific assertion needs it."
+    }
+  ],
+  "selectionDraftMetadataNormalization": [
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "before": null,
+      "after": "argon/argon-drafts-02-final-reviewed.json"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "before": "claude/claude-drafts-04.json",
+      "after": "claude/claude-drafts-04-reviewed.json"
+    }
+  ],
+  "finalReviewedSnapshot": "argon/argon-drafts-02-final-reviewed.json",
+  "preservedPilotCount": 100,
+  "unchangedPublicationCohort": true,
+  "hashesBefore": {
+    "src/app/content/en-US/articles-pilot-20261023.ts": "66c3180d779d9f55c1bddc0c6ec69cc7732b18abd9a8a8a46df076a66fdbbb90",
+    "research/content-scale-20261023/editorial-manifest.json": "05a93c9e1012182a17bdf96f1f4390ce0d5942bce1177f6678d1b570e8c49bc7",
+    "research/content-scale-20261023/priority-selection-final.json": "dd9529e22afa786360e0a51e0c216d67ef0db795b387c2c3615bccf4302c3f29"
+  },
+  "hashesAfter": {
+    "src/app/content/en-US/articles-pilot-20261023.ts": "ffb70b0286e7bb37e7b3d933c6eb2c7107a2a1a19c7693d14cf396bc4aaf2b0b",
+    "research/content-scale-20261023/editorial-manifest.json": "1cf7a39726022d34da7c529642eb5e0ccc7965258776b94fc71c1c123b52f13a",
+    "research/content-scale-20261023/priority-selection-final.json": "ee199272e5bd3295c326edace77f2d592d04f5f0910382bd181ab5a1ea345522",
+    "research/content-scale-20261023/argon/argon-drafts-02-final-reviewed.json": "adea252e0823f03f590c0eb6dd11b288bab2e7cbbbb38d64a3c4afd08bee175d"
+  },
+  "sourceFilesChanged": [
+    "src/app/content/en-US/articles-pilot-20261023.ts"
+  ],
+  "generatorVerification": {
+    "articleIndexLocales": 30,
+    "entries": 686,
+    "englishCards": 173,
+    "legacyArticles": 73,
+    "newArticleChunks": 100
+  },
+  "editorialValidator": {
+    "exitCode": 0,
+    "errors": [],
+    "warnings": []
+  },
+  "generatedContentFilesChanged": [
+    "src/app/content/generated-english/hub.generated.ts",
+    "src/app/content/generated-english/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch.generated.ts",
+    "src/app/content/generated-english/non-integer-30-and-45-minute-utc-offset-calendar-scheduling.generated.ts",
+    "src/app/content/generated-english/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date.generated.ts",
+    "src/app/content/generated-english/backward-planning-project-deadlines-across-weekends-and-holidays.generated.ts"
+  ]
+}

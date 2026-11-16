@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-22T00:20:12.122552+00:00",
+  "allPassed": true,
+  "url": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+  "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+  "sources": 3,
+  "sections": 7,
+  "observations": [
+    {
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "ipadSetupAndRowDiagnosticTextVerified": true,
+      "screenshots": [
+        "/tmp/cloud-calendar-batch22-ipad-widgets.png",
+        "/tmp/cloud-calendar-batch22-widget-rows.png"
+      ]
+    },
+    {
+      "viewportWidth": 834,
+      "documentWidth": 823,
+      "screenshots": [
+        "/tmp/cloud-calendar-batch22-ipad-web-layout.png"
+      ]
+    }
+  ],
+  "scope": "Public website responsive DOM/visual checks, not an installed iPad/native widget test. Initial research-tab close detached the batched call; inventory confirmed that tab closed and main tab remained, so only remaining navigation was resumed. Viewport reset and main widget guide retained."
+}

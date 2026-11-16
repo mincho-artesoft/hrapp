@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_required_corrections",
+  "readScope": "Complete current BG draft and complete final EN JSON read together in untruncated 6620-token output, every field included. Compared with already reviewed batch33 source findings; no fresh primary or native read.",
+  "pins": [
+    {
+      "file": "research/batch33-colors/bg.json",
+      "rawFileSha256": "83241bf384905368c0e3df98c9dbee151de4a9a9673162ccb989fba757860e30",
+      "jsonStringifySha256": "26697dac838bfefa87982cbab2e8659657c49db6683e81ef57f6e5594f2b046b"
+    },
+    {
+      "file": "research/batch33-colors/change-calendar-color-iphone.json",
+      "rawFileSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2",
+      "jsonStringifySha256": "7ab01f86b0ac1310b69f4eddd9a0a171a34307c3faf55415e7a0388f47a4e564"
+    }
+  ],
+  "checks": {
+    "sections": 7,
+    "paragraphs": 14,
+    "steps": 6,
+    "faq": 4,
+    "exactSourceURLs": true,
+    "descriptionUnicodeCharacters": 130,
+    "updated": "2026-10-22",
+    "claimsEmpty": true,
+    "related": [
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "actualDefinition": "articles-help.ts"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "actualDefinition": "articles.ts"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "actualDefinition": "articles-google.ts"
+      }
+    ]
+  },
+  "semanticAssessment": [
+    "All seven sections preserve calendar/event/text-style distinctions and source/account identity; no color establishes ownership, access, availability or RSVP.",
+    "Available info/edit controls conditional on calendar type and role; no direct Google/Microsoft existing-calendar editor invented.",
+    "COLOR explicitly a heading: tap current color beneath it. Exact English UI labels retained with helpful Bulgarian explanations, no fabricated localized buttons. Calendar Name unchanged, Done save and Cancel scope accurately translated.",
+    "Received Default from creator vs Custom on this device distinction preserved; creator canonical metadata can update, no universal viewer-private claim.",
+    "Google computer-calendar and iOS event recipes remain explicitly Google controls. Google mirror color may be replaced on sync; no promised event override propagation.",
+    "Microsoft categories/color mismatch and BusyCal-specific text/tag features remain qualified; no Cloud category/tag promise.",
+    "Final diagnosis retains save/reopen/source/device comparisons without deadline, moving/delete/duplicate cure or ownership-change concealment."
+  ],
+  "metadataAndLanguage": "Natural, comprehensible Bulgarian title/description/lede; a few technical terms such as метаданни and огледално копие are appropriate to their explanations. No material mistranslation. Six steps and four FAQs preserve qualifications.",
+  "relatedAdjustment": "Replaces absent EN wrong-calendar/disagreement routes with actual Bulgarian unified-view and Google-permissions guides; both relevant to source identity/access distinctions. Work/personal retained.",
+  "requiredCorrections": [],
+  "limits": [
+    "Bounded cross-agent language/semantic review, not native-speaker certification.",
+    "Not runtime or released-build certification.",
+    "Only this review file written; no draft/source/build/deploy/native/API changes."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Condividere un calendario: scegli persone, permessi e metodo",
+  "short": "Un calendario da condividere",
+  "description": "Condividi un calendario su iPhone distinguendo accesso nell’app e permessi del provider. Controlla ruoli, accettazione e aggiornamenti.",
+  "lede": "Un calendario delle prove o degli impegni di casa deve avere un proprietario e destinatari ben definiti. Prima di invitare qualcuno, decidi chi deve consultarlo, chi deve modificare gli eventi e chi deve gestire gli accessi. Questa guida è scritta da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Condividere un calendario crea sempre un’iscrizione di sola lettura collegata a un account già esistente presso un provider.",
+  "sections": [
+    {
+      "heading": "Scegli un calendario con uno scopo preciso",
+      "body": [
+        "Un calendario separato rende più chiaro a chi è destinato. Inserisci le prove nel calendario delle prove e tieni altrove gli appuntamenti che non riguardano il gruppo. Prima di condividere un calendario esistente, controlla gli eventi e i loro dettagli, senza affidarti soltanto al nome.",
+        "Per esempio, il segretario di un’associazione può gestire il programma degli incontri mentre i soci lo consultano soltanto. In famiglia, invece, può servire che due persone apportino modifiche. Nessuna delle due situazioni richiede di condividere tutti i calendari visibili nell’app dell’organizzatore."
+      ]
+    },
+    {
+      "heading": "Identifica il sistema di condivisione che stai usando",
+      "body": [
+        "Cloud Calendars dispone di un proprio sistema di condivisione dei calendari, che comprende calendari locali dell’app e calendari supportati accessibili tramite il sistema di calendario dell’iPhone. Offre anche un percorso separato per condividere calendari Google. Non si tratta di un unico meccanismo universale di iscrizione.",
+        "Un calendario locale dell’app non è automaticamente un calendario di un account Google o iCloud. Allo stesso modo, le regole di condivisione di un calendario del provider dipendono da quel provider. Controlla il calendario effettivo e la schermata di condivisione prima di stabilire cosa riceverà un’altra persona e dove comparirà."
+      ]
+    },
+    {
+      "heading": "Assegna ruoli diversi a chi legge e a chi modifica",
+      "body": [
+        "Nella condivisione di Cloud Calendars, Reader può visualizzare, Writer può modificare gli eventi e Owner può anche condividere il calendario e gestire gli accessi. Assegna Reader ai soci che devono soltanto consultare il programma. Assegna Writer a un coorganizzatore che deve aggiornarlo.",
+        "Owner comprende responsabilità più ampie della modifica. Assegnalo quando una persona deve anche decidere chi altro può usare il calendario. Google utilizza livelli di autorizzazione propri: non presumere che un ruolo di condivisione dell’app e un permesso Google abbiano gli stessi nomi o gli stessi effetti."
+      ]
+    },
+    {
+      "heading": "Aiuta il destinatario ad accettare il calendario",
+      "body": [
+        "Un invito al calendario può arrivare via email oppure tramite un link condiviso o un codice QR. Visualizzare l’anteprima non significa aver completato l’accettazione. In Cloud Calendars, il destinatario accede e aggiunge il calendario a “Shared with me”, l’area dei calendari condivisi con lui; per questo percorso è richiesta un’identità con indirizzo email verificato.",
+        "Se l’invito era rivolto a un indirizzo email specifico, verifica che il destinatario usi l’identità corrispondente. Chi apre un link con un altro account potrebbe non ricevere il ruolo previsto. Controlla il calendario visualizzato e l’accesso ottenuto: una pagina caricata correttamente non dimostra che la collaborazione sia già attiva."
+      ]
+    },
+    {
+      "heading": "Verifica una modifica prima di affidarti al programma completo",
+      "body": [
+        "Inizia con un evento di prova senza dati sensibili, chiarendo al gruppo che si tratta di un test. Chiedi a un Reader di confermare che lo vede e, se necessario, a un Writer autorizzato di modificarlo. Controlla il risultato dal lato del proprietario prima di usare questa configurazione per eventi importanti.",
+        "Gli aggiornamenti richiedono una connessione funzionante e un aggiornamento dei dati. Una condivisione dell’app è diversa da un’iscrizione ICS, e nessuna delle due giustifica la promessa che ogni modifica arrivi all’istante. Per un annullamento all’ultimo momento o un cambio di luogo, aggiorna il calendario e contatta direttamente le persone interessate."
+      ]
+    },
+    {
+      "heading": "Rivedi gli accessi quando cambia il gruppo",
+      "body": [
+        "Quando un coorganizzatore lascia il gruppo, controlla il suo ruolo e rimuovi gli accessi che non servono più. Uscire da un calendario ricevuto ed eliminare un calendario di cui sei proprietario sono azioni diverse. Leggi la conferma e identifica il proprietario prima di procedere.",
+        "Revocare l’accesso non garantisce che scompaiano vecchi screenshot, dati esportati o copie indipendenti. Annota il metodo di condivisione usato e verifica l’accesso interessato dopo una modifica. È particolarmente utile quando le stesse persone ricevono anche inviti del provider o link separati a singoli eventi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Scegli un calendario dedicato al gruppo e controlla i contenuti già presenti.",
+    "Prima di invitare qualcuno, distingui la condivisione di un calendario locale dell’app, di un calendario del provider sul dispositivo o di Google.",
+    "Scegli Reader, Writer o Owner in base alle responsabilità di ogni persona.",
+    "Chiedi ai destinatari di accedere con l’identità prevista e accettare l’invito.",
+    "Verifica un evento di prova e una modifica autorizzata prima di fare affidamento sugli aggiornamenti.",
+    "Rivedi gli accessi quando cambiano i partecipanti e distingui l’uscita dal calendario dalla sua eliminazione."
+  ],
+  "faq": [
+    {
+      "q": "Le altre persone possono modificare un calendario condiviso?",
+      "a": "Sì, i ruoli Writer e Owner dell’app consentono di modificare gli eventi. Reader è il ruolo di visualizzazione. I calendari dei provider hanno regole di autorizzazione proprie: controlla il metodo di condivisione effettivamente usato."
+    },
+    {
+      "q": "Un nuovo calendario condiviso deve essere collegato al mio account Google o iCloud?",
+      "a": "Non darlo per scontato. Cloud Calendars offre anche calendari locali dell’app con un proprio sistema di condivisione. Identifica dove risiede il calendario prima di aspettarti che compaia nell’app di un altro provider."
+    },
+    {
+      "q": "Aprire l’invito significa essere entrati nel calendario?",
+      "a": "No. Un’anteprima non equivale all’accettazione. Il percorso dell’app per condividere un intero calendario richiede accesso e accettazione; l’identità invitata influisce sul ruolo concesso. Controlla il calendario condiviso risultante e l’accesso del destinatario."
+    }
+  ],
+  "sourcesHeading": "Riferimenti sui permessi dei provider",
+  "sources": [
+    {
+      "label": "Google: autorizzazioni per condividere un calendario",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importare un calendario o iscriversi a un calendario",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "keeping-track-of-who-replied",
+    "what-a-subscription-actually-buys"
+  ]
+}

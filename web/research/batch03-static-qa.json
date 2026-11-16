@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-21",
+  "all_passed": true,
+  "newArticles": [
+    {
+      "route": "/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+      "sha256": "55cdc5da5f7d7f3d1df6b02de8d5fd73a9bfecad929032d2991607c6356af1bd",
+      "faq_count": 3
+    },
+    {
+      "route": "/articles/find-old-calendar-events-by-account-date-and-title/",
+      "title": "Find an old calendar event: check the account, dates and search fields",
+      "sha256": "5b6068f46500cc588a1eeea4ed4488b35659e29c02ba93f5ddbcd258de69934f",
+      "faq_count": 3
+    },
+    {
+      "route": "/articles/calendar-export-ics-pdf-and-backup/",
+      "title": "Exporting a calendar: ICS files, PDFs and subscriptions",
+      "sha256": "d4d34fb7e4b0cb5ea1aa5fd94c57a08809b33e2d257654a13986be6913ae0be5",
+      "faq_count": 3
+    }
+  ],
+  "sitemapUrls": 433,
+  "addedCanonicals": [
+    "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+    "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
+    "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/"
+  ],
+  "removedCanonicals": [],
+  "fullTextGuides": 11,
+  "fullTextBytes": 61388,
+  "fullTextSha256": "664ff412d8cd993521b84544c3ef5ee6182513c3c8e5695dea8ab50ddcc2b318",
+  "llmsSha256": "17601eca8bce5eaab48eb40f21240987963c1c4b8e51b5e2b5f0f9109983866c",
+  "scope": "Three newEnglish routes/schema/FAQs plus complete11guide text export; preserves previously published sitemapURLset. Legacy14day canonical slugs remain, corrected header has no14day capability claim. No native runtime or language quality claims."
+}

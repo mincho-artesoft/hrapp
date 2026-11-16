@@ -1,0 +1,90 @@
+{
+  "updated": "2026-10-22",
+  "claims": {},
+  "title": "Abbonamenti Cloud Calendars: Base, Advanced e Premium",
+  "short": "Scegli un piano Cloud Calendars",
+  "description": "Base include Google, viste, meteo e widget. Advanced rimuove la pubblicità; Premium aggiunge Microsoft e Teams. Verifica acquisto e permessi.",
+  "lede": "Cloud Calendars è sviluppato da Arte Soft, che pubblica anche questa guida. Scegli Advanced per rimuovere la pubblicità oppure Premium per aggiungere anche Microsoft Calendar e Teams. Distingui le funzioni del piano dai permessi del fornitore e dall’Apple Account che paga l’abbonamento.",
+  "commonBelief": "Advanced sbloccherebbe la condivisione Google o un meteo prioritario, mentre Premium permetterebbe di aggirare le restrizioni di un calendario di lavoro.",
+  "sections": [
+    {
+      "heading": "Base: il punto di partenza gratuito",
+      "body": [
+        "Base include sincronizzazione con Google Calendar, supporto per Google Meet, diverse viste del calendario, meteo e widget della schermata Home. L’app gratuita può mostrare pubblicità. I calendari locali permettono di iniziare sul dispositivo; collegamenti ai fornitori e condivisione hanno requisiti propri.",
+        "Se i tuoi calendari soddisfano già le tue esigenze con Base, la presenza di un piano a pagamento non è di per sé un motivo per cambiare. Valuta come usi effettivamente il calendario prima di scegliere."
+      ]
+    },
+    {
+      "heading": "Advanced: le funzioni di Base senza pubblicità",
+      "body": [
+        "Advanced comprende le funzioni di Base e rimuove la pubblicità. Il pagamento non cambia i permessi di condivisione di Google né aggiunge una priorità agli aggiornamenti meteo. La creazione di link Meet continua a dipendere dal calendario e dal contesto dell’evento.",
+        "Rimuovere la pubblicità cambia l’esperienza d’uso. Non concede al tuo account il diritto di modificare il calendario in sola lettura di un’altra persona e non risolve le restrizioni dell’organizzazione sulle connessioni."
+      ]
+    },
+    {
+      "heading": "Premium: Microsoft Calendar e Teams",
+      "body": [
+        "Premium comprende Advanced e aggiunge Microsoft Calendar e Microsoft Teams. Un’organizzazione lavorativa o scolastica può limitare app esterne, account o creazione di riunioni. Verifica la connessione prevista e i permessi, senza presumere che ogni configurazione Exchange sia supportata.",
+        "Anche la creazione di un link di riunione dipende dal fornitore e dal contesto dell’evento. Questa funzione non garantisce che ogni evento di ogni calendario riceva automaticamente un link per una conferenza."
+      ]
+    },
+    {
+      "heading": "Leggi la schermata di acquisto locale",
+      "body": [
+        "Prima di confermare, controlla piano, prezzo locale, periodo di fatturazione e condizioni di rinnovo. Confronta l’opzione mensile con quella annuale corrispondente, invece di moltiplicare un prezzo promozionale di un altro Paese. La schermata di acquisto attuale è più utile di un articolo con un importo fisso destinato a invecchiare.",
+        "L’Apple Account usato per il pagamento è distinto dagli account Google, Microsoft e dall’identità usata per condividere nell’app. Conserva la ricevuta e controlla quale Apple Account possiede l’abbonamento se non compare dove ti aspetti."
+      ]
+    },
+    {
+      "heading": "Disdici il rinnovo senza confonderlo con la cancellazione dei dati",
+      "body": [
+        "Su iPhone, Apple indica il percorso Impostazioni, il tuo nome, Abbonamenti e poi l’abbonamento interessato. Leggi lo stato e le informazioni sulla scadenza. Eliminare l’app, cancellare un evento o scollegare un fornitore non sostituisce la gestione del rinnovo.",
+        "Prima di cambiare piano o rimuovere dati locali, controlla a cosa potrai ancora accedere e quale calendario contiene gli eventi importanti. Questa guida non promette che ogni connessione o funzione a pagamento resti disponibile dopo la scadenza. Non consiglia neppure di eliminare calendari per risolvere problemi di fatturazione."
+      ]
+    }
+  ],
+  "practical": [
+    "Decidi se ti servono la rimozione della pubblicità, il supporto Microsoft o nessuno dei due.",
+    "Verifica proprietà del calendario e accesso al fornitore separatamente dal piano.",
+    "Leggi la schermata di acquisto locale e il periodo di fatturazione.",
+    "Conserva la ricevuta Apple e annota l’account usato per il pagamento.",
+    "Gestisci il rinnovo nelle impostazioni degli abbonamenti Apple; considera le modifiche ai dati del calendario un’operazione separata."
+  ],
+  "faq": [
+    {
+      "q": "Che cosa aggiunge Advanced?",
+      "a": "Advanced rimuove la pubblicità e comprende le funzioni di Base. Sincronizzazione con Google Calendar, viste, meteo, widget e supporto per Google Meet sono già inclusi in Base."
+    },
+    {
+      "q": "Che cosa aggiunge Premium?",
+      "a": "Premium comprende Advanced e aggiunge Microsoft Calendar e Microsoft Teams, nel rispetto dei permessi dell’account del fornitore e dell’organizzazione."
+    },
+    {
+      "q": "Eliminare Cloud Calendars annulla l’abbonamento?",
+      "a": "Gestisci un abbonamento fatturato da Apple nelle impostazioni degli abbonamenti Apple. Rimuovere l’app o scollegare un fornitore di calendari è un’operazione distinta."
+    },
+    {
+      "q": "Condividere un acquisto con la famiglia condivide anche i calendari?",
+      "a": "Controlla separatamente acquisto e calendario. In famiglia di Apple supporta acquisti e abbonamenti idonei: verifica l’idoneità attuale del prodotto specifico, senza presumere che ogni acquisto sia condivisibile. L’accesso al calendario dipende comunque dall’invito, dal link condiviso o dai permessi del fornitore. Per un calendario condiviso in Cloud Calendars, il destinatario deve usare l’identità prevista, accettare il calendario e controllare l’accesso ottenuto. Un acquisto condiviso non conferma che un familiare possa leggere o modificare il tuo calendario."
+    }
+  ],
+  "sourcesHeading": "Informazioni su acquisti e disdetta",
+  "sources": [
+    {
+      "label": "Apple: annullare un abbonamento",
+      "url": "https://support.apple.com/it-it/118428"
+    },
+    {
+      "label": "Cloud Calendars su App Store",
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+    },
+    {
+      "label": "Apple: contenuti e acquisti idonei per In famiglia",
+      "url": "https://support.apple.com/en-ie/111114"
+    }
+  ],
+  "seeAlso": [
+    "free-google-sync-without-adverts",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

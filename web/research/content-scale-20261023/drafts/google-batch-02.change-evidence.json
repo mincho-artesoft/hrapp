@@ -1,0 +1,352 @@
+{
+  "reviewedAt": "2026-10-23",
+  "sourceOriginalSha256": "bc5c8939687d3b4656eb0e3209498469acd14e9c40bb93e311f489e4838d6aef",
+  "changes": [
+    {
+      "slug": "google-appointment-email-verification",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "On a computer, Google documents creating or editing the appointment schedule, opening Booking form, checking the email-verification requirement and saving. Review the intended schedule rather than changing another service with a similar name.",
+      "after": "On a computer, create or edit the intended appointment schedule. Under Booking form, check “Require email verification” and click Save. Unchecking that same box disables it for that schedule. Inspect the actual schedule rather than changing another service with a similar name.",
+      "reason": "Name the exact checkbox and completion action instead of a generic email-verification requirement.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/11902347?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "e29806987d6d32652508b2688458447d346422277d08d43af87fb8c00002997a",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "Google’s computer help offers a copied booking-page link, a popup button and an inline booking page. Its Website embed sharing options distinguish all booking pages from one selected page; the generated code is then pasted into the website’s HTML.",
+      "after": "On a computer, Google documents hovering over the intended page under Booking pages, then choosing Options > Sharing options > Website embed. Choose All booking pages or A single booking page, then Button with popup or Inline booking page. Copy code, click Done and paste the generated code into the website’s HTML.",
+      "reason": "Supply the complete current menu path and scope choice; keeps appointment booking distinct from embedding a public calendar grid.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/10733297?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "9a0810b1ee152d4d63db521a7675734ea2ba5d788495160ca5d91fee3f058df6",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "path": [
+        "sections",
+        0,
+        "body",
+        1
+      ],
+      "before": "Write the range you intend to analyze. Google says the selected calendar view affects the range, and its meeting averages use prior-week or prior-month periods depending on the view. Do not compare an average with a hand-summed single day without first checking what each number describes.",
+      "after": "Write the range you intend to analyze. Google says changing the calendar view changes the displayed date range. Its Time in meetings average uses the previous three weeks in Day, Week, Schedule or five-day view, and the previous three months in Month view. Do not compare either average with a hand-summed single day without first identifying what each number describes.",
+      "reason": "Replace vague prior-week/month wording with exact three-week/three-month definitions to make the reconciliation actionable.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/10738043?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "92364d90b20d0cb7a0833ba8257d381f5a7bf2f085ec6fa0efcd09eac9e31242",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "In Google Calendar on a computer, Google’s instructions use Settings, General, Offline, then enable the offline calendar and reload. The calendar synchronizes and later reports readiness. Wait for that state rather than closing the computer immediately after checking the box.",
+      "after": "In Google Calendar on a computer, use Settings > General > Offline > Turn on offline calendar, then click Reload now. A Sync status appears while data is prepared; wait until it shows “Ready for offline.” When disconnected, the status shows “Offline.” Do not close the computer immediately after enabling the setting and assume preparation finished.",
+      "reason": "Preserve the computer-only limits and name the exact readiness state needed before an offline viewing check.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/1340696?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "316a48f6f9761e7db64251ae5a7752e8242816b273f0fbd9b17d1eb3f2c4364f",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "path": [
+        "sections",
+        0,
+        "body",
+        0
+      ],
+      "before": "Google documents a keyboard-shortcut preference in desktop Calendar settings and provides an in-app reference reached with the question-mark key after enabling it. Keep that reference as the authority for the browser and interface you use.",
+      "after": "On a computer, open Google Calendar settings, select “Enable keyboard shortcuts” and click Save at the bottom of the page. After enabling it, type a question mark (?) to open Google’s in-app reference. Use that reference for the current interface rather than assuming a remembered key works in every browser context.",
+      "reason": "Add the exact enable-and-save step; shortcut reference remains authority, with focus limitations kept.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/37034?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "373e645a580c3c419365b2e673d5f6234affea1e158e14d46cded552986fbbe0",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "Google’s computer documentation places lunar/solar selection in Settings, View options, Alternate calendars, with None removing that display. Moon phases and sports are added through Browse calendars of interest; the relevant box selects the Moon-phase source or a named team schedule.",
+      "after": "On a computer, Google documents Settings > View options > Alternate calendars for the lunar or solar display; choose None to remove it. For separate event sources, use Settings > Add calendar > Browse calendars of interest. There, select “Phases of the Moon” or open a sports category and select the intended team.",
+      "reason": "Name exact current controls while keeping an alternate date display separate from added Moon-phase or sports event sources.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/13748650?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "9284241089db47ccf3164d36f9246f84958dc9a108f13185bee4750b3b853937",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "path": [
+        "sections",
+        3,
+        "heading"
+      ],
+      "before": "Uninstall or revoke deliberately",
+      "after": "Uninstall deliberately and review dependent meetings",
+      "reason": "The cited procedure documents uninstalling, not a complete OAuth grant-revocation procedure. Remove an overly broad heading promise.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/9117864?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "5f448479a0b04676c5a1f93385fa8907c5ea0df5c7a1132880c6e7effc275b9b",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "path": [
+        "lede"
+      ],
+      "before": "On a managed Android device, seeing personal events in the work Google Calendar app need not mean the personal calendar has been shared with your employer. Google documents an administrator-approved cross-profile view. Identify that route before changing account permissions or assuming coworkers can see the same combined schedule.",
+      "after": "On Android with a work- or school-managed Work Profile, seeing personal events in the work Google Calendar app need not mean the personal calendar was directly shared with the work account. Google documents an administrator-approved cross-profile view. Identify that route before changing calendar permissions or assuming coworkers see the same combined schedule.",
+      "reason": "Narrow the scope to a managed Work Profile rather than implying the whole device must be organization-owned or fully managed.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "fe97f2064b2bd711b687c7426e6fba541161ba3ed7a1ba9692f7ce95e67cd5b5",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "Google’s Android instructions use Calendar settings, Personal calendars, then the system connection action and approval for the two apps. It states that the work and personal calendars remain separately stored and that this view does not itself share personal account details with the work account.",
+      "after": "In the Android Google Calendar app, use Menu > Settings > Personal calendars > Turn on in Settings. Turn on Connect these apps, then tap Allow. Google says the work and personal calendars remain separately stored and personal account details are not shared with the work account through this feature.",
+      "reason": "Add the documented setup path while preserving the limited feature-specific privacy boundary.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "fe97f2064b2bd711b687c7426e6fba541161ba3ed7a1ba9692f7ce95e67cd5b5",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "Google’s create-event flow adds guests before opening Suggested times. The organizer can select a suggestion, ask for more or edit on the grid. The documented grid controls can also distinguish required and optional guests and rooms.",
+      "after": "On a computer, create the intended event, add its guests and click Suggested times. Select a proposal or use More suggestions. If you directly edit on the grid, Filter and view can toggle rooms and filter guests by required or optional status. Review the actual saved guest and room fields after choosing.",
+      "reason": "Provide exact control names and avoid making a suggestion or room filter sound like resource acceptance.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/16690875?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "98944a9214073abc229f74773f611f91b6e6e805ade4b6f39245c43f8ddc5070",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "path": [
+        "sections",
+        1,
+        "body",
+        0
+      ],
+      "before": "Google documents a Get an email when guests respond checkbox in the event editor. It applies to that event or recurring series and is separate from the calendar’s global response-notification preference. Inspect the actual event setting rather than repeatedly changing phone notification sounds.",
+      "after": "In Google Calendar on a computer, create or edit the actual event, inspect “Get an email when guests respond,” then click Save after any intended change. Google says this checkbox applies to one event or its recurring series. It is separate from Settings for my calendars > the calendar > Other notifications > Event responses. Do not infer the event checkbox’s state merely from that calendar-wide preference or a phone sound setting.",
+      "reason": "Make the exact event-versus-calendar distinction unambiguous, particularly alongside the neighboring Gmail-filter article.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/16713792?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "c9a8798369202924c745b53261610740169c07f01e55f7ad817afe2d0be5bb34",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "path": [
+        "sections",
+        2,
+        "body",
+        0
+      ],
+      "before": "On a computer, Google documents opening the assigned task either through the Tasks side panel or the Calendar grid, using its menu and confirming Report as spam. Use the supported interface for the actual task; a Cloud Calendars event editor is not this reporting control.",
+      "after": "On a computer, open the assigned task in the Calendar grid, then choose Options > Report as spam and confirm Report as spam. Alternatively, open Tasks in the right side panel of a supported Google surface, open the task and use its menu to report and confirm. Use the actual assigned task; a Cloud Calendars event editor is not this reporting control.",
+      "reason": "Give an explicit supported reporting and confirmation path rather than an unspecified task menu.",
+      "evidence": {
+        "type": "primary",
+        "url": "https://support.google.com/calendar/answer/13012543?hl=en",
+        "retrievedAt": "2026-10-23",
+        "bodySha256": "cbdca1de8af87a7b79afd30d674fca353a6d12650c6d3f7de0d1463040f1cc31",
+        "claimVerified": true
+      },
+      "severity": "minor_precision"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://support.google.com/calendar/answer/10733297?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "9a0810b1ee152d4d63db521a7675734ea2ba5d788495160ca5d91fee3f058df6",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/10738043?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "92364d90b20d0cb7a0833ba8257d381f5a7bf2f085ec6fa0efcd09eac9e31242",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/11902347?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "e29806987d6d32652508b2688458447d346422277d08d43af87fb8c00002997a",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13012543?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "cbdca1de8af87a7b79afd30d674fca353a6d12650c6d3f7de0d1463040f1cc31",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/1340696?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "316a48f6f9761e7db64251ae5a7752e8242816b273f0fbd9b17d1eb3f2c4364f",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13748650?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "9284241089db47ccf3164d36f9246f84958dc9a108f13185bee4750b3b853937",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13762729?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "a9a9d8f7c18bf39a59824e4dbad9333d211ef0b7722d306741775faf66ea79f8",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "fe97f2064b2bd711b687c7426e6fba541161ba3ed7a1ba9692f7ce95e67cd5b5",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/16690875?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "98944a9214073abc229f74773f611f91b6e6e805ade4b6f39245c43f8ddc5070",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/16713792?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "c9a8798369202924c745b53261610740169c07f01e55f7ad817afe2d0be5bb34",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37034?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "373e645a580c3c419365b2e673d5f6234affea1e158e14d46cded552986fbbe0",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/9117864?hl=en",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-23",
+      "sha256": "5f448479a0b04676c5a1f93385fa8907c5ea0df5c7a1132880c6e7effc275b9b",
+      "matchesAuthorAfterWhitespaceNormalization": true,
+      "reviewScope": "Entire extracted official article body independently read.",
+      "firsthandTest": false
+    }
+  ]
+}

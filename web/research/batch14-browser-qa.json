@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-21T22:04:01.616345+00:00",
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/month-view-on-a-bigger-screen/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "screenshot": "/tmp/cloud-calendar-batch14-bg-month.png",
+      "readScope": "Full DOM body; top screenshot visually inspected; no horizontal overflow. Gallery brought into view and5 existing english-fallback product images visibly loaded, naturalWidth170."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "skip": "/articles/the-commute-and-the-sky/#main",
+      "screenshot": "/tmp/cloud-calendar-batch14-commute.png",
+      "readScope": "Title/lede/first2sections visual screenshot; full HTML included in494bytecheck."
+    }
+  ],
+  "galleryScope": "Current5englishfallback shots on Bulgarian page only. Not all media locales, all variants, new external generation, original recency or video playback verified.",
+  "cleanup": "Temporary Chrome viewport reset; public commute page retained as deliverable. No local preview server.",
+  "certificationLimits": "No independent native-speaker, released product runtime, indexing/ranking/citation certification."
+}

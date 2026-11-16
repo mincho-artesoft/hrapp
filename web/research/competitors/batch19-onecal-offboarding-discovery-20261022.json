@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-22",
+  "scope": "One originally pending exactOneCalbilling body plus newly discovered officialmobilebody. Two publicsearchqueries used fordiscovery, notGoogle rank/volume measurement.",
+  "queries": [
+    "disconnect calendar sync keep existing copied events",
+    "free calendar sync Google Outlook iPhone OneCal CalendarBridge"
+  ],
+  "bodyReviews": [
+    {
+      "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial",
+      "status": "full",
+      "readRanges": [
+        [
+          22,
+          72
+        ]
+      ],
+      "summary": "Publisher distinguishes per-member paidplans from14daytrial, calendarcountlimits fromsynccounts, andtrialexpiry pauses pluscloneremoval; purchase resumes/recreates. No currentnumericpricecaptured.",
+      "boundary": "Do notgeneralizepausestopsbutkeepscopies, free download meansfreeongoingreplication, or transferOneCalcleanup/controlstotheCloudapp.",
+      "canonicalMapping": [
+        "free-google-sync-without-adverts",
+        "what-a-subscription-actually-buys",
+        "disconnect-calendar-integration-without-losing-track"
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/mobile-apps",
+      "status": "full",
+      "readRanges": [
+        [
+          22,
+          139
+        ]
+      ],
+      "summary": "Mobileunifiedview/edit/invites/bookings/notifications vs webonlycreationeditpause/deleteofsyncrules andbookinglinks; includesmobilepurchaselink.",
+      "boundary": "Firstpartypublishercapabilities notruntimecertified. NoCloudAI/MCP/crossplatform/clonehiding/securityfeaturesinferred. Privacyclaimsnotindependentlyaudited.",
+      "canonicalMapping": [
+        "three-calendar-apps-is-two-too-many",
+        "what-calendar-sync-actually-does",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ]
+    }
+  ],
+  "discoveredNotFullBodyReviewed": [
+    {
+      "url": "https://syncdate.app/",
+      "status": "search-result-excerpt-only",
+      "intent": "freecalendarbridgevsaccountview"
+    },
+    {
+      "url": "https://calconverter.app/",
+      "status": "search-result-excerpt-only",
+      "intent": "Outlook-toGoogle/AppleICSfeedconversion"
+    },
+    {
+      "url": "https://help.oncehub.com/help/pdfexport/id/672cb70ccf7fdd3d72010ccb",
+      "status": "search-result-excerpt-only",
+      "intent": "disconnectimpactonexistingbookings"
+    }
+  ],
+  "queryAssociation": "Toolreturnedmergedbatchresults; no fabricatedperquerypositions. Candidatephrasing notobservedkeywordvolume.",
+  "outsideOriginalCorpus": [
+    "https://docs.onecal.io/docs/mobile-apps"
+  ],
+  "noClaims": [
+    "No exhaustivecompetitorkeywordcoverage.",
+    "NoGoogleChatGPTrankingorindexingproof.",
+    "NoOneCalpricedisadvantageorCloudparityclaim."
+  ]
+}

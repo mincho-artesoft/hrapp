@@ -1,0 +1,21 @@
+{
+  "status": "PROPOSAL_ONLY",
+  "target": "src/app/content/en-US/articles-unify.ts",
+  "canonical": "work-and-personal-without-two-apps",
+  "beforeFileSha256": "8c8785adab5d23195f1439a55d76f9d278d7e8ebb89d59ef63e6c89520111b46",
+  "insertAfterSection": "Use colour and visibility for the overview",
+  "section": {
+    "heading": "Separate Focus filters from notification choices",
+    "body": [
+      "If calendars disappear when a Focus turns on, inspect that app’s filters before recreating events. Apple separates the apps allowed to notify you from filters controlling the information an app shows. In iPhone Settings, open Focus, choose the active Focus and inspect its Focus filters. Check the named app: a Calendar filter is not evidence that the same selection applies to Cloud Calendars.",
+      "Before agreeing a time, restore the calendars needed for the decision and check the original event. If the problem is a silent reminder, use the notification checks instead. Do not remove an account or move an event merely to investigate a filtered view."
+    ]
+  },
+  "addSource": {
+    "label": "Apple: Focus filters and notification choices on iPhone",
+    "url": "https://support.apple.com/en-lamr/guide/iphone/iphd6288a67f/ios"
+  },
+  "addRelated": "calendar-notifications-missing-silent-or-duplicated",
+  "primaryReadScope": "Apple complete substantive main body1145–1208; relevant filtering1171–1184 and notifications1159–1168",
+  "scope": "No claim Cloud has automatic Focus filters/calendar sets; no new canonical, ASC or public changes. Native bounded gate and independent editorial review pending."
+}

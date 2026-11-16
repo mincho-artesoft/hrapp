@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-22T04:19:57.765258+00:00",
+  "previousGoalTurn": "progress — batch35published/pushed63837e7 localized actualarticleimagealt",
+  "currentTurn": "progress",
+  "published": {
+    "modernizedExistingArticles": 5,
+    "newItalianEdition": 1,
+    "relatedOnlyBacklink": 1,
+    "homeItalianExactFields": 4,
+    "sitemapUrls": 519,
+    "publicArtifactsMatchBuild": 523,
+    "cloudfrontInvalidation": "I4EZK6RCFYQSMFXI4NAG59M4B7",
+    "cloudfrontStatus": "Completed"
+  },
+  "requirements": [
+    {
+      "requirement": "CompetitorGoogle/ChatGPTkeywordandtaskresearch",
+      "status": "partial",
+      "evidence": "batch36-italian-discovery/decision.json",
+      "limit": "TwofreshItaliandiscoveryqueriesandfullrelevantpublisherbodyreads;notranks/volume/exhaustivekeywords."
+    },
+    {
+      "requirement": "Excellentoriginalarticlesandlocalizations",
+      "status": "progress",
+      "evidence": "batch36-static-qa.json",
+      "limit": "OnefullnewITeditionandall4knownlegacyfreeGoogleeditionsfixedplusITsubscription. Notall456articlesnative-speakerapproved."
+    },
+    {
+      "requirement": "Website/ASCoptimizationalignment",
+      "status": "progress withsavedASCevidence",
+      "evidence": "batch36-italian/asc-it-saved-before.json",
+      "limit": "SavedITdescriptionmatchesplanbounds;nonewASCread/write. Native1.7.3correspondencestillunproven."
+    },
+    {
+      "requirement": "Actualnewimages/videosintegration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Noverifiednewgeneratingtask/outputmanifestyet; existingmediadidnotchange."
+    },
+    {
+      "requirement": "MeasuredmostdiscoverableGoogle/ChatGPTresult",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "Historicalcalendariocloudcontextnotcausalbeforeafterproof;noequalelapsedpostwindow."
+    }
+  ],
+  "goalComplete": false,
+  "preserved": "All56ENbodies/export,sharedfacts/prices,legal,media,robots,altcomponent andASC/native/backend/provider/customerdata unchanged."
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "articles": [
+    {
+      "slug": "icalendar-dtstamp-last-modified-created",
+      "primaryKeyword": "ics dtstamp last modified",
+      "intentKey": "format/icalendar/timestamp-context",
+      "readerOutcome": "Interpret a newly generated scheduling message without inventing a new event edit.",
+      "distinctValue": "A three-moment UTC timeline distinguishing stored data, message creation and filesystem download time.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.1",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.2",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.3",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "calendar-export-ics-pdf-and-backup",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "primaryKeyword": "icalendar p1d pt24h",
+      "intentKey": "format/icalendar/nominal-versus-elapsed-duration",
+      "readerOutcome": "Choose or diagnose a duration using explicit offset-transition arithmetic.",
+      "distinctValue": "Forward/backward hypothetical offset calculations with UTC endpoints; distinguishes duration semantics from the existing travel-time overview.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.6",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "what-an-all-day-event-really-means",
+        "when-two-calendars-disagree"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "primaryKeyword": "ics valarm trigger",
+      "intentKey": "format/icalendar/alarm-reference-point",
+      "readerOutcome": "Calculate an alarm target and distinguish a fixed instant from an event-relative offset.",
+      "distinctValue": "Four-case before/after reschedule calculation; separate format validity from actual device notification delivery.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "drag-an-event-to-move-it",
+        "what-an-all-day-event-really-means"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-alarm-repeat-duration-count",
+      "primaryKeyword": "ics repeat duration alarm",
+      "intentKey": "format/icalendar/alarm-repeat-count",
+      "readerOutcome": "Calculate total reminder actions without mistaking a repeat interval for event duration.",
+      "distinctValue": "An explicit0/1/2/4 repeat timeline and component-scope explanation, unlike a generic notification checklist.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.2",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "recurring-events-without-the-mess",
+        "iphone-calendar-tasks-reminders-versus-event-alerts"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "primaryKeyword": "icalendar transp class",
+      "intentKey": "format/icalendar/availability-versus-classification",
+      "readerOutcome": "Separate busy-time participation from information access in an ICS record.",
+      "distinctValue": "A four-combination matrix with explicit classification-versus-enforcement limits.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.1.3",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "who-can-see-what-in-google-calendar",
+        "what-an-all-day-event-really-means",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icalendar-vfreebusy-periods-not-event-details",
+      "primaryKeyword": "vfreebusy calendar",
+      "intentKey": "format/icalendar/freebusy-versus-event-data",
+      "readerOutcome": "Interpret an availability result without treating it as a full backup or confirmed booking.",
+      "distinctValue": "UTC period calculations, component distinction and explicit completeness/freshness boundary.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.4",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.6",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.2.9",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.9",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "calendar-export-ics-pdf-and-backup",
+        "what-calendar-sync-actually-does"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "ics-line-folding-utf8-octets",
+      "primaryKeyword": "ics line folding utf8",
+      "intentKey": "format/icalendar/folding-byte-boundaries",
+      "readerOutcome": "Reconstruct a folded Unicode property without corrupting its text.",
+      "distinctValue": "Calculated UTF-8 prefix/value byte counts and a split-word unfold fixture.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.4",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-export-ics-pdf-and-backup",
+        "find-old-calendar-events-by-account-date-and-title",
+        "when-two-calendars-disagree"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "ics-text-escaping-commas-semicolons-newlines",
+      "primaryKeyword": "ics text escaping",
+      "intentKey": "format/icalendar/text-escape-layers",
+      "readerOutcome": "Encode and diagnose literal text punctuation without damaging content-line syntax.",
+      "distinctValue": "A two-line fictional description, punctuation mapping and explicit distinction among TEXT, parameters, outer JSON and physical folds.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.11",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.1",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1",
+          "retrievedAt": "2026-10-23",
+          "note": "Relevant complete section body read in official RFC 5545 plaintext; .html anchor identifies the same normative section. No device or provider runtime test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Needs independent editorial review and relevance/demand prioritization before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-export-ics-pdf-and-backup",
+        "find-old-calendar-events-by-account-date-and-title",
+        "when-two-calendars-disagree"
+      ],
+      "originalExampleStatus": "Author-created illustrative fixture or calculation, explicitly not a measured product result.",
+      "firsthandTesting": false
+    }
+  ]
+}

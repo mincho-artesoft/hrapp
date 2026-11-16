@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-22",
+  "scope": "Bounded read of three exact primary Flexibits URLs. No linked feature article added to the reviewed corpus.",
+  "bodyReviews": [
+    {
+      "url": "https://flexibits.com/support",
+      "status": "full",
+      "documentType": "support-navigation-hub",
+      "readRanges": [
+        [
+          0,
+          113
+        ]
+      ],
+      "substantiveRanges": [
+        [
+          14,
+          82
+        ]
+      ],
+      "totalLines": 114,
+      "summary": "Routes visitors to product help, tutorials, account support, contact and privacy resources. It does not contain a calendar setup or troubleshooting procedure.",
+      "taskLabels": [
+        "find product documentation",
+        "find account support",
+        "contact publisher"
+      ],
+      "canonicalMapping": [],
+      "gaps": [],
+      "finalUrl": "https://flexibits.com/support",
+      "redirectObserved": false,
+      "access": "Successful web open; complete extracted text returned. HTTP response status code not exposed by web tool.",
+      "statusMeaning": "Full extracted body of this exact URL, not full linked help articles.",
+      "linkedArticleBodiesReviewed": false,
+      "runtimeVerified": false
+    },
+    {
+      "url": "https://flexibits.com/fantastical/help",
+      "status": "full",
+      "documentType": "Mac-help-index-and-brief-welcome",
+      "readRanges": [
+        [
+          0,
+          101
+        ]
+      ],
+      "substantiveRanges": [
+        [
+          16,
+          70
+        ]
+      ],
+      "totalLines": 102,
+      "summary": "A platform help index followed by a short welcome and links to further assistance. Navigation exposes account setup, calendar grouping, editing, invitations, responses, integrations, alerts, mirroring and settings topics; their procedures were not read.",
+      "taskLabels": [
+        "set up accounts",
+        "choose calendar groups",
+        "understand mirrored calendars",
+        "manage invitations and responses"
+      ],
+      "canonicalMapping": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-calendar-sync-actually-does",
+        "keeping-track-of-who-replied"
+      ],
+      "gaps": [],
+      "finalUrl": "https://flexibits.com/fantastical/help",
+      "redirectObserved": false,
+      "access": "Successful web open; complete extracted text returned. HTTP response status code not exposed by web tool.",
+      "statusMeaning": "Full extracted body of this exact URL, not full linked help articles.",
+      "linkedArticleBodiesReviewed": false,
+      "runtimeVerified": false
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help",
+      "status": "full",
+      "documentType": "iOS-help-index-and-brief-welcome",
+      "readRanges": [
+        [
+          0,
+          100
+        ]
+      ],
+      "substantiveRanges": [
+        [
+          16,
+          69
+        ]
+      ],
+      "totalLines": 101,
+      "summary": "An iOS help index followed by a short welcome and assistance links. Navigation includes setup, calendar selection, invitations, responses, alerts, mirroring, Live Activities and widgets, but does not explain how those features work.",
+      "taskLabels": [
+        "set up accounts on iOS",
+        "select calendars",
+        "understand mirrored calendars",
+        "manage invitations and responses"
+      ],
+      "canonicalMapping": [
+        "icloud-google-and-outlook-in-one-view",
+        "what-calendar-sync-actually-does",
+        "keeping-track-of-who-replied"
+      ],
+      "gaps": [],
+      "finalUrl": "https://flexibits.com/fantastical-ios/help",
+      "redirectObserved": false,
+      "access": "Successful web open; complete extracted text returned. HTTP response status code not exposed by web tool.",
+      "statusMeaning": "Full extracted body of this exact URL, not full linked help articles.",
+      "linkedArticleBodiesReviewed": false,
+      "runtimeVerified": false
+    }
+  ],
+  "counts": {
+    "exactUrlsRequested": 3,
+    "fullExactPageReads": 3,
+    "partialExactPageReads": 0,
+    "failedExactPageReads": 0,
+    "linkedFeatureArticleBodiesRead": 0,
+    "confirmedNewGaps": 0
+  },
+  "canonicalReview": {
+    "index": "src/app/content/article-index.ts",
+    "englishAggregate": "src/app/content/article-locales/en-US.ts",
+    "currentEnglishCanonicalCount": 52,
+    "fullBodiesRead": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "findings": "Existing guide covers account identity, selected calendars, provider permissions, plan differences, local mirrors, destination choice and provider verification."
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "findings": "Existing guide distinguishes account connections, subscriptions, imports and mirrors; includes bounded two-device checks, hidden versus missing events, read-only access and hide-first duplicate diagnosis."
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "findings": "Existing guide separates provider invitations and attendance responses from Cloud sharing access, receipts, feed access and meeting links."
+      }
+    ],
+    "mappingBoundary": "These are existing intent destinations, not findings of feature parity or proof of a missing article. Competitor linked bodies would need review before a substantive comparison.",
+    "evidence": [
+      {
+        "file": "src/app/content/article-index.ts",
+        "sha256": "d48344d7f6d0cebe08e8b393ffd38d4d7403120add34c1d08adb4aa537880160"
+      },
+      {
+        "file": "src/app/content/article-locales/en-US.ts",
+        "sha256": "9758676312bd75503fd73dd79825e76f5fef849e5bf11f957dde6471a1092524"
+      },
+      {
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "sha256": "2409bb1f0fadcd811f47a28e351c974dc60997cd7f5a236935b3d1d15728f2fa"
+      },
+      {
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "sha256": "3a7bce718b3745e8bc98e79588fd57a6563b9fd989ebf40a38f44aadc8bec2a1"
+      }
+    ]
+  },
+  "discoveredNotFullBodyReviewed": [
+    {
+      "sourceUrl": "https://flexibits.com/fantastical/help",
+      "sourceLine": 22,
+      "linkId": 14,
+      "label": "Getting Started",
+      "url": null,
+      "status": "navigation-label-only; target href not resolved"
+    },
+    {
+      "sourceUrl": "https://flexibits.com/fantastical/help",
+      "sourceLine": 49,
+      "linkId": 37,
+      "label": "Settings",
+      "url": null,
+      "status": "navigation-label-only; target href not resolved"
+    },
+    {
+      "sourceUrl": "https://flexibits.com/fantastical-ios/help",
+      "sourceLine": 22,
+      "linkId": 14,
+      "label": "Getting Started",
+      "url": null,
+      "status": "navigation-label-only; target href not resolved"
+    },
+    {
+      "sourceUrl": "https://flexibits.com/fantastical-ios/help",
+      "sourceLine": 49,
+      "linkId": 37,
+      "label": "Settings",
+      "url": null,
+      "status": "navigation-label-only; target href not resolved"
+    }
+  ],
+  "auxiliaryAccessFailure": {
+    "method": "Python urllib retrieval of the same three exact URLs to inspect link destinations",
+    "status": "HTTP 403 for each URL",
+    "impact": "No href extracted with this method. Successful web body reads remain valid; no guessed setup or settings URL recorded."
+  },
+  "gaps": [],
+  "nextReviewBoundary": "If expanding the corpus later, resolve and read exact official setup/settings/mirroring articles before proposing instructions or new gaps. Check relevant complete Cloud canonicals and supported native behavior before publication.",
+  "limitations": [
+    "Complete extracted text is not visual or interactive verification.",
+    "Index topic labels do not establish current feature behavior, platform parity, price or subscription entitlement.",
+    "Publisher privacy and promotional statements were not independently audited.",
+    "No search was used in this bounded review; no search ranking, traffic volume or demand measurement is claimed.",
+    "No consolidated queue, source module, deployment, account or native application was changed."
+  ]
+}

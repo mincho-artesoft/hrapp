@@ -1,0 +1,101 @@
+{
+  "updated": "2026-10-22",
+  "title": "Déconnecter une intégration de calendrier : accès, synchronisation et copies existantes",
+  "short": "Déconnecter une intégration avec précaution",
+  "description": "Distinguez déconnexion, accès du fournisseur et copies existantes. Vérifiez les connexions Cloud Calendars avant de supprimer un calendrier.",
+  "lede": "Arrêter une connexion et supprimer ses copies de calendrier sont deux décisions différentes. Identifiez le mode de connexion et préservez les informations nécessaires avant de choisir une action. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Se déconnecter suspend seulement les mises à jour, révoque toutes les autorisations associées et laisse toutes les données du calendrier intactes.",
+  "sections": [
+    {
+      "heading": "Identifier la connexion à arrêter",
+      "body": [
+        "Commencez par le compte et le calendrier qui détiennent les événements. Un compte fournisseur ajouté dans les réglages de l’iPhone, une connexion directe dans Cloud Calendars, un abonnement iCalendar et l’identité de partage de l’app sont des accès distincts. Une même adresse e-mail ne rend pas leurs commandes interchangeables.",
+        "Notez les noms des calendriers et la connexion qui les affiche, sans divulguer les détails privés. Déterminez si vous voulez arrêter les accès futurs, quitter un partage ou supprimer une copie. Pour rechercher un événement manquant ou en double, la déconnexion n’est pas la première étape du diagnostic."
+      ]
+    },
+    {
+      "heading": "Vérifier ce que la déconnexion de l’app supprime",
+      "body": [
+        "L’implémentation examinée tente de déconnecter le profil Google sélectionné et de supprimer ses copies de calendrier associées du stockage des calendriers iOS. Considérez cela comme une suppression, pas une pause. Une erreur de connexion reste possible : vérifiez séparément l’état des accès chez le fournisseur sans supposer que toutes les autorisations ont été révoquées.",
+        "La déconnexion du profil de calendrier Microsoft tente aussi de supprimer les calendriers associés et les enregistrements locaux de connexion. Ne supposez pas que ces copies resteront visibles. Leur stockage peut dépendre des sources disponibles sur l’appareil : vérifiez la source et préservez les informations nécessaires avant de poursuivre."
+      ]
+    },
+    {
+      "heading": "Examiner séparément les accès futurs chez le fournisseur",
+      "body": [
+        "Les commandes Google pour les applications associées distinguent « Se connecter avec Google » de l’accès aux données du compte Google. Vérifiez l’app, le compte et le type de lien concernés. Retirer l’accès aux données et arrêter un lien de connexion répondent à des questions différentes ; une déconnexion dans l’app ne prouve pas que tous les liens ont disparu.",
+        "Pour un compte professionnel ou scolaire Microsoft, la documentation décrit My Apps > Manage your application pour examiner les autorisations. Vous pouvez révoquer celles que vous avez accordées, mais les droits accordés par l’administrateur nécessitent son intervention. Ces instructions concernent les comptes professionnels ou scolaires, pas tous les comptes Microsoft personnels."
+      ]
+    },
+    {
+      "heading": "Distinguer l’identité de partage de la synchronisation du fournisseur",
+      "body": [
+        "Cloud Calendars possède aussi un compte utilisé pour le partage. Son code actuel traite sa déconnexion séparément des profils de calendrier : il efface la session locale de partage et ramène les accès partagés suivis localement au statut lecteur. Cela ne signifie pas que toutes les données serveur ont été supprimées.",
+        "Lorsque plusieurs identités de partage sont liées, en déconnecter une conserve le compte grâce à une autre identité. Pour la dernière, le parcours actuel ferme la session locale et garde le lien serveur pour la récupération. Ne remplacez pas une demande de suppression des données par une déconnexion et ne supposez pas qu’elle déconnecte tous les fournisseurs de calendriers."
+      ]
+    },
+    {
+      "heading": "Traiter les abonnements et les anciennes copies selon leurs règles",
+      "body": [
+        "Apple décrit le désabonnement d’un calendrier externe séparément du choix des calendriers à afficher. Si l’élément est un abonnement en lecture seule, identifiez-le avant d’utiliser sa commande de désabonnement. Masquer un calendrier, se désabonner d’un flux et supprimer un calendrier modifiable sont des opérations différentes.",
+        "Google indique que retirer l’accès d’une app peut nécessiter une demande distincte pour supprimer les données déjà détenues par le développeur. Un fichier exporté ou la copie d’une autre personne n’est pas non plus rappelé par un changement d’autorisation. Distinguez le suivi de confidentialité ou de conservation de l’autorisation des nouvelles mises à jour."
+      ]
+    },
+    {
+      "heading": "Confirmer le résultat avant tout autre nettoyage",
+      "body": [
+        "Après une modification voulue, vérifiez l’état de connexion chez le fournisseur et comparez le calendrier original à l’app. Identifiez ce qui ne se met plus à jour, ce qui a disparu localement et ce qui reste ailleurs. Ne supprimez pas des événements semblables uniquement parce qu’un nom de connexion n’apparaît plus.",
+        "Si le résultat est inattendu, arrêtez le nettoyage et contactez l’assistance avec le mode de connexion, la source du calendrier et l’action utilisée. N’envoyez ni mots de passe, ni jetons d’accès, ni adresses privées de flux, ni captures de rendez-vous sensibles. Précisez si le calendrier du fournisseur contient encore les événements pour distinguer un problème de connexion d’une copie manquante."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifiez précisément le compte, le calendrier et le mode de connexion.",
+    "Décidez si vous voulez arrêter un accès, quitter un partage ou supprimer une copie.",
+    "Préservez les informations nécessaires par une méthode d’exportation ou de sauvegarde vérifiée.",
+    "Avant d’utiliser la commande installée de déconnexion, vérifiez ce qu’elle supprime.",
+    "Examinez séparément les autorisations du fournisseur ; sollicitez un administrateur pour les accès gérés.",
+    "Vérifiez le résultat chez le fournisseur et dans l’app avant tout autre nettoyage."
+  ],
+  "faq": [
+    {
+      "q": "Se déconnecter d’une connexion directe Cloud Calendars conserve-t-il ses copies de calendrier ?",
+      "a": "Ne le supposez pas. Les parcours de profils Google et Microsoft examinés tentent de supprimer les calendriers associés du stockage iOS. Vérifiez la source et préservez les informations nécessaires avant la déconnexion."
+    },
+    {
+      "q": "Retirer l’accès Google d’une app supprime-t-il les données déjà copiées ?",
+      "a": "Google indique qu’une demande distincte peut être nécessaire pour supprimer les données déjà détenues par le développeur. Considérez l’accès futur et les données conservées comme des résultats différents."
+    },
+    {
+      "q": "Se déconnecter du compte de partage revient-il à le supprimer ?",
+      "a": "Non. Le parcours actuel efface une session locale et conserve des mécanismes de récupération. Il est distinct des déconnexions de fournisseurs et ne prouve pas la suppression des données serveur."
+    }
+  ],
+  "sourcesHeading": "Instructions officielles sur les accès et les abonnements",
+  "sources": [
+    {
+      "label": "Google : gérer les applications associées et les différents types de connexion",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+    },
+    {
+      "label": "Google : accès et données déjà détenues par une application associée",
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+    },
+    {
+      "label": "Microsoft : autorisations My Apps des comptes professionnels ou scolaires",
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+    },
+    {
+      "label": "Apple : sélection des calendriers et abonnements sur iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "calendar-export-ics-pdf-and-backup",
+    "taking-back-a-calendar-you-shared",
+    "the-secret-address-of-a-google-calendar",
+    "icloud-google-and-outlook-in-one-view",
+    "google-calendars-that-never-reach-your-iphone"
+  ]
+}

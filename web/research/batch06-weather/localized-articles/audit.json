@@ -1,0 +1,164 @@
+{
+  "status": "8 translated objects; proposals only",
+  "source": "/Users/minchomilev/cloud-calendars/research/batch06-weather/final-english-objects.json",
+  "sourceSha256": "da5d593701d4e05dbfa5b7e48c5c87ea49e10bf62bb272926545699f885f6a92",
+  "scope": "Only forecast-beside-every-event and planning-outdoors-without-being-rained-on in de-DE/es-ES/fr-FR/it. No source integration, native changes, ASC mutation or deployment.",
+  "preserved": "Canonical slugs, key shape, publication/update date 2026-10-21, all paragraphs, 3 FAQ per article, practical steps, empty claims, primary source URLs, developer disclosure and existing available related links.",
+  "qualification": "No promise of complete hourly coverage, event-address-controlled weather, automatically saved events, guaranteed dry periods or universal precipitation threshold. Editing permissions remain separate from weather.",
+  "translationConfidence": "medium-high, model-authored; no independent native review",
+  "style": "Natural prose with every substantive point retained. Outdoor lede renders replacing guessing as deliberate comparison without implying weather certainty.",
+  "validation": [
+    {
+      "locale": "de-DE",
+      "slug": "forecast-beside-every-event",
+      "sections": 5,
+      "paragraphs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 2,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "metaCharacters": 151
+    },
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "sections": 3,
+      "paragraphs": [
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 1,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather"
+      ],
+      "metaCharacters": 131
+    },
+    {
+      "locale": "es-ES",
+      "slug": "forecast-beside-every-event",
+      "sections": 5,
+      "paragraphs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 2,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "metaCharacters": 144
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "sections": 3,
+      "paragraphs": [
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 1,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather"
+      ],
+      "metaCharacters": 142
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "forecast-beside-every-event",
+      "sections": 5,
+      "paragraphs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 2,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "metaCharacters": 155
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "sections": 3,
+      "paragraphs": [
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 1,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather"
+      ],
+      "metaCharacters": 136
+    },
+    {
+      "locale": "it",
+      "slug": "forecast-beside-every-event",
+      "sections": 5,
+      "paragraphs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 2,
+      "seeAlso": [
+        "weather-inside-your-calendar",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "metaCharacters": 135
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "sections": 3,
+      "paragraphs": [
+        2,
+        2,
+        2
+      ],
+      "faq": 3,
+      "steps": 4,
+      "sources": 1,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather"
+      ],
+      "metaCharacters": 129
+    }
+  ]
+}

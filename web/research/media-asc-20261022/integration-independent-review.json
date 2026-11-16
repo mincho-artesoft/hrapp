@@ -1,0 +1,117 @@
+{
+  "verdict": "source_review_pass_pending_final_manifest_and_runtime_validation",
+  "date": "2026-10-22",
+  "files": [
+    {
+      "path": "src/app/core/store-media.ts",
+      "rawSha256": "d5ab3153d794afc2b29b1a88c2212ad2a71cd946c086052f0235a5662967391d"
+    },
+    {
+      "path": "src/app/core/store-media-manifest.json",
+      "rawSha256": "d8c88a02e9400d63b4c0785d185aef6025b1b7965a65052cd5c92f699d3d1b1e"
+    },
+    {
+      "path": "src/app/components/shot-rail/shot-rail.component.ts",
+      "rawSha256": "a0ba7345f4a4b4e4c7a9a1991a9471db35bd5ff9fb3251578ca56769fae2586d"
+    },
+    {
+      "path": "src/app/components/store-media/store-media.component.ts",
+      "rawSha256": "c0fb5ec5b9a0f8ae1309070effd45fa534a252e1154ff45e2d3bbc3f0c6750e9"
+    },
+    {
+      "path": "src/app/pages/home-page/home-page.component.ts",
+      "rawSha256": "69469fc3d62423029808446f2dc437fc8004f1f7da3b967e183dffb189c0605f"
+    },
+    {
+      "path": "src/app/pages/home-page/home-page.component.html",
+      "rawSha256": "b7f04080eadabc7db9d2dfb8804a79a1bddc02335d64b5c924052861c0d70c58"
+    },
+    {
+      "path": "src/app/core/active-locale.service.ts",
+      "rawSha256": "b9754910825d1ac03be5439671a6e1470245b7c03bf8afac74a1db2f103e6f76"
+    },
+    {
+      "path": "src/app/core/locales.ts",
+      "rawSha256": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96"
+    },
+    {
+      "path": "src/app/core/screenshot-descriptions.json",
+      "rawSha256": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a"
+    },
+    {
+      "path": "research/media-asc-20261022/import-screenshots.py",
+      "rawSha256": "6c1d35e29a096205017f11439e667b682a1e2c2494171a1d9e531ee3e0c43990"
+    },
+    {
+      "path": "research/media-asc-20261022/import-videos.py",
+      "rawSha256": "345f43f8d28e8f860d1c3d3cb334f8b472fec6e342f7f07a8365171689d9fc57"
+    },
+    {
+      "path": "research/media-asc-20261022/selected-asc-metadata.json",
+      "rawSha256": "a7581dfa5187d4a6724ac5058b66c2aff916971edb052654f1e374c142e3e4b4"
+    }
+  ],
+  "readScope": "Complete new media modules, shot rail, home component/template, ActiveLocaleService, both importer scripts; relevant old hero/showcase/widgets markup/code and supplied English visual/link review reports. Read-only data-contract validation with TypeScript transpilation in a VM; not application build/SSR render/browser execution.",
+  "contractChecks": {
+    "websiteLocales": 30,
+    "uniqueMediaFolders": 29,
+    "selectedASCLocales": 29,
+    "expectedSelectedScreenshotSets": 87,
+    "selectedScreenshots": 435,
+    "previewSetsWithAssets": 71,
+    "all5FilenameSubjectsPerDeviceMatchPipelineOrder": true,
+    "all30LocalesHaveAll5SemanticAltDescriptions": true,
+    "bulgarian": "Locale code bg uses en-US media; alt lookup remains bg, preserving Bulgarian descriptions.",
+    "manifestState": "Empty locales while import pipeline runs is explicitly expected, not a defect."
+  },
+  "findings": [
+    {
+      "area": "SSR",
+      "result": "pass source review",
+      "detail": "New media code uses static JSON and signals/computed values only; no direct window/document/media playback access. ActiveLocaleService has requested-route fallback and NavigationEnd updates. Empty final sets omit gallery without dereferencing missing folders."
+    },
+    {
+      "area": "dynamic locale/device",
+      "result": "pass source review",
+      "detail": "locale and device input setters update signals. sets recomputes from active locale. Track key locale.media/device recreates video nodes for different media locale; bg/en-US intentionally share bytes. Image URLs and alt bindings recompute even when semantic name track keys persist."
+    },
+    {
+      "area": "URLs",
+      "result": "pass for current manifest schema",
+      "detail": "Pipeline paths are root-relative /media/panel/asc-174-20261022, avoiding locale-prefix resolution. Screenshot URLs match device width lists and file stems. Largest WebP links are keyboard accessible. storeMediaUrl handles root-relative or base-relative paths; absolute HTTP URLs are outside present schema and would require a helper change if later introduced."
+    },
+    {
+      "area": "alt correspondence",
+      "result": "pass schema/provenance check",
+      "detail": "Importer asserts day/week/weather/widgets/live filename subjects and assigns semantic keys; all30 language maps provide matching descriptions. English source visual report supports selected subjects for all3devices. This review did not visually certify all29 localized screenshot pixels or video audio."
+    },
+    {
+      "area": "no crop",
+      "result": "pass source review",
+      "detail": "Images use proportional width100%/heightauto with true new-source dimensions. Video uses widthauto/heightauto/maxwidth/maxheight and object-fit contain. Importer resizes proportionally and never crops. Existing legacy fallback still has historical340×736 attributes; final new sets replace those for all actual folders."
+    },
+    {
+      "area": "controls",
+      "result": "pass source review",
+      "detail": "New videos have native controls, playsinline and preload none, with no autoplay/loop directive. Poster may still fetch immediately despite preload none; native controls expose play/pause/seeking/volume. Screenshot rail remains keyboard-focusable with accessible linked-image names and visible link focus outline."
+    },
+    {
+      "area": "old media/duplicates",
+      "result": "explicit scope note, not new code blocker",
+      "detail": "Homepage renders new store gallery exactly once after old showcase. Existing hero/showcase asset screenshots and widgets demo remain. Article rail uses new set when available and old fallback otherwise, never both within one rail. Thus this is an added localized gallery, not wholesale replacement of old home demonstrations. Root was notified."
+    },
+    {
+      "area": "pipeline",
+      "result": "pass bounded source review with resume invariant",
+      "detail": "Screenshot importer verifies selected asset status, subject order, dimensions, Duo checksum; produces proportional WebP/AVIF with stored hashes. Video importer decodes and probes before writing. Checkpoint identity lacks asset/source hash; keep selected metadata immutable for this run, or invalidate affected checkpoint rows before resuming against changed selection. No demonstrated current mismatch."
+    }
+  ],
+  "requiredSourceCorrections": [],
+  "pendingBeforePublication": [
+    "Merge completed manifest and validate29folders×3devices×5shots, positive dimensions, valid5kinds and width lists plus available video/poster objects.",
+    "Verify public responses/MIME/range and generated paths after import; S3 HEAD alone does not prove delivery host routing.",
+    "Root build/prerender and representative browser verification remain necessary for playback, keyboard use, locale navigation and responsive native-aspect rendering.",
+    "If replacing all old home media was intended, explicitly decide which existing demonstrations to remove; not inferred here."
+  ],
+  "limits": "No source edits, builds, deployment, API/ASC privacy mutations or independent pixel/audio certification. Current empty manifest is expected pipeline state."
+}

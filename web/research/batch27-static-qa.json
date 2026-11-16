@@ -1,0 +1,17 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 512,
+  "previousCanonicalsPreserved": 512,
+  "newRoutes": 0,
+  "article": {
+    "slug": "a-week-view-that-fits-a-week",
+    "completeSections": 6,
+    "paragraphs": 13,
+    "faq": 3,
+    "sources": 2,
+    "practical": 6,
+    "allVisibleTextAndLinksMatchDraft": true
+  },
+  "textExportContainsNewParagraph": true,
+  "scope": "All sitemap canonical set preserved and complete changed article visible body/source/related checks. Shared fields protected separately; no runtime, rankings or media proof."
+}

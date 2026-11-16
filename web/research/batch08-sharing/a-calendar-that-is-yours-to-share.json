@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-21",
+  "title": "Share a calendar with the right people and permissions",
+  "short": "A calendar you can share",
+  "description": "Choose a separate calendar, distinguish app sharing from provider sharing, and assign Reader, Writer or Owner access without promising instant updates.",
+  "lede": "A rehearsal schedule or household calendar needs a clear owner and a clear audience. Decide who should read it, who should change events and who should manage access before inviting anyone. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Sharing a calendar always creates a read-only subscription tied to an existing provider account.",
+  "sections": [
+    {
+      "heading": "1. Choose a calendar with a clear purpose",
+      "body": [
+        "A separate calendar makes the intended audience easier to understand. Put rehearsals in the rehearsal calendar and keep unrelated appointments elsewhere. Before sharing an existing calendar, inspect its events and the details inside them rather than relying only on its name.",
+        "For example, a club secretary may manage fixtures while members only read them. A household may instead need two people to edit. Neither arrangement requires sharing every calendar visible in the organizer’s app."
+      ]
+    },
+    {
+      "heading": "2. Identify which sharing system you are using",
+      "body": [
+        "Cloud Calendars supports its own shared-calendar relationships, including app-local calendars and supported calendars accessed through the iPhone calendar system. It also has a separate Google calendar sharing route. These should not be described as one universal subscription mechanism.",
+        "An app-local calendar is not automatically a calendar in a Google or iCloud account. Conversely, a provider calendar’s sharing rules belong to that provider. Check the actual calendar and sharing screen before deciding what another person will receive or where it will appear."
+      ]
+    },
+    {
+      "heading": "3. Give viewers and editors different roles",
+      "body": [
+        "For Cloud Calendars sharing, Reader can view, Writer can edit events, and Owner can also share the calendar and manage access. Give club members Reader access if they only need fixtures. Give a co-organizer Writer access if they should adjust the schedule.",
+        "Owner is broader than editing. Assign it when someone should also decide who else can use the calendar. Google uses its own permission levels; do not assume an app sharing role and a Google permission have identical names or effects."
+      ]
+    },
+    {
+      "heading": "4. Help the recipient accept the calendar",
+      "body": [
+        "A calendar invitation can arrive through email or a shared link or QR route. The preview is not the completed acceptance. In Cloud Calendars, the recipient signs in and adds the calendar to “Shared with me”; the backend requires a verified email identity for this flow.",
+        "If a specific email was invited, confirm that the recipient is using the corresponding identity. Someone opening a link with a different account may not receive the role you intended. Check the displayed calendar and access rather than treating successful page loading as successful collaboration."
+      ]
+    },
+    {
+      "heading": "5. Check one change before publishing a whole schedule",
+      "body": [
+        "Start with a harmless sample event that the group understands is a test. Ask a Reader to confirm visibility and, if needed, ask an authorized Writer to change that sample. Check the result on the owner’s side before relying on the arrangement for important events.",
+        "Updates need a working connection and refresh. An app share is not the same as an ICS subscription, and neither justifies a universal instant-update promise. For a late cancellation or a changed venue, update the calendar and contact the affected people directly."
+      ]
+    },
+    {
+      "heading": "6. Review access when the group changes",
+      "body": [
+        "When a co-organizer leaves, review their role and remove access that is no longer needed. Removing yourself from a received calendar and deleting a calendar you own are different actions. Read the confirmation and identify the owner before proceeding.",
+        "Revocation is not a guarantee that old screenshots, exported data or independent copies disappear. Keep a record of the sharing route you used and verify the relevant access after a change. This is especially useful when the same people also receive provider invitations or separate event links."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Choose a calendar dedicated to the group and review its existing contents.",
+    "Identify app-local, device-provider or Google sharing before inviting people.",
+    "Choose Reader, Writer or Owner according to each person’s responsibility.",
+    "Have recipients accept with the intended signed-in identity.",
+    "Check a sample event and an authorized sample edit before relying on updates.",
+    "Review access when membership changes and distinguish leaving from deleting."
+  ],
+  "faq": [
+    {
+      "q": "Can other people edit a shared calendar?",
+      "a": "Yes, the app’s Writer and Owner roles support event editing. Reader is the viewing role. Provider calendars have their own permission rules, so inspect the actual sharing route."
+    },
+    {
+      "q": "Must a new shared calendar be tied to my Google or iCloud account?",
+      "a": "Do not assume that. Cloud Calendars also has app-local calendars with its own sharing system. Identify where the calendar belongs before expecting it to appear in another provider’s app."
+    },
+    {
+      "q": "Does opening the invitation mean the person has joined?",
+      "a": "No. A preview is not acceptance. The app’s whole-calendar flow needs sign-in and acceptance, and the invited identity affects the role granted. Check the resulting shared calendar and recipient access."
+    }
+  ],
+  "sourcesHeading": "Provider permission reference",
+  "sources": [
+    {
+      "label": "Google: calendar sharing permissions",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importing versus subscribing to a calendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "inviting-people-who-do-not-have-the-app",
+    "keeping-track-of-who-replied"
+  ]
+}

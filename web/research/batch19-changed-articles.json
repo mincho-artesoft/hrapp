@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-21T23:23:39.721Z",
+  "count": 3,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+      "descriptionCharacters": 152
+    },
+    {
+      "locale": "en-US",
+      "slug": "meeting-links-that-make-themselves",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "title": "Google Meet and Microsoft Teams links: create, save and check",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "See which calendars can create Meet or Teams links, how the plans differ and what to check when a saved event has no working joining link.",
+      "descriptionCharacters": 138
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-event-or-room-reservation",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "title": "Calendar event or room reservation? Check what is confirmed",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "A room name is not a reservation. Check Google Calendar or Outlook resource responses, recurring dates and changes before relying on a meeting room.",
+      "descriptionCharacters": 148
+    }
+  ]
+}

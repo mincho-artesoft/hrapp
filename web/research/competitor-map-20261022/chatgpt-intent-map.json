@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-23",
+  "records": [
+    {
+      "promptId": "auto-scheduling",
+      "prompt": "Which iPhone-compatible planning apps automatically reschedule tasks around meetings, compared with manual time blocking? Compare FlowSavvy, Motion and other suitable options, explain scheduling limits and cite official sources.",
+      "promptClass": "seeded-comparison",
+      "observedMentions": [
+        "Structured",
+        "Motion",
+        "FlowSavvy",
+        "Reclaim",
+        "SkedPal",
+        "Sunsama"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-auto-scheduling.json"
+    },
+    {
+      "promptId": "combine",
+      "prompt": "Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-combine.json"
+    },
+    {
+      "promptId": "drag-edit",
+      "prompt": "Which iPhone calendar apps let me drag appointments to reschedule them? Compare suitable options, explain limits for recurring or shared events and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-drag-edit.json"
+    },
+    {
+      "promptId": "family",
+      "prompt": "Which shared family calendar apps work for an iPhone and Android household coordinating school pickups and changing schedules? Compare practical sharing and responsibility handoff, and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Google Calendar",
+        "Outlook",
+        "TimeTree",
+        "Cozi",
+        "FamilyWall"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-family.json"
+    },
+    {
+      "promptId": "free-sync",
+      "prompt": "Which iPhone calendar apps offer Google Calendar syncing without a subscription? Distinguish free downloads, free syncing, ads and paid features. Compare current options using official sources rather than assuming free means ad-free.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Cloud Calendars",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "OneCalendar"
+      ],
+      "cloudMentioned": true,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-free-sync.json"
+    },
+    {
+      "promptId": "ipad",
+      "prompt": "Which iPad calendar apps offer useful month and week views with weather for planning? Compare suitable options, distinguish a full calendar view from a widget and cite current official product sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Cloud Calendars",
+        "Fantastical",
+        "Calendars by Readdle",
+        "Calendar 366",
+        "Timepage"
+      ],
+      "cloudMentioned": true,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-ipad.json"
+    },
+    {
+      "promptId": "live-activity",
+      "prompt": "Which iPhone calendar apps offer a Live Activity or Dynamic Island countdown to my next meeting? Distinguish this from a Lock Screen widget or an ordinary reminder notification, and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Apple Calendar",
+        "Outlook",
+        "Structured",
+        "BusyCal"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-live-activity.json"
+    },
+    {
+      "promptId": "offline",
+      "prompt": "Which iPhone calendar apps can be used offline without a subscription? Distinguish viewing previously synced appointments, creating or editing offline, later syncing and features that still need internet. Cite official sources and identify any unsupported claims.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-offline.json"
+    },
+    {
+      "promptId": "shift",
+      "prompt": "Which iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Fantastical",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "Supershift",
+        "My Shift Planner"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-shift.json"
+    },
+    {
+      "promptId": "tasks",
+      "prompt": "Which iPhone calendar apps show tasks and reminders alongside appointments and let me mark tasks complete? Distinguish an event alert from a task, explain Apple Reminders and Google Tasks compatibility, and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Apple Calendar",
+        "Google Calendar",
+        "BusyCal",
+        "TickTick"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-tasks.json"
+    },
+    {
+      "promptId": "weather",
+      "prompt": "Which iPhone or iPad calendar apps show weather alongside appointments? Compare suitable options, distinguish built-in weather from calendar feeds, and cite current official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Fantastical",
+        "Calendars by Readdle",
+        "Calendar 366",
+        "WeekCal",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-weather.json"
+    },
+    {
+      "promptId": "widgets",
+      "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Cloud Calendars",
+        "Fantastical",
+        "easyDays",
+        "Apple Calendar"
+      ],
+      "cloudMentioned": true,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-widgets.json"
+    },
+    {
+      "promptId": "household-display",
+      "prompt": "Can I use an iPad as a shared family calendar display instead of buying dedicated calendar hardware? Compare suitable approaches, distinguish a calendar app from a household display and explain sync limits using official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Skylight",
+        "Hearth",
+        "DAKboard",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook",
+        "Cozi"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-household-display.json"
+    },
+    {
+      "promptId": "task-bridge",
+      "prompt": "How can I keep Google Tasks and Apple Reminders synchronized on iPhone? Compare a shared task view, true two-way syncing and automation. Explain fields or behaviours that may not transfer and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Google Calendar"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "coverageScope": "Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.",
+      "evidenceFile": "chatgpt-task-bridge.json"
+    },
+    {
+      "promptId": "weather-history",
+      "prompt": "Which iPhone apps can save a record of daily weather in my calendar so I can look back months later? Distinguish a historical weather diary from a changing forecast display or subscribed weather feed, compare suitable options and cite official sources.",
+      "promptClass": "unseeded-product-discovery",
+      "observedMentions": [
+        "Weather Events",
+        "Dejal",
+        "Apple Calendar",
+        "Google Calendar",
+        "Outlook"
+      ],
+      "cloudMentioned": false,
+      "canonicalCandidate": "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/",
+      "coverageScope": "Weather diary versus forecast intent covered; other named diary products were not feature-tested or endorsed.",
+      "evidenceFile": "chatgpt-weather-history.json"
+    }
+  ],
+  "method": "Observed consumer answers, not API generation. Mention detection is not recommendation ranking; sources in answers need independent verification."
+}

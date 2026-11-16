@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-22",
+  "reviewer": "independent editorial sub-agent",
+  "verdict": "pass_with_optional_editorial_tightening",
+  "blockingCorrections": [],
+  "baseCommit": "8659f32e0402261267a5f7b1c93df1f78ad80053",
+  "reviewedDrafts": [
+    {
+      "file": "research/batch18-feed-diagnostics/calendar-export-ics-pdf-and-backup.json",
+      "sha256": "641858c6a2664cdb70f7b7b77a4850f2bca4788b13f773f95b76b7776343c162"
+    },
+    {
+      "file": "research/batch18-feed-diagnostics/time-zones-and-the-flight-you-booked.json",
+      "sha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04"
+    }
+  ],
+  "comparison": {
+    "calendar-export-ics-pdf-and-backup": "Compared with HEAD src/app/content/en-US/articles-help.ts: adds the three-paragraph subscription diagnostics section, conversion/time-zone FAQ, Google time-zone source and related time-zone route; remaining body is inherited.",
+    "time-zones-and-the-flight-you-booked": "Compared with HEAD src/app/content/en-US/articles-planning.ts: adds two-paragraph imported/subscribed-calendar diagnosis section, ICS time FAQ, Google import and Microsoft publishing sources, and export-related route."
+  },
+  "findings": [
+    {
+      "severity": "pass",
+      "topic": "Import versus subscription",
+      "assessment": "Snapshot import versus periodically retrieved subscription is kept distinct. Reimport wording says can add records, not that duplicates are inevitable. No automatic two-way or editing rights are implied."
+    },
+    {
+      "severity": "pass",
+      "topic": "Update timing",
+      "assessment": "Recipient-provider refresh dependency matches Microsoft. Intermediary and receiving-client refresh are correctly separated as an architectural inference, without a guaranteed delay or instant-delivery claim."
+    },
+    {
+      "severity": "pass",
+      "topic": "Time zones",
+      "assessment": "Correctly compares the same occurrence, event zone and display zone, including seasonal changes. Does not diagnose all offsets as formatting bugs or suggest shifting the shared original to compensate for a receiving display."
+    },
+    {
+      "severity": "pass",
+      "topic": "Private feeds and service disclosure",
+      "assessment": "Export addition explicitly distinguishes password-free service use from disclosure of supplied calendar content, requires permission to share, and rejects publishing work calendars to bypass restrictions. No no-logs, security, automatic correction, or deletion promise added."
+    },
+    {
+      "severity": "pass",
+      "topic": "Substantive value",
+      "assessment": "Export expansion adds a useful route decision, bounded source/recipient comparison, two refresh stages and feed disclosure check. Time-zone expansion is narrower than the inherited generic support section and adds recurrence/source/feed-processing decision logic. Neither is a thin conversion-service promotional addition."
+    },
+    {
+      "severity": "optional",
+      "file": "time-zones-and-the-flight-you-booked.json",
+      "field": "sections[5].body[0]",
+      "suggestion": "Replace “while a subscription follows a published source” with “while a subscription periodically retrieves its source feed”.",
+      "reason": "Avoids readers equating every subscription with public calendar publication; not a factual blocker in context."
+    },
+    {
+      "severity": "optional",
+      "file": "time-zones-and-the-flight-you-booked.json",
+      "field": "sections[5].body[1]",
+      "suggestion": "After the feed-processing sentence, add “A service can receive the calendar content supplied through a private feed even if it does not ask for your account password.” Alternatively, link explicitly to the export guide’s disclosure check.",
+      "reason": "The standalone time-zone page currently says to review access/data handling but leaves the exact exposure less concrete than the export page. Existing wording is cautious, not a false privacy claim."
+    },
+    {
+      "severity": "optional",
+      "file": "time-zones-and-the-flight-you-booked.json",
+      "field": "sections[5] and sections[6]",
+      "suggestion": "If tightening for length, keep source/recipient/recurrence diagnosis in the new section and reserve app/iOS versions, sensitive details and no account reset for the final section.",
+      "reason": "Some bounded comparison/support language repeats, but the additional feed-specific decision makes the section useful."
+    }
+  ],
+  "freshPrimaryReads": [
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+      "read": "Fresh tool read, publishing sections 183–200 and 268–288 and notes",
+      "supports": "Published ICS imports do not receive updates; subscriptions follow changes; read-only access and receiver-provider refresh timing."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37118?hl=en",
+      "read": "Fresh tool read, substantive import section 18–60",
+      "supports": "Imported records do not remain synchronized; import accepts ICS/CSV; guests/conference data omitted and CSV recurrence caveat."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37064?hl=en",
+      "read": "Fresh tool read, event/display zone sections 18–77",
+      "supports": "Local display changes with travel; explicit event zone and separate start/end zone controls in Google."
+    }
+  ],
+  "suppliedNotFreshlyRead": [
+    "Parent supplied Google37100 subscription-section read. Not independently reopened because no addition depends on its exact UI.",
+    "Parent supplied CalConverter FAQ reading. Not independently reopened; no CalConverter statement or claim is attributed in drafts. No publisher-only claim treated as neutral evidence."
+  ],
+  "limits": [
+    "Independent review focused on expansion against HEAD, not a new native source audit of inherited editor behavior.",
+    "Inherited Apple export/print and BusyCal procedures were read in the draft but their docs were not freshly fetched in this review.",
+    "No article edits, source integration, build, deployment, native, ASC or paid API action."
+  ]
+}

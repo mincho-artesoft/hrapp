@@ -1,0 +1,22 @@
+iPhone과 iPad에서 캘린더와 날씨를 함께 확인하세요. Cloud Calendars로 업무 일정과 개인 일정을 살펴보며 하루를 계획할 수 있어요.
+
+캘린더와 다양한 보기
+iCloud 캘린더를 사용하고 Google Calendar를 연결하세요. Premium은 Microsoft 캘린더도 지원합니다. 일간, 주간, 월간, 연간, 목록 보기 중에서 원하는 방식을 선택할 수 있어요.
+
+Cloud Calendars 계정을 만들지 않고 기기에 로컬 캘린더를 생성할 수도 있어요. 서비스 연결이나 공유 기능에는 로그인이 필요할 수 있습니다.
+
+날씨와 홈 화면 위젯
+계획을 세우면서 일기예보를 확인하세요. 홈 화면 위젯은 소형, 중형, 대형 크기를 지원합니다. 제공되는 예보는 위치와 기상 정보 제공업체에 따라 달라집니다.
+
+회의와 공유
+Google Calendar에서 Google Meet를 사용할 수 있어요. Premium은 Microsoft Teams도 지원합니다. 이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요. 접근 권한은 캘린더와 초대 유형에 따라 다릅니다.
+
+요금제 안내
+무료 Base에는 Google Calendar 동기화, Google Meet, 다양한 캘린더 보기, 날씨, 위젯이 포함됩니다.
+Advanced에는 Base 기능이 포함되며 광고가 제거됩니다.
+Premium에는 Advanced 기능과 함께 Microsoft 캘린더 및 Microsoft Teams 지원이 포함됩니다.
+
+앱은 무료로 다운로드할 수 있으며, 자동 갱신 구독을 선택하여 구매할 수 있습니다. 현재 가격은 앱 또는 App Store에서 확인하세요. 구매 확정 시 Apple 계정으로 요금이 청구됩니다. 현재 구독 기간이 끝나기 최소 24시간 전에 취소하지 않으면 자동으로 갱신됩니다. 갱신 요금은 기간 종료 전 24시간 이내에 청구됩니다. App Store 계정 설정에서 구독을 관리하거나 취소할 수 있습니다.
+
+개인정보 처리방침: https://www.cloud-calendars.com/privacy-policy
+이용 약관: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

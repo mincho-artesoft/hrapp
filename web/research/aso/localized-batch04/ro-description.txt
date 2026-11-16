@@ -1,0 +1,19 @@
+Consultă planurile de serviciu, programul personal și vremea pe iPhone și iPad cu Cloud Calendars.
+
+CALENDARE ȘI VIZUALIZĂRI
+Folosește calendare iCloud și conectează Google Calendar. Premium adaugă suport pentru calendarele Microsoft. Alege vizualizarea pe zi, săptămână, lună, an sau listă.
+
+Poți crea și un calendar local pe dispozitiv fără un cont Cloud Calendars. Conectarea serviciilor și partajarea pot necesita autentificare.
+
+VREME, WIDGETURI ȘI PARTAJARE
+Consultă prognoza în timp ce îți faci planuri. Widgeturile pentru ecranul principal sunt disponibile în dimensiuni mici, medii și mari. Prognozele disponibile depind de locație și de furnizorul meteo. Partajează evenimente și calendare și trimite invitații prin e-mail, cod QR sau App Clip. Permisiunile depind de calendar și de tipul invitației.
+
+ALEGE PLANUL
+Base este gratuit și include sincronizare cu Google Calendar, Google Meet, diverse vizualizări ale calendarului, vreme și widgeturi.
+Advanced include funcțiile Base și elimină reclamele.
+Premium include Advanced și adaugă calendarele Microsoft și Microsoft Teams.
+
+Descărcarea este gratuită, cu abonamente opționale care se reînnoiesc automat. Verifică prețul local actual și perioada de facturare în aplicație sau în App Store înainte de abonare. Abonamentul se reînnoiește dacă nu îl anulezi cu cel puțin 24 de ore înainte de încheierea perioadei curente. Îl poți gestiona sau anula din configurările contului App Store.
+
+Confidențialitate: https://www.cloud-calendars.com/privacy-policy
+Condiții de utilizare: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

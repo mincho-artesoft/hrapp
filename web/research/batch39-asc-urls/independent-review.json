@@ -1,0 +1,487 @@
+{
+  "date": "2026-10-22",
+  "status": "PASS",
+  "proposalSha256": "86de976f0c585ab82be723bab201eb3e872c3b1807fa027c0cda50dea21bf23b",
+  "scope": "Read all50 proposal mappings and29 destination results completely; read complete locale definitions, app route generator, homepage copy registry and saved30 homepage routes. No API calls or writes.",
+  "mappingChecks": [
+    {
+      "locale": "ja",
+      "siteLocale": "ja",
+      "after": "https://www.cloud-calendars.com/ja/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "ro",
+      "siteLocale": "ro",
+      "after": "https://www.cloud-calendars.com/ro/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "hu",
+      "siteLocale": "hu",
+      "after": "https://www.cloud-calendars.com/hu/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "gu-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "ca",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "cs",
+      "siteLocale": "cs",
+      "after": "https://www.cloud-calendars.com/cs/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "zh-Hant",
+      "siteLocale": "zh-Hant",
+      "after": "https://www.cloud-calendars.com/zh-hant/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "bn-BD",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "ar-SA",
+      "siteLocale": "ar-SA",
+      "after": "https://www.cloud-calendars.com/ar/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "pl",
+      "siteLocale": "pl",
+      "after": "https://www.cloud-calendars.com/pl/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "nl-NL",
+      "siteLocale": "nl-NL",
+      "after": "https://www.cloud-calendars.com/nl/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "en-AU",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "or-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "fr-CA",
+      "siteLocale": "fr-FR",
+      "after": "https://www.cloud-calendars.com/fr/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "te-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "pt-BR",
+      "siteLocale": "pt-BR",
+      "after": "https://www.cloud-calendars.com/pt/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "en-GB",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "ru",
+      "siteLocale": "ru",
+      "after": "https://www.cloud-calendars.com/ru/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "fr-FR",
+      "siteLocale": "fr-FR",
+      "after": "https://www.cloud-calendars.com/fr/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "fi",
+      "siteLocale": "fi",
+      "after": "https://www.cloud-calendars.com/fi/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "es-MX",
+      "siteLocale": "es-ES",
+      "after": "https://www.cloud-calendars.com/es/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "ms",
+      "siteLocale": "ms",
+      "after": "https://www.cloud-calendars.com/ms/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "da",
+      "siteLocale": "da",
+      "after": "https://www.cloud-calendars.com/da/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "tr",
+      "siteLocale": "tr",
+      "after": "https://www.cloud-calendars.com/tr/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "no",
+      "siteLocale": "no",
+      "after": "https://www.cloud-calendars.com/no/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "th",
+      "siteLocale": "th",
+      "after": "https://www.cloud-calendars.com/th/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "es-ES",
+      "siteLocale": "es-ES",
+      "after": "https://www.cloud-calendars.com/es/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "mr-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "en-CA",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "ml-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "hr",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "zh-Hans",
+      "siteLocale": "zh-Hans",
+      "after": "https://www.cloud-calendars.com/zh-hans/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "en-US",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "ur-PK",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "sl-SI",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "de-DE",
+      "siteLocale": "de-DE",
+      "after": "https://www.cloud-calendars.com/de/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "vi",
+      "siteLocale": "vi",
+      "after": "https://www.cloud-calendars.com/vi/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "he",
+      "siteLocale": "he",
+      "after": "https://www.cloud-calendars.com/he/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "id",
+      "siteLocale": "id",
+      "after": "https://www.cloud-calendars.com/id/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "it",
+      "siteLocale": "it",
+      "after": "https://www.cloud-calendars.com/it/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "pa-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "sk",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "uk",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "el",
+      "siteLocale": "el",
+      "after": "https://www.cloud-calendars.com/el/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "ko",
+      "siteLocale": "ko",
+      "after": "https://www.cloud-calendars.com/ko/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "kn-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "pt-PT",
+      "siteLocale": "pt-BR",
+      "after": "https://www.cloud-calendars.com/pt/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "sv",
+      "siteLocale": "sv",
+      "after": "https://www.cloud-calendars.com/sv/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    },
+    {
+      "locale": "ta-IN",
+      "siteLocale": "en-US",
+      "after": "https://www.cloud-calendars.com/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": false
+    },
+    {
+      "locale": "hi",
+      "siteLocale": "hi",
+      "after": "https://www.cloud-calendars.com/hi/",
+      "registeredRouteMatches": true,
+      "homeCopyFileExists": true,
+      "publicCheckIncluded": true,
+      "change": true
+    }
+  ],
+  "counts": {
+    "rows": 50,
+    "uniqueLocaleIds": 50,
+    "changed": 31,
+    "unchanged": 19,
+    "uniqueDestinations": 29
+  },
+  "regionalDecisions": {
+    "fr-CA": "French homepage fr-FR at /fr/ is same-language, not Canadian-specific.",
+    "es-MX": "Spanish homepage es-ES at /es/ is same-language, not Mexican-specific.",
+    "pt-PT": "Brazilian Portuguese homepage pt-BR at /pt/ is same language with regional wording, not European Portuguese localization.",
+    "en-AU/en-GB/en-CA": "Retain existing English default."
+  },
+  "findings": [],
+  "clarifications": [
+    "All31 changed destinations resolve to actual registered same-language homepage content; simplified/traditional Chinese kept distinct.",
+    "Nineteen unchanged rows comprise4English storefronts and15unsupported-language storefronts retaining English; no invented website translation.",
+    "Bulgarian web edition exists but no Bulgarian ASC row supplied; not a missing destination among50.",
+    "Stale source comments mention31ASC/29web locales; actual30 locale objects and current50-row proposal govern this review.",
+    "Public HTTP200/noRedirect/contact findings are root-provided saved results, not independently refetched here. They cover all29 distinct mapped destinations."
+  ],
+  "preservation": "Review approves marketingUrl-only31-row scope. Do not alter supportUrl, privacy, text, app-info, price, build, release or submission. Post-write GET and exact unrelated-field preservation remain root responsibility.",
+  "sourceHashes": {
+    "src/app/core/locales.ts": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96",
+    "src/app/app.routes.ts": "9a3ab63b9e6c8f3609e465190f957dbadfe3c5b738b9d4cc9f13e7a1c04fbab0",
+    "src/app/content/home/registry.ts": "7f6d60f9c1c17c1418ecd013ebac17af65dd29654402e451f45ebcf5703457e2",
+    "research/home-routes-20261021.json": "373b3dff1f107a7920a269c24eed7ac5a07b5495a0f547981e5212f303a2458a"
+  },
+  "limits": "Navigation/language match improvement, not rank or conversion guarantee. No customer or account operations performed."
+}

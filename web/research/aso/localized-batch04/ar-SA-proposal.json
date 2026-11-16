@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ar-SA",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "9b44c426-1c4e-41e6-a5a0-b0fc76c54b37",
+  "versionLocalizationId": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: تقويم",
+      "characters": 22,
+      "utf8Bytes": 27,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "الطقس والمواعيد والأدوات",
+      "characters": 24,
+      "utf8Bytes": 46,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "جدول,تخطيط,أسبوع,شهر,تذكير,اجتماع,حدث,مشاركة,دعوة,توقعات,تنظيم",
+      "characters": 62,
+      "utf8Bytes": 114,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "اجمع مواعيدك والطقس في مكان واحد، واستخدم أدوات الشاشة الرئيسية وعروض التقويم. يمكنك البدء بتقويم محلي دون حساب في التطبيق.",
+      "characters": 123,
+      "utf8Bytes": 225,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "تابع مواعيد العمل وخططك الشخصية والطقس على iPhone وiPad باستخدام Cloud Calendars.\n\nالتقاويم والعروض\nاستخدم تقاويم iCloud واربط تقويم Google. يضيف Premium دعم تقاويم Microsoft. اختر عرض اليوم أو الأسبوع أو الشهر أو السنة أو القائمة.\n\nيمكنك إنشاء تقويم محلي على جهازك دون إنشاء حساب Cloud Calendars. قد يتطلب ربط الخدمات والمشاركة تسجيل الدخول.\n\nالطقس والأدوات والمشاركة\nتحقق من توقعات الطقس أثناء التخطيط. تتوفر أدوات الشاشة الرئيسية بأحجام صغيرة ومتوسطة وكبيرة. تعتمد التوقعات المتاحة على الموقع ومزود الطقس. شارك الأحداث والتقاويم وأرسل دعوات بالبريد الإلكتروني أو رمز QR أو App Clip. تعتمد صلاحيات الوصول على التقويم ونوع الدعوة.\n\nاختر خطتك\nBase مجاني ويشمل مزامنة تقويم Google وGoogle Meet وعروض التقويم المختلفة والطقس والأدوات.\nيشمل Advanced ميزات Base ويزيل الإعلانات.\nيشمل Premium ميزات Advanced ويضيف تقاويم Microsoft وMicrosoft Teams.\n\nالتنزيل مجاني مع اشتراكات اختيارية تتجدد تلقائياً. تحقق من السعر المحلي الحالي وفترة الفوترة في التطبيق أو App Store قبل الاشتراك. يتجدد الاشتراك ما لم تلغه قبل نهاية الفترة الحالية بـ24 ساعة على الأقل. يمكنك إدارته أو إلغاؤه من إعدادات حساب App Store.\n\nالخصوصية: https://www.cloud-calendars.com/privacy-policy\nشروط الاستخدام: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1237,
+      "utf8Bytes": 1999,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ar-SA",
+      "name": "Cloud Calendars: تقويم",
+      "subtitle": "كل تقاويمك في مكان واحد",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "خطط ليومك باستخدام التقويم والطقس معًا\n\nيجمع Cloud Calendars بين تقاويمك والطقس في تجربة تخطيط واحدة منظمة بشكل جميل.\n\nأدِر تقاويم iCloud وGoogle Calendar وMicrosoft في تطبيق واحد، مع عرض التوقعات مباشرة داخل جدولك والأدوات وواجهات التخطيط.\n\nاستعد للاجتماعات والسفر ومواعيد اصطحاب الأطفال والأنشطة الخارجية والأيام المزدحمة باستخدام طرق عرض تقويم مصممة لتخطيط أسرع.\n\nأدوات الشاشة الرئيسية\n\nأضف أدوات جميلة تجمع بين:\n• أحداث التقويم\n• توقعات الطقس\n• الجدول القادم\n• مراحل القمر والظروف الجوية\n• الرياح ودرجة الحرارة\n• نظرة عامة على جدول الأعمال اليومي\n\nاختر من بين أنماط متعددة للأدوات لعرض يومك مباشرة من الشاشة الرئيسية.\n\nلماذا CLOUD CALENDARS\n\n• عرض تقاويم iCloud وGoogle Calendar وMicrosoft معًا\n• التخطيط باستخدام توقعات الطقس المدمجة\n• استخدام أدوات جميلة للشاشة الرئيسية\n• سحب الأحداث ونقلها وتغيير مدتها بسلاسة\n• إنشاء روابط Google Meet وMicrosoft Teams\n• التبديل بين طرق عرض اليوم والأسبوع والشهر والسنة والقائمة\n• إدارة تقاويم العمل والتقاويم الشخصية في مكان واحد\n\nالميزات\n\nكل تقاويمك معًا\nاتصل بتقاويم iCloud وGoogle Calendar وMicrosoft وأدِرها في تجربة واضحة واحدة ومشفرة بالألوان.\n\nالطقس مدمج في تقويمك\nشاهد توقعات كل ساعة وكل يوم مباشرة ضمن سير عمل التخطيط، بما في ذلك درجة الحرارة والظروف ومراحل القمر والرياح وأيقونات الطقس.\n\nأدوات التقويم والطقس\nاعرض جدولك والطقس فورًا من خلال أدوات الشاشة الرئيسية القابلة للتخصيص.\n\nطرق عرض متعددة للتقويم\nاختر عرض اليوم أو الأسبوع أو الشهر أو السنة أو القائمة وفقًا لطريقتك في تخطيط وقتك.\n\nتحرير سهل للأحداث\nاضغط على الأحداث واسحبها وغيّر مدتها مباشرة في التقويم لجدولة سريعة وطبيعية.\n\nعرض مخصص للطقس\nاستكشف توقعات مفصلة مع الظروف لكل ساعة ومعلومات مفيدة للتخطيط.\n\nإنشاء أحداث من التوقعات\nاضغط على أي ساعة في التوقعات لإنشاء حدث جديد فورًا بالوقت المحدد.\n\nروابط اجتماعات مدمجة\nأضف روابط Google Meet وMicrosoft Teams إلى الأحداث بسرعة.\n\nمثالي من أجل\n\n• إدارة تقاويم العمل والتقاويم الشخصية\n• التخطيط مع مراعاة الطقس\n• الأنشطة الخارجية والسفر\n• الجداول المزدحمة والتخطيط العائلي\n• مستخدمي Google Calendar وiCloud\n• مستخدمي تقويم Microsoft\n\nجرّب Cloud Calendars واجعل التخطيط لكل يوم أسهل.\n\nمعلومات الاشتراك\n\nيقدم Cloud Calendars اشتراكات تتجدد تلقائيًا.\n\nالخطة المجانية\n• مزامنة Google Calendar\n• طرق عرض متعددة للتقويم\n• ميزات الطقس\n• الأدوات\n• دعم Google Meet\n\nسيتم تحميل الدفعة على حساب Apple ID عند تأكيد الشراء. تتجدد الاشتراكات تلقائيًا ما لم يتم إلغاؤها قبل 24 ساعة على الأقل من نهاية الفترة الحالية. سيتم تحميل رسوم التجديد على حسابك خلال 24 ساعة قبل نهاية الفترة الحالية. يمكنك إدارة الاشتراكات وإلغاءها من إعدادات حساب App Store.\n\nسياسة الخصوصية: https://www.cloud-calendars.com/privacy-policy\nشروط الاستخدام: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ar-SA",
+      "keywords": "طقس,ودجت,جدول,مخطط,أجندة,توقعات,iCloud,اجتماعات,أحداث,عمل,قمر,رياح,حرارة,شاشة القفل,مطر,اليوم,أسبوع",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "canonical": "time-zones-and-the-flight-you-booked",
+  "sourceFile": "src/app/content/en-US/articles-planning.ts",
+  "sourceModuleRawSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+  "sourceSnapshotRawSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+  "currentSourceIdenticalToReviewedBatch38": true,
+  "readScope": "Complete unchanged current English canonical reread, complete prior DE preparation and independent review evidence, full author translation and self-review of both new drafts.",
+  "checks": [
+    {
+      "locale": "fr-FR",
+      "rawSha256": "e92a815058a5a0aef39b1e9dbe9b4241817fca293af955bd1e8bf495aed90be9",
+      "objectSha256": "553d4da74b722d6a6c029507c017af23ca5fdd6112137963b7d407157421454a",
+      "structure": {
+        "sections": 7,
+        "paragraphs": 14,
+        "practical": 5,
+        "faq": 4,
+        "sources": 4
+      },
+      "descriptionUnicodeChars": 138,
+      "exactSources": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "wasAbsent": true,
+      "related": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "exists": true
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "exists": true
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "rawSha256": "9be8138ebe9b68cf32a8ea4eb1008365c9e05fd3a8801860a5d390d177f5bbf6",
+      "objectSha256": "0065f800ad418e29bec22efdd7bbcf27686a8685963414fda8958c75b66ad096",
+      "structure": {
+        "sections": 7,
+        "paragraphs": 14,
+        "practical": 5,
+        "faq": 4,
+        "sources": 4
+      },
+      "descriptionUnicodeChars": 127,
+      "exactSources": true,
+      "dateMatches": true,
+      "claimsEmpty": true,
+      "wasAbsent": true,
+      "related": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "exists": true
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "exists": true
+        }
+      ]
+    }
+  ],
+  "omittedRelated": {
+    "slug": "weather-where-the-event-is",
+    "reason": "Absent in both actual locale module definitions; retained two relevant available canonical links."
+  },
+  "evidence": "Reuses reviewed current English four primary URLs and batch38 source/editor evidence. No fresh web read or runtime certification in this translation task.",
+  "boundaries": [
+    "Apple Calendar display override is explicitly not a Cloud control promise.",
+    "Google desktop separate endpoint zones remain provider-specific.",
+    "Cloud saved zone and device fallback conditional.",
+    "Import snapshot/subscription source, DST recurrence, all-day dates and preserve-original diagnosis retained."
+  ],
+  "review": "Own semantic self-review, not independent native-speaker certification. Product reviewer requested.",
+  "writes": "Draft JSON, immutable source snapshot and research checks only."
+}

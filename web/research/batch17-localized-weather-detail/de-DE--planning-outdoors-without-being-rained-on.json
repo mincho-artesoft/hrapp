@@ -1,0 +1,89 @@
+{
+  "updated": "2026-10-22",
+  "title": "Eine Veranstaltung im Freien mit Vorhersage und Alternative planen",
+  "short": "Einen Plan im Freien und eine machbare Alternative wählen",
+  "description": "Plane im Freien mit geprüftem Ort, Vorhersagestunden und vereinbarter Alternative. Prüfe Kalenderdetails, bevor du einen gemeinsamen Termin änderst.",
+  "lede": "Wetter kann beim Vergleich möglicher Zeiten für Aktivitäten im Freien helfen, aber keinen trockenen Ausgang versprechen. Beginne mit den Anforderungen der Aktivität und den noch veränderbaren Entscheidungen. Nutze dann die passende Vorhersage als Grundlage. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Häufigeres Prüfen oder geringfügiges Verschieben garantiert, dass eine Aktivität schlechtes Wetter vermeidet.",
+  "sections": [
+    {
+      "heading": "Die Aktivität definieren, bevor du eine Wetterzahl auswählst",
+      "body": [
+        "Bestimme Ort, beteiligte Personen und Anforderungen der Aktivität. Ein Mittagessen im Garten, eine Schulsportstunde und eine gebuchte Freiluftaufführung haben unterschiedliche praktische Einschränkungen. Verwende nicht für alle denselben allgemeinen Regenprozentsatz.",
+        "Halte fest, wer eine Änderung entscheiden darf und wann die letzte sinnvolle Entscheidung möglich ist. Die Frist eines Veranstaltungsorts oder die Verfügbarkeit einer Hilfsperson kann deine Optionen früher einschränken als das Wetter. Diese Planungsbeispiele liefern keine technischen Sicherheitsgrenzwerte für Aktivitäten."
+      ]
+    },
+    {
+      "heading": "Ort, lokales Datum und vollständigen Zeitraum abgleichen",
+      "body": [
+        "Vergleiche den ausgewählten Wetterort mit dem tatsächlichen Veranstaltungsort. Beziehe gegebenenfalls Ankunft und Vorbereitung ein und prüfe die verfügbaren Stunden über die gesamte Aktivität. Ein Tagessymbol beschreibt nicht jeden Moment einer langen Buchung.",
+        "Liegt der Termin jenseits der Vorhersagedaten, behalte das vereinbarte Datum und plane eine spätere Prüfung. Vergleiche auf Reisen die Ortszeit des Veranstaltungsorts mit dem Termin. Ersetze die Buchungsgrundlage nicht unbemerkt durch eine Vorhersage für deinen aktuellen Standort."
+      ]
+    },
+    {
+      "heading": "Echte Alternativen vergleichen, ohne trockene Zeitfenster zu erfinden",
+      "body": [
+        "Vergleiche mögliche Zeiträume anhand der relevanten Wetterfelder und ihrer Bezeichnungen. Der Vorhersageleitfaden des Met Office unterscheidet Wahrscheinlichkeit von anderen Werten und erklärt unterschiedliche Bezugszeiträume. Lies die entsprechenden Definitionen deiner verwendeten Quelle.",
+        "Eine Stunde später loszugehen kann die Bedingungen verbessern oder auch nicht. Behandle einen geeigneter wirkenden Zeitraum als Planungsinformation, nicht als Garantie. Leite aus einem Wert für einen Ort weder eine nicht abgedeckte Stunde noch Beobachtungen entlang einer ganzen Strecke ab."
+      ]
+    },
+    {
+      "heading": "Eine tatsächlich nutzbare Alternative vereinbaren",
+      "body": [
+        "Eine Alternative sollte das reale Problem lösen: ein nutzbarer, freigegebener Innenraum, eine vereinbarte Verschiebung oder eine andere für Teilnehmer erreichbare Lösung. Prüfe Zugang, Kosten und Verfügbarkeit beim zuständigen Organisator oder Veranstaltungsort.",
+        "Ein Picknick nach drinnen zu verlegen kann beispielsweise scheitern, wenn niemand den Raum bestätigt hat. Halte die Alternative klar fest und bestimme, wer die endgültige Wahl mitteilt. Eine Notiz im privaten Kalender einer Person ist keine gemeinsame Vereinbarung."
+      ]
+    },
+    {
+      "heading": "Den vorgesehenen Termin speichern und ändern",
+      "body": [
+        "Bestätige vor Erstellen oder Bearbeiten Zielkalender, Beginn, Ende und Ort. Auch ein aus einer Wetterstunde gestarteter Entwurf muss geprüft werden. Seine vorgeschlagene Dauer deckt Aufbau, Fahrt oder die gesamte Aktivität möglicherweise nicht ab.",
+        "Prüfe bei gemeinsamen oder wiederkehrenden Terminen Zuständigkeit des Organisators, Bearbeitungsrechte und Wiederholungsumfang. Öffne nach einer erlaubten Änderung den gespeicherten Termin erneut. Eine lokale Änderung beweist nicht die Zustimmung des Veranstaltungsorts oder aller Teilnehmer."
+      ]
+    },
+    {
+      "heading": "Erneut prüfen, solange eine Entscheidung noch etwas bewirken kann",
+      "body": [
+        "Wähle einen Prüfzeitpunkt, der unter den Buchungsbedingungen noch Handlungsspielraum lässt. Vergleiche die aktuelle relevante Vorhersage sowie geltende offizielle Hinweise oder Vorgaben des Veranstaltungsorts. Wetterinformationen sind eine Entscheidungsgrundlage, keine Erlaubnis, Anforderungen einer Aktivität zu ignorieren.",
+        "Teile den endgültigen Plan mit und bestätige wichtige Übergaben direkt. Ändert eine spätere Aktualisierung die Entscheidung, bestimme den zu ändernden Termin und die Wiederholung. Wiederholtes Aktualisieren ohne machbare Alternative beseitigt die Unsicherheit nicht."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ort, Anforderungen und entscheidungsverantwortliche Person bestimmen.",
+    "Den ausgewählten Wetterort und den gesamten Zeitraum in Ortszeit prüfen.",
+    "Nur tatsächlich verfügbare Vorhersagedaten und Stunden vergleichen.",
+    "Eine machbare Alternative und Entscheidungsfrist vereinbaren.",
+    "Zielkalender, Termindetails und Wiederholungsumfang vor dem Speichern prüfen.",
+    "Zum vereinbarten Zeitpunkt erneut prüfen und den endgültigen Plan mit Teilnehmern bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Garantiert eine Verschiebung um eine Stunde trockenes Wetter?",
+      "a": "Nein. Vergleiche verfügbare Zeiträume und halte eine zur Aktivität passende Alternative bereit. Eine Vorhersage verspricht kein bestimmtes Ergebnis."
+    },
+    {
+      "q": "Was, wenn die Vorhersage noch nicht bis zum Termin reicht?",
+      "a": "Behalte den vereinbarten Termin und plane eine spätere Wetterprüfung. Fehlende Informationen sind keine Schönwettervorhersage."
+    },
+    {
+      "q": "Darf ich einen gemeinsamen Termin verschieben, wenn eine andere Zeit besser aussieht?",
+      "a": "Bestätige zuerst Zustimmung des Organisators, Bearbeitungsrechte und Teilnehmer. Prüfe Wiederholungsumfang und gespeichertes Ergebnis und teile dann die Änderung mit."
+    }
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event"
+  ],
+  "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: Vorhersageort, Zeiträume und Wetterwerte",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

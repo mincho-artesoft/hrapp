@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "title": "Fino a quale data posso vedere il meteo in Cloud Calendars?",
+  "short": "Controlla le date di previsione realmente disponibili",
+  "description": "Controlla le date meteo in Cloud Calendars. Distingui copertura giornaliera e oraria, appuntamenti futuri e dimostrazione del sito.",
+  "lede": "Un calendario a lungo termine e una previsione a lungo termine sono cose diverse. Puoi fissare una riunione prima che esista la sua previsione. Leggi le date disponibili nell’app invece di dedurre la copertura meteo dal mese che puoi aprire. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni data futura del calendario ha una previsione, e la dimostrazione del sito su quattordici giorni corrisponde alla copertura dell’app.",
+  "sections": [
+    {
+      "heading": "Leggi le date nella schermata meteo",
+      "body": [
+        "Apri il meteo del luogo desiderato e identifica le date effettivamente elencate. Non dedurre la disponibilità dalla navigazione mensile o annuale del calendario. Una previsione assente richiede un controllo successivo; non significa bel tempo.",
+        "Se organizzi un incontro tra diverse settimane, salva la data concordata e annota separatamente la decisione legata al meteo. Disponibilità del luogo, inviti e futura previsione sono elementi diversi del programma."
+      ]
+    },
+    {
+      "heading": "Comprendi l’elenco giornaliero dell’app",
+      "body": [
+        "L’app usa Apple WeatherKit. L’implementazione attuale dell’elenco giornaliero conserva fino a dieci giorni restituiti dal servizio. Leggi la prima e l’ultima data del luogo selezionato senza presumere che ogni vista o richiesta abbia dieci giorni completi.",
+        "Questo limite descrive l’elenco giornaliero mostrato, non promette la stessa attendibilità per tutte le variabili né una previsione completa per ogni appuntamento in quelle date. Usa il livello di dettaglio necessario alla decisione."
+      ]
+    },
+    {
+      "heading": "Controlla le ore disponibili per le attività con orario preciso",
+      "body": [
+        "Un riepilogo giornaliero non definisce le condizioni esatte per tutta la durata di un appuntamento. Apri il giorno pertinente e confronta le ore disponibili per arrivo, attività e partenza. Se parte del periodo manca, lasciala da verificare.",
+        "Per un evento serale, assicurati che luogo e data locale corrispondano ancora al programma. Un arrivo dopo mezzanotte appartiene a un’altra data. Controlla gli orari effettivi senza considerare la fine dell’elenco giornaliero come la fine di ogni serie oraria."
+      ]
+    },
+    {
+      "heading": "Distingui la dimostrazione del sito",
+      "body": [
+        "Il sito attualmente richiede quattordici giorni di previsione a Open-Meteo per la dimostrazione meteo. Open-Meteo documenta intervalli configurabili; questa richiesta del sito è un’implementazione distinta dall’app iOS.",
+        "Non usare il risultato web per affermare che l’app fornisce quattordici giorni WeatherKit. Se le due schermate differiscono, confronta prima luogo, ora e fornitore. Un intervallo di previsione diverso non significa che il calendario abbia perso un appuntamento."
+      ]
+    },
+    {
+      "heading": "Programma un controllo quando la previsione non è ancora disponibile",
+      "body": [
+        "Conserva la data reale dell’impegno e organizza un controllo che lasci tempo per decidere il luogo o avvisare i partecipanti. Per esempio, una festa all’aperto può richiedere un’alternativa al chiuso concordata prima del prossimo controllo meteo.",
+        "Scegli il controllo in base ai vincoli effettivi dell’attività. Questa guida non assegna percentuali di precisione o soglie universali per confermare o annullare a un determinato giorno di previsione. Consulta le informazioni aggiornate quando possono cambiare una decisione concreta."
+      ]
+    },
+    {
+      "heading": "Controlla i dettagli dopo aver scelto un orario",
+      "body": [
+        "Se un’ora di previsione disponibile ti aiuta a scegliere l’orario, controlla la bozza di evento risultante. Conferma data locale, inizio, fine, calendario di destinazione e luogo. Navigare nel meteo non sostituisce i permessi del calendario o l’accordo dell’organizzatore.",
+        "Dopo una modifica autorizzata, riapri l’evento e verifica l’occorrenza o la serie desiderata. Conferma separatamente i cambiamenti importanti con i partecipanti. La disponibilità di nuovi dati meteo non equivale alla ricezione di un invito modificato."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Seleziona il luogo pertinente all’appuntamento.",
+    "Leggi la prima e l’ultima data nell’elenco giornaliero dell’app.",
+    "Controlla separatamente l’intervallo orario necessario, compreso il passaggio a mezzanotte.",
+    "Distingui la copertura Open-Meteo del sito da quella WeatherKit dell’app.",
+    "Organizza un controllo successivo per programmi oltre la previsione disponibile.",
+    "Verifica l’evento salvato e conferma le modifiche condivise con i partecipanti."
+  ],
+  "faq": [
+    {
+      "q": "Cloud Calendars offre una previsione di quattordici giorni nell’app?",
+      "a": "L’elenco giornaliero attuale usa fino a dieci giorni restituiti da WeatherKit. Il sito richiede separatamente quattordici giorni Open-Meteo. Controlla le date effettivamente disponibili nell’app."
+    },
+    {
+      "q": "Perché posso creare un evento dopo l’ultima data meteo?",
+      "a": "Il salvataggio nel calendario e la disponibilità meteo sono separati. Conserva l’appuntamento e controlla la previsione più vicino alla data."
+    },
+    {
+      "q": "Una voce giornaliera garantisce il meteo per ogni ora dell’evento?",
+      "a": "No. Controlla le ore realmente fornite per quel luogo e periodo. Non dedurre la copertura oraria completa dall’elenco giornaliero."
+    }
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "planning-outdoors-without-being-rained-on",
+    "month-view-on-a-bigger-screen"
+  ],
+  "sourcesHeading": "Fonti ufficiali e approfondimenti",
+  "sources": [
+    {
+      "label": "Apple: informazioni di previsione WeatherKit e disponibilità regionale",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: parametri delle previsioni e intervalli disponibili",
+      "url": "https://open-meteo.com/en/docs"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Agenda e Microsoft Outlook, sincronizados nos dois sentidos e separados por cor em uma vista só. Desligue qualquer agenda quando não quiser vê-la — o resto continua funcionando.",
+    "after": "Veja os calendários iCloud e Google selecionados juntos; Premium adiciona calendários Microsoft. Edite onde sua conta permitir e confira o calendário de origem após as alterações."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Pegue um compromisso e deslize para outro horário ou outro dia. Puxe a borda de cima ou de baixo para mudar a duração. Sem janela, sem botão de salvar.",
+    "after": "Mova eventos editáveis para outro horário ou dia, ou ajuste a duração na linha do tempo. Em eventos recorrentes, escolha quais ocorrências alterar e confira o resultado salvo."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "É a principal forma de editar. Arraste um compromisso para outro horário ou outro dia, ou puxe a borda de cima ou de baixo para mudar a duração. As mudanças voltam direto para a agenda de origem.",
+    "after": "Você pode mover eventos editáveis e ajustar sua duração na linha do tempo. Confira o alcance da recorrência e o horário salvo; atualizações de calendários conectados dependem das permissões e da sincronização bem-sucedida."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Os mesmos compromissos, dispostos conforme a pergunta que você está realmente fazendo — e cada um carrega a previsão.",
+    "after": "Escolha um panorama geral ou uma linha do tempo detalhada, com a previsão disponível nas visões compatíveis."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Uma grade horária em que cada linha carrega a própria previsão. Você vê a reunião das três e a chuva das três no mesmo olhar: sem segundo aplicativo, sem adivinhação.",
+    "after": "Compare compromissos e a previsão horária disponível na mesma grade. Confira o local e a data da previsão ao planejar atividades ao ar livre."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "A vista de mês marca todo dia que tem alguma coisa. A vista de ano põe doze meses em uma tela: o jeito mais rápido de achar uma semana livre.",
+    "after": "Compare os eventos dos calendários selecionados ao longo do mês ou ano. Abra um dia para examinar todos os compromissos antes de considerá-lo livre."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Toque em qualquer hora na central de tempo e abre um compromisso novo, já naquele horário. Ache a janela seca e reserve.",
+    "after": "Escolha uma hora com previsão disponível para iniciar um rascunho de evento. Revise data, horário e calendário antes de salvar."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versão {v} — compromissos compartilhados agora se mantêm atualizados sozinhos",
+    "after": "Versão {v} — compartilhamento de eventos e calendários"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "As assinaturas são geridas pela Apple, então você cancela nos ajustes da sua conta da App Store. Faça isso pelo menos 24 horas antes de o período acabar e não será cobrado de novo.",
+    "after": "No iPhone ou iPad, abra Ajustes, toque no seu nome e em Assinaturas. Escolha Cloud Calendars e cancele ali; confira o status de cancelamento ou expiração mostrado pela Apple."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "As assinaturas se renovam automaticamente e são cobradas pelo seu ID Apple. Cancele quando quiser nos ajustes da sua conta da App Store, pelo menos 24 horas antes de o período acabar.",
+    "after": "As assinaturas se renovam automaticamente pela sua Conta Apple. Confira o preço local e o período antes de comprar. Para cancelar, abra Ajustes, seu nome e Assinaturas."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Bidirecional",
+    "after": "Conectado"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Mais escolhido",
+    "after": "Plano em destaque"
+  }
+]

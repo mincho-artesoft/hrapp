@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-22",
+  "slug": "the-widget-that-shows-what-is-next",
+  "source": {
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "sha256": "dffb03e43a84f5786e29ff85b98fc53badd50a3eacba6aa6068adb8a003bb3b3",
+    "readScope": "Full first article object including seven sections/fifteen paragraphs/four steps/three FAQs/three sources; extracted source-en.json retained."
+  },
+  "results": [
+    {
+      "locale": "bg",
+      "file": "research/batch25-widget-localization/bg.json",
+      "sha256": "45502a5d7eb1d04276a33d8fac610ba3653d331504b8926357a38ae9d83eacc8",
+      "descriptionUnicodeCharacters": 125,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "FAQ": true,
+        "sourceURLs": true,
+        "date": true,
+        "claims": true,
+        "description": true,
+        "relatedRoutes": true
+      },
+      "before": "Target slug absent from all current locale article modules; explicit null snapshot stored. No complete existing edition could be read.",
+      "localeSourceHashes": [
+        {
+          "file": "src/app/content/bg/articles-google.ts",
+          "sha256": "9506eacc5faae26a3b147832d1f1c190b909c35db74b7a2add02b339602b87f9"
+        },
+        {
+          "file": "src/app/content/bg/articles-help.ts",
+          "sha256": "4c603279644d9f32933a59962169d3d3a8efda829cc7bcbc363b8978c8d9dd14"
+        },
+        {
+          "file": "src/app/content/bg/articles.ts",
+          "sha256": "b19e685d4883dea05ed05e37aadef3929ff931edfdea2eb3bc634abbe04852bf"
+        }
+      ],
+      "relatedSubstitutions": {
+        "unavailableEnglishRoutes": [
+          "choosing-a-widget-size",
+          "a-countdown-to-your-next-meeting"
+        ],
+        "usedActualLocaleRoutes": [
+          "calendar-notifications-missing-silent-or-duplicated",
+          "weather-inside-your-calendar"
+        ]
+      }
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch25-widget-localization/ja.json",
+      "sha256": "d37dc43a095376c1fc6652e82d87236e318c687d0944c08ab763723b66cfb30d",
+      "descriptionUnicodeCharacters": 68,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "FAQ": true,
+        "sourceURLs": true,
+        "date": true,
+        "claims": true,
+        "description": true,
+        "relatedRoutes": true
+      },
+      "before": "Target slug absent from all current locale article modules; explicit null snapshot stored. No complete existing edition could be read.",
+      "localeSourceHashes": [
+        {
+          "file": "src/app/content/ja/articles-google.ts",
+          "sha256": "2a3798abb58f99f2e7f4f360c142d52b5d5734bca1344665dd6844092f516c8f"
+        },
+        {
+          "file": "src/app/content/ja/articles.ts",
+          "sha256": "d528a8d34171d33df1f05081854228ccf58cbe216517d98ea9a0fbb7014f70e8"
+        }
+      ],
+      "relatedSubstitutions": {
+        "unavailableEnglishRoutes": [
+          "choosing-a-widget-size",
+          "a-countdown-to-your-next-meeting"
+        ],
+        "usedActualLocaleRoutes": [
+          "icloud-google-and-outlook-in-one-view",
+          "weather-inside-your-calendar"
+        ]
+      }
+    }
+  ],
+  "ownReview": {
+    "scope": "Full translations compared with English for all sections, practical steps, FAQs, source labels and metadata.",
+    "semanticChecks": [
+      "Same-iPad comparison retained; iPhone correctness not evidence for iPad loaded data.",
+      "Future timed appointments in selected calendars; all-day and already-started entries excluded.",
+      "Finite rows distinguished from absence of nearest eligible appointment; no move/delete workaround.",
+      "Calendar Events medium, Calendar Events Large larger event list, separate Calendar & Weather small date/weather.",
+      "No refresh deadline, continuous sync or availability guarantee.",
+      "Weather not automatically matched to each event venue/start.",
+      "Developer disclosure and source URLs retained.",
+      "Verified English widget names retained; system control actions described without claiming certified localized UI labels."
+    ],
+    "limitations": "Own translation and self-review only; no independent native-speaker approval, UI localization certification or runtime/device test."
+  },
+  "notPerformed": [
+    "Live source integration",
+    "Native writes",
+    "Builds",
+    "Runtime actions",
+    "Deployment",
+    "Paid API calls"
+  ]
+}

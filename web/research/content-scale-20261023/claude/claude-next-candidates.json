@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-23",
+  "author": "Claude",
+  "method": "Gaps observed while reading sources for batch 01 and the expanded brief list. Each has a distinct reader task and a named primary source; none is drafted, and sources marked 'not yet read' must be fetched before drafting. No search volumes or ranks.",
+  "candidates": [
+    {
+      "slug": "outlook-scheduling-assistant-no-information-hatched",
+      "task": "Interpret Scheduling Assistant blocks (busy, tentative, outside working hours, no information) and fix missing free/busy for an attendee.",
+      "source": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+      "sourceStatus": "read for colours only; the fetch did not explain 'no information' causes, so a second Microsoft source is needed",
+      "overlapRisk": "google-calendar-find-a-time-blank-is-not-free (different provider; acceptable if Microsoft-specific causes are sourced)"
+    },
+    {
+      "slug": "outlook-remove-shared-calendar-versus-stop-sharing",
+      "task": "Recipient removes a shared calendar from their list vs owner revoking access; what the My organization default leaves behind.",
+      "source": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+      "sourceStatus": "partly read",
+      "overlapRisk": "taking-back-a-calendar-you-shared is Google/Cloud Calendars focused; merge if the Microsoft difference is only one paragraph"
+    },
+    {
+      "slug": "google-appointment-schedule-paid-bookings-and-cancellation",
+      "task": "Set up paid Google appointments and understand cancellation/refund boundaries before accepting payments.",
+      "source": "https://support.google.com/calendar/answer/13762729?hl=en",
+      "sourceStatus": "not yet read",
+      "overlapRisk": "Merge with booking verification (11902347) if each alone is thin. Payment terms must be quoted exactly; no financial advice."
+    },
+    {
+      "slug": "google-appointment-schedule-edit-after-bookings",
+      "task": "Change an appointment schedule's hours or duration and determine what happens to already-booked appointments.",
+      "source": "https://support.google.com/calendar/answer/10730791?hl=en",
+      "sourceStatus": "not yet read",
+      "overlapRisk": "Adjacent to google-appointment-schedule-which-calendars-block-booking-slots; publish only if existing-booking consequences are documented."
+    },
+    {
+      "slug": "google-calendar-time-insights-what-it-counts",
+      "task": "Read Time Insights meeting-hour categories without treating them as productivity measurements.",
+      "source": "https://support.google.com/calendar/answer/10738043?hl=en",
+      "sourceStatus": "not yet read",
+      "overlapRisk": "planning-a-week-in-ten-minutes (low)"
+    },
+    {
+      "slug": "google-calendar-gmail-events-visibility",
+      "task": "Control who can see events Gmail adds automatically (flights, reservations) on a shared calendar.",
+      "source": "https://support.google.com/calendar/answer/15454771?hl=en",
+      "sourceStatus": "not yet read",
+      "overlapRisk": "google-calendar-event-visibility-private-public-default; distinct because Gmail-created events have their own default visibility setting (verify)."
+    },
+    {
+      "slug": "outlook-new-time-proposals-allow-or-block",
+      "task": "Organiser setting to allow or disallow new time proposals in Outlook and how an attendee proposes one.",
+      "source": "Microsoft Support page on proposing a new meeting time (URL not yet located)",
+      "sourceStatus": "not yet located",
+      "overlapRisk": "keeping-track-of-who-replied covers Google/Apple proposals only; Outlook organiser-side control would be distinct."
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar-vs-delegate",
+      "task": "Choose a shared mailbox calendar versus delegation for a team inbox such as reception or support.",
+      "source": "Microsoft Learn shared mailbox documentation (not yet read)",
+      "sourceStatus": "not yet located",
+      "overlapRisk": "outlook-group-calendar-versus-shared-calendar; merge if shared mailbox calendars add only one decision row."
+    },
+    {
+      "slug": "google-calendar-delete-versus-unsubscribe-versus-hide",
+      "task": "Choose between hiding, unsubscribing and deleting a Google calendar without destroying an owned schedule.",
+      "source": "https://support.google.com/calendar/answer/37188?hl=en",
+      "sourceStatus": "not yet read",
+      "overlapRisk": "Coordinate with Codex (secondary-calendar ownership) and unwanted-calendar-events-iphone before claiming."
+    }
+  ],
+  "rejected": [
+    { "topic": "Google propose a new time", "reason": "Answered in keeping-track-of-who-replied." },
+    { "topic": "Google block one sender", "reason": "Near-duplicate of unwanted-calendar-events-iphone." },
+    { "topic": "Separate Google working-location and out-of-office pages", "reason": "Merged into one decision page to avoid self-cannibalisation." },
+    { "topic": "Google invitations in other calendar services (15077640)", "reason": "Source covers email filtering only; RSVP-recording claims would be unsupported." }
+  ]
+}

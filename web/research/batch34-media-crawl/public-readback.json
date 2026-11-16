@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-22T03:46:08.905592+00:00",
+  "requests": [
+    {
+      "url": "https://www.cloud-calendars.com/robots.txt",
+      "finalUrl": "https://www.cloud-calendars.com/robots.txt",
+      "status": 200,
+      "sha256": "1b821bb0ff3c4d5d3e175e80dad956128b51add2a8987d23b9f23942ee88eda5",
+      "body": "# Cloud Calendars \u2014 https://www.cloud-calendars.com\n#\n# Everything here is a public marketing site. There is nothing to hide from a\n# crawler and no admin surface, so the only rules are the ones that stop bots\n# wasting their budget on files that are not pages.\n#\n# Note: do not disallow /app-ads.txt or the JS/CSS bundles. AdMob's crawler\n# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization.\n#\n# The pages are prerendered now -- every route ships as real HTML, so a crawler\n# that never runs JavaScript still sees the words. The bundles stay allowed\n# anyway: blocking them makes a page look broken to a renderer that does run\n# them, which is a worse signal than the bandwidth is worth.\n\nUser-agent: *\nAllow: /\n\n# Binary media. Not pages, and nothing a renderer needs.\nDisallow: /media/\n\nSitemap: https://www.cloud-calendars.com/sitemap.xml\n\n# Plain-language summary of the product for LLM crawlers. No provider has\n# committed to reading this, so treat it as a hedge rather than a channel.\n# https://www.cloud-calendars.com/llms.txt\n"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/en-US/articles/the-widget-that-shows-what-is-next",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/en-US/iPhone/01-hook-340.webp",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "Content-Type": "image/webp",
+        "Content-Length": "20744",
+        "X-Robots-Tag": null,
+        "Cache-Control": "public,max-age=2592000",
+        "Last-Modified": "Thu, 27 Aug 2026 09:07:44 GMT"
+      }
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/en-US/iPhone/01-hook-340.avif",
+      "method": "HEAD",
+      "status": 200,
+      "headers": {
+        "Content-Type": "image/avif",
+        "Content-Length": "13490",
+        "X-Robots-Tag": null,
+        "Cache-Control": "public,max-age=2592000",
+        "Last-Modified": "Thu, 27 Aug 2026 09:06:35 GMT"
+      }
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next",
+      "finalUrl": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "c43a6899771753fc9035afb94eaceefb4e434f2d273070a4e067148506811348",
+      "galleryImgTags": [
+        "<img _ngcontent-ng-c1692799884 alt width=\"340\" height=\"736\" loading=\"lazy\" decoding=\"async\" src=\"/media/panel/en-US/iPhone/01-hook-340.webp\">",
+        "<img _ngcontent-ng-c1692799884 alt width=\"340\" height=\"736\" loading=\"lazy\" decoding=\"async\" src=\"/media/panel/en-US/iPhone/02-week-left-340.webp\">",
+        "<img _ngcontent-ng-c1692799884 alt width=\"340\" height=\"736\" loading=\"lazy\" decoding=\"async\" src=\"/media/panel/en-US/iPhone/03-week-right-340.webp\">",
+        "<img _ngcontent-ng-c1692799884 alt width=\"340\" height=\"736\" loading=\"lazy\" decoding=\"async\" src=\"/media/panel/en-US/iPhone/04-widgets-340.webp\">",
+        "<img _ngcontent-ng-c1692799884 alt width=\"340\" height=\"736\" loading=\"lazy\" decoding=\"async\" src=\"/media/panel/en-US/iPhone/05-live-340.webp\">"
+      ],
+      "gallerySourceTags": [
+        "<source _ngcontent-ng-c1692799884 type=\"image/avif\" srcset=\"/media/panel/en-US/iPhone/01-hook-340.avif 340w, /media/panel/en-US/iPhone/01-hook-680.avif 680w\" sizes=\"170px\">",
+        "<source _ngcontent-ng-c1692799884 type=\"image/webp\" srcset=\"/media/panel/en-US/iPhone/01-hook-340.webp 340w, /media/panel/en-US/iPhone/01-hook-680.webp 680w\" sizes=\"170px\">"
+      ]
+    }
+  ]
+}

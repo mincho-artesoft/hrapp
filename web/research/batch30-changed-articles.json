@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22T02:01:52.981Z",
+  "count": 2,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Повтарящи се събития: променете една дата или поредицата безопасно",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Проверете правата си и обхвата на промяната при повтарящо се събитие. Променяйте отделни дати и бъдещи срещи, без да изтривате поредицата.",
+      "descriptionCharacters": 138
+    },
+    {
+      "locale": "bg",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Часови зони в календара: проверете събитието преди пътуване",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Разграничете часовата зона на събитието от зоната на изгледа. Проверете полети, срещи на място и повтарящи се разговори, преди да променяте часа.",
+      "descriptionCharacters": 145
+    }
+  ]
+}

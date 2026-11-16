@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-22T00:01:01.244424+00:00",
+  "allPassed": true,
+  "viewportWidth": 575,
+  "documentWidth": 564,
+  "pages": [
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "normalizedH1": "تقويمك. سماؤك. عرض واحد.",
+      "wordGapPx": 6.609375,
+      "direction": "rtl",
+      "wordMarginsPx": 0,
+      "settledWordOpacity": 1,
+      "screenshot": "/tmp/cloud-calendar-batch21-ar-heading.png"
+    },
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/",
+      "normalizedH1": "Your calendar. Your sky. One view.",
+      "wordGapPx": 6.609375,
+      "direction": "ltr",
+      "settledWordOpacity": 1,
+      "screenshot": "/tmp/cloud-calendar-batch21-en-heading.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "sixPracticalStepsVerified": true,
+      "screenshot": "/tmp/cloud-calendar-batch21-sync-routing.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/",
+      "receivingAccountParagraphVerified": true,
+      "sources": 5,
+      "screenshot": "/tmp/cloud-calendar-batch21-feed-handoff.png"
+    }
+  ],
+  "scope": "Representative public DOM and visual checks after CF completion. Thirty headings checked from all built HTML separately. Not screen-reader/hardware/runtime/native-speaker or ranking certification. Viewport reset, ENhome tab retained."
+}

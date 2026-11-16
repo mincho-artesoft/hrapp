@@ -1,0 +1,36 @@
+{
+  "title": "Kostenlose Google-Synchronisierung — und wofür die Werbung bezahlt",
+  "short": "Kostenlos, und die Werbung",
+  "description": "Was die kostenlose Stufe wirklich enthält, wo Werbung erscheint und was ihre Entfernung kostet. Klar gesagt, weil die meisten Apps das nicht tun.",
+  "lede": "Kostenlose Kalender-Apps sind meist kostenlos, weil etwas anderes verkauft wird. Es lohnt sich zu wissen, was — bevor man ihr seine Woche anvertraut.",
+  "commonBelief": "Dass eine kostenlose Stufe eine Testphase ist und die richtige App hinter der Bezahlschranke liegt.",
+  "sections": [
+    {
+      "heading": "Was kostenlos tatsächlich abdeckt",
+      "body": [
+        "Alle Ansichten, iCloud-Synchronisierung, Google-Synchronisierung, das gesamte Wetter im Kalender, Widgets, Meet-Links an Terminen und Bearbeiten per Ziehen. Kein Test dieser Dinge — diese Dinge.",
+        "Liegen Ihre Kalender bei Apple und Google, was bei den meisten der Fall ist, dann ist die kostenlose Stufe die App."
+      ]
+    },
+    {
+      "heading": "Was die Werbung tut und was ihre Entfernung kostet",
+      "body": [
+        "Die kostenlose Stufe trägt Werbung. Sie zu entfernen ist die günstigste bezahlte Stufe, und Werbung zu entfernen ist ehrlich gesagt das meiste, wofür diese Stufe da ist.",
+        "Das so zu sagen scheint besser als die übliche Anordnung, in der die werbefreie Stufe mit Funktionen gebündelt wird, nach denen niemand gefragt hat, damit der Preis nach mehr aussieht."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Preis der kostenlosen Stufe",
+    "advancedMonthly": "Monatlicher Preis ohne Werbung, in Dollar"
+  },
+  "practical": [
+    "Fangen Sie kostenlos an; die Synchronisierung, die Sie brauchen, ist wahrscheinlich schon da.",
+    "Zahlen Sie, um Werbung loszuwerden, nicht weil Sie erwarten, dass die App sich ändert.",
+    "Die oberste Stufe lohnt sich nur, wenn Ihr Arbeitskalender bei Microsoft liegt."
+  ],
+  "seeAlso": [
+    "what-a-subscription-actually-buys",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-22",
+  "slug": "time-zones-and-the-flight-you-booked",
+  "locale": "bg",
+  "scope": "Complete own Bulgarian translation of root-provided current English object. Preparation only, not independent native-speaker approval or runtime certification.",
+  "rawSha256": {
+    "source-en.json": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+    "bg-before.json": "cd24b558f7b607765387ab305f55248a916ae4f67955f25f623363605bff9711",
+    "bg.json": "1da3ed85b4b8a71f04e761e612b08fedcce23c30c371b45c5c0a1dee648c678a"
+  },
+  "checks": {
+    "schemaKeysMatch": true,
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "exactSourceUrls": 4,
+    "date": "2026-10-22",
+    "claims": {},
+    "descriptionUnicodeCharacters": 145
+  },
+  "relatedRoutes": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "definitions": [
+        "src/app/content/bg/articles-help.ts"
+      ],
+      "decision": "retained"
+    },
+    {
+      "slug": "weather-where-the-event-is",
+      "definitions": [],
+      "decision": "omitted; no actual BG article definition"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "definitions": [
+        "src/app/content/bg/articles-help.ts"
+      ],
+      "decision": "retained"
+    }
+  ],
+  "semanticReview": [
+    "Saved event zone remains distinct from display zone; changing presentation is not automatically changing the actual appointment.",
+    "Apple and Google controls remain explicitly provider-labelled; English Time Zone, Time Zone Override and Time zone retained, not invented Bulgarian UI labels.",
+    "Separate departure and arrival zones depend on explicit editor support; no Cloud endpoint-zone control promised.",
+    "Current device zone fallback is conditional. Saved event reopened and compared against the booking.",
+    "Recurrence and seasonal clock changes checked on representative dates, not one fixed year-round offset.",
+    "All-day trip labels do not replace timed travel deadlines. Imported snapshots remain distinct from subscriptions.",
+    "Owning-provider comparison precedes moving any actual appointment; feed processing is not an authorized-account substitute.",
+    "Developer disclosure and non-sensitive support evidence preserved."
+  ],
+  "limits": [
+    "No fresh web/native inspection in this translation task; exact supplied source references preserved.",
+    "Related definition existence checked across actual BG article modules, not full related-body quality review.",
+    "No source integration, build, deployment, ASC operation or commit."
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "author": "Claude (claude-opus-5-5), logged-in subscription session; no API keys, no paid calls",
+  "date": "2026-10-23",
+  "scope": "Google Calendar and Outlook/Microsoft 365 operational tasks not answered by the 73 baseline English pages. Excludes Codex's eight RFC/iCalendar, secondary-calendar ownership and meeting-notes topics.",
+  "evidenceMethod": "Official help bodies read via WebFetch on 2026-10-23 (the fetch tool returns extracted/condensed page text, not a byte-exact copy). Claims are limited to passages returned as quotations. No first-hand UI tests, user quotations, search volumes or ranks.",
+  "mergeDecisions": [
+    "Google working hours, working location, out of office and focus time were merged into one decision page instead of two thinner pages (expanded briefs 032/033 plus focus-time source).",
+    "Google 'propose a new time' was NOT claimed: keeping-track-of-who-replied already contains the Google and Apple proposal workflow.",
+    "Google sender block (brief 044) was NOT claimed: unwanted-calendar-events-iphone already answers reporting and known-sender invitation settings; a single-sender block page would be a thin near-duplicate.",
+    "Microsoft delegation briefs 056-062/067-070 were split into exactly two tasks: the owner's grant decision (delegate vs editor) and the helper's act of scheduling on the owner's behalf."
+  ],
+  "briefs": [
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "provider": "Google",
+      "primaryKeyword": "Google Calendar working location vs out of office",
+      "distinctQuestion": "Which of Google's four availability signals (working hours, working location, out of office, focus time) should I set for a given situation, and which ones decline meetings?",
+      "existingOverlapSlug": "work-and-personal-without-two-apps",
+      "boundary": "Covers Google Workspace availability signals only. Does not cover personal/work calendar overview in Cloud Calendars, Outlook Show As (separate page), or Time Insights analysis.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.google.com/calendar/answer/11190973?hl=en"
+      ]
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "provider": "Google",
+      "primaryKeyword": "Google Calendar private event who can see",
+      "distinctQuestion": "When I mark one event Private, Public or Default visibility, what does each person with a given calendar permission actually see?",
+      "existingOverlapSlug": "who-can-see-what-in-google-calendar",
+      "boundary": "Event-level visibility crossed with calendar-level permission. The existing page chooses calendar-level permission; this page resolves one event's visibility and the free/busy interaction. No task-visibility depth (can-others-see-google-calendar-tasks).",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/34580?hl=en",
+        "https://support.google.com/calendar/answer/15716974?hl=en"
+      ]
+    },
+    {
+      "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "provider": "Google",
+      "primaryKeyword": "Google appointment schedule check calendars for conflicts",
+      "distinctQuestion": "Why does my Google booking page offer (or hide) a slot, and which calendars, responses and date exceptions control it?",
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "boundary": "Availability mechanics inside an existing Google appointment schedule. The existing page decides booking link vs invitation vs shared calendar; it does not explain conflict calendars, RSVP effects or adjusted availability. Payments, verification and cancellation remain separate candidates.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/16287054?hl=en",
+        "https://support.google.com/calendar/answer/11423292?hl=en",
+        "https://support.google.com/calendar/answer/10729749?hl=en"
+      ]
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "provider": "Google",
+      "primaryKeyword": "Google Calendar change event owner",
+      "distinctQuestion": "How do I hand a meeting I organise to a colleague so it keeps working (including Google Meet) after I step away?",
+      "existingOverlapSlug": "event-saved-to-wrong-calendar",
+      "boundary": "Event organiser transfer and Meet-policy consequence. Moving an event between one's own calendars is answered by event-saved-to-wrong-calendar; transferring a whole secondary calendar is Codex's assignment and is excluded.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/78739?hl=en",
+        "https://support.google.com/meet/answer/10003792?hl=en"
+      ]
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "provider": "Google",
+      "primaryKeyword": "Google Calendar find a time not showing availability",
+      "distinctQuestion": "When Find a time shows a gap for a guest, how do I tell whether they are actually free or I simply cannot see their schedule?",
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "boundary": "Organiser-side reading of Find a time. Not booking pages, not room reservation policy (calendar-event-or-room-reservation), not AI-suggested times.",
+      "sourceUrls": [
+        "https://support.google.com/calendar/answer/6294878?hl=en",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/34580?hl=en"
+      ]
+    },
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "provider": "Microsoft",
+      "primaryKeyword": "Outlook calendar delegate vs editor",
+      "distinctQuestion": "Should an assistant get Can edit or Delegate on my Outlook calendar, and which extra delegate options (private items, invitation routing, categories) should I tick?",
+      "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+      "boundary": "Owner's grant decision in Microsoft 365/Exchange Online. Acting on the owner's behalf is the next page; Google permissions and Cloud Calendars roles are out of scope.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+        "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ]
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "provider": "Microsoft",
+      "primaryKeyword": "Outlook send meeting on behalf of manager",
+      "distinctQuestion": "As a delegate, how do I create a meeting on my manager's calendar so it is saved and sent from the right place, and what will attendees see?",
+      "existingOverlapSlug": "what-guests-can-do-to-your-event",
+      "boundary": "Helper's procedure in Outlook on the web: Save to calendar, on-behalf identity, response routing, irreversible calendar choice, Send As escalation. Grant decision is the previous page.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ]
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "provider": "Microsoft",
+      "primaryKeyword": "Outlook share calendar can view when I'm busy",
+      "distinctQuestion": "Which Outlook sharing level gives a colleague only availability, titles and locations, or full details, and what does the My organization default still reveal after I remove someone?",
+      "existingOverlapSlug": "who-can-see-what-in-google-calendar",
+      "boundary": "Inside-organization Microsoft 365 sharing levels and the new sharing model. External sharing is a separate page; Google permissions are the existing page.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ]
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "provider": "Microsoft",
+      "primaryKeyword": "share Outlook calendar with external user",
+      "distinctQuestion": "Why can't I give an external partner the access I chose, and what will they actually receive when I share my Microsoft 365 calendar outside the organisation?",
+      "existingOverlapSlug": "exchange-calendars-on-an-iphone",
+      "boundary": "Tenant admin setting vs user choice vs recipient's service. Not app consent (covered in exchange-calendars-on-an-iphone), not publishing a public HTML calendar for a website.",
+      "sourceUrls": [
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365"
+      ]
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "provider": "Microsoft",
+      "primaryKeyword": "Outlook show as working elsewhere vs out of office",
+      "distinctQuestion": "Which Show As status should an Outlook appointment carry, and when should automatic replies block the calendar or decline meetings instead?",
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "boundary": "Outlook availability states and automatic-reply calendar options. Google signals are the Google page; Scheduling Assistant reading is used only to verify the result.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+      ]
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "provider": "Microsoft",
+      "primaryKeyword": "Outlook prevent forwarding meeting invite",
+      "distinctQuestion": "What happens when an attendee forwards my Outlook meeting, how do I stop it, and what can still leak?",
+      "existingOverlapSlug": "what-guests-can-do-to-your-event",
+      "boundary": "Outlook forwarding and Allow forwarding. The existing page covers Google guest permissions (invite others, see guest list). Sending meeting information without inviting is included only as the safe alternative.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+        "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting",
+        "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+      ]
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "provider": "Microsoft",
+      "primaryKeyword": "Microsoft 365 group calendar vs shared calendar",
+      "distinctQuestion": "Should a team put events on a Microsoft 365 group calendar or on a shared personal calendar, given who can cancel events and who gets invited?",
+      "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+      "boundary": "Microsoft 365 group calendar semantics vs owner-controlled shared calendar. Not Google Groups access (why-a-shared-calendar-does-not-appear), not Cloud Calendars sharing roles.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ]
+    }
+  ]
+}

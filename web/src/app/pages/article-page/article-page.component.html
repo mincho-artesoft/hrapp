@@ -1,0 +1,189 @@
+@if (article) {
+  <article class="article">
+    <header class="article__head">
+      <p class="article__crumbs">
+        <a [href]="hubHref">{{ hubLabel }}</a>
+      </p>
+      <h1>{{ article.title }}</h1>
+      <p class="article__lede">{{ article.lede }}</p>
+      <div class="art__top-cta">
+        <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
+          {{ storeLabel }}
+        </a>
+        <a class="btn btn--ghost" [href]="localised('/calendar')">
+          {{ webCalendarLabel }}
+        </a>
+        <a class="btn btn--ghost" [href]="localised('/') + '#booking'">
+          {{ freeBookingLabel }}
+        </a>
+      </div>
+    </header>
+
+    @if (article.galleryCaption && !article.galleryAfterContent) {
+      <section class="article__gallery" [attr.aria-label]="chrome.gallery">
+        <cc-shot-rail [locale]="locale" [label]="chrome.gallery" [subjects]="article.galleryKinds ?? []" [device]="article.galleryDevice ?? 'iPhone'" />
+        <p class="article__caption">{{ article.galleryCaption }}</p>
+      </section>
+    }
+    @if (article.comparison; as comparison) {
+      <section class="article__comparison">
+        <h2>{{ comparison.heading }}</h2>
+        <div class="article__table-scroll" tabindex="0" [attr.aria-label]="comparison.heading">
+          <table>
+            <caption>{{ comparison.caption || comparison.heading }}</caption>
+            <thead><tr>@for (column of comparison.columns; track $index) { <th scope="col">{{ column }}</th> }</tr></thead>
+            <tbody>@for (row of comparison.rows; track $index) { <tr>@for (cell of row.cells; track $index) { <td>{{ cell }}</td> }</tr> }</tbody>
+          </table>
+        </div>
+      </section>
+    }
+    @if (article.actionHeading) {
+      <section class="article__action">
+        <h2>{{ article.actionHeading }}</h2>
+        <p>{{ article.actionText }}</p>
+        <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">{{ storeLabel }}</a>
+        @if (articleLinks.length) {
+          <ul>@for (link of articleLinks; track link.path) { <li><a [href]="link.path">{{ link.label }}</a></li> }</ul>
+        }
+      </section>
+    }
+
+    @if (article.commonBelief) {
+      <section class="article__belief">
+        <h2>{{ chrome.commonBelief }}</h2>
+        <p>{{ article.commonBelief }}</p>
+      </section>
+    }
+
+    @if (showScheduleBuilder) { <cc-weekly-schedule-builder /> }
+
+    @for (section of article.sections; track section.heading; let i = $index) {
+      <section class="article__section">
+        <h2>{{ section.heading }}</h2>
+        @for (paragraph of section.body; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+        @if (section.table; as secTable) {
+          <div class="article__section-table">
+            <h3>{{ secTable.heading }}</h3>
+            <div class="article__table-scroll" tabindex="0" [attr.aria-label]="secTable.heading">
+              <table>
+                <caption>{{ secTable.caption || secTable.heading }}</caption>
+                <thead><tr>@for (column of secTable.columns; track $index) { <th scope="col">{{ column }}</th> }</tr></thead>
+                <tbody>@for (row of secTable.rows; track $index) { <tr>@for (cell of row.cells; track $index) { <td>{{ cell }}</td> }</tr> }</tbody>
+              </table>
+            </div>
+          </div>
+        }
+      </section>
+      @if (i === inlineCtaAfter) {
+        <aside class="cta cta--inline">
+          <p class="article__cta">{{ chrome.ctaLine }}</p>
+          <div class="art__top-cta">
+            <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
+              {{ storeLabel }}
+            </a>
+            <a class="btn btn--ghost" [href]="localised('/calendar')">
+              {{ webCalendarLabel }}
+            </a>
+          </div>
+        </aside>
+      }
+    }
+
+    @if (claims.length) {
+      <section class="article__numbers">
+        <h2>{{ chrome.theNumbers }}</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">{{ chrome.colWhat }}</th>
+              <th scope="col">{{ chrome.colValue }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (claim of claims; track claim.label) {
+              <tr>
+                <td>{{ claim.label }}</td>
+                <td><b>{{ claim.value }}</b></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+    }
+
+    @if (!article.galleryCaption || article.galleryAfterContent) {
+    <section class="article__gallery">
+      <h2>{{ chrome.gallery }}</h2>
+      <cc-shot-rail [locale]="locale" [label]="chrome.gallery" [subjects]="article.galleryKinds ?? []" [device]="article.galleryDevice ?? 'iPhone'" />
+      @if (article.galleryCaption) { <p class="article__caption">{{ article.galleryCaption }}</p> }
+    </section>
+    }
+
+    <section class="article__practical">
+      <h2>{{ chrome.practical }}</h2>
+      <ol>
+        @for (step of article.practical; track step) {
+          <li>{{ step }}</li>
+        }
+      </ol>
+    </section>
+
+    <cc-more-apps [inline]="true" />
+
+    @if (article.faq?.length) {
+      <section class="article__faq">
+        <h2>{{ chrome.faqHeading }}</h2>
+        <dl>
+          @for (item of article.faq; track item.q) {
+            <dt>{{ item.q }}</dt>
+            <dd>{{ item.a }}</dd>
+          }
+        </dl>
+      </section>
+    }
+
+    @if (article.sources?.length) {
+      <section class="article__sources">
+        <h2>{{ article.sourcesHeading }}</h2>
+        <ul>
+          @for (source of article.sources; track source.url) {
+            <li><a [href]="sourceUrl(source.url)" target="_blank" rel="noopener">{{ source.label }}</a></li>
+          }
+        </ul>
+      </section>
+    }
+
+    @if (relatedComparisons.length) {
+      <section class="article__related">
+        <h2>More Comparisons</h2>
+        <ul>
+          @for (link of relatedComparisons; track link.path) {
+            <li><a [href]="link.path">{{ link.label }}</a></li>
+          }
+          <li><a href="/compare/">Browse all 30 calendar app &amp; sync comparisons →</a></li>
+        </ul>
+      </section>
+    }
+
+    @if (seeAlso.length) {
+      <section class="article__related">
+        <h2>{{ chrome.seeAlso }}</h2>
+        <ul>
+          @for (link of seeAlso; track link.path) {
+            <li><a [href]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </section>
+    }
+
+    <footer class="article__foot">
+      <p class="article__updated">{{ chrome.updated }}: {{ updated }}</p>
+      <p class="article__cta">{{ chrome.ctaLine }}</p>
+      <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
+        {{ storeLabel }}
+      </a>
+    </footer>
+  </article>
+}

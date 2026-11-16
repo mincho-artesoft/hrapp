@@ -1,0 +1,717 @@
+{
+  "checkedAt": "2026-10-21T20:44:46.647702+00:00",
+  "allPassed": true,
+  "changedHtmlPages": 116,
+  "scope": "All56changedarticles,30affectedhubs,all30revocation-price-tablepages,sitemapXMLand2exports. Complete461URLavailability andschemaindependentlychecked.",
+  "textExports": 2,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/",
+      "status": 200,
+      "sha256": "649e233249d68bafc43cf507eab869c6b4c3b78071869a7d316d6c225aca9d2c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "5750c2b9422622ab75434ac1495cfe97aea43fd863dd470f41bb7208d425feb7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "3616575a963a787598ea25ec590dfae579bb348f869e715dd51e49ae7e90740a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "550f88f06405063cabefb7917e3edf096059d242b29ac86f1920d3637c64d4ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/",
+      "status": 200,
+      "sha256": "ffcf873e104332d5453fb29b6c4092fb0c4daff303e196636937b7899647bd0c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "62cb83e8941f52a7944f91a042517ffe086aad6b1e661fe9f3df821dbe9c5216",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1b5faf531f30b5377e86653b2689233b797565757d5efdbc8447527fbffec13e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/",
+      "status": 200,
+      "sha256": "f721f1aee7a1e12aa4cfb3fd09c79c1ef3fd01bd90d5fabaa8ed27ab320dfe73",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "ca1fff378d9c7148ab616a5ca8cae5f8328194beb253cc76f1d9172baab1c312",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8236346ddfef8b5f88649d59acead5cd999786cdfe0f80416633f6eb80d91e77",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2b58034cfa7cab977dcf4e3c3f146c3eadb125d0c812801ee6aa9d1edbba9f72",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/",
+      "status": 200,
+      "sha256": "6e396cf20ebbeae72ad073909f472f1ed94582948576bdba18d2720360c6902d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "5c2798a9049c4a1993a8c1f434ff53389b57f2ecbf44ad7d7d3de43a15894974",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "b1dcbed5768bcf40cabc6bf2a914cbce5a2a310f58e9e78191d5c9ac587d78e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4661940325ba11d0cc94ee26d680fd40e6af43dc1c21e627c28a7a638a56dc75",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/",
+      "status": 200,
+      "sha256": "7edf761d601b5fdaa327c84f0a26dcd1f65c942672dab5ae2111ac53f017b5bb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "cce07ebf68c333dabbaa772bd7bcdfc82c00435075afb5ad773a594207e8a7f9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "0391f9c7c64dd3812e38fe5d65816981009dccaaf199cc1d4bf55bb1931658a2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d6e3e5455721cb5930a5aea35683c32f8a37a6d5f054d922587a6c2a6eef88a8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/",
+      "status": 200,
+      "sha256": "7cf8548a843af4bfedcc006bd41a99411cae340e6e80701b376e68be60de507b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "28b1e18c1d474bb942d5466b4c1c7ab82f4a2b18993ddae9c608e15dbd2400c3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "7e4aff908f90761d96f14a3ec0e507becd7ce88369dc146d87762bbdcf2be8f7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/",
+      "status": 200,
+      "sha256": "658bc1257d939268e043dcdd2f5758fa2e4a5826fb88fd10142dd24fa85c5a8d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "3553b7f63e30e52efa3a64cd2f86070abcd5f6318d13267a2e4fe1c798641068",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "7b3b9e527f913b233d4890f24486297709bf5b2bc12fbd61ba73e47b0fff955e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c84395855ded592de5cb7c30082c9387cf2e23048dad848eb94ad23f00c79140",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/",
+      "status": 200,
+      "sha256": "15a52ce16831908c8f4f0b2afc6e26baf94b3c090d575b179c51bf214a199a94",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "fc750b4011a744c5e495f8df10c8ec3c1b33a6a83fb0ecf73066e4d70fbcf407",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e557386247ae96a73ac6b044ba80d60fdb2fb1833a5178497546ecb13d97a559",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/",
+      "status": 200,
+      "sha256": "d76bd17a58e369c434a95a3803432f88b1b3b0f660f1f51cfa3a9158018ec144",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "ee0421307aaa804dc3d1da89710a304141b3dfe984ad918d7e234726fa25ad97",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1e476635f2411080aace53996742dab8b6616415d7f5af668078b8a0779623e9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "fc82fbfdf348b9ce673aa98304af17ca23488c2ba0aac073941efa746fa57cdd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/",
+      "status": 200,
+      "sha256": "1e72835ce842642af073bde0c0ca0b411827441562f0bfd150e1488517308c19",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "167f7ae59d70caac40ffd3d3bb39a4d115e4e9465e095b472d9b2626d2e693fe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "02d93e86c390c18b8f92bba6f52f5f183451e281c4599baeae2ba6fa146c0b03",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/",
+      "status": 200,
+      "sha256": "3b72fbe7f9950d80aab5366a7b9c3511cbd73a02b736c09a8ab2bfd5f243e032",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "c5aa4aa0c1ccda56ad8a4a35665e6d56c55fc29ac7d37583377c86e7d4927395",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1c194831c584d25985427f9a5179fa6a7c4441e0c36431b7848ade43e68d360e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "93571907f45fe32083d77654f2944e792727f6e04a10859237b4e327e10459a6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/",
+      "status": 200,
+      "sha256": "265b3e2a474efaff275ede840911746e51daee97b40827dcb49d8776bcba3fb5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "1fd462be286ab30c541f737bfd354bccf824799407a391bc3cf01867d5216152",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "40df1d9873d2819468769b5a13a997950e68483cc10a07e864b8bc697d46becc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "81ccae2afab8ab5e0909da8f826b99cac147e3262e126e3f6c3fe12200627b96",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/",
+      "status": 200,
+      "sha256": "eeeb71f63b5c1cb94b00f2595ee369b7dc5af061568fcf04e16fe9fc4a2c6f27",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "5f3746b508bf7fec031384325a439545444d7d5d0e000a0aa99d84aebc5a25f5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "f1527128145f587713213a1d49c1f85c2aa8f2fb3b2d51bc87cafb316e983f62",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "5cfaf04d83cb35d6cc014b4c7081677ce38b943667904d555e70d088697f846f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/",
+      "status": 200,
+      "sha256": "527b444d983ad2153041a55e4e1fbf5807e3be3a9401a4271ce9aee5a82bc420",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "8d559c5f199b930553bdaadc5d86049181cdf0905e706bd70f2b4d2c8e9bfae6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "aac43d13164ee5df5a915afbaf4d8ef6d1a7dfb25e1c79766fbc63f7956b7831",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "aec16291de8e0ee93df1f483d828269fccbbf27cd35857af025a89a6bf7c1ff2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/",
+      "status": 200,
+      "sha256": "93da6902b3fd7ef8a4db886c390c52dd0312b198a141df409253893d5244ed58",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "15309690b9f8d1a2dbe26b43be978c725cacfe0c2133aa6a56eee85eef570df5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "cdacceaba344f2876bbaaf5853f9bb09a45017116e5d0a6faad41d9191ade5d7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/",
+      "status": 200,
+      "sha256": "2d8bd9ab021ad2a389b045cad3d1bf5dacc1d27c7f7fb776f64733286e82370a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "2253850a7c9d304b9e0d24ea650bfa07cf8df50fdd2e4369b96b0ae271fa5407",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "0826cae7cce09d40e9c4fdce630ee9379de2675256d6acb2b911e01d57e450c2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "3fe7ba6d77db6f2b79c3efb57dd7be05777fbb6e3d6f775fc25227cf08d8bb9f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/",
+      "status": 200,
+      "sha256": "68048bc344694a2e5594c71f1c147309fa6116c8939b3a07b3e97a09b2c3a084",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "e8dad87efb4f2e7f37ad0384c055b03032dd15f67964c4283996347b71f64a58",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "31a906902b8ddc54352bd2de0078d85fe24de1c51b988890b357dec5a0e5c56f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d6cfa5476d9578610b20fc096ddec43cfa8e7c75896576a0819ee222ef9d2716",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/",
+      "status": 200,
+      "sha256": "15882dc167a285b295782913a950887ebe130dcefd3eea727a87218b428ce7fd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6243a591fbc61ee83f5415592e358c8adc676455df46d52da9354041268cae95",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "fa0fba6db349f20acf43d67fefc883a5fc74db86c47b0016b79674cd7af53f0b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "704b311e37f311f061e199e96e4493890012d1e6dcc57c438e437d5d6d002ffe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/",
+      "status": 200,
+      "sha256": "2d33ae9d944359ae5a734a2d2fec242a888b3381c4a2b2752add93b903cfd1e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "338db0906a78cf476094a26f34d66428ae8627c3f3dead5d53edbf51d9b87dc7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "37f2f6c8c7fc5793666258907f13bd7fe183bc3b0f3bb278a15d5fb313e8b1ab",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "878027c32b009f627810e20487b1416ffefa7457f36b4d215f0f32c580c7b8ac",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/",
+      "status": 200,
+      "sha256": "d1e1029dd41840a4f293430c2ad11accb78c3fbc1beb44d74a56c38fa645e5f0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6c5119dad6d07dc3496eb7a3d76564c20b84214a2b8f272be3cebe4cfaa6c4e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "c973354300910df3656fe62e4a49a553f1487c75f1f673993cdf98702cc5929d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2035efaf1f7522048dc536999082404e5f656e71811f70e4b37e94cf3e87be4d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/",
+      "status": 200,
+      "sha256": "a51e7510e7c51261f5d7f24b547ae31268b75548727c875b4198fa2949fda9c8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9d4395e68040128dc187ab4b74cb677e5f80c5adb7f37c53e6cdb8a3dc8fd558",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "9f4f8ac46670228ba58fa911319ec1ad96cf9fe5a76e516b55771b6d73f8b76e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4fef25ee9796ab67cef76f1de0c4a25b44337d14ad06865aaf03b20e4cde98ee",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/",
+      "status": 200,
+      "sha256": "5da9989a5b2db428fd8fd14556c4d254593a84fa78ed29f15020abce4082f33e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "b4a19c031cbb4804f668185c81c85750505a97be5b0c5d60d00f31a729bb9f4c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "7186a5b8d84e94a232f4a39556f48a1dd7a5dcd9e996c1ee7b2e4b078a724ebd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d65543716fd2f5f0feefcc53333279930270449bd0333db38d13fe8dcc3f0e56",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/",
+      "status": 200,
+      "sha256": "22c48a5005ef47d473210c3da3e64974e9cc3556c2f160b3bd19ebee81c08e72",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "00192e87096ce8307a406c0a6e23d45a4eeebc9b4554a95fbd1204ce862f756f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "a8f8fae4cded351b2cf67e30e6e3886003e43e9273bdd07afb9c31275406a6c9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "71d4c6e8e8be18afcb2ebd037e6e9c2ef6b4a80a28d7db5d5f8f7d7678bcbc0b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/",
+      "status": 200,
+      "sha256": "381c20a2d14d39bf4e8924f4aa5b36dd6da5346c57b1e8b9243e85052cafcce4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "7a897eb06723fdb4bbfc72f9170e9d7d508e5a4725ac7edad61cefc639c4ce71",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "66c3026d9ece43462c8923422b2a43d67c611f975252e5787e31e421d4b71bfe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2c2e289ccad8b79003c7de7e1c23ae00827cb7cf9ea599be524e8652e85f2dbb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sitemap.xml",
+      "status": 200,
+      "sha256": "091d039435ba0c780a1b3c0284c5176bb3e6e86fb6aa3a5ada8b8f8d405c5612",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/",
+      "status": 200,
+      "sha256": "99afd8df3335fea0fa34b2b2240dbf5aedd5d9f9ed9a9c4c711de7f3704d96bb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "5efcab1f5ef122b159bbe01bb9fdc6f9b3cf1330f2468c93fbc9a7b0f87a1873",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e7e8addef55079e1df904fc856d6b98d745094c1d6ca30b8032bc8e93e405f1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "f656bc69bcaa1d6592e776b5c6906fcfb06bba434bc8446207208d042d96ea6d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/",
+      "status": 200,
+      "sha256": "32154bf1241ed8da8ea1ad18674e58c87e8142abf06230b253ce3db6060242dd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "cc3e398168b9bd51b090e6be9f442ba7ff1ac6c058df89d5315d31aa72d0dce1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1b67bf61333e4893efcd6c0f5d7e4fba77f92ac24768fa5ce48c2f6768d70f25",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "946cbed57f57d69cec4fd97df5962bc0bbc8d4e929f90381561349c0521a73fc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/",
+      "status": 200,
+      "sha256": "901fab11d2b656590513f32c3f3500f0a1e13ed3bf5094f0ddf13cac3fcd705f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "04ea47906315039c610f8db6dc1385add700176f9226ee4a78eb1d65697576da",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "ec13e0a1fc892bd6ecb80da1cb19c162fcb5dcdc3f41935d39a1301a79bd5e2f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "fe33b83c5b88fb89e88523cf42a9147fbd619bd9b3fc1926d02a247a135b4a94",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/",
+      "status": 200,
+      "sha256": "997f26275dce1f05a43aa15308c67a568571a2a6344e3aa47bb01bb000221a23",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "93492d23891af3ade742d3491e98974ba695fdd5ddf5d463a6b21ac2bb5390d4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "c8631b7308c64273853d48b6ca60ef407423f108bc77ae79b78ff0c35d6477e4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4bac228b5a6724d951322c987e750cbf322d0d1d5e2f6ea7653877c796b06eff",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/",
+      "status": 200,
+      "sha256": "9e5bb210b938c41d1a9cd0c70b4d7f00772907b3c2ca67ecd7d70cb366193931",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "3410e4d15ca8b7d250692bbba8b36d81bca1357d2bc99ae849b3a6aafa2dd0bd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8ddcfa7f0a79332f949a0bc9db7995c7db8c116dc30ce1b10b9c4564506e0eca",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "f825144a5ace8a8825b3c7661cf4f7d763867a9d69fb03cce11a8edcd03676ad",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/",
+      "status": 200,
+      "sha256": "01cf72ece3f65e820494ac35d0edb71560dc106eb436f4b85ef286e300e90eec",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "60c39dd5acc31175366f8100b4f47c30ca5e423b4a35e61d5ca766b6562450f1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8761e5200778707ec0241d25fbf4f27c5ff3e121b8abe841beeb92ed80f826cc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ad6a93cb7e86fdaf3edeef5ea797dbfbe35b3a7e7508debc15910e4902054a8f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "15399bd3ca0cd438acb203aba9c555572253d6436eabe697be76b3d23ba97537",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "0860113329ea2b0d204841ccd1a37cd8bc8c4f4d5d189639627560e7e62ebf2c",
+      "matchesBuild": true
+    }
+  ]
+}

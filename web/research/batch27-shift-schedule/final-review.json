@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_correction_required",
+  "independence": "Cross-author review of the proposed draft. Reviewer previously authored intent-research.json and suggested the overnight task/example; this is not independently discovered intent evidence. No runtime certification.",
+  "readScope": "Complete before and proposed objects plus complete decision.json, product-evidence.json and root-draft-review.json read without truncation. All paragraphs, metadata, practical, FAQ, sources and related routes reviewed.",
+  "exactChanges": {
+    "changedFields": [
+      "sections",
+      "seeAlso"
+    ],
+    "paragraphPath": "sections[3].body[2]",
+    "paragraphWords": 100,
+    "relatedAppend": "recurring-events-without-the-mess",
+    "allOtherContentPreservedExactlyAsParsed": true,
+    "sections": 6,
+    "paragraphsBefore": 12,
+    "paragraphsAfter": 13,
+    "practical": 6,
+    "faq": 3,
+    "sources": 2,
+    "dateUnchanged": "2026-10-22"
+  },
+  "findings": [
+    {
+      "topic": "Endpoints",
+      "assessment": "Monday 22:00 and Tuesday 06:00 are explicit; Tuesday ending date, saved dates/times/calendar and relevant zone are checked. Does not imply automatic rollover from an earlier same-day clock time."
+    },
+    {
+      "topic": "Duration and layout",
+      "assessment": "No fixed eight-hour duration or claim that the overnight event occupies particular widget/grid rows. Check is on saved details."
+    },
+    {
+      "topic": "Rota authority and recurrence",
+      "assessment": "Uses confirmed employer rota, rejects personal edits as approval of a swap, and links existing recurrence guidance rather than claiming a Cloud occurrence-scope prompt. No generated rota, payroll or shift-template feature."
+    },
+    {
+      "topic": "Usefulness",
+      "assessment": "Concrete next-morning planning example fits existing preparation/recovery section. Recovery needs are personal planning context, not a clinical duration or labor-law assurance."
+    }
+  ],
+  "evidenceScope": {
+    "native": "Supplied full product report and root exact source-range/hash verification assessed; reviewer did not freshly inspect native source or execute app. Root source gate confirms explicit next-date selection/persistence within writable destination path.",
+    "primary": "Reviewer previously read complete Apple Mac all-day/multiday/repeating main body89–153 during intent research; no fresh web retrieval this review. No Apple control is transplanted into Cloud prose.",
+    "related": "Existing complete recurrence guide previously read in research; root corroborates current complete read. Slug already established as current English route."
+  },
+  "blockers": [],
+  "necessaryCorrections": [],
+  "files": [
+    {
+      "path": "research/batch27-shift-schedule/before.json",
+      "sha256": "6bbd4ac3cfc58dd286cd4926632204ba80550dc67c86716ecd03fcd256f9e507"
+    },
+    {
+      "path": "research/batch27-shift-schedule/a-week-view-that-fits-a-week.json",
+      "sha256": "7f90d249e37d16c20b786eaaf86bc52c88271d618e8d31103474bc0f6584c2d3"
+    },
+    {
+      "path": "research/batch27-shift-schedule/decision.json",
+      "sha256": "a43ef82a10539046420944dcb24f33f4680617d5a8f09037931b9ffb01405bb5"
+    },
+    {
+      "path": "research/batch27-shift-schedule/product-evidence.json",
+      "sha256": "a4a916b455c6a56123134b59b3a15ed2a5e4c4f233f36e6f0d3bb5d9ac4605e5"
+    },
+    {
+      "path": "research/batch27-shift-schedule/root-draft-review.json",
+      "sha256": "7e21b1d8baba249ed7d9435290ec4f1b77ef3567e9ce9901d2b06cea4693be89"
+    }
+  ],
+  "limits": [
+    "Only final-review.json written.",
+    "No source/native edit, build, deployment, simulator or customer/provider operation.",
+    "Review does not certify released-version behavior or all provider/DST combinations."
+  ]
+}

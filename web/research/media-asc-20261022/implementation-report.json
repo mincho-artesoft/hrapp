@@ -1,0 +1,37 @@
+{
+  "status": "IMPLEMENTED_AWAITING_ROOT_MANIFEST_AND_BUILD",
+  "files": [
+    {
+      "path": "src/app/core/store-media.ts",
+      "sha256": "d5ab3153d794afc2b29b1a88c2212ad2a71cd946c086052f0235a5662967391d"
+    },
+    {
+      "path": "src/app/components/store-media/store-media.component.ts",
+      "sha256": "c0fb5ec5b9a0f8ae1309070effd45fa534a252e1154ff45e2d3bbc3f0c6750e9"
+    },
+    {
+      "path": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "56419dd299f4f6014c1aa1794d3ed257a12047a7a6a97d33ded9d1387785dc50"
+    },
+    {
+      "path": "src/app/pages/home-page/home-page.component.ts",
+      "sha256": "69469fc3d62423029808446f2dc437fc8004f1f7da3b967e183dffb189c0605f"
+    },
+    {
+      "path": "src/app/pages/home-page/home-page.component.html",
+      "sha256": "b7f04080eadabc7db9d2dfb8804a79a1bddc02335d64b5c924052861c0d70c58"
+    }
+  ],
+  "placeholder": "Created missing src/app/core/store-media-manifest.json with emptylocales and agreed widths only; root owns final replacement.",
+  "behavior": [
+    "ShotRail prefers storemanifest perlocale.media/device; oldlocalizedfallback retained; articledefaultiPhone",
+    "Explicit kind uses existing localizeddescriptions; dimensions fromnativeASCmetadata; responsiveheightauto, no crop",
+    "Signaldeviceinput andlocalesignal recompute; home media section tracksmedia/device to resetvideonodes onlocalechange",
+    "Home section aftershowcase uses existinglocalizedshowcase.title joined withspaces; no articlebundles",
+    "Threeuniversaldevicelabels iPhone/iPad/iPhoneDuo; renderonlyactualset",
+    "Optionalvideo requires nonempty src/poster and positivedimensions; nativecontrols,preloadnone,playsinline,noautoplay/loop/muted imposed",
+    "No additionalEnglishfallback; Bulgarianexistingmedia=en-US remains",
+    "Oldshowcaseheroimages/widgetvideo/privacy untouched"
+  ],
+  "validation": "Read implementeddiff and sourcecontracts; no build/deploy/commit pertask. Finalmanifest physicalexistence/assetdecode/altsemanticaccuracy andbrowserplayback/rootbuild pending."
+}

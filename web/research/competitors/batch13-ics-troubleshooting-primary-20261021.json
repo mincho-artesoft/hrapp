@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-21",
+  "scope": "Two previously discovered exact primary URLs; full substantive text reviewed, no runtime testing or failed URL retries.",
+  "reviews": [
+    {
+      "url": "https://docs.onecal.io/docs/help/ics-calendars",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive lines22-44of50",
+      "publisherFindings": [
+        "Describes a provider-mediated subscribed-feed route rather than direct ICS URL subscription in OneCal.",
+        "Read-only subscribed source differs from writable cloning target; provider controls refresh timing."
+      ],
+      "mapping": [
+        "the-secret-address-of-a-google-calendar",
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "limits": [
+        "Do not infer Cloud booking availability, clone sync or OneCal import UI support.",
+        "Publisher claims are not independently tested capabilities."
+      ]
+    },
+    {
+      "url": "https://docs.onecal.io/docs/help/events-not-syncing",
+      "publisher": "OneCal",
+      "status": "full",
+      "readScope": "Substantive lines23-55of69",
+      "publisherFindings": [
+        "Separates processing state, expired access, plan state, selection filters, date horizon and display hiding from source deletion.",
+        "Documents its own cloning workflow and provider-dependent horizon; values are not Cloud implementation evidence."
+      ],
+      "mapping": [
+        "google-calendars-that-never-reach-your-iphone",
+        "why-a-shared-calendar-does-not-appear",
+        "when-two-calendars-disagree"
+      ],
+      "limits": [
+        "No OneCal runtime test; do not copy subscription cleanup behavior or support reset advice into Cloud.",
+        "No Google rank, volume or ChatGPT recommendation inferred."
+      ]
+    }
+  ],
+  "deduplication": "Current rewritten missing-Google/secret-address guides already cover route, selection, available-date and refresh distinctions. Other canonicals listed as candidate mappings need their own continued editorial audit; no new near-duplicate English page generated."
+}

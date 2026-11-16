@@ -1,0 +1,15 @@
+{
+  "locale": "fr-FR",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Tous les agendas que vous avez — iCloud, Google, Microsoft — au même endroit, avec la prévision intégrée à la journée elle-même. Fini les suppositions sur l’après-midi.",
+      "after": "Consultez les agendas iCloud et Google sélectionnés sur iPhone et iPad, avec les prévisions disponibles à côté de vos projets. Premium ajoute la connexion aux agendas Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Vos agendas et la prévision, au même endroit. Conçu pour iPhone et iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Agendas iCloud et Google, météo et widgets sur iPhone et iPad. Téléchargement gratuit ; Premium ajoute les agendas Microsoft et Teams."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-23",
+  "method": "Local JSON shape, article-link existence and independent byte/time arithmetic; no app runtime test.",
+  "fixtures": [
+    "SUMMARY prefix8octets;22CJKcharacters74octets;23CJKcharacters77octets.",
+    "CRLF-space fold restoresQuarterly without an inserted space.",
+    "REPEAT4 with5minuteinterval produces5actions through10:05Z.",
+    "Hypothetical forward/backward offsets produce23/25elapsedhours for noon-to-noon."
+  ],
+  "articles": [
+    {
+      "slug": "icalendar-dtstamp-last-modified-created",
+      "newSlug": true,
+      "descriptionCharacters": 140,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "newSlug": true,
+      "descriptionCharacters": 144,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "newSlug": true,
+      "descriptionCharacters": 142,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-alarm-repeat-duration-count",
+      "newSlug": true,
+      "descriptionCharacters": 136,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "newSlug": true,
+      "descriptionCharacters": 139,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-vfreebusy-periods-not-event-details",
+      "newSlug": true,
+      "descriptionCharacters": 148,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "ics-line-folding-utf8-octets",
+      "newSlug": true,
+      "descriptionCharacters": 148,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "ics-text-escaping-commas-semicolons-newlines",
+      "newSlug": true,
+      "descriptionCharacters": 145,
+      "contextLinksExist": true,
+      "rectangularTable": true,
+      "reviewStatus": "draft"
+    }
+  ]
+}

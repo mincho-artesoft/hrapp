@@ -1,0 +1,1334 @@
+{
+  "google-appointment-payments-stripe-refunds": {
+    "updated": "2026-10-23",
+    "title": "Paid Google appointments: separate booking cancellation from a Stripe refund",
+    "short": "Paid Google appointments",
+    "description": "Set up an eligible paid Google booking workflow and keep cancellation, Stripe refunds and payment requirements separate.",
+    "lede": "A cancelled appointment is not automatically a refunded payment. If you use Google Calendar’s eligible paid appointment schedules, trace the booking and the Stripe payment as separate records. That distinction matters both when introducing a paid service and when a customer later cancels.",
+    "sections": [
+      {
+        "heading": "Check the feature and the responsible accounts",
+        "body": [
+          "Google describes paid appointments as an eligible Workspace premium feature, controlled by an administrator in managed organizations. Stripe must be connected. A missing payment option is therefore an eligibility or account question before it is a booking-form fault.",
+          "For a fictional tutoring service, write down who owns the Google schedule, who manages the connected Stripe account and who handles customer questions. This responsibility record does not require storing card details. Check the actual account’s current availability rather than assuming that a calendar app subscription enables Google payments."
+        ]
+      },
+      {
+        "heading": "Configure a deliberate paid offering",
+        "body": [
+          "Google’s computer workflow connects Stripe under Settings, General, Appointment schedules. In the intended schedule, its payment-and-cancellation section lets you require payment, enter an amount and currency, and add a cancellation policy before saving. Review the public booking form as well as the owner’s editor.",
+          "Use a clearly identified service rather than copying an unrelated appointment. Before sharing, check duration, displayed service name, price/currency and the policy wording you intend customers to see. The checklist is operational; it does not prescribe a legally sufficient policy or recommend a price."
+        ]
+      },
+      {
+        "heading": "Keep a cancellation and refund ledger",
+        "body": [
+          "Suppose the fictional service receives a cancellation for a Tuesday lesson. Record the appointment identifier, cancellation date, payment reference and person handling the request. A calendar cancellation can settle the scheduling record while the money question is still unresolved.",
+          "Google says refunds are handled in Stripe and are not processed automatically when either side cancels. An organizer uses the Stripe dashboard; a customer reviews the organizer’s policy and contacts them. Mark the refund field pending until the responsible person checks the actual payment record, rather than inferring it from an empty calendar slot."
+        ]
+      },
+      {
+        "heading": "Treat disconnecting payments as a broader change",
+        "body": [
+          "Google warns that disconnecting Stripe removes payment requirements from all appointment schedules. Before doing that, inventory the schedules that currently depend on payment and decide what should replace that arrangement. Do not disconnect merely to repair one customer’s cancellation.",
+          "After any intended change, inspect the booking page and retain the relevant payment references privately. This workflow belongs to Google and Stripe. It does not establish paid booking, refund or payment-card controls inside Cloud Calendars."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A fictional paid-lesson status sheet",
+      "columns": [
+        "Record",
+        "Question to settle",
+        "Completion evidence"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Appointment",
+            "Was the booking cancelled?",
+            "Organizer’s saved calendar state"
+          ]
+        },
+        {
+          "cells": [
+            "Payment",
+            "Was money actually returned?",
+            "Stripe refund record, where applicable"
+          ]
+        },
+        {
+          "cells": [
+            "Future bookings",
+            "Is payment still required?",
+            "Current intended schedule configuration"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm Google eligibility, administrator allowance and Stripe ownership.",
+      "Review the intended schedule’s payment requirement and public form.",
+      "Track appointment cancellation separately from the payment reference.",
+      "Verify a refund in the payment system rather than assuming cancellation caused it."
+    ],
+    "faq": [
+      {
+        "q": "Does cancelling a Google appointment refund the customer?",
+        "a": "Google says the refund is not automatic. Follow the organizer’s stated process and check the Stripe payment record."
+      },
+      {
+        "q": "Can disconnecting Stripe fix only one paid schedule?",
+        "a": "Google warns that disconnecting removes payment requirements from all appointment schedules. Review the full affected set first."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Require payments for appointments",
+        "url": "https://support.google.com/calendar/answer/13762729?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Choose a booking workflow rather than a shared calendar"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Distinguish replies from completed arrangements"
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "label": "Confirm any separate resource reservation"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "keeping-track-of-who-replied",
+      "calendar-event-or-room-reservation"
+    ]
+  },
+  "google-appointment-email-verification": {
+    "updated": "2026-10-23",
+    "title": "Google appointment email verification: what guests must do and what it proves",
+    "short": "Google appointment email verification",
+    "description": "Enable eligible Google booking email verification and check the signed-in and guest journeys without treating a PIN as identity proof.",
+    "lede": "Google appointment email verification checks access to an email inbox during booking. The journey differs for someone already signed into a Google Account. Check those two paths before telling every customer to wait for a PIN or assuming that one verification step establishes a person’s identity.",
+    "sections": [
+      {
+        "heading": "Decide what problem this control addresses",
+        "body": [
+          "A fictional workshop organizer wants fewer unwanted bookings. Write the limited goal as confirm access to the supplied inbox, not prove the customer’s legal identity or guarantee attendance. Keep payment, appointment availability and cancellation decisions outside this verification check.",
+          "Google requires an eligible Workspace subscription and says verification is initially off. Before advertising the step to guests, inspect the relevant schedule and account. Do not treat a missing control as evidence that every Google booking page offers the same plan features."
+        ]
+      },
+      {
+        "heading": "Enable the schedule’s booking-form option",
+        "body": [
+          "On a computer, Google documents creating or editing the appointment schedule, opening Booking form, checking the email-verification requirement and saving. Review the intended schedule rather than changing another service with a similar name.",
+          "Write a short customer instruction appropriate to the actual form. If you are checking it with a colleague, agree a harmless booking and remove it through the documented cancellation route afterwards. Do not collect the colleague’s sign-in password or verification code to perform the check for them."
+        ]
+      },
+      {
+        "heading": "Compare the two guest journeys",
+        "body": [
+          "For a guest without a Google sign-in, Google describes entering an email address, obtaining a PIN from that inbox, entering it on the booking page and submitting. A signed-in Google user receives prefilled booking details and is not asked to submit a PIN.",
+          "For the fictional organizer, record the two journeys separately: visitor state, displayed email, whether a PIN was requested, and whether the intended booking completed. The absence of a PIN for a signed-in visitor is not enough to diagnose a broken setting. These are suggested observations, not results measured for this article."
+        ]
+      },
+      {
+        "heading": "Keep booking confirmation separate",
+        "body": [
+          "Once the form is submitted, check the actual appointment confirmation and intended time. Inbox access is not proof that the person will attend, that a payment cleared, or that all private details should be shared with them.",
+          "If a guest cannot finish, ask which step stopped: email entry, inbox delivery, code entry or confirmation. Request only the information needed to locate the failure. They should enter any code themselves; a support conversation does not need a copy of it."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Verification-path worksheet",
+      "columns": [
+        "Visitor state",
+        "Documented verification behavior",
+        "Record separately"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Signed into a Google Account",
+            "Prefilled details; no PIN submission requested",
+            "Intended email and completed appointment"
+          ]
+        },
+        {
+          "cells": [
+            "Guest without Google sign-in",
+            "Inbox PIN entered on booking page",
+            "Form step reached and confirmation"
+          ]
+        },
+        {
+          "cells": [
+            "Organizer reviewing the outcome",
+            "Checks saved booking",
+            "Attendance or payment, if relevant"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check account eligibility and the intended appointment schedule.",
+      "Save the booking-form verification choice.",
+      "Compare signed-in and guest paths without exchanging credentials.",
+      "Check the booking confirmation independently of inbox access."
+    ],
+    "faq": [
+      {
+        "q": "Why did a guest not receive a PIN?",
+        "a": "A signed-in Google user is not asked to submit a PIN in the documented flow. Establish the visitor’s sign-in state before diagnosing delivery."
+      },
+      {
+        "q": "Does the PIN guarantee the customer will attend?",
+        "a": "No. Treat inbox access, appointment confirmation and later attendance as separate observations."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Verify emails for appointments",
+        "url": "https://support.google.com/calendar/answer/11902347?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Check that the URL is a booking page"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Keep confirmation separate from attendance"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "label": "Use an invitation for an already arranged event"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "keeping-track-of-who-replied",
+      "sharing-one-event-not-your-calendar"
+    ]
+  },
+  "google-booking-page-link-button-embed": {
+    "updated": "2026-10-23",
+    "title": "Share a Google booking page: link, popup button or inline embed",
+    "short": "Share a Google booking page",
+    "description": "Choose a Google booking-page link or website embed, check whether it shows one service or all services, and review the public identity.",
+    "lede": "A direct booking link, a website button and an inline booking page can lead visitors into the same scheduling service through different presentations. Choose the destination first: one specific service or all booking pages on the primary calendar. Then inspect what a public visitor will see.",
+    "sections": [
+      {
+        "heading": "Start from the visitor’s next decision",
+        "body": [
+          "For a fictional repair business, a product page should offer only its setup consultation, while a general contact page may list all services. Record page location, intended service scope and button wording before copying code. A button labelled Book a setup call should not unexpectedly expose unrelated offerings.",
+          "Google says a booking page is public and its profile photo and account name are visible to anyone with the link. Hiding the calendar from your own list does not make that page private. Review the public identity before adding the URL to an email signature or website."
+        ]
+      },
+      {
+        "heading": "Choose the supported delivery format",
+        "body": [
+          "Google’s computer help offers a copied booking-page link, a popup button and an inline booking page. Its Website embed sharing options distinguish all booking pages from one selected page; the generated code is then pasted into the website’s HTML.",
+          "Use a direct link where the channel does not support embedded code. For a website, decide whether visitors should open a popup or see the form within the page. The source describes button text/color choices and inline width/height adjustments, but it does not establish that every host permits every script or embed."
+        ]
+      },
+      {
+        "heading": "Review a small publishing checklist",
+        "body": [
+          "For the repair example, compare the specific-service destination with the all-services destination before publication. Inspect the displayed business identity, service description, currently offered slots and the page’s behavior on the website layout you actually use.",
+          "Use one cooperative colleague to follow the visitor route. Ask them to report where they arrived rather than saying the button works because it changed color. If you agree a test booking, check its confirmation and remove it through the normal supported route. Do not use a customer’s real appointment as a layout experiment."
+        ]
+      },
+      {
+        "heading": "Maintain the distribution map",
+        "body": [
+          "Keep a private list of published locations: product page, contact page, signature and campaign message. If the intended service or booking destination changes, revisit those locations instead of assuming every previously copied URL has been updated.",
+          "This is Google’s booking-page publication workflow. It differs from embedding a public calendar grid, sending an agreed meeting invitation, or sharing an editable calendar. Cloud Calendars views do not by themselves create these booking-page controls."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A fictional repair business’s distribution map",
+      "columns": [
+        "Location",
+        "Intended destination",
+        "Visitor check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Setup product page",
+            "One setup consultation",
+            "No unrelated service choices"
+          ]
+        },
+        {
+          "cells": [
+            "General contact page",
+            "All intended booking pages",
+            "Expected service list and identity"
+          ]
+        },
+        {
+          "cells": [
+            "Email message",
+            "Direct booking link",
+            "Correct destination without embedded code"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Choose one service or the intended all-services page.",
+      "Review the public account identity.",
+      "Use a link or the supported website embed option.",
+      "Check the real visitor destination and record every published location."
+    ],
+    "faq": [
+      {
+        "q": "Does hiding my calendar hide the booking page?",
+        "a": "Google explicitly says calendar-list visibility does not control the booking page’s public visibility."
+      },
+      {
+        "q": "Is embedding a calendar the same as embedding a booking page?",
+        "a": "No. One displays schedule information; the other asks a visitor to choose an appointment. Use the code and destination for the intended task."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Share your appointment schedule",
+        "url": "https://support.google.com/calendar/answer/10733297?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Choose the type of sharing URL"
+      },
+      {
+        "slug": "the-secret-address-of-a-google-calendar",
+        "label": "Keep a private calendar feed out of public links"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "label": "Send an invitation when the time is already agreed"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "the-secret-address-of-a-google-calendar",
+      "sharing-one-event-not-your-calendar"
+    ]
+  },
+  "google-calendar-time-insights-counted-meetings": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar Time Insights: reconcile the meetings that actually count",
+    "short": "Google Calendar Time Insights",
+    "description": "Check Google Time Insights eligibility, counted meetings and overlapping time before treating the dashboard as a record of your whole working week.",
+    "lede": "Time Insights is a calendar-derived meeting view, not a measurement of everything you worked on. If its total differs from the hours you counted manually, first check qualifying events, the displayed range and overlaps. A larger number of calendar blocks does not necessarily mean more counted meeting time.",
+    "sections": [
+      {
+        "heading": "Check eligibility, calendar and date range",
+        "body": [
+          "Google documents Time Insights for supported work or school accounts on a computer, subject to administrator availability. It belongs to the primary calendar; the owner and people with the relevant sharing-management permission can access it. Confirm those boundaries before treating an absent option as missing data.",
+          "Write the range you intend to analyze. Google says the selected calendar view affects the range, and its meeting averages use prior-week or prior-month periods depending on the view. Do not compare an average with a hand-summed single day without first checking what each number describes."
+        ]
+      },
+      {
+        "heading": "Apply the qualifying-event rules",
+        "body": [
+          "Google’s documented counted meetings require a Yes response, at least one other guest, Busy status and a duration below eight hours. A private solo preparation block is therefore a different kind of time from a qualifying meeting.",
+          "Use the dashboard’s highlighted graph sections to locate the underlying meetings, then record the reason for an omission. Keep missing calendar access, an unaccepted invitation and a non-qualifying solo item as different cases. The dashboard is not evidence that an uncounted activity never happened."
+        ]
+      },
+      {
+        "heading": "Reconcile a fictional morning",
+        "body": [
+          "Imagine an accepted Busy meeting with one colleague from 09:00 to 10:00 and another accepted Busy group meeting from 09:30 to 10:30. The displayed appointments add up to two event-hours, but their combined occupied interval is ninety minutes. Google says overlapping meeting time is not counted twice for the same period.",
+          "Add a solo preparation block at 11:00 and a meeting still awaiting your response. Those are useful planning items but should not simply be added to the qualifying-meeting total. The example is arithmetic based on the documented rules, not a captured Time Insights result; inspect your own highlighted meetings to reconcile the real range."
+        ]
+      },
+      {
+        "heading": "Use the result for a planning decision",
+        "body": [
+          "Keep a review note with range, qualifying events, overlapping intervals and unanswered invitations. If you want to reduce meeting load, identify one concrete scheduling decision rather than calling the total a productivity score.",
+          "Time Insights has additional breakdowns and people-related displays with their own conditions. Read the official definitions before interpreting them. Cloud Calendars can help review appointments, but this article does not claim it reproduces Google’s analytics or has access to every qualifying meeting."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Fictional reconciliation examples",
+      "columns": [
+        "Calendar item",
+        "Question to inspect",
+        "Interpretation"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "09:00–10:00 and 09:30–10:30 meetings",
+            "Both qualify?",
+            "90 occupied minutes rather than 120 additive event-minutes"
+          ]
+        },
+        {
+          "cells": [
+            "Solo preparation block",
+            "Any other guest?",
+            "Not automatically qualifying meeting time"
+          ]
+        },
+        {
+          "cells": [
+            "Unanswered invitation",
+            "Yes response present?",
+            "Keep it separate from accepted meetings"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm an eligible primary calendar and the intended date range.",
+      "Check qualifying-event conditions before summing blocks.",
+      "Inspect the highlighted underlying meetings.",
+      "Reconcile overlapping intervals and keep the result separate from actual work measurement."
+    ],
+    "faq": [
+      {
+        "q": "Does an uncounted task mean I did no work?",
+        "a": "No. Calendar meeting criteria do not measure all activity or task completion."
+      },
+      {
+        "q": "Should overlapping meetings be added as separate hours?",
+        "a": "Google says meeting time counts once for a period. Inspect the occupied interval instead of adding every event duration."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: View how you spend time in meetings",
+        "url": "https://support.google.com/calendar/answer/10738043?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "label": "Review the week’s commitments"
+      },
+      {
+        "slug": "automatic-time-blocking-versus-manual-calendar",
+        "label": "Separate task allocation from meetings"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Check the sharing authority behind the view"
+      }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "automatic-time-blocking-versus-manual-calendar",
+      "who-can-see-what-in-google-calendar"
+    ]
+  },
+  "google-calendar-offline-desktop-limits": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar offline on a computer: prepare the view and know what cannot change",
+    "short": "Google Calendar offline on a computer",
+    "description": "Prepare Google Calendar offline in Chrome, wait for readiness and distinguish cached viewing from event editing, guest email and tasks.",
+    "lede": "Google Calendar’s documented offline desktop workflow is for reading a prepared calendar in Chrome. It does not provide the same editing behavior as every mobile app. Prepare and verify the browser while connected, then keep unavailable actions out of the plan.",
+    "sections": [
+      {
+        "heading": "Choose the information you must carry",
+        "body": [
+          "For a fictional trip, list tomorrow’s departure appointment, the hotel check-in time and the next day’s meeting. Identify the owning calendars and open the relevant details while online. An event existing at the provider is not proof it has reached this browser.",
+          "Google documents offline viewing of the previous four weeks and future events in day, week or month views. Historical research outside that period is a different requirement. If a specific document or meeting attachment matters, check its own availability separately; a visible calendar title does not prove linked files are offline."
+        ]
+      },
+      {
+        "heading": "Enable and wait for the browser’s readiness state",
+        "body": [
+          "In Google Calendar on a computer, Google’s instructions use Settings, General, Offline, then enable the offline calendar and reload. The calendar synchronizes and later reports readiness. Wait for that state rather than closing the computer immediately after checking the box.",
+          "Record the calendar identity and when preparation was checked. This is a desktop Chrome workflow. Do not transfer its limits to Google’s installed iPhone app or assume that an unrelated third-party application shares the browser’s cached data."
+        ]
+      },
+      {
+        "heading": "Perform a non-destructive offline check",
+        "body": [
+          "At a convenient time, disconnect the computer from the network without signing out, removing accounts or clearing browser data. Open the same calendar and inspect the listed trip entries. Record which details are visible and the offline status shown.",
+          "Google says the desktop offline workflow cannot create or edit events, email guests or access tasks. If the fictional meeting needs a last-minute change, record the intended decision somewhere appropriate and complete the actual organizer update after reconnecting. Do not mistake an unsent note for a revised invitation."
+        ]
+      },
+      {
+        "heading": "Restore connectivity before making shared changes",
+        "body": [
+          "Once online, compare the meeting in its owning calendar before editing or contacting participants. If another organizer changed it during the outage, reconcile the current source rather than following an older visible copy.",
+          "Google warns that clearing cached images and files removes offline calendar support, requiring setup again. Recheck preparation after browser cleanup. A successful offline viewing rehearsal is useful evidence for that device and date, not a promise that every account, file or future browser state will work indefinitely."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A fictional trip’s offline checklist",
+      "columns": [
+        "Needed item",
+        "Prepared check",
+        "Separate limitation"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Tomorrow’s appointment",
+            "Visible after readiness and disconnection",
+            "No desktop offline rescheduling"
+          ]
+        },
+        {
+          "cells": [
+            "An old trip outside four weeks",
+            "Use an appropriate separate reference",
+            "Not assumed in the cached history"
+          ]
+        },
+        {
+          "cells": [
+            "Meeting change to guests",
+            "Complete when connected",
+            "No offline guest email in this workflow"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "List the exact dates and details needed.",
+      "Enable desktop offline in Chrome and wait for readiness.",
+      "Check the same entries disconnected without changing accounts.",
+      "Reconnect before organizer updates and recheck after clearing browser cache."
+    ],
+    "faq": [
+      {
+        "q": "Can I edit an event offline in the desktop workflow?",
+        "a": "Google says no. Its documented browser offline view also excludes emailing guests and accessing tasks."
+      },
+      {
+        "q": "Will clearing the browser cache affect this?",
+        "a": "Google says cached images/files cleanup removes offline support. Prepare it again before relying on the browser without a connection."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Use Google Calendar offline",
+        "url": "https://support.google.com/calendar/answer/1340696?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Compare account and app connection behavior"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Prepare a readable dated reference when appropriate"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Check the trip’s event and display zones"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "calendar-export-ics-pdf-and-backup",
+      "time-zones-and-the-flight-you-booked"
+    ]
+  },
+  "google-calendar-keyboard-shortcuts-workflow": {
+    "updated": "2026-10-23",
+    "title": "A Google Calendar keyboard workflow: navigate, create, verify and return",
+    "short": "A Google Calendar keyboard workflow",
+    "description": "Use documented Google Calendar keyboard shortcuts for a checked desktop workflow, without confusing focus, saving and destructive actions.",
+    "lede": "A useful keyboard routine ends with the intended saved event, not just fewer keystrokes. Enable Google Calendar’s desktop shortcuts, practice with a disposable appointment and check where focus is before using a single-letter command. Keep editing and deletion out of an unverified navigation sequence.",
+    "sections": [
+      {
+        "heading": "Enable shortcuts before testing a routine",
+        "body": [
+          "Google documents a keyboard-shortcut preference in desktop Calendar settings and provides an in-app reference reached with the question-mark key after enabling it. Keep that reference as the authority for the browser and interface you use.",
+          "For a fictional equipment check, write the intended date, start/end times and destination calendar first. Those are acceptance criteria for the routine. Faster navigation cannot establish that the calendar, participant or recurrence fields are correct."
+        ]
+      },
+      {
+        "heading": "Use a small, reversible command set",
+        "body": [
+          "Google documents g for a specific date, w or 2 for week view, c to create an event, and Escape to return from details to the grid. Its event-save command is Command-S on Mac or Control-S on Windows from event details. Use the reference rather than guessing a key while a text field or another page has focus.",
+          "Start with navigation and a sample title. In a typed field, a character may be input rather than the command you intended. Pause whenever the visible result differs from the expected view. Do not compensate by typing a longer series of remembered keys into an unknown focus state."
+        ]
+      },
+      {
+        "heading": "Run the equipment-check rehearsal",
+        "body": [
+          "Navigate to the agreed date, open a new event, and enter the harmless equipment-check details. Inspect the actual fields before saving: month/day, time, calendar, title and absence of unintended guests. Reopen the record and compare it with the written criteria.",
+          "Record any point where you needed a pointer or a different control. That is a practical routine to improve, not a failed speed benchmark. The workflow is a suggestion for your own rehearsal; no keyboard performance or accessibility test was conducted for this article."
+        ]
+      },
+      {
+        "heading": "Keep destructive shortcuts outside the first rehearsal",
+        "body": [
+          "Google’s reference also includes delete and undo actions. Learn their scope only after verifying which event is selected and what a confirmation means, especially for a recurring meeting. Do not use a real shared invitation as a shortcut experiment.",
+          "When confident, extend one step at a time and retain the saved-event check. Natural-language parsing, dictation and keyboard navigation are different tools. These Google commands are not a shortcut contract for Cloud Calendars, another application or a mobile browser."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The rehearsal’s acceptance criteria",
+      "columns": [
+        "Stage",
+        "Expected observation",
+        "Stop when"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Navigate",
+            "Correct named date and view",
+            "The visible date differs"
+          ]
+        },
+        {
+          "cells": [
+            "Create",
+            "New harmless event with intended fields",
+            "Unexpected guests or destination appear"
+          ]
+        },
+        {
+          "cells": [
+            "Save and reopen",
+            "Record matches the written brief",
+            "Only a page transition is confirmed"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Enable shortcuts and open Google’s current in-app reference.",
+      "Write a disposable event’s intended fields.",
+      "Practice a short navigation/create/save routine with visible checks.",
+      "Reopen the result before adding more commands or using important events."
+    ],
+    "faq": [
+      {
+        "q": "Is pressing the save shortcut proof the event is correct?",
+        "a": "No. Reopen the record and compare its actual fields with the intended appointment."
+      },
+      {
+        "q": "Are the same keys valid in every calendar app?",
+        "a": "No. This guide uses Google Calendar’s documented computer reference. Check the application and focus you actually have."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Use keyboard shortcuts in Google Calendar",
+        "url": "https://support.google.com/calendar/answer/37034?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "natural-language-calendar-events-iphone",
+        "label": "Distinguish parsing from keyboard entry"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "label": "Verify the destination calendar"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Check edit scope before changing a series"
+      }
+    ],
+    "seeAlso": [
+      "natural-language-calendar-events-iphone",
+      "event-saved-to-wrong-calendar",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "google-calendar-alternate-calendar-moon-sports": {
+    "updated": "2026-10-23",
+    "title": "Google alternate dates, Moon phases or sports: choose the right calendar source",
+    "short": "Google alternate dates, Moon phases or sports",
+    "description": "Choose Google’s alternate date display or an added Moon/sports calendar, then verify the schedule without moving existing appointments.",
+    "lede": "An alternate date label and an additional calendar source do different jobs. In Google Calendar, lunar or solar date displays, Moon phases and sports schedules use different controls. Identify which result you want before adding sources or changing the date of an existing appointment.",
+    "sections": [
+      {
+        "heading": "Name the desired change to the view",
+        "body": [
+          "A fictional household wants to read an alternate date alongside its usual dates and follow one team’s fixtures. Those are two separate requirements. Changing how a day is labelled is not the same as subscribing to a list of events.",
+          "Write a small view inventory: ordinary appointments, alternate date labels, Moon-phase entries if wanted, and the chosen team schedule. Do not put a new date system into an event title simply to reproduce a display setting, or move an existing appointment because its secondary label looks unfamiliar."
+        ]
+      },
+      {
+        "heading": "Use the matching Google control",
+        "body": [
+          "Google’s computer documentation places lunar/solar selection in Settings, View options, Alternate calendars, with None removing that display. Moon phases and sports are added through Browse calendars of interest; the relevant box selects the Moon-phase source or a named team schedule.",
+          "Choose one change at a time and return to the calendar. Inspect the selected source name and a known date. Adding a sports category does not establish that every league or team you need is available; use the actual offered list and an official fixture source to check the intended team."
+        ]
+      },
+      {
+        "heading": "Reconcile a sample week",
+        "body": [
+          "For the household, choose one existing appointment with an unambiguous written date. After enabling the alternate date display, verify that appointment still belongs to the same day. Then select the team calendar and inspect one fixture’s team identity, date and time.",
+          "Record whether the new information is a label or an event from a selected source. If the view is crowded, remove or deselect the intended optional item rather than deleting the household’s appointment. The table is an organizing worksheet, not a claim that every source follows the same update timing."
+        ]
+      },
+      {
+        "heading": "Keep date display separate from forecasts and commitments",
+        "body": [
+          "A Moon-phase entry describes the source’s calendar information; it does not turn a calendar into a local weather forecast. A sports fixture is not a personal attendance commitment or a reservation. Add your own travel or attendance planning only after confirming the actual arrangement.",
+          "Apple Calendar and Cloud Calendars can expose different display controls and sources. The linked language/alternate-calendar guide explains why a device setting should not be assumed to govern every app. Use this page for Google’s specific source-selection task."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The fictional household’s view inventory",
+      "columns": [
+        "Need",
+        "Type of change",
+        "Verification"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Read another date system",
+            "Alternate date display",
+            "Same appointment remains on its intended day"
+          ]
+        },
+        {
+          "cells": [
+            "See Moon phases",
+            "Added calendar information",
+            "Correct selected source"
+          ]
+        },
+        {
+          "cells": [
+            "Follow one team",
+            "Sports schedule source",
+            "Actual team, fixture date and time"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Separate a secondary date label from an additional event source.",
+      "Use the documented Google control for that type.",
+      "Add one source at a time and inspect a known appointment.",
+      "Confirm fixtures independently before making attendance or travel commitments."
+    ],
+    "faq": [
+      {
+        "q": "Does an alternate calendar move my existing appointment?",
+        "a": "Treat the setting as a display choice and verify the unchanged saved date. Rescheduling is a separate event-editing operation."
+      },
+      {
+        "q": "Is a Moon-phase calendar a weather forecast?",
+        "a": "No. Keep astronomical calendar information and a location-specific forecast as different sources and planning questions."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Add or remove alternate calendars",
+        "url": "https://support.google.com/calendar/answer/13748650?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "iphone-calendar-language-alternate-calendar-settings",
+        "label": "Separate labels, language and saved event dates"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Verify event times when following distant fixtures"
+      },
+      {
+        "slug": "weather-calendar-history-versus-forecast-iphone",
+        "label": "Distinguish calendar information from a forecast"
+      }
+    ],
+    "seeAlso": [
+      "iphone-calendar-language-alternate-calendar-settings",
+      "time-zones-and-the-flight-you-booked",
+      "weather-calendar-history-versus-forecast-iphone"
+    ]
+  },
+  "google-calendar-add-ons-conferencing-permissions": {
+    "updated": "2026-10-23",
+    "title": "Google Calendar add-ons: install the intended integration and check its meeting account",
+    "short": "Google Calendar add-ons",
+    "description": "Install an approved Google Calendar add-on, select its conferencing provider for a sample event and verify the intended integration account.",
+    "lede": "Installing an add-on and creating a usable meeting are separate checkpoints. First establish whether the Google account may install the integration; then select the intended conferencing provider in the event and verify which service account is signing in. A Marketplace installation alone does not confirm the meeting’s joining details.",
+    "sections": [
+      {
+        "heading": "Write the integration brief",
+        "body": [
+          "For a fictional project group, list the meeting service required, the calendar that owns the event and the person allowed to approve the integration. If a workplace controls installation, ask for its approved route rather than using a personal calendar to bypass the restriction.",
+          "Google points to Workspace Marketplace for Calendar add-ons and says missing installation options can require administrator help. Keep the integration’s purpose distinct from account-wide calendar sharing. An app being available in a marketplace is not this article’s security endorsement."
+        ]
+      },
+      {
+        "heading": "Install and choose the conferencing route",
+        "body": [
+          "Google’s computer instructions open Get add-ons from Calendar settings or its side panel. After the approved installation, the event’s conferencing dropdown can select the add-on instead of Google Meet, followed by the provider’s account sign-in steps.",
+          "Check the account shown by that provider before continuing. The Google calendar owner and conferencing-service identity can be different decisions. For a sample event, record both explicitly instead of assuming the most recently signed-in personal account is the intended host."
+        ]
+      },
+      {
+        "heading": "Verify a harmless sample meeting",
+        "body": [
+          "Create a clearly labelled test appointment with no private agenda and only cooperative participants where needed. Inspect the saved date, owning calendar and generated joining information. Ask the intended participant to check the correct link using their own account and normal access conditions.",
+          "If the integration fails, record which stage failed: installation, sign-in, event conference creation or participant access. Google directs add-on problems to its developer through Marketplace. A missing join result is not by itself a reason to reconnect every calendar account."
+        ]
+      },
+      {
+        "heading": "Uninstall or revoke deliberately",
+        "body": [
+          "Google documents uninstalling through Marketplace and notes that some managed installations require an administrator. Before removal, list which future meetings depend on the integration and agree how those meetings should be maintained.",
+          "Do not assume uninstalling rewrites existing invitations, cancels a provider subscription or erases earlier content. Review those questions in the relevant service. Cloud Calendars’ own Google Meet and Teams options are separate from installing a Google Marketplace add-on in the web calendar."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A fictional integration check record",
+      "columns": [
+        "Checkpoint",
+        "Identity or result to record",
+        "Owner of the next action"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Installation",
+            "Approved add-on and Google account",
+            "User or administrator"
+          ]
+        },
+        {
+          "cells": [
+            "Conference creation",
+            "Intended provider host account",
+            "Organizer/integration provider"
+          ]
+        },
+        {
+          "cells": [
+            "Guest joining",
+            "Saved link and permitted participant route",
+            "Organizer and cooperative recipient"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the required provider and approved installation route.",
+      "Install the intended add-on in the correct Google account.",
+      "Select it in a disposable event and inspect the provider identity.",
+      "Record the failing stage or planned removal before changing broader access."
+    ],
+    "faq": [
+      {
+        "q": "Why can’t I install or remove the add-on?",
+        "a": "Google says work or school administrators can control these actions. Use the organization’s approved route."
+      },
+      {
+        "q": "Does installation prove participants can join?",
+        "a": "No. Verify the saved meeting details and the intended recipient’s access separately."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Find and install Calendar add-ons",
+        "url": "https://support.google.com/calendar/answer/9117864?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "label": "Check generated meeting links separately"
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "label": "Plan integration removal and retained records"
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "label": "Keep guest rights distinct from integration access"
+      }
+    ],
+    "seeAlso": [
+      "meeting-links-that-make-themselves",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-guests-can-do-to-your-event"
+    ]
+  },
+  "google-calendar-android-personal-work-profile": {
+    "updated": "2026-10-23",
+    "title": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+    "short": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+    "description": "Use Google’s approved Android Work Profile personal-calendar view and distinguish local cross-profile display from direct sharing to a work account.",
+    "lede": "On a managed Android device, seeing personal events in the work Google Calendar app need not mean the personal calendar has been shared with your employer. Google documents an administrator-approved cross-profile view. Identify that route before changing account permissions or assuming coworkers can see the same combined schedule.",
+    "sections": [
+      {
+        "heading": "Check the managed-device boundary",
+        "body": [
+          "This procedure applies to Google Calendar on Android with a work or school-managed Work Profile. The administrator must allow the feature. If the option is absent, confirm eligibility with the administrator rather than deleting the profile or moving personal events into a work calendar.",
+          "For a fictional employee, write the actual goal: see a household pickup next to work meetings on this device. That differs from making household details available in the work calendar on every computer. Keep the desired audience and desired viewing surface explicit."
+        ]
+      },
+      {
+        "heading": "Use the documented personal-calendar connection",
+        "body": [
+          "Google’s Android instructions use Calendar settings, Personal calendars, then the system connection action and approval for the two apps. It states that the work and personal calendars remain separately stored and that this view does not itself share personal account details with the work account.",
+          "Inspect the control in the managed Calendar app you actually opened. Directly sharing the personal calendar with the work account is another route with different consequences. Do not use it merely because the cross-profile option needs administrator approval."
+        ]
+      },
+      {
+        "heading": "Trace a fictional duplicate",
+        "body": [
+          "Suppose the household pickup appears twice in the employee’s work view. One route may be the personal-calendar connection, while another is an earlier direct share to the work identity. Write both routes in the table before choosing a correction.",
+          "Google describes a Connected area under Personal calendars for removing duplicate personal-event representation. Inspect the actual arrangement there; do not delete the original pickup just because two visible entries have the same title. Record which route you intended to keep and compare the source after any change."
+        ]
+      },
+      {
+        "heading": "Confirm the audience separately from the overview",
+        "body": [
+          "Google says coworkers and administrators cannot find the personal calendars through this route unless those calendars were shared directly with the work account. That is a description of this calendar feature, not a blanket audit of every device-management capability or every earlier share.",
+          "For a real privacy check, inventory direct calendar grants separately and use a harmless sample item. Cloud Calendars on iPhone does not inherit Android Work Profile controls. Follow the actual platform and account route rather than copying these menu paths to another app."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The fictional pickup’s route inventory",
+      "columns": [
+        "Route",
+        "Purpose",
+        "Separate check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Work Profile personal-calendar view",
+            "Combined view on the managed Android app",
+            "Administrator allowance and connected setting"
+          ]
+        },
+        {
+          "cells": [
+            "Direct share to work identity",
+            "Provider permission to the personal calendar",
+            "Recipient rights and broader surfaces"
+          ]
+        },
+        {
+          "cells": [
+            "Two visible pickup entries",
+            "Possible overlapping routes",
+            "Identify representation before deleting records"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm an Android Work Profile and administrator support.",
+      "Choose whether you need a device view or a direct calendar share.",
+      "Use the documented personal-calendar connection if appropriate.",
+      "Trace duplicate routes without deleting the original personal event."
+    ],
+    "faq": [
+      {
+        "q": "Does this automatically share personal calendar details with coworkers?",
+        "a": "Google says the cross-profile personal-calendar view does not do that unless you separately shared those calendars with the work account."
+      },
+      {
+        "q": "Should I use these steps in an iPhone calendar app?",
+        "a": "No. They concern Google Calendar’s Android Work Profile workflow and its managed-device eligibility."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Show personal & work calendars in Google Calendar",
+        "url": "https://support.google.com/calendar/answer/15620294?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "label": "Keep ownership separate in a combined view"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Audit direct calendar sharing"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Identify duplicate representations safely"
+      }
+    ],
+    "seeAlso": [
+      "work-and-personal-without-two-apps",
+      "who-can-see-what-in-google-calendar",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "google-calendar-gemini-suggested-meeting-times": {
+    "updated": "2026-10-23",
+    "title": "Gemini suggested meeting times in Google Calendar: check eligibility and review the result",
+    "short": "Gemini suggested meeting times in Google Calendar",
+    "description": "Use Google’s eligible desktop suggested-times feature, diagnose unsupported cases and verify the proposed meeting before saving a change.",
+    "lede": "Gemini can suggest meeting times in an eligible Google Calendar desktop workflow. A missing suggestion does not necessarily mean a broken account, and a selected suggestion is not proof that every human or room requirement has been settled. Check eligibility first, then review the intended event.",
+    "sections": [
+      {
+        "heading": "Separate a meeting proposal from task automation",
+        "body": [
+          "This feature helps select a meeting time. It is not a promise to schedule an entire task list, move every conflicting appointment or finish a project. Record the people, duration and date window you actually need before requesting suggestions.",
+          "Google requires an eligible Workspace plan and documents this workflow on a computer. Its exclusions include the mobile Calendar apps, events longer than eight hours, too many attendees and a viewed date range in the past. The source does not supply a universal attendee threshold; do not invent one."
+        ]
+      },
+      {
+        "heading": "Request suggestions in the actual event",
+        "body": [
+          "Google’s create-event flow adds guests before opening Suggested times. The organizer can select a suggestion, ask for more or edit on the grid. The documented grid controls can also distinguish required and optional guests and rooms.",
+          "When rescheduling, open the intended event’s editor rather than creating a competing invitation. Google also describes a possible alternatives banner when several guests decline; the word possible matters. Do not repeatedly recreate an event to force a banner to appear."
+        ]
+      },
+      {
+        "heading": "Evaluate a fictional suggestion",
+        "body": [
+          "A fictional coordinator needs a forty-five-minute design review with two required guests, one optional observer and a particular room. Write those requirements before opening suggestions. If a proposed time is convenient for the required guests but the room is unconfirmed, keep the room decision unresolved.",
+          "Compare the suggestion with the event date, duration, time zone, required participants and the resource status through the approved room workflow. A suggested slot and a resource acceptance are different evidence. The table is a review rubric for your own event, not a measured evaluation of Gemini’s accuracy."
+        ]
+      },
+      {
+        "heading": "Save and communicate the intended change",
+        "body": [
+          "After choosing a time, inspect the final event fields and use the organizer’s normal save/update flow. Check the owning calendar and communicate a consequential change to affected people. A person’s previous response to the old time need not settle their attendance at the new time.",
+          "If suggestions are absent, record the platform, account eligibility, event length, viewed date window and participant situation before escalating. Use manual supported availability checks when appropriate, rather than broadening calendar access merely to make an AI control appear."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Fictional design-review acceptance checks",
+      "columns": [
+        "Requirement",
+        "Evidence to inspect",
+        "Do not substitute"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Required guests",
+            "Intended guest list and availability",
+            "Only the optional observer’s convenience"
+          ]
+        },
+        {
+          "cells": [
+            "Meeting interval",
+            "Saved date, duration and time zone",
+            "A remembered suggestion label"
+          ]
+        },
+        {
+          "cells": [
+            "Room",
+            "Resource response for the new interval",
+            "A typed location or suggested slot"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Write the meeting’s actual participant, interval and resource requirements.",
+      "Check eligible desktop account and documented exclusions.",
+      "Request suggestions inside the intended event.",
+      "Verify and save the chosen result through the normal organizer flow."
+    ],
+    "faq": [
+      {
+        "q": "Why are suggestions absent in the mobile app?",
+        "a": "Google lists its Android, iPhone and iPad Calendar apps among the unsupported cases for this documented feature."
+      },
+      {
+        "q": "Does a suggested time confirm my room reservation?",
+        "a": "No. Verify the resource response separately using the owning provider’s supported booking workflow."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Let Gemini in Google Calendar find times to meet",
+        "url": "https://support.google.com/calendar/answer/16690875?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "automatic-time-blocking-versus-manual-calendar",
+        "label": "Distinguish meeting suggestions from task automation"
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "label": "Verify room acceptance"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Confirm attendance after a schedule change"
+      }
+    ],
+    "seeAlso": [
+      "automatic-time-blocking-versus-manual-calendar",
+      "calendar-event-or-room-reservation",
+      "keeping-track-of-who-replied"
+    ]
+  },
+  "google-calendar-response-emails-outlook-rsvp": {
+    "updated": "2026-10-23",
+    "title": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+    "short": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+    "description": "Check Google’s per-event guest-response email choice before assuming missing Outlook RSVPs mean guests ignored the meeting.",
+    "lede": "Turning off response emails for a Google Calendar event can affect more than inbox noise. Google’s current help says this event-level choice also stops third-party RSVP statuses, including Outlook replies. Inspect that setting before treating an unknown response as proof that a guest did not reply.",
+    "sections": [
+      {
+        "heading": "Identify the exact meeting and response source",
+        "body": [
+          "Open the organizer’s original event on a computer and confirm the calendar, date and intended guest address. A copied appointment or a forwarded message may not describe the invitation you are trying to reconcile.",
+          "For a fictional workshop, one guest uses Google Calendar and another uses Outlook. The organizer reduced response emails before sending the invitation. Record each guest’s service and observed response state separately; do not assume a single blank row has the same explanation for both people."
+        ]
+      },
+      {
+        "heading": "Distinguish event-level and calendar-wide controls",
+        "body": [
+          "Google documents a Get an email when guests respond checkbox in the event editor. It applies to that event or recurring series and is separate from the calendar’s global response-notification preference. Inspect the actual event setting rather than repeatedly changing phone notification sounds.",
+          "The official help explicitly says disabling this event-level option stops response mail, third-party RSVP statuses and automatic replies. It says Google Calendar guests’ statuses can still be inspected, while guests using services such as Outlook cannot be checked that way with the option off."
+        ]
+      },
+      {
+        "heading": "Use a response evidence ledger",
+        "body": [
+          "For the workshop, keep columns for guest identity, service, response communicated directly, and status currently observed on the organizer’s event. If the Outlook participant confirms acceptance by another channel, record that as direct confirmation rather than inventing a calendar status.",
+          "If you intentionally change the event’s response-email choice, save it and use a cooperative non-sensitive test or the provider’s current support route to check future behavior. The source does not promise that turning the switch back on reconstructs every historical reply, so do not state that as the expected repair."
+        ]
+      },
+      {
+        "heading": "Keep attendance and access out of the diagnosis",
+        "body": [
+          "A guest may be able to read the event yet have an unknown response; another may have replied earlier to a time that has since changed. Ask for the attendance decision that matters now instead of treating successful access or a quiet inbox as a headcount.",
+          "This is a Google event response setting. It is not a Cloud Calendars share acceptance, a Microsoft delegate permission or a general ban on Outlook invitations. Preserve the event and identity evidence while diagnosing the specific route."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The fictional workshop’s response ledger",
+      "columns": [
+        "Guest service",
+        "Observation with event emails off",
+        "Responsible interpretation"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Google Calendar",
+            "Status may still be inspected in the guest list",
+            "Check the original organizer event"
+          ]
+        },
+        {
+          "cells": [
+            "Outlook or another third-party calendar",
+            "Google documents missing RSVP status in this case",
+            "Unknown status is not proof of no reply"
+          ]
+        },
+        {
+          "cells": [
+            "Direct message confirmation",
+            "A separate human response",
+            "Record its date without fabricating a calendar status"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the organizer’s original event and invited address.",
+      "Inspect the event-level response-email checkbox.",
+      "Record Google and third-party guest observations separately.",
+      "Confirm important attendance directly and avoid promising historical reply backfill."
+    ],
+    "faq": [
+      {
+        "q": "Is the per-event checkbox the same as global response-email settings?",
+        "a": "Google says they are separate. Inspect the choice on the actual event or series."
+      },
+      {
+        "q": "Will re-enabling it recover all earlier Outlook replies?",
+        "a": "The cited help does not establish historical backfill. Verify current behavior and confirm important attendance with the guest."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Track responses to your event",
+        "url": "https://support.google.com/calendar/answer/16713792?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Keep attendance evidence separate"
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Diagnose timed reminders on the phone"
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "label": "Distinguish reply tracking from guest permissions"
+      }
+    ],
+    "seeAlso": [
+      "keeping-track-of-who-replied",
+      "calendar-notifications-missing-silent-or-duplicated",
+      "what-guests-can-do-to-your-event"
+    ]
+  },
+  "google-calendar-report-assigned-task-spam": {
+    "updated": "2026-10-23",
+    "title": "Unwanted assigned Google task? Identify the shared source before reporting it",
+    "short": "Unwanted assigned Google task? Identify the shared source before reporting it",
+    "description": "Report a confirmed unwanted assigned Google task and understand the difference between removing it from your list and unassigning it in the shared source.",
+    "lede": "An unwanted assigned task is not the same record as a calendar invitation or a subscribed event. Google provides a reporting action for assigned tasks from shared surfaces such as a space or document. Identify that source before removing anything from a legitimate project.",
+    "sections": [
+      {
+        "heading": "Decide whether the item is an assigned task",
+        "body": [
+          "Inspect the item type and the shared surface it came from. A normal event with an unfamiliar title calls for invitation or subscription diagnosis instead. A task assigned by a known colleague may be a mistaken assignment requiring a conversation rather than a spam report.",
+          "For a fictional project, a legitimate equipment checklist and an unexpected assigned promotional task both appear in a person’s task view. Record the source and reason for concern without following suspicious links. Do not delete the whole project space or every task to resolve the one unwanted item."
+        ]
+      },
+      {
+        "heading": "Understand the reporting consequence",
+        "body": [
+          "Google says reporting an assigned task as spam removes it from the personal list and removes the assignment to that person in the shared space. That is a source relationship change, not simply hiding a calendar row.",
+          "Before confirming, establish that the selected task is the intended unwanted assignment. Keep project responsibility separate: if a valid task belongs to someone else, use the team’s ordinary reassignment process rather than misclassifying it as spam just to tidy your own view."
+        ]
+      },
+      {
+        "heading": "Use the documented Google reporting route",
+        "body": [
+          "On a computer, Google documents opening the assigned task either through the Tasks side panel or the Calendar grid, using its menu and confirming Report as spam. Use the supported interface for the actual task; a Cloud Calendars event editor is not this reporting control.",
+          "After the action, inspect your task list and, where you legitimately have access, the shared source. Record the observed removal or assignment state. Do not claim the action deleted every copy, removed the source document or blocked all future assignments; those broader effects are not established by the cited procedure."
+        ]
+      },
+      {
+        "heading": "Keep a narrow follow-up record",
+        "body": [
+          "For the fictional example, the equipment task remains a real responsibility while the promotional assignment is the subject of the report. A useful note names the item type, shared source, action and date, without reproducing private document contents or suspicious URLs.",
+          "If the item returns or the action is unavailable, report the exact source/interface issue through the service’s support or approved organization route. Keep event spam, task reporting and project membership as separate decisions rather than clearing calendar accounts."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The fictional project’s item check",
+      "columns": [
+        "Item",
+        "Question before action",
+        "Appropriate branch"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Known equipment task",
+            "Was it assigned to the wrong teammate?",
+            "Ordinary responsibility correction"
+          ]
+        },
+        {
+          "cells": [
+            "Unexpected assigned promotion",
+            "Is this the confirmed unwanted assigned task?",
+            "Google’s assigned-task report route"
+          ]
+        },
+        {
+          "cells": [
+            "Unfamiliar event invitation",
+            "Is it actually an event rather than a task?",
+            "Calendar invitation/source diagnosis"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify a task and the shared surface supplying it.",
+      "Separate a legitimate mistaken assignment from confirmed unwanted content.",
+      "Use Google’s task reporting menu and confirmation for the intended item.",
+      "Check personal-list and shared-assignment observations without assuming broader deletion."
+    ],
+    "faq": [
+      {
+        "q": "Is this the same as reporting a calendar invitation?",
+        "a": "No. The cited workflow concerns assigned tasks. First identify which kind of record you are looking at."
+      },
+      {
+        "q": "Does the report erase the entire shared document or space?",
+        "a": "That is not the documented effect. Google specifies removal from the personal list and removal of the assignment to the reporting person."
+      }
+    ],
+    "sourcesHeading": "Official Google documentation checked",
+    "sources": [
+      {
+        "label": "Google Calendar Help: Report assigned tasks as spam",
+        "url": "https://support.google.com/calendar/answer/13012543?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "unwanted-calendar-events-iphone",
+        "label": "Use event-spam diagnosis for actual invitations"
+      },
+      {
+        "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+        "label": "Identify tasks versus events and reminders"
+      },
+      {
+        "slug": "can-others-see-google-calendar-tasks",
+        "label": "Review task visibility separately"
+      }
+    ],
+    "seeAlso": [
+      "unwanted-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "can-others-see-google-calendar-tasks"
+    ]
+  }
+}

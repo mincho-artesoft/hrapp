@@ -1,0 +1,33 @@
+{
+  "localPreview": "http://127.0.0.1:8339/",
+  "caldavSkipResult": {
+    "url": "/articles/caldav-calendar-on-iphone/#main",
+    "titleRetained": true
+  },
+  "heGuestGuide": {
+    "dir": "rtl",
+    "viewportWidth": 1280,
+    "documentWidth": 1269,
+    "titleVisible": true,
+    "bodyObserved": true
+  },
+  "bgHeroTour": {
+    "url": "/bg#showcase",
+    "lang": "bg",
+    "settledTourTop": 95.8984375
+  },
+  "limits": [
+    "Localfirstnavigation showed empty router outlet; directnavigation again loadedbody. No rootcause or universalbootclaim.",
+    "No mobileviewportorall-language visual certification.",
+    "No native runtime or actualCalDAVaccount tested."
+  ],
+  "publicCalDAV": {
+    "url": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
+    "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+    "viewportWidth": 575,
+    "documentWidth": 564,
+    "faqs": 3,
+    "skipHref": "/articles/caldav-calendar-on-iphone/#main",
+    "screenshot": "/tmp/cloud-calendar-batch12-caldav.png"
+  }
+}

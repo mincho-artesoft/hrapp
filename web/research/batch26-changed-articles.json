@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22T00:59:37.266Z",
+  "count": 3,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "sections": 9,
+      "faqs": 5,
+      "sources": 9,
+      "updated": "2026-10-22",
+      "description": "Choose calendar data, spreadsheet rows, a printable schedule or a subscription. Use documented provider or Mac export routes and check what transfers.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "en-US",
+      "slug": "when-two-calendars-disagree",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "When calendar events disagree: check ownership before editing",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-22",
+      "description": "Different times or duplicate events? Check the owning calendar, time zone and provider view, then hide one source before making changes or deleting anything.",
+      "descriptionCharacters": 157
+    }
+  ]
+}

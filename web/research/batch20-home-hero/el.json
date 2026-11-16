@@ -1,0 +1,15 @@
+{
+  "locale": "el",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Κάθε ημερολόγιο που έχετε — iCloud, Google, Microsoft — σε ένα μέρος, με την πρόγνωση χτισμένη μέσα στην ίδια τη μέρα. Σταματήστε να μαντεύετε πώς θα είναι το απόγευμα.",
+      "after": "Δείτε επιλεγμένα ημερολόγια iCloud και Google σε iPhone και iPad, με τη διαθέσιμη πρόγνωση καιρού δίπλα στα σχέδιά σας. Το Premium προσθέτει σύνδεση ημερολογίων Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Τα ημερολόγιά σας και η πρόγνωση, σε ένα μέρος. Φτιαγμένο για iPhone και iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Ημερολόγια iCloud και Google, καιρός και widget σε iPhone και iPad. Δωρεάν λήψη· το Premium προσθέτει ημερολόγια Microsoft και Teams."
+    }
+  ]
+}

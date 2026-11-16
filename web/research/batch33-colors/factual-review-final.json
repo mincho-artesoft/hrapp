@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "draftFile": "research/batch33-colors/change-calendar-color-iphone.json",
+  "finalDraftRawSha256": "01d7815d81e6f243dec507cf870ee2d3c7ba29b6e547d429c358caef3a2486f2",
+  "priorReview": {
+    "file": "research/batch33-colors/factual-review.json",
+    "rawSha256": "352fad0ffc0914647b2f6e2cbb41ecfd23a9975c67a3750a1e5b0eabfc63d8dd",
+    "priorDraftRawSha256": "bfb14c9caef85c8bfb90194fff43cfab74a9f0170a47536e748a64b2b0be302c"
+  },
+  "freshReadScope": "Amended sections[2].body[0] read; exact raw-byte reversal and parsed preservation checks. Prior complete-body review retained, not claimed as another fresh full reread.",
+  "change": {
+    "path": "sections[2].body[0]",
+    "beforeFragment": "Open COLOR, choose",
+    "afterFragment": "Under COLOR, tap the current color, choose",
+    "finalParagraph": "For an editable iOS calendar that offers the info control in the calendar list, open Edit Calendar. Leave Calendar Name unchanged for a color-only edit. Under COLOR, tap the current color, choose a preset or Custom..., return to the editor and choose Done. Cancel leaves that editor without applying this save. Labels and available controls can vary with the calendar type and installed version."
+  },
+  "preservation": {
+    "reverseSingleRawReplacementMatchesPriorReviewedHash": true,
+    "everyOtherFieldAndBytePreserved": true,
+    "otherParagraphsAndSectionsPreserved": true
+  },
+  "sourceAssessment": "Accurate: EditCalendarView COLOR is a section header and its NavigationLink row displays the current color/name; selecting that row opens CalendarColorSelectionView. Preset/Custom choice and return/Done semantics unchanged.",
+  "sourceProof": "Prior current native inspection: Calendar/Calendar/EditCalendarView.swift42–59 and Calendar/Calendar/CalendarColorSelectionView.swift43–118; hashes retained in research/batch33-calendar-color-source.json. No new runtime assertion.",
+  "blockers": [],
+  "limits": [
+    "Only factual-review-final.json written.",
+    "No draft/source mutation, build, deploy, API/customer action or new provider fetch."
+  ]
+}

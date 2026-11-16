@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-23",
+  "records": [
+    {
+      "topic": "Google Tasks on Apple Watch",
+      "source": "https://support.google.com/calendar/answer/16404789?hl=en-RW",
+      "finding": "Google Calendar supports event/task viewing, seven days ahead, no new event/task creation from watch; watchOS11+ publisher requirement."
+    },
+    {
+      "topic": "iPad week numbers",
+      "source": "https://support.apple.com/en-ie/guide/ipad/ipad581be0bc/27/ipados/27",
+      "finding": "Settings > Apps > Calendar > Week Numbers, separate start-of-week and alternate-calendar settings."
+    },
+    {
+      "topic": "Rain amount versus rate",
+      "source": "https://www.weather.gov/lox/rainrate",
+      "finding": "Hourly rate examples; sample rate based on ten-minute accumulation. Arithmetic conversions and examples in our text independently calculated, not claimed forecasts."
+    },
+    {
+      "topic": "Weather Events identity",
+      "source": "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867",
+      "finding": "Official developer Dejal Systems, LLC corroborates the publisher/product alias."
+    }
+  ],
+  "notRuntimeTests": true
+}

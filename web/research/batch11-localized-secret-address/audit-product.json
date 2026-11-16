@@ -1,0 +1,263 @@
+{
+  "prepared_date": "2026-10-22",
+  "article_updated_preserved": "2026-10-21",
+  "canonical_slug": "the-secret-address-of-a-google-calendar",
+  "status": "Drafts only",
+  "source_file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-google.ts",
+  "source_file_sha256": "2b4ff65dc196cde951d3b122743ef120aaf0c4785137018cf1c89f8b665fa1e7",
+  "source_object_sha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621",
+  "source_object_snapshot": {
+    "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+    "short": "The secret iCal address",
+    "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+    "lede": "A calendar address, an account connection and an invitation do different jobs. Identify which one you have before using it to bring a schedule into another application. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "commonBelief": "A secret calendar address is a personal invitation that can be withdrawn from just one recipient.",
+    "sections": [
+      {
+        "heading": "Choose the connection for the job",
+        "body": [
+          "Google distinguishes signing in to another calendar application from viewing through a secret iCal address. The account route can support editing; the address provides a view-only subscription. Google describes the secret address as being for your own use and advises against sharing it with other people.",
+          "For example, displaying your own work schedule in another compatible calendar is different from giving a colleague ongoing access. Start with the outcome: viewing your schedule, collaborating with a named person, or distributing an audience-facing timetable. Do not choose a URL merely because it is easy to paste."
+        ]
+      },
+      {
+        "heading": "Find the correct calendar, not just the correct account",
+        "body": [
+          "On a computer, Google’s instructions place “Secret address in iCal format” under the chosen calendar’s “Integrate calendar” settings. Check the calendar name first. Work or school administrators may restrict this option; an absent address is not a reason to publish the calendar instead.",
+          "Keep the address out of screenshots, public support posts and shared notes. When requesting help, describe the account type, calendar name and connection method without supplying the URL. A support conversation normally needs to identify the route before it needs any event content."
+        ]
+      },
+      {
+        "heading": "Check what the receiving application actually added",
+        "body": [
+          "A subscription follows a feed; an imported file creates a separate copy. Read the receiving application’s instructions and confirm which action you are taking. If you simply open a downloaded calendar file, do not assume the resulting appointments will follow later changes.",
+          "Use an ordinary, non-sensitive event you already recognise to compare the calendar name, date and displayed details. Avoid creating a second subscription to diagnose the first: two visible copies can make a delayed update look like a conflicting appointment. Hide one calendar temporarily when identifying the source."
+        ]
+      },
+      {
+        "heading": "Keep Google and Cloud Calendars links separate",
+        "body": [
+          "Cloud Calendars has its own event and calendar sharing flows, including subscription feeds. Those are not Google secret addresses. Establish whether the sender shared one event, a calendar, or an account-based invitation before choosing how to open it.",
+          "A Cloud Calendars recipient can have a Reader, Writer or Owner role. A feed address alone should not be treated as proof of editing rights. Likewise, receiving a Google viewing address does not make you the owner of its calendar. Ask the sender which system should be used for changes."
+        ]
+      },
+      {
+        "heading": "Allow for the receiving calendar’s refresh behavior",
+        "body": [
+          "A subscription is not a promise of immediate delivery. Cloud Calendars feeds include a suggested refresh interval, but the receiving application decides when it retrieves and displays updates. An old time on one device does not by itself prove that the organiser failed to save the change.",
+          "For a same-day meeting, compare with the organiser’s current schedule and confirm important changes directly. Record which calendar still shows the old information and when you checked it. Do not repeatedly import the event or delete the source calendar to force a feed to catch up."
+        ]
+      },
+      {
+        "heading": "Respond to exposure without promising a recall",
+        "body": [
+          "Google documents resetting a disclosed secret address, which invalidates the old address and creates a replacement. Identify your own applications that use it so you can update their subscriptions afterward. Resetting an address is a different action from removing a named collaborator.",
+          "Previously saved appointments, exports or screenshots are a separate matter. A changed link cannot demonstrate that every earlier copy has disappeared. If you distributed information to the wrong audience, consider the actual material and recipients rather than treating a successful reset as proof of complete removal."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify whether you have an account connection, invitation, subscription or file.",
+      "Check the owning calendar before copying an address.",
+      "Keep a Google secret address for your own compatible applications.",
+      "Verify the receiving application subscribed rather than imported.",
+      "Confirm urgent changes with the organiser instead of relying on refresh timing.",
+      "If a secret address was exposed, follow Google’s reset guidance and update intended connections."
+    ],
+    "faq": [
+      {
+        "q": "Can I give the secret address to a colleague?",
+        "a": "Google advises keeping it for your own applications. Use the calendar’s sharing controls when another person needs access, choosing the intended permission."
+      },
+      {
+        "q": "Will a subscription let me edit the original?",
+        "a": "A Google secret iCal address is a viewing route. Editing needs a suitable account connection and permission; Cloud Calendars sharing roles are a separate arrangement."
+      },
+      {
+        "q": "Does resetting the address erase old appointments everywhere?",
+        "a": "It invalidates the old Google address. It does not establish that independently saved files, appointments or screenshots have been removed."
+      }
+    ],
+    "sourcesHeading": "Provider guidance and further reading",
+    "sources": [
+      {
+        "label": "Google: account connections and secret iCal addresses",
+        "url": "https://support.google.com/calendar/answer/37648?hl=en"
+      },
+      {
+        "label": "Google: sharing a calendar",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      },
+      {
+        "label": "Microsoft: importing versus subscribing and update timing",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "taking-back-a-calendar-you-shared",
+      "sharing-one-event-not-your-calendar"
+    ],
+    "updated": "2026-10-21"
+  },
+  "checks": {
+    "pt-BR": {
+      "description_characters": 138,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "3baecf303bc8981ce921101b4b2790245b343a6a335a30be2a810727a03c04c0"
+    },
+    "ro": {
+      "description_characters": 142,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "0d046a765bf009c4bc1b8d98675b77c2453a2ea0328c3b91645d3e352c49e212"
+    },
+    "ru": {
+      "description_characters": 142,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "8d119eb5ae9824c5167add85fa079c1a0ceef2e5774d2e1e182c36b8c49a0073"
+    },
+    "sv": {
+      "description_characters": 156,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "fdc16d210b36cbe315afe748f9e8c3e6e5ab8599e28f0c04e134f1e4904ac820"
+    },
+    "tr": {
+      "description_characters": 149,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "6d3a634517d835e7b3e80654888d3094228d5babcb4fcdb39c083c4b279bfc14"
+    },
+    "vi": {
+      "description_characters": 133,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "09faabee3efeaed20368912e7e5f463abfec032b6164dc510ddc953ab18455dc"
+    },
+    "th": {
+      "description_characters": 133,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "0ddf200b292bb03aa68e0d220c907400fbafd94023e13f54b881d9c42cf5ac3b"
+    },
+    "zh-Hans": {
+      "description_characters": 62,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "5f4381825fe2299ce98f1df006e75b449ac6ed745913785f6c3780e32d6a1917"
+    },
+    "zh-Hant": {
+      "description_characters": 63,
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omitted_nonexistent_related_routes": [],
+      "sha256": "8e7915ab16a0a407de36af514904aab181a307d61b96cd0177ef26d31fcd413b"
+    }
+  },
+  "scope": {
+    "objects": 9,
+    "sections": 54,
+    "paragraphs": 108,
+    "practical_steps": 54,
+    "faqs": 27
+  },
+  "semantic_checks": [
+    "Account connection may permit editing; Google secret address is a view-only subscription for own use.",
+    "Named calendar sharing differs from URL distribution and Cloud sharing roles.",
+    "Subscription versus imported copy remains explicit.",
+    "Receiving application controls update retrieval/display; no immediate-refresh promise.",
+    "Google reset invalidates old URL; previous independent copies not recalled.",
+    "No logging, guessability, security or universal deletion promises added."
+  ],
+  "translation_limits": [
+    "Original translations; no paid translation service used.",
+    "No independent native-speaker certification.",
+    "UI concepts translated descriptively; Chinese keeps cited English Google labels instead of asserting localized UI strings.",
+    "Dates and official URLs preserved exactly; source is current integrated English object.",
+    "No integrated files, builds, deployments or native code changed."
+  ]
+}

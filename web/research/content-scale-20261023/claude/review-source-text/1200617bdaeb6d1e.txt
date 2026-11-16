@@ -1,0 +1,132 @@
+Automatically add events from your email to your calendar
+Applies To
+Outlook 2024
+Outlook 2021
+Outlook.com
+Get help with Copilot
+Can you show me how to restore events from email?
+How do I get more out of all events shorter automatically?
+Give me automatically add events from my email to my
+Many different events in your day-to-day life flow through email. From airline tickets to car rental reservations and package delivery information, you receive a vast amount of information in Outlook that you might want to keep track of.
+Outlook automatically retrieves important events from your email for supported senders and adds the items to your calendar so you don't have to.
+Important
+This feature is only available in North America, Asia Pacific, Europe, Australia, UK, Switzerland, India, Japan, Korea, and Latin America.
+Note
+Events from email is available in Outlook, Outlook.com, and Outlook on the web. It can be used only with Microsoft accounts, such as an Outlook.com or Microsoft 365 account.
+This feature isn't available for accounts in Office 365 operated by 21Vianet, Office 365 Germany, or in Office 365 Government plans.
+Some types of events won't be supported starting in mid-August 2020.
+What you'll see
+The first time Outlook creates an event for you, you'll receive the following message, along with a list of the events being added.
+Tip
+You don't have to do anything to allow Outlook to add events from your email. If you want to turn off this feature, see
+changing your event settings
+.
+Past events or events from unsupported providers won't be added to your calendar automatically.
+Supported types of events
+Outlook can create events from email that contains the following information:
+Flight reservations
+Hotel reservations
+Rental car reservations
+Package deliveries
+Bills (This type of event won't be supported starting mid-August)
+Dining reservations (This type of event won't be supported starting mid-August)
+Event reservations - music, sports, or others (This type of event won't be supported starting mid-August)
+Service reservations - doctor appointment, car maintenance, or others (This type of event won't be supported starting mid-August)
+For a full list of supported providers, see
+Supported senders for events from email in Outlook
+.
+Note
+Flight, car, and hotel reservations are automatically added to your calendar. You can have other events, such as bills and dining reservations, automatically added to your calendar by
+changing your event settings
+.
+If you've selected Bills, Outlook uses machine-learning algorithms to find upcoming bills. It doesn't access your financial information or track your financial activity to find these events.
+Currently, the Bills event type is only supported in North America.
+Change your event settings
+You can turn events from email on or off and choose which information is added automatically through your Outlook on the web or Outlook.com options. You can't change your events from email settings in Outlook for Windows, but a link to the Outlook on the web or Outlook.com options page is included in the email you receive the first time an event is created automatically.
+Tip
+To find your Outlook on the web address, choose
+File
+. On the
+Info
+tab under
+Account Settings
+, the address is shown under
+Access this account on the web
+.
+Note
+If the instructions don't match what you see, you might be using an older version of Outlook on the web. Try the
+Instructions for classic Outlook on the web
+.
+At the top of the page, select
+Settings
+.
+Select
+Calendar
+>
+Events from email
+.
+Under each event type, select one of the following:
+Don't show event summaries in email or on my calendar:
+You won't see summary cards for these events in your inbox and events won't appear on your calendar.
+Only show event summaries in email:
+You'll see summary cards for these events in your inbox, but these events won't appear on your calendar.
+Show event summaries in email and on my calendar:
+You'll see summary cards for these events in your inbox and these events will appear on your calendar.
+By default, events created from email are marked as private so their details are only visible to you. You can choose to make your events public by unchecking the
+Mark events as private so only I can see them
+box.
+Restore Events from email
+If you notice that Outlook is no longer retrieving the events you've chosen to receive summaries for, Events from email might have been turned off for your account. You can turn them back on by following the steps below.
+At the top of the page, select
+Settings
+.
+Select
+Calendar
+>
+Events from email
+.
+If you see a message in that says "Events from email aren't turned on for your account.", select
+Turn on events from email
+to start receiving them again.
+Note
+After you select
+Turn on events from email
+, events won't be created for past messages, nor will email summaries.
+Instructions for classic Outlook on the web
+At the top of the page, select
+Settings
+.
+Select
+Options
+or
+Mail
+.
+On the left sidebar, select
+Calendar
+>
+Events from email
+.
+Do one of the following:
+To turn off events from email, choose
+Don't add events to my calendar from email
+.
+To control what events are added to your calendar, check or uncheck the boxes for
+Flights
+,
+Hotel reservations
+,
+Car rentals
+,
+Package delivery
+,
+Dining reservations
+,
+Events
+, or
+Bills
+.
+Note
+If you're using a Microsoft 365 for business account or other commercial account with Outlook, package delivery information won't be added to your calendar automatically.
+By default, any events created from email are marked as private so their details are only visible to you. You can choose to make your events public by clearing the
+Mark events as private so only I can see them
+box.

@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-22T03:04:33.086952+00:00",
+  "allPassed": true,
+  "reviewedSourceChain": "CurrentENpreviousbatch +4complete modernized combined-calendar drafts and4exactreviewed Exchangeappends; see full draft/cross-review artifacts.",
+  "editions": [
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "actualLocales": [
+        "de-DE",
+        "en-US",
+        "es-ES",
+        "fr-FR",
+        "it"
+      ],
+      "sectionsEach": 6,
+      "faqEach": 3,
+      "noAbsentLocaleInvented": true
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "actualLocales": [
+        "de-DE",
+        "en-US",
+        "es-ES",
+        "fr-FR",
+        "it"
+      ],
+      "sectionsEach": 6,
+      "faqEach": 3,
+      "noAbsentLocaleInvented": true
+    }
+  ],
+  "scope": "Actual source edition inventory and reviewed draft parity, not universal locale coverage or runtime/native-speaker certification."
+}

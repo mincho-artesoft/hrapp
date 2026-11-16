@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-22",
+  "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "method": "Immutable git show and git grep only. No native working-file reads or writes, builds, simulator, backend or customer/provider actions. Bounded relevant ranges read; grep matched controls/call sites. Some initial combined outputs truncated; key preference/widget ranges recovered with narrower reads. Not a full application audit.",
+  "findings": [
+    {
+      "topic": "first-day control",
+      "status": "source-supported",
+      "workflow": "Open the app menu Settings section, then First Day of Week. Choose System or one of Sunday through Saturday. Labels use the chosen interface locale weekday names; System includes its resolved weekday.",
+      "proof": "Menu section picker grep maps Settings to id5; RootView1310–1333 renders SettingsSheetView for5. SettingsSheetView185–201/258–267; AppPreferences30–70.",
+      "scope": "App-owned preference persisted under AppFirstWeekdayPreference. System resolves Calendar.autoupdatingCurrent.firstWeekday; explicit preference overrides app presentation and legacy GlobalState. No evidence this changes Google/Microsoft/Apple Calendar account preferences."
+    },
+    {
+      "topic": "app layout consumers",
+      "status": "source-supported with limits",
+      "finding": "Presentation calendar uses Calendar.autoupdatingCurrent plus chosen firstWeekday. Presentation locale carries firstDayOfWeek for native controls. MonthCalendarView and WeekCarouselView use GlobalState.firstWeekday; week carousel aligns backwards to chosen week start. AppCalendar environment injection and sidebar consumers found by grep.",
+      "limit": "Do not claim every view uses it identically: DaysHeaderView has a private Calendar.current with firstWeekday hardcoded2. This isolated assignment is a reason to avoid a universal promise, not proof of a visible defect without tracing its use/runtime.",
+      "proof": "AppPreferences239–272; MonthCalendarView27–32; WeekCarouselView9–13/291–301; DaysHeaderView42–47."
+    },
+    {
+      "topic": "widgets and Live Activity",
+      "status": "source-supported settings propagation, not visual/runtime guarantee",
+      "finding": "Applying preference saves GlobalState.firstWeekday to an app-group snapshot and requests reloads for three widget kinds. Widget calendar and Live Activity calendar helpers use that stored firstWeekday when valid.",
+      "limit": "An accepted setting is not proof that every widget layout visibly changes or updates immediately. Date/next-event layouts may not display a full week grid; system refresh timing and actual installed version remain untested.",
+      "proof": "AppPreferences405–410; CalendarWidgetStore63–91; CalendarWidget256–265; CalendarLiveActivityWidget282–291."
+    },
+    {
+      "topic": "week numbers / ISO",
+      "status": "no supported user control established",
+      "finding": "No weekOfYear, yearForWeekOfYear or minimumDaysInFirstWeek references found in tracked Swift search at pinned commit. Settings control scan shows first-day/date/time/language/theme/units and notification/privacy choices, not week-number display. WeekNumber matches in recurrence/share code describe ordinal weekdays, not numbered weeks of the year.",
+      "limit": "Do not advertise week-number display, an ISO-numbering switch, or that choosing Monday means ISO week numbering. Widget mapping includes an iso8601 calendar identifier, but that alone is not a user-facing control or numbered-week implementation. Negative findings are bounded source evidence, not a released binary support declaration."
+    },
+    {
+      "topic": "alternate calendars",
+      "status": "system calendar identifier handling, no dedicated alternate overlay established",
+      "finding": "CalendarApp copies Calendar.current.identifier to GlobalState.calendar. App presentation calendar follows Calendar.autoupdatingCurrent. Widget/Live Activity identifier mapping recognizes Buddhist, Chinese, Coptic, Ethiopic variants, Hebrew, Indian, Islamic variants, ISO8601, Japanese, Persian and Republic of China; unknown string falls back Gregorian.",
+      "limit": "This does not prove full rendering/editing compatibility across each calendar, dual-date display, an app selector for alternate calendars, or response to Apple Calendar’s separate alternate-calendar overlay setting. No matching Alternate/Alternative Calendar control found in scoped Settings/Swift/localization search. Device-calendar identifier inheritance is distinct from such an overlay.",
+      "proof": "CalendarApp290–305; AppPreferences268–272; CalendarWidget905–924; CalendarLiveActivityWidget294–313."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "Calendar/Settings/SettingsSheetView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Settings/SettingsSheetView.swift",
+      "rawSha256": "eff14d1ea610e32f25e3b271c4eb55dcfc42ec7899b276a1079ec9a047c7fbed",
+      "ranges": [
+        {
+          "start": 145,
+          "end": 201,
+          "sha256": "ddf75be61585f5c2d0627ce107abce03d1e59233a0ef7962a0f2395af4a67eae"
+        },
+        {
+          "start": 258,
+          "end": 267,
+          "sha256": "3fccaaeabd629abe4970d565c3f1d2e43f2499baec83efad20ea258296526cf1"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Main/AppPreferences.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Main/AppPreferences.swift",
+      "rawSha256": "b1e1b9f1d71943ef3e5fec064eb7391967866797f18c1e62f7d99983d647ab5d",
+      "ranges": [
+        {
+          "start": 5,
+          "end": 12,
+          "sha256": "a16f000ea7deddd3ab9d20ee6ecd755dd673691878b8ba8e6f1d3f15ced300d9"
+        },
+        {
+          "start": 30,
+          "end": 70,
+          "sha256": "f8680fae6d397ba3ac5dd8c5a03e20bf36016544909e7293b58cbabc277c0cf3"
+        },
+        {
+          "start": 214,
+          "end": 283,
+          "sha256": "d0d58f8db65a552ae763420bd2e128ebb401e59629b09fab8d5bc08520133e3e"
+        },
+        {
+          "start": 303,
+          "end": 311,
+          "sha256": "b015c423e6af3bf09d02ae889dc45578f4039edcd4a16081baf461e9007f62cb"
+        },
+        {
+          "start": 405,
+          "end": 437,
+          "sha256": "2b3c8acc01706d2779eaaf1ab8a01d95cbdd171ad37d031c81c3274091bd43a0"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Main/CalendarApp.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Main/CalendarApp.swift",
+      "rawSha256": "89dc560bbe138ab3285940165e7b36365affc777407f5e8b5c90e4765ca9d993",
+      "ranges": [
+        {
+          "start": 290,
+          "end": 305,
+          "sha256": "d7957563e849f9a8eb6ecdefeeecf1c861897896962dd8af73017e722d101bff"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Main/RootView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Main/RootView.swift",
+      "rawSha256": "b565ef4a5cf875ad6469377519087bcafa0d90d461a0c79bc113f3b737b1e498",
+      "ranges": [
+        {
+          "start": 1310,
+          "end": 1333,
+          "sha256": "7a02fdad87a38e4b7c0b9968f8e289d923f11c7f3336ce0e756e39c47e1c3fe7"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Main/CalendarWidgetStore.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Main/CalendarWidgetStore.swift",
+      "rawSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "ranges": [
+        {
+          "start": 63,
+          "end": 91,
+          "sha256": "db195edb4db4a93984131800f524cc6f5fce9babb1c6faa96c15e1574af6a97f"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/MonthView/MonthCalendarView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/MonthView/MonthCalendarView.swift",
+      "rawSha256": "f9f0cd342733a801a00408d7a0991caf09cee4c824c12c5b144776f1e34b0ff5",
+      "ranges": [
+        {
+          "start": 27,
+          "end": 32,
+          "sha256": "77e41bcd205f6c520891c28886e715ba1385485589d08c63a5ca9d9e1552f23e"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/MultiDayView/WeekCarouselView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/MultiDayView/WeekCarouselView.swift",
+      "rawSha256": "10e46b24b1e650a558dce7e26883c834499e14ab9d26a77b66a56e4a1d5ace9e",
+      "ranges": [
+        {
+          "start": 9,
+          "end": 13,
+          "sha256": "514797d73fd01a2672d42cdf59d505f3224bfc074a27965bcace301264975a83"
+        },
+        {
+          "start": 291,
+          "end": 301,
+          "sha256": "4a87f252711d6cf24286f1acf4209ec9dca05ecea326a426386554e8f4968f25"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/MultiDayView/DaysHeaderView.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/MultiDayView/DaysHeaderView.swift",
+      "rawSha256": "fcfdaf7f90eea87957090aa7da466187b6c1e1aeb7d4e8d0cab9df805d234cff",
+      "ranges": [
+        {
+          "start": 42,
+          "end": 47,
+          "sha256": "fef45de35434cfb50db107bad82467763dfde127dd3577d91c05ae3f45d0603d"
+        }
+      ]
+    },
+    {
+      "path": "CalendarWidget/CalendarWidget.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:CalendarWidget/CalendarWidget.swift",
+      "rawSha256": "202168b86e98d32b8e26314e9ff2e57ab61428bab784aa3f4fd060fe4ffa01e7",
+      "ranges": [
+        {
+          "start": 256,
+          "end": 265,
+          "sha256": "27b12b01afaf69187bcd67a87fea63b26f022b7059cc28640ad5c2969ac98ce4"
+        },
+        {
+          "start": 905,
+          "end": 924,
+          "sha256": "9eaa1e68625e1e6e3e3c15475014fd7aa826c2289d02af6286a76b99207a6e85"
+        }
+      ]
+    },
+    {
+      "path": "CalendarWidget/CalendarLiveActivityWidget.swift",
+      "gitObject": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:CalendarWidget/CalendarLiveActivityWidget.swift",
+      "rawSha256": "20034ccefb51ed635d11d58dc90c68fd255138f6d5b6cf065694084de536ac9f",
+      "ranges": [
+        {
+          "start": 282,
+          "end": 313,
+          "sha256": "ec3a19bbc865ab146a0dfe90a7472229fd735cb04831072c446b712110b30b5c"
+        }
+      ]
+    }
+  ],
+  "searchScope": {
+    "positive": "Tracked Calendar and CalendarWidget Swift firstWeekday/firstDayOfWeek/weekNumber references; SettingsSheetView Picker/Toggle/label listing; Settings caller and menu-id grep.",
+    "negative": "Tracked Swift weekOfYear/yearForWeekOfYear/minimumDaysInFirstWeek; scoped Swift and Calendar/CalendarWidget strings week numbers/alternate calendar/alternative calendar terms. No matches for the negative terms except identifier mapping and recurrence distinctions described above.",
+    "warning": "No static grep is exhaustive runtime capability proof; no UI screenshot inspection or compiled app execution."
+  },
+  "safeReaderWording": "In the inspected Cloud Calendars source, Settings includes First Day of Week with System and individual weekdays. Check the month or week view after choosing it. This is separate from week numbering and from an alternate-calendar overlay. Widgets receive the setting, but check their actual display after refresh.",
+  "publicationBoundary": "The pinned commit is associated by author report and ASC metadata with draft1.7.4/build16; currently public1.7.3/build12 correspondence remains unproven. No universal shipped-version workflow claim is established by this audit.",
+  "nextChecks": [
+    "If publishing exact current-public UI steps, verify the setting in the public installed release or obtain release-source correspondence first.",
+    "For a week-number/alternate-calendar guide, separate Apple/provider controls from Cloud; do not invent Cloud toggles.",
+    "If investigating a specific view mismatch later, trace DaysHeaderView calendarForLabels uses and perform explicitly authorized UI verification."
+  ]
+}

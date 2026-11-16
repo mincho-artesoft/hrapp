@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-21",
+  "sampleSize": 3,
+  "brandMentionedResponses": 1,
+  "brandRecommendedResponses": 1,
+  "baselineMethod": "Three distinct new consumer ChatGPT web chats, no prompt named CloudCalendars. Default Instant mode visible; exact backend model not exposed. Existing account personalization/history/tools not controlled. No API key, paid API, plugin installation or permission change.",
+  "results": [
+    {
+      "file": "weather-three-calendars.json",
+      "prompt": "Which iPhone or iPad calendar apps let me view iCloud, Google and Outlook calendars together and see weather while planning? Compare suitable options, distinguish built-in features from integrations, and cite current official sources.",
+      "brandMentioned": false
+    },
+    {
+      "file": "calendar-widgets.json",
+      "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Explain the difference between a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+      "brandMentioned": true
+    },
+    {
+      "file": "family-pickup.json",
+      "prompt": "Which shared family calendar apps for iPhone help coordinate school pickups and last-minute changes? Compare viewing a shared schedule with confirming who is responsible for a pickup, and cite official product sources.",
+      "brandMentioned": false
+    }
+  ],
+  "finding": "CloudCalendars was first recommendation in one widget/calendar/weather response, with a direct official AppStore citation. Absent from the combined3accounts/weather and familypickup responses.",
+  "notProven": [
+    "UniversalChatGPTrank, representative answer share or query volume.",
+    "Causal improvement from today’s website or draftASCcopy.",
+    "Competitor feature claims accurate merely because the model repeated them.",
+    "Exhaustive citation capture: only direct answer anchors recorded."
+  ],
+  "nextAction": "Strengthen source-backed core weather/account documentation and verify new competitor claims against first-party sources; freeze these exact prompts for an equal-method later sample."
+}

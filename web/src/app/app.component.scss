@@ -1,0 +1,14 @@
+/* The layout is deliberately minimal: the page scrolls on <body> rather than
+   in an inner container, which is what makes position: sticky, scroll-linked
+   animation and mobile URL-bar collapse all behave correctly. */
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+main {
+  display: block;
+  position: relative;
+  z-index: 1;
+}

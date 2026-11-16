@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-22",
+  "slug": "google-calendars-that-never-reach-your-iphone",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "0ec52c776252d2f0e744c28bf7fb14b4f7aca05fc3e678131afc81edadaeef33",
+  "format": "Individual direct LocalisedArticle JSON objects",
+  "method": "Own-language model translations with structural and localized-route checks; no paid API or native-speaker certification.",
+  "scope": "Only ten requested locale JSON drafts and this audit; no source integration, native changes, build or deployment. Temporary generation helper removed.",
+  "semanticReview": [
+    "Correct account identity and owner/group permissions precede account removal.",
+    "Hidden or unselected calendars are distinguished from calendars absent from the list.",
+    "Device Google account, direct Cloud Calendars connection and subscription routes remain distinct.",
+    "Sign-in success does not establish complete calendar selection or completed updates.",
+    "Missing calendar and missing occurrence/date remain separate; bounded Google synchronization does not prove provider deletion.",
+    "No promise of all-calendar coverage, unlimited history, immediate background updates or two-way synchronization.",
+    "Developer disclosure, three source URLs, update date and empty claims preserved."
+  ],
+  "relatedRouteDecision": "The English what-calendar-sync-actually-does route is absent in all ten locale indices. Replaced it with the existing the-secret-address-of-a-google-calendar guide, relevant to the account-connection versus subscription distinction. Other two related routes retained.",
+  "files": [
+    {
+      "locale": "hi",
+      "file": "research/batch13-localized-missing-google/hi.json",
+      "sha256": "8496f50060d34f2b43f4b679adb11db0c6cf267114e308fd23aeee0345bad300",
+      "descriptionCharacters": 117,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "hu",
+      "file": "research/batch13-localized-missing-google/hu.json",
+      "sha256": "ea65132304dd6b167860dee2bdd48147655d817d681e4104d9977ebde0ed8ab5",
+      "descriptionCharacters": 134,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "id",
+      "file": "research/batch13-localized-missing-google/id.json",
+      "sha256": "2126013ab96642d4dccdff436ecf4a02b9841ce67f3b974b908769f57db846d4",
+      "descriptionCharacters": 127,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "it",
+      "file": "research/batch13-localized-missing-google/it.json",
+      "sha256": "c313bc0f93eaa0aae89a8327da788733c8225f6673b74d49b901b8fbd914cb04",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch13-localized-missing-google/ja.json",
+      "sha256": "955fcb0cde55cb912c3d216c49b6c1dc81c55f0812eb14eaecb818311a4f838b",
+      "descriptionCharacters": 73,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "ko",
+      "file": "research/batch13-localized-missing-google/ko.json",
+      "sha256": "bd04bf121d691b084a15f327276c8fa374130d4ca0b596a924a4171ee2df609e",
+      "descriptionCharacters": 73,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "ms",
+      "file": "research/batch13-localized-missing-google/ms.json",
+      "sha256": "1bb4a66fe4f8b784d6cf5c2942f62f9fd7fedda5e126e0923f4e4963febc9798",
+      "descriptionCharacters": 119,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "nl-NL",
+      "file": "research/batch13-localized-missing-google/nl-NL.json",
+      "sha256": "92eae29293eddd6b0b173048e11cb761ca1b5f06bfdbaea28e00c889fda15dea",
+      "descriptionCharacters": 131,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "no",
+      "file": "research/batch13-localized-missing-google/no.json",
+      "sha256": "69a6f2b64c0d61622958a42274d590b0b8067862df506dd1110cb3cde81393c2",
+      "descriptionCharacters": 130,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    },
+    {
+      "locale": "pl",
+      "file": "research/batch13-localized-missing-google/pl.json",
+      "sha256": "5a22456ffd532abf4df746b66a5d9184e2ef73eb81e69e16d744a19e038c5008",
+      "descriptionCharacters": 125,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceUrlsPreserved": true,
+      "relatedRoutesVerified": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view",
+        "the-secret-address-of-a-google-calendar"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_correction_required",
+  "reviewType": "Cross-agent editorial and primary-evidence review of proposed article; not native or runtime verification",
+  "readScope": [
+    {
+      "file": "before.json",
+      "scope": "Complete JSON file read in review",
+      "sha256": "641858c6a2664cdb70f7b7b77a4850f2bca4788b13f773f95b76b7776343c162"
+    },
+    {
+      "file": "calendar-export-ics-pdf-and-backup.json",
+      "scope": "Complete JSON file read in review",
+      "sha256": "12184e43a82777b7314514b2f67dc1cdef83083c3fe693a43b6087f0d98a17aa"
+    },
+    {
+      "file": "root-draft-review.json",
+      "scope": "Complete JSON file read in review",
+      "sha256": "7d20e01d370ee094d5c37e03aa8c91b2ec111002c94246528c46260c0ee7b69a"
+    },
+    {
+      "file": "draft-notes.json",
+      "scope": "Complete JSON file read in review",
+      "sha256": "2dce100d68b9ec8c84aec6b9d310781b2b2a3226a408f62f4a9316c7c53d70c8"
+    },
+    {
+      "file": "intent-research.json",
+      "scope": "Prior complete authored research; ownership source record and recommendation rechecked programmatically in this review",
+      "sha256": "604ec656dc538c54f6a7ac72d15c0e955a57a6e326cac9fe33868b7fba29c889"
+    }
+  ],
+  "primaryEvidence": {
+    "reviewerPreviouslyReadUrl": "https://support.google.com/calendar/answer/78739?hl=EN&ref_topic=10510447",
+    "mainBodyLines": [
+      18,
+      70
+    ],
+    "totalLines": 151,
+    "date": "2026-10-22",
+    "freshFetchThisReview": false,
+    "rootFreshReadUrl": "https://support.google.com/calendar/answer/78739?hl=en",
+    "rootReadScope": "Complete main body 18–70 as recorded in root-draft-review.json; supplied corroboration, not a new independent fetch"
+  },
+  "checks": {
+    "changedFields": [
+      "sections",
+      "sources"
+    ],
+    "allEightOriginalSectionsPreservedExactlyAsParsed": true,
+    "allSevenOriginalSourcesPreservedInOrder": true,
+    "allOtherFieldsPreserved": true,
+    "newSections": 1,
+    "newParagraphs": 2,
+    "newSources": 1,
+    "finalSectionCount": 9,
+    "finalParagraphCount": 23,
+    "finalFaqCount": 4,
+    "finalSourceCount": 8
+  },
+  "findings": [
+    {
+      "topic": "Eligibility",
+      "result": "Correctly requires current ownership, excludes primary calendars and restricts work/school handoff to the same organisation. Secondary-only scope is conveyed by the primary exclusion and link to Google instructions; no promise that every shared calendar can transfer."
+    },
+    {
+      "topic": "Acceptance",
+      "result": "Correctly distinguishes sending an email from completion: 60 days to accept, sender remains owner until acceptance. Does not recommend account deletion or equate file import with a completed handoff."
+    },
+    {
+      "topic": "Provider and product boundary",
+      "result": "Both heading and paragraphs explicitly constrain ownership handoff to Google. No Cloud transfer UI or cross-provider ownership migration is invented; existing import fidelity cautions remain."
+    },
+    {
+      "topic": "Reader usefulness",
+      "result": "The two-paragraph addition supplies an actionable decision absent from the original export guide without repeating the existing FAQ. No audit-speak, ranking or runtime claim introduced."
+    }
+  ],
+  "blockers": [],
+  "necessaryCorrections": [],
+  "limits": [
+    "Existing article was read fully for preservation and contradictions; this review does not independently revalidate every unchanged provider statement.",
+    "Product-evidence.json was not reread for this review; no new product feature is introduced by the diff.",
+    "Only this review artifact written; no source integration, build, deployment, account action or native operation."
+  ]
+}

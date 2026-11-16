@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "nl-NL",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "788de7fb-472b-4a60-a412-f863913621aa",
+  "versionLocalizationId": "330744ac-9574-4c5b-b2ac-749a724d3da9",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Agenda",
+      "characters": 23,
+      "utf8Bytes": 23,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Weer, afspraken en widgets",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "kalender,planner,schema,week,maand,herinnering,vergadering,evenement,delen,uitnodiging,verwachting",
+      "characters": 98,
+      "utf8Bytes": 98,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Bekijk je afspraken en het weer samen. Gebruik widgets en verschillende weergaven, of begin met een lokale kalender zonder een account voor de app.",
+      "characters": 147,
+      "utf8Bytes": 147,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Bekijk je werkafspraken, privéplannen en het weer op je iPhone en iPad. Met Cloud Calendars houd je verschillende kalenders bij elkaar.\n\nKALENDERS EN WEERGAVEN\nGebruik iCloud-kalenders en verbind Google Agenda. Premium voegt ondersteuning voor Microsoft-kalenders toe. Kies een dag-, week-, maand-, jaar- of lijstweergave.\n\nJe kunt ook een lokale kalender op je apparaat maken zonder een Cloud Calendars-account. Voor het verbinden van diensten en het delen van gegevens kan aanmelden nodig zijn.\n\nWEER EN WIDGETS\nRaadpleeg de weersverwachting terwijl je plannen maakt. Widgets voor het beginscherm zijn beschikbaar in klein, middelgroot en groot formaat. Beschikbare voorspellingen hangen af van je locatie en de weerprovider.\n\nVERGADERINGEN EN DELEN\nGebruik Google Meet met Google Agenda. Premium ondersteunt ook Microsoft Teams. Deel evenementen en kalenders en nodig anderen uit via e-mail, een QR-code of een App Clip. Toegangsrechten hangen af van de kalender en het type uitnodiging.\n\nKIES JE ABONNEMENT\nBase is gratis en bevat synchronisatie met Google Agenda, Google Meet, verschillende kalenderweergaven, weer en widgets.\nAdvanced bevat de functies van Base en verwijdert advertenties.\nPremium bevat Advanced en voegt Microsoft-kalenders en Microsoft Teams toe.\n\nControleer vóór aankoop de actuele lokale prijs en de factureringsperiode in de app of App Store.\n\nDe app is gratis te downloaden. Optionele abonnementen worden automatisch verlengd, tenzij je ze uiterlijk 24 uur voor het einde van de huidige periode opzegt. Je kunt je abonnement beheren of opzeggen via de instellingen van je App Store-account.\n\nPrivacy: https://www.cloud-calendars.com/privacy-policy\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1763,
+      "utf8Bytes": 1766,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "nl-NL",
+      "name": "Cloud Calendars: Agenda",
+      "subtitle": "Al je agenda's op één plek",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Plan je dag met kalender en weer samen\n\nCloud Calendars combineert je agenda’s en het weer in één prachtig georganiseerde planningservaring.\n\nBeheer iCloud-, Google Agenda- en Microsoft-agenda’s in één app en bekijk weersverwachtingen direct in je planning, widgets en planningsoverzichten.\n\nBlijf vergaderingen, reizen, schoolritten, buitenactiviteiten en drukke dagen voor met agendaweergaven die zijn ontworpen om sneller te plannen.\n\nWIDGETS VOOR HET BEGINSCHERM\n\nVoeg mooie widgets toe met:\n• Agenda-afspraken\n• Weersverwachtingen\n• Aankomende planning\n• Maanfase en omstandigheden\n• Wind en temperatuur\n• Overzicht van de dagelijkse agenda\n\nKies uit meerdere widgetstijlen om je dag rechtstreeks op het beginscherm te zien.\n\nWAAROM CLOUD CALENDARS\n\n• Bekijk iCloud-, Google Agenda- en Microsoft-agenda’s samen\n• Plan met ingebouwde weersverwachtingen\n• Gebruik mooie widgets op het beginscherm\n• Sleep, verplaats en wijzig afspraken op een natuurlijke manier\n• Maak links voor Google Meet en Microsoft Teams\n• Schakel tussen dag-, week-, maand-, jaar- en lijstweergave\n• Beheer werk- en privéagenda’s op één plek\n\nFUNCTIES\n\nAl je agenda’s bij elkaar\nVerbind en beheer agenda’s van iCloud, Google Agenda en Microsoft in één overzichtelijke, kleurgecodeerde ervaring.\n\nWeer ingebouwd in je agenda\nBekijk verwachtingen per uur en per dag rechtstreeks tijdens het plannen, inclusief temperatuur, omstandigheden, maanfase, wind en weerpictogrammen.\n\nAgenda- en weerwidgets\nBekijk je planning en het weer direct via aanpasbare widgets op het beginscherm.\n\nMeerdere agendaweergaven\nKies een dag-, week-, maand-, jaar- of lijstweergave op basis van hoe je je tijd plant.\n\nAfspraken eenvoudig bewerken\nTik, sleep en wijzig afspraken rechtstreeks in de agenda voor snel en natuurlijk plannen.\n\nSpeciale weerweergave\nBekijk gedetailleerde verwachtingen met omstandigheden per uur en nuttige planningsinformatie.\n\nAfspraken maken vanuit verwachtingen\nTik op een uur in de verwachting om direct een nieuwe afspraak voor het gekozen tijdstip te maken.\n\nIngebouwde vergaderlinks\nVoeg snel Google Meet- en Microsoft Teams-links toe aan afspraken.\n\nPERFECT VOOR\n\n• Beheer van werk- en privéagenda’s\n• Plannen met aandacht voor het weer\n• Buitenactiviteiten en reizen\n• Drukke planningen en gezinsplanning\n• Gebruikers van Google Agenda en iCloud\n• Gebruikers van Microsoft-agenda’s\n\nProbeer Cloud Calendars en maak elke dag eenvoudiger te plannen.\n\nINFORMATIE OVER ABONNEMENTEN\n\nCloud Calendars biedt automatisch verlengde abonnementen.\n\nGratis abonnement\n• Synchronisatie met Google Agenda\n• Meerdere agendaweergaven\n• Weerfuncties\n• Widgets\n• Ondersteuning voor Google Meet\n\nDe betaling wordt bij bevestiging van de aankoop in rekening gebracht bij je Apple ID. Abonnementen worden automatisch verlengd, tenzij ze ten minste 24 uur voor het einde van de huidige periode worden opgezegd. Je account wordt binnen 24 uur voor het einde van de huidige periode belast voor de verlenging. Je kunt abonnementen beheren en opzeggen in de instellingen van je App Store-account.\n\nPrivacybeleid: https://www.cloud-calendars.com/privacy-policy\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "nl-NL",
+      "keywords": "weer,widget,planning,planner,afspraken,verwachting,iCloud,meeting,werk,wind,toegangsscherm,regen,dag",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

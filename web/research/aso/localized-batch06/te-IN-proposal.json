@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "te-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "94925c80-b76b-4cae-9662-189eea2c1d01",
+  "versionLocalizationId": "f74c4349-47cb-4dee-8e2e-80d37b92fdb6",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: క్యాలెండర్",
+      "characters": 27,
+      "utf8Bytes": 47,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "వాతావరణం మరియు ప్రణాళికలు",
+      "characters": 25,
+      "utf8Bytes": 71,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "సమయపట్టిక,సమావేశం,ఈవెంట్,రిమైండర్,ఆహ్వానం,షేరింగ్,వారం,నెల,అంచనా,విడ్జెట్",
+      "characters": 73,
+      "utf8Bytes": 201,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "ప్రణాళికలు, వాతావరణం కలిపి చూడండి. వేర్వేరు వీక్షణలు, హోమ్ స్క్రీన్ విడ్జెట్లు వాడండి లేదా యాప్ ఖాతా లేకుండా స్థానిక క్యాలెండర్ సృష్టించండి.",
+      "characters": 140,
+      "utf8Bytes": 380,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone, iPad లో Cloud Calendars తో పని, వ్యక్తిగత ప్రణాళికలతో పాటు వాతావరణం చూడండి.\n\niCloud క్యాలెండర్లు ఉపయోగించి Google Calendar కనెక్ట్ చేయండి. రోజు, వారం, నెల, సంవత్సరం లేదా జాబితా వీక్షణ ఎంచుకోండి. Cloud Calendars ఖాతా లేకుండా పరికరంలో స్థానిక క్యాలెండర్ సృష్టించవచ్చు. సేవలను కనెక్ట్ చేయడానికి, షేర్ చేయడానికి సైన్ ఇన్ అవసరం కావచ్చు. యాక్సెస్ అనుమతులు క్యాలెండర్, ఆహ్వాన రకంపై ఆధారపడతాయి.\n\nప్రణాళిక వేసేటప్పుడు వాతావరణ అంచనా చూడండి. హోమ్ స్క్రీన్ విడ్జెట్లు చిన్న, మధ్యస్థ, పెద్ద పరిమాణాల్లో అందుబాటులో ఉన్నాయి. అంచనాల లభ్యత స్థానం, వాతావరణ సేవపై ఆధారపడుతుంది.\n\nఉచిత Base లో Google Calendar సింక్, Google Meet, వేర్వేరు క్యాలెండర్ వీక్షణలు, వాతావరణం, విడ్జెట్లు ఉంటాయి. Advanced లో Base ఫీచర్లు ఉంటాయి; ప్రకటనలు తొలగించబడతాయి. Premium లో Advanced తో పాటు Microsoft క్యాలెండర్, Microsoft Teams మద్దతు ఉంటుంది.\n\nడౌన్‌లోడ్ ఉచితం; ఐచ్ఛిక సబ్‌స్క్రిప్షన్లు ఆటోమేటిక్‌గా పునరుద్ధరించబడతాయి. తీసుకునే ముందు యాప్ లేదా App Store లో ప్రస్తుత స్థానిక ధర, బిల్లింగ్ వ్యవధి చూడండి. ప్రస్తుత వ్యవధి ముగియడానికి కనీసం 24 గంటల ముందు రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ పునరుద్ధరించబడుతుంది. App Store ఖాతా సెట్టింగ్‌లలో నిర్వహించండి లేదా రద్దు చేయండి.\n\nగోప్యత: https://www.cloud-calendars.com/privacy-policy\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1276,
+      "utf8Bytes": 2928,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "te-IN",
+      "name": "Cloud Calendars: క్యాలెండర్",
+      "subtitle": "అన్ని క్యాలెండర్లు ఒకే చోట",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "క్యాలెండర్‌ను, వాతావరణాన్ని కలిపి మీ రోజును ప్రణాళిక చేసుకోండి\n\nCloud Calendars మీ క్యాలెండర్లను, వాతావరణాన్ని ఒకే చక్కని చోటికి తెస్తుంది.\n\niCloud, Google Calendar, Microsoft క్యాలెండర్లను ఒకే యాప్‌లో నిర్వహించండి; సూచనను చూడండి నేరుగా మీ షెడ్యూల్‌లో, విడ్జెట్లలో, ప్రణాళిక వీక్షణల్లోనే.\n\nసమావేశాలు, ప్రయాణం, స్కూల్ నుంచి తీసుకురావడం, బయటి పనులు, రద్దీ రోజులు — వేగవంతమైన ప్రణాళిక కోసం రూపొందించిన క్యాలెండర్ వీక్షణలతో ముందుండండి.\n\nహోమ్ స్క్రీన్ విడ్జెట్లు\n\nవీటిని కలిపి చూపే విడ్జెట్లను చేర్చండి:\n• క్యాలెండర్ ఈవెంట్లు\n• వాతావరణ సూచన\n• రాబోయే షెడ్యూల్\n• చంద్రకళ, పరిస్థితి\n• గాలి, ఉష్ణోగ్రత\n• రోజు సారాంశం\n\nఅనేక విడ్జెట్ శైలుల నుంచి ఎంచుకుని హోమ్ స్క్రీన్ నుంచే మీ రోజును చూడండి.\n\nCLOUD CALENDARS ఎందుకు\n\n• iCloud, Google Calendar, Microsoft క్యాలెండర్లను కలిపి చూడండి\n• లోపలే ఉన్న వాతావరణ సూచనతో ప్రణాళిక చేసుకోండి\n• హోమ్ స్క్రీన్‌పై అందమైన విడ్జెట్లు వాడండి\n• ఈవెంట్లను సహజంగా లాగండి, జరపండి, పరిమాణం మార్చండి\n• Google Meet, Microsoft Teams లింక్‌లు సృష్టించండి\n• రోజు, వారం, నెల, సంవత్సరం, జాబితా వీక్షణల మధ్య మారండి\n• పని, వ్యక్తిగత క్యాలెండర్లను ఒకే చోట నిర్వహించండి\n\nవిశేషాలు\n\nఅన్ని క్యాలెండర్లు కలిసి\niCloud, Google Calendar, Microsoft క్యాలెండర్లను కలిపి రంగులతో వేరుపడే శుభ్రమైన వీక్షణలో నిర్వహించండి.\n\nక్యాలెండర్ లోపలే వాతావరణం\nప్రణాళిక చేసేటప్పుడే గంటల, రోజుల సూచన చూడండి — ఉష్ణోగ్రత, పరిస్థితి, చంద్రకళ, గాలి, వాతావరణ గుర్తులు.\n\nక్యాలెండర్, వాతావరణ విడ్జెట్లు\nమీ ఇష్టానుసారం అమర్చిన విడ్జెట్ల నుంచి షెడ్యూల్‌ను, వాతావరణాన్ని వెంటనే చూడండి.\n\nఅనేక క్యాలెండర్ వీక్షణలు\nమీరు సమయాన్ని ఎలా ప్రణాళిక చేస్తారో దాన్ని బట్టి రోజు, వారం, నెల, సంవత్సరం లేదా జాబితా ఎంచుకోండి.\n\nసులభమైన ఈవెంట్ సవరణ\nక్యాలెండర్‌లోనే ట్యాప్ చేసి, లాగి, పరిమాణం మార్చి ఈవెంట్లను సర్దుబాటు చేయండి.\n\nప్రత్యేక వాతావరణ వీక్షణ\nగంటల వారీ పరిస్థితి, ప్రణాళికకు ఉపయోగపడే సమాచారంతో వివరమైన సూచన చూడండి.\n\nసూచన నుంచి ఈవెంట్\nసూచనలోని ఒక గంటపై ట్యాప్ చేయండి — ఆ సమయానికి కొత్త ఈవెంట్ వెంటనే తయారవుతుంది.\n\nలోపలే సమావేశ లింక్‌లు\nఈవెంట్లకు Google Meet, Microsoft Teams లింక్‌లను వేగంగా చేర్చండి.\n\nఎవరికి సరిపోతుంది\n\n• పని, వ్యక్తిగత క్యాలెండర్ల నిర్వహణకు\n• వాతావరణాన్ని దృష్టిలో ఉంచుకుని ప్రణాళికకు\n• బయటి పనులకు, ప్రయాణానికి\n• రద్దీ షెడ్యూల్‌లకు, కుటుంబ ప్రణాళికకు\n• Google Calendar, iCloud వాడేవారికి\n• Microsoft క్యాలెండర్ వాడేవారికి\n\nCloud Calendars వాడి చూడండి — ప్రతి రోజు ప్రణాళిక సులభమవుతుంది.\n\nసబ్‌స్క్రిప్షన్ సమాచారం\n\nCloud Calendars ఆటోమేటిక్‌గా పునరుద్ధరించే సబ్‌స్క్రిప్షన్లను అందిస్తుంది.\n\nఉచిత ప్లాన్\n• Google Calendar సింక్\n• అనేక క్యాలెండర్ వీక్షణలు\n• వాతావరణ సదుపాయాలు\n• విడ్జెట్లు\n• Google Meet మద్దతు\nకొనుగోలు నిర్ధారించేటప్పుడు మీ Apple ID ఖాతా నుంచి చెల్లింపు జరుగుతుంది. ప్రస్తుత కాలం ముగియడానికి కనీసం 24 గంటల ముందు రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ దానంతటదే పునరుద్ధరించబడుతుంది. ప్రస్తుత కాలం ముగియడానికి ముందున్న 24 గంటల్లో పునరుద్ధరణ మొత్తం మీ ఖాతా నుంచి తీసుకోబడుతుంది. App Store ఖాతా సెట్టింగ్‌లలో సబ్‌స్క్రిప్షన్‌ను నిర్వహించవచ్చు, రద్దు చేయవచ్చు.\n\nగోప్యతా విధానం: https://www.cloud-calendars.com/privacy-policy\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "te-IN",
+      "keywords": "వాతావరణం,విడ్జెట్,షెడ్యూల్,ప్రణాళిక,సూచన,iCloud,సమావేశం,ఈవెంట్,పని,లాక్ స్క్రీన్,వర్షం,ఈరోజు,నెల,గంట",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

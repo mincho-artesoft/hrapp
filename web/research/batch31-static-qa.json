@@ -1,0 +1,11 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 516,
+  "allPriorCanonicalsPreserved": true,
+  "completeChangedGuides": 2,
+  "articleBodiesStepsFAQSourcesRelatedMatch": true,
+  "textExportContainsBothAppends": true,
+  "homeCurrencyMarkerLocales": 30,
+  "numericPricesUnchangedBySourceGuard": true,
+  "scope": "Static publication content checks, not native runtime or search performance."
+}

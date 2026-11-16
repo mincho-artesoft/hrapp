@@ -1,0 +1,58 @@
+# Dependencies & build output
+/node_modules
+/.angular
+/dist
+/tmp
+/out-tsc
+
+# Editors / OS
+/.idea
+/.vscode
+.DS_Store
+
+# Deployment credentials — never commit.
+# .env.example is committed and shows the shape; .env holds the real AWS keys.
+.env
+
+# Scratch: staging archives, the holding pen for deletions, dumped context.
+/_to_delete
+/*.tar.gz
+/merged_output.txt
+
+# Verification scripts, written against a local preview server. Useful, but
+# not part of the site — delete this block if you would rather keep them.
+/audit.mjs
+/crop.mjs
+/ctl.mjs
+/flow.mjs
+/weather.mjs
+/perf-audit.mjs
+/detail-audit.mjs
+/scroll-audit.mjs
+/seo-audit.mjs
+/route-audit.mjs
+
+# AI-visibility monitor: the scripts and prompt list are worth keeping, the
+# run output is not — history.jsonl grows every run and report.* is derived.
+/ai-visibility/report.md
+/ai-visibility/report.html
+/.crawler-logs/
+
+# StoreFront inputs and outputs — not site assets.
+/art
+/shots
+/exports
+
+# StoreFront working files. They live here because the spec's asset paths are
+# relative to it and art/ shots/ exports/ sit alongside — but none of it is
+# part of the website, and none of it is deployed (only public/ reaches dist).
+/cloud-calendars.storefront.json
+/verify.py
+/ai-visibility/history.jsonl
+/cc.index.html
+/__pycache__
+
+# Web renditions of the App Store screenshots. Built by scripts/build-media.py
+# and synced to the cloud-calendars-media bucket; 30 MB that does not belong
+# in a repository when the CDN already serves it.
+media-build/

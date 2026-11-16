@@ -1,0 +1,406 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+.features__head {
+  max-width: 46rem;
+  margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+/* ---------------------------------------------------------------
+   Bento grid
+--------------------------------------------------------------- */
+.bento {
+  display: grid;
+  /* Six tracks rather than three: the wide tile takes four, the tall tile
+     takes two across two rows, two small tiles fill the gap underneath, and
+     the last one runs full width as a closing band. Nothing is left over. */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.8vw, 1.35rem);
+  @include stage(1600px);
+
+  @include upto($bp-md) { grid-template-columns: 1fr; }
+}
+
+.bento__tile {
+  position: relative;
+  padding: clamp(1.4rem, 2.6vw, 2.1rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 15rem;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: var(--shadow-mid), 0 0 60px -22px rgba(90, 150, 255, 0.8);
+  }
+
+  &--wide {
+    grid-column: span 4;
+    min-height: 22rem;
+    overflow: hidden;
+
+    /* Text beside the orbit rather than above it — stacked, the copy left a
+       third of this tile empty. */
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: 1.25rem;
+
+    @include upto($bp-md) {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  &--tall {
+    grid-column: span 2;
+    grid-row: span 2;
+    min-height: 22rem;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    overflow: hidden;
+
+    @include upto($bp-md) { grid-column: span 1; grid-row: span 1; }
+  }
+
+  &--sm {
+    grid-column: span 2;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    /* The final tile has no partner, so it becomes a full-width band
+       laid out horizontally instead of leaving a hole in the grid. */
+    &:last-of-type {
+      grid-column: span 6;
+      flex-direction: row;
+      align-items: center;
+      gap: clamp(1.25rem, 4vw, 3rem);
+      min-height: 0;
+
+      .tile__text { display: flex; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; }
+      .tile__text h3 { margin-bottom: 0; flex: 0 0 auto; }
+      .tile__text p { max-width: 52ch; }
+    }
+
+    @include upto($bp-md) {
+      grid-column: span 1;
+      &:last-of-type {
+        grid-column: span 1;
+        flex-direction: column;
+        align-items: flex-start;
+        .tile__text { display: block; }
+        .tile__text h3 { margin-bottom: 0.6rem; }
+      }
+    }
+  }
+}
+
+.tile__text {
+  position: relative;
+  z-index: 2;
+
+  h3 {
+    font-size: var(--t-h3);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    font-size: 0.94rem;
+    color: var(--ink-3);
+    line-height: 1.62;
+    max-width: 34ch;
+  }
+}
+
+.tile__badge {
+  align-self: flex-start;
+  padding: 0.32rem 0.7rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a9e8ff;
+  background: rgba(56, 224, 240, 0.1);
+  border: 1px solid rgba(56, 224, 240, 0.24);
+}
+
+/* A highlight that follows the pointer across the small tiles. */
+.tile__sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--tilt, 0);
+  background: radial-gradient(
+    24rem 18rem at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%),
+    rgba(150, 200, 255, 0.16),
+    transparent 62%
+  );
+  transition: opacity 0.5s var(--ease-out);
+}
+
+/* ===============================================================
+   Orbit — the three calendar sources circling the app
+=============================================================== */
+.orbit {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 15rem;
+  margin-top: 0;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  transform-style: preserve-3d;
+
+  /* The outer ring is wider than its column, so anything drifting toward the
+     copy fades out instead of colliding with it. */
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 88%, transparent 100%);
+}
+
+.orbit__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  /* flattened into perspective — reads as a disc, not a circle */
+  transform: rotateX(60deg);
+
+  &--1 { width: 12.5rem; height: 12.5rem; }
+  &--2 { width: 16rem; height: 16rem; border-color: rgba(255, 255, 255, 0.07); }
+  &--3 { width: 19.5rem; height: 19.5rem; border-color: rgba(255, 255, 255, 0.05); }
+}
+
+.orbit__core {
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: 3.9rem;
+  height: 3.9rem;
+  filter: drop-shadow(0 14px 34px rgba(80, 120, 255, 0.75));
+  animation: core-breathe 5s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes core-breathe {
+  from { filter: drop-shadow(0 12px 26px rgba(80, 120, 255, 0.5)); }
+  to   { filter: drop-shadow(0 18px 46px rgba(120, 180, 255, 0.95)); }
+}
+
+/* Each node rides its own ring at its own speed. */
+.orbit__node {
+  position: absolute;
+  z-index: 2;
+  width: 12.5rem;
+  height: 12.5rem;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  animation: orbit-spin 24s linear infinite;
+
+  /* Explicit, unequal offsets — a uniform stagger puts all three nodes at
+     the same point of their ellipse whenever the durations line up. */
+  &[data-src='icloud']    { animation-delay: -2s; }
+  &[data-src='google']    { width: 16rem; height: 16rem; animation-duration: 32s; animation-delay: -14s; }
+  &[data-src='microsoft'] { width: 19.5rem; height: 19.5rem; animation-duration: 42s; animation-delay: -27s; }
+}
+
+/* Counter-rotate the chip so the label stays upright while it orbits. */
+.orbit__chip {
+  position: absolute;
+  top: -1.9rem;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  white-space: nowrap;
+  @include glass(0.1, 14px, 0.18);
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.9);
+  animation: orbit-counter 24s linear infinite;
+  animation-delay: inherit;
+
+  b {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  i {
+    font-style: normal;
+    font-size: 0.64rem;
+    color: var(--ink-3);
+  }
+
+  .orbit__node[data-src='google'] & { animation-duration: 32s; }
+  .orbit__node[data-src='microsoft'] & { animation-duration: 42s; }
+}
+
+/* The node rides the tilted ring; the chip undoes that tilt and rotation so
+   the label stays upright and facing the viewer the whole way round. */
+@keyframes orbit-spin {
+  from { transform: rotateX(60deg) rotate(0turn); }
+  to   { transform: rotateX(60deg) rotate(1turn); }
+}
+
+@keyframes orbit-counter {
+  from { transform: translateX(-50%) rotate(0turn) rotateX(-60deg); }
+  to   { transform: translateX(-50%) rotate(-1turn) rotateX(-60deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit__node,
+  .orbit__chip,
+  .orbit__core { animation: none; }
+  .orbit__chip { transform: translateX(-50%) rotateX(-60deg); }
+  .orbit__node                       { transform: rotateX(60deg) rotate(-0.14turn); }
+  .orbit__node[data-src='google']    { transform: rotateX(60deg) rotate(0.28turn); }
+  .orbit__node[data-src='microsoft'] { transform: rotateX(60deg) rotate(0.62turn); }
+}
+
+@include upto($bp-sm) {
+  .orbit { min-height: 10rem; overflow: hidden; }
+  .orbit__ring--3, .orbit__node[data-src='microsoft'] { display: none; }
+}
+
+/* ===============================================================
+   Gesture demo
+=============================================================== */
+.gesture {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 15rem;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(8, 13, 30, 0.75), rgba(5, 8, 20, 0.5));
+  border: 1px solid var(--hair);
+}
+
+.gesture__grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gesture__row {
+  flex: 1 1 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  position: relative;
+
+  em {
+    position: absolute;
+    top: -0.55rem;
+    left: 0.6rem;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--ink-4);
+    background: rgba(6, 10, 24, 0.9);
+    padding: 0 0.25rem;
+  }
+}
+
+.gesture__event {
+  position: absolute;
+  left: 3.6rem;
+  right: 0.9rem;
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  overflow: hidden;
+
+  b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #eaf3ff;
+  }
+  i {
+    display: block;
+    font-style: normal;
+    font-size: 0.64rem;
+    color: rgba(226, 238, 255, 0.6);
+  }
+
+  &--static {
+    top: 0.6rem;
+    height: 2.1rem;
+    background: linear-gradient(150deg, rgba(191, 90, 242, 0.42), rgba(120, 60, 200, 0.3));
+    border-left: 2.5px solid #d09bff;
+  }
+
+  &--live {
+    top: 3.8rem;
+    height: 2.6rem;
+    background: linear-gradient(150deg, rgba(56, 160, 255, 0.44), rgba(40, 90, 220, 0.32));
+    border-left: 2.5px solid #6cc7ff;
+    box-shadow: 0 10px 26px -10px rgba(50, 140, 255, 0.9);
+    animation: gesture-move 7s var(--ease-in-out) infinite;
+  }
+}
+
+/* top: drag down the calendar; height: stretch. Both in one keyframe set
+   so the sequence reads as one continuous gesture. */
+@keyframes gesture-move {
+  0%, 8%    { top: 3.6rem; height: 2.6rem; }
+  26%, 40%  { top: 7.2rem; height: 2.6rem; }
+  58%, 78%  { top: 7.2rem; height: 5.1rem; }
+  95%, 100% { top: 3.6rem; height: 2.6rem; }
+}
+
+.gesture__handle {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  width: 26px;
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+
+  &--top { top: 3px; }
+  &--bottom { bottom: 3px; }
+}
+
+.gesture__event--live .gesture__handle--bottom {
+  animation: handle-flash 7s var(--ease-in-out) infinite;
+}
+
+@keyframes handle-flash {
+  0%, 44%   { opacity: 0; }
+  52%, 76%  { opacity: 1; }
+  84%, 100% { opacity: 0; }
+}
+
+/* The finger. */
+.gesture__cursor {
+  position: absolute;
+  left: 55%;
+  top: 4.4rem;
+  opacity: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 18px rgba(150, 200, 255, 0.8);
+  pointer-events: none;
+  animation: gesture-cursor 7s var(--ease-in-out) infinite;
+}
+
+@keyframes gesture-cursor {
+  0%, 6%    { left: 55%; top: 4.4rem; opacity: 0; scale: 1; }
+  10%       { opacity: 1; scale: 0.85; }
+  26%, 40%  { left: 55%; top: 8rem; opacity: 1; scale: 0.85; }
+  46%       { left: 55%; top: 10rem; scale: 1; }
+  58%, 78%  { left: 55%; top: 12.4rem; opacity: 1; scale: 0.85; }
+  88%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gesture__event--live { animation: none; top: 5.4rem; height: 3.4rem; }
+  .gesture__cursor { display: none; }
+  .gesture__handle { opacity: 1; animation: none; }
+}

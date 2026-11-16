@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-10-21T19:36:00.991715+00:00",
+  "allPassed": true,
+  "changedHtmlPages": 19,
+  "scope": "All13changedarticles,5affectedarticlehubs,sitemapXMLand2text exports; broad457URLavailability independently checked by deployment.",
+  "textExports": 2,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "0d8b66be283ca144076b673818cf67d261a954e0873fcd65385b6045408b26e0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "d093c812931c3f2393de4992aa4809e23b2f024526b1c880c03d1a12b2927c24",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "1915c5bb483cbaa124964da51471604770a504250952cb0e7acf3b12f001a9c4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "d96be6f05f304547a2c2994bb34b25df618ca5cf9f4a8cf8344464917ad4af57",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "status": 200,
+      "sha256": "5c1f1e4bf8aecc6c6969c25aaa34638386483af2f76faf46a4580feda5407aa3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "29066ed450bef08e11ebce6b16fba5024089b0016dfedb3ccaef689da0b89b7d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "9c1fd326a96259dca9dba2902a32973016f5673c20b642fa854c0e5eef27e98f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "11644311e6d00ed6dafdfcecc0ea85590446c38218c43b0bdd406c43e0fc8807",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "fdd7e7b5ef3f410a90f60927004a4680fb8c2bfffc73368e22d4a7f9b67ba3b9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "37e99a830f2e9079786452c726b020436b87bd3fed274ab4727aae9380237d86",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "173aaa5331b581151043b4fe6949a87df3b7d389b1c8faf26c3ddbd1b297ff35",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "e6d30b1df0d9d333b267083fcdd48a74a0557475cfc5cda2d8da20968b827a9c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "7dc84f6c3a5b688c427933aa7add2cb57d8110f04dd9565f475958cf01bc8ed2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/",
+      "status": 200,
+      "sha256": "69e86c403921654a25b03cdd4c908edd0294708783a71e869cbc5e01e3704ba1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/",
+      "status": 200,
+      "sha256": "8bac61589ca19407d6fb9c2b1331dcb7ed2b3ba686f1b53dcd216b75c8f6d9f7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/",
+      "status": 200,
+      "sha256": "7ba9ab8ae25d1cf7f57e0e48fd1372e9b92c307eb6c7980a1cb894fb88ea14e0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/",
+      "status": 200,
+      "sha256": "515c5348ca6d7e350c015986a9ef52d334e175c4c229fbd89f4f618dcf467010",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/",
+      "status": 200,
+      "sha256": "0a9be0f7e0add492b61ba614c884805d58b9404d16df94adb4112136edebea94",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sitemap.xml",
+      "status": 200,
+      "sha256": "b52dd67926a9766cbc0f11125180d9d96f7e4d26c2ce748803ea10537245103a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "6ec94688cbdf2015609ce2fd1eacaad1eae2e1fa050fb1f4ffe8020ba8bb0d5a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "e123f2cf0c958009b5dfbee6f1bc9d120adfe495619f1aac05ccd90bff04c23d",
+      "matchesBuild": true
+    }
+  ]
+}

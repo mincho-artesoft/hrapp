@@ -1,0 +1,21 @@
+{
+  "sitemap": [
+    {
+      "path": "https://www.cloud-calendars.com/sitemap.xml",
+      "lastSubmitted": "2026-08-27T21:17:05.932Z",
+      "isPending": false,
+      "isSitemapsIndex": false,
+      "type": "sitemap",
+      "lastDownloaded": "2026-10-21T05:47:46.483Z",
+      "warnings": "0",
+      "errors": "0",
+      "contents": [
+        {
+          "type": "web",
+          "submitted": "430",
+          "indexed": "0"
+        }
+      ]
+    }
+  ]
+}

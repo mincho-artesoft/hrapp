@@ -1,0 +1,37 @@
+{
+  "updatedAt": "2026-10-23",
+  "stage": "batch_01_drafts_complete_awaiting_root_review",
+  "files": {
+    "briefs": "research/content-scale-20261023/claude/claude-briefs.json",
+    "drafts": "research/content-scale-20261023/claude/claude-drafts-01.json",
+    "editorialRecords": "research/content-scale-20261023/claude/claude-editorial-records-01.json",
+    "nextCandidates": "research/content-scale-20261023/claude/claude-next-candidates.json"
+  },
+  "completedDrafts": [
+    "google-calendar-working-hours-location-out-of-office-focus-time",
+    "google-calendar-event-visibility-private-public-default",
+    "google-appointment-schedule-which-calendars-block-booking-slots",
+    "google-calendar-change-event-owner-before-handover",
+    "google-calendar-find-a-time-blank-is-not-free",
+    "outlook-calendar-delegate-or-editor-permission",
+    "outlook-schedule-meeting-on-behalf-of-someone",
+    "outlook-calendar-sharing-levels-busy-titles-details",
+    "outlook-share-calendar-outside-organization",
+    "outlook-show-as-free-busy-tentative-working-elsewhere",
+    "outlook-forward-meeting-and-allow-forwarding",
+    "outlook-group-calendar-versus-shared-calendar"
+  ],
+  "heldOrDropped": [
+    {"topic": "Google propose a new time", "reason": "Already answered inside keeping-track-of-who-replied; would cannibalise."},
+    {"topic": "Google block one sender's invitations", "reason": "Near-duplicate of unwanted-calendar-events-iphone (reporting + known-sender settings)."},
+    {"topic": "Google invitations in other calendar services (answer/15077640)", "reason": "Fetched body is about email filtering, not RSVP recording; source does not support the brief's stated task."}
+  ],
+  "blockers": [],
+  "limitations": [
+    "WebFetch returns model-extracted page text, not raw HTML; quotations were requested verbatim but are not byte-verified. Root should spot-check exact UI labels (especially Outlook delegate routing labels and Google focus-time decline option names).",
+    "JSON syntax was checked by pattern search only; no shell/JSON parser was available in this session. Run a parse before integration.",
+    "No validator (npm run check:editorial) was run; output is outside src/ by instruction.",
+    "Google appointment-schedule pages conflict on whether Maybe/tentative blocks slots; the draft states the conflict rather than resolving it.",
+    "No firsthand UI testing; worked examples are illustrative and labelled fictional."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Havi naptár iPaden és iPhone-on: dátumválasztás után ellenőrizze a részleteket",
+  "short": "Havi nézet a részletek elvesztése nélkül",
+  "description": "Hasonlítson össze dátumokat iPaden vagy iPhone-on. Áthelyezés előtt ellenőrizze a rejtett eseményeket, naptárakat és pontos időket.",
+  "lede": "A havi nézet megmutatja, mely napokra esnek a programok. Annak bizonyítására kevésbé alkalmas, hogy egy adott óra szabad. Válasszon dátumot az áttekintésben, majd egyeztetés előtt vizsgálja meg a napot és az eseményt. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "A nagyobb havi rács minden részletet megjelenít, és a látszólag üres dátum bizonyítja, hogy mindenki ráér.",
+  "sections": [
+    {
+      "heading": "Döntse el, dátumokra vagy pontos órákra van szüksége",
+      "body": [
+        "A hónapban több héten át összehasonlíthatja a projekt határidejét, az utazást és a családi programot. Ha az a kérdés, ütközik-e két találkozó 14:30-kor, váltson napi vagy heti nézetre, és ellenőrizze a pontos kezdést és befejezést. A havi cella nem olyan időskálát ad, mint az órás rács.",
+        "Egy műhelyfoglalkozás szervezője először kizárhatja az utazás hetét. Ezután a javasolt napot kell ellenőriznie: programok, felkészülés, utazás és szükséges befejezés. Az üresnek látszó cella vizsgálandó lehetőség, nem megerősített foglalás és nem mások szabadidejének igazolása."
+      ]
+    },
+    {
+      "heading": "A látható címek mellett figyelje a további események számát",
+      "body": [
+        "A Cloud Calendars jelenlegi havi cellája korlátozott számú eseménycímkét mutat, és további darabszámot jelez, ha több esemény tartozik a naphoz. A címek egysorosak, ezért rövidülhetnek. Nyissa meg a napot vagy az eseményt, ha a teljes cím vagy a többi program fontos.",
+        "Az iPad nagyobb kijelzőjén olvashatóbb lehet az áttekintés, de a nagyobb fizikai hely nem szüntet meg feltétlenül minden megjelenítési korlátot. Keskeny alkalmazásablak vagy nagyobb betűméret módosíthatja, mi fér el. iPhone-on is nézze meg a napot, mielőtt a látható címkéket teljes programnak tekinti."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze a hónapot, a kiválasztott naptárakat és a szomszédos dátumokat",
+      "body": [
+        "Dátumválasztás előtt olvassa el a megjelenített hónapot és évet. A rács a sorok kitöltéséhez a szomszédos hónap napjait is tartalmazhatja. A Cloud Calendarsban használja a hónapváltást és ellenőrizze a kijelölt dátumot, ne csak a négyzet helyzetére hagyatkozzon.",
+        "Nézze meg, mely naptárak vannak kiválasztva. A munkahelyi események elrejtése segítheti a családi terv áttekintését, de ezeket a kötelezettségeket ki is veszi abból a nézetből. Duplikáció vizsgálatához ideiglenesen rejtsen el egy forrást és hasonlítsa össze; ne töröljön találkozót pusztán a zsúfoltság miatt."
+      ]
+    },
+    {
+      "heading": "Közös program módosítása előtt nyissa meg az eseményt",
+      "body": [
+        "A részletekben erősítse meg a címet, tulajdonost vagy naptárt, helyi időt és időtartamot. A szín segíti az áttekintést, de nem helyettesíti a fiók és a szerkesztési jogosultság ismeretét. A látható meghívó nem ugyanaz, mint a saját szervezésű találkozó.",
+        "A Cloud Calendars havi nézetében húzással másik dátumra helyezhetők az események. Valódi programnál előbb tisztázza a céldátumot és az ismétlődésre vonatkozó módosítás hatókörét. Engedélyezett változtatás után nyissa meg újra és ellenőrizze az eredményt; a helyi mozdulat nem bizonyítja a szolgáltató vagy minden résztvevő elfogadását."
+      ]
+    },
+    {
+      "heading": "Az ismétlődést és az időzónát külön ellenőrizze",
+      "body": [
+        "Ha csak az e heti óra költözik, ne változtassa meg véletlenül a későbbi rendjét. Olvassa el az elérhető hatókörválasztást, majd vizsgálja meg a módosított és egy későbbi alkalmat is. A hónapban könnyű összevetni az ismétlődő dátumokat, de a szerkesztés hatóköre dönti el a változás jelentését.",
+        "Utazásnál vagy időzónákon átívelő találkozónál kifejezetten ellenőrizze a helyi dátumot és időt. Másik napra helyezés nem váltja át automatikusan a szándékolt találkozóidőt. Ha érinti, ellenőrizze az óraátállítást, és egyeztesse az időpontot az érintettekkel."
+      ]
+    },
+    {
+      "heading": "Használja a nagyobb nézetet más termékekkel való összekeverés nélkül",
+      "body": [
+        "Az Apple Naptár saját havi megjelenítési lehetőségeket kínál, a Teamup pedig eltérő böngészős és mobilos nézeteket ismertet. Ezek a vezérlők az adott termékhez tartoznak. Ne keresse a Teamup böngészős beállításait vagy az Apple Naptár nézetmenüjét a Cloud Calendarsban pusztán az azonos név miatt.",
+        "Egyhavi program nem jelent egyhavi időjárás-előrejelzést. Szabadtéri tervhez külön ellenőrizze a helyet, dátumot és az elérhető előrejelzési órákat. A végleges találkozót a megfelelő naptárba mentse, a változásokat pedig közvetlenül egyeztesse a résztvevőkkel."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "A hónapban válasszon lehetséges dátumokat, majd napi vagy heti nézetben ellenőrizze az órákat.",
+    "Nyissa meg a további darabszámot vagy rövidített címeket mutató napokat.",
+    "Mielőtt szabadnak tekint egy dátumot, ellenőrizze a hónapot, évet és kijelölt naptárakat.",
+    "Erősítse meg az esemény naptárát, idejét, időtartamát és szerkesztési jogosultságát.",
+    "Olvassa el az ismétlődés hatókörét, és áthelyezés után ellenőrizze a mentett alkalmat.",
+    "Az időjárási adatok elérhetőségét külön vizsgálja, a változásokat egyeztesse a résztvevőkkel."
+  ],
+  "faq": [
+    {
+      "q": "Az iPad havi nézete minden találkozót teljesen megjelenít?",
+      "a": "Ne feltételezze ezt. A Cloud Calendars korlátozza a havi cella eseménycímkéit, és további darabszámot jelez. A teljes programhoz nyissa meg a napot és az eseményt."
+    },
+    {
+      "q": "Az üres nap azt jelenti, hogy ráérek?",
+      "a": "Előbb ellenőrizze a kijelölt naptárakat, dátumot és a kapcsolódó fiókadatok meglétét. Az áttekintés csak a jelenleg rendelkezésre álló és megjelenített információkat mutatja."
+    },
+    {
+      "q": "Ismétlődő esemény áthelyezése csak azt a dátumot módosítja?",
+      "a": "Feltételezés helyett olvassa el a szerkesztési hatókört. Mentés után vizsgálja meg a módosított és egy későbbi alkalmat, majd erősítse meg a kívánt megállapodást."
+    }
+  ],
+  "sourcesHeading": "A nézetek hivatalos leírásainak összehasonlítása",
+  "sources": [
+    {
+      "label": "Apple: havi, többnapos és listanézet az Apple Naptárban",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: naptárnézetek, böngészős és alkalmazásbeli beállítások",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "weather-inside-your-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

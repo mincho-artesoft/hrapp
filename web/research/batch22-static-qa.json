@@ -1,0 +1,262 @@
+{
+  "allPassed": true,
+  "preservedCanonicals": 504,
+  "newRoutes": 0,
+  "localizedShellPages": 503,
+  "heroPages": 30,
+  "actualHeadingWordSpacesVerified": 30,
+  "headings": [
+    {
+      "locale": "en-US",
+      "path": "/",
+      "heading": "Your calendar. Your sky. One view.",
+      "actual": "Your calendar. Your sky. One view.",
+      "matches": true
+    },
+    {
+      "locale": "ar-SA",
+      "path": "/ar/",
+      "heading": "تقويمك. سماؤك. عرض واحد.",
+      "actual": "تقويمك. سماؤك. عرض واحد.",
+      "matches": true
+    },
+    {
+      "locale": "bg",
+      "path": "/bg/",
+      "heading": "Вашият календар. Вашето небе. Един изглед.",
+      "actual": "Вашият календар. Вашето небе. Един изглед.",
+      "matches": true
+    },
+    {
+      "locale": "cs",
+      "path": "/cs/",
+      "heading": "Váš kalendář. Vaše obloha. Jeden pohled.",
+      "actual": "Váš kalendář. Vaše obloha. Jeden pohled.",
+      "matches": true
+    },
+    {
+      "locale": "da",
+      "path": "/da/",
+      "heading": "Din kalender. Din himmel. Én visning.",
+      "actual": "Din kalender. Din himmel. Én visning.",
+      "matches": true
+    },
+    {
+      "locale": "de-DE",
+      "path": "/de/",
+      "heading": "Ihr Kalender. Ihr Himmel. Eine Ansicht.",
+      "actual": "Ihr Kalender. Ihr Himmel. Eine Ansicht.",
+      "matches": true
+    },
+    {
+      "locale": "el",
+      "path": "/el/",
+      "heading": "Το ημερολόγιό σας. Ο ουρανός σας. Μία προβολή.",
+      "actual": "Το ημερολόγιό σας. Ο ουρανός σας. Μία προβολή.",
+      "matches": true
+    },
+    {
+      "locale": "es-ES",
+      "path": "/es/",
+      "heading": "Tu agenda. Tu cielo. Una vista.",
+      "actual": "Tu agenda. Tu cielo. Una vista.",
+      "matches": true
+    },
+    {
+      "locale": "fi",
+      "path": "/fi/",
+      "heading": "Sinun kalenterisi. Sinun taivaasi. Yksi näkymä.",
+      "actual": "Sinun kalenterisi. Sinun taivaasi. Yksi näkymä.",
+      "matches": true
+    },
+    {
+      "locale": "fr-FR",
+      "path": "/fr/",
+      "heading": "Votre agenda. Votre ciel. Une seule vue.",
+      "actual": "Votre agenda. Votre ciel. Une seule vue.",
+      "matches": true
+    },
+    {
+      "locale": "he",
+      "path": "/he/",
+      "heading": "היומן שלכם. השמיים שלכם. תצוגה אחת.",
+      "actual": "היומן שלכם. השמיים שלכם. תצוגה אחת.",
+      "matches": true
+    },
+    {
+      "locale": "hi",
+      "path": "/hi/",
+      "heading": "आपका कैलेंडर। आपका आसमान। एक दृश्य।",
+      "actual": "आपका कैलेंडर। आपका आसमान। एक दृश्य।",
+      "matches": true
+    },
+    {
+      "locale": "hu",
+      "path": "/hu/",
+      "heading": "Az Ön naptára. Az Ön ege. Egyetlen nézet.",
+      "actual": "Az Ön naptára. Az Ön ege. Egyetlen nézet.",
+      "matches": true
+    },
+    {
+      "locale": "id",
+      "path": "/id/",
+      "heading": "Kalender Anda. Langit Anda. Satu tampilan.",
+      "actual": "Kalender Anda. Langit Anda. Satu tampilan.",
+      "matches": true
+    },
+    {
+      "locale": "it",
+      "path": "/it/",
+      "heading": "Il tuo calendario. Il tuo cielo. Una sola vista.",
+      "actual": "Il tuo calendario. Il tuo cielo. Una sola vista.",
+      "matches": true
+    },
+    {
+      "locale": "ja",
+      "path": "/ja/",
+      "heading": "あなたのカレンダー。 あなたの空。 ひとつの画面。",
+      "actual": "あなたのカレンダー。 あなたの空。 ひとつの画面。",
+      "matches": true
+    },
+    {
+      "locale": "ko",
+      "path": "/ko/",
+      "heading": "당신의 달력. 당신의 하늘. 하나의 화면.",
+      "actual": "당신의 달력. 당신의 하늘. 하나의 화면.",
+      "matches": true
+    },
+    {
+      "locale": "ms",
+      "path": "/ms/",
+      "heading": "Kalendar anda. Langit anda. Satu paparan.",
+      "actual": "Kalendar anda. Langit anda. Satu paparan.",
+      "matches": true
+    },
+    {
+      "locale": "nl-NL",
+      "path": "/nl/",
+      "heading": "Uw agenda. Uw lucht. Eén weergave.",
+      "actual": "Uw agenda. Uw lucht. Eén weergave.",
+      "matches": true
+    },
+    {
+      "locale": "no",
+      "path": "/no/",
+      "heading": "Kalenderen din. Himmelen din. Én visning.",
+      "actual": "Kalenderen din. Himmelen din. Én visning.",
+      "matches": true
+    },
+    {
+      "locale": "pl",
+      "path": "/pl/",
+      "heading": "Twój kalendarz. Twoje niebo. Jeden widok.",
+      "actual": "Twój kalendarz. Twoje niebo. Jeden widok.",
+      "matches": true
+    },
+    {
+      "locale": "pt-BR",
+      "path": "/pt/",
+      "heading": "Sua agenda. Seu céu. Uma só vista.",
+      "actual": "Sua agenda. Seu céu. Uma só vista.",
+      "matches": true
+    },
+    {
+      "locale": "ro",
+      "path": "/ro/",
+      "heading": "Calendarul dumneavoastră. Cerul dumneavoastră. O singură vedere.",
+      "actual": "Calendarul dumneavoastră. Cerul dumneavoastră. O singură vedere.",
+      "matches": true
+    },
+    {
+      "locale": "ru",
+      "path": "/ru/",
+      "heading": "Ваш календарь. Ваше небо. Один вид.",
+      "actual": "Ваш календарь. Ваше небо. Один вид.",
+      "matches": true
+    },
+    {
+      "locale": "sv",
+      "path": "/sv/",
+      "heading": "Din kalender. Din himmel. En enda vy.",
+      "actual": "Din kalender. Din himmel. En enda vy.",
+      "matches": true
+    },
+    {
+      "locale": "th",
+      "path": "/th/",
+      "heading": "ปฏิทินของคุณ ท้องฟ้าของคุณ มุมมองเดียว",
+      "actual": "ปฏิทินของคุณ ท้องฟ้าของคุณ มุมมองเดียว",
+      "matches": true
+    },
+    {
+      "locale": "tr",
+      "path": "/tr/",
+      "heading": "Takviminiz. Gökyüzünüz. Tek görünüm.",
+      "actual": "Takviminiz. Gökyüzünüz. Tek görünüm.",
+      "matches": true
+    },
+    {
+      "locale": "vi",
+      "path": "/vi/",
+      "heading": "Lịch của bạn. Bầu trời của bạn. Một khung nhìn.",
+      "actual": "Lịch của bạn. Bầu trời của bạn. Một khung nhìn.",
+      "matches": true
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "/zh-hans/",
+      "heading": "你的日历。 你的天空。 一个视图。",
+      "actual": "你的日历。 你的天空。 一个视图。",
+      "matches": true
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "/zh-hant/",
+      "heading": "你的行事曆。 你的天空。 一個檢視。",
+      "actual": "你的行事曆。 你的天空。 一個檢視。",
+      "matches": true
+    }
+  ],
+  "changedArticles": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "fullBodyPracticalFaqSourcesVerified": true,
+      "seeAlso": [
+        "a-week-view-that-fits-a-week",
+        "family-pickup-calendar-handoff",
+        "recurring-events-without-the-mess",
+        "reading-a-chance-of-rain"
+      ]
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "fullBodyPracticalFaqSourcesVerified": true,
+      "seeAlso": [
+        "exchange-calendars-on-an-iphone",
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "caldav-calendar-on-iphone",
+        "calendar-export-ics-pdf-and-backup",
+        "onecal-alternative-iphone-calendar-view-or-sync"
+      ]
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "fullBodyPracticalFaqSourcesVerified": true,
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "who-can-see-what-in-google-calendar"
+      ]
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "fullBodyPracticalFaqSourcesVerified": true,
+      "seeAlso": [
+        "choosing-a-widget-size",
+        "a-countdown-to-your-next-meeting"
+      ]
+    }
+  ],
+  "scope": "All prior canonical preservation, localized shell links, actual textContent-equivalent H1 copies and two complete changed article bodies/practical/FAQs/sources/related links. No runtime/ranking or screen-reader device certification."
+}

@@ -1,0 +1,633 @@
+{
+  "scope": "56 keys/titles and all object strings scanned for attachment terminology; not all 56 bodies semantically reread.",
+  "articles": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+      "file": "articles-compare.ts",
+      "rawHash": "251c8b8f7e04e436fc8a7828f042bc509780fbba7a9de293e8a8b9822bff899f"
+    },
+    {
+      "slug": "free-google-sync-without-adverts",
+      "title": "Free Google Calendar sync on iPhone: what is included and where ads fit",
+      "file": "articles-compare.ts",
+      "rawHash": "1a0b3dc30cfcf17491bc72928a71a861d264447df23a4fe81f69e4f3c417a739"
+    },
+    {
+      "slug": "what-fantastical-costs-and-what-this-does",
+      "title": "Cloud Calendars or Fantastical? Compare your calendar workflow on iPhone",
+      "file": "articles-compare.ts",
+      "rawHash": "c5fb0faf7583c225a65b61c99a0275d3467fa0c255a5c5229e4bac44a9c9bee5"
+    },
+    {
+      "slug": "what-you-get-without-paying-anything",
+      "title": "What Cloud Calendars includes free on iPhone and iPad",
+      "file": "articles-compare.ts",
+      "rawHash": "1f2fb684b92cc5b75f551c22bdc03a66a1765bd1baa6c8baa5c29bb03a1d609a"
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained",
+      "file": "articles-compare.ts",
+      "rawHash": "bbd78c2c4afd95826abadd14e4366947716c42d0058429622dd695422e01242a"
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "title": "A calendar was shared with you and it is not there",
+      "file": "articles-google.ts",
+      "rawHash": "700ffb28cc2b606294737e591ee2ad0a0da283f5b0a34012fa279ce8c913d552"
+    },
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "file": "articles-google.ts",
+      "rawHash": "4522a943481c86b0b18e57ac88cecf41a540893e27aee240a599da79122f8f16"
+    },
+    {
+      "slug": "what-guests-can-do-to-your-event",
+      "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+      "file": "articles-google.ts",
+      "rawHash": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e"
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "title": "A Google calendar is missing on iPhone: check the connection and selection",
+      "file": "articles-google.ts",
+      "rawHash": "7e16a971b42d8d92a47dc3aa6c75c057c80e052d8620a4fa144d0dc3fd7f4668"
+    },
+    {
+      "slug": "taking-back-a-calendar-you-shared",
+      "title": "Stop sharing a calendar: remove access and check the remaining routes",
+      "file": "articles-google.ts",
+      "rawHash": "8eea3407c2cdec5dca89e00158882fa9df4a502d64880e937e81c45cf5191f8f"
+    },
+    {
+      "slug": "change-calendar-color-iphone",
+      "title": "Change calendar colors on iPhone without moving events",
+      "file": "articles-help.ts",
+      "rawHash": "e560f013c352ddb6115f007ea9edb291e265e059be417dc49261afd0a3afa0ba"
+    },
+    {
+      "slug": "recover-deleted-calendar-events-iphone",
+      "title": "Deleted calendar events on iPhone: Google and iCloud recovery",
+      "file": "articles-help.ts",
+      "rawHash": "c34f82e3fb366ebb83853ed7f1640319c5fbb3ff3e7018df817c8277578c41e7"
+    },
+    {
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "file": "articles-help.ts",
+      "rawHash": "1e6b337eb958e369ba1cd7ec07c4880a78d4dbe5a46b3ce8d20cf1c046dcda5d"
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+      "file": "articles-help.ts",
+      "rawHash": "6002d4f3b2b75970b73b8a85f74d2af4b31fdcdbfa263e57657ee157929b0306"
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+      "file": "articles-help.ts",
+      "rawHash": "2724575c4208d9c8839dd0320647e0200a58d5b933aee7b84791aa1d81bdd936"
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "title": "Find an old calendar event: check the account, dates and search fields",
+      "file": "articles-help.ts",
+      "rawHash": "f85ec2c3362343a2894ceb49fe582a04dfa4c5176abac282f5f70b610c8903f0"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+      "file": "articles-help.ts",
+      "rawHash": "e5997bcf600281c3abc91e7a19f42648deee22760d8df2fa4596bcdf5874ef03"
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "title": "Event saved to the wrong calendar?",
+      "file": "articles-help.ts",
+      "rawHash": "46dbe6f71f55a9c5edb9bdb7590c025f8fe0d880577822f2acaefdd24b1d7057"
+    },
+    {
+      "slug": "family-pickup-calendar-handoff",
+      "title": "A family pickup plan with a clear handoff",
+      "file": "articles-help.ts",
+      "rawHash": "48c6ac4d6abbcf40f4184aea067e3e5b9366e899dad0973556b0b9fc08db42bd"
+    },
+    {
+      "slug": "drag-an-event-to-move-it",
+      "title": "Drag a calendar event to reschedule: check time, duration and scope",
+      "file": "articles-planning.ts",
+      "rawHash": "3b4aa50d7fb952df35327ea7924780116d7b38393c0746a5986cfcaf659189bc"
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+      "file": "articles-planning.ts",
+      "rawHash": "9cabea12904a876b3684b9bc53a9c6d92b3a0eb8d8c56790263c71a79f5f1964"
+    },
+    {
+      "slug": "month-view-on-a-bigger-screen",
+      "title": "Month calendar on iPad and iPhone: see the dates, then check the details",
+      "file": "articles-planning.ts",
+      "rawHash": "1101dcadfe6af951d8a9bd0ea7075cca6a5db8a17d58cbe47649f80cd4284c6a"
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "title": "A weekly calendar review: commitments, time blocks and shared responsibilities",
+      "file": "articles-planning.ts",
+      "rawHash": "9c9ef1538b97f2aabc2cf2efe69f90667752a874870be9cf97e43861f57a97a6"
+    },
+    {
+      "slug": "recurring-events-without-the-mess",
+      "title": "Recurring calendar events: change one date or the series safely",
+      "file": "articles-planning.ts",
+      "rawHash": "18614ec9491017594ab907ab568f37c40955b8594598c13ca2cac2e864d89f10"
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "title": "Calendar time zones: check the event before you travel",
+      "file": "articles-planning.ts",
+      "rawHash": "ea13808b5d6de5f3235a0a77927974d71d9f74584741327f1f440e2926358148"
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "title": "All-day calendar events: dates, availability and missing widget entries",
+      "file": "articles-planning.ts",
+      "rawHash": "620c5a088b12f6d71a7c6f4e5fde243fcb1622b2c914851158294e4002d6e709"
+    },
+    {
+      "slug": "a-list-for-people-who-dislike-grids",
+      "title": "Calendar list view on iPhone: read the agenda and check what is missing",
+      "file": "articles-planning.ts",
+      "rawHash": "01af60a3bfa72f15649c2f8a2da217fed0c28be4a99b1b81c8ae52d8dcd7ac37"
+    },
+    {
+      "slug": "the-year-in-one-screen",
+      "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview",
+      "file": "articles-planning.ts",
+      "rawHash": "570930c6db1d504a419c47931ccd6d3b6fead2ec9ae2a57f4733bcca4cfe6388"
+    },
+    {
+      "slug": "calendar-event-or-room-reservation",
+      "title": "Calendar event or room reservation? Check what is confirmed",
+      "file": "articles-sharing.ts",
+      "rawHash": "b28727f7e19b5657948f86ef35dedda9bb8bc0a750980f2a9aac3682a5277b59"
+    },
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "title": "Share one calendar event: choose the link and access you mean",
+      "file": "articles-sharing.ts",
+      "rawHash": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8"
+    },
+    {
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "title": "Sharing an event with someone who does not have Cloud Calendars",
+      "file": "articles-sharing.ts",
+      "rawHash": "cd4b46ea9e44e4926caee36966ff38c83e937d5306d34d2cb22aad8719a89e45"
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "title": "Share a calendar with the right people and permissions",
+      "file": "articles-sharing.ts",
+      "rawHash": "8757e6e6b40cd88b814ff9e175593ad79d552dc1618dd860ec4a28a1d2493222"
+    },
+    {
+      "slug": "who-can-see-what-in-google-calendar",
+      "title": "Google Calendar sharing permissions: check the access you actually grant",
+      "file": "articles-sharing.ts",
+      "rawHash": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c"
+    },
+    {
+      "slug": "keeping-track-of-who-replied",
+      "title": "Calendar replies: separate attendance from sharing access",
+      "file": "articles-sharing.ts",
+      "rawHash": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796"
+    },
+    {
+      "slug": "meeting-links-that-make-themselves",
+      "title": "Google Meet and Microsoft Teams links: create, save and check",
+      "file": "articles-sharing.ts",
+      "rawHash": "6c45da36b7e2c97dd54c6c0efea3e5850fdbe6b30c7766df0e17e8197d758d55"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+      "file": "articles-unify.ts",
+      "rawHash": "59c1312f6ea394f7edf6e1498bf3259efd0053c904f2b0c3d53267c81866e2f2"
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "file": "articles-unify.ts",
+      "rawHash": "4292a3ae34a639d9ec94926ee7c92a0481e2f7099702a0a2e944ab3b928525a3"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "file": "articles-unify.ts",
+      "rawHash": "06e1ccc907cf04143cae3ba4a727be7659cacbcb2876d1e060b2a774693abfa4"
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "file": "articles-unify.ts",
+      "rawHash": "abbcbf4bc971e9b4fd1f6246b349c78e6a752b918bdf6cb73c4570d6d512c069"
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+      "file": "articles-unify.ts",
+      "rawHash": "2c9583bb4b70546ee65f562eb21b078c815aa3039027bb4ecfc57861980267ff"
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "title": "When calendar events disagree: check ownership before editing",
+      "file": "articles-unify.ts",
+      "rawHash": "24241d00e1ece4cf67efb13d8b6588e28b0267adecdf2f3e48f87119a17fcd4d"
+    },
+    {
+      "slug": "weather-inside-your-calendar",
+      "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+      "file": "articles-weather.ts",
+      "rawHash": "6fb9e57c66c8d19d5c7e37abfb50abbc37b1b5e1757729743ad37c6d162666d2"
+    },
+    {
+      "slug": "forecast-beside-every-event",
+      "title": "Compare an appointment with the hourly weather forecast",
+      "file": "articles-weather.ts",
+      "rawHash": "a11cfc9e4b31b1361747c36816e79346f9869274fe512d1e897268ac4e8524f6"
+    },
+    {
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "title": "How far ahead can I see weather in Cloud Calendars?",
+      "file": "articles-weather.ts",
+      "rawHash": "069435ac39284f108c6d5a95b33d1abc81c1da3729a9c498e7b9102cc5051cdc"
+    },
+    {
+      "slug": "planning-outdoors-without-being-rained-on",
+      "title": "Plan an outdoor event with a forecast and a fallback",
+      "file": "articles-weather.ts",
+      "rawHash": "03df2936c31703db77fc45370001185fe53d033bdd1c65fa5aa0176283bfd1a2"
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "title": "How reliable is a weather forecast for a calendar event?",
+      "file": "articles-weather.ts",
+      "rawHash": "2288eaa5f36835692504f40dec6e5206cfbcd3a371115b272f78542768045581"
+    },
+    {
+      "slug": "reading-a-chance-of-rain",
+      "title": "What does a chance of rain mean for a calendar event?",
+      "file": "articles-weather.ts",
+      "rawHash": "69f354ff1ec93e6c6fe7e08eb0f676d2ac87eebe4f9998665639cf8bef56f60d"
+    },
+    {
+      "slug": "weather-where-the-event-is",
+      "title": "The weather where the event is, not where you are",
+      "file": "articles-weather.ts",
+      "rawHash": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140"
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "title": "Plan travel around calendar events: route time, weather and arrival",
+      "file": "articles-weather.ts",
+      "rawHash": "36809ff17620d4c0b9ddfa037098371f674f0c34914279e08cd48d8b1c0d2a5a"
+    },
+    {
+      "slug": "daylight-as-a-planning-constraint",
+      "title": "Plan around sunset: check daylight, location and the event date",
+      "file": "articles-weather.ts",
+      "rawHash": "fc6daf721fed644f11ccd74e2409790304ae18ad658c231985bd4b332f238eb0"
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "title": "Wind forecast for outdoor plans: speed, gusts, direction and time",
+      "file": "articles-weather.ts",
+      "rawHash": "f3e9f92525c226b171db19e72f3abb00c34074d2f651ed412648d6ac527b1a39"
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+      "file": "articles-widgets.ts",
+      "rawHash": "d604425c45a83392067d10284c0a4db29418ddaae05c89886cbdf891c89ae546"
+    },
+    {
+      "slug": "a-countdown-to-your-next-meeting",
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "file": "articles-widgets.ts",
+      "rawHash": "7dec3827b8167a0f894066a0e4eb37f8b225a9488ef7cc65c7118af125741393"
+    },
+    {
+      "slug": "lock-screen-without-unlocking",
+      "title": "Calendar information on the Lock Screen: choose the right feature",
+      "file": "articles-widgets.ts",
+      "rawHash": "6cebcf3c5a03da60010b266850ad0cf9121b185bed7b4cc716c2dd59de49e3e6"
+    },
+    {
+      "slug": "choosing-a-widget-size",
+      "title": "Choose a Cloud Calendars widget by its layout, not just its size",
+      "file": "articles-widgets.ts",
+      "rawHash": "d55ca6551a8e7796e779fac7bfa04d070683a1b37743a94b0026170c19262453"
+    },
+    {
+      "slug": "the-calendar-on-a-bedside-table",
+      "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan",
+      "file": "articles-widgets.ts",
+      "rawHash": "54f65c1ca0c911b0d1d1944663d08e069afaac6192aacc63161488a8bf786600"
+    }
+  ],
+  "attachmentTermMatches": [],
+  "fullReadSnapshots": {
+    "sharing-one-event-not-your-calendar": {
+      "object": {
+        "updated": "2026-10-21",
+        "title": "Share one calendar event: choose the link and access you mean",
+        "short": "Sharing one event",
+        "description": "Share one event without sharing a whole calendar. Understand Reader, Writer and Owner access, preview links, updates and the limits of revocation.",
+        "lede": "Sharing dinner details, inviting a co-organizer to edit and collecting attendance answers are different tasks. Start with the one you need, then choose the sharing route. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every event link is a read-only calendar subscription that updates immediately and records a reply.",
+        "sections": [
+          {
+            "heading": "Start with one event and inspect its details",
+            "body": [
+              "A single-event share is scoped to that event rather than the sender’s entire calendar. Before sending it, review the title, time zone, location, notes and any meeting URL. Information useful to one guest may not belong in a link you intend to circulate widely.",
+              "For example, sharing a dinner event does not require sharing the calendar containing your medical appointments. However, the dinner’s own location and links still travel with the event. Check the event itself rather than relying on the privacy of the calendar around it."
+            ]
+          },
+          {
+            "heading": "Choose a preview, an email invitation or a QR route",
+            "body": [
+              "Cloud Calendars offers distinct sharing routes. Its App Clip presents an event preview; the full app is needed to add the event through that experience. Email and QR invitations use a web landing page that offers to open Cloud Calendars. Do not describe all these links as interchangeable subscription URLs.",
+              "The sender signs in for the app’s synchronized sharing flow. A link or QR code can be forwarded, so send it only where its contents are appropriate. A QR code is a way to convey a link, not proof of who opened it."
+            ]
+          },
+          {
+            "heading": "Assign only the access the recipient needs",
+            "body": [
+              "Email invitations let you choose Reader, Writer or Owner. Reader can view and sync; Writer can edit; Owner can also share and manage access. These are consequential choices, not three names for viewing the same invitation. Use Reader when someone only needs the schedule.",
+              "Choose Writer for a co-organizer who should change the event. Choose Owner only when that person should also manage other people’s access. The recipient needs the appropriate signed-in identity to receive elevated access. An anonymous recipient is not an identified co-owner."
+            ]
+          },
+          {
+            "heading": "Understand how the recipient adds it",
+            "body": [
+              "In the full app, adding a shared event needs calendar permission and a writable destination calendar. The recipient should check that destination before saving. A received copy can then be associated with the shared event for later updates.",
+              "This differs from importing an ordinary ICS file into another calendar. An import is a copy, while a subscription periodically checks a feed. If you are sending an ICS feed rather than an app invitation, explain that route explicitly and confirm the recipient’s calendar supports it."
+            ]
+          },
+          {
+            "heading": "Verify changes before relying on them",
+            "body": [
+              "A synchronized share can carry later edits or cancellation, but the recipient’s device needs an opportunity to receive them. A feed refresh hint is not a delivery deadline. An offline device, an unrefreshed subscription or a standalone imported copy can still show older information.",
+              "If dinner moves shortly before the start, update the event and contact the guests directly. Ask them to confirm the new time. Sending an update and receiving an attendance answer are separate steps."
+            ]
+          },
+          {
+            "heading": "Manage access without promising to erase copies",
+            "body": [
+              "Review the event’s recipient access and remove permissions that are no longer needed. Removing a recipient and revoking a feed link are distinct operations; neither should be described as remotely erasing screenshots, messages or every calendar copy.",
+              "If a link has circulated beyond its intended audience, identify which link or access grant is involved. Confirm the affected route after changing access. For future events, keep private details out of broadly distributed links rather than relying on later revocation to recover them."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Review the event details and decide whether you need viewing, editing or attendance replies.",
+          "Choose the intended sharing route and sign in when required.",
+          "Use Reader for viewers; grant Writer or Owner only for the corresponding responsibility.",
+          "Ask the recipient to check the event time and destination calendar when adding it.",
+          "For urgent changes, update the event and send a direct message.",
+          "Review recipient permissions and link access separately when sharing ends."
+        ],
+        "faq": [
+          {
+            "q": "Does sharing one event expose my whole calendar?",
+            "a": "The synchronized single-event route is scoped to the event. It still exposes the shared event’s own details through the chosen route. Review those details and avoid sending a whole-calendar invitation when you intend to send only one event."
+          },
+          {
+            "q": "Can the recipient change the event?",
+            "a": "Yes, if they have the appropriate Writer or Owner access and use the supported signed-in flow. Reader access is for viewing and syncing. An ordinary ICS subscription is not the same editing mechanism."
+          },
+          {
+            "q": "Does removing someone undo everything they have already received?",
+            "a": "No such guarantee should be assumed. Access changes affect the supported sharing relationship, but previously saved copies, screenshots and messages may remain. A shared feed URL also needs separate consideration."
+          }
+        ],
+        "sourcesHeading": "References for recipient options",
+        "sources": [
+          {
+            "label": "Apple: overview of App Clips",
+            "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+          },
+          {
+            "label": "Google: importing events and its limitations",
+            "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+          },
+          {
+            "label": "Microsoft: importing versus subscribing to a calendar",
+            "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+          }
+        ],
+        "seeAlso": [
+          "inviting-people-who-do-not-have-the-app",
+          "a-calendar-that-is-yours-to-share",
+          "keeping-track-of-who-replied"
+        ]
+      },
+      "file": "articles-sharing.ts",
+      "rawHash": "8b1e984d1796dd08cc4a60f5300696f472c27a28dbb3ecab9b2cd08dc46547d8"
+    },
+    "what-guests-can-do-to-your-event": {
+      "object": {
+        "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+        "short": "Guest permissions on an event",
+        "description": "Check Google event guest permissions and defaults. Separate invitation rights from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
+        "lede": "A guest’s ability to reply does not describe everything they can do. Review the event’s permissions before using one invitation for a team, clients or a public gathering. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Invited guests can only accept or decline, and every application exposes the same permission controls.",
+        "sections": [
+          {
+            "heading": "Begin with the organiser and the original event",
+            "body": [
+              "Open the intended event in Google Calendar using the organising account, or an account authorised to manage it. Check its calendar, date and organiser before changing permissions. A separately imported appointment is not a reliable place to control the original invitation.",
+              "For a team meeting, write down the intended arrangement: who may reschedule it, who may bring others, and whether participants should see one another. These are separate decisions. A guest who needs to attend does not necessarily need to manage the meeting."
+            ]
+          },
+          {
+            "heading": "Decide whether guests should modify the meeting",
+            "body": [
+              "Google documents a “Modify event” option under “Guests can” in its computer event editor. This is a broad collaboration permission, not merely a way to suggest a new time. Google explains that it enables event management including editing fields, viewing guests and booking rooms.",
+              "For example, a trusted co-organiser arranging a workshop may need that flexibility. A customer attending an appointment may not. Choose based on the responsibility you are giving the guest, and verify the saved event rather than relying on how a different meeting was configured."
+            ]
+          },
+          {
+            "heading": "Review invitations and guest visibility separately",
+            "body": [
+              "Google’s event model distinguishes permission to invite others from permission to see other guests. Review both alongside editing access. Turning off one capability does not mean you have checked the other, and a displayed default is not evidence of the settings on an existing event.",
+              "For a gathering of unrelated clients, consider whether one shared invitation is appropriate at all. Information already included in an email, description or forwarded message is outside the narrow question of the current guest-list control. Do not put confidential participant details in a description and expect a hidden list to conceal them."
+            ]
+          },
+          {
+            "heading": "Check defaults as well as important individual events",
+            "body": [
+              "Google also documents “Default guest permissions” in its Event settings, including a default for modification. The controls are therefore not exclusively an event-by-event matter. Review your defaults when your usual scheduling pattern changes, then check significant existing invitations individually.",
+              "For a recurring meeting, confirm which occurrence or series you are editing before saving. Do not assume that changing a preference has rewritten older invitations. When testing an arrangement with a colleague, use an agreed, non-sensitive example instead of moving or cancelling a real customer meeting."
+            ]
+          },
+          {
+            "heading": "Keep Cloud Calendars roles distinct",
+            "body": [
+              "Cloud Calendars has a separate sharing arrangement with Reader, Writer and Owner roles. Reader provides viewing and syncing; Writer permits editing; Owner also manages sharing and access with the invited identity. These roles should not be presented as switches for Google’s three guest permissions.",
+              "When a Google-specific permission matters, inspect the original event in Google Calendar. Seeing an attendee in Cloud Calendars does not establish that every Google guest setting can be changed there. Keep the owning service and the recipient’s identity clear when diagnosing a missing control or an unsuccessful edit."
+            ]
+          },
+          {
+            "heading": "Verify the saved outcome and communicate responsibility",
+            "body": [
+              "After saving, reopen the original event and check the intended settings. Where appropriate, ask an authorised colleague to confirm what their own account can do. Do not exchange passwords or send private guest details as a shortcut for checking access.",
+              "Keep attendance separate from permissions. A person’s ability to edit, an imported copy, and a recorded acceptance are different facts. In Cloud Calendars, a sharing receipt is not an RSVP. For an important meeting, ask for the attendance response you need and make clear who is responsible for schedule changes."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the organising account and original event.",
+          "Decide who should manage the meeting, invite others and see guests.",
+          "Inspect the Google event’s actual guest permissions.",
+          "Review Google defaults without assuming they change existing events.",
+          "Treat Cloud Calendars sharing roles as a separate permission system.",
+          "Reopen the saved event and confirm attendance separately."
+        ],
+        "faq": [
+          {
+            "q": "Can a guest change my meeting time?",
+            "a": "Google supports granting modification permission. Check the actual event and the guest’s access; do not infer it from the fact that they received an invitation."
+          },
+          {
+            "q": "Are all guest permissions configured only on each event?",
+            "a": "No. Google documents default guest permissions as well. Check defaults for future scheduling and inspect important existing events themselves."
+          },
+          {
+            "q": "Does hiding the guest list remove information already sent?",
+            "a": "It does not demonstrate that earlier emails, descriptions, screenshots or independent copies were removed. Review what was actually distributed separately."
+          }
+        ],
+        "sourcesHeading": "Provider guidance and further reading",
+        "sources": [
+          {
+            "label": "Google: event collaboration and default guest permissions",
+            "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+          },
+          {
+            "label": "Google: event guest permission fields",
+            "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+          }
+        ],
+        "seeAlso": [
+          "who-can-see-what-in-google-calendar",
+          "sharing-one-event-not-your-calendar",
+          "keeping-track-of-who-replied"
+        ],
+        "updated": "2026-10-21"
+      },
+      "file": "articles-google.ts",
+      "rawHash": "819cc65f39d444dc5eca817987c9a338f831eb12b95227ddf244131b7fa2436e"
+    },
+    "who-can-see-what-in-google-calendar": {
+      "object": {
+        "title": "Google Calendar sharing permissions: check the access you actually grant",
+        "short": "Google Calendar access and privacy",
+        "description": "Choose Google Calendar access for availability, details or editing. Check public and group access as well as individual permissions before sharing.",
+        "lede": "Before sharing a calendar, decide what the other person needs to do. Scheduling around you, reading event details and maintaining the calendar are different tasks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Giving one person a restricted setting guarantees they cannot see details through any other route.",
+        "sections": [
+          {
+            "heading": "Match the access to the task",
+            "body": [
+              "A colleague arranging a time may need availability without appointment details. A collaborator maintaining a project schedule needs a different arrangement. Decide the task first, then inspect the permission shown in the calendar’s current sharing settings.",
+              "Google distinguishes availability, event details and several editing levels. One editing option limits access to private events; another permits event editing and details, while the strongest also permits sharing administration. Do not treat every option containing the word changes as equivalent."
+            ]
+          },
+          {
+            "heading": "Inspect calendar-wide access as well as one person",
+            "body": [
+              "Check whether the calendar is public, available to your organisation, or shared through a group, in addition to named individuals. Google says broader calendar access can override a narrower grant: restricting one person does not undo details already made public.",
+              "For example, consider a club schedule published for members. Before placing a personal appointment on it, check the calendar’s audience rather than assuming that the permission beside one friend is the only relevant setting. Keep private appointments in an appropriate destination."
+            ]
+          },
+          {
+            "heading": "Use Google’s settings for the exact calendar",
+            "body": [
+              "In Google Calendar on a computer, find the intended calendar under your calendars, open its menu and go to its sharing settings. Google documents separate areas for people or groups and broader access. Check the calendar name and signed-in account before making a change.",
+              "Confirm the recipient’s intended Google identity when inviting them. If they cannot find the calendar, verify that address and the invitation message rather than granting broader access to make it appear. A missing display and insufficient editing permission are different problems."
+            ]
+          },
+          {
+            "heading": "Test the intended result without private appointments",
+            "body": [
+              "Use an ordinary test appointment that contains no private title, notes, location or guest list. Ask the intended recipient to confirm what they can see and, only when editing is required and permitted, what they can change. Do not distribute your account credentials to perform this check.",
+              "Record the calendar and granted role, then review the result after changing the setting. This verifies the arrangement you intended; it does not prove that information previously read or copied has disappeared. Avoid testing by publishing a real work schedule."
+            ]
+          },
+          {
+            "heading": "Keep work policies and app plans separate",
+            "body": [
+              "Google states that work or school administrators may restrict sharing controls. When the required setting is unavailable, use the organisation’s approved route. Do not publish work information as a workaround for an account restriction.",
+              "Cloud Calendars can display connected calendars, but its plan names do not redefine Google permissions. Advanced removes ads; it is not a payment that grants another person access to every Google event. Check the provider’s sharing arrangement and verify the accepted result instead of relying only on an available local editor."
+            ]
+          },
+          {
+            "heading": "Review and remove the access you no longer need",
+            "body": [
+              "When a project ends, review the actual recipients, groups and any broader publication. Removing one named person is only one part of the check when other access routes exist. Agree who maintains the schedule and how future access changes will be handled.",
+              "Google documents removing people or groups and disabling broader sharing separately. Removing access cannot recall an exported file, screenshot or information already copied elsewhere. Treat those as a separate follow-up with the people involved, rather than promising that one switch erases every previous copy."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the calendar and the recipient’s intended task.",
+          "Inspect individual, group, organisation and public access.",
+          "Choose the permission for that task using current Google settings.",
+          "Verify the recipient identity before changing access.",
+          "Check a harmless test event from the recipient’s side.",
+          "Review obsolete access routes without assuming previous copies are recalled."
+        ],
+        "faq": [
+          {
+            "q": "Does a restricted individual grant override a public calendar?",
+            "a": "No. Google documents that broader calendar permissions take priority when access settings conflict. Review public and organisation settings as well as the person’s entry."
+          },
+          {
+            "q": "Do all editing permissions expose private events in the same way?",
+            "a": "No. Google documents an editing option that limits private-event access separately from other editing and sharing-management options. Read the exact current permission before choosing it."
+          },
+          {
+            "q": "Does buying Advanced change Google sharing rights?",
+            "a": "No. Advanced removes ads in Cloud Calendars. Provider access depends on the calendar’s permissions and any organisation restrictions."
+          }
+        ],
+        "sourcesHeading": "Current Google permission and sharing guidance",
+        "sources": [
+          {
+            "label": "Google: choose calendar permissions",
+            "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+          },
+          {
+            "label": "Google: share a calendar and remove access",
+            "url": "https://support.google.com/calendar/answer/37082?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "a-calendar-that-is-yours-to-share",
+          "why-a-shared-calendar-does-not-appear",
+          "work-and-personal-without-two-apps"
+        ],
+        "updated": "2026-10-21"
+      },
+      "file": "articles-sharing.ts",
+      "rawHash": "640ec0b2673eb3f8fbaad91a9029ac229e5db9fbd03fde96ae834c58d641ab7c"
+    }
+  }
+}

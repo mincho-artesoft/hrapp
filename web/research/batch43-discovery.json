@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-22",
+  "head": "7fb57c8da9eb19437ec4350e80d0419c6a754939",
+  "decision": "Expand existing week-view guide with one coherent display-settings diagnostic section; no standalone page for three related settings at this evidence depth.",
+  "queries": [
+    "site:support.apple.com iPhone Calendar week numbers first day alternate calendars",
+    "site:flexibits.com/fantastical-ios/help week numbers first day week alternate calendars"
+  ],
+  "observedResults": [
+    "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios",
+    "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27",
+    "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings",
+    "https://flexibits.com/fantastical/help/settings",
+    "https://flexibits.com/fantastical-ios/help/calendar-views"
+  ],
+  "queryLimits": "Combined output; no independent per-query rank, volume or ChatGPT citation evidence. Malformed doubled Fantastical path observed in results but NOT fetched; used previously verified canonical instead.",
+  "primaryReads": [
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/settings",
+      "status": "full substantive body",
+      "readScope": "61–150 of184",
+      "keyScope": "Calendar views91–108",
+      "observed": "Start Week On, Start Week View On and Show Calendar Weeks are separate settings. Week numbers can use a custom start date.",
+      "limits": "Publisher feature documentation, not Cloud behavior or ISO conformity. Prior corpus page re-read specifically for new requested settings scope, not counted as newly discovered URL."
+    },
+    {
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios",
+      "status": "full substantive body",
+      "readScope": "1136–1203 of1220; navigation excluded",
+      "keyScope": "1186–1202",
+      "observed": "Apple Settings > Apps > Calendar distinguishes alternate Chinese/Hebrew/Hijri display alongside Gregorian, Week Numbers, Week View Starts On Today and Start Week On.",
+      "limits": "Apple Calendar controls, not global guarantee every third-party app follows them. No rule establishing ISO week numbering or date conversion of stored events."
+    }
+  ],
+  "currentCoverage": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "fileSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+    "fullObjectsRead": [
+      "a-week-view-that-fits-a-week",
+      "the-year-in-one-screen"
+    ],
+    "scope": "Complete metadata,6sections each (week13paragraphs/year12),practical,FAQ,sources,related. Targeted ENmodule search for week number/first day/start week/alternate/ISO/Monday/Sunday, not full58body reread.",
+    "comparison": [
+      {
+        "canonical": "a-week-view-that-fits-a-week",
+        "already": "Checks date range/selection, visible hours, all-day section, overnight shift, edits and external app controls.",
+        "missing": "Does not explain why first column can differ across apps, rolling today-based display versus fixed week start, or week-number convention checks."
+      },
+      {
+        "canonical": "the-year-in-one-screen",
+        "already": "Year/date interval, marker meanings, recurring exceptions and availability.",
+        "missing": "No week-number or alternate-date-label workflow; not necessary to append duplicate settings instructions here."
+      }
+    ]
+  },
+  "recommendedAction": {
+    "canonical": "a-week-view-that-fits-a-week",
+    "type": "Substantive existing-guide section after initial date/calendar check, bounded practical check and FAQ if needed",
+    "userTask": "Reconcile a calendar whose week starts on a different day or whose week/date labels differ before using it to agree a work week.",
+    "contentPlan": [
+      "Separate first day of week, rolling week beginning today, week-number labels and alternate-calendar labels.",
+      "Give Apple route explicitly as Apple Calendar, and Fantastical custom-week numbering as a reason not to assume two labels mean identical date ranges.",
+      "For a plan called week12, communicate actual start/end dates and year; compare date headers near year boundary instead of moving events to fix display.",
+      "Alternate-calendar display is not the same as adding another account or importing a holiday calendar; use Apple documented alongside-Gregorian scope and verify actual event date."
+    ],
+    "nativeGate": "Before naming any Cloud setting or promising Apple settings carry through, inspect current immutable native commit for firstWeekday/weekOfYear/alternate-calendar settings and consumers. This research did not inspect native code.",
+    "avoid": [
+      "No ISO8601 rule unless separately sourced.",
+      "No Cloud Chinese/Hebrew/Hijri or custom-week support inference.",
+      "No claim view changes reschedule events, synchronize settings across apps or grant access.",
+      "No separate synonym pages for Monday-start/weeknumbers/alternative dates based on this alone."
+    ]
+  },
+  "failuresAndLimits": [
+    "All selected actual primary pages accessible. Combined output truncation affected navigation portion; substantive Apple1136–1203 and Fantastical61–150 were visible and read.",
+    "No source/build/deploy/native/customer actions performed.",
+    "Actual settings topics establish utility, not demand size or ranking potential."
+  ]
+}

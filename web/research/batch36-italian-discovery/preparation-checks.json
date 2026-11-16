@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-22",
+  "status": "prepared_for_root_and_independent_review",
+  "canonical": "a-calendar-that-is-yours-to-share",
+  "sourceGuard": {
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "moduleRawSha256": "bbdc19d1b8025dc1eda84b3e99e033e9b57b94ebc75dbcb7d05294f6757ad686",
+    "objectRawSha256": "8757e6e6b40cd88b814ff9e175593ad79d552dc1618dd860ec4a28a1d2493222"
+  },
+  "sourceSnapshot": {
+    "file": "research/batch36-italian-discovery/source-before.json",
+    "rawSha256": "14cc7459f13e5281e0887853269184a2d29602eb6ab5eef8cccd4b4d5a898bce",
+    "jsonSha256": "7f720a59779ea72061148577ae4f3a82c84d949dedf2a8f12ca0d4b7426172fd",
+    "fullCurrentEnglishMatchesPriorCompleteRead": true
+  },
+  "draft": {
+    "file": "research/batch36-italian-discovery/it.json",
+    "rawSha256": "519283da50d8069f71ce8d38b4503fa662240575e48f944b2b43dc026258ea7d",
+    "jsonSha256": "be320b21391dd8a96eef6860ac515491ca1786be54bd8ebc1bba4bc3ccc9b8d6"
+  },
+  "checks": {
+    "sections": 6,
+    "paragraphs": 12,
+    "steps": 6,
+    "faq": 3,
+    "sources": 2,
+    "descriptionUnicodeCharacters": 135,
+    "sourceUrlsMatch": true,
+    "paragraphStructureMatch": true,
+    "claimsEmpty": true,
+    "allRelatedRoutesExist": true,
+    "canonicalAbsentBefore": true
+  },
+  "dateChange": {
+    "english": "2026-10-21",
+    "italian": "2026-10-22",
+    "reason": "Requested publication/localization date"
+  },
+  "relatedRoutes": {
+    "keeping-track-of-who-replied": "src/app/content/it/articles.ts",
+    "sharing-one-event-not-your-calendar": "src/app/content/it/articles.ts",
+    "what-a-subscription-actually-buys": "src/app/content/it/articles.ts"
+  },
+  "omittedAbsentEnglishRelated": [
+    "inviting-people-who-do-not-have-the-app"
+  ],
+  "selfReview": [
+    "Full six-section translation, not a condensed landing page.",
+    "App-local/provider/Google sharing distinctions preserved; no new provider or platform capability.",
+    "Reader/Writer/Owner distinctions, verified email, preview versus acceptance retained. English Shared with me label retained with descriptive Italian explanation.",
+    "No immediate refresh, universal subscription or deletion of all copies promise.",
+    "Developer authorship disclosure, exact two source URLs and empty claims preserved."
+  ],
+  "limits": [
+    "Own Italian translation and self-review; not independent native-speaker approval.",
+    "No new native/runtime validation; root and independent product review pending.",
+    "Only research preparation artifacts written; no source integration, build, deployment or API action."
+  ]
+}

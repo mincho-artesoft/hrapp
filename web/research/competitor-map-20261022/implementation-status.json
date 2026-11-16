@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-23",
+  "goalStatus": "incomplete_semrush_free_tier_limits",
+  "previousGoalTurn": "Progress: Semrush account now authenticated, three free reports inspected; new useful schedule-builder page implemented and published.",
+  "googleActualQueries": 45,
+  "consumerChatGPTFreshSamples": 15,
+  "historicalChatGPTSamples": 3,
+  "newEnglishArticles": 15,
+  "totalEnglishArticles": 73,
+  "sitemapUrls": 107,
+  "heldTranslatedArticlesAndHubs": 436,
+  "implementedSlugs": [
+    "shift-work-calendar-iphone-rotating-schedules",
+    "booking-link-or-shared-calendar",
+    "natural-language-calendar-events-iphone",
+    "cozi-timetree-family-calendar-iphone-android",
+    "iphone-calendar-tasks-reminders-versus-event-alerts",
+    "automatic-time-blocking-versus-manual-calendar",
+    "what-is-a-cloud-calendar",
+    "fantastical-readdle-calendar366-iphone-comparison",
+    "iphone-calendar-language-alternate-calendar-settings",
+    "share-assign-reminders-iphone-calendar-difference",
+    "can-others-see-google-calendar-tasks",
+    "ipad-family-calendar-display-skylight-dakboard",
+    "sync-google-tasks-apple-reminders-iphone",
+    "weather-calendar-history-versus-forecast-iphone",
+    "weekly-schedule-builder"
+  ],
+  "delivered": [
+    "45 actual Google observations and 15 consumer ChatGPT conversations mapped to candidate canonical pages",
+    "All 150 available own-site GSC rows and 307 related strings given dispositions",
+    "14 new English articles and source-backed expansions published; 72 English articles total",
+    "Original 15 competitor labels audited, including publisher alias and one unavailable product detail",
+    "Combined evidence-to-page CSV and Bulgarian readable research status",
+    "Translated indexing hold and existing privacy policy preserved"
+  ],
+  "remaining": [
+    "Full organic ranking rows, filters and CSV/Excel export require access beyond the observed free tier.",
+    "AI competitor analysis returned a trial modal; no AI gap data extracted.",
+    "Owner may activate suitable access; no subscription/trial activated by agent."
+  ],
+  "completionAudit": "Not achieved: 30 visible Semrush rows are useful evidence but not the full competitive inventory. New schedule-builder intent implemented with live interaction verification.",
+  "lastIncrementArticles": 0,
+  "ownSiteSearchConsoleQueries": 150,
+  "classifiedOriginalSuggestionRows": 212,
+  "distinctIntentLeads": 20,
+  "lastIncrementPublication": {
+    "newArticles": 1,
+    "interactiveTools": 1,
+    "expandedArticles": 0,
+    "evidenceDirectory": "research/semrush-20261023",
+    "result": "Published and verified with107sitemapURLs"
+  },
+  "lastIncrementExpandedArticles": 3,
+  "classifiedRelatedSuggestionRows": 307,
+  "originalDistinctIntentLeadsResolved": 20,
+  "remainingOriginalDistinctIntentLeads": 0,
+  "allAvailableOwnSiteQueryRowsReviewed": 150
+}

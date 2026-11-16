@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-22",
+  "scope": "Homepage plus its visible FAQ link; deduplication against current English canonical index and five complete article objects. Research only.",
+  "bodyReviews": [
+    {
+      "url": "https://calconverter.app/",
+      "finalUrl": "https://calconverter.app/",
+      "status": "full",
+      "readRanges": [
+        [
+          0,
+          99
+        ]
+      ],
+      "substantiveRanges": [
+        [
+          4,
+          80
+        ]
+      ],
+      "totalLines": 100,
+      "retrieval": "Web open; crawler reports today; no redirect reported; HTTP code not exposed.",
+      "documentType": "product landing page",
+      "publisherClaims": [
+        {
+          "lines": [
+            7,
+            17
+          ],
+          "claim": "Free conversion without sign-up."
+        },
+        {
+          "lines": [
+            40,
+            72
+          ],
+          "claim": "Rebuilds Outlook published feeds, normalizing time zones, recurring-event data and ICS structure for Google and Apple subscriptions."
+        },
+        {
+          "lines": [
+            80,
+            80
+          ],
+          "claim": "EU data location."
+        }
+      ],
+      "boundary": "Publisher statements only. No submitted URL, live feed, timing, compatibility, price or data-residency verification."
+    },
+    {
+      "url": "https://calconverter.app/faq",
+      "finalUrl": "https://calconverter.app/faq",
+      "discoveredFrom": {
+        "url": "https://calconverter.app/",
+        "linkId": 1,
+        "label": "FAQ"
+      },
+      "status": "full",
+      "readRanges": [
+        [
+          0,
+          49
+        ]
+      ],
+      "substantiveRanges": [
+        [
+          3,
+          30
+        ]
+      ],
+      "totalLines": 50,
+      "retrieval": "Followed visible homepage FAQ link. Web returned complete extracted text; crawler reports two months ago. No redirect reported; HTTP code not exposed.",
+      "documentType": "substantive question-and-answer page",
+      "publisherClaims": [
+        {
+          "lines": [
+            5,
+            11
+          ],
+          "claim": "Free, no-account conversion of published Microsoft calendar addresses."
+        },
+        {
+          "lines": [
+            12,
+            15
+          ],
+          "claim": "Attributes wrong times to Windows time-zone interpretation and says its rewritten zones correct them."
+        },
+        {
+          "lines": [
+            16,
+            19
+          ],
+          "claim": "One-way Outlook-to-Google/Apple subscription; makes an absolute duplicate/conflict avoidance claim and separately suggests a Google-to-Outlook secret-address route."
+        },
+        {
+          "lines": [
+            20,
+            23
+          ],
+          "claim": "Converter caching/refresh and recipient polling are separate; faster refresh is described as planned. The service caches feeds and requests links rather than Microsoft credentials."
+        },
+        {
+          "lines": [
+            24,
+            30
+          ],
+          "claim": "Broad published-feed compatibility; reset/revoked original links presented as the common stale-feed cause; team functions described as planned."
+        }
+      ],
+      "boundary": "No runtime validation. Do not reuse universal timezone diagnosis, compatibility, absence of duplicates, roadmap delivery or most-common-cause statements as established facts. Credential-free does not mean the service never receives calendar data."
+    }
+  ],
+  "canonicalIndex": {
+    "file": "src/app/content/article-index.ts",
+    "englishCanonicalCount": 53,
+    "checkedSlugs": [
+      "calendar-export-ics-pdf-and-backup",
+      "what-calendar-sync-actually-does",
+      "time-zones-and-the-flight-you-booked",
+      "icloud-google-and-outlook-in-one-view",
+      "exchange-calendars-on-an-iphone"
+    ]
+  },
+  "canonicalMapping": [
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "readRanges": [
+        [
+          381,
+          496
+        ]
+      ],
+      "bodyRead": "full",
+      "existingCoverage": "Seven sections already distinguish ICS snapshots, updating subscriptions, printable output, provider/Mac export, transfer limitations and representative-event checks. Outlook publishing and recipient refresh are explicit.",
+      "action": "Keep canonical. Optional targeted addition under subscription guidance: diagnose an imported snapshot versus a subscribed source before considering a feed conversion service; link to the timezone guide.",
+      "gap": "No new general export/import article justified."
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "readRanges": [
+        [
+          201,
+          312
+        ]
+      ],
+      "bodyRead": "full",
+      "existingCoverage": "Account, feed and import distinctions; ownership, mirrors, permissions, non-destructive duplicate checks and provider comparison.",
+      "action": "Expand only if useful with a three-stage stale-feed check: source event, publishing/subscription route, receiving calendar. Avoid re-importing as a refresh operation.",
+      "gap": "A compact feed-specific diagnostic branch is an incremental opportunity, not a missing sync explainer."
+    },
+    {
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "readRanges": [
+        [
+          476,
+          565
+        ]
+      ],
+      "bodyRead": "full",
+      "existingCoverage": "Event versus display zone, provider controls, travel endpoints, seasonal changes, recurring dates and source-versus-app comparison.",
+      "action": "Add a bounded imported/subscribed-calendar case: preserve the original appointment; compare the same occurrence at the owner and recipient, including zone and seasonal date. Treat format conversion as a possible investigation, not the default fix.",
+      "gap": "No explicit feed-format compatibility branch; existing timezone canonical is the preferred destination."
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "readRanges": [
+        [
+          12,
+          107
+        ]
+      ],
+      "bodyRead": "full",
+      "existingCoverage": "Direct provider connection, calendar selection, permissions, mirrors, destinations and comparison checks.",
+      "action": "Cross-link existing export/sync guidance where users actually want a published read-only feed. Do not present a converter as an interchangeable authenticated connection.",
+      "gap": "No new combined-provider page needed."
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "readRanges": [
+        [
+          398,
+          497
+        ]
+      ],
+      "bodyRead": "full",
+      "existingCoverage": "Microsoft mailbox type, device versus app connection, consent and permissions, mirrors, provider verification and refusal to publish work data to bypass restrictions.",
+      "action": "Preserve this boundary. A converter is not an approved workaround for denied organizational access.",
+      "gap": "No new generic Exchange setup recipe justified."
+    }
+  ],
+  "proposedNextAction": {
+    "priority": 1,
+    "type": "small additions to existing canonicals, not new page",
+    "primaryCanonical": "time-zones-and-the-flight-you-booked",
+    "secondaryCanonical": "calendar-export-ics-pdf-and-backup",
+    "proposedUserFacingParagraph": "If the mismatch appears only in a subscribed or imported calendar, first identify which route you used. Compare the same appointment in its original calendar and the receiving calendar, noting the date, time zone and whether it repeats. Keep the original unchanged while checking: moving the appointment to compensate for one display can create a second problem. If you consider a service that processes a calendar feed, first review whether you may share that feed and what information the service receives.",
+    "publicationGate": "Editorial proposal, not integrated. Before asserting a specific Windows/IANA parsing defect or converter remedy, obtain exact current provider/format documentation or a controlled non-private test; do not generalize the publisher explanation to all one-hour errors. Any refresh menu or interval needs the actual receiving provider documentation.",
+    "crosslinks": [
+      "calendar-export-ics-pdf-and-backup",
+      "what-calendar-sync-actually-does",
+      "time-zones-and-the-flight-you-booked"
+    ]
+  },
+  "officialProviderDocsReadThisBatch": [],
+  "officialDocBoundary": "No new provider-specific instruction is asserted. Existing article source URLs were inspected as article content, not fetched or marked reviewed. Additional primary documentation is required before publishing new detailed provider procedures.",
+  "otherLinkedPagesRead": [],
+  "accessLimits": [
+    "Complete extracted page text, not interactive behavior or an authenticated account.",
+    "FAQ crawler age is two months; no independent current product state established.",
+    "No private feed submitted, account created, or subscription installed."
+  ],
+  "evidence": [
+    {
+      "file": "src/app/content/article-index.ts",
+      "sha256": "a00b42ba8c3e050125d635d43f7173a6047472f035b46829d80fca0348f537a8"
+    },
+    {
+      "file": "src/app/content/en-US/articles-help.ts",
+      "sha256": "e366fa97cf638b49d921ad548c7abccb5ddfb1a0801131a136242d5a56a85436"
+    },
+    {
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "sha256": "ae46c83a21f7abdcdd512f1350aeec67c9f22ecf572ec4ac0a2e74fa892cb1b3"
+    },
+    {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "sha256": "e303ff0b53aceb40b9539f8c088133876d76e3cd03ffdd62e3eb09272beb346b"
+    }
+  ],
+  "checks": {
+    "jsonParsed": true,
+    "allMappedSlugsExistInCurrentEnglishIndex": true,
+    "fullMappedObjectsRead": 5,
+    "newRoutesProposed": 0,
+    "paidApiCalls": 0,
+    "sourceIntegration": false,
+    "queueMutation": false,
+    "searchRankOrVolumeMeasured": false
+  }
+}

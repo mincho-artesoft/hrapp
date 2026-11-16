@@ -1,0 +1,77 @@
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <a class="brand" [href]="homePath()" aria-label="Cloud Calendars — home">
+          <img class="brand__mark" src="icons/mark-128.webp" alt="" width="32" height="32" decoding="async" />
+          <span class="brand__text">Cloud<span>Calendars</span></span>
+        </a>
+        <p class="ftr__blurb">
+          {{ copy().footer.tagline }}
+        </p>
+        <a
+          class="btn btn--ghost ftr__cta"
+          [href]="appStoreUrl()"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ storeCta() }}
+        </a>
+      </div>
+
+      <nav class="ftr__cols" aria-label="Footer">
+        <div class="ftr__col">
+          <h3>{{ copy().footer.product }}</h3>
+          <ul>
+            @for (l of productLinks(); track l.href) {
+              <li><a [href]="l.href">{{ l.label }}</a></li>
+            }
+          </ul>
+        </div>
+
+        <div class="ftr__col">
+          <h3>{{ copy().footer.legal }}</h3>
+          <ul>
+            <li><a href="/privacy-policy/">{{ copy().footer.privacy }}</a></li>
+            <li><a href="/terms-of-service/">{{ copy().footer.terms }}</a></li>
+            <li>
+              <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+                 target="_blank" rel="noopener noreferrer">{{ copy().footer.eula }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ftr__col">
+          <h3>{{ copy().footer.app }}</h3>
+          <ul>
+            <li>
+              <a [href]="supportHref">
+                {{ copy().footer.emailSupport }}
+                <bdi class="ftr__support-address" dir="ltr">{{ supportEmail }}</bdi>
+              </a>
+            </li>
+            <li><span>{{ versionLine() }}</span></li>
+            <li><span>{{ iosLine() }}</span></li>
+            <li>
+              <a [href]="appStoreUrl()" target="_blank" rel="noopener noreferrer">
+                {{ copy().footer.viewOnStore }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="ftr__bottom">
+      <p>{{ rights() }}</p>
+      <!-- CC BY 4.0 requires attribution, so this line is not optional. -->
+      <p class="ftr__made">
+        {{ copy().footer.weatherBy }}
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>,
+        CC BY 4.0.
+      </p>
+    </div>
+  </div>
+</footer>

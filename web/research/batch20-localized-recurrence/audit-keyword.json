@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-22",
+  "sourceFile": "src/app/content/en-US/articles-planning.ts",
+  "sourceSlug": "recurring-events-without-the-mess",
+  "sourceUpdated": "2026-10-21",
+  "sourceObjectSHA256": "dd66bab8e148785562f4e41fe33a933eb0b08959b9b1e5420503c8554b15a63c",
+  "scope": "Complete current English object translated into French and Italian. No source integration.",
+  "records": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch20-localized-recurrence/fr-FR.json",
+      "descriptionUnicodeCharacters": 142,
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 5,
+      "faqs": 3,
+      "exactSourceURLs": 3,
+      "relatedRouteDefinitions": {
+        "drag-an-event-to-move-it": "src/app/content/fr-FR/articles.ts",
+        "what-guests-can-do-to-your-event": "src/app/content/fr-FR/articles-google.ts"
+      }
+    },
+    {
+      "locale": "it",
+      "file": "research/batch20-localized-recurrence/it.json",
+      "descriptionUnicodeCharacters": 139,
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 5,
+      "faqs": 3,
+      "exactSourceURLs": 3,
+      "relatedRouteDefinitions": {
+        "drag-an-event-to-move-it": "src/app/content/it/articles.ts",
+        "what-guests-can-do-to-your-event": "src/app/content/it/articles-google.ts"
+      }
+    }
+  ],
+  "relatedSubstitutions": {
+    "unavailableSourceRoutes": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked"
+    ],
+    "replacementRoutes": [
+      "drag-an-event-to-move-it",
+      "what-guests-can-do-to-your-event"
+    ],
+    "reason": "Actual localized object definitions verified; closely related editing and permission guidance."
+  },
+  "semanticChecks": [
+    "No promised Cloud occurrence-scope prompt; provider editor advised if single-date choice absent.",
+    "Repeat rule versus edit scope distinguished.",
+    "Organizer and editing authority retained.",
+    "Representative dates and existing exceptions checked; no universal preservation or erasure promise.",
+    "No mandatory arbitrary end date.",
+    "Developer disclosure retained; source URLs and source update date unchanged."
+  ],
+  "translationStatus": "Own translations, not native-speaker certification or approval.",
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native edits",
+    "Paid API calls"
+  ]
+}

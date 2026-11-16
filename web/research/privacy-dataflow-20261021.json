@@ -1,0 +1,695 @@
+{
+  "date": "2026-10-21",
+  "scope": "Read-only native/backend/marketing source and public pages. Only research artifact changed. No secrets, environment values, IP addresses, customer records, live backend queries, builds, simulator, deployments, ASC mutations or legal declarations.",
+  "roots": {
+    "native": "/Users/minchomilev/work/hrapp",
+    "backend": "/Users/minchomilev/work/cloud-calendars-api-nest",
+    "website": "/Users/minchomilev/cloud-calendars"
+  },
+  "verification": {
+    "code": "Current working-tree source, not released/runtime certification.",
+    "public": "Current public privacy label and policy fetched.",
+    "authenticatedASC": "Existing snapshot contains versions/appInfos/policy URLs, not App Privacy questionnaire; public label is the observed privacy statement.",
+    "sdk": "Official Google disclosure describes potential SDK collection, not app-specific traffic capture."
+  },
+  "publicSources": [
+    {
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+      "finding": "Data Not Collected public label; current v1.7.3."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/privacy-policy/",
+      "finding": "Policy dated May 5 2025 matched local template."
+    },
+    {
+      "url": "https://developers.google.com/admob/ios/privacy/data-disclosure",
+      "finding": "Possible SDK IP/general location, identifiers, diagnostics/performance and ad-interaction collection; consulted2026-10-21."
+    }
+  ],
+  "dataFlows": [
+    {
+      "id": "cloud-account",
+      "dataTypes": [
+        "provider identity",
+        "email",
+        "optional name",
+        "timezone",
+        "own account/session identifiers"
+      ],
+      "purpose": "Sign-in, recovery, ownership and permissions",
+      "storageOrTransmission": "Provider credential transmitted for verification; S3 identity/email/account/token indexes and local protected session file.",
+      "thirdPartiesOrRecipients": [
+        "Google",
+        "Microsoft",
+        "Apple sign-in",
+        "Cloud Calendars/AWS S3"
+      ],
+      "evidence": [
+        "identity",
+        "accounts",
+        "storage",
+        "session"
+      ],
+      "uncertainty": "No persistent provider credential storage established in this server path; own session differs from provider sync credentials. Deployed version unknown."
+    },
+    {
+      "id": "shared-events-and-calendars",
+      "dataTypes": [
+        "title",
+        "start/end/all-day",
+        "location/coordinates",
+        "notes",
+        "meeting/event URL",
+        "recurrence/alarms",
+        "organizer/attendee names/email/status",
+        "attachment filename/type/base64 content",
+        "travel time",
+        "calendar title/color/timezone"
+      ],
+      "purpose": "Sharing, recipient updates and collaboration",
+      "storageOrTransmission": "Shared-event PUTs and calendar event batches to own backend; persistent canonical S3 records and generated feeds.",
+      "thirdPartiesOrRecipients": [
+        "Cloud Calendars/AWS S3",
+        "authorized recipients"
+      ],
+      "evidence": [
+        "content",
+        "event-storage",
+        "storage"
+      ],
+      "uncertainty": "Supported fields need not be populated on every event. Does not establish that all private calendars upload. Exact access of public links and provider field availability not runtime tested."
+    },
+    {
+      "id": "recipient-permissions",
+      "dataTypes": [
+        "recipient email",
+        "access role",
+        "owner/calendar/event IDs",
+        "invitation status",
+        "share/feed identifiers"
+      ],
+      "purpose": "Deliver and authorize sharing",
+      "storageOrTransmission": "Recipient/account indexes and share metadata persist server-side.",
+      "thirdPartiesOrRecipients": [
+        "Cloud Calendars/AWS S3",
+        "recipients"
+      ],
+      "evidence": [
+        "content",
+        "accounts"
+      ],
+      "uncertainty": "No broad end-to-end encryption or anonymous-data claim is established."
+    },
+    {
+      "id": "email-delivery",
+      "dataTypes": [
+        "recipient address",
+        "sender/reply-to",
+        "subject",
+        "invitation content/link",
+        "optional attachments"
+      ],
+      "purpose": "Send invitations",
+      "storageOrTransmission": "Amazon SES payloads; source logs recipient and subject on success, skip and failure.",
+      "thirdPartiesOrRecipients": [
+        "Amazon SES",
+        "recipient mail provider"
+      ],
+      "evidence": [
+        "email"
+      ],
+      "uncertainty": "Production SES configuration and logs/retention not inspected; no live mail or customer records read."
+    },
+    {
+      "id": "invitation-push",
+      "dataTypes": [
+        "installation ID",
+        "APNs token",
+        "principal ID",
+        "hashed registration capability",
+        "revision/enabled/timestamps",
+        "sender/title/invitation ID"
+      ],
+      "purpose": "Remote invitation delivery",
+      "storageOrTransmission": "S3 registrations and receipts; conditional SQS jobs; APNs payload.",
+      "thirdPartiesOrRecipients": [
+        "AWS S3/SQS",
+        "Apple APNs"
+      ],
+      "evidence": [
+        "push"
+      ],
+      "uncertainty": "Conditional on backend configuration. Sandbox default; production NOT asserted. Skipping jobs older than24h is not a general retention/deletion policy."
+    },
+    {
+      "id": "provider-sync",
+      "dataTypes": [
+        "Google/Microsoft email/account ID",
+        "access/refresh/ID tokens when present",
+        "expiry/avatar",
+        "calendar/event content"
+      ],
+      "purpose": "Connect and edit provider calendars and meetings",
+      "storageOrTransmission": "Provider APIs; local account model JSON saved to UserDefaults; SDK caches not exhaustively audited.",
+      "thirdPartiesOrRecipients": [
+        "Google Calendar",
+        "Microsoft Graph",
+        "Apple EventKit/iCloud as device configured"
+      ],
+      "evidence": [
+        "provider-auth"
+      ],
+      "uncertainty": "Do not claim all tokens are Keychain-only. No actual token values read. Full API payload matrix/runtime behavior not audited."
+    },
+    {
+      "id": "contacts-import",
+      "dataTypes": [
+        "contact names",
+        "email addresses",
+        "phone numbers"
+      ],
+      "purpose": "Import/update Google contacts on device",
+      "storageOrTransmission": "Google People API responses; iOS Contacts writes after Contacts permission.",
+      "thirdPartiesOrRecipients": [
+        "Google People API",
+        "iOS Contacts"
+      ],
+      "evidence": [
+        "contacts",
+        "provider-auth"
+      ],
+      "uncertainty": "Conditional on permissions. No evidence here of wholesale contact book upload to own server; recipient addresses are a separate flow. iOS Contacts backing account depends on device."
+    },
+    {
+      "id": "local-calendars-and-widgets",
+      "dataTypes": [
+        "app-owned calendar/event records",
+        "upcoming titles/times/locations"
+      ],
+      "purpose": "Local calendars and widgets",
+      "storageOrTransmission": "Private JSON snapshot; app-group UserDefaults for widget snapshot.",
+      "thirdPartiesOrRecipients": [
+        "app and widget extension storage"
+      ],
+      "evidence": [
+        "local",
+        "widgets"
+      ],
+      "uncertainty": "Unshared local data distinct from server shares. Device backups/storage lifecycle not exhaustively audited."
+    },
+    {
+      "id": "weather",
+      "dataTypes": [
+        "GPS or selected-place coordinates",
+        "forecast results",
+        "diagnostic location output"
+      ],
+      "purpose": "Forecasts and weather features",
+      "storageOrTransmission": "Apple WeatherKit coordinate request; local diagnostic print includes location.",
+      "thirdPartiesOrRecipients": [
+        "Apple WeatherKit/CoreLocation"
+      ],
+      "evidence": [
+        "weather",
+        "location"
+      ],
+      "uncertainty": "GPS not only route; manual places supported. Retention/provider logs/identity linkage not verified; no sample coordinates retained."
+    },
+    {
+      "id": "advertising",
+      "dataTypes": [
+        "consent state",
+        "ad requests",
+        "SDK-documented possible device identifiers",
+        "SDK-documented IP-derived general location",
+        "SDK diagnostics/performance",
+        "ad interactions"
+      ],
+      "purpose": "Advertising and consent management",
+      "storageOrTransmission": "Google Mobile Ads request path gated by UMP; possible categories from official SDK documentation, not observed traffic.",
+      "thirdPartiesOrRecipients": [
+        "Google AdMob/Mobile Ads",
+        "Google UMP"
+      ],
+      "evidence": [
+        "ads",
+        "consent"
+      ],
+      "uncertainty": "No claim of personalized advertising, IDFA availability, ATT state, specific mediation partners or exact packet fields. Configuration review required."
+    },
+    {
+      "id": "purchases",
+      "dataTypes": [
+        "product/transaction/entitlement information"
+      ],
+      "purpose": "Purchase subscriptions and check entitlements",
+      "storageOrTransmission": "StoreKit APIs/local entitlement tracking.",
+      "thirdPartiesOrRecipients": [
+        "Apple App Store/StoreKit"
+      ],
+      "evidence": [
+        "purchases"
+      ],
+      "uncertainty": "No evidence of app receiving card details; not an exhaustive purchase/backend review."
+    },
+    {
+      "id": "website-demo",
+      "dataTypes": [
+        "city search query",
+        "forecast coordinates",
+        "ordinary request metadata"
+      ],
+      "purpose": "Marketing-site live weather",
+      "storageOrTransmission": "Browser fetch to Open-Meteo geocoding/forecast, separate from native WeatherKit.",
+      "thirdPartiesOrRecipients": [
+        "Open-Meteo"
+      ],
+      "evidence": [
+        "website-weather"
+      ],
+      "uncertainty": "Website hosting/CDN logs/cookies/analytics not fully audited; do not conflate providers."
+    }
+  ],
+  "policyIssues": [
+    {
+      "surface": "Public App Store App Privacy",
+      "exactAssertions": [
+        "Data Not Collected",
+        "The developer does not collect any data from this app."
+      ],
+      "assessment": "Material discrepancy for owner review against inspected identity/shared-content persistence and ad request paths. Not an Apple-questionnaire or legal conclusion; code/release/deployment correspondence unverified.",
+      "evidence": [
+        "accounts",
+        "storage",
+        "content",
+        "ads"
+      ]
+    },
+    {
+      "surface": "Policy account information",
+      "exactAssertion": "Calendar event data accessed through these services remains under the control of those services and is processed within the App only as needed to display and manage your schedule.",
+      "assessment": "Contradicted as blanket confinement to app processing when provider event/calendar content is shared to own backend. Additional server copy must be explained.",
+      "evidence": [
+        "content",
+        "event-storage",
+        "storage"
+      ]
+    },
+    {
+      "surface": "Policy service providers",
+      "exactAssertion": "though calendar data is primarily processed on-device or via direct API calls",
+      "assessment": "Not quantitatively falsifiable from code; incomplete about persistent own-server sharing, SES and conditional push. Do not claim to know where most processing occurs.",
+      "evidence": [
+        "storage",
+        "email",
+        "push"
+      ]
+    },
+    {
+      "surface": "Policy location",
+      "exactAssertion": "The integrated weather features require access to your location (approximate or precise, depending on your settings) to provide relevant forecasts.",
+      "assessment": "Overbroad if read as mandatory GPS access: requests accept searched/saved coordinates too. Explain location choice.",
+      "evidence": [
+        "weather"
+      ]
+    },
+    {
+      "surface": "Policy location retention",
+      "exactAssertion": "not stored by Cloud Calendars long-term associated with your identity",
+      "assessment": "Unverified rather than declared false: no documented retention confirmed. Separate shared-event structured coordinates from weather-request coordinates.",
+      "evidence": [
+        "content",
+        "weather"
+      ]
+    },
+    {
+      "surface": "Policy advertising/contacts omissions",
+      "assessment": "Does not identify AdMob/UMP, contacts import, shared attachments/attendees, invitation email/logs or conditional push data. General possible analytics wording is insufficiently specific to these known flows.",
+      "evidence": [
+        "ads",
+        "consent",
+        "contacts",
+        "content",
+        "email",
+        "push"
+      ]
+    },
+    {
+      "surface": "Policy account deletion omissions",
+      "assessment": "Signout is not server erasure; final identity retained for recovery. Shared-calendar removal preserves tombstone snapshot. Retention schedule and full-account deletion process require confirmation.",
+      "evidence": [
+        "signout",
+        "accounts",
+        "retained-snapshot"
+      ]
+    },
+    {
+      "surface": "Policy business assurances",
+      "exactAssertions": [
+        "We do not sell your personal information.",
+        "These providers are bound by confidentiality obligations."
+      ],
+      "assessment": "Neither verified nor disproved by code; requires owner/vendor-contract review."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "identity",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "lines": [
+        [
+          656,
+          670
+        ]
+      ],
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "finding": "Sends provider token/provider/optional name/timezone to own resolve endpoint."
+    },
+    {
+      "id": "accounts",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": [
+        [
+          93,
+          232
+        ],
+        [
+          488,
+          519
+        ]
+      ],
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Persists provider/hashed-subject/email/account indexes; final recovery identity cannot be unlinked."
+    },
+    {
+      "id": "storage",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/store/store.service.ts",
+      "lines": [
+        [
+          17,
+          58
+        ],
+        [
+          112,
+          132
+        ]
+      ],
+      "sha256": "14842159b2b211c1d15d352664666d10449c4b26b5feb001f3170d277b368294",
+      "finding": "Backend S3 JSON records, calendar feeds and delete helper; no retention schedule established."
+    },
+    {
+      "id": "session",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CalendarFeedSession.swift",
+      "lines": [
+        [
+          169,
+          216
+        ]
+      ],
+      "sha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "finding": "Own sharing session stored in Application Support with iOS file protection, not Keychain."
+    },
+    {
+      "id": "signout",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift",
+      "lines": [
+        [
+          560,
+          609
+        ]
+      ],
+      "sha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "finding": "Signout clears local session and disables invitation push; server recovery account deliberately retained."
+    },
+    {
+      "id": "content",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "lines": [
+        [
+          36,
+          73
+        ],
+        [
+          138,
+          194
+        ],
+        [
+          692,
+          704
+        ],
+        [
+          886,
+          918
+        ],
+        [
+          954,
+          984
+        ]
+      ],
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "finding": "Sharing model supports attendee/organizer names/emails/status, notes, times, recurrence, alarms, structured location, video URL, travel time and attachment filename/type/base64 content; shared calendar metadata and event batches uploaded."
+    },
+    {
+      "id": "event-storage",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": [
+        [
+          326,
+          351
+        ]
+      ],
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Canonical shared event includes title/start/end/all-day/location/URL/details/notes/organizer."
+    },
+    {
+      "id": "retained-snapshot",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": [
+        [
+          2288,
+          2318
+        ]
+      ],
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Removal of shared calendar preserves snapshot with deletedAt tombstone."
+    },
+    {
+      "id": "email",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/email/email.service.ts",
+      "lines": [
+        [
+          32,
+          65
+        ]
+      ],
+      "sha256": "3b96e4f187dc28967403042b647f0215049bf90350eb029d46221cc63dc64186",
+      "finding": "SES recipient/subject/HTML/text/reply-to/optional attachments; logs recipient and subject on success/skip/failure."
+    },
+    {
+      "id": "push",
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/push/push.service.ts",
+      "lines": [
+        [
+          31,
+          75
+        ],
+        [
+          78,
+          140
+        ]
+      ],
+      "sha256": "29e682ae6d93d4ef786003b3fd0499438badaf500da3951d7b0521ea4ec1ac55",
+      "finding": "S3 installation/account/APNs-token records and receipts; configured SQS/APNs dispatch sends invitation sender/title. Default environment sandbox; production configuration unverified."
+    },
+    {
+      "id": "provider-auth",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": [
+        [
+          234,
+          261
+        ],
+        [
+          2231,
+          2244
+        ],
+        [
+          2436,
+          2443
+        ],
+        [
+          2923,
+          2947
+        ],
+        [
+          4288,
+          4295
+        ]
+      ],
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google calendar/contact scopes, Microsoft calendar/profile scopes; provider account models include tokens/email/IDs/expiry/avatar; JSON models saved in UserDefaults."
+    },
+    {
+      "id": "contacts",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": [
+        [
+          4710,
+          4780
+        ],
+        [
+          4807,
+          4815
+        ]
+      ],
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google People API names/email/phone requests; after Contacts permission creates/updates device contacts. Post-signin call at261."
+    },
+    {
+      "id": "local",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "lines": [
+        [
+          488,
+          499
+        ]
+      ],
+      "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "finding": "Local calendar/event snapshot persisted as JSON."
+    },
+    {
+      "id": "widgets",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "lines": [
+        [
+          250,
+          275
+        ]
+      ],
+      "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "finding": "Event title/location/times snapshot encoded in app-group UserDefaults."
+    },
+    {
+      "id": "weather",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "lines": [
+        [
+          88,
+          115
+        ]
+      ],
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "finding": "Apple WeatherKit request using coordinates; print includes coordinates; distinguishes GPS and searched/saved locations."
+    },
+    {
+      "id": "location",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/LocationManager.swift",
+      "lines": [
+        [
+          9,
+          23
+        ],
+        [
+          51,
+          66
+        ]
+      ],
+      "sha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "finding": "When-in-use location permission; coordinates also printed diagnostically."
+    },
+    {
+      "id": "ads",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Ads/BannerAdView.swift",
+      "lines": [
+        [
+          55,
+          63
+        ]
+      ],
+      "sha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+      "finding": "Google Mobile Ads Request load after consent gate."
+    },
+    {
+      "id": "consent",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Ads/ConsentManager.swift",
+      "lines": [
+        [
+          28,
+          74
+        ]
+      ],
+      "sha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+      "finding": "Google UMP consent update/form/privacy options."
+    },
+    {
+      "id": "purchases",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift",
+      "lines": [
+        [
+          102,
+          110
+        ],
+        [
+          124,
+          164
+        ]
+      ],
+      "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "finding": "StoreKit purchase, transaction and entitlement APIs."
+    },
+    {
+      "id": "website-weather",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/core/weather.service.ts",
+      "lines": [
+        [
+          186,
+          235
+        ]
+      ],
+      "sha256": "bf0d2f7977d30f7681ae4ffe4430532c121dab8621157627492ca32677938c0d",
+      "finding": "Website separately sends city search and forecast coordinates to Open-Meteo."
+    },
+    {
+      "id": "policy",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/pages/privacy-policy-page/privacy-policy-page.component.html",
+      "lines": [
+        [
+          1,
+          64
+        ]
+      ],
+      "sha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+      "finding": "Policy template matched public text, date May 5 2025."
+    },
+    {
+      "id": "asc-snapshot",
+      "file": "/Users/minchomilev/cloud-calendars/research/aso/asc-readonly-snapshot-20261021.json",
+      "lines": [
+        [
+          1,
+          8
+        ]
+      ],
+      "sha256": "e4e82d2fdffaa304bfc2fb33324d3f273c67a35af19b391978c6fbb523888d1b",
+      "finding": "Snapshot top-level versions/appInfos; privacy policy URL records, not authoritative App Privacy questionnaire."
+    }
+  ],
+  "remainingUncertainties": [
+    "Released native binary and production backend correspondence to local source.",
+    "Complete account erasure workflow, support procedure and retention schedule.",
+    "S3 region/lifecycle/versioning/backups/logs, SES logging retention and infrastructure access controls.",
+    "Production APNs/SQS configuration and retention.",
+    "Actual ad mediation/consent/personalization/ATT configuration and SDK manifests.",
+    "Native diagnostic log retention or remote export.",
+    "Weather provider retention and saved location lifecycle.",
+    "Device backups, contact backing account and widget disclosure behavior.",
+    "No dedicated Firebase/Crashlytics initialization found in scoped Swift search; not proof of no analytics elsewhere.",
+    "Vendor contracts and legal classifications not assessed."
+  ],
+  "nextReview": [
+    "Owner confirms production feature/configuration inventory and vendors.",
+    "Document full-account deletion versus signout, unlink, cancellation and shared-calendar tombstones.",
+    "Prepare precise policy sections for local data, provider sync, sharing/account, contacts, email/push, weather, advertising, purchases and website.",
+    "Map verified inventory to Apple privacy definitions for owner-reviewed ASC answers; do not silently change disclosures from this audit."
+  ]
+}

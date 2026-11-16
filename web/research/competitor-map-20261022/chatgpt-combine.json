@@ -1,0 +1,42 @@
+{
+  "id": "combine",
+  "prompt": "Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",
+  "observedAt": "2026-10-22T20:35:11.215Z",
+  "source": "Actual consumer ChatGPT UI",
+  "method": "Fresh single-question conversation; default account; backend model and personalization not controlled; answer claims require independent verification",
+  "visibleLinks": [
+    {
+      "label": "Skip to content",
+      "url": "https://chatgpt.com/c/6ada731b-58c8-8328-9460-dce2505cad16#_r_ci_"
+    },
+    {
+      "label": "Apple's setup instructions",
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Microsoft's Outlook instructions",
+      "url": "https://support.microsoft.com/en-us/outlook/connect-outlook-and-apple-iphone-calendars?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official compatibility FAQ",
+      "url": "https://flexibits.com/fantastical-ios/faq?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Account setup guide",
+      "url": "https://flexibits.com/fantastical-ios/help/getting-started?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official account and unified-view guide",
+      "url": "https://support.readdle.com/calendars/adding-accounts/first-steps-adding-accounts-to-calendars?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Microsoft's iCloud integration guide",
+      "url": "https://support.microsoft.com/en-us/outlook/how-do-i-connect-my-native-ios-calendar-to-outlook-mobile?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Supported calendar accounts",
+      "url": "https://support.microsoft.com/en-us/outlook/getstarted/sync-your-account-in-outlook-to-the-microsoft-cloud?utm_source=chatgpt.com"
+    }
+  ],
+  "visibleText": "Skip to content\nHome\nSpace\nScheduled\nPlugins\nExplore\nSites\nShare\nYou said:\nWhich iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.\nChatGPT said:\n\nYes. Several iPhone calendar apps can display iCloud, Google Calendar, and Microsoft Outlook calendars together in one view, without moving or duplicating your events.\n\nThe important distinction is between two very different features:\n\nCombined calendar view: One app displays events from all three accounts, usually with different colors. The events remain in their original calendars, and changes sync back to the appropriate account.\n\nBusy-time synchronization: A service copies or mirrors your availability between accounts, often by creating private “Busy” blocks. This helps prevent double-booking when someone checks only one of your calendars, but it is not necessary simply to see all your appointments together.\n\nFor your stated goal, I would start with Apple Calendar or Fantastical.\n\nBest iPhone apps for all three calendars\n\n1. Apple Calendar — Best free option\n\nBuilt into iPhone. Displays iCloud, Google, Outlook.com, and Microsoft Exchange calendars together. You can show or hide individual calendars and choose which account receives new events.\n\nCombined view: Yes · Busy-time copying: No\n\nApple's setup instructions · Microsoft's Outlook instructions\n\n2. Fantastical — Best premium calendar experience\n\nSupports iCloud, Google, Exchange, and Microsoft 365 directly. Offers flexible calendar views, calendar sets, natural-language event entry, and more advanced scheduling features. Some features require a subscription.\n\nCombined view: Yes · Busy-time copying: Not required\n\nOfficial compatibility FAQ · Account setup guide\n\n3. Calendars by Readdle — Strong alternative\n\nDirect connections for iCloud, Google, Outlook, and Exchange. Readdle explicitly confirms that events from connected calendars appear in one unified, color-coded view, with edits synced to their respective services.\n\nCombined view: Yes · Busy-time copying: No\n\nOfficial account and unified-view guide\n\n4. Microsoft Outlook — Best if you already work in Outlook\n\nThe Outlook iPhone app can display Microsoft, Google, and iCloud calendars together. Microsoft explicitly documents adding an iCloud account to Outlook so its events appear alongside other calendars.\n\nCombined view: Yes · Busy-time copying: No\n\nMicrosoft's iCloud integration guide · Supported calendar accounts\n\nCombined view vs. busy-time synchronization\n\nThese features solve different problems.\n\nCombined view\n\niCloud\n\n9:00 Dentist\n\nGoogle\n\n11:00 Lunch\n\nOutlook\n\n14:00 Team call\n\nOne screen, three separate calendars. No mirrored events.\n\nBusy-time sync\n\nOutlook (original)\n\n14:00 Team call\n\nGoogle (mirrored)\n\n14:00 Busy\n\nA second event blocks the same time in another account.\n\nA combined view lets you see that you're occupied. It doesn't necessarily let a colleague scheduling through Outlook see that you're busy with a personal Google or iCloud appointment.\n\nBusy-time synchronization is useful when you need that second capability. It may require a separate calendar-sync service, additional permissions, and careful privacy settings.\n\nComparison\n\nApp\n\n\t\n\nAll three in one view\n\n\t\n\nEdit original events\n\n\t\n\nCopies busy blocks?\n\n\n\n\nApple Calendar\n\n\t\n\nYes\n\n\t\n\nYes\n\n\t\n\nNo\n\n\n\n\nFantastical\n\n\t\n\nYes\n\n\t\n\nYes\n\n\t\n\nNot by default\n\n\n\n\nReaddle Calendars\n\n\t\n\nYes\n\n\t\n\nYes\n\n\t\n\nNo\n\n\n\n\nOutlook for iOS\n\n\t\n\nYes\n\n\t\n\nYes, subject to account support\n\n\t\n\nNo\n\nNote: Workplace Microsoft 365 accounts can restrict third-party calendar access through organizational security policies. Check with your IT administrator if an account cannot be added.\n\nHow to get started with Apple Calendar\n\nYou may not need to install anything.\n\nOpen Settings → Apps → Calendar → Calendar Accounts.\n\nAdd your Google account and enable Calendars.\n\nAdd Outlook.com for a personal Microsoft account, or Microsoft Exchange for an appropriate work account.\n\nMake sure iCloud Calendar is enabled.\n\nOpen Apple Calendar, tap Calendars, and select all the calendars you want visible.\n\nApple and Microsoft both document these setup steps. \nApple Support (BY)\n+1\n\nMy recommendation: Use Apple Calendar first. Try Fantastical if you want a more sophisticated interface, or Readdle Calendars if you prefer another dedicated calendar app.\n\nOne question that could change the recommendation: Do you only want to see all three calendars together on your iPhone, or do you also need your Outlook colleagues to see you as busy when you have an appointment in iCloud or Google?\n\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nInstant\nResponse complete\nResponse complete\nNew chat\n⇧⌘O"
+}

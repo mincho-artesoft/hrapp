@@ -1,0 +1,160 @@
+{
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-21",
+    "title": "Kommende Kalendertermine auf dem iPhone-Home-Bildschirm",
+    "short": "Kommende Termine im Widget",
+    "description": "Wählen Sie ein Termin-Widget, prüfen Sie ausgewählte Kalender und fehlende Einträge. Eine leere Liste bedeutet nicht, dass Ihr Kalender leer ist.",
+    "lede": "Für die nächsten Termine brauchen Sie ein Widget mit Terminliste. Eine Kachel mit Datum und Wetter beantwortet eine andere Frage. Dieser Leitfaden wird von Arte Soft, dem Entwickler von Cloud Calendars, veröffentlicht.",
+    "sections": [
+      {
+        "heading": "Zuerst das passende Layout wählen",
+        "body": [
+          "„Calendar Events“ ist das mittlere Layout mit Terminliste. „Calendar Events Large“ bietet mehr Platz. „Calendar & Weather“ ist ein eigenes Layout für Datum und Wetter; die kleine Variante zeigt nicht automatisch den nächsten Termin. Auf Ihrem Gerät können die Namen übersetzt sein.",
+          "Halten Sie einen freien Bereich des Home-Bildschirms gedrückt und öffnen Sie über die Bearbeitungsoptionen die Widget-Auswahl. Suchen Sie Cloud Calendars und vergleichen Sie die Vorschau, bevor Sie ein Layout hinzufügen. Diese iPhone-Auswahl ist von den Kalenderansichten in der App getrennt."
+        ]
+      },
+      {
+        "heading": "Welche Termine als kommend gelten",
+        "body": [
+          "Die Liste berücksichtigt ausgewählte Kalender und zeitlich festgelegte Termine, deren Beginn noch bevorsteht. Ganztägige und bereits begonnene Einträge gehören nicht zu dieser Vorschau. Ein Geburtstag oder eine laufende Besprechung kann deshalb in der App sichtbar sein und im Widget fehlen.",
+          "Wenn heute nur ein ganztägiger Reiseeintrag vorhanden ist, beweist eine leere Liste keinen Datenverlust. Öffnen Sie den vollständigen Tag. Lesen Sie außerdem das Datum der nächsten Zeile: Sie kann zu morgen oder einem späteren Tag gehören."
+        ]
+      },
+      {
+        "heading": "Zuerst mit der App vergleichen",
+        "body": [
+          "Suchen Sie in Cloud Calendars einen konkreten zukünftigen Termin. Prüfen Sie den zugehörigen Kalender, dessen Auswahl und den Kalenderzugriff der App. Vergleichen Sie Titel, Datum und Beginn. Fehlt der Termin auch in der App, beginnen Sie bei Konto und Synchronisierung.",
+          "Für einen übersichtlichen Vergleich eignet sich ein unverbindlicher Testtermin in einem eigenen Kalender. Verwenden Sie einen eindeutigen Titel und einen zukünftigen Beginn. Ändern Sie dafür keine echte Einladung und entfernen Sie kein Konto."
+        ]
+      },
+      {
+        "heading": "Aktualisierungen richtig einordnen",
+        "body": [
+          "Widgets zeigen gespeicherte Informationen; sie laufen nicht ständig wie eine geöffnete App. iOS bestimmt die Aktualisierung. Öffnen Sie die App und kontrollieren Sie den Termin, ohne daraus eine feste Wartezeit für das Widget abzuleiten.",
+          "Bleibt die App korrekt und das Widget falsch, notieren Sie Layout, Kalender, Terminzeit sowie App- und iOS-Version. Eine leere Liste, ein alter Termin und eine falsche Uhrzeit sind unterschiedliche Beobachtungen."
+        ]
+      },
+      {
+        "heading": "Wetter getrennt vom Termin prüfen",
+        "body": [
+          "Das Wetter neben dem Datum ist keine Vorhersage für den Ort und die Startzeit jeder Besprechung. Prüfen Sie für einen Ausflug den gewünschten Ort und die passende Stunde in der Wetteransicht.",
+          "Nutzen Sie das Widget zur Orientierung und den vollständigen Kalender für ganztägige Verpflichtungen, Details und die gesamte Tagesplanung."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Ein Layout mit Terminliste auswählen.",
+      "Einen zukünftigen Termin im ausgewählten Kalender prüfen.",
+      "Datum und Uhrzeit zunächst mit der App vergleichen.",
+      "Dauerhafte Abweichungen dokumentieren, statt Daten zu löschen."
+    ],
+    "faq": [
+      {
+        "q": "Warum fehlt mein Geburtstag?",
+        "a": "Die Vorschau schließt ganztägige Einträge aus. Prüfen Sie Geburtstage im vollständigen Kalender."
+      },
+      {
+        "q": "Zeigt das kleine Widget den nächsten Termin?",
+        "a": "Das kleine Layout „Calendar & Weather“ zeigt Datum und Wetter. Für Termine wählen Sie eine Terminliste."
+      },
+      {
+        "q": "Bedeutet eine leere Liste, dass ich heute frei habe?",
+        "a": "Nein. Ganztägige oder laufende Termine, nicht ausgewählte Kalender und veraltete Informationen können fehlen."
+      }
+    ],
+    "sourcesHeading": "Quellen und Apple-Anleitungen",
+    "sources": [
+      {
+        "label": "Apple: Widgets auf dem iPhone hinzufügen und bearbeiten",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple: Widgets aktuell halten",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      }
+    ],
+    "seeAlso": [
+      "a-countdown-to-your-next-meeting"
+    ]
+  },
+  "a-countdown-to-your-next-meeting": {
+    "updated": "2026-10-21",
+    "title": "Ein Kalender-Countdown ergänzt Erinnerungen",
+    "short": "Countdown zum nächsten Termin",
+    "description": "Nutzen Sie die Live Activity für kommende Termine. Prüfen Sie geänderte Startzeiten und behalten Sie Erinnerungen unabhängig vom Countdown bei.",
+    "lede": "Ein Countdown hilft, die verbleibende Zeit einzuschätzen. Dafür muss die angezeigte Aktivität aber den richtigen Termin und dessen aktuellen Beginn kennen. Dieser Leitfaden wird von Arte Soft, dem Entwickler von Cloud Calendars, veröffentlicht.",
+    "sections": [
+      {
+        "heading": "Mit einem bestätigten Termin beginnen",
+        "body": [
+          "Öffnen Sie zuerst den Termin und prüfen Sie Datum, Beginn und Kalenderauswahl. Der Countdown folgt zukünftigen Terminen mit Uhrzeit. Er ist weder ein Countdown für ganztägige Einträge noch eine Restzeitanzeige für bereits laufende Besprechungen.",
+          "Starten Sie die Aktivität mit „Live“, sofern verfügbar. Während sie läuft, wird daraus „Stop“. Fehlt die Funktion, prüfen Sie in den iPhone-Einstellungen, ob Live Activities für die App erlaubt sind. Bezeichnungen und Verfügbarkeit können variieren."
+        ]
+      },
+      {
+        "heading": "Zwei Anzeigeorte unterscheiden",
+        "body": [
+          "Die Aktivität kann den nächsten Termin auf dem Sperrbildschirm anzeigen. Auf unterstützten iPhones gibt es zusätzlich eine Darstellung in der Dynamic Island. Apples Anleitung erklärt, wie sich dort weitere Details öffnen lassen.",
+          "Ein Home-Bildschirm-Widget ist eine separate Anzeige. Das Hinzufügen eines Widgets startet nicht automatisch eine Live Activity; auch das Einschalten von Benachrichtigungstönen ist kein Startbefehl."
+        ]
+      },
+      {
+        "heading": "Nicht nur auf die Zahl schauen",
+        "body": [
+          "Ein Countdown kann weiterlaufen, obwohl sein gespeicherter Startzeitpunkt inzwischen falsch ist. Wird eine Besprechung verschoben, beweist die sich ändernde Zahl nicht, dass diese Änderung angekommen ist. Prüfen Sie auch Titel, Datum und die angezeigte Aktualisierungsinformation.",
+          "Öffnen Sie nach wichtigen Änderungen die App und vergleichen Sie den gespeicherten Termin mit der Aktivität. Bei Abweichungen richten Sie sich zunächst nach den bestätigten Termindetails."
+        ]
+      },
+      {
+        "heading": "Erinnerungen unabhängig beibehalten",
+        "body": [
+          "Ein sichtbarer Countdown hilft nur, wenn Sie hinsehen. Behalten Sie für wichtige Termine eine geeignete Erinnerung bei und prüfen Sie die Benachrichtigungsberechtigung getrennt. Ersetzen Sie einen benötigten Hinweis nicht durch die bloße Anzeige.",
+          "Planen Sie auch Vorbereitung und Anfahrt ein. Die Zahl zählt bis zum Terminbeginn, nicht bis zu einer unabhängig geprüften Abfahrtszeit. Prüfen Sie Ort und Zeitbedarf selbst."
+        ]
+      },
+      {
+        "heading": "Fehlende oder alte Anzeigen eingrenzen",
+        "body": [
+          "Prüfen Sie zuerst den Termin in der App, danach den Start und die Berechtigung der Aktivität. Hintergrundaktualisierungen hängen von iOS ab; die Anzeige garantiert keine ununterbrochene Synchronisierung.",
+          "Vergleichen Sie einen unverbindlichen zukünftigen Testtermin vor und nach einer Zeitänderung. Notieren Sie erwarteten und angezeigten Beginn sowie das Ergebnis nach erneutem Öffnen der App. Lassen Sie echte Einladungen unverändert."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Zukünftigen Termin und Kalender bestätigen.",
+      "„Live“ starten und den angezeigten Termin prüfen.",
+      "Nach einer Verschiebung erneut vergleichen.",
+      "Benötigte Erinnerungen getrennt aktiviert lassen."
+    ],
+    "faq": [
+      {
+        "q": "Ist der Countdown immer aktuell?",
+        "a": "Nein. Er kann auf einen früher gespeicherten Beginn zählen. Prüfen Sie wichtige Änderungen in der App."
+      },
+      {
+        "q": "Warum fehlt ein ganztägiger Termin?",
+        "a": "Die Aktivität berücksichtigt zukünftige Termine mit Uhrzeit."
+      },
+      {
+        "q": "Hat jedes iPhone eine Dynamic Island?",
+        "a": "Nein. Die Anzeige auf dem Sperrbildschirm und die Dynamic Island sind unterschiedliche Funktionen; Letztere benötigt ein unterstütztes Modell."
+      }
+    ],
+    "sourcesHeading": "Quellen und Apple-Anleitungen",
+    "sources": [
+      {
+        "label": "Apple: Funktionen und Live Activities auf dem Sperrbildschirm",
+        "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+      },
+      {
+        "label": "Apple: Live Activities in der Dynamic Island",
+        "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+      }
+    ],
+    "seeAlso": [
+      "the-widget-that-shows-what-is-next"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ro",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "407c6222-e7fd-4589-839b-f0f1a0501139",
+  "versionLocalizationId": "3389ecf3-903f-46bd-8af0-45b591661311",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Calendar",
+      "characters": 25,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Vreme, întâlniri și widgeturi",
+      "characters": 29,
+      "utf8Bytes": 32,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "agendă,planificare,săptămână,lună,memento,eveniment,partajare,invitație,prognoză,orar",
+      "characters": 85,
+      "utf8Bytes": 93,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Vezi planurile și vremea în același loc. Folosește widgeturi și vizualizări diferite sau începe cu un calendar local fără cont în aplicație.",
+      "characters": 140,
+      "utf8Bytes": 151,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Consultă planurile de serviciu, programul personal și vremea pe iPhone și iPad cu Cloud Calendars.\n\nCALENDARE ȘI VIZUALIZĂRI\nFolosește calendare iCloud și conectează Google Calendar. Premium adaugă suport pentru calendarele Microsoft. Alege vizualizarea pe zi, săptămână, lună, an sau listă.\n\nPoți crea și un calendar local pe dispozitiv fără un cont Cloud Calendars. Conectarea serviciilor și partajarea pot necesita autentificare.\n\nVREME, WIDGETURI ȘI PARTAJARE\nConsultă prognoza în timp ce îți faci planuri. Widgeturile pentru ecranul principal sunt disponibile în dimensiuni mici, medii și mari. Prognozele disponibile depind de locație și de furnizorul meteo. Partajează evenimente și calendare și trimite invitații prin e-mail, cod QR sau App Clip. Permisiunile depind de calendar și de tipul invitației.\n\nALEGE PLANUL\nBase este gratuit și include sincronizare cu Google Calendar, Google Meet, diverse vizualizări ale calendarului, vreme și widgeturi.\nAdvanced include funcțiile Base și elimină reclamele.\nPremium include Advanced și adaugă calendarele Microsoft și Microsoft Teams.\n\nDescărcarea este gratuită, cu abonamente opționale care se reînnoiesc automat. Verifică prețul local actual și perioada de facturare în aplicație sau în App Store înainte de abonare. Abonamentul se reînnoiește dacă nu îl anulezi cu cel puțin 24 de ore înainte de încheierea perioadei curente. Îl poți gestiona sau anula din configurările contului App Store.\n\nConfidențialitate: https://www.cloud-calendars.com/privacy-policy\nCondiții de utilizare: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1603,
+      "utf8Bytes": 1670,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ro",
+      "name": "Cloud Calendars: Calendar",
+      "subtitle": "Toate calendarele într-un loc",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planifică-ți ziua cu calendarul și vremea împreună\n\nCloud Calendars combină calendarele și vremea într-o experiență de planificare frumoasă și bine organizată.\n\nGestionează calendarele iCloud, Google Calendar și Microsoft într-o singură aplicație și vezi prognozele direct în program, widgeturi și vizualizările de planificare.\n\nPregătește-te pentru întâlniri, călătorii, preluarea copiilor de la școală, activități în aer liber și zile aglomerate cu vizualizări de calendar create pentru planificare mai rapidă.\n\nWIDGETURI PENTRU ECRANUL PRINCIPAL\n\nAdaugă widgeturi frumoase care combină:\n• Evenimente din calendar\n• Prognoze meteo\n• Programul următor\n• Faza Lunii și condițiile\n• Vântul și temperatura\n• Prezentarea agendei zilnice\n\nAlege dintre mai multe stiluri de widgeturi pentru a-ți vedea ziua direct pe Ecranul principal.\n\nDE CE CLOUD CALENDARS\n\n• Vezi împreună calendarele iCloud, Google Calendar și Microsoft\n• Planifică folosind prognozele meteo integrate\n• Folosește widgeturi frumoase pe Ecranul principal\n• Trage, mută și redimensionează evenimentele în mod natural\n• Creează linkuri Google Meet și Microsoft Teams\n• Comută între vizualizările Zi, Săptămână, Lună, An și Listă\n• Gestionează calendarele de lucru și personale într-un singur loc\n\nFUNCȚII\n\nToate calendarele tale împreună\nConectează și gestionează calendare iCloud, Google Calendar și Microsoft într-o experiență clară, codificată prin culori.\n\nVremea integrată în calendar\nVezi prognozele orare și zilnice direct în procesul de planificare, inclusiv temperatura, condițiile, faza Lunii, vântul și pictogramele meteo.\n\nWidgeturi calendar + vreme\nVezi instantaneu programul și vremea din widgeturi personalizabile pentru Ecranul principal.\n\nMai multe vizualizări de calendar\nAlege vizualizarea Zi, Săptămână, Lună, An sau Listă în funcție de modul în care îți planifici timpul.\n\nEditare ușoară a evenimentelor\nAtinge, trage și redimensionează evenimentele direct în calendar pentru o programare rapidă și naturală.\n\nVizualizare meteo dedicată\nExplorează prognoze detaliate cu condiții orare și informații utile pentru planificare.\n\nCreează evenimente din prognoze\nAtinge o oră din prognoză pentru a crea instantaneu un eveniment nou la ora selectată.\n\nLinkuri de întâlnire integrate\nAdaugă rapid linkuri Google Meet și Microsoft Teams la evenimente.\n\nPERFECT PENTRU\n\n• Gestionarea calendarelor de lucru și personale\n• Planificare în funcție de vreme\n• Activități în aer liber și călătorii\n• Programe aglomerate și planificare familială\n• Utilizatorii Google Calendar și iCloud\n• Utilizatorii calendarelor Microsoft\n\nÎncearcă Cloud Calendars și planifică mai ușor fiecare zi.\n\nINFORMAȚII DESPRE ABONAMENT\n\nCloud Calendars oferă abonamente cu reînnoire automată.\n\nPlan Gratuit\n• Sincronizare Google Calendar\n• Mai multe vizualizări de calendar\n• Funcții meteo\n• Widgeturi\n• Compatibilitate Google Meet\n\nPlata va fi debitată din contul Apple ID la confirmarea achiziției. Abonamentele se reînnoiesc automat dacă nu sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei curente. Contul va fi taxat pentru reînnoire în cele 24 de ore dinaintea sfârșitului perioadei curente. Poți gestiona și anula abonamentele din configurările contului App Store.\n\nPolitica de confidențialitate: https://www.cloud-calendars.com/privacy-policy\nCondiții de utilizare: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ro",
+      "keywords": "vreme,widget,program,planificator,agendă,prognoză,iCloud,evenimente,ședințe,ecran de blocare,ploaie",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

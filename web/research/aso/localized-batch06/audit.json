@@ -1,0 +1,51 @@
+{
+  "status": "15_complete_proposals_ready_for_editorial_review_not_applied",
+  "prepared": 15,
+  "applied": 0,
+  "allRequestedPresent": true,
+  "scope": "Fresh authenticated GET of draft 1.7.4 and PREPARE_FOR_SUBMISSION appInfo; exact IDs/current metadata retained. Only new batch06 files written.",
+  "productFactsReviewed": [
+    "platforms",
+    "views",
+    "google",
+    "advanced",
+    "premium",
+    "local",
+    "weather",
+    "weather_details",
+    "widgets",
+    "live_activity",
+    "sharing",
+    "accounts",
+    "server_processing",
+    "travel"
+  ],
+  "priorBatchReviewed": 10,
+  "claims": "All descriptions state Base Google sync/Meet/views/weather/widgets, Advanced ad removal, Premium Microsoft calendars/Teams, local calendar without app account, qualified service sign-in/sharing permissions, forecast availability and current local price/billing-period check. No fixed prices, 14-day forecast, universal Exchange, privacy guarantee or standalone Lock Screen widget claim.",
+  "allocation": "Retain exact localized title identity. Concise local subtitle emphasizes weather/planning or appointments/widgets. Keyword field covers local schedule/meeting/event/reminder/invitation/sharing/view-period/forecast vocabulary without forced padding. No competitor names or ranking/search-demand assertions.",
+  "validation": "All exact names preserved and all character limits pass. UTF-8 bytes reported separately. Code-point counts include combining marks; no byte cap enforced. Exact keyword duplication and exact title/subtitle token overlaps checked, but no morphological parser or rendered-text verification.",
+  "confidence": {
+    "bn-BD": "low-medium",
+    "ca": "medium",
+    "gu-IN": "low-medium",
+    "id": "medium",
+    "kn-IN": "low-medium",
+    "ml-IN": "low-medium",
+    "mr-IN": "low-medium",
+    "ms": "medium",
+    "or-IN": "low-medium",
+    "pa-IN": "low-medium",
+    "ta-IN": "low-medium",
+    "te-IN": "low-medium",
+    "th": "medium",
+    "ur-PK": "low-medium",
+    "vi": "medium"
+  },
+  "translationCaveats": [
+    "Medium confidence for ca,id,ms,th,vi; low-medium for bn-BD,gu-IN,kn-IN,ml-IN,mr-IN,or-IN,pa-IN,ta-IN,te-IN,ur-PK.",
+    "Native-language editorial review recommended before publication, especially Indic grammar, terminology and inflection. These are not certified translations.",
+    "Review Urdu mixed RTL/LTR layout around English provider/tier names and URLs.",
+    "Existing localized app names intentionally preserved even where description terminology differs; tier labels should be compared to shipped UI."
+  ],
+  "application": "Root should refresh state/current fields before applying only subtitle, keywords, promotionalText and description. Names, URLs, release notes and privacy declarations are preserved reference data. No mutation or submission performed."
+}

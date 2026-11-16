@@ -1,0 +1,271 @@
+{
+  "prepared_date": "2026-10-22",
+  "canonical_slug": "google-calendars-that-never-reach-your-iphone",
+  "article_updated_preserved": "2026-10-21",
+  "source_file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-google.ts",
+  "source_file_sha256": "2b4ff65dc196cde951d3b122743ef120aaf0c4785137018cf1c89f8b665fa1e7",
+  "source_object_sha256": "0ec52c776252d2f0e744c28bf7fb14b4f7aca05fc3e678131afc81edadaeef33",
+  "source_object_snapshot": {
+    "title": "A Google calendar is missing on iPhone: check the connection and selection",
+    "short": "Google calendars missing on iPhone",
+    "description": "Find a missing Google calendar by checking account access, calendar visibility and the connection used by Apple Calendar or Cloud Calendars.",
+    "lede": "When one Google calendar appears and another does not, first establish where the missing schedule is available. Account access, calendar selection and event availability are different checks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "commonBelief": "Every missing Google calendar has one hidden sync-list cause, and connecting directly guarantees that everything appears.",
+    "sections": [
+      {
+        "heading": "Confirm that the calendar exists for this account",
+        "body": [
+          "Open Google Calendar on the web with the same account you intend to use on your phone. Look for the calendar itself, not just a familiar event title. Two accounts may have similarly named calendars, and an invitation addressed to your work email does not establish access for your personal account.",
+          "If the calendar is absent there too, start with the owner or the sharing invitation. For a group-based arrangement, confirm membership and the group receiving permission. Do not delete the phone account while the underlying access question is still unresolved."
+        ]
+      },
+      {
+        "heading": "Distinguish a hidden calendar from an absent one",
+        "body": [
+          "In the Google Calendar app, Google documents using the menu to select calendars for display. A listed but unchecked calendar is a visibility problem. A calendar missing from the list needs a different investigation, such as the invited identity, approval or connection.",
+          "An emailed calendar-sharing invitation and a subscription address are also different routes. Google describes adding a new subscription through a computer browser separately from opening a calendar already shared by email. Keep the original invitation available, but do not forward private links into public troubleshooting posts."
+        ]
+      },
+      {
+        "heading": "Identify how this iPhone application receives Google data",
+        "body": [
+          "Apple Calendar can connect through the Google account configured on the device. Google’s instructions include enabling Calendars for that account. Follow the current provider instructions for your iOS version; changing the settings of a separate application is not the same as changing this device account.",
+          "Cloud Calendars also offers a direct Google sign-in path. Establish which account and route you are actually using before adding another connection. If the same schedule arrives by both a device calendar and a direct connection, compare the calendar identities before concluding that an event was duplicated at Google."
+        ]
+      },
+      {
+        "heading": "Check Cloud Calendars selection without assuming complete coverage",
+        "body": [
+          "In Cloud Calendars, review the calendars associated with the intended Google account and select the ones you want to use. Its Google synchronization checks calendar selection. A successful sign-in alone does not establish that every calendar has been selected or that every requested update completed.",
+          "A direct connection is another way to receive Google data, not a promise that every accessible calendar appears. If a calendar is present on Google’s website but absent from Cloud Calendars, record the account, calendar name and connection method for support. Keep using the original provider for urgent scheduling while the discrepancy is investigated."
+        ]
+      },
+      {
+        "heading": "Separate a missing calendar from missing dates",
+        "body": [
+          "If the calendar is listed but a particular appointment is missing, compare that exact date in Google Calendar. Check whether the item belongs to the calendar you selected, and whether you are looking at the same occurrence of a recurring meeting. A similar title in another calendar is not the same source record.",
+          "Do not assume that an application has downloaded all historical or distant future events. Cloud Calendars’ Google synchronization uses a bounded date request. An empty historical search therefore does not prove that the event was deleted from Google; verify the original provider before changing or recreating anything."
+        ]
+      },
+      {
+        "heading": "Escalate with a useful comparison, not a reset",
+        "body": [
+          "Write down the app, account type, calendar name, example date and where the schedule is visible. Include an error message if one appears, with private information removed. This separates permission, selection and synchronization issues far better than saying that the entire account is broken.",
+          "For time-sensitive plans, confirm the current event with the organiser. Avoid deleting accounts, importing repeated copies or moving events between calendars as initial tests. Once the connection issue is understood, verify the result against the same example before changing any additional settings."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Compare the intended account and calendar in Google Calendar on the web.",
+      "Check whether the calendar is absent or merely unselected.",
+      "Identify device Google sync, direct app connection or subscription.",
+      "Review the calendars selected for the intended account in Cloud Calendars.",
+      "Compare one exact event date at the original provider.",
+      "Report the discrepancy without sharing private addresses or resetting accounts."
+    ],
+    "faq": [
+      {
+        "q": "Will direct Google sign-in show every calendar?",
+        "a": "Do not assume complete coverage. The account, calendar list, selection and successful synchronization all matter. Compare a missing calendar with Google Calendar on the web."
+      },
+      {
+        "q": "Should I delete the account and add it again?",
+        "a": "First check identity, access, visibility and the connection route. Reconnecting cannot supply a permission the owner has not granted."
+      },
+      {
+        "q": "Does a missing old event mean it was deleted?",
+        "a": "No. Check its original Google calendar and date. An application’s available date range or search behavior may differ from the provider’s stored history."
+      }
+    ],
+    "sourcesHeading": "Provider guidance and further reading",
+    "sources": [
+      {
+        "label": "Google: adding Google events to Apple Calendar",
+        "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: subscriptions and calendar visibility",
+        "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+      },
+      {
+        "label": "Google: calendar-list behavior",
+        "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "icloud-google-and-outlook-in-one-view",
+      "what-calendar-sync-actually-does"
+    ],
+    "updated": "2026-10-21"
+  },
+  "checks": {
+    "pt-BR": {
+      "description_characters": 140,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "1dc39317fc75b55c738cf3d6010a2ad3fef55cc80653fd2fa1781efb0f4743a1"
+    },
+    "ro": {
+      "description_characters": 137,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "584fdf2fcff60896ae1c2d47814111fa999770f533f5a490238099527bb34fac"
+    },
+    "ru": {
+      "description_characters": 129,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "da4b0e1d2a3fff338a6b8b8749f67c4987b6d2125c4847546cca76a8b5481cd5"
+    },
+    "sv": {
+      "description_characters": 145,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "44309ba4d5375776ed1802245b57a825d4bb538ccf23ba45bb16b8a5cb2bd408"
+    },
+    "tr": {
+      "description_characters": 131,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "2eb22d549afcd3af69d2fd08f4f7046723437248e10d5d743222a0fa54b916cf"
+    },
+    "vi": {
+      "description_characters": 126,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "d045c4a681f060351f39e909fff9113ff409b91237cb837d4a0728daec684dfe"
+    },
+    "th": {
+      "description_characters": 113,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "38bfab134c7184179aeecda76d4a793f74453bf4f116106e929ea32a8e5140e1"
+    },
+    "zh-Hans": {
+      "description_characters": 67,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "2f563555b3949d34546a5e2552f061a5e927e8dad06c6dd8f9e426004c479fed"
+    },
+    "zh-Hant": {
+      "description_characters": 68,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [
+        "why-a-shared-calendar-does-not-appear",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "omitted_nonexistent_related_routes": [
+        "what-calendar-sync-actually-does"
+      ],
+      "sha256": "ff7dc309c5f690be671f2f8c96cabcca498db1ae7cda6e3a5159e543362520a4"
+    }
+  },
+  "scope": {
+    "objects": 9,
+    "sections": 54,
+    "paragraphs": 108,
+    "practical_steps": 54,
+    "faqs": 27
+  },
+  "semantic_review": [
+    "Account identity and provider-web comparison before reconnecting.",
+    "Missing calendar versus unselected calendar versus missing event date preserved.",
+    "Device-account sync, direct Google connection and subscription distinguished.",
+    "Direct connection does not guarantee all-calendar coverage.",
+    "Bounded date request does not imply all history or deleted source event.",
+    "No immediate/background/two-way guarantee introduced.",
+    "No deleting accounts, repeating imports or moving events as initial diagnostic steps."
+  ],
+  "limits": [
+    "Original translations without paid translation API.",
+    "No independent native-speaker certification.",
+    "Current integrated English source used; no native runtime claims added.",
+    "Only assigned research drafts written; no integrated source/build/deployment/native changes."
+  ]
+}

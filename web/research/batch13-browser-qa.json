@@ -1,0 +1,21 @@
+{
+  "scope": "Published ENyear and BGmissingGoogle articles at575px; visualinspection notall-language/native-speakercertification.",
+  "checks": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "distinctColoursBodyPresent": true,
+      "screenshot": "/tmp/cloud-calendar-batch13-year.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/google-calendars-that-never-reach-your-iphone/",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "samePageSkip": true,
+      "screenshot": "/tmp/cloud-calendar-batch13-bg.png"
+    }
+  ]
+}

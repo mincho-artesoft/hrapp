@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "httpStatus": 200,
+      "sha256": "db51c0466759c158ca9a36c6f6e7dfd014ab1adbf139bbfd20d569f7273bd0ba",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "httpStatus": 200,
+      "sha256": "905a49570d26d514b470649ed65705b71b6480c04c9372292f9c7b38a7334cb4",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "httpStatus": 200,
+      "sha256": "faa9415ad0495aaa2061a224ffc32badf411e20bb41006783f177363377ef8b6",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "httpStatus": 200,
+      "sha256": "dae627dcd00e6331f66ec09939279c1fec015046d5353cf1cb6206046e4a695a",
+      "matchesBuildBytes": true,
+      "indexable": true,
+      "jsonLdBlocks": 2
+    }
+  ],
+  "scope": "Public HTML matches tested build; not proof of indexing, rankings or recommendation lift."
+}

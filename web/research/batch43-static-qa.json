@@ -1,0 +1,28 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 528,
+  "all527PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/de/articles/a-week-view-that-fits-a-week/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/a-week-view-that-fits-a-week/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 1,
+  "english58GuideExportIncludesFullExpandedGuide": true,
+  "robotsUnchanged": true,
+  "scope": "FullreviewedENexpandedguide+fullDEneweditionvisiblebody/steps/FAQ/sources/related;allpriorcanonicals. Not ranking/runtime proof."
+}

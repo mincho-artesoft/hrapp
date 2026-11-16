@@ -1,0 +1,31 @@
+[
+  {
+    "url": "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en",
+    "scope": "Complete substantive body lines18\u201332 of119",
+    "status": "full",
+    "observations": [
+      "Google Calendar iPhone/iPad app supports finding, creating, editing and responding to events offline after online setup/sign-in/sync.",
+      "Changes do not synchronize with other calendars until connectivity returns; guests cannot be emailed offline."
+    ],
+    "bounds": "Google app only; no unlimited cached history, conflict resolution or propagation deadline specified."
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/65923?hl=en-7",
+    "scope": "Complete substantive body18\u201369 of152",
+    "status": "full",
+    "observations": [
+      "Mobile-browser guidance distinguishes viewing previously synchronized events from creating/editing, which require internet.",
+      "Mobile web does not support notifications; browser data may be stored locally."
+    ],
+    "bounds": "Do not infer every browser guarantees offline access. Browser support and actual saved data require checking; not Cloud app behavior."
+  },
+  {
+    "url": "https://readdle.com/calendars",
+    "scope": "Complete product body32\u2013240 of296; offline FAQ220\u2013222. Initial combined output truncated; subsequent page read recovered full body. Footer excluded.",
+    "status": "full",
+    "observations": [
+      "Publisher promotes offline viewing and updating with later synchronization."
+    ],
+    "bounds": "Publisher product claim, not independent runtime verification or Cloud capability; no adoption of broad real-time/all-calendar claims."
+  }
+]

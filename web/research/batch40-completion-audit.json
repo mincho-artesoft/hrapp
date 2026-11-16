@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-22T05:23:20.201955+00:00",
+  "previousGoalTurn": "progress —0b37353publishedFR/ESguides,24homefieldsand31ASCmarketingURLs",
+  "currentTurn": "progress —reviewedexistingENsyncguideexpandedwithofflinepreflightandfullITtimezoneeditionpublished",
+  "published": {
+    "expandedEnglishGuides": 1,
+    "newItalianEdition": 1,
+    "relatedOnlyBacklinks": 1,
+    "sitemapUrls": 526,
+    "publicArtifactsMatchBuild": 530,
+    "cloudfrontInvalidation": "I6CURJMCKVZQUYEILAGKF8TA6D",
+    "cloudfrontStatus": "Completed"
+  },
+  "requirements": [
+    {
+      "requirement": "CompetitorGoogle/ChatGPTkeywordandtaskresearch",
+      "status": "partial",
+      "evidence": "batch39-discovery/decision.json;batch40-root-review.json",
+      "limit": "Previouslyfreshfullproviderofflineapp/browserresearch+Italianprimarytopicread. No exhaustivekeywords/rank/volume or freshChatGPToutcomeproof."
+    },
+    {
+      "requirement": "Excellentoriginalarticlesandlocalizations",
+      "status": "progress",
+      "evidence": "batch40-static-qa.json;batch40-offline/final-review.json;batch40-timezones/independent-review.json",
+      "limit": "WholeexpandedENandnewITguidesreviewed;57otherENbodiespreserved. Notall463localizedarticlesapproved."
+    },
+    {
+      "requirement": "Website/ASCoptimizationalignment",
+      "status": "priorbatch31URLupdatespreserved;nocontradictorynewASCclaim",
+      "evidence": "batch39-asc-urls/applied-readback.json;batch40-root-review.json",
+      "limit": "Noofflinecapability/keywordaddedtoASCbecauseCloudspecificruntimeunproved. No newASCread/write thisbatch."
+    },
+    {
+      "requirement": "Actualnewimages/videosintegration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Noverifiednewgeneratingtask/outputmanifestyet; existingmediadidnotchange."
+    },
+    {
+      "requirement": "MeasuredmostdiscoverableGoogle/ChatGPTresult",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "Historicalcalendariocloudcontextnotcausalbeforeafterproof;noequalelapsedpostwindow."
+    }
+  ],
+  "goalComplete": false,
+  "preserved": "AlloldENsyncfields/textpreservedbyinverseadditions;57otherEnglishrawobjectsunchanged. Italian1relatedlistexpandedonly. Globalfacts/home/prices/legal/media/robots/components/ASC/native/backend/provider/customerstate unchanged."
+}

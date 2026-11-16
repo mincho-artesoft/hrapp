@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "primarySource": {
+    "url": "https://support.readdle.com/calendars/calendars-premium/quick-scheduler-and-planner-in-calendars",
+    "readScope": "Complete substantive main body lines103–169; navigation excluded",
+    "observed": "Readdle documents task-list scheduling and completion, provider task integrations and reusable routine templates. Specific platform restrictions apply.",
+    "limit": "Publisher feature documentation, not Cloud feature evidence or measured query volume."
+  },
+  "candidateIntents": [
+    "time blocking calendar iPhone",
+    "calendar tasks versus events",
+    "daily planner task completion"
+  ],
+  "coverage": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "object": "planning-a-week-in-ten-minutes",
+    "fullObjectSha256": "5de1b5a765a5e2b1ae480f340c5b8b6dd104b7fcbcbff81d8c1c1cca32c18215",
+    "readScope": "Complete object metadata, six sections, practical list, three FAQs, sources and related routes",
+    "alreadyCovered": [
+      "Separate fixed appointments from preparation blocks",
+      "Keep actual deadline separate from moving preparation time",
+      "Re-estimate unfinished work; planned time is not task completion",
+      "Choose destination and check provider availability separately"
+    ],
+    "taskIntegration": "Own guide does not promise a task management system. No product parity claim inferred."
+  },
+  "decision": "No new synonym article justified by this comparison. Existing full weekly-review workflow covers manual planning; a provider-task integration guide requires its own verified task and product evidence.",
+  "mutations": "Research artifact only; no source, ASC or public changes."
+}

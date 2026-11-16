@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-22",
+  "status": "draft_only_root_and_independent_review_pending",
+  "draft": "recover-deleted-calendar-events-iphone.json",
+  "draftRawSha256": "c26bd855ffa4cadb3718d409a11af1ba55e2357abc98689b9e308f2af6a9539c",
+  "canonicalCheck": {
+    "file": "src/app/content/article-facts.ts",
+    "sha256": "fe2f8b01b71ef576412925952912faac96f18132bea6009ddcc7ae9350a3ec4c",
+    "scope": "Scanned all article-facts keyed slugs for recover/restor/deleted, with adjacent search/export keys inspected. No recovery canonical found.",
+    "existingRecoveryKeys": [],
+    "proposedSlug": "recover-deleted-calendar-events-iphone",
+    "earlierResearchWorkingSlug": "recover-deleted-google-icloud-calendar-events",
+    "reason": "Current root-requested draft name adopted; this is one task, not two pages. No index or fact key created."
+  },
+  "structure": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 6,
+    "faq": 4,
+    "sources": 2,
+    "descriptionUnicodeCharacters": 145,
+    "updated": "2026-10-22",
+    "claims": {}
+  },
+  "sources": [
+    {
+      "publisher": "Google",
+      "url": "https://support.google.com/calendar/answer/37113?co=GENIE.Platform%3DDesktop&hl=en",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          17,
+          123
+        ]
+      ],
+      "totalExtractedLines": 203,
+      "observations": "Computer Trash recovery is calendar-specific and requires sufficient edit rights. Documented retention is 30 days, subject to permanent removal. Some recurring-event deletion scopes do not enter Trash. Restored creator events require new guest RSVPs; room availability can have changed. Suspicious invitations can also be routed to Trash.",
+      "limits": "Do not generalize the window or recoverability to other providers, all recurrence scopes or permanently deleted events. Restoring a record is not proof that prior attendance or resource arrangements remain valid. No live account inspected."
+    },
+    {
+      "publisher": "Apple",
+      "url": "https://support.apple.com/en-gb/102508",
+      "status": "full_extracted_substantive_body_reviewed",
+      "readRanges": [
+        [
+          28,
+          83
+        ]
+      ],
+      "relevantCalendarRange": [
+        45,
+        63
+      ],
+      "totalExtractedLines": 96,
+      "observations": "iCloud restores an earlier calendar version across devices and saves the current version first. Recent changes may be lost; sharing settings are erased. The page distinguishes existing invitation and cancellation notification behaviour rather than promising these messages replay.",
+      "limits": "Archived-version restoration is not a selected-event Trash equivalent and not a Cloud Calendars or local-calendar restore feature. No account or restore action performed."
+    }
+  ],
+  "relatedRouteChecks": [
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "definitionFiles": [
+        "src/app/content/en-US/articles-help.ts"
+      ]
+    },
+    {
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "definitionFiles": [
+        "src/app/content/en-US/articles-google.ts"
+      ]
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "definitionFiles": [
+        "src/app/content/en-US/articles-help.ts"
+      ]
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "definitionFiles": [
+        "src/app/content/en-US/articles-google.ts"
+      ]
+    }
+  ],
+  "semanticReview": [
+    "Missing-versus-deleted and identity/owning-calendar gate comes first. Shared access loss is distinct.",
+    "Google selective Trash recovery, computer context, permissions, window and permanent/recurrence exceptions remain Google-specific.",
+    "iCloud version replacement and recent-change/sharing effects precede its navigation route. No broad restore recommendation or automated action.",
+    "Original club/venue scenario checks a precise outcome and newer arrangements rather than treating a familiar title as complete recovery.",
+    "Provider truth and participant/resource arrangements checked before phone display; repeated restore is not a refresh technique.",
+    "No Cloud Trash/automatic backup/restore button or generic recovery guarantee. Other storage providers and local/shared product storage explicitly outside these procedures.",
+    "No permanent-deletion or account-reset instructions; no customer actions performed.",
+    "Disclosure states developer authorship. No competitor text copied or competitor feature assigned to Cloud."
+  ],
+  "limits": [
+    "Own author review, not independent review.",
+    "Provider bodies freshly read during preceding research; no additional fetch in drafting turn. Exact read ranges recorded above.",
+    "No native or runtime certification, ranking/search-volume/ChatGPT citation measurement.",
+    "No source integration/build/deploy/ASC/commit/API action."
+  ]
+}

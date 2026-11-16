@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Månadskalender på iPad och iPhone: välj datum och kontrollera detaljer",
+  "short": "Använd månadsvyn utan att missa detaljer",
+  "description": "Jämför datum på iPad eller iPhone. Kontrollera dolda händelser, valda kalendrar och exakta tider innan delade eller återkommande möten flyttas.",
+  "lede": "Månadsvyn visar vilka datum åtaganden ligger på. Den passar sämre för att bevisa att en viss timme är ledig. Välj ett datum i översikten och granska sedan dagen och händelsen innan du bestämmer dig. Guiden publiceras av Arte Soft, utvecklaren bakom Cloud Calendars.",
+  "commonBelief": "En större månadsvy visar alla detaljer, och ett till synes tomt datum bevisar att alla är lediga.",
+  "sections": [
+    {
+      "heading": "Avgör om du behöver datum eller exakta timmar",
+      "body": [
+        "Använd månaden för att jämföra en projektdeadline, en resa och ett familjemöte över flera veckor. Om frågan gäller överlappning klockan 14.30, byt till dag eller vecka och kontrollera exakt start och slut. En månadscell ger inte samma tidsskala som ett timrutnät.",
+        "En workshoparrangör kan exempelvis först undvika en resvecka. Nästa kontroll gäller dagen: befintliga åtaganden, förberedelse, resa och nödvändig sluttid. En tomliknande cell är ett datum att undersöka, inte en bekräftad bokning eller uppgift om andras tillgänglighet."
+      ]
+    },
+    {
+      "heading": "Läs antalet ytterligare händelser",
+      "body": [
+        "Cloud Calendars nuvarande månadscell visar ett begränsat antal händelseetiketter och ett antal för ytterligare händelser samma datum. Titlar hålls till en rad och kan kortas. Öppna dagen eller händelsen när hela titeln eller övriga åtaganden spelar roll.",
+        "En större iPad-skärm kan göra översikten lättare att läsa, men mer fysisk plats tar inte nödvändigtvis bort alla visningsgränser. Ett smalt appfönster eller större text påverkar vad som ryms. Kontrollera också på iPhone den underliggande dagen innan synliga etiketter ses som hela schemat."
+      ]
+    },
+    {
+      "heading": "Kontrollera månad, valda kalendrar och angränsande datum",
+      "body": [
+        "Läs månad och år innan du väljer datum. Rutnätet kan innehålla angränsande månaders datum för att fylla raderna. Använd månadsnavigeringen i Cloud Calendars och kontrollera det valda datumet, inte bara rutans position.",
+        "Kontrollera valda kalendrar. Dolda jobbhändelser kan underlätta läsningen av familjeplanen, men tar också bort de åtagandena ur just den översikten. Vid dubblettfelsökning, dölj tillfälligt en källa och jämför; radera inte ett möte bara för att göra månaden luftigare."
+      ]
+    },
+    {
+      "heading": "Öppna händelsen innan en gemensam plan ändras",
+      "body": [
+        "Bekräfta titel, ägare eller kalender, lokal tid och längd i detaljerna. Färg hjälper vid överblick men ersätter inte kunskap om konto eller redigeringsrätt. En synlig inbjudan är något annat än ett möte du själv ordnar.",
+        "Cloud Calendars har drag och släpp i månadsvyn för att flytta händelser till andra datum. Fastställ datum och upprepningsomfattning innan du flyttar ett riktigt åtagande. Öppna händelsen efter en tillåten ändring och kontrollera: en lokal gest bevisar inte att leverantören eller alla deltagare accepterat planen."
+      ]
+    },
+    {
+      "heading": "Kontrollera upprepning och tidszoner separat",
+      "body": [
+        "Om bara veckans lektion flyttas, ändra inte framtida mönster av misstag. Läs valet för upprepningsomfattning och granska både den ändrade förekomsten och en senare efteråt. Månadsvyn underlättar jämförelse av återkommande datum, men omfattningen avgör ändringens betydelse.",
+        "Vid resa eller möten över tidszoner, kontrollera uttryckligen händelsens lokala datum och tid. Flytt till en annan dag omvandlar inte automatiskt den avsedda mötestiden. Kontrollera sommartidsövergångar när det är relevant och bekräfta tiden med deltagarna."
+      ]
+    },
+    {
+      "heading": "Skilj den större vyn från andra produkter",
+      "body": [
+        "Apple Kalender har egna månadsalternativ, medan Teamup beskriver olika vyer för webbläsare och mobil. Kontrollerna hör till respektive produkt. Leta inte efter Teamups webbläsarkonfiguration eller Apple Kalenders vymeny i Cloud Calendars bara för att vyerna har samma namn.",
+        "En månad av möten innebär inte heller en månads väderprognos. Kontrollera plats, datum och tillgängliga prognostimmar separat för utomhusplaner. Spara slutligt möte i avsedd kalender och bekräfta ändringar direkt med deltagarna."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Välj datum i månadsvyn och kontrollera timmar i dag eller vecka.",
+    "Öppna dagar med extra antal eller förkortade titlar.",
+    "Kontrollera månad, år och valda kalendrar innan ett datum anses ledigt.",
+    "Bekräfta kalender, tid, längd och redigeringsrätt.",
+    "Läs upprepningsomfattningen och kontrollera sparad förekomst efter flytt.",
+    "Kontrollera vädret separat och bekräfta ändringar med deltagarna."
+  ],
+  "faq": [
+    {
+      "q": "Visar iPads månadsvy varje möte i sin helhet?",
+      "a": "Utgå inte från det. Cloud Calendars begränsar händelseetiketter och visar antalet ytterligare händelser. Öppna dagen och händelsen för att granska hela schemat."
+    },
+    {
+      "q": "Betyder en tom dag att jag är ledig?",
+      "a": "Kontrollera först valda kalendrar, datum och att relevanta kontodata finns. Översikten visar bara den information som är tillgänglig och visad just nu."
+    },
+    {
+      "q": "Ändrar en flytt av återkommande händelse bara det datumet?",
+      "a": "Läs valet för ändringens omfattning. Efter sparandet, granska den ändrade och en senare förekomst och bekräfta avsikten."
+    }
+  ],
+  "sourcesHeading": "Jämför de officiella vybeskrivningarna",
+  "sources": [
+    {
+      "label": "Apple: månads-, flerdagars- och listvyer",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: vyer och inställningar i webbläsare respektive app",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+}

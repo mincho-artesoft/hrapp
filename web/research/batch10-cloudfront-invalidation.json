@@ -1,0 +1,19 @@
+{
+  "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/E91A0MU1YHGPR/invalidation/I4BA964JHCS3W8Z2CF7NT2NNKB",
+  "Invalidation": {
+    "Id": "I4BA964JHCS3W8Z2CF7NT2NNKB",
+    "Status": "InProgress",
+    "CreateTime": "2026-10-21T21:03:06.417Z",
+    "InvalidationBatch": {
+      "Paths": {
+        "Quantity": 1,
+        "Items": [
+          "/*"
+        ]
+      },
+      "CallerReference": "cloud-calendars-batch10-20261021T210305Z"
+    }
+  },
+  "verifiedFinalStatus": "Completed",
+  "recoveryNote": "Normal cloudfront.amazonaws.com DNS lookup failed after completed S3 uploads. Read-only listing via official dual-stack cloudfront.global.api.aws (endpoint present in installed botocore rules) proved no new invalidation. Created one idempotent batch request through that endpoint; no reupload, TLS unchanged."
+}

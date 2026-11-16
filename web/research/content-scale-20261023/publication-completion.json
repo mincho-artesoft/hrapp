@@ -1,0 +1,39 @@
+{
+  "completedAt": "2026-10-23T11:47:58.673800+00:00",
+  "status": "published_verified",
+  "newEnglishPages": 100,
+  "baselineEnglishPages": 73,
+  "totalEnglishPages": 173,
+  "discovery": "All100newURLsverifiedinsitemap.xml,llms.txt,llms-full.txt",
+  "verificationFile": "live-publication-verification.json",
+  "staticEditorialAndRouteAudit": "publication-audit-final.json",
+  "googleSitemapSubmission": "Sitemap submitted successfully confirmed in Search Console UI",
+  "scheduledChecks": [
+    "2026-10-26",
+    "2026-10-30"
+  ],
+  "automationId": "cloud-calendars-100",
+  "paidAiApiRequests": 0,
+  "translations": "No new translations;542heldarticleandhubroutesremainnoindex,followandexcludeddiscovery",
+  "privacyPolicySha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "uiVerification": {
+    "mobileArticle": {
+      "viewportWidth": 390,
+      "documentWidth": 379,
+      "h1Top": 139.75,
+      "headerBottom": 72,
+      "tableScrollContainer": true,
+      "twoS3ProductImagesLoaded": true
+    },
+    "mobileHubAfterFix": {
+      "viewportWidth": 390,
+      "bodyWidth": 379,
+      "h1Top": 104,
+      "headerBottom": 72
+    },
+    "topicLinks": "Allsixresolvetocorrect/articles/#topic-...URL;Planninglinkclickedandstayedonarticlehub",
+    "desktopScreenshot": "Not captured: browser control timed out and reset twice. No saved proof image and no claim of desktop visual pass."
+  },
+  "temporaryMediaFilesRetained": 0,
+  "localPreviewServer": "Stopped owned preview server on8248"
+}

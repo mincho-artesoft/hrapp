@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-21",
+  "batch": "help-discovery-02",
+  "scope": "Three primary help landing/index pages read, one failed help URL, four linked detail URLs attempted (three complete article bodies read, one timeout). Not a sitemap crawl or exhaustive keyword inventory.",
+  "landingPages": [
+    {
+      "url": "https://support.readdle.com/calendars/getting-started",
+      "scope": "Navigation/help taxonomy read, including calendar setup, alerts, task syncing, tutorials and troubleshooting links."
+    },
+    {
+      "url": "https://support.readdle.com/calendars/troubleshooting",
+      "scope": "Index excerpts lines 103\u2013174 and navigation; not all linked bodies."
+    },
+    {
+      "url": "https://bonobolabs.com/support/timepage/about-timepage/",
+      "scope": "Complete article body lines 45\u201380; support/timepage/ redirected here.",
+      "note": "Body distinguishes timeline, day, heatmap, Actions task integration and Smart Alerts."
+    },
+    {
+      "url": "https://flexibits.com/fantastical/help/overview",
+      "scope": "Failed/inaccessible; no body reviewed."
+    }
+  ],
+  "newCandidates": [
+    {
+      "keywordCandidates": [
+        "calendar notifications not working iPhone",
+        "calendar alert no sound"
+      ],
+      "publisherUrl": "https://support.readdle.com/calendars/customizing-alerts/how-to-turn-on-alarms",
+      "reviewScope": "Complete article body lines 103\u2013112 read.",
+      "observedIntent": "App alert controls and OS notification permissions are separate.",
+      "existingNearest": "/articles/a-countdown-to-your-next-meeting/",
+      "gap": "Genuine distinct alert-delivery troubleshooting; existing countdown essay does not answer it.",
+      "recommendation": "Potential new substantive diagnostic guide after Apple notification/Focus and actual app settings verification. Do not copy Readdle controls."
+    },
+    {
+      "keywordCandidates": [
+        "calendar spam iPhone",
+        "unwanted calendar subscription"
+      ],
+      "publisherUrl": "https://support.readdle.com/calendars/calendars-tutorials/how-to-delete-spam-events",
+      "reviewScope": "Complete article body lines 103\u2013116 read; linked third-party pages not read.",
+      "observedIntent": "Identify affected provider and remove unwanted calendar data.",
+      "existingNearest": null,
+      "gap": "No matching title/description in 45-article inventory or treatment in 31 reviewed bodies.",
+      "recommendation": "Genuine new topic after Apple/Google primary docs review; differentiate unsolicited invitations from subscribed spam before suggesting removal. Competitor deletion directions alone are insufficient."
+    },
+    {
+      "keywordCandidates": [
+        "old calendar events missing iPhone",
+        "past calendar events disappeared"
+      ],
+      "publisherUrl": "https://support.readdle.com/calendars/troubleshooting/missing-events-from-the-previous-months-on-ios",
+      "reviewScope": "Complete article body lines 103\u2013114 read.",
+      "observedIntent": "Historical sync window can hide older events.",
+      "existingNearest": "/articles/google-calendars-that-never-reach-your-iphone/",
+      "gap": "Distinct cause absent from reviewed articles; different from an entire shared calendar missing.",
+      "recommendation": "Initially add sourced history-window section to existing missing-events content and link from sync hub. Do not copy absolute guarantee that events are never deleted."
+    },
+    {
+      "keywordCandidates": [
+        "calendar widget blank",
+        "calendar widget not updating"
+      ],
+      "publisherUrl": "https://support.readdle.com/calendars/troubleshooting/widgets-dont-update-or-load",
+      "reviewScope": "Index excerpt only; direct detail retrieval timed out.",
+      "observedIntent": "Blank/black and stale widgets.",
+      "existingNearest": "/articles/choosing-a-widget-size/",
+      "gap": "No diagnostic steps in five reviewed widget articles.",
+      "recommendation": "Add tested diagnostic section first; future separate page only if substantial current device/provider evidence supports it."
+    }
+  ],
+  "discoveredOnlyTopics": [
+    "week numbers",
+    "calendar search",
+    "calendar export",
+    "CalDAV setup",
+    "Siri Shortcuts",
+    "holiday subscriptions",
+    "purchase restoration"
+  ],
+  "discoveredOnlyNote": "These headings appear in Readdle navigation. Individual pages not read, product relevance not verified, and no publication recommendation yet.",
+  "rankingEvidence": null,
+  "volumeEvidence": null,
+  "chatgptCitationEvidence": null
+}

@@ -1,0 +1,24 @@
+iPhone ve iPad’de takvimlerinizi ve hava durumunu birlikte görüntüleyin. Cloud Calendars ile iş ve kişisel planlarınızı inceleyerek gününüzü düzenleyin.
+
+TAKVİMLER VE GÖRÜNÜMLER
+iCloud takvimlerini kullanın ve Google Takvim’i bağlayın. Premium, Microsoft takvimleri için de destek sunar. Gün, hafta, ay, yıl ve liste görünümleri arasından seçim yapın.
+
+Cloud Calendars hesabı oluşturmadan cihazınızda yerel bir takvim de oluşturabilirsiniz. Hizmetleri bağlamak ve paylaşım yapmak için oturum açmanız gerekebilir.
+
+HAVA DURUMU VE ARAÇ TAKIMLARI
+Plan yaparken hava tahminini kontrol edin. Ana Ekran araç takımları küçük, orta ve büyük boyutlarda sunulur. Kullanılabilir tahminler konuma ve hava durumu sağlayıcısına bağlıdır.
+
+TOPLANTILAR VE PAYLAŞIM
+Google Takvim ile Google Meet’i kullanın. Premium, Microsoft Teams’i de destekler. Etkinlikleri ve takvimleri paylaşın; e-posta, QR kodu veya App Clip ile davet gönderin. Erişim izinleri takvime ve davet türüne bağlıdır.
+
+PLANINIZI SEÇİN
+Ücretsiz Base; Google Takvim eşzamanlaması, Google Meet, farklı takvim görünümleri, hava durumu ve araç takımlarını içerir.
+Advanced, Base özelliklerini içerir ve reklamları kaldırır.
+Premium, Advanced özelliklerine Microsoft takvimleri ve Microsoft Teams desteğini ekler.
+
+Satın almadan önce uygulamada veya App Store’da güncel yerel fiyatı ve faturalandırma dönemini kontrol edin.
+
+Uygulamayı ücretsiz indirebilirsiniz. İsteğe bağlı abonelikler, mevcut dönem sona ermeden en az 24 saat önce iptal edilmezse otomatik olarak yenilenir. Aboneliğinizi App Store hesap ayarlarınızdan yönetebilir veya iptal edebilirsiniz.
+
+Gizlilik: https://www.cloud-calendars.com/privacy-policy
+Kullanım Koşulları: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

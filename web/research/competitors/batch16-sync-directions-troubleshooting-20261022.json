@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "reviews": [
+    {
+      "url": "https://help.calendarbridge.com/tips/one-way-vs-two-way-calendar-sync/",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "readScope": "0-87 of88",
+      "findings": "Source/destination copying and audience-specific direction, syncwindow versus combinedview. Connection-count terminology inconsistent withinpage; no arithmetic/copiedguarantees used.",
+      "mapping": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "nextAction": "Compare existing substantive originals before new pages. Publisherclones andresync rules notCloudfeatures.",
+      "limits": [
+        "No runtime, GoogleSERPrank,keywordvolume orChatGPTcitation proof."
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/faq/how-often-do-calendars-sync",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "readScope": "0-22 of23",
+      "findings": "Sourceprovider push versus feedpolling and separateGooglesubscription refresh; quotedtimings are publisher-specific not Cloudpromises.",
+      "mapping": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "nextAction": "Compare existing substantive originals before new pages. Publisherclones andresync rules notCloudfeatures.",
+      "limits": [
+        "No runtime, GoogleSERPrank,keywordvolume orChatGPTcitation proof."
+      ]
+    },
+    {
+      "url": "https://help.calendarbridge.com/user-docs/no-events-are-syncing/",
+      "publisher": "CalendarBridge",
+      "status": "full",
+      "readScope": "0-65 of66",
+      "findings": "Providerbrowserversusdevice, source/targetselection, identitytype, missingdatehorizon andcopyeditlimitations. No reset/destructivefix transferred.",
+      "mapping": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "nextAction": "Compare existing substantive originals before new pages. Publisherclones andresync rules notCloudfeatures.",
+      "limits": [
+        "No runtime, GoogleSERPrank,keywordvolume orChatGPTcitation proof."
+      ]
+    }
+  ]
+}

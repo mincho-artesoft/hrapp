@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22T04:32:42.647Z",
+  "count": 5,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Уиджети за календар на iPhone и iPad: покажете предстоящите събития",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Настройте уиджет за предстоящи събития на iPhone или iPad. Проверете избраните календари, видимите редове и липсващите срещи.",
+      "descriptionCharacters": 125
+    },
+    {
+      "locale": "bg",
+      "slug": "calendar-on-apple-watch",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Календар на Apple Watch: липсващи събития и поддръжка от приложенията",
+      "sections": 6,
+      "faqs": 4,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Проследете липсващо събитие на Apple Watch до неговия календар. Разграничете приложението, усложнението на циферблата и уиджетите на телефона.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "en-US",
+      "slug": "the-widget-that-shows-what-is-next",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+      "sections": 7,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-countdown-to-your-next-meeting",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Use Cloud Calendars Live Activity for a future meeting, check stale event details and keep alerts separate from the countdown on your Lock Screen.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "en-US",
+      "slug": "calendar-on-apple-watch",
+      "file": "src/app/content/en-US/articles-widgets.ts",
+      "title": "Calendar on Apple Watch: check missing events and app support",
+      "sections": 6,
+      "faqs": 4,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Trace a missing Apple Watch event to its calendar source. Distinguish Apple Calendar, companion apps, complications and phone widgets before changing data.",
+      "descriptionCharacters": 155
+    }
+  ]
+}

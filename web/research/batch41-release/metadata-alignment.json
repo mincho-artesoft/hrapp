@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-22",
+  "decision": "No material new weather-provider or forecast-horizon mismatch found; no website or ASC text change proposed in this bounded audit.",
+  "releaseBoundary": {
+    "intendedDraftSource": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+    "savedFreshRootASC": "1.7.4 build16 VALID, PREPARE_FOR_SUBMISSION",
+    "public": "1.7.3 build12 READY_FOR_SALE remains distinct",
+    "attestation": "User/author statement and version/build match support correspondence; no archive binary checksum/runtime certification."
+  },
+  "nativeReads": [
+    {
+      "path": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "sha256": "c58e379ecd12021ef32c78a45c9a326f0bf845af6b5b0abc2853d1e72f4ba219",
+      "lines": 756,
+      "scope": "Complete immutable git-show file read without truncation."
+    },
+    {
+      "path": "Calendar/WeatherView/WindMap/WindMapStore.swift",
+      "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "sha256": "91912b0ba8265533007a48c40015c9016b46b22b9c617a026c0aa16bf3693357",
+      "lines": 251,
+      "scope": "Complete immutable git-show file read without truncation."
+    }
+  ],
+  "diffRead": {
+    "from": "acef9ed52e208d20a6d9a591efa92df89e52f3b6",
+    "to": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+    "file": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+    "scope": "Full WeatherKitViewModel diff read; mapPointForecast reuse, cancellation/request-generation guards, loading timeout and ordering of GPS alert processing. No weather supplier change."
+  },
+  "siteReadScope": {
+    "completeArticleObjects": [
+      "weather-inside-your-calendar",
+      "a-fourteen-day-view-of-the-weather",
+      "wind-the-forecast-nobody-reads"
+    ],
+    "home": "Full weather object and exact matching weather/forecast source, FAQ, showcase, hero and alt strings; not full unrelated home semantics.",
+    "weatherService": "Provider endpoints and complete load request construction lines205–240 including forecast_days14; not whole service runtime review."
+  },
+  "savedASC": {
+    "path": "research/batch30-aso-remaining/applied.json",
+    "locator": "afterLocalizations.en-US.attributes",
+    "scope": "Complete saved description and promotionalText/keywords/URLs read; no fresh metadata API read.",
+    "description": "Bring your calendars and weather into one planning app for iPhone and iPad. See work and personal plans together, check the forecast and choose a calendar view that fits your day.\n\nYOUR CALENDARS, TOGETHER\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Or start with a local calendar on your device without creating an account. Connecting providers and sharing require sign-in where applicable.\n\nA VIEW FOR EVERY PLAN\nSwitch between Day, Week, Month, Year and List views. Use multiple calendars to keep different parts of your schedule visible in one place.\n\nWEATHER WHILE YOU PLAN\nCheck weather forecasts alongside your plans, explore detailed weather views and use the interactive weather map with wind and temperature layers. Forecast availability depends on your location and the weather provider.\n\nHOME SCREEN WIDGETS\nSee calendar information and weather from your Home Screen, with small, medium and large widget options.\n\nMEETINGS AND SHARING\nUse Google Meet support with Google Calendar. Premium adds Microsoft Teams support. Share events and calendars with email or QR invitations. App Clip offers an event preview; adding the event through that experience requires the full app. Sharing access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nThe free Base plan includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced features and adds Microsoft Calendar and Microsoft Teams support.\n\nCloud Calendars is free to download with optional auto-renewing subscriptions. Check current local prices in the app or App Store. Payment is charged to your Apple ID account at purchase confirmation. Subscriptions renew automatically unless canceled at least 24 hours before the current period ends. Your account is charged for renewal within 24 hours before that period ends. Manage or cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+    "descriptionSha256": "d3ec75fa40c5adb2d284b651b0df0df4741eaeb97392b8cc64bb468628ff0396",
+    "weatherParagraph": "Check weather forecasts alongside your plans, explore detailed weather views and use the interactive weather map with wind and temperature layers. Forecast availability depends on your location and the weather provider."
+  },
+  "overlayGovernance": {
+    "path": "research/aso/description-overrides-batch30.json",
+    "locales": [
+      "fr-FR",
+      "it",
+      "ja",
+      "ko",
+      "pt-BR",
+      "nl-NL",
+      "en-US",
+      "ml-IN"
+    ],
+    "count": 8,
+    "verification": "Existing verifier reads batch30 overlay. Saved all-locales-readback-batch30 records50locales/250checks; boolean readback is persistence evidence, not metadata text or release validation.",
+    "decision": "Keep all eight description overrides; no rollback to historical proposals and no additional overlay justified by these weather changes.",
+    "readScope": "Overlay schema, locale list, verifier reference and preservation governance inspected; no new semantic rereview of all eight full localized descriptions."
+  },
+  "findings": [
+    {
+      "claim": "The app uses Apple WeatherKit; website demo uses Open-Meteo.",
+      "verdict": "Preserve",
+      "basis": "Both full immutable native files use WeatherService; WindMapForecastCache grid, WeatherMapPlaceCache hourly/current request paths still WeatherKit. Current website service uses api.open-meteo.com with14forecastdays. No new non-Apple weather provider found in scope."
+    },
+    {
+      "claim": "Daily app list up to ten returned WeatherKit days; hourly availability separate.",
+      "verdict": "Preserve",
+      "basis": "updateDailyForecast still prefixes min(days.count,10). Map grid asks a finite25hour window beginning4hours before rounded current hour; place forecast asks minus4hours through plus24hours. These requests do not establish universal coverage or10day map timeline."
+    },
+    {
+      "claim": "ASC interactive weather map with wind and temperature layers; availability depends on location/provider.",
+      "verdict": "Preserve",
+      "basis": "WindMapStore supports wind/temperature layer summaries and finite cached point/grid requests. Saved description already describes these without promising instant/fixed/complete coverage."
+    },
+    {
+      "claim": "Selected-place weather and device-location alert paths differ.",
+      "verdict": "Preserve",
+      "basis": "WeatherKitVM still invokes processFetchedGPSAlerts only under isGPSLocation. New task ordering does not turn destination forecasts into guaranteed notifications."
+    }
+  ],
+  "proposals": [],
+  "coordination": "Product reviewer independently confirms Apple WeatherKit and MapKit/bundled geography, no new weather supplier; privacy coordinate/cache consequences handled separately rather than duplicated.",
+  "limits": [
+    "No complete privacy determination, paid-tier re-audit, runtime test, full repository provider inventory or certification of public build12.",
+    "No API write/read by this agent, builds, native file changes, source integration or deployment.",
+    "No fresh primary web fetch needed for source-to-copy delta; no ranking/volume/translation claims."
+  ],
+  "evidenceHashes": [
+    {
+      "path": "research/batch41-release/asc-versions.json",
+      "sha256": "600c7772ab30a7420f036c69db76b58f8df0c7d84adca7bf5934dac9abe6276d"
+    },
+    {
+      "path": "research/batch41-release/source-correspondence.json",
+      "sha256": "524dd83bcf30acbc9c61f1f8d152ed221e0f993818ee422116c9a2054d8d8530"
+    },
+    {
+      "path": "research/batch30-aso-remaining/applied.json",
+      "sha256": "8d90124907752da9b6b913121a9da978501a8337b03ab5cc6579944fcee27776"
+    },
+    {
+      "path": "research/aso/description-overrides-batch30.json",
+      "sha256": "bb224a8e21f2a50812f120bdf3fba53b3f1285124a5ad4dee55781b42d6fda48"
+    },
+    {
+      "path": "research/aso/all-locales-readback-batch30.json",
+      "sha256": "a38a35adc1244dd787256296aa195073aa15fc81b9f58dc627803dbce9f37d9f"
+    },
+    {
+      "path": "research/aso/verify-all-locales-20261021.py",
+      "sha256": "1dfa21107b51b334630eaebcc78ffefcbc2f526ba3ab3292e4976c6c0764994a"
+    },
+    {
+      "path": "src/app/content/home/en-US.ts",
+      "sha256": "3dfbd8f09d9e0544033635303dff72a228357abe48c3ad97b25699e6a385b128"
+    },
+    {
+      "path": "src/app/content/en-US/articles-weather.ts",
+      "sha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415"
+    },
+    {
+      "path": "src/app/core/weather.service.ts",
+      "sha256": "bf0d2f7977d30f7681ae4ffe4430532c121dab8621157627492ca32677938c0d"
+    }
+  ]
+}

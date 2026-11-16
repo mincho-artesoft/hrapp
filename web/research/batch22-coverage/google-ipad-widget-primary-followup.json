@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "discovery": "Actual signed-in Chrome Google Search observation for calendar widget iPad; see google-ipad-widget-observation.json. No numeric organic rank inferred.",
+  "url": "https://readdle.com/blog/best-calendar-widgets-for-iPhone-and-iPad",
+  "status": "full_extracted_main_body_read",
+  "readRange": [
+    43,
+    135
+  ],
+  "totalExtractedLines": 175,
+  "outsideOriginal71ExactUrlCorpus": true,
+  "publisherBodyFacts": [
+    "Different date, month, agenda, task, week, extra-large iPad and Lock Screen layouts are described.",
+    "Publisher describes per-widget selected-calendar configuration and interactive controls.",
+    "iPad and iPhone placement guidance is presented alongside app-specific product claims."
+  ],
+  "currentGuideMapping": {
+    "the-widget-that-shows-what-is-next": "Expanded iPad Home Screen gallery/same-device checks, nearest eligible event and visible-row diagnosis.",
+    "choosing-a-widget-size": "Existing date/weather versus upcoming-list decision; do not infer extra-large or interactive-month support.",
+    "lock-screen-without-unlocking": "Existing widget versus Live Activity boundary; competitor accessory controls do not become Cloud features."
+  },
+  "decision": "New body corroborates the actual iPad setup/choice intent. Current expanded canonical answers the supported task; product-specific competitor layouts are not added to Cloud marketing or ASO. No duplicate generic best-widget page.",
+  "limits": [
+    "Publisher feature claims not runtime verified",
+    "No claim every vendor layout exists in Cloud",
+    "No search-volume, stable-rank or ChatGPT citation measurement",
+    "No screenshot/video generation, device or customer operation"
+  ]
+}

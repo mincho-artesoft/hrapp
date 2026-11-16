@@ -1,0 +1,196 @@
+{
+  "keeping-track-of-who-replied": {
+    "file": "src/app/content/en-US/articles-sharing.ts",
+    "hash": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796",
+    "object": {
+      "updated": "2026-10-21",
+      "title": "Calendar replies: separate attendance from sharing access",
+      "short": "Who replied and who has access",
+      "description": "Distinguish guest RSVPs from pending invitations, anonymous recipients and shared-calendar acceptance. Confirm attendance without inventing a headcount.",
+      "lede": "A person can open a link, add an event or accept calendar access without promising to attend. Decide which answer you need before interpreting a recipient list. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Everyone recorded as a recipient or accepted share is a confirmed attendee, and silence can be converted into a reliable estimate.",
+      "sections": [
+        {
+          "heading": "Identify the kind of invitation",
+          "body": [
+            "A provider meeting invitation asks a guest for an attendance response. A Cloud Calendars share gives someone access to event details or a calendar, possibly with editing rights. An ICS subscription follows information. These actions can concern the same meeting without recording the same decision.",
+            "For example, a volunteer may accept Writer access to update an event but not attend it. A guest may read the details in a web preview and then reply by message. Neither case should be counted solely from an access-management screen."
+          ]
+        },
+        {
+          "heading": "Read sharing recipients as access information",
+          "body": [
+            "Cloud Calendars recipient information distinguishes pending email invitations, identified recipients, anonymous recipients and access roles. A pending invitation may offer a resend action. Reader, Writer and Owner describe what the recipient can do with shared information.",
+            "The sharing system records acceptance or receipt during its add/access flows. That record is useful for understanding the sharing relationship, but it is not a Yes/Maybe/No attendance answer. Anonymous reception also does not identify a named guest for your headcount."
+          ]
+        },
+        {
+          "heading": "Check attendance in the organizer’s invitation workflow",
+          "body": [
+            "For a Google meeting invitation, Google documents explicit Yes, No and Maybe responses. Apple Calendar likewise distinguishes Accept, Maybe and Decline for supported invitations. Use the organizer’s corresponding event and account when checking those replies.",
+            "If a reply looks wrong or missing, confirm the invited email and the event version with the person. An imported copy, a forwarded link or an event in another account may not represent the original invitation. Do not assume that every third-party display has the latest response."
+          ]
+        },
+        {
+          "heading": "Keep unknown attendance unknown",
+          "body": [
+            "A pending share, no response or an unread message is not a reliable acceptance or refusal. Record the people who explicitly confirmed, those who declined and those whose answer is still unknown. Do not add a fixed fraction of silent recipients to the confirmed total.",
+            "For a meal with a booking deadline, state the date by which you need a reply and ask the remaining people directly. The appropriate follow-up depends on the event; there is no universal rule that one reminder two days before is enough."
+          ]
+        },
+        {
+          "heading": "Treat meeting links as joining details",
+          "body": [
+            "A Google Meet or Microsoft Teams URL tells someone where to join, not whether they accepted or will attend. Cloud Calendars lists Google Meet with Base features and Microsoft Teams with Premium, subject to the relevant account and provider flow. A higher plan is not a more reliable attendance count.",
+            "Check that the intended link exists on the event and works for the intended audience. File imports and other conversions can lose conference information. If you change the meeting arrangement, tell participants which event and link to use instead of interpreting their old access record as confirmation."
+          ]
+        },
+        {
+          "heading": "Close the loop after an important change",
+          "body": [
+            "When an event moves substantially, update it through its owning calendar or sharing flow. Then tell the people whose attendance matters and ask for renewed confirmation where needed. A previous response to Tuesday is not necessarily an answer to Thursday.",
+            "Keep the final attendance list separate from the access list. Removing editing rights does not cancel a guest’s attendance, and declining shared access does not necessarily decline the underlying gathering. Use clear messages so people know which decision you are asking them to make."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify whether you sent a provider meeting invitation, an app share or a feed.",
+        "Use the sharing list to check access and pending invitations, not attendance totals.",
+        "Check provider RSVP status on the organizer’s actual event where applicable.",
+        "Keep unknown replies separate from confirmed and declined guests.",
+        "Ask for a direct answer by a deadline appropriate to your event.",
+        "After a major change, confirm the new arrangement and joining link with affected guests."
+      ],
+      "faq": [
+        {
+          "q": "Does accepted calendar access mean the person is coming?",
+          "a": "No. It means a sharing relationship was accepted through that flow. Attendance needs a provider RSVP or an explicit answer from the person."
+        },
+        {
+          "q": "Can I count anonymous recipients as confirmed guests?",
+          "a": "No. Anonymous reception is not an identified attendance commitment. It may help describe use of a shared event, but it cannot supply a reliable named guest list."
+        },
+        {
+          "q": "Do I need Premium to know who replied?",
+          "a": "Do not equate an app tier with RSVP reliability. Premium adds Microsoft Calendar and Teams features; access receipts and provider attendance responses remain different kinds of information. Check the original invitation and organizer account."
+        }
+      ],
+      "sourcesHeading": "Attendance and import references",
+      "sources": [
+        {
+          "label": "Google: responding to event invitations",
+          "url": "https://support.google.com/calendar/answer/37135?hl=en"
+        },
+        {
+          "label": "Apple: reply to Calendar invitations on iPhone",
+          "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+        },
+        {
+          "label": "Google: importing events and its limitations",
+          "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "sharing-one-event-not-your-calendar",
+        "inviting-people-who-do-not-have-the-app",
+        "meeting-links-that-make-themselves"
+      ]
+    }
+  },
+  "drag-an-event-to-move-it": {
+    "file": "src/app/content/en-US/articles-planning.ts",
+    "hash": "3b4aa50d7fb952df35327ea7924780116d7b38393c0746a5986cfcaf659189bc",
+    "object": {
+      "title": "Drag a calendar event to reschedule: check time, duration and scope",
+      "short": "Drag to reschedule",
+      "description": "Move a calendar event without confusing its start, duration, calendar or repeat scope. Check editing rights and verify the saved change.",
+      "lede": "A block moved on a screen is only the start of a reschedule. The useful result is the right event, at the right time, in the right calendar, with the intended repeat scope. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Dragging an appointment always saves exactly the intended change and updates every participant immediately.",
+      "sections": [
+        {
+          "heading": "Identify the event and calendar before moving it",
+          "body": [
+            "Open the appointment details and check its date, start and end times, calendar and owning account. Two similar blocks may be separate events or two displays of the same schedule. Moving the wrong copy does not solve a clash in the original calendar.",
+            "For example, a personal planning block and an organiser’s invitation may both say Project review. Decide which one you are responsible for changing. If you only need a reminder to prepare, keep that separate from the meeting arranged by someone else."
+          ]
+        },
+        {
+          "heading": "Move the block when the start time should change",
+          "body": [
+            "Cloud Calendars provides timeline drag and resize interactions. Moving a timed event and changing one of its edges are different operations: a move changes its placement, while a resize changes the interval. Use a day or multi-day timeline where the intended date and hour are clear.",
+            "Suppose a one-hour appointment moves from 15:00–16:00 to 16:00–17:00. Check both times afterward. An event stretched to 15:00–17:00 has become longer instead of moving later. For an exact booking minute, open its details and inspect the time fields rather than judging the block’s height."
+          ]
+        },
+        {
+          "heading": "Choose the series scope deliberately",
+          "body": [
+            "A repeating appointment is not just a row of unrelated blocks. Before changing Tuesday’s meeting, decide whether this Tuesday alone changes or whether the arrangement changes from then onward. Do not drag repeatedly until the display looks right without checking the scope.",
+            "When a scope chooser is offered, read its options before confirming. Reopen the changed occurrence and a later one to check the result. If the available editor cannot express the intended exception, use the owning provider’s supported editor rather than assuming every timeline handles a series identically."
+          ]
+        },
+        {
+          "heading": "Respect the destination and editing permission",
+          "body": [
+            "An appointment being visible does not establish that you may edit it. A subscribed calendar may be read-only; a received event may permit viewing but not changes. Cloud Calendars distinguishes read-only shared invitations, and a provider may also reject an update that appeared possible locally.",
+            "Keep the calendar unchanged when you only mean to change the time. In a view with multiple calendar columns, crossing to another calendar is a different decision: it can change the account or people who can see the event. Check the Calendar value after the operation, especially when similarly coloured calendars are adjacent."
+          ]
+        },
+        {
+          "heading": "Reopen and compare the saved result",
+          "body": [
+            "After moving or resizing, reopen the event and compare the date, start, end, calendar and repeat behavior with the intended arrangement. Check for a save or synchronization error. A block returning to its old position needs investigation, not repeated dragging of a customer meeting.",
+            "For a connected account, compare the original provider when a change matters or appears inconsistent. If the provider still shows the old time, record the example date and connection route for support. A successful local save and another person’s device displaying the update are separate observations."
+          ]
+        },
+        {
+          "heading": "Tell participants about important changes",
+          "body": [
+            "Confirm an urgent new time through your usual communication channel. A calendar edit does not prove the invitation was delivered, read or accepted, and people may be offline. Ask for the confirmation you actually need.",
+            "Apple Calendar and Google Calendar also document their own drag-to-move workflows. Follow the instructions for the application you are using; their controls and save steps do not define Cloud Calendars behavior. Use the event details when a gesture is unavailable or an exact value needs checking."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Check the original event, calendar and account.",
+        "Decide whether to move the start or resize the duration.",
+        "Perform one change, then inspect both start and end.",
+        "Choose a repeat scope only when it matches your intention.",
+        "Reopen the event and verify calendar, time and any provider update.",
+        "Confirm urgent schedule changes directly with participants."
+      ],
+      "faq": [
+        {
+          "q": "Does dragging change the duration too?",
+          "a": "Moving and resizing are different operations. Check both start and end after the gesture; use the time fields when the exact result matters."
+        },
+        {
+          "q": "Can I drag an event on a read-only calendar?",
+          "a": "Visibility does not grant editing permission. Check the calendar and sharing role. Make the change at the supported source or ask its owner when you cannot edit it."
+        },
+        {
+          "q": "Will the whole repeating series move?",
+          "a": "Check the available scope and the saved result. Do not infer the series behavior from one block moving; inspect the changed occurrence and a later one."
+        }
+      ],
+      "sourcesHeading": "Official instructions for other calendar applications",
+      "sources": [
+        {
+          "label": "Apple: creating and editing events in Calendar on iPhone",
+          "url": "https://support.apple.com/en-my/guide/iphone/iph3d110f84/ios"
+        },
+        {
+          "label": "Google: editing and moving events on iPhone and iPad",
+          "url": "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en"
+        }
+      ],
+      "seeAlso": [
+        "recurring-events-without-the-mess",
+        "event-saved-to-wrong-calendar",
+        "when-two-calendars-disagree"
+      ],
+      "updated": "2026-10-21"
+    }
+  }
+}

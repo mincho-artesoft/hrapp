@@ -1,0 +1,11 @@
+{
+  "allPassed": true,
+  "newEnglishGuide": 1,
+  "relatedOnlyChanges": 2,
+  "homeLocales": 30,
+  "homeFieldsChanged": 90,
+  "exactHomeScopeOnly": true,
+  "onlyNewRouteFact": true,
+  "curatedGuideCount": 54,
+  "scope": "Actual diff vs HEAD; exact source drafts, body immutability of related-only objects, exactly three fields per home, shared facts scope. Not native-speaker or released-runtime certification."
+}

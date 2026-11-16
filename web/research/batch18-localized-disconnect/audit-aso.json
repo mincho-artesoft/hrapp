@@ -1,0 +1,52 @@
+{
+  "slug": "disconnect-calendar-integration-without-losing-track",
+  "count": 2,
+  "source": "src/app/content/en-US/articles-help.ts",
+  "sourceObjectSha256": "0dc5a1d31372bcb29e02e23da179545f931fb05f4f343578eb12207858a9ba19",
+  "validation": "Exact fields, 6 sections/12 paragraphs/6 practical/3 FAQ/4 exact sources, date22, empty claims, descriptions <=155 Unicode characters, actual localized routes",
+  "meaningReview": [
+    "Google disconnect is removal attempt, not pause, even with possible connection error; provider permissions checked independently.",
+    "Microsoft mapped-calendar removal separate from access revocation; device sources matter.",
+    "Sharing local reader downgrade, multiple identities versus final identity recovery link, not account/server-data deletion.",
+    "Subscription/hiding/deletion distinct; copies and retained data separately reviewed."
+  ],
+  "sourceFidelityNote": "The exact current disconnect object has no disposable-owned-event testing paragraph; that detail appears in the neighboring CalDAV guide. No such paragraph was imported into this translation.",
+  "scope": "Standalone research drafts only; no integration/build/deployment/native edits/paid API.",
+  "review": "Full model translations, not native-speaker approval.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "file": "de-DE.json",
+      "descriptionCharacters": 152,
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "relatedSubstitutions": {
+        "what-calendar-sync-actually-does": "icloud-google-and-outlook-in-one-view",
+        "when-two-calendars-disagree": "google-calendars-that-never-reach-your-iphone"
+      },
+      "sha256": "385742e1fb1dfa54d691f780bb9a696a2d49a9f40fd8a1cce28e6ade22a89639"
+    },
+    {
+      "locale": "es-ES",
+      "file": "es-ES.json",
+      "descriptionCharacters": 155,
+      "seeAlso": [
+        "icloud-google-and-outlook-in-one-view",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "relatedSubstitutions": {
+        "what-calendar-sync-actually-does": "icloud-google-and-outlook-in-one-view",
+        "when-two-calendars-disagree": "google-calendars-that-never-reach-your-iphone"
+      },
+      "sha256": "cb52f61ae4e1924e47f05d8b70a90880626b4a38784aa36b6a3f751d43f0c1a5"
+    }
+  ]
+}

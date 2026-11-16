@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-22",
+  "drafts": [
+    {
+      "slug": "free-google-sync-without-adverts",
+      "rawFileSha256": "a4a42e201f9c58ea62ae60258924bc99b9ce9a3a12e2bb77738bac7d457bfee2",
+      "jsonStringifySha256": "2b6bbd9a56885d16e0f4a50012e6b5866d91ce8e2379cfdb7b5b34dacb901115",
+      "sections": 4,
+      "paragraphs": 8,
+      "practical": 5,
+      "faq": 2,
+      "descriptionCharacters": 137,
+      "claims": {},
+      "updated": "2026-10-22",
+      "sourceURLs": [
+        "https://support.apple.com/it-it/118428"
+      ],
+      "seeAlso": [
+        "what-a-subscription-actually-buys",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "sourceMapping": "Complete current EN template translated in original order; source URL for cancellation localized to root-verified Apple Italian. Related limited to actual Italian guides. No native-speaker or runtime certification.",
+      "previousRawFileSha256": "6b4ee8d49f9b3448a5e2b0bc2b42e9dbbd7e6c6a6c14c437d5798429c71ca395"
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "rawFileSha256": "1e2e4002f064af12331eb58b677f1b94d4e33994144d2077936e1a750611a141",
+      "jsonStringifySha256": "008671dc8de4dd50cc5b7ff2f7cfe8ade65542602dbef7999ecc426ee1549591",
+      "sections": 5,
+      "paragraphs": 10,
+      "practical": 5,
+      "faq": 4,
+      "descriptionCharacters": 141,
+      "claims": {},
+      "updated": "2026-10-22",
+      "sourceURLs": [
+        "https://support.apple.com/it-it/118428",
+        "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+        "https://support.apple.com/en-ie/111114"
+      ],
+      "seeAlso": [
+        "free-google-sync-without-adverts",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "sourceMapping": "Complete current EN template translated in original order; source URL for cancellation localized to root-verified Apple Italian. Related limited to actual Italian guides. No native-speaker or runtime certification.",
+      "previousRawFileSha256": "2dfe2c054e569a645a87d9ed3afb04f22401a42f27d5c4b61afc953664760ff5"
+    }
+  ],
+  "selfReview": "Full source-to-draft semantic review: tiers, provider permissions, local account use, billing identity, renewal versus data deletion and conditional Family Sharing kept distinct. No universal Exchange, meeting-link or feature-after-expiry guarantee.",
+  "rootParagraphRevision": "root-paragraph-revision.json"
+}

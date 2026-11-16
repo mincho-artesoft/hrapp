@@ -1,0 +1,816 @@
+{
+  "date": "2026-10-22",
+  "decision": "HOLD PRIVACY READINESS — current Data Not Collected cannot be signed off against the active account/sharing implementation without resolving and updating disclosures. This is a factual submission-readiness gate, not a legal determination.",
+  "uiObservation": "Parent freshly observed published Data Not Collected, approximately one year old, with correct policy URL. Attributed parent UI observation; not independently operated here.",
+  "scope": "Proposed questionnaire matrix only, no questionnaire/API/backend/customer/production actions. Uses immutable eda40b44af01f813d7700d1e00ec8e62b30fd67e comparison:13 native evidence entries,12 unchanged; current backend deployment remains owner-confirmation gap.",
+  "primaryGuidance": [
+    {
+      "url": "https://developer.apple.com/app-store/app-privacy-details/",
+      "readScope": "Fresh substantive guidance143–166,193–303,312–343",
+      "summary": "Retained off-device data counts even for functionality. Optional features are not automatically exempt. Linked identity includes account/device associations. Tracking requires the specified cross-company advertising or broker use, not simply ads. Local processing and Apple’s own framework collection are distinct. Generic free text does not require every conceivable sensitive-data category."
+    },
+    {
+      "url": "https://developers.google.com/admob/ios/privacy/data-disclosure",
+      "readScope": "Fresh substantive94–106",
+      "summary": "SDK may collect IP/general location, device identifiers, ad interactions and diagnostics. Exact installed SDK/manifests, optional features and mediation must be reviewed; this is not an app-specific traffic capture."
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "path": "research/privacy-dataflow-20261021.json",
+      "sha256": "39f49b99827499bbc3552f44a396808c0ce91308d21ebb39cde3da23eaaf9824",
+      "evidence": [
+        {
+          "id": "identity",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+          "lines": [
+            [
+              656,
+              670
+            ]
+          ],
+          "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "finding": "Sends provider token/provider/optional name/timezone to own resolve endpoint."
+        },
+        {
+          "id": "accounts",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+          "lines": [
+            [
+              93,
+              232
+            ],
+            [
+              488,
+              519
+            ]
+          ],
+          "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+          "finding": "Persists provider/hashed-subject/email/account indexes; final recovery identity cannot be unlinked."
+        },
+        {
+          "id": "storage",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/store/store.service.ts",
+          "lines": [
+            [
+              17,
+              58
+            ],
+            [
+              112,
+              132
+            ]
+          ],
+          "sha256": "14842159b2b211c1d15d352664666d10449c4b26b5feb001f3170d277b368294",
+          "finding": "Backend S3 JSON records, calendar feeds and delete helper; no retention schedule established."
+        },
+        {
+          "id": "session",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CalendarFeedSession.swift",
+          "lines": [
+            [
+              169,
+              216
+            ]
+          ],
+          "sha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+          "finding": "Own sharing session stored in Application Support with iOS file protection, not Keychain."
+        },
+        {
+          "id": "signout",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift",
+          "lines": [
+            [
+              560,
+              609
+            ]
+          ],
+          "sha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+          "finding": "Signout clears local session and disables invitation push; server recovery account deliberately retained."
+        },
+        {
+          "id": "content",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+          "lines": [
+            [
+              36,
+              73
+            ],
+            [
+              138,
+              194
+            ],
+            [
+              692,
+              704
+            ],
+            [
+              886,
+              918
+            ],
+            [
+              954,
+              984
+            ]
+          ],
+          "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "finding": "Sharing model supports attendee/organizer names/emails/status, notes, times, recurrence, alarms, structured location, video URL, travel time and attachment filename/type/base64 content; shared calendar metadata and event batches uploaded."
+        },
+        {
+          "id": "event-storage",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+          "lines": [
+            [
+              326,
+              351
+            ]
+          ],
+          "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+          "finding": "Canonical shared event includes title/start/end/all-day/location/URL/details/notes/organizer."
+        },
+        {
+          "id": "retained-snapshot",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+          "lines": [
+            [
+              2288,
+              2318
+            ]
+          ],
+          "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+          "finding": "Removal of shared calendar preserves snapshot with deletedAt tombstone."
+        },
+        {
+          "id": "email",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/email/email.service.ts",
+          "lines": [
+            [
+              32,
+              65
+            ]
+          ],
+          "sha256": "3b96e4f187dc28967403042b647f0215049bf90350eb029d46221cc63dc64186",
+          "finding": "SES recipient/subject/HTML/text/reply-to/optional attachments; logs recipient and subject on success/skip/failure."
+        },
+        {
+          "id": "push",
+          "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/push/push.service.ts",
+          "lines": [
+            [
+              31,
+              75
+            ],
+            [
+              78,
+              140
+            ]
+          ],
+          "sha256": "29e682ae6d93d4ef786003b3fd0499438badaf500da3951d7b0521ea4ec1ac55",
+          "finding": "S3 installation/account/APNs-token records and receipts; configured SQS/APNs dispatch sends invitation sender/title. Default environment sandbox; production configuration unverified."
+        },
+        {
+          "id": "provider-auth",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+          "lines": [
+            [
+              234,
+              261
+            ],
+            [
+              2231,
+              2244
+            ],
+            [
+              2436,
+              2443
+            ],
+            [
+              2923,
+              2947
+            ],
+            [
+              4288,
+              4295
+            ]
+          ],
+          "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "finding": "Google calendar/contact scopes, Microsoft calendar/profile scopes; provider account models include tokens/email/IDs/expiry/avatar; JSON models saved in UserDefaults."
+        },
+        {
+          "id": "contacts",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+          "lines": [
+            [
+              4710,
+              4780
+            ],
+            [
+              4807,
+              4815
+            ]
+          ],
+          "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "finding": "Google People API names/email/phone requests; after Contacts permission creates/updates device contacts. Post-signin call at261."
+        },
+        {
+          "id": "local",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+          "lines": [
+            [
+              488,
+              499
+            ]
+          ],
+          "sha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+          "finding": "Local calendar/event snapshot persisted as JSON."
+        },
+        {
+          "id": "widgets",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+          "lines": [
+            [
+              250,
+              275
+            ]
+          ],
+          "sha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+          "finding": "Event title/location/times snapshot encoded in app-group UserDefaults."
+        },
+        {
+          "id": "weather",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+          "lines": [
+            [
+              88,
+              115
+            ]
+          ],
+          "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+          "finding": "Apple WeatherKit request using coordinates; print includes coordinates; distinguishes GPS and searched/saved locations."
+        },
+        {
+          "id": "location",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/LocationManager.swift",
+          "lines": [
+            [
+              9,
+              23
+            ],
+            [
+              51,
+              66
+            ]
+          ],
+          "sha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+          "finding": "When-in-use location permission; coordinates also printed diagnostically."
+        },
+        {
+          "id": "ads",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Ads/BannerAdView.swift",
+          "lines": [
+            [
+              55,
+              63
+            ]
+          ],
+          "sha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+          "finding": "Google Mobile Ads Request load after consent gate."
+        },
+        {
+          "id": "consent",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Ads/ConsentManager.swift",
+          "lines": [
+            [
+              28,
+              74
+            ]
+          ],
+          "sha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+          "finding": "Google UMP consent update/form/privacy options."
+        },
+        {
+          "id": "purchases",
+          "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift",
+          "lines": [
+            [
+              102,
+              110
+            ],
+            [
+              124,
+              164
+            ]
+          ],
+          "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+          "finding": "StoreKit purchase, transaction and entitlement APIs."
+        },
+        {
+          "id": "website-weather",
+          "file": "/Users/minchomilev/cloud-calendars/src/app/core/weather.service.ts",
+          "lines": [
+            [
+              186,
+              235
+            ]
+          ],
+          "sha256": "bf0d2f7977d30f7681ae4ffe4430532c121dab8621157627492ca32677938c0d",
+          "finding": "Website separately sends city search and forecast coordinates to Open-Meteo."
+        },
+        {
+          "id": "policy",
+          "file": "/Users/minchomilev/cloud-calendars/src/app/pages/privacy-policy-page/privacy-policy-page.component.html",
+          "lines": [
+            [
+              1,
+              64
+            ]
+          ],
+          "sha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+          "finding": "Policy template matched public text, date May 5 2025."
+        },
+        {
+          "id": "asc-snapshot",
+          "file": "/Users/minchomilev/cloud-calendars/research/aso/asc-readonly-snapshot-20261021.json",
+          "lines": [
+            [
+              1,
+              8
+            ]
+          ],
+          "sha256": "e4e82d2fdffaa304bfc2fb33324d3f273c67a35af19b391978c6fbb523888d1b",
+          "finding": "Snapshot top-level versions/appInfos; privacy policy URL records, not authoritative App Privacy questionnaire."
+        }
+      ]
+    },
+    {
+      "path": "research/batch41-release/native-privacy-delta.json",
+      "sha256": "63ecb387a2ecbe5799b4d7482b31f14133ff1660232e890e7d0d65c0fb522530",
+      "immutableComparison": [
+        {
+          "id": "identity",
+          "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+          "priorSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "immutableCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              656,
+              670
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "session",
+          "path": "Calendar/Sharing/CalendarFeedSession.swift",
+          "priorSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+          "immutableCommitSha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              169,
+              216
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "signout",
+          "path": "Calendar/Sharing/CloudAccountManager.swift",
+          "priorSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+          "immutableCommitSha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              560,
+              609
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "content",
+          "path": "Calendar/Sharing/CloudCalendarsAPI.swift",
+          "priorSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "immutableCommitSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              36,
+              73
+            ],
+            [
+              138,
+              194
+            ],
+            [
+              692,
+              704
+            ],
+            [
+              886,
+              918
+            ],
+            [
+              954,
+              984
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "provider-auth",
+          "path": "Calendar/Sources/CalendarViewModel.swift",
+          "priorSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "immutableCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              234,
+              261
+            ],
+            [
+              2231,
+              2244
+            ],
+            [
+              2436,
+              2443
+            ],
+            [
+              2923,
+              2947
+            ],
+            [
+              4288,
+              4295
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "contacts",
+          "path": "Calendar/Sources/CalendarViewModel.swift",
+          "priorSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "immutableCommitSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              4710,
+              4780
+            ],
+            [
+              4807,
+              4815
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "local",
+          "path": "Calendar/AppLocal/AppLocalCalendarStore.swift",
+          "priorSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+          "immutableCommitSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              488,
+              499
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "widgets",
+          "path": "Calendar/Main/CalendarWidgetStore.swift",
+          "priorSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+          "immutableCommitSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              250,
+              275
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "weather",
+          "path": "Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+          "priorSha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+          "immutableCommitSha256": "c58e379ecd12021ef32c78a45c9a326f0bf845af6b5b0abc2853d1e72f4ba219",
+          "unchanged": false,
+          "priorRanges": [
+            [
+              88,
+              115
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "location",
+          "path": "Calendar/WeatherView/Sources/LocationManager.swift",
+          "priorSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+          "immutableCommitSha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              9,
+              23
+            ],
+            [
+              51,
+              66
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "ads",
+          "path": "Calendar/Ads/BannerAdView.swift",
+          "priorSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+          "immutableCommitSha256": "257d7179bb09f7b04401870407e32655ffcbde24cafb2b8f7fb97837f199bb03",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              55,
+              63
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "consent",
+          "path": "Calendar/Ads/ConsentManager.swift",
+          "priorSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+          "immutableCommitSha256": "a3ab3128e4b36f38e9dd30a1446adbe29c55000fbeb6c29aaae517770dbeb3e2",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              28,
+              74
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        },
+        {
+          "id": "purchases",
+          "path": "Calendar/Subscription/SubscriptionManager.swift",
+          "priorSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+          "immutableCommitSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+          "unchanged": true,
+          "priorRanges": [
+            [
+              102,
+              110
+            ],
+            [
+              124,
+              164
+            ]
+          ],
+          "scope": "Byte identity check; unchanged prior content evidence retained, not fresh full reread."
+        }
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "dataType": "Contact Info / Email Address",
+      "proposalStatus": "Include for active account/sharing service",
+      "observedDataAndFlow": "Account/provider email and recipient email persisted in identity/access records; invitation delivery through SES.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: account/recipient identity keys.",
+      "tracking": "No tracking use found in this own-service path; overall answer still needs SDK review.",
+      "evidenceIds": [
+        "identity",
+        "accounts",
+        "content",
+        "email"
+      ],
+      "remainingFact": "Owner confirms these inspected backend paths service build16 production. Optional sign-in does not itself establish optional-disclosure exemption."
+    },
+    {
+      "dataType": "Contact Info / Name",
+      "proposalStatus": "Include where supplied/stored in account or sharing records",
+      "observedDataAndFlow": "Optional identity name plus organizer/attendee names in retained sharing records.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: account/shared-record association.",
+      "tracking": "No tracking use found in inspected own-service path.",
+      "evidenceIds": [
+        "identity",
+        "content",
+        "event-storage"
+      ],
+      "remainingFact": "Confirm deployed model retention of supplied name; optional input still part of feature."
+    },
+    {
+      "dataType": "Identifiers / User ID",
+      "proposalStatus": "Include for active account/sharing service",
+      "observedDataAndFlow": "Own principal/account IDs, provider-linked identity indexes and ownership IDs retained.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: directly identifies accounts.",
+      "tracking": "No tracking use found in inspected own-service path.",
+      "evidenceIds": [
+        "identity",
+        "accounts",
+        "storage"
+      ],
+      "remainingFact": "Production correspondence confirmation; hashing an identity index is not demonstrated anonymization."
+    },
+    {
+      "dataType": "User Content / Other User Content",
+      "proposalStatus": "Include for active sharing service",
+      "observedDataAndFlow": "Shared titles, notes, calendar names, times, recurrence, URLs and other event details retained in canonical server records/feed snapshots.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: owner/recipient/account associations.",
+      "tracking": "No tracking use found in inspected sharing path.",
+      "evidenceIds": [
+        "content",
+        "event-storage",
+        "storage",
+        "retained-snapshot"
+      ],
+      "remainingFact": "Confirm active sharing payload; classify supported media separately below. Do not label all personal calendars as uploaded."
+    },
+    {
+      "dataType": "User Content / Emails or Text Messages",
+      "proposalStatus": "Include for active invitation email flow",
+      "observedDataAndFlow": "Invitation subject, sender/recipient, message content/link and optional attachments passed to SES; source logs recipient/subject.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: identifiable sender/recipient and invitation.",
+      "tracking": "No advertising use established for transactional invitations.",
+      "evidenceIds": [
+        "email",
+        "content"
+      ],
+      "remainingFact": "Confirm production mail feature and handling; no actual messages/logs queried."
+    },
+    {
+      "dataType": "Identifiers / Device ID",
+      "proposalStatus": "Conditional inclusion: invitation push registrations",
+      "observedDataAndFlow": "Installation identifier/APNs token registered with principal and timestamps in server storage.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes when registration tied to principal/device.",
+      "tracking": "No tracking use established for push-delivery identifier.",
+      "evidenceIds": [
+        "push"
+      ],
+      "remainingFact": "Confirm production invitation push enabled; SDK device identifiers are a separate row, not merged into push purpose."
+    },
+    {
+      "dataType": "Usage Data / Product Interaction or Other Usage Data",
+      "proposalStatus": "Conditional classification review",
+      "observedDataAndFlow": "Server acceptance/reception status, revision/timestamps and invitation receipts support delivery/access workflow.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Yes: invitation/account/device relations.",
+      "tracking": "No analytics/tracking use shown for these service receipts.",
+      "evidenceIds": [
+        "push",
+        "recipient-permissions"
+      ],
+      "remainingFact": "Select exact ASC category based on actual retained action/status fields; receipt is not attendance RSVP. recipient-permissions references dataFlows rather than an evidence-file ID."
+    },
+    {
+      "dataType": "Location / Precise Location or Coarse Location",
+      "proposalStatus": "Do not select solely because a coordinate exists; specific retained-flow assessment needed",
+      "observedDataAndFlow": "Shared events can retain structured location coordinates; WeatherKit/map requests separately carry GPS, chosen-place or grid coordinates.",
+      "purpose": "App Functionality if collected",
+      "linkedToUser": "Shared event coordinates are linked to event owner; do not assume every event place is user/device location.",
+      "tracking": "No tracking use established in inspected location paths.",
+      "evidenceIds": [
+        "content",
+        "weather",
+        "location"
+      ],
+      "remainingFact": "Determine whether retained fields describe user/device location, precision, and actual use. Distinguish planned venue from device position; Apple-only framework handling is not automatically developer collection."
+    },
+    {
+      "dataType": "User Content / Photos or Videos; Audio Data",
+      "proposalStatus": "Conditional, inspect supported uploaded media types",
+      "observedDataAndFlow": "Shared attachment model supports filenames/type/base64 content. Generic file support alone does not prove a dedicated photo/video/audio capture/upload flow.",
+      "purpose": "App Functionality if supported and collected",
+      "linkedToUser": "Likely yes for media attached to owned shared event.",
+      "tracking": "No tracking use established in sharing path.",
+      "evidenceIds": [
+        "content"
+      ],
+      "remainingFact": "Owner/source review identifies actual enabled media upload types. Generic free text is Other User Content, not every sensitive category someone could type."
+    },
+    {
+      "dataType": "Contacts",
+      "proposalStatus": "Not established as whole-address-book server collection; targeted review needed",
+      "observedDataAndFlow": "Google People API names/email/phone can be imported into iOS Contacts. Shared participant addresses are separately retained by sharing backend.",
+      "purpose": "App Functionality",
+      "linkedToUser": "Device imports are local; sharing participant list linkage is established.",
+      "tracking": "No tracking use established by Contacts import.",
+      "evidenceIds": [
+        "contacts",
+        "provider-auth",
+        "content"
+      ],
+      "remainingFact": "Confirm any off-device address-book/social-graph transfer or contacts upload beyond individual participant fields. Do not claim the app never reads contacts; do not equate local write with developer collection."
+    },
+    {
+      "dataType": "Advertising SDK: Coarse Location, Device ID, Advertising Data, Product Interaction, Crash Data, Performance Data",
+      "proposalStatus": "SDK-dependent disclosure gate; cannot finalize as none",
+      "observedDataAndFlow": "Google Mobile Ads official disclosure lists possible IP-derived location, identifiers, ad/interaction and diagnostic data. Native ad requests/UMP paths exist unchanged at pinned commit.",
+      "purpose": "Third-Party Advertising; Analytics and/or App Functionality as actual SDK use requires",
+      "linkedToUser": "Unresolved per SDK/version/configuration; cannot blanket mark unlinked.",
+      "tracking": "Unresolved. Ads alone do not prove tracking; determine cross-company data linkage/ad measurement/broker use and actual consent/config.",
+      "evidenceIds": [
+        "ads",
+        "consent"
+      ],
+      "remainingFact": "Check archived build16 SDK privacy manifests/report, dependency versions, mediation adapters and production AdMob/UMP/ATT configuration. Nonpersonalized ads or lack of IDFA do not by themselves establish no collection or no tracking."
+    },
+    {
+      "dataType": "WeatherKit / MapKit-only location requests and local map cache",
+      "proposalStatus": "Do not automatically add as developer-collected location",
+      "observedDataAndFlow": "Apple framework requests plus on-device grid forecast cache. No new own-server weather archive shown.",
+      "purpose": "Weather/map functionality; label purpose only if developer/partner collection established",
+      "linkedToUser": "Not established for developer collection; local grid may represent viewed region, not user location.",
+      "tracking": "No source evidence of advertising linkage for weather paths.",
+      "evidenceIds": [
+        "weather",
+        "location",
+        "batch41-map"
+      ],
+      "remainingFact": "Apple guidance excludes Apple’s own collection from developer responsibility; real-time-only requests and local storage do not alone meet collection definition. Verify any own logging/export or non-Apple retention separately; do not call all network requests ephemeral without proof."
+    },
+    {
+      "dataType": "Purchases / Purchase History; Payment Info",
+      "proposalStatus": "Not established as developer-collected by local StoreKit code",
+      "observedDataAndFlow": "StoreKit products, transactions and entitlement evaluation occur locally in inspected manager; no own-server purchase-history upload shown.",
+      "purpose": "Subscription functionality, if any separate collection later established",
+      "linkedToUser": "Unestablished off-device developer collection.",
+      "tracking": "No tracking use established for StoreKit entitlement checks.",
+      "evidenceIds": [
+        "purchases"
+      ],
+      "remainingFact": "Do not select Purchase History just because StoreKit is used. Confirm no receipt/transaction backend, analytics forwarding or additional SDK collection. No card-data access shown."
+    },
+    {
+      "dataType": "Diagnostics / Other Diagnostic Data",
+      "proposalStatus": "Conditional own-log assessment",
+      "observedDataAndFlow": "Native print statements include coordinates; backend email logs include recipient/subject. Code logging is not proof of remote diagnostic export or production retention.",
+      "purpose": "App Functionality if retained for operations; Analytics only if used accordingly",
+      "linkedToUser": "Depends on exported logs; recipient/coordinate logs may be identifiable.",
+      "tracking": "No tracking use established by debug print alone.",
+      "evidenceIds": [
+        "weather",
+        "location",
+        "email"
+      ],
+      "remainingFact": "Owner confirms production log sinks, payloads and retention; no log/customer query authorized or performed."
+    }
+  ],
+  "supportedMinimumCorrectionIfActiveServiceConfirmed": {
+    "dataCollected": "Yes",
+    "types": [
+      "Email Address",
+      "Name where supplied/stored",
+      "User ID",
+      "Other User Content",
+      "Emails or Text Messages for invitation delivery"
+    ],
+    "purposes": [
+      "App Functionality for the demonstrated account/sharing/invitation flows"
+    ],
+    "linked": "Yes for these retained own-service identity/content flows.",
+    "tracking": "Do not mark these flows tracking merely because ads exist. App-wide final tracking answer remains unresolved until SDK/configuration review.",
+    "qualification": "These are a supported minimum, not a complete publishable questionnaire; push/media/location/SDK rows can add required categories."
+  },
+  "fastestOwnerFactsNeeded": [
+    {
+      "priority": 1,
+      "question": "Does build16 use the inspected account/sharing/email backend with persistent records in production?",
+      "impact": "If yes, replace Data Not Collected and include the supported linked functionality categories. If owner asserts disabled, provide specific production feature/routing evidence; source alone does not establish disabled."
+    },
+    {
+      "priority": 2,
+      "question": "What SDK privacy report/manifests and mediation/AdMob consent/tracking settings are present in the exact uploaded build16?",
+      "impact": "Resolve ad SDK categories, purposes, linkage and tracking; do not guess from ad presence or consent alone."
+    },
+    {
+      "priority": 3,
+      "question": "Are push registration, media attachments and retained user/device location active, and what exact fields are stored?",
+      "impact": "Complete conditional matrix rows without overdeclaring arbitrary event text as every data category."
+    },
+    {
+      "priority": 4,
+      "question": "Who handles account deletion, shared-record tombstones, backups and log retention, and what is the current production policy?",
+      "impact": "Correct policy/service transparency and assess separate account-deletion readiness; signout/cancellation is not erasure. Do not claim automatic full deletion."
+    }
+  ],
+  "submissionRecommendation": "Finish the description/reviewer-note/release-text changes independently, but do not represent App Privacy as ready or submit on the unchanged Data Not Collected declaration. Owner-reviewed final questionnaire and an accurate policy are required; a correct URL alone does not validate policy contents.",
+  "notInferred": [
+    "Tracking from ads alone",
+    "Purchase History collection from local StoreKit",
+    "Precise Location collection from every arbitrary venue coordinate",
+    "All contacts uploaded because Contacts permission exists",
+    "All weather transmissions retained",
+    "Source commit cryptographically equals uploaded binary"
+  ]
+}

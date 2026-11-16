@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ms",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "00c5692d-d274-41b7-9dc9-b82359da37cd",
+  "versionLocalizationId": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalendar",
+      "characters": 25,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Cuaca, jadual dan widget",
+      "characters": 24,
+      "utf8Bytes": 24,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "agenda,perancang,minggu,bulan,peringatan,mesyuarat,acara,perkongsian,jemputan,ramalan,janji temu",
+      "characters": 96,
+      "utf8Bytes": 96,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Lihat rancangan dan cuaca bersama. Gunakan widget dan pelbagai paparan, atau mulakan dengan kalendar setempat tanpa akaun aplikasi.",
+      "characters": 131,
+      "utf8Bytes": 131,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Lihat jadual kerja, rancangan peribadi dan cuaca pada iPhone serta iPad dengan Cloud Calendars.\n\nGunakan kalendar iCloud dan sambungkan Google Calendar. Pilih paparan hari, minggu, bulan, tahun atau senarai. Anda juga boleh mencipta kalendar setempat pada peranti tanpa akaun Cloud Calendars. Menyambungkan perkhidmatan dan berkongsi mungkin memerlukan daftar masuk. Kebenaran akses bergantung pada kalendar dan jenis jemputan.\n\nSemak ramalan semasa merancang. Widget Skrin Utama tersedia dalam saiz kecil, sederhana dan besar. Ketersediaan ramalan bergantung pada lokasi dan penyedia cuaca.\n\nBase percuma merangkumi penyegerakan Google Calendar, Google Meet, pelbagai paparan kalendar, cuaca dan widget. Advanced merangkumi ciri Base dan membuang iklan. Premium merangkumi Advanced serta menambah kalendar Microsoft dan Microsoft Teams.\n\nMuat turun adalah percuma, dengan langganan pilihan yang diperbaharui secara automatik. Semak harga tempatan semasa dan tempoh pengebilan dalam aplikasi atau App Store sebelum melanggan. Langganan diperbaharui melainkan dibatalkan sekurang-kurangnya 24 jam sebelum tempoh semasa tamat. Urus atau batalkan melalui tetapan akaun App Store anda.\n\nPrivasi: https://www.cloud-calendars.com/privacy-policy\nSyarat Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1323,
+      "utf8Bytes": 1323,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ms",
+      "name": "Cloud Calendars: Kalendar",
+      "subtitle": "Semua kalendar dalam satu",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Rancang Hari Anda dengan Kalendar + Cuaca Bersama\n\nCloud Calendars menggabungkan kalendar dan cuaca anda dalam satu pengalaman perancangan yang cantik dan teratur.\n\nUrus kalendar iCloud, Google Calendar dan Microsoft dalam satu aplikasi sambil melihat ramalan terus dalam jadual, widget dan paparan perancangan anda.\n\nBersedia lebih awal untuk mesyuarat, perjalanan, pengambilan dari sekolah, aktiviti luar dan hari yang sibuk dengan paparan kalendar yang direka untuk perancangan lebih pantas.\n\nWIDGET SKRIN UTAMA\n\nTambah widget cantik yang menggabungkan:\n• Acara kalendar\n• Ramalan cuaca\n• Jadual akan datang\n• Fasa bulan dan keadaan\n• Angin dan suhu\n• Gambaran keseluruhan agenda harian\n\nPilih daripada pelbagai gaya widget untuk melihat hari anda terus dari Skrin Utama.\n\nMENGAPA CLOUD CALENDARS\n\n• Lihat kalendar iCloud, Google Calendar dan Microsoft bersama\n• Rancang dengan ramalan cuaca terbina dalam\n• Gunakan widget Skrin Utama yang cantik\n• Seret, alih dan ubah tempoh acara secara semula jadi\n• Cipta pautan Google Meet dan Microsoft Teams\n• Tukar antara paparan Hari, Minggu, Bulan, Tahun dan Senarai\n• Urus kalendar kerja dan peribadi di satu tempat\n\nCIRI\n\nSemua Kalendar Anda Bersama\nSambung dan urus kalendar iCloud, Google Calendar dan Microsoft dalam satu pengalaman yang kemas dan berkod warna.\n\nCuaca Terbina Dalam Kalendar Anda\nLihat ramalan setiap jam dan harian terus dalam aliran perancangan, termasuk suhu, keadaan, fasa bulan, angin dan ikon cuaca.\n\nWidget Kalendar + Cuaca\nLihat jadual dan cuaca serta-merta daripada widget Skrin Utama yang boleh disesuaikan.\n\nPelbagai Paparan Kalendar\nPilih paparan Hari, Minggu, Bulan, Tahun atau Senarai mengikut cara anda merancang masa.\n\nPenyuntingan Acara Mudah\nKetik, seret dan ubah tempoh acara terus pada kalendar untuk penjadualan yang pantas dan semula jadi.\n\nPaparan Cuaca Khusus\nTerokai ramalan terperinci dengan keadaan setiap jam dan maklumat perancangan yang berguna.\n\nCipta Acara daripada Ramalan\nKetik satu jam ramalan untuk mencipta acara baharu serta-merta pada masa yang dipilih.\n\nPautan Mesyuarat Terbina Dalam\nTambah pautan Google Meet dan Microsoft Teams kepada acara dengan pantas.\n\nSESUAI UNTUK\n\n• Pengurusan kalendar kerja dan peribadi\n• Perancangan berdasarkan cuaca\n• Aktiviti luar dan perjalanan\n• Jadual sibuk dan perancangan keluarga\n• Pengguna Google Calendar dan iCloud\n• Pengguna kalendar Microsoft\n\nCuba Cloud Calendars dan jadikan setiap hari lebih mudah dirancang.\n\nMAKLUMAT LANGGANAN\n\nCloud Calendars menawarkan langganan yang diperbaharui secara automatik.\n\nPelan Percuma\n• Penyegerakan Google Calendar\n• Pelbagai paparan kalendar\n• Ciri cuaca\n• Widget\n• Sokongan Google Meet\n\nBayaran akan dikenakan pada akaun Apple ID anda apabila pembelian disahkan. Langganan diperbaharui secara automatik melainkan dibatalkan sekurang-kurangnya 24 jam sebelum tamat tempoh semasa. Akaun anda akan dikenakan bayaran pembaharuan dalam tempoh 24 jam sebelum tamat tempoh semasa. Anda boleh mengurus dan membatalkan langganan dalam tetapan akaun App Store.\n\nDasar Privasi: https://www.cloud-calendars.com/privacy-policy\nSyarat Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ms",
+      "keywords": "cuaca,widget,jadual,perancang,agenda,ramalan,iCloud,mesyuarat,acara,tim,skrin kunci,hujan,hari ini",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

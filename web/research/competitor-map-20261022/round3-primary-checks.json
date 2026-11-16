@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "sourceType": "Official publisher documentation; not runtime tests",
+  "records": [
+    {
+      "url": "https://support.google.com/calendar/answer/34580",
+      "review": "Timed tasks can have visibility settings; tasks lacking either start or end time are distinguished. Busy visibility, higher permissions and future-task effects checked.",
+      "result": "New task-visibility guide avoids the obsolete blanket claim that all tasks are always private."
+    },
+    {
+      "url": "https://calendar366.com/help/index.html",
+      "review": "Selected substantive sections: system access and Reminders, calendar sets, natural-language engine, weather location. Not all 1257 lines or every integration reviewed.",
+      "result": "Attributed feature comparison, no inferred iPhone support for Mac-only commands."
+    },
+    {
+      "url": "https://readdle.com/calendars",
+      "review": "Product overview and free/core FAQ reviewed.",
+      "result": "Compared with separate older free/full KB; no universal entitlement assertion."
+    },
+    {
+      "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page",
+      "review": "Full substantive free/full text reviewed; Mac/iOS and earlier entitlement context noted.",
+      "result": "Current installed purchase terms remain the plan check."
+    },
+    {
+      "url": "https://support.apple.com/en-au/105124",
+      "review": "Shared-list invitation, assignment, individual alerts and shared-list activity settings checked.",
+      "result": "No promise that sharing a list copies everyone\u2019s due alerts."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/iph2a8f9121e/ios",
+      "review": "Collaboration membership, iCloud prerequisites and invitation rights checked.",
+      "result": "Apple Reminders workflow kept separate from Cloud calendar sharing."
+    },
+    {
+      "url": "https://support.apple.com/en-ie/guide/iphone/iphce20717a3/ios",
+      "review": "Language & Region controls checked.",
+      "result": "Interface language, date formats and saved text separated."
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26",
+      "review": "iOS26 alternate dates, week numbers and first-day controls checked.",
+      "result": "Version/platform scope explicitly stated."
+    }
+  ]
+}

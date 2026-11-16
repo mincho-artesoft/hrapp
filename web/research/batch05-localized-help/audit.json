@@ -1,0 +1,28 @@
+{
+  "scope": "Translation proposals only. No source integration, ASC/native/site mutation or deployment.",
+  "source": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-help.ts",
+  "sourceSha256": "56cf1f47f421164ad4f854e02467ae87b74f3f0edd574659800df2ce3d6fd120",
+  "locales": [
+    "es-ES",
+    "it",
+    "pt-BR"
+  ],
+  "articlesPerLocale": 3,
+  "preserved": "All 6 sections, paragraph counts and meanings, practical steps, 3 FAQs, source URLs/order, related slugs, dates and empty claims. No source feature or procedure added.",
+  "translationPolicy": "UI names remain quoted in English where exact localized names were not verified. Local prose describes context without inventing app labels. All provider-specific and Mac-only boundaries retained.",
+  "criticalLimits": [
+    "Notification selection affects scheduled alarms; separate app/system controls; limited upcoming alarm set; Live Activity not an audible-delivery guarantee.",
+    "Cloud Calendars search matches loaded titles without case distinction and currently loads current calendar year from selected calendars. Browsing old dates does not extend search.",
+    "Google web search fields and 200-result limit remain distinct from Cloud Calendars and Apple Calendar search.",
+    "No Cloud Calendars whole-calendar ICS/CSV/PDF export procedure invented. Google export needs computer and permissions; Mac export/print steps remain Mac-specific.",
+    "ICS snapshot versus subscription versus PDF retained; publishing/read-only/refresh dependence qualified; ICBU import replacement warning retained.",
+    "Google imported guests/conference-data omissions and CSV recurrence limitations retained."
+  ],
+  "review": "Model-authored translations, medium-high confidence; no independent native editor. Structural validation passed. English source contents were provided/read; no new factual research or source substitutions.",
+  "artifacts": [
+    "es-ES.json",
+    "it.json",
+    "pt-BR.json",
+    "validation.json"
+  ]
+}

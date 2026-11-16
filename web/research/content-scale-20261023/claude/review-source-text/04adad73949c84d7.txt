@@ -1,0 +1,139 @@
+Change an appointment, meeting, or event in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+New Outlook for Windows
+Get help with Copilot
+How do I change a recurring event I created in new Outlook?
+What if I can't create a meeting or appointment?
+Change an appointment, meeting, or event in Outlook for me.
+You can change an appointment, meeting, or event that you created to update your Outlook calendar and to let other people know about schedule changes.
+Important
+You can't change the details for meetings or events other people have invited you to.
+Select a tab option below for the version of Outlook you're using.
+What version of Outlook do I have?
+New Outlook
+Classic Outlook
+Note
+If the steps under this
+New Outlook
+tab aren't working for you, you may not be using new Outlook for Windows yet. Select the
+Classic Outlook
+tab and follow those steps instead.
+Change a single event you created in new Outlook
+On the calendar grid, double-click a meeting you've created to open it.
+In the meeting dialog, make any changes you like.
+Select
+Save
+or
+Send
+to save the changes and send the updated info to the meeting invitees.
+Change a recurring event you created in new Outlook
+On the calendar grid, double-click a meeting you've created to open it.
+You'll have the following options:
+Edit the one event in the series
+- make changes to this one instance.
+Edit series
+- make changes to the entire series.
+Edit this and all following events
+- make changes to this and all following instances of the event.
+When finished, select
+Save
+or
+Send
+.
+You also have the option to press and hold (or right-click) the event to select
+Edit
+or
+Cancel
+from the context menu.
+​​​​​​​
+Send updates only to added or removed attendees in new Outlook
+If you update an event only to add or change the attendee list, after you select
+Send
+you will have an option to send those updates only to added or removed attendees. All other attendees will not receive an update email but will keep the event on their calendars.
+In classic Outlook, you have the option to:
+Change a single event
+|
+Change a recurring event
+|
+Change an event you're invited to
+|
+Change type of event
+|
+Change status during event
+Change a single appointment, meeting, or event you created in classic Outlook
+Open the appointment, event, or meeting from your calendar.
+Edit the item details on the
+Appointment
+or
+Meeting
+tab. When you're done, select
+Save & Close
+for an appointment or event, or
+Send Update
+for a meeting you created.
+When changing a meeting you've created, you must send an update in order to save the changes. If you're adding additional attendees to the meeting and making no other changes, you can choose whether to send the update to all attendees or just the added attendees.
+Change a recurring appointment, meeting, or event you created in classic Outlook
+When you open a recurring appointment, meeting, or event, classic Outlook will ask you if you want to open just this one event or the entire series of events.
+If you'd like to edit a single instance of a recurring item, select
+Just this one
+. Otherwise, select
+The entire series
+. You can make changes to the appointment, event, or meeting details, recurrence patterns, and attendees. When you're done, select
+Save & Close
+for appointments and events or
+Send Update
+for meetings.
+There are some limitations when editing one instance of a recurring item:
+You cannot change the date and time of a recurring item if doing so skips over an earlier or later instance of the item.
+If you remove an attendee from one instance of a recurring meeting, that attendee will still be invited to the other instances of the recurring meeting.
+Change a meeting you were invited to by others in classic Outlook
+You cannot change the details of a meeting you were invited to by others. If you try to move the meeting on your calendar, Outlook will warn you that the organizer will not be notified of the change and the meeting on your calendar will be at the wrong time.
+Change an event to an appointment or a meeting in classic Outlook
+Events are all-day items that, by default, appear as free time on your calendar. A conference or a vacation is an example of an event.
+Double-click the event to open it.
+Uncheck the
+All day event
+checkbox next to the
+Start time
+.
+Now that the event is an appointment, the
+Show As
+changes to
+Busy
+.
+If you add attendees, the appointment turns into a meeting.
+After you finish making changes, select
+Save & Close
+for an appointment or
+Send Update
+for a meeting.
+Change how an appointment, meeting, or event shows on your calendar in classic Outlook
+New all-day events automatically show as free on your calendar. Meetings and appointments automatically show as busy on your calendar. You can change how any of these items display on your calendar by updating the
+Show As
+field.
+Important
+When you send an invite in Outlook or Outlook web app, you can choose the status to show for the meeting, such as Busy, Away, etc. However, if an update is made to the invite, the changes to the status won't be made to the attendee's calendar. A new invite will default to the status set by the invitee. Everyone has control of their own status and can be changed at any time. Updates to the meeting won't override a status for an existing meeting.
+Open the appointment, meeting, or event.
+On the Ribbon, use the
+Show As
+drop-down to select
+Free
+,
+Working Elsewhere
+,
+Tentative
+,
+Busy
+, or
+Out of Office
+.
+Select
+Save & Close
+for an event or
+Send Update
+for a meeting.

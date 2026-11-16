@@ -1,0 +1,478 @@
+{
+  "status": "Proposed only; no source integration. Titles/descriptions/metadata/routes/media and batch05widget fields unchanged.",
+  "patches": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "lead"
+      ],
+      "before": "Temperature, feels-like, precipitation, UV, wind, humidity, visibility and pressure — each one a scrubable hourly chart. Tap any hour in the forecast and the app opens a new event already set to that time.",
+      "after": "Explore weather alongside your plans in the app. This website demo uses Open-Meteo; the app uses Apple WeatherKit, with available hourly and daily forecasts for your selected place.",
+      "reason": "Separate demo from native; remove universal each-metric-chart assertion.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "liveFrom"
+      ],
+      "before": "Live from Open-Meteo, as of {t}.",
+      "after": "Website demo · Open-Meteo · as of {t}.",
+      "reason": "Keep provider attribution specific to website.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "unavailable"
+      ],
+      "before": "Live forecast unavailable right now — showing sample data.",
+      "after": "Website demo: sample data, not a live forecast for the selected place.",
+      "reason": "Make failure sample status explicit without implying sample belongs to selected city.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "weather",
+        "tapAnHour"
+      ],
+      "before": "In the app, tap an hour to drop an event straight onto it.",
+      "after": "In the app, choose an available forecast hour to start an event draft, then review its time and calendar.",
+      "reason": "Editor creates draft, not automatic saved booking; date/time and calendar permission matter.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "path": [
+        "faq",
+        "items",
+        2,
+        "a"
+      ],
+      "before": "Forecasts are fetched for your current or chosen location and cover hourly and ten-day outlooks, feels-like temperature, precipitation, UV, wind and gusts, humidity and dew point, visibility, pressure, sunrise and sunset, and moon phase.",
+      "after": "The app uses Apple WeatherKit for your current or selected place. Check the available dates and hours; its daily list shows up to ten returned days. The website demo uses Open-Meteo and may show a different range.",
+      "reason": "Provider answer currently omits provider and conflates horizon.",
+      "sourceSha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "lede"
+      ],
+      "before": "A forecast pinned to your current location is the right answer for right now and the wrong answer for a match forty miles away.",
+      "after": "Before using weather to plan an appointment away from home, select the destination in the weather view and check the place name. An address saved in an event is not enough to establish which forecast you are viewing. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "sections"
+      ],
+      "before": [
+        {
+          "heading": "Distance changes the answer faster than people expect",
+          "body": [
+            "Rain bands are not uniform. Twenty miles inland can be dry while the coast is not; a valley and the ridge above it disagree routinely. For a commute this is noise. For a fixture, a hike or a site visit it is the whole question.",
+            "The event carries a place. Using it is simply using information you already gave the calendar."
+          ]
+        },
+        {
+          "heading": "What this fixes in practice",
+          "body": [
+            "The classic failure is packing for home weather and arriving somewhere else. It is not a forecasting error at all — the forecast was right about the wrong place.",
+            "When an event has a location, its conditions should follow the location rather than the phone."
+          ]
+        }
+      ],
+      "after": [
+        {
+          "heading": "Choose the destination deliberately",
+          "body": [
+            "Cloud Calendars lets you use your current location or choose a searched or saved place for weather. For a meeting in another city, select that city and verify the displayed name before comparing forecast hours.",
+            "Do not assume that adding a location to an event automatically switches every calendar weather display to that venue. Keep the event location accurate, then separately confirm the place used by the forecast."
+          ]
+        },
+        {
+          "heading": "Use search when you do not need current-location weather",
+          "body": [
+            "A searched place provides a way to inspect destination weather without treating your phone’s current position as the destination. Compare similarly named search results and verify the city or region before selecting one.",
+            "For current-location weather, review Cloud Calendars in Settings, Privacy & Security, Location Services. If permission is denied or restricted, the current-location route may be unavailable. A location permission is separate from permission to read calendars or deliver notifications."
+          ]
+        },
+        {
+          "heading": "Match the forecast date and local time",
+          "body": [
+            "Check the forecast’s selected place, date and hours against the appointment. This matters particularly when travelling across time zones: the destination’s afternoon and your current afternoon may be different moments.",
+            "For a long activity, examine the available hours across its duration. If some hours are missing, treat them as unavailable information rather than filling the gap with the nearest icon. A saved calendar appointment can extend beyond the forecast."
+          ]
+        },
+        {
+          "heading": "Keep destination forecasts and weather alerts separate",
+          "body": [
+            "Viewing a saved destination does not mean weather notifications follow that destination. Cloud Calendars’ weather-alert checks use the device’s recorded GPS location, with the app preference and iOS notification permission applying separately.",
+            "Apple notes that severe weather alerts are available only in selected regions. Check relevant local official information for your destination; the absence of a notification is not confirmation that conditions are suitable for your activity."
+          ]
+        },
+        {
+          "heading": "If the place or forecast looks wrong",
+          "body": [
+            "First distinguish a wrong place from missing weather data. Re-select the intended city and compare its displayed name, date and available hours. If loading fails, check the connection and try later without changing your appointment or deleting an account.",
+            "For support, record the chosen city, approximate forecast date, app and iOS versions and whether you selected current or searched weather. Keep private event titles and precise personal locations out of a public report."
+          ]
+        }
+      ],
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "practical"
+      ],
+      "before": [
+        "Put a real location on events that happen somewhere else.",
+        "For travel days, check the destination rather than the origin.",
+        "If the location is vague, the forecast is vague too — a postcode beats a place name."
+      ],
+      "after": [
+        "Select the destination in the weather view.",
+        "Verify place, date and local forecast hours.",
+        "Review Location Services only when using current location.",
+        "Check weather notifications separately from the selected forecast."
+      ],
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "faq"
+      ],
+      "before": null,
+      "after": [
+        {
+          "q": "Does entering an event address automatically select its forecast?",
+          "a": "Do not assume so. Confirm the selected place in the weather view separately."
+        },
+        {
+          "q": "Must I use GPS to view another city?",
+          "a": "You can search for a place and inspect its weather. Current-location weather uses location access separately."
+        },
+        {
+          "q": "Will alerts follow my saved destination?",
+          "a": "The weather-alert checks use recorded device GPS location. Selecting a destination forecast does not establish destination alert coverage."
+        }
+      ],
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "sourcesHeading"
+      ],
+      "before": null,
+      "after": "Weather sources and location settings",
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-where-the-event-is",
+        "sources"
+      ],
+      "before": null,
+      "after": [
+        {
+          "label": "Apple: WeatherKit forecasts and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Apple: Privacy and Location Services",
+          "url": "https://support.apple.com/en-us/102515"
+        }
+      ],
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "lede"
+      ],
+      "before": "Most calendars that mention weather show one icon per day. That icon is an average, and an average of a wet morning and a dry afternoon is a drizzle that never happens.",
+      "after": "To compare weather with an appointment, match three things: the selected place, the forecast date and the hours your plan occupies. A nearby weather icon is not proof that all three match. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "sections"
+      ],
+      "before": [
+        {
+          "heading": "What a daily icon hides",
+          "body": [
+            "Take a day that rains hard until eleven and stays clear afterwards. The daily summary picks something in the middle and shows a cloud. You look at your two o'clock, see the cloud, and move a walk that never needed moving.",
+            "The error runs both ways. A day that is fine except for a violent hour at six shows as fine, and the one event that mattered is the one that gets caught."
+          ]
+        },
+        {
+          "heading": "Attaching the forecast to the hours",
+          "body": [
+            "An event occupies specific hours. The forecast for those hours is a different number from the forecast for its day, and it is the only one that answers the question you are actually asking.",
+            "Open an event and the conditions shown are the ones for its window. A three-hour block gets the three hours, not the twenty-four."
+          ]
+        }
+      ],
+      "after": [
+        {
+          "heading": "Start with place and date",
+          "body": [
+            "Open the forecast for the intended location and compare its date with the calendar entry. Calendar weather can reflect the selected weather place, so check that it is appropriate for the appointment rather than assuming the event address controls it.",
+            "An appointment next month can exist before weather data for that date is available. Keep the appointment and return to the forecast nearer its date; a missing weather entry is not a clear-weather prediction."
+          ]
+        },
+        {
+          "heading": "Use hourly detail for an hourly question",
+          "body": [
+            "A daily summary and an hourly forecast answer different questions. If the appointment lasts from two until five, inspect the available hours covering that interval rather than treating one daily icon as the full picture.",
+            "If only part of the interval is available, leave the rest unresolved. The app does not promise complete hourly weather for every event you can create, and this guide does not promise that opening any event always presents its entire weather window."
+          ]
+        },
+        {
+          "heading": "Separate chance, amount and timing",
+          "body": [
+            "Read the label on the value you are checking. A precipitation probability is not rainfall amount or duration. Likewise, an hourly value and a daily summary cover different periods; compare like periods when weighing two possible times.",
+            "Choose a fallback appropriate to your plan instead of treating a single percentage as a universal go-or-cancel rule. Weather information can change, so revisit it when a decision needs to be made."
+          ]
+        },
+        {
+          "heading": "Review before saving a weather-based appointment",
+          "body": [
+            "The app can start an event draft from a forecast hour. Review the draft’s date, start, end and destination calendar before saving. Forecast selection does not replace a check that you are creating the right commitment.",
+            "If calendar access or the destination calendar prevents saving, resolve that permission separately from weather access. Finding a forecast does not grant editing rights to a shared calendar."
+          ]
+        },
+        {
+          "heading": "Use the full forecast when the summary is not enough",
+          "body": [
+            "For an activity outdoors, inspect the variables relevant to that activity and the location you actually chose. A current-weather widget or homepage demo is not a substitute for checking the app’s available forecast hours.",
+            "If you notice a discrepancy, compare the place and timestamp first. Different providers, selected places and forecast periods can produce different displays without proving that the calendar event changed."
+          ]
+        }
+      ],
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "practical"
+      ],
+      "before": [
+        "Check the event, not the day, whenever the plan depends on the weather.",
+        "For anything longer than a couple of hours, look at how the conditions move across the block rather than at a single figure.",
+        "Move the event before you cancel it — an hour either way is often the whole difference."
+      ],
+      "after": [
+        "Confirm location and event date.",
+        "Check the available hours across the activity.",
+        "Read probability and amount as different values.",
+        "Review the event draft before saving."
+      ],
+      "reason": "Replace unsupported universal venue/hour/weather promises with practical selected-place/date checks.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "faq"
+      ],
+      "before": null,
+      "after": [
+        {
+          "q": "Does every event have a complete forecast?",
+          "a": "No. Coverage depends on the selected place and available dates and hours."
+        },
+        {
+          "q": "Is the weather icon specific to the event address?",
+          "a": "Do not infer that from proximity to the event. Confirm the weather location separately."
+        },
+        {
+          "q": "Does tapping an hour save a new appointment?",
+          "a": "It starts an event draft where available. Review its date, time and calendar before saving."
+        }
+      ],
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "sourcesHeading"
+      ],
+      "before": null,
+      "after": "Weather sources and location settings",
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "forecast-beside-every-event",
+        "sources"
+      ],
+      "before": null,
+      "after": [
+        {
+          "label": "Apple: WeatherKit forecasts and regional availability",
+          "url": "https://developer.apple.com/weatherkit/"
+        },
+        {
+          "label": "Apple: Privacy and Location Services",
+          "url": "https://support.apple.com/en-us/102515"
+        }
+      ],
+      "operation": "set",
+      "reason": "Add useful source-backed guidance; absent field before is null.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "weather-inside-your-calendar",
+        "sections",
+        2,
+        "body"
+      ],
+      "before": [
+        "Cloud Calendars uses Apple WeatherKit. The inspected native code requests daily data and limits its daily list to at most ten returned entries. A list can contain fewer entries; this is not a guarantee of complete data for every location or future event.",
+        "The website’s weather demonstration is separate from the native app. Its range is not evidence that the app provides fourteen days of forecasts."
+      ],
+      "after": [
+        "The app uses Apple WeatherKit and shows up to ten returned days in its daily list. Check the dates and hours currently available for the selected place; a calendar view can extend beyond them.",
+        "The website uses a separate Open-Meteo demonstration. Its forecast range does not describe the range available in the app."
+      ],
+      "reason": "User-facing horizon explanation; no code-review prose.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "a-fourteen-day-view-of-the-weather",
+        "sections",
+        1,
+        "body"
+      ],
+      "before": [
+        "Apple describes WeatherKit as providing ten-day hourly forecasts. In the inspected Cloud Calendars source, the daily list uses at most ten entries returned by WeatherKit. That supports removing the old fourteen-day promise; it does not establish that every request or location will return a complete ten days.",
+        "The homepage demonstration and the native app use separate weather implementations. A range offered by the demonstration is not a promise about the app."
+      ],
+      "after": [
+        "The app uses Apple WeatherKit and displays up to ten returned days in its daily list. Check the actual dates and hourly detail for your chosen place rather than assuming every request provides the full range.",
+        "The website demonstration uses Open-Meteo and requests a different forecast range. It is separate from the app, so use the app’s own available dates when planning."
+      ],
+      "reason": "Remove inspected-code narrative while preserving qualified cap.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "planning-outdoors-without-being-rained-on",
+        "practical"
+      ],
+      "before": [
+        "Place outdoor events from the week view, with conditions visible.",
+        "Two days out, check the event's own hours rather than its day.",
+        "Shift by an hour before abandoning the plan.",
+        "For anything more than a week away, pick the day and accept you will refine it later."
+      ],
+      "after": [
+        "Confirm the forecast location and the dates and hours available.",
+        "Compare candidate times using the weather factors relevant to your activity.",
+        "Keep an alternative plan and check again before the decision matters.",
+        "Consult relevant local official guidance when conditions could make the activity unsafe."
+      ],
+      "reason": "Remove universal two-day/hour-shift/rain-avoidance advice.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "path": [
+        "planning-outdoors-without-being-rained-on",
+        "sections"
+      ],
+      "before": [
+        {
+          "heading": "Checking more is not the answer",
+          "body": [
+            "Opening a weather app five times does not improve the forecast; it improves your anxiety. What changes outcomes is looking at the forecast at the moment you are choosing a time, which is a different moment entirely.",
+            "That moment happens in the calendar. If the weather is not there, you are making the decision without it and correcting later."
+          ]
+        },
+        {
+          "heading": "Choose the slot against the week",
+          "body": [
+            "Look at the week with the conditions behind it and the choice usually makes itself. Two candidate afternoons, one dry — there is nothing to deliberate about.",
+            "The habit worth building is small: before you place anything outdoors, look at the band, not at a separate app."
+          ]
+        },
+        {
+          "heading": "Then check the hours, not the day",
+          "body": [
+            "Once the event exists, its own forecast is the one that matters. A day can be wet and your two hours dry, and the daily summary will never tell you that.",
+            "Move before you cancel. An hour in either direction rescues more plans than any amount of re-checking."
+          ]
+        }
+      ],
+      "after": [
+        {
+          "heading": "Start with the place and the decision",
+          "body": [
+            "Choose the weather location that matches the activity, then check whether the relevant date and hours are available. Decide what you need to know: whether to choose a different time, keep a fallback or postpone the decision.",
+            "Rechecking does not change the weather, but updated information can matter. There is no single checking schedule suitable for every outdoor plan."
+          ]
+        },
+        {
+          "heading": "Compare available times without promising the outcome",
+          "body": [
+            "Compare the relevant hourly information for each candidate period. A daily icon is a summary, not a guarantee of conditions throughout the day.",
+            "Moving an activity by an hour may or may not help. Do not infer a dry interval that the forecast does not show, and do not apply a universal percentage threshold to every activity."
+          ]
+        },
+        {
+          "heading": "Make a fallback before changing invitations",
+          "body": [
+            "If the activity depends on suitable conditions, keep a realistic alternative and decide when you will review the latest information. Check local official guidance where relevant.",
+            "For a shared appointment, confirm the organizer and editing rights before moving it. A better-looking forecast does not itself authorize a change to everyone’s schedule."
+          ]
+        }
+      ],
+      "reason": "Remove unsupported automatic event-local weather and blanket move-before-cancel prescription.",
+      "sourceSha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2"
+    }
+  ]
+}

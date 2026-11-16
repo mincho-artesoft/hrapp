@@ -1,0 +1,85 @@
+<section class="ev" [attr.dir]="locale.dir">
+  <div class="ev__shell">
+    @switch (mode()) {
+      @case ('loading') {
+        <div class="ev__center"><span class="ev__spin" aria-hidden="true"></span></div>
+      }
+
+      @case ('view') {
+        @if (event(); as ev) {
+          <header class="ev__head">
+            <p class="eyebrow">{{ copy.eyebrow }}</p>
+            <h1 class="ev__title">{{ ev.title }}</h1>
+            <p class="ev__host">{{ copy.hostedBy }} <strong>{{ ev.displayName }}</strong></p>
+          </header>
+
+          <div class="card ev__card">
+            <div class="ev__row"><span class="ev__k">{{ copy.whenLabel }}</span><span class="ev__v">{{ whenText(ev) }}</span></div>
+            @if (ev.location) {
+              <div class="ev__row"><span class="ev__k">{{ copy.whereLabel }}</span><span class="ev__v">{{ ev.location }}</span></div>
+            }
+            @if (ev.description) { <p class="ev__desc">{{ ev.description }}</p> }
+            @if (ev.spotsLeft !== null && !ev.cancelled && !ev.closed) {
+              <p class="ev__spots">{{ ev.spotsLeft }} {{ copy.spotsLeft }}</p>
+            }
+          </div>
+
+          @if (ev.cancelled) {
+            <p class="ev__notice ev__notice--off">{{ copy.cancelledNotice }}</p>
+          } @else if (ev.closed) {
+            <p class="ev__notice">{{ copy.full }}</p>
+          } @else {
+            <div class="card ev__card">
+              <h2 class="ev__h2">{{ copy.registerHeading }}</h2>
+              <label class="ev__field">
+                <span>{{ copy.nameLabel }}</span>
+                <input type="text" [ngModel]="name()" (ngModelChange)="name.set($event)" [placeholder]="copy.namePlaceholder" name="nm" />
+              </label>
+              <label class="ev__field">
+                <span>{{ copy.emailLabel }}</span>
+                <input type="email" [ngModel]="email()" (ngModelChange)="email.set($event)" [placeholder]="copy.emailPlaceholder" name="em" inputmode="email" autocomplete="email" />
+              </label>
+              @if (errorMsg()) { <p class="ev__err">{{ errorMsg() }}</p> }
+              <button type="button" class="btn btn--primary btn--lg ev__submit" [disabled]="submitting()" (click)="register()">
+                @if (submitting()) { <span class="ev__spin ev__spin--sm"></span> {{ copy.registering }} }
+                @else { {{ copy.registerCta }} }
+              </button>
+            </div>
+          }
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        }
+      }
+
+      @case ('done') {
+        <div class="ev__done">
+          <div class="ev__check">✓</div>
+          <h1 class="ev__title">{{ copy.doneTitle }}</h1>
+          @if (result()?.already) { <p class="ev__lead">{{ copy.alreadyRegistered }}</p> }
+          <p class="ev__lead">{{ copy.doneSub }}</p>
+          @if (result(); as r) {
+            <div class="card ev__card ev__card--done">
+              <div class="ev__row"><span class="ev__k">{{ copy.whenLabel }}</span><span class="ev__v">{{ whenText(r.event) }}</span></div>
+              @if (r.event.location) { <div class="ev__row"><span class="ev__k">{{ copy.whereLabel }}</span><span class="ev__v">{{ r.event.location }}</span></div> }
+            </div>
+            <a class="btn btn--primary btn--lg ev__submit" [href]="webcal">{{ copy.addToCalendar }}</a>
+          }
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        </div>
+      }
+
+      @case ('notfound') {
+        <div class="ev__center ev__center--msg">
+          <p class="ev__lead">{{ copy.regNotFound }}</p>
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        </div>
+      }
+
+      @case ('error') {
+        <div class="ev__center ev__center--msg">
+          <p class="ev__lead">{{ copy.genericError }}</p>
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        </div>
+      }
+    }
+  </div>
+</section>

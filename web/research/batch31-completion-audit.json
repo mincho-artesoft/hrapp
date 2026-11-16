@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-22T02:38:47.407834+00:00",
+  "previousGoalTurn": "progress: batch30 Bulgarian timezone guide and one guarded ASC Malayalam clarification verified and pushed db1e7ff.",
+  "currentGoalTurn": "progress:23 complete English body reads reconciled,2 concrete diagnostic corrections published,pricing currency clarified across30homes with RTL fix; fresh birthday-source competitor/provider task identified for bounded native verification.",
+  "objectiveComplete": false,
+  "requirements": [
+    {
+      "requirement": "Website and ASC optimization together",
+      "status": "current_changes_verified_remaining_full_goal_open",
+      "evidence": [
+        "batch31-public-qa.json",
+        "aso/all-locales-readback-batch30.json"
+      ]
+    },
+    {
+      "requirement": "Competitor keyword discovery in Google/ChatGPT",
+      "status": "bounded_evidence_not_exhaustive_or_improved_ranking_proof",
+      "evidence": [
+        "batch29-competitor-intents/decision.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ]
+    },
+    {
+      "requirement": "Useful original truthful articles mapped to tasks",
+      "status": "55currentEnglishBodiesAccountedFor_remainingLocalizedReviewsOpen",
+      "evidence": [
+        "batch31-current-english-coverage.json",
+        "keyword-coverage-ledger.json"
+      ],
+      "limits": "English review provenance does not certify all398non-English bodies, released behaviour or market optimality."
+    },
+    {
+      "requirement": "Accurate localized ASC copy",
+      "status": "all50bounded_editorial_coverage_and250expectedfield_persistence",
+      "evidence": [
+        "batch30-aso-remaining/coverage-summary.json",
+        "aso/all-locales-readback-batch30.json"
+      ],
+      "limits": "Not native-speaker certification or measured optimal market allocation."
+    },
+    {
+      "requirement": "Technical site quality",
+      "status": "516canonicals519artifacts_verified",
+      "evidence": [
+        "batch31-static-qa.json",
+        "batch31-metadata-qa.json",
+        "batch31-browser-qa.json",
+        "batch31-public-qa.json"
+      ]
+    },
+    {
+      "requirement": "Actual new screenshot/video integration",
+      "status": "exact_generation_source_still_missing",
+      "evidence": [
+        "batch28-readiness/media-audit.json"
+      ],
+      "limits": "No new owner answer or fresh global search claimed; prior older gallery unchanged."
+    },
+    {
+      "requirement": "Truthful release/production data correspondence",
+      "status": "owner_archive_commit_and_currentproductionfacts_missing",
+      "evidence": [
+        "batch28-readiness/privacy-release-evidence.json"
+      ]
+    },
+    {
+      "requirement": "Improved discoverability",
+      "status": "baseline_available_elapsed_postchange_effect_unproven",
+      "evidence": [
+        "measurement/gsc-editorial-decisions-20261021.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ]
+    }
+  ],
+  "notPerformed": [
+    "New media generation/upload/deletion",
+    "Native/backend/customer/provider changes",
+    "ASC writes/review submission/release/build attachment/prices/privacy declarations"
+  ],
+  "statusRule": "Progress exists, so not at an impasse or repeated no-progress blocker; full objective remains active.",
+  "nextConcreteWork": {
+    "localizedSelectionAudit": "batch31-selection-localization-audit.json",
+    "exchangeAppends": 3,
+    "legacyCombinedCalendarModernizations": 3,
+    "birthdaySourceSection": "After existing all-day full current-body read, draft/review bounded source-identification section; no standalone route now."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-10-23T09:51:28.235Z",
+  "reportUpdatedAt": "2026-10-16",
+  "indexed": 547,
+  "notIndexed": 191,
+  "reasons": [
+    [
+      "Page with redirect",
+      "Website",
+      "Not Started",
+      "",
+      "95"
+    ],
+    [
+      "Excluded by ‘noindex’ tag",
+      "Website",
+      "Not Started",
+      "",
+      "85"
+    ],
+    [
+      "Not found (404)",
+      "Website",
+      "Not Started",
+      "",
+      "5"
+    ],
+    [
+      "Alternate page with proper canonical tag",
+      "Website",
+      "Not Started",
+      "",
+      "2"
+    ],
+    [
+      "Discovered - currently not indexed",
+      "Google systems",
+      "Not Started",
+      "",
+      "4"
+    ],
+    [
+      "Crawled - currently not indexed",
+      "Google systems",
+      "N/A",
+      "",
+      "0"
+    ]
+  ],
+  "notes": [
+    "Report predates Oct22 noindex changes and Oct23 publication; expect lag and falling translated indexed counts.",
+    "Read-only baseline; no validation resubmission for intentional noindex."
+  ]
+}

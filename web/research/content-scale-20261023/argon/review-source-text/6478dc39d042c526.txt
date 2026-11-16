@@ -1,0 +1,13 @@
+Time Zones The Time Zone Database (often called tz or zoneinfo ) contains code and data that represent the
+        history of local time for many representative locations worldwide. It is updated periodically to reflect
+        changes made by political bodies to time zone boundaries, UTC offsets, and daylight-saving rules. The database is primarily intended for software implementers. Its data is expressed as
+        machine-readable rules that, together with the reference implementation, allow software to
+        automatically calculate local time with the correct UTC offset for any given location. End
+        users typically receive updates to this data through their software and operating system
+        vendors. Latest version 2026e Released 2026-09-29 Manitoba moves to permanent -05 on 2026-10-31. Learn more Release History An index of all past releases of the Time Zone Database, with a summary of
+					what changed and downloads for each. Contributing How to propose changes to the database, subscribe to the mailing lists,
+					and who coordinates the project. Sources and Links An overview of the database with links to software, precompiled distributions,
+					and related civil time resources. Theory and Pragmatics The scope, principles and design decisions that guide how the database
+					models civil time around the world. How to Read the Database A guide to reading and interpreting the source files that make up the
+					Time Zone Database. Time and the Arts A lighter look at daylight saving time and time zones in film, music,
+					literature and popular culture.

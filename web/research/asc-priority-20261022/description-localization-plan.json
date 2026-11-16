@@ -1,0 +1,105 @@
+{
+  "app": "6744690319",
+  "version": "1.7.4",
+  "source": "description-en-draft.txt",
+  "review": "description-en-review.json",
+  "targetCharacters": [
+    3800,
+    4000
+  ],
+  "hardMaximum": 4000,
+  "groups": {
+    "a": [
+      "ar-SA",
+      "bn-BD",
+      "ca",
+      "cs",
+      "da",
+      "de-DE",
+      "el",
+      "en-AU",
+      "en-CA",
+      "en-GB",
+      "en-US",
+      "es-ES",
+      "es-MX",
+      "fi",
+      "fr-CA",
+      "fr-FR",
+      "gu-IN"
+    ],
+    "b": [
+      "he",
+      "hi",
+      "hr",
+      "hu",
+      "id",
+      "it",
+      "ja",
+      "kn-IN",
+      "ko",
+      "ml-IN",
+      "mr-IN",
+      "ms",
+      "nl-NL",
+      "no",
+      "or-IN",
+      "pa-IN",
+      "pl"
+    ],
+    "c": [
+      "pt-BR",
+      "pt-PT",
+      "ro",
+      "ru",
+      "sk",
+      "sl-SI",
+      "sv",
+      "ta-IN",
+      "te-IN",
+      "th",
+      "tr",
+      "uk",
+      "ur-PK",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ]
+  },
+  "instructions": "Retain core meaning, tier/account/AppClip/widget/weather bounds, both exact policy/Apple terms URLs and subscription renewal terms. Condense longer translations to limit. For compact scripts add substantive reader-useful excerpts of actual supported strongest article topics; do not pad synonyms or claim unsupported app controls. All values natural localized prose. No ordinal ranks, popularity or guaranteed indexing claims.",
+  "allowedExpansionBank": [
+    {
+      "topic": "Calendar ownership and permissions",
+      "text": "A combined view does not grant editing access or reveal private calendars to coworkers. Use the intended account and writable calendar for a family or work appointment. A read-only invitation or feed remains subject to its access rules."
+    },
+    {
+      "topic": "One-event versus whole-calendar sharing",
+      "text": "For a single meeting send an event invitation; give calendar access only when the broader schedule should be shared. A preview, access acceptance and attendance confirmation are different outcomes. Confirm the final time and joining link with the people involved."
+    },
+    {
+      "topic": "Week view and overnight commitments",
+      "text": "Compare actual start and end dates, not only the size of a block. A shift from Monday evening to Tuesday morning needs Tuesday as its end date. Include real travel and preparation time in the plan; the app is not an automatic travel-buffer or staff-rota service."
+    },
+    {
+      "topic": "Weather planning by place and hour",
+      "text": "Choose the forecast place and available hours for your plan. A forecast is not a guarantee of dry weather or safe conditions. Review wind and temperature on the map and keep a backup for an outdoor appointment. Choosing a forecast hour opens a draft to check before saving."
+    },
+    {
+      "topic": "Upcoming widgets and Live Activity",
+      "text": "Choose an upcoming-event list or date-and-weather layout for the glance you need. Open the full calendar for all-day commitments and details. A widget or Live Activity is not proof a reminder was delivered or that every calendar change reached another device."
+    },
+    {
+      "topic": "Changes and repeating events",
+      "text": "Read the available edit scope before changing a repeating appointment. Reopen the changed date and a later occurrence to check the result. For a connected provider, compare its original event when an important update appears inconsistent."
+    },
+    {
+      "topic": "Shared availability versus personal overview",
+      "text": "A work-and-personal overview helps identify your own conflicts. It does not automatically create anonymized busy blocks in another account. Agree the sharing or availability arrangement explicitly and verify it from the intended recipient’s side."
+    },
+    {
+      "topic": "Finding a missing appointment",
+      "text": "Check the selected calendar, owning account, exact date and event details before creating another copy. Two similar entries can be different commitments or different displays of one schedule. Compare the source before deleting or moving anything."
+    }
+  ],
+  "forbidden": "No Cloud week numbers/alternate overlays, universal live sync, automatic attendee RSVP, task automation, guaranteed notification, Family Sharing purchase entitlement, new privacy/retention promises, user-uploaded raw media claims or forecast-day counts."
+}

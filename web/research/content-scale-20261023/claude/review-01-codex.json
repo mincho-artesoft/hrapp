@@ -1,0 +1,1048 @@
+{
+  "reviewedAt": "2026-10-23T09:46:26.018920+00:00",
+  "reviewer": "Codex independent primary-source and overlap review",
+  "batchSha256": "5a0418c910b2af4f32e3ae5c256796250945db52ceb81549a67b945c797516fc",
+  "resultCounts": {
+    "approve": 3,
+    "revise": 9,
+    "hold": 0
+  },
+  "scope": "12 Claude drafts and editorialrecords;27 cited official pages retrieved directly or matched exact prior primary-body cache. No paid APIs or runtime app tests. Existing81English full-text corpus compared;closest task counterparts read to evaluate distinct intent.",
+  "primarySourceIndex": "claude/review-source-index.json",
+  "sourceFetchSummary": {
+    "urls": 27,
+    "retrieved": 27,
+    "allBodiesAvailable": true
+  },
+  "unresolvedSourceContradictions": [
+    {
+      "topic": "GoogleappointmentMaybe/tentative",
+      "sources": [
+        "https://support.google.com/calendar/answer/16287054?hl=en",
+        "https://support.google.com/calendar/answer/11423292?hl=en"
+      ],
+      "finding": "One page includesYes/Maybe blocking;other saysunaccepted/tentative doesnotblock. No invented resolution. Retainciteduncertainty,useexplicitBusyholdoradjustedavailability andvisitor-sideverification."
+    },
+    {
+      "topic": "Microsoftgroupsinvitationdefaults",
+      "source": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+      "finding": "Version-specificdifference,notunresolvedcontradiction:Classicprepopulatesgroup alias,whileNew/webdefaultdoesnotinviteallmembers."
+    }
+  ],
+  "globalIntegrationRequirements": [
+    "Keep every record in draft until required corrections are verified; these recommendations do not publish or approve release.",
+    "Import directly retrieved primary-source metadata into the catalog if accepted, with truthful verifiedAt dates and source-specific notes. Claude WebFetch summaries are not raw-body proof.",
+    "Preserve all version, tenant and permission conditions; do not remove them to simplify tables.",
+    "Link new sibling drafts only after their target routes exist; existing related links must continue to resolve.",
+    "Use English only for the first 100 new articles. Preserve the translated indexing hold."
+  ],
+  "overlapMethod": {
+    "existingEnglishCorpus": 81,
+    "allFullTextsLexicallyCompared": true,
+    "metric": "TF-IDF cosine is a review aid, not a quality threshold.",
+    "manualTaskReview": "Existing Google permission, Google calendar handoff, booking-versus-sharing, RSVP, Exchange connection and Cloud Calendars role guides; draft scope compared against provider-versus-app responsibilities."
+  },
+  "articles": {
+    "google-calendar-working-hours-location-out-of-office-focus-time": {
+      "verdict": "approve",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Working hours weekly-only, split periods with start before end, local-time adjustment and temporary edit/revert instructions match7638168.",
+        "Working-location eligibility, working-hours prerequisite, weekday default, day/part-day controls and free/busy visibility match18616218.",
+        "Focus time requires timed Day/Week entry and eligible work/school account; default new-and-existing declines and Chat first-use/default/under24h requirements match11190973.",
+        "Focus-time source genuinely uses both Only decline new meetings in a tip and Only new meeting invitations under change-settings; the latter is not an invented label."
+      ],
+      "requiredCorrections": [],
+      "closestExistingArticles": [
+        {
+          "slug": "a-week-view-that-fits-a-week",
+          "cosine": 0.1856
+        },
+        {
+          "slug": "shift-work-calendar-iphone-rotating-schedules",
+          "cosine": 0.1678
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1657
+        }
+      ],
+      "canonicalDecision": "Keep as comparison of four Google Workspace availability signals; current weekly/shift/RSVP guides do not provide this decision table. Link existing Google and scheduling guides rather than implying these are Cloud Calendars controls.",
+      "workedExampleReview": "Illustrative Mon\u2013Thu08:00\u201312:00/13:00\u201316:30 is7.5hours/day. Wednesday09:00\u201311:00 overlaps10:00 accepted call; choosing new-only decline protects existing acceptance as documented. Friday all-day OOO is a separate signal. No firsthand result claimed.",
+      "optionalImprovements": [
+        "Add the organization-enables-Chat condition next to the under24h limit, if keeping Chat detail.",
+        "Prefer the source\u2019s feature labels without treating edition lists as timeless; source-check date is2026-10-23."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+          "resolvedUrl": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/9daf65a7790362b5.txt",
+          "textCharacters": 3193,
+          "bodySha256": "bc0f0157151de09d5b7d730af8b5d40700d3a65da5754228f50b5c37bf36eaa7",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+          "resolvedUrl": "https://support.google.com/calendar/answer/18616218?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/3b88aae199903a80.txt",
+          "textCharacters": 4391,
+          "bodySha256": "1213c6f204c8bd3a179be4f24f1af8ea6e604e0b2ea93148d62e8ee25c343771",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/11190973?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/11190973?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/65bfd115bba5248a.txt",
+          "textCharacters": 2859,
+          "bodySha256": "9fc59ec756e0c2d015ece2d64e3e4f7a4a476ef06e38f884e5f233e8de7db9fd",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "0cecc1474fa6664ec73817651b1683eb50e6aad8abb58fd894e38c35f66ad048"
+    },
+    "google-calendar-event-visibility-private-public-default": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Default follows calendar sharing; Public exposes event details to calendar viewers; Private excludes named higher-level editors from its restrictions.",
+        "Google explicitly documents Busy-versus-Free behavior for Make changes (see private events as free/busy), and permits timed task visibility changes.",
+        "Current permission label is See event details, rather than See all event details."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Private narrows access; four-viewer example; Private markedFree table column;FAQ",
+          "issue": "Draft generalizes private+Free disappearing to every lower viewer.34580 explicitly states that behavior for restricted-editor permission, not every row in the draft.",
+          "exactCorrection": "Limit the hide-when-Free statement to Make changes (see private events as free/busy). Remove the universal Private+Free column or mark other audience results as requiring recipient verification. Keep the worked example Private+Busy, then discuss only the documented restricted-editor Free case.",
+          "sourceUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "sourceSection": "Understand event visibility; Compare visibility settings"
+        },
+        {
+          "location": "Two settings;tablepermissionlabels",
+          "issue": "Draft uses an older/mismatched viewer label.",
+          "exactCorrection": "Use See event details consistently, matching15716974; distinguish from Make changes and see event details.",
+          "sourceUrl": "https://support.google.com/calendar/answer/15716974?hl=en",
+          "sourceSection": "Learn about Google Calendar access permissions"
+        },
+        {
+          "location": "Change and verify one event",
+          "issue": "Draft omits an important explicit source restriction: visibility cannot differ between instances of a recurring series.",
+          "exactCorrection": "Add: Google documents one visibility setting for an entire recurring series; changing one instance or a subset applies to the whole series. Use a non-recurring harmless sample for the test.",
+          "sourceUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "sourceSection": "Understand event visibility"
+        },
+        {
+          "location": "Private/guests wording",
+          "issue": "The assertion that guests still receive all details is broader than the specific cited warning.",
+          "exactCorrection": "Say that Private does not erase invitation information already distributed, and Google warns some details can remain visible with guests or rooms, including start,end and creator. Do not imply Private guarantees concealment from invited participants.",
+          "sourceUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "sourceSection": "Understand event visibility"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "can-others-see-google-calendar-tasks",
+          "cosine": 0.2108
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "cosine": 0.2032
+        },
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1678
+        }
+      ],
+      "canonicalDecision": "Keep narrower event-level privacy matrix after correction. Existing who-can-see-what-in-google-calendar concerns calendar-level grants and broad access; link it as prerequisite. Existing can-others-see-google-calendar-tasks concerns task visibility; do not expand this draft into a second task guide.",
+      "workedExampleReview": "The Private+Busy four-viewer example is consistent. Its subsequent Private+Free claim is not sufficiently supported for all three low viewers and must be narrowed.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/34580?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/ef1ea8ead7694bd5.txt",
+          "textCharacters": 5062,
+          "bodySha256": "bb2a595d126f0fa518e77bc3416f63b98deeeaac7d6f1e3fe946fb7952bb0b5e",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/15716974?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/ceabaa33591fcd81.txt",
+          "textCharacters": 3842,
+          "bodySha256": "617fb3ab504680c6b29d5951adf6a19e22af8b2c08b427bc20a99c6c44d6e3af",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "ee47927a835e353ce219b7a236d7024326dce81dc6b0902846042844d81f34be"
+    },
+    "google-appointment-schedule-which-calendars-block-booking-slots": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "16287054 supports selected owned/managed/subscribed calendars, secondary-plan eligibility and Busy/all-day conflict checks.",
+        "11423292 supports4-hour default minimum notice, adjusted availability, buffer and maximum daily bookings.",
+        "The Maybe/tentative conflict is real:16287054 says Yes/Maybe can block, while11423292 says unaccepted/tentative events do not block. The draft correctly does not pretend to resolve it."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "What Google says blocks a slot;practical checklist;diagnosis table",
+          "issue": "Draft misses the master Check calendars for availability switch; selecting calendars alone is insufficient when that check is disabled.",
+          "exactCorrection": "Start by confirming Check calendars for availability is on, then inspect the selected calendars. Explain that when it is off, non-appointment Busy events do not protect slots, while an already booked appointment time still cannot be booked twice.",
+          "sourceUrl": "https://support.google.com/calendar/answer/16287054?hl=en",
+          "sourceSection": "Learn how Calendar checks for conflicts;Review secondary calendars for conflicts"
+        },
+        {
+          "location": "Cannot choose other calendars table row",
+          "issue": "Source says other-calendar selection may not be possible on a shared calendar; draft escalates immediately to recreation.",
+          "exactCorrection": "Replace Recreate the schedule with Check which calendar owns the schedule and plan eligibility; if considering a replacement on an owned calendar, verify required conflict checks before retiring an existing booking page or disturbing bookings.",
+          "sourceUrl": "https://support.google.com/calendar/answer/16287054?hl=en",
+          "sourceSection": "Tips after Review secondary calendars for conflicts"
+        },
+        {
+          "location": "Worked example and troubleshooting wording",
+          "issue": "Open/blocked outcomes depend on other booking limits, selected calendars and actual settings; example should not read as a measured result.",
+          "exactCorrection": "Explicitly state assumed settings: availability checking enabled, no other holds/buffers/daily limits, weekly15:00\u201318:00 and30-minute sessions. Preserve the Maybe uncertainty and verify visitor-side output. Replace cause is usually with a possible cause is.",
+          "sourceUrl": "https://support.google.com/calendar/answer/11423292?hl=en",
+          "sourceSection": "Scheduling window;Manage booked appointment settings"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.2145
+        },
+        {
+          "slug": "drag-an-event-to-move-it",
+          "cosine": 0.1593
+        },
+        {
+          "slug": "weekly-schedule-builder",
+          "cosine": 0.1512
+        }
+      ],
+      "canonicalDecision": "Keep as booking-page conflict diagnosis; existing booking-link-or-shared-calendar chooses booking versus sharing and does not diagnose selected-calendar availability. Avoid a second general appointment-schedule setup article.",
+      "workedExampleReview": "Arithmetic passes:15:00\u201318:00 supports six30-minute starts. At13:00 with4-hour minimum notice, starts before17:00 are too soon. FamilyBusy16:00\u201316:30 protects only a reviewed calendar and enabled conflict check. Maybe remains unresolved by documentation.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/16287054?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/16287054?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/f3092c0a73f53780.txt",
+          "textCharacters": 2739,
+          "bodySha256": "3a358ac3a4253f6aea6fe50794b7b312590475bbe9d2526834fe0f08305f502f",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/11423292?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/11423292?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/9848056df850788b.txt",
+          "textCharacters": 2792,
+          "bodySha256": "63d9a493b0cce9d72e90c26a5617c4b23b1504a54ace1f5c19cb75b94dfb5a84",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/10729749?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/10729749?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/b5b3b6f2c871f3d3.txt",
+          "textCharacters": 5215,
+          "bodySha256": "4ad3e0ccae4db9ba551355084e270626bc118be96d28c106b790ce1f3461c0e9",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "ed4665c487b328dbcc6243ccf50b6cc8cf3d60351656478fc571f553eeff26ae"
+    },
+    "google-calendar-change-event-owner-before-handover": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "78739 supports event Change owner,60-day acceptance, existing ownership until acceptance and more-than200guest transfer limit.",
+        "10003792 supports Meet features following primary-calendar event organizer and non-primary transfer retaining organizer/link risk when original organizer leaves.",
+        "The same-organization restriction appears specifically in Transfer a calendar you own, not the event-transfer procedure."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "What a transfer does;practical;FAQ external client transfer",
+          "issue": "Draft incorrectly carries calendar-ownership same-organization restriction into all event transfers.",
+          "exactCorrection": "Remove the blanket claim and FAQ saying work/school event transfers outside the organization are impossible. State that the cited guide\u2019s same-organization requirement is for whole-calendar ownership; check actual event Change owner eligibility and organization policy separately. Do not invent an across-domain event-transfer guarantee either.",
+          "sourceUrl": "https://support.google.com/calendar/answer/78739?hl=en",
+          "sourceSection": "Transfer a calendar you own versus Transfer an event to a calendar you do not own"
+        },
+        {
+          "location": "Worked handover all-hands;table Risk if you leave;transfer timing",
+          "issue": "One-week lead time and low-risk label are editorial planning suggestions, not source-backed thresholds or guarantees. Cancelling a whole recurring meeting can lose useful history.",
+          "exactCorrection": "Label one week as an example, remove the Low risk assurance, and say confirm actual acceptance/host functionality before closing an account. For more-than200guest replacement, coordinate a supported replacement and cancellation scope; do not instruct blanket deletion/cancellation of historical series.",
+          "sourceUrl": "https://support.google.com/calendar/answer/78739?hl=en",
+          "sourceSection": "Before you transfer calendars or events"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "google-calendar-ownership-transfer-pending-acceptance",
+          "cosine": 0.3522
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.185
+        },
+        {
+          "slug": "meeting-links-that-make-themselves",
+          "cosine": 0.1616
+        }
+      ],
+      "canonicalDecision": "Keep event-ownership task separate from current google-calendar-ownership-transfer-pending-acceptance, which is whole secondary-calendar ownership. Explicitly cross-link and avoid copying its full60-day handoff explanation. Distinction depends on removing incorrectly shared eligibility rule.",
+      "workedExampleReview": "240 is greater than200, so transfer-limit case is arithmetically correct. Recording check follows new organizer policy. Recipient acceptance rather than request date remains the real milestone; one week is not a guarantee.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/78739?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/78739?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/45412683e0412937.txt",
+          "textCharacters": 2619,
+          "bodySha256": "d4d9ac98590f671ee99eca293d567d40b0a3f19caf69b02ca8f8252759d50c1f",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/meet/answer/10003792?hl=en",
+          "resolvedUrl": "https://support.google.com/meet/answer/10003792?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/4cf81cdab329fba1.txt",
+          "textCharacters": 3117,
+          "bodySha256": "ce05a5e673221991f92721a7e9a23402fedddc77f5f5ea289e0e35da1dc2aad2",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "ddacd45db05121f9fb8e8d9f9c75bf950810b76d42508083c9a732da38089182"
+    },
+    "google-calendar-find-a-time-blank-is-not-free": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "6294878 supports sharing prerequisites,50guest schedule limit,No/Required/All filters and room visibility.",
+        "It separately documents persistent side-by-side Day view for subscribed calendars in the main calendar grid.",
+        "A gap is not evidence that unseen/unshared calendars contain no commitments."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "How Find a time works",
+          "issue": "Draft conflates main-grid side-by-side Day setting with Find a time screen.",
+          "exactCorrection": "Separate the workflows: Find a time handles guest/filter/room comparison; side-by-side Day view is Settings > View options > View calendars side by side in Day View for subscribed calendars in the main grid. Do not describe that setting as a Find a time control.",
+          "sourceUrl": "https://support.google.com/calendar/answer/6294878?hl=en",
+          "sourceSection": "Find a time when someone is available versus Compare calendars in Day view"
+        },
+        {
+          "location": "Private andFree section;FAQ",
+          "issue": "Draft repeats the broad Private+Free disappearance extrapolation rather than the narrower explicit role-specific source statement.",
+          "exactCorrection": "Describe unshared or hidden details generically and reserve the documented Private+Free hidden-grid claim for the restricted-editor role, linking the corrected visibility guide. Do not infer a private event exists from a blank column.",
+          "sourceUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "sourceSection": "Understand event visibility"
+        },
+        {
+          "location": "Worked example heading and count;FAQ probabilities;external row",
+          "issue": "Worked heading says five people but includes organizer,four colleagues and external consultant:six total. Most likely missing sharing and Usually external no sharing are unsupported prevalence claims.",
+          "exactCorrection": "Call the example six people or five guests plus organizer. Use possible explanations instead of most likely/usually. External identity alone does not prove absence of shared calendars.",
+          "sourceUrl": "https://support.google.com/calendar/answer/6294878?hl=en",
+          "sourceSection": "Learn what you need to find someone\u2019s calendar"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1776
+        },
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.1745
+        },
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1661
+        }
+      ],
+      "canonicalDecision": "Keep as pre-invitation availability diagnostic. Current RSVP guide concerns responses after invitations; booking guide concerns client self-service. Link both, and keep availability unknown distinct from confirmed attendance.",
+      "workedExampleReview": "Worked candidate-time logic is useful but headcount needs correction. A Yes is attendance response, not a guarantee of future attendance or feasibility; phrase confirmation as an expressed acceptance.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/6294878?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/6294878?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/406a142f090cf0ee.txt",
+          "textCharacters": 2539,
+          "bodySha256": "457a1b6ba5a01a3f6f5d8ed46e326bf8f332682e921c91bb165c87907eeb635c",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15716974?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/15716974?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/ceabaa33591fcd81.txt",
+          "textCharacters": 3842,
+          "bodySha256": "617fb3ab504680c6b29d5951adf6a19e22af8b2c08b427bc20a99c6c44d6e3af",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/34580?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/ef1ea8ead7694bd5.txt",
+          "textCharacters": 5062,
+          "bodySha256": "bb2a595d126f0fa518e77bc3416f63b98deeeaac7d6f1e3fe946fb7952bb0b5e",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+          "resolvedUrl": "https://support.google.com/calendar/answer/18616218?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/3b88aae199903a80.txt",
+          "textCharacters": 4391,
+          "bodySha256": "1213c6f204c8bd3a179be4f24f1af8ea6e604e0b2ea93148d62e8ee25c343771",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "abd313124808f2f80bd42d19c2e5dbf248641d3da094785cd9296f3f4383a31a"
+    },
+    "outlook-calendar-delegate-or-editor-permission": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Exact source supports current-work/school edit-versus-delegate distinction and3 routing options.",
+        "Private-view and category options are documented; new Outlook/web labels differ from classic private-item wording.",
+        "Classic Reviewer/Author/Editor definitions and best-practice recommendation for one Editor delegate/four delegates used in testing are supported."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Title/intro;external-person table;FAQ",
+          "issue": "Generic Outlook wording overgeneralizes work/school organization rules to Outlook.com, which has a separate view/edit flow.",
+          "exactCorrection": "State at the start that main procedure is Microsoft365/Exchange work-or-school calendars in new Outlook or Outlook on the web. Scope no external editor/delegate assertions to that environment; personal Outlook.com is a separate sharing model.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "sourceSection": "New Outlook/Outlook on the web versus Outlook.com tabs"
+        },
+        {
+          "location": "Delegate options that change your inbox",
+          "issue": "Two copy/both routes are summarized without their key actionable distinction.",
+          "exactCorrection": "Use exact labels Delegate only,Delegate and send me a copy,Both my delegate and me. Explain that the copy route sends owner a normal email without Accept/Decline controls there; owner can still respond from the calendar. In Both route either can respond in the invitation.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "sourceSection": "Send invitations and responses to"
+        },
+        {
+          "location": "Private FAQ and Classic delegate levels",
+          "issue": "Only-if-checkbox private assertion ignores explicit classic Outlook warning not to rely on Private as a security boundary where folder read permissions exist.",
+          "exactCorrection": "Keep the documented new Outlook/web private-visibility checkbox behavior but add classic-folder caveat from the source. Do not promise that merely leaving a checkbox unticked prevents every permitted route to private details.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "sourceSection": "Classic Outlook:Change delegate access to private items"
+        },
+        {
+          "location": "Worked example final check",
+          "issue": "Director sends a test invitation from a colleague is internally inconsistent.",
+          "exactCorrection": "Ask a consenting colleague to send a harmless invitation to the director; verify routing on both owner/delegate accounts according to the chosen copy setting.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "sourceSection": "Delegate routing options"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "cosine": 0.1771
+        },
+        {
+          "slug": "exchange-calendars-on-an-iphone",
+          "cosine": 0.1614
+        },
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "cosine": 0.1522
+        }
+      ],
+      "canonicalDecision": "Keep as owner-side permission/routing choice; existing exchange-calendars-on-an-iphone covers account connection, not delegation. Differentiate from next draft\u2019s delegate-side scheduling procedure.",
+      "workedExampleReview": "Role example is useful. Copy routing must not be mistaken for identical actionable requests. Classic permission advice needs its version boundary and privacy caveat.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/49d8f858f75521a8.txt",
+          "textCharacters": 15985,
+          "bodySha256": "d3182a694410db6b812113ab3244d74ee020a6b11c2bf000112d182bb7b8fe6a",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+          "resolvedUrl": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/17dff03bf12ea318.txt",
+          "textCharacters": 2991,
+          "bodySha256": "aea9abc04cffcf20ed678a50265b6d85bdb52b827776091ddfd642b3ee13e3fe",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+          "textCharacters": 12194,
+          "bodySha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "2019d46e5ad14378522b090d6b81172448723a9bc831e40a32dbf2317c57e10e"
+    },
+    "outlook-schedule-meeting-on-behalf-of-someone": {
+      "verdict": "approve",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Microsoft supports accepting the calendar invitation,editor/delegate permission,Save to calendar selection before sending and on-behalf identity.",
+        "Once invitation sent,the scheduled calendar cannot be changed. Send As requires administrator permission.",
+        "Proper processing of requests/cancellations instead of merely deleting messages is supported by best-practice source."
+      ],
+      "requiredCorrections": [],
+      "closestExistingArticles": [
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1669
+        },
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.148
+        },
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "cosine": 0.1476
+        }
+      ],
+      "canonicalDecision": "Keep delegate-side execution task distinct from owner-side delegation setup. Current RSVP and combined-calendar articles do not explain Save to calendar or on-behalf sender identity. Link the corrected owner-permission guide rather than repeat its options.",
+      "workedExampleReview": "One45-minute,three-board-member example is internally consistent; choosing director calendar before sending establishes intended organizer route. Cancel/recreate advice is reasonable for the fictional one-off wrong-calendar meeting,not a blanket historical recurring-series repair.",
+      "optionalImprovements": [
+        "Explicitly label the worked example work/school Outlook on the web and agreed delegate routing.",
+        "Warn that recurring-series recovery needs supported cancellation scope and preservation of past events rather than a blanket series cancellation.",
+        "Do not make starting a real meeting an unattended automated test; use harmless agreed items."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/a1da1fe5d8ab2864.txt",
+          "textCharacters": 9013,
+          "bodySha256": "3da22dff3ddf03f337c89f8ecfeb188a7b72efec8828a7bce0fa341ee6d2e9e7",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+          "resolvedUrl": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/17dff03bf12ea318.txt",
+          "textCharacters": 2991,
+          "bodySha256": "aea9abc04cffcf20ed678a50265b6d85bdb52b827776091ddfd642b3ee13e3fe",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+          "textCharacters": 12194,
+          "bodySha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "091b5997b27fcaf1299f0c7acd47df70504b4c9454d2ef310802574954f5856c"
+    },
+    "outlook-calendar-sharing-levels-busy-titles-details": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "View levels and private-item caveat match sharing documentation.",
+        "My Organization default can preserve lower access after removing an individual; exact source supports this.",
+        "Automatic upgrade history of previous year plus future events is documented,with recurring-instance qualification."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Change remove andconfirm;practical Avoid custompermissions",
+          "issue": "Draft says custom/intermediate levels unsupported,new-model source says admins can still configure them and the service enforces them.",
+          "exactCorrection": "Replace with: standard Outlook clients show simplified levels; intermediate levels can still be configured by an administrator and appear as Custom. Clients may allow an attempted action that the service rejects. Ask administrator what the effective permission permits rather than call all custom levels unsupported.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "sourceSection": "Simplified permissions options"
+        },
+        {
+          "location": "How recipients receive your calendar",
+          "issue": "New-model sharing is not universally instant; EWS exclusion concerns instant syncing,not all calendar sharing.",
+          "exactCorrection": "Scope instant changes to supported same-tenant Microsoft 365 configurations (and other explicitly supported cases). Cross-tenant M365 can sync periodically. Say EWS does not support instant syncing,not that EWS cannot access calendars.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "sourceSection": "Instant syncing;Sharing outside a tenant;Applications that support instant syncing"
+        },
+        {
+          "location": "Worked full-details viewer;notes/attachments column",
+          "issue": "Seeing all event details is not proof of permission to open independently stored document content.",
+          "exactCorrection": "Say full event details including fields exposed by Calendar; verify external attachment/document access separately. Do not imply a calendar grant overrides file-service permissions.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "sourceSection": "Share your calendar;defined viewer levels"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "exchange-calendars-on-an-iphone",
+          "cosine": 0.1826
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "cosine": 0.1588
+        },
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1532
+        }
+      ],
+      "canonicalDecision": "Keep as Microsoft 365 event-detail permission matrix. Existing exchange connection and Google permission articles concern different provider/tasks. Do not absorb delegate setup or external transport details; link those dedicated guides after corrections.",
+      "workedExampleReview": "14:00\u201315:00 is a1hour busy interval; three viewer-level comparison works for non-private event. My Organization fallback example is supported. Avoid Private as universal confidentiality guarantee and distinguish linked-file access.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/373a1b9454803c7b.txt",
+          "textCharacters": 13145,
+          "bodySha256": "7878768220d378d61524b8ff2d4fe6f002a65350a71c48344cb92b84df56cd90",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/b06910b55d4c420f.txt",
+          "textCharacters": 24278,
+          "bodySha256": "64265507669c28b7b5e35f2c4eb70a9cfc7e05865abee04f676015c14a266ee4",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+          "textCharacters": 12194,
+          "bodySha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "e66d9defaf370f26e458183e2baeb6e067231cb02f1aecbce7cd4d8806524229"
+    },
+    "outlook-share-calendar-outside-organization": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Admin sharing switches,anonymous detail caps and on-premises federation requirement are supported.",
+        "Current work/school editor/delegate restrictions are supported.",
+        "External delivery/refresh depends on recipient and tenant settings rather than being uniformly instant."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Layer three;refresh table;FAQ",
+          "issue": "Not every outside-organization share is an ICS URL. Source distinguishes cross-tenant M365 sharing with external sharing enabled from Outlook.com/third-party ICS.",
+          "exactCorrection": "Split cases: M365 to another M365 tenant with external sharing enabled creates a full shared calendar with periodic sync (document says approximately3hours). M365 to Outlook.com,or to third-party services such as Gmail,uses an ICS route; when external sharing is disabled,other-tenant M365 also falls into that route. Recipient service chooses ICS refresh timing.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "sourceSection": "Sharing outside a tenant;Share with users outside Microsoft 365 andOutlook.com"
+        },
+        {
+          "location": "Stale-times table and all refresh wording",
+          "issue": "Approximately3hours and Gmail24\u201348hours are examples,not universal maximum/delivery guarantee.",
+          "exactCorrection": "Present service-specific examples and explicitly say no guaranteed maximum or urgent-change delivery deadline follows from them. Keep direct confirmation for urgent changes.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "sourceSection": "Shared calendars that support instant syncing;external service examples"
+        },
+        {
+          "location": "Missing external option/IT table;FAQ",
+          "issue": "Missing option is not proved to mean administrator disabled sharing. Other account/recipient conditions can matter.",
+          "exactCorrection": "Say ask the administrator to inspect account eligibility,sharing policy and intended recipient path; do not diagnose a disabled switch from absence alone.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "sourceSection": "Organization settings note"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "exchange-calendars-on-an-iphone",
+          "cosine": 0.1777
+        },
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.1455
+        },
+        {
+          "slug": "inviting-people-who-do-not-have-the-app",
+          "cosine": 0.1439
+        }
+      ],
+      "canonicalDecision": "Keep external-sharing policy/transport task; existing exchange-calendar guide focuses connecting accounts on iPhone. Link levels guide for detail selection. The three-layer model is useful after correcting transport branches.",
+      "workedExampleReview": "Freelancer example is consistent with an external view-only recipient. Stale-data explanation must name actual recipient service/route rather than assume ICS from external identity alone.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users",
+          "resolvedUrl": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users?view=o365-worldwide",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/b7900befa737e321.txt",
+          "textCharacters": 3279,
+          "bodySha256": "7115cd737e5612da8615d5e1dbdba00fcbb7bd3c5960380ce76faac3e526088f",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/373a1b9454803c7b.txt",
+          "textCharacters": 13145,
+          "bodySha256": "7878768220d378d61524b8ff2d4fe6f002a65350a71c48344cb92b84df56cd90",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/b06910b55d4c420f.txt",
+          "textCharacters": 24278,
+          "bodySha256": "64265507669c28b7b5e35f2c4eb70a9cfc7e05865abee04f676015c14a266ee4",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "232a80cdb28cfc54fa9dffabccaedf54de15d260daed89a1d38ce17124a98df1"
+    },
+    "outlook-show-as-free-busy-tentative-working-elsewhere": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Five statuses and classic defaultBusy behavior supported;Show As right-click supported for classic/new Outlook.",
+        "Automatic-reply options for blocking,new-decline,decline/cancel appear exactly in source.",
+        "Fixed blue/light-grey Scheduling Assistant examples appear in older/general support guidance;new availability source explicitly varies colors with calendar selection."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Change status;table Tentative;worked color check",
+          "issue": "Draft treats fixed dark/light-blue colors as universal across classic and new Outlook; new Outlook source says Busy,Tentative,WorkingElsewhere patterns follow calendar color.",
+          "exactCorrection": "Describe status names/patterns first. Scope fixed-color examples to the client documented by the Scheduling Assistant page,and note new Outlook colors adjust to selected calendar color. Do not instruct a universal blue-color test.",
+          "sourceUrl": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+          "sourceSection": "New Outlook availability patterns"
+        },
+        {
+          "location": "Worked Tuesday and practical Working elsewhere",
+          "issue": "Working elsewhere is a status label,not a room-booking restriction or guarantee that people can contact/attend.",
+          "exactCorrection": "Say it communicates working away from office; it does not itself enforce venue rules,block room bookings or establish how a separate booking system treats that status. Confirm actual scheduling intent.",
+          "sourceUrl": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+          "sourceSection": "olWorking elsewhere definition"
+        },
+        {
+          "location": "Change status of one item",
+          "issue": "Draft misses source warning that changed availability is local to your calendar after invitations sent.",
+          "exactCorrection": "Add that changing Show As after the initial invite changes your calendar,not every participant\u2019s availability; organizer cannot rewrite everyone\u2019s availability afterward.",
+          "sourceUrl": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+          "sourceSection": "Changing availability for a calendar item in new Outlook"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1556
+        },
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.145
+        },
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "cosine": 0.1445
+        }
+      ],
+      "canonicalDecision": "Keep status-field interpretation distinct from Google statuses and generic RSVP. Current all-day and work/personal guides do not compare Outlook\u2019s five Show As values or auto-reply effects. Avoid turning into another full Outlook setup guide.",
+      "workedExampleReview": "Weekly example distinguishes Free/Tentative/Busy/OOO use cases. Friday\u2013Monday leave interval needs explicit start/end including weekend if intended; do not imply a ShowAs label enforces room booking or notification behavior.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+          "resolvedUrl": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/eec3cc1dd4696d00.txt",
+          "textCharacters": 2429,
+          "bodySha256": "b51df49e9072aafe15658c41440c74cf3713d56f0698f8aaeba48a5c23b80e29",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+          "resolvedUrl": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/8426d6ed0938d5c3.txt",
+          "textCharacters": 1240,
+          "bodySha256": "c9018ca1f4fb98a5c804ffc771676863bac841660dff4dfb6c12fb44e2afe6d6",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/b151722528818dd9.txt",
+          "textCharacters": 4962,
+          "bodySha256": "d58ff3c15ca6b559c53cf16ff2a827718c0d56bd894674cb33974220b8430c96",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/d46790d10a93bb9c.txt",
+          "textCharacters": 3752,
+          "bodySha256": "3f28750b127babcd09db757ea36044eb661679d2f0f0d3edcfa7232f1d153a55",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/b5f43b7a7f2296b9.txt",
+          "textCharacters": 4908,
+          "bodySha256": "5515d72441c0f8bda823bd4c39b57b1f855b21384618a83c785103d4551b42a9",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "253e7fe0733cb7d094e394190ce6bbdea1cb288134ae97d89708d3a6be5206c8"
+    },
+    "outlook-forward-meeting-and-allow-forwarding": {
+      "verdict": "approve",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Organizer may disable defaultAllow forwarding,with documented supported mailbox/client conditions;forwarding is not confidentiality control.",
+        "Modern clients/servers can prevent forwarding while older unsupported server/third-party routes can bypass;reply/copy limitations supported.",
+        "Organizer adds attendee andsendsupdate instead of forwardingownmeeting;delegate forward-notification caveat supported.",
+        "Historical shared-calendar issue fixedVersion2008Build13127.20296 and DownloadSharedfolder workaround match primary note."
+      ],
+      "requiredCorrections": [],
+      "closestExistingArticles": [
+        {
+          "slug": "what-guests-can-do-to-your-event",
+          "cosine": 0.1572
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1526
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "cosine": 0.1399
+        }
+      ],
+      "canonicalDecision": "Keep Outlook-specific forwarding/update task; existing Google guest-permissions guide and RSVP guide do not explain AllowForwarding support boundaries. Avoid asserting a forward notification is guaranteed across server/admin configurations.",
+      "workedExampleReview": "Fictionalthree-interviewer panel plusfourth colleague addition is consistent. Separate named document sharing is an editorial privacy recommendation,not an asserted Outlook access-control mechanism.",
+      "optionalImprovements": [
+        "Explicitly add the source\u2019s mailbox eligibility:Microsoft 365 or Exchange Server 2019 for organizer feature;do not confuse mobile receiving/enforcing restrictions with creating the setting.",
+        "Modern Exchange can block an older client\u2019s attempted forward even when button appears;olderclientalone is not proof of bypass.",
+        "Keep2020known-issue section labeled historical;it is not evidence the current build has that issue."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/bc7bf8ffbe28e473.txt",
+          "textCharacters": 3391,
+          "bodySha256": "49610508891a67cce0e0ba5e7aab9f6f56d6e782ade99c27c885e587bf181dbe",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/prevent-forwarding-of-a-meeting",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/5cc4d9d55c3847b6.txt",
+          "textCharacters": 4226,
+          "bodySha256": "b9aec4d12e38d07378d3431b07e8b651b76e6c7f2cc85ea4ae41144c5368b1fa",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/81a128df8809aa27.txt",
+          "textCharacters": 1026,
+          "bodySha256": "d8ef225041038d8d52c1a32f426c4d80f96db6194413d13a6b5fa9fb8b79ce63",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+          "textCharacters": 12194,
+          "bodySha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/b151722528818dd9.txt",
+          "textCharacters": 4962,
+          "bodySha256": "d58ff3c15ca6b559c53cf16ff2a827718c0d56bd894674cb33974220b8430c96",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "aa8aebb715ed5a8ad9067e9bce2f65e9e04cd6b727741eb94dc82228528788d7"
+    },
+    "outlook-group-calendar-versus-shared-calendar": {
+      "verdict": "revise",
+      "scope": "Independent editorial recommendation only; not publication approval",
+      "supportedFacts": [
+        "Group members can create/edit and cancel group-calendar events;personal calendar canretain organizercontrol.",
+        "NewOutlook/web/Outlook.com group-event creation does not invite whole group by default unless group added;newOutlook offersInviteMembers.",
+        "classic Outlook source instead auto-populates group alias inRequired attendees and tells users to removeit to avoidinvitinggroup."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Invitations are not automatic;table;FAQ;worked no-invites default",
+          "issue": "Draft presents new/web default as universal,contradicting ClassicOutlook tab on the same source.",
+          "exactCorrection": "Scope no-default-group-invitation statements to newOutlook/Outlook ontheweb/Outlook.com. Add ClassicOutlook distinction:group alias is already inRequired by default;removeit if you do not intend invitations. Always inspectactualattendees beforesending.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+          "sourceSection": "Add anevent toagroupcalendar:new Outlook versusclassic Outlook"
+        },
+        {
+          "location": "Shared personal-calendar table Who canedit orcancel",
+          "issue": "Only peopleyougrantCanedit/Delegate omitscalendarowner and canoversimplifyschedulingauthority.",
+          "exactCorrection": "Use ownerandproperlyauthorizededitors/delegates;meetings andcancellationactions stillneedapplicableorganizer/delegaterights. Keep illustrativeteamatview-only.",
+          "sourceUrl": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+          "sourceSection": "Addagroupevent toyourpersonalcalendar"
+        }
+      ],
+      "closestExistingArticles": [
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "cosine": 0.154
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1469
+        },
+        {
+          "slug": "what-guests-can-do-to-your-event",
+          "cosine": 0.1449
+        }
+      ],
+      "canonicalDecision": "Keep group-membership ownership versus personally sharedcalendar comparison. Existing a-calendar-that-is-yours-to-share describesCloudCalendarsReader/Writer/Owner relationships,notMicrosoft 365Groups. Cross-linkprovider-specific permissionguides;do not reuseapp role labels.",
+      "workedExampleReview": "Six-memberteam example is sound onlywhen client/version isstated orattendee list isinspected. InClassicOutlook,doingnothingdoesnotavoidsixinboxinvitations becausegroupalias isprepopulated.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/5fc3826495ac128f.txt",
+          "textCharacters": 12322,
+          "bodySha256": "331dd88dfb5dc5307e598dd53550272ee84fad0e1f0a3a0aec51bd5f5a829076",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/373a1b9454803c7b.txt",
+          "textCharacters": 13145,
+          "bodySha256": "7878768220d378d61524b8ff2d4fe6f002a65350a71c48344cb92b84df56cd90",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "resolvedUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+          "textCharacters": 12194,
+          "bodySha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "ca5cbe40cf7a424e4a18ced7a16fdc6d1630126e12b3754ba5e098d3430bb608"
+    }
+  },
+  "publicationOrSourceEdits": false
+}

@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-22",
+  "source": "Direct human response in this thread",
+  "confirmed": "Current app uses the inspected account/sharing backend and retains email/name and shared calendars/events.",
+  "effect": "Confirms persistent own-service collection; Data Not Collected is contradicted for current submission.",
+  "notConfirmed": "Extra attachment/media retention and complete production deletion/retention rules; consent confirmation does not by itself certify runtime ATT or tracking enforcement.",
+  "adsConfirmed": "Direct human response: ads are personalized with consent.",
+  "publicationApproval": "Separate confirmation to publish the reviewed 15-type App Privacy declaration is pending; factual confirmations are not publication approval."
+}

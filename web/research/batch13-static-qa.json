@@ -1,0 +1,211 @@
+{
+  "allPassed": true,
+  "changedArticles": 32,
+  "localizedRewrites": 29,
+  "englishRevisions": 3,
+  "sitemapUrls": 462,
+  "preservedPreviousCanonicals": 462,
+  "articles": [
+    {
+      "locale": "ar-SA",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ar/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "92f45fda2f7e10a5c92a13c1ccf2ca927696cb3f891c63257a829ab57fdf1562"
+    },
+    {
+      "locale": "bg",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/bg/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "71c107a1188cc06a96b2439a4accd7bd165acc21cfc8092192a61617bb95adde"
+    },
+    {
+      "locale": "cs",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/cs/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "d897c3486adbf462ac84602fa90b78169e9f0ab24641bdc5f0a38db4fbc87f8f"
+    },
+    {
+      "locale": "da",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/da/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "1dc965c384571bc6ee89c51474b0b255b5a39cbe3b43699d09c1bb09516d58f3"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/de/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "f89c0a02afbc99febb4652c4c5ef8f2437516eee95f13f6b6e743f0501248915"
+    },
+    {
+      "locale": "el",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/el/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "ca0e231f8ae4f8c33aa25d68f30bb247cfdf3c754d3c823223ae81651ada2501"
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-week-view-that-fits-a-week",
+      "url": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "sha256": "824a4ef686c248b2d166c0d4ace30bbb0075cfd67a20dd29376a154f31aa03a0"
+    },
+    {
+      "locale": "en-US",
+      "slug": "a-list-for-people-who-dislike-grids",
+      "url": "https://www.cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/",
+      "sha256": "62b156f9fd450727829d88d9421983a74013fbed59852981008f2da4c62215ad"
+    },
+    {
+      "locale": "en-US",
+      "slug": "the-year-in-one-screen",
+      "url": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
+      "sha256": "45894515d21d9373c91ee5f79ae71fa609b12c0a130b3a8abd58139674b80fb5"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/es/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "d564540f7c4bef3587eafa5d16e9714425521b9060c6a4c920cd984622a1b752"
+    },
+    {
+      "locale": "fi",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/fi/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "2a0c481aad92433f8458cc456efd69c7b7de2e249f5648c90bad72936e78c5c2"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/fr/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "45b4882062a9ae082d0a414104f27008303c80446e4613594b6ccce0fa35832a"
+    },
+    {
+      "locale": "he",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/he/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "bb166d020459e370a15a0b57b53e7627dd8a95289d9aa71a7143feaf811cd63e"
+    },
+    {
+      "locale": "hi",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/hi/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "38448ed9bece47dcdc95ffde309c110af67cfc01253922891a314d414b51e315"
+    },
+    {
+      "locale": "hu",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/hu/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "345fea3e285fe48c3e52648784f6cb892aa5cd89abe53f749c65974b7946f935"
+    },
+    {
+      "locale": "id",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/id/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "d0c52ac5ac3f28f57d0266aab56533808e23e1ea2b9771d239162bc2da593eec"
+    },
+    {
+      "locale": "it",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/it/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "2cbdb45ba87845e0ed78be4d977b51d1636b95be2e984c1ea5d8d43eb530226f"
+    },
+    {
+      "locale": "ja",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ja/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "6928e5f00e4ddcb6c50318cfefe827176f20f8d520564416d03ae50c3a3a74e3"
+    },
+    {
+      "locale": "ko",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ko/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "f9ddada46479befe21d2972843319562dbf3df1aa469e9b4b904a8c89300a245"
+    },
+    {
+      "locale": "ms",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ms/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "b68d4b158d61752b2bc4912c62850406b181e04cd14d8fc0881d328a20322d78"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/nl/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "2f5ea218cb9ba80c79f5d93c0ba34047c4073e40676c497cd083e6d86f5b0a22"
+    },
+    {
+      "locale": "no",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/no/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "f06f444ab640524b4139d5596b414ba6a03342d91cd628e5ae2c2d48287a59e7"
+    },
+    {
+      "locale": "pl",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/pl/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "4ff8a2a45646a3d3fe1b46f30dd149a08eab0fa62f9d0fbd27cdbf0515849fcd"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/pt/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "05f336f974d2d13de044350d2f5373bb86d293c9aab2a09aa1f91515d3f354aa"
+    },
+    {
+      "locale": "ro",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ro/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "3f099df532d773ddf39ef0e7cc977f9aa4e8933b137d7dee967eff0510d2e0c9"
+    },
+    {
+      "locale": "ru",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/ru/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "6fd7f9cd9b80d35beeb167aa70323b02df1ad532d42894a548bbb5275f0f947e"
+    },
+    {
+      "locale": "sv",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/sv/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "da8d9007162346821b97580fe138ccd9720049882ce61c53ab9b1addedf3561c"
+    },
+    {
+      "locale": "th",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/th/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "f9094f41f00634306b2fc4b6a25986dd76fca222edb8c548d59a8c35ecd7e615"
+    },
+    {
+      "locale": "tr",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/tr/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "3448528d37ecfedd4f1c07d4c1dfb47bd19038e94795bc0aa654559e355396e6"
+    },
+    {
+      "locale": "vi",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/vi/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "92b2a79bfaad49d162f1bbfcf83c8145d90c49f09f8a1b70df80cf99467003ac"
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "57b1121112cb7ca6106485d3993cb39a0def4fbfb0939f85ba489f0982e80ea0"
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "google-calendars-that-never-reach-your-iphone",
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/google-calendars-that-never-reach-your-iphone/",
+      "sha256": "dbd8a57e15958893fa999de4d74efc446713d09d95aea97dd0e9f519556c0004"
+    }
+  ],
+  "missingGoogleLocalesVerified": 30,
+  "viewRouteCounts": {
+    "a-week-view-that-fits-a-week": 1,
+    "a-list-for-people-who-dislike-grids": 1,
+    "the-year-in-one-screen": 1
+  },
+  "localizedShellPagesVerified": 461,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual32changedobjects/30missingGooglelocales/462oldcanonicals/allshellskipbrandsectionandlanglinks. Notnative-speaker, releasedproductruntime, indexing orrankingcertification."
+}

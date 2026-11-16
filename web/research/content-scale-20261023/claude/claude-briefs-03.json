@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "batch": "03",
+  "author": "Claude (claude-opus-5-5), logged-in subscription session; no API keys, no paid calls",
+  "date": "2026-10-23",
+  "scope": "Microsoft Outlook calendar operational tasks not answered by the 73 baseline pages, Claude batches 01-02, Codex batches, the keyword-agent claims or Argon's shift/time-zone claims.",
+  "lessonsAppliedFromReview01": [
+    "Scope every procedure to client (new Outlook / classic Outlook / Outlook on the web / Outlook.com / Mac / mobile) and account type (work or school vs personal Microsoft account); never assume all modern clients behave alike.",
+    "Prefer raw cached primary bodies (claude/review-source-text, primary-source-text) over WebFetch summaries where they exist; WebFetch summaries are flagged as such in records.",
+    "Report source ambiguity instead of resolving it; label example timings as illustrations."
+  ],
+  "rejectedOrHeld": [
+    { "topic": "Room/equipment booking and resource declines", "reason": "Existing calendar-event-or-room-reservation already covers Outlook Room Finder, resource recipients and release; would duplicate." },
+    { "topic": "Default reminder changes in Outlook", "reason": "Microsoft's classic-Outlook wording ('This applies to all the existing appointments and meetings in the calendar. Save this setting for future appointments and meetings.') is ambiguous about existing vs new items, and the separate 'Change the default reminder time' page does not resolve it. Held rather than guessed." },
+    { "topic": "Scheduling Assistant 'No information' deep troubleshooting", "reason": "Only official body found is an ITPro registry fix for one classic-Outlook error message; folded into article 12 as an escalation note instead of a standalone page." },
+    { "topic": "Outlook conflict errors when updating meetings", "reason": "Microsoft marks the 2024 service issue FIXED; historical, low current relevance." },
+    { "topic": "Cancelled meeting still on attendee calendar", "reason": "Delete/cancel page body as fetched does not describe the attendee 'Remove from Calendar' flow beyond the best-practice sentence; merged into article 2 rather than a thin standalone page." },
+    { "topic": "Copying meetings blocked", "reason": "Merged into article 3 (organizer/copy workarounds) rather than a separate page." }
+  ],
+  "briefs": [
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "primaryKeyword": "Outlook propose new time",
+      "distinctTask": "Propose a different time to an Outlook meeting (attendee) and accept or reject a proposal (organizer), including when the option is missing.",
+      "existingOverlapSlug": "keeping-track-of-who-replied",
+      "boundary": "Outlook only. Existing RSVP page covers Google and Apple proposal flows; this covers Outlook client labels, recurring-meeting and account-type restrictions.",
+      "sourceUrls": ["https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook"]
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "primaryKeyword": "end recurring meeting Outlook without deleting past",
+      "distinctTask": "Stop a recurring Outlook meeting while keeping past occurrences, understanding what changed instances lose, and how attendees should remove cancellations.",
+      "existingOverlapSlug": "recurring-events-without-the-mess",
+      "boundary": "Outlook organizer/attendee actions on a series. Generic recurrence advice and RFC EXDATE/RECURRENCE-ID semantics are covered elsewhere.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e",
+        "https://support.microsoft.com/en-US/Outlook/delete-an-appointment-or-a-meeting",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ]
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "primaryKeyword": "change meeting organizer Outlook",
+      "distinctTask": "Hand a meeting to a new organizer, or reuse a meeting, when Outlook supports neither changing the organizer nor (in recent classic builds) copying meetings.",
+      "existingOverlapSlug": "event-saved-to-wrong-calendar",
+      "boundary": "Outlook. Google event owner transfer is Claude batch 01; delegate setup is batch 01.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/Support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported"
+      ]
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "primaryKeyword": "Outlook appointment vs meeting vs event",
+      "distinctTask": "Turn an appointment into a meeting or an all-day event into an appointment, and send updates correctly (all attendees vs only added/removed).",
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "boundary": "Outlook item types and update rules; Show As statuses detail is batch 01.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      ]
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "primaryKeyword": "Outlook subscribe to calendar not updating",
+      "distinctTask": "Choose Subscribe from web or Upload from file in Outlook.com / Outlook on the web and set expectations for refresh timing.",
+      "existingOverlapSlug": "the-secret-address-of-a-google-calendar",
+      "boundary": "Receiving side in Outlook web clients. Publishing your own calendar and external sharing are batch 01.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ]
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "primaryKeyword": "Teams meeting button missing in Outlook",
+      "distinctTask": "Find out why Outlook has no Teams meeting option: classic COM add-in state vs new Outlook native integration vs account, and delegate meetings without join details.",
+      "existingOverlapSlug": "meeting-links-that-make-themselves",
+      "boundary": "Outlook clients only; Cloud Calendars Teams support stays on the existing page. Registry and PowerShell steps are summarized as admin escalation, not user instructions.",
+      "sourceUrls": [
+        "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865"
+      ]
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "primaryKeyword": "Outlook birthday calendar",
+      "distinctTask": "Turn on, fix and hide Outlook birthdays, which come from contacts and behave differently in new Outlook/web and classic Outlook.",
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "boundary": "Outlook birthdays; Google birthdays are Claude batch 02.",
+      "sourceUrls": ["https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook"]
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "primaryKeyword": "Outlook view calendars side by side overlay",
+      "distinctTask": "Compare several Outlook calendars side by side or overlaid, per client, and avoid misreading a combined view.",
+      "existingOverlapSlug": "icloud-google-and-outlook-in-one-view",
+      "boundary": "Outlook view controls only; cross-provider overview in Cloud Calendars stays on existing pages.",
+      "sourceUrls": ["https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook"]
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "primaryKeyword": "print Outlook calendar",
+      "distinctTask": "Print or save as PDF an Outlook calendar with the right style, range and private-item handling, per client.",
+      "existingOverlapSlug": "calendar-export-ics-pdf-and-backup",
+      "boundary": "Outlook print; Google print is Claude batch 02; Mac Calendar print is the existing page.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760"
+      ]
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "primaryKeyword": "shared mailbox calendar Outlook",
+      "distinctTask": "Decide whether a team inbox's shared mailbox calendar fits (membership, 25-user limit, no external users, no direct sign-in) and use it in each client.",
+      "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+      "boundary": "Shared mailbox; Microsoft 365 group calendar is batch 01 and is only contrasted where Microsoft itself points to groups.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/office/open-and-use-a-shared-mailbox-in-outlook-98b5a90d-4e38-415d-a030-f09a4cd28207",
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes"
+      ]
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "primaryKeyword": "Outlook work hours and location",
+      "distinctTask": "Set per-day work hours and remote/office location in new Outlook or Outlook on the web and understand how classic Outlook approximates them.",
+      "existingOverlapSlug": "work-and-personal-without-two-apps",
+      "boundary": "Microsoft work plan feature. Google working location is batch 01; Show As Working elsewhere is batch 01.",
+      "sourceUrls": ["https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6"]
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "primaryKeyword": "Outlook Scheduling Assistant availability",
+      "distinctTask": "Read colleagues' availability in the Scheduling Assistant or a directory-opened calendar, knowing what the My organization default, Show As and client colours do and do not tell you.",
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "boundary": "Scheduler's reading side in Microsoft 365. Owner-side sharing levels are batch 01; Google Find a time is batch 01.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information"
+      ]
+    }
+  ]
+}

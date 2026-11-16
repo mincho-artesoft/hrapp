@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+  "short": "Upcoming events on the Home Screen",
+  "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+  "lede": "For a useful next-event view, choose a widget that actually lists events. A date-and-weather tile answers a different question. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "sections": [
+    {
+      "heading": "Choose the event layout first",
+      "body": [
+        "In the Cloud Calendars widget gallery, Calendar Events is the medium event-list layout. Calendar Events Large provides more room for upcoming appointments. Calendar & Weather is a separate date-and-weather layout; its small size does not promise a next-event row. Names may appear translated on your device.",
+        "On iPhone, hold an empty Home Screen area, choose Edit and Add Widget, then find Cloud Calendars and select the desired layout. Compare the preview before adding it. Apple’s widget instructions cover this system gallery; it is separate from the calendar views inside the app."
+      ]
+    },
+    {
+      "heading": "Add and check the widget on iPad",
+      "body": [
+        "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+        "Choose Calendar Events or Calendar Events Large when you need appointments. Compare the styles offered by the installed app; a date-and-weather tile answers a different question from an event list.",
+        "Open Cloud Calendars on that iPad and find a known future timed appointment in a selected calendar. A correct view on your iPhone does not confirm the iPad’s accounts, access or loaded data. Compare the title, date and start time, then continue with the eligibility and update checks below if the widget differs."
+      ]
+    },
+    {
+      "heading": "Check what counts as upcoming",
+      "body": [
+        "The event display uses selected calendars and future timed appointments. All-day entries and appointments whose start time has already passed are excluded from this upcoming feed. A birthday or an ongoing meeting can therefore be visible in the app without appearing here.",
+        "For example, if your only entry today is an all-day travel label, a blank upcoming list does not mean the travel label was lost. Open the app to inspect the complete day. Likewise, the next timed event may be tomorrow or later; read its date rather than assuming every row is today."
+      ]
+    },
+    {
+      "heading": "Separate a missing event from a list that has run out of rows",
+      "body": [
+        "A widget shows a limited set of upcoming appointments. If earlier events fill its rows, a later appointment can be absent even though it is present in the app and eligible for the upcoming list. A larger event layout can show more rows; it still is not the complete calendar.",
+        "Start with the nearest future timed appointment in a selected calendar. If it appears but a later one does not, open the app to inspect the rest of the schedule. If the nearest eligible event is also missing, continue with calendar selection, access and update checks. Do not move or delete appointments just to make a later entry appear."
+      ]
+    },
+    {
+      "heading": "Make the app your first comparison",
+      "body": [
+        "Open Cloud Calendars and find one specific future timed appointment. Confirm its owning calendar is selected and that the app has the calendar access it needs. Compare the title, date and start time with the widget. If the event is missing in the app as well, investigate the account or sync first.",
+        "Use a harmless test appointment in a calendar you own if you need a clear example. Give it a future start and a recognizable title. Avoid changing a real invitation or removing accounts simply to test the Home Screen."
+      ]
+    },
+    {
+      "heading": "Allow for updates without assuming a fixed deadline",
+      "body": [
+        "Widgets display saved information and do not run continuously like an open app. Apple controls their update scheduling. Opening the app and checking the event gives you a fresh point of comparison, but it does not establish an exact number of seconds before the widget must change.",
+        "If the app stays correct while the widget remains wrong, note the layout, selected calendar, event time and app/iOS versions. An empty list, an old appointment and an incorrect time are different observations; report which one you see."
+      ]
+    },
+    {
+      "heading": "Read the weather as a separate summary",
+      "body": [
+        "The weather beside the date is not a forecast attached to each appointment’s venue and start time. Before an outdoor event, open the weather view and check the intended place and hour. A current-condition icon cannot establish what conditions will be at a later meeting.",
+        "Keep this widget for quick orientation. Use the full calendar for all-day commitments, event details and decisions that need the entire schedule."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Choose Calendar Events or Calendar Events Large for an event list.",
+    "Verify a future timed appointment in a selected calendar.",
+    "Compare its date and time in the app before troubleshooting the widget.",
+    "Record persistent differences instead of deleting calendar data."
+  ],
+  "faq": [
+    {
+      "q": "Why is my birthday missing?",
+      "a": "The upcoming feed excludes all-day events. Check the full calendar for birthdays and other date-only entries."
+    },
+    {
+      "q": "Does the small widget show the next meeting?",
+      "a": "The small Calendar & Weather layout shows date and weather. Choose an event-list layout for appointments."
+    },
+    {
+      "q": "Does no upcoming event mean I am free today?",
+      "a": "No. All-day entries, ongoing events, unselected calendars and stale information can change that conclusion."
+    }
+  ],
+  "sourcesHeading": "Sources and Apple instructions",
+  "sources": [
+    {
+      "label": "Apple: Add and edit widgets on iPhone",
+      "url": "https://support.apple.com/118610"
+    },
+    {
+      "label": "Apple: Keeping a widget up to date",
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+    },
+    {
+      "label": "Apple: Add, edit, and remove widgets on iPad",
+      "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+    }
+  ],
+  "seeAlso": [
+    "choosing-a-widget-size",
+    "a-countdown-to-your-next-meeting"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "allPassed": true,
+  "changedArticles": 32,
+  "newLocalizedArticles": 29,
+  "englishRevisions": 3,
+  "sitemapUrls": 491,
+  "preservedPreviousCanonicals": 462,
+  "articles": [
+    {
+      "locale": "ar-SA",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ar/articles/month-view-on-a-bigger-screen/",
+      "sha256": "0503c378a545a1d7759b5eeb415b41f7b93541e5f2eb7b0efa240ed53039b393"
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/bg/articles/month-view-on-a-bigger-screen/",
+      "sha256": "efb16b2ea7c7143e995cbb98c91bcb578e9f1182fb1405b53dd142c221d2a407"
+    },
+    {
+      "locale": "cs",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/cs/articles/month-view-on-a-bigger-screen/",
+      "sha256": "a42ff6a13e5df3ad560f31afd452eab12062bf761bf37445ff9e9441c00a6863"
+    },
+    {
+      "locale": "da",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/da/articles/month-view-on-a-bigger-screen/",
+      "sha256": "3dd9ea45753d97c4b47a00eb7070539b24b038bd25f1ae7fbf0d7ad010d9a2d4"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/de/articles/month-view-on-a-bigger-screen/",
+      "sha256": "991b63e19e45c7d39e6a57c763e06c0ee210c7ae1420314278097ae1ece37512"
+    },
+    {
+      "locale": "el",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/el/articles/month-view-on-a-bigger-screen/",
+      "sha256": "d3213037afff958ff59df86d0c137f81f606fc09d813411d7bb14594032cba29"
+    },
+    {
+      "locale": "en-US",
+      "slug": "planning-a-week-in-ten-minutes",
+      "url": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "sha256": "44d452d486720c598f8cc81013bc14e5f0d315cf3a7b4a9e7c366b3dd8d86138"
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "url": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
+      "sha256": "b34858d78452fc9035fbd3873c58c8caa4aca7533525f81dbe09817adad32d12"
+    },
+    {
+      "locale": "en-US",
+      "slug": "the-commute-and-the-sky",
+      "url": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
+      "sha256": "2c27e538d1138dd0bafa270f75802c5794cfdaeff90859ca15bd512b21d628df"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/es/articles/month-view-on-a-bigger-screen/",
+      "sha256": "93f3a1b5e14c577cefb5c7b59b339b04b4d73100dc9b788932563c06a8e4dc51"
+    },
+    {
+      "locale": "fi",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/fi/articles/month-view-on-a-bigger-screen/",
+      "sha256": "9236868b7535f0c1e4edc275e649e3131f231c33430660960298202791a8e02e"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/fr/articles/month-view-on-a-bigger-screen/",
+      "sha256": "6cd643c43a61d1c2a8d4274cde0872ec05d3d9b377236966d8253906ecfcc9a6"
+    },
+    {
+      "locale": "he",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/he/articles/month-view-on-a-bigger-screen/",
+      "sha256": "037f788eca67d5884f7df1925ccf90c5cd19897b90274fa5193d26bcd371129e"
+    },
+    {
+      "locale": "hi",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/hi/articles/month-view-on-a-bigger-screen/",
+      "sha256": "4c77a71fd001c8503e3b94dabeaf45039cd8eaaeb43f1c8d095cb161b6467f93"
+    },
+    {
+      "locale": "hu",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/hu/articles/month-view-on-a-bigger-screen/",
+      "sha256": "0afca904e3858fc8e784753efed9350e6fc9b5fe9a86cc655901809a3772adeb"
+    },
+    {
+      "locale": "id",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/id/articles/month-view-on-a-bigger-screen/",
+      "sha256": "07cde2c9a72ed12e242abc7f86aeede6f06965135a699490e00df21f28ebeda7"
+    },
+    {
+      "locale": "it",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/it/articles/month-view-on-a-bigger-screen/",
+      "sha256": "605c913e43cd969e23350fca33400aa6e71c9da6a4eeeb3d679e59e2d042bbf5"
+    },
+    {
+      "locale": "ja",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ja/articles/month-view-on-a-bigger-screen/",
+      "sha256": "94cbbfa7776f50be6d0eb062e73f5c3e4fd049e420d2e505d237a4a3ae2a9d10"
+    },
+    {
+      "locale": "ko",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ko/articles/month-view-on-a-bigger-screen/",
+      "sha256": "3bc7918c0add285ff3a4f10d15dfab16ec55f47339c5482b230c97ed4b6812da"
+    },
+    {
+      "locale": "ms",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ms/articles/month-view-on-a-bigger-screen/",
+      "sha256": "7a96917bee855f542551d3105e8848df250a99f96f85cf7ddb48316e2044f263"
+    },
+    {
+      "locale": "nl-NL",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/nl/articles/month-view-on-a-bigger-screen/",
+      "sha256": "70856391d99304d06d74412e9a13384f087519ba6c0a0c1e2a0dd60f02513b74"
+    },
+    {
+      "locale": "no",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/no/articles/month-view-on-a-bigger-screen/",
+      "sha256": "4169a3aa79f8622d471b71c1b8cf8cccc77ed0af25ff8cb9a9076fcd05bb29f3"
+    },
+    {
+      "locale": "pl",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/pl/articles/month-view-on-a-bigger-screen/",
+      "sha256": "b18371d282f2f82ec52f9275df2aa2d62f7f17998cfb4720e62bd79cfc7bcb7f"
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/pt/articles/month-view-on-a-bigger-screen/",
+      "sha256": "60e752da2fc457aad7118067d76e7c3cec0a13becaa9288272ac80efef524674"
+    },
+    {
+      "locale": "ro",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ro/articles/month-view-on-a-bigger-screen/",
+      "sha256": "d7243d54af7c71ce9205e62ec90a8297c030a92f3ac0169c45b43011629d791d"
+    },
+    {
+      "locale": "ru",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ru/articles/month-view-on-a-bigger-screen/",
+      "sha256": "017372a1938306e78753169f62780c2c6ae0e322744d6d42efe4cb6c622ab22f"
+    },
+    {
+      "locale": "sv",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/sv/articles/month-view-on-a-bigger-screen/",
+      "sha256": "92836a01be5a0a3f6e76f209982a0d8ba3197fb2aa7d5b2638a55f512b680843"
+    },
+    {
+      "locale": "th",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/th/articles/month-view-on-a-bigger-screen/",
+      "sha256": "495e65dd95bbddcf073804e2069a6f9c8058b4bda9b26acfd4d75c4ec3449270"
+    },
+    {
+      "locale": "tr",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/tr/articles/month-view-on-a-bigger-screen/",
+      "sha256": "c1fc72cad738fd7c055b46deb6e9d81b3b73c3a697bd7389df1eef3ae93faebc"
+    },
+    {
+      "locale": "vi",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/vi/articles/month-view-on-a-bigger-screen/",
+      "sha256": "ea1e9e8030c364e7ddd0f8c9f05a3c8f47f669358d41ea357d3e2b543d8c7481"
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/month-view-on-a-bigger-screen/",
+      "sha256": "497599f519fd616027e9d8811a790e9763b32902b9c4e6b27a0062b477008821"
+    },
+    {
+      "locale": "zh-Hant",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/month-view-on-a-bigger-screen/",
+      "sha256": "99f2048349056ec7380fe4cc04666878f763778dcb6c611ac18d1205b22cc1e4"
+    }
+  ],
+  "monthLocalesVerified": 30,
+  "viewRouteCounts": {
+    "planning-a-week-in-ten-minutes": 1,
+    "the-commute-and-the-sky": 1,
+    "what-a-forecast-can-and-cannot-tell-you": 1
+  },
+  "localizedShellPagesVerified": 490,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual32changedobjects/29newmonthlocales+1EN/462oldcanonicals/491currentcanonicals/allshellskipbrandsectionandlanglinks. Notnative-speaker, releasedproductruntime, indexing orrankingcertification."
+}

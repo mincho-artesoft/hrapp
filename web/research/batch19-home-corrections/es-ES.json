@@ -1,0 +1,26 @@
+{
+  "locale": "es-ES",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Mañana ya viene",
+        "con previsión incluida."
+      ],
+      "after": [
+        "Planifica el día siguiente.",
+        "Consulta la previsión disponible."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Siete columnas, cada una encabezada por su máxima, su mínima y sus condiciones. Gira a horizontal para verla completa. Agarra un evento y deslízalo a otro día.",
+      "after": "Compara las citas de la semana con la previsión meteorológica diaria disponible. Gira el dispositivo a horizontal para ampliar la vista. Mueve los eventos editables a otro día y, si el evento es recurrente, comprueba qué repeticiones quieres modificar."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Arrástralo. Estíralo. Ya está.",
+      "after": "Arrástralo. Ajusta su duración. Revísalo."
+    }
+  ]
+}

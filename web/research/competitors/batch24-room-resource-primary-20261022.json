@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "purpose": "Validate the single room/resource-confirmation research candidate from batch23 using current primary provider documentation.",
+  "scope": {
+    "fullMainBodies": 5,
+    "partialSelectedBody": 1,
+    "headerOnly": 1,
+    "failedExactURL": 1,
+    "nativeAuditPerformed": false,
+    "runtimeTestPerformed": false,
+    "lineNumberMeaning": "Line ranges in the web extraction observed during this research; not publisher-stable anchors. Full means extracted main article text, not interactive controls or every linked document."
+  },
+  "searchQueries": [
+    {
+      "query": "site.support.google.com/calendar add rooms location event room declined recurring",
+      "date": "2026-10-22",
+      "association": "First combined two-query response; exact per-result query attribution not established."
+    },
+    {
+      "query": "site.support.microsoft.com outlook room finder scheduling assistant room accepts declines recurring meeting",
+      "date": "2026-10-22",
+      "association": "First combined two-query response; exact per-result query attribution not established."
+    },
+    {
+      "query": "site.learn.microsoft.com microsoft 365 create room equipment mailboxes booking options automatically accept decline",
+      "date": "2026-10-22",
+      "association": "Subsequent single-query discovery."
+    }
+  ],
+  "sources": [
+    {
+      "id": "google-add",
+      "publisher": "Google",
+      "url": "https://support.google.com/calendar/answer/143753?hl=en",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          17,
+          49
+        ]
+      ],
+      "extractedPageLines": 116,
+      "summary": "Google documents room/resource selection for work or school accounts. The computer workflow adds a room to an event and saves it. Room conflict checks extend up to 12 months; later recurring instances are not checked. Removing a room is a separate event change.",
+      "boundaries": [
+        "Computer tab reviewed; iPhone/iPad tab not opened.",
+        "Personal Gmail is directed to a different shared-space workflow, not the organizational Rooms picker.",
+        "The suggested duplicate-event workaround can omit guests; do not generalize it as a safe rescheduling procedure."
+      ]
+    },
+    {
+      "id": "google-decline",
+      "publisher": "Google",
+      "url": "https://support.google.com/calendar/answer/16107253?hl=en",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          17,
+          86
+        ]
+      ],
+      "extractedPageLines": 149,
+      "summary": "Rooms can decline at creation or later. Organizers normally receive a decline email; guests can inspect event status. Secondary-calendar events have different email notification behavior. Changing a time releases the room and attempts to rebook it. Recurrence conflicts, booking permissions and resource-manager decisions can affect acceptance.",
+      "boundaries": [
+        "Do not equate a saved event, visible location or earlier acceptance with acceptance after a change.",
+        "Check individual occurrences rather than promise a whole series was accepted.",
+        "Email absence is not confirmation. Account-specific replacement behavior is not universal."
+      ]
+    },
+    {
+      "id": "outlook-finder",
+      "publisher": "Microsoft",
+      "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          119,
+          194
+        ]
+      ],
+      "extractedPageLines": 305,
+      "summary": "Outlook documents Room Finder and Scheduling Assistant for Microsoft 365 or Exchange accounts with administrator-configured rooms. Selecting a room adds it to the meeting as a recipient. The user chooses a time, optionally recurrence, and sends the request. Platform instructions differ.",
+      "boundaries": [
+        "Availability assists choosing a time; resource processing and policy determine the request outcome.",
+        "The documented Outlook controls are not Cloud Calendars controls.",
+        "No personal Outlook.com resource-directory support inferred."
+      ]
+    },
+    {
+      "id": "exchange-resource",
+      "publisher": "Microsoft",
+      "url": "https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-resource-mailboxes",
+      "status": "partial_selected_sections_reviewed",
+      "readRanges": [
+        [
+          31,
+          54
+        ],
+        [
+          92,
+          110
+        ],
+        [
+          200,
+          224
+        ]
+      ],
+      "extractedPageLines": 447,
+      "summary": "Exchange Online room and equipment mailboxes have booking policies. Requests may be automatically accepted or declined, or processed by delegates. Conflicts and policy restrictions can cause declines. Recurrence, working hours, advance booking and duration are configurable. A resource hidden from the address list can still receive requests.",
+      "boundaries": [
+        "Selected substantive sections, not a full 447-line body review.",
+        "Authorization banner appeared but these public body sections were readable without sign-in.",
+        "Administrator documentation; no admin changes or commands performed.",
+        "Defaults are not guarantees for an organization. Hybrid deployments have additional management conditions."
+      ]
+    },
+    {
+      "id": "m365-faq",
+      "publisher": "Microsoft",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-equipment-mailboxes-faq?view=o365-worldwide",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          24,
+          47
+        ]
+      ],
+      "extractedPageLines": 83,
+      "publisherUpdated": "2026-04-08",
+      "summary": "Microsoft describes adding the room or equipment as a meeting participant and using Scheduling Assistant. Removing a resource from a meeting cancels that reservation. Resource processing can be automatic or managed.",
+      "boundaries": [
+        "Public main body readable despite authorization banner.",
+        "No cancellation or mailbox operation performed.",
+        "This is an organization resource-mailbox workflow, not evidence about arbitrary text locations."
+      ]
+    },
+    {
+      "id": "m365-create",
+      "publisher": "Microsoft",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-and-equipment-mailboxes?view=o365-worldwide",
+      "status": "full_extracted_main_body_reviewed",
+      "readRanges": [
+        [
+          24,
+          91
+        ]
+      ],
+      "extractedPageLines": 127,
+      "publisherUpdated": "2026-04-08",
+      "summary": "The documented reservation flow places the resource in Required, separately edits Location, checks availability and sends the meeting. An administrator must create the resource mailbox; its email address receives booking requests.",
+      "boundaries": [
+        "Public main body readable despite authorization banner.",
+        "Resource recipient and location label are distinct fields in this documented workflow.",
+        "No account, room or event was created."
+      ]
+    }
+  ],
+  "inaccessibleOrIncomplete": [
+    {
+      "url": "https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-room-mailboxes",
+      "status": "failed",
+      "scope": "One-line unusable response; no substantive body. Attempted once, not retried. Correct resource-mailboxes URL is a separately discovered page."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/exchange/recipients/room-mailboxes?view=exchserver-2019",
+      "status": "header_only",
+      "readRanges": [
+        [
+          0,
+          20
+        ]
+      ],
+      "extractedPageLines": 392,
+      "scope": "Only header returned. No substantive claims adopted; on-premises documentation is not substituted for Exchange Online."
+    }
+  ],
+  "conceptBoundaries": [
+    {
+      "concept": "Location label",
+      "finding": "Text describing a place is not evidence of a resource request or acceptance.",
+      "basis": [
+        "m365-create",
+        "outlook-finder"
+      ],
+      "classification": "Inference from explicit separate recipient and Location steps."
+    },
+    {
+      "concept": "Resource request",
+      "finding": "Choose the organization resource through its supported room/recipient workflow and send/save as the provider documents.",
+      "basis": [
+        "google-add",
+        "outlook-finder",
+        "m365-create"
+      ],
+      "classification": "Documented provider workflow."
+    },
+    {
+      "concept": "Resource acceptance",
+      "finding": "Booking requests remain subject to resource response, policies and possibly delegate action. A free slot or a sent invitation is not sufficient evidence of acceptance.",
+      "basis": [
+        "google-decline",
+        "exchange-resource"
+      ],
+      "classification": "Synthesis of documented processing and decline behavior."
+    },
+    {
+      "concept": "Changed or recurring event",
+      "finding": "Inspect the relevant occurrence and resource outcome after changes; Google explicitly releases and attempts to rebook a room when the time changes.",
+      "basis": [
+        "google-decline",
+        "google-add",
+        "exchange-resource"
+      ],
+      "classification": "Provider-specific facts; no universal recurrence transaction guarantee."
+    }
+  ],
+  "proposedDistinctTask": {
+    "workingTitle": "Is the meeting room actually booked?",
+    "candidateSlug": "meeting-room-booking-request-versus-confirmation",
+    "intentCandidates": [
+      "meeting room invitation declined",
+      "calendar location versus room booking",
+      "check recurring meeting room acceptance",
+      "room booking after changing meeting time"
+    ],
+    "keywordEvidence": "Editorial task phrases derived from these primary bodies, not measured queries, volume, rankings or ChatGPT citations.",
+    "usefulOutcome": "A reader can distinguish a place name from an organization resource request, inspect its outcome in the provider, and recheck changed or recurring reservations.",
+    "proposedSteps": [
+      "Confirm that the organizer account belongs to an organization with a configured resource and permission to book it.",
+      "Identify the actual room/resource recipient rather than rely on the location label.",
+      "Use the provider-supported reservation workflow and inspect resource status or response.",
+      "If declined or pending, check conflicts, booking policy and delegate requirements with the organization.",
+      "Check relevant recurring occurrences and recheck after time or resource changes.",
+      "Confirm the accepted room with participants; use the organization booking process if the app does not expose the required controls."
+    ],
+    "acceptanceUIBoundary": "Google event-status and decline-notification behavior is directly documented. Microsoft resource processing is documented, but this batch does not establish one universal response-status UI path across Outlook versions.",
+    "publicationDecision": "Distinct candidate supported; no article drafted. Cloud-specific instructions must wait for native audit."
+  },
+  "existingCoverage": {
+    "provenance": "research/competitors/batch23-broader-intent-discovery-20261022.json",
+    "scope": "Read the prior evidence file in this batch; no fresh full EN-body review claimed. Its six body reads and corpus keyword scan establish the initial distinction.",
+    "nearbyCanonicals": [
+      "meeting-links-that-make-themselves",
+      "a-calendar-that-is-yours-to-share",
+      "a-week-view-that-fits-a-week"
+    ],
+    "difference": "These address conferencing, calendar sharing and visual planning respectively; the proposed task is resource request processing and confirmation. Recheck current bodies before authoring."
+  },
+  "requiredNativeAudit": [
+    "Whether a room/resource directory or recipient type exists.",
+    "Whether event creation sends a resource request rather than merely storing location text.",
+    "Whether resource acceptance/decline is exposed and refreshed.",
+    "Whether changes and individual/series updates preserve resource request semantics."
+  ],
+  "productLimits": [
+    "No Cloud Calendars resource-booking, conflict-prevention, response-display or policy-enforcement capability asserted.",
+    "Do not conflate attendee receipt, human RSVP, shared-calendar access or a copied busy block with resource acceptance.",
+    "Do not promise immediate or whole-series acceptance, preservation of all meeting metadata, or support for every personal or organization account."
+  ],
+  "notPerformed": [
+    "Account connection",
+    "Live reservation",
+    "Event creation",
+    "Native inspection or edits",
+    "Source integration",
+    "Queue mutation",
+    "Build",
+    "Deployment",
+    "Paid APIs"
+  ]
+}

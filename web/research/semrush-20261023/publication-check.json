@@ -1,0 +1,17 @@
+{
+  "url": "https://www.cloud-calendars.com/articles/weekly-schedule-builder/",
+  "httpStatus": 200,
+  "matchesBuildBytes": true,
+  "newPageIndexable": true,
+  "englishArticles": 73,
+  "sitemapUrls": 107,
+  "heldTranslatedArticlesAndHubs": 436,
+  "privacySourceSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "liveFunctionalCheck": {
+    "addBlock": true,
+    "friday1430Preview": true,
+    "noWarnings": true,
+    "noHorizontalOverflow": true
+  },
+  "seoLimit": "Publication and links verified; no indexing/ranking improvement claimed."
+}

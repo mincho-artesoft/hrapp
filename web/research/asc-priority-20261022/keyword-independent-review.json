@@ -1,0 +1,855 @@
+{
+  "decision": "APPROVED for editorial keyword relevance and requested Unicode limit; no required copy correction",
+  "proposal": "keyword-proposal.json",
+  "approvedRawSha256": "88753e6ecc53b7185dd93ea5ff591167d92a74dd16f7d3e89e92f31af45100ad",
+  "field": "keywords",
+  "localeCount": 50,
+  "sourceFiles": [
+    {
+      "file": "app-info-localizations.json",
+      "rawSha256": "929dcebddd30a0cd0b4d62e59aab9f2da5a29d48eccae48214ad815180a8c8b6"
+    },
+    {
+      "file": "applied-readback.json",
+      "rawSha256": "1b69e7bfd368fe38af80c5b72f780d8fb6a75831d6166c7bb5a26930f8b35e14"
+    }
+  ],
+  "readScope": "Initial verbose output was truncated and not relied upon for complete coverage. Reread all50 full after/name/subtitle strings in compact untruncated output, then all50 complete before strings separately. Read strategy/evidence/limits. No assertion of rereading every linked article this turn; their established complete body/source evidence reused.",
+  "rows": [
+    {
+      "locale": "ar-SA",
+      "characters": 100,
+      "utf8Bytes": 182,
+      "afterSha256": "491c17a6b8401838099cca17ab3d17c7e799bd50fa7cdecf7c6807001318919e",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "bn-BD",
+      "characters": 100,
+      "utf8Bytes": 272,
+      "afterSha256": "33458549b583a5f6814c9686b3ee6257732493a597ce262e906a0e0f706385b4",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ca",
+      "characters": 100,
+      "utf8Bytes": 104,
+      "afterSha256": "abcbaeb7cff0eb5ed0af0ad2139a52910a7238092f021d9985effb6a87656f2e",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "cs",
+      "characters": 100,
+      "utf8Bytes": 117,
+      "afterSha256": "29715d8547625cd750155989efe2d25764fa81764db294ff998b27128fd8d59d",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "da",
+      "characters": 100,
+      "utf8Bytes": 103,
+      "afterSha256": "40a5abcc392b6d0667814e11631b703490b373ad68240f40467f0d8c0680440f",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "de-DE",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "afterSha256": "f66c3c0a14bc69fa5b9cba35a463bab4e7fd57af6d201ed5f7aceba770313ea1",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "el",
+      "characters": 100,
+      "utf8Bytes": 190,
+      "afterSha256": "32cc69db383f111b5cb64e615ec1db1b3b9809dac5821ef91ada00dc8c4fba2b",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "en-AU",
+      "characters": 98,
+      "utf8Bytes": 98,
+      "afterSha256": "aeddea076d1e018cec3ec0eabc74d27bcbbc040f3ffd7ecee853a3632f2401fa",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "en-CA",
+      "characters": 98,
+      "utf8Bytes": 98,
+      "afterSha256": "aeddea076d1e018cec3ec0eabc74d27bcbbc040f3ffd7ecee853a3632f2401fa",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "en-GB",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "afterSha256": "181b101149a9e37fd8350631c51a187979bbcb0ba805498ae3f6630a1490b443",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "en-US",
+      "characters": 98,
+      "utf8Bytes": 98,
+      "afterSha256": "aeddea076d1e018cec3ec0eabc74d27bcbbc040f3ffd7ecee853a3632f2401fa",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "es-ES",
+      "characters": 98,
+      "utf8Bytes": 101,
+      "afterSha256": "cc4069266b2617ab83b94c9f6b5d3c3ea9c7efee0adad927ed4f8188e97af4f6",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "es-MX",
+      "characters": 99,
+      "utf8Bytes": 102,
+      "afterSha256": "09e70f032f0deca8effa7768a7546fc7aa452f820df9a83097502207dc1f21cb",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "fi",
+      "characters": 100,
+      "utf8Bytes": 102,
+      "afterSha256": "41f6d79d2e9503281d1de24e9a5b5f518834c1f82de250098461051bf30447e7",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "fr-CA",
+      "characters": 97,
+      "utf8Bytes": 101,
+      "afterSha256": "2d4516abab74597493398abaf351569a7d1c25800105c27b29b24d58eb7ec7f2",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "fr-FR",
+      "characters": 98,
+      "utf8Bytes": 102,
+      "afterSha256": "bb3388a4f01ccc3af3d6fb6975f17a4ed55171d4a4fe4fe673219463c5c902fd",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "gu-IN",
+      "characters": 100,
+      "utf8Bytes": 270,
+      "afterSha256": "9cbfd8ca3768cf3d11a3317e882483633c2357d6e9da58e77980a4f9b38421ca",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "he",
+      "characters": 100,
+      "utf8Bytes": 181,
+      "afterSha256": "4201e4892c325eb03024ba095a30ab27c7b3c5924e76bd1166c65c48c688fb9a",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "hi",
+      "characters": 100,
+      "utf8Bytes": 270,
+      "afterSha256": "c9dbd3629a052335940272d4a49e4e3f25d257183a408ac18852b7e2c90c5e47",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "hr",
+      "characters": 100,
+      "utf8Bytes": 102,
+      "afterSha256": "af78f1d86af47be6f9d82d4d64dd5bdc683cc59faaf221f59ec3631991e1661a",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "hu",
+      "characters": 100,
+      "utf8Bytes": 113,
+      "afterSha256": "fe2b4c640880b02e8594866806551b72ed3d59520c6dbd136dfcc315c74dfbe8",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "id",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "afterSha256": "8cd25695d19959dc6c25320064adb1244fbd7f2b33f532aa6cf7c7fd278d0cd0",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "it",
+      "characters": 100,
+      "utf8Bytes": 100,
+      "afterSha256": "78d947d4d50b0649b3ab42ec4fd72c4675872f01bbcf0bd205d862972028ba6f",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ja",
+      "characters": 100,
+      "utf8Bytes": 248,
+      "afterSha256": "3e60c8e29cc9b5fef01301ac5bf2b735e120d2431ee26e4e651a2b683181917d",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "kn-IN",
+      "characters": 100,
+      "utf8Bytes": 270,
+      "afterSha256": "93cdaf2cd2c65476b340a35e4e1ad808153e57634c5040202d4ee7ab9db06b2b",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ko",
+      "characters": 100,
+      "utf8Bytes": 246,
+      "afterSha256": "2767bfeaa51e1940a20a344925af05a8f6b78c291cdf17ebba03c669f864a051",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ml-IN",
+      "characters": 100,
+      "utf8Bytes": 272,
+      "afterSha256": "51cd435886fc1cb501ff7ce6b6344c3d6dab8920985917796ddcd14feef4d5c8",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "mr-IN",
+      "characters": 100,
+      "utf8Bytes": 270,
+      "afterSha256": "e3ce67f474c10208360104a544dc28a973ab8d0f99df6731aeffba82256bdf0f",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ms",
+      "characters": 99,
+      "utf8Bytes": 99,
+      "afterSha256": "2ea2fce4c125c96d1a047c9ed7bfe53314dc7ee74b5ef19ae07b29e2828de363",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "nl-NL",
+      "characters": 97,
+      "utf8Bytes": 98,
+      "afterSha256": "6660db7d950f6374e7f759250106a5bf1c235ec22605d7776894d7619ff806e2",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "no",
+      "characters": 100,
+      "utf8Bytes": 101,
+      "afterSha256": "a24174c627ec2cd0365d2795525350e60cf782df2be5551b6556d6d469a5a87d",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "or-IN",
+      "characters": 100,
+      "utf8Bytes": 272,
+      "afterSha256": "d7e9ba70c293a65408cd5a3231a493e88b4f4f298dd30ddb253e7f14750dd2d3",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "pa-IN",
+      "characters": 100,
+      "utf8Bytes": 270,
+      "afterSha256": "14cb0cd2094db4fa0c7710d858c46b32f698c3f606cec819fdac6502716f2847",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "pl",
+      "characters": 98,
+      "utf8Bytes": 99,
+      "afterSha256": "244fa083ffb113e6368b5c1d2f95c9b32642613c0b1d981e6fcec1eb651d3b42",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "pt-BR",
+      "characters": 97,
+      "utf8Bytes": 101,
+      "afterSha256": "0bf024f21176fb49f69b8f84c03205a208fa7c22de203df3bd58dbdceba472fc",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "pt-PT",
+      "characters": 100,
+      "utf8Bytes": 106,
+      "afterSha256": "ddcb4fb540d2c635e3d51a81fa99f6958887f9edcb110a6bec02d63fb6246ec0",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ro",
+      "characters": 100,
+      "utf8Bytes": 109,
+      "afterSha256": "46b1d92513a1b83421fd270de4c9e93e3e313eef49b10a0143f45c412ce31b49",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ru",
+      "characters": 100,
+      "utf8Bytes": 188,
+      "afterSha256": "95f67bcd426e83249e43ea2a3f1e0ae07048538008d686fcedf1952c0b287b1b",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "sk",
+      "characters": 100,
+      "utf8Bytes": 116,
+      "afterSha256": "52c00b0f0512ae2a007028c7f29515d9e8bafdf2f701285febea61e91fe61410",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "sl-SI",
+      "characters": 100,
+      "utf8Bytes": 102,
+      "afterSha256": "7c2cf0663f4bab1fb37f1c3d4f41feec77a78f6374d3d5264d425debb2d8b306",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "sv",
+      "characters": 100,
+      "utf8Bytes": 103,
+      "afterSha256": "6f505d77297c73ff4b035610b0745f5ca702d5840812b9f6e1aaac102d36c10d",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ta-IN",
+      "characters": 100,
+      "utf8Bytes": 278,
+      "afterSha256": "4842f6cf486d3cd93d4fd05a2b272dbb5b92e18f924d35477c36f8affdcd95b1",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "te-IN",
+      "characters": 100,
+      "utf8Bytes": 274,
+      "afterSha256": "544478c5382b034695396a5cc450a48171874a614da29816cacb250c76c9ff6a",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "th",
+      "characters": 100,
+      "utf8Bytes": 272,
+      "afterSha256": "e48a1523ce82697ce05f4b2163dba01841992282c2a727eb11fa466eec2d87f7",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "tr",
+      "characters": 100,
+      "utf8Bytes": 109,
+      "afterSha256": "4953682ee77f674136221384c2874aca7fc87b59213075e5c73c21df43c47caa",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "uk",
+      "characters": 100,
+      "utf8Bytes": 189,
+      "afterSha256": "69d579fa7f2fd25df9e37d4ce700b0f9b13128fcad6a798e921e1d23e067e02c",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "ur-PK",
+      "characters": 100,
+      "utf8Bytes": 183,
+      "afterSha256": "0f7bdd2156057a46443b0dd0a2a6231e9c1eb58295416e3cfc4220770d2053e3",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "vi",
+      "characters": 100,
+      "utf8Bytes": 133,
+      "afterSha256": "9ca0cdfcfa60839349b7c175c119c976cbbaa1e4bba5bdb95ed3c1941e0c4632",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "zh-Hans",
+      "characters": 100,
+      "utf8Bytes": 242,
+      "afterSha256": "9eb91080f4f8ff4dd9dda6b7c1063d8f9f08cce9a97107b7bee984f21a25ca9b",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    },
+    {
+      "locale": "zh-Hant",
+      "characters": 100,
+      "utf8Bytes": 242,
+      "afterSha256": "5dbb99ee69049e2c6eb173dc874f2308b7b05ce7f35be20bb0fc49588bd0f85f",
+      "checks": {
+        "beforeMatches": true,
+        "nameMatches": true,
+        "subtitleMatches": true,
+        "valueMapMatches": true,
+        "lengthValid": true,
+        "exactTermRepeats": 0,
+        "exactVisibleTokenDuplicates": []
+      },
+      "decision": "PASS bounded editorial review"
+    }
+  ],
+  "semanticFindings": [
+    "Family/work/personal terms concern calendar use; no subscription Family Sharing entitlement or dedicated workforce/transport/chat product inferred.",
+    "Sharing/invitation/meeting/event terms match current app-sharing and provider workflows, without promising every recipient has editing rights or attends.",
+    "Wind/rain/sunrise/sunset/timezone/recurrence/all-day and actual view terms correspond to documented planning/forecast tasks; no safety certification, infinite forecasts or automatic timezone conversion promised.",
+    "No competitor brand, rankings, measured demand, task automation or reminder automation term introduced. Calendar synonyms in French/Dutch/Portuguese-TraditionalChinese/Hebrew are not exact repetition of their differently worded title."
+  ],
+  "compoundReview": [
+    {
+      "locales": [
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "observation": "家庭 and 家庭安排 share a family stem, but the latter expresses household scheduling. This is partial semantic overlap, not an exact repeated keyword or proven Apple indexing waste. Retained as acceptable under explicit near100Unicode instruction."
+    },
+    {
+      "locale": "vi",
+      "observation": "lịch trình includes title word Lịch but is the natural schedule compound. Removing it solely by substring would change the task phrase; retained."
+    },
+    {
+      "locale": "he",
+      "observation": "לוח שנה and סדר יום share components with standalone year/day words; calendar/agenda/day/year are distinct expressions. No claim of known search-token combination behavior."
+    },
+    {
+      "locale": "tr",
+      "observation": "gün overlaps günlük root in subtitle, but day view is a distinct term. No exact duplicate or proven stemming-based waste."
+    }
+  ],
+  "confidence": "Higher confidence in English and major European-language semantics; moderate CJK and several other languages; lower confidence for nuanced Indic/RTL/Thai usage. Independent cross-agent review is not native-speaker certification or marketplace performance evidence.",
+  "limits": [
+    "Character checks use Unicode code points per user instruction, not UTF8 bytes; bytes reported separately without unsupported100byte limit.",
+    "No claim Apple indexes all terms, combines compounds identically or ranks order as priority.",
+    "API acceptance and final persistence require root write/readback; not performed here.",
+    "No API/source/native/build/deployment actions."
+  ],
+  "requiredChanges": []
+}

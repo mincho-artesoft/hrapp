@@ -1,0 +1,63 @@
+{
+  "slug": "time-zones-and-the-flight-you-booked",
+  "newEdition": true,
+  "sourceFile": "src/app/content/en-US/articles-planning.ts",
+  "sourceModuleRawSha256": "9aae88d851318f7562872f73561a371679ad34728675d8fbb405925360265cec",
+  "sourceObjectSha256": "e146a6c29552c1241b547310ffc6a9cb1286fea6c5bdf40cb5dfc94724ad97d6",
+  "sourceSnapshotRawSha256": "460d932ae303c74241172001b62357faef922b5f19c7c4009ff7fcafbedf9d04",
+  "draftRawSha256": "aae96a8f2de09ac852e5bfee656f085e8bb7a42733cb3d22928bcf01879885ca",
+  "readScope": "Complete current English canonical read and every German field translated and self-reviewed; seven sections including later feed diagnosis, not an earlier six-section edition.",
+  "structure": {
+    "source": {
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 5,
+      "faq": 4,
+      "sources": 4
+    },
+    "draft": {
+      "sections": 7,
+      "paragraphs": 14,
+      "practical": 5,
+      "faq": 4,
+      "sources": 4
+    }
+  },
+  "descriptionUnicodeChars": 145,
+  "exactSourceURLs": true,
+  "datePreserved": true,
+  "claimsEmpty": true,
+  "related": [
+    {
+      "slug": "recurring-events-without-the-mess",
+      "exists": true
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "exists": true
+    }
+  ],
+  "omittedRelated": [
+    {
+      "slug": "weather-where-the-event-is",
+      "reason": "No actual German definition; omitted rather than creating missing route."
+    }
+  ],
+  "discovery": {
+    "providedBy": "Root fresh German query and primary reads",
+    "urls": [
+      "https://support.apple.com/de-at/guide/iphone/iph69525c028/26/ios/26",
+      "https://support.google.com/calendar/answer/37064?co=GENIE.Platform%3DiOS&hl=de-BF"
+    ],
+    "limits": "These are supplied discovery evidence, not fresh web reads by this translation author; German Google page includes AI translation disclaimer. No search volume or rank claim. Exact canonical English source URLs retained."
+  },
+  "semanticChecks": [
+    "Saved event zone separate from display zone.",
+    "Apple Calendar settings not claimed as Cloud controls.",
+    "Google desktop endpoint zones provider-specific; Cloud independent endpoint controls not promised.",
+    "DST recurrence, all-day transfer and feed versus import boundaries retained.",
+    "No deleting account or recreating real invitation as diagnosis."
+  ],
+  "reviewStatus": "Complete self-review, not independent native-speaker approval or runtime certification. Await independent draft review.",
+  "writes": "Research draft, exact EN snapshot and preparation checks only."
+}

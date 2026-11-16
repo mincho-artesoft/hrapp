@@ -1,0 +1,267 @@
+{
+  "prepared_date": "2026-10-22",
+  "canonical_slug": "month-view-on-a-bigger-screen",
+  "article_updated_preserved": "2026-10-22",
+  "source_file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-planning.ts",
+  "source_file_sha256": "9434c86e08aa93aaec948da6fc605ee8cb60f7369562511f688d577178cea8d0",
+  "source_object_sha256": "48fd73f258632da80eb4639c356f3fe27f0f270dd0f9f2871c5eed50b25addc5",
+  "source_object_snapshot": {
+    "updated": "2026-10-22",
+    "title": "Month calendar on iPad and iPhone: see the dates, then check the details",
+    "short": "Use month view without missing details",
+    "description": "Compare dates in month view on iPad or iPhone. Check hidden events, selected calendars and exact times before moving shared or recurring appointments.",
+    "lede": "Month view answers where commitments fall across dates. It is less suited to proving that a particular hour is free. Use the overview to choose a date, then inspect the day and the event before committing. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "commonBelief": "A larger month grid displays every detail, and an apparently empty date proves that everyone is available.",
+    "sections": [
+      {
+        "heading": "Decide whether you need dates or exact hours",
+        "body": [
+          "Use the month to compare a project deadline, a trip and a family appointment across several weeks. When the question becomes whether two appointments overlap at 14:30, switch to a day or week view and inspect their exact start and end. A month cell does not provide the same time scale as an hourly grid.",
+          "For example, an organiser choosing a date for a workshop can first avoid a travel week. The next check is the proposed day: existing commitments, preparation, travel and the required finish. A clear-looking cell is a candidate to investigate, not a confirmed booking or a statement of other people’s availability."
+        ]
+      },
+      {
+        "heading": "Read the overflow instead of counting only visible titles",
+        "body": [
+          "Cloud Calendars’ current month cell shows a limited set of event chips and an additional-count label when more events belong to the date. Titles are kept to a line, so they can shorten. Open the day or the individual event when the full title or remaining commitments matter.",
+          "A bigger iPad display can make the overview easier to read, but do not assume that more physical space removes every display limit. A narrow app window or larger text can change what fits. Keep the same check on iPhone: inspect the underlying day before treating the visible chips as the complete schedule."
+        ]
+      },
+      {
+        "heading": "Check the month, selected calendars and adjacent dates",
+        "body": [
+          "Read the displayed month and year before choosing a date. A month grid can include dates from an adjacent month to complete its rows. In Cloud Calendars, use the month navigation and inspect the selected date rather than relying on the position of a square alone.",
+          "Check which calendars are selected. Hiding work events may help you read a family plan, but it also removes those commitments from that particular overview. If you are diagnosing a duplicate, temporarily hide one source and compare; do not delete an appointment merely to make the month less crowded."
+        ]
+      },
+      {
+        "heading": "Open an event before changing a shared arrangement",
+        "body": [
+          "Confirm the title, owner or calendar, local time and duration in the event details. A colour is useful for scanning, but it is not a substitute for knowing the account or whether you may edit the event. A visible invitation is different from an appointment you organise yourself.",
+          "Cloud Calendars has a month drag-and-drop path for moving events to another date. Before using it on a real commitment, establish the intended date and recurrence scope. After a permitted change, reopen the event and check the result; a local gesture is not proof that a provider or every participant has accepted the new arrangement."
+        ]
+      },
+      {
+        "heading": "Treat repeating events and time zones as separate checks",
+        "body": [
+          "If only this week’s lesson moves, do not accidentally change its future pattern. Read the available repeat-scope choice and inspect both the changed occurrence and a later one afterwards. The month view makes repeated dates easy to compare, but the edit scope determines what the change means.",
+          "For travel or a meeting across time zones, inspect the event’s local date and time explicitly. Moving an event to a different day is not an automatic conversion of the intended meeting time. Check daylight-saving transitions when relevant, and confirm the agreed time with the people involved."
+        ]
+      },
+      {
+        "heading": "Use the larger view without confusing it with other products",
+        "body": [
+          "Apple Calendar offers its own month display choices, while Teamup documents different browser and mobile view sets. Those controls belong to their respective products. Do not look for Teamup’s browser configuration or Apple Calendar’s view menu inside Cloud Calendars just because the layouts have the same name.",
+          "A month of appointments also is not a month of weather forecasts. For an outdoor plan, check the intended place, date and available forecast hours separately. Save the final appointment to the intended calendar and confirm any changed arrangement directly with participants."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Use month view to shortlist dates, then inspect exact hours in day or week view.",
+      "Open days with an additional-count label or shortened titles.",
+      "Check month, year and selected calendars before assuming a date is clear.",
+      "Confirm the event’s calendar, time, duration and edit permission.",
+      "Read recurrence scope and verify the saved occurrence after a move.",
+      "Check weather availability separately and confirm changes with participants."
+    ],
+    "faq": [
+      {
+        "q": "Does iPad month view display every appointment in full?",
+        "a": "Do not assume that. Cloud Calendars limits the event chips in a month cell and uses an additional-count label. Open the day and event to inspect the full schedule."
+      },
+      {
+        "q": "Does an empty day mean I am free?",
+        "a": "First check the selected calendars, the date and whether relevant account data is present. The overview only represents the information currently available and displayed."
+      },
+      {
+        "q": "Does moving a recurring event change only that date?",
+        "a": "Read the edit-scope choice rather than assuming. After saving, inspect the changed occurrence and a later one, then confirm the intended arrangement."
+      }
+    ],
+    "sourcesHeading": "Compare the official view descriptions",
+    "sources": [
+      {
+        "label": "Apple: month, multiple-day and list views in Apple Calendar",
+        "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+      },
+      {
+        "label": "Teamup: calendar views and browser versus app configuration",
+        "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+      }
+    ],
+    "seeAlso": [
+      "a-week-view-that-fits-a-week",
+      "drag-an-event-to-move-it",
+      "recurring-events-without-the-mess",
+      "time-zones-and-the-flight-you-booked"
+    ]
+  },
+  "checks": {
+    "pt-BR": {
+      "description_characters": 152,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "00b13736c459ecdcbbac224a259387d67f93560a199f336b0322f48c502611eb"
+    },
+    "ro": {
+      "description_characters": 145,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "afcb9f1f1e00c14d5c1bbdf2aa7090a7da12ccf27cdb36b5617fa6ab3ef7fb82"
+    },
+    "ru": {
+      "description_characters": 138,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "71eb52f435c2279bfb494a6662cbaf927c68f46f300b7eea3b816934c4d5e2fa"
+    },
+    "sv": {
+      "description_characters": 143,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "ef2499cf79351d0415e8d984dafaa9957bf332462272f340cf938de117d90f37"
+    },
+    "tr": {
+      "description_characters": 154,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "ac2c8165f20cbe0279fb78b13ee81f53a2c1d0ef13f4c023e465bd4a4c762446"
+    },
+    "vi": {
+      "description_characters": 134,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "82084b13e1035f0171a815bfac872590c45110329c0e9421e1389d64a4b2b2e7"
+    },
+    "th": {
+      "description_characters": 114,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "d7d491ff5053af96fd7700f45588e7b44c7cbc040df19f2acaba57c0c5f2adc2"
+    },
+    "zh-Hans": {
+      "description_characters": 53,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "4e265c45906fa3d56ecfad21917c3e39560baa7f567665675b09fd95e16ca1af"
+    },
+    "zh-Hant": {
+      "description_characters": 50,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sha256": "198336e54990c7ab2dbc66cf14a4e8e1d41fecd610d117fe8812b36de73b5534"
+    }
+  },
+  "scope": {
+    "objects": 9,
+    "sections": 54,
+    "paragraphs": 108,
+    "practical_steps": 54,
+    "faqs": 27
+  },
+  "semantic_review": [
+    "Date overview differs from exact-hour availability.",
+    "Limited chips and additional count retained; larger display not full-schedule guarantee.",
+    "Selected calendars and adjacent dates checked before assuming availability.",
+    "Event identity, edit permission, destination and recurrence scope verified before/after moves.",
+    "Local gesture not proof of provider or participant acceptance.",
+    "Time zones and weather availability checked separately.",
+    "Apple and Teamup controls explicitly belong to those products."
+  ],
+  "limits": [
+    "Original translations without paid translation API.",
+    "No independent native-speaker certification.",
+    "Only assigned research drafts; no integrated source, native changes, build or deployment."
+  ]
+}

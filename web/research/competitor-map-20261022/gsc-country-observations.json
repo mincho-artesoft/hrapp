@@ -1,0 +1,86 @@
+{
+  "observedAt": "2026-10-22T20:53:19.831Z",
+  "property": "sc-domain:cloud-calendars.com",
+  "source": "Actual Search Console Web Performance UI, selected 3 months",
+  "range": "2026-08-25 to 2026-10-20",
+  "scope": "First ten visible country rows, ordered by clicks; not full country export",
+  "rows": [
+    [
+      "Country",
+      "Clicks",
+      "Impressions",
+      "CTR",
+      "Position"
+    ],
+    [
+      "United States",
+      "13",
+      "45,861",
+      "0%",
+      "9.7"
+    ],
+    [
+      "Poland",
+      "6",
+      "359",
+      "1.7%",
+      "6.0"
+    ],
+    [
+      "Japan",
+      "5",
+      "831",
+      "0.6%",
+      "6.3"
+    ],
+    [
+      "Thailand",
+      "5",
+      "153",
+      "3.3%",
+      "9.4"
+    ],
+    [
+      "Spain",
+      "3",
+      "214",
+      "1.4%",
+      "7.0"
+    ],
+    [
+      "Taiwan",
+      "3",
+      "183",
+      "1.6%",
+      "7.0"
+    ],
+    [
+      "Russia",
+      "3",
+      "123",
+      "2.4%",
+      "7.9"
+    ],
+    [
+      "Brazil",
+      "2",
+      "329",
+      "0.6%",
+      "7.9"
+    ],
+    [
+      "Netherlands",
+      "2",
+      "279",
+      "0.7%",
+      "7.4"
+    ],
+    [
+      "Czechia",
+      "2",
+      "127",
+      "1.6%",
+      "8.7"
+    ]
+  ]
+}

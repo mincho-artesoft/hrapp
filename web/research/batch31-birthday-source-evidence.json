@@ -1,0 +1,386 @@
+{
+  "date": "2026-10-22",
+  "decision": "Enough evidence for a bounded source-identification section in existing all-day guide; standalone birthday guide not justified yet. No draft created.",
+  "input": {
+    "file": "research/batch31-next-discovery.json",
+    "rawSha256": "e88e493f94d6ab891759ffeea899f27c6e906fd47ef233d365ffff166973fe6e",
+    "readScope": "Complete task, nextAction/specificQuestions, primaryReads and existingCoverageComparison fields explicitly reread after initial whole-file output truncation. Not a fresh full read of all 55 articles or every inventory entry."
+  },
+  "method": "Read-only native implementation/caller inspection; bounded backend source keyword search. No web fetch: official provider findings below remain attributed to the supplied fresh discovery record. No operation executed against app, account, calendar, Contacts or production.",
+  "answers": [
+    {
+      "question": "Does Cloud display the Apple system Birthdays source through EventKit and under which calendar selection/read-permission conditions?",
+      "finding": "Conditional device-calendar path established, not universal display. reloadCalendars takes EventKit event calendars without a birthday exclusion. Month loading requires full calendar read authorization on modern iOS and passes selected identifiers to EventKit fetching; the actual fetch likewise has no birthday-type exclusion. List row presentation explicitly recognizes EventKit birthday calendars. Thus a system Birthdays calendar and events actually exposed by EventKit can participate in this selected-calendar path.",
+      "importantLimit": "multiCalendarsDict explicitly excludes .birthday and .subscription, and the new-event destination resolver excludes them as writable destinations. Do not promise birthday presence in every view or editing of generated birthdays. Actual device exposure, account setup and installed release behavior were not tested.",
+      "proof": [
+        "CalendarViewModel602–609,667–678,769–786,840–859,905–947",
+        "EKEventStore+Еxtension24–62",
+        "EventRowView1–38",
+        "CalendarsSheetView444–468,800–820"
+      ],
+      "selectionUI": "Other section lists otherCalendars and uses selected IDs/toggleCalendar. The grouping depends on source/local/iCloud/provider-mirror identity; do not promise a system birthday is always under a particular translated group."
+    },
+    {
+      "question": "Do direct Google calendar downloads include provider birthday events or special birthday-calendar cases, and are updates one-time or recurring?",
+      "finding": "Generic direct-Google calendar-list/event download and all-day conversion exist. CalendarList fetch returns decoded items from one response; event pages iterate nextPageToken with a finite date window, expanded singleEvents and no eventTypes parameter. GoogleEventItem does not model eventType or birthdayProperties/contact identity. Returned events with date-only start/end are converted to ordinary all-day EventKit records.",
+      "oneTimeVersusRepeated": "The explicit one-time special case checks the Google holiday@group.v.calendar.google.com identifier. It is not a birthday-title test. Other mapped selected calendars can download on subsequent sync calls; a scheduled sync loop exists, but neither successful response contents nor any background/update deadline is proven. Do not call Google birthday imports one-time from the Microsoft helper: the separate Microsoft helper uses holiday/birthdays name matching.",
+      "unestablished": [
+        "Whether Google currently returns a particular contact-linked or manually created birthday through this account/API call and permissions.",
+        "Complete birthday-calendar visibility, especially with unpaginated CalendarList handling.",
+        "Preservation/editing of birthday-specific linkage, age/year semantics or Google Contacts propagation.",
+        "A successful write-back for special birthday event types."
+      ],
+      "proof": [
+        "CalendarViewModel1109–1148,1150–1179,1198–1259,1302–1363,1401–1495,1499–1562,1849–1914,2201–2224",
+        "Separate Microsoft classification3226–3237,3350–3390"
+      ]
+    },
+    {
+      "question": "Does Cloud itself read/edit contact birthday fields, or must a provider/system Contacts editor be used?",
+      "finding": "No contact birthday-field import/edit path established. Important correction to a possible overbroad interpretation: Cloud does access Contacts in inspected source. Calendar-list Google sign-in requests calendar/contact read scopes, then calls Google connections and otherContacts import functions. These request only names,emailAddresses,phoneNumbers; Person/GoogleContact models contain no birthday. With iOS Contacts permission, the code creates/updates local names, email and phone fields using CNSaveRequest. A separate sharing picker reads contact email addresses.",
+      "editorialBoundary": "Do not say Cloud never reads/writes contacts or that connecting Google imports contact birthdays. For contact-derived birthdays, identify the owning provider/contact card and follow that provider’s current source-edit instructions. Apple and Google edit/delete/sync semantics must remain separately attributed. A manual yearly event is a different record.",
+      "proof": [
+        "CalendarsSheetView697–707",
+        "CalendarViewModel226–268,4674–4786,4800–5015",
+        "GoogleCalendarSharingView635–664"
+      ],
+      "limits": "No assertion of periodic contact synchronization or contact birthday preservation/deletion outcome; the actual reviewed save paths do not assign birthday fields. Source presence is not released behavior."
+    },
+    {
+      "question": "Which existing widget and alert limitations apply to these all-day records without promising a birthday-specific widget or reminder?",
+      "finding": "Upcoming-event widget snapshots and Live Activity filter out all-day events and past/started records. This applies to an all-day birthday without requiring a special birthday rule. Event notifications differ: they can include all-day records but require actual alarms, selected calendars, enabled app notifications and allowed system authorization; scheduling has finite budgets and future-fire-date checks.",
+      "importantLimits": [
+        "No birthday-specific widget, automatic birthday alarm or audible/delivery guarantee.",
+        "The direct Google event DTO does not carry reminders and the inspected new-local-event conversion creates no EKAlarm. Do not imply that Google birthday reminders accompany a mirrored all-day record.",
+        "All-day notification-body support is not proof every system birthday exposes alarms or that Apple Calendar default birthday alerts are reproduced.",
+        "An omitted widget entry is not evidence of lost calendar/contact data."
+      ],
+      "proof": [
+        "CalendarWidgetStore174–230,235–265",
+        "CalendarLiveActivityManager149–188",
+        "EventNotificationManager57–66,161–180,221–242,244–391",
+        "CalendarViewModel1849–1914,2201–2224"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "rawSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        {
+          "first": 226,
+          "last": 268,
+          "rangeRawSha256": "20556c8621c0e862e11eee36c915af51d981df0d5665fe391454614466de5ca8"
+        },
+        {
+          "first": 602,
+          "last": 609,
+          "rangeRawSha256": "ca568461186e32b5071c5fb5474553873a97168baa486ef747a27c68848abd0f"
+        },
+        {
+          "first": 667,
+          "last": 678,
+          "rangeRawSha256": "635d4c9d40e5ef27b5469a157abdf681a291c02fda14c72cb083a4fc11b1670c"
+        },
+        {
+          "first": 769,
+          "last": 786,
+          "rangeRawSha256": "10b1ab67ff886c73684f275efa837b7562a3c3a228d811bb992f1e89c5e67a56"
+        },
+        {
+          "first": 840,
+          "last": 859,
+          "rangeRawSha256": "edaa412ca1c3d2998aa21f804adc150c1021f0e79a3d911b3d4bdbbfc777ae12"
+        },
+        {
+          "first": 905,
+          "last": 947,
+          "rangeRawSha256": "d9c39b9dec531a979d8f89d20347cb97d799db80afa940dc6a58e7569d2b5959"
+        },
+        {
+          "first": 968,
+          "last": 989,
+          "rangeRawSha256": "862e1774ee41cdf3c9b73bd8c7990b496072f92367915e23f0f094031bebc111"
+        },
+        {
+          "first": 1109,
+          "last": 1148,
+          "rangeRawSha256": "f66d188385b12e10b63244c15fcd2b31a5feab1478196fad0f6d2b802876907e"
+        },
+        {
+          "first": 1150,
+          "last": 1179,
+          "rangeRawSha256": "0f5ffefc82eb1aee34e1d7beecd11af0565509040c1e14fc1b9d95a1ca20fbaf"
+        },
+        {
+          "first": 1198,
+          "last": 1259,
+          "rangeRawSha256": "033aabe7ffac2eb4e77f60f2147404f67bd3e2679ef46f0c5b2e4ea84a54c3cf"
+        },
+        {
+          "first": 1302,
+          "last": 1363,
+          "rangeRawSha256": "db886252c2c3ec6bfa3585f149f0b486a6d8c19605021099f2a6c4341410e4c0"
+        },
+        {
+          "first": 1401,
+          "last": 1495,
+          "rangeRawSha256": "1df74a6570b9272cf98fd2b6c8dfaaffea443e8d887a1027633a5d22c049b031"
+        },
+        {
+          "first": 1499,
+          "last": 1562,
+          "rangeRawSha256": "139f94d0ccc98c13eeaa7d280df4573987ed38bd6543d44ae262d17a45b1f105"
+        },
+        {
+          "first": 1849,
+          "last": 1914,
+          "rangeRawSha256": "f6daa17db63bdcf738c49c37aa9885b9f44ea2e2ae9783cb9063d3a45d663c8f"
+        },
+        {
+          "first": 2201,
+          "last": 2224,
+          "rangeRawSha256": "6890aabcb76ac2fe6ba69838b3496035ebd177046bf6db79246ad5aca88a8c1d"
+        },
+        {
+          "first": 3226,
+          "last": 3237,
+          "rangeRawSha256": "d5b19b08f2d76167c29d3c486d8f1d6d981c443817b38f2771899370b6a46bf2"
+        },
+        {
+          "first": 3350,
+          "last": 3390,
+          "rangeRawSha256": "28ad87d07214e870d7b826c24031e79a4a5e71afe1ac10215ae45699d74e700f"
+        },
+        {
+          "first": 4674,
+          "last": 4786,
+          "rangeRawSha256": "cc097aad1beadbf150f9ddc33f796505d0b522effe28e64d76699f1a910d7282"
+        },
+        {
+          "first": 4800,
+          "last": 5015,
+          "rangeRawSha256": "cb7c145be244c8ba8e674052c71c51118518a99e5be705588c8d346b13fa1a1c"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Еxtensions/EKEventStore+Еxtension.swift",
+      "rawSha256": "a37fc94ca6e31c2d4f54f2cc8381e5b316e05bb7ecca0e28d1def751b3b6ccd9",
+      "readRanges": [
+        {
+          "first": 24,
+          "last": 62,
+          "rangeRawSha256": "f422c3458f64ee4635797cf8f17e811a6a867c6240ff08377b57fdbd1736b119"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "rawSha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        {
+          "first": 444,
+          "last": 468,
+          "rangeRawSha256": "80c27442b4f41c1a94bae4f2047ab8234c758987c1f25dffbd4e826bb283e2aa"
+        },
+        {
+          "first": 697,
+          "last": 707,
+          "rangeRawSha256": "88fce168439c766b76da4380457305a09de136e84c59929da24a38d4d1037718"
+        },
+        {
+          "first": 800,
+          "last": 820,
+          "rangeRawSha256": "e8b567dabe338e1ce08803d5f4273a99e66722dea401afa7eba820f4b0ab1758"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/ListView/EventRowView.swift",
+      "rawSha256": "91787f13af5b845d17b3aa9f680780a970ca6b762e2f23be2ec44b17f7d48088",
+      "readRanges": [
+        {
+          "first": 1,
+          "last": 38,
+          "rangeRawSha256": "bc650c3920ba6e1adba18317558fb6d66587ee9aa96c146f5754be90ce48e6d0"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/GoogleCalendarSharingView.swift",
+      "rawSha256": "5dd9e8bee53e5ddcefbd9f9f82bea5278d9f86e2152a9fb60d3e0df489685156",
+      "readRanges": [
+        {
+          "first": 635,
+          "last": 664,
+          "rangeRawSha256": "b8ade6632425906e948241d30af67e2b5b12bfeab1ec0bd78e917de09a968ee9"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "rawSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "readRanges": [
+        {
+          "first": 174,
+          "last": 230,
+          "rangeRawSha256": "a79e9194d296fe25de6aa30a859d5b97e677d8cc535d8d0708cb8eb94478131e"
+        },
+        {
+          "first": 235,
+          "last": 265,
+          "rangeRawSha256": "3505f6a13d8bd2bf8bf7f3e39c50488204b160486a909efec28a91e789550493"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarLiveActivityManager.swift",
+      "rawSha256": "0c558abc2c57c6fc07a45fbd76b1dc149a3b303117d4edef6e301fe57d1247db",
+      "readRanges": [
+        {
+          "first": 149,
+          "last": 188,
+          "rangeRawSha256": "69eeb0e2492703789a205e3e3eb7a8bd5498c87114fa25cfb4892f28e0f187c5"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+      "rawSha256": "d664f53078277e526245eca8aa38de1660faed643f5b992e761f4db4566ce26a",
+      "readRanges": [
+        {
+          "first": 57,
+          "last": 66,
+          "rangeRawSha256": "dd57b6919a012b9fd329129b2a0c6d07f8a1809f4ba03bcc97944d1aefc2d414"
+        },
+        {
+          "first": 138,
+          "last": 156,
+          "rangeRawSha256": "43c6d5bec3efd4c705e5df02e04c4b4f2756c88c57c9b4512aeb0eed8faf151f"
+        },
+        {
+          "first": 161,
+          "last": 180,
+          "rangeRawSha256": "b6daa73f7ff57f45a64a3145cae5e646a961bc2520f7ac1625809794a719cff3"
+        },
+        {
+          "first": 221,
+          "last": 242,
+          "rangeRawSha256": "2e083c61c8b1051a18094aa2d425ea8d8949a8497de4cfe3ce87fe984f0da38d"
+        },
+        {
+          "first": 244,
+          "last": 391,
+          "rangeRawSha256": "9695925fded36d06a2c89e65bf2c45e27efb8defcc34f4df06f55a409e3ea12c"
+        }
+      ]
+    }
+  ],
+  "negativeSearches": [
+    {
+      "scope": "Calendar, CalendarAppClip and CalendarWidget *.swift/*.plist; source only",
+      "terms": [
+        "birthday",
+        "birthdayProperties",
+        "CNContact",
+        "CNContactStore",
+        "ContactsUsage",
+        "people.googleapis",
+        "contacts.readonly",
+        "CNContactBirthdayKey",
+        "CNContactNonGregorianBirthdayKey",
+        "birthday assignment",
+        "eventTypes"
+      ],
+      "result": "Birthday display/exclusion and Microsoft name-special-case hits; People/Contacts import hits read. No CN birthday-key/property assignment or Google birthdayProperties/eventTypes handling found in this bounded source search. No global absence claim."
+    },
+    {
+      "scope": "backend src/**/*.ts, no logs/config/credentials/customer artifacts",
+      "terms": [
+        "birthday",
+        "CNContact",
+        "people.googleapis",
+        "contacts.readonly",
+        "birthdayProperties",
+        "Contacts",
+        "contacts"
+      ],
+      "result": "No matches. This is a bounded lexical search, not full backend semantic proof.",
+      "searchedTsFileCount": 27,
+      "sourceManifestSha256": "8d432b9cdad9b08de582af7e7a2c439cb6221830fc1d84e9a0e6ed25779a4995"
+    }
+  ],
+  "recommendedNextAction": {
+    "canonical": "what-an-all-day-event-really-means",
+    "type": "one_source_identification_section_before_editing_advice",
+    "contentRequirements": [
+      "Distinguish Apple contact-derived birthday, Google Contacts-linked or manual Google birthday, and ordinary manually repeated all-day event.",
+      "Check original account/contact card and provider view before adding another annual event; do not use deletion or disabling Google contact sync as a harmless visibility test.",
+      "For Cloud display, check available device calendar, full calendar access and selection; use another supported view if relevant, without promising identical view support.",
+      "Direct readers to existing widget and alert guides rather than repeat them.",
+      "Attribute Google app contact-update/removal effects and Apple Contacts edit route to their exact primary pages; do not claim equivalent Cloud birthday controls."
+    ],
+    "whySectionFirst": "The supplied complete-body comparison establishes existing all-day date, widget and alert coverage. New confirmed value is source identification, not a verified dedicated Cloud birthday workflow. It fits a focused section; six independent new-guide sections would currently require repetition or unsupported product-specific steps.",
+    "standaloneGate": "Consider a separate source-diagnosis guide only if a fuller provider-labelled decision workflow demonstrates distinct reader value and remaining API/release limits remain explicit. Do not invent Cloud birthday support to justify a route."
+  },
+  "primaryEvidenceRetained": [
+    {
+      "url": "https://dailylifeapps.com/birthday-reminder/blog/how-to-show-birthdays-from-contacts-in-iphone-calendar",
+      "recordedScope": [
+        [
+          5,
+          190
+        ]
+      ],
+      "freshFetchThisAudit": false,
+      "use": "Provider-labelled source editing distinctions only; competitor app behavior not Cloud capability."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB",
+      "recordedScope": [
+        [
+          17,
+          67
+        ]
+      ],
+      "freshFetchThisAudit": false,
+      "use": "Provider-labelled source editing distinctions only; competitor app behavior not Cloud capability."
+    },
+    {
+      "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud",
+      "recordedScope": [
+        [
+          277,
+          321
+        ]
+      ],
+      "freshFetchThisAudit": false,
+      "use": "Provider-labelled source editing distinctions only; competitor app behavior not Cloud capability."
+    }
+  ],
+  "limitations": [
+    "No runtime, installed-build, production/backend release or App Store binary correspondence established.",
+    "No native/backend edits, builds, simulators, provider requests, customer/contact queries, credential reads, deployment or commit.",
+    "Some initial combined source outputs truncated; decisive ranges were reread separately. Only listed relevant ranges count as inspection; not entire CalendarViewModel.",
+    "No new privacy assurances or disclosure conclusions; contact-path finding is factual current-source evidence."
+  ],
+  "separateReleasePrivacyCorrespondenceFinding": {
+    "status": "current_source_fact_only_released_correspondence_unresolved",
+    "finding": "Reachable Google calendar sign-in invokes Google People API contact retrieval and permitted iOS Contacts create/update operations for name/email/phone fields. This is distinct from birthday-field support.",
+    "reachableCallChain": [
+      "Calendar/Calendar/CalendarsSheetView.swift697–707: user-facing Google sign-in button calls CalendarViewModel.signInWithGoogle",
+      "Calendar/Sources/CalendarViewModel.swift226–268: requested scopes and successful sign-in calls to both contact import functions",
+      "Calendar/Sources/CalendarViewModel.swift4674–4786: contact model, connections request, Contacts permission and importer call",
+      "Calendar/Sources/CalendarViewModel.swift4800–5015: otherContacts request, lookup keys and actual CNSaveRequest update/add paths"
+    ],
+    "hashEvidence": "Exact whole-file and listed range hashes are in evidence. No live Contacts entries or network requests inspected.",
+    "notEstablished": [
+      "That public App Store1.7.3 executes this exact path or source revision.",
+      "Actual permission grants, API success, imported data or storage/account outcome.",
+      "Production retention, deletion, disclosure accuracy or legal status."
+    ],
+    "actionBoundary": "Retain for owner/release correspondence review. No privacy policy, ASC declaration or production configuration change; do not publish a blanket statement that Cloud never accesses Contacts."
+  }
+}

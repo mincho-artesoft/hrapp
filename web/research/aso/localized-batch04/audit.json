@@ -1,0 +1,76 @@
+{
+  "status": "ten_proposals_ready_for_editorial_review_not_applied",
+  "locales": [
+    "ar-SA",
+    "he",
+    "hi",
+    "cs",
+    "da",
+    "fi",
+    "no",
+    "hu",
+    "ro",
+    "uk"
+  ],
+  "prepared": 10,
+  "applied": 0,
+  "scope": "Fresh GET of 1.7.4 PREPARE_FOR_SUBMISSION version and appInfo. All ten locales present; no substitutions. No native edits, ASC mutation, submissions or deployments.",
+  "productFactsReviewed": [
+    "platforms",
+    "views",
+    "google",
+    "advanced",
+    "premium",
+    "local",
+    "weather",
+    "weather_details",
+    "widgets",
+    "live_activity",
+    "sharing",
+    "accounts",
+    "server_processing",
+    "travel"
+  ],
+  "previousExamplesReviewed": [
+    "../localized-batch03/nl-NL-proposal.json",
+    "../localized-batch03/pt-PT-proposal.json",
+    "../localized-batch03/zh-Hant-proposal.json"
+  ],
+  "allocation": "Keep current title identity exactly. Subtitle expresses weather and appointments/widgets. Keywords allocate localized planning, meeting/event, reminders, view periods, sharing/invitations and forecast terms. No provider trademarks or competitor names added to hidden keywords; no padding to fill limit.",
+  "claims": "Descriptions explicitly explain free Base Google sync/Meet/views/weather/widgets, Advanced ad removal and Premium Microsoft/Teams. Local calendars do not require an app account; connected services and sharing may require sign-in. Forecast availability and sharing permissions qualified. Every description includes checking current local price and billing period before subscribing. No fixed prices, 14-day promise, universal Exchange, standalone Lock Screen widget or no-data guarantee.",
+  "validation": "All names exactly preserved. All 30/30/100/170/4000 character limits pass. UTF-8 bytes separately reported; no byte threshold enforced. No exact keyword duplicates or exact title/subtitle token overlap. Code-point counts include Hindi combining marks; not a rendered-text review.",
+  "languageConfidence": {
+    "ar-SA": "medium; model-authored, no native-speaker review",
+    "he": "medium; model-authored, no native-speaker review",
+    "hi": "medium; model-authored, no native-speaker review",
+    "cs": "medium; model-authored, no native-speaker review",
+    "da": "medium; model-authored, no native-speaker review",
+    "fi": "medium; model-authored, no native-speaker review",
+    "no": "medium; model-authored, no native-speaker review",
+    "hu": "medium; model-authored, no native-speaker review",
+    "ro": "medium; model-authored, no native-speaker review",
+    "uk": "medium; model-authored, no native-speaker review"
+  },
+  "reviewNotes": [
+    "Arabic/Hebrew: check mixed RTL/LTR display around provider names and URLs in ASC preview. No hidden directional controls inserted.",
+    "Hindi: count includes combining marks; review grammar and product terminology with native speaker.",
+    "Finnish/Hungarian: inflected names remain readable but confirm chosen tier labels against shipped UI.",
+    "Norwegian: Bokmål copy uses no locale key requested and present in ASC; no invented locale.",
+    "Current-price/billing-period check is informational, not a guarantee about available plans or regional prices."
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ],
+  "measurement": "No measured search volume, rank, conversion improvement or citation claim."
+}

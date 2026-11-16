@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-21",
+  "status": "editorial_candidates_not_published_or_ranked",
+  "priorityOrder": [
+    "sync-versus-subscription",
+    "combine-calendars",
+    "sharing-permissions",
+    "calendar-views",
+    "widgets",
+    "work-personal-filtering",
+    "sync-troubleshooting",
+    "timezones",
+    "tasks-timeblocking"
+  ],
+  "coverageMeaning": "These are original editorial opportunities suggested by reviewed sources. No assertion that Cloud Calendars currently lacks these articles; site inventory must be checked before assigning canonical routes.",
+  "clusters": [
+    {
+      "id": "sync-versus-subscription",
+      "keywordCandidates": [
+        "sync calendar iPhone iPad",
+        "Google calendar Apple calendar sync",
+        "calendar subscription vs sync"
+      ],
+      "sourceIds": [
+        "readdle-sync",
+        "timepage-sync",
+        "google-sync-vs-subscribe",
+        "google-apple"
+      ],
+      "proposedTitle": "Why calendar sync, subscription and app accounts are different",
+      "originalContribution": "Use a four-row decision table: provider account, app account, subscription URL, imported file. Walk through one named event appearing on two devices and identify the owning calendar.",
+      "publicationGate": "Verify supported Cloud Calendars account types and read/write behavior before any product setup steps.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "combine-calendars",
+      "keywordCandidates": [
+        "merge calendars iPhone",
+        "combine Google Outlook calendars",
+        "multiple calendars one view"
+      ],
+      "sourceIds": [
+        "readdle-merge",
+        "readdle",
+        "busycal"
+      ],
+      "proposedTitle": "Combine calendars without accidentally copying your events",
+      "originalContribution": "Distinguish displaying multiple sources from migrating events; use work/personal color labels and destination-calendar checks. Do not prescribe account deletion.",
+      "publicationGate": "Verify whether Cloud Calendars aggregates device calendars, connects providers, or both.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "sharing-permissions",
+      "keywordCandidates": [
+        "shared calendar iPhone",
+        "family calendar iPhone",
+        "read only shared calendar",
+        "calendar invite vs shared calendar"
+      ],
+      "sourceIds": [
+        "apple-share",
+        "google-share",
+        "readdle-sharing-index"
+      ],
+      "proposedTitle": "Share an event or a calendar: choose the right access",
+      "originalContribution": "Original matrix: one-event guest, private editable calendar, read-only subscription, public URL. Show acceptance and ownership checks, and explain why family subscription access differs from shared calendar data.",
+      "publicationGate": "Verify Cloud Calendars native sharing mechanism and recipient requirements; avoid assuming Apple or Google steps are its own.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "calendar-views",
+      "keywordCandidates": [
+        "month view calendar iPhone",
+        "weekly calendar planner iPad",
+        "agenda vs month view"
+      ],
+      "sourceIds": [
+        "readdle",
+        "busycal",
+        "timepage",
+        "timepage-heatmap"
+      ],
+      "proposedTitle": "Choose a calendar view for the question you need answered",
+      "originalContribution": "Compare spotting free time, reading full event titles, finding a date and reviewing a busy month using one original illustrative week. No best-app rankings.",
+      "publicationGate": "Verify exact supported views and tablet layout.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "widgets",
+      "keywordCandidates": [
+        "calendar widget iPhone",
+        "calendar widget iPad",
+        "next event widget",
+        "calendar widget missing events"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "readdle",
+        "fantastical-widgets-historical"
+      ],
+      "proposedTitle": "Choose a month, next-event or agenda widget",
+      "originalContribution": "Explain purpose, visible-calendar selection and private event-title exposure. Diagnose an absent event by first checking app view and selected calendars. Use current Apple widget documentation before instructions.",
+      "publicationGate": "Verify supported Cloud Calendars widget families/surfaces and refresh limits; never promise instant refresh.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "work-personal-filtering",
+      "keywordCandidates": [
+        "separate work personal calendar",
+        "color code calendars iPhone",
+        "hide calendar events view"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "busycal",
+        "readdle"
+      ],
+      "proposedTitle": "Keep work and personal plans readable in one calendar",
+      "originalContribution": "Use a simple color/visibility scheme, clarify hiding is not deletion, and make a weekly availability review. Separate calendar filtering from permission changes.",
+      "publicationGate": "Verify Cloud Calendars filtering and coloring controls; no claim of Focus Filter integration without proof.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "sync-troubleshooting",
+      "keywordCandidates": [
+        "calendar events missing iPhone iPad",
+        "calendar not syncing",
+        "old calendar events missing"
+      ],
+      "sourceIds": [
+        "readdle-troubleshooting-index",
+        "timepage-sync",
+        "google-apple"
+      ],
+      "proposedTitle": "Find which layer is hiding a calendar event",
+      "originalContribution": "Decision sequence: locate owning provider, verify event exists there, check account and calendar visibility, compare another device, then provider-specific support. Distinguish missing history from lost data.",
+      "publicationGate": "Read full official troubleshooting bodies; do not copy destructive reset/full-sync advice or guarantee recoverability.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "timezones",
+      "keywordCandidates": [
+        "calendar time zone travel",
+        "schedule meeting different time zones"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "busycal"
+      ],
+      "proposedTitle": "Plan a meeting across time zones without changing its meaning",
+      "originalContribution": "Original example contrasts event time zone, device display zone and all-day date. Address daylight-saving changes with dated examples after primary verification.",
+      "publicationGate": "Verify Cloud Calendars time-zone support; do not transfer competitor favorite-zone features.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    },
+    {
+      "id": "tasks-timeblocking",
+      "keywordCandidates": [
+        "calendar tasks vs events",
+        "time blocking iPhone calendar"
+      ],
+      "sourceIds": [
+        "readdle",
+        "busycal"
+      ],
+      "proposedTitle": "Turn a task list into a realistic calendar day",
+      "originalContribution": "Explain due date versus reserved time, add travel/buffer intervals and show rescheduling an unfinished block. Treat manual events as generic workflow if no task integration.",
+      "publicationGate": "Verify task/Reminders integration before product claims; further primary task documentation required.",
+      "status": "candidate_requires_product_and_site_verification",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null
+    }
+  ]
+}

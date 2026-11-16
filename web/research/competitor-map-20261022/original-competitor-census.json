@@ -1,0 +1,1071 @@
+{
+  "date": "2026-10-23",
+  "scope": "The original fifteen named competitors from ai-visibility/prompts.json. New observed products are additional; this registry prevents ignoring the original scope.",
+  "products": [
+    {
+      "product": "Fantastical",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "weather",
+          "query": "best iPhone calendar app with weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 4,
+              "heading": "Fantastical Calendar - App Store",
+              "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Fantastical — The calendar and tasks app you won't be ...",
+              "url": "https://flexibits.com/fantastical"
+            }
+          ]
+        },
+        {
+          "queryId": "alternative",
+          "query": "best Fantastical alternative iPhone calendar",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical (calendar) alternatives? : r/macapps",
+              "url": "https://www.reddit.com/r/macapps/comments/17voupx/fantastical_calendar_alternatives/"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Best Fantastical Alternatives in 2026",
+              "url": "https://lifestack.ai/blog/fantastical-alternative"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Best Fantastical Alternatives in 2026: 5 Apps Compared",
+              "url": "https://www.flickplanner.com/blog/best-fantastical-alternatives-2026"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "10 Best Fantastical Alternatives in 2026",
+              "url": "https://clickup.com/blog/fantastical-alternatives/"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
+              "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared"
+            },
+            {
+              "displayOrder": 8,
+              "heading": "Fantastical Alternatives: 5 Options Compared for 2026",
+              "url": "https://nocal.app/alternatives/fantastical"
+            }
+          ]
+        },
+        {
+          "queryId": "widgets",
+          "query": "best calendar widget iPhone upcoming events weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 9,
+              "heading": "Fantastical — The calendar and tasks app you won't be ...",
+              "url": "https://flexibits.com/fantastical"
+            }
+          ]
+        },
+        {
+          "queryId": "natural-language",
+          "query": "calendar app natural language input iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical Calendar - App Store",
+              "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Fantastical — The calendar and tasks app you won't be ...",
+              "url": "https://flexibits.com/fantastical"
+            }
+          ]
+        },
+        {
+          "queryId": "ipad",
+          "query": "best iPad calendar week month view",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical Calendar - App Store",
+              "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+            }
+          ]
+        },
+        {
+          "queryId": "fantastical-brand",
+          "query": "Fantastical alternative calendar iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Best Fantastical Alternatives in 2026",
+              "url": "https://lifestack.ai/blog/fantastical-alternative"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Fantastical (calendar) alternatives? : r/macapps",
+              "url": "https://www.reddit.com/r/macapps/comments/17voupx/fantastical_calendar_alternatives/"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Fantastical Alternatives in 2026: 6 Calendars",
+              "url": "https://saybriefly.com/fantastical-alternatives"
+            },
+            {
+              "displayOrder": 4,
+              "heading": "Best Fantastical Alternatives in 2026: 5 Apps Compared",
+              "url": "https://www.flickplanner.com/blog/best-fantastical-alternatives-2026"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Best Fantastical Alternatives in 2026 - Temporal",
+              "url": "https://temporal.day/blog/best-fantastical-alternatives-2026"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Fantastical Alternatives: 5 Options Compared for 2026",
+              "url": "https://nocal.app/alternatives/fantastical"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "7 Best Fantastical Alternatives in 2026",
+              "url": "https://get-alfred.ai/blog/best-fantastical-alternatives"
+            },
+            {
+              "displayOrder": 8,
+              "heading": "Free Alternative to Fantastical — Top Picks 2026",
+              "url": "https://bundl.run/free-alternative-to/fantastical"
+            }
+          ]
+        },
+        {
+          "queryId": "readdle-brand",
+          "query": "Calendars by Readdle alternative iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 7,
+              "heading": "Best Fantastical Alternatives in 2026",
+              "url": "https://lifestack.ai/blog/fantastical-alternative"
+            }
+          ]
+        },
+        {
+          "queryId": "weather-ja",
+          "query": "iPhone カレンダー 天気 予定 アプリ",
+          "matchingHeadings": [
+            {
+              "displayOrder": 6,
+              "heading": "‎Fantastical Calendarアプリ - App Store",
+              "url": "https://apps.apple.com/jp/app/fantastical-calendar/id718043190"
+            }
+          ]
+        },
+        {
+          "queryId": "calendar366-comparison",
+          "query": "Calendar 366 vs Fantastical iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+              "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+              "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Manage your time in 2025: Fantastical vs. Apple Calendar",
+              "url": "https://setapp.com/app-reviews/fantastical-vs-apple-calendar"
+            },
+            {
+              "displayOrder": 4,
+              "heading": "Sticking with Fantastical",
+              "url": "https://casabona.org/2022/12/sticking-with-fantastical/"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+              "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+            }
+          ]
+        },
+        {
+          "queryId": "three-calendar-comparison",
+          "query": "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+              "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+              "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Compare Fantastical vs. Readdle Calendars in 2026",
+              "url": "https://slashdot.org/software/comparison/Fantastical-vs-Readdle-Calendars/"
+            },
+            {
+              "displayOrder": 4,
+              "heading": "Apple Calendar vs. Fantastical vs. Readdle Calendar and More",
+              "url": "https://techpastorsolutions.com/Site/Blog/The+Great+Calendar+Showdown+(2025)-+Apple+Calendar+vs.+Fantastical+vs.+Readdle+Calendar+and+More"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+              "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+            },
+            {
+              "displayOrder": 8,
+              "heading": "Apple Calendar vs Fantastical: Which Is Better?",
+              "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/"
+            }
+          ]
+        },
+        {
+          "queryId": "busycal-comparison",
+          "query": "BusyCal vs Fantastical iPhone calendar reminders weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "BusyCal vs Fantastical for Mac and iOS",
+              "url": "https://www.busymac.com/compare/fantastical/"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "BusyCal vs Fantastical: Which Should You Buy?",
+              "url": "https://horacal.app/blog/busycal-vs-fantastical/"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "BusyCal vs Fantastical",
+              "url": "https://kayg.org/blog/busycal-vs-fantastical/"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+              "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "Fantastical Vs Busycal: Which One To Choose?",
+              "url": "https://productivityside.quora.com/Fantastical-Vs-Busycal-Which-One-To-Choose"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "combine",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-combine.json"
+        },
+        {
+          "promptId": "drag-edit",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-drag-edit.json"
+        },
+        {
+          "promptId": "ipad",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-ipad.json"
+        },
+        {
+          "promptId": "shift",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-shift.json"
+        },
+        {
+          "promptId": "tasks",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-tasks.json"
+        },
+        {
+          "promptId": "weather",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather.json"
+        },
+        {
+          "promptId": "widgets",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-widgets.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Calendars by Readdle",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "readdle-brand",
+          "query": "Calendars by Readdle alternative iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 2,
+              "heading": "Readdle Calendars Alternatives & Competitors",
+              "url": "https://www.softwaresuggest.com/readdle-calendars/alternatives"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Best Readdle Calendars Alternatives & Competitors",
+              "url": "https://sourceforge.net/software/product/Readdle-Calendars/alternatives"
+            }
+          ]
+        },
+        {
+          "queryId": "three-calendar-comparison",
+          "query": "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 3,
+              "heading": "Compare Fantastical vs. Readdle Calendars in 2026",
+              "url": "https://slashdot.org/software/comparison/Fantastical-vs-Readdle-Calendars/"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "combine",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-combine.json"
+        },
+        {
+          "promptId": "drag-edit",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-drag-edit.json"
+        },
+        {
+          "promptId": "free-sync",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-free-sync.json"
+        },
+        {
+          "promptId": "ipad",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-ipad.json"
+        },
+        {
+          "promptId": "offline",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-offline.json"
+        },
+        {
+          "promptId": "tasks",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-tasks.json"
+        },
+        {
+          "promptId": "weather",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Structured",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "timeblocking",
+          "query": "best time blocking calendar app iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 2,
+              "heading": "Structured: Daily Planner Todo - App Store",
+              "url": "https://apps.apple.com/ph/app/structured-daily-planner-todo/id1499198946"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "auto-scheduling",
+          "promptClass": "seeded-comparison",
+          "evidenceFile": "chatgpt-auto-scheduling.json"
+        },
+        {
+          "promptId": "live-activity",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-live-activity.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Timepage",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "weather-de",
+          "query": "Kalender App iPhone Wetter Termine",
+          "matchingHeadings": [
+            {
+              "displayOrder": 3,
+              "heading": "Timepage: Kalender und Planer - App Store - Apple",
+              "url": "https://apps.apple.com/lu/app/timepage-kalender-und-planer/id989178902?l=de-DE"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "ipad",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-ipad.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Weather Events",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "weather",
+          "query": "best iPhone calendar app with weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Weather Events - for Calendar - App Store - Apple",
+              "url": "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867"
+            }
+          ]
+        },
+        {
+          "queryId": "widgets",
+          "query": "best calendar widget iPhone upcoming events weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Weather Events - for Calendar - App Store - Apple",
+              "url": "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867"
+            }
+          ]
+        },
+        {
+          "queryId": "weather-de",
+          "query": "Kalender App iPhone Wetter Termine",
+          "matchingHeadings": [
+            {
+              "displayOrder": 2,
+              "heading": "Weather Events - for Calendar - App Store - Apple",
+              "url": "https://apps.apple.com/de/app/weather-events-for-calendar/id6475696867"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "weather-history",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather-history.json"
+        }
+      ],
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "dejal-weather-history",
+        "query": "Dejal Weather Events calendar weather history iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-calendar-history-versus-forecast-iphone",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Weather Calendar Together",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "focused-query-reviewed-official-detail-unavailable",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "weather-together-brand",
+        "query": "\"Weather Calendar Together\" iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-inside-your-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Dejal",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "weather-history",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather-history.json"
+        }
+      ],
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "dejal-weather-history",
+        "query": "Dejal Weather Events calendar weather history iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "weather-calendar-history-versus-forecast-iphone",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Apple Calendar",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "combine",
+          "query": "iPhone app combine iCloud Google Outlook calendars",
+          "matchingHeadings": [
+            {
+              "displayOrder": 6,
+              "heading": "How to connect Google, Outlook, and Apple calendars (Cross ...",
+              "url": "https://www.youtube.com/watch?v=y9WGtEFQOmM"
+            }
+          ]
+        },
+        {
+          "queryId": "shifts2",
+          "query": "shift calendar app export Apple Calendar",
+          "matchingHeadings": [
+            {
+              "displayOrder": 6,
+              "heading": "Apple Calendar Integration",
+              "url": "https://help.shiftcare.com/en/articles/14260509-apple-calendar-integration"
+            }
+          ]
+        },
+        {
+          "queryId": "booking",
+          "query": "calendar app booking link availability iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 4,
+              "heading": "Free Apple Calendar Booking Tool",
+              "url": "https://koalendar.com/integrations/icloud-calendar"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Scheduling App that's compatible with Apple Calendar : r/ios",
+              "url": "https://www.reddit.com/r/ios/comments/1lug1lr/scheduling_app_thats_compatible_with_apple/"
+            }
+          ]
+        },
+        {
+          "queryId": "natural-language",
+          "query": "calendar app natural language input iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "Apple Calendar Gets Natural Language In iOS 27 - Curb Cuts",
+              "url": "https://www.curbcuts.co/blog/2026-6-9-ru1d7i97lark7vn3ap5ckajxm0fwll"
+            }
+          ]
+        },
+        {
+          "queryId": "reminders",
+          "query": "calendar app tasks reminders iPhone together",
+          "matchingHeadings": [
+            {
+              "displayOrder": 6,
+              "heading": "Organize Your LIFE with Apple Calendar + Reminders",
+              "url": "https://www.youtube.com/watch?v=-Cd44Owupig"
+            }
+          ]
+        },
+        {
+          "queryId": "sync",
+          "query": "iPhone calendar not syncing Google Outlook",
+          "matchingHeadings": [
+            {
+              "displayOrder": 3,
+              "heading": "Apple Calendar not syncing with Google Ca…",
+              "url": "https://discussions.apple.com/thread/255200204"
+            }
+          ]
+        },
+        {
+          "queryId": "calendar366-comparison",
+          "query": "Calendar 366 vs Fantastical iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+              "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Manage your time in 2025: Fantastical vs. Apple Calendar",
+              "url": "https://setapp.com/app-reviews/fantastical-vs-apple-calendar"
+            }
+          ]
+        },
+        {
+          "queryId": "three-calendar-comparison",
+          "query": "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+              "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+            },
+            {
+              "displayOrder": 4,
+              "heading": "Apple Calendar vs. Fantastical vs. Readdle Calendar and More",
+              "url": "https://techpastorsolutions.com/Site/Blog/The+Great+Calendar+Showdown+(2025)-+Apple+Calendar+vs.+Fantastical+vs.+Readdle+Calendar+and+More"
+            },
+            {
+              "displayOrder": 8,
+              "heading": "Apple Calendar vs Fantastical: Which Is Better?",
+              "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/"
+            }
+          ]
+        },
+        {
+          "queryId": "busycal-comparison",
+          "query": "BusyCal vs Fantastical iPhone calendar reminders weather",
+          "matchingHeadings": [
+            {
+              "displayOrder": 5,
+              "heading": "BusyCal better than Apple Calendar? : r/macapps",
+              "url": "https://www.reddit.com/r/macapps/comments/1iog0a3/busycal_better_than_apple_calendar/"
+            },
+            {
+              "displayOrder": 8,
+              "heading": "BusyCal vs Apple Calendar — Which is Better in 2026?",
+              "url": "https://bundl.run/compare/busycal-vs-apple-calendar"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "combine",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-combine.json"
+        },
+        {
+          "promptId": "drag-edit",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-drag-edit.json"
+        },
+        {
+          "promptId": "free-sync",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-free-sync.json"
+        },
+        {
+          "promptId": "live-activity",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-live-activity.json"
+        },
+        {
+          "promptId": "offline",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-offline.json"
+        },
+        {
+          "promptId": "shift",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-shift.json"
+        },
+        {
+          "promptId": "tasks",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-tasks.json"
+        },
+        {
+          "promptId": "weather",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather.json"
+        },
+        {
+          "promptId": "widgets",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-widgets.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Google Calendar",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "sync",
+          "query": "iPhone calendar not syncing Google Outlook",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Outlook iOS and Google calendar sync issues",
+              "url": "https://learn.microsoft.com/en-us/answers/questions/5492026/outlook-ios-and-google-calendar-sync-issues"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "Fix sync problems with the Google Calendar app",
+              "url": "https://support.google.com/calendar/answer/6261951?hl=en&co=GENIE.Platform%3DiOS"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Shared google calendar not syncing with iPhone (already ...",
+              "url": "https://www.reddit.com/r/iphone/comments/1vr32o0/shared_google_calendar_not_syncing_with_iphone/"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "Google Calendar not syncing on Outlook iOS or Mac OS ...",
+              "url": "https://support.google.com/calendar/thread/376881179/google-calendar-not-syncing-on-outlook-ios-or-mac-os-apps?hl=en"
+            }
+          ]
+        },
+        {
+          "queryId": "travel",
+          "query": "calendar app travel time zones iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 5,
+              "heading": "Use Google Calendar in different time zones - iPhone & iPad",
+              "url": "https://support.google.com/calendar/answer/37064?hl=en&co=GENIE.Platform%3DiOS"
+            }
+          ]
+        },
+        {
+          "queryId": "free",
+          "query": "free calendar app iPhone Google sync no ads",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "Free Google Calendar sync, and what the adverts pay for",
+              "url": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts"
+            }
+          ]
+        },
+        {
+          "queryId": "tasks-integration",
+          "query": "iPhone calendar app Apple Reminders Google Tasks integration",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "Google Calendar + Apple Reminders Integration - Morgen",
+              "url": "https://www.morgen.so/google-calendar-apple-reminders-integration"
+            }
+          ]
+        },
+        {
+          "queryId": "google-task-visibility",
+          "query": "can others see my Google Calendar tasks",
+          "matchingHeadings": [
+            {
+              "displayOrder": 3,
+              "heading": "Can someone see all my google calendar events, just be ...",
+              "url": "https://www.reddit.com/r/GMail/comments/1imkorc/can_someone_see_all_my_google_calendar_events/"
+            },
+            {
+              "displayOrder": 4,
+              "heading": "Are Google Calendar tasks private? - That Online Stuff",
+              "url": "https://www.thatonlinestuff.com.au/google-tasks-private/"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Can different users see tasks in shared Google calendars?",
+              "url": "https://www.quora.com/Can-different-users-see-tasks-in-shared-Google-calendars"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "Are Tasks on Google Calendar Private?",
+              "url": "https://www.facebook.com/fb-answers/are-tasks-on-google-calendar-private/"
+            },
+            {
+              "displayOrder": 9,
+              "heading": "Can Coworkers See My Personal Google Calendar?",
+              "url": "https://syncdate.app/blog/can-coworkers-see-personal-google-calendar"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "combine",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-combine.json"
+        },
+        {
+          "promptId": "drag-edit",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-drag-edit.json"
+        },
+        {
+          "promptId": "family",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-family.json"
+        },
+        {
+          "promptId": "free-sync",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-free-sync.json"
+        },
+        {
+          "promptId": "offline",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-offline.json"
+        },
+        {
+          "promptId": "shift",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-shift.json"
+        },
+        {
+          "promptId": "tasks",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-tasks.json"
+        },
+        {
+          "promptId": "weather",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Outlook",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "combine",
+          "query": "iPhone app combine iCloud Google Outlook calendars",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Sync2 Outlook Google & iCloud - App Store - Apple",
+              "url": "https://apps.apple.com/us/app/sync2-outlook-google-icloud/id1120543559"
+            },
+            {
+              "displayOrder": 2,
+              "heading": "OneCal: Sync Multiple Google, Outlook & iCloud Calendars",
+              "url": "https://www.onecal.io/"
+            },
+            {
+              "displayOrder": 3,
+              "heading": "Sync Google, Outlook, & iCloud Calendars with CalendarBridge",
+              "url": "https://calendarbridge.com/"
+            },
+            {
+              "displayOrder": 6,
+              "heading": "How to connect Google, Outlook, and Apple calendars (Cross ...",
+              "url": "https://www.youtube.com/watch?v=y9WGtEFQOmM"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "Apple iCloud Calendar Sync with Google & Outlook",
+              "url": "https://syncthemcalendars.com/features/apple-icloud-calendar-sync"
+            }
+          ]
+        },
+        {
+          "queryId": "sync",
+          "query": "iPhone calendar not syncing Google Outlook",
+          "matchingHeadings": [
+            {
+              "displayOrder": 1,
+              "heading": "Outlook iOS and Google calendar sync issues",
+              "url": "https://learn.microsoft.com/en-us/answers/questions/5492026/outlook-ios-and-google-calendar-sync-issues"
+            },
+            {
+              "displayOrder": 5,
+              "heading": "Outlook Calendar Not Syncing? Fix iPhone & Android (2026)",
+              "url": "https://cirasync.com/blog-articles/outlook-calendar-not-syncing/"
+            },
+            {
+              "displayOrder": 7,
+              "heading": "Google Calendar not syncing on Outlook iOS or Mac OS ...",
+              "url": "https://support.google.com/calendar/thread/376881179/google-calendar-not-syncing-on-outlook-ios-or-mac-os-apps?hl=en"
+            },
+            {
+              "displayOrder": 9,
+              "heading": "PC Outlook calendar not syncing to iphone ...",
+              "url": "https://learn.microsoft.com/en-us/answers/questions/4745323/pc-outlook-calendar-not-syncing-to-iphone-outlook"
+            }
+          ]
+        },
+        {
+          "queryId": "cloud-calendar-definition",
+          "query": "what is a cloud calendar",
+          "matchingHeadings": [
+            {
+              "displayOrder": 4,
+              "heading": "Cloud Calendars — iCloud, Google and Outlook in one view",
+              "url": "https://www.cloud-calendars.com/"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [
+        {
+          "promptId": "combine",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-combine.json"
+        },
+        {
+          "promptId": "drag-edit",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-drag-edit.json"
+        },
+        {
+          "promptId": "family",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-family.json"
+        },
+        {
+          "promptId": "free-sync",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-free-sync.json"
+        },
+        {
+          "promptId": "live-activity",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-live-activity.json"
+        },
+        {
+          "promptId": "shift",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-shift.json"
+        },
+        {
+          "promptId": "weather",
+          "promptClass": "unseeded-product-discovery",
+          "evidenceFile": "chatgpt-weather.json"
+        }
+      ],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Any.do",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "anydo-calendar",
+        "query": "Any.do calendar iPhone Google iCloud sync",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Vimcal",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "vimcal-availability",
+        "query": "Vimcal iPhone calendar time zones availability",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "booking-link-or-shared-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Notion Calendar",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "combine",
+          "query": "iPhone app combine iCloud Google Outlook calendars",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "Notion Calendar",
+              "url": "https://www.notion.com/product/calendar"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    },
+    {
+      "product": "Amie",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "focused-query-and-official-source-reviewed",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking.",
+      "focusedQueryEvidence": {
+        "id": "amie-calendar",
+        "query": "Amie Google Calendar tasks scheduling iPhone",
+        "evidenceFile": "google-observations.json"
+      },
+      "canonicalCandidate": "automatic-time-blocking-versus-manual-calendar",
+      "sourceReviewFile": "round5-primary-checks.json"
+    },
+    {
+      "product": "Morgen",
+      "inOriginalDeclaredUniverse": true,
+      "googleHeadingObservations": [
+        {
+          "queryId": "cozi-brand",
+          "query": "Cozi alternative shared calendar iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "9 Best Shared Calendar Apps Compared in 2026 - Morgen",
+              "url": "https://www.morgen.so/blog-posts/shared-calendar-app"
+            }
+          ]
+        },
+        {
+          "queryId": "tasks-integration",
+          "query": "iPhone calendar app Apple Reminders Google Tasks integration",
+          "matchingHeadings": [
+            {
+              "displayOrder": 8,
+              "heading": "Google Calendar + Apple Reminders Integration - Morgen",
+              "url": "https://www.morgen.so/google-calendar-apple-reminders-integration"
+            }
+          ]
+        },
+        {
+          "queryId": "task-bridge",
+          "query": "sync Google Tasks Apple Reminders two way iPhone",
+          "matchingHeadings": [
+            {
+              "displayOrder": 4,
+              "heading": "Google Tasks + Apple Reminders Integration - Morgen",
+              "url": "https://www.morgen.so/google-tasks-apple-reminders-integration"
+            }
+          ]
+        }
+      ],
+      "consumerAnswerMentions": [],
+      "researchDisposition": "observed-needs-source-and-topic-review",
+      "limitations": "Heading/answer mention is not a verified product recommendation, domain ownership check or universal ranking."
+    }
+  ],
+  "notObservedInSavedSamples": [],
+  "unavailablePrimaryDetails": [
+    "Weather Calendar Together"
+  ],
+  "updatedScope": "Original missing labels now have focused Google observations. An observed brand query is not proof of all nonbranded rankings. Weather Calendar Together detail availability unresolved and explicitly limited."
+}

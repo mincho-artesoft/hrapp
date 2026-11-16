@@ -1,0 +1,15 @@
+{
+  "locale": "cs",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Každý kalendář, který máte — iCloud, Google, Microsoft — na jednom místě, s předpovědí uvnitř samotného dne. Přestaňte hádat, jak bude odpoledne vypadat.",
+      "after": "Zobrazte vybrané kalendáře iCloud a Google na iPhonu a iPadu spolu s dostupnou předpovědí počasí vedle svých plánů. Premium přidává připojení kalendářů Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Vaše kalendáře a předpověď na jednom místě. Postaveno pro iPhone a iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Kalendáře iCloud a Google, počasí a widgety na iPhonu a iPadu. Stažení zdarma; Premium přidává kalendáře Microsoft a Teams."
+    }
+  ]
+}

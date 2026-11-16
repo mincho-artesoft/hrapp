@@ -1,0 +1,91 @@
+{
+  "title": "Google Naptár vendégjogok: szerkesztés, meghívás és vendéglista",
+  "short": "Eseményvendégek jogosultságai",
+  "description": "Ellenőrizze a Google vendégjogait és alapértékeit. Különítse el a meghívás jogait a naptárhozzáféréstől és a Cloud Calendars szerepeitől.",
+  "lede": "A válaszadás lehetősége nem mondja el, mit tehet még a vendég. Ellenőrizze a jogokat, mielőtt egy meghívót használ csapathoz, ügyfelekhez vagy nyilvános eseményhez. Az útmutatót a Cloud Calendars fejlesztője, az Arte Soft adja ki.",
+  "commonBelief": "A meghívottak csak elfogadhatnak vagy elutasíthatnak, és minden alkalmazás ugyanazokat a jogbeállításokat mutatja.",
+  "sections": [
+    {
+      "heading": "Kezdje a szervezővel és az eredeti eseménnyel",
+      "body": [
+        "Nyissa meg az eseményt a Google Naptárban a szervező vagy jogosult kezelő fiókjával. Módosítás előtt ellenőrizze a naptárt, dátumot és szervezőt. Egy külön importált időpont nem megbízható hely az eredeti meghívó kezelésére.",
+        "Csapattalálkozónál írja le, ki változtathat időpontot, hívhat másokat, és láthatják-e egymást a résztvevők. Ezek külön döntések. A részvételhez nem feltétlenül kell kezelési jog."
+      ]
+    },
+    {
+      "heading": "Döntse el, módosíthatnak-e a vendégek",
+      "body": [
+        "A Google számítógépes eseményszerkesztője a vendégek jogai között eseménymódosítást is kínál. Ez széles együttműködési engedély, nem pusztán új időpont javaslata. A Google szerint mezőszerkesztést, vendégmegtekintést és teremfoglalást is lehetővé tesz.",
+        "Megbízható műhelyszervező társának kellhet ez a rugalmasság, egy időpontra érkező ügyfélnek nem feltétlenül. A felelősség szerint válasszon, és a mentett eseményt ellenőrizze, ne egy másik találkozó beállítására hagyatkozzon."
+      ]
+    },
+    {
+      "heading": "Külön ellenőrizze a meghívást és a vendégek láthatóságát",
+      "body": [
+        "A Google megkülönbözteti mások meghívását és más vendégek megtekintését. Mindkettőt vizsgálja a szerkesztési jog mellett. Egy lehetőség kikapcsolása nem jelenti a másik ellenőrzését; a kijelzett alapérték nem bizonyítja meglévő esemény beállításait.",
+        "Egymástól független ügyfeleknél mérlegelje, megfelelő-e közös meghívó. Az e-mailben, leírásban vagy továbbított üzenetben szereplő adat kívül esik az aktuális vendéglista-beállításon. Ne írjon bizalmas résztvevőadatot a leírásba azt várva, hogy a rejtett lista elrejti."
+      ]
+    },
+    {
+      "heading": "Az alapértékeket és a fontos eseményeket is vizsgálja",
+      "body": [
+        "A Google az eseménybeállításokban alapértelmezett vendégjogokat is dokumentál, köztük módosítási alapértéket. Nem minden szabály eseményenkénti. Tervezési szokás változásakor ellenőrizze az alapértékeket, majd külön a fontos meglévő meghívókat.",
+        "Ismétlődő találkozónál mentés előtt tisztázza, egy alkalmat vagy sorozatot szerkeszt-e. Ne feltételezze, hogy egy preferencia átírta a korábbi meghívókat. Kollégával egyeztetett, nem érzékeny példán teszteljen, ne valódi ügyféltalálkozó áthelyezésével vagy lemondásával."
+      ]
+    },
+    {
+      "heading": "A Cloud Calendars szerepeit kezelje külön",
+      "body": [
+        "A Cloud Calendars külön Reader, Writer és Owner szerepeket használ. Reader megtekintést és szinkronizálást ad; Writer szerkeszthet; Owner a megosztást és hozzáférést is kezeli a meghívott identitással. Ezek nem a Google három vendégjogának kapcsolói.",
+        "Google-specifikus jognál ellenőrizze az eredetit a Google Naptárban. Egy résztvevő Cloud Calendars-beli megjelenése nem bizonyítja, hogy minden Google-jog ott módosítható. Hiányzó vezérlő vagy sikertelen szerkesztés esetén tartsa egyértelműen számon a szolgáltatót és címzettet."
+      ]
+    },
+    {
+      "heading": "Ellenőrizze a mentést és tisztázza a felelősséget",
+      "body": [
+        "Mentés után nyissa meg újra az eredeti eseményt, és ellenőrizze a beállításokat. Szükség esetén jogosult kolléga saját fiókjában igazolja, mit tehet. Ne cseréljenek jelszavakat vagy privát vendégadatokat gyors ellenőrzésként.",
+        "A részvételt válassza külön a jogoktól. Szerkeszthetőség, importált másolat és rögzített elfogadás más tény. A Cloud Calendars megosztási átvételi nyugtája nem RSVP. Fontos találkozónál kérjen részvételi választ, és tisztázza, ki felel az időrend módosításáért."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Azonosítsa a szervező fiókját és az eredeti eseményt.",
+    "Döntse el, ki kezelhet, hívhat másokat és láthat vendégeket.",
+    "Vizsgálja meg a Google-esemény tényleges vendégjogait.",
+    "Ellenőrizze az alapértékeket a régi események átírásának feltételezése nélkül.",
+    "A Cloud Calendars szerepeit tekintse külön jogosultsági rendszernek.",
+    "Nyissa meg a mentett eseményt, és külön erősítse meg a részvételt."
+  ],
+  "faq": [
+    {
+      "q": "Megváltoztathatja egy vendég a találkozó időpontját?",
+      "a": "A Google enged módosítási jogot adni. Ellenőrizze az eseményt és a vendég hozzáférését; ne csak a meghívó kézhezvételéből következtessen."
+    },
+    {
+      "q": "Minden vendégjog kizárólag az egyes eseményeken állítható?",
+      "a": "Nem. A Google alapértelmezett vendégjogokat is dokumentál. Ezeket a jövőbeli tervezéshez, a fontos meglévő eseményeket pedig külön ellenőrizze."
+    },
+    {
+      "q": "A vendéglista elrejtése eltávolítja a már elküldött adatokat?",
+      "a": "Nem bizonyítja korábbi e-mailek, leírások, képernyőképek vagy önálló másolatok törlését. Külön vizsgálja meg, mi került ténylegesen továbbításra."
+    }
+  ],
+  "sourcesHeading": "Szolgáltatói útmutatók és további információ",
+  "sources": [
+    {
+      "label": "Google: esemény-együttműködés és alapértelmezett vendégjogok",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: események vendégjogosultsági mezői",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+}

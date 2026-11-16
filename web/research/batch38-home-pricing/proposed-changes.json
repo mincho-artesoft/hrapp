@@ -1,0 +1,237 @@
+{
+  "scope": "29exactlabels;Italianalreadycorrectedbatch36. Component returns this label only for monthly0plan. All other fields and constants must remain unchanged.",
+  "changes": [
+    {
+      "locale": "en-US",
+      "file": "src/app/content/home/en-US.ts",
+      "path": "pricing.forever",
+      "before": "forever",
+      "after": "free plan",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ar-SA",
+      "file": "src/app/content/home/ar-SA.ts",
+      "path": "pricing.forever",
+      "before": "إلى الأبد",
+      "after": "الخطة المجانية",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "bg",
+      "file": "src/app/content/home/bg.ts",
+      "path": "pricing.forever",
+      "before": "завинаги",
+      "after": "безплатен план",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "cs",
+      "file": "src/app/content/home/cs.ts",
+      "path": "pricing.forever",
+      "before": "navždy",
+      "after": "bezplatný plán",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "da",
+      "file": "src/app/content/home/da.ts",
+      "path": "pricing.forever",
+      "before": "for altid",
+      "after": "gratisversion",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/home/de-DE.ts",
+      "path": "pricing.forever",
+      "before": "für immer",
+      "after": "kostenloser Tarif",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "el",
+      "file": "src/app/content/home/el.ts",
+      "path": "pricing.forever",
+      "before": "για πάντα",
+      "after": "δωρεάν πρόγραμμα",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/home/es-ES.ts",
+      "path": "pricing.forever",
+      "before": "para siempre",
+      "after": "plan gratuito",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "fi",
+      "file": "src/app/content/home/fi.ts",
+      "path": "pricing.forever",
+      "before": "ikuisesti",
+      "after": "ilmainen paketti",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/home/fr-FR.ts",
+      "path": "pricing.forever",
+      "before": "pour toujours",
+      "after": "offre gratuite",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "he",
+      "file": "src/app/content/home/he.ts",
+      "path": "pricing.forever",
+      "before": "לתמיד",
+      "after": "מסלול חינמי",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "hi",
+      "file": "src/app/content/home/hi.ts",
+      "path": "pricing.forever",
+      "before": "हमेशा के लिए",
+      "after": "मुफ़्त प्लान",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "hu",
+      "file": "src/app/content/home/hu.ts",
+      "path": "pricing.forever",
+      "before": "örökre",
+      "after": "ingyenes csomag",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "id",
+      "file": "src/app/content/home/id.ts",
+      "path": "pricing.forever",
+      "before": "selamanya",
+      "after": "paket gratis",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ja",
+      "file": "src/app/content/home/ja.ts",
+      "path": "pricing.forever",
+      "before": "ずっと",
+      "after": "無料プラン",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ko",
+      "file": "src/app/content/home/ko.ts",
+      "path": "pricing.forever",
+      "before": "영원히",
+      "after": "무료 플랜",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ms",
+      "file": "src/app/content/home/ms.ts",
+      "path": "pricing.forever",
+      "before": "selamanya",
+      "after": "pelan percuma",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "nl-NL",
+      "file": "src/app/content/home/nl-NL.ts",
+      "path": "pricing.forever",
+      "before": "voor altijd",
+      "after": "gratis versie",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "no",
+      "file": "src/app/content/home/no.ts",
+      "path": "pricing.forever",
+      "before": "for alltid",
+      "after": "gratisversjon",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "pl",
+      "file": "src/app/content/home/pl.ts",
+      "path": "pricing.forever",
+      "before": "na zawsze",
+      "after": "plan bezpłatny",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "pt-BR",
+      "file": "src/app/content/home/pt-BR.ts",
+      "path": "pricing.forever",
+      "before": "para sempre",
+      "after": "plano gratuito",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ro",
+      "file": "src/app/content/home/ro.ts",
+      "path": "pricing.forever",
+      "before": "pentru totdeauna",
+      "after": "plan gratuit",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "ru",
+      "file": "src/app/content/home/ru.ts",
+      "path": "pricing.forever",
+      "before": "навсегда",
+      "after": "бесплатный план",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "sv",
+      "file": "src/app/content/home/sv.ts",
+      "path": "pricing.forever",
+      "before": "för alltid",
+      "after": "gratisplan",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "th",
+      "file": "src/app/content/home/th.ts",
+      "path": "pricing.forever",
+      "before": "ตลอดไป",
+      "after": "แผนฟรี",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "tr",
+      "file": "src/app/content/home/tr.ts",
+      "path": "pricing.forever",
+      "before": "sonsuza dek",
+      "after": "ücretsiz plan",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "vi",
+      "file": "src/app/content/home/vi.ts",
+      "path": "pricing.forever",
+      "before": "mãi mãi",
+      "after": "gói miễn phí",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "src/app/content/home/zh-Hans.ts",
+      "path": "pricing.forever",
+      "before": "永久",
+      "after": "免费方案",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "src/app/content/home/zh-Hant.ts",
+      "path": "pricing.forever",
+      "before": "永久",
+      "after": "免費方案",
+      "reason": "Replace an unconditional future pricing promise beside current zero price with a factual current free-plan label. No price/feature/plan/renewal/entitlement change."
+    }
+  ]
+}

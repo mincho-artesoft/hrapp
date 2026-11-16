@@ -1,0 +1,438 @@
+{
+  "status": "SOURCE_REFERENCES_MIGRATED_PENDING_ROOT_UPLOAD",
+  "prefix": "/media/panel/site-assets-20261022/",
+  "changes": [
+    {
+      "file": "src/index.html",
+      "line": 40,
+      "before": "assets/images/app-screenshots/single-day-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp"
+    },
+    {
+      "file": "src/index.html",
+      "line": 20,
+      "before": "https://www.cloud-calendars.com/assets/images/app-screenshots/single-day-view.png",
+      "after": "https://www.cloud-calendars.com/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png"
+    },
+    {
+      "file": "src/app/core/seo.service.ts",
+      "line": 70,
+      "before": "${SITE_URL}/assets/images/app-screenshots/single-day-view.png",
+      "after": "${SITE_URL}/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png"
+    },
+    {
+      "file": "src/app/components/weather-hub/weather-hub.component.html",
+      "line": 20,
+      "before": "assets/images/app-screenshots/weather-view-1.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.webp"
+    },
+    {
+      "file": "src/app/components/cta/cta.component.html",
+      "line": 38,
+      "before": "assets/images/app-screenshots/multi-day-view-v.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.webp"
+    },
+    {
+      "file": "src/app/components/hero/hero.component.html",
+      "line": 89,
+      "before": "assets/images/app-screenshots/weather-view-1.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.webp"
+    },
+    {
+      "file": "src/app/components/hero/hero.component.html",
+      "line": 80,
+      "before": "assets/images/app-screenshots/single-day-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp"
+    },
+    {
+      "file": "src/app/components/hero/hero.component.html",
+      "line": 71,
+      "before": "assets/images/app-screenshots/month-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/month-view.webp"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "line": 92,
+      "before": "assets/images/app-screenshots/list-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/list-view.webp"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "line": 91,
+      "before": "assets/images/app-screenshots/month-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/month-view.webp"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "line": 90,
+      "before": "assets/images/app-screenshots/multi-calndar-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.webp"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "line": 89,
+      "before": "assets/images/app-screenshots/multi-day-view-v.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.webp"
+    },
+    {
+      "file": "src/app/components/showcase/showcase.component.ts",
+      "line": 88,
+      "before": "assets/images/app-screenshots/single-day-view.webp",
+      "after": "/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp"
+    },
+    {
+      "file": "src/app/components/widgets/widgets.component.html",
+      "line": 54,
+      "before": "assets/video/widgets.mp4",
+      "after": "/media/panel/site-assets-20261022/video/widgets.mp4"
+    },
+    {
+      "file": "src/app/components/widgets/widgets.component.html",
+      "line": 53,
+      "before": "assets/video/widgets.webm",
+      "after": "/media/panel/site-assets-20261022/video/widgets.webm"
+    },
+    {
+      "file": "src/app/components/widgets/widgets.component.html",
+      "line": 43,
+      "before": "assets/video/widgets-poster.webp",
+      "after": "/media/panel/site-assets-20261022/video/widgets-poster.webp"
+    },
+    {
+      "file": "public/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+      "line": 17,
+      "before": "https://www.cloud-calendars.com/assets/images/app-screenshots/single-day-view.png",
+      "after": "https://www.cloud-calendars.com/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png"
+    }
+  ],
+  "files": [
+    {
+      "file": "public/assets/.DS_Store",
+      "key": "media/panel/site-assets-20261022/.DS_Store",
+      "publicURL": "/media/panel/site-assets-20261022/.DS_Store",
+      "bytes": 6148,
+      "sha256": "142e32c03156faadc4014c3289f072985a60023bbf569870d5ac828f30201520"
+    },
+    {
+      "file": "public/assets/images/.DS_Store",
+      "key": "media/panel/site-assets-20261022/images/.DS_Store",
+      "publicURL": "/media/panel/site-assets-20261022/images/.DS_Store",
+      "bytes": 6148,
+      "sha256": "a5ba2ad312cf247ca5aee38f393cee5b274f0181cc1705fc7a807d8ce6a79e62"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/calndar-setting.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/calndar-setting.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/calndar-setting.png",
+      "bytes": 539770,
+      "sha256": "59527e909968db83e0e4ad611b8132cc81a17bcc363cfe49de72cc29d6fb58be"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/calndar-setting.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/calndar-setting.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/calndar-setting.webp",
+      "bytes": 46798,
+      "sha256": "b12bf1f8a5047ea8b910a05de0f6ac3bbe55aa819275cb1ac3a25c0f2b531eff"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/list-view.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/list-view.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/list-view.png",
+      "bytes": 422454,
+      "sha256": "57fda688690c8ee688251983966838b14d0fa9dc50c61f97c742a0443bde2331"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/list-view.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/list-view.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/list-view.webp",
+      "bytes": 38966,
+      "sha256": "4c8199bf4b2cd76533a6b9a9b80ef95ce1a387435a1fd5d83d7231031a2aa30b"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/month-view.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/month-view.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/month-view.png",
+      "bytes": 366843,
+      "sha256": "30c102e939a55d3857aec9c9932bda223f9a6dd1c8840622f15e5645e8f11340"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/month-view.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/month-view.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/month-view.webp",
+      "bytes": 32724,
+      "sha256": "a3ee69725c51d95f6fbe086321d35994e4a0c1d34e43b88e1ae44d534c3fa978"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-calndar-setting.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-setting.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-setting.png",
+      "bytes": 473281,
+      "sha256": "0ebdc6d482b7173549a2c0ba4a8692fd2d72be2f30632d39cc595b7258b5872a"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-calndar-setting.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-setting.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-setting.webp",
+      "bytes": 31476,
+      "sha256": "06686c7b607c79e2d8f84fa6f6dc8ec1bcd3a7015f2c28d2180493e48e844c5a"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-calndar-view.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.png",
+      "bytes": 690431,
+      "sha256": "22945133ebabec39886b59feec1f7455e846f45ef7ee1b3b01b24ca1496d8e08"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-calndar-view.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-calndar-view.webp",
+      "bytes": 41108,
+      "sha256": "f5a55005a7bb657e93674f7420990fe020d8bc30b7943d2c2c929664971c46c9"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-day-view-h.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-h.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-h.png",
+      "bytes": 687518,
+      "sha256": "211d031126610f73919207eb325d99330a898fa7d154e72e01ab00f01a0237a4"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-day-view-h.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-h.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-h.webp",
+      "bytes": 25238,
+      "sha256": "dedc9969e8f92c3a7517f529e0ba772884d1f13e0c0554c75d11ab19372a58e1"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-day-view-v.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.png",
+      "bytes": 791779,
+      "sha256": "30fbe6340ee0d8619fa443bd60dad372e6fa2b6214ad6a9c52c5606b990e2be7"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/multi-day-view-v.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/multi-day-view-v.webp",
+      "bytes": 49930,
+      "sha256": "0f241ba5f45ae7fedf2df8a43a0606b7192958572255cbabdc31d66c5ff28fd4"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/single-day-view.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.png",
+      "bytes": 703842,
+      "sha256": "027102b37ca4663075456c08c3f6dda779bc7a7445a108fb8a33aca5d5aee0cf"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/single-day-view.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/single-day-view.webp",
+      "bytes": 47120,
+      "sha256": "b0a707ed69842de78eca196dfabcd70a45460802eee1750bb7b7d8731ad812cf"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-1.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.png",
+      "bytes": 1154800,
+      "sha256": "ad8aa999c20555bfba94eb2d0e3c15252e859b72097692368651d5b8cc337579"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-1.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.webp",
+      "bytes": 40250,
+      "sha256": "1280e1f6325bf9cb7504a38c068b57bda92eb7d8054ced90685723d0c740eb6b"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-2.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-2.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-2.png",
+      "bytes": 1182203,
+      "sha256": "b79a6c378d43078c6b95c005b5128e2f01d3fcef80db27599d1d8089093de432"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-2.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-2.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-2.webp",
+      "bytes": 48178,
+      "sha256": "1deebbea1822d68e8c496ed26ab9110bce1b88edfeda41450d45f31b217b8f0a"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-3.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-3.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-3.png",
+      "bytes": 1159860,
+      "sha256": "f42d3d6a8572fbbd061ef093e888b4ad12390af0899ac15757c90dc4f9d09b07"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-3.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-3.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-3.webp",
+      "bytes": 45552,
+      "sha256": "1407e356bcf2f568d10973b20f7903456bff92631cbbd08e8c69e776b0cf0742"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-conditions-1.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-1.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-1.png",
+      "bytes": 409106,
+      "sha256": "528934a18954b1881c8fa6251253ea5352490e09b05e295a8419245230bc3be1"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-conditions-1.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-1.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-1.webp",
+      "bytes": 37802,
+      "sha256": "f671058996767d8610b1f747f3b9a252be657ee25ecfe734579f56c6750e6d76"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-conditions-2.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-2.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-2.png",
+      "bytes": 420963,
+      "sha256": "2b458802c865d50e44f1ae3682b8fd0b247232143bcc8e9f14a43ddee359b5d0"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-conditions-2.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-2.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-conditions-2.webp",
+      "bytes": 40010,
+      "sha256": "69212c1117aaa3c4bf53fbfb66ef8b4cc57488a7e5a2bf11142d82b563275325"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-humidity.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-humidity.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-humidity.png",
+      "bytes": 539425,
+      "sha256": "a1ee54e6c10b1454ea6ad557ce8f200d1c20216568e1963043258e2da3b02714"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-humidity.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-humidity.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-humidity.webp",
+      "bytes": 51924,
+      "sha256": "2dba98764a072a6dc89c1d3a33156cbc2484e60087858f52915bc8861683629c"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-precipitation.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-precipitation.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-precipitation.png",
+      "bytes": 305946,
+      "sha256": "33fd0bf90c2b7389cb456b81970eb462555c1cae9183c748f64e09a629b360d4"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-precipitation.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-precipitation.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-precipitation.webp",
+      "bytes": 37322,
+      "sha256": "6e0d1c230e79859340941e0f13fb6e0d5f87d1ccce5587f2c539f4f9221ad180"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-pressure.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-pressure.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-pressure.png",
+      "bytes": 453232,
+      "sha256": "3d09f650d75193071ccf4edd9f649699e96d78502d066c4addaf2ffeef079adb"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-pressure.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-pressure.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-pressure.webp",
+      "bytes": 54114,
+      "sha256": "bfdebd31d31c0cbd90bfb0d3a1d32465f7f3858bf7fe3e32f03ded527a0de48c"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-uv-index.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-uv-index.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-uv-index.png",
+      "bytes": 334867,
+      "sha256": "1faca213189389f16cd8057c0da5bfb30a56d6e5846ce98bb20ee67f20d0c387"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-uv-index.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-uv-index.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-uv-index.webp",
+      "bytes": 33034,
+      "sha256": "298fa0f1f14e7c2378667c1c8e4e17e80cd1b7d79939ae14346ffb917bb85088"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-visibility.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-visibility.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-visibility.png",
+      "bytes": 400072,
+      "sha256": "e75ca075cef67b6d6284371d78a27b17600870d54399a9c29b2aa3ba01b6612f"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-visibility.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-visibility.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-visibility.webp",
+      "bytes": 48326,
+      "sha256": "f743b57737da92bb817b9796a83c84e9c1bbe788149d94c745f6addd82adfa07"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-wind.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-wind.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-wind.png",
+      "bytes": 415094,
+      "sha256": "0f587c1c0a0ae820d59b2101a62f3586a929b0efbaf3cda3dd7a64a8976f5e48"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/weather-view-wind.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/weather-view-wind.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/weather-view-wind.webp",
+      "bytes": 44292,
+      "sha256": "a55e38d3b87eb194d517170747e8dbd0fac23a34df843aa944fc168271928c6f"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/year-view.png",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/year-view.png",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/year-view.png",
+      "bytes": 723044,
+      "sha256": "b71476f311ff5517317f2004a5ceabf0cc8b87b7b8f9d774d587c68198b0c888"
+    },
+    {
+      "file": "public/assets/images/app-screenshots/year-view.webp",
+      "key": "media/panel/site-assets-20261022/images/app-screenshots/year-view.webp",
+      "publicURL": "/media/panel/site-assets-20261022/images/app-screenshots/year-view.webp",
+      "bytes": 53322,
+      "sha256": "fa4f798aa54701ee8cb0807e73ac2e772aab99020b4cd4a214c46cb3e1ab94f5"
+    },
+    {
+      "file": "public/assets/video/widgets-poster.jpg",
+      "key": "media/panel/site-assets-20261022/video/widgets-poster.jpg",
+      "publicURL": "/media/panel/site-assets-20261022/video/widgets-poster.jpg",
+      "bytes": 63534,
+      "sha256": "49bb93a0e56596248865bf3b0e8252b95971328eeb0f9d2dd66cc79f104499c0"
+    },
+    {
+      "file": "public/assets/video/widgets-poster.webp",
+      "key": "media/panel/site-assets-20261022/video/widgets-poster.webp",
+      "publicURL": "/media/panel/site-assets-20261022/video/widgets-poster.webp",
+      "bytes": 40068,
+      "sha256": "9ec097f1f7ea4fcb97b975e19ff688fd4ed5148df3f667623e6b9a6302e99910"
+    },
+    {
+      "file": "public/assets/video/widgets.mp4",
+      "key": "media/panel/site-assets-20261022/video/widgets.mp4",
+      "publicURL": "/media/panel/site-assets-20261022/video/widgets.mp4",
+      "bytes": 564222,
+      "sha256": "390f7e8d6bbb5244432e3e299320831638e94fa8276e2eb326d0d55e752e0124"
+    },
+    {
+      "file": "public/assets/video/widgets.webm",
+      "key": "media/panel/site-assets-20261022/video/widgets.webm",
+      "publicURL": "/media/panel/site-assets-20261022/video/widgets.webm",
+      "bytes": 531690,
+      "sha256": "4a4ae17de4c3df3570241b379fc2381c8de0212d84c01b32449adb23cc0d56aa"
+    }
+  ],
+  "checks": {
+    "assetCount": 46,
+    "referenceCount": 17,
+    "socialImages": "Existing absolute OG/SEO image URLs retain canonical origin and use new /media path; actual image/video/preload element paths are root-relative.",
+    "scope": "All production src and public text types scanned, including styles/SVG. No icons outside assets changed. No new storemedia source changed. No policy changed. No deletion/build/upload/commit."
+  }
+}

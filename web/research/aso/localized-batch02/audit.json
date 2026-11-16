@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-21",
+  "status": "six_proposals_ready_for_editorial_review_not_applied",
+  "scope": "de-DE, fr-FR, es-ES, it, ja, ko only; fresh authenticated GET read of live 1.7.3 and draft 1.7.4. Existing en-US changes left untouched.",
+  "allocationDecision": {
+    "names": "Exact current draft identity retained for every locale, including local calendar/agenda words.",
+    "subtitles": "Replace generic consolidation phrasing with localized weather, appointments/planning and Home Screen widget benefits. These are relevance hypotheses, not measured demand.",
+    "keywords": "Allocate remaining space to planning, views, reminders, meetings, sharing/invitations and forecasts. Avoid exact title/subtitle duplication, competing app names, and provider trademarks in hidden keywords. Japanese/Korean terms remain concise rather than padded to 100.",
+    "jaKoTradeoff": "Current subtitle names Google, Microsoft and iCloud. Proposal replaces provider-led positioning with localized feature benefits; descriptions still name providers and explain Premium. This is a deliberate reduction in subtitle provider visibility and should be chosen consciously; no claim of ranking uplift.",
+    "westernTradeoff": "Current de/fr/es/it subtitles chiefly repeat the calendar consolidation promise. New subtitles foreground weather and widgets while descriptions preserve multi-calendar explanation."
+  },
+  "qualityChecks": [
+    "All names exactly equal fresh draft appInfo names.",
+    "All subtitle <=30, keyword <=100, promotional text <=170, description <=4000 Unicode code-point counts. UTF-8 byte counts reported separately.",
+    "No exact duplicate keyword terms or exact title/subtitle-token overlap. This is not a full Japanese/Korean morphological parser.",
+    "Every description covers free Base Google sync/Meet/views/weather/widgets, Advanced ad removal, Premium Microsoft/Teams, local calendar without app account, and qualified sign-in/sharing permissions.",
+    "Descriptions include auto-renewing subscription explanation and existing privacy/EULA URLs.",
+    "No new release notes, privacy declarations, URLs or native changes proposed."
+  ],
+  "confidence": {
+    "de-DE": "medium-high",
+    "fr-FR": "medium-high",
+    "es-ES": "medium-high",
+    "it": "medium-high",
+    "ja": "medium",
+    "ko": "medium",
+    "caveat": "Model-authored localized copy with no native-speaker review and no live ASC field submission validation. Especially review Japanese/Korean tone and matching of Base/Advanced/Premium labels to shipped UI. Subscription phrasing follows existing English structure, not a separate legal opinion."
+  },
+  "applicationGuard": "If applying later, re-read draft state and target fields first; apply only subtitle, keywords, promotionalText and description to these locale IDs, then verify readback. Names are preserved reference data, not requested updates.",
+  "files": "Each locale has a -proposal.json with exact current/target fields and localization IDs plus a -description.txt; validation.json summarizes lengths; asc-current-20261021.json is fresh read evidence."
+}

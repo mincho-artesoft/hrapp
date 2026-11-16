@@ -1,0 +1,85 @@
+{
+  "allPassed": true,
+  "changedArticles": 12,
+  "newLocalizedGuides": 6,
+  "relatedOnlyChanges": 6,
+  "sitemapUrls": 504,
+  "preservedPreviousCanonicals": 498,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/bg/articles/recurring-events-without-the-mess/",
+      "sha256": "022f12aa37fb951f9792385bd28badbfc09638fc3ef015d2f17f8db049843f8f"
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/bg/articles/month-view-on-a-bigger-screen/",
+      "sha256": "9538826cf800a2cfe8fe9259d0d324d94dbc1d8daba7e4663aa83e6fd6e8562e"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/de/articles/recurring-events-without-the-mess/",
+      "sha256": "36e27679875b177fb21bfcd908d45c6219d9d66dc7dd7ad91a723f1ebb30bb89"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/de/articles/month-view-on-a-bigger-screen/",
+      "sha256": "3b44d8bac3152ec6507a1bc7b5883ee6b0c01ba13403a2d616b8c5e93aee069f"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/es/articles/recurring-events-without-the-mess/",
+      "sha256": "e0d7a48c0b0efcc13ac7023c031588907bac18636335fbe5d5807e306d55962d"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/es/articles/month-view-on-a-bigger-screen/",
+      "sha256": "61554fa991836344e474b0fabc9c680145cfdb2e56db88ab251b84ef2efcbc75"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/fr/articles/recurring-events-without-the-mess/",
+      "sha256": "1528496529d5a6a362fdc70621f103219b2ac76ac6d06966a2ed914260ab6705"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/fr/articles/month-view-on-a-bigger-screen/",
+      "sha256": "f47cee9299265ed703fb9956401645f86d24af2936a92bcd60f6348a7788c2f6"
+    },
+    {
+      "locale": "it",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/it/articles/recurring-events-without-the-mess/",
+      "sha256": "8b32c86ae2612698039f30f2cbef5dd0ea3304e2209b480b5b46708b82e2a4bc"
+    },
+    {
+      "locale": "it",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/it/articles/month-view-on-a-bigger-screen/",
+      "sha256": "f39e985ef3db7c882d199898865c9effa7a838ad4b6bed8fe6cd02584ff1cbb0"
+    },
+    {
+      "locale": "ja",
+      "slug": "month-view-on-a-bigger-screen",
+      "url": "https://www.cloud-calendars.com/ja/articles/month-view-on-a-bigger-screen/",
+      "sha256": "5ee03ab3f0571e0c2e55f79c6db483d0ab3adac02eab529ed8bdf8c20e4eb1da"
+    },
+    {
+      "locale": "ja",
+      "slug": "recurring-events-without-the-mess",
+      "url": "https://www.cloud-calendars.com/ja/articles/recurring-events-without-the-mess/",
+      "sha256": "7852cb8a0c0adb3d96c96253e56074758af5fa379da53b4da3f18109475bbabc"
+    }
+  ],
+  "localizedShellPagesVerified": 503,
+  "localizedHeroPagesVerified": 30,
+  "scope": "New guide complete body/FAQ/sources, exact prior canonical preservation and all localized shell links; related-only source guard separately. Not native-speaker, released-runtime or ranking proof."
+}

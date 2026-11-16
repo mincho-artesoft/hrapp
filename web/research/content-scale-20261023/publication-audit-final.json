@@ -1,0 +1,3265 @@
+{
+  "generatedAt": "2026-10-23",
+  "mode": "final",
+  "result": "PASS_FINAL",
+  "readOnly": true,
+  "dist": "/Users/minchomilev/cloud-calendars/dist/arte-calendar/browser",
+  "selectionFile": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/priority-selection-final.json",
+  "selectionSha256": "ee199272e5bd3295c326edace77f2d592d04f5f0910382bd181ab5a1ea345522",
+  "counts": {
+    "htmlPages": 818,
+    "prerenderManifestRoutes": 818,
+    "englishArticles": 173,
+    "baseline": 73,
+    "newBuilt": 100,
+    "newSelectedBuilt": 100,
+    "heldLocalizedArticleAndHubRoutes": 542,
+    "sitemapLocURLs": 217,
+    "llmsURLs": 468
+  },
+  "errors": [],
+  "provisionalFinalGateWarnings": [],
+  "checks": [
+    {
+      "check": "baseline_count_73",
+      "passed": true,
+      "details": 73,
+      "finalOnly": false
+    },
+    {
+      "check": "selection_count_100",
+      "passed": true,
+      "details": 100,
+      "finalOnly": false
+    },
+    {
+      "check": "english_count_173",
+      "passed": true,
+      "details": 173,
+      "finalOnly": true
+    },
+    {
+      "check": "new_count_100",
+      "passed": true,
+      "details": 100,
+      "finalOnly": true
+    },
+    {
+      "check": "exact_selected_publication_membership",
+      "passed": true,
+      "details": {
+        "missing": [],
+        "unexpected": []
+      },
+      "finalOnly": true
+    },
+    {
+      "check": "held_routes_count_542",
+      "passed": true,
+      "details": 542,
+      "finalOnly": false
+    },
+    {
+      "check": "sitemap_xml_parses",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "llms_discovery_exists",
+      "passed": true,
+      "details": [
+        "llms-full.txt",
+        "llms.txt"
+      ],
+      "finalOnly": false
+    },
+    {
+      "check": "selected_routes_in_sitemap",
+      "passed": true,
+      "details": [],
+      "finalOnly": true
+    },
+    {
+      "check": "selected_routes_in_llms",
+      "passed": true,
+      "details": [],
+      "finalOnly": true
+    },
+    {
+      "check": "all_built_english_articles_in_sitemap",
+      "passed": true,
+      "details": null,
+      "finalOnly": false
+    },
+    {
+      "check": "all_built_english_articles_in_llms",
+      "passed": true,
+      "details": null,
+      "finalOnly": false
+    },
+    {
+      "check": "held_absent_sitemap_and_alternates",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "held_absent_llms",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "english_h1_canonical_robots",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "faq_jsonld_matches_visible_prerender",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "all_held_noindex_follow",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "marketing_media_uses_s3_backed_paths",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "all_built_selected_reachable_from_articles",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "all_built_selected_have_nonhub_incoming",
+      "passed": true,
+      "details": [],
+      "finalOnly": false
+    },
+    {
+      "check": "all_authored_context_pairs_present",
+      "passed": true,
+      "details": {
+        "pairs": 100,
+        "missing": []
+      },
+      "finalOnly": true
+    },
+    {
+      "check": "authored_context_pairs_cover_all_selected",
+      "passed": true,
+      "details": [],
+      "finalOnly": true
+    },
+    {
+      "check": "baseline_parents_at_most_six_selected_links",
+      "passed": true,
+      "details": {},
+      "finalOnly": false
+    }
+  ],
+  "mediaClassificationCounts": {
+    "small_ui_icon": 2484,
+    "s3_backed_panel_route": 15858
+  },
+  "articlePages": [
+    {
+      "route": "/articles/a-calendar-that-is-yours-to-share",
+      "h1": [
+        "Share a calendar with the right people and permissions"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/a-countdown-to-your-next-meeting",
+      "h1": [
+        "Use a calendar Live Activity countdown without replacing alerts"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/a-fourteen-day-view-of-the-weather",
+      "h1": [
+        "How far ahead can I see weather in Cloud Calendars?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/a-list-for-people-who-dislike-grids",
+      "h1": [
+        "Calendar list view on iPhone: read the agenda and check what is missing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/a-week-view-that-fits-a-week",
+      "h1": [
+        "Week calendar on iPhone: compare hours without overlooking commitments"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "h1": [
+        "Alternating A/B week timetable: decide what a holiday skips"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/automatic-time-blocking-versus-manual-calendar",
+      "h1": [
+        "Automatic time blocking or manual calendar planning? Compare the controls"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/backward-planning-project-deadlines-across-weekends-and-holidays",
+      "h1": [
+        "Plan backward across weekends and days off: a counted example"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/backward-planning-project-deadlines-across-weekends-and-holidays/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/booking-link-or-shared-calendar",
+      "h1": [
+        "Booking link, event invitation or shared calendar: which should you send?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/caldav-calendar-on-iphone",
+      "h1": [
+        "CalDAV calendar on iPhone: setup, permissions and missing events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/calendar-event-or-room-reservation",
+      "h1": [
+        "Calendar event or room reservation? Check what is confirmed"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/calendar-export-ics-pdf-and-backup",
+      "h1": [
+        "Calendar export on iPhone: ICS, CSV, PDF and subscriptions"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 5,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/calendar-notifications-missing-silent-or-duplicated",
+      "h1": [
+        "Calendar notifications on iPhone: missing, silent or duplicated?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/calendar-on-apple-watch",
+      "h1": [
+        "Calendar and Google Tasks on Apple Watch: check app support and missing items"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-on-apple-watch/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 5,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/calendar-travel-time-versus-separate-buffer-event-blocks",
+      "h1": [
+        "Calendar travel time or separate buffers? Check both journeys"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-travel-time-versus-separate-buffer-event-blocks/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "h1": [
+        "Calendar week numbers disagree: compare the year rule and first weekday"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/can-others-see-google-calendar-tasks",
+      "h1": [
+        "Can others see your Google Calendar tasks? Check timed tasks and permissions"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/change-calendar-color-iphone",
+      "h1": [
+        "Change calendar colors on iPhone without moving events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/change-calendar-color-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/choosing-a-widget-size",
+      "h1": [
+        "Choose a Cloud Calendars widget by its layout, not just its size"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/choosing-a-widget-size/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/cozi-timetree-family-calendar-iphone-android",
+      "h1": [
+        "Cozi or TimeTree for an iPhone and Android family? Check sharing and updates"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/daylight-as-a-planning-constraint",
+      "h1": [
+        "Plan around sunset: check daylight, location and the event date"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/daylight-as-a-planning-constraint/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/disconnect-calendar-integration-without-losing-track",
+      "h1": [
+        "Disconnect a calendar integration: access, sync and existing copies"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/display-multiple-time-zone-columns-google-calendar-outlook",
+      "h1": [
+        "Show additional time zones in Google Calendar and Outlook"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/display-multiple-time-zone-columns-google-calendar-outlook/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/drag-an-event-to-move-it",
+      "h1": [
+        "Drag a calendar event to reschedule: check time, duration and scope"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/dupont-28-day-rotating-shift-calendar-cycle",
+      "h1": [
+        "DuPont 28-day shift calendar: map the cycle before repeating it"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/dupont-28-day-rotating-shift-calendar-cycle/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/event-saved-to-wrong-calendar",
+      "h1": [
+        "Event saved to the wrong calendar?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/event-saved-to-wrong-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/exchange-calendars-on-an-iphone",
+      "h1": [
+        "Microsoft and Exchange calendars on iPhone: check the connection first"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/exchange-calendars-on-an-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/family-pickup-calendar-handoff",
+      "h1": [
+        "A family pickup plan with a clear handoff"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/fantastical-readdle-calendar366-iphone-comparison",
+      "h1": [
+        "iPhone calendar alternatives: Cloud Calendars, Fantastical, Readdle and BusyCal"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/find-old-calendar-events-by-account-date-and-title",
+      "h1": [
+        "Find an old calendar event: check the account, dates and search fields"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/firefighter-24-48-kelly-day-calendar-pattern",
+      "h1": [
+        "24/48 firefighter calendar: add a Kelly day without shifting the roster"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/firefighter-24-48-kelly-day-calendar-pattern/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/forecast-beside-every-event",
+      "h1": [
+        "Check the hourly weather for a calendar event on iPhone and iPad"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/forecast-beside-every-event/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/free-google-sync-without-adverts",
+      "h1": [
+        "Free Google Calendar sync on iPhone: what is included and where ads fit"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/google-appointment-cancel-booked-slot",
+      "h1": [
+        "Cancel a booked Google Calendar appointment and what happens to the slot"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-cancel-booked-slot/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-appointment-email-verification",
+      "h1": [
+        "Google appointment email verification: what guests must do and what it proves"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-email-verification/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-appointment-payments-stripe-refunds",
+      "h1": [
+        "Paid Google appointments: separate booking cancellation from a Stripe refund"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-payments-stripe-refunds/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-appointment-schedule-which-calendars-block-booking-slots",
+      "h1": [
+        "Google appointment schedule: which calendars and events block a booking slot"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-appointment-schedule-which-calendars-block-booking-slots/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-booking-page-link-button-embed",
+      "h1": [
+        "Share a Google booking page: link, popup button or inline embed"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-booking-page-link-button-embed/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-add-ons-conferencing-permissions",
+      "h1": [
+        "Google Calendar add-ons: install the intended integration and check its meeting account"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-add-ons-conferencing-permissions/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-alternate-calendar-moon-sports",
+      "h1": [
+        "Google alternate dates, Moon phases or sports: choose the right calendar source"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-alternate-calendar-moon-sports/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-android-app-not-syncing",
+      "h1": [
+        "Google Calendar not syncing on Android: checks in a safe order"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-android-app-not-syncing/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-android-personal-work-profile",
+      "h1": [
+        "Show personal calendars in an Android Work Profile without confusing it with sharing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-android-personal-work-profile/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-birthdays-from-contacts",
+      "h1": [
+        "Google Calendar birthdays: check the contact, manual entry and account behind a date"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-birthdays-from-contacts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-change-event-owner-before-handover",
+      "h1": [
+        "Change the owner of a Google Calendar event before you hand over a meeting"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-change-event-owner-before-handover/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-email-notifications-filter",
+      "h1": [
+        "Too many Google Calendar emails: choose categories, then filter in Gmail"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-email-notifications-filter/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-event-visibility-private-public-default",
+      "h1": [
+        "Google Calendar private events: what each person with access actually sees"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-event-visibility-private-public-default/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-events-from-gmail-visibility",
+      "h1": [
+        "Flights and reservations from Gmail in Google Calendar: who can see them"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-events-from-gmail-visibility/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-find-a-time-blank-is-not-free",
+      "h1": [
+        "Google Calendar Find a time: a blank column does not mean the guest is free"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-find-a-time-blank-is-not-free/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-gemini-suggested-meeting-times",
+      "h1": [
+        "Gemini suggested meeting times in Google Calendar: check eligibility and review the result"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-gemini-suggested-meeting-times/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-hide-unsubscribe-or-delete",
+      "h1": [
+        "Hide, unsubscribe or delete a Google calendar: pick the one you can undo"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-hide-unsubscribe-or-delete/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-holidays-by-country-and-religion",
+      "h1": [
+        "Add holidays to Google Calendar for more than one country"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-holidays-by-country-and-religion/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-keyboard-shortcuts-workflow",
+      "h1": [
+        "A Google Calendar keyboard workflow: navigate, create, verify and return"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-keyboard-shortcuts-workflow/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-meeting-notes-not-updating",
+      "h1": [
+        "Google Calendar meeting notes not updating? The document is not a live event mirror"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-offline-desktop-limits",
+      "h1": [
+        "Google Calendar offline on a computer: prepare the view and know what cannot change"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-offline-desktop-limits/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-ownership-transfer-pending-acceptance",
+      "h1": [
+        "Google Calendar ownership transfer: finish the handoff before an account closes"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-print-date-range",
+      "h1": [
+        "Print a Google Calendar: choose the range, the calendars and the details"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-print-date-range/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-public-embed-on-website",
+      "h1": [
+        "Embed a Google Calendar on your website: public details or free/busy only"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-public-embed-on-website/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-report-assigned-task-spam",
+      "h1": [
+        "Unwanted assigned Google task? Identify the shared source before reporting it"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-report-assigned-task-spam/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-response-emails-outlook-rsvp",
+      "h1": [
+        "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-response-emails-outlook-rsvp/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-task-deadline-versus-scheduled-time-block",
+      "h1": [
+        "Google task deadline or work block? Reserve the time before it is due"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-task-deadline-versus-scheduled-time-block/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-time-insights-counted-meetings",
+      "h1": [
+        "Google Calendar Time Insights: reconcile the meetings that actually count"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-time-insights-counted-meetings/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendar-working-hours-location-out-of-office-focus-time",
+      "h1": [
+        "Google Calendar working hours, working location, out of office or focus time: which one to set"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendar-working-hours-location-out-of-office-focus-time/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-calendars-that-never-reach-your-iphone",
+      "h1": [
+        "A Google calendar is missing on iPhone: check the connection and selection"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/google-family-calendar-membership",
+      "h1": [
+        "Google family calendar: who gets it, who can edit, what happens when someone leaves"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-family-calendar-membership/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-keep-reminders-moved-to-tasks",
+      "h1": [
+        "Where Google Keep reminders went: finding them in Google Tasks"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-keep-reminders-moved-to-tasks/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/google-tasks-repeating-task-complete-delete",
+      "h1": [
+        "Repeating tasks in Google Tasks and Calendar: complete, skip or stop them"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/google-tasks-repeating-task-complete-delete/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/iana-tzdb-government-time-zone-rule-change-calendar",
+      "h1": [
+        "Time-zone rule changes: diagnose a calendar before moving events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iana-tzdb-government-time-zone-rule-change-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-duration-p1d-pt24h-dst",
+      "h1": [
+        "iCalendar P1D versus PT24H: why a day can end at a different hour"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-duration-p1d-pt24h-dst/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-exdate-recurrence-id-moved-instance",
+      "h1": [
+        "EXDATE or RECURRENCE-ID: skip one meeting or move it to another day"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-floating-time-utc-tzid",
+      "h1": [
+        "iCalendar floating time, UTC and TZID: which time does the file mean?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-transp-class-busy-private",
+      "h1": [
+        "ICS TRANSP versus CLASS: private and busy are different settings"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-transp-class-busy-private/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-uid-sequence-event-updates",
+      "h1": [
+        "ICS UID and SEQUENCE: why a changed title is still the same meeting"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icalendar-valarm-relative-absolute-trigger",
+      "h1": [
+        "ICS alarm TRIGGER: before the start, after the end or at a fixed time?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icalendar-valarm-relative-absolute-trigger/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-calendar-hide-past-events",
+      "h1": [
+        "Old iCloud events disappeared? Check the web hide-past-events setting"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-calendar-hide-past-events/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-calendar-invitation-sender-email",
+      "h1": [
+        "Choose the email address that sends your iCloud event invitations"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-calendar-invitation-sender-email/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-delete-calendar-every-device",
+      "h1": [
+        "Delete an iCloud calendar or just stop seeing it? Check the scope first"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-delete-calendar-every-device/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-google-and-outlook-in-one-view",
+      "h1": [
+        "See Google, iCloud and Outlook calendars together on iPhone and iPad"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/icloud-private-calendar-pending-invitations",
+      "h1": [
+        "An iCloud private calendar invitation is still pending: verify, resend, then check access"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-private-calendar-pending-invitations/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-public-calendar-publish-stop",
+      "h1": [
+        "Publish an iCloud calendar as a public feed, then retire it deliberately"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-public-calendar-publish-stop/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/icloud-shared-calendar-update-emails",
+      "h1": [
+        "iCloud shared calendar update emails: choose the right inbox and signal"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/icloud-shared-calendar-update-emails/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/ics-all-day-dtend-exclusive-end-date",
+      "h1": [
+        "Why an ICS all-day event ends one date after its last visible day"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/ics-method-cancel-versus-delete-event",
+      "h1": [
+        "ICS METHOD:CANCEL is not the same as deleting your calendar copy"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/inviting-people-who-do-not-have-the-app",
+      "h1": [
+        "Sharing an event with someone who does not have Cloud Calendars"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/ipad-family-calendar-display-skylight-dakboard",
+      "h1": [
+        "iPad family calendar display or dedicated hardware? Compare the update workflow"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/iphone-calendar-add-only-full-access",
+      "h1": [
+        "iPhone calendar access: why an app can add events but cannot show your schedule"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-add-only-full-access/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/iphone-calendar-add-remove-event-attachments",
+      "h1": [
+        "Attach the right file to an iPhone Calendar event, then check the saved version"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-add-remove-event-attachments/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/iphone-calendar-language-alternate-calendar-settings",
+      "h1": [
+        "Calendar language and week numbers on iPhone and iPad: check display settings"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/iphone-calendar-tasks-reminders-versus-event-alerts",
+      "h1": [
+        "Tasks and reminders in an iPhone calendar: choose the right kind of item"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/keeping-track-of-who-replied",
+      "h1": [
+        "Calendar replies: separate attendance from sharing access"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/lock-screen-without-unlocking",
+      "h1": [
+        "Calendar information on the Lock Screen: choose the right feature"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/mac-calendar-caldav-delegation-allow-write",
+      "h1": [
+        "Give a colleague CalDAV calendar-account access in Mac Calendar"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-caldav-delegation-allow-write/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-check-invitee-availability",
+      "h1": [
+        "Check invitee availability in Mac Calendar—and why the button may be missing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-check-invitee-availability/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-custom-alert-email-open-file",
+      "h1": [
+        "Use a custom Mac Calendar alert to open a file or send yourself email"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-custom-alert-email-open-file/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-holidays-different-region",
+      "h1": [
+        "Add another country’s holidays on Mac without duplicating your own events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-holidays-different-region/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-ignore-alerts-one-calendar",
+      "h1": [
+        "Mute one calendar on Mac without deleting its appointments"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-ignore-alerts-one-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-siri-suggestions-confirm-ignore",
+      "h1": [
+        "A booking appeared in Siri Suggestions on Mac: confirm it or ignore it"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-siri-suggestions-confirm-ignore/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-subscription-auto-refresh",
+      "h1": [
+        "A subscribed calendar is stale on Mac: check Auto-refresh before importing again"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-subscription-auto-refresh/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-subscription-icloud-on-my-mac",
+      "h1": [
+        "A calendar subscription is only on your Mac: check its Location"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-subscription-icloud-on-my-mac/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/mac-calendar-travel-time-after-location-change",
+      "h1": [
+        "Changed a meeting’s location on Mac? Recheck Travel Time as well"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/mac-calendar-travel-time-after-location-change/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/meeting-links-that-make-themselves",
+      "h1": [
+        "Google Meet and Microsoft Teams links: create, save and check"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/month-view-on-a-bigger-screen",
+      "h1": [
+        "Month calendar on iPad and iPhone: see the dates, then check the details"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "h1": [
+        "Last weekday of the month or the 31st? Check the recurrence rule"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/natural-language-calendar-events-iphone",
+      "h1": [
+        "Natural-language calendar events on iPhone: enter quickly, check before saving"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "h1": [
+        "Phoenix and Hawaii meeting times: use the right city zone"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/non-dst-time-zone-arizona-hawaii-recurring-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "h1": [
+        "Half-hour and quarter-hour time zones: calculate a meeting that fits"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/non-integer-30-and-45-minute-utc-offset-calendar-scheduling/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/on-call-standby-calendar-versus-confirmed-shift",
+      "h1": [
+        "On-call calendar: separate coverage from confirmed work"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/on-call-standby-calendar-versus-confirmed-shift/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/onecal-alternative-iphone-calendar-view-or-sync",
+      "h1": [
+        "Cloud Calendars or OneCal? Choose a combined view or calendar sync"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/outlook-appointment-meeting-event-convert-and-update",
+      "h1": [
+        "Outlook appointment, meeting or event: convert one to another and update correctly"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-appointment-meeting-event-convert-and-update/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-birthday-calendar-from-contacts",
+      "h1": [
+        "Outlook birthday calendar: turn it on, fix dates in contacts, hide it"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-birthday-calendar-from-contacts/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-calendar-color-categories",
+      "h1": [
+        "Colour-code your Outlook calendar with categories"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-color-categories/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-calendar-delegate-or-editor-permission",
+      "h1": [
+        "Microsoft 365 calendar: give an assistant Can edit or Delegate access?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-delegate-or-editor-permission/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-calendar-sharing-levels-busy-titles-details",
+      "h1": [
+        "Outlook calendar sharing levels: busy only, titles and locations, or all details"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-calendar-sharing-levels-busy-titles-details/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-change-meeting-organizer-or-copy-meeting",
+      "h1": [
+        "You can’t change an Outlook meeting’s organizer: hand it over instead"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-change-meeting-organizer-or-copy-meeting/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-create-meeting-from-email",
+      "h1": [
+        "Turn an Outlook email thread into a meeting request"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-create-meeting-from-email/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-end-recurring-meeting-early-keep-history",
+      "h1": [
+        "End a recurring Outlook meeting early without wiping its history"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-end-recurring-meeting-early-keep-history/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-events-from-email-flights-hotels",
+      "h1": [
+        "Flights and hotels added to Outlook from email: control what appears"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-events-from-email-flights-hotels/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-forward-meeting-and-allow-forwarding",
+      "h1": [
+        "Forwarding Outlook meetings: what attendees can do and how to stop it"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-forward-meeting-and-allow-forwarding/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-group-calendar-versus-shared-calendar",
+      "h1": [
+        "Microsoft 365 group calendar or a shared calendar: who can cancel, who gets invited"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-group-calendar-versus-shared-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-print-calendar-styles",
+      "h1": [
+        "Print an Outlook calendar: pick the style that shows what you need"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-print-calendar-styles/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-propose-new-meeting-time",
+      "h1": [
+        "Propose a new meeting time in Outlook, and accept one as organizer"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-propose-new-meeting-time/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-recover-deleted-calendar-items",
+      "h1": [
+        "Recover a deleted Outlook calendar event: Deleted Items first, then the server"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-recover-deleted-calendar-items/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-schedule-meeting-on-behalf-of-someone",
+      "h1": [
+        "Schedule a meeting on someone else’s Outlook calendar: save, send and check"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-schedule-meeting-on-behalf-of-someone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-scheduling-assistant-read-colleague-availability",
+      "h1": [
+        "Reading a colleague’s availability in Outlook’s Scheduling Assistant"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-scheduling-assistant-read-colleague-availability/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-share-calendar-outside-organization",
+      "h1": [
+        "Share a Microsoft 365 calendar with someone outside your organisation"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-share-calendar-outside-organization/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-shared-mailbox-calendar",
+      "h1": [
+        "Shared mailbox calendar in Outlook: who can use it and its limits"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-shared-mailbox-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-shorten-meetings-automatically",
+      "h1": [
+        "Make Outlook meetings end early or start late automatically"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-shorten-meetings-automatically/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-show-as-free-busy-tentative-working-elsewhere",
+      "h1": [
+        "Outlook Show As: free, tentative, busy, working elsewhere or out of office"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-show-as-free-busy-tentative-working-elsewhere/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-show-declined-meetings-on-calendar",
+      "h1": [
+        "Keep declined meetings visible in Outlook, or get one back"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-show-declined-meetings-on-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-split-view-overlay-calendars",
+      "h1": [
+        "View several Outlook calendars at once: split view or overlay"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-split-view-overlay-calendars/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-subscribe-or-import-ics-calendar",
+      "h1": [
+        "Add an internet calendar to Outlook: subscribe for updates or import a snapshot"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-subscribe-or-import-ics-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-teams-meeting-button-missing",
+      "h1": [
+        "No Teams meeting option in Outlook: check which Outlook you have first"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-teams-meeting-button-missing/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/outlook-work-hours-and-location",
+      "h1": [
+        "Outlook work hours and location: set office and remote days"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/outlook-work-hours-and-location/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/overnight-shift-crossing-midnight-calendar-end-date",
+      "h1": [
+        "Overnight shift calendar: put the end on the next date"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/overnight-shift-crossing-midnight-calendar-end-date/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/pitman-2-2-3-shift-schedule-calendar-setup",
+      "h1": [
+        "Pitman 2-2-3 shift calendar: verify the 14-day pattern"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/pitman-2-2-3-shift-schedule-calendar-setup/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/planning-a-week-in-ten-minutes",
+      "h1": [
+        "A weekly calendar review: commitments, time blocks and shared responsibilities"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/planning-outdoors-without-being-rained-on",
+      "h1": [
+        "Plan an outdoor event with a forecast and a fallback"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/reading-a-chance-of-rain",
+      "h1": [
+        "Chance of rain or rainfall amount? Read 0.3 inches in context"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/recover-deleted-calendar-events-iphone",
+      "h1": [
+        "Deleted calendar events on iPhone: Google and iCloud recovery"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/recurring-events-without-the-mess",
+      "h1": [
+        "Recurring calendar events: change one date or the series safely"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/rrule-count-until-excluded-occurrences",
+      "h1": [
+        "RRULE COUNT or UNTIL: end a recurring schedule without an extra session"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/share-assign-reminders-iphone-calendar-difference",
+      "h1": [
+        "Share and assign reminders on iPhone: lists are different from calendars"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/sharing-one-event-not-your-calendar",
+      "h1": [
+        "Share one calendar event: choose the link and access you mean"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/shift-work-calendar-iphone-rotating-schedules",
+      "h1": [
+        "Shift work calendar on iPhone: plan a rotating schedule without losing changes"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "h1": [
+        "Sydney–New York recurring meetings: plan the two-hour seasonal swing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/southern-hemisphere-reverse-dst-two-hour-meeting-shift/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/split-shift-two-work-periods-calendar-blocking",
+      "h1": [
+        "Split-shift calendar: keep two work periods and the gap separate"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/split-shift-two-work-periods-calendar-blocking/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/sync-google-tasks-apple-reminders-iphone",
+      "h1": [
+        "Sync Google Tasks with Apple Reminders: check fields before connecting lists"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/taking-back-a-calendar-you-shared",
+      "h1": [
+        "Stop sharing a calendar: remove access and check the remaining routes"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/the-calendar-on-a-bedside-table",
+      "h1": [
+        "Use iPhone StandBy without mistaking a glance for tomorrow’s plan"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/the-calendar-on-a-bedside-table/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/the-commute-and-the-sky",
+      "h1": [
+        "Plan travel around calendar events: route time, weather and arrival"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/the-secret-address-of-a-google-calendar",
+      "h1": [
+        "Google’s secret iCal address: subscribe without confusing it with sharing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/the-widget-that-shows-what-is-next",
+      "h1": [
+        "Calendar widgets on iPhone and iPad: upcoming events and weather"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/the-year-in-one-screen",
+      "h1": [
+        "Year calendar on iPhone and iPad: inspect dates beyond the overview"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/the-year-in-one-screen/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/three-calendar-apps-is-two-too-many",
+      "h1": [
+        "Combine calendar apps on iPhone without losing track of events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/time-zones-and-the-flight-you-booked",
+      "h1": [
+        "Calendar time zones: check the event before you travel"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/unwanted-calendar-events-iphone",
+      "h1": [
+        "Unwanted calendar events on iPhone: invitations, subscriptions and spam"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/unwanted-calendar-events-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "h1": [
+        "US–UK DST mismatch: check each recurring meeting date"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/us-uk-dst-mismatch-weeks-recurring-meeting-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": true,
+      "selected": true
+    },
+    {
+      "route": "/articles/weather-calendar-history-versus-forecast-iphone",
+      "h1": [
+        "Weather calendar history on iPhone: save a diary or read a changing forecast?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/weather-inside-your-calendar",
+      "h1": [
+        "Calendar with weather on iPhone and iPad: plan your day in one view"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/weather-where-the-event-is",
+      "h1": [
+        "The weather where the event is, not where you are"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/weather-where-the-event-is/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/weekly-schedule-builder",
+      "h1": [
+        "Weekly schedule builder: make a draft before adding calendar events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/weekly-schedule-builder/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-a-forecast-can-and-cannot-tell-you",
+      "h1": [
+        "How reliable is a weather forecast for a calendar event?"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-a-subscription-actually-buys",
+      "h1": [
+        "Cloud Calendars subscriptions: Base, Advanced and Premium explained"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-a-subscription-actually-buys/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-an-all-day-event-really-means",
+      "h1": [
+        "All-day calendar events: dates, availability and missing widget entries"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-an-all-day-event-really-means/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-calendar-sync-actually-does",
+      "h1": [
+        "Calendar sync on iPhone: accounts, subscriptions and missing events"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 5,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-fantastical-costs-and-what-this-does",
+      "h1": [
+        "Cloud Calendars or Fantastical? Compare your calendar workflow on iPhone"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-guests-can-do-to-your-event",
+      "h1": [
+        "Google Calendar guest permissions: editing, invitations and the guest list"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-guests-can-do-to-your-event/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 4,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-is-a-cloud-calendar",
+      "h1": [
+        "What is a cloud calendar? Accounts, apps and shared schedules explained"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/what-you-get-without-paying-anything",
+      "h1": [
+        "What Cloud Calendars includes free on iPhone and iPad"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/when-two-calendars-disagree",
+      "h1": [
+        "When calendar events disagree: check ownership before editing"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/who-can-see-what-in-google-calendar",
+      "h1": [
+        "Google Calendar sharing permissions: check the access you actually grant"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/why-a-shared-calendar-does-not-appear",
+      "h1": [
+        "A calendar was shared with you and it is not there"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 2,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/wind-the-forecast-nobody-reads",
+      "h1": [
+        "Wind forecast for outdoor plans: speed, gusts, direction and time"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/wind-the-forecast-nobody-reads/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    },
+    {
+      "route": "/articles/work-and-personal-without-two-apps",
+      "h1": [
+        "Work and personal calendars in one app: keep ownership separate"
+      ],
+      "canonical": [
+        "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/"
+      ],
+      "robots": [
+        "index,follow"
+      ],
+      "faqCount": 3,
+      "faqSchemaEqual": true,
+      "new": false,
+      "selected": false
+    }
+  ],
+  "incomingNonHubBySelectedBuilt": {
+    "alternating-a-b-week-school-timetable-calendar-vacation-exceptions": [
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "backward-planning-project-deadlines-across-weekends-and-holidays": [
+      "/articles/planning-a-week-in-ten-minutes"
+    ],
+    "calendar-travel-time-versus-separate-buffer-event-blocks": [
+      "/articles/the-commute-and-the-sky"
+    ],
+    "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch": [
+      "/articles/planning-a-week-in-ten-minutes"
+    ],
+    "display-multiple-time-zone-columns-google-calendar-outlook": [
+      "/articles/a-week-view-that-fits-a-week"
+    ],
+    "dupont-28-day-rotating-shift-calendar-cycle": [
+      "/articles/shift-work-calendar-iphone-rotating-schedules"
+    ],
+    "firefighter-24-48-kelly-day-calendar-pattern": [
+      "/articles/shift-work-calendar-iphone-rotating-schedules"
+    ],
+    "google-appointment-cancel-booked-slot": [
+      "/articles/booking-link-or-shared-calendar"
+    ],
+    "google-appointment-email-verification": [
+      "/articles/booking-link-or-shared-calendar"
+    ],
+    "google-appointment-payments-stripe-refunds": [
+      "/articles/booking-link-or-shared-calendar"
+    ],
+    "google-appointment-schedule-which-calendars-block-booking-slots": [
+      "/articles/booking-link-or-shared-calendar"
+    ],
+    "google-booking-page-link-button-embed": [
+      "/articles/booking-link-or-shared-calendar"
+    ],
+    "google-calendar-add-ons-conferencing-permissions": [
+      "/articles/meeting-links-that-make-themselves"
+    ],
+    "google-calendar-alternate-calendar-moon-sports": [
+      "/articles/iphone-calendar-language-alternate-calendar-settings"
+    ],
+    "google-calendar-android-app-not-syncing": [
+      "/articles/what-calendar-sync-actually-does"
+    ],
+    "google-calendar-android-personal-work-profile": [
+      "/articles/google-calendars-that-never-reach-your-iphone"
+    ],
+    "google-calendar-birthdays-from-contacts": [
+      "/articles/family-pickup-calendar-handoff",
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "google-calendar-change-event-owner-before-handover": [
+      "/articles/event-saved-to-wrong-calendar"
+    ],
+    "google-calendar-email-notifications-filter": [
+      "/articles/calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "google-calendar-event-visibility-private-public-default": [
+      "/articles/who-can-see-what-in-google-calendar"
+    ],
+    "google-calendar-events-from-gmail-visibility": [
+      "/articles/who-can-see-what-in-google-calendar"
+    ],
+    "google-calendar-find-a-time-blank-is-not-free": [
+      "/articles/calendar-event-or-room-reservation"
+    ],
+    "google-calendar-gemini-suggested-meeting-times": [
+      "/articles/calendar-event-or-room-reservation"
+    ],
+    "google-calendar-hide-unsubscribe-or-delete": [
+      "/articles/disconnect-calendar-integration-without-losing-track"
+    ],
+    "google-calendar-holidays-by-country-and-religion": [
+      "/articles/iphone-calendar-language-alternate-calendar-settings"
+    ],
+    "google-calendar-keyboard-shortcuts-workflow": [
+      "/articles/planning-a-week-in-ten-minutes"
+    ],
+    "google-calendar-meeting-notes-not-updating": [
+      "/articles/meeting-links-that-make-themselves"
+    ],
+    "google-calendar-offline-desktop-limits": [
+      "/articles/google-calendars-that-never-reach-your-iphone"
+    ],
+    "google-calendar-ownership-transfer-pending-acceptance": [
+      "/articles/a-calendar-that-is-yours-to-share",
+      "/articles/calendar-export-ics-pdf-and-backup"
+    ],
+    "google-calendar-print-date-range": [
+      "/articles/calendar-export-ics-pdf-and-backup"
+    ],
+    "google-calendar-public-embed-on-website": [
+      "/articles/inviting-people-who-do-not-have-the-app"
+    ],
+    "google-calendar-report-assigned-task-spam": [
+      "/articles/unwanted-calendar-events-iphone"
+    ],
+    "google-calendar-response-emails-outlook-rsvp": [
+      "/articles/keeping-track-of-who-replied"
+    ],
+    "google-calendar-task-deadline-versus-scheduled-time-block": [
+      "/articles/iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "google-calendar-time-insights-counted-meetings": [
+      "/articles/planning-a-week-in-ten-minutes"
+    ],
+    "google-calendar-working-hours-location-out-of-office-focus-time": [
+      "/articles/work-and-personal-without-two-apps"
+    ],
+    "google-family-calendar-membership": [
+      "/articles/a-calendar-that-is-yours-to-share"
+    ],
+    "google-keep-reminders-moved-to-tasks": [
+      "/articles/sync-google-tasks-apple-reminders-iphone"
+    ],
+    "google-tasks-repeating-task-complete-delete": [
+      "/articles/iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "iana-tzdb-government-time-zone-rule-change-calendar": [
+      "/articles/time-zones-and-the-flight-you-booked"
+    ],
+    "icalendar-duration-p1d-pt24h-dst": [
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "icalendar-exdate-recurrence-id-moved-instance": [
+      "/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "icalendar-floating-time-utc-tzid": [
+      "/articles/time-zones-and-the-flight-you-booked"
+    ],
+    "icalendar-transp-class-busy-private": [
+      "/articles/who-can-see-what-in-google-calendar"
+    ],
+    "icalendar-uid-sequence-event-updates": [
+      "/articles/what-calendar-sync-actually-does"
+    ],
+    "icalendar-valarm-relative-absolute-trigger": [
+      "/articles/calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "icloud-calendar-hide-past-events": [
+      "/articles/find-old-calendar-events-by-account-date-and-title"
+    ],
+    "icloud-calendar-invitation-sender-email": [
+      "/articles/event-saved-to-wrong-calendar"
+    ],
+    "icloud-delete-calendar-every-device": [
+      "/articles/disconnect-calendar-integration-without-losing-track"
+    ],
+    "icloud-private-calendar-pending-invitations": [
+      "/articles/keeping-track-of-who-replied"
+    ],
+    "icloud-public-calendar-publish-stop": [
+      "/articles/a-calendar-that-is-yours-to-share"
+    ],
+    "icloud-shared-calendar-update-emails": [
+      "/articles/calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "ics-all-day-dtend-exclusive-end-date": [
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "ics-method-cancel-versus-delete-event": [
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "iphone-calendar-add-only-full-access": [
+      "/articles/unwanted-calendar-events-iphone"
+    ],
+    "iphone-calendar-add-remove-event-attachments": [
+      "/articles/sharing-one-event-not-your-calendar"
+    ],
+    "mac-calendar-caldav-delegation-allow-write": [
+      "/articles/caldav-calendar-on-iphone"
+    ],
+    "mac-calendar-check-invitee-availability": [
+      "/articles/calendar-event-or-room-reservation"
+    ],
+    "mac-calendar-custom-alert-email-open-file": [
+      "/articles/calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "mac-calendar-holidays-different-region": [
+      "/articles/iphone-calendar-language-alternate-calendar-settings"
+    ],
+    "mac-calendar-ignore-alerts-one-calendar": [
+      "/articles/calendar-notifications-missing-silent-or-duplicated"
+    ],
+    "mac-calendar-siri-suggestions-confirm-ignore": [
+      "/articles/natural-language-calendar-events-iphone"
+    ],
+    "mac-calendar-subscription-auto-refresh": [
+      "/articles/caldav-calendar-on-iphone"
+    ],
+    "mac-calendar-subscription-icloud-on-my-mac": [
+      "/articles/caldav-calendar-on-iphone"
+    ],
+    "mac-calendar-travel-time-after-location-change": [
+      "/articles/the-commute-and-the-sky"
+    ],
+    "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date": [
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "non-dst-time-zone-arizona-hawaii-recurring-calendar": [
+      "/articles/time-zones-and-the-flight-you-booked"
+    ],
+    "non-integer-30-and-45-minute-utc-offset-calendar-scheduling": [
+      "/articles/display-multiple-time-zone-columns-google-calendar-outlook"
+    ],
+    "on-call-standby-calendar-versus-confirmed-shift": [
+      "/articles/shift-work-calendar-iphone-rotating-schedules"
+    ],
+    "outlook-appointment-meeting-event-convert-and-update": [
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "outlook-birthday-calendar-from-contacts": [
+      "/articles/google-calendar-birthdays-from-contacts",
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "outlook-calendar-color-categories": [
+      "/articles/change-calendar-color-iphone"
+    ],
+    "outlook-calendar-delegate-or-editor-permission": [
+      "/articles/exchange-calendars-on-an-iphone"
+    ],
+    "outlook-calendar-sharing-levels-busy-titles-details": [
+      "/articles/exchange-calendars-on-an-iphone"
+    ],
+    "outlook-change-meeting-organizer-or-copy-meeting": [
+      "/articles/taking-back-a-calendar-you-shared"
+    ],
+    "outlook-create-meeting-from-email": [
+      "/articles/natural-language-calendar-events-iphone"
+    ],
+    "outlook-end-recurring-meeting-early-keep-history": [
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "outlook-events-from-email-flights-hotels": [
+      "/articles/google-calendar-events-from-gmail-visibility"
+    ],
+    "outlook-forward-meeting-and-allow-forwarding": [
+      "/articles/keeping-track-of-who-replied"
+    ],
+    "outlook-group-calendar-versus-shared-calendar": [
+      "/articles/exchange-calendars-on-an-iphone"
+    ],
+    "outlook-print-calendar-styles": [
+      "/articles/calendar-export-ics-pdf-and-backup"
+    ],
+    "outlook-propose-new-meeting-time": [
+      "/articles/keeping-track-of-who-replied"
+    ],
+    "outlook-recover-deleted-calendar-items": [
+      "/articles/recover-deleted-calendar-events-iphone"
+    ],
+    "outlook-schedule-meeting-on-behalf-of-someone": [
+      "/articles/exchange-calendars-on-an-iphone"
+    ],
+    "outlook-scheduling-assistant-read-colleague-availability": [
+      "/articles/calendar-event-or-room-reservation"
+    ],
+    "outlook-share-calendar-outside-organization": [
+      "/articles/exchange-calendars-on-an-iphone"
+    ],
+    "outlook-shared-mailbox-calendar": [
+      "/articles/a-calendar-that-is-yours-to-share"
+    ],
+    "outlook-shorten-meetings-automatically": [
+      "/articles/planning-a-week-in-ten-minutes"
+    ],
+    "outlook-show-as-free-busy-tentative-working-elsewhere": [
+      "/articles/work-and-personal-without-two-apps"
+    ],
+    "outlook-show-declined-meetings-on-calendar": [
+      "/articles/keeping-track-of-who-replied"
+    ],
+    "outlook-split-view-overlay-calendars": [
+      "/articles/a-week-view-that-fits-a-week"
+    ],
+    "outlook-subscribe-or-import-ics-calendar": [
+      "/articles/calendar-export-ics-pdf-and-backup"
+    ],
+    "outlook-teams-meeting-button-missing": [
+      "/articles/meeting-links-that-make-themselves"
+    ],
+    "outlook-work-hours-and-location": [
+      "/articles/work-and-personal-without-two-apps"
+    ],
+    "overnight-shift-crossing-midnight-calendar-end-date": [
+      "/articles/what-an-all-day-event-really-means"
+    ],
+    "pitman-2-2-3-shift-schedule-calendar-setup": [
+      "/articles/shift-work-calendar-iphone-rotating-schedules"
+    ],
+    "rrule-count-until-excluded-occurrences": [
+      "/articles/alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "/articles/recurring-events-without-the-mess"
+    ],
+    "southern-hemisphere-reverse-dst-two-hour-meeting-shift": [
+      "/articles/time-zones-and-the-flight-you-booked"
+    ],
+    "split-shift-two-work-periods-calendar-blocking": [
+      "/articles/shift-work-calendar-iphone-rotating-schedules"
+    ],
+    "us-uk-dst-mismatch-weeks-recurring-meeting-calendar": [
+      "/articles/time-zones-and-the-flight-you-booked"
+    ]
+  },
+  "limits": [
+    "No claim about live S3 object existence or checksum, current deployed CDN, Google indexing or traffic.",
+    "/media/panel/ is accepted as the repository’s established S3-backed proxy path; UI SVG/icons are exempt from marketing media checks.",
+    "FAQ check compares prerendered non-hidden definition lists with JSON-LD, not computed browser styling.",
+    "Provisional mode does not approve final membership; final mode must be rerun after root’s final build."
+  ],
+  "buildSnapshot": {
+    "rootSession": 93024,
+    "log": "/tmp/cloud-calendar-pilot-build-publish.log",
+    "logSha256": "f86b1b125b5dc2dea12a5eb660254847f1552d8b0b7a6947761d124610084595",
+    "copyState": "After final 22-copy amendments; postbuild complete before this audit",
+    "auditedAtUTC": "2026-10-23T11:24:31.983883+00:00"
+  }
+}

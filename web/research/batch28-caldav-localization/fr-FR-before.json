@@ -1,0 +1,21 @@
+{
+  "locale": "fr-FR",
+  "slug": "caldav-calendar-on-iphone",
+  "exists": false,
+  "article": null,
+  "scope": "No keyed article object in current locale articles*.ts modules.",
+  "checkedModules": [
+    {
+      "file": "src/app/content/fr-FR/articles-google.ts",
+      "sha256": "3024771b25f5247e65f4a524a5a544e764c0d854b25abb03e2a7c3cce5b3b151"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "sha256": "50062b2cf981deb128656089b58d5614aef62f7edd16f126ad2a64408e1faba7"
+    },
+    {
+      "file": "src/app/content/fr-FR/articles.ts",
+      "sha256": "deffa57acd93504de043fe401b885181d82134d9a94b05e58557fa3a1ab75c94"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+  "short": "Guest permissions on an event",
+  "description": "Check Google event guest permissions and defaults. Separate invitation rights from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
+  "lede": "A guest’s ability to reply does not describe everything they can do. Review the event’s permissions before using one invitation for a team, clients or a public gathering. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Invited guests can only accept or decline, and every application exposes the same permission controls.",
+  "sections": [
+    {
+      "heading": "Begin with the organiser and the original event",
+      "body": [
+        "Open the intended event in Google Calendar using the organising account, or an account authorised to manage it. Check its calendar, date and organiser before changing permissions. A separately imported appointment is not a reliable place to control the original invitation.",
+        "For a team meeting, write down the intended arrangement: who may reschedule it, who may bring others, and whether participants should see one another. These are separate decisions. A guest who needs to attend does not necessarily need to manage the meeting."
+      ]
+    },
+    {
+      "heading": "Decide whether guests should modify the meeting",
+      "body": [
+        "Google documents a “Modify event” option under “Guests can” in its computer event editor. This is a broad collaboration permission, not merely a way to suggest a new time. Google explains that it enables event management including editing fields, viewing guests and booking rooms.",
+        "For example, a trusted co-organiser arranging a workshop may need that flexibility. A customer attending an appointment may not. Choose based on the responsibility you are giving the guest, and verify the saved event rather than relying on how a different meeting was configured."
+      ]
+    },
+    {
+      "heading": "Review invitations and guest visibility separately",
+      "body": [
+        "Google’s event model distinguishes permission to invite others from permission to see other guests. Review both alongside editing access. Turning off one capability does not mean you have checked the other, and a displayed default is not evidence of the settings on an existing event.",
+        "For a gathering of unrelated clients, consider whether one shared invitation is appropriate at all. Information already included in an email, description or forwarded message is outside the narrow question of the current guest-list control. Do not put confidential participant details in a description and expect a hidden list to conceal them."
+      ]
+    },
+    {
+      "heading": "Check defaults as well as important individual events",
+      "body": [
+        "Google also documents “Default guest permissions” in its Event settings, including a default for modification. The controls are therefore not exclusively an event-by-event matter. Review your defaults when your usual scheduling pattern changes, then check significant existing invitations individually.",
+        "For a recurring meeting, confirm which occurrence or series you are editing before saving. Do not assume that changing a preference has rewritten older invitations. When testing an arrangement with a colleague, use an agreed, non-sensitive example instead of moving or cancelling a real customer meeting."
+      ]
+    },
+    {
+      "heading": "Check document access separately from meeting access",
+      "body": [
+        "A guest who can see the meeting may still be unable to open its document. Google stores event attachments in Drive and checks the file’s sharing permissions separately. A filename can be visible even when the file itself is inaccessible. Identify the original event, the intended recipient account and the attached file before changing calendar permissions.",
+        "For a workshop, a participant may receive the invitation yet still need access to the agenda. Have the file owner review its Drive sharing for the intended audience and let the participant check again with the intended account. Do not publish a work document or broaden the whole calendar merely to resolve the error. If the attachment control is unavailable, check the organising Google identity and whether the organisation enables Drive. Cloud Calendars Reader, Writer and Owner roles do not establish Google Drive access."
+      ]
+    },
+    {
+      "heading": "Keep Cloud Calendars roles distinct",
+      "body": [
+        "Cloud Calendars has a separate sharing arrangement with Reader, Writer and Owner roles. Reader provides viewing and syncing; Writer permits editing; Owner also manages sharing and access with the invited identity. These roles should not be presented as switches for Google’s three guest permissions.",
+        "When a Google-specific permission matters, inspect the original event in Google Calendar. Seeing an attendee in Cloud Calendars does not establish that every Google guest setting can be changed there. Keep the owning service and the recipient’s identity clear when diagnosing a missing control or an unsuccessful edit."
+      ]
+    },
+    {
+      "heading": "Verify the saved outcome and communicate responsibility",
+      "body": [
+        "After saving, reopen the original event and check the intended settings. Where appropriate, ask an authorised colleague to confirm what their own account can do. Do not exchange passwords or send private guest details as a shortcut for checking access.",
+        "Keep attendance separate from permissions. A person’s ability to edit, an imported copy, and a recorded acceptance are different facts. In Cloud Calendars, a sharing receipt is not an RSVP. For an important meeting, ask for the attendance response you need and make clear who is responsible for schedule changes."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the organising account and original event.",
+    "Decide who should manage the meeting, invite others and see guests.",
+    "Inspect the Google event’s actual guest permissions.",
+    "Review Google defaults without assuming they change existing events.",
+    "Check attached documents in Google Drive with the intended recipient account; calendar access alone does not establish file access.",
+    "Treat Cloud Calendars sharing roles as a separate permission system.",
+    "Reopen the saved event and confirm attendance separately."
+  ],
+  "faq": [
+    {
+      "q": "Can a guest change my meeting time?",
+      "a": "Google supports granting modification permission. Check the actual event and the guest’s access; do not infer it from the fact that they received an invitation."
+    },
+    {
+      "q": "Are all guest permissions configured only on each event?",
+      "a": "No. Google documents default guest permissions as well. Check defaults for future scheduling and inspect important existing events themselves."
+    },
+    {
+      "q": "Does hiding the guest list remove information already sent?",
+      "a": "It does not demonstrate that earlier emails, descriptions, screenshots or independent copies were removed. Review what was actually distributed separately."
+    },
+    {
+      "q": "Why can a guest see the filename but not open the attachment?",
+      "a": "Google can show an attachment’s filename to people who can see the event details even when they cannot open the file. Check the file’s Google Drive sharing and the recipient’s intended account. Ask the file owner to review access rather than granting broader calendar permissions or publishing the document."
+    }
+  ],
+  "sourcesHeading": "Provider guidance and further reading",
+  "sources": [
+    {
+      "label": "Google: event collaboration and default guest permissions",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: event guest permission fields",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    },
+    {
+      "label": "Google: event attachments, Drive sharing and missing attachment controls",
+      "url": "https://support.google.com/calendar/answer/6192039?hl=en-RW"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar",
+    "keeping-track-of-who-replied"
+  ],
+  "updated": "2026-10-22"
+}

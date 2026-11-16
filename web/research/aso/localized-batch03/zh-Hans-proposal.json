@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "zh-Hans",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "024f9209-104e-4827-b65d-e0655d301ad2",
+  "versionLocalizationId": "d1b9bc90-83d6-4a44-abb3-8a1fa3a3d978",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: 日历",
+      "characters": 19,
+      "utf8Bytes": 23,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "天气、日程安排与主屏幕小组件",
+      "characters": 14,
+      "utf8Bytes": 42,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "计划,提醒,会议,活动,共享,邀请,周视图,月视图,预报,工作,生活,同步,时间表,预约",
+      "characters": 44,
+      "utf8Bytes": 106,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "在同一处查看日程和天气，使用主屏幕小组件与多种日历视图。也可以先创建本地日历，无需注册应用账户。",
+      "characters": 48,
+      "utf8Bytes": 144,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "在 iPhone 和 iPad 上一起查看日历与天气。使用 Cloud Calendars 浏览工作和个人安排，规划每一天。\n\n日历与多种视图\n使用 iCloud 日历并连接 Google 日历。Premium 还支持 Microsoft 日历。可选择日、周、月、年或列表视图。\n\n您也可以直接在设备上创建本地日历，无需注册 Cloud Calendars 账户。连接服务或使用共享功能时，可能需要登录。\n\n天气与主屏幕小组件\n安排活动时查看天气预报。主屏幕小组件提供小、中、大三种尺寸。可用的预报取决于所在位置和天气服务提供商。\n\n会议与共享\n通过 Google 日历使用 Google Meet。Premium 还支持 Microsoft Teams。共享活动和日历，并通过电子邮件、二维码或 App Clip 发送邀请。访问权限取决于日历和邀请类型。\n\n选择方案\n免费 Base 包含 Google 日历同步、Google Meet、多种日历视图、天气和小组件。\nAdvanced 包含 Base 的功能，并移除广告。\nPremium 包含 Advanced 的功能，并增加 Microsoft 日历和 Microsoft Teams 支持。\n\n购买前，请在应用内或 App Store 中确认当前本地价格和计费周期。\n\n应用可免费下载，并提供可选的自动续订订阅。除非在当前订阅期结束前至少 24 小时取消，否则订阅将自动续订。您可以在 App Store 账户设置中管理或取消订阅。\n\n隐私政策: https://www.cloud-calendars.com/privacy-policy\n使用条款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 771,
+      "utf8Bytes": 1539,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "zh-Hans",
+      "name": "Cloud Calendars: 日历",
+      "subtitle": "Google、Microsoft、iCloud 同步",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "用日历与天气共同规划每一天\n\nCloud Calendars 将你的日历与天气整合为一个美观有序的规划体验。\n\n在一个 App 中管理 iCloud、Google 日历和 Microsoft 日历，同时直接在日程、桌面小组件和规划视图中查看天气预报。\n\n通过为快速规划而设计的日历视图，提前安排会议、旅行、接送孩子、户外活动和忙碌的每一天。\n\n主屏幕小组件\n\n添加精美的小组件，组合显示：\n• 日历事件\n• 天气预报\n• 即将到来的日程\n• 月相与天气状况\n• 风力与温度\n• 每日议程概览\n\n从多种小组件样式中选择，直接在主屏幕查看你的一天。\n\n为什么选择 CLOUD CALENDARS\n\n• 同时查看 iCloud、Google 日历和 Microsoft 日历\n• 使用内置天气预报进行规划\n• 使用精美的主屏幕小组件\n• 自然地拖动、移动和调整事件时长\n• 创建 Google Meet 和 Microsoft Teams 链接\n• 在日、周、月、年和列表视图之间切换\n• 在一个地方管理工作和个人日历\n\n功能\n\n所有日历汇集一处\n在简洁、色彩编码的体验中连接并管理 iCloud、Google 日历和 Microsoft 日历。\n\n日历内置天气\n在规划流程中直接查看逐小时和每日预报，包括温度、天气状况、月相、风力和天气图标。\n\n日历与天气小组件\n通过可自定义的主屏幕小组件即时查看日程和天气。\n\n多种日历视图\n根据你的时间规划方式选择日、周、月、年或列表视图。\n\n轻松编辑事件\n直接在日历中轻点、拖动和调整事件时长，实现快速自然的日程安排。\n\n专属天气视图\n浏览详细预报、逐小时天气状况以及有用的规划信息。\n\n从天气预报创建事件\n轻点预报中的某个小时，即可使用所选时间快速创建新事件。\n\n内置会议链接\n快速为事件添加 Google Meet 和 Microsoft Teams 链接。\n\n非常适合\n\n• 管理工作与个人日历\n• 结合天气进行规划\n• 户外活动与旅行\n• 忙碌日程与家庭规划\n• Google 日历和 iCloud 用户\n• Microsoft 日历用户\n\n试用 Cloud Calendars，让每一天都更容易规划。\n\n订阅信息\n\nCloud Calendars 提供自动续订订阅。\n\n免费计划\n• Google 日历同步\n• 多种日历视图\n• 天气功能\n• 小组件\n• Google Meet 支持\n\n确认购买时，费用将从你的 Apple ID 账户中扣除。除非在当前订阅期结束前至少 24 小时取消，否则订阅将自动续订。系统会在当前订阅期结束前 24 小时内收取续订费用。你可以在 App Store 账户设置中管理和取消订阅。\n\n隐私政策：https://www.cloud-calendars.com/privacy-policy\n使用条款：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "zh-Hans",
+      "keywords": "天气,小组件,日程,计划,议程,预报,会议,事件,工作,月相,风力,温度,旅行,提醒,每日计划,户外活动,家庭日程,时间管理,锁屏,下雨,今天,周视图,月视图,实时活动,同步,节假日",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

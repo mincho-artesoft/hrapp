@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-23",
+  "authenticated": true,
+  "domainsReviewed": [
+    "flexibits.com",
+    "timetreeapp.com",
+    "morgen.so"
+  ],
+  "visibleRowsPerPositionsReport": 10,
+  "observedProGate": "Advanced filters modal: Filters & sorting are limited; Pro advertises10k keywords per report, sorting,filters,Excel/CSV,URL/subfolder/subdomain reports.",
+  "aiAttempt": {
+    "page": "https://www.semrush.com/ai-seo/competitor-research/",
+    "ownDomain": "cloud-calendars.com",
+    "competitor": "flexibits.com",
+    "result": "Run competitor analysis opened Get free trial modal; no AI analysis result returned."
+  },
+  "purchasesOrTrialsActivated": false,
+  "scope": "Three US Desktop reports, dated Oct21. Rounded keyword totals for other countries are summary only, not inspected country keyword exports."
+}

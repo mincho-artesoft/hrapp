@@ -1,0 +1,95 @@
+{
+  "title": "Endereço iCal secreto do Google: assinar não é compartilhar",
+  "short": "O endereço iCal secreto",
+  "description": "Entenda o endereço iCal secreto, a conexão de conta e os feeds compartilhados. Saiba lidar com um endereço exposto e com cópias já salvas.",
+  "lede": "Um endereço de calendário, uma conexão de conta e um convite têm funções diferentes. Identifique o que você recebeu antes de levar a programação a outro aplicativo. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "Um endereço secreto é um convite pessoal que pode ser revogado para apenas um destinatário.",
+  "sections": [
+    {
+      "heading": "Escolha a conexão conforme a tarefa",
+      "body": [
+        "O Google distingue o login em outro aplicativo de calendário da visualização por um endereço iCal secreto. A conexão de conta pode permitir edição; o endereço oferece uma assinatura somente para leitura. O Google descreve o endereço secreto como destinado ao uso pessoal e recomenda não compartilhá-lo com outras pessoas.",
+        "Por exemplo, mostrar sua própria agenda de trabalho em outro calendário compatível é diferente de dar acesso contínuo a um colega. Comece pelo objetivo: consultar sua agenda, colaborar com uma pessoa específica ou distribuir uma programação para um público. Não escolha uma URL apenas porque é fácil colá-la."
+      ]
+    },
+    {
+      "heading": "Confira o calendário, não apenas a conta",
+      "body": [
+        "No computador, as instruções do Google colocam o endereço secreto no formato iCal nas configurações de integração do calendário escolhido. Confira primeiro o nome do calendário. Administradores de trabalho ou escola podem restringir essa opção; a ausência do endereço não é motivo para publicar o calendário.",
+        "Não inclua o endereço em capturas de tela, publicações públicas de suporte ou notas compartilhadas. Ao pedir ajuda, descreva o tipo de conta, o nome do calendário e a conexão sem fornecer a URL. Normalmente, o suporte precisa identificar a forma de conexão antes de precisar do conteúdo dos eventos."
+      ]
+    },
+    {
+      "heading": "Verifique o que o aplicativo de destino adicionou",
+      "body": [
+        "Uma assinatura acompanha um feed; um arquivo importado cria uma cópia separada. Leia as instruções do aplicativo de destino e confirme qual ação está realizando. Abrir um arquivo de calendário baixado não significa que os compromissos resultantes acompanharão mudanças futuras.",
+        "Compare o nome do calendário, a data e os detalhes usando um evento comum, sem informações sensíveis, que você já reconheça. Evite criar uma segunda assinatura para investigar a primeira: duas cópias visíveis podem fazer uma atualização atrasada parecer um conflito. Oculte temporariamente um calendário para identificar a origem."
+      ]
+    },
+    {
+      "heading": "Separe os links do Google dos links do Cloud Calendars",
+      "body": [
+        "O Cloud Calendars tem suas próprias formas de compartilhar eventos e calendários, incluindo feeds de assinatura. Eles não são endereços secretos do Google. Antes de escolher como abrir, determine se o remetente compartilhou um evento, um calendário ou um convite associado a uma conta.",
+        "Um destinatário do Cloud Calendars pode ter a função Reader, Writer ou Owner. Um endereço de feed, por si só, não comprova permissão para editar. Da mesma forma, receber um endereço de visualização do Google não torna você proprietário do calendário. Pergunte ao remetente em qual sistema as alterações devem ser feitas."
+      ]
+    },
+    {
+      "heading": "Considere como o calendário de destino atualiza os dados",
+      "body": [
+        "Uma assinatura não promete entrega imediata. Os feeds do Cloud Calendars incluem um intervalo de atualização sugerido, mas o aplicativo de destino decide quando buscar e exibir mudanças. Um horário antigo em um dispositivo não prova, sozinho, que o organizador deixou de salvar a alteração.",
+        "Para uma reunião no mesmo dia, compare com a programação atual do organizador e confirme mudanças importantes diretamente. Anote qual calendário ainda mostra os dados antigos e quando você verificou. Não importe o evento repetidamente nem exclua o calendário de origem para tentar forçar a atualização."
+      ]
+    },
+    {
+      "heading": "Responda à exposição sem prometer recolher todas as cópias",
+      "body": [
+        "O Google orienta redefinir um endereço secreto divulgado, invalidando o antigo e criando um substituto. Identifique seus aplicativos que o utilizam para atualizar as assinaturas depois. Redefinir um endereço é diferente de remover um colaborador específico.",
+        "Compromissos salvos, exportações e capturas de tela anteriores são outra questão. A troca do link não demonstra que todas as cópias antigas desapareceram. Se você enviou informações ao público errado, considere o conteúdo e os destinatários reais, sem tratar a redefinição bem-sucedida como prova de remoção completa."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifique se você tem uma conexão de conta, convite, assinatura ou arquivo.",
+    "Confira o calendário de origem antes de copiar um endereço.",
+    "Reserve o endereço secreto do Google para seus próprios aplicativos compatíveis.",
+    "Verifique se o aplicativo assinou o calendário em vez de importar uma cópia.",
+    "Confirme mudanças urgentes com o organizador, sem depender do prazo de atualização.",
+    "Se o endereço foi exposto, siga a redefinição do Google e atualize as conexões desejadas."
+  ],
+  "faq": [
+    {
+      "q": "Posso dar o endereço secreto a um colega?",
+      "a": "O Google recomenda reservá-lo aos seus próprios aplicativos. Para dar acesso a outra pessoa, use os controles de compartilhamento e escolha a permissão adequada."
+    },
+    {
+      "q": "Uma assinatura permite editar o original?",
+      "a": "O endereço iCal secreto do Google serve para visualização. Editar exige conexão de conta e permissão apropriadas; as funções de compartilhamento do Cloud Calendars são outro mecanismo."
+    },
+    {
+      "q": "Redefinir o endereço apaga os compromissos antigos em todos os lugares?",
+      "a": "A redefinição invalida o endereço antigo do Google. Isso não comprova a remoção de arquivos, compromissos ou capturas de tela salvos separadamente."
+    }
+  ],
+  "sourcesHeading": "Orientações dos provedores e leitura complementar",
+  "sources": [
+    {
+      "label": "Google: conexões de conta e endereços iCal secretos",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google: compartilhar um calendário",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft: importar, assinar e aguardar atualizações",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

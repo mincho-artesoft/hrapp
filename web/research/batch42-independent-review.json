@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-22",
+  "decision": "PASS both proposals; no required corrections",
+  "reviewerScope": "Independent editorial review by another agent; own language judgment, not native-speaker or runtime certification.",
+  "reads": {
+    "bg": "Complete English embedded source snapshot and complete Bulgarian article. Initial combined output was truncated within Bulgarian middle; complete Bulgarian article reread separately without truncation before verdict.",
+    "replies": "Complete proposed article read, full original comparator and full discovery/source-read record plus proposal checks read. No fresh primary web fetch; supplied source comparison explicitly.",
+    "extra": "Drag comparator also fully read as part of full comparator artifact; no change proposed."
+  },
+  "pinnedFiles": [
+    {
+      "path": "research/batch42-bg-all-day-proposal.json",
+      "rawSha256": "6e3f87cc61697901b27ed1bb130ff2463611329b42d180fd7315b8a1e7610823"
+    },
+    {
+      "path": "research/batch42-replies-proposal.json",
+      "rawSha256": "c627d52c47daae4259042e91c9d074a46f1aa4a3c8add933c2f726f8e6c7a1c3"
+    },
+    {
+      "path": "research/batch42-full-comparators.json",
+      "rawSha256": "7bf8ff9137bdb76efe576b174653da6e9908059d2b93977e63ea61cf98f7e882"
+    },
+    {
+      "path": "research/batch42-discovery.json",
+      "rawSha256": "09712ed68182514b60cb97349fc5e25e83326eec270cc49c3ccc660fd8afa2fc"
+    }
+  ],
+  "bgArticleObjectSha256": "a49c82c2ef213c35d9cb967dc17b28fbd961fda69218ac329ed5b75a14ae6a09",
+  "checks": {
+    "bgStructure": {
+      "sections": 7,
+      "paragraphs": 15,
+      "practical": 6,
+      "faq": 4,
+      "sources": 5
+    },
+    "englishStructure": {
+      "sections": 7,
+      "paragraphs": 15,
+      "practical": 6,
+      "faq": 4,
+      "sources": 5
+    },
+    "bgSourcesPreserved": true,
+    "bgRelated": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "exists": true
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "exists": true
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "exists": true
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "exists": true
+      }
+    ],
+    "repliesRelated": [
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "exists": true
+      },
+      {
+        "slug": "inviting-people-who-do-not-have-the-app",
+        "exists": true
+      },
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "exists": true
+      }
+    ],
+    "repliesInversePreserved": true,
+    "descriptions": {
+      "bg": 131,
+      "replies": 152
+    }
+  },
+  "requiredCorrections": [],
+  "findings": {
+    "bg": [
+      "Natural coherent Bulgarian preserves date-only versus timed commitment and independent availability. No universal free/busy, all-provider editing, every-view birthday or audible-alert promise.",
+      "Birthdays retain exact contact/account source distinctions and Google contact-sync removal caveat. Apple Contacts visibility does not become Google web/Android sync.",
+      "End-day inclusion in editor remains distinct from exclusive-end export representation. Upcoming widgets/Live Activity exclusion and recurrence-scope uncertainty preserved.",
+      "English UI labels retained rather than inventing Bulgarian menu text; current four related definitions confirmed."
+    ],
+    "replies": [
+      "New section precisely separates moving a personal copy, proposing a time and authorized event editing. Sending proposal is not organiser acceptance/save.",
+      "Google iPhone steps, all-day and >200guest exclusions and computer organiser save explicitly Google; Apple counterproposal/email is server-dependent and not a Cloud control claim.",
+      "Response-note audience warns Google all-guests visibility; does not infer identical audience for proposal messages, Apple comments or all services.",
+      "Tuesday15:00/Wednesday10:00 example requires original-event confirmation; attendance/access and paid-tier boundaries intact. Existing prose/metadata/related/source order preserved by exact inverse delta."
+    ]
+  },
+  "sourceUseAssessment": "New procedural facts are concise paraphrases attributed across Google invitation help, Google organiser help and Apple invitation help, plus original diagnostic example. Existing duplicate locale URLs for the same Apple/Google page are not treated as separate word budgets. No long verbatim passage or excessive single-source reconstruction identified in these additions; a complete external copyright/license audit is not claimed.",
+  "preservation": "Only this review JSON written; no draft/source/native/API/build/deploy edits."
+}

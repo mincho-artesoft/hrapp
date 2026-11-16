@@ -1,0 +1,96 @@
+{
+  "updated": "2026-10-22",
+  "title": "When calendar events disagree: check ownership before editing",
+  "short": "When calendars disagree",
+  "description": "Different times or duplicate events? Check the owning calendar, time zone and provider view, then hide one source before making changes or deleting anything.",
+  "lede": "If an appointment shows two different times, pause before changing either copy. First establish whether you are looking at the same event, two separate records or one event displayed differently. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every calendar service resolves competing edits by keeping whichever change arrived last.",
+  "sections": [
+    {
+      "heading": "Record the difference before trying to fix it",
+      "body": [
+        "Open both entries and compare the account, calendar name, organiser, date, time zone and recurrence. A matching title alone does not establish that two entries are the same record. Note which device or app shows each version without sharing private event details.",
+        "Check the provider’s own calendar view when available, using the same account. For iCloud, Apple recommends checking service status, account consistency and device date and time. Refresh through the relevant app’s supported controls before deciding a saved change has been lost."
+      ]
+    },
+    {
+      "heading": "There is no universal conflict rule",
+      "body": [
+        "Concurrent edits, old local data, permissions and provider-specific behaviour can lead to different symptoms. Do not assume the newest-looking copy is authoritative or that one more edit will repair the connection.",
+        "Microsoft’s support article about an Outlook Desktop conflict describes a case where the conflict was local and the server copy was unaffected. It documents a specific issue and fix, not a rule for Google, iCloud or Cloud Calendars. Follow guidance for your actual provider and client version rather than applying its repair steps everywhere."
+      ]
+    },
+    {
+      "heading": "Hide first when two entries look duplicated",
+      "body": [
+        "Temporarily hide one calendar and observe which entry disappears. Apple documents calendar checkboxes for this purpose. Restore visibility afterward so you do not mistake a hidden appointment for missing data.",
+        "In Cloud Calendars, note the original selection before this check. Calendar selection also affects widgets, notification scheduling and Google synchronization. Restore the calendars you need after comparing the entries, then recheck the schedule before relying on availability or alerts. Do not assume every provider connection pauses and resumes in the same way.",
+        "Two entries may be independent records, imported copies or the same source shown through different connections. Deleting one does not always delete both; deleting a source event can nevertheless affect other devices or people. Establish ownership and preserve needed information before any cleanup. Avoid cancelling a meeting, removing an account or clearing local storage as an initial diagnostic step."
+      ]
+    },
+    {
+      "heading": "Confirm who is allowed to change the event",
+      "body": [
+        "Google distinguishes viewing permission from editing permission; some editing permissions exclude private events, and work administrators can restrict settings. Being able to see an appointment does not prove you can correct it.",
+        "For an Outlook meeting organised by someone else, Microsoft warns that moving your copy does not notify the organiser and can leave your calendar showing the wrong time. Ask the organiser to confirm the intended schedule. For a recurring meeting, identify whether the discrepancy concerns one occurrence or the series."
+      ]
+    },
+    {
+      "heading": "Make a controlled correction only after diagnosis",
+      "body": [
+        "If you own the event or have the required permission, confirm the intended details, make one correction from one client, then check the provider view and other device. If it fails again, stop repeating edits and report the affected client, account type and error to the provider or administrator.",
+        "For a separate connection check, use a disposable event in a calendar you own rather than experimenting on an important invitation. This is a suggested diagnostic workflow, not a runtime test performed by us or a promise about how quickly changes will arrive."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Compare account, calendar, organiser, time zone and recurrence for both entries.",
+    "Check the same account in the provider’s own view when available.",
+    "Temporarily hide one calendar to trace duplicates; restore it after checking.",
+    "Confirm ownership and edit permissions before changing an invitation.",
+    "Make one authorised correction and verify it; seek provider-specific help if the disagreement returns."
+  ],
+  "faq": [
+    {
+      "q": "Should I delete the duplicate event?",
+      "a": "First determine whether the entries are independent records or two views of the same source. Hide a calendar temporarily to trace them. Deletion can affect the underlying calendar and other participants; it is not a safe first diagnostic step."
+    },
+    {
+      "q": "Does the last edit always win?",
+      "a": "Do not rely on that rule across providers and clients. Check the owning calendar, permissions and the provider’s current troubleshooting guidance. A client-local conflict can differ from the event held by the service."
+    },
+    {
+      "q": "Can Cloud Calendars force a work meeting to accept my change?",
+      "a": "A calendar app cannot grant the organiser’s authority or override account permissions. Check the original invitation and contact the organiser or administrator when needed."
+    }
+  ],
+  "sourcesHeading": "Sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: If you have duplicate events on your iCloud Calendar",
+      "url": "https://support.apple.com/en-us/102180"
+    },
+    {
+      "label": "Apple: If your iCloud calendars won’t sync",
+      "url": "https://support.apple.com/en-us/102543"
+    },
+    {
+      "label": "Google: Choose what others can do with your calendar",
+      "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+    },
+    {
+      "label": "Microsoft: Change an appointment, meeting, or event in Outlook",
+      "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+    },
+    {
+      "label": "Microsoft: Outlook shows conflict errors when updating or cancelling meetings",
+      "url": "https://support.microsoft.com/en-us/support/known-issues/outlook-shows-conflict-errors-when-updating-or-cancelling-meetings"
+    }
+  ],
+  "seeAlso": [
+    "what-calendar-sync-actually-does",
+    "work-and-personal-without-two-apps",
+    "disconnect-calendar-integration-without-losing-track"
+  ]
+}

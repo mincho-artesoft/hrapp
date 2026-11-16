@@ -1,0 +1,156 @@
+{
+  "method": "Python zoneinfo; subtract UTC-converted endpoints, not wall-clock datetimes with same tzinfo",
+  "TZPATH": [
+    "/usr/share/zoneinfo",
+    "/usr/lib/zoneinfo",
+    "/usr/share/lib/zoneinfo",
+    "/etc/zoneinfo"
+  ],
+  "tzdataFiles": [
+    {
+      "path": "/usr/share/zoneinfo/tzdata.zi",
+      "header": "# version 2026e-rearguard"
+    }
+  ],
+  "cases": {
+    "2026-03-07T22:00": {
+      "elapsedHours": 7.0,
+      "eightHourEnd": "2026-03-08T07:00:00-04:00"
+    },
+    "2026-10-31T22:00": {
+      "elapsedHours": 9.0,
+      "eightHourEnd": "2026-11-01T05:00:00-05:00"
+    },
+    "America/Los_Angeles->America/New_York": {
+      "elapsedHours": 5.5
+    },
+    "Europe/London->America/New_York": {
+      "elapsedHours": 8.0
+    },
+    "Asia/Tokyo->America/Los_Angeles": {
+      "elapsedHours": 10.0
+    },
+    "2026-07-06T17:00": {
+      "NewYork": "2026-07-06T17:00:00-04:00",
+      "Sydney": "2026-07-07T07:00:00+10:00"
+    },
+    "2026-12-07T16:00": {
+      "NewYork": "2026-12-07T16:00:00-05:00",
+      "Sydney": "2026-12-08T08:00:00+11:00"
+    },
+    "2026-NY09-London13": [
+      "2026-03-08",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-11",
+      "2026-03-12",
+      "2026-03-13",
+      "2026-03-14",
+      "2026-03-15",
+      "2026-03-16",
+      "2026-03-17",
+      "2026-03-18",
+      "2026-03-19",
+      "2026-03-20",
+      "2026-03-21",
+      "2026-03-22",
+      "2026-03-23",
+      "2026-03-24",
+      "2026-03-25",
+      "2026-03-26",
+      "2026-03-27",
+      "2026-03-28",
+      "2026-10-25",
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31"
+    ],
+    "2027-NY09-London13": [
+      "2027-03-14",
+      "2027-03-15",
+      "2027-03-16",
+      "2027-03-17",
+      "2027-03-18",
+      "2027-03-19",
+      "2027-03-20",
+      "2027-03-21",
+      "2027-03-22",
+      "2027-03-23",
+      "2027-03-24",
+      "2027-03-25",
+      "2027-03-26",
+      "2027-03-27",
+      "2027-10-31",
+      "2027-11-01",
+      "2027-11-02",
+      "2027-11-03",
+      "2027-11-04",
+      "2027-11-05",
+      "2027-11-06"
+    ],
+    "2026-01-14T09:00-Phoenix": {
+      "America/New_York": "2026-01-14T11:00:00-05:00",
+      "America/Denver": "2026-01-14T09:00:00-07:00",
+      "America/Los_Angeles": "2026-01-14T08:00:00-08:00",
+      "Pacific/Honolulu": "2026-01-14T06:00:00-10:00"
+    },
+    "2026-07-15T09:00-Phoenix": {
+      "America/New_York": "2026-07-15T12:00:00-04:00",
+      "America/Denver": "2026-07-15T10:00:00-06:00",
+      "America/Los_Angeles": "2026-07-15T09:00:00-07:00",
+      "Pacific/Honolulu": "2026-07-15T06:00:00-10:00"
+    },
+    "2026-11-04T09:00-Phoenix": {
+      "America/New_York": "2026-11-04T11:00:00-05:00",
+      "America/Denver": "2026-11-04T09:00:00-07:00",
+      "America/Los_Angeles": "2026-11-04T08:00:00-08:00",
+      "Pacific/Honolulu": "2026-11-04T06:00:00-10:00"
+    },
+    "DuPontGapsHours": [
+      72.0,
+      72.0
+    ],
+    "KellyRemovedDay10GapHours": 120,
+    "oncall168minus40minus7": 121,
+    "ReviewedDuPontGapsHours": [
+      72.0,
+      72.0
+    ],
+    "ReviewedKellyGapHours": 120.0,
+    "CoverageWindowHours": 168.0
+  },
+  "recurrenceCases": {
+    "PitmanStartDatesTwoCycles": [
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-06",
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-11",
+      "2026-11-12",
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-25",
+      "2026-11-26"
+    ],
+    "PitmanStartsPerCycle": 7,
+    "DuPontCycle": "NNNNOOODDDONNNOOODDDDOOOOOOO",
+    "DuPontFourCrewsEveryDay": true,
+    "KellyStartsDayNumbers": [
+      1,
+      4,
+      7,
+      10,
+      13,
+      16,
+      19,
+      22
+    ]
+  }
+}

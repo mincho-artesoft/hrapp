@@ -1,0 +1,72 @@
+Make all your events shorter automatically
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+New Outlook for Windows
+Outlook on the web for Exchange Server 2019
+Get help with Copilot
+How do I make all my events shorter automatically?
+Tell me about tips and suggestions for Automatically make
+You can now have Outlook end your events a few minutes early or start them a few minutes late. This can help you build in travel time between events or add buffer time if other events go a bit long. You can choose a different duration for events under one hour and over one hour.
+This feature is set up per email account. If you have more than one, be sure to set the start and end time settings for the ones you want.
+Note
+Outlook for Mac guidance on this topic is available
+here
+.
+New Outlook
+Classic Outlook
+Outlook on Web
+In new Outlook , you can set events to end early or start late by using the following instructions.
+Select
+Settings
+>
+Calendar
+>
+Events and invitations.
+Select the
+Shorten duration for all events
+checkbox.
+Use the dropdowns to select the number of minutes for events less than one hour and one hour or longer, then click
+Save
+.
+Note
+Users should be running the latest Monthly Enterprise Channel build of Outlook Desktop. You can check to see what the latest build of Outlook is
+at this page
+. You can check what version of Outlook for Windows you are running by visiting
+What version of Outlook do I have?
+.
+In classic Outlook, select
+File
+>
+Options
+>
+Calendar
+>
+Calendar options.
+Check the
+Shorten appointments and meetings
+checkbox and in the dropdown box choose
+End early
+or
+Start late
+.
+Use the drop-downs to select the number of minutes for events less than one hour and one hour or longer, then click
+OK
+.
+Once set, this setting will be honored across Outlook for Windows, Outlook for Mac, Outlook on the web, Outlook for iOS, and Outlook for Android.
+Outlook on the web users can set events to end early or start late by using the following instructions.
+Select
+Settings
+>
+Calendar
+>
+Events and invitations.
+Check the
+Shorten duration for all events
+checkbox.
+Use the drop-downs to select the number of minutes for events less than one hour and one hour or longer, then click
+Save
+.
+Once set, this setting will be honored across Outlook for Windows, Outlook for Mac, Outlook on the web, Outlook for iOS, and Outlook for Android.

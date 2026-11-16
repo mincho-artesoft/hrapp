@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22T03:47:51.090Z",
+  "count": 1,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "what-guests-can-do-to-your-event",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "title": "Google Calendar guest permissions: editing, invitations and the guest list",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Check Google event guest permissions and defaults. Separate invitation rights from calendar access and Cloud Calendars Reader, Writer and Owner roles.",
+      "descriptionCharacters": 150
+    }
+  ]
+}

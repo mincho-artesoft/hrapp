@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "ml-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "a6d3ff9b-f1a0-49bb-bbb2-13f5cb05c9ce",
+  "versionLocalizationId": "3c5616c1-1dad-4e41-a7ec-771de0375308",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: കലണ്ടർ",
+      "characters": 23,
+      "utf8Bytes": 35,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "കാലാവസ്ഥയും പദ്ധതികളും",
+      "characters": 22,
+      "utf8Bytes": 64,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "സമയക്രമം,യോഗം,ഓർമ്മപ്പെടുത്തൽ,ക്ഷണം,പങ്കിടൽ,ആഴ്ച,മാസം,പ്രവചനം,വിജറ്റ്",
+      "characters": 69,
+      "utf8Bytes": 191,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "പദ്ധതികളും കാലാവസ്ഥയും ഒരുമിച്ച് കാണുക. വിവിധ കാഴ്ചകളും ഹോം സ്ക്രീൻ വിജറ്റുകളും ഉപയോഗിക്കുക, അല്ലെങ്കിൽ ആപ്പ് അക്കൗണ്ടില്ലാതെ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കുക.",
+      "characters": 155,
+      "utf8Bytes": 429,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone, iPad എന്നിവയിൽ Cloud Calendars ഉപയോഗിച്ച് ജോലി, സ്വകാര്യ പദ്ധതികൾക്കൊപ്പം കാലാവസ്ഥയും കാണുക.\n\niCloud കലണ്ടറുകൾ ഉപയോഗിച്ച് Google Calendar ബന്ധിപ്പിക്കുക. ദിവസം, ആഴ്ച, മാസം, വർഷം അല്ലെങ്കിൽ പട്ടിക കാഴ്ച തിരഞ്ഞെടുക്കുക. Cloud Calendars അക്കൗണ്ടില്ലാതെ ഉപകരണത്തിൽ പ്രാദേശിക കലണ്ടർ സൃഷ്ടിക്കാം. സേവനങ്ങൾ ബന്ധിപ്പിക്കാനും പങ്കിടാനും സൈൻ ഇൻ ആവശ്യമായേക്കാം. പ്രവേശനാനുമതികൾ കലണ്ടറിനെയും ക്ഷണത്തിന്റെ തരത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nപദ്ധതികൾ തയ്യാറാക്കുമ്പോൾ കാലാവസ്ഥാ പ്രവചനം പരിശോധിക്കുക. ഹോം സ്ക്രീൻ വിജറ്റുകൾ ചെറുതും ഇടത്തരവും വലുതുമായ വലുപ്പങ്ങളിൽ ലഭ്യമാണ്. പ്രവചനങ്ങളുടെ ലഭ്യത സ്ഥലത്തെയും കാലാവസ്ഥാ സേവനത്തെയും ആശ്രയിച്ചിരിക്കും.\n\nസൗജന്യ Base-ൽ Google Calendar സമന്വയം, Google Meet, വിവിധ കലണ്ടർ കാഴ്ചകൾ, കാലാവസ്ഥ, വിജറ്റുകൾ എന്നിവ ഉൾപ്പെടുന്നു. Advanced-ൽ Base സവിശേഷതകൾ ഉൾപ്പെടുകയും പരസ്യങ്ങൾ നീക്കം ചെയ്യുകയും ചെയ്യുന്നു. Premium-ൽ Advanced കൂടാതെ Microsoft കലണ്ടറുകളും Microsoft Teams പിന്തുണയും ഉൾപ്പെടുന്നു.\n\nഡൗൺലോഡ് സൗജന്യമാണ്; ഐച്ഛിക സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ സ്വയമേവ പുതുക്കും. വാങ്ങുന്നതിന് മുമ്പ് ആപ്പിലോ App Store-ലോ നിലവിലെ പ്രാദേശിക വിലയും ബില്ലിംഗ് കാലയളവും പരിശോധിക്കുക. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പ് റദ്ദാക്കിയില്ലെങ്കിൽ സബ്‌സ്‌ക്രിപ്‌ഷൻ പുതുക്കും. App Store അക്കൗണ്ട് ക്രമീകരണങ്ങളിൽ നിയന്ത്രിക്കുകയോ റദ്ദാക്കുകയോ ചെയ്യാം.\n\nസ്വകാര്യത: https://www.cloud-calendars.com/privacy-policy\nഉപയോഗ നിബന്ധനകൾ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1411,
+      "utf8Bytes": 3367,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "ml-IN",
+      "name": "Cloud Calendars: കലണ്ടർ",
+      "subtitle": "എല്ലാ കലണ്ടറും ഒരിടത്ത്",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "കലണ്ടറും കാലാവസ്ഥയും ഒരുമിച്ച് ഉപയോഗിച്ച് ദിവസം ആസൂത്രണം ചെയ്യൂ\n\nCloud Calendars നിങ്ങളുടെ കലണ്ടറുകളും കാലാവസ്ഥയും ഒരൊറ്റ വൃത്തിയുള്ള ഇടത്തിലേക്ക് കൊണ്ടുവരുന്നു.\n\niCloud, Google Calendar, Microsoft കലണ്ടറുകൾ ഒരേ ആപ്പിൽ കൈകാര്യം ചെയ്യൂ; പ്രവചനം കാണൂ നേരിട്ട് നിങ്ങളുടെ ഷെഡ്യൂളിലും വിജറ്റുകളിലും ആസൂത്രണ കാഴ്ചകളിലും.\n\nമീറ്റിംഗുകൾ, യാത്ര, സ്കൂളിൽ നിന്ന് കൂട്ടിക്കൊണ്ടുവരൽ, പുറത്തെ പരിപാടികൾ, തിരക്കുള്ള ദിവസങ്ങൾ — വേഗത്തിലുള്ള ആസൂത്രണത്തിനായി ഒരുക്കിയ കലണ്ടർ കാഴ്ചകളോടെ മുന്നിൽ നിൽക്കൂ.\n\nഹോം സ്ക്രീൻ വിജറ്റുകൾ\n\nഇവ ഒരുമിച്ച് കാണിക്കുന്ന വിജറ്റുകൾ ചേർക്കൂ:\n• കലണ്ടർ ഇവന്റുകൾ\n• കാലാവസ്ഥാ പ്രവചനം\n• വരാനിരിക്കുന്ന ഷെഡ്യൂൾ\n• ചന്ദ്രക്കല, സ്ഥിതി\n• കാറ്റും താപനിലയും\n• ദിവസത്തിന്റെ സംഗ്രഹം\n\nപല വിജറ്റ് ശൈലികളിൽ നിന്ന് തിരഞ്ഞെടുത്ത് ഹോം സ്ക്രീനിൽ നിന്നുതന്നെ ദിവസം കാണൂ.\n\nഎന്തുകൊണ്ട് CLOUD CALENDARS\n\n• iCloud, Google Calendar, Microsoft കലണ്ടറുകൾ ഒരുമിച്ച് കാണൂ\n• ഉള്ളിലുള്ള കാലാവസ്ഥാ പ്രവചനത്തോടെ ആസൂത്രണം ചെയ്യൂ\n• ഹോം സ്ക്രീനിൽ ഭംഗിയുള്ള വിജറ്റുകൾ ഉപയോഗിക്കൂ\n• ഇവന്റുകൾ സ്വാഭാവികമായി വലിച്ചിടൂ, നീക്കൂ, വലുപ്പം മാറ്റൂ\n• Google Meet, Microsoft Teams ലിങ്കുകൾ ഉണ്ടാക്കൂ\n• ദിവസം, ആഴ്ച, മാസം, വർഷം, ലിസ്റ്റ് കാഴ്ചകൾക്കിടയിൽ മാറൂ\n• ജോലിയുടെയും വ്യക്തിപരവുമായ കലണ്ടറുകൾ ഒരിടത്ത് കൈകാര്യം ചെയ്യൂ\n\nസവിശേഷതകൾ\n\nഎല്ലാ കലണ്ടറും ഒരുമിച്ച്\niCloud, Google Calendar, Microsoft കലണ്ടറുകൾ ബന്ധിപ്പിച്ച് നിറങ്ങളാൽ വേർതിരിച്ച വൃത്തിയുള്ള കാഴ്ചയിൽ കൈകാര്യം ചെയ്യൂ.\n\nകലണ്ടറിനുള്ളിൽ തന്നെ കാലാവസ്ഥ\nആസൂത്രണം ചെയ്യുമ്പോൾത്തന്നെ മണിക്കൂർ, ദിവസ പ്രവചനം കാണൂ — താപനില, സ്ഥിതി, ചന്ദ്രക്കല, കാറ്റ്, കാലാവസ്ഥാ ചിഹ്നങ്ങൾ.\n\nകലണ്ടർ, കാലാവസ്ഥാ വിജറ്റുകൾ\nഇഷ്ടാനുസരണം ക്രമീകരിച്ച വിജറ്റുകളിൽ നിന്ന് ഷെഡ്യൂളും കാലാവസ്ഥയും ഉടൻ കാണൂ.\n\nപല കലണ്ടർ കാഴ്ചകൾ\nസമയം എങ്ങനെ ആസൂത്രണം ചെയ്യുന്നു എന്നതനുസരിച്ച് ദിവസം, ആഴ്ച, മാസം, വർഷം അല്ലെങ്കിൽ ലിസ്റ്റ് തിരഞ്ഞെടുക്കൂ.\n\nഎളുപ്പമുള്ള ഇവന്റ് തിരുത്തൽ\nകലണ്ടറിൽത്തന്നെ ടാപ്പ് ചെയ്ത്, വലിച്ചിട്ട്, വലുപ്പം മാറ്റി ഇവന്റ് ക്രമീകരിക്കൂ.\n\nപ്രത്യേക കാലാവസ്ഥാ കാഴ്ച\nമണിക്കൂർ തിരിച്ചുള്ള സ്ഥിതിയും ആസൂത്രണത്തിന് ഉപകരിക്കുന്ന വിവരങ്ങളും ഉള്ള വിശദമായ പ്രവചനം കാണൂ.\n\nപ്രവചനത്തിൽ നിന്ന് ഇവന്റ്\nപ്രവചനത്തിലെ ഒരു മണിക്കൂറിൽ ടാപ്പ് ചെയ്യൂ — ആ സമയത്തെ പുതിയ ഇവന്റ് ഉടൻ ഉണ്ടാകും.\n\nഉള്ളിൽത്തന്നെ മീറ്റിംഗ് ലിങ്കുകൾ\nഇവന്റുകളിലേക്ക് Google Meet, Microsoft Teams ലിങ്കുകൾ വേഗം ചേർക്കൂ.\n\nആർക്കൊക്കെ യോജിക്കും\n\n• ജോലിയുടെയും വ്യക്തിപരവുമായ കലണ്ടർ കൈകാര്യം ചെയ്യാൻ\n• കാലാവസ്ഥ കണക്കിലെടുത്ത് ആസൂത്രണം ചെയ്യാൻ\n• പുറത്തെ പരിപാടികൾക്കും യാത്രയ്ക്കും\n• തിരക്കുള്ള ഷെഡ്യൂളിനും കുടുംബ ആസൂത്രണത്തിനും\n• Google Calendar, iCloud ഉപയോക്താക്കൾക്ക്\n• Microsoft കലണ്ടർ ഉപയോക്താക്കൾക്ക്\n\nCloud Calendars പരീക്ഷിച്ചു നോക്കൂ — ഓരോ ദിവസവും ആസൂത്രണം ചെയ്യാൻ എളുപ്പമാകും.\n\nസബ്സ്ക്രിപ്ഷൻ വിവരങ്ങൾ\n\nCloud Calendars സ്വയം പുതുക്കുന്ന സബ്സ്ക്രിപ്ഷനുകൾ നൽകുന്നു.\n\nസൗജന്യ പ്ലാൻ\n• Google Calendar സിങ്ക്\n• പല കലണ്ടർ കാഴ്ചകൾ\n• കാലാവസ്ഥാ സവിശേഷതകൾ\n• വിജറ്റുകൾ\n• Google Meet പിന്തുണ\nവാങ്ങൽ സ്ഥിരീകരിക്കുമ്പോൾ നിങ്ങളുടെ Apple ID അക്കൗണ്ടിൽ നിന്ന് തുക ഈടാക്കും. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുൻപ് റദ്ദാക്കിയില്ലെങ്കിൽ സബ്സ്ക്രിപ്ഷൻ സ്വയം പുതുക്കപ്പെടും. നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് മുൻപുള്ള 24 മണിക്കൂറിനുള്ളിൽ പുതുക്കലിന്റെ തുക ഈടാക്കും. App Store അക്കൗണ്ട് ക്രമീകരണങ്ങളിൽ സബ്സ്ക്രിപ്ഷൻ കൈകാര്യം ചെയ്യാനും റദ്ദാക്കാനും കഴിയും.\n\nസ്വകാര്യതാ നയം: https://www.cloud-calendars.com/privacy-policy\nഉപയോഗ നിബന്ധനകൾ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "ml-IN",
+      "keywords": "കാലാവസ്ഥ,വിജറ്റ്,ഷെഡ്യൂൾ,ആസൂത്രണം,പ്രവചനം,iCloud,മീറ്റിംഗ്,ഇവന്റ്,ജോലി,ലോക്ക് സ്ക്രീൻ,മഴ,ഇന്ന്,ദിവസം",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

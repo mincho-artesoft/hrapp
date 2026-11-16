@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-22T01:07:10.646597+00:00",
+  "allPassed": true,
+  "pages": [
+    {
+      "slug": "when-two-calendars-disagree",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "newCaveatVisible": true,
+      "screenshot": "/tmp/cloud-calendar-batch26-selection-caveat.png"
+    },
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqs": 5,
+      "newQuestionAndAnswerVisible": true,
+      "screenshot": "/tmp/cloud-calendar-batch26-google-import-faq.png"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "viewportWidth": 575,
+      "documentWidth": 564,
+      "faqs": 4,
+      "shortCaveatPresentInRenderedParagraph": true
+    }
+  ],
+  "viewportReset": true,
+  "scope": "Published web text and representative mobile layout, two screenshots visually inspected. Not provider operations, migration, native hardware/runtime or rank/citation evidence."
+}

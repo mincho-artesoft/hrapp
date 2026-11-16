@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-22",
+  "scope": "Read-only source audit of current local Calendar Swift source; no native build, runtime, provider request, customer record or released binary inspected.",
+  "conclusion": {
+    "classification": "Location-entry support established in source; end-to-end room/resource booking not established.",
+    "confidence": "High for inspected editor/serializer/model behavior; no claim that every OS/provider-assisted path is impossible.",
+    "publicSafeWording": "Adding a room name or address to an event is not confirmation that the room is reserved. Use the booking workflow approved by the room owner and check its response for the intended time. Cloud Calendars source inspection does not establish a room-selection and reservation-confirmation workflow.",
+    "doNotClaim": [
+      "Cloud Calendars books meeting rooms or equipment.",
+      "An event saved successfully, a visible gap, edit permission or a meeting link proves a resource accepted.",
+      "Existing participant status metadata is a live reservation dashboard.",
+      "Premium grants access to a room or overrides booking rules.",
+      "The application can never show a room already present in provider-supplied calendar data."
+    ]
+  },
+  "evidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "readRanges": [
+        [
+          66,
+          102
+        ],
+        [
+          530,
+          560
+        ],
+        [
+          1352,
+          1353
+        ],
+        [
+          1398,
+          1473
+        ]
+      ],
+      "finding": "MapKit address/point-of-interest search supplies location text and coordinates. Editor persists location and structuredLocation to local or EventKit records. EventKit save checks calendar modification permission, not resource availability or booking acceptance."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          2005,
+          2038
+        ],
+        [
+          2046,
+          2128
+        ]
+      ],
+      "finding": "Existing EventKit attendees are parsed from their description. Primary-email picker selects the user address to exclude; it is not a guest/room selection interface. Google body sends email/name/optional=false, not resource identity/type or response state. This builder also omits location in its returned body despite inbound location handling."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          1693,
+          1735
+        ],
+        [
+          1775,
+          1813
+        ],
+        [
+          2201,
+          2216
+        ]
+      ],
+      "finding": "Google POST/PATCH invokes the inspected body builder and checks HTTP/decode success. GoogleEventItem does not decode attendees or resource acceptance. Its status field is an event status, not an attendee response."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          3640,
+          3695
+        ],
+        [
+          3740,
+          3785
+        ],
+        [
+          3829,
+          3874
+        ],
+        [
+          3894,
+          3964
+        ]
+      ],
+      "finding": "Microsoft POST/PATCH invokes a body that uses location.displayName and maps every retained attendee to optional or required; extracted participant type/status are not represented as a resource attendee or acceptance. Successful HTTP processing is not a resource confirmation."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          4244,
+          4275
+        ]
+      ],
+      "finding": "Microsoft response model includes location displayName and online meeting URL but no attendees/resource response or booking decision."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "readRanges": [
+        [
+          138,
+          156
+        ],
+        [
+          185,
+          235
+        ]
+      ],
+      "finding": "SharedEventParticipant serializes name/email/raw role/type/status/isCurrentUser from existing EventKit participants. This preserves metadata but does not implement room lookup, resource invitation, response processing or reservation confirmation."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayWrapper.swift",
+      "sha256": "7a8e61a6da46fa4a6df2182cc2e49af048c7d0a781624fdc1eee7b36a016a8a6",
+      "readRanges": [
+        [
+          204,
+          245
+        ],
+        [
+          516,
+          531
+        ]
+      ],
+      "finding": "Legacy EventKit delegate callbacks exist, but inspected presentation path instantiates the custom AppLocalEventEditorView. Delegate type names alone do not prove a reachable Apple room-booking UI."
+    }
+  ],
+  "attendeeAssessment": {
+    "selection": "No attendee or room picker identified in current custom editor. Primary-email chooser disambiguates the sender from existing attendee addresses.",
+    "display": "Existing participant metadata can be serialized for sharing. No resource-specific UI or acceptance display was located in inspected paths. Do not promote metadata presence into an assertion about visible controls.",
+    "outbound": "Both provider builders can serialize parsed existing attendees; Google omits explicit resource type, Microsoft maps to optional/required. Parsing depends on EKParticipant description text, not a structured provider resource model.",
+    "inbound": "Inspected Google and Microsoft event response models omit attendee collections and response state. No source proof of tracking a resource acceptance from these responses.",
+    "permissions": "Calendar allowsContentModifications is checked before EventKit save. That is not a room reservation decision."
+  },
+  "searchEvidence": {
+    "root": "/Users/minchomilev/work/hrapp/Calendar",
+    "fileScope": "Swift files, then focused code-body reads; screenshot fixtures were identified but not used as feature proof.",
+    "terms": [
+      "resource",
+      "room",
+      "attendee",
+      "participant",
+      "location",
+      "findRooms",
+      "roomList",
+      "getSchedule",
+      "freeBusy",
+      "resourceType",
+      "resourceEmail",
+      "responseStatus",
+      "participantStatus",
+      "EKEventEditViewController",
+      "EKEventViewController"
+    ],
+    "negativeResults": "No resource directory, resource-specific selection, free/busy scheduling query or resource-acceptance response handler identified by these searches. A participantStatus raw-value serialization was found, not a booking decision path.",
+    "notEvidence": "Conference Room and similar strings in preview/screenshot fixtures do not demonstrate reservations. File URL resource APIs and layout busy helpers are unrelated.",
+    "searchLimits": "Negative string search is bounded evidence, not a proof of absence across every dependency or OS interface. One initial command used the marketing working directory and failed to find Calendar; corrected source reads were then performed under the native repository."
+  },
+  "existingArticleMapping": [
+    {
+      "slug": "keeping-track-of-who-replied",
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-sharing.ts",
+      "readRanges": [
+        [
+          385,
+          474
+        ]
+      ],
+      "review": "Complete substantive body, practical steps, FAQ and source list read. Already distinguishes access receipt from attendance response; room/resource response is a separate possible short extension."
+    },
+    {
+      "slug": "exchange-calendars-on-an-iphone",
+      "review": "Existing canonical verified in index; previously read in this session. Suitable related destination for mailbox compatibility, approval and edit permissions, not a room-booking how-to."
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "review": "Existing canonical verified in index; previously read in this session. Explains combined view versus shared availability, with no resource reservation claim."
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "review": "Existing canonical index only this task; prospective related route for ownership/destination, not full-body dedup certified here."
+    }
+  ],
+  "publicationRecommendation": {
+    "nextStep": "If pursuing a room/resource explainer, obtain current official Google/Microsoft room-booking and acceptance documentation and read the complete current related articles before drafting. Keep provider menus clearly attributed.",
+    "articleAngle": "A location is not a reservation: distinguish label, resource identity, permission, request and acceptance.",
+    "currentScope": "No provider-specific booking recipe or newly verified provider policy produced here.",
+    "notReadyFor": "A Cloud Calendars room-booking feature page or tutorial."
+  },
+  "remainingUncertainties": [
+    "Whether the installed/released binary matches the inspected working source.",
+    "Whether a device-managed provider calendar exposes participant/resource information through EventKit in a particular account setup.",
+    "Actual provider acceptance, room policies, conflicts, permissions, notifications and update timing.",
+    "Reachability and behavior of any legacy EventKit interface outside the presentation path inspected.",
+    "Production behavior of attendee parsing, transport and source mapping; no test was run."
+  ],
+  "marketingEvidence": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/article-index.ts",
+      "sha256": "c4744a289207f88f6ed91c535359d1765cb94e9dad18b6cc7c49beafa2778c73"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-sharing.ts",
+      "sha256": "3a7bce718b3745e8bc98e79588fd57a6563b9fd989ebf40a38f44aadc8bec2a1"
+    }
+  ],
+  "actions": {
+    "nativeWrites": 0,
+    "builds": 0,
+    "simulators": 0,
+    "providerActions": 0,
+    "paidApis": 0,
+    "sourceIntegration": false
+  }
+}

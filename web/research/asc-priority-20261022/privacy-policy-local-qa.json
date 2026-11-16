@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-22T07:24:02.956622+00:00",
+  "status": "LOCAL_READY_NOT_PUBLISHED",
+  "sourceSha256": "06c43bab072b324f2ae8ee84bacbc843fab8afbed0972d86b2d3e9113ee3b05f",
+  "renderedSha256": "a3c421f3f0d37b8f5119e67fd54ff3143155ef792b8e0bb7d8e6f0c61a64a2c1",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "log": "/tmp/cloud-calendar-privacy-local-build.log",
+    "sitemapUrls": 528,
+    "articles": 465,
+    "allInternalLinksResolve": true
+  },
+  "review": "privacy-policy-root-independent-review.json",
+  "browser": {
+    "url": "http://127.0.0.1:8247/privacy-policy/",
+    "screenshot": "/tmp/cloud-calendar-privacy-local-preview.png",
+    "scope": "Desktop layout and complete accessibility text inspected; no all-device visual certification"
+  },
+  "publicationApproval": "Pending combined owner confirmation for reviewed ASC15-type declaration and website policy. No publication/submission performed.",
+  "reviewPriority": "Continue submission readiness before new article batches; broad discovery objective remains incomplete."
+}

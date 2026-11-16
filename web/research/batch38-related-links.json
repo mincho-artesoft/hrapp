@@ -1,0 +1,622 @@
+[
+  {
+    "locale": "en-US",
+    "slug": "disconnect-calendar-integration-without-losing-track",
+    "file": "src/app/content/en-US/articles-help.ts",
+    "before": {
+      "updated": "2026-10-22",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "short": "Disconnect a calendar integration carefully",
+      "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+      "lede": "Stopping a connection and removing its calendar copies are different decisions. Identify the route you use and preserve needed information before choosing a disconnect action. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Signing out only pauses updates, revokes every related permission and leaves all existing calendar data exactly as it was.",
+      "sections": [
+        {
+          "heading": "Identify the connection you intend to stop",
+          "body": [
+            "Start with the account and calendar that own the events. A provider account added through iPhone settings, a direct connection in Cloud Calendars, an iCalendar subscription and the app’s sharing identity are separate routes. The same email address does not make their controls interchangeable.",
+            "Write down the calendar names and which route displays them, without sharing private event details. Decide whether your aim is to stop future access, leave a shared arrangement or remove a copy. If you are investigating a missing or duplicate event, disconnecting is not the first diagnostic step."
+          ]
+        },
+        {
+          "heading": "Check what the app’s sign-out action removes",
+          "body": [
+            "The implementation reviewed for this guide attempts to disconnect the selected Google calendar profile and remove its mapped calendar copies from the iOS calendar store. Treat this as a removal action, not a pause. A connection error can still occur, so check the provider’s access status separately rather than assuming every permission was revoked.",
+            "The Microsoft calendar-profile sign-out path also attempts to remove its mapped calendars and local connection records. Do not assume those copies will remain visible. Calendar-copy storage can depend on the device’s available sources, so check the source and preserve needed information before proceeding."
+          ]
+        },
+        {
+          "heading": "Review future access at the provider separately",
+          "body": [
+            "Google’s linked-app controls distinguish Sign in with Google from access to Google Account data. Review the intended app, account and link type. Removing the relevant data access and stopping a sign-in link answer different questions; an app-level sign-out alone is not proof that every connection is gone.",
+            "For a Microsoft work or school account, Microsoft documents My Apps > Manage your application to review permissions. You can revoke permissions you personally granted, but administrator-granted access needs the organisation’s administrator. This is work-or-school guidance, not a universal procedure for personal Microsoft accounts."
+          ]
+        },
+        {
+          "heading": "Separate a sharing identity from calendar-provider sync",
+          "body": [
+            "Cloud Calendars also has an account used for sharing. Its current source treats signing out of that account separately from the calendar-profile connections: it clears the local sharing session and reduces locally tracked shared access to reader status. That is not a declaration that all server data has been deleted.",
+            "When multiple sharing identities are linked, disconnecting one retains the account through another identity. With the final identity, the current path signs out locally and leaves the server link for recovery. Do not use signing out as a substitute for a data-deletion request or assume it also disconnects every calendar provider."
+          ]
+        },
+        {
+          "heading": "Handle subscriptions and previous copies by their own rules",
+          "body": [
+            "Apple documents unsubscribing from an external calendar separately from selecting which calendars to display. If the item is a read-only subscription, identify that subscription before using its unsubscribe control. Hiding a calendar, unsubscribing from a feed and deleting an editable calendar are different operations.",
+            "Google notes that removing an app’s access may still require a separate request to delete data the developer already holds. Likewise, a previously exported file or another person’s copy is not recalled by a permission switch. Keep privacy or retention follow-up separate from whether new updates are still authorised."
+          ]
+        },
+        {
+          "heading": "Confirm the outcome before cleaning up anything else",
+          "body": [
+            "After an intentional change, check the provider’s connection status and compare the original calendar with the app. Identify what stopped updating, what disappeared locally and what remains elsewhere. Do not delete lookalike events merely because a connection name no longer appears.",
+            "If the result is unexpected, stop further cleanup and contact support with the account route, calendar source and the action you used. Do not send passwords, access tokens, private feed URLs or screenshots of sensitive appointments. Explain whether the original provider calendar still has the events so support can distinguish a connection problem from a missing copy."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the exact account, calendar and connection route.",
+        "Decide whether you want to stop access, leave sharing or remove a copy.",
+        "Preserve needed information through a verified export or backup route.",
+        "Read what the installed sign-out or disconnect action removes before using it.",
+        "Review provider permissions separately; involve an administrator for managed access.",
+        "Check the result at the provider and app before any further cleanup."
+      ],
+      "faq": [
+        {
+          "q": "Does signing out of a direct Cloud Calendars connection keep its calendar copies?",
+          "a": "Do not assume that. The inspected Google and Microsoft calendar-profile paths attempt to remove their mapped calendars from the iOS store. Review the source and preserve needed information before disconnecting."
+        },
+        {
+          "q": "Does removing an app’s Google access delete data it already copied?",
+          "a": "Google says you may need to request deletion of data already held by the developer separately. Review future access and retained data as different outcomes."
+        },
+        {
+          "q": "Is signing out of the sharing account the same as deleting it?",
+          "a": "No. The current sharing path clears a local session and retains recovery behaviour; it is separate from the calendar-provider sign-out paths and is not proof of server-data deletion."
+        }
+      ],
+      "sourcesHeading": "Official access and subscription guidance",
+      "sources": [
+        {
+          "label": "Google: manage linked apps and different connection types",
+          "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+        },
+        {
+          "label": "Google: access and data already held by a linked app",
+          "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+        },
+        {
+          "label": "Microsoft: work or school My Apps permissions",
+          "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+        },
+        {
+          "label": "Apple: calendar selection and subscriptions on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "when-two-calendars-disagree"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-22",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "short": "Disconnect a calendar integration carefully",
+      "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+      "lede": "Stopping a connection and removing its calendar copies are different decisions. Identify the route you use and preserve needed information before choosing a disconnect action. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "Signing out only pauses updates, revokes every related permission and leaves all existing calendar data exactly as it was.",
+      "sections": [
+        {
+          "heading": "Identify the connection you intend to stop",
+          "body": [
+            "Start with the account and calendar that own the events. A provider account added through iPhone settings, a direct connection in Cloud Calendars, an iCalendar subscription and the app’s sharing identity are separate routes. The same email address does not make their controls interchangeable.",
+            "Write down the calendar names and which route displays them, without sharing private event details. Decide whether your aim is to stop future access, leave a shared arrangement or remove a copy. If you are investigating a missing or duplicate event, disconnecting is not the first diagnostic step."
+          ]
+        },
+        {
+          "heading": "Check what the app’s sign-out action removes",
+          "body": [
+            "The implementation reviewed for this guide attempts to disconnect the selected Google calendar profile and remove its mapped calendar copies from the iOS calendar store. Treat this as a removal action, not a pause. A connection error can still occur, so check the provider’s access status separately rather than assuming every permission was revoked.",
+            "The Microsoft calendar-profile sign-out path also attempts to remove its mapped calendars and local connection records. Do not assume those copies will remain visible. Calendar-copy storage can depend on the device’s available sources, so check the source and preserve needed information before proceeding."
+          ]
+        },
+        {
+          "heading": "Review future access at the provider separately",
+          "body": [
+            "Google’s linked-app controls distinguish Sign in with Google from access to Google Account data. Review the intended app, account and link type. Removing the relevant data access and stopping a sign-in link answer different questions; an app-level sign-out alone is not proof that every connection is gone.",
+            "For a Microsoft work or school account, Microsoft documents My Apps > Manage your application to review permissions. You can revoke permissions you personally granted, but administrator-granted access needs the organisation’s administrator. This is work-or-school guidance, not a universal procedure for personal Microsoft accounts."
+          ]
+        },
+        {
+          "heading": "Separate a sharing identity from calendar-provider sync",
+          "body": [
+            "Cloud Calendars also has an account used for sharing. Its current source treats signing out of that account separately from the calendar-profile connections: it clears the local sharing session and reduces locally tracked shared access to reader status. That is not a declaration that all server data has been deleted.",
+            "When multiple sharing identities are linked, disconnecting one retains the account through another identity. With the final identity, the current path signs out locally and leaves the server link for recovery. Do not use signing out as a substitute for a data-deletion request or assume it also disconnects every calendar provider."
+          ]
+        },
+        {
+          "heading": "Handle subscriptions and previous copies by their own rules",
+          "body": [
+            "Apple documents unsubscribing from an external calendar separately from selecting which calendars to display. If the item is a read-only subscription, identify that subscription before using its unsubscribe control. Hiding a calendar, unsubscribing from a feed and deleting an editable calendar are different operations.",
+            "Google notes that removing an app’s access may still require a separate request to delete data the developer already holds. Likewise, a previously exported file or another person’s copy is not recalled by a permission switch. Keep privacy or retention follow-up separate from whether new updates are still authorised."
+          ]
+        },
+        {
+          "heading": "Confirm the outcome before cleaning up anything else",
+          "body": [
+            "After an intentional change, check the provider’s connection status and compare the original calendar with the app. Identify what stopped updating, what disappeared locally and what remains elsewhere. Do not delete lookalike events merely because a connection name no longer appears.",
+            "If the result is unexpected, stop further cleanup and contact support with the account route, calendar source and the action you used. Do not send passwords, access tokens, private feed URLs or screenshots of sensitive appointments. Explain whether the original provider calendar still has the events so support can distinguish a connection problem from a missing copy."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify the exact account, calendar and connection route.",
+        "Decide whether you want to stop access, leave sharing or remove a copy.",
+        "Preserve needed information through a verified export or backup route.",
+        "Read what the installed sign-out or disconnect action removes before using it.",
+        "Review provider permissions separately; involve an administrator for managed access.",
+        "Check the result at the provider and app before any further cleanup."
+      ],
+      "faq": [
+        {
+          "q": "Does signing out of a direct Cloud Calendars connection keep its calendar copies?",
+          "a": "Do not assume that. The inspected Google and Microsoft calendar-profile paths attempt to remove their mapped calendars from the iOS store. Review the source and preserve needed information before disconnecting."
+        },
+        {
+          "q": "Does removing an app’s Google access delete data it already copied?",
+          "a": "Google says you may need to request deletion of data already held by the developer separately. Review future access and retained data as different outcomes."
+        },
+        {
+          "q": "Is signing out of the sharing account the same as deleting it?",
+          "a": "No. The current sharing path clears a local session and retains recovery behaviour; it is separate from the calendar-provider sign-out paths and is not proof of server-data deletion."
+        }
+      ],
+      "sourcesHeading": "Official access and subscription guidance",
+      "sources": [
+        {
+          "label": "Google: manage linked apps and different connection types",
+          "url": "https://support.google.com/accounts/answer/13533235?hl=en"
+        },
+        {
+          "label": "Google: access and data already held by a linked app",
+          "url": "https://support.google.com/accounts/answer/14012355?hl=en"
+        },
+        {
+          "label": "Microsoft: work or school My Apps permissions",
+          "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal"
+        },
+        {
+          "label": "Apple: calendar selection and subscriptions on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "when-two-calendars-disagree",
+        "unwanted-calendar-events-iphone"
+      ]
+    },
+    "added": "unwanted-calendar-events-iphone",
+    "originalBodyMetadataDatesPreserved": true
+  },
+  {
+    "locale": "de-DE",
+    "slug": "recurring-events-without-the-mess",
+    "file": "src/app/content/de-DE/articles-help.ts",
+    "before": {
+      "updated": "2026-10-21",
+      "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+      "short": "Wiederkehrende Termine",
+      "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+      "lede": "Entscheide vor der Änderung eines wiederkehrenden Termins genau, welche Daten betroffen sein sollen. Prüfe dann, ob der Editor diesen Umfang anbietet. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+      "commonBelief": "Jeder Kalendereditor fragt, ob eine Änderung für einen einzelnen Termin oder die ganze Serie gilt.",
+      "sections": [
+        {
+          "heading": "Beschreibe die Änderung, bevor du den Editor öffnest",
+          "body": [
+            "„Die Unterrichtsstunde am nächsten Dienstag um eine Stunde verschieben“ betrifft einen einzelnen Termin. „Ab nächsten Monat findet der Unterricht donnerstags statt“ ändert den künftigen Zeitplan. „Den Raum für alle Besprechungen korrigieren“ kann einen größeren Umfang haben. Das sind unterschiedliche Aufgaben, auch wenn sie in derselben Terminansicht beginnen.",
+            "Notiere das Datum des ausgewählten Termins und die benachbarten Termine, die unverändert bleiben sollen. Eine kurze Vorher-nachher-Liste erleichtert die Prüfung des gespeicherten Ergebnisses. Probiere nicht an einer echten Terminserie aus, was eine unbekannte Schaltfläche zum Speichern bewirkt."
+          ]
+        },
+        {
+          "heading": "Prüfe den Kalender und deine Bearbeitungsrechte",
+          "body": [
+            "Finde heraus, zu welchem Kalender der Termin gehört und ob du Organisator, Bearbeiter oder Gast bist. Eine geteilte Serie sehen zu können, berechtigt dich noch nicht dazu, ihren Zeitplan zu ändern. Google beschreibt die Bearbeitung durch Gäste als Berechtigung, die der Organisator erteilen kann. Eine Einladung anzusehen und sie zu verwalten sind unterschiedliche Möglichkeiten.",
+            "Prüfe in Cloud Calendars, ob der Zielkalender die Bearbeitung erlaubt. Dass ein Teilnehmer eine Besprechung sehen kann, bedeutet nicht, dass er die Einladung des Organisators ändern darf. Wenn du die beabsichtigte Änderung nicht vornehmen kannst, frage den Organisator, statt eine konkurrierende Einladung zu erstellen."
+          ]
+        },
+        {
+          "heading": "Prüfe vor dem Speichern in Cloud Calendars den Änderungsumfang",
+          "body": [
+            "Der Editor von Cloud Calendars bietet Wiederholungsmuster und die Einstellung „End Repeat“. Diese Steuerelemente legen einen Zeitplan fest; sie wählen nicht aus, welche Termine eine Bearbeitung betrifft. Die Änderung eines bestehenden Serientermins kann künftige Termine beeinflussen. Ändere nicht die Wiederholungsregel, wenn du nur eine Ausnahme für ein einzelnes Datum benötigst.",
+            "Suche vor dem Speichern einer einzelnen Ausnahme nach einer ausdrücklichen Auswahl, die die Änderung auf diesen Termin begrenzt. Bietet dein Editor diesen Umfang nicht an, bearbeite den ursprünglichen Termin in einem unterstützten Editor des zugehörigen Kalenderanbieters. Prüfe anschließend das betroffene Datum und die benachbarten Termine an beiden Stellen. Lokale Kalender und verbundene Anbieter müssen Serienänderungen nicht gleich behandeln."
+          ]
+        },
+        {
+          "heading": "Nutze einen unterstützten Umfang und prüfe ausgewählte Termine",
+          "body": [
+            "Die Computer-Anleitung von Google Kalender beschreibt, dass du den wiederkehrenden Termin bearbeitest, speicherst und auswählst, welche Termine der Serie aktualisiert werden. Lies die tatsächlich für diesen Termin angezeigten Optionen. Gehe nicht davon aus, dass alle Anbieter dieselben Bezeichnungen verwenden oder dieselben Änderungen unterstützen.",
+            "Apples Handbuch für Kalender auf dem Mac beschreibt gesondert die Wiederholungshäufigkeit, eigene Muster und das Ende der Wiederholung. Das sind Steuerelemente von Apple Kalender. Unabhängig vom verwendeten unterstützten Editor solltest du das geänderte Datum, einen früheren unverändert zu lassenden Termin und den nächsten regulären Termin prüfen. Kontrolliere bei einer Einladung auch den gespeicherten Termin des Organisators. Eine Änderung deiner persönlichen Anzeige bestätigt nicht, dass die Besprechung für alle verschoben wurde."
+          ]
+        },
+        {
+          "heading": "Bewahre Ausnahmen und wähle Enddaten bewusst",
+          "body": [
+            "Ein verschobener Termin oder eine ausgelassene Woche ist ein Anlass, eine bestehende Serie vor einer Regeländerung genauer anzusehen. Halte wichtige Ausnahmen vorher fest und prüfe sie anschließend. Weder die Zusage, jede Serienänderung erhalte Ausnahmen, noch die Behauptung, jede Änderung lösche sie automatisch, ist richtig: Das Ergebnis hängt vom Vorgang und vom Anbieter ab.",
+            "Verwende für einen Kurs oder einen vorübergehenden Dienstplan ein bekanntes Enddatum, wenn es dem tatsächlichen Zeitplan entspricht. Ein jährlich wiederkehrender Geburtstag oder eine fortlaufende Besprechung kann sinnvollerweise ohne geplantes Ende bleiben. Erzwinge nicht für jede Wiederholung einen beliebigen Stichtag. Lösche eine Serie auch nicht allein deshalb und erstelle sie neu, weil sie mehrere Ausnahmen enthält."
+          ]
+        },
+        {
+          "heading": "Halte bei unerwarteten Ergebnissen die Einzelheiten fest",
+          "body": [
+            "Vergleiche den zuständigen Kalenderanbieter mit Cloud Calendars am genau betroffenen Datum. Prüfe Kalendername, ausgewählten Termin, Wiederholungsmuster und eine gegebenenfalls einsehbare Endbedingung. Ähnliche Titel oder ein separat kopierter Termin können wie ein Wiederholungsproblem wirken. Kläre zuerst, welchen Eintrag du ansiehst.",
+            "Stimmt der Termin beim Anbieter, weicht aber in der App ab, gib bei einer Fehlermeldung die App- und iOS-Version, den Kalendertyp, den beabsichtigten Änderungsumfang und die betroffenen Daten an. Hat auch der Anbieter mehr Termine geändert als beabsichtigt, kontaktiere den Organisator oder den Support des Anbieters, bevor du weitere weitreichende Änderungen vornimmst. Entferne zur Diagnose keine Konten, sage keine Einladungen ab und lösche keine Serie."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Notiere, welche Termine geändert werden sollen und welche unverändert bleiben müssen.",
+        "Bestätige den zugehörigen Kalender und den Organisator beziehungsweise deine Bearbeitungsberechtigung.",
+        "Nutze für eine einzelne Ausnahme einen Editor, der diesen Umfang ausdrücklich anbietet.",
+        "Prüfe einen früheren Termin, den geänderten Termin und den nächsten regulären Termin.",
+        "Bewahre vorhandene Ausnahmen und die ursprüngliche Einladung, während du eine Abweichung untersuchst."
+      ],
+      "faq": [
+        {
+          "q": "Wird bei jeder Änderung eines Serientermins nach dem Umfang gefragt?",
+          "a": "Nein. Gehe nicht davon aus, dass Cloud Calendars dich zur Auswahl des Umfangs auffordert. Prüfe die Optionen vor dem Speichern. Fehlt die Auswahl für eine einzelne Ausnahme, verwende dafür einen unterstützten Editor des Kalenderanbieters."
+        },
+        {
+          "q": "Sollte jeder wiederkehrende Termin ein Enddatum haben?",
+          "a": "Verwende ein Enddatum, wenn der tatsächliche Zeitplan eines vorsieht. Fortlaufende Verpflichtungen brauchen keine erfundene Frist, nur damit der Kalender aufgeräumter wirkt."
+        },
+        {
+          "q": "Löscht eine Änderung der Serie ihre Ausnahmen?",
+          "a": "Darauf gibt es keine allgemeingültige Antwort für alle Anbieter und Bearbeitungsvorgänge. Halte wichtige Ausnahmen fest und prüfe sie nach der Änderung. Gehe weder von garantiertem Erhalt noch von automatischem Verlust aus."
+        }
+      ],
+      "sourcesHeading": "Offizielle Hinweise zu Wiederholungen und Bearbeitungsrechten",
+      "sources": [
+        {
+          "label": "Google: Wiederkehrende Termine am Computer erstellen und ändern",
+          "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Apple: Ganztägige, mehrtägige oder wiederkehrende Ereignisse auf dem Mac einrichten",
+          "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+        },
+        {
+          "label": "Google: In Kalender zusammenarbeiten und Gästen die Terminbearbeitung erlauben",
+          "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+        }
+      ],
+      "seeAlso": [
+        "drag-an-event-to-move-it",
+        "what-guests-can-do-to-your-event"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-21",
+      "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+      "short": "Wiederkehrende Termine",
+      "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+      "lede": "Entscheide vor der Änderung eines wiederkehrenden Termins genau, welche Daten betroffen sein sollen. Prüfe dann, ob der Editor diesen Umfang anbietet. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+      "commonBelief": "Jeder Kalendereditor fragt, ob eine Änderung für einen einzelnen Termin oder die ganze Serie gilt.",
+      "sections": [
+        {
+          "heading": "Beschreibe die Änderung, bevor du den Editor öffnest",
+          "body": [
+            "„Die Unterrichtsstunde am nächsten Dienstag um eine Stunde verschieben“ betrifft einen einzelnen Termin. „Ab nächsten Monat findet der Unterricht donnerstags statt“ ändert den künftigen Zeitplan. „Den Raum für alle Besprechungen korrigieren“ kann einen größeren Umfang haben. Das sind unterschiedliche Aufgaben, auch wenn sie in derselben Terminansicht beginnen.",
+            "Notiere das Datum des ausgewählten Termins und die benachbarten Termine, die unverändert bleiben sollen. Eine kurze Vorher-nachher-Liste erleichtert die Prüfung des gespeicherten Ergebnisses. Probiere nicht an einer echten Terminserie aus, was eine unbekannte Schaltfläche zum Speichern bewirkt."
+          ]
+        },
+        {
+          "heading": "Prüfe den Kalender und deine Bearbeitungsrechte",
+          "body": [
+            "Finde heraus, zu welchem Kalender der Termin gehört und ob du Organisator, Bearbeiter oder Gast bist. Eine geteilte Serie sehen zu können, berechtigt dich noch nicht dazu, ihren Zeitplan zu ändern. Google beschreibt die Bearbeitung durch Gäste als Berechtigung, die der Organisator erteilen kann. Eine Einladung anzusehen und sie zu verwalten sind unterschiedliche Möglichkeiten.",
+            "Prüfe in Cloud Calendars, ob der Zielkalender die Bearbeitung erlaubt. Dass ein Teilnehmer eine Besprechung sehen kann, bedeutet nicht, dass er die Einladung des Organisators ändern darf. Wenn du die beabsichtigte Änderung nicht vornehmen kannst, frage den Organisator, statt eine konkurrierende Einladung zu erstellen."
+          ]
+        },
+        {
+          "heading": "Prüfe vor dem Speichern in Cloud Calendars den Änderungsumfang",
+          "body": [
+            "Der Editor von Cloud Calendars bietet Wiederholungsmuster und die Einstellung „End Repeat“. Diese Steuerelemente legen einen Zeitplan fest; sie wählen nicht aus, welche Termine eine Bearbeitung betrifft. Die Änderung eines bestehenden Serientermins kann künftige Termine beeinflussen. Ändere nicht die Wiederholungsregel, wenn du nur eine Ausnahme für ein einzelnes Datum benötigst.",
+            "Suche vor dem Speichern einer einzelnen Ausnahme nach einer ausdrücklichen Auswahl, die die Änderung auf diesen Termin begrenzt. Bietet dein Editor diesen Umfang nicht an, bearbeite den ursprünglichen Termin in einem unterstützten Editor des zugehörigen Kalenderanbieters. Prüfe anschließend das betroffene Datum und die benachbarten Termine an beiden Stellen. Lokale Kalender und verbundene Anbieter müssen Serienänderungen nicht gleich behandeln."
+          ]
+        },
+        {
+          "heading": "Nutze einen unterstützten Umfang und prüfe ausgewählte Termine",
+          "body": [
+            "Die Computer-Anleitung von Google Kalender beschreibt, dass du den wiederkehrenden Termin bearbeitest, speicherst und auswählst, welche Termine der Serie aktualisiert werden. Lies die tatsächlich für diesen Termin angezeigten Optionen. Gehe nicht davon aus, dass alle Anbieter dieselben Bezeichnungen verwenden oder dieselben Änderungen unterstützen.",
+            "Apples Handbuch für Kalender auf dem Mac beschreibt gesondert die Wiederholungshäufigkeit, eigene Muster und das Ende der Wiederholung. Das sind Steuerelemente von Apple Kalender. Unabhängig vom verwendeten unterstützten Editor solltest du das geänderte Datum, einen früheren unverändert zu lassenden Termin und den nächsten regulären Termin prüfen. Kontrolliere bei einer Einladung auch den gespeicherten Termin des Organisators. Eine Änderung deiner persönlichen Anzeige bestätigt nicht, dass die Besprechung für alle verschoben wurde."
+          ]
+        },
+        {
+          "heading": "Bewahre Ausnahmen und wähle Enddaten bewusst",
+          "body": [
+            "Ein verschobener Termin oder eine ausgelassene Woche ist ein Anlass, eine bestehende Serie vor einer Regeländerung genauer anzusehen. Halte wichtige Ausnahmen vorher fest und prüfe sie anschließend. Weder die Zusage, jede Serienänderung erhalte Ausnahmen, noch die Behauptung, jede Änderung lösche sie automatisch, ist richtig: Das Ergebnis hängt vom Vorgang und vom Anbieter ab.",
+            "Verwende für einen Kurs oder einen vorübergehenden Dienstplan ein bekanntes Enddatum, wenn es dem tatsächlichen Zeitplan entspricht. Ein jährlich wiederkehrender Geburtstag oder eine fortlaufende Besprechung kann sinnvollerweise ohne geplantes Ende bleiben. Erzwinge nicht für jede Wiederholung einen beliebigen Stichtag. Lösche eine Serie auch nicht allein deshalb und erstelle sie neu, weil sie mehrere Ausnahmen enthält."
+          ]
+        },
+        {
+          "heading": "Halte bei unerwarteten Ergebnissen die Einzelheiten fest",
+          "body": [
+            "Vergleiche den zuständigen Kalenderanbieter mit Cloud Calendars am genau betroffenen Datum. Prüfe Kalendername, ausgewählten Termin, Wiederholungsmuster und eine gegebenenfalls einsehbare Endbedingung. Ähnliche Titel oder ein separat kopierter Termin können wie ein Wiederholungsproblem wirken. Kläre zuerst, welchen Eintrag du ansiehst.",
+            "Stimmt der Termin beim Anbieter, weicht aber in der App ab, gib bei einer Fehlermeldung die App- und iOS-Version, den Kalendertyp, den beabsichtigten Änderungsumfang und die betroffenen Daten an. Hat auch der Anbieter mehr Termine geändert als beabsichtigt, kontaktiere den Organisator oder den Support des Anbieters, bevor du weitere weitreichende Änderungen vornimmst. Entferne zur Diagnose keine Konten, sage keine Einladungen ab und lösche keine Serie."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Notiere, welche Termine geändert werden sollen und welche unverändert bleiben müssen.",
+        "Bestätige den zugehörigen Kalender und den Organisator beziehungsweise deine Bearbeitungsberechtigung.",
+        "Nutze für eine einzelne Ausnahme einen Editor, der diesen Umfang ausdrücklich anbietet.",
+        "Prüfe einen früheren Termin, den geänderten Termin und den nächsten regulären Termin.",
+        "Bewahre vorhandene Ausnahmen und die ursprüngliche Einladung, während du eine Abweichung untersuchst."
+      ],
+      "faq": [
+        {
+          "q": "Wird bei jeder Änderung eines Serientermins nach dem Umfang gefragt?",
+          "a": "Nein. Gehe nicht davon aus, dass Cloud Calendars dich zur Auswahl des Umfangs auffordert. Prüfe die Optionen vor dem Speichern. Fehlt die Auswahl für eine einzelne Ausnahme, verwende dafür einen unterstützten Editor des Kalenderanbieters."
+        },
+        {
+          "q": "Sollte jeder wiederkehrende Termin ein Enddatum haben?",
+          "a": "Verwende ein Enddatum, wenn der tatsächliche Zeitplan eines vorsieht. Fortlaufende Verpflichtungen brauchen keine erfundene Frist, nur damit der Kalender aufgeräumter wirkt."
+        },
+        {
+          "q": "Löscht eine Änderung der Serie ihre Ausnahmen?",
+          "a": "Darauf gibt es keine allgemeingültige Antwort für alle Anbieter und Bearbeitungsvorgänge. Halte wichtige Ausnahmen fest und prüfe sie nach der Änderung. Gehe weder von garantiertem Erhalt noch von automatischem Verlust aus."
+        }
+      ],
+      "sourcesHeading": "Offizielle Hinweise zu Wiederholungen und Bearbeitungsrechten",
+      "sources": [
+        {
+          "label": "Google: Wiederkehrende Termine am Computer erstellen und ändern",
+          "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"
+        },
+        {
+          "label": "Apple: Ganztägige, mehrtägige oder wiederkehrende Ereignisse auf dem Mac einrichten",
+          "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+        },
+        {
+          "label": "Google: In Kalender zusammenarbeiten und Gästen die Terminbearbeitung erlauben",
+          "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+        }
+      ],
+      "seeAlso": [
+        "drag-an-event-to-move-it",
+        "what-guests-can-do-to-your-event",
+        "time-zones-and-the-flight-you-booked"
+      ]
+    },
+    "added": "time-zones-and-the-flight-you-booked",
+    "originalBodyMetadataDatesPreserved": true
+  },
+  {
+    "locale": "en-US",
+    "slug": "the-secret-address-of-a-google-calendar",
+    "file": "src/app/content/en-US/articles-google.ts",
+    "before": {
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "short": "The secret iCal address",
+      "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+      "lede": "A calendar address, an account connection and an invitation do different jobs. Identify which one you have before using it to bring a schedule into another application. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "A secret calendar address is a personal invitation that can be withdrawn from just one recipient.",
+      "sections": [
+        {
+          "heading": "Choose the connection for the job",
+          "body": [
+            "Google distinguishes signing in to another calendar application from viewing through a secret iCal address. The account route can support editing; the address provides a view-only subscription. Google describes the secret address as being for your own use and advises against sharing it with other people.",
+            "For example, displaying your own work schedule in another compatible calendar is different from giving a colleague ongoing access. Start with the outcome: viewing your schedule, collaborating with a named person, or distributing an audience-facing timetable. Do not choose a URL merely because it is easy to paste."
+          ]
+        },
+        {
+          "heading": "Find the correct calendar, not just the correct account",
+          "body": [
+            "On a computer, Google’s instructions place “Secret address in iCal format” under the chosen calendar’s “Integrate calendar” settings. Check the calendar name first. Work or school administrators may restrict this option; an absent address is not a reason to publish the calendar instead.",
+            "Keep the address out of screenshots, public support posts and shared notes. When requesting help, describe the account type, calendar name and connection method without supplying the URL. A support conversation normally needs to identify the route before it needs any event content."
+          ]
+        },
+        {
+          "heading": "Check what the receiving application actually added",
+          "body": [
+            "A subscription follows a feed; an imported file creates a separate copy. Read the receiving application’s instructions and confirm which action you are taking. If you simply open a downloaded calendar file, do not assume the resulting appointments will follow later changes.",
+            "Check which app actually opens the link and which account its subscription setup shows. In Apple Calendar, Apple’s instructions select iCloud in Account and use the same Apple Account on the devices intended to show that subscription. After saving, look for the named calendar in the receiving app’s calendar list and select it for viewing. An opened link alone does not confirm that a subscription was saved or that Cloud Calendars can display it.",
+            "Use an ordinary, non-sensitive event you already recognise to compare the calendar name, date and displayed details. Avoid creating a second subscription to diagnose the first: two visible copies can make a delayed update look like a conflicting appointment. Hide one calendar temporarily when identifying the source."
+          ]
+        },
+        {
+          "heading": "Keep Google and Cloud Calendars links separate",
+          "body": [
+            "Cloud Calendars has its own event and calendar sharing flows, including subscription feeds. Those are not Google secret addresses. Establish whether the sender shared one event, a calendar, or an account-based invitation before choosing how to open it. A Google secret iCal address belongs in a compatible app’s external-subscription flow; it is not a Cloud Calendars invitation link.",
+            "A Cloud Calendars recipient can have a Reader, Writer or Owner role. A feed address alone should not be treated as proof of editing rights. Likewise, receiving a Google viewing address does not make you the owner of its calendar. Ask the sender which system should be used for changes."
+          ]
+        },
+        {
+          "heading": "Allow for the receiving calendar’s refresh behavior",
+          "body": [
+            "A subscription is not a promise of immediate delivery. Cloud Calendars feeds include a suggested refresh interval, but the receiving application decides when it retrieves and displays updates. An old time on one device does not by itself prove that the organiser failed to save the change.",
+            "For a same-day meeting, compare with the organiser’s current schedule and confirm important changes directly. Record which calendar still shows the old information and when you checked it. Do not repeatedly import the event or delete the source calendar to force a feed to catch up."
+          ]
+        },
+        {
+          "heading": "Respond to exposure without promising a recall",
+          "body": [
+            "Google documents resetting a disclosed secret address, which invalidates the old address and creates a replacement. Identify your own applications that use it so you can update their subscriptions afterward. Resetting an address is a different action from removing a named collaborator.",
+            "Previously saved appointments, exports or screenshots are a separate matter. A changed link cannot demonstrate that every earlier copy has disappeared. If you distributed information to the wrong audience, consider the actual material and recipients rather than treating a successful reset as proof of complete removal."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify whether you have an account connection, invitation, subscription or file.",
+        "Check the owning calendar before copying an address.",
+        "Keep a Google secret address for your own compatible applications.",
+        "Verify which app and account received the calendar, and that it subscribed rather than imported. Check the named calendar and a known event before adding anything again.",
+        "Confirm urgent changes with the organiser instead of relying on refresh timing.",
+        "If a secret address was exposed, follow Google’s reset guidance and update intended connections."
+      ],
+      "faq": [
+        {
+          "q": "Can I give the secret address to a colleague?",
+          "a": "Google advises keeping it for your own applications. Use the calendar’s sharing controls when another person needs access, choosing the intended permission."
+        },
+        {
+          "q": "Will a subscription let me edit the original?",
+          "a": "A Google secret iCal address is a viewing route. Editing needs a suitable account connection and permission; Cloud Calendars sharing roles are a separate arrangement."
+        },
+        {
+          "q": "Does resetting the address erase old appointments everywhere?",
+          "a": "It invalidates the old Google address. It does not establish that independently saved files, appointments or screenshots have been removed."
+        }
+      ],
+      "sourcesHeading": "Provider guidance and further reading",
+      "sources": [
+        {
+          "label": "Google: account connections and secret iCal addresses",
+          "url": "https://support.google.com/calendar/answer/37648?hl=en"
+        },
+        {
+          "label": "Google: sharing a calendar",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft: importing versus subscribing and update timing",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        },
+        {
+          "label": "Apple: add calendar subscriptions in iCloud",
+          "url": "https://support.apple.com/en-gb/102301"
+        },
+        {
+          "label": "Apple: multiple calendars, subscriptions and display selection on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "updated": "2026-10-22"
+    },
+    "after": {
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "short": "The secret iCal address",
+      "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+      "lede": "A calendar address, an account connection and an invitation do different jobs. Identify which one you have before using it to bring a schedule into another application. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "commonBelief": "A secret calendar address is a personal invitation that can be withdrawn from just one recipient.",
+      "sections": [
+        {
+          "heading": "Choose the connection for the job",
+          "body": [
+            "Google distinguishes signing in to another calendar application from viewing through a secret iCal address. The account route can support editing; the address provides a view-only subscription. Google describes the secret address as being for your own use and advises against sharing it with other people.",
+            "For example, displaying your own work schedule in another compatible calendar is different from giving a colleague ongoing access. Start with the outcome: viewing your schedule, collaborating with a named person, or distributing an audience-facing timetable. Do not choose a URL merely because it is easy to paste."
+          ]
+        },
+        {
+          "heading": "Find the correct calendar, not just the correct account",
+          "body": [
+            "On a computer, Google’s instructions place “Secret address in iCal format” under the chosen calendar’s “Integrate calendar” settings. Check the calendar name first. Work or school administrators may restrict this option; an absent address is not a reason to publish the calendar instead.",
+            "Keep the address out of screenshots, public support posts and shared notes. When requesting help, describe the account type, calendar name and connection method without supplying the URL. A support conversation normally needs to identify the route before it needs any event content."
+          ]
+        },
+        {
+          "heading": "Check what the receiving application actually added",
+          "body": [
+            "A subscription follows a feed; an imported file creates a separate copy. Read the receiving application’s instructions and confirm which action you are taking. If you simply open a downloaded calendar file, do not assume the resulting appointments will follow later changes.",
+            "Check which app actually opens the link and which account its subscription setup shows. In Apple Calendar, Apple’s instructions select iCloud in Account and use the same Apple Account on the devices intended to show that subscription. After saving, look for the named calendar in the receiving app’s calendar list and select it for viewing. An opened link alone does not confirm that a subscription was saved or that Cloud Calendars can display it.",
+            "Use an ordinary, non-sensitive event you already recognise to compare the calendar name, date and displayed details. Avoid creating a second subscription to diagnose the first: two visible copies can make a delayed update look like a conflicting appointment. Hide one calendar temporarily when identifying the source."
+          ]
+        },
+        {
+          "heading": "Keep Google and Cloud Calendars links separate",
+          "body": [
+            "Cloud Calendars has its own event and calendar sharing flows, including subscription feeds. Those are not Google secret addresses. Establish whether the sender shared one event, a calendar, or an account-based invitation before choosing how to open it. A Google secret iCal address belongs in a compatible app’s external-subscription flow; it is not a Cloud Calendars invitation link.",
+            "A Cloud Calendars recipient can have a Reader, Writer or Owner role. A feed address alone should not be treated as proof of editing rights. Likewise, receiving a Google viewing address does not make you the owner of its calendar. Ask the sender which system should be used for changes."
+          ]
+        },
+        {
+          "heading": "Allow for the receiving calendar’s refresh behavior",
+          "body": [
+            "A subscription is not a promise of immediate delivery. Cloud Calendars feeds include a suggested refresh interval, but the receiving application decides when it retrieves and displays updates. An old time on one device does not by itself prove that the organiser failed to save the change.",
+            "For a same-day meeting, compare with the organiser’s current schedule and confirm important changes directly. Record which calendar still shows the old information and when you checked it. Do not repeatedly import the event or delete the source calendar to force a feed to catch up."
+          ]
+        },
+        {
+          "heading": "Respond to exposure without promising a recall",
+          "body": [
+            "Google documents resetting a disclosed secret address, which invalidates the old address and creates a replacement. Identify your own applications that use it so you can update their subscriptions afterward. Resetting an address is a different action from removing a named collaborator.",
+            "Previously saved appointments, exports or screenshots are a separate matter. A changed link cannot demonstrate that every earlier copy has disappeared. If you distributed information to the wrong audience, consider the actual material and recipients rather than treating a successful reset as proof of complete removal."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Identify whether you have an account connection, invitation, subscription or file.",
+        "Check the owning calendar before copying an address.",
+        "Keep a Google secret address for your own compatible applications.",
+        "Verify which app and account received the calendar, and that it subscribed rather than imported. Check the named calendar and a known event before adding anything again.",
+        "Confirm urgent changes with the organiser instead of relying on refresh timing.",
+        "If a secret address was exposed, follow Google’s reset guidance and update intended connections."
+      ],
+      "faq": [
+        {
+          "q": "Can I give the secret address to a colleague?",
+          "a": "Google advises keeping it for your own applications. Use the calendar’s sharing controls when another person needs access, choosing the intended permission."
+        },
+        {
+          "q": "Will a subscription let me edit the original?",
+          "a": "A Google secret iCal address is a viewing route. Editing needs a suitable account connection and permission; Cloud Calendars sharing roles are a separate arrangement."
+        },
+        {
+          "q": "Does resetting the address erase old appointments everywhere?",
+          "a": "It invalidates the old Google address. It does not establish that independently saved files, appointments or screenshots have been removed."
+        }
+      ],
+      "sourcesHeading": "Provider guidance and further reading",
+      "sources": [
+        {
+          "label": "Google: account connections and secret iCal addresses",
+          "url": "https://support.google.com/calendar/answer/37648?hl=en"
+        },
+        {
+          "label": "Google: sharing a calendar",
+          "url": "https://support.google.com/calendar/answer/37082?hl=en"
+        },
+        {
+          "label": "Microsoft: importing versus subscribing and update timing",
+          "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+        },
+        {
+          "label": "Apple: add calendar subscriptions in iCloud",
+          "url": "https://support.apple.com/en-gb/102301"
+        },
+        {
+          "label": "Apple: multiple calendars, subscriptions and display selection on iPhone",
+          "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+        }
+      ],
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar",
+        "unwanted-calendar-events-iphone"
+      ],
+      "updated": "2026-10-22"
+    },
+    "added": "unwanted-calendar-events-iphone",
+    "originalBodyMetadataDatesPreserved": true
+  }
+]

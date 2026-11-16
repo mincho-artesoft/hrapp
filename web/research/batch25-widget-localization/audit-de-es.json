@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-22",
+  "slug": "the-widget-that-shows-what-is-next",
+  "source": "src/app/content/en-US/articles-widgets.ts",
+  "sourceObjectSha256": "2020665809742071ae6d258146c8e0474768c6e2c44fcf5c85296bda9ea6044e",
+  "scope": "Full current English and both complete existing locale editions read before translation. Full proposed translations reviewed by their author, not independent native-language verification.",
+  "checks": [
+    {
+      "locale": "de-DE",
+      "beforeObjectSha256": "70e151bbe53d3c3d636d7c8dfccf69edf7730997fbab7d173c380db9342d456e",
+      "proposedObjectSha256": "2c513b9c9216c3b3b59b4cb354d46941df151f8b7a66caf1f1d4eec36e9c796f",
+      "descriptionCharacters": 135,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "claimsEmpty": true,
+      "dateExact": true,
+      "sourceUrlsExact": true,
+      "schemaExact": true,
+      "relatedRoutes": [
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "exists": true
+        }
+      ],
+      "missingEnglishRelated": [
+        "choosing-a-widget-size"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "beforeObjectSha256": "5554bfb013a4a5af125d380dd17825a8713e0c229c82ddcb1ddfccdfb556236d",
+      "proposedObjectSha256": "63e745f154da95b454ae49e2562b6de5c741bb0a68eb3b3fcae6a0d70210a43c",
+      "descriptionCharacters": 154,
+      "sections": 7,
+      "paragraphs": 15,
+      "paragraphDistribution": [
+        2,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 4,
+      "faq": 3,
+      "claimsEmpty": true,
+      "dateExact": true,
+      "sourceUrlsExact": true,
+      "schemaExact": true,
+      "relatedRoutes": [
+        {
+          "slug": "a-countdown-to-your-next-meeting",
+          "exists": true
+        }
+      ],
+      "missingEnglishRelated": [
+        "choosing-a-widget-size"
+      ]
+    }
+  ],
+  "terminology": [
+    "Calendar Events, Calendar Events Large and Calendar & Weather kept verbatim, explained as event-list versus date/weather layouts. No invented localized layout names.",
+    "English Edit/Add Widget/Done retained with local prose explanation and notice that actual labels may be translated; instructions defer to installed iPadOS controls.",
+    "Selected calendars and future timed start eligibility retained. All-day and already-started appointments excluded.",
+    "Limited rows distinguished from actual absence; larger layout not complete-calendar guarantee.",
+    "iPhone correctness not proof of iPad accounts, permission or loaded data.",
+    "Apple controls widget scheduling; no fixed seconds or immediate-refresh guarantee.",
+    "Date-adjacent weather not automatic event-venue/time forecast."
+  ],
+  "relatedRoutesDecision": "choosing-a-widget-size is absent in both current locale modules/index, so omit it and retain the existing localized countdown guide. No invented route or English-only path substituted.",
+  "limits": [
+    "Author self-review only; no independent native-speaker certification.",
+    "Source URLs copied exactly; no new external-source fetch or runtime test.",
+    "No website/native source edits, integration, build or deployment."
+  ]
+}

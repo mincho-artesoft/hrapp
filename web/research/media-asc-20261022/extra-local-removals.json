@@ -1,0 +1,610 @@
+[
+  {
+    "path": "/tmp/cloud-calendar-batch13-year.png",
+    "bytes": 86997,
+    "sha256": "72c25491941ed2b7201efb13b1c4f845d30cbb55be304b913ead0c843d142829",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/72c25491941ed2b7201efb13b1c4f845d30cbb55be304b913ead0c843d142829.png",
+    "removedAt": "2026-10-22T10:36:26.958688+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch29-recovery.png",
+    "bytes": 93797,
+    "sha256": "07c0118f60d218268622b626a36a8979197a9904d0ab0624b32971283af05cbe",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/07c0118f60d218268622b626a36a8979197a9904d0ab0624b32971283af05cbe.png",
+    "removedAt": "2026-10-22T10:36:29.692158+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch31-pricing-ar.png",
+    "bytes": 29825,
+    "sha256": "2f5f5047714447de882889b33f5d89329d5e4499e86e599ac7bee3cdd6cb6d0e",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/2f5f5047714447de882889b33f5d89329d5e4499e86e599ac7bee3cdd6cb6d0e.png",
+    "removedAt": "2026-10-22T10:36:31.131406+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch16-disconnect.png",
+    "bytes": 85323,
+    "sha256": "acc831a33edc2763598bbb71abb4a9dd58ed98fb098e01a6612b10add938ae3a",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/acc831a33edc2763598bbb71abb4a9dd58ed98fb098e01a6612b10add938ae3a.png",
+    "removedAt": "2026-10-22T10:36:35.130426+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch19-room.png",
+    "bytes": 84173,
+    "sha256": "9fd2de8b677b8cb5fffbaf5d8260525b3f99d21e16790a86f48407d6fcbb3e6e",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/9fd2de8b677b8cb5fffbaf5d8260525b3f99d21e16790a86f48407d6fcbb3e6e.png",
+    "removedAt": "2026-10-22T10:36:39.584483+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch02-comparison.png",
+    "bytes": 93870,
+    "sha256": "d884682f0fc1e6b80a3af651888da9940e940813a16e4965db01e107d4874857",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/d884682f0fc1e6b80a3af651888da9940e940813a16e4965db01e107d4874857.png",
+    "removedAt": "2026-10-22T10:36:41.534017+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-strong-aso-final.png",
+    "bytes": 72365,
+    "sha256": "a861237bf01857505d38eed0f8d01fd3c20116d4e05519363be94419202ced44",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/a861237bf01857505d38eed0f8d01fd3c20116d4e05519363be94419202ced44.png",
+    "removedAt": "2026-10-22T10:36:44.992256+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch26-google-import-faq.png",
+    "bytes": 97611,
+    "sha256": "caa96dd6873b08b059560e221b1b5ba12407c700317a47839e4731519e1f10ef",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/caa96dd6873b08b059560e221b1b5ba12407c700317a47839e4731519e1f10ef.png",
+    "removedAt": "2026-10-22T10:36:51.857724+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch17-onecal.png",
+    "bytes": 86149,
+    "sha256": "2eab32a613092d3007f0ff1c5060905b4878f628828008253f9e90cdd7efd4ad",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/2eab32a613092d3007f0ff1c5060905b4878f628828008253f9e90cdd7efd4ad.png",
+    "removedAt": "2026-10-22T10:36:56.094793+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch24-google-handoff.png",
+    "bytes": 96100,
+    "sha256": "8344ddd312f18dbdcfce46ffd3e710fc32649b41b1e23d92acd21bd550c6787d",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/8344ddd312f18dbdcfce46ffd3e710fc32649b41b1e23d92acd21bd550c6787d.png",
+    "removedAt": "2026-10-22T10:37:01.153561+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch20-ja-recurrence.png",
+    "bytes": 91365,
+    "sha256": "27b3a24be18b33fc67564ddfb6a4331c63348efb61f4369d02cecb8c7e8e356c",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/27b3a24be18b33fc67564ddfb6a4331c63348efb61f4369d02cecb8c7e8e356c.png",
+    "removedAt": "2026-10-22T10:37:04.105010+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch18-widget-video-paused.png",
+    "bytes": 32185,
+    "sha256": "87209b74d6413a7f48cc30968a8ac206348ee34051384caae585fd80aab3f3c8",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/87209b74d6413a7f48cc30968a8ac206348ee34051384caae585fd80aab3f3c8.png",
+    "removedAt": "2026-10-22T10:37:06.296269+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch42-bg.png",
+    "bytes": 62854,
+    "sha256": "13ddbaf84b9921d5852098072eeff33d819c6ffb45d4cdeb9ae2b3b53e6c9bad",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/13ddbaf84b9921d5852098072eeff33d819c6ffb45d4cdeb9ae2b3b53e6c9bad.png",
+    "removedAt": "2026-10-22T10:37:09.401482+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch32-birthday.png",
+    "bytes": 99884,
+    "sha256": "b7b78ad13f3d8b24a1f2d8980f728e2d61c0dc29376595249f4970d0ec78e697",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/b7b78ad13f3d8b24a1f2d8980f728e2d61c0dc29376595249f4970d0ec78e697.png",
+    "removedAt": "2026-10-22T10:37:13.084562+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch20-bg-recurrence.png",
+    "bytes": 85480,
+    "sha256": "0f09703b90b95de3321b061bfe0b21fb51a03874e49a3ee3b01d3f60ad31ff60",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/0f09703b90b95de3321b061bfe0b21fb51a03874e49a3ee3b01d3f60ad31ff60.png",
+    "removedAt": "2026-10-22T10:37:16.224445+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch28-bg-support.png",
+    "bytes": 29615,
+    "sha256": "e2badfd3c9146dca3c257b9b417cef0a3a3d969a86cf45caae227b51dcb4db04",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/e2badfd3c9146dca3c257b9b417cef0a3a3d969a86cf45caae227b51dcb4db04.png",
+    "removedAt": "2026-10-22T10:37:18.665259+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch25-de-ipad-guide.png",
+    "bytes": 133589,
+    "sha256": "e75ac65fcba95fc991ee0ccf5111aa3dfbc2abcd382d380182dfa9897700ab64",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/e75ac65fcba95fc991ee0ccf5111aa3dfbc2abcd382d380182dfa9897700ab64.png",
+    "removedAt": "2026-10-22T10:37:22.913861+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch25-bg-widgets.png",
+    "bytes": 93172,
+    "sha256": "c6517d8e71a04605d70f57260bdfdfd4f9237662c5432a9113ed52981256f0e8",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/c6517d8e71a04605d70f57260bdfdfd4f9237662c5432a9113ed52981256f0e8.png",
+    "removedAt": "2026-10-22T10:37:25.808009+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch17-fr-weather.png",
+    "bytes": 85311,
+    "sha256": "96d7a4c9f74d9d7adc1b3dc524648bfd440011440c4c271c756d766c0ebcb05d",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/96d7a4c9f74d9d7adc1b3dc524648bfd440011440c4c271c756d766c0ebcb05d.png",
+    "removedAt": "2026-10-22T10:37:27.964517+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch21-en-heading.png",
+    "bytes": 46370,
+    "sha256": "0eae64d8f9b2e780b13bca62c7749bd8b44be8011a6bda594345d4fc9cd13703",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/0eae64d8f9b2e780b13bca62c7749bd8b44be8011a6bda594345d4fc9cd13703.png",
+    "removedAt": "2026-10-22T10:37:29.766550+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch22-ipad-widgets.png",
+    "bytes": 93486,
+    "sha256": "1eee54b13d152618bf532e72c99ea421b93d01c9d47316d85362e79b591d268a",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/1eee54b13d152618bf532e72c99ea421b93d01c9d47316d85362e79b591d268a.png",
+    "removedAt": "2026-10-22T10:37:31.135490+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch08-replies.png",
+    "bytes": 87033,
+    "sha256": "e9bdca3618db8d87732b37987d313c3c06f642699965847b1d1f88c076af93b9",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/e9bdca3618db8d87732b37987d313c3c06f642699965847b1d1f88c076af93b9.png",
+    "removedAt": "2026-10-22T10:37:32.732020+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch13-bg.png",
+    "bytes": 92070,
+    "sha256": "de2d78a89536e33885ad2e11b804d54311dd61afd59a5bf4545c469b0095f3ff",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/de2d78a89536e33885ad2e11b804d54311dd61afd59a5bf4545c469b0095f3ff.png",
+    "removedAt": "2026-10-22T10:37:34.653470+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-privacy-publish-ready.png",
+    "bytes": 40929,
+    "sha256": "53d07f2cabd62da7cbaf4db904af8d42aea6e10e20e4c63ba83c07a1c8052ae8",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/53d07f2cabd62da7cbaf4db904af8d42aea6e10e20e4c63ba83c07a1c8052ae8.png",
+    "removedAt": "2026-10-22T10:37:37.646841+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch18-widget-video.png",
+    "bytes": 37706,
+    "sha256": "a046319adcb66888614ef90dc4a8b1af7b1f2c40991cc4d4b0ecf0626116144a",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/a046319adcb66888614ef90dc4a8b1af7b1f2c40991cc4d4b0ecf0626116144a.png",
+    "removedAt": "2026-10-22T10:37:41.009062+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch28-fr-caldav.png",
+    "bytes": 86042,
+    "sha256": "33af9e1692c4e268bcef9848b6a413005b4f48d6e4f66ed822d4d88d0b3ad864",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/33af9e1692c4e268bcef9848b6a413005b4f48d6e4f66ed822d4d88d0b3ad864.png",
+    "removedAt": "2026-10-22T10:37:46.524225+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch40-offline-en.png",
+    "bytes": 99725,
+    "sha256": "af62933924675ca94de6fb6ed8bdae6cd3b84545bcd4fa5932ce5dc685389824",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/af62933924675ca94de6fb6ed8bdae6cd3b84545bcd4fa5932ce5dc685389824.png",
+    "removedAt": "2026-10-22T10:37:50.609033+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch19-bg-cta.png",
+    "bytes": 47433,
+    "sha256": "7fad0bf8612c7a7c8761fffc69491ea44177e939af586a4e7a01b9f71cc049b9",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/7fad0bf8612c7a7c8761fffc69491ea44177e939af586a4e7a01b9f71cc049b9.png",
+    "removedAt": "2026-10-22T10:37:52.387042+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch11-bg.png",
+    "bytes": 89842,
+    "sha256": "90d357add505a91ae29835174d5a96c0f0f64392d7201ace2ca8e67a7eeba2f2",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/90d357add505a91ae29835174d5a96c0f0f64392d7201ace2ca8e67a7eeba2f2.png",
+    "removedAt": "2026-10-22T10:37:55.016268+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch34-document-access.png",
+    "bytes": 93918,
+    "sha256": "394698bb3df3fb14e4ad2e3fcb3ebfd6dec513121fd7dfd108c3cc88970c6368",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/394698bb3df3fb14e4ad2e3fcb3ebfd6dec513121fd7dfd108c3cc88970c6368.png",
+    "removedAt": "2026-10-22T10:37:56.916663+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch37-watch-bg.png",
+    "bytes": 109833,
+    "sha256": "1a68b2ae795c6971d6d929febd890e73fb525ebcc8702dd8219c7f1e2f0bdeaa",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/1a68b2ae795c6971d6d929febd890e73fb525ebcc8702dd8219c7f1e2f0bdeaa.png",
+    "removedAt": "2026-10-22T10:37:59.474598+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch07-exchange.png",
+    "bytes": 94364,
+    "sha256": "a525cd8fc8a54ccdb162fda93d4dffd494dc539acb473de38123d7d84f913fe5",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/a525cd8fc8a54ccdb162fda93d4dffd494dc539acb473de38123d7d84f913fe5.png",
+    "removedAt": "2026-10-22T10:38:01.029117+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch15-ar-pricing.png",
+    "bytes": 35688,
+    "sha256": "62894aba3cb9aaa3e45256d27bd378ea5e7225178f1aaf78c3067ab187894954",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/62894aba3cb9aaa3e45256d27bd378ea5e7225178f1aaf78c3067ab187894954.png",
+    "removedAt": "2026-10-22T10:38:02.157072+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch18-feed-zones.png",
+    "bytes": 93063,
+    "sha256": "5a3f0bc6535bc741351716aaa73452cc0411d312bbeae151a9d6cf03b7154601",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/5a3f0bc6535bc741351716aaa73452cc0411d312bbeae151a9d6cf03b7154601.png",
+    "removedAt": "2026-10-22T10:38:03.812195+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch33-colors-bg.png",
+    "bytes": 106025,
+    "sha256": "15369e0fd1a4e7609132d70c38b386e6ca40040e44a378691a9c5aae673daa3a",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/15369e0fd1a4e7609132d70c38b386e6ca40040e44a378691a9c5aae673daa3a.png",
+    "removedAt": "2026-10-22T10:38:06.157623+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch38-timezone-de.png",
+    "bytes": 97363,
+    "sha256": "cb3a2b48cf799c6523a0693571ea3b07b1001b0b812a8b5359407427b9e744c5",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/cb3a2b48cf799c6523a0693571ea3b07b1001b0b812a8b5359407427b9e744c5.png",
+    "removedAt": "2026-10-22T10:38:08.191924+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-seo-batch01-published.png",
+    "bytes": 94475,
+    "sha256": "c1971b1cda3f7b5ab6a18b49c1f85332325b6f6c19660531966f3881dfddba36",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/c1971b1cda3f7b5ab6a18b49c1f85332325b6f6c19660531966f3881dfddba36.png",
+    "removedAt": "2026-10-22T10:38:10.533760+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch31-pricing-final.png",
+    "bytes": 36629,
+    "sha256": "adff84907398c1afb4ac1ebe2ccbebaa3cbe61a1e71ef14246ae7f272f63409f",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/adff84907398c1afb4ac1ebe2ccbebaa3cbe61a1e71ef14246ae7f272f63409f.png",
+    "removedAt": "2026-10-22T10:38:11.961340+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch15-weather.png",
+    "bytes": 84760,
+    "sha256": "e0d1a61b8f15ea4ec423fea710da28a2ad7780e29abead38b829bbeddb7d7d59",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/e0d1a61b8f15ea4ec423fea710da28a2ad7780e29abead38b829bbeddb7d7d59.png",
+    "removedAt": "2026-10-22T10:38:13.410470+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch35-gallery-bg.png",
+    "bytes": 48877,
+    "sha256": "d62a156cabd2c67f4daef6713293d5fd163931904486b5070eff7eb02e0010d8",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/d62a156cabd2c67f4daef6713293d5fd163931904486b5070eff7eb02e0010d8.png",
+    "removedAt": "2026-10-22T10:38:15.280468+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch15-ar-pricing-final.png",
+    "bytes": 35752,
+    "sha256": "66accdf87ffaa23f289cc8e85654dd840f8beb7cf01673f7dbc48365afb51794",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/66accdf87ffaa23f289cc8e85654dd840f8beb7cf01673f7dbc48365afb51794.png",
+    "removedAt": "2026-10-22T10:38:16.526707+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch25-ja-widgets.png",
+    "bytes": 92776,
+    "sha256": "cd524c63e59c4baed7ed0de854a48759b730fad240605a22f76a19c0f3b2839d",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/cd524c63e59c4baed7ed0de854a48759b730fad240605a22f76a19c0f3b2839d.png",
+    "removedAt": "2026-10-22T10:38:17.835334+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-focus-local-preview.png",
+    "bytes": 108968,
+    "sha256": "6027d2cf409f9ac28e2c1bdb91d8c1e4135801105ed9cbbeca196c7cceb35759",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/6027d2cf409f9ac28e2c1bdb91d8c1e4135801105ed9cbbeca196c7cceb35759.png",
+    "removedAt": "2026-10-22T10:38:18.914298+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch27-overnight-example.png",
+    "bytes": 95870,
+    "sha256": "0aae64f6bf3155595846e35fb4adecc9ccb9dc68e910e984153f99bfaaf3e0bc",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/0aae64f6bf3155595846e35fb4adecc9ccb9dc68e910e984153f99bfaaf3e0bc.png",
+    "removedAt": "2026-10-22T10:38:20.619731+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch12-caldav.png",
+    "bytes": 89023,
+    "sha256": "895993f10b864db8059525e8c547d592846ad6ddc68f7aa49b2f3fdaca94478d",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/895993f10b864db8059525e8c547d592846ad6ddc68f7aa49b2f3fdaca94478d.png",
+    "removedAt": "2026-10-22T10:38:22.115185+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch04-bg.png",
+    "bytes": 98405,
+    "sha256": "bb809536a9171d5477c657734163172a283851a4b85c5caca302c71cd2d9c4ce",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/bb809536a9171d5477c657734163172a283851a4b85c5caca302c71cd2d9c4ce.png",
+    "removedAt": "2026-10-22T10:38:23.479184+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch15-bg-home.png",
+    "bytes": 44706,
+    "sha256": "79cee73b1c3624e5691693f62efa090a5cff4320e63802000311cb085e7a9006",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/79cee73b1c3624e5691693f62efa090a5cff4320e63802000311cb085e7a9006.png",
+    "removedAt": "2026-10-22T10:38:25.045044+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch23-family-access.png",
+    "bytes": 70633,
+    "sha256": "c8cde3b06c8923787c60cd6a7f9025441429a5c69aad2dda0a6ae09976237787",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/c8cde3b06c8923787c60cd6a7f9025441429a5c69aad2dda0a6ae09976237787.png",
+    "removedAt": "2026-10-22T10:38:26.778428+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch36-italian-sharing.png",
+    "bytes": 99651,
+    "sha256": "7e25a4ebe4700e6804d86a8571fda3035a424d894047d30a089745b781250996",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/7e25a4ebe4700e6804d86a8571fda3035a424d894047d30a089745b781250996.png",
+    "removedAt": "2026-10-22T10:38:28.523396+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch22-widget-rows.png",
+    "bytes": 95837,
+    "sha256": "8f60f58e6bffc4a39c0540c0b1ca6d2d0c81b228718c946d2bff7278497ce821",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/8f60f58e6bffc4a39c0540c0b1ca6d2d0c81b228718c946d2bff7278497ce821.png",
+    "removedAt": "2026-10-22T10:38:30.474094+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch03-search.png",
+    "bytes": 89871,
+    "sha256": "73514072a31c008e741ac18c6c6c98c491fe479f526ce33fb46bf7d83fa1f95f",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/73514072a31c008e741ac18c6c6c98c491fe479f526ce33fb46bf7d83fa1f95f.png",
+    "removedAt": "2026-10-22T10:38:36.520715+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch18-de-disconnect.png",
+    "bytes": 83087,
+    "sha256": "47920c619cd4d6c5450919451288212204f840f403c8204354728eda58a7fb31",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/47920c619cd4d6c5450919451288212204f840f403c8204354728eda58a7fb31.png",
+    "removedAt": "2026-10-22T10:38:41.534259+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch14-commute.png",
+    "bytes": 86485,
+    "sha256": "017dc2486762a623a662c09a8f3476c2a86e5a6e6c0ad7abd46298d77e28f545",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/017dc2486762a623a662c09a8f3476c2a86e5a6e6c0ad7abd46298d77e28f545.png",
+    "removedAt": "2026-10-22T10:38:46.810091+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch26-selection-caveat.png",
+    "bytes": 96401,
+    "sha256": "b79dc097cab9d90b001715a95fa5d83b2cfaa76209dc59d23d1fe460dde43f6d",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/b79dc097cab9d90b001715a95fa5d83b2cfaa76209dc59d23d1fe460dde43f6d.png",
+    "removedAt": "2026-10-22T10:38:52.674388+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch06-weather.png",
+    "bytes": 43686,
+    "sha256": "aff5e776886e93e0f83411cd8436d57e5de421a045d5deb95c4004c3bb3937fb",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/aff5e776886e93e0f83411cd8436d57e5de421a045d5deb95c4004c3bb3937fb.png",
+    "removedAt": "2026-10-22T10:38:55.967910+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch05-widgets.png",
+    "bytes": 45370,
+    "sha256": "e28dd6718097f90ff2002852c1d16ba3e39c8225412a8035bbf34d6674e3da4b",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/e28dd6718097f90ff2002852c1d16ba3e39c8225412a8035bbf34d6674e3da4b.png",
+    "removedAt": "2026-10-22T10:38:59.163367+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch22-ipad-web-layout.png",
+    "bytes": 130278,
+    "sha256": "5ff511cd37a6a100c41464506bc6fafab450dc0b1ffcb4d3cfa32fadbacf59a5",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/5ff511cd37a6a100c41464506bc6fafab450dc0b1ffcb4d3cfa32fadbacf59a5.png",
+    "removedAt": "2026-10-22T10:39:03.474997+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch14-bg-month.png",
+    "bytes": 82873,
+    "sha256": "b2a6efeb0fe859a7820f79b25acdf4d63f29b634f44356d0436a5d326eecfbd8",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/b2a6efeb0fe859a7820f79b25acdf4d63f29b634f44356d0436a5d326eecfbd8.png",
+    "removedAt": "2026-10-22T10:39:06.624417+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-privacy-local-preview.png",
+    "bytes": 57613,
+    "sha256": "cb6f7ffe9ef71d26a8ead36dbdea842385836ee8d6e37f27c12ab54a759d5e04",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/cb6f7ffe9ef71d26a8ead36dbdea842385836ee8d6e37f27c12ab54a759d5e04.png",
+    "removedAt": "2026-10-22T10:39:09.149272+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch16-bg-weather.png",
+    "bytes": 86359,
+    "sha256": "25b838ddf42b7fc2759eff6e570e3a3ca44007a8a84670f0fd9d171799398877",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/25b838ddf42b7fc2759eff6e570e3a3ca44007a8a84670f0fd9d171799398877.png",
+    "removedAt": "2026-10-22T10:39:12.380844+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch23-ja-work-personal.png",
+    "bytes": 97469,
+    "sha256": "350b341cf98f9c79d6f8022e39aadc5610a9ab2ebb73cbee6ad17c0f8247f2ef",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/350b341cf98f9c79d6f8022e39aadc5610a9ab2ebb73cbee6ad17c0f8247f2ef.png",
+    "removedAt": "2026-10-22T10:39:14.887306+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-chatgpt-widget-recommendation.png",
+    "bytes": 94382,
+    "sha256": "935da06ecc7b71fb0b13bf51055038e2f29004598b793bb63e9d648a1bd9bdc3",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/935da06ecc7b71fb0b13bf51055038e2f29004598b793bb63e9d648a1bd9bdc3.png",
+    "removedAt": "2026-10-22T10:39:16.477479+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch21-feed-handoff.png",
+    "bytes": 101774,
+    "sha256": "bd13297d9cebcbbb94571e80c77173625bc105028cb72546bea26ddf1d72f3c6",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/bd13297d9cebcbbb94571e80c77173625bc105028cb72546bea26ddf1d72f3c6.png",
+    "removedAt": "2026-10-22T10:39:18.505405+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch09-ar.png",
+    "bytes": 74589,
+    "sha256": "17f77948143d59033e58f3d186a104140224f13c81d002214c4c105b62342720",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/17f77948143d59033e58f3d186a104140224f13c81d002214c4c105b62342720.png",
+    "removedAt": "2026-10-22T10:39:20.999245+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch39-timezone-es.png",
+    "bytes": 100976,
+    "sha256": "05418e8eb4926a91f60e5da877bf3e7e77c4fb29c84afbbc339ffc8d9fd87480",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/05418e8eb4926a91f60e5da877bf3e7e77c4fb29c84afbbc339ffc8d9fd87480.png",
+    "removedAt": "2026-10-22T10:39:23.667757+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-asc-whatsnew-20261022.png",
+    "bytes": 60306,
+    "sha256": "765c3c460b5c3f84b912fd4054fa0f78006c1b71f1ff891e9e83eedd54c60904",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/765c3c460b5c3f84b912fd4054fa0f78006c1b71f1ff891e9e83eedd54c60904.png",
+    "removedAt": "2026-10-22T10:39:25.616680+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch19-ar-cta.png",
+    "bytes": 37734,
+    "sha256": "bec4b838bcd95f0d6ead8227cac996fc261938122af7b0319105e895cbc9f573",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/bec4b838bcd95f0d6ead8227cac996fc261938122af7b0319105e895cbc9f573.png",
+    "removedAt": "2026-10-22T10:39:27.022555+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch30-bg-timezone.png",
+    "bytes": 84300,
+    "sha256": "b4328c0a82b797c501565f8c6f1d3c003cd828e94b3dbe7fadb629efde692e59",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/b4328c0a82b797c501565f8c6f1d3c003cd828e94b3dbe7fadb629efde692e59.png",
+    "removedAt": "2026-10-22T10:39:28.176536+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch31-pricing-mobile.png",
+    "bytes": 31363,
+    "sha256": "9830b43c8dd1b66581ed3ff23b41ca40c3304601127d3d12157c1332d1193a52",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/9830b43c8dd1b66581ed3ff23b41ca40c3304601127d3d12157c1332d1193a52.png",
+    "removedAt": "2026-10-22T10:39:29.935898+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch23-bg-work-personal.png",
+    "bytes": 85844,
+    "sha256": "c3a79256ceac4f5bb85e99758b2817469d14d6ee08b79056b29c946b9c8ce450",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/c3a79256ceac4f5bb85e99758b2817469d14d6ee08b79056b29c946b9c8ce450.png",
+    "removedAt": "2026-10-22T10:39:33.275090+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch21-ar-heading.png",
+    "bytes": 42576,
+    "sha256": "a23717c7130286a9273892cad087524929275bd91f0177e42ef5402fddbaf9d7",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/a23717c7130286a9273892cad087524929275bd91f0177e42ef5402fddbaf9d7.png",
+    "removedAt": "2026-10-22T10:39:34.281204+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch02-bg.png",
+    "bytes": 94572,
+    "sha256": "d3510291ff9c3aa4769cea9085f0d697b87658e57f9fdb84f6106db89deaf965",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/d3510291ff9c3aa4769cea9085f0d697b87658e57f9fdb84f6106db89deaf965.png",
+    "removedAt": "2026-10-22T10:39:35.613455+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch10-bg.png",
+    "bytes": 94347,
+    "sha256": "1b978bb478c41da179dfde18244004cd64d55efe8011dfb9e33ecb64a999741b",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/1b978bb478c41da179dfde18244004cd64d55efe8011dfb9e33ecb64a999741b.png",
+    "removedAt": "2026-10-22T10:39:37.207948+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch20-ar-hero.png",
+    "bytes": 43361,
+    "sha256": "30e872d151892d201f41ffd9c2d543104d52f6bfc3822dcb4f58d54f9a750fe6",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/30e872d151892d201f41ffd9c2d543104d52f6bfc3822dcb4f58d54f9a750fe6.png",
+    "removedAt": "2026-10-22T10:39:39.957123+00:00"
+  },
+  {
+    "path": "/tmp/cloud-calendar-batch21-sync-routing.png",
+    "bytes": 78232,
+    "sha256": "9acdc773fac0180951b50a44bff8eae69e429fd09650eced897dda197b66cf6a",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/9acdc773fac0180951b50a44bff8eae69e429fd09650eced897dda197b66cf6a.png",
+    "removedAt": "2026-10-22T10:39:41.151964+00:00"
+  },
+  {
+    "path": "/Users/minchomilev/cloud-calendars/brand/Cloud Calendars Icon-iOS-Default-1024x1024@1x.png",
+    "bytes": 3837539,
+    "sha256": "f8f77e93287ecda2a2065ac737f09ae2b0cb5ae03800cf5e4a722c92d8d9ae2f",
+    "s3Bucket": "cloud-calendars-appstore-media",
+    "s3Key": "1.7.4/local-media-archive-20261022/sha256/f8f77e93287ecda2a2065ac737f09ae2b0cb5ae03800cf5e4a722c92d8d9ae2f.png",
+    "removedAt": "2026-10-22T10:39:53.312694+00:00"
+  }
+]

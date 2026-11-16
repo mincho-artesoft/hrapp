@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-21",
+  "status": "Drafts only; no source integration, native writes, builds, runtime sessions or deployments.",
+  "websiteHead": "ceda0805757ecb68f44eed9f0883a92a5072c903",
+  "originalFile": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-unify.ts",
+  "originalFileSha256": "90bdfea109971bc56b4cbe35c66bb5e9632601cb49a1fa3d42e7680d87dbd2fb",
+  "canonicalSlugs": [
+    "icloud-google-and-outlook-in-one-view",
+    "exchange-calendars-on-an-iphone"
+  ],
+  "proofs": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "226-265",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google sign-in requests calendar and contacts scopes; stores account and starts per-user sync."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "611-680",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Full EventKit calendar access requested; EventKit calendars loaded."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1150-1255",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google calendar list and per-account mapping; holiday branch one-time download; selected-calendar filtering."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1367-1382",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Mirror source fallback: local, then first calDAV, then default-calendar source. calDAV does not necessarily mean iCloud despite variable name."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "1398-1420;1560-1640",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Google bounded downloads and provider-specific local upload PATCH/POST/deletion. Not a general archive guarantee."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "2182-2191;4227-4230",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "GoogleCalendarItem omits accessRole; MSCalendarItem includes only id/name, omits canEdit. No proof provider ACLs fully reflected in mirror edit UI."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "2938-3007",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "MSAL selectAccount, Calendars.ReadWrite/User.Read; per-user sync."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "3203-3315;3354-3390",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Microsoft Graph me/calendars; separate account/calendar mapping and selected-calendar sync; holidays/birthdays exception."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "lines": "3400-3420;3575-3635",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "finding": "Microsoft bounded download and local upload/update/delete. Does not guarantee full history or conflict safety."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "lines": "470-510;586-640;697-743",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "finding": "Google/Microsoft account groups and selection. Google sign-in ungated; Microsoft sign-in Premium gate. Microsoft share/edit calendar buttons not exposed here."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "lines": "358-390",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "finding": "Destination choices reflect local edit roles and EventKit allowsContentModifications with shared-calendar restrictions; local editor affordance not proof server permission accepted."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedInviteTracker.swift",
+      "lines": "133-150",
+      "sha256": "b7d788cf951dc0aee3e5e007c7b146dc1e42009c8324a32a25d91352217a1216",
+      "finding": "Received shared calendar/event reader or revoked restrictions."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/CalendarTimelineTransfer.swift",
+      "lines": "4-107",
+      "sha256": "4e20036146aebcb36a54ad01f12e4576ed2f25eda1a599bbcaee2332e0fe1bae",
+      "finding": "Explicit cross-backend move saves destination then removes source with rollback path; not automatic anonymous busy bridge. Invited system events/geofenced alarms rejected for app-local move."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+      "lines": "1-31",
+      "sha256": "912bfe90241312a385e357b9c1c21856ed681fb9f7f1e623af4ca56b5434ccf1",
+      "finding": "Base Google/views/weather/Meet list."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/AdvanceSubscriptionView.swift",
+      "lines": "1-25",
+      "sha256": "b30672c8bf7b70536c86693fbe6608e087e70076537239621149d3d71fe9437d",
+      "finding": "Advanced adds ad removal."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+      "lines": "1-26",
+      "sha256": "a490229597f2516c4d35b666a21c2d2caa18b6e8eb6d2ab9e2c81fc332ca2a1c",
+      "finding": "Premium Microsoft Calendar and Teams."
+    }
+  ],
+  "primarySources": [
+    {
+      "label": "Apple: set up iCloud Calendar on your devices",
+      "url": "https://support.apple.com/guide/icloud/set-up-calendar-mme4d73a8727/icloud",
+      "checked": "2026-10-21"
+    },
+    {
+      "label": "Google: calendar sharing and permissions",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en",
+      "checked": "2026-10-21"
+    },
+    {
+      "label": "Microsoft: Outlook calendar API and supported mailbox data",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview",
+      "checked": "2026-10-21"
+    },
+    {
+      "label": "Microsoft: user and administrator consent",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview",
+      "checked": "2026-10-21"
+    },
+    {
+      "label": "Apple: multiple calendars",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios",
+      "checked": "2026-10-21"
+    }
+  ],
+  "findings": {
+    "automaticCopying": "Explicit provider-to-EventKit mirror copies ARE present, including fallback to calDAV/default source. Do not promise data only stays at original provider. Separate provider maps do not establish a general Google-to-Microsoft or reverse bridge.",
+    "busyMasking": "No automatic cross-provider anonymous busy-block feature found in the inspected sync/transfer paths or focused Calendar Swift search for busy/freeBusy/mask. Bounded negative evidence, not exhaustive absence proof.",
+    "manualMoves": "Cross-backend explicit move code exists; do not conflate with automatic mirror/sync or market it as harmless copying.",
+    "permissions": "Local and EventKit edit restrictions exist, but provider list models omit accessRole/canEdit. Do not promise all displayed provider calendars editable or server ACL enforcement reflected perfectly in UI.",
+    "microsoft": "Common Microsoft authority and Graph delegated scopes observed. No generic on-premises Exchange authentication recipe or verified complete shared/delegated mailbox support.",
+    "storageConcern": "Destination fallback deserves owner/runtime review for personal/work data boundaries. No device-specific actual destination observed."
+  },
+  "replacedAssertions": [
+    "Every calendar editable in place",
+    "Outlook and all Exchange covered by one paid tier claim",
+    "Unsubstantiated per-account running-cost rationale",
+    "If your work calendar is Google you will never need to pay",
+    "Failed connection is usually policy",
+    "Read-only publication suggested as a bypass"
+  ],
+  "uncertainties": [
+    "No proof inspected source matches released 1.7.3 binary.",
+    "No real accounts connected or runtime provider/permission/duplicate tests performed.",
+    "Device-specific mirror destination and calDAV server unknown.",
+    "Provider-specific calendar list pagination, shared/delegate/group coverage and synchronization correctness not comprehensively audited.",
+    "Timer/download windows do not guarantee freshness or historical event completeness.",
+    "No claim of unlimited account count or universal Teams/Meet link generation."
+  ],
+  "integrationNotes": [
+    "Preserve routes; replace only two target objects.",
+    "claims intentionally empty: renderer src/app/pages/article-page/article-page.component.ts:65-67 filters facts by matching claim key, so these drafts omit shared account-count/price rows.",
+    "Other articles, including three-calendar-apps-is-two-too-many, retain broad advice about adding accounts without moving data and deleting other apps; separate scope review recommended."
+  ],
+  "validation": {
+    "icloud-google-and-outlook-in-one-view": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 155,
+      "wordCount": 849
+    },
+    "exchange-calendars-on-an-iphone": {
+      "sections": 6,
+      "faqs": 3,
+      "descriptionCharacters": 137,
+      "wordCount": 849
+    }
+  },
+  "suggestedSyncGuideClarification": "Seeing calendars together does not itself merge their accounts. However, the app’s Google and Microsoft connections create calendar copies through the iPhone calendar system for synchronization. The calendar source used for those copies can depend on the device’s available sources, so do not assume that data exists only at the original provider. Keep the original provider, the displayed calendar copy and any deliberate event move distinct when checking duplicates or changes."
+}

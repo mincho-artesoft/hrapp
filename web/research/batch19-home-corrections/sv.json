@@ -1,0 +1,26 @@
+{
+  "locale": "sv",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Morgondagen har redan",
+        "en prognos med sig."
+      ],
+      "after": [
+        "Planera nästa dag.",
+        "Se den tillgängliga prognosen."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sju kolumner, var och en med sitt eget max, min och sina egna förhållanden. Vrid till liggande för hela bredden. Ta en händelse och dra den till en annan dag.",
+      "after": "Jämför veckans bokningar med den tillgängliga väderprognosen för varje dag. Vrid till liggande läge för en bredare vy. Flytta händelser som du kan redigera till en annan dag och kontrollera vilka tillfällen som ska ändras för en återkommande händelse."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Dra den. Sträck den. Klart.",
+      "after": "Dra. Ändra storlek. Kontrollera."
+    }
+  ]
+}

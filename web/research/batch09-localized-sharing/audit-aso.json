@@ -1,0 +1,436 @@
+{
+  "status": "19 translated objects complete; proposals only",
+  "source": "/Users/minchomilev/cloud-calendars/research/batch08-sharing/final-english-objects.json",
+  "sourceSha256": "ce8f739eeb4acdb2396d5014dd8b785733bbf2287e955f7cabd32aa1078b573f",
+  "scope": {
+    "ar-SA": 2,
+    "da": 2,
+    "es-ES": 1,
+    "he": 2,
+    "id": 2,
+    "ko": 2,
+    "no": 2,
+    "ro": 2,
+    "th": 2,
+    "zh-Hans": 2
+  },
+  "sourceIntegration": false,
+  "paidTranslationAPI": false,
+  "validation": [
+    {
+      "locale": "da",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 138,
+      "related": []
+    },
+    {
+      "locale": "da",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 139,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "no",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 144,
+      "related": []
+    },
+    {
+      "locale": "no",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 146,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ro",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 143,
+      "related": []
+    },
+    {
+      "locale": "ro",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 149,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "id",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 122,
+      "related": []
+    },
+    {
+      "locale": "id",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 123,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 140,
+      "related": [
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 60,
+      "related": []
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 38,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ko",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 79,
+      "related": []
+    },
+    {
+      "locale": "ko",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 64,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 98,
+      "related": []
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 115,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "he",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 108,
+      "related": []
+    },
+    {
+      "locale": "he",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 100,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    },
+    {
+      "locale": "th",
+      "slug": "sharing-one-event-not-your-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 3,
+      "metaCharacters": 117,
+      "related": []
+    },
+    {
+      "locale": "th",
+      "slug": "who-can-see-what-in-google-calendar",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faq": 3,
+      "sources": 2,
+      "metaCharacters": 97,
+      "related": [
+        "why-a-shared-calendar-does-not-appear"
+      ]
+    }
+  ],
+  "relatedLinkOmissions": [
+    {
+      "locale": "da",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "da",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "no",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "no",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "ro",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "ro",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "id",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "id",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "zh-Hans",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "ko",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "ko",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "ar-SA",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "he",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "he",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    },
+    {
+      "locale": "th",
+      "slug": "sharing-one-event-not-your-calendar",
+      "unavailableRelated": [
+        "inviting-people-who-do-not-have-the-app",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ]
+    },
+    {
+      "locale": "th",
+      "slug": "who-can-see-what-in-google-calendar",
+      "unavailableRelated": [
+        "a-calendar-that-is-yours-to-share",
+        "work-and-personal-without-two-apps"
+      ]
+    }
+  ],
+  "structure": "Exact source key shape, 6 sections/12 paragraphs, 6 practical steps, 3 FAQ, source URLs/order, disclosure, date 2026-10-21 and empty claims preserved. Duplicate keys rejected on reread.",
+  "criticalClaims": [
+    "App Clip preview only; adding via that experience requires full app. Email/QR use web landing page opening app. No universal no-install claim.",
+    "Reader views/syncs; Writer edits; Owner also shares/manages; higher access needs appropriate signed-in identity; anonymous recipient not identified co-owner.",
+    "App add requires calendar permission/writable target; imported ICS copy distinct from periodic subscription.",
+    "Feed-refresh hint not delivery deadline. Offline/unrefreshed/standalone copies can remain stale. Direct contact for urgent changes; update not attendance answer.",
+    "Removal and feed-link revocation distinct; no remote-erasure/security guarantee.",
+    "Broader Google public/group/organisation access can override narrow individual grant; private-event-limited editing distinguished from other edit/share roles.",
+    "Advanced ad removal not provider rights; local editor not proof of accepted sharing. No work-policy bypass."
+  ],
+  "languageConfidence": {
+    "es-ES": "medium-high",
+    "da": "medium",
+    "no": "medium",
+    "ro": "medium",
+    "id": "medium",
+    "zh-Hans": "medium",
+    "ko": "medium",
+    "ar-SA": "medium",
+    "he": "medium",
+    "th": "medium"
+  },
+  "reviewCaveats": "Model-authored translations; no native-speaker review claimed. Review RTL/LTR brand/URL layout in Arabic and Hebrew before publication. Sources are preserved from final reviewed English, not re-researched or replaced. Related links retained only for actual existing localized article keys; omissions are explicit. Spanish contains only single-event article and does not overwrite its permissions article."
+}

@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "scope": "Four focused web search queries in one batch; two exact official bodies opened; six current EN substantive guide bodies/FAQs reviewed; current 53-slug EN index inspected. Research only.",
+  "queries": [
+    {
+      "id": "q1",
+      "query": "site.onecal.io multiple work accounts scheduling availability calendars",
+      "date": "2026-10-22",
+      "perQueryResultAssociation": "Not exposed in combined response; no exact attribution claimed."
+    },
+    {
+      "id": "q2",
+      "query": "site.help.calendarbridge.com calendar feed not updating ICS",
+      "date": "2026-10-22",
+      "perQueryResultAssociation": "Not exposed in combined response; no exact attribution claimed."
+    },
+    {
+      "id": "q3",
+      "query": "site.teamup.com calendar booking conflict prevent double booking",
+      "date": "2026-10-22",
+      "perQueryResultAssociation": "Not exposed in combined response; no exact attribution claimed."
+    },
+    {
+      "id": "q4",
+      "query": "site.busymac.com CalDAV shared calendar availability iPhone",
+      "date": "2026-10-22",
+      "perQueryResultAssociation": "Not exposed in combined response; no exact attribution claimed."
+    }
+  ],
+  "searchObservationLimits": [
+    "Combined result output interleaved results and was truncated. Only explicitly visible exact URLs are recorded; this is not the complete returned set.",
+    "No result ordering is represented as Google ranking. Search backend, locale and personalization are not controlled.",
+    "No search volume, conversion, ChatGPT result/citation or all-keyword coverage measured.",
+    "Domain terms did not prevent unrelated publisher and old PDF results; those were excluded."
+  ],
+  "observedResults": [
+    {
+      "url": "https://www.teamup.com/faq/use-cases/faq-managing-availability/",
+      "publisher": "Teamup",
+      "status": "full_main_body_reviewed",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/resource-bookings/",
+      "publisher": "Teamup",
+      "status": "search_result_only",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/learn/interactive-demos/automatically-prevent-overlapping-events/",
+      "publisher": "Teamup",
+      "status": "full_main_body_reviewed",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/manage-availability/",
+      "publisher": "Teamup",
+      "status": "search_result_only",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/learn/manage-availability/how-to-set-up-bookable-appointment-slots/",
+      "publisher": "Teamup",
+      "status": "search_result_only",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://support.goteamup.com/en/articles/9327784-the-calendar",
+      "publisher": "TeamUp fitness platform, distinct publisher",
+      "status": "excluded_wrong_publisher",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/wp-content/uploads/2018/08/Getting-Started-Guide-for-Calendar-Administrator-2018.pdf",
+      "publisher": "Teamup",
+      "status": "search_result_only_old_pdf_not_opened",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://icscalendar.com/faqs-and-tips/",
+      "publisher": "ICS Calendar WordPress product",
+      "status": "search_result_only_not_general_iOS_evidence",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/learn/manage-availability/keep-clinic-schedules-running-smoothly-with-unified-scheduling/",
+      "publisher": "Teamup",
+      "status": "search_result_only",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://help.calendarbridge.com/group-admin-docs/syncing-overview/",
+      "publisher": "CalendarBridge",
+      "status": "search_result_only",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.onecal.io/use-cases/multiple-jobs",
+      "publisher": "OneCal",
+      "status": "search_result_only_not_reopened_after_parent_comparison",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://support.goteamup.com/en/articles/9327392-understanding-registration-settings",
+      "publisher": "TeamUp fitness platform, distinct publisher",
+      "status": "excluded_wrong_publisher",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.busymac.com/download/tco-busycal.pdf",
+      "publisher": "BusyMac",
+      "status": "search_result_only_old_pdf_not_opened",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://www.teamup.com/wp-content/uploads/2023/06/Getting-Started-Guide-AMNC23-booking-calendar.pdf",
+      "publisher": "Teamup",
+      "status": "search_result_only_old_pdf_not_opened",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://busymac.com/download/tco-busycal.pdf",
+      "publisher": "BusyMac",
+      "status": "search_result_only_url_variant_not_assumed_same_body",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://s4372e5f4ffcafa11.jimcontent.com/download/version/1547196089/module/11017414773/name/user-guide.iphone-ios-7.0.pdf",
+      "publisher": "Third-party mirror",
+      "status": "excluded_nonprimary_old",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    },
+    {
+      "url": "https://uploads.strikinglycdn.com/files/f131413f-f8c6-4e24-bddc-f561e33ff867/25052948548.pdf",
+      "publisher": "Unidentified PDF",
+      "status": "excluded_nonprimary",
+      "queryAssociation": "Batch q1–q4 only; exact originating query not established."
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://www.teamup.com/learn/interactive-demos/automatically-prevent-overlapping-events/",
+      "status": "full_extracted_main_body",
+      "readLines": [
+        61,
+        80
+      ],
+      "extractedPageLines": 157,
+      "summary": "Teamup documents administrator-controlled overlap prevention within a single sub-calendar. The published browser steps reject overlapping entries there.",
+      "limits": "Embedded interactive demonstration not operated; no account/runtime test; not a claim about cross-calendar enforcement or Cloud Calendars."
+    },
+    {
+      "url": "https://www.teamup.com/faq/use-cases/faq-managing-availability/",
+      "status": "full_extracted_main_body",
+      "readLines": [
+        55,
+        110
+      ],
+      "extractedPageLines": 162,
+      "publisherUpdated": "2026-05-29",
+      "summary": "The FAQ distinguishes events representing bookable openings from events representing occupied time. It discusses resource-specific sub-calendars, scheduling access and separately managed reservation processes.",
+      "limits": "Publisher descriptions only; broad promotional elimination-of-conflict language is not adopted as a guarantee."
+    }
+  ],
+  "localIndex": {
+    "file": "src/app/content/article-index.ts",
+    "englishCanonicalCount": 53
+  },
+  "localReads": [
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectLines": [
+        195,
+        286
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "c95195bcb38e51bf4d8885f149732a8e73806faef4056c499576ace60097d7ce"
+    },
+    {
+      "slug": "meeting-links-that-make-themselves",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "objectLines": [
+        475,
+        570
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "acbc66343dee02020bb26bc7e41ad365972c8adf37ac8cbc4690411a364afff3"
+    },
+    {
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "objectLines": [
+        77,
+        172
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621"
+    },
+    {
+      "slug": "a-week-view-that-fits-a-week",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "objectLines": [
+        103,
+        194
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "0e0477e00340c9fa3959f67ab655eede6122a6841d0aeab6a90c0812f08f4f50"
+    },
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "objectLines": [
+        5,
+        109
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "c9fe155b830314e28a38348dc4e9ac4b2468f5f6ff1b6455d212582f891d4f9c"
+    },
+    {
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "objectLines": [
+        105,
+        196
+      ],
+      "scope": "Full lede, section bodies and FAQs. Initial combined output truncated sharing/link guides; both reread in separate output.",
+      "sha256": "a49337e829298d0cd3744643563f1367a4efc7711b8f5b5d4d26874f5023b78b"
+    }
+  ],
+  "additionalCorpusCheck": {
+    "command": "rg -n 'resource|room|booking|reservation|bookable' src/app/content/en-US/articles-*.ts",
+    "scope": "Matching lines across EN modules, not complete reads of all 53 guides. Matches include weather fallback room confirmation, week-view gaps, year-view product boundary, guest modify rights and conferencing links; none supplies a dedicated room/resource acceptance workflow."
+  },
+  "existingCoverage": [
+    {
+      "task": "Coordinate schedules across different work accounts",
+      "canonicals": [
+        "onecal-alternative-iphone-calendar-view-or-sync",
+        "work-and-personal-without-two-apps",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "basis": "Fresh full OneCal comparison body distinguishes combined view and copied busy availability. Other two are related existing routes, not reread this batch.",
+      "decision": "No new multiple-jobs page; would repeat core view-versus-copy distinction."
+    },
+    {
+      "task": "Explain an ICS feed that has not updated",
+      "canonicals": [
+        "the-secret-address-of-a-google-calendar",
+        "what-calendar-sync-actually-does"
+      ],
+      "basis": "Fresh full secret-address body already covers subscriber-controlled refresh, import versus subscription and urgent organiser confirmation. Sync guide is an indexed related route, not reread here.",
+      "decision": "Existing guide supports task; do not transplant WordPress caching fixes or CalendarBridge cadence into iOS guidance."
+    },
+    {
+      "task": "Use CalDAV on iPhone with correct permissions and availability expectations",
+      "canonicals": [
+        "caldav-calendar-on-iphone"
+      ],
+      "basis": "Fresh full body covers device setup, read permissions, selected calendars, provider checks and no implied availability-copy feature.",
+      "decision": "No generic CalDAV sharing variant justified."
+    }
+  ],
+  "singleCandidateGap": {
+    "task": "Confirm a room or shared resource reservation rather than merely placing its name in a calendar event",
+    "candidateKeywords": [
+      "room reservation not confirmed calendar",
+      "calendar event versus room booking",
+      "shared resource calendar overlapping bookings"
+    ],
+    "keywordStatus": "Editorial intent candidates derived from observed publisher tasks; not measured queries or keyword volume.",
+    "evidence": [
+      "https://www.teamup.com/learn/interactive-demos/automatically-prevent-overlapping-events/",
+      "https://www.teamup.com/faq/use-cases/faq-managing-availability/"
+    ],
+    "distinctFromExisting": "Sharing guide defines people/access; meeting-link guide addresses virtual conferencing; week view describes visual conflicts. None of the six reviewed bodies explains requesting a physical resource, checking its acceptance or policy, and rechecking resource status after a change. Whole-corpus keyword check found mentions but no dedicated procedure.",
+    "publicationStatus": "Justified research candidate, not ready to author or claim as a Cloud feature. No new page drafted.",
+    "neededNextEvidence": [
+      "Read current Google and Microsoft primary room/resource reservation and response documentation.",
+      "Verify whether Cloud Calendars exposes resource identity and response at all using read-only native inspection before product instructions.",
+      "If unsupported, frame a provider workflow with explicit limits or add a brief boundary to existing planning guide; do not create a thin promise page."
+    ],
+    "boundaries": [
+      "Do not claim Cloud has Teamup overlap blocking, resource inventory, capacity management or booking approvals.",
+      "Do not imply a meeting location field, invitation receipt, online link or empty week grid confirms a room booking.",
+      "Do not claim visual conflict detection reserves time atomically across accounts."
+    ]
+  },
+  "actionsPerformed": [
+    "Saved this research JSON only"
+  ],
+  "notPerformed": [
+    "Source integration",
+    "Queue mutation",
+    "Native edits",
+    "Build",
+    "Deployment",
+    "Paid API calls",
+    "ASC changes"
+  ]
+}

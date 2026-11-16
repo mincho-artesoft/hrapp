@@ -1,0 +1,19 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 516,
+  "previousCanonicalsPreserved": 515,
+  "newRoute": "https://www.cloud-calendars.com/bg/articles/time-zones-and-the-flight-you-booked/",
+  "completeNewGuide": {
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 5,
+    "faq": 4,
+    "sources": 4,
+    "allVisibleTextAndLinksMatch": true
+  },
+  "relatedOnlyBacklinks": 1,
+  "englishTextExportUnchanged": true,
+  "sharedFooterSupportLinks": 515,
+  "standaloneLegacyException": "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+  "scope": "Complete visible article and canonical/source/FAQ/related/text-export checks; no provider restoration, native runtime or discoverability proof."
+}

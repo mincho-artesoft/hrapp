@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-22",
+  "status": "pass",
+  "scope": "Bounded cross-agent editorial review of completeFR/ITdraft objects against completeEnglishsource, plus structural and actual route checks. Not independent native-speaker certification or native/runtime/provider validation.",
+  "english": {
+    "file": "research/batch28-caldav-localization/source-en.json",
+    "rawFileSha256": "c29e10403cd304f2523ad9b60b133dc3a918418fe131bcb25260af23b64ab96b",
+    "currentSource": "src/app/content/en-US/articles-help.ts:caldav-calendar-on-iphone",
+    "matchesCurrentParsedObject": true,
+    "role": "Immutable English before used in original complete review; revised English comparator is en-US-proposal.json."
+  },
+  "reviews": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch28-caldav-localization/fr-FR.json",
+      "rawFileSha256": "e9e4866418bf2de0bf03478b4e0ef5493846cbde282d89de4fc10af5558c0213",
+      "status": "pass_no_material_correction",
+      "completeRead": true,
+      "checks": {
+        "sections": 6,
+        "bodyParagraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sourceUrlsExact": true,
+        "date": "2026-10-22",
+        "claimsEmpty": true,
+        "descriptionUnicodeCharacters": 148,
+        "related": [
+          {
+            "slug": "icloud-google-and-outlook-in-one-view",
+            "inLocaleIndex": true,
+            "actualModuleObjectVerified": true
+          },
+          {
+            "slug": "calendar-export-ics-pdf-and-backup",
+            "inLocaleIndex": true,
+            "actualModuleObjectVerified": true
+          }
+        ]
+      },
+      "semanticReview": [
+        "Device account setup remains Apple/iPhone setup, distinct from Cloud calendar reading and selection.",
+        "CalDAV account, read-only feed and imported copy distinctions retained.",
+        "Full read access versus add-only permission retained; selection including Other retained without inventing localized group label.",
+        "Provider authentication/workplace restrictions retained; no guessed server or direct Cloud server-login UI.",
+        "Owned writable non-sensitive test and explicit destination retained; real shared/recurring meeting protected.",
+        "No immediate refresh, universal provider support, automatic availability copy or write-permission guarantee."
+      ],
+      "languageReview": "Natural substantive French; “événement d’essai jetable” is understandable, though “événement réservé au test” would be an optional stylistic refinement. No change required.",
+      "previousCompleteReviewRawSha256": "dd542bbfb493c31fa633dd22b6319f31c9507cf7cdee6facd27cd1f43d6d0556",
+      "completeReadScopeNote": "Complete previous version read in initial review. This follow-up freshly read exactly the three revised paragraphs, with full-object structure/source checks; no claim of a fresh full reread."
+    },
+    {
+      "locale": "it",
+      "file": "research/batch28-caldav-localization/it.json",
+      "rawFileSha256": "c5c99a847fe8451761bbc136cedcaf0b5cc3beaccb1ecef41bdfb20a78329917",
+      "status": "pass_no_material_correction",
+      "completeRead": true,
+      "checks": {
+        "sections": 6,
+        "bodyParagraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sourceUrlsExact": true,
+        "date": "2026-10-22",
+        "claimsEmpty": true,
+        "descriptionUnicodeCharacters": 140,
+        "related": [
+          {
+            "slug": "icloud-google-and-outlook-in-one-view",
+            "inLocaleIndex": true,
+            "actualModuleObjectVerified": true
+          },
+          {
+            "slug": "calendar-export-ics-pdf-and-backup",
+            "inLocaleIndex": true,
+            "actualModuleObjectVerified": true
+          }
+        ]
+      },
+      "semanticReview": [
+        "Device account setup remains Apple/iPhone setup, distinct from Cloud calendar reading and selection.",
+        "CalDAV account, read-only feed and imported copy distinctions retained.",
+        "Full read access versus add-only permission retained; selection including Other retained without inventing localized group label.",
+        "Provider authentication/workplace restrictions retained; no guessed server or direct Cloud server-login UI.",
+        "Owned writable non-sensitive test and explicit destination retained; real shared/recurring meeting protected.",
+        "No immediate refresh, universal provider support, automatic availability copy or write-permission guarantee."
+      ],
+      "languageReview": "Natural substantive Italian; no material meaning or terminology error found.",
+      "previousCompleteReviewRawSha256": "a0daeed6f2bcef0dfd7b0f278d190a8c6723d448c67ef614ead90101a1402308",
+      "completeReadScopeNote": "Complete previous version read in initial review. This follow-up freshly read exactly the three revised paragraphs, with full-object structure/source checks; no claim of a fresh full reread."
+    }
+  ],
+  "materialFindings": [],
+  "optionalPresentation": [
+    {
+      "locales": [
+        "fr-FR",
+        "it"
+      ],
+      "path": "sections[1].body[0]",
+      "note": "The Apple setup path intentionally retains English UI labels; adding an explicit “English labels” introduction would aid readers but is not a factual blocker. No translated label has been fabricated."
+    }
+  ],
+  "relatedAdjustment": "Both omit what-calendar-sync-actually-does and retain two relevant actual localized routes. No missing link or invented localized route.",
+  "sourceEvidence": "English sourceURLs retained exactly; no fresh external documentation fetch in this review.",
+  "hashMethod": "SHA-256 over current raw file bytes, including formatting/newline.",
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deploy",
+    "Native changes",
+    "ASC actions"
+  ],
+  "revisionRevalidation": {
+    "date": "2026-10-22",
+    "decision": "pass_no_material_correction",
+    "rows": [
+      {
+        "locale": "en-US",
+        "file": "research/batch28-caldav-localization/en-US-proposal.json",
+        "rawFileSha256": "8d5f5a6321dc794390d59db3f5e43540c94aae28727bfd9854535e0a3cdc8e2a",
+        "freshReadScope": [
+          "sections[3].body[0]",
+          "sections[3].body[1]",
+          "sections[5].body[0]"
+        ],
+        "structure": {
+          "sections": 6,
+          "paragraphs": 12,
+          "practical": 6,
+          "faq": 3
+        },
+        "qualityAuditHashMatches": true,
+        "assessment": "pass: direct reader language preserves full read access/add-only distinction and provider-specific limitations. Original-selection recording/restoration and conditional widget/notification/Google sync effects match recorded batch26 source evidence; no all-provider pause/resume or immediate updates promised."
+      },
+      {
+        "locale": "fr-FR",
+        "file": "research/batch28-caldav-localization/fr-FR.json",
+        "rawFileSha256": "e9e4866418bf2de0bf03478b4e0ef5493846cbde282d89de4fc10af5558c0213",
+        "freshReadScope": [
+          "sections[3].body[0]",
+          "sections[3].body[1]",
+          "sections[5].body[0]"
+        ],
+        "structure": {
+          "sections": 6,
+          "paragraphs": 12,
+          "practical": 6,
+          "faq": 3
+        },
+        "qualityAuditHashMatches": true,
+        "assessment": "pass: direct reader language preserves full read access/add-only distinction and provider-specific limitations. Original-selection recording/restoration and conditional widget/notification/Google sync effects match recorded batch26 source evidence; no all-provider pause/resume or immediate updates promised."
+      },
+      {
+        "locale": "it",
+        "file": "research/batch28-caldav-localization/it.json",
+        "rawFileSha256": "c5c99a847fe8451761bbc136cedcaf0b5cc3beaccb1ecef41bdfb20a78329917",
+        "freshReadScope": [
+          "sections[3].body[0]",
+          "sections[3].body[1]",
+          "sections[5].body[0]"
+        ],
+        "structure": {
+          "sections": 6,
+          "paragraphs": 12,
+          "practical": 6,
+          "faq": 3
+        },
+        "qualityAuditHashMatches": true,
+        "assessment": "pass: direct reader language preserves full read access/add-only distinction and provider-specific limitations. Original-selection recording/restoration and conditional widget/notification/Google sync effects match recorded batch26 source evidence; no all-provider pause/resume or immediate updates promised."
+      }
+    ],
+    "englishOnlyThreeParagraphChangesVerified": true,
+    "immutableSourceRawSha256": "c29e10403cd304f2523ad9b60b133dc3a918418fe131bcb25260af23b64ab96b",
+    "qualityAuditRawSha256": "dbd2369547d4e3c14cfbf3a7c683e0bdf3ade5caf2f119380e966488f27fe137",
+    "recordedEvidenceRead": [
+      "research/batch26-duplicates/root-preparation-review.json",
+      "research/batch26-duplicates/product-evidence.json",
+      "research/batch26-duplicates/final-review.json"
+    ],
+    "evidenceScope": "Read supplied native range/hash findings and prior final review. Did not freshly inspect Swift, execute app or independently certify publication/runtime. CalendarViewModel selection consumers and Google guards plus EventNotificationManager input substantiate conditional statement.",
+    "localizedOtherFields": "Quality revision audit records exact three-string edits; unchanged material retains earlier complete review. Current structural/source/date/claims checks repeated.",
+    "supportProposal": "Not read or mutated during this follow-up."
+  }
+}

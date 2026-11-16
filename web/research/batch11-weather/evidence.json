@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-22",
+  "sourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "ranges": [
+        [
+          125,
+          165
+        ],
+        [
+          421,
+          481
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherDetailView/windGraphSection.swift",
+      "sha256": "3149bb5f0fa3e3ee4ee4a3e4f19ded89197d2f43acf241188a5650263612ac5e",
+      "ranges": [
+        [
+          1,
+          35
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "ranges": [
+        [
+          1664,
+          1710
+        ]
+      ]
+    }
+  ],
+  "rootReadProviderEvidence": [
+    {
+      "url": "https://www.weather.gov/lmk/pops?hl=en-US",
+      "scope": "Substantive probability explanation lines157-176; NWSthreshold/period not silently generalized to WeatherKit"
+    },
+    {
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+      "scope": "Wind definition sections308-324 read; provider conventions attributed, no threshold copied"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance",
+      "scope": "Official indexed property text: hourly probability0to1; no undocumented threshold inferred"
+    },
+    {
+      "url": "https://aa.usno.navy.mil/faq/RST_defs",
+      "scope": "Official indexed full definition text; horizon/twilight/refraction/topography qualifications read"
+    },
+    {
+      "url": "https://gml.noaa.gov/grad/solcalc/calcdetails.html",
+      "scope": "Complete explanatory body35-81 and no-longer-maintained notice read; no live calculator recommendation"
+    }
+  ],
+  "corrections": [
+    "Remove unsupported global30/60percentcancellationthresholds and betting analogy",
+    "Treat hourly and daily forecast periods and rainamount as separate",
+    "No simple addition of hourly probabilities",
+    "Remove universal30knotscancellation and direction-as-safe-route advice",
+    "No unconditional sunset accuracy/visibility/latest-safe-start guarantee",
+    "AppWeatherKit and websiteOpenMeteo distinct; requested place/date and available data explicit"
+  ],
+  "limits": [
+    "Current working-tree source only, not released/deployed/runtimeverification",
+    "No realforecastresponse, calendar change ordevice/simulator used",
+    "Solar/civilvalues support in code is not certification of every released UI",
+    "Source read and structural checks do not certify native-language translation or ranking",
+    "These3canonical weather guides currently exist only in EN; other-language editions are not published and remain future work."
+  ]
+}

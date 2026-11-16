@@ -1,0 +1,113 @@
+{
+  "articles": [
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "bodyWords": 417,
+      "descriptionCharacters": 120,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "bodyWords": 432,
+      "descriptionCharacters": 124,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "bodyWords": 413,
+      "descriptionCharacters": 120,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "bodyWords": 402,
+      "descriptionCharacters": 137,
+      "sections": 3,
+      "sources": 2,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "bodyWords": 398,
+      "descriptionCharacters": 131,
+      "sections": 3,
+      "sources": 2,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "bodyWords": 388,
+      "descriptionCharacters": 120,
+      "sections": 3,
+      "sources": 2,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "bodyWords": 397,
+      "descriptionCharacters": 134,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "bodyWords": 375,
+      "descriptionCharacters": 117,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "bodyWords": 398,
+      "descriptionCharacters": 136,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "bodyWords": 399,
+      "descriptionCharacters": 137,
+      "sections": 3,
+      "sources": 2,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "bodyWords": 423,
+      "descriptionCharacters": 122,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "bodyWords": 442,
+      "descriptionCharacters": 140,
+      "sections": 3,
+      "sources": 3,
+      "contextLinks": 3,
+      "markdownMarkersInPlainText": false
+    }
+  ],
+  "errors": []
+}

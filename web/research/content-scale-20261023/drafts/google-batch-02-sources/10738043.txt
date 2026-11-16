@@ -1,0 +1,97 @@
+View how you spend time in meetings
+If you use Google Calendar on a work or school account, you can use "Time Insights" to find out how you spend your time in meetings. If you don't see the Time Insights option, your admin could have turned it off for your organization.
+Who is my administrator?
+What you need to view Time Insights
+You can only view Time Insights on a computer.
+If you manage other people’s calendars and have “manage sharing access” permission to those calendars, you can view their Time Insights.
+View Time Insights
+Important:
+Time Insights info is available on your primary calendar. It can be accessed by:
+The primary calendar owner.
+People who can make changes and manage sharing settings for the calendar.
+Control access to your calendar
+.
+On your computer,
+open Google Calendar
+.
+On the left, click More insights
+.
+Optional: For more info about your time breakdown, click Help
+.
+Tip:
+Time Insights are based on date range. To view Time Insights for a different date range,
+change your calendar view
+.
+Check time spent with a specific person
+To view how much time you spend in meetings with a person, pin the contact to your Time Insights dashboard:
+On your computer,
+open Google Calendar
+.
+On the left, click More insights
+.
+On the right, scroll to “People you meet with.” Click Manage pinned people
+.
+Enter a name.
+Click
+Done
+.
+Tip:
+You can pin up to 10 contacts.
+Check which meetings count toward Time Insights
+On your computer,
+open Google Calendar
+.
+On the left, click More insights
+.
+On the right, choose the graph you want to review:
+Time breakdown.
+Time in meetings.
+People you meet with.
+In the graph, hover over one of the highlighted sections.
+The corresponding meeting is highlighted on your calendar in the same color and counts toward your Time Insights.
+About Time Insights
+Events that count toward Time Insights
+To count toward Time Insights, an event must be a Google Calendar meeting that:
+You RSVP’d "Yes" to attend.
+Has at least one other guest.
+Is marked as "Busy" on your calendar.
+Is less than 8 hours long.
+Events that don't count toward Time Insights
+Events don’t count toward Time Insights if:
+You’re the only person invited to the event.
+You didn’t RSVP “Yes” to the event.
+How Time Insights are calculated
+About Time breakdown
+These are the types of time that show in your Time breakdown.
+Focus time:
+Planned focus time with no conflicting meetings.
+To set up focus time, click
+Schedule focus time
+.
+1:1:
+Meetings with one other guest.
+3+ guests:
+Meetings with at least 2 other guests.
+Need to respond:
+Meetings you've yet to accept or decline. Meetings with the “Maybe” response aren’t included.
+Remaining time:
+Time during your working hours with no meetings or out-of-office time. This only shows if
+you set your working hours
+. Working hours may not be available for your organization.
+Time in meetings
+Time in meetings is calculated as an average.
+When your calendar is in Day, Week, Schedule, or 5 days view:
+The average is calculated from your time in meetings during the previous 3 weeks.
+When your calendar is in Month view:
+The average is calculated from your time in meetings during the previous 3 months.
+If you’re out of office, there may be a decrease in your average time spent in meetings.
+If you have 2 meetings scheduled at the same time, a 1:1 meeting’s time is counted instead of the group meeting’s time. For multiple, overlapping 1:1s, the total time is counted.
+Your time in meetings only counts once for any time period.
+For example, if you respond “Yes” to 2 one-hour meetings scheduled for the same time, only one hour counts toward your time spent in meetings.
+People you meet with
+The 5 people you spend the most time with in a time range are shown.
+You can pin key contacts
+and check how much time you spend together in meetings. You can pin up to 10 contacts.
+Time spent with another person only counts when you’re in a meeting together that has 15 or fewer other people.
+Meeting time isn’t counted if the other person declines the meeting.
+Meeting time isn’t counted if you don’t RSVP “Yes” to the meeting.

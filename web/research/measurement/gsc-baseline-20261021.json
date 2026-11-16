@@ -1,0 +1,2874 @@
+{
+  "retrievedAt": "2026-10-21T16:46:30.256913+00:00",
+  "property": "sc-domain:cloud-calendars.com",
+  "readOnly": true,
+  "limits": [
+    "Own-siteobservations,notcompetitorqueryvolume.",
+    "Queryrowsmayexcludeanonymized/lowvolumequeries.",
+    "Averagepositionisnotfixedrank.",
+    "PeriodprecedesOct21changes;nocausalinference.",
+    "Rowlimit25000;responsesbelowlimit,notproofeveryqueryavailable."
+  ],
+  "reports": {
+    "queries": {
+      "request": {
+        "startDate": "2026-09-21",
+        "endDate": "2026-10-18",
+        "rowLimit": 25000,
+        "dataState": "final",
+        "dimensionFilterGroups": [
+          {
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "contains",
+                "expression": "cloud-calendars.com"
+              }
+            ]
+          }
+        ],
+        "dimensions": [
+          "query"
+        ]
+      },
+      "response": {
+        "rows": [
+          {
+            "keys": [
+              "cloud calendar"
+            ],
+            "clicks": 4,
+            "impressions": 27767,
+            "ctr": 0.00014405589368675045,
+            "position": 9.783483991788813
+          },
+          {
+            "keys": [
+              "calendario cloud"
+            ],
+            "clicks": 1,
+            "impressions": 79,
+            "ctr": 0.012658227848101266,
+            "position": 5.063291139240507
+          },
+          {
+            "keys": [
+              "cloud calender"
+            ],
+            "clicks": 1,
+            "impressions": 19,
+            "ctr": 0.05263157894736842,
+            "position": 6.052631578947368
+          },
+          {
+            "keys": [
+              "googleカレンダーに天気を表示"
+            ],
+            "clicks": 1,
+            "impressions": 1,
+            "ctr": 1,
+            "position": 2
+          },
+          {
+            "keys": [
+              "クラウドカレンダー"
+            ],
+            "clicks": 1,
+            "impressions": 235,
+            "ctr": 0.00425531914893617,
+            "position": 4.097872340425532
+          },
+          {
+            "keys": [
+              "accuweather google calendar"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 28
+          },
+          {
+            "keys": [
+              "agenda cloud"
+            ],
+            "clicks": 0,
+            "impressions": 15,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "agenda in cloud"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 23.333333333333332
+          },
+          {
+            "keys": [
+              "agenda wolke"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 1
+          },
+          {
+            "keys": [
+              "appcloudcdn"
+            ],
+            "clicks": 0,
+            "impressions": 1615,
+            "ctr": 0,
+            "position": 7.983900928792569
+          },
+          {
+            "keys": [
+              "calendar cloud"
+            ],
+            "clicks": 0,
+            "impressions": 93,
+            "ctr": 0,
+            "position": 8.978494623655914
+          },
+          {
+            "keys": [
+              "calendar on the cloud"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "calendar with weather"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "calendario de icloud"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 16
+          },
+          {
+            "keys": [
+              "calendario en la nube"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10.333333333333334
+          },
+          {
+            "keys": [
+              "calendrier cloud"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 24
+          },
+          {
+            "keys": [
+              "cloud"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 82
+          },
+          {
+            "keys": [
+              "cloud agenda"
+            ],
+            "clicks": 0,
+            "impressions": 32,
+            "ctr": 0,
+            "position": 4.65625
+          },
+          {
+            "keys": [
+              "cloud based calendar"
+            ],
+            "clicks": 0,
+            "impressions": 20,
+            "ctr": 0,
+            "position": 29.35
+          },
+          {
+            "keys": [
+              "cloud basierter kalender für beauty"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 50.5
+          },
+          {
+            "keys": [
+              "cloud cal"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 1.6666666666666665
+          },
+          {
+            "keys": [
+              "cloud calander"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "cloud calendar app"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 5.333333333333333
+          },
+          {
+            "keys": [
+              "cloud calendar software"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 18.666666666666668
+          },
+          {
+            "keys": [
+              "cloud calendario"
+            ],
+            "clicks": 0,
+            "impressions": 31,
+            "ctr": 0,
+            "position": 4.096774193548387
+          },
+          {
+            "keys": [
+              "cloud calendars"
+            ],
+            "clicks": 0,
+            "impressions": 25,
+            "ctr": 0,
+            "position": 5.76
+          },
+          {
+            "keys": [
+              "cloud date"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 1
+          },
+          {
+            "keys": [
+              "cloud days"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 18.5
+          },
+          {
+            "keys": [
+              "cloud journee"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "cloud kalender"
+            ],
+            "clicks": 0,
+            "impressions": 45,
+            "ctr": 0,
+            "position": 8.377777777777778
+          },
+          {
+            "keys": [
+              "cloud schedule"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "keys": [
+              "cloudcal"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "clouddate"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "cloudforecast"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 29
+          },
+          {
+            "keys": [
+              "cloudløsninger"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 83
+          },
+          {
+            "keys": [
+              "cloudscheduling"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 15.25
+          },
+          {
+            "keys": [
+              "cloudtoday"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "dela kalender"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 42.833333333333336
+          },
+          {
+            "keys": [
+              "delad kalender"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "dream calendar"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 23
+          },
+          {
+            "keys": [
+              "dream scheduler"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 49
+          },
+          {
+            "keys": [
+              "etkinliğinize"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 53
+          },
+          {
+            "keys": [
+              "fantastical cost"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "google calendar address"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "google calendar secret address"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "google kalender iphone"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 19.6
+          },
+          {
+            "keys": [
+              "google weather calendar"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 25
+          },
+          {
+            "keys": [
+              "google カレンダー 共有 できない"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 63
+          },
+          {
+            "keys": [
+              "google カレンダー 共有 表示されない"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 54
+          },
+          {
+            "keys": [
+              "googleカレンダー 共有 iphone 表示されない"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 61
+          },
+          {
+            "keys": [
+              "googleカレンダー 共有 スマホ 表示されない"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 55
+          },
+          {
+            "keys": [
+              "googleカレンダー 天気"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "googleカレンダー共有 表示 されない"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 53.333333333333336
+          },
+          {
+            "keys": [
+              "google行事曆不見"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "hur delar man google kalender"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "icloud kalendarz"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "icloud kalender"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 12.5
+          },
+          {
+            "keys": [
+              "icloud kalender in google kalender"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "icloud kalenteri"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 11.5
+          },
+          {
+            "keys": [
+              "icloud naptár"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "icloud weather"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "icloud календарь"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "iphone google kalender"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "is 44"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "kalender cloud"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "kalenterimerkinnät"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 39
+          },
+          {
+            "keys": [
+              "outlook vs icloud"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "sdílení google kalendáře"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 57
+          },
+          {
+            "keys": [
+              "sdílení kalendáře"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 93
+          },
+          {
+            "keys": [
+              "sdílený kalendář"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 50
+          },
+          {
+            "keys": [
+              "sdílený kalendář google"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 15
+          },
+          {
+            "keys": [
+              "sdílený kalendář v mobilu"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 81
+          },
+          {
+            "keys": [
+              "sim"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "synka google kalender med iphone"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "udostępnienie kalendarza google"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 11.75
+          },
+          {
+            "keys": [
+              "veckonummer ical"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "weather almanac"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "weather calendar for google"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 19.5
+          },
+          {
+            "keys": [
+              "weather calendar subscription"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "what happens when someone virws your google calendar"
+            ],
+            "clicks": 0,
+            "impressions": 39,
+            "ctr": 0,
+            "position": 10.35897435897436
+          },
+          {
+            "keys": [
+              "היומן של גוגל"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 26
+          },
+          {
+            "keys": [
+              "יומן"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 48.4
+          },
+          {
+            "keys": [
+              "יומן אונליין"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 40
+          },
+          {
+            "keys": [
+              "יומן אירועים להורדה"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 15
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 81.66666666666667
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי בעברית"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 56
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי חינם"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 56
+          },
+          {
+            "keys": [
+              "יומן פגישות"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 38.25
+          },
+          {
+            "keys": [
+              "יומן פגישות חכם"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 46.5
+          },
+          {
+            "keys": [
+              "יצירת יומן משותף"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 53
+          },
+          {
+            "keys": [
+              "מה עדיף לעקוב על המחזור, אפליקציה או יומן ידני?"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "מוזמנים"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 82
+          },
+          {
+            "keys": [
+              "クラウド カレンダー"
+            ],
+            "clicks": 0,
+            "impressions": 12,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "クラウドカレンダーとは"
+            ],
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 4.818181818181818
+          },
+          {
+            "keys": [
+              "受邀"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "要"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          }
+        ],
+        "responseAggregationType": "byPage"
+      }
+    },
+    "query_pages": {
+      "request": {
+        "startDate": "2026-09-21",
+        "endDate": "2026-10-18",
+        "rowLimit": 25000,
+        "dataState": "final",
+        "dimensionFilterGroups": [
+          {
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "contains",
+                "expression": "cloud-calendars.com"
+              }
+            ]
+          }
+        ],
+        "dimensions": [
+          "query",
+          "page"
+        ]
+      },
+      "response": {
+        "rows": [
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 4,
+            "impressions": 27756,
+            "ctr": 0.00014411298457991066,
+            "position": 9.778318201469952
+          },
+          {
+            "keys": [
+              "calendario cloud",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 1,
+            "impressions": 20,
+            "ctr": 0.05,
+            "position": 3.8
+          },
+          {
+            "keys": [
+              "cloud calender",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 1,
+            "impressions": 18,
+            "ctr": 0.05555555555555555,
+            "position": 6.222222222222222
+          },
+          {
+            "keys": [
+              "googleカレンダーに天気を表示",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 1,
+            "impressions": 1,
+            "ctr": 1,
+            "position": 2
+          },
+          {
+            "keys": [
+              "クラウドカレンダー",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 1,
+            "impressions": 235,
+            "ctr": 0.00425531914893617,
+            "position": 4.097872340425532
+          },
+          {
+            "keys": [
+              "accuweather google calendar",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 28
+          },
+          {
+            "keys": [
+              "agenda cloud",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "agenda cloud",
+              "https://www.cloud-calendars.com/fr/"
+            ],
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "agenda cloud",
+              "https://www.cloud-calendars.com/nl/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "agenda cloud",
+              "https://www.cloud-calendars.com/pt/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 17
+          },
+          {
+            "keys": [
+              "agenda in cloud",
+              "https://www.cloud-calendars.com/it/"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 23.333333333333332
+          },
+          {
+            "keys": [
+              "agenda wolke",
+              "https://www.cloud-calendars.com/fr/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 1
+          },
+          {
+            "keys": [
+              "appcloudcdn",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1615,
+            "ctr": 0,
+            "position": 7.983900928792569
+          },
+          {
+            "keys": [
+              "calendar cloud",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 80,
+            "ctr": 0,
+            "position": 8.3625
+          },
+          {
+            "keys": [
+              "calendar cloud",
+              "https://www.cloud-calendars.com/de/"
+            ],
+            "clicks": 0,
+            "impressions": 7,
+            "ctr": 0,
+            "position": 5.285714285714286
+          },
+          {
+            "keys": [
+              "calendar cloud",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 19.666666666666668
+          },
+          {
+            "keys": [
+              "calendar cloud",
+              "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 32.5
+          },
+          {
+            "keys": [
+              "calendar cloud",
+              "https://www.cloud-calendars.com/ro/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "calendar on the cloud",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "calendar with weather",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "calendario cloud",
+              "https://www.cloud-calendars.com/it/"
+            ],
+            "clicks": 0,
+            "impressions": 48,
+            "ctr": 0,
+            "position": 5.583333333333333
+          },
+          {
+            "keys": [
+              "calendario cloud",
+              "https://www.cloud-calendars.com/pt/"
+            ],
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 5.090909090909091
+          },
+          {
+            "keys": [
+              "calendario de icloud",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 16
+          },
+          {
+            "keys": [
+              "calendario en la nube",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10.333333333333334
+          },
+          {
+            "keys": [
+              "calendrier cloud",
+              "https://www.cloud-calendars.com/fr/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 24
+          },
+          {
+            "keys": [
+              "cloud",
+              "https://www.cloud-calendars.com/vi/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 82
+          },
+          {
+            "keys": [
+              "cloud agenda",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 4.4
+          },
+          {
+            "keys": [
+              "cloud agenda",
+              "https://www.cloud-calendars.com/fr/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 3.2
+          },
+          {
+            "keys": [
+              "cloud agenda",
+              "https://www.cloud-calendars.com/nl/"
+            ],
+            "clicks": 0,
+            "impressions": 20,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "cloud agenda",
+              "https://www.cloud-calendars.com/ro/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "cloud agenda",
+              "https://www.cloud-calendars.com/vi/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "cloud based calendar",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 20,
+            "ctr": 0,
+            "position": 29.35
+          },
+          {
+            "keys": [
+              "cloud basierter kalender für beauty",
+              "https://www.cloud-calendars.com/de/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 50.5
+          },
+          {
+            "keys": [
+              "cloud cal",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 1.6666666666666665
+          },
+          {
+            "keys": [
+              "cloud calander",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 33.25
+          },
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 31.5
+          },
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 2.666666666666667
+          },
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/pt/articles/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "cloud calendar",
+              "https://www.cloud-calendars.com/terms-of-service"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "cloud calendar app",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 5.333333333333333
+          },
+          {
+            "keys": [
+              "cloud calendar software",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 18.666666666666668
+          },
+          {
+            "keys": [
+              "cloud calendario",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 13,
+            "ctr": 0,
+            "position": 4.3076923076923075
+          },
+          {
+            "keys": [
+              "cloud calendario",
+              "https://www.cloud-calendars.com/it/"
+            ],
+            "clicks": 0,
+            "impressions": 15,
+            "ctr": 0,
+            "position": 3.7333333333333334
+          },
+          {
+            "keys": [
+              "cloud calendario",
+              "https://www.cloud-calendars.com/pt/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 6,
+            "ctr": 0,
+            "position": 3.5
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/#features"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/#pricing"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/#showcase"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/#weather"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/#widgets"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "cloud calendars",
+              "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "cloud calender",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "cloud date",
+              "https://www.cloud-calendars.com/el/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 1
+          },
+          {
+            "keys": [
+              "cloud days",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 18.5
+          },
+          {
+            "keys": [
+              "cloud journee",
+              "https://www.cloud-calendars.com/fr/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "cloud kalender",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "cloud kalender",
+              "https://www.cloud-calendars.com/cs/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "cloud kalender",
+              "https://www.cloud-calendars.com/da/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "cloud kalender",
+              "https://www.cloud-calendars.com/de/"
+            ],
+            "clicks": 0,
+            "impressions": 36,
+            "ctr": 0,
+            "position": 9.583333333333334
+          },
+          {
+            "keys": [
+              "cloud kalender",
+              "https://www.cloud-calendars.com/id/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "cloud schedule",
+              "https://www.cloud-calendars.com/es/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          },
+          {
+            "keys": [
+              "cloudcal",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "clouddate",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "cloudforecast",
+              "https://www.cloud-calendars.com/th/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 29
+          },
+          {
+            "keys": [
+              "cloudløsninger",
+              "https://www.cloud-calendars.com/no/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 83
+          },
+          {
+            "keys": [
+              "cloudscheduling",
+              "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 15.25
+          },
+          {
+            "keys": [
+              "cloudtoday",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "dela kalender",
+              "https://www.cloud-calendars.com/sv/articles/taking-back-a-calendar-you-shared/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 75
+          },
+          {
+            "keys": [
+              "dela kalender",
+              "https://www.cloud-calendars.com/sv/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 36.4
+          },
+          {
+            "keys": [
+              "delad kalender",
+              "https://www.cloud-calendars.com/sv/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "dream calendar",
+              "https://dreams-calendar.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 23
+          },
+          {
+            "keys": [
+              "dream scheduler",
+              "https://dreams-calendar.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 49
+          },
+          {
+            "keys": [
+              "etkinliğinize",
+              "https://www.cloud-calendars.com/tr/articles/what-guests-can-do-to-your-event/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 53
+          },
+          {
+            "keys": [
+              "fantastical cost",
+              "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "google calendar address",
+              "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "google calendar secret address",
+              "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "google kalender iphone",
+              "https://www.cloud-calendars.com/de/articles/google-calendars-that-never-reach-your-iphone/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "google kalender iphone",
+              "https://www.cloud-calendars.com/sv/articles/google-calendars-that-never-reach-your-iphone/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 30.666666666666668
+          },
+          {
+            "keys": [
+              "google weather calendar",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 25
+          },
+          {
+            "keys": [
+              "google カレンダー 共有 できない",
+              "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 63
+          },
+          {
+            "keys": [
+              "google カレンダー 共有 表示されない",
+              "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 54
+          },
+          {
+            "keys": [
+              "googleカレンダー 共有 iphone 表示されない",
+              "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 61
+          },
+          {
+            "keys": [
+              "googleカレンダー 共有 スマホ 表示されない",
+              "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 55
+          },
+          {
+            "keys": [
+              "googleカレンダー 天気",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "googleカレンダー共有 表示 されない",
+              "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 53.333333333333336
+          },
+          {
+            "keys": [
+              "google行事曆不見",
+              "https://www.cloud-calendars.com/zh-hant/articles/why-a-shared-calendar-does-not-appear"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "hur delar man google kalender",
+              "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "icloud kalendarz",
+              "https://www.cloud-calendars.com/pl/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "icloud kalender",
+              "https://www.cloud-calendars.com/sv/articles/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 12.5
+          },
+          {
+            "keys": [
+              "icloud kalender in google kalender",
+              "https://www.cloud-calendars.com/id/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "icloud kalenteri",
+              "https://www.cloud-calendars.com/fi/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 11.5
+          },
+          {
+            "keys": [
+              "icloud naptár",
+              "https://www.cloud-calendars.com/hu/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "icloud weather",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "icloud календарь",
+              "https://www.cloud-calendars.com/ru/articles/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "iphone google kalender",
+              "https://www.cloud-calendars.com/de/articles/google-calendars-that-never-reach-your-iphone/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "is 44",
+              "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "kalender cloud",
+              "https://www.cloud-calendars.com/de/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 9
+          },
+          {
+            "keys": [
+              "kalenterimerkinnät",
+              "https://www.cloud-calendars.com/fi/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 39
+          },
+          {
+            "keys": [
+              "outlook vs icloud",
+              "https://www.cloud-calendars.com/zh-hant/articles/icloud-google-and-outlook-in-one-view"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "sdílení google kalendáře",
+              "https://www.cloud-calendars.com/cs/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 57
+          },
+          {
+            "keys": [
+              "sdílení kalendáře",
+              "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 100
+          },
+          {
+            "keys": [
+              "sdílení kalendáře",
+              "https://www.cloud-calendars.com/cs/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 86
+          },
+          {
+            "keys": [
+              "sdílený kalendář",
+              "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 50
+          },
+          {
+            "keys": [
+              "sdílený kalendář google",
+              "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "sdílený kalendář google",
+              "https://www.cloud-calendars.com/cs/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 39
+          },
+          {
+            "keys": [
+              "sdílený kalendář v mobilu",
+              "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 81
+          },
+          {
+            "keys": [
+              "sim",
+              "https://www.cloud-calendars.com/pt/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "synka google kalender med iphone",
+              "https://www.cloud-calendars.com/sv/articles/google-calendars-that-never-reach-your-iphone/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "udostępnienie kalendarza google",
+              "https://www.cloud-calendars.com/pl/articles/the-secret-address-of-a-google-calendar"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 17
+          },
+          {
+            "keys": [
+              "udostępnienie kalendarza google",
+              "https://www.cloud-calendars.com/pl/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6.5
+          },
+          {
+            "keys": [
+              "veckonummer ical",
+              "https://www.cloud-calendars.com/sv/articles/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 38
+          },
+          {
+            "keys": [
+              "weather almanac",
+              "https://www.cloud-calendars.com/ar/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "weather calendar for google",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 19.5
+          },
+          {
+            "keys": [
+              "weather calendar subscription",
+              "https://www.cloud-calendars.com/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "what happens when someone virws your google calendar",
+              "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 39,
+            "ctr": 0,
+            "position": 10.35897435897436
+          },
+          {
+            "keys": [
+              "היומן של גוגל",
+              "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 26
+          },
+          {
+            "keys": [
+              "יומן",
+              "https://www.cloud-calendars.com/he/"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 48.4
+          },
+          {
+            "keys": [
+              "יומן אונליין",
+              "https://www.cloud-calendars.com/he/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 40
+          },
+          {
+            "keys": [
+              "יומן אירועים להורדה",
+              "https://www.cloud-calendars.com/he/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 15
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי",
+              "https://www.cloud-calendars.com/he/book/"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 81.66666666666667
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי בעברית",
+              "https://www.cloud-calendars.com/he/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 56
+          },
+          {
+            "keys": [
+              "יומן דיגיטלי חינם",
+              "https://www.cloud-calendars.com/he/book/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 56
+          },
+          {
+            "keys": [
+              "יומן פגישות",
+              "https://www.cloud-calendars.com/he/book/"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 38.25
+          },
+          {
+            "keys": [
+              "יומן פגישות חכם",
+              "https://www.cloud-calendars.com/he/"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 46.5
+          },
+          {
+            "keys": [
+              "יצירת יומן משותף",
+              "https://www.cloud-calendars.com/he/articles/why-a-shared-calendar-does-not-appear/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 53
+          },
+          {
+            "keys": [
+              "מה עדיף לעקוב על המחזור, אפליקציה או יומן ידני?",
+              "https://www.cloud-calendars.com/he/articles/weather-inside-your-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "מוזמנים",
+              "https://www.cloud-calendars.com/he/articles/what-guests-can-do-to-your-event/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 82
+          },
+          {
+            "keys": [
+              "クラウド カレンダー",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 0,
+            "impressions": 12,
+            "ctr": 0,
+            "position": 10
+          },
+          {
+            "keys": [
+              "クラウドカレンダーとは",
+              "https://www.cloud-calendars.com/ja/"
+            ],
+            "clicks": 0,
+            "impressions": 11,
+            "ctr": 0,
+            "position": 4.818181818181818
+          },
+          {
+            "keys": [
+              "受邀",
+              "https://www.cloud-calendars.com/zh-hant/articles/what-guests-can-do-to-your-event/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "要",
+              "https://www.cloud-calendars.com/zh-hant/articles/the-secret-address-of-a-google-calendar/"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 8
+          }
+        ],
+        "responseAggregationType": "byPage"
+      }
+    },
+    "cloud_calendar_countries": {
+      "request": {
+        "startDate": "2026-09-21",
+        "endDate": "2026-10-18",
+        "rowLimit": 25000,
+        "dataState": "final",
+        "dimensionFilterGroups": [
+          {
+            "filters": [
+              {
+                "dimension": "query",
+                "operator": "equals",
+                "expression": "cloud calendar"
+              }
+            ]
+          }
+        ],
+        "dimensions": [
+          "country"
+        ]
+      },
+      "response": {
+        "rows": [
+          {
+            "keys": [
+              "are"
+            ],
+            "clicks": 1,
+            "impressions": 2,
+            "ctr": 0.5,
+            "position": 3.5
+          },
+          {
+            "keys": [
+              "jpn"
+            ],
+            "clicks": 1,
+            "impressions": 4,
+            "ctr": 0.25,
+            "position": 3
+          },
+          {
+            "keys": [
+              "ltu"
+            ],
+            "clicks": 1,
+            "impressions": 1,
+            "ctr": 1,
+            "position": 5
+          },
+          {
+            "keys": [
+              "zaf"
+            ],
+            "clicks": 1,
+            "impressions": 4,
+            "ctr": 0.25,
+            "position": 4.25
+          },
+          {
+            "keys": [
+              "arg"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "atg"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 6.666666666666667
+          },
+          {
+            "keys": [
+              "aus"
+            ],
+            "clicks": 0,
+            "impressions": 10,
+            "ctr": 0,
+            "position": 7.1
+          },
+          {
+            "keys": [
+              "aut"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "bel"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "bfa"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "bhs"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "bmu"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "bra"
+            ],
+            "clicks": 0,
+            "impressions": 8,
+            "ctr": 0,
+            "position": 3.625
+          },
+          {
+            "keys": [
+              "can"
+            ],
+            "clicks": 0,
+            "impressions": 35,
+            "ctr": 0,
+            "position": 9.571428571428571
+          },
+          {
+            "keys": [
+              "che"
+            ],
+            "clicks": 0,
+            "impressions": 8,
+            "ctr": 0,
+            "position": 3.125
+          },
+          {
+            "keys": [
+              "chl"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "chn"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "col"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "cri"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "cym"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "deu"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 5.6
+          },
+          {
+            "keys": [
+              "dma"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "egy"
+            ],
+            "clicks": 0,
+            "impressions": 7,
+            "ctr": 0,
+            "position": 3.142857142857143
+          },
+          {
+            "keys": [
+              "esp"
+            ],
+            "clicks": 0,
+            "impressions": 13,
+            "ctr": 0,
+            "position": 4.230769230769231
+          },
+          {
+            "keys": [
+              "fin"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 2.666666666666667
+          },
+          {
+            "keys": [
+              "fra"
+            ],
+            "clicks": 0,
+            "impressions": 27,
+            "ctr": 0,
+            "position": 3.740740740740741
+          },
+          {
+            "keys": [
+              "gbr"
+            ],
+            "clicks": 0,
+            "impressions": 28,
+            "ctr": 0,
+            "position": 6.678571428571429
+          },
+          {
+            "keys": [
+              "grc"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 3.6666666666666665
+          },
+          {
+            "keys": [
+              "gtm"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "hkg"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "hun"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "ind"
+            ],
+            "clicks": 0,
+            "impressions": 7,
+            "ctr": 0,
+            "position": 3.857142857142857
+          },
+          {
+            "keys": [
+              "irl"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 8.5
+          },
+          {
+            "keys": [
+              "irn"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "ita"
+            ],
+            "clicks": 0,
+            "impressions": 14,
+            "ctr": 0,
+            "position": 3.857142857142857
+          },
+          {
+            "keys": [
+              "jam"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          {
+            "keys": [
+              "jey"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "kna"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 7.5
+          },
+          {
+            "keys": [
+              "kor"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5.5
+          },
+          {
+            "keys": [
+              "lux"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "mex"
+            ],
+            "clicks": 0,
+            "impressions": 77,
+            "ctr": 0,
+            "position": 9.636363636363637
+          },
+          {
+            "keys": [
+              "mys"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 2
+          },
+          {
+            "keys": [
+              "nld"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "nzl"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 11
+          },
+          {
+            "keys": [
+              "omn"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "per"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "phl"
+            ],
+            "clicks": 0,
+            "impressions": 5,
+            "ctr": 0,
+            "position": 3.8
+          },
+          {
+            "keys": [
+              "pol"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 3.5
+          },
+          {
+            "keys": [
+              "prt"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "sgp"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 5.5
+          },
+          {
+            "keys": [
+              "srb"
+            ],
+            "clicks": 0,
+            "impressions": 4,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "svk"
+            ],
+            "clicks": 0,
+            "impressions": 2,
+            "ctr": 0,
+            "position": 2.5
+          },
+          {
+            "keys": [
+              "svn"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          },
+          {
+            "keys": [
+              "tha"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 6
+          },
+          {
+            "keys": [
+              "tto"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "tur"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 5
+          },
+          {
+            "keys": [
+              "usa"
+            ],
+            "clicks": 0,
+            "impressions": 27433,
+            "ctr": 0,
+            "position": 9.821127838734371
+          },
+          {
+            "keys": [
+              "vgb"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 7
+          },
+          {
+            "keys": [
+              "vnm"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 3
+          },
+          {
+            "keys": [
+              "zmb"
+            ],
+            "clicks": 0,
+            "impressions": 1,
+            "ctr": 0,
+            "position": 4
+          }
+        ],
+        "responseAggregationType": "byProperty"
+      }
+    },
+    "cloud_calendar_devices": {
+      "request": {
+        "startDate": "2026-09-21",
+        "endDate": "2026-10-18",
+        "rowLimit": 25000,
+        "dataState": "final",
+        "dimensionFilterGroups": [
+          {
+            "filters": [
+              {
+                "dimension": "query",
+                "operator": "equals",
+                "expression": "cloud calendar"
+              }
+            ]
+          }
+        ],
+        "dimensions": [
+          "device"
+        ]
+      },
+      "response": {
+        "rows": [
+          {
+            "keys": [
+              "DESKTOP"
+            ],
+            "clicks": 3,
+            "impressions": 27648,
+            "ctr": 0.00010850694444444444,
+            "position": 9.790111400462964
+          },
+          {
+            "keys": [
+              "MOBILE"
+            ],
+            "clicks": 1,
+            "impressions": 112,
+            "ctr": 0.008928571428571428,
+            "position": 7.339285714285714
+          },
+          {
+            "keys": [
+              "TABLET"
+            ],
+            "clicks": 0,
+            "impressions": 3,
+            "ctr": 0,
+            "position": 10.333333333333334
+          }
+        ],
+        "responseAggregationType": "byProperty"
+      }
+    }
+  }
+}

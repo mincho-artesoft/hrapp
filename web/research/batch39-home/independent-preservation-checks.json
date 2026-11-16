@@ -1,0 +1,234 @@
+[
+  {
+    "locale": "ar-SA",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "cdf6d3e304556a61333b5125f067419de00ac063adfe82a1c62df3697768b94d",
+    "afterSha256": "a1f129b64b57bb0a4c9d82431c9e6380ae8d46ba3f31abd53fff279f0d18f53f"
+  },
+  {
+    "locale": "bg",
+    "priority": "optional_alignment",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "9076e06847d37a5509f8dd805c68954e634b01970c862dad75c7a7ebe009fb47",
+    "afterSha256": "dcb85c2ba49a1c55f870c7c8bec950757d444204661613134a2047fe06863517"
+  },
+  {
+    "locale": "cs",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "69f5dfeca1b4012fd2ca2ae84362a999dac487994d70aeee228fac1df7fd56d3",
+    "afterSha256": "81aca50f0813d3f1cc564ab3574b01c1de465765ad17aa305a1fcd8cd23900c5"
+  },
+  {
+    "locale": "da",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "99c9833ea9e9ba509a4f442c10c6269b149433b047e78329f48bff4e2de3170b",
+    "afterSha256": "54c8f732996a9bc1ac1d4825ce4e5a7fa4ed58d5f2e79cb11e2f61904d3537a2"
+  },
+  {
+    "locale": "de-DE",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "903149e1422202db69e420b8c1f52fe6a4c9d4df8c7e90c7266bc6a9dc9efeab",
+    "afterSha256": "2211fd6414d3ef1cffef3ff72cc19b7b33dbe62d38477930c2c6e6687ec86d6c"
+  },
+  {
+    "locale": "el",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "7e00e5f3656f99db31109dbf27fb981dbc4ad4a56bd84d209be6ee6b7b60738e",
+    "afterSha256": "28ea5b7225c035afe2217ded2f49016c82d3881f3e196d9de080959beb0dd3c7"
+  },
+  {
+    "locale": "en-US",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "29c286a4505de6507c035b68655085eb4fe997540b994002be8ba038f8c88cac",
+    "afterSha256": "b69a48a4bd894e7a401e3b61f7a587d61d7b7ea69488e8e7985bd356cc0c5a64"
+  },
+  {
+    "locale": "es-ES",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "391e8ada44b64e0ce2ba8c4f17fb94e3e9b7a2c20273b05d3ae4eb55e50d1228",
+    "afterSha256": "ca9cd277f7442fbbe5b6021628270f560d54e2f6fec972bacdd17b37780d132a"
+  },
+  {
+    "locale": "fi",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "a73e26d953999859b4133d95cb7b31baa961ebcc779ba819a51ee85b85139bdd",
+    "afterSha256": "83fd62f3d79d04a2db03db090a36fb65daa603e862d7d1ad9fee7ee2040d3c66"
+  },
+  {
+    "locale": "fr-FR",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "a3f3f305c321db5e4ad0379801fe61b09263ca862038502a8ca1544a0a379a76",
+    "afterSha256": "e4460cf73f7d760f9236bbb71cb245f8aa8a3b46491b0c2de9aed1858d20117c"
+  },
+  {
+    "locale": "he",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "6e68d4a34027b43c4b01509ff1017a2c883bf1c12d3c71f8ae9e506d5bc762fe",
+    "afterSha256": "155219934751e26a608613a07f90ccc2a41a158cc6cf4ecebe08214aa9d13220"
+  },
+  {
+    "locale": "hi",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "154d5d3501411d1cf43839ee93d5e155e867b2ffb21a8854fae1dcd5b83a6fcb",
+    "afterSha256": "1b6643562005081515b6b80f37ae91bad62a9eedf4d4f4e4017f2ba851b5f62f"
+  },
+  {
+    "locale": "hu",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "3063233cfe70f01bab0e938cbc7f37f9a16be968d395b7a17b435844a9ef9ce8",
+    "afterSha256": "66aefae219e1cc0ca16cc54c3eb16f6125dbb550ec9f396c91b159c2a7673bd7"
+  },
+  {
+    "locale": "id",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "039f871e5155364ba5e247179d3b6a1e8f480d9c1775b73c10c839a07caa1d71",
+    "afterSha256": "ae7b386c00926b14a718ed7d420dbbf3b6c1fc76f8423e658e5aae4e71c1c46a"
+  },
+  {
+    "locale": "ja",
+    "priority": "optional_alignment",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "19551d6f4b85f1e2dc0766eb376babad75714591cb2db9b238525dd68161bc65",
+    "afterSha256": "4cf4ee206b530178f27793b4f0088e35fda5f9573aa3247f4029702f6fdc2842"
+  },
+  {
+    "locale": "ko",
+    "priority": "optional_alignment",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "c840dce5b04e4320a2e2fecb41bcfc5280a1b3a9ba0afbd63155479111153b2c",
+    "afterSha256": "c591d6a7a4fbf62b500ffd9cb93de8de7d695756815f58e01e52bd332e5c43bd"
+  },
+  {
+    "locale": "ms",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "bd93cafae779e79d6c05a062671acde58fbd4a11d4eb7e73be3ec8f5584cf58b",
+    "afterSha256": "55482a8c45d599877f5071d43a545c820fc65a3ee9552e0e13c6d78e251d8097"
+  },
+  {
+    "locale": "nl-NL",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "49defce0753a66169f5320f556e6feb9c94190455697a5ebed6e62580c921921",
+    "afterSha256": "9f64f3d681aa220f50a5643fa637225b8595f5880aea44e3d89ec3ca4d376377"
+  },
+  {
+    "locale": "no",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "143381670eea3f8a851b8c2c04c0528fe4a4cbadbf50ad01bfaf1000d7dd9c96",
+    "afterSha256": "41d7d0ecb7b6cf96f964edf2eff068604d697c085cf67bbf1eb1b408f9241341"
+  },
+  {
+    "locale": "pl",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "360947eb2f18e2e753b12250f05fec1fb4d5fd3be62d97d1d287031b773fe028",
+    "afterSha256": "aeaf2eac46dbb1538d5b17bc3bc29baf561a0de98d9bd4e483b330192b5ee83c"
+  },
+  {
+    "locale": "pt-BR",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "196ccd6ac997d9c9b2f5dee498deb34067db77d0ca8274c849e2339baf7bba36",
+    "afterSha256": "126be054c17d3dfbf85ca31c00a45425799ec09eb2bfe6fb0ff40fa581fb0d5c"
+  },
+  {
+    "locale": "ro",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "daa41ccbaf0e41075408e3468915707206b83b084306472cc7a5b9338d26cd51",
+    "afterSha256": "249eb0c40aeb1106b8297772ce2359cb9f3f4349d196096aaeeff785beaea2de"
+  },
+  {
+    "locale": "ru",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "0e9a1a4ddcfd9dc3866f1397d530a76ba2855c9b7501734cb81555d7cff370b5",
+    "afterSha256": "084bc1c8499f69b26be6a86c2c7fe71efabc0bb059131702401616684e0acb11"
+  },
+  {
+    "locale": "sv",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "91cc80d7abd115d96cbb6aa21535a3631cc7930f256f5c1d71f6c0e64ecd9ead",
+    "afterSha256": "28ac0d4d71824063d449d71b36fb9c89049472af5b4106ae1cf715b9107eb7ef"
+  },
+  {
+    "locale": "th",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "9a09f6544dc844a42a40568493c82d30175b798e0cb65f9054f870b2287306c1",
+    "afterSha256": "3b7a577d6631fdb120388fe432cdc2775cf99c5c37484c73b285b95206421f20"
+  },
+  {
+    "locale": "tr",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "1e02d2c7b1b6b864c4a8689096c0741afb936a01f30232b87414d1cc91b9c54f",
+    "afterSha256": "1826f706876dffb8e327ef240e6fef71175f6bf610df6f53633656ad5fef90df"
+  },
+  {
+    "locale": "vi",
+    "priority": "targeted_correction",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "317176c15ba13493c1986b833162ac4cc7d2c9a229799b2fce1076fa7f22b9e6",
+    "afterSha256": "2feafda6ab686e51b939e43fd515cdc29ddfdfd38420492542836b63cfa68140"
+  },
+  {
+    "locale": "zh-Hans",
+    "priority": "optional_alignment",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "6b6b4752e7a31d728fa8ba30c6c516378bad43730e3608e3a54da46a29817567",
+    "afterSha256": "d2b31833072d74024a7d5c328b79fa5b8f371d9dedef34f8bb9641aace218a46"
+  },
+  {
+    "locale": "zh-Hant",
+    "priority": "optional_alignment",
+    "fileHashMatches": true,
+    "exactPathBeforeMatches": true,
+    "beforeSha256": "d6d71cacd4dde013f66481c76911bce83d37593002a340302129bc24120b4f75",
+    "afterSha256": "412fa3cb82387d5890420f81e03bc189ec57d961c38372702ae39f5b359bf1c0"
+  }
+]

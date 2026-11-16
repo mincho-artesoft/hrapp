@@ -1,0 +1,757 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+.weather {
+  position: relative;
+  // Contain the decorative glow without widening the mobile document.
+  overflow-x: clip;
+
+  /* a warm counterpoint to the blue elsewhere on the page */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 8% -12% auto -12%;
+    height: 60%;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 46% at 78% 22%, rgba(255, 176, 90, 0.16), transparent 70%),
+      radial-gradient(44% 40% at 16% 70%, rgba(86, 214, 255, 0.14), transparent 72%);
+    filter: blur(20px);
+  }
+}
+
+.weather__head {
+  position: relative;
+  max-width: 46rem;
+  margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+.weather__body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  @include stage(1500px);
+
+  @include upto($bp-lg) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.weather__device {
+  position: sticky;
+  top: calc(var(--header-h) + 3rem);
+  display: grid;
+  justify-items: center;
+
+  @include upto($bp-lg) { position: static; }
+}
+
+.weather__panels {
+  display: grid;
+  gap: 1.1rem;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------
+   Hourly strip
+--------------------------------------------------------------- */
+.hourly { padding: 1.5rem clamp(1.1rem, 2.5vw, 1.75rem); }
+
+.hourly__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.hourly__place {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.hourly__cond {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-top: 0.15rem;
+}
+
+.hourly__now {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 200;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.05em;
+
+  sup { font-size: 0.42em; vertical-align: super; opacity: 0.6; }
+}
+
+/* ---------------------------------------------------------------
+   Search + view switch
+--------------------------------------------------------------- */
+.panelbar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  /* The generous bottom margin is the point: the search field sat directly
+     on top of the forecast and the two read as one crowded block. */
+  margin-block: 1.25rem 1.6rem;
+
+  @include upto($bp-sm) {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+}
+
+.finder {
+  position: relative;
+  flex: 1 1 12rem;
+  /* Above the forecast below it, so the results list is not clipped by it. */
+  z-index: 3;
+}
+
+.views {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.04);
+
+  @include upto($bp-sm) { flex: 1 1 100%; }
+}
+
+.views__btn {
+  flex: 1 1 auto;
+  padding: 0.38rem 0.75rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ink-4);
+  cursor: pointer;
+  transition:
+    background 0.28s var(--ease-out),
+    color 0.28s var(--ease-out);
+
+  &:hover { color: var(--ink-2); }
+
+  &.is-on {
+    color: #04121c;
+    background: linear-gradient(120deg, var(--aurora-2), #9fe8ff);
+  }
+
+  &:focus-visible { outline: 2px solid var(--aurora-2); outline-offset: 2px; }
+}
+
+.finder__field {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+
+  &:focus-within {
+    border-color: rgba(56, 224, 240, 0.55);
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+.finder__icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  color: var(--ink-4);
+}
+
+.finder__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.86rem;
+  outline: none;
+
+  &::placeholder { color: var(--ink-4); }
+
+  /* The clear button browsers add to type="search" is styled per engine and
+     matches none of this. */
+  &::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+}
+
+.finder__spinner {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--aurora-2);
+  animation: finder-spin 0.7s linear infinite;
+}
+
+@keyframes finder-spin {
+  to { transform: rotate(1turn); }
+}
+
+.finder__results {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  z-index: 4;
+  max-height: 15rem;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0.3rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--hair-strong);
+  background: rgba(10, 14, 30, 0.96);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  animation: finder-drop 0.22s var(--ease-out);
+}
+
+@keyframes finder-drop {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+.finder__hit {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border-radius: calc(var(--r-md) - 6px);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out);
+
+  &:hover,
+  &:focus-visible { background: rgba(255, 255, 255, 0.07); outline: none; }
+}
+
+.finder__name { font-size: 0.88rem; color: var(--ink); }
+.finder__where { font-size: 0.74rem; color: var(--ink-4); }
+
+/* While a new city loads, dim the numbers rather than blanking them: a panel
+   that empties itself reads as broken, one that fades reads as busy. */
+.hourly.is-loading .hourly__head,
+.hourly.is-loading .hourly__list {
+  opacity: 0.45;
+}
+
+.hourly__head,
+.hourly__list {
+  transition: opacity 0.25s var(--ease-out);
+}
+
+.hourly__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+  list-style: none;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hair);
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  li {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.25rem;
+    border-radius: 14px;
+    min-width: 3rem;
+    transition: background 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateY(-3px);
+    }
+
+    &:first-child {
+      background: linear-gradient(160deg, rgba(77, 124, 255, 0.28), rgba(56, 224, 240, 0.12));
+      box-shadow: inset 0 0 0 1px rgba(120, 190, 255, 0.32);
+    }
+  }
+}
+
+.hourly__h {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+.hourly__t {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hourly__hint {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--hair);
+  font-size: 0.79rem;
+  color: var(--ink-3);
+
+  span { color: var(--aurora-2); margin-right: 0.35rem; }
+}
+
+/* ---------------------------------------------------------------
+   Fourteen days
+--------------------------------------------------------------- */
+.days {
+  display: grid;
+  gap: 1px;
+  list-style: none;
+  /* Fourteen full rows would make this panel twice the height of the phone
+     beside it. Scroll instead, with the overflow visible at the edge so it
+     is obvious there is more rather than looking like a clipped list. */
+  max-height: 20rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  mask-image: linear-gradient(#000 calc(100% - 1.6rem), transparent);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 3.1rem 1.5rem 2.5rem 2.1rem minmax(3rem, 1fr) 2.1rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.3rem;
+  border-radius: 8px;
+  opacity: 0;
+  animation: day-in 0.4s var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 0.025s);
+
+  /* The weekend is what most people are scanning for. */
+  &.is-weekend {
+    background: rgba(56, 224, 240, 0.06);
+    .day__name { color: #bfe8ff; }
+  }
+
+  .glyph { justify-self: center; }
+}
+
+@keyframes day-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.day__name {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.day__pop {
+  font-size: 0.7rem;
+  color: #7fc9ff;
+  text-align: right;
+}
+
+.day__lo,
+.day__hi {
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.day__lo { color: var(--ink-4); text-align: right; }
+.day__hi { color: var(--ink); text-align: right; }
+
+.day__bar {
+  position: relative;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.09);
+
+  i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #6ea8ff, #ffd166 62%, #ff9f45);
+    transition: left 0.5s var(--ease-out), width 0.5s var(--ease-out);
+  }
+}
+
+/* ---------------------------------------------------------------
+   The weekend
+--------------------------------------------------------------- */
+.wknd {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.8rem;
+}
+
+.wknd__day {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  padding: 1.1rem 0.9rem 1rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.035);
+  animation: day-in 0.45s var(--ease-out) both;
+}
+
+.wknd__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.wknd__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.wknd__date { font-size: 0.72rem; color: var(--ink-4); }
+
+.glyph--lg { transform: scale(1.5); margin-block: 0.5rem 0.3rem; }
+
+.wknd__temp {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+
+  em {
+    font-style: normal;
+    font-size: 0.62em;
+    color: var(--ink-4);
+    margin-left: 0.4rem;
+  }
+}
+
+.wknd__cond {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.wknd__facts {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--hair);
+  width: 100%;
+  justify-content: center;
+
+  div { text-align: center; }
+
+  dt {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.78rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------------------------------
+   CSS weather glyphs — drawn, and animated so the strip feels alive
+--------------------------------------------------------------- */
+.glyph {
+  position: relative;
+  width: 20px;
+  height: 16px;
+  display: block;
+
+  &::before,
+  &::after { content: ''; position: absolute; }
+
+  /* --- sun: a disc that breathes, with rays turning behind it --- */
+  &[data-g='sun'] {
+    &::before {
+      width: 13px; height: 13px;
+      left: 3.5px; top: 1.5px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, #ffe9a8, #ffb347 62%, #ff8c2e);
+      box-shadow: 0 0 10px rgba(255, 170, 60, 0.65);
+      animation: sun-breathe 4s var(--ease-in-out) infinite;
+      z-index: 1;
+    }
+    /* eight rays as a conic sweep, masked to a ring */
+    &::after {
+      inset: -3px 1px -3px 1px;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 190, 90, 0.85) 0deg 6deg,
+        transparent 6deg 45deg
+      );
+      -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%, #000 76%, transparent 78%);
+      mask: radial-gradient(circle, transparent 52%, #000 54%, #000 76%, transparent 78%);
+      animation: sun-rays 14s linear infinite;
+      opacity: 0.9;
+    }
+  }
+
+  /* --- cloud: drifts sideways --- */
+  &[data-g='cloud'] {
+    animation: cloud-drift 7s var(--ease-in-out) infinite alternate;
+
+    &::before {
+      width: 16px; height: 7px;
+      left: 2px; bottom: 3px;
+      border-radius: 99px;
+      background: #d7e3f5;
+    }
+    &::after {
+      width: 9px; height: 9px;
+      left: 4px; top: 2px;
+      border-radius: 50%;
+      background: #e8f0fb;
+    }
+  }
+
+  /* --- rain: cloud on top, three drops falling underneath --- */
+  &[data-g='rain'] {
+    &::before {
+      width: 15px; height: 6px;
+      left: 2.5px; top: 3px;
+      border-radius: 99px;
+      background: #b9c9e0;
+      box-shadow: 4px -3px 0 -1px #cfdcef;
+    }
+    &::after {
+      width: 2px; height: 5px;
+      left: 6px; bottom: 0;
+      border-radius: 99px;
+      background: #58a6ff;
+      box-shadow: 5px 2px 0 #58a6ff, 9px -1px 0 #58a6ff;
+      animation: rain-fall 1.1s linear infinite;
+    }
+  }
+
+  /* --- moon: a slow glow --- */
+  &[data-g='moon']::before {
+    width: 13px; height: 13px;
+    left: 3.5px; top: 1.5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 34% 28%, #f4f7ff, #c3ccdd 60%, #94a0b8);
+    box-shadow: inset -3px -1px 4px rgba(20, 30, 60, 0.4);
+    animation: moon-glow 5s var(--ease-in-out) infinite alternate;
+  }
+}
+
+@keyframes sun-breathe {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 8px rgba(255, 170, 60, 0.5); }
+  50%      { transform: scale(1.08); box-shadow: 0 0 14px rgba(255, 190, 90, 0.9); }
+}
+
+@keyframes sun-rays  { to { rotate: 360deg; } }
+
+@keyframes cloud-drift {
+  from { transform: translateX(-1.5px); }
+  to   { transform: translateX(1.5px); }
+}
+
+@keyframes rain-fall {
+  0%   { transform: translateY(-3px); opacity: 0; }
+  25%  { opacity: 1; }
+  100% { transform: translateY(4px);  opacity: 0; }
+}
+
+@keyframes moon-glow {
+  from { box-shadow: inset -3px -1px 4px rgba(20, 30, 60, 0.4), 0 0 4px rgba(190, 210, 255, 0.25); }
+  to   { box-shadow: inset -3px -1px 4px rgba(20, 30, 60, 0.4), 0 0 12px rgba(190, 210, 255, 0.7); }
+}
+
+/* The strip is decorative; stop all of it when asked. */
+@media (prefers-reduced-motion: reduce) {
+  .glyph,
+  .glyph::before,
+  .glyph::after { animation: none !important; }
+}
+
+/* ---------------------------------------------------------------
+   Metric tiles
+--------------------------------------------------------------- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+  gap: 1.1rem;
+}
+
+.metric {
+  padding: 1.15rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    box-shadow:
+      var(--shadow-mid),
+      0 0 40px -14px var(--accent);
+  }
+
+  /* a faint wash of the tile's own accent colour */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto -20% -50% -20%;
+    height: 90%;
+    background: radial-gradient(50% 60% at 50% 100%, var(--accent), transparent 70%);
+    opacity: 0.12;
+    pointer-events: none;
+    transition: opacity 0.6s var(--ease-out);
+  }
+
+  &:hover::after { opacity: 0.24; }
+}
+
+.metric__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.metric__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.metric__value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+
+  em {
+    font-style: normal;
+    font-size: 0.62em;
+    font-weight: 400;
+    color: var(--ink-3);
+    margin-left: 0.1em;
+  }
+}
+
+.metric__chart {
+  width: 100%;
+  height: 52px;
+  overflow: visible;
+}
+
+/* Draw the line on as the tile reveals. */
+.metric__line {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  filter: drop-shadow(0 0 6px var(--accent));
+
+  [data-reveal].is-revealed & {
+    animation: draw 1.5s var(--ease-out) 0.15s forwards;
+  }
+}
+
+.metric__area {
+  opacity: 0;
+  [data-reveal].is-revealed & { animation: fade-in 1.2s var(--ease-out) 0.55s forwards; }
+}
+
+.metric__bar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  scale: 1 0;
+  [data-reveal].is-revealed & { animation: grow 0.9s var(--ease-out) forwards; }
+
+  @for $i from 1 through 12 {
+    &:nth-of-type(#{$i}) { animation-delay: #{0.1 + $i * 0.045}s; }
+  }
+}
+
+/* A short bright dash that runs the length of the curve, over and over.
+   Using stroke-dashoffset rather than a moving dot keeps it undistorted: the
+   chart viewBox is scaled non-uniformly, so a circle would render as an
+   ellipse. */
+.metric__pulse {
+  stroke-dasharray: 9 400;
+  stroke-dashoffset: 409;
+  opacity: 0;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 5px var(--accent));
+
+  [data-reveal].is-revealed & {
+    animation: pulse-run 5.5s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+    animation-delay: inherit;
+  }
+}
+
+@keyframes pulse-run {
+  0%        { stroke-dashoffset: 409; opacity: 0; }
+  8%        { opacity: 0.85; }
+  70%       { opacity: 0.85; }
+  78%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade-in { to { opacity: 1; } }
+@keyframes grow { to { scale: 1 1; } }
+
+/* The histogram gets the same idea: brightness rolls left to right. */
+.metric__bar {
+  [data-reveal].is-revealed & {
+    animation:
+      grow 0.9s var(--ease-out) forwards,
+      bar-roll 5.5s ease-in-out infinite;
+    animation-delay: calc(0.1s + var(--bar) * 0.045s), calc(var(--bar) * 0.13s);
+  }
+}
+
+@keyframes bar-roll {
+  0%, 62%, 100% { opacity: 0.72; }
+  8%            { opacity: 1; filter: brightness(1.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metric__line { stroke-dashoffset: 0; }
+  .metric__area { opacity: 1; }
+  .metric__bar { scale: 1 1; animation: none; opacity: 1; }
+  .metric__pulse { display: none; }
+}
+
+.metric__caption {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  line-height: 1.5;
+}

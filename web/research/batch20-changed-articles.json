@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-21T23:34:58.805Z",
+  "count": 12,
+  "articles": [
+    {
+      "locale": "bg",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/bg/articles-help.ts",
+      "title": "Повтарящи се събития: променете една дата или поредицата безопасно",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Проверете правата си и обхвата на промяната при повтарящо се събитие. Променяйте отделни дати и бъдещи срещи, без да изтривате поредицата.",
+      "descriptionCharacters": 138
+    },
+    {
+      "locale": "bg",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/bg/articles.ts",
+      "title": "Месечен календар на iPad и iPhone: вижте датите, после проверете подробностите",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Сравнете датите на iPad или iPhone. Проверете скритите събития, избраните календари и часовете, преди да местите споделени или повтарящи се срещи.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "de-DE",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+      "descriptionCharacters": 137
+    },
+    {
+      "locale": "de-DE",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Monatskalender auf iPad und iPhone: erst Daten vergleichen, dann Details prüfen",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Vergleiche Tage auf iPad oder iPhone. Prüfe verborgene Termine, Kalenderauswahl und Uhrzeiten vor dem Verschieben gemeinsamer oder wiederkehrender Termine.",
+      "descriptionCharacters": 155
+    },
+    {
+      "locale": "es-ES",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "title": "Eventos recurrentes: cambia una fecha o la serie con cuidado",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Comprueba el calendario, los permisos y el alcance antes de cambiar un evento recurrente. Revisa las excepciones sin borrar la serie.",
+      "descriptionCharacters": 133
+    },
+    {
+      "locale": "es-ES",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Calendario mensual en iPad y iPhone: compara fechas y comprueba los detalles",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Compara fechas en iPad o iPhone. Revisa eventos ocultos, calendarios seleccionados y horas exactas antes de mover citas compartidas o recurrentes.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Événements récurrents : modifier une date ou la série avec précaution",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Vérifiez vos droits et les dates concernées avant de modifier un événement récurrent. Gérez les changements ponctuels sans supprimer la série.",
+      "descriptionCharacters": 142
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Calendrier mensuel sur iPad et iPhone : voir les dates, vérifier les détails",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Comparez les dates sur iPad ou iPhone. Vérifiez événements masqués, calendriers choisis et heures avant de déplacer des rendez-vous partagés ou récurrents.",
+      "descriptionCharacters": 155
+    },
+    {
+      "locale": "it",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/it/articles-help.ts",
+      "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
+      "descriptionCharacters": 139
+    },
+    {
+      "locale": "it",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Confronta le date su iPad o iPhone. Controlla eventi nascosti, calendari selezionati e orari prima di spostare appuntamenti condivisi o ricorrenti.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "ja",
+      "slug": "month-view-on-a-bigger-screen",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "iPadとiPhoneの月表示：日付を選んだら詳細を確認する",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "iPadやiPhoneの月表示で日付を比較。共有・繰り返し予定を移動する前に、隠れた予定、選択中のカレンダー、正確な時刻を確認しましょう。",
+      "descriptionCharacters": 69
+    },
+    {
+      "locale": "ja",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/ja/articles.ts",
+      "title": "繰り返しの予定を変更する：1回だけか、予定全体かを確認",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "繰り返しの予定を変更する前に、編集権限と変更範囲を確認しましょう。予定全体を削除せず、1回だけの変更や今後の日程、例外を扱う方法を紹介します。",
+      "descriptionCharacters": 71
+    }
+  ]
+}

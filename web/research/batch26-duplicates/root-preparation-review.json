@@ -1,0 +1,70 @@
+{
+  "readAt": "2026-10-22T00:57:12.267544+00:00",
+  "status": "drafts_only_not_integrated",
+  "freshPrimary": {
+    "url": "https://support.google.com/calendar/answer/45654?hl=en",
+    "readScope": "Complete main body18–122; root read, no customer operation.",
+    "scope": "Zero-processed can follow successful first click/second import click. No blanket deduplication or success guarantee."
+  },
+  "nativeRootReads": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "ranges": [
+        [
+          165,
+          200
+        ],
+        [
+          880,
+          944
+        ],
+        [
+          1236,
+          1254
+        ],
+        [
+          1338,
+          1356
+        ]
+      ],
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4"
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+      "ranges": [
+        [
+          250,
+          306
+        ]
+      ],
+      "sha256": "d664f53078277e526245eca8aa38de1660faed643f5b992e761f4db4566ce26a"
+    }
+  ],
+  "existingGuideReads": [
+    {
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "ranges": [
+        [
+          204,
+          315
+        ],
+        [
+          506,
+          601
+        ]
+      ],
+      "scope": "Two complete objects including all prose, practical, FAQs, sources and related links. Reader attempted nonexistent602 after full actual text, IndexError did not omit content.",
+      "sha256": "852acd7cd6363a9b4b2400587beb890ae471365d7ba357de42cdc7ddebe15656"
+    }
+  ],
+  "scope": "Root native source supports bounded selection side effects and actual selected notification inputs, not identical all-provider behavior or released runtime. Full before/draft preparation only.",
+  "faqParity": {
+    "allOtherFieldsUnchanged": true,
+    "oneFaqOneOfficialSource": true,
+    "rootReadFullAddedQuestionAnswerAndNotes": true
+  },
+  "selectionDraftScope": {
+    "conflict": "Append one paragraph in hide-first section plus date21to22.",
+    "sync": "Append short qualification and existing related-guide reference in one paragraph; no date change."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-22",
+  "slug": "recurring-events-without-the-mess",
+  "source": "src/app/content/en-US/articles-planning.ts",
+  "source_object_sha256": "7fb4cbb8b72b124ad9561ff58801e21e5040ab3fee54b6a3b4db5f3f921b20d6",
+  "scope": "Complete own-language German and Spanish translations; preparation only",
+  "results": [
+    {
+      "locale": "de-DE",
+      "file": "research/batch20-localized-recurrence/de-DE.json",
+      "description_unicode_characters": 137,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 5,
+      "faq": 3,
+      "sources": 3,
+      "exact_source_urls": true,
+      "date": "2026-10-21",
+      "empty_claims": true,
+      "same_field_shape": true,
+      "related_routes_exist": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/batch20-localized-recurrence/es-ES.json",
+      "description_unicode_characters": 133,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 5,
+      "faq": 3,
+      "sources": 3,
+      "exact_source_urls": true,
+      "date": "2026-10-21",
+      "empty_claims": true,
+      "same_field_shape": true,
+      "related_routes_exist": true
+    }
+  ],
+  "related_route_substitution": {
+    "original": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked"
+    ],
+    "replacements": [
+      "drag-an-event-to-move-it",
+      "what-guests-can-do-to-your-event"
+    ],
+    "reason": "Both English related slugs are absent from current German and Spanish modules and article-index.ts. Alternatives are existing localized guides on event editing and guest authority."
+  },
+  "semantic_review": [
+    "No promise that Cloud Calendars presents an occurrence-scope prompt.",
+    "Repeat patterns and End Repeat distinguished from edit scope; English UI label retained rather than inventing a localized label.",
+    "Use supported provider editor if the one-date scope is unavailable.",
+    "Organizer/editor/guest permissions retained.",
+    "Representative dates, existing exceptions and original invitations retained.",
+    "No arbitrary mandatory end date and no universal exception-preservation or loss claim.",
+    "Developer disclosure retained in each lede."
+  ],
+  "limitations": [
+    "Own translation, not native-speaker certification.",
+    "Source URLs copied exactly; primary documentation was not fetched again for this translation task.",
+    "No source integration, build, deployment, native changes or paid API."
+  ]
+}

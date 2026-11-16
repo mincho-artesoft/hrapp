@@ -1,0 +1,75 @@
+Track responses to your event
+When guests respond to your invitations from Google Calendar, you:
+Get an email notification
+Can track their responses
+Review your guest list
+On your computer, open
+Google Calendar
+.
+On your calendar, click the event.
+At the top right, click Edit event
+.
+On the right, under “Guests,” review the guest list.
+Review a guest’s proposed time
+If a guest can’t attend the scheduled event, they can propose a new time. You can review the proposal and if necessary, move the event.
+On your computer, open
+Google Calendar
+.
+On your calendar, click an event with a proposal
+.
+Under the guest list, click
+Review proposed time
+.
+To change the proposed time, click
+Save
+.
+Turn off event response notification emails
+On your computer, open
+Google Calendar
+.
+At the top right, click Settings menu
+Settings
+.
+On the left, under "Settings for my calendars," select the specific calendar you want to change.
+Scroll to the “Other notifications” section.
+Next to "Event responses," click Menu
+.
+Select
+None
+.
+Manage guest response emails
+On your computer, open
+Google Calendar
+.
+Create a new event or open an existing event and select Edit
+.
+Check or uncheck the box next to “Get an email when guests respond.”
+This option controls email notifications for a single event or a recurring event series. It does not change your global Calendar notification preferences, which are found in your
+main Calendar settings
+.
+Click
+Save
+.
+When you turn off guest response emails for an event, you do not get:
+Email notifications when guests accept, decline, or mark an event as tentative.
+RSVP statuses from third-party users, such as Outlook.
+Automatic email replies to the invite, such as out of office messages.
+Tip:
+Even with email notifications off, you can check when guests who use Google Calendar accept, decline, or mark an event as tentative in the guest list. However, you can’t check the RSVP status for guests who use other calendars, like Outlook.
+Allow guests to forward invitations
+If you give your guests permission to invite others, they can forward invitation emails to new guests. The new guests are added to the guest list and can invite others when they respond to the invitation.
+If you don’t want guests to invite others:
+On your computer, open
+Google Calendar
+.
+On your calendar, open the event.
+At the top right, click Edit event
+.
+Under “Guests permissions,” uncheck the box next to “Invite others.”
+Related resources
+Respond to event invitations
+Create an event
+Computer
+Android phone & tablet
+iPhone & iPad
+More

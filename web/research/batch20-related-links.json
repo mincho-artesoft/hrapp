@@ -1,0 +1,80 @@
+[
+  {
+    "locale": "bg",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/bg/articles.ts",
+    "title": "Месечен календар на iPad и iPhone: вижте датите, после проверете подробностите",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "Сравнете датите на iPad или iPhone. Проверете скритите събития, избраните календари и часовете, преди да местите споделени или повтарящи се срещи.",
+    "descriptionCharacters": 146,
+    "added": "recurring-events-without-the-mess"
+  },
+  {
+    "locale": "de-DE",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/de-DE/articles.ts",
+    "title": "Monatskalender auf iPad und iPhone: erst Daten vergleichen, dann Details prüfen",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "Vergleiche Tage auf iPad oder iPhone. Prüfe verborgene Termine, Kalenderauswahl und Uhrzeiten vor dem Verschieben gemeinsamer oder wiederkehrender Termine.",
+    "descriptionCharacters": 155,
+    "added": "recurring-events-without-the-mess"
+  },
+  {
+    "locale": "es-ES",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/es-ES/articles.ts",
+    "title": "Calendario mensual en iPad y iPhone: compara fechas y comprueba los detalles",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "Compara fechas en iPad o iPhone. Revisa eventos ocultos, calendarios seleccionados y horas exactas antes de mover citas compartidas o recurrentes.",
+    "descriptionCharacters": 146,
+    "added": "recurring-events-without-the-mess"
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/fr-FR/articles.ts",
+    "title": "Calendrier mensuel sur iPad et iPhone : voir les dates, vérifier les détails",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "Comparez les dates sur iPad ou iPhone. Vérifiez événements masqués, calendriers choisis et heures avant de déplacer des rendez-vous partagés ou récurrents.",
+    "descriptionCharacters": 155,
+    "added": "recurring-events-without-the-mess"
+  },
+  {
+    "locale": "it",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/it/articles.ts",
+    "title": "Calendario mensile su iPad e iPhone: scegli la data, poi verifica i dettagli",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "Confronta le date su iPad o iPhone. Controlla eventi nascosti, calendari selezionati e orari prima di spostare appuntamenti condivisi o ricorrenti.",
+    "descriptionCharacters": 147,
+    "added": "recurring-events-without-the-mess"
+  },
+  {
+    "locale": "ja",
+    "slug": "month-view-on-a-bigger-screen",
+    "file": "src/app/content/ja/articles.ts",
+    "title": "iPadとiPhoneの月表示：日付を選んだら詳細を確認する",
+    "sections": 6,
+    "faqs": 3,
+    "sources": 2,
+    "updated": "2026-10-22",
+    "description": "iPadやiPhoneの月表示で日付を比較。共有・繰り返し予定を移動する前に、隠れた予定、選択中のカレンダー、正確な時刻を確認しましょう。",
+    "descriptionCharacters": 69,
+    "added": "recurring-events-without-the-mess"
+  }
+]

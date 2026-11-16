@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-22",
+  "locale": "es-ES",
+  "status": "prepared_for_independent_review",
+  "canonical": "free-google-sync-without-adverts",
+  "source": {
+    "file": "research/batch36-free-google/en-US/before.json",
+    "rawSha256": "71e6bad1eac8e3df01dfe99ec7601dcc62e9dc1a94b06100a371c74a477757cd",
+    "scope": "Complete current four-section English template and complete legacy localized object read."
+  },
+  "before": {
+    "file": "research/batch36-free-google/es-ES/before.json",
+    "rawSha256": "babe45208001c9add9bea2d0d2a0f5edeaeb925726cde0bd971b5082db1c5056"
+  },
+  "draft": {
+    "file": "research/batch36-free-google/es-ES/draft.json",
+    "rawSha256": "4a5ab1ba70ec2a0aa30f7ab66a35bccf07e5a89c4a344565f376c8e0db272da4",
+    "jsonSha256": "1ec6e1a2143aa65600c26ddaa4ac1191a16a96815164aa085bb5db80be6b6049"
+  },
+  "checks": {
+    "sections": 4,
+    "paragraphs": 8,
+    "practical": 5,
+    "faq": 2,
+    "descriptionCharacters": 141,
+    "sourceUrlsExact": true,
+    "claimsEmpty": true,
+    "relatedExist": true
+  },
+  "relatedRoutes": {
+    "icloud-google-and-outlook-in-one-view": "src/app/content/es-ES/articles.ts",
+    "what-a-subscription-actually-buys": "src/app/content/es-ES/articles.ts"
+  },
+  "relatedChoice": "Preserved actual existing localized subscription and combined-overview routes; did not add absent English related routes.",
+  "clarification": "sections[1].body[0] follows root final Italian clarification: payment does not change Google sharing rights, prioritize forecasts or grant cross-account editing. Meet mentioned only as support included in Base, not automatic link generation.",
+  "sources": "Exact English Apple cancellation URL retained; no unverified localized URL substituted.",
+  "semanticReview": [
+    "Removed unsupported competitor/monetization rhetoric, majority-of-users claim and price claim placeholders.",
+    "All four English tasks and eight paragraphs retained: connection and sign-in, plan effects, bounded test, Apple purchase identity.",
+    "Preserves no permission bypass, no assumed merged records and no account deletion as renewal management."
+  ],
+  "limits": [
+    "Own translation/self-review, not independent native-speaker approval or runtime certification.",
+    "No website source/build/deploy/native/API changes."
+  ]
+}

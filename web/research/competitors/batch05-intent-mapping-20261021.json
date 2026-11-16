@@ -1,0 +1,235 @@
+{
+  "date": "2026-10-21",
+  "batch": "05",
+  "inventoryScope": {
+    "path": "research/content-inventory-20261021.json",
+    "englishMetadataScreened": 48,
+    "freshFullCloudBodiesRead": 0,
+    "limitation": "Dedicated route absence is a metadata-level finding, supplemented by previous31-body audit and four full sharing-related bodies read for export draft. It is not a fresh exhaustive body audit of48 articles. Any new candidate must pass final body-level deduplication."
+  },
+  "mappings": [
+    {
+      "id": "sharing-model",
+      "candidateQueries": [
+        "shared calendar versus sharing availability",
+        "family calendar who can edit"
+      ],
+      "existingCanonicals": [
+        "/articles/a-calendar-that-is-yours-to-share/",
+        "/articles/who-can-see-what-in-google-calendar/",
+        "/articles/sharing-one-event-not-your-calendar/"
+      ],
+      "sourceIds": [
+        "timetree-scope",
+        "howbout",
+        "teamup-access"
+      ],
+      "decision": "expand-existing-first",
+      "nextAction": "Use a decision table for viewing one event, following updates, editing a calendar and showing availability. Explain actual account and recipient requirements; no universal sharing model."
+    },
+    {
+      "id": "family-pickup",
+      "candidateQueries": [
+        "family pickup calendar",
+        "shared school and sports schedule"
+      ],
+      "existingCanonicals": [
+        "/articles/a-calendar-that-is-yours-to-share/",
+        "/articles/planning-a-week-in-ten-minutes/",
+        "/articles/recurring-events-without-the-mess/"
+      ],
+      "sourceIds": [
+        "cozi",
+        "familywall",
+        "timetree"
+      ],
+      "decision": "candidate-distinct-worked-example",
+      "nextAction": "Potential substantive household handoff workflow: owner, driver, location, recurrence exceptions and last-minute change confirmation. First check whether existing planning/sharing pages can carry it; avoid generic best-family-app filler."
+    },
+    {
+      "id": "default-calendar",
+      "candidateQueries": [
+        "new event saved to wrong calendar",
+        "default calendar iPhone app"
+      ],
+      "existingCanonicals": [
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/what-calendar-sync-actually-does/"
+      ],
+      "sourceIds": [
+        "calendar366"
+      ],
+      "decision": "candidate-distinct-diagnostic",
+      "nextAction": "Check event destination account, calendar ownership/editability and default-calendar setting. No dedicated route in48 metadata; verify Cloud current creation/default controls before authoring."
+    },
+    {
+      "id": "color-visibility",
+      "candidateQueries": [
+        "calendar colors versus permissions",
+        "hide work calendar without stopping sync"
+      ],
+      "existingCanonicals": [
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/icloud-google-and-outlook-in-one-view/",
+        "/articles/who-can-see-what-in-google-calendar/"
+      ],
+      "sourceIds": [
+        "calendar366",
+        "timetree-scope",
+        "teamup-access"
+      ],
+      "decision": "expand-existing",
+      "nextAction": "Explain display filters and colors versus permission boundaries. Do not claim hiding a calendar revokes recipient access, mutes alerts or stops sync."
+    },
+    {
+      "id": "migration",
+      "candidateQueries": [
+        "imported calendar not updating",
+        "calendar subscription versus import"
+      ],
+      "existingCanonicals": [
+        "/articles/calendar-export-ics-pdf-and-backup/",
+        "/articles/what-calendar-sync-actually-does/"
+      ],
+      "sourceIds": [
+        "familywall-import",
+        "calendar366"
+      ],
+      "decision": "already-covered-canonical",
+      "nextAction": "The new export guide now covers this distinction; no duplicate migration basics article. Specific vendor migration requires direct workflow verification."
+    },
+    {
+      "id": "mixed-devices",
+      "candidateQueries": [
+        "share calendar with Android family",
+        "calendar invitation without app install"
+      ],
+      "existingCanonicals": [
+        "/articles/inviting-people-who-do-not-have-the-app/",
+        "/articles/sharing-one-event-not-your-calendar/"
+      ],
+      "sourceIds": [
+        "cozi",
+        "familywall",
+        "teamup"
+      ],
+      "decision": "expand-existing-with-verification",
+      "nextAction": "Test/document recipient account and browser/feed flow separately from native app availability. Receiving a link is not evidence of a Cloud Android/web editing client."
+    },
+    {
+      "id": "event-task",
+      "candidateQueries": [
+        "calendar event versus task",
+        "shared chores meal planner"
+      ],
+      "existingCanonicals": [
+        "/articles/planning-a-week-in-ten-minutes/"
+      ],
+      "sourceIds": [
+        "calendar366",
+        "cozi",
+        "familywall"
+      ],
+      "decision": "unsupported-feature-intent",
+      "nextAction": "Tasks, completion, groceries, recipe/meal planning and household budgets are not verified Cloud features. At most explain general time-block planning without claiming a task engine; exclude capability keywords from Cloud metadata."
+    },
+    {
+      "id": "social-planning",
+      "candidateQueries": [
+        "group calendar chat",
+        "find time with friends"
+      ],
+      "existingCanonicals": [
+        "/articles/keeping-track-of-who-replied/",
+        "/articles/inviting-people-who-do-not-have-the-app/"
+      ],
+      "sourceIds": [
+        "howbout",
+        "familywall"
+      ],
+      "decision": "unsupported-feature-intent",
+      "nextAction": "Chat, social friend graphs and shared availability matching are not established Cloud functions. RSVP is not chat or automatic availability comparison."
+    },
+    {
+      "id": "resource-booking",
+      "candidateQueries": [
+        "room booking calendar",
+        "equipment booking conflict prevention"
+      ],
+      "existingCanonicals": [
+        "/articles/when-two-calendars-disagree/"
+      ],
+      "sourceIds": [
+        "teamup"
+      ],
+      "decision": "unsupported-feature-intent",
+      "nextAction": "Sync conflict diagnosis is different from booking-capacity enforcement. Do not repurpose existing conflict article or metadata to promise resource booking, staff scheduling controls or conflict prevention."
+    },
+    {
+      "id": "automation",
+      "candidateQueries": [
+        "natural language calendar entry",
+        "calendar Shortcuts automation"
+      ],
+      "existingCanonicals": [
+        "/articles/drag-an-event-to-move-it/"
+      ],
+      "sourceIds": [
+        "calendar366"
+      ],
+      "decision": "verification-required-feature-intent",
+      "nextAction": "No verified Cloud NLP, Shortcuts, MCP or AI calendar editing capability from this batch. A competitor integration is not a keyword to add to Cloud metadata."
+    },
+    {
+      "id": "travel",
+      "candidateQueries": [
+        "calendar time to leave alerts"
+      ],
+      "existingCanonicals": [
+        "/articles/the-commute-and-the-sky/",
+        "/articles/calendar-notifications-missing-silent-or-duplicated/"
+      ],
+      "sourceIds": [
+        "calendar366"
+      ],
+      "decision": "candidate-specific-how-to-after-native-check",
+      "nextAction": "A dedicated travel-alert task may be distinct from weather commute prose, but inspect actual Cloud travel-reminder implementation/settings and existing bodies before deciding. Do not copy transport modes or real-time-routing promises."
+    },
+    {
+      "id": "existing-utility",
+      "candidateQueries": [
+        "calendar search",
+        "calendar notifications",
+        "calendar widgets"
+      ],
+      "existingCanonicals": [
+        "/articles/find-old-calendar-events-by-account-date-and-title/",
+        "/articles/calendar-notifications-missing-silent-or-duplicated/",
+        "/articles/choosing-a-widget-size/"
+      ],
+      "sourceIds": [
+        "cozi",
+        "calendar366"
+      ],
+      "decision": "retain-existing",
+      "nextAction": "Search and notification gaps from earlier batches are now filled. Keep improving relevant canonicals rather than generating more broad pages."
+    }
+  ],
+  "priority": "Best next checks are wrong default/destination calendar, one detailed family handoff example and actual travel-alert controls. Existing sharing canonicals should explain permission versus display distinctions. Search/export/notification are now existing routes.",
+  "unsupportedCloudCapabilitiesToExcludeFromMetadata": [
+    "Task completion and shared chore lists",
+    "Meal plans, recipes, grocery lists and household budgeting",
+    "Native Android/web editing clients",
+    "Group chat and social friend graph",
+    "Family location tracking and safe-zone alerts",
+    "Room/equipment booking enforcement",
+    "Custom event-field system and granular Teamup-style permissions",
+    "MCP/AI/natural-language/Shortcuts support without direct verification"
+  ],
+  "evidenceLimits": {
+    "ranking": null,
+    "searchVolume": null,
+    "chatgptCitations": null,
+    "publisherCapabilities": "First-party textual claims only, not independent product tests."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-22",
+  "remainingCompleteDescriptionsReviewed": 38,
+  "remainingCompleteFieldsReviewed": 190,
+  "previousSixLocaleCompleteFieldReview": "batch29-aso-semantic/audit.json",
+  "previousSixDescriptionReview": "batch28-readiness/aso-audit.json",
+  "combinedDescriptionLocaleCoverage": 50,
+  "fullFiveFieldSemanticCoverageProvenByTheseTwoRecentAudits": 44,
+  "limits": "Earlier six description review is not counted as24other fullfield reads. Own-language editorial assessments vary in confidence; no independent native-speaker or market ranking/volume certification. Fresh root24shortfield review closes the prior field-read gap; confidence and market-evidence limitations remain.",
+  "materialFinding": {
+    "locale": "ml-IN",
+    "issue": "Dependent using-iCloud form incorrectly conflated independent Google connection",
+    "exactOnlyExcerptChanged": true,
+    "independentReview": "ml-cross-review.json",
+    "appliedEvidence": "applied.json"
+  },
+  "noOtherChangesJustified": true,
+  "noKeywordOrNameChanges": true,
+  "currentPersistenceEvidence": "../aso/all-locales-readback-batch30.json",
+  "currentExpectedFields": 250,
+  "additionalRootFieldRead": {
+    "locales": 6,
+    "fields": 24,
+    "evidence": "root-six-short-fields.json"
+  },
+  "combinedBoundedEditorialFieldCoverage": 250,
+  "combinedBoundedEditorialLocaleCoverage": 50
+}

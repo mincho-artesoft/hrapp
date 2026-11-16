@@ -1,0 +1,1174 @@
+{
+  "pitman-2-2-3-shift-schedule-calendar-setup": {
+    "updated": "2026-10-23",
+    "title": "Pitman 2-2-3 shift calendar: verify the 14-day pattern",
+    "short": "Pitman 2-2-3 shift calendar",
+    "description": "Build and audit a Pitman 14-day roster with two biweekly patterns, a dated example and checks for night-shift end dates.",
+    "lede": "A Pitman roster is not a single weekly pattern. Start with an approved 14-day roster, identify the two alternating weeks, and check the next cycle before relying on a repeating calendar. The example below uses fixed day shifts; it does not prescribe an employer’s roster.",
+    "sections": [
+      {
+        "heading": "Start with a real cycle, not its nickname",
+        "body": [
+          "Nantucket’s police working-hours FAQ describes four teams following two shifts, two rest days, three shifts, then two rest days, two shifts and three rest days. Other employers can use different anchors or day/night rotations. Copy your actual first work date and handover times before entering anything.",
+          "For a cycle starting Monday 2 November 2026, the first week has shifts on Monday, Tuesday, Friday, Saturday and Sunday. The second has Wednesday and Thursday. These are three work blocks of two, three and two starts, separated by rest blocks."
+        ]
+      },
+      {
+        "heading": "Model the repeating starts",
+        "body": [
+          "An iCalendar model can use two weekly rules with INTERVAL=2 and an explicit WKST=MO. The first starts 2 November and uses BYDAY=MO,TU,FR,SA,SU; the second starts 11 November and uses BYDAY=WE,TH. These are rule fragments, not a complete import file.",
+          "The calendar’s visual Sunday/Monday preference does not by itself establish the WKST value of an exported rule. If your editor offers the needed custom repeat controls, preview the resulting dates. If it does not, use individually checked dates or a roster tool rather than assume a hidden control exists. Google documents a 730-occurrence limit per repeating event."
+        ]
+      },
+      {
+        "heading": "Audit before extending or sharing",
+        "body": [
+          "With illustrative 07:00–19:00 shifts, seven starts give 84 planned hours per 14 days. Confirm the same seven start positions in the following cycle. For 19:00–07:00 nights, put the end on the following date; an off start-date does not mean the whole calendar date is free.",
+          "Use a separate, clearly named work calendar when your provider supports one. Keep employer changes and one-off cover visible rather than silently altering the base cycle. This is a planning example, not a payroll or rest entitlement calculation."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Week",
+        "Start dates in November 2026",
+        "Planned hours at 12 per shift"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1",
+            "2, 3, 6, 7, 8",
+            "60"
+          ]
+        },
+        {
+          "cells": [
+            "2",
+            "11, 12",
+            "24"
+          ]
+        },
+        {
+          "cells": [
+            "Next cycle begins",
+            "16",
+            "84 across each complete two-week cycle"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the cycle anchor and whether days and nights rotate.",
+      "Enter a bounded trial covering two complete cycles.",
+      "Compare every generated start and next-day night endpoint with the roster.",
+      "Only extend or share once exceptions and dates match."
+    ],
+    "faq": [
+      {
+        "q": "Does changing the calendar grid to Monday fix the recurrence?",
+        "a": "Not necessarily. Visual layout and recurrence week grouping are different settings; verify the generated dates."
+      },
+      {
+        "q": "Can a single every-three-days rule replace this pattern?",
+        "a": "No. The gaps between work blocks vary; a fixed three-day interval generates different starts."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "Nantucket Police: working-hours FAQ",
+        "url": "https://www.nantucket-ma.gov/m/faq?cat=154"
+      },
+      {
+        "label": "RFC 5545: recurrence rules and week start",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10"
+      },
+      {
+        "label": "Google Calendar: create a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "recurring-events-without-the-mess",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "dupont-28-day-rotating-shift-calendar-cycle": {
+    "updated": "2026-10-23",
+    "title": "DuPont 28-day shift calendar: map the cycle before repeating it",
+    "short": "DuPont 28-day shift calendar",
+    "description": "Audit an illustrative 28-day DuPont roster, including next-day night endpoints, 72-hour gaps and safe recurrence boundaries.",
+    "lede": "A DuPont calendar needs an exact roster, not just a repeat-every-four-weeks label. Map all 28 start-date positions and their day or night times first. A schedule name alone does not establish the order of shifts at your workplace.",
+    "sections": [
+      {
+        "heading": "Separate documented practice from the example",
+        "body": [
+          "Henderson County EMS documents a modified DuPont schedule with seven day shifts, seven night shifts and seven consecutive days off in a 28-day cycle. That source does not specify every workplace’s exact ordering. The sequence here is an illustrative roster: 4 nights, 3 off, 3 days, 1 off, 3 nights, 3 off, 4 days, 7 off.",
+          "Starting 7 November 2026, use 07:00–19:00 for days and 19:00–07:00 next day for nights, in America/New_York. All dates in this example are after the autumn clock change, so these illustrative shifts each last 12 elapsed hours."
+        ]
+      },
+      {
+        "heading": "Measure gaps from the previous end",
+        "body": [
+          "The first night block starts 7–10 November and ends 11 November at 07:00. The next day block starts 14 November at 07:00: a 72-hour gap. The second night block starts 18–20 November and ends 21 November at 07:00. The following day block starts 24 November at 07:00: another 72-hour gap.",
+          "These are elapsed gaps between endpoints, not a recommendation about recovery or an employer’s rules. Fourteen 12-hour intervals total 168 planned hours. A day label marked off can still contain the end of the preceding night shift."
+        ]
+      },
+      {
+        "heading": "Choose an entry method you can verify",
+        "body": [
+          "An iCalendar model can represent each of the fourteen work-start positions as its own daily rule with INTERVAL=28. This avoids assuming an editor exposes a complex four-week weekday selector. It is a model, not evidence of any particular app’s import support.",
+          "If your roster editor has a rotation feature, preview the actual dates before exporting. Compare the last night of a block, the following day block and the boundary into the next cycle. Keep a finite review horizon and recheck employer changes rather than extending an unverified pattern indefinitely."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Cycle positions",
+        "Illustrative November 2026 starts",
+        "Type"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "1–4",
+            "7–10",
+            "Night"
+          ]
+        },
+        {
+          "cells": [
+            "5–7",
+            "11–13",
+            "Off start-dates"
+          ]
+        },
+        {
+          "cells": [
+            "8–10",
+            "14–16",
+            "Day"
+          ]
+        },
+        {
+          "cells": [
+            "11",
+            "17",
+            "Off"
+          ]
+        },
+        {
+          "cells": [
+            "12–14",
+            "18–20",
+            "Night"
+          ]
+        },
+        {
+          "cells": [
+            "15–17",
+            "21–23",
+            "Off start-dates"
+          ]
+        },
+        {
+          "cells": [
+            "18–21",
+            "24–27",
+            "Day"
+          ]
+        },
+        {
+          "cells": [
+            "22–28",
+            "28 November–4 December",
+            "Off"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Obtain the employer-approved 28-day sequence and start date.",
+      "Assign an explicit start time and following-date end to every night.",
+      "Count seven day starts and seven night starts in the sample cycle.",
+      "Audit the next cycle and any clock-change weekend before sharing."
+    ],
+    "faq": [
+      {
+        "q": "Does every DuPont roster use this exact order?",
+        "a": "No. The employer source describes a modified schedule; your approved roster determines the order and phase."
+      },
+      {
+        "q": "Can I group all matching weekdays into a four-week rule?",
+        "a": "Only if the generated dates exactly match the cycle. Separate 28-day start-position rules are a clearer reference model when weekday grouping is uncertain."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "Henderson County EMS: modified DuPont schedule",
+        "url": "https://www.hendersoncountync.gov/ems/page/working-hcems"
+      },
+      {
+        "label": "RFC 5545: recurrence",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10"
+      },
+      {
+        "label": "Google Calendar: recurring-event controls and limits",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "label": "Month View on a Bigger Screen"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "label": "The Year in One Screen"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "month-view-on-a-bigger-screen",
+      "the-year-in-one-screen"
+    ]
+  },
+  "firefighter-24-48-kelly-day-calendar-pattern": {
+    "updated": "2026-10-23",
+    "title": "24/48 firefighter calendar: add a Kelly day without shifting the roster",
+    "short": "24/48 firefighter calendar",
+    "description": "Model a 24-on/48-off roster and a Kelly-day exception while preserving the base cycle and checking exact handover dates.",
+    "lede": "A 24-on/48-off roster repeats every three days, so its starts move through the week. A Kelly day removes an assigned tour according to the employer’s pattern; it should not accidentally shift every later start.",
+    "sections": [
+      {
+        "heading": "Confirm which tour is removed",
+        "body": [
+          "South Burlington Fire’s recruitment page describes a 24-hour-on, 48-hour-off schedule with a Kelly day every seventh shift. That is a documented example, not a rule for every fire department. Obtain your platoon’s anchor date and Kelly-day phase from the approved roster.",
+          "For an illustrative schedule with day 1 on Sunday 1 November 2026 at 07:00, starts fall on days 1, 4, 7, 10, 13, 16 and 19. The next start is day 22. Consecutive starts advance three weekdays; the weekday pattern returns after 21 days."
+        ]
+      },
+      {
+        "heading": "Keep the underlying three-day series",
+        "body": [
+          "A recurrence model for the base starts is FREQ=DAILY;INTERVAL=3. A Kelly exception should exclude the assigned tour while leaving the later starts unchanged. RFC 5545 defines EXDATE as one way to exclude an occurrence, but a provider may represent an edited or cancelled instance differently.",
+          "In this example, remove day 19, the seventh scheduled tour, only after confirming that is the correct phase. Day 16 ends at 07:00 on day 17, and the next actual start remains day 22 at 07:00. In this no-clock-change interval, the gap is 120 elapsed hours. It is not a new six-day repeating base schedule."
+        ]
+      },
+      {
+        "heading": "Inspect the exception scope",
+        "body": [
+          "Google’s recurring-event documentation says to choose which events an edit applies to, but it does not promise a particular export representation. Confirm the selected occurrence is removed and inspect the next two retained tours. If the app cannot express the exception reliably, keep a checked finite roster instead.",
+          "A 24-hour wall-clock handover interval can have a different elapsed length across a daylight-saving change. Check those weekends separately. Calendar intervals do not establish paid hours, staffing rules or leave entitlements."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Start position",
+        "Illustrative date",
+        "Result"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Day 16",
+            "16 November, 07:00",
+            "Tour ends 17 November, 07:00"
+          ]
+        },
+        {
+          "cells": [
+            "Day 19",
+            "19 November, 07:00",
+            "Kelly exception in this illustration"
+          ]
+        },
+        {
+          "cells": [
+            "Day 22",
+            "22 November, 07:00",
+            "Original base start retained"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check the platoon anchor, handover time and Kelly phase.",
+      "Build the three-day starts over a finite sample.",
+      "Remove only the approved occurrence and retain its roster reference.",
+      "Check the next two tours and daylight-saving endpoints."
+    ],
+    "faq": [
+      {
+        "q": "Should I use weekly weekday checkboxes?",
+        "a": "A three-day interval does not stay on the same weekdays, so a weekly selection alone does not model the base cycle."
+      },
+      {
+        "q": "Will deleting one occurrence always create an EXDATE?",
+        "a": "No. That is a standard representation, not a guarantee about a provider’s internal storage or export."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "South Burlington Fire: 24/48 and every-seventh-shift Kelly day",
+        "url": "https://www.southburlingtonvt.gov/170/Careers"
+      },
+      {
+        "label": "RFC 5545: recurrence exclusions",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.1"
+      },
+      {
+        "label": "Google Calendar: edit a recurring event",
+        "url": "https://support.google.com/calendar/answer/37115?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "label": "The Year in One Screen"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "recurring-events-without-the-mess",
+      "the-year-in-one-screen"
+    ]
+  },
+  "overnight-shift-crossing-midnight-calendar-end-date": {
+    "updated": "2026-10-23",
+    "title": "Overnight shift calendar: put the end on the next date",
+    "short": "Overnight shift calendar",
+    "description": "Enter a night shift that crosses midnight with the correct start date, next-day end and a checkable interval instead of an all-day label.",
+    "lede": "An overnight shift is one timed interval across two dates. If you start Monday evening and finish Tuesday morning, both dates belong in the event details. A roster’s label is not a substitute for those endpoints.",
+    "sections": [
+      {
+        "heading": "Write the two endpoints before creating the event",
+        "body": [
+          "Suppose the approved shift is Monday 2 November 2026, 19:00, to Tuesday 3 November, 07:00, in America/New_York. This particular interval is 12 elapsed hours. Using 07:00 on Monday as the end would place the endpoint before the start.",
+          "Give the event a label that makes its convention clear, such as Monday night: 19:00–Tuesday 07:00. A workplace might call it Tuesday’s shift; keep that reference in the title or notes while preserving the actual start date."
+        ]
+      },
+      {
+        "heading": "Check details rather than the month-grid shape",
+        "body": [
+          "A calendar can draw a cross-midnight event differently in month, week or agenda views. Open the saved event and verify its dates, times and zone. A short bar or a split visual segment does not by itself prove the stored interval is wrong.",
+          "An all-day event is a date-based item, not an exact night-shift block. A label covering Monday and Tuesday can provide context, but it cannot replace a 19:00–07:00 timed record when someone needs to know which hours are occupied."
+        ]
+      },
+      {
+        "heading": "Repeat the start pattern and audit transitions",
+        "body": [
+          "In iCalendar, DTSTART identifies a recurring series’ first start; any BYDAY selection refers to occurrence starts. A Sunday-night start therefore belongs to Sunday even when most of its hours fall on Monday. The standard allows DTEND or DURATION; DTEND is not mandatory for every timed event.",
+          "For repeated shifts, inspect the first occurrence after midnight and the next daylight-saving weekend. The same displayed start and end hours can represent seven, eight, nine or other elapsed lengths depending on the actual interval and zone rules. Use the approved endpoints rather than silently compensating an hour."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Record",
+        "Start",
+        "End"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Correct timed shift",
+            "2 November 2026, 19:00",
+            "3 November 2026, 07:00"
+          ]
+        },
+        {
+          "cells": [
+            "Incorrect same-date endpoint",
+            "2 November, 19:00",
+            "2 November, 07:00"
+          ]
+        },
+        {
+          "cells": [
+            "All-day context label",
+            "Date-based",
+            "Does not express exact working hours"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Write both dates, both times and the location’s time zone.",
+      "Save a single occurrence before repeating it.",
+      "Reopen it in event details and verify the following-date end.",
+      "Check one cross-midnight repeat and any clock-change occurrence."
+    ],
+    "faq": [
+      {
+        "q": "Should the event be split into two?",
+        "a": "One continuous interval can cross midnight. Split it only when the underlying schedule actually has separate periods or your workflow requires separate records."
+      },
+      {
+        "q": "Does an off day mean no shift appears on that date?",
+        "a": "Not always: the previous night’s event can end that morning."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "RFC 5545: event start and end",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1"
+      },
+      {
+        "label": "Google Calendar: event time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "What an All-Day Event Really Means"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "shift-work-calendar-iphone-rotating-schedules",
+      "what-an-all-day-event-really-means",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "split-shift-two-work-periods-calendar-blocking": {
+    "updated": "2026-10-23",
+    "title": "Split-shift calendar: keep two work periods and the gap separate",
+    "short": "Split-shift calendar",
+    "description": "Plan a split shift as two timed blocks, distinguish occupied hours from the overall span and keep optional travel buffers explicit.",
+    "lede": "A split shift has two separate scheduled periods. Representing the whole span as one event can hide a genuine gap; representing only the two work blocks can hide travel commitments. Keep each kind of time explicit.",
+    "sections": [
+      {
+        "heading": "Calculate the intervals before choosing busy status",
+        "body": [
+          "Take a hypothetical roster on 2 November 2026: 06:00–10:00 and 15:30–19:30 in one unchanged time zone. The two periods total eight planned hours. The overall first-start-to-last-end span is 13.5 hours, and the gap between periods is 5.5 hours.",
+          "Those numbers describe calendar intervals only. They do not establish compensation, breaks required by law or time actually worked. Likewise, an app’s export or report may use different fields; do not assume it calculates payroll from visible event bars."
+        ]
+      },
+      {
+        "heading": "Create two records with a shared identifier",
+        "body": [
+          "Use titles such as Roster 42: morning and Roster 42: afternoon, so a future change can be matched to the same approved shift. Give each record its exact start and end. If your editor offers free/busy controls, choose them according to your real scheduling constraints and verify what a colleague or booking tool actually sees.",
+          "When the two periods change independently, edit the affected record rather than expanding one continuous event across the gap. If a repeated shift has an exception, check both halves on that date so an old afternoon block is not left behind."
+        ]
+      },
+      {
+        "heading": "Add only real buffer commitments",
+        "body": [
+          "Suppose you separately plan travel from 10:00–10:30 and 15:00–15:30. Those buffers occupy one hour of the 5.5-hour gap, leaving a 4.5-hour interval from 10:30 to 15:00. That is a calculation for this example, not a recommendation that the remaining time is suitable for a particular activity.",
+          "A decorative all-day roster label can help identification, but keep it separate from the timed blocks. Before sharing, compare the day’s occupied intervals with the actual roster and avoid exposing unnecessary workplace details."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Quantity",
+        "Calculation",
+        "Result"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Two scheduled periods",
+            "4 + 4",
+            "8 hours"
+          ]
+        },
+        {
+          "cells": [
+            "Overall span",
+            "06:00 to 19:30",
+            "13.5 hours"
+          ]
+        },
+        {
+          "cells": [
+            "Middle gap",
+            "10:00 to 15:30",
+            "5.5 hours"
+          ]
+        },
+        {
+          "cells": [
+            "Gap after the example buffers",
+            "10:30 to 15:00",
+            "4.5 hours"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Create two exact timed records, not one full-span block.",
+      "Use a common roster reference in both titles.",
+      "Record travel or other commitments separately if they apply.",
+      "Inspect both halves after a change and check actual free/busy output."
+    ],
+    "faq": [
+      {
+        "q": "Is the middle gap automatically free?",
+        "a": "No. Travel or other commitments may occupy it, and availability depends on your actual constraints."
+      },
+      {
+        "q": "Does eight scheduled hours mean eight paid hours?",
+        "a": "No. The calendar example measures planned intervals, not payroll or legal entitlements."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "RFC 5545: event intervals",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1"
+      },
+      {
+        "label": "RFC 5545: time transparency",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.7"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "label": "Planning a Week in Ten Minutes"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      },
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      }
+    ],
+    "seeAlso": [
+      "planning-a-week-in-ten-minutes",
+      "a-week-view-that-fits-a-week",
+      "shift-work-calendar-iphone-rotating-schedules"
+    ]
+  },
+  "on-call-standby-calendar-versus-confirmed-shift": {
+    "updated": "2026-10-23",
+    "title": "On-call calendar: separate coverage from confirmed work",
+    "short": "On-call calendar",
+    "description": "Keep an on-call coverage window, regular work and call-outs distinct; choose busy status from the real duty constraints.",
+    "lede": "An on-call window answers who is responsible for coverage. A confirmed work block answers when an activity is planned. Keep those records distinct, and do not assume standby should always appear free.",
+    "sections": [
+      {
+        "heading": "Record the handover as an exact interval",
+        "body": [
+          "For an illustrative week, coverage begins Monday 2 November 2026 at 08:00 and ends Monday 9 November at 08:00 in America/New_York. There is no clock change inside this interval, so it spans 168 elapsed hours. A Monday-through-Sunday all-day banner does not express the same endpoints.",
+          "An all-day label can provide context, but preserve the exact handover times in a timed reference or clearly visible notes. Use a title identifying the coverage role, and keep any contact or escalation details within the appropriate sharing audience."
+        ]
+      },
+      {
+        "heading": "Choose availability from the actual constraints",
+        "body": [
+          "Do not mark all on-call time free as a blanket rule. If the duty prevents accepting another commitment, busy may be the appropriate status. If some bookings are acceptable, decide with the responsible team which time is genuinely available and verify the behavior in the actual booking workflow.",
+          "RFC 5545 TRANSP distinguishes whether an event contributes to busy-time searches. It does not classify paid work, guarantee a provider’s booking integration or prove that a person is available. A secondary calendar is not automatically excluded from every availability calculation."
+        ]
+      },
+      {
+        "heading": "Avoid double-counting coverage and activity",
+        "body": [
+          "Suppose the week contains 40 hours of regular planned work and seven hours of call-outs outside those regular blocks. The coverage envelope is still 168 hours. The non-overlapping regular-plus-call-out total is 47 hours, leaving 121 hours outside those activity blocks but still inside coverage.",
+          "That remainder is not unrestricted leisure and does not establish paid standby. If a call-out overlaps regular work, calculate the union of occupied intervals rather than adding both durations. Review actual callbacks separately from planned ones and preserve the original coverage reference."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Layer",
+        "Illustrative quantity",
+        "Meaning"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Coverage envelope",
+            "168 hours",
+            "Responsibility window"
+          ]
+        },
+        {
+          "cells": [
+            "Regular work",
+            "40 hours",
+            "Planned activity"
+          ]
+        },
+        {
+          "cells": [
+            "Non-overlapping call-outs",
+            "7 hours",
+            "Additional activity"
+          ]
+        },
+        {
+          "cells": [
+            "Remainder inside coverage",
+            "121 hours",
+            "Not automatically available or unpaid"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Record exact start and end handovers.",
+      "Keep coverage and confirmed activity as distinct records.",
+      "Choose busy status from duty constraints, not a universal standby rule.",
+      "Test what an intended viewer or booking tool sees."
+    ],
+    "faq": [
+      {
+        "q": "Should standby always be marked free?",
+        "a": "No. That depends on the duty and which commitments are allowed."
+      },
+      {
+        "q": "Can I add all three durations together?",
+        "a": "No. The coverage window contains the activity blocks; adding them double-counts time."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "RFC 5545: transparency and busy-time searches",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.2.7"
+      },
+      {
+        "label": "RFC 5545: event endpoints",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "booking-link-or-shared-calendar",
+        "label": "Booking Link or Shared Calendar"
+      },
+      {
+        "slug": "shift-work-calendar-iphone-rotating-schedules",
+        "label": "Shift Work Calendar on iPhone: Rotating Schedules and Family Sharing"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "What an All-Day Event Really Means"
+      }
+    ],
+    "seeAlso": [
+      "booking-link-or-shared-calendar",
+      "shift-work-calendar-iphone-rotating-schedules",
+      "what-an-all-day-event-really-means"
+    ]
+  },
+  "us-uk-dst-mismatch-weeks-recurring-meeting-calendar": {
+    "updated": "2026-10-23",
+    "title": "US–UK DST mismatch: check each recurring meeting date",
+    "short": "US–UK DST mismatch",
+    "description": "Check New York–London meetings during the unequal 2026 and 2027 daylight-saving transitions instead of assuming four weeks every year.",
+    "lede": "New York and London change their clocks on different dates. A meeting anchored at 09:00 New York usually appears at 14:00 London, but appears at 13:00 during the mismatch intervals. The number of affected weeks changes by year.",
+    "sections": [
+      {
+        "heading": "Use the actual year’s transition dates",
+        "body": [
+          "US Naval Observatory guidance describes the US changes on the second Sunday in March and first Sunday in November. GOV.UK lists the UK dates: 29 March and 25 October in 2026; 28 March and 31 October in 2027.",
+          "For a 09:00 New York occurrence, the spring mismatch dates are 8–28 March 2026 and 14–27 March 2027, inclusive. The autumn dates are 25–31 October 2026 and 31 October–6 November 2027. A weekly meeting is affected only if it actually occurs within those ranges."
+        ]
+      },
+      {
+        "heading": "Decide which wall clock is anchored",
+        "body": [
+          "Inspect the event’s own time zone, not just the organizer’s location or your calendar grid. An explicitly New York-zoned series can hold 09:00 there while London’s display changes. A UTC-anchored series follows a different rule. Do not infer the anchor from the person who sent the invitation.",
+          "Google’s computer help documents an event Time zone control. For other providers, inspect their event details and documentation rather than assume the same path. If both offices want unchanged local hours, no single instant can preserve both hours while the offset changes; agree which occurrence needs an exception."
+        ]
+      },
+      {
+        "heading": "Check before changing the series",
+        "body": [
+          "Open an ordinary occurrence and one inside each mismatch interval, then compare both cities and the calendar date. Send the organizer the specific date, zone and expected local time rather than a vague one-hour correction request.",
+          "If you own the event and make an agreed exception, verify its edit scope and the next ordinary occurrence. Do not shift the whole series to fix one week. The examples use current rules and a time after each transition; recheck future policy changes."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Year",
+        "09:00 New York displays 13:00 London",
+        "Mismatch duration at that hour"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "2026 spring",
+            "8–28 March",
+            "21 days"
+          ]
+        },
+        {
+          "cells": [
+            "2026 autumn",
+            "25–31 October",
+            "7 days"
+          ]
+        },
+        {
+          "cells": [
+            "2027 spring",
+            "14–27 March",
+            "14 days"
+          ]
+        },
+        {
+          "cells": [
+            "2027 autumn",
+            "31 October–6 November",
+            "7 days"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the event’s zone and the year.",
+      "Open one ordinary and one affected occurrence in both cities.",
+      "Agree which city’s wall clock takes priority.",
+      "Check the scope of any exception and the following occurrence."
+    ],
+    "faq": [
+      {
+        "q": "Are there always four mismatch weeks?",
+        "a": "No. These ranges total four weeks in 2026 and three weeks in 2027."
+      },
+      {
+        "q": "Will setting the organizer’s calendar to London fix it?",
+        "a": "A display setting is not the event’s recurrence anchor. Inspect the actual event time zone."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "US Naval Observatory: US daylight-saving rules",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "GOV.UK: 2026 and 2027 clock-change dates",
+        "url": "https://www.gov.uk/when-do-the-clocks-change"
+      },
+      {
+        "label": "Google Calendar: event time zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "non-dst-time-zone-arizona-hawaii-recurring-calendar": {
+    "updated": "2026-10-23",
+    "title": "Phoenix and Hawaii meeting times: use the right city zone",
+    "short": "Phoenix and Hawaii meeting times",
+    "description": "Compare Phoenix and Honolulu meetings with seasonal New York, Denver and Los Angeles times using dated 2026 examples.",
+    "lede": "Phoenix and Honolulu do not follow the same seasonal clock changes as New York or Denver under the current rules. A city-based time zone helps preserve the intended local meeting hour; a familiar regional abbreviation can conceal the difference.",
+    "sections": [
+      {
+        "heading": "Choose the location, not a shorthand",
+        "body": [
+          "The US Naval Observatory says Hawaii and most of Arizona observe standard time only. That is not a statement that every Arizona location follows Phoenix. Confirm the actual meeting location, then select its supported geographic zone.",
+          "For the Phoenix examples use America/Phoenix, not America/Denver. Both have UTC−07:00 in January 2026, but Denver changes to UTC−06:00 in July while Phoenix stays at UTC−07:00. Honolulu uses Pacific/Honolulu and stays UTC−10:00 throughout these examples."
+        ]
+      },
+      {
+        "heading": "Compare winter and summer occurrences",
+        "body": [
+          "A recurring 09:00 Phoenix meeting appears at 11:00 New York on 14 January 2026 and 12:00 there on 15 July. It is 06:00 Honolulu on both dates. Los Angeles matches Phoenix’s displayed hour in July, but is one hour earlier in January.",
+          "Those are calculations for the specified dates using current time-zone data. They do not mean an offset can never change in the future, or that all cities switch clocks on the US dates. Preserve the named zone and check the actual occurrence year."
+        ]
+      },
+      {
+        "heading": "Audit the event, then its display",
+        "body": [
+          "Google documents separate calendar and event time-zone settings. A viewer changing their display zone does not necessarily change the saved event’s anchor. Open the event details, check its geographic zone, and compare a January and July occurrence before changing any times.",
+          "If the event is owned by someone else, provide the exact date and expected local time for the meeting location. Avoid editing your copy as if it were the source schedule. For travel, also check whether your device uses an automatic local display zone or a fixed override."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "09:00 Phoenix on",
+        "New York",
+        "Denver",
+        "Los Angeles",
+        "Honolulu"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "14 January 2026",
+            "11:00",
+            "09:00",
+            "08:00",
+            "06:00"
+          ]
+        },
+        {
+          "cells": [
+            "15 July 2026",
+            "12:00",
+            "10:00",
+            "09:00",
+            "06:00"
+          ]
+        },
+        {
+          "cells": [
+            "4 November 2026",
+            "11:00",
+            "09:00",
+            "08:00",
+            "06:00"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the actual location, including any regional exception.",
+      "Inspect the event’s named zone.",
+      "Compare a winter and summer occurrence.",
+      "Ask the organizer before altering a shared series."
+    ],
+    "faq": [
+      {
+        "q": "Is Mountain Time enough information?",
+        "a": "Not always. Phoenix and Denver have different summer behavior; select the actual supported location."
+      },
+      {
+        "q": "Does Hawaii shift when New York changes clocks?",
+        "a": "Not in the current rules used by these 2026 examples. Their relative time difference therefore changes."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "US Naval Observatory: Hawaii and most Arizona exemptions",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "Google Calendar: calendar versus event zones",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      },
+      {
+        "label": "IANA: geographic time-zone data",
+        "url": "https://www.iana.org/time-zones"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "label": "Recurring Events Without the Mess"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "recurring-events-without-the-mess"
+    ]
+  },
+  "southern-hemisphere-reverse-dst-two-hour-meeting-shift": {
+    "updated": "2026-10-23",
+    "title": "Sydney–New York recurring meetings: plan the two-hour seasonal swing",
+    "short": "Sydney–New York recurring meetings",
+    "description": "Compare Sydney and New York meetings across 2026 seasons, then choose an explicit anchor or an agreed seasonal compromise.",
+    "lede": "Sydney and New York observe daylight saving in opposite seasons. Their difference is 14 hours in July 2026 and 16 hours in December. A recurring meeting that is convenient in one season can move by two local hours in the other.",
+    "sections": [
+      {
+        "heading": "Check both hemispheres’ transition calendars",
+        "body": [
+          "NSW government guidance says daylight saving begins on the first Sunday in October and ends on the first Sunday in April. The US uses the second Sunday in March and first Sunday in November. These independent changes create shoulder periods as well as the summer and winter extremes.",
+          "The worked cases use Australia/Sydney and America/New_York, not every city in Australia or the Southern Hemisphere. Other regions can have different dates or no daylight saving. Check the actual cities and occurrence date rather than applying a hemisphere-wide two-hour rule."
+        ]
+      },
+      {
+        "heading": "Choose an anchor before choosing exceptions",
+        "body": [
+          "A series anchored at 17:00 New York appears at 07:00 the next day in Sydney on 6 July 2026. Keep that same New York hour on 7 December and it appears at 09:00 the next day in Sydney. Neither city’s display is broken; their offset has changed.",
+          "If both groups agree to share the seasonal adjustment, one possible arrangement is 17:00 New York in July and 16:00 in December. Those examples give Sydney 07:00 and 08:00 respectively: each side changes its local hour by one. This is a negotiation example, not a claim that those times suit every team."
+        ]
+      },
+      {
+        "heading": "Audit the shoulder occurrences separately",
+        "body": [
+          "A two-season agreement does not automatically settle every week between the transitions. Inspect the occurrences around March, April, October and November in both cities. Decide the change date explicitly and retain the organizer’s single source of truth.",
+          "If your calendar supports scoped series edits, verify which occurrences change before saving. Google documents event time-zone controls, but the calendar’s display zone is separate from the event’s anchor. After any agreed adjustment, check the first changed occurrence and one ordinary week after it."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Example anchor",
+        "Sydney display",
+        "Purpose"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "6 July 2026, 17:00 New York",
+            "7 July, 07:00",
+            "July baseline"
+          ]
+        },
+        {
+          "cells": [
+            "7 December 2026, 17:00 New York",
+            "8 December, 09:00",
+            "Unchanged New York hour"
+          ]
+        },
+        {
+          "cells": [
+            "7 December 2026, 16:00 New York",
+            "8 December, 08:00",
+            "Illustrative shared seasonal adjustment"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Use the two actual city zones.",
+      "Compare July, December and each transition shoulder.",
+      "Agree whether one city stays fixed or both adjust.",
+      "Verify dates and edit scope before updating invitations."
+    ],
+    "faq": [
+      {
+        "q": "Does every Southern Hemisphere meeting shift by two hours?",
+        "a": "No. This comparison depends on these two cities and their current rules."
+      },
+      {
+        "q": "Can both cities retain the same local hour all year?",
+        "a": "Not when their relative offset changes. Someone must accept a changed hour or an agreed exception."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "NSW Government: daylight-saving rule",
+        "url": "https://dcj.nsw.gov.au/about-us/daylight-saving.html"
+      },
+      {
+        "label": "US Naval Observatory: US daylight-saving rule",
+        "url": "https://aa.usno.navy.mil/faq/daylight_time"
+      },
+      {
+        "label": "Google Calendar: event versus display zone",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "label": "A Week View That Fits a Week"
+      }
+    ],
+    "seeAlso": [
+      "time-zones-and-the-flight-you-booked",
+      "when-two-calendars-disagree",
+      "a-week-view-that-fits-a-week"
+    ]
+  },
+  "iana-tzdb-government-time-zone-rule-change-calendar": {
+    "updated": "2026-10-23",
+    "title": "Time-zone rule changes: diagnose a calendar before moving events",
+    "short": "Time-zone rule changes",
+    "description": "Collect dated evidence after a government time-zone change, distinguish stale rules from changed event data and avoid bulk one-hour repairs.",
+    "lede": "When a government changes its time-zone rules, two calendars can show different local hours without anyone editing the meeting. Diagnose the affected date, location and saved event before moving a series. A blind one-hour correction can create a second error.",
+    "sections": [
+      {
+        "heading": "Separate the rule source from software delivery",
+        "body": [
+          "IANA maintains a technical database reflecting changes made by political bodies to offsets, boundaries and daylight-saving rules. Its documentation says users generally receive that data through software and operating-system vendors. Governments decide the rules; IANA is not the legal authority for every location.",
+          "Google warns that events created before it knew about a regional time-zone change can be wrong. This is a provider-specific warning, not proof that every calendar stores events as fixed UTC instants or that all vendors ship updates simultaneously."
+        ]
+      },
+      {
+        "heading": "Make a comparison ledger",
+        "body": [
+          "For one affected event, record its title or private reference, organizer, exact occurrence date, intended local hour, named location zone and any visible UTC endpoint. Compare the same occurrence in the provider’s web calendar and an updated device, using the same display zone.",
+          "As a hypothetical calculation, 14:00 UTC displays as 09:00 at UTC−05:00 and 08:00 at UTC−06:00. That explains a changed display only if the UTC instant stayed fixed. A wall-clock-zoned event re-evaluated under new rules can behave differently; do not infer storage behavior from the label alone."
+        ]
+      },
+      {
+        "heading": "Escalate with evidence before repairing",
+        "body": [
+          "Check the relevant government announcement and the provider’s current guidance for the actual effective date. Install ordinary supported software updates where available, then compare again. A system version is useful evidence but not by itself proof of the provider’s server-side time-zone data version.",
+          "Send the organizer or provider the ledger and the expected local time. If a correction is agreed, change only the appropriate scope and inspect a later occurrence. Avoid substituting a nearby country’s zone, bulk resaving all future events, or manually incrementing SEQUENCE as a generic repair. Those actions can alter valid meetings or invitations."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Worked example to check against your calendar",
+      "columns": [
+        "Hypothetical record",
+        "Interpretation",
+        "What it does not prove"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Same 14:00 UTC; offset −05:00 → −06:00",
+            "Display changes 09:00 → 08:00",
+            "That the event was edited"
+          ]
+        },
+        {
+          "cells": [
+            "Same local 09:00; UTC instant changes",
+            "Rules may have been reapplied",
+            "That every provider behaves this way"
+          ]
+        },
+        {
+          "cells": [
+            "Different zones selected by viewers",
+            "Display comparison is not controlled",
+            "A server-side rule error"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Record the exact affected occurrence and named zone.",
+      "Compare equivalent displays in web and device clients.",
+      "Check government and provider guidance for the effective date.",
+      "Ask the organizer before any scoped repair; preserve the original evidence."
+    ],
+    "faq": [
+      {
+        "q": "Should I shift the whole series by one hour?",
+        "a": "Not before identifying the cause and intended anchor. A later rules update can make that workaround wrong."
+      },
+      {
+        "q": "Does choosing a neighboring country’s zone solve it?",
+        "a": "It can encode the wrong future rules. Use the actual supported location and seek provider guidance."
+      }
+    ],
+    "sourcesHeading": "Sources and verification",
+    "sources": [
+      {
+        "label": "IANA: time-zone database and vendor delivery",
+        "url": "https://www.iana.org/time-zones"
+      },
+      {
+        "label": "Google Calendar: daylight-saving and regional rule changes",
+        "url": "https://support.google.com/calendar/answer/37064?hl=en"
+      },
+      {
+        "label": "RFC 5545: time-zone components",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.5"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "When Two Calendars Disagree"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "label": "Time Zones and the Flight You Booked"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "What Calendar Sync Actually Does"
+      }
+    ],
+    "seeAlso": [
+      "when-two-calendars-disagree",
+      "time-zones-and-the-flight-you-booked",
+      "what-calendar-sync-actually-does"
+    ]
+  }
+}

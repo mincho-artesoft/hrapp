@@ -1,0 +1,55 @@
+CloudFront request-log aggregates
+
+Run from the repository root:
+  node ai-visibility/crawler-log.mjs <log-directory> --days=30
+  node ai-visibility/crawler-log.mjs <log-directory> --days 30 --json
+  node --test ai-visibility/crawler-log.test.mjs
+
+The existing positional directory and --days=N interface are preserved.
+--days N is also accepted. --json prints only the aggregate JSON report.
+Days are UTC calendar dates, inclusive of today: --days=1 means today's
+available rows, not the preceding rolling 24 hours. Future dates are excluded.
+
+Supported input: CloudFront tab-separated rows with a per-file #Fields header
+containing date, time, sc-status, cs-uri-stem and cs(User-Agent). Field order may
+vary and extra columns are allowed. A repeated header resets the field mapping.
+Rows must match the header's column count. Invalid headers, invalid rows and
+unsupported formats are counted separately. Headerless TSV, S3 access logs,
+JSON logs and space-delimited data rows are unsupported; no heuristic fallback
+is attempted. Plain files and .gz files in the immediate directory are read;
+subdirectories and symlinks are not followed. Unreadable/corrupt files are
+counted, and their contents/names are not printed.
+
+Coverage reports the minimum and maximum valid parsed dates, distinct observed
+dates, valid rows inside the requested window, older rows and future rows.
+Available coverage is based on supported valid rows only. Even a row on every
+date does not establish that every request or every hour was logged. A July
+sample analyzed for an October window reports no valid rows in the window;
+it does not claim that no crawler visited during October.
+
+Matching uses only the percent-decoded cs(User-Agent) field and bounded bot
+name tokens. The declared name can be spoofed. No IP verification is performed.
+Multiple tracked names in one UA are counted as ambiguous and excluded from
+individual agent totals. OpenAI categories follow:
+  https://developers.openai.com/api/docs/bots
+OAI-SearchBot: automated search crawler.
+ChatGPT-User: user-triggered retrieval.
+GPTBot: training crawler.
+These purposes do not prove the requester really belongs to OpenAI. Other
+tracked names receive conservative purpose-unverified labels. Google-Extended
+is not counted as a user-agent identity.
+
+Requests and status counts are not evidence of reading, indexing, answer use
+or citations. Status 000 is retained as a logged status, not a successful fetch.
+No matching request in a sample is not proof of no crawling or of llms.txt
+being useless. Both /llms.txt and /llms-full.txt are watched, alongside
+/robots.txt and /sitemap.xml. Their totals include all parsed window requests,
+with tracked declared-UA requests and status distributions reported separately.
+
+Privacy: output contains no raw IPs, UAs, query strings, filenames or arbitrary
+request paths. Only exact watched resource names and the root are retained.
+Locale roots use a fixed category. Article paths collapse to a fixed category
+without the slug. Every other path, including invitation/feed/token paths, is
+redacted into one category. This intentionally trades per-page reporting for
+safe aggregate output. Raw logs remain sensitive; the tool does not redact or
+modify the input files. --json has the same privacy policy as text output.

@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-22T05:26:11.291570+00:00",
+  "app": "6744690319",
+  "readOnly": true,
+  "versions": [
+    {
+      "id": "2efb6dfe-d449-4caa-8e94-964bb5fca361",
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "createdDate": "2026-10-19T23:52:46-07:00",
+      "build": {
+        "id": "462d6a97-7b99-4870-befd-cdeab6f753ea",
+        "version": "16",
+        "uploadedDate": "2026-10-21T04:34:08-07:00",
+        "processingState": "VALID",
+        "expired": false,
+        "minOsVersion": "18.0"
+      }
+    },
+    {
+      "id": "8f5b1301-5f7c-4d1e-9ab2-5adeed738263",
+      "version": "1.7.3",
+      "state": "READY_FOR_SALE",
+      "createdDate": "2026-09-29T06:50:11-07:00",
+      "build": {
+        "id": "2ac9b0c4-fab1-46bb-9610-78c76ecffb7f",
+        "version": "12",
+        "uploadedDate": "2026-09-30T05:14:55-07:00",
+        "processingState": "VALID",
+        "expired": false,
+        "minOsVersion": "18.0"
+      }
+    }
+  ]
+}

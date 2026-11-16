@@ -1,0 +1,117 @@
+{
+  "checkedAt": "2026-10-23",
+  "method": "Draft shape, existing-link and slug-collision checks. Independent source/intent review still required; no UI tests claimed.",
+  "draftCount": 11,
+  "articles": [
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 149,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "ede7deca84dc758f2877442255f714e4d58801a22354fe08b1ce697e603d62eb"
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 130,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "cc7cc6cd9726f6bf201a619cf6545183e5332010cda72e0926980c7233646650"
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 141,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "9693b0327d730c44fafdcddd67595bfe41b6b3e762fda5dbcec7c3562aed4d7c"
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 144,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "3c4e58cff608fc0fe105dc1182d3c2f9dc27c3adf50c11811134787a1cf20212"
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 133,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "092467c7032fa33ce8a31ba05c75fa6f07c2699999ab97cd452a738f9794bf69"
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 155,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "545e88f23620ffb20e1a8cc420a595422f6625a8901411471c7897a8a73b1496"
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 146,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "6df825a184b8eda90ad678d2c20839b71db5c9d9c98a7474deff293212c99eec"
+    },
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 159,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "290160f4096cae92d0eb98b4384a1e5c1b8a6e7b1c0c5699f316677bcc8b0d9c"
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 152,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "f65c34d6cebdc26e8773f1ff08dd09989506e8d87b67be47618dc3876bcb4bd2"
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 151,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "e4d72f274a10a874129c2553c2e57a10c6770ccfae713c0b92e5a86a406c98fa"
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "newSlugRelativeToCurrentRegistry": true,
+      "noCollisionWithOtherDraftFiles": true,
+      "descriptionLength": 143,
+      "all3ExistingContextLinksResolve": true,
+      "tableRectangular": true,
+      "status": "draft",
+      "sha256": "bcf1754118bf30f833991028ffa9da811bd32820b550b0e52f37e02956492fd2"
+    }
+  ]
+}

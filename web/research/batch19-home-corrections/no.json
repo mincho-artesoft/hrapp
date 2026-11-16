@@ -1,0 +1,26 @@
+{
+  "locale": "no",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Morgendagen har allerede",
+        "en værmelding med seg."
+      ],
+      "after": [
+        "Planlegg neste dag.",
+        "Sjekk den tilgjengelige værmeldingen."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sju kolonner, hver med sin egen høyeste, laveste og sine egne forhold. Vri til liggende for hele bredden. Ta tak i en hendelse og skyv den til en annen dag.",
+      "after": "Sammenlign ukens avtaler med tilgjengelige dagsvarsler. Snu enheten til liggende for en bredere visning. Flytt redigerbare hendelser til en annen dag, og sjekk hvilke forekomster som skal endres for en gjentakende hendelse."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Dra den. Strekk den. Ferdig.",
+      "after": "Dra. Endre varigheten. Kontroller."
+    }
+  ]
+}

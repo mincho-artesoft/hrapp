@@ -1,0 +1,184 @@
+{
+  "date": "2026-10-22T04:06:50.171639+00:00",
+  "scope": "Bounded current plan UI/gates and current website wording with unchanged historical implementation proof. No live prices, customer actions, backend queries, builds or release certification.",
+  "conclusion": "Website Base/Advanced/Premium distinction matches the selected current native plan UI and inspected access/ad gates. Subscription access is not provider permission. Released1.7.3-to-source correspondence remains unproven.",
+  "freshEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/BaseSubscriptionView.swift",
+      "sha256": "912bfe90241312a385e357b9c1c21856ed681fb9f7f1e623af4ca56b5434ccf1",
+      "freshReadRanges": [
+        [
+          1,
+          27
+        ]
+      ],
+      "establishes": "Current plan UI lists day/multiday/month/year/list/multicalendar, weather, Google Calendar and Meet in Base."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/AdvanceSubscriptionView.swift",
+      "sha256": "b30672c8bf7b70536c86693fbe6608e087e70076537239621149d3d71fe9437d",
+      "freshReadRanges": [
+        [
+          1,
+          20
+        ]
+      ],
+      "establishes": "Current Advanced plan UI says all Base features and Ads Free; no additional feature gate advertised."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/PremiumSubscriptionView.swift",
+      "sha256": "a490229597f2516c4d35b666a21c2d2caa18b6e8eb6d2ab9e2c81fc332ca2a1c",
+      "freshReadRanges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "establishes": "Current Premium plan UI says all Advanced plus Microsoft Calendar and Teams."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "freshReadRanges": [
+        [
+          700,
+          745
+        ]
+      ],
+      "establishes": "Reachable Google button calls signInWithGoogle without tier branch; Microsoft button directs Base/Advanced to Premium purchase UI otherwise calls signInWithMicrosoft."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Ads/WeatherNativeAdView.swift",
+      "sha256": "d8673161c9a767e431610ede5ffe7d9cb56bb4a70637a8f65c6b7751b28cc79b",
+      "freshReadRanges": [
+        [
+          34,
+          65
+        ]
+      ],
+      "establishes": "Weather ad placement exists only when subscriptionStatus==base; higher tiers collapse placement. This is ad-display evidence, not a no-data-collection guarantee."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift",
+      "sha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "freshReadRanges": [
+        [
+          305,
+          313
+        ]
+      ],
+      "establishes": "Microsoft sharing identity login also checks Premium. This is distinct from provider calendar connection and does not grant calendar permissions."
+    }
+  ],
+  "reusedEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift",
+      "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "readRanges": [
+        [
+          1,
+          255
+        ]
+      ],
+      "establishes": "Entire file read. purchase102–117 verifies/registers/finishes transaction and refreshes entitlement; currentEntitlements139–167 filters verified unrevoked unexpired transactions; tier mapping195–207; restore226–254 invokes AppStore.sync then refresh. No calendar-sharing call or relative-recipient lookup in these paths. Screenshot override15–19 is Debug-only and not a purchase.",
+      "currentSha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "unchanged": true,
+      "verification": "Current hash checked; prior full/range read reused without claiming fresh full read."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "readRanges": [
+        [
+          189,
+          232
+        ]
+      ],
+      "establishes": "Acceptance requires existing CalendarFeedSession, otherwise sign-in. Explicit accept API then local shared-calendar reconciliation; no StoreKit tier lookup in this handler.",
+      "currentSha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "unchanged": true,
+      "verification": "Current hash checked; prior full/range read reused without claiming fresh full read."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "readRanges": [
+        [
+          857,
+          953
+        ]
+      ],
+      "establishes": "Accept posts owner/calendar IDs with session bearer; save posts explicit recipient emails and roles; email invitation separate request. No purchase receipt or Family Sharing membership is supplied.",
+      "currentSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchanged": true,
+      "verification": "Current hash checked; prior full/range read reused without claiming fresh full read."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/ICloudCalendarSharingView.swift",
+      "sha256": "ebcbf74f53646e36999c3ec1ee4d52886004f85c13d20fc8298f6d4c66b8467c",
+      "readRanges": [
+        [
+          735,
+          794
+        ]
+      ],
+      "establishes": "Invitation action validates entered recipient emails, gets app session, saves explicit roles then sends invitations.",
+      "currentSha256": "ebcbf74f53646e36999c3ec1ee4d52886004f85c13d20fc8298f6d4c66b8467c",
+      "unchanged": true,
+      "verification": "Current hash checked; prior full/range read reused without claiming fresh full read."
+    }
+  ],
+  "website": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/core/app-facts.ts",
+      "sha256": "abdfd840a6bf821dd9f095cf1986c3d310f09e52ae9575940cbe3cd3795b1dd8",
+      "readScope": "Full file including PLANS and listing snapshot constants"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "sha256": "8866accd9cdbe31a2591af482181d149b24b7344bfd105f525e5fb815886af78",
+      "readScope": "Plan/provider matching lines from bounded search, not entire homepage"
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-compare.ts",
+      "sha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "readScope": "350–410 subscription sections/practical/FAQ (current text); metadata not fully reread"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Base includes Google Calendar/Meet, calendar views and weather. Home Screen widgets are included without a paid-tier claim.",
+      "basis": "Fresh plan UI + historical research/product-facts.json widget implementation finding. Widget extension not freshly re-audited in this bounded plan task. No unlimited history, all-calendars or automatic-meeting guarantee."
+    },
+    {
+      "claim": "Advanced retains Base and removes ads.",
+      "basis": "Fresh Advanced plan UI plus representative current WeatherNativeAdPlacement gate. Do not invent priority weather, exclusive Google sharing or cross-account editing benefits."
+    },
+    {
+      "claim": "Premium retains Advanced and adds Microsoft Calendar/Teams support.",
+      "basis": "Fresh Premium UI and Microsoft sign-in purchase gate. Provider account, organisation and event context still apply; not every Exchange deployment."
+    }
+  ],
+  "editorialBounds": [
+    "Use Base/free terminology consistently; do not imply a subscription is needed for Google Calendar or widgets.",
+    "Buying a tier does not grant calendar Owner/Writer access or override provider/workplace restrictions. Billing, provider identity and Cloud sharing identity remain separate.",
+    "Ad removal is not proof of privacy, no tracking, no server processing or no data collection. Do not add privacy assurances.",
+    "Cancellation/renewal settings are separate from unlinking a provider, deleting app/local events or revoking recipient access. Do not promise all data survives or disappears after expiry.",
+    "Current source filters verified StoreKit entitlements by expiry/revocation; do not promise paid features continue after entitlement expiry.",
+    "Check local purchase price and renewal period before purchase; no fresh Italian or other live price was queried.",
+    "Free local use does not establish all connections/sharing work without sign-in.",
+    "Apple purchase Family Sharing eligibility is not established by native code and does not itself establish calendar access."
+  ],
+  "safeItalianSemantics": {
+    "base": "Base include Google Calendar e Google Meet, viste del calendario, meteo e widget della schermata Home. Le connessioni e le autorizzazioni del provider restano separate.",
+    "advanced": "Advanced include le funzioni di Base e rimuove gli annunci.",
+    "premium": "Premium include Advanced e aggiunge il supporto per Microsoft Calendar e Microsoft Teams, nei limiti delle autorizzazioni dell’account e dell’organizzazione.",
+    "billing": "Controlla prezzo locale, periodo di fatturazione e rinnovo prima dell’acquisto. Gestire il rinnovo dell’abbonamento è diverso da scollegare un account o eliminare dati."
+  },
+  "limits": [
+    "Current source inspection is not proof of shipped1.7.3 behavior; no binary/source provenance newly established.",
+    "Plan feature lists are UI declarations. Selected executable gates corroborate Google/Microsoft access and ad display; not all feature paths exhaustively checked.",
+    "Historical widget and provider evidence retained as attributed evidence, not a fresh runtime or whole-native audit.",
+    "No privacy policy or ASC changes or declarations."
+  ]
+}

@@ -1,0 +1,4672 @@
+{
+  "checkedAt": "2026-10-22T01:55:50.318932+00:00",
+  "allPassed": true,
+  "htmlPages": 515,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/",
+      "status": 200,
+      "sha256": "e6d8f7bad7343e24ef8d5b74fe55a55d3a853eeaf691554c4e8cec372e691570",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.027468+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/",
+      "status": 200,
+      "sha256": "3aea76aaa29f6f30ff500a0b3f4a738ed86c5cf06893ab1324e627076825aa0a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.005688+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/",
+      "status": 200,
+      "sha256": "52382c0974d9b39191c6d7e7381296b3124c038189595b2283a385bdb60a24d6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.319067+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "8b50fd82c24c3d6f5d4fdab9d8847211b042b0fc47eee4054a74e66ef835fb48",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.363881+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "4b7bc41aa59614d80ca21235bb7006be4a7cdcf40b60d47aa758665778b49e4f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.619043+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "b861e636a01616ef5c4735c2e165d6f8dac064d5f332b9663018dcca203d6623",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.676060+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "4798bd38d9fb3de004e1d68740226551cc3471c11e40a6d52a7d1125039fd298",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.958248+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "ad611b114af0231afa4cd3780dfb576bac50dbd7dc7367fae705be9dd31e9926",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:05.978087+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "a38f977152b88b1aef308d52539aa64d4a7e39c3c809f883247b5fae7e39ba40",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:06.324456+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "ec18f0c0eb64c5f094bfe46dd8a98dde0cadac0f0a177561998b4ada8dc7ee8c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:06.334498+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "b86f472663faea8f2db48963c6959d3614a0a4a01c8bda69dfbdc80c0aed6a4a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:06.637526+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "27505bb584202a43b8f9150f02b3bcb512ba94b6fea6d2f7c81dd481485572fa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:06.661607+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "137892d3377813791f0b4804fbdaed5b2dc0f314b1053a46c486b7eaedeac9a8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:06.964168+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "3176e6b25b66115bc58a5bdfdc3daaf6917baf2bccb205e3211bd4952c325d17",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:07.028462+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/",
+      "status": 200,
+      "sha256": "5315a7422d9c72efd417a486ed4cc0be6555b5fda14c8267d29f3390795725fb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:07.301011+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
+      "status": 200,
+      "sha256": "aa6bba2a7b95c75ebf6e9468c4fd3011f955ac42ba45134dcf17a3e26475e7e5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:07.323479+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "cb724a227d89c091dbb9ae442ab5c98409ca6a1040b5104f6e2e953b31bfd4b9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:07.755524+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "719f6d3537f86b2e91387c176721753f47637d3bc594da39421c82173d2864ea",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:07.739117+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/",
+      "status": 200,
+      "sha256": "c25388d5fa84a1a21827964b9d01b6344d334e0c6758ac9bc77645d8ae23ce6a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.040668+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "status": 200,
+      "sha256": "40d5aafe97adc440c7048ca2a6cc2dffdb5c21315d3357639fc04775308460b0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.042150+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
+      "status": 200,
+      "sha256": "a3509caccfed01d5d62b48e3be0fda86290649cfe89393a264beb9ab03994263",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.324222+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-event-or-room-reservation/",
+      "status": 200,
+      "sha256": "fd42ebfff633cee67768882992a70ee2315d2b5dc91481abb78109db7ea0a272",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.397841+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "efe268fea1dd53dd2fb03a18855c29d2af830dabe19fbb878dfba024e5bdcb6f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.604936+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "e86d49b227e9d87908dd9a2e738c2a277f1f921543077d34436d547f599603a2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.703319+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/choosing-a-widget-size/",
+      "status": 200,
+      "sha256": "4fd7881302d3093a3dbe16cb0031f8b1f0a6ea9d17ab281d2058790783dc2849",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.901280+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/daylight-as-a-planning-constraint/",
+      "status": 200,
+      "sha256": "72654c0512f92cc8010e4bb6b77a7b0b3b387a4696a4d8399dd08124ab4948d1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:08.999569+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
+      "status": 200,
+      "sha256": "2762ceeeec697b7a0a7f09672d2614ac7dd988edc998d9589250805ee8ccb717",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:09.183161+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "bff2b7f523ce54df3e1bd2fc607304568e5a96d7876875f02622016440911067",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:09.336658+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/event-saved-to-wrong-calendar/",
+      "status": 200,
+      "sha256": "bdd0e5ceeb3b2480eefdc4a17fd9bc0cd26d9e1e6169b4ce205df77f501216da",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:09.495375+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "1e5c843a4a792d58f665bd95f6e390f9c48d5db4360788abac0fa0aa860d0784",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:09.732637+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
+      "status": 200,
+      "sha256": "71fdf85f13c83a8039d3d44101463c8a5b03e258d907d5f7ec53eacab080aba1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:09.818561+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "9ac029f91f073bc8135cf1c580fa048cbbe87f088ea084db046da3022434bf67",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.112673+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "82562363f98ea0947a589bcca09bc925b958ab21b139b1a263f93b0bb9e35524",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.135442+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "e25f027e354549fc3c760c2572fe7f8c38df9340193e606a73fdaa3a8d00e6d5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.395505+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "97b16f735213f678db732b92a46063eaba772489e69dd2d07de05bd54c422077",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.496684+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "fcd02804ac5b6550b1126300be124a4a4447c1f9571717e2ac056faf3a6c52ce",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.695158+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
+      "status": 200,
+      "sha256": "a8a21ccca802fda22141e627f1f40cb20d719707490acdbc3d67f913765def20",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.898658+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "966530d6c1cb7f4df850d3758eb1d191f14054a5f3200d34fc376b5d39ef1268",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:10.998591+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "status": 200,
+      "sha256": "26ac60288845bebdcff8d2fad995f464366949d746049de75adbbe7d68aad9d7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:11.251174+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+      "status": 200,
+      "sha256": "ff0b4bcfd51859f77b0bee853b5c4aadbc3afe5902fe3d235a9f637490bdf2d2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:11.355030+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1c947dff0e398f3fb2cb0d49aa231b0d28df7c9965672fa8e270d64dc4ed5b1e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:11.578821+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "status": 200,
+      "sha256": "a0839ee01bed10550d99321630eb5f9aae5c072c5e45fae1e60b5ec68afebfe6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:11.755451+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "status": 200,
+      "sha256": "33e5a8393a3a73d9adcb25b6757dfeeea540e1a6abce6599574fab57b3219ac6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:11.879107+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "609cd657cbd2d5d3d9e51b8d05341bbd3674b61638e4d9c069460ec16bbe8961",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.098221+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
+      "status": 200,
+      "sha256": "64448ef62440003dece44d3942112848176ad9701b9f50e9147eed40c22c3c83",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.202850+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/recover-deleted-calendar-events-iphone/",
+      "status": 200,
+      "sha256": "67c81819213de7757104a51124c920bec188d2293ca490cfe5b4dc81b6e2f270",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.469240+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "e682b27b17bfb226cdabad0b47c57cb3c2f5153a7df1870630eb3f01786f5eff",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.526551+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "0db13397000a2f50f3c2aa5029d3a99106b1a7d3e1aa22d49dc0c14e7489cba6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.745831+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "d4ebc0cac26948d6a3c309443ea74244e4ca2d3de6003e621c9ebf74554b0037",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:12.853970+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-calendar-on-a-bedside-table/",
+      "status": 200,
+      "sha256": "967c4c724d1fcbd487725e18ba551c99a5ce040c2f450b03fe9026b25008a0ca",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.044969+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
+      "status": 200,
+      "sha256": "fa10f0178202cd048a9e3175eb930cd64e25748df3100c0dd750224ea7228e7a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.177208+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "2a984c8cce8796e6e12e07245c68fbcab707e0cb2e2613370c9aa122b0b2e0dc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.417192+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "0298ea403348ad5df5c455840d233dad7aa48b7a77a84dfd1ffa3f95e7173698",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.529936+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
+      "status": 200,
+      "sha256": "70db44e16caf8f1d8f0bd193336d2a048c87089d2334a2d5bab4d786384754c6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.782036+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "cb0cafffc5d7abcbe197cce32fc6ff81b3316aa0a3534222e687ef9be6e827bf",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:13.878569+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "status": 200,
+      "sha256": "aa399bf3d126046a946a021c8b0d79fb33dd019b53c6797dcd1b9d82944f5c46",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.115547+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "5a56072eb6ccb964b4672ba98e66d74300dd9764335604a359b48e6ef9d36226",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.225540+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-where-the-event-is/",
+      "status": 200,
+      "sha256": "ac93802ccbc38ba6a150f86d7ffcf68862927abec19b874ecedf20ec16618fe7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.431407+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
+      "status": 200,
+      "sha256": "7c3296896702b07cd468a99b90c64f1dfbdf753709649304643493dcc934ed84",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.523686+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "403662da51d728c1ddd18f5afde198a4dd309f55fd15e19d56ad3737832d2ad8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.752159+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-an-all-day-event-really-means/",
+      "status": 200,
+      "sha256": "f5ad7123f2ee71e087c77391e521a96635970e73c07ac9a74fbd696ad225e8d2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:14.843966+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "status": 200,
+      "sha256": "5c248e08e51dcf175b226bfe5b5e5892e07d5228c6670688d4e1e1fdd4d786f0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:15.084505+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
+      "status": 200,
+      "sha256": "b1925d2a28eccdcba2c78238014bc3122da681463988405dc3a3ee729f47e31a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:15.146494+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "f7269f69950a1be63064fc9555f307b9b3c38e786f70be3635afb2410ffbf80b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:15.431526+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/",
+      "status": 200,
+      "sha256": "d2fa0018dd05f4d51a95cc2d11cf26b5d9639044bdbce21c685d70d33c03ba59",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:16.433682+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
+      "status": 200,
+      "sha256": "d7b2ffda572b27dd98d9b0f36bfedb84ae6f61da62e8088bae52f9b3c6807411",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:15.722407+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "52144b4a1f548c3246964574437a9358b7d28901145e2614eef5cfc3a7a47838",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:15.993084+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "d4b44c5e23c61cfd614455b1944b35b862b13f69da2e545096d3e77478d996ed",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:16.295000+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/wind-the-forecast-nobody-reads/",
+      "status": 200,
+      "sha256": "253a17555d2ccf599bac51ee86846ef10106bc64c8fa6fb516f3efb3b5973211",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:16.622275+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "01fb83372990c7e5f1e481cb20a7fd92abb3665c4ed055953864f8b141b3d8f5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:16.839908+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/",
+      "status": 200,
+      "sha256": "4c13090e20cf12a16df120deb7815e5676b18f612e5d4fc9ca4c9cdf104acc61",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.028444+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/",
+      "status": 200,
+      "sha256": "da154f74fcd275c728a609fb57ac5e3fce62cde3e12faf369351fe1327386e7a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.230084+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "97bdd18d308cdce0910ffc53d73dcd03966a576e590aeed1bbeaba3712124d0e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.320061+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "3455b09677ecc3ab07a09b4ee4cbb035e3a4dc133262a53c05261279d42f903b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.525927+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "4306c2a69571e37f5f7c70cba382b576a0060298d91e44276e5221e9edd85d84",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.659052+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6a5e0cd2ce1324c46fd6bbcb51fd33a10dd01ac36dda4968f847af00c306a2d0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.824835+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "00b03c932ea17c647d8092bcbf68c8767abb0dbb3642a75312b8a149008e5c8a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:17.950866+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "68354a3ea79e819a7cfdd6813b518f3d84cea7960ef4ec2bad641702183f8249",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.137910+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "1099654cbc2589a0b97bfdc5d73d96738c3b0c9b8ae987d78c92c5837e6c9da7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.259494+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "be8e0e12cb0601f95111eda5fef86302b69b0b387ae4bc3d3ed15b32a697a179",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.503377+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e2710f9607487c318025ef7892354da7e212741c3f8f7577a3e6d8361bda92ae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.591752+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "11de62bd85d722ef1f54ad9d2d7c0afddde822f41b97e21b6a466c0f133ecc56",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.948613+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "7b7223a5a7e421889fff27dd8028c553ffa6042f08077e1d2c583113729d834c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:18.937553+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "4bff16b8e597cab7e00954bac5b01350c17d34d4d4d459f8e1506fd50c2894f9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.248612+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "feb268e69c4da61fb7d6a448ca85f63fb462377aa76df4cae20e72ae43d08aa3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.248774+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "7e44a1f2e184e6e8c0f807f4a568d6cfe1ebd3c7cabfc8e606170262b26a5f36",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.591307+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2caae4341998c96aa2959a5a5dc8ab9bb5a0933367e43a4c165289f66448122f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.574873+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "ceee067c5729297aead8745a3897623f981c343ad47808f64e8da194a49ddb3a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.926171+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "852d45f788c1f5845a7f441c1c7f083f79197a218c322ecdcaade82c12621b35",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:19.905642+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/",
+      "status": 200,
+      "sha256": "7731936880d86d69ee39eab0bd3ff82afca8ce8377c95915ea2165f53283ea02",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:20.501774+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/",
+      "status": 200,
+      "sha256": "7312836d228607b8375ad55ea21d06564bd4a5c648122587a070f17bd876ebcd",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:20.233844+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6f36f6f9806039518907bc1bcf48711d60a6a4cc117d561943329917c6e9ed9e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:20.582528+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "6d22e685522477f86c3e8de75e8b545389e9068f6270db4cb545ee086936810d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:20.829775+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "13796c51d413817b727247d86db8c80f9f7ab0bfd9e8943e08a6ebeaddb25d5b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:20.906436+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "b6767efbcea6a0c72e26c8f6c6d4699f052aceba93e92ac60f3e4119cd0dd318",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.156302+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "15a7ed28027336e56afb1005465f3db36f137110c8c95b709fd960af65487f02",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.269052+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "a511209164f592f15b8d8bb212de8e2b80020e8bcf38d10384b9d213a557fed8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.501938+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "14c165d3a4167cd25701a398519475261b2f8af3949778f69b5dcf35e6dc3c87",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.567523+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "36ec8a1794fdd722adfa6d1196a503ad760496a5d1e8d90499654981fe8d9ee0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.854652+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "56975c2b93eceb503a97264e6d43ec53d20078973b610fd6f46841293dc4fb40",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:21.880431+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "d8f1105b726b74f00ec9126c2809f474f282cb46e8d7ac60fbfafd5603d6476c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.142578+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "371f2701f9b32192b4ab71aad0fb5fd225043e79bda184ca4136a2634aa462d5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.246262+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/",
+      "status": 200,
+      "sha256": "6b4742e9dc2e56acf23c5b9ab3f4f15e5df850d0a076aa01941db9510c2e013a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.532344+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/",
+      "status": 200,
+      "sha256": "97b16c50c3a64d4911acdf816b4a7bcf68ee3672a041df69975f28f7721b0ca6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.581624+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "35d949f4bc526cd17ec83f2eda23d598019a4a4b425bdffd4401b9b31a8007c9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.841500+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "b6811adddcbb54a2b1d9a6a20f4a6406024a7401c3f85bbe7b91b3ff24850e49",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:22.884499+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "5aa51e6fb46e7b11f361c1a4d3296da49f112368f239e834da86ee5c7b4e11b5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.117451+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "adf64cd7c6ae61006e6cacef3839b4d0fd5bf5e2cecf685c5bc71e862cb3bc19",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.196629+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "979c5ea11a0ce7a5e03c13f2d78d303502ba408a98cd27c68b856b8bd11c6fc7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.402409+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "db1c3bad51f5db8b296a557ea1d0e3559e52e8c621c59976d700f125408f71df",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.537225+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "09da86345728aca6ac7547a01c535fe0f15b71d6b64f95ee8a75042050cd57e7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.744299+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "79161b5b743e6d5be25d7ff69c841c3a3bab629156faf43afe3e0ee166b0cedf",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:23.839167+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "faec50f4f8d18a9612b5adbbdf882eb34f50e2c0916f6b392826f7a18f2ee378",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.039411+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "50b8cd6aa71c822e93769e8f93400203c445f546b0b35f47095e145f8bb0a1b2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.143210+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "55668ea39507ea869b1bdd385582c2e72aed79d229b08090f21d0e002806e731",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.349159+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/",
+      "status": 200,
+      "sha256": "6b377a59b376d674e4286e1875f737948bcbbc068d2697cf499e35190c70b6d2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.479978+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/",
+      "status": 200,
+      "sha256": "6d2ee16c843f6388f8295c86feb303bf0558c9eac1fded5d416791387a07503c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.631973+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "c2e6e96f4e01af8b86977bfaf03ee0c995b238703e178c6601bba7f5b499f8af",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.758352+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "2a4b2016cbca921eef335edc82cabbc8aa38113a7642d7dd168ca080bb4ba020",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:24.915162+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "eb10375008898c5efc4b628f3d970ffdc9fa30c0e2417d65e6f31a37cae9d1d5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.084659+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "7f46fa832a3e5adf4f4eb000d0999ba18a85702f9559990989982a832287529d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.235532+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/disconnect-calendar-integration-without-losing-track/",
+      "status": 200,
+      "sha256": "f269106a537ecc1cb7530f0ffaabba3938fa99c7fe737533f02a2c9563446f5e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.402100+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "a028520163ea16a7f5e9ede4e5101c56226cbbc8b339296782492907ec5730ec",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.553986+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "1ea1ad30f5772b853af742e7d323027d75c39947adb5b152b20a2329643bddf2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.732784+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "5e9626c0f62c22835e7eddfaa7ca4ae99efd0c95410d8df9d37a2145ef38211d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:25.836049+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "2394622510eb655f5c5ee537ccaec10adf9f09a5796891e47b90316c6de23d38",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.043280+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "454fcfc0c2f7a009244b5e409e88008b88e3eea182b890183342e1bfb6649c9a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.115466+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "c69b4d92aaaffd6700ad5625e0002e3e936addeebe536d69f345bbf4062186e4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.377024+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "5600aa8a61358b125344ecd3b1ddc0eb77f899f017ec502c725b61a361ce0322",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.438663+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "7865d1528982d83ad725f41abf1db9862efee13aead09c92b2caf04cd1e6f483",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.695181+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "dc096b8014614c2f1fef81430b43dfb96c2b0caa730412c533976f254c31328b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:26.760268+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "bb132664917a3990f1eee01f5b43f572db3544a58a30d17cb3015e3a419718bc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.039857+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "a4a7a8734dafa619c5af2e014be653814dfd5d76380a94337d8d2fd8cd7de869",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.096228+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "07355fc0c09cede52d0aa9f63a4d576949126090f65d73a558d329c2dfc29b15",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.339939+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "2e2de895fe8be04cd16fc28ba4b9b241c8c7208121b58e6b7000b8ed73a9cdaf",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.423795+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "a02895d6257839d75d19597a5479d336ffb34f4044d125523b7b091a3b20a6a3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.641754+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "8657569fb4adca5651827a429e554ddaed656b92b63290c929202dcff6656b1a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.723516+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "743d9ee101a3aa50a0f8489f900879c9329d882c2f445b877ddedfd177fd43bb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:27.915972+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "ba2ccbd76bc78c93aac7419093f08216f27710707e720bb031063c68aa5af2e8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.040349+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "1c357a6c0b7586b06260fcd17576ab32d3f6c2457db8ed039ebb4a6015f77bc7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.326323+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "646195951f98e4467e52e8962171c174fe8c1d79cb791ac577698be2e7bf2c1c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.361415+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "63945d1eddd75d914b8ccd9b81de657aac886768f77410c1cd774ffb75c2fca4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.634984+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "793813319ba21ee70ba3002b70c9872cfc053110e6023e4be39fd417f8fb9e09",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.683501+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "57256ed0ffaba28365789f6109f548db53be612fdcf07ea1d64602d5851c8b7a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:28.992911+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/",
+      "status": 200,
+      "sha256": "2a5173446fefe99ec846bf2c0d4327233ebb43f085b77363269cab80ed372b06",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.082104+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/",
+      "status": 200,
+      "sha256": "26c72edd81b11a27c4a2d5b43863e4e85b915900caa2c1265fc575c2a07d0294",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.311497+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "518863cb9a6b69c54950df274140e8c1c3fabfb9697c1ea1580dc7567b7aea08",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.436544+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "763a117cf3b7469e9b781ff01cf405995e9dfc9a56d0d76964d9fad8566f556f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.594048+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "6063b0683fb25d39c72bcf3ef9a5a1e7444aa9ef658b086adc168ae73fa33392",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.762532+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "0c234623da4fa60cd69d8f06a9145df2c47515386f88218ef8a395f79ab6634b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:29.913198+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "a28d33d5a2473351a64f6a8cbb33505cd87ee41f50ede4ddb769dcca23bca6ec",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.092643+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "9b691f9e4a7446c10bb51288f4da85bc5cbb9d5903db7b0eda0f8b0f61497acd",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.212232+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "42df97766c2d1f1c47ee91595c40077dfa913359eac679421ee1c3a6a573bc06",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.400246+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "b95d3cf2307d5b9e8cc0a7875466b493a3324cd940693c963861190257da3a19",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.512321+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "53e05ef6c81d2a00b6db9ba4c907a9e2c069e1231c970770d889b44c00ffc4a8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.722571+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "a063dc8e57137900af92ea9b1711af6d77255db5655271d13a21a1977ceb64ae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:30.801807+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "dea79d269bde668b0552e8ef514d26ff4f8284ef379a52d293077613555dcf96",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:31.038872+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/",
+      "status": 200,
+      "sha256": "ee6a377bf936d27e8795897552d0efb86d2061788cc50471d1300bf0bd08f768",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:31.326428+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/",
+      "status": 200,
+      "sha256": "e9df149854906156280c9a0b838391a771c73d91c6c668d75bdf0090cb1ca77f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:31.359806+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "7a14cc6ab0c06c40502f558a6d29733e295c33b2818d6080cc419ffd1d47af3e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:31.669851+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "40a721b684a61c69ebfdd6a84434fe514676f4aa1a615d4af8d0ac0a90afb767",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:31.720944+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "93379c505dd235bc167e36eea7edd412fa2169930e8e3d75ebaa9011505c48b1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.038107+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "b96d7fc31e0292c981e6d7be48f5ed5645b02524b188ec2bbf8b6f914fb32ca5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.030573+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/disconnect-calendar-integration-without-losing-track/",
+      "status": 200,
+      "sha256": "eb834fcad3d71eaa3ad1c756cb9f5ae1e9fde3590740fe35e8597c05e3fd609f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.336860+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "11c4ef26c45147156360382a48065e6c6cb89464f90d444854a323e6a39a251c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.321502+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "be4027d98d6cf3fc8137a48c3882cc89f47f7d5def3d538c32ab82748fe5e89d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.598743+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "9bec985a6a228c6e4957f270afc0def50e906ad2788a5131358169b22c70a68f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.631105+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "b650325d6a31f077cbc4ae14cb549ca605360b0b7dada16e75991d67c78bc0cd",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.873078+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "9be64e2a0b90b719f85ef8ea7f9917d97aa99c37243e0f8bbcd444b47e362dec",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:32.997796+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "a7ebcbe93a26c65bb3b505d2f192cffca6e1f66127b8b713655c9d02c54827ff",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.197297+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "c7b45a9415faa7505cfe83686cd009820638741829ac0ee20f8faf760131f5b7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.318316+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "bafedead104381b06c4a6985ce21dd7a96052224f6608377c0b275b8afdd3422",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.598059+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "fab1ce0f3e60afec6209d9711daec49ba99dc341bc6f5fbf20da7806e4af8764",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.631685+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "e8efbe00bff859a33de76b9b5c17b1c42f47d5e7d81f7a12dcf9391137778fa4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.870824+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "4815ed952f4048dafefa10210150e26a19fbcd54d5dd1007613b1d76ea64aef3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:33.922880+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9b4c86538d8f0cba6ae3bd819b3a0e197c510ca64919532e56cf1580d037ac72",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.165237+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "c00938bd4bbc4b5ed3cb77a1d628bda7db1f7feae9b157eebbf531fc9d99dba2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.219033+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "b57a2d5089af5c95d0ad3ac0834f4254918e39921f09839100867fcfbefaff2e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.480889+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "98ccc3568fee0f6ff1fef2cf47438d757340a36c2e839d71469eb4a2123ade6c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.522176+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "4cdbd658d67e6240927fbe6e52bd2fc4196a9139561992afc3f15d2d6d36a057",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.777217+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "2920bd1b9d604f8f61b610087d161c36416048d0eca6ec25deb831f03d25259a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:34.839614+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "b5cd18dcda4cc1999c4d172aacc2be42cba699b0d20c9f8898b270a43fa5e6a5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.084362+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "d9fec8ea85f8d5e8e9d2b6c1a8f37796cde366025eb769b33ab4eeb282f7c320",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.162702+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "bb767dc07fc0cdf86bb5f442a689fb45ee8561cd70b03b63b3db18d8a658f49c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.413886+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "1c3ae4ff0f99416c0a95f21058bddfbda9b81c0728ce2268694455e74faf05e0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.456045+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "2a0494e5890c01c4544022b529704516d993de1cc357782aea8b44c02c3efa61",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.769745+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/",
+      "status": 200,
+      "sha256": "5e99b6dd691483def34e4fabb2feada1e65f41c3018cffe519ce806ff88c8099",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:35.916660+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/",
+      "status": 200,
+      "sha256": "1bce1136cda90c4468a3dd27c2c6d742b8d9a8bae3d052dd331c974c2de99451",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.146935+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "e514bec9ddc249a4ec79e2eb31719ae3c12382ef86e1adfbe4ca5dd5b22e81df",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.237450+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "9e2a3827b9eb0f3d95a752ca7480c772e710fcbd1fc501cf498f5a2ac309977c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.493328+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "b7a422a93179e44c1c65c5f23131af390381d4b98e620fe19d5bd0996fb62e58",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.603116+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "3a2435024a00fb0ecd654b9f997ca687555ede4412f4a07e6a94e3a3a99e1dbc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.872787+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8089a81099aafa42731a6b78d9de9d25d290e18aea29a6ed0d15790436ac727a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:36.936430+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "d57e795c6b1397c378707b38d975a77ba1fb175c54545561371ae3905a185e03",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:37.195291+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "2da5e140788c8b8941705b11caafe0aab881d00bc0b1df509e6f527f0e5aab08",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:37.327929+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "55add3b27f2fb4c70695e4eb74445e6214413669afce8241f4ce17bbbc35df62",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:37.500607+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "45983a241925b002087acf808fe6fa0c1d4f3f8225ac23fc1f312ce6a3460e8f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:37.667214+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "51b0512523be623f258ae76507b0ead7f671865d61ccf653c87f3cee55f61324",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:37.802542+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "af54f718c094860dbca457f73a3b3db6760226ca18a64f3f8092ae5f040730c0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.003572+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/",
+      "status": 200,
+      "sha256": "3afb2c2cf229e680741dff91a4df32f777c514c5d1871639ba60ad17b8fc3d26",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.226897+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/",
+      "status": 200,
+      "sha256": "7da504f52ba073c9b0bdaf723f4d1a189c27de7a402a31fedb2fcf4e16765ce1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.315508+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "67a14a1982a05a672f5f5e511fa280fe5d4e831229a420fa7de3244c421d777b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.477860+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "052d54adbe3b5db021e0f2cd1b3e74a26ac7a007719a76734febff298537d837",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.752639+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/caldav-calendar-on-iphone/",
+      "status": 200,
+      "sha256": "565f57ab8e299e58063238ea328a834921ac32395e5bb00668f578aa01408ca7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:38.801267+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "dbec60888b812fbf7430c40f9c5f8501364040edea54309fe39f7a4ca648066e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.035053+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "34b3e4193f509bf5cd62a5578da2aef6f47f98e0c011f750089235a5ff9141b9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.123929+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/disconnect-calendar-integration-without-losing-track/",
+      "status": 200,
+      "sha256": "01ad975d298dd26ac402eece7770f8994a179c3765dd3218e391d6d8055be225",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.355734+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "6b9d23c9cad82742f513110bc610f27cc3a3eb99f0834cf21f291f57811c6543",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.436736+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "a433c29019c4d7f15f33a3f69165d4601705e84d544c4991d8d3a40319a31bb7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.679057+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "a83a6a0ca52f7482f79a743ff288de35ad302ddbac95b328f508920e69b4073e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.777526+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "7db1d1b9246e29ac18b1d3797c78fb6c76a4a3b8d0a4726196cfb17b36923877",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:39.998244+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "8a5c53b0fb1782383f7045a875c8ee72c03a595cf4a7cf77d95f7fd75a4cb481",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:40.078772+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "5da125a10c490a52a0bc9e15277642ded8bcd74a3d46da927e9e0328cee05707",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:40.456176+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "fa7773d4d34931a1444904f0e35f2086d8cff507510cafa0aa7b57edb97dd88e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:40.441844+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "9c370f37d0b0b955146b2c22f5c1f08e390cb0d9e08ebf489cc2c9958439943b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:40.771823+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "8639f9d02d37ad203afabaf9c92529a7e790d6397b83d7e21ec163d318f17b85",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:40.804292+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "6f913eac443d2876438441d148138c9ab3186bce7f32fb534e29eec0cb99c873",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.163080+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "2d1cc09c27e0056f8396fad3d3d92b86d3e23b04be2f4d994b7a206ad5d18560",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.109785+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "fc78b5bb11d3883942348b369c2ec04576eb0645860fa362e3caa593567ec434",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.438279+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "b40b02dfc1323d9b83ce3e8d71089df95c5d8c790da45c194ab1936f30b9990e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.535540+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "6658509afbc69935a4199ffcde02ffc6a7490370384f3dc43a94d14af8c65631",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.762848+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "500b9287c8a936d6bb379e3d24c95882d23baaf0227be9e4ad7b4bd8f9e97bd4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:41.914399+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "6376494f2f5ce2b9b5f118539b3ffde65f0501cf098502e5ac82d3c2d1984d2b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.198348+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "be35d7e18866e566a49dcb7ce8bcfe6eac241f107f77b483eaeb4809479da397",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.233384+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "711a2891a1929653b400060061d3dde4b4c50254843bf2d2965c2b3d97995d23",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.492245+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "421ad37be8ecb9c50273d1c9383a2d12d0895ef805e832d69efdd82d5357138d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.581242+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c877cec1ce2d965f9b37a2323b05bc8ea728d256ed95fe5e3b5685f630053ba4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.819573+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "3f11248b0127bf25baf3d46dc6407450f2b77652b99826239162cb6e18442a14",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:42.881960+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "19f91f43d83c73f7179a18492a889f6bdd1853791dfd60f57a009bc1f72bf616",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.133747+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/",
+      "status": 200,
+      "sha256": "b45a8ead0e9fcf3b859e487e5ac8befe2ef9c9738973509056a3bf8e319d9472",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.263672+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/",
+      "status": 200,
+      "sha256": "ebb71033b7aee756cdf8d3651d2a6983fcc4826a4d6a61dabbe81304c0a3ff2f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.457393+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "ae67be85fd7bdb5edea98a348e22748c3217afd7df4ba8a50d393bdc16ac5e97",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.601686+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "cda20017e8fc5bd5c98c6c69dd6d91a237fc5faffe780b16fcc16880079c31ab",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.757704+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "ec6c74de2dc5cb6a1b7b92039ac0addea0b16405cf08c6744abb32c782ececa0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:43.929403+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6846258353b2f32518a9d62aa15a4c957424aad73bc0547d224f6df5271d1e50",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.095080+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "405a42ea1de54c9002b3e5459b994c612786178bf94b31f16eaf379206a415dc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.299867+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "640486c3d1bd6b201eae6d5377a8308134efd3d75f215aaa135fe7a1e7d33439",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.471401+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "cd5c7afd4fc3ca94d31e558a5e4ae695338b0adb69c247edcfc8dd38c3576705",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.596577+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "8ab75b8559b5a31619e4297fc385b28980164aa2257a084d8db97042b232f7c7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.734695+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "8c529e324401d76d37998413fbe6706f99522bf5d257bcd371c6fc1fe5062a0f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:44.909932+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e29573829d1c3a57326d29874c2a754415b17895027ed8d6936128d97aab40c0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.080501+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "c8b83d6e4b2b3c21a2ff0156921f15ac47a1dd52f4190aadce1f4ddabdf80c1e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.202948+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/",
+      "status": 200,
+      "sha256": "79ac8233ad389f7919efaaada5b0d37dd0ff0f7cc444f13bbe6a4eaa2b626b95",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.479237+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/",
+      "status": 200,
+      "sha256": "2c51c809672cf56fdb9693f7cb8a9a1c67e31b6039ee1992039f2f74df3e2b3d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.521045+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "35d36deb2906d13e01246f2109f9afc98af34fbe0ae68b26ecdcd4ce451fb2bc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.758764+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "597559b13160fd576ae7ed7d99538c7855bc5e3d8687a815c3e10379a2ce94ae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:45.792541+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "8375994130dc1692d2abe5ce5485f3a31e2ef200e81771e9757c5a6bbf4bb533",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.101010+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9089dc9d7eb7dab94d9663ae28688eea744ea7fd71139c780ecd2d59b7b48fae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.044312+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "d451cc2d4674cc29d163b41a95857c278c1c4f525213988c954056e88912b325",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.415609+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "edae9165cafc2ee2076845af05b6da8b31069462ea9c36c6ba68e84359063ee6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.414049+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "b4932d5b9d458e37576ead45a6d781213927b630b98f9872284dfff746b89397",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.779183+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "354e0a1604b0c77ddd716fba767f5aa97d116b7d7ef10303f3a46e455cf073c3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:46.737313+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "d168a4a81c74d4dc90ecc97bca42c1f70539109f6ebca8c9dbc680b5cac16427",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:47.037492+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "f7b6d0aa481db54a80e299c387bb37d108ffcae0cce08b7887c07ae1852205df",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:47.198511+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "723cb76add62dd39b90dcb1310eb71a37a37305bb8dc6ae3114285e3a738493c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:47.436708+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+      "status": 200,
+      "sha256": "f62af734c0c33340fc8ac9c92ef6597c74fb8aa64d167c421fc51e0ac207be18",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:47.438108+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/",
+      "status": 200,
+      "sha256": "6a44707361fbf339dee171b1667752b1066024c856e4502385988576d92a812c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:06.835990+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/",
+      "status": 200,
+      "sha256": "1f74578b75a7f7f69b548374e6277746ed97d80f645a2175b3dc1168b75e7d9b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:47.714730+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "ef64595ab6c70222775464676be412328c58b5937a8b9f0e4755f19aa26b9689",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:48.061574+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "c97cf4137bf469df63448ebd7edee1bc3d7db8794995beb88608f716a7e0c5aa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:48.398741+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1f14d761f7726ab2d8c1ea1e3fe1500b7c2e73d9fa63f08d9091ec711e58eff7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:48.839874+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "0a74f76450ed4743cd1da5604bdf822e3fa589d60661a0f03d8e4cc7d1e9fe6f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:49.239431+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "49b9659bfd01d167fb2e9cbd26f58062612c2c37c0b2382f603f6e8477d511d1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:49.555434+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "974ae39290812cd0c33d2e6db369f3f86c6d62dafd07c933175bfe62ba962a3b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:49.865244+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "124d29b1dbab7365d86ada26b83090155653a05db1aefc26489f92911bf507d9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:50.223478+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "328f3b851026ba4564cddf1abf0dfaa5835e712ac32fb604ec9f92f34cd7b899",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:50.556613+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "5dcb315ab4ffcfd6025e4807b3b33d10bd5d82c5bd213570b5f93df8fa8ced6d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:50.915186+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e53beb7433032597c3c3b078519b16b76e0c066f2aa5249a75d821ad91a458e2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:51.308997+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "ef27ea63c709203aeb3e389182e93abf6302baadc244e74f40f526dd3c0352e3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:51.624853+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/",
+      "status": 200,
+      "sha256": "13f1784bf2547d62f27dbd8303b41fe36d519352f4f4ffdf882e34781daf5535",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:52.033830+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/",
+      "status": 200,
+      "sha256": "6400686a9c64e5ab26e796b7f6e63188f9720047bd1d4dac4f418c6c3324e237",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:52.346213+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "8478fdadd34d4778780f4eac6b595d4d24c30c79c8ad17280cd10c6a937980de",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:52.693828+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "98b0271d3d7350986b75255537eab45d36dc5f29f2aad6e17cd85369572761cd",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:53.106308+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "3658b0a48f2dd3794173bf430f0004cbc44f331480037b5db5b72d62b0ef2571",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:53.394231+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "ff0544a4e08d19061efc38c79b2ee4fae4b0709d8f105586ce8a7c430093565a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:53.704209+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8fed70c0494ef064a00bd2d4d6b6276b44b0638adab40288824eb67944964a7d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:54.014486+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "664b5d90446a7659c395f668f261fee93249e9cf0e964d48166319bc8c72cd26",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:54.353205+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "6c2eda3e3e79420f4329e89cf42b70be12e96aaf1026784f4ef5a78e2e68f7d0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:54.681417+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "e6811b728fc70315131d426225094365a0b7c1d0df31e228b3637b874cf9178c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:55.023085+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "1d11799d231a436513b1e16e28e90455589892ffc9a8a3c3a498e2c871a16744",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:55.324891+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "1cf9bf3c82f48d552f90db9367c793208c81ce14f713f95326d1aa93bae952ec",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:55.702482+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "53faca92120d44e4a5a0e32b8fee59801ae5889095b9b56d4a6ec8579f57759a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:56.057904+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/",
+      "status": 200,
+      "sha256": "7b93267c6eb3c3d991a1254027a6a281b61104eceef8d3163243af7bc8f2b7a4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:56.462674+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/",
+      "status": 200,
+      "sha256": "2c294eae3232e46a31e79612578811dd713a55f10be2497eb1c3adb74b8bc393",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:56.789506+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "7f22a34c95ee38968a3a81d74a9cc133b63b5a3ff44c21a2eae973a111661508",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:57.082174+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "752a942958f761c8e27ff6ffa567d74f0a4696e28611b25c72af431df5efc1ee",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:57.394683+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/caldav-calendar-on-iphone/",
+      "status": 200,
+      "sha256": "cfa5e3753ad542d3d0700686fe7cbeae8d0a8124172c84ea0c8a15eb1389b9bc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:57.676697+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "4da831ab0967fe6f8524117dbb5c5b90d561f86bcf543265f5a47fc8155639a9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:58.001983+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "e872ec3c885b0641b97cd63bc03eb556f7187ab2cb50d2b688390c6f674d64ee",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:58.324903+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/disconnect-calendar-integration-without-losing-track/",
+      "status": 200,
+      "sha256": "ba8d62a1345d87fa641f3e28f92ab3e7118ee6e259866405dcd1f0dc551fb8c4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:58.715888+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "c57e5c29abea3a8fe324d0a6a56a03979724232730f3c90191eb87f8b6525519",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:58.994450+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "c6272558b6352d1ae146621c85bdd555df42a9b830bbd89e91459c5a947c6ff6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:59.276167+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "bfbcdcc851a1052848feb208310873b1ef1266a5cf4f1b0ae969b9678f48dc4a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:59.596833+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "6ae0af92300bcf208268a2ef06905eca6c0b6dd92659c5e4ba7f5d3a77b20e17",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:54:59.916463+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "50c1997670f8a08ecdc0417f72ea085566fe684a9c290e43ace38b1deb03b08e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:00.240295+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "f4c2995afc0bd5d749a96f7aa73c6eb096c3774129d6f459a93f9bd81587ee7e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:00.516586+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "138cccc45cef5974d7f711f1a070613eb449a3fbbe68dffca5def0c91e20e464",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:00.801622+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "14ce3dfcecc919516a663c77db3d300cc9823e01545bd66bb2472608607e97b8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:01.073783+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "ea9ef5da337d29fd3250c3fedc6e3f473521cbb4d125673d56bf8e1df317f3eb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:01.353930+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "f41c18f7640815994714a563651e5014648f7d38a60cc7dbecd9dbf3f8df5958",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:01.638022+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "fde0ee5b1bc6f0a3425c0313e7103a034546c03ef7bd640119c554f04df9b138",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:01.947886+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "afbe0a98b094d9a87d28fd3d24588ca83fc1e8329c5e6d835619c940cfc5e2f8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:02.241187+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "8adddcdd20a893ec3e1ba1b235f7fa9d0edb124da71d837afa39b39488b91100",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:02.595313+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "5f3d39073ef9e005aae90d68601f6d5fc2286a6f081071fde856cd175016a2b6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:02.872499+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "ae4ebcef1ba62426d5cba70b9fcc76cf1b607bf402b0205b154ea57af625fd15",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:03.190988+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "02f240fb5794bd692e8e909cae06a897c8c8574dd6dbad08d46a93185fdd2785",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:03.494648+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "8f4f0a5c441a317114208dd1353441df053afa01ab2f667985ca3fb52259a12b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:03.829846+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "0377daa2766d8cbce62ad18beab4163ba2105c244e3f943fcff6e034c982ce33",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:04.115202+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "cce59505d5e438bb2fb77c2dbd073477f502bf2ba922387759516dbf39235ed8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:04.396461+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e5b0cb71b15de915b95936ff08c97701d540b2badd3012894a17802d03d2f88d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:04.678644+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "4cb6ccb675dfac72e094686fcfabc4f32f77b82ed0237fa3f69abc929581385a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:04.996571+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "33d2c0c8013dbe1858f254aff716bbccf35b983eb2a68ac68c2479227bee73aa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:05.323285+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/",
+      "status": 200,
+      "sha256": "d6fdc785d828c0df51bf8bcd9ca1dbec408756fac7015cf18305bc5b4f738945",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:05.827676+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/",
+      "status": 200,
+      "sha256": "082fb77db1cb83135416780ba0e4f138692d40b1456eeb9ab87c35b7394c3826",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:06.125647+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "ac90bb4e722aff5dd151e4eadae52e12636af07158f2b4c71b68e614b8a93a27",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:06.514806+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "2229cbfc0ceba1f29fdb8ed7665e1f80c251884a242a731561c4865f78fbc2a2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:06.822068+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "d00f71a566d0b45eef2638a2d57835db2894a14d9d381ee55bb7ae32eb1d3ea4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.140124+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "b52bd2c9cfae582d98efad109dc371d693d934b78a0acfab5c4079e72e5cd306",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.122777+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "7d0d4ba1129f377673196d5627a1887142afeed93b920fea2be3ddebcbc31eaa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.470208+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1179c2edb071ee81c9739f7f6b8033b4213a279db96ce89714fa710d3aff3b6b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.559584+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "c8aa0b6750feb4e79db7c82091001ea939bba25f45bb385d1ce03cce1b0da3f7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.762988+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "259266d24edccfb3dc32977398b1b8706d07d79d978944428111577458fd8197",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:07.879972+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "b3b18dfe9e06e09d34d6e8f65e8b4b5812d66c7dc60a9b91c93a8408ca581282",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.084404+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "a4b6a0463fcb1a8f2f2a6b2f198e4eb8c8bb8c8d674fd7fc514ae21fe8f38063",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.154934+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "8ec7015c6790b2153b403d2442192eb9fff9085611595d63bb34496aca5649a1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.419272+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "b7453d9c28218dd4346d95f441c998eb0c6c75d8b71b9f1c4ab2a8ad54644fb8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.576634+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "0c8fb5b5ed22b39c2a6949fa6addb327bdd2538c489abcf51410dbd8acc43ccc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.842642+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "d223f559a4fe622809a6cef06868926c146690fd04f6b420c0118e26d9b5b746",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:08.964071+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/",
+      "status": 200,
+      "sha256": "44ea086fd44c39770ba63553717a8e0793fe7a831164d419c7cec389176ae190",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.276287+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/",
+      "status": 200,
+      "sha256": "e51f08b80934852e41874b71de2dd78d98229b4ae7e3095e85ecbedfe6b54a0b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.284031+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "1faf980993dbc39bce57284d0248a5d510437770514a219b966e64938a721d4c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.600972+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "47341b2a7472cd14adc11a5cdb9a941a88644393039f0c18592a5ffd11e45a7a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.603083+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "124cb227d8bc8b62922c861375db14e87f0a74447de015b35c18946d74918968",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.915655+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "e0364506350685b59656e1540b41bdfab5771f9d8da90ec8fec853ac6a566c7b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:09.887137+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "7712fb86c964f75d91e95789e6df56316049c26fb8fabead221bcdcbfaf2a4a3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.198440+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "79b796ab44fda9a2b0e476dab3254511d6cec795d0c8af2fb8249fe5b44083d0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.192172+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "f722e8c2f90062561a6f75262fd1a71411699e27fba0cae70e4218f408811a1c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.498205+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "79bef6a864a3b0227dbb74689f9e77e0895b0e5708e6b425daeeab2bf705b24c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.549067+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "e891015d71b6ef1f754d4e75dabf0f26f58657ffd349e233d2358ecfc8d87c4a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.778014+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "5970fa568d79eddb68c9858537d48e57306019ea2e8866b48e7ca32f6b0f8f47",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:10.842929+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "8d53666a53e353cd48e6248b57274057e5be9e83e59b8a532ee078003deda1ea",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.102154+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/",
+      "status": 200,
+      "sha256": "cf5176d211dbb2b7db79fec3a0e4aec52368b71ec7af945de8fed89c46e303d8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.266334+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/",
+      "status": 200,
+      "sha256": "620cb758c82154dbff5c60b3480d0485fde52584e10e946435acf0d8ec1d1ce7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.474706+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "b5171ac646cc7e4a7bca311b035cdd8e59e655aa52e632db9da9ea4acd5b38e0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.582475+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "6de1a8394fc462824d1935eef314236a0f2e12cafb55eaea3f7b0f79a5398e92",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.790475+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "b51289502d0accf3ab00982486a20cfbb770b89379de8f6f267e03e3f05ece8b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:11.899137+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "4792ad9eeab9e97c94c2718cb9e044bed05618de0653e1d0317f4ca484735703",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.125488+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e61b9f08652690f64480f53318818b074e820cc9f3ccda5375ae0d195db1b864",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.237936+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "b3b8d4e0b881defb90e1ef1593f7f97778b591ce3ed93b1ee4d5ece188b4a77e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.446118+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "36a1f7be7b8a8611753a15d81a648f1dab7c9614f7a067e1247d05cf6cb0f84d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.554532+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "706fc2d41a5eab9e74f28019b9c0d6ff21262fda97c13d3524b33a4bd1b71a45",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.858295+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "3100b4bee92f4c93de3a8a337a7fa7915263104d556d1531dca3faa38d4b9e76",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:12.835345+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "f5002fbba91b370e55712fbd09a22cd4fa0852068fc7a220b8456db35359ee7d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.101394+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "726ffbe8349a9e79552be11c77b70bac1a2c03757a03365d236fe8ab555bb1c5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.138433+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/",
+      "status": 200,
+      "sha256": "624f57c9d5e277766fb7de9c1bb0cdc7d5e58a5ca8c16faa7faebaaaf680049d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.481664+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/",
+      "status": 200,
+      "sha256": "040ff54d82c99fd87188c67d38a8daeec894b7190d8ae67892c28c0cac4f828a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.481121+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "7a8a13ed91ebc1fa0a5b7002cefd3164361fa40de721dd1592689f746db222e8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.829168+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "d234cffc20b955c38aa0398722828212cb962e209372ee076866cda37e9b63d9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:13.813971+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "f96668a83f9d9d9d1e0db9fcced703544af91fbc3c84f8c061618e8f3e1d4a5d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.122337+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "733d9a92aa3a8b98bf23d2e55f1e51a19a157d91d643e7fc44e1bf65b565c36a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.180298+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "f74d4616d584bf0da52e14a2f703afcde965f3e3e2c97614c8ceaa135c18d50f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.464134+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "6ddb68968f8bca387f4cb3338ec0635fe9cf86101b2f8ac2b16d02fa5a712fdb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.523981+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "f260c2dfe4e301e0f987ea0b1791010f52a8cad2b1d85a660a69b83392dfd9fa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.797532+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "1d3f6b7990470d7e5d4433cab8d04f316b5da50e1ff87a2b54bacd099225bc89",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:14.857710+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "a1c4883d37da0ed011e593796804689ee23c97605ed540451ff53362c2b4d3ea",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.080792+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "19c67a5b3b65ed9ca2ad8e8e6b5614951d989d24b4fa693578c3414fa1123357",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.234296+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "c0cb63f7d25f223607fcda26ac59777197a8f202a9536c05aea6cbab370827eb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.423674+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/",
+      "status": 200,
+      "sha256": "e966088dc79ffe32f5391a8e5581ef3d0ef96882d2eea4dd8575c9f5f3f66a42",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.640187+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/",
+      "status": 200,
+      "sha256": "27d8e63923f9959410a7be8fbb23b0e37cd98c19db20841dbe4ce34504e815f8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.755432+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6d40bd07fa6fa477328a23c1537cca54b1fe28aed1264fa175549019e89f9ea3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:15.958914+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "09adb45098da86cf255089b5cd9255429e4d76887b1fef5b5d9d846d068933b1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.076197+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1eeea3b159ddec70793f588639f722f89eb1e5fe87ceaacb8514dd0e8549ccae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.244244+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "2502dcf33ac0827a625dd38b60c73e2b88df2864c351c0f50b416c77263f7336",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.387241+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "0231da19c0d7eb6598139857068ff744c39f026a65b918a7f4252fbfbf573ea9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.601076+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "7a855bb71d1ab06eae335aa467bebb65d30c4405026c4fc1df29992465944843",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.704535+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "1134da0c9ccec6c2e5682f52b3cdaeb75102ab1a0acf3c167a06e4c1ec7b1d42",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:16.880452+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "8397a6608e4914e11d7f7bca15b757acce96d47b2c25d2af0e20696ecbd38c29",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.020262+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "0a1fc899bd610a92b668008a2a94256b666d2141e63d5e462a10adb7a6264335",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.199918+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ee4914543d753af4465503090beecf1fc5fd66bb1026ac95a41754dea71943ae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.362006+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "412d1097f55cd4a391536688c6ac0c4199a354f5d1723f703f1dc9d9ec26cd97",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.477646+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/",
+      "status": 200,
+      "sha256": "a80f0e26c79b5644abd1416fafbf16006abd01f616ff7eec2d283f97c3d86988",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.730194+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/",
+      "status": 200,
+      "sha256": "1a5130884654466233ec67d4ad6fa299b4ab72561bde2fb263433f01f778739c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:17.797541+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "16014ca57d1cac38e0ff5b1ae5c0b02759a2634c18de1f6ad68865c855cb3816",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.046672+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "9f3b3fda943f67ea7efcd74b2f746b663ac67cb79d9a1f3e160cf99d8cd76aa8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.046829+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "e8219f5fa94948276919c94eb7cecbaffa1d593b582192146ee688ed6c26a285",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.381027+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6b19693d1aed3e74e7f14898df4e0a0b86650dc322536735a0cf48a5445a7320",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.398142+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "fef64c2e5d500ec905281c81936d07cabd44afd499c02343e4f8cfa8cf5ffcde",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.676184+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "54a0d3406d70cc801aa54740998fb498e92737ad4d0537afa4f327755bea2402",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.782989+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "a4de209e89a59bf5c7c66e1cb744f77368ed4556662d8d2cbc92eb38a6af4fe5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:18.995793+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "ac1fafabdcfdf002402a09700b459f0d369e032ed1847a56e5acdba9ff86e6fa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:19.121185+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "26bd24bf1173bed4eea95ebd5ed0f93a3d60c9db8b88acabb3830ffa19d3d5dd",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:19.330193+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "53b274f27a26357c9ff1683a2435e151361f53081fe9ee41c89d06f0583d8c61",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:19.437719+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "9df1f3d2131e55d87107f0167d64fa2a09045e35d5ab6148a55dfdf9bf355186",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:19.600316+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/privacy-policy/",
+      "status": 200,
+      "sha256": "f16bb0eaeedc10ededefcbaee50797b6fb8557c09e220bbb81475ae0a17ba93d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:19.796232+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/",
+      "status": 200,
+      "sha256": "31d6634b988245f4804e77631f3774f87143eb615bb2fdb30b07d9d7ac91d000",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.022198+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/",
+      "status": 200,
+      "sha256": "c0a66d7c348d288ef90cfccf4786f7a51fdce5dba034036b088ea0f6d36e9b3a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.075297+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "349a15197722befaa2b66bbeaaed06ed7cf0f78f421a2292e84285851934fcdb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.349047+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "9ede90ca80add4df05a84e430d6986550c8ef949d9272d148bcad172c496ad1d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.400824+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "dee3ac0d48b6da4ca73dd967e5dce3b9ed005ba6e44b55ea13458c9aaa7d014f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.635335+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "468efc1575266622b7fe81eb7e465b5a0d2e6fdf7ba447080d9aae528f674279",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.777407+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "6f063f556e1d58d6b1649f05f555809252d586785d6e28716853ae1354e917ee",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:20.913365+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "c82424dd459c1061ee95f250e9c13ddbb81762acc5f516028f6e60e514a8d65d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.078566+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "be4b2192b7f321d7e999c063a08dc545c22c970796ecc85a4cb48569d374499d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.276280+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "3bb33d5d68c6c005e2a1c2e3f69888d019e9cf2468c7fd1f059f20040e0a66d3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.476443+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "c4a83965ceea6f24ce9611b5ff928c4d3b67e664f724a8c8b5e72f7f1c133172",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.543387+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "b9da0e1b3aedcafad3fddc0007bddce259a2a12fb470bafbf7404d53bd801075",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.755186+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "2126dc22a16143da1d63216a1798c35eeb6d1fcafd62abae8f5b12f24d82e1aa",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:21.823785+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "9a9b25c4b88f30468ff5cfd06828e4cbc16215b689830655c995b1ce25804b7e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:22.035468+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2cf6a86645017a0bfc56e5b8dcd7be443d55c4e95d66eacb57d887f4b84bcb97",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:22.165131+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "a15495331644e0102724ee89d4cb66be768687ed551ebebd2217324f9cb5179e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:22.325720+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/",
+      "status": 200,
+      "sha256": "5207c2fd1e83e6d08b6219e68340b9acfa9a8c8154dec22c8ba591f610789df3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:22.628008+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/",
+      "status": 200,
+      "sha256": "36342bf92f390fc2a5b424a626ab82c4d36c129120e4046078fc6e16b0f6f226",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:22.800855+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "8224c855eca9c146547a3ab0dd1ba47fe4d79f12268f872921f514205f6617a0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.129364+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "18aff3c1d2b991b7719dd62253401a3b00fef8a437727fed300d16102490a790",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.314020+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "9a09a34c4950b413ce1587c2650eb0bbcdbb716d7a001188f05fc78824e8a006",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.446457+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "1d0161ced9d46af9cb244baabb9e04dc02a193bab0bbea6ad5ca9c00328e9210",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.631658+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "406fe382fc729d3627ff730f588703f2770fa7d3ca1f7b0196e7df5d7c26584e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.767427+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "bcdd07c1b00931369be30b0eb43d04970ad3232f59f428bb59b73201ab81a837",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:23.924273+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "1f607c62b0b69ae6221bf71225b78d1565b324860d00d6f50e328ac928b3f42f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.035341+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "3ef47089d442e91150332ae1b5054c00059321dbd9c25a60d2f8110737af5bd8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.204449+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "c404ae54b474606199899a64641fcf2a91aadee773af77a5e8630f2eb65c3bd8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.322687+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "81679c964cab491d3835ffac45463dc8b48e398227181fd8c56a1205b327025a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.478603+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "5ae50fff5fa4653c145fbd0598e75bdea0ae2816ddd6130cb56c15f2de48f854",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.636420+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/",
+      "status": 200,
+      "sha256": "d84fde8f9b8fa7400a8b9e54690225a55e36cf23dd894b21ada03295799f86a3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:24.906557+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/",
+      "status": 200,
+      "sha256": "d4c05d8a6ff6ffd94f7820a9ba50e4750afd38e0b97d5ca8f4ef2d40fc4a017c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:25.055843+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "4fef7597af78a52ace9b950cc14691dfddcc6379cabffaf00c639793351dbb9e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:25.278251+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "26f6e0fa993ef24309952cc31e0bc94ecfbc3a0836b72295f473a3f0bc38eae1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:25.357271+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "5c2ab55cbbd8e13944d32a97fa2b209630be373a3bd3119540a9a60439e12dc0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:25.703130+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9fd3c6edcc3858a8f0dd7bddd93a43ac25bcf700b9f66f32de5d7b8b80bc5227",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:25.694595+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "6ace0012ebaf026cf6a58178e51740a749a9212a838f4635ab1401a4377c8e20",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.016929+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "f7d03c5055f1f2271bc9a4a6def65ea2870fa27bd67bcf761ee5390128aba761",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.016537+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "c80f2a5cf0e56eab3f5f0fe8108eb97d6655f61bb7561ffbbd48ffe80ec67872",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.340469+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "146bd765cc7120873506f0a8a581c673be0bdc33da1b0cbc661c004768dfc628",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.336691+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "a619cef8f032f372b81bc9fd23de724449d6b88dbc942be6125e9c6d1e4d3ec5",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.658835+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "28159bce4abcc48e641cd4ac838335ca717ce78fb3223e7ac5a5dbced8f81e84",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.675218+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "ea8324d99c5481bbb7004b3d2b2d7f18bada83f0d6c8393f140037579a716ba4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:26.982986+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/",
+      "status": 200,
+      "sha256": "17dcf4aba4fff07c43aed06a67fbaef000858374defe666ceb51d4a5f4971ce8",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.066091+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/",
+      "status": 200,
+      "sha256": "7af1cbae352b0e2a946657162e7a2cca544a9d234261e98aa89f386c18f5bf86",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.269281+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "f877bc7cca39c876576136f2acfe71bbea0cc4e5afda111f91715a5665b8f14a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.385074+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "70f2e1f1b244c0f6112eb8b56b9ce7c593a936517c4678249e2727edac49626f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.558531+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "6d1bbdc0ca7d65965e0637e9baf62c4a0562f840c07e711822f4858ecd8d93e6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.680670+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "052b85b1b4a106b6a8a0d30f7a15a7c366b0c7af470fdad751b52ec0439e5703",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:27.839371+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "f12f63b6f00586fbe3711782737d60468aac382692ede10106b8bd63895e3cdf",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.002496+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "a2a07387efe38fb238285257f512a534fcf842abd18a441cc0208496ed381fa1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.161267+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "68a47d965d418c4681e7a78ebdb71b1ac5bc60ef7f933c88f3a28d4f956d185f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.362531+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "e519c610329938501646f8060aee4f996f198b1dee128194f5ec601ed7932aed",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.439436+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "3e94d2b0c87efe13c751f495d1d7b1f1cb0c6ff83e0302ad71f4606a47d59e2d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.639417+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "228b293f3a018366a60a86186d7d16e43674ff52aa3e8f6cff45eb7746ba7582",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.764553+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "e3e2440ad8e91a13211d2425ca61503546afc54ab79a532833f14cee07c0b2a3",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:28.996862+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/terms-of-service/",
+      "status": 200,
+      "sha256": "12246685812f32fb90e837cca69b762b71a40a7b1eec21b7599ed3d0b76a1449",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.079838+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/",
+      "status": 200,
+      "sha256": "87d92a37634541e9603ad2e581919f3daaebfb57c3ca88e1a2bd678297ee4e84",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.428634+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/",
+      "status": 200,
+      "sha256": "1a0b5d8e2a50a0d90b5564302b827f050e990cd2ee2c03d01cf5a74fabf9fdf9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.353633+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "a7dcf5baeac941943601970cebfe9c97d493056c19b7ab630b4e7d16b480e608",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.633123+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "23c49fb847c97539c7c85b8fbe47fbb32b40c93d59949f5b0f9a2b760ebddd47",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.754781+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "6bf74fdb81a4ddd98872bcb81c568fd8167319dd08e9084f1ab8d905da25953e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:29.966266+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "19e0e475499fcff738647eab43419aefc8cc904c05e596b598d5d3c2a9c6e14f",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:30.043557+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "c7652e4f977eadcb906f71ebe352e71af7fa84261c3991a6033d6667a0411b9c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:30.286583+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "a885fd344a3588867f3279c91d414f3035f1c63a0020585b3cdcfe4390e8f03d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:30.431681+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "03ff8aad5c3e696080a224978e6252d4a5760a33bf2a34d32e0f93191127b3c1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:30.655967+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "55d1b0ae5aa29bbaa9b1398777b0179b18184dbc22af5c9d6f4e9bac559bbb43",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:30.787636+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "b4d3cd2c5b6b4fa26c4cc9de7c9babc474cd95d814d2041d38a4b1d8c42452ae",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:31.029452+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4aaaf512dfb59a67b2719b50d1185669ce1ae4c366f6c0cbd21398f875529553",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:31.100478+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "7376da494b59932abca7be2aa84e394cc26536a0ab2d894e35598c971a8cbeb7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:50.317987+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/",
+      "status": 200,
+      "sha256": "b31133c9729c2ae9fac84ed6be8e165cf83fcadac458dba80cbbcddf88da819c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:31.480647+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/",
+      "status": 200,
+      "sha256": "1315e8c63aefe1f2b8b920321f219c815b1471c599ea896a4fd9307f9b7199c6",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:31.836610+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "af147d40e0ff1f769476dfe8a015fc88de94f31f99d661d33d122960521a8185",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:32.116915+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "a1ead389ef9c52209ce91b4c15ee904987c3f98c3cb18846bc66859401250cc4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:32.426026+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "8450e1e64b1d7a55014c0f478ab0d33d929cca485a293128512266d3b120a74b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:32.703135+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "bf9c9077b6923971fd094ad9f840fdd1e74d8119ae47c4398aa05f74aff1c5f7",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:33.024518+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "55cf317d03c821c731444d278807d14fc3ef1a3d791ca5f13871991e34eaa51d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:33.349326+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "b800e9d1eeaff1fdc1e17f853bffd86aabcc8e08e1c3f14acb0de41b0a35ce81",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:33.637556+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "810a41201e53015e2217ecdcb764d55522e3569cbc86892e631a6ae34182894d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:33.880642+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "506a1b737079fcf889726933e4832c23a211efa8ea50871bfd36fc0d75424458",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:34.221026+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "9f1bcd60eb08c5d6676d60361dee783962902d173279f4546dfd3e1687b2b0bb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:34.520626+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "58fec408e2a45ade7784008632450c38a2d3eb328680a185b5dff6f5918b1d70",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:34.834884+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "a3453b06fbf76ca49733e3230a1e9710c1ac23a2d0ab001e4a56770a7a32e202",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:35.117025+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/",
+      "status": 200,
+      "sha256": "093c8bef7b6fc53ad0081e51b397ece4ee16fcc13bd872e42ca61497db6e145a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:35.498376+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/",
+      "status": 200,
+      "sha256": "5fdc995e14edaf331134364b794ee06382b476daa28c19af96695fb3dee27d2d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:35.794175+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "a3403aab9f610103ed37988e8c76900b3d80f00052845bdd9f3a7689cd01e139",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:36.124787+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "63b911b8af3cf7dc103335cf38e1c16deeb73cb10e4f294010396923788660b9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:36.435097+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "500b27f2494546d55809341f6beeeffd8b6780e76e81c30d700ef499a42e5c5b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:36.733798+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "04d42cdac6fcf37ca5415cfa1a2016f90ae66d49c11fd5c0ae1b12ec8f2562f1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:37.041600+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "dcb478669322f2b94c985bf380e02848f00854811141dd6e66137b5709d83077",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:37.362983+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "7e7650a15662cb150968a008b1f19223f217ae1a0af6e2b74b0ddc156139faba",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:37.703727+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "cc239c6373c5520f554167d28769df511713e23e7e76b6b337a76cd62be4daeb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:37.998075+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "fa468b1072f5a8b7be8f47824efdd3e6f705817938b83a762d38c70f531142ac",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:38.396326+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "54e7c2f6fc0dbd9ac99fa6b58aafe4a5efca0121be4f22e29abf892751cd009d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:38.718749+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "363fc7ecc9970837572de6f842b840c7edc6d5c9af45a02fb721958b2b7bac88",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:39.038637+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "f9142c8f980f2f8018f4ca087ecd0378fbd76046bdd71d4ebae9e0a2d3a1a1b9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:39.354178+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/",
+      "status": 200,
+      "sha256": "00c2253d9a2afb861807746cd712bee4931a15934c3a97250c5b420ecbaad95d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:39.732645+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/",
+      "status": 200,
+      "sha256": "e5fca30b340016a176f0ce5c58f87aebbd5e2c94062b0243683fbf772fd36799",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:40.032893+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "2b2f22611cbeae7d1286ec3fed344988a794ac75ab39e4110cb1ffd9eab633ba",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:40.442677+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "37831c8b0fb81da90c0f587a76704b193462e8deaedd10983efa084b64e27cf1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:40.753106+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1dea1096a3fac10b47bda1bdd93a8f22749a2f22560adb595596ca7be74dc841",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:41.023192+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "72d21d1236dbe583501d39dfb1cb555e338071e2de4ff602091286ccb73b2e9c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:41.350896+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "2a14c8fa6becc456e6ae4a647c519e0234d4e38b20d8fbefcf5fffb67ad038a9",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:41.601090+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "9fbf7c72c2a0c8558c14cb5deb91583e0c57b660f37977a9971447ddd3a5500e",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:41.911201+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "ba2bfea5e02c86f38ea1383469d1c4ec53fd32afd5d0518df595eb4566faff5d",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:42.229386+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "fa3f595a6cba848ed9aeb7258c5c15e8b9664e9678c705cf844ad8187019403b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:42.513939+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "9efe8cf60695d45d853ebfebf43a137139a549d8bf72e8b4564a115bcd67c0c1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:42.840654+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "834d76524c077d3b6500a8d7fad806c01ad0d53367b882ca464a8448e0caffdc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:43.116976+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "96729051ef8d660af889a333e5c01b1f4c3d57a8c9096449877ab4d9de938fb4",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:43.400886+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/",
+      "status": 200,
+      "sha256": "f70436feec3de66ef8abc4c70633d84e4acefc81fdefc85635a0c5429304e186",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:43.824156+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/",
+      "status": 200,
+      "sha256": "b50180ba67ca82d6eb82341df6718329bda79178306d511f4f32935100c0cdb2",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:44.233107+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "3472c600560964c2b137e01dec32bbd6c1db486d546bd77c4d9c9dafda6edebb",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:44.600808+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "9b9ab7e90bc7107308d8c3360a96d7bcb07446ea69f36f54f6bd47766188ef77",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:44.902049+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "ed39f5aba4b3168c9fd00a9399fc1dc6ef8748cd99e92ad7e1544864bfb8e5c1",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:45.199625+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "0802b1b728ab3af6654e07cf6100c9a28a7e71201fc72c562cfadb917a1e7d3b",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:45.676959+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "9d0ceb318013749edfeab73e5612268d38cec680f55613f5f380558d899c77f0",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:45.997528+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "6d695d135bb212c88b5897e3045656f6492149f675e4833ff88249cd602e66ce",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:46.278423+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "22a1bc093109840f52073ec3ee0ddc3d198a10bac2334fe59bbd7455b7cb5127",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:46.605161+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "de1cbba0d5afb8da8e8dbc0aa0d1d2f87a5aa739087f8edc1921c3c2a42fe9fc",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:46.934707+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "425653dc1558ec9e22fe5ba838894fa4f49100a9ecb20408f3f742d1ee8f2192",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:47.361076+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "6bd1d1bda8c164d38f896b9fc5d5867df336c26ea07be24690a714ca96f30c6c",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:47.683393+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "46331e027fdce890ae64051c720da6e52e29c45f5aae0aa77268ba606966d177",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:47.961179+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sitemap.xml",
+      "status": 200,
+      "sha256": "9e3dac8cb06d1934183d81671fea4926b442e88255795f86a66b68fa82f1e271",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:48.904659+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "09cb25e2339e3ce100ed2ad6225dfae98fa368bef1d902c14e0014a440a47168",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:49.338245+00:00"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "075631effc2bea1724081f62c9605b6f9a4665c82fb6e71257c635b4ce41ee0a",
+      "matchesBuild": true,
+      "attempts": 1,
+      "transportErrors": [],
+      "checkedAt": "2026-10-22T01:55:49.796939+00:00"
+    }
+  ],
+  "resumedSuccessfulChecks": 0,
+  "transportPolicy": "Checkpoint every success; retry only transport and transient HTTP errors, never byte mismatches.",
+  "scope": "Every515sitemapHTML plus sitemap/two text exports exact final built hashes; no retry of byte mismatch, no TLS bypass. Not indexing, rankings, citations or runtime proof."
+}

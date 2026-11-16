@@ -1,0 +1,948 @@
+[
+  {
+    "slug": "outlook-end-recurring-meeting-early-keep-history",
+    "path": [
+      "sections",
+      4,
+      "body",
+      0
+    ],
+    "before": "A fictional team lead organises a Monday stand-up that started in January; the team is reorganising on 1 December. Three past occurrences were moved to Tuesdays and one had a slide deck attached.",
+    "after": "A fictional team lead organises a Monday stand-up that started in January 2026; the team is reorganising on 1 December 2026. Three past occurrences were moved to Tuesdays and one had a slide deck attached.",
+    "reason": "Make worked-example year explicit so its recurrence boundary can be checked.",
+    "sourceMatch": "cancel-all-future",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "file": "claude/review-source-text/3113dbbad0674573.txt",
+        "sha256": "3a0cc34cdd3e13be939c7a69dbb6900e034a73ef150dee5143605d6efbbae173",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-end-recurring-meeting-early-keep-history",
+    "path": [
+      "sections",
+      4,
+      "body",
+      1
+    ],
+    "before": "The lead first saves the slide deck to the team’s OneDrive. Then, in classic Outlook, they open the series, set End by to 30 November and send the update with “Last stand-up is 24 November; new team meetings will follow.”",
+    "after": "The lead first saves the slide deck and any other needed occurrence notes elsewhere. Then, in classic Outlook, they open the series, set End by to 30 November 2026 and send the update with “Last stand-up is Monday 30 November; new team meetings will follow.”",
+    "reason": "Original 24 November last-Monday statement contradicted the end date; 30 November 2026 is Monday.",
+    "sourceMatch": "cancel-all-future",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "file": "claude/review-source-text/3113dbbad0674573.txt",
+        "sha256": "3a0cc34cdd3e13be939c7a69dbb6900e034a73ef150dee5143605d6efbbae173",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-end-recurring-meeting-early-keep-history",
+    "path": [
+      "sections",
+      3,
+      "body",
+      0
+    ],
+    "before": "Microsoft warns that if you are not the organizer and delete the series from your calendar, past occurrences are removed too. If the organizer sends a cancellation, Microsoft’s best practice is to use Remove from Calendar on the cancellation in your inbox rather than deleting items from the calendar directly.",
+    "after": "Microsoft warns that if you are not the organizer and delete the series from your calendar, past occurrences are removed too. To remove only future meetings while retaining the past, its documented attendee route is to delete the future occurrences individually. If the organizer sends a cancellation, Microsoft’s best practice is to use Remove from Calendar on the cancellation in your inbox rather than deleting items from the calendar directly.",
+    "reason": "Add documented attendee route instead of only warning about whole-series deletion.",
+    "sourceMatch": "cancel-all-future",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "file": "claude/review-source-text/3113dbbad0674573.txt",
+        "sha256": "3a0cc34cdd3e13be939c7a69dbb6900e034a73ef150dee5143605d6efbbae173",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+    "path": [
+      "sections",
+      1,
+      "body",
+      1
+    ],
+    "before": "To reuse details, have the new organizer create a fresh meeting and paste in the agenda, location and Teams arrangements.",
+    "after": "To reuse useful text, have the new organizer create a fresh meeting and copy the agenda and intended location. Configure conferencing on that new meeting and check its join details before sending; pasting the old Teams arrangements is not proof that the successor owns the new conference.",
+    "reason": "Avoid encouraging reuse of the outgoing organizer’s conference link; distinguish a new invitation from copied meeting identity.",
+    "sourceMatch": "best-practices-for-organizations",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "file": "claude/review-source-text/c9c85ca0b2e4031f.txt",
+        "sha256": "9b7f9039bded594ceaac70a3943a23039c881d2c85acfaaaea75e55348b5cf84",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-appointment-meeting-event-convert-and-update",
+    "path": [
+      "comparison",
+      "rows",
+      0,
+      "cells",
+      0
+    ],
+    "before": "Untick All day event",
+    "after": "Untick All day event on a personal event with no attendees",
+    "reason": "No-notification statement requires no attendees.",
+    "sourceMatch": "change-an-appointment",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "file": "claude/review-source-text/04adad73949c84d7.txt",
+        "sha256": "95eea4fbeac031b53bfedc22e421e5e59c9b422bbeedd9b18e4c1674f657ba47",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-appointment-meeting-event-convert-and-update",
+    "path": [
+      "practical",
+      2
+    ],
+    "before": "When only changing attendees, send to added or removed people only.",
+    "after": "When only adding attendees, use the limited-recipient update option if offered. New Outlook also documents this option for attendee removals; classic Outlook’s cited instructions cover added attendees only.",
+    "reason": "Retain documented client differences in the actionable checklist.",
+    "sourceMatch": "change-an-appointment",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "file": "claude/review-source-text/04adad73949c84d7.txt",
+        "sha256": "95eea4fbeac031b53bfedc22e421e5e59c9b422bbeedd9b18e4c1674f657ba47",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-appointment-meeting-event-convert-and-update",
+    "path": [
+      "sections",
+      4,
+      "body",
+      0
+    ],
+    "before": "A fictional trainer adds an all-day event “Course prep” on Wednesday; it shows as free. When the plan firms up to 09:00–13:00, they untick All day event; it becomes an appointment and shows as Busy.",
+    "after": "A fictional trainer using classic Outlook adds an all-day event “Course prep” on Wednesday; it shows as free. When the plan firms up to 09:00–13:00, they untick All day event; it becomes an appointment and shows as Busy.",
+    "reason": "Explicitly scope default and conversion behavior to classic Outlook.",
+    "sourceMatch": "change-an-appointment",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "file": "claude/review-source-text/04adad73949c84d7.txt",
+        "sha256": "95eea4fbeac031b53bfedc22e421e5e59c9b422bbeedd9b18e4c1674f657ba47",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-appointment-meeting-event-convert-and-update",
+    "path": [
+      "sections",
+      4,
+      "body",
+      1
+    ],
+    "before": "They then add two co-trainers, turning it into a meeting, and send. A week later they add a third co-trainer only; in new Outlook they choose to send the update only to the added attendee, so the first two aren’t emailed again.",
+    "after": "They then add two co-trainers, turning it into a meeting, and send. A week later, now editing that meeting in new Outlook, they add a third co-trainer without other changes and choose to send the update only to the added attendee, so the first two aren’t emailed again.",
+    "reason": "Worked example switches clients; say so rather than blending UI.",
+    "sourceMatch": "change-an-appointment",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "file": "claude/review-source-text/04adad73949c84d7.txt",
+        "sha256": "95eea4fbeac031b53bfedc22e421e5e59c9b422bbeedd9b18e4c1674f657ba47",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-subscribe-or-import-ics-calendar",
+    "path": [
+      "sections",
+      2,
+      "body",
+      0
+    ],
+    "before": "In Calendar, choose Add calendar. To subscribe, choose Subscribe from web, enter the URL and select Import (Outlook.com) or Import and Save (Outlook on the web). To import, choose Upload from file, pick the .ics file, choose which calendar it goes into, and select Import.",
+    "after": "In Calendar, choose Add calendar. To subscribe, choose Subscribe from web, enter the URL and select Import (Outlook.com) or Import and Save (Outlook on the web). To import, choose Upload from file, pick the .ics file, choose which calendar it goes into, and select Import; Microsoft’s work/school instructions also show Save.",
+    "reason": "Restore final Save in work/school file-import instructions.",
+    "sourceMatch": "import-or-subscribe",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "file": "claude/review-source-text/9d9b79df2ab426e5.txt",
+        "sha256": "31c1b436570e495ddca5e851500f1c95f6a091c1b07ff12cd911c8b89be85800",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-subscribe-or-import-ics-calendar",
+    "path": [
+      "sections",
+      2,
+      "body",
+      1
+    ],
+    "before": "Microsoft suggests that if subscribing fails, you can import instead — accepting that you lose updates. In classic Outlook on the web, Microsoft also notes that if a correct internet calendar URL shows nothing, try removing it and adding it again with https instead of http.",
+    "after": "Microsoft suggests that if subscribing fails, you can import instead — accepting that you lose updates. Its instructions for classic Outlook on the web also mention removing an empty internet calendar and re-adding its URL with https rather than http. That is a legacy web-client troubleshooting note, not a desktop Outlook command; use the publisher’s valid HTTPS feed address rather than inventing an address.",
+    "reason": "Keep legacy web troubleshooting and valid-feed conditions explicit.",
+    "sourceMatch": "share-your-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "file": "claude/review-source-text/373a1b9454803c7b.txt",
+        "sha256": "698188bd0958bbfe2218207769b9236733a24a135d93d107e37cbbb3c484387b",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-subscribe-or-import-ics-calendar",
+    "path": [
+      "sections",
+      3,
+      "body",
+      1
+    ],
+    "before": "When the school moves an inset day on a Monday morning, the parent’s Outlook still shows the old date at lunchtime. Given Microsoft’s figures, that is expected; they check the school website and adjust plans. The sports-day entry will never change unless they edit it, because it was imported.",
+    "after": "When the school moves an inset day on a Monday morning, the parent’s Outlook still shows the old date at lunchtime. Such a delay is consistent with Microsoft’s figures; they check the school website and adjust plans. The imported sports-day entry does not follow subsequent changes from the school.",
+    "reason": "A documented possible delay is not guaranteed diagnosis; imported events do not receive publisher updates, rather than universally never changing.",
+    "sourceMatch": "import-or-subscribe",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "file": "claude/review-source-text/9d9b79df2ab426e5.txt",
+        "sha256": "31c1b436570e495ddca5e851500f1c95f6a091c1b07ff12cd911c8b89be85800",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-subscribe-or-import-ics-calendar",
+    "path": [
+      "practical",
+      3
+    ],
+    "before": "If a correct URL shows nothing, try re-adding it with https.",
+    "after": "If a subscription is empty, verify the publisher’s current feed address and whether HTTPS is supported before changing or reconnecting it.",
+    "reason": "Do not prescribe unqualified remove/re-add or guessed HTTPS URLs.",
+    "sourceMatch": "share-your-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "file": "claude/review-source-text/373a1b9454803c7b.txt",
+        "sha256": "698188bd0958bbfe2218207769b9236733a24a135d93d107e37cbbb3c484387b",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-subscribe-or-import-ics-calendar",
+    "path": [
+      "faq",
+      1,
+      "a"
+    ],
+    "before": "That is how import works: Microsoft calls it a snapshot. Remove the imported events and subscribe to the link instead if you need updates.",
+    "after": "That is how import works: Microsoft calls it a snapshot. If you need later updates, subscribe to the publisher’s current feed and verify it first. Only then identify and deliberately remove any unwanted imported copies; do not delete unrelated events from the destination calendar.",
+    "reason": "Avoid destructive blanket imported-event deletion before a verified replacement.",
+    "sourceMatch": "import-or-subscribe",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "file": "claude/review-source-text/9d9b79df2ab426e5.txt",
+        "sha256": "31c1b436570e495ddca5e851500f1c95f6a091c1b07ff12cd911c8b89be85800",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-teams-meeting-button-missing",
+    "path": [
+      "sections",
+      3,
+      "body",
+      0
+    ],
+    "before": "Microsoft documents a specific case: when a delegate schedules a Teams meeting on a manager’s calendar and the manager’s mailbox is hidden from the global address list, the meeting URL, ID, passcode and dial-in numbers aren’t added. The fix is for an administrator to unhide the mailbox; the delegate then restarts Outlook and creates a new meeting request.",
+    "after": "In its classic Outlook add-in troubleshooting, Microsoft documents a specific case: when a delegate schedules a Teams meeting on a manager’s calendar and the manager’s mailbox is hidden from the global address list, the meeting URL, ID, passcode and dial-in numbers aren’t added. For that diagnosed case, an administrator unhides the mailbox; the delegate then restarts Outlook and creates a new meeting request. A missing link alone does not establish this cause.",
+    "reason": "The GAL workaround is classic add-in-specific and not the diagnosis for every missing link.",
+    "sourceMatch": "resolve-teams-meeting",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "file": "claude/review-source-text/34465d484d807349.txt",
+        "sha256": "162e85a413f31eb3e84039404a78afa24a824ac41d9bc70564884f4fa51a2518",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-teams-meeting-button-missing",
+    "path": [
+      "sections",
+      4,
+      "body",
+      0
+    ],
+    "before": "A fictional colleague on classic Outlook finds no Teams button after an update. File, Options, Add-ins shows the Teams add-in under Disabled; they enable it through COM Add-ins and restart. The button returns.",
+    "after": "A fictional colleague on classic Outlook finds no Teams button after an update. File, Options, Add-ins shows the Teams add-in under Disabled; they enable it through COM Add-ins and restart, then check whether the button has returned.",
+    "reason": "Illustrative test plan must not guarantee that one remediation resolves every installation.",
+    "sourceMatch": "resolve-teams-meeting",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "file": "claude/review-source-text/34465d484d807349.txt",
+        "sha256": "162e85a413f31eb3e84039404a78afa24a824ac41d9bc70564884f4fa51a2518",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-teams-meeting-button-missing",
+    "path": [
+      "sections",
+      4,
+      "body",
+      1
+    ],
+    "before": "Another colleague on new Outlook has the same symptom. Their Teams is signed in with a personal account. They sign Teams in with the same work account as Outlook, restart Teams then Outlook, and the Teams toggle appears.",
+    "after": "Another colleague on new Outlook has the same symptom. Their Teams is signed in with a personal account. They sign Teams in with the same work account as Outlook, restart Teams then Outlook, and check the event window for the Teams meeting toggle. If it is still absent, they report the client versions and account type to IT.",
+    "reason": "Do not present an untested guaranteed result.",
+    "sourceMatch": "teams-meeting-add-in-missing",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865",
+        "file": "claude/review-source-text/3f9f5d1a2aa928de.txt",
+        "sha256": "1a6ee8406a0430a14a03c6fdab4dc7b6e41fc4c726008da7bbc1230681028899",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-teams-meeting-button-missing",
+    "path": [
+      "comparison",
+      "rows",
+      2,
+      "cells",
+      1
+    ],
+    "before": "Either",
+    "after": "Classic Outlook add-in case documented by Microsoft",
+    "reason": "Original Either incorrectly extended the documented diagnosis to new Outlook.",
+    "sourceMatch": "resolve-teams-meeting",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "file": "claude/review-source-text/34465d484d807349.txt",
+        "sha256": "162e85a413f31eb3e84039404a78afa24a824ac41d9bc70564884f4fa51a2518",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-teams-meeting-button-missing",
+    "path": [
+      "faq",
+      1,
+      "a"
+    ],
+    "before": "Microsoft documents this when the manager’s mailbox is hidden from the global address list. An administrator must unhide it.",
+    "after": "One documented cause in classic Outlook is a manager’s mailbox hidden from the global address list. Ask IT to diagnose that case; if it applies, Microsoft directs an administrator to unhide the mailbox, then have the delegate restart Outlook and create a new request. Other missing-link cases need their own checks.",
+    "reason": "Scope conditional cause and remediation.",
+    "sourceMatch": "resolve-teams-meeting",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "file": "claude/review-source-text/34465d484d807349.txt",
+        "sha256": "162e85a413f31eb3e84039404a78afa24a824ac41d9bc70564884f4fa51a2518",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-birthday-calendar-from-contacts",
+    "path": [
+      "sources",
+      0,
+      "url"
+    ],
+    "before": "https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook",
+    "after": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+    "reason": "Original official URL returned 404; current official /calendar/ page fetched in full.",
+    "sourceMatch": "add-a-birthday",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+        "file": "claude/review-source-text/869c6b561b64b5b1.txt",
+        "sha256": "c9853387060258e06bdcfb50a032559d8da0cc1c7d2d31e66ebd0a5688a9406f",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-birthday-calendar-from-contacts",
+    "path": [
+      "sections",
+      1,
+      "body",
+      0
+    ],
+    "before": "Birthdays entered in a contact’s Birthday or Anniversary box appear as recurring events, and Microsoft says reminders are added by default. Hide the calendar by unticking Birthdays, or right-click it and choose Delete Calendar.",
+    "after": "In classic Outlook, open People, edit a contact, then use Contact > Show > Details and enter the Birthday or Anniversary date. Microsoft says these are all-day annually recurring events and reminders are added by default. A separate Birthdays calendar enabled in new Outlook can also appear under My Calendars when you switch back to classic Outlook.",
+    "reason": "Distinguish contact-created recurring events from enabling a separate birthday calendar.",
+    "sourceMatch": "add-a-birthday",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+        "file": "claude/review-source-text/869c6b561b64b5b1.txt",
+        "sha256": "c9853387060258e06bdcfb50a032559d8da0cc1c7d2d31e66ebd0a5688a9406f",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-birthday-calendar-from-contacts",
+    "path": [
+      "sections",
+      1,
+      "body",
+      1
+    ],
+    "before": "Microsoft states that deleting the birthday calendar won’t delete contacts or the birthdays saved in them.",
+    "after": "If a Birthdays calendar is listed, hide it by unticking its checkbox, or right-click its name and choose Delete Calendar. Microsoft states that deleting that calendar does not delete contacts or their saved birthdays. Check the selected calendar name before deleting.",
+    "reason": "Do not imply every classic contact birthday automatically creates the same separate Birthdays calendar.",
+    "sourceMatch": "add-a-birthday",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+        "file": "claude/review-source-text/869c6b561b64b5b1.txt",
+        "sha256": "c9853387060258e06bdcfb50a032559d8da0cc1c7d2d31e66ebd0a5688a9406f",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-birthday-calendar-from-contacts",
+    "path": [
+      "comparison",
+      "rows",
+      0,
+      "cells",
+      2
+    ],
+    "before": "Appears automatically",
+    "after": "Contact dates create recurring events; a Birthdays calendar enabled in new Outlook can appear here",
+    "reason": "Original Appears automatically conflated two documented workflows.",
+    "sourceMatch": "add-a-birthday",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+        "file": "claude/review-source-text/869c6b561b64b5b1.txt",
+        "sha256": "c9853387060258e06bdcfb50a032559d8da0cc1c7d2d31e66ebd0a5688a9406f",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-split-view-overlay-calendars",
+    "path": [
+      "sections",
+      2,
+      "body",
+      0
+    ],
+    "before": "Side by side answers “who is busy when?” because each person’s column stays separate. Overlay answers “is there any clash at all?” but makes it harder to see whose item is whose; rely on colours and open items before acting.",
+    "after": "Side by side helps answer “whose visible event is this?” because each calendar has its own column. Overlay helps spot overlaps in one grid, but colour and the opened item identify the owning calendar. Neither layout supplies calendar access you do not already have, and an empty-looking area alone is not confirmation that a person is free.",
+    "reason": "Display mode is not permission, completeness, or confirmed availability.",
+    "sourceMatch": "view-multiple-calendars",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook",
+        "file": "claude/review-source-text/ef73ab795e2a30a7.txt",
+        "sha256": "3b460f5660b58e3934551d5eadf8bd3df80f7ce1df58c67cb9aa10466df27849",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-split-view-overlay-calendars",
+    "path": [
+      "sections",
+      3,
+      "body",
+      0
+    ],
+    "before": "A fictional team lead opens their own calendar and two colleagues’ shared calendars in new Outlook with Split view on, and spots that both colleagues are free 15:00–16:00. They switch Split view off to check their own calendar on top; a pale-coloured overlay item at 15:30 turns out to be a colleague’s, not theirs.",
+    "after": "A fictional team lead opens their own calendar and two colleagues’ shared calendars in new Outlook with Split view on. Both colleagues have no visible event between 15:00 and 16:00, but the lead’s own column contains an appointment at 15:30. They switch Split view off and see that appointment in the combined grid; opening it confirms it belongs to their own calendar.",
+    "reason": "Original example simultaneously called a colleague free and busy at 15:30. Correct the owner and preserve consistent facts.",
+    "sourceMatch": "view-multiple-calendars",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook",
+        "file": "claude/review-source-text/ef73ab795e2a30a7.txt",
+        "sha256": "3b460f5660b58e3934551d5eadf8bd3df80f7ce1df58c67cb9aa10466df27849",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-print-calendar-styles",
+    "path": [
+      "sections",
+      1,
+      "body",
+      0
+    ],
+    "before": "Select File, Print, then a style under Settings. Microsoft lists Daily, Weekly Agenda, Weekly Calendar, Monthly, Tri-fold and Calendar Details styles. For the full title of items choose Weekly Agenda Style; for complete details choose Weekly Agenda Style or Calendar Details Style. Use Print Options for the date range and to choose a calendar.",
+    "after": "Select File, Print, then a style under Settings. Microsoft’s text documents examples including Weekly Agenda, Monthly and Calendar Details styles. For full titles choose Weekly Agenda Style; for full details Microsoft recommends Weekly Agenda Style or Calendar Details Style. Use Print Options for the date range and to choose a calendar.",
+    "reason": "The full six-style enumeration is not established by the retrieved source text; retain sourced examples.",
+    "sourceMatch": "print-a-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "file": "claude/review-source-text/7efc1051b2a5c6ff.txt",
+        "sha256": "97677e1583325baaa15d2a2cacaf4c63d4d7297414e2c2a0198c48352c4a4412",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-print-calendar-styles",
+    "path": [
+      "sections",
+      3,
+      "body",
+      0
+    ],
+    "before": "A fictional executive assistant needs a printed week of the director’s schedule for a board pack. In classic Outlook they choose Weekly Agenda Style so long meeting titles aren’t cut, set the range to the board week, and tick Hide Details of private appointments so personal items show only as time.",
+    "after": "A fictional executive assistant needs a printed week of the director’s schedule for a board pack. In classic Outlook they choose Weekly Agenda Style for full meeting titles, set the range to the board week, and tick Hide Details of private appointments. They inspect the preview to confirm private information is not exposed before sharing the printout.",
+    "reason": "Hide private details does not establish an exact time-only printed representation; verify the preview.",
+    "sourceMatch": "ad03c408",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760",
+        "file": "claude/review-source-text/44a3ef533d106dd0.txt",
+        "sha256": "fac620dd92df78973f70054c5453707772e0f0b8cbc4e7d3a8a7c2c5381eab7b",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-print-calendar-styles",
+    "path": [
+      "comparison",
+      "rows",
+      3,
+      "cells",
+      1
+    ],
+    "before": "Choose under Calendar",
+    "after": "Select the intended calendar; combined printing not established by this source",
+    "reason": "A calendar selector does not prove simultaneous multi-calendar printing.",
+    "sourceMatch": "print-a-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "file": "claude/review-source-text/7efc1051b2a5c6ff.txt",
+        "sha256": "97677e1583325baaa15d2a2cacaf4c63d4d7297414e2c2a0198c48352c4a4412",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-print-calendar-styles",
+    "path": [
+      "comparison",
+      "rows",
+      3,
+      "cells",
+      3
+    ],
+    "before": "Choose under Calendar",
+    "after": "Select the intended calendar; combined printing not established by this source",
+    "reason": "Same calendar-selector inference in Mac column.",
+    "sourceMatch": "print-a-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "file": "claude/review-source-text/7efc1051b2a5c6ff.txt",
+        "sha256": "97677e1583325baaa15d2a2cacaf4c63d4d7297414e2c2a0198c48352c4a4412",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-shared-mailbox-calendar",
+    "path": [
+      "sections",
+      0,
+      "body",
+      0
+    ],
+    "before": "Microsoft describes shared mailboxes for addresses like information, support or reception. An administrator creates one and adds members. Members need their own licensed Exchange Online mailbox; the shared mailbox needs no licence up to 50 GB.",
+    "after": "Microsoft describes shared mailboxes for addresses like information, support or reception. An administrator creates one and adds members. Members need their own licensed Exchange Online mailbox. For basic use the shared mailbox can hold up to 50 GB without a separate licence, but archiving, litigation hold and some advanced security or compliance features can require additional licensing.",
+    "reason": "No-licence up-to50GB statement needs documented feature exceptions.",
+    "sourceMatch": "about-shared-mailboxes",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes",
+        "file": "claude/review-source-text/b47c8460cc94f021.txt",
+        "sha256": "2a5ea8005e68e406185d1787ca9153cd8bdddcce2db91f82cede52d5c951188d",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-shared-mailbox-calendar",
+    "path": [
+      "sections",
+      1,
+      "body",
+      0
+    ],
+    "before": "Microsoft says a shared mailbox supports a maximum of 25 users; above that, or with many people at once, members may see connection failures or duplicated messages, and Microsoft recommends a Microsoft 365 group instead. You also can’t prevent members from deleting items. Mail sent from it can’t be encrypted.",
+    "after": "Microsoft says a shared mailbox supports a maximum of 25 users; too many simultaneous users may see connection failures or duplicated messages. Microsoft recommends a Microsoft 365 group if more users are needed. Its deletion warning is about email messages: you cannot prevent members from deleting those messages. It separately documents that members can create, view and manage shared-calendar appointments. Microsoft also documents limitations on encryption of mail sent from a shared mailbox.",
+    "reason": "Do not extend a message-deletion restriction to every mailbox item or infer calendar permission granularity.",
+    "sourceMatch": "about-shared-mailboxes",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes",
+        "file": "claude/review-source-text/b47c8460cc94f021.txt",
+        "sha256": "2a5ea8005e68e406185d1787ca9153cd8bdddcce2db91f82cede52d5c951188d",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-shared-mailbox-calendar",
+    "path": [
+      "comparison",
+      "rows",
+      4,
+      "cells",
+      0
+    ],
+    "before": "Prevent members deleting items",
+    "after": "Prevent members deleting shared-mailbox email messages",
+    "reason": "Scope matches Microsoft’s actual warning.",
+    "sourceMatch": "about-shared-mailboxes",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes",
+        "file": "claude/review-source-text/b47c8460cc94f021.txt",
+        "sha256": "2a5ea8005e68e406185d1787ca9153cd8bdddcce2db91f82cede52d5c951188d",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-work-hours-and-location",
+    "path": [
+      "sections",
+      0,
+      "body",
+      0
+    ],
+    "before": "Microsoft says it is only for work or school accounts with a qualifying Microsoft 365 subscription. You set it in new Outlook for Windows or Outlook on the web; classic Outlook can view work hours and location but not set them, and Microsoft lists Teams, Mac and mobile as later. Microsoft also says setup isn’t available in classic Outlook for Windows with GCC High.",
+    "after": "Microsoft says recurring work-hours setup is for work or school accounts with a qualifying Microsoft 365 subscription. Its documented recurring-plan setup is in new Outlook for Windows or Outlook on the web; classic Outlook can display work hours and location. The page separately documents changing today’s location from Teams, so that daily override should not be confused with configuring the full recurring plan. Microsoft also notes that the feature is not yet available for classic Outlook for Windows with GCC High.",
+    "reason": "Source distinguishes recurring setup from supported one-day Teams updates; original blanket later claim is misleading.",
+    "sourceMatch": "work-hours-in-outlook",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "file": "claude/review-source-text/0830ae9507b4e06c.txt",
+        "sha256": "a7fb87d8b2a03aa05107b7ff5a9736318497a05e6e32dba75778afcd76f9d8ab",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-work-hours-and-location",
+    "path": [
+      "sections",
+      1,
+      "body",
+      1
+    ],
+    "before": "For one-off changes, use Work plan from the calendar to adjust a day or a few days; Microsoft says you can clear a location by deselecting it.",
+    "after": "For one-off changes in the documented Outlook calendar workflow, open Work plan, adjust the relevant days or location and select Set. Microsoft says you can clear a location by deselecting it. For a Teams daily override, use the profile-picture menu: Microsoft says that location applies for the remainder of the working day and is reflected in Outlook and Teams. Availability of controls depends on the client and organisation.",
+    "reason": "Add actual Set commit control and separately documented Teams daily override.",
+    "sourceMatch": "work-hours-in-outlook",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "file": "claude/review-source-text/0830ae9507b4e06c.txt",
+        "sha256": "a7fb87d8b2a03aa05107b7ff5a9736318497a05e6e32dba75778afcd76f9d8ab",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-work-hours-and-location",
+    "path": [
+      "comparison",
+      "rows",
+      3
+    ],
+    "before": {
+      "cells": [
+        "Teams, Mac, mobile",
+        "Listed as coming later",
+        "—"
+      ]
+    },
+    "after": {
+      "cells": [
+        "Teams",
+        "Full recurring-plan setup not established here",
+        "Today’s location can be changed from profile menu"
+      ]
+    },
+    "reason": "Replace blanket Teams/Mac/mobile coming-later grouping with documented distinction.",
+    "sourceMatch": "work-hours-in-outlook",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "file": "claude/review-source-text/0830ae9507b4e06c.txt",
+        "sha256": "a7fb87d8b2a03aa05107b7ff5a9736318497a05e6e32dba75778afcd76f9d8ab",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-work-hours-and-location",
+    "path": [
+      "comparison",
+      "rows"
+    ],
+    "before": [
+      {
+        "cells": [
+          "New Outlook for Windows",
+          "Yes (work/school, qualifying subscription)",
+          "Yes"
+        ]
+      },
+      {
+        "cells": [
+          "Outlook on the web",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "cells": [
+          "Classic Outlook for Windows",
+          "No",
+          "Yes, hours approximated to one weekly range"
+        ]
+      },
+      {
+        "cells": [
+          "Teams",
+          "Full recurring-plan setup not established here",
+          "Today’s location can be changed from profile menu"
+        ]
+      },
+      {
+        "cells": [
+          "Personal Outlook.com account",
+          "No",
+          "—"
+        ]
+      }
+    ],
+    "after": [
+      {
+        "cells": [
+          "New Outlook for Windows",
+          "Yes (work/school, qualifying subscription)",
+          "Yes"
+        ]
+      },
+      {
+        "cells": [
+          "Outlook on the web",
+          "Yes",
+          "Yes"
+        ]
+      },
+      {
+        "cells": [
+          "Classic Outlook for Windows",
+          "No",
+          "Yes, hours approximated to one weekly range"
+        ]
+      },
+      {
+        "cells": [
+          "Teams",
+          "Full recurring-plan setup not established here",
+          "Today’s location can be changed from profile menu"
+        ]
+      },
+      {
+        "cells": [
+          "Outlook for Mac / mobile",
+          "Not documented as the recurring-plan setup route on this page",
+          "Check the current client; source has rollout qualifications"
+        ]
+      },
+      {
+        "cells": [
+          "Personal Outlook.com account",
+          "No",
+          "—"
+        ]
+      }
+    ],
+    "reason": "Preserve Mac/mobile caveat separately from Teams daily override.",
+    "sourceMatch": "work-hours-in-outlook",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "file": "claude/review-source-text/0830ae9507b4e06c.txt",
+        "sha256": "a7fb87d8b2a03aa05107b7ff5a9736318497a05e6e32dba75778afcd76f9d8ab",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "sections",
+      0,
+      "body",
+      0
+    ],
+    "before": "Microsoft says the Scheduling Assistant and Room Finder are available with Microsoft 365 or Exchange accounts. Add attendees, open Scheduling Assistant and you get a row per person; AutoPick suggests times, replacing the older Suggested Times feature.",
+    "after": "Microsoft says the Scheduling Assistant and Room Finder are available with Microsoft 365 or Exchange accounts. Add attendees and open Scheduling Assistant to see a row per person. Its documented desktop workflow also offers AutoPick to search for times under selected criteria; menus and automatic suggestions vary by client, so do not assume that exact command exists everywhere.",
+    "reason": "AutoPick is in the desktop section, not a universal cross-client command.",
+    "sourceMatch": "use-the-scheduling",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "file": "claude/review-source-text/b5f43b7a7f2296b9.txt",
+        "sha256": "5515d72441c0f8bda823bd4c39b57b1f855b21384618a83c785103d4551b42a9",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "sections",
+      0,
+      "body",
+      1
+    ],
+    "before": "How much you see is set by each colleague. Microsoft describes a My organization entry in sharing as the default level others in the organisation, or federated organisations, see in the Scheduling Assistant. If a colleague hasn’t shared directly with you, opening their calendar from the directory shows it with that My organization permission.",
+    "after": "The visible detail depends on calendar permissions and organisational sharing settings. Microsoft’s classic Outlook on the web guidance describes My organization as the default detail level for people in the organisation or federated organisations in Scheduling Assistant. It also says that opening an unshared colleague’s calendar from the directory uses that default. Those are legacy web instructions; use the current sharing controls available to your account rather than expecting the same label in every client.",
+    "reason": "Explicitly label My organization explanation as classic web source section instead of universal current UI.",
+    "sourceMatch": "share-your-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "file": "claude/review-source-text/373a1b9454803c7b.txt",
+        "sha256": "698188bd0958bbfe2218207769b9236733a24a135d93d107e37cbbb3c484387b",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "sections",
+      3,
+      "body",
+      0
+    ],
+    "before": "Microsoft documents one classic Outlook error, “We’re checking everyone’s calendars”, caused by a missing registry value after installing or reinstalling Office; its fixes are reinstalling Office or editing the registry. That is administrator territory. Other gaps in availability may reflect sharing settings, which a colleague can check from their side.",
+    "after": "Microsoft documents a classic Outlook/Exchange Online case in which “We’re checking everyone’s calendars” can result from missing FreeBusySupport registry entries after Office installation or reinstallation. That cause must be verified; the error alone does not prove it. The documented repair options are reinstalling Office or restoring the missing entries, with registry backup precautions. Ask IT to diagnose it. Other availability gaps can involve permissions or organisational sharing settings.",
+    "reason": "Missing registry value is a possible diagnosed cause, not universal cause of the error.",
+    "sourceMatch": "cannot-view-free-busy",
+    "evidence": [
+      {
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information",
+        "file": "claude/review-source-text/0a0d535a0e3f516c.txt",
+        "sha256": "0ef1e5c3a2a5f368a9bfd4af1df593faa314a79b96678eebe162059d8e43d1c2",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "practical",
+      0
+    ],
+    "before": "Add attendees, open Scheduling Assistant and try AutoPick.",
+    "after": "Add attendees and open Scheduling Assistant. In the documented desktop workflow, try AutoPick if available.",
+    "reason": "Avoid universal cross-client AutoPick instruction.",
+    "sourceMatch": "use-the-scheduling",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "file": "claude/review-source-text/b5f43b7a7f2296b9.txt",
+        "sha256": "5515d72441c0f8bda823bd4c39b57b1f855b21384618a83c785103d4551b42a9",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "faq",
+      0,
+      "a"
+    ],
+    "before": "You likely see their My organization default level. Microsoft says that’s what others in the organisation see in the Scheduling Assistant.",
+    "after": "Availability-only permission is one possible reason. Microsoft’s classic web guidance describes a My organization default that can provide busy blocks without details. Check the owner’s sharing settings and your organisation’s policy; an empty or unavailable grid can require different checks.",
+    "reason": "Avoid assuming one permission cause without checking.",
+    "sourceMatch": "share-your-calendar",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "file": "claude/review-source-text/373a1b9454803c7b.txt",
+        "sha256": "698188bd0958bbfe2218207769b9236733a24a135d93d107e37cbbb3c484387b",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "slug": "outlook-scheduling-assistant-read-colleague-availability",
+    "path": [
+      "comparison",
+      "rows",
+      1,
+      "cells",
+      2
+    ],
+    "before": "Responses will reveal it",
+    "after": "Ask or confirm through replies; a commitment may not be represented",
+    "reason": "Responses do not guarantee disclosure of every hidden commitment.",
+    "sourceMatch": "manage-your-availability",
+    "evidence": [
+      {
+        "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "file": "claude/review-source-text/eec3cc1dd4696d00.txt",
+        "sha256": "b51df49e9072aafe15658c41440c74cf3713d56f0698f8aaeba48a5c23b80e29",
+        "retrievedAt": "2026-10-23"
+      }
+    ]
+  }
+]

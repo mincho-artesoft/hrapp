@@ -1,0 +1,89 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendrier mensuel sur iPad et iPhone : voir les dates, vérifier les détails",
+  "short": "Utiliser le mois sans manquer les détails",
+  "description": "Comparez les dates sur iPad ou iPhone. Vérifiez événements masqués, calendriers choisis et heures avant de déplacer des rendez-vous partagés ou récurrents.",
+  "lede": "La vue mensuelle situe les engagements dans les dates. Elle prouve moins bien qu’une heure précise est libre. Choisissez une date dans l’aperçu, puis examinez le jour et l’événement avant de vous engager. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Une grille mensuelle plus grande montre tous les détails et une date apparemment vide prouve que tout le monde est disponible.",
+  "sections": [
+    {
+      "heading": "Choisir entre dates et heures exactes",
+      "body": [
+        "Utilisez le mois pour comparer échéance de projet, voyage et rendez-vous familial sur plusieurs semaines. Pour savoir si deux rendez-vous se chevauchent à 14 h 30, passez au jour ou à la semaine et vérifiez début et fin exacts. Une case mensuelle n’a pas l’échelle d’une grille horaire.",
+        "Un organisateur d’atelier peut d’abord éviter une semaine de voyage. Il doit ensuite examiner le jour proposé : engagements, préparation, trajet et heure de fin nécessaire. Une case dégagée est une piste à vérifier, pas une réservation confirmée ni une indication de disponibilité des autres."
+      ]
+    },
+    {
+      "heading": "Lire le compteur plutôt que les seuls titres visibles",
+      "body": [
+        "La case mensuelle actuelle de Cloud Calendars affiche un nombre limité de pastilles d’événements et un compteur supplémentaire si d’autres existent. Les titres restent sur une ligne et peuvent être tronqués. Ouvrez le jour ou l’événement pour le titre complet ou les autres engagements.",
+        "Un grand écran d’iPad facilite la lecture sans supprimer forcément toutes les limites. Une fenêtre étroite ou un texte agrandi modifient la place disponible. Faites le même contrôle sur iPhone : examinez le jour avant de considérer les pastilles visibles comme le planning complet."
+      ]
+    },
+    {
+      "heading": "Vérifier mois, calendriers sélectionnés et dates voisines",
+      "body": [
+        "Lisez le mois et l’année avant de choisir. La grille peut inclure des dates du mois voisin pour compléter ses lignes. Dans Cloud Calendars, utilisez la navigation mensuelle et examinez la date sélectionnée sans vous fier à la seule position d’une case.",
+        "Vérifiez les calendriers sélectionnés. Masquer le travail clarifie un programme familial mais retire ces engagements de cet aperçu. Pour diagnostiquer un doublon, masquez temporairement une source et comparez ; ne supprimez pas un rendez-vous pour alléger le mois."
+      ]
+    },
+    {
+      "heading": "Ouvrir l’événement avant de changer une organisation partagée",
+      "body": [
+        "Confirmez titre, propriétaire ou calendrier, heure locale et durée dans les détails. La couleur facilite le repérage sans remplacer l’identification du compte ou du droit de modification. Une invitation visible diffère d’un rendez-vous que vous organisez.",
+        "Cloud Calendars permet de glisser un événement vers une autre date dans le mois. Avant un vrai déplacement, déterminez la date voulue et la portée de récurrence. Après une modification autorisée, rouvrez l’événement ; un geste local ne prouve pas que le fournisseur ou tous les participants ont accepté la nouvelle organisation."
+      ]
+    },
+    {
+      "heading": "Vérifier séparément récurrence et fuseaux horaires",
+      "body": [
+        "Si seul le cours de cette semaine change, ne modifiez pas involontairement la série future. Lisez le choix de portée proposé, puis vérifiez l’occurrence modifiée et une suivante. Le mois facilite les comparaisons, mais la portée de modification définit l’effet.",
+        "Pour un voyage ou une réunion entre fuseaux, examinez explicitement date et heure locales. Déplacer à un autre jour ne convertit pas automatiquement l’heure de réunion prévue. Vérifiez les changements d’heure saisonniers si nécessaire et confirmez l’heure convenue avec les personnes concernées."
+      ]
+    },
+    {
+      "heading": "Utiliser la grande vue sans confondre les produits",
+      "body": [
+        "Calendrier Apple propose ses propres affichages mensuels, et Teamup décrit des vues différentes sur navigateur et mobile. Ces commandes appartiennent à leurs produits respectifs. Ne cherchez pas la configuration web de Teamup ou le menu d’Apple dans Cloud Calendars parce que les vues portent le même nom.",
+        "Un mois de rendez-vous n’est pas non plus un mois de prévisions météo. Pour une sortie, vérifiez séparément lieu, date et heures de prévision disponibles. Enregistrez le rendez-vous final dans le bon calendrier et confirmez directement les changements avec les participants."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Présélectionner les dates au mois, puis vérifier les heures au jour ou à la semaine.",
+    "Ouvrir les jours avec compteur supplémentaire ou titres tronqués.",
+    "Vérifier mois, année et calendriers sélectionnés avant de supposer une date libre.",
+    "Confirmer calendrier, heure, durée et droit de modification.",
+    "Lire la portée de récurrence et vérifier l’occurrence après déplacement.",
+    "Vérifier la météo disponible séparément et confirmer les changements."
+  ],
+  "faq": [
+    {
+      "q": "Le mois sur iPad affiche-t-il tous les rendez-vous en entier ?",
+      "a": "Ne le supposez pas. Cloud Calendars limite les pastilles par case et utilise un compteur supplémentaire. Ouvrez le jour et l’événement pour examiner tout le planning."
+    },
+    {
+      "q": "Un jour vide signifie-t-il que je suis libre ?",
+      "a": "Vérifiez d’abord les calendriers sélectionnés, la date et la présence des données de compte utiles. L’aperçu représente seulement les informations disponibles et affichées."
+    },
+    {
+      "q": "Déplacer un événement récurrent change-t-il seulement cette date ?",
+      "a": "Lisez le choix de portée au lieu de le supposer. Après enregistrement, vérifiez l’occurrence modifiée et une suivante, puis confirmez l’organisation voulue."
+    }
+  ],
+  "sourcesHeading": "Comparer les descriptions officielles des vues",
+  "sources": [
+    {
+      "label": "Apple : vues mensuelle, sur plusieurs jours et en liste",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup : vues et configuration sur navigateur et application",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "drag-an-event-to-move-it"
+  ]
+}

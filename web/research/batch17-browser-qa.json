@@ -1,0 +1,24 @@
+{
+  "allPassed": true,
+  "samples": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch17-onecal.png",
+      "review": "Complete visible text, developer disclosure, six sections, practical steps, sources and related links inspected; top screenshot visually checked."
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/a-fourteen-day-view-of-the-weather/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqCount": 3,
+      "screenshot": "/tmp/cloud-calendar-batch17-fr-weather.png",
+      "review": "Complete visible text and top screenshot checked; app daily coverage and website demo distinguished."
+    }
+  ],
+  "viewportReset": true,
+  "temporaryLocalServerCreated": false,
+  "limits": "Responsive and content checks of these two pages only; not independent native-speaker approval or released-app runtime testing."
+}

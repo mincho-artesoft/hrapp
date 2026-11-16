@@ -1,0 +1,15 @@
+{
+  "locale": "bg",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Всички ваши календари — iCloud, Google, Microsoft — на едно място, с прогнозата, вградена в самия ден. Спрете да гадаете какъв ще е следобедът.",
+      "after": "Вижте избрани календари от iCloud и Google на iPhone и iPad, с наличната прогноза за времето до плановете ви. Premium добавя свързване с календари на Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Календарите ви и прогнозата, на едно място. Направено за iPhone и iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud и Google календари, време и джаджи на iPhone и iPad. Безплатно изтегляне; Premium добавя Microsoft календари и Teams."
+    }
+  ]
+}

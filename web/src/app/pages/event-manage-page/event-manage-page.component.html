@@ -1,0 +1,45 @@
+<section class="ev" [attr.dir]="locale.dir">
+  <div class="ev__shell">
+    @switch (mode()) {
+      @case ('loading') {
+        <div class="ev__center"><span class="ev__spin" aria-hidden="true"></span></div>
+      }
+
+      @case ('view') {
+        @if (reg(); as r) {
+          <header class="ev__head">
+            <p class="eyebrow">{{ copy.yourSpotTitle }}</p>
+            <h1 class="ev__title">{{ r.event.title }}</h1>
+            <p class="ev__host">{{ copy.hostedBy }} <strong>{{ r.displayName }}</strong></p>
+          </header>
+
+          <div class="card ev__card">
+            <div class="ev__row"><span class="ev__k">{{ copy.whenLabel }}</span><span class="ev__v">{{ whenText(r.event) }}</span></div>
+            @if (r.event.location) { <div class="ev__row"><span class="ev__k">{{ copy.whereLabel }}</span><span class="ev__v">{{ r.event.location }}</span></div> }
+          </div>
+
+          <button type="button" class="btn btn--ghost btn--lg ev__submit" [disabled]="working()" (click)="cancel()">
+            {{ copy.cancelSpot }}
+          </button>
+          <a class="ev__back" [href]="homeHref">{{ copy.keepSpot }}</a>
+        }
+      }
+
+      @case ('cancelled') {
+        <div class="ev__done">
+          <div class="ev__check ev__check--off">✕</div>
+          <h1 class="ev__title">{{ copy.spotCancelledTitle }}</h1>
+          <p class="ev__lead">{{ copy.spotCancelledSub }}</p>
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        </div>
+      }
+
+      @case ('notfound') {
+        <div class="ev__center ev__center--msg">
+          <p class="ev__lead">{{ copy.regNotFound }}</p>
+          <a class="ev__back" [href]="homeHref">{{ copy.backHome }}</a>
+        </div>
+      }
+    }
+  </div>
+</section>

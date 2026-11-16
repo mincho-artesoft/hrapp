@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-22",
+  "source": {
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "slug": "work-and-personal-without-two-apps",
+    "sha256": "852acd7cd6363a9b4b2400587beb890ae471365d7ba357de42cdc7ddebe15656"
+  },
+  "results": [
+    {
+      "locale": "bg",
+      "file": "research/batch23-work-personal/bg.json",
+      "sha256": "c44ebfabf050690feecd15c375c9c77a4cf0ad72b9d9a7cdd24905bac90507b1",
+      "descriptionUnicodeCharacters": 141,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "faq": true,
+        "date": true,
+        "claims": true,
+        "sources": true,
+        "description": true,
+        "routes": true
+      },
+      "missingEnglishRelated": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ],
+      "addedRelated": [
+        "icloud-google-and-outlook-in-one-view"
+      ]
+    },
+    {
+      "locale": "ja",
+      "file": "research/batch23-work-personal/ja.json",
+      "sha256": "f090e845a6067e6bc22ac6ee130c230e4244ea742dd3c77ce6461e32cf975b76",
+      "descriptionUnicodeCharacters": 76,
+      "checks": {
+        "sections": true,
+        "paragraphs": true,
+        "practical": true,
+        "faq": true,
+        "date": true,
+        "claims": true,
+        "sources": true,
+        "description": true,
+        "routes": true
+      },
+      "missingEnglishRelated": [
+        "what-calendar-sync-actually-does",
+        "when-two-calendars-disagree"
+      ],
+      "addedRelated": [
+        "icloud-google-and-outlook-in-one-view"
+      ]
+    }
+  ],
+  "ownReview": {
+    "scope": "Complete translations reviewed paragraph-by-paragraph against current English, including all metadata, practical steps, FAQs and source labels.",
+    "checks": [
+      "Provider mirrors and storage-source-dependent destination retained.",
+      "Workplace approval applies to actual data flow.",
+      "Selection affects Google synchronization and notification scheduling, without generalizing identical stop/resume behavior to other providers.",
+      "Relevant calendars must be restored before judging availability.",
+      "Base includes Google/multiple views; Advanced removes ads; Premium adds Microsoft/Teams; permissions remain separate.",
+      "Manual busy-time block requires organization permission, privacy review and verification; no automatic masking promise."
+    ],
+    "limits": "Own translations and self-review; no independent native-speaker approval, localized UI certification or runtime test."
+  },
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native operations",
+    "ASC actions",
+    "Paid API"
+  ]
+}

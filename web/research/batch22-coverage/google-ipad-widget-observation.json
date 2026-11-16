@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-22T00:14:23.313Z",
+  "query": "calendar widget iPad",
+  "surface": "Actual Google Search first page in signed-in Chrome session; uncontrolled personalization/location and changing result blocks.",
+  "searchUrl": "https://www.google.com/search?q=calendar+widget+iPad",
+  "visibleResultLinks": [
+    {
+      "title": "WidgetCal-Calendar Widget - App Store - Apple",
+      "url": "https://apps.apple.com/us/app/widgetcal-calendar-widget/id919048459"
+    },
+    {
+      "title": "The best Calendar widgets for iPhones and iPads",
+      "url": "https://readdle.com/blog/best-calendar-widgets-for-iPhone-and-iPad"
+    },
+    {
+      "title": "Add Google Calendar to your home screen - iPhone & iPad",
+      "url": "https://support.google.com/calendar/answer/10249848?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "title": "Is there an app for a calendar widget like this for a iPad ...",
+      "url": "https://www.reddit.com/r/ipad/comments/11y3lid/is_there_an_app_for_a_calendar_widget_like_this/"
+    },
+    {
+      "title": "Calendar Widget - Date Widgets App - App Store",
+      "url": "https://apps.apple.com/us/app/calendar-widget-date-widgets/id1550340128"
+    },
+    {
+      "title": "Fantastical — The calendar and tasks app you won't be ...",
+      "url": "https://flexibits.com/fantastical"
+    },
+    {
+      "title": "Calendar Widget & Planner - App Store - Apple",
+      "url": "https://apps.apple.com/us/app/calendar-widget-planner/id539355986"
+    }
+  ],
+  "observedOtherPublisherNames": [
+    "WidgetCal",
+    "Readdle",
+    "Google Calendar",
+    "Fantastical",
+    "myCal"
+  ],
+  "observedRelatedQueries": [
+    "Calendar widget ipad free",
+    "Best calendar widget ipad",
+    "Google Calendar widget iPad",
+    "Custom calendar widget ipad"
+  ],
+  "scope": "Single UI observation. No stable organic rank, volume, Google indexing proof or causal effect established. AI panel initially generating, not evaluated. No ChatGPT measurement.",
+  "nextAction": "Map supported iPad setup/free-widget intent to the expanded existing guide; custom widget appearance requires actual feature support, not automatic keyword adoption."
+}

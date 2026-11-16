@@ -1,0 +1,66 @@
+# Cloud Calendars — https://www.cloud-calendars.com
+#
+# Everything here is a public marketing site. There is nothing to hide from a
+# crawler and no admin surface, so the only rules are the ones that stop bots
+# wasting their budget on files that are not pages.
+#
+# Note: do not disallow /app-ads.txt or the JS/CSS bundles. AdMob's crawler
+# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization.
+#
+# The pages are prerendered now -- every route ships as real HTML, so a crawler
+# that never runs JavaScript still sees the words. The bundles stay allowed
+# anyway: blocking them makes a page look broken to a renderer that does run
+# them, which is a worse signal than the bandwidth is worth.
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: GPTBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Claude-SearchBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /media/panel/
+Disallow: /media/
+
+User-agent: *
+Allow: /
+# Public screenshot renditions are embedded in article and product pages.
+# Allow crawlers to read those images; keep other media paths excluded.
+Allow: /media/panel/
+Disallow: /media/
+
+Sitemap: https://www.cloud-calendars.com/sitemap.xml
+
+# Plain-language summary and Markdown exports for LLM crawlers:
+# https://www.cloud-calendars.com/llms.txt
+# https://www.cloud-calendars.com/llms-full.txt

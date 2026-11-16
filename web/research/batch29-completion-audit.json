@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-22T01:57:31.099832+00:00",
+  "previousGoalTurn": "progress: batch28 site support and CalDAV publication changed authoritative state, pushed265f0d7.",
+  "currentGoalTurn": "progress: seven ASC draft descriptions updated and exact-readback verified; new recovery task researched, reviewed, published and verified.",
+  "objectiveComplete": false,
+  "requirements": [
+    {
+      "requirement": "Website and ASC optimized together",
+      "state": "targeted_implementation_progress",
+      "evidence": [
+        "batch29-source-qa.json",
+        "batch29-static-qa.json",
+        "batch29-aso-semantic/applied.json"
+      ],
+      "limits": "No release/submission or broad metadata quality claim."
+    },
+    {
+      "requirement": "Competitor Google and ChatGPT keyword/task research",
+      "state": "bounded_research_expanded_not_exhaustive",
+      "evidence": [
+        "batch29-competitor-intents/decision.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ],
+      "limits": "Two new competitor substantive bodies and two provider bodies; public query discovery is not fixed-location Google ranking or exhaustive ChatGPT visibility."
+    },
+    {
+      "requirement": "Useful original truthful articles for researched intents",
+      "state": "new_distinct_recovery_task_published_remaining_localization",
+      "evidence": [
+        "batch29-competitor-intents/root-draft-review.json",
+        "batch29-competitor-intents/final-review.json",
+        "batch29-public-qa.json"
+      ],
+      "limits": "452article inventory55English is not all-language editorial approval. Keyword aliases for same recovery task share one substantive canonical."
+    },
+    {
+      "requirement": "Accurate localized ASC metadata persisted",
+      "state": "fifty_locale_expected_text_fields_verified_semantic_scope_limited",
+      "evidence": [
+        "aso/all-locales-readback-batch29.json",
+        "batch29-aso-semantic/audit.json",
+        "batch29-aso-semantic/root-plan-review.json"
+      ],
+      "limits": "250fields persistence plus seven reviewed description-only replacements; no native-speaker, market-demand or all50semantic certification."
+    },
+    {
+      "requirement": "Crawlable technically sound publication",
+      "state": "current_515canonical_pages_and_518public_artifacts_verified",
+      "evidence": [
+        "batch29-metadata-qa.json",
+        "batch29-invalidation-status.json",
+        "batch29-public-qa.json",
+        "batch29-browser-qa.json"
+      ],
+      "limits": "Delivery/indexnow acceptance not Google indexing, rank, citations or runtime proof."
+    },
+    {
+      "requirement": "Actual new screenshot/video integration",
+      "state": "exact_generation_source_still_missing",
+      "evidence": [
+        "batch28-readiness/media-audit.json"
+      ],
+      "limits": "No new source answer; older1240renditions unchanged. No global absence claim or repeated audit presented as progress."
+    },
+    {
+      "requirement": "Released data handling correspondence for privacy claims",
+      "state": "released_source_and_production_facts_still_missing",
+      "evidence": [
+        "batch28-readiness/privacy-release-evidence.json"
+      ],
+      "limits": "Owner archive/commit question pending; no production/customer query or privacy declarations."
+    },
+    {
+      "requirement": "Improved search/ChatGPT discovery",
+      "state": "baseline_recorded_postchange_effect_unproven",
+      "evidence": [
+        "measurement/gsc-editorial-decisions-20261021.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ],
+      "limits": "Need genuinely elapsed comparable windows/fixed prompts; no short-interval performance claim."
+    }
+  ],
+  "notPerformed": [
+    "Provider restore or account changes",
+    "Native/backend changes/build/deploy",
+    "ASC submission/release/buildattachment/privacy/price writes",
+    "New media generation or replacement"
+  ],
+  "nextPreparation": "Complete BG timezone draft, full root read and independent cross-review pass with raw hashes; unpublished. Next integration needs current-source/absence guards, build/public/browser checks."
+}

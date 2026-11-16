@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-21T21:05:00.579155+00:00",
+  "localHebrew": {
+    "route": "/he/articles/taking-back-a-calendar-you-shared/",
+    "viewport": 575,
+    "rtl": true,
+    "menuExpandedAfterReload": true,
+    "sectionNavigationTarget": "/he/#showcase",
+    "navigationResult": "Hebrew home, matching Hebrew labels/Israeli storefront"
+  },
+  "publicBulgarian": {
+    "route": "/bg/articles/taking-back-a-calendar-you-shared/",
+    "viewport": 575,
+    "documentWidth": 564,
+    "h1Top": 142.25,
+    "fixedHeaderBottom": 72,
+    "brandLinks": [
+      "/bg/",
+      "/bg/"
+    ],
+    "screenshot": "/tmp/cloud-calendar-batch10-bg.png"
+  },
+  "loadingLimit": "Initial local navigation delivered SSR but early menu clicks were inconclusive. Reload loaded article chunk and menu expanded. No unconditional event replay/boot-performance claim.",
+  "mediaLimit": "S3-only media absent from local build; this is text/layout/navigation verification, not full media review.",
+  "scope": "Representative browser interaction/visual checks; all460built shell targets validated separately. No native-speaker/productruntime/rank certification."
+}

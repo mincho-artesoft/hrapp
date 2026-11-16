@@ -1,0 +1,110 @@
+{
+  "title": "Unwanted calendar events on iPhone: invitations, subscriptions and spam",
+  "short": "Remove unwanted calendar events",
+  "description": "Identify unwanted invitations or subscribed calendars on iPhone. Check Apple and Google reporting options and settings for future invitations.",
+  "lede": "An unfamiliar event does not tell you how it arrived. Find its calendar and account before deciding whether to report an invitation, unsubscribe from a feed or inspect an ordinary event. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Deleting whatever appears on screen, hiding its calendar or disconnecting an account will all stop the same unwanted events.",
+  "sections": [
+    {
+      "heading": "Identify what arrived before choosing a removal action",
+      "body": [
+        "Start with one unwanted entry. Inspect its calendar, account, organiser and whether it repeats, without following links in its description. Open the calendar service or application directly. A meeting invitation, an event supplied by a subscribed calendar and an appointment stored in a calendar you own require different decisions.",
+        "Suppose unfamiliar appointments appeared after you opened a calendar link. Check whether a new subscribed calendar supplies them before deleting individual dates. If they instead belong to your usual calendar, inspect the invitation and its source. Timing alone does not prove that the link created a subscription. Do not delete your whole personal or work calendar to test the theory."
+      ]
+    },
+    {
+      "heading": "Choose between hiding, unsubscribing and reporting",
+      "body": [
+        "Use this decision sequence: an unwanted external subscription calls for checking the subscription and its unsubscribe control; an unwanted invitation calls for the owning provider’s reporting options; an ordinary event or imported copy calls for checking ownership and the actual event before making any change. A missing report button does not justify deleting a whole calendar.",
+        "Hiding a calendar changes what you see. It does not establish that its subscription or events were removed. Unsubscribing and deleting a calendar are also different actions. Before confirming either, check the named calendar and the confirmation text. If the source remains unclear, keep the account and calendar names for your own diagnosis and consult the provider’s guidance rather than trying broader removal actions."
+      ]
+    },
+    {
+      "heading": "Use Apple Calendar controls for the identified Apple route",
+      "body": [
+        "Apple’s current iPhone instructions apply to iOS 26 or later. In Apple Calendar, an event from an unknown contact may offer Report Junk followed by Delete and Report Junk. Inspect the intended event first. These are Apple Calendar instructions, not controls to look for in Cloud Calendars.",
+        "For an identified unwanted subscription, open Calendars in Apple Calendar, then the information button beside that calendar. Check for Unsubscribe and confirm only for the intended subscription. Apple also documents Delete Calendar for calendars that can be deleted; do not treat that as a substitute when you are unsure what you selected. Some calendars cannot be removed and can instead be hidden. Check Apple’s current instructions for your version."
+      ]
+    },
+    {
+      "heading": "Check Google reporting eligibility and the recurring series",
+      "body": [
+        "Google says its spam-reporting feature applies to events sent from Google Calendar, not events created by another provider, app or service. In the Google Calendar app on iPhone or iPad, open the intended event and use More, Report as spam, then Report if the option is available and appropriate.",
+        "Reporting removes the event from your calendar. For a recurring event, Google says all events in that series are removed. Check that scope before confirming: this is not a way to remove only one unwanted occurrence of an otherwise legitimate meeting. If the event came from elsewhere, return to its owning service or subscription rather than assuming Google can report every entry displayed in its app."
+      ]
+    },
+    {
+      "heading": "Treat future Google invitations as a separate decision",
+      "body": [
+        "Reporting an existing event and changing automatic invitation addition solve different problems. Google’s iPhone app documents Settings, General, Adding invitations, Add invitations to my calendar, then Only if the sender is known. Known includes contacts, people in your organisation and previous interactions. Google warns that this option may reveal to senders that they are not in your contacts.",
+        "Google’s computer settings also offer adding an event only when you respond to the invitation in email. Changes apply to new invitations, and work or school administrators may restrict the options. An invitation email can still arrive when its event is not automatically added. Choose a setting that fits how legitimate appointments reach you; it is not a promise to erase old events or eliminate every unwanted message."
+      ]
+    },
+    {
+      "heading": "Use iCloud reporting with the intended Apple Account",
+      "body": [
+        "For an iCloud invitation, Apple also documents reporting through Calendar on iCloud.com using a tablet or computer. Sign in directly with the intended Apple Account, open the unwanted invitation and select Report Junk. Apple says the event is then deleted from your calendar across devices signed in to that account.",
+        "This is an iCloud invitation workflow. It does not establish the behaviour of an imported copy, an external feed or another provider’s event. If you cannot find the invitation there, check its account and calendar instead of assuming the reporting action failed. Do not move an event between accounts simply to make it appear in a reporting screen."
+      ]
+    },
+    {
+      "heading": "Verify the result where the information is owned",
+      "body": [
+        "After an action, check the original provider or the subscription list you changed. Then compare the relevant calendar in your iPhone view. If an entry remains, establish whether it is the same source or another copy before repeating the action. There is no single refresh deadline covering every provider and calendar application.",
+        "Keep the fix narrow. A suspicious invitation does not by itself establish that you should disconnect every account or reset a secret calendar feed address. Use the separate disconnection or feed guide when that is the actual problem. The reporting and filtering instructions here belong to Apple and Google; they do not describe a Cloud Calendars anti-spam feature."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Inspect one entry’s calendar, account, organiser and recurrence without opening suspicious links.",
+    "Distinguish an invitation, an external subscription and an ordinary or imported event.",
+    "For a confirmed unwanted subscription, inspect its unsubscribe control rather than deleting an unrelated calendar.",
+    "Before reporting a Google event, check its source and the consequence for the recurring series.",
+    "Review future invitation settings separately from removing existing events; check account restrictions.",
+    "Verify the result at the owning provider or subscription list, then compare your iPhone view."
+  ],
+  "faq": [
+    {
+      "q": "Why do unwanted events remain after I hide their calendar?",
+      "a": "Hiding controls the display. It does not demonstrate that you unsubscribed or removed the underlying events. Identify the calendar’s source before choosing a provider reporting or subscription action."
+    },
+    {
+      "q": "Can Google report every suspicious event visible in its calendar app?",
+      "a": "No. Google documents reporting for events sent from Google Calendar. Events created by another provider, app or service are outside that reporting feature. Check the original source rather than assuming a missing button is an app fault."
+    },
+    {
+      "q": "Will changing Google invitation settings remove existing spam?",
+      "a": "Google says updated invitation settings apply to new invitations. Review existing unwanted events separately. Email may still arrive even when an invitation is not automatically added to the calendar."
+    },
+    {
+      "q": "Should I delete my entire calendar to remove an unwanted subscription?",
+      "a": "No. First establish which calendar is the subscription and inspect its unsubscribe option. Do not use deletion of an owned calendar as a shortcut for identifying the source."
+    }
+  ],
+  "sourcesHeading": "Apple and Google guidance",
+  "sources": [
+    {
+      "label": "Apple: remove events, unsubscribe or hide calendars on iPhone",
+      "url": "https://support.apple.com/en-au/102444"
+    },
+    {
+      "label": "Google: report inappropriate events on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/13155911?co=GENIE.Platform%3DiOS&hl=EN"
+    },
+    {
+      "label": "Google: manage new invitations and account restrictions",
+      "url": "https://support.google.com/calendar/answer/13159188"
+    },
+    {
+      "label": "Apple: receive, reply to and report invitations on iCloud.com",
+      "url": "https://support.apple.com/en-gb/guide/icloud/mm6b1a8534/1.0/icloud/1.0"
+    }
+  ],
+  "seeAlso": [
+    "disconnect-calendar-integration-without-losing-track",
+    "the-secret-address-of-a-google-calendar",
+    "keeping-track-of-who-replied"
+  ],
+  "updated": "2026-10-22"
+}

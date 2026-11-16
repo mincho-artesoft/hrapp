@@ -1,0 +1,34 @@
+{
+  "updatedAt": "2026-10-23",
+  "batch": "04",
+  "stage": "batch_04_drafts_complete_awaiting_independent_review",
+  "files": {
+    "briefs": "research/content-scale-20261023/claude/claude-briefs-04.json",
+    "drafts": "research/content-scale-20261023/claude/claude-drafts-04.json",
+    "editorialRecords": "research/content-scale-20261023/claude/claude-editorial-records-04.json"
+  },
+  "otherFilesUntouched": true,
+  "completedDrafts": [
+    "outlook-show-declined-meetings-on-calendar",
+    "outlook-shorten-meetings-automatically",
+    "outlook-create-meeting-from-email",
+    "outlook-events-from-email-flights-hotels",
+    "outlook-recover-deleted-calendar-items",
+    "outlook-calendar-color-categories"
+  ],
+  "rejected": [
+    { "topic": "Automatic OOO declining vs Show As", "reason": "Duplicates Claude batch-01 Show As article." },
+    { "topic": "Time scale / work-week view settings", "reason": "Thin fetched source; overlaps batch-03 work hours." },
+    { "topic": "Default reminders", "reason": "Ambiguous Microsoft wording; still held." }
+  ],
+  "verificationNotesForReviewer": [
+    "All six pages except the share-your-calendar private-items note rely on WebFetch extraction; re-fetch raw bodies before approval.",
+    "Undocumented behaviour is labelled as such: shorten setting on existing/invited events; declined meetings from before enabling; attachment carry-over to meeting from email; server-recovery retention and account eligibility; notification on restoring a cancelled meeting.",
+    "Two Microsoft email-to-meeting pages word attendee defaults differently; both reported."
+  ],
+  "limitations": [
+    "JSON checked by pattern search only.",
+    "seeAlso uses baseline routes only.",
+    "No firsthand testing; worked examples are fictional with stated assumptions."
+  ]
+}

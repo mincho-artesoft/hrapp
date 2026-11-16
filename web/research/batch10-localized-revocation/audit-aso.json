@@ -1,0 +1,200 @@
+{
+  "slug": "taking-back-a-calendar-you-shared",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "fe5ad020421c3416ffd444c5cf74cddd279fd1cba010911b068853b80f87d170",
+  "updated": "2026-10-21",
+  "format": "Individual LocalisedArticle objects, not slug-keyed records",
+  "count": 10,
+  "validation": "Passed exact field shape, duplicate-key rejection, 6 sections, 12 paragraphs, 6 practical steps, 3 FAQs, description under 160 code points, source URLs, disclosure, date, locale-available related links",
+  "scope": "Research outputs only; no source integration, build, deployment, native changes or paid translation API",
+  "review": "Translated using model language ability. No native-speaker approval claimed. Arabic and Hebrew RTL rendering has not been previewed. Native editorial review remains advisable.",
+  "meaningReview": [
+    "Named recipients, groups, organization sharing and public access remain separate routes.",
+    "Secret iCal reset is distinct from named-recipient removal.",
+    "Cloud Calendars recipient relationships and issued subscription feeds remain distinct.",
+    "No instant propagation, silent removal, remote-copy erasure or single-switch guarantee added.",
+    "Advanced removes app ads; Google access controls depend on ownership, permissions and organization rules."
+  ],
+  "locales": [
+    {
+      "locale": "de-DE",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 152,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium-high",
+      "bytes": 7924,
+      "sha256": "5e3af2e8f9eae2432dff5439d864d652cdaea56baae2d99fd933e42f1bdcbdad"
+    },
+    {
+      "locale": "es-ES",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 149,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium-high",
+      "bytes": 7526,
+      "sha256": "f445f6bfaad3451f4dd69c2c7d8a28362a4739a1b103b66b0b43c23a085b620b"
+    },
+    {
+      "locale": "fr-FR",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 142,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium-high",
+      "bytes": 7979,
+      "sha256": "7bc7d117fb49369b3c7759353ba38591b1e851e5d6c16f7b7ebe8acf72877290"
+    },
+    {
+      "locale": "da",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 148,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 7246,
+      "sha256": "39ea19b7e1dc57cfaf90fbb1dd30330b0a6cf63e1c1f185618bc46feea5a77ef"
+    },
+    {
+      "locale": "bg",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 147,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 11801,
+      "sha256": "793e2c65344609e2ea297022e37d5f70ac4bce5f4ee0ed8498f78d7ce7904550"
+    },
+    {
+      "locale": "cs",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 141,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 7261,
+      "sha256": "b203d144deb9718f2c8c08e28183325bdd4b3c3b3b684d628f1d209939741628"
+    },
+    {
+      "locale": "fi",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 147,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 7269,
+      "sha256": "5f0d8fe059b6e6e6fba69fcf29b8ee709ed6d03c3f02b8722e59c49bf6bcd827"
+    },
+    {
+      "locale": "el",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 149,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 12514,
+      "sha256": "0d4873089f862dc1b7ea1b0098919a33afcef1c649e9d2dd73499393f7d82b6d"
+    },
+    {
+      "locale": "ar-SA",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 132,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 9140,
+      "sha256": "f6a384c92857cf62de25294ccf69c543d6456852ce88e64405874d64242a0023"
+    },
+    {
+      "locale": "he",
+      "sections": 6,
+      "paragraphs": 12,
+      "steps": 6,
+      "faqs": 3,
+      "descriptionCharacters": 121,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "translationConfidence": "medium",
+      "bytes": 8651,
+      "sha256": "c9ba116f4d3357634c04f863ce172153dbb4975e90b062ee6e5b012654ac7e12"
+    }
+  ]
+}

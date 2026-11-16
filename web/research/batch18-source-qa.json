@@ -1,0 +1,9 @@
+{
+  "allPassed": true,
+  "articleObjectsChanged": 10,
+  "newFullLocalizedGuides": 4,
+  "relatedLinksOnlyObjects": 4,
+  "expandedEnglishGuides": 2,
+  "sharedFactsAndCuratedSelectionUnchanged": true,
+  "scope": "Actual HEAD diff; exact drafts and additions only; no unrelated body changes. Not independent native-speaker or product-runtime certification."
+}

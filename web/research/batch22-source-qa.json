@@ -1,0 +1,11 @@
+{
+  "allPassed": true,
+  "changedEnglishGuides": 4,
+  "newRoutes": 0,
+  "exactBeforeDraftCurrentParity": true,
+  "existingSectionsUnchangedOutsideTarget": true,
+  "faqAndPracticalUnchanged": true,
+  "sharedFactsAndCuratedSelectionUnchanged": true,
+  "widgetTitleDescriptionSourcesUpdated": true,
+  "scope": "Four bounded full-object changes, exact source/draft diff guards. No native/released-runtime or measured ranking proof."
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-22T15:42:06.232528+00:00",
+  "site": "https://www.cloud-calendars.com/#store-media-title",
+  "browser": "IAB via CUA",
+  "screenshots": "English five iPhone images visually rendered in native proportions; Arabic RTL gallery and localized links rendered.",
+  "videos": [
+    {
+      "locale": "en-US",
+      "device": "iPhone",
+      "time": 5.234438,
+      "duration": 17.74254,
+      "readyState": 4,
+      "paused": false
+    },
+    {
+      "locale": "en-US",
+      "device": "iPad",
+      "time": 11.662729,
+      "duration": 17.806553,
+      "readyState": 4,
+      "paused": false
+    },
+    {
+      "locale": "en-US",
+      "device": "iPhoneDuo",
+      "time": 14.093193,
+      "duration": 17.762993,
+      "readyState": 4,
+      "paused": false
+    },
+    {
+      "locale": "ar-SA",
+      "device": "iPhone",
+      "time": 7.706953,
+      "readyState": 4,
+      "paused": false
+    }
+  ],
+  "scope": "Representative real public playback and visible layout, not exhaustive localization or audio certification. No local media files retained."
+}

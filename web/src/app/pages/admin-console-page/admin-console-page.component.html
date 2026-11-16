@@ -1,0 +1,296 @@
+<section class="admin-page">
+  <div class="shell">
+    <div class="admin-hdr">
+      <div>
+        <span class="adm-badge">PLATFORM ADMIN CONSOLE</span>
+        <h1>Scheduling &amp; Calendar Administration</h1>
+        <p>Monitor active hosts, audit global bookings, moderate schedules, and configure Google &amp; Microsoft OAuth Client IDs.</p>
+      </div>
+      <div class="admin-hdr__links">
+        <a class="adm-link" [href]="calendarHref()">Host Studio &amp; Calendar</a>
+        <a class="adm-link" [href]="guestHref()">Guest Portal</a>
+        @if (api.isSignedInWithAccount()) {
+          <button type="button" class="adm-link adm-link--out" (click)="api.signOut(); data.set(null)">
+            Sign out ({{ api.profile()?.email }})
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (!api.isSignedInWithAccount()) {
+      <div class="adm-auth">
+        <app-platform-auth-card
+          badgeText="ADMINISTRATOR LOGIN"
+          title="Sign in with an authorized Admin Email"
+          subtitle="Use your authorized Arte Soft / Cloud Calendars administrator email to unlock platform telemetry and settings."
+          [includeCalendarScopeOnOAuth]="false"
+          (signedIn)="onSignedIn()"
+        />
+      </div>
+    } @else if (forbiddenMsg()) {
+      <div class="adm-denied">
+        <h2>403 · Administrator Access Required</h2>
+        <p>{{ forbiddenMsg() }}</p>
+        <button type="button" class="btn btn--ghost" (click)="api.signOut()">
+          Switch Account
+        </button>
+      </div>
+    } @else if (loading() && !data()) {
+      <p class="adm-loading">Loading live telemetry…</p>
+    } @else if (data()) {
+      @let d = data()!;
+      <!-- KPI Strip -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span>Published Hosts</span>
+          <strong>{{ d.kpis.totalHosts }}</strong>
+          <small>{{ d.kpis.activeHosts }} active · {{ d.kpis.suspendedHosts }} suspended</small>
+        </div>
+        <div class="kpi-card">
+          <span>Total Bookings</span>
+          <strong>{{ d.kpis.totalBookings }}</strong>
+          <small>{{ d.kpis.confirmedBookings }} confirmed</small>
+        </div>
+        <div class="kpi-card">
+          <span>Upcoming (7 Days)</span>
+          <strong>{{ d.kpis.upcomingNext7Days }}</strong>
+          <small>Active scheduled calls</small>
+        </div>
+        <div class="kpi-card">
+          <span>Rescheduled / Cancelled</span>
+          <strong>{{ d.kpis.rescheduledBookings }} / {{ d.kpis.cancelledBookings }}</strong>
+          <small>Lifecycle updates</small>
+        </div>
+      </div>
+
+      <!-- System Health -->
+      <div class="health-strip">
+        <span [class.is-ok]="d.system.emailConfigured">
+          ● SES Transactional Email: {{ d.system.emailConfigured ? 'Active' : 'Missing' }}
+        </span>
+        <span [class.is-ok]="!!d.system.emailGuardTable">
+          ● DynamoDB Send Guard: {{ d.system.emailGuardTable || 'Unset' }}
+        </span>
+        <span [class.is-ok]="d.system.googleWebConfigured">
+          ● Google Web OAuth: {{ d.system.googleWebConfigured ? 'Configured' : 'Email OTP Active (Set Client ID below)' }}
+        </span>
+        <span [class.is-ok]="d.system.microsoftWebConfigured">
+          ● Microsoft Web OAuth: {{ d.system.microsoftWebConfigured ? 'Configured' : 'Email OTP Active (Set Client ID below)' }}
+        </span>
+      </div>
+
+      <!-- Admin Sub-Tabs -->
+      <div class="adm-bar">
+        <div class="adm-tabs">
+          <button type="button" [class.is-on]="tab() === 'hosts'" (click)="tab.set('hosts')">
+            Hosts Directory ({{ d.hosts.length }})
+          </button>
+          <button type="button" [class.is-on]="tab() === 'bookings'" (click)="tab.set('bookings')">
+            Global Bookings ({{ d.recentBookings.length }})
+          </button>
+          <button type="button" [class.is-on]="tab() === 'oauth'" (click)="tab.set('oauth')">
+            OAuth &amp; Platform Settings
+          </button>
+        </div>
+
+        @if (tab() !== 'oauth') {
+          <input
+            type="search"
+            class="adm-search"
+            placeholder="Filter by handle, name, or email…"
+            [ngModel]="searchQuery()"
+            (ngModelChange)="searchQuery.set($event)"
+          />
+        }
+      </div>
+
+      <!-- TAB 1: HOSTS -->
+      @if (tab() === 'hosts') {
+        <div class="adm-panel">
+          @if (filteredHosts().length === 0) {
+            <p class="adm-empty">No matching host schedules found.</p>
+          } @else {
+            <div class="table-wrap">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>Handle</th>
+                    <th>Display Name</th>
+                    <th>Owner Email</th>
+                    <th>Types / TZ</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (h of filteredHosts(); track h.calId) {
+                    <tr>
+                      <td>
+                        <a class="tbl-link" [href]="hostPageHref(h.handle)" target="_blank" rel="noopener">
+                          &#64;{{ h.handle }} ↗
+                        </a>
+                      </td>
+                      <td>{{ h.displayName }}</td>
+                      <td>{{ h.email || '—' }}</td>
+                      <td>{{ h.meetingTypeCount }} · {{ h.timeZone }}</td>
+                      <td>
+                        @if (h.disabledByAdmin) {
+                          <span class="pill pill--err">Suspended</span>
+                        } @else if (h.enabled) {
+                          <span class="pill pill--ok">Live</span>
+                        } @else {
+                          <span class="pill">Paused</span>
+                        }
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="tbl-btn"
+                          (click)="toggleHostModeration(h.calId, h.disabledByAdmin)"
+                        >
+                          {{ h.disabledByAdmin ? 'Re-enable' : 'Suspend' }}
+                        </button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- TAB 2: GLOBAL BOOKINGS -->
+      @if (tab() === 'bookings') {
+        <div class="adm-panel">
+          @if (filteredBookings().length === 0) {
+            <p class="adm-empty">No bookings recorded yet.</p>
+          } @else {
+            <div class="table-wrap">
+              <table class="adm-table">
+                <thead>
+                  <tr>
+                    <th>When (UTC)</th>
+                    <th>Meeting</th>
+                    <th>Host</th>
+                    <th>Guest</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (b of filteredBookings(); track b.bookingId) {
+                    <tr>
+                      <td>{{ b.start | date: 'MMM d, HH:mm' }}</td>
+                      <td>{{ b.title }}</td>
+                      <td>&#64;{{ b.hostHandle }}</td>
+                      <td>{{ b.guestName }} ({{ b.guestEmail }})</td>
+                      <td>
+                        <span class="pill" [class.pill--ok]="b.status !== 'cancelled'" [class.pill--err]="b.status === 'cancelled'">
+                          {{ b.status }}
+                        </span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- TAB 3: LIVE OAUTH & PLATFORM SETTINGS -->
+      @if (tab() === 'oauth') {
+        <div class="adm-panel oauth-settings">
+          <h2>Google &amp; Microsoft Web OAuth Configuration</h2>
+          <p class="oauth-lead">
+            Paste your Web OAuth Client IDs below to activate 1-click Google &amp; Microsoft popup login + direct API busy-calendar sync across the entire web platform immediately (no redeploy needed).
+          </p>
+
+          <div class="uri-guide">
+            <div>
+              <strong>Google Cloud Console (Web application Client):</strong>
+              <span>Authorized JavaScript origins: <code>https://www.cloud-calendars.com</code></span>
+            </div>
+            <div>
+              <strong>Microsoft Entra ID (Single-page application PKCE):</strong>
+              <span>Redirect URI: <code>https://www.cloud-calendars.com/calendar/</code></span>
+            </div>
+          </div>
+
+          <div class="oauth-form">
+            <label class="adm-field">
+              <span>Google Web OAuth Client ID (Project <code>540859420644</code> · <code>*.apps.googleusercontent.com</code>)</span>
+              <input
+                type="text"
+                placeholder="540859420644-xxxxxxxxxxxxxxxx.apps.googleusercontent.com"
+                [ngModel]="googleWebClientId()"
+                (ngModelChange)="googleWebClientId.set($event)"
+              />
+            </label>
+
+            <label class="adm-field">
+              <span>
+                Google Web Client Secret <em>(optional — enables 24/7 offline refresh tokens for 2-way background sync)</em>
+                @if (d.settings.googleWebSecretConfigured) {
+                  <strong style="color:#34D399;margin-left:6px;">✓ Configured</strong>
+                }
+              </span>
+              <input
+                type="password"
+                autocomplete="off"
+                placeholder="GOCSPX-... (leave blank to keep existing secret)"
+                [ngModel]="googleWebClientSecret()"
+                (ngModelChange)="googleWebClientSecret.set($event)"
+              />
+            </label>
+
+            <label class="adm-field">
+              <span>Microsoft Application (client) ID (UUID)</span>
+              <input
+                type="text"
+                placeholder="00000000-0000-0000-0000-000000000000"
+                [ngModel]="microsoftWebClientId()"
+                (ngModelChange)="microsoftWebClientId.set($event)"
+              />
+            </label>
+
+            <div class="oauth-2col">
+              <label class="adm-field">
+                <span>Microsoft Tenant</span>
+                <input
+                  type="text"
+                  placeholder="common"
+                  [ngModel]="microsoftTenant()"
+                  (ngModelChange)="microsoftTenant.set($event)"
+                />
+              </label>
+
+              <label class="adm-field">
+                <span>Homepage Featured Demo Handle</span>
+                <input
+                  type="text"
+                  placeholder="demo"
+                  [ngModel]="featuredDemoHandle()"
+                  (ngModelChange)="featuredDemoHandle.set($event)"
+                />
+              </label>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn--primary"
+              [disabled]="savingSettings()"
+              (click)="saveSettings()"
+            >
+              {{ savingSettings() ? 'Saving…' : 'Save Live Platform Settings' }}
+            </button>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  @if (toast()) {
+    <div class="adm-toast">{{ toast() }}</div>
+  }
+</section>

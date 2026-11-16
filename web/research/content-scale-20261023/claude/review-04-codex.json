@@ -1,0 +1,185 @@
+{
+  "reviewer": "Codex independent review",
+  "date": "2026-10-23",
+  "scope": "six actual batch-04 replacement drafts; no app edits, publication or deployment",
+  "actualDraftCount": 6,
+  "sourceIndex": "review-source-index-04.json",
+  "sourcesRead": "All nine unique cited Microsoft bodies were freshly fetched, retained with SHA256 and read, including complete tabbed client sections and neighboring qualification paragraphs.",
+  "sourceLimitations": [
+    "No firsthand Outlook UI test.",
+    "Current email-to-meeting page has a broad protected-message prohibition followed by a narrower client-specific exception; corrected copy preserves the latter distinction rather than claiming universal availability or prohibition.",
+    "Events-from-email page retains stale lower instructions about discontinued event types; corrected copy identifies the inconsistency and does not promise those types.",
+    "Short recovery pages do not fully specify account eligibility or retention limits; neither is invented."
+  ],
+  "overlapReview": {
+    "baseline73": "Read relevant recovery, color, flight and meeting-link bodies. Outlook recovery is specifically excluded by baseline Google/iCloud recovery; categories differ from calendar colors.",
+    "batches01to03": "Compared all 36 draft titles and task boundaries; no repeated procedure. Declined-event retention is separate from Show As and RSVP tracking; shortening defaults is separate from work hours; email-to-meeting conversion is separate from appointment-to-meeting conversion; events from email is a distinct Outlook provider task from the Google/Gmail page.",
+    "reviewedCandidates": 6,
+    "holdOrMergeCount": 0
+  },
+  "articles": [
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-show-declined-meetings-on-calendar",
+        "descriptionCharacters": 143,
+        "bodyWordCount": 467,
+        "existingLinksVerified": [
+          "keeping-track-of-who-replied",
+          "exchange-calendars-on-an-iphone",
+          "find-old-calendar-events-by-account-date-and-title"
+        ],
+        "sourcesFetched": 1,
+        "amendments": 3
+      },
+      "correctionPaths": [
+        "sections.1.body.2",
+        "comparison.rows.2.cells.2",
+        "sources.0.url"
+      ]
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-shorten-meetings-automatically",
+        "descriptionCharacters": 159,
+        "bodyWordCount": 428,
+        "existingLinksVerified": [
+          "planning-a-week-in-ten-minutes",
+          "the-commute-and-the-sky",
+          "a-week-view-that-fits-a-week"
+        ],
+        "sourcesFetched": 1,
+        "amendments": 3
+      },
+      "correctionPaths": [
+        "sections.0.body.0",
+        "sections.2.body.0",
+        "sources.0.url"
+      ]
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-create-meeting-from-email",
+        "descriptionCharacters": 155,
+        "bodyWordCount": 523,
+        "existingLinksVerified": [
+          "inviting-people-who-do-not-have-the-app",
+          "keeping-track-of-who-replied",
+          "meeting-links-that-make-themselves"
+        ],
+        "sourcesFetched": 2,
+        "amendments": 10
+      },
+      "correctionPaths": [
+        "description",
+        "sections.2.body.0",
+        "sections.3.body.1",
+        "sections.3.body.2",
+        "comparison.rows.5.cells.1",
+        "practical.3",
+        "practical.4",
+        "faq.0.a",
+        "faq.1.a",
+        "sources.0.url"
+      ]
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-events-from-email-flights-hotels",
+        "descriptionCharacters": 133,
+        "bodyWordCount": 489,
+        "existingLinksVerified": [
+          "time-zones-and-the-flight-you-booked",
+          "who-can-see-what-in-google-calendar",
+          "event-saved-to-wrong-calendar"
+        ],
+        "sourcesFetched": 2,
+        "amendments": 8
+      },
+      "correctionPaths": [
+        "description",
+        "lede",
+        "sections.0.body.0",
+        "sections.2.body.0",
+        "sections.2.body.1",
+        "sections.3.body.1",
+        "faq.1.a",
+        "sources.0.url"
+      ]
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-recover-deleted-calendar-items",
+        "descriptionCharacters": 138,
+        "bodyWordCount": 489,
+        "existingLinksVerified": [
+          "recover-deleted-calendar-events-iphone",
+          "find-old-calendar-events-by-account-date-and-title",
+          "calendar-export-ics-pdf-and-backup"
+        ],
+        "sourcesFetched": 2,
+        "amendments": 5
+      },
+      "correctionPaths": [
+        "sections.1.body.1",
+        "sections.2.body.0",
+        "sections.3.body.1",
+        "practical.3",
+        "faq.1.a"
+      ]
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "rawDecision": "revise",
+      "reviewedDecision": "approve for root integration review",
+      "reason": "Exact source corrections and editorial safeguards applied; distinct complete provider task.",
+      "qa": {
+        "slug": "outlook-calendar-color-categories",
+        "descriptionCharacters": 147,
+        "bodyWordCount": 372,
+        "existingLinksVerified": [
+          "change-calendar-color-iphone",
+          "planning-a-week-in-ten-minutes",
+          "a-week-view-that-fits-a-week"
+        ],
+        "sourcesFetched": 1,
+        "amendments": 5
+      },
+      "correctionPaths": [
+        "sections.1.body.0",
+        "sections.2.body.2",
+        "comparison.rows.1.cells.1",
+        "faq.0.a",
+        "sources.0.url"
+      ]
+    }
+  ],
+  "originalSha256": "053854c23630b9957020ab24bdc76a278c22caa25d117d24dd2a857327d1e2af",
+  "reviewedSha256": "f97f9f92376e727bb4abbbae0a6257859fa2a63e2a1f21290c6c4e5bf41ac68a",
+  "checks": {
+    "descriptionLimit": true,
+    "threeExistingLinksPerArticle": true,
+    "sourceBodiesRead": 9,
+    "newSearchVolumeClaims": false,
+    "sourceEdited": false
+  }
+}

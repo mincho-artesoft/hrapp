@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Månedskalender på iPad og iPhone: se datoene, sjekk detaljene",
+  "short": "Bruk månedsvisning uten å overse detaljer",
+  "description": "Sammenlign datoer på iPad eller iPhone. Sjekk skjulte hendelser, valgte kalendere og klokkeslett før delte eller gjentakende avtaler flyttes.",
+  "lede": "Månedsvisning viser hvilke datoer avtalene faller på. Den egner seg dårligere til å fastslå at et bestemt klokkeslett er ledig. Velg en dato i oversikten, og undersøk dagen og hendelsen før du avtaler noe. Veiledningen er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "Et større månedsrutenett viser alle detaljer, og en tilsynelatende tom dato beviser at alle er ledige.",
+  "sections": [
+    {
+      "heading": "Avgjør om du trenger datoer eller nøyaktige klokkeslett",
+      "body": [
+        "Bruk måneden til å sammenligne prosjektfrist, reise og familieavtale over flere uker. Skal du finne ut om to avtaler overlapper klokken 14.30, bytt til dags- eller ukesvisning og sjekk nøyaktig start og slutt. En månedsrute har ikke samme tidsskala som et timerutenett.",
+        "En arrangør som velger workshopdato, kan først utelukke en reiseuke. Deretter må den foreslåtte dagen sjekkes: avtaler, forberedelser, reisetid og nødvendig sluttid. En tomt utseende rute er en mulighet å undersøke, ikke en bekreftet bestilling eller et uttrykk for andres tilgjengelighet."
+      ]
+    },
+    {
+      "heading": "Les antallet ekstra hendelser, ikke bare synlige titler",
+      "body": [
+        "Månedsruten i Cloud Calendars viser nå et begrenset antall hendelsesetiketter og et ekstra antall når flere hendelser tilhører datoen. Titlene holdes på én linje og kan forkortes. Åpne dagen eller hendelsen når full tittel eller resten av avtalene er viktige.",
+        "En større iPad-skjerm kan gjøre oversikten mer leselig, men mer fysisk plass fjerner ikke nødvendigvis alle visningsgrenser. Et smalt appvindu eller større tekst påvirker hva som får plass. Gjør samme sjekk på iPhone: åpne dagen før du regner synlige etiketter som hele planen."
+      ]
+    },
+    {
+      "heading": "Sjekk måned, valgte kalendere og nabodatoer",
+      "body": [
+        "Les måneden og året som vises før du velger dato. Rutenettet kan inneholde datoer fra en nabomåned for å fylle radene. Bruk månedsnavigasjonen i Cloud Calendars og kontroller valgt dato fremfor bare å stole på rutens plassering.",
+        "Sjekk hvilke kalendere som er valgt. Å skjule jobbhendelser kan gjøre familieplanen lettere å lese, men fjerner også disse avtalene fra oversikten. Undersøker du en duplikat, skjul én kilde midlertidig og sammenlign. Ikke slett en avtale bare for å rydde måneden."
+      ]
+    },
+    {
+      "heading": "Åpne hendelsen før du endrer en felles avtale",
+      "body": [
+        "Bekreft tittel, eier eller kalender, lokal tid og varighet i detaljene. Farge hjelper med oversikten, men erstatter ikke kunnskap om konto eller redigeringsrett. En synlig invitasjon er noe annet enn en avtale du organiserer selv.",
+        "Cloud Calendars lar deg dra hendelser i måneden til en annen dato. Før du gjør det med en reell avtale, avklar ønsket dato og omfanget for gjentakelser. Åpne hendelsen igjen etter en tillatt endring og sjekk resultatet; en lokal handling beviser ikke at tjenesten eller alle deltakere har godtatt endringen."
+      ]
+    },
+    {
+      "heading": "Sjekk gjentakelser og tidssoner hver for seg",
+      "body": [
+        "Skal bare denne ukens undervisning flyttes, må du unngå å endre fremtidige gjentakelser ved et uhell. Les valget for endringens omfang, og sjekk både den endrede og en senere forekomst etterpå. Måneden gjør datoene lette å sammenligne, men redigeringsomfanget bestemmer virkningen.",
+        "Ved reiser eller møter på tvers av tidssoner må lokal dato og klokkeslett kontrolleres uttrykkelig. Flytting til en annen dag konverterer ikke automatisk det tiltenkte møtetidspunktet. Sjekk overgang til og fra sommertid der det er relevant, og bekreft tidspunktet med de involverte."
+      ]
+    },
+    {
+      "heading": "Bruk den større oversikten uten å blande produkter",
+      "body": [
+        "Apple Kalender har egne valg for månedsvisning, mens Teamup beskriver ulike visninger i nettleser og mobilapp. Kontrollene tilhører de respektive produktene. Ikke let etter Teamups nettleseroppsett eller Apple Kalenders visningsmeny i Cloud Calendars bare fordi visningene har samme navn.",
+        "En måned med avtaler er heller ikke en måned med værmeldinger. For uteplaner må du sjekke sted, dato og tilgjengelige prognosetimer separat. Lagre den endelige avtalen i riktig kalender og bekreft endringer direkte med deltakerne."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Velg mulige datoer i måneden, og sjekk nøyaktige tider i dags- eller ukesvisning.",
+    "Åpne dager med ekstra antall eller forkortede titler.",
+    "Sjekk måned, år og valgte kalendere før du antar at en dato er ledig.",
+    "Bekreft hendelsens kalender, tid, varighet og redigeringsrett.",
+    "Les omfanget for gjentakelser og kontroller lagret forekomst etter flytting.",
+    "Sjekk tilgjengelig værinformasjon separat og bekreft endringer med deltakerne."
+  ],
+  "faq": [
+    {
+      "q": "Viser månedsvisning på iPad alle avtaler i sin helhet?",
+      "a": "Ikke anta det. Cloud Calendars begrenser hendelsesetikettene i en månedsrute og viser et ekstra antall. Åpne dagen og hendelsen for å undersøke hele planen."
+    },
+    {
+      "q": "Betyr en tom dag at jeg er ledig?",
+      "a": "Sjekk først valgte kalendere, dato og om relevante kontodata finnes. Oversikten viser bare informasjonen som er tilgjengelig og vises akkurat nå."
+    },
+    {
+      "q": "Endrer flytting av en gjentakende hendelse bare den datoen?",
+      "a": "Les valget for redigeringsomfang i stedet for å anta det. Sjekk den endrede og en senere forekomst etter lagring, og bekreft ønsket avtale."
+    }
+  ],
+  "sourcesHeading": "Sammenlign de offisielle beskrivelsene av visninger",
+  "sources": [
+    {
+      "label": "Apple: månedsvisning, flerdagersvisning og listevisning i Apple Kalender",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: kalendervisninger og oppsett i nettleser kontra app",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "weather-inside-your-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

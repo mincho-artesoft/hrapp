@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_blockers",
+  "scope": "Four complete before/after objects. Initial combined output truncated, then complete after objects and every changed before field reread. Updated widget fully reread after concurrent iPad merge. Reviewed mapping, relevant coverage evidence, complete iPad evidence and root-merge.",
+  "records": [
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "decision": "pass",
+      "beforeSHA256": "0b71643bb912cef8a2b7f36324f49d31432bf6466a45ba1e1d6b3abb1c5bbc1e",
+      "afterSHA256": "4a0a54c49ad56f4cefbdbef576ff32ba495431bb8373ffbb9809966c0a3ffb6e",
+      "changedTopLevelFields": [
+        "updated",
+        "sections",
+        "seeAlso"
+      ],
+      "allRelatedRouteDefinitionsExist": true,
+      "sections": 6,
+      "paragraphs": 13,
+      "faqs": 3
+    },
+    {
+      "slug": "planning-a-week-in-ten-minutes",
+      "decision": "pass",
+      "beforeSHA256": "13a405593de9254e01c5c4f39e3434e35afc9004a5980e874fcb2238155b7c3d",
+      "afterSHA256": "bd881129f81c5e4e343f40edf5359ca439f2d6a210bef7411eb9f2aeaf7beb51",
+      "changedTopLevelFields": [
+        "sections"
+      ],
+      "allRelatedRouteDefinitionsExist": true,
+      "sections": 6,
+      "paragraphs": 13,
+      "faqs": 3
+    },
+    {
+      "slug": "the-widget-that-shows-what-is-next",
+      "decision": "pass",
+      "beforeSHA256": "07ca952eee10181bf9dad8114a8cc32ff2eed117ac3458b158300fdee2ebbce8",
+      "afterSHA256": "eac35d4a48b4fdf2c75547d68844de5a15caa26b487f87350845d31443a5e6ee",
+      "changedTopLevelFields": [
+        "updated",
+        "title",
+        "description",
+        "sections",
+        "sources"
+      ],
+      "allRelatedRouteDefinitionsExist": true,
+      "sections": 7,
+      "paragraphs": 15,
+      "faqs": 3
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "decision": "pass",
+      "beforeSHA256": "6b5fbf274c05225e66ed557058f3ac4cd17013c82a2c88944161bc33415088dc",
+      "afterSHA256": "4d30e573d6c911670c10a555cf991718d748d842da6509a71637a143ca78e036",
+      "changedTopLevelFields": [
+        "updated",
+        "sections",
+        "seeAlso"
+      ],
+      "allRelatedRouteDefinitionsExist": true,
+      "sections": 5,
+      "paragraphs": 11,
+      "faqs": 3
+    }
+  ],
+  "blockers": [],
+  "findings": [],
+  "assessment": [
+    "Overview distinguishes transfer, display and busy-time copying; both quoted guide short labels match actual existing routes and seeAlso entries.",
+    "Tuesday unfinished-block example preserves Friday deadline and agreed appointments. No task completion or carry-forward feature implied.",
+    "Widget finite rows versus missing nearest eligible event is supported by recorded sorted/prefixed snapshot and layout limits; no exact freshness or complete-calendar promise.",
+    "iPad addition is attributed to Apple system gallery and qualified by installed styles/version. Same-iPad account/data check is useful. No extra-large, Lock Screen, calendar-picker or interactive Cloud feature invented.",
+    "Work/personal selection qualification matches recorded Google upload and notification scheduling guards. Hiding remains separate from access revocation.",
+    "Empty claims and developer disclosures retained. Related route definitions verified in current EN modules. Widget source addition matches documented Apple iPad URL.",
+    "No material audit-speak or misleading performance claim."
+  ],
+  "limits": [
+    "Evidence-record review, not fresh native execution or released-binary certification.",
+    "No independent device/gallery test or live-page approval.",
+    "Initial validation expecting all descriptions/sources unchanged failed because root concurrently added the authorized iPad section and metadata/source changes; final review uses the latest seven-section widget draft."
+  ],
+  "notPerformed": [
+    "Source edits",
+    "Integration",
+    "Native operations",
+    "Build",
+    "Deployment",
+    "Customer actions"
+  ]
+}

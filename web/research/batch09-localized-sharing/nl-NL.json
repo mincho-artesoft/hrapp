@@ -1,0 +1,188 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Eén agenda-afspraak delen: kies de juiste link en toegang",
+    "short": "Eén afspraak delen",
+    "description": "Deel één afspraak zonder je hele agenda te delen. Begrijp Reader, Writer en Owner, voorvertoningen, updates en de grenzen van het intrekken van toegang.",
+    "lede": "Details van een etentje delen, een medeorganisator laten wijzigen en aanwezigheidsreacties verzamelen zijn verschillende taken. Bepaal eerst wat je nodig hebt en kies daarna de deelmethode. Deze gids is geschreven door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+    "commonBelief": "Elke afspraaklink zou een alleen-lezen abonnement zijn dat direct wordt bijgewerkt en een reactie vastlegt.",
+    "sections": [
+      {
+        "heading": "Begin met de gegevens van één afspraak",
+        "body": [
+          "Een gedeelde losse afspraak omvat die afspraak, niet de volledige agenda van de afzender. Controleer vóór verzending de titel, tijdzone, locatie, notities en vergaderlinks. Informatie die voor één gast nuttig is, hoort misschien niet in een breed verspreide link.",
+          "Voor het delen van een etentje hoef je de agenda met je medische afspraken niet te delen. De locatie en links van het etentje gaan wel mee. Controleer daarom de afspraak zelf in plaats van op de privacy van de omringende agenda te vertrouwen."
+        ]
+      },
+      {
+        "heading": "Kies een voorvertoning, e-mailuitnodiging of QR-code",
+        "body": [
+          "Cloud Calendars heeft verschillende deelroutes. De App Clip toont een voorvertoning; om via die ervaring de afspraak toe te voegen is de volledige app nodig. E-mail- en QR-uitnodigingen gebruiken een webpagina die Cloud Calendars kan openen. Deze links zijn geen onderling uitwisselbare abonnements-URL’s.",
+          "Voor gesynchroniseerd delen meldt de afzender zich aan. Een link of QR-code kan worden doorgestuurd: verspreid die alleen waar de inhoud geschikt is. Een QR-code geeft een link door en bewijst niet wie deze heeft geopend."
+        ]
+      },
+      {
+        "heading": "Geef alleen de benodigde toegang",
+        "body": [
+          "Bij e-mailuitnodigingen kies je Reader, Writer of Owner. Reader kan bekijken en synchroniseren; Writer kan bewerken; Owner kan ook delen en toegang beheren. Dit zijn wezenlijk verschillende rechten. Gebruik Reader als iemand alleen het schema hoeft te zien.",
+          "Kies Writer voor een medeorganisator die de afspraak mag wijzigen. Kies Owner alleen als die persoon ook de toegang van anderen moet beheren. Voor uitgebreidere rechten moet de ontvanger met de juiste identiteit zijn aangemeld. Een anonieme ontvanger is geen geïdentificeerde mede-eigenaar."
+        ]
+      },
+      {
+        "heading": "Begrijp hoe de ontvanger de afspraak toevoegt",
+        "body": [
+          "In de volledige app vereist toevoegen toegang tot agenda’s en een beschrijfbare doelagenda. Laat de ontvanger die bestemming controleren voordat die opslaat. De ontvangen kopie kan vervolgens aan de gedeelde afspraak worden gekoppeld voor latere updates.",
+          "Dit verschilt van het importeren van een gewoon ICS-bestand in een andere agenda. Importeren maakt een kopie; een abonnement controleert periodiek een feed. Stuur je een ICS-feed in plaats van een app-uitnodiging, leg dat dan uit en controleer of de agenda van de ontvanger dit ondersteunt."
+        ]
+      },
+      {
+        "heading": "Controleer wijzigingen voordat je erop vertrouwt",
+        "body": [
+          "Gesynchroniseerd delen kan latere wijzigingen of annulering overbrengen, maar het apparaat van de ontvanger moet ze kunnen ontvangen. Een verversingsadvies voor een feed is geen bezorgdeadline. Een offline apparaat, niet-ververst abonnement of losse geïmporteerde kopie kan nog oude informatie tonen.",
+          "Verandert het etentje vlak voor aanvang, werk dan de afspraak bij en neem rechtstreeks contact op. Vraag de gasten de nieuwe tijd te bevestigen. Een update verzenden en een aanwezigheidsreactie ontvangen zijn afzonderlijke stappen."
+        ]
+      },
+      {
+        "heading": "Beheer toegang zonder te beloven dat kopieën verdwijnen",
+        "body": [
+          "Controleer de rechten van ontvangers en verwijder rechten die niet meer nodig zijn. Een ontvanger verwijderen en een feedlink intrekken zijn verschillende handelingen. Geen van beide mag worden voorgesteld als het op afstand wissen van screenshots, berichten of alle agendakopieën.",
+          "Is een link buiten de bedoelde groep verspreid, stel dan vast welke link of toegangstoekenning het betreft. Controleer de betreffende route na de wijziging. Houd bij toekomstige afspraken privégegevens uit breed verspreide links, in plaats van te vertrouwen op later intrekken om die terug te halen."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Controleer de details en bepaal of je bekijken, bewerken of aanwezigheidsreacties nodig hebt.",
+      "Kies de bedoelde deelroute en meld je aan waar dat nodig is.",
+      "Gebruik Reader voor kijkers; geef Writer of Owner alleen voor de bijbehorende verantwoordelijkheid.",
+      "Vraag de ontvanger bij het toevoegen de tijd en doelagenda te controleren.",
+      "Werk bij urgente wijzigingen de afspraak bij en stuur een rechtstreeks bericht.",
+      "Controleer bij beëindiging van het delen ontvangersrechten en linktoegang afzonderlijk."
+    ],
+    "faq": [
+      {
+        "q": "Wordt mijn hele agenda zichtbaar als ik één afspraak deel?",
+        "a": "De gesynchroniseerde route voor één afspraak beperkt zich tot die afspraak. De eigen details worden wel via de gekozen route gedeeld. Controleer die details en stuur geen uitnodiging voor de hele agenda als je slechts één afspraak wilt delen."
+      },
+      {
+        "q": "Kan de ontvanger de afspraak wijzigen?",
+        "a": "Ja, met de juiste Writer- of Owner-toegang en de ondersteunde aangemelde route. Reader is voor bekijken en synchroniseren. Een gewoon ICS-abonnement is niet hetzelfde bewerkingsmechanisme."
+      },
+      {
+        "q": "Maakt iemand verwijderen alles ongedaan wat die al heeft ontvangen?",
+        "a": "Ga niet van die garantie uit. Toegangswijzigingen beïnvloeden de ondersteunde deelrelatie, maar opgeslagen kopieën, screenshots en berichten kunnen blijven bestaan. Een gedeelde feed-URL moet ook afzonderlijk worden beoordeeld."
+      }
+    ],
+    "sourcesHeading": "Bronnen voor de opties van ontvangers",
+    "sources": [
+      {
+        "label": "Apple: overzicht van App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: afspraken importeren en beperkingen",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: een agenda importeren of erop abonneren",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "title": "Deelrechten in Google Agenda: controleer welke toegang je geeft",
+    "short": "Toegang en privacy in Google Agenda",
+    "description": "Kies toegang tot beschikbaarheid, details of bewerken. Controleer vóór het delen zowel openbare en groepstoegang als individuele rechten.",
+    "lede": "Bepaal vóór het delen wat de ander moet kunnen doen. Om je afspraken heen plannen, details lezen en de agenda onderhouden zijn verschillende taken. Deze gids is gepubliceerd door Arte Soft, de ontwikkelaar van Cloud Calendars.",
+    "commonBelief": "Een beperkte instelling voor één persoon zou garanderen dat die via geen enkele andere route details kan zien.",
+    "sections": [
+      {
+        "heading": "Stem de toegang af op de taak",
+        "body": [
+          "Een collega die een tijd zoekt, heeft mogelijk alleen beschikbaarheid nodig zonder afspraakdetails. Iemand die een projectplanning bijhoudt, heeft andere toegang nodig. Bepaal eerst de taak en bekijk daarna de rechten in de huidige deelinstellingen van de agenda.",
+          "Google onderscheidt beschikbaarheid, afspraakdetails en meerdere bewerkingsniveaus. Eén bewerkingsoptie beperkt toegang tot privéafspraken; een andere staat bewerken en details toe; de ruimste biedt ook beheer van delen. Behandel niet elke optie met het woord wijzigen als gelijkwaardig."
+        ]
+      },
+      {
+        "heading": "Controleer de toegang tot de hele agenda",
+        "body": [
+          "Bekijk naast personen ook of de agenda openbaar is, voor je organisatie beschikbaar is of met een groep wordt gedeeld. Volgens Google kan ruimere agendatoegang een beperktere toekenning overstijgen: één persoon beperken maakt al gepubliceerde details niet onzichtbaar.",
+          "Denk aan een verenigingsrooster dat voor leden is gepubliceerd. Controleer het publiek voordat je er een persoonlijke afspraak in zet. De instelling naast één vriend is niet de enige relevante instelling. Bewaar privéafspraken in een passende agenda."
+        ]
+      },
+      {
+        "heading": "Gebruik de instellingen van de juiste Google-agenda",
+        "body": [
+          "Zoek op een computer in Google Agenda de bedoelde agenda, open het menu en ga naar de deelinstellingen. Google beschrijft afzonderlijke onderdelen voor personen of groepen en bredere toegang. Controleer de agendanaam en het aangemelde account voordat je iets wijzigt.",
+          "Bevestig bij uitnodigen de bedoelde Google-identiteit van de ontvanger. Kan die de agenda niet vinden, controleer dan het adres en uitnodigingsbericht in plaats van de toegang te verruimen om de agenda zichtbaar te maken. Ontbrekende weergave en onvoldoende bewerkingsrechten zijn verschillende problemen."
+        ]
+      },
+      {
+        "heading": "Test zonder privéafspraken",
+        "body": [
+          "Gebruik een gewone testafspraak zonder vertrouwelijke titel, notities, locatie of gastenlijst. Vraag de ontvanger wat zichtbaar is en, alleen als bewerken nodig en toegestaan is, wat gewijzigd kan worden. Deel daarvoor niet je accountgegevens.",
+          "Noteer de agenda en toegekende rol en controleer het resultaat na een wijziging. Zo toets je de bedoelde inrichting; je bewijst niet dat eerder gelezen of gekopieerde informatie verdwenen is. Publiceer geen echt werkschema als test."
+        ]
+      },
+      {
+        "heading": "Houd werkbeleid en app-abonnementen uit elkaar",
+        "body": [
+          "Google vermeldt dat werk- of schoolbeheerders delen kunnen beperken. Gebruik de goedgekeurde route van de organisatie als de benodigde instelling ontbreekt. Publiceer geen werkinformatie om een accountbeperking te omzeilen.",
+          "Cloud Calendars kan gekoppelde agenda’s tonen, maar abonnementsnamen veranderen Google-rechten niet. Advanced verwijdert advertenties; betaling geeft een ander niet ineens toegang tot elk Google-evenement. Controleer de deelinstellingen bij de aanbieder en het geaccepteerde resultaat, niet alleen of lokaal een editor beschikbaar is."
+        ]
+      },
+      {
+        "heading": "Controleer en verwijder overbodige toegang",
+        "body": [
+          "Bekijk na een project de daadwerkelijke ontvangers, groepen en eventuele bredere publicatie. Eén persoon verwijderen is maar een deel van de controle als andere toegangswegen bestaan. Spreek af wie het schema onderhoudt en hoe toekomstige wijzigingen worden geregeld.",
+          "Google beschrijft personen of groepen verwijderen en breder delen uitschakelen afzonderlijk. Toegang intrekken haalt geen geëxporteerd bestand, screenshot of elders gekopieerde informatie terug. Bespreek dat apart met betrokkenen in plaats van te beloven dat één schakelaar alle eerdere kopieën wist."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Bepaal de agenda en de taak van de ontvanger.",
+      "Controleer individuele, groeps-, organisatie- en openbare toegang.",
+      "Kies in de actuele Google-instellingen de rechten die bij de taak passen.",
+      "Controleer de identiteit vóór je toegang wijzigt.",
+      "Controleer een onschuldige testafspraak aan de kant van de ontvanger.",
+      "Bekijk verouderde toegangswegen zonder aan te nemen dat kopieën worden teruggehaald."
+    ],
+    "faq": [
+      {
+        "q": "Heeft een individuele beperking voorrang op een openbare agenda?",
+        "a": "Nee. Google beschrijft dat ruimere agendarechten voorrang hebben bij tegenstrijdige instellingen. Controleer openbare en organisatie-instellingen naast de vermelding van die persoon."
+      },
+      {
+        "q": "Maken alle bewerkingsrechten privéafspraken op dezelfde manier zichtbaar?",
+        "a": "Nee. Google beschrijft een bewerkingsoptie die toegang tot privéafspraken beperkt, afzonderlijk van andere bewerkings- en deelbeheeropties. Lees de exacte actuele rechten voordat je kiest."
+      },
+      {
+        "q": "Verandert Advanced kopen de deelrechten van Google?",
+        "a": "Nee. Advanced verwijdert advertenties in Cloud Calendars. Toegang bij de aanbieder hangt af van agendarechten en eventuele organisatiebeperkingen."
+      }
+    ],
+    "sourcesHeading": "Actuele Google-informatie over rechten en delen",
+    "sources": [
+      {
+        "label": "Google: agendarechten kiezen",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: een agenda delen en toegang verwijderen",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "taking-back-a-calendar-you-shared"
+    ],
+    "updated": "2026-10-21"
+  }
+}

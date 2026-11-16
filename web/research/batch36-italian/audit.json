@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-22",
+  "decision": "two_full_Italian_modernizations_prepared_per_parent_scope_plus_home_candidates",
+  "readScope": "Complete current Italian home file; complete two Italian and two English canonical objects; complete shared app facts/product facts; complete Italian saved ASC description read in untruncated outputs. Later batch30 saved IT body checked and identical to batch29 body. No live ASC or fresh public-price request.",
+  "pins": [
+    {
+      "locale": "it",
+      "slug": "free-google-sync-without-adverts",
+      "rawModuleSha256": "e2661bcf7aa530506aeab83b6a5531209e3fe4d70d0add62f3e20b141691e5d4",
+      "jsonStringifySha256": "428f9ba068c74d54a6a6ff91cf539aa64c15d2732ac706669b1923f28015dc0b"
+    },
+    {
+      "locale": "it",
+      "slug": "what-a-subscription-actually-buys",
+      "rawModuleSha256": "e2661bcf7aa530506aeab83b6a5531209e3fe4d70d0add62f3e20b141691e5d4",
+      "jsonStringifySha256": "1380b478fabf4c5e57b018511b32bfbefea189eabc7213cd94ca67aca258189e"
+    },
+    {
+      "locale": "en-US",
+      "slug": "free-google-sync-without-adverts",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "jsonStringifySha256": "7051c9eff50013bba9d6a94f2714d70c8823d3de3a4455cb08c8df1ad095d856"
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-a-subscription-actually-buys",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "jsonStringifySha256": "6b067d4169e41e78facbbce16153037a017ead62e920508c522f16b6b588ea03"
+    }
+  ],
+  "home": {
+    "source": "src/app/content/home/it.ts",
+    "rawModuleSha256": "b00e32861df6d48d2a3789fc9125b5d59ca1cea306a74744ad7ff23e80ceb6b7",
+    "snapshot": "home-it-before.json",
+    "changes": "home-proposed-changes.json"
+  },
+  "asc": {
+    "source": "research/batch30-aso-remaining/applied.json",
+    "rawFileSha256": "8d90124907752da9b6b913121a9da978501a8337b03ab5cc6579944fcee27776",
+    "snapshot": "asc-it-saved-before.json",
+    "descriptionSha256": "f63a75dd305547f4eb04bcb4dc9d42186b89fd6c0d6ca98c668fb1fdeab53055",
+    "status": "saved after-readback text, not fresh live",
+    "decision": "retain; current Base/Advanced/Premium, local-account and weather qualifications align"
+  },
+  "materialIssues": [
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "free-google-sync-without-adverts",
+      "paths": [
+        "lede",
+        "description",
+        "sections[0].body[1]",
+        "sections[1].body[1]"
+      ],
+      "before": [
+        "Le app di calendario gratuite di solito lo sono perché si sta vendendo qualcos'altro. Vale la pena sapere cosa prima di affidarle la settimana.",
+        "Cosa contiene davvero il piano gratuito, dove compare la pubblicità e quanto costa toglierla. Detto chiaro, perché quasi nessuna app lo fa.",
+        "Se i vostri calendari stanno su Apple e Google, come per la maggior parte delle persone, il piano gratuito è l'app.",
+        "Dirlo così sembra meglio della sistemazione abituale, in cui il piano senza pubblicità viene impacchettato con funzioni che nessuno ha chiesto perché il prezzo sembri comprare di più."
+      ],
+      "issue": "Unsubstantiated generalizations about free apps selling something else, most users and other plans bundling unwanted features; not useful supported purchase guidance.",
+      "resolution": "Full coherent replacement provided, based on current four-section EN task and supported tier facts."
+    },
+    {
+      "file": "src/app/content/it/articles.ts",
+      "slug": "free-google-sync-without-adverts",
+      "paths": [
+        "practical",
+        "claims"
+      ],
+      "before": {
+        "practical": [
+          "Cominciate gratis: la sincronizzazione che vi serve probabilmente c'è già.",
+          "Pagate per togliere la pubblicità, non perché vi aspettate che l'app cambi.",
+          "Il piano superiore ha senso solo se il vostro calendario di lavoro sta su Microsoft."
+        ],
+        "claims": {
+          "price": "Costo del piano gratuito",
+          "advancedMonthly": "Costo mensile per togliere la pubblicità, in dollari"
+        }
+      },
+      "issue": "Legacy purchase advice assumes needed sync likely exists and omits explicit Teams, permissions and billing identity. Old advancedMonthly claim label is stale; parent confirmed current renderer facts empty, so it must not be described as a currently rendered USD price.",
+      "resolution": "Full draft supplies account/selection/test/billing workflow and claims{}. No shared facts or price constants changed."
+    }
+  ],
+  "subscriptionGuide": {
+    "decision": "full_five_section_modernization_requested_by_parent",
+    "reason": "Original short guide has no identified material falsehood; deliberate expansion adds receipt identity, provider/event context and conditional Family Sharing distinction from current EN."
+  },
+  "homeOtherFindings": "Hero/meta/FAQ already distinguish Microsoft Premium, local account sign-in, available weather and widget limits. Preserve those corrected fields. Static screenshot alts describe depicted content; not reclassified as runtime guarantees. No new price-number/percent edits proposed.",
+  "coherentFix": "Both complete drafts beside snapshots; structure/hash/source/related mapping in draft-mapping.json.",
+  "historicalSearchEvidence": "Parent supplied own-site GSC calendario cloud 79 impressions/1 click, historical only. No new data fetched, volume/rank claim or keyword stuffing used.",
+  "limits": [
+    "Own Italian editorial translation/self-review, not native-speaker certification.",
+    "Product-source and saved metadata comparison, not runtime/release certification.",
+    "Only research artifacts; no website/source/ASC/native/build/deploy changes."
+  ],
+  "priceRenderingCorrection": "Earlier observation of numeric ARTICLE_FACTS was not a current rendered-price verification. Parent reports current facts claims[]; old Italian labels are unused. Do not infer a rendered dollar amount from label presence.",
+  "primaryReadUpdate": "Root freshly read Italian Apple cancellation https://support.apple.com/it-it/118428 main28–144, including receipt/account advice. Both drafts use that URL; Family Sharing exact EN canonical source retained, no fresh fetch by this agent."
+}

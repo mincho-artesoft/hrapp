@@ -1,0 +1,95 @@
+{
+  "title": "L’adresse iCal secrète de Google : distinguer abonnement et partage",
+  "short": "L’adresse iCal secrète",
+  "description": "Distinguez adresse iCal secrète, connexion de compte et flux partagés, sans promettre de mises à jour immédiates ni l’effacement des copies.",
+  "lede": "Une adresse de calendrier, une connexion de compte et une invitation remplissent des fonctions différentes. Identifiez ce que vous avez avant de transférer un planning dans une autre application. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+  "commonBelief": "Une adresse secrète est une invitation personnelle que l’on peut retirer à un seul destinataire.",
+  "sections": [
+    {
+      "heading": "Choisir la connexion adaptée",
+      "body": [
+        "Google distingue la connexion à une autre application de calendrier de la consultation via une adresse iCal secrète. La connexion de compte peut permettre la modification ; l’adresse fournit un abonnement en lecture seule. Google la réserve à votre propre usage et déconseille de la partager avec autrui.",
+        "Afficher votre planning professionnel dans un autre calendrier compatible diffère d’un accès permanent accordé à un collègue. Commencez par l’objectif : consulter votre planning, collaborer avec une personne précise ou diffuser un programme destiné à un public. Ne choisissez pas une URL simplement parce qu’elle est facile à coller."
+      ]
+    },
+    {
+      "heading": "Trouver le bon calendrier, pas seulement le bon compte",
+      "body": [
+        "Sur ordinateur, les instructions de Google placent « Secret address in iCal format » dans les réglages « Integrate calendar » du calendrier choisi. Vérifiez d’abord son nom. Un administrateur d’entreprise ou d’établissement scolaire peut restreindre cette option ; l’absence d’adresse ne justifie pas de publier le calendrier.",
+        "Évitez de faire apparaître l’adresse dans des captures, des demandes d’assistance publiques ou des notes partagées. Pour demander de l’aide, indiquez le type de compte, le nom du calendrier et la méthode de connexion sans fournir l’URL. L’assistance doit normalement identifier le mode de connexion avant d’avoir besoin du contenu des événements."
+      ]
+    },
+    {
+      "heading": "Vérifier ce que l’application destinataire a ajouté",
+      "body": [
+        "Un abonnement suit un flux ; l’importation d’un fichier crée une copie distincte. Lisez les instructions de l’application destinataire et confirmez l’action choisie. Ouvrir simplement un fichier de calendrier téléchargé ne garantit pas que les rendez-vous obtenus suivront les modifications ultérieures.",
+        "Comparez le nom du calendrier, la date et les détails affichés à l’aide d’un événement ordinaire, connu et non sensible. Ne créez pas un second abonnement pour diagnostiquer le premier : deux copies visibles peuvent faire passer un retard de mise à jour pour un conflit de rendez-vous. Masquez temporairement un calendrier pour identifier la source."
+      ]
+    },
+    {
+      "heading": "Séparer les liens Google et Cloud Calendars",
+      "body": [
+        "Cloud Calendars possède ses propres parcours de partage d’événements et de calendriers, avec notamment des flux d’abonnement. Ce ne sont pas des adresses secrètes Google. Avant d’ouvrir un lien, déterminez si l’expéditeur a partagé un événement, un calendrier ou une invitation liée à un compte.",
+        "Un destinataire Cloud Calendars peut avoir le rôle Reader, Writer ou Owner. Une adresse de flux ne prouve pas à elle seule un droit de modification. De même, recevoir une adresse de consultation Google ne fait pas de vous le propriétaire du calendrier. Demandez à l’expéditeur dans quel système effectuer les changements."
+      ]
+    },
+    {
+      "heading": "Tenir compte de l’actualisation du calendrier destinataire",
+      "body": [
+        "Un abonnement ne promet pas une livraison immédiate. Les flux Cloud Calendars proposent un intervalle d’actualisation, mais l’application destinataire décide quand récupérer et afficher les changements. Une ancienne heure sur un appareil ne prouve pas que l’organisateur a oublié d’enregistrer la modification.",
+        "Pour une réunion le jour même, comparez avec le planning actuel de l’organisateur et confirmez directement les changements importants. Notez quel calendrier affiche encore les anciennes informations et l’heure de votre vérification. N’importez pas l’événement à répétition et ne supprimez pas le calendrier source pour forcer l’actualisation."
+      ]
+    },
+    {
+      "heading": "Réagir à une divulgation sans promettre un rappel",
+      "body": [
+        "Google décrit la réinitialisation d’une adresse secrète divulguée : l’ancienne devient invalide et une nouvelle est créée. Identifiez vos applications qui l’utilisent pour actualiser ensuite leurs abonnements. Réinitialiser une adresse diffère du retrait d’un collaborateur nommé.",
+        "Les rendez-vous enregistrés, exportations et captures antérieures sont une question distincte. Un lien modifié ne prouve pas que toutes les anciennes copies ont disparu. Si des informations ont atteint le mauvais public, examinez le contenu et les destinataires réels plutôt que de considérer une réinitialisation réussie comme une preuve de suppression complète."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifier connexion de compte, invitation, abonnement ou fichier.",
+    "Vérifier le calendrier propriétaire avant de copier une adresse.",
+    "Réserver l’adresse secrète Google à vos propres applications compatibles.",
+    "Vérifier que l’application destinataire s’est abonnée au lieu d’importer.",
+    "Confirmer les changements urgents auprès de l’organisateur sans dépendre du délai d’actualisation.",
+    "Si l’adresse a été divulguée, suivre la procédure Google de réinitialisation et actualiser les connexions voulues."
+  ],
+  "faq": [
+    {
+      "q": "Puis-je donner l’adresse secrète à un collègue ?",
+      "a": "Google recommande de la réserver à vos propres applications. Si une autre personne a besoin d’un accès, utilisez les réglages de partage du calendrier avec l’autorisation souhaitée."
+    },
+    {
+      "q": "Un abonnement me permet-il de modifier l’original ?",
+      "a": "L’adresse iCal secrète Google permet la consultation. La modification nécessite une connexion de compte adaptée et une autorisation ; les rôles Cloud Calendars constituent un dispositif distinct."
+    },
+    {
+      "q": "La réinitialisation efface-t-elle les anciens rendez-vous partout ?",
+      "a": "Elle invalide l’ancienne adresse Google. Elle ne prouve pas la suppression des fichiers, rendez-vous ou captures enregistrés indépendamment."
+    }
+  ],
+  "sourcesHeading": "Conseils des fournisseurs et lectures complémentaires",
+  "sources": [
+    {
+      "label": "Google : connexions de compte et adresses iCal secrètes",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    },
+    {
+      "label": "Google : partager un calendrier",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Microsoft : importation, abonnement et délais d’actualisation",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "taking-back-a-calendar-you-shared",
+    "sharing-one-event-not-your-calendar"
+  ],
+  "updated": "2026-10-21"
+}

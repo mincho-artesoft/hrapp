@@ -1,0 +1,149 @@
+{
+  "verdict": "approved",
+  "proposalRawSha256": "6300ae290a8d706dae01204921865e7ce6b60dba02195d4872bf299acef0c58a",
+  "sourceHashes": {
+    "description-en-draft.txt": "7114a539ea780015f244c4c6596750ef6c8be6ebdbdd32445af5696f5047929b",
+    "description-localization-plan.json": "87527a67b6de0f12ed752ee9f95897a1a9c72394f708012a346c187621675e29",
+    "description-article-evidence.json": "2f30bd80c19788ce1da4b9c4437562e9875ceff5bbe1ea4d4f687754ff49ce3a"
+  },
+  "fullReadScope": {
+    "all16CompleteValues": true,
+    "batches": [
+      "pt-BR,pt-PT,ro,ru,sk",
+      "sl-SI,sv,tr,uk,vi",
+      "ta-IN,te-IN,th",
+      "ur-PK,zh-Hans,zh-Hant"
+    ],
+    "truncation": false,
+    "method": "Complete final composed descriptions read, not counts-only review. Compared to approved English and allowed expansion bank. No new live/API read."
+  },
+  "checks": {
+    "exact16LocaleSet": true,
+    "all3800to4000Unicode": true,
+    "bothExactURLsOnceEach": true,
+    "paymentAtPurchaseConfirmation": true,
+    "cancelAtLeast24HoursBeforeEnd": true,
+    "renewalChargeWithin24HoursBeforeEnd": true,
+    "accountSettingsManagementAndCancellation": true,
+    "BaseAdvancedPremiumCorrect": true,
+    "AppClipPreviewFullAppAddingExplicit": true,
+    "localNoAppAccountVsProviderSharingSignInQualified": true,
+    "futureTimedWidgetVsAllDayBoundary": true,
+    "weatherPlaceProviderAvailabilityAndDraftNotBooking": true,
+    "noUnsupportedAutomationOrPrivacyGuarantee": true
+  },
+  "perLocale": {
+    "pt-BR": {
+      "characters": 3999,
+      "utf8Bytes": 4113,
+      "valueSha256": "6aa2cd6ecfc41500a8f38c2cb6489051dada24023807b86d93b072681eac1e93",
+      "verdict": "pass"
+    },
+    "pt-PT": {
+      "characters": 3991,
+      "utf8Bytes": 4103,
+      "valueSha256": "3f3da05f841ed4d87b0c1b6b79548ee654f9ad7a63405d8a691b9c8454d75f5e",
+      "verdict": "pass"
+    },
+    "ro": {
+      "characters": 3972,
+      "utf8Bytes": 4164,
+      "valueSha256": "c77bb232a2d1d9cc5d6277d24a327f572740cc093c947e1b6692103fb81e1306",
+      "verdict": "pass"
+    },
+    "ru": {
+      "characters": 3922,
+      "utf8Bytes": 6929,
+      "valueSha256": "d29432112bc1f153e5b435ffd7725a9b8f1c2de79c83849a0be91a153ac7e1f4",
+      "verdict": "pass"
+    },
+    "sk": {
+      "characters": 3839,
+      "utf8Bytes": 4119,
+      "valueSha256": "b627c6bb1425a163c26580fc02e8587ddeae32ea3d82676689470b25dfce23f3",
+      "verdict": "pass"
+    },
+    "sl-SI": {
+      "characters": 3852,
+      "utf8Bytes": 3920,
+      "valueSha256": "853d208d5680b5401a862b24d846a41557f02b90f7706dee4c6e0c229ac44e41",
+      "verdict": "pass"
+    },
+    "sv": {
+      "characters": 3890,
+      "utf8Bytes": 4027,
+      "valueSha256": "010053cf31eaf4c759c5f06557cdbc154e184d6c6256b415a59e7ba303e507bd",
+      "verdict": "pass"
+    },
+    "tr": {
+      "characters": 3908,
+      "utf8Bytes": 4251,
+      "valueSha256": "efcd69e735495d45cceb278c4263ff655b54d529bee6d342c6b872081d20b183",
+      "verdict": "pass"
+    },
+    "uk": {
+      "characters": 3907,
+      "utf8Bytes": 6898,
+      "valueSha256": "5f89266eb8c2784df3a8b9c9139e5fe2f06d0b13cc3fd9663d1c47265ed98af4",
+      "verdict": "pass"
+    },
+    "vi": {
+      "characters": 3833,
+      "utf8Bytes": 5033,
+      "valueSha256": "d0e325b852542c33074bc827d37f2d3cb43757e27906c07c93a8a4d8e18219bb",
+      "verdict": "pass"
+    },
+    "ta-IN": {
+      "characters": 3940,
+      "utf8Bytes": 10222,
+      "valueSha256": "a9776257c5a297b7b01eb68d7de91f12284c088a3785f840976ef011b540b76d",
+      "verdict": "pass"
+    },
+    "te-IN": {
+      "characters": 3807,
+      "utf8Bytes": 9645,
+      "valueSha256": "e55ad907fb9d67cc5922073286c19900f7ed714e5c7be8dafa9e946234f61cb5",
+      "verdict": "pass"
+    },
+    "th": {
+      "characters": 3878,
+      "utf8Bytes": 10726,
+      "valueSha256": "40aba7a9a444ad31a222671a809696480b6207fe41560a0d4b378f1b161bba6e",
+      "verdict": "pass"
+    },
+    "ur-PK": {
+      "characters": 3951,
+      "utf8Bytes": 6803,
+      "valueSha256": "561811a6cd47bee15e26e0adcc9d4cf8f19a3aa07f05d788c16f7297fb325d11",
+      "verdict": "pass"
+    },
+    "zh-Hans": {
+      "characters": 3822,
+      "utf8Bytes": 10494,
+      "valueSha256": "33f0b295fb11554cd38a4e85bf88598015a50e581624290232322c696979be60",
+      "verdict": "pass"
+    },
+    "zh-Hant": {
+      "characters": 3830,
+      "utf8Bytes": 10440,
+      "valueSha256": "18d52414fea829bb524558b6fe865fcbaa1a60c19a74ed88e03bacb4589532be",
+      "verdict": "pass"
+    }
+  },
+  "editorialNotes": [
+    "CJK expansion was read in full: worked family-pickup, outdoor-plan, display, recurrence, overnight and missing-event examples remain bounded to approved bank and evidence; they make no automatic RSVP, travel-buffer, staffing/payroll, guaranteed delivery or safety claim.",
+    "Some overlap between expanded examples and retained core exists, especially CJK, but conveys concrete planning distinctions within the explicit near-maximum request; no additional synonym padding requested."
+  ],
+  "confidence": "Independent cross-agent semantic review, not independent native-speaker certification. Lower language confidence for Tamil, Telugu, Thai and Urdu; higher for European languages and Chinese meaning. No runtime certification.",
+  "mutations": "Review artifact only. Author was sent exact one-sentence correction; no proposal edits by reviewer.",
+  "previousProposalRawSha256": "6300ae290a8d706dae01204921865e7ce6b60dba02195d4872bf299acef0c58a",
+  "resolvedChange": {
+    "locale": "pt-PT",
+    "before": "Para um jantar ou uma reunião, partilhe o evento; dê acesso ao calendário inteiro apenas quando a outra pessoa precisar da programação mais ampla.",
+    "after": "Partilhe um evento por e-mail ou QR; dê acesso ao calendário inteiro apenas quando a outra pessoa precisar de uma programação mais ampla.",
+    "reason": "Restore email/QR invitation channels omitted during condensation; remaining15 retain channels. No new capability.",
+    "status": "Exact inverse reconstruction of complete original artifact equals pinned original raw SHA; full current pt-PT reread. Remaining15 value hashes unchanged.",
+    "initialPtPtValueHashCorrection": "Initial report value hash did not match original raw-value representation; corrected via entire-file inverse reconstruction, stronger provenance than value hash alone."
+  },
+  "requiredChanges": []
+}

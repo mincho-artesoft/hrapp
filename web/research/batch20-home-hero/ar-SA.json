@@ -1,0 +1,15 @@
+{
+  "locale": "ar-SA",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "كل تقويم لديك — iCloud وGoogle وMicrosoft — في مكان واحد، والتوقعات مبنية داخل اليوم نفسه. كفى تخمينًا لشكل بعد الظهر.",
+      "after": "اعرض تقويمات iCloud وGoogle التي تختارها على iPhone وiPad، مع توقعات الطقس المتاحة إلى جانب خططك. تضيف Premium إمكانية ربط تقويمات Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "تقاويمك والتوقعات في مكان واحد. مبنيّ لـ iPhone وiPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "تقويمات iCloud وGoogle والطقس والأدوات على iPhone وiPad. تنزيل مجاني؛ تضيف Premium تقويمات Microsoft وTeams."
+    }
+  ]
+}

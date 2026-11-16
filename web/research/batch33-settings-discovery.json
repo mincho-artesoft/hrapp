@@ -1,0 +1,349 @@
+{
+  "date": "2026-10-22",
+  "status": "covered_no_new_page_justified",
+  "scope": "Bounded revalidation of stale original-corpus settings discovery, not broader query research.",
+  "provenance": {
+    "queue": "research/competitors/coverage-current-20261021.json",
+    "queueFields": [
+      "entries exact malformed URL record",
+      "supersededUrlMappings[0]"
+    ],
+    "earlierBodyEvidence": "research/competitors/batch25-fantastical-settings-primary-20261022.json",
+    "finding": "Queue addendum already records the corrected body read; malformed entry is historical provenance, not an unresolved substantive body."
+  },
+  "navigation": [
+    {
+      "requested": "https://flexibits.com/fantastical-ios/help/",
+      "returned": "https://flexibits.com/fantastical-ios/help",
+      "readLines": "0–100 of 101",
+      "scope": "Complete extracted landing/index text; linked feature bodies not included.",
+      "observedLink": {
+        "label": "Settings",
+        "linkId": 37,
+        "line": 49,
+        "target": "https://flexibits.com/fantastical-ios/help/settings"
+      }
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/settings",
+      "method": "Followed actual visible index Settings link 37",
+      "status": "full_substantive_text",
+      "readLines": "0–183 of 184",
+      "substantiveBodyLines": "61–150 inclusive",
+      "scope": "Complete extracted main Settings text, including all settings groups; images and linked feature documents not inspected."
+    }
+  ],
+  "notFetched": [
+    "https://flexibits.com/fantastical-ios/help/fantastical-ios/help/settings"
+  ],
+  "failures": [],
+  "publisherObservation": "Fantastical documents weather-place selection, calendar visibility/sets, new-event defaults, display ranges, tasks, time-zone controls and combining identical events. These are publisher-specific settings; the body does not establish Cloud feature parity or prove provider-record deletion/merging.",
+  "inventory": {
+    "count": 55,
+    "scope": "All 55 current English canonical keys and titles inspected to select relevant guides; four relevant complete objects freshly read. Not a fresh full-body review of all 55.",
+    "titlesAndCanonicals": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing"
+      },
+      {
+        "slug": "free-google-sync-without-adverts",
+        "title": "Free Google Calendar sync on iPhone: what is included and where ads fit"
+      },
+      {
+        "slug": "what-fantastical-costs-and-what-this-does",
+        "title": "Cloud Calendars or Fantastical? Compare your calendar workflow on iPhone"
+      },
+      {
+        "slug": "what-you-get-without-paying-anything",
+        "title": "What Cloud Calendars includes free on iPhone and iPad"
+      },
+      {
+        "slug": "what-a-subscription-actually-buys",
+        "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained"
+      },
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "title": "A calendar was shared with you and it is not there"
+      },
+      {
+        "slug": "the-secret-address-of-a-google-calendar",
+        "title": "Google’s secret iCal address: subscribe without confusing it with sharing"
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "title": "Google Calendar guest permissions: editing, invitations and the guest list"
+      },
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "title": "A Google calendar is missing on iPhone: check the connection and selection"
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "title": "Stop sharing a calendar: remove access and check the remaining routes"
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "title": "Deleted calendar events on iPhone: Google and iCloud recovery"
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "title": "Disconnect a calendar integration: access, sync and existing copies"
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "title": "CalDAV calendar on iPhone: setup, permissions and missing events"
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "title": "Calendar notifications on iPhone: missing, silent or duplicated?"
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "title": "Find an old calendar event: check the account, dates and search fields"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "title": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "title": "Event saved to the wrong calendar?"
+      },
+      {
+        "slug": "family-pickup-calendar-handoff",
+        "title": "A family pickup plan with a clear handoff"
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "title": "Drag a calendar event to reschedule: check time, duration and scope"
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "title": "Week calendar on iPhone: compare hours without overlooking commitments"
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "title": "Month calendar on iPad and iPhone: see the dates, then check the details"
+      },
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "title": "A weekly calendar review: commitments, time blocks and shared responsibilities"
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "title": "Recurring calendar events: change one date or the series safely"
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "title": "Calendar time zones: check the event before you travel"
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "title": "All-day calendar events: dates, availability and missing widget entries"
+      },
+      {
+        "slug": "a-list-for-people-who-dislike-grids",
+        "title": "Calendar list view on iPhone: read the agenda and check what is missing"
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "title": "Year calendar on iPhone and iPad: inspect dates beyond the overview"
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "title": "Calendar event or room reservation? Check what is confirmed"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "title": "Share one calendar event: choose the link and access you mean"
+      },
+      {
+        "slug": "inviting-people-who-do-not-have-the-app",
+        "title": "Sharing an event with someone who does not have Cloud Calendars"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "title": "Share a calendar with the right people and permissions"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "title": "Google Calendar sharing permissions: check the access you actually grant"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "title": "Calendar replies: separate attendance from sharing access"
+      },
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "title": "Google Meet and Microsoft Teams links: create, save and check"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions"
+      },
+      {
+        "slug": "three-calendar-apps-is-two-too-many",
+        "title": "Combine calendar apps on iPhone without losing track of events"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "title": "Calendar sync on iPhone: accounts, subscriptions and missing events"
+      },
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "title": "Work and personal calendars in one app: keep ownership separate"
+      },
+      {
+        "slug": "exchange-calendars-on-an-iphone",
+        "title": "Microsoft and Exchange calendars on iPhone: check the connection first"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "title": "When calendar events disagree: check ownership before editing"
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "title": "Calendar with weather on iPhone and iPad: check a plan in context"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "title": "Compare an appointment with the hourly weather forecast"
+      },
+      {
+        "slug": "a-fourteen-day-view-of-the-weather",
+        "title": "How far ahead can I see weather in Cloud Calendars?"
+      },
+      {
+        "slug": "planning-outdoors-without-being-rained-on",
+        "title": "Plan an outdoor event with a forecast and a fallback"
+      },
+      {
+        "slug": "what-a-forecast-can-and-cannot-tell-you",
+        "title": "How reliable is a weather forecast for a calendar event?"
+      },
+      {
+        "slug": "reading-a-chance-of-rain",
+        "title": "What does a chance of rain mean for a calendar event?"
+      },
+      {
+        "slug": "weather-where-the-event-is",
+        "title": "The weather where the event is, not where you are"
+      },
+      {
+        "slug": "the-commute-and-the-sky",
+        "title": "Plan travel around calendar events: route time, weather and arrival"
+      },
+      {
+        "slug": "daylight-as-a-planning-constraint",
+        "title": "Plan around sunset: check daylight, location and the event date"
+      },
+      {
+        "slug": "wind-the-forecast-nobody-reads",
+        "title": "Wind forecast for outdoor plans: speed, gusts, direction and time"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "title": "Calendar widgets on iPhone and iPad: show upcoming events"
+      },
+      {
+        "slug": "a-countdown-to-your-next-meeting",
+        "title": "Use a calendar Live Activity countdown without replacing alerts"
+      },
+      {
+        "slug": "lock-screen-without-unlocking",
+        "title": "Calendar information on the Lock Screen: choose the right feature"
+      },
+      {
+        "slug": "choosing-a-widget-size",
+        "title": "Choose a Cloud Calendars widget by its layout, not just its size"
+      },
+      {
+        "slug": "the-calendar-on-a-bedside-table",
+        "title": "Use iPhone StandBy without mistaking a glance for tomorrow’s plan"
+      }
+    ],
+    "jsonSha256": "9058ccbb2aa4ba739a443ada7f2230a772831597cb32ec445d8379da6394439a"
+  },
+  "completeComparisons": [
+    {
+      "slug": "weather-where-the-event-is",
+      "file": "src/app/content/en-US/articles-weather.ts",
+      "moduleSha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+      "objectRawSha256": "0ca5a32429fd2e963e76d7572726884067cf4fba1a5945faed5e8b98a3c87140",
+      "jsonSha256": "43e35ed6a54f89a54a7912f7a8d1ced1e0de1ffd7567b7865d41cc8d944286b9",
+      "scope": "Complete metadata, every section/paragraph, practical steps, FAQ, source labels/URLs, related routes and date read.",
+      "sections": 5,
+      "paragraphs": 10
+    },
+    {
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "objectRawSha256": "0f9f8317cd57c6ddd26cf31f5bdf9d8a497ed39a655cbfa77e8757293fc67cac",
+      "jsonSha256": "22a9844d2cefa22601168684cb8797ff59b9af549be0d445e94584977565b702",
+      "scope": "Complete metadata, every section/paragraph, practical steps, FAQ, source labels/URLs, related routes and date read.",
+      "sections": 5,
+      "paragraphs": 11
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "moduleSha256": "aa447f8c19d27cbfcf813adff2b067fb6a0f8c1925f78b38bd10bacd073bf98b",
+      "objectRawSha256": "24241d00e1ece4cf67efb13d8b6588e28b0267adecdf2f3e48f87119a17fcd4d",
+      "jsonSha256": "69a1bb6728eb548dc853e28e9853f232a739713246d40e50d606ddde3b23645d",
+      "scope": "Complete metadata, every section/paragraph, practical steps, FAQ, source labels/URLs, related routes and date read.",
+      "sections": 5,
+      "paragraphs": 11
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "moduleSha256": "7b3b6a6e18f271169cf3153301247337d9d1db06d27e76df7dc7e3e4f2701348",
+      "objectRawSha256": "c1ed8c5654d2724b0a20b3145980de8490af0041e3bc5638031a7ad1847d750e",
+      "jsonSha256": "f0afc74c230c3031a66714ef6c02d6c528ab35a56f907b6852fa07e73dd4a3ca",
+      "scope": "Complete metadata, every section/paragraph, practical steps, FAQ, source labels/URLs, related routes and date read.",
+      "sections": 6,
+      "paragraphs": 13
+    }
+  ],
+  "intentMapping": [
+    {
+      "intent": "Choose the weather location for a destination rather than assuming the event address changes the forecast",
+      "canonical": "weather-where-the-event-is",
+      "coverage": "Already gives current/search/saved-place choices, place/date/hour checks, permissions and distinction from device-GPS weather alerts.",
+      "decision": "Covered; no append needed."
+    },
+    {
+      "intent": "Narrow work/personal calendar visibility without treating a filtered gap as free time",
+      "canonical": "work-and-personal-without-two-apps",
+      "coverage": "Already restores relevant calendars before availability decisions and separates visibility from permissions, Google synchronization and notification scheduling.",
+      "decision": "Covered. Saved calendar sets and Focus automation are not supported Cloud claims established here."
+    },
+    {
+      "intent": "Understand identical-looking events across calendars before cleanup",
+      "canonical": "when-two-calendars-disagree",
+      "coverage": "Already compares calendar/account/organizer/time zone/recurrence, traces display routes with temporary hiding and restoration, and distinguishes imported copies from records and connections.",
+      "decision": "Covered diagnostically. A Fantastical combining control does not establish a Cloud deduplication control or justify a new generic duplicate-event page."
+    },
+    {
+      "intent": "Check where new events are saved instead of assuming one system default controls every app",
+      "canonical": "event-saved-to-wrong-calendar",
+      "coverage": "Already explains Cloud creation context, selected writable destinations, Apple-specific default and non-retroactive effect, with provider verification and consequences of existing-event moves.",
+      "decision": "Covered; no new instruction needed."
+    }
+  ],
+  "nextAction": {
+    "type": "Evidence reconciliation only",
+    "recommendation": "Treat the malformed original entry as superseded by the already-reviewed canonical body; retain exact URL provenance and this fresh revalidation. Do not author another settings or duplicate-event guide from this page.",
+    "sourceAmendment": null,
+    "newCanonical": null,
+    "queueMutationPerformed": false
+  },
+  "limits": [
+    "No public query/search performed; direct official-index navigation was requested. No measured Google rank, search volume or ChatGPT citation evidence.",
+    "No publisher runtime or Cloud native/runtime inspection in this task. No Cloud calendar-set, automatic deduplication, Focus or task-list capability inferred.",
+    "No repeated failed original URL fetched; malformed path not requested.",
+    "No source/build/deploy/ASC/customer changes."
+  ]
+}

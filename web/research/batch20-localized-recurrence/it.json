@@ -1,0 +1,81 @@
+{
+  "updated": "2026-10-21",
+  "title": "Eventi ricorrenti: modificare una data o la serie con attenzione",
+  "short": "Eventi ricorrenti",
+  "description": "Controlla permessi e date interessate prima di modificare un evento ricorrente. Gestisci cambiamenti ed eccezioni senza eliminare la serie.",
+  "lede": "Prima di modificare un appuntamento ricorrente, stabilisci esattamente quali date devono cambiare. Poi verifica che l’editor consenta di limitare la modifica a quelle occorrenze. Questa guida è pubblicata da Arte Soft, sviluppatore di Cloud Calendars.",
+  "commonBelief": "Ogni editor di calendario chiede se una modifica riguarda una sola occorrenza o l’intera serie.",
+  "sections": [
+    {
+      "heading": "Descrivi la modifica prima di aprire l’editor",
+      "body": [
+        "“Spostare di un’ora la lezione di martedì prossimo” riguarda una sola occorrenza. “Dal mese prossimo le lezioni saranno il giovedì” cambia il programma futuro. “Correggere la sala per tutte le riunioni” può avere un effetto più ampio. Sono richieste diverse, anche quando partono dalla stessa schermata dei dettagli dell’evento.",
+        "Annota la data dell’occorrenza selezionata e le date vicine che devono restare invariate. Un breve elenco prima e dopo facilita il controllo del risultato salvato. Non usare una serie reale per scoprire cosa fa un pulsante Salva che non conosci."
+      ]
+    },
+    {
+      "heading": "Controlla il calendario e i tuoi permessi di modifica",
+      "body": [
+        "Individua il calendario a cui appartiene l’evento e verifica se sei l’organizzatore, una persona con diritti di modifica o un invitato. Vedere una serie condivisa non concede di per sé il permesso di cambiarne gli orari. Google descrive la modifica da parte degli invitati come un’autorizzazione che l’organizzatore può concedere: visualizzare un invito e gestirlo sono capacità diverse.",
+        "In Cloud Calendars, verifica che il calendario di destinazione consenta le modifiche. Il fatto che un partecipante possa vedere una riunione non significa che possa cambiare l’invito dell’organizzatore. Se non puoi apportare la modifica desiderata, chiedi all’organizzatore invece di creare un invito concorrente."
+      ]
+    },
+    {
+      "heading": "Controlla le occorrenze interessate prima di salvare in Cloud Calendars",
+      "body": [
+        "L’editor di Cloud Calendars include schemi di ripetizione e un’impostazione per la fine della ripetizione. Questi controlli definiscono un programma; non equivalgono alla scelta delle occorrenze interessate da una modifica. Cambiare un evento ricorrente esistente può influire sulle occorrenze future. Non sostituire un’eccezione per una sola data con una modifica alla regola di ripetizione.",
+        "Prima di salvare un’eccezione per una sola data, cerca una scelta esplicita che limiti la modifica a quell’occorrenza. Se l’editor non la offre, usa l’evento originale nell’editor supportato dal servizio a cui appartiene. Poi controlla la data interessata e quelle vicine in entrambi i posti. I calendari locali e i servizi collegati non gestiscono necessariamente le modifiche alle serie nello stesso modo."
+      ]
+    },
+    {
+      "heading": "Usa una scelta supportata e verifica alcune date rappresentative",
+      "body": [
+        "Le istruzioni di Google Calendar per computer indicano di modificare l’evento ricorrente, salvare e scegliere gli eventi della serie a cui applicare l’aggiornamento. Leggi le opzioni effettivamente mostrate per quell’evento senza presumere che tutti i servizi usino le stesse etichette o supportino le stesse modifiche.",
+        "La guida di Calendario di Apple per Mac descrive separatamente frequenza, ripetizioni personalizzate e termine della ripetizione. Sono controlli di Calendario di Apple. Qualunque editor supportato tu usi, verifica la data modificata, una data precedente che deve restare invariata e l’occorrenza ordinaria successiva. Per un invito, controlla anche l’evento salvato dall’organizzatore: una modifica alla tua visualizzazione personale non conferma che la riunione sia stata spostata per tutti."
+      ]
+    },
+    {
+      "heading": "Preserva le eccezioni e scegli consapevolmente le date di fine",
+      "body": [
+        "Un appuntamento spostato o una settimana saltata sono motivi per esaminare la serie esistente prima di cambiarne la regola. Annota prima le eccezioni importanti e controllale dopo. Non è corretto promettere che ogni modifica alla serie preservi le eccezioni, né affermare che le cancelli automaticamente: il risultato dipende dall’operazione e dal servizio.",
+        "Usa una data finale nota per un corso o una turnazione temporanea quando corrisponde al programma reale. Un compleanno annuale o una riunione continuativa possono ragionevolmente non avere una fine prevista. Non imporre una scadenza arbitraria a ogni ripetizione e non eliminare e ricreare una serie soltanto perché contiene diverse eccezioni."
+      ]
+    },
+    {
+      "heading": "Se il risultato è inatteso, conserva gli elementi utili alla verifica",
+      "body": [
+        "Confronta il servizio a cui appartiene l’evento con Cloud Calendars nella data esatta interessata. Controlla il nome del calendario, l’occorrenza selezionata, lo schema di ripetizione e le eventuali condizioni di fine consultabili. Titoli simili o un appuntamento copiato separatamente possono sembrare un problema di ricorrenza: stabilisci prima quale evento stai guardando.",
+        "Se l’evento è corretto nel servizio ma diverso nell’app, segnala le versioni dell’app e di iOS, il tipo di calendario, le occorrenze che volevi modificare e le date interessate. Se anche il servizio ha cambiato più date del previsto, contatta l’organizzatore o l’assistenza del servizio prima di apportare altre modifiche estese. Evita di rimuovere account, annullare inviti o eliminare una serie come tentativi di diagnosi."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Annota le date delle occorrenze da modificare e quelle che devono restare invariate.",
+    "Conferma il calendario a cui appartiene l’evento e l’organizzatore o i permessi di modifica.",
+    "Per un’eccezione singola, usa un editor che offra esplicitamente questa scelta.",
+    "Controlla una data precedente, la data modificata e l’occorrenza ordinaria successiva.",
+    "Conserva le eccezioni esistenti e l’invito originale mentre verifichi una discrepanza."
+  ],
+  "faq": [
+    {
+      "q": "Ogni modifica a un evento ricorrente chiede quali occorrenze cambiare?",
+      "a": "No. Non presumere che Cloud Calendars ti chieda di scegliere le occorrenze interessate. Verifica le opzioni prima di salvare; se la scelta manca, usa un editor supportato dal servizio per un’eccezione relativa a una sola data."
+    },
+    {
+      "q": "Ogni evento ricorrente deve avere una data di fine?",
+      "a": "Usa una data di fine quando il programma reale ne prevede una. Gli impegni continuativi non hanno bisogno di una scadenza inventata soltanto per rendere il calendario più ordinato."
+    },
+    {
+      "q": "Cambiare la serie cancellerà le sue eccezioni?",
+      "a": "Non esiste una risposta universale per tutti i servizi e tutte le operazioni di modifica. Annota le eccezioni importanti e controllale dopo il cambiamento; non dare per scontate né la conservazione garantita né la perdita automatica."
+    }
+  ],
+  "sourcesHeading": "Indicazioni ufficiali su ricorrenze e permessi di modifica",
+  "sources": [
+    {"label": "Google: creare e modificare un evento ricorrente su computer", "url": "https://support.google.com/calendar/answer/37115?co=GENIE.Platform%3DDesktop&hl=en"},
+    {"label": "Apple: impostare eventi di un giorno, più giorni o ricorrenti su Mac", "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"},
+    {"label": "Google: collaborare in Calendar e consentire agli invitati di modificare gli eventi", "url": "https://support.google.com/a/users/answer/13293412?hl=en"}
+  ],
+  "seeAlso": ["drag-an-event-to-move-it", "what-guests-can-do-to-your-event"]
+}

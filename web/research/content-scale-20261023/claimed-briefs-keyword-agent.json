@@ -1,0 +1,47 @@
+{
+  "agent": "keyword_intent_map",
+  "date": "2026-10-23",
+  "batch": "apple-batch-01",
+  "claims": [
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "icloud-calendar-restore-sharing-inventory",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "apple-calendar-icbu-archive-restore-checklist",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Apple-specific operational task; source and closest-existing-body review in progress"
+    }
+  ]
+}

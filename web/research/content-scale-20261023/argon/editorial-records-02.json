@@ -1,0 +1,599 @@
+{
+  "generatedAt": "2026-10-23T13:15:00+03:00",
+  "agent": "argon",
+  "batchId": "argon-batch-02",
+  "sourceLanguage": "en-US",
+  "records": {
+    "display-multiple-time-zone-columns-google-calendar-outlook": {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "primaryKeyword": "display multiple time zones google calendar outlook",
+      "intentKey": "timezone:display-multiple-time-zone-columns-google-outlook",
+      "cluster": "C04",
+      "readerOutcome": "Configure 2 or 3 parallel time zone rulers in Google Calendar (Primary + Secondary + World clock) and Outlook (up to 3 time zones in latest Classic Outlook for Microsoft 365, vs up to 2 in Classic Outlook 2019 LTSC / 2016, vs `Add time zone` for two, three, or more zones in New Outlook / Outlook on the web) and understand why the columns appear only in Day and Week views.",
+      "distinctValue": "Includes a verified feature comparison table across Google Calendar and the 3 documented Outlook client tiers plus an illustrative 3-column Monday Day-view grid (`America/Los_Angeles` `UTC-8`, `America/New_York` `UTC-5`, `Europe/London` `UTC+0`) showing exact row alignment and non-overlapping hours.",
+      "existingOverlapSlug": "time-zones-on-shared-calendars",
+      "closestNeighbor": "viewer-display-time-zone-versus-event-time-zone-calendar",
+      "boundary": "Covers only configuring multiple visible time zone columns and the World clock sidebar in Google Calendar and Outlook; excludes event-level TZID assignment, travel Time Zone Override on iPhone, and half-hour/45-minute offset math.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "sync",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-on-shared-calendars",
+        "a-week-view-that-fits-a-week",
+        "two-weeks-at-a-time"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on Primary and Secondary time zones (`Show secondary time zone`), World clock sidebar, and the note that secondary time zones do not appear in Month, Year, or Schedule views."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Support documentation distinguishing latest Classic Outlook for Microsoft 365 (up to 3 time zones: Primary, Second, Third + `Swap Time Zones`) from older Classic Outlook 2019 LTSC / 2016 (up to 2 time zones), and New Outlook / Outlook.com / Outlook on the web (`Add time zone` under `Other time zones`, supporting two, three, or more zones)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "viewer-display-time-zone-versus-event-time-zone-calendar": {
+      "slug": "viewer-display-time-zone-versus-event-time-zone-calendar",
+      "primaryKeyword": "calendar display time zone vs event time zone",
+      "intentKey": "timezone:viewer-display-vs-calendar-vs-event-time-zone-hierarchy",
+      "cluster": "C04",
+      "readerOutcome": "Distinguish the three independent time zone settings in Google Calendar and Microsoft Outlook (All-calendars `Primary time zone`, One calendar's `Time zone` with its owner-only lock, and One event's time zone / Outlook organizer reference zone) plus how Google Calendar Tasks adapt (`9 AM MT` -> `11 AM ET`).",
+      "distinctValue": "Provides a 3-setting administrative & permission matrix plus an illustrative shared-calendar audit (`America/Los_Angeles` owner vs `America/Denver` non-owner editor vs `America/New_York` viewer) contrasting a `14:00 PT` meeting (`22:00 UTC`), a `09:00` Google Calendar Task (`9 AM MT -> 11 AM ET`), and an all-day date-only holiday (`Nov 26, 2026`).",
+      "existingOverlapSlug": "time-zones-on-shared-calendars",
+      "closestNeighbor": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "boundary": "Covers only Google Calendar's 3-setting hierarchy (`All calendars` vs `One calendar` owner-only setting vs `One event`), Outlook's organizer reference zone conversion (`2:00 PM Pacific -> 3:00 PM Mountain = 10:00 PM UTC`), and Google Calendar Tasks adapting when the Calendar time zone changes; excludes flight booking start/end TZIDs, Apple iPhone Time Zone Override, and RFC 5545 floating/UTC/TZID protocol syntax.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "sync",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-on-shared-calendars",
+        "time-zones-and-the-flight-you-booked",
+        "apple-calendar-sync-delays"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help confirming `All calendars` (`Settings > General > Time zone`) vs `One calendar` (`Settings for my calendars > Time zone`, including the non-owner lock: 'If you are not the owner, you can't change the time zone of a calendar') vs `One event`, and confirming that Google Calendar Tasks adapt to the new time zone (`9 AM MT` becomes `11 AM ET`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Support explanation of how Outlook stores the organizer's time zone as the reference point and converts `2:00 PM Pacific` (`10:00 PM UTC`) to `3:00 PM Mountain` for the recipient."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "recurring-calendar-event-anchored-in-utc-versus-local-tzid": {
+      "slug": "recurring-calendar-event-anchored-in-utc-versus-local-tzid",
+      "primaryKeyword": "recurring event anchored in utc vs local time zone",
+      "intentKey": "timezone:recurring-event-utc-z-versus-local-tzid-anchor",
+      "cluster": "C04",
+      "readerOutcome": "Choose between anchoring a recurring calendar series in absolute UTC (`DTSTART:20260302T140000Z`, RFC 5545 Form #2) versus a named IANA `TZID` (`DTSTART;TZID=America/New_York:20260302T090000`, Form #3) and predict how each shifts across spring and autumn DST boundaries.",
+      "distinctValue": "Includes a side-by-side 4-date comparison table (`2026-03-02`, `2026-03-09`, `2026-03-30`, `2026-11-02`) contrasting Series A (anchored at `14:00Z`) against Series B (anchored at `09:00 America/New_York`) across New York, London, Phoenix (`UTC-7`), and Tokyo (`UTC+9`).",
+      "existingOverlapSlug": "time-zones-on-shared-calendars",
+      "closestNeighbor": "viewer-display-time-zone-versus-event-time-zone-calendar",
+      "boundary": "Covers only the recurrence anchor difference between absolute UTC (`Z`) and local `TZID` wall time across DST transitions; excludes US-UK 3-week mismatch windows, Arizona/Hawaii regional guides, and `.ics` import repair syntax.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "sync",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-on-shared-calendars",
+        "recurring-events-without-the-mess",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.5 (`DATE-TIME` Form #2 UTC time with `Z` suffix vs Form #3 Local Time and Time Zone Reference with `TZID`), Section 3.2.19 (`TZID`), and Section 3.8.5.3 (`RRULE`, including UTC `UNTIL` requirement when `DTSTART` uses `TZID` or UTC)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official documentation noting that Google Calendar uses Coordinated Universal Time (UTC) internally to help avoid Daylight Saving Time issues while converting events to viewer time zones."
+        },
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory Daylight Saving Time dates (`second Sunday in March` and `first Sunday in November`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "non-integer-30-and-45-minute-utc-offset-calendar-scheduling": {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "primaryKeyword": "half hour 45 minute time zone offset calendar",
+      "intentKey": "timezone:fractional-30-45-minute-utc-offset-alignment",
+      "cluster": "C04",
+      "readerOutcome": "Schedule meetings across `:30` and `:45` fractional UTC offsets (such as India `UTC+05:30`, Newfoundland `UTC-03:30`/`-02:30`, Adelaide/Darwin `UTC+09:30`/`+10:30`, and Nepal `UTC+05:45`) without half-hour grid misalignment or false out-of-hours warnings.",
+      "distinctValue": "Provides a reference table of non-integer IANA time zones (including RFC 5545 `§3.3.14` `UTC-OFFSET` strings like `+0530` and `+0545`) and an illustrative 4-hub working-hours overlap audit (`London`, `Bengaluru`, `Kathmandu`, `Adelaide`) proving why `:15`/`:45` start minutes are required for Nepal.",
+      "existingOverlapSlug": "time-zones-on-shared-calendars",
+      "closestNeighbor": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "boundary": "Covers only non-integer (`:30` and `:45`) UTC offset arithmetic, calendar grid slot granularity, and working-hours overlap calculation; excludes whole-hour DST transitions and multi-column UI setup.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "sync",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-on-shared-calendars",
+        "a-week-view-that-fits-a-week",
+        "planning-a-week-that-actually-works"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.14 (`UTC-OFFSET` value type storing signed `HHMM` or `HHMMSS` offsets inside `VTIMEZONE`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read IANA Time Zone Database documentation for canonical regional zone identifiers (`Asia/Kolkata`, `Asia/Kathmandu`, `Australia/Adelaide`, `America/St_Johns`, `Pacific/Chatham`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on time zones and World clock display."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on setting Working hours & location and out-of-hours scheduling warnings."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "iso-week-1-and-week-53-calendar-boundary-dates": {
+      "slug": "iso-week-1-and-week-53-calendar-boundary-dates",
+      "primaryKeyword": "iso week 1 week 53 calendar dates",
+      "intentKey": "planning:iso-week-1-week-53-four-day-thursday-rule-boundaries",
+      "cluster": "C03",
+      "readerOutcome": "Determine exact ISO Week 1 and Week 53 boundary dates using the RFC 5545 `§3.3.10` four-day / first-Thursday rule (`BYWEEKNO=1` to `53`) so year-end schedules across 2025–2028 do not lose or duplicate a week.",
+      "distinctValue": "Includes a verified 7-case January 1 day-of-week truth table plus a 4-year daily boundary audit table (`2025` through `2028`) proving why `2026` has `53` ISO weeks (`2026-W53` = `Dec 28, 2026 – Jan 3, 2027`) while `2025`, `2027`, and `2028` have `52`.",
+      "existingOverlapSlug": "the-year-in-one-screen",
+      "closestNeighbor": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "boundary": "Covers only ISO 8601 / RFC 5545 Week 1 and Week 53 boundary date arithmetic and `BYWEEKNO` rules; excludes Sunday- vs Monday-start UI settings and 4-4-5 retail quarter cycles.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "the-year-in-one-screen",
+        "a-week-view-that-fits-a-week",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`BYWEEKNO` rule part valid for `YEARLY` rules, defining week number `1` as the first week with at least 4 days in the new year, valid range `1` to `53` or `-53` to `-1`, and `WKST` default `MO`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support iOS 26 documentation on turning on `Week Numbers` in `Settings > Apps > Calendar` on iPhone."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch": {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "primaryKeyword": "calendar week numbers wrong sunday vs monday start",
+      "intentKey": "planning:week-number-mismatch-sunday-start-vs-iso-monday-wkst",
+      "cluster": "C03",
+      "readerOutcome": "Diagnose and fix week-number and biweekly recurrence mismatches caused by mixing Sunday-start (`WKST=SU`) and Monday-start (`WKST=MO`) settings in Apple Calendar on iPhone and RFC 5545 recurrence evaluation.",
+      "distinctValue": "Includes a day-by-day 15-day audit table (`Dec 28, 2025 – Jan 11, 2026`) and an RFC 5545 `INTERVAL=2` biweekly boundary trace (`WKST=MO` vs `WKST=SU` on a Tuesday-and-Sunday rule) showing how a Sunday start moves Sunday occurrences by a full week.",
+      "existingOverlapSlug": "a-week-view-that-fits-a-week",
+      "closestNeighbor": "iso-week-1-and-week-53-calendar-boundary-dates",
+      "boundary": "Covers only the conflict between week-start display (`Sunday` vs `Monday` via `Start Week On` on iPhone) and week-numbering rules plus RFC 5545 `WKST` effects; excludes general Week-view layout design and year-end Week 53 existence math.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "troubleshoot",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "a-week-view-that-fits-a-week",
+        "the-year-in-one-screen",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`WKST` rule part specifying day on which the workweek starts, default `MO`, and its impact on `WEEKLY` rules with `INTERVAL` > 1 and `BYDAY` as well as `YEARLY` rules with `BYWEEKNO`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/en-gb/guide/iphone/iphc37be2016/26/ios/26",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support iOS 26 documentation for `Week Numbers` and `Start Week On` settings in `Settings > Apps > Calendar` on iPhone."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date": {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "primaryKeyword": "repeat on last weekday of month vs 31st calendar",
+      "intentKey": "planning:monthly-last-weekday-bysetpos-vs-fixed-bymonthday-31",
+      "cluster": "C03",
+      "readerOutcome": "Select the right month-end recurrence pattern across `BYMONTHDAY=31` (which skips 5 months a year), `BYMONTHDAY=-1` (last calendar day, which lands on a weekend in 4 months of 2026: Jan 31, Feb 28, May 31, Oct 31), `BYDAY=-1FR` (last Friday), and `BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1` (last Monday–Friday weekday, excluding weekends only), and know which UI editors support each rule.",
+      "distinctValue": "Provides a complete 12-month 2026 date resolution table (`January` through `December 2026`) comparing all four rules side by side (highlighting all 4 weekend month-ends in 2026: Jan 31, Feb 28, May 31, Oct 31), plus a verified UI support matrix across Apple Calendar on Mac, Google Calendar, Outlook, and `.ics` import.",
+      "existingOverlapSlug": "recurring-events-without-the-mess",
+      "closestNeighbor": "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math",
+      "boundary": "Covers only monthly recurrence rules comparing fixed dates (`31st`), negative month days (`-1`), ordinal last weekdays (`-1FR`), and last business day (`BYSETPOS=-1`); excludes general weekly/yearly recurring cleanup and 4-4-5 retail calendars.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "recurring-events-without-the-mess",
+        "month-view-on-a-bigger-screen",
+        "the-year-in-one-screen"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`BYMONTHDAY` positive/negative integers `-31` to `31`, `BYDAY` with `-1FR` ordinal prefix, `BYSETPOS=-1` with `BYDAY=MO,TU,WE,TH,FR`, and the standard rule skipping months where `BYMONTHDAY=31` does not exist)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/icl1018/mac",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation for Calendar on Mac custom monthly repeats (`Each` day number vs `On the...` `Last Friday` or `Last Weekday`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Support documentation on Outlook monthly recurrence options (specific day of month vs first/second/last weekday)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar recurring event documentation."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math": {
+      "slug": "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math",
+      "primaryKeyword": "4 4 5 calendar 53 week year schedule",
+      "intentKey": "planning:4-4-5-calendar-91-day-quarter-cycle-and-53-week-math",
+      "cluster": "C03",
+      "readerOutcome": "Map a `4-4-5` (`28 + 28 + 35 = 91-day`) quarterly planning cycle onto a calendar using 13-week (`FREQ=WEEKLY;INTERVAL=13`) or 91-day (`FREQ=DAILY;INTERVAL=91`) rules, and calculate why the `364-day` year accumulates a `53rd` week (`4-4-6`) every 5 to 6 years.",
+      "distinctValue": "Includes a complete 12-period 2026 `4-4-5` vs `4-5-4` vs `5-4-4` calendar date table (with the `53rd` week `Dec 27, 2026 – Jan 2, 2027` making `Q4` `98` days) and a 6-year drift ledger (`1.25` days/year accumulation).",
+      "existingOverlapSlug": "the-year-in-one-screen",
+      "closestNeighbor": "iso-week-1-and-week-53-calendar-boundary-dates",
+      "boundary": "Covers only calendar scheduling arithmetic for 4-4-5 / 4-5-4 / 5-4-4 13-week quarters, 91-day recurrence rules, and the 364-day vs 365.2425-day 53rd-week adjustment; strictly excludes tax, accounting, GAAP/IFRS, or legal compliance advice.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "the-year-in-one-screen",
+        "month-view-on-a-bigger-screen",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`RECUR`: `FREQ=WEEKLY;INTERVAL=13`, `FREQ=DAILY;INTERVAL=91`, `COUNT`, and `UNTIL`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar custom recurrence documentation (`Repeat every X weeks/days` and `Ends On / After`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed; strictly calendar arithmetic with zero accounting/tax advice."
+      }
+    },
+    "google-calendar-task-deadline-versus-scheduled-time-block": {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "primaryKeyword": "task deadline vs scheduled work block google calendar",
+      "intentKey": "planning:google-calendar-task-deadline-vs-scheduled-block-vs-focus-time",
+      "cluster": "C03",
+      "readerOutcome": "Understand the exact difference in Google Calendar between a Task `Start date and time`, a Task `Deadline` (which renders in the `All day` banner and triggers a `9:00 AM` alert without blocking time), a Task in Calendar (`Free` vs `Busy`), and a `Focus time` or `VEVENT` work block.",
+      "distinctValue": "Provides a 5-object behavior matrix across Google Calendar and RFC 5545 (`VTODO` `DUE` vs `VEVENT` `TRANSP`) plus an illustrative 4-day deliverable schedule (`Nov 9–12, 2026`) pairing `240` minutes of `Busy` execution blocks with a date-only `Deadline` marker.",
+      "existingOverlapSlug": "calendar-blocking-focused-work",
+      "closestNeighbor": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "boundary": "Covers only the mechanical and availability (`Free`/`Busy`) difference between a task deadline (`All day` / `VTODO DUE`), a scheduled task (`Start date and time`), and a calendar work block (`Focus time` / `VEVENT`); excludes multi-week backward project date arithmetic.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "calendar-blocking-focused-work",
+        "planning-a-week-that-actually-works",
+        "Shared-calendar-for-the-whole-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/9901136?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on Tasks in Calendar: `Start date and time` vs `Deadline` (appears in the `All day` section at the top of the calendar, sends notification at `9 AM` local time, cannot be set on repeating tasks) and `Advanced settings` for work/school accounts (`Free`/`Busy`, `Do not disturb`, `Automatically decline meetings`, and the restriction that recurring tasks cannot have an end time)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/11190973?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on Focus time (available on work/school plans, created in Day or Week view, headphones icon, auto-decline meetings, and Chat notification muting for blocks `<24 hours`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.6.1 (`VEVENT`), Section 3.6.2 (`VTODO`), Section 3.8.2.3 (`DUE`), and Section 3.8.2.7 (`TRANSP`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "backward-planning-project-deadlines-across-weekends-and-holidays": {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "primaryKeyword": "backward planning calendar business days vs calendar days",
+      "intentKey": "planning:backward-schedule-arithmetic-across-weekends-and-holidays",
+      "cluster": "C03",
+      "readerOutcome": "Convert work-day durations into real calendar start dates by stepping backward across weekends (`SA,SU`) and public holidays (`EXDATE`), and see why naive calendar-day subtraction (`D - B`) starts phases up to a week too late.",
+      "distinctValue": "Includes a 4-phase, 15-business-day backward schedule audit from Friday `2026-12-04` across US Thanksgiving (`Nov 26–27, 2026`) showing a `6-calendar-day` gap between naive subtraction (`Nov 19`) and true business-day backward counting (`Nov 13`).",
+      "existingOverlapSlug": "planning-a-week-that-actually-works",
+      "closestNeighbor": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "boundary": "Covers only backward date arithmetic from a fixed target date across non-working weekends and holiday exceptions; excludes single-day time blocking, Google Tasks `Deadline` UI toggles, and travel buffers.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "planning-a-week-that-actually-works",
+        "two-weeks-at-a-time",
+        "month-view-on-a-bigger-screen"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`BYDAY=MO,TU,WE,TH,FR`) and Section 3.8.5.1 (`EXDATE` exception date-times)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/9901136?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on scheduling Tasks with start dates/times vs Deadlines."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Support documentation on Outlook Daily recurrence (`Every weekday`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "calendar-travel-time-versus-separate-buffer-event-blocks": {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "primaryKeyword": "calendar buffer time between meetings vs travel time",
+      "intentKey": "planning:apple-travel-time-vs-appointment-schedule-buffer-vs-separate-vevent",
+      "cluster": "C03",
+      "readerOutcome": "Compare Apple Calendar's native `Travel Time` metadata, Google Calendar Appointment Schedule `Buffer time`, and standalone `Busy` (`TRANSP:OPAQUE`) buffer events so commute windows and post-meeting transitions are never double-booked across platforms.",
+      "distinctValue": "Provides a 3-mechanism cross-platform busy-status matrix plus an illustrative client-visit timeline (`13:15–15:30`) showing why post-meeting return transit (`15:00–15:30`) requires a separate `OPAQUE` event because Apple `Travel Time` attaches only before `DTSTART`.",
+      "existingOverlapSlug": "calendar-blocking-focused-work",
+      "closestNeighbor": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "boundary": "Covers only the technical and availability differences between Apple Calendar `Travel Time`, Google Appointment Schedule `Buffer time`, and standalone `VEVENT` buffer blocks; excludes deep-work focus blocks and split-shift work schedules.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "calendar-blocking-focused-work",
+        "planning-a-week-that-actually-works",
+        "Shared-calendar-for-the-whole-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation for Calendar on Mac on adding `Location` and `Travel Time` (calculating travel duration from starting location before the event and supporting `Time to Leave` alerts)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/10729749?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on creating an Appointment Schedule (`Booked appointment settings > Buffer time` and `Calendars checked for availability`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.6.1 (`VEVENT`), Section 3.6.4 (`VFREEBUSY`), and Section 3.8.2.7 (`TRANSP:OPAQUE` vs `TRANSP:TRANSPARENT`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "alternating-a-b-week-school-timetable-calendar-vacation-exceptions": {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "primaryKeyword": "alternating a b week school schedule calendar holidays",
+      "intentKey": "planning:school-a-b-biweekly-timetable-odd-week-vacation-reset",
+      "cluster": "C03",
+      "readerOutcome": "Set up a two-week alternating (`Week A` / `Week B`) school or university timetable using `FREQ=WEEKLY;INTERVAL=2` rules, diagnose why an odd-week school break inverts every class after the break, and apply the clean `This and following events` split fix.",
+      "distinctValue": "Includes a 10-week autumn semester audit table (`Weeks 1–10`, `Sep 7 – Nov 13, 2026`) proving that a 1-week break (`Oct 12–16`) inverts `INTERVAL=2` parity from Week 7 onward while a 2-week break preserves parity, plus the exact `UNTIL` + new `DTSTART` split method.",
+      "existingOverlapSlug": "school-and-activities-in-one-view",
+      "closestNeighbor": "recurring-events-without-the-mess",
+      "boundary": "Covers only alternating Week A / Week B academic timetables (`FREQ=WEEKLY;INTERVAL=2`) and how odd-week vs even-week school vacations affect cycle parity; excludes industrial Pitman 2-2-3 shift work and family activity color-coding.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "school-and-activities-in-one-view",
+        "recurring-events-without-the-mess",
+        "two-weeks-at-a-time"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`FREQ=WEEKLY;INTERVAL=2;BYDAY=...`), Section 3.8.5.1 (`EXDATE` removing single occurrences without shifting `INTERVAL=2` parity), and Section 3.8.5.3 (`RRULE`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official help on editing or deleting recurring events (`This event`, `This and following events`, `All events`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Support documentation on Outlook Weekly recurrence (`Recur every 2 weeks on:`)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    }
+  }
+}

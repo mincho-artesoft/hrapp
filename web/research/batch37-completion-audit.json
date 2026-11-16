@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-22T04:42:16.270953+00:00",
+  "previousGoalTurn": "Cloud progress through reviewed draft integration and terminal build; intervening LingoVela verification did not advance this goal.",
+  "currentTurn": "progress — published and verified reviewed Apple Watch canonical EN/BG",
+  "published": {
+    "newCanonical": "calendar-on-apple-watch",
+    "locales": [
+      "en-US",
+      "bg"
+    ],
+    "relatedOnlyBacklinks": 3,
+    "sitemapUrls": 521,
+    "publicArtifactsMatchBuild": 525,
+    "cloudfrontInvalidation": "I962JMOR5LXODPG3U99K9YWQ16",
+    "cloudfrontStatus": "Completed"
+  },
+  "requirements": [
+    {
+      "requirement": "CompetitorGoogle/ChatGPTkeywordandtaskresearch",
+      "status": "partial",
+      "evidence": "batch37-watch/evidence.json",
+      "limit": "Fresh public primary discovery plus full existing guide comparison; not exhaustive keywords, rank, volume or ChatGPT citation evidence."
+    },
+    {
+      "requirement": "Excellentoriginalarticlesandlocalizations",
+      "status": "progress",
+      "evidence": "batch37-static-qa.json",
+      "limit": "New EN/BG complete independently reviewed guide; existing 56 EN bodies preserved. Not all 458 localized articles approved."
+    },
+    {
+      "requirement": "Website/ASCoptimizationalignment",
+      "status": "progress withsavedASCevidence",
+      "evidence": "batch37-appclip/audit.json",
+      "limit": "Saved ASC text compared with preview/add/identity boundaries; no material defect found, no new live ASC read/write. Released binary correspondence remains unproved."
+    },
+    {
+      "requirement": "Actualnewimages/videosintegration",
+      "status": "incomplete",
+      "evidence": "batch28-readiness/media-audit.json",
+      "limit": "Noverifiednewgeneratingtask/outputmanifestyet; existingmediadidnotchange."
+    },
+    {
+      "requirement": "MeasuredmostdiscoverableGoogle/ChatGPTresult",
+      "status": "unproven",
+      "evidence": "measurement/gsc-baseline-20261021.json",
+      "limit": "Historicalcalendariocloudcontextnotcausalbeforeafterproof;noequalelapsedpostwindow."
+    }
+  ],
+  "goalComplete": false,
+  "preserved": "Prior 56 EN bodies, all prior global facts, price/legal/media/robots/component/home fields preserved; only three related lists extended. No ASC/native/backend/provider/customer writes."
+}

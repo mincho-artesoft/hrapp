@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "batch": "competitor-discovery-03",
+  "inventoryScope": {
+    "englishArticleMetadataScreened": 45,
+    "inventory": "research/content-inventory-20261021.json",
+    "priorFullBodyAudit": "research/competitors/existing-canonical-review-20261021-batch02.json",
+    "priorFullBodiesReviewed": 31,
+    "freshFullCloudBodiesReadThisBatch": 0,
+    "gapQualification": "New-task candidates have no matching dedicated title/description in the 45-article inventory and were not substantively answered by the prior 31-body audit. Remaining 14 bodies and non-article pages were not exhaustively audited; candidates require final deduplication before authoring."
+  },
+  "prioritizedGaps": [
+    "notifications",
+    "search",
+    "export",
+    "privacy"
+  ],
+  "intentMappings": [
+    {
+      "id": "notifications",
+      "candidateQueries": [
+        "calendar notifications not working iPhone",
+        "duplicate calendar alerts",
+        "mute alerts for one calendar"
+      ],
+      "existingCanonicals": [
+        "/articles/a-countdown-to-your-next-meeting/",
+        "/articles/lock-screen-without-unlocking/"
+      ],
+      "sourceIds": [
+        "fantastical-notifications",
+        "timepage-alerts"
+      ],
+      "decision": "new-task-candidate",
+      "originalUsefulTreatment": "Create one diagnostic decision tree covering absent alert versus silent notification versus duplicate delivery; distinguish event reminders, change notifications and time-to-leave notices.",
+      "verificationGate": "Verify actual app alert controls, Apple permission/Focus behavior and provider alert storage. Never advise blanket disabling without identifying source."
+    },
+    {
+      "id": "search",
+      "candidateQueries": [
+        "find old calendar events iPhone",
+        "calendar search missing events"
+      ],
+      "existingCanonicals": [
+        "/articles/what-calendar-sync-actually-does/",
+        "/articles/a-list-for-people-who-dislike-grids/"
+      ],
+      "sourceIds": [
+        "readdle-search"
+      ],
+      "decision": "new-task-candidate",
+      "originalUsefulTreatment": "Find one known historical event in the provider, then app calendar visibility and search; explain date range, keyword matching and provider history as separate checks.",
+      "verificationGate": "Confirm Cloud search UI, searchable fields and provider history limits. No invented retention horizon."
+    },
+    {
+      "id": "export",
+      "candidateQueries": [
+        "export calendar from iPhone",
+        "calendar ICS versus CSV",
+        "share printable calendar schedule"
+      ],
+      "existingCanonicals": [
+        "/articles/sharing-one-event-not-your-calendar/",
+        "/articles/the-secret-address-of-a-google-calendar/"
+      ],
+      "sourceIds": [
+        "readdle-export"
+      ],
+      "decision": "new-task-candidate",
+      "originalUsefulTreatment": "Explain a schedule image/PDF, structured event export, subscription URL and backup as different outputs. Choose output based on recipient task.",
+      "verificationGate": "Confirm formats and available Cloud/provider paths; Readdle source does not establish its export file format. BusyCal CSV is index discovery only."
+    },
+    {
+      "id": "privacy",
+      "candidateQueries": [
+        "does a calendar app store my events",
+        "calendar app data privacy"
+      ],
+      "existingCanonicals": [
+        "/articles/who-can-see-what-in-google-calendar/",
+        "/articles/taking-back-a-calendar-you-shared/"
+      ],
+      "sourceIds": [
+        "fantastical-privacy"
+      ],
+      "decision": "new-task-candidate-with-policy-audit",
+      "originalUsefulTreatment": "Explain actual account connection, event storage, sharing recipient, weather/location and support data paths using a product-specific table.",
+      "verificationGate": "Existing legal/privacy pages outside article inventory not audited. Reconcile with actual policy, implementation and ASC; avoid broad all-local or no-data claims."
+    },
+    {
+      "id": "recurrence",
+      "candidateQueries": [
+        "recurring event versus recurring task",
+        "edit one recurring event or whole series"
+      ],
+      "existingCanonicals": [
+        "/articles/recurring-events-without-the-mess/"
+      ],
+      "sourceIds": [
+        "busycal-recurrence"
+      ],
+      "decision": "expand-existing",
+      "originalUsefulTreatment": "Use one series with a moved occurrence and show the consequence of changing just that date versus the series; separate task completion semantics only if Cloud supports tasks.",
+      "verificationGate": "Provider exception behavior and actual edit choices require verification. No new near-duplicate recurrence article."
+    },
+    {
+      "id": "timezones",
+      "candidateQueries": [
+        "event time zone versus calendar time zone",
+        "floating calendar event",
+        "calendar time changes when travelling"
+      ],
+      "existingCanonicals": [
+        "/articles/time-zones-and-the-flight-you-booked/",
+        "/articles/what-an-all-day-event-really-means/"
+      ],
+      "sourceIds": [
+        "busycal-timezones"
+      ],
+      "decision": "expand-existing",
+      "originalUsefulTreatment": "Use explicit departure and destination zones with dated offsets; distinguish stored instant, display zone, floating wall time and all-day date.",
+      "verificationGate": "BusyCal page is old; verify current primary provider rules and Cloud controls before using them."
+    },
+    {
+      "id": "widgets",
+      "candidateQueries": [
+        "calendar widget blank iPhone",
+        "widget missing calendar events",
+        "choose calendars in widget"
+      ],
+      "existingCanonicals": [
+        "/articles/the-widget-that-shows-what-is-next/",
+        "/articles/choosing-a-widget-size/",
+        "/articles/lock-screen-without-unlocking/"
+      ],
+      "sourceIds": [
+        "busycal-widgets",
+        "fantastical-widgets"
+      ],
+      "decision": "expand-existing-first",
+      "originalUsefulTreatment": "Add compact blank/missing-event diagnostic to existing next-event article; compare selected calendars and visible date window with in-app event before configuration/reset steps.",
+      "verificationGate": "Confirm Cloud widget settings and iOS behavior. Do not promise continuous or immediate refresh or copy competitor global/per-widget selection rules."
+    },
+    {
+      "id": "calendar-permissions",
+      "candidateQueries": [
+        "calendar app permission versus shared calendar access",
+        "shared calendar missing on iPhone"
+      ],
+      "existingCanonicals": [
+        "/articles/why-a-shared-calendar-does-not-appear/",
+        "/articles/google-calendars-that-never-reach-your-iphone/",
+        "/articles/who-can-see-what-in-google-calendar/"
+      ],
+      "sourceIds": [],
+      "decision": "retain-existing-canonicals",
+      "originalUsefulTreatment": "Keep app/device permission, provider account identity and owner sharing permission as separate diagnostic layers.",
+      "verificationGate": "No new full permission-document body in this batch; prior Google correction evidence is research/batch02-sharing-correction.json. Do not claim this competitor batch independently verifies permission rules."
+    },
+    {
+      "id": "calendar-filters",
+      "candidateQueries": [
+        "show work calendars only",
+        "calendar groups for work and personal"
+      ],
+      "existingCanonicals": [
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/icloud-google-and-outlook-in-one-view/"
+      ],
+      "sourceIds": [
+        "busycal-filters"
+      ],
+      "decision": "expand-existing-if-supported",
+      "originalUsefulTreatment": "Explain selection visibility separately from deleting, disconnecting and alert controls, using actual Cloud UI.",
+      "verificationGate": "Mac smart-filter behavior is not evidence of Cloud saved filters or automation."
+    }
+  ],
+  "recommendation": "Prioritize one substantive notification diagnostic, then search/export if product verification supports actionable steps. Expand existing recurrence/timezone/widget canonicals. Privacy requires legal-page and implementation reconciliation. No articles or product claims were authored in this research batch.",
+  "noDemandClaim": "Candidate wording is inferred from primary publisher tasks, not measured rankings, search volume or ChatGPT citations."
+}

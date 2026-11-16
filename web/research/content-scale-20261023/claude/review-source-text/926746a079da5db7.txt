@@ -1,0 +1,32 @@
+Delete an appointment or a meeting
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Get help with Copilot
+Can you show me how to appointment or a meeting in Outlook?
+Can you explain meeting instances from recurring meetings?
+How do I delete all future meetings in a series if I're?
+There are times when you'll want to delete an appointment or meeting (or a series of them) from your calendar, such as when a project comes to a close and there is no reason to meet any longer.
+In the navigation bar at the bottom of the window or on the left margin, click
+Calendar
+.
+For appointments or meetings you didn't organize, right-click and select
+Delete
+.
+For recurring appointments or meetings, you can choose to delete the
+Occurrence
+or the
+Series
+.
+For meetings you organized, right-click the meeting and select
+Cancel
+.
+For recurring meetings you organized, you can choose to cancel the
+Occurrence
+or the
+Series
+.
+You can also edit the meeting series to change the end date and preserve all past meetings in the series. For more information, see
+Cancel all future meetings in a series
+.

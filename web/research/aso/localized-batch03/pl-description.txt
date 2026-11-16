@@ -1,0 +1,24 @@
+Połącz kalendarze i pogodę na iPhonie i iPadzie. W Cloud Calendars możesz przeglądać plany zawodowe i prywatne podczas organizowania dnia.
+
+KALENDARZE I WIDOKI
+Korzystaj z kalendarzy iCloud i połącz Kalendarz Google. Premium dodaje obsługę kalendarzy Microsoft. Wybierz widok dnia, tygodnia, miesiąca, roku lub listy.
+
+Możesz też utworzyć lokalny kalendarz na urządzeniu bez konta Cloud Calendars. Łączenie usług i udostępnianie mogą wymagać zalogowania.
+
+POGODA I WIDŻETY
+Sprawdzaj prognozę podczas planowania. Widżety na ekran początkowy są dostępne w małym, średnim i dużym rozmiarze. Dostępność prognoz zależy od lokalizacji i dostawcy danych pogodowych.
+
+SPOTKANIA I UDOSTĘPNIANIE
+Korzystaj z Google Meet z Kalendarzem Google. Premium obsługuje także Microsoft Teams. Udostępniaj wydarzenia i kalendarze oraz wysyłaj zaproszenia przez e-mail, kod QR lub App Clip. Uprawnienia zależą od kalendarza i rodzaju zaproszenia.
+
+WYBIERZ PLAN
+Bezpłatny Base obejmuje synchronizację z Kalendarzem Google, Google Meet, różne widoki kalendarza, pogodę i widżety.
+Advanced zawiera funkcje Base i usuwa reklamy.
+Premium zawiera Advanced oraz dodaje kalendarze Microsoft i Microsoft Teams.
+
+Przed zakupem sprawdź aktualną cenę lokalną i okres rozliczeniowy w aplikacji lub App Store.
+
+Aplikację można pobrać bezpłatnie. Opcjonalne subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem bieżącego okresu. Subskrypcją możesz zarządzać lub ją anulować w ustawieniach konta App Store.
+
+Prywatność: https://www.cloud-calendars.com/privacy-policy
+Warunki użytkowania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

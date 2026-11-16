@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-22",
+  "nativeSourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "rootReadRanges": [
+        [
+          96,
+          133
+        ],
+        [
+          493,
+          530
+        ],
+        [
+          574,
+          600
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "rootReadRanges": [
+        [
+          1664,
+          1710
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/cloud-calendars/src/app/core/weather.service.ts",
+      "sha256": "bf0d2f7977d30f7681ae4ffe4430532c121dab8621157627492ca32677938c0d",
+      "rootReadRanges": [
+        [
+          215,
+          244
+        ]
+      ]
+    }
+  ],
+  "sourceScope": "Current code inspection only, no native edits/builds or released-runtime verification.",
+  "primarySourceReads": [
+    {
+      "url": "https://developer.apple.com/weatherkit/",
+      "range": "133-157; selected-region products, data fields, no blanket all-world/all-hours promise."
+    },
+    {
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean",
+      "range": "267-294; place/time/variable semantics, provider specific, not WeatherKit threshold transfer."
+    },
+    {
+      "url": "https://open-meteo.com/en/docs",
+      "range": "13-79,164-194; configurable forecast period, current website request14days independent of app."
+    }
+  ],
+  "editorialChanges": [
+    "Replaced unsupported majority-of-users/certainty rhetoric with specific planning workflows.",
+    "WeatherKit daily implementation up to10returned days, independent hourlycoverage and app-vs-web14day request.",
+    "Forecast selection creates a draft with date/timezone/defaultcalendar/1hduration for review, not a booking or guest agreement.",
+    "No universal drywindow/decisionpercentage/checkinterval or certainty claim."
+  ],
+  "scopeLimits": "3ENcanonicals only; older translated bodies still need substantive parity audit. 21description fixes are metadata only. Own localized prose not independent native-speaker certification."
+}

@@ -1,0 +1,32 @@
+{
+  "newGuides": [
+    {
+      "slug": "fantastical-readdle-calendar366-iphone-comparison",
+      "indexable": true,
+      "bytes": 59431
+    },
+    {
+      "slug": "iphone-calendar-language-alternate-calendar-settings",
+      "indexable": true,
+      "bytes": 57479
+    },
+    {
+      "slug": "share-assign-reminders-iphone-calendar-difference",
+      "indexable": true,
+      "bytes": 57378
+    },
+    {
+      "slug": "can-others-see-google-calendar-tasks",
+      "indexable": true,
+      "bytes": 56667
+    }
+  ],
+  "englishArticles": 69,
+  "sitemapUrls": 103,
+  "heldTranslatedArticlesAndHubs": 436,
+  "existingExpandedGuides": [
+    "cozi-timetree-family-calendar-iphone-android",
+    "recurring-events-without-the-mess"
+  ],
+  "privacySourceSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4"
+}

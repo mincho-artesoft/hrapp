@@ -1,0 +1,1228 @@
+{
+  "date": "2026-10-22",
+  "scope": "Current complete English body review of10requestedslugs only, filling review provenance gaps rather than treating unknown status as error.",
+  "readMethod": "Coverage mapping whole-file output truncated; used parsed per-slug file mapping only. Actual complete guide bodies were read in four untruncated outputs of3,3,2,2objects. No missing paragraphs counted as reviewed.",
+  "counts": {
+    "fullCurrentObjects": 10,
+    "passes": 9,
+    "targetedCorrectionRecommendations": 1
+  },
+  "hashMethod": "rawObjectSHA256 is exact TypeScript initializer object literal getText(AST), excluding preceding comments/whitespace. rawModuleSHA256 hashes entire source file. JSON hash uses UTF8JSON.stringify(parsed object), original property order. Full current snapshots embedded.",
+  "reviews": [
+    {
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "rawObjectSha256": "251c8b8f7e04e436fc8a7828f042bc509780fbba7a9de293e8a8b9822bff899f",
+      "jsonStringifySha256": "3c28e7d15dd525c206d50354e99b48296c7554d03b203c9800664e7fd5872266",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Cloud Calendars or OneCal? Compare iPhone views and calendar syncing",
+        "short": "Cloud Calendars and OneCal by workflow",
+        "description": "Compare Cloud Calendars and OneCal for iPhone: combined views, calendar copies, mobile controls and plans. Choose by the task you need to complete.",
+        "lede": "Seeing several calendars together is different from copying their events into other accounts. Start with that distinction before comparing an iPhone calendar app with a calendar-sync service. Arte Soft develops Cloud Calendars and publishes this comparison; it is not an independent performance benchmark.",
+        "commonBelief": "Two products that show Google, iCloud and Outlook calendars necessarily keep availability, event edits and copies in sync in the same way.",
+        "sections": [
+          {
+            "heading": "Choose between an overview and a change in another account",
+            "body": [
+              "If your aim is to see a personal appointment beside a work meeting, you need a combined view. If your work calendar must also contain a busy block for the personal appointment, you need a defined source-to-destination workflow. The first result does not establish the second.",
+              "Cloud Calendars brings selected calendars into an iPhone and iPad planning view. OneCal documents a Unified Calendar View separately from Calendar Sync; its publisher says you can use that view without configuring sync rules. Decide which outcome matters before connecting accounts or comparing subscription names."
+            ]
+          },
+          {
+            "heading": "Understand what a copied event can change",
+            "body": [
+              "OneCal’s Calendar Sync documentation describes one-way and multi-way rules that create clone events. Its separate coverage guide says edits to a clone are not propagated back to the original. Identify the original and its owning calendar before treating a copied appointment as the place to reschedule a meeting.",
+              "Cloud Calendars provider connections can also create mirrored calendars in the iOS store. A combined display does not prove that records were merged or that an edit reached the provider. For a calendar you own and may edit, check a disposable event without guests at the provider as well as in the app."
+            ]
+          },
+          {
+            "heading": "Check the controls on the device you will actually use",
+            "body": [
+              "OneCal’s current mobile guide describes creating and editing calendar events, recurrence choices, RSVP and joining meetings. It separately says that creating, editing, pausing or deleting Calendar Sync configurations happens in the web app; mobile shows those configurations. Booking-link setup is also described as a web task.",
+              "Cloud Calendars is an iPhone and iPad app with day, week, month, year and list views. Try the needed edit in your installed view, read any recurrence choice and confirm the saved event. Do not assume another product’s mobile menu, booking workflow or automation controls exist in it."
+            ]
+          },
+          {
+            "heading": "Verify coverage instead of assuming unlimited history",
+            "body": [
+              "OneCal’s current coverage guide lists a future sync window of up to a year for Google and iCloud and up to three months for Outlook. It also distinguishes future recurring series from standalone historical events. These are publisher-documented limits, not a test of your particular account or a claim about every feature in its calendar view.",
+              "Cloud Calendars also needs a check of the account route, selected calendars and relevant dates. If old meetings are essential, compare an identified event in the provider and the app. A calendar app is not automatically a complete backup or a guarantee that every past record has been retrieved."
+            ]
+          },
+          {
+            "heading": "Compare plan requirements and the billing route",
+            "body": [
+              "Cloud Calendars includes Google Calendar sync in Base; Advanced removes ads and Premium adds Microsoft Calendar and Teams support. Verify account permissions separately from the plan. Check the current local price and billing period before purchase rather than using a fixed international price comparison.",
+              "OneCal’s web plan guide describes per-member plans and a fourteen-day trial, including clone removal when the trial expires. Its mobile billing guide describes store-managed purchases and constraints on adding team members. Check which features need an ongoing plan and where the purchase is managed; a free download alone does not answer those questions."
+            ]
+          },
+          {
+            "heading": "Test your actual planning workflow before switching",
+            "body": [
+              "If weather, widgets or a Live Activity are important, include them in the trial on the device you use. Cloud Calendars offers those planning surfaces, with weather limited to available dates and the selected place. The OneCal pages reviewed here do not establish feature parity for those surfaces; check its current product rather than inferring absence from a guide.",
+              "Keep the original apps and connection details until you have checked the required outcome. Record whether you verified visibility, original-event editing, copied busy time or a reminder; they are different results. Before disconnecting a service, review what happens to existing copies and avoid experimenting on a live invitation or a real customer meeting."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Write down whether you need a combined view or events copied into another account.",
+          "Identify originals, copies and the account that owns each important event.",
+          "Check the required controls on your actual phone, tablet or web workflow.",
+          "Compare one ordinary week and any historical dates you rely on.",
+          "Check current plan requirements, local price and the purchase provider.",
+          "Verify a disposable event and review copy-removal rules before switching."
+        ],
+        "faq": [
+          {
+            "q": "Is a combined calendar view the same as synchronising busy time?",
+            "a": "No. A combined view lets you compare commitments. Creating an entry in another account requires a separate supported workflow; OneCal documents Calendar Sync rules separately from its Unified Calendar View."
+          },
+          {
+            "q": "Can I change a OneCal clone to reschedule the original meeting?",
+            "a": "Its coverage guide says clone edits are not propagated to the original. Identify the original event and follow its calendar’s editing and organiser permissions."
+          },
+          {
+            "q": "Which app is cheaper for my setup?",
+            "a": "That depends on the features, accounts, billing route and local price you need. Cloud Calendars includes Google sync in Base and Microsoft support in Premium. Review OneCal’s current plan and mobile billing terms for your intended workflow; this guide does not claim a universal price winner."
+          }
+        ],
+        "sourcesHeading": "OneCal’s official workflow and plan documentation",
+        "sources": [
+          {
+            "label": "OneCal: mobile features and web-only configuration tasks",
+            "url": "https://docs.onecal.io/docs/mobile-apps"
+          },
+          {
+            "label": "OneCal: Calendar Sync and source-to-target rules",
+            "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+          },
+          {
+            "label": "OneCal: sync windows and edits to clone events",
+            "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+          },
+          {
+            "label": "OneCal: plans, trial and expiry behaviour",
+            "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+          },
+          {
+            "label": "OneCal: App Store and Google Play subscriptions",
+            "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "three-calendar-apps-is-two-too-many",
+          "free-google-sync-without-adverts",
+          "disconnect-calendar-integration-without-losing-track",
+          "what-fantastical-costs-and-what-this-does"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 5,
+        "claims": {},
+        "updated": "2026-10-22"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Overview versus source-to-destination copy is substantive. Clone edit semantics, future sync windows and web/mobile controls are explicitly publisher-documented; Cloud mirrors and plan differences are qualified. No competitor absence, universal cheaper or latency claim.",
+      "evidenceReferences": [
+        "research/batch17-onecal/evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "what-you-get-without-paying-anything",
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "rawModuleSha256": "ec12c3eb69ec658b7e99820e24de80099ecfd8f2537f581cc1fa73220a3fb62f",
+      "rawObjectSha256": "1f2fb684b92cc5b75f551c22bdc03a66a1765bd1baa6c8baa5c29bb03a1d609a",
+      "jsonStringifySha256": "76c8649aed6f69fc709a4cd4f9bf9efb1eae9f4028bbe1859cfa45bc3886ec82",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "claims": {},
+        "title": "What Cloud Calendars includes free on iPhone and iPad",
+        "short": "What the free plan includes",
+        "description": "Review the free Base features, optional ad removal and paid Microsoft support. Check account requirements and calendar permissions before choosing a plan.",
+        "lede": "Cloud Calendars is developed by Arte Soft, which also publishes this guide. Base includes Google Calendar sync, calendar views, weather and Home Screen widgets. The app is free to download with advertising and optional subscriptions. Here is how to check whether Base covers your needs.",
+        "commonBelief": "Every useful calendar action is behind a subscription, or free download means that every provider connection is free.",
+        "sections": [
+          {
+            "heading": "Included in Base",
+            "body": [
+              "Use Day, Week, Month, Year and List views, Google Calendar sync, weather and Home Screen widgets. Google Meet support is also a Base feature. iCloud and local-calendar options are separate from a paid Microsoft connection.",
+              "A feature being included does not remove operating-system permissions, provider sign-in, connection requirements or the owner’s sharing restrictions. Check those requirements with the calendars you use."
+            ]
+          },
+          {
+            "heading": "What the optional subscriptions add",
+            "body": [
+              "Advanced removes ads while retaining Base features. Premium adds Microsoft Calendar and Microsoft Teams support to the Advanced plan. Do not treat Google sharing, cross-calendar management or faster weather updates as separate Advanced-only features.",
+              "Choose on the connection and experience you need. Check the actual local price and billing period before accepting a subscription; a price quoted for another storefront may differ."
+            ]
+          },
+          {
+            "heading": "Start locally or connect an account",
+            "body": [
+              "Local calendars let you start on the device without an app account. That does not mean every feature is anonymous or that every local event will appear on another device. Provider connections and sharing services may require sign-in.",
+              "If the main goal is one view of work and personal commitments, connect the appropriate sources and select them. Confirm which calendar receives a new event. A combined display does not merge ownership or make read-only calendars editable."
+            ]
+          },
+          {
+            "heading": "Check useful tasks rather than only the feature list",
+            "body": [
+              "Try finding tomorrow’s events, changing a disposable appointment and locating the same appointment in its owning calendar. Inspect the Home Screen widget information you need and the available forecast for a real planning date.",
+              "If one task fails, identify whether the cause is the plan, permission, selected calendar or provider connection. Buying a subscription is not a general repair for missing access."
+            ]
+          }
+        ],
+        "practical": [
+          "Start with a local calendar or connect the provider you intend to use.",
+          "Select a small set of calendars and inspect a test event’s destination.",
+          "Try the views, weather and widget information you need.",
+          "Use Advanced if you want ads removed.",
+          "Check Premium if you need Microsoft Calendar or Teams support."
+        ],
+        "faq": [
+          {
+            "q": "Is Google Calendar sync included free?",
+            "a": "Yes. It is a Base feature, together with calendar views, weather, widgets and Google Meet support."
+          },
+          {
+            "q": "Does the free download include Microsoft Calendar support?",
+            "a": "Microsoft Calendar and Microsoft Teams support are Premium features. Check connection requirements and current local pricing before subscribing."
+          },
+          {
+            "q": "Can I use the app without an account?",
+            "a": "You can start with local calendars on the device. Provider connections and sharing may require sign-in; those requirements are different from the app being free to download."
+          }
+        ],
+        "sourcesHeading": "Current app and purchase information",
+        "sources": [
+          {
+            "label": "Cloud Calendars on the App Store",
+            "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+          }
+        ],
+        "seeAlso": [
+          "free-google-sync-without-adverts",
+          "what-a-subscription-actually-buys",
+          "what-calendar-sync-actually-does"
+        ]
+      },
+      "structure": {
+        "sections": 4,
+        "paragraphs": 8,
+        "practical": 5,
+        "faq": 3,
+        "sources": 1,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Clear Base/Advanced/Premium inheritance and free download versus paid Microsoft distinction. Local calendars do not imply anonymous sharing or cross-device persistence. Subscription cannot repair missing permissions.",
+      "evidenceReferences": [
+        "research/product-facts.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "why-a-shared-calendar-does-not-appear",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "rawModuleSha256": "2457ecd3845aa25ffaa376a52825da334f1f73dae0a871b83f18364c7d40fbd5",
+      "rawObjectSha256": "700ffb28cc2b606294737e591ee2ad0a0da283f5b0a34012fa279ce8c913d552",
+      "jsonStringifySha256": "002fdb0820828b0fab0c1005bd7b0818dae3ad485677c82899630fadf98b5cf8",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "A calendar was shared with you and it is not there",
+        "short": "Shared calendar not appearing",
+        "description": "Find a missing shared Google calendar: check the invited account, group access, calendar visibility and the type of link you received.",
+        "lede": "This guide is written by Arte Soft, the developer of Cloud Calendars. Start by separating an access problem from a calendar that is simply hidden.",
+        "commonBelief": "That accepting a shared calendar puts it on your phone.",
+        "sections": [
+          {
+            "heading": "Check the account and the group",
+            "body": [
+              "Compare the invitation’s recipient with the Google account signed in on your phone and in your browser. Open the calendar link in the invitation with the intended account. Google supports sharing with people and Google Groups. If access comes through a group, ask its manager to confirm your membership and ask the calendar owner to check that the correct group has access. A forwarded email alone does not establish that permission."
+            ]
+          },
+          {
+            "heading": "Hidden, missing or restricted?",
+            "body": [
+              "In Google Calendar on iPhone or iPad, open the menu and look for the calendar. If it is listed but unchecked, select it. If it is absent, ask the owner to verify access; requesting access is not the same as receiving it. Work or school policies may restrict sharing. Compare the same account in Google Calendar on the web. If it works there but not in another app, check that app’s connected account and calendar selection. Read-only access does not allow editing."
+            ]
+          },
+          {
+            "heading": "Identify the link before waiting",
+            "body": [
+              "An emailed sharing invitation also contains a link, so a link is not automatically an ICS subscription. Ask the sender whether it grants access to a Google calendar or publishes a read-only feed. Google says a new calendar subscription requires a computer browser; opening a calendar already shared by email is a separate action. A feed’s updates depend on the receiving service’s refresh behavior. There is no universal arrival time; confirm urgent changes with the organiser."
+            ]
+          }
+        ],
+        "claims": {},
+        "faq": [
+          {
+            "q": "Can a Google Group receive calendar access?",
+            "a": "Yes. Check the group selected by the owner, your membership and any organisation restrictions. Do not assume a forwarded group email grants access."
+          },
+          {
+            "q": "Should I delete and reconnect the account?",
+            "a": "First check identity, permissions and visibility, then compare the web calendar. Reconnecting cannot grant missing permission and should not be the first diagnostic step."
+          }
+        ],
+        "practical": [
+          "Confirm the invited account and any group membership.",
+          "Select the calendar if it is listed but hidden.",
+          "Ask the owner to verify access before changing connections."
+        ],
+        "sourcesHeading": "Sources and further reading",
+        "sources": [
+          {
+            "label": "Google: Check the account and the group",
+            "url": "https://support.google.com/calendar/answer/37082?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Hidden, missing or restricted?",
+            "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+          },
+          {
+            "label": "Google: Identify the link before waiting",
+            "url": "https://support.google.com/calendar/answer/37648?hl=en"
+          }
+        ],
+        "seeAlso": [
+          "who-can-see-what-in-google-calendar",
+          "google-calendars-that-never-reach-your-iphone"
+        ]
+      },
+      "structure": {
+        "sections": 3,
+        "paragraphs": 3,
+        "practical": 3,
+        "faq": 2,
+        "sources": 3,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Useful account/group/hidden/missing/link-type branches. Google actions are provider-specific. Forwarded link/request does not establish permission; read-only and organization limitations retained. No arrival SLA or reconnect-first instruction.",
+      "evidenceReferences": [
+        "research/batch08-sharing/evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7b3b6a6e18f271169cf3153301247337d9d1db06d27e76df7dc7e3e4f2701348",
+      "rawObjectSha256": "2724575c4208d9c8839dd0320647e0200a58d5b933aee7b84791aa1d81bdd936",
+      "jsonStringifySha256": "8c49e6acd0981d048b84a36e3d52d906f1ddf34d7ff6956ba9993f29d1caf9fb",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Calendar notifications on iPhone: missing, silent or duplicated?",
+        "short": "Troubleshoot calendar notifications",
+        "description": "Separate event alerts, Cloud Calendars settings and iPhone delivery controls. Diagnose absent, silent or duplicate reminders without deleting calendar data.",
+        "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
+        "sections": [
+          {
+            "heading": "First choose the right branch",
+            "body": [
+              "If the event itself is absent, check its owning account and selected calendar before changing sound settings. An alert cannot establish whether the correct event has reached the app. Use the calendar-sync guide for that separate problem.",
+              "If the event is visible but no notification appears, check the saved alert and both notification controls below. If a notification appears silently, concentrate on iPhone delivery and sound settings. If you receive more than one, identify each sending app and each configured alert before removing anything."
+            ]
+          },
+          {
+            "heading": "No notification: inspect the event and app controls",
+            "body": [
+              "Open the event and inspect its alert time. The Cloud Calendars event editor has Alert and, when applicable, Second Alert controls, including None and choices before the event. A second alert can be intentional. Check the saved event again after an edit, especially when a provider or shared-calendar permission limits what you can change.",
+              "In Cloud Calendars settings, look for Event Notifications. The settings also separate invitation and weather notifications; enabling one is not proof that ordinary event reminders are enabled. Check both the app’s Event Notifications preference and iOS notification permission.",
+              "Calendar selection also matters: the current scheduling path uses alarms from selected calendars. Check that the relevant calendar is selected. Do not assume hiding a calendar changes only its appearance in this app, and do not delete events to stop reminders."
+            ]
+          },
+          {
+            "heading": "A silent or delayed alert: check iPhone delivery",
+            "body": [
+              "In the iPhone Settings app, open Notifications and choose Cloud Calendars. Review Allow Notifications, the available alert locations and sound controls. Check whether Scheduled Summary or an active Focus is changing delivery. These are Apple’s system settings, not the Alert menu inside an event. Labels can vary with iOS version.",
+              "A banner seen without sound is a different observation from no notification anywhere. Note whether it appeared on the Lock Screen or in Notification Center, whether the phone was in use, and which Focus was active. Change one relevant setting at a time so the next result tells you something. A Live Activity countdown is another surface; seeing it does not prove an audible reminder will arrive."
+            ]
+          },
+          {
+            "heading": "Two alerts: identify the senders before changing the event",
+            "body": [
+              "Read the app name on each notification. Apple Calendar, Google Calendar and Cloud Calendars can be separate notification sources even when they display related events. Two notifications are not enough evidence that two event records exist. Also compare the alert times: a reminder the day before and another near the start may match the saved alert choices.",
+              "Google’s notification guide explains that its settings are personal to the account and that event-specific choices can differ from calendar defaults. Its instructions apply to Google Calendar, not to Cloud Calendars settings. Inspect the relevant sender rather than assuming one app’s switch controls every other app.",
+              "Choose which app you want to notify you, then adjust only the relevant reminder or notification preference. If two actual event records remain, compare their calendars and ownership using the duplicate-event guide. Do not cancel a real meeting just to silence an extra alert."
+            ]
+          },
+          {
+            "heading": "Use one disposable event to narrow the problem",
+            "body": [
+              "Create a clearly named test appointment in a writable calendar you own. Set its start far enough ahead that the chosen alert time is still in the future. Confirm the calendar is selected, the saved alert is present, and both notification controls are enabled. Record the expected alert time and which app should send it.",
+              "Observe whether a notification appears and whether it makes sound; those are separate results. Repeat only after changing one suspected setting. Use an ordinary test event without attendees, not an important meeting or a recurring series. Keep the result with your app and iOS versions so you can compare later."
+            ]
+          },
+          {
+            "heading": "If the result is still inconsistent",
+            "body": [
+              "The app schedules a limited set of upcoming alarms; do not rely on an unlimited queue of distant reminders. Check the controls in your installed version and keep a record of inconsistent delivery. Report the app and iOS versions, calendar type, saved alert offset, expected time and observed result.",
+              "Keep private event titles, attendee addresses and calendar subscription links out of a public report. Reinstalling, clearing local storage or removing accounts is not the first diagnostic step. Preserve the event and account arrangement while support investigates."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Classify the failure: missing event, absent notification, silent delivery or duplicate alerts.",
+          "Check the saved alert and selected calendar.",
+          "Check Cloud Calendars Event Notifications separately from iPhone notification permission.",
+          "For duplicates, compare sending apps and configured alert times.",
+          "Use one disposable future event and record the result without changing real invitations."
+        ],
+        "faq": [
+          {
+            "q": "Does turning on weather notifications enable event reminders?",
+            "a": "No. The app settings separate event, invitation and weather notifications. Check Event Notifications and iOS permission for ordinary event alarms."
+          },
+          {
+            "q": "Should I delete one event when two alerts arrive?",
+            "a": "First identify the sending apps and alert times. Multiple notifications can come from separate apps or multiple alerts on one event. Deletion is not a safe way to diagnose that."
+          },
+          {
+            "q": "Does an alert setting guarantee delivery?",
+            "a": "No. It is one part of the chain. App preferences, system permission and delivery settings also matter, so check the result on your device."
+          }
+        ],
+        "sourcesHeading": "Sources and notification settings",
+        "sources": [
+          {
+            "label": "Apple: Change notification settings on iPhone",
+            "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios"
+          },
+          {
+            "label": "Google: Change Google Calendar notifications on iPhone and iPad",
+            "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "when-two-calendars-disagree"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 14,
+        "practical": 5,
+        "faq": 3,
+        "sources": 2,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Clear event-absent/notification-absent/silent/duplicate branch routing. Selected-calendar scheduling, app preferences and OS permission separated; bounded queue, disposable owned tests and no delivery guarantee.",
+      "evidenceReferences": [
+        "research/batch03-drafts/alerts-search-evidence.json",
+        "research/batch26-duplicates/product-evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7b3b6a6e18f271169cf3153301247337d9d1db06d27e76df7dc7e3e4f2701348",
+      "rawObjectSha256": "f85ec2c3362343a2894ceb49fe582a04dfa4c5176abac282f5f70b610c8903f0",
+      "jsonStringifySha256": "83df31db59ade9ecc3ed48a41d60c61eda5384914531f0d427e9b9ab0c296708",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Find an old calendar event: check the account, dates and search fields",
+        "short": "Find past calendar events",
+        "description": "A blank search is not proof an event was deleted. Check calendar ownership, date coverage and searchable fields before looking in the provider’s own archive.",
+        "lede": "When you remember a meeting but cannot find it, separate three questions: which account held it, which dates the current view covers, and which fields the search matches. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every search box in a calendar app searches every field of every event ever stored by the provider.",
+        "sections": [
+          {
+            "heading": "Write down the smallest useful clue",
+            "body": [
+              "Start with an approximate month or year, a distinctive word from the title, and the account you probably used. Keep those clues separate. A colleague’s name may have been an attendee rather than part of the title; a street address may have lived only in the location field.",
+              "Try a short title fragment before a long phrase. A negative result does not tell you whether the record is absent, outside the loaded dates or in a field that is not searched."
+            ]
+          },
+          {
+            "heading": "Check ownership and calendar selection",
+            "body": [
+              "Look for the account and calendar that originally owned the event. A work Google calendar, a personal iCloud calendar and a local calendar on the device are different destinations, even if one app displayed them together. Confirm you still have access to the expected account and that its calendar is selected.",
+              "Do not create a new copy just because the search is empty. If you can locate the event by browsing its approximate date, inspect its title, calendar and organiser. That gives you evidence to compare with the search result without changing the record."
+            ]
+          },
+          {
+            "heading": "Check the dates and fields used by Cloud Calendars search",
+            "body": [
+              "Cloud Calendars searches the titles of loaded events without requiring the same letter case. Use a distinctive title word. Do not expect a location, attendee address or note to match merely because it appears elsewhere in an event.",
+              "The current search view loads events for the current calendar year from selected calendars. A meeting from a previous year can therefore be absent from this search while still existing with the provider. Check the date range before interpreting an empty result.",
+              "Browsing to an older date and searching an older year are different actions. For historical search, use the provider’s own tools where available and verify the same account. Check the controls in your installed app version rather than assuming the search covers every year."
+            ]
+          },
+          {
+            "heading": "Use provider tools for their documented fields and dates",
+            "body": [
+              "In Google Calendar on a computer, the search options let you narrow by calendar, event information, people, location and date range. Google recommends a date-limited advanced search when older events do not appear and documents a limit of 200 search results. Divide a broad search into smaller date ranges instead of assuming the first result set is complete.",
+              "Those are Google Calendar web controls, not a description of Cloud Calendars. Likewise, Apple’s Calendar guide says its iPhone search can match titles, invitees, locations and notes. That describes Apple Calendar’s own search. Using Apple’s EventKit in another app does not automatically give that app the same search interface or matching rules."
+            ]
+          },
+          {
+            "heading": "Interpret where the event does and does not appear",
+            "body": [
+              "Found in the provider, absent in Cloud Calendars: check account identity, selected calendar, date coverage and the title being searched. Preserve the provider record. The next question is what the app has loaded or matched, not whether the appointment needs recreating.",
+              "Found by browsing, absent from search: compare the actual title with the query and note the date. This is useful evidence of a search-scope or matching issue. Do not alter an old meeting title solely to make a diagnostic test pass.",
+              "Absent from the provider too: confirm the account, calendar access and date range before investigating retention or deletion with that provider. For a local calendar, a provider website is not an independent copy unless you established a separate connection. Do not assume a cloud archive exists for every local event."
+            ]
+          },
+          {
+            "heading": "Keep a useful search record without exposing the event",
+            "body": [
+              "For support, record the app version, calendar provider or local-storage type, approximate event year and whether the event appears in the provider or by date browsing. Say whether the query was a title word, a location or an attendee. This is more useful than simply reporting that search is broken.",
+              "Avoid sending private notes, invitation links or secret calendar-feed URLs. Keep accounts and local data intact; clearing storage or importing an old file again can add uncertainty."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the likely owning account and approximate date.",
+          "Check that the calendar is selected and accessible.",
+          "Try a distinctive word from the event title.",
+          "Treat current-year app search separately from provider archive search.",
+          "Use Google Calendar web date filters or Apple Calendar’s documented fields when relevant.",
+          "Record where the event appears before changing any data."
+        ],
+        "faq": [
+          {
+            "q": "Does an empty result mean my old event was deleted?",
+            "a": "No. The wrong account, an unselected calendar, a date outside the loaded range or a field that is not searched can all explain an empty result. Check the provider and the event’s approximate date."
+          },
+          {
+            "q": "Can I search Cloud Calendars by an attendee’s email or a note?",
+            "a": "The current search path matches event-title text. For attendee, note or location queries, use the appropriate provider’s documented search tools for those fields."
+          },
+          {
+            "q": "Will browsing to last year make the search cover last year?",
+            "a": "Do not rely on that. The current search view loads the current year when it opens. Use a provider’s date-range search for historical records rather than assuming an unlimited history search in the app."
+          }
+        ],
+        "sourcesHeading": "Sources and provider search help",
+        "sources": [
+          {
+            "label": "Google: Search on Google Calendar — computer",
+            "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop"
+          },
+          {
+            "label": "Apple: Search for events in Calendar on iPhone",
+            "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios"
+          }
+        ],
+        "seeAlso": [
+          "what-calendar-sync-actually-does",
+          "a-list-for-people-who-dislike-grids",
+          "when-two-calendars-disagree",
+          "recover-deleted-calendar-events-iphone"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 14,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Current-year title matching separated from provider archive/field search. Empty search is not deletion; local calendars are not assumed cloud archives. Google200limit attributed to its web search, not app history. No destructive repair advice.",
+      "evidenceReferences": [
+        "research/batch03-drafts/alerts-search-evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "event-saved-to-wrong-calendar",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "rawModuleSha256": "7b3b6a6e18f271169cf3153301247337d9d1db06d27e76df7dc7e3e4f2701348",
+      "rawObjectSha256": "c1ed8c5654d2724b0a20b3145980de8490af0041e3bc5638031a7ad1847d750e",
+      "jsonStringifySha256": "f0afc74c230c3031a66714ef6c02d6c528ab35a56f907b6852fa07e73dd4a3ca",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Event saved to the wrong calendar?",
+        "short": "Event saved to the wrong calendar?",
+        "description": "Check the event destination, Cloud Calendars selection and Apple defaults before moving appointments or changing account settings.",
+        "lede": "This guide is published by Arte Soft, the developer of Cloud Calendars. An appointment can appear in the correct week while belonging to the wrong account. Read its Calendar value, then identify the account or local calendar behind that name before changing sync settings.",
+        "sections": [
+          {
+            "heading": "Identify the record, not just its color",
+            "body": [
+              "Two accounts can both contain a calendar called Personal. A title or color alone may not settle which received the event. If a family appointment is stored in your work calendar, hiding work from your overview does not move it or change its access. If the event is already in the intended calendar but disappears when that calendar is hidden, investigate display selection instead."
+            ]
+          },
+          {
+            "heading": "Choose the destination before saving a new event",
+            "body": [
+              "In the Cloud Calendars creation editor, open Calendar and choose the intended writable destination. Its picker can display an account or source alongside the calendar title; check that information when names are similar. Connecting an account does not make every calendar in it editable.",
+              "The initial choice can depend on where creation started and which writable calendars are selected. A specific calendar column can supply the destination. Otherwise, the selection policy prefers an available selected writable calendar before falling back to the system default and then another writable calendar. Do not assume the iPhone default always wins.",
+              "Create a harmless test appointment through your usual creation path, then reopen it and check the saved calendar. Repeat this check when you change selected calendars or begin from a different view, before relying on that path for a private event."
+            ]
+          },
+          {
+            "heading": "What Apple Calendar’s default changes",
+            "body": [
+              "Apple documents Settings > Apps > Calendar > Default Calendar for choosing where Apple Calendar places new events. These are Apple Calendar instructions; they are not a universal default for every calendar app.",
+              "Changing a default does not relocate existing records. After adjusting it, test the same creation path that produced the mistake. If Cloud Calendars still chooses another destination, inspect its Calendar field and selected calendars rather than repeatedly changing the Apple setting. A new-event default and an existing event’s destination are separate decisions."
+            ]
+          },
+          {
+            "heading": "If the intended calendar is unavailable",
+            "body": [
+              "The Cloud Calendars creation picker filters out destinations that cannot accept edits. An existing read-only event can still display its current calendar so you can identify it. A missing writable destination and a hidden calendar in your overview therefore need different checks.",
+              "Confirm the account is connected and that the calendar owner granted the necessary access. Apple describes external calendar subscriptions as read-only. Do not remove an account or create competing copies merely to make a destination selectable. If you only need to see a schedule, restoring its visibility may solve the problem."
+            ]
+          },
+          {
+            "heading": "Treat an existing destination change as an action",
+            "body": [
+              "For an ordinary appointment you own, first record the intended destination and check whether it repeats or has guests. In Cloud Calendars, choosing another Calendar in an existing event’s detail view can save the move immediately. Do not treat that selection as a preview that you can dismiss without consequence.",
+              "Apple Calendar documents moving an event through its Calendar field. Google Calendar on iPhone requires the event organizer to have edit access to the destination; its documented recurring-event move also moves future instances and cannot move only one instance. These provider-specific rules do not guarantee identical behavior for every Cloud transfer.",
+              "For an invitation organized by somebody else, ask the organizer about ownership or delivery. Moving your displayed copy is not proof that their meeting changed. For recurring or cross-account events, use a supported provider workflow when you need a scope or capability that the app does not clearly offer."
+            ]
+          },
+          {
+            "heading": "Check the result before cleanup",
+            "body": [
+              "Reopen the event and compare calendar, date, time, recurrence and important details. For connected accounts, inspect the intended provider’s own view where available. Verify guests and conferencing separately; a move is not a guarantee that every meeting feature is preserved.",
+              "Keep the original information until the result is clear. If two entries appear, identify their accounts before deleting either. A default-calendar diagnosis does not require cancelling invitations, clearing local storage or recreating a recurring series."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the event’s saved calendar and account, not just its title or color.",
+          "Choose the intended writable Calendar explicitly before creating a new appointment.",
+          "Treat changing Calendar on an existing event as a possible immediate save.",
+          "Reopen the saved event and verify recurrence, guests and conferencing before cleanup."
+        ],
+        "faq": [
+          {
+            "q": "Why can Cloud Calendars differ from the iPhone default?",
+            "a": "Creation context and selected writable calendars can take priority over the system fallback. Check Calendar in the editor."
+          },
+          {
+            "q": "Will changing the default move existing appointments?",
+            "a": "No. Review existing destinations separately; the default concerns new events."
+          },
+          {
+            "q": "Can I preview another Calendar on an existing event without saving?",
+            "a": "Do not assume so. Selecting another Calendar in an existing Cloud Calendars detail view can save immediately. Decide on the intended change before choosing it."
+          }
+        ],
+        "sourcesHeading": "Official guidance",
+        "sources": [
+          {
+            "label": "Apple: multiple calendars, visibility and moving events",
+            "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+          },
+          {
+            "label": "Apple: default calendar settings",
+            "url": "https://support.apple.com/en-my/guide/iphone/iphc37be2016/27/ios/27"
+          },
+          {
+            "label": "Google: moving events on iPhone and iPad",
+            "url": "https://support.google.com/calendar/answer/78739?co=GENIE.Platform%3DiOS&hl=en"
+          }
+        ],
+        "seeAlso": [
+          "work-and-personal-without-two-apps",
+          "what-calendar-sync-actually-does",
+          "recurring-events-without-the-mess"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 13,
+        "practical": 4,
+        "faq": 3,
+        "sources": 3,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Destination identity and source context precede changes. Selected writable calendar priority versus Apple default, immediate-save warning for existing detail selection and provider-specific move/recurrence constraints are explicit. No meeting-fidelity guarantee.",
+      "evidenceReferences": [
+        "research/batch05-default-family/evidence-20261021.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "what-an-all-day-event-really-means",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "rawModuleSha256": "2d5700752b5fdf5602ba9c986c82e2bb73603a40253602280b77e969d4aa874f",
+      "rawObjectSha256": "8ca84994a20d49193748e2c5d3be81b91e6fddcdeee0a328e836db3d94cb68ec",
+      "jsonStringifySha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "All-day calendar events: dates, availability and missing widget entries",
+        "short": "Understand all-day events",
+        "description": "Choose dates or timed appointments, check free/busy separately and verify multi-day ranges. Find all-day entries that do not appear in an upcoming widget.",
+        "lede": "An all-day label, a busy day and an appointment at a particular hour are different ideas. Decide which you need before changing the event. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "An all-day entry always leaves you free, appears in every upcoming list and behaves identically across calendar providers.",
+        "sections": [
+          {
+            "heading": "Choose a date label or a timed commitment",
+            "body": [
+              "A birthday, public holiday or trip label can belong to a date without requiring an arrival hour. A dentist visit or a conference session needs an actual start and end time. Choose the representation that lets someone understand the commitment without guessing.",
+              "For a trip from Friday through Sunday, an all-day span can label the itinerary. Keep a Friday flight, Saturday booking and Sunday check-out as timed commitments when their hours matter. The trip label should not replace the bookings it summarizes. A deadline at 17:00 also needs its hour; an all-day label alone does not communicate that cutoff."
+            ]
+          },
+          {
+            "heading": "Check both dates in Cloud Calendars",
+            "body": [
+              "In the event editor, use All-day for a date-based entry. Starts and Ends then use date choices rather than clock times. Read the first and last intended dates before saving, and reopen the result across those days. The current editor treats the selected ending day as included in the span.",
+              "For a one-day birthday, check that it appears on the intended date without an unwanted extra day. For a three-day trip, check all three dates. If you change an existing repeating entry, follow the recurrence guide before saving: choosing All-day does not establish whether an edit affects one occurrence or future occurrences."
+            ]
+          },
+          {
+            "heading": "Check availability independently",
+            "body": [
+              "Do not decide whether a day is free just by seeing an all-day banner. Google Calendar documents whether an event blocks time as a separate setting from its dates. Calendar permissions and the recipient's view can also limit the details people see. An all-day entry is not a universal instruction to accept or reject meetings.",
+              "If you need a day blocked for leave, check the owning provider's availability or out-of-office controls and the saved result. If you only want a birthday label, check that it does not block time unintentionally. This guide does not promise that Cloud Calendars exposes every provider's availability control or prevents scheduling conflicts. Use a supported provider editor when you need an option absent from the app."
+            ]
+          },
+          {
+            "heading": "A missing widget row is not a missing event",
+            "body": [
+              "Cloud Calendars' upcoming-event widgets and Live Activity follow future timed appointments. They exclude all-day entries. A birthday may therefore be present in the full calendar but absent from the next-event display. Making the widget larger does not change that eligibility rule.",
+              "Open the date in the app and check that the calendar is selected. If the entry is present there, distinguish an expected widget omission from lost calendar data. Do not convert a birthday into an artificial timed meeting merely to make a widget show it; decide first whether the event itself should really have an hour."
+            ]
+          },
+          {
+            "heading": "Inspect transfers and travel dates",
+            "body": [
+              "Date-based events can use different storage conventions from timed appointments. Google documents date fields for all-day entries and a separate end boundary in its event format. A raw export's ending date is not necessarily the last date a calendar displays. Use the displayed result to check a transfer rather than editing a file solely because its end date looks one day later.",
+              "After an import or an important time-zone change, compare the intended first and last dates in the owning calendar and the app. Do not assume every provider, imported file and installed version handles the boundaries identically. Keep the source while checking; moving the event to compensate for an unfamiliar display can introduce another error."
+            ]
+          },
+          {
+            "heading": "Keep alerts and planning separate",
+            "body": [
+              "A label across the top of a day is useful context, but it is not a reminder that has been delivered. If you need to act before a birthday, deadline or trip, inspect the saved alert and the app and system notification settings. The event's visible date alone does not guarantee an audible reminder.",
+              "For a problem report, note the intended date range, whether All-day is enabled, the owning calendar and where the entry differs: full app, provider, widget or activity. Use a non-sensitive example when possible. Preserve the original entry while diagnosing the difference."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Choose a date label for context and a timed entry for a commitment with an hour.",
+          "Check the first and last included dates after saving.",
+          "Verify free/busy separately in the owning provider when needed.",
+          "Look in the full calendar for all-day entries omitted from upcoming displays.",
+          "Check reminders and imported date boundaries without deleting the source."
+        ],
+        "faq": [
+          {
+            "q": "Does an all-day event mean I am available?",
+            "a": "No. Check the owning calendar's availability settings separately; an all-day banner does not establish free/busy for every provider."
+          },
+          {
+            "q": "Why is my all-day trip absent from the next-event widget?",
+            "a": "That feed follows future timed appointments and excludes all-day entries. Check the trip in the full calendar."
+          },
+          {
+            "q": "Should I subtract a day from an export's end date?",
+            "a": "Do not change it just from the raw field. Some formats use an exclusive end boundary. Check the imported displayed range while retaining the original."
+          }
+        ],
+        "sourcesHeading": "Official event-format and calendar guidance",
+        "sources": [
+          {
+            "label": "Apple: All-day and multiday events in Calendar on Mac",
+            "url": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac"
+          },
+          {
+            "label": "Google: Timed and all-day event concepts",
+            "url": "https://developers.google.com/workspace/calendar/api/concepts/events-calendars"
+          },
+          {
+            "label": "Google: Event boundaries and availability fields",
+            "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+          }
+        ],
+        "seeAlso": [
+          "time-zones-and-the-flight-you-booked",
+          "recurring-events-without-the-mess",
+          "the-widget-that-shows-what-is-next",
+          "calendar-notifications-missing-silent-or-duplicated"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 5,
+        "faq": 3,
+        "sources": 3,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Date labels versus timed commitments, inclusive displayed end versus raw exclusive boundary, independent free/busy and widget exclusion are clear. Provider editors used for absent controls; no universal availability/alert guarantee.",
+      "evidenceReferences": [
+        "research/batch05-all-day/evidence.json",
+        "research/batch25-widget-localization/audit-other-four.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "calendar-event-or-room-reservation",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "rawModuleSha256": "bbdc19d1b8025dc1eda84b3e99e033e9b57b94ebc75dbcb7d05294f6757ad686",
+      "rawObjectSha256": "b28727f7e19b5657948f86ef35dedda9bb8bc0a750980f2a9aac3682a5277b59",
+      "jsonStringifySha256": "236b6b058e253ec0874eba0cbdbf53d72b1c313d80b8c5025e35cf1ac856c553",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-22",
+        "title": "Calendar event or room reservation? Check what is confirmed",
+        "short": "Confirm a room reservation",
+        "description": "A room name is not a reservation. Check Google Calendar or Outlook resource responses, recurring dates and changes before relying on a meeting room.",
+        "lede": "A meeting can appear in your calendar while its room is unavailable or has declined. Check the resource booking separately from the appointment and its location label. Arte Soft, the developer of Cloud Calendars, publishes this guide; it does not establish a room-booking workflow inside Cloud Calendars.",
+        "commonBelief": "Saving an event with a room name, or seeing an empty time slot, confirms that the room is reserved.",
+        "sections": [
+          {
+            "heading": "Identify the resource, not just its address",
+            "body": [
+              "A location tells people where you intend to meet. A bookable room or projector also has an owner and a reservation process. Ask which room directory or booking system your organization uses before treating a typed name as a request. A personal calendar entry cannot establish another person’s approval.",
+              "Write down the intended date, start, end and exact room identity. For example, a workshop may need an earlier setup period as well as its advertised start. Confirm that requirement with the room owner; adding a preparation block to your calendar alone does not reserve the space."
+            ]
+          },
+          {
+            "heading": "Use the Google Calendar room workflow for the right account",
+            "body": [
+              "Google documents its organizational Rooms workflow for work or school accounts. In the computer event editor, use Add rooms or Add room booking, choose the intended resource and save. A personal Gmail account follows a different shared-space arrangement; do not assume it has your employer’s room directory.",
+              "Then inspect the room’s response for that event. Google says a room can decline at booking or later. Its notification behavior also differs for secondary calendars, so the absence of a decline email is not proof of acceptance. Check the actual room status rather than only the event title."
+            ]
+          },
+          {
+            "heading": "Treat an Outlook room as a resource recipient",
+            "body": [
+              "Microsoft documents Room Finder and Scheduling Assistant for supported Microsoft 365 or Exchange accounts. The organization configures the room directory. In its documented workflow, selecting a room adds it as a meeting recipient, and the organizer sends the meeting request. The Outlook mobile instructions use Browse conference rooms; menus differ by platform.",
+              "Microsoft’s resource-mailbox guidance distinguishes availability from processing a request; booking can be automatic or managed by the organization. Confirm the outcome through the approved resource workflow. An editable location field, a free-looking slot or a successfully saved personal event is not that confirmation."
+            ]
+          },
+          {
+            "heading": "Recheck the resource after moving a meeting",
+            "body": [
+              "A room that worked at the original time may be occupied at the new one. Google explicitly says changing the event time releases the booked room and attempts to rebook it; that attempt can fail. Before telling participants the revised location is settled, inspect the resource status for the new date and time.",
+              "For a recurring workshop, inspect the relevant occurrences rather than assuming one acceptance settles the entire course. Booking windows, conflicts and permissions can limit what is confirmed. If one week needs another room, record the specific occurrence and use the provider’s supported editing scope; keep the organizer and participants informed."
+            ]
+          },
+          {
+            "heading": "Use Cloud Calendars for the planning information it exposes",
+            "body": [
+              "Cloud Calendars provides event location entry and a combined calendar view. Those features help you organize the appointment, but this guide does not establish a resource picker or reservation-confirmation controls in the app. Use the owning provider or room manager’s approved workflow when that confirmation is required.",
+              "Do not use a Cloud Calendars subscription tier, a conferencing link or a visible gap as evidence that you have room-booking permission. After a provider change, compare the intended appointment in the app and the source calendar. That comparison checks the displayed plan; retain the separate resource confirmation."
+            ]
+          },
+          {
+            "heading": "Cancel or replace the resource deliberately",
+            "body": [
+              "Microsoft documents removing the room or equipment from the meeting as the way to release that reservation. Follow the organizer’s supported provider workflow and check which occurrence or series is affected. Deleting a personal copy or erasing a location label is not a substitute for confirming that the actual resource request was cancelled. Complete any update or cancellation step the provider requires; an unsaved edit is not a cancelled reservation.",
+              "If the room declines or the result is unclear, contact the organizer or resource manager with the relevant date and room identity. Agree a confirmed alternative before sending a final location. Share only the information needed for that request, and keep private calendar links and unrelated appointments out of public support posts."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the exact room or equipment and its approved booking system.",
+          "Confirm the account and permission needed to request it.",
+          "Use the provider’s resource workflow rather than only typing a location.",
+          "Inspect the resource response for the intended date or recurring occurrence.",
+          "Recheck after changing the time, duration or room.",
+          "Release or replace the resource through the organizer’s supported workflow."
+        ],
+        "faq": [
+          {
+            "q": "Does adding a room name to an event reserve it?",
+            "a": "No. A location label describes the plan. Use the room owner’s supported booking process and check its response for the required time."
+          },
+          {
+            "q": "Does Cloud Calendars confirm meeting room reservations?",
+            "a": "This guide establishes event location entry, not a room-selection and reservation-confirmation workflow inside Cloud Calendars. Check the owning provider or resource manager when you need that confirmation."
+          },
+          {
+            "q": "Is a room still reserved after I change the meeting time?",
+            "a": "Do not assume that. Google documents releasing and attempting to rebook the room after a time change. Check the result through your provider, including the affected recurring dates, before relying on the new arrangement."
+          }
+        ],
+        "sourcesHeading": "Official room and resource booking guidance",
+        "sources": [
+          {
+            "label": "Google: add or remove a room for a work or school event",
+            "url": "https://support.google.com/calendar/answer/143753?hl=en"
+          },
+          {
+            "label": "Google: declined rooms, notifications and changes",
+            "url": "https://support.google.com/calendar/answer/16107253?hl=en"
+          },
+          {
+            "label": "Microsoft: Scheduling Assistant and Room Finder across platforms",
+            "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+          },
+          {
+            "label": "Microsoft: room and equipment availability, booking and cancellation",
+            "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-equipment-mailboxes-faq?view=o365-worldwide"
+          }
+        ],
+        "seeAlso": [
+          "recurring-events-without-the-mess",
+          "a-week-view-that-fits-a-week",
+          "what-calendar-sync-actually-does",
+          "meeting-links-that-make-themselves",
+          "time-zones-and-the-flight-you-booked"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 4,
+        "claims": {},
+        "updated": "2026-10-22"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "Typed location is distinct from resource request/acceptance. Google/Microsoft workflows and recurring/time-change checks kept provider-specific; no Cloud resource picker or paid-tier booking guarantee. Cancellation requires supported provider completion.",
+      "evidenceReferences": [
+        "research/batch19-room-resource/evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "meeting-links-that-make-themselves",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "rawModuleSha256": "bbdc19d1b8025dc1eda84b3e99e033e9b57b94ebc75dbcb7d05294f6757ad686",
+      "rawObjectSha256": "6c45da36b7e2c97dd54c6c0efea3e5850fdbe6b30c7766df0e17e8197d758d55",
+      "jsonStringifySha256": "cb8f8f00f00c3a7286471d30ce9e07164ec63e07fc04307f291955ccf8ede026",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "updated": "2026-10-21",
+        "title": "Google Meet and Microsoft Teams links: create, save and check",
+        "short": "Meeting links that work",
+        "description": "See which calendars can create Meet or Teams links, how the plans differ and what to check when a saved event has no working joining link.",
+        "lede": "A call link is useful only when it belongs to the intended meeting and the guests can use it. Cloud Calendars can request provider meeting links, but a request is not a guarantee that a usable link has arrived. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Every saved event automatically gets a working call link, and Google Meet requires an upgraded app plan.",
+        "sections": [
+          {
+            "heading": "Match the event to the meeting provider",
+            "body": [
+              "Google Meet creation belongs to a connected Google calendar event; Microsoft Teams creation belongs to a connected Microsoft calendar event. An app-local event or a calendar visible through a different route is not automatically eligible just because you also signed in to that provider.",
+              "Start by checking the event’s calendar and account. For a work call, use the calendar and conferencing service your organization permits. Do not move an existing invitation merely to make a different meeting option appear."
+            ]
+          },
+          {
+            "heading": "Separate app plans from account capability",
+            "body": [
+              "Google Calendar and Google Meet are listed with Cloud Calendars Base features. Advanced adds ad removal. Premium adds Microsoft Calendar and Microsoft Teams features. Review the local purchase offer if you need Premium; paying does not grant new rights on a calendar owned by someone else.",
+              "Microsoft also requires the calendar to support the intended online meeting provider. An app subscription cannot make every personal or workplace account eligible for Teams meeting creation. Account permissions, organization settings and the saved event remain part of the result."
+            ]
+          },
+          {
+            "heading": "Use the available action on an editable event",
+            "body": [
+              "For eligible events without a detected link, the app can offer “Add to Google Meet” or “Add to Microsoft Teams.” The option depends on the event’s provider connection and editability. If the event already contains a recognized link, the corresponding add action may not appear.",
+              "Some provider event-creation paths also request a meeting link while saving. Treat either path as a request to the provider. A local event that has not yet acquired its provider identity is not equivalent to an existing provider meeting that can be updated."
+            ]
+          },
+          {
+            "heading": "Check the saved result rather than the button press",
+            "body": [
+              "Reopen the event after synchronization and look for the actual joining link. Compare it with the same event in Google Calendar or Outlook. Google documents conference creation as potentially pending, successful or failed; saving an event does not by itself prove conference creation has finished.",
+              "For example, if tomorrow’s client call has a time and title but no joining URL, do not send “the link is in the invitation” yet. Confirm that the provider event has the meeting information, then check the copy the guests will use."
+            ]
+          },
+          {
+            "heading": "Diagnose a missing link without duplicating the meeting",
+            "body": [
+              "Check the intended account, calendar, edit permission and network first. If the action is absent, the event may be read-only, linked through another route or already contain a recognized meeting link. If a request was made but no link appears, compare the provider event before repeatedly creating replacement events.",
+              "Use the provider’s approved workflow if you need to complete the meeting there. Keep one clear event for the participants and communicate the final joining details. Do not assume a new app plan fixes an expired connection, unavailable conferencing service or rejected provider request."
+            ]
+          },
+          {
+            "heading": "Recheck after moving, importing or rescheduling",
+            "body": [
+              "A copied or imported event is not guaranteed to preserve conferencing information. Google explicitly documents that conference data is not included when importing events. After a calendar move or file import, inspect the resulting event instead of assuming the old link followed it correctly.",
+              "For a recurring meeting, verify which occurrence or series you are changing and whether the displayed link is the one participants should use. A joining link is also not an RSVP: check attendance separately and tell guests directly about important changes."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "Identify the owning account and calendar before requesting a meeting link.",
+          "Use the appropriate available action on an editable provider event.",
+          "Confirm that the saved provider event contains an actual joining URL.",
+          "Check the event copy or invitation that participants will receive.",
+          "Investigate missing links before creating duplicate meetings.",
+          "Recheck the link after imports, calendar moves or important series changes."
+        ],
+        "faq": [
+          {
+            "q": "Do I need Advanced to create a Google Meet link?",
+            "a": "Google Meet is listed with Base features, alongside Google Calendar. Advanced adds ad removal. Meeting creation still depends on an eligible connected event and a successful provider request."
+          },
+          {
+            "q": "Does Premium guarantee a Teams link for every calendar?",
+            "a": "No. Premium adds the app’s Microsoft features, but the Microsoft account and calendar must support the online meeting provider and allow the operation. Check that a usable joining link was returned."
+          },
+          {
+            "q": "Why is the event saved but the link missing?",
+            "a": "Event saving and conference creation are not the same outcome. A conference request can still be pending or fail. Check the owning provider event, account and permissions before making a duplicate."
+          }
+        ],
+        "sourcesHeading": "Meeting provider references",
+        "sources": [
+          {
+            "label": "Google: conference creation status on calendar events",
+            "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+          },
+          {
+            "label": "Microsoft: online meetings and supported calendar providers",
+            "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-online-meetings"
+          },
+          {
+            "label": "Google: event import limitations",
+            "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+          }
+        ],
+        "seeAlso": [
+          "exchange-calendars-on-an-iphone",
+          "keeping-track-of-who-replied",
+          "icloud-google-and-outlook-in-one-view",
+          "calendar-event-or-room-reservation"
+        ]
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 3,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "pass_no_material_issue_identified",
+      "assessment": "BaseGoogleMeet and PremiumTeams are distinguished from account eligibility/edit permission. Provider conference request may fail/pending; saved event is not link success. Import fidelity and RSVP correctly separated.",
+      "evidenceReferences": [
+        "research/batch08-sharing/evidence.json"
+      ],
+      "issues": []
+    },
+    {
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "rawModuleSha256": "ef1e7b23e8b810c38657496727bd2e255aa6d02212a43721dfef1fc5113bb02c",
+      "rawObjectSha256": "8b556ffded240897f6bd945de56af6c3f43e5ca4425592b4ded1c7b0c53cefa3",
+      "jsonStringifySha256": "3f89adfaf8e6301aedd23da5b828fe86d8733aeb687394e94debd1d2129d3c9f",
+      "matchesCoverageMapping": {
+        "raw": true,
+        "json": true
+      },
+      "fullRead": true,
+      "readScope": "Entire actual current object including title/short/description/lede/commonBelief if present, every section paragraph, practical, FAQ, claims, sources and related routes.",
+      "fullObjectSnapshot": {
+        "title": "Combine calendar apps on iPhone without losing track of events",
+        "short": "Replace app switching with a checked overview",
+        "description": "Bring calendar accounts into one iPhone overview. Check event destinations, duplicate routes, write-back and notifications before changing your daily workflow.",
+        "lede": "A single calendar view can help you compare commitments across accounts. Start by checking what it includes and where changes are saved. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+        "commonBelief": "Replacing several calendar apps means merging all calendars and deleting the old apps immediately.",
+        "sections": [
+          {
+            "heading": "Choose the job you need the overview to do",
+            "body": [
+              "Write down the calendars that affect a real scheduling decision: your work meetings, personal appointments and a shared household schedule, for example. Identify their accounts and who owns each calendar. Several calendars under one Google account are still separate calendars.",
+              "Decide whether you need to see commitments together, edit their originals, or copy availability into another account. These are different jobs. A combined view helps you compare times; it does not by itself make colleagues see a personal appointment in their work scheduling system."
+            ]
+          },
+          {
+            "heading": "Check workplace approval before connecting",
+            "body": [
+              "For a work account, use the connection method your organisation permits. Keep its approved app available when it is required for meeting responses, delegated access or other work tasks. A paid personal calendar app cannot grant missing permissions.",
+              "If a connection fails, record which account type and stage failed rather than repeatedly changing passwords or deleting accounts. An access decision, a connection error and a calendar that is merely hidden need different remedies. Ask your administrator when the permitted route is unclear."
+            ]
+          },
+          {
+            "heading": "Add accounts without assuming there are no copies",
+            "body": [
+              "Cloud Calendars can present selected iOS calendars alongside connected Google and Microsoft calendars. Its provider connections use mirrored calendars in the iPhone calendar store. This is different from promising a display-only connection that never stores another representation of an event.",
+              "Before adding a second route to the same account, check how it already appears on the phone. A provider calendar available through iOS and through a separate app connection can be confusing to identify by name alone. Inspect the calendar and source instead of assuming similarly named entries are interchangeable."
+            ]
+          },
+          {
+            "heading": "Verify one disposable appointment in both directions",
+            "body": [
+              "Create a harmless test appointment with a distinctive name in the intended writable calendar. Confirm it in the provider’s own view. Change its title there, return to the combined view and check the same record. Then make a small test change from the combined view and confirm it at the provider.",
+              "This checks your actual setup; it is not a guaranteed refresh-time test. Use an ordinary appointment you own, without guests or recurrence, so troubleshooting does not send changed invitations to other people. Keep real meetings unchanged until you understand which route is failing."
+            ]
+          },
+          {
+            "heading": "Narrow the view before deleting anything",
+            "body": [
+              "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion.",
+              "Apple documents showing or hiding calendars using the calendar-list checkboxes. Hiding is a useful first display check; deleting a record or account can have wider effects. Preserve the source and any needed backup while you investigate."
+            ]
+          },
+          {
+            "heading": "Choose a routine after the checks pass",
+            "body": [
+              "Keep the combined view as your usual planning screen if it covers the calendars you need. Keep another approved app for a task the overview does not support, such as a workplace-specific invitation workflow. Fewer switches can be useful without making one app responsible for every account function.",
+              "Check notifications separately. Seeing an event once does not establish that only one app or device will alert you. Cloud Calendars Base includes Google sync and calendar views; Advanced removes ads, while Premium adds Microsoft Calendar and Teams support. Check local prices and account permissions before subscribing."
+            ]
+          }
+        ],
+        "claims": {},
+        "practical": [
+          "List the calendars and owning accounts needed for your planning overview.",
+          "Confirm workplace approval and keep any required work app.",
+          "Check existing account routes before adding another provider connection.",
+          "Trace one disposable appointment to the provider and back.",
+          "Hide a suspected duplicate calendar before considering deletion.",
+          "Review alerts independently of the visible calendar view."
+        ],
+        "faq": [
+          {
+            "q": "Must I delete the other calendar apps?",
+            "a": "No. Keep required apps and preserve your current setup while checking the new overview. Use each app for the tasks you have verified."
+          },
+          {
+            "q": "Will my colleagues see that my personal time is busy?",
+            "a": "A combined view on your phone does not establish that another account receives availability. That is a separate sharing or synchronization requirement."
+          },
+          {
+            "q": "Does connecting a provider mean data stays only at the provider?",
+            "a": "Do not assume that. Cloud Calendars uses mirrored provider calendars in the iOS calendar store. Check the actual account route and storage context before connecting sensitive calendars."
+          }
+        ],
+        "sourcesHeading": "Official calendar setup and visibility guidance",
+        "sources": [
+          {
+            "label": "Apple: Set up multiple calendars on iPhone",
+            "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+          },
+          {
+            "label": "Apple: Hide calendars when investigating duplicates",
+            "url": "https://support.apple.com/en-us/102180"
+          }
+        ],
+        "seeAlso": [
+          "icloud-google-and-outlook-in-one-view",
+          "what-calendar-sync-actually-does",
+          "calendar-notifications-missing-silent-or-duplicated"
+        ],
+        "updated": "2026-10-21"
+      },
+      "structure": {
+        "sections": 6,
+        "paragraphs": 12,
+        "practical": 6,
+        "faq": 3,
+        "sources": 2,
+        "claims": {},
+        "updated": "2026-10-21"
+      },
+      "decision": "targeted_correction_recommended",
+      "assessment": "Core overview/mirror/ownership and workplace requirements are sound, with owned guest-free tests and no automatic busy-time replication. One material omission remains in the temporary-hide step: restore selection and disclose downstream effects.",
+      "evidenceReferences": [
+        "research/batch26-duplicates/product-evidence.json",
+        "research/batch26-duplicates/root-preparation-review.json"
+      ],
+      "issues": [
+        {
+          "severity": "material_missing_consequence_in_diagnostic_step",
+          "path": "sections[4].body[0]",
+          "before": "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion.",
+          "proposedAfter": "If the overview has duplicates, temporarily hide one calendar and note which entry disappears. Compare account, calendar, organiser and time before deciding whether you have two stored records or two display routes. Repeated names are not enough evidence for deletion. Record the original selection and restore it after comparing. In Cloud Calendars, selection can also affect widgets, notification scheduling and Google synchronization.",
+          "rationale": "Hiding is suggested in the Cloud combined-view workflow without restoring calendars or explaining effects beyond appearance. Recorded selected-calendar consumers include widget snapshots, notifications and Google upload/download guards. Restoring original selection avoids leaving a diagnostic change in place.",
+          "evidence": "research/batch26-duplicates/product-evidence.json CalendarViewModel165–200/880–944/1236–1254/1338–1356 and root-preparation-review EventNotificationManager250–306; exact recorded source evidence, no new runtime claim.",
+          "scope": "Append two sentences only; do not change existing sources, ownership controls or provider rules. Date may update on integration under root policy; no source edit performed.",
+          "notClaimed": "No all-provider pause/resume or instant restoration/update guarantee."
+        }
+      ]
+    }
+  ],
+  "evidenceReadThisPass": [
+    "research/batch03-drafts/alerts-search-evidence.json",
+    "research/batch05-default-family/evidence-20261021.json",
+    "research/batch17-onecal/evidence.json",
+    "research/batch19-room-resource/evidence.json"
+  ],
+  "priorEvidenceReused": [
+    "research/product-facts.json",
+    "research/batch08-sharing/evidence.json",
+    "research/batch26-duplicates/product-evidence.json",
+    "research/batch26-duplicates/root-preparation-review.json",
+    "Earlier all-day and widget source-backed review context"
+  ],
+  "limits": [
+    "No fresh primary browsing was needed to resolve the concrete selected-calendar omission; its recorded exact-code evidence suffices for a proposed qualification. Provider facts assessed against recorded primary reviews, not newly fetched or authenticated runtime.",
+    "Not every referenced historical report reread in this pass; evidenceReadThisPass distinguishes fresh localreport reads from prior context.",
+    "Pass means no material issue identified in this bounded editorial review, not release/runtime/privacy or exhaustive provider correctness certification.",
+    "No source/ASC/native/customer/build/deploy/commit action. Only research review written."
+  ],
+  "recommendedNextAction": "Root review the single exact append proposal in three-calendar-apps-is-two-too-many. No duplicate new article or broad rewrite proposed."
+}

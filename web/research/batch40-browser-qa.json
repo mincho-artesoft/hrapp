@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-22T05:21:03.601514+00:00",
+  "allPassed": true,
+  "mobileArticleLocales": [
+    "en-US",
+    "it"
+  ],
+  "mobileViewport": 390,
+  "clientAndScrollWidth": 379,
+  "englishOfflineSectionPresent": true,
+  "englishEightSectionHeadingsPresent": true,
+  "italianSevenSectionHeadingsPresent": true,
+  "italianFourExactSourceLinksPresent": true,
+  "englishWiderViewport": 575,
+  "englishWiderClientAndScrollWidth": 564,
+  "screenshot": "/tmp/cloud-calendar-batch40-offline-en.png",
+  "visibleContent": "Preceding two-device diagnostic and new offline preflight/provider-app-vs-browser paragraphs visible. Final local-only qualifier verified by full static body check, not claimed in screenshot.",
+  "viewportReset": true,
+  "limits": "BrowserDOM/readability samples,not nativeoffline/queue/delivery/runtime tests or screen-reader certification."
+}

@@ -1,0 +1,90 @@
+{
+  "title": "Permisiunile invitaților în Google Calendar: editare, invitații și lista participanților",
+  "short": "Permisiunile invitaților",
+  "description": "Verifică permisiunile și setările implicite Google. Separă drepturile invitației de accesul la calendar și de rolurile Cloud Calendars.",
+  "lede": "Posibilitatea de a răspunde nu descrie tot ce poate face un invitat. Verifică permisiunile înainte să folosești o singură invitație pentru echipă, clienți sau o întâlnire publică. Ghidul este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Invitații pot doar accepta sau refuza, iar toate aplicațiile oferă aceleași controale de acces.",
+  "sections": [
+    {
+      "heading": "Începe cu organizatorul și evenimentul original",
+      "body": [
+        "Deschide evenimentul în Google Calendar cu contul organizatorului sau unul autorizat să-l gestioneze. Verifică calendarul, data și organizatorul înainte să schimbi permisiuni. O întâlnire importată separat nu este un loc sigur pentru controlul invitației originale.",
+        "Pentru o întâlnire de echipă, stabilește cine o poate reprograma, cine poate invita alte persoane și dacă participanții trebuie să se vadă între ei. Sunt decizii distincte. Un invitat care trebuie să participe nu are neapărat nevoie să gestioneze întâlnirea."
+      ]
+    },
+    {
+      "heading": "Decide dacă invitații pot modifica întâlnirea",
+      "body": [
+        "Google documentează opțiunea de modificare a evenimentului în permisiunile invitaților din editorul pentru computer. Este un drept larg de colaborare, nu doar o modalitate de a sugera altă oră. Google explică faptul că permite gestionarea evenimentului, editarea câmpurilor, vizualizarea invitaților și rezervarea sălilor.",
+        "Un coorganizator de încredere care pregătește un atelier poate avea nevoie de această flexibilitate. Un client care vine la o programare poate nu are. Alege după responsabilitatea acordată și verifică evenimentul salvat, fără să te bazezi pe configurația altei întâlniri."
+      ]
+    },
+    {
+      "heading": "Verifică separat invitațiile și vizibilitatea participanților",
+      "body": [
+        "Modelul de evenimente Google separă dreptul de a invita alte persoane de dreptul de a vedea ceilalți invitați. Verifică-le pe ambele, alături de editare. Dezactivarea uneia nu înseamnă verificarea celeilalte, iar o valoare implicită afișată nu dovedește setările unui eveniment existent.",
+        "Pentru clienți fără legătură între ei, gândește-te dacă o invitație comună este potrivită. Informațiile deja incluse în e-mailuri, descrieri sau mesaje redirecționate depășesc controlul actual al listei de invitați. Nu pune date confidențiale în descriere presupunând că ascunderea listei le va ascunde."
+      ]
+    },
+    {
+      "heading": "Verifică setările implicite și evenimentele importante",
+      "body": [
+        "Google documentează și permisiuni implicite ale invitaților în setările evenimentelor, inclusiv pentru modificare. Controalele nu sunt exclusiv individuale. Revizuiește valorile implicite când se schimbă modul obișnuit de programare, apoi verifică separat invitațiile importante existente.",
+        "La o întâlnire repetată, confirmă ce apariție sau serie editezi înainte să salvezi. Nu presupune că schimbarea unei preferințe rescrie invitațiile vechi. Pentru un test cu un coleg, folosește un exemplu convenit și fără date sensibile, nu muta sau anula o întâlnire reală cu un client."
+      ]
+    },
+    {
+      "heading": "Separă rolurile Cloud Calendars",
+      "body": [
+        "Cloud Calendars are propriul sistem de partajare cu rolurile Reader, Writer și Owner. Reader permite vizualizarea și sincronizarea; Writer permite editarea; Owner gestionează și partajarea și accesul folosind identitatea invitată. Aceste roluri nu sunt comutatoare pentru cele trei permisiuni Google.",
+        "Când contează o permisiune specifică Google, inspectează evenimentul original în Google Calendar. Prezența unui participant în Cloud Calendars nu dovedește că toate setările Google pot fi schimbate acolo. Când investighezi un control lipsă sau o editare nereușită, clarifică serviciul proprietar și identitatea destinatarului."
+      ]
+    },
+    {
+      "heading": "Confirmă rezultatul și responsabilitățile",
+      "body": [
+        "După salvare, redeschide evenimentul original și verifică setările dorite. Dacă este potrivit, cere unui coleg autorizat să confirme ce poate face din propriul cont. Nu schimbați parole și nu trimiteți date private ale invitaților ca scurtătură pentru verificarea accesului.",
+        "Separă participarea de permisiuni. Dreptul de editare, o copie importată și un răspuns de acceptare sunt lucruri diferite. În Cloud Calendars, confirmarea primirii unui element partajat nu este RSVP. Pentru o întâlnire importantă, cere răspunsul privind participarea și precizează cine răspunde de schimbările programului."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifică contul organizatorului și evenimentul original.",
+    "Stabilește cine gestionează întâlnirea, invită persoane și vede invitații.",
+    "Verifică permisiunile reale ale evenimentului Google.",
+    "Revizuiește valorile implicite fără a presupune că modifică evenimentele existente.",
+    "Tratează rolurile Cloud Calendars ca sistem separat.",
+    "Redeschide evenimentul salvat și confirmă participarea separat."
+  ],
+  "faq": [
+    {
+      "q": "Poate un invitat schimba ora întâlnirii?",
+      "a": "Google permite acordarea dreptului de modificare. Verifică evenimentul și accesul invitatului; simpla primire a invitației nu dovedește acest drept."
+    },
+    {
+      "q": "Permisiunile se configurează numai pe fiecare eveniment?",
+      "a": "Nu. Google documentează și permisiuni implicite. Verifică-le pentru programările viitoare și inspectează direct evenimentele importante existente."
+    },
+    {
+      "q": "Ascunderea listei elimină informațiile deja trimise?",
+      "a": "Nu dovedește eliminarea e-mailurilor, descrierilor, capturilor sau copiilor independente anterioare. Verifică separat ce a fost distribuit."
+    }
+  ],
+  "sourcesHeading": "Ghidurile furnizorilor și lecturi suplimentare",
+  "sources": [
+    {
+      "label": "Google: colaborarea la evenimente și permisiunile implicite",
+      "url": "https://support.google.com/a/users/answer/13293412?hl=en"
+    },
+    {
+      "label": "Google: câmpurile de permisiune ale invitaților",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/events"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

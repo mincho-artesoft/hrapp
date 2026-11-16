@@ -1,0 +1,15 @@
+{
+  "locale": "zh-Hant",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "你手上的每一本行事曆——iCloud、Google、Microsoft——都在同一個地方，預報就長在那一天裡面。別再猜下午是什麼樣子了。",
+      "after": "在 iPhone 和 iPad 上查看選取的 iCloud 和 Google 行事曆，並在計畫旁查看可用的天氣預報。Premium 增加 Microsoft 行事曆連線。"
+    },
+    {
+      "path": "metaDescription",
+      "before": "把你的行事曆和預報放在同一個地方。為 iPhone 和 iPad 打造。 iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "在 iPhone 和 iPad 上使用 iCloud 和 Google 行事曆、天氣及小工具。免費下載；Premium 增加 Microsoft 行事曆和 Teams。"
+    }
+  ]
+}

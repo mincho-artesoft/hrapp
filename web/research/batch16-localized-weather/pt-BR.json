@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendário com previsão no iPhone e iPad: avalie seu plano no contexto",
+  "short": "Use calendário e previsão juntos",
+  "description": "Use calendário e previsão no iPhone e iPad. Confira o local selecionado, os horários disponíveis e os detalhes do evento antes de salvar.",
+  "lede": "O calendário informa quando um compromisso está marcado. A previsão responde a outra pergunta: quais condições são esperadas no lugar e período de que você precisa. Use os dois juntos, conferindo locais e datas. Este guia é publicado pela Arte Soft, desenvolvedora do Cloud Calendars.",
+  "commonBelief": "A previsão ao lado do calendário corresponde automaticamente ao endereço de cada compromisso, a todas as horas e a qualquer data futura.",
+  "sections": [
+    {
+      "heading": "Comece por uma decisão concreta",
+      "body": [
+        "Comece por um compromisso específico, como uma visita ao parque à tarde. Identifique o que poderia mudar: horário, local, preparação ou uso de uma alternativa. Não é preciso reorganizar todo o calendário só porque o símbolo do dia indica chuva.",
+        "Anote o início e o término reais da atividade, incluindo a preparação quando relevante. O panorama do calendário ajuda a encontrar datas possíveis; a previsão diz respeito a um local e intervalo específicos. Mantenha essas tarefas separadas ao comparar opções."
+      ]
+    },
+    {
+      "heading": "Confirme o local da previsão",
+      "body": [
+        "O Cloud Calendars oferece previsão para o local atual ou selecionado. Confira o lugar exibido, sem presumir que o endereço de um evento altera a previsão silenciosamente. Um compromisso em outra cidade precisa ser comparado com o tempo daquela cidade.",
+        "Por exemplo, alguém pode planejar a chegada a um museu enquanto o celular ainda está em casa. Leia o local da previsão e o horário local do compromisso antes de comparar. Valores próximos na tela não comprovam que calendário e previsão usam o mesmo lugar."
+      ]
+    },
+    {
+      "heading": "Confira a cobertura horária e diária separadamente",
+      "body": [
+        "Use o resumo diário para se orientar e os horários disponíveis para avaliar parte do dia. Uma reserva das duas às cinco exige mais que olhar um símbolo. Confira se as horas relevantes estão presentes.",
+        "No código atual do aplicativo, a lista diária usa até dez dias retornados pelo WeatherKit. Isso é separado da navegação do calendário e das horas fornecidas. Um compromisso futuro não amplia a previsão. Se o período não está disponível, programe uma revisão posterior."
+      ]
+    },
+    {
+      "heading": "Entenda o significado dos valores",
+      "body": [
+        "A Apple documenta dados WeatherKit como temperatura, precipitação, vento e UV, com alguns produtos disponíveis apenas em certas regiões. Leia os valores do local escolhido, sem esperar todos os produtos meteorológicos em qualquer lugar.",
+        "As orientações do Met Office mostram por que o período e a definição da variável importam: alguns valores se referem a um instante, outros a um intervalo. Use os rótulos do provedor relevante. Probabilidade, volume e duração da chuva são perguntas diferentes; nenhum número decide toda atividade ao ar livre."
+      ]
+    },
+    {
+      "heading": "Revise o rascunho criado a partir de uma hora",
+      "body": [
+        "Onde o aplicativo permite criar um evento a partir de uma hora, ele abre um rascunho. O código atual usa o fuso do local da previsão, propõe duração de uma hora e escolhe o calendário padrão para novos eventos. Revise cada valor antes de salvar.",
+        "Confirme título, calendário de destino, início, término e local pretendido. Escolher uma previsão não concede permissão para editar calendário compartilhado, não avisa um estabelecimento nem reserva uma sala. Confira o evento salvo e obtenha os acordos necessários."
+      ]
+    },
+    {
+      "heading": "Separe a demonstração do site",
+      "body": [
+        "A demonstração meteorológica interativa do site usa Open-Meteo. O aplicativo usa Apple WeatherKit. A demonstração ajuda a conhecer a apresentação, mas local, dados e datas disponíveis podem diferir do aplicativo.",
+        "Para decidir de verdade, abra o aplicativo e compare o compromisso pretendido com a previsão disponível. Ao mudar um plano compartilhado, confirme organizador, alcance da recorrência e participantes. Combine uma alternativa quando a atividade depender das condições."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifique o compromisso e a decisão que o tempo pode mudar.",
+    "Confirme o local da previsão e a data e hora locais do compromisso.",
+    "Confira os horários disponíveis separadamente do resumo diário.",
+    "Leia probabilidade, volume e outros valores pelos respectivos rótulos.",
+    "Revise o rascunho e o calendário de destino antes de salvar.",
+    "Confira novamente no momento de decidir e confirme mudanças compartilhadas diretamente."
+  ],
+  "faq": [
+    {
+      "q": "A previsão junto ao calendário acompanha cada endereço de evento?",
+      "a": "Não presuma isso. Confira o local meteorológico exibido e compare com o destino; proximidade na tela não comprova correspondência."
+    },
+    {
+      "q": "O aplicativo usa o provedor meteorológico do site?",
+      "a": "Não. O aplicativo usa Apple WeatherKit; a demonstração do site usa Open-Meteo separadamente."
+    },
+    {
+      "q": "Escolher uma hora da previsão salva um compromisso automaticamente?",
+      "a": "Onde essa ação existe, ela inicia um rascunho. Confira data, fuso, duração, calendário e local antes de salvar o evento desejado."
+    }
+  ],
+  "sourcesHeading": "Fontes oficiais e leitura complementar",
+  "sources": [
+    {
+      "label": "Apple: informações e disponibilidade regional do WeatherKit",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: local, períodos e valores da previsão",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ],
+  "seeAlso": []
+}

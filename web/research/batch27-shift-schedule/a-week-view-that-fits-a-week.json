@@ -1,0 +1,94 @@
+{
+  "updated": "2026-10-22",
+  "title": "Week calendar on iPhone: compare hours without overlooking commitments",
+  "short": "Read a week calendar clearly",
+  "description": "Read a week calendar on iPhone: check dates, selected calendars, all-day events and exact hours before fitting another appointment into an apparent gap.",
+  "lede": "A week grid helps compare when commitments begin and end. Start with the dates and calendars it represents, then use the details when a small block or shortened title leaves a question unanswered. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Every visible gap is available time, and every commitment appears as a timed block.",
+  "sections": [
+    {
+      "heading": "Check which week and calendars you are reading",
+      "body": [
+        "Read the date range and day labels before placing an appointment. A selected range is not necessarily the week you had in mind. Check that the work, family or other calendars relevant to this decision are selected, rather than assuming every connected calendar is currently visible.",
+        "For example, a personal view may hide a work calendar to reduce clutter. The clear afternoon it shows does not establish that the work schedule is empty. Bring the relevant calendars into view before offering the slot, and confirm the account behind an unfamiliar colour."
+      ]
+    },
+    {
+      "heading": "Use blocks to compare time, then open the details",
+      "body": [
+        "Compare start, end and overlap on the hour grid. A narrow event can be hard to read, so open it to check the full title, location and calendar. Do not infer a precise duration from the apparent size of a small block alone.",
+        "If two appointments overlap, first establish whether they are separate commitments or two displays of the same record. Similar titles and matching times do not prove duplication. Temporarily hide one calendar to identify the source instead of deleting an invitation to clear the grid."
+      ]
+    },
+    {
+      "heading": "Read all-day events separately from the hourly gaps",
+      "body": [
+        "Cloud Calendars separates all-day events from timed events in its multi-day display. Inspect that area as well as the hour columns. A holiday, trip or all-day commitment can matter even when the timed grid looks empty.",
+        "An all-day label does not by itself tell you which hours you can offer to someone else. Open the event and understand its actual meaning. For travel over several days, check the start and end dates rather than assuming a single visible label describes every affected day."
+      ]
+    },
+    {
+      "heading": "Include the parts of the plan that are not yet appointments",
+      "body": [
+        "A calendar can only display the information available to it. A journey, preparation or recovery period may need its own agreed block if it affects a booking. Seeing space between two saved meetings does not establish that you can travel between their locations in that interval.",
+        "For a workshop after an existing appointment, write down the real travel and setup requirements before choosing a start. This is a planning method, not a claim that Cloud Calendars automatically calculates travel buffers or reserves time in colleagues’ scheduling systems.",
+        "For a confirmed shift from Monday at 22:00 to Tuesday at 06:00, record a timed event with Tuesday explicitly set as the ending date. Reopen the saved event to check both dates, times, calendar and relevant time zone. A Monday label alone does not communicate the Tuesday finish. Before offering a Tuesday morning appointment, allow for your actual journey home and recovery needs. Use the employer’s confirmed rota for the shift itself. If it repeats, follow the recurrence guide below and use a rule only when it matches that rota; a personal calendar change does not approve a shift swap."
+      ]
+    },
+    {
+      "heading": "Switch to a closer view before a consequential edit",
+      "body": [
+        "If the selected range needs more space than the viewport, Cloud Calendars can scroll the day columns rather than squeeze them all into view. Check the day labels as you scroll. Open the day or the event details when a particular commitment needs closer inspection.",
+        "Before dragging or resizing an event, check its calendar, intended local time and repeat scope. After saving a permitted change, reopen it and verify the result. A successful-looking gesture does not prove that the owning service and every participant have accepted the new arrangement."
+      ]
+    },
+    {
+      "heading": "Keep view controls and weather coverage in context",
+      "body": [
+        "Apple Calendar and Teamup document their own week-view controls. Teamup also distinguishes browser configuration from mobile views. Those instructions do not establish the same controls inside Cloud Calendars; choose the view from the app you are actually using.",
+        "A week of appointments is not a guarantee of complete weather information for every day or place. For an outdoor slot, check the selected forecast location and available date and hours separately. Then communicate the final arrangement through the agreed channel."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check the date range and selected calendars.",
+    "Read exact start and end times when a block is unclear.",
+    "Inspect all-day commitments as well as timed events.",
+    "Account for real travel and preparation before offering a gap.",
+    "Confirm editing permission, local time and recurrence scope.",
+    "Reopen the saved event and confirm important changes directly."
+  ],
+  "faq": [
+    {
+      "q": "Does a blank part of the week mean everyone is free?",
+      "a": "No. It reflects the calendars and information currently displayed. Check hidden commitments and confirm availability with the people involved."
+    },
+    {
+      "q": "Why can a week look empty despite an all-day commitment?",
+      "a": "All-day events are displayed separately from timed blocks. Inspect that area and open the event before offering the time."
+    },
+    {
+      "q": "Should I drag an event whose title I cannot read?",
+      "a": "Open its details first. Confirm its identity, calendar, time and intended edit scope before changing it."
+    }
+  ],
+  "sourcesHeading": "Official view descriptions for comparison",
+  "sources": [
+    {
+      "label": "Apple: month, multiple-day and list views in Apple Calendar",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: view choices and browser versus mobile settings",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "month-view-on-a-bigger-screen",
+    "a-list-for-people-who-dislike-grids",
+    "drag-an-event-to-move-it",
+    "calendar-event-or-room-reservation",
+    "recurring-events-without-the-mess"
+  ]
+}

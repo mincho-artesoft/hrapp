@@ -1,0 +1,44 @@
+{
+  "updatedAt": "2026-10-23",
+  "batch": "03",
+  "stage": "batch_03_drafts_complete_awaiting_independent_review",
+  "files": {
+    "briefs": "research/content-scale-20261023/claude/claude-briefs-03.json",
+    "drafts": "research/content-scale-20261023/claude/claude-drafts-03.json",
+    "editorialRecords": "research/content-scale-20261023/claude/claude-editorial-records-03.json"
+  },
+  "batches01and02Untouched": true,
+  "completedDrafts": [
+    "outlook-propose-new-meeting-time",
+    "outlook-end-recurring-meeting-early-keep-history",
+    "outlook-change-meeting-organizer-or-copy-meeting",
+    "outlook-appointment-meeting-event-convert-and-update",
+    "outlook-subscribe-or-import-ics-calendar",
+    "outlook-teams-meeting-button-missing",
+    "outlook-birthday-calendar-from-contacts",
+    "outlook-split-view-overlay-calendars",
+    "outlook-print-calendar-styles",
+    "outlook-shared-mailbox-calendar",
+    "outlook-work-hours-and-location",
+    "outlook-scheduling-assistant-read-colleague-availability"
+  ],
+  "holds": [
+    { "topic": "Outlook default reminder changes", "reason": "Microsoft classic wording ambiguous ('applies to all the existing appointments... Save this setting for future'); second Microsoft page silent. Not guessed." },
+    { "topic": "Room/equipment booking declines", "reason": "Already covered by existing calendar-event-or-room-reservation." },
+    { "topic": "Standalone 'cancelled meeting still on calendar'", "reason": "Fetched delete page lacks the attendee flow; best-practice 'Remove from Calendar' sentence used inside the series article." },
+    { "topic": "Scheduling Assistant 'No information' deep troubleshooting", "reason": "Only an ITPro registry-error page found; used as escalation note." },
+    { "topic": "Outlook conflict-error known issue", "reason": "Marked fixed in 2024; historical." }
+  ],
+  "verificationNotesForReviewer": [
+    "Raw cached bodies used for: best practices, change-an-appointment, import-or-subscribe, Scheduling Assistant, share-your-calendar, manage-availability.",
+    "Full Markdown bodies fetched for Learn pages: Teams add-in, shared mailboxes, free/busy error.",
+    "WebFetch extractions only (re-verify before approval): propose-new-time, cancel-all-future, cancel-recurring-series, delete-appointment, birthday calendar, view-multiple-calendars (web tab inferred by tool), print pages, shared-mailbox support page, work hours and location, Teams-in-new-Outlook (odd final URL reported).",
+    "Copy-meetings known-issue body was read only via search-result extraction; reviewer should fetch it.",
+    "No page in this batch asserts that all modern clients behave alike; undocumented clients are labelled as such."
+  ],
+  "limitations": [
+    "JSON validity checked by pattern search only.",
+    "seeAlso uses only baseline routes; related Claude batch 01/02 drafts referenced in records only.",
+    "No firsthand testing; worked examples fictional."
+  ]
+}

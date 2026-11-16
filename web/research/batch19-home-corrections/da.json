@@ -1,0 +1,26 @@
+{
+  "locale": "da",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Morgendagen har allerede",
+        "en udsigt med."
+      ],
+      "after": [
+        "Planlæg den næste dag.",
+        "Tjek den tilgængelige vejrudsigt."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Syv søjler, hver med sin egen højeste, laveste og sine egne forhold. Drej til liggende for hele bredden. Tag fat i en begivenhed og skub den til en anden dag.",
+      "after": "Sammenhold ugens aftaler med den tilgængelige daglige vejrudsigt. Drej enheden til liggende for at få en bredere visning. Flyt redigerbare begivenheder til en anden dag, og kontrollér, hvilke forekomster du vil ændre ved en gentagen begivenhed."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Træk den. Stræk den. Færdig.",
+      "after": "Træk. Tilpas varigheden. Kontrollér."
+    }
+  ]
+}

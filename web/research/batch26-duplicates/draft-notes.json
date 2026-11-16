@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-22",
+  "status": "draft_only",
+  "sourceFile": "src/app/content/en-US/articles-help.ts",
+  "slug": "calendar-export-ics-pdf-and-backup",
+  "hashMethod": "SHA-256 of UTF-8 JSON.stringify(parsed article object), preserving key order; not raw-file hash.",
+  "beforeObjectSha256": "df3f57c53aada5e56285b5911fa8fd5096ee5a4fd366ecaf7c43aa3b2bd29d23",
+  "afterObjectSha256": "5585e4153cba79fea27a75e785a89457e3d06db4e22e86cfc68a57a1e36bbb6f",
+  "addition": {
+    "faq": {
+      "q": "Google says “Processed zero events.” Should I import again?",
+      "a": "First check the calendar selected as the import destination. Google says this message can appear after a second click on Import when the first import already succeeded. Look for the expected events before retrying. The message alone does not prove that events are missing, and it is not a guarantee that repeated imports always avoid duplicates. If the result is still unclear, follow Google’s computer-based import troubleshooting and compare the destination before deleting anything."
+    },
+    "source": {
+      "label": "Google: fix problems importing calendar events",
+      "url": "https://support.google.com/calendar/answer/45654?hl=en"
+    },
+    "wordCountIncludingQuestion": 83
+  },
+  "evidence": [
+    {
+      "file": "research/batch26-duplicates/intent-research.json",
+      "scope": "Complete record read; official Google import troubleshooting main18–122 recorded full, with conditional second-click explanation."
+    },
+    {
+      "file": "research/batch26-duplicates/product-evidence.json",
+      "scope": "Complete record read. Native selection, repeated app-invitation matching and destructive commands remain separate from Google file import; no native capability inferred."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/45654?hl=en",
+      "scope": "Root supplied fresh complete main-body read18–122 on2026-10-22; used as supplied primary verification. No separate fresh web fetch by this draft author."
+    }
+  ],
+  "rationale": "Adds the documented ambiguous zero-processed message case to existing import checks. It tells the reader to inspect the selected destination before deciding on a retry, without claiming every zero result means success or every reimport deduplicates.",
+  "validation": {
+    "nineSectionsAndBodiesUnchanged": true,
+    "metadataPracticalRelatedClaimsDateUnchanged": true,
+    "oldFaqsUnchanged": true,
+    "oldSourcesUnchanged": true,
+    "faqBefore": 4,
+    "faqAfter": 5,
+    "sourcesBefore": 8,
+    "sourcesAfter": 9,
+    "within100Words": true
+  },
+  "limits": [
+    "Only one FAQ and one exact official source appended to proposed full object.",
+    "No repeated-import instruction, universal dedup guarantee, file-size/menu-path tangent or source anomaly.",
+    "Selection-side-effects edits remain pending separate root review and are not included.",
+    "No source integration, build, deploy, native/provider/customer action, review submission or ASC operation."
+  ]
+}

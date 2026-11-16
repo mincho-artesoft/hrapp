@@ -1,0 +1,23 @@
+{
+  "newPages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "httpStatus": 200,
+      "title": "Shift work calendar on iPhone: plan a rotating schedule without losing changes",
+      "indexable": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "httpStatus": 200,
+      "title": "Booking link, event invitation or shared calendar: which should you send?",
+      "indexable": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/",
+      "httpStatus": 200,
+      "title": "Natural-language calendar events on iPhone: enter quickly, check before saving",
+      "indexable": true
+    }
+  ],
+  "scope": "Public HTML fetch, title, structured-data presence and robots directive; not proof of indexing."
+}

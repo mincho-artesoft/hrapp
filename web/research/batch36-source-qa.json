@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-22T04:14:32.663Z",
+  "allPassed": true,
+  "reviewedArticleDrafts": 6,
+  "fullModernizations": 5,
+  "newItalianEdition": 1,
+  "relatedOnlyBacklinks": 1,
+  "homeExactFields": 4,
+  "unrelatedObjectsMetadataDatesPreserved": true,
+  "sharedFactsAndAllEnglishBodiesUnchanged": true,
+  "jobs": [
+    {
+      "locale": "it",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/it/articles.ts",
+      "draft": "research/batch36-italian/free-google-sync-without-adverts.json",
+      "reviewHash": "a4a42e201f9c58ea62ae60258924bc99b9ce9a3a12e2bb77738bac7d457bfee2",
+      "before": "research/batch36-italian/it--free-google-sync-without-adverts--before.json"
+    },
+    {
+      "locale": "it",
+      "slug": "what-a-subscription-actually-buys",
+      "file": "src/app/content/it/articles.ts",
+      "draft": "research/batch36-italian/what-a-subscription-actually-buys.json",
+      "reviewHash": "1e2e4002f064af12331eb58b677f1b94d4e33994144d2077936e1a750611a141",
+      "before": "research/batch36-italian/it--what-a-subscription-actually-buys--before.json"
+    },
+    {
+      "locale": "it",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "file": "src/app/content/it/articles.ts",
+      "draft": "research/batch36-italian-discovery/it.json",
+      "reviewHash": "519283da50d8069f71ce8d38b4503fa662240575e48f944b2b43dc026258ea7d",
+      "before": null
+    },
+    {
+      "locale": "de-DE",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/de-DE/articles.ts",
+      "draft": "research/batch36-free-google/de-DE/free-google-sync-without-adverts.json",
+      "reviewHash": "e80371f0bc276dabafeccd0535912ebffdd56d7f4945deb50730b5d319075105",
+      "before": "research/batch36-free-google/de-DE/de-DE-before.json"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/es-ES/articles.ts",
+      "draft": "research/batch36-free-google/es-ES/draft.json",
+      "reviewHash": "4a5ab1ba70ec2a0aa30f7ab66a35bccf07e5a89c4a344565f376c8e0db272da4",
+      "before": "research/batch36-free-google/es-ES/before.json"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "free-google-sync-without-adverts",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "draft": "research/batch36-free-google/fr-FR/draft.json",
+      "reviewHash": "7e1d9e84d92fa80622123610c53404645f0c58c7ad85f9e3b58c19b47d0b73da",
+      "before": "research/batch36-free-google/fr-FR/before.json"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T02:10:56.891914+00:00",
+  "freshReads": [
+    {
+      "requested": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+      "resolved": "https://support.apple.com/en-nz/guide/iphone/iph69525c028/ios",
+      "bodyRange": [
+        1143,
+        1174
+      ],
+      "finding": "Apple Calendar event Time Zone versus display Time Zone Override; explicitly applies display change to Calendar app."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37064?hl=en",
+      "bodyRange": [
+        18,
+        96
+      ],
+      "finding": "Google computer event-zone control, explicit separate start/end setting and seasonal change caveats."
+    }
+  ],
+  "otherTwoUrls": "Existing source references preserved exactly, not freshly fetched in this pass.",
+  "scope": "Primary provider control support, not equivalent Cloud controls or runtime."
+}

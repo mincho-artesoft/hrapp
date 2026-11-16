@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "pa-IN",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "1efc63dd-18ef-4893-b517-2005d55469df",
+  "versionLocalizationId": "3dab41e0-6821-499d-9a93-49e07279b332",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: ਕੈਲੰਡਰ",
+      "characters": 23,
+      "utf8Bytes": 35,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "ਮੌਸਮ ਅਤੇ ਯੋਜਨਾਵਾਂ",
+      "characters": 17,
+      "utf8Bytes": 47,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ਸਮਾਂਸਾਰਣੀ,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਯਾਦ,ਸੱਦਾ,ਸਾਂਝਾ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਪੂਰਵਅਨੁਮਾਨ,ਵਿਜੇਟ",
+      "characters": 66,
+      "utf8Bytes": 180,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "ਯੋਜਨਾਵਾਂ ਅਤੇ ਮੌਸਮ ਇਕੱਠੇ ਦੇਖੋ। ਵੱਖਰੇ ਦ੍ਰਿਸ਼ ਅਤੇ ਹੋਮ ਸਕ੍ਰੀਨ ਵਿਜੇਟ ਵਰਤੋ ਜਾਂ ਐਪ ਖਾਤੇ ਤੋਂ ਬਿਨਾਂ ਸਥਾਨਕ ਕੈਲੰਡਰ ਬਣਾਓ।",
+      "characters": 109,
+      "utf8Bytes": 289,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "iPhone ਅਤੇ iPad ਉੱਤੇ Cloud Calendars ਨਾਲ ਕੰਮ ਅਤੇ ਨਿੱਜੀ ਯੋਜਨਾਵਾਂ ਦੇ ਨਾਲ ਮੌਸਮ ਦੇਖੋ।\n\niCloud ਕੈਲੰਡਰ ਵਰਤੋ ਅਤੇ Google Calendar ਜੋੜੋ। ਦਿਨ, ਹਫ਼ਤੇ, ਮਹੀਨੇ, ਸਾਲ ਜਾਂ ਸੂਚੀ ਦਾ ਦ੍ਰਿਸ਼ ਚੁਣੋ। Cloud Calendars ਖਾਤੇ ਤੋਂ ਬਿਨਾਂ ਡਿਵਾਈਸ ਉੱਤੇ ਸਥਾਨਕ ਕੈਲੰਡਰ ਬਣਾ ਸਕਦੇ ਹੋ। ਸੇਵਾਵਾਂ ਜੋੜਨ ਅਤੇ ਸਾਂਝਾ ਕਰਨ ਲਈ ਸਾਈਨ ਇਨ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ। ਪਹੁੰਚ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਕੈਲੰਡਰ ਅਤੇ ਸੱਦੇ ਦੀ ਕਿਸਮ ਉੱਤੇ ਨਿਰਭਰ ਕਰਦੀਆਂ ਹਨ।\n\nਯੋਜਨਾ ਬਣਾਉਂਦੇ ਸਮੇਂ ਮੌਸਮ ਦਾ ਪੂਰਵਅਨੁਮਾਨ ਦੇਖੋ। ਹੋਮ ਸਕ੍ਰੀਨ ਵਿਜੇਟ ਛੋਟੇ, ਦਰਮਿਆਨੇ ਅਤੇ ਵੱਡੇ ਆਕਾਰ ਵਿੱਚ ਉਪਲਬਧ ਹਨ। ਪੂਰਵਅਨੁਮਾਨਾਂ ਦੀ ਉਪਲਬਧਤਾ ਸਥਾਨ ਅਤੇ ਮੌਸਮ ਸੇਵਾ ਉੱਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ।\n\nਮੁਫ਼ਤ Base ਵਿੱਚ Google Calendar ਸਿੰਕ, Google Meet, ਵੱਖਰੇ ਕੈਲੰਡਰ ਦ੍ਰਿਸ਼, ਮੌਸਮ ਅਤੇ ਵਿਜੇਟ ਸ਼ਾਮਲ ਹਨ। Advanced ਵਿੱਚ Base ਦੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਹਨ ਅਤੇ ਇਸ਼ਤਿਹਾਰ ਹਟ ਜਾਂਦੇ ਹਨ। Premium ਵਿੱਚ Advanced ਦੇ ਨਾਲ Microsoft ਕੈਲੰਡਰ ਅਤੇ Microsoft Teams ਸਹਾਇਤਾ ਸ਼ਾਮਲ ਹੈ।\n\nਡਾਊਨਲੋਡ ਮੁਫ਼ਤ ਹੈ; ਚੋਣਵੀਆਂ ਗਾਹਕੀਆਂ ਆਪਣੇ ਆਪ ਨਵਿਆਈਆਂ ਜਾਂਦੀਆਂ ਹਨ। ਲੈਣ ਤੋਂ ਪਹਿਲਾਂ ਐਪ ਜਾਂ App Store ਵਿੱਚ ਮੌਜੂਦਾ ਸਥਾਨਕ ਕੀਮਤ ਅਤੇ ਬਿਲਿੰਗ ਮਿਆਦ ਦੇਖੋ। ਮੌਜੂਦਾ ਮਿਆਦ ਮੁੱਕਣ ਤੋਂ ਘੱਟੋ-ਘੱਟ 24 ਘੰਟੇ ਪਹਿਲਾਂ ਰੱਦ ਨਾ ਕਰਨ ਉੱਤੇ ਗਾਹਕੀ ਨਵਿਆਈ ਜਾਂਦੀ ਹੈ। App Store ਖਾਤੇ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਪ੍ਰਬੰਧਿਤ ਜਾਂ ਰੱਦ ਕਰੋ।\n\nਪਰਦੇਦਾਰੀ: https://www.cloud-calendars.com/privacy-policy\nਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1205,
+      "utf8Bytes": 2667,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "pa-IN",
+      "name": "Cloud Calendars: ਕੈਲੰਡਰ",
+      "subtitle": "ਸਾਰੇ ਕੈਲੰਡਰ ਇੱਕੋ ਥਾਂ",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "ਕੈਲੰਡਰ ਅਤੇ ਮੌਸਮ ਇਕੱਠੇ ਲੈ ਕੇ ਆਪਣੇ ਦਿਨ ਦੀ ਯੋਜਨਾ ਬਣਾਓ\n\nCloud Calendars ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਅਤੇ ਮੌਸਮ ਨੂੰ ਇੱਕੋ ਸਾਫ਼-ਸੁਥਰੀ ਥਾਂ 'ਤੇ ਲਿਆਉਂਦਾ ਹੈ।\n\niCloud, Google Calendar ਅਤੇ Microsoft ਕੈਲੰਡਰ ਇੱਕੋ ਐਪ ਵਿੱਚ ਸੰਭਾਲੋ, ਅਤੇ ਭਵਿੱਖਬਾਣੀ ਵੇਖੋ ਸਿੱਧੀ ਆਪਣੀ ਸਮਾਂ-ਸਾਰਣੀ, ਵਿਜੇਟ ਅਤੇ ਯੋਜਨਾ ਦੇ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ।\n\nਮੀਟਿੰਗਾਂ, ਸਫ਼ਰ, ਸਕੂਲੋਂ ਲਿਆਉਣਾ, ਬਾਹਰ ਦੇ ਕੰਮ ਅਤੇ ਰੁੱਝੇ ਦਿਨ — ਤੇਜ਼ ਯੋਜਨਾ ਲਈ ਬਣਾਏ ਕੈਲੰਡਰ ਦ੍ਰਿਸ਼ਾਂ ਨਾਲ ਅੱਗੇ ਰਹੋ।\n\nਹੋਮ ਸਕਰੀਨ ਵਿਜੇਟ\n\nਇਹ ਇਕੱਠੇ ਵਿਖਾਉਣ ਵਾਲੇ ਵਿਜੇਟ ਜੋੜੋ:\n• ਕੈਲੰਡਰ ਦੇ ਇਵੈਂਟ\n• ਮੌਸਮ ਦੀ ਭਵਿੱਖਬਾਣੀ\n• ਆਉਣ ਵਾਲੀ ਸਮਾਂ-ਸਾਰਣੀ\n• ਚੰਨ ਦੀ ਕਲਾ ਅਤੇ ਹਾਲਤ\n• ਹਵਾ ਅਤੇ ਤਾਪਮਾਨ\n• ਦਿਨ ਦਾ ਸਾਰ\n\nਕਈ ਵਿਜੇਟ ਸ਼ੈਲੀਆਂ ਵਿੱਚੋਂ ਚੁਣੋ ਅਤੇ ਹੋਮ ਸਕਰੀਨ ਤੋਂ ਹੀ ਆਪਣਾ ਦਿਨ ਵੇਖੋ।\n\nCLOUD CALENDARS ਕਿਉਂ\n\n• iCloud, Google Calendar ਅਤੇ Microsoft ਕੈਲੰਡਰ ਇਕੱਠੇ ਵੇਖੋ\n• ਅੰਦਰ ਹੀ ਮੌਜੂਦ ਮੌਸਮ ਭਵਿੱਖਬਾਣੀ ਨਾਲ ਯੋਜਨਾ ਬਣਾਓ\n• ਹੋਮ ਸਕਰੀਨ 'ਤੇ ਸੋਹਣੇ ਵਿਜੇਟ ਵਰਤੋ\n• ਇਵੈਂਟ ਸਹਿਜੇ ਖਿੱਚੋ, ਹਿਲਾਓ ਅਤੇ ਆਕਾਰ ਬਦਲੋ\n• Google Meet ਅਤੇ Microsoft Teams ਲਿੰਕ ਬਣਾਓ\n• ਦਿਨ, ਹਫ਼ਤਾ, ਮਹੀਨਾ, ਸਾਲ ਅਤੇ ਸੂਚੀ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ ਬਦਲੋ\n• ਕੰਮ ਅਤੇ ਨਿੱਜੀ ਕੈਲੰਡਰ ਇੱਕੋ ਥਾਂ ਸੰਭਾਲੋ\n\nਖ਼ਾਸੀਅਤਾਂ\n\nਸਾਰੇ ਕੈਲੰਡਰ ਇਕੱਠੇ\niCloud, Google Calendar ਅਤੇ Microsoft ਦੇ ਕੈਲੰਡਰ ਜੋੜੋ ਅਤੇ ਰੰਗਾਂ ਨਾਲ ਵੱਖਰੇ ਦਿਸਦੇ ਸਾਫ਼ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਸੰਭਾਲੋ।\n\nਕੈਲੰਡਰ ਦੇ ਅੰਦਰ ਹੀ ਮੌਸਮ\nਯੋਜਨਾ ਬਣਾਉਂਦੇ ਹੋਏ ਹੀ ਘੰਟੇਵਾਰ ਅਤੇ ਦਿਨਵਾਰ ਭਵਿੱਖਬਾਣੀ ਵੇਖੋ — ਤਾਪਮਾਨ, ਹਾਲਤ, ਚੰਨ ਦੀ ਕਲਾ, ਹਵਾ ਅਤੇ ਮੌਸਮ ਦੇ ਨਿਸ਼ਾਨ।\n\nਕੈਲੰਡਰ ਅਤੇ ਮੌਸਮ ਵਿਜੇਟ\nਆਪਣੀ ਪਸੰਦ ਨਾਲ ਸਜਾਏ ਵਿਜੇਟ ਤੋਂ ਸਮਾਂ-ਸਾਰਣੀ ਅਤੇ ਮੌਸਮ ਉਸੇ ਵੇਲੇ ਵੇਖੋ।\n\nਕਈ ਕੈਲੰਡਰ ਦ੍ਰਿਸ਼\nਤੁਸੀਂ ਸਮਾਂ ਕਿਵੇਂ ਵਿਉਂਤਦੇ ਹੋ, ਉਸ ਮੁਤਾਬਕ ਦਿਨ, ਹਫ਼ਤਾ, ਮਹੀਨਾ, ਸਾਲ ਜਾਂ ਸੂਚੀ ਚੁਣੋ।\n\nਸੌਖੀ ਇਵੈਂਟ ਸੋਧ\nਕੈਲੰਡਰ ਉੱਤੇ ਹੀ ਟੈਪ ਕਰ ਕੇ, ਖਿੱਚ ਕੇ ਅਤੇ ਆਕਾਰ ਬਦਲ ਕੇ ਇਵੈਂਟ ਸੁਆਰੋ।\n\nਵੱਖਰਾ ਮੌਸਮ ਦ੍ਰਿਸ਼\nਘੰਟੇਵਾਰ ਹਾਲਤ ਅਤੇ ਯੋਜਨਾ ਵਿੱਚ ਕੰਮ ਆਉਣ ਵਾਲੀ ਜਾਣਕਾਰੀ ਸਣੇ ਵਿਸਥਾਰ ਨਾਲ ਭਵਿੱਖਬਾਣੀ ਵੇਖੋ।\n\nਭਵਿੱਖਬਾਣੀ ਤੋਂ ਇਵੈਂਟ\nਭਵਿੱਖਬਾਣੀ ਦੇ ਕਿਸੇ ਘੰਟੇ 'ਤੇ ਟੈਪ ਕਰੋ — ਉਸੇ ਵੇਲੇ ਦਾ ਨਵਾਂ ਇਵੈਂਟ ਬਣ ਜਾਵੇਗਾ।\n\nਅੰਦਰ ਹੀ ਮੀਟਿੰਗ ਲਿੰਕ\nਇਵੈਂਟਾਂ ਵਿੱਚ Google Meet ਅਤੇ Microsoft Teams ਲਿੰਕ ਛੇਤੀ ਜੋੜੋ।\n\nਕਿਸ ਲਈ ਢੁਕਵਾਂ\n\n• ਕੰਮ ਅਤੇ ਨਿੱਜੀ ਕੈਲੰਡਰ ਸੰਭਾਲਣ ਲਈ\n• ਮੌਸਮ ਨੂੰ ਧਿਆਨ ਵਿੱਚ ਰੱਖ ਕੇ ਯੋਜਨਾ ਲਈ\n• ਬਾਹਰ ਦੇ ਕੰਮਾਂ ਅਤੇ ਸਫ਼ਰ ਲਈ\n• ਰੁੱਝੀਆਂ ਸਮਾਂ-ਸਾਰਣੀਆਂ ਅਤੇ ਪਰਿਵਾਰਕ ਯੋਜਨਾ ਲਈ\n• Google Calendar ਅਤੇ iCloud ਵਰਤਣ ਵਾਲਿਆਂ ਲਈ\n• Microsoft ਕੈਲੰਡਰ ਵਰਤਣ ਵਾਲਿਆਂ ਲਈ\n\nCloud Calendars ਵਰਤ ਕੇ ਵੇਖੋ — ਹਰ ਦਿਨ ਦੀ ਯੋਜਨਾ ਸੌਖੀ ਹੋ ਜਾਵੇਗੀ।\n\nਸਬਸਕ੍ਰਿਪਸ਼ਨ ਬਾਰੇ ਜਾਣਕਾਰੀ\n\nCloud Calendars ਆਪਣੇ-ਆਪ ਨਵਿਆਉਣ ਵਾਲੀਆਂ ਸਬਸਕ੍ਰਿਪਸ਼ਨਾਂ ਦਿੰਦਾ ਹੈ।\n\nਮੁਫ਼ਤ ਯੋਜਨਾ\n• Google Calendar ਸਿੰਕ\n• ਕਈ ਕੈਲੰਡਰ ਦ੍ਰਿਸ਼\n• ਮੌਸਮ ਦੀਆਂ ਸਹੂਲਤਾਂ\n• ਵਿਜੇਟ\n• Google Meet ਸਹਾਇਤਾ\nਖ਼ਰੀਦ ਪੱਕੀ ਕਰਨ ਵੇਲੇ ਤੁਹਾਡੇ Apple ID ਖਾਤੇ ਵਿੱਚੋਂ ਰਕਮ ਲਈ ਜਾਵੇਗੀ। ਮੌਜੂਦਾ ਮਿਆਦ ਖ਼ਤਮ ਹੋਣ ਤੋਂ ਘੱਟੋ-ਘੱਟ 24 ਘੰਟੇ ਪਹਿਲਾਂ ਰੱਦ ਨਾ ਕਰਨ 'ਤੇ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਆਪਣੇ-ਆਪ ਨਵਿਆ ਜਾਂਦੀ ਹੈ। ਮੌਜੂਦਾ ਮਿਆਦ ਖ਼ਤਮ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਦੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਨਵਿਆਉਣ ਦੀ ਰਕਮ ਲਈ ਜਾਵੇਗੀ। App Store ਖਾਤੇ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਸੰਭਾਲੀ ਅਤੇ ਰੱਦ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ।\n\nਪਰਦੇਦਾਰੀ ਨੀਤੀ: https://www.cloud-calendars.com/privacy-policy\nਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "pa-IN",
+      "keywords": "ਮੌਸਮ,ਵਿਜੇਟ,ਸਮਾਂ-ਸਾਰਣੀ,ਯੋਜਨਾ,ਭਵਿੱਖਬਾਣੀ,iCloud,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਕੰਮ,ਲਾਕ ਸਕਰੀਨ,ਮੀਂਹ,ਅੱਜ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਦਿਨ,ਯਾਦ",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts include combining marks. UTF-8 bytes separate. Token checks are not a full linguistic or rendered-text review."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "low-medium",
+  "caveat": "Model-authored; native-language editorial review recommended, particularly Indic morphology and terminology. No external translator or ASC write validation. Urdu mixed RTL/LTR rendering not visually verified.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch05/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

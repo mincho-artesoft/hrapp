@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-21",
+  "scope": [
+    {
+      "locale": "bg",
+      "file": "src/app/content/bg/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/de-DE/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "it",
+      "file": "src/app/content/it/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ar-SA",
+      "file": "src/app/content/ar-SA/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "cs",
+      "file": "src/app/content/cs/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "da",
+      "file": "src/app/content/da/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "el",
+      "file": "src/app/content/el/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "fi",
+      "file": "src/app/content/fi/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "he",
+      "file": "src/app/content/he/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "hi",
+      "file": "src/app/content/hi/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "hu",
+      "file": "src/app/content/hu/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "id",
+      "file": "src/app/content/id/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ja",
+      "file": "src/app/content/ja/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ko",
+      "file": "src/app/content/ko/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ms",
+      "file": "src/app/content/ms/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "nl-NL",
+      "file": "src/app/content/nl-NL/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "no",
+      "file": "src/app/content/no/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "pl",
+      "file": "src/app/content/pl/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "pt-BR",
+      "file": "src/app/content/pt-BR/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ro",
+      "file": "src/app/content/ro/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "ru",
+      "file": "src/app/content/ru/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "sv",
+      "file": "src/app/content/sv/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "th",
+      "file": "src/app/content/th/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "tr",
+      "file": "src/app/content/tr/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "vi",
+      "file": "src/app/content/vi/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "zh-Hans",
+      "file": "src/app/content/zh-Hans/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    },
+    {
+      "locale": "zh-Hant",
+      "file": "src/app/content/zh-Hant/articles.ts",
+      "slug": "what-a-subscription-actually-buys"
+    }
+  ],
+  "localeCount": 29,
+  "sourceArticle": "src/app/content/en-US/articles-compare.ts#what-a-subscription-actually-buys",
+  "corrections": [
+    "Base GoogleCalendar/Meet/views/weather/widgets; free advertising possible",
+    "Advanced adds ad removal only; Premium adds MicrosoftCalendar/Teams",
+    "No purchased provider edit permissions or workplace restriction override",
+    "Local purchase price, period and renewal terms before purchase",
+    "Apple subscription settings cancellation distinct from app/data deletion; no post-expiry feature survival guarantee",
+    "Developer authorship disclosed in every locale",
+    "Removed static price claims and all former subscription object prose"
+  ],
+  "sources": [
+    {
+      "url": "https://support.apple.com/en-us/118428",
+      "checked": "2026-10-21",
+      "type": "primary",
+      "supports": "Apple-billed subscription management path and status/expiration checks"
+    },
+    {
+      "path": "research/product-facts.json",
+      "supports": "Source-inspected native plan definitions, not runtime verification"
+    }
+  ],
+  "validation": {
+    "modulesTranspiled": 29,
+    "unrelatedObjectsPreservedByteForByteFromCurrentWorkingTree": 119,
+    "runtimeTests": "not performed",
+    "build": "not run",
+    "deployment": "not performed"
+  },
+  "unchanged": [
+    "All other article objects including weather corrections",
+    "English subscription article",
+    "Shared facts, home, native code, ASC"
+  ],
+  "paidTranslationApi": false
+}

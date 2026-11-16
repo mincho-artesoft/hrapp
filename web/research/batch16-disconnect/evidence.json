@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-22",
+  "intent": "stop calendar sync / disconnect calendar integration / retained calendar copies",
+  "whyNewCanonical": "Existing source/duplicate/export/revoke-sharing guides cover related tasks but do not describe integration-offboarding routes. Candidate from batch18CalendarBridge fullmainbody review, now crosscheckedprovider+native.",
+  "nativeProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          1367,
+          1396
+        ],
+        [
+          2250,
+          2310
+        ],
+        [
+          3072,
+          3110
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        [
+          528,
+          555
+        ],
+        [
+          600,
+          630
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudAccountManager.swift",
+      "sha256": "6187e83c930840548a2ef67ef83bb955d7a1b0f4c970b6c7293e922c58a27bbc",
+      "readRanges": [
+        [
+          560,
+          611
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CalendarFeedSession.swift",
+      "sha256": "e56ab6eff562ab2f4c0563ed7af060ee2ab3c3e768261e9025078bd38163ae9c",
+      "readRanges": [
+        [
+          73,
+          94
+        ]
+      ]
+    }
+  ],
+  "primarySourcesRead": [
+    {
+      "url": "https://support.google.com/accounts/answer/13533235?hl=en",
+      "bodyRead": "17-90; different link types and consequences"
+    },
+    {
+      "url": "https://support.google.com/accounts/answer/14012355?hl=en",
+      "bodyRead": "15-69; retainedcopieddata64 andscope55"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/accounts-billing/work-school/edit-or-revoke-application-permissions-in-the-my-apps-portal",
+      "bodyRead": "121-144; work/school MyApps, userconsentvsadminconsent"
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios",
+      "bodyRead": "1101-1173; subscription/selection distinctions. Earlier guessedAppleurlfailed; actualknownofficialguideURLused."
+    }
+  ],
+  "notDone": [
+    "No live account disconnect, calendar removal or data deletion.",
+    "No native source change/build/simulator/backend operation.",
+    "No independent releasedbinary/runtime or recovery test.",
+    "No claim app-levelsignout revokesallprovidergrants.",
+    "No search-volume/ranking/citation measurement."
+  ],
+  "editorialBoundary": "Current source attempts mapped calendar removal even afterGoogleSDKdisconnecterror; publiccopy explicitly no pause/allpermissionssuccess guarantee. Sharingidentityretention separate fromcalendarproviders. No per-stepdestructivecleanup recipe or personalaccountMicrosoftportalguessed.",
+  "additionalServerSourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "readRanges": [
+        [
+          491,
+          548
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "readRanges": [
+        [
+          260,
+          277
+        ]
+      ]
+    }
+  ],
+  "serverSourceFinding": "unlinkIdentity rejectsremovallastidentity409; otherwisepreservesprincipal/calendarownerandreturnsotheridentity. Current backend source only, no live customer-data request, production deployment or retentioncertification.",
+  "additionalNativeSourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/InvitationPushRegistration.swift",
+      "sha256": "3128f50b395fe548b4a5b1823696425cc10abd2eae9aee5427255d577efa3ce6",
+      "readRanges": [
+        [
+          111,
+          127
+        ]
+      ],
+      "finding": "prepareForSignOut disablesinvitationpushregistration; noaccountdeletecallhere. Errorcanpreventlocalsignout; articleadvisesconfirmactualoutcome."
+    }
+  ]
+}

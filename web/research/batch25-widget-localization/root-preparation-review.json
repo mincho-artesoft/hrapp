@@ -1,0 +1,30 @@
+{
+  "reviewedAt": "2026-10-22T00:47:43.039240+00:00",
+  "status": "prepared_not_integrated",
+  "fullDraftsReadByRoot": [
+    "bg",
+    "ja"
+  ],
+  "englishSourceRead": "Complete current first widget article object, including7sections/15paras/4steps/3FAQ/3sources.",
+  "crossAgentEvidence": [
+    "audit-other-four.json",
+    "audit-de-es-cross-review.json"
+  ],
+  "scope": "Two absent-before new editions BG/JA; four older existing editions DE/ES/FR/IT. Root still to read critical wording in those four before integration.",
+  "currentRawDraftHashes": {
+    "bg": "45502a5d7eb1d04276a33d8fac610ba3653d331504b8926357a38ae9d83eacc8",
+    "ja": "d37dc43a095376c1fc6652e82d87236e318c687d0944c08ab763723b66cfb30d",
+    "de-DE": "3a10b9a22d654a5d28d7f4e67e2308883d068d1fb749d5db6391e5aebc853bea",
+    "es-ES": "713dcf92360a41e2a79e47ccc630faa3d8ee13f31eb299cc0d12ef739a989935",
+    "fr-FR": "c6c8e0f08fb66622a7a0a6e650700d84d96ab6b3ac7977492569a4421cb2f6cc",
+    "it": "20ea30e849df5ade487471f04345747158f138d380165731d0573ca872c5c36f"
+  },
+  "reviewRecovery": "Cross-reviewer clarified prior compact-JSON hashes versus raw file hashes; JA optional language note had become stale during read/hash window. Reviewer reread full current BG/JA and updated audit; no source integration.",
+  "unperformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native test",
+    "Independent native-speaker approval"
+  ]
+}

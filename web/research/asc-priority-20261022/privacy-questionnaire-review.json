@@ -1,0 +1,98 @@
+{
+  "verdict": "revise_precise_location_rationale_before_owner_confirmation; retain_other_three",
+  "scope": "Independent classification assessment of four requested own-content rows and SDK purpose mapping. Complete proposal and exact pinned SDK manifest report read; bounded immutable git source ranges read. No production/customer data, runtime, binary provenance or retention-duration certification.",
+  "proposalRawSha256": "0f674973cc4151d797ccf1e902705a94ca26f2016edb3154a3e306393ec90903",
+  "sdkReportRawSha256": "117a369a3cc4439ccc68ed9ef3226be384558cd123bb9865feb375724bb3e3d2",
+  "ownerFactsAccepted": [
+    "Active service retains account names/emails and shared calendar/event data",
+    "Personalized advertising with consent"
+  ],
+  "freshPrimaryRead": {
+    "url": "https://developer.apple.com/app-store/app-privacy-details/",
+    "date": "2026-10-22",
+    "ranges": "143–166,193–298,327–343",
+    "boundedSummary": "Apple includes social graphs in Contacts. Precise Location concerns a user or device, not merely coordinate precision. Uploaded media types warrant their corresponding labels. Generic free text uses Other User Content. Optional collection still needs disclosure when primary functionality is involved. Partner collection counts; Apple-only collection is treated separately. Purposes and tracking should reflect actual use."
+  },
+  "immutableSources": [
+    {
+      "file": "Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "gitCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "rawSha256": "7e5fcfcbd2dd1dba673c370a4820a7d49092cd72cd0b7110faa8b40f17064b3f"
+    },
+    {
+      "file": "Calendar/AppLocal/AppLocalCalendarSyncService.swift",
+      "gitCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "rawSha256": "414e8b953fbdc50e624f9df6696d168f38d0f2aeb94a56aec13527d3e311b683"
+    },
+    {
+      "file": "Calendar/Sharing/CloudCalendarsAPI.swift",
+      "gitCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "rawSha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d"
+    }
+  ],
+  "readRanges": {
+    "Calendar/AppLocal/AppLocalEventEditorView.swift": [
+      "445–500",
+      "1260–1295",
+      "1680–1835"
+    ],
+    "Calendar/AppLocal/AppLocalCalendarSyncService.swift": [
+      "195–245"
+    ],
+    "Calendar/Sharing/CloudCalendarsAPI.swift": [
+      "1–75",
+      "105–245"
+    ]
+  },
+  "classifications": [
+    {
+      "type": "Contacts",
+      "recommendation": "include",
+      "purpose": "App Functionality",
+      "linked": true,
+      "tracking": false,
+      "basis": "Retained shared-event organizer/attendee names and email associations plus invitation/access relationships constitute a functional social graph. SharedEventParticipant and SharedEventDetails explicitly encode organizer and attendees. This does not claim full address-book upload. Owner confirms retention of sharing data.",
+      "confidence": "high for inclusion; backend field-level persistence accepted from owner rather than measured"
+    },
+    {
+      "type": "Precise Location",
+      "recommendation": "remove this own-content row from final selections on the evidence currently supplied; keep structured venue under Other User Content",
+      "basis": "The inspected event editor searches/selects arbitrary map venues and serializes their coordinates; it does not establish that the saved point describes the user/device actual geolocation. Typed venue can carry nil coordinates. A latitude/longitude field alone is insufficient to conclude this category. Apple WeatherKit/MapKit handling is separate from a developer-retained user-location route.",
+      "requiredReconsideration": "If owner confirms user/device precise location is sent to and retained by own backend or non-Apple partner, include with the real route/purpose/linkage instead. Do not describe removal as proof that all device location remains local. An event venue could reveal plans; it remains retained user content, not excluded data.",
+      "confidence": "moderate; classification boundary rather than no-location assertion"
+    },
+    {
+      "type": "Photos or Videos",
+      "recommendation": "include",
+      "purpose": "App Functionality",
+      "linked": true,
+      "tracking": false,
+      "basis": "An actual file-upload feature, not hypothetical text: fileImporter accepts .data, importFiles reads raw bytes with MIME type into dataBase64, and portableEvents maps attachments into the shared payload. Generic file import accepts supported image/video files within limits; no separate Photos picker is necessary to expose that upload path. Retain this declaration for shared media attachments rather than asserting photo-library scanning or every local attachment upload.",
+      "bounds": "At most first5 available attachment slots and <=1000000 bytes per file in inspected importer. Local-only files are not collection merely because imported. Active shared attachment path is basis.",
+      "confidence": "moderate-high; final owner should confirm deployed shared attachment persistence follows retained event payload"
+    },
+    {
+      "type": "Audio Data",
+      "recommendation": "include",
+      "purpose": "App Functionality",
+      "linked": true,
+      "tracking": false,
+      "basis": "Same functional generic attachment upload path can accept sound recordings and serialize bytes into shared events. No recorder is required to upload an existing recording. This is not a claim of microphone access or passive audio collection.",
+      "bounds": "Same file size/slot and shared-versus-local distinction as Photos or Videos.",
+      "confidence": "moderate-high with deployed payload retention confirmation"
+    }
+  ],
+  "sdkAssessment": {
+    "verdict": "purpose union and linked/tracking aggregation supported by supplied exact pinned manifests; explain row-specific evidence",
+    "GoogleMobileAds": "12.5.0 checksum-verified official artifact. Coarse Location, Product Interaction, Advertising Data, Device ID linked; diagnostics unlinked; Device ID tracking true, remaining listed types false in manifest.",
+    "UserMessagingPlatform": "3.0.0 adds App Functionality for Coarse Location, Performance Data and Product Interaction; these declarations unlinked/nontracking in this SDK, but GMA linked=true wins at aggregate level for location/interaction.",
+    "DeviceIDAppFunctionality": "Separate authenticated invitation push-registration evidence supplied by root, not contained in these SDK manifests. Preserve only on that own-service evidence.",
+    "DeveloperAdvertisingOmission": "Reasonable when no developer marketing use is established. Broad SDK capability alone is not active first-party advertising.",
+    "tracking": "Consent does not erase disclosure. Retain Device ID tracking. Do not promote every row to tracking merely from personalized-ads confirmation; compare actual data use and partner declaration.",
+    "requiredDocumentationFix": "Replace duplicated generic source sentence for each SDK row with its actual GMA/UMP purpose basis. In particular App Functionality for Coarse Location/Product Interaction/Performance comes from UMP, not device push registration.",
+    "binaryLimit": "Checksums establish exact declared dependency artifact evidence, not extracted uploaded-build16 bytes."
+  },
+  "otherRows": "No no-data-collected answer is supportable. Names/emails/IDs/shared content retained by active service remain declared. This review does not independently reclassify Emails or Text Messages or all other possible data types.",
+  "finalGate": "Owner must confirm these classifications and deployed attachment/location practices before publishing App Privacy. No legal certification or automatic publication authorized by this review.",
+  "mutations": "Review JSON only; no browser/API/native/source mutations."
+}

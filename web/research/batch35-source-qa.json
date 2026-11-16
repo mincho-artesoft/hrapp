@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-22T03:58:24.942Z",
+  "allPassed": true,
+  "localeDescriptions": 30,
+  "strings": 150,
+  "deviceShotAssociations": 300,
+  "mediaManifestUnchanged": true,
+  "imagePathsSrcsetsOrderStylesLoadingUnchanged": true,
+  "allArticleBodiesMetadataDatesAndFactsUnchanged": true,
+  "localeCodeNotMediaCode": true,
+  "bulgarianUsesBulgarianText": true,
+  "sourceSha256": "c4cc32e4bdbe2f9bc3d94c231f2f01548cc57d41d50b1a22136e5cdcf49af7fe",
+  "descriptionsSha256": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a",
+  "scope": "Current30website locales and bothdevice manifests; semantic and structural evidence, not native-speaker/runtime/SEO outcome certification."
+}

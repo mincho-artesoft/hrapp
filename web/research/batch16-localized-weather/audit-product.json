@@ -1,0 +1,275 @@
+{
+  "prepared_date": "2026-10-22",
+  "canonical_slug": "weather-inside-your-calendar",
+  "article_updated_preserved": "2026-10-22",
+  "source_file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+  "source_file_sha256": "c937a186a28d458c002ca4ec34ae5a1335036a9685dc1e8476442ea700989415",
+  "source_object_sha256": "128af49e854813cc6873c98dd868150de746930c5dff8dc61e4e58aa4a9c7bff",
+  "source_object_snapshot": {
+    "updated": "2026-10-22",
+    "title": "Calendar with weather on iPhone and iPad: check a plan in context",
+    "short": "Use calendar and weather together",
+    "description": "Use calendar and weather together on iPhone and iPad. Check the selected place, available forecast hours and event details before saving a plan.",
+    "lede": "A calendar tells you when a commitment is scheduled. Weather helps answer a different question: what conditions are forecast for the place and period you need. Use the two together while keeping their locations and dates explicit. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "commonBelief": "Weather shown beside a calendar automatically describes every appointment’s address, every hour and every future date.",
+    "sections": [
+      {
+        "heading": "Choose a real planning question",
+        "body": [
+          "Start with a particular appointment, such as an afternoon visit to a park. Identify what could change: its time, venue, preparation or the decision to use an alternative. You do not need to rearrange the whole calendar just because the day’s symbol shows rain.",
+          "Write down the activity’s actual start and end, including setup if relevant. A calendar overview helps find possible dates, while the forecast check concerns a particular place and interval. Keep those two jobs distinct when comparing options."
+        ]
+      },
+      {
+        "heading": "Confirm the weather place before reading the values",
+        "body": [
+          "Cloud Calendars offers weather for the current or selected place. Check the displayed location rather than assuming an event’s address silently changes the forecast. An appointment in another city needs a comparison with that city’s weather.",
+          "For example, a visitor may be planning a museum arrival while the phone is still at home. Read the forecast location and the appointment’s local time before comparing them. Nearby-looking values are not proof that the schedule and weather use the same place."
+        ]
+      },
+      {
+        "heading": "Check hourly and daily coverage separately",
+        "body": [
+          "Use a daily entry for orientation and the available hourly entries for a question about part of a day. A booking from two until five needs more than a glance at one symbol. Check whether the relevant hours are actually present.",
+          "In the current app source, the daily list takes up to ten returned WeatherKit days. That is separate from calendar navigation and from the hours currently supplied. A future appointment does not extend weather coverage. If its period is absent, arrange a later weather review."
+        ]
+      },
+      {
+        "heading": "Read what the weather value means",
+        "body": [
+          "Apple documents WeatherKit data such as temperature, precipitation, wind and UV, with some products available only in selected regions. Read the values available for your chosen place rather than expecting every weather product everywhere.",
+          "The Met Office’s guidance illustrates why forecast period and variable definitions matter: some values refer to a moment and others to a period. Use the relevant provider’s labels. Rain probability, amount and duration are different questions, and no single number decides every outdoor activity."
+        ]
+      },
+      {
+        "heading": "Review a draft created from a weather hour",
+        "body": [
+          "Where the app offers creating an event from an hour, it opens a draft. The current source uses the weather location’s time zone, proposes a one-hour duration and selects the default new-event calendar. Inspect each value before saving.",
+          "Confirm the title, destination calendar, start, end and intended location. A forecast selection does not grant permission to edit a shared calendar, notify a venue or reserve a room. Check the saved event and obtain any agreement the plan needs."
+        ]
+      },
+      {
+        "heading": "Keep the website demonstration separate",
+        "body": [
+          "The website’s interactive weather demonstration uses Open-Meteo. The app uses Apple WeatherKit. A web demonstration is useful for exploring the presentation, but its place, data and available dates can differ from the app.",
+          "For a real decision, open the app and compare the intended appointment with its available forecast. If you change a shared plan, confirm the organiser, recurrence scope and participants. Keep an agreed alternative when the activity depends on conditions."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identify the appointment and the decision weather could change.",
+      "Confirm the weather location and the appointment’s local date and time.",
+      "Inspect available hourly coverage separately from the daily summary.",
+      "Read probability, amount and other relevant values using their labels.",
+      "Review all event-draft details and the destination calendar before saving.",
+      "Recheck at the decision time and confirm shared changes directly."
+    ],
+    "faq": [
+      {
+        "q": "Does weather beside my calendar follow each event address?",
+        "a": "Do not assume that. Confirm the displayed weather location and compare it with the venue; proximity on screen does not establish the match."
+      },
+      {
+        "q": "Does the app use the website’s weather provider?",
+        "a": "No. The app uses Apple WeatherKit; the website demonstration uses Open-Meteo separately."
+      },
+      {
+        "q": "Does choosing a forecast hour save an appointment automatically?",
+        "a": "It starts a draft where that action is offered. Check its date, time zone, duration, calendar and location, then save the intended event."
+      }
+    ],
+    "seeAlso": [
+      "forecast-beside-every-event",
+      "a-fourteen-day-view-of-the-weather",
+      "weather-where-the-event-is",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "sourcesHeading": "Official sources and further reading",
+    "sources": [
+      {
+        "label": "Apple: WeatherKit forecast information and regional availability",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Met Office: forecast place, periods and weather values",
+        "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+      }
+    ]
+  },
+  "checks": {
+    "pt-BR": {
+      "description_unicode_characters": 137,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "4ee133952c3f9a752b1ca62239771ae2eb063b5b36bfe2ec0089c7d4ebda0f75",
+      "current_locale_aggregate_verified": true
+    },
+    "ro": {
+      "description_unicode_characters": 142,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "ca3f68260ebcd922aa10192919e7322b90b20f00cc35f3529b73da07668d51f0",
+      "current_locale_aggregate_verified": true
+    },
+    "ru": {
+      "description_unicode_characters": 128,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "51156dba53b1512eb69c808f51529a44f2188565d7ad1a1b0f74b0a371fbef41",
+      "current_locale_aggregate_verified": true
+    },
+    "sv": {
+      "description_unicode_characters": 137,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "3c2852bb4cf7ce5dbf0f76536bbcc9ab9d4ee43f9da503ccfabb693992e70db8",
+      "current_locale_aggregate_verified": true
+    },
+    "tr": {
+      "description_unicode_characters": 149,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "18d24a9deeb8e641210974c355aa03b15f48729ba5dc9c1142b5c65f026d95b1",
+      "current_locale_aggregate_verified": true
+    },
+    "vi": {
+      "description_unicode_characters": 126,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "fe88fbc4e7e55bef28f752db1eea264ee1c7eddc4457ec0339ae2740b13f2c99",
+      "current_locale_aggregate_verified": true
+    },
+    "th": {
+      "description_unicode_characters": 102,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "177a8cbaf716a4a3317c79235bf36a49f065e2e094590410b8d7721104e34486",
+      "current_locale_aggregate_verified": true
+    },
+    "zh-Hans": {
+      "description_unicode_characters": 50,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "0ad92f06922993c9b32b223291090fb0373ab3c4cd161191df76bf9d21b8eae7",
+      "current_locale_aggregate_verified": true
+    },
+    "zh-Hant": {
+      "description_unicode_characters": 50,
+      "sections": 6,
+      "paragraphs": 12,
+      "practical_steps": 6,
+      "faqs": 3,
+      "sources_match": true,
+      "related_routes": [],
+      "omitted_nonexistent_related_routes": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sha256": "f7a12164b6e4255faf6485ffceddf5e81b91dfc4e9300873f14db64856eb8e69",
+      "current_locale_aggregate_verified": true
+    }
+  },
+  "scope": {
+    "objects": 9,
+    "sections": 54,
+    "paragraphs": 108,
+    "practical_steps": 54,
+    "faqs": 27
+  },
+  "semantic_review": [
+    "Current-source qualifier retained for up-to-ten-returned WeatherKit days.",
+    "Hourly availability separate from daily list and calendar navigation.",
+    "Selected weather location not automatically event address.",
+    "WeatherKit app separate from Open-Meteo website demo.",
+    "One-hour draft, weather-location time zone and default calendar reviewed before save.",
+    "Forecast selection not permission, notification or booking."
+  ],
+  "limits": [
+    "Original translations without paid API.",
+    "No independent native-speaker certification or new runtime validation.",
+    "No integrated source, build, deployment or native edits."
+  ]
+}

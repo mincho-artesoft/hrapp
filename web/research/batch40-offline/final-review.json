@@ -1,0 +1,18 @@
+{
+  "decision": "PASS",
+  "finalRawDraftSha256": "c78c764152822b249b47e967699f0f777b30924ad12842b78730b0014838af1b",
+  "priorFullReview": "research/batch40-offline/independent-review.json",
+  "readScope": "Targeted fresh read of sections[3].body[3], practical[5], faq[4].a and current proposedchanges revision. Earlier complete draft review retained, not represented as a second full-body read.",
+  "preservation": {
+    "method": "Restored exactly the three prior strings from the earlier full tool read and serialized with the existing two-space UTF-8 JSON plus final newline format.",
+    "reconstructedPriorRawSha256": "25778e7cb405437d9ab03060c68471736252f6a555e754ed57513fccbc5157d6",
+    "matchesPriorReviewedRawHash": true,
+    "allOldFieldsMatchBeforeAfterRemovingAdditions": true
+  },
+  "qualifierFinding": "Provider rechecks now explicitly concern provider-backed events. Local-only calendars have no provider destination; their local save/display does not prove remote delivery. No offline queue, conflict-resolution, unlimited-history, background timing or delivery guarantee added.",
+  "requiredCorrections": [],
+  "limits": [
+    "Native and primary-source limits from the prior full review remain unchanged.",
+    "No source edits, builds, app tests or provider/customer actions."
+  ]
+}

@@ -1,0 +1,981 @@
+[
+  {
+    "url": "https://aa.usno.navy.mil/faq/daylight_time",
+    "status": 200,
+    "finalUrl": "https://aa.usno.navy.mil/faq/daylight_time",
+    "title": "Daylight Saving Time",
+    "bytes": 20593
+  },
+  {
+    "url": "https://dcj.nsw.gov.au/about-us/daylight-saving.html",
+    "status": 200,
+    "finalUrl": "https://dcj.nsw.gov.au/about-us/daylight-saving.html",
+    "title": "Daylight saving | Communities and Justice",
+    "bytes": 350803
+  },
+  {
+    "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+    "status": 200,
+    "finalUrl": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+    "title": "Accessing the event store | Apple Developer Documentation",
+    "bytes": 18617
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes?view=o365-worldwide",
+    "title": "About shared mailboxes in Microsoft 365 - Microsoft 365 admin | Microsoft Learn",
+    "bytes": 59303
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users?view=o365-worldwide",
+    "title": "Share Microsoft 365 Calendars with users outside your organization - Microsoft 365 admin | Microsoft Learn",
+    "bytes": 51661
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+    "title": "OlBusyStatus enumeration (Outlook) | Microsoft Learn",
+    "bytes": 47414
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+    "title": "Fix Teams Meeting add-in problems in Classic Outlook - Microsoft Teams | Microsoft Learn",
+    "bytes": 58580
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information",
+    "title": "Error (We're checking everyone's calendars) when viewing free/busy information in Outlook - Outlook | Microsoft Learn",
+    "bytes": 50243
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+    "title": "Add, modify, or delete events in Calendar on Mac - Apple Support",
+    "bytes": 583409
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+    "title": "Manage notifications from Calendar on Mac - Apple Support",
+    "bytes": 580793
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac",
+    "title": "Manage shared calendars on Mac - Apple Support",
+    "bytes": 580938
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac",
+    "title": "Refresh calendars on Mac - Apple Support",
+    "bytes": 577436
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac",
+    "title": "Send and receive invitations to events in Calendar on Mac - Apple Support",
+    "bytes": 582145
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+    "title": "Share calendars on Mac - Apple Support",
+    "bytes": 584332
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac",
+    "title": "Show holidays and birthdays in Calendar on Mac - Apple Support",
+    "bytes": 577323
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac",
+    "title": "Use Siri Suggestions in Calendar on Mac - Apple Support",
+    "bytes": 577031
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud",
+    "title": "Accept a shared calendar invitation on iCloud.com - Apple Support",
+    "bytes": 759036
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud",
+    "title": "Delete a calendar on iCloud.com - Apple Support",
+    "bytes": 759236
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud",
+    "title": "Delete or hide a calendar event on iCloud.com - Apple Support",
+    "bytes": 759377
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud",
+    "title": "Invite people to a calendar event on iCloud.com - Apple Support",
+    "bytes": 763426
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud",
+    "title": "Receive updates to calendars on iCloud.com - Apple Support",
+    "bytes": 759373
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+    "title": "Share a calendar on iCloud.com - Apple Support",
+    "bytes": 769799
+  },
+  {
+    "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+    "title": "Stop sharing a calendar on iCloud.com - Apple Support",
+    "bytes": 760133
+  },
+  {
+    "url": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios",
+    "title": "Control access to information in apps on iPhone - Apple Support",
+    "bytes": 1447315
+  },
+  {
+    "url": "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios",
+    "status": 200,
+    "finalUrl": "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios",
+    "title": "Create and edit events in Calendar on iPhone - Apple Support",
+    "bytes": 1454474
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10729749?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/10729749?hl=en",
+    "title": "Create an appointment schedule - Google Calendar Help",
+    "bytes": 1623691
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10730791?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/10730791?hl=en",
+    "title": "Edit your appointment schedule - Computer - Google Calendar Help",
+    "bytes": 1620983
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10733297?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/10733297?hl=en",
+    "title": "Share your appointment schedule - Computer - Google Calendar Help",
+    "bytes": 1626511
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10737245?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/10737245?hl=en",
+    "title": "Cancel appointments on your calendar - Computer - Google Calendar Help",
+    "bytes": 1614640
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10738043?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/10738043?hl=en",
+    "title": "View how you spend time in meetings - Google Calendar Help",
+    "bytes": 1622041
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/11190973?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/11190973?hl=en",
+    "title": "Use focus time in Google Calendar - Computer - Google Calendar Help",
+    "bytes": 1620509
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/11423292?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/11423292?hl=en",
+    "title": "Update your availability for appointments - Google Calendar Help",
+    "bytes": 1615850
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/11902347?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/11902347?hl=en",
+    "title": "Verify emails for appointments - Computer - Google Calendar Help",
+    "bytes": 1613272
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/12132599?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/12132599?hl=en",
+    "title": "Manage repeating tasks in Google Tasks & Google Calendar - Android phone & tablet - Google Calendar Help",
+    "bytes": 1620044
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13012543?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/13012543?hl=en",
+    "title": "Report assigned tasks as spam - Computer - Google Calendar Help",
+    "bytes": 1611901
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/1340696?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/1340696?hl=en",
+    "title": "Use Google Calendar offline - Computer - Google Calendar Help",
+    "bytes": 1616795
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13748345?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/13748345?hl=en",
+    "title": "Add or remove holidays on your calendar - Computer - Google Calendar Help",
+    "bytes": 1623131
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+    "title": "Manage birthdays on your calendar - Computer - Google Calendar Help",
+    "bytes": 1616091
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13748650?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/13748650?hl=en",
+    "title": "Add or remove alternate calendars - Computer - Google Calendar Help",
+    "bytes": 1616295
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/13762729?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/13762729?hl=en",
+    "title": "Require payments for appointments - Google Calendar Help",
+    "bytes": 1615210
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15077640?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/15077640?hl=en",
+    "title": "Manage Google Calendar invites in other calendar services - Google Calendar Help",
+    "bytes": 1609192
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+    "title": "Manage the visibility of events from Gmail - Computer - Google Calendar Help",
+    "bytes": 1615592
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/15620294?hl=en",
+    "title": "Show personal & work calendars in Google Calendar - Google Calendar Help",
+    "bytes": 1616452
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/15716974?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/15716974?hl=en",
+    "title": "Choose what others can do with your calendar - Computer - Google Calendar Help",
+    "bytes": 1630297
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16287054?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/16287054?hl=en",
+    "title": "Check your availability across calendars - Google Calendar Help",
+    "bytes": 1611159
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+    "title": "Learn about Google Keep reminders in Google Tasks - Google Calendar Help",
+    "bytes": 1608759
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16690875?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/16690875?hl=en",
+    "title": "Let Gemini in Google Calendar find times to meet - Google Calendar Help",
+    "bytes": 1607832
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16713792?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/16713792?hl=en",
+    "title": "Track responses to your event - Computer - Google Calendar Help",
+    "bytes": 1616266
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/17366804?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/17366804?hl=en",
+    "title": "Filter & organize Calendar notifications  in Gmail - Google Calendar Help",
+    "bytes": 1619122
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+    "title": "Set your working location - Computer - Google Calendar Help",
+    "bytes": 1626343
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/34580?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/34580?hl=en",
+    "title": "Change event & task visibility on your calendar - Computer - Google Calendar Help",
+    "bytes": 1633215
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37034?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37034?hl=en",
+    "title": "Use keyboard shortcuts in Google Calendar - Computer - Google Calendar Help",
+    "bytes": 1623074
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37064?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37064?hl=en",
+    "title": "Use Google Calendar in different time zones - Computer - Google Calendar Help",
+    "bytes": 1628833
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37083?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37083?hl=en",
+    "title": "Create & manage a public Google calendar - Google Calendar Help",
+    "bytes": 1617060
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37115?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37115?hl=en",
+    "title": "Create a recurring event - Computer - Google Calendar Help",
+    "bytes": 1617068
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37118?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37118?hl=en",
+    "title": "Import events to Google Calendar - Computer - Google Calendar Help",
+    "bytes": 1623568
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37188?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+    "title": "Delete or unsubscribe from a calendar - Computer - Google Calendar Help",
+    "bytes": 1626925
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop",
+    "title": "Change Google Calendar notifications - Computer - Google Calendar Help",
+    "bytes": 1628895
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/41067?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+    "title": "Print your calendar - Google Calendar Help",
+    "bytes": 1621404
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/41207?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/41207?hl=en",
+    "title": "Add a calendar to your website - Google Calendar Help",
+    "bytes": 1613237
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6084018?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/6084018?hl=en",
+    "title": "Manage your events from Gmail - Computer - Google Calendar Help",
+    "bytes": 1622652
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6192039?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/6192039?hl=en",
+    "title": "Add attachments to your events - Computer - Google Calendar Help",
+    "bytes": 1624323
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+    "title": "Fix sync problems with the Google Calendar app - Android phone & tablet - Google Calendar Help",
+    "bytes": 1625407
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/6294878?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/6294878?hl=en",
+    "title": "Find times to meet in Google Calendar - Computer - Google Calendar Help",
+    "bytes": 1617699
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+    "title": "Use a family calendar on Google - Computer - Google Calendar Help",
+    "bytes": 1616475
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+    "title": "Set your working hours - Computer - Google Calendar Help",
+    "bytes": 1622362
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/78739?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/78739?hl=en",
+    "title": "Transfer calendars or events in Google Calendar - Computer - Google Calendar Help",
+    "bytes": 1617645
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/9117864?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/calendar/answer/9117864?hl=en",
+    "title": "Find and install Calendar add-ons - Google Calendar Help",
+    "bytes": 1617609
+  },
+  {
+    "url": "https://support.google.com/meet/answer/10003792?hl=en",
+    "status": 200,
+    "finalUrl": "https://support.google.com/meet/answer/10003792?hl=en",
+    "title": "How Google Meet settings apply to events created on or transferred to other Google Calendars - Google Meet Help",
+    "bytes": 1634560
+  },
+  {
+    "url": "https://support.microsoft.com/en-US/Outlook/delete-an-appointment-or-a-meeting",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/delete-an-appointment-or-a-meeting",
+    "title": "Delete an appointment or a meeting | Microsoft Support",
+    "bytes": 108305
+  },
+  {
+    "url": "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/prevent-forwarding-of-a-meeting",
+    "title": "Prevent forwarding of a meeting | Microsoft Support",
+    "bytes": 112730
+  },
+  {
+    "url": "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+    "title": "Send automatic out of office replies from Outlook.com or Outlook on the web | Microsoft Support",
+    "bytes": 112631
+  },
+  {
+    "url": "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-au/office/print-a-calendar-in-outlook-048370ac-c799-4127-b50a-0f42c70f0100",
+    "title": "Print a calendar in Outlook - Microsoft Support",
+    "bytes": 142701
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e",
+    "title": "Cancel a recurring meeting series in Outlook - Microsoft Support",
+    "bytes": 138765
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-gb/outlook/notifications-and-settings/set-your-work-hours-and-location-in-outlook",
+    "title": "Set your work hours and location in Outlook | Microsoft Support",
+    "bytes": 115108
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+    "title": "Add a birthday calendar and reminder in Outlook | Microsoft Support",
+    "bytes": 129769
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+    "title": "Get started with the Outlook Calendar | Microsoft Support",
+    "bytes": 107672
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+    "title": "About delegates: Allow someone to manage your mail and calendar in Outlook | Microsoft Support",
+    "bytes": 111951
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/cancel-all-future-meetings-in-a-series",
+    "title": "Cancel all future meetings in a series | Microsoft Support",
+    "bytes": 109721
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+    "title": "\"Allow Forwarding\" option is missing from \"Response Options\" for a shared calendar | Microsoft Support",
+    "bytes": 104291
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/Support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported",
+    "title": "Outlook blocks copying meetings with “Copying meetings is not supported.” | Microsoft Support",
+    "bytes": 105656
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+    "title": "Manage your availability in your Outlook calendar - Microsoft Support",
+    "bytes": 150351
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/office/open-and-use-a-shared-mailbox-in-outlook-98b5a90d-4e38-415d-a030-f09a4cd28207",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/sharing/open-and-use-a-shared-mailbox-in-outlook",
+    "title": "Open and use a shared mailbox in Outlook | Microsoft Support",
+    "bytes": 139911
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/add-a-birthday-calendar-and-reminder-in-outlook",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+    "title": "Best practices for organizations when using the Outlook Calendar | Microsoft Support",
+    "bytes": 121082
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+    "title": "Calendar sharing in Microsoft 365 | Microsoft Support",
+    "bytes": 138517
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+    "title": "Change an appointment, meeting, or event in Outlook | Microsoft Support",
+    "bytes": 126955
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+    "title": "Forward a meeting in Outlook | Microsoft Support",
+    "bytes": 122602
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook",
+    "title": "Propose a new meeting time in Outlook | Microsoft Support",
+    "bytes": 120628
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook",
+    "title": "View multiple calendars at the same time in Outlook | Microsoft Support",
+    "bytes": 123934
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+    "title": "Import or subscribe to a calendar in Outlook.com or Outlook on the web | Microsoft Support",
+    "bytes": 119333
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+    "title": "Manage someone else's calendar in Outlook on the web | Microsoft Support",
+    "bytes": 121040
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+    "title": "Use a Group calendar in Outlook to schedule and edit events | Microsoft Support",
+    "bytes": 137823
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+    "title": "Share your calendar in Outlook on the web | Microsoft Support",
+    "bytes": 128917
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+    "title": "Share and access a calendar with edit or delegate permissions in Outlook | Microsoft Support",
+    "bytes": 131778
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+    "title": "Use the Scheduling Assistant and Room Finder for meetings in Outlook | Microsoft Support",
+    "bytes": 116010
+  },
+  {
+    "url": "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/teams-meeting-add-in-missing-in-new-outlook",
+    "title": "Teams Meeting add-in missing in new Outlook | Microsoft Support",
+    "bytes": 103312
+  },
+  {
+    "url": "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760",
+    "status": 200,
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/print-a-calendar-showing-appointments-and-meetings",
+    "title": "Print a calendar showing appointments and meetings | Microsoft Support",
+    "bytes": 108905
+  },
+  {
+    "url": "https://www.gov.uk/when-do-the-clocks-change",
+    "status": 200,
+    "finalUrl": "https://www.gov.uk/when-do-the-clocks-change",
+    "title": "When do the clocks change? - GOV.UK",
+    "bytes": 63202
+  },
+  {
+    "url": "https://www.hendersoncountync.gov/ems/page/working-hcems",
+    "status": 200,
+    "finalUrl": "https://www.hendersoncountync.gov/ems/page/working-hcems",
+    "title": "Working for HCEMS | Henderson County North Carolina",
+    "bytes": 48435
+  },
+  {
+    "url": "https://www.iana.org/time-zones",
+    "status": 200,
+    "finalUrl": "https://www.iana.org/time-zones",
+    "title": "Time Zones",
+    "bytes": 7964
+  },
+  {
+    "url": "https://www.nantucket-ma.gov/m/faq?cat=154",
+    "status": 200,
+    "finalUrl": "https://www.nantucket-ma.gov/m/faq?cat=154",
+    "title": "FAQs - CivicPlus.CMS.FAQ",
+    "bytes": 114757
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.1",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.4",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.2.9",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.11",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.6",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.9",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.4",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.5",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.1.3",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.6",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.7",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.2",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.2",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.1",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.2",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.3",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5545.html",
+    "title": "",
+    "bytes": 409705,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-3.2.5",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5546.html",
+    "title": "",
+    "bytes": 367813,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5546.html#section-6",
+    "status": 200,
+    "finalUrl": "https://www.rfc-editor.org/rfc/rfc5546.html",
+    "title": "",
+    "bytes": 367813,
+    "anchorExists": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.southburlingtonvt.gov/170/Careers",
+    "status": 200,
+    "finalUrl": "https://www.southburlingtonvt.gov/170/Careers",
+    "title": "Careers | South Burlington, VT",
+    "bytes": 87343
+  }
+]

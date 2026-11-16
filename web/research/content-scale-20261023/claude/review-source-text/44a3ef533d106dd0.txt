@@ -1,0 +1,51 @@
+Print a calendar showing appointments and meetings
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Get help with Copilot
+How can I print a calendar showing appointments?
+Show me how to print an email message in Outlook.
+What if I can't print a single contact?
+When you print your calendar in Outlook, you can select the current day, week, or calendar month, or enter a custom date range. You can only print appointments and meetings from one calendar at a time.
+Important
+Due to the number of different printers available today, we are unable to provide troubleshooting information for specific printers. See the printer manufacturer's website for technical assistance.
+In
+Calendar
+, click
+File
+>
+Print
+.
+Under
+Settings
+, click the print style you want. As you click print styles, the preview window changes to match the style.
+To print the complete details of appointments and meetings, click
+Weekly Agenda Style
+or
+Calendar Details Style
+.
+To set other print options, such as the paper orientation or the fonts used, click
+Print Options
+.
+To print the full title of appointments and meetings, select
+Weekly Agenda Style
+. To print the full details of every appointment, including Skype links and text included in the appointment or meeting body, select
+Calendar Details Style
+.
+If you want to print a different calendar than the one shown in the preview area click
+Print Options
+. Under
+Print this calendar
+, use the drop-down to select which calendar you want to print. You can also use this dialog box to change the print style and set options specific to your printer.
+Use the
+Print Options
+button and dialog box from Step 4 to select a custom date range, specific pages to print, or the number of copies.
+To turn off printing of private appointment details, check the
+Hide Details of private appointments
+check box.
+Click
+Print
+.
+Important
+Because there are many different printers, we can't troubleshoot issues with your printer. For troubleshooting information, see the manufacturer's manual or website.

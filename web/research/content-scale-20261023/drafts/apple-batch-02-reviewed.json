@@ -1,0 +1,1267 @@
+{
+  "mac-calendar-subscription-auto-refresh": {
+    "updated": "2026-10-23",
+    "title": "A subscribed calendar is stale on Mac: check Auto-refresh before importing again",
+    "short": "Refresh a subscribed calendar",
+    "description": "Check a Mac calendar subscription’s Auto-refresh setting and source before adding duplicate imports. Separate subscription refresh from account Push.",
+    "lede": "A club fixture can be correct at its source while your Mac still shows yesterday’s venue. First establish that you subscribed to the right source, then inspect that subscription’s refresh setting. Importing the same file again is a different operation.",
+    "sections": [
+      {
+        "heading": "Identify the subscribed calendar, not a similar imported copy",
+        "body": [
+          "In Calendar on Mac, identify the calendar name and its subscription indicator. Apple distinguishes subscriptions from calendars you publish or share. A fixture displayed in an imported calendar is not proof that the Mac has an updating subscription to its original source.",
+          "For a fictional club, compare one fixture whose venue changed from North Hall to South Hall. Record its date, the current venue at the authorized source and the venue on the Mac. Keep the original calendar while checking; do not create a second schedule just to trigger another download."
+        ]
+      },
+      {
+        "heading": "Use the refresh control for that route",
+        "body": [
+          "Apple documents View > Refresh Calendars for a manual refresh. To choose an automatic cadence for a subscription, Control-click its name, choose Get Info, then use Auto-refresh. Select the option appropriate to how you follow that schedule.",
+          "The Accounts panel has a separate Refresh Calendars menu for shared calendars in an account, with Push when supported. That is not the same setting as a subscription’s Auto-refresh menu. Configure the route you actually use rather than changing an unrelated account."
+        ]
+      },
+      {
+        "heading": "Compare a known change after the check",
+        "body": [
+          "Revisit the same fictional fixture after refreshing. If the source itself still says North Hall, the Mac cannot infer that the club meant South Hall. Ask the publisher to correct its schedule. If the source is updated but the subscribed copy differs, retain both observations and the time checked.",
+          "Apple says a warning symbol can indicate inability to connect; check connectivity and whether the calendar was moved or deleted. Get Info also identifies its web address. Keep private subscription addresses out of public support posts."
+        ]
+      },
+      {
+        "heading": "Keep the update chain and urgent communication separate",
+        "body": [
+          "Choosing a refresh option does not promise every receiving service updates instantly. A publisher, intermediary feed and receiving client can be separate stages. For a near-term venue change, confirm with the club through the agreed channel while investigating the subscription.",
+          "These are Mac Calendar controls, not Cloud Calendars refresh settings. A useful personal overview does not certify the freshness of each upstream feed. If the next task is an iPhone display problem, first confirm the same source and connection there."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Trace the fictional fixture",
+      "columns": [
+        "Observation",
+        "Narrow next check",
+        "Avoid"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Source still shows old venue",
+            "Ask publisher about its saved record",
+            "Repeatedly refreshing the receiver"
+          ]
+        },
+        {
+          "cells": [
+            "Source changed; subscribed Mac entry old",
+            "Get Info > Auto-refresh; manual refresh; connection",
+            "Importing another copy"
+          ]
+        },
+        {
+          "cells": [
+            "Account-backed shared calendar old",
+            "Account Refresh Calendars setting",
+            "Treating it as the same subscription menu"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the subscription and one known changed fixture.",
+      "Use View > Refresh Calendars and inspect its Auto-refresh menu.",
+      "Check the source and warning state before changing connections.",
+      "Record the same event after the check; confirm urgent changes directly."
+    ],
+    "faq": [
+      {
+        "q": "Does importing the ICS again refresh a subscription?",
+        "a": "No. Import and subscription are different operations. Identify the existing route first."
+      },
+      {
+        "q": "Is account Push the subscription refresh switch?",
+        "a": "No. Apple documents account refresh and subscription Auto-refresh separately."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: refresh calendars on Mac",
+        "url": "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac"
+      },
+      {
+        "label": "Apple: subscribe to calendars and choose subscription location",
+        "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Identify the actual connection"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Separate imports from subscriptions"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Compare the same source event"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "calendar-export-ics-pdf-and-backup",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "mac-calendar-subscription-icloud-on-my-mac": {
+    "updated": "2026-10-23",
+    "title": "A calendar subscription is only on your Mac: check its Location",
+    "short": "Choose where a subscription lives",
+    "description": "Choose iCloud or On My Mac for a Calendar subscription. Check device availability separately from feed refresh and editing rights.",
+    "lede": "A subscription saved On My Mac is a local subscription setup, not an instruction to put it on your other devices. Apple’s subscription Location menu determines whether the setup belongs to iCloud or the computer. Check that choice before subscribing again on every screen.",
+    "sections": [
+      {
+        "heading": "Describe the device requirement",
+        "body": [
+          "Imagine a fictional school publishes a read-only term schedule. You want it on a Mac and another device configured for the same iCloud account. That is a subscription-location task. It is not a request to make the school’s events editable or to copy them into your personal calendar.",
+          "Check the existing subscription’s name and source before adding another. A similarly named import, a manually added phone subscription and an iCloud subscription can be separate arrangements. Record what is already present so the comparison does not create an extra display route."
+        ]
+      },
+      {
+        "heading": "Choose Location during subscription setup",
+        "body": [
+          "In Calendar on Mac, Apple documents File > New Calendar Subscription. Enter the published calendar address, click Subscribe, then choose a name and color. In Location, iCloud makes the calendar available on computers and devices set up with iCloud; On My Mac saves it on the computer.",
+          "Review the other controls separately: Remove checkboxes concern attachments or alerts, Auto-refresh concerns updates, and Ignore alerts concerns notifications. None of those replaces Location. Click OK to complete the documented setup."
+        ]
+      },
+      {
+        "heading": "Inspect an existing setup before rebuilding it",
+        "body": [
+          "Apple says you can later select the subscription and use Edit > Get Info to change its settings. Inspect the offered Location and the intended iCloud account before deciding whether anything must be recreated. If a needed account is unavailable, resolve that account setup rather than distributing private credentials.",
+          "Check the other device using the intended Apple Account and iCloud Calendar arrangement. Confirm a distinctive school event in the full calendar and the actual calendar list. A Mac screenshot alone does not establish that the other device received the subscription setup."
+        ]
+      },
+      {
+        "heading": "Verify without turning a feed into a migration",
+        "body": [
+          "For the fictional school schedule, record subscription location, source name, the expected event and each device’s observation. If one device remains missing, investigate that device’s account and selection rather than importing the term’s events as a workaround.",
+          "The publisher still controls subscribed events; Apple says subscribers cannot edit the subscription calendar. This guide concerns Apple’s setup and does not promise that Cloud Calendars displays every subscription on every version. Compare device availability, feed updates and editing permission as three separate outcomes."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Three independent subscription questions",
+      "columns": [
+        "Question",
+        "Relevant control or owner",
+        "Evidence to check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Which devices should have the setup?",
+            "Location:iCloud or On My Mac",
+            "Same account and subscription on target device"
+          ]
+        },
+        {
+          "cells": [
+            "How does the feed get checked?",
+            "Auto-refresh",
+            "Known changed source event"
+          ]
+        },
+        {
+          "cells": [
+            "Who can change the school events?",
+            "Publisher",
+            "Subscription remains read-only"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Find the existing subscription before adding another.",
+      "Inspect Location in the Mac subscription settings.",
+      "Choose iCloud when that matches the intended iCloud devices.",
+      "Verify one distinctive event on each device without importing duplicates."
+    ],
+    "faq": [
+      {
+        "q": "Does On My Mac mean the subscription is in iCloud?",
+        "a": "No. Apple describes it as saved on the computer. iCloud is the separate Location choice."
+      },
+      {
+        "q": "Does moving the subscription setup to iCloud make its events editable?",
+        "a": "No. The subscribed events remain controlled by their publisher."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: subscribe to calendars and choose subscription location",
+        "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Distinguish local and provider sources"
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "label": "Check device calendars on an iPhone"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Avoid mistaking a feed for an import"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "caldav-calendar-on-iphone",
+      "calendar-export-ics-pdf-and-backup"
+    ]
+  },
+  "mac-calendar-ignore-alerts-one-calendar": {
+    "updated": "2026-10-23",
+    "title": "Mute one calendar on Mac without deleting its appointments",
+    "short": "Ignore alerts for one calendar",
+    "description": "Use Calendar on Mac’s Ignore alerts option for one calendar. Keep event visibility, system notifications and shared-calendar access separate.",
+    "lede": "If one reference calendar is noisy but your own appointments still need reminders, turning off every Calendar notification is broader than the task. Apple provides Ignore alerts for an individual calendar. Identify the source first, then change the narrow setting.",
+    "sections": [
+      {
+        "heading": "Identify the noisy calendar and the sending app",
+        "body": [
+          "A fictional family keeps a personal appointment calendar and a club reference feed. The club feed supplies too many reminders, but the family still wants to see its fixtures. The intended change is “keep the fixtures, stop that calendar’s alerts on this Mac,” not “remove the club’s access” or “silence all appointments.”",
+          "Check the app name on an unwanted notification and the calendar owning its event. Another app can send its own notification for related data. A Mac Calendar preference does not establish that every phone or app using the same schedule is quiet."
+        ]
+      },
+      {
+        "heading": "Use the per-calendar control",
+        "body": [
+          "In Calendar on Mac, show the calendar list if necessary with View > Show Calendar List. Control-click the relevant calendar’s name, choose Get Info, select Ignore alerts, then click OK. Reopen the setting to verify the intended calendar was changed.",
+          "To restore that calendar’s alerts, use the same route and deselect Ignore alerts. Apple documents this as a per-calendar notification control. It does not delete the calendar’s appointments or cancel a meeting for its guests."
+        ]
+      },
+      {
+        "heading": "Keep broader switches separate",
+        "body": [
+          "Calendar > Settings > Alerts includes other signals, such as Time to Leave and shared-calendar or invitation messages. System Settings > Notifications > Calendar controls application-level permission and notification behavior. These controls answer different questions from ignoring one calendar’s event alerts.",
+          "If the goal is to retain personal appointment reminders, leave the broader arrangement alone while checking the reference calendar. If the noise is actually a shared-calendar change message rather than an event alert, follow that message’s relevant preference instead of assuming Ignore alerts is the universal switch."
+        ]
+      },
+      {
+        "heading": "Check the intended outcome without changing a live meeting",
+        "body": [
+          "For the family example, keep a record of the changed calendar and preference. Observe a suitable harmless future example where supported, and separately confirm an ordinary personal reminder still follows its intended configuration.",
+          "Cloud Calendars has its own notification settings. This page describes the native Mac app. Do not delete a real appointment or leave a shared calendar just to diagnose extra notifications; preserve the schedule and narrow the sender and signal first."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Choose the smallest matching action",
+      "columns": [
+        "Desired result",
+        "Control to inspect",
+        "What it is different from"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Quiet one calendar in Mac Calendar",
+            "Get Info > Ignore alerts",
+            "Hiding or deleting its events"
+          ]
+        },
+        {
+          "cells": [
+            "Quiet the entire Mac application",
+            "System Settings > Notifications > Calendar",
+            "One calendar’s preference"
+          ]
+        },
+        {
+          "cells": [
+            "Quiet a shared-calendar message",
+            "Relevant Calendar message preference",
+            "An event’s timed alert"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the sending app and owning calendar.",
+      "Use Get Info > Ignore alerts for the intended calendar.",
+      "Verify the saved preference without deleting events.",
+      "Check broader notification controls only if the desired result is broader."
+    ],
+    "faq": [
+      {
+        "q": "Do I need to unsubscribe to stop one calendar’s alerts?",
+        "a": "Not when the intended task is covered by its Ignore alerts control. Unsubscribing changes the calendar arrangement itself."
+      },
+      {
+        "q": "Will this silence Cloud Calendars on my phone?",
+        "a": "This guide does not establish that. Inspect the phone app’s own settings and sender separately."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: manage notifications from Calendar on Mac",
+        "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Identify notification senders"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Keep hiding and deletion separate"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "label": "Preserve intended collaboration"
+      }
+    ],
+    "seeAlso": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "what-calendar-sync-actually-does",
+      "a-calendar-that-is-yours-to-share"
+    ]
+  },
+  "mac-calendar-custom-alert-email-open-file": {
+    "updated": "2026-10-23",
+    "title": "Use a custom Mac Calendar alert to open a file or send yourself email",
+    "short": "Choose a custom alert action",
+    "description": "Choose Message with sound, Email or Open file in Mac Calendar’s custom alert. Check timing, calendar support and recipient before relying on it.",
+    "lede": "A reminder can do more than show a banner in Calendar on Mac. Apple documents custom actions for a message with sound, an email or opening a file. Choose the action for the preparation task you need, then verify its saved details rather than treating it as a phone automation.",
+    "sections": [
+      {
+        "heading": "Choose an action that matches the task",
+        "body": [
+          "For a fictional presentation, the speaker wants a local outline ready before the start. Open file is a different goal from an audible reminder or an email to an inbox. Write the desired action, target file or address and intended time before choosing Custom.",
+          "Keep the meeting itself at its agreed time. An earlier preparation alert is not a reason to move the event or send the guests another invitation. Use a harmless sample appointment when learning the custom controls."
+        ]
+      },
+      {
+        "heading": "Configure the native Mac alert",
+        "body": [
+          "In Calendar on Mac, double-click the event and click its time to reach the Alert menu. Choose Custom, then the supported action. Apple describes Message with sound, Email and Open file. Review the displayed timing and the additional action-specific choices before saving the event.",
+          "The documentation also permits adding another alert through the plus control beside the Alert menu. Exchange events are limited to one alert in Apple’s guide, so do not assume every connected account offers an identical multi-alert arrangement."
+        ]
+      },
+      {
+        "heading": "Review the target separately from delivery",
+        "body": [
+          "For the outline example, confirm the selected file is the current non-sensitive version and can be opened through the intended local setup. For email, inspect the actual target offered by the control rather than assuming the message goes to the event’s invitees. An email reminder is not the same as inviting a new attendee.",
+          "The article does not establish behavior while the Mac is unavailable, guarantee execution after sleep, or promise another device runs the action. Keep an appropriate backup for a consequential preparation deadline and verify the real configuration on your own Mac."
+        ]
+      },
+      {
+        "heading": "Use the right troubleshooting branch",
+        "body": [
+          "If the event time is wrong, correct the event at its source. If the custom action points to an old file or unintended address, inspect that action. If the action is a notification that appears silently, examine native Calendar and macOS notification controls separately.",
+          "These are native Mac capabilities, not Cloud Calendars custom automation features. Preserve the real event while checking a disposable example without guests."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Presentation preparation choices",
+      "columns": [
+        "Need",
+        "Custom action to investigate",
+        "Verify independently"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Visible and audible prompt",
+            "Message with sound",
+            "Alert time and Mac notification arrangement"
+          ]
+        },
+        {
+          "cells": [
+            "Inbox reminder",
+            "Email",
+            "Actual selected recipient and observed delivery"
+          ]
+        },
+        {
+          "cells": [
+            "Open a preparation document",
+            "Open file",
+            "Correct file and observed action on the Mac"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Define the action, time and target.",
+      "Use the event’s Alert > Custom control in Mac Calendar.",
+      "Check account-specific limits before adding another alert.",
+      "Observe a harmless example before relying on the action for an important event."
+    ],
+    "faq": [
+      {
+        "q": "Does an Email alert invite the meeting guests?",
+        "a": "It is a custom reminder action. Inspect its actual target; do not equate it with sending an invitation."
+      },
+      {
+        "q": "Can every Exchange event have several Mac alerts?",
+        "a": "Apple’s guide says Exchange events can have only one alert."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: manage notifications from Calendar on Mac",
+        "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Separate alert setup from delivery"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Do not mistake a reminder for an invitation"
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "label": "Keep preparation time separate from meeting edits"
+      }
+    ],
+    "seeAlso": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "keeping-track-of-who-replied",
+      "drag-an-event-to-move-it"
+    ]
+  },
+  "mac-calendar-holidays-different-region": {
+    "updated": "2026-10-23",
+    "title": "Add another country’s holidays on Mac without duplicating your own events",
+    "short": "Show another region’s holidays",
+    "description": "Add a different-region Holidays calendar in Mac Calendar. Separate regional display, read-only holidays and your own booked time off.",
+    "lede": "Your Mac’s default holiday calendar follows its region, but a trip or international team may need another region’s dates too. Add the relevant Holidays subscription instead of entering each holiday as a personal meeting. Then keep the reference dates separate from your own leave arrangements.",
+    "sections": [
+      {
+        "heading": "Identify which regional reference is missing",
+        "body": [
+          "A fictional team works across two countries and wants to see a colleague’s public holiday dates before proposing calls. Record which region is needed and which calendars are already visible. A familiar holiday title appearing twice can come from two subscriptions rather than two personal appointments.",
+          "Apple says the standard Holidays calendar is based on the computer’s region. Turning off its General setting hides that regional calendar; it does not mean every additional holiday subscription has been removed. Check the calendar list before adding another copy."
+        ]
+      },
+      {
+        "heading": "Add the different-region calendar",
+        "body": [
+          "In Calendar on Mac, choose File > New Holiday Calendar. Use the Region menu to select the desired country or region, then click Add. Choose the calendar name, location, alert and refresh settings, then click OK. Check the new calendar in the list and inspect a known holiday date in that region.",
+          "To show or hide the built-in regional Holidays calendar, Apple documents Calendar > Settings > General > Show Holidays calendar. Keep this display choice separate from deleting a personal event that happens to have a similar name."
+        ]
+      },
+      {
+        "heading": "Treat the holidays as provider-controlled information",
+        "body": [
+          "Apple identifies Holidays as a subscription calendar. Its provider controls the events, so you cannot add or remove holidays directly in that feed. If you need a personal day off or a company-specific closure, create the appropriate owned record through the approved workflow instead of trying to rewrite the subscription.",
+          "A public holiday reference is not proof that a colleague is unavailable, that a business is closed or that your own leave was approved. For the fictional team, ask the relevant person about the actual working arrangement before treating the reference date as a confirmed meeting conflict."
+        ]
+      },
+      {
+        "heading": "Verify a useful overview",
+        "body": [
+          "Compare one known holiday, the region in the new calendar’s name or information and your intended personal commitments. If a date appears twice, identify both calendar sources before hiding one. Do not delete a work or family appointment just to make the grid cleaner.",
+          "This page describes Apple Calendar on Mac, not Cloud Calendars holiday subscriptions or employment rules. Use the appropriate calendar and provider when you need a personal booking or an organization’s actual closure schedule."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Holiday reference versus personal commitment",
+      "columns": [
+        "Record",
+        "Who controls it",
+        "What it establishes"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Mac’s regional Holidays feed",
+            "Holiday provider and region choice",
+            "Reference holiday dates"
+          ]
+        },
+        {
+          "cells": [
+            "Additional region’s Holidays feed",
+            "Holiday provider",
+            "A second regional reference"
+          ]
+        },
+        {
+          "cells": [
+            "Your approved leave entry",
+            "Your owning calendar and workplace process",
+            "The actual personal arrangement, when properly confirmed"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Check existing holiday subscriptions and the desired region.",
+      "Use File > New Holiday Calendar and select that region.",
+      "Inspect a known date and the calendar source.",
+      "Record personal leave separately when needed; verify actual availability with the relevant person."
+    ],
+    "faq": [
+      {
+        "q": "Can I delete one holiday from the subscription?",
+        "a": "Apple describes the Holidays feed as provider-controlled and read-only. Use an owned calendar for your own distinct commitments."
+      },
+      {
+        "q": "Does hiding Show Holidays calendar hide every region I added?",
+        "a": "Apple says that preference only hides the Holidays calendar for the computer’s region. Inspect other subscriptions separately."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: holiday calendars for different regions on Mac",
+        "url": "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "label": "Separate date labels from availability"
+      },
+      {
+        "slug": "iphone-calendar-language-alternate-calendar-settings",
+        "label": "Distinguish regional dates from display settings"
+      },
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "label": "Keep reference and personal calendars distinct"
+      }
+    ],
+    "seeAlso": [
+      "what-an-all-day-event-really-means",
+      "iphone-calendar-language-alternate-calendar-settings",
+      "work-and-personal-without-two-apps"
+    ]
+  },
+  "mac-calendar-travel-time-after-location-change": {
+    "updated": "2026-10-23",
+    "title": "Changed a meeting’s location on Mac? Recheck Travel Time as well",
+    "short": "Recheck travel time after a move",
+    "description": "Apple Calendar on Mac does not automatically update Travel Time when a location changes. Check the address, saved allowance and departure alert separately.",
+    "lede": "A new venue does not guarantee an updated travel allowance in Calendar on Mac. Apple explicitly says Travel Time does not update automatically when you change locations. Reopen both fields before relying on a departure plan.",
+    "sections": [
+      {
+        "heading": "Keep three scheduling facts separate",
+        "body": [
+          "For a fictional workshop, the start remains 14:00, the venue changes from a nearby office to a farther site, and the saved travel allowance is still 20 minutes. The event time, destination and journey allowance are three different facts. A correct new address alone does not prove the old allowance is useful.",
+          "Confirm whether the workshop also requires early arrival. Do not move its shared start time earlier to represent your personal departure. Write the intended venue, arrival requirement and selected travel allowance before editing."
+        ]
+      },
+      {
+        "heading": "Reopen the native Mac event fields",
+        "body": [
+          "In Calendar on Mac, double-click the event. Apple documents selecting a location from the matching results after entering an address or business. It also permits keeping entered location text verbatim when no result is selected. Check that the stored destination is the one you intend, rather than relying on a similar venue name.",
+          "Inspect the separate Travel Time menu and select an appropriate option. Apple’s explicit warning is that changing locations does not automatically update travel time. Use your navigation or transport source for a current route assessment rather than assuming the previous allowance was recalculated."
+        ]
+      },
+      {
+        "heading": "Check the alert, not just the block on screen",
+        "body": [
+          "Apple’s Mac notification guide offers Time to Leave as an alert when a location is present. It also has a Calendar > Settings > Alerts Time to Leave preference. That signal is different from a plain fixed reminder such as 30 minutes before the start.",
+          "For the workshop, reopen the saved alert choice and the destination after changing the venue. If you also keep a separate departure entry, check that it does not still point to the old site. No universal route accuracy or on-time arrival guarantee follows from any alert label."
+        ]
+      },
+      {
+        "heading": "Verify the shared and personal outcomes",
+        "body": [
+          "The organizer needs the correct workshop venue in the actual invitation. You need a realistic personal route plan and departure reminder. Confirm a consequential venue change directly with affected people as well as through the calendar update.",
+          "This page describes Mac Calendar controls. Cloud Calendars’ weather and event location features do not establish the same Travel Time behavior or controls. Use the existing travel/weather guide for the broader journey check, and keep the owning provider authoritative for the meeting."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Fictional 14:00 workshop moved to another site",
+      "columns": [
+        "Field",
+        "Question after the move",
+        "Evidence to inspect"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Event start",
+            "Is 14:00 still the agreed start?",
+            "Organizer’s current invitation"
+          ]
+        },
+        {
+          "cells": [
+            "Location",
+            "Is the intended site saved?",
+            "Address or selected venue in event"
+          ]
+        },
+        {
+          "cells": [
+            "Travel Time",
+            "Does the old allowance still fit?",
+            "Separate Travel Time menu and route assessment"
+          ]
+        },
+        {
+          "cells": [
+            "Departure alert",
+            "Which signal is configured?",
+            "Saved Alert and native Calendar preference"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the meeting’s actual start and new venue.",
+      "Reopen Travel Time rather than assuming it updated.",
+      "Review any Time to Leave or fixed alert separately.",
+      "Verify the saved invitation and communicate important venue changes."
+    ],
+    "faq": [
+      {
+        "q": "Does changing location recalculate saved Mac Travel Time automatically?",
+        "a": "Apple’s guide says it does not. Recheck the Travel Time field after the move."
+      },
+      {
+        "q": "Is Time to Leave identical to a 30 minute alert?",
+        "a": "No. A fixed offset and the native Time to Leave option are separate choices; inspect the actual saved alert."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: location, travel time and event details on Mac",
+        "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac"
+      },
+      {
+        "label": "Apple: manage notifications from Calendar on Mac",
+        "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "the-commute-and-the-sky",
+        "label": "Review the whole route and arrival plan"
+      },
+      {
+        "slug": "weather-where-the-event-is",
+        "label": "Check the intended forecast place"
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Verify reminder delivery separately"
+      }
+    ],
+    "seeAlso": [
+      "the-commute-and-the-sky",
+      "weather-where-the-event-is",
+      "calendar-notifications-missing-silent-or-duplicated"
+    ]
+  },
+  "mac-calendar-caldav-delegation-allow-write": {
+    "updated": "2026-10-23",
+    "title": "Give a colleague CalDAV calendar-account access in Mac Calendar",
+    "short": "CalDAV account delegation on Mac",
+    "description": "Configure CalDAV delegation in Mac Calendar for a colleague on the same service. Distinguish account access, Allow Write and one-calendar sharing.",
+    "lede": "Connecting a CalDAV account to your Mac does not give a colleague access to it. Apple documents a separate Delegation workflow for people using the same calendar service. Decide whether they need account-level viewing or writing before changing that relationship.",
+    "sections": [
+      {
+        "heading": "Choose account delegation or one-calendar sharing",
+        "body": [
+          "A fictional coordinator manages several calendars on a company CalDAV service. A substitute needs to maintain the coordinator’s schedule during an absence. Account delegation is a broader task than subscribing to one public timetable or sharing one calendar with a reader.",
+          "Apple’s Mac guide distinguishes individual-calendar sharing from giving another person access to the calendar account. Its delegation procedure requires people using the same CalDAV or Exchange service. This page follows the CalDAV path; it is not a promise that arbitrary Google, iCloud and external accounts share one universal delegation setting."
+        ]
+      },
+      {
+        "heading": "Use the owning account’s Delegation controls",
+        "body": [
+          "In Calendar on Mac, choose Calendar > Settings > Accounts and select the intended calendar account. Click Delegation, then Edit and the add button. Enter the colleague’s name and select the matching person offered by that service.",
+          "For CalDAV, Apple identifies Allow Write as the checkbox permitting edits to your calendars. Decide deliberately whether that authority is needed. Viewing, changing an event and managing who else can use a service are different responsibilities; do not substitute a shared password for the supported relationship."
+        ]
+      },
+      {
+        "heading": "Have the recipient inspect the access they received",
+        "body": [
+          "Apple separately documents Calendar > Settings > Accounts > Delegation for viewing accounts available to you. A CalDAV account appears in Accounts I can access. Have the substitute check the intended account rather than treating an email or familiar event title as proof. Select Show to display the delegated account’s calendars in the main Calendar window.",
+          "For the fictional handover, use an agreed harmless appointment to distinguish reading from an authorized small edit. Check the owner-side saved record. These are suggested verification steps, not an account test performed for this article."
+        ]
+      },
+      {
+        "heading": "Keep a bounded handover record",
+        "body": [
+          "Record the service, account owner, substitute identity, whether writing was intended and the agreed review date. Use the service’s supported controls and administrator guidance for later changes; this article does not invent an account-removal or revocation button not established by the linked documentation.",
+          "Cloud Calendars sharing roles and a CalDAV account added through iPhone settings are separate mechanisms. This Mac-native delegation does not prove the substitute can use every app or bypass workplace policy. Verify the exact service and access route needed for the job."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Fictional substitute-coordinator handover",
+      "columns": [
+        "Need",
+        "Relationship to investigate",
+        "Verification"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Follow one public schedule",
+            "Read-only subscription",
+            "Published timetable appears"
+          ]
+        },
+        {
+          "cells": [
+            "Collaborate on one calendar",
+            "Individual-calendar sharing",
+            "Intended calendar and role"
+          ]
+        },
+        {
+          "cells": [
+            "Maintain an account on the same CalDAV service",
+            "Delegation with appropriate Allow Write choice",
+            "Accounts I can access and harmless authorized edit"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the account owner and the same-service colleague.",
+      "Decide whether account delegation is broader than the task requires.",
+      "Use Accounts > Delegation > Edit and inspect Allow Write.",
+      "Have the recipient check the intended account and permitted action."
+    ],
+    "faq": [
+      {
+        "q": "Is adding a CalDAV account on my own phone delegation?",
+        "a": "No. Connecting your device and granting another person access are different operations."
+      },
+      {
+        "q": "Does Allow Write merely let someone read the calendar?",
+        "a": "Apple identifies it as the CalDAV option that lets that person edit your calendars. Choose it only when writing is intended."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: subscribe to calendars and choose subscription location",
+        "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac"
+      },
+      {
+        "label": "Apple: manage calendar accounts you can access",
+        "url": "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "label": "Connect a device without confusing delegation"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "label": "Choose the correct collaboration relationship"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Keep provider-specific permissions distinct"
+      }
+    ],
+    "seeAlso": [
+      "caldav-calendar-on-iphone",
+      "a-calendar-that-is-yours-to-share",
+      "who-can-see-what-in-google-calendar"
+    ]
+  },
+  "mac-calendar-siri-suggestions-confirm-ignore": {
+    "updated": "2026-10-23",
+    "title": "A booking appeared in Siri Suggestions on Mac: confirm it or ignore it",
+    "short": "Review suggested calendar events",
+    "description": "Review Siri’s suggested booking in Mac Calendar before adding it to a real calendar. Ignore one suggestion without disabling and deleting all unconfirmed ones.",
+    "lede": "A flight or restaurant booking found in Mail can appear as a suggested event before you confirm it into another calendar. Check its source and details before creating a duplicate. Ignoring one suggestion is a narrower action than disabling the Siri Suggestions calendar.",
+    "sections": [
+      {
+        "heading": "Find the suggestion and the actual booking",
+        "body": [
+          "Apple says recognized details from known providers can appear in the Siri Suggestions calendar, in the Other section of Mac Calendar’s list. Examples include flights, restaurant reservations and car rentals. A suggested entry is not evidence that you intentionally created a separate event in your personal calendar.",
+          "For a fictional dinner booking, compare the confirmation message with the suggestion’s date, time and venue. Also check whether you already saved an appointment manually. Keep the confirmation available while deciding which calendar record should represent the plan."
+        ]
+      },
+      {
+        "heading": "Confirm into the intended calendar",
+        "body": [
+          "Apple documents opening the suggestion at its proposed date or finding it in the Calendar notifications list. In the Info window, Add to Calendar uses the default calendar. The calendar menu in the upper-right corner lets you choose another destination; the notifications list also offers a destination choice by holding Add to Calendar.",
+          "Choose the actual personal or shared destination you intend. A suggestion for a private booking should not be added to a broadly shared schedule merely because that schedule is currently the default. Reopen the saved event to check its destination and details."
+        ]
+      },
+      {
+        "heading": "Ignore one suggestion or disable the feature deliberately",
+        "body": [
+          "To remove a suggested event, Apple documents Ignore. Use that narrow operation when this specific suggestion is unwanted. It does not establish that the underlying booking was cancelled or that its email was removed.",
+          "To turn the feature off on the Mac, Apple documents System Settings > Siri > Siri Suggestions & Privacy, then Calendar and Show Siri Suggestions in application. Importantly, turning it off deletes unconfirmed suggestions and hides the Siri Suggestions calendar. Do not treat that as a harmless visibility-only experiment when you still want to review pending suggestions."
+        ]
+      },
+      {
+        "heading": "Check for duplicate records without deleting a reservation",
+        "body": [
+          "For the dinner example, mark each item as a source confirmation, an unconfirmed suggestion or an owned calendar event. If a duplicate-looking entry remains, identify its calendar before removing anything. A reservation email and a calendar record are different objects.",
+          "This is Apple’s Mac workflow, not a claim that Cloud Calendars parses Mail or displays a Siri Suggestions inbox. Use the owning app’s controls and preserve the actual booking while correcting the planning view."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Fictional dinner-booking record check",
+      "columns": [
+        "Item",
+        "What it represents",
+        "Appropriate next decision"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Confirmation message",
+            "Provider’s booking details",
+            "Use it to verify date and venue"
+          ]
+        },
+        {
+          "cells": [
+            "Siri Suggestions entry",
+            "Unconfirmed suggested event",
+            "Add to intended calendar or Ignore"
+          ]
+        },
+        {
+          "cells": [
+            "Owned calendar appointment",
+            "Your saved planning record",
+            "Check destination and duplicate identity"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Compare the source confirmation and any manually saved event.",
+      "Locate the Siri Suggestions entry.",
+      "Add it to the intended calendar or Ignore that suggestion.",
+      "Understand the deletion of unconfirmed suggestions before disabling the feature."
+    ],
+    "faq": [
+      {
+        "q": "Does Ignore cancel my restaurant booking?",
+        "a": "The documented action removes a calendar suggestion. Confirm reservation changes through the booking provider."
+      },
+      {
+        "q": "Does turning off Siri Suggestions only hide its calendar?",
+        "a": "Apple says it also deletes unconfirmed suggestions. Review anything you still need first."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: review and remove Siri event suggestions on Mac",
+        "url": "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "natural-language-calendar-events-iphone",
+        "label": "Distinguish suggestions from parsing and copying"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "label": "Verify the chosen destination"
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "label": "Identify separate records before cleanup"
+      }
+    ],
+    "seeAlso": [
+      "natural-language-calendar-events-iphone",
+      "event-saved-to-wrong-calendar",
+      "when-two-calendars-disagree"
+    ]
+  },
+  "icloud-delete-calendar-every-device": {
+    "updated": "2026-10-23",
+    "title": "Delete an iCloud calendar or just stop seeing it? Check the scope first",
+    "short": "Delete an iCloud calendar deliberately",
+    "description": "An iCloud calendar deletion removes its events across iCloud-enabled devices. Decide whether you need deletion, hidden display or ended sharing instead.",
+    "lede": "Deleting a calendar on iCloud.com is not a way to remove clutter from one screen. Apple says its events are deleted too, and the calendar is removed from devices with iCloud Calendar enabled. Establish the intended scope before choosing Delete Calendar.",
+    "sections": [
+      {
+        "heading": "Write the desired result before the operation",
+        "body": [
+          "A fictional organizer has finished a volunteer project. The calendar still holds its history, and the organizer only wants it out of the daily view. That is different from intentionally deleting the project’s calendar records or ending another person’s access.",
+          "Write one precise outcome:hide from my current view, stop collaborating, or delete the owned calendar and its events. Do not choose deletion merely because its menu is easier to find. A received subscription or someone else’s shared calendar also has a different relationship from a calendar you own."
+        ]
+      },
+      {
+        "heading": "Understand the documented deletion scope",
+        "body": [
+          "Apple’s iCloud guide states that deleting a calendar deletes all associated events. It also removes that calendar from every device with Calendars enabled in iCloud settings. The iCloud calendar list must retain at least one calendar, so deleting every calendar is not supported.",
+          "Before an intentional deletion, identify the calendar name, owner and source and review representative current and historical entries. If you need a retained copy, assess and verify an appropriate export separately. Do not assume another synced phone is an independent backup that will retain the deleted calendar."
+        ]
+      },
+      {
+        "heading": "Use the appropriate owner control",
+        "body": [
+          "On a tablet or computer, sign in to Calendar on iCloud.com with the intended Apple Account. In the sidebar, tap the calendar on a tablet or hover over it on a Mac. Apple’s documented route is Actions > Delete Calendar. Read the actual confirmation and scope before proceeding.",
+          "If the real goal is ending collaboration while retaining the records, Apple has separate Stop Sharing or Public Calendar controls. Use those with the appropriate ownership instead. This guide is explanatory; it does not perform a deletion or claim every service uses the same menu."
+        ]
+      },
+      {
+        "heading": "If a deletion was accidental, avoid compounding it",
+        "body": [
+          "Apple links an archived-calendar restore route for accidental deletion. That is a broader recovery decision with sharing and current-schedule consequences, not a guaranteed single-record undo. Use the dedicated recovery guide before selecting a version.",
+          "For the volunteer-project example, keep a private note of the source, calendar and action taken. Do not reimport an old file repeatedly or change another account just because the calendar vanished from multiple screens. That cross-device disappearance may be the expected scope of the original deletion."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Choose the intended scope",
+      "columns": [
+        "Goal",
+        "Operation to investigate",
+        "Key distinction"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Reduce visual clutter",
+            "Relevant calendar display selection",
+            "Not destruction of the owned records"
+          ]
+        },
+        {
+          "cells": [
+            "End someone’s access",
+            "Owner’s sharing controls",
+            "Not deletion of the calendar history"
+          ]
+        },
+        {
+          "cells": [
+            "Remove the calendar and its events",
+            "iCloud Delete Calendar",
+            "Affects iCloud-enabled devices"
+          ]
+        },
+        {
+          "cells": [
+            "Recover an accidental deletion",
+            "Archive recovery review",
+            "Broader than a one-screen display change"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Name the intended outcome and actual calendar owner.",
+      "Review the calendar’s events and any verified copy you need.",
+      "Use the narrowest matching display, sharing or deletion control.",
+      "If deletion was accidental, assess the provider’s recovery scope before further changes."
+    ],
+    "faq": [
+      {
+        "q": "Will another iCloud-connected device keep the calendar?",
+        "a": "Do not treat it as an independent backup. Apple says deletion affects devices with iCloud Calendar enabled."
+      },
+      {
+        "q": "Can I delete every iCloud calendar?",
+        "a": "Apple says the list must always contain at least one calendar."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: delete a calendar on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud"
+      },
+      {
+        "label": "Apple: stop sharing instead of deleting an iCloud calendar",
+        "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "label": "Separate disconnection from record deletion"
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "label": "End access without assuming copies disappear"
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "label": "Review iCloud recovery consequences"
+      }
+    ],
+    "seeAlso": [
+      "disconnect-calendar-integration-without-losing-track",
+      "taking-back-a-calendar-you-shared",
+      "recover-deleted-calendar-events-iphone"
+    ]
+  },
+  "iphone-calendar-add-remove-event-attachments": {
+    "updated": "2026-10-23",
+    "title": "Attach the right file to an iPhone Calendar event, then check the saved version",
+    "short": "Add or remove an event attachment",
+    "description": "Add and remove event attachments in Apple Calendar on iPhone. Verify the file version and intended invitees without confusing it with a new invitation.",
+    "lede": "An agenda’s filename can look right while its contents are an old draft. Before attaching it to an iPhone Calendar event, confirm both the event and the actual file. Apple’s native editor can locate an attachment through Files; save and reopen the result to verify what you added.",
+    "sections": [
+      {
+        "heading": "Prepare the document and the event",
+        "body": [
+          "A fictional workshop has an updated PDF agenda and an older draft with a similar filename. Open the intended file first and check its contents. Then identify the actual workshop event, date, calendar and invitees. A similarly named personal copy is not necessarily the organizer’s shared event.",
+          "Apple describes event attachments as a way to share files with invitees. Review the intended audience and document content before attaching. This guide does not promise that every calendar account supports identical attachment behavior or that a confidential file becomes safe because it is inside a calendar event."
+        ]
+      },
+      {
+        "heading": "Choose the file in Apple Calendar on iPhone",
+        "body": [
+          "Open the event in Apple Calendar, tap Edit, then Add attachment. Apple documents locating the file by search, folders or Browse for other locations such as iCloud Drive. Select the intended file and tap Done to save the event.",
+          "Reopen the saved event and inspect the attachment. For the workshop example, compare its visible name and contents with the approved agenda, not just the fact that an attachment row exists. A new attendee or a different event time should be checked in the event’s own fields separately."
+        ]
+      },
+      {
+        "heading": "Remove the wrong attachment without removing the meeting",
+        "body": [
+          "Apple’s removal route is to open the event, tap Edit, swipe left over the attachment, then tap Remove. Check the resulting saved event through the editor’s normal completion controls. Removing an attachment is a narrower action than deleting the appointment.",
+          "If you are replacing a draft, verify that the intended current file remains and the unwanted attachment no longer appears on the source event. Previously downloaded copies are a separate matter; the documentation does not establish that removing an event attachment recalls every copy already saved by a recipient."
+        ]
+      },
+      {
+        "heading": "Verify the recipient experience where the document matters",
+        "body": [
+          "For an agreed harmless example, ask an intended invitee to check whether they can locate and open the attached document through their normal calendar setup. Record the actual service and result if it differs. Do not solve an access problem by publishing the entire calendar.",
+          "These are Apple Calendar on iPhone steps, not Cloud Calendars file-attachment controls or Google Drive permission instructions. If the Add attachment choice is unavailable for the actual event, use the owning service’s supported guidance rather than assuming every account exposes the same control."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Workshop attachment check",
+      "columns": [
+        "Check",
+        "Illustrative intended result",
+        "What it does not establish"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Event identity",
+            "Correct workshop and organizer",
+            "Correct file contents"
+          ]
+        },
+        {
+          "cells": [
+            "File contents",
+            "Approved current agenda",
+            "Every recipient can open it"
+          ]
+        },
+        {
+          "cells": [
+            "Saved attachment",
+            "Intended file appears after reopening",
+            "Old downloads have been recalled"
+          ]
+        },
+        {
+          "cells": [
+            "Recipient check",
+            "Agreed invitee opens the intended file",
+            "A new guest was invited automatically"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Open and verify the intended document before attaching it.",
+      "Confirm the actual event and audience.",
+      "Use Edit > Add attachment, choose the file, save and reopen.",
+      "Remove an unwanted attachment through its own control and verify the result."
+    ],
+    "faq": [
+      {
+        "q": "Do I need to delete the event to replace its attachment?",
+        "a": "Apple documents a separate attachment removal action. Preserve the meeting while correcting its document."
+      },
+      {
+        "q": "Does this describe Google Drive sharing?",
+        "a": "No. It describes Apple Calendar’s iPhone attachment flow. Check the actual owning service and recipient route separately."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: add and remove event attachments on iPhone",
+        "url": "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "label": "Separate event permissions from document access"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "label": "Check the intended event audience"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "label": "Identify the actual event destination"
+      }
+    ],
+    "seeAlso": [
+      "what-guests-can-do-to-your-event",
+      "sharing-one-event-not-your-calendar",
+      "event-saved-to-wrong-calendar"
+    ]
+  },
+  "mac-calendar-check-invitee-availability": {
+    "updated": "2026-10-23",
+    "title": "Check invitee availability in Mac Calendar—and why the button may be missing",
+    "short": "Check availability before sending",
+    "description": "Add the intended recipients and use Check Availability in Mac Calendar when the service supports it. A free slot is not an accepted invitation.",
+    "lede": "Mac Calendar can show free/busy information for supported calendar services, but typing a name is not enough to establish that the right person was added. Confirm the recipients first, then use the availability controls when the event’s service provides them.",
+    "sections": [
+      {
+        "heading": "Complete the intended recipient entries",
+        "body": [
+          "For a fictional three-person review, write the intended identities and proposed duration before sending. In the Mac event, use Add Invitees and enter each name or email address. Apple says Calendar looks for matches in Contacts, Mail and connected calendar servers.",
+          "Apple also warns that pressing Return before a match is found or before an email is complete does not add the invitee. Inspect the actual recipients shown in the event. A typed fragment still in a field is not proof that a colleague is included."
+        ]
+      },
+      {
+        "heading": "Use Check Availability only where supported",
+        "body": [
+          "Apple says Check Availability appears below the invitees when the event is on a service that tracks availability, such as CalDAV. Click it to open the Availability window and review free/busy time. A missing button does not by itself show that the colleague declined or that the account lost every calendar record.",
+          "In that window you can move the event block, inspect another day using the arrows, or choose Next Available Time to look for a time when all invitees are available. Keep the intended duration and date context in view rather than treating the first convenient-looking blank as a confirmed booking."
+        ]
+      },
+      {
+        "heading": "Send the proposal and check the actual reply",
+        "body": [
+          "After choosing the intended time and verifying the event details, use Send. Availability information helps with the proposal; it is not the guest’s Yes or an undertaking to attend. Check the organizer’s invitation and actual response separately.",
+          "For the review example, record the invited people, candidate interval, available information and eventual replies. If the service does not supply the availability control, ask the people for suitable times through the normal coordination channel instead of moving a real meeting as a test."
+        ]
+      },
+      {
+        "heading": "Keep provider access separate from the calendar view",
+        "body": [
+          "A combined personal overview does not mean every underlying provider shares free/busy information with every other account. Identify the calendar service that owns this invitation and the actual people resolved by its entry fields.",
+          "This guide describes Apple Calendar on Mac. It does not claim Cloud Calendars has the same Availability window, supports every server’s free/busy lookup or guarantees no conflicts. Use the actual provider and confirm consequential arrangements with the guests."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Three-person review readiness check",
+      "columns": [
+        "Stage",
+        "Evidence to collect",
+        "Not yet established"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Recipient entry",
+            "All three intended people appear as invitees",
+            "Their availability"
+          ]
+        },
+        {
+          "cells": [
+            "Availability search",
+            "Supported service and candidate interval",
+            "Attendance acceptance"
+          ]
+        },
+        {
+          "cells": [
+            "Sent invitation",
+            "Saved original event and chosen time",
+            "Every guest has replied"
+          ]
+        },
+        {
+          "cells": [
+            "Replies received",
+            "Actual guest responses",
+            "No later schedule change"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Verify each intended recipient is actually added.",
+      "Use Check Availability if the owning service offers it.",
+      "Compare the candidate interval and duration before Send.",
+      "Track actual responses separately from the availability view."
+    ],
+    "faq": [
+      {
+        "q": "Why is Check Availability missing?",
+        "a": "Apple ties it to the event’s calendar service tracking availability. Identify that service before treating the missing control as a general account failure."
+      },
+      {
+        "q": "Does Next Available Time mean everyone accepted?",
+        "a": "No. It is an availability aid before sending; attendance requires the appropriate guest response."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this workflow",
+    "sources": [
+      {
+        "label": "Apple: invite people and check availability on Mac",
+        "url": "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Verify actual attendance replies"
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "label": "Check resource confirmation separately"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Do not confuse a combined view with provider access"
+      }
+    ],
+    "seeAlso": [
+      "keeping-track-of-who-replied",
+      "calendar-event-or-room-reservation",
+      "icloud-google-and-outlook-in-one-view"
+    ]
+  }
+}

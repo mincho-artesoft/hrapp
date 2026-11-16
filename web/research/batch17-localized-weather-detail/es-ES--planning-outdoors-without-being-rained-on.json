@@ -1,0 +1,89 @@
+{
+  "updated": "2026-10-22",
+  "title": "Planifica un evento al aire libre con previsión y alternativa",
+  "short": "Elige un plan exterior y una alternativa viable",
+  "description": "Planifica al aire libre comprobando lugar, horas de previsión y una alternativa acordada. Revisa el calendario antes de cambiar una cita compartida.",
+  "lede": "El tiempo ayuda a comparar momentos posibles para una actividad exterior, pero no promete un resultado sin lluvia. Empieza por sus requisitos y las decisiones que aún puedes cambiar; después usa la previsión relevante para orientarlas. Esta guía la publica Arte Soft, desarrollador de Cloud Calendars.",
+  "commonBelief": "Consultar más a menudo o mover un poco la actividad garantiza evitar el mal tiempo.",
+  "sections": [
+    {
+      "heading": "Define la actividad antes de elegir un dato meteorológico",
+      "body": [
+        "Identifica el lugar, las personas implicadas y lo que necesita la actividad. Una comida en el jardín, una sesión deportiva escolar y una actuación exterior reservada tienen limitaciones prácticas distintas. Evita aplicarles un único porcentaje genérico de lluvia.",
+        "Anota quién puede decidir un cambio y la última hora útil para hacerlo. El plazo de un recinto o la disponibilidad de un ayudante pueden limitar las opciones antes que el tiempo. Estos ejemplos de planificación no proporcionan límites técnicos de seguridad para ninguna actividad."
+      ]
+    },
+    {
+      "heading": "Haz coincidir lugar, fecha local e intervalo completo",
+      "body": [
+        "Compara la ubicación meteorológica seleccionada con el lugar real. Incluye llegada y preparación cuando proceda y examina las horas disponibles durante la actividad. Un icono diario no describe cada momento de una reserva larga.",
+        "Si el evento queda fuera de las fechas de previsión, conserva la fecha acordada y fija una revisión posterior. Si viajas, compara la hora local del lugar con la cita. No sustituyas inadvertidamente la información de la reserva por una previsión de tu ubicación actual."
+      ]
+    },
+    {
+      "heading": "Compara alternativas reales sin inventar periodos secos",
+      "body": [
+        "Compara los intervalos posibles con los campos meteorológicos relevantes y sus etiquetas. La guía de Met Office distingue probabilidad de otros valores y explica que los campos pueden describir periodos distintos. Lee las definiciones correspondientes de la fuente que utilizas.",
+        "Salir una hora después puede mejorar las condiciones o no. Trata un intervalo que parece más adecuado como información para planificar, no como garantía. No extrapoles una hora sin cobertura ni una observación para toda una ruta a partir del valor de un solo lugar."
+      ]
+    },
+    {
+      "heading": "Acuerda una alternativa que los participantes puedan usar",
+      "body": [
+        "La alternativa debe resolver el problema real: un espacio interior autorizado, un aplazamiento acordado u otra opción a la que puedan llegar los participantes. Comprueba acceso, coste y disponibilidad con el organizador o recinto correspondiente.",
+        "Por ejemplo, trasladar un pícnic al interior puede fallar si nadie ha confirmado la sala. Registra claramente la alternativa y decide quién comunicará la elección final. Una nota en el calendario privado de una persona no es un acuerdo compartido."
+      ]
+    },
+    {
+      "heading": "Guarda y cambia el evento previsto",
+      "body": [
+        "Antes de crear o editar, confirma calendario de destino, inicio, final y lugar. Un borrador iniciado desde una hora meteorológica sigue necesitando revisión. Su duración propuesta puede no incluir preparación, viaje o toda la actividad.",
+        "En una cita compartida o recurrente, revisa responsabilidades del organizador, permisos de edición y alcance de repetición. Después de un cambio autorizado, reabre el evento guardado. Un cambio local no demuestra que el recinto o todos los participantes lo hayan aceptado."
+      ]
+    },
+    {
+      "heading": "Revisa cuando aún puedas actuar",
+      "body": [
+        "Elige una hora de revisión que permita actuar según las condiciones de la reserva. Compara la previsión relevante más reciente y las indicaciones oficiales o del recinto aplicables. La información meteorológica orienta decisiones; no autoriza a ignorar los requisitos de la actividad.",
+        "Comunica el plan final y confirma directamente los traspasos importantes de responsabilidad. Si una actualización posterior cambia la decisión, identifica qué evento y ocurrencia debes modificar. Actualizar repetidamente sin una alternativa viable no elimina la incertidumbre."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifica lugar, requisitos y responsable de decidir.",
+    "Comprueba el lugar meteorológico seleccionado y todo el intervalo en hora local.",
+    "Compara solo fechas y horas de previsión realmente disponibles.",
+    "Acuerda una alternativa viable y un plazo de decisión.",
+    "Revisa destino del calendario, detalles y alcance de repetición antes de guardar.",
+    "Revisa a la hora acordada y confirma el plan final con los participantes."
+  ],
+  "faq": [
+    {
+      "q": "¿Mover el evento una hora garantiza que no llueva?",
+      "a": "No. Compara los periodos disponibles y conserva una alternativa adecuada a la actividad. La previsión no promete un resultado."
+    },
+    {
+      "q": "¿Y si la previsión no alcanza la fecha del evento?",
+      "a": "Mantén la cita acordada y programa una revisión meteorológica posterior. La falta de información no predice buen tiempo."
+    },
+    {
+      "q": "¿Puedo mover un evento compartido si otra hora parece mejor?",
+      "a": "Confirma primero el acuerdo del organizador, los permisos de edición y los participantes. Comprueba el alcance de repetición y el resultado guardado y comunica el cambio."
+    }
+  ],
+  "seeAlso": [
+    "forecast-beside-every-event"
+  ],
+  "sourcesHeading": "Fuentes oficiales y lecturas adicionales",
+  "sources": [
+    {
+      "label": "Apple: previsiones WeatherKit y disponibilidad regional",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Met Office: lugar, periodos y valores de la previsión",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    }
+  ]
+}

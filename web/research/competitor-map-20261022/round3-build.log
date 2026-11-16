@@ -1,0 +1,46 @@
+
+> arte-calendar@0.0.0 build
+> node tools/build-article-index.mjs && ng build && node tools/postbuild.mjs
+
+Article index: 30 locales, 476 entries
+❯ Building...
+✔ Building...
+Initial chunk files   | Names           |  Raw size | Estimated transfer size
+main-LNVDSS7E.js      | main            | 770.98 kB |               138.83 kB
+chunk-E4V22TO4.js     | -               | 159.75 kB |                47.57 kB
+chunk-X23AMFUU.js     | -               | 104.70 kB |                26.95 kB
+chunk-P4ERDUDH.js     | -               |  69.01 kB |                 8.11 kB
+polyfills-OQVFUOR5.js | polyfills       |  34.52 kB |                11.28 kB
+chunk-7Z5G2C47.js     | -               |  19.30 kB |                 1.82 kB
+styles-WNCLBEFC.css   | styles          |  13.74 kB |                 3.40 kB
+chunk-4CLCTAJ7.js     | -               | 830 bytes |               830 bytes
+
+                      | Initial total   |   1.17 MB |               238.79 kB
+
+Lazy chunk files      | Names           |  Raw size | Estimated transfer size
+chunk-H55VTIZF.js     | bg              | 582.54 kB |                41.44 kB
+worker-5B47WO46.js    | backdrop-worker | 485.70 kB |               101.77 kB
+chunk-IGSFCLUP.js     | scene           | 483.62 kB |               101.30 kB
+chunk-2RJL7EGF.js     | en-US           | 450.04 kB |               100.49 kB
+chunk-VE7CBHWA.js     | el              | 263.52 kB |                20.69 kB
+chunk-LHIPDGKD.js     | ru              | 234.59 kB |                19.43 kB
+chunk-DHDBY4HC.js     | th              | 211.22 kB |                17.55 kB
+chunk-D2HA2QCV.js     | hi              | 210.73 kB |                18.39 kB
+chunk-E5JYB2MK.js     | fr-FR           | 209.74 kB |                44.93 kB
+chunk-K2IHEI7T.js     | it              | 198.48 kB |                45.36 kB
+chunk-U2BKUH3G.js     | de-DE           | 195.52 kB |                47.38 kB
+chunk-DV5YB5CG.js     | ar-SA           | 185.44 kB |                18.36 kB
+chunk-FN6Y7TSZ.js     | es-ES           | 179.45 kB |                41.48 kB
+chunk-P6N6X7RD.js     | ja              | 176.02 kB |                23.24 kB
+chunk-OAV6LYY2.js     | he              | 172.64 kB |                17.53 kB
+...and 24 more lazy chunks files. Use "--verbose" to show all the files.
+
+Prerendered 598 static routes.
+Application bundle generation complete. [97.562 seconds]
+
+Output location: /Users/minchomilev/cloud-calendars/dist/arte-calendar
+
+  no canonical, skipped: /naver2a647463c4e8540e3cb713536d20b879.html
+  no canonical, skipped: /yandex_3079277272e71afe.html
+guide text export: 69 English guides, 447367 characters
+postbuild: sitemap (103 urls, 30 with alternates), llms.txt (69 articles), 603 pages, every internal link resolves without a redirect

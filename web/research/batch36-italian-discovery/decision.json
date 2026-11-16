@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-22",
+  "decision": "Prepare Italian localization of existing whole-calendar sharing canonical; no new English or synonym route.",
+  "queries": [
+    "calendario condiviso iPhone famiglia invitare calendario Apple Google site:support.apple.com/it-it",
+    "calendario condiviso iPhone site:readdle.com/it/calendars"
+  ],
+  "queryScope": "Two queries issued together; combined observed results do not establish per-query association or Google rank. No volume or ChatGPT citation measurement.",
+  "historicalContext": "Root supplied historical GSC calendario cloud 79 impressions / 1 click as context only; not independently queried here and not evidence that this task has that demand.",
+  "observedResults": [
+    {
+      "url": "https://support.apple.com/it-it/108380",
+      "status": "discovered only, no full body read"
+    },
+    {
+      "url": "https://support.apple.com/it-it/guide/icloud/mm6b1a9479/icloud",
+      "status": "search result only, not body-reviewed"
+    },
+    {
+      "url": "https://support.apple.com/it-it/guide/iphone/-iph7613c4fb/ios",
+      "status": "full relevant main body reviewed"
+    },
+    {
+      "url": "https://readdle.com/it/calendars",
+      "status": "full substantive main text reviewed"
+    },
+    {
+      "url": "https://support.apple.com/it-it/guide/icloud/mm6b1a88ad/icloud",
+      "status": "discovered only"
+    },
+    {
+      "url": "https://support.apple.com/it-it/102301",
+      "status": "discovered only"
+    }
+  ],
+  "primaryReads": [
+    {
+      "url": "https://readdle.com/it/calendars",
+      "accessDate": "2026-10-22",
+      "scope": "Complete substantive product and FAQ text lines32–289/339 across initial and followup reads; navigation/footer separately observed. Images not inspected.",
+      "observation": "Italian publisher explicitly presents whole-calendar sharing with family/colleagues and separates invitation, sharing and multi-account overview tasks.",
+      "boundary": "Publisher promises about real-time updates, every calendar/device, free features, tasks and privacy are not verified or borrowed as Cloud capabilities. Search snippet differed from fetched body; conclusions use fetched text."
+    },
+    {
+      "url": "https://support.apple.com/it-it/guide/iphone/-iph7613c4fb/ios",
+      "accessDate": "2026-10-22",
+      "scope": "Complete substantive main text lines1147–1214/1232 located with find after navigation-heavy initial open; covers creation, sharing, access, notifications, public read-only and deletion.",
+      "observation": "Apple distinguishes private iCloud sharing and edit permission from a public read-only calendar URL, with explicit invitation and account context.",
+      "boundary": "Apple Calendar controls and iCloud rules, not Cloud controls; deletion procedure not recommended as sharing setup."
+    }
+  ],
+  "failures": [],
+  "localReads": {
+    "inventory": "research/batch36-italian-discovery/inventory-and-read-snapshots.json",
+    "count": 28,
+    "completeBodies": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar",
+      "what-a-subscription-actually-buys"
+    ],
+    "home": {
+      "file": "src/app/content/home/it.ts",
+      "rawSha256": "b00e32861df6d48d2a3789fc9125b5d59ca1cea306a74744ad7ff23e80ceb6b7",
+      "scope": "Complete module from import through footer read.",
+      "finding": "Mentions calendar/event sharing in badge and sign-in qualifications; main positioning explains selected-account overview, weather/widgets and tiers. Does not provide a whole-calendar acceptance/roles workflow."
+    },
+    "english": {
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "snapshot": "research/batch36-italian-discovery/source-en.json",
+      "snapshotRawSha256": "14cc7459f13e5281e0887853269184a2d29602eb6ab5eef8cccd4b4d5a898bce",
+      "scope": "Complete six sections/twelve paragraphs, six steps, three FAQs, metadata, source URLs and related routes read."
+    }
+  },
+  "coverageAssessment": [
+    {
+      "canonical": "sharing-one-event-not-your-calendar",
+      "status": "Italian exists; full read",
+      "finding": "Substantive single-event preview/ReaderWriterOwner/ICS/revocation guide. Explicit single-event scope does not answer whole-calendar membership and destination."
+    },
+    {
+      "canonical": "why-a-shared-calendar-does-not-appear",
+      "status": "Italian exists; full read",
+      "finding": "Google identity/group/visibility/link troubleshooting, not app whole-calendar invitation acceptance."
+    },
+    {
+      "canonical": "what-a-subscription-actually-buys",
+      "status": "Italian exists; full read",
+      "finding": "Plan and billing summary states payment cannot grant permissions, but not sharing setup."
+    },
+    {
+      "canonical": "a-calendar-that-is-yours-to-share",
+      "status": "Italian absent; English complete source available",
+      "finding": "Exact substantive missing task already has an English canonical covering owner/audience, sharing systems, roles, accepted verified identity, sample verification and leaving versus deletion."
+    }
+  ],
+  "recommendation": {
+    "priority": "one substantive localization",
+    "canonical": "a-calendar-that-is-yours-to-share",
+    "proposedItalianTitle": "Condividere un calendario: scegli persone, permessi e metodo",
+    "proposedDescription": "Condividi un calendario su iPhone distinguendo accesso nell’app e permessi del provider. Controlla ruoli, invito accettato e aggiornamenti.",
+    "scope": "Translate complete current English guide, preserving all six sections and limitations. Do not replace it with a generic calendario cloud landing page or copy Apple/Readdle procedures into Cloud instructions.",
+    "relatedAvailable": [
+      "sharing-one-event-not-your-calendar",
+      "keeping-track-of-who-replied",
+      "what-a-subscription-actually-buys",
+      "who-can-see-what-in-google-calendar"
+    ],
+    "relatedAbsentOmit": [
+      "inviting-people-who-do-not-have-the-app"
+    ],
+    "reviewBeforeIntegration": [
+      "Check current native/source evidence for recipient acceptance wording; the English backend phrase can be expressed to readers as verified email requirement without adding a UI label.",
+      "Retain app-local versus provider-owned distinction and no instant-update/no all-copy-revocation promises.",
+      "Do not imply an Apple public URL grants editing or that a Cloud share necessarily appears in Google/iCloud.",
+      "Only add an internal link from the existing Italian single-event guide after the new localized route is actually integrated."
+    ],
+    "homeChangeNeeded": false,
+    "newCanonicalNeeded": false
+  },
+  "limits": [
+    "Research only; no source/build/deploy/ASC/account changes.",
+    "No claim of native/runtime verification, independent native-speaker certification or exhaustive Italian keywords.",
+    "The selected gap is a locale coverage gap, not an unsupported new product feature."
+  ]
+}

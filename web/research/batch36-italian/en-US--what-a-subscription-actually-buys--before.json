@@ -1,0 +1,92 @@
+{
+  "updated": "2026-10-22",
+  "claims": {},
+  "title": "Cloud Calendars subscriptions: Base, Advanced and Premium explained",
+  "short": "Choose a Cloud Calendars plan",
+  "description": "Base includes Google sync, views, weather and widgets. Advanced removes ads; Premium adds Microsoft and Teams. Check billing and access before buying.",
+  "lede": "Cloud Calendars is developed by Arte Soft, which also publishes this guide. Choose Advanced for ad removal, or Premium for Microsoft Calendar and Teams support as well. Keep plan benefits separate from provider permission and from the Apple Account that pays for the subscription.",
+  "commonBelief": "Advanced unlocks Google sharing or priority weather, and buying Premium bypasses restrictions on a work calendar.",
+  "sections": [
+    {
+      "heading": "Base: the free starting point",
+      "body": [
+        "Base includes Google Calendar sync, Google Meet support, multiple calendar views, weather and Home Screen widgets. The free app can display ads. Local calendars provide a way to start on the device; provider connections and sharing have their own requirements.",
+        "If your existing calendars already meet your needs in Base, the presence of a paid plan is not a reason by itself to change. Assess the actual calendar workflow before choosing."
+      ]
+    },
+    {
+      "heading": "Advanced: Base with ads removed",
+      "body": [
+        "Advanced includes the Base features and removes ads. It should not be presented as a paid unlock for cross-calendar management, Google sharing permissions, automatic Meet generation or priority weather refresh.",
+        "Ad removal changes the app experience. It does not give your account edit access to someone else’s read-only calendar, and it does not solve an organisation’s connection policy."
+      ]
+    },
+    {
+      "heading": "Premium: Microsoft Calendar and Teams support",
+      "body": [
+        "Premium includes Advanced and adds Microsoft Calendar and Microsoft Teams support. A work or school organisation may restrict external apps, accounts or meeting creation. Confirm your intended connection and permissions instead of assuming every Exchange configuration is supported.",
+        "Creating a meeting link also depends on the provider and event context. Do not interpret the feature as a guarantee that every event on every calendar receives a conference link automatically."
+      ]
+    },
+    {
+      "heading": "Read the local purchase screen",
+      "body": [
+        "Check the plan, local price, billing period and renewal terms before accepting. Compare a monthly option against the relevant yearly option rather than multiplying a promotional figure from another country. A current purchase screen is more useful than an evergreen article with a fixed currency amount.",
+        "The Apple Account used for billing is separate from Google, Microsoft and any app-sharing identity. Keep the receipt and check which Apple Account owns the subscription if it is not listed where expected."
+      ]
+    },
+    {
+      "heading": "Cancel renewal without confusing it with data deletion",
+      "body": [
+        "Apple’s iPhone cancellation path is Settings, your name, Subscriptions, then the relevant subscription. Read the displayed status and expiry information. Deleting the app, deleting an event or disconnecting a provider is not a substitute for managing renewal.",
+        "Before changing a plan or removing local data, check what you will still be able to access and which calendar owns important events. This guide does not promise that every connection or paid feature remains available after expiry. It also does not recommend deleting calendars to resolve billing questions."
+      ]
+    }
+  ],
+  "practical": [
+    "Identify whether you need ad removal, Microsoft support, or neither.",
+    "Verify calendar ownership and provider access separately from the plan.",
+    "Read the current local purchase screen and billing period.",
+    "Keep the Apple receipt and note the billing account.",
+    "Manage renewal in Apple subscription settings; treat calendar-data changes as a separate action."
+  ],
+  "faq": [
+    {
+      "q": "What does Advanced add?",
+      "a": "Advanced removes ads and includes the Base features. Google Calendar sync, views, weather, widgets and Google Meet support are already included in Base."
+    },
+    {
+      "q": "What does Premium add?",
+      "a": "Premium includes Advanced and adds Microsoft Calendar and Microsoft Teams support, subject to the provider account and organisation’s permissions."
+    },
+    {
+      "q": "Does deleting Cloud Calendars cancel my subscription?",
+      "a": "Manage an Apple-billed subscription through Apple’s subscription settings. Removing an app or disconnecting a calendar provider is a separate action."
+    },
+    {
+      "q": "Does sharing a purchase with my family also share my calendars?",
+      "a": "Check the purchase and calendar separately. Apple Family Sharing supports eligible purchases and subscriptions; check the specific product’s current eligibility rather than assuming every purchase qualifies. Calendar access still uses the relevant invitation, shared link or provider permission. For a Cloud Calendars shared calendar, have the recipient use the intended signed-in identity, accept the calendar and check their resulting access. A shared purchase does not confirm that a relative can read or edit your calendar."
+    }
+  ],
+  "sourcesHeading": "Purchase and cancellation information",
+  "sources": [
+    {
+      "label": "Apple: Cancel a subscription",
+      "url": "https://support.apple.com/en-us/118428"
+    },
+    {
+      "label": "Cloud Calendars on the App Store",
+      "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319"
+    },
+    {
+      "label": "Apple: content and purchase eligibility for Family Sharing",
+      "url": "https://support.apple.com/en-ie/111114"
+    }
+  ],
+  "seeAlso": [
+    "what-you-get-without-paying-anything",
+    "free-google-sync-without-adverts",
+    "what-fantastical-costs-and-what-this-does",
+    "a-calendar-that-is-yours-to-share"
+  ]
+}

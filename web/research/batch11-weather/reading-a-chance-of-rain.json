@@ -1,0 +1,91 @@
+{
+  "title": "What does a chance of rain mean for a calendar event?",
+  "short": "Reading a chance of rain",
+  "description": "Read rain probability alongside the forecast period, amount and location. Compare the hours of your event without inventing a universal cancellation threshold.",
+  "lede": "An outdoor booking needs a decision about a particular place and time. A percentage alone does not tell you the expected amount of rain, how long it will last or whether your activity can continue. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A forty per cent chance means rain for forty per cent of the day, or a universal rule about whether to cancel.",
+  "sections": [
+    {
+      "heading": "Identify the place and period first",
+      "body": [
+        "The U.S. National Weather Service describes precipitation probability for a particular point over a specified period. Its published example uses a measurable-rain threshold and a forecast period; those details belong to that product. Do not silently apply its twelve-hour example to every hourly forecast.",
+        "Apple describes WeatherKit’s hourly precipitation chance as a probability during that hour. In Cloud Calendars, compare the selected forecast place and date with the appointment. A percentage for the next available hour is not automatically the forecast for a meeting next Thursday."
+      ]
+    },
+    {
+      "heading": "Keep likelihood separate from amount",
+      "body": [
+        "Probability answers a likelihood question. It is not a rainfall amount or a fraction of the period spent raining. Check an amount and its unit separately when the forecast provides one, and read the time interval attached to that amount.",
+        "For example, an organiser choosing between two outdoor slots needs more than two percentages. Available timing and amount information may affect preparation differently. If the required detail is absent, record that gap rather than replacing it with an assumption that a lower percentage means lighter rain."
+      ]
+    },
+    {
+      "heading": "Compare the whole appointment, not one icon",
+      "body": [
+        "For a plan from 14:00 to 16:00, inspect the available forecast intervals covering both hours, along with setup or travel time that actually matters to the arrangement. A daily summary and an individual hour are different views, so a difference between their numbers is not by itself an error.",
+        "Do not add the displayed hourly percentages to produce a probability for the whole appointment. Rain in different hours can occur in the same possible outcome, so simple addition can count overlapping outcomes more than once. Keep each number attached to its interval, or use a provider’s broader-period product when that is the question you need answered."
+      ]
+    },
+    {
+      "heading": "Use a decision suited to the activity",
+      "body": [
+        "An indoor reservation with a short walk and an uncovered outdoor display have different consequences if rain occurs. Agree the venue’s conditions, equipment requirements and alternative arrangement before choosing a slot. There is no general thirty-or-sixty-per-cent rule that makes every event appropriate.",
+        "A simple planning example is a two-location gathering: keep the intended outdoor slot and an agreed indoor fallback, then record when the organiser will confirm the location. This is a planning convention, not an automatic weather-triggered relocation feature in Cloud Calendars."
+      ]
+    },
+    {
+      "heading": "Recheck before a costly change",
+      "body": [
+        "Forecasts can change as the event approaches. Review the chosen place, date and available update information before changing a booking or telling guests to travel elsewhere. For official warnings or activity-specific decisions, use the relevant weather authority and venue guidance.",
+        "The Cloud Calendars app uses Apple WeatherKit, while this website’s interactive weather demo uses Open-Meteo. Different providers, locations or forecast periods can produce different displays. Compare like with like rather than assuming that the website and app must show the same percentage."
+      ]
+    },
+    {
+      "heading": "Save and communicate the actual plan",
+      "body": [
+        "When you create or change the calendar entry, inspect its date, time zone, duration and destination calendar. Weather helps inform the decision; saving an event does not guarantee the forecast, notify every participant successfully or record their agreement to a new venue.",
+        "Write a clear confirmation message when the arrangement changes. Keep the fallback and decision time understandable to the people involved, then verify their response through your agreed channel. A blank forecast outside the available range is unavailable information, not a promise of dry weather."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check the forecast place, date and stated period.",
+    "Read probability separately from amount and duration.",
+    "Inspect the available intervals across the appointment.",
+    "Choose a fallback appropriate to the activity and venue.",
+    "Recheck current information before changing a booking.",
+    "Verify the calendar entry and confirm changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Does forty per cent mean rain for forty per cent of the time?",
+      "a": "No. A precipitation probability is tied to a forecast place and period. It is not a duration or amount; inspect those separately."
+    },
+    {
+      "q": "Can I add hourly percentages to get the chance for my event?",
+      "a": "Simple addition is not a valid way to combine those probabilities. Keep each number attached to its interval or consult a forecast product for the broader period."
+    },
+    {
+      "q": "At what percentage should I cancel?",
+      "a": "There is no universal percentage for every activity. Use the venue’s conditions, consequences, relevant official guidance and an agreed alternative."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "National Weather Service: precipitation probability and forecast periods",
+      "url": "https://www.weather.gov/lmk/pops?hl=en-US"
+    },
+    {
+      "label": "Apple WeatherKit: hourly precipitation chance",
+      "url": "https://developer.apple.com/documentation/weatherkit/hourweather/precipitationchance"
+    }
+  ],
+  "seeAlso": [
+    "what-a-forecast-can-and-cannot-tell-you",
+    "weather-where-the-event-is",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-22"
+}

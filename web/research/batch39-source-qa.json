@@ -1,0 +1,289 @@
+{
+  "checkedAt": "2026-10-22T05:02:18.026Z",
+  "allPassed": true,
+  "newArticles": [
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "draft": "research/batch39-timezones/fr-FR.json",
+      "slug": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/es-ES/articles-help.ts",
+      "draft": "research/batch39-timezones/es-ES.json",
+      "slug": "time-zones-and-the-flight-you-booked"
+    }
+  ],
+  "relatedOnlyBacklinks": 2,
+  "homeChanges": [
+    {
+      "locale": "ar-SA",
+      "file": "src/app/content/home/ar-SA.ts",
+      "currentFileSha256": "f96d9e4c6160eb9a17652146d6066443c2154a0fa33416b33c8928d7b157fe1f",
+      "path": "showcase.panels[2].body",
+      "before": "امنح كل تقويم عموده الخاص وتوقف عن فك تشابك الألوان المتراكبة. العرض الوحيد الذي يجعل بيتًا مشتركًا أو أسبوع عمل مقسّمًا أمرًا مفهومًا.",
+      "after": "قارن خطط العمل والمواعيد الشخصية في أعمدة التقويم المتاحة. تحقّق من التقويمات المحددة: العرض المصفّى وحده لا يكفي للتأكد من أن وقتًا ما خالٍ.",
+      "priority": "targeted_correction",
+      "afterSha256": "a5f921fe276cc8eb85b4695dcd7a87dc5352495e551db22dbecd7b62c239757d",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "cs",
+      "file": "src/app/content/home/cs.ts",
+      "currentFileSha256": "d7f5d3317835ec8586a56efebeee03be76d375c9feac1f67e9abb5fa0e801e9c",
+      "path": "showcase.panels[2].body",
+      "before": "Dejte každému kalendáři vlastní sloupec a přestaňte rozplétat barevné překryvy. Jediný pohled, díky němuž sdílená domácnost nebo rozdělený pracovní týden dávají smysl.",
+      "after": "Porovnejte pracovní a osobní plány v dostupných sloupcích kalendářů. Zkontrolujte vybrané kalendáře: samotný filtrovaný pohled nepotvrzuje, že je daný čas volný.",
+      "priority": "targeted_correction",
+      "afterSha256": "75d6bbf795e1ad057dc7b493d40f6a9e4b58090e1fa26864ccfaa83d1e724aa8",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "da",
+      "file": "src/app/content/home/da.ts",
+      "currentFileSha256": "0d1308d02585c0ebcf6267d5be47bb3edc479eaf4779a6e6caf2aeb0def46846",
+      "path": "showcase.panels[2].body",
+      "before": "Giv hver kalender sin egen søjle, og hold op med at rede farvekodet overlap ud. Den ene visning, der får en delt husholdning eller en delt arbejdsuge til at give mening.",
+      "after": "Sammenlign arbejde og private aftaler i de tilgængelige kalenderkolonner. Kontrollér, hvilke kalendere der er valgt: En filtreret visning er ikke nok til at afgøre, om et tidspunkt er ledigt.",
+      "priority": "targeted_correction",
+      "afterSha256": "3842ca667342358385b9f1f2e31ec2490b2335c19939112b3243a124dde79d3a",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "de-DE",
+      "file": "src/app/content/home/de-DE.ts",
+      "currentFileSha256": "a5229500ed9822c8449692b6eea022d33df57ec0d35086c299d21bf1090fd398",
+      "path": "showcase.panels[2].body",
+      "before": "Geben Sie jedem Kalender eine eigene Spalte und hören Sie auf, farbcodierte Überlappungen zu entwirren. Die eine Ansicht, die einen gemeinsamen Haushalt oder eine geteilte Arbeitswoche verständlich macht.",
+      "after": "Vergleichen Sie berufliche und private Termine in den verfügbaren Kalenderspalten. Prüfen Sie die ausgewählten Kalender: Eine gefilterte Ansicht allein zeigt nicht, ob ein Zeitpunkt frei ist.",
+      "priority": "targeted_correction",
+      "afterSha256": "ba83def6f9338618d312eb99adb10a0b5ca6601bcd8f96a672395ee4b1d6a9b3",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "el",
+      "file": "src/app/content/home/el.ts",
+      "currentFileSha256": "a27656a824eb81d8e039aa07b2f7c320f88e101db2cddeb68886d398331ed219",
+      "path": "showcase.panels[2].body",
+      "before": "Δώστε σε κάθε ημερολόγιο τη δική του στήλη και σταματήστε να ξεμπερδεύετε χρωματικές επικαλύψεις. Η μόνη προβολή που κάνει ένα κοινό σπιτικό ή μια μοιρασμένη εργασιακή εβδομάδα να βγάζουν νόημα.",
+      "after": "Συγκρίνετε επαγγελματικά και προσωπικά σχέδια στις διαθέσιμες στήλες ημερολογίων. Ελέγξτε ποια ημερολόγια είναι επιλεγμένα: μια φιλτραρισμένη προβολή δεν αρκεί για να διαπιστώσετε ότι μια ώρα είναι ελεύθερη.",
+      "priority": "targeted_correction",
+      "afterSha256": "58838d950185235fa14de1e2bf727feb5fc7e7fad01b40a0ef2bdb45b893a652",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "en-US",
+      "file": "src/app/content/home/en-US.ts",
+      "currentFileSha256": "bc94357d8960e37a2add1e2560bde8ef137bc6f777b892dc1acb8676178f3957",
+      "path": "showcase.panels[2].body",
+      "before": "Give each calendar its own column and stop untangling colour-coded overlap. The one view that makes a shared household or a split work week make sense.",
+      "after": "Compare work and personal plans in the available calendar columns. Check which calendars are selected: a filtered view alone cannot establish that a time is free.",
+      "priority": "targeted_correction",
+      "afterSha256": "3dfbd8f09d9e0544033635303dff72a228357abe48c3ad97b25699e6a385b128",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "es-ES",
+      "file": "src/app/content/home/es-ES.ts",
+      "currentFileSha256": "43a2f45a0790557419e57bc4cc2b5142d58170e15c0a7b890ed6244d313b0b60",
+      "path": "showcase.panels[2].body",
+      "before": "Dale a cada calendario su propia columna y deja de desenredar solapamientos de colores. La única vista que hace comprensible una casa compartida o una semana laboral partida.",
+      "after": "Compara los planes de trabajo y personales en las columnas de calendario disponibles. Comprueba qué calendarios están seleccionados: una vista filtrada no basta para saber si una hora está libre.",
+      "priority": "targeted_correction",
+      "afterSha256": "cc43d128d541e96b713749be63dbf380c96009159aeafc313913aa6710b08009",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "fi",
+      "file": "src/app/content/home/fi.ts",
+      "currentFileSha256": "f1ca1834b00660b4c2f38571612207701f02d7aa0de19ab88f52308d8de7ef1e",
+      "path": "showcase.panels[2].body",
+      "before": "Anna jokaiselle kalenterille oma sarakkeensa ja lopeta väreillä koodatun päällekkäisyyden selvittäminen. Ainoa näkymä, joka saa yhteisen kodin tai jaetun työviikon käymään järkeen.",
+      "after": "Vertaa työ- ja vapaa-ajan suunnitelmia käytettävissä olevissa kalenterisarakkeissa. Tarkista valitut kalenterit: pelkkä suodatettu näkymä ei kerro, onko ajankohta vapaa.",
+      "priority": "targeted_correction",
+      "afterSha256": "8d9dd15c3c5658187f2f9e635a76593f0599cc0f0db17af46d9e792d02a02e3c",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "fr-FR",
+      "file": "src/app/content/home/fr-FR.ts",
+      "currentFileSha256": "020eacd446a2754d978095fa270c13f82a2f74d9c30a9b17e4be54eae110282f",
+      "path": "showcase.panels[2].body",
+      "before": "Donnez à chaque agenda sa propre colonne et cessez de démêler des recouvrements colorés. La seule vue qui rend lisible un foyer partagé ou une semaine de travail éclatée.",
+      "after": "Comparez les projets professionnels et personnels dans les colonnes d’agendas disponibles. Vérifiez les agendas sélectionnés : une vue filtrée ne suffit pas à établir qu’un créneau est libre.",
+      "priority": "targeted_correction",
+      "afterSha256": "30e1cf1543d1a25e74a95a3eb638f87ce336a7d96a58e33fd4fdbc13c25aa71b",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "he",
+      "file": "src/app/content/home/he.ts",
+      "currentFileSha256": "e475b939871a44ac7cf211dd6b0caa1a6927c86ded7915f6e0aa802cc02a4319",
+      "path": "showcase.panels[2].body",
+      "before": "תנו לכל יומן טור משלו והפסיקו להתיר חפיפות צבעוניות. התצוגה היחידה שהופכת בית משותף או שבוע עבודה מפוצל למשהו הגיוני.",
+      "after": "השוו תוכניות עבודה ותוכניות אישיות בעמודות היומנים הזמינות. בדקו אילו יומנים נבחרו: תצוגה מסוננת לבדה אינה מספיקה כדי לקבוע שמועד מסוים פנוי.",
+      "priority": "targeted_correction",
+      "afterSha256": "040f1e7cf2b7c863fc94c8dba2ec7411968da6719a7d7a2f51a20baf76862b3a",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "hi",
+      "file": "src/app/content/home/hi.ts",
+      "currentFileSha256": "8512ba7e578a07fd0656c1d1f23df52e3ee819618ca7263f226c43a422b0ebfe",
+      "path": "showcase.panels[2].body",
+      "before": "हर कैलेंडर को उसका अपना स्तंभ दीजिए और रंगों की उलझी परतें सुलझाना छोड़िए। वही एक दृश्य जो साझा घर या बँटे हुए कामकाजी सप्ताह को समझ में आने लायक़ बनाता है।",
+      "after": "उपलब्ध कैलेंडर स्तंभों में काम और निजी योजनाओं की तुलना करें। देखें कि कौन-से कैलेंडर चुने गए हैं: केवल फ़िल्टर किया गया दृश्य यह तय करने के लिए काफ़ी नहीं है कि कोई समय खाली है।",
+      "priority": "targeted_correction",
+      "afterSha256": "845aba2d6e6d39f8035fd4fa1a958acf1473f6473bc8fee3ac19d52607c7bf2a",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "hu",
+      "file": "src/app/content/home/hu.ts",
+      "currentFileSha256": "9513eee2bf0c54a9dcc98bf22e10f0db6e89bb32cd120ea8d2d26c37991333a1",
+      "path": "showcase.panels[2].body",
+      "before": "Adjon minden naptárnak saját oszlopot, és ne bogozzon többé színkódolt átfedéseket. Az egyetlen nézet, amelytől egy közös háztartás vagy egy megosztott munkahét értelmet nyer.",
+      "after": "Hasonlítsa össze munkahelyi és személyes terveit a rendelkezésre álló naptároszlopokban. Ellenőrizze a kijelölt naptárakat: a szűrt nézet önmagában nem igazolja, hogy egy időpont szabad.",
+      "priority": "targeted_correction",
+      "afterSha256": "ea1a82c769fddcea523a697d73a35c1f39d5d80ef3e4bc62aba21a3f5706c693",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "id",
+      "file": "src/app/content/home/id.ts",
+      "currentFileSha256": "4ff337dc0bec384a36a057e2961055a47ff15d6795d435b20bbeedb9d75031d6",
+      "path": "showcase.panels[2].body",
+      "before": "Beri setiap kalender kolomnya sendiri dan berhenti mengurai tumpang tindih berwarna. Satu-satunya tampilan yang membuat rumah bersama atau pekan kerja terbelah jadi masuk akal.",
+      "after": "Bandingkan rencana kerja dan pribadi dalam kolom kalender yang tersedia. Periksa kalender yang dipilih: tampilan yang difilter saja tidak cukup untuk memastikan suatu waktu kosong.",
+      "priority": "targeted_correction",
+      "afterSha256": "5359033250db6d2f12fd2bb99e6a724f5b814a587ea54fc829c3342a7d84d102",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "ms",
+      "file": "src/app/content/home/ms.ts",
+      "currentFileSha256": "5178c3e85d67577521fe623f0d3cee5020f6356815f0572d75c20beb2f43a7c1",
+      "path": "showcase.panels[2].body",
+      "before": "Beri setiap kalendar lajurnya sendiri dan berhenti merungkai pertindihan berwarna. Satu-satunya paparan yang menjadikan rumah yang dikongsi atau minggu kerja yang terbelah masuk akal.",
+      "after": "Bandingkan rancangan kerja dan peribadi dalam lajur kalendar yang tersedia. Semak kalendar yang dipilih: paparan yang ditapis sahaja tidak cukup untuk memastikan sesuatu waktu itu lapang.",
+      "priority": "targeted_correction",
+      "afterSha256": "e86d0831f9baf0051040ba3a84fd2bf891918c8ed9050257205e0383efe42b1a",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "nl-NL",
+      "file": "src/app/content/home/nl-NL.ts",
+      "currentFileSha256": "a7e6f48cc01e88b375b7c7c91bdce380c20353591feb1998984853ae85b54d01",
+      "path": "showcase.panels[2].body",
+      "before": "Geef elke agenda een eigen kolom en houd op met het ontwarren van kleurgecodeerde overlap. De ene weergave die een gedeeld huishouden of een gesplitste werkweek begrijpelijk maakt.",
+      "after": "Vergelijk werk- en privéplannen in de beschikbare agendakolommen. Controleer welke agenda’s zijn geselecteerd: een gefilterde weergave alleen bewijst niet dat een tijdstip vrij is.",
+      "priority": "targeted_correction",
+      "afterSha256": "45a7a726346957768cd25f00018b1f09ece4c145e5951fc7cb15a4f602449bb9",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "no",
+      "file": "src/app/content/home/no.ts",
+      "currentFileSha256": "e3ad80270178591b932dbb02eec4d4a566223d17e63de7805d8f9a7ee2e6ccb6",
+      "path": "showcase.panels[2].body",
+      "before": "Gi hver kalender sin egen kolonne, og slutt å nøste opp fargekodet overlapp. Den ene visningen som får en delt husholdning eller en oppdelt arbeidsuke til å henge sammen.",
+      "after": "Sammenlign jobb og private planer i de tilgjengelige kalenderkolonnene. Sjekk hvilke kalendere som er valgt: En filtrert visning alene er ikke nok til å fastslå at et tidspunkt er ledig.",
+      "priority": "targeted_correction",
+      "afterSha256": "d593d9cc04d6e0b339197abc617aceed7cfa2c27bd2567dcfd67b5d21163572b",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "pl",
+      "file": "src/app/content/home/pl.ts",
+      "currentFileSha256": "713189150fdf4a612a183a1c416f29026639ef03e2fa44ddaa524376b316621d",
+      "path": "showcase.panels[2].body",
+      "before": "Daj każdemu kalendarzowi własną kolumnę i przestań rozplątywać kolorowe nakładki. Jedyny widok, dzięki któremu wspólny dom albo podzielony tydzień pracy nabiera sensu.",
+      "after": "Porównuj plany zawodowe i prywatne w dostępnych kolumnach kalendarzy. Sprawdź, które kalendarze są wybrane: sam przefiltrowany widok nie wystarczy, by uznać dany termin za wolny.",
+      "priority": "targeted_correction",
+      "afterSha256": "04997bd7c8499b0d4e0f3b12bb69711165823c716acf97398867f04ad9c0ccc2",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "pt-BR",
+      "file": "src/app/content/home/pt-BR.ts",
+      "currentFileSha256": "22741ba35885233e36201815bde195915a9317c2fbd3c501a4ba160fb32c5e78",
+      "path": "showcase.panels[2].body",
+      "before": "Dê a cada agenda a própria coluna e pare de desembaraçar sobreposições coloridas. A única vista que faz sentido para uma casa compartilhada ou uma semana de trabalho dividida.",
+      "after": "Compare compromissos profissionais e pessoais nas colunas de calendário disponíveis. Confira quais calendários estão selecionados: uma visualização filtrada não basta para saber se um horário está livre.",
+      "priority": "targeted_correction",
+      "afterSha256": "2a11943e01ecafa85ee62054a73468abcf28e1f5e4697b1363acaefa9686051f",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "ro",
+      "file": "src/app/content/home/ro.ts",
+      "currentFileSha256": "f625bdf53ea9a4e927e2e225b86d0e540775c5708109b1a066bebc5e9981bb1f",
+      "path": "showcase.panels[2].body",
+      "before": "Dați fiecărui calendar propria coloană și nu mai descurcați suprapuneri colorate. Singura vedere care face o casă comună sau o săptămână de lucru împărțită să aibă sens.",
+      "after": "Comparați planurile profesionale și personale în coloanele de calendar disponibile. Verificați calendarele selectate: o vizualizare filtrată nu este suficientă pentru a stabili că un interval este liber.",
+      "priority": "targeted_correction",
+      "afterSha256": "b9d4647f23c567566b83452cdccfc5a8f1a89a520f642680e50fa9541a709f5e",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "ru",
+      "file": "src/app/content/home/ru.ts",
+      "currentFileSha256": "3fce1bc6afa2bc63becd456eb5e2a08c3fc992261389787e949498824065210e",
+      "path": "showcase.panels[2].body",
+      "before": "Дайте каждому календарю свой столбец и перестаньте распутывать цветные наложения. Единственный вид, при котором общий дом или разорванная рабочая неделя обретают смысл.",
+      "after": "Сравнивайте рабочие и личные планы в доступных столбцах календарей. Проверьте, какие календари выбраны: одного отфильтрованного вида недостаточно, чтобы считать время свободным.",
+      "priority": "targeted_correction",
+      "afterSha256": "c1b337df1875e9d7f1e88fda5235963528b364cc39f975c2f708a3ddd180e9c4",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "sv",
+      "file": "src/app/content/home/sv.ts",
+      "currentFileSha256": "c95d00fae94bb4d1ddb33669d1430d2d844adbf09447f6b9b7f8a86bfa175979",
+      "path": "showcase.panels[2].body",
+      "before": "Ge varje kalender en egen kolumn och sluta reda ut färgkodad överlappning. Den enda vy som får ett delat hushåll eller en uppdelad arbetsvecka att gå ihop.",
+      "after": "Jämför arbete och privata planer i de tillgängliga kalenderkolumnerna. Kontrollera vilka kalendrar som är valda: en filtrerad vy räcker inte för att avgöra om en tid är ledig.",
+      "priority": "targeted_correction",
+      "afterSha256": "f397a7194cfbbe7a94ab0abfe1f412a5c410c7cdeaf3792964830b47eeb3852c",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "th",
+      "file": "src/app/content/home/th.ts",
+      "currentFileSha256": "2ff842eaebc15ff5065a2677648f256ee34641d7ab9a60f19b6ca054882713ac",
+      "path": "showcase.panels[2].body",
+      "before": "ให้แต่ละปฏิทินมีคอลัมน์ของตัวเอง แล้วเลิกแกะสีที่ทับกัน มุมมองเดียวที่ทำให้บ้านที่ใช้ร่วมกันหรือสัปดาห์ทำงานที่ถูกแบ่งกลายเป็นเรื่องเข้าใจได้",
+      "after": "เปรียบเทียบแผนงานและนัดหมายส่วนตัวในคอลัมน์ปฏิทินที่มีให้ใช้ ตรวจสอบว่าเลือกปฏิทินใดไว้บ้าง เพราะมุมมองที่กรองไว้เพียงอย่างเดียวไม่เพียงพอที่จะยืนยันว่าช่วงเวลานั้นว่าง",
+      "priority": "targeted_correction",
+      "afterSha256": "d7426132320edeef972ec244ed7433a21a4417725359da01d865d65b7082dc9f",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "tr",
+      "file": "src/app/content/home/tr.ts",
+      "currentFileSha256": "da91effd4f738aee4273889fc13dc0704175ad86ecadef6b81b093864d9ca2a6",
+      "path": "showcase.panels[2].body",
+      "before": "Her takvime kendi sütununu verin ve renk kodlu üst üste binmeleri çözmeyi bırakın. Paylaşılan bir evi ya da bölünmüş bir çalışma haftasını anlamlı kılan tek görünüm.",
+      "after": "İş ve kişisel planlarınızı kullanılabilir takvim sütunlarında karşılaştırın. Hangi takvimlerin seçili olduğunu kontrol edin: yalnızca filtrelenmiş bir görünüm, bir saatin boş olduğunu belirlemeye yetmez.",
+      "priority": "targeted_correction",
+      "afterSha256": "5772757033183038a7175f26aa94d5fb375740472e1fe797484f550e8ab2b3f5",
+      "onlyOneLeafChanged": true
+    },
+    {
+      "locale": "vi",
+      "file": "src/app/content/home/vi.ts",
+      "currentFileSha256": "7c38e4580be8dcc9bcecab8eb26b2c1aed28415b06d39e5111b6098e57564eff",
+      "path": "showcase.panels[2].body",
+      "before": "Cho mỗi cuốn lịch một cột riêng và thôi gỡ rối những mảng màu chồng chéo. Khung nhìn duy nhất khiến một mái nhà chung hay một tuần làm việc bị chia đôi trở nên dễ hiểu.",
+      "after": "So sánh kế hoạch công việc và cá nhân trong các cột lịch có sẵn. Kiểm tra những lịch đang được chọn: chỉ dựa vào khung nhìn đã lọc thì chưa đủ để xác định một khoảng thời gian đang trống.",
+      "priority": "targeted_correction",
+      "afterSha256": "f4ab82615cbb8efa515867bb13757c25fbd14d89018357d2deb0939136412270",
+      "onlyOneLeafChanged": true
+    }
+  ],
+  "optionalHomeRowsNotApplied": 5,
+  "allOtherHomeFieldsPreserved": true,
+  "unrelatedArticlesBodyMetadataDatesPreserved": true,
+  "globalFactsEnglishSelectionPricingLegalMediaRobotsComponentsUnchanged": true
+}

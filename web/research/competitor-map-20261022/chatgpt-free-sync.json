@@ -1,0 +1,54 @@
+{
+  "id": "free-sync",
+  "prompt": "Which iPhone calendar apps offer Google Calendar syncing without a subscription? Distinguish free downloads, free syncing, ads and paid features. Compare current options using official sources rather than assuming free means ad-free.",
+  "observedAt": "2026-10-22T20:47:37.343Z",
+  "source": "Actual consumer ChatGPT UI",
+  "method": "Fresh single-question conversation; default account; backend model and personalization not controlled; answer claims require independent verification",
+  "visibleLinks": [
+    {
+      "label": "Skip to content",
+      "url": "https://chatgpt.com/c/6ada7618-fd38-8333-9d9c-3880d6e4e70f#_r_1oo_"
+    },
+    {
+      "label": "Apple Support",
+      "url": "https://support.apple.com/en-by/guide/iphone/iphc37be2016/ios?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Google Help",
+      "url": "https://support.google.com/calendar/answer/99358?co=GENIE.Platform=iOS&hl=en&utm_source=chatgpt.com"
+    },
+    {
+      "label": "App Store listing",
+      "url": "https://apps.apple.com/us/app/google-calendar-get-organized/id909319292?utm_source=chatgpt.com"
+    },
+    {
+      "label": "OneCalendar",
+      "url": "https://www.onecalendar.nl/?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Premium features",
+      "url": "https://www.onecalendar.nl/support/premiumversionfeatures?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Advertising policy",
+      "url": "https://www.onecalendar.nl/support/faq/whyshouldyoupayforthisapp?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Developer website",
+      "url": "https://readdle.com/calendars?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Free versus Pro",
+      "url": "https://support.readdle.com/calendars/billing-subscription/free-vs-full-version-of-the-app?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/us/app/tiny-calendar-planner-tasks/id514917848?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official pricing and features",
+      "url": "https://www.cloud-calendars.com/?utm_source=chatgpt.com"
+    }
+  ],
+  "visibleText": "Skip to content\nHome\nSpace\nScheduled\nPlugins\nExplore\nSites\nShare\nYou said:\nWhich iPhone calendar apps offer Google Calendar syncing without a subscription? Distinguish free downloads, free syncing, ads and paid features. Compare current options using official sources rather than assuming free means ad-free.\nChatGPT said:\nBest iPhone calendar apps with free Google Calendar syncing\n\nAs of October 22, 2026, you can sync Google Calendar on an iPhone without paying for a subscription. The strongest choices are Apple Calendar, Google Calendar, OneCalendar, and Calendars by Readdle.\n\nThe important distinction is that free to download, free to sync, ad-free, and free advanced features are four different things. Some apps offer all four; others reserve useful features for paid tiers.\n\nComparison at a glance\n\nApp\n\n\t\n\nFree download\n\n\t\n\nGoogle sync without subscription\n\n\t\n\nAds\n\n\t\n\nPaid features\n\n\n\n\nApple Calendar\n\n\t\n\nYes, preinstalled\n\n\t\n\nYes, two-way\n\n\t\n\nNo in-app ads\n\n\t\n\nNone required\n\n\n\n\nGoogle Calendar\n\n\t\n\nYes\n\n\t\n\nYes, native\n\n\t\n\nNo conventional in-app ad placements identified\n\n\t\n\nOptional Google subscriptions\n\n\n\n\nOneCalendar\n\n\t\n\nYes\n\n\t\n\nYes\n\n\t\n\nDeveloper says ad-free\n\n\t\n\nOne-time Premium purchase\n\n\n\n\nCalendars by Readdle\n\n\t\n\nYes\n\n\t\n\nYes, core syncing\n\n\t\n\nNot clearly documented\n\n\t\n\nOptional Pro subscription\n\n\n\n\nTiny Calendar\n\n\t\n\nYes\n\n\t\n\nRequires further verification of current free-tier limits\n\n\t\n\nAd-supported listing\n\n\t\n\nIn-app purchases\n\nTwo-way syncing means you can create or edit Google Calendar events in the iPhone app and have those changes reflected in your Google account.\n\nThe comparison uses Apple and Google's official documentation, developer websites, and App Store information. Where advertising or free-tier restrictions aren't explicitly confirmed by an official source, I've marked the uncertainty rather than treating a free download as proof of an ad-free experience.\n\nThe strongest options\n\n1. Apple Calendar — best completely free choice\n\nApple's built-in app supports Google accounts directly, with event synchronization and no subscription or advertising. It also works with iCloud and Exchange calendars. Some Google-specific features, such as creating new Google calendars, aren't supported inside Apple Calendar.\n\nOfficial sources: Apple Support · Google Help\n\n2. Google Calendar — best native Google integration\n\nFree Google Calendar syncing, shared calendars, tasks, widgets and multiple views. No subscription is required for ordinary calendar use. Its App Store page lists in-app purchases associated with Google's broader services and says certain professional features require a paid plan. It also discloses advertising or marketing data uses, which is different from confirming visible in-app ads.\n\nOfficial source: App Store listing\n\n3. OneCalendar — best alternative without recurring payments\n\nFree download and Google Calendar support, alongside iCloud, Outlook and CalDAV. The developer explicitly states a commitment to an ad-free app. Premium is a one-time payment per platform, not a subscription, and unlocks customization, search, more history and immediate synchronization.\n\nOfficial sources: OneCalendar · Premium features · Advertising policy\n\n4. Calendars by Readdle — best feature-rich freemium option\n\nReaddle confirms that basic calendar syncing, including two-way Google syncing, is available free. However, its support documentation places multiple accounts, recurring events, tasks and other capabilities in Pro. Its marketing page describes some features more generously than its free-versus-Pro support article, so it's worth testing the free tier before relying on a particular feature.\n\nOfficial sources: Developer website · Free versus Pro\n\nOther options worth considering\n\n5. Tiny Calendar — free syncing, but ads\n\nIts official App Store description confirms direct Google Calendar synchronization, including offline event editing. Apple explicitly labels the app Contains Advertising. Paid options include recurring events, multiple Google accounts, invitations, and lifetime Premium. The listing doesn't clearly establish every restriction on the free tier.\n\nOfficial App Store listing\n\n6. Cloud Calendars — explicitly free syncing with ads\n\nThe developer publishes unusually clear pricing: Google and iCloud syncing, widgets, and calendar views are free. The $0.49/month Advanced plan removes ads and adds calendar-management features. Premium adds Microsoft calendar integration. These are developer-advertised US-dollar prices, not verified Bulgarian App Store prices.\n\nOfficial pricing and features\n\nWhich should you choose?\n\nNo ads, no payments, no restrictions on basic Google event syncing: Apple Calendar.\n\nMost complete Google-native experience: Google Calendar.\n\nDifferent interface, no recurring payments, and an explicit ad-free policy: OneCalendar.\n\nMore productivity features, willing to accept subscription upsells: Calendars by Readdle.\n\nFree Google syncing and don't mind ads: Tiny Calendar or Cloud Calendars.\n\nFor OneCalendar, the US App Store currently lists a $5.99 Premium in-app purchase, consistent with the developer's one-time-payment model. \nApp Store\n+2\n\nSet up Google Calendar in Apple's free app\n\nSettings → Apps → Calendar → Calendar Accounts\n\nSelect Add Account → Google\n\nSign in and enable Calendars\n\nOpen Apple Calendar and select your Google calendars\n\nThese are Apple's documented setup steps. \nApple Support (BY)\n+1\n To ensure newly created events go to Google rather than iCloud, also set your preferred Google calendar as the default calendar.\n\nBottom line: For a genuinely free, ad-free solution, start with Apple Calendar. For a more customizable alternative without a subscription, try OneCalendar. And if an app is merely labeled Free in the App Store, check both its advertising disclosure and its in-app purchases before assuming the experience is free of ads or feature restrictions.\n\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nInstant\nResponse complete\nResponse complete\nResponse complete\nResponse complete\nNew chat\n⇧⌘O"
+}

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-21T22:40:57.817448+00:00",
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/disconnect-calendar-integration-without-losing-track/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "readScope": "Full rendered DOMbody/related links/source list; screenshot title/lede/firstsections visually inspected.",
+      "screenshot": "/tmp/cloud-calendar-batch16-disconnect.png"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/weather-inside-your-calendar/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "faqs": 3,
+      "readScope": "Rendered root-polished title/lede/firstsections; fullBGsource reviewed and allpagebytes checked separately.",
+      "screenshot": "/tmp/cloud-calendar-batch16-bg-weather.png"
+    }
+  ],
+  "cleanup": "Chromeviewportreset; BGpublicarticle retaineddeliverable; no localserver.",
+  "limits": "Notalllocales/breakpointsvisualcertification. No newmedia/nativebuild/releasedbinary orcustomer-dataoperation."
+}

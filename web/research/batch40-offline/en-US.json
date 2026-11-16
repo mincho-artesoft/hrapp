@@ -1,0 +1,135 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+  "short": "Calendar sync explained",
+  "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+  "lede": "A missing appointment can mean the wrong account, a hidden calendar, an old imported copy or a connection problem. First identify where the event belongs. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Seeing the same events in two apps means those apps have merged their calendars, and every event must be stored online.",
+  "sections": [
+    {
+      "heading": "Start with the calendar that owns the event",
+      "body": [
+        "An account, a calendar and a calendar app are different things. Your Google account can contain several calendars; an app can display several accounts. Showing them in one week does not move all their events into one shared calendar.",
+        "Open an event and inspect its calendar name and account. A work appointment can belong to a work Google calendar while a family appointment belongs to iCloud. A local calendar can instead belong to the device. The correct next step depends on this destination, not on which app you used to create the event."
+      ]
+    },
+    {
+      "heading": "Four connections that can look similar",
+      "body": [
+        "A provider account connects to calendars held by a service such as iCloud, Google or Microsoft. Whether you can change a particular calendar depends on your permission. Having connected an account does not make a calendar shared with you editable.",
+        "A subscribed calendar feed is a continuing, normally read-only view published by someone else. Apple describes external subscription calendars as read-only. A sports schedule or holiday feed is a useful example: follow the published schedule rather than expecting your edits to change its source.",
+        "Importing a calendar file creates a copy rather than a continuing relationship with the original file. Ask whether the operation says import or subscribe before relying on future updates. A URL ending in .ics alone is not enough to determine what the app will do with it.",
+        "An app account is a separate identity used for that app’s services. It is not proof that your provider calendars are connected. Cloud Calendars also supports local calendars on the device; provider connections and sharing have their own sign-in requirements.",
+        "Cloud Calendars’ Google and Microsoft connections also create mirrored calendars in the iPhone calendar store. Their storage destination depends on the calendar sources available on the device. Do not assume that an app connection only reads the original provider without creating another representation. Check the calendar source before connecting sensitive accounts."
+      ]
+    },
+    {
+      "heading": "Run a small two-device sync check",
+      "body": [
+        "Use a harmless new test event with a distinctive name, such as Calendar connection check. Choose the intended writable calendar explicitly. On the second device, confirm the same provider account and calendar are selected, then look for that exact event.",
+        "Change only the test event’s title on the second device and check the first again. This separates seeing an existing copy from successfully writing back. Record which direction fails and whether the provider’s own calendar shows the change. Do not use a real invitation or an important recurring meeting for this check.",
+        "The result is diagnostic, not a speed benchmark. Network access, account permissions, refresh behavior and organisation policies can affect it. No fixed number of seconds proves that every calendar connection is healthy."
+      ]
+    },
+    {
+      "heading": "Prepare before using a calendar offline",
+      "body": [
+        "Before travelling or losing connectivity, identify the app, account and calendar you will use. While online, open the dates and event details you need. For an important itinerary, consider a dated readable copy through the export guide below, and check that you can open that copy on the device. Seeing today’s events does not establish that every past or future appointment is available offline.",
+        "Google documents offline event creation, editing and responses in its own iPhone and iPad Calendar app after online setup, sign-in and synchronization. Changes do not reach your computer or other people’s calendars until you are online again, and you cannot email guests while offline. Its mobile-browser guidance differs: creating or editing events requires an internet connection. Do not assume a browser has the same offline capabilities as the installed Google app, or that either description establishes Cloud Calendars’ behaviour.",
+        "Check the actual app and calendar with a disposable event you own, without guests or a recurring series. Compare what remains visible without a connection and, if the app permits it, a harmless title change. A locally displayed edit is not proof of a queued update, successful conflict handling or delivery to another account. Do not sign out or remove a connection to simulate being offline.",
+        "Once connectivity returns, check a provider-backed event in its owning service and then on the receiving device. For example, changing tomorrow’s meeting time on a phone during a flight does not establish that participants received the change. Verify the provider’s saved result before relying on it, and confirm important arrangements through the appropriate invitation or communication route. A local-only calendar has no provider destination to check; saving there does not establish that another device received the event. Do not assume an immediate background update or repeatedly recreate the event while its status is unclear."
+      ]
+    },
+    {
+      "heading": "Separate hidden, absent and read-only calendars",
+      "body": [
+        "A calendar listed but unchecked is hidden. A calendar absent from the account list needs a different check: verify the signed-in identity, that access was granted to that identity, and whether the account connection includes that calendar.",
+        "Google’s iPhone help explains how to show or hide subscribed calendars and how to open a calendar shared by email. It separately says that subscribing to a new calendar requires a computer browser. These are distinct operations; do not assume every missing-calendar problem needs a desktop or that accepting an email fixes every connection.",
+        "An event that appears but cannot be edited may be working correctly under read-only permissions. Request the appropriate access from the owner if editing is necessary. Repeatedly reconnecting an account will not grant permissions that its owner has not given."
+      ]
+    },
+    {
+      "heading": "Investigate duplicates without deleting the source",
+      "body": [
+        "Two similar events may be two records, or one source calendar displayed through two routes. Inspect both entries: compare calendar, account, organiser, start time and recurrence before deciding which explanation fits.",
+        "Temporarily hide one calendar to see which copy disappears. Hiding changes visibility; deleting an event can change the underlying calendar for other devices and participants. Do not delete an account, cancel a meeting or erase local data as a first troubleshooting step. In Cloud Calendars, record and restore the original selection: it can also affect widgets, notification scheduling and Google synchronization. See “When calendars disagree” below.",
+        "If you imported the same file more than once, preserve a backup and identify the imported destination before cleaning anything. A recurring series needs particular care because changing one occurrence and changing the whole series have different consequences."
+      ]
+    },
+    {
+      "heading": "Where Cloud Calendars fits",
+      "body": [
+        "Cloud Calendars brings calendar views and weather together on iPhone and iPad. The Base plan includes Google Calendar sync, multiple views, weather and Home Screen widgets. Advanced removes ads; Premium adds Microsoft Calendar and Teams support. Check current local subscription prices before purchasing.",
+        "Use the app to see your selected calendars together while keeping their ownership clear. This is not a promise to bypass workplace restrictions or turn every read-only feed into an editable calendar. Local calendars, provider calendars and shared content should be checked according to their actual connection."
+      ]
+    },
+    {
+      "heading": "Combining a view is different from copying availability",
+      "body": [
+        "A useful personal overview can show work and family commitments together without making either account aware of every commitment. If a colleague checks your work availability, the fact that your phone displays a personal event does not establish that the work system receives a busy block.",
+        "A calendar-to-calendar copying service needs a source, destination and explicit rules for what is replicated. Cloud Calendars’ provider mirrors do not establish a general rule that every personal appointment is copied into every work account with its details hidden. Define the result you need and verify it from the recipient’s account before relying on it."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Calendar absent from the list: identify its account or local source before changing a connection. For a provider calendar, confirm the same identity and access. For Google, use “Google calendars missing on iPhone”; for a shared Google calendar, use “Shared calendar not appearing” below.",
+    "Calendar listed but unchecked: select it for display, then check a known event. If it remains missing, follow the date or search branch rather than treating visibility as proof that synchronization succeeded.",
+    "Specific date missing: compare that date, calendar and recurring occurrence with the provider where available. Check the app’s date coverage before recreating anything; “Google calendars missing on iPhone” explains the Google case.",
+    "Title search empty: try a distinctive title word and check the loaded dates. Use “Find past calendar events” below to separate search scope from missing provider data.",
+    "Two entries disagree: compare account, calendar, organiser, time zone and recurrence before editing either. Use “When calendars disagree” below to trace copies without deleting the source.",
+    "Before going offline, check the needed dates in the actual app and calendar. Use only a disposable owned event without guests for testing. After reconnecting, verify a provider-backed change at its provider; a local-only save does not prove delivery to another device.",
+    "If you need help, report the affected calendar type and failing direction without sending private event details or secret calendar URLs."
+  ],
+  "faq": [
+    {
+      "q": "Does combining Google and iCloud calendars move my events?",
+      "a": "A combined view is not itself a merge of provider accounts. Cloud Calendars’ Google and Microsoft connections use mirrored calendars in the iPhone calendar store; check the actual source and destination rather than assuming no copies are created."
+    },
+    {
+      "q": "Why can I see a subscribed calendar but not edit it?",
+      "a": "An external calendar subscription is normally read-only. Its owner publishes the schedule. Editing requires a writable calendar and the appropriate permission, not just a subscription link."
+    },
+    {
+      "q": "Will a local calendar appear on my other iPhone automatically?",
+      "a": "Do not assume that it will. Local storage is different from a connected provider account. Verify the calendar’s connection and use a disposable test event before relying on another device."
+    },
+    {
+      "q": "Should I delete and add my account again?",
+      "a": "First check identity, calendar selection, permissions and the provider’s own view. Reconnection may be relevant later, but deleting local data or an account can complicate diagnosis and should not be the first step."
+    },
+    {
+      "q": "Does seeing an offline edit mean other people received it?",
+      "a": "No. Google’s iPhone app documentation separates offline changes from synchronization after connectivity returns. Its mobile-browser editor requires internet access. For a provider-backed calendar, verify the saved event at the owning provider after reconnecting. A local-only calendar has no provider destination to check, and its local display does not prove delivery to another device."
+    }
+  ],
+  "sourcesHeading": "Sources and further reading",
+  "sources": [
+    {
+      "label": "Apple: Set up multiple calendars on iPhone",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/ios"
+    },
+    {
+      "label": "Google: Subscribe to someone else’s calendar — iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: offline Calendar use on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/1340696?co=GENIE.Platform%3DiOS&hl=en"
+    },
+    {
+      "label": "Google: mobile-browser calendar capabilities and limits",
+      "url": "https://support.google.com/calendar/answer/65923?hl=en-7"
+    }
+  ],
+  "seeAlso": [
+    "google-calendars-that-never-reach-your-iphone",
+    "why-a-shared-calendar-does-not-appear",
+    "find-old-calendar-events-by-account-date-and-title",
+    "when-two-calendars-disagree",
+    "icloud-google-and-outlook-in-one-view",
+    "disconnect-calendar-integration-without-losing-track",
+    "onecal-alternative-iphone-calendar-view-or-sync",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+}

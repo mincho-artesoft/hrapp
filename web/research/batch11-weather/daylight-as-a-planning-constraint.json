@@ -1,0 +1,91 @@
+{
+  "title": "Plan around sunset: check daylight, location and the event date",
+  "short": "Daylight and planning",
+  "description": "Check sunset for the right place and date, distinguish it from twilight, and plan an appropriate margin instead of assuming last week’s light will repeat.",
+  "lede": "An empty evening slot does not tell you how much useful natural light a place will have. Start with the actual activity, destination and date, then work back from the conditions it needs. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "The listed sunset is an exact universal cutoff for visibility, and a weekly appointment always has the same daylight.",
+  "sections": [
+    {
+      "heading": "Match the solar information to the destination",
+      "body": [
+        "Check the place and date attached to a sunrise or sunset value. A time for your current city is not automatically the time at a destination in another time zone. Keep the event’s local date and time clear before comparing it with the weather view.",
+        "Cloud Calendars weather supports selected-place information and available solar values returned by WeatherKit. Check the available date and displayed field before relying on it. Missing information should remain missing, rather than being replaced with today’s sunset or an assumption that the whole evening is light."
+      ]
+    },
+    {
+      "heading": "Distinguish sunset from twilight",
+      "body": [
+        "The U.S. Naval Observatory defines sunrise and sunset using the Sun’s position relative to a conventional horizon. Twilight is a separate interval before sunrise or after sunset, with different definitions. The labels therefore should not be used as interchangeable names for one instant.",
+        "Calculated solar times are not a measurement of the light available for a particular task. The observatory describes effects from the atmosphere, local horizon and observer position. A time displayed to the minute does not mean every venue will have identical visibility at that minute."
+      ]
+    },
+    {
+      "heading": "Work back from the task rather than a universal margin",
+      "body": [
+        "Decide what needs daylight: setting up an outdoor display, completing the activity, or returning equipment to the venue. Ask the organiser or venue which conditions and finish arrangements apply. Do not use this guide to invent a general latest safe start for every outdoor activity.",
+        "For example, a venue may require a display to finish and equipment to be packed away before its agreed cutoff. Put those separate commitments into the plan. Subtract the actual activity and pack-down time from that agreed finish, rather than treating the event’s advertised end as the entire job."
+      ]
+    },
+    {
+      "heading": "Check each repeated date",
+      "body": [
+        "A weekly appointment repeats its scheduling rule, not the amount of daylight. Review relevant dates when the season changes or the event crosses a clock change. Check the local time zone instead of assuming that an unchanged wall-clock time has unchanged lighting.",
+        "If only one occurrence needs moving, choose an editor and repeat scope that express that exception. After saving, inspect the changed date and a later occurrence. A routine that remains suitable in one week does not establish that every future occurrence meets the same conditions."
+      ]
+    },
+    {
+      "heading": "Keep available forecasts separate from long-term planning",
+      "body": [
+        "A calendar can hold appointments far beyond the available weather or solar entries in a particular view. For a later date, consult a suitable place-and-date source instead of assuming the app has returned a value for it. Do not copy the nearest available day as though it were the requested one.",
+        "NOAA explains that calculated sunrise and sunset depend on assumptions and observed results can vary. Its older solar calculator is no longer actively maintained; this guide cites its explanation of those limitations, not a claim that the calculator certifies an event’s conditions."
+      ]
+    },
+    {
+      "heading": "Save the intended arrangement and recheck it",
+      "body": [
+        "Record the activity’s date, local time, duration and venue accurately. If a separate setup or finish commitment helps the organiser, label it so nobody confuses it with the public start time. Check the destination calendar before saving a shared arrangement.",
+        "Before the event, review the actual forecast and venue information as well as the solar time. Communicate a changed start or location directly to the people involved. Neither a sunset entry nor a saved appointment guarantees usable light, suitable weather or that every participant has received an update."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the destination, event date and local time zone.",
+    "Check whether the value is sunset, sunrise or a twilight field.",
+    "Ask the organiser what conditions and finish arrangement apply.",
+    "Include the real setup, activity and pack-down periods.",
+    "Review repeated dates and any intended single-occurrence change.",
+    "Save the correct calendar entry and confirm changes with participants."
+  ],
+  "faq": [
+    {
+      "q": "Is sunset the exact moment an activity must stop?",
+      "a": "Sunset is a defined solar event, not a universal task-specific visibility rule. Use the venue’s requirements and actual conditions for the arrangement."
+    },
+    {
+      "q": "Can I reuse today’s sunset for an event next month?",
+      "a": "No. Check the intended place and date. A calendar appointment can extend beyond the values available in a weather view."
+    },
+    {
+      "q": "Does a recurring evening event keep the same daylight?",
+      "a": "No. Recheck the relevant dates, season and local clock settings; the repeat rule does not preserve lighting conditions."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "U.S. Naval Observatory: rise, set and twilight definitions",
+      "url": "https://aa.usno.navy.mil/faq/RST_defs"
+    },
+    {
+      "label": "NOAA: solar calculation assumptions and limitations",
+      "url": "https://gml.noaa.gov/grad/solcalc/calcdetails.html"
+    }
+  ],
+  "seeAlso": [
+    "weather-where-the-event-is",
+    "recurring-events-without-the-mess",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-22"
+}

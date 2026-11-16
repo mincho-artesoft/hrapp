@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-22T04:41:00.019365+00:00",
+  "allPassed": true,
+  "newGuide": "calendar-on-apple-watch",
+  "locales": [
+    "en-US",
+    "bg"
+  ],
+  "mobileViewport": 390,
+  "mobileClientAndScrollWidth": 379,
+  "bulgarianWiderViewport": 575,
+  "bulgarianClientAndScrollWidth": 564,
+  "noHorizontalOverflow": true,
+  "bulgarianGalleryImagesLoaded": 5,
+  "screenshot": "/tmp/cloud-calendar-batch37-watch-bg.png",
+  "visibleSection": "Cloud Calendars connection versus watch support; paired-phone requirements above",
+  "viewportReset": true,
+  "limits": "Visual readability and DOM checks, not native Watch runtime or screen-reader certification."
+}

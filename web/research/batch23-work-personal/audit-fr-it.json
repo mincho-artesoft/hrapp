@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-22",
+  "source": "src/app/content/en-US/articles-unify.ts",
+  "slug": "work-and-personal-without-two-apps",
+  "sourceObjectSHA256": "8ecee785f37a8b4575add3cc42444aa8d9b8cfe87ae04f70bc1481626f365265",
+  "records": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch23-work-personal/fr-FR.json",
+      "descriptionUnicodeCharacters": 136,
+      "sections": 5,
+      "paragraphs": 11,
+      "practicalSteps": 5,
+      "faqs": 3,
+      "sourceURLsExact": true,
+      "relatedDefinitions": {
+        "icloud-google-and-outlook-in-one-view": "src/app/content/fr-FR/articles.ts",
+        "who-can-see-what-in-google-calendar": "src/app/content/fr-FR/articles-google.ts",
+        "calendar-notifications-missing-silent-or-duplicated": "src/app/content/fr-FR/articles-help.ts"
+      }
+    },
+    {
+      "locale": "it",
+      "file": "research/batch23-work-personal/it.json",
+      "descriptionUnicodeCharacters": 147,
+      "sections": 5,
+      "paragraphs": 11,
+      "practicalSteps": 5,
+      "faqs": 3,
+      "sourceURLsExact": true,
+      "relatedDefinitions": {
+        "icloud-google-and-outlook-in-one-view": "src/app/content/it/articles.ts",
+        "who-can-see-what-in-google-calendar": "src/app/content/it/articles-google.ts",
+        "calendar-notifications-missing-silent-or-duplicated": "src/app/content/it/articles-help.ts"
+      }
+    }
+  ],
+  "relatedSubstitutions": [
+    {
+      "from": "what-calendar-sync-actually-does",
+      "to": "icloud-google-and-outlook-in-one-view",
+      "reason": "Original lacks localized body in both locales; existing overview covers provider connections."
+    },
+    {
+      "from": "when-two-calendars-disagree",
+      "to": "calendar-notifications-missing-silent-or-duplicated",
+      "reason": "Original lacks localized body in both locales; existing notification diagnosis supports selection/quiet-evening discussion."
+    }
+  ],
+  "preserved": [
+    "Copies in device calendar storage and source-dependent destination",
+    "Workplace authorization for actual data flow",
+    "Google synchronization and notification effects of calendar selection",
+    "Restore relevant calendars before judging availability",
+    "Base/Advanced/Premium distinction",
+    "Manual approved busy block, no automatic privacy masking",
+    "Developer disclosure, source URLs, date and empty claims"
+  ],
+  "translationStatus": "Own complete translations; no independent native-speaker approval.",
+  "actions": "Research JSON only; no source integration, build, deployment, native or ASC action."
+}

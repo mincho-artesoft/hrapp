@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-21T19:28:28.576Z",
+  "count": 13,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "iCloud, Google und Outlook in einer Ansicht: Konten, Kopien und Rechte",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Zeige iCloud-, Google- und Microsoft-Kalender gemeinsam an. Prüfe Konten, Bearbeitungsrechte und Kopien, bevor du Termine verschiebst oder Verfügbarkeit nutzt.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "en-US",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "iCloud, Google and Outlook in one view: accounts, copies and permissions",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "View iCloud, Google and Microsoft calendars together. Check account selection, edit permissions and copies before moving events or relying on availability.",
+      "descriptionCharacters": 155
+    },
+    {
+      "locale": "en-US",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Combine calendar apps on iPhone without losing track of events",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Bring calendar accounts into one iPhone overview. Check event destinations, duplicate routes, write-back and notifications before changing your daily workflow.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 2,
+      "updated": "2026-10-21",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "en-US",
+      "slug": "work-and-personal-without-two-apps",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Work and personal calendars in one app: keep ownership separate",
+      "sections": 5,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-21",
+      "description": "See work and personal calendars together without merging ownership. Check permissions, event destinations and Cloud Calendars plans before connecting accounts.",
+      "descriptionCharacters": 159
+    },
+    {
+      "locale": "en-US",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Microsoft and Exchange calendars on iPhone: check the connection first",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Check Microsoft account type, employer approval and permissions before connecting a work calendar. See what Cloud Calendars Premium adds.",
+      "descriptionCharacters": 137
+    },
+    {
+      "locale": "es-ES",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "iCloud, Google y Outlook en una vista: cuentas, copias y permisos",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Ve juntos calendarios de iCloud, Google y Microsoft. Revisa cuentas, permisos y copias antes de mover eventos o confiar en la disponibilidad.",
+      "descriptionCharacters": 141
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "it",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/it/articles.ts",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "descriptionCharacters": 149
+    },
+    {
+      "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Calendari Microsoft ed Exchange su iPhone: verifica prima la connessione",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Controlla tipo di account Microsoft, approvazione aziendale e permessi prima di collegare un calendario. Cosa aggiunge Cloud Calendars Premium.",
+      "descriptionCharacters": 143
+    }
+  ]
+}

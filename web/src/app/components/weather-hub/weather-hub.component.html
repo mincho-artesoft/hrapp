@@ -1,0 +1,235 @@
+<section class="weather section" id="weather" #root>
+  <div class="shell">
+    <header class="weather__head">
+      <p class="eyebrow" appReveal="fade">{{ copy().eyebrow }}</p>
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        {{ copy().title[0] }}<br />
+        <span class="grad-warm">{{ copy().title[1] }}</span>
+      </h2>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">{{ copy().lead }}</p>
+    </header>
+
+    <p class="hourly__hint">{{ copy().demoLabel }}</p>
+
+    <div class="weather__body">
+      <!-- ------------------------------------------------------- device -->
+      <div class="weather__device" appReveal="left">
+        <div appTilt [tiltMax]="6" [tiltLift]="18">
+          <app-device-frame
+            size="lg"
+            src="/media/panel/site-assets-20261022/images/app-screenshots/weather-view-1.webp"
+            [alt]="copy().alt"
+          />
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------- panels -->
+      <div class="weather__panels">
+        <!-- Hourly strip -->
+        <div class="card hourly" [class.is-loading]="loading()" appReveal="right">
+          <div class="hourly__head">
+            <div>
+              <span class="hourly__place">{{ placeLine }}</span>
+              <span class="hourly__cond">{{ conditionLine }}</span>
+            </div>
+            <span class="hourly__now">{{ nowTemp }}<sup>°</sup></span>
+          </div>
+
+          <!-- ------------------------------------------ search + view switch -->
+          <div class="panelbar">
+            <div class="finder">
+            <label class="finder__field">
+              <span class="sr-only">{{ copy().searchLabel }}</span>
+              <svg class="finder__icon" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
+                <path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+              <input
+                type="search"
+                class="finder__input"
+                [placeholder]="copy().searchPlaceholder"
+                autocomplete="off"
+                spellcheck="false"
+                role="combobox"
+                [attr.aria-expanded]="open()"
+                aria-controls="weather-results"
+                [value]="query()"
+                (input)="onQuery($any($event.target).value)"
+                (focus)="onQuery(query())"
+                (keydown.escape)="closeResults()"
+              />
+              @if (searching()) {
+                <span class="finder__spinner" aria-hidden="true"></span>
+              }
+            </label>
+
+            @if (open() && results().length) {
+              <ul class="finder__results" id="weather-results" role="listbox">
+                @for (r of results(); track r.id) {
+                  <li>
+                    <button type="button" class="finder__hit" role="option" (click)="choose(r)">
+                      <span class="finder__name">{{ r.name }}</span>
+                      <span class="finder__where">
+                        {{ r.admin1 ? r.admin1 + ' · ' : '' }}{{ r.country }}
+                      </span>
+                    </button>
+                  </li>
+                }
+              </ul>
+            }
+            </div>
+
+            <div class="views" role="tablist" [attr.aria-label]="copy().tabs.range">
+              @for (v of views; track v.id) {
+                <button
+                  type="button"
+                  role="tab"
+                  class="views__btn"
+                  [class.is-on]="view() === v.id"
+                  [attr.aria-selected]="view() === v.id"
+                  (click)="view.set(v.id)"
+                >
+                  {{ copy().tabs[v.id] }}
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------------- the forecast -->
+          @switch (view()) {
+            @case ('hourly') {
+              <ul class="hourly__list">
+                @for (h of hourly; track $index; let i = $index) {
+                  <li [style.--i]="i">
+                    <span class="hourly__h">{{ h.h }}</span>
+                    <span class="glyph" [attr.data-g]="h.icon" aria-hidden="true"></span>
+                    <span class="hourly__t">{{ h.t }}</span>
+                  </li>
+                }
+              </ul>
+            }
+
+            @case ('daily') {
+              <!-- Every range bar is positioned against the fortnight's whole
+                   span, so the column reads as one temperature profile. -->
+              <ul class="days">
+                @for (d of daily; track d.iso; let i = $index) {
+                  <li class="day" [class.is-weekend]="d.weekend" [style.--i]="i">
+                    <span class="day__name">{{ d.day }}</span>
+                    <span class="glyph" [attr.data-g]="d.icon" aria-hidden="true"></span>
+                    <span class="day__pop">{{ d.precip >= 10 ? d.precip + '%' : '' }}</span>
+                    <span class="day__lo">{{ d.min }}°</span>
+                    <span class="day__bar" aria-hidden="true">
+                      <i [style.left.%]="d.barStart * 100" [style.width.%]="d.barWidth * 100"></i>
+                    </span>
+                    <span class="day__hi">{{ d.max }}°</span>
+                  </li>
+                }
+              </ul>
+            }
+
+            @case ('weekend') {
+              <div class="wknd">
+                @for (d of weekend; track d.iso) {
+                  <article class="wknd__day">
+                    <header class="wknd__head">
+                      <span class="wknd__name">{{ d.day }}</span>
+                      <span class="wknd__date">{{ d.date }}</span>
+                    </header>
+                    <span class="glyph glyph--lg" [attr.data-g]="d.icon" aria-hidden="true"></span>
+                    <p class="wknd__temp">{{ d.max }}°<em>{{ d.min }}°</em></p>
+                    <p class="wknd__cond">{{ d.condition }}</p>
+                    <dl class="wknd__facts">
+                      <div><dt>Rain</dt><dd>{{ d.precip }}%</dd></div>
+                      <div><dt>Wind</dt><dd>{{ d.windMax }}</dd></div>
+                      <div><dt>UV</dt><dd>{{ d.uvMax }}</dd></div>
+                    </dl>
+                  </article>
+                }
+              </div>
+            }
+          }
+
+          <p class="hourly__hint">
+            <span aria-hidden="true">↳</span>
+            @if (!snapshot()) {
+              {{ copy().unavailable }}
+            } @else {
+              {{ liveFrom() }} {{ copy().tapAnHour }}
+            }
+            @if (loading()) { {{ copy().loadingLabel }} }
+          </p>
+        </div>
+
+        <!-- Metric tiles -->
+        <div class="metrics" appRevealStagger="80">
+          @for (m of metrics; track m.id; let i = $index) {
+            <article
+              class="card metric"
+              appReveal="zoom"
+              appTilt
+              [tiltMax]="7"
+              [tiltLift]="10"
+              [style.--accent]="m.accent"
+            >
+              <header class="metric__head">
+                <span class="metric__label">{{ m.label }}</span>
+                <span class="metric__value">
+                  {{ m.value }}<em>{{ m.unit }}</em>
+                </span>
+              </header>
+
+              <svg class="metric__chart" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient [attr.id]="'fill-' + m.id" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" [attr.stop-color]="m.accent" stop-opacity="0.42" />
+                    <stop offset="100%" [attr.stop-color]="m.accent" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+
+                @if (m.kind === 'line') {
+                  <path class="metric__area" [attr.d]="areaPath(m)" [attr.fill]="'url(#fill-' + m.id + ')'" />
+                  <path
+                    class="metric__line"
+                    [attr.d]="linePath(m)"
+                    fill="none"
+                    [attr.stroke]="m.accent"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <!-- A short bright dash chasing the same path. Aspect-safe,
+                       unlike a moving dot in a non-uniformly scaled viewBox. -->
+                  <path
+                    class="metric__pulse"
+                    [attr.d]="linePath(m)"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    [style.animation-delay]="-(i * 1.1) + 's'"
+                  />
+                } @else {
+                  @for (b of bars(m); track b.x) {
+                    <rect
+                      class="metric__bar"
+                      [attr.x]="b.x"
+                      [attr.y]="b.y"
+                      [attr.width]="b.w"
+                      [attr.height]="b.h"
+                      rx="0.9"
+                      [attr.fill]="m.accent"
+                      [style.--bar]="$index"
+                    />
+                  }
+                }
+              </svg>
+
+              <p class="metric__caption">{{ m.caption }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

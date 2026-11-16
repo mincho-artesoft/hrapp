@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-21T23:53:46.891Z",
+  "count": 2,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-22",
+      "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "title": "Calendar sync on iPhone: accounts, subscriptions and missing events",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Understand calendar sync, read-only subscriptions and local events. Trace one event between iPhone and iPad before changing accounts or deleting duplicates.",
+      "descriptionCharacters": 156
+    }
+  ]
+}

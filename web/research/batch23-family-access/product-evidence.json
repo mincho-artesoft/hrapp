@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-22",
+  "scope": "Read-only local product proof: purchase entitlement versus calendar-data access. No production, runtime or App Store configuration verification.",
+  "conclusion": "In the inspected implementation, purchasing or restoring a tier changes StoreKit-derived app entitlement state. The purchase path does not invite relatives or assign calendar access. Calendar sharing separately uses an authenticated app identity, calendar/owner identifiers and recipient roles. This does not establish whether any live purchase is eligible for Apple Family Sharing.",
+  "evidence": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-sharing.ts",
+      "sha256": "3374dff70fd6138adc367d2f8c18bfdb6e7394b5f7568c76f0082f180d6da860",
+      "readRanges": [
+        [
+          298,
+          388
+        ]
+      ],
+      "establishes": "Full a-calendar-that-is-yours-to-share object read, including six sections, practical steps, FAQs and sources. It already distinguishes sharing systems, roles and acceptance."
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-compare.ts",
+      "sha256": "af670a22cff5a0dd95e48e7458b4b5d457b13a9e55f628c24025754090ca8874",
+      "readRanges": [
+        [
+          342,
+          424
+        ]
+      ],
+      "establishes": "Full what-a-subscription-actually-buys object read, including five sections, practical steps, FAQs and sources. Billing identity already distinguished from provider/app-sharing identity; purchase does not override provider permissions."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift",
+      "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "readRanges": [
+        [
+          1,
+          255
+        ]
+      ],
+      "establishes": "Entire file read. purchase102–117 verifies/registers/finishes transaction and refreshes entitlement; currentEntitlements139–167 filters verified unrevoked unexpired transactions; tier mapping195–207; restore226–254 invokes AppStore.sync then refresh. No calendar-sharing call or relative-recipient lookup in these paths. Screenshot override15–19 is Debug-only and not a purchase."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "readRanges": [
+        [
+          189,
+          232
+        ]
+      ],
+      "establishes": "Acceptance requires existing CalendarFeedSession, otherwise sign-in. Explicit accept API then local shared-calendar reconciliation; no StoreKit tier lookup in this handler."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "readRanges": [
+        [
+          857,
+          953
+        ]
+      ],
+      "establishes": "Accept posts owner/calendar IDs with session bearer; save posts explicit recipient emails and roles; email invitation separate request. No purchase receipt or Family Sharing membership is supplied."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/ICloudCalendarSharingView.swift",
+      "sha256": "ebcbf74f53646e36999c3ec1ee4d52886004f85c13d20fc8298f6d4c66b8467c",
+      "readRanges": [
+        [
+          735,
+          794
+        ]
+      ],
+      "establishes": "Invitation action validates entered recipient emails, gets app session, saves explicit roles then sends invitations."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/common/auth.guard.ts",
+      "sha256": "fe55f961a3f4b560f42f4f009c580085de2f865fe3d22f2ec6393bd1bc413f20",
+      "readRanges": [
+        [
+          1,
+          19
+        ]
+      ],
+      "establishes": "Auth guard resolves bearer into request principal, not an Apple purchase entitlement."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "readRanges": [
+        [
+          135,
+          161
+        ]
+      ],
+      "establishes": "Calendar invitation accept endpoint uses AuthGuard and req.principal."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "readRanges": [
+        [
+          1573,
+          1712
+        ],
+        [
+          1788,
+          1848
+        ],
+        [
+          2059,
+          2200
+        ]
+      ],
+      "establishes": "Accept requires existing shared calendar and verified email identity, matches prior user/email recipients, chooses highest matched access or defaults to reader, persists principal-bound access; save requires owner and explicit reader/writer/owner roles; email invitation requires owner and recipients previously saved. No StoreKit/family membership logic in these inspected paths."
+    }
+  ],
+  "independentIdentities": [
+    {
+      "identity": "StoreKit/Apple billing entitlement",
+      "role": "Product ID, transaction verification, expiry and revocation determine local app tier.",
+      "limit": "No live Apple Account, Family Sharing membership or eligibility inspected."
+    },
+    {
+      "identity": "Cloud Calendars app-sharing principal",
+      "role": "Authenticated bearer session; verified email identity maps recipient to shared-calendar access.",
+      "limit": "May be a different identity from billing; no claim all users must have a pre-existing named email invitation because reader fallback exists."
+    },
+    {
+      "identity": "Provider calendar identity and permissions",
+      "role": "Google/Microsoft/iCloud calendar access remains distinct from the purchased app tier.",
+      "limit": "Current guides reviewed; provider ACL implementation not exhaustively re-audited in this bounded task."
+    }
+  ],
+  "boundedSearch": {
+    "native": "Calendar/Subscription Swift files searched for family, StoreKit, ownershipType, isFamilyShareable and subscription; entire manager read. Sharing callers and request bodies read as above.",
+    "backend": "src searched for subscription, StoreKit, premium, familyShared, ownershipType and isFamilyShareable; no purchase-entitlement integration surfaced. Relevant calendar paths read; not a whole-backend nonexistence proof."
+  },
+  "proposedCopy": {
+    "subscriptionGuide": "Sharing a purchase and sharing calendar data are separate choices. If a particular purchase is eligible for Apple Family Sharing, that concerns access to its paid features; it is not a calendar invitation. Check the current purchase information for eligibility, then use the appropriate calendar-sharing flow and review each recipient’s access.",
+    "sharingGuide": "A relative does not receive calendar access just because a paid plan is available to them. Share the intended calendar separately, have them use the appropriate signed-in identity, and check the resulting Reader, Writer or Owner access. Provider sharing has its own permissions."
+  },
+  "avoidClaims": [
+    "All Cloud Calendars subscriptions support Family Sharing.",
+    "Buying Premium automatically invites family members or shares events.",
+    "Family membership grants calendar Owner or Writer access.",
+    "Every calendar recipient must have been individually invited by email.",
+    "Cancelling a purchase automatically removes shared-calendar access or erases copies."
+  ],
+  "limits": [
+    "Source inspection is not proof of the released binary or deployed backend.",
+    "ASC Family Sharing eligibility per product, live purchase-screen wording and family entitlements were not queried or tested.",
+    "No blanket claim about Apple system-created family calendars; that is a different provider/system workflow.",
+    "No runtime purchase, restore, invite, acceptance or revocation test.",
+    "No security assurance derived from this bounded audit."
+  ],
+  "changesMade": [
+    "This research JSON only."
+  ],
+  "notPerformed": [
+    "Native edits",
+    "Builds",
+    "Simulators",
+    "Customer data access",
+    "Account queries",
+    "Deployment",
+    "ASC mutations",
+    "Paid API calls"
+  ]
+}

@@ -1,0 +1,155 @@
+Set your work hours and location in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Microsoft Teams
+New Outlook for Windows
+Microsoft 365 can help you manage and share your work schedule. New features allow you to specify more details about your work schedule: from where you're working (remotely or in the office) and whether you work different hours on different days. In addition, you can schedule meetings with others based on their work location, view the work location on people's profile card, and see your out of office time reflected in your location.
+Note
+Work location isn't used to track employees. Individuals' work location data is aggregated and anonymized to understand office occupation trends.
+This feature is not available yet for
+classic Outlook for Windows
+with
+GCCHigh
+.
+In this article:
+Set work hours and location
+View and update your work location
+View the location of others
+View suggestions to optimize your day
+Legacy work hours
+You can view work hours and location for yourself and others in classic Outlook, but you need to set them up with a work or school account using
+new Outlook
+or
+Outlook on the web
+following the steps below. Not sure of what version you're using? See
+What version of Outlook do I have?
+Note
+Setting work hours is only available to individuals using a work or school account in Outlook with a qualifying Microsoft 365 subscription.
+Set your work hours and location
+Set up your recurring work location from Settings or change a single day using the Outlook Calendar.
+Set work hours and location from new Outlook or Outlook on the web settings
+When you set this up, others will see what days you're working remote and what days you'll be in the office. You also have the option to share your exact work location to others, for example, if your organization has multiple buildings, you can specify exactly which building you'll be in.
+Set your recurring work plan in
+Settings
+. You also have the option to share your building location with others.
+Select
+Settings
+>
+Calendar
+>
+Work hours and location
+.
+Select checkboxes for the days you want to set.
+Use the dropdowns to select your work hours and your location each day.
+Share which building you're working from and where you'll be sitting.
+Select the
+Share office location details
+checkbox.
+Uncheck the
+Share office location details
+checkbox if you don't want to share specific location details.
+Anyone who views your card will only see you as
+in-office
+or
+remote
+.
+If you don't want share details about where you'll be working, do the following:
+Deselect your work location. This will remove it and replace it with
+No location
+.
+Uncheck
+Share your location
+.
+When you're finished, click
+Save
+.
+Note
+This new setup experience is currently available only in new Outlook for Windows and Outlook on the web, but setting up work hours and location will be available in Teams, Outlook for Mac, and Outlook for iOS and Android at a later date.
+Update work hours from the new Outlook or Outlook on the web calendar
+When you need to change your recurring work plan on a particular day or a few days that week, for example, you planned to work remote, but decide to go in the office for an in-person meetings, use the Outlook Calendar to make the updates.
+On the navigation pane, select
+Calendar
+.
+Select
+Work plan
+.
+Note
+The
+Work plan
+icon might look different depending on if you previously set up that day as remote or in-office.
+Make your changes.
+If you're planning to go in to the office and your organization has multiple buildings, from the dropdown, select the building you plan to work from.
+Note
+Building selection is only available if your organization set up a directory of buildings to pick from.
+If you plan to work remotely instead, select the days you're remote, and then click the
+I work remotely
+checkbox.
+Click
+Set
+. Once your plan is set, a location icon appears on your calendar days to indicate where you're working from.
+Note
+The setup experience from the Outlook Calendar is currently only available in new Outlook for Windows and Outlook on the web. Setting up work hours and location in Teams, Outlook Mobile, and Outlook for Mac is upcoming.
+View and update your work location
+When your schedule changes, update your work location from Outlook or Teams.
+Note
+The option to change location per day is currently only available in Outlook on the web and Teams Desktop, but will eventually be available in classic Outlook for Windows, iOS, Android, and Mac.
+Update your work location or set your out of office from new Outlook or Outlook on the web
+When viewing your calendar, select the icon representing your scheduled work location and change the location as needed. The work location can be cleared by deselecting the location.
+You can also choose to update your work location to a specific building. Buildings you set as part of your recurring work hours and location appear first as suggested places.
+To choose a building, open the location picker.
+Select
+Search for a place
+. You can also set your location to only say,
+Office
+by searching for it.
+Note
+Selecting a specific building is only available if your organization set up buildings as a location option.
+Set your Out of Office location
+You can set your out of office location by selecting that option from the Work plan window.
+Select
+Work plan
+on the date you want to show you're out of office.
+Select
+Out of office
+from the dropdown.
+Type a title and set the date and time you plan to be out of office.
+Click
+Save
+. An out of office appointment is added to your calendar and your Teams presence status is also updated.
+Tip
+You can also create a calendar appointment from any device and set the Free/Busy option to Out of office. Your location is set to
+Out of office
+during that period of time.
+Update your work location from Teams
+Select the circle icon with your profile picture and change the work location. The new location will be applied to your work hours for the remainder of the day and reflected in both Outlook and Teams. You can also express specifically which building location you are working from on a given day.
+View the location of others
+Knowing where others are working from is important for scheduling and collaboration. You can view others' locations from your own work location card, when scheduling from Outlook, or when viewing another person's profile card.
+View from your daily work location card in Outlook
+From your daily location card, you'll be able to see who else you work with is going into the office that day. If you have a specific building set, the list will be filtered to others who have also set their location to the same place for that day.
+View when scheduling a meeting in Outlook
+If others have set up their work hours and location, their work location will appear in the Scheduling Assistant, as shown below.
+View another person's profile card in Outlook
+If you want to quickly look up where someone is working from, you can view their location in their profile card next to their availability.
+View suggestions to optimize your day
+Optimizing your work location schedule is important to maximize collaboration and connection on your in-person days.
+You can identify which days have suggestions by the addition of a red dot on the
+Work plan location
+icon.
+Select the
+Suggested work plan location
+.
+On the daily location card, view the suggested action. The suggestion might be to:
+Update your work plan for an in-person event
+Book rooms for meetings on in-office days
+Select the action based on the suggestion, or close the card.
+Note
+The suggestions experience is currently opt-in. Go to
+Microsoft Places
+for more details.
+Legacy work hours
+This new experience replaces the legacy work hours experience, but legacy work hours will continue to be supported. Because the legacy experience supports only a single start time and end time for the entire work week, the legacy work hours will approximate the modern work hours and location.
+For example, a user sets up the following schedule using the new work hours and location: Mondays, Tuesdays, Thursdays: 8:00 am - 5:00 pm & Wednesdays, Fridays: 10:00am - 7:00 pm. The times for their legacy work hours will be configured to the best approximation (8:00 am to 7:00 pm) – the minimum start time and maximum end time of the modern work hours.
+Until a user sets up modern working hours, changes to legacy working hours will also update the times in their modern working hours. However, once a user sets up (or updates) their modern working hours, future changes to legacy working hours will not propagate and overwrite the modern working hours.
+The exception to this rule is working hours time zone. Whenever the legacy working hours time zone changes, it will update the time zone for the modern working hours. This ensures that others can view accurate availability if someone on a legacy client travels across time zones.

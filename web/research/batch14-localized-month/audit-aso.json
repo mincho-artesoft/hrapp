@@ -1,0 +1,204 @@
+{
+  "slug": "month-view-on-a-bigger-screen",
+  "source": "src/app/content/en-US/articles-planning.ts",
+  "sourceObjectSha256": "48fd73f258632da80eb4639c356f3fe27f0f270dd0f9f2871c5eed50b25addc5",
+  "datePreserved": "2026-10-22",
+  "count": 10,
+  "format": "Individual LocalisedArticle JSON objects",
+  "validation": "Passed exact fields, duplicate-key rejection, 6 sections/12 paragraphs/6 steps/3 FAQs, descriptions under 160 characters, exact source URLs/date/empty claims, disclosure and locale-available related routes",
+  "meaningReview": [
+    "Month overview does not prove exact-hour or other-person availability.",
+    "Limited event chips, additional count, single-line truncation and iPad/window/text-size limits retained.",
+    "Month/year/adjacent dates and selected calendars checked.",
+    "Details, ownership, permission and recurrence scope before dragging; local gesture not provider or participant acceptance proof.",
+    "Repeat scope and time zone/DST checks preserved.",
+    "Apple and Teamup controls explicitly belong to those products; weather date/hour availability separate."
+  ],
+  "reviewCaveats": "Own model translations, no native-speaker certification. Arabic/Hebrew RTL rendering unpreviewed.",
+  "scope": "Research only; no integration/build/deploy/native changes or paid translation API. Generation script removed after validation.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "descriptionCharacters": 155,
+      "seeAlso": [
+        "drag-an-event-to-move-it"
+      ],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7032,
+      "sha256": "3c5c5f1507cc720e16643ccaa868f8bf28dc8670cb7a250a3bfca30e5b2e847c",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "descriptionCharacters": 146,
+      "seeAlso": [
+        "drag-an-event-to-move-it"
+      ],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6730,
+      "sha256": "a669501e270c56a01bf66bd1afec8a7a17f20a240c57569e2361424a5158cc06",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "descriptionCharacters": 155,
+      "seeAlso": [
+        "drag-an-event-to-move-it"
+      ],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6989,
+      "sha256": "6095700b0cf000eb206c4a26c3f007d969ffbf464a5429f5f83971867a033553",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "da",
+      "descriptionCharacters": 144,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6314,
+      "sha256": "3021740b6219ab196c514ec295b4d3a596b82a9d5df30b94db1ea272f5cefdf4",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "bg",
+      "descriptionCharacters": 146,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 10334,
+      "sha256": "2bc7cb126eea14bf284d9edda1279c1b1d805b13365f7e0d33dd8f90f47232ca",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "cs",
+      "descriptionCharacters": 141,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6295,
+      "sha256": "a08250e4c2496400ec9fec5b27a66993c19ea2352537304e3ac07c26afa03d45",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "fi",
+      "descriptionCharacters": 147,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6307,
+      "sha256": "4d2dab645ed3384b11050b11950f0d940fa50f5a294a2ce16b10aff6201b0f2e",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "el",
+      "descriptionCharacters": 148,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 10638,
+      "sha256": "e46b213822abc8bf2e0c4bc02b8d95857b73480963b1e7bf68ff4e2f64c065dc",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "ar-SA",
+      "descriptionCharacters": 124,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8485,
+      "sha256": "e82e2c634726edc179d81e178e99ce797497d8be165763ec25678e5ad21781e7",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "he",
+      "descriptionCharacters": 118,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "a-week-view-that-fits-a-week",
+        "drag-an-event-to-move-it",
+        "recurring-events-without-the-mess",
+        "time-zones-and-the-flight-you-booked"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7695,
+      "sha256": "8e0368b9dd6304240f5b845c01f995a58a7e4c14026cd850b6348750c10c5f47",
+      "translationConfidence": "medium"
+    }
+  ]
+}

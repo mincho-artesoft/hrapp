@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-22",
+  "verdict": "pass_current_revised_proposal",
+  "reviewedProposalSha256": "5ace50f8cc8e4b685b6c3f624d4f942585ac72ead002de69e884e988879815f3",
+  "readScope": "Complete proposal parsed, all30before/after footer objects compared programmatically with actual current locale modules; all30new labels read. Complete four source before/after patches inspected through diffs against full current footer TS/HTML/SCSS and home type. Current app-facts and locale list read; exact existing terms/privacy contact assertions checked. No live mailbox or production query.",
+  "files": [
+    {
+      "path": "research/batch28-readiness/support-proposal.json",
+      "sha256": "5ace50f8cc8e4b685b6c3f624d4f942585ac72ead002de69e884e988879815f3"
+    },
+    {
+      "path": "src/app/core/app-facts.ts",
+      "sha256": "0d342dbbff992e44a2fbc93781424793e10c2de8d83aa5dfc671c94cb24db466"
+    },
+    {
+      "path": "src/app/core/locales.ts",
+      "sha256": "4a98935b56015f8f151a1c49aaeea94063c2806999ebe6bea9b899805952ae96"
+    },
+    {
+      "path": "src/app/pages/terms-page/terms-page.component.html",
+      "sha256": "f14b5e3560aab6fbd264ab184c0f1b65ef07aecda5a58e3ce6b6b7fd04c773af"
+    },
+    {
+      "path": "src/app/pages/privacy-policy-page/privacy-policy-page.component.html",
+      "sha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4"
+    },
+    {
+      "path": "src/app/content/home/types.ts",
+      "sha256": "d431c2f51f074deb7e4d66ea08bb74c4edcf7423c3a6ea9ced5020075922b79f"
+    },
+    {
+      "path": "src/app/components/footer/footer.component.ts",
+      "sha256": "efbf6e1728842f0e52df05f91b097926f79d3e868819460c8eda3e0b516d927c"
+    },
+    {
+      "path": "src/app/components/footer/footer.component.html",
+      "sha256": "b53b70201bfff354298a3d87b74974de1985b770eebfe1d51b97d051de631857"
+    },
+    {
+      "path": "src/app/components/footer/footer.component.scss",
+      "sha256": "f5a2e656d213d3f316dcfc2898226015053a5f3b00d81109f8d8ac64ad9dda18"
+    },
+    {
+      "path": "src/app/core/app-facts.ts",
+      "sha256": "0d342dbbff992e44a2fbc93781424793e10c2de8d83aa5dfc671c94cb24db466"
+    }
+  ],
+  "checks": {
+    "actual30LocaleCoverage": true,
+    "everyBeforeFooterMatchesCurrent": true,
+    "everyLocaleRawShaMatches": true,
+    "everyAfterChangesOnlyEmailSupport": true,
+    "all4SourceBeforeSnapshotsMatchCurrent": true,
+    "noNewRoutes": true,
+    "existingProductLegalAppStoreLinksPreserved": true,
+    "numericFactsUnchangedByCurrentProposal": true,
+    "privacyOfficeAddressUntouched": true,
+    "mailboxDeliveryClaimAbsent": true,
+    "all5SourceBeforeSnapshotsMatchCurrent": true,
+    "supportDestinationMatchesRootAndTerms": true
+  },
+  "blockers": [],
+  "rtlAndAccessibility": {
+    "sourceAssessment": "bdi dir=ltr isolates address from Arabic/Hebrew label; display:block places the address on its own line; overflow-wrap:anywhere allows wrapping in minmax(0,1fr) columns. Visible address supports copying and anchor retains existing focus-ring styles.",
+    "limits": "Source-level assessment only. Rendered narrow mobile/RTL line wrapping and keyboard focus still require root publication checks. No assurance of mailbox delivery or response time."
+  },
+  "translationReview": "All30labels are concise support/email contact wording; no concrete meaning blocker found. This is bounded editorial review, not independent native-speaker certification.",
+  "urlBoundary": "Only mailto to existing public terms contact is needed. No invented /support route, HTTP support URL or ASC URL edit.",
+  "preservationGuard": "Verified app-facts after equals before with only SUPPORT_EMAIL changed. All numeric/version/plan constants and prices remain byte-for-byte identical.",
+  "notPerformed": [
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Email send/test",
+    "Mailbox access",
+    "AWS/production/customer query",
+    "ASC change"
+  ],
+  "privacyReleaseStatus": "Owner question remains pending. This support review does not infer release provenance absent globally or resolve privacy/release correspondence.",
+  "resolvedFindings": [
+    {
+      "previousProposalSha256": "5ace50f8cc8e4b685b6c3f624d4f942585ac72ead002de69e884e988879815f3",
+      "issue": "Support destination differed from root choice.",
+      "resolution": "Current proposal aligns SUPPORT_EMAIL and visible/mailto destination to support@arte-soft.com, with exact one-line app-facts patch. Terms and office@arte-soft.com privacy contact untouched."
+    }
+  ],
+  "deltaReview": {
+    "scope": "Freshly reread revised recommendation, destination, legalContactComparison, validation and all five exact source diffs. Rechecked all30source raw hashes and only-added-label preservation. Retain earlier full30locale semantic/before-object review; this is not a claim of a second full prose reread.",
+    "numericFactsAndPlansPreserved": true,
+    "all5SourceBeforeSnapshotsMatchCurrent": true,
+    "staleMetadataNote": "legalContactComparison.matches=false remains a before-state field; explicit afterSupportMatchesTerms=true resolves intended after-state. Not an integration blocker.",
+    "proposalRawSha256": "5ace50f8cc8e4b685b6c3f624d4f942585ac72ead002de69e884e988879815f3"
+  }
+}

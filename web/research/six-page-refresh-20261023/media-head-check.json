@@ -1,0 +1,5226 @@
+{
+  "passed": true,
+  "count": 1044,
+  "objects": [
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ar-SA/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/cs/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/da/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/de-DE/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/el/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/en-US/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/es-ES/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fi/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/fr-FR/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/he/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hi/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/02-week-left-480.avif",
+      "bytes": 25544,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/02-week-left-960.avif",
+      "bytes": 95725,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/03-week-right-480.avif",
+      "bytes": 21235,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/03-week-right-960.avif",
+      "bytes": 92124,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/04-widgets-480.avif",
+      "bytes": 27116,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/04-widgets-960.avif",
+      "bytes": 118601,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/hu/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/01-hook-340.avif",
+      "bytes": 22347,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/01-hook-680.avif",
+      "bytes": 83830,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/02-week-left-340.avif",
+      "bytes": 22631,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/02-week-left-680.avif",
+      "bytes": 84742,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/05-live-340.avif",
+      "bytes": 19882,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/05-live-680.avif",
+      "bytes": 88770,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/id/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/01-hook-480.avif",
+      "bytes": 22896,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/01-hook-960.avif",
+      "bytes": 86507,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/03-week-right-340.avif",
+      "bytes": 20204,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/03-week-right-680.avif",
+      "bytes": 81526,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/04-widgets-340.avif",
+      "bytes": 25243,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/04-widgets-680.avif",
+      "bytes": 89685,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/it/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ja/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ko/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ms/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/nl-NL/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/no/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pl/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/pt-BR/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ro/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/ru/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/sv/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/th/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/tr/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/vi/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hans/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/01-hook-480.avif",
+      "bytes": 22768,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/01-hook-480.webp",
+      "bytes": 19110,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/01-hook-960.avif",
+      "bytes": 86903,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/01-hook-960.webp",
+      "bytes": 48836,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/02-week-left-480.avif",
+      "bytes": 25317,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/02-week-left-480.webp",
+      "bytes": 19702,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/02-week-left-960.avif",
+      "bytes": 96048,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/02-week-left-960.webp",
+      "bytes": 54558,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/03-week-right-480.avif",
+      "bytes": 21284,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/03-week-right-480.webp",
+      "bytes": 17492,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/03-week-right-960.avif",
+      "bytes": 91482,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/03-week-right-960.webp",
+      "bytes": 43934,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/04-widgets-480.avif",
+      "bytes": 26967,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/04-widgets-480.webp",
+      "bytes": 19802,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/04-widgets-960.avif",
+      "bytes": 118240,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPad/04-widgets-960.webp",
+      "bytes": 50002,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/01-hook-340.avif",
+      "bytes": 22195,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/01-hook-340.webp",
+      "bytes": 19284,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/01-hook-680.avif",
+      "bytes": 84966,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/01-hook-680.webp",
+      "bytes": 50720,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/02-week-left-340.avif",
+      "bytes": 22760,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/02-week-left-340.webp",
+      "bytes": 19808,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/02-week-left-680.avif",
+      "bytes": 84700,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/02-week-left-680.webp",
+      "bytes": 52778,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/03-week-right-340.avif",
+      "bytes": 20389,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/03-week-right-340.webp",
+      "bytes": 17422,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/03-week-right-680.avif",
+      "bytes": 81208,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/03-week-right-680.webp",
+      "bytes": 42862,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/04-widgets-340.avif",
+      "bytes": 25196,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/04-widgets-340.webp",
+      "bytes": 20510,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/04-widgets-680.avif",
+      "bytes": 88659,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/04-widgets-680.webp",
+      "bytes": 51950,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/05-live-340.avif",
+      "bytes": 20401,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/05-live-340.webp",
+      "bytes": 15296,
+      "type": "image/webp"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/05-live-680.avif",
+      "bytes": 88253,
+      "type": "image/avif"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/zh-Hant/iPhone/05-live-680.webp",
+      "bytes": 35108,
+      "type": "image/webp"
+    }
+  ]
+}

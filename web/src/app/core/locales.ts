@@ -1,0 +1,445 @@
+/**
+ * The languages this site is published in.
+ *
+ * The App Store carries 31 localisations, but two of them — en-CA and fr-CA —
+ * hold the same words as en-US and fr-FR. Publishing identical copy at two
+ * addresses is duplicate content, not regional targeting, so the web ships 29
+ * languages and the two Canadian storefronts reuse the language page. The
+ * `media` field keeps the link to the App Store folder the screenshots came
+ * from, which is why it is not simply derived from `code`.
+ *
+ * `slug` is the URL prefix. English has none: it is the site's default and
+ * lives at the root, so /guides/x rather than /en/guides/x.
+ *
+ * `dir` matters for more than text alignment. Arabic and Hebrew ship their
+ * five App Store screenshots in mirrored order, which the media manifest
+ * records; a carousel that assumed a fixed order would show the wrong picture
+ * in exactly the two languages nobody on the team can proofread.
+ */
+export interface Locale {
+  /** BCP 47, as Apple writes it. */
+  readonly code: string;
+  /** URL prefix. Empty for the default language. */
+  readonly slug: string;
+  /** The hreflang value search engines are given. */
+  readonly hreflang: string;
+  /** The language's own name for itself, for the switcher. */
+  readonly label: string;
+  readonly dir: 'ltr' | 'rtl';
+  /** Folder in the media bucket, which follows App Store naming. */
+  readonly media: string;
+  /** App Store storefront country code, for download links. */
+  readonly storefront: string;
+}
+
+export const LOCALES: readonly Locale[] = [
+  {
+    code: 'en-US',
+    slug: '',
+    hreflang: 'en',
+    label: 'English',
+    dir: 'ltr',
+    media: 'en-US',
+    storefront: 'us',
+  },
+  {
+    code: 'ar-SA',
+    slug: 'ar',
+    hreflang: 'ar',
+    label: 'العربية',
+    dir: 'rtl',
+    media: 'ar-SA',
+    storefront: 'sa',
+  },
+  {
+    code: 'bg',
+    slug: 'bg',
+    hreflang: 'bg',
+    label: 'Български',
+    dir: 'ltr',
+    // The App Store carries no Bulgarian localisation, so there is no folder of
+    // Bulgarian screenshots to point at. The rail shows the English shots
+    // rather than nothing: the app's own interface is what a reader is about to
+    // see, and it is in English for them either way.
+    media: 'en-US',
+    storefront: 'bg',
+  },
+  {
+    code: 'cs',
+    slug: 'cs',
+    hreflang: 'cs',
+    label: 'Čeština',
+    dir: 'ltr',
+    media: 'cs',
+    storefront: 'cz',
+  },
+  {
+    code: 'da',
+    slug: 'da',
+    hreflang: 'da',
+    label: 'Dansk',
+    dir: 'ltr',
+    media: 'da',
+    storefront: 'dk',
+  },
+  {
+    code: 'de-DE',
+    slug: 'de',
+    hreflang: 'de',
+    label: 'Deutsch',
+    dir: 'ltr',
+    media: 'de-DE',
+    storefront: 'de',
+  },
+  {
+    code: 'el',
+    slug: 'el',
+    hreflang: 'el',
+    label: 'Ελληνικά',
+    dir: 'ltr',
+    media: 'el',
+    storefront: 'gr',
+  },
+  {
+    code: 'es-ES',
+    slug: 'es',
+    hreflang: 'es',
+    label: 'Español',
+    dir: 'ltr',
+    media: 'es-ES',
+    storefront: 'es',
+  },
+  {
+    code: 'fi',
+    slug: 'fi',
+    hreflang: 'fi',
+    label: 'Suomi',
+    dir: 'ltr',
+    media: 'fi',
+    storefront: 'fi',
+  },
+  {
+    code: 'fr-FR',
+    slug: 'fr',
+    hreflang: 'fr',
+    label: 'Français',
+    dir: 'ltr',
+    media: 'fr-FR',
+    storefront: 'fr',
+  },
+  {
+    code: 'he',
+    slug: 'he',
+    hreflang: 'he',
+    label: 'עברית',
+    dir: 'rtl',
+    media: 'he',
+    storefront: 'il',
+  },
+  {
+    code: 'hi',
+    slug: 'hi',
+    hreflang: 'hi',
+    label: 'हिन्दी',
+    dir: 'ltr',
+    media: 'hi',
+    storefront: 'in',
+  },
+  {
+    code: 'hu',
+    slug: 'hu',
+    hreflang: 'hu',
+    label: 'Magyar',
+    dir: 'ltr',
+    media: 'hu',
+    storefront: 'hu',
+  },
+  {
+    code: 'id',
+    slug: 'id',
+    hreflang: 'id',
+    label: 'Indonesia',
+    dir: 'ltr',
+    media: 'id',
+    storefront: 'id',
+  },
+  {
+    code: 'it',
+    slug: 'it',
+    hreflang: 'it',
+    label: 'Italiano',
+    dir: 'ltr',
+    media: 'it',
+    storefront: 'it',
+  },
+  {
+    code: 'ja',
+    slug: 'ja',
+    hreflang: 'ja',
+    label: '日本語',
+    dir: 'ltr',
+    media: 'ja',
+    storefront: 'jp',
+  },
+  {
+    code: 'ko',
+    slug: 'ko',
+    hreflang: 'ko',
+    label: '한국어',
+    dir: 'ltr',
+    media: 'ko',
+    storefront: 'kr',
+  },
+  {
+    code: 'ms',
+    slug: 'ms',
+    hreflang: 'ms',
+    label: 'Melayu',
+    dir: 'ltr',
+    media: 'ms',
+    storefront: 'my',
+  },
+  {
+    code: 'nl-NL',
+    slug: 'nl',
+    hreflang: 'nl',
+    label: 'Nederlands',
+    dir: 'ltr',
+    media: 'nl-NL',
+    storefront: 'nl',
+  },
+  {
+    code: 'no',
+    slug: 'no',
+    hreflang: 'no',
+    label: 'Norsk',
+    dir: 'ltr',
+    media: 'no',
+    storefront: 'no',
+  },
+  {
+    code: 'pl',
+    slug: 'pl',
+    hreflang: 'pl',
+    label: 'Polski',
+    dir: 'ltr',
+    media: 'pl',
+    storefront: 'pl',
+  },
+  {
+    code: 'pt-BR',
+    slug: 'pt',
+    hreflang: 'pt',
+    label: 'Português',
+    dir: 'ltr',
+    media: 'pt-BR',
+    storefront: 'br',
+  },
+  {
+    code: 'ro',
+    slug: 'ro',
+    hreflang: 'ro',
+    label: 'Română',
+    dir: 'ltr',
+    media: 'ro',
+    storefront: 'ro',
+  },
+  {
+    code: 'ru',
+    slug: 'ru',
+    hreflang: 'ru',
+    label: 'Русский',
+    dir: 'ltr',
+    media: 'ru',
+    storefront: 'ru',
+  },
+  {
+    code: 'sv',
+    slug: 'sv',
+    hreflang: 'sv',
+    label: 'Svenska',
+    dir: 'ltr',
+    media: 'sv',
+    storefront: 'se',
+  },
+  {
+    code: 'th',
+    slug: 'th',
+    hreflang: 'th',
+    label: 'ไทย',
+    dir: 'ltr',
+    media: 'th',
+    storefront: 'th',
+  },
+  {
+    code: 'tr',
+    slug: 'tr',
+    hreflang: 'tr',
+    label: 'Türkçe',
+    dir: 'ltr',
+    media: 'tr',
+    storefront: 'tr',
+  },
+  {
+    code: 'vi',
+    slug: 'vi',
+    hreflang: 'vi',
+    label: 'Tiếng Việt',
+    dir: 'ltr',
+    media: 'vi',
+    storefront: 'vn',
+  },
+  {
+    code: 'zh-Hans',
+    slug: 'zh-hans',
+    hreflang: 'zh-Hans',
+    label: '简体中文',
+    dir: 'ltr',
+    media: 'zh-Hans',
+    storefront: 'cn',
+  },
+  {
+    code: 'zh-Hant',
+    slug: 'zh-hant',
+    hreflang: 'zh-Hant',
+    label: '繁體中文',
+    dir: 'ltr',
+    media: 'zh-Hant',
+    storefront: 'tw',
+  },
+];
+
+export const DEFAULT_LOCALE: Locale = LOCALES[0];
+
+/** Look one up by code, falling back to English rather than throwing. */
+export function localeByCode(code: string): Locale {
+  return LOCALES.find((l) => l.code === code) ?? DEFAULT_LOCALE;
+}
+
+/** Prefix a route path with a locale's slug. `/` stays `/`. */
+export function localePath(locale: Locale, path: string): string {
+  const clean = path === '/' ? '' : path.replace(/^\/+/, '');
+  const parts = [locale.slug, clean].filter(Boolean);
+  return '/' + parts.join('/');
+}
+
+/**
+ * The same path, as an address to put in an `href`.
+ *
+ * The host resolves a directory only with a trailing slash and answers 301
+ * otherwise, which `absolute()` already accounts for when it writes a
+ * canonical URL. The links in the pages did not: every article link on the
+ * site pointed at the slashless form, so a reader and a crawler both spent a
+ * redirect on every click, and Search Console reported the sitemap's pages as
+ * "Page with redirect" once it re-crawled them.
+ *
+ * Kept separate from `localePath` because that one also feeds the canonical
+ * and hreflang values, where `absolute()` does the normalising, and doing it
+ * twice would be a second place to keep in agreement.
+ */
+export function linkPath(locale: Locale, path: string): string {
+  const p = localePath(locale, path);
+  return p.endsWith('/') ? p : `${p}/`;
+}
+
+/**
+ * The provider token for the Arte Soft developer account in App Store Connect
+ * (Analytics → Acquisition → Campaigns). Apple attributes a campaign only when
+ * the link carries both `pt` (provider token) and `ct` (campaign token, max 30
+ * characters) plus `mt=8` for iOS.
+ */
+export const APP_STORE_PROVIDER_TOKEN = '127093297';
+
+/**
+ * A page's campaign token with the visit's traffic source appended after an
+ * underscore (e.g. `home_chatgpt`, `compare_perplexity`, or a long article slug
+ * clipped so `page + '_' + source` stays within Apple's 30-character `ct` limit).
+ */
+export function campaignFor(page: string, source = ''): string {
+  const cleanPage = (page || 'home').replace(/^-+|-+$/g, '');
+  if (!source) {
+    return cleanPage.slice(0, 30).replace(/-+$/, '') || 'home';
+  }
+  const tail = `_${source}`;
+  const maxPageLen = Math.max(1, 30 - tail.length);
+  return cleanPage.slice(0, maxPageLen).replace(/-+$/, '') + tail;
+}
+
+/**
+ * Add Apple App Store Connect campaign parameters (`pt`, `ct`, `mt=8`) to an
+ * App Store URL while preserving any existing query parameters.
+ */
+export function campaignLink(
+  url: string,
+  campaign: string,
+  providerToken = APP_STORE_PROVIDER_TOKEN,
+): string {
+  const ct = campaignFor(campaign)
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 30)
+    .replace(/-+$/, '');
+  if (!ct) return url;
+  const u = new URL(url);
+  if (providerToken) u.searchParams.set('pt', providerToken);
+  u.searchParams.set('ct', ct);
+  if (providerToken && !u.searchParams.has('mt')) u.searchParams.set('mt', '8');
+  return u.toString();
+}
+
+/**
+ * The App Store link for a locale.
+ *
+ * Apple resolves the storefront from the path segment, so a German reader
+ * lands on the German listing instead of the American one and sees prices in
+ * the currency they will actually be charged in.
+ */
+export function storeUrl(
+  locale: Locale,
+  base: string,
+  campaign = 'home',
+  providerToken = APP_STORE_PROVIDER_TOKEN,
+): string {
+  const url = base.replace(/\/[a-z]{2}\/app\//, `/${locale.storefront}/app/`);
+  return campaign ? campaignLink(url, campaign, providerToken) : url;
+}
+
+/**
+ * Every code that {@link LOCALES} actually contains.
+ *
+ * Written out rather than derived so the content registry can be keyed by it.
+ * Its whole job is to turn a typo — 'it-IT' where the App Store says 'it' —
+ * into a compile error instead of a language that silently publishes nothing.
+ */
+export type LocaleCode =
+  | 'en-US'
+  | 'ar-SA'
+  | 'bg'
+  | 'cs'
+  | 'da'
+  | 'de-DE'
+  | 'el'
+  | 'es-ES'
+  | 'fi'
+  | 'fr-FR'
+  | 'he'
+  | 'hi'
+  | 'hu'
+  | 'id'
+  | 'it'
+  | 'ja'
+  | 'ko'
+  | 'ms'
+  | 'nl-NL'
+  | 'no'
+  | 'pl'
+  | 'pt-BR'
+  | 'ro'
+  | 'ru'
+  | 'sv'
+  | 'th'
+  | 'tr'
+  | 'vi'
+  | 'zh-Hans'
+  | 'zh-Hant';

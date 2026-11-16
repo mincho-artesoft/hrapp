@@ -1,0 +1,75 @@
+<section class="widgets section" id="widgets">
+  <div class="widgets__inner shell">
+    <!-- ------------------------------------------------------------ copy -->
+    <div class="widgets__copy">
+      <p class="eyebrow" appReveal="fade">{{ eyebrow() }}</p>
+
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        {{ copy().title[0] }}<br />
+        <span class="grad-cyan">{{ copy().title[1] }}</span>
+      </h2>
+
+      <p class="section-lead" appReveal="up" [revealDelay]="140">{{ copy().lead }}</p>
+
+      <ul class="points" appRevealStagger="110">
+        @for (p of points(); track p.title) {
+          <li class="points__item" appReveal="left">
+            <span class="points__icon" [attr.data-icon]="p.icon" aria-hidden="true"></span>
+            <div>
+              <h3>{{ p.title }}</h3>
+              <p>{{ p.body }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- ---------------------------------------------------------- device -->
+    <div class="widgets__stage" appReveal="rotate">
+      <div class="widgets__phone" appTilt [tiltMax]="7" [tiltLift]="20">
+        <!-- The bezel shrink-wraps the clip rather than the clip being fitted
+             into a frame of a fixed shape: the video sets its own height from
+             its own aspect ratio, so neither a crop nor a letterbox is
+             possible, whatever the footage is re-recorded at. -->
+        <div class="widgets__shell">
+          <!-- data-poster, not poster: a poster attribute is fetched at page load
+               whatever preload says, and this section sits several screens down.
+               InViewVideoDirective promotes it to a real poster as the section
+               approaches. -->
+          <video
+            appInViewVideo
+            #clip="inViewVideo"
+            class="home-video"
+            data-poster="/media/panel/site-assets-20261022/video/widgets-poster.webp"
+            preload="none"
+            width="640"
+            height="1392"
+            muted
+            loop
+            playsinline
+            disablepictureinpicture
+            aria-label="Cloud Calendars widgets on the iOS Home Screen, and a Live Activity counting down to the next event"
+          >
+            <source src="/media/panel/site-assets-20261022/video/widgets.webm" type="video/webm" />
+            <source src="/media/panel/site-assets-20261022/video/widgets.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- The one control, beneath the phone rather than floating over it:
+           the dock sits in the bottom corner of the shot, and an overlay
+           button would cover the very thing the clip is there to show. -->
+      <p class="widgets__meta">
+        <button
+          class="widgets__toggle"
+          type="button"
+          (click)="clip.toggle()"
+          [attr.aria-label]="clip.playing() ? 'Pause the recording' : 'Play the recording'"
+        >
+          <span class="widgets__glyph" [class.is-playing]="clip.playing()" aria-hidden="true"></span>
+        </button>
+        <span class="widgets__caption">Recorded on iPhone 17 Pro</span>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2972 @@
+{
+  "checkedAt": "2026-10-21T22:18:25.238133+00:00",
+  "allPassed": true,
+  "htmlPages": 491,
+  "artifacts": [
+    {
+      "url": "https://www.cloud-calendars.com/",
+      "status": 200,
+      "sha256": "f85182c06edbc3ad63718418a57e5d16107baf174c6f72d8ac60168b95741af7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/",
+      "status": 200,
+      "sha256": "e043d2c58fb2a9de3214c13e3c2880846a134196ea5e8da98662240570cfdb1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/",
+      "status": 200,
+      "sha256": "a4c0e04a4dd2940e591b2ac19e382f127ab7c495202f44eaf541261e3bdb9a3c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "91178858ef0ab806260b477bbd359b79914be17a823aeb9c9f21e96ab03025ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "2f8e988994850533e868a1f954cdf70289d9e3f8a5234fe13816936bad0a25a8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "8cb9f8138e476e8243ab9e6f4c0961403814f58c8af8d1ee54ac70abe10c58e5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "4dd21b6a62b3ca838ad776d2287301d57d0e3d92e771b3d3461aada9fecf40e4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "29e2793c39113e63eeb3463d2263aa1e4f914861e109b709b2787190cec78c42",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "f0770e9b028f7efc9cf7f2c7c5b4aa9e8b3c2d2e1a2fb6213bbb8b4a5216137b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "f09b4895c9968bf1443f38cfca617a1b7339b1967bb59bd372d04064e359fe97",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "dcc1878ca5e78c98863c116d046294fb7a702f990d8dc54b57fda7f9c0e33050",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "5df14c0e559a89d19060549ff01f6e3a43de8a58982989b28ab380f4e76a53a7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "fdfc8c112ecfd134c4146ccb7f4552a3c31b65a9967c468cecdebdddc2c54df8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ar/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "9a238353ce60d4e60d253905e5aa560dcc32cb91730191b66e70009cc8e3aada",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/",
+      "status": 200,
+      "sha256": "0d391d8974347477f5bc2418507004e698384dc4ea7a139a5d6c384a85123672",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/",
+      "status": 200,
+      "sha256": "95d3ff2ea8128e577219882fddf1bbafb993b2296e5721000e4dac98a2ac1afc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "8dd2a4e6848fa8d88c6def65a0f27bc536706674e8d4de8d40df1cfc55dddd51",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "37dd5b26653871ca6131638fa6fe0d5da857ecb80c22e645d2cafc59a4f03141",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-list-for-people-who-dislike-grids/",
+      "status": 200,
+      "sha256": "85c93905c755987015f362361f57c92156bc7d0e263285b2d17326078592fb86",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/a-week-view-that-fits-a-week/",
+      "status": 200,
+      "sha256": "f6cf61a4349e3827c5b8e86968fae4abd33140d51b2296a5ae64dcb19f996dba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/caldav-calendar-on-iphone/",
+      "status": 200,
+      "sha256": "3da7ba69e2799516f86076821105abcf1449da8ed6f97400d7be9c26f985f023",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "0cb951735915592dd665cdf2ccc6bee3e368990f90ddf5a2c99d86e7a7915b24",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "d19b4166147f686ccae3d3da228c9c79feefa8b7561efd52ba4d0cbddb94ba3f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/choosing-a-widget-size/",
+      "status": 200,
+      "sha256": "87a708d61aeeb329cd08000ddb27288cc6daa83da8f0ced661e070117d1277db",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/daylight-as-a-planning-constraint/",
+      "status": 200,
+      "sha256": "33e31b5404ff78e1e28aa6b2410857ef70b3e45103ddfb78472373446726b004",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "3ed73ad6a39bdd80c57f4ef060f67d10bd6bf864efa4eb6a2aa3090ccc4e2a25",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/event-saved-to-wrong-calendar/",
+      "status": 200,
+      "sha256": "e12ac8dfdfb5973ecbf0789ddc9550a8d596d06208f1683c28556cde01044d23",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "40b1f1d3f5af59c51cc14857149190158be190638d0e858d96d02df3bf94f4d5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/family-pickup-calendar-handoff/",
+      "status": 200,
+      "sha256": "f2d7a50e82ab4d526b0c5a9f42b4e88fa799482dd6ae92fb72a19b44ea8aed00",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "5fac4da2727b304c49802742660126e3a1e5aa85ac29fcbb8ba372c503ee5cbf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "45e80b38a203366804f24b97c32f0c850dd1e69a99c6bb129147b95d38118c1b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "bfc85bc93d2e18f8ad8ed24282aea704d60eaa5b4de0b7738066220d5b0db373",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "dbeaf5a0da73ed761418584e74cd7defbbca20f38795da4ec934833c5affea7c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "f808e617a98fb694e7d6532eebdb7df699b623565378a78ae47710628fe92c3f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/inviting-people-who-do-not-have-the-app/",
+      "status": 200,
+      "sha256": "78cb683e4b62e46c9b7f4baa281e554965e197910472dd7d1411fd99f0d9a7e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "40e3aa675a9df2b7e7210cb810593d6a32cb118bd685876e3eee8f468f07150d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "status": 200,
+      "sha256": "1f43b60ea451dde9f3f0acabc1312d91906a5530f0909b70b767296fdcaa4e0f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/meeting-links-that-make-themselves/",
+      "status": 200,
+      "sha256": "dcdedd52ee3bb5b2b25ea222b057f8e41ec306c99ada8155f02bea0c790fe22f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "3c5339c8515ccd5bf12bf4386355d2fcb4c6b87a8ad839328b906c89fa6795c2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "status": 200,
+      "sha256": "4d23916265a75ff2bcb72a4dcfe731db66ec52a6aca3a8e743242787c21e99d6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "cb9c3a9c6feb13d993140925e67a29f22021fa4f7fe7885929e337a9a1263265",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/",
+      "status": 200,
+      "sha256": "8c74039a2a441a959470bef10cc90f0a14af4c7fe5ea02c68425b9a12dd2ca92",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
+      "status": 200,
+      "sha256": "5402a86fce73e10b39e35477a1fb3a5128b0738f90434c3307eacb9b98e955de",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "e6df485464a6d42b6c564b4e3dde5ef80a2c63ffe707137b040584bb0c2e6c91",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "4014729ff51afb7d079be08df153c8fea004086f41576e134fcc6b0ff4bd6b57",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-calendar-on-a-bedside-table/",
+      "status": 200,
+      "sha256": "3d8780909189fcd3007b06f4d2f18eb913b80fbafef6084a0620d3cbfb92fb46",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-commute-and-the-sky/",
+      "status": 200,
+      "sha256": "178173914820e9a8fe93ec37a8f830f6b0cda82c9e96a4c1dc82c094220faf1a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "59f165e4090e280c7dd155829cef161355067fe57c75162d64b34032fd07ecb8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "4cd87869958fa937363b21a723ba5a9df0fb7d89894f885ef662cf4794963c0d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/the-year-in-one-screen/",
+      "status": 200,
+      "sha256": "95f3160aac8123c33dffb99e194fa98e73b6f724603aa1b3bd9a79d94746578e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "d7d7ee3a15a1daf66cdb89f750644ac088973164f87fdfedae86ece5143d1280",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "status": 200,
+      "sha256": "04055a69c927b18cb32d56cf12fcd2af01e91f9d027472468acecb3a9f311665",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "abad92f9bad3442052fc98c7277f51228948e553a66b774aa3978b4a897e1db6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-where-the-event-is/",
+      "status": 200,
+      "sha256": "59c40a011704136740f58b3d47e9f0240fd0fe81e2f925eec5d4c71991f8140e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-a-forecast-can-and-cannot-tell-you/",
+      "status": 200,
+      "sha256": "4f34b3320b5a8f6fc2b96cee438d399c793abcae6412208d560e90fd47b55e6c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "6b7f680173e8e19c0e61fc49b7a0b62075ed8a9ecec0f641247daaf73e8a5c93",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-an-all-day-event-really-means/",
+      "status": 200,
+      "sha256": "ade5eac8806087647bee9f78a47d97027cb410f8a32fada738ead296ccb1dce9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "status": 200,
+      "sha256": "53b3b9986b74f34f5c0828c915aa3bb82ba7901005319b23d1b9eead162f497c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/",
+      "status": 200,
+      "sha256": "4a931419d1ac58a1895284e112d229173d25471c7862314d943418ca2afc9b0d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "4ed046a5538523286bbf1e0ace585ba2e219b536b4b87816899c9d6e00f7b164",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/",
+      "status": 200,
+      "sha256": "a5f5076404ff120d756d80029cc6eb14d70dc33c5de5aad07cd79d385e4196b1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/when-two-calendars-disagree/",
+      "status": 200,
+      "sha256": "1521e86d4b20a2cd91496c2901453dea9a5b5b217909344d0385ac41fa16272c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "1ea9548e56e0aa47775adc731d25812c8ff5fa3e53425ab974996e38fd782a04",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "b5a96be77364b1479cf6a5f329d8a717ad1696a3d7fa1b16917d2914cb6a4784",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/wind-the-forecast-nobody-reads/",
+      "status": 200,
+      "sha256": "57b386b40675bbbb8b35acdc1e826671482f2f127db1359bf138f703211c8f3f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/work-and-personal-without-two-apps/",
+      "status": 200,
+      "sha256": "6e344febb04b42bc30a22f47b1a8c7f91886ba431a1b2623ee5063411d1772c4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/",
+      "status": 200,
+      "sha256": "0430215ae8a37920ecc693b074ceffae962eb6af1b6579dfd4b58395a3a8ccdb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/",
+      "status": 200,
+      "sha256": "1fba1f88789a89ac0bae4baf97d66682797107dddfcf55d821831c34716458f2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "59943f30f913fab63eb64a1b8bffacd199177902a7d51ad9c2138a34da850b5f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "1f2286df70d55a27b3c17da832de15d5eebca9f7ad8656bf4b496c994caab67f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "28916c3fe743b27721a758e76f01c03a2fe7994ec9fb08cea476d00a8b50de8e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "47be7a16a18f0575a256a5ebeb9fa670ba3d871b4ab9a0d1cc6d7e00dcedb7ed",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "47b5ff0f7b02a729e2098171937fd41d42c3b18eb2f682980e044ea3902abcdd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "d39df311d233dcdca93d911815ac007f6765707212bfc18040b8c9311591e56c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "0331c972bfc2d6e8a9302eb168ecb2877170a6127f94ac792e65a5e75b7f2290",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e3144f6aaeecf87002cd52102b8b58b48d65821ac3a5ac38df517b8e246b192a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "e3a84b84984e0d7c87e59575c21a9e38930938b87d0b08f9e17db18f7ca92489",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "1fecea0f14ba42cea9335792c9afa7b9dc440fc3c81153e811da2081ca8b4022",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "a4a2910d4b2e78d39834bf3897c43b4414a834d3c7e8937fe606c02d86ba3a88",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "354e44611389461605415c79c680598ce19abb4eaf71661bb4456c7f6e984be1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "05caa9b4e1d6eed9114e5baf587fe54654c52319c9cbf9afe47d419d86479cdc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/bg/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "2c1b8bb0a845e18f80614b1bc31c8c10713e34e106851da48a24f55df2bb8aef",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/",
+      "status": 200,
+      "sha256": "ae9a4ea0201fb41fbd3b603116cb0cdce613178186d81dfa88518d5798643d99",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/",
+      "status": 200,
+      "sha256": "cb6ef91186a83bb30b559d7af0705ace266bc3246975906ada454487675752ed",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "a4773dfe11aaa17f2de3c33188be9c9c221b125af12bcdb8ceabdc2206b93888",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "5ed2e79ea9f6d6f1e0a5d4274e458e9eb93338d5e77a44fc57b4c0cdcc5d459c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "62ab625f26b2abaaf83a02eb489f6a510fb6f2f117032065c3bf774ab9fbfa24",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6eb60c609aaa5e51234a205cbc43cc8b16441eb411bd4cb31927574da4bc22f7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "65ce348ff0309df381d3dcf7fb34ad60f95887b6252e3d3c042d3d9c4e96842c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "8b9b76e14be09d2dcd7ff7084f0694c5cf52048687d24bbebed69d12fb957979",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "fbebaf10368dc8dddf19dd71c33415a39f62f97ae8d40868a20511d58a68b135",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "f69b632cdb3222067d4d2f2460ed81d293159c8505356339b41203ed83f646c5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "706c4bfacc9dc814d0038ff83956d359645de0914829c4b5e80afd2f8bfc05d2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c5252375314fc1e898e15834104aa04c93cc024fbd40e994fcb677b6ff5c3907",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/cs/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "a400bcd2aa0a5af5c1e3d1a371a7546a154dc1b0def67b9c26f87ff43e5f0b77",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/",
+      "status": 200,
+      "sha256": "91a928067dc9ebcc090ad11e08203e4fa578d999adcdca99ab691377ff3198c0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/",
+      "status": 200,
+      "sha256": "50c6b9bfbdea72a80777b66bcada778ba29e6b0fc5aef8bf903e157ab256e86f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "f7cf5d46db204ad509889f515c92bc65b8ff2b454608bd47d7030e3438f68005",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "e66ba02ab805166327c61334fb0c7816833e17575f27ad8c9ad0e1261619b9ae",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1308821f8bf72845a7313abe6544ed57572d1b45d78c050106231e5601d11bf1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "b593fc27a1633e9a5411372054adbcd7be1b9b4b91451542ef5548186dbc8be5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "6d3e9c8437b81486661378baaf5e90466f8c6af7053afd628d7c976fd731cffd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "0934790c05d83ba538d8ef034b769e0b21811ed691bfb1fd24e66496475fb866",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "e2d88a5e68c75d868ea0386747a9de08797c56671fd54541a268fb60f3be6fa1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "49bc95345566682d75fc56c8096a481f96146316b2ca66ee81f2bc69b0055973",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "d57f25b1b56e80f44d64c825fe272713355ce6f3b411a47d8ff2f1aee64a2ccf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "25426ffd1b32b851aa949b843361b12f26a306a25bb8b1510f21d616b9c26b77",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/da/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "f4326052e42fc58740205896c86998d48428eca6ee06c140fc59f0399159e4cc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/",
+      "status": 200,
+      "sha256": "22481791eee51825fa246763dba10dec973e0f5968765c69d9e8cbd04bd2f47a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/",
+      "status": 200,
+      "sha256": "abd3604b0b7248b0dc52ba0f2f498e13fa7a357eef21469c62c6e73215f316be",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "b71f2d53b270df1ccc2cedaa07027c873f77e65fea12a5b25f6bbbc3da9302fe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "7f59e605568a2d18f77b944927f92007752e869fd7c8e35f14560388971afa49",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "b06a446456206cf1c74cbd07e972e7ce6da006c16c0d70c3c17502019b245973",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "0ea859bf7ac1531eef2433b4c64ae8361857f6cbb4e6b465e4f3d4cadd370473",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "4dfee326bac08bc8be5e6773bb190b10535e7e6c722074f9084dcc5e1f544aa7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "b726d9d3d83be9634598e9668d5a62407ba66753ce8253719f16dc8b9d10ad30",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "7cafe30f84d205ef7d4d31f064a33c39fc41d08aaf283ae8a1c97e1eaff8fa5d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "4abd0fa5a278ccc82e214bfcc4278521e304b3bbef199e42eedde8af3ea0066f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "4bd509a893d766a1aadb73afcff038d64fefd9e77c40df4ac1a1f9b36fda9de1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "01f3781221dc4c5041129e18b2c27d2b71d28fe40d3cf1dfae2527a22c6f6bbd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "07c130270778e58a073433be9c00bb3adf2f5a905f1b106e88819f167b7b6a10",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "4e8e8623b9f2f428f7eae9a665cdcf908e5b36e1a6e75d1aaa16c4d02b9eb91a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "37fb8d3b0f8b92ede8150080d171401c2a21d8021e4d1697aa3c1edb3dcde046",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "72868acd4935c23e4bd133a5558912a01b567bcca0a6b4d237dd14723e7c0093",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "f51f7747deac247e533c58f3f2d652c604abb89b028a615020f759adfd3b94f2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "f653336573c83de013845052bf7a8233a932f9a6122c02d4a158be1341201443",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "228396e9b56091bce942fc51bb1e157f45ba41ae89db8f147e4ea52adc7d4d1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "f0e8a4db976b3a60befd3f6377d57baa3617909586381e818300578af9f2a7f5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "6c592b83eb6d040dac83f67912253c83e45c4c686ef1468312ca86d2c67ff235",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "0a81bc68614ef7f4ee1db8ee08b4fb050b90ca7a24f84ebd5a151d245c819b9f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "4568c3b7dc23100b2a5ebde5709e370f197ec8b40b884c0593ed78d555201e9b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "1973f8f73474b90a1399cccce1749b3952fc2db70e064c2565651d8cb65f07d1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "84da04f376223840b5f29aaed22a3e2939a38cfd26952575d4597cc82061d7d1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/de/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "03e62ea647a3b654487766fc4add579e6043af639e128c88d55f4345dacf15ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/",
+      "status": 200,
+      "sha256": "eeb630112b6ebd4ed67056958cac46bcf0a1e48756f90aabf8edf861703de11b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/",
+      "status": 200,
+      "sha256": "f53bf1d7567dfb4be079f24693cc617ed4822266cb6b8e77fbc78bd58b89d569",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6fadeb665eb551ca0f9baa5164997bfcefe39545391dbbec6777afb39f57b98b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "4de58804b5f6636c4e6008093c1290344ebfd7cc4f2150de361df1c0b0bfc6ef",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "301e9d8fb44be6193d38898aa0cec1a2d4bfa432d3d2581bb799010bc13143e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "36eceefb0456b9c3c429307c0723d3cf414f6d2b7d83bc7603e0459f1335fe1f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "cedf7b65b5057158502022d0d25a29143eaff9b02765d741dba5a5a45d8fd541",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "d86eac4526a6a9bbf928b8b0bf8c379e18c29088935f700dadcdbb77329916d0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "543717afe2638d74d515d9aa2d878d905c8baeac2ce8b11fed17941de96aa3b6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "9b1fed3eed7c1e2cc36252203e31bbc2b8938482133133ecd6a3483ce6a7864a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "fdb315599a910be5e96df198d4450df9b82f161988b1c30532c3a268ba52d723",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "6380027b1af9f6c4b4466077bf332029b241c0e52fb26505311f4237b6e06546",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/el/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "023f2aa0a676898e834979e433b393326e88c30b2e3dccd43c1672dd95bd0e98",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/",
+      "status": 200,
+      "sha256": "f4ec5494d4b5e40ad9897e5459f22de2aaf00f12b92a73851a486a7d1401df5c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/",
+      "status": 200,
+      "sha256": "8b5e4de150778dca19fc68d1765bf018b6c67e71daed9bbdf7f5fdb5ff05c2e7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "7a840950e5a6ace3b537164e97a22c35284cdc153c2247c182cd6951ee35ffcf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "8a3627466c3ce6de6de79256af51d0e6221bb0e7b5518f015ca77c56d17f1c21",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "84c53763733017d80dba383bd4728283e2b4a2f4bb8482a0052124d3d1031db2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "96ea3d2ae580f1334f71698ebb63383cc6a4c14d24ae40713562f54c73e77866",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "7a5cdd6e1f7f110e6d03cb5016cdb8b2829c977683e0739746df6e6557ccfd4f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "0cd98fd68bed291bf0e6d093f284e3311d7cbe071228f5dc08e346920e83f59a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "230544f4599001d39b0b3b34ac7685ce2919c66fd3dcc7a0ff3cfeccbcde175a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "b2ebb2c40b056504c879f8be79ee7a57769a72b62a20c9c3b150556c11d62c82",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "6944257473d4b4ac60b4b27a3b9b9a5113a7830966b4d7a82f93415b44a20408",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "41e0719af6861391a89660f7a13f21f28f13262134c95174843bae47f429e3d2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "c8657ec0e0ae3b6bb5ee9f4806d0d7e6688fe847e790a352f01c894fce30a5dd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "f472ad6b6902ab695effa79a9dfd6ec9ef5ea6c9cae137d1813f7e3deb80d35e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "241d9b4de4fa9210029b52c90c3cb647ab727c818ebcfc299b4f1617a2601939",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "a11aaa985b7396a9bd62c1e72320e3a563bf3d6cf8baa4c1dadd527c6ad69692",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "6c4abbd39f0adca7a34653a4c831e2972c1b523938292dff4c078aad8235c9fe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "b60272c10f00e8a1d7c5ce7a98d4b4a146417aa8e664ba3e7b1f1f1a515a6472",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "7d1b6417612c3838f23cb8084d1587fdfd6edac18befcb8f88dc332f79a6feef",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "3d957815d92ce4e7e47b59b5b0df3f9bf59d80f2f2e746132452db12155e5cfa",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "f3dc69b9ee7145428c07d5c8369aceca21795ac34c81bc94146af3b8d57dce33",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "1c4fea4776525fd19f2b79217fa1c669477ab1c813d295d28c60ce501fb13cf6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "5cc46f8c230dc493eba65da8c1bee5a02d28b5941c04d926538c1b45bd7ddf11",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "0048e4c4bcbe51647bdd63dcdf81eb9d4ffefa8329c11bc438438c1602cff54a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4ead3afa0589dae9e37770132da09966a743bd62f323b39f7b5fa98f24290c7f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/es/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "64e92b8f60f478b897929818de0adba36000133f9b160893da508c0635d69514",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/",
+      "status": 200,
+      "sha256": "fd4e4e88545a58a16b96fa4edd89f055319854b7b6d8334e14bc3968c8434ff4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/",
+      "status": 200,
+      "sha256": "0a548b410dd9b12909090e1be825def2bee2decf53853243ea6cf2deff1b431b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "9be960ae0cec2016caddcf0cecbdcea24529128db755a48bade741213f76ae45",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "64cbeecbac06cea36e07f089c7401963e359cdd61b0a8e6136c9c89b6f08ff74",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "b50f8d0426971e3e6884e2d0f4f04948c2319eb07ed78ec02b4b0eb3786c9424",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "45e71a3cbe91365f77c2cd175f0cca40f04378916736a83557feecc2cea190a6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "438b736c1640ff7a4361ca041315f3e35c942b40b5095bb3de38a81197a86661",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "07166e5fff848b244f9ee2cd94c283caf125f685559470ac7b2aa418daa3927f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "a18565268b71141ac646569223f0b4a04b16dd4f666bfcae0a15aea988c3642e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "475386c53b98be92eef76c9fdbc1e0119c8299190c21858881a2582a13e77dcf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "091ce4e47c42aef8f9cf8a28a1b6da7f5e4607c5084901a670d52617be7c90e3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "7e0193aa07bf42c063ebe77d06d376dd3a28c10054ea3918d6f9ec566e280ce3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "0e3acbbeb96e8f9677745fccf61e8af39f4433b170019da6e8f1e5e596f43da8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/",
+      "status": 200,
+      "sha256": "71ce13f4ed2b4bf14160d93455727eeaef0d838e561ee424ce50e56bf99c11e5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/",
+      "status": 200,
+      "sha256": "cc31c5abf44c26193b7a81ba56a2035d8df1bfeaf0f1fc72563a44fbd9a649df",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "9135d23af0343cc402e2ee001ab091e8a60e4a173402c2f0c924921a22500f1a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "e553352da03eace617ee217cae5671c735d9abb9da46b7f2d9b47d1fccedca11",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "88011b45eb8685099dca5747b783e82d0d915914be28ab01d6538ef4db52fedb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "0547b1fef80a5643e6c8173aadcd7861898950a72fc60345f6f7fb4dea59d840",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "4e7c23bf8f98d9377bfaef9ac0e6098ccd2311ebe366ec08c2025ddc4a2b196c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "63ab36b8359691cc1122b28b6716b1f7ce86e838884e08626864f661fac6fc65",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "809458b619f5fc5462a2d116b2f79fddf4d6de7dddeb0ba0751cd9ed4d3a12ce",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "f139d7e32009dbd1fbfb38ba1cb2e04b83c81b6ce20908adfe4ec080192ece08",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "c55912b8cdb2a4a7191d94ce44eecc791dee1f9d0f8d6b7cf470f2daebff5a8e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "c6209e8a8e67ce659ad3601b35edf0fb48dfef084de0259b127d66e183e2b508",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "a7ef082a0fde22ce2dcc12287c42331010b0decb7ac68dcf46f97a0a8f9a706a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "b60c70fae5f77ea40d291e44c433ad6edd912c892d73e8a89c07d4a8c80f6fc7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "44594309310303b4a12edbccef93840c1da30850c6ceaf62ef880c27dfea2aa1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "ac7d5be6e6342f4a7ffd7afa5dbabdcf39f74fc0b1196da6464f34bfdd90392b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "f3ea24f24791f95d77ebd20d0d17b45769741a68292e3ff150e5feebafa8947c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "2e86dc5a9dbd85394be867fae01c65e488ae09a07afbfa03ac9413599533b5e4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "d29c0dc60da67fb862cdd9a8ae1922f0af8c80ae76eaf9ec0cd9b8a013eee61b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "968d6467a38fa3d6de44efb02ad3daa374a8830656de25180bb00761950d71cc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "ea5d63846ab5bab85c8f0cb4c0ee07ad11cd92b2055197bd0d5af995b029a196",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "377abf2326e8455cc7cf55d2107e413821e12c73163aaac2b40801358ff35583",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "ac81d35f9404547f5e7b9ddf1bbf07b14331e9ee21c18cce39be7e4a0000bb1d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "d083a6f97f53f77ee693a21712869b67ca7095c6da7912db82090b812effb203",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2f1d987e0c6c101efd45451324bc07c50d256e4e54ea3706e1a042d496cd2834",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/fr/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "71c53b0fa0dad41f49f6de161f59da145be7f51715c8fd681673a7719fb81e89",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/",
+      "status": 200,
+      "sha256": "e81ea976da61bd614e1b6d32ec347ede6d58b3b1c2a704786bd0b454680e76d2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/",
+      "status": 200,
+      "sha256": "a484da346e45a512f77dffb0f7bd0d1047f3db4b9cba913c1f960a19b4b7cac9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6782ca068b3e388e3628bafdd03bf8d5bfcc1be19ecab08ed98559eea3af80af",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "6383aa8fe50699950fecdfd65d16a6d7fd6cef6a9a3461f7408814fc8aa57b1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "053565187a6b40b6e3d3b2efcaaef0443d5361493f6f98970e71872116ffb021",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "50f89d9b29ac3be99e27fb2a704d22c5a599070c7fd3525404b4a6b4566c6b21",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "2e9e6585511640ee0b936f05bbfe1a2d630ba7d8e1380ca3d412796d9b79fba2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "2ea614cfe1c7ef31dff3836bdb6b202f664a2f9c0b309ef5925a6c86278e12f6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "6699c740167d17ddabeefc7961eeb41cb018c534742812c3ab01e9f56703d93c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "51c6f16bb310284711b417356f2adc13e4740f22811b204308ebbe7aff7d0ec6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "33b422cd169862cdc04a8c7d7e2a71f47fa3e880a181403a50446f879380cad1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "89eb1e958ed172b7830f7c59099583b09d3e2bae35068a28f932736338284f8a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/he/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "ae5cb229be73407a021a2a1f93fd2d3468c921e4fe97b6b9d7e08993938cd729",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/",
+      "status": 200,
+      "sha256": "2dc8367521f5094abc6b99068794a1219ebd2bbf3d0d45c49244835198b5ae61",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/",
+      "status": 200,
+      "sha256": "37974bb81a6111541c88a28393b5144cb4a0214a4c6b34603e19f55c5555fe91",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "08c55c946ec55aa6d3672ae5925a80beb503af0a96a46e18fec34402940dd41e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "513a0586ad0a9bb740592321e008d031253722bd0d163ad30446d0aabe562978",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "59695079ebc5a57d33d17b89dd433f58446ada89305e60fbeae12efd826d0fbe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "417df49ad30d539a78e45d696a1ba3a1ab3f4d335af2e5b59fa156a676334db3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "90cc019e29ba8a1c112980cdabaa44bb71b59fd52d23175491b5f15559825a3e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "ae429f38af370ae63ebb168c9287a27c504e53ba56fba9825c6887feb5f72c7d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "e8389c6f92041137670f153e487f154a0a719b40b0c3fd0810acdce050356795",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "c2d64859f35756585e7d3e65669f9814a942df0ee4b7194109eec5069ed449e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "2d4cbbe50abcd7c46a5ba4fe384b60cc3169633280fd24131d742d2a35d49fcf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "86c4bee5e89195764eaa544a12400c994565b8603ce96bd3aa48aefa20ac7a76",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "5b44af28278c28ce371ea867b2e78cdd896aa0e703f7720fd684243933ce9689",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html",
+      "status": 200,
+      "sha256": "f62af734c0c33340fc8ac9c92ef6597c74fb8aa64d167c421fc51e0ac207be18",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/",
+      "status": 200,
+      "sha256": "07fee4324440926c63c0a9967a66ceb0756237da0b6ecfa4aaf0b893198992dd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/",
+      "status": 200,
+      "sha256": "23f134842086655cbee93ab2af36605e313b8530ea104c241788655137968fa1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "a52c51aa2fb8f7df491573441773dee1550063a60b4a23fffe521f21f6e514c6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "d9d4397a4fe5fedb5081cc7ed3d1e1edabd5cae62b53116b12d525bb510a03d5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "a10791091342f1fb07666883f2cdaf218043471b861d59c97817ebf67f793599",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "f65797b9cb0e1ab4e24a825054e771348abf7c98b1a8ac4c703e9ca4d0619cbc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "2dd78ffed60e6a09b9d6a4fed12eed91ae52a48665b233f1e3027c0d4ae90717",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "e47787a1742c7e9f65a4222593a8dc1520d1497bb60409cf4dbb5a97bf10374f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "7ce3ebbdbf7ef3c32fe9000cad24761cabd70574b3ad02f36f464f4bdc8775f0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "996a4d27d159272787b96befe574999bc0740df93e29ba0f74ffbdfddd4538e8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "92498a4d549e493a8213da08cb950d4801a8ee061f4abefbb82840962ac6c699",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e43aef291d83c218e5d5ce8d3fb0c40bc15756a7095aded2605921885a8dfa42",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/hu/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "066dde3c3c403f75963566dc64db009ee4b500d1fb7aac932b69afceed08730b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/",
+      "status": 200,
+      "sha256": "3d6ada177a949222e19ba60818900d44f984890de764d23ed8e2aca5f599b872",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/",
+      "status": 200,
+      "sha256": "7f15caf74b56a4201351843889403e599efd2f24b3ed45a83d64e79657951477",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "e7ae870b9bc94dc51c68e88eadf3fe40836e2489342d9c257ae1e3c88970c009",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "ad79d638b7a91718707b212d0b3da6fa502186fcad2bab40157bf4cf95b0b2f0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "6ae4b738116786337925cc9047d9b760f9badd1aecb67de83fd21fc60336c99a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9a6c4064c6aa8a04f34b6a2ab806546fdb2bb79952020757b6f4725019f5a752",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "9509789217980113197cd158c1ef881459cf8ce00dbbfd993dd15eb99bc1c2f8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "3d1f5fbef51f4f0c9c8a211d9560f2d57f2bf530d183461f423c581cab5c44e6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "58213dd97c38a8136988751d5d3c80ea35526ed3187b63e54dcca3649819cdbc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "d41e357935615e2340e09811a6e851193b0215e662ee8eea8bcd40f18f077269",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "8e11cc44844c12fbb9f45ef4f0aed3c47caf041f36d348e340356d4ed25206ed",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "a2744bbe2a3db03ac3a395cd82047a23bbff9f1f002f9c94f9d1a2588ee55783",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/id/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "60342482c357e1faef89bca875ac3ba09f322efe87a5c9764fd23f92e143b5dd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/",
+      "status": 200,
+      "sha256": "d9b29afd1d9a0cd9cae4dec3687bf9fd98eccbaf0d2d97ec75a7003803f201bc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/",
+      "status": 200,
+      "sha256": "12085f092783a3f050e9bb02bd9d04a12c32f202d5d7f861e5ffb6b3fbf578e7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/a-countdown-to-your-next-meeting/",
+      "status": 200,
+      "sha256": "d46e01a765f59612051a49b76da718670f265ac0d8f26d05f1d3c34eaa78f74d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/a-fourteen-day-view-of-the-weather/",
+      "status": 200,
+      "sha256": "8de651b768fc39896a128129fea0a525d5fd3a9ab37258b24fab5492efd0dd1c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "362d9a1ad21828b7a56239799c5037a8b23d06a8ef6ba0db388091067954d53b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "a83f5dc7d91fece528f08e0509022c48aed201b57a0ad07a1322414f021bdffb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/drag-an-event-to-move-it/",
+      "status": 200,
+      "sha256": "b1a22f704b9a4e78824558d403334a3961e75575409f22a0098444146086eaf0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/exchange-calendars-on-an-iphone/",
+      "status": 200,
+      "sha256": "6b4e2392a3d6f6d59d6eb585c389df4b5479f75e2393a03949f2219d3d2387df",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "cc797d99df7888e3d75d19b0996718677f849fefbd26d0327384530d9376940c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/forecast-beside-every-event/",
+      "status": 200,
+      "sha256": "f5a2315fd643c92c79eb9ce216da3b4c83150181894dbbbb24b89218f5d52550",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/free-google-sync-without-adverts/",
+      "status": 200,
+      "sha256": "c66a256446bc3690b0f7045ab7eeadcb8205be77a71a43cc88d79e40000f52db",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "6ea31c5f46498f9a11c222ff13e92e9dabb0dac0580d6a208af6c11eab66584a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "4ffd637a9927904cc1bd10eec3e6d4280a9b2648fc6fe2085459a375aa076b5a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/keeping-track-of-who-replied/",
+      "status": 200,
+      "sha256": "eac8553b1de586debd551b77b07c3559ecdd65d83eea039665c0b8c9ed6bbd7d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "9754bd4749f4687b9787920ff66a18ba9bde92a127d3b7bbac1e852cb8312986",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/planning-outdoors-without-being-rained-on/",
+      "status": 200,
+      "sha256": "3c505a130a698376f6f7d8cced50e39753b12a3ad9c7aaf3e048bbcda3b8d034",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "edc19676a74d333b50313300788ecb35ba857433f65ba06e086d56438dc6c5e1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "7a19e98f3d33844ab69a47aada93293f5a61434d56cddeba1969df614b6fb158",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "55022a2f51460346904ae3e6c047da522fed3472886f66ab5c9d4ec123718d62",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/the-widget-that-shows-what-is-next/",
+      "status": 200,
+      "sha256": "c08d015b26ef39fd2ac39e880107be9175ed8513f70221e995022bb7a0121478",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/three-calendar-apps-is-two-too-many/",
+      "status": 200,
+      "sha256": "107a13c38bcd8e5032eb6c4e194659e485c26e154e04b9f3691325a567f3b87d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "e3927bf7e58786a2fa48a262d54fc9fa39a1e7b27857f3466fd5a5aff69fd3fd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "55febf0279d52d3db742bd005aa9a887c2d6127d072687d3f3ed511a82de42fc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "dbd9f51cbd34fc9c28cb74eecb4df1219bb87ab82568844c2297cee913370415",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "315bc02caa63fa8802af3cc1215ac1f85776ed93842bf62b84aa542543a40ad4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "f86d9978c577f0a428c6f0c538ecb03a18a3fa7d8bf03dcb9aacc9656371bcae",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/",
+      "status": 200,
+      "sha256": "4daabade037f38ee933dec57719924ddb8d534a56ed13ace9b6ea734ca52dc01",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/",
+      "status": 200,
+      "sha256": "040acfe182cc0df1cd7cd138d3895a3f7252c30d947f7f96f75af752e552a187",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "283a710f4bcb24c69377c976798698033e26f03a1d84e2524083b7a95c890e7d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "9677c514deb0add12382234d76258ad679cb039b092448dafdfa3a8cfecdbb49",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "c0d000a0908b28f5c066b83c5b86c8a517cda41122622a734e7c8cd440f0021f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "b54e5a1a7f46377c59969802b5c048dc7be52531c39baaa97cf81ed356c53e59",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "943c215fd7a62afc2b509fb09a2ab1756dfb0bcb699c5aecb1bdc3b71bfc68f2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "257edc79d92e6b4982ec41980563bd132de2aad52da146d6c76c666b3ee2545c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "ffb03d70eacc6bcc4afb6d1b60ef07142c95a7907e7e1ef39e687e209522b09d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "8565ca286ede09fbed55d62e0ca47e26d40f637816231b9d0238146b0aa1f54f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "fe3f0c3ef325449000da267b8059c3d67c70326106d0b74b4fbf843ac2fedab5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "977b57d3948513a4514f89dae774b9a6d8296a4b0d073d8b44aa28815d95f3eb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ja/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "5d18e59318a0b99a2c0bffba8a2ec7c563227d5b02c0eb5171efc653ec44ec87",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/",
+      "status": 200,
+      "sha256": "05704c45235dd6de55adb89bb3c5e58ebc22eab0f21d7858aa6f6a83b58e3e00",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/",
+      "status": 200,
+      "sha256": "0eb16673d52b73cdf018a039e2779d7d8ede9d9c6f3b398fb45682e12a3b8045",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "2fc78fffef77f7366784e8bd5ab439872dfbda78b869b9d9dfd59dbc72f93aab",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "414696f797c9f5e0d6220e81672e687f09409e263da9f91cf87ad1f4920b7760",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "8a1dc0034283a3de5172fcd377261a97e2653f0664127e003d80e9bdc121ab6a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "9697a12d20157c855d22d70ab2f5c5223439be85639dc08856e2ea278e22da35",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "4e9f38998a78dc53f7985c4dd482e9fbd71332d932d12e0640662f06227f889b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "e8fe0f595fad27373f3ecdfa0fcb54b6d5623bc09dfc6edd8c4426dfa76c72e6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "d9f221afa1a6bc60a321ec1ac1d20451e1d108c5c2f2312deafd251ced1c62a0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "0985be21a5d56b3b2cb624e74cdb577d486ab7ecbe191f88ca01eb4d38113821",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "3654ca4583892503f3bea8a673dedbdde1cfcf25bd69059038ba0763159efb8a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "4c107113f94871d29f779fa12d1dcce7656a388be4d6d14a3c5dd6ba6d6cf297",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ko/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "61612d5396df0e491bb48d44fcfd3c2ba8367e6dc4da26c9a42ee4928669c0db",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/",
+      "status": 200,
+      "sha256": "57fc448844dedb51a135a36d22f0ea83f790406b881c47036b16d1e9eae139df",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/",
+      "status": 200,
+      "sha256": "43ac79e8f3d1175a6430ed9e6dc526bd8ec533e13f8dc22b5aaa342eebcfadf9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "ce628e856779461b3aa3b1b98caba2223c19f481ef719511c1f661834486903b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "1fdc4eae1eb17af85e5b38cc093c8fbe35a871aead5f4060af319bf11a64678f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "e81587f351c734f82b0e74a0a9eb0ddff594fd91da114132652f4228120a36cc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "35ae9ad4f81161042295a83f3b28e9ba46ee591d4c18ad971ffbe981eb9c7dcc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "eb782f3855ac2e58356688e0744422e2dcbd3e34ffe9e4ae8a5c1aa37bd83089",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "000ad9d9a507b42cf810a4ecd934361f8ea9794d1d9728dd7632d79119a2e59d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "db2f79aa69607cefd4d02d9495dd25864073557476a01cb62aa366eac7a5503b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "389794864ee7765f934609f30811ec4fbff5e070450c8252583e6a5780b3794c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "c4b470342ee3264fa3a7f5308a47c01bfbdbbcd63343c18dab4372dbb1d3ed2e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "8bedc7cf2b294168c295a24957849a7c075105b9d626dcc0896e4b74b5d03e8b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ms/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "1a0066729c4a2531fa404bcc3bf64f2cdfc40c0056650516ed75129b3a9487fa",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/",
+      "status": 200,
+      "sha256": "994034ba23130c6959d6e414de31e4c202bbebf14518af5f39435c98c0bcc2de",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/",
+      "status": 200,
+      "sha256": "68a4c3e96edba1cd6e9912bf0f632c5dbd67776dbf67abc5c2dddb319ac6c718",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "d79d38cf27995f21d0b276cdf96961675ddbd60d37468d321d5ac61911ca436f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "a25b4503ad4c0adb41d188afdee68411df2fc0a2462a07bb17459627a28b1b43",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "4061ea22b63d225475dce7b1a8eb7801feeac331b5bb25254d79dbaaf611858e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "1a9a4a52f8cf2969b064cd2d8257f8e05b03fc6a0ffda31e48dbca41d00f2b50",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "e754954741ec694995821ec035646d5599fcbac3d38d5f05e143a7eb845128c9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "48cd2f70d18187dea286961acf980f6f402f2cba1195551a09d8bed0b8511847",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "a2a7c663cd204ca976d25b13c2049ab40f47fd0df1ffe482bb947135488e8688",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "61971ea6f8b54913b0cbf91ab0d653ceb012d96d364cf8b5d4908bddcfba7f15",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "a1c34c8d7a92d596796266fc53138b06b22a25232adfef5de0eaf9ce86eb46c7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "7fa4bd6c3fb6cdb4fa020884037d4b6dcb088345e6bfb04baafc2efa57dc4746",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/nl/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "423f85559e252b7d39efa29729a1177cd2ee2a12ab5846e6333e86e7e6337186",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/",
+      "status": 200,
+      "sha256": "7a7380a5d146eff5949fd80455adc8f56611e0447cd309858dc538b77e5611f5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/",
+      "status": 200,
+      "sha256": "617d3bb1c97303571328104882436102c6ed3aa4339957421d62fce9bd6bef71",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "b4f95c49db21a25999f05db3ee46cfcda78793378cae8f1fa057472f99398abe",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "e646e71fee82ee6bad947da0bb8d61b9415053f71f1352e3ecd54053946b6617",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "550871c292d8b0fc2646033efbedabb77e39aed9fbb4689507d496eb1a04a80d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "246d385df2bce611fcfc2f89a47e1f63ec579bad5033b6b738f1ba6daf798062",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "34f9a2b7e8e34a1407c898f644b903470343c731e2f0eca5afc258556f723c88",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "0fe00659ed30ab4fe0aaecbcfd86d70c4fb03801cac4163ab1e716dc50ed23a2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "8d7e4752551c0f06bb1b3345583eb2c677758518cb0af4be059651b2bdd0481c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "201f29a9e4f9f5aed4c7ee565872f66201948955cfd0a19b942743c6f308c7c0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "96a42420a66cc2929700faf6fa316224e10839da63d1edb670f4a297e2b57fec",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "bca285a74b8e86e61cce4e767f572c15fafb83214a06a1e76f9d929faef684e3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/no/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "10ef1be18ac48555c2470fc83a2f59a2b49df011c3f38cf68e5637f673d64d17",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/",
+      "status": 200,
+      "sha256": "6c651d608496a2a5857292f404881e59bc9c46ac871599a21489f9112192a99d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/",
+      "status": 200,
+      "sha256": "5820995eac46a31ad22e1cf81bf4728bbf56456615737fdc5692b507e5782b61",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "d336ba32a4966eed03b729a34cd68cd973f7fac2e9b5bb1583bb52c9c4bfe5d3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "78fd0c3d5586b69f1619b2b4a7f4f2bb87cdb35a99e797335fe1aac43e7108b5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "4797636d7950f97db868f432654d8384b372c58a45fd7d7e421ef30550b3409d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "a8a5341e06c0aaf5ea2428694d70ed4f3d3299555f585c906fc4038ed243137b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "5ba4c0eb276ac502a10ff9d742120d8ee122bcb04528ee87751b69d3606653a7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "6944e59e5c8cb41bbeded378f26f96d46f9da5888232ec5a1347933923361c3a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "5add5a0ce0598e3751bb9893b5126e82ad7c99dfeb7097ae29f55373c45ce7ba",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "70b6ff688690690a4fd098ce37a5f36a7e401202d1523dcae58e8a1c7ada0f69",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "28dfd4647a48b5a0323f64488d583a27e8f312d015e0a4cefc0400149a6977b6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "1c1db75b8c90fee2e23614e71023308724e308034d0fa0a24545ae53bffa6ad5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pl/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "086c6ddfb7112d47ebf6f03edeeba93424fddb425b90c1786d7f5c789ba3a074",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/privacy-policy/",
+      "status": 200,
+      "sha256": "7045b3dbc47e4c48b5e94c548e3dce9bc70b44ec67a3bb2b3cd100f69dcfc9ea",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/",
+      "status": 200,
+      "sha256": "ba28c813d4fabea88ff3dda7caee0e910bcd1355fd66235c8753ec1718eaa8e4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/",
+      "status": 200,
+      "sha256": "9c981aa96863707808949a262b22b2288058b00dabf5f6d18c3a6182987a8534",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/calendar-export-ics-pdf-and-backup/",
+      "status": 200,
+      "sha256": "8f874ac424e0d4a5e048565e703080cd179c2d6d579f1a6acbfa650ee4c7dc87",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/calendar-notifications-missing-silent-or-duplicated/",
+      "status": 200,
+      "sha256": "333123ea5816d99ff8aff8ee8621c40c0b25f0fd5b7c56c31b05454ea40aa35f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/find-old-calendar-events-by-account-date-and-title/",
+      "status": 200,
+      "sha256": "775d443e14c2a8b8c42ef2800c0235c847dd010eaffc5a770a19b9a07b5faca4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "c85004a4bb59350d48ff6146830b2f8419b1042b2fb8a7263efbb060fba4cf7d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "0d8f4d76f552da2d72c58ce7760c022992f31449d9d7e4b4d33047a4773c5e34",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "46d9d56694f6e14415dfc6d137c1bf07e427cd9ce8ebc692ebcbb79d3690fcb2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "912a1308681a941f3bada6eab5121f352d97de0e605398a79d4955b6592b914c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "60003a4771d2af6c0a8ac2913a02deb94d40bdf24cc3f80ee4a15a0c143ff4cc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "99746aaac525c9c7fb0968a44dd421d3f2d4f64cafd16f89107d539ab8befcb0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "71954c29f4c6b460736b8980b9702a946b9d9699297889a1cf074c41cbffe625",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "0e3f475836baba57aa34a702759ec6f18d0172d8a1ecde6c27a5ac66a91060d6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "70258069fa7a75a6ff90ce52581be05e506514310e5b8999705398b47663990b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "6cd74413bc4692b4a3cd5a2092c69a4f3c0b77d7ff0f021f85751c342333770e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/pt/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "93aaa7768dd99de15c31300255e1af1ea604d93896097bfb54f667f848e9c5b6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/",
+      "status": 200,
+      "sha256": "828bc87789d0a818145efba99ab9e319672bc6c5bfb2683659642069a6210c0d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/",
+      "status": 200,
+      "sha256": "2624edc77cb0c31408de28c4a618ddceed34021a380a34b0325fa94356e34dc1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "846407390c3e5e2684e2269d16acc0325f57e67a5b6c3647048cb6503eac37c5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "0c8b8b80f37ab9381e0bbc6b87f114cd8c8864c92bfbb7116f162e624e63fd70",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1ae1df2f1a43f2e240ac960951a15673070aedda2f035175f59e823394d8b697",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "921cf157bbf9009bd13b39fddeaae862975c4374e7079ba2a1ddbc72a73fa1a6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "58e56af61155ea70c2015edb93bfbcdd0389e2d583288bea8617683b7bb124f4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "6829822dabf73654ee5779a2cd97ef80a3a2c1e7056d34f86eff03adf601b3b9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "0b325d6ff6a5c55895aade9a47c5ec618809725e5833ab097c75754a8eb5588a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "03d67c7d3cbb37da45f57624b3e29560fa3dc8bb5f4564b529602bc8803dab78",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "275d671836dd81c4b7aebf5189d0a39328d769d54db4b7a070eb3238474c8671",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "8f6a2a5d20d08374782e292ec8413fe03f28d5b732dea56e3810c23687659e7a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ro/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "d7a94e239de1039b197e380e1874cbecd38f24b6c5e80bea1b461ae1a7c8dfbf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/",
+      "status": 200,
+      "sha256": "2d458f274ae1fe41546089c2aca677d59a6f7da0771cccd6dfbed31c7300ec42",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/",
+      "status": 200,
+      "sha256": "1aad17dcc69f5d5372cb96b8a5e18d705984a68877f5305a1f80ef504fec5822",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "bad2bd358990288e7a47e85c5ccfd40a03d4268ba66c4106d7de2692412abdb2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "924907e354412ab7b28b51e2416fae937742dd9cfa9a5cbd79f61c50290e727a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "40e9101c791ed3d8d66948897ecff0cf198ad763b0052cc9cd88b3f42f30e258",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "df123a6d70c436fbfadf998c149424a153a03924b4c5518b1efdb0d002fe610b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "22178d3c6b5640739c5124e7be9f24573e7afc600c4a9fcaf236da554fb5756f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "1074d756520e728aebba122da5c0784325c4fa2fd5c096cce38fd28e476fcdec",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "74abd16cd094ce31a080a6b338716655f08745ec0aa374a1f17925b768b2918a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "2b4df7ee67c1f373a4bbbc6a366ee9ca272b3b6568b91f85dc960b70c29b4422",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "ad94fc119f7e6f53ecf6374349221bd2547f57bd8af3e297f83d7ce1035eb464",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "61b86dc1af488fc2f8373b759f88d224005233a085262c7c3119cd90a19d031c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/ru/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "a7a8bbd89c8fd4ee91227bdda379e7e6868eec7e4e7b217cef48d08692e368f5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/",
+      "status": 200,
+      "sha256": "0fe7e398ce50266e49f6bad718def7ebfdee0badfa14096f40e2f50be0c18307",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/",
+      "status": 200,
+      "sha256": "00a6e632a6d1f8421c512747bb1c0ed1469a480042da4fbb176a19647a0e185b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "d2d93e248f6f8bca44adc21f11d2780f7b3eb4f89fdafc935310011c5183ea73",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "97db66c21a722bcd24b18c4853349b2ee006939eeb8814601aa35a6ca65acb7c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "31d9722addc3c56b3a46de0959e9cdf597c7b002f34dcc23e1486867695c41ac",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "b5dd1a289fd8b2b71d7060b49df7b1ee470621ebb15a298f5592f8416785117a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "51eda24057c50058e2d6a71d5a55127ad933cf211ea10926032dccb38acfdcb5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "97b8bed8c0261b27d924854777a9294d4889341b1fc5f8d1402a0d891034e67d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "58fd376f8d674caab21f1001b485603e72d570ef162766850165baa21888959c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "c77fa4c8a6f67313e65d07fcd23fb2b5ddfdf94524a310f1bfd93b3f3cb2a90e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "b7ce9e8edb0b2b1843caff7eceda648c65b7241d37fdae1f60d702f4917ff169",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "ab202ea7dacd44a7b295c459f80eb406e5801a844a272c42736d7899ec8a587b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sv/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "a76498c4ab08bb010fc6ce42b8d1099beb019a61c1446e8065545b01fa44cf74",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/terms-of-service/",
+      "status": 200,
+      "sha256": "64ee5b569c23393f005078ece1525ab3cbe35210a41ddc47e567a483f7a2b07b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/",
+      "status": 200,
+      "sha256": "0d181b4175e1bfaeacdb8c5f6e4bfb93b81440503f325c5f14fce962cb1a1474",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/",
+      "status": 200,
+      "sha256": "ef61dfc06200e68a0985ced406af4c9b04a829f32028a01e65bf757f63bb613e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "fd8fad2d12f5f24696e39f999a7c53bcfb5f3bf2d956fec9a31db4a99b97a630",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "03e18f23675450ef79a916c641f76281d84a5f9316aa762566078b3a6a45be26",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "119038d15d79f5996c4c1c5a9cb4ef48c8214156423542ecfbc00e5017603971",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "65fa5afa6f8a55255aa032a2b369a408fba0003bd9c554b4927f2e94bf3605ce",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "57aea380958b953a38b7ea033b662ac58f5ae85f4f885707ae5b653e7d52f92d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "8fc99050b570ac2b2a2a81cc94e12fcd98a82f6bb7889c07eed346fc03ef4043",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "48ff7720274dccae1403df862960e3742980fb67831a41cf4ff7db23d1ffe9bf",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "5bf8e18cc75e5c2f636513dc8eb03ebaf23e6281e42681ca3919da61ff684590",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "f946b748b663ed1e9390cbe7f9e2c911ff645af29b709fe0b3f454c12ace949d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "34297f28cff167123a7d3907e66fccdba7002d4822f217cf2012efcbd6cd102e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/th/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "ad00924e77baae62617801243c9b8c945ab8a7798fe420547a42d2ecb1945efc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/",
+      "status": 200,
+      "sha256": "f9518b2a4a91b61fbe452c9ef92da8cbb8b0cca6c6c2e7e037019980855b2549",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/",
+      "status": 200,
+      "sha256": "eb44c3f38f6f42ae967daa949621beb794ac8b0495c309d4b54ad697f3e57206",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "641e62a90b0995f30da6ea536eb970dc337250a3e8b31cbfe2e5fbc0af884ba6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "4fa979bc085df4edd4c6a4e2985d9a8521514e9cd08e20365362689b994cce15",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "783c2e912146954df89720fed86911bce32dd188f698531fb13acd13a297e623",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "2dfff7bc7ab24c5cde6a46e933d177f81b6f440fd1531f0b237fbf6a1509f39c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "19adf802a3a192d23b46f44f1c02a987597ad9e90599a1debbc68acf07d58724",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "22dbdd67980c528ce2e5e735cd8383f01bca373ec79f607f523f7d33e9c16bfc",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "60134be295fba11a4ef5d3134b5036f5edba25c71d8e1f31e04e3b2ece99912b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "4637de60b168ee4bbd33cec9bf22289a36264736ed857f9f0b72a84adf335362",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "28688ac916418309cb6f25ea4a4c2b24d20ddb3f7862d429c639d41e468fe96d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "e40226d5a1a572d5abb325d5ec7c28fe149bade3f4133368b34b01c974dfddb6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/tr/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "be9ee42ecac3b6b937bd82f0bade71f862c34cce3d5de5b13c3e5987223b3765",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/",
+      "status": 200,
+      "sha256": "50343b550da137f0ad1baeb1ffdb213aeb2e414f14cbb2f176f47652f612080d",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/",
+      "status": 200,
+      "sha256": "5146e7c5a89ff5637ccbb0de7a7295776806b8a2fbd2e65b8213102ccec8a1f0",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "56e02a13adcd9d54aa607b71aadae6871eb20e2154e01713831bb2aae9d822af",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "64abf4dabfbdd97b3b03a68213ef688ded134133274748ca910c634d80a22e13",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "1d98b4c472a6e0707023195c7560a41fa66bed125a881496557334ceae4e2d1f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "4e6c87160ef1b5281a4cec515009fd4d4971f548347d29fa3f845efdfefe0cb2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "6c27eea6ea4b2a937bcee8605c2cbb73f39da3452547b13d36116050a707c272",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "e6bdc5229edd8ba249ae8828cdde4de4da33e95d24fe0038eb2bf1137cfee5c5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "fca1bc998478914568083158bb120cd0d259db4b456bc8c3dfd759f69f4d6a8c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "5bca170f986ebf769e6e87de4d536e0c49d6b3e808252a0459c2838f5c6ec4b9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "332cdeecbaf0376eba0c758282a11c6411626d3581f591252d8698d2e7fdaca5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "2c26b0b98548adece902c41ada7fded72dc7e548ef31088600eb7077640b5ea7",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/vi/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "42de494fb74ebbb24ece3c3eb863bfbfdc480c31e16eb5c1f4dd08f9b6daea6c",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/",
+      "status": 200,
+      "sha256": "751b073278a74867cf18ec800707af70d31e3d7c79ffb581e6f91cf350eb28d5",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/",
+      "status": 200,
+      "sha256": "1200902b83f556c595a6fcda172416b220e83c06f8a82d42abe7f41337cb0edd",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "dc05aff550ef851abd50def7640a44fa0ab66127653288ba214c994c2f7b2c83",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "18a0e018090a6697b3a6d70281d1b92a8b2041b3d419bac6f2cff355e0fbab10",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "ec91c708e0a2454acf8194b4027e273590fc489a8efa70e80e97077100cfcb55",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "2e5e36f227b7d32640f0cb9dd4184e13f784a190f4df1580ea9a0ed122dd5df1",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "1ddc49625dd04404b507db694d243d416e6c57b12e00be891f542d11422b000f",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "01b7fb3f1d15e47392a9be12c5b9e3603847dd4e5b094e3b6d085832bf090f48",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "60a01e5d38f8d1d09c1f7bbd7b63afac1290ad33fd11ee3cb40cc05a13057f8b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "267998d836992452d3864ea1f4563573525ec75fe0939b7e25d458b4ed898d16",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "2f30f9c48369319dbcd763aa20075f2d79388deeaffc13eadcfe5f588f125fc6",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "beb7135f63c24f529bd1ae18c331a15e17e452e95c68b4909f1656d176793298",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hans/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "abb50cb6c15b2e8737786e7d8a21bd03f716bbea0b4f3f142fa13399e6b2eead",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/",
+      "status": 200,
+      "sha256": "de5a6cf4a6d7dcadd058a6315ac6a993d167c08f34196c8051d31ca25804f71b",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/",
+      "status": 200,
+      "sha256": "b476949793e9e06d51518b1c970cb6faf5a08de7f381792c72d12b00421b3ad9",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/google-calendars-that-never-reach-your-iphone/",
+      "status": 200,
+      "sha256": "05d3cb686f9ee5289fbd1ed54653ed5377dd6cf94cd5065387912625939cdfd3",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/icloud-google-and-outlook-in-one-view/",
+      "status": 200,
+      "sha256": "67d52d38f7008519cedda5694461875e57965b89c87144ab6f83cf6cf05765bb",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/month-view-on-a-bigger-screen/",
+      "status": 200,
+      "sha256": "d3f767342d84251ada796cb50c11709199bf4eb91863fc1d2f3208c6c041749a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/sharing-one-event-not-your-calendar/",
+      "status": 200,
+      "sha256": "56a1d26daaef1dc88bcc3176fc0ec6de98acf60041f4e56680367b2362cf0f43",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/taking-back-a-calendar-you-shared/",
+      "status": 200,
+      "sha256": "4724cbca82ad4220f126de26b5de402786ce08505bab3a5a44e65abaabb6eec4",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/the-secret-address-of-a-google-calendar/",
+      "status": 200,
+      "sha256": "eee4116a1f101e083b89ab99905a50edaf3df86d69cd0eedf0b187b2152511c2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/weather-inside-your-calendar/",
+      "status": 200,
+      "sha256": "654b7053311559be1e1afe228b3c7afba367b90aa84f002d4e1a98e3a3bb9158",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/what-a-subscription-actually-buys/",
+      "status": 200,
+      "sha256": "3b19ebcd4d3a19ffe9bccf6daabaa8e3e585b514360b888d7483ca8fdbb0ce1e",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/what-guests-can-do-to-your-event/",
+      "status": 200,
+      "sha256": "a021d2bae801237181304380fb3519846115088cc7169ead6315fddd8aeab7a8",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/who-can-see-what-in-google-calendar/",
+      "status": 200,
+      "sha256": "c06141014643d362429f4016f13983e50d2dee56236986c31e00a8638d600819",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/zh-hant/articles/why-a-shared-calendar-does-not-appear/",
+      "status": 200,
+      "sha256": "84cbe194529a5cf1469c3aef8848cfd4b56d6bca8dac33e0757c795bd88ddcb2",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/sitemap.xml",
+      "status": 200,
+      "sha256": "cb290f886976a9d7083cb9489e61edbe019efe47e6db9dc5adc426c21e81f81a",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms.txt",
+      "status": 200,
+      "sha256": "9ca095c651d938fbadc7ccf75fb7eef1995b348a0762f86b7a28eace0e77b0ac",
+      "matchesBuild": true
+    },
+    {
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "status": 200,
+      "sha256": "8097101a2f7d52ec8fb9921fb7954996ff846cd3c8747175f39eee816ae3ec0f",
+      "matchesBuild": true
+    }
+  ],
+  "scope": "All491sitemapHTML pages plus sitemap and2text exports exact final-built bytes. Does not prove indexing, ranking, citations, all image delivery or product runtime."
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22",
+  "beforeObjectRawSha256": "87f2556fe0ec1c5568edd757865cbbc09490c7c9d518f3a643022edacb28f796",
+  "beforeSnapshot": "batch42-full-comparators.json#keeping-track-of-who-replied.object",
+  "draftRawSha256": "c627d52c47daae4259042e91c9d074a46f1aa4a3c8add933c2f726f8e6c7a1c3",
+  "changes": [
+    "sections[3] inserted,5paragraphs",
+    "practical[3] inserted",
+    "faq[3] appended",
+    "sources[3..5] appended",
+    "updated2026-10-21→2026-10-22"
+  ],
+  "inverseDeltaEqualsOriginal": true,
+  "originalProseMetadataClaimsRelatedPreserved": true,
+  "providerScope": "Google iPhone proposal, Google computer organizer review, Apple server-dependent route explicitly separated; no Cloud proposal-control claim.",
+  "evidence": "batch42-discovery.json",
+  "authorReview": "Own draft checks only; root independent review pending. No source mutation."
+}

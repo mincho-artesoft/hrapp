@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_material_corrections_required",
+  "reviewerIndependence": "Cross-agent review of root-authored selection drafts and ASO-authored FAQ. Reviewer previously authored intent-research.json and proposed the Google FAQ intent; this is not independent discovery of that underlying idea. No native/runtime certification.",
+  "readScope": "Complete three before and three proposed article objects, mapping, root-preparation-review, product-evidence and intent-research read. Initial combined output was truncated; conflict before/after, full export draft and sync before were reread separately to close gaps. Full sync draft and export before were visible in initial read.",
+  "primaryScope": {
+    "url": "https://support.google.com/calendar/answer/45654?hl=en",
+    "reviewerPriorRead": "Complete main body lines18–122 earlier in this batch; no fresh web fetch during final review.",
+    "rootCorroboration": "Root records fresh complete18–122 read.",
+    "technicalBasis": "Native claims assessed against complete supplied product-evidence and root exact-range/hash records; native source not independently reread in this review."
+  },
+  "articles": [
+    {
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "changedFields": [
+        "faq",
+        "sources"
+      ],
+      "exactScope": "Appends faq[4] and sources[8] only.",
+      "allOtherContentPreserved": true,
+      "assessment": "Accurate Google-only can-occur case; destination check before retry, no universal deduplication or success guarantee, no cleanup instruction.",
+      "sections": 9,
+      "paragraphs": 23,
+      "faq": 5,
+      "sources": 9
+    },
+    {
+      "slug": "when-two-calendars-disagree",
+      "changedFields": [
+        "sections",
+        "updated"
+      ],
+      "exactScope": "Inserts sections[2].body[1]; updated changes 2026-10-21 to 2026-10-22.",
+      "allOtherContentPreserved": true,
+      "assessment": "Selection side effects correctly qualify hide-first diagnosis; Google synchronization is specifically named, restoration and schedule recheck are requested, no identical all-provider pause/resume promise.",
+      "sections": 5,
+      "paragraphs": 11,
+      "faq": 3,
+      "sources": 5
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "changedFields": [
+        "sections"
+      ],
+      "exactScope": "Appends caveat and existing related-guide reference to sections[4].body[1] only.",
+      "allOtherContentPreserved": true,
+      "assessment": "Short qualification addresses selection side effects without duplicating the conflict guide; referenced short title and related slug exist.",
+      "sections": 7,
+      "paragraphs": 20,
+      "faq": 4,
+      "sources": 2
+    }
+  ],
+  "blockers": [],
+  "necessaryCorrections": [],
+  "files": [
+    {
+      "path": "research/batch26-duplicates/mapping.json",
+      "sha256": "342aff02749177466f9721452e6f38054eaf1f41ee86e48582469d61510a4869"
+    },
+    {
+      "path": "research/batch26-duplicates/root-preparation-review.json",
+      "sha256": "a45cebe304fb1700c2385e8c1bfb42fffa66ba21956adf2a9cee1970968abb42"
+    },
+    {
+      "path": "research/batch26-duplicates/product-evidence.json",
+      "sha256": "69f2ac35e8f33a198a4e116cfbdbb199b128b29958bc556bbc62e66b1eb09bf7"
+    },
+    {
+      "path": "research/batch26-duplicates/intent-research.json",
+      "sha256": "eeb1fd4f902722b65ba7b00dfc4cc49793e543102c28aba00f1ba8348149ac4a"
+    },
+    {
+      "path": "research/batch26-duplicates/before.json",
+      "sha256": "12184e43a82777b7314514b2f67dc1cdef83083c3fe693a43b6087f0d98a17aa"
+    },
+    {
+      "path": "research/batch26-duplicates/calendar-export-ics-pdf-and-backup.json",
+      "sha256": "12598e9da2b1d67877b8dafc126373b6eb2efbaa32a352dba275dca39f3f04dd"
+    },
+    {
+      "path": "research/batch26-duplicates/before-conflict.json",
+      "sha256": "7ca596ca4943e12eca847de6b0bf087d5dead3463599e4f92bbbdbe866242a1e"
+    },
+    {
+      "path": "research/batch26-duplicates/when-two-calendars-disagree.json",
+      "sha256": "b5aef1e3a8e4fc21a29a426fd1f8885b789ffb640aee9311c3e9617be5d4dc30"
+    },
+    {
+      "path": "research/batch26-duplicates/before-sync.json",
+      "sha256": "f2114b6602b6a9f0d7a7f555f8dc24ddb0f595a3673e12c28cde4a6fc1203897"
+    },
+    {
+      "path": "research/batch26-duplicates/what-calendar-sync-actually-does.json",
+      "sha256": "6d542c2db33b66272589ae53a06b6dbccc8d18cb39ca411ea0c48d370650dfa8"
+    }
+  ],
+  "limits": [
+    "No website/native edits, build, dist mutation, deployment or customer calendar operation.",
+    "Unchanged claims were read for context and contradictions; not every unchanged external source was freshly revalidated.",
+    "The evidence supports a bounded selection caveat, not released-version equivalence, all-provider behavior or guaranteed alert/refresh timing."
+  ]
+}

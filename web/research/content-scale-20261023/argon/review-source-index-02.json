@@ -1,0 +1,176 @@
+[
+  {
+    "url": "https://support.google.com/calendar/answer/37064?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/37064?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/904064e3424dccd5.txt",
+    "textCharacters": 3744,
+    "bodySha256": "10049029397fe43ddbb3ad7e73b71b8061b0abb370d930d7b07fdc7e0e74f937",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+    "resolvedUrl": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/bf6d9d0532cbb54f.txt",
+    "textCharacters": 5602,
+    "bodySha256": "6792e5ce350638dd7d67e17b9913f561a37796d2ac55b170971b5080b132acfb",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.apple.com/guide/iphone/iph69525c028/ios",
+    "resolvedUrl": "https://support.apple.com/guide/iphone/schedule-display-events-a-time-zone-iph69525c028/ios",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/3987286363976cd7.txt",
+    "textCharacters": 31628,
+    "bodySha256": "6d2b93e8a0ee97ba31e3bb56525ef3c635801b7303eaf59e9654cb5e24163176",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://www.rfc-editor.org/rfc/rfc5545",
+    "resolvedUrl": "https://www.rfc-editor.org/info/rfc5545/",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/7113339eed1be6c4.txt",
+    "textCharacters": 345537,
+    "bodySha256": "c256f809479d98aa23d71bbd1658b3800ea9f13f41ca56e59c8d2de1b31cbfcb",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://aa.usno.navy.mil/faq/daylight_time",
+    "resolvedUrl": "https://aa.usno.navy.mil/faq/daylight_time",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/a15511d4fc9e9a09.txt",
+    "textCharacters": 3701,
+    "bodySha256": "4a9e55c228f9c50cd21023180e218b95e23efe514219e9aac9fc7bcc77b226c3",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://www.iana.org/time-zones",
+    "resolvedUrl": "https://www.iana.org/time-zones",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/6478dc39d042c526.txt",
+    "textCharacters": 1594,
+    "bodySha256": "08b86ffa5a0eabaf440995c2b046c227a6c2fa3f67bd3a05905fc40e5f87520c",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+    "resolvedUrl": "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/9daf65a7790362b5.txt",
+    "textCharacters": 3193,
+    "bodySha256": "bc0f0157151de09d5b7d730af8b5d40700d3a65da5754228f50b5c37bf36eaa7",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.apple.com/guide/iphone/iphc37be2016/ios",
+    "resolvedUrl": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/5dc47f5bb5d52e48.txt",
+    "textCharacters": 33306,
+    "bodySha256": "f89c870f1d394589288e9dc8130bf2c52e9e4399d47b4a239ce5366d9e06c8d7",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+    "resolvedUrl": "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/b151722528818dd9.txt",
+    "textCharacters": 4962,
+    "bodySha256": "d58ff3c15ca6b559c53cf16ff2a827718c0d56bd894674cb33974220b8430c96",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/icl1018/mac",
+    "resolvedUrl": "https://support.apple.com/guide/calendar/set-up-all-day-multiday-or-repeating-events-icl1018/mac",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/387e2a12a269006b.txt",
+    "textCharacters": 3972,
+    "bodySha256": "1cee4ec35762cf0a3777079998a10f8cdcaddf2e6c0955001a56d67e033f44f9",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/37115?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/37115?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/6a1c5f62edf647b9.txt",
+    "textCharacters": 1028,
+    "bodySha256": "db491f3d023309e158dc8e47f140a18e04763d795ea7d6c70ace723898c318b4",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/9901136?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/9901136?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/41f044af414704ab.txt",
+    "textCharacters": 4959,
+    "bodySha256": "5e4943ae09d33db3f2558549ef415c06611a6389a4486f9b7551ae60246242d1",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/11190973?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/11190973?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/65bfd115bba5248a.txt",
+    "textCharacters": 2859,
+    "bodySha256": "9fc59ec756e0c2d015ece2d64e3e4f7a4a476ef06e38f884e5f233e8de7db9fd",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+    "resolvedUrl": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "direct_primary_body_fetch",
+    "file": "argon/review-source-text/538f734847de32ba.txt",
+    "textCharacters": 5569,
+    "bodySha256": "d032fc71d16e8e5dfd4de966d2de3c3370bb1ab05112a1e7b8b6c7d5be582fe7",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/10729749?hl=en",
+    "resolvedUrl": "https://support.google.com/calendar/answer/10729749?hl=en",
+    "status": "fetched",
+    "httpStatus": 200,
+    "method": "existing_exact_primary_body",
+    "file": "argon/review-source-text/b5b3b6f2c871f3d3.txt",
+    "textCharacters": 5215,
+    "bodySha256": "4ad3e0ccae4db9ba551355084e270626bc118be96d28c106b790ce1f3461c0e9",
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "url": "https://support.google.com/calendar/answer/16287054?hl=en",
+    "status": "fetched",
+    "method": "reuse exact primary body from independent Claude batch02 source review",
+    "file": "argon/review-source-text/f3092c0a73f53780.txt",
+    "bodySha256": "3a358ac3a4253f6aea6fe50794b7b312590475bbe9d2526834fe0f08305f502f",
+    "checkedAt": "2026-10-23",
+    "textCharacters": 2739
+  }
+]

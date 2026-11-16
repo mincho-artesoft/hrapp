@@ -1,0 +1,104 @@
+[
+  {
+    "locale": "de-DE",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "Was die Cloud Calendars-Abos ergänzen",
+      "body": [
+        "Cloud Calendars bietet Kalenderansichten auf iPhone und iPad. Base umfasst die Google-Kalender-Synchronisierung und die Mehrkalenderansicht. Advanced entfernt Werbung; Premium ergänzt die Unterstützung für Microsoft Calendar und Teams. Aktuelle lokale Preise findest du in der App und im App Store.",
+        "Advanced ist keine kostenpflichtige Berechtigung zur Verwaltung aller Konten. Ein Abo macht einen schreibgeschützten Kalender nicht bearbeitbar und setzt keine Arbeitsplatzrichtlinie außer Kraft. Lokale Kalender lassen sich ohne Konto nutzen; Anbieterverbindungen und Freigaben haben eigene Anmeldeanforderungen."
+      ]
+    }
+  },
+  {
+    "locale": "en-US",
+    "slug": "what-you-get-without-paying-anything",
+    "path": "faq[2]",
+    "context": {
+      "q": "Can I use the app without an account?",
+      "a": "You can start with local calendars on the device. Provider connections and sharing may require sign-in; those requirements are different from the app being free to download."
+    }
+  },
+  {
+    "locale": "en-US",
+    "slug": "inviting-people-who-do-not-have-the-app",
+    "path": "sections[1]",
+    "context": {
+      "heading": "Know what the App Clip actually offers",
+      "body": [
+        "On a supported iPhone, an App Clip can provide a small experience without downloading the full app. Cloud Calendars uses its event App Clip as a preview. Its action points to downloading Cloud Calendars to add the event to a calendar.",
+        "That distinction matters when choosing your wording: “preview the event” is accurate; “add it with no installation” is not a promise this flow supports. Availability also depends on the device and how the link is opened, so do not promise an immediate App Clip launch on every platform."
+      ]
+    }
+  },
+  {
+    "locale": "en-US",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "What the Cloud Calendars plans add",
+      "body": [
+        "Cloud Calendars supports calendar views on iPhone and iPad. Its Base plan includes Google Calendar sync and the multi-calendar view. Advanced adds ad removal; Premium adds Microsoft Calendar and Teams support. Current local prices are shown in the app and App Store.",
+        "Advanced is not a paid permission to manage every account. A subscription does not make a read-only calendar writable or override workplace policy. Local calendars can be used without an account; provider connections and sharing have their own sign-in requirements."
+      ]
+    }
+  },
+  {
+    "locale": "es-ES",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "Qué añaden los planes de Cloud Calendars",
+      "body": [
+        "Cloud Calendars ofrece vistas de calendario en iPhone y iPad. El plan Base incluye la sincronización de Google Calendar y la vista de varios calendarios. Advanced elimina los anuncios; Premium añade compatibilidad con Microsoft Calendar y Teams. Los precios locales actuales aparecen en la app y en el App Store.",
+        "Advanced no es un permiso de pago para gestionar todas las cuentas. Una suscripción no convierte un calendario de solo lectura en uno editable ni anula las políticas del trabajo. Los calendarios locales se pueden usar sin cuenta; las conexiones con proveedores y el uso compartido tienen sus propios requisitos de inicio de sesión."
+      ]
+    }
+  },
+  {
+    "locale": "fr-FR",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "Ce qu’ajoutent les offres Cloud Calendars",
+      "body": [
+        "Cloud Calendars propose des vues de calendrier sur iPhone et iPad. L’offre Base comprend la synchronisation Google Calendar et la vue de plusieurs calendriers. Advanced ajoute la suppression des publicités ; Premium ajoute la prise en charge de Microsoft Calendar et de Teams. Les prix locaux en vigueur figurent dans l’app et l’App Store.",
+        "Advanced n’est pas une autorisation payante de gérer tous les comptes. Un abonnement ne rend pas modifiable un calendrier en lecture seule et ne remplace pas les règles de votre employeur. Les calendriers locaux peuvent être utilisés sans compte ; les connexions aux services et le partage ont leurs propres exigences de connexion."
+      ]
+    }
+  },
+  {
+    "locale": "it",
+    "slug": "google-calendars-that-never-reach-your-iphone",
+    "path": "faq[0]",
+    "context": {
+      "q": "L’accesso diretto a Google mostra ogni calendario?",
+      "a": "Non presumere una copertura completa. Contano account, elenco, selezione e sincronizzazione riuscita. Confronta il calendario mancante con Google Calendar sul web."
+    }
+  },
+  {
+    "locale": "it",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "Cosa aggiungono i piani Cloud Calendars",
+      "body": [
+        "Cloud Calendars offre viste del calendario su iPhone e iPad. Il piano Base include la sincronizzazione Google Calendar e la vista con più calendari. Advanced aggiunge la rimozione degli annunci; Premium aggiunge il supporto per Microsoft Calendar e Teams. I prezzi locali attuali sono indicati nell’app e nell’App Store.",
+        "Advanced non è un permesso a pagamento per gestire ogni account. Un abbonamento non rende modificabile un calendario di sola lettura e non scavalca le regole aziendali. I calendari locali si possono usare senza account; le connessioni ai servizi e la condivisione hanno requisiti di accesso propri."
+      ]
+    }
+  },
+  {
+    "locale": "ja",
+    "slug": "work-and-personal-without-two-apps",
+    "path": "sections[3]",
+    "context": {
+      "heading": "Cloud Calendarsの各プランで追加される機能",
+      "body": [
+        "Cloud Calendarsは、iPhoneとiPadでカレンダー表示に対応しています。BaseにはGoogle Calendarとの同期と複数カレンダー表示が含まれます。Advancedは広告を削除し、PremiumはMicrosoft CalendarとTeamsへの対応を追加します。現在の地域別料金は、アプリとApp Storeで確認できます。",
+        "Advancedは、すべてのアカウントを管理する権限を購入するものではありません。サブスクリプションによって読み取り専用のカレンダーが編集可能になったり、職場の方針が無効になったりすることはありません。端末内のカレンダーはアカウントなしで利用できますが、サービスへの接続や共有にはそれぞれのサインイン要件があります。"
+      ]
+    }
+  }
+]

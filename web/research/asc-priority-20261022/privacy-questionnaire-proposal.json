@@ -1,0 +1,172 @@
+{
+  "status": "Reviewed 15-type draft; pending completed UI configuration and owner final publish confirmation",
+  "app": "6744690319",
+  "version": "1.7.4",
+  "build": "16",
+  "ownerConfirmed": [
+    "Account/sharing service retains email/name and calendar/event data",
+    "Personalized ads with consent"
+  ],
+  "sourceCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "sdkEvidence": "pinned-sdk-privacy.json",
+  "collectionAnswer": "Yes",
+  "rows": [
+    {
+      "type": "Name",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Retained account/sharing/invitation service; owner confirmed active persistence."
+    },
+    {
+      "type": "Email Address",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Retained account/sharing/invitation service; owner confirmed active persistence."
+    },
+    {
+      "type": "User ID",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Retained account/sharing/invitation service; owner confirmed active persistence."
+    },
+    {
+      "type": "Other User Content",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Retained account/sharing/invitation service; owner confirmed active persistence."
+    },
+    {
+      "type": "Emails or Text Messages",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Retained account/sharing/invitation service; owner confirmed active persistence."
+    },
+    {
+      "type": "Contacts",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Shared event organizer/attendees and invitation/access recipient graph; not whole addressbook upload.",
+      "classificationReview": "Included per independent source/Apple definition review; attachments are user-selected files shared with account identity, not automatic scanning or recording."
+    },
+    {
+      "type": "Photos or Videos",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "SharedEventAttachment.dataBase64; generic fileImporter allowedContentTypes [.data], no separate PhotoPicker established.",
+      "classificationReview": "Included per independent source/Apple definition review; attachments are user-selected files shared with account identity, not automatic scanning or recording."
+    },
+    {
+      "type": "Audio Data",
+      "purposes": [
+        "App Functionality"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Same generic shared-file route can contain sound files; no recorder established.",
+      "classificationReview": "Included per independent source/Apple definition review; attachments are user-selected files shared with account identity, not automatic scanning or recording."
+    },
+    {
+      "type": "Device ID",
+      "purposes": [
+        "App Functionality",
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": true,
+      "tracking": true,
+      "source": "Exact checksum-verified GoogleMobileAds12.5/UMP3.0 manifests; personal ads with consent directly confirmed by owner. App Functionality for Device ID additionally supported by authenticated invitation push registration."
+    },
+    {
+      "type": "Coarse Location",
+      "purposes": [
+        "App Functionality",
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Exact checksum-verified GMA12.5 advertising/analytics metadata plus UMP3.0 AppFunctionality metadata; combined linkage uses GMA linked flag where applicable."
+    },
+    {
+      "type": "Product Interaction",
+      "purposes": [
+        "App Functionality",
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Exact checksum-verified GMA12.5 advertising/analytics metadata plus UMP3.0 AppFunctionality metadata; combined linkage uses GMA linked flag where applicable."
+    },
+    {
+      "type": "Advertising Data",
+      "purposes": [
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": true,
+      "tracking": false,
+      "source": "Exact checksum-verified GoogleMobileAds12.5/UMP3.0 manifests; personal ads with consent directly confirmed by owner. App Functionality for Device ID additionally supported by authenticated invitation push registration."
+    },
+    {
+      "type": "Performance Data",
+      "purposes": [
+        "App Functionality",
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": false,
+      "tracking": false,
+      "source": "Exact checksum-verified GMA12.5 advertising/analytics metadata plus UMP3.0 AppFunctionality metadata; combined linkage uses GMA linked flag where applicable."
+    },
+    {
+      "type": "Crash Data",
+      "purposes": [
+        "Analytics"
+      ],
+      "linked": false,
+      "tracking": false,
+      "source": "Exact checksum-verified GoogleMobileAds12.5/UMP3.0 manifests; personal ads with consent directly confirmed by owner. App Functionality for Device ID additionally supported by authenticated invitation push registration."
+    },
+    {
+      "type": "Other Diagnostic Data",
+      "purposes": [
+        "Third-Party Advertising",
+        "Analytics"
+      ],
+      "linked": false,
+      "tracking": false,
+      "source": "Exact checksum-verified GoogleMobileAds12.5/UMP3.0 manifests; personal ads with consent directly confirmed by owner. App Functionality for Device ID additionally supported by authenticated invitation push registration."
+    }
+  ],
+  "notSelected": [
+    "Purchase History or Payment Info from Apple-only local StoreKit",
+    "Search History",
+    "Health/Fitness/Sensitive categories inferred from arbitrary event text",
+    "First-Party Advertising based only on broad SDK manifest capability; no developer-marketing use established"
+  ],
+  "limits": "Final published declaration still requires owner confirmation. No purchase/payment-history inference from local StoreKit; no health/sensitive category inference from arbitrary text.",
+  "independentReview": "privacy-questionnaire-review.json",
+  "removed": "Precise Location: arbitrary stored venue coordinates alone do not establish actual user/device location collection."
+}

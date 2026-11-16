@@ -1,0 +1,155 @@
+{
+  "decision": "APPROVE corrected Group B descriptions",
+  "reviewedFile": "research/asc-priority-20261022/descriptions-b.json",
+  "rawSha256": "3c27f77933b8fdd6a4c31beeea954b244184f3018313f5ddb7e85911f3776fb4",
+  "date": "2026-10-22",
+  "readScope": "All17 complete localized descriptions, not sampled. Initial first8 untruncated; next9 combined output truncated; JA/KO,KN/ML andMR subsequently recovered and read separately in full. HE/HI/OR/PA full text visible in combined result. Current full Croatian widget paragraph reread after correction. Entire approved English description, localization plan/expansion bank and article evidence read.",
+  "independence": "Reviewer authored Group C and keyword proposal, not Group B. Own multilingual semantic review, not independent native-speaker certification or runtime/binary verification.",
+  "sourceHashes": {
+    "description-en-draft.txt": "7114a539ea780015f244c4c6596750ef6c8be6ebdbdd32445af5696f5047929b",
+    "description-en-review.json": "0e474c3d6c26a4915b96b1a72389464eca353e4500c36862389b0b811be46e07",
+    "description-localization-plan.json": "87527a67b6de0f12ed752ee9f95897a1a9c72394f708012a346c187621675e29",
+    "description-article-evidence.json": "2f30bd80c19788ce1da4b9c4437562e9875ceff5bbe1ea4d4f687754ff49ce3a"
+  },
+  "resolvedCorrection": {
+    "locale": "hr",
+    "before": "Odaberite prikaz datuma i vremena ili srednji i veliki widget",
+    "after": "Odaberite prikaz datuma i vremenske prognoze ili srednji i veliki widget",
+    "reason": "Clarifies date-and-weather layout rather than the usual date-and-time reading. Author applied narrow change; final full paragraph checked.",
+    "beforeCount": 3896,
+    "afterCount": 3907
+  },
+  "requiredChanges": [],
+  "findings": [
+    "Base Google/Meet/views/weather/widgets, Advanced ad removal, Premium Microsoft/Teams preserved in all17.",
+    "AppClip event preview versus full application for adding explicit in all17; no universal no-account sharing or attendance-confirmation promise. Older generic AppClip invitation introductions in several locales are clarified by the detailed sharing section, not treated as a new independent full-app-free flow.",
+    "Selected place/available hours/provider-dependent forecast and draft-not-booking are retained; wind/temperature map wording matches approved source, not runtime certification.",
+    "Upcoming widget lists focus future timed events, all-day/full-calendar distinction retained; Live Activity remains countdown rather than a Lock Screen widget claim.",
+    "Editing subject to editable event/time/repeat-scope checks; no universal recurrence prompt, automatic roster, cross-account busy masking or all-device delivery guarantee.",
+    "Full renewal conditions included: optional automatic subscription, current prices, purchase-confirmation payment,24-hour cancellation threshold, preceding24-hour renewal charge window and account management. Some payment sentences precede plan section; they remain visible and unambiguous.",
+    "Longer JA/KO expansion uses useful source-aligned scenarios rather than repeated keyword lists.",
+    "All17 within3800–4000 Unicode codepoints; exact2URLs each once."
+  ],
+  "localeChecks": {
+    "it": {
+      "characters": 3950,
+      "valueUtf8Sha256": "c6343b9a503181f82d149f621b14a68781af18b69797e61c3e79ebbcfedfaae1",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "nl-NL": {
+      "characters": 3991,
+      "valueUtf8Sha256": "2c7e530c8cd4e007b21b3b84afa2f229e2460cac587ef8a72dc3262c92ae1f04",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "pl": {
+      "characters": 3987,
+      "valueUtf8Sha256": "59281b7cc6a5a75dc38b06d89df5ba632812cb407337f2f074cf423a64728ae5",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "hr": {
+      "characters": 3907,
+      "valueUtf8Sha256": "aeb9611be6026dc8916baaea682d20eab690ba80ac75811043ab186038281a17",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "hu": {
+      "characters": 3991,
+      "valueUtf8Sha256": "03d587a82e7deeea4126fe3c4ed8566a29ead113fbd03d34e9d29ac23ec478f3",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "id": {
+      "characters": 4000,
+      "valueUtf8Sha256": "8e78ac6ea79d2b117c2a12928cbd7177a1ec0d5812d1fd7cc5531fda874627b4",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "ms": {
+      "characters": 3971,
+      "valueUtf8Sha256": "3ea9e7c7518e644ba2f31e3a7df3c6c63f50c421891ce7dfd668b427626b93ca",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "no": {
+      "characters": 3953,
+      "valueUtf8Sha256": "efb85374c659b892324335edc7bbe5a84fb57126a9212cad75623cddae1bc1a9",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "he": {
+      "characters": 3849,
+      "valueUtf8Sha256": "7508a30488fb9ff466367e1eef82fef2dd987f55d9c1ea9495c4f17e4438328b",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "hi": {
+      "characters": 3865,
+      "valueUtf8Sha256": "9c8a3360b3b3f941aeec3a2a52579e04abc3d9de9652beec628913f17cb6a7de",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "ja": {
+      "characters": 3827,
+      "valueUtf8Sha256": "5198d1b286d74da098af085559dcba43416642fb7d3c1115386022e38d2a42a3",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "ko": {
+      "characters": 3938,
+      "valueUtf8Sha256": "d98bdca852fbe57a48519cfc53ac1b938e88ebf3ce292c0fc8b8ab3a44edcffa",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate-high semantic confidence; not native-speaker approval"
+    },
+    "kn-IN": {
+      "characters": 3821,
+      "valueUtf8Sha256": "0547868ec09d4de65e5f7f1c0ec3ddb01aa396d5b743b0690f07211231f03d26",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "ml-IN": {
+      "characters": 3980,
+      "valueUtf8Sha256": "80d45f74cd61c1ac4c1670542808957427f14b94852a8bc60ed45f8170049ba9",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "mr-IN": {
+      "characters": 3880,
+      "valueUtf8Sha256": "3d8a19632e947953079a4fb8833784ccd2ddf7b611135404976ba4f1587ad895",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "or-IN": {
+      "characters": 3822,
+      "valueUtf8Sha256": "25a052c35b4b951e4d3fe41dfb1ae6cb3228307da6201bf2c2167964523bde08",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    },
+    "pa-IN": {
+      "characters": 3853,
+      "valueUtf8Sha256": "1a7237e68e615316ac91a44d139c158d85f1e15e3a7ff26e87457f1ab4cefff7",
+      "completeBodyRead": true,
+      "assessment": "No remaining material semantic blocker",
+      "confidence": "Moderate; own semantic review, not native-speaker approval"
+    }
+  },
+  "noAPIWrites": true
+}

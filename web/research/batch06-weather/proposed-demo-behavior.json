@@ -1,0 +1,38 @@
+{
+  "status": "Implementation proposals only; no source integration",
+  "changes": [
+    {
+      "priority": 1,
+      "file": "src/app/components/weather-hub/weather-hub.component.html",
+      "location": "hourly__hint and persistent demo label",
+      "before": "offline -> sample label; snapshot -> live attribution; otherwise tapAnHour only",
+      "afterBehavior": "When snapshot is null, always show localized sample-data status, including initial SSR/loading and network failure. Keep a persistent website-demo label explaining Open-Meteo versus native WeatherKit. When snapshot exists show its place and timestamp; do not relabel an old snapshot as the newly requested city.",
+      "englishNewCopy": {
+        "demoLabel": "Website weather demo · Open-Meteo. The app uses Apple WeatherKit and may show a different forecast range.",
+        "sampleState": "Sample data for this demonstration, not a live forecast for the selected place.",
+        "loadingState": "Loading weather for the selected place…"
+      }
+    },
+    {
+      "priority": 1,
+      "file": "src/app/components/weather-hub/weather-hub.component.ts",
+      "path": "views[daily].label",
+      "before": "14 days",
+      "after": "Daily",
+      "reason": "Range-neutral tab; visible dates show returned coverage. Retain provider request14 if desired as explicitly separate demo, not app promise."
+    },
+    {
+      "priority": 2,
+      "file": "src/app/content/home/types.ts and actual30home copy modules",
+      "afterBehavior": "Localize demo label/sample/loading strings and tab labels; source currently hardcodes English. Keep existing image/media intact.",
+      "noAutomaticPatch": "Requires schema and template integration by root after review; not performed."
+    }
+  ],
+  "acceptanceChecksForLaterIntegration": [
+    "Before first fetch, rendered sample values are explicitly marked sample.",
+    "During failed fetch, sample values are never claimed as live selected-place weather.",
+    "On success, provider/place/time identify demo data; no14day native guarantee.",
+    "Locale labels translated; no loss of existing widget batch05 fields.",
+    "No calendar/weather data availability or permissions inferred from browser demo."
+  ]
+}

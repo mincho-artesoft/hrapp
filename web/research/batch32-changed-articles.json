@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-22T03:02:37.668Z",
+  "count": 9,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "de-DE",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/de-DE/articles.ts",
+      "title": "Kalender auf dem iPhone bündeln und Termine im Blick behalten",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Kalenderkonten auf dem iPhone gemeinsam anzeigen. Prüfe Speicherziele, doppelte Verbindungen, Änderungen und Benachrichtigungen vor dem Wechsel.",
+      "descriptionCharacters": 144
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-an-all-day-event-really-means",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "title": "All-day calendar events: dates, availability and missing widget entries",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 5,
+      "updated": "2026-10-22",
+      "description": "Check all-day dates, availability and widget omissions. For a missing birthday, identify the contact or calendar source before adding a duplicate.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Calendarios Microsoft y Exchange en iPhone: comprueba primero la conexión",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Revisa el tipo de cuenta Microsoft, la autorización de la empresa y los permisos antes de conectar el calendario. Qué añade Cloud Calendars Premium.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "es-ES",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/es-ES/articles.ts",
+      "title": "Reúne tus calendarios en iPhone sin perder de vista los eventos",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Reúne tus cuentas de calendario en iPhone. Comprueba destinos, duplicados, cambios en el proveedor y avisos antes de cambiar tu rutina.",
+      "descriptionCharacters": 135
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Calendriers Microsoft et Exchange sur iPhone : vérifiez d’abord la connexion",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Vérifiez le type de compte Microsoft, l’accord de l’employeur et les droits avant de connecter un calendrier. Ce qu’ajoute Cloud Calendars Premium.",
+      "descriptionCharacters": 147
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "Réunir ses calendriers sur iPhone sans perdre le fil des événements",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Réunissez vos calendriers sur iPhone. Vérifiez les comptes, les copies, les modifications et les alertes avant de changer vos habitudes.",
+      "descriptionCharacters": 136
+    },
+    {
+      "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Calendari Microsoft ed Exchange su iPhone: verifica prima la connessione",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-22",
+      "description": "Controlla tipo di account Microsoft, approvazione aziendale e permessi prima di collegare un calendario. Cosa aggiunge Cloud Calendars Premium.",
+      "descriptionCharacters": 143
+    },
+    {
+      "locale": "it",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/it/articles.ts",
+      "title": "Riunisci i calendari su iPhone senza perdere di vista gli eventi",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Riunisci i calendari su iPhone. Verifica account, copie, modifiche e notifiche prima di cambiare il tuo modo di organizzarti.",
+      "descriptionCharacters": 125
+    }
+  ]
+}

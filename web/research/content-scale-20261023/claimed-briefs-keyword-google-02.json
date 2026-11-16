@@ -1,0 +1,73 @@
+{
+  "agent": "keyword_intent_map",
+  "date": "2026-10-23",
+  "batch": "google-batch-02",
+  "claims": [
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "status": "draft_written_needs_independent_review",
+      "scope": "Google native consumer workflow; excludesClaude24,baseline73,source8,Apple8,technical8"
+    }
+  ],
+  "sourceReadChanges": [
+    "Dropped native account-add overview because it overlaps sync diagnosis.",
+    "Dropped cosmetic appearance guide from strong first wave.",
+    "Added source-confirmed per-event RSVP email switch and third-party reply consequence.",
+    "Added assigned-task spam removal, distinct from unwanted event invitations."
+  ]
+}

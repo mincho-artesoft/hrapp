@@ -1,0 +1,704 @@
+{
+  "generatedAt": "2026-10-23T12:40:00+03:00",
+  "agent": "argon",
+  "batchId": "argon-batch-01",
+  "sourceLanguage": "en-US",
+  "records": {
+    "pitman-2-2-3-shift-schedule-calendar-setup": {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "primaryKeyword": "pitman 2 2 3 shift calendar",
+      "intentKey": "shift:pitman-2-2-3-biweekly-decomposition",
+      "cluster": "C03",
+      "readerOutcome": "Build a 14-day Pitman 2-2-3 shift schedule in Apple, Google, or iCalendar using two alternating biweekly (`FREQ=WEEKLY;INTERVAL=2`) rules (`BYDAY=MO,TU,FR,SA,SU` in Week 1 and `BYDAY=WE,TH` in Week 2) and verify the 4-crew 84-hour cycle arithmetic.",
+      "distinctValue": "Provides an illustrative 14-day four-crew Pitman matrix (Teams A, B, C, D across Nov 2–15, 2026) and the exact two-series biweekly `BYDAY` decomposition (`60h` Week 1 + `24h` Week 2 = `84h` per 14 days).",
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers only the 14-day Pitman 2-2-3 rotation and its two-series biweekly `BYDAY` decomposition; excludes general shift app overviews, 28-day DuPont cycles, and 3-platoon 24/48 firefighter schedules.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "recurring-events-without-the-mess",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`RECUR` value type: `FREQ=WEEKLY`, `INTERVAL=2`, `BYDAY`, `WKST`) and Section 3.8.5.3 (`RRULE`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar recurring event creation/editing rules and the 730-occurrence maximum limit for recurring series."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/iph69525c028/ios",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation on setting up separate subcalendars on iPhone."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift official help documentation on the Rotation feature (up to 2 years per rotation entry) and external Calendar Export."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "dupont-28-day-rotating-shift-calendar-cycle": {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "primaryKeyword": "dupont shift schedule calendar",
+      "intentKey": "shift:dupont-28-day-four-week-rotation",
+      "cluster": "C03",
+      "readerOutcome": "Map a 28-day four-crew DuPont rotating shift schedule (`4N-3O-3D-1O-3N-3O-4D-7O`) into a calendar using four 4-week (`FREQ=WEEKLY;INTERVAL=4`) or 28-day (`FREQ=DAILY;INTERVAL=28`) rules while preserving the 7-day stretch off.",
+      "distinctValue": "Includes a complete 28-day four-crew DuPont progression matrix (Days 1–28 across Crews A, B, C, D) showing the 14 shifts (`7 Day + 7 Night = 168 hours`, averaging `42.0h/week`) and the exact turnaround hours between segments.",
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "closestNeighbor": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "boundary": "Covers only the 28-day DuPont 4-week day/night rotating cycle with its signature 7 consecutive days off; excludes 14-day Pitman 2-2-3 and 3-platoon 24/48 schedules.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "month-view-on-a-bigger-screen",
+        "the-year-in-one-screen"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`FREQ=WEEKLY;INTERVAL=4`, `FREQ=DAILY;INTERVAL=28`, `BYDAY`, `WKST`) and Section 3.8.2.7 (`TRANSP`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar custom recurrence and recurring event editing documentation."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift help documentation on multi-week rotations (up to 2 years per entry) and per-shift-color Calendar Export."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "firefighter-24-48-kelly-day-calendar-pattern": {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "primaryKeyword": "24 48 shift calendar kelly day",
+      "intentKey": "shift:24-48-three-platoon-kelly-day-exdate",
+      "cluster": "C03",
+      "readerOutcome": "Configure a 24 hours on / 48 hours off three-platoon calendar (`FREQ=DAILY;INTERVAL=3`) across its 21-day weekday realignment cycle and remove recurring Kelly Days using `This event only` (`EXDATE`) without shifting future tours.",
+      "distinctValue": "Provides an illustrative 21-day three-platoon (A/B/C) schedule table and calculates how Kelly Day intervals (every 7th shift = 21 days / 48.0h/wk, every 9th shift = 27 days / 49.78h/wk, every 10th shift = 30 days / 50.4h/wk) overlay onto the 56.0h/wk base rotation.",
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "closestNeighbor": "shift-work-calendar-iphone-rotating-schedules",
+      "boundary": "Covers only the 3-day (72-hour) 24/48 three-platoon cycle and Kelly Day single-instance removal (`EXDATE`); excludes 12-hour Pitman/DuPont industrial shifts.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "recurring-events-without-the-mess",
+        "the-year-in-one-screen"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.10 (`FREQ=DAILY;INTERVAL=3`) and Section 3.8.5.1 (`EXDATE` exception date-times for single removed occurrences)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar rules for deleting or editing a single occurrence (`This event`) versus `This and following events`."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/iph69525c028/ios",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support guide on managing separate calendars on iPhone."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift help documentation on Rotations and Multi-Edit delete/copy actions."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "overnight-shift-crossing-midnight-calendar-end-date": {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "primaryKeyword": "night shift crossing midnight calendar",
+      "intentKey": "shift:overnight-cross-midnight-dtstart-dtend-anchoring",
+      "cluster": "C03",
+      "readerOutcome": "Enter overnight shifts (`19:00–07:00` or `23:00–07:00`) across the `00:00` midnight boundary with `DTSTART` on the start evening and `DTEND` on the next morning so `BYDAY` recurrence rules and Day/Week/Month views stay accurate.",
+      "distinctValue": "Compares three concrete calendar representations for a `Mon 19:00 – Tue 07:00` night shift (single cross-midnight timed event, split midnight `5h + 7h` timesheet blocks, and start-date badge + recovery block) and explains why `BYDAY` evaluates only the `DTSTART` weekday.",
+      "existingOverlapSlug": "what-an-all-day-event-really-means",
+      "closestNeighbor": "what-an-all-day-event-really-means",
+      "boundary": "Covers only timed overnight shifts crossing `00:00` midnight on standard days (`DTEND` on Day N+1 and `BYDAY` start-day anchoring); excludes all-day `VALUE=DATE` exclusive end dates and DST transition nights.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "what-an-all-day-event-really-means",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.8.2.4 (`DTSTART`), Section 3.8.2.2 (`DTEND` ordering constraint), and Section 3.3.10 (`BYDAY` evaluation against `DTSTART`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation on setting event start and end dates/times on iPhone."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar recurring event rules."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift help documentation on shift creation and rotation export."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "split-shift-two-work-periods-calendar-blocking": {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "primaryKeyword": "split shift calendar two work periods",
+      "intentKey": "shift:split-shift-dual-work-blocks-unpaid-break",
+      "cluster": "C03",
+      "readerOutcome": "Schedule a split shift (`06:30–10:30` and `16:00–20:00`) as two synchronized recurring calendar events so the unpaid midday break (`10:30–16:00`) stays free for appointments and weekly hours total 40.0h instead of 67.5h.",
+      "distinctValue": "Provides a quantitative comparison of the Two-Event Split Model (`4.0h + 4.0h = 8.0h` work within a `13.5h` daily spread and `10.5h` overnight turnaround) versus the single stretched event anti-pattern (`13.5h` false busy block).",
+      "existingOverlapSlug": "planning-a-week-in-ten-minutes",
+      "closestNeighbor": "planning-a-week-in-ten-minutes",
+      "boundary": "Covers only split shifts with two distinct active work windows separated by a multi-hour unpaid midday break on the same day; excludes continuous single-block shifts and on-call standby.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "planning-a-week-in-ten-minutes",
+        "a-week-view-that-fits-a-week",
+        "shift-work-calendar-iphone-rotating-schedules"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.6.1 (`VEVENT` contiguous interval semantics) and Section 3.8.2.7 (`TRANSP` `OPAQUE` vs `TRANSPARENT`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar recurring event documentation."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/iph3d110f84/ios",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation on creating and editing timed events on iPhone."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift help documentation on regular hours and multi-edit shift management."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "on-call-standby-calendar-versus-confirmed-shift": {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "primaryKeyword": "on call calendar without blocking availability",
+      "intentKey": "shift:on-call-standby-free-busy-transp-separation",
+      "cluster": "C03",
+      "readerOutcome": "Separate `Free` (`TRANSP:TRANSPARENT`) on-call standby rotations from `Busy` (`TRANSP:OPAQUE`) confirmed shifts and active call-out incidents so a 7-day (`168-hour`) pager rotation does not block daytime availability.",
+      "distinctValue": "Provides a three-layer calendar architecture and illustrative 7-day hour audit separating `40.0h` confirmed shifts (`OPAQUE`), `128.0h` off-shift standby coverage (`TRANSPARENT`), and `7.0h` across three active call-out incidents (`OPAQUE`).",
+      "existingOverlapSlug": "booking-link-or-shared-calendar",
+      "closestNeighbor": "booking-link-or-shared-calendar",
+      "boundary": "Covers only separating unworked standby/pager coverage (`TRANSP:TRANSPARENT`) from confirmed work shifts and active callback blocks (`TRANSP:OPAQUE`); excludes booking links and external scheduling tools.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "booking-link-or-shared-calendar",
+        "shift-work-calendar-iphone-rotating-schedules",
+        "what-an-all-day-event-really-means"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.8.2.7 (`Time Transparency` — `TRANSP:OPAQUE` vs `TRANSP:TRANSPARENT` free/busy time search semantics)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/icl1018/mac",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation on creating separate calendars on Mac."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37115?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar recurring event documentation."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.supershift.app/help.html",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Supershift help documentation on Shift Calendars and Calendar Export."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "us-uk-dst-mismatch-weeks-recurring-meeting-calendar": {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "primaryKeyword": "us uk daylight saving time difference meeting",
+      "intentKey": "tz:us-uk-europe-asynchronous-dst-gap-weeks",
+      "cluster": "C04",
+      "readerOutcome": "Predict and manage the 1-hour wall-clock shift during the annual US–UK/Europe DST mismatch windows (March 8–28, 2026 and October 25–31, 2026) by choosing the right organizer `TZID` and single-occurrence exceptions.",
+      "distinctValue": "Maps all five 2026 offset regimes between `America/New_York` (`EST`/`EDT`) and `Europe/London` (`GMT`/`BST`) using official USNO and GOV.UK transition dates and shows how anchoring in NY vs London shifts the other city by 1 hour during the 4 gap weeks.",
+      "existingOverlapSlug": "when-two-calendars-disagree",
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Covers specifically the asynchronous US (2nd Sunday March / 1st Sunday November) vs UK/EU (last Sunday March / last Sunday October) DST switch weeks and organizer `TZID` anchoring; excludes general sync bugs and flight bookings.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory Daylight Saving Time FAQ (15 U.S.C. Ch. 6 Subch. IX & Energy Policy Act of 2005: starts 2nd Sunday in March at 02:00, ends 1st Sunday in November at 02:00)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.gov.uk/when-do-the-clocks-change",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read GOV.UK official British Summer Time dates (2026: clocks go forward 29 March and back 25 October at 01:00 GMT / 02:00 BST; 2027: 28 March and 31 October)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.8.5.3 (`RRULE` evaluation using the local time zone specified in `DTSTART;TZID=...`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official time zone documentation (events converted to UTC at creation and displayed in each viewer's local time zone)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Outlook time zone documentation (meeting organizer's time zone serves as the reference point and times are stored in UTC)."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "non-dst-time-zone-arizona-hawaii-recurring-calendar": {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "primaryKeyword": "arizona time zone daylight saving calendar meeting",
+      "intentKey": "tz:non-dst-jurisdiction-arizona-hawaii-offset-shift",
+      "cluster": "C04",
+      "readerOutcome": "Select the correct non-DST IANA identifiers (`America/Phoenix` at `UTC-07:00` and `Pacific/Honolulu` at `UTC-10:00`) and anticipate how recurring meetings with DST-observing states shift by 1 hour every March and November.",
+      "distinctValue": "Provides a Winter vs Summer alignment table across New York (`America/New_York`), Denver (`America/Denver`), Phoenix (`America/Phoenix`), Los Angeles (`America/Los_Angeles`), and Honolulu (`Pacific/Honolulu`) for both NY-anchored and Phoenix-anchored recurring series.",
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically year-round standard-time jurisdictions (`America/Phoenix` and `Pacific/Honolulu`) interacting with DST-observing zones; excludes US–UK mismatch weeks and Southern Hemisphere reverse DST.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "recurring-events-without-the-mess"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory Daylight Saving Time FAQ confirming that Hawaii, U.S. insular areas, and most of Arizona (outside the Navajo Nation) do not observe DST."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read IANA Time Zone Database documentation on distinct `Area/Location` zone rules."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.2.19 (`TZID`) and Section 3.6.5 (`VTIMEZONE` with vs without `DAYLIGHT` subcomponents)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar time zone conversion and display documentation."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "overnight-event-across-dst-spring-forward-fall-back-duration": {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "primaryKeyword": "night shift daylight saving time change duration",
+      "intentKey": "tz:overnight-event-across-dst-discontinuity-dtend-vs-duration",
+      "cluster": "C04",
+      "readerOutcome": "Understand why an overnight shift or event (`22:00–06:00` or `19:00–07:00`) crossing the spring-forward or fall-back night changes between 7/9 hours (or 11/13 hours) when defined by wall-clock `DTEND` versus shifting end time by 1 hour when defined by `DURATION`.",
+      "distinctValue": "Applies RFC 5545 Sections 3.3.5, 3.3.6, 3.8.2.5, and 3.8.5.3 to calculate exact UTC timestamps and elapsed durations for `22:00–06:00` and `19:00–07:00` across March 7–8, 2026 and October 31–November 1, 2026, including nonexistent `02:30` gap and repeated `01:30` fold resolution.",
+      "existingOverlapSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "closestNeighbor": "overnight-shift-crossing-midnight-calendar-end-date",
+      "boundary": "Covers specifically the two annual DST transition nights (23-hour spring-forward day and 25-hour fall-back day) and RFC 5545 `DTEND` vs `DURATION` math; excludes ordinary midnight-crossing shifts on standard 24-hour days.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "shift-work-calendar-iphone-rotating-schedules",
+        "when-two-calendars-disagree",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.3.5 (`DATE-TIME` nonexistent gap adjustment and repeated hour first-occurrence rule), Section 3.3.6 (`DURATION` exact vs nominal duration across DST), and Section 3.8.5.3 (`RRULE` DST discontinuity note)."
+        },
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory DST transition hour rules (02:00 local standard -> 03:00 DST in March; 02:00 local DST -> 01:00 standard in November)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.gov.uk/when-do-the-clocks-change",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read GOV.UK clock change rules (01:00 GMT -> 02:00 BST in March; 02:00 BST -> 01:00 GMT in October)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar UTC storage and time zone handling documentation."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "separate-start-and-end-time-zones-calendar-events": {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "primaryKeyword": "separate start and end time zones calendar",
+      "intentKey": "tz:dual-endpoint-tzid-dtstart-dtend-elapsed-duration",
+      "cluster": "C04",
+      "readerOutcome": "Assign distinct start (`DTSTART;TZID=...`) and end (`DTEND;TZID=...`) time zones on cross-time-zone events in Google Calendar, Outlook, and Apple Calendar so elapsed UTC duration and grid height are computed without manual offset arithmetic.",
+      "distinctValue": "Calculates exact `DTSTART`, `DTEND`, UTC conversions, and single-zone duration errors across three routes: Eastbound (`LAX -> JFK`, 5.5h vs 8.5h error), Westbound (`LHR -> JFK`, 8.0h vs 3.0h error), and Westbound across the International Date Line (`NRT -> LAX`, landing 7 wall-clock hours 'earlier' on the same date).",
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "closestNeighbor": "time-zones-and-the-flight-you-booked",
+      "boundary": "Covers specifically the protocol mechanics (`DTSTART;TZID` + `DTEND;TZID`), UI controls in Google/Outlook/Apple, and UTC duration math of dual-endpoint time zones; complements the narrative overview in `time-zones-and-the-flight-you-booked`.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "how-to",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.2.19 (`TZID` parameter on individual properties), Section 3.8.2.2 (`DTEND`), and Section 3.8.2.4 (`DTSTART`)."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official documentation on setting separate start and end time zones and UTC storage conversion."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Microsoft Outlook documentation on selecting separate start and end time zones for an appointment or meeting."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/iph69525c028/ios",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Apple Support documentation on Calendar time zone settings on iPhone."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "southern-hemisphere-reverse-dst-two-hour-meeting-shift": {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "primaryKeyword": "southern hemisphere daylight saving time meeting shift",
+      "intentKey": "tz:northern-vs-southern-hemisphere-opposite-dst-2h-swing",
+      "cluster": "C04",
+      "readerOutcome": "Plan recurring meetings between North America/Europe and Southern Hemisphere DST zones (`Australia/Sydney`, `Pacific/Auckland`, `America/Santiago`) across the four annual offset regimes and the full 2-hour seasonal swing.",
+      "distinctValue": "Maps all four seasonal regimes between New York (`EST`/`EDT`), London (`GMT`/`BST`), and Sydney (`AEST`/`AEDT`) showing the `14h -> 15h -> 16h -> 15h` offset progression and explains why non-DST Brisbane (`Australia/Brisbane`) shifts by only 1 hour while Sydney shifts by 2 hours.",
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "closestNeighbor": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "boundary": "Covers specifically opposite-hemisphere DST schedules where one endpoint springs forward while the other falls back (creating a 2-hour annual swing across four seasonal windows); excludes same-hemisphere US–UK mismatch weeks.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "planning",
+      "proposedIntent": "guide",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "time-zones-and-the-flight-you-booked",
+        "when-two-calendars-disagree",
+        "a-week-view-that-fits-a-week"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory Daylight Saving Time FAQ noting that in the Southern Hemisphere, summer time is reversed (starting in autumn/spring opposite the Northern Hemisphere)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.gov.uk/when-do-the-clocks-change",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read GOV.UK British Summer Time dates (last Sunday in March and last Sunday in October)."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read IANA Time Zone Database documentation on regional DST rules."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar time zone conversion and recurring event display rules."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    },
+    "iana-tzdb-government-time-zone-rule-change-calendar": {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "primaryKeyword": "time zone rule change calendar wrong hour",
+      "intentKey": "tz:iana-tzdb-legislation-change-stale-utc-or-vtimezone",
+      "cluster": "C04",
+      "readerOutcome": "Diagnose and fix the 1-hour calendar drift that hits previously created events after a government abolishes DST or changes time zone rules, understanding both creation-time UTC conversion and stale embedded `VTIMEZONE` snapshots.",
+      "distinctValue": "Traces an illustrative `09:00` event created before vs after a government DST abolition (`UTC-05:00` -> `UTC-06:00`), explaining why Google Calendar's documented creation-time UTC conversion (`14:00Z`) renders at `08:00` after the IANA `tzdb` update and how to repair affected events.",
+      "existingOverlapSlug": "when-two-calendars-disagree",
+      "closestNeighbor": "when-two-calendars-disagree",
+      "boundary": "Covers specifically political/legislative time zone rule changes, IANA `tzdb` updates, creation-time UTC conversion drift documented by Google Calendar, and embedded `VTIMEZONE` snapshots; excludes routine semi-annual DST transitions.",
+      "canonicalDecision": "standalone-new-article",
+      "proposedFamily": "help",
+      "proposedIntent": "troubleshooting",
+      "language": "en-US",
+      "adjacentArticlesRead": [
+        "when-two-calendars-disagree",
+        "time-zones-and-the-flight-you-booked",
+        "what-calendar-sync-actually-does"
+      ],
+      "originalExampleStatus": "illustrative-verified-against-spec",
+      "firsthandTesting": false,
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.iana.org/time-zones",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read IANA Time Zone Database documentation explaining how `tzdb` (`zoneinfo`) is updated when political bodies change UTC offsets or daylight-saving rules and distributed via OS/software updates."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read Google Calendar official section 'How Google Calendar handles time zone policy changes' confirming that events are converted to UTC at creation time using known rules, so events created before a time zone rule change may be off."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read RFC 5545 Section 3.6.5 (`VTIMEZONE` component embedding `STANDARD` and `DAYLIGHT` rules in iCalendar objects)."
+        },
+        {
+          "type": "primary",
+          "url": "https://aa.usno.navy.mil/faq/daylight_time",
+          "verifiedAt": "2026-10-23",
+          "retrievedAt": "2026-10-23",
+          "note": "Read U.S. Naval Observatory documentation on statutory authority over time zone boundaries and DST rules."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reviewer": "argon",
+        "checkedAt": "2026-10-23",
+        "reason": "Needs independent editorial and integration review; worked example is marked illustrative and no firsthand runtime testing is claimed."
+      }
+    }
+  }
+}

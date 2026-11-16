@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22T04:50:30.079Z",
+  "count": 5,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "recurring-events-without-the-mess",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Wiederkehrende Termine: einen einzelnen Termin oder die Serie gezielt ändern",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Prüfe Kalender, Bearbeitungsrechte und Umfang einer Serienänderung. Behalte einzelne Ausnahmen im Blick, ohne die Terminserie zu löschen.",
+      "descriptionCharacters": 137
+    },
+    {
+      "locale": "de-DE",
+      "slug": "time-zones-and-the-flight-you-booked",
+      "file": "src/app/content/de-DE/articles-help.ts",
+      "title": "Zeitzonen im Kalender: Termine vor der Reise prüfen",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Terminzeitzone und angezeigte Zeitzone unterscheiden: Prüfe Flüge, Termine am Reiseziel und wiederkehrende Anrufe, bevor du eine Uhrzeit änderst.",
+      "descriptionCharacters": 145
+    },
+    {
+      "locale": "en-US",
+      "slug": "the-secret-address-of-a-google-calendar",
+      "file": "src/app/content/en-US/articles-google.ts",
+      "title": "Google’s secret iCal address: subscribe without confusing it with sharing",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 5,
+      "updated": "2026-10-22",
+      "description": "Understand Google’s secret iCal address, account connections and shared feeds. Handle an exposed address without promising instant updates or erased copies.",
+      "descriptionCharacters": 156
+    },
+    {
+      "locale": "en-US",
+      "slug": "disconnect-calendar-integration-without-losing-track",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Disconnect a calendar integration: access, sync and existing copies",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Separate calendar sign-out, provider access and existing copies. Check Cloud Calendars account routes before disconnecting or removing a calendar.",
+      "descriptionCharacters": 146
+    },
+    {
+      "locale": "en-US",
+      "slug": "unwanted-calendar-events-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "Unwanted calendar events on iPhone: invitations, subscriptions and spam",
+      "sections": 7,
+      "faqs": 4,
+      "sources": 4,
+      "updated": "2026-10-22",
+      "description": "Identify unwanted invitations or subscribed calendars on iPhone. Check Apple and Google reporting options and settings for future invitations.",
+      "descriptionCharacters": 142
+    }
+  ]
+}

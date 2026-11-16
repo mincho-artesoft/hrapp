@@ -1,0 +1,211 @@
+channel,query_or_prompt,page,coverage,evidence
+Google,best iPhone calendar app with weather,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,existing,google-observations.json
+Google,iPhone app combine iCloud Google Outlook calendars,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,existing,google-observations.json
+Google,best Fantastical alternative iPhone calendar,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,implemented-comparison,google-observations.json
+Google,best calendar widget iPhone upcoming events weather,https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/,existing,google-observations.json
+Google,best shift work calendar app iPhone rotating schedule,https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/,new,google-observations.json
+Google,best time blocking calendar app iPhone,https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/,implemented-comparison,google-observations.json
+Google,privacy calendar app iPhone offline no account,https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/,research,google-observations.json
+Google,shift calendar app export Apple Calendar,https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/,new,google-observations.json
+Google,calendar app booking link availability iPhone,https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/,new,google-observations.json
+Google,calendar app natural language input iPhone,https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/,new,google-observations.json
+Google,calendar app tasks reminders iPhone together,https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/,implemented-comparison,google-observations.json
+Google,best offline calendar app iPhone no subscription,https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/,expand,google-observations.json
+Google,best shared family calendar app iPhone Android,https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/,implemented-comparison,google-observations.json
+Google,iPhone calendar not syncing Google Outlook,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,existing,google-observations.json
+Google,best iPad calendar week month view,https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/,existing,google-observations.json
+Google,print iPhone calendar export PDF ICS,https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/,existing,google-observations.json
+Google,calendar app travel time zones iPhone,https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/,existing,google-observations.json
+Google,recurring events calendar app iPhone custom repeat,https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/,existing,google-observations.json
+Google,free calendar app iPhone Google sync no ads,https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/,existing,google-observations.json
+Google,best visual calendar planner ADHD iPhone,https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/,research,google-observations.json
+Google,Fantastical alternative calendar iPhone,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,implemented-comparison,google-observations.json
+Google,Calendars by Readdle alternative iPhone,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,implemented-comparison,google-observations.json
+Google,TimeTree alternative shared family calendar iPhone,https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/,implemented-comparison,google-observations.json
+Google,Cozi alternative shared calendar iPhone,https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/,implemented-comparison,google-observations.json
+Google,iPhone calendar app Apple Reminders Google Tasks integration,https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/,new,google-observations.json
+Google,Motion alternative automatic time blocking calendar iPhone,https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/,new,google-observations.json
+Google,Cozi vs TimeTree external calendar sync,https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/,new,google-observations.json
+Google,Kalender App iPhone Wetter Termine,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,research,google-observations.json
+Google,iPhone カレンダー 天気 予定 アプリ,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,research,google-observations.json
+Google,Calendar 366 vs Fantastical iPhone,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,implemented-comparison,google-observations.json
+Google,what is a cloud calendar,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,new,google-observations.json
+Google,Fantastical vs Calendars by Readdle Calendar 366 iPhone,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,new,google-observations.json
+Google,iPhone calendar showing Chinese characters language alternate calendar,https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/,new,google-observations.json
+Google,share assign reminders iPhone family list,https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/,new,google-observations.json
+Google,can others see my Google Calendar tasks,https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/,new,google-observations.json
+Google,iPad wall calendar Skylight alternative family display,https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/,new,google-observations.json
+Google,sync Google Tasks Apple Reminders two way iPhone,https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/,new,google-observations.json
+Google,BusyCal vs Fantastical iPhone calendar reminders weather,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,expanded-comparison,google-observations.json
+Google,Hijri Hebrew date iPhone Lock Screen widget,https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/,expanded-existing,google-observations.json
+Google,Google Calendar vs Fantastical iPhone,https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/,expanded-comparison,google-observations.json
+Google,Any.do calendar iPhone Google iCloud sync,https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/,expanded,google-observations.json
+Google,Vimcal iPhone calendar time zones availability,https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/,expanded,google-observations.json
+Google,Amie Google Calendar tasks scheduling iPhone,https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/,expanded,google-observations.json
+Google,Dejal Weather Events calendar weather history iPhone,https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/,new,google-observations.json
+Google,"""Weather Calendar Together"" iPhone",https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,limited-source-unavailable,google-observations.json
+ChatGPT,"Which iPhone-compatible planning apps automatically reschedule tasks around meetings, compared with manual time blocking? Compare FlowSavvy, Motion and other suitable options, explain scheduling limits and cite official sources.",https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-auto-scheduling.json
+ChatGPT,"Which iPhone apps let me see iCloud, Google and Outlook calendars together? Distinguish a combined view from copying busy time between accounts, and cite official sources for the products you recommend.",https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-combine.json
+ChatGPT,"Which iPhone calendar apps let me drag appointments to reschedule them? Compare suitable options, explain limits for recurring or shared events and cite current official sources.",https://www.cloud-calendars.com/articles/drag-an-event-to-move-it/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-drag-edit.json
+ChatGPT,"Which shared family calendar apps work for an iPhone and Android household coordinating school pickups and changing schedules? Compare practical sharing and responsibility handoff, and cite official sources.",https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-family.json
+ChatGPT,"Which iPhone calendar apps offer Google Calendar syncing without a subscription? Distinguish free downloads, free syncing, ads and paid features. Compare current options using official sources rather than assuming free means ad-free.",https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-free-sync.json
+ChatGPT,"Which iPad calendar apps offer useful month and week views with weather for planning? Compare suitable options, distinguish a full calendar view from a widget and cite current official product sources.",https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-ipad.json
+ChatGPT,"Which iPhone calendar apps offer a Live Activity or Dynamic Island countdown to my next meeting? Distinguish this from a Lock Screen widget or an ordinary reminder notification, and cite current official sources.",https://www.cloud-calendars.com/articles/a-countdown-to-your-next-meeting/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-live-activity.json
+ChatGPT,"Which iPhone calendar apps can be used offline without a subscription? Distinguish viewing previously synced appointments, creating or editing offline, later syncing and features that still need internet. Cite official sources and identify any unsupported claims.",https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-offline.json
+ChatGPT,"Which iPhone calendar apps are suitable for rotating shift work, overnight shifts and seeing a work rota beside personal appointments? Distinguish specialist shift planners from ordinary calendar apps and cite official sources.",https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-shift.json
+ChatGPT,"Which iPhone calendar apps show tasks and reminders alongside appointments and let me mark tasks complete? Distinguish an event alert from a task, explain Apple Reminders and Google Tasks compatibility, and cite official sources.",https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-tasks.json
+ChatGPT,"Which iPhone or iPad calendar apps show weather alongside appointments? Compare suitable options, distinguish built-in weather from calendar feeds, and cite current official sources.",https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-weather.json
+ChatGPT,"Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Distinguish a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-widgets.json
+ChatGPT,"Can I use an iPad as a shared family calendar display instead of buying dedicated calendar hardware? Compare suitable approaches, distinguish a calendar app from a household display and explain sync limits using official sources.",https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-household-display.json
+ChatGPT,"How can I keep Google Tasks and Apple Reminders synchronized on iPhone? Compare a shared task view, true two-way syncing and automation. Explain fields or behaviours that may not transfer and cite official sources.",https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/,Candidate guide answers the workflow; not proof all recommended competitor features or all prompt clauses are fully covered.,chatgpt-task-bridge.json
+ChatGPT,"Which iPhone apps can save a record of daily weather in my calendar so I can look back months later? Distinguish a historical weather diary from a changing forecast display or subscribed weather feed, compare suitable options and cite official sources.",https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/,Weather diary versus forecast intent covered; other named diary products were not feature-tested or endorsed.,chatgpt-weather-history.json
+Own-site Search Console,cloud calendar,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-0
+Own-site Search Console,クラウドカレンダー,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-1
+Own-site Search Console,calendar cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-2
+Own-site Search Console,calendario cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-3
+Own-site Search Console,cloud calender,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-4
+Own-site Search Console,cloud calendars,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-5
+Own-site Search Console,googleカレンダーに天気を表示,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-6
+Own-site Search Console,appcloudcdn,,do-not-target,gsc-query-observations.json#row-7
+Own-site Search Console,cloud agenda,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-8
+Own-site Search Console,cloud kalender,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-9
+Own-site Search Console,cloud calendario,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-10
+Own-site Search Console,cloud based calendar,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-11
+Own-site Search Console,what happens when someone virws your google calendar,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-12
+Own-site Search Console,クラウド カレンダー,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-13
+Own-site Search Console,agenda cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-14
+Own-site Search Console,agenda in cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-15
+Own-site Search Console,クラウドカレンダーとは,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-16
+Own-site Search Console,cloud calander,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-17
+Own-site Search Console,calendar on the cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-18
+Own-site Search Console,dela kalender,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-19
+Own-site Search Console,outlook agenda,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-20
+Own-site Search Console,icloud naptár,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-21
+Own-site Search Console,יומן דיגיטלי,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-22
+Own-site Search Console,cloud calendar app,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-23
+Own-site Search Console,weather calendar for google,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-24
+Own-site Search Console,cloud calendar software,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-25
+Own-site Search Console,יומן דיגיטלי חינם,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-26
+Own-site Search Console,יומן פגישות,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-27
+Own-site Search Console,google kalender iphone,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,informational-target-existing,gsc-query-observations.json#row-28
+Own-site Search Console,יומן,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-29
+Own-site Search Console,calendario en la nube,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-30
+Own-site Search Console,cloudscheduling,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-31
+Own-site Search Console,cloud cal,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-32
+Own-site Search Console,kalendarz cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-33
+Own-site Search Console,weather calendar subscription,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-34
+Own-site Search Console,google calendar secret address,https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/,informational-target-existing,gsc-query-observations.json#row-35
+Own-site Search Console,hava cloud,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-36
+Own-site Search Console,udostępnienie kalendarza google,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-37
+Own-site Search Console,cloud days,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-38
+Own-site Search Console,delad kalender,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-39
+Own-site Search Console,cloud basierter kalender für beauty,,defer-product-fit,gsc-query-observations.json#row-40
+Own-site Search Console,weather almanac,,defer-intent-verification,gsc-query-observations.json#row-41
+Own-site Search Console,icloud kalender,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-42
+Own-site Search Console,sdílený kalendář google,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-43
+Own-site Search Console,icloud kalenteri,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-44
+Own-site Search Console,calendrier cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-45
+Own-site Search Console,googleカレンダー共有 表示 されない,https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/,informational-target-existing,gsc-query-observations.json#row-46
+Own-site Search Console,synka google kalender med iphone,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,informational-target-existing,gsc-query-observations.json#row-47
+Own-site Search Console,icloud weather,,defer-intent-verification,gsc-query-observations.json#row-48
+Own-site Search Console,kalender cloud,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-49
+Own-site Search Console,google weather calendar,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-50
+Own-site Search Console,accuweather google calendar,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-51
+Own-site Search Console,היומן של גוגל,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-52
+Own-site Search Console,delad kalender tillgänglighet,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-53
+Own-site Search Console,יומן משותף,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-54
+Own-site Search Console,cloudcal,,do-not-target-with-doorway,gsc-query-observations.json#row-55
+Own-site Search Console,kalenterimerkinnät,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-56
+Own-site Search Console,ok google когда будет,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-57
+Own-site Search Console,יומן פגישות חכם,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-58
+Own-site Search Console,календар погоди,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-59
+Own-site Search Console,googleカレンダー 共有 スマホ 表示されない,https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/,informational-target-existing,gsc-query-observations.json#row-60
+Own-site Search Console,kalenderbokning,https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/,informational-target-implemented,gsc-query-observations.json#row-61
+Own-site Search Console,clouds weather,,defer-intent-verification,gsc-query-observations.json#row-62
+Own-site Search Console,googleカレンダー 共有 iphone 表示されない,https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/,informational-target-existing,gsc-query-observations.json#row-63
+Own-site Search Console,agenda wolke,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-64
+Own-site Search Console,cloud date,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-65
+Own-site Search Console,are these free?,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-66
+Own-site Search Console,clouddate,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-67
+Own-site Search Console,fantastical cost,https://www.cloud-calendars.com/articles/what-fantastical-costs-and-what-this-does/,comparison-target-existing,gsc-query-observations.json#row-68
+Own-site Search Console,iphone google kalender,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,informational-target-existing,gsc-query-observations.json#row-69
+Own-site Search Console,"מה עדיף לעקוב על המחזור, אפליקציה או יומן ידני?",,do-not-target,gsc-query-observations.json#row-70
+Own-site Search Console,googledua,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-71
+Own-site Search Console,google行事曆不見,https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/,informational-target-existing,gsc-query-observations.json#row-72
+Own-site Search Console,calendar with weather,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-73
+Own-site Search Console,crowdcalendar,,do-not-target-with-doorway,gsc-query-observations.json#row-74
+Own-site Search Console,hur delar man google kalender,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-75
+Own-site Search Console,icloud kalender in google kalender,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,informational-target-existing,gsc-query-observations.json#row-76
+Own-site Search Console,weather calendar for google calendar,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-77
+Own-site Search Console,cloud schedule,https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/,generic-or-branded-intent-needs-distinction,gsc-query-observations.json#row-78
+Own-site Search Console,icloud takvim,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-79
+Own-site Search Console,要,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-80
+Own-site Search Console,cloudtoday,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-81
+Own-site Search Console,fourteen day,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-82
+Own-site Search Console,google calendar address,https://www.cloud-calendars.com/articles/the-secret-address-of-a-google-calendar/,informational-target-existing,gsc-query-observations.json#row-83
+Own-site Search Console,google カレンダー 天気,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-84
+Own-site Search Console,googleカレンダー 天気,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-85
+Own-site Search Console,is 44,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-86
+Own-site Search Console,تقويم الطقس,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-87
+Own-site Search Console,googleカレンダー 天気表示,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-88
+Own-site Search Console,icloud kalendarz,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-89
+Own-site Search Console,icloud календарь,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-90
+Own-site Search Console,kalender icloud,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-91
+Own-site Search Console,mausam ka calender,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-92
+Own-site Search Console,sim,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-93
+Own-site Search Console,нет календаря,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-94
+Own-site Search Console,apple 行事曆 同步 google,https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/,informational-target-existing,gsc-query-observations.json#row-95
+Own-site Search Console,cloud journee,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-96
+Own-site Search Console,icloud日曆,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-97
+Own-site Search Console,no aparece,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-98
+Own-site Search Console,受邀,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-99
+Own-site Search Console,cloudmagic calendar,,do-not-target-with-doorway,gsc-query-observations.json#row-100
+Own-site Search Console,יומן שעות,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-101
+Own-site Search Console,יומן אירועים להורדה,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-102
+Own-site Search Console,calendario de icloud,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,provider-navigation-or-setup-context,gsc-query-observations.json#row-103
+Own-site Search Console,7 & 14 day,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-104
+Own-site Search Console,ical weather,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-105
+Own-site Search Console,are tasks visible to others on google calendar,https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/,informational-target-implemented,gsc-query-observations.json#row-106
+Own-site Search Console,dream calendar,,do-not-target-with-doorway,gsc-query-observations.json#row-107
+Own-site Search Console,best weather calendar for google calendar,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-108
+Own-site Search Console,cloudforecast,,defer-intent-verification,gsc-query-observations.json#row-109
+Own-site Search Console,google 行事 曆 不見,https://www.cloud-calendars.com/articles/google-calendars-that-never-reach-your-iphone/,informational-target-existing,gsc-query-observations.json#row-110
+Own-site Search Console,how can others see my google calendar,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-111
+Own-site Search Console,if someone shared their google calendar can they see yours,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-112
+Own-site Search Console,can others see my tasks in google calendar,https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/,informational-target-implemented,gsc-query-observations.json#row-113
+Own-site Search Console,מוזמנים אישורי הגעה,https://www.cloud-calendars.com/articles/keeping-track-of-who-replied/,informational-target-existing,gsc-query-observations.json#row-114
+Own-site Search Console,what time zone are flights shown in,https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/,informational-target-existing,gsc-query-observations.json#row-115
+Own-site Search Console,are google calendar tasks visible to others,https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/,informational-target-implemented,gsc-query-observations.json#row-116
+Own-site Search Console,icloud előfizetés,,do-not-target,gsc-query-observations.json#row-117
+Own-site Search Console,outlook vs icloud,https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/,defer-broad-provider-comparison,gsc-query-observations.json#row-118
+Own-site Search Console,veckonummer ical,https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/,defer-ambiguous-device,gsc-query-observations.json#row-119
+Own-site Search Console,sääkalenteri,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-120
+Own-site Search Console,is 0.3 inches of rain a lot,https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/,informational-target-expanded,gsc-query-observations.json#row-121
+Own-site Search Console,who can see your google calendar,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-122
+Own-site Search Console,יומן אונליין,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-123
+Own-site Search Console,condividi calendario google,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-124
+Own-site Search Console,veckonummer ipad,https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/,informational-target-expanded,gsc-query-observations.json#row-125
+Own-site Search Console,how much rain is a lot in a day,https://www.cloud-calendars.com/articles/reading-a-chance-of-rain/,informational-target-expanded,gsc-query-observations.json#row-126
+Own-site Search Console,dream scheduler,,do-not-target-with-doorway,gsc-query-observations.json#row-127
+Own-site Search Console,sdílený kalendář,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-128
+Own-site Search Console,etkinliğinize,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-129
+Own-site Search Console,יצירת יומן משותף,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-130
+Own-site Search Console,تقوثم,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-131
+Own-site Search Console,google カレンダー 共有 表示されない,https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/,informational-target-existing,gsc-query-observations.json#row-132
+Own-site Search Console,onedrive előfizetés,,do-not-target,gsc-query-observations.json#row-133
+Own-site Search Console,are flights in local time,https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/,informational-target-existing,gsc-query-observations.json#row-134
+Own-site Search Console,יומן דיגיטלי בעברית,https://www.cloud-calendars.com/articles/three-calendar-apps-is-two-too-many/,broad-selection-intent,gsc-query-observations.json#row-135
+Own-site Search Console,sdílení google kalendáře,https://www.cloud-calendars.com/articles/who-can-see-what-in-google-calendar/,informational-target-existing,gsc-query-observations.json#row-136
+Own-site Search Console,icloud árak,,do-not-target,gsc-query-observations.json#row-137
+Own-site Search Console,gedeelde agenda,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-138
+Own-site Search Console,weather google calendar integration,https://www.cloud-calendars.com/articles/weather-inside-your-calendar/,informational-target-existing,gsc-query-observations.json#row-139
+Own-site Search Console,google カレンダー 共有 できない,https://www.cloud-calendars.com/articles/why-a-shared-calendar-does-not-appear/,informational-target-existing,gsc-query-observations.json#row-140
+Own-site Search Console,widgetit iphone,https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/,informational-target-existing,gsc-query-observations.json#row-141
+Own-site Search Console,mozmanim,,do-not-target-with-doorway,gsc-query-observations.json#row-142
+Own-site Search Console,когда будет,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-143
+Own-site Search Console,sdílený kalendář v mobilu,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-144
+Own-site Search Console,cloud,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-145
+Own-site Search Console,מוזמנים,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-146
+Own-site Search Console,cloudløsninger,,do-not-create-page-from-this-alone,gsc-query-observations.json#row-147
+Own-site Search Console,sdílení kalendáře,https://www.cloud-calendars.com/articles/a-calendar-that-is-yours-to-share/,informational-target-existing,gsc-query-observations.json#row-148
+Own-site Search Console,recurring events,https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/,informational-target-existing,gsc-query-observations.json#row-149

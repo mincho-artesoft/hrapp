@@ -1,0 +1,2818 @@
+{
+  "date": "2026-10-23",
+  "status": "observed_sample_mapped_broader_rank_inventory_unproven",
+  "method": {
+    "google": "45 actual Google UI queries. hl=en gl=us pws=0, signed-in desktop; language samples do not establish physical-market ranks. Captured order is not universal organic ranking.",
+    "chatgpt": "15 fresh consumer conversations, 14 unseeded discovery and one named-competitor comparison; account personalization and backend model not controlled.",
+    "volume": "No measured keyword volume or difficulty; no claim that every competitor keyword is known.",
+    "canonicalPolicy": "Group same-intent variants. New pages require a distinct reader task and source-backed substance.",
+    "sources": "Competitor help pages verify publisher claims only, not runtime performance."
+  },
+  "queries": [
+    {
+      "id": "weather",
+      "query": "best iPhone calendar app with weather",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:13:18.435Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "existing",
+      "assessment": "Built-in weather versus calendar-feed intent covered; competitor breadth still needs expansion.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "What calendar app do you swear by (if you don't use the ...",
+          "url": "https://www.reddit.com/r/iphone/comments/1q8y8qw/what_calendar_app_do_you_swear_by_if_you_dont_use/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Fantastical Calendar - App Store",
+          "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Weather in Calendar ⛅️ 20°",
+          "url": "https://weather-in-calendar.com/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Fantastical — The calendar and tasks app you won't be ...",
+          "url": "https://flexibits.com/fantastical"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "The Best Calendar App for iPhone",
+          "url": "https://thesweetsetup.com/apps/best-calendar-app-iphone/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "I tested over 20 iPhone weather apps for a month. These ...",
+          "url": "https://digitaltrends.com/phones/best-weather-apps-for-iphone/"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "combine",
+      "query": "iPhone app combine iCloud Google Outlook calendars",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:13:55.033Z",
+      "canonical": "https://www.cloud-calendars.com/articles/icloud-google-and-outlook-in-one-view/",
+      "coverage": "existing",
+      "assessment": "Combined visibility; source-to-target copying covered separately by OneCal comparison.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Sync2 Outlook Google & iCloud - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/sync2-outlook-google-icloud/id1120543559"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "OneCal: Sync Multiple Google, Outlook & iCloud Calendars",
+          "url": "https://www.onecal.io/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Sync Google, Outlook, & iCloud Calendars with CalendarBridge",
+          "url": "https://calendarbridge.com/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "How to merge Calendars - Combine & Sync Multiple ...",
+          "url": "https://readdle.com/calendars/how-to-merge-calendars"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "One Calendar - App Store",
+          "url": "https://apps.apple.com/us/app/one-calendar/id1238379385"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "How to connect Google, Outlook, and Apple calendars (Cross ...",
+          "url": "https://www.youtube.com/watch?v=y9WGtEFQOmM"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Apple iCloud Calendar Sync with Google & Outlook",
+          "url": "https://syncthemcalendars.com/features/apple-icloud-calendar-sync"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Notion Calendar",
+          "url": "https://www.notion.com/product/calendar"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "alternative",
+      "query": "best Fantastical alternative iPhone calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:14:32.157Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical (calendar) alternatives? : r/macapps",
+          "url": "https://www.reddit.com/r/macapps/comments/17voupx/fantastical_calendar_alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Best Fantastical Alternatives in 2026",
+          "url": "https://lifestack.ai/blog/fantastical-alternative"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Fantastical Alternatives in 2026: 5 Apps Compared",
+          "url": "https://www.flickplanner.com/blog/best-fantastical-alternatives-2026"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Free Calendar Apps for 2026",
+          "url": "https://toolfinder.com/lists/free-calendar-apps"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "10 Best Fantastical Alternatives in 2026",
+          "url": "https://clickup.com/blog/fantastical-alternatives/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
+          "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Fantastical Alternatives: 5 Options Compared for 2026",
+          "url": "https://nocal.app/alternatives/fantastical"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "widgets",
+      "query": "best calendar widget iPhone upcoming events weather",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:15:08.462Z",
+      "canonical": "https://www.cloud-calendars.com/articles/the-widget-that-shows-what-is-next/",
+      "coverage": "existing",
+      "assessment": "Widget type and upcoming-event intent covered; comparison breadth remains open.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Best Weather Widgets for iPhone in 2026",
+          "url": "https://www.weathernow.app/guides/best-weather-widget-iphone/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Recommendations for calendar widget that displays * ...",
+          "url": "https://www.reddit.com/r/ios/comments/128sygh/recommendations_for_calendar_widget_that_displays/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Weather Widget - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/weather-widget/id1137060820"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "The perfect weather + calendar + clock widget on iPhone",
+          "url": "https://www.threads.com/@calendardc/post/Dd5Cxy9GfSE/the-perfect-weather-calendar-clock-widget-on-i-phone-ready-to-use-by-simple/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best Weather Widgets for iPhone (2026): 6 Picks, Free & Paid",
+          "url": "https://www.edanfs.com/best-weather-widgets-iphone"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "The best Calendar widgets for iPhones and iPads",
+          "url": "https://readdle.com/blog/best-calendar-widgets-for-iPhone-and-iPad"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Fantastical — The calendar and tasks app you won't be ...",
+          "url": "https://flexibits.com/fantastical"
+        }
+      ],
+      "relatedQueries": [
+        "best calendar widget iPhone upcoming events weather",
+        "best calendar widget iPhone upcoming events weather site:www.reddit.com",
+        "best calendar widget iPhone upcoming events \"weather\"",
+        "Best calendar widget iphone upcoming events weather free",
+        "Best calendar widget iphone upcoming events weather download",
+        "Weather widget",
+        "Weather widget free",
+        "Weather widget Windows",
+        "Weather in calendar",
+        "Best weather widget iPhone",
+        "Weather widget on home screen"
+      ]
+    },
+    {
+      "id": "shift",
+      "query": "best shift work calendar app iPhone rotating schedule",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:15:10.862Z",
+      "canonical": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "coverage": "new",
+      "assessment": "Dedicated rota/overnight/export guide; Cloud is not represented as a rotation generator.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Supershift - Shift Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/supershift-shift-calendar/id1104165041"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Work Shift Calendar (Shifter) - App Store",
+          "url": "https://apps.apple.com/us/app/work-shift-calendar-shifter/id1523513035"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "good calendar app for shift workers? : r/ios",
+          "url": "https://www.reddit.com/r/ios/comments/vxj0q1/good_calendar_app_for_shift_workers/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "7 Best Work Schedule Apps for iPhone in 2026",
+          "url": "https://iosapplists.com/best-work-schedule-apps-for-iphone/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Supershift · iOS · Android",
+          "url": "https://supershift.app/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Shift Scheduling Apps for iPhone (2026) - AppTierList",
+          "url": "https://apptierlist.com/best/shift-scheduling/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "10 Best Shift Work Calendar Apps to Stop You Missing Out",
+          "url": "https://theothershift.com/shift-work-calendar-apps/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Rota Calendar: Shift Planner - App Store",
+          "url": "https://apps.apple.com/us/app/rota-calendar-shift-planner/id430229059"
+        }
+      ],
+      "relatedQueries": [
+        "best shift work calendar app iPhone rotating schedule",
+        "best shift work calendar app iPhone rotating schedule site:www.reddit.com",
+        "Best shift work calendar app iphone rotating schedule free",
+        "Best shift work calendar app iphone rotating schedule download",
+        "Shift work calendar app free download",
+        "Work shift calendar app",
+        "Shift Work Calendar app free iPhone",
+        "Work shift calendar for Windows",
+        "Shift Work Calendar Excel",
+        "Free shift calendar app for android"
+      ]
+    },
+    {
+      "id": "timeblocking",
+      "query": "best time blocking calendar app iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:15:47.101Z",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "9 Best Time Blocking Apps in 2026 (Tested & Compared)",
+          "url": "https://flowsavvy.app/top-time-blocking-apps"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Structured: Daily Planner Todo - App Store",
+          "url": "https://apps.apple.com/ph/app/structured-daily-planner-todo/id1499198946"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best time-blocking app I have found : r/ProductivityApps",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1g3h4m6/best_timeblocking_app_i_have_found/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "I Reviewed 20 Apps to Find The 9 Best Time Blocking Apps",
+          "url": "https://www.usemotion.com/blog/best-time-blocking-apps.html"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Free Time Blocking App for iPhone - Align",
+          "url": "https://align.day/time-blocking-app/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "10 Best Time Blocking Apps Reviewed in 2026",
+          "url": "https://thedigitalprojectmanager.com/tools/best-time-blocking-app/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best Time Blocking Apps 2026: 11 Planners Ranked",
+          "url": "https://arahi.ai/blog/best-time-blocking-apps-and-planners-2026"
+        }
+      ],
+      "relatedQueries": [
+        "best time blocking calendar app iPhone",
+        "best time blocking calendar app iPhone site:www.reddit.com",
+        "Best time blocking calendar app iphone reddit",
+        "Best time blocking calendar app iphone free",
+        "Time blocking app free",
+        "Best free time blocking app",
+        "Best time blocking app",
+        "Time blocking planner app",
+        "Time blocking Google Calendar",
+        "Time blocking calendar free"
+      ]
+    },
+    {
+      "id": "privacy",
+      "query": "privacy calendar app iPhone offline no account",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:15:49.712Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/",
+      "coverage": "research",
+      "assessment": "No-account/privacy comparison not covered by pricing alone; no unsupported privacy claim.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "My Calendar: Planner & Agenda - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/my-calendar-planner-agenda/id1631830883"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Offline Day Planner App for iPhone - No Account - Fezer",
+          "url": "https://fezer.app/offline-planner-app"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "My Calendar - Planner & Agenda - App Store - Apple",
+          "url": "https://apps.apple.com/me/app/my-calendar-planner-agenda/id1631830883"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "A local save only calendar : r/privacy",
+          "url": "https://www.reddit.com/r/privacy/comments/vktjsr/a_local_save_only_calendar/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Offline Calendar App for iPhone - Works Without Internet",
+          "url": "https://best-calendar.app/offline-calendar-app-for-iphone.html"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Offline Planner App: Work Without Internet",
+          "url": "https://www.pocketinformant.com/best-offline-planner-app-works-without-internet/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Private All in one notes, reminders/tasks and calendar app?",
+          "url": "https://discuss.privacyguides.net/t/private-all-in-one-notes-reminders-tasks-and-calendar-app/34903"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Privacy policy for DayPrivate, an offline task manager",
+          "url": "https://dayprivate.com/privacy"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "KashCal: A privacy-first calendar that works offline and ...",
+          "url": "https://alternativeto.net/software/kashcal/about/"
+        }
+      ],
+      "relatedQueries": [
+        "privacy calendar app iPhone offline no account",
+        "What are sneaky apps on iPhone? Tell me more about the App Library",
+        "What are sneaky apps on iPhone? Explain how to hide apps on an iPhone",
+        "What are sneaky apps on iPhone? How can I manage app permissions",
+        "privacy calendar app iPhone offline no account site:www.reddit.com",
+        "privacy calendar app \"iPhone\" offline no account",
+        "Privacy calendar app iphone offline no account free",
+        "Google Calendar app",
+        "My calendar app",
+        "My Calendar app for Android",
+        "My Calendar Google",
+        "Open my calendar app",
+        "My Calendar period tracker",
+        "Apple Calendar"
+      ]
+    },
+    {
+      "id": "shifts2",
+      "query": "shift calendar app export Apple Calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:15:51.561Z",
+      "canonical": "https://www.cloud-calendars.com/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "coverage": "new",
+      "assessment": "Same intent cluster; source export and duplicates included, not a second near-duplicate page.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Supershift - Shift Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/supershift-shift-calendar/id1104165041"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Shift Calendar App - App Store",
+          "url": "https://apps.apple.com/us/app/shift-calendar-app/id1659666585"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Work Shift Calendar (Shifter) - App Store",
+          "url": "https://apps.apple.com/us/app/work-shift-calendar-shifter/id1523513035"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Shift Schedule Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/tt/app/shift-schedule-calendar/id6799646525"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Supershift Shift Work Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/gb/app/supershift-shift-work-calendar/id1104165041"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Apple Calendar Integration",
+          "url": "https://help.shiftcare.com/en/articles/14260509-apple-calendar-integration"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Shift Calendar: Work Planner - App Store - Apple",
+          "url": "https://apps.apple.com/mt/app/shift-calendar-work-planner/id6759468319"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Is there a way to export shift schedule to calendar or an ...",
+          "url": "https://www.reddit.com/r/iphone/comments/ax93dy/is_there_a_way_to_export_shift_schedule_to/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Work Shift Calendar (Shifter) - App Store - Apple",
+          "url": "https://apps.apple.com/kw/app/work-shift-calendar-shifter/id1523513035"
+        }
+      ],
+      "relatedQueries": [
+        "shift calendar app export Apple Calendar",
+        "shift calendar app \"export\" Apple Calendar",
+        "How can I export my Apple Calendar as a PDF? Summarize steps for Mac",
+        "How can I export my Apple Calendar as a PDF? List recommended third-party apps",
+        "How can I export my Apple Calendar as a PDF? Compare Mac vs iPhone export methods",
+        "Shift calendar app export apple calendar free",
+        "Supershift",
+        "Google Calendar",
+        "Supershift desktop",
+        "Supershift login",
+        "Supershift app"
+      ]
+    },
+    {
+      "id": "booking",
+      "query": "calendar app booking link availability iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:12.377Z",
+      "canonical": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "coverage": "new",
+      "assessment": "New distinction between slot selection, invitation and continuing access.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Calendly: Meeting Scheduling - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/calendly-meeting-scheduling/id1451094657"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Share your appointment schedule - iPhone & iPad",
+          "url": "https://support.google.com/calendar/answer/10733297?hl=en&co=GENIE.Platform%3DiOS"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Booking Calendar: EasySchedule - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/booking-calendar-easyschedule/id6756092474"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Free Apple Calendar Booking Tool",
+          "url": "https://koalendar.com/integrations/icloud-calendar"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "iCloud Calendar Scheduling Tool, with Booking Links",
+          "url": "https://savvycal.com/icloud"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Scheduling App that's compatible with Apple Calendar : r/ios",
+          "url": "https://www.reddit.com/r/ios/comments/1lug1lr/scheduling_app_thats_compatible_with_apple/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How to create a booking page linked to your iCloud",
+          "url": "https://www.youtube.com/watch?v=vrkBC8fPETU"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "The 13 best appointment booking and scheduling apps",
+          "url": "https://calendly.com/blog/best-appointment-scheduling-apps"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Free Appointment Scheduling App For IPhone",
+          "url": "https://www.setmore.com/features/ios-app"
+        }
+      ],
+      "relatedQueries": [
+        "calendar app booking link availability iPhone",
+        "What are some good Apps for sharing calendar availability? Compare TimeTree and Cozi",
+        "What are some good Apps for sharing calendar availability? Give me apps for families",
+        "What are some good Apps for sharing calendar availability? List free shared calendar apps",
+        "Calendly login",
+        "Free calendar appointment scheduling",
+        "Calendly app",
+        "Is Calendly free",
+        "Calendly appointment booking",
+        "How to Connect Google Calendar to Calendly",
+        "How to share Calendly link",
+        "Calendly app download"
+      ]
+    },
+    {
+      "id": "natural-language",
+      "query": "calendar app natural language input iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:14.931Z",
+      "canonical": "https://www.cloud-calendars.com/articles/natural-language-calendar-events-iphone/",
+      "coverage": "new",
+      "assessment": "New parsing/dictation/template comparison; no unsupported Cloud parser promise.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical Calendar - App Store",
+          "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical — The calendar and tasks app you won't be ...",
+          "url": "https://flexibits.com/fantastical"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Is there a calendar app that uses Natural Language Input ...",
+          "url": "https://www.reddit.com/r/todoist/comments/y015mp/is_there_a_calendar_app_that_uses_natural/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "iOS 27 gives Apple's Calendar app new feature I've wanted ...",
+          "url": "https://9to5mac.com/2026/09/15/ios-27-gives-apples-calendar-app-new-feature-ive-wanted-for-years/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "2.4. Natural Language Input",
+          "url": "https://apphelp.readdle.com/index.php?pg=kb.page&id=429"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Use Natural Language to Schedule your day.",
+          "url": "https://www.itecheverything.com/post/introducing-natural-calendar-use-natural-language-to-schedule-your-day"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/sg/app/calendar/id1113106806"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Apple Calendar Gets Natural Language In iOS 27 - Curb Cuts",
+          "url": "https://www.curbcuts.co/blog/2026-6-9-ru1d7i97lark7vn3ap5ckajxm0fwll"
+        }
+      ],
+      "relatedQueries": [
+        "calendar app natural language input iPhone",
+        "calendar app natural language input iPhone site:www.reddit.com",
+        "calendar app natural language input \"iPhone\"",
+        "How do I change the language in the iPhone calendar app? Show me how to change the system language",
+        "How do I change the language in the iPhone calendar app? Explain why it ties to system language",
+        "How do I change the language in the iPhone calendar app? Tell me how to change time zone",
+        "Why is my calendar showing Chinese characters? Show me how to fix it on a Mac",
+        "Why is my calendar showing Chinese characters? Explain alternate calendar in detail",
+        "Why is my calendar showing Chinese characters? List all the possible causes",
+        "Calendar app natural language input iphone reddit",
+        "Calendar app natural language input iphone ios 15",
+        "Calendar app natural language input iphone free",
+        "Calendar app natural language input iphone download",
+        "Fantastical calendar",
+        "Best calendar app for iPhone free",
+        "Best calendar app for iPhone for family",
+        "Across: calendar app"
+      ]
+    },
+    {
+      "id": "reminders",
+      "query": "calendar app tasks reminders iPhone together",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:17.814Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Share lists and collaborate in Reminders on iPhone",
+          "url": "https://support.apple.com/guide/iphone/share-and-collaborate-iph2a8f9121e/ios"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Is there a way to combine Apple Reminders with ...",
+          "url": "https://www.reddit.com/r/gtd/comments/10138lr/is_there_a_way_to_combine_apple_reminders_with/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "10 Apple Apps That Form a Hidden Productivity System",
+          "url": "https://www.gadgetreview.com/apple-apps-that-form-hidden-productivity-system"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+          "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Tech Tip — Better Together: Apple Reminders and ...",
+          "url": "https://www.effectiveretailleader.com/effective-retail-leader/tech-tip-better-together-apple-reminders-and-apple-calendar"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Organize Your LIFE with Apple Calendar + Reminders",
+          "url": "https://www.youtube.com/watch?v=-Cd44Owupig"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Claire Mail: Email, calendar and reminders, in one fast app",
+          "url": "https://www.producthunt.com/products/claire-mail"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Apps that consolidate calendar events and reminders",
+          "url": "https://talk.tidbits.com/t/apps-that-consolidate-calendar-events-and-reminders/28210"
+        }
+      ],
+      "relatedQueries": [
+        "calendar app tasks reminders iPhone together",
+        "Can you set joint Reminders on an iPhone? Explain how to unshare a list",
+        "Can you set joint Reminders on an iPhone? Show me how to assign a reminder",
+        "Can you set joint Reminders on an iPhone? Compare shared lists to shared notes",
+        "calendar app tasks reminders iPhone together site:www.reddit.com",
+        "Can t share reminder list iPhone",
+        "How to share reminders on iPhone with family",
+        "Sync Reminders with Calendar iPhone",
+        "Show reminders in Calendar iPhone",
+        "How to remove reminders from Calendar iPhone",
+        "How to share reminders on iPhone iOS 26",
+        "How to collaborate reminders on iphone",
+        "How to set a reminder on iPhone with alarm"
+      ]
+    },
+    {
+      "id": "offline",
+      "query": "best offline calendar app iPhone no subscription",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:20.138Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-you-get-without-paying-anything/",
+      "coverage": "expand",
+      "assessment": "Free-tier guide exists; offline account/permission/refresh workflow requires distinct verification.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Looking for a nonsubscription Calendar app that shows me ...",
+          "url": "https://www.reddit.com/r/ios/comments/116ndjo/looking_for_a_nonsubscription_calendar_app_that/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "SimpleCal: Simple Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/simplecal-simple-calendar/id1227579630"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "iPhone calendar apps I prefer over Apple's",
+          "url": "https://medium.com/@yulia.savliuk/iphone-calendar-apps-i-prefer-over-apples-90e1c189f3f2"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Offline Planner App: Work Without Internet",
+          "url": "https://www.pocketinformant.com/best-offline-planner-app-works-without-internet/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Free Calendar Apps for 2026",
+          "url": "https://toolfinder.com/lists/free-calendar-apps"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "TOP 5 iOS Calendar Apps 2025: Best Free Schedule ...",
+          "url": "https://tryhero.app/articles/english-articles/top-5-ios-calendar-apps-2025-best-free-schedule-management-apps-reviewed"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "The Hunt for the Best Free iOS Calendar App - Mom Productivity",
+          "url": "https://momproductivity.com/the-hunt-for-the-best-free-ios-calendar-app"
+        }
+      ],
+      "relatedQueries": [
+        "best offline calendar app iPhone no subscription",
+        "best offline calendar app iPhone no subscription site:www.reddit.com",
+        "best \"offline\" calendar app iPhone no subscription",
+        "Is there a standalone Outlook calendar app for iPhone? Show me how to add multiple Outlook calendars",
+        "Is there a standalone Outlook calendar app for iPhone? Explain Exchange for work accounts",
+        "Is there a standalone Outlook calendar app for iPhone? Compare Outlook app vs native Calendar",
+        "Best offline calendar app iphone no subscription reddit",
+        "Best offline calendar app iphone no subscription free download",
+        "Best offline calendar app iphone no subscription free",
+        "Best calendar app for iPhone free",
+        "Free iPhone calendar app",
+        "Best calendar app for iPhone for family",
+        "Best free calendar app for iPhone without subscription",
+        "Best planner app for iPhone free"
+      ]
+    },
+    {
+      "id": "family",
+      "query": "best shared family calendar app iPhone Android",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:55.561Z",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "I Tested The Best Shared Calendar Apps For Families. ...",
+          "url": "https://www.usemotion.com/blog/best-shared-calendar-app-for-families.html"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Best Shared Family Calendar Apps (Tested by a Real Parent)",
+          "url": "https://mommypoppins.com/anywhere-kids/best-shared-family-calendar-apps-tested-by-a-real-parent"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Recommendations for a shared calendar app",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1okflkd/recommendations_for_a_shared_calendar_app/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Cozi Family Calendar & Organizer App | Free Shared Planner",
+          "url": "https://www.cozi.com/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "6 Best Shared Family Calendar Apps 2026",
+          "url": "https://lifestack.ai/blog/family-calendar-app"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Shared Calendar Apps for Families (2026)",
+          "url": "https://www.usecalendara.com/blog/best-shared-family-calendar-apps"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Top 5 shared calendar apps of 2026 (ranked by use case)",
+          "url": "https://howbout.app/blog/making-plans/the-best-shared-calendar-apps-of-2025"
+        }
+      ],
+      "relatedQueries": [
+        "best shared family calendar app iPhone Android",
+        "best shared family calendar app iPhone Android site:www.reddit.com",
+        "Best shared family calendar app iphone android reddit",
+        "Best family calendar app free",
+        "Best shared family calendar app iphone android free",
+        "Best family calendar app for iPhone and Android",
+        "Best free family calendar app for iPhone",
+        "Best free family calendar app for iPhone and Android",
+        "Shared calendar app free",
+        "Google family Calendar app"
+      ]
+    },
+    {
+      "id": "sync",
+      "query": "iPhone calendar not syncing Google Outlook",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:57.465Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "coverage": "existing",
+      "assessment": "Sync distinctions and diagnostic links present; not every provider error covered.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Outlook iOS and Google calendar sync issues",
+          "url": "https://learn.microsoft.com/en-us/answers/questions/5492026/outlook-ios-and-google-calendar-sync-issues"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fix sync problems with the Google Calendar app",
+          "url": "https://support.google.com/calendar/answer/6261951?hl=en&co=GENIE.Platform%3DiOS"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Apple Calendar not syncing with Google Ca…",
+          "url": "https://discussions.apple.com/thread/255200204"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Can't sync calendar and contacts with my phone or tablet",
+          "url": "https://support.microsoft.com/en-us/outlook/can-t-sync-calendar-and-contacts-with-my-phone-or-tablet"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Outlook Calendar Not Syncing? Fix iPhone & Android (2026)",
+          "url": "https://cirasync.com/blog-articles/outlook-calendar-not-syncing/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Shared google calendar not syncing with iPhone (already ...",
+          "url": "https://www.reddit.com/r/iphone/comments/1vr32o0/shared_google_calendar_not_syncing_with_iphone/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Google Calendar not syncing on Outlook iOS or Mac OS ...",
+          "url": "https://support.google.com/calendar/thread/376881179/google-calendar-not-syncing-on-outlook-ios-or-mac-os-apps?hl=en"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How To Fix Calendar Not Syncing With iPhone",
+          "url": "https://www.youtube.com/watch?v=n0qkgB2gWYk"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "PC Outlook calendar not syncing to iphone ...",
+          "url": "https://learn.microsoft.com/en-us/answers/questions/4745323/pc-outlook-calendar-not-syncing-to-iphone-outlook"
+        }
+      ],
+      "relatedQueries": [
+        "iPhone calendar not syncing Google Outlook",
+        "Why isn't my calendar on my phone syncing with Outlook? List common reasons for sync issues",
+        "Why isn't my calendar on my phone syncing with Outlook? How to check Outlook app settings",
+        "Why isn't my calendar on my phone syncing with Outlook? Explain how to clear app cache",
+        "How to make your iPhone calendar sync with Outlook? Troubleshoot sync issues",
+        "How to make your iPhone calendar sync with Outlook? Sync other Outlook data",
+        "How to make your iPhone calendar sync with Outlook? Compare Outlook.com vs Exchange",
+        "iPhone calendar not syncing Google Outlook site:discussions.apple.com",
+        "iPhone calendar not syncing Google Outlook site:www.reddit.com",
+        "Iphone calendar not syncing google outlook 365",
+        "Why is Google Calendar not syncing with iPhone Calendar",
+        "iPhone calendar not syncing with family",
+        "Outlook calendar not syncing with Google Calendar",
+        "Google Calendar not syncing with phone",
+        "How to refresh Google Calendar on iPhone",
+        "Outlook calendar not syncing with iPhone",
+        "iPhone calendar not syncing with shared google calendar"
+      ]
+    },
+    {
+      "id": "ipad",
+      "query": "best iPad calendar week month view",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:16:59.003Z",
+      "canonical": "https://www.cloud-calendars.com/articles/month-view-on-a-bigger-screen/",
+      "coverage": "existing",
+      "assessment": "iPad month view covered; week-view guide linked separately.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical Calendar - App Store",
+          "url": "https://apps.apple.com/us/app/fantastical-calendar/id718043190"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "The Best Calendar App for iPad",
+          "url": "https://thesweetsetup.com/apps/the-best-calendar-app-for-ipad/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "What calendar app do you swear by (if you don't use the ...",
+          "url": "https://www.reddit.com/r/iphone/comments/1q8y8qw/what_calendar_app_do_you_swear_by_if_you_dont_use/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Pencil Planner & Calendar Pro - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/pencil-planner-calendar-pro/id1505638148"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "6 Best Digital Planner Apps to Boost Productivity",
+          "url": "https://noteplan.co/blog/digital-planners-for-ipad"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best Monthly Planner App for iPad with Apple Pencil",
+          "url": "https://blog.planner-apps.com/best-monthly-planner-app-for-ipad-with-apple-pencil-see-your-calendar-and-big-picture-plans-in-one-view/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Top 13 Calendar Apps For 2026 (Free & paid)",
+          "url": "https://niftypm.com/blog/best-calendar-apps/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "20 Best Planner Apps for iPad in 2026 (Tested & Ranked)",
+          "url": "https://blog.planwiz.app/best-ipad-planner-apps/"
+        }
+      ],
+      "relatedQueries": [
+        "best iPad calendar week month view",
+        "Is there an iPad app similar to Skylight calendar? Tell me more about Fantastical",
+        "Is there an iPad app similar to Skylight calendar? Compare Cozi to OurCal",
+        "Is there an iPad app similar to Skylight calendar? List DAKboard's best features",
+        "best iPad calendar week month view site:www.reddit.com",
+        "Best ipad calendar week month view free",
+        "Fantastical calendar",
+        "Best calendar app for iPad free",
+        "Best planner app for iPad with Pencil",
+        "iPad calendar app you can write on free",
+        "Pencil Planner & Calendar Pro",
+        "Best planner app for iPad free",
+        "Best free planner app for iPad with Pencil"
+      ]
+    },
+    {
+      "id": "export",
+      "query": "print iPhone calendar export PDF ICS",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:17:02.174Z",
+      "canonical": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/",
+      "coverage": "existing",
+      "assessment": "Export intent covered; own page appeared in this sample, not universal rank proof.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Calendar export on iPhone: ICS, CSV, PDF and subscriptions",
+          "url": "https://www.cloud-calendars.com/articles/calendar-export-ics-pdf-and-backup/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "PDF Calendar - Print & Share - App Store - Apple",
+          "url": "https://apps.apple.com/rw/app/pdf-calendar-print-share/id1487085350"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to print, save, or share your calendar as PDF on iOS ...",
+          "url": "https://www.idownloadblog.com/2019/11/18/print-calendar-save-pdf-mac-ios/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Export calendar from iphone to .ics file …",
+          "url": "https://discussions.apple.com/thread/252561755"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "How to Save & Export Calendar as PDF from iPhone & iPad",
+          "url": "https://osxdaily.com/2020/10/06/how-save-export-calendar-pdf-iphone-ipad/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Apple News on X: \"How to Save & Export Calendar as PDF ...",
+          "url": "https://x.com/applenws/status/1348310489005252610"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How To Export iPhone and iPad Calendars to iCal, Excel ...",
+          "url": "https://imazing.com/guides/how-to-export-iphone-calendar-to-csv-or-ical"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Is it possible to export events in the Calendar app as a .ics ...",
+          "url": "https://www.reddit.com/r/iphone/comments/qfslu3/is_it_possible_to_export_events_in_the_calendar/"
+        }
+      ],
+      "relatedQueries": [
+        "print iPhone calendar export PDF ICS",
+        "print iPhone calendar export PDF \"ICS\"",
+        "Can you print iPhone calendar events? Summarize the iPhone screenshot method",
+        "Can you print iPhone calendar events? Explain AirPrint",
+        "Can you print iPhone calendar events? List good third-party calendar apps",
+        "Print iphone calendar export pdf ics free",
+        "Print iphone calendar export pdf ics 2021",
+        "Google Calendar",
+        "iCloud"
+      ]
+    },
+    {
+      "id": "travel",
+      "query": "calendar app travel time zones iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:17:11.377Z",
+      "canonical": "https://www.cloud-calendars.com/articles/time-zones-and-the-flight-you-booked/",
+      "coverage": "existing",
+      "assessment": "Time-zone planning covered; live traffic claims not inferred.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "World Timezone Calendar - App Store",
+          "url": "https://apps.apple.com/us/app/world-timezone-calendar/id792552743"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "World Timezone Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/no/app/world-timezone-calendar/id792552743"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Searching for a calendar app with a very specific time zone ...",
+          "url": "https://www.reddit.com/r/productivity/comments/1m865an/searching_for_a_calendar_app_with_a_very_specific/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Understand Calendar App Time Zone Support to Avoid ...",
+          "url": "https://talk.tidbits.com/t/understand-calendar-app-time-zone-support-to-avoid-scheduling-mishaps/30557"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Use Google Calendar in different time zones - iPhone & iPad",
+          "url": "https://support.google.com/calendar/answer/37064?hl=en&co=GENIE.Platform%3DiOS"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "What is a good calendar app for managing time zones?",
+          "url": "https://www.facebook.com/groups/1506137380449687/posts/1586429239087167/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Working with Time Zones in Apple's Calendar Apps",
+          "url": "https://www.computerhardwareinc.com/2025/08/28/working-with-time-zones-in-apples-calendar-apps/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How to Add Calendar Alerts & Travel Time on iPhone (Step-by- ...",
+          "url": "https://www.youtube.com/watch?v=SrajdOjcT8k"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How do I set floating timezone on iOS calendar?",
+          "url": "https://apple.stackexchange.com/questions/452690/how-do-i-set-floating-timezone-on-ios-calendar"
+        }
+      ],
+      "relatedQueries": [
+        "calendar app travel time zones iPhone",
+        "Calendar app travel time zones iphone free",
+        "Time zone Converter",
+        "Google Calendar",
+        "Time zone map",
+        "Calendly",
+        "World time buddy",
+        "TimeTree"
+      ]
+    },
+    {
+      "id": "recurrence",
+      "query": "recurring events calendar app iPhone custom repeat",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:17:13.247Z",
+      "canonical": "https://www.cloud-calendars.com/articles/recurring-events-without-the-mess/",
+      "coverage": "existing",
+      "assessment": "Repeat scope covered; rotation now has separate canonical.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Any iPhone/iPad calendar apps that let you repeat events ...",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1o1y43f/any_iphoneipad_calendar_apps_that_let_you_repeat/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Creating a recurring event | Apple Developer Documentation",
+          "url": "https://developer.apple.com/documentation/eventkit/creating-a-recurring-event"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to Add a Recurring Event on iPhone Calendar (tutorial)",
+          "url": "https://www.youtube.com/watch?v=dBAbDuo3tOk"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "How to set up a repeating event on the iPhone calendar.",
+          "url": "https://groups.io/g/only-apple-tns/topic/how_to_set_up_a_repeating/117643335"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "How to Create Recurring Events on iPhone",
+          "url": "https://www.facebook.com/fb-answers/how-to-create-recurring-events-on-iphone/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "KeepandShare: Online Calendar Sharing & Collaboration Tools",
+          "url": "https://www.keepandshare.com/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Scheduling Recurring Events in iPhone",
+          "url": "https://discussions.apple.com/thread/254840893"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How to Add a Weekly Event on iPhone Calendar (tutorial)",
+          "url": "https://www.youtube.com/watch?v=XcFdBMkckF4"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How to schedule more complex repeating Apple reminders ...",
+          "url": "https://www.reddit.com/r/AppleReminders/comments/1vazzpe/how_to_schedule_more_complex_repeating_apple/"
+        }
+      ],
+      "relatedQueries": [
+        "recurring events calendar app iPhone custom repeat",
+        "recurring events calendar app \"iPhone\" custom repeat",
+        "recurring events calendar app iPhone custom repeat site:discussions.apple.com",
+        "recurring events calendar app iPhone \"custom\" repeat",
+        "Recurring events calendar app iphone custom repeat reddit",
+        "Recurring events calendar app iphone custom repeat free",
+        "iPhone calendar repeating events bug",
+        "iPhone calendar repeat event on specific days",
+        "Google Calendar"
+      ]
+    },
+    {
+      "id": "free",
+      "query": "free calendar app iPhone Google sync no ads",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:17:14.586Z",
+      "canonical": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts/",
+      "coverage": "existing",
+      "assessment": "Free versus ad-free distinction covered; neither implies all features are free.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "SimpleCal: Simple Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/simplecal-simple-calendar/id1227579630"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "The Best Free Calendar Apps For IPhone Compared And ...",
+          "url": "https://escapesf.net/free-calendar-apps-iphone-compared-31lq.html"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "What calendar app do you swear by (if you don't use the ...",
+          "url": "https://www.reddit.com/r/iphone/comments/1q8y8qw/what_calendar_app_do_you_swear_by_if_you_dont_use/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Simple Calendar Daily Planner - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/simple-calendar-daily-planner/id1422994973"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "TOP 5 iOS Calendar Apps 2025: Best Free Schedule ...",
+          "url": "https://tryhero.app/articles/english-articles/top-5-ios-calendar-apps-2025-best-free-schedule-management-apps-reviewed"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Top 13 Calendar Apps For 2026 (Free & paid)",
+          "url": "https://niftypm.com/blog/best-calendar-apps/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Free Google Calendar sync, and what the adverts pay for",
+          "url": "https://www.cloud-calendars.com/articles/free-google-sync-without-adverts"
+        }
+      ],
+      "relatedQueries": [
+        "free calendar app iPhone Google sync no ads",
+        "What is the best free calendar sync app? Compare Google Calendar to Outlook Calendar",
+        "What is the best free calendar sync app? Tell me more about OneCal's free plan",
+        "What is the best free calendar sync app? Explain how TimeTree works for groups",
+        "free calendar app iPhone Google sync no ads site:www.reddit.com",
+        "Free calendar app iphone google sync no ads reddit",
+        "Best free calendar app iphone google sync no ads",
+        "Free calendar app iphone google sync no ads download",
+        "Google Calendar app",
+        "Google Calendar desktop",
+        "Apple Calendar",
+        "Google Calendar download",
+        "My Calendar Google"
+      ]
+    },
+    {
+      "id": "adhd",
+      "query": "best visual calendar planner ADHD iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:17:15.890Z",
+      "canonical": "https://www.cloud-calendars.com/articles/planning-a-week-in-ten-minutes/",
+      "coverage": "research",
+      "assessment": "Visual-planning product comparison missing. No clinical efficacy claim or keyword-stuffed medical landing page.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Apps to support those with ADHD - App Store - Apple",
+          "url": "https://apps.apple.com/hr/iphone/story/id1679598336"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Calendars for ADHD: We Tested the Best 6 Apps (Free & ...",
+          "url": "https://www.saner.ai/blogs/best-calendars-for-adhd"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Tiimo: Visual Planner for Every Neurotype",
+          "url": "https://www.tiimoapp.com/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Calendar or planner app for people with ADHD : r/macapps",
+          "url": "https://www.reddit.com/r/macapps/comments/1mo9yon/calendar_or_planner_app_for_people_with_adhd/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best ADHD Calendar Apps Compared (2026)",
+          "url": "https://fhynix.com/adhd-calendar-apps/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best ADHD Student Planner Apps for 2026",
+          "url": "https://lifestack.ai/blog/adhd-student-planner"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best Planner Apps for ADHD in 2026 - SparkDay",
+          "url": "https://sparkdayapp.com/blog/best-planner-apps-for-adhd"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Best Planner Apps for iPhone in 2026: 8 Tested for ADHD ...",
+          "url": "https://staycomposed.app/blog/best-planner-apps-for-iphone-in-2026/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "7 Best Calendar Apps for ADHD on iPhone",
+          "url": "https://iapplist.com/best-calendar-apps-for-adhd/"
+        },
+        {
+          "displayOrder": 10,
+          "heading": "Weel Planner | ADHD Calendar App for iOS",
+          "url": "https://www.weelplanner.app/"
+        }
+      ],
+      "relatedQueries": [
+        "best visual calendar planner ADHD iPhone",
+        "best visual calendar planner ADHD iPhone site:www.reddit.com",
+        "Best visual calendar planner adhd iphone free",
+        "Best planner app for ADHD free",
+        "Best ADHD calendar app Reddit",
+        "Best calendar app for ADHD adults",
+        "ADHD planner",
+        "ADHD calendar app free",
+        "Best planner for ADHD adults",
+        "ADHD calendar planner"
+      ]
+    },
+    {
+      "id": "fantastical-brand",
+      "query": "Fantastical alternative calendar iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:35:57.114Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Best Fantastical Alternatives in 2026",
+          "url": "https://lifestack.ai/blog/fantastical-alternative"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical (calendar) alternatives? : r/macapps",
+          "url": "https://www.reddit.com/r/macapps/comments/17voupx/fantastical_calendar_alternatives/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Fantastical Alternatives in 2026: 6 Calendars",
+          "url": "https://saybriefly.com/fantastical-alternatives"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Fantastical Alternatives in 2026: 5 Apps Compared",
+          "url": "https://www.flickplanner.com/blog/best-fantastical-alternatives-2026"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Fantastical Alternatives in 2026 - Temporal",
+          "url": "https://temporal.day/blog/best-fantastical-alternatives-2026"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Fantastical Alternatives: 5 Options Compared for 2026",
+          "url": "https://nocal.app/alternatives/fantastical"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "7 Best Fantastical Alternatives in 2026",
+          "url": "https://get-alfred.ai/blog/best-fantastical-alternatives"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Free Alternative to Fantastical — Top Picks 2026",
+          "url": "https://bundl.run/free-alternative-to/fantastical"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Fantastical alternative calendar iphone reddit",
+        "Fantastical alternative calendar iphone free",
+        "Fantastical calendar",
+        "Fantastical alternative reddit",
+        "Calendar 366 vs Fantastical",
+        "Calendars by Readdle"
+      ]
+    },
+    {
+      "id": "readdle-brand",
+      "query": "Calendars by Readdle alternative iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:36:23.021Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "What calendar app do you swear by (if you don't use the ...",
+          "url": "https://www.reddit.com/r/iphone/comments/1q8y8qw/what_calendar_app_do_you_swear_by_if_you_dont_use/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Readdle Calendars Alternatives & Competitors",
+          "url": "https://www.softwaresuggest.com/readdle-calendars/alternatives"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Free Calendar Apps for 2026",
+          "url": "https://toolfinder.com/lists/free-calendar-apps"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "9 Best Calendar Programs for iPhone",
+          "url": "https://www.pipedrive.com/en/blog/best-calendar-program-for-iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Readdle Calendars Alternatives & Competitors",
+          "url": "https://sourceforge.net/software/product/Readdle-Calendars/alternatives"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "A comparison of 4 great calendar applications",
+          "url": "https://www.youtube.com/watch?v=fv9PRfJ8JTs"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best Fantastical Alternatives in 2026",
+          "url": "https://lifestack.ai/blog/fantastical-alternative"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "12 Best Calendar Apps For Organizing Your Life",
+          "url": "https://onplanners.com/apps/best-calendar-apps"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Calendars by readdle alternative iphone reddit",
+        "Calendars by readdle alternative iphone free",
+        "Fantastical calendar",
+        "Best calendar app for iPhone free",
+        "Free iPhone calendar app",
+        "Best calendar app for iPhone for family",
+        "Simple calendar app for iPhone",
+        "Best free calendar app for iPhone without subscription"
+      ]
+    },
+    {
+      "id": "timetree-brand",
+      "query": "TimeTree alternative shared family calendar iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:36:31.221Z",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "I found the best shared calendar app that actually syncs ...",
+          "url": "https://medium.com/@yulia.savliuk/shared-calendar-apps-for-iphone-that-actually-keep-everyone-in-sync-bc1ad55cd7c8"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "6 Best Shared Family Calendar Apps 2026",
+          "url": "https://lifestack.ai/blog/family-calendar-app"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Digital family calendar that actually syncs everyone's stuff?",
+          "url": "https://www.reddit.com/r/apps/comments/1s9ipcj/digital_family_calendar_that_actually_syncs/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Shared Calendar Apps for Families (2026)",
+          "url": "https://www.usecalendara.com/blog/best-shared-family-calendar-apps"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Family Organizer Apps 2026 — 7 Apps Tested and Ranked",
+          "url": "https://www.nuet.ai/blog/best-family-organizer-apps-2026-shared-calendars-compared/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "The Best TimeTree Alternatives for Household Calendar ...",
+          "url": "https://gethomsy.com/blog/comparisons/compare-timetree-alternative"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "7 Free Family Calendar & Organizer Apps (2026) - RemindHer",
+          "url": "https://remindher.app/best-free-family-organizer-app/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "I Tested The Best Shared Calendar Apps For Families. ...",
+          "url": "https://www.usemotion.com/blog/best-shared-calendar-app-for-families.html"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Timetree alternative shared family calendar iphone reddit",
+        "Timetree alternative shared family calendar iphone free",
+        "Timetree alternative shared family calendar iphone ios 15",
+        "Best family calendar app free",
+        "Shared calendar app free",
+        "Best shared calendar app for families"
+      ]
+    },
+    {
+      "id": "cozi-brand",
+      "query": "Cozi alternative shared calendar iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:37:13.121Z",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "implemented-comparison",
+      "assessment": "Distinct workflow comparison implemented with official references. Observed query coverage is not proof of ranking or complete competitor parity.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Cozi Alternatives: 7 Family Apps to Try 2026 - RemindHer",
+          "url": "https://remindher.app/cozi-alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Recommendations for a shared calendar app",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1okflkd/recommendations_for_a_shared_calendar_app/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "6 Best Shared Family Calendar Apps 2026",
+          "url": "https://lifestack.ai/blog/family-calendar-app"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Family Calendar App for iPhone (2026): 7 Tested",
+          "url": "https://www.usecalendara.com/blog/best-family-calendar-app-for-iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Best Cozi Alternatives for Families in 2026: Free, Paid, and ...",
+          "url": "https://getsense.ai/blog/posts/best-cozi-alternatives-2025"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best family calendar apps in 2026 (tested by real parents)",
+          "url": "https://www.growmaple.com/blog-posts/best-family-calendar-app"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "7 Best Cozi Alternatives for Families in 2026 (Honestly ...",
+          "url": "https://www.nestifyapp.org/blog/cozi-alternative"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "9 Best Shared Calendar Apps Compared in 2026 - Morgen",
+          "url": "https://www.morgen.so/blog-posts/shared-calendar-app"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Cozi alternative shared calendar iphone reddit",
+        "Cozi alternative shared calendar iphone free",
+        "Shared calendar app free",
+        "Shared calendar app for couples",
+        "Shared calendar app for friends",
+        "Shared calendar app that syncs with Apple calendar",
+        "Shared calendar Google",
+        "Cozi shared calendar"
+      ]
+    },
+    {
+      "id": "tasks-integration",
+      "query": "iPhone calendar app Apple Reminders Google Tasks integration",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:41:54.023Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "new",
+      "assessment": "Task-backend and completion guide implemented; provider-to-provider task migration remains a separate need.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Syncing apple reminders with google tasks? : r/gtd",
+          "url": "https://www.reddit.com/r/gtd/comments/1olp9p9/syncing_apple_reminders_with_google_tasks/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "gtsync: Sync Tasks & Reminders - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/gtsync-sync-tasks-reminders/id6761292407"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+          "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Can Google tasks be synced with Apple reminders?",
+          "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "SyncBridge Tasks - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Connect Google Tasks to Apple Reminders",
+          "url": "https://ifttt.com/connect/google_tasks/ios_reminders"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How can I sync reminders with Google ?",
+          "url": "https://discussions.apple.com/thread/4140082"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Google Calendar + Apple Reminders Integration - Morgen",
+          "url": "https://www.morgen.so/google-calendar-apple-reminders-integration"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Can Google Tasks Sync With Apple Reminders? The ...",
+          "url": "https://escapesf.net/sync-apple-reminders-ultimate-integration-gd17.html"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Iphone calendar app apple reminders google tasks integration reddit",
+        "Sync Google Tasks with Apple Reminders",
+        "Sync Google tasks with Apple calendar",
+        "Sync Google tasks with Apple Reminders reddit",
+        "Google Tasks vs Apple Reminders",
+        "Sync Reminders with Google Tasks"
+      ]
+    },
+    {
+      "id": "auto-scheduling",
+      "query": "Motion alternative automatic time blocking calendar iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:43:03.554Z",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "new",
+      "assessment": "Source-backed FlowSavvy/Motion/Morgen comparison; no Cloud auto-scheduler promise.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "What are the best Motion alternatives? : r/ProductivityApps",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1vez2yb/what_are_the_best_motion_alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "AI Time Blocking Apps 2026: 10 Planners Compared",
+          "url": "https://arahi.ai/blog/time-blocking-apps-compared"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Motion Alternatives in 2026: 5 Planners Compared",
+          "url": "https://www.flickplanner.com/blog/best-motion-alternatives-2026"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Motion Alternatives in 2026: Cheaper, Simpler, or ...",
+          "url": "https://mytimeo.com/blog/motion-alternatives/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "9 Best Calendar Apps for Time Blocking in 2026",
+          "url": "https://blog.archcalendar.com/9-best-calendar-apps-for-time-blocking-in-2026/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Time Blocking Apps in 2026 (Compared)",
+          "url": "https://planzer.io/best-time-blocking-apps/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "7 Best Motion Alternatives for AI-Powered Productivity Beyond ...",
+          "url": "https://www.thisandthat.chat/blog/motion-alternatives/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Motion alternative automatic time blocking calendar iphone reddit",
+        "Motion alternative automatic time blocking calendar iphone free",
+        "Best motion alternative automatic time blocking calendar iphone"
+      ]
+    },
+    {
+      "id": "family-external-sync",
+      "query": "Cozi vs TimeTree external calendar sync",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:43:23.909Z",
+      "canonical": "https://www.cloud-calendars.com/articles/cozi-timetree-family-calendar-iphone-android/",
+      "coverage": "new",
+      "assessment": "Cozi feed and TimeTree display/import distinctions now covered.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Digital family calendar that actually syncs everyone's stuff?",
+          "url": "https://www.reddit.com/r/apps/comments/1s9ipcj/digital_family_calendar_that_actually_syncs/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Cozi vs TimeTree: Family Lists and Calendar Access",
+          "url": "https://lighthouse.mapquest.com/blog/cozi-vs-timetree/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "TimeTree vs Cozi (2026): Which Family Calendar Wins?",
+          "url": "https://www.kinmory.ai/blog/timetree_vs_cozi"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Cozi vs TimeTree (2026): Which Shared Calendar Fits?",
+          "url": "https://www.usecalendara.com/blog/cozi-vs-timetree"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Cozi vs TimeTree 2026: Best Family Calendar? - RemindHer",
+          "url": "https://remindher.app/cozi-vs-timetree/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Cozi vs FamilyWall vs TimeTree: Compared - dEssence",
+          "url": "https://dessence.ai/blog/cozi-vs-familywall-timetree"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "TimeTree vs Cozi",
+          "url": "https://cupla.app/blog/timetree-vs-cozi/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Best TimeTree Alternatives for Families in 2026 (And Why ...",
+          "url": "https://www.nestifyapp.org/blog/best-timetree-alternatives-for-families"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Compare Cozi Vs TimeTree Vs Other Family Scheduling ...",
+          "url": "https://www.facebook.com/fb-answers/compare-cozi-vs-timetree-vs-other-family-scheduling-tools/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Cozi vs timetree external calendar sync reddit",
+        "Cozi vs timetree external calendar sync ios",
+        "TimeTree vs Google Calendar",
+        "TimeTree calendar",
+        "Skylight Calendar",
+        "Apolosign Digital Calendar"
+      ]
+    },
+    {
+      "id": "weather-de",
+      "query": "Kalender App iPhone Wetter Termine",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:45:57.696Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "research",
+      "assessment": "German-language query in English Google UI with US preference; not a Germany rank test. Localized article remains held pending review.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather-Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/weather-calendar/id6748898739"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/de/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Timepage: Kalender und Planer - App Store - Apple",
+          "url": "https://apps.apple.com/lu/app/timepage-kalender-und-planer/id989178902?l=de-DE"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "miCal - Kalender App für Apple iOS iPhone und iPad",
+          "url": "https://micalapp.com/de/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Beste Kalender Apps fürs iPhone im Vergleich 2026",
+          "url": "https://iosapps.de/apps/vergleich/kalender-apps/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Weather in Calendar ⛅️ 20°",
+          "url": "https://weather-in-calendar.com/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "FirstSeed Inc.",
+          "url": "https://firstseed.io/de/calendar/calendar.html"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Wetter im Kalender auf iPhone und Mac anzeigen",
+          "url": "https://www.heise.de/ratgeber/Wetter-im-Kalender-auf-iPhone-und-Mac-anzeigen-4582801.html"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Kostenloser Tagesplaner für iPhone und Web - Eva",
+          "url": "https://evacalendar.app/de/"
+        }
+      ],
+      "relatedQueries": [
+        "Calendar App iPhone Weather Termine",
+        "Kalender App iPhone Wetter Termine",
+        "Kalender app iphone wetter termine download",
+        "Weather in calendar",
+        "Can apple calendar show weather",
+        "Fantastical calendar",
+        "What is the best calendar app for iPhone",
+        "Meteomatics weather calendar"
+      ]
+    },
+    {
+      "id": "weather-ja",
+      "query": "iPhone カレンダー 天気 予定 アプリ",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:46:17.626Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "research",
+      "assessment": "Japanese-language query in English Google UI with US preference; not a Japan rank test. Localized article remains held pending review.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "【天気も表示できる】iPhoneカレンダーアプリおすすめ10選！ ...",
+          "url": "https://ichioshi.allabout.co.jp/articles/limited/40450"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Week Calendar - スマートプランナーアプリ - App Store - Apple",
+          "url": "https://apps.apple.com/jp/app/week-calendar-%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%83%97%E3%83%A9%E3%83%B3%E3%83%8A%E3%83%BC/id381059732"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "【2026年】iPhoneのカレンダーと連携アプリおすすめ8選",
+          "url": "https://app-liv.jp/lifestyle/scheduler/1005/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "カレンダーに天気予報も表示されてるアプリとかあったら教え ...",
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14306145024"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "iCal週間天気予報（ITエンジニアがときめく自動化の魔法）",
+          "url": "https://weather.masuipeo.com/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "‎Fantastical Calendarアプリ - App Store",
+          "url": "https://apps.apple.com/jp/app/fantastical-calendar/id718043190"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "iPhoneのカレンダーに天気予報を自動で表示させる方法！",
+          "url": "https://smahospital.jp/column/blogs/127947/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "天気予報 まで自作！30年分の気象データと #AI で予定を立てて ...",
+          "url": "https://www.instagram.com/reel/Dd8jar8tVRp/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "カレンダーアプリ『CalCal』v3.1.0が公開！ iPhone Duoと ...",
+          "url": "https://www.appbank.net/2026/10/22/iphone-news/3140223.php"
+        }
+      ],
+      "relatedQueries": [
+        "iPhone カレンダー 天気 予報 アプリ",
+        "iPhone カレンダー 表示 方法",
+        "iPhone カレンダー 共有 できない",
+        "iPhone カレンダー同期 されない",
+        "Fantastical calendar",
+        "iPhoneカレンダー 使いにくい"
+      ]
+    },
+    {
+      "id": "calendar366-comparison",
+      "query": "Calendar 366 vs Fantastical iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:47:28.080Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "implemented-comparison",
+      "assessment": "New three-product workflow comparison linked with existing price guide. Publisher capabilities checked; not a device benchmark or every feature reviewed.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+          "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Manage your time in 2025: Fantastical vs. Apple Calendar",
+          "url": "https://setapp.com/app-reviews/fantastical-vs-apple-calendar"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Sticking with Fantastical",
+          "url": "https://casabona.org/2022/12/sticking-with-fantastical/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "The 9 best calendar apps for iPhone in 2026",
+          "url": "https://zapier.com/blog/best-iphone-calendar-apps/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "The Best Calendar App for iPhone",
+          "url": "https://thesweetsetup.com/apps/best-calendar-app-iphone/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Calendar 366 vs fantastical iphone reddit",
+        "BusyCal vs Fantastical",
+        "Fantastical calendar",
+        "Fantastical vs Google Calendar",
+        "Fantastical reminders",
+        "Fantastical review",
+        "Fantastical Apple Watch"
+      ]
+    },
+    {
+      "id": "cloud-calendar-definition",
+      "query": "what is a cloud calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T20:50:19.390Z",
+      "canonical": "https://www.cloud-calendars.com/articles/what-is-a-cloud-calendar/",
+      "coverage": "new",
+      "assessment": "New beginner guide separates provider accounts, calendar apps, sharing and the Cloud Calendars brand.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Understanding Cloud Calendars for Beginners",
+          "url": "https://www.youtube.com/watch?v=JCMxHKOpLhc"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Calendar - Apple iCloud",
+          "url": "https://www.icloud.com/calendar"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Keep your calendars up to date and share them with iCloud",
+          "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-calendar-mm15eb200ab4/icloud"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Cloud Calendars — iCloud, Google and Outlook in one view",
+          "url": "https://www.cloud-calendars.com/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Cloud Calendars Library | nsoftware",
+          "url": "https://www.nsoftware.com/cloudcalendars"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "iCloud overview | Calendly Help",
+          "url": "https://calendly.com/help/icloud-overview"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Cloud-Based Email and Calendar - Cornell University",
+          "url": "https://it.cornell.edu/email-cornell/cloud-based-email-and-calendar"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "iCloud Calendar Vs Calendar in iCloud Settings on iPhone",
+          "url": "https://www.youtube.com/watch?v=vdasg53YUBg"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Cloud Calendars: Sync & Widget",
+          "url": "https://arte-soft.com/apps/cloud-calendars-sync-widget/"
+        }
+      ],
+      "relatedQueries": [
+        "What is a cloud calendar on iphone",
+        "What is a cloud calendar vs icloud calendar",
+        "What is a cloud calendar vs icloud",
+        "iCloud calendar app",
+        "iCloud Calendar login",
+        "iCloud calendar for Windows",
+        "iCloud calendar on Android",
+        "iCloud Calendar on iPhone"
+      ]
+    },
+    {
+      "id": "three-calendar-comparison",
+      "query": "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:07:09.445Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "new",
+      "assessment": "Source-based three-app workflow guide; avoids universal free-plan and reliability claims.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Apple Calendar : r/FantasticalCalendar",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w4kfrz/fantastical_vs_apple_calendar/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Fantastical Vs Calendar 366: Which One To Choose?",
+          "url": "https://medium.com/productivity-side/fantastical-vs-calendar-366-which-one-to-choose-130c96af8eb3"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Compare Fantastical vs. Readdle Calendars in 2026",
+          "url": "https://slashdot.org/software/comparison/Fantastical-vs-Readdle-Calendars/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Apple Calendar vs. Fantastical vs. Readdle Calendar and More",
+          "url": "https://techpastorsolutions.com/Site/Blog/The+Great+Calendar+Showdown+(2025)-+Apple+Calendar+vs.+Fantastical+vs.+Readdle+Calendar+and+More"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Calendar Program for iPhone: 6 Apps Compared (2026)",
+          "url": "https://www.clickreach.io/blog/best-calendar-apps-iphone"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Searching for Calendar App",
+          "url": "https://forums.macrumors.com/threads/searching-for-calendar-app.2489656/"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Apple Calendar vs Fantastical: Which Is Better?",
+          "url": "https://horacal.app/blog/apple-calendar-vs-fantastical/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Fantastical vs calendars by readdle calendar 366 iphone reddit",
+        "Fantastical vs calendars by readdle calendar 366 iphone free"
+      ]
+    },
+    {
+      "id": "calendar-language",
+      "query": "iPhone calendar showing Chinese characters language alternate calendar",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:08:27.177Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "coverage": "new",
+      "assessment": "Separates interface language, regional format, alternate dates and saved event text.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Calendar randomly changed language?",
+          "url": "https://discussions.apple.com/thread/255160313"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How to Add Chinese, Hebrew, or Hijri Alternate Calendars ...",
+          "url": "https://www.youtube.com/watch?v=jx0RkksOSU0"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to Change Calendar Language in iPhone",
+          "url": "https://www.facebook.com/fb-answers/how-to-change-calendar-language-in-iphone/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Change your Calendar settings on iPhone",
+          "url": "https://support.apple.com/en-az/guide/iphone/iphc37be2016/ios"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "iPhone 16/16 Pro Max: How to Turn Off Alternate Calendars",
+          "url": "https://www.youtube.com/watch?v=SBuIYlXwOwc"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "I have many Chinese characters on my iPhone calendar ...",
+          "url": "https://www.justanswer.com/computer/dcxpo-chinese-characters-iphone-calendar-set.html"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How to configure alternate calendars",
+          "url": "https://www.youtube.com/watch?v=IgjhcPies_I"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Calendar on iPhone randomly having an event in Chinese ...",
+          "url": "https://www.reddit.com/r/applehelp/comments/53z1ru/calendar_on_iphone_randomly_having_an_event_in/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "iPhone calendar showing Chinese months - Ask Different",
+          "url": "https://apple.stackexchange.com/questions/379494/iphone-calendar-showing-chinese-months"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Iphone calendar showing chinese characters language alternate calendar iphone 11",
+        "How to change calendar language on iPhone",
+        "How to get Islamic calendar on iPhone Lock Screen",
+        "How to change calendar language Windows 11",
+        "How to change Calendar language on Android",
+        "How to add Hebrew calendar to iPhone lock screen",
+        "How to add islamic calendar to iphone ios 16",
+        "How to add islamic calendar on iPhone home Screen"
+      ]
+    },
+    {
+      "id": "shared-reminders",
+      "query": "share assign reminders iPhone family list",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:08:47.662Z",
+      "canonical": "https://www.cloud-calendars.com/articles/share-assign-reminders-iphone-calendar-difference/",
+      "coverage": "new",
+      "assessment": "Separates list collaboration, assignment and notification settings from calendar access.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Share lists and collaborate in Reminders on iPhone",
+          "url": "https://support.apple.com/guide/iphone/share-and-collaborate-iph2a8f9121e/ios"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Share and assign reminders on your iPhone or iPad",
+          "url": "https://support.apple.com/en-us/105124"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "if you and your partner have an iPhone, create a shared ...",
+          "url": "https://www.reddit.com/r/LifeProTips/comments/1iull4w/lpt_if_you_and_your_partner_have_an_iphone_create/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "How to Share Apple Reminders Lists (Family & Team Guide)",
+          "url": "https://medium.com/write-a-catalyst/how-to-share-apple-reminders-lists-family-team-guide-51c7f81fdd2b"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Assign Reminders",
+          "url": "https://danstutorials.com/tutorials/tutor-for-reminders/lessons/lessons-for-reminders-on-the-iphone-with-ios/topics/assign-reminders-2/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Can Two People Share Reminders on iPhone? Yes",
+          "url": "https://www.yougot.ai/blog/technology/setup-guides/can-two-people-share-reminders-on-iphone"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How to Create a Shared Reminders List on iPhone",
+          "url": "https://ioshacker.com/how-to/create-shared-reminders-on-iphone"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How To Set Up a Family Reminder",
+          "url": "https://www.iphonelife.com/blog/30704/how-set-family-reminder"
+        }
+      ],
+      "relatedQueries": [
+        "Can t share reminder list iPhone",
+        "How to share reminders on iPhone with family",
+        "How to create a shared list on iPhone",
+        "Apple Reminders shared list",
+        "How to share reminders on iPhone iOS 26",
+        "How to assign reminders on iPhone",
+        "How to create a shared reminder list on iPhone",
+        "How to set a reminder on iPhone with alarm"
+      ]
+    },
+    {
+      "id": "google-task-visibility",
+      "query": "can others see my Google Calendar tasks",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:09:47.812Z",
+      "canonical": "https://www.cloud-calendars.com/articles/can-others-see-google-calendar-tasks/",
+      "coverage": "new",
+      "assessment": "Current Google timed-task visibility rules checked; no blanket all-tasks-private claim.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Change event & task visibility on your calendar - Computer",
+          "url": "https://support.google.com/calendar/answer/34580?hl=en&co=GENIE.Platform%3DDesktop"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How can I see tasks from another user on my calendar",
+          "url": "https://support.google.com/calendar/thread/229492622/how-can-i-see-tasks-from-another-user-on-my-calendar?hl=en"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Can someone see all my google calendar events, just be ...",
+          "url": "https://www.reddit.com/r/GMail/comments/1imkorc/can_someone_see_all_my_google_calendar_events/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Are Google Calendar tasks private? - That Online Stuff",
+          "url": "https://www.thatonlinestuff.com.au/google-tasks-private/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Can different users see tasks in shared Google calendars?",
+          "url": "https://www.quora.com/Can-different-users-see-tasks-in-shared-Google-calendars"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Are Tasks on Google Calendar Private?",
+          "url": "https://www.facebook.com/fb-answers/are-tasks-on-google-calendar-private/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Can my coworkers that can see all my events also ...",
+          "url": "https://support.google.com/calendar/thread/114064727/can-my-coworkers-that-can-see-all-my-events-also-see-all-my-tasks?hl=en"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How to Share a Google Tasks List in 2026",
+          "url": "https://www.youtube.com/watch?v=ZdYDmeO5fao"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Can Coworkers See My Personal Google Calendar?",
+          "url": "https://syncdate.app/blog/can-coworkers-see-personal-google-calendar"
+        }
+      ],
+      "relatedQueries": [
+        "Can others see my google calendar tasks on my phone",
+        "Can others see my google calendar tasks on android",
+        "Can others see my google calendar tasks ios",
+        "How to change default visibility in Google Calendar for all events",
+        "How to change Default visibility on Google Calendar",
+        "How to make Google Calendar private on phone",
+        "What is Default visibility in Google Calendar",
+        "Who can see my Google calendar"
+      ]
+    },
+    {
+      "id": "household-display",
+      "query": "iPad wall calendar Skylight alternative family display",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:17:56.588Z",
+      "canonical": "https://www.cloud-calendars.com/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "coverage": "new",
+      "assessment": "iPad app, browser dashboard and dedicated device compared; refresh and one/two-way sync distinguished.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "7 Best Skylight Calendar Alternatives in 2026 (Ranked & ...",
+          "url": "https://mangodisplay.com/best-skylight-calendar-alternatives/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "3 Apple HomeView alternatives you can get today",
+          "url": "https://www.zdnet.com/home-and-office/apple-homeview-alternatives-cheaper/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Best Digital Calendars 2026 - Forbes Vetted",
+          "url": "https://www.forbes.com/sites/forbes-personal-shopper/article/best-digital-calendar/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Skylight Alternatives? : r/skylightcalendar",
+          "url": "https://www.reddit.com/r/skylightcalendar/comments/1pwgcdk/skylight_alternatives/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Skylight Alternative: Finding the Right Smart Family Display",
+          "url": "https://smartnmagic.com/blogs/solutions/skylight-alternative?srsltid=AYCX9vKUjgFGdnVSUC0YoMZ8TuoReXLeaJlxxkvMAOh5ztbFpWeUdWEG"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Best Digital Wall Calendars",
+          "url": "https://www.consumerreports.org/electronics-computers/best-digital-calendars-a1935397155/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Digital Calendar",
+          "url": "https://www.amazon.com/digital-calendar/s?k=digital+calendar"
+        }
+      ],
+      "relatedQueries": [
+        "Digital Picture Frames",
+        "Dry Erase Boards",
+        "Wall & Tabletop Picture Frames",
+        "Skylight Calendar",
+        "Hearth Display\n$699.00\nHearth Display& more",
+        "Cozyla Calendar Plus\n$699.99\n$900\nCozyla& more\n4.0\n(577)",
+        "Amazon Echo Show 15 / 21\n$185.14\n(€165.05)\neBay& more\n4.7\n(64)",
+        "More results from www.reddit.com",
+        "Ipad wall calendar skylight alternative family display reddit",
+        "Ipad wall calendar skylight alternative family display free",
+        "Ipad wall calendar skylight alternative family display amazon",
+        "Best ipad wall calendar skylight alternative family display",
+        "Cheaper alternative to Skylight calendar",
+        "Skylight calendar alternative no subscription",
+        "Skylight wall Calendar",
+        "Skylight Calendar alternatives"
+      ]
+    },
+    {
+      "id": "task-bridge",
+      "query": "sync Google Tasks Apple Reminders two way iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:21:15.782Z",
+      "canonical": "https://www.cloud-calendars.com/articles/sync-google-tasks-apple-reminders-iphone/",
+      "coverage": "new",
+      "assessment": "gtsync, SyncBridge, Morgen and automation differentiated by fields and change direction.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "gtsync: Sync Tasks & Reminders - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/gtsync-sync-tasks-reminders/id6761292407"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Syncing apple reminders with google tasks? : r/gtd",
+          "url": "https://www.reddit.com/r/gtd/comments/1olp9p9/syncing_apple_reminders_with_google_tasks/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "SyncBridge Tasks - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/syncbridge-tasks/id6795491976"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Google Tasks + Apple Reminders Integration - Morgen",
+          "url": "https://www.morgen.so/google-tasks-apple-reminders-integration"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Can Google tasks be synced with Apple reminders?",
+          "url": "https://support.google.com/calendar/thread/305159420/can-google-tasks-be-synced-with-apple-reminders?hl=en"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "How to sync Tasks with iOS Reminders or Google Tasks",
+          "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "How can I sync reminders with Google ?",
+          "url": "https://discussions.apple.com/thread/4140082"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Connect Google Tasks to Apple Reminders",
+          "url": "https://ifttt.com/connect/google_tasks/ios_reminders"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Sync google tasks apple reminders two way iphone reddit",
+        "Sync Google Tasks with Apple Reminders",
+        "Sync Google tasks with Apple Reminders reddit",
+        "Sync Google tasks with Apple calendar",
+        "Google Tasks on Apple Watch",
+        "Google Tasks reminders"
+      ]
+    },
+    {
+      "id": "busycal-comparison",
+      "query": "BusyCal vs Fantastical iPhone calendar reminders weather",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:21:56.604Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "expanded-comparison",
+      "assessment": "Existing comparison expanded with BusyCal task/weather controls and Watch distinctions.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "BusyCal vs Fantastical for Mac and iOS",
+          "url": "https://www.busymac.com/compare/fantastical/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "BusyCal vs Fantastical: Which Should You Buy?",
+          "url": "https://horacal.app/blog/busycal-vs-fantastical/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "BusyCal vs Fantastical",
+          "url": "https://kayg.org/blog/busycal-vs-fantastical/"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Best Calendar Apps for Mac (2026): I Tested 7. Most Aren't ...",
+          "url": "https://alltech.medium.com/best-calendar-apps-for-mac-2026-i-tested-7-most-arent-worth-the-subscription-d4b90beee075"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "BusyCal better than Apple Calendar? : r/macapps",
+          "url": "https://www.reddit.com/r/macapps/comments/1iog0a3/busycal_better_than_apple_calendar/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Exploring BusyCal vs. Fantastical in 2024 - Software - MPU Talk",
+          "url": "https://talk.macpowerusers.com/t/exploring-busycal-vs-fantastical-in-2024/36673"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Fantastical Vs Busycal: Which One To Choose?",
+          "url": "https://productivityside.quora.com/Fantastical-Vs-Busycal-Which-One-To-Choose"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "BusyCal vs Apple Calendar — Which is Better in 2026?",
+          "url": "https://bundl.run/compare/busycal-vs-apple-calendar"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Busycal vs fantastical iphone calendar reminders weather reddit",
+        "Fantastical calendar",
+        "BusyCal vs Fantastical reddit"
+      ]
+    },
+    {
+      "id": "alternate-date-widgets",
+      "query": "Hijri Hebrew date iPhone Lock Screen widget",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:27:09.427Z",
+      "canonical": "https://www.cloud-calendars.com/articles/lock-screen-without-unlocking/",
+      "coverage": "expanded-existing",
+      "assessment": "Publisher examples for alternate-date widgets added; no Cloud accessory-widget promise.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "How to put Hebrew calendar on iPhone's lock screen?",
+          "url": "https://discussions.apple.com/thread/254879746"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How To Add Islamic Date To iPhone Lock Screen 2026 (Step- ...",
+          "url": "https://www.youtube.com/watch?v=dGz6RDmdpsE"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to Add Islamic (Hijri) Calendar on iPhone Lock Screen",
+          "url": "https://www.tiktok.com/@oumarsolution/video/7479516048245525766?lang=en"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Display the Hebrew Date on Your iPhone Calendar and ...",
+          "url": "https://betweencarpools.com/hebrew-date-on-iphone/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "How to add the Hebrew calendar to your iPhone Lock Screen! I ...",
+          "url": "https://www.instagram.com/reel/DLaWd7qJ1Dj/?hl=en"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Biblical Calendar Widgets for Your iPhone Home Screen",
+          "url": "https://dayfourcalendar.com/en/blog/biblical-calendar-widgets-for-iphone/"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Hebrew Calendar HebDate - App Store - Apple",
+          "url": "https://apps.apple.com/il/app/hebrew-calendar-hebdate/id6502666411"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "How To Add Islamic Calendar To iPhone 2025 (Step-By- ...",
+          "url": "https://www.reddit.com/r/TechronaYT/comments/1pnvgs0/how_to_add_islamic_calendar_to_iphone_2025/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How To Add Islamic Date To iPhone Lock Screen",
+          "url": "https://www.youtube.com/watch?v=QVT-hFLCXxM"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Hijri hebrew date iphone lock screen widget free",
+        "Hijri hebrew date iphone lock screen widget download",
+        "How to add Hebrew date To iPhone lock screen",
+        "How to get Islamic calendar on iPhone Lock Screen",
+        "How to add Hebrew calendar to Android",
+        "How to Set Islamic date on lock screen Android",
+        "Hebrew calendar download pdf",
+        "Hebrew calendar 2026"
+      ]
+    },
+    {
+      "id": "google-fantastical",
+      "query": "Google Calendar vs Fantastical iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:27:16.630Z",
+      "canonical": "https://www.cloud-calendars.com/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "coverage": "expanded-comparison",
+      "assessment": "Provider-own-interface baseline added; not a complete benchmark of every feature.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Fantastical vs Google Calendar: 2026 Side-by-Side Comparison",
+          "url": "https://www.morgen.so/blog-posts/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Apple vs Google Calendar for calendar hosting?",
+          "url": "https://www.reddit.com/r/FantasticalCalendar/comments/1w5c606/apple_vs_google_calendar_for_calendar_hosting/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Fantastical vs. Google Calendar: Which One is Best For You?",
+          "url": "https://youcanbook.me/blog/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Fantastical vs Google Calendar: Compared",
+          "url": "https://horacal.app/blog/fantastical-vs-google-calendar/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Google Calendar vs Fantastical (2026)",
+          "url": "https://toolfinder.com/comparisons/google-calendar-vs-fantastical"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Fantastical vs Google Calendar: Which Should You Choose?",
+          "url": "https://efficient.app/compare/fantastical-vs-google-calendar"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Best iPhone Calendar Apps Compared: Fantastical, Google ...",
+          "url": "https://clipboardai.app/blog/articles/best-iphone-calendar-apps-compared"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Fantastical vs Google Calendar: Which to Pick in 2026?",
+          "url": "https://www.usecarly.com/blog/fantastical-vs-google-calendar/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from www.reddit.com",
+        "Google calendar vs fantastical iphone reddit",
+        "Fantastical calendar",
+        "Fantastical vs Google Calendar reddit"
+      ]
+    },
+    {
+      "id": "anydo-calendar",
+      "query": "Any.do calendar iPhone Google iCloud sync",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:20.444Z",
+      "canonical": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "coverage": "expanded",
+      "assessment": "Any.do mobile/device versus desktop/account integration and provider sharing added.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Getting Started with the Calendar Integration",
+          "url": "https://support.any.do/en/articles/8610622-getting-started-with-the-calendar-integration"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "How to Sync Any.do with Google Calendar: The Complete ...",
+          "url": "https://www.any.do/blog/how-to-sync-any-do-with-google-calendar-the-complete-2026-guide/"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "How to sync and back up your Any.do account",
+          "url": "https://support.any.do/en/articles/8610074-how-to-sync-and-back-up-your-any-do-account"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "The Best Calendar App for iPhone",
+          "url": "https://www.any.do/calendar-app-for-iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Syncing iCloud calendar to Google calenda…",
+          "url": "https://discussions.apple.com/thread/255081263"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Organize your life in seconds",
+          "url": "https://www.any.do/personal"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Any.do & Google Calendar Integration Tutorial",
+          "url": "https://www.youtube.com/watch?v=OTr_TpZ3eyk"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Hack: How To Share Your Any.do Calendar",
+          "url": "https://www.any.do/blog/hack-how-to-share-your-any-do-calendar/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "How can I sync iCloud/Apple Calendar to Google ...",
+          "url": "https://www.reddit.com/r/iCloud/comments/1w3484g/how_can_i_sync_icloudapple_calendar_to_google/"
+        }
+      ],
+      "relatedQueries": [
+        "More results from discussions.apple.com",
+        "Any do Workspace",
+        "Any do Family plan",
+        "Best calendar app for iPhone free"
+      ]
+    },
+    {
+      "id": "vimcal-availability",
+      "query": "Vimcal iPhone calendar time zones availability",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:25.794Z",
+      "canonical": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "coverage": "expanded",
+      "assessment": "Vimcal availability and underlying delegate access added with explicit testing limits.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "The Best Calendar App for Founders",
+          "url": "https://www.vimcal.com/blog/the-best-calendar-app-for-founders"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Vimcal: AI Calendar & Schedule - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/vimcal-ai-calendar-schedule/id1608841561"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Download Vimcal for iOS: Manage Your Calendar On-the-Go",
+          "url": "https://www.vimcal.com/downloads/ios"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Vimcal | Fastest Calendar for People with Too Many Meetings",
+          "url": "https://www.vimcal.com/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "The Best Calendar App for VCs",
+          "url": "https://www.vimcal.com/blog/the-best-calendar-app-for-vcs"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Vimcal",
+          "url": "https://x.com/vimcal"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Vimcal: AI Calendar & Schedule - App Store - Apple",
+          "url": "https://apps.apple.com/ai/app/vimcal-ai-calendar-schedule/id1608841561"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Vimcal Pricing in 2026: Is It Worth It?",
+          "url": "https://lifestack.ai/blog/vimcal-pricing"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Vimcal Review 2026: Pros, Cons, Pricing & Verdict",
+          "url": "https://efficient.app/apps/vimcal"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "amie-calendar",
+      "query": "Amie Google Calendar tasks scheduling iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:34.785Z",
+      "canonical": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "coverage": "expanded",
+      "assessment": "Amie event sync distinguished from unverified task scheduling behaviour.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Amie - AI Note Taker",
+          "url": "https://amie.so/"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Amie - Todos, calendar - App Store - Apple",
+          "url": "https://apps.apple.com/us/app/amie-todos-calendar/id1548277133"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Google Calendar Integration - Amie Documentation",
+          "url": "https://amie.so/documentation/google-calendar-integration"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Amie Creating a task Flow on iOS",
+          "url": "https://pageflows.com/post/ios/creating-a-task/amie/"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Amie Review 2026: The Joyful Calendar + To-Do App That ...",
+          "url": "https://softcrit.com/review/amie-review/"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Amie vs Google Tasks: Comprehensive Comparison",
+          "url": "https://akiflow.com/blog/amie-vs-google-tasks"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Meet Amie, a joyful productivity tool.",
+          "url": "https://www.cal-staging.com/blog/meet-amie-a-joyful-productivity-tool"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Anyone who uses Google Calendar app, how do you add ...",
+          "url": "https://www.reddit.com/r/productivity/comments/10l1ntv/anyone_who_uses_google_calendar_app_how_do_you/"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Amie (@tryamie) / X",
+          "url": "https://x.com/tryamie"
+        }
+      ],
+      "relatedQueries": [
+        "Amie google calendar tasks scheduling iphone ios 15",
+        "Amie for Windows"
+      ]
+    },
+    {
+      "id": "dejal-weather-history",
+      "query": "Dejal Weather Events calendar weather history iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:39.744Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/",
+      "coverage": "new",
+      "assessment": "Distinct historical-diary intent, with forecasts versus observations and retention tests.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "Weather Events",
+          "url": "https://dejal.com/weatherevents/"
+        }
+      ],
+      "relatedQueries": []
+    },
+    {
+      "id": "weather-together-brand",
+      "query": "\"Weather Calendar Together\" iPhone",
+      "evidenceFile": "google-observations.json",
+      "observedAt": "2026-10-22T21:36:44.962Z",
+      "canonical": "https://www.cloud-calendars.com/articles/weather-inside-your-calendar/",
+      "coverage": "limited-source-unavailable",
+      "assessment": "Search-visible listing observed; chosen official detail page returned not-found. No specific unverified product features published.",
+      "observedResults": [
+        {
+          "displayOrder": 1,
+          "heading": "‎Weather Calendar Together - You Might Also Like - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?see-all=customers-also-bought-apps&platform=iphone"
+        },
+        {
+          "displayOrder": 2,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/ec/app/weather-calendar-together/id6737379295?l=en-GB&platform=mac"
+        },
+        {
+          "displayOrder": 3,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?l=fr-FR&platform=watch"
+        },
+        {
+          "displayOrder": 4,
+          "heading": "Weather Calendar Together - Ratings & Reviews - App Store",
+          "url": "https://apps.apple.com/us/app/weather-calendar-together/id6737379295?see-all=reviews&platform=iphone"
+        },
+        {
+          "displayOrder": 5,
+          "heading": "Weather and astro for iPhone - Free App Download",
+          "url": "https://www.appbrain.com/appstore/weather-and-astro/ios-6771852198"
+        },
+        {
+          "displayOrder": 6,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/ve/app/weather-calendar-together/id6737379295"
+        },
+        {
+          "displayOrder": 7,
+          "heading": "Weather Events - for Calendar - App Store - Apple",
+          "url": "https://apps.apple.com/bh/app/weather-events-for-calendar/id6475696867"
+        },
+        {
+          "displayOrder": 8,
+          "heading": "Open Window: Fresh Air for iPhone - Stats, Reviews & ...",
+          "url": "https://www.appbrain.com/appstore/open-window-fresh-air/ios-6782536028"
+        },
+        {
+          "displayOrder": 9,
+          "heading": "Weather Calendar Together - App Store",
+          "url": "https://apps.apple.com/br/app/weather-calendar-together/id6737379295"
+        }
+      ],
+      "relatedQueries": []
+    }
+  ],
+  "remaining": [
+    "Broader competitor organic-keyword/rank inventory requires additional source data; existing tool access question pending. No claim of exhaustive keyword coverage."
+  ],
+  "ownSiteEvidence": {
+    "file": "gsc-query-observations.json",
+    "queryRows": 150,
+    "range": "2026-08-25 to 2026-10-20",
+    "limitation": "Own-site impressions; not competitor keyword volume. Anonymized queries can be omitted.",
+    "contentMap": "gsc-query-content-map.json",
+    "allAvailableRowsReviewed": 150
+  },
+  "suggestionReview": {
+    "rowsReviewed": 307,
+    "evidenceFile": "all-discovered-classification.json",
+    "scope": "Includes navigation and filters, not measured keyword volumes."
+  }
+}

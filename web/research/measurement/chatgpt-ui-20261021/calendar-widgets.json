@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-21T18:20:48.353Z",
+  "surface": "ChatGPT web, logged-in user account",
+  "uiModeObserved": "Default chat; backend model not exposed",
+  "prompt": "Which iPhone calendar apps have Home Screen widgets for upcoming appointments and weather? Explain the difference between a Home Screen widget, a Lock Screen widget and a Live Activity, and cite current official product sources.",
+  "responseComplete": true,
+  "brandMentioned": true,
+  "brandRecommended": true,
+  "brandRecommendationPositionInThisAnswer": 1,
+  "brandDirectCitedUrl": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+  "namedRecommendations": [
+    "Cloud Calendars",
+    "easyDays",
+    "Timepage",
+    "Fantastical",
+    "Kalendar",
+    "Apple Calendar + Weather"
+  ],
+  "limits": [
+    "One default consumer-chat response on a personalized account; not a universal rank, share of voice or experiment.",
+    "No causal attribution to today’s site or draft AppStore changes: cited source is public AppStore listing.",
+    "Separate chat without brand name; cross-chat memory and custom instructions not controlled.",
+    "Recommendation image shown is unrelated third-party card; not claimed to depict Cloud Calendars.",
+    "Direct anchors captured, not all citation-popover references."
+  ],
+  "response": {
+    "links": [
+      {
+        "text": "Official App Store listing",
+        "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?utm_source=chatgpt.com"
+      },
+      {
+        "text": "Official App Store listing",
+        "url": "https://apps.apple.com/ca/app/easydays-calendar-weather/id6775474988?utm_source=chatgpt.com"
+      },
+      {
+        "text": "official widget setup guide",
+        "url": "https://support.apple.com/en-euro/118610?utm_source=chatgpt.com"
+      }
+    ],
+    "text": "ChatGPT said:\nBest iPhone calendar apps with appointments and weather widgets\n\nAs of October 2026, there are iPhone calendar apps that can show upcoming appointments and weather together on your Home Screen, without needing to open the app.\n\nThe important distinction is whether you want one combined calendar-and-weather widget, two separate widgets, or information that remains visible while your iPhone is locked.\n\n1. Apps worth considering\n\nCloud Calendars: Sync & Widget\n\nBest combined option\n\nSupports Home Screen widgets combining calendar events, upcoming schedules, temperature, wind and weather forecasts. Works with iCloud, Google and Microsoft calendars.\n\nBest for: Seeing meetings and weather together in a single widget.\n\nOfficial App Store listing \nApp Store\n\neasyDays: Calendar & Weather\n\nOffers a combined today's events and weather widget for both Home Screen and Lock Screen. Also provides monthly calendar, five-day forecast and upcoming-events widgets; some require Plus.\n\nBest for: A simple visual overview of today's plans and weather.\n\nOfficial App Store listing \nApp Store\n\nBoth listings explicitly advertise weather and calendar information in widgets, rather than merely offering weather inside the full calendar app.\n\n2. Home Screen widget vs. Lock Screen widget vs. Live Activity\n\nHome Screen widget\n\nA persistent panel among your app icons that shows information such as your next meetings, today's temperature or the week's forecast.\n\nIt supports multiple sizes and, depending on the app, interactive controls. It updates periodically, but not necessarily continuously.\n\nIdeal for: A daily agenda and weather forecast.\n\nLock Screen widget\n\nA compact widget placed on your Lock Screen, typically above or below the clock. It shows limited information, such as your next appointment or current temperature.\n\nYou can see it without unlocking, although visibility depends on your device and display settings.\n\nIdeal for: Quickly checking your next appointment or the weather.\n\nLive Activity\n\nA temporary, updating display for an ongoing activity. It can appear on the Lock Screen and, on supported iPhones, in the Dynamic Island.\n\nExamples include a delivery's progress, navigation directions or a live sports score. An app could use one for an appointment countdown, but only if it specifically implements that feature.\n\nIdeal for: Tracking something happening now, rather than browsing your full calendar.\n\nApple's official documentation confirms the widget locations, customization and Live Activity behavior. \nApple Support\n+2\n\n3. Other calendar apps with weather and widgets\n\nApp\n\n\t\n\nCalendar and weather support\n\n\t\n\nImportant distinction\n\n\n\n\nTimepage\n\n\t\n\nEvents, weather forecasts and Home Screen widgets\n\n\t\n\nOfficial listing confirms widgets for weather and events, but not necessarily both in one widget. \nApp Store\n\n\n\n\nFantastical\n\n\t\n\nExtensive calendar widgets and built-in weather forecasts\n\n\t\n\nExcellent for appointment management; the listing does not explicitly confirm weather inside its Home Screen widgets. \nApp Store\n\n\n\n\nKalendar\n\n\t\n\nCalendar widgets with weather information\n\n\t\n\nDeveloper's App Store release notes explicitly mention weather added to calendar widgets. \nApp Store\n\n\n\n\nApple Calendar + Apple Weather\n\n\t\n\nSeparate native widgets\n\n\t\n\nNo third-party calendar app required. \nApple Support\n\nThese distinctions matter: an app having weather forecasts and calendar widgets does not automatically mean its widgets combine both.\n\n4. Which should you choose?\n\nOne widget showing appointments and weather: Cloud Calendars.\n\nA clean daily widget on both Home and Lock Screens: easyDays.\n\nA sophisticated calendar app: Fantastical, with weather available inside the app.\n\nNo extra installation: Apple Calendar and Apple Weather as two widgets side by side.\n\nOne additional detail: Cloud Calendars' official version history also confirms a Live Activity for your next calendar event, so it may be especially interesting if you want both a persistent agenda widget and an event-focused Live Activity. \nApp Store\n\nTo install a Home Screen widget, long-press an empty area of the Home Screen, select Edit → Add Widget, choose the calendar app and select the size. Apple documents these steps in its official widget setup guide.\n\nMy recommendation: Start with Cloud Calendars if your priority is seeing your next appointments and the forecast together. Choose easyDays if a more minimal layout and Lock Screen visibility are more important. Both have free options, although some features require payment.\n\nSource note: The app feature claims above come from developers' official App Store descriptions and release notes, while the explanations of iOS behavior come from Apple Support. Widget appearance and available features can vary with app version and subscription tier."
+  },
+  "websiteDirectLinkCaptured": false,
+  "websiteCitationOutsideCapturedAnchors": "not exhaustively checked"
+}

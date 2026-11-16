@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-21",
+  "nativeInspection": {
+    "mode": "Read-only code inspection; no runtime, simulator, build or backend verification.",
+    "paths": [
+      {
+        "path": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+        "lines": "345–390;1590–1665;1686–1735",
+        "observed": "Invitation endpoint and webcal/HTTPS .ics feed URL construction; App Clip/email/QR delivery; system share sheet activityItems contains a URL, not a file."
+      },
+      {
+        "path": "/Users/minchomilev/work/hrapp/Calendar/Calendar/ICloudCalendarSharingView.swift",
+        "lines": "210–265",
+        "observed": "Calendar sharing sends App Clip URL and offers email recipient access management."
+      }
+    ],
+    "searchScope": "Repository Swift search export/.ics/.csv/.pdf/UIActivityViewController/ShareLink; targeted Calendar and CalendarWidget search for PDF render/print classes, exportCalendar, export PDF, calendar/CSV content types and UTType file export types. No whole-calendar file-export implementation verified. Search absence is not proof no implementation exists anywhere."
+  },
+  "deduplication": {
+    "completeExistingObjectsRead": [
+      "src/app/content/en-US/articles-sharing.ts: sharing-one-event-not-your-calendar",
+      "src/app/content/en-US/articles-sharing.ts: inviting-people-who-do-not-have-the-app",
+      "src/app/content/en-US/articles-sharing.ts: a-calendar-that-is-yours-to-share",
+      "src/app/content/en-US/articles-google.ts: the-secret-address-of-a-google-calendar"
+    ],
+    "distinctTask": "Choosing and obtaining a portable/printable copy and checking transfer limitations; existing pages focus event invitation, continuing sharing and secret URL access.",
+    "caution": "Existing sharing prose calls the sent link an ordinary subscription; native code distinguishes invitation landing URLs from feed URLs. Draft does not repeat that conflation."
+  },
+  "officialSources": [
+    {
+      "url": "https://support.google.com/calendar/answer/37111?hl=en",
+      "readScope": "Complete substantive body lines18–46; export options, permission and organization restrictions."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37118?hl=en",
+      "readScope": "Partial body lines18–111: transfer limitations, import workflow, CSV recurrence and field list. Advanced ICS remainder not read.",
+      "caution": "Page oddly says vCard for Apple devices; not repeated. Apple’s own Calendar guide supports ICS."
+    },
+    {
+      "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+      "readScope": "Complete substantive body lines89–146; ICS, archive, import warnings and print tip."
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/mac-help/mchlp1531/mac",
+      "readScope": "Complete substantive primary body lines267–293: PDF save workflow, password options and print-dialog sharing."
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+      "readScope": "Current publishing/unpublishing lines183–200 read; additional surrounding sharing/classic sections shown. Not a complete412-line-page review."
+    }
+  ],
+  "unusedSourceAttempt": {
+    "url": "https://support.apple.com/guide/calendar/print-calendars-or-events-icalwr32-printing/mac",
+    "result": "Redirected to Calendar User Guide; not treated as print instructions. Current export guide print tip used instead."
+  },
+  "limits": [
+    "No competitor prose used as factual source for product/provider instructions.",
+    "No Cloud whole-calendar file export feature promised.",
+    "No claim an export preserves all meeting metadata.",
+    "Draft only; no content module, native, ASC or deployment changes."
+  ],
+  "validation": {
+    "wordCount": 903,
+    "descriptionCharacters": 133,
+    "jsonParse": "passed"
+  }
+}

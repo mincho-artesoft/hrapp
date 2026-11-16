@@ -1,0 +1,805 @@
+{
+  "reviewedAt": "2026-10-23T10:03:55.476851+00:00",
+  "reviewer": "Codex independent primary-source and overlap review",
+  "batchSha256": "04c1cda3fd6efefee97f68c779ccf3f2261266c8f94586476e9c6e54f80babef",
+  "scope": "Second12 Claude drafts,17 exact official primary bodies;existing81 English full-text corpus used for nearest-task comparison. No source/build/deployment edits or paid APIs.",
+  "resultCounts": {
+    "approve": 3,
+    "revise": 9,
+    "hold": 0
+  },
+  "sourceEvidenceIndex": "claude/review-source-index-02.json",
+  "sourceFetchSummary": {
+    "urls": 17,
+    "retrieved": 17
+  },
+  "unresolvedOrBoundedClaims": [
+    {
+      "topic": "Gmail Calendar default versus general sharing levels",
+      "finding": "Gmail-specific page says name/time visible to anyone with calendar access;general sharing documentation defines permission-based visibility. Do not invent a full cross-permission matrix or guarantee the worked manager result. Verify harmless recipient view before widening."
+    },
+    {
+      "topic": "Keep migration timeline",
+      "finding": "Source still says will migrate in second half2025. That dated announcement is not proof every current account completed migration;frame behavior conditionally and inspect account markers."
+    },
+    {
+      "topic": "Android Tasks instructions",
+      "finding": "Fetched body is the Android app workflow;do not reuse tap labels as web or Cloud Calendars controls."
+    }
+  ],
+  "overlapMethod": {
+    "existingEnglishCorpus": 81,
+    "allFullTextLexicalComparison": true,
+    "metric": "TF-IDF cosine is an aid,not an intent or quality threshold.",
+    "strongestOverlap": "Google birthdays substantially overlaps birthday subsection in current all-day article. Keep separate only with corrected account/source procedure and summary/link demarcation;otherwise merge."
+  },
+  "articles": {
+    "google-calendar-hide-unsubscribe-or-delete": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Owner-only secondary deletion affects all recipients; primary calendar cannot be deleted but its events can be cleared.",
+        "Hide,hide-from-list and unsubscribe are distinct; owners cannot unsubscribe from their own secondary calendars.",
+        "Non-owner restoration can require owner or sharing-management recipient to re-share."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Hide from list row;recovery guidance",
+          "issue": "Draft says Google does not detail unhide steps; the exact source explicitly does.",
+          "exactCorrection": "Replace that cell with Settings > select the hidden calendar in the left column > Preview. Explain this is restoring a hidden-list entry,not re-subscribing after unsubscribe.",
+          "sourceUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+          "sourceSection": "Bring back a calendar you removed"
+        },
+        {
+          "location": "Unsubscribe table;practical owner-only recovery",
+          "issue": "Several entries narrow restoration to the owner despite source also allowing Make changes and manage sharing.",
+          "exactCorrection": "Use owner or someone with Make changes and manage sharing consistently. Keep private iCal addresses out of public messages; do not claim restored feed access recreates previous editing rights.",
+          "sourceUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+          "sourceSection": "Remove a calendar from your list permanently;Restore a calendar you unsubscribed from"
+        },
+        {
+          "location": "Before clearing primary calendar",
+          "issue": "Export-first wording can imply a complete invitation-state recovery route.",
+          "exactCorrection": "Present bulk deletion as a destructive operation,not a troubleshooting step. A saved export is an independent dated copy,not proof all invitation or sharing state can be restored; link the existing export guide rather than imply undo.",
+          "sourceUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+          "sourceSection": "Delete all events in your primary calendar"
+        }
+      ],
+      "canonicalDecision": "Keep Google four-action control task. Existing unwanted-calendar-events guide removes spam and current ownership guide transfers calendars; neither supplies this hide/list/unsubscribe/delete matrix. Avoid a second generic sync or privacy guide.",
+      "closestExistingArticles": [
+        {
+          "slug": "unwanted-calendar-events-iphone",
+          "cosine": 0.1815
+        },
+        {
+          "slug": "google-calendar-ownership-transfer-pending-acceptance",
+          "cosine": 0.179
+        },
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "cosine": 0.1516
+        }
+      ],
+      "workedExampleReview": "Five-calendar parent example is internally consistent:owner hides the football calendar,school is unchecked,colleague\u2019s shared calendar is unsubscribed. Hypothetical deletion affects the eight receiving families; no live deletion tested.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/37188?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/37188?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/df46dd4dc756c008.txt",
+          "textCharacters": 4195,
+          "bodySha256": "7683900e33893472f339a3796d0e3559d4e9ee693ca7cb63decc41b942acce74",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/41067?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/07ee9a0eb962a91d.txt",
+          "textCharacters": 2367,
+          "bodySha256": "b1bb36fa5a56fa39fafe3b9b8ab05f2e261fd9e792deba40d2749025845ab4e3",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "b661e310352a6bc766f47bedefdcd310cedcdab90bd5298fc9b9ce8223487f19",
+      "publicationApproved": false
+    },
+    "google-calendar-public-embed-on-website": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Anonymous public access needs public sharing; named shared viewers can see restricted embedded calendars.",
+        "Google supports embed customizer,width and height each at least500,navigation-button caveat and public iCal link.",
+        "Public-sharing search and subscription implications are stated in source."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Lede;Public prerequisite heading;table named sharing row",
+          "issue": "Draft says embedding only works if public,contradicting source:visibility is limited to people with whom shared,public is needed for everyone.",
+          "exactCorrection": "Say public sharing is needed for anonymous everyone-access,not embedding itself. A restricted embed can be visible to an appropriately shared,signed-in viewer. Public is a deliberate audience choice;do not advise making private calendars public merely to fix an embed.",
+          "sourceUrl": "https://support.google.com/calendar/answer/41207?hl=en",
+          "sourceSection": "Embed a calendar on your website"
+        },
+        {
+          "location": "Choir example concert moved;practical four-hour wait;FAQ error answer",
+          "issue": "The up-to4-hours tip is under stopping public sharing,not a guarantee for event edits,new embeds or every error.",
+          "exactCorrection": "Limit that timing note to the source\u2019s public-access revocation change. Remove the claim that a changed concert or an embed error has that refresh guarantee;check actual saved source,viewer permission and embed configuration.",
+          "sourceUrl": "https://support.google.com/calendar/answer/37083?hl=en",
+          "sourceSection": "Stop sharing your calendar publicly"
+        },
+        {
+          "location": "Free/busy choir rehearsals example",
+          "issue": "Sending a public free/busy link to one venue can read as restricting access to that venue.",
+          "exactCorrection": "Explicitly say the rehearsals\u2019 free/busy calendar is available to anyone when made public;choose named sharing for a restricted venue-only audience.",
+          "sourceUrl": "https://support.google.com/calendar/answer/37083?hl=en",
+          "sourceSection": "How public calendars work"
+        }
+      ],
+      "canonicalDecision": "Keep anonymous website publishing/embed task,distinct from Google permission grants,secret-feed handling and booking-page links. Cross-link those scopes;do not present public iCal as a private sharing alternative.",
+      "closestExistingArticles": [
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "cosine": 0.159
+        },
+        {
+          "slug": "the-secret-address-of-a-google-calendar",
+          "cosine": 0.1401
+        },
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.1316
+        }
+      ],
+      "workedExampleReview": "Two-calendar choir separation is a good fictional privacy choice,but public rehearsals are not venue-only,and changed-event refresh is not the source\u2019s4-hour statement.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/37083?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/37083?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/1634297efe5c8ff1.txt",
+          "textCharacters": 3487,
+          "bodySha256": "45d986890bd40a6d223d7eda12fcde42c9d74050dc03cfe1c517b12d45efbd67",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/41207?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/41207?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/287d5207374faaeb.txt",
+          "textCharacters": 2597,
+          "bodySha256": "484d5e117b8b02fe1f0c162c5b12b6155482b7e4e4e7ac3ef438d78d417e1791",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "a93941787aa502f7560947680789df88eeea33f55bf743f9447a51250f1dbcdd",
+      "publicationApproved": false
+    },
+    "google-calendar-birthdays-from-contacts": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Birthday contacts sync,display hiding,color and Sync from Contacts removal consequences are documented.",
+        "Source explicitly includes both manually created birthdays and birthdays from Contacts.",
+        "Mobile Google Calendar can edit Contacts-linked birthdays and those edits propagate to Contacts."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Lede;Where dates come from;date-fix table",
+          "issue": "Draft says all birthdays come from Contacts and a date fix lives only there.",
+          "exactCorrection": "Distinguish manually created birthday entries from Contacts-linked birthdays. For a linked birthday,Google Contacts is one edit route,and Google Calendar on Android,iPhone or iPad can also edit it with changes applied to Contacts. Do not label every birthday a contact problem.",
+          "sourceUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "sourceSection": "Opening bullet list;Hide all birthdays"
+        },
+        {
+          "location": "Duplicate example;practical merge advice",
+          "issue": "Likely duplicate contact diagnosis is not established,and merging contacts is not a harmless calendar diagnostic.",
+          "exactCorrection": "Inspect the birthday\u2019s source and selected Google accounts;manual birthday plus imported contact birthday or separate accounts are possibilities,not a proven cause. Preserve records and do not prescribe merging/deleting contacts merely from duplicate calendar rows.",
+          "sourceUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "sourceSection": "Turn off birthdays from one of your accounts"
+        },
+        {
+          "location": "Core structure and overlap",
+          "issue": "Existing all-day guide already explains manual/contact birthdays,mobile linked edits and Sync from Contacts danger. Current draft adds little distinct supported procedure.",
+          "exactCorrection": "Give this dedicated page a concrete Google-account/source checklist and correct multi-account controls. Reduce the existing all-day guide\u2019s birthday section to a summary/link if keeping both;otherwise merge these facts into that canonical rather than publishing a weaker duplicate.",
+          "sourceUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "sourceSection": "Turn off birthdays from one of your accounts"
+        }
+      ],
+      "canonicalDecision": "Conditional keep only as a dedicated Google birthday source/account-controls workflow after substantial correction. Existing what-an-all-day-event-really-means already covers most current draft facts;simple paraphrasing or a duplicate-contact guess is not sufficient distinct value.",
+      "closestExistingArticles": [
+        {
+          "slug": "what-an-all-day-event-really-means",
+          "cosine": 0.2588
+        },
+        {
+          "slug": "unwanted-calendar-events-iphone",
+          "cosine": 0.1421
+        },
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "cosine": 0.1251
+        }
+      ],
+      "workedExampleReview": "4March versus3April is a valid hypothetical corrected date,but neither Contacts-only editing nor the duplicate cause follows. Verify identity/source without irreversible merge as a test.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/13748346?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/e64d2d3dda55c130.txt",
+          "textCharacters": 2397,
+          "bodySha256": "0ff0f2d1c3c72409309ae7acb5be871d82879c70f76240e28a65e101492d2fa7",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "1b4cb04fa4f712f53380c71fe58a367c7e3d6fee2589f61302ccb2a62690a3b8",
+      "publicationApproved": false
+    },
+    "google-calendar-holidays-by-country-and-religion": {
+      "verdict": "approve",
+      "supportedFacts": [
+        "Country/region and global religion holiday controls,Public holidays/Other observances selection and third-party data attribution supported.",
+        "Individual holiday details cannot be edited;hide/unhide and common holiday color behavior supported.",
+        "Actual leave versus reference holiday is an editorial distinction,not a claimed employer policy."
+      ],
+      "requiredCorrections": [],
+      "canonicalDecision": "Keep Google holiday-source selection task. Existing alternate-calendar language guide is not a holiday-source guide;work/personal aggregation does not provide these controls.",
+      "closestExistingArticles": [
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1033
+        },
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "cosine": 0.1028
+        },
+        {
+          "slug": "iphone-calendar-language-alternate-calendar-settings",
+          "cosine": 0.0977
+        }
+      ],
+      "workedExampleReview": "Ireland/Germany/religion example is explicitly fictional. Hiding an inapplicable holiday is supported;the article does not establish any particular state\u2019s observed leave policy.",
+      "optionalImprovements": [
+        "Add full desktop starting path Settings > Add calendar > Browse calendars of interest before Regional holidays.",
+        "For out-of-office entries,say where the account supports that feature;an ordinary date label is not itself a leave or free/busy guarantee.",
+        "Consider adding the supported unhide path to make a mistaken hide reversible."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/13748345?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/13748345?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/d232067e1a24af2c.txt",
+          "textCharacters": 3684,
+          "bodySha256": "23854b08b4989b8b64d649e83d76d6a2d8510c34b5b6f0f840ea90f5a8816a56",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "c3d11a689023be4e8975fc332cd27949f39e1991e6b94fb9035b13139a473dc7",
+      "publicationApproved": false
+    },
+    "google-calendar-events-from-gmail-visibility": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Event types,regional default-off list,smart-features requirements,unsupported accounts and default user-only visibility match sources.",
+        "Gmail-specific settings include Calendar default,Private and Only me,and new-only versus all-events application.",
+        "Gmail-specific wording for Calendar default and generic event Default visibility do not supply an unambiguous full permission matrix."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Worked partner/manager example;Calendar-default table;privacy explanation",
+          "issue": "Draft confidently derives that free/busy-only manager sees train title/time despite acknowledged unresolved interaction with general calendar permission definitions.",
+          "exactCorrection": "Attribute the Gmail help definition explicitly,then state that its interaction with every permission level is not specified clearly by these sources. Do not assert that particular manager result. Require recipient-side verification with a harmless sample before widening the setting;keep sensitive bookings under Only me when that is the intended audience.",
+          "sourceUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "sourceSection": "Learn about visibility settings"
+        },
+        {
+          "location": "Practical sensitive-event Private advice",
+          "issue": "Private can expose data to permitted editors;it is not the same as Only me.",
+          "exactCorrection": "Explain Private may remain visible to people with editing access. Do not offer Private as a substitute for user-only visibility;check exact grant and Gmail setting. Note that anyone signed into this Google account on a device can see its events,including Only-me ones.",
+          "sourceUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "sourceSection": "Important warning;Learn about visibility settings"
+        },
+        {
+          "location": "Worked role label",
+          "issue": "Source15716974 currently uses See event details;draft uses See all event details.",
+          "exactCorrection": "Use the current See event details label if mentioning that role,without inferring a new Gmail visibility matrix from the label.",
+          "sourceUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "sourceSection": "Change default visibility;cross-reference current calendar permission definitions"
+        }
+      ],
+      "canonicalDecision": "Keep special Gmail-derived event privacy task,distinct from generic task visibility and work/personal calendar separation. Do not become another general Google-sharing article.",
+      "closestExistingArticles": [
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1566
+        },
+        {
+          "slug": "calendar-event-or-room-reservation",
+          "cosine": 0.1493
+        },
+        {
+          "slug": "can-others-see-google-calendar-tasks",
+          "cosine": 0.1274
+        }
+      ],
+      "workedExampleReview": "New-only application can preserve prior event setting as an illustrative intent,but the exact current appointment visibility and manager exposure must be checked. No confident free/busy-to-title inference is supported here.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/6084018?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/6084018?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/7b97017b874950d4.txt",
+          "textCharacters": 4221,
+          "bodySha256": "b4f5e288c6a6524f14744ac5c5f715f5a8960c46d8ec74eccf76044e579a1dd3",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/15454771?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/ae9414fd13b1e375.txt",
+          "textCharacters": 2277,
+          "bodySha256": "f352f4a21c9c96f4a210fd629998b8c935eb0168222939191484551b42a0a9bb",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "0c7529568ce8771f70a0c01b92b36d1003359ad43af185372bd14524afe60832",
+      "publicationApproved": false
+    },
+    "google-keep-reminders-moved-to-tasks": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Source describes From Keep marker,reminder links,location trigger retirement,interval cap1000,and year>3000 adjustment to2900.",
+        "Non-repeating reminders older than one year go to Old Google Keep Reminders;Tasks-disabled organizations and suspended Workspace licenses can prevent migration.",
+        "Source still uses future tense for a migration planned in second half2025;this does not verify every account\u2019s present state."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Lede;What Google says happened",
+          "issue": "Draft turns a documented planned timeline into a verified account-wide completed migration.",
+          "exactCorrection": "Say Google announced this migration for second half2025 and documents the behavior below;verify the account\u2019s actual From Keep items instead of claiming every account has migrated or that a changed reminder probably did.",
+          "sourceUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "sourceSection": "Opening migration notice;Find Keep reminders"
+        },
+        {
+          "location": "100000 limit paragraph",
+          "issue": "Draft says if account had more than100000tasks;source says task limit100000 and oldest Keep reminders may not migrate if Keep reminder count exceeds it.",
+          "exactCorrection": "Use Google\u2019s stated100000-task limit and exact over-limit Keep-reminder condition. Include suspended Workspace licenses as another documented reason,not just Tasks service off.",
+          "sourceUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "sourceSection": "Limits on tasks;Work or school accounts managed by administrator"
+        },
+        {
+          "location": "Notification/title behavior missing from migration checklist",
+          "issue": "Draft omits source-specific behavior that adds useful migration diagnosis.",
+          "exactCorrection": "Add that reminder notifications no longer come from Keep;Calendar or Tasks mobile app and notification permission are needed. Keep-note title edits do not rename reminder title;edit reminder title in Tasks or Calendar. Keep original notes while checking.",
+          "sourceUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "sourceSection": "Get reminder notifications on mobile;Edit and delete Keep reminders"
+        }
+      ],
+      "canonicalDecision": "Keep Keep-to-Tasks migration task. Existing sync-google-tasks-apple-reminders and task-versus-alert guides distinguish systems,not Keep migration markers,retired triggers or title/notification routing. Link them without claiming universal migration completion.",
+      "closestExistingArticles": [
+        {
+          "slug": "sync-google-tasks-apple-reminders-iphone",
+          "cosine": 0.1344
+        },
+        {
+          "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+          "cosine": 0.1287
+        },
+        {
+          "slug": "find-old-calendar-events-by-account-date-and-title",
+          "cosine": 0.1171
+        }
+      ],
+      "workedExampleReview": "Two-year-old nonrepeat goes to old-reminder list if migrated,three-day interval is below1000 cap,and location description can be checked without a trigger. Frame as expected documented examples conditional on actual migration.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/16540694?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/88da1c69852cee57.txt",
+          "textCharacters": 3277,
+          "bodySha256": "39b54a132e71acef7985dd44128717cb96d540c6dda0c8b6d801844bc293dd35",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "cdeabe60c390cc27e858c1baffd4375eeec8b2ecaad0a76418e627dda159b242",
+      "publicationApproved": false
+    },
+    "google-tasks-repeating-task-complete-delete": {
+      "verdict": "approve",
+      "supportedFacts": [
+        "Android repeat creation,completion behavior and scope choices This task/This and following/All supported.",
+        "Delete all in Tasks versus single occurrence through Calendar supported.",
+        "Shared tasks/subtasks cannot repeat,recurring tasks cannot move lists,and stopped repeat requires a new series supported."
+      ],
+      "requiredCorrections": [],
+      "canonicalDecision": "Keep Android Google Tasks repeat-management task;existing recurrence guide concerns calendar events and app editing scopes,not Google Tasks creation/completion/deletion constraints.",
+      "closestExistingArticles": [
+        {
+          "slug": "recurring-events-without-the-mess",
+          "cosine": 0.1755
+        },
+        {
+          "slug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+          "cosine": 0.1649
+        },
+        {
+          "slug": "share-assign-reminders-iphone-calendar-difference",
+          "cosine": 0.1487
+        }
+      ],
+      "workedExampleReview": "Fortnightly Tuesday example is internally consistent and single-instance deletion scope supported. No date-shift behavior for early/late completion is invented.",
+      "optionalImprovements": [
+        "Say Google Tasks sharing/assignment arrangements rather than imply a generic shared-list feature in every Tasks client.",
+        "Add source note that only a limited number of future task instances appear at once;new ones appear over time,so partial grid visibility alone is not series loss.",
+        "Keep Android scope explicit;do not transfer these labels to web or Cloud Calendars without checking."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/12132599?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/12132599?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/aa5c42e5b097f375.txt",
+          "textCharacters": 2799,
+          "bodySha256": "ac1bc675ff18d1ddcb83d50556c1ea585a08725d9f6bded80ec0518ad11af454",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "c1660842af0b0449933bb50bc6aabdafca309d3c6a2656f491ea543693f1deda",
+      "publicationApproved": false
+    },
+    "google-calendar-email-notifications-filter": {
+      "verdict": "approve",
+      "supportedFacts": [
+        "Personal per-calendar Other notifications Email/None controls supported.",
+        "Exact Gmail header and event/RSVP tokens match17366804,including case-sensitive-looking spellings.",
+        "Third-party provider rule target noreply-calendar-sync@google.com and past30-day recurring invitation limitation supported by15077640."
+      ],
+      "requiredCorrections": [],
+      "canonicalDecision": "Keep operational Gmail filtering task,distinct from RSVP meaning and app push-alert troubleshooting. Existing notification guide should link here rather than absorb another full token table.",
+      "closestExistingArticles": [
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1195
+        },
+        {
+          "slug": "work-and-personal-without-two-apps",
+          "cosine": 0.1151
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "cosine": 0.1051
+        }
+      ],
+      "workedExampleReview": "15-meeting team-lead example is clearly fictional,not a measured inbox claim. rsvpAccepted/rsvpTentative filters leave rsvpDeclined unarchived as intended.",
+      "optionalImprovements": [
+        "State notification settings are personal to the account;quieting your team calendar email does not change every teammate\u2019s settings.",
+        "Align location-change handling between example and table:keep in Inbox or label/review daily consistently.",
+        "Keep sync-support emails available in a label/archive until recipient-calendar behavior is checked;do not recommend deletion as a first test."
+      ],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/17366804?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/17366804?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/36ffd7a6e137c81f.txt",
+          "textCharacters": 3697,
+          "bodySha256": "c06ba247103b7d4698e67a9646b96e7f115dfb56faeafc00a2df36dc4e337821",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop",
+          "resolvedUrl": "https://support.google.com/calendar/answer/37242?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/cba4073b2967be4a.txt",
+          "textCharacters": 5207,
+          "bodySha256": "2a7c05c85b681b0d1a62a7ff67b631c4f3e1be57bce6b9011a0a843e001a5b55",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/15077640?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/15077640?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/f3742f630b776a85.txt",
+          "textCharacters": 1140,
+          "bodySha256": "8b7d35ba693e1e6116829f206e4c4fd499c6fa1aa73a917bf293c750dd64c62f",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "bf9c0a2f447239d86a94bb09fcd4e94e93a861d45ffe66f1afd431077576c761",
+      "publicationApproved": false
+    },
+    "google-appointment-cancel-booked-slot": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Cancel appointment route removes booked item,emails booker and reopens slot,subject to actual availability.",
+        "Forwarded confirmation recipient can cancel booking,supported explicitly.",
+        "Deleting appointment schedule leaves booked appointments but breaks booking-page links;this useful separate action is documented."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Busy-hold/adjusted-availability advice;source list",
+          "issue": "Current visible sources do not precisely support every Busy-hold or adjusted-date mechanism being taught.",
+          "exactCorrection": "Add16287054 for reviewed-calendar Busy blocking and11423292 for adjusted availability,with verified source notes. State availability checks enabled,correct calendar selected,and Busy hold covering the entire appointment interval. Recheck visitor output rather than promise an immediate refresh.",
+          "sourceUrl": "https://support.google.com/calendar/answer/10730791?hl=en",
+          "sourceSection": "Learn how appointment schedule syncs;additional primary references16287054 and11423292"
+        },
+        {
+          "location": "FAQ Does cancelling reopen time;host table",
+          "issue": "Unqualified Yes conflicts with the article\u2019s own intentional Busy hold and other booking limits.",
+          "exactCorrection": "Say Google returns cancelled time to available inventory,but it can still be hidden by enabled conflict checks,adjusted availability,notice window or other schedule limits. Verify the public page.",
+          "sourceUrl": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "sourceSection": "Cancel a booked appointment;read with availability settings"
+        },
+        {
+          "location": "As guest;scope of third-party route",
+          "issue": "Do not promote a specifically documented third-party cancellation route as every possible client\u2019s exact control.",
+          "exactCorrection": "Keep the third-party-calendar qualifier and refer guests to the supported confirmation link/action they actually received. Do not invent a reschedule path.",
+          "sourceUrl": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "sourceSection": "Cancel a booked appointment"
+        }
+      ],
+      "canonicalDecision": "Keep booked-appointment cancellation lifecycle task. Existing booking-versus-sharing guide selects link types;batch01 availability draft diagnoses open slots. Link both and keep cancellation token exposure distinct.",
+      "closestExistingArticles": [
+        {
+          "slug": "booking-link-or-shared-calendar",
+          "cosine": 0.2236
+        },
+        {
+          "slug": "calendar-event-or-room-reservation",
+          "cosine": 0.1568
+        },
+        {
+          "slug": "keeping-track-of-who-replied",
+          "cosine": 0.1526
+        }
+      ],
+      "workedExampleReview": "10:00 hold example needs an end time or explicit full appointment coverage. Confirmation-forwarding caveat is supported;no actual guest cancellation test claimed.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/10737245?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/cb9286d6c467cc20.txt",
+          "textCharacters": 1543,
+          "bodySha256": "2ccb03f369c3ab94434c5b26375e720566f656d8430acb1d2203f3f322f6f1ba",
+          "checkedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/10730791?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/10730791?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/99c8f0074d3f4376.txt",
+          "textCharacters": 3192,
+          "bodySha256": "bb57af216c1b5e96ede90a5730f885d12b10a981d418f5a081ba8c2f6d063716",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "80c7cef6841bf21fe7f7c78f0f9403578995b19ebd74792dde5b5d093e9a0575",
+      "publicationApproved": false
+    },
+    "google-calendar-android-app-not-syncing": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Android account sync and created-secondary-calendar Sync setting,manualRefresh,visibility,storage and Google-account source checks supported.",
+        "Official Google Calendar app historical sync limit is one year;this does not establish Cloud Calendars date coverage.",
+        "Data-loss warning is specifically under Clear your Calendar app data,last-resort step."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "First find out if anything unsynced;table;FAQ clearing",
+          "issue": "Draft spreads the irreversible-loss warning over all troubleshooting steps instead of the specific storage-clear action.",
+          "exactCorrection": "Scope loss to clearing Calendar app storage/data:unsynced data missing from web can be lost. Normal connectivity/visibility checks are not claimed to erase it. Keep copying unsynced details before any destructive action,and do not present an export as complete invitation-state recovery.",
+          "sourceUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "sourceSection": "Clear your Calendar app data"
+        },
+        {
+          "location": "Sync switches;practical both must be on",
+          "issue": "Primary calendar has no per-calendar Sync control in the documented app.",
+          "exactCorrection": "Say account-level Calendar sync must be enabled;per-calendar Sync is available for calendars the user created,not the primary Events calendar. Do not send users searching for a missing primary Sync switch.",
+          "sourceUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "sourceSection": "Confirm correct calendar syncs in Calendar app"
+        },
+        {
+          "location": "Worked Family calendar outcome;table RiskNone",
+          "issue": "Example implies immediate upload after toggling and uses an ambiguous Family calendar. Zero-risk assertions are too broad.",
+          "exactCorrection": "Use a secondary calendar the user actually created,with an expected owner/source. Describe a possible result after waiting and refreshing,then verify web and intended recipient. Source explicitly warns events may take time to appear. Replace None risk labels with non-deletion check or similar bounded wording.",
+          "sourceUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "sourceSection": "Confirm correct calendar syncs;Manually sync your calendar"
+        }
+      ],
+      "canonicalDecision": "Keep Google Calendar Android-specific sync task,distinct from current Google calendars missing in Cloud Calendars on iPhone. Explicitly name app/platform and avoid claiming identical provider coverage or storage behavior.",
+      "closestExistingArticles": [
+        {
+          "slug": "what-calendar-sync-actually-does",
+          "cosine": 0.1597
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "cosine": 0.1491
+        },
+        {
+          "slug": "when-two-calendars-disagree",
+          "cosine": 0.1393
+        }
+      ],
+      "workedExampleReview": "The device-account/per-calendar mismatch is plausible only for a created secondary calendar. A moment-later upload is not guaranteed;check actual provider record before claiming a partner received it.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/6261951?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "existing_exact_primary_body",
+          "file": "claude/review-source-text/0a692a776b84f9a2.txt",
+          "textCharacters": 4200,
+          "bodySha256": "33533bcd5d5cd2e8695bb94a8100a8063a732760083f0075c6aec44fd131462e",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "713a6dcf0f55bf94f01a61561c0efe81bca2767ba72b02ab273c6ec6d3910f39",
+      "publicationApproved": false
+    },
+    "google-family-calendar-membership": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Family auto-created,manager default owner,owner-only deletion,leaving group loses access and group deletion not auto-removing calendar supported.",
+        "Family members have broad event/sharing responsibilities;non-family sharing exists.",
+        "Under13 change notifications go to sharing-management permission holders,not simply a guardian category."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Under13 paragraph;table under13 row",
+          "issue": "Draft substitutes guardians for exact permission-based email audience.",
+          "exactCorrection": "State anyone with Make changes and manage sharing permission is emailed when under13 user shares,makes public or changes member permissions. Do not promise every guardian receives a notice or imply no other recipient can.",
+          "sourceUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "sourceSection": "Learn how family calendar works"
+        },
+        {
+          "location": "Worked former-member sharing;practical share byname",
+          "issue": "Source warns non-family recipients can edit by default;draft read-only scenario can obscure that default.",
+          "exactCorrection": "Explicitly inspect and set intended permission before sending named share;do not assume former-member or non-family invitations are read-only. If using viewer label,use current See event details. Explain family agreement about who manages sharing does not technically revoke members\u2019 existing abilities.",
+          "sourceUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "sourceSection": "Share family calendar with non-family members"
+        },
+        {
+          "location": "After group deletion;worked retains ordinary calendar",
+          "issue": "Remaining calendar does not establish every prior audience or ownership setting remains appropriate.",
+          "exactCorrection": "Say owner must inspect remaining calendar and access after group deletion,then deliberately retain or delete it. Do not promise an automatic harmless conversion into a correctly shared ordinary calendar.",
+          "sourceUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "sourceSection": "Family-group deletion and owner-only calendar deletion"
+        }
+      ],
+      "canonicalDecision": "Keep Google Family-group membership/access task,distinct from Cloud Calendars Reader/Writer/Owner sharing. Current household/app guide should cross-link and clearly preserve provider-role differences.",
+      "closestExistingArticles": [
+        {
+          "slug": "a-calendar-that-is-yours-to-share",
+          "cosine": 0.1733
+        },
+        {
+          "slug": "google-calendar-ownership-transfer-pending-acceptance",
+          "cosine": 0.1567
+        },
+        {
+          "slug": "why-a-shared-calendar-does-not-appear",
+          "cosine": 0.1489
+        }
+      ],
+      "workedExampleReview": "Four-person-family example is coherent,but a parental agreement is not permission enforcement,and a returning non-family grant must be reviewed rather than assume read-only default.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/7157782?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/9d8f14ca1fb43338.txt",
+          "textCharacters": 2909,
+          "bodySha256": "db0e1181182f8b7118980710f2b39748e08372382eee955d8d830b98e829306d",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "f02b6e413ab531e9d7ebd734dabba647e8f498b32a18bc5b056f7112eeb36b65",
+      "publicationApproved": false
+    },
+    "google-calendar-print-date-range": {
+      "verdict": "revise",
+      "supportedFacts": [
+        "Computer print views,hidden-calendar checkmarks,orientation,font,weekend and color options supported.",
+        "Source documents Print descriptions and Print your response specifically after switching to Schedule view.",
+        "Printed output is static;preview and restoring selections are reasonable editorial guidance."
+      ],
+      "requiredCorrections": [
+        {
+          "location": "Print preview paragraph;Week babysitter example;table detailsrow",
+          "issue": "Draft claims description/response options generically and uses them in Week view,while source directs Schedule view.",
+          "exactCorrection": "Tell readers to switch to Schedule before Print descriptions/Print your response,then verify the desired period in preview. Change babysitter example to that documented Schedule workflow. Do not promise those controls in every grid view.",
+          "sourceUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+          "sourceSection": "Include calendar event details"
+        },
+        {
+          "location": "Font/range relation",
+          "issue": "Larger font does not change number of days per page;reader may confuse layout adjustment with range.",
+          "exactCorrection": "Add source note that changing font size improves readability but does not change the number of days on the page. Choose view/date range separately and inspect preview.",
+          "sourceUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+          "sourceSection": "Change font size"
+        }
+      ],
+      "canonicalDecision": "Keep Google desktop print workflow. Existing export guide prints Apple Calendar on Mac and compares formats;it does not teach these Google view-specific options. Link it for ICS/PDF/archive distinctions without reusing its entire export text.",
+      "closestExistingArticles": [
+        {
+          "slug": "the-widget-that-shows-what-is-next",
+          "cosine": 0.1001
+        },
+        {
+          "slug": "calendar-export-ics-pdf-and-backup",
+          "cosine": 0.0999
+        },
+        {
+          "slug": "month-view-on-a-bigger-screen",
+          "cosine": 0.0998
+        }
+      ],
+      "workedExampleReview": "Month family preview is supported. Week plus Print descriptions is not established;use Schedule for the babysitter detail list. No physical print or UI test claimed.",
+      "optionalImprovements": [],
+      "sourceBodyEvidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/41067?hl=en",
+          "resolvedUrl": "https://support.google.com/calendar/answer/41067?hl=en",
+          "status": "fetched",
+          "httpStatus": 200,
+          "method": "direct_primary_body_fetch",
+          "file": "claude/review-source-text/07ee9a0eb962a91d.txt",
+          "textCharacters": 2367,
+          "bodySha256": "b1bb36fa5a56fa39fafe3b9b8ab05f2e261fd9e792deba40d2749025845ab4e3",
+          "checkedAt": "2026-10-23"
+        }
+      ],
+      "draftSha256": "f7e95e1c3af8e86e92768860da57aa90fcc03e9baf8ba0a3026f0d0d088e7eb9",
+      "publicationApproved": false
+    }
+  },
+  "publicationApproved": false,
+  "limits": [
+    "Official documentation reading is not firsthand app testing.",
+    "No ranking,indexing or keyword-volume claims were verified.",
+    "Root final editorial integration required after corrections."
+  ]
+}

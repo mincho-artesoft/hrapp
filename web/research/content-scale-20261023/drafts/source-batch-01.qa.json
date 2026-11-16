@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-23",
+  "method": "JSON schema-shape checks, source-registry slug/link comparison, Python Gregorian date arithmetic; no runtime app or provider test.",
+  "fixtureChecks": [
+    "All five weekly dates in November 2026 are Mondays.",
+    "DATE ranges use exclusive next-day boundary.",
+    "COUNT=4 generates four starts before EXDATE removes one.",
+    "All new pages remain editorial drafts."
+  ],
+  "articles": [
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "metaDescriptionCharacters": 132,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "metaDescriptionCharacters": 126,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "metaDescriptionCharacters": 138,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "metaDescriptionCharacters": 152,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "metaDescriptionCharacters": 134,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "metaDescriptionCharacters": 127,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "metaDescriptionCharacters": 144,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "metaDescriptionCharacters": 150,
+      "newSlug": true,
+      "allThreeContextLinksExist": true,
+      "comparisonTableRectangular": true,
+      "reviewStatus": "draft"
+    }
+  ]
+}

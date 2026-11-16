@@ -1,0 +1,110 @@
+{
+  "updated": "2026-10-22",
+  "title": "Change calendar colors on iPhone without moving events",
+  "short": "Calendar colors and event colors",
+  "description": "Change calendar colors, distinguish individual-event overrides and check differences across apps. Keep ownership and sharing separate from appearance.",
+  "lede": "A color can identify a calendar, override one event or simply reflect an app’s display style. First choose which of those you want to change. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Changing a calendar’s color changes only one event, appears identically in every app and has the same effect for every person viewing the calendar.",
+  "sections": [
+    {
+      "heading": "Decide whether you mean a calendar or one event",
+      "body": [
+        "A calendar-wide color helps you recognize a group of appointments. An individual-event color is a separate feature: changing one meeting in a provider’s app does not mean you have changed the calendar’s default. A text-style setting can change the appearance again without moving either record.",
+        "For example, a blue household calendar and a green club calendar can make a week easier to scan. Keep their names and owning accounts distinct too. Two blue events can belong to different accounts, and an event’s color does not establish its owner, sharing permissions, availability or invitation response."
+      ]
+    },
+    {
+      "heading": "Find the calendar and the control it actually offers",
+      "body": [
+        "Before changing anything, note the calendar name, owning account and connection route. An iOS calendar, an app-owned calendar and a received Cloud calendar can have different controls. Direct Google and Microsoft connections do not offer the same existing-calendar edit control as editable local or iCloud calendars.",
+        "If the expected info or edit control is absent, check the calendar type and the actions available for your role. Do not buy a different plan, create another calendar or move appointments just because a color option is missing. A provider editor may be the appropriate place for that provider’s setting."
+      ]
+    },
+    {
+      "heading": "Change an available calendar color in Cloud Calendars",
+      "body": [
+        "For an editable iOS calendar that offers the info control in the calendar list, open Edit Calendar. Leave Calendar Name unchanged for a color-only edit. Under COLOR, tap the current color, choose a preset or Custom..., return to the editor and choose Done. Cancel leaves that editor without applying this save. Labels and available controls can vary with the calendar type and installed version.",
+        "After saving, reopen the calendar list and inspect several appointments from that calendar. Then compare the same source in the relevant provider or system calendar. A successful local appearance change does not by itself prove that a provider accepted the color or that another device will show it immediately."
+      ]
+    },
+    {
+      "heading": "Separate a received calendar’s personal color from its creator’s default",
+      "body": [
+        "A received Cloud calendar may offer Default from creator and Custom on this device. Where those choices appear, the personal override is different from editing the creator’s calendar color. Use the displayed scope when deciding whether to follow the creator’s default or choose a color for this device.",
+        "Do not generalize that every color change is private to its viewer. Editing a calendar you own can update its shared metadata, while a received-calendar override has a different purpose. Neither a new color nor a familiar color establishes that access was granted, removed or changed. Check the actual sharing settings for those decisions."
+      ]
+    },
+    {
+      "heading": "Use Google’s own controls for Google calendar and event colors",
+      "body": [
+        "Google documents a calendar-wide color choice on its computer website: beside the intended calendar under My calendars or Other calendars, open Options and choose a color or Add custom color. For an individual event in Google’s iPhone or iPad app, open the event, choose Edit, select a color and save. These are Google controls, not instructions for a matching Cloud Calendars button.",
+        "Apple notes that some calendar colors, including Google’s, are set by the server. Cloud’s Google connection reads the provider’s calendar background color during synchronization. A different local mirror color can therefore be replaced. Compare the source before treating a changed-back color as lost events; do not create a duplicate calendar to repair its appearance."
+      ]
+    },
+    {
+      "heading": "Allow for different renderings and provider features",
+      "body": [
+        "Calendar colors and per-event features are not interchangeable between apps. Google event-color overrides, Outlook categories and another app’s colored tags should not be assumed to appear identically in Cloud Calendars. Microsoft calendar colors or categories may differ from the appearance you see here; compare the actual calendar and event details in Outlook.",
+        "Other apps can also style event text independently: BusyCal’s iOS settings distinguish plain text, calendar or tag colors and calendar-only colors. This is a BusyCal feature description, not a Cloud tag-control promise. Choose colors whose text and markers you can read in the views and appearance you use, and retain descriptive calendar names rather than relying on hue alone."
+      ]
+    },
+    {
+      "heading": "If a color returns, trace the source before changing data",
+      "body": [
+        "Check where you made the choice, whether you completed that editor’s save and whether it still appears after reopening. Compare the same calendar in Cloud Calendars, the owning provider and any second device separately. Record which appearance differs and whether it changes again after synchronization; these are observations, not a promised refresh-time test.",
+        "Keep appointments in their intended calendars while diagnosing appearance. Moving an event can change its destination, account or collaboration context; it is not merely a paint operation. For help, note the app version, calendar type, connection route and the control you used, with a non-sensitive example. Leave passwords and private event details out of screenshots."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identify the calendar and owning account before using its color as a cue.",
+    "Choose between a whole-calendar color, an individual-event option and a display style.",
+    "Use an available calendar editor, leave its name unchanged and complete Done.",
+    "For a received calendar, read the scope of Default from creator or Custom on this device.",
+    "Compare Google or Microsoft appearance with the provider without assuming identical color support.",
+    "Keep event destinations intact while checking a changed-back color."
+  ],
+  "faq": [
+    {
+      "q": "Can I change just one event with the calendar color control?",
+      "a": "The calendar color control changes the calendar’s appearance, not a general independent event-color override. A provider’s own event editor may offer a separate option; that does not guarantee the same override will appear in Cloud Calendars."
+    },
+    {
+      "q": "Why is there no color-edit button for my connected calendar?",
+      "a": "Available controls depend on the calendar type and your role. Direct Google and Microsoft rows do not expose the same existing-calendar editor as editable local or iCloud calendars. Check the provider’s own settings rather than creating another calendar."
+    },
+    {
+      "q": "Will everyone see the color I choose?",
+      "a": "Do not assume so. A received-calendar personal override differs from the creator’s shared default, and different apps can render colors differently. Check the scope shown by the control and compare the relevant view."
+    },
+    {
+      "q": "Should I move an event to another calendar just to recolor it?",
+      "a": "No. Moving changes the event’s destination and can affect its account or collaboration context. Identify the available color or display option first, and keep the event in the calendar where it belongs."
+    }
+  ],
+  "sourcesHeading": "Official color controls and display guidance",
+  "sources": [
+    {
+      "label": "Apple: Calendar colors on iPhone and server-controlled accounts",
+      "url": "https://support.apple.com/guide/iphone/use-multiple-calendars-iph3d1110d4/27/ios/27"
+    },
+    {
+      "label": "Google: Change a calendar’s color on a computer",
+      "url": "https://support.google.com/calendar/answer/37095?hl=en&pp=env"
+    },
+    {
+      "label": "Google: Pick an event color on iPhone and iPad",
+      "url": "https://support.google.com/calendar/answer/72143/?co=GENIE.Platform%3DiOS&hl=en"
+    },
+    {
+      "label": "BusyCal: iOS appearance and event text styles",
+      "url": "https://www.busymac.com/docs/busycalios/70670-settings/"
+    }
+  ],
+  "seeAlso": [
+    "work-and-personal-without-two-apps",
+    "event-saved-to-wrong-calendar",
+    "when-two-calendars-disagree"
+  ]
+}

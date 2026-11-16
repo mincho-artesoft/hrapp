@@ -1,0 +1,278 @@
+{
+  "date": "2026-10-23",
+  "originalUntouched": true,
+  "changes": [
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "path": "sections.1.body.2",
+      "before": "Microsoft adds that declined events sync to other Outlook apps, Teams and third-party calendar apps only when you decline them through those newer apps, not through classic Outlook. This page does not say whether meetings declined before you turned the setting on will reappear; check a known example.",
+      "after": "Microsoft says declined events can appear across Outlook clients, Teams and third-party calendar apps when you decline through new Outlook, Outlook for Mac, Outlook on the web, mobile Outlook or Teams. Declining through classic Outlook does not preserve the declined event across those services. The documented promise is prospective: “From now on” after the setting is enabled. Do not rely on it to reconstruct earlier declines.",
+      "reason": "Clarifies documented prospective setting rather than inviting an unsupported backfill assumption.",
+      "evidence": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "path": "comparison.rows.2.cells.2",
+      "before": "Ask the organiser to resend",
+      "after": "Use the response options available for that account; the retention setting is not supported",
+      "reason": "Unsupported retention is not a claim that resending is the only response route for a personal account.",
+      "evidence": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "path": "sections.0.body.0",
+      "before": "New Outlook for Windows and Outlook on the web: Settings, Calendar, Events and invitations, tick Shorten duration for all events, choose minutes for events under one hour and for events of one hour or longer, and Save. Microsoft notes new Outlook needs the latest Monthly Enterprise Channel build of Outlook Desktop.",
+      "after": "New Outlook for Windows and Outlook on the web: Settings, Calendar, Events and invitations, tick Shorten duration for all events, choose the available timing option and minutes for events under one hour and for events of one hour or longer, and Save. Microsoft’s page also includes a note recommending the latest Monthly Enterprise Channel build of Outlook Desktop.",
+      "reason": "Preserves the actual source note without turning a recommendation into a categorical new-Outlook eligibility test.",
+      "evidence": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "path": "sections.2.body.0",
+      "before": "A fictional manager walks between two buildings and wants five minutes after short meetings and ten after longer ones. In Outlook on the web they tick Shorten duration for all events, choose 5 minutes for events under an hour and 10 for an hour or longer, and Save. Assumed: one work account, current client.",
+      "after": "A fictional manager walks between two buildings and wants five minutes after short meetings and ten after longer ones. Using an account and client that offer the setting, they choose End early and set 5 minutes for events under an hour and 10 for an hour or longer. They save the setting.",
+      "reason": "The example must select End early before deriving end times; does not invent an undocumented web menu.",
+      "evidence": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "description",
+      "before": "Create a meeting from an Outlook email: who becomes required or optional, what text carries over, account requirements and why encrypted mail won’t convert.",
+      "after": "Create an Outlook meeting from an email: review required and optional attendees, quoted text, attachments and protected-message limitations before sending.",
+      "reason": "Removes blanket encrypted-mail prohibition and prioritizes the complete safe workflow.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "sections.2.body.0",
+      "before": "Microsoft says Reply with Meeting is only available with Business Exchange accounts, and won’t work for emails encrypted with a sensitivity label or Information Rights Management. For those, create a new meeting and summarise what is needed instead of pasting protected content.",
+      "after": "Microsoft says Reply with Meeting is available with Business Exchange accounts. Its protected-message guidance needs a client distinction: classic Outlook’s Reply with Meeting can fail for mail encrypted with a sensitivity label or Information Rights Management (IRM). A later note directs users of protected messages to Meeting under Home > Respond in new Outlook or Outlook on the web. Do not treat the classic restriction as a universal ban across all clients. If your permitted workflow still does not work, create a new meeting using only content you are authorized to share.",
+      "reason": "The full current body explicitly names a protected-message path in new Outlook and OWA; draft missed the later qualification.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "sections.3.body.1",
+      "before": "They delete internal pricing remarks from the quoted text, attach the latest quote file (it wasn’t carried over), set Tuesday 10:00, and send.",
+      "after": "Before sending, they check the complete attendee list, remove internal pricing remarks from the quoted body, inspect whether the needed quote file is present and attach it if missing. They set Tuesday 10:00, verify the time and location, then send.",
+      "reason": "Source does not prove attachment loss. Confidential content and recipients must be checked before sending.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "sections.3.body.2",
+      "before": "Check: open the sent meeting and confirm attendees and body before the supplier reads it.",
+      "after": "Check before Send: recipients, quoted thread, any files, date and time. After sending, confirm the calendar contains the intended meeting; do not rely on a post-send inspection to prevent disclosure.",
+      "reason": "Corrects the unsafe suggestion that one can inspect before the supplier reads an already-sent invitation.",
+      "evidence": "Editorial ordering of the documented workflow; no new provider claim."
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "comparison.rows.5.cells.1",
+      "before": "Won’t work",
+      "after": "Classic Reply with Meeting has a restriction; Microsoft directs protected-message users to Meeting in new Outlook or Outlook on the web",
+      "reason": "Makes client limitation consistent with current full source.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "practical.3",
+      "before": "Trim the quoted text and re-attach needed files.",
+      "after": "Before sending, trim the quoted text and verify any needed attachments.",
+      "reason": "Does not claim all files must be reattached.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "practical.4",
+      "before": "Send, then reopen to check.",
+      "after": "Check recipients, content and scheduling details before Send; then verify the saved meeting.",
+      "reason": "Moves confidentiality check before transmission.",
+      "evidence": "Editorial sequencing."
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "faq.0.a",
+      "before": "Microsoft says the feature needs a Business Exchange account and won’t work for encrypted or IRM-protected mail. In classic Outlook check the More (…) menu.",
+      "after": "Microsoft says Reply with Meeting needs a Business Exchange account. In classic Outlook, check the More (…) menu and select an actual message, not a conversation header. For protected mail, Microsoft distinguishes classic Reply with Meeting from the Meeting command in new Outlook or Outlook on the web.",
+      "reason": "Adds documented conversation-header cause and removes universal protected-mail prohibition.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "faq.1.a",
+      "before": "Microsoft says the header and body are included; it doesn’t state attachments are. Add them yourself.",
+      "after": "Microsoft says the header and body are included but does not establish attachment carryover in these instructions. Inspect the draft and attach a needed file only if it is absent.",
+      "reason": "Aligns factual uncertainty with example, avoids unnecessary duplicate attachments.",
+      "evidence": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "description",
+      "before": "Why Outlook adds flights, hotels, car rentals and parcels from email to your calendar, which accounts it applies to, and how to change display or privacy per type.",
+      "after": "Control which Outlook booking-email summaries appear on the calendar, check account limits and preserve the separate privacy setting.",
+      "reason": "Removes implication privacy is configured independently for each type.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "lede",
+      "before": "Outlook can read booking emails and put the trip on your calendar without being asked. You can choose per type whether that happens and whether the entries are private. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+      "after": "Outlook can extract supported bookings from email and add them to the calendar. Display choices are available by event type; the private-event checkbox is a separate setting. Arte Soft, the developer of Cloud Calendars, explains the account limits and what to check before sharing.",
+      "reason": "Display categories and privacy checkbox are distinct controls in the actual body.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "sections.0.body.0",
+      "before": "Microsoft lists flight, hotel and rental car reservations and package deliveries. It says bills, dining, event and service reservations were discontinued in mid-August 2020. Past events and unsupported providers aren’t added. Flight, car and hotel reservations are added automatically; Microsoft says other types need turning on.",
+      "after": "Microsoft lists flight, hotel and rental car reservations and package deliveries from supported senders. The same page says bills, dining, event and service reservations stopped being supported from mid-August 2020, even though some older instructions lower on the page still mention them. Do not promise those discontinued types. Past events and unsupported providers are not added.",
+      "reason": "Current page contains stale conflicting lower sections; lead with explicit discontinuation instead of amplifying its obsolete enablement instructions.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "sections.2.body.0",
+      "before": "In Calendar settings, open Events from email. For each type choose Don’t show event summaries in email or on my calendar, Only show event summaries in email, or Show event summaries in email and on my calendar. Microsoft says events are marked private by default, with an option to make them public.",
+      "after": "In Outlook on the web or Outlook.com, open Settings > Calendar > Events from email. For each supported type choose Don’t show event summaries in email or on my calendar, Only show event summaries in email, or Show event summaries in email and on my calendar. Separately, the Mark events as private so only I can see them checkbox controls whether these created events are marked private; it is checked by default.",
+      "reason": "Exact path and separate privacy control verified in body.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "sections.2.body.1",
+      "before": "Microsoft says turning the feature off must be done in Outlook on the web or Outlook.com.",
+      "after": "Microsoft says these settings are changed through Outlook on the web or Outlook.com, not Outlook for Windows. If the feature was turned off, turning it back on does not create events or summaries for past messages. Its classic-web notes also say package-delivery information is not added automatically for Microsoft 365 business or other commercial accounts.",
+      "reason": "Adds material account and backfill limits from same full source.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "sections.3.body.1",
+      "before": "These entries are private by default, and Microsoft’s calendar-sharing guidance says most people you share with see only the time of private items. So the partner would likely see the time but not the flight details; the traveller confirms this with the partner rather than assuming it, and changes the private option only deliberately.",
+      "after": "Microsoft’s sharing guidance says most people you share with see the time of a private item but not its details. It also describes an exception for a delegate granted access to private events. The traveller checks the actual audience and sharing permissions with the partner rather than assuming private is an absolute secrecy guarantee.",
+      "reason": "Preserves the source’s explicit delegate exception.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "faq.1.a",
+      "before": "Microsoft says these events are private by default; change the option deliberately if you want details shown.",
+      "after": "These events are private by default. Microsoft says most shared viewers see only their times, but delegates granted access to private events are an exception. Check your actual sharing permissions before relying on this.",
+      "reason": "Avoids blanket privacy claim.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "path": "sections.1.body.1",
+      "before": "Microsoft says calendar items are restored to your calendar. The pages used here don’t state a time limit or which account types support server recovery; if the option is missing or the item isn’t listed, ask your administrator rather than assuming either way.",
+      "after": "For new Outlook, Microsoft explicitly says recovered calendar items go to Calendar. For classic Outlook, the short server-recovery page does not specify the destination for each item type: inspect Calendar and Deleted Items after recovery, and use the Calendar-item move procedure above if it is in Deleted Items. These short pages do not establish a universal retention window or account eligibility. If the server option is missing or the item is absent, ask your administrator or consult your account’s current recovery guidance.",
+      "reason": "The destination list belongs to the new-Outlook section; do not silently generalize it to classic.",
+      "evidence": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c"
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "path": "sections.2.body.0",
+      "before": "The recovery pages describe restoring the item to your calendar; they don’t say that restoring notifies anyone. If you cancelled a meeting you organised, attendees already received a cancellation, so don’t assume a restore undoes it. Contact attendees, and if needed send a new invitation.",
+      "after": "Restoring a record is not evidence that everyone’s meeting response or cancellation state has been reversed. The recovery pages do not document automatic re-invitation. If you cancelled a meeting you organized, confirm the current arrangement with attendees before sending anything else; agree whether a fresh invitation is needed and make clear which record to use.",
+      "reason": "Avoids a mandatory new invitation that could create duplicates; separates restored record from meeting agreement.",
+      "evidence": "Recovery documentation does not establish invitation consequences; cautious editorial distinction."
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "path": "sections.3.body.1",
+      "before": "The same day they had cancelled a team meeting they organised. They restore it the same way, but because attendees already had the cancellation, they send a fresh invitation with a short note.",
+      "after": "The same day they had cancelled a team meeting they organized. After recovering their copy, they contact attendees to confirm the cancellation had been received and agree whether a fresh invitation is needed. If they send one, they clearly identify it as the replacement and avoid leaving two apparently active meeting records.",
+      "reason": "Makes worked example conditional and avoids automatic duplicate invitation.",
+      "evidence": "Editorial worked example; not a claim about automatic provider notifications."
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "path": "practical.3",
+      "before": "For meetings you cancelled, send a new invitation.",
+      "after": "For a meeting you cancelled, confirm the arrangement with attendees before deciding whether to send a replacement.",
+      "reason": "Removes unconditional re-invite.",
+      "evidence": "Editorial meeting-state safeguard."
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "path": "faq.1.a",
+      "before": "These pages don’t say it does. Send a new invitation or contact attendees.",
+      "after": "These recovery pages do not establish automatic re-invitation. Confirm the current arrangement with attendees and send a replacement only if needed.",
+      "reason": "Matches corrected conditional workflow.",
+      "evidence": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "path": "sections.1.body.0",
+      "before": "Microsoft says that if you categorise a meeting you received, it doesn’t affect the other person’s Outlook view; categories apply only to items in your calendar. The same category list is used across Outlook item types such as mail, contacts and tasks.",
+      "after": "Microsoft says a category applied to a meeting you received does not affect the other person’s Outlook view; the selection applies to the item in your own calendar. The same category list can be used for other Outlook item types such as mail, contacts and tasks. This is a personal organization tool, not a sharing or access-control setting.",
+      "reason": "Keeps privacy claim inside source-supported personal-item scope rather than every shared/delegated scenario.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "path": "sections.2.body.2",
+      "before": "Check: at week view, count how much of the week is blue versus green before agreeing more work.",
+      "after": "Check: in week view, inspect the items tagged for each client before agreeing more work. For a meeting with two categories, count its duration only once if calculating total occupied time; do not assume an item’s displayed color represents every assigned category.",
+      "reason": "Avoids unsupported visual aggregation and double-counting in the two-category example.",
+      "evidence": "Editorial worked example; source confirms multiple categories, not a reporting engine."
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "path": "comparison.rows.1.cells.1",
+      "before": "No (Microsoft)",
+      "after": "A category you apply to a received meeting does not change the sender’s Outlook view",
+      "reason": "Scopes absolute attendees claim to the documented case.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "path": "faq.0.a",
+      "before": "No. Microsoft says categories on meetings you receive don’t affect others’ views.",
+      "after": "Microsoft says a category you apply to a received meeting does not affect the other person’s Outlook view. Use explicit communication, not a personal category, to signal something to attendees.",
+      "reason": "Avoids generalization beyond documented received-meeting case.",
+      "evidence": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "path": "sources.0.url",
+      "before": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763",
+      "after": "https://support.microsoft.com/en-us/outlook/calendar/show-a-declined-meeting-on-my-calendar-in-outlook",
+      "reason": "Use the official resolved URL verified during the current fetch.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/calendar/show-a-declined-meeting-on-my-calendar-in-outlook"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "path": "sources.0.url",
+      "before": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a",
+      "after": "https://support.microsoft.com/en-us/outlook/make-all-your-events-shorter-automatically",
+      "reason": "Use the official resolved URL verified during the current fetch.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/make-all-your-events-shorter-automatically"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "path": "sources.0.url",
+      "before": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae",
+      "after": "https://support.microsoft.com/en-us/outlook/respond-to-an-email-message-with-a-meeting-request-in-outlook",
+      "reason": "Use the official resolved URL verified during the current fetch.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/respond-to-an-email-message-with-a-meeting-request-in-outlook"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "path": "sources.0.url",
+      "before": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar",
+      "after": "https://support.microsoft.com/en-us/outlook/automatically-add-events-from-your-email-to-your-calendar",
+      "reason": "Use the official resolved URL verified during the current fetch.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/automatically-add-events-from-your-email-to-your-calendar"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "path": "sources.0.url",
+      "before": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook",
+      "after": "https://support.microsoft.com/en-us/outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook",
+      "reason": "Use the official resolved URL verified during the current fetch.",
+      "evidence": "https://support.microsoft.com/en-us/outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"
+    }
+  ]
+}

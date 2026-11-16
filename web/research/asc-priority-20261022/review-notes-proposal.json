@@ -1,0 +1,163 @@
+{
+  "status": "Proposal for independent/root review; not applied",
+  "field": "appStoreReviewDetails.attributes.notes",
+  "resourceId": "e00a59b2-2144-442e-a64a-dfd058715dd0",
+  "version": "1.7.4",
+  "build": "16",
+  "snapshotSha256": "46f7d5fa6748dc2e6a0867bc1d9fb45ee6a08d2ceb29cf7f15fffab2859493e2",
+  "before": "Version 1.7.1 - what changed and how to test\n\nNo account or sign-in is required anywhere in the app. Sharing calendars and events is free for everyone; no subscription is needed for it.\n\nWHAT'S NEW\n- Share an event or a whole calendar with other people, free of charge.\n- Invitations can be sent by email, shown as a QR code, or opened as an App Clip link.\n- New in-app Settings: measurement units and the app language can be changed inside the app.\n- More app languages.\n- Bug fixes.\n\nHOW TO TEST SHARING\n1. Open any event and use the share action. The app produces a link of the form https://appclip.apple.com/id?p=Deksan.CalendarASD.Clip&... and a QR code for it.\n2. On another device, open the link or scan the QR code. Without the app installed, the App Clip shows the event and offers to add it to a calendar. With the app installed, the app opens directly.\n3. If the sender later changes or cancels the event, recipients see the update automatically.\n\nAPP CLIP\nThe App Clip (Deksan.CalendarASD.Clip) is only ever reached through links the app generates, so the invocation URL provided in the App Clip section is a representative sample. The event is drawn from the link itself, so no network access or sign-in is needed to review it.\n\nSUBSCRIPTIONS\nThe four auto-renewable subscriptions are unchanged from previous versions and live in a single subscription group (Cloud.Calendars.Group). To reach them: drag the handle at the bottom of the screen upward and choose Subscriptions. Any plan or billing period can be selected at any time.\n\nContact: Mincho Milev, mincho.milev@gmail.com",
+  "after": "Version 1.7.4 (build 16) — review information\n\nACCESS AND ACCOUNTS\nBasic use with local calendars does not require a Cloud Calendars account. Connecting Google or Microsoft calendars requires the corresponding provider sign-in and permissions. This is separate from the Cloud Calendars sharing account. Creating synchronized shares and accepting a shared calendar require the applicable sign-in and access. Whole-calendar acceptance uses a verified email identity; use the intended recipient identity when testing an invitation. Network access is needed for provider connections, server-backed sharing and weather requests.\n\nLATEST CHANGES\n- Duo layout and drawer alignment improvements across display sizes.\n- Live Activity layout fixes, including the compact countdown in a narrow Dynamic Island presentation.\n- Launch-screen scaling and Mexican Spanish weather text corrections.\n- Weather maps use Apple WeatherKit forecasts for the selected place and visible map region.\n\nHOW TO TEST EVENT SHARING AND APP CLIP\n1. In the full app, create a disposable event in a writable calendar and open its share action. Complete the sharing sign-in if requested.\n2. The sharing choices include App Clip, Email and QR Code. Use the generated link for the method being tested; email/QR web invitations and App Clip invocation are separate routes.\n3. On a supported second device, open the generated App Clip invitation to review the event preview. The App Clip previews the event; it does not add the event to a calendar. Continue with the full app to add it, grant the required calendar access and choose a writable destination.\n4. For a whole-calendar invitation, open it in the full app, sign in as the intended recipient, accept it and check the resulting access. A preview alone is not acceptance.\n5. To check subsequent changes, edit only the disposable shared item, allow the recipient device to reconnect/refresh, and inspect the result. Updates depend on the sharing route, access and connectivity; an imported copy or an unrefreshed feed may retain older information. No immediate automatic-delivery guarantee is intended.\n\nSUBSCRIPTIONS\nThe existing Advanced Monthly, Advanced Yearly, Premium Monthly and Premium Yearly products remain in use. Open the bottom menu and choose Subscriptions. Base includes Google calendar features, weather and widgets; Advanced removes ads; Premium adds Microsoft Calendar and Teams. Provider permissions and sharing identity requirements still apply. StoreKit displays the available products and purchase terms; this update does not introduce a new subscription product.\n",
+  "afterCharacters": 2605,
+  "scope": "Only notes proposed. Contact fields, demo account flag/credentials, App Clip configuration, subscriptions and other ASC fields unchanged. No API request or write.",
+  "proof": [
+    {
+      "path": "CalendarAppClip/CloudCalendarsAppClip.swift",
+      "sha256": "081095c82b5d05f757feb35526f23d9ad094cca40466e90e1afb644e5b843e4e",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "finding": "App Clip routes to event preview or calendar invitation preview; web activity/openURL handlers route payloads. No calendar save operation in this entry point.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "CalendarAppClip/EventClipPreviewView.swift",
+      "sha256": "bbb8f645443b9d8b93964a709664ee27f511989500f37ee0c3bcd808164d5ee1",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          1,
+          107
+        ]
+      ],
+      "finding": "Full view read: title/date/time/location preview; primaryAction only App Store Link; explicit preview-only/add-through-full-app text. Lock-shield icon does not substantiate privacy/security assurances.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "CalendarAppClip/CalendarShareClip.swift",
+      "sha256": "ff229acee5412dd6f9228d837e1b57a592d5158e2f0327ac70aaa9870f446ffc",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          1,
+          75
+        ],
+        [
+          125,
+          156
+        ]
+      ],
+      "finding": "Calendar invitation preview, App Store download link and explicit preview-only text. fullAppURL model property is not by itself proof of automatic installed-app handoff.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Main/CalendarApp.swift",
+      "sha256": "89dc560bbe138ab3285940165e7b36365affc777407f5e8b5c90e4765ca9d993",
+      "unchangedFromPriorAudit": false,
+      "ranges": [
+        [
+          165,
+          194
+        ]
+      ],
+      "finding": "Full app routes calendar and event invitation URLs into their separate acceptance/import sheets.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Sharing/SharedEventImportView.swift",
+      "sha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          245,
+          295
+        ]
+      ],
+      "finding": "Full app Add to Calendar invokes importer with selected destination; handles permissionDenied/noWritableCalendar/failed results. Not universal successful instant adding.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          18,
+          29
+        ]
+      ],
+      "finding": "Adding event requires full calendar access; app session read independently. Do not generalize whole-calendar sign-in requirement to every single-event path from this excerpt.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          189,
+          214
+        ]
+      ],
+      "finding": "Whole-calendar acceptance requires app sharing session, otherwise sign-in; performs server acceptance and local reconciliation.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Sharing/EventAppClipSharing.swift",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "unchangedFromPriorAudit": true,
+      "ranges": [
+        [
+          47,
+          97
+        ]
+      ],
+      "finding": "Share method picker offers App Clip, Email and QR Code; email wording distinguishes assigning access. Supports retaining email/QR delivery description.",
+      "readMethod": "Prior complete/range proof reused after immutable hash equality; changed CalendarApp165–194 freshly read."
+    },
+    {
+      "path": "Calendar/Subscription/SubscriptionManager.swift",
+      "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "ranges": [
+        [
+          57,
+          79
+        ]
+      ],
+      "finding": "Four same StoreKit product identifiers as prior audit; available products obtained from StoreKit. Manager hash unchanged from privacy inventory. No immediate plan-switch guarantee."
+    }
+  ],
+  "additionalEvidence": [
+    {
+      "path": "research/batch41-release/native-privacy-delta.json",
+      "sha256": "63ecb387a2ecbe5799b4d7482b31f14133ff1660232e890e7d0d65c0fb522530",
+      "finding": "Immutable weather map Apple WeatherKit network paths and cached coordinates; no no-network/privacy assurance."
+    },
+    {
+      "path": "research/privacy-dataflow-20261021.json",
+      "finding": "Verified immutable unchanged account/sharing/contacts/purchase files in batch41; source account/server requirements contradict prior anywhere-no-sign-in claim."
+    }
+  ],
+  "commitChangeProvenance": {
+    "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+    "method": "Previously read commit subject/message/stat; records Duo/layout, Live Activity, launch-screen, es-MX changes and author-reported archive/upload validation. Wind map implementation independently read at same immutable commit.",
+    "limit": "User attestation, author commit archive report and ASC version/build metadata are separate evidence; no cryptographic binary mapping or fresh runtime verification claimed."
+  },
+  "removedUnsupportedAssertions": [
+    "No account or sign-in anywhere",
+    "Everyone can share regardless of access/identity",
+    "App Clip adds directly to calendar",
+    "Automatic installed-app launch and guaranteed recipient updates",
+    "No network needed for review/sharing",
+    "Any plan/billing change effective at any time"
+  ],
+  "remainingReadinessChecks": [
+    "Root should verify the App Clip experience invocation URL corresponds to a usable review sample; no sample was created or operated in this task.",
+    "If reviewer access beyond basic local use needs a supplied test identity, owner must provide the appropriate review account; no credentials invented and demoAccountRequired not modified.",
+    "Whole-calendar verified-email requirement reuses prior backend source proof, not production query.",
+    "App Privacy/policy accuracy is a separate unresolved readiness item; these notes make no privacy assurances."
+  ]
+}

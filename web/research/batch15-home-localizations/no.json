@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Kalender og Microsoft Outlook, synkronisert begge veier og fargekodet i én visning. Slå av en kalender når du ikke vil se den — resten fortsetter å virke.",
+    "after": "Se valgte iCloud- og Google-kalendere sammen; Premium legger til Microsoft-kalendere. Rediger der kontotillatelsene gir adgang, og sjekk kildekalenderen etter endringer."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Ta tak i en hendelse og skyv den til et annet tidspunkt eller en annen dag. Dra i øvre eller nedre kant for å endre hvor lenge den varer. Ingen dialog, ingen lagreknapp.",
+    "after": "Flytt redigerbare hendelser til en annen tid eller dag, eller endre varigheten i tidslinjen. For gjentakende hendelser velger du hvilke forekomster som skal endres og kontrollerer det lagrede resultatet."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Det er den viktigste måten å redigere på. Dra en hendelse til et annet tidspunkt eller en annen dag, eller dra i øvre eller nedre kant for å endre varigheten. Endringene synkroniseres rett tilbake til kildekalenderen.",
+    "after": "Du kan flytte redigerbare hendelser og endre varigheten i tidslinjen. Sjekk valget for gjentakelser og lagret klokkeslett; oppdatering av tilkoblede kalendere avhenger av tillatelser og vellykket synkronisering."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "De samme hendelsene, ordnet etter spørsmålet du faktisk stiller — og hver av dem bærer værmeldingen sin.",
+    "after": "Velg en oversikt eller detaljert tidslinje, med tilgjengelig værinformasjon ved støttede visninger."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Et timerutenett der hver rad bærer sin egen værmelding. Du ser møtet klokken tre og regnet klokken tre i samme øyekast — ingen annen app, ingen gjetting.",
+    "after": "Sammenlign avtaler med tilgjengelige timevarsler i samme rutenett. Sjekk valgt sted og prognosedato når du planlegger ute."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Månedsvisningen merker hver dag som har noe. Årsvisningen setter tolv måneder på én skjerm — den raskeste måten å finne en ledig uke.",
+    "after": "Sammenlign hendelser fra valgte kalendere gjennom måneden eller året. Åpne en dag og undersøk alle avtalene før du regner den som ledig."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Trykk på en hvilken som helst time i værsenteret, og en ny hendelse åpnes, allerede satt til det tidspunktet. Finn det tørre vinduet og book det.",
+    "after": "Velg en tilgjengelig prognosetime for å starte et hendelsesutkast, og sjekk dato, klokkeslett og kalender før lagring."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versjon {v} — delte hendelser holder seg nå oppdatert selv",
+    "after": "Versjon {v} — deling av hendelser og kalendere"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonnementer håndteres av Apple, så du sier opp i innstillingene for App Store-kontoen din. Gjør det senest 24 timer før perioden er slutt, så blir du ikke belastet igjen.",
+    "after": "Åpne Innstillinger på iPhone eller iPad, trykk på navnet ditt og deretter Abonnementer. Velg Cloud Calendars og si opp der; sjekk oppsigelses- eller utløpsstatusen Apple viser."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonnementer fornyes automatisk og belastes via Apple-ID-en din. Si opp når du vil i innstillingene for App Store-kontoen din, senest 24 timer før perioden er slutt.",
+    "after": "Abonnementer fornyes automatisk via Apple-kontoen din. Sjekk lokal pris og faktureringsperiode før kjøp. Administrer oppsigelse i Innstillinger under navnet ditt → Abonnementer."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Begge veier",
+    "after": "Tilkoblet"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Mest valgt",
+    "after": "Fremhevet abonnement"
+  }
+]

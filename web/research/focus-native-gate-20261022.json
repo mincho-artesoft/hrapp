@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-22",
+  "commit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+  "scope": "Immutable git blobs only, bounded source audit; no working native files read for findings, no build/runtime/provider actions. Privacy artifacts untouched.",
+  "queries": [
+    {
+      "argv": [
+        "git",
+        "grep",
+        "-n",
+        "-i",
+        "-E",
+        "SetFocusFilterIntent|FocusFilter|focus.filter|FocusStatus|INFocus|calendar.?set",
+        "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+        "--",
+        "*.swift",
+        "*.plist",
+        "*.entitlements",
+        "*.pbxproj"
+      ],
+      "exit": 0,
+      "output": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Sources/CalendarViewModel.swift:76:    /// range without forcing every calendar/settings view to rebuild.\n"
+    },
+    {
+      "argv": [
+        "git",
+        "grep",
+        "-n",
+        "-E",
+        "AppIntent|AppIntents|INIntent|IntentConfiguration|AppShortcutsProvider|Focus",
+        "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+        "--",
+        "*.swift",
+        "*.plist",
+        "*.entitlements",
+        "*.intentdefinition"
+      ],
+      "exit": 0,
+      "output": "eda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/AppLocal/AppLocalEventEditorView.swift:242:    @State private var expandedDatePicker: CalendarDatePickerFocus?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Calendar/GoogleCalendarSharingView.swift:50:    @FocusState private var focusedShareDraftID: UUID?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Calendar/ICloudCalendarSharingView.swift:567:    @FocusState private var focusedInvitationID: UUID?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:4:struct CalendarDatePickerFocus: Equatable {\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:16:    @Binding var expanded: CalendarDatePickerFocus?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:51:            if !value && expanded == CalendarDatePickerFocus(row: id, component: .time) {\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:65:    private func valueButton(_ component: CalendarDatePickerFocus.Component) -> some View {\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:66:        let focus = CalendarDatePickerFocus(row: id, component: component)\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:84:    private func inlinePicker(_ component: CalendarDatePickerFocus.Component) -> some View {\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Components/CalendarDateTimePickerRow.swift:100:    private func displayText(_ date: Date, _ component: CalendarDatePickerFocus.Component) -> String {\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/ListView/SearchResultsView.swift:9:    @FocusState private var isFocused: Bool\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/ListView/SearchResultsView.swift:15:            .focused($isFocused)\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/ListView/SearchResultsView.swift:25:                    isFocused = false\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/ListView/SearchResultsView.swift:41:                    isFocused = true\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/ListView/SearchResultsView.swift:45:                isFocused = false\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/Sharing/EventEmailInvitationsView.swift:14:    @FocusState private var focusedInvitationID: UUID?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:32:    @FocusState private var isSearchFieldFocused: Bool\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:479:            isSearchFieldFocused = true\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:562:            .focused($isSearchFieldFocused)              // ← тук\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:1655:            isSearchFieldFocused = false\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:1674:        isSearchFieldFocused = false\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WeatherKitView.swift:1686:        isSearchFieldFocused = false  // ← премахва фокуса и клавиатурата\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapCanvas.swift:37:    private var lastFocus: CLLocationCoordinate2D?\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapCanvas.swift:126:        let moved = lastFocus.map { abs($0.latitude - newInput.coordinate.latitude) > 0.001 || abs($0.longitude - newInput.coordinate.longitude) > 0.001 } ?? true\neda40b44af01f813d7700d1e00ec8e62b30fd67e:Calendar/WeatherView/WindMap/WindMapCanvas.swift:128:            lastFocus = newInput.coordinate\neda40b44af01f813d7700d1e00ec8e62b30fd67e:CalendarWidget/CalendarWidget.swift:213:            CalendarWidgetUpcomingEvent(id: \"9\", title: \"Focus time\", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 14)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 16)) ?? Date(), isAllDay: false, colorRed: 0.55, colorGreen: 0.47, colorBlue: 0.93, colorAlpha: 1),\n"
+    }
+  ],
+  "selectionSearch": {
+    "argv": [
+      "git",
+      "grep",
+      "-n",
+      "-E",
+      "selectedCalendar|selectedCalendars",
+      "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "--",
+      "*.swift"
+    ],
+    "note": "Full returned match inventory inspected to select ranges; not full-body review of all matching files. Initial unquoted wildcard command failed in zsh before git; superseded by quoted global Swift search."
+  },
+  "readEvidence": [
+    {
+      "path": "Calendar/Sources/CalendarViewModel.swift",
+      "blobSHA256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        {
+          "lines": [
+            155,
+            207
+          ],
+          "rangeSHA256": "fbbcee3d49b99e840c4ddfcab63691a12cd6ad1afd87284f79fc056c33c9f4e7"
+        },
+        {
+          "lines": [
+            885,
+            935
+          ],
+          "rangeSHA256": "733e6bc9eef5442554d861a0e7d0af46bc1998d0eeff5b98e090abd43ad497cb"
+        },
+        {
+          "lines": [
+            1337,
+            1357
+          ],
+          "rangeSHA256": "e273af683c79f794d1e1b9eafdfd73d273d28aec35c0bdecf4fd91c8ccf19257"
+        },
+        {
+          "lines": [
+            3365,
+            3385
+          ],
+          "rangeSHA256": "2736890c7238733d3a2600c0337721b8fb230e223fdaff6506ac38008dcfd1a1"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Calendar/CalendarsSheetView.swift",
+      "blobSHA256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        {
+          "lines": [
+            77,
+            96
+          ],
+          "rangeSHA256": "6f8ca402fb4a5288ee410b5dfae782592bba857f06206d01866c1f7febde9c43"
+        },
+        {
+          "lines": [
+            244,
+            270
+          ],
+          "rangeSHA256": "61f5683062873b615c62b4757e9c0ebdabbff91a8a4236eeb89d35a85fea59f5"
+        },
+        {
+          "lines": [
+            281,
+            309
+          ],
+          "rangeSHA256": "96d74cd89a2718fdea27e508f201b62bc6ab16fba694dcf9acedebc264019929"
+        },
+        {
+          "lines": [
+            786,
+            822
+          ],
+          "rangeSHA256": "f4a1859a647b072e03d7c7f51c49a81997ffa1b806eedbcb2c7618705beb84da"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Main/CalendarWidgetStore.swift",
+      "blobSHA256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "readRanges": [
+        {
+          "lines": [
+            150,
+            229
+          ],
+          "rangeSHA256": "c0989e4a21b6f23adf812158728fa7ff071dd4ea8d1c044b33a7f461424714eb"
+        }
+      ]
+    },
+    {
+      "path": "Calendar/Sources/EventNotificationManager.swift",
+      "blobSHA256": "80fc95295694d92a68e21d26d90f6519524b37320d3943a190db8d42f75c73da",
+      "readRanges": [
+        {
+          "lines": [
+            247,
+            290
+          ],
+          "rangeSHA256": "625e2e517aa450b722a85cb6dd949c19f2f54810e6e9c3196eed34fc0954f5d2"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "focus-integration-not-established",
+      "finding": "No SetFocusFilterIntent, FocusFilter, AppIntent/AppIntents/INIntent or AppShortcutsProvider declaration/import found within searched immutable Swift/property-list/entitlement/project scopes. Broad Focus hits were keyboard/date-picker focus, map focus coordinates and widget fixture title. calendar.?set match was an unrelated calendar/settings comment. This is not a claim of runtime absence or all possible generated/dependency integrations."
+    },
+    {
+      "id": "selection-supported",
+      "finding": "CalendarsSheet has Select All/Deselect All and per-calendar toggles for EventKit and app-local calendars. They modify selectedCalendarIDs; persisted in own UserDefaults with explicit empty-selection handling."
+    },
+    {
+      "id": "selection-consumers",
+      "finding": "Selection filters EventKit month fetch and app-local descriptors; snapshot generation filters EventKit and app-local calendars; notifications use the same selected-calendar input. Selection publisher updates snapshot, reschedules event notifications and updates LiveActivity."
+    },
+    {
+      "id": "sync-boundary",
+      "finding": "Selected-calendar guards exist in local-to-Google and local-to-Microsoft upload loops. Do not generalize these excerpts to identical pause/resume behavior for every provider/direction, or describe selection as purely cosmetic."
+    },
+    {
+      "id": "named-calendar-sets",
+      "finding": "Inspected control/state paths implement one persisted current selection, not verified named reusable sets or Focus-linked automatic switching. No such capability established by bounded search."
+    }
+  ],
+  "safeReaderWording": "Apple Calendar’s Focus filter is an Apple Calendar setting. Do not assume it changes the calendars selected in Cloud Calendars. Check the relevant calendars inside Cloud Calendars before reviewing availability, widgets or reminders; calendar selection also supplies data to other app features.",
+  "avoid": [
+    "Cloud automatically follows Apple Calendar Focus filters.",
+    "Cloud offers named calendar sets linked to Focus.",
+    "Hiding a calendar only changes its appearance.",
+    "All provider synchronization pauses or resumes identically with selection.",
+    "No Focus setting can ever affect Cloud notifications."
+  ],
+  "limits": "Source inspection is not proof of shipped1.7.3 behavior, uploaded1.7.4 binary identity or OS Focus behavior. Device-level notification suppression is separate from an app-specific calendar filter and was not runtime tested. No Apple documentation claim evaluated in this native-only gate."
+}

@@ -1,0 +1,94 @@
+<header class="hdr" [class.is-stuck]="isScrolled()">
+  <!-- Reading-progress hairline -->
+  <span
+    class="hdr__progress"
+    [style.scale]="progress() + ' 1'"
+    aria-hidden="true"
+  ></span>
+
+  <div class="hdr__inner shell">
+    <a class="brand" [href]="homePath()" (click)="closeMenu()" aria-label="Cloud Calendars — home">
+      <img
+        class="brand__mark"
+        src="icons/mark-128.webp"
+        alt=""
+        width="34"
+        height="34"
+        decoding="async"
+      />
+      <span class="brand__text">
+        Cloud<span>Calendars</span>
+      </span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="Primary">
+      @for (item of nav(); track item.key) {
+        <a
+          class="hdr__link"
+          [class.hdr__link--route]="item.isRoute"
+          [class.is-active]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) || (item.key === 'bookings' && isBookingsRoute())"
+          [href]="item.href"
+          [attr.aria-current]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) || (item.key === 'bookings' && isBookingsRoute()) ? 'page' : null"
+        >
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="hdr__actions">
+      <app-language-switcher />
+
+      <a
+        class="btn btn--primary hdr__cta"
+        [href]="appStoreUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ copy().nav.getApp }}
+      </a>
+
+      <button
+        class="hdr__burger"
+        type="button"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-nav"
+        [attr.aria-label]="copy().nav.menu"
+        (click)="toggleMenu()"
+      >
+        <span [class.is-open]="menuOpen()"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile sheet -->
+<div
+  id="mobile-nav"
+  class="sheet"
+  [class.is-open]="menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+>
+  <nav class="sheet__nav" aria-label="Mobile">
+    @for (item of nav(); track item.key; let i = $index) {
+      <a
+        class="sheet__link"
+        [href]="item.href"
+        [style.--i]="i"
+        (click)="closeMenu()"
+      >
+        <span class="sheet__num">0{{ i + 1 }}</span>
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
+  <a
+    class="btn btn--primary btn--lg sheet__cta"
+    [href]="appStoreUrl()"
+    target="_blank"
+    rel="noopener noreferrer"
+    (click)="closeMenu()"
+  >
+    {{ storeCta() }}
+  </a>
+</div>

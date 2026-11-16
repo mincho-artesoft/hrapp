@@ -1,0 +1,191 @@
+{
+  "slug": "the-secret-address-of-a-google-calendar",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "ff572e59b1927882fc167514f82f547aa4b91fbf29de4f1416acde9146035621",
+  "datePreserved": "2026-10-21",
+  "count": 10,
+  "format": "Individual LocalisedArticle JSON objects",
+  "validation": "Passed exact top-level field shape, duplicate-key rejection, 6 sections / 12 paragraphs / 6 steps / 3 FAQs, descriptions under 160 characters, preserved source URLs/disclosure/date, and related links filtered against current article-index.ts",
+  "meaningReview": [
+    "Account connection may support editing; secret iCal subscription is view-only.",
+    "Google secret address reserved for own compatible applications, distinct from named sharing.",
+    "Subscription versus imported standalone copy preserved.",
+    "Cloud Calendars Reader/Writer/Owner roles separate from feed links.",
+    "Receiver controls fetching and display; suggested interval not instant-delivery guarantee.",
+    "Reset invalidates old Google URL and replaces it, not proof of erasing copies."
+  ],
+  "reviewCaveats": "Model translations; no native-speaker certification. Arabic/Hebrew RTL rendering not previewed. English provider UI labels retained rather than invented local labels.",
+  "scope": "Research files only; no integration, build, deployment, native changes or paid translation API. Temporary generation script removed after validation.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "descriptionCharacters": 152,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7743,
+      "sha256": "ff0ac42880327c629096e9f83c30fceb352eff45c588afac7cc9a51d0b147b9c",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "descriptionCharacters": 138,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7308,
+      "sha256": "9e8def2b00fa77f15159e016af8776c20be723b45222114f588afcb6a9f0794a",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "descriptionCharacters": 140,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7773,
+      "sha256": "38120b426307b7b1a4427886a74aea9aced04736101507ccb8752acf0450933e",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "da",
+      "descriptionCharacters": 149,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7009,
+      "sha256": "b188a58e97145ac4171d8ec5217c602f23676a78575475b50bf616eb9ce0b2c8",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "fi",
+      "descriptionCharacters": 149,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6889,
+      "sha256": "4e9ba1138cf800e04ac934e11d7a22f5060a76d541f413d035e643fb8cad1e4b",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "bg",
+      "descriptionCharacters": 143,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 11253,
+      "sha256": "d6ebe0de91e348b5085afa088d0fcfb735b5e315958fd9f6995ad9463956265c",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "cs",
+      "descriptionCharacters": 137,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6868,
+      "sha256": "6e073d7fcf4eed21d5656095c7ba10c53e851b8ffeb87a7ad1a8f0eab753c458",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "el",
+      "descriptionCharacters": 142,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 11671,
+      "sha256": "6d82729886d66e9d3c0e76d3f5b444c05a377bd5ec293607be27aee9d7838d71",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "ar-SA",
+      "descriptionCharacters": 120,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8754,
+      "sha256": "c3dedb3960b88abd96cf6bbb268f696ca3480afcded575449e020a9769a1be2f",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "he",
+      "descriptionCharacters": 120,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8407,
+      "sha256": "71dc6de6a096c311bb684f6395ebafe976cdc7a326b191aff7b556a315cb6314",
+      "translationConfidence": "medium"
+    }
+  ]
+}

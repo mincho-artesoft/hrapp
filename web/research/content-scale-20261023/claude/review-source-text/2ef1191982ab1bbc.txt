@@ -1,0 +1,98 @@
+Show a declined meeting on my calendar in Outlook
+Applies To
+Outlook for Microsoft 365
+Outlook 2024
+Outlook 2021
+Outlook 2019
+Outlook 2016
+New Outlook for Windows
+Important
+Steps may be different between
+new
+and classic Outlook for Windows. To determine which version of Outlook you're using, look for
+Settings
+on the ribbon. If there's no
+Settings
+option, follow the steps under the
+Classic Outlook
+tab. If the
+Settings
+option appears, select the tab for
+New Outlook
+.
+New Outlook
+Classic Outlook
+The new Outlook for Windows helps you keep a meeting invitation on your calendar, even if you've declined the invitation. Follow the steps below to turn on this feature:
+Note
+This feature is only available for M365 work or school accounts. Microsoft accounts using outlook.com, hotmail.com, live.com, msn.com addresses, and IMAP or POP accounts from another provider are not supported.
+In Calendar, on the
+View
+tab, select
+Calendar Settings
+.
+In the
+Settings
+dialog, select
+Calendar
+>
+Events and invitations
+.
+Under
+Save declined events
+, turn on
+Show declined events on your calendar
+, and select
+Save
+.
+From now on, any event or meeting request that you decline will appear on your calendar, but your time will be shown as free. You'll see the declined event across the various Outlook calendar services (such as Outlook for Windows, Outlook for Mac, the web versions of Outlook, Outlook for Android or iOS, Microsoft Teams, and even third-party calendar apps).
+Note
+To see declined events across all services, you must decline it using new Outlook for Windows, Outlook for Mac, the web versions of Outlook, Outlook for Android or iOS, or Microsoft Teams. If you decline a meeting using classic Outlook for Windows, no declined events will appear on the classic Outlook calendar or on any of the other calendar services.
+Filter to hide or view declined events on the calendar in new Outlook
+Once the setting is turned on, you can choose to view or hide declined events from the calendar.
+In
+Calendar
+, on the
+View
+tab, select
+Filter
+>
+Hide declined events
+.
+To view all declined events, on the
+View
+tab, select
+Hide declined events
+, and uncheck
+Hide declined events
+from the dropdown.
+If a meeting request is declined, the meeting is not saved to your calendar and the meeting request message is moved to the
+Deleted Items
+folder.
+There is no way to show a declined meeting on your calendar. You can only show accepted or tentative meetings on your calendar. To learn how you can request this feature, see
+How do I give feedback on Microsoft Office
+for more information.
+Accept a previously declined meeting in classic Outlook
+If you previously declined a meeting and want to change your response, you can find the original meeting request in the
+Deleted Items
+folder.
+Switch to your
+Deleted Items
+folder. You can find your Deleted Items folder in the Folder Pane.
+If your Folder Pane isn't visible, select
+View
+>
+Folder Pane
+>
+Normal
+.
+Double-click the original meeting request in the
+Deleted Items
+folder. Then click
+Accept
+or
+Tentative
+.
+If the
+Deleted Items
+folder has been emptied, this option isn't available. Ask the meeting organizer to forward you the original meeting request.
+Top of Page

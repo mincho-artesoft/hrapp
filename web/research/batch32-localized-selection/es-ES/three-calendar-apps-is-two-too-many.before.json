@@ -1,0 +1,34 @@
+{
+  "title": "Tres aplicaciones de calendario son dos de más",
+  "short": "Tres aplicaciones son dos de más",
+  "description": "Cambiar de aplicación de calendario no es un flujo de trabajo, es un impuesto. Lo que cuesta y cómo se ve sustituirlo.",
+  "lede": "Nadie eligió tener tres aplicaciones de calendario. Ocurrió una cuenta cada vez, y cada añadido parecía razonable.",
+  "commonBelief": "Que cambiar de aplicación es una molestia menor y no el origen del problema real.",
+  "sections": [
+    {
+      "heading": "El coste no son los toques",
+      "body": [
+        "Dos segundos cambiando no son nada. Lo caro es que responde a preguntas de agenda con información parcial, porque comprobar las tres cada vez cuesta más de lo que la pregunta parece merecer.",
+        "Así que responde desde la que tiene abierta y corrige después. La corrección es la parte cara, y además aterriza en el calendario de otra persona."
+      ]
+    },
+    {
+      "heading": "Qué tiene que ser cierto",
+      "body": [
+        "Un sitio tiene que poder decir sí o no sobre su tiempo. Ese es todo el requisito, y no lo cumple ningún arreglo en el que la respuesta viva en más de una aplicación.",
+        "Todo lo demás — qué aplicación, qué colores, qué vistas — es preferencia. Esto es estructura."
+      ]
+    }
+  ],
+  "claims": {
+    "accounts": "Tipos de cuenta que cabe en una vista"
+  },
+  "practical": [
+    "Elija la aplicación que sostiene todas sus cuentas, no la que más le gusta por separado.",
+    "Migre añadiendo cuentas, no moviendo eventos: los eventos se quedan donde están.",
+    "Borre las otras aplicaciones cuando la vista esté completa, o seguirá consultándolas."
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

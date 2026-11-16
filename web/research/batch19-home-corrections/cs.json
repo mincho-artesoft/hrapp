@@ -1,0 +1,26 @@
+{
+  "locale": "cs",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Zítřek už s sebou",
+        "předpověď nese."
+      ],
+      "after": [
+        "Naplánujte si další den.",
+        "Podívejte se na dostupnou předpověď."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sedm sloupců, každý s vlastním maximem, minimem a vlastními podmínkami. Otočte na šířku a uvidíte vše. Chyťte událost a posuňte ji na jiný den.",
+      "after": "Porovnejte události v týdnu s dostupnou denní předpovědí počasí. Otočte zařízení na šířku pro širší pohled. Přesuňte upravitelné události na jiný den a u opakované události zkontrolujte, které výskyty chcete změnit."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Přetáhněte. Natáhněte. Hotovo.",
+      "after": "Přetáhněte. Upravte délku. Zkontrolujte."
+    }
+  ]
+}

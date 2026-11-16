@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "he",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "3e2cf1df-1dbc-4d68-8ede-0731cc8935d5",
+  "versionLocalizationId": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: יומן",
+      "characters": 21,
+      "utf8Bytes": 25,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "מזג אוויר, פגישות ווידג׳טים",
+      "characters": 27,
+      "utf8Bytes": 50,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "לוח שנה,תכנון,שבוע,חודש,תזכורת,אירוע,שיתוף,הזמנה,תחזית,סדר יום",
+      "characters": 62,
+      "utf8Bytes": 113,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "התוכניות ומזג האוויר במקום אחד. אפשר להשתמש בווידג׳טים ובתצוגות שונות, או להתחיל עם לוח שנה מקומי בלי חשבון באפליקציה.",
+      "characters": 118,
+      "utf8Bytes": 215,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "אפשר לעיין בתוכניות לעבודה ולחיים הפרטיים לצד מזג האוויר ב-iPhone וב-iPad עם Cloud Calendars.\n\nלוחות שנה ותצוגות\nהשתמשו בלוחות שנה של iCloud וחברו את יומן Google. מסלול Premium מוסיף תמיכה בלוחות שנה של Microsoft. בחרו תצוגה יומית, שבועית, חודשית, שנתית או רשימה.\n\nאפשר גם ליצור לוח שנה מקומי במכשיר בלי חשבון Cloud Calendars. חיבור שירותים ושיתוף עשויים לדרוש כניסה לחשבון.\n\nמזג אוויר, ווידג׳טים ושיתוף\nבדקו את התחזית בזמן התכנון. ווידג׳טים למסך הבית זמינים בגודל קטן, בינוני וגדול. זמינות התחזיות תלויה במיקום ובספק מזג האוויר. שתפו אירועים ולוחות שנה ושלחו הזמנות בדוא״ל, בקוד QR או ב-App Clip. הרשאות הגישה תלויות בלוח השנה ובסוג ההזמנה.\n\nבחירת מסלול\nBase הוא מסלול חינמי הכולל סנכרון עם יומן Google, תמיכה ב-Google Meet, תצוגות לוח שנה שונות, מזג אוויר ווידג׳טים.\nAdvanced כולל את תכונות Base ומסיר פרסומות.\nPremium כולל את Advanced ומוסיף לוחות שנה של Microsoft ותמיכה ב-Microsoft Teams.\n\nההורדה חינמית, עם מינויים אופציונליים המתחדשים אוטומטית. לפני ההרשמה, בדקו את המחיר המקומי העדכני ואת תקופת החיוב באפליקציה או ב-App Store. המינוי מתחדש אלא אם מבטלים אותו לפחות 24 שעות לפני סיום התקופה הנוכחית. אפשר לנהל או לבטל אותו בהגדרות חשבון App Store.\n\nפרטיות: https://www.cloud-calendars.com/privacy-policy\nתנאי שימוש: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1288,
+      "utf8Bytes": 2069,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "he",
+      "name": "Cloud Calendars: יומן",
+      "subtitle": "כל היומנים במקום אחד",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "תכננו את היום עם לוח השנה ומזג האוויר יחד\n\nCloud Calendars משלב את היומנים ומזג האוויר לחוויית תכנון אחת, יפה ומאורגנת.\n\nנהלו יומני iCloud,‏ Google Calendar ו-Microsoft באפליקציה אחת, וצפו בתחזיות ישירות בתוך לוח הזמנים, הווידג׳טים ותצוגות התכנון.\n\nהקדימו פגישות, נסיעות, איסוף מבית הספר, פעילויות בחוץ וימים עמוסים בעזרת תצוגות לוח שנה המיועדות לתכנון מהיר יותר.\n\nוידג׳טים למסך הבית\n\nהוסיפו וידג׳טים יפים שמשלבים:\n• אירועי לוח שנה\n• תחזיות מזג אוויר\n• לוח זמנים קרוב\n• מופע הירח ותנאים\n• רוח וטמפרטורה\n• סקירה של סדר היום\n\nבחרו מבין כמה סגנונות וידג׳טים כדי לראות את היום ישירות במסך הבית.\n\nלמה CLOUD CALENDARS\n\n• הציגו יומני iCloud,‏ Google Calendar ו-Microsoft יחד\n• תכננו בעזרת תחזיות מזג אוויר מובנות\n• השתמשו בווידג׳טים יפים למסך הבית\n• גררו, הזיזו ושנו את משך האירועים באופן טבעי\n• צרו קישורי Google Meet ו-Microsoft Teams\n• עברו בין תצוגות יום, שבוע, חודש, שנה ורשימה\n• נהלו יומני עבודה ויומנים אישיים במקום אחד\n\nתכונות\n\nכל היומנים שלכם יחד\nחברו ונהלו יומני iCloud,‏ Google Calendar ו-Microsoft בחוויה נקייה ומקודדת בצבעים.\n\nמזג האוויר בתוך לוח השנה\nצפו בתחזיות שעתיות ויומיות ישירות בתהליך התכנון, כולל טמפרטורה, תנאים, מופע הירח, רוח וסמלי מזג אוויר.\n\nוידג׳טים של לוח שנה ומזג אוויר\nראו מיד את לוח הזמנים ומזג האוויר בווידג׳טים ניתנים להתאמה במסך הבית.\n\nתצוגות לוח שנה מרובות\nבחרו בתצוגת יום, שבוע, חודש, שנה או רשימה לפי הדרך שבה אתם מתכננים את הזמן.\n\nעריכת אירועים קלה\nהקישו, גררו ושנו את משך האירועים ישירות בלוח השנה לתזמון מהיר וטבעי.\n\nתצוגת מזג אוויר ייעודית\nגלו תחזיות מפורטות עם תנאים שעתיים ותובנות שימושיות לתכנון.\n\nיצירת אירועים מתחזיות\nהקישו על שעה בתחזית כדי ליצור מיד אירוע חדש בזמן שנבחר.\n\nקישורי פגישות מובנים\nהוסיפו במהירות קישורי Google Meet ו-Microsoft Teams לאירועים.\n\nמושלם עבור\n\n• ניהול יומני עבודה ויומנים אישיים\n• תכנון המותאם למזג האוויר\n• פעילויות בחוץ ונסיעות\n• לוחות זמנים עמוסים ותכנון משפחתי\n• משתמשי Google Calendar ו-iCloud\n• משתמשי לוח השנה של Microsoft\n\nנסו את Cloud Calendars והפכו כל יום לקל יותר לתכנון.\n\nמידע על מינויים\n\nCloud Calendars מציע מינויים המתחדשים אוטומטית.\n\nתוכנית חינמית\n• סנכרון Google Calendar\n• תצוגות לוח שנה מרובות\n• תכונות מזג אוויר\n• וידג׳טים\n• תמיכה ב-Google Meet\n\nהתשלום יחויב בחשבון Apple ID בעת אישור הרכישה. המינויים מתחדשים אוטומטית אלא אם בוטלו לפחות 24 שעות לפני סוף התקופה הנוכחית. החשבון יחויב עבור החידוש במהלך 24 השעות שלפני סוף התקופה הנוכחית. ניתן לנהל ולבטל מינויים בהגדרות חשבון App Store.\n\nמדיניות פרטיות: https://www.cloud-calendars.com/privacy-policy\nתנאי שימוש: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "he",
+      "keywords": "מזג אוויר,וידג׳ט,לוח זמנים,תכנון,סדר יום,תחזית,iCloud,פגישות,אירועים,עבודה,ירח,מסך נעילה,גשם,היום",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point limits. Bytes reported separately. Exact token checks do not resolve grammatical forms or Hindi combining marks."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored; no native-speaker or ASC write validation. Review RTL mixed-brand rendering for Arabic/Hebrew, Hindi grammar, and shipped tier labels before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch03/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

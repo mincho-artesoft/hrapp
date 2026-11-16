@@ -1,0 +1,78 @@
+{
+  "allPassed": true,
+  "changedArticles": 10,
+  "localizedFullRevisions": 8,
+  "newEnglishArticles": 1,
+  "relatedOnlyChanges": 1,
+  "sitemapUrls": 493,
+  "preservedPreviousCanonicals": 492,
+  "articles": [
+    {
+      "locale": "de-DE",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "url": "https://www.cloud-calendars.com/de/articles/planning-outdoors-without-being-rained-on/",
+      "sha256": "baeaf1a722eb0d344722ade2fdd797a556ae76e084f2b73591f060ff1a82dad1"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "url": "https://www.cloud-calendars.com/de/articles/a-fourteen-day-view-of-the-weather/",
+      "sha256": "3733fd3c3c29d3952307a1e63e5bdd1822cee76382c8ef4aef81e763822a1016"
+    },
+    {
+      "locale": "en-US",
+      "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+      "url": "https://www.cloud-calendars.com/articles/onecal-alternative-iphone-calendar-view-or-sync/",
+      "sha256": "efc031439be2909164831298608e840823f94656ead19e1e74797e14dcdad15e"
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-calendar-sync-actually-does",
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "sha256": "f00242c8ace1493d09ab26709b09df57dd7d6d75bff28fc322c66cfef2c8b5dc"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "url": "https://www.cloud-calendars.com/es/articles/planning-outdoors-without-being-rained-on/",
+      "sha256": "e3a2706099f9f9d901076d80105eb24c9e1fda47ec35fd746b5bff01b79e8a0a"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "url": "https://www.cloud-calendars.com/es/articles/a-fourteen-day-view-of-the-weather/",
+      "sha256": "a93cf15787799cc8f5f9bad1f1e98afe9227549d994d166021685d3fbbc26fdc"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "url": "https://www.cloud-calendars.com/fr/articles/planning-outdoors-without-being-rained-on/",
+      "sha256": "4a8a929dd24b04e1f3cdfbcb8d8cb96ed92c3d7c19631a53befc93133e5bb135"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "url": "https://www.cloud-calendars.com/fr/articles/a-fourteen-day-view-of-the-weather/",
+      "sha256": "647edd10f19f9fc87a78e2d226717b863f1f9a4f21a1f473a11cf39b35f5676b"
+    },
+    {
+      "locale": "it",
+      "slug": "planning-outdoors-without-being-rained-on",
+      "url": "https://www.cloud-calendars.com/it/articles/planning-outdoors-without-being-rained-on/",
+      "sha256": "808d7fab0662592dcfb8d43bdb514be008be3c9f7a0b0fd6bb4b6ffda9862af1"
+    },
+    {
+      "locale": "it",
+      "slug": "a-fourteen-day-view-of-the-weather",
+      "url": "https://www.cloud-calendars.com/it/articles/a-fourteen-day-view-of-the-weather/",
+      "sha256": "648e937b30aff3c0d693d1741737e722e84c559f9cd4b02ac857cf360cd37a3b"
+    }
+  ],
+  "weatherLocalesVerified": 30,
+  "viewRouteCounts": {
+    "onecal-alternative-iphone-calendar-view-or-sync": 1
+  },
+  "localizedShellPagesVerified": 492,
+  "localizedHeroPagesVerified": 30,
+  "scope": "Actual 10 changed objects; all 30 weather guides; 492 old plus 1 new canonical; localized shell links; 1 related-only scope independently checked. Notnative-speaker, releasedproductruntime, indexing orrankingcertification."
+}

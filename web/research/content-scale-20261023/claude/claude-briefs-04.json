@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "batch": "04",
+  "purpose": "Replacement pool of consumer Outlook operational guides for the 100-page first wave.",
+  "author": "Claude (claude-opus-5-5), logged-in subscription session; no API keys, no paid calls",
+  "date": "2026-10-23",
+  "lessonsAppliedFromReviews01and02": [
+    "Scope each claim to the exact client tab and account type Microsoft names; label undocumented clients as undocumented.",
+    "Scope warnings to the specific action that carries the risk, not to a whole procedure.",
+    "Do not turn 'the page does not say' into a negative claim; say it is not documented.",
+    "Use exact UI labels as returned; flag WebFetch-extracted text for re-verification.",
+    "Worked examples state their assumed settings and avoid immediate-result promises."
+  ],
+  "rejected": [
+    { "topic": "Automatic out-of-office declining vs Show As", "reason": "Already covered by Claude batch-01 outlook-show-as-free-busy-tentative-working-elsewhere (automatic-reply calendar options)." },
+    { "topic": "Time scale / work-week days view settings", "reason": "Fetched body was thin and partly overlaps batch-03 work hours and location; would be weak." },
+    { "topic": "Outlook default reminders", "reason": "Still held from batch 03: ambiguous Microsoft wording." }
+  ],
+  "briefs": [
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "primaryKeyword": "Outlook show declined meetings",
+      "distinctTask": "Keep declined meetings visible in new Outlook (work/school), and recover a meeting you declined in classic Outlook.",
+      "existingOverlapSlug": "keeping-track-of-who-replied",
+      "boundary": "Attendee's own calendar display of declined items; RSVP counting stays on the existing page.",
+      "sourceUrls": ["https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763"]
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "primaryKeyword": "Outlook end meetings early automatically",
+      "distinctTask": "Build buffer time by having Outlook end events early or start them late, per account, without assuming it rewrites existing meetings.",
+      "existingOverlapSlug": "planning-a-week-in-ten-minutes",
+      "boundary": "Outlook shorten-duration setting only; Google appointment buffers are separate.",
+      "sourceUrls": ["https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a"]
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "primaryKeyword": "Outlook create meeting from email",
+      "distinctTask": "Turn an email thread into a meeting request with the right attendees and content, and know when the option fails.",
+      "existingOverlapSlug": "inviting-people-who-do-not-have-the-app",
+      "boundary": "Manual email-to-meeting in Outlook; automatic reservation events are a separate brief.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae",
+        "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3"
+      ]
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "primaryKeyword": "Outlook events from email",
+      "distinctTask": "Understand why flights, hotels, car rentals and parcels appear on an Outlook calendar, and change per-type display or privacy.",
+      "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+      "boundary": "Outlook.com / Microsoft-account Events from email; Google's Gmail-events is Claude batch 02.",
+      "sourceUrls": ["https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"]
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "primaryKeyword": "recover deleted Outlook calendar event",
+      "distinctTask": "Restore a deleted Outlook appointment or meeting from Deleted Items, then from the server's recoverable items, per client.",
+      "existingOverlapSlug": "recover-deleted-calendar-events-iphone",
+      "boundary": "Outlook new/classic only; existing page covers Google and iCloud. No retention period is stated because Microsoft's fetched pages give none.",
+      "sourceUrls": [
+        "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d",
+        "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c"
+      ]
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "primaryKeyword": "Outlook calendar color categories",
+      "distinctTask": "Colour-code Outlook calendar items with categories, knowing they are personal and don't change attendees' views.",
+      "existingOverlapSlug": "change-calendar-color-iphone",
+      "boundary": "Outlook categories; calendar-level colours and Cloud Calendars colours stay on the existing page.",
+      "sourceUrls": ["https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "reviewedAt": "2026-10-22T04:27:59.893403+00:00",
+  "decision": "PASS",
+  "draft": "research/batch37-watch/en-US.json",
+  "draftSha256": "9785840e1ce40d3c4e6d4619042e34e16c7317e39f0932d69189aee31e09a95f",
+  "readScope": "Entire current draft: all metadata,6sections/12paragraphs,6practical steps,4FAQs,3sources,4related routes. Fresh full substantive Apple/Flexibits pages read as specified below.",
+  "counts": {
+    "sections": 6,
+    "paragraphs": 12,
+    "practical": 6,
+    "faq": 4,
+    "descriptionCharacters": 155
+  },
+  "requiredCorrections": [],
+  "optionalPolish": [],
+  "findings": [
+    "Distinct diagnostic task rather than a claim of Cloud Watch installation. Separates watch app, complication, notification, Live Activity and phone widget without asserting OS-mediated Watch Live Activities are impossible.",
+    "Apple Watch Calendar settings path My Watch > Apps > Calendar exactly matches freshly retrieved Apple instructions; version-dependent qualification retained. Apple system controls are not attributed to Cloud.",
+    "Fantastical installation/setup, Calendar Set and configurable complication examples correctly attributed to that publisher. Remote-sync requirement is publisher-specific, not a universal Apple Watch rule. No billing, minimum OS version, privacy or transfer-time promises imported.",
+    "Cloud Google/Microsoft EventKit mirrors are acknowledged with source-dependent destination. Neither automatic visibility nor impossible Watch visibility is asserted. App/source/device checks precede duplicate connections or copying.",
+    "Comparison uses the same event/date/owning calendar. Disposable writable-calendar test is bounded; no reset/unpair/account deletion or real-event move is prescribed as a first step.",
+    "Developer disclosure, claims{}, primary source links and actual current EN related routes present. Clear factual prose; no material editorial issue."
+  ],
+  "freshPrimaryReads": [
+    {
+      "url": "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos",
+      "ranges": "314–363, complete substantive body",
+      "verified": "Calendar event details and Watch-app calendar selection path."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/apple-watch",
+      "ranges": "58–166, complete substantive help body",
+      "verified": "Companion installation, initial iPhone setup, watch Calendar Set, configurable complication calendar choices."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-watch/faq",
+      "ranges": "21–67, complete substantive FAQ body",
+      "verified": "Remote synchronization requires iPhone powered on and internet-connected. Billing/OS/privacy statements deliberately not used."
+    }
+  ],
+  "localProof": {
+    "report": "research/batch37-watch/product-facts.json",
+    "sha256": "99501244a47fe1b9309bafe7ab42c923e1d5e522bf88c99396d4ddadefa3fa15",
+    "additionalReusedMicrosoftRanges": [
+      {
+        "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+        "lines": "3203-3315;3354-3390",
+        "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+        "finding": "Microsoft Graph me/calendars; separate account/calendar mapping and selected-calendar sync; holidays/birthdays exception."
+      },
+      {
+        "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+        "lines": "3400-3420;3575-3635",
+        "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+        "finding": "Microsoft bounded download and local upload/update/delete. Does not guarantee full history or conflict safety."
+      }
+    ],
+    "note": "Current VM hashes match prior proof. No new runtime/provider request. Current project lacks declared Watch companion target, but draft does not turn that into a released-support absence claim."
+  },
+  "limits": [
+    "No Apple LiveActivities guide body used; cache-missed link cannot support behavior claims.",
+    "Source inspection is not proof of released1.7.3 or deployed behavior.",
+    "No screen-reader/device/runtime/build/deploy/customer/provider actions or source edits."
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "checkedAt": "2026-10-23T09:31:23.488720+00:00",
+  "architecture": "Build-time source aggregate -> generated lightweight English card module + legacy73 payload + separate lazy module for each new article. Resolver merges only the requested body into card metadata.",
+  "currentSourceEnglishArticles": 81,
+  "currentGeneratedBytes": {
+    "hubMetadata": 39080,
+    "legacy73": 558344,
+    "loaderDispatch": 4248
+  },
+  "projectedCardMetadataBytesAt1100": 532099,
+  "projectionCaveat": "Linear source-byte estimate, not transferred bytes or measured production performance. Build compression and real title/description lengths affect the result.",
+  "benefit": "Hubs and new article routes no longer import the entire growing English authoring aggregate at runtime; only legacy articles load the fixed legacy73 prose payload.",
+  "compatibility": [
+    "English aggregate and article-facts authoring stay unchanged.",
+    "Existing translated locale loader behavior stays unchanged.",
+    "Related-link sibling titles remain available via lightweight metadata.",
+    "Indexing holds and privacy policy not modified."
+  ],
+  "validation": {
+    "typescript": "passed",
+    "productionBuild": "passed:723 static routes,122 sitemapURLs,81 llms articles; every internal link resolves",
+    "bundleSeparation": "passed:8 unique body chunks, each4.7\u20136.3KB; hub contains metadata only",
+    "newArticleRuntime": "SSR resolver verified all8 complete first paragraphs, canonical URLs,index,follow",
+    "heldTranslatedArticlesAndHubs": 542,
+    "heldRoutesAbsentFromSitemapAndLlms": true,
+    "all81EnglishArticlesReachableFromTopicHubs": true,
+    "topicPages": 7
+  },
+  "remainingCosts": [
+    "All English card metadata still loads on English routes; at1100 articles measure this chunk before deciding to generate per-topic/per-article metadata.",
+    "Route/facts inventories still grow linearly but contain no article bodies.",
+    "Static prerender must render every article; keep monitoring build memory/runtime."
+  ],
+  "publication": "Not deployed or committed",
+  "pilotTarget": {
+    "newEnglishArticles": 100,
+    "totalEnglishArticles": 173
+  },
+  "productionHubChunk": {
+    "file": "chunk-IIAOUQ4B.js",
+    "bytes": 31447,
+    "noLedeSectionsOrPracticalBodyData": true
+  },
+  "newArticleChunks": [
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "chunk": "chunk-QFL4MNJV.js",
+      "chunkBytes": 6217,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/google-calendar-meeting-notes-not-updating/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "chunk": "chunk-XXEZ3WD5.js",
+      "chunkBytes": 5966,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/google-calendar-ownership-transfer-pending-acceptance/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "chunk": "chunk-MVNWSHLO.js",
+      "chunkBytes": 4834,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/rrule-count-until-excluded-occurrences/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "chunk": "chunk-5F2I5TFS.js",
+      "chunkBytes": 4712,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/ics-all-day-dtend-exclusive-end-date/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "chunk": "chunk-4J4K7JPR.js",
+      "chunkBytes": 5412,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/icalendar-uid-sequence-event-updates/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "chunk": "chunk-E32ZSOJ7.js",
+      "chunkBytes": 5644,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/ics-method-cancel-versus-delete-event/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "chunk": "chunk-NWQWTUNX.js",
+      "chunkBytes": 5147,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/icalendar-exdate-recurrence-id-moved-instance/",
+      "robots": "index,follow"
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "chunk": "chunk-2QEPEVKF.js",
+      "chunkBytes": 4969,
+      "fullFirstParagraphInPrerenderedHtml": true,
+      "canonical": "https://www.cloud-calendars.com/articles/icalendar-floating-time-utc-tzid/",
+      "robots": "index,follow"
+    }
+  ],
+  "guideTextNote": "llms.txt lists81 articles; llms-full.txt intentionally uses existing curated73 guide selection, unchanged by loader.",
+  "longTermRequestedTargetTotalEnglishArticles": 1100,
+  "currentStageTargetTotalEnglishArticles": 173,
+  "productionBuildMetrics": {
+    "generationSeconds": 57.829,
+    "initialRawBytesApprox": 1180000,
+    "initialEstimatedTransferBytesApprox": 239210,
+    "legacy73ChunkRawBytes": 493750,
+    "legacy73EstimatedTransferBytes": 110280,
+    "hubMetadataRawBytes": 31447,
+    "newArticleChunkRangeBytes": [
+      4712,
+      6217
+    ]
+  }
+}

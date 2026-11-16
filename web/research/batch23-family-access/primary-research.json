@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "decision": "bounded_conditional_FAQ_supported_no_product_eligibility_assertion",
+  "localReads": [
+    {
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "slug": "a-calendar-that-is-yours-to-share",
+      "scope": "Complete current object: metadata, all sections/paragraphs, practical steps, FAQs, sources and related routes.",
+      "lines": [
+        298,
+        388
+      ],
+      "sha256": "c95195bcb38e51bf4d8885f149732a8e73806faef4056c499576ace60097d7ce"
+    },
+    {
+      "file": "src/app/content/en-US/articles-compare.ts",
+      "slug": "what-a-subscription-actually-buys",
+      "scope": "Complete current object: metadata, all sections/paragraphs, practical steps, FAQs, sources and related routes.",
+      "lines": [
+        342,
+        424
+      ],
+      "sha256": "66cfa596d039aaa970e4dde51eaf4566558c7a1568a743f8f19a61dc8f38b2ef"
+    }
+  ],
+  "context": "Narrow ambiguity identified in research/batch22-coverage/sharing-work.json; purchase entitlement is not the same question as invited calendar data access.",
+  "query": {
+    "text": "site:support.apple.com share subscriptions Family Sharing eligible apps in-app purchases",
+    "date": "2026-10-22",
+    "purpose": "Discover official Apple guidance; no ranks or volumes measured."
+  },
+  "primaryReads": [
+    {
+      "id": "eligibility",
+      "url": "https://support.apple.com/en-ie/111114",
+      "title": "What types of content can I share with my family?",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          26,
+          83
+        ]
+      ],
+      "totalLines": 97,
+      "publishedDate": "2026-09-17",
+      "facts": [
+        "Only participating apps and eligible subscriptions/in-app purchases can be shared; not every item qualifies.",
+        "Apple describes checking app-level Family Sharing support in the App Store and contacting the developer for app-specific questions.",
+        "An app-level support indication does not establish eligibility of each individual in-app product."
+      ],
+      "limits": "No Cloud listing, product eligibility setting or customer subscription examined."
+    },
+    {
+      "id": "subscriptions",
+      "url": "https://support.apple.com/en-gb/108107",
+      "title": "Add a family member to your shared subscriptions",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          28,
+          65
+        ]
+      ],
+      "totalLines": 80,
+      "publishedDate": "2026-09-16",
+      "facts": [
+        "Apple consistently qualifies subscription sharing by eligibility.",
+        "Subscription sharing and Purchase Sharing payment arrangements are distinct; eligible subscriptions can still be shared when Purchase Sharing is off.",
+        "Current page supplies Manage Family Access and Share Eligible Subscriptions controls."
+      ],
+      "limits": "No settings changed; proposed FAQ avoids a fixed UI sequence that varies across versions. Do not tell readers to enable Purchase Sharing as a required calendar-access step."
+    },
+    {
+      "id": "family-overview",
+      "url": "https://support.apple.com/en-us/105062",
+      "title": "How Family Sharing works",
+      "status": "full_extracted_main_body",
+      "ranges": [
+        [
+          28,
+          92
+        ]
+      ],
+      "totalLines": 106,
+      "publishedDate": "2026-09-14",
+      "facts": [
+        "Family members retain their own Apple Accounts.",
+        "Eligible content/subscriptions can be shared; this is not a claim that arbitrary third-party app data permissions are merged."
+      ],
+      "limits": "Calendar permission distinction is a synthesis with the reviewed Cloud calendar guide, not an explicit Apple statement about Cloud Calendars. Child-device and location-sharing material was read but is not used for calendar-access instructions."
+    }
+  ],
+  "otherDiscovery": "Search also returned versioned iOS18 and regional iPhone subscription guides; those search excerpts were not promoted to fresh full-body evidence. Three opened exact URLs above are the factual basis.",
+  "failures": [],
+  "currentGuideComparison": {
+    "wholeCalendar": "Already defines sharing routes, Reader/Writer/Owner, intended signed-in identity, acceptance and checking recipient access. Does not address purchase sharing.",
+    "subscription": "Already separates billing Apple Account from provider/app identities and paid benefits from permissions. Does not address Apple Family Sharing purchase eligibility.",
+    "conclusion": "One conditional FAQ in subscription guide with a related link to whole-calendar guide is enough; do not create a new generic article or duplicate extensive billing instructions."
+  },
+  "proposedFAQ": {
+    "targetSlug": "what-a-subscription-actually-buys",
+    "q": "Does sharing a purchase with my family also share my calendars?",
+    "a": "Treat these as separate checks. Apple Family Sharing can share eligible purchases and subscriptions, but not every in-app product qualifies; check the current eligibility information for the purchase you intend to use. Calendar access still needs the appropriate calendar-sharing invitation or provider permission. For a Cloud Calendars shared calendar, use the intended signed-in identity, accept the invitation and check the resulting access. A shared payment or purchase is not confirmation that someone can read or edit your calendar.",
+    "sourceAttribution": "Eligibility from Apple eligibility/subscription pages; Cloud access workflow from complete current whole-calendar guide and its established evidence, not a fresh native audit.",
+    "sourceToAdd": "https://support.apple.com/en-ie/111114",
+    "relatedRouteToAdd": "a-calendar-that-is-yours-to-share",
+    "conditionalBoundary": "Does not say Cloud purchases are eligible or ineligible. Does not promise automatic calendar access, identical roles or sharing of every calendar."
+  },
+  "optionalWholeCalendarAlternative": {
+    "q": "Does Apple Family Sharing grant access to this calendar?",
+    "a": "Do not use a purchase-sharing status as confirmation of calendar access. Follow the sharing route for the calendar, invite the intended identity and verify its role. Whether an app purchase or subscription can be shared through Apple is a separate eligibility question.",
+    "decision": "Use only if that placement better serves the page; no need to add both FAQs."
+  },
+  "notEstablished": [
+    "Cloud Calendars app-level Family Sharing eligibility",
+    "Advanced or Premium product eligibility",
+    "Customer purchase entitlement or receipts",
+    "Released backend behavior or runtime certification"
+  ],
+  "notPerformed": [
+    "ASC writes or reads",
+    "Source integration",
+    "Build",
+    "Deployment",
+    "Native operations",
+    "Customer or account changes",
+    "New article",
+    "Paid APIs"
+  ]
+}

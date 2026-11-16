@@ -1,0 +1,28 @@
+[
+  {
+    "file": "src/app/content/en-US/articles-help.ts",
+    "slug": "calendar-export-ics-pdf-and-backup",
+    "before": "before.json",
+    "fields": [
+      "faq",
+      "sources"
+    ]
+  },
+  {
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "slug": "when-two-calendars-disagree",
+    "before": "before-conflict.json",
+    "fields": [
+      "sections",
+      "updated"
+    ]
+  },
+  {
+    "file": "src/app/content/en-US/articles-unify.ts",
+    "slug": "what-calendar-sync-actually-does",
+    "before": "before-sync.json",
+    "fields": [
+      "sections"
+    ]
+  }
+]

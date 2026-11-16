@@ -1,0 +1,687 @@
+{
+  "icloud-shared-calendar-update-emails": {
+    "updated": "2026-10-23",
+    "title": "iCloud shared calendar update emails: choose the right inbox and signal",
+    "short": "Shared-calendar update emails",
+    "description": "Control iCloud shared-calendar update emails, check the destination address and keep change messages separate from event reminders.",
+    "lede": "An email about a changed shared calendar answers a different question from a reminder that an appointment is about to start. Set up the change signal for the person who actually needs to act, then confirm which inbox receives it. This guide concerns Apple’s iCloud web calendar, not a notification switch in Cloud Calendars.",
+    "sections": [
+      {
+        "heading": "Define the message you need",
+        "body": [
+          "A rehearsal coordinator may need to know when a co-organizer changes the venue. That is a change-monitoring task. A musician who needs a reminder before rehearsal has an event-alert task. Write the intended trigger first: someone changes the shared schedule, a guest replies, or the start time approaches. Do not turn every notification control on just because the words look similar.",
+          "For a fictional club, Dana owns the Fixtures calendar and Lee participates in it. Dana uses a club address for invitations, while Lee was invited at a personal address. Record the calendar, your role, intended inbox and desired trigger before adjusting settings. These are illustrative people, not accounts used in a test."
+        ]
+      },
+      {
+        "heading": "Configure the shared-calendar update email",
+        "body": [
+          "Apple documents the web control in Calendar on iCloud.com, using a tablet or computer. Open the sidebar’s Actions menu, choose Settings, and use the Events pane’s shared-calendar update email option. Save the change. This setting concerns email about updates; it does not establish an audible notification on a phone.",
+          "Apple describes different address routing for an owner and an invited participant. Compare the routing in the table with the address you actually monitor. If the chosen inbox is old or unsuitable, resolve that identity question rather than asking another participant to publish the entire calendar."
+        ]
+      },
+      {
+        "heading": "Use a low-risk change to check the arrangement",
+        "body": [
+          "With the other participant’s agreement, choose a clearly labelled sample appointment without confidential notes or guests. Write down its original time or location, the single field to change, and who should receive the update. Let an authorized editor make that change. Keep the owning calendar available so you can check the saved record separately from any message.",
+          "Afterwards record three observations: whether the change exists in the source, whether an update message arrived, and which address received it. An absent email is not proof that the edit failed. Conversely, a message is not confirmation that everyone has read it. For a consequential venue change, contact the affected people directly rather than relying on a background signal."
+        ]
+      },
+      {
+        "heading": "Reduce noise without removing access",
+        "body": [
+          "If update mail becomes excessive, revisit the email preference. Do not remove the participant or delete the shared calendar merely to quiet an inbox. Keep a short decision record: which signal remains enabled, who is responsible for reviewing changes, and which separate reminders individuals still require.",
+          "In Cloud Calendars, troubleshoot its own event alerts using the linked notification guide. Apple’s web preference and an app’s reminder settings have different owners. Avoid claiming that changing one controls every application displaying the same appointments."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A routing worksheet for the fictional club",
+      "columns": [
+        "Person and role",
+        "Address to check",
+        "Separate check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Dana, calendar owner",
+            "The address configured for sending invitations",
+            "Is this inbox monitored for club changes?"
+          ]
+        },
+        {
+          "cells": [
+            "Lee, invited participant",
+            "The address used for the calendar invitation",
+            "Was the intended address invited?"
+          ]
+        },
+        {
+          "cells": [
+            "Any attendee awaiting a reminder",
+            "The relevant app/device reminder configuration",
+            "Does the saved event have the intended alert?"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Name the desired trigger before changing any setting.",
+      "Record whether you own the shared calendar or participate in it.",
+      "Enable or disable the iCloud web update-email preference and save.",
+      "Check one agreed sample edit at the source and in the intended inbox."
+    ],
+    "faq": [
+      {
+        "q": "Will this make my iPhone play an event reminder?",
+        "a": "Do not assume so. An update email and a timed event alert are different signals; verify the relevant app and device notification settings separately."
+      },
+      {
+        "q": "Should I remove the shared calendar to stop update mail?",
+        "a": "Use the applicable notification preference first. Removing access changes collaboration, which is broader than controlling email."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: receive updates to calendars on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "label": "Diagnose event reminders separately"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "label": "Check the sharing arrangement"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Separate replies from attendance"
+      }
+    ],
+    "seeAlso": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "a-calendar-that-is-yours-to-share",
+      "keeping-track-of-who-replied"
+    ]
+  },
+  "icloud-calendar-hide-past-events": {
+    "updated": "2026-10-23",
+    "title": "Old iCloud events disappeared? Check the web hide-past-events setting",
+    "short": "Hidden past iCloud events",
+    "description": "Check iCloud’s hide-past-events preference before restoring calendars. Distinguish an invisible old appointment from a deleted record.",
+    "lede": "If older appointments disappear from Calendar on iCloud.com while recent dates remain, check the web display preference before choosing a recovery archive. Apple offers an option to hide past events after a chosen number of days. Hiding changes the view; it is not a reason to restore the whole calendar.",
+    "sections": [
+      {
+        "heading": "Identify a date boundary rather than a missing title",
+        "body": [
+          "Start with two known appointments in the same calendar: one recent and one older. Record their actual dates and the signed-in Apple Account. If only the older item is absent, inspect a setting that can affect a period of history before assuming an event was deleted.",
+          "For example, a fictional coordinator can see this week’s session but not a workshop several months ago. The useful clue is the age difference, not that both titles contain Workshop. Do not create another copy of the older appointment while you are still determining why it is absent."
+        ]
+      },
+      {
+        "heading": "Inspect the Apple web preference",
+        "body": [
+          "Apple documents this on a tablet or computer in Calendar on iCloud.com: open Actions, Settings, then Events. Inspect the option that hides events a chosen number of days after they have passed. Apple says clearing the option shows hidden events again.",
+          "Make one narrow change and revisit the older date. Do not edit the appointment’s date to force it into the visible window. The preference is a display control in Apple’s web calendar; it does not describe the search range or loading behavior of Cloud Calendars."
+        ]
+      },
+      {
+        "heading": "Work through the three possible outcomes",
+        "body": [
+          "Use the table to keep observations separate. If the appointment reappears after disabling the preference, inspect its original fields and leave the date intact. Record the preference you changed so you can decide whether to keep a shorter visual history or display all available entries.",
+          "If the record remains absent, verify the owning calendar, account and approximate date. Search the appropriate service using the available clues. A negative search still does not prove deletion: you may be looking at another calendar, lack access, or be using a restricted range. Use the historical-search guide before moving to recovery."
+        ]
+      },
+      {
+        "heading": "Avoid a restore for a display-only problem",
+        "body": [
+          "A fictional handoff note can read: expected archive workshop, owning calendar Club, approximate month March, hiding preference enabled, result after disabling preference recorded. That is more actionable than calendar lost everything. Keep private titles and invitation links out of public support posts.",
+          "Only investigate a deletion workflow after identifying a missing source record. An iCloud archive restore is broader than showing hidden dates, and can affect current schedules and sharing. Preserve the existing account arrangement while you diagnose the display."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "What the next observation means",
+      "columns": [
+        "Observation",
+        "Next narrow action",
+        "Avoid"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Old event returns after disabling hiding",
+            "Verify its original date and calendar",
+            "Creating a duplicate"
+          ]
+        },
+        {
+          "cells": [
+            "Old event remains absent, account uncertain",
+            "Establish the owning identity and calendar",
+            "Restoring a different account"
+          ]
+        },
+        {
+          "cells": [
+            "Source record is confirmed deleted",
+            "Review the provider’s recovery scope",
+            "Using display settings as recovery"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify one older and one recent event in the same source calendar.",
+      "Inspect the iCloud web history-hiding preference.",
+      "Disable it if you want to check hidden dates, then revisit the older date.",
+      "Move to source/search or recovery diagnosis only if the observation warrants it."
+    ],
+    "faq": [
+      {
+        "q": "Does hiding an old event delete it?",
+        "a": "The documented hiding option is reversible. Do not confuse it with deleting an owned event or declining an invitation."
+      },
+      {
+        "q": "Does this explain every old event missing in Cloud Calendars?",
+        "a": "No. Cloud Calendars has its own date-loading and search behavior. Check the owning source and the app’s relevant date range independently."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: delete or hide an event on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "label": "Search by source, field and date"
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "label": "Review actual deletion recovery"
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Identify a display or source problem"
+      }
+    ],
+    "seeAlso": [
+      "find-old-calendar-events-by-account-date-and-title",
+      "recover-deleted-calendar-events-iphone",
+      "what-calendar-sync-actually-does"
+    ]
+  },
+  "icloud-calendar-invitation-sender-email": {
+    "updated": "2026-10-23",
+    "title": "Choose the email address that sends your iCloud event invitations",
+    "short": "Invitation sender identity",
+    "description": "Choose an available iCloud invitation sender address and verify it with a harmless event before sending important invitations.",
+    "lede": "An event can be saved to the correct calendar yet reach guests from an unexpected email address. In Calendar on iCloud.com, the invitation-sender choice is a separate identity setting. Check it before a club, household or professional invitation leaves an address that recipients do not recognize.",
+    "sections": [
+      {
+        "heading": "Separate sender identity from event destination",
+        "body": [
+          "Write down two decisions: which calendar should own the appointment, and which email identity should send the invitation. Giving a calendar a recognizable name or changing its color is not a substitute for checking the outgoing identity.",
+          "Consider a fictional coordinator, Morgan, who has a personal address and a club address associated with the Apple Account used for scheduling. The intended result is a test meeting in the correct calendar, sent from an available club identity, with responses checked independently. This example does not establish that any arbitrary address can be added to the menu."
+        ]
+      },
+      {
+        "heading": "Choose from the addresses Apple actually offers",
+        "body": [
+          "Apple’s web instructions use a tablet or computer. In Calendar on iCloud.com, open Actions, Settings, then Account. Choose an available address in the invitation-sender menu. Apple explains that the menu is absent when only one email is configured; eligible additional identities can include aliases, custom-domain addresses or another service’s address associated with the Apple Account.",
+          "If the intended choice is missing, stop at the identity question. Consult Apple’s linked account and mail-address setup instructions. Do not type someone else’s address into an event description and assume that changes the sender, and do not send a real invitation just to experiment."
+        ]
+      },
+      {
+        "heading": "Verify with one cooperative recipient",
+        "body": [
+          "Ask a trusted person to expect a disposable event with no confidential information. Note its title, destination calendar and chosen sending address. Send it once, then ask the recipient which address the invitation identifies and whether the correct appointment details are present.",
+          "Keep the observed sender, recipient and response state as separate fields. A successful email delivery says nothing by itself about whether the recipient accepted. If the identity is unexpected, pause further distribution and review the selected account rather than repeatedly editing a real meeting."
+        ]
+      },
+      {
+        "heading": "Use a clear identity handoff record",
+        "body": [
+          "For the fictional club, keep a short note: calendar owner, intended sending identity, responsible inbox monitor, test recipient and date checked. That helps a replacement coordinator discover how invitations were configured without borrowing a password or changing ownership casually.",
+          "This guide describes Apple’s invitation identity. It does not change Cloud Calendars accounts, Google organizers, or the address used by every application. Use the owning service’s controls for the event you are actually sending."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "A sender verification record",
+      "columns": [
+        "Field",
+        "Illustrative intended value",
+        "Evidence to collect"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar destination",
+            "Club rehearsals",
+            "Reopened saved event"
+          ]
+        },
+        {
+          "cells": [
+            "Sending identity",
+            "Available club address",
+            "Recipient’s invitation details"
+          ]
+        },
+        {
+          "cells": [
+            "Attendance response",
+            "Not assumed",
+            "Recorded guest reply"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Identify the Apple Account and calendar that should own the event.",
+      "Choose an address offered by the iCloud web invitation-sender menu.",
+      "Use an agreed, non-sensitive test event.",
+      "Check sender identity and guest response as separate observations."
+    ],
+    "faq": [
+      {
+        "q": "Why is there no sender-address menu?",
+        "a": "Apple says the menu is absent when only one email is configured. Review Apple’s identity setup guidance rather than assuming the event editor is broken."
+      },
+      {
+        "q": "Does changing the sender move existing events?",
+        "a": "Treat identity selection and an event’s owning calendar as separate decisions. Verify existing appointments individually before changing their destination."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: invite people to an event and choose the sender email",
+        "url": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "label": "Check the event’s owning calendar"
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "label": "Choose the correct invitation route"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Check guest responses"
+      }
+    ],
+    "seeAlso": [
+      "event-saved-to-wrong-calendar",
+      "sharing-one-event-not-your-calendar",
+      "keeping-track-of-who-replied"
+    ]
+  },
+  "icloud-private-calendar-pending-invitations": {
+    "updated": "2026-10-23",
+    "title": "An iCloud private calendar invitation is still pending: verify, resend, then check access",
+    "short": "Pending private invitations",
+    "description": "Resolve an iCloud private-calendar invitation by checking account eligibility, participant status and the intended recipient before resending.",
+    "lede": "A calendar-sharing invitation is not complete just because the owner sent an email. For a private iCloud calendar, distinguish an unanswered invitation from a joined participant who cannot find the schedule on another device. Resolve the acceptance state before changing synchronization settings.",
+    "sections": [
+      {
+        "heading": "Record the intended relationship",
+        "body": [
+          "Use a small fictional example: Alex owns a rehearsal calendar, Pat should read it, and Sam should edit it. Write the intended recipient identity and privilege for each person. Keep this acceptance checklist separate from the rehearsal’s event-attendance list.",
+          "Apple’s private-sharing documentation requires the recipient to have an Apple Account and use iCloud. Only the owner shares the private calendar. A person without the required setup needs an appropriate alternative arrangement, not repeated copies of an invitation they cannot use."
+        ]
+      },
+      {
+        "heading": "Read the owner’s participant state",
+        "body": [
+          "In the calendar’s information on iCloud.com, inspect the participant status. Apple distinguishes joined, declined and unanswered invitations. For an unanswered private-calendar invitation, its documented resend action is Invite Again beside that participant.",
+          "Before resending, confirm the intended address with the person through your usual trusted channel. Do not add several guessed aliases with editing rights. Resending asks for a response; it does not prove a mailbox problem or force the person to join."
+        ]
+      },
+      {
+        "heading": "Complete acceptance on the recipient’s side",
+        "body": [
+          "Apple documents joining through the Calendar inbox on iCloud.com, using a tablet or computer. Open the relevant notification and choose Join Calendar. After acceptance, verify the actual calendar name and intended access rather than only looking for a familiar event title.",
+          "For the example, ask Pat to locate a disposable rehearsal entry without attempting an edit. Ask Sam, if authorized and willing, to change one harmless sample field. Record the owner-side result. These are suggested checks for your own arrangement, not tests performed for this article."
+        ]
+      },
+      {
+        "heading": "Branch correctly after the person joins",
+        "body": [
+          "If the owner now sees a joined participant and the calendar is present on iCloud.com but missing on another device, investigate that device’s Apple Account, iCloud Calendar setting and calendar visibility. Do not restart the invitation workflow automatically.",
+          "If the person declined, ask whether access is still wanted before resending. If the wrong identity was invited, have the owner correct the intended relationship. A working public link, a meeting RSVP and a private calendar membership are separate kinds of access."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The rehearsal acceptance ledger",
+      "columns": [
+        "Person",
+        "Intended relationship",
+        "Next check"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Pat",
+            "Read the private calendar",
+            "Joined status and sample entry visibility"
+          ]
+        },
+        {
+          "cells": [
+            "Sam",
+            "Edit the private calendar",
+            "Joined status and agreed sample change"
+          ]
+        },
+        {
+          "cells": [
+            "Any meeting guest",
+            "Attend one rehearsal",
+            "Event RSVP, outside this membership checklist"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Confirm the owner, intended recipient identity and privilege.",
+      "Check whether the person joined, declined or has not replied.",
+      "Resend only after validating the intended recipient.",
+      "After joining, separate membership from a device visibility problem."
+    ],
+    "faq": [
+      {
+        "q": "Is joining a calendar the same as accepting its meetings?",
+        "a": "No. Calendar membership and an event RSVP answer different questions. Record each where it belongs."
+      },
+      {
+        "q": "Should I make the calendar public to fix a pending private invitation?",
+        "a": "That broadens the distribution model. First verify eligibility, recipient identity and acceptance; change the sharing model only when its audience is actually appropriate."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: private and public calendar sharing on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud"
+      },
+      {
+        "label": "Apple: accept a shared calendar invitation",
+        "url": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "label": "Diagnose a missing shared source"
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "label": "Choose appropriate collaboration roles"
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "label": "Keep membership separate from attendance"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "a-calendar-that-is-yours-to-share",
+      "keeping-track-of-who-replied"
+    ]
+  },
+  "icloud-public-calendar-publish-stop": {
+    "updated": "2026-10-23",
+    "title": "Publish an iCloud calendar as a public feed, then retire it deliberately",
+    "short": "Publish and retire a public calendar",
+    "description": "Plan an iCloud public calendar’s audience, inspect its contents and verify the owner’s publication switch when the feed should stop.",
+    "lede": "A public calendar link is suitable for a schedule intended for broad viewing, such as a club fixture list. It is a poor shortcut for fixing private collaboration. Before publishing, decide what the whole schedule may reveal and who will maintain or retire the feed.",
+    "sections": [
+      {
+        "heading": "Create a publication brief before a link",
+        "body": [
+          "For a fictional sports club, write: audience is members and visitors, owner is the fixtures coordinator, content is public match times and venues, and private contact details belong elsewhere. Review several dates, including old and future entries, instead of approving the calendar from its name.",
+          "Use a dedicated schedule whose contents fit that brief. A personal calendar with a few public fixtures mixed in needs a content decision before it needs a link. The worksheet below is a publication checklist, not a claim that the service automatically redacts descriptions."
+        ]
+      },
+      {
+        "heading": "Use the owner’s public-calendar control",
+        "body": [
+          "Apple documents public sharing in Calendar on iCloud.com from a tablet or computer. The owner opens the calendar information, enables Public Calendar, and distributes the provided link. Apple says recipients do not need to be iCloud users to view this public arrangement; it is not an invitation to edit.",
+          "Keep one recorded publication owner and a list of places where the link was distributed. For the club, that might include its website and an email bulletin. Do not publish the raw link in a support report when the audience or content is still under review."
+        ]
+      },
+      {
+        "heading": "Check the intended reading result",
+        "body": [
+          "Ask an intended recipient to use their normal calendar setup and inspect one clearly identifiable sample fixture. Compare title, date, time zone and venue with the source. Record what is observed without promising a universal refresh delay across receiving services.",
+          "If the recipient imported a one-time file rather than subscribing to an updating source, later changes can be a different task. Keep the export-versus-subscription guide handy. A screenshot of a fixture proves only what that view displayed at that moment."
+        ]
+      },
+      {
+        "heading": "Retire publication without deleting the club’s records",
+        "body": [
+          "When publication should end, Apple documents turning off Public Calendar in the owner’s calendar information and saving. Do not delete the entire club calendar merely to stop distribution. Update the website or bulletin locations you recorded so people know where to obtain the intended replacement schedule.",
+          "Check the owner’s saved setting first. Previously saved files, screenshots and independent copies are a separate follow-up; switching publication off is not evidence that those copies disappeared. Tell members which schedule to use now and handle private collaboration separately from public publication."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "The fictional club’s publication checklist",
+      "columns": [
+        "Checkpoint",
+        "Record before publication",
+        "Record at retirement"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Content",
+            "Only public fixture information",
+            "Source records retained by the owner"
+          ]
+        },
+        {
+          "cells": [
+            "Distribution",
+            "Website and bulletin locations",
+            "Outdated links or instructions corrected"
+          ]
+        },
+        {
+          "cells": [
+            "Ownership",
+            "Named coordinator",
+            "Who maintains any replacement"
+          ]
+        },
+        {
+          "cells": [
+            "Recipient check",
+            "Sample fixture and viewing route",
+            "Current publication setting confirmed"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Approve the entire intended calendar audience and content.",
+      "Have the owner enable public sharing and record distribution locations.",
+      "Compare a sample fixture at the source and intended recipient view.",
+      "When retiring the feed, turn off publication and communicate the replacement."
+    ],
+    "faq": [
+      {
+        "q": "Can public-calendar viewers edit the schedule?",
+        "a": "Apple distinguishes public viewing from private editing collaboration. Do not distribute a public link as a substitute for an intended editor relationship."
+      },
+      {
+        "q": "Will ending publication erase every old copy?",
+        "a": "Do not assume that. Keep source access, saved copies and recipient refresh as separate observations."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple: private and public calendar sharing on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud"
+      },
+      {
+        "label": "Apple: stop sharing a calendar on iCloud.com",
+        "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "label": "Choose a private collaboration model"
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "label": "Distinguish import from subscription"
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "label": "Review remaining access routes"
+      }
+    ],
+    "seeAlso": [
+      "a-calendar-that-is-yours-to-share",
+      "calendar-export-ics-pdf-and-backup",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "iphone-calendar-add-only-full-access": {
+    "updated": "2026-10-23",
+    "title": "iPhone calendar access: why an app can add events but cannot show your schedule",
+    "short": "Calendar permission levels",
+    "description": "Distinguish write-only calendar permission from full access on iPhone, review the system grant and test reading separately from adding an event.",
+    "lede": "Being able to add an appointment does not prove that an iPhone app may read the rest of your calendar. Apple distinguishes write-only and full event-store access. Diagnose the permission needed by the task before removing accounts or reimporting schedules.",
+    "sections": [
+      {
+        "heading": "Describe the action that fails",
+        "body": [
+          "Write a small task statement: add a new booking, show existing appointments, or change an existing event. These actions do not all require the same event-store access. A successful add followed by an empty schedule is a different observation from a failed account sign-in.",
+          "For a fictional app called Schedule Example, imagine that saving a new lesson works while an existing meeting does not appear. That behavior is only a diagnostic scenario. It is not a claim that we tested a named app or that permission is the cause of every empty view."
+        ]
+      },
+      {
+        "heading": "Use Apple’s access-level distinction",
+        "body": [
+          "On iOS 17 and later, Apple documents write-only access as permission to create events without reading existing calendar data, including events created by that app. Full access allows reading and modifying event data. Apple also offers a system event editor that can let a person save an event without granting the presenting app general event-store access.",
+          "Consequently, neither a Save button nor a successful calendar insertion proves general reading permission. Use the table to connect a desired action with the authorization question. This explains system access, not the role someone granted you on a shared Google, iCloud or Cloud Calendars schedule."
+        ]
+      },
+      {
+        "heading": "Review the grant in iPhone settings",
+        "body": [
+          "Apple’s user guide documents Settings > Privacy & Security, then the relevant information category such as Calendars. Inspect the entry for the particular app that requested access. Read the choices shown on your installed iOS version and grant only what fits the workflow you actually want.",
+          "Changing calendar permission is a privacy decision. If you do not want an app reading the schedule, retain the limited arrangement and use a supported alternative for viewing. Do not borrow another person’s account or broaden provider sharing as a workaround for an app-level permission."
+        ]
+      },
+      {
+        "heading": "Check permission, source and display separately",
+        "body": [
+          "After an intentional permission change, reopen the app and use a harmless event in a calendar you own. Record two results: can the app save a new event through its supported route, and can it display a known existing appointment? Confirm the expected calendar is selected as a separate check.",
+          "If full access is allowed but the appointment remains absent, continue with the owning account, calendar selection and date-loading checks. Direct provider connections can have their own authorization paths, so this system permission is not a universal explanation. Preserve records and ask support to examine the specific app behavior rather than clearing calendar data."
+        ]
+      }
+    ],
+    "comparison": {
+      "heading": "Questions for the fictional app",
+      "columns": [
+        "Observed action",
+        "What it establishes",
+        "What it does not establish"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "A new event was saved",
+            "That creation route succeeded",
+            "Permission to read the whole schedule"
+          ]
+        },
+        {
+          "cells": [
+            "Existing events are displayed",
+            "That viewing route returned records",
+            "Edit rights to every shared calendar"
+          ]
+        },
+        {
+          "cells": [
+            "System calendar access is enabled",
+            "A device-level grant is present",
+            "Correct provider identity, selected calendar or loaded date range"
+          ]
+        }
+      ]
+    },
+    "claims": {},
+    "practical": [
+      "Name whether the failing task is create, read or change.",
+      "Review the app’s calendar permission in Privacy & Security.",
+      "Make any broader grant deliberately, based on the task.",
+      "Check one new event and one existing record before investigating other layers."
+    ],
+    "faq": [
+      {
+        "q": "Can write-only access read events the app created itself?",
+        "a": "Apple says write-only event-store access does not allow reading even those events. Saving and later fetching are separate capabilities."
+      },
+      {
+        "q": "Does full calendar access make every shared calendar editable?",
+        "a": "No. Device authorization and the owning service’s sharing permissions are different checks. Verify the destination calendar’s actual rights."
+      }
+    ],
+    "sourcesHeading": "Apple documentation checked for this guide",
+    "sources": [
+      {
+        "label": "Apple Developer: calendar access levels and event-store permissions",
+        "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store"
+      },
+      {
+        "label": "Apple: review app access to information on iPhone",
+        "url": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios"
+      }
+    ],
+    "articleLinks": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "label": "Check the remaining connection layers"
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "label": "Verify the event destination"
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "label": "Separate system grants from provider sharing"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "event-saved-to-wrong-calendar",
+      "who-can-see-what-in-google-calendar"
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "title": "Oprește partajarea unui calendar și verifică accesul rămas",
+  "short": "Verificarea și retragerea accesului",
+  "description": "Oprește partajarea fără a confunda persoanele, grupurile, accesul public și abonamentele. Verifică schimbările și înțelege de ce pot rămâne copii.",
+  "lede": "Încheierea unei colaborări începe prin identificarea modului în care a fost acordat accesul. Eliminarea unei persoane, oprirea publicării și resetarea unei adrese de abonare sunt acțiuni diferite. Acest ghid este publicat de Arte Soft, dezvoltatorul Cloud Calendars.",
+  "commonBelief": "Eliminarea unui destinatar retrage instantaneu toate copiile și închide orice altă cale de acces la calendar.",
+  "sections": [
+    {
+      "heading": "Identifică calendarul și modul de partajare",
+      "body": [
+        "Înainte să schimbi accesul, confirmă contul proprietar, calendarul și publicul dorit. Un calendar Google partajat cu un anumit coleg reprezintă alt tip de acces decât un calendar public, o permisiune pentru un grup sau o adresă de abonare. Cloud Calendars are și propriile mecanisme de partajare a evenimentelor și calendarelor.",
+        "De exemplu, secretarul unui club poate primi drept de editare printr-o invitație individuală, în timp ce membrii urmăresc un program publicat. Retragerea permisiunii secretarului nu stabilește ce ar trebui să se întâmple cu abonamentele membrilor. Enumeră aranjamentele pe care le-ai creat efectiv."
+      ]
+    },
+    {
+      "heading": "Retrage permisiunea potrivită în Google",
+      "body": [
+        "Google documentează controale separate pentru persoane sau grupuri, partajarea în organizație și accesul public. Pe computer, deschide setările de partajare ale calendarului potrivit și modifică intrarea sau setarea relevantă. Verifică mai întâi contul conectat și numele calendarului.",
+        "O persoană poate avea în continuare acces printr-un grup sau prin publicarea mai largă. Verifică toate căile de acces, în loc să elimini repetat aceeași adresă de e-mail. Politicile firmei sau școlii pot limita opțiunile; folosește procedura aprobată de proprietar sau administrator când este necesar."
+      ]
+    },
+    {
+      "heading": "Tratează separat adresa secretă",
+      "body": [
+        "Google precizează că adresa iCal secretă este destinată utilizării proprii într-o altă aplicație de calendar și nu trebuie oferită altor persoane. Dacă a fost divulgată, Google recomandă resetarea pentru invalidarea adresei vechi. Aceasta este o acțiune diferită de eliminarea unei persoane.",
+        "Înainte să schimbi o adresă de abonare pe care o folosești, identifică aplicațiile sau instrumentele dependente de ea, pentru a le reconecta ulterior pe cele dorite. Nu publica URL-ul secret într-o solicitare publică de asistență și nu îl trimite drept dovadă că ai găsit calendarul. Menționează numele calendarului și tipul conexiunii."
+      ]
+    },
+    {
+      "heading": "Separă destinatarii Cloud Calendars de linkurile de abonare",
+      "body": [
+        "În Cloud Calendars, accesul destinatarilor la eveniment sau calendar și un flux de abonare emis sunt mecanisme distincte. Verifică relația reală de partajare și linkul corespunzător înainte să alegi o acțiune. Eliminarea unui destinatar identificat nu garantează retragerea tuturor URL-urilor distribuite sau copiilor independente.",
+        "Dacă un coorganizator trebuie doar să nu mai editeze, analizează rolul dorit și cine păstrează accesul, în loc să ștergi programul comun. Dacă întreaga colaborare se încheie, stabilește proprietarul și cine ar trebui să păstreze calendarul. Părăsirea unui calendar primit și ștergerea unuia propriu sunt decizii diferite."
+      ]
+    },
+    {
+      "heading": "Verifică rezultatul fără a promite dispariția imediată",
+      "body": [
+        "Verifică dacă modificarea dorită a fost salvată în sistemul proprietar. Dacă te poate ajuta un coleg autorizat, confirmați vizualizarea sau editarea din contul lui, fără să partajați parole. Deosebește refuzul accesului de un eveniment vechi încă vizibil într-o copie importată sau în cache.",
+        "Nu promite un interval universal de actualizare sau absența notificărilor. La predarea responsabilităților unui grup, comunică programul care va fi folosit de acum înainte. O înregistrare veche vizibilă nu dovedește singură dacă persoana are acces activ, o altă permisiune sau o copie separată."
+      ]
+    },
+    {
+      "heading": "Gestionează separat copiile existente",
+      "body": [
+        "Fișierele exportate, capturile de ecran, mesajele și întâlnirile salvate separat pot rămâne după schimbarea accesului. Stabilește ce copii contează pentru predare și discută gestionarea lor cu persoanele implicate. Modificarea unei permisiuni nu arată ce a salvat deja fiecare destinatar.",
+        "Păstrează înregistrările sursă necesare în timpul verificării. Nu muta întâlniri sensibile într-un alt calendar partajat doar pentru a-l goli pe cel vechi și nu anula invitații reale pentru a testa accesul. Notează calendarul, calea de acces și schimbarea făcută, pentru o investigație ulterioară clară."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Identifică contul proprietar, calendarul și modul de partajare.",
+    "Verifică separat persoanele, grupurile și publicarea mai largă.",
+    "Folosește controalele potrivite din Google sau Cloud Calendars.",
+    "Tratează resetarea unei adrese secrete divulgate ca decizie separată.",
+    "Verifică rezultatul salvat fără a partaja date de autentificare.",
+    "Planifică separat gestionarea copiilor și exporturilor existente."
+  ],
+  "faq": [
+    {
+      "q": "Eliminarea unei persoane dezactivează calendarul public sau accesul prin grup?",
+      "a": "Nu presupune asta. Verifică fiecare cale reală de acces. Google documentează separat destinatarii individuali, grupurile și publicarea mai largă."
+    },
+    {
+      "q": "Calendarul va dispărea imediat și fără notificări?",
+      "a": "Nu există o promisiune universală privind dispariția, notificările sau actualizarea. Confirmă schimbarea salvată și deosebește accesul activ de informațiile importate ori din cache."
+    },
+    {
+      "q": "Advanced oferă dreptul de a retrage accesul la un calendar Google?",
+      "a": "Advanced elimină reclamele din Cloud Calendars. Controalele Google depind de proprietate, permisiuni și regulile organizației, nu de acest plan al aplicației."
+    }
+  ],
+  "sourcesHeading": "Ghiduri despre acces și abonare",
+  "sources": [
+    {
+      "label": "Google: controale de partajare și oprirea accesului",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: sincronizarea conturilor și adresele iCal secrete",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "updated": "2026-10-21",
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar"
+  ]
+}

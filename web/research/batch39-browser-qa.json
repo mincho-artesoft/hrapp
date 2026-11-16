@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-22T05:11:04.273902+00:00",
+  "allPassed": true,
+  "articleLocales": [
+    "fr-FR",
+    "es-ES"
+  ],
+  "mobileViewport": 390,
+  "articleClientAndScrollWidth": 379,
+  "allSevenSectionHeadingsPresent": true,
+  "spanishWiderViewport": 575,
+  "spanishWiderClientAndScrollWidth": 564,
+  "spanishVisibleFlightSectionScreenshot": "/tmp/cloud-calendar-batch39-timezone-es.png",
+  "englishInteractiveHomePanel": {
+    "verified": true,
+    "method": "Desktop Multi-calendar railbutton thenfreshAXtree/readDOM aftersmoothscrollsettled.",
+    "activeBody": "Compare work and personal plans in the available calendar columns. Check which calendars are selected: a filtered view alone cannot establish that a time is free."
+  },
+  "homeMobileWidthSamples": [
+    "en-US",
+    "ar-SA",
+    "fr-FR"
+  ],
+  "homeSamplesClientAndScrollWidth": 379,
+  "initialHomeTextCheck": "false because panel2 inactive; not stalecopy. Mobile rail CSS hidden and buttoncouldnotbeclicked; switched to desktoprail and allowedscrollsettle. No sourcefixrequired.",
+  "viewportReset": true,
+  "limits": "Not all24interactivepanels visuallytested, screen-reader audit or releasednativefeatureverification."
+}

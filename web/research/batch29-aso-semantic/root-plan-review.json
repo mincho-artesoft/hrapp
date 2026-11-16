@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-22",
+  "verdict": "pass_bounded_static_review",
+  "blockers": [],
+  "readScope": "Complete apply-description-clarifications.py read. All six selected audit proposals extracted and their exact replacement excerpts/following access qualifications read; en-US exactBefore plus alternativeNarrower read. Full before/after replacement identity checked locally. No script execution, asc_report import, API call or plan-state certification.",
+  "inputs": [
+    {
+      "file": "research/batch29-aso-semantic/apply-description-clarifications.py",
+      "sha256": "16a67bd00fbe2ac7d2aeee72cb20ac8c3262a4d4ea41652467cee704c703a695"
+    },
+    {
+      "file": "research/batch29-aso-semantic/audit.json",
+      "sha256": "b7e2ef549511e108f999da5d2a58b8820bfd455c9dfd2e84b555bf5b3337ece2"
+    },
+    {
+      "file": "research/batch29-aso-semantic/appclip-facts.json",
+      "sha256": "e69cfe61fa7c97021cf070bcacdcf8da413d13742b0f593159eb8d617415ac11"
+    },
+    {
+      "file": "research/aso/english-proposal-20261021.json",
+      "sha256": "f7068fa782ff3a74b10b433c49141cfb34c1293a11e5d59ef77d141a37b5a411"
+    }
+  ],
+  "excerptReview": [
+    {
+      "locale": "fr-FR",
+      "beforeExcerpt": "Partagez des événements et des calendriers, puis envoyez des invitations par e-mail, code QR ou App Clip.",
+      "afterExcerpt": "Partagez des événements et des calendriers avec des invitations par e-mail ou code QR. App Clip propose un aperçu de l’événement ; pour l’ajouter à un calendrier depuis cet aperçu, il faut l’app complète.",
+      "retainedAccessQualification": "Les droits d’accès dépendent du calendrier et du type d’invitation.",
+      "descriptionCharacters": 2122,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "it",
+      "beforeExcerpt": "Condividi eventi e calendari e invia inviti tramite email, codice QR o App Clip.",
+      "afterExcerpt": "Condividi eventi e calendari con inviti tramite email o codice QR. App Clip mostra un’anteprima dell’evento; per aggiungerlo a un calendario da questa anteprima serve l’app completa.",
+      "retainedAccessQualification": "I permessi dipendono dal calendario e dal tipo di invito.",
+      "descriptionCharacters": 1982,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "ja",
+      "beforeExcerpt": "イベントやカレンダーを共有し、メール、QRコード、App Clipで招待できます。",
+      "afterExcerpt": "メールやQRコードによる招待で、イベントやカレンダーを共有できます。App Clipではイベントのプレビューを確認できます。このプレビューからカレンダーにイベントを追加するには、フルアプリが必要です。",
+      "retainedAccessQualification": "アクセス権はカレンダーや招待の種類によって異なります。",
+      "descriptionCharacters": 1069,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "ko",
+      "beforeExcerpt": "이벤트와 캘린더를 공유하고 이메일, QR 코드 또는 App Clip으로 초대하세요.",
+      "afterExcerpt": "이메일이나 QR 코드 초대로 이벤트와 캘린더를 공유하세요. App Clip에서는 이벤트를 미리 볼 수 있습니다. 이 미리보기에서 캘린더에 이벤트를 추가하려면 전체 앱이 필요합니다.",
+      "retainedAccessQualification": "접근 권한은 캘린더와 초대 유형에 따라 다릅니다.",
+      "descriptionCharacters": 1155,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "pt-BR",
+      "beforeExcerpt": "Compartilhe eventos e calendários e envie convites por e-mail, código QR ou App Clip.",
+      "afterExcerpt": "Compartilhe eventos e calendários com convites por e-mail ou código QR. O App Clip mostra uma prévia do evento; para adicioná-lo a um calendário a partir dessa prévia, é necessário o app completo.",
+      "retainedAccessQualification": "As permissões dependem do calendário e do tipo de convite.",
+      "descriptionCharacters": 1867,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "nl-NL",
+      "beforeExcerpt": "Deel evenementen en kalenders en nodig anderen uit via e-mail, een QR-code of een App Clip.",
+      "afterExcerpt": "Deel evenementen en kalenders met uitnodigingen via e-mail of een QR-code. App Clip toont een voorbeeld van het evenement; om het vanuit dat voorbeeld aan een kalender toe te voegen, is de volledige app nodig.",
+      "retainedAccessQualification": "Toegangsrechten hangen af van de kalender en het type uitnodiging.",
+      "descriptionCharacters": 1881,
+      "exactExcerptOnly": true
+    },
+    {
+      "locale": "en-US",
+      "beforeExcerpt": "Share events and calendars, and send invitations by email, QR code or App Clip.",
+      "afterExcerpt": "Share events and calendars with email or QR invitations. App Clip offers an event preview; adding the event through that experience requires the full app.",
+      "retainedAccessQualification": "Sharing access depends on the calendar and invitation type.",
+      "descriptionCharacters": 2158,
+      "exactExcerptOnly": true
+    }
+  ],
+  "meaning": "All seven explain App Clip event preview separately from adding via the full app. None promises no-install adding, universal availability, instant handoff, security or receipt/RSVP. Narrow event wording is truthful even though current source also has calendar-invitation preview; omission of that extra preview is not a blocker.",
+  "scriptReview": {
+    "targets": "Seven distinct locale descriptions, each <=4000 characters. Exact excerpt occurs once; computed after must equal before.replace(excerpt).",
+    "draftGuards": "Version and app-info states fetched and required PREPARE_FOR_SUBMISSION; versionString1.7.4. Rechecked before each target and after. IDs come from saved snapshot; does not discover arbitrary draft IDs.",
+    "concurrency": "Initial actual description must equal known before or after. Per-target complete current attributes must equal initial snapshot before patch. No unsupported claim of fully atomic read/write locking.",
+    "mutationSurface": "PATCH payload contains description only. No submission/build/price/privacy/name/URL operation in this script. No writes unless --apply.",
+    "preservation": "Postread requires same50locale set, all app-info locale records unchanged, each version-localization attribute equal before except intended seven descriptions, and version attributes/draft state unchanged.",
+    "idempotency": "Already-after descriptions skip patch but still verify.",
+    "reporting": "Prewrite report saved, updated after each successful patch; allVerified set only after complete postread assertions."
+  },
+  "operationalLimits": [
+    "Static review does not certify actual plan API state or API outcomes; root inspects plan evidence.",
+    "Sequential PATCH operations are not transactional. If a later guard fails, earlier successful changes may remain and writes report records them; inspect before retrying.",
+    "A tiny read-to-write race remains because no conditional API write is used; per-target guard and final full readback detect observed divergence but are not a locking guarantee.",
+    "Exact released App Store1.7.3/App Clip behavior remains unverified; this is a draft1.7.4 semantic proposal tied to current inspected source.",
+    "Translation review is bounded cross-agent review, not native-speaker certification."
+  ],
+  "noActions": "No API requests/writes, source edits, commits, builds, deployment or messages sent. Only this review artifact written."
+}

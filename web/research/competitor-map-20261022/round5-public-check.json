@@ -1,0 +1,29 @@
+{
+  "pages": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/weather-calendar-history-versus-forecast-iphone/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "sha256": "0db2226d10082be9cb65179701e5ac9fa40dc0360e30a2a703999774202b7f46"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/booking-link-or-shared-calendar/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "sha256": "b4a56d4f1f39f99fd97886b2b13acd1a13ae07c031df108468b0bf938b32a76f"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "sha256": "24709dea3748067acbbefc7e695b5625e6e537435f09df44a11b18b4095cc086"
+    },
+    {
+      "url": "https://www.cloud-calendars.com/articles/automatic-time-blocking-versus-manual-calendar/",
+      "httpStatus": 200,
+      "matchesBuildBytes": true,
+      "sha256": "fa9056b81d9b078485fa73424c28eabb943875f9f577420cbf0dfb479ec58f88"
+    }
+  ],
+  "scope": "Public HTML matches tested build; not indexing or ranking proof."
+}

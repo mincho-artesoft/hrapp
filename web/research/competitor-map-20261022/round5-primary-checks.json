@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "method": "Read substantive official product/help sections; no product runtime test or account connection.",
+  "records": [
+    {
+      "product": "Weather Events / Dejal",
+      "source": "https://dejal.com/weatherevents/",
+      "finding": "Saved all-day weather entries, notes, per-day locations and custom editing. Publisher alias resolved; archive intent implemented.",
+      "canonical": "weather-calendar-history-versus-forecast-iphone"
+    },
+    {
+      "product": "Any.do",
+      "source": "https://support.any.do/en/articles/8610622-getting-started-with-the-calendar-integration",
+      "finding": "Mobile native-calendar mirroring differs from separately configured desktop integration; calendar sharing uses provider.",
+      "canonical": "iphone-calendar-tasks-reminders-versus-event-alerts"
+    },
+    {
+      "product": "Vimcal",
+      "source": "https://docs.vimcal.com/getting-started/account-setup",
+      "supportingSource": "https://www.vimcal.com/downloads/ios",
+      "finding": "Google/Microsoft setup and underlying delegate access; availability/time zones/booking iOS positioning. Speed claims untested.",
+      "canonical": "booking-link-or-shared-calendar"
+    },
+    {
+      "product": "Amie",
+      "source": "https://amie.so/documentation/google-calendar-integration",
+      "finding": "Publisher documents event sync including recurring events; not independent proof of latency, storage or task rescheduling.",
+      "canonical": "automatic-time-blocking-versus-manual-calendar"
+    },
+    {
+      "product": "Weather Calendar Together",
+      "source": "https://apps.apple.com/ec/app/weather-calendar-together/id6737379295?l=en-GB&platform=mac",
+      "finding": "Selected real Google listing led to visible Apple not-found page. Current capabilities unavailable from inspected official detail. Not evidence of global delisting.",
+      "canonical": "weather-inside-your-calendar",
+      "disposition": "No product-specific claims; generic weather workflow only."
+    }
+  ]
+}

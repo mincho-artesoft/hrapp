@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-22T03:34:09.016741+00:00",
+  "allPassed": true,
+  "routes": [
+    {
+      "locale": "en-US",
+      "route": "/articles/change-calendar-color-iphone/",
+      "h1MatchesReviewedDraft": true,
+      "views": [
+        {
+          "viewport": 390,
+          "documentWidth": 379,
+          "scrollWidth": 379
+        },
+        {
+          "viewport": 575,
+          "documentWidth": 564,
+          "scrollWidth": 564
+        }
+      ]
+    },
+    {
+      "locale": "bg",
+      "route": "/bg/articles/change-calendar-color-iphone/",
+      "h1MatchesReviewedDraft": true,
+      "views": [
+        {
+          "viewport": 390,
+          "documentWidth": 379,
+          "scrollWidth": 379
+        },
+        {
+          "viewport": 575,
+          "documentWidth": 564,
+          "scrollWidth": 564
+        }
+      ]
+    }
+  ],
+  "currentColorRowInstructionPresent": true,
+  "receivedOverrideScopeReviewedVisually": true,
+  "primarySourceLinksPresent": true,
+  "screenshot": "/tmp/cloud-calendar-batch33-colors-bg.png",
+  "viewportRestored": true,
+  "tabDeliverable": true,
+  "scope": "Representative responsive/rendered text and source-link checks; not native runtime,native-speaker or search-performance proof."
+}

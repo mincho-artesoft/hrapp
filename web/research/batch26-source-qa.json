@@ -1,0 +1,10 @@
+{
+  "allPassed": true,
+  "changedEnglishGuides": 3,
+  "oneGoogleFaqAndSource": true,
+  "oneConflictParagraphAndDate": true,
+  "oneSyncParagraphAppend": true,
+  "allOtherArticleFieldsAndSharedFactsPreserved": true,
+  "exactDraftParity": true,
+  "scope": "Bounded HEAD/before/draft/current exact-field equality, not runtime, every provider or ranking proof."
+}

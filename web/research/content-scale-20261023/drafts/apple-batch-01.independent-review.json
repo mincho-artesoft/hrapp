@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-23",
+  "reviewer": "primary_source_catalog",
+  "scope": "Independent per-claim Apple source check plus adjacent existing English full-body comparison; no publishing or source-app edits.",
+  "qualityBasis": [
+    "Source fidelity and ability to complete the stated reader task.",
+    "Distinct intent and added utility relative to existing canonical pages.",
+    "Fictional examples are labeled and do not masquerade as measured tests.",
+    "Body word count is not used as a quality score or approval criterion."
+  ],
+  "summary": {
+    "approve": 5,
+    "revise": 1,
+    "merge": 2,
+    "hold": 0,
+    "potentialNewCanonicalsAfterCorrections": 6
+  },
+  "officialMarkdownEvidence": {
+    "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store.md",
+    "httpStatus": 200,
+    "sha256": "747363bb51f63fab2c85e0cf8933a9d8bf5fb33f6388ea1a76a1c73622d08288",
+    "note": "Apple HTML links this .md document; web tool could not handle text/markdown, so direct HTTP was used for the actual read."
+  },
+  "articles": [
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "decision": "approve",
+      "eligibleAsNewCanonical": true,
+      "rationale": "Distinct owner/participant email-routing task, whereas the existing notification article concerns event reminders and device delivery. Fictional routing table supplies a usable check without claiming a measured result.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud",
+          "independentlyReadScope": "Complete substantive body lines277–294",
+          "verifiedFacts": [
+            "Events pane checkbox; Save; owner destination is sending-invitations address; participant destination is invited address."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "sections[1].body[0]",
+          "suggestedChange": "Name the exact checkbox “Email me shared calendar updates” to distinguish it from the separate Account receive-via-email preference.",
+          "reason": "Directly completes the stated control task; current general wording is factually correct."
+        }
+      ],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "calendar-notifications-missing-silent-or-duplicated",
+        "finding": "Related but different trigger and settings owner; link rather than merge."
+      },
+      "articleSha256": "064067e9190d30558c36198e886b64bfaf9d6589f909c895e768e507f05cb07a",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "decision": "approve",
+      "eligibleAsNewCanonical": true,
+      "rationale": "Concrete reversible iCloud web history preference is distinct from generic historical search and recovery. The branch table prevents an unnecessary restore and does not claim this web preference controls Cloud Calendars.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud",
+          "independentlyReadScope": "Substantive hide section lines289–296 independently viewed",
+          "verifiedFacts": [
+            "Select Hide events[x]days after they have passed; enter days; close settings; clear the same option to show hidden entries."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "sections[1].body[0]",
+          "suggestedChange": "Add the final “Close settings, then revisit the date” step and quote the checkbox label.",
+          "reason": "Matches the exact documented completion action without inventing a Save button."
+        }
+      ],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "find-old-calendar-events-by-account-date-and-title",
+        "finding": "Existing article is a source/query/date-range diagnostic, not the specific web hiding control."
+      },
+      "articleSha256": "32056c66a25f5515bc7d5646a9bf7d422fdf82869ee654470b0063f6c88ab89b",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "decision": "approve",
+      "eligibleAsNewCanonical": true,
+      "rationale": "Completes a separate sending-identity choice rather than repeating the destination-calendar guide. Eligible address types and absent-menu condition match Apple.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud",
+          "independentlyReadScope": "Complete substantive body lines277–324, with sender subsection307–316",
+          "verifiedFacts": [
+            "Actions>Settings>Account>Send invitations from; aliases/custom domain/other-service address tied to Apple Account; no menu when one email is configured."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "sections[1].body[0]",
+          "suggestedChange": "Use the visible label “Send invitations from” instead of only “invitation-sender menu”.",
+          "reason": "Makes the procedural step immediately recognizable."
+        }
+      ],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "event-saved-to-wrong-calendar",
+        "finding": "Destination and outgoing sender identity are independently actionable controls."
+      },
+      "articleSha256": "4d2b40660865a46cb8b018b6e684f2dab1784a98d6e1a0447c617c6e7e774cce",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "decision": "approve",
+      "eligibleAsNewCanonical": true,
+      "rationale": "Provider-specific private calendar membership state and Invite Again/Join Calendar procedure are distinct from the Google-oriented missing-shared-calendar article. Separates membership from RSVP correctly.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+          "independentlyReadScope": "Substantive private-sharing/status/resend body lines277–349",
+          "verifiedFacts": [
+            "Recipient Apple Account+iCloud; owner shares; joined/declined/unanswered status; private Invite Again action."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud",
+          "independentlyReadScope": "Complete substantive body lines277–290",
+          "verifiedFacts": [
+            "Calendar inbox>Join Calendar; joined calendar appears with same Apple Account and iCloud Calendar enabled."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "why-a-shared-calendar-does-not-appear",
+        "finding": "Provider-specific membership state transition, not another vague missing-calendar page."
+      },
+      "articleSha256": "9cb90221fc573306d149fe28d559743424b874453dd847c6fc0cc9923dfe97dd",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "decision": "approve",
+      "eligibleAsNewCanonical": true,
+      "rationale": "The full iCloud public publication lifecycle has a different access model and owner controls from private collaboration. Dedicated content/distribution/retirement worksheet adds a concrete outcome; existing revocation guide is Google/app centered.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+          "independentlyReadScope": "Public-sharing subsection307–323 and general note279–281",
+          "verifiedFacts": [
+            "Owner enables Public Calendar and distributes URL; public readers need not use iCloud; owner changes public calendar."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+          "independentlyReadScope": "Complete substantive body277–306",
+          "verifiedFacts": [
+            "Private removal differs from Stop Sharing; public retirement turns Public Calendar off and saves."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "sections[1].body[0]",
+          "suggestedChange": "Optionally name “Copy” and “Email” as the two documented distribution choices.",
+          "reason": "Adds UI precision without extending access promises."
+        }
+      ],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "taking-back-a-calendar-you-shared",
+        "finding": "Existing body documents Google grants and secret-address reset, not the iCloud public lifecycle."
+      },
+      "articleSha256": "b822dfde5d6c51a4211b5baf8cd5fcc6f5a2dbdb88bcbfe7f583bb5c7f9227e5",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "icloud-calendar-restore-sharing-inventory",
+      "decision": "merge",
+      "eligibleAsNewCanonical": false,
+      "rationale": "The existing recovery article already directs readers to record shared calendars/participants, consider newer decisions, rebuild sharing, confirm access and compare the intended schedule. Both pages even use a club whose newer venue changed after the archive. A generic inventory table does not justify a second canonical for the same recovery preflight.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/icloud/restore-your-calendars-and-events-mm7478c562f3/icloud",
+          "independentlyReadScope": "Complete substantive body277–306",
+          "verifiedFacts": [
+            "Restoration removes sharing; explicitly record owned shares/participants/privileges and received calendars first; do not edit during restore; reshare/reinvite afterwards."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "comparison and practical",
+          "suggestedChange": "Move the three-row inventory table and the explicit no-edits-during-restoration instruction into the existing recovery article, preserving its Google-versus-iCloud scope.",
+          "reason": "Improves the authoritative page without splitting the same recovery task."
+        }
+      ],
+      "mergeTarget": "recover-deleted-calendar-events-iphone",
+      "adjacentOverlap": {
+        "existingSlug": "recover-deleted-calendar-events-iphone",
+        "existingSections": [
+          "For iCloud, understand calendar replacement before proceeding",
+          "Account for iCloud sharing and invitation effects",
+          "Use the smallest recovery task that matches the evidence"
+        ],
+        "finding": "Core task, factual explanation, reconciliation example and intended reader outcome already covered."
+      },
+      "articleSha256": "ab3e4765f595126c6560fda828c09ccd87a7acce7d5ed70d1969c05cf4025a93",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "apple-calendar-icbu-archive-restore-checklist",
+      "decision": "merge",
+      "eligibleAsNewCanonical": false,
+      "rationale": "The original export article already distinguishes ICS/PDF/CSV/subscription/ICBU, documents the exact Mac paths, warns archive import replaces current data, and recommends representative recurrence/all-day checks. This draft adds a generic checkpoint worksheet but little distinct procedure or independent original artifact.",
+      "sourceChecks": [
+        {
+          "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+          "independentlyReadScope": "Complete substantive body89–148",
+          "verifiedFacts": [
+            "ICS single-calendar export and chosen-destination import; ICBU all-calendar archive; replacement warning; event/calendar custom-color consequences."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [],
+      "nonBlockingImprovements": [
+        {
+          "location": "sections[1], comparison",
+          "suggestedChange": "Add a compact pre-import checkpoint list and custom-color distinction to the existing export guide. Do not create a second ICS-versus-ICBU decision page.",
+          "reason": "Retains useful additions while avoiding an overlapping format-selection canonical."
+        }
+      ],
+      "mergeTarget": "calendar-export-ics-pdf-and-backup",
+      "adjacentOverlap": {
+        "existingSlug": "calendar-export-ics-pdf-and-backup",
+        "existingSections": [
+          "Choose the result before choosing a format",
+          "Check a copy before relying on it"
+        ],
+        "finding": "Existing guide already resolves the same copy-versus-replace decision and the archive warning."
+      },
+      "articleSha256": "804a1d84bfbc241b0759ebb73a43b6c45a58a1acb6fdf5f1d94243309b31ea61",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "decision": "revise",
+      "eligibleAsNewCanonical": false,
+      "rationale": "Useful distinct create-versus-read diagnostic. The CalDAV guide contains only a short full-access check, not the separate write-only/system-editor mechanisms. Retain as a new canonical after a small platform-scope edit.",
+      "sourceChecks": [
+        {
+          "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+          "independentlyReadScope": "Complete official linked Markdown independently retrieved and read at .md; write-only and EventKitUI sections checked",
+          "verifiedFacts": [
+            "Write-only cannot read existing or self-created events; full access permits create/view/edit/delete; EventKitUI presents out-of-process on iOS17+ without granting general store access."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        },
+        {
+          "url": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios",
+          "independentlyReadScope": "Complete substantive body1109–1127",
+          "verifiedFacts": [
+            "Settings>Privacy&Security>information category lists apps that requested access; actual per-version labels are not established by that user-guide page."
+          ],
+          "evidenceType": "primary",
+          "retrievedAt": "2026-10-23"
+        }
+      ],
+      "requiredCorrections": [
+        {
+          "severity": "minor",
+          "location": "sections[1].body[0]",
+          "before": "Apple documents write-only access as permission to create events without reading the existing calendar data, including events created by that app.",
+          "after": "On iOS 17 and later, Apple documents write-only access as permission to create events without reading existing calendar data, including events created by that app.",
+          "reason": "Do not imply the separate write-only/full-access regime and out-of-process system-editor behavior apply to every older iPhone/iOS version."
+        }
+      ],
+      "nonBlockingImprovements": [
+        {
+          "location": "title/lede",
+          "suggestedChange": "Keep exact option labels conditional on installed iOS, as the draft already does; do not claim that this generic diagnostic proves Cloud Calendars currently runs write-only.",
+          "reason": "Provider connections and device authorization are separate mechanisms."
+        }
+      ],
+      "mergeTarget": null,
+      "adjacentOverlap": {
+        "existingSlug": "caldav-calendar-on-iphone",
+        "finding": "Existing CalDAV setup body has one relevant permission paragraph; a complete create/read distinction and system-editor explanation can be a separate broader task."
+      },
+      "articleSha256": "30ef81f3e5e704b2322854ef8d7b4f3d0302842eb1a9bec743a4c15b8a47fd83",
+      "reviewedAt": "2026-10-23",
+      "reviewer": "primary_source_catalog",
+      "firsthandTesting": false
+    }
+  ]
+}

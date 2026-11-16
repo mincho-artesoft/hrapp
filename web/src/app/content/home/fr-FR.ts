@@ -1,0 +1,283 @@
+import { HomeCopy } from './types';
+
+/** The home page in French. */
+export const HOME_FR_FR: HomeCopy = {
+  metaTitle: 'Cloud Calendars — iCloud, Google et Outlook en une vue',
+  metaDescription:
+    "Agendas iCloud et Google, météo et widgets sur iPhone et iPad. Téléchargement gratuit ; Premium ajoute les agendas Microsoft et Teams.",
+  nav: {
+    tour: 'Visite',
+    widgets: 'Widgets',
+    weather: 'Météo',
+    features: 'Fonctions',
+    pricing: 'Tarifs',
+    faq: 'Questions',
+    articles: 'Articles',
+    getApp: 'Obtenir l’app',
+    menu: 'Menu',
+    language: 'Langue',
+  },
+  hero: {
+    badge: "Version {v} — partage d’événements et de calendriers",
+    title: ['Votre agenda.', 'Votre ciel.', 'Une seule vue.'],
+    lead: "Consultez les agendas iCloud et Google sélectionnés sur iPhone et iPad, avec les prévisions disponibles à côté de vos projets. Premium ajoute la connexion aux agendas Microsoft.",
+    seeItMove: 'Le voir en mouvement',
+    onTheAppStore: 'sur l’App Store',
+    freeToStart: "Télécharger gratuitement",
+    scroll: 'Défiler',
+    ratingLabel: '{r} sur 5 à partir de {n} notes sur l’App Store',
+    altMonth: 'Vue mensuelle de Cloud Calendars avec un repère sur chaque jour occupé',
+    altDay:
+      'Vue journalière de Cloud Calendars, grille horaire avec la météo à côté de chaque heure',
+    altWeather: 'Pôle météo de Cloud Calendars avec prévisions horaires et à dix jours',
+  },
+  marquee: [
+    'iCloud',
+    'Google Agenda',
+    'Microsoft Outlook',
+    'Prévisions horaires',
+    'Widgets sur l’écran d’accueil',
+    'Activités en direct',
+    'Liens Google Meet',
+    'Liens Microsoft Teams',
+    'Jour · Semaine · Mois · Année',
+    'Glisser pour déplacer',
+    'Vent et rafales',
+    "Calendriers locaux",
+  ],
+  showcase: {
+    eyebrow: 'La visite',
+    title: ['Cinq façons de regarder', 'la même semaine.'],
+    lead: "Choisissez une vue d’ensemble ou une chronologie détaillée, avec la météo disponible dans les vues compatibles.",
+    panels: [
+      {
+        kicker: 'Vue journalière',
+        title: 'Le plan heure par heure, avec le ciel attaché',
+        body: "Comparez vos rendez-vous aux prévisions horaires disponibles dans la même grille. Pour une sortie, vérifiez le lieu sélectionné et la date des prévisions.",
+        alt: 'Vue journalière avec grille horaire, événements et icônes météo par heure',
+        bullets: ['Ligne « maintenant » en direct', 'Température horaire', 'Glisser pour déplacer'],
+      },
+      {
+        kicker: 'Vue hebdomadaire',
+        title: 'Une semaine entière réellement lisible',
+        body: "Comparez les rendez-vous de la semaine avec les prévisions météo quotidiennes disponibles. Tournez l’appareil en mode paysage pour élargir la vue. Déplacez les événements modifiables vers un autre jour et, pour un événement récurrent, vérifiez quelles occurrences modifier.",
+        alt: 'Vue hebdomadaire avec des colonnes journalières portant chacune un résumé météo',
+        bullets: [
+          'Portrait et paysage',
+          'Maximum / minimum du jour',
+          'Glisser d’un jour à l’autre',
+        ],
+      },
+      {
+        kicker: 'Plusieurs agendas',
+        title: 'Le travail et la vie côte à côte plutôt qu’empilés',
+        body: "Comparez les projets professionnels et personnels dans les colonnes d’agendas disponibles. Vérifiez les agendas sélectionnés : une vue filtrée ne suffit pas à établir qu’un créneau est libre.",
+        alt: 'Vue journalière multi-agendas, chaque agenda dans sa propre colonne',
+        bullets: ['Une colonne par agenda', 'Codé par couleur', 'Chaque source masquable'],
+      },
+      {
+        kicker: 'Mois et année',
+        title: 'Reculez assez pour voir la forme des choses',
+        body: "Comparez les événements des calendriers sélectionnés sur le mois ou l’année. Ouvrez un jour pour examiner tous ses rendez-vous avant de le considérer comme libre.",
+        alt: 'Vue mensuelle avec des indicateurs d’événement sur chaque jour',
+        bullets: [
+          'Densité d’un coup d’œil',
+          'Douze mois d’un bloc',
+          'Aller à n’importe quelle date',
+        ],
+      },
+      {
+        kicker: 'Vue en liste',
+        title: 'Quand vous voulez juste savoir ce qui vient',
+        body: 'Un agenda chronologique et net. Pas de grille, pas de colonnes — juste la prochaine chose, puis celle d’après.',
+        alt: 'Vue en liste présentant les événements dans l’ordre chronologique',
+        bullets: ['Chronologique', 'Rien à décoder', 'Recherche depuis ici'],
+      },
+    ],
+  },
+  widgets: {
+    eyebrow: 'Nouveau en {v}',
+    title: ["Votre agenda,","en un coup d’œil."],
+    lead: "Choisissez des widgets de date et météo ou des listes de prochains rendez-vous. Une activité en direct distincte ajoute un compte à rebours.",
+    newIn: 'Nouveau en',
+    items: [
+      {
+        title: 'Trois tailles de widget',
+        body: "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app.",
+      },
+      {
+        title: 'Activité en direct sur l’écran verrouillé',
+        body: "Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
+      },
+      {
+        title: "Des rappels à votre choix",
+        body: "Choisissez les rappels et les réglages de notification. Vérifiez le trajet et les prévisions dans l’app.",
+      },
+    ],
+  },
+  weather: {
+demoLabel: "Démonstration du site · Open-Meteo. L’app utilise Apple WeatherKit ; les dates disponibles peuvent varier.",
+loadingLabel: "Chargement de la météo du lieu sélectionné…",
+tabs: {"hourly":"Par heure","daily":"Par jour","weekend":"Week-end","range":"Période des prévisions"},
+
+    eyebrow: 'Pôle météo',
+    title: ['Une station météo,', 'garée dans votre agenda.'],
+    lead: "Consultez la météo à côté de vos projets dans l’app. Cette démonstration du site utilise Open-Meteo ; l’app utilise Apple WeatherKit, avec les prévisions horaires et quotidiennes disponibles pour le lieu sélectionné.",
+    searchLabel: 'Rechercher une ville',
+    searchPlaceholder: 'Essayez une autre ville — n’importe où',
+    searching: 'Recherche…',
+    alt: 'Pôle météo affichant la température actuelle, la courbe horaire et la prévision à dix jours',
+    unavailable: "Données d’exemple pour cette démonstration, et non prévisions actuelles du lieu sélectionné.",
+    liveFrom: "Démonstration du site · Open-Meteo · à {t}.",
+    tapAnHour: "Dans l’app, choisissez une heure disponible dans les prévisions pour commencer un brouillon d’événement, puis vérifiez son heure et son calendrier.",
+    readings: {
+      feelsLike: 'Deux degrés sous la valeur réelle — c’est le vent.',
+      precipitation: 'Une bande passe entre 16 h et 19 h.',
+      uv: 'Élevé vers midi. Se couvrir entre 11 h et 15 h.',
+      wind: 'Ouest-sud-ouest, rafales jusqu’à 17 en fin d’après-midi.',
+      humidity: 'Point de rosée 13° — confortable.',
+      pressure: 'En hausse régulière depuis l’aube.',
+    },
+  },
+  features: {
+    eyebrow: 'Tout le reste',
+    title: ['Conçu pour le déroulé', 'd’une vraie semaine.'],
+    lead: 'Trois comptes, une grille, et des gestes qui se comportent comme vos mains s’y attendent.',
+    unified: {
+      title: 'Trois comptes. Une grille.',
+      body: "Consultez ensemble les calendriers iCloud et Google sélectionnés ; Premium ajoute les calendriers Microsoft. Modifiez selon les autorisations de votre compte et vérifiez le calendrier source après les changements.",
+    },
+    gestures: {
+      title: "Glissez. Ajustez la durée. Vérifiez.",
+      body: "Déplacez les événements modifiables vers une autre heure ou un autre jour, ou ajustez leur durée dans la chronologie. Pour un événement récurrent, choisissez les occurrences à modifier et vérifiez le résultat enregistré.",
+    },
+    tiles: [
+      {
+        title: "Meet · Teams",
+        body: "Liens Google Meet · Liens Microsoft Teams",
+        badge: 'Meet · Teams',
+      },
+      {
+        title: 'Transformer une prévision en plan',
+        body: "Choisissez une heure de prévision disponible pour commencer un brouillon d’événement, puis vérifiez sa date, son heure et son calendrier avant d’enregistrer.",
+        badge: 'Une touche',
+      },
+      {
+        title: "Calendriers locaux",
+        body: "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
+        badge: "Calendriers locaux",
+      },
+    ],
+    sourceNotes: {
+      builtIn: 'Intégré',
+      twoWay: "Connecté",
+      premium: 'Premium',
+    },
+  },
+  pricing: {
+    eyebrow: 'Tarifs',
+    title: ['Gratuit veut vraiment', 'dire gratuit.'],
+    lead: 'La synchronisation iCloud, celle de Google, toutes les vues, le pôle météo complet et tous les widgets ne coûtent rien. Ne payez que si vous voulez faire disparaître la publicité ou ajouter votre agenda Microsoft.',
+    monthly: 'Mensuel',
+    yearly: 'Annuel',
+    saveMore: 'économisez plus',
+    billingPeriod: 'Période de facturation',
+    mostPopular: "Formule mise en avant",
+    everythingIn: 'Tout ce que contient {tier}, plus :',
+    forever: "offre gratuite",
+    perMonth: '/ mois',
+    perYear: '/ an',
+    downloadFree: 'Télécharger gratuitement',
+    startWith: 'Commencer avec {tier}',
+    note: "Les abonnements se renouvellent automatiquement via votre compte Apple. Vérifiez le prix local et la période de facturation avant l’achat. Gérez la résiliation dans Réglages, sous votre nom → Abonnements.",
+    plans: {
+      free: {
+        name: 'Gratuit',
+        tagline: 'Tout ce qu’il faut pour mener votre semaine.',
+        features: [
+          'Vues Jour, Semaine, Mois, Année et Liste',
+          'Synchronisation de l’agenda iCloud',
+          'Synchronisation de Google Agenda',
+          'Pôle météo complet et prévisions dans l’agenda',
+          'Widgets sur l’écran d’accueil',
+          'Liens Google Meet sur les événements',
+          'Glisser, déposer et redimensionner les événements',
+        ],
+      },
+      advanced: {
+        name: 'Advanced',
+        tagline: "Aucune publicité, nulle part",
+        yearlyNote: '15 % d’économie à l’année',
+        features: ["Aucune publicité, nulle part"],
+      },
+      premium: {
+        name: 'Premium',
+        tagline: 'Pour les agendas professionnels qui vivent chez Microsoft.',
+        yearlyNote: '16 % d’économie à l’année',
+        features: ["Microsoft Calendar","Liens Microsoft Teams"],
+      },
+    },
+  },
+  faq: {
+    eyebrow: 'Questions',
+    title: ['Ce que les gens', 'demandent en premier.'],
+    lead: 'Toujours bloqué ? Tout ce qui touche au traitement des données est écrit dans la {link}.',
+    privacyLink: 'politique de confidentialité',
+    items: [
+      {
+        q: 'Ai-je besoin d’un compte pour utiliser Cloud Calendars ?',
+        a: "Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
+      },
+      {
+        q: 'La synchronisation avec Google Agenda est-elle vraiment gratuite ?',
+        a: "Google Calendar et Google Meet sont inclus dans l’offre gratuite. Advanced supprime les publicités ; Premium ajoute Microsoft Calendar et Teams.",
+      },
+      {
+        q: 'D’où viennent les données météo ?',
+        a: "L’app utilise Apple WeatherKit pour votre position actuelle ou le lieu sélectionné. Vérifiez les dates et heures disponibles ; la liste quotidienne affiche jusqu’à dix jours reçus. La démonstration du site utilise Open-Meteo et peut couvrir une autre période.",
+      },
+      {
+        q: 'Puis-je modifier un événement en le faisant glisser ?',
+        a: "Vous pouvez déplacer les événements modifiables et ajuster leur durée dans la chronologie. Vérifiez le choix des occurrences et l’heure enregistrée ; les mises à jour des calendriers connectés dépendent des autorisations et d’une synchronisation réussie.",
+      },
+      {
+        q: 'Que montrent les widgets ?',
+        a: "Les petits et moyens formats affichent date et météo. Les listes moyennes et grandes montrent les rendez-vous horaires à venir ; consultez les journées entières dans l’app. Utilisez l’activité en direct sur les appareils compatibles. Les mises à jour peuvent prendre du temps ; vérifiez les changements dans l’app.",
+      },
+      {
+        q: 'Quels appareils sont pris en charge ?',
+        a: "iPhone / iPad · iOS / iPadOS 18+",
+      },
+      {
+        q: 'Comment résilier un abonnement ?',
+        a: "Sur iPhone ou iPad, ouvrez Réglages, touchez votre nom, puis Abonnements. Choisissez Cloud Calendars et résiliez à cet endroit ; vérifiez l’état de résiliation ou d’expiration affiché par Apple.",
+      },
+    ],
+  },
+  cta: {
+    title: [
+  "Préparez le lendemain.",
+  "Consultez les prévisions disponibles."
+],
+    lead: "Télécharger gratuitement. Utilisez les calendriers locaux sans compte. La connexion de services de calendrier et le partage peuvent nécessiter une connexion à un compte.",
+    fromRatings: 'sur {n} notes',
+    download: 'de téléchargement',
+    requiresIos: 'nécessite iOS {v}',
+    alt: 'Vue hebdomadaire de Cloud Calendars avec la météo en tête de chaque jour',
+  },
+  footer: {
+  "tagline": "Vos agendas et la prévision, au même endroit. Conçu pour iPhone et iPad.",
+  "product": "Produit",
+  "legal": "Mentions légales",
+  "app": "Application",
+  "privacy": "Politique de confidentialité",
+  "terms": "Conditions d’utilisation",
+  "eula": "CLUF Apple",
+  "version": "Version {v}",
+  "iosOrLater": "iOS {v} ou ultérieur",
+  "viewOnStore": "Voir sur l’App Store",
+  "rights": "© {year} {developer}. Tous droits réservés.",
+  "weatherBy": "Météo en direct par",
+  "emailSupport": "Contacter l’assistance"
+},
+};

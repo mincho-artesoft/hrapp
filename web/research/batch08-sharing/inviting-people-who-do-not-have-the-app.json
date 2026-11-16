@@ -1,0 +1,94 @@
+{
+  "updated": "2026-10-21",
+  "title": "Sharing an event with someone who does not have Cloud Calendars",
+  "short": "Sharing without the app",
+  "description": "Understand event previews, App Clips, full-app imports and ICS subscriptions before sending an invitation to someone who does not use Cloud Calendars.",
+  "lede": "Someone may only need to read the time and place, while another person needs an updating calendar entry or editing access. Those needs lead to different recipient experiences. This guide is written by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "Any invitation link can instantly add an updating event on every phone without an app, account or permission.",
+  "sections": [
+    {
+      "heading": "1. Ask what the recipient needs to do",
+      "body": [
+        "A preview, a saved calendar entry, a subscription and permission to edit are different results. Tell the recipient what you are sending and what you expect them to do. A short explanation is more useful than promising that every calendar will handle the same link identically.",
+        "For a friend checking a venue, a preview may be enough. For a co-organizer changing the time, a preview is insufficient. For a guest whose attendance matters, ask for an explicit reply rather than assuming that opening the link confirms attendance."
+      ]
+    },
+    {
+      "heading": "2. Know what the App Clip actually offers",
+      "body": [
+        "On a supported iPhone, an App Clip can provide a small experience without downloading the full app. Cloud Calendars uses its event App Clip as a preview. Its action points to downloading Cloud Calendars to add the event to a calendar.",
+        "That distinction matters when choosing your wording: “preview the event” is accurate; “add it with no installation” is not a promise this flow supports. Availability also depends on the device and how the link is opened, so do not promise an immediate App Clip launch on every platform."
+      ]
+    },
+    {
+      "heading": "3. Explain email and QR links separately",
+      "body": [
+        "Cloud Calendars email and QR event invitations open a web preview route with an option to open the full app. They are not simply another way of invoking the App Clip. A calendar invitation has its own preview and opens the app to add the shared calendar.",
+        "If someone cannot continue, first identify what opened: a browser preview, the App Clip or the full app. Then check what action they want to complete. Repeatedly sending the same link will not change a device’s available app or permissions."
+      ]
+    },
+    {
+      "heading": "4. Adding an event has additional requirements",
+      "body": [
+        "The full-app event import needs calendar access and an available writable calendar. The recipient chooses where the copy belongs. Some event reception can be recorded anonymously; that does not grant the identified Writer or Owner role assigned to an email address.",
+        "For an email invitation with editing access, use the intended account identity. Whole-calendar acceptance requires a signed-in account with a verified email identity. Do not apply the single-event preview’s low-friction behavior to every sharing operation."
+      ]
+    },
+    {
+      "heading": "5. Use the right instructions for ICS",
+      "body": [
+        "A genuine ICS file or calendar feed is different from a Cloud Calendars invitation page. Outlook distinguishes importing a file from subscribing to a URL: importing creates a copy; subscribing can receive later updates on the client’s schedule. Do not paste an arbitrary invitation page into a subscription field and expect it to behave as a feed.",
+        "Google also documents limitations for imported events, including lack of continued synchronization and omitted guest or conference data. If the recipient chooses a provider import route, check the time, location and call link afterward. Do not promise that all invitation features survive the conversion."
+      ]
+    },
+    {
+      "heading": "6. Choose a practical fallback",
+      "body": [
+        "If the recipient only needs the details, include the date, time zone, place and an explicit way to reply in your message. If they need a normal provider meeting invitation, use the organizer’s approved calendar invitation workflow. Keep that distinct from sharing an app preview.",
+        "For later changes, update the source and notify the person through a channel they use. A recipient who chose a standalone copy may need to update it manually. Check the outcome with one person before circulating a schedule to a larger group."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Ask whether the recipient needs a preview, a saved event, updates or editing access.",
+    "Name the route you are sending instead of calling every URL a subscription.",
+    "Explain that the Cloud Calendars App Clip previews and the full app adds the event.",
+    "For elevated email access, check the intended sign-in identity.",
+    "If using ICS, distinguish a one-time import from a supported feed subscription.",
+    "Include a direct reply method and communicate urgent changes separately."
+  ],
+  "faq": [
+    {
+      "q": "Can someone without Cloud Calendars see the event?",
+      "a": "A supported App Clip or web invitation preview can show details without the full app. That does not mean the preview adds the event, grants editing access or works identically on every device."
+    },
+    {
+      "q": "Is every Cloud Calendars link an ICS subscription?",
+      "a": "No. App Clip links, email or QR landing pages, app deep links and ICS feed URLs serve different purposes. Use a feed only where a calendar application asks for a subscription URL."
+    },
+    {
+      "q": "Can I promise that an imported file will stay updated?",
+      "a": "No. A file import is a copy. A subscription can refresh, but its timing depends on the receiving client. Check which action the recipient actually completed."
+    }
+  ],
+  "sourcesHeading": "Recipient platform references",
+  "sources": [
+    {
+      "label": "Apple: overview of App Clips",
+      "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+    },
+    {
+      "label": "Google: importing events and its limitations",
+      "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "Microsoft: importing versus subscribing to a calendar",
+      "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+    }
+  ],
+  "seeAlso": [
+    "sharing-one-event-not-your-calendar",
+    "a-calendar-that-is-yours-to-share"
+  ]
+}

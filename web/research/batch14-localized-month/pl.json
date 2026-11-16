@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Kalendarz miesięczny na iPadzie i iPhonie: wybierz daty, potem sprawdź szczegóły",
+  "short": "Widok miesiąca bez pomijania szczegółów",
+  "description": "Porównuj daty na iPadzie i iPhonie. Przed przeniesieniem wspólnych lub cyklicznych spotkań sprawdź ukryte wydarzenia, kalendarze i godziny.",
+  "lede": "Widok miesiąca pokazuje, na które daty przypadają zobowiązania. Gorzej nadaje się do potwierdzenia, że konkretna godzina jest wolna. Wybierz datę w przeglądzie, a przed ustaleniem terminu sprawdź dzień i wydarzenie. Poradnik publikuje Arte Soft, twórca Cloud Calendars.",
+  "commonBelief": "Większa siatka miesiąca pokazuje każdy szczegół, a pozornie pusta data dowodzi, że wszyscy są dostępni.",
+  "sections": [
+    {
+      "heading": "Ustal, czy potrzebujesz dat, czy dokładnych godzin",
+      "body": [
+        "Użyj miesiąca do porównania terminu projektu, podróży i rodzinnego spotkania na przestrzeni kilku tygodni. Gdy pytanie dotyczy nakładania się dwóch spotkań o 14:30, przejdź do widoku dnia lub tygodnia i sprawdź początek oraz koniec. Pole miesiąca nie ma takiej skali czasu jak siatka godzinowa.",
+        "Organizator warsztatu może najpierw wykluczyć tydzień podróży. Potem powinien sprawdzić proponowany dzień: wcześniejsze zobowiązania, przygotowanie, dojazd i wymagany czas zakończenia. Pozornie puste pole jest kandydatem do sprawdzenia, nie potwierdzoną rezerwacją ani informacją o dostępności innych osób."
+      ]
+    },
+    {
+      "heading": "Czytaj liczbę dodatkowych wydarzeń, nie tylko widoczne tytuły",
+      "body": [
+        "Obecnie pole miesiąca w Cloud Calendars pokazuje ograniczoną liczbę etykiet wydarzeń i dodatkowy licznik, gdy na ten dzień przypada ich więcej. Tytuły zajmują jeden wiersz, więc mogą być skrócone. Otwórz dzień lub wydarzenie, gdy ważny jest pełny tytuł albo pozostałe zobowiązania.",
+        "Większy ekran iPada może ułatwić czytanie, ale więcej miejsca nie musi usuwać wszystkich ograniczeń wyświetlania. Wąskie okno aplikacji lub większy tekst mogą zmienić to, co się mieści. Na iPhonie sprawdzaj tak samo: otwórz dzień, zanim uznasz widoczne etykiety za cały harmonogram."
+      ]
+    },
+    {
+      "heading": "Sprawdź miesiąc, wybrane kalendarze i sąsiednie daty",
+      "body": [
+        "Przed wyborem daty odczytaj wyświetlany miesiąc i rok. Siatka może zawierać daty sąsiedniego miesiąca, aby wypełnić wiersze. W Cloud Calendars używaj nawigacji miesięcznej i sprawdzaj wybraną datę, zamiast polegać wyłącznie na położeniu pola.",
+        "Sprawdź, które kalendarze są zaznaczone. Ukrycie wydarzeń służbowych ułatwia czytanie planu rodzinnego, ale usuwa te zobowiązania z tego przeglądu. Przy badaniu duplikatu tymczasowo ukryj jedno źródło i porównaj; nie usuwaj spotkania tylko po to, by miesiąc był mniej zatłoczony."
+      ]
+    },
+    {
+      "heading": "Otwórz wydarzenie przed zmianą wspólnych ustaleń",
+      "body": [
+        "W szczegółach potwierdź tytuł, właściciela lub kalendarz, czas lokalny i długość. Kolor pomaga przeglądać, ale nie zastępuje wiedzy o koncie ani prawie do edycji. Widoczne zaproszenie różni się od spotkania, które organizujesz samodzielnie.",
+        "Cloud Calendars pozwala przeciągać wydarzenia w miesiącu na inną datę. Przed użyciem tej funkcji dla rzeczywistego zobowiązania ustal docelową datę i zakres powtarzania. Po dozwolonej zmianie otwórz wydarzenie ponownie i sprawdź wynik; lokalny gest nie dowodzi, że dostawca lub wszyscy uczestnicy przyjęli nowe ustalenie."
+      ]
+    },
+    {
+      "heading": "Powtarzanie i strefy czasowe sprawdzaj osobno",
+      "body": [
+        "Jeśli przenosisz tylko lekcję z tego tygodnia, nie zmień przypadkowo przyszłego schematu. Odczytaj dostępny wybór zakresu powtarzania, a potem sprawdź zmienione i jedno późniejsze wystąpienie. Widok miesiąca ułatwia porównywanie dat, ale znaczenie zmiany określa zakres edycji.",
+        "Przy podróży lub spotkaniu między strefami czasowymi wyraźnie sprawdź lokalną datę i godzinę wydarzenia. Przeniesienie na inny dzień nie jest automatycznym przeliczeniem zamierzonej godziny spotkania. W razie potrzeby sprawdź zmianę czasu letniego i potwierdź uzgodnioną godzinę z zainteresowanymi."
+      ]
+    },
+    {
+      "heading": "Korzystaj z większego widoku, nie myląc produktów",
+      "body": [
+        "Kalendarz Apple ma własne opcje miesiąca, a Teamup opisuje inne zestawy widoków w przeglądarce i aplikacji mobilnej. Te ustawienia należą do odpowiednich produktów. Nie szukaj konfiguracji przeglądarkowej Teamup ani menu widoków Kalendarza Apple w Cloud Calendars tylko dlatego, że układy mają tę samą nazwę.",
+        "Miesiąc spotkań nie oznacza też miesiąca prognoz pogody. Dla planu na zewnątrz osobno sprawdź miejsce, datę i dostępne godziny prognozy. Zapisz ostateczne spotkanie we właściwym kalendarzu, a zmienione ustalenia potwierdź bezpośrednio z uczestnikami."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Wybierz potencjalne daty w miesiącu, a dokładne godziny sprawdź w widoku dnia lub tygodnia.",
+    "Otwieraj dni z dodatkowym licznikiem lub skróconymi tytułami.",
+    "Zanim uznasz datę za wolną, sprawdź miesiąc, rok i wybrane kalendarze.",
+    "Potwierdź kalendarz wydarzenia, godzinę, długość i prawo do edycji.",
+    "Przeczytaj zakres powtarzania i po przeniesieniu sprawdź zapisane wystąpienie.",
+    "Osobno sprawdź dostępność pogody i potwierdź zmiany z uczestnikami."
+  ],
+  "faq": [
+    {
+      "q": "Czy miesięczny widok iPada pokazuje każde spotkanie w całości?",
+      "a": "Nie zakładaj tego. Cloud Calendars ogranicza etykiety wydarzeń w polu miesiąca i pokazuje dodatkowy licznik. Otwórz dzień i wydarzenie, aby sprawdzić pełny plan."
+    },
+    {
+      "q": "Czy pusty dzień oznacza, że mam wolne?",
+      "a": "Najpierw sprawdź wybrane kalendarze, datę i obecność danych odpowiednich kont. Przegląd przedstawia tylko informacje obecnie dostępne i wyświetlane."
+    },
+    {
+      "q": "Czy przeniesienie wydarzenia cyklicznego zmienia tylko tę datę?",
+      "a": "Przeczytaj wybór zakresu edycji, zamiast zgadywać. Po zapisaniu sprawdź zmienione i jedno późniejsze wystąpienie, a następnie potwierdź zamierzone ustalenia."
+    }
+  ],
+  "sourcesHeading": "Porównaj oficjalne opisy widoków",
+  "sources": [
+    {
+      "label": "Apple: widok miesiąca, wielu dni i listy w Kalendarzu Apple",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: widoki kalendarza i konfiguracja w przeglądarce oraz aplikacji",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "weather-inside-your-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

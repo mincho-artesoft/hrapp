@@ -1,0 +1,249 @@
+{
+  "retrievedAt": "2026-10-21T16:18:01.394448+00:00",
+  "requested": [
+    "bg",
+    "nl-NL",
+    "pt-BR",
+    "pt-PT",
+    "pl",
+    "sv",
+    "tr",
+    "zh-Hans"
+  ],
+  "absentRequested": [
+    "bg"
+  ],
+  "substitution": "bg absent from fresh appInfo/version locale intersection; zh-Hant substituted. This is evidence of this app state, not a universal assertion about locale support.",
+  "prepared": 8,
+  "applied": 8,
+  "confidence": "medium; no native-speaker review",
+  "locales": [
+    {
+      "locale": "zh-Hant",
+      "name": "Cloud Calendars: 行事曆",
+      "subtitle": "天氣、日程安排與主畫面小工具",
+      "counts": {
+        "name": {
+          "characters": 20,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "characters": 14,
+          "utf8Bytes": 42
+        },
+        "keywords": {
+          "characters": 47,
+          "utf8Bytes": 113
+        },
+        "promotionalText": {
+          "characters": 53,
+          "utf8Bytes": 149
+        },
+        "description": {
+          "characters": 788,
+          "utf8Bytes": 1566
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "nl-NL",
+      "name": "Cloud Calendars: Agenda",
+      "subtitle": "Weer, afspraken en widgets",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "characters": 98,
+          "utf8Bytes": 98
+        },
+        "promotionalText": {
+          "characters": 147,
+          "utf8Bytes": 147
+        },
+        "description": {
+          "characters": 1763,
+          "utf8Bytes": 1766
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "pt-BR",
+      "name": "Cloud Calendars: Calendário",
+      "subtitle": "Clima, compromissos e widgets",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 28
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 29
+        },
+        "keywords": {
+          "characters": 90,
+          "utf8Bytes": 94
+        },
+        "promotionalText": {
+          "characters": 141,
+          "utf8Bytes": 145
+        },
+        "description": {
+          "characters": 1756,
+          "utf8Bytes": 1803
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "pt-PT",
+      "name": "Cloud Calendars: Agenda",
+      "subtitle": "Meteorologia, planos e widgets",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 30,
+          "utf8Bytes": 30
+        },
+        "keywords": {
+          "characters": 91,
+          "utf8Bytes": 96
+        },
+        "promotionalText": {
+          "characters": 150,
+          "utf8Bytes": 154
+        },
+        "description": {
+          "characters": 1794,
+          "utf8Bytes": 1842
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "pl",
+      "name": "Cloud Calendars: Kalendarz",
+      "subtitle": "Pogoda, terminy i widżety",
+      "counts": {
+        "name": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "characters": 25,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "characters": 99,
+          "utf8Bytes": 102
+        },
+        "promotionalText": {
+          "characters": 131,
+          "utf8Bytes": 136
+        },
+        "description": {
+          "characters": 1661,
+          "utf8Bytes": 1731
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "sv",
+      "name": "Cloud Calendars: Kalender",
+      "subtitle": "Väder, möten och widgetar",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "characters": 25,
+          "utf8Bytes": 27
+        },
+        "keywords": {
+          "characters": 85,
+          "utf8Bytes": 88
+        },
+        "promotionalText": {
+          "characters": 132,
+          "utf8Bytes": 137
+        },
+        "description": {
+          "characters": 1637,
+          "utf8Bytes": 1684
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "tr",
+      "name": "Cloud Calendars: Takvim",
+      "subtitle": "Hava durumu ve günlük planlar",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 31
+        },
+        "keywords": {
+          "characters": 92,
+          "utf8Bytes": 101
+        },
+        "promotionalText": {
+          "characters": 151,
+          "utf8Bytes": 168
+        },
+        "description": {
+          "characters": 1749,
+          "utf8Bytes": 1869
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "zh-Hans",
+      "name": "Cloud Calendars: 日历",
+      "subtitle": "天气、日程安排与主屏幕小组件",
+      "counts": {
+        "name": {
+          "characters": 19,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 14,
+          "utf8Bytes": 42
+        },
+        "keywords": {
+          "characters": 44,
+          "utf8Bytes": 106
+        },
+        "promotionalText": {
+          "characters": 48,
+          "utf8Bytes": 144
+        },
+        "description": {
+          "characters": 771,
+          "utf8Bytes": 1539
+        }
+      },
+      "ready": true
+    }
+  ],
+  "editorialChange": "Root added localized local-price and billing-period purchase guidance after full proposal reading.",
+  "evidence": "applied.json",
+  "submission": "not_performed"
+}

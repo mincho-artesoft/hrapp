@@ -1,0 +1,580 @@
+{
+  "checkedAt": "2026-10-23T09:06:17.154239+00:00",
+  "scope": "Independent sitemap recount and 11 small page-language/canonical spot-checks for Morgen, Motion and Readdle. No full page crawl or search-index count. OneCal handled separately by root.",
+  "targetUnchanged": {
+    "englishArticlesTarget": 1100,
+    "currentEnglishArticles": 73,
+    "newEnglishArticlesNeeded": 1027,
+    "note": "The requested target is retained. Competitor URL totals do not establish that 1100 articles are necessary or sufficient for rankings."
+  },
+  "interpretation": "Exact sitemap URL counts and path classification are distinguished from bounded English-content candidates. A URL is not automatically an article, an indexed page, a distinct canonical, or a distinct intent. html lang checks are samples, not full language certification.",
+  "competitors": {
+    "morgen": {
+      "sitemaps": [
+        "https://www.morgen.so/sitemap.xml"
+      ],
+      "totalSitemapUrls": 1546,
+      "languagePathDistribution": {
+        "pt": 254,
+        "de": 256,
+        "fr": 255,
+        "es": 256,
+        "it": 255,
+        "unprefixed": 270
+      },
+      "unprefixedCandidates": 270,
+      "englishLeafContentPathCandidates": {
+        "blog-posts": 81,
+        "guides": 60,
+        "total": 141
+      },
+      "allLanguageLeafContentUrls": {
+        "blog-posts": 428,
+        "guides": 360,
+        "total": 788
+      },
+      "normalizedPathsAfterRemovingKnownLanguagePrefix": 302,
+      "normalizationIsCanonicalDeduplication": false,
+      "englishLanguageEvidence": "Home, one blog post and one guide declare html lang en-US and self canonical; German home declares de. Site language signals support the unprefixed English classification, but only sampled pages were verified.",
+      "boundedEnglishCounts": {
+        "confirmedEnglishSamplePages": 3,
+        "englishPathContentCandidatesUpperBound": 141,
+        "allUnprefixedPagesUpperBound": 270
+      },
+      "correction": "1546 URLs include 1276 de/es/fr/it/pt variants. The reported804 is not an English article count. The checked blog+guide leaf set is141 unprefixed candidates; all-language set788, with16-URL difference from reported804 unexplained by this bounded recount."
+    },
+    "motion": {
+      "sitemaps": [
+        "https://www.usemotion.com/sitemap.xml",
+        "https://www.usemotion.com/help/sitemap.xml",
+        "https://www.usemotion.com/sitemap-0.xml",
+        "https://www.usemotion.com/help/sitemap-pages.xml"
+      ],
+      "mainSitemapUrls": 947,
+      "helpSitemapUrls": 176,
+      "combinedUniqueSitemapUrls": 1123,
+      "mainPathKinds": {
+        "": 1,
+        "about": 1,
+        "blog": 909,
+        "careers": 1,
+        "compare": 4,
+        "download": 1,
+        "features": 11,
+        "legal": 6,
+        "pricing": 1,
+        "resources": 1,
+        "security": 1,
+        "use-cases": 10
+      },
+      "blogClassification": {
+        "allBlogUrlsIncludingHub": 909,
+        "tagUrls": 73,
+        "paginationUrls": 52,
+        "blogHub": 1,
+        "blogLeafPathCandidates": 783
+      },
+      "helpClassification": "176 help URLs include the help homepage and navigation/category pages as well as documentation; not asserted as176 articles.",
+      "canonicalCollisionConfirmed": {
+        "urls": [
+          "https://www.usemotion.com/blog/ai-calendar-assistant",
+          "https://www.usemotion.com/blog/ai-scheduling-assistant"
+        ],
+        "canonical": "https://www.usemotion.com/blog/ai-scheduling-assistant.html",
+        "bothAliasesInMainSitemap": true,
+        "bothPageSignalsVerified": true
+      },
+      "boundedEnglishCounts": {
+        "confirmedEnglishSamplePages": 4,
+        "blogLeafCandidatePaths": 783,
+        "uniqueCanonicalBlogArticlesUpperBoundAfterOneConfirmedCollision": 782,
+        "lowerBoundNotEstimatedFromSamples": true
+      },
+      "englishLanguageEvidence": "Three sampled blog URLs and one help article declare html lang en. Unprefixed alone was not used as full-language proof.",
+      "correction": "Reported925 blog/guides is not a verified distinct-English-article count: the main sitemap includes125 tag/pagination URLs, a blog hub and at least one confirmed duplicate canonical; the root also exposes an additional176-URL help sitemap."
+    },
+    "readdle": {
+      "sitemaps": [
+        "https://readdle.com/sitemap.xml",
+        "https://readdle.com/sitemap-de.xml",
+        "https://readdle.com/sitemap-en.xml",
+        "https://readdle.com/sitemap-es.xml",
+        "https://readdle.com/sitemap-fr.xml",
+        "https://readdle.com/sitemap-it.xml",
+        "https://readdle.com/sitemap-ja.xml",
+        "https://readdle.com/sitemap-pt.xml",
+        "https://readdle.com/sitemap-uk.xml",
+        "https://readdle.com/sitemap-zh.xml"
+      ],
+      "totalLanguageSitemapUrls": 1825,
+      "uniqueLanguageSitemapUrls": 1825,
+      "explicitEnglishSitemapUrls": 513,
+      "languageSitemapCounts": {
+        "sitemap-de.xml": 166,
+        "sitemap-en.xml": 513,
+        "sitemap-es.xml": 164,
+        "sitemap-fr.xml": 164,
+        "sitemap-it.xml": 164,
+        "sitemap-ja.xml": 164,
+        "sitemap-pt.xml": 163,
+        "sitemap-uk.xml": 163,
+        "sitemap-zh.xml": 164
+      },
+      "englishPathKinds": {
+        "blog": 439,
+        "calendars": 11,
+        "careers": 1,
+        "about": 1,
+        "": 1,
+        "donation": 1,
+        "11years": 1,
+        "13yearsVideos": 1,
+        "14yearsVideos": 1,
+        "documents": 1,
+        "scannerpro": 35,
+        "stand-with-ukraine": 1,
+        "no-service-russia": 1,
+        "check-cancel-app-subscriptions-tutorial": 1,
+        "create-apple-id-tutorial": 1,
+        "delete-app-tutorial": 1,
+        "instantly-turn-into-flashlight-tutorial": 1,
+        "manage-apple-id-account-tutorial": 1,
+        "move-backups-external-hard-drive-tutorial": 1,
+        "remove-activation-lock-tutorial": 1,
+        "remove-sim-card-tutorial": 1,
+        "reset-iphone-ipad-before-selling-tutorial": 1,
+        "reset-mac-before-selling-tutorial": 1,
+        "set-up-and-use-touch-face-id-tutorial": 1,
+        "set-up-mail-contacts-calendars-iphone-tutorial": 1,
+        "use-emoji-on-mac-tutorial": 1,
+        "view-delete-old-backups-icloud-tutorial": 1,
+        "take-screenshot-tutorial": 1,
+        "wipe-personal-data-erase-iphone-ipad-tutorial": 1,
+        "erase-iphone-ipad-mac-with-find-my-app-tutorial": 1,
+        "control-center-hidden-features-tutorial": 1
+      },
+      "englishLeafPathCandidates": {
+        "blogAllReaddleProducts": 438,
+        "calendarsProductAndHowTo": 10,
+        "scannerproProductAndHowTo": 34
+      },
+      "boundedEnglishCounts": {
+        "confirmedEnglishSamplePages": 2,
+        "allEnglishSitemapUrlsUpperBound": 513,
+        "allProductBlogLeafUrlsUpperBound": 438,
+        "calendarsSpecificLeafUrlsUpperBound": 10
+      },
+      "englishLanguageEvidence": "Explicit sitemap-en.xml plus sampled blog and Calendars how-to html lang en; German home declares de. The sampled blog is about PDF Expert, demonstrating that the blog volume is not Calendars-only.",
+      "scopeExclusion": "Separate support.readdle.com documentation is not counted; calendar-related blog posts require content relevance classification and were not inferred from the whole blog.",
+      "correction": "1825 URLs are across9 language maps;513 is all English Readdle pages, not513 calendar articles. Blog leaf count438 covers all Readdle apps; Calendars section has10 leaf URLs plus its product index."
+    }
+  },
+  "pageSignals": [
+    {
+      "url": "https://www.morgen.so",
+      "finalUrl": "https://www.morgen.so",
+      "status": 200,
+      "htmlLang": "en-US",
+      "canonical": [
+        "https://www.morgen.so/"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "en-US",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it"
+        },
+        {
+          "lang": "en",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/"
+        }
+      ],
+      "title": "Morgen: AI Daily Planner for Calendars & Tasks",
+      "bytesExamined": 175997
+    },
+    {
+      "url": "https://www.morgen.so/blog-posts/10-sunsama-alternatives-in-2025",
+      "finalUrl": "https://www.morgen.so/blog-posts/10-sunsama-alternatives-in-2025",
+      "status": 200,
+      "htmlLang": "en-US",
+      "canonical": [
+        "https://www.morgen.so/blog-posts/10-sunsama-alternatives-in-2025"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "en-US",
+          "url": "https://www.morgen.so/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es/blog-posts/10-sunsama-alternatives-in-2025"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it/blog-posts/10-sunsama-alternatives-in-2025"
+        }
+      ],
+      "title": "11 Sunsama Alternatives in 2026",
+      "bytesExamined": 149674
+    },
+    {
+      "url": "https://www.morgen.so/guides/auto-schedule-travel-time",
+      "finalUrl": "https://www.morgen.so/guides/auto-schedule-travel-time",
+      "status": 200,
+      "htmlLang": "en-US",
+      "canonical": [
+        "https://www.morgen.so/guides/auto-schedule-travel-time"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "en-US",
+          "url": "https://www.morgen.so/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es/guides/auto-schedule-travel-time"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it/guides/auto-schedule-travel-time"
+        }
+      ],
+      "title": "Auto-schedule travel time  | Morgen",
+      "bytesExamined": 92062
+    },
+    {
+      "url": "https://www.morgen.so/de",
+      "finalUrl": "https://www.morgen.so/de",
+      "status": 200,
+      "htmlLang": "de",
+      "canonical": [
+        "https://www.morgen.so/de"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "en-US",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it"
+        },
+        {
+          "lang": "en",
+          "url": "https://www.morgen.so/"
+        },
+        {
+          "lang": "de",
+          "url": "https://www.morgen.so/de"
+        },
+        {
+          "lang": "es",
+          "url": "https://www.morgen.so/es"
+        },
+        {
+          "lang": "fr",
+          "url": "https://www.morgen.so/fr"
+        },
+        {
+          "lang": "it",
+          "url": "https://www.morgen.so/it"
+        },
+        {
+          "lang": "pt",
+          "url": "https://www.morgen.so/pt"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://www.morgen.so/"
+        }
+      ],
+      "title": "Morgen - Tagesplanung direkt in deinem Kalender",
+      "bytesExamined": 148400
+    },
+    {
+      "url": "https://www.usemotion.com/blog/2-2-3-schedule",
+      "finalUrl": "https://www.usemotion.com/blog/2-2-3-schedule",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://www.usemotion.com/blog/2-2-3-schedule.html"
+      ],
+      "alternateLanguages": [],
+      "title": "The 2-2-3 Schedule: A Detailed Guide | Motion | Motion",
+      "bytesExamined": 146769
+    },
+    {
+      "url": "https://www.usemotion.com/blog/ai-calendar-assistant",
+      "finalUrl": "https://www.usemotion.com/blog/ai-scheduling-assistant",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://www.usemotion.com/blog/ai-scheduling-assistant.html"
+      ],
+      "alternateLanguages": [],
+      "title": "5 best AI scheduling assistants (My tried and tested assistants) | Motion",
+      "bytesExamined": 154489
+    },
+    {
+      "url": "https://readdle.com/blog/pdf-expert-for-mac-13-brings-adjustable-tools-and-new-reading-modes",
+      "finalUrl": "https://readdle.com/blog/pdf-expert-for-mac-13-brings-adjustable-tools-and-new-reading-modes",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://readdle.com/blog/pdf-expert-for-mac-13-brings-adjustable-tools-and-new-reading-modes"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://readdle.com/blog/pdf-expert-for-mac-13-brings-adjustable-tools-and-new-reading-modes"
+        },
+        {
+          "lang": "en",
+          "url": "https://readdle.com/blog/pdf-expert-for-mac-13-brings-adjustable-tools-and-new-reading-modes"
+        }
+      ],
+      "title": "PDF Expert for Mac 1.3 Brings Adjustable Tools and New Reading Modes | Blog",
+      "bytesExamined": 32374
+    },
+    {
+      "url": "https://readdle.com/calendars/how-to-share-google",
+      "finalUrl": "https://readdle.com/calendars/how-to-share-google",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://readdle.com/calendars/how-to-share-google"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "x-default",
+          "url": "https://readdle.com/calendars/how-to-share-google"
+        },
+        {
+          "lang": "en",
+          "url": "https://readdle.com/calendars/how-to-share-google"
+        },
+        {
+          "lang": "de",
+          "url": "https://readdle.com/de/calendars/how-to-share-google"
+        },
+        {
+          "lang": "es",
+          "url": "https://readdle.com/es/calendars/how-to-share-google"
+        },
+        {
+          "lang": "fr",
+          "url": "https://readdle.com/fr/calendars/how-to-share-google"
+        },
+        {
+          "lang": "it",
+          "url": "https://readdle.com/it/calendars/how-to-share-google"
+        },
+        {
+          "lang": "ja",
+          "url": "https://readdle.com/ja/calendars/how-to-share-google"
+        },
+        {
+          "lang": "pt",
+          "url": "https://readdle.com/pt/calendars/how-to-share-google"
+        },
+        {
+          "lang": "zh",
+          "url": "https://readdle.com/zh/calendars/how-to-share-google"
+        },
+        {
+          "lang": "uk",
+          "url": "https://readdle.com/uk/calendars/how-to-share-google"
+        }
+      ],
+      "title": "How to Share Google Calendar on Your iPhone",
+      "bytesExamined": 36072
+    },
+    {
+      "url": "https://readdle.com/de",
+      "finalUrl": "https://readdle.com/de",
+      "status": 200,
+      "htmlLang": "de",
+      "canonical": [
+        "https://readdle.com/de"
+      ],
+      "alternateLanguages": [
+        {
+          "lang": "ru-RU",
+          "url": "https://readdle.com/no-service-russia"
+        },
+        {
+          "lang": "x-default",
+          "url": "https://readdle.com"
+        },
+        {
+          "lang": "en",
+          "url": "https://readdle.com"
+        },
+        {
+          "lang": "de",
+          "url": "https://readdle.com/de"
+        },
+        {
+          "lang": "es",
+          "url": "https://readdle.com/es"
+        },
+        {
+          "lang": "fr",
+          "url": "https://readdle.com/fr"
+        },
+        {
+          "lang": "it",
+          "url": "https://readdle.com/it"
+        },
+        {
+          "lang": "ja",
+          "url": "https://readdle.com/ja"
+        },
+        {
+          "lang": "pt",
+          "url": "https://readdle.com/pt"
+        },
+        {
+          "lang": "zh",
+          "url": "https://readdle.com/zh"
+        },
+        {
+          "lang": "uk",
+          "url": "https://readdle.com/uk"
+        }
+      ],
+      "title": "Die besten Produktivit\u00e4ts-Apps f\u00fcr iPhone, iPad und Mac | Readdle",
+      "bytesExamined": 62957
+    },
+    {
+      "url": "https://www.usemotion.com/blog/ai-scheduling-assistant",
+      "finalUrl": "https://www.usemotion.com/blog/ai-scheduling-assistant",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://www.usemotion.com/blog/ai-scheduling-assistant.html"
+      ],
+      "alternateLanguages": [],
+      "title": "5 best AI scheduling assistants (My tried and tested assistants) | Motion",
+      "bytesExamined": 154489
+    },
+    {
+      "url": "https://www.usemotion.com/help/getting-started/what-is-motion",
+      "finalUrl": "https://www.usemotion.com/help/getting-started/what-is-motion",
+      "status": 200,
+      "htmlLang": "en",
+      "canonical": [
+        "https://www.usemotion.com/help/getting-started/what-is-motion"
+      ],
+      "alternateLanguages": [],
+      "title": "What is Motion? | Help CenterGitBook AssistantGitBook Assistantarrow-up-right-and-arrow-down-left-from-centerGitBook AssistantGitBook Assistant",
+      "bytesExamined": 663958
+    }
+  ],
+  "limitations": [
+    "No exhaustive canonical crawl; canonical uniqueness remains an upper bound.",
+    "Sitemap inclusion does not prove current indexability or indexing.",
+    "Removing a locale prefix matches path variants but does not prove identical editorial intent.",
+    "Competitor ranking advantage cannot be inferred from content volume alone."
+  ],
+  "filesUsedFromOtherAgent": "Read /tmp/en_competitor_urls.json while available to compare candidate extraction; it was removed by another process before later spot-check, so final counts derive independently from fetched official sitemaps."
+}

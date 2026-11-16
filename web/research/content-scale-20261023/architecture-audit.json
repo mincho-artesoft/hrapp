@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-23",
+  "currentEnglishArticles": 73,
+  "englishTargetTotal": 1100,
+  "newArticlesNeeded": 1027,
+  "sourcePipeline": "Locale aggregates -> generated lightweight slug index -> lazy locale module -> Angular static prerender -> canonical/indexability-aware sitemap and llms generation",
+  "infrastructureImplemented": [
+    "Six English topic hubs with 24-card static pagination and ordinary links",
+    "Main English hub links topic hubs and reduces oversized family previews",
+    "Manifest gate for primary keyword/reader intent, verified primary citations, accountable editorial review, exact duplicates and substantial repeated wording review",
+    "Build fails on new source articles without approved manifest record"
+  ],
+  "scopeLimits": [
+    "No word-count requirement is treated as a quality guarantee",
+    "A validator cannot certify originality, source relevance, rankings, indexing or truthful test claims",
+    "English prose is currently one lazy locale chunk; reassess download size as the corpus grows, instead of loading thousands of cards on the main hub",
+    "No translated pages added; existing translations and privacy remain unchanged"
+  ],
+  "build": {
+    "passed": true,
+    "prerenderedRoutes": 714,
+    "sitemapUrls": 113,
+    "englishGuides": 73,
+    "internalLinkResolutionPassed": true
+  },
+  "topicChecks": [
+    {
+      "route": "/articles/topics/sharing/1/",
+      "articleLinks": 15,
+      "robots": "index,follow"
+    },
+    {
+      "route": "/articles/topics/unify/1/",
+      "articleLinks": 11,
+      "robots": "index,follow"
+    },
+    {
+      "route": "/articles/topics/planning/1/",
+      "articleLinks": 22,
+      "robots": "index,follow"
+    },
+    {
+      "route": "/articles/topics/compare/1/",
+      "articleLinks": 8,
+      "robots": "index,follow"
+    },
+    {
+      "route": "/articles/topics/weather/1/",
+      "articleLinks": 11,
+      "robots": "index,follow"
+    },
+    {
+      "route": "/articles/topics/widgets/1/",
+      "articleLinks": 6,
+      "robots": "index,follow"
+    }
+  ],
+  "allCurrentEnglishArticlesReachableFromTopicHubs": 73,
+  "translatedHubIndexingHoldVerified": [
+    "bg/articles/"
+  ],
+  "negativeChecks": {
+    "missingEditorialRecordRejected": true,
+    "duplicatePrimaryKeywordRejected": true
+  },
+  "media": "Uses existing S3-backed ShotRail; no local images or video created/downloaded",
+  "deployment": "Not deployed or committed by infrastructure agent"
+}

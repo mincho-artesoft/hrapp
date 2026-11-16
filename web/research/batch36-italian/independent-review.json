@@ -1,0 +1,207 @@
+{
+  "reviewedAt": "2026-10-22T04:09:41.206655+00:00",
+  "decision": "PASS — all three drafts",
+  "items": [
+    {
+      "slug": "free-google-sync-without-adverts",
+      "draft": "research/batch36-italian/free-google-sync-without-adverts.json",
+      "draftSha256": "a4a42e201f9c58ea62ae60258924bc99b9ce9a3a12e2bb77738bac7d457bfee2",
+      "fullEnglishComparator": "research/batch36-italian/en-US--free-google-sync-without-adverts--before.json",
+      "comparatorSha256": "71e6bad1eac8e3df01dfe99ec7601dcc62e9dc1a94b06100a371c74a477757cd",
+      "readScope": "Entire draft and entire EN comparator including metadata, all prose, practical steps, FAQ, sources and seeAlso. Entire old IT body read for both pricing guides; sharing has no prior IT object.",
+      "decision": "PASS",
+      "sections": 4,
+      "paragraphs": 8,
+      "practical": 5,
+      "faq": 2,
+      "descriptionCharacters": 137,
+      "relatedAllExistInCurrentItalianIndex": true,
+      "requiredCorrections": []
+    },
+    {
+      "slug": "what-a-subscription-actually-buys",
+      "draft": "research/batch36-italian/what-a-subscription-actually-buys.json",
+      "draftSha256": "1e2e4002f064af12331eb58b677f1b94d4e33994144d2077936e1a750611a141",
+      "fullEnglishComparator": "research/batch36-italian/en-US--what-a-subscription-actually-buys--before.json",
+      "comparatorSha256": "18c5fbddc25d4969cc3dd5a49b620a348cbae059ad8e314f0472d0378e522c8d",
+      "readScope": "Entire draft and entire EN comparator including metadata, all prose, practical steps, FAQ, sources and seeAlso. Entire old IT body read for both pricing guides; sharing has no prior IT object.",
+      "decision": "PASS",
+      "sections": 5,
+      "paragraphs": 10,
+      "practical": 5,
+      "faq": 4,
+      "descriptionCharacters": 141,
+      "relatedAllExistInCurrentItalianIndex": true,
+      "requiredCorrections": []
+    },
+    {
+      "slug": "a-calendar-that-is-yours-to-share",
+      "draft": "research/batch36-italian-discovery/it.json",
+      "draftSha256": "519283da50d8069f71ce8d38b4503fa662240575e48f944b2b43dc026258ea7d",
+      "fullEnglishComparator": "research/batch36-italian-discovery/source-en.json",
+      "comparatorSha256": "14cc7459f13e5281e0887853269184a2d29602eb6ab5eef8cccd4b4d5a898bce",
+      "readScope": "Entire draft and entire EN comparator including metadata, all prose, practical steps, FAQ, sources and seeAlso. Entire old IT body read for both pricing guides; sharing has no prior IT object.",
+      "decision": "PASS",
+      "sections": 6,
+      "paragraphs": 12,
+      "practical": 6,
+      "faq": 3,
+      "descriptionCharacters": 135,
+      "relatedAllExistInCurrentItalianIndex": true,
+      "requiredCorrections": []
+    }
+  ],
+  "evidenceHashes": {
+    "research/batch36-italian/it--free-google-sync-without-adverts--before.json": "9808fe5aacc070f9dff87630f743dc9cd20f8ffb5ea772f8195a0eaafa4927d4",
+    "research/batch36-italian/it--what-a-subscription-actually-buys--before.json": "163bfdb7000eb26e300cb7b5da475cbec3a0ad5cfe8190231f8fdb76b79d4ec8",
+    "research/batch36-italian-discovery/source-before.json": "14cc7459f13e5281e0887853269184a2d29602eb6ab5eef8cccd4b4d5a898bce",
+    "research/batch36-italian-discovery/it-before.json": "9e6b503cf8263d63bcb989c13a6d9c95ba2085b2329a150b031c4ead309d47b9",
+    "research/batch36-italian-discovery/source-guard.json": "65714f2197e8543d4244a6aa9974e1197ded67f414633169e3dd93dceafccd06",
+    "src/app/content/article-index.ts": "3b5429516e80bd908bd9e6a1d43ac413b209c8be6c12fe2df39034a615d8b5a3",
+    "research/batch36-italian/product-facts.json": "a357c5142f537c1f1072694cd44197a6f9a97e898a9357c24efbe75237b700cf",
+    "research/batch23-family-access/product-evidence.json": "6a0b9c10742ce0a69469bd80c301747fd07bdefcb2c86cd629f5635288ac145b"
+  },
+  "unchangedNativeBackendProof": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Subscription/SubscriptionManager.swift",
+      "sha256": "5f001543a419b0779912f0e7b5c6cd8f181f4c7ecb953d16d422c87f061d209c",
+      "unchangedPriorReadRanges": [
+        [
+          1,
+          255
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "unchangedPriorReadRanges": [
+        [
+          189,
+          232
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/CloudCalendarsAPI.swift",
+      "sha256": "63e742af594d24c4ab9901dcefdd946c86be5a9836c23be8aa26bce529237f7d",
+      "unchangedPriorReadRanges": [
+        [
+          857,
+          953
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/ICloudCalendarSharingView.swift",
+      "sha256": "ebcbf74f53646e36999c3ec1ee4d52886004f85c13d20fc8298f6d4c66b8467c",
+      "unchangedPriorReadRanges": [
+        [
+          735,
+          794
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/common/auth.guard.ts",
+      "sha256": "fe55f961a3f4b560f42f4f009c580085de2f865fe3d22f2ec6393bd1bc413f20",
+      "unchangedPriorReadRanges": [
+        [
+          1,
+          19
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "unchangedPriorReadRanges": [
+        [
+          135,
+          161
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "unchangedPriorReadRanges": [
+        [
+          1573,
+          1712
+        ],
+        [
+          1788,
+          1848
+        ],
+        [
+          2059,
+          2200
+        ]
+      ],
+      "scope": "Hash rechecked; reuses prior recorded source read, not a fresh full-body source review."
+    }
+  ],
+  "semanticFindings": [
+    "Both pricing guides faithfully retain complete EN distinctions: Base Google/Meet/views/weather/widgets, Advanced ad removal only, Premium Microsoft/Teams subject to account/workplace limits. No priority-weather paid perk, universal conference generation, free-account blanket, privacy promise or fixed local price introduced.",
+    "Subscription purchase, billing Apple Account, provider sign-in, sharing identity and calendar permission remain separate. Cancellation is not unlinking, app deletion or calendar deletion; no all-data-survives or disappears promise. Family Sharing eligibility remains conditional and distinct from shared-calendar access.",
+    "Whole-calendar guide preserves all6sections/12paragraphs/6steps/3FAQs: purpose, own versus provider sharing, Reader/Writer/Owner, acceptance with verified-email identity, sample verification and access review. It does not imply everyone must have an individually named email invitation.",
+    "Shared with me remains quoted English with an Italian explanation, avoiding an invented localized UI label. Preview/page load is not acceptance. Role depends on identity; Google roles are not equated to app roles.",
+    "App-local storage is not automatically Google/iCloud storage. Updates depend on connection/refresh; ICS is separate. Leaving received calendar differs from deleting owned calendar; revocation does not erase prior copies.",
+    "Natural task-focused Italian modernization preserves substance rather than summarizing the EN sections. No material language defect found in this bounded own review."
+  ],
+  "sourcesAndRoutes": [
+    "Both pricing drafts replace EN Apple cancellation URL with root freshly verified Italian equivalent https://support.apple.com/it-it/118428. Other purchase/Family Sharing URLs retained. Root source read is attributed, not independently re-browsed here.",
+    "Sharing retains both exact English-source provider URLs. Existing Italian related routes independently checked against current article-index; unavailable inviting-people-who-do-not-have-the-app omitted.",
+    "Pricing related links are existing Italian alternatives rather than missing English-only routes. New sharing route not yet assumed to exist in pricing links."
+  ],
+  "limits": [
+    "Own independent semantic/factual review, not Italian native-speaker certification.",
+    "No runtime, current App Store binary, production backend, live entitlement or provider-account verification. Released1.7.3 source correspondence remains unproven.",
+    "No source edits, builds, deployments, customer queries, paid API or policy/ASC changes."
+  ],
+  "finalRevisionReview": {
+    "scope": "Freshly read both exact amended paragraphs; prior complete body reads retained. Initial review hash collection occurred after author revision while full body reads were before revision; this explicit re-read resolves that race.",
+    "decision": "PASS",
+    "changeChain": [
+      {
+        "file": "research/batch36-italian/free-google-sync-without-adverts.json",
+        "path": "sections[1].body[0]",
+        "beforeRawSha256": "6b4ee8d49f9b3448a5e2b0bc2b42e9dbbd7e6c6a6c14c437d5798429c71ca395",
+        "afterRawSha256": "a4a42e201f9c58ea62ae60258924bc99b9ce9a3a12e2bb77738bac7d457bfee2",
+        "reversedJsonHashMatchesRecordedPriorObject": true
+      },
+      {
+        "file": "research/batch36-italian/what-a-subscription-actually-buys.json",
+        "path": "sections[1].body[0]",
+        "beforeRawSha256": "2dfe2c054e569a645a87d9ed3afb04f22401a42f27d5c4b61afc953664760ff5",
+        "afterRawSha256": "1e2e4002f064af12331eb58b677f1b94d4e33994144d2077936e1a750611a141",
+        "reversedJsonHashMatchesRecordedPriorObject": true
+      }
+    ],
+    "preservation": "Reversing the changed paragraph in parsed JSON matches author recorded prior JSON.stringify digest. Raw formatting changed, so no all-other-bytes-identical claim.",
+    "assessment": "Payment explicitly does not alter Google sharing permission or add weather priority. Meet creation remains calendar/context-dependent."
+  },
+  "homePatchReview": {
+    "file": "research/batch36-italian/home-proposed-changes.json",
+    "sha256": "3723402e183dbff5130d776e76640d53f958c19621606271affc64b99f912851",
+    "currentSource": "src/app/content/home/it.ts",
+    "currentSourceSha256": "b00e32861df6d48d2a3789fc9125b5d59ca1cea306a74744ad7ff23e80ceb6b7",
+    "decision": "PASS",
+    "scope": "All4patches fully read; surrounding showcase/features/pricing contexts read; pricing.component.ts48–65 read. Not a full homepage audit.",
+    "beforeEachMatchesExactlyOnce": true,
+    "findings": [
+      "showcase.panels[2].body removes unsupported uniqueness and adds selected-calendar availability caution.",
+      "pricing.lead names correct tiers with account-permission/local-price boundaries.",
+      "pricing.forever is rendered beside free zero price; piano gratuito removes future-pricing promise.",
+      "features.gestures.body checks actual occurrence scope instead of promising a universal scope-selection prompt; retains editable-event and saved-result checks."
+    ],
+    "sourceEditsPerformed": false
+  }
+}

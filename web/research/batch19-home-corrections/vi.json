@@ -1,0 +1,26 @@
+{
+  "locale": "vi",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Ngày mai đã tới",
+        "kèm sẵn dự báo."
+      ],
+      "after": [
+        "Lên kế hoạch cho ngày tiếp theo.",
+        "Xem dự báo hiện có."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Bảy cột, mỗi cột có mức cao nhất, thấp nhất và điều kiện riêng. Xoay ngang để thấy toàn bộ bề rộng. Nắm một sự kiện và trượt nó sang ngày khác.",
+      "after": "Đối chiếu các cuộc hẹn trong tuần với dự báo thời tiết từng ngày hiện có. Xoay thiết bị sang ngang để có góc nhìn rộng hơn. Chuyển những sự kiện bạn có quyền chỉnh sửa sang ngày khác và kiểm tra những lần xuất hiện cần thay đổi đối với sự kiện lặp lại."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Kéo nó. Giãn nó. Xong.",
+      "after": "Kéo. Đổi kích thước. Kiểm tra."
+    }
+  ]
+}

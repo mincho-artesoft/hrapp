@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-22",
+  "title": "Kuukausikalenteri iPadilla ja iPhonella: katso päivät, tarkista tiedot",
+  "short": "Käytä kuukausinäkymää ohittamatta tietoja",
+  "description": "Vertaa päiviä iPadilla tai iPhonella. Tarkista piilotetut tapahtumat, kalenterivalinnat ja ajat ennen jaettujen tai toistuvien tapaamisten siirtoa.",
+  "lede": "Kuukausinäkymä näyttää, mille päiville menot osuvat. Se soveltuu huonommin tietyn tunnin vapauden todistamiseen. Valitse päivä yleiskuvasta ja tutki päivä sekä tapahtuma ennen sitoutumista. Oppaan julkaisee Cloud Calendarsin kehittäjä Arte Soft.",
+  "commonBelief": "Suurempi kuukausiruudukko näyttää kaikki tiedot, ja tyhjältä vaikuttava päivä todistaa kaikkien olevan vapaita.",
+  "sections": [
+    {
+      "heading": "Päätä, tarvitsetko päiviä vai tarkkoja tunteja",
+      "body": [
+        "Vertaa kuukaudessa projektin määräaikaa, matkaa ja perhetapaamista usean viikon ajalta. Kun kysymys koskee päällekkäisyyttä klo 14.30, siirry päivä- tai viikkonäkymään ja tarkista tarkka alku ja loppu. Kuukauden solulla ei ole tuntiruudukon aikamittakaavaa.",
+        "Työpajan järjestäjä voi ensin välttää matkaviikon. Seuraavaksi tarkistetaan ehdotettu päivä: menot, valmistelu, matka ja tarvittava päättymisaika. Tyhjältä näyttävä solu on tutkittava vaihtoehto, ei vahvistettu varaus tai muiden saatavuustieto."
+      ]
+    },
+    {
+      "heading": "Lue lisämäärä, älä laske vain näkyviä nimiä",
+      "body": [
+        "Cloud Calendarsin nykyinen kuukausisolu näyttää rajallisen määrän tapahtumamerkintöjä ja lisämäärän, jos päivään kuuluu muitakin. Nimet ovat yksirivisiä ja voivat lyhentyä. Avaa päivä tai tapahtuma, kun koko nimi tai muut menot ovat tärkeitä.",
+        "Suurempi iPad-näyttö voi helpottaa lukemista poistamatta kaikkia näyttörajoja. Kapea sovellusikkuna tai suurempi teksti muuttaa mahtuvaa sisältöä. Tarkista sama iPhonella: tutki päivä ennen kuin pidät näkyviä merkintöjä koko aikatauluna."
+      ]
+    },
+    {
+      "heading": "Tarkista kuukausi, kalenterivalinnat ja viereiset päivät",
+      "body": [
+        "Lue kuukausi ja vuosi ennen päivän valintaa. Ruudukko voi täydentää rivejä viereisen kuukauden päivillä. Käytä Cloud Calendarsin kuukausinavigointia ja tarkista valittu päivä pelkän ruudun sijainnin sijaan.",
+        "Tarkista valitut kalenterit. Työmenojen piilottaminen voi selkeyttää perhesuunnitelmaa, mutta poistaa ne tästä yleiskuvasta. Kaksoiskappaletta selvittäessäsi piilota yksi lähde tilapäisesti ja vertaa; älä poista tapaamista vain väljempää kuukautta varten."
+      ]
+    },
+    {
+      "heading": "Avaa tapahtuma ennen yhteisen järjestelyn muuttamista",
+      "body": [
+        "Varmista tiedoista nimi, omistaja tai kalenteri, paikallinen aika ja kesto. Väri auttaa silmäilyä muttei korvaa tilin tai muokkausoikeuden tuntemista. Näkyvä kutsu eroaa itse järjestämästäsi tapaamisesta.",
+        "Cloud Calendarsissa voi siirtää tapahtuman kuukausinäkymässä vetämällä toiseen päivään. Selvitä ennen oikean menon siirtoa tarkoitettu päivä ja toiston muutoslaajuus. Avaa tapahtuma sallitun muutoksen jälkeen; paikallinen ele ei todista palveluntarjoajan tai kaikkien osallistujien hyväksyneen uutta järjestelyä."
+      ]
+    },
+    {
+      "heading": "Tarkista toistot ja aikavyöhykkeet erikseen",
+      "body": [
+        "Jos vain tämän viikon oppitunti siirtyy, älä muuta vahingossa tulevaa rytmiä. Lue tarjottu toiston laajuus ja tarkista sitten muutettu sekä myöhempi kerta. Kuukausi helpottaa vertailua, mutta muokkauslaajuus määrää muutoksen merkityksen.",
+        "Matkalla tai aikavyöhykkeiden välisessä kokouksessa tutki paikallinen päivä ja kellonaika erikseen. Siirto toiseen päivään ei automaattisesti muunna aiottua kokousaikaa. Tarkista tarvittaessa kesäajan vaihtuminen ja vahvista sovittu aika asianosaisten kanssa."
+      ]
+    },
+    {
+      "heading": "Käytä suurempaa näkymää sekoittamatta tuotteita",
+      "body": [
+        "Apple Kalenterilla on omat kuukausivaihtoehtonsa, Teamup kuvaa erilaiset selain- ja mobiilinäkymät. Asetukset kuuluvat omiin tuotteisiinsa. Älä etsi Teamupin selainasetuksia tai Applen näkymävalikkoa Cloud Calendarsista vain saman näkymänimen vuoksi.",
+        "Kuukausi tapaamisia ei myöskään ole kuukausi sääennusteita. Tarkista ulkosuunnitelmalle paikka, päivä ja saatavilla olevat ennustetunnit erikseen. Tallenna lopullinen tapaaminen oikeaan kalenteriin ja vahvista muutokset suoraan osallistujien kanssa."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Valitse mahdolliset päivät kuukaudessa ja tarkat tunnit päivästä tai viikosta.",
+    "Avaa päivät, joissa on lisämäärä tai lyhennettyjä nimiä.",
+    "Tarkista kuukausi, vuosi ja kalenterit ennen vapaan päivän olettamista.",
+    "Varmista kalenteri, aika, kesto ja muokkausoikeus.",
+    "Lue toiston laajuus ja tarkista tallennettu kerta siirron jälkeen.",
+    "Tarkista sään saatavuus erikseen ja vahvista muutokset osallistujille."
+  ],
+  "faq": [
+    {
+      "q": "Näyttääkö iPadin kuukausi kaikki tapaamiset kokonaan?",
+      "a": "Älä oleta niin. Cloud Calendars rajoittaa solun tapahtumamerkintöjä ja käyttää lisämäärää. Avaa päivä ja tapahtuma koko aikataulua varten."
+    },
+    {
+      "q": "Tarkoittaako tyhjä päivä, että olen vapaa?",
+      "a": "Tarkista ensin kalenterivalinnat, päivä ja olennaiset tilitiedot. Yleiskuva edustaa vain saatavilla olevia ja näytettyjä tietoja."
+    },
+    {
+      "q": "Muuttaako toistuvan tapahtuman siirto vain tämän päivän?",
+      "a": "Lue muokkauslaajuuden valinta. Tarkista tallennuksen jälkeen muutettu ja myöhempi kerta, sitten vahvista tarkoitettu järjestely."
+    }
+  ],
+  "sourcesHeading": "Vertaa virallisia näkymäkuvauksia",
+  "sources": [
+    {
+      "label": "Apple: kuukausi-, monipäivä- ja luettelonäkymät",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: näkymät sekä selain- ja sovellusasetukset",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": []
+}

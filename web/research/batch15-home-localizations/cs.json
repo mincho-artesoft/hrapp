@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Kalendář Google a Microsoft Outlook, synchronizované oběma směry a barevně odlišené v jednom pohledu. Vypněte kterýkoli kalendář, když ho nechcete vidět — zbytek běží dál.",
+    "after": "Zobrazte vybrané kalendáře iCloud a Google společně; Premium přidává kalendáře Microsoft. Upravujte tam, kde to oprávnění účtu dovolují, a po změnách ověřte zdrojový kalendář."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Chyťte událost a posuňte ji na jiný čas nebo jiný den. Zatáhněte za horní nebo dolní okraj a změňte, jak dlouho trvá. Žádné okno, žádné tlačítko uložit.",
+    "after": "Přesuňte upravitelné události na jiný čas či den nebo změňte jejich délku na časové ose. U opakované události vyberte výskyty, které chcete změnit, a ověřte uložený výsledek."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "To je hlavní způsob úprav. Přetáhněte událost na jiný čas nebo jiný den, případně zatáhněte za její horní či dolní okraj a změňte délku. Změny se hned promítnou zpět do zdrojového kalendáře.",
+    "after": "Upravitelné události můžete přesouvat a měnit jejich délku na časové ose. Ověřte volbu opakování a uložený čas; aktualizace připojených kalendářů závisí na oprávněních a úspěšné synchronizaci."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Tytéž události, uspořádané podle otázky, kterou si opravdu kladete — a každá nese svou předpověď.",
+    "after": "Vyberte přehled nebo podrobnou časovou osu s dostupným počasím v podporovaných zobrazeních."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Hodinová mřížka, v níž každý řádek nese vlastní předpověď. Schůzku ve tři a déšť ve tři vidíte jedním pohledem — žádná druhá aplikace, žádné hádání.",
+    "after": "Porovnejte schůzky s dostupnou hodinovou předpovědí ve stejné mřížce. Při venkovním plánování ověřte vybrané místo a datum předpovědi."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Měsíční pohled označí každý den, v němž něco je. Roční položí dvanáct měsíců na jednu obrazovku — nejrychlejší způsob, jak najít volný týden.",
+    "after": "Porovnejte události vybraných kalendářů v měsíci či roce. Otevřete den a prohlédněte všechny jeho schůzky, než jej označíte za volný."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Klepněte na kteroukoli hodinu v centru počasí a otevře se nová událost, už nastavená na tento čas. Najděte suché okno a zabraňte ho.",
+    "after": "Vyberte hodinu s dostupnou předpovědí a začněte koncept události. Před uložením ověřte datum, čas a kalendář."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Verze {v} — sdílené události se teď udržují aktuální samy",
+    "after": "Verze {v} — sdílení událostí a kalendářů"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Předplatné spravuje Apple, takže se ruší v nastavení účtu App Store. Udělejte to nejpozději 24 hodin před koncem období a už vám nic nebude účtováno.",
+    "after": "Na iPhonu či iPadu otevřete Nastavení, klepněte na své jméno a potom na Předplatná. Vyberte Cloud Calendars a předplatné tam zrušte; ověřte stav zrušení či vypršení zobrazený Applem."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Předplatné se automaticky obnovuje a účtuje přes vaše Apple ID. Zrušte kdykoli v nastavení účtu App Store, nejpozději 24 hodin před koncem období.",
+    "after": "Předplatné se automaticky obnovuje přes váš účet Apple. Před nákupem ověřte místní cenu a zúčtovací období. Zrušení spravujte v Nastavení pod svým jménem → Předplatná."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Oběma směry",
+    "after": "Připojeno"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Nejčastější volba",
+    "after": "Vybraný tarif"
+  }
+]

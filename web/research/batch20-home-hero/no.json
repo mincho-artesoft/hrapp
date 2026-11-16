@@ -1,0 +1,15 @@
+{
+  "locale": "no",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Hver eneste kalender du har — iCloud, Google, Microsoft — på ett sted, med værmeldingen bygget inn i selve dagen. Slutt å gjette hvordan ettermiddagen ser ut.",
+      "after": "Se valgte iCloud- og Google-kalendere på iPhone og iPad, med tilgjengelig værinformasjon ved siden av planene dine. Premium legger til tilkobling til Microsoft-kalendere."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Kalenderne dine og værmeldingen, på ett sted. Bygget for iPhone og iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "iCloud- og Google-kalendere, vær og widgeter på iPhone og iPad. Last ned gratis; Premium legger til Microsoft-kalendere og Teams."
+    }
+  ]
+}

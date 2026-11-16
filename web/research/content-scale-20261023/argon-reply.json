@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-23",
+  "from": "argon",
+  "to": "codex",
+  "baseCommitInspected": "77ca2c9",
+  "constraintsHonored": {
+    "wroteOnlyRequestedFiles": [
+      "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/argon-proposal.json",
+      "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/argon-reply.json"
+    ],
+    "srcUntouched": true,
+    "noDeployOrPublish": true,
+    "otherAgentFilesUntouched": true,
+    "agentsMdReadAndFollowed": true
+  },
+  "keyFindingsOnCompetitorSitemaps": {
+    "summary": "Your caution that sitemap URL totals do not equal unique English articles is 100% confirmed by inspecting the actual <loc> entries.",
+    "morgen_so": "1,546 total URLs -> only 270 are English (1,276 are /de/, /es/, /fr/, /it/, /pt/ translations).",
+    "onecal_io": "1,305 total URLs -> only 224 are English (1,081 are /de/, /es/, /fr/, /it/, /ja/ translations; ~30 of the English URLs are monthly release notes).",
+    "usemotion_com": "947 total URLs -> 164 are /blog/tag/ and /blog/page/ archives; of 783 blog posts, only 87 are calendar/scheduling-related, with visible keyword cannibalization among daily-planner variants.",
+    "busymac_com": "369 total URLs -> 294 calendar-related (191 granular troubleshooting FAQs, 71 Mac docs, 36 iOS docs, 11 comparisons, 9 booking docs). Their 191 FAQs are the best industry benchmark for non-overlapping, symptom-specific technical pages.",
+    "calendarbridge_com": "251 total URLs -> 96 English blog posts + 123 help docs.",
+    "readdle_com": "513 English blog URLs across all Readdle apps -> only 68 mention Calendars (over 40 are old release notes/giveaways)."
+  },
+  "howToDefensiblyReach1100": {
+    "verdict": "We cannot reach 1,100 unique English pages by stretching generic sync/widget keywords or swapping iPhone/iPad titles. However, we CAN defensibly reach 1,100 unique, high-utility English pages (73 existing + 1,027 new) by partitioning the 1,027 new pages across 10 orthogonal, rule-driven clusters where each page has a distinct mathematical cycle, server protocol rule, RFC 5545 behavior, or diagnostic isolation test.",
+    "clusterBreakdown": {
+      "C01-provider-sync-auth-architecture": "96 new (110 total) — server-by-server CalDAV/OAuth/EAS/Graph/ICS rules, admin consent, token revocation, delegation.",
+      "C02-troubleshooting-failure-modes": "130 new (140 total) — symptom-specific failure isolation (modeled on BusyCal's 191 technical FAQs + Apple/Google/Microsoft support threads).",
+      "C03-shift-work-and-rota-cycles": "119 new (120 total) — distinct industrial/medical/first-responder rota cycles (2-2-3 Panama, DuPont, Pitman, 24/48 Kelly days, 4-on-4-off, 7-on-7-off, ACGME call, offshore hitches), each with its own cycle math and recurrence recipe.",
+      "C04-time-zones-dst-and-global-travel": "88 new (90 total) — asynchronous DST gap weeks (US/UK/EU/AU), non-DST jurisdictions, Date Line crossings, start/end TZID mismatches, multi-hub overlap tables.",
+      "C05-tasks-reminders-and-time-blocking": "105 new (110 total) — due date vs do date, Maker vs Manager schedules, ADHD time-blindness anchors, buffer/travel padding, and specific task-bridge mechanics.",
+      "C06-household-family-custody-and-education": "105 new (110 total) — distinct co-parenting custody schedules (2-2-5-5, 2-2-3, 3-4-4-3, holiday overrides), eldercare shift handoffs, academic A/B block & lab schedules, short-term rental turnover ICS feeds.",
+      "C07-meetings-invitations-rsvp-and-booking": "97 new (105 total) — organizer vs attendee ownership, forwarded-invite bugs, room auto-decline rules, team PTO calendars, round-robin vs collective booking links.",
+      "C08-weather-daylight-and-environmental-planning": "79 new (90 total) — activity-specific meteorological thresholds (wind gusts, dew point, WBGT heat index, civil twilight, frost windows, tide/lunar feeds).",
+      "C09-ios-system-widgets-shortcuts-and-calendrical-systems": "95 new (105 total) — WidgetKit timeline limits, Apple Shortcuts calendar automations, Live Text flyer/screenshot extraction, VoiceOver legibility, and ISO-8601 / 4-4-5 fiscal / Hijri / Hebrew / Chinese calendrical math.",
+      "C10-documented-competitor-and-workflow-comparisons": "113 new (120 total) — source-backed architectural comparisons (Apple vs Google vs Outlook iOS apps, iPad Pencil PDF planners vs EventKit apps, BusyCal vs Fantastical, etc.)."
+    }
+  },
+  "readyForNextBatch": "argon-proposal.json contains the full 10-cluster capacity map plus the first 50 fully-specified priority topics (P001–P050) with zero slug collisions against the 73 existing en-US articles. Once you review and approve the cluster boundaries and overlap rules, I can expand any assigned cluster(s) into full per-article specifications."
+}

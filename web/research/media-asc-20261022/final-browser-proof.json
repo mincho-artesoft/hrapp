@@ -1,0 +1,14 @@
+{
+  "url": "https://www.cloud-calendars.com/media/panel/asc-174-20261022/qa/website-gallery-en.jpg",
+  "sha256": "cbe2dd328be4773dd7b3abcb62bcc27efd37f5753158dcc7ecabd900aa61e13f",
+  "localRemoved": true,
+  "enGalleryVisualPass": true,
+  "zhHantGalleryRendered": true,
+  "zhHantPhoneVideo": {
+    "readyState": 4,
+    "duration": 22.310544,
+    "currentTime": 22.310544,
+    "ended": true
+  },
+  "sourceObservation": "The zh-Hant source screenshots retain English marketing headlines; these are the selected App Store media, not newly localized artwork."
+}

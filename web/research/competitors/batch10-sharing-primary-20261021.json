@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "task": "Four discovered primary pages on calendar sharing, access, invitations and availability",
+  "selection": "Selected exact URLs whose queue status was discovered. No failed URL attempted and no previously full URL reopened. CalendarBridge followup completed previously truncated tail of the same new page.",
+  "scope": {
+    "newExactUrls": 4,
+    "fullSubstantiveTextBodies": 4,
+    "partialBodies": 0,
+    "failedFetches": 0,
+    "screenshots": 0,
+    "runtimeChecks": 0,
+    "currentCloudArticleObjectsRead": 12
+  },
+  "inputs": [
+    "research/competitors/coverage-queue-20261021.json (all queue URL/status records parsed; selected rows and provenance inspected)",
+    "src/app/content/en-US/articles-sharing.ts (all7 article objects, complete; a followup range filled truncated middle)",
+    "src/app/content/en-US/articles-google.ts (all5 article objects, complete)"
+  ],
+  "reviews": [
+    {
+      "publisher": "Teamup",
+      "scope": "Complete substantive main text lines55–130 of186; navigation, footer and linked detail bodies excluded.",
+      "findings": [
+        "Account-based access and bearer-link access are separate entry mechanisms.",
+        "Administrators choose accessible sub-calendars and permitted actions separately.",
+        "Publisher describes time-block-only visibility, own-event editing and broader editing as different permissions.",
+        "Removing access does not remove events that person created in this product."
+      ],
+      "limits": [
+        "Teamup permissions are not Google or Cloud permissions. No independent security test; its high-security and no-access-beyond-permission assertions remain publisher claims."
+      ],
+      "candidateIntents": [
+        "calendar link versus account invitation",
+        "see busy times without event details",
+        "remove calendar member without deleting their events"
+      ],
+      "canonicals": [
+        "who-can-see-what-in-google-calendar",
+        "taking-back-a-calendar-you-shared",
+        "inviting-people-who-do-not-have-the-app"
+      ],
+      "next": "Expand existing routes with scope/access/action distinctions only after current Google documentation and Cloud implementation verification. Do not add a generic permissions duplicate.",
+      "url": "https://www.teamup.com/faq/access-users/",
+      "status": "full",
+      "priorStatus": "discovered",
+      "queueProvenance": [
+        {
+          "file": "research/competitors/batch05-primary-reviews-20261021.json",
+          "field": "/discoveredNotBodyReviewed/4/url",
+          "record": {
+            "url": "https://www.teamup.com/faq/access-users/",
+            "status": "search-result-only"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "evidenceType": "First-party publisher documentation; not runtime verification"
+    },
+    {
+      "publisher": "TimeTree",
+      "scope": "Complete substantive textual main body lines6–28 of36; explanatory screenshot not visually inspected, linked help bodies not read.",
+      "findings": [
+        "The shared-calendar screen differs from the Home Calendar view.",
+        "Member list, calendar invitation, available-day sharing and calendar notification settings are distinct linked controls."
+      ],
+      "limits": [
+        "This is a short navigation guide, not detailed verification of invitations, free/busy semantics, RSVP or notification delivery. Do not infer permissions from menu labels."
+      ],
+      "candidateIntents": [
+        "invite someone to a calendar versus an event",
+        "shared calendar view versus personal overview"
+      ],
+      "canonicals": [
+        "a-calendar-that-is-yours-to-share",
+        "sharing-one-event-not-your-calendar",
+        "why-a-shared-calendar-does-not-appear"
+      ],
+      "next": "Retain existing canonicals; use the distinction to organize reader choices. No unsupported shared-availability or social feature claim.",
+      "url": "https://support.timetreeapp.com/hc/en-us/articles/900004492623-How-to-use-shared-calendar-app",
+      "status": "full",
+      "priorStatus": "discovered",
+      "queueProvenance": [
+        {
+          "file": "research/competitors/batch05-primary-reviews-20261021.json",
+          "field": "/discoveredNotBodyReviewed/0/url",
+          "record": {
+            "url": "https://support.timetreeapp.com/hc/en-us/articles/900004492623-How-to-use-shared-calendar-app",
+            "status": "search-result-only"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "evidenceType": "First-party publisher documentation; not runtime verification"
+    },
+    {
+      "publisher": "Cozi",
+      "scope": "Complete substantive text lines24–89 of132; testimonial text displayed but not adopted as evidence; navigation/footer excluded.",
+      "findings": [
+        "Publisher describes filtering the family view by person and appointment-level reminders.",
+        "Agenda email depends on preferences and enabled email settings.",
+        "Its external-calendar integration is described here as read-only, not bidirectional collaboration."
+      ],
+      "limits": [
+        "No hands-on tests, member-count/pricing comparison, superiority or security claim adopted. Linked integration instructions not read."
+      ],
+      "candidateIntents": [
+        "can a family-calendar subscriber edit the schedule",
+        "family view filter versus reminder recipient",
+        "agenda email versus event invitation"
+      ],
+      "canonicals": [
+        "a-calendar-that-is-yours-to-share",
+        "family-pickup-calendar-handoff",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "next": "Existing family handoff and notification guides are destinations; distinguish visibility, responsibility confirmation and actual delivered reminders. Do not imply Cloud agenda emails or per-person filtering.",
+      "url": "https://www.cozi.com/calendar/",
+      "status": "full",
+      "priorStatus": "discovered",
+      "queueProvenance": [
+        {
+          "file": "research/competitors/batch05-primary-reviews-20261021.json",
+          "field": "/discoveredNotBodyReviewed/5/url",
+          "record": {
+            "url": "https://www.cozi.com/calendar/",
+            "status": "search-result-only"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "evidenceType": "First-party publisher documentation; not runtime verification"
+    },
+    {
+      "publisher": "CalendarBridge",
+      "scope": "Complete substantive text lines0–125 of126, read across initial output and followup; screenshots and linked guides excluded.",
+      "findings": [
+        "Setup separates readable source from writable destination; ICS feed can be a source but not a destination in this product.",
+        "Attendee names can be copied into description instead of destination attendee fields to avoid sending invitations from the copy.",
+        "Generic titles, copied descriptions, conferencing details, private flags and tags are separate controls.",
+        "Optional exclusion of free, tentative or unaccepted entries affects copied availability; settings vary by provider."
+      ],
+      "limits": [
+        "Publisher has apparent description/subject wording error at line64; do not reproduce it.",
+        "Private-flag claims and embedded Microsoft quotation are not current independent Microsoft verification. Never infer absolute confidentiality.",
+        "Do not present ICS publication as a workaround for employer restrictions; policy still requires checking.",
+        "No Cloud replication/filtering capability or guaranteed initial-sync time established."
+      ],
+      "candidateIntents": [
+        "copied calendar event versus invitation with RSVP",
+        "why tentative or unaccepted events are absent from a busy calendar",
+        "busy title versus removing private details"
+      ],
+      "canonicals": [
+        "keeping-track-of-who-replied",
+        "what-guests-can-do-to-your-event",
+        "who-can-see-what-in-google-calendar",
+        "what-calendar-sync-actually-does"
+      ],
+      "next": "Improve existing RSVP guide to identify original invitation and actual response status before checking copies; verify with provider docs and native behavior. Busy/private details belong with existing permission/work-personal guides.",
+      "url": "https://help.calendarbridge.com/user-docs/setting-up-one-way-syncing/",
+      "status": "full",
+      "priorStatus": "discovered",
+      "queueProvenance": [
+        {
+          "file": "research/competitors/batch09-provider-intents-20261021.json",
+          "field": "/discoveredOnly/10/url",
+          "record": {
+            "url": "https://help.calendarbridge.com/user-docs/setting-up-one-way-syncing/",
+            "status": "discovered_search_or_index_link_not_body_reviewed"
+          },
+          "batchQueries": [],
+          "queryAssociation": "Batch-level only; original file does not attribute an individual query to this URL.",
+          "statusEvidence": "discovered"
+        }
+      ],
+      "evidenceType": "First-party publisher documentation; not runtime verification"
+    }
+  ],
+  "currentCanonicalReview": [
+    {
+      "canonical": "keeping-track-of-who-replied",
+      "observed": "Current text asserts most people never reply, one-third silence is normal, and planning for half the silent guests. No evidence supplied. It does not sufficiently distinguish invitation responses from feed-following or copied records.",
+      "recommendation": "Replace numerical/generalised attendance assumptions with original invitation, organiser identity, response status and direct confirmation for consequential attendance. Do not invent that a subscription records RSVP."
+    },
+    {
+      "canonical": "who-can-see-what-in-google-calendar",
+      "observed": "Broad statements about every detail and every event require current Google permission/private-event qualifications; competitor permission matrices cannot validate them.",
+      "recommendation": "Preserve canonical; verify current Google official matrix and owner/admin limits, then add a concrete free/busy-versus-details example."
+    },
+    {
+      "canonical": "taking-back-a-calendar-you-shared",
+      "observed": "Promises immediate disappearance without a message. It correctly raises surviving copies but needs provider-specific qualification.",
+      "recommendation": "Verify removal behavior separately from feed reset, recipient-held copies and generated events; avoid universal timing and notification promises."
+    },
+    {
+      "canonical": "why-a-shared-calendar-does-not-appear",
+      "observed": "Current corrected guide already distinguishes invited identity/group access, hidden calendars, missing permission and feed versus sharing invitation.",
+      "recommendation": "No new missing-calendar article needed."
+    },
+    {
+      "canonical": "sharing-one-event-not-your-calendar",
+      "observed": "Current prose makes precise Cloud feed, App Clip and token-security claims not verified by this competitor review.",
+      "recommendation": "Parent native/product audit should establish actual share/registration/feed paths; do not use competitor evidence as validation."
+    }
+  ],
+  "editorialConclusion": "Expand existing sharing/permissions/RSVP canonicals. No distinct new route justified by this four-page batch. Availability, recipient access, editing authority and attendance confirmation should be distinguished rather than marketed as interchangeable sharing.",
+  "limits": [
+    "No measured demand, Google ranks, search volume or ChatGPT citations.",
+    "Candidate phrases are research/editorial intents, not recorded search queries.",
+    "No provider instructions independently verified beyond these competitor documents.",
+    "No source/native/deployment changes; no Cloud capabilities inferred from competitors."
+  ]
+}

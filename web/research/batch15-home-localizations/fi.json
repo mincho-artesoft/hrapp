@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google-kalenteri ja Microsoft Outlook, synkronoituina molempiin suuntiin ja värein eroteltuina yhdessä näkymässä. Ota mikä tahansa kalenteri pois näkyvistä, kun et halua nähdä sitä — loput toimivat edelleen.",
+    "after": "Katso valittuja iCloud- ja Google-kalentereita yhdessä; Premium lisää Microsoft-kalenterit. Muokkaa tilisi oikeuksien sallimissa rajoissa ja tarkista lähdekalenteri muutosten jälkeen."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Tartu tapahtumaan ja liu'uta se toiseen aikaan tai toiseen päivään. Vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Ei ikkunaa, ei tallennuspainiketta.",
+    "after": "Siirrä muokattavia tapahtumia toiseen aikaan tai päivään tai muuta niiden kestoa aikajanalla. Valitse toistuvasta tapahtumasta muutettavat kerrat ja tarkista tallennettu tulos."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Se on pääasiallinen tapa muokata. Vedä tapahtuma toiseen aikaan tai toiseen päivään, tai vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Muutokset siirtyvät suoraan takaisin lähdekalenteriin.",
+    "after": "Voit siirtää muokattavia tapahtumia ja muuttaa niiden kestoa aikajanalla. Tarkista toiston valinta ja tallennettu aika; yhdistettyjen kalenterien päivitykset riippuvat oikeuksista ja onnistuneesta synkronoinnista."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Samat tapahtumat, järjestettyinä sen kysymyksen mukaan, jota oikeasti kysyt — ja jokainen kantaa ennusteensa.",
+    "after": "Valitse yleiskuva tai tarkka aikajana, jonka tuetuissa näkymissä on saatavilla olevia säätietoja."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Tuntiruudukko, jossa jokainen rivi kantaa oman ennusteensa. Näet kolmen kokouksen ja kolmen sateen samalla silmäyksellä — ei toista sovellusta, ei arvailua.",
+    "after": "Vertaa tapaamisia saatavilla olevaan tuntiennusteeseen samassa ruudukossa. Tarkista valittu paikka ja ennustepäivä ulkosuunnitelmia tehdessäsi."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Kuukausinäkymä merkitsee jokaisen päivän, jolla on jotain. Vuosinäkymä asettaa kaksitoista kuukautta yhdelle näytölle — nopein tapa löytää vapaa viikko.",
+    "after": "Vertaa valittujen kalenterien tapahtumia kuukauden tai vuoden ajalta. Avaa päivä ja tarkista kaikki tapaamiset ennen kuin päätät sen olevan vapaa."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Kosketa mitä tahansa tuntia sääkeskuksessa, ja uusi tapahtuma avautuu jo tuohon aikaan asetettuna. Löydä kuiva ikkuna ja varaa se.",
+    "after": "Valitse saatavilla oleva ennustetunti aloittaaksesi tapahtumaluonnoksen. Tarkista päivä, aika ja kalenteri ennen tallennusta."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versio {v} — jaetut tapahtumat pysyvät nyt itse ajan tasalla",
+    "after": "Versio {v} — tapahtumien ja kalenterien jakaminen"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Tilaukset hoitaa Apple, joten perut ne App Store -tilisi asetuksista. Tee se viimeistään 24 tuntia ennen jakson päättymistä, niin sinulta ei veloiteta uudelleen.",
+    "after": "Avaa iPhonessa tai iPadissa Asetukset, napauta nimeäsi ja sitten Tilaukset. Valitse Cloud Calendars ja peru tilaus siellä; tarkista Applen näyttämä peruutus- tai päättymistila."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Tilaukset uusiutuvat automaattisesti ja veloitetaan Apple ID:si kautta. Peru milloin tahansa App Store -tilisi asetuksista, viimeistään 24 tuntia ennen jakson päättymistä.",
+    "after": "Tilaukset uusiutuvat automaattisesti Apple-tilisi kautta. Tarkista paikallinen hinta ja laskutusjakso ennen ostoa. Hallitse peruutusta Asetuksissa oman nimesi alta → Tilaukset."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Molempiin suuntiin",
+    "after": "Yhdistetty"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Suosituin",
+    "after": "Esittelyssä"
+  }
+]

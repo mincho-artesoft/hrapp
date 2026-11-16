@@ -1,0 +1,1862 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-23",
+  "objective": "Cloud Calendars website and App Store Connect discovery optimization; broad competitor intent research, useful original articles, metadata alignment, later existing media integration.",
+  "websiteSource": "/Users/minchomilev/cloud-calendars",
+  "scopeLimits": [
+    "No guarantee of ranking for every query or ChatGPT recommendation.",
+    "Publisher keywords/topics are candidate intents, not measured Google ranks or search volumes.",
+    "Existing article inventory is not quality approval.",
+    "No content is declared researched merely because a corresponding route exists."
+  ],
+  "currentInventory": {
+    "articles": 480,
+    "locales": [
+      "ar-SA",
+      "bg",
+      "cs",
+      "da",
+      "de-DE",
+      "el",
+      "en-US",
+      "es-ES",
+      "fi",
+      "fr-FR",
+      "he",
+      "hi",
+      "hu",
+      "id",
+      "it",
+      "ja",
+      "ko",
+      "ms",
+      "nl-NL",
+      "no",
+      "pl",
+      "pt-BR",
+      "ro",
+      "ru",
+      "sv",
+      "th",
+      "tr",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "englishArticles": 73,
+    "evidence": "src/app/content/article-index.ts generated from locale aggregates",
+    "scope": "Generated inventory after15 newEnglishguides; one includes an interactive schedule draft."
+  },
+  "clusters": [
+    {
+      "id": "sync-versus-subscription",
+      "keywordCandidates": [
+        "sync calendar iPhone iPad",
+        "Google calendar Apple calendar sync",
+        "calendar subscription vs sync"
+      ],
+      "sourceIds": [
+        "readdle-sync",
+        "timepage-sync",
+        "google-sync-vs-subscribe",
+        "google-apple"
+      ],
+      "proposedTitle": "Why calendar sync, subscription and app accounts are different",
+      "originalContribution": "Use a four-row decision table: provider account, app account, subscription URL, imported file. Walk through one named event appearing on two devices and identify the owning calendar.",
+      "publicationGate": "Verify supported Cloud Calendars account types and read/write behavior before any product setup steps.",
+      "status": "english_revised_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/what-calendar-sync-actually-does/"
+    },
+    {
+      "id": "combine-calendars",
+      "keywordCandidates": [
+        "merge calendars iPhone",
+        "combine Google Outlook calendars",
+        "multiple calendars one view"
+      ],
+      "sourceIds": [
+        "readdle-merge",
+        "readdle",
+        "busycal"
+      ],
+      "proposedTitle": "Combine calendars without accidentally copying your events",
+      "originalContribution": "Distinguish displaying multiple sources from migrating events; use work/personal color labels and destination-calendar checks. Do not prescribe account deletion.",
+      "publicationGate": "Verify whether Cloud Calendars aggregates device calendars, connects providers, or both.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/icloud-google-and-outlook-in-one-view/",
+      "supportingRoutes": [
+        "/articles/three-calendar-apps-is-two-too-many/",
+        "/articles/work-and-personal-without-two-apps/",
+        "/articles/what-calendar-sync-actually-does/"
+      ],
+      "bodyReviewEvidence": "research/batch20-ledger-reconciliation-aso.json",
+      "intentAssessment": [
+        {
+          "intent": "Multiple calendars in one view / combine Google and Outlook for personal planning",
+          "status": "substantively_covered",
+          "evidence": "Provider overview sections 1–6 identify accounts, iOS versus direct connection, Google/Base and Microsoft/Premium, provider permissions, mirror sources, selected destinations and verification."
+        },
+        {
+          "intent": "Replace app switching without deleting accounts or confusing copies",
+          "status": "substantively_covered",
+          "evidence": "Three-calendar-apps sections 1–6 keep workplace apps, inspect existing routes, test a disposable owned appointment and separate notifications from view selection."
+        },
+        {
+          "intent": "Work/personal colour labels, destinations and shared availability",
+          "status": "substantively_covered_for_overview_and_bounded_manual_workflow",
+          "evidence": "Work-and-personal sections 1–5 explain colours, visibility, destination, approved manual busy block and recipient-side verification without asserting automated masking."
+        },
+        {
+          "intent": "Merge/migrate stored events into one destination calendar",
+          "status": "distinction_covered_full_migration_workflow_not_established_in_reviewed_bodies",
+          "evidence": "Current guides explain why an overview is not a merge and why a move can affect the source. They do not provide a provider-specific transfer validation/rollback procedure. This is not evidence the entire site lacks export guidance."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "A reader using merge to mean actual migration still needs a clear next action.",
+          "action": "In the existing provider overview, add a compact goal choice: view selected sources / move owned events / replicate availability. Refer actual transfer seekers to the existing export guide after reviewing that guide; do not invent a Cloud bulk merge control or repeat an import procedure without provider support.",
+          "priority": "medium",
+          "status": "fulfilled_current_body_verified_batch42",
+          "evidence": "research/batch42-ledger-reconciliation.json"
+        },
+        {
+          "gap": "Automatic cross-account availability replication is not established as a Cloud capability.",
+          "action": "Keep the explicit boundary and existing sync/OneCal related guide. Do not create a generic automation article from competitor discovery alone.",
+          "priority": "boundary_not_missing_feature"
+        }
+      ],
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Added goal routing to actual existing export and availability-copying guides. No Cloud bulk merge control inferred.",
+      "migrationFollowup": {
+        "evidence": "batch24-migration/intent-research.json",
+        "publishedCanonical": "calendar-export-ics-pdf-and-backup",
+        "status": "conditional_provider_ownership_vs_copy_distinction_published",
+        "limits": "Google-specific, no Cloud transfer UI or cross-provider ownership claim. Native cross-store move advice remains unintegrated pending root review."
+      }
+    },
+    {
+      "id": "sharing-permissions",
+      "keywordCandidates": [
+        "shared calendar iPhone",
+        "family calendar iPhone",
+        "read only shared calendar",
+        "calendar invite vs shared calendar"
+      ],
+      "sourceIds": [
+        "apple-share",
+        "google-share",
+        "readdle-sharing-index"
+      ],
+      "proposedTitle": "Share an event or a calendar: choose the right access",
+      "originalContribution": "Original matrix: one-event guest, private editable calendar, read-only subscription, public URL. Show acceptance and ownership checks, and explain why family subscription access differs from shared calendar data.",
+      "publicationGate": "Verify Cloud Calendars native sharing mechanism and recipient requirements; avoid assuming Apple or Google steps are its own.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/sharing-one-event-not-your-calendar/",
+      "bodyReviewEvidence": "batch22-coverage/sharing-work.json",
+      "latestIntentAssessment": {
+        "id": "sharing-permissions",
+        "beforeStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_sharing_coverage_bounded_gaps",
+        "canonical": "/articles/sharing-one-event-not-your-calendar/",
+        "supportingRoutes": [
+          "/articles/sharing-one-event-not-your-calendar/",
+          "/articles/inviting-people-who-do-not-have-the-app/",
+          "/articles/a-calendar-that-is-yours-to-share/",
+          "/articles/who-can-see-what-in-google-calendar/",
+          "/articles/keeping-track-of-who-replied/",
+          "/articles/taking-back-a-calendar-you-shared/",
+          "/articles/family-pickup-calendar-handoff/",
+          "/articles/what-a-subscription-actually-buys/",
+          "/articles/what-guests-can-do-to-your-event/"
+        ],
+        "coveredIntents": [
+          {
+            "intent": "One event versus whole calendar",
+            "evidence": "Single-event guide sections 1–4; whole-calendar guide sections 1–4: separate purpose, audience, calendar ownership, app-local/device/provider route and acceptance."
+          },
+          {
+            "intent": "Reader versus editor versus access manager",
+            "evidence": "Both Cloud guides explicitly distinguish Reader/Writer/Owner; Google guide sections 1–3 and guest-permission guide sections 1–5 distinguish calendar ACL, private-event editing restrictions and event-specific capabilities."
+          },
+          {
+            "intent": "Recipients without the app, read-only subscription and import",
+            "evidence": "Without-app guide complete six-section flow distinguishes App Clip preview, web landing, full app/writable destination, signed-in roles, verified-email calendar acceptance and import versus feed. No universal no-install or immediate-update claim."
+          },
+          {
+            "intent": "Attendance versus access acceptance",
+            "evidence": "RSVP guide complete six-section flow preserves provider original, unknown attendance, anonymous receipts, no guessed headcounts and no plan-based RSVP reliability."
+          },
+          {
+            "intent": "Private/public/group access and revocation",
+            "evidence": "Google-permissions and revocation guides inspect broader/public/group routes, private-event distinctions, secret feed reset, recipient removal and surviving copies; no one-switch erasure or guaranteed timing."
+          },
+          {
+            "intent": "Family calendar responsibility",
+            "evidence": "Family-pickup guide supplies a full worked example with explicit driver agreement, shared destination check, occurrence scope and direct urgent confirmation."
+          }
+        ],
+        "remainingGaps": [
+          {
+            "intent": "Family subscription purchase entitlement versus shared calendar data",
+            "status": "specific_distinction_not_explicit_in_reviewed_bodies",
+            "evidence": "Subscription guide separates Apple billing identity from provider/sharing identity, but does not establish whether a particular purchase is eligible for family entitlement sharing. Whole-calendar guide explains invitations but not this common purchase/access ambiguity.",
+            "recommendation": "Add one bounded FAQ to the existing whole-calendar or subscription guide only after checking current Apple entitlement guidance and the actual product eligibility. Explain that calendar access is separately granted; do not claim Cloud subscriptions are or are not Family Sharing eligible from these bodies."
+          },
+          {
+            "intent": "Compact choice matrix for all sharing routes",
+            "status": "concepts_already_covered_presentation_opportunity_only",
+            "recommendation": "If simplifying the entry guide, use its existing practical list to route viewing/editing/RSVP/feed readers to existing guides. A separate permissions keyword page would duplicate substantive content."
+          }
+        ],
+        "strongestExistingGuideImprovement": {
+          "route": "/articles/a-calendar-that-is-yours-to-share/",
+          "action": "Add the verified purchase-entitlement-versus-calendar-access FAQ after the narrow eligibility research gate, and related links to Google permissions and revocation. Current roles/recipient mechanics need no wholesale rewrite.",
+          "draftProvided": false,
+          "reason": "Do not fill the eligibility gap with an unsupported product claim; current research task is not a purchase-setting audit."
+        }
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": [
+        "batch23-family-access/primary-research.json",
+        "batch23-family-access/product-evidence.json",
+        "batch23-family-access/final-review.json"
+      ],
+      "currentFollowup": "Published conditional Family Sharing FAQ in subscription guide, separate calendar invitation/shared-link/provider permission and recipient access check. No claim that any particular Cloud purchase is eligible; actual product eligibility remains unverified."
+    },
+    {
+      "id": "calendar-views",
+      "keywordCandidates": [
+        "month view calendar iPhone",
+        "weekly calendar planner iPad",
+        "agenda vs month view"
+      ],
+      "sourceIds": [
+        "readdle",
+        "busycal",
+        "timepage",
+        "timepage-heatmap"
+      ],
+      "proposedTitle": "Choose a calendar view for the question you need answered",
+      "originalContribution": "Compare spotting free time, reading full event titles, finding a date and reviewing a busy month using one original illustrative week. No best-app rankings.",
+      "publicationGate": "Verify exact supported views and tablet layout.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/a-week-view-that-fits-a-week/",
+      "bodyReviewEvidence": "batch22-coverage/widgets-views.json",
+      "latestIntentAssessment": {
+        "id": "calendar-views",
+        "oldStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+        "canonical": "/articles/a-week-view-that-fits-a-week/",
+        "supportingRoutes": [
+          "/articles/month-view-on-a-bigger-screen/",
+          "/articles/a-list-for-people-who-dislike-grids/",
+          "/articles/the-year-in-one-screen/",
+          "/articles/drag-an-event-to-move-it/",
+          "/articles/planning-a-week-in-ten-minutes/"
+        ],
+        "intentAssessment": [
+          {
+            "intent": "Choose month versus agenda versus hour grid",
+            "status": "substantively_covered",
+            "bodyEvidence": "Month section1 distinguishes dates/hours; list section6 supplies a direct selection rule; week sections1–3 cover timed/all-day/selected data."
+          },
+          {
+            "intent": "Read crowded iPad month",
+            "status": "substantively_covered",
+            "bodyEvidence": "Month section2 explicitly covers capped chips/overflow, one-line titles, larger display versus app-window/text constraints."
+          },
+          {
+            "intent": "Plan a realistic week",
+            "status": "substantively_covered",
+            "bodyEvidence": "Week and weekly-review complete bodies cover fixed commitments, overlaps, transit/setup, responsibilities, weather and verification."
+          },
+          {
+            "intent": "Understand list/year omissions",
+            "status": "substantively_covered",
+            "bodyEvidence": "List has loaded-range/start-date grouping limits; year has colour markers versus counts, multi-day interval caveat and selected-source limits."
+          },
+          {
+            "intent": "One original illustrative week across several views",
+            "status": "optional_editorial_enhancement_not_missing_core_task",
+            "bodyEvidence": "Guides already use concrete examples and crosslinks. No new generic choose-a-view page justified merely to repeat them."
+          }
+        ]
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "weekDisplaySettings": {
+        "keywordCandidates": [
+          "week numbers iPhone calendar",
+          "calendar week starts on Monday",
+          "Kalenderwoche iPhone",
+          "Wochenbeginn Kalender"
+        ],
+        "canonical": "/articles/a-week-view-that-fits-a-week/",
+        "germanEdition": "/de/articles/a-week-view-that-fits-a-week/",
+        "evidence": "research/batch43-discovery.json",
+        "nativeEvidence": "research/batch43-week-settings-source.json",
+        "status": "reviewed_EN_expansion_and_DE_edition_integrated_publication_pending",
+        "scope": "First weekday versus rolling range, numbering convention/date range and alternate label versus account. Apple/Fantastical controls attributed; no Cloud numbered-week or dual-date feature claim.",
+        "measuredRank": null,
+        "measuredSearchVolume": null
+      }
+    },
+    {
+      "id": "widgets",
+      "keywordCandidates": [
+        "calendar widget iPhone",
+        "calendar widget iPad",
+        "next event widget",
+        "calendar widget missing events"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "readdle",
+        "fantastical-widgets-historical"
+      ],
+      "proposedTitle": "Choose a month, next-event or agenda widget",
+      "originalContribution": "Explain purpose, visible-calendar selection and private event-title exposure. Diagnose an absent event by first checking app view and selected calendars. Use current Apple widget documentation before instructions.",
+      "publicationGate": "Verify supported Cloud Calendars widget families/surfaces and refresh limits; never promise instant refresh.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/the-widget-that-shows-what-is-next/",
+      "bodyReviewEvidence": "batch22-coverage/widgets-views.json",
+      "latestIntentAssessment": {
+        "id": "widgets",
+        "oldStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+        "canonical": "/articles/the-widget-that-shows-what-is-next/",
+        "supportingRoutes": [
+          "/articles/a-countdown-to-your-next-meeting/",
+          "/articles/lock-screen-without-unlocking/",
+          "/articles/choosing-a-widget-size/",
+          "/articles/the-calendar-on-a-bedside-table/"
+        ],
+        "intentAssessment": [
+          {
+            "intent": "Find next event; diagnose absent all-day/started/unselected event",
+            "status": "substantively_covered",
+            "bodyEvidence": "Next-event guide sections 1–4 identifies exact layouts, eligibility, calendar selection, app/provider comparison and no guaranteed refresh deadline."
+          },
+          {
+            "intent": "Choose widget content/size",
+            "status": "substantively_covered",
+            "bodyEvidence": "Size guide distinguishes date/weather from medium/large event lists, eleven-row ceiling, variable date span, readability and missing-data checks."
+          },
+          {
+            "intent": "Lock Screen, Live Activity and privacy",
+            "status": "substantively_covered",
+            "bodyEvidence": "Lock Screen and countdown guides distinguish accessory widgets, Live Activity, notifications, titles visible while locked, permissions and stale content."
+          },
+          {
+            "intent": "StandBy tomorrow plan",
+            "status": "substantively_covered_with_runtime_boundary",
+            "bodyEvidence": "Bedside guide qualifies actual picker availability, display persistence and complete tomorrow review; no unsupported special agenda promised."
+          },
+          {
+            "intent": "iPad-specific widget setup",
+            "status": "scoped_gap_not_new_article_approved",
+            "bodyEvidence": "Guides explain layout behavior but installation instructions and cited setup page are iPhone-specific. No complete iPad installation/placement walkthrough or device observation established."
+          },
+          {
+            "intent": "An eligible later appointment is not among displayed widget rows",
+            "status": "partially_covered_split_across_guides",
+            "bodyEvidence": "Size guide covers finite rows but missing-event guide could explicitly separate visible-list truncation from a missing nearest eligible event."
+          }
+        ],
+        "titleCorrection": "Do not retain proposed month/next-event/agenda-widget title as a Cloud capability list. Native families establish date/weather and event lists, not a month-grid widget."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "iPad official gallery steps, same-device data check and nearest-eligible-versus-row-limit diagnosis integrated; website mobile/tablet layouts verified. Native installed-release behavior remains untested.",
+      "localizedFollowup": {
+        "date": "2026-10-22",
+        "newEditions": [
+          "bg",
+          "ja"
+        ],
+        "updatedEditions": [
+          "de-DE",
+          "es-ES",
+          "fr-FR",
+          "it"
+        ],
+        "canonical": "the-widget-that-shows-what-is-next",
+        "scope": "Full updated guide with iPad same-device check, timed-future eligibility and finite visible rows. Bounded translation review, no native-speaker or hardware certification.",
+        "evidence": [
+          "batch25-widget-localization/root-final-review.json",
+          "batch25-widget-localization/audit-other-four.json",
+          "batch25-widget-localization/audit-de-es-cross-review.json",
+          "batch25-public-qa.json"
+        ]
+      }
+    },
+    {
+      "id": "work-personal-filtering",
+      "keywordCandidates": [
+        "separate work personal calendar",
+        "color code calendars iPhone",
+        "hide calendar events view"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "busycal",
+        "readdle"
+      ],
+      "proposedTitle": "Keep work and personal plans readable in one calendar",
+      "originalContribution": "Use a simple color/visibility scheme, clarify hiding is not deletion, and make a weekly availability review. Separate calendar filtering from permission changes.",
+      "publicationGate": "Verify Cloud Calendars filtering and coloring controls; no claim of Focus Filter integration without proof.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/work-and-personal-without-two-apps/",
+      "bodyReviewEvidence": "batch22-coverage/sharing-work.json",
+      "latestIntentAssessment": {
+        "id": "work-personal-filtering",
+        "beforeStatus": "candidate_existing_content_comparison_pending",
+        "proposedStatus": "english_existing_body_reviewed_substantive_core_with_selection_scope_correction_proposed",
+        "canonical": "/articles/work-and-personal-without-two-apps/",
+        "coveredIntents": [
+          {
+            "intent": "Read work and personal plans together",
+            "evidence": "Sections 1–3 distinguish overview, account/storage context, colours, visibility and destination; section 4 correctly distinguishes Base/Advanced/Premium and provider permission."
+          },
+          {
+            "intent": "Filtering versus permissions, notifications and deletion",
+            "evidence": "Section 2 separates visibility from sharing and advises checking notifications. However, Hiding is a display choice can understate selected-calendar effects on Google sync and notification input in the existing native proof record."
+          },
+          {
+            "intent": "Busy time without copying private details",
+            "evidence": "Section 5 already contains a worked approved manual-block workflow and recipient-side check. It explicitly does not advertise automatic masking."
+          }
+        ],
+        "remainingGaps": [
+          {
+            "intent": "Weekly availability review after filtering",
+            "status": "small_useful_workflow_step_missing",
+            "recommendation": "Restore the calendars relevant to the decision before judging an empty slot. Do not add calendar sets, per-person filters or Focus integration."
+          },
+          {
+            "intent": "Selection is not always a purely visual operation",
+            "status": "concrete_qualification_needed",
+            "recommendation": "Replace the display-only-sounding paragraph with bounded selection/synchronization/notification scope, using the existing source-backed proof. No claim that all providers stop or resume identically."
+          },
+          {
+            "intent": "Exact Cloud colour/filter menu tutorial",
+            "status": "not_established_by_this_review",
+            "recommendation": "Current article gives generic conventions and attributes checkbox instructions to Apple. Keep them as such; verify native controls before adding a Cloud-specific click path."
+          }
+        ],
+        "strongestExistingGuideImprovement": {
+          "route": "/articles/work-and-personal-without-two-apps/",
+          "action": "Clarify selected-calendar side effects, then add a brief restore-and-review step within the existing colour/visibility section.",
+          "draftProvided": true,
+          "file": "research/batch22-coverage/work-and-personal-without-two-apps.json"
+        }
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Selected-calendar scope qualification and restore-relevant-calendars review step integrated. No all-provider stop/resume claim.",
+      "localizedFollowup": {
+        "locales": [
+          "bg",
+          "de-DE",
+          "es-ES",
+          "fr-FR",
+          "it",
+          "ja"
+        ],
+        "evidence": "batch23-work-personal/final-review.json",
+        "scope": "Full revised guide translations, structural/semantic bounded review; not independent native-speaker or product runtime certification."
+      }
+    },
+    {
+      "id": "sync-troubleshooting",
+      "keywordCandidates": [
+        "calendar events missing iPhone iPad",
+        "calendar not syncing",
+        "old calendar events missing"
+      ],
+      "sourceIds": [
+        "readdle-troubleshooting-index",
+        "timepage-sync",
+        "google-apple"
+      ],
+      "proposedTitle": "Find which layer is hiding a calendar event",
+      "originalContribution": "Decision sequence: locate owning provider, verify event exists there, check account and calendar visibility, compare another device, then provider-specific support. Distinguish missing history from lost data.",
+      "publicationGate": "Read full official troubleshooting bodies; do not copy destructive reset/full-sync advice or guarantee recoverability.",
+      "status": "english_existing_bodies_reviewed_substantive_diagnostics_coverage_provider_specific_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/what-calendar-sync-actually-does/",
+      "supportingRoutes": [
+        "/articles/when-two-calendars-disagree/",
+        "/articles/google-calendars-that-never-reach-your-iphone/",
+        "/articles/find-old-calendar-events-by-account-date-and-title/"
+      ],
+      "bodyReviewEvidence": "research/batch20-ledger-reconciliation-aso.json",
+      "intentAssessment": [
+        {
+          "intent": "Calendar not syncing between iPhone and iPad",
+          "status": "substantively_covered_as_non_destructive_diagnosis",
+          "evidence": "Sync guide sections 1–5 distinguish connection types and perform a harmless provider/direction comparison, without a fixed refresh promise or reset-first advice."
+        },
+        {
+          "intent": "A Google calendar or event is missing",
+          "status": "substantively_covered",
+          "evidence": "Google missing-calendar guide sections 1–6 separately checks web identity/access, hidden versus absent calendars, iOS versus direct routes, selection, exact dates and support escalation. It does not promise every accessible calendar appears."
+        },
+        {
+          "intent": "Old calendar events are missing",
+          "status": "substantively_covered_as_search_and_date_scope_diagnosis",
+          "evidence": "Old-event guide sections 1–6 identifies title matching, current-year app search, provider advanced search, browsing versus search and local calendar absence of an assumed cloud archive. No guarantee of recovery."
+        },
+        {
+          "intent": "Two copies disagree or appear duplicated",
+          "status": "substantively_covered_with_one_useful_example_remaining",
+          "evidence": "Disagreement guide sections 1–5 checks record identity, provider view, time zone, recurrence and permissions, rejects universal last-edit-wins, hides/restores visibility and verifies one authorised correction."
+        }
+      ],
+      "remainingIntentGaps": [
+        {
+          "gap": "Readers have to assemble the symptom branches from several guides.",
+          "action": "Add a short diagnostic routing list to what-calendar-sync-actually-does: calendar absent / listed but unchecked / exact event date absent / title search empty / two entries differ. Link each to the existing specific guide. This is navigation of existing depth, not a demand for another article.",
+          "priority": "medium",
+          "status": "fulfilled_current_body_verified_batch42",
+          "evidence": "research/batch42-ledger-reconciliation.json"
+        },
+        {
+          "gap": "A generated destination copy from a separate replication service is not worked through as an explicit example in the disagreement guide.",
+          "action": "Add one bounded example under Hide first: identify the original provider event, the separate destination calendar and the service that created it; hiding a displayed calendar does not remove a stored destination copy. Point disconnect decisions to the existing disconnect guide; do not invent clone markers or cleanup outcomes.",
+          "priority": "medium",
+          "evidenceRecord": "research/competitors/batch11-export-duplicates-primary-20261021.json"
+        },
+        {
+          "gap": "Exact provider/client repair procedures and service-specific history limits remain outside this body review.",
+          "action": "Do not claim universal iCloud/Microsoft/shared-resource troubleshooting, full archive loading or recovery. Before expanding a provider branch, reread its current official help and the existing Exchange/help guides. Readdle troubleshooting remains an index-only original discovery; it is not a completed substantive source read.",
+          "priority": "research_gate"
+        }
+      ],
+      "coverageScope": "Complete current English bodies reviewed for these tasks, not every provider repair/migration path or all translated bodies.",
+      "diagnosticRoutingFollowup": {
+        "date": "2026-10-22",
+        "evidence": [
+          "batch21-sync-routing/audit-aso.json",
+          "batch21-sync-routing/root-polish.json",
+          "batch21-static-qa.json"
+        ],
+        "change": "Five symptom branches now point to actual existing guide labels/related links; local calendars remain distinct from provider accounts. Main sections/FAQ/sources unchanged.",
+        "remaining": "Provider-specific repair/recovery and migration gaps remain; branch routing is not universal repair."
+      },
+      "duplicateImportFollowup": {
+        "status": "scoped_selection_caveat_and_google_import_faq_published",
+        "canonicals": [
+          "when-two-calendars-disagree",
+          "what-calendar-sync-actually-does",
+          "calendar-export-ics-pdf-and-backup"
+        ],
+        "evidence": "batch26-duplicates/final-review.json",
+        "limits": "No general cleanup, universal repeat-import dedup, provider pause/resume identity or released-runtime certification."
+      }
+    },
+    {
+      "id": "timezones",
+      "keywordCandidates": [
+        "calendar time zone travel",
+        "schedule meeting different time zones"
+      ],
+      "sourceIds": [
+        "fantastical",
+        "busycal"
+      ],
+      "proposedTitle": "Plan a meeting across time zones without changing its meaning",
+      "originalContribution": "Original example contrasts event time zone, device display zone and all-day date. Address daylight-saving changes with dated examples after primary verification.",
+      "publicationGate": "Verify Cloud Calendars time-zone support; do not transfer competitor favorite-zone features.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/time-zones-and-the-flight-you-booked/",
+      "bodyReviewEvidence": "batch22-coverage/tasks-zones-primary.json",
+      "latestIntentAssessment": {
+        "id": "timezones",
+        "status": "covered_existing_canonical",
+        "canonical": "time-zones-and-the-flight-you-booked",
+        "basis": "Complete current seven-section guide distinguishes event and display zones, destination appointments, independent flight endpoints, seasonal recurring-call changes, all-day dates and feed diagnosis. Provider controls explicitly separated from Cloud.",
+        "remaining": "No new timezone page needed. Native/released behavior not reverified in this research; existing source qualification retained."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage."
+    },
+    {
+      "id": "tasks-timeblocking",
+      "keywordCandidates": [
+        "calendar tasks vs events",
+        "time blocking iPhone calendar"
+      ],
+      "sourceIds": [
+        "readdle",
+        "busycal"
+      ],
+      "proposedTitle": "Turn a task list into a realistic calendar day",
+      "originalContribution": "Explain due date versus reserved time, add travel/buffer intervals and show rescheduling an unfinished block. Treat manual events as generic workflow if no task integration.",
+      "publicationGate": "Verify task/Reminders integration before product claims; further primary task documentation required.",
+      "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "canonical": "/articles/planning-a-week-in-ten-minutes/",
+      "bodyReviewEvidence": "batch22-coverage/tasks-zones-primary.json",
+      "latestIntentAssessment": {
+        "id": "tasks-timeblocking",
+        "status": "covered_existing_canonical_with_targeted_improvement",
+        "canonical": "planning-a-week-in-ten-minutes",
+        "basis": "Complete current guide covers deadlines versus proposed work blocks, travel/setup gaps, fixed commitments, destination/permission checks and shared responsibility. It lacks an explicit unfinished-block review example.",
+        "remaining": "Integrated task completion, Reminders/Google Tasks sync and carry-forward are competitor capabilities, not established Cloud capabilities."
+      },
+      "coverageScope": "Complete reviewed current English bodies and recorded/fresh scoped primary evidence. Not all translated bodies, every provider/hardware path or measured ranking/citation coverage.",
+      "targetedFollowupEvidence": "batch22-targeted-guides/mapping.json",
+      "currentFollowup": "Added original Tuesday work-block versus Friday deadline example. It is manual planning, not task completion or automatic carry-forward."
+    },
+    {
+      "id": "deleted-event-recovery",
+      "keywordCandidates": [
+        "recover deleted calendar events iPhone",
+        "restore deleted Google Calendar events",
+        "iCloud calendar recovery"
+      ],
+      "candidateBasis": "Provider/publisher task language from two new BusyCal bodies and exact Google/Apple recovery documentation; inferred user-intent aliases, not measured search terms/ranks.",
+      "researchEvidence": "batch29-competitor-intents/decision.json",
+      "canonical": "/articles/recover-deleted-calendar-events-iphone/",
+      "originalContribution": "Missing-versus-deleted gate, Google selective Trash versus iCloud calendar-version replacement, recurrence/guest/resource/sharing consequences, club venue example and postrecovery verification.",
+      "status": "english_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Root full primary and draft review plus independent factual review passed; no Cloud restore controls inferred."
+    },
+    {
+      "id": "birthday-source-diagnosis",
+      "keywordCandidates": [
+        "missing birthday in iPhone calendar",
+        "contact birthdays not showing",
+        "birthday calendar from contacts"
+      ],
+      "candidateBasis": "Inferred intent aliases from fresh publisher/provider task language and one bounded web discovery query; not measured Google terms/ranks or search volumes.",
+      "researchEvidence": "batch31-next-discovery.json",
+      "nativeBoundaryEvidence": "batch31-birthday-source-evidence.json",
+      "canonical": "/articles/what-an-all-day-event-really-means/",
+      "originalContribution": "Identify owning contact/provider/manual record before creating a duplicate yearly event; distinguish iCloud Contacts and Google linked/manual behavior, destructive sync-disable consequence and conditional Cloud display/edit boundaries.",
+      "status": "english_existing_canonical_expanded_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Root full before/body +fresh primary reads; independent full draft review and exact preservation; complete visible/static/public checks. No fabricated directGooglebirthdate import/editor or universal view/alert guarantee."
+    },
+    {
+      "id": "calendar-color-settings",
+      "keywordCandidates": [
+        "change calendar color iPhone",
+        "different calendar colors between apps",
+        "calendar color changes back",
+        "color one calendar event"
+      ],
+      "candidateBasis": "Inferred task aliases from two publicwebsearchqueries and primaryApple/Google/BusyCal publisher bodies; not fixed-locationGoogleSERP,measuredterms,rank orvolume.",
+      "researchEvidence": "batch33-colors/evidence.json",
+      "nativeBoundaryEvidence": "batch33-calendar-color-source.json",
+      "canonical": "/articles/change-calendar-color-iphone/",
+      "originalContribution": "Branch between calendar-wide color,per-eventproviderfeatures and displaystyle; actualeditableandreceivedcontrols,Google/Microsoftdifferences and reversible sourcecomparison without movingrecords.",
+      "status": "english_bulgarian_published_verified",
+      "measuredRank": null,
+      "measuredSearchVolume": null,
+      "chatgptCitationEvidence": null,
+      "publicationGate": "Rootauthored/fullBGread; independentfullENfactual/editorial andBGcrossreview; exact oneUIprecisionchangechain; completedeliverychecks."
+    },
+    {
+      "id": "shift-work-calendar-iphone-rotating-schedules",
+      "keywordCandidates": [
+        "best shift work calendar app iPhone rotating schedule",
+        "shift calendar app export Apple Calendar"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/shift-work-calendar-iphone-rotating-schedules/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "booking-link-or-shared-calendar",
+      "keywordCandidates": [
+        "calendar app booking link availability iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/booking-link-or-shared-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "natural-language-calendar-events-iphone",
+      "keywordCandidates": [
+        "calendar app natural language input iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/natural-language-calendar-events-iphone/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "cozi-timetree-family-calendar-iphone-android",
+      "keywordCandidates": [
+        "Cozi vs TimeTree external calendar sync",
+        "best shared family calendar app iPhone Android"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/cozi-timetree-family-calendar-iphone-android/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "keywordCandidates": [
+        "iPhone calendar app Apple Reminders Google Tasks integration"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/iphone-calendar-tasks-reminders-versus-event-alerts/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "automatic-time-blocking-versus-manual-calendar",
+      "keywordCandidates": [
+        "Motion alternative automatic time blocking calendar iPhone"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/automatic-time-blocking-versus-manual-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "what-is-a-cloud-calendar",
+      "keywordCandidates": [
+        "what is a cloud calendar",
+        "cloud calendar"
+      ],
+      "status": "implemented_english_source_backed",
+      "canonical": "/articles/what-is-a-cloud-calendar/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Distinct workflow guide with publisher attribution, worked examples and sources. Publication/readback records are kept separately."
+    },
+    {
+      "id": "fantastical-readdle-calendar366-iphone-comparison",
+      "keywordCandidates": [
+        "Fantastical vs Calendars by Readdle Calendar 366 iPhone",
+        "Calendar 366 vs Fantastical iPhone"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/fantastical-readdle-calendar366-iphone-comparison/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "iphone-calendar-language-alternate-calendar-settings",
+      "keywordCandidates": [
+        "iPhone calendar showing Chinese characters language alternate calendar"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/iphone-calendar-language-alternate-calendar-settings/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "share-assign-reminders-iphone-calendar-difference",
+      "keywordCandidates": [
+        "share assign reminders iPhone family list"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/share-assign-reminders-iphone-calendar-difference/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "can-others-see-google-calendar-tasks",
+      "keywordCandidates": [
+        "can others see my Google Calendar tasks"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/can-others-see-google-calendar-tasks/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Publisher-source guide; public HTML and build verified, no device benchmark or rank promise."
+    },
+    {
+      "id": "ipad-family-calendar-display-skylight-dakboard",
+      "keywordCandidates": [
+        "iPad wall calendar Skylight alternative family display"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/ipad-family-calendar-display-skylight-dakboard/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Source-backed workflow guide, not a device benchmark or general sync guarantee."
+    },
+    {
+      "id": "sync-google-tasks-apple-reminders-iphone",
+      "keywordCandidates": [
+        "sync Google Tasks Apple Reminders two way iPhone"
+      ],
+      "status": "english_published_verified",
+      "canonical": "/articles/sync-google-tasks-apple-reminders-iphone/",
+      "observedEvidence": "research/competitor-map-20261022/coverage-matrix.json",
+      "measuredSearchVolume": null,
+      "qualityScope": "Source-backed workflow guide, not a device benchmark or general sync guarantee."
+    }
+  ],
+  "remaining": [
+    "Complete focused actual-query and substantive primary-source review for five originally named census entries: Weather Calendar Together, Dejal/Weather Events, Any.do, Vimcal and Amie. Dejal is a publisher alias, not a second independent calendar app.",
+    "Assess the explicit partial or insufficient-intent dispositions in the own-site query map without manufacturing low-value pages.",
+    "Consolidate competitor/topic evidence and current coverage into an auditable final research deliverable; observations cannot prove every possible ranking keyword.",
+    "Verify one later Google Tasks-on-Watch lead; a phone task bridge is not a Watch client.",
+    "Translated article indexing remains held until individual editorial approval.",
+    "App Privacy remains owner-managed; replacement privacy policy remains unpublished."
+  ],
+  "existingCanonicalAudit": "competitors/existing-canonical-review-20261021-batch02.json",
+  "existingCanonicalAuditScope": "All nine original intent clusters now have bounded substantive English coverage review records, with explicit remaining gaps. Batch20 reviewed seven complete bodies for two clusters; batch22 records ten sharing/work, eleven widgets/views and four tasks/timezones body comparisons (overlaps are not counted as unique additions). Route inventory is not quality or exhaustive-query approval.",
+  "asc": {
+    "version": "1.7.4",
+    "state": "PREPARE_FOR_SUBMISSION",
+    "locales": 50,
+    "fields": [
+      "name",
+      "subtitle",
+      "description",
+      "keywords",
+      "promotionalText"
+    ],
+    "verifiedValues": 250,
+    "status": "applied_then_readback_verified_again_batch18",
+    "evidence": "aso/all-locales-readback-batch18.json",
+    "checkedAt": "2026-10-21T23:08:19.029387+00:00",
+    "submission": "not_requested_not_performed",
+    "remaining": "Readback proves persisted proposal values, not native-speaker quality, actual query performance, released-binary correspondence, production privacy or completion of media integration."
+  },
+  "homepage": {
+    "locales": 30,
+    "latestCorrections": "Selected iCloud/Google calendars, available weather, Microsoft calendar connections with Premium; hero lead and search descriptions. Earlier CTA/week/provider/account/weather corrections have separate publication evidence.",
+    "evidence": [
+      "batch20-home-built-qa.json",
+      "batch20-public-qa.json",
+      "batch21-static-qa.json",
+      "batch21-public-qa.json"
+    ],
+    "sitemapUrls": 504,
+    "publicArtifactsExactBuild": 507,
+    "notProven": [
+      "Ranking",
+      "Indexing",
+      "ChatGPT citations",
+      "Released app feature parity",
+      "Independent native-speaker review"
+    ],
+    "headingSpacing": {
+      "locales": 30,
+      "evidence": "batch21-static-qa.json",
+      "change": "Actual text separators between animated words and lines replace physical right margins; responsive visual checks separate."
+    }
+  },
+  "responsive": {
+    "viewport": 575,
+    "document": 564,
+    "status": "verified_public",
+    "screenshot": "/tmp/cloud-calendar-seo-batch01-published.png"
+  },
+  "batch02": {
+    "status": "published_verified",
+    "changedArticleObjects": 113,
+    "locales": 30,
+    "proof": "batch02-changed-articles.json",
+    "correctedIntents": [
+      "shared_calendar_missing",
+      "subscription_plan_choice",
+      "forecast_availability",
+      "calendar_conflicts",
+      "work_personal_ownership",
+      "fantastical_workflow_comparison"
+    ],
+    "ascLocales": [
+      "de-DE",
+      "fr-FR",
+      "es-ES",
+      "it",
+      "ja",
+      "ko"
+    ],
+    "ascProof": "aso/localized-batch02/applied.json",
+    "unreviewedScope": [
+      "Remaining multilingual metadata",
+      "Other Google permission articles",
+      "Other weather science and provider/location claims",
+      "Remaining competitors and measured search/citation queries",
+      "Pending new media"
+    ],
+    "publicProof": "batch02-public-qa.json",
+    "staticProof": "batch02-static-qa.json",
+    "competitorNextBatch": "competitors/batch03-intent-mapping-20261021.json",
+    "totalAscLocalesUpdated": 7,
+    "ascLocalesRemaining": 43
+  },
+  "batch03": {
+    "status": "published_verified",
+    "newEnglishArticles": [
+      "calendar-notifications-missing-silent-or-duplicated",
+      "find-old-calendar-events-by-account-date-and-title",
+      "calendar-export-ics-pdf-and-backup"
+    ],
+    "staticProof": "batch03-static-qa.json",
+    "publicProof": "batch03-public-qa.json",
+    "machineReadableText": {
+      "selectedEnglishGuides": 11,
+      "url": "https://www.cloud-calendars.com/llms-full.txt",
+      "selection": "tools/guide-text-selection.json",
+      "rankingEffect": "not_measured"
+    },
+    "ascAdditionalLocales": [
+      "nl-NL",
+      "pt-BR",
+      "pt-PT",
+      "pl",
+      "sv",
+      "tr",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "ascEvidence": "aso/localized-batch03/applied.json",
+    "totalUpdatedLocales": 15,
+    "remainingLocales": 35,
+    "researchNext": "competitors/batch04-search-discovery-20261021.json"
+  },
+  "fourthPublication": {
+    "date": "2026-10-21",
+    "newTranslatedGuides": 9,
+    "locales": [
+      "bg",
+      "de-DE",
+      "fr-FR"
+    ],
+    "staticProof": "batch04-static-qa.json",
+    "publicProof": "batch04-public-qa.json",
+    "sitemapUrls": 442,
+    "measurementBaseline": "measurement/gsc-baseline-20261021.json",
+    "measurementDecisions": "measurement/gsc-editorial-decisions-20261021.json",
+    "crawlerSample": "measurement/cloudfront-sample-20261020.json",
+    "crawlerIdentity": "unverified declared UA; not citation evidence",
+    "metadataStatus": "All50draftlocales fourtargetfields and preserved names verified with fresh APIreadback",
+    "pendingDrafts": null,
+    "revisedEnglishCanonicals": [
+      "/articles/recurring-events-without-the-mess/",
+      "/articles/time-zones-and-the-flight-you-booked/"
+    ],
+    "changedArticleObjects": 11,
+    "totalUpdatedLocales": 50,
+    "remainingASOLocales": 0,
+    "ascProof": "aso/all-locales-readback-20261021.json",
+    "privacyAudit": "privacy-dataflow-20261021.json",
+    "next": "Remaining source-body reviews, deeper localized prose, further primary competitor discovery and measured answer citations, privacy/release correspondence, later original media integration."
+  },
+  "fifthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 25,
+    "newLocalizedGuides": 9,
+    "newEnglishGuides": 2,
+    "revisedArticles": 14,
+    "homeLocales": 30,
+    "homeFieldPatches": 210,
+    "sitemapUrls": 453,
+    "curatedTextGuides": 21,
+    "metadataAudit": "batch05-built-metadata-qa.json",
+    "publicProof": "batch05-public-qa.json",
+    "chatgptBaseline": "measurement/chatgpt-ui-20261021/summary.json",
+    "chatgptScope": "3 uncontrolled consumer UI responses; 1 first recommendation citing App Store; no global or causal claim",
+    "nextWeatherAudit": "batch06-weather/evidence.json",
+    "goalStatus": "active"
+  },
+  "sixthPublication": {
+    "date": "2026-10-21",
+    "revisedArticles": 13,
+    "locales": [
+      "en-US",
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "it"
+    ],
+    "homeLocales": 30,
+    "homeCopyPatches": 150,
+    "demoStateCorrection": "All absent-snapshot sample states labelled, daily tab localized without14daypromise",
+    "staticProof": "batch06-static-qa.json",
+    "metadataProof": "batch06-built-metadata-qa.json",
+    "publicProof": "batch06-public-qa.json",
+    "curatedExportGuides": 26,
+    "newPrimaryCandidates": "competitors/batch08-weather-accounts-discovery-20261021.json",
+    "status": "published; broadergoalactive"
+  },
+  "seventhPublication": {
+    "date": "2026-10-21",
+    "changedArticles": 13,
+    "newLocalizedExchangeGuides": 4,
+    "revisedArticles": 9,
+    "newEnglishGuides": 0,
+    "sitemapUrls": 457,
+    "priorCanonicalsPreserved": 453,
+    "curatedEnglishTextGuides": 29,
+    "nativeProof": "batch07-providers/evidence.json",
+    "staticProof": "batch07-static-qa.json",
+    "publicProof": "batch07-public-qa.json",
+    "competitorQueue": "competitors/coverage-queue-20261021.json",
+    "queueScope": "71exactURLs with explicit reviewed/partial/discovered/failed provenance; not exhaustivecompetition",
+    "goalStatus": "active"
+  },
+  "eighthPublication": {
+    "date": "2026-10-21",
+    "changedArticles": 14,
+    "newLocalizedRSVPGuides": 4,
+    "revisedArticles": 10,
+    "sitemapUrls": 461,
+    "priorCanonicalsPreserved": 457,
+    "sharedMisleadingPriceRowsRemovedPages": 36,
+    "curatedEnglishTextGuides": 35,
+    "nativeProof": "batch08-sharing/evidence.json",
+    "staticProof": "batch08-static-qa.json",
+    "publicProof": "batch08-public-qa.json",
+    "coverageQueue": "competitors/coverage-current-20261021.json",
+    "queueCounts": {
+      "full": 33,
+      "partial": 7,
+      "discovered": 25,
+      "failed": 6
+    },
+    "next": "Correct remaining25localizedGooglepermissions and29singleeventsharingbodies; notcertifiedbyENrewriteorprice-tableremoval",
+    "goalStatus": "active"
+  },
+  "ninthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 56,
+    "localizedRewrites": 54,
+    "additionalEnglishRevisions": 2,
+    "newRoutes": 0,
+    "sitemapUrls": 461,
+    "articleCount": 398,
+    "locales": 30,
+    "coreGuidesCompleteLocaleCount": 30,
+    "coreGuides": [
+      "sharing-one-event-not-your-calendar",
+      "who-can-see-what-in-google-calendar"
+    ],
+    "curatedEnglishExportGuides": 36,
+    "curatedExportCharacters": 199811,
+    "initialBundleRawBefore": "3.32 MB (failed 3 MB hard budget)",
+    "initialBundleRawAfter": "1.09 MB",
+    "budgetUnchanged": true,
+    "localeContentStrategy": "30 dynamically imported article-locale aggregates; lightweight route/availability index; all398articlepages remain complete prerendered HTML",
+    "initialShellLocaleProof": "batch09-localized-sharing/shell-locale-qa.json",
+    "interactiveProof": "batch09-localized-sharing/browser-chunks-qa.json",
+    "metadataProof": "batch09-built-metadata-qa.json",
+    "staticProof": "batch09-static-qa.json",
+    "publicProof": "batch09-public-qa.json",
+    "publicByteArtifacts": 118,
+    "ascReadOnlyProof": "aso/all-locales-readback-20261021.json",
+    "ascDraftLocalesExactReadback": 50,
+    "ascWritesThisPublication": false,
+    "competitorCorpusCounts": {
+      "exactUrls": 71,
+      "full": 39,
+      "partial": 7,
+      "discovered": 19,
+      "failed": 6,
+      "pending": 32
+    },
+    "nextDrafts": "batch10-feed-review/ (3English objects not integrated or published)",
+    "limitations": [
+      "No native-speaker certification of all translations",
+      "No rank/volume/ChatGPT citation lift inferred from publication",
+      "Other localized revocation/secret-address guides still need replacement",
+      "Localized header logo and section hrefs still point to root; review in next UI pass",
+      "Original new media integration and privacy/released-backend correspondence remain open"
+    ],
+    "goalStatus": "active"
+  },
+  "tenthPublication": {
+    "date": "2026-10-21",
+    "changedArticleObjects": 33,
+    "englishRevisions": 4,
+    "localizedRevocationRewrites": 29,
+    "articleCount": 398,
+    "englishCount": 50,
+    "locales": 30,
+    "sitemapUrls": 461,
+    "newRoutes": 0,
+    "curatedEnglishExportGuides": 40,
+    "curatedExportCharacters": 224808,
+    "staticProof": "batch10-static-qa.json",
+    "metadataProof": "batch10-built-metadata-qa.json",
+    "nativeProofs": [
+      "batch10-feed-review/evidence.json",
+      "batch10-feed-review/root-review.json",
+      "batch10-planning/evidence.json"
+    ],
+    "localizedRevocationProof": "batch10-localized-revocation/root-review.json",
+    "shellNavigation": "Localized header/footer brand and header section anchors preserve locale and canonical trailing slash",
+    "numericTableRemovalPages": 90,
+    "builtLocalizedShellPagesVerified": 460,
+    "competitorCorpusCounts": {
+      "exactUrls": 71,
+      "full": 41,
+      "partial": 7,
+      "discovered": 17,
+      "failed": 6,
+      "pending": 30
+    },
+    "research": "competitors/batch13-ics-troubleshooting-primary-20261021.json",
+    "publicationStatus": "published; all464publicartifacts match final build",
+    "limitations": [
+      "Translated equivalents of3ENGooglefeed/guest/missingcalendar revisions remain to review",
+      "Old ENplanning/weather and many localized core guides still need semantic work",
+      "Initial browser clicks during loading were inconclusive; final loaded HE menu/navigation verified after reload",
+      "No native runtime, released backend correspondence, native-speaker or rank/citation certification"
+    ],
+    "goalStatus": "active",
+    "publicProof": "batch10-public-qa.json",
+    "publicArtifactCount": 464,
+    "browserProof": "batch10-browser-qa.json",
+    "cacheInvalidation": "I4BA964JHCS3W8Z2CF7NT2NNKB (Completed)",
+    "recovery": "S3upload completed; default CFendpointDNS failed; finished only invalidation viaofficialdualstackAPI afterlistingnoexistingrequest"
+  },
+  "twentiethPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuides": 6,
+    "relatedOnlyArticleChanges": 6,
+    "homeFieldsChanged": 60,
+    "articles": 441,
+    "englishArticles": 54,
+    "locales": 30,
+    "sitemapUrls": 504,
+    "allPublicBuildArtifactsVerified": 507,
+    "evidence": [
+      "batch20-source-qa.json",
+      "batch20-static-qa.json",
+      "batch20-home-built-qa.json",
+      "batch20-metadata-qa.json",
+      "batch20-public-qa.json"
+    ],
+    "goalComplete": false
+  },
+  "historyNote": "Publication-numbered fields through earlier batches retain historical counts and scope. currentInventory/asc/homepage and latest publication evidence are the current accounting; none establishes exhaustive competitor/query coverage.",
+  "twentyFirstPublication": {
+    "date": "2026-10-22",
+    "newGuides": 0,
+    "targetedEnglishGuideUpdates": 2,
+    "heroHeadingSpacingLocales": 30,
+    "articles": 441,
+    "englishArticles": 54,
+    "sitemapUrls": 504,
+    "evidence": [
+      "batch21-source-qa.json",
+      "batch21-static-qa.json",
+      "batch21-metadata-qa.json",
+      "batch21-browser-qa.json",
+      "batch21-public-qa.json",
+      "batch21-invalidation-status.json"
+    ],
+    "scope": "Receiving app/account verification and diagnostic routing from actual guide bodies; semantic H1 spacing, all30built headings, representative LTR/RTL visual geometry and507public artifacts verified. Not exhaustive intent/ranking or product-runtime proof.",
+    "goalComplete": false,
+    "publicArtifactsExactBuild": 507
+  },
+  "twentySecondPublication": {
+    "date": "2026-10-22",
+    "targetedEnglishGuides": 4,
+    "newRoutes": 0,
+    "originalClustersReconciled": 6,
+    "allInitialClustersHaveBoundedBodyReview": 9,
+    "widgetGuideScope": "iPhone and iPad Home Screen setup plus visible-row versus missing-nearest-event diagnosis",
+    "coverageEvidence": [
+      "batch22-coverage/sharing-work.json",
+      "batch22-coverage/widgets-views.json",
+      "batch22-coverage/tasks-zones-primary.json",
+      "batch22-ipad-widget/evidence.json"
+    ],
+    "goalComplete": false,
+    "sourceAndDeliveryEvidence": [
+      "batch22-source-qa.json",
+      "batch22-static-qa.json",
+      "batch22-metadata-qa.json",
+      "batch22-browser-qa.json",
+      "batch22-public-qa.json",
+      "batch22-invalidation-status.json"
+    ],
+    "publicArtifactsExactBuild": 507,
+    "actualGoogleObservation": "batch22-coverage/google-ipad-widget-observation.json",
+    "actualGoogleScope": "One signed-in uncontrolled first-page observation. No causal improvement, stable rank or ChatGPT measurement."
+  },
+  "twentyThirdPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuides": 6,
+    "locales": [
+      "bg",
+      "de-DE",
+      "es-ES",
+      "fr-FR",
+      "it",
+      "ja"
+    ],
+    "sourceGuide": "work-and-personal-without-two-apps",
+    "scopedEnglishFaqUpdate": "what-a-subscription-actually-buys",
+    "relatedOnlyBacklinks": 7,
+    "newRoutes": 6,
+    "articles": 447,
+    "englishArticles": 54,
+    "sitemapUrls": 510,
+    "publicArtifactsExactBuild": 513,
+    "sourceAndDeliveryEvidence": [
+      "batch23-source-qa.json",
+      "batch23-static-qa.json",
+      "batch23-metadata-qa.json",
+      "batch23-browser-qa.json",
+      "batch23-public-qa.json",
+      "batch23-invalidation-status.json"
+    ],
+    "goalComplete": false,
+    "limits": [
+      "Actual Cloud IAP Family Sharing eligibility unverified; no claim made.",
+      "No new runtime/native/ASC/media or ranking measurement."
+    ]
+  },
+  "twentyFourthPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 1,
+    "canonical": "calendar-export-ics-pdf-and-backup",
+    "newRoutes": 0,
+    "task": "Differentiate importing copied events from eligible Google calendar ownership transfer and recipient acceptance.",
+    "sourceResearch": "batch24-migration/intent-research.json",
+    "sourceProductBoundary": "batch24-migration/product-evidence.json",
+    "editorialReview": "batch24-migration/final-review.json",
+    "sourceAndDeliveryEvidence": [
+      "batch24-source-qa.json",
+      "batch24-static-qa.json",
+      "batch24-metadata-qa.json",
+      "batch24-invalidation-status.json",
+      "batch24-public-qa.json",
+      "batch24-browser-qa.json"
+    ],
+    "publicArtifactsExactBuild": 513,
+    "goalComplete": false,
+    "scope": "Four public tool queries/31 observed result URLs; four full official-provider bodies and three complete local guide comparisons. No measured Google rank or newly reviewed independent app competitor body."
+  },
+  "twentyFifthPublication": {
+    "date": "2026-10-22",
+    "newLocalizedWidgetEditions": 2,
+    "updatedLocalizedWidgetEditions": 4,
+    "relatedOnlyBacklinks": 2,
+    "newRoutes": 2,
+    "articles": 449,
+    "englishArticles": 54,
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "sourceAndDeliveryEvidence": [
+      "batch25-source-qa.json",
+      "batch25-static-qa.json",
+      "batch25-metadata-qa.json",
+      "batch25-browser-qa.json",
+      "batch25-public-qa.json",
+      "batch25-invalidation-status.json"
+    ],
+    "goalComplete": false,
+    "limits": [
+      "Website viewport testing is not native hardware or widget runtime validation.",
+      "No new ASC, media, indexing or ranking measurement."
+    ]
+  },
+  "twentySixthPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 3,
+    "newRoutes": 0,
+    "tasks": [
+      "Google zero-processed ambiguity: check actual imported destination before deciding on retry.",
+      "Temporary calendar-selection diagnosis: restore selection and consider widget/notification/Google synchronization effects."
+    ],
+    "research": [
+      "batch26-duplicates/intent-research.json",
+      "batch26-duplicates/product-evidence.json",
+      "batch26-duplicates/root-preparation-review.json",
+      "batch26-duplicates/final-review.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch26-source-qa.json",
+      "batch26-static-qa.json",
+      "batch26-metadata-qa.json",
+      "batch26-invalidation-status.json",
+      "batch26-public-qa.json",
+      "batch26-browser-qa.json"
+    ],
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "goalComplete": false,
+    "scope": "Three public tool queries/twelve results/three full official bodies plus bounded native consumers and complete local guide review. No measured Google ranking, exhaustive query or runtime certification."
+  },
+  "twentySeventhPublication": {
+    "date": "2026-10-22",
+    "changedEnglishGuides": 1,
+    "canonical": "a-week-view-that-fits-a-week",
+    "newRoutes": 0,
+    "task": "Manual overnight shift example with explicit following-date endpoint, next-morning planning and recurrence reference.",
+    "research": [
+      "batch27-shift-schedule/intent-research.json",
+      "batch27-shift-schedule/product-evidence.json",
+      "batch27-shift-schedule/root-draft-review.json",
+      "batch27-shift-schedule/final-review.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch27-source-qa.json",
+      "batch27-static-qa.json",
+      "batch27-metadata-qa.json",
+      "batch27-invalidation-status.json",
+      "batch27-public-qa.json",
+      "batch27-browser-qa.json"
+    ],
+    "sitemapUrls": 512,
+    "publicArtifactsExactBuild": 515,
+    "goalComplete": false,
+    "limits": "Not a new rota/template/payroll feature, runtime/overnight layout test or ranking/citation evidence."
+  },
+  "readinessAudit": {
+    "date": "2026-10-22",
+    "evidence": [
+      "batch28-readiness/aso-audit.json",
+      "batch28-readiness/coverage-audit.json",
+      "batch28-readiness/media-audit.json",
+      "batch28-readiness/privacy-release-evidence.json"
+    ],
+    "priorityWork": [
+      "Support contact published in shared footer on all30locales; destination matches existing Terms. Verified mobile/RTL/keyboard; mailbox delivery not tested.",
+      "FR/IT CalDAV editions and scoped EN clarity/restoration polish published and verified. Other translated guide bodies still require bounded review.",
+      "Resolve released1.7.3/source and production data handling correspondence before privacy assurances or declarations.",
+      "Obtain exact new media source/task; bounded repeated audit found only older set.",
+      "Compare genuinely elapsed search/citation observations; no new repeated short-interval measurement."
+    ],
+    "staleGapPolicy": "Earlier embedded assessments and publication entries are historical; use currentFollowup/localizedFollowup and readiness evidence rather than re-adding resolved FAQs or synonym pages.",
+    "asc": "All50descriptions and250textfields now have recorded bounded editorial-read coverage. One additional exactMalayalam correction applied and all50localeexpected fields verified;8description overlay active. Own-language confidence varies; no independent native-speaker or market-demand certification."
+  },
+  "twentyEighthPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuides": 2,
+    "locales": [
+      "fr-FR",
+      "it"
+    ],
+    "englishGuidesPolished": 1,
+    "canonical": "caldav-calendar-on-iphone",
+    "relatedOnlyBacklinks": 2,
+    "supportContact": {
+      "localizedLabels": 30,
+      "address": "support@arte-soft.com",
+      "canonicalPagesUsingSharedFooter": 513,
+      "standaloneLegacyPageUnchanged": "/how-cloud-calendars-rescued-my-schedule-and-sanity.html"
+    },
+    "sitemapUrls": 514,
+    "publicArtifactsExactBuild": 517,
+    "sourceAndDeliveryEvidence": [
+      "batch28-source-qa.json",
+      "batch28-static-qa.json",
+      "batch28-metadata-qa.json",
+      "batch28-invalidation-status.json",
+      "batch28-public-qa.json",
+      "batch28-browser-qa.json",
+      "batch28-caldav-localization/root-primary-readback.json"
+    ],
+    "goalComplete": false,
+    "limits": "Delivery and bounded editorial/visual checks; no discovery lift, mailbox delivery, universal CalDAV support, native runtime or all-language quality claim."
+  },
+  "twentyNinthPublication": {
+    "date": "2026-10-22",
+    "newEnglishGuide": "recover-deleted-calendar-events-iphone",
+    "relatedOnlyBacklinks": 2,
+    "reviewEvidence": [
+      "batch29-competitor-intents/decision.json",
+      "batch29-competitor-intents/root-draft-review.json",
+      "batch29-competitor-intents/final-review.json"
+    ],
+    "websiteEvidence": [
+      "batch29-source-qa.json",
+      "batch29-static-qa.json",
+      "batch29-metadata-qa.json",
+      "batch29-invalidation-status.json",
+      "batch29-browser-qa.json",
+      "batch29-public-qa.json"
+    ],
+    "sitemapUrls": 515,
+    "expectedPublicArtifacts": 518,
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "descriptionsChanged": [
+        "en-US",
+        "fr-FR",
+        "it",
+        "ja",
+        "ko",
+        "pt-BR",
+        "nl-NL"
+      ],
+      "otherFieldsPreserved": true,
+      "fullPostwriteFieldChecks": 250,
+      "evidence": "aso/all-locales-readback-batch29.json",
+      "semanticReviewScope": "Six additional complete five-field locale bodies; excerpt cross-review for seven replacements. Not all50native-language quality approval."
+    },
+    "goalComplete": false,
+    "limits": "No restore operation, new product feature, universal recovery, released-binary correspondence or rankings/citation improvement claim.",
+    "publicArtifactsExactBuild": 518
+  },
+  "thirtiethPublication": {
+    "date": "2026-10-22",
+    "newLocalizedGuide": {
+      "locale": "bg",
+      "slug": "time-zones-and-the-flight-you-booked"
+    },
+    "relatedOnlyBacklinks": 1,
+    "englishGuides": 55,
+    "sitemapUrls": 516,
+    "publicArtifactsExactBuild": 519,
+    "reviewEvidence": [
+      "batch29-bg-timezone/root-review.json",
+      "batch29-bg-timezone/cross-review.json",
+      "batch30-primary-readback.json"
+    ],
+    "sourceAndDeliveryEvidence": [
+      "batch30-source-qa.json",
+      "batch30-static-qa.json",
+      "batch30-metadata-qa.json",
+      "batch30-invalidation-status.json",
+      "batch30-public-qa.json",
+      "batch30-browser-qa.json"
+    ],
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "descriptionCorrection": "ml-IN independent iCloud/Google wording",
+      "currentPersistenceEvidence": "aso/all-locales-readback-batch30.json",
+      "remaining38LocaleReview": "batch30-aso-remaining/coverage-summary.json",
+      "all50DescriptionCoverage": true,
+      "boundedAll250FieldEditorialCoverage": true,
+      "nativeSpeakerCertification": false,
+      "noNamesOrKeywordsChanged": true
+    },
+    "goalComplete": false,
+    "limits": "Language confidence varies, especially some Indic text. No search demand, universal competitor coverage, rankings/citation lift or native release proof."
+  },
+  "thirtyFirstPublication": {
+    "date": "2026-10-22",
+    "articleChanges": [
+      "three-calendar-apps-is-two-too-many",
+      "exchange-calendars-on-an-iphone"
+    ],
+    "purpose": "Restore original calendar selection after diagnosis; acknowledge conditional widget/notification and combined-view Google synchronization effects.",
+    "pricing": "US$ marker with bidi isolation in all30homes, numbers/local-price notes unchanged.",
+    "englishReview": "55 current bodies individually accounted for:32 preserved prior matches +23 complete fresh reads,2 exact reviewed change chains. Not blanket runtime/ranking approval.",
+    "evidence": [
+      "research/batch31-current-english-coverage.json",
+      "research/batch31-source-qa.json",
+      "research/batch31-static-qa.json",
+      "research/batch31-metadata-qa.json",
+      "research/batch31-browser-qa.json",
+      "research/batch31-public-qa.json"
+    ],
+    "nextDiscovery": "research/batch31-next-discovery.json",
+    "scope": "Birthday-source task is candidate research; no new route or Cloud-specific contact support claim approved.",
+    "birthdaySourceAudit": "research/batch31-birthday-source-evidence.json"
+  },
+  "thirtySecondPublication": {
+    "date": "2026-10-22",
+    "changedArticleObjects": 9,
+    "localizedModernizations": {
+      "locales": [
+        "de-DE",
+        "es-ES",
+        "fr-FR",
+        "it"
+      ],
+      "slug": "three-calendar-apps-is-two-too-many",
+      "completeSixSectionDrafts": true
+    },
+    "exactExchangeAppends": 4,
+    "birthdaySourceSection": "/articles/what-an-all-day-event-really-means/",
+    "inventory": "453articles/55English/30locales/516sitemapURLs unchanged",
+    "allActualEditions": "Both combine/Exchange canonicals have5actualeditions EN+DE+ES+FR+IT, now allcurrent and reviewed; no missing-locale editions invented.",
+    "evidence": [
+      "research/batch32-source-qa.json",
+      "research/batch32-existing-editions-qa.json",
+      "research/batch32-current-english-coverage.json",
+      "research/batch32-static-qa.json",
+      "research/batch32-metadata-qa.json",
+      "research/batch32-browser-qa.json",
+      "research/batch32-public-qa.json"
+    ],
+    "scope": "Bounded editorial and delivery evidence, not uniform all-localized quality, runtime or ranking certification."
+  },
+  "thirtyThirdPublication": {
+    "date": "2026-10-22",
+    "newCanonical": "/articles/change-calendar-color-iphone/",
+    "locales": [
+      "en-US",
+      "bg"
+    ],
+    "newLocalizedArticleObjects": 2,
+    "relatedOnlyBacklinks": 3,
+    "originalValue": "Calendar/event/displaystyle and provider distinctions,availableactualCloudcontrols,current-color-row action,receivedpersonalversuscreatorcolors,mismatchesdiagnosiswithoutmovingevents.",
+    "evidence": [
+      "research/batch33-colors/evidence.json",
+      "research/batch33-colors/factual-review-final.json",
+      "research/batch33-colors/bg-cross-review.json",
+      "research/batch33-source-qa.json",
+      "research/batch33-current-english-coverage.json",
+      "research/batch33-static-qa.json",
+      "research/batch33-metadata-qa.json",
+      "research/batch33-browser-qa.json",
+      "research/batch33-public-qa.json"
+    ],
+    "unchangedReviewedBodies": "CalDAV EN/FR/IT full-current-body audit passed without edits; report batch33-caldav-localization-audit.json.",
+    "settingsQueue": "Canonicalsettings alreadycovered; malformedhistoricaldiscovery revalidated throughindex and nextAction reconciled without false fullbody count."
+  },
+  "batch34": {
+    "date": "2026-10-22",
+    "canonical": "what-guests-can-do-to-your-event",
+    "change": "Separate Google meeting visibility and Drive document access, filename exposure and intended account/file-owner checks. One section, practical item and FAQ on existing route.",
+    "inferredKeywordAliases": [
+      "google calendar attachment access denied",
+      "calendar guest cannot open document"
+    ],
+    "aliasesAreMeasuredQueries": false,
+    "mediaCrawl": "Allow public /media/panel/ screenshot renditions under retained other /media/ exclusion; 1240manifestpaths in31media locales. No replacement captures.",
+    "noChangeReview": "Four complete DE/ES/FR/IT export editions require no material fix; missing recovery editions not generated to fill grid.",
+    "evidence": [
+      "research/batch34-discovery/decision.json",
+      "research/batch34-discovery/review.json",
+      "research/batch34-source-qa.json",
+      "research/batch34-media-crawl/review.json",
+      "research/batch34-static-qa.json",
+      "research/batch34-metadata-qa.json",
+      "research/batch34-public-qa.json"
+    ],
+    "limits": "No exhaustive competitor query coverage, measured ranking/citation lift, new media identification or released native correspondence proof."
+  },
+  "batch35": {
+    "date": "2026-10-22",
+    "type": "existing_article_image_accessibility_and_search_context",
+    "change": "Replace emptyalt with concise localized descriptions of actual screenshot subjects in all455article galleries. Semantic filename key preservesRTL ordering; page locale preservesBulgarian description ofENfallbackimages.",
+    "localeDescriptions": 30,
+    "distinctStrings": 150,
+    "renderedImageDescriptions": 2275,
+    "newKeywordsOrPages": 0,
+    "articleBodiesMetadataDatesUnchanged": true,
+    "evidence": [
+      "research/batch35-media-accessibility/visual-review.json",
+      "research/batch35-media-accessibility/locale-proposal/independent-review.json",
+      "research/batch35-media-accessibility/implementation-review.json",
+      "research/batch35-source-qa.json",
+      "research/batch35-static-qa.json",
+      "research/batch35-browser-qa.json",
+      "research/batch35-public-qa.json"
+    ],
+    "limits": "Text alternatives and crawl accessibility do not prove indexing/ranking/citation uplift. Existingcaptures unchanged; actual newmedia generation provenance stillmissing."
+  },
+  "batch36": {
+    "date": "2026-10-22",
+    "action": "Italian whole-calendar sharing localization plus full legacyfreeGoogle purchasing-guidance modernizations",
+    "newItalianCanonicalEdition": "a-calendar-that-is-yours-to-share",
+    "freeGoogleExistingEditionAudit": {
+      "existing": 5,
+      "legacyReplaced": [
+        "it",
+        "de-DE",
+        "es-ES",
+        "fr-FR"
+      ],
+      "currentEnglishUnchanged": true,
+      "absentEditionsNotInvented": 25
+    },
+    "italianSubscriptionGuide": "Complete five-section edition plus conditional purchaseFamilySharing/access distinction",
+    "italianHomeExactFields": 4,
+    "historicalSearchContext": "Ownsitecalendariocloud79impressions1click inOct21retrieval,notcurrentvolume/rank",
+    "discoverySources": [
+      "https://readdle.com/it/calendars",
+      "https://support.apple.com/it-it/guide/iphone/-iph7613c4fb/ios"
+    ],
+    "inferredTask": "Share wholecalendar with correct audience/roles/acceptedidentity instead ofequating singleevent invitations, providerACLs orpurchase withmembership",
+    "evidence": [
+      "research/batch36-italian-discovery/decision.json",
+      "research/batch36-italian/independent-review.json",
+      "research/batch36-free-google/independent-review.json",
+      "research/batch36-source-qa.json",
+      "research/batch36-static-qa.json",
+      "research/batch36-public-qa.json"
+    ],
+    "limits": "No exhaustivekeywords/newmeasuredGoogleorChatGPTlift/newmedia orreleasedsourcecorrespondenceproof. OldunusedUSDclaimlabels were notrenderednumericprices."
+  },
+  "batch37": {
+    "date": "2026-10-22",
+    "action": "New Apple Watch calendar diagnostic canonical with reviewed EN and BG editions",
+    "canonical": "calendar-on-apple-watch",
+    "candidateIntents": [
+      "calendar on Apple Watch",
+      "Apple Watch calendar missing events",
+      "calendar complication not updating"
+    ],
+    "queryEvidenceLimit": "Publisher-topic and task inference from fresh public discovery; not measured rank, volume or ChatGPT recommendation.",
+    "originalContribution": "Trace same event/source/phone/watch display; distinguish companion app/complication/widget/Live Activity, fresh updates and safe disposable-event diagnosis.",
+    "sourceEvidence": "research/batch37-watch/evidence.json",
+    "productBoundary": "Current source has EventKit mirrors and no declared Watch target; guide makes no released companion absence or guaranteed Watch visibility claim.",
+    "reviewEvidence": [
+      "research/batch37-watch/final-review.json",
+      "research/batch37-watch/independent-editorial-primary-review.json",
+      "research/batch37-watch/bg-review.json"
+    ],
+    "noChangeFindings": [
+      "research/batch37-appclip/audit.json",
+      "research/batch37-noapp-discovery/decision.json"
+    ],
+    "verification": [
+      "research/batch37-source-qa.json",
+      "research/batch37-static-qa.json",
+      "research/batch37-metadata-qa.json",
+      "research/batch37-browser-qa.json",
+      "research/batch37-public-qa.json"
+    ],
+    "limits": "No exhaustive keyword, all-localization approval, new media, released-runtime or measured discovery uplift proof."
+  },
+  "batch38": {
+    "date": "2026-10-22",
+    "action": "Incoming unwanted-event repair canonical EN plus full DE timezone edition; remove future-free-pricing promise in29home labels",
+    "newEnglishCanonical": "unwanted-calendar-events-iphone",
+    "newGermanEdition": "time-zones-and-the-flight-you-booked",
+    "candidateTasks": [
+      "calendar spam on iPhone",
+      "unwanted calendar invitations versus subscriptions",
+      "Kalender Zeitzonen Reise iPhone"
+    ],
+    "evidenceStatus": "Observed primary provider task topics and missing edition; candidate query phrasings are inferred, not measured rank/volume.",
+    "originalContribution": "Identify invitation/subscription/ordinaryrecord first; report only eligible provider event, check series effects, separate new-invitation filtering and cross-device source verification.",
+    "localization": "Complete7sectionDEtimezonearticle, not empty keywordlandingpage; providercontrol and event/display distinction retained.",
+    "home": "29 localized zero-price period labels replace forever promise; exact3subscription-wording corrections accepted, allotherfields/prices/component untouched; Italyalreadycorrectedbatch36.",
+    "noForcedChanges": "Complete bounded FR/ITCalDAV and ITownership audit found no materialcorrection.",
+    "evidence": [
+      "research/batch38-discovery/decision.json",
+      "research/batch38-discovery/exacthashreview.json",
+      "research/batch38-localized/de-timezone-independent-review.json",
+      "research/batch38-home-pricing/independent-label-review.json",
+      "research/batch38-root-discovery.json",
+      "research/batch38-static-qa.json",
+      "research/batch38-browser-qa.json",
+      "research/batch38-public-qa.json"
+    ],
+    "limits": "No newmedia/releasedsourcecorrespondence/alltranslatedquality/GoogleChatGPTliftproof."
+  },
+  "batch39": {
+    "date": "2026-10-22",
+    "action": "FullFrenchandSpanishtimezoneguides,concretemulticalendarhomecopyin24locales,localizedASCmarketingdestinations",
+    "newLocalizedEditions": [
+      "fr-FR/time-zones-and-the-flight-you-booked",
+      "es-ES/time-zones-and-the-flight-you-booked"
+    ],
+    "english58BodiesUnchanged": true,
+    "home": "24targetedonly/one-viewrhetoricreplacedbyconcretecomparisonandselected-calendarqualification. 5optionalrowsnotapplied,ITalreadycurrent. Softermarketingnotcalledfalsefact.",
+    "asc": {
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "fieldOnly": "marketingUrl",
+      "writes": 31,
+      "freshReadbackLocales": 50,
+      "allOtherLocaleAttributesPreserved": true,
+      "fallbacksUnchanged": 19,
+      "sameLanguageRegionalAliases": [
+        "fr-CA→fr-FR",
+        "es-MX→es-ES",
+        "pt-PT→pt-BR"
+      ],
+      "notRankingGuarantee": true
+    },
+    "newDiscoveryPending": "ExistingEnglishsyncguideneedsofflinepreflight/providerappversusbrowserdistinction. No newcanonicaljustified,notyetintegrated;rootGooglefetchblockedbysorryredirect,no retry/bypass.",
+    "evidence": [
+      "research/batch39-root-review.json",
+      "research/batch39-timezones/independent-review.json",
+      "research/batch39-home/independent-review.json",
+      "research/batch39-asc-urls/applied-readback.json",
+      "research/batch39-static-qa.json",
+      "research/batch39-public-qa.json"
+    ],
+    "limits": "Publicationandfieldpersistence,notexhaustivekeywords/nativequality/runtime/newmedia/GoogleChatGPTliftproof."
+  },
+  "batch40": {
+    "date": "2026-10-22",
+    "action": "SubstantiveofflinepreparationwithinexistingEnglishsyncguideandcompleteItaliantimezoneedition",
+    "canonicalExpanded": "what-calendar-sync-actually-does",
+    "newItalianEdition": "time-zones-and-the-flight-you-booked",
+    "newEnglishCanonicals": 0,
+    "researchBasis": "batch39-discovery providerappvsbrowser/offline taskgap comparedwith3fullguides; notnewqueryvolume/rankproof.",
+    "originalContribution": "Preflightactualapp/dates/readableitinerary,disposableownednoguestofflinecheck,localeditvsremoteproviderdelivery,reconnectverificationandlocal-onlycalendarqualification. No newCloudspecificofflinepromise.",
+    "sourceBoundary": "Googleappandmobilebrowsercontrolsattributed; recordedpriorfullbodyevidenceusedafterfreshfetchblockedGoogle/sorry. No retry/bypass/newfullreadclaim.",
+    "preservation": "All7oldENsectionsandalloldfieldsrestoredexactlybyinversedelta;1new4paragraphsection+1step+1FAQ+2sources+1relatedroute. Italianfull7sections14paras5steps4FAQ4sources,actualrelatedonly.",
+    "asc": "No offline keyword or capability added to AppStoremetadata because Cloudspecificbehaviornotverified. Prior31marketingURLchangespreserved;noASCwrite.",
+    "evidence": [
+      "research/batch40-offline/final-review.json",
+      "research/batch40-timezones/independent-review.json",
+      "research/batch40-root-review.json",
+      "research/batch40-static-qa.json",
+      "research/batch40-browser-qa.json",
+      "research/batch40-public-qa.json"
+    ],
+    "limits": "No newmedia/releasedruntime/alllocalequality/measuredGoogleChatGPTupliftproof."
+  },
+  "batch41": {
+    "status": "source_and_ASC_release_evidence_completed",
+    "evidence": "research/batch41-release/README.md",
+    "draft": "1.7.4/build16 VALID; local animations fast-forwarded; active checkout preserved",
+    "limit": "Public1.7.3/build12 source correspondence and production data handling unresolved."
+  },
+  "batch42": {
+    "status": "published_and_verified",
+    "research": "research/batch42-discovery.json",
+    "editorial": "research/batch42-independent-review.json",
+    "reconciliation": "research/batch42-ledger-reconciliation.json",
+    "scope": "Existing EN replies guide expanded with provider-attributed time-proposal workflow; new full BG all-day/birthday guide; related-only BG timezone backlink. No new Cloud proposal capability claim or ASC changes.",
+    "verification": {
+      "build": "/tmp/cloud-calendar-batch42-build.log",
+      "static": "research/batch42-static-qa.json",
+      "public": "research/batch42-public-qa.json",
+      "browser": "research/batch42-browser-qa.json",
+      "sitemapUrls": 527,
+      "exactPublicArtifacts": 531,
+      "invalidation": "IEWE7T07ROC1Y2UGFV9YOUX02M",
+      "invalidationStatus": "Completed"
+    }
+  },
+  "batch43": {
+    "status": "published_and_verified",
+    "research": "research/batch43-discovery.json",
+    "editorial": "research/batch43-independent-review.json",
+    "scope": "Existing ENweekguide expanded; complete Germanedition new; one DErecurrence relatedlink only. No ASC/native/backend/media/legal/pricing changes.",
+    "verification": {
+      "public": "research/batch43-public-qa.json",
+      "metadata": "research/batch43-metadata-qa.json",
+      "sitemapUrls": 528,
+      "exactPublicArtifacts": 532,
+      "invalidation": "I9AI6YB9OL5T40T1GX2Y5UQ9J0",
+      "invalidationStatus": "Completed",
+      "browserVisualCheck": "Not performed for this batch; not inferred from earlier screenshots"
+    }
+  },
+  "ascPriority20261022": {
+    "status": "strong_copy_written_and_verified_privacy_publication_pending",
+    "version": "1.7.4",
+    "build": "16",
+    "locales": 50,
+    "fieldsVerified": 150,
+    "keywordsCharacters": [
+      97,
+      100
+    ],
+    "descriptionCharacters": [
+      3807,
+      4000
+    ],
+    "authoritativeManifest": "research/asc-priority-20261022/strong-aso-manifest.json",
+    "readback": "research/asc-priority-20261022/strong-aso-readback.json",
+    "media": "research/asc-priority-20261022/media-readiness.json",
+    "keywordEvidenceLimit": "Competitor/task and own Search Console evidence; no Apple Ads measured search volume or proven strongest/ranking claim.",
+    "privacy": "15-type declaration prepared, separate publication confirmation pending; policy rewrite proposal not published.",
+    "historicalVerifierNotice": "Earlier all-locales verifiers/proposals describe their historical snapshot, not the new desired descriptions/keywords.",
+    "goalComplete": false
+  },
+  "currentSearchEvidence": {
+    "googleActualQueries": 45,
+    "freshConsumerChatGPTConversations": 15,
+    "seededComparisonsWithinFreshChatGPT": 1,
+    "historicalConsumerChatGPTConversations": 3,
+    "ownSiteSearchConsoleQueryRows": 150,
+    "classifiedOriginalRelatedStrings": 212,
+    "evidence": "research/competitor-map-20261022/research-report.json",
+    "scope": "Explicit observed queries, not exhaustive rankings or search volumes.",
+    "classifiedRelatedStrings": 307,
+    "originalRelatedStrings": 212,
+    "laterRelatedStrings": 95,
+    "allAvailableOwnSiteQueryRowsReviewed": 150,
+    "semrush": {
+      "domains": 3,
+      "visibleRows": 30,
+      "uniquePhrases": 23,
+      "database": "US",
+      "device": "Desktop",
+      "reportDate": "2026-10-21",
+      "limitation": "Free preview only; full list/filter/export and AI analysis gated.",
+      "evidence": "research/semrush-20261023"
+    }
+  },
+  "currentMediaEvidence": {
+    "verifiedPublicMediaObjects": 1882,
+    "websiteReadsS3": true,
+    "persistentLocalMarketingMedia": false,
+    "evidence": "research/media-asc-20261022/integration-audit.json",
+    "note": "Replaces the obsolete remaining-task reference to locating a future screenshot/video set."
+  },
+  "currentIndexingPolicy": {
+    "translatedArticlesAndHubs": "noindex,follow until individual approval",
+    "englishArticles": "indexable",
+    "localizedProductHomepages": "indexable",
+    "sitemapUrls": 105,
+    "evidence": "research/competitor-map-20261022/comparison-build-check.json"
+  },
+  "latestPublication": {
+    "date": "2026-10-23",
+    "slug": "weekly-schedule-builder",
+    "url": "https://www.cloud-calendars.com/articles/weekly-schedule-builder/",
+    "source": "Semrush observed Morgen schedule-builder demand plus publisher documentation; own original implementation",
+    "checks": "research/semrush-20261023/publication-check.json"
+  },
+  "latestResearchIncrement": {
+    "date": "2026-10-23",
+    "googleQueries": 45,
+    "consumerChatGPTConversations": 15,
+    "englishArticles": 72,
+    "newArticle": "weather-calendar-history-versus-forecast-iphone",
+    "expandedArticles": [
+      "calendar-on-apple-watch",
+      "iphone-calendar-language-alternate-calendar-settings",
+      "reading-a-chance-of-rain"
+    ],
+    "evidenceDirectory": "research/competitor-map-20261022",
+    "completion": "Incomplete final consolidation and partial-intent audit; not exhaustive ranking export.",
+    "evidence": "research/competitor-map-20261022/research-report.json",
+    "remaining": "Broader competitor organic query/rank inventory requires source data; user asked which existing tool is available."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "targetSlug": "the-widget-that-shows-what-is-next",
+  "sourceFile": "src/app/content/en-US/articles-widgets.ts",
+  "sourceFileSha256": "f89b8367e105a01fb96325686e4f2edbc7a4fac62abfe26257ad0c94eff9497b",
+  "action": "Targeted addition only; merge with the separately proposed row-limit section rather than replacing the whole object.",
+  "proposedTitle": "Show upcoming calendar events on your iPhone or iPad Home Screen",
+  "titleBefore": "Show upcoming calendar events on your iPhone Home Screen",
+  "sectionInsertion": {
+    "afterHeading": "Choose the event layout first",
+    "section": {
+      "heading": "Add and check the widget on iPad",
+      "body": [
+        "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+        "Choose an event-list layout when you need appointments. A larger iPad does not imply an extra-large Cloud Calendars layout or a month grid. If a size or layout is not offered, use an available one rather than looking for an undocumented setting.",
+        "Open Cloud Calendars on that iPad and compare a known future timed appointment from a selected calendar. Seeing it on your iPhone alone does not verify the iPad’s data. Continue with the eligibility and update checks below if the widget differs. These Home Screen steps do not establish support for accessory Lock Screen widgets."
+      ]
+    }
+  },
+  "appendSource": {
+    "label": "Apple: Add, edit, and remove widgets on iPad",
+    "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+  },
+  "unchanged": [
+    "Existing description remains within 155 characters and already describes the task without limiting the device.",
+    "Developer disclosure, claims{}, troubleshooting, FAQs and existing sources remain.",
+    "No new route; no universal per-widget Edit Widget calendar selector claimed."
+  ]
+}

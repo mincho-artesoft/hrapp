@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/show-a-declined-meeting-on-my-calendar-in-outlook",
+    "path": "research/content-scale-20261023/claude/review-source-text/2ef1191982ab1bbc.txt",
+    "title": "Show a declined meeting on my calendar in Outlook | Microsoft Support",
+    "characters": 3199,
+    "sha256": "69eade0ffd6f4f67bebe3e8d96d51ad262df379d36f4978533a257d7b9332ca6"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/make-all-your-events-shorter-automatically",
+    "path": "research/content-scale-20261023/claude/review-source-text/a37da90276546dd7.txt",
+    "title": "Make all your events shorter automatically | Microsoft Support",
+    "characters": 2379,
+    "sha256": "36b1f78d0602a52b380a07c1d122d8fdcbba95d80bd56f68bc8acacee3968f42"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/respond-to-an-email-message-with-a-meeting-request-in-outlook",
+    "path": "research/content-scale-20261023/claude/review-source-text/34b110a2c3b8ccb1.txt",
+    "title": "Respond to an email message with a meeting request in Outlook | Microsoft Support",
+    "characters": 3652,
+    "sha256": "4b5fe22628f82dac3d57e4a4fc53c41c52ce8393684a30ed215e02574348df7f"
+  },
+  {
+    "url": "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3",
+    "finalUrl": "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3",
+    "path": "research/content-scale-20261023/claude/review-source-text/0ee2e23d472e81e0.txt",
+    "title": "Create a meeting from an email message in Outlook - Microsoft Support",
+    "characters": 1307,
+    "sha256": "6c7667e5e32fbbb5147fa86ab581a07e288d460ea71d87a2be7ecd75e9d74450"
+  },
+  {
+    "url": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/automatically-add-events-from-your-email-to-your-calendar",
+    "path": "research/content-scale-20261023/claude/review-source-text/1200617bdaeb6d1e.txt",
+    "title": "Automatically add events from your email to your calendar | Microsoft Support",
+    "characters": 5723,
+    "sha256": "a4b0869d7670d973b5a28675601a4351bc275b30ab5a0433619bf4d13f327921"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+    "path": "research/content-scale-20261023/claude/review-source-text/373a1b9454803c7b.txt",
+    "title": "Share your calendar in Outlook on the web | Microsoft Support",
+    "characters": 13145,
+    "sha256": "698188bd0958bbfe2218207769b9236733a24a135d93d107e37cbbb3c484387b"
+  },
+  {
+    "url": "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d",
+    "finalUrl": "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d",
+    "path": "research/content-scale-20261023/claude/review-source-text/ca53eaf15f76217a.txt",
+    "title": "Recover deleted calendar items - Microsoft Support",
+    "characters": 1182,
+    "sha256": "730df153b1451a199bf73da585a386126e58f779cf5e0c4cc7431d2734d82fd1"
+  },
+  {
+    "url": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c",
+    "finalUrl": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c",
+    "path": "research/content-scale-20261023/claude/review-source-text/eb525c09f9f9e025.txt",
+    "title": "Recover deleted items from the server - Microsoft Support",
+    "characters": 1914,
+    "sha256": "5568d2f796b52cdbf8f3b7a83bb8016ce81ea6d775dd0c00a58397198a02badd"
+  },
+  {
+    "url": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook",
+    "finalUrl": "https://support.microsoft.com/en-us/outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook",
+    "path": "research/content-scale-20261023/claude/review-source-text/f65cea4e3913a2cd.txt",
+    "title": "Assign a color category to a calendar event in Outlook | Microsoft Support",
+    "characters": 5775,
+    "sha256": "e7f6200d1751ee53aca6cbe47d939876db36b9e725dae35b636b826133067c06"
+  }
+]

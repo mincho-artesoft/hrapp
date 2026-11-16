@@ -1,0 +1,356 @@
+{
+  "checkedAt": "2026-10-22T04:29:51.241Z",
+  "queries": [
+    "site:flexibits.com Fantastical Apple Watch calendar app",
+    "site:support.apple.com guide watch calendar events iPhone"
+  ],
+  "queryLimits": "Publicwebdiscovery, not fixedlocationGoogleSERP, queryvolume, measuredranking orChatGPTcitation evidence.",
+  "primaryReads": [
+    {
+      "url": "https://flexibits.com/fantastical-ios/help/apple-watch",
+      "scope": "58–166 complete substantive body",
+      "use": "Companioninstall/setup,CalendarSetandconfigurablecomplication selections; no price/OSminimum orsecurityclaims."
+    },
+    {
+      "url": "https://flexibits.com/fantastical-watch/faq",
+      "scope": "21–67 complete substantive FAQbody",
+      "use": "Publisher-specific remoteconnection vs phoneon/online sync requirement; avoid entitlements because listing/FAQ searchobservationsdiffer."
+    },
+    {
+      "url": "https://support.apple.com/en-kg/guide/watch/apd1b51754cc/watchos",
+      "scope": "314–363 complete substantive Calendarbody,initial314–333andfollowup333–363",
+      "use": "AppleCalendaronWatch and MyWatchAppsCalendar selectionpath; versionqualified."
+    }
+  ],
+  "failedFetches": [
+    {
+      "url": "https://support.apple.com/guide/watch/check-and-update-your-calendar-apd1b51754cc/watchos",
+      "result": "URLnotaccessible; then usedexactknownKGsearchresult, notguessedslugvariants."
+    },
+    {
+      "url": "https://support.apple.com/en-kg/guide/watch/bz1vx4mwqbw9/watchos",
+      "result": "ActualApplelinkedLiveActivitiesguide cachemiss; no specificautomaticCloudWatchLiveActivityclaim basedonthisfetch."
+    }
+  ],
+  "corpus": {
+    "englishObjects": 56,
+    "fullFieldWatchTermMatches": 0,
+    "rows": [
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "free-google-sync-without-adverts",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-fantastical-costs-and-what-this-does",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-you-get-without-paying-anything",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-a-subscription-actually-buys",
+        "file": "src/app/content/en-US/articles-compare.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "why-a-shared-calendar-does-not-appear",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "the-secret-address-of-a-google-calendar",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-guests-can-do-to-your-event",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "google-calendars-that-never-reach-your-iphone",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "taking-back-a-calendar-you-shared",
+        "file": "src/app/content/en-US/articles-google.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "change-calendar-color-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "recover-deleted-calendar-events-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "disconnect-calendar-integration-without-losing-track",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "caldav-calendar-on-iphone",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "calendar-notifications-missing-silent-or-duplicated",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "find-old-calendar-events-by-account-date-and-title",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "calendar-export-ics-pdf-and-backup",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "event-saved-to-wrong-calendar",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "family-pickup-calendar-handoff",
+        "file": "src/app/content/en-US/articles-help.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "a-week-view-that-fits-a-week",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "planning-a-week-in-ten-minutes",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "time-zones-and-the-flight-you-booked",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-an-all-day-event-really-means",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "a-list-for-people-who-dislike-grids",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "the-year-in-one-screen",
+        "file": "src/app/content/en-US/articles-planning.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "calendar-event-or-room-reservation",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "sharing-one-event-not-your-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "inviting-people-who-do-not-have-the-app",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "a-calendar-that-is-yours-to-share",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "who-can-see-what-in-google-calendar",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "keeping-track-of-who-replied",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "meeting-links-that-make-themselves",
+        "file": "src/app/content/en-US/articles-sharing.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "three-calendar-apps-is-two-too-many",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "work-and-personal-without-two-apps",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "exchange-calendars-on-an-iphone",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "when-two-calendars-disagree",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "weather-inside-your-calendar",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "a-fourteen-day-view-of-the-weather",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "planning-outdoors-without-being-rained-on",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "what-a-forecast-can-and-cannot-tell-you",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "reading-a-chance-of-rain",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "weather-where-the-event-is",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "the-commute-and-the-sky",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "daylight-as-a-planning-constraint",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "wind-the-forecast-nobody-reads",
+        "file": "src/app/content/en-US/articles-weather.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "a-countdown-to-your-next-meeting",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "lock-screen-without-unlocking",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "choosing-a-widget-size",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "watchTerms": false
+      },
+      {
+        "slug": "the-calendar-on-a-bedside-table",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "watchTerms": false
+      }
+    ],
+    "fullCurrentRelevantBodies": [
+      {
+        "slug": "what-calendar-sync-actually-does",
+        "file": "src/app/content/en-US/articles-unify.ts",
+        "snapshot": "research/batch37-watch/current-what-calendar-sync-actually-does.json",
+        "jsonSha256": "b1050afa8428e67ddd157855c69212080968ad218f7162cb90ed04775220b49c",
+        "scope": "Root read complete current object including every section/practical/FAQ/source/related; sync closing sources/related read in followup. Widgets output also began next LockScreen object but not counted as full read."
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "snapshot": "research/batch37-watch/current-the-widget-that-shows-what-is-next.json",
+        "jsonSha256": "2020665809742071ae6d258146c8e0474768c6e2c44fcf5c85296bda9ea6044e",
+        "scope": "Root read complete current object including every section/practical/FAQ/source/related; sync closing sources/related read in followup. Widgets output also began next LockScreen object but not counted as full read."
+      },
+      {
+        "slug": "a-countdown-to-your-next-meeting",
+        "file": "src/app/content/en-US/articles-widgets.ts",
+        "snapshot": "research/batch37-watch/current-a-countdown-to-your-next-meeting.json",
+        "jsonSha256": "8e4b0677a4e53d9e7f8059e1100f42131db75a0b8869a140ef679f36eb6f94e1",
+        "scope": "Root read complete current object including every section/practical/FAQ/source/related; sync closing sources/related read in followup. Widgets output also began next LockScreen object but not counted as full read."
+      }
+    ]
+  },
+  "decision": "One new canonicalcalendar-on-apple-watch justified:watchapp/complication/source/pairedphonefreshness diagnosis is distinct from phonewidgets/LockScreen and generic account sync. NoCloudWatchfeatureclaim or nativeextensionrequested.",
+  "inferredAliases": [
+    "calendar on Apple Watch",
+    "Apple Watch calendar missing events",
+    "calendar complication not updating"
+  ],
+  "aliasesAreMeasuredQueries": false,
+  "limits": [
+    "Native3targetabsenceiscurrentprojectevidence,notreleasedappsupportproof.",
+    "CloudproviderconnectionsmirrorintoEventKit; no neverWatchvisibility orautomaticWatchavailabilityguarantee.",
+    "AppClip/no-appnewreviewsfoundno materialfix; do notforceanotherduplicateDE/ESpage."
+  ]
+}

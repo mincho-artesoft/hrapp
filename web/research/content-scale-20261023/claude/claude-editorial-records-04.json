@@ -1,0 +1,95 @@
+[
+  {
+    "slug": "outlook-show-declined-meetings-on-calendar",
+    "family": "planning",
+    "proposedIntent": "editing",
+    "primaryKeyword": "Outlook show declined meetings",
+    "intentKey": "outlook-keep-or-recover-declined-meetings",
+    "readerOutcome": "Keeps declined meetings visible in new Outlook or re-accepts a declined one in classic Outlook.",
+    "distinctValue": "Client/account table separating the new-Outlook setting, the classic Deleted Items route and unsupported accounts.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763", "note": "WebFetch extraction (re-verify): M365 work/school only; new Outlook View → Calendar Settings → Events and invitations → Show declined events on your calendar; time shown as free; Filter → Hide declined events; sync only when declined in newer clients; classic cannot show declined; request moves to Deleted Items; Accept/Tentative from Deleted Items; ask organizer to resend if emptied.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "keeping-track-of-who-replied",
+    "boundary": "Own-calendar display; behaviour for meetings declined before enabling is explicitly not documented and not claimed."
+  },
+  {
+    "slug": "outlook-shorten-meetings-automatically",
+    "family": "planning",
+    "proposedIntent": "editing",
+    "primaryKeyword": "Outlook end meetings early automatically",
+    "intentKey": "outlook-shorten-duration-setting",
+    "readerOutcome": "Adds buffer time with Outlook's shorten setting and verifies its effect instead of assuming it.",
+    "distinctValue": "Per-client settings table and a test-first example; flags undocumented effects on existing/invited meetings.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a", "note": "WebFetch extraction, two passes (re-verify): Applies To list; new Outlook/web Settings → Calendar → Events and invitations → Shorten duration for all events; classic File → Options → Calendar → Shorten appointments and meetings, End early/Start late; <1h and ≥1h minutes; Monthly Enterprise Channel note; honoured across Windows/Mac/web/iOS/Android; per account. Page silent on existing/invited events and specific minute values.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "planning-a-week-in-ten-minutes",
+    "boundary": "Example times are illustrative (14:00 30-min → 14:25; 15:00 60-min → 15:50) under stated assumptions."
+  },
+  {
+    "slug": "outlook-create-meeting-from-email",
+    "family": "sharing",
+    "proposedIntent": "editing",
+    "primaryKeyword": "Outlook create meeting from email",
+    "intentKey": "outlook-email-thread-to-meeting-request",
+    "readerOutcome": "Creates a meeting from an email with correct attendees and content, and recognises unsupported cases.",
+    "distinctValue": "At-a-glance table (clients, account, attendee mapping, content, attachments not stated, IRM) and a trim-and-reattach example.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae", "note": "WebFetch extraction (re-verify): new and classic steps; Business Exchange only; To → Required, Cc → Optional; header and body included; not for sensitivity-label/IRM encrypted mail.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3", "note": "WebFetch extraction (re-verify): Meeting button, Ctrl+Alt+R, ellipsis menu (classic); Home → Meeting (new); each person in thread listed by default.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "inviting-people-who-do-not-have-the-app",
+    "boundary": "Source note: the two Microsoft pages differ slightly in wording (To/Cc mapping vs 'each person in the thread'); both reported. Attachment carry-over not documented and not claimed."
+  },
+  {
+    "slug": "outlook-events-from-email-flights-hotels",
+    "family": "planning",
+    "proposedIntent": "core",
+    "primaryKeyword": "Outlook events from email",
+    "intentKey": "outlook-events-from-email-display-privacy",
+    "readerOutcome": "Controls which reservation emails become calendar events and their privacy.",
+    "distinctValue": "Per-type choice table and a shared-calendar example verified with the viewer.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar", "note": "WebFetch extraction (re-verify): Applies to Outlook 2024/2021/Outlook.com; supported types and 2020 discontinuations; account and region availability; Events from email per-type options; private by default; turning off via Outlook on the web or Outlook.com.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web", "note": "Raw cached body (review-source-text/373a1b9454803c7b.txt): most people you share with see only the time of private items.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "time-zones-and-the-flight-you-booked",
+    "boundary": "Account wording on Microsoft's page ('Microsoft accounts (Outlook.com or Microsoft 365)') is reported as written; the viewer outcome in the example is hedged and requires confirmation."
+  },
+  {
+    "slug": "outlook-recover-deleted-calendar-items",
+    "family": "planning",
+    "proposedIntent": "editing",
+    "primaryKeyword": "recover deleted Outlook calendar event",
+    "intentKey": "outlook-restore-deleted-calendar-item",
+    "readerOutcome": "Restores a deleted calendar item via Deleted Items or server recovery and handles meeting side-effects.",
+    "distinctValue": "Two-step client table; explicit 'not documented' for retention and notification.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d", "note": "WebFetch extraction (re-verify): Applies to Outlook for Microsoft 365 and new Outlook; classic Move → Other folder → Calendar; new Outlook Deleted items → Restore; pointer to server recovery.", "type": "primary", "verifiedAt": "2026-10-23" },
+      { "url": "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c", "note": "WebFetch extraction (re-verify): classic Recover Deleted Items from Server → Restore Selected Items; new Outlook Recover items deleted from this folder → Restore; calendar items restored to Calendar. No retention or account conditions stated on the fetched page.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "recover-deleted-calendar-events-iphone",
+    "boundary": "No retention period or account-type eligibility asserted; Microsoft's linked 'Recover and restore deleted items in Outlook' guide was not read and may add conditions."
+  },
+  {
+    "slug": "outlook-calendar-color-categories",
+    "family": "planning",
+    "proposedIntent": "core",
+    "primaryKeyword": "Outlook calendar color categories",
+    "intentKey": "outlook-categorise-calendar-items",
+    "readerOutcome": "Tags calendar items with personal colour categories and separates them from calendar colours.",
+    "distinctValue": "Category vs calendar-colour table and a three-client example.",
+    "evidence": [
+      { "url": "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook", "note": "WebFetch extraction (re-verify): Applies To incl. Outlook.com and new Outlook; Categorize steps for new/web/classic; multiple categories; Manage categories / All Categories; categories on received meetings don't affect others; shared across item types.", "type": "primary", "verifiedAt": "2026-10-23" }
+    ],
+    "review": { "status": "draft", "reviewer": "Claude", "checkedAt": "2026-10-23" },
+    "existingOverlapSlug": "change-calendar-color-iphone",
+    "boundary": "Category management menu path returned ambiguously by the fetch tool and is deliberately not given as a full path."
+  }
+]

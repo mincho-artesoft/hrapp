@@ -1,0 +1,93 @@
+{
+  "auditedAt": "2026-10-22T01:24:39.631973+00:00",
+  "objectiveComplete": false,
+  "requirements": [
+    {
+      "requirement": "Optimize Cloud website and ASC together",
+      "state": "substantial_implementation_remaining_targeted_work",
+      "evidence": [
+        "keyword-coverage-ledger.json",
+        "batch28-readiness/aso-audit.json"
+      ],
+      "limits": "Current support discoverability draft and scoped App Clip clarification remain; no broad keyword reshuffle justified."
+    },
+    {
+      "requirement": "Research competitor keywords/tasks in Google and ChatGPT",
+      "state": "bounded_research_and_observations_not_exhaustive",
+      "evidence": [
+        "competitors/coverage-current-20261021.json",
+        "batch28-readiness/coverage-audit.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ],
+      "limits": "Actual tool results/primary body scopes and three consumer prompt observations. No universal query/rank access or exhaustive competitor visibility proof."
+    },
+    {
+      "requirement": "Useful truthful articles mapped to researched intents",
+      "state": "substantive_core_coverage_with_specific_remaining_localization",
+      "evidence": [
+        "batch28-readiness/coverage-audit.json",
+        "content-inventory-20261021.json"
+      ],
+      "limits": "449article inventory is not quality approval; existing canonical tasks preferred over duplicate synonym pages. FR/IT CalDAV drafts still unpublished."
+    },
+    {
+      "requirement": "Localized ASC metadata accurately persisted",
+      "state": "saved_50_locale_250_text_field_persistence_verified_semantics_scoped",
+      "evidence": [
+        "aso/all-locales-readback-batch18.json",
+        "batch28-readiness/aso-audit.json"
+      ],
+      "limits": "Not fresh all50URLs, released/privacy or independent native-language/market-demand validation."
+    },
+    {
+      "requirement": "Publish technically sound crawlable site",
+      "state": "current_build_and_public_bytes_verified",
+      "evidence": [
+        "batch27-source-qa.json",
+        "batch27-static-qa.json",
+        "batch27-metadata-qa.json",
+        "batch27-public-qa.json",
+        "batch27-browser-qa.json"
+      ],
+      "limits": "Technical delivery does not prove indexing/rank/citations."
+    },
+    {
+      "requirement": "Integrate actual newly generated screenshots and videos",
+      "state": "missing_exact_generation_source_or_folder",
+      "evidence": [
+        "batch28-readiness/media-audit.json"
+      ],
+      "limits": "Bounded search finds older1240renditions only; no global absence or generation-stopped claim."
+    },
+    {
+      "requirement": "Truthful data-handling correspondence for ASO/privacy claims",
+      "state": "release_production_owner_facts_missing",
+      "evidence": [
+        "privacy-dataflow-20261021.json",
+        "batch28-readiness/privacy-release-evidence.json"
+      ],
+      "limits": "Root verified project version-setting matches1.7.2/build12, not actual App Store binary. User archive/commit question pending. No privacy declaration or production mutation."
+    },
+    {
+      "requirement": "Measure improved discovery",
+      "state": "historical_baseline_observed_post_change_effect_unproven",
+      "evidence": [
+        "measurement/gsc-editorial-decisions-20261021.json",
+        "measurement/chatgpt-ui-20261021/summary.json"
+      ],
+      "limits": "Need genuinely elapsed comparable windows/fixed prompt protocol, not repeated short-interval polling or causal claims."
+    }
+  ],
+  "nextConcreteWork": [
+    "Review/apply existing public support email footer proposal and all30labels without changing legal contacts or ASC URLs.",
+    "Integrate EN clarity edits and complete FR/IT CalDAV editions after current snapshot/source review.",
+    "Obtain released1.7.3 archive/source provenance; leave dependent privacy facts unresolved until evidence arrives."
+  ],
+  "notPerformed": [
+    "Goal completion claim",
+    "Backend/native fixes/deployment",
+    "New media fabrication",
+    "ASC submission/release",
+    "Automations or new user task creation"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "title": "Wind forecast for outdoor plans: speed, gusts, direction and time",
+  "short": "Wind and outdoor plans",
+  "description": "Read wind speed, gusts, units and timing before an outdoor plan. Match the forecast place and period without treating an icon as a safety decision.",
+  "lede": "A dry-looking forecast can leave an important planning question unanswered. An exposed venue, temporary display or outdoor class may need wind information as well as a rain icon. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "commonBelief": "A low rain chance means an outdoor plan is suitable, and one wind number applies everywhere along the route.",
+  "sections": [
+    {
+      "heading": "Read the value and its unit",
+      "body": [
+        "Start with the selected place, forecast date and units. A number labelled kilometres per hour cannot be compared directly with the same number in knots or miles per hour. Keep the displayed unit with any value you record or share.",
+        "The Met Office distinguishes its average wind-speed field from the gust field. Read the definitions supplied by the provider you are using rather than assuming every app averages observations over the same interval. In Cloud Calendars, inspect the relevant available forecast hours instead of substituting the current weather for a later appointment."
+      ]
+    },
+    {
+      "heading": "Look at gusts as a separate field",
+      "body": [
+        "Gusts describe stronger, short-lived peaks rather than the same thing as a typical or average wind value. A separate gust field can therefore change the picture even when the main speed number looks modest. Check which period the provider associates with it.",
+        "If a value is missing or unavailable, do not treat that as proof that there will be no gusts. For a venue with operating limits, use the required forecast and the venue or equipment guidance. This guide does not supply a universal wind limit for structures, aircraft or water activities."
+      ]
+    },
+    {
+      "heading": "Interpret direction using the provider’s convention",
+      "body": [
+        "The Met Office explains that its compass letters identify where the wind comes from, while its arrow illustrates the direction of travel. Do not assume an arrow in another product uses the same convention without checking its legend.",
+        "A selected-city forecast is not a measurement at every point of a route or venue. When location matters, compare the actual venue and the information required for it. A sheltered observation near your home does not establish conditions at an exposed destination."
+      ]
+    },
+    {
+      "heading": "Check the period covering the commitment",
+      "body": [
+        "Consider the whole period you are arranging, including setup and pack-down when relevant. A forecast at the event’s start does not describe every later hour. Record the selected date and time alongside the wind value so a screenshot or note remains understandable.",
+        "Suppose a venue offers a morning and an afternoon slot for an outdoor display. Compare the available intervals for each slot and ask the venue which conditions matter to its decision. The calendar can record the chosen arrangement; it does not certify either slot as suitable."
+      ]
+    },
+    {
+      "heading": "Keep forecasts and warnings distinct",
+      "body": [
+        "A general wind forecast and an official warning answer different questions. Check relevant local warnings and the organiser’s requirements when weather could affect the arrangement. Do not infer the absence of a warning from a single number on a calendar screen.",
+        "Cloud Calendars’ selected-place weather and device-location weather alerts are separate paths. Selecting a destination forecast does not establish that every alert will arrive for that destination. Use the responsible authority’s information directly when it matters to the plan."
+      ]
+    },
+    {
+      "heading": "Record the fallback and confirm changes",
+      "body": [
+        "Choose who will make the final decision and when they will communicate it. A useful calendar note can state the venue, the intended slot and the agreed alternative without turning a forecast value into a guaranteed outcome.",
+        "Before rescheduling, check the event’s calendar, local time and duration, then tell the participants what changed. Do not rely on the calendar entry to communicate a last-minute venue decision on its own. Revisit the current forecast rather than leaving an old copied number as the only planning reference."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Check place, date, time interval and wind units.",
+    "Read the speed and gust fields separately.",
+    "Confirm how the provider represents direction.",
+    "Compare the available hours across the whole commitment.",
+    "Check venue requirements and relevant official information.",
+    "Record the fallback and confirm any schedule change directly."
+  ],
+  "faq": [
+    {
+      "q": "Are wind speed and gusts interchangeable?",
+      "a": "No. Read their separate definitions and periods in the forecast product. A missing gust value is not evidence that gusts cannot occur."
+    },
+    {
+      "q": "Does selecting a destination guarantee weather alerts for it?",
+      "a": "No. In Cloud Calendars the selected forecast and device-location alert paths are distinct. Check the relevant local authority’s information separately."
+    },
+    {
+      "q": "What wind speed is safe for my activity?",
+      "a": "This calendar guide does not set activity or equipment limits. Use the organiser, venue, equipment requirements and relevant official guidance."
+    }
+  ],
+  "sourcesHeading": "Definitions and provider guidance",
+  "sources": [
+    {
+      "label": "Met Office: forecast wind speed, direction and gust definitions",
+      "url": "https://weather.metoffice.gov.uk/guides/what-does-this-forecast-mean"
+    },
+    {
+      "label": "Apple WeatherKit: weather conditions, wind data and availability",
+      "url": "https://developer.apple.com/documentation/weatherkit"
+    }
+  ],
+  "seeAlso": [
+    "weather-where-the-event-is",
+    "reading-a-chance-of-rain",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "updated": "2026-10-22"
+}

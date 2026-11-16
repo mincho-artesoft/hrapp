@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "zh-Hant",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "09fd2176-51b9-4aba-b6b6-70b70f1a4a02",
+  "versionLocalizationId": "db9bd915-8d55-49c3-b765-09dd83985839",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: 行事曆",
+      "characters": 20,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "天氣、日程安排與主畫面小工具",
+      "characters": 14,
+      "utf8Bytes": 42,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "日曆,計畫,提醒,會議,活動,共享,邀請,週檢視,月檢視,預報,工作,生活,同步,時間表,預約",
+      "characters": 47,
+      "utf8Bytes": 113,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "在同一處查看行程和天氣，使用主畫面小工具與多種行事曆檢視。也可以先建立本機行事曆，無須註冊 App 帳號。",
+      "characters": 53,
+      "utf8Bytes": 149,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "在 iPhone 和 iPad 上一起查看行事曆與天氣。使用 Cloud Calendars 瀏覽工作與個人安排，規劃每一天。\n\n行事曆與多種檢視\n使用 iCloud 行事曆並連結 Google 日曆。Premium 也支援 Microsoft 行事曆。可選擇日、週、月、年或列表檢視。\n\n您也可以直接在裝置上建立本機行事曆，無須註冊 Cloud Calendars 帳號。連結服務或使用共享功能時，可能需要登入。\n\n天氣與主畫面小工具\n安排行程時查看天氣預報。主畫面小工具提供小、中、大三種尺寸。可用的預報取決於所在地點與天氣服務供應商。\n\n會議與共享\n透過 Google 日曆使用 Google Meet。Premium 也支援 Microsoft Teams。共享活動和行事曆，並透過電子郵件、QR 碼或 App Clip 傳送邀請。存取權限取決於行事曆與邀請類型。\n\n選擇方案\n免費 Base 包含 Google 日曆同步、Google Meet、多種行事曆檢視、天氣和小工具。\nAdvanced 包含 Base 的功能，並移除廣告。\nPremium 包含 Advanced 的功能，並新增 Microsoft 行事曆與 Microsoft Teams 支援。\n\n購買前，請在 App 內或 App Store 確認目前的當地價格及計費週期。\n\nApp 可免費下載，並提供可選的自動續訂訂閱。除非在目前訂閱期間結束前至少 24 小時取消，否則訂閱將自動續訂。您可以在 App Store 帳號設定中管理或取消訂閱。\n\n隱私權政策: https://www.cloud-calendars.com/privacy-policy\n使用條款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 788,
+      "utf8Bytes": 1566,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "zh-Hant",
+      "name": "Cloud Calendars: 行事曆",
+      "subtitle": "Google、Microsoft、iCloud 同步",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "用日曆與天氣一起規劃每一天\n\nCloud Calendars 將你的日曆與天氣整合為一個美觀有序的規劃體驗。\n\n在一個 App 中管理 iCloud、Google 日曆和 Microsoft 日曆，同時直接在行程、小工具和規劃檢視中查看天氣預報。\n\n透過專為快速規劃而設計的日曆檢視，提前安排會議、旅行、接送孩子、戶外活動和忙碌的每一天。\n\n主畫面小工具\n\n加入精美的小工具，組合顯示：\n• 日曆事件\n• 天氣預報\n• 即將到來的行程\n• 月相與天氣狀況\n• 風力與溫度\n• 每日議程總覽\n\n從多種小工具樣式中選擇，直接在主畫面查看你的一天。\n\n為什麼選擇 CLOUD CALENDARS\n\n• 同時查看 iCloud、Google 日曆和 Microsoft 日曆\n• 使用內置天氣預報進行規劃\n• 使用精美的主畫面小工具\n• 自然地拖曳、移動和調整事件時間\n• 建立 Google Meet 和 Microsoft Teams 連結\n• 在日、週、月、年和列表檢視之間切換\n• 在同一處管理工作和個人日曆\n\n功能\n\n所有日曆匯集一處\n在簡潔、以顏色區分的體驗中連接並管理 iCloud、Google 日曆和 Microsoft 日曆。\n\n日曆內置天氣\n在規劃流程中直接查看每小時和每日預報，包括溫度、天氣狀況、月相、風力和天氣圖示。\n\n日曆與天氣小工具\n透過可自訂的主畫面小工具即時查看行程和天氣。\n\n多種日曆檢視\n根據你的時間規劃方式選擇日、週、月、年或列表檢視。\n\n輕鬆編輯事件\n直接在日曆中點按、拖曳和調整事件時間，快速自然地安排行程。\n\n專屬天氣檢視\n瀏覽詳細預報、每小時天氣狀況以及實用的規劃資訊。\n\n從天氣預報建立事件\n點按預報中的某個小時，即可使用所選時間立即建立新事件。\n\n內置會議連結\n快速為事件加入 Google Meet 和 Microsoft Teams 連結。\n\n非常適合\n\n• 管理工作與個人日曆\n• 結合天氣進行規劃\n• 戶外活動與旅行\n• 忙碌行程與家庭規劃\n• Google 日曆和 iCloud 使用者\n• Microsoft 日曆使用者\n\n試用 Cloud Calendars，讓每一天都更容易規劃。\n\n訂閱資訊\n\nCloud Calendars 提供自動續訂項目。\n\n免費計劃\n• Google 日曆同步\n• 多種日曆檢視\n• 天氣功能\n• 小工具\n• Google Meet 支援\n\n確認購買時，款項將從你的 Apple ID 帳戶收取。除非在目前訂閱期結束前至少 24 小時取消，否則訂閱將自動續訂。系統會在目前訂閱期結束前 24 小時內收取續訂費用。你可以在 App Store 帳戶設定中管理和取消訂閱。\n\n隱私權政策：https://www.cloud-calendars.com/privacy-policy\n使用條款：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "zh-Hant",
+      "keywords": "日曆,天氣,小工具,行程,計劃,議程,預報,會議,事件,工作,月相,風力,溫度,旅行,提醒,每日計劃,戶外活動,家庭行程,時間管理,鎖定畫面,下雨,今天,週檢視,月檢視,即時動態,同步",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

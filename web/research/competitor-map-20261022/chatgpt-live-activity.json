@@ -1,0 +1,30 @@
+{
+  "id": "live-activity",
+  "prompt": "Which iPhone calendar apps offer a Live Activity or Dynamic Island countdown to my next meeting? Distinguish this from a Lock Screen widget or an ordinary reminder notification, and cite current official sources.",
+  "observedAt": "2026-10-22T21:09:53.814Z",
+  "source": "Actual consumer ChatGPT UI",
+  "method": "Fresh single-question conversation; default account; backend model and personalization not controlled; answer claims require independent verification",
+  "visibleLinks": [
+    {
+      "label": "Skip to content",
+      "url": "https://chatgpt.com/c/6ada7b5d-61e8-832a-af76-8841c9b3ebcc#_r_9q_"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/us/app/proximum/id6787688495?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/sg/app/what-now-live-calendar/id6821417283?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official feature announcement",
+      "url": "https://www.groupcal.app/blog/smarter-shared-schedules-introducing-groupcal-for-ios-27/?utm_source=chatgpt.com"
+    },
+    {
+      "label": "Official App Store listing",
+      "url": "https://apps.apple.com/gb/app/timely/id6756438073?utm_source=chatgpt.com"
+    }
+  ],
+  "visibleText": "Skip to content\nHome\nSpace\nScheduled\nPlugins\nExplore\nSites\nShare\nYou said:\nWhich iPhone calendar apps offer a Live Activity or Dynamic Island countdown to my next meeting? Distinguish this from a Lock Screen widget or an ordinary reminder notification, and cite current official sources.\nChatGPT said:\n\nAs of October 23, 2026, there are iPhone apps that can display a genuine Live Activity countdown to your next calendar event in the Dynamic Island. The important distinction is whether the countdown follows your actual calendar automatically, rather than requiring you to create a separate countdown or tap a reminder.\n\nWhat qualifies?\n\nFeature\n\n\t\n\nCounts as what you're looking for?\n\n\n\n\nLive Activity in Dynamic Island\n\n\t\n\n Yes — a persistent, updating countdown at the top of the screen\n\n\n\n\nLive Activity on Lock Screen\n\n\t\n\n Yes — same underlying feature, displayed while locked\n\n\n\n\nLock Screen widget\n\n\t\n\n No — a widget showing your next appointment isn't necessarily a Live Activity\n\n\n\n\nCalendar reminder notification\n\n\t\n\n No — an alert before a meeting isn't a continuously updating countdown\n\nApple explicitly distinguishes Live Activities from ordinary widgets. Live Activities use ActivityKit and can appear in both the Dynamic Island and Lock Screen, whereas standard widgets have a different update mechanism. \nApple Developer Documentation\n+1\n\nApps with confirmed Live Activity support\n\nThese are supported by developer documentation or developer-maintained App Store descriptions, rather than third-party recommendation lists.\n\n1. Proximum\n\nStrong match\n\nReads iCloud, Google, Exchange and Outlook calendars already configured on your iPhone. Its Pro Live Activity counts down to your next event in the Dynamic Island and Lock Screen, then transitions to the ongoing meeting or following event. It also supports background restoration and automatic transitions.\n\nCaveat: Live Activity is a paid Pro feature, and the developer documents some iOS reliability limitations.\n\nOfficial App Store listing \nApp Store\n\n2. What Now – Live Calendar\n\nStrong match\n\nAutomatically tracks current events, remaining meeting time, and free time until your next event. Supports the Dynamic Island and Lock Screen, with scheduling ahead of the first meeting.\n\nCaveat: Free for one calendar. Pro adds multiple calendars, configurable Live Activity lead time, and meeting-join shortcuts.\n\nOfficial App Store listing \nApp Store\n\n3. GroupCal\n\nManual activation\n\nIts Track Live feature displays a real-time countdown in the Dynamic Island and Lock Screen, plus shortcuts to join video calls or navigate to meeting locations.\n\nCaveat: You must long-press an event reminder and select Track Live. This is not a fully automatic next-meeting countdown.\n\nOfficial feature announcement \nGroupCal\n+1\n\n4. Timely\n\nCountdown-focused\n\nSyncs with Apple Calendar and offers real-time Live Activity countdowns on the Dynamic Island and Lock Screen.\n\nCaveat: Its documented smart triggers can prompt you to launch a countdown 5 minutes to 2 hours before an event. I would not assume every upcoming meeting automatically becomes a Live Activity without interaction.\n\nOfficial App Store listing \nApp Store\n\nApps that should not be mistaken for matches\n\nApp\n\n\t\n\nWhat its official documentation establishes\n\n\n\n\nBusyCal\n\n\t\n\nExplicitly does not support Live Activities for upcoming events. It offers a Lock Screen countdown widget instead. \nBusyCal & BusyContacts\n\n\n\n\nStructured\n\n\t\n\nHas Live Activities for its running focus timer, not an automatic countdown to your next calendar meeting. \nhelp.structured.app\n\nWhich would I choose?\n\nProximum and What Now are the two clearest matches for the specific requirement of automatically showing the next meeting from your existing calendar in the Dynamic Island.\n\nChoose Proximum for a broader calendar experience, multiple calendar sources, and configurable event behavior. Choose What Now for a focused now/next display, particularly if you want to try the feature free with one calendar.\n\nThere is one important system limitation: Apple normally limits an individual Live Activity to eight hours in the Dynamic Island. Apps must manage renewals or transitions, and iOS can affect whether activities start or refresh reliably. A continuously updating countdown is therefore possible, but uninterrupted 24/7 visibility is not guaranteed. \nApple Developer Documentation\n+1\n\nThe evidence above confirms advertised functionality, not independent hands-on verification of each app on the latest iOS version.\n\nChatGPT can make mistakes. Check important info.\nLatest response\n\n\n\n\nInstant\nResponse complete\nResponse complete\nNew chat\n⇧⌘O"
+}

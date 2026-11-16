@@ -1,0 +1,19 @@
+{
+  "completedAt": "2026-10-22T10:39:45.423173+00:00",
+  "filesRemoved": 1533,
+  "bytesFreed": 588054472,
+  "roots": [
+    "/tmp/cloud-calendar-asc-en",
+    "/Users/minchomilev/cloud-calendars/media-source",
+    "/Users/minchomilev/cloud-calendars/exports",
+    "/Users/minchomilev/cloud-calendars/shots",
+    "/Users/minchomilev/cloud-calendars/art",
+    "/Users/minchomilev/cloud-calendars/public/assets",
+    "/Users/minchomilev/cloud-calendars/media-build",
+    "/Users/minchomilev/cloud-calendars/dist",
+    "/tmp/cloud-calendar-media-release-20261022"
+  ],
+  "remainingMatchingFiles": [],
+  "codeAndNativeResources": "Native HRApp/Xcode assets, git objects, node_modules and app icons outside website marketing folders excluded.",
+  "proof": "Every removal follows exact verified existing S3 object or a checksum-verified archive upload; full mapping in local-removal-checkpoint.jsonl."
+}

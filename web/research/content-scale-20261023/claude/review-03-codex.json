@@ -1,0 +1,375 @@
+{
+  "reviewedAt": "2026-10-23",
+  "reviewer": "Codex independent source reviewer",
+  "originalFile": "claude-drafts-03.json",
+  "originalSha256": "21ad0b3073b79ef8ba7d573d7737fbb0acb063bbd48e19b359e768d8f3798d71",
+  "reviewedFile": "claude-drafts-03-reviewed.json",
+  "scope": "12 Outlook drafts; official body retrieval, platform/tenant conditions, worked-example consistency and intent overlap. No UI tests and no production edits.",
+  "sourceIndex": "review-source-index-03.json",
+  "changeEvidence": "amendments-03-codex.json",
+  "summary": {
+    "articles": 12,
+    "articlesAmended": 11,
+    "changes": 41,
+    "failedOriginalSourcesRecovered": 1,
+    "held": 0
+  },
+  "articles": [
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "decision": "approve",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 0,
+      "notes": [],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "keeping-track-of-who-replied"
+        ],
+        "whyDistinct": "Specific eligibility restrictions, attendee response states, and classic-organizer proposal acceptance, beyond general RSVP handling.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 3,
+      "notes": [
+        "Make worked-example year explicit so its recurrence boundary can be checked.",
+        "Original 24 November last-Monday statement contradicted the end date; 30 November 2026 is Monday.",
+        "Add documented attendee route instead of only warning about whole-series deletion."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e",
+        "https://support.microsoft.com/en-US/Outlook/delete-an-appointment-or-a-meeting",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "recurring-events-without-the-mess"
+        ],
+        "whyDistinct": "Specific organizer-versus-attendee retirement workflow, retained history and lost exceptions, beyond recurrence planning.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 1,
+      "notes": [
+        "Avoid encouraging reuse of the outgoing organizer’s conference link; distinguish a new invitation from copied meeting identity."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/Support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "outlook-calendar-delegate-or-editor-permission",
+          "recurring-events-without-the-mess"
+        ],
+        "whyDistinct": "Ownership succession and copying prohibition are the task; delegate swap is a short disambiguation.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 4,
+      "notes": [
+        "No-notification statement requires no attendees.",
+        "Retain documented client differences in the actionable checklist.",
+        "Explicitly scope default and conversion behavior to classic Outlook.",
+        "Worked example switches clients; say so rather than blending UI."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "outlook-show-as-free-busy-tentative-working-elsewhere",
+          "what-an-all-day-event-really-means"
+        ],
+        "whyDistinct": "Converting entry type and choosing update recipients are the primary task; Show As is a consequence, not a second status guide.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 5,
+      "notes": [
+        "Restore final Save in work/school file-import instructions.",
+        "Keep legacy web troubleshooting and valid-feed conditions explicit.",
+        "A documented possible delay is not guaranteed diagnosis; imported events do not receive publisher updates, rather than universally never changing.",
+        "Do not prescribe unqualified remove/re-add or guessed HTTPS URLs.",
+        "Avoid destructive blanket imported-event deletion before a verified replacement."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "calendar-export-ics-pdf-and-backup"
+        ],
+        "whyDistinct": "Distinct Outlook web subscription/import procedure, account-specific refresh estimates and urgent-change diagnosis.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 5,
+      "notes": [
+        "The GAL workaround is classic add-in-specific and not the diagnosis for every missing link.",
+        "Illustrative test plan must not guarantee that one remediation resolves every installation.",
+        "Do not present an untested guaranteed result.",
+        "Original Either incorrectly extended the documented diagnosis to new Outlook.",
+        "Scope conditional cause and remediation."
+      ],
+      "sourceURLs": [
+        "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "meeting-links-that-make-themselves"
+        ],
+        "whyDistinct": "Missing native toggle versus classic COM add-in is a specific client-repair workflow; baseline covers app/provider link creation.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 4,
+      "notes": [
+        "Original official URL returned 404; current official /calendar/ page fetched in full.",
+        "Distinguish contact-created recurring events from enabling a separate birthday calendar.",
+        "Do not imply every classic contact birthday automatically creates the same separate Birthdays calendar.",
+        "Original Appears automatically conflated two documented workflows."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "google-calendar-birthdays-from-contacts"
+        ],
+        "whyDistinct": "Different provider data ownership and classic contact recurrence versus enabled calendar; not merely a locale or device variant.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 2,
+      "notes": [
+        "Display mode is not permission, completeness, or confirmed availability.",
+        "Original example simultaneously called a colleague free and busy at 15:30. Correct the owner and preserve consistent facts."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "a-week-view-that-fits-a-week"
+        ],
+        "whyDistinct": "Specific Outlook layout controls and ownership reading, beyond general weekly planning.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 4,
+      "notes": [
+        "The full six-style enumeration is not established by the retrieved source text; retain sourced examples.",
+        "Hide private details does not establish an exact time-only printed representation; verify the preview.",
+        "A calendar selector does not prove simultaneous multi-calendar printing.",
+        "Same calendar-selector inference in Mac column."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "calendar-export-ics-pdf-and-backup",
+          "google-calendar-print-date-range"
+        ],
+        "whyDistinct": "Specific Outlook styles, titles versus full body details and privacy-preview selection.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 3,
+      "notes": [
+        "No-licence up-to50GB statement needs documented feature exceptions.",
+        "Do not extend a message-deletion restriction to every mailbox item or infer calendar permission granularity.",
+        "Scope matches Microsoft’s actual warning."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/office/open-and-use-a-shared-mailbox-in-outlook-98b5a90d-4e38-415d-a030-f09a4cd28207",
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "outlook-group-calendar-versus-shared-calendar",
+          "outlook-calendar-delegate-or-editor-permission"
+        ],
+        "whyDistinct": "Shared mailbox membership/licensing/sign-in constraints and client access differ from a Microsoft365 group or personal delegation.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 4,
+      "notes": [
+        "Source distinguishes recurring setup from supported one-day Teams updates; original blanket later claim is misleading.",
+        "Add actual Set commit control and separately documented Teams daily override.",
+        "Replace blanket Teams/Mac/mobile coming-later grouping with documented distinction.",
+        "Preserve Mac/mobile caveat separately from Teams daily override."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "google-calendar-working-hours-location-out-of-office-focus-time",
+          "work-and-personal-without-two-apps"
+        ],
+        "whyDistinct": "Outlook-specific recurring plan, daily Teams override and legacy min/max approximation.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "decision": "approve_with_applied_amendments",
+      "reviewStatus": "independent_review_complete_root_integration_pending",
+      "amendmentCount": 6,
+      "notes": [
+        "AutoPick is in the desktop section, not a universal cross-client command.",
+        "Explicitly label My organization explanation as classic web source section instead of universal current UI.",
+        "Missing registry value is a possible diagnosed cause, not universal cause of the error.",
+        "Avoid universal cross-client AutoPick instruction.",
+        "Avoid assuming one permission cause without checking.",
+        "Responses do not guarantee disclosure of every hidden commitment."
+      ],
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information"
+      ],
+      "intentAssessment": "Distinct Outlook-native operational procedure; not a synonym/device-only variant. Shared prerequisites remain contextual, not the whole article.",
+      "checks": {
+        "primaryBodyRead": true,
+        "workedExamplesIllustrative": true,
+        "noFirsthandTestClaims": true
+      },
+      "overlapAssessment": {
+        "adjacentSlugs": [
+          "calendar-event-or-room-reservation",
+          "outlook-calendar-sharing-levels-busy-titles-details",
+          "outlook-show-as-free-busy-tentative-working-elsewhere"
+        ],
+        "whyDistinct": "Reading permission-limited grid information and diagnosed availability failures; room booking and changing status remain neighboring tasks, not duplicated procedures.",
+        "recommendation": "keep separate; contextual link rather than duplicate adjoining instructions"
+      }
+    }
+  ],
+  "validation": {
+    "jsonParses": true,
+    "descriptionMaxCharacters": 159,
+    "tableRowWidthsMatchColumns": true,
+    "originalUnchanged": true
+  }
+}

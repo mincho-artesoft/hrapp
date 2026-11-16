@@ -1,0 +1,917 @@
+{
+  "generatedAt": "2026-10-23T10:29:54.100Z",
+  "placement": "Visible related-guides section with authored task labels; no fabricated inline paragraph links",
+  "pairs": [
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "ics-all-day-dtend-exclusive-end-date",
+      "label": "ICS all-day end dates",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "time-zones-and-the-flight-you-booked",
+      "newslug": "icalendar-floating-time-utc-tzid",
+      "label": "Floating time or a fixed instant",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "what-calendar-sync-actually-does",
+      "newslug": "icalendar-uid-sequence-event-updates",
+      "label": "Match an ICS event update",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "ics-method-cancel-versus-delete-event",
+      "label": "Cancel a meeting or remove a copy",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "rrule-count-until-excluded-occurrences",
+      "label": "COUNT, UNTIL and skipped dates",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "icalendar-exdate-recurrence-id-moved-instance",
+      "label": "Skip or move a recurring instance",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-calendar-that-is-yours-to-share",
+      "newslug": "google-calendar-ownership-transfer-pending-acceptance",
+      "label": "Finish a Google calendar handoff",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "meeting-links-that-make-themselves",
+      "newslug": "google-calendar-meeting-notes-not-updating",
+      "label": "Meeting notes and event changes",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "icalendar-duration-p1d-pt24h-dst",
+      "label": "One day or exactly 24 hours?",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "newslug": "icalendar-valarm-relative-absolute-trigger",
+      "label": "Read an alarm trigger",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "who-can-see-what-in-google-calendar",
+      "newslug": "icalendar-transp-class-busy-private",
+      "label": "Private does not mean free",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "newslug": "icloud-shared-calendar-update-emails",
+      "label": "Shared-calendar update emails",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "find-old-calendar-events-by-account-date-and-title",
+      "newslug": "icloud-calendar-hide-past-events",
+      "label": "Hidden past iCloud events",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "event-saved-to-wrong-calendar",
+      "newslug": "icloud-calendar-invitation-sender-email",
+      "label": "Invitation sender identity",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "keeping-track-of-who-replied",
+      "newslug": "icloud-private-calendar-pending-invitations",
+      "label": "Pending private invitations",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-calendar-that-is-yours-to-share",
+      "newslug": "icloud-public-calendar-publish-stop",
+      "label": "Publish and retire a public calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "unwanted-calendar-events-iphone",
+      "newslug": "iphone-calendar-add-only-full-access",
+      "label": "Calendar permission levels",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "caldav-calendar-on-iphone",
+      "newslug": "mac-calendar-subscription-auto-refresh",
+      "label": "Refresh a subscribed calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "caldav-calendar-on-iphone",
+      "newslug": "mac-calendar-subscription-icloud-on-my-mac",
+      "label": "Choose where a subscription lives",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "newslug": "mac-calendar-ignore-alerts-one-calendar",
+      "label": "Ignore alerts for one calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "newslug": "mac-calendar-custom-alert-email-open-file",
+      "label": "Choose a custom alert action",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "newslug": "mac-calendar-holidays-different-region",
+      "label": "Show another region’s holidays",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "the-commute-and-the-sky",
+      "newslug": "mac-calendar-travel-time-after-location-change",
+      "label": "Recheck travel time after a move",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "caldav-calendar-on-iphone",
+      "newslug": "mac-calendar-caldav-delegation-allow-write",
+      "label": "CalDAV account delegation on Mac",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "natural-language-calendar-events-iphone",
+      "newslug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "label": "Review suggested calendar events",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "disconnect-calendar-integration-without-losing-track",
+      "newslug": "icloud-delete-calendar-every-device",
+      "label": "Delete an iCloud calendar deliberately",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "sharing-one-event-not-your-calendar",
+      "newslug": "iphone-calendar-add-remove-event-attachments",
+      "label": "Add or remove an event attachment",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-event-or-room-reservation",
+      "newslug": "mac-calendar-check-invitee-availability",
+      "label": "Check availability before sending",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "booking-link-or-shared-calendar",
+      "newslug": "google-appointment-payments-stripe-refunds",
+      "label": "Paid Google appointments",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "booking-link-or-shared-calendar",
+      "newslug": "google-appointment-email-verification",
+      "label": "Google appointment email verification",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "booking-link-or-shared-calendar",
+      "newslug": "google-booking-page-link-button-embed",
+      "label": "Share a Google booking page",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "planning-a-week-in-ten-minutes",
+      "newslug": "google-calendar-time-insights-counted-meetings",
+      "label": "Google Calendar Time Insights",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "google-calendars-that-never-reach-your-iphone",
+      "newslug": "google-calendar-offline-desktop-limits",
+      "label": "Google Calendar offline on a computer",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "planning-a-week-in-ten-minutes",
+      "newslug": "google-calendar-keyboard-shortcuts-workflow",
+      "label": "A Google Calendar keyboard workflow",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "newslug": "google-calendar-alternate-calendar-moon-sports",
+      "label": "Google alternate dates, Moon phases or sports",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "google-calendars-that-never-reach-your-iphone",
+      "newslug": "google-calendar-android-personal-work-profile",
+      "label": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-event-or-room-reservation",
+      "newslug": "google-calendar-gemini-suggested-meeting-times",
+      "label": "Gemini suggested meeting times in Google Calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "keeping-track-of-who-replied",
+      "newslug": "google-calendar-response-emails-outlook-rsvp",
+      "label": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "unwanted-calendar-events-iphone",
+      "newslug": "google-calendar-report-assigned-task-spam",
+      "label": "Unwanted assigned Google task? Identify the shared source before reporting it",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "work-and-personal-without-two-apps",
+      "newslug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "label": "Working hours, location, OOO or focus time",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "who-can-see-what-in-google-calendar",
+      "newslug": "google-calendar-event-visibility-private-public-default",
+      "label": "Private, public and default events",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "booking-link-or-shared-calendar",
+      "newslug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "label": "Why a booking slot is open or hidden",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "event-saved-to-wrong-calendar",
+      "newslug": "google-calendar-change-event-owner-before-handover",
+      "label": "Hand a meeting to a new owner",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-event-or-room-reservation",
+      "newslug": "google-calendar-find-a-time-blank-is-not-free",
+      "label": "Reading Find a time correctly",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "exchange-calendars-on-an-iphone",
+      "newslug": "outlook-calendar-delegate-or-editor-permission",
+      "label": "Outlook delegate or editor",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "exchange-calendars-on-an-iphone",
+      "newslug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "label": "Scheduling on behalf of someone",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "exchange-calendars-on-an-iphone",
+      "newslug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "label": "Outlook sharing levels",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "exchange-calendars-on-an-iphone",
+      "newslug": "outlook-share-calendar-outside-organization",
+      "label": "Outlook sharing with externals",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "work-and-personal-without-two-apps",
+      "newslug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "label": "Outlook Show As statuses",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "keeping-track-of-who-replied",
+      "newslug": "outlook-forward-meeting-and-allow-forwarding",
+      "label": "Outlook meeting forwarding",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "exchange-calendars-on-an-iphone",
+      "newslug": "outlook-group-calendar-versus-shared-calendar",
+      "label": "Group calendar vs shared calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "disconnect-calendar-integration-without-losing-track",
+      "newslug": "google-calendar-hide-unsubscribe-or-delete",
+      "label": "Hide, unsubscribe or delete",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "inviting-people-who-do-not-have-the-app",
+      "newslug": "google-calendar-public-embed-on-website",
+      "label": "Embed a calendar on a website",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "family-pickup-calendar-handoff",
+      "newslug": "google-calendar-birthdays-from-contacts",
+      "label": "Find the source of a Google birthday",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "iphone-calendar-language-alternate-calendar-settings",
+      "newslug": "google-calendar-holidays-by-country-and-religion",
+      "label": "Holidays in Google Calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "who-can-see-what-in-google-calendar",
+      "newslug": "google-calendar-events-from-gmail-visibility",
+      "label": "Events from Gmail",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "sync-google-tasks-apple-reminders-iphone",
+      "newslug": "google-keep-reminders-moved-to-tasks",
+      "label": "Keep reminders in Tasks",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "newslug": "google-tasks-repeating-task-complete-delete",
+      "label": "Repeating Google tasks",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "newslug": "google-calendar-email-notifications-filter",
+      "label": "Google Calendar email noise",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "booking-link-or-shared-calendar",
+      "newslug": "google-appointment-cancel-booked-slot",
+      "label": "Cancel a booked appointment",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "what-calendar-sync-actually-does",
+      "newslug": "google-calendar-android-app-not-syncing",
+      "label": "Android Calendar not syncing",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-calendar-that-is-yours-to-share",
+      "newslug": "google-family-calendar-membership",
+      "label": "Google family calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-export-ics-pdf-and-backup",
+      "newslug": "google-calendar-print-date-range",
+      "label": "Print Google Calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "keeping-track-of-who-replied",
+      "newslug": "outlook-propose-new-meeting-time",
+      "label": "Propose a new time in Outlook",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "outlook-end-recurring-meeting-early-keep-history",
+      "label": "End an Outlook series early",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "taking-back-a-calendar-you-shared",
+      "newslug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "label": "Change an Outlook organizer",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "outlook-appointment-meeting-event-convert-and-update",
+      "label": "Appointment, meeting or event",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-export-ics-pdf-and-backup",
+      "newslug": "outlook-subscribe-or-import-ics-calendar",
+      "label": "Subscribe or import in Outlook",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "meeting-links-that-make-themselves",
+      "newslug": "outlook-teams-meeting-button-missing",
+      "label": "Teams option missing in Outlook",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "google-calendar-birthdays-from-contacts",
+      "newslug": "outlook-birthday-calendar-from-contacts",
+      "label": "Outlook birthdays",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "selected_new_sibling",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-week-view-that-fits-a-week",
+      "newslug": "outlook-split-view-overlay-calendars",
+      "label": "Outlook split view and overlay",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-export-ics-pdf-and-backup",
+      "newslug": "outlook-print-calendar-styles",
+      "label": "Print an Outlook calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-calendar-that-is-yours-to-share",
+      "newslug": "outlook-shared-mailbox-calendar",
+      "label": "Shared mailbox calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "work-and-personal-without-two-apps",
+      "newslug": "outlook-work-hours-and-location",
+      "label": "Outlook work hours and location",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "calendar-event-or-room-reservation",
+      "newslug": "outlook-scheduling-assistant-read-colleague-availability",
+      "label": "Read the Scheduling Assistant",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "keeping-track-of-who-replied",
+      "newslug": "outlook-show-declined-meetings-on-calendar",
+      "label": "Declined meetings in Outlook",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "planning-a-week-in-ten-minutes",
+      "newslug": "outlook-shorten-meetings-automatically",
+      "label": "Shorten Outlook meetings",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "natural-language-calendar-events-iphone",
+      "newslug": "outlook-create-meeting-from-email",
+      "label": "Meeting from an email",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "google-calendar-events-from-gmail-visibility",
+      "newslug": "outlook-events-from-email-flights-hotels",
+      "label": "Outlook events from email",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "selected_new_sibling",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "recover-deleted-calendar-events-iphone",
+      "newslug": "outlook-recover-deleted-calendar-items",
+      "label": "Recover deleted Outlook events",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "change-calendar-color-iphone",
+      "newslug": "outlook-calendar-color-categories",
+      "label": "Outlook colour categories",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "root_independent_review_required"
+    },
+    {
+      "parentSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "newslug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "label": "Pitman 2-2-3 shift calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "newslug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "label": "DuPont 28-day shift calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "newslug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "label": "24/48 firefighter calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "label": "Overnight shift calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "newslug": "split-shift-two-work-periods-calendar-blocking",
+      "label": "Split-shift calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "shift-work-calendar-iphone-rotating-schedules",
+      "newslug": "on-call-standby-calendar-versus-confirmed-shift",
+      "label": "On-call calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "time-zones-and-the-flight-you-booked",
+      "newslug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "label": "US–UK DST mismatch",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "time-zones-and-the-flight-you-booked",
+      "newslug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "label": "Phoenix and Hawaii meeting times",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "time-zones-and-the-flight-you-booked",
+      "newslug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "label": "Sydney–New York recurring meetings",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "time-zones-and-the-flight-you-booked",
+      "newslug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "label": "Time-zone rule changes",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "independently_reviewed"
+    },
+    {
+      "parentSlug": "a-week-view-that-fits-a-week",
+      "newslug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "label": "display multiple time zones google calendar outlook",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "newslug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "label": "half hour 45 minute time zone offset calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "selected_new_sibling",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "planning-a-week-in-ten-minutes",
+      "newslug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "label": "calendar week numbers wrong sunday vs monday start",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "label": "repeat on last weekday of month vs 31st calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "newslug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "label": "task deadline vs scheduled work block google calendar",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "planning-a-week-in-ten-minutes",
+      "newslug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "label": "backward planning calendar business days vs calendar days",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "the-commute-and-the-sky",
+      "newslug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "label": "calendar buffer time between meetings vs travel time",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "recurring-events-without-the-mess",
+      "newslug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "label": "alternating a b week school schedule calendar holidays",
+      "placement": "Add within the existing passage explaining this narrower next task; do not append an unrelated link list.",
+      "rationale": "Reader can move from the broader parent decision to a specific provider workflow or worked diagnostic.",
+      "parentType": "baseline_article",
+      "publicationGate": "await_complete_draft_and_independent_source_review"
+    },
+    {
+      "parentSlug": "meeting-links-that-make-themselves",
+      "newslug": "google-calendar-add-ons-conferencing-permissions",
+      "label": "Install or remove a Google conferencing add-on and check its permissions",
+      "rationale": "Separate third-party installation and permission task from built-in meeting-link creation."
+    }
+  ],
+  "supplementaryPairs": [
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "google-calendar-birthdays-from-contacts",
+      "label": "Find or edit the source of a Google birthday",
+      "rationale": "The shortened birthday passage explicitly refers to both provider guides below."
+    },
+    {
+      "parentSlug": "what-an-all-day-event-really-means",
+      "newslug": "outlook-birthday-calendar-from-contacts",
+      "label": "Manage Outlook birthdays through the right contact",
+      "rationale": "The shortened birthday passage explicitly refers to both provider guides below."
+    }
+  ]
+}

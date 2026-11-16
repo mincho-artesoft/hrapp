@@ -1,0 +1,10 @@
+{
+  "allPassed": true,
+  "changedObjects": 1,
+  "file": "src/app/content/en-US/articles-google.ts",
+  "slug": "what-guests-can-do-to-your-event",
+  "draft": "research/batch34-discovery/what-guests-can-do-to-your-event.json",
+  "unrelatedObjectsPreserved": true,
+  "reviewedDraftSha256": "a70fc5e2db382e704e168910dfc8c53c91415a059f981760406bcf29803ca78d",
+  "robotsReviewedSha256": "bf4ecce532a30e8feccb7b14bbce992dd5163f3668304778b702fe67f59bd513"
+}

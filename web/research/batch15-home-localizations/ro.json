@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Calendar și Microsoft Outlook, sincronizate în ambele sensuri și diferențiate prin culoare într-o singură vedere. Opriți orice calendar când nu vreți să-l vedeți — restul continuă să meargă.",
+    "after": "Vedeți împreună calendarele iCloud și Google selectate; Premium adaugă calendare Microsoft. Editați unde permisiunile contului permit și verificați calendarul-sursă după modificări."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Prindeți un eveniment și glisați-l la altă oră sau în altă zi. Trageți de marginea de sus sau de jos ca să schimbați cât durează. Fără fereastră, fără buton de salvare.",
+    "after": "Mutați evenimente editabile la altă oră sau dată ori ajustați durata în cronologie. Pentru un eveniment repetat, alegeți aparițiile de modificat și verificați rezultatul salvat."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Este modul principal de a edita. Trageți un eveniment la altă oră sau în altă zi, ori trageți de marginea de sus sau de jos ca să-i schimbați durata. Modificările se sincronizează direct înapoi în calendarul-sursă.",
+    "after": "Puteți muta evenimente editabile și ajusta durata în cronologie. Verificați domeniul repetării și ora salvată; actualizările calendarelor conectate depind de permisiuni și de reușita sincronizării."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "Aceleași evenimente, așezate după întrebarea pe care o puneți de fapt — și fiecare își poartă prognoza.",
+    "after": "Alegeți o imagine de ansamblu sau o cronologie detaliată, cu prognoza disponibilă în vederile compatibile."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "O grilă orară în care fiecare rând își poartă propria prognoză. Vedeți ședința de la trei și ploaia de la trei în aceeași privire — fără a doua aplicație, fără ghiceli.",
+    "after": "Comparați întâlnirile cu prognoza orară disponibilă în aceeași grilă. Verificați locul selectat și data prognozei pentru planurile în aer liber."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Vederea lunară marchează fiecare zi în care există ceva. Vederea anuală pune douăsprezece luni pe un ecran — cel mai rapid mod de a găsi o săptămână liberă.",
+    "after": "Comparați evenimentele calendarelor selectate pe lună sau an. Deschideți o zi și verificați toate întâlnirile înainte să o considerați liberă."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Atingeți orice oră din centrul meteo și se deschide un eveniment nou, deja fixat la ora aceea. Găsiți fereastra uscată și ocupați-o.",
+    "after": "Alegeți o oră cu prognoză disponibilă pentru a începe o schiță de eveniment, apoi verificați data, ora și calendarul înainte de salvare."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Versiunea {v} — evenimentele partajate se actualizează acum singure",
+    "after": "Versiunea {v} — partajare de evenimente și calendare"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonamentele sunt gestionate de Apple, deci le anulați din setările contului App Store. Faceți-o cu cel puțin 24 de ore înainte de sfârșitul perioadei și nu veți mai fi taxat.",
+    "after": "Pe iPhone sau iPad, deschideți Configurări, atingeți numele dumneavoastră, apoi Abonamente. Selectați Cloud Calendars și anulați; verificați starea anulării sau expirării afișată de Apple."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonamentele se reînnoiesc automat și sunt facturate prin Apple ID-ul dumneavoastră. Anulați oricând din setările contului App Store, cu cel puțin 24 de ore înainte de sfârșitul perioadei.",
+    "after": "Abonamentele se reînnoiesc automat prin contul Apple. Verificați prețul local și perioada de facturare înainte de cumpărare. Gestionați anularea din Configurări, numele dumneavoastră, Abonamente."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "În ambele sensuri",
+    "after": "Conectat"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Cel mai ales",
+    "after": "Plan evidențiat"
+  }
+]

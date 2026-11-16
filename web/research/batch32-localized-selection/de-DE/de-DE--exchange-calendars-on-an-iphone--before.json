@@ -1,0 +1,94 @@
+{
+  "updated": "2026-10-21",
+  "title": "Microsoft- und Exchange-Kalender auf dem iPhone: zuerst die Verbindung prüfen",
+  "short": "Microsoft-Kalender auf dem iPhone",
+  "description": "Prüfe Microsoft-Kontotyp, Arbeitgeberfreigabe und Rechte, bevor du einen Arbeitskalender verbindest. Erfahre, was Cloud Calendars Premium ergänzt.",
+  "lede": "„Exchange-Kalender“ kann unterschiedliche Dienste und Arbeitsplatzregeln bedeuten. Kläre vor Einstellungsänderungen oder einem Kauf, wo dein Postfach liegt und welche Verbindung deine Organisation erlaubt. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jede App mit Microsoft-Anmeldung müsse mit jedem Exchange-Server und jedem geteilten Arbeitskalender funktionieren.",
+  "sections": [
+    {
+      "heading": "1. Bestimme das Postfach, nicht nur die Outlook-App",
+      "body": [
+        "Outlook ist eine App und ein Name für Microsoft-Dienste. Ein Konto in Outlook sagt nicht, welcher Server dessen Kalender bereitstellt. Frage nach, ob du ein persönliches Microsoft-Konto, ein Microsoft-365-Postfach in Exchange Online oder eine eigene Exchange-Installation der Organisation nutzt.",
+        "Cloud Calendars bietet Microsoft-Anmeldung und verwendet die Verbindung zum Microsoft-Kalenderdienst. Das ist keine universelle Einrichtung mit Serveradresse und Passwort für jede Exchange-Installation. Microsoft dokumentiert seine Kalender-API getrennt von allgemeinen Exchange-Einstellungen. Kläre den vorgesehenen Weg für dein Postfach, statt einen Servernamen zu erraten."
+      ]
+    },
+    {
+      "heading": "2. Trenne Apples Gerätekonto von der App-Verbindung",
+      "body": [
+        "Ein über ein genehmigtes Gerätekonto bereits in Apple Kalender verfügbarer Arbeitskalender nutzt einen anderen Weg als „Sign in with Microsoft“ in Cloud Calendars. Auch Kalender aus dem Kalendersystem des Telefons benötigen Kalenderzugriff. Eine erfolgreiche Einrichtung in Apples Einstellungen beweist nicht, dass eine separate Microsoft-Anmeldung genehmigt wird.",
+        "Prüfe vor einer weiteren Verbindung, wo der bestehende Arbeitskalender erscheint. Siehst du später zwei Versionen einer Besprechung, bestimme ihre Kalenderquellen und blende eine vorübergehend aus. Entferne keine Konten und lösche keine Ereignisse, um herauszufinden, welche Verbindung sie erzeugt hat."
+      ]
+    },
+    {
+      "heading": "3. Prüfe Premium und organisatorische Freigabe getrennt",
+      "body": [
+        "Premium ergänzt Cloud Calendars um Microsoft-Kalender- und Microsoft-Teams-Funktionen. Advanced entfernt Werbung aus Base, schaltet aber die Microsoft-Anmeldung der App nicht frei. Prüfe den aktuellen lokalen Kaufpreis und Abrechnungszeitraum statt einer Preisangabe für eine andere Region.",
+        "Ein Abonnement kann die Entscheidung eines Arbeitgebers zum App-Zugriff nicht aufheben. Microsoft erlaubt Organisationen, Nutzereinwilligungen zu steuern und Administratorfreigaben zu verlangen. Wird eine Freigabe angefordert, gib der Administration App-Name, vorgesehenes Konto und exakten Meldungstext. Veröffentliche den Arbeitskalender nicht und wechsle nicht zu einem privaten Konto, um diese Entscheidung zu umgehen."
+      ]
+    },
+    {
+      "heading": "4. Untersuche die fehlgeschlagene Phase",
+      "body": [
+        "Wird die Anmeldung nicht abgeschlossen, prüfe gewählte Identität, Netzwerk und Microsoft-Meldung. Eine Freigabeanforderung ist etwas anderes als eine abgelaufene Sitzung oder ein Verbindungsfehler. Nicht jede fehlgeschlagene Verbindung lässt sich auf Arbeitgeberregeln zurückführen.",
+        "Gelingt die Anmeldung, fehlt aber ein Kalender, prüfe Kontogruppe und Kalenderauswahl in Cloud Calendars und vergleiche dasselbe Konto in Outlook. Fehlt nur ein geteilter oder delegierter Kalender, während der eigene erscheint, untersuche dessen Zugriff gesondert. Allgemeine Microsoft-API-Funktionen garantieren nicht, dass jedes Szenario mit geteilten Postfächern oder Delegierung in dieser App verfügbar ist."
+      ]
+    },
+    {
+      "heading": "5. Unterscheide eine sichtbare Kopie von einer bestätigten Änderung",
+      "body": [
+        "Die Microsoft-Verbindung verwendet Kalenderkopien im Kalendersystem des iPhones. Ihr Speicherziel kann von den verfügbaren Quellen auf dem Gerät abhängen. Kläre für ein Arbeitskonto vor sensiblen Besprechungen, ob diese Anordnung den Vorgaben deiner Organisation entspricht. Gehe nicht davon aus, dass eine Kopie ausschließlich im ursprünglichen Postfach bleibt.",
+        "Ein Teamkalender kann etwa eine Besprechung anzeigen, deine Änderung aber wegen fehlender Rechte ablehnen. Eine erfolgreiche lokale Bearbeitung ist nicht die abschließende Prüfung. Vergleiche das Ereignis in Outlook mit demselben Konto. Teste nur ein entbehrliches Ereignis in einem eigenen Kalender, ohne Kollegen einzuladen oder eine bestehende Besprechung zu verändern."
+      ]
+    },
+    {
+      "heading": "6. Halte Zuständigkeit und Verfügbarkeit ausdrücklich fest",
+      "body": [
+        "Eine von einem Kollegen organisierte Besprechung darfst du nicht allein deshalb verschieben oder umschreiben, weil sie neben privaten Plänen erscheint. Berücksichtige Organisator, Arbeitskalender und vorgesehene Teilnehmende. Nutze den genehmigten Anbieterprozess, wenn eine Aktion fehlt oder eine Änderung den Server nicht erreicht.",
+        "Ebenso sperrt ein privater Termin neben Arbeitsterminen nicht automatisch die berufliche Verfügbarkeit und verbirgt seine Details nicht automatisch als allgemeinen Belegt-Eintrag. Frage nach einer unterstützten Freigabemethode und prüfe das Ergebnis. Ein schreibgeschützter Kalenderlink ersetzt keinen Bearbeitungszugriff, und die Veröffentlichung eines Links ist keine Abkürzung bei der Fehlersuche."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kläre den Postfachanbieter und den von der Organisation erlaubten Verbindungsweg.",
+    "Prüfe, ob der Kalender bereits über ein Gerätekonto auf das iPhone gelangt.",
+    "Prüfe Premium getrennt von Microsoft-Einwilligung und Kalenderrechten.",
+    "Wähle bei der Microsoft-Anmeldung die richtige Identität und bewahre Fehlermeldungen für den Support auf.",
+    "Wähle nach der Anmeldung den benötigten Kalender und vergleiche ein aktuelles Ereignis in Outlook.",
+    "Bestätige eine erlaubte Teständerung beim Anbieter; lasse bestehende Einladungen und Serientermine unverändert."
+  ],
+  "faq": [
+    {
+      "q": "Garantiert Premium die Verbindung zum Exchange-Server meiner Firma?",
+      "a": "Nein. Premium aktiviert die Microsoft-Funktionen der App. Postfachkompatibilität, Freigabe der Organisation und Rechte einzelner Kalender sind getrennte Voraussetzungen. Bestätige die Verbindung mit der Administration, bevor du eine Exchange-Installation als unterstützt betrachtest."
+    },
+    {
+      "q": "Warum funktioniert Outlook, während eine andere Kalender-App abgelehnt wird?",
+      "a": "Apps können unterschiedliche Rechte und Freigaben benötigen. Ein funktionierendes Outlook ist eine nützliche Referenz für das Konto, beweist aber keine Freigabe für eine andere App. Nutze den tatsächlichen Fehler oder die Freigabeanforderung zur Diagnose."
+    },
+    {
+      "q": "Kann ich bei blockierter Microsoft-Anmeldung einen öffentlichen Kalenderlink verwenden?",
+      "a": "Veröffentliche keine Arbeitsinformationen, um eine blockierte Verbindung zu umgehen. Ein Kalenderabonnement ist normalerweise schreibgeschützt und kein gleichwertiger Bearbeitungszugriff. Frage Eigentümer oder Administration nach einer genehmigten Methode; setze nicht voraus, dass ein veröffentlichter Link erlaubt ist."
+    }
+  ],
+  "sourcesHeading": "Quellen und Anbieterhinweise",
+  "sources": [
+    {
+      "label": "Microsoft: Outlook-Kalender-API und unterstützte Postfachdaten",
+      "url": "https://learn.microsoft.com/en-us/graph/outlook-calendar-concept-overview"
+    },
+    {
+      "label": "Microsoft: Einwilligung von Nutzern und Administratoren",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview"
+    },
+    {
+      "label": "Apple: mehrere Kalender und schreibgeschützte Abonnements",
+      "url": "https://support.apple.com/en-lamr/guide/iphone/iph3d1110d4/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "what-a-subscription-actually-buys"
+  ]
+}

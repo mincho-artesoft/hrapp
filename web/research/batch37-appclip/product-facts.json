@@ -1,0 +1,210 @@
+{
+  "reviewedAt": "2026-10-22T04:22:38.750185+00:00",
+  "decision": "Existing preview/full-app distinctions remain supported by unchanged relevant source. No new capability or released-binary claim.",
+  "priorAudit": {
+    "file": "research/batch29-aso-semantic/appclip-facts.json",
+    "sha256": "e69cfe61fa7c97021cf070bcacdcf8da413d13742b0f593159eb8d617415ac11"
+  },
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/CloudCalendarsAppClip.swift",
+      "sha256": "081095c82b5d05f757feb35526f23d9ad094cca40466e90e1afb644e5b843e4e",
+      "rangesRead": [
+        [
+          1,
+          67
+        ]
+      ],
+      "proof": "App Clip routes to event preview or calendar invitation preview; web activity/openURL handlers route payloads. No calendar save operation in this entry point.",
+      "currentSha256": "081095c82b5d05f757feb35526f23d9ad094cca40466e90e1afb644e5b843e4e",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/EventClipPreviewView.swift",
+      "sha256": "bbb8f645443b9d8b93964a709664ee27f511989500f37ee0c3bcd808164d5ee1",
+      "rangesRead": [
+        [
+          1,
+          107
+        ]
+      ],
+      "proof": "Full view read: title/date/time/location preview; primaryAction only App Store Link; explicit preview-only/add-through-full-app text. Lock-shield icon does not substantiate privacy/security assurances.",
+      "currentSha256": "bbb8f645443b9d8b93964a709664ee27f511989500f37ee0c3bcd808164d5ee1",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/CalendarAppClip/CalendarShareClip.swift",
+      "sha256": "ff229acee5412dd6f9228d837e1b57a592d5158e2f0327ac70aaa9870f446ffc",
+      "rangesRead": [
+        [
+          1,
+          75
+        ],
+        [
+          125,
+          156
+        ]
+      ],
+      "proof": "Calendar invitation preview, App Store download link and explicit preview-only text. fullAppURL model property is not by itself proof of automatic installed-app handoff.",
+      "currentSha256": "ff229acee5412dd6f9228d837e1b57a592d5158e2f0327ac70aaa9870f446ffc",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarApp.swift",
+      "sha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "rangesRead": [
+        [
+          165,
+          194
+        ]
+      ],
+      "proof": "Full app routes calendar and event invitation URLs into their separate acceptance/import sheets.",
+      "currentSha256": "f07cc2ac3643c89526e5b10efaa2cbb5680346f98e83354a2fbae69e6b8e8a4c",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImportView.swift",
+      "sha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "rangesRead": [
+        [
+          245,
+          295
+        ]
+      ],
+      "proof": "Full app Add to Calendar invokes importer with selected destination; handles permissionDenied/noWritableCalendar/failed results. Not universal successful instant adding.",
+      "currentSha256": "05a0c0af4f6db594a8049c72f614df10d9742725b179b1bcf8f34bae5cdb1e1d",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "rangesRead": [
+        [
+          18,
+          29
+        ]
+      ],
+      "proof": "Adding event requires full calendar access; app session read independently. Do not generalize whole-calendar sign-in requirement to every single-event path from this excerpt.",
+      "currentSha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedCalendarInvitationView.swift",
+      "sha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "rangesRead": [
+        [
+          189,
+          214
+        ]
+      ],
+      "proof": "Whole-calendar acceptance requires app sharing session, otherwise sign-in; performs server acceptance and local reconciliation.",
+      "currentSha256": "3aafa586bc49d300a5cdfae182b78de6c1b4f96a707c98d15d8204eba8c4a9b6",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+      "sha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "rangesRead": [
+        [
+          47,
+          97
+        ]
+      ],
+      "proof": "Share method picker offers App Clip, Email and QR Code; email wording distinguishes assigning access. Supports retaining email/QR delivery description.",
+      "currentSha256": "7865b1958517884be98991bfe26d4bcff86057d76b785c9fbbe732d8de87ab56",
+      "unchanged": true,
+      "scope": "Current raw hash checked; prior specified range/full reads reused, not claimed freshly reread."
+    }
+  ],
+  "additionalUnchangedFlowEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/SharedEventImporter.swift",
+      "lines": "18-131",
+      "sha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "finding": "Full calendar permission, writable existing destination, tracking and signed-in/anonymous receipt. Receipt failure caught after event save, so no perfect-count claim.",
+      "currentSha256": "61811420ef154abcf25d1aa58516b8d8b4683156b505f5cff4371a01650901f2",
+      "unchanged": true,
+      "scope": "Read-only file hash; reuse historical source proof. No backend requests."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.controller.ts",
+      "lines": "11-20;45-51;75-119;149-156;277-313",
+      "sha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "finding": "Public ICS route separate from Email/QR landing; latter intentionally full app, not App Clip. Separate recipients/declines/anonymous access endpoints.",
+      "currentSha256": "05685de3688e67b7f8ecd30a951bc66f211eb2946d604c24d1f3e77ea7d2224f",
+      "unchanged": true,
+      "scope": "Read-only file hash; reuse historical source proof. No backend requests."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "239-270;386-477",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Signed-in Writer modifies canonical event; public landing scoped event lookup; page preview distinct from subscription.",
+      "currentSha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "unchanged": true,
+      "scope": "Read-only file hash; reuse historical source proof. No backend requests."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "1516-1645",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Whole-calendar preview/full app; verified email required; matching role else Reader, acceptance timestamp.",
+      "currentSha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "unchanged": true,
+      "scope": "Read-only file hash; reuse historical source proof. No backend requests."
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/calendar/calendar.service.ts",
+      "lines": "2576-2625;2668-2708",
+      "sha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "finding": "Event receipt records acceptedAt including anonymous Reader; no asserted guest commitment.",
+      "currentSha256": "f9f253bfa7a8be3698012cb6c007364b0d14045b1b9354ba96dd5abc86d62ed1",
+      "unchanged": true,
+      "scope": "Read-only file hash; reuse historical source proof. No backend requests."
+    }
+  ],
+  "freshBoundedRead": {
+    "file": "/Users/minchomilev/work/hrapp/Calendar/Sharing/EventAppClipSharing.swift",
+    "ranges": [
+      [
+        47,
+        100
+      ]
+    ],
+    "finding": "Distinct App Clip, Email and QR Code picker callbacks; Email assigns access. URL symbol scan348–357/1270–1299 also separates AppClip invocation from server invite paths; full prior caller proof retained above."
+  },
+  "readerTruth": {
+    "AppClip": "App Clip offers an event or calendar-invitation preview. Adding through this experience requires the full app. Do not imply universal automatic launch, no-install adding, direct calendar save or automatic installed-app handoff.",
+    "emailAndQR": "Email and QR invitations use web landing routes offering the full app. These are not interchangeable App Clip invocations or ICS subscription URLs. QR conveys a link, not the recipient’s identity.",
+    "singleEventAdd": "Full-app event import requires calendar permission and a writable destination; permission/absence/save failure are possible. Some single-event reception can be recorded anonymously, so do not blanket-assert signed-in verified identity for every preview or event copy. Elevated email-assigned access depends on the intended identity.",
+    "wholeCalendarAdd": "Whole-calendar acceptance uses a signed-in app-sharing session and verified email identity; recipient identity affects resulting Reader/Writer/Owner role. A browser or App Clip preview is not completed acceptance.",
+    "sender": "Synchronized event-sharing creation uses sign-in/feed guards; do not imply every sender can share without an account.",
+    "separateResults": "Viewing details, saving a copy, subscribing to an ICS feed, accepting calendar access and responding to an invitation are distinct. Reception/acceptedAt is not an attendance RSVP."
+  },
+  "boundedSuggestedCopy": {
+    "event": "App Clip previews the event. To add it through this experience, use the full app and choose a writable calendar.",
+    "calendar": "Preview the invitation, then use the full app to sign in, accept the calendar and check your access.",
+    "delivery": "Email and QR invitations can open a web preview with an option to continue in Cloud Calendars."
+  },
+  "localizedCoordination": {
+    "agent": "calendar_aso_audit",
+    "status": "Agent reports38 current article objects with direct App Clip references;30 single-event guides explicitly qualify preview/full-app adding, seven export sections describe delivery without no-install promise, EN invitation guide qualified. No concrete misleading candidate reported yet; broader no-install/account wording screen ongoing. This is attributed scan status, not my full38-body review."
+  },
+  "releaseLimit": "Hashes establish current local-source continuity with prior audits only. App Store1.7.3 binary correspondence, deployed backend and distributed App Clip experience remain unproven. No runtime/device/account/provider behavior tested.",
+  "notPerformed": [
+    "Native or website source edits",
+    "Builds or simulator operations",
+    "Customer/account queries",
+    "Backend or production requests",
+    "ASC changes",
+    "Deployment",
+    "Privacy/security declarations"
+  ]
+}

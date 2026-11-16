@@ -1,0 +1,184 @@
+{
+  "who-can-see-what-in-google-calendar": {
+    "title": "Autorisations Google Agenda : vérifiez l’accès réellement accordé",
+    "short": "Accès et confidentialité dans Google Agenda",
+    "description": "Choisissez un accès aux disponibilités, aux détails ou à la modification. Vérifiez aussi les accès publics et par groupe avant de partager.",
+    "lede": "Avant de partager un calendrier, décidez ce que l’autre personne doit faire. Trouver un créneau, lire les détails et tenir le calendrier à jour sont des tâches différentes. Ce guide est publié par Arte Soft, développeur de Cloud Calendars.",
+    "commonBelief": "Accorder un accès limité à une personne garantirait qu’elle ne voit aucun détail par une autre voie.",
+    "sections": [
+      {
+        "heading": "Adaptez l’accès à la tâche",
+        "body": [
+          "Un collègue cherchant un créneau peut avoir besoin des disponibilités sans les détails. Un collaborateur chargé du planning d’un projet a d’autres besoins. Définissez la tâche, puis examinez l’autorisation affichée dans les réglages actuels de partage du calendrier.",
+          "Google distingue disponibilités, détails et plusieurs niveaux de modification. Une option limite l’accès aux événements privés ; une autre permet la modification et les détails, tandis que la plus étendue permet aussi de gérer le partage. Toutes les options parlant de modifications ne sont pas équivalentes."
+        ]
+      },
+      {
+        "heading": "Examinez l’accès global et celui de chaque personne",
+        "body": [
+          "Vérifiez si le calendrier est public, accessible à l’organisation ou partagé via un groupe, en plus des personnes nommées. Selon Google, un accès plus large peut primer sur un droit plus limité : restreindre une personne ne retire pas les détails déjà rendus publics.",
+          "Prenez un planning de club publié pour ses membres. Avant d’y placer un rendez-vous personnel, vérifiez son public plutôt que de supposer que seul le droit affiché à côté d’un ami compte. Conservez les rendez-vous privés dans une destination adaptée."
+        ]
+      },
+      {
+        "heading": "Utilisez les réglages Google du calendrier exact",
+        "body": [
+          "Dans Google Agenda sur ordinateur, trouvez le calendrier parmi les vôtres, ouvrez son menu puis ses réglages de partage. Google décrit des zones distinctes pour les personnes ou groupes et pour l’accès plus large. Vérifiez le nom du calendrier et le compte connecté avant tout changement.",
+          "Confirmez l’identité Google prévue du destinataire lors de l’invitation. S’il ne trouve pas le calendrier, vérifiez l’adresse et le message d’invitation plutôt que d’élargir les droits pour le faire apparaître. Un affichage absent et des droits de modification insuffisants sont deux problèmes différents."
+        ]
+      },
+      {
+        "heading": "Testez sans rendez-vous privés",
+        "body": [
+          "Utilisez un rendez-vous de test ordinaire sans titre privé, notes, lieu ou liste d’invités. Demandez au destinataire de confirmer ce qu’il voit et, uniquement si la modification est nécessaire et autorisée, ce qu’il peut changer. Ne transmettez pas vos identifiants pour effectuer ce test.",
+          "Notez le calendrier et le rôle accordé, puis examinez le résultat après modification du réglage. Cela vérifie le partage prévu, sans prouver que des informations déjà lues ou copiées ont disparu. Ne testez pas en publiant un vrai planning professionnel."
+        ]
+      },
+      {
+        "heading": "Séparez règles professionnelles et formules de l’app",
+        "body": [
+          "Google précise que les administrateurs professionnels ou scolaires peuvent restreindre les commandes de partage. Si le réglage nécessaire manque, suivez la voie approuvée par l’organisation. Ne publiez pas d’informations professionnelles pour contourner une restriction du compte.",
+          "Cloud Calendars peut afficher des calendriers connectés, mais ses formules ne redéfinissent pas les droits Google. Advanced supprime les publicités ; ce paiement ne donne pas à autrui accès à tous les événements Google. Vérifiez le partage chez le fournisseur et le résultat accepté, sans vous fier au seul éditeur local disponible."
+        ]
+      },
+      {
+        "heading": "Réexaminez et retirez les accès devenus inutiles",
+        "body": [
+          "À la fin d’un projet, examinez destinataires réels, groupes et publications plus larges. Retirer une personne nommée n’est qu’une partie du contrôle si d’autres voies existent. Convenez de qui tient le planning et de la gestion des futurs changements d’accès.",
+          "Google documente séparément le retrait de personnes ou groupes et la désactivation du partage plus large. Retirer un accès ne récupère ni fichier exporté, ni capture, ni information déjà copiée ailleurs. Traitez ces copies séparément avec les personnes concernées, sans promettre qu’un bouton efface toutes les anciennes copies."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifiez le calendrier et la tâche du destinataire.",
+      "Examinez les accès individuels, de groupe, d’organisation et publics.",
+      "Choisissez le droit adapté dans les réglages Google actuels.",
+      "Vérifiez l’identité avant de modifier l’accès.",
+      "Contrôlez un événement de test sans données sensibles du côté du destinataire.",
+      "Réexaminez les accès obsolètes sans supposer le rappel des copies antérieures."
+    ],
+    "faq": [
+      {
+        "q": "Un droit individuel restreint prime-t-il sur un calendrier public ?",
+        "a": "Non. Google indique que les droits plus larges ont priorité lorsque les réglages se contredisent. Vérifiez les accès publics et d’organisation ainsi que l’entrée de la personne."
+      },
+      {
+        "q": "Tous les droits de modification exposent-ils pareillement les événements privés ?",
+        "a": "Non. Google décrit séparément une option de modification limitant l’accès aux événements privés et d’autres options de modification ou de gestion du partage. Lisez le droit actuel exact avant de choisir."
+      },
+      {
+        "q": "Acheter Advanced change-t-il les droits de partage Google ?",
+        "a": "Non. Advanced supprime les publicités dans Cloud Calendars. L’accès dépend des droits du calendrier et des restrictions de l’organisation."
+      }
+    ],
+    "sourcesHeading": "Conseils Google actuels sur les droits et le partage",
+    "sources": [
+      {
+        "label": "Google : choisir les autorisations du calendrier",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google : partager un calendrier et retirer un accès",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear"
+    ],
+    "updated": "2026-10-21"
+  },
+  "keeping-track-of-who-replied": {
+    "updated": "2026-10-21",
+    "title": "Réponses aux invitations : distinguer présence et accès partagé",
+    "short": "Qui a répondu et qui a accès",
+    "description": "Distinguez réponses de présence, invitations en attente, destinataires anonymes et partage accepté. Confirmez les présences sans inventer de total.",
+    "lede": "Une personne peut ouvrir un lien, ajouter un événement ou accepter un accès sans promettre de venir. Déterminez la réponse recherchée avant d’interpréter une liste de destinataires. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+    "commonBelief": "Tout destinataire ou partage accepté serait une présence confirmée, et le silence permettrait une estimation fiable.",
+    "sections": [
+      {
+        "heading": "1. Identifiez le type d’invitation",
+        "body": [
+          "Une invitation de réunion du fournisseur demande une réponse de présence. Un partage Cloud Calendars donne accès aux détails ou à un calendrier, parfois avec modification. Un abonnement ICS suit des informations. Ces actions peuvent concerner la même réunion sans enregistrer la même décision.",
+          "Un bénévole peut accepter un accès « Writer » pour mettre à jour l’événement sans y assister. Un invité peut lire l’aperçu web puis répondre par message. Aucun de ces cas ne doit être compté uniquement depuis un écran de gestion des accès."
+        ]
+      },
+      {
+        "heading": "2. Lisez les destinataires comme des informations d’accès",
+        "body": [
+          "Cloud Calendars distingue invitations par e-mail en attente, destinataires identifiés, destinataires anonymes et rôles d’accès. Une invitation en attente peut proposer un renvoi. « Reader », « Writer » et « Owner » décrivent ce que le destinataire peut faire des informations partagées.",
+          "Le système enregistre l’acceptation ou la réception lors des parcours d’ajout ou d’accès. Cela éclaire la relation de partage, mais ne constitue pas une réponse de présence Oui/Peut-être/Non. Une réception anonyme n’identifie pas non plus un invité nommé à compter."
+        ]
+      },
+      {
+        "heading": "3. Vérifiez la présence dans le parcours d’invitation de l’organisateur",
+        "body": [
+          "Google décrit des réponses explicites « Yes », « No » et « Maybe ». Calendrier Apple distingue aussi « Accept », « Maybe » et « Decline » pour les invitations prises en charge. Consultez l’événement et le compte correspondants de l’organisateur pour vérifier ces réponses.",
+          "Si une réponse paraît erronée ou manque, confirmez avec la personne l’adresse invitée et la version de l’événement. Une copie importée, un lien transféré ou un événement dans un autre compte peut ne pas représenter l’invitation d’origine. Ne supposez pas que tout affichage tiers contient la dernière réponse."
+        ]
+      },
+      {
+        "heading": "4. Laissez inconnue une présence inconnue",
+        "body": [
+          "Un partage en attente, une absence de réponse ou un message non lu n’est ni une acceptation ni un refus fiable. Séparez confirmations explicites, refus et réponses encore inconnues. N’ajoutez pas une proportion fixe des destinataires silencieux au total confirmé.",
+          "Pour un repas avec une date limite de réservation, indiquez quand vous avez besoin d’une réponse et contactez directement les personnes restantes. Le suivi dépend de l’événement ; aucune règle universelle ne dit qu’un seul rappel deux jours avant suffit."
+        ]
+      },
+      {
+        "heading": "5. Traitez les liens de réunion comme des moyens de rejoindre",
+        "body": [
+          "Une URL Google Meet ou Microsoft Teams indique où rejoindre, pas si la personne a accepté ou viendra. Cloud Calendars inclut Google Meet dans Base et Microsoft Teams dans Premium, selon le compte et le parcours du fournisseur. Une formule supérieure ne rend pas le décompte plus fiable.",
+          "Vérifiez que le lien prévu figure sur l’événement et fonctionne pour le public visé. Les imports et conversions peuvent perdre des informations de conférence. Si vous changez l’organisation, précisez l’événement et le lien à utiliser plutôt que de prendre l’ancien accès pour une confirmation."
+        ]
+      },
+      {
+        "heading": "6. Confirmez après un changement important",
+        "body": [
+          "Si un événement est sensiblement déplacé, mettez-le à jour via son calendrier d’origine ou le parcours de partage. Prévenez ensuite les personnes dont la présence compte et demandez une nouvelle confirmation si nécessaire. Une réponse pour mardi ne vaut pas forcément pour jeudi.",
+          "Séparez la liste finale des présents de celle des accès. Retirer les droits de modification n’annule pas la présence ; refuser un accès partagé ne signifie pas forcément refuser la rencontre. Formulez clairement la décision demandée dans vos messages."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Identifiez si vous avez envoyé une invitation du fournisseur, un partage de l’app ou un flux.",
+      "Utilisez la liste de partage pour les accès et invitations en attente, pas les totaux de présence.",
+      "Vérifiez si nécessaire la réponse chez le fournisseur sur le vrai événement de l’organisateur.",
+      "Séparez réponses inconnues, confirmations et refus.",
+      "Demandez une réponse directe avec un délai adapté.",
+      "Après une modification majeure, confirmez les nouvelles modalités et le lien avec les invités concernés."
+    ],
+    "faq": [
+      {
+        "q": "Accepter l’accès au calendrier signifie-t-il que la personne vient ?",
+        "a": "Non. Cela signifie qu’une relation de partage a été acceptée par ce parcours. La présence exige une réponse à l’invitation du fournisseur ou une confirmation explicite."
+      },
+      {
+        "q": "Puis-je compter les destinataires anonymes comme invités confirmés ?",
+        "a": "Non. Une réception anonyme n’est pas un engagement de présence identifié. Elle peut décrire l’usage d’un événement partagé, sans fournir une liste nominative fiable."
+      },
+      {
+        "q": "Faut-il Premium pour savoir qui a répondu ?",
+        "a": "Ne confondez pas formule et fiabilité des réponses. Premium ajoute les fonctions de calendrier Microsoft et Teams ; reçus d’accès et réponses de présence restent distincts. Vérifiez l’invitation d’origine et le compte de l’organisateur."
+      }
+    ],
+    "sourcesHeading": "Références sur les réponses et les imports",
+    "sources": [
+      {
+        "label": "Google : répondre aux invitations à des événements",
+        "url": "https://support.google.com/calendar/answer/37135?hl=en"
+      },
+      {
+        "label": "Apple : répondre aux invitations Calendrier sur iPhone",
+        "url": "https://support.apple.com/en-ph/guide/iphone/iphc0eddfe3c/ios"
+      },
+      {
+        "label": "Google : importer des événements et limites associées",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      }
+    ],
+    "seeAlso": [
+      "sharing-one-event-not-your-calendar"
+    ]
+  }
+}

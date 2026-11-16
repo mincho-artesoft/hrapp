@@ -1,0 +1,279 @@
+{
+  "checkedAt": "2026-10-22T16:33:53.713590+00:00",
+  "manifestSHA256": "1b1cc787c72908173d728d76466ac2b57543b2e8110963211a3063155414aa4d",
+  "rows": [
+    {
+      "locale": "en-US",
+      "url": "https://www.cloud-calendars.com/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "b80336287724250aefa85df8364a190afae092b3c0edb48363304d5a88c6f036"
+    },
+    {
+      "locale": "ar-SA",
+      "url": "https://www.cloud-calendars.com/ar/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "e1af43d6d6db9927791da7edd182754bcb1782da2f08984a8e475d19634954f0"
+    },
+    {
+      "locale": "bg",
+      "url": "https://www.cloud-calendars.com/bg/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "0b9e5d9a32824ab8fd29041cb8bd51da5527d43ee65df505e2eb5751e652e6c3"
+    },
+    {
+      "locale": "cs",
+      "url": "https://www.cloud-calendars.com/cs/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "638d102a20ff08fbe6e056ca187ff2c6407bf5a9e71173d7ee56291a589cbdd7"
+    },
+    {
+      "locale": "da",
+      "url": "https://www.cloud-calendars.com/da/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "91f9e08af7cd690ab2ea7f7a3d49c2e23a5c0b75065acb1fb02d1ddf132e2bf4"
+    },
+    {
+      "locale": "de-DE",
+      "url": "https://www.cloud-calendars.com/de/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "983b7f85292cc5efb4c729a4cc9296e86167fa1b37129ab17e619e35b834cf43"
+    },
+    {
+      "locale": "el",
+      "url": "https://www.cloud-calendars.com/el/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "a35d5759fbba2eac1c1739a38414f89b010aa9c10ce15616cc2ba280367130c3"
+    },
+    {
+      "locale": "es-ES",
+      "url": "https://www.cloud-calendars.com/es/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "fcb6b9015a4c4c36da36a173f1e2ef9a634c81ed353e6a732b531438edc38968"
+    },
+    {
+      "locale": "fi",
+      "url": "https://www.cloud-calendars.com/fi/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "d8cc6debf2af8a66306d29b4e21433dda438ffb5bf69f96b6f2f8d6c5fe5a5cb"
+    },
+    {
+      "locale": "fr-FR",
+      "url": "https://www.cloud-calendars.com/fr/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "c9883bac21c565626eda9531057a677f37305854a3d7297303190930c71bace1"
+    },
+    {
+      "locale": "he",
+      "url": "https://www.cloud-calendars.com/he/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "b194d89df8c3275bdde3ce8c700286a80c60c16a160b474494866089709c3b26"
+    },
+    {
+      "locale": "hi",
+      "url": "https://www.cloud-calendars.com/hi/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "2faabd83669603567e6113b79bf3fbd6fdf427d08c797180627bed0ddf1fc831"
+    },
+    {
+      "locale": "hu",
+      "url": "https://www.cloud-calendars.com/hu/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "fea9fc8d5ef6f262399be89160bd2d8ffa0f3626d359e8814c3a21928e3e7193"
+    },
+    {
+      "locale": "id",
+      "url": "https://www.cloud-calendars.com/id/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "6b1acd9080cccbeffceeb2f62561bbbb7cbbf3cfd2a1bf761d2a3b3f951d5d87"
+    },
+    {
+      "locale": "it",
+      "url": "https://www.cloud-calendars.com/it/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "019e3311a516ac1de00958227b19019bf844d45af9b87f9e9712425463ab3ca7"
+    },
+    {
+      "locale": "ja",
+      "url": "https://www.cloud-calendars.com/ja/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "85114d3b515e8e2c92ae91e28ca5f0987d1f32c67911436a27733acd15c49d94"
+    },
+    {
+      "locale": "ko",
+      "url": "https://www.cloud-calendars.com/ko/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "5c057c124cff5fd946df2d46f61356745956f3afa113dafe8ef4d0ab417ee9ab"
+    },
+    {
+      "locale": "ms",
+      "url": "https://www.cloud-calendars.com/ms/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "75cd3b2c31dc64fd550931f6a0a9b59cc24e333db460e90e6dca488929f81e84"
+    },
+    {
+      "locale": "nl-NL",
+      "url": "https://www.cloud-calendars.com/nl/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "1da099aedddf0774a731c9fd03112848b52f1bdca9b05aa8ddee6f2885298060"
+    },
+    {
+      "locale": "no",
+      "url": "https://www.cloud-calendars.com/no/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "394a936be2e37c4a5895f1ec07d708c34b4215d792c89a27f3d289d1b8d23ef1"
+    },
+    {
+      "locale": "pl",
+      "url": "https://www.cloud-calendars.com/pl/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "aaee7b08760d3cc67ba33db228af95f111b91b2f3eb20efe083ee3a357eb858a"
+    },
+    {
+      "locale": "pt-BR",
+      "url": "https://www.cloud-calendars.com/pt/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "f9464041130e3a8e3cc9fa8b00fde6568aaa4b13bd8f40948face7c8962fe198"
+    },
+    {
+      "locale": "ro",
+      "url": "https://www.cloud-calendars.com/ro/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "c5037f54b1f140c8cc86c6b6d8e210868fc9783170f07a5facf1a82e0cd23f44"
+    },
+    {
+      "locale": "ru",
+      "url": "https://www.cloud-calendars.com/ru/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "a512bcababb422a478c53dfe52d41c3377acf34295acf7fa611c5642b4a4e250"
+    },
+    {
+      "locale": "sv",
+      "url": "https://www.cloud-calendars.com/sv/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "774e961abf7525b6285a6113b14a64a33849fbfd183b6920d3f2fe6e1766afb5"
+    },
+    {
+      "locale": "th",
+      "url": "https://www.cloud-calendars.com/th/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "20c920db0be5322f70ea9d310c074e77c9c6815b7236cb0683601dc4b6a8d8d2"
+    },
+    {
+      "locale": "tr",
+      "url": "https://www.cloud-calendars.com/tr/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "ec654432f5af2246d6401ad708eb5e6084fb1cc493414c3bd02824af3f20b7cd"
+    },
+    {
+      "locale": "vi",
+      "url": "https://www.cloud-calendars.com/vi/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 2,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "40086705d1938ef1bd34b0a1939ee1e4cdf1c18d6fb3594ac19c356467d6fda1"
+    },
+    {
+      "locale": "zh-Hans",
+      "url": "https://www.cloud-calendars.com/zh-hans/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "0357da8d1d255009ccf7bdb0a1eed3781d208b2cea78fd0199d68121288e38ad"
+    },
+    {
+      "locale": "zh-Hant",
+      "url": "https://www.cloud-calendars.com/zh-hant/",
+      "status": 200,
+      "all15ScreenshotLinksPresent": true,
+      "videoCount": 3,
+      "expectedVideoSourcesPresent": true,
+      "htmlSHA256": "9087771823003a31434cb70da39cb4713e32cd53857e2b01cf96a43b4904dd02"
+    }
+  ],
+  "scope": "All30 public homepage HTML responses reference complete15-image device galleries and exactly available video sources. Actual objectSHA checks are recorded separately; representative browser playback is a separate review.",
+  "privacySourcePreserved": true,
+  "publicPolicyBodyMatchesPreservedSource": true
+}

@@ -1,0 +1,184 @@
+{
+  "source": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-help.ts",
+  "sourceSha256": "56cf1f47f421164ad4f854e02467ae87b74f3f0edd574659800df2ce3d6fd120",
+  "articles": 9,
+  "locales": [
+    "es-ES",
+    "it",
+    "pt-BR"
+  ],
+  "checks": [
+    {
+      "locale": "es-ES",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        2
+      ],
+      "faq": 3,
+      "practical": 5,
+      "sources": 2,
+      "seeAlso": 2,
+      "descriptionCharacters": 153,
+      "wordCount": 1141
+    },
+    {
+      "locale": "es-ES",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "seeAlso": 3,
+      "descriptionCharacters": 149,
+      "wordCount": 1101
+    },
+    {
+      "locale": "es-ES",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "sections": 6,
+      "paragraphs": [
+        3,
+        3,
+        2,
+        2,
+        2,
+        3
+      ],
+      "faq": 3,
+      "practical": 3,
+      "sources": 5,
+      "seeAlso": 3,
+      "descriptionCharacters": 139,
+      "wordCount": 1140
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        2
+      ],
+      "faq": 3,
+      "practical": 5,
+      "sources": 2,
+      "seeAlso": 2,
+      "descriptionCharacters": 155,
+      "wordCount": 1056
+    },
+    {
+      "locale": "it",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "seeAlso": 3,
+      "descriptionCharacters": 147,
+      "wordCount": 1017
+    },
+    {
+      "locale": "it",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "sections": 6,
+      "paragraphs": [
+        3,
+        3,
+        2,
+        2,
+        2,
+        3
+      ],
+      "faq": 3,
+      "practical": 3,
+      "sources": 5,
+      "seeAlso": 3,
+      "descriptionCharacters": 142,
+      "wordCount": 1096
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "calendar-notifications-missing-silent-or-duplicated",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        2
+      ],
+      "faq": 3,
+      "practical": 5,
+      "sources": 2,
+      "seeAlso": 2,
+      "descriptionCharacters": 146,
+      "wordCount": 1102
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "find-old-calendar-events-by-account-date-and-title",
+      "sections": 6,
+      "paragraphs": [
+        2,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "faq": 3,
+      "practical": 6,
+      "sources": 2,
+      "seeAlso": 3,
+      "descriptionCharacters": 144,
+      "wordCount": 1075
+    },
+    {
+      "locale": "pt-BR",
+      "slug": "calendar-export-ics-pdf-and-backup",
+      "sections": 6,
+      "paragraphs": [
+        3,
+        3,
+        2,
+        2,
+        2,
+        3
+      ],
+      "faq": 3,
+      "practical": 3,
+      "sources": 5,
+      "seeAlso": 3,
+      "descriptionCharacters": 144,
+      "wordCount": 1106
+    }
+  ],
+  "result": "pass"
+}

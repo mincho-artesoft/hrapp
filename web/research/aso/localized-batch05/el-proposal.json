@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "el",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "8b7dbbe6-5bbc-459c-823a-71b868a8e296",
+  "versionLocalizationId": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Ημερολόγιο",
+      "characters": 27,
+      "utf8Bytes": 37,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Καιρός, ραντεβού και widget",
+      "characters": 27,
+      "utf8Bytes": 44,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "ατζέντα,πρόγραμμα,εβδομάδα,μήνας,υπενθύμιση,συνάντηση,συμβάν,κοινοποίηση,πρόσκληση,πρόγνωση",
+      "characters": 91,
+      "utf8Bytes": 173,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Δείτε τα σχέδιά σας μαζί με τον καιρό. Χρησιμοποιήστε widget και διαφορετικές προβολές ή ξεκινήστε με τοπικό ημερολόγιο χωρίς λογαριασμό στην εφαρμογή.",
+      "characters": 151,
+      "utf8Bytes": 273,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Δείτε επαγγελματικά ραντεβού, προσωπικά σχέδια και τον καιρό σε iPhone και iPad με το Cloud Calendars.\n\nΗΜΕΡΟΛΟΓΙΑ ΚΑΙ ΠΡΟΒΟΛΕΣ\nΧρησιμοποιήστε ημερολόγια iCloud και συνδέστε το Ημερολόγιο Google. Το Premium προσθέτει υποστήριξη για ημερολόγια Microsoft. Επιλέξτε προβολή ημέρας, εβδομάδας, μήνα, έτους ή λίστας.\n\nΜπορείτε επίσης να δημιουργήσετε τοπικό ημερολόγιο στη συσκευή χωρίς λογαριασμό Cloud Calendars. Η σύνδεση υπηρεσιών και η κοινοποίηση ενδέχεται να απαιτούν σύνδεση σε λογαριασμό.\n\nΚΑΙΡΟΣ, WIDGET ΚΑΙ ΚΟΙΝΟΠΟΙΗΣΗ\nΕλέγξτε την πρόγνωση καθώς σχεδιάζετε τη μέρα σας. Τα widget της οθόνης Αφετηρίας διατίθενται σε μικρό, μεσαίο και μεγάλο μέγεθος. Οι διαθέσιμες προγνώσεις εξαρτώνται από την τοποθεσία και τον πάροχο καιρού. Μοιραστείτε συμβάντα και ημερολόγια και στείλτε προσκλήσεις με email, κωδικό QR ή App Clip. Τα δικαιώματα εξαρτώνται από το ημερολόγιο και τον τύπο πρόσκλησης.\n\nΕΠΙΛΕΞΤΕ ΠΡΟΓΡΑΜΜΑ\nΤο δωρεάν Base περιλαμβάνει συγχρονισμό με το Ημερολόγιο Google, Google Meet, διαφορετικές προβολές ημερολογίου, καιρό και widget.\nΤο Advanced περιλαμβάνει τις λειτουργίες του Base και αφαιρεί τις διαφημίσεις.\nΤο Premium περιλαμβάνει το Advanced και προσθέτει ημερολόγια Microsoft και Microsoft Teams.\n\nΗ λήψη είναι δωρεάν, με προαιρετικές συνδρομές αυτόματης ανανέωσης. Πριν εγγραφείτε, ελέγξτε την τρέχουσα τοπική τιμή και την περίοδο χρέωσης στην εφαρμογή ή στο App Store. Η συνδρομή ανανεώνεται αν δεν ακυρωθεί τουλάχιστον 24 ώρες πριν από τη λήξη της τρέχουσας περιόδου. Διαχειριστείτε ή ακυρώστε τη στις ρυθμίσεις του λογαριασμού σας στο App Store.\n\nΑπόρρητο: https://www.cloud-calendars.com/privacy-policy\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1704,
+      "utf8Bytes": 2848,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "el",
+      "name": "Cloud Calendars: Ημερολόγιο",
+      "subtitle": "Όλα τα ημερολόγια μαζί",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Σχεδιάστε την ημέρα σας με ημερολόγιο και καιρό μαζί\n\nΤο Cloud Calendars συνδυάζει τα ημερολόγια και τον καιρό σε μια όμορφα οργανωμένη εμπειρία προγραμματισμού.\n\nΔιαχειριστείτε ημερολόγια iCloud, Google Calendar και Microsoft σε μία εφαρμογή, βλέποντας τις προγνώσεις απευθείας στο πρόγραμμά σας, στα widget και στις προβολές σχεδιασμού.\n\nΠροετοιμαστείτε για συναντήσεις, ταξίδια, παραλαβές από το σχολείο, υπαίθριες δραστηριότητες και πολυάσχολες ημέρες με προβολές ημερολογίου σχεδιασμένες για γρηγορότερο προγραμματισμό.\n\nWIDGET ΑΡΧΙΚΗΣ ΟΘΟΝΗΣ\n\nΠροσθέστε όμορφα widget που συνδυάζουν:\n• Συμβάντα ημερολογίου\n• Προγνώσεις καιρού\n• Προσεχές πρόγραμμα\n• Φάση Σελήνης και συνθήκες\n• Άνεμο και θερμοκρασία\n• Επισκόπηση ημερήσιας ατζέντας\n\nΕπιλέξτε από πολλά στιλ widget για να βλέπετε την ημέρα σας απευθείας από την Αρχική οθόνη.\n\nΓΙΑΤΙ CLOUD CALENDARS\n\n• Προβολή ημερολογίων iCloud, Google Calendar και Microsoft μαζί\n• Σχεδιασμός με ενσωματωμένες προγνώσεις καιρού\n• Όμορφα widget Αρχικής οθόνης\n• Φυσική μεταφορά, μετακίνηση και αλλαγή μεγέθους συμβάντων\n• Δημιουργία συνδέσμων Google Meet και Microsoft Teams\n• Εναλλαγή μεταξύ προβολών Ημέρας, Εβδομάδας, Μήνα, Έτους και Λίστας\n• Διαχείριση επαγγελματικών και προσωπικών ημερολογίων σε ένα μέρος\n\nΛΕΙΤΟΥΡΓΙΕΣ\n\nΌλα τα ημερολόγιά σας μαζί\nΣυνδέστε και διαχειριστείτε ημερολόγια iCloud, Google Calendar και Microsoft σε μια καθαρή εμπειρία με χρωματική κωδικοποίηση.\n\nΟ καιρός μέσα στο ημερολόγιό σας\nΔείτε ωριαίες και ημερήσιες προγνώσεις απευθείας στη ροή σχεδιασμού σας, όπως θερμοκρασία, συνθήκες, φάση Σελήνης, άνεμο και εικονίδια καιρού.\n\nWidget ημερολογίου και καιρού\nΔείτε άμεσα το πρόγραμμά σας και τον καιρό από προσαρμόσιμα widget Αρχικής οθόνης.\n\nΠολλαπλές προβολές ημερολογίου\nΕπιλέξτε προβολή Ημέρας, Εβδομάδας, Μήνα, Έτους ή Λίστας ανάλογα με το πώς οργανώνετε τον χρόνο σας.\n\nΕύκολη επεξεργασία συμβάντων\nΠατήστε, σύρετε και αλλάξτε το μέγεθος συμβάντων απευθείας στο ημερολόγιο για γρήγορο και φυσικό προγραμματισμό.\n\nΞεχωριστή προβολή καιρού\nΕξερευνήστε λεπτομερείς προγνώσεις με ωριαίες συνθήκες και χρήσιμες πληροφορίες σχεδιασμού.\n\nΔημιουργία συμβάντων από προγνώσεις\nΠατήστε μια ώρα πρόγνωσης για να δημιουργήσετε αμέσως νέο συμβάν στην επιλεγμένη ώρα.\n\nΕνσωματωμένοι σύνδεσμοι συναντήσεων\nΠροσθέστε γρήγορα συνδέσμους Google Meet και Microsoft Teams σε συμβάντα.\n\nΙΔΑΝΙΚΟ ΓΙΑ\n\n• Διαχείριση επαγγελματικού και προσωπικού ημερολογίου\n• Σχεδιασμό με βάση τον καιρό\n• Υπαίθριες δραστηριότητες και ταξίδια\n• Πολυάσχολα προγράμματα και οικογενειακό σχεδιασμό\n• Χρήστες Google Calendar και iCloud\n• Χρήστες ημερολογίου Microsoft\n\nΔοκιμάστε το Cloud Calendars και κάντε κάθε ημέρα ευκολότερη στον προγραμματισμό.\n\nΠΛΗΡΟΦΟΡΙΕΣ ΣΥΝΔΡΟΜΗΣ\n\nΤο Cloud Calendars προσφέρει συνδρομές με αυτόματη ανανέωση.\n\nΔωρεάν πρόγραμμα\n• Συγχρονισμός Google Calendar\n• Πολλαπλές προβολές ημερολογίου\n• Λειτουργίες καιρού\n• Widget\n• Υποστήριξη Google Meet\n\nΗ πληρωμή θα χρεωθεί στο Apple ID σας κατά την επιβεβαίωση αγοράς. Οι συνδρομές ανανεώνονται αυτόματα, εκτός αν ακυρωθούν τουλάχιστον 24 ώρες πριν από το τέλος της τρέχουσας περιόδου. Ο λογαριασμός σας θα χρεωθεί για την ανανέωση εντός 24 ωρών πριν από το τέλος της τρέχουσας περιόδου. Μπορείτε να διαχειριστείτε και να ακυρώσετε συνδρομές στις ρυθμίσεις λογαριασμού App Store.\n\nΠολιτική απορρήτου: https://www.cloud-calendars.com/privacy-policy\nΌροι χρήσης: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "el",
+      "keywords": "καιρός,widget,πρόγραμμα,σχεδιασμός,ατζέντα,πρόγνωση,iCloud,συναντήσεις,οθόνη κλειδώματος,βροχή,μήνας",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts, UTF-8 bytes separate. Token checks do not resolve grammar/inflections."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "No native-speaker or ASC write validation. English allocation is an editorial hypothesis, not measured demand. Verify tier labels match shipping UI.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch04/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

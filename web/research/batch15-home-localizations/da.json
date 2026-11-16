@@ -1,0 +1,62 @@
+[
+  {
+    "field_path": "features.unified.body",
+    "before": "iCloud, Google Kalender og Microsoft Outlook, synkroniseret begge veje og farvekodet i én visning. Slå en kalender fra, når du ikke vil se den — resten kører videre.",
+    "after": "Se valgte iCloud- og Google-kalendere samlet; Premium tilføjer Microsoft-kalendere. Redigér, hvor kontotilladelserne tillader det, og kontrollér kildekalenderen efter ændringer."
+  },
+  {
+    "field_path": "features.gestures.body",
+    "before": "Tag fat i en begivenhed, og skub den til et andet tidspunkt eller en anden dag. Træk i dens øverste eller nederste kant for at ændre, hvor længe den varer. Ingen dialog, ingen gem-knap.",
+    "after": "Flyt redigerbare begivenheder til et andet tidspunkt eller en anden dag, eller ændr varigheden på tidslinjen. Vælg ved gentagne begivenheder, hvilke forekomster der skal ændres, og kontrollér det gemte resultat."
+  },
+  {
+    "field_path": "faq.items[3].a",
+    "before": "Det er den primære måde at redigere på. Træk en begivenhed til et andet tidspunkt eller en anden dag, eller træk i dens øverste eller nederste kant for at ændre varigheden. Ændringerne synkroniseres direkte tilbage til kildekalenderen.",
+    "after": "Du kan flytte redigerbare begivenheder og ændre deres varighed på tidslinjen. Kontrollér gentagelsesvalget og det gemte tidspunkt; opdateringer af tilsluttede kalendere afhænger af tilladelser og vellykket synkronisering."
+  },
+  {
+    "field_path": "showcase.lead",
+    "before": "De samme begivenheder, ordnet efter det spørgsmål, du faktisk stiller — og hver af dem bærer sin udsigt.",
+    "after": "Vælg en oversigt eller en detaljeret tidslinje med tilgængeligt vejr i de understøttede visninger."
+  },
+  {
+    "field_path": "showcase.panels[0].body",
+    "before": "Et timegitter, hvor hver række bærer sin egen udsigt. Du ser mødet klokken tre og regnen klokken tre i samme øjekast — ingen anden app, ingen gætterier.",
+    "after": "Sammenlign aftaler med tilgængeligt timevejr i samme gitter. Kontrollér det valgte sted og prognosedatoen, når du planlægger udendørs."
+  },
+  {
+    "field_path": "showcase.panels[3].body",
+    "before": "Månedsvisningen markerer hver dag, hvor der er noget. Årsvisningen sætter tolv måneder på én skærm — den hurtigste måde at finde en fri uge.",
+    "after": "Sammenlign begivenheder fra valgte kalendere over måneden eller året. Åbn en dag, og gennemgå alle aftaler, før du vurderer den som ledig."
+  },
+  {
+    "field_path": "features.tiles[1].body",
+    "before": "Tryk på en hvilken som helst time i vejrcentret, og en ny begivenhed åbner, allerede sat til det tidspunkt. Find det tørre vindue, og book det.",
+    "after": "Vælg en time med tilgængelig vejrudsigt for at starte en begivenhedskladde, og kontrollér dato, tid og kalender før lagring."
+  },
+  {
+    "field_path": "hero.badge",
+    "before": "Version {v} — delte begivenheder holder sig nu selv opdaterede",
+    "after": "Version {v} — deling af begivenheder og kalendere"
+  },
+  {
+    "field_path": "faq.items[6].a",
+    "before": "Abonnementer håndteres af Apple, så du opsiger i indstillingerne for din App Store-konto. Gør det senest 24 timer før perioden slutter, så bliver du ikke opkrævet igen.",
+    "after": "Åbn Indstillinger på iPhone eller iPad, tryk på dit navn og derefter Abonnementer. Vælg Cloud Calendars, og opsig dér; kontrollér den opsigelses- eller udløbsstatus, Apple viser."
+  },
+  {
+    "field_path": "pricing.note",
+    "before": "Abonnementer fornyes automatisk og opkræves via dit Apple-id. Opsig når som helst i indstillingerne for din App Store-konto, senest 24 timer før perioden slutter.",
+    "after": "Abonnementer fornyes automatisk via din Apple-konto. Kontrollér den lokale pris og faktureringsperiode før køb. Administrér opsigelse i Indstillinger under dit navn → Abonnementer."
+  },
+  {
+    "field_path": "features.sourceNotes.twoWay",
+    "before": "Begge veje",
+    "after": "Tilsluttet"
+  },
+  {
+    "field_path": "pricing.mostPopular",
+    "before": "Mest valgte",
+    "after": "Fremhævet abonnement"
+  }
+]

@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "method": "Exact official HTTP response bodies parsed to article text, fully printed and read by author; IDs16713792 and15620294 additionally corroborated with web extraction. No firsthand tests.",
+  "sources": [
+    {
+      "id": "13762729",
+      "url": "https://support.google.com/calendar/answer/13762729?hl=en",
+      "title": "Require payments for appointments",
+      "wordCount": 469,
+      "sha256": "975eaa4c51f8017b3c3d3e50f37d66b5a0548b3c8c839467df6bcf19a573580c",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/13762729.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete body read: eligible Workspace/administrator gate; Stripe connection; required payment setup; cancellation does not automatically refund; Stripe handles refund; disconnect removes payment requirement from all schedules."
+    },
+    {
+      "id": "11902347",
+      "url": "https://support.google.com/calendar/answer/11902347?hl=en",
+      "title": "Verify emails for appointments",
+      "wordCount": 160,
+      "sha256": "1abb1adbdabbe8831668f9c1c06fd14363529409ec742f61bb2a67b4be63372f",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/11902347.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete body read: eligible Workspace, verification initially off, schedule booking-form checkbox, signed-in Google users not asked for PIN, guest inbox PIN workflow."
+    },
+    {
+      "id": "10733297",
+      "url": "https://support.google.com/calendar/answer/10733297?hl=en",
+      "title": "Share your appointment schedule",
+      "wordCount": 351,
+      "sha256": "3066bcb37043ea46b163eefdb24bf7d38efacd0761ccb5609eb628af163e50b6",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/10733297.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete body read: booking-page public identity; direct link, popup button and inline embed; one booking page versus all booking pages; calendar-list visibility does not hide the booking page."
+    },
+    {
+      "id": "10738043",
+      "url": "https://support.google.com/calendar/answer/10738043?hl=en",
+      "title": "View how you spend time in meetings",
+      "wordCount": 721,
+      "sha256": "e912718d287a505a02eee72194ee1600c725237c02574197eb23d6a6e47858cb",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/10738043.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete body read: primary-calendar and computer access; qualifying Yes/Busy/guest/duration criteria; range-dependent averages; overlapping meeting intervals counted once. Worked 90-minute example is author arithmetic, not runtime observation."
+    },
+    {
+      "id": "1340696",
+      "url": "https://support.google.com/calendar/answer/1340696?hl=en",
+      "title": "Use Google Calendar offline",
+      "wordCount": 217,
+      "sha256": "9142509b0f1cef33039f079dd929ec63d35e43cc806580b66ffd4e9aa78b348f",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/1340696.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: Chrome offline setup/reload/readiness, previous four weeks and future view, no creation/edit/guest email/tasks, clearing cache removes support. Mobile behavior not generalized."
+    },
+    {
+      "id": "37034",
+      "url": "https://support.google.com/calendar/answer/37034?hl=en",
+      "title": "Use keyboard shortcuts in Google Calendar",
+      "wordCount": 301,
+      "sha256": "e368d6057df0dd72ff6cc25567e6d8712fa688a083398de89c5b7b7ea1bce272",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/37034.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: enable shortcuts, question-mark reference, specific date/week/create/Escape and platform save commands; avoid relying on unknown focus or using delete experimentally."
+    },
+    {
+      "id": "13748650",
+      "url": "https://support.google.com/calendar/answer/13748650?hl=en",
+      "title": "Add or remove alternate calendars",
+      "wordCount": 263,
+      "sha256": "28c1a9cf971437d3320d32bc2bd0a62ec1f49c70d4e202577195187a7e2bc411",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/13748650.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: alternate lunar/solar display through View options; Moon-phase and sports sources through calendars of interest; no claim every team is available."
+    },
+    {
+      "id": "9117864",
+      "url": "https://support.google.com/calendar/answer/9117864?hl=en",
+      "title": "Find and install Calendar add-ons",
+      "wordCount": 239,
+      "sha256": "1c5ddec5657f64fe0030f1222ce4b06f01c4866a2ec7db3688480e3c6b909ebe",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/9117864.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: Marketplace installation, administrator restrictions, event conferencing dropdown and provider sign-in, uninstall limits and provider support. No assumption that uninstall revokes every grant or edits invitations."
+    },
+    {
+      "id": "15620294",
+      "url": "https://support.google.com/calendar/answer/15620294?hl=en",
+      "title": "Show personal & work calendars in Google Calendar",
+      "wordCount": 273,
+      "sha256": "b4f22d27ffc73f6ca35a9cb8eaf26f77b3661003e79a07aa0df989ad3530c3a2",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/15620294.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete Android body read and web corroboration: managed Work Profile plus administrator allowance, separate storage, personal-calendar connection, direct sharing distinction and duplicate-route control. Not a blanket device-management privacy guarantee."
+    },
+    {
+      "id": "16690875",
+      "url": "https://support.google.com/calendar/answer/16690875?hl=en",
+      "title": "Let Gemini in Google Calendar find times to meet",
+      "wordCount": 290,
+      "sha256": "9f5b0a1d316046f675c35ad63eb5fec18134dd62311fa96ae3d69e3922e1fec7",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "/Users/minchomilev/cloud-calendars/research/content-scale-20261023/drafts/google-batch-02-sources/16690875.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: eligible Workspace, guest-based suggested times/create/reschedule workflow, mobile/long-duration/past-range exclusions; no invented numerical guest limit or room acceptance guarantee."
+    },
+    {
+      "id": "13012543",
+      "url": "https://support.google.com/calendar/answer/13012543?hl=en",
+      "title": "Report assigned tasks as spam",
+      "wordCount": 200,
+      "sha256": "823dbf751d82e16461d5cc5751d655a4bf2ca2f81b6607f7a8e11b5c287be03b",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "research/content-scale-20261023/drafts/google-batch-02-sources/13012543.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read: assigned-task report removes personal-list entry and assignment in shared space; Tasks side panel or Calendar task menu; no claim of deleting source document or banning every sender."
+    },
+    {
+      "id": "16713792",
+      "url": "https://support.google.com/calendar/answer/16713792?hl=en",
+      "title": "Track responses to your event",
+      "wordCount": 433,
+      "sha256": "cd2d8546d776ec282a44cf71940679ec41c9270314601a206de40337e2db6c5b",
+      "status": "complete_extracted_body_read_by_author",
+      "path": "research/content-scale-20261023/drafts/google-batch-02-sources/16713792.txt",
+      "readAt": "2026-10-23",
+      "claimSpecificReview": "Complete computer body read and web corroboration: calendar-wide response mail versus per-event/series checkbox, disabling per-event response mail excludes third-party RSVP status including Outlook; no historical-backfill promise."
+    }
+  ],
+  "unsupportedOrExcluded": [
+    "Native account-add overview overlaps source/sync diagnosis; not drafted.",
+    "Cosmetic color-density-dark-theme guide held below stronger operational topics.",
+    "Appointment schedule editing effects on previously booked events not asserted.",
+    "Gemini maximum-attendee number not documented; none invented.",
+    "No historical third-party RSVP backfill promise."
+  ],
+  "adjacentExistingBodiesRead": [
+    "automatic-time-blocking-versus-manual-calendar",
+    "booking-link-or-shared-calendar",
+    "calendar-event-or-room-reservation",
+    "calendar-export-ics-pdf-and-backup",
+    "calendar-notifications-missing-silent-or-duplicated",
+    "can-others-see-google-calendar-tasks",
+    "disconnect-calendar-integration-without-losing-track",
+    "event-saved-to-wrong-calendar",
+    "iphone-calendar-language-alternate-calendar-settings",
+    "iphone-calendar-tasks-reminders-versus-event-alerts",
+    "keeping-track-of-who-replied",
+    "meeting-links-that-make-themselves",
+    "natural-language-calendar-events-iphone",
+    "planning-a-week-in-ten-minutes",
+    "recurring-events-without-the-mess",
+    "sharing-one-event-not-your-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "time-zones-and-the-flight-you-booked",
+    "unwanted-calendar-events-iphone",
+    "weather-calendar-history-versus-forecast-iphone",
+    "what-calendar-sync-actually-does",
+    "what-guests-can-do-to-your-event",
+    "when-two-calendars-disagree",
+    "who-can-see-what-in-google-calendar",
+    "work-and-personal-without-two-apps"
+  ],
+  "previousBatchOverlapChecked": [
+    "claude/claude-briefs.json",
+    "claude/claude-briefs-02.json",
+    "drafts/source-batch-01.json",
+    "drafts/apple-batch-01.json",
+    "drafts/technical-batch-02.json"
+  ],
+  "noPaidApiUsed": true,
+  "applicationEdits": false,
+  "publicationPerformed": false
+}

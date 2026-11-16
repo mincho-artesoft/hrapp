@@ -1,0 +1,91 @@
+{
+  "title": "Hentikan perkongsian kalendar: buang akses dan semak laluan lain",
+  "short": "Semak dan tarik balik akses perkongsian",
+  "description": "Bezakan individu, kumpulan, akses awam dan pautan suapan semasa menghentikan perkongsian. Semak perubahan; salinan tersimpan mungkin kekal.",
+  "lede": "Menamatkan kerjasama bermula dengan mengenal pasti cara akses diberikan. Membuang seseorang, menghentikan penerbitan dan menetapkan semula alamat suapan ialah tindakan berbeza. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Membuang seorang penerima dianggap serta-merta menarik balik semua salinan kalendar dan menutup setiap laluan akses lain.",
+  "sections": [
+    {
+      "heading": "Kenal pasti kalendar dan laluan perkongsian",
+      "body": [
+        "Sahkan akaun pemilik, kalendar dan khalayak yang dimaksudkan sebelum mengubah akses. Kalendar Google yang dikongsi dengan rakan tertentu berbeza daripada kalendar awam, kebenaran kumpulan atau alamat langganan. Cloud Calendars juga mempunyai hubungan perkongsian acara dan kalendarnya sendiri.",
+        "Contohnya, setiausaha kelab boleh menerima hak menyunting melalui jemputan peribadi, sementara ahli mengikuti jadual terbitan. Membuang hak setiausaha tidak menentukan apa yang patut berlaku kepada langganan ahli. Senaraikan susunan yang benar-benar anda wujudkan."
+      ]
+    },
+    {
+      "heading": "Buang kebenaran Google yang berkenaan",
+      "body": [
+        "Google mendokumenkan kawalan berasingan untuk individu atau kumpulan, perkongsian seluruh organisasi dan akses awam. Pada komputer, buka tetapan perkongsian kalendar yang betul dan ubah entri atau tetapan lebih luas yang berkaitan. Semak dahulu akaun yang dilog masuk dan nama kalendar.",
+        "Seseorang mungkin masih mempunyai akses melalui kumpulan atau penerbitan lebih luas. Semak seluruh susunan, bukan membuang alamat e-mel sama berulang kali. Dasar tempat kerja atau sekolah boleh mengehadkan kawalan; gunakan proses yang diluluskan pemilik atau pentadbir jika perlu."
+      ]
+    },
+    {
+      "heading": "Urus alamat kalendar rahsia secara berasingan",
+      "body": [
+        "Google menyatakan alamat iCal rahsia adalah untuk kegunaan sendiri dalam aplikasi kalendar lain dan tidak patut diberikan kepada orang lain. Jika terdedah, Google menerangkan cara menetapkannya semula supaya alamat lama tidak sah. Ini berbeza daripada membuang individu tertentu.",
+        "Sebelum menukar alamat langganan yang digunakan sendiri, kenal pasti aplikasi dan alat yang bergantung padanya supaya yang diperlukan boleh disambungkan semula. Jangan tampal URL rahsia dalam siaran sokongan awam atau hantar sebagai bukti menemui kalendar yang betul. Nyatakan nama kalendar dan jenis sambungan sahaja."
+      ]
+    },
+    {
+      "heading": "Bezakan penerima Cloud Calendars daripada pautan suapan",
+      "body": [
+        "Dalam Cloud Calendars, akses penerima acara atau kalendar dan suapan langganan yang dikeluarkan ialah mekanisme berbeza. Semak hubungan perkongsian sebenar serta pautan berkaitan sebelum bertindak. Membuang penerima yang dikenal pasti tidak menjamin semua URL terdahulu atau salinan bebas telah ditarik balik.",
+        "Jika penganjur bersama hanya perlu berhenti menyunting, pertimbangkan peranan dan khalayak yang tinggal, bukannya memadam jadual bersama. Jika seluruh kerjasama tamat, tentukan pemilik dan siapa yang patut menyimpan kalendar. Meninggalkan kalendar yang diterima berbeza daripada memadam kalendar milik sendiri."
+      ]
+    },
+    {
+      "heading": "Sahkan hasil tanpa menjanjikan kehilangan serta-merta",
+      "body": [
+        "Semak bahawa perubahan disimpan dalam sistem pemilik. Jika rakan yang diberi kuasa boleh membantu, sahkan hasil paparan atau suntingan daripada akaunnya sendiri tanpa berkongsi kata laluan. Bezakan akses ditolak daripada acara lama yang masih kelihatan dalam cache atau salinan import.",
+        "Jangan janjikan sela penyegaran sejagat atau bahawa tiada pemberitahuan dihantar. Semasa penyerahan kumpulan, beritahu jadual yang perlu digunakan seterusnya. Rekod lama yang kelihatan tidak dengan sendirinya menunjukkan akses langsung, kebenaran lain atau salinan bebas masih ada."
+      ]
+    },
+    {
+      "heading": "Susuli salinan terdahulu secara berasingan",
+      "body": [
+        "Fail eksport, tangkap layar, mesej dan janji temu yang disimpan berasingan mungkin kekal selepas perubahan akses. Tentukan salinan yang penting untuk penyerahan dan bincangkan pengurusannya dengan pihak terlibat. Menukar kebenaran tidak menentukan apa yang sudah disimpan setiap penerima.",
+        "Simpan rekod sumber yang diperlukan semasa menilai hasil. Jangan pindahkan mesyuarat sensitif ke kalendar bersama lain hanya supaya yang lama kelihatan kosong, atau batalkan jemputan sebenar sebagai ujian akses. Catat kalendar, laluan dan perubahan untuk membantu penyelesaian masalah kemudian."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Kenal pasti akaun pemilik, kalendar dan laluan perkongsian.",
+    "Semak individu, kumpulan dan penerbitan lebih luas secara berasingan.",
+    "Gunakan kawalan perkongsian Google atau Cloud Calendars yang sesuai.",
+    "Pertimbangkan penetapan semula alamat suapan rahsia yang terdedah secara berasingan.",
+    "Sahkan hasil akses yang disimpan tanpa berkongsi maklumat log masuk.",
+    "Urus eksport atau salinan lama secara berasingan daripada akses langsung."
+  ],
+  "faq": [
+    {
+      "q": "Adakah membuang seorang individu mematikan kalendar awam atau akses kumpulannya?",
+      "a": "Jangan anggap begitu. Semak setiap laluan sebenar. Google mendokumenkan penerima tertentu, kumpulan dan penerbitan lebih luas sebagai tetapan berasingan."
+    },
+    {
+      "q": "Adakah kalendar hilang serta-merta tanpa pemberitahuan?",
+      "a": "Tiada janji sejagat tentang kehilangan paparan, pemberitahuan atau masa penyegaran. Sahkan perubahan tersimpan dan bezakan akses langsung daripada maklumat cache atau import."
+    },
+    {
+      "q": "Adakah Advanced membeli keupayaan membuang akses kalendar Google?",
+      "a": "Advanced membuang iklan dalam Cloud Calendars. Kawalan perkongsian Google bergantung pada pemilikan, kebenaran dan peraturan organisasi, bukan pelan aplikasi tersebut."
+    }
+  ],
+  "sourcesHeading": "Panduan penyedia tentang akses dan langganan",
+  "sources": [
+    {
+      "label": "Google: kawalan perkongsian dan menghentikan akses",
+      "url": "https://support.google.com/calendar/answer/37082?hl=en"
+    },
+    {
+      "label": "Google: penyegerakan akaun dan alamat iCal rahsia",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en"
+    }
+  ],
+  "seeAlso": [
+    "who-can-see-what-in-google-calendar",
+    "the-secret-address-of-a-google-calendar",
+    "why-a-shared-calendar-does-not-appear"
+  ],
+  "updated": "2026-10-21"
+}

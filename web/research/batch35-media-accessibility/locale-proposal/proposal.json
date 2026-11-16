@@ -1,0 +1,261 @@
+{
+  "date": "2026-10-22",
+  "status": "ready_for_independent_language_review_and_root_integration",
+  "target": "src/app/core/screenshot-descriptions.json",
+  "draft": "research/batch35-media-accessibility/locale-proposal/screenshot-descriptions.json",
+  "draftRawSha256": "f84ac0422a13a9c69b9760b6e830f5a775064c22b1fe96b6ed69399f05efde7a",
+  "schema": "Record<locale.code, Record<hook | week-left | week-right | widgets | live, string>>",
+  "counts": {
+    "locales": 30,
+    "descriptions": 150
+  },
+  "architecture": {
+    "recommendation": "Separate small core JSON map as root requested; no ArticleChrome schema or thirty chrome-module edits.",
+    "currentConsumer": "src/app/components/shot-rail/shot-rail.component.ts",
+    "currentAlt": "alt=\"\"",
+    "proposedIntegration": [
+      "Import screenshot-descriptions.json in shot-rail.",
+      "Extend Shot with readonly alt: string; bind img [alt]=\"shot.alt\".",
+      "Derive semantic key from manifest name via name.replace(/^\\d+-/, \"\"); map by locale.code, never locale.media or array position.",
+      "Keep localized rail heading/input chrome.gallery as collection label; individual images need their own distinct descriptions.",
+      "Require complete key coverage for all supported locale codes and both device manifests in validation. Do not silently fall back to English for missing known locale/key."
+    ],
+    "bulgarian": "bg currently uses media en-US, but alt must use bg. Describe depicted subject in Bulgarian; do not claim screenshot UI itself is Bulgarian.",
+    "rtl": "Arabic/Hebrew reverse numbered shot order. Semantic suffix keys preserve correct image-description association.",
+    "device": "Device-neutral labels reflect common depicted subjects verified for all ten EN iPhone/iPad renditions; no unverified localized-pixel/transcription claim."
+  },
+  "evidence": {
+    "visual": "research/batch35-media-accessibility/visual-review.json from product agent; all ten EN renditions read by that reviewer, not independently viewed by this author.",
+    "labels": "research/batch35-media-accessibility/proposed-en-labels.json, exact EN retained.",
+    "readArchitecture": [
+      "Complete shot-rail component, ArticleChrome and registry inspected.",
+      "BG and EN complete chrome content read; all thirty chrome modules parsed for gallery/existing alt fields, not claiming complete linguistic review of unrelated chrome strings.",
+      "BG article-locales module and locale media mapping checked."
+    ],
+    "existingReuse": "chrome.gallery labels whole rail, not individual screenshot content; it cannot substitute for meaningful five-image alt."
+  },
+  "modules": [
+    {
+      "code": "en-US",
+      "file": "src/app/content/en-US/chrome.ts",
+      "rawSha256": "a8f8754429c3dccc7c9e5458b45e5cad5770d2103379f8e530dd2b7bcabf1996",
+      "gallery": "What it looks like",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "bg",
+      "file": "src/app/content/bg/chrome.ts",
+      "rawSha256": "fbc710c938a7b5b2b2e93c6d16cbfadeb186935da5fc6523769e5696c472f315",
+      "gallery": "Как изглежда",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "de-DE",
+      "file": "src/app/content/de-DE/chrome.ts",
+      "rawSha256": "080917d0311856338aecb5391591d581597ccab611e8b11b2b0cf8055ff21497",
+      "gallery": "So sieht es aus",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "es-ES",
+      "file": "src/app/content/es-ES/chrome.ts",
+      "rawSha256": "442c17b1bcec99c027fa171fe11ab2955125177dacc3e5970f992e1dd324b791",
+      "gallery": "Qué aspecto tiene",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "fr-FR",
+      "file": "src/app/content/fr-FR/chrome.ts",
+      "rawSha256": "a7cccacc586c46cc826e6f7324a65af49c92c1884515d50f7641c95d91c3b9a2",
+      "gallery": "À quoi cela ressemble",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "it",
+      "file": "src/app/content/it/chrome.ts",
+      "rawSha256": "a4c7fa6a8b88838f988ad0da79ea3f039aed1dfa18a4da450c6eaa998aa4012f",
+      "gallery": "Com'è fatto",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "nl-NL",
+      "file": "src/app/content/nl-NL/chrome.ts",
+      "rawSha256": "e072a8de601176052d6a00d312774aedb7e9198965e5878dbfc55a05a13ad295",
+      "gallery": "Hoe het eruitziet",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "pt-BR",
+      "file": "src/app/content/pt-BR/chrome.ts",
+      "rawSha256": "48312a47ec758371531863da18010afa4769722deb82b3c6aaccd4282dae0b5f",
+      "gallery": "Como é",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "pl",
+      "file": "src/app/content/pl/chrome.ts",
+      "rawSha256": "80272ed823fa808467b69bd2e95f5d3b111d626e5363be6b924f1c7ee5d76d42",
+      "gallery": "Jak to wygląda",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ru",
+      "file": "src/app/content/ru/chrome.ts",
+      "rawSha256": "c86b9bec295cc923e3cc1e2722e81e4b6f5b2e8a9dc569c8e53fb60df167d744",
+      "gallery": "Как это выглядит",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "sv",
+      "file": "src/app/content/sv/chrome.ts",
+      "rawSha256": "ff2d7a62764a95332e4ff7cfc2e40cdaea81bd47a00a21409607972d5f705502",
+      "gallery": "Så ser det ut",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "da",
+      "file": "src/app/content/da/chrome.ts",
+      "rawSha256": "c64dcd34ad1863202c2e436709654c6342fa58738d42164687ac41065748a114",
+      "gallery": "Sådan ser det ud",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "no",
+      "file": "src/app/content/no/chrome.ts",
+      "rawSha256": "76ead608070dbba0a6621bf4bc890aa92970031d7b8e7ed5b731b5630c154780",
+      "gallery": "Slik ser det ut",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "fi",
+      "file": "src/app/content/fi/chrome.ts",
+      "rawSha256": "0596241d0a4dd8423f31d5cda9290cb376b05b55187e4ed9a0802a1bd399ade2",
+      "gallery": "Miltä se näyttää",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "cs",
+      "file": "src/app/content/cs/chrome.ts",
+      "rawSha256": "f54da6ada796f5d0b284fd8a4f0fee9bae4ea5b4bc64cd71d31499082f19aea8",
+      "gallery": "Jak to vypadá",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "hu",
+      "file": "src/app/content/hu/chrome.ts",
+      "rawSha256": "b54a49dff0cd964e269f34e769c71869404287ae6e3e5fbaf67e47ca0b7b1a64",
+      "gallery": "Így néz ki",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ro",
+      "file": "src/app/content/ro/chrome.ts",
+      "rawSha256": "e9b73a25371950fee1dd160f2c7769a6ca045efc25c29912fb5fce68881ab73f",
+      "gallery": "Cum arată",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "el",
+      "file": "src/app/content/el/chrome.ts",
+      "rawSha256": "94f53d7faf221c6d0745047109b0d47b5d501651ad9ec9e420f415c074cb3b66",
+      "gallery": "Πώς φαίνεται",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "tr",
+      "file": "src/app/content/tr/chrome.ts",
+      "rawSha256": "825cb1c859a3583539eba051c9c2b93fcbd5160218e6e14e33aed2503bf7e771",
+      "gallery": "Nasıl görünüyor",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "id",
+      "file": "src/app/content/id/chrome.ts",
+      "rawSha256": "8bdb513542a061a97284afbc3fd46ce6722de111a19363985b3df4f901c90f0a",
+      "gallery": "Tampilannya",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ms",
+      "file": "src/app/content/ms/chrome.ts",
+      "rawSha256": "e86be5de40a77aa6d1662c4002aae14fb013ef513c13a4bbcfa829beab096827",
+      "gallery": "Rupanya",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "vi",
+      "file": "src/app/content/vi/chrome.ts",
+      "rawSha256": "e92efb2343ef0f98d87dc5f4a8d58a393f31f65cc4464b968fac6d3a9f72e0b2",
+      "gallery": "Trông ra sao",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ja",
+      "file": "src/app/content/ja/chrome.ts",
+      "rawSha256": "c22c715580d8ef0bdab94ee39bc89f0ed029634472e189d535f0927633baf72c",
+      "gallery": "どんな見た目か",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ko",
+      "file": "src/app/content/ko/chrome.ts",
+      "rawSha256": "778b348dd04fc5fc45b549a02c1c29708b45578d8a85b2287f28e3fe5168b35e",
+      "gallery": "어떻게 보이는가",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "zh-Hans",
+      "file": "src/app/content/zh-Hans/chrome.ts",
+      "rawSha256": "9084ddbc97f7f230a724b794ced1c775dd5772b22d190a48e52b3fb48ec4c3a5",
+      "gallery": "看起来是这样",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "zh-Hant",
+      "file": "src/app/content/zh-Hant/chrome.ts",
+      "rawSha256": "807f3ee5bd710fea343fbcb86154475ab52462be220cc8f83d075812739be2db",
+      "gallery": "看起來是這樣",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "hi",
+      "file": "src/app/content/hi/chrome.ts",
+      "rawSha256": "93930f17e1e68fe56c404217fed0e23b6cf23a27a7e908db07f3934db4478546",
+      "gallery": "यह ऐसा दिखता है",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "th",
+      "file": "src/app/content/th/chrome.ts",
+      "rawSha256": "ec253838dcdc2babd411cc384e5e3d10a5514a7690dd3855b5a6cefca1e68183",
+      "gallery": "หน้าตาเป็นอย่างไร",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "ar-SA",
+      "file": "src/app/content/ar-SA/chrome.ts",
+      "rawSha256": "4deba2d1f452796fa0559669f50474cb853c10b0806f975722d334da30436811",
+      "gallery": "كيف يبدو",
+      "existingScreenshotAltFields": []
+    },
+    {
+      "code": "he",
+      "file": "src/app/content/he/chrome.ts",
+      "rawSha256": "6cb360115e1fb8cc04d8301373d9b6375eb4bf8eca44da8b9c470153b59ad442",
+      "gallery": "איך זה נראה",
+      "existingScreenshotAltFields": []
+    }
+  ],
+  "validation": {
+    "all30HaveFiveNonemptyDistinctKeys": true,
+    "allManifestSemanticSuffixesKnown": true,
+    "englishExact": true,
+    "liveVersusWidgets": "All locales distinguish Lock Screen Live Activity from Home Screen widgets."
+  },
+  "languageConfidence": "Own translations and self-review. Higher confidence EN/BG/DE/ES/FR/IT; lower confidence Hindi/Thai/Hebrew/Arabic and some Nordic/Asian terminology. No native-speaker certification; independent cross-agent review requested.",
+  "limits": [
+    "No website/source/ASC/native edits, builds or deployment.",
+    "No promotional keywords, fixed forecast horizon, alert guarantee, privacy or provider-feature claims added.",
+    "Descriptions identify static depicted subjects, not runtime correctness or localized pixel certification."
+  ]
+}

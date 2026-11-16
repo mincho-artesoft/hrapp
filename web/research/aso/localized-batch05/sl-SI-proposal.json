@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "sl-SI",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "ed015c75-d999-4ea8-ad29-7fc38d3e6e5c",
+  "versionLocalizationId": "9012936e-3aa1-46b0-8a33-45723b683b00",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Koledar",
+      "characters": 24,
+      "utf8Bytes": 24,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Vreme, sestanki in gradniki",
+      "characters": 27,
+      "utf8Bytes": 27,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "načrtovalnik,urnik,teden,mesec,opomnik,dogodek,deljenje,povabilo,napoved,termin",
+      "characters": 79,
+      "utf8Bytes": 80,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Oglejte si načrte in vreme skupaj. Uporabite gradnike in različne poglede ali začnite z lokalnim koledarjem brez računa v aplikaciji.",
+      "characters": 133,
+      "utf8Bytes": 137,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Oglejte si službene obveznosti, osebne načrte in vreme na napravah iPhone in iPad s Cloud Calendars.\n\nKOLEDARJI IN POGLEDI\nUporabljajte koledarje iCloud in povežite Google Koledar. Premium doda podporo za Microsoftove koledarje. Izberite dnevni, tedenski, mesečni, letni pogled ali seznam.\n\nUstvarite lahko tudi lokalni koledar v napravi brez računa Cloud Calendars. Povezovanje storitev in deljenje lahko zahtevata prijavo.\n\nVREME, GRADNIKI IN DELJENJE\nMed načrtovanjem preverite vremensko napoved. Gradniki za začetni zaslon so na voljo v majhni, srednji in veliki velikosti. Razpoložljive napovedi so odvisne od lokacije in ponudnika vremenskih podatkov. Delite dogodke in koledarje ter pošljite povabila po e-pošti, s kodo QR ali prek App Clipa. Pravice dostopa so odvisne od koledarja in vrste povabila.\n\nIZBERITE PAKET\nBrezplačni Base vključuje sinhronizacijo z Google Koledarjem, Google Meet, različne poglede koledarja, vreme in gradnike.\nAdvanced vključuje funkcije Base in odstrani oglase.\nPremium vključuje Advanced ter doda Microsoftove koledarje in Microsoft Teams.\n\nPrenos je brezplačen z izbirnimi naročninami, ki se samodejno obnavljajo. Pred naročilom preverite trenutno lokalno ceno in obračunsko obdobje v aplikaciji ali App Store. Naročnina se obnovi, če je ne prekličete vsaj 24 ur pred koncem trenutnega obdobja. Upravljate ali prekličete jo lahko v nastavitvah računa App Store.\n\nZasebnost: https://www.cloud-calendars.com/privacy-policy\nPogoji uporabe: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1542,
+      "utf8Bytes": 1566,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "sl-SI",
+      "name": "Cloud Calendars: Koledar",
+      "subtitle": "Vsi koledarji na enem mestu",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Načrtujte dan s koledarjem in vremenom skupaj\n\nCloud Calendars združi vaše koledarje in vreme v eno pregledno mesto za načrtovanje.\n\nUpravljajte koledarje iCloud, Google Calendar in Microsoft v eni aplikaciji, napoved pa vidite kar v urniku, gradnikih in pogledih za načrtovanje.\n\nBodite korak pred sestanki, potovanji, prevozi otrok, dejavnostmi na prostem in polnimi dnevi s pogledi koledarja, zasnovanimi za hitrejše načrtovanje.\n\nGRADNIKI NA ZAČETNEM ZASLONU\n\nDodajte gradnike, ki združujejo:\n• Dogodke iz koledarja\n• Vremensko napoved\n• Prihajajoči urnik\n• Lunino meno in razmere\n• Veter in temperaturo\n• Pregled dneva\n\nIzbirajte med več slogi gradnikov in spremljajte svoj dan kar z začetnega zaslona.\n\nZAKAJ CLOUD CALENDARS\n\n• Glejte koledarje iCloud, Google Calendar in Microsoft skupaj\n• Načrtujte z vgrajeno vremensko napovedjo\n• Uporabljajte gradnike na začetnem zaslonu\n• Povlecite, premikajte in spreminjajte velikost dogodkov naravno\n• Ustvarjajte povezave za Google Meet in Microsoft Teams\n• Preklapljajte med pogledi Dan, Teden, Mesec, Leto in Seznam\n• Vodite službene in osebne koledarje na enem mestu\n\nFUNKCIJE\n\nVsi koledarji skupaj\nPovežite in vodite koledarje iz iClouda, Google Calendarja in Microsofta v čistem barvno ločenem pogledu.\n\nVreme v koledarju\nOglejte si urno in dnevno napoved kar med načrtovanjem: temperaturo, razmere, lunino meno, veter in ikone vremena.\n\nGradniki koledarja in vremena\nUrnik in vreme vidite takoj iz prilagodljivih gradnikov.\n\nVeč pogledov koledarja\nIzberite Dan, Teden, Mesec, Leto ali Seznam, odvisno od tega, kako načrtujete čas.\n\nPreprosto urejanje dogodkov\nTapnite, povlecite in spremenite velikost dogodkov kar v koledarju.\n\nPoseben pogled vremena\nRaziščite podrobno napoved z urnimi razmerami in uporabnimi podatki za načrtovanje.\n\nDogodki iz napovedi\nTapnite uro v napovedi in takoj ustvarite dogodek v tem terminu.\n\nVgrajene povezave za sestanke\nHitro dodajte povezave za Google Meet in Microsoft Teams k dogodkom.\n\nODLIČNO ZA\n\n• Vodenje službenih in osebnih koledarjev\n• Načrtovanje z ozirom na vreme\n• Dejavnosti na prostem in potovanja\n• Polne urnike in družinsko načrtovanje\n• Uporabnike Google Calendarja in iClouda\n• Uporabnike Microsoftovih koledarjev\n\nPreizkusite Cloud Calendars in si olajšajte načrtovanje vsakega dne.\n\nPODATKI O NAROČNINI\n\nCloud Calendars ponuja samodejno obnovljive naročnine.\n\nBrezplačni paket\n• Sinhronizacija z Google Calendarjem\n• Več pogledov koledarja\n• Vremenske funkcije\n• Gradniki\n• Podpora za Google Meet\nPlačilo bo obremenilo vaš račun Apple ID ob potrditvi nakupa. Naročnine se samodejno obnavljajo, razen če jih prekličete vsaj 24 ur pred koncem trenutnega obdobja. Obnovitev bo obremenila vaš račun v 24 urah pred koncem trenutnega obdobja. Naročnine lahko upravljate in prekličete v nastavitvah svojega računa App Store.\n\nPravilnik o zasebnosti: https://www.cloud-calendars.com/privacy-policy\nPogoji uporabe: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "sl-SI",
+      "keywords": "vreme,widget,urnik,načrtovalnik,agenda,napoved,iCloud,dogodki,sestanki,zaklenjen zaslon,dež,danes,QR",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Unicode code-point counts, UTF-8 bytes separate. Token checks do not resolve grammar/inflections."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "No native-speaker or ASC write validation. English allocation is an editorial hypothesis, not measured demand. Verify tier labels match shipping UI.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch04/audit.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

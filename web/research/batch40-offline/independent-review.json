@@ -1,0 +1,68 @@
+{
+  "decision": "PASS",
+  "rawDraftSha256": "25778e7cb405437d9ab03060c68471736252f6a555e754ed57513fccbc5157d6",
+  "beforeSha256": "6d542c2db33b66272589ae53a06b6dbccc8d18cb39ca411ea0c48d370650dfa8",
+  "readScope": "Complete draft object read, including all eight sections, seven practical steps, five FAQs, sources, disclosure and related links. Before object compared programmatically by inverse delta; no claim of separate fresh full prose read of the before snapshot. Complete proposedchanges and primary-read evidence read.",
+  "preservation": {
+    "inverseDeltaExactlyEqualsBefore": true,
+    "allRelatedRoutesVerified": true
+  },
+  "nativeEvidence": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "rawSha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        {
+          "start": 1560,
+          "end": 1640,
+          "rawRangeSha256": "335a6bafe90ac71ee83efcdb3de8993bf356ac0fa0dc77044f85ba2046e81c7b"
+        },
+        {
+          "start": 3550,
+          "end": 3650,
+          "rawRangeSha256": "51ff39d53c4053ed63ac29d3640a2b6b3c6afa482c886af74722cf2fb5d31600"
+        }
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "rawSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "readRanges": [
+        {
+          "start": 480,
+          "end": 503,
+          "rawRangeSha256": "c5ddb389df17f5c724781c252360873e07030fbd0e554fda4ea51392e421d7d7"
+        }
+      ]
+    }
+  ],
+  "nativeFindings": [
+    "App-local JSON snapshot persistence is present; this does not establish a universal provider queue or successful remote delivery.",
+    "Google upload scans a finite date range, uses modification timestamps, performs PATCH/POST operations and updates sync state; this bounded path does not prove durable offline retry or conflict resolution guarantees.",
+    "Microsoft upload scans a finite range and attempts provider PATCH/POST. It does not establish unlimited history, every-calendar delivery or a fixed background retry deadline."
+  ],
+  "primaryEvidence": {
+    "priorCompleteReadRecord": "research/batch39-discovery/primary-reads.json",
+    "rawSha256": "47e40bd1a327cd5b1ef955abce6f820739f1eb602ab75a1adaf27edec7a45d45",
+    "freshAttempt": "Both exact Google URLs fetched once during review; both returned Google sorry redirect / tool 500 non-retryable. No fresh body read claimed; no retry or bypass.",
+    "assessment": "Google-specific offline editing and mobile-browser limits match recorded prior full body evidence; these are explicitly not attributed to Cloud."
+  },
+  "semanticReview": [
+    "Useful preparation and reconnect verification added to an existing sync guide, without a redundant canonical.",
+    "Disposable owned no-guest test is conditional on actual app capability; no account deletion or important meeting used for diagnosis.",
+    "Local visibility remains distinct from queued update, conflict handling, synchronization and participant delivery.",
+    "No inference from competitor offline claims to Cloud, no unlimited cached-date promise, no automatic immediate background update."
+  ],
+  "requiredCorrections": [],
+  "optionalPolish": [
+    {
+      "path": "sections[3].body[3], practical[5], faq[4].a",
+      "suggestion": "Where referring to checking the owning provider after reconnection, optionally say “for a provider-backed event” or “where applicable”, since app-local calendars have no provider destination. Existing earlier local/provider distinction prevents a material factual error."
+    }
+  ],
+  "limits": [
+    "Source inspection is not released binary correspondence or runtime verification.",
+    "No app, account, provider or customer actions performed.",
+    "No source changes or builds."
+  ]
+}

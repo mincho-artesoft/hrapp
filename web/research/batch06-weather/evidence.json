@@ -1,0 +1,271 @@
+{
+  "date": "2026-10-21",
+  "scope": "Read CONTINUATION.md; native/backend unchanged. Weather source and homepage state audit; proposed EN body/field changes only. No integration/deploy/build/runtime test/metadata/media change.",
+  "verification": "Source inspection plus current official docs. No released-binary equivalence, production forecast response or browser rendering test performed.",
+  "keyFindings": [
+    "Website14day request and14day sample list belong to Open-Meteo, not native WeatherKit.",
+    "Native daily list caps returned entries at10; does not guarantee full10days at every location/request. Hourly coverage is separately returned.",
+    "Native current-location permission and selected-place search are distinct. Calendar display uses shared selected weather, not proven automatic geocoding of every event venue.",
+    "Destination forecast does not change GPS-based weather-alert location.",
+    "Initial demo samples not labelled until failure; location name can coexist with fallback sample weather.",
+    "Homepage English tabs/range/metric captions remain partially hardcoded across locale pages."
+  ],
+  "evidence": [
+    {
+      "id": "demo-provider",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/core/weather.service.ts",
+      "lines": [
+        [
+          91,
+          105
+        ],
+        [
+          186,
+          240
+        ]
+      ],
+      "sha256": "bf0d2f7977d30f7681ae4ffe4430532c121dab8621157627492ca32677938c0d",
+      "finding": "Open-Meteo city search and browser forecast requests, selected coordinates/timezone,10min cache,forecast_days14. No browser GPS request in inspected service; US units inferred from selected country."
+    },
+    {
+      "id": "demo-state",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/components/weather-hub/weather-hub.component.ts",
+      "lines": [
+        [
+          124,
+          136
+        ],
+        [
+          203,
+          250
+        ],
+        [
+          327,
+          342
+        ],
+        [
+          411,
+          438
+        ]
+      ],
+      "sha256": "27f81f3da3a7234d8138c4d7f45de4fb8dabfe9670965e8818446f29d1a8d127",
+      "finding": "Initial snapshot null/offline false; fallback hourly/daily14rows; daily tab literal14days. Network failure sets offline; no snapshot selects samples."
+    },
+    {
+      "id": "demo-label",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/components/weather-hub/weather-hub.component.html",
+      "lines": [
+        [
+          80,
+          92
+        ],
+        [
+          150,
+          159
+        ]
+      ],
+      "sha256": "3469b1b4a47b5470067144b57d9d59fc53f405aca49970ca5f06018a8b72fabb",
+      "finding": "Source attribution only with snapshot; sample label only on offline. Initial/prerender/loading sample state lacks sample label. English tab labels shared across locales."
+    },
+    {
+      "id": "native-provider",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherKitViewModel.swift",
+      "lines": [
+        [
+          17,
+          20
+        ],
+        [
+          80,
+          102
+        ],
+        [
+          164,
+          175
+        ],
+        [
+          421,
+          435
+        ],
+        [
+          483,
+          500
+        ]
+      ],
+      "sha256": "50a39e84e91cd97436cc1c3a37d498d68fd50625841fef0bb94721462ad7361e",
+      "finding": "Apple WeatherService coordinate query for current/hourly/daily/alerts; all returned hourly mapped, daily cap min(count,10); error path supplies failure message. Debug query override excluded from release claims."
+    },
+    {
+      "id": "native-location",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "lines": [
+        [
+          1113,
+          1142
+        ],
+        [
+          1563,
+          1592
+        ]
+      ],
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "finding": "Current-location and selected saved/searched region paths; searches use placemark coordinates and timezone. Manual destination fetch distinct from device location."
+    },
+    {
+      "id": "native-permission",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/LocationManager.swift",
+      "lines": [
+        [
+          9,
+          44
+        ]
+      ],
+      "sha256": "5a5d329dc42d8a7d87c73a524c43b1f257e5389f1d5ad9e98b288b319da2bffe",
+      "finding": "Requests when-in-use permission; starts GPS only authorized, stops denied/restricted."
+    },
+    {
+      "id": "native-search",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/LocationSearchViewModel.swift",
+      "lines": [
+        [
+          45,
+          94
+        ]
+      ],
+      "sha256": "0704f0abe969b22ba3556b812569c90e0e62e86af1cd7f3bb7ce072f684741ea",
+      "finding": "MapKit place completion filters likely street addresses with numeric characters, resolves coordinates/timezone. Do not promise postcode always works/better precision."
+    },
+    {
+      "id": "calendar-weather",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MultiDayView/TwoWayPinnedMultiDayContainerView.swift",
+      "lines": [
+        [
+          685,
+          708
+        ],
+        [
+          985,
+          1000
+        ]
+      ],
+      "sha256": "aa1896acd9cfbf0371263397d06bf3fd3084739e749b242b9a70aebce55dd3de",
+      "finding": "Calendar strip uses shared selected weather hourly data filtered by date; does not derive new coordinates from every event location in this path."
+    },
+    {
+      "id": "weather-alert",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/Sources/WeatherAlertNotificationManager.swift",
+      "lines": [
+        [
+          7,
+          16
+        ],
+        [
+          40,
+          47
+        ],
+        [
+          141,
+          204
+        ]
+      ],
+      "sha256": "6c1d24292f9796d7dd37ae1afa8d4e6515b89b753762256ea25bc9e11d175045",
+      "finding": "Weather alerts depend on app preference, OS permission and stored real GPS location with age gate; selected destination not equivalent to alert location."
+    },
+    {
+      "id": "weather-event-draft",
+      "path": "/Users/minchomilev/work/hrapp/Calendar/WeatherView/WeatherKitView.swift",
+      "lines": [
+        [
+          1664,
+          1710
+        ]
+      ],
+      "sha256": "53e5e39a94119aa4873d0e033f204f6ad9bf42f758b7d31b3aa4e58ca3228fbc",
+      "finding": "Forecast event draft uses selected forecast timezone, chosen hour,1h default duration, system default calendar; creation permission path separate from weather."
+    },
+    {
+      "id": "existing-articles",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/en-US/articles-weather.ts",
+      "lines": [
+        [
+          12,
+          440
+        ]
+      ],
+      "sha256": "fcabb2e0eb4b74b113cb8dc06806f22d2a807d0f33e91459f293c18a49db43b2",
+      "finding": "Existing ten canonical articles; exact current objects preserved in current-objects.json. Deep corrective proposals limited5objects, remaining general-weather assertions queued for dedicated sourcing."
+    },
+    {
+      "id": "home",
+      "path": "/Users/minchomilev/cloud-calendars/src/app/content/home/en-US.ts",
+      "lines": [
+        [
+          123,
+          140
+        ],
+        [
+          232,
+          242
+        ]
+      ],
+      "sha256": "46cfd5e3d217d087eb3a96785e3a780fea730b3b47fe068e1731a4c9290eced3",
+      "finding": "App weather feature prose beside website demo; source FAQ lacks provider identification and implies fixed10day coverage."
+    }
+  ],
+  "primarySources": [
+    {
+      "url": "https://developer.apple.com/weatherkit/",
+      "retrieved": "2026-10-21",
+      "finding": "Apple documents10day hourly forecast service and selected-region severe alerts; no app-specific completeness guarantee inferred."
+    },
+    {
+      "url": "https://open-meteo.com/en/docs",
+      "retrieved": "2026-10-21",
+      "finding": "API configurable forecast_days up to16, default7; source specifically asks14. Hourly probability threshold/period is provider-defined, not a universal native-app definition."
+    },
+    {
+      "url": "https://support.apple.com/en-us/102515",
+      "retrieved": "2026-10-21",
+      "finding": "Location Services permissions managed in Privacy & Security; calendar access and notifications separate."
+    }
+  ],
+  "pendingArticleReview": [
+    {
+      "slug": "reading-a-chance-of-rain",
+      "issue": "Universal four-of-ten-runs definition and30/60percent planning thresholds are not provider-independent. Open-Meteo defines its own period/threshold; do not apply to all native WeatherKit metrics.",
+      "next": "Rewrite with provider/period labels and no universal go/no-go cutoff; obtain precise Apple probability field docs."
+    },
+    {
+      "slug": "what-a-forecast-can-and-cannot-tell-you",
+      "issue": "Broad claims about all forecasts being a cluster of runs, front timing versus intensity and universal temperature reliability are unsupported by reviewed product sources.",
+      "next": "Use practical uncertainty/period/place checks; source meteorology before retaining detailed claims."
+    },
+    {
+      "slug": "the-commute-and-the-sky",
+      "issue": "Twenty-minute shift usually avoids a shower is unsupported.",
+      "next": "Replace with comparing available time windows without a guaranteed fix."
+    },
+    {
+      "slug": "daylight-as-a-planning-constraint",
+      "issue": "Sunset certainty/safe latest start and universal equinox/late-autumn statements need location/context-specific evidence.",
+      "next": "Remove safety guarantees; separate astronomical sunset from usable light and terrain."
+    },
+    {
+      "slug": "wind-the-forecast-nobody-reads",
+      "issue": "Universal offshore/onshore/outbound-leg and gust-vs-mean advice is unsuitable as general app guidance.",
+      "next": "Constrain to reading units/speed/gust/direction and activity-specific official guidance."
+    }
+  ],
+  "localization": "Only EN proposals in this bounded task. Shared demo state behavior affects all30locale homes; translate new source labels and provider/range clarification deliberately before global integration. Existing translated weather objects require exact canonical matching; no automatic certification.",
+  "titleMetadataFollowup": "Title/description/canonical unchanged by request. forecast-beside-every-event title remains overly broad and should be revisited under later metadata scope; no route rename required.",
+  "commercialProviderUncertainty": "Service source itself flags free Open-Meteo endpoint use on commercial site. Contract/plan not inspected; no licensing conclusion or change made. Owner should confirm arrangement separately.",
+  "practicalMissingGuidance": [
+    "Select destination forecast separately from event address.",
+    "Check current-location permission separately from forecast search.",
+    "Compare place,date,timezone,hourly span before changing schedule.",
+    "Distinguish GPS weather notifications from searched-place forecast.",
+    "Treat gaps as unavailable, not clear weather.",
+    "Review forecast-created event draft/calendar before saving.",
+    "Distinguish website sample/live state and provider from app."
+  ]
+}

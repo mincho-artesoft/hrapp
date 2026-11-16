@@ -1,0 +1,36 @@
+{
+  "title": "Sincronización gratuita con Google, y qué paga la publicidad",
+  "short": "Gratis, y la publicidad",
+  "description": "Qué incluye de verdad el plan gratuito, dónde aparece la publicidad y cuánto cuesta quitarla. Dicho claro, porque casi ninguna aplicación lo hace.",
+  "lede": "Las aplicaciones de calendario gratuitas suelen serlo porque se está vendiendo otra cosa. Conviene saber cuál antes de confiarle la semana.",
+  "commonBelief": "Que un plan gratuito es una prueba y que la aplicación de verdad está detrás del muro de pago.",
+  "sections": [
+    {
+      "heading": "Qué cubre el plan gratuito",
+      "body": [
+        "Todas las vistas, sincronización con iCloud, sincronización con Google, todo el tiempo dentro del calendario, widgets, enlaces de Meet en los eventos y edición arrastrando. No una prueba de esas cosas: esas cosas.",
+        "Si sus calendarios son de Apple y de Google, que es el caso de la mayoría, el plan gratuito es la aplicación."
+      ]
+    },
+    {
+      "heading": "Qué hace la publicidad y qué cuesta quitarla",
+      "body": [
+        "El plan gratuito lleva publicidad. Quitarla es el plan de pago más barato, y quitar la publicidad es honestamente casi todo lo que ese plan hace.",
+        "Decirlo así parece mejor que el arreglo habitual, en el que el plan sin anuncios se empaqueta con funciones que nadie pidió para que el precio parezca comprar más."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Coste del plan gratuito",
+    "advancedMonthly": "Coste mensual de quitar la publicidad, en dólares"
+  },
+  "practical": [
+    "Empiece gratis: la sincronización que necesita probablemente ya está ahí.",
+    "Pague por quitar la publicidad, no porque espere que la aplicación cambie.",
+    "El plan superior solo tiene sentido si su calendario de trabajo es de Microsoft."
+  ],
+  "seeAlso": [
+    "what-a-subscription-actually-buys",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

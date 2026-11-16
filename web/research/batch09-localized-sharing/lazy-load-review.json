@@ -1,0 +1,303 @@
+{
+  "date": "2026-10-21",
+  "status": "Read-only review; no reviewer build, browser session or deployment.",
+  "baseline": "HEAD eager registry evaluated against current working-tree article modules: holds prose constant while comparing aggregation.",
+  "summary": {
+    "locales": 30,
+    "articles": 398,
+    "hubs": 30,
+    "canonicalSlugs": 50,
+    "aggregateEquality": "30/30 exact including chrome/spread order",
+    "indexEquality": "30/30 exact",
+    "hreflangSets": "All exact",
+    "loaderCoverage": "30/30"
+  },
+  "checks": [
+    {
+      "locale": "en-US",
+      "articles": 50,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "bg",
+      "articles": 13,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "de-DE",
+      "articles": 23,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "es-ES",
+      "articles": 23,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "fr-FR",
+      "articles": 23,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "it",
+      "articles": 23,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "nl-NL",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "pt-BR",
+      "articles": 13,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "pl",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ru",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "sv",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "da",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "no",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "fi",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "cs",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "hu",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ro",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "el",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "tr",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "id",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ms",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "vi",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ja",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ko",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "zh-Hans",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "zh-Hant",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "hi",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "th",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "ar-SA",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    },
+    {
+      "locale": "he",
+      "articles": 10,
+      "aggregateDeepEquality": true,
+      "indexKeysExact": true
+    }
+  ],
+  "reviewedFiles": [
+    {
+      "file": "src/app/content/registry.ts",
+      "sha256": "ff92234b5194e38b5f5f485ff5e02352942d9553283e3c45a3a8b6cd6155cf13"
+    },
+    {
+      "file": "src/app/content/article-index.ts",
+      "sha256": "d6a88e0083e6bbc64e0e3020e050197d73d0c832b6d95c7a663b9ed03cddc957"
+    },
+    {
+      "file": "src/app/app.routes.ts",
+      "sha256": "9a3ab63b9e6c8f3609e465190f957dbadfe3c5b738b9d4cc9f13e7a1c04fbab0"
+    },
+    {
+      "file": "src/app/app.routes.server.ts",
+      "sha256": "9bc79066b93e0bb0f99591ae701ea6934df207089c40304ce69d3cf4df9d5ace"
+    },
+    {
+      "file": "src/app/core/active-locale.service.ts",
+      "sha256": "9f7f7f3aa3fcdb0ec304d3a97aec1cf36664ae3058c656982875764889caf88d"
+    },
+    {
+      "file": "src/app/pages/article-page/article-page.component.ts",
+      "sha256": "d483af72eee11bbcba873ea9b999202e69521c78bafa9989f5940d1a3afb2e74"
+    },
+    {
+      "file": "src/app/pages/articles-page/articles-page.component.ts",
+      "sha256": "cb86f5889e89fe494395871f97ded10e6c4012e8ed94b51569bf9b2a7ed2d7c1"
+    },
+    {
+      "file": "tools/build-article-index.mjs",
+      "sha256": "02f5a425036d65ac6759469bb591de8584dbc9aa55284ae8d6011ef7d75cc3d6"
+    },
+    {
+      "file": "package.json",
+      "sha256": "d1f3abbf3d5b8f942def59d40e7084d32792472806730031e246ba41836c18a4"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "pass",
+      "finding": "Hub and article routes resolve articleContent; components consume resolved data and throw if absent. No eager fallback-body import observed."
+    },
+    {
+      "severity": "pass",
+      "finding": "Language switcher, hreflang and SSR params use index, independent of loaded locale modules."
+    },
+    {
+      "severity": "pass",
+      "finding": "Locale-keyed promise cache evicts rejected imports for retry. Unknown locale retains previous English fallback semantics."
+    },
+    {
+      "severity": "maintenance",
+      "file": "tools/add-locale.py:71-84",
+      "finding": "Locale creation helper targets obsolete eager registry anchors; may silently fail registration. Update or explicitly retire. Not a current30locale rendering blocker."
+    },
+    {
+      "severity": "maintenance",
+      "file": "package.json:7-8",
+      "finding": "npm build regenerates index; serve/watch do not, so added/removed slugs during those workflows can leave availability stale until generation."
+    },
+    {
+      "severity": "preexisting",
+      "file": "src/app/pages/article-page/article-page.component.ts:47-55",
+      "finding": "Constructor-only snapshot can stale on same route-config param navigation if Angular reuses component. Current article links are href/full-navigation; not introduced by lazy loading."
+    },
+    {
+      "severity": "needs-build-proof",
+      "finding": "Actual bundle partition, hydration and prerender output still require root verification."
+    }
+  ],
+  "verificationRecommended": [
+    {
+      "check": "SSR coverage",
+      "expected": "398article pages +30hubs; correct localized title/body/FAQ for every indexed route."
+    },
+    {
+      "check": "SEO parity",
+      "expected": "All428article/hub canonical/lang/hreflang correct; Article/FAQ JSON-LD matches visible locale; sitemap complete without English fallback."
+    },
+    {
+      "check": "Network chunks",
+      "expected": "Cold home loads no locale article bodies; ENarticle loads ENcontent without unrelated locale bodies; same-locale revisit uses cache."
+    },
+    {
+      "check": "Hydration",
+      "expected": "Cold EN/BG/AR deep links retain prerendered content without mismatch; locale resolved before construction."
+    },
+    {
+      "check": "Language switching",
+      "expected": "Existing translation exact slug, absent translation target hub; query/hash/trailing slash/back behavior preserved."
+    },
+    {
+      "check": "Failure recovery",
+      "expected": "Blocked chunk causes navigation failure rather than wrong-language content; retry works after unblocking."
+    },
+    {
+      "check": "Budget",
+      "expected": "Existing3MBerror limit unchanged; production build succeeds."
+    }
+  ],
+  "limitations": [
+    "No runtime/browser/build output certified.",
+    "Sources may change after recorded hashes.",
+    "No native/backend/ASC changes."
+  ]
+}

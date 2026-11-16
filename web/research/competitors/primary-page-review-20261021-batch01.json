@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "batch": "primary-competitor-intent-discovery-01",
+  "scope": "Bounded first meaningful batch, not exhaustive competitor research",
+  "method": {
+    "referenceFilesRead": [
+      "lingovela/research/keyword-coverage-ledger.json (opening representative entries only)",
+      "lingovela/research/CONTINUATION.md (first 100 lines; tool output truncated)"
+    ],
+    "evidenceLimits": [
+      "Keyword candidates are inferred from publisher topics and help procedures.",
+      "No Google rank, search-volume, conversion, keyword-difficulty or Search Console evidence obtained.",
+      "No ChatGPT citation monitoring or measured citations obtained.",
+      "Public publisher claims are not independently tested competitor capabilities.",
+      "No Cloud Calendars product capabilities inferred from competitors.",
+      "Direct HTML fallback for Fantastical returned 403; subsequent pages in that fallback loop were not fetched."
+    ],
+    "unreviewedScope": [
+      "Full competitor sitemaps and blog archives",
+      "Competitor App Store metadata and storefront localization",
+      "Exact current iOS procedures on devices",
+      "Cloud Calendars feature verification and existing content inventory"
+    ]
+  },
+  "sources": [
+    {
+      "id": "fantastical",
+      "url": "https://flexibits.com/fantastical",
+      "reviewStatus": "partial_primary_page_body",
+      "actualReadScope": "Opening consolidation positioning plus sections 208–338 (scheduling, time zones, widgets, calendar sets). Not all 386 lines.",
+      "finding": "Calendar aggregation, scheduling links, home/lock screen widgets, time zones and focus filters are marketed separately."
+    },
+    {
+      "id": "readdle",
+      "url": "https://readdle.com/calendars",
+      "reviewStatus": "retrieved_main_body_reviewed",
+      "actualReadScope": "Web opening plus search-returned feature sections and FAQs; navigation/footer not fully reviewed.",
+      "finding": "Combines calendar/provider, task, widget, view and sharing intents. Claims remain publisher claims; pricing, ratings and comparative superiority not adopted."
+    },
+    {
+      "id": "busycal",
+      "url": "https://www.busymac.com/busycal/",
+      "reviewStatus": "partial_primary_page_body",
+      "actualReadScope": "Title and opening plus lines 312–528; not full 836-line page. This page primarily illustrates Mac features.",
+      "finding": "Calendar sets, saved search filters, views, task integration, time zones, natural-language entry and travel time provide candidate intents. Do not generalize illustrated Mac features to iPhone."
+    },
+    {
+      "id": "timepage",
+      "url": "https://bonobolabs.com/timepage/?source=mds",
+      "reviewStatus": "partial_primary_page_body",
+      "actualReadScope": "Main marketing sections lines 12–165; not complete footer. Requested moleskinestudio.com/timepage redirected here.",
+      "finding": "Month heatmap, weekly timeline, day detail, weather and travel time lead its positioning; provider setup guides are linked."
+    },
+    {
+      "id": "timepage-sync",
+      "url": "https://bonobolabs.com/support/account/setting-up-syncing/",
+      "reviewStatus": "full_retrieved_article_body_reviewed",
+      "actualReadScope": "Article lines 38–71, excluding navigation/footer.",
+      "finding": "Timepage calendar events come from calendar provider accounts, independently configured on each device, unlike Flow/Actions account data."
+    },
+    {
+      "id": "timepage-heatmap",
+      "url": "https://bonobolabs.com/support/timepage/navigating-heat-map/",
+      "reviewStatus": "full_retrieved_article_body_reviewed",
+      "actualReadScope": "Article lines 45–68, excluding navigation/footer.",
+      "finding": "Month navigation, year overview and calendar-specific heatmap filtering are explained."
+    },
+    {
+      "id": "readdle-merge",
+      "url": "https://readdle.com/calendars/how-to-merge-calendars",
+      "reviewStatus": "full_retrieved_article_body_reviewed",
+      "actualReadScope": "Article lines 32–61; all five steps and closing paragraph.",
+      "finding": "The merge framing describes connecting accounts and selecting visibility. Opportunity to distinguish unified display from moving/copying events into one destination."
+    },
+    {
+      "id": "readdle-sync",
+      "url": "https://readdle.com/calendars/how-to-sync-icloud",
+      "reviewStatus": "full_retrieved_article_body_reviewed",
+      "actualReadScope": "Article lines 32–71; both iCloud and Readdle account procedures.",
+      "finding": "Covers same-account setup on iPhone and iPad. Some legacy OS instructions appear, so current native settings must be verified independently."
+    },
+    {
+      "id": "apple-share",
+      "url": "https://support.apple.com/en-ca/guide/iphone/-iph7613c4fb/ios",
+      "reviewStatus": "search_returned_article_body_reviewed",
+      "actualReadScope": "Full practical article returned in search; subsequent open returned primarily user-guide navigation, not a full independent body read.",
+      "finding": "Distinguishes private iCloud invitations, editing permission, shared-change notifications and public read-only subscriptions."
+    },
+    {
+      "id": "google-share",
+      "url": "https://support.google.com/calendar/answer/37082?co=GENIE.Platform%3DiOS&hl=en",
+      "reviewStatus": "search_returned_article_body_reviewed",
+      "actualReadScope": "Search returned sharing steps and permission definitions; subsequent open returned opening navigation.",
+      "finding": "Current iOS help describes in-app sharing and permission levels. Work/school policy may constrain sharing. Do not repeat obsolete blanket desktop-only sharing claim."
+    },
+    {
+      "id": "google-sync-vs-subscribe",
+      "url": "https://support.google.com/calendar/answer/37648?hl=en",
+      "reviewStatus": "search_returned_article_body_reviewed",
+      "actualReadScope": "Search returned account sync, read-only iCal and secret-address sections; direct open timed out.",
+      "finding": "Account sync permits view/edit where supported; an iCal URL provides read-only access. Secret subscription URLs should not be publicly shared."
+    },
+    {
+      "id": "google-apple",
+      "url": "https://support.google.com/calendar/answer/99358?co=GENIE.Platform%3DiOS&hl=en",
+      "reviewStatus": "search_returned_article_body_reviewed",
+      "actualReadScope": "Search returned setup steps and unsupported-feature list, not an independent direct-open read.",
+      "finding": "Google events can appear in Apple Calendar; provider-specific capabilities may differ. Exact current iOS settings path needs verification."
+    },
+    {
+      "id": "readdle-sharing-index",
+      "url": "https://support.readdle.com/calendars/managing-calendars",
+      "reviewStatus": "index_excerpt_only",
+      "actualReadScope": "Search-returned support index excerpts; linked sharing body not opened.",
+      "finding": "Sharing excerpt says underlying services provide sharing; marketing uses broader sharing language. Avoid unsupported claims about direct in-app sharing implementation."
+    },
+    {
+      "id": "readdle-troubleshooting-index",
+      "url": "https://support.readdle.com/calendars/troubleshooting",
+      "reviewStatus": "index_excerpt_only",
+      "actualReadScope": "Search-returned support index excerpts; individual troubleshooting pages not opened.",
+      "finding": "Separate missing history, unsynced events, settings/account transfer and destructive full-sync workflows."
+    },
+    {
+      "id": "fantastical-widgets-historical",
+      "url": "https://flexibits.com/blog/2020/09/fantastical-3-2-is-here-with-12-all-new-widgets-scribble-for-ipad-and-more/",
+      "reviewStatus": "search_returned_partial_article_body",
+      "actualReadScope": "Search returned widget variants and customization sections. Historical 2020 iOS14 launch content, not current setup authority.",
+      "finding": "Different widget surfaces serve date overview, next event and event-list needs; historical counts should not become current comparisons."
+    }
+  ]
+}

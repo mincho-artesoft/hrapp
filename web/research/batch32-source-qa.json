@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-10-22T03:02:37.125Z",
+  "allPassed": true,
+  "changedObjects": 9,
+  "fullModernizations": 4,
+  "exactExchangeAppends": 4,
+  "birthdaySourceSection": 1,
+  "unrelatedObjectsMetadataDatesPreserved": true,
+  "sharedFactsPricingSelectionLegalUnchanged": true,
+  "jobs": [
+    {
+      "locale": "de-DE",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/de-DE/articles.ts",
+      "before": "research/batch32-localized-selection/de-DE/de-DE--three-calendar-apps-is-two-too-many--before.json",
+      "draft": "research/batch32-localized-selection/de-DE/three-calendar-apps-is-two-too-many.json",
+      "beforeJsonSha256": "6b5a31c13e94ded350b7fab92504633bcddb455e6676af88efcb4ac273a231d0",
+      "finalJsonSha256": "665c4badc46a238b7d3c49d68f748742cf436dc672faf70cc0d958807831edff"
+    },
+    {
+      "locale": "de-DE",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/de-DE/articles.ts",
+      "before": "research/batch32-localized-selection/de-DE/de-DE--exchange-calendars-on-an-iphone--before.json",
+      "draft": "research/batch32-localized-selection/de-DE/exchange-calendars-on-an-iphone.json",
+      "beforeJsonSha256": "96766e2ec78836cc99df2550a978e359dd896d62c9e462d4a045ad6d508ab5ec",
+      "finalJsonSha256": "2148889752964a8d715ae983270c075c557ce99fc80275d2a7720b930ecdd378"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/es-ES/articles.ts",
+      "before": "research/batch32-localized-selection/es-ES/three-calendar-apps-is-two-too-many.before.json",
+      "draft": "research/batch32-localized-selection/es-ES/three-calendar-apps-is-two-too-many.json",
+      "beforeJsonSha256": "c31be4e4ab684331a88a89b1e302b209623a42fe8b9240316deff327b2dfd47e",
+      "finalJsonSha256": "8081eef0684bf99fb02e2c898862e5d867071751049eaf7ac2a6938159686f21"
+    },
+    {
+      "locale": "es-ES",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/es-ES/articles.ts",
+      "before": "research/batch32-localized-selection/es-ES/exchange-calendars-on-an-iphone.before.json",
+      "draft": "research/batch32-localized-selection/es-ES/exchange-calendars-on-an-iphone.json",
+      "beforeJsonSha256": "fbeef4df764b723dff3a31665a77aac082847d7231367239926eefa92e074675",
+      "finalJsonSha256": "e80ff036c0387a3863d440e132143d6047ae5ab3685f060346952112f5e73ec4"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "before": "research/batch32-localized-selection/fr-FR/three-calendar-apps-is-two-too-many-before.json",
+      "draft": "research/batch32-localized-selection/fr-FR/three-calendar-apps-is-two-too-many.json",
+      "beforeJsonSha256": "ab3f1fa3207a1fd04f1e6e113554fe7186991cfa41a976a23c5cd84c111eab23",
+      "finalJsonSha256": "61482401e95db746beb573a78057dad376150a49aed5bf48689283dca4c017b5"
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "before": "research/batch32-localized-selection/fr-FR/exchange-calendars-on-an-iphone-before.json",
+      "draft": "research/batch32-localized-selection/fr-FR/exchange-calendars-on-an-iphone.json",
+      "beforeJsonSha256": "390729da58acf387ac352617535675d37ed4da72fa03e727f05e6db95efefe14",
+      "finalJsonSha256": "cb072b4a99bc3a48948360dec89455155ead463f41bfb24b50934f311d07ebea"
+    },
+    {
+      "locale": "en-US",
+      "slug": "what-an-all-day-event-really-means",
+      "file": "src/app/content/en-US/articles-planning.ts",
+      "before": "research/batch32-birthday/before.json",
+      "draft": "research/batch32-birthday/draft.json",
+      "beforeJsonSha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd",
+      "finalJsonSha256": "d833700e89965ddb4e2eea82073034566c4e81b5ea016a64d434e769d2a9a275"
+    },
+    {
+      "locale": "it",
+      "slug": "three-calendar-apps-is-two-too-many",
+      "file": "src/app/content/it/articles.ts",
+      "before": "research/batch32-localized-selection/it/three-calendar-apps-is-two-too-many-before.json",
+      "draft": "research/batch32-localized-selection/it/three-calendar-apps-is-two-too-many.json",
+      "beforeJsonSha256": "93b478980900916988767eb87baf2294feea7321066166eea2bd539bf1f74239",
+      "finalJsonSha256": "ecdf02fff4dcec95d2454f6839aad810ea52db5682bb44f28026b5998b2dc39f"
+    },
+    {
+      "locale": "it",
+      "slug": "exchange-calendars-on-an-iphone",
+      "file": "src/app/content/it/articles.ts",
+      "before": "research/batch32-localized-selection/it/exchange-calendars-on-an-iphone-before.json",
+      "draft": "research/batch32-localized-selection/it/exchange-calendars-on-an-iphone.json",
+      "beforeJsonSha256": "007d82d1dd5188e9ade913a81c73e8d8c8d20fdce5f208235fda413a7efdb798",
+      "finalJsonSha256": "9815dcaafa8381d97fba354e4bd8d1fbb86e3fb401a04900a1fc3e3d9e890eb2"
+    }
+  ],
+  "scope": "Source draft/preservation proof, not native runtime, native-speaker or publication verification.",
+  "followupReason": "Final actual-locale inventory and complete root Italian read found last legacy edition with same material unsupported advice, plus missing Exchange selection clarification.",
+  "allNineFinalDraftHashesRechecked": true
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22T01:33:43.916Z",
+  "count": 5,
+  "articles": [
+    {
+      "locale": "en-US",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/en-US/articles-help.ts",
+      "title": "CalDAV calendar on iPhone: setup, permissions and missing events",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Add a CalDAV account through iPhone settings, then check calendar access and selection. Separate account sync from read-only feeds and duplicate copies.",
+      "descriptionCharacters": 152
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/fr-FR/articles-help.ts",
+      "title": "Calendrier CalDAV sur iPhone : configuration, accès et événements manquants",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Ajoutez un compte CalDAV dans les réglages de l’iPhone, puis vérifiez les accès et calendriers sélectionnés. Distinguez compte, abonnement et copie.",
+      "descriptionCharacters": 148
+    },
+    {
+      "locale": "fr-FR",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/fr-FR/articles.ts",
+      "title": "iCloud, Google et Outlook dans une vue : comptes, copies et autorisations",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Affichez ensemble iCloud, Google et Microsoft. Vérifiez comptes, droits et copies avant de déplacer des événements ou de vous fier aux disponibilités.",
+      "descriptionCharacters": 150
+    },
+    {
+      "locale": "it",
+      "slug": "caldav-calendar-on-iphone",
+      "file": "src/app/content/it/articles-help.ts",
+      "title": "Calendario CalDAV su iPhone: configurazione, permessi ed eventi mancanti",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 2,
+      "updated": "2026-10-22",
+      "description": "Aggiungi un account CalDAV nelle impostazioni di iPhone e controlla accesso e calendari selezionati. Distingui account, abbonamenti e copie.",
+      "descriptionCharacters": 140
+    },
+    {
+      "locale": "it",
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/it/articles.ts",
+      "title": "iCloud, Google e Outlook in una vista: account, copie e permessi",
+      "sections": 6,
+      "faqs": 3,
+      "sources": 3,
+      "updated": "2026-10-21",
+      "description": "Visualizza insieme calendari iCloud, Google e Microsoft. Controlla account, permessi e copie prima di spostare eventi o affidarti alla disponibilità.",
+      "descriptionCharacters": 149
+    }
+  ]
+}

@@ -1,0 +1,579 @@
+[
+  {
+    "locale": "en-US",
+    "slug": "the-widget-that-shows-what-is-next",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "before": {
+      "updated": "2026-10-22",
+      "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+      "short": "Upcoming events on the Home Screen",
+      "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+      "lede": "For a useful next-event view, choose a widget that actually lists events. A date-and-weather tile answers a different question. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Choose the event layout first",
+          "body": [
+            "In the Cloud Calendars widget gallery, Calendar Events is the medium event-list layout. Calendar Events Large provides more room for upcoming appointments. Calendar & Weather is a separate date-and-weather layout; its small size does not promise a next-event row. Names may appear translated on your device.",
+            "On iPhone, hold an empty Home Screen area, choose Edit and Add Widget, then find Cloud Calendars and select the desired layout. Compare the preview before adding it. Apple’s widget instructions cover this system gallery; it is separate from the calendar views inside the app."
+          ]
+        },
+        {
+          "heading": "Add and check the widget on iPad",
+          "body": [
+            "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+            "Choose Calendar Events or Calendar Events Large when you need appointments. Compare the styles offered by the installed app; a date-and-weather tile answers a different question from an event list.",
+            "Open Cloud Calendars on that iPad and find a known future timed appointment in a selected calendar. A correct view on your iPhone does not confirm the iPad’s accounts, access or loaded data. Compare the title, date and start time, then continue with the eligibility and update checks below if the widget differs."
+          ]
+        },
+        {
+          "heading": "Check what counts as upcoming",
+          "body": [
+            "The event display uses selected calendars and future timed appointments. All-day entries and appointments whose start time has already passed are excluded from this upcoming feed. A birthday or an ongoing meeting can therefore be visible in the app without appearing here.",
+            "For example, if your only entry today is an all-day travel label, a blank upcoming list does not mean the travel label was lost. Open the app to inspect the complete day. Likewise, the next timed event may be tomorrow or later; read its date rather than assuming every row is today."
+          ]
+        },
+        {
+          "heading": "Separate a missing event from a list that has run out of rows",
+          "body": [
+            "A widget shows a limited set of upcoming appointments. If earlier events fill its rows, a later appointment can be absent even though it is present in the app and eligible for the upcoming list. A larger event layout can show more rows; it still is not the complete calendar.",
+            "Start with the nearest future timed appointment in a selected calendar. If it appears but a later one does not, open the app to inspect the rest of the schedule. If the nearest eligible event is also missing, continue with calendar selection, access and update checks. Do not move or delete appointments just to make a later entry appear."
+          ]
+        },
+        {
+          "heading": "Make the app your first comparison",
+          "body": [
+            "Open Cloud Calendars and find one specific future timed appointment. Confirm its owning calendar is selected and that the app has the calendar access it needs. Compare the title, date and start time with the widget. If the event is missing in the app as well, investigate the account or sync first.",
+            "Use a harmless test appointment in a calendar you own if you need a clear example. Give it a future start and a recognizable title. Avoid changing a real invitation or removing accounts simply to test the Home Screen."
+          ]
+        },
+        {
+          "heading": "Allow for updates without assuming a fixed deadline",
+          "body": [
+            "Widgets display saved information and do not run continuously like an open app. Apple controls their update scheduling. Opening the app and checking the event gives you a fresh point of comparison, but it does not establish an exact number of seconds before the widget must change.",
+            "If the app stays correct while the widget remains wrong, note the layout, selected calendar, event time and app/iOS versions. An empty list, an old appointment and an incorrect time are different observations; report which one you see."
+          ]
+        },
+        {
+          "heading": "Read the weather as a separate summary",
+          "body": [
+            "The weather beside the date is not a forecast attached to each appointment’s venue and start time. Before an outdoor event, open the weather view and check the intended place and hour. A current-condition icon cannot establish what conditions will be at a later meeting.",
+            "Keep this widget for quick orientation. Use the full calendar for all-day commitments, event details and decisions that need the entire schedule."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Choose Calendar Events or Calendar Events Large for an event list.",
+        "Verify a future timed appointment in a selected calendar.",
+        "Compare its date and time in the app before troubleshooting the widget.",
+        "Record persistent differences instead of deleting calendar data."
+      ],
+      "faq": [
+        {
+          "q": "Why is my birthday missing?",
+          "a": "The upcoming feed excludes all-day events. Check the full calendar for birthdays and other date-only entries."
+        },
+        {
+          "q": "Does the small widget show the next meeting?",
+          "a": "The small Calendar & Weather layout shows date and weather. Choose an event-list layout for appointments."
+        },
+        {
+          "q": "Does no upcoming event mean I am free today?",
+          "a": "No. All-day entries, ongoing events, unselected calendars and stale information can change that conclusion."
+        }
+      ],
+      "sourcesHeading": "Sources and Apple instructions",
+      "sources": [
+        {
+          "label": "Apple: Add and edit widgets on iPhone",
+          "url": "https://support.apple.com/118610"
+        },
+        {
+          "label": "Apple: Keeping a widget up to date",
+          "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        },
+        {
+          "label": "Apple: Add, edit, and remove widgets on iPad",
+          "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+        }
+      ],
+      "seeAlso": [
+        "choosing-a-widget-size",
+        "a-countdown-to-your-next-meeting"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-22",
+      "title": "Calendar widgets on iPhone and iPad: show upcoming events",
+      "short": "Upcoming events on the Home Screen",
+      "description": "Set up upcoming-event widgets on iPhone or iPad. Check selected calendars, visible rows and missing appointments before relying on the Home Screen.",
+      "lede": "For a useful next-event view, choose a widget that actually lists events. A date-and-weather tile answers a different question. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Choose the event layout first",
+          "body": [
+            "In the Cloud Calendars widget gallery, Calendar Events is the medium event-list layout. Calendar Events Large provides more room for upcoming appointments. Calendar & Weather is a separate date-and-weather layout; its small size does not promise a next-event row. Names may appear translated on your device.",
+            "On iPhone, hold an empty Home Screen area, choose Edit and Add Widget, then find Cloud Calendars and select the desired layout. Compare the preview before adding it. Apple’s widget instructions cover this system gallery; it is separate from the calendar views inside the app."
+          ]
+        },
+        {
+          "heading": "Add and check the widget on iPad",
+          "body": [
+            "On iPad, use Apple’s Home Screen widget gallery: hold the background, open Edit, then Add Widget. Search for Cloud Calendars, inspect the offered styles and sizes, add the layout you need, position it and finish with Done. Follow the controls shown by your iPadOS version; a preview is not confirmation that your calendar data has loaded.",
+            "Choose Calendar Events or Calendar Events Large when you need appointments. Compare the styles offered by the installed app; a date-and-weather tile answers a different question from an event list.",
+            "Open Cloud Calendars on that iPad and find a known future timed appointment in a selected calendar. A correct view on your iPhone does not confirm the iPad’s accounts, access or loaded data. Compare the title, date and start time, then continue with the eligibility and update checks below if the widget differs."
+          ]
+        },
+        {
+          "heading": "Check what counts as upcoming",
+          "body": [
+            "The event display uses selected calendars and future timed appointments. All-day entries and appointments whose start time has already passed are excluded from this upcoming feed. A birthday or an ongoing meeting can therefore be visible in the app without appearing here.",
+            "For example, if your only entry today is an all-day travel label, a blank upcoming list does not mean the travel label was lost. Open the app to inspect the complete day. Likewise, the next timed event may be tomorrow or later; read its date rather than assuming every row is today."
+          ]
+        },
+        {
+          "heading": "Separate a missing event from a list that has run out of rows",
+          "body": [
+            "A widget shows a limited set of upcoming appointments. If earlier events fill its rows, a later appointment can be absent even though it is present in the app and eligible for the upcoming list. A larger event layout can show more rows; it still is not the complete calendar.",
+            "Start with the nearest future timed appointment in a selected calendar. If it appears but a later one does not, open the app to inspect the rest of the schedule. If the nearest eligible event is also missing, continue with calendar selection, access and update checks. Do not move or delete appointments just to make a later entry appear."
+          ]
+        },
+        {
+          "heading": "Make the app your first comparison",
+          "body": [
+            "Open Cloud Calendars and find one specific future timed appointment. Confirm its owning calendar is selected and that the app has the calendar access it needs. Compare the title, date and start time with the widget. If the event is missing in the app as well, investigate the account or sync first.",
+            "Use a harmless test appointment in a calendar you own if you need a clear example. Give it a future start and a recognizable title. Avoid changing a real invitation or removing accounts simply to test the Home Screen."
+          ]
+        },
+        {
+          "heading": "Allow for updates without assuming a fixed deadline",
+          "body": [
+            "Widgets display saved information and do not run continuously like an open app. Apple controls their update scheduling. Opening the app and checking the event gives you a fresh point of comparison, but it does not establish an exact number of seconds before the widget must change.",
+            "If the app stays correct while the widget remains wrong, note the layout, selected calendar, event time and app/iOS versions. An empty list, an old appointment and an incorrect time are different observations; report which one you see."
+          ]
+        },
+        {
+          "heading": "Read the weather as a separate summary",
+          "body": [
+            "The weather beside the date is not a forecast attached to each appointment’s venue and start time. Before an outdoor event, open the weather view and check the intended place and hour. A current-condition icon cannot establish what conditions will be at a later meeting.",
+            "Keep this widget for quick orientation. Use the full calendar for all-day commitments, event details and decisions that need the entire schedule."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Choose Calendar Events or Calendar Events Large for an event list.",
+        "Verify a future timed appointment in a selected calendar.",
+        "Compare its date and time in the app before troubleshooting the widget.",
+        "Record persistent differences instead of deleting calendar data."
+      ],
+      "faq": [
+        {
+          "q": "Why is my birthday missing?",
+          "a": "The upcoming feed excludes all-day events. Check the full calendar for birthdays and other date-only entries."
+        },
+        {
+          "q": "Does the small widget show the next meeting?",
+          "a": "The small Calendar & Weather layout shows date and weather. Choose an event-list layout for appointments."
+        },
+        {
+          "q": "Does no upcoming event mean I am free today?",
+          "a": "No. All-day entries, ongoing events, unselected calendars and stale information can change that conclusion."
+        }
+      ],
+      "sourcesHeading": "Sources and Apple instructions",
+      "sources": [
+        {
+          "label": "Apple: Add and edit widgets on iPhone",
+          "url": "https://support.apple.com/118610"
+        },
+        {
+          "label": "Apple: Keeping a widget up to date",
+          "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        },
+        {
+          "label": "Apple: Add, edit, and remove widgets on iPad",
+          "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+        }
+      ],
+      "seeAlso": [
+        "choosing-a-widget-size",
+        "a-countdown-to-your-next-meeting",
+        "calendar-on-apple-watch"
+      ]
+    },
+    "originalBodyMetadataDatesPreserved": true
+  },
+  {
+    "locale": "en-US",
+    "slug": "a-countdown-to-your-next-meeting",
+    "file": "src/app/content/en-US/articles-widgets.ts",
+    "before": {
+      "updated": "2026-10-21",
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "short": "A countdown to your next meeting",
+      "description": "Use Cloud Calendars Live Activity for a future meeting, check stale event details and keep alerts separate from the countdown on your Lock Screen.",
+      "lede": "A countdown helps you judge the remaining time before a meeting. Its usefulness still depends on the activity holding the correct appointment and start time. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Start from a known future appointment",
+          "body": [
+            "First open the appointment in Cloud Calendars and confirm its date, start time and selected calendar. The countdown follows future timed events; it is not a timer for all-day entries or a measure of how much time remains in a meeting already underway.",
+            "Use the app’s Live control to start the activity when available; the control becomes Stop while it is running. If the control is unavailable, check whether Live Activities are allowed for the app in iPhone settings. Availability and labels can vary with device and iOS version."
+          ]
+        },
+        {
+          "heading": "Understand the two display surfaces",
+          "body": [
+            "The activity can present the upcoming event on the Lock Screen. On iPhones with Dynamic Island, it also has a compact or expanded presentation there. Apple’s Dynamic Island guidance explains how to expand an activity for more detail; that hardware feature is not present on every iPhone.",
+            "A Home Screen widget and a Live Activity are separate displays. Adding an event widget does not itself establish that a Live Activity is running, and enabling notification sounds does not start one either."
+          ]
+        },
+        {
+          "heading": "Check the event, not only the moving number",
+          "body": [
+            "Time passing can change a countdown without a fresh calendar update. If the organizer moves a meeting, a countdown based on the previous start time is still counting toward the wrong appointment. Inspect the title, date and displayed update information as well as the remaining time.",
+            "After an important change, reopen the app and compare the saved appointment with the activity. If they disagree, use the appointment’s confirmed details while investigating. Do not assume that a visible or changing countdown proves the latest provider change arrived."
+          ]
+        },
+        {
+          "heading": "Keep a reminder for when you are not looking",
+          "body": [
+            "A visual countdown is useful only when you look at it. Keep an appropriate event alert for a meeting you need to attend, and check notification permission separately. Do not replace a needed reminder merely because a Live Activity is visible.",
+            "For an appointment away from your desk, also allow travel or preparation time. The countdown is to the event start, not an independently verified instruction for when to leave. Check the actual location and your own preparation needs."
+          ]
+        },
+        {
+          "heading": "When the activity is missing or outdated",
+          "body": [
+            "Check the app’s current event first, then whether the activity is running and permitted. Background updates depend on iOS conditions; the activity is not a promise of continuous network synchronization or an unlimited view of future appointments.",
+            "Use one ordinary future test event to compare before and after a time change. Record the expected start, the displayed start and whether reopening the app changes the result. Keep real meetings intact and include device, app and iOS versions when reporting the issue."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Confirm the future appointment and selected calendar.",
+        "Start Live when available and check the displayed event.",
+        "After a reschedule, compare the appointment and activity again.",
+        "Keep event alerts enabled independently when you need them."
+      ],
+      "faq": [
+        {
+          "q": "Is the countdown always current?",
+          "a": "No. A countdown can keep measuring toward a previously saved start time. Verify important reschedules in the app."
+        },
+        {
+          "q": "Why is an all-day event not counted down?",
+          "a": "The activity selects future timed appointments rather than all-day entries."
+        },
+        {
+          "q": "Does every iPhone show Dynamic Island?",
+          "a": "No. The Lock Screen activity and Dynamic Island are distinct surfaces; Dynamic Island requires a supported model."
+        }
+      ],
+      "sourcesHeading": "Sources and Apple instructions",
+      "sources": [
+        {
+          "label": "Apple: Access features and Live Activities from the Lock Screen",
+          "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+        },
+        {
+          "label": "Apple: View Live Activities in the Dynamic Island",
+          "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+        }
+      ],
+      "seeAlso": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "lock-screen-without-unlocking"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-21",
+      "title": "Use a calendar Live Activity countdown without replacing alerts",
+      "short": "A countdown to your next meeting",
+      "description": "Use Cloud Calendars Live Activity for a future meeting, check stale event details and keep alerts separate from the countdown on your Lock Screen.",
+      "lede": "A countdown helps you judge the remaining time before a meeting. Its usefulness still depends on the activity holding the correct appointment and start time. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Start from a known future appointment",
+          "body": [
+            "First open the appointment in Cloud Calendars and confirm its date, start time and selected calendar. The countdown follows future timed events; it is not a timer for all-day entries or a measure of how much time remains in a meeting already underway.",
+            "Use the app’s Live control to start the activity when available; the control becomes Stop while it is running. If the control is unavailable, check whether Live Activities are allowed for the app in iPhone settings. Availability and labels can vary with device and iOS version."
+          ]
+        },
+        {
+          "heading": "Understand the two display surfaces",
+          "body": [
+            "The activity can present the upcoming event on the Lock Screen. On iPhones with Dynamic Island, it also has a compact or expanded presentation there. Apple’s Dynamic Island guidance explains how to expand an activity for more detail; that hardware feature is not present on every iPhone.",
+            "A Home Screen widget and a Live Activity are separate displays. Adding an event widget does not itself establish that a Live Activity is running, and enabling notification sounds does not start one either."
+          ]
+        },
+        {
+          "heading": "Check the event, not only the moving number",
+          "body": [
+            "Time passing can change a countdown without a fresh calendar update. If the organizer moves a meeting, a countdown based on the previous start time is still counting toward the wrong appointment. Inspect the title, date and displayed update information as well as the remaining time.",
+            "After an important change, reopen the app and compare the saved appointment with the activity. If they disagree, use the appointment’s confirmed details while investigating. Do not assume that a visible or changing countdown proves the latest provider change arrived."
+          ]
+        },
+        {
+          "heading": "Keep a reminder for when you are not looking",
+          "body": [
+            "A visual countdown is useful only when you look at it. Keep an appropriate event alert for a meeting you need to attend, and check notification permission separately. Do not replace a needed reminder merely because a Live Activity is visible.",
+            "For an appointment away from your desk, also allow travel or preparation time. The countdown is to the event start, not an independently verified instruction for when to leave. Check the actual location and your own preparation needs."
+          ]
+        },
+        {
+          "heading": "When the activity is missing or outdated",
+          "body": [
+            "Check the app’s current event first, then whether the activity is running and permitted. Background updates depend on iOS conditions; the activity is not a promise of continuous network synchronization or an unlimited view of future appointments.",
+            "Use one ordinary future test event to compare before and after a time change. Record the expected start, the displayed start and whether reopening the app changes the result. Keep real meetings intact and include device, app and iOS versions when reporting the issue."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Confirm the future appointment and selected calendar.",
+        "Start Live when available and check the displayed event.",
+        "After a reschedule, compare the appointment and activity again.",
+        "Keep event alerts enabled independently when you need them."
+      ],
+      "faq": [
+        {
+          "q": "Is the countdown always current?",
+          "a": "No. A countdown can keep measuring toward a previously saved start time. Verify important reschedules in the app."
+        },
+        {
+          "q": "Why is an all-day event not counted down?",
+          "a": "The activity selects future timed appointments rather than all-day entries."
+        },
+        {
+          "q": "Does every iPhone show Dynamic Island?",
+          "a": "No. The Lock Screen activity and Dynamic Island are distinct surfaces; Dynamic Island requires a supported model."
+        }
+      ],
+      "sourcesHeading": "Sources and Apple instructions",
+      "sources": [
+        {
+          "label": "Apple: Access features and Live Activities from the Lock Screen",
+          "url": "https://support.apple.com/guide/iphone/access-features-from-the-lock-screen-iphcd5c65ccf/ios"
+        },
+        {
+          "label": "Apple: View Live Activities in the Dynamic Island",
+          "url": "https://support.apple.com/guide/iphone/view-live-activities-in-the-dynamic-island-iph28f50d10d/ios"
+        }
+      ],
+      "seeAlso": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "lock-screen-without-unlocking",
+        "calendar-on-apple-watch"
+      ]
+    },
+    "originalBodyMetadataDatesPreserved": true
+  },
+  {
+    "locale": "bg",
+    "slug": "the-widget-that-shows-what-is-next",
+    "file": "src/app/content/bg/articles-help.ts",
+    "before": {
+      "updated": "2026-10-22",
+      "title": "Уиджети за календар на iPhone и iPad: покажете предстоящите събития",
+      "short": "Предстоящи събития на началния екран",
+      "description": "Настройте уиджет за предстоящи събития на iPhone или iPad. Проверете избраните календари, видимите редове и липсващите срещи.",
+      "lede": "За полезен поглед към следващото събитие изберете уиджет, който действително показва списък със събития. Плочката с дата и метеорологично време служи за друго. Това ръководство е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Първо изберете изглед със събития",
+          "body": [
+            "В галерията с уиджети на Cloud Calendars „Calendar Events“ е средният изглед със списък от събития. „Calendar Events Large“ дава повече място за предстоящи срещи. „Calendar & Weather“ е отделен изглед за дата и метеорологично време; малкият му размер не означава, че показва и следващото събитие. На устройството ви имената може да са преведени.",
+            "На iPhone задръжте върху празно място на началния екран, изберете редактиране и добавяне на уиджет, след което намерете Cloud Calendars и изберете желания изглед. Сравнете прегледа, преди да го добавите. Указанията на Apple се отнасят за тази системна галерия, която е отделна от календарните изгледи в приложението."
+          ]
+        },
+        {
+          "heading": "Добавете и проверете уиджета на iPad",
+          "body": [
+            "На iPad използвайте галерията с уиджети на Apple за началния екран: задръжте върху фона, отворете редактирането и изберете добавяне на уиджет. Потърсете Cloud Calendars, разгледайте предлаганите стилове и размери, добавете нужния изглед, поставете го на избраното място и завършете редактирането. Следвайте контролите във вашата версия на iPadOS; прегледът не потвърждава, че календарните ви данни са заредени.",
+            "Изберете „Calendar Events“ или „Calendar Events Large“, когато искате да виждате срещи. Сравнете стиловете, предлагани от инсталираното приложение: плочката с дата и метеорологично време има различна цел от списъка със събития.",
+            "Отворете Cloud Calendars на същия iPad и намерете позната бъдеща среща с определен час в избран календар. Правилното показване на iPhone не потвърждава акаунтите, достъпа или заредените данни на iPad. Сравнете заглавието, датата и началния час; ако уиджетът се различава, продължете с проверките по-долу за включваните събития и обновяването."
+          ]
+        },
+        {
+          "heading": "Проверете кои събития се смятат за предстоящи",
+          "body": [
+            "Списъкът използва избраните календари и бъдещи събития с определен час. Целодневните записи и срещите, чийто начален час вече е минал, не се включват в него. Затова рожден ден или среща, която вече е започнала, може да се вижда в приложението, но да липсва тук.",
+            "Например, ако единственият ви запис за днес е целодневно отбелязано пътуване, празният списък с предстоящи събития не означава, че записът е изгубен. Отворете приложението, за да разгледате целия ден. Следващото събитие с час може да е утре или по-късно; прочетете датата му, вместо да приемате, че всички редове са за днес."
+          ]
+        },
+        {
+          "heading": "Разграничете липсващо събитие от изчерпани редове",
+          "body": [
+            "Уиджетът показва ограничен брой предстоящи срещи. Ако по-ранните събития запълват редовете му, по-късна среща може да липсва, въпреки че е в приложението и отговаря на условията за списъка. По-големият изглед със събития може да показва повече редове, но пак не представлява целия календар.",
+            "Започнете с най-близкото бъдещо събитие с час в избран календар. Ако то се вижда, а по-късно събитие — не, отворете приложението за останалата част от графика. Ако липсва и най-близкото подходящо събитие, проверете избора на календари, достъпа и обновяването. Не местете и не изтривайте срещи само за да се появи по-късен запис."
+          ]
+        },
+        {
+          "heading": "Първо сравнете с приложението",
+          "body": [
+            "Отворете Cloud Calendars и намерете конкретна бъдеща среща с час. Уверете се, че календарът, в който е записана, е избран и приложението има необходимия достъп до календарите. Сравнете заглавието, датата и началния час с уиджета. Ако събитието липсва и в приложението, първо проверете акаунта или синхронизацията.",
+            "Ако ви трябва ясен пример, създайте безобидно тестово събитие в календар, който притежавате. Задайте бъдещ начален час и разпознаваемо заглавие. Не променяйте реална покана и не премахвайте акаунти само за да проверите началния екран."
+          ]
+        },
+        {
+          "heading": "Предвидете време за обновяване без фиксиран срок",
+          "body": [
+            "Уиджетите показват запазена информация и не работят непрекъснато като отворено приложение. Apple управлява графика им за обновяване. Отварянето на приложението и проверката на събитието ви дават актуална основа за сравнение, но не определят точен брой секунди, след който уиджетът задължително трябва да се промени.",
+            "Ако приложението продължава да показва правилните данни, а уиджетът — грешни, запишете изгледа, избрания календар, часа на събитието и версиите на приложението и iOS. Празен списък, стара среща и неправилен час са различни наблюдения; посочете кое виждате."
+          ]
+        },
+        {
+          "heading": "Разглеждайте времето като отделно обобщение",
+          "body": [
+            "Времето до датата не е прогноза, обвързана с мястото и началния час на всяка среща. Преди събитие на открито отворете изгледа за времето и проверете желаното място и час. Иконата за текущите условия не показва какви ще бъдат те при по-късна среща.",
+            "Използвайте този уиджет за бърза ориентация. За целодневни ангажименти, подробности за събитията и решения, изискващи целия график, отворете пълния календар."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Изберете „Calendar Events“ или „Calendar Events Large“ за списък със събития.",
+        "Проверете бъдеща среща с час в избран календар.",
+        "Сравнете датата и часа ѝ в приложението, преди да търсите проблем в уиджета.",
+        "Записвайте трайните разлики, вместо да изтривате календарни данни."
+      ],
+      "faq": [
+        {
+          "q": "Защо рожденият ми ден липсва?",
+          "a": "Списъкът с предстоящи събития не включва целодневни записи. Проверете пълния календар за рождени дни и други събития само с дата."
+        },
+        {
+          "q": "Малкият уиджет показва ли следващата среща?",
+          "a": "Малкият изглед „Calendar & Weather“ показва дата и метеорологично време. За срещи изберете изглед със списък от събития."
+        },
+        {
+          "q": "Ако няма предстоящо събитие, свободен ли съм днес?",
+          "a": "Не непременно. Целодневни записи, започнали събития, неизбрани календари и остаряла информация могат да променят този извод."
+        }
+      ],
+      "sourcesHeading": "Източници и указания на Apple",
+      "sources": [
+        {
+          "label": "Apple: добавяне и редактиране на уиджети на iPhone",
+          "url": "https://support.apple.com/118610"
+        },
+        {
+          "label": "Apple: поддържане на актуална информация в уиджет",
+          "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        },
+        {
+          "label": "Apple: добавяне, редактиране и премахване на уиджети на iPad",
+          "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+        }
+      ],
+      "seeAlso": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "weather-inside-your-calendar"
+      ]
+    },
+    "after": {
+      "updated": "2026-10-22",
+      "title": "Уиджети за календар на iPhone и iPad: покажете предстоящите събития",
+      "short": "Предстоящи събития на началния екран",
+      "description": "Настройте уиджет за предстоящи събития на iPhone или iPad. Проверете избраните календари, видимите редове и липсващите срещи.",
+      "lede": "За полезен поглед към следващото събитие изберете уиджет, който действително показва списък със събития. Плочката с дата и метеорологично време служи за друго. Това ръководство е публикувано от Arte Soft, разработчика на Cloud Calendars.",
+      "sections": [
+        {
+          "heading": "Първо изберете изглед със събития",
+          "body": [
+            "В галерията с уиджети на Cloud Calendars „Calendar Events“ е средният изглед със списък от събития. „Calendar Events Large“ дава повече място за предстоящи срещи. „Calendar & Weather“ е отделен изглед за дата и метеорологично време; малкият му размер не означава, че показва и следващото събитие. На устройството ви имената може да са преведени.",
+            "На iPhone задръжте върху празно място на началния екран, изберете редактиране и добавяне на уиджет, след което намерете Cloud Calendars и изберете желания изглед. Сравнете прегледа, преди да го добавите. Указанията на Apple се отнасят за тази системна галерия, която е отделна от календарните изгледи в приложението."
+          ]
+        },
+        {
+          "heading": "Добавете и проверете уиджета на iPad",
+          "body": [
+            "На iPad използвайте галерията с уиджети на Apple за началния екран: задръжте върху фона, отворете редактирането и изберете добавяне на уиджет. Потърсете Cloud Calendars, разгледайте предлаганите стилове и размери, добавете нужния изглед, поставете го на избраното място и завършете редактирането. Следвайте контролите във вашата версия на iPadOS; прегледът не потвърждава, че календарните ви данни са заредени.",
+            "Изберете „Calendar Events“ или „Calendar Events Large“, когато искате да виждате срещи. Сравнете стиловете, предлагани от инсталираното приложение: плочката с дата и метеорологично време има различна цел от списъка със събития.",
+            "Отворете Cloud Calendars на същия iPad и намерете позната бъдеща среща с определен час в избран календар. Правилното показване на iPhone не потвърждава акаунтите, достъпа или заредените данни на iPad. Сравнете заглавието, датата и началния час; ако уиджетът се различава, продължете с проверките по-долу за включваните събития и обновяването."
+          ]
+        },
+        {
+          "heading": "Проверете кои събития се смятат за предстоящи",
+          "body": [
+            "Списъкът използва избраните календари и бъдещи събития с определен час. Целодневните записи и срещите, чийто начален час вече е минал, не се включват в него. Затова рожден ден или среща, която вече е започнала, може да се вижда в приложението, но да липсва тук.",
+            "Например, ако единственият ви запис за днес е целодневно отбелязано пътуване, празният списък с предстоящи събития не означава, че записът е изгубен. Отворете приложението, за да разгледате целия ден. Следващото събитие с час може да е утре или по-късно; прочетете датата му, вместо да приемате, че всички редове са за днес."
+          ]
+        },
+        {
+          "heading": "Разграничете липсващо събитие от изчерпани редове",
+          "body": [
+            "Уиджетът показва ограничен брой предстоящи срещи. Ако по-ранните събития запълват редовете му, по-късна среща може да липсва, въпреки че е в приложението и отговаря на условията за списъка. По-големият изглед със събития може да показва повече редове, но пак не представлява целия календар.",
+            "Започнете с най-близкото бъдещо събитие с час в избран календар. Ако то се вижда, а по-късно събитие — не, отворете приложението за останалата част от графика. Ако липсва и най-близкото подходящо събитие, проверете избора на календари, достъпа и обновяването. Не местете и не изтривайте срещи само за да се появи по-късен запис."
+          ]
+        },
+        {
+          "heading": "Първо сравнете с приложението",
+          "body": [
+            "Отворете Cloud Calendars и намерете конкретна бъдеща среща с час. Уверете се, че календарът, в който е записана, е избран и приложението има необходимия достъп до календарите. Сравнете заглавието, датата и началния час с уиджета. Ако събитието липсва и в приложението, първо проверете акаунта или синхронизацията.",
+            "Ако ви трябва ясен пример, създайте безобидно тестово събитие в календар, който притежавате. Задайте бъдещ начален час и разпознаваемо заглавие. Не променяйте реална покана и не премахвайте акаунти само за да проверите началния екран."
+          ]
+        },
+        {
+          "heading": "Предвидете време за обновяване без фиксиран срок",
+          "body": [
+            "Уиджетите показват запазена информация и не работят непрекъснато като отворено приложение. Apple управлява графика им за обновяване. Отварянето на приложението и проверката на събитието ви дават актуална основа за сравнение, но не определят точен брой секунди, след който уиджетът задължително трябва да се промени.",
+            "Ако приложението продължава да показва правилните данни, а уиджетът — грешни, запишете изгледа, избрания календар, часа на събитието и версиите на приложението и iOS. Празен списък, стара среща и неправилен час са различни наблюдения; посочете кое виждате."
+          ]
+        },
+        {
+          "heading": "Разглеждайте времето като отделно обобщение",
+          "body": [
+            "Времето до датата не е прогноза, обвързана с мястото и началния час на всяка среща. Преди събитие на открито отворете изгледа за времето и проверете желаното място и час. Иконата за текущите условия не показва какви ще бъдат те при по-късна среща.",
+            "Използвайте този уиджет за бърза ориентация. За целодневни ангажименти, подробности за събитията и решения, изискващи целия график, отворете пълния календар."
+          ]
+        }
+      ],
+      "claims": {},
+      "practical": [
+        "Изберете „Calendar Events“ или „Calendar Events Large“ за списък със събития.",
+        "Проверете бъдеща среща с час в избран календар.",
+        "Сравнете датата и часа ѝ в приложението, преди да търсите проблем в уиджета.",
+        "Записвайте трайните разлики, вместо да изтривате календарни данни."
+      ],
+      "faq": [
+        {
+          "q": "Защо рожденият ми ден липсва?",
+          "a": "Списъкът с предстоящи събития не включва целодневни записи. Проверете пълния календар за рождени дни и други събития само с дата."
+        },
+        {
+          "q": "Малкият уиджет показва ли следващата среща?",
+          "a": "Малкият изглед „Calendar & Weather“ показва дата и метеорологично време. За срещи изберете изглед със списък от събития."
+        },
+        {
+          "q": "Ако няма предстоящо събитие, свободен ли съм днес?",
+          "a": "Не непременно. Целодневни записи, започнали събития, неизбрани календари и остаряла информация могат да променят този извод."
+        }
+      ],
+      "sourcesHeading": "Източници и указания на Apple",
+      "sources": [
+        {
+          "label": "Apple: добавяне и редактиране на уиджети на iPhone",
+          "url": "https://support.apple.com/118610"
+        },
+        {
+          "label": "Apple: поддържане на актуална информация в уиджет",
+          "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+        },
+        {
+          "label": "Apple: добавяне, редактиране и премахване на уиджети на iPad",
+          "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+        }
+      ],
+      "seeAlso": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "weather-inside-your-calendar",
+        "calendar-on-apple-watch"
+      ]
+    },
+    "originalBodyMetadataDatesPreserved": true
+  }
+]

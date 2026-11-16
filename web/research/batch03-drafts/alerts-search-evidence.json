@@ -1,0 +1,232 @@
+{
+  "date": "2026-10-21",
+  "status": "drafts_only_pending_root_integration_and_review",
+  "scope": "research/batch03-drafts",
+  "drafts": [
+    {
+      "file": "calendar-notifications-missing-silent-or-duplicated.json",
+      "proposedSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "intent": "absent vs silent vs duplicate event notifications",
+      "familySuggestion": "planning",
+      "descriptionCharacters": 156,
+      "bodyWordCount": 738
+    },
+    {
+      "file": "find-old-calendar-events-by-account-date-and-title.json",
+      "proposedSlug": "find-old-calendar-events-by-account-date-and-title",
+      "intent": "historical calendar search scope, fields and account diagnosis",
+      "familySuggestion": "planning",
+      "descriptionCharacters": 157,
+      "bodyWordCount": 711
+    }
+  ],
+  "evidenceLevel": "Native source inspected only. No simulator, installed release, account, sync or notification delivery runtime test. Local source may differ from released1.7.3.",
+  "nativeEvidence": [
+    {
+      "claim": "Search matches loaded event title text, case-insensitively",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/SearchResultsView.swift",
+          "lines": [
+            57,
+            63
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/EKMultiDayWrapper.swift",
+          "lines": [
+            25,
+            28
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+          "lines": [
+            611,
+            611
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "Search appearance and content-change paths request current year",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/SearchResultsView.swift",
+          "lines": [
+            119,
+            137
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "Year loader builds Jan1-to-next-Jan1 range, selected provider/local calendars, replaces loaded event dictionaries",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+          "lines": [
+            1025,
+            1081
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+          "lines": [
+            899,
+            903
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "List includes Search events field and SearchResultsView",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/AllEventsListView.swift",
+          "lines": [
+            24,
+            42
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/ListView/SearchResultsView.swift",
+          "lines": [
+            5,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "App settings distinguish event, invitation and weather notification toggles",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Settings/SettingsSheetView.swift",
+          "lines": [
+            290,
+            387
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "Event scheduling gated by app preference and OS permission; selected calendars and saved alarms; future-only bounded scheduling",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+          "lines": [
+            230,
+            340
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+          "lines": [
+            39,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "Native editor has Alert and Second Alert; alert offsets include None and before-event choices",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+          "lines": [
+            150,
+            184
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+          "lines": [
+            738,
+            744
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+          "lines": [
+            1417,
+            1423
+          ]
+        },
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+          "lines": [
+            1461,
+            1467
+          ]
+        }
+      ]
+    },
+    {
+      "claim": "Notification sound requested by app does not prove audible runtime delivery",
+      "files": [
+        {
+          "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/EventNotificationManager.swift",
+          "lines": [
+            19,
+            23
+          ]
+        }
+      ]
+    }
+  ],
+  "publicPrimarySources": [
+    {
+      "url": "https://support.apple.com/guide/iphone/change-notification-settings-iph7c3d96bab/ios",
+      "checked": "2026-10-21",
+      "supports": "OS app notification settings, alert locations/sounds, Scheduled Summary and Focus; not Cloud Calendars event alert UI."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DiOS",
+      "checked": "2026-10-21",
+      "supports": "Google Calendar personal notification settings, calendar defaults and per-event settings; distinct from Cloud Calendars controls."
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/37176?hl=en&co=GENIE.Platform%3DDesktop",
+      "checked": "2026-10-21",
+      "supports": "Google Calendar web fields/date filtering, 200result limit, advanced historical search guidance; not an app sync horizon."
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/search-for-events-iph2c9ef44ad/ios",
+      "checked": "2026-10-21",
+      "supports": "Apple Calendar iPhone matches title,invitees,location,notes; not evidence Cloud Calendars implements same fields."
+    }
+  ],
+  "dedup": {
+    "inventory": "research/content-inventory-20261021.json",
+    "existingRelevantArticlesRead": [
+      "a-countdown-to-your-next-meeting",
+      "the-widget-that-shows-what-is-next",
+      "lock-screen-without-unlocking",
+      "choosing-a-widget-size",
+      "the-calendar-on-a-bedside-table",
+      "a-list-for-people-who-dislike-grids",
+      "what-calendar-sync-actually-does",
+      "when-two-calendars-disagree"
+    ],
+    "overlapHandling": "Link to sync/duplicates and list workflow rather than repeat migration guide. New notifications article separates delivery troubleshooting from Live Activity/widget selection. New search article explains title/currentyear limits and provider search fields, not list-view preference.",
+    "exactSlugCollision": false
+  },
+  "editorialWarnings": [
+    "Do not describe current-year source search as all-history search.",
+    "Do not advertise notes/location/attendee search in Cloud Calendars from Apple Calendar documentation.",
+    "Do not claim setting an alarm guarantees delivery or that hidden calendars cannot affect app alarms.",
+    "No destructive reset/reinstallation/calendar deletion steps.",
+    "Existing older widget article broad always-correct/countdown claims remain outside this drafts-only scope."
+  ],
+  "validation": {
+    "jsonShape": "LocalisedArticle required fields and arrays checked",
+    "writes": "Only research/batch03-drafts",
+    "nativeWrites": false,
+    "build": false,
+    "simulator": false,
+    "deployment": false,
+    "ascMutation": false,
+    "paidApi": false
+  }
+}

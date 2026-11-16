@@ -1,0 +1,26 @@
+{
+  "locale": "pt-BR",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Amanhã já vem",
+        "com previsão junto."
+      ],
+      "after": [
+        "Planeje o próximo dia.",
+        "Confira a previsão disponível."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Sete colunas, cada uma encabeçada pela própria máxima, mínima e condição. Gire para o modo paisagem e veja tudo. Pegue um compromisso e deslize para outro dia.",
+      "after": "Compare os compromissos da semana com a previsão diária disponível. Gire para o modo paisagem para ter uma visão mais ampla. Mova para outro dia os eventos que você pode editar e, nos eventos recorrentes, confira quais ocorrências devem ser alteradas."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Arraste. Estique. Pronto.",
+      "after": "Arraste. Redimensione. Confira."
+    }
+  ]
+}

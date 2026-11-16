@@ -1,0 +1,122 @@
+{
+  "verdict": "approved_for_owner_review_and_guarded_integration",
+  "proposalRawSha256": "2a5d5ab2c76cbe5b588745385b9fb175a74ab463d5c57b862b384131628cf979",
+  "beforeHTMLSha256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4",
+  "proposedHTMLSha256": "06c43bab072b324f2ae8ee84bacbc843fab8afbed0972d86b2d3e9113ee3b05f",
+  "fullReadScope": [
+    "Complete proposal including all10 replacements, full proposed HTML, evidence references and limitations",
+    "Complete current HTML template and component TypeScript",
+    "Complete prior dataFlows/evidence records from privacy-dataflow-20261021.json",
+    "Complete pinned GMA12.5.0/UMP3.0.0 manifests in preceding questionnaire review",
+    "Fresh immutable ConsentManager.swift20–90 and InvitationPushRegistration.swift65–130; backend push.service.ts31–65 read"
+  ],
+  "guardChecks": [
+    {
+      "id": "date",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "accounts-and-sharing",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "usage",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "device",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "weather",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "advertising-purpose",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "sharing-intro",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "service-providers",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "tracking",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    },
+    {
+      "id": "deletion-boundary",
+      "exactBeforeOccurrences": 1,
+      "decision": "pass"
+    }
+  ],
+  "exactProposedHTMLMatchesSequentialReplacements": true,
+  "allThreeRecordedEvidenceFileHashesMatch": true,
+  "findings": [
+    {
+      "area": "account/shared content",
+      "verdict": "pass",
+      "reason": "Replaces app-only implication with retained shared-event/calendar/account/access records confirmed by owner and source. Explicit shared-content scope avoids claiming every private calendar is uploaded. Attachment language is conditional on user inclusion and has no Photo Library/microphone claim."
+    },
+    {
+      "area": "contacts",
+      "verdict": "pass",
+      "reason": "Google authorization plus device Contacts permission and device import/update are separately described from recipient processing. No address-book bulk-upload assertion."
+    },
+    {
+      "area": "advertising and consent",
+      "verdict": "pass",
+      "reason": "Owner-confirmed personalization with consent and pinned SDK data types support guarded may/include wording. It does not promise all data anonymous or assert every SDK path executes. Consent/privacy-option source exists; device permission remains qualified."
+    },
+    {
+      "area": "push registration",
+      "verdict": "pass",
+      "reason": "Native sync transmits enabled=false after permissions/status calculation when token/session exist; backend validates and stores enabled status. Delivery configuration remains distinct from record retention. Does not promise live production delivery."
+    },
+    {
+      "area": "weather",
+      "verdict": "pass",
+      "reason": "Selected place or permission-based current location, Apple WeatherKit request, displayed-area map coordinates and device cache align with prior immutable evidence. Shared-event venue storage explicitly separated; no broad no-retention/no-location claim. App scope avoids conflating website Open-Meteo demo."
+    },
+    {
+      "area": "providers",
+      "verdict": "pass",
+      "reason": "AWS/SES evidence supports source-defined sharing delivery. No new confidentiality-contract guarantee, sale/no-sale assertion, or invented payment-card collection."
+    },
+    {
+      "area": "deletion",
+      "verdict": "pass",
+      "reason": "Signout/disconnection/subscription cancellation do not imply server/copy erasure; aligns with retained account/share/snapshot records. No invented retention interval or completed deletion deadline."
+    },
+    {
+      "area": "preservation",
+      "verdict": "pass",
+      "reason": "Privacy contact office@arte-soft.com, route, layout, backlink and TypeScript SEO remain unchanged. Existing security and notification-of-policy-change boilerplate remains unchanged; this review is not a security audit or legal compliance certification."
+    }
+  ],
+  "freshPrimaryCheck": {
+    "url": "https://developers.google.com/admob/ios/privacy/data-disclosure",
+    "date": "2026-10-22",
+    "read": "Substantive94–106",
+    "result": "Google describes possible IP-derived general location, identifiers, ad interactions and diagnostic data. This supports the general policy wording; exact pinned manifests remain the version-specific declaration evidence. No claim of observed network packets."
+  },
+  "requiredCorrections": [],
+  "remainingConditions": [
+    "Publish date should change only with actual publication.",
+    "Owner confirmation/legal review still applies; this is technical/editorial approval for prepared changes, not permission to publish.",
+    "No deployed backend configuration, runtime traffic, uploaded build binary, retention duration or deletion completion was newly tested."
+  ],
+  "mutations": "Only this review artifact written. No source, ASC, backend or customer changes."
+}

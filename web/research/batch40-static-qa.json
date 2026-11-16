@@ -1,0 +1,28 @@
+{
+  "allPassed": true,
+  "sitemapUrls": 526,
+  "all525PreviousCanonicalsPreserved": true,
+  "newRoutes": [
+    "https://www.cloud-calendars.com/it/articles/time-zones-and-the-flight-you-booked/"
+  ],
+  "fullGuidesChecked": [
+    {
+      "url": "https://www.cloud-calendars.com/articles/what-calendar-sync-actually-does/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 8,
+      "faq": 5
+    },
+    {
+      "url": "https://www.cloud-calendars.com/it/articles/time-zones-and-the-flight-you-booked/",
+      "allVisibleTextReferencesAndRelatedMatch": true,
+      "galleryImagesWithAlt": 5,
+      "sections": 7,
+      "faq": 4
+    }
+  ],
+  "relatedOnlyBacklinks": 1,
+  "english58GuideExportIncludesFullExpandedGuide": true,
+  "robotsUnchanged": true,
+  "scope": "FullreviewedENexpandedguide+fullITneweditionvisiblebody/steps/FAQ/sources/related;allpriorcanonicals. Not ranking/runtime proof."
+}

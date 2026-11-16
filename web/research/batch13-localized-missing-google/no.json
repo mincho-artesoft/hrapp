@@ -1,0 +1,95 @@
+{
+  "title": "En Google-kalender mangler på iPhone: sjekk tilkobling og valg",
+  "short": "Google-kalendere som mangler på iPhone",
+  "description": "Finn en manglende Google-kalender ved å sjekke tilgang, synlighet og tilkoblingen som Apple Kalender eller Cloud Calendars bruker.",
+  "lede": "Når én Google-kalender vises og en annen ikke gjør det, må du først finne ut hvor den manglende kalenderen er tilgjengelig. Kontotilgang, kalendervalg og tilgjengelige hendelser er ulike kontroller. Veiledningen er publisert av Arte Soft, utvikleren av Cloud Calendars.",
+  "commonBelief": "Alle manglende Google-kalendere skyldes én skjult synkroniseringsliste, og direkte tilkobling garanterer at alt vises.",
+  "sections": [
+    {
+      "heading": "Bekreft at kalenderen finnes for denne kontoen",
+      "body": [
+        "Åpne Google Kalender på nettet med kontoen du vil bruke på telefonen. Se etter selve kalenderen, ikke bare en kjent hendelsestittel. To kontoer kan ha kalendere med lignende navn. En invitasjon til jobbadressen gir ikke nødvendigvis privatkontoen tilgang.",
+        "Mangler kalenderen også der, begynn med eieren eller delingsinvitasjonen. Ved gruppetilgang må du bekrefte medlemskapet og hvilken gruppe som fikk tillatelse. Ikke slett kontoen fra telefonen mens tilgangsspørsmålet fortsatt er uavklart."
+      ]
+    },
+    {
+      "heading": "Skill mellom en skjult og en manglende kalender",
+      "body": [
+        "Google beskriver hvordan du velger kalendere som skal vises, i menyen til Google Kalender-appen. En oppført kalender uten avkrysning er et synlighetsproblem. Mangler den fra listen, må du undersøke for eksempel invitert identitet, godkjenning eller tilkobling.",
+        "En delingsinvitasjon på e-post og en abonnementsadresse er forskjellige veier. Google skiller mellom å legge til et nytt abonnement i nettleseren på en datamaskin og å åpne en kalender som allerede er delt via e-post. Behold originalinvitasjonen, men ikke publiser private lenker i åpne hjelpeinnlegg."
+      ]
+    },
+    {
+      "heading": "Finn ut hvordan iPhone-appen mottar Google-data",
+      "body": [
+        "Apple Kalender kan kobles til via Google-kontoen som er konfigurert på enheten. Googles veiledning inkluderer å aktivere Kalendere for kontoen. Følg oppdaterte instruksjoner for din iOS-versjon; innstillinger i en separat app er ikke det samme som denne enhetskontoen.",
+        "Cloud Calendars tilbyr også direkte Google-pålogging. Avklar konto og tilkoblingsmåte før du legger til enda en forbindelse. Kommer samme kalender via både enhetskalenderen og direkte tilkobling, sammenlign kalenderidentitetene før du konkluderer med at Google har duplisert en hendelse."
+      ]
+    },
+    {
+      "heading": "Kontroller valgene i Cloud Calendars uten å anta full dekning",
+      "body": [
+        "Se gjennom kalenderne til den aktuelle Google-kontoen i Cloud Calendars og velg dem du vil bruke. Google-synkroniseringen kontrollerer kalendervalget. Vellykket pålogging alene viser ikke at alle kalendere er valgt eller at alle forespurte oppdateringer er fullført.",
+        "Direkte tilkobling er en annen måte å motta Google-data på, ikke et løfte om at alle tilgjengelige kalendere vises. Finnes kalenderen på Googles nettsted, men ikke i Cloud Calendars, noter konto, kalendernavn og tilkoblingsmåte til kundestøtten. Bruk den opprinnelige tjenesten til hastesaker mens forskjellen undersøkes."
+      ]
+    },
+    {
+      "heading": "Skill en manglende kalender fra manglende datoer",
+      "body": [
+        "Er kalenderen oppført, men en avtale mangler, sammenlign den nøyaktige datoen i Google Kalender. Kontroller at hendelsen tilhører valgt kalender, og at du ser på samme forekomst av et gjentakende møte. En lignende tittel i en annen kalender er ikke samme kilderegistrering.",
+        "Ikke anta at en app har lastet ned alle historiske eller fjerne fremtidige hendelser. Google-synkroniseringen i Cloud Calendars bruker et avgrenset datointervall. Et tomt søk bakover i tid beviser derfor ikke at Google har slettet hendelsen. Sjekk originaltjenesten før du endrer eller oppretter noe på nytt."
+      ]
+    },
+    {
+      "heading": "Be om hjelp med en nyttig sammenligning, ikke en nullstilling",
+      "body": [
+        "Noter app, kontotype, kalendernavn, eksempeldato og hvor kalenderen vises. Ta med eventuell feilmelding etter å ha fjernet private opplysninger. Dette skiller tillatelser, valg og synkronisering bedre enn å si at hele kontoen er ødelagt.",
+        "Ved tidskritiske planer bør du bekrefte gjeldende hendelse med arrangøren. Ikke start med å slette kontoer, importere gjentatte kopier eller flytte hendelser mellom kalendere. Når tilkoblingsproblemet er forstått, kontroller samme eksempel før du endrer flere innstillinger."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Sammenlign riktig konto og kalender i Google Kalender på nettet.",
+    "Sjekk om kalenderen mangler eller bare ikke er valgt.",
+    "Avklar om du bruker Google-synkronisering på enheten, direkte apptilkobling eller abonnement.",
+    "Kontroller valgte kalendere for riktig konto i Cloud Calendars.",
+    "Sammenlign én nøyaktig hendelsesdato hos originaltjenesten.",
+    "Rapporter forskjellen uten å dele private adresser eller nullstille kontoer."
+  ],
+  "faq": [
+    {
+      "q": "Vil direkte Google-pålogging vise alle kalendere?",
+      "a": "Ikke anta full dekning. Konto, kalenderliste, valg og vellykket synkronisering har betydning. Sammenlign den manglende kalenderen med Google Kalender på nettet."
+    },
+    {
+      "q": "Bør jeg slette kontoen og legge den til igjen?",
+      "a": "Sjekk først identitet, tilgang, synlighet og tilkoblingsmåte. Ny tilkobling kan ikke gi en tillatelse eieren ikke har gitt."
+    },
+    {
+      "q": "Betyr en manglende gammel hendelse at den er slettet?",
+      "a": "Nei. Sjekk den opprinnelige Google-kalenderen og datoen. Appens datointervall eller søk kan avvike fra historikken tjenesten har lagret."
+    }
+  ],
+  "sourcesHeading": "Veiledning fra leverandørene og videre lesning",
+  "sources": [
+    {
+      "label": "Google: legge til Google-hendelser i Apple Kalender",
+      "url": "https://support.google.com/calendar/answer/99358?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: abonnementer og synlighet for kalendere",
+      "url": "https://support.google.com/calendar/answer/37100?hl=en&co=GENIE.Platform%3DiOS"
+    },
+    {
+      "label": "Google: hvordan kalenderlisten fungerer",
+      "url": "https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list"
+    }
+  ],
+  "seeAlso": [
+    "why-a-shared-calendar-does-not-appear",
+    "icloud-google-and-outlook-in-one-view",
+    "the-secret-address-of-a-google-calendar"
+  ],
+  "updated": "2026-10-21"
+}

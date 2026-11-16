@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-22",
+  "article": "calendar-event-or-room-reservation",
+  "deduplication": "Existing planning/recurrence/sharing guides do not answer room-resource acceptance. New guide answers selecting a bookable resource, checking its response after changes and releasing it; it does not repackage generic event creation.",
+  "primaryRootReads": {
+    "https://support.google.com/calendar/answer/143753?hl=en": "17–49, full substantive computer body",
+    "https://support.google.com/calendar/answer/16107253?hl=en": "17–86, full substantive body",
+    "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook": "119–194, full substantive platform sections",
+    "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/room-equipment-mailboxes-faq?view=o365-worldwide": "24–47, complete main FAQ despite authorization banner"
+  },
+  "nativeDelegateEvidence": "research/batch19-room-resource-native-evidence.json",
+  "rootNativeReads": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "ranges": "1398–1437"
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "ranges": "2046–2088 and3920–3964"
+    }
+  ],
+  "scope": "Provider documentation and read-only source evidence, not live bookings or released-app runtime. No resource acceptance capability inferred for Cloud Calendars."
+}

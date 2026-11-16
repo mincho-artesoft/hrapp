@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-22",
+  "file": "src/app/content/en-US/articles-planning.ts",
+  "slug": "what-an-all-day-event-really-means",
+  "beforeJsonStringifySha256": "94ceee6711c1b50561b594e9add294d200de5c2b7bf6d8de6ebb2029b99883cd",
+  "draftJsonStringifySha256": "d833700e89965ddb4e2eea82073034566c4e81b5ea016a64d434e769d2a9a275",
+  "rootFullBeforeRead": true,
+  "freshPrimaryReads": [
+    {
+      "url": "https://support.apple.com/en-euro/guide/icloud/mmfbbb2cf9/icloud",
+      "lines": "277–321 substantive mainbody, navigation not counted"
+    },
+    {
+      "url": "https://support.google.com/calendar/answer/13748346?co=GENIE.Platform%3DiOS&hl=en-GB",
+      "lines": "17–67 complete substantive body"
+    }
+  ],
+  "reusedNativeAudit": "research/batch31-birthday-source-evidence.json",
+  "scope": "One bounded source-identification section,practical/FAQ/source additions and truthful description; no new route, no universal birthdate import/editor/display/alert guarantee."
+}

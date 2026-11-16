@@ -1,0 +1,186 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Tek etkinlik paylaşımı: doğru bağlantı ve erişim",
+    "short": "Tek etkinlik paylaşma",
+    "description": "Tüm takvim yerine tek etkinlik paylaşın. Reader, Writer ve Owner rollerini, önizlemeyi, güncellemeleri ve erişimi kaldırmanın sınırlarını öğrenin.",
+    "lede": "Yemek ayrıntılarını göndermek, ortak düzenleyiciye düzenleme izni vermek ve katılım yanıtı toplamak farklı işlerdir. Önce amacınızı, sonra paylaşım yolunu seçin. Bu rehberi Cloud Calendars geliştiricisi Arte Soft hazırlamıştır.",
+    "commonBelief": "Her etkinlik bağlantısı anında güncellenen, yanıt kaydeden salt okunur bir takvim aboneliğidir.",
+    "sections": [
+      {
+        "heading": "Önce etkinliğin ayrıntılarını inceleyin",
+        "body": [
+          "Tek etkinlik paylaşımı gönderenin tüm takvimini değil, o etkinliği kapsar. Başlığı, saat dilimini, konumu, notları ve toplantı bağlantılarını kontrol edin. Bir konuk için uygun bilgi geniş dağıtıma uygun olmayabilir.",
+          "Yemek paylaşmak için doktor randevularınızın takvimini açmanız gerekmez. Ancak yemeğin konumu ve bağlantıları etkinlikle gider. Çevresindeki takvimin gizliliğine güvenmek yerine içeriği inceleyin."
+        ]
+      },
+      {
+        "heading": "Önizleme, e-posta veya QR yolunu seçin",
+        "body": [
+          "Cloud Calendars App Clip bir önizleme sunar; bu yoldan etkinlik eklemek için tam uygulama gerekir. E-posta ve QR davetleri Cloud Calendars açma seçeneği sunan bir web sayfasına gider. Bunlar birbirinin yerine kullanılan abonelik adresleri değildir.",
+          "Eşzamanlanan paylaşım için gönderen oturum açar. Bağlantılar ve QR kodları başkalarına iletilebilir. QR kodu bağlantıyı taşır, kimin açtığını kanıtlamaz."
+        ]
+      },
+      {
+        "heading": "Yalnızca gereken hakları verin",
+        "body": [
+          "E-posta davetinde Reader, Writer veya Owner seçilir. Reader görüntüler ve eşzamanlar, Writer düzenler, Owner ayrıca paylaşır ve erişimi yönetir. Yalnızca programı izleyecek kişiye Reader verin.",
+          "Etkinliği değiştirecek ortak düzenleyiciye Writer uygundur. Owner, başkalarının erişimini de yönetecek kişi içindir. Yüksek haklar doğru kimlikle oturum açmayı gerektirir. Anonim alıcı, kimliği belirli bir ortak sahip değildir."
+        ]
+      },
+      {
+        "heading": "Alıcının etkinliği nasıl eklediğini anlayın",
+        "body": [
+          "Tam uygulamada takvim izni ve yazılabilir hedef takvim gerekir. Alıcı kaydetmeden önce hedefi kontrol etmelidir. Alınan kopya sonraki değişiklikler için paylaşılan etkinlikle ilişkilendirilebilir.",
+          "Normal ICS dosyası içe aktarmak kopya oluşturur; abonelik ise akışı düzenli aralıklarla kontrol eder. Uygulama daveti yerine ICS akışı gönderiyorsanız farkı açıklayın ve alıcının takviminin desteklediğini doğrulayın."
+        ]
+      },
+      {
+        "heading": "Değişikliklerin ulaştığını kontrol edin",
+        "body": [
+          "Eşzamanlanan paylaşım düzenleme ve iptalleri taşıyabilir, ancak cihazın bunları alma fırsatı olmalıdır. Akış yenileme ipucu bir teslim süresi değildir. Çevrimdışı cihaz, yenilenmemiş abonelik veya bağımsız içe aktarılmış kopya eski bilgileri gösterebilir.",
+          "Yemek son anda ertelenirse etkinliği güncelleyin ve konuklara doğrudan ulaşın. Yeni saati doğrulamalarını isteyin. Güncellemeyi almak, katılacağını bildirmek değildir."
+        ]
+      },
+      {
+        "heading": "Erişimi kaldırmak bütün kopyaları silmez",
+        "body": [
+          "Alıcı haklarını gözden geçirip gereksiz izinleri kaldırın. Alıcıyı kaldırmak ve akış bağlantısını iptal etmek ayrı işlemlerdir. Bunlar tüm ekran görüntülerini, mesajları veya takvim kopyalarını uzaktan silme garantisi vermez.",
+          "Bağlantı yayıldıysa ilgili adresi veya izni belirleyin ve değişiklikten sonra sonucu kontrol edin. Sonradan iptale güvenmek yerine özel bilgileri geniş dağıtılan bağlantılara koymayın."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Ayrıntıları ve amacınızı kontrol edin: görüntüleme, düzenleme veya katılım yanıtı.",
+      "Paylaşım yolunu seçip gerektiğinde oturum açın.",
+      "İzleyicilere Reader, ilgili sorumluluklar için Writer veya Owner verin.",
+      "Alıcıdan saati ve hedef takvimi kontrol etmesini isteyin.",
+      "Acil değişiklikte etkinliği güncelleyip doğrudan mesaj gönderin.",
+      "Paylaşım bittiğinde alıcı hakları ve bağlantıları ayrı inceleyin."
+    ],
+    "faq": [
+      {
+        "q": "Tek etkinlik tüm takvimimi açar mı?",
+        "a": "Eşzamanlanan tek etkinlik yolu o etkinlikle sınırlıdır, fakat kendi ayrıntılarını gösterir. Bunları inceleyin; tek etkinlik amaçlıyorsanız tüm takvim daveti göndermeyin."
+      },
+      {
+        "q": "Alıcı etkinliği değiştirebilir mi?",
+        "a": "Evet, uygun Writer veya Owner hakkıyla desteklenen oturum açma yolunu kullanırsa. Reader görüntüleme ve eşzamanlama içindir. Normal ICS aboneliği aynı düzenleme mekanizması değildir."
+      },
+      {
+        "q": "Birini kaldırmak aldıklarının hepsini geri alır mı?",
+        "a": "Böyle bir garanti yoktur. Paylaşım erişimi değişir, ancak kaydedilmiş kopyalar, ekran görüntüleri ve mesajlar kalabilir. Paylaşılan akış adresi ayrıca değerlendirilmelidir."
+      }
+    ],
+    "sourcesHeading": "Alıcı seçenekleri için kaynaklar",
+    "sources": [
+      {
+        "label": "Apple: App Clips genel bakışı",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google: etkinlik içe aktarma ve sınırları",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft: takvimi içe aktarma veya abone olma",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "who-can-see-what-in-google-calendar",
+      "taking-back-a-calendar-you-shared"
+    ]
+  },
+  "who-can-see-what-in-google-calendar": {
+    "updated": "2026-10-21",
+    "title": "Google Calendar paylaşımı: gerçek erişimi kontrol edin",
+    "short": "Google Calendar erişimi ve gizlilik",
+    "description": "Google Calendar için uygun görüntüleme veya düzenleme hakkını seçin. Kişisel izinlerle birlikte herkese açık, grup ve kuruluş erişimini inceleyin.",
+    "lede": "Paylaşmadan önce kişinin boş zamanı görmesi, ayrıntıları okuması veya takvimi yönetmesi gerekip gerekmediğini belirleyin. Bu rehberi Cloud Calendars geliştiricisi Arte Soft yayımlamıştır.",
+    "commonBelief": "Bir kişiyi kısıtlamak, ayrıntıları başka hiçbir yoldan göremeyeceğini garanti eder.",
+    "sections": [
+      {
+        "heading": "İzni göreve göre seçin",
+        "body": [
+          "Zaman ayarlayan bir iş arkadaşı yalnızca uygunluğunuzu görmek isteyebilir. Proje programını yöneten kişinin ihtiyacı farklıdır. Önce görevi belirleyin, sonra güncel paylaşım ayarını inceleyin.",
+          "Google uygunluk, etkinlik ayrıntıları ve birkaç düzenleme düzeyini ayırır. Bir seçenek özel etkinlik erişimini sınırlar; başka biri düzenleme ve ayrıntılara izin verir; en genişi paylaşım yönetimini de içerir. Tüm değişiklik seçeneklerini eşit saymayın."
+        ]
+      },
+      {
+        "heading": "Takvimin genel erişimini de inceleyin",
+        "body": [
+          "Tek tek kişiler dışında herkese açıklığı, kuruluşu ve grupları kontrol edin. Google’a göre geniş erişim dar izni geçersiz kılabilir: kişiyi kısıtlamak zaten yayımlanmış ayrıntıları gizlemez.",
+          "Kulüp programına kişisel randevu koymadan önce yalnızca bir arkadaşın iznine değil bütün izleyici kitlesine bakın. Özel randevuları uygun takvimde tutun."
+        ]
+      },
+      {
+        "heading": "Doğru takvimin Google ayarlarını kullanın",
+        "body": [
+          "Bilgisayarda Google Calendar içinde takvimi bulun, menüsünü ve paylaşım ayarlarını açın. Kişi veya gruplar ile genel erişim farklı alanlardadır. Takvim adını ve oturum açılan hesabı kontrol edin.",
+          "Alıcının amaçlanan Google kimliğini doğrulayın. Takvim görünmüyorsa erişimi genişletmek yerine adresi ve daveti inceleyin. Eksik görüntü ile yetersiz düzenleme hakkı farklı sorunlardır."
+        ]
+      },
+      {
+        "heading": "Özel bilgi kullanmadan deneyin",
+        "body": [
+          "Özel başlık, not, konum veya konuk listesi olmayan deneme randevusu kullanın. Alıcıdan gördüklerini, yalnızca gerekli ve izinli olduğunda da değiştirebildiklerini doğrulamasını isteyin. Hesap parolanızı paylaşmayın.",
+          "Takvimi ve rolü kaydedip ayar değişikliğinin sonucunu kontrol edin. Bu, daha önce okunmuş veya kopyalanmış bilgilerin silindiğini kanıtlamaz. Denemek için gerçek iş programını yayımlamayın."
+        ]
+      },
+      {
+        "heading": "İş kurallarıyla uygulama planını ayırın",
+        "body": [
+          "İş veya okul Google yöneticileri paylaşımı kısıtlayabilir. Gerekli ayar yoksa kuruluşun onayladığı yolu kullanın. Kısıtı aşmak için iş bilgilerini herkese açmayın.",
+          "Cloud Calendars planları Google haklarını yeniden tanımlamaz. Advanced reklamları kaldırır; başka birine tüm olayları açan bir ödeme değildir. Yerel düzenleyicinin görünmesine değil, sağlayıcının kabul ettiği sonuca bakın."
+        ]
+      },
+      {
+        "heading": "Gereksiz erişim yollarını kaldırın",
+        "body": [
+          "Proje bitince kişileri, grupları ve genel yayını inceleyin. Başka yollar varsa bir kişiyi kaldırmak tek başına yetmez. Programı ve ilerideki izinleri kimin yöneteceğini kararlaştırın.",
+          "Google kişi veya grup kaldırmayı ve genel paylaşımı kapatmayı ayrı açıklar. Bu, dışa aktarılmış dosyaları, ekran görüntülerini veya kopyaları geri getirmez. Onları ilgililerle ayrıca ele alın."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Takvimi ve alıcının görevini belirleyin.",
+      "Kişi, grup, kuruluş ve genel erişimi inceleyin.",
+      "Güncel Google ayarlarında göreve uygun izni seçin.",
+      "Değişiklikten önce kimliği doğrulayın.",
+      "Zararsız bir deneme etkinliğini alıcı tarafından kontrol edin.",
+      "Eski erişimi kaldırırken önceki kopyaların silindiğini varsaymayın."
+    ],
+    "faq": [
+      {
+        "q": "Kişisel kısıtlama herkese açık takvime üstün gelir mi?",
+        "a": "Hayır. Google, çelişkide daha geniş takvim izinlerinin öncelikli olduğunu belirtir. Kişi kaydı yanında genel ve kuruluş ayarlarını da inceleyin."
+      },
+      {
+        "q": "Her düzenleme hakkı özel etkinlikleri aynı şekilde gösterir mi?",
+        "a": "Hayır. Google özel etkinlik erişimini sınırlayan düzenlemeyi diğer düzenleme ve paylaşım yönetimi seçeneklerinden ayırır. Güncel iznin tam açıklamasını okuyun."
+      },
+      {
+        "q": "Advanced almak Google haklarını değiştirir mi?",
+        "a": "Hayır. Advanced Cloud Calendars reklamlarını kaldırır. Erişim, takvim izinleri ve kuruluş kısıtlarına bağlıdır."
+      }
+    ],
+    "sourcesHeading": "Güncel Google paylaşım rehberleri",
+    "sources": [
+      {
+        "label": "Google: takvim izinlerini seçme",
+        "url": "https://support.google.com/calendar/answer/15716974?hl=en"
+      },
+      {
+        "label": "Google: paylaşma ve erişimi kaldırma",
+        "url": "https://support.google.com/calendar/answer/37082?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "why-a-shared-calendar-does-not-appear",
+      "sharing-one-event-not-your-calendar"
+    ]
+  }
+}

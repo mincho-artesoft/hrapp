@@ -1,0 +1,614 @@
+{
+  "checkedAt": "2026-10-22T05:04:02.714185+00:00",
+  "app": "6744690319",
+  "version": "1.7.4",
+  "state": "PREPARE_FOR_SUBMISSION",
+  "fieldOnly": "marketingUrl",
+  "writes": 31,
+  "localesVerified": 50,
+  "allPassed": true,
+  "rows": [
+    {
+      "locale": "ja",
+      "id": "ab762335-72a8-46b7-ae29-3f81e2f455f4",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ja/",
+      "acknowledged": true
+    },
+    {
+      "locale": "ro",
+      "id": "3389ecf3-903f-46bd-8af0-45b591661311",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ro/",
+      "acknowledged": true
+    },
+    {
+      "locale": "hu",
+      "id": "90e49b5b-cac5-4403-b411-c0114f969297",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/hu/",
+      "acknowledged": true
+    },
+    {
+      "locale": "cs",
+      "id": "407dc794-b4ed-4c4f-9319-6b2bb52f6af5",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/cs/",
+      "acknowledged": true
+    },
+    {
+      "locale": "zh-Hant",
+      "id": "db9bd915-8d55-49c3-b765-09dd83985839",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/zh-hant/",
+      "acknowledged": true
+    },
+    {
+      "locale": "ar-SA",
+      "id": "655ccbe8-e076-4bed-a61e-c119abd3e314",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ar/",
+      "acknowledged": true
+    },
+    {
+      "locale": "pl",
+      "id": "0bc52ccb-22c8-4b17-af7c-6783c1bd3428",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/pl/",
+      "acknowledged": true
+    },
+    {
+      "locale": "nl-NL",
+      "id": "330744ac-9574-4c5b-b2ac-749a724d3da9",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/nl/",
+      "acknowledged": true
+    },
+    {
+      "locale": "fr-CA",
+      "id": "79e62e99-3004-47ff-b072-bc8841f9e107",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/fr/",
+      "acknowledged": true
+    },
+    {
+      "locale": "pt-BR",
+      "id": "792d84c7-d17d-40b7-890b-e18a097ee741",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/pt/",
+      "acknowledged": true
+    },
+    {
+      "locale": "ru",
+      "id": "afc2183d-d280-4e21-8169-a08d65d4e1a6",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ru/",
+      "acknowledged": true
+    },
+    {
+      "locale": "fr-FR",
+      "id": "fc2a50aa-4f64-4c57-a6e9-6f427b144811",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/fr/",
+      "acknowledged": true
+    },
+    {
+      "locale": "fi",
+      "id": "b8fa942f-a222-43d9-bc59-f6a9a56212c1",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/fi/",
+      "acknowledged": true
+    },
+    {
+      "locale": "es-MX",
+      "id": "3110b329-4291-4e1b-9cce-61500c38ff4f",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/es/",
+      "acknowledged": true
+    },
+    {
+      "locale": "ms",
+      "id": "c9261f10-b41e-4656-a9f2-bdecc9d9cf14",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ms/",
+      "acknowledged": true
+    },
+    {
+      "locale": "da",
+      "id": "36c6b56c-545c-483e-92d9-c7a008289e00",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/da/",
+      "acknowledged": true
+    },
+    {
+      "locale": "tr",
+      "id": "2d04a31c-069d-4692-bf6e-4c0c06948d4c",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/tr/",
+      "acknowledged": true
+    },
+    {
+      "locale": "no",
+      "id": "617eb54f-399c-486c-8c51-85ad936b0ec6",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/no/",
+      "acknowledged": true
+    },
+    {
+      "locale": "th",
+      "id": "2e74d181-c85a-4c1e-a41e-340fdb64073e",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/th/",
+      "acknowledged": true
+    },
+    {
+      "locale": "es-ES",
+      "id": "00a6748f-cdd1-4679-84bc-ac1e461426a0",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/es/",
+      "acknowledged": true
+    },
+    {
+      "locale": "zh-Hans",
+      "id": "d1b9bc90-83d6-4a44-abb3-8a1fa3a3d978",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/zh-hans/",
+      "acknowledged": true
+    },
+    {
+      "locale": "de-DE",
+      "id": "f6802cbe-9871-490d-99e5-0c70bae5fd62",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/de/",
+      "acknowledged": true
+    },
+    {
+      "locale": "vi",
+      "id": "7091d1fe-7462-481a-9735-0746ece5ce89",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/vi/",
+      "acknowledged": true
+    },
+    {
+      "locale": "he",
+      "id": "81dc22d5-6b74-4d6a-87fb-bb6eade3e389",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/he/",
+      "acknowledged": true
+    },
+    {
+      "locale": "id",
+      "id": "bacdbba0-8db2-4756-9b98-1a24e68f5416",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/id/",
+      "acknowledged": true
+    },
+    {
+      "locale": "it",
+      "id": "a02e99d4-e709-463e-96c5-26e226d73427",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/it/",
+      "acknowledged": true
+    },
+    {
+      "locale": "el",
+      "id": "ce3783f7-5b12-45e1-8456-6c0eacf1eee8",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/el/",
+      "acknowledged": true
+    },
+    {
+      "locale": "ko",
+      "id": "d1b5d0e0-4b29-4ac9-b98a-cc73c81bf9b6",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/ko/",
+      "acknowledged": true
+    },
+    {
+      "locale": "pt-PT",
+      "id": "deedce92-e15b-4742-be7f-4ca0af85c0ff",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/pt/",
+      "acknowledged": true
+    },
+    {
+      "locale": "sv",
+      "id": "bcdb23cf-7623-4e3b-9c5a-37bd60bae990",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/sv/",
+      "acknowledged": true
+    },
+    {
+      "locale": "hi",
+      "id": "5c3939c4-55f7-4baf-b574-ff78c31486f0",
+      "field": "marketingUrl",
+      "before": "https://www.cloud-calendars.com/",
+      "after": "https://www.cloud-calendars.com/hi/",
+      "acknowledged": true
+    }
+  ],
+  "readback": [
+    {
+      "locale": "ja",
+      "marketingUrl": "https://www.cloud-calendars.com/ja/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "9dd645b75d40d66214f9c79382b7aa1bd423dcdc463380e4de68098f3114eff9"
+    },
+    {
+      "locale": "ro",
+      "marketingUrl": "https://www.cloud-calendars.com/ro/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "4989ddd84e4d6d27793d9f171ade0163c74a3cae3f81d1da573b794295139155"
+    },
+    {
+      "locale": "hu",
+      "marketingUrl": "https://www.cloud-calendars.com/hu/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "24d93b52d2020028802a70a5dd368d11d5435ccb248af6c33dbd313e8acf0192"
+    },
+    {
+      "locale": "gu-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "b684b8b4b48b41ca879e405bbf2de1aceac00c39d0acc7ebef86db2dfa6d496b"
+    },
+    {
+      "locale": "ca",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "e735742383fb014c442ac17c0eab57cd500a994bc11f626514ac7d667401680f"
+    },
+    {
+      "locale": "cs",
+      "marketingUrl": "https://www.cloud-calendars.com/cs/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "984993ec1f0f0fb889b8fa418248141b1566bebc8e48b84f6d674428adab3f49"
+    },
+    {
+      "locale": "zh-Hant",
+      "marketingUrl": "https://www.cloud-calendars.com/zh-hant/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c7d942e90a214f7890e4030138f79e6ea147c357ffc751fa162c48f74d11cf60"
+    },
+    {
+      "locale": "bn-BD",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c69e90a992c7d04d4bc2f616ef06dec4d430589ab35486ec638039b2671bc10b"
+    },
+    {
+      "locale": "ar-SA",
+      "marketingUrl": "https://www.cloud-calendars.com/ar/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "21bbc82ab07a7e0b7930da2d0131836ce9cb3a2d4b9fe16544d42b6ba3b6743a"
+    },
+    {
+      "locale": "pl",
+      "marketingUrl": "https://www.cloud-calendars.com/pl/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "b0557b0c9b9f90054694a4d28acd884183a6c9d1cd9e21f0b2178e6f3326ab8d"
+    },
+    {
+      "locale": "nl-NL",
+      "marketingUrl": "https://www.cloud-calendars.com/nl/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "75d56f73bab646523bff3342b0da9ec88f24bf1128374461ffefad64cd6d243f"
+    },
+    {
+      "locale": "en-AU",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "a1abe4e0a4213a29337260797b59932ead5f67934c5fde2d3830859c8a716c2e"
+    },
+    {
+      "locale": "or-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "20d0fa166b2b69dccaf4edecfb68748e201104843a9eedc6b47751fc6ed04deb"
+    },
+    {
+      "locale": "fr-CA",
+      "marketingUrl": "https://www.cloud-calendars.com/fr/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c403376af8af87feff92a453aaebea172f8ae04cd0c140100e28ccb97717c697"
+    },
+    {
+      "locale": "te-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "0de41208990c596e8839510c5f35475326ed657d35e427904eddb2d93577f6cc"
+    },
+    {
+      "locale": "pt-BR",
+      "marketingUrl": "https://www.cloud-calendars.com/pt/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "fb68f433f6c4e05a036bfea4198571035fa91a898addf20817af9ce74b395822"
+    },
+    {
+      "locale": "en-GB",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c98ad563ee330778dbb21d0cf9e1c8ea4ca6d457d8d638747fc0d31fef5caa76"
+    },
+    {
+      "locale": "ru",
+      "marketingUrl": "https://www.cloud-calendars.com/ru/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "3d6ca091852ad728d47ac918c7262b37b02a81a431b58b983794bd8c1a17c2f7"
+    },
+    {
+      "locale": "fr-FR",
+      "marketingUrl": "https://www.cloud-calendars.com/fr/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "60fc3f1a51bfd9928f5dec6b470f618d926645b4de2991b6b28d43501b37ad14"
+    },
+    {
+      "locale": "fi",
+      "marketingUrl": "https://www.cloud-calendars.com/fi/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "2ba159a67c385ab058ad6bf61af9c0984fb3939d1375de6d13a6f0b1a8ac834f"
+    },
+    {
+      "locale": "es-MX",
+      "marketingUrl": "https://www.cloud-calendars.com/es/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "1af0bc33e2564ee824cf9a0df68d11a23e3ed358d569e449ad9c4902db538c25"
+    },
+    {
+      "locale": "ms",
+      "marketingUrl": "https://www.cloud-calendars.com/ms/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "20770ca4af0b94f8a1faf2daa8215752c2f2c3f09db8fad848acd58fa67b1592"
+    },
+    {
+      "locale": "da",
+      "marketingUrl": "https://www.cloud-calendars.com/da/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "ae2e5020a41471a42588e8c547b4e7236e01b523963f2d18908bb6776e3dbb2e"
+    },
+    {
+      "locale": "tr",
+      "marketingUrl": "https://www.cloud-calendars.com/tr/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "48f5e5cd34e622ce1029719dc3e0f43b48d1d987c2d5818e6eab7cdbadd80a5f"
+    },
+    {
+      "locale": "no",
+      "marketingUrl": "https://www.cloud-calendars.com/no/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "3d739b7281194b52240878d2fadc522ef893f8723501ab134848fd402ad7805a"
+    },
+    {
+      "locale": "th",
+      "marketingUrl": "https://www.cloud-calendars.com/th/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "9ed4f18f53fd3794ae5ce954c100fb5cee34ef9108041d24df14fd3ce4c607f0"
+    },
+    {
+      "locale": "es-ES",
+      "marketingUrl": "https://www.cloud-calendars.com/es/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "93a1668f7c556fdf57bfa4e2957c240fcd96e6c2dbf6531ded6a96eb112951cd"
+    },
+    {
+      "locale": "mr-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "322857f7a4e1cbe7491595e512ac563eb4733cd9f703b82e2d2e19fe590b9df9"
+    },
+    {
+      "locale": "en-CA",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "e289917a10f08ea02d03ec523080ce9623c0a696b4e137f612186f2dfd7a1a3d"
+    },
+    {
+      "locale": "ml-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "974c76cba31797007565d4827bbf5a8a1d3a25d366a42681827ee9fca63166d4"
+    },
+    {
+      "locale": "hr",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "db8c0143df78bb698a89d32a9471f9b09e1bca31c7cff878714b140caf3eaf92"
+    },
+    {
+      "locale": "zh-Hans",
+      "marketingUrl": "https://www.cloud-calendars.com/zh-hans/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "d6a9396dd9760f9f4d2ab40cababe8c43f9db3c3744525e41eee84700513323f"
+    },
+    {
+      "locale": "en-US",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c71587b891f2bb12d54ed9501d205dd382dbba19a875f390a51f5014ec36e4c6"
+    },
+    {
+      "locale": "ur-PK",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "7c459178cabf5893516b8ec36aae1ae910019cb5ff203b88f31b72aee8a9d551"
+    },
+    {
+      "locale": "sl-SI",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "1856acf707be0a0dd01a346063542096f324dc1b50b87f655a25c3d128d21acb"
+    },
+    {
+      "locale": "de-DE",
+      "marketingUrl": "https://www.cloud-calendars.com/de/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "1c665f414a7940f70974b3d4d1779381abc9c663cb9c90818063511832c33d88"
+    },
+    {
+      "locale": "vi",
+      "marketingUrl": "https://www.cloud-calendars.com/vi/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "4c55f0918b4abda67257b122c4a6dc1532ebef653a24fd6e8fa60ad301e8ef85"
+    },
+    {
+      "locale": "he",
+      "marketingUrl": "https://www.cloud-calendars.com/he/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "f42c21fac6741a1713e5347f37270da8f8be2be73a4a2369cc62f24541e4fb1b"
+    },
+    {
+      "locale": "id",
+      "marketingUrl": "https://www.cloud-calendars.com/id/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "ee70b294bbc5ee61d2189b5b2a429aebac0c9f22895f3de61dc8097d4b67ebe2"
+    },
+    {
+      "locale": "it",
+      "marketingUrl": "https://www.cloud-calendars.com/it/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "2bef3d7b18ee264a3dac94e6f5be7835a88c0cb0f11699bae9d71ed20c2b518d"
+    },
+    {
+      "locale": "pa-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "c37cc3a67d5b18390ca6647a3b9bf5482cb7429f6d6dae8654344ba9855e8524"
+    },
+    {
+      "locale": "sk",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "727582bd801c266db39770923f7eddac4fe3ce8aa7a25671ccc7827e98c94f9b"
+    },
+    {
+      "locale": "uk",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "6a628f8575e338923925e448ebf0ff38a86ab963c8bb0674b5ef429e6a513129"
+    },
+    {
+      "locale": "el",
+      "marketingUrl": "https://www.cloud-calendars.com/el/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "4eb119c9f241eb9dfef61738e73fdb609b8ef0a4d37507fd7e6975d1c4dcf1f0"
+    },
+    {
+      "locale": "ko",
+      "marketingUrl": "https://www.cloud-calendars.com/ko/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "d6c2c35df6d554eab57e77b7652860040614fddb7cc43729ec24453fb10202a1"
+    },
+    {
+      "locale": "kn-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "453b01e628abca19dffc7fd9a105348977b4f4db22d94fff4d5b98d2eadc9b1a"
+    },
+    {
+      "locale": "pt-PT",
+      "marketingUrl": "https://www.cloud-calendars.com/pt/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "ac22729796c98fe84083ab24e009e275d26b01bec4aa6d3e882b4c10be4199f1"
+    },
+    {
+      "locale": "sv",
+      "marketingUrl": "https://www.cloud-calendars.com/sv/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "4e256262119ccb6d24bfa6bbd8a6eb2a0e919b9ecacddf3c50d912f51920500b"
+    },
+    {
+      "locale": "ta-IN",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "73bc3665fbd526b162bcacc4f780e4a051b09d3a8300765d4f27a52e1e446a9e"
+    },
+    {
+      "locale": "hi",
+      "marketingUrl": "https://www.cloud-calendars.com/hi/",
+      "targetMatches": true,
+      "allOtherAttributesPreserved": true,
+      "otherAttributesSha256": "a6cba55355fd574de543c37e12b7826e9d7fe8ef4adf05946a3c5a9c87a7291b"
+    }
+  ],
+  "unchanged": "All other localization attributes including text, supportUrl and whatsNew preserved; no appInfo/privacy/build/pricing/release/submission API called.",
+  "scope": "Draft URL language alignment and persistence; not live listing or ranking/citation proof."
+}

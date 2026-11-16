@@ -1,0 +1,215 @@
+{
+  "slug": "weather-inside-your-calendar",
+  "source": "src/app/content/en-US/articles-weather.ts",
+  "sourceObjectSha256": "128af49e854813cc6873c98dd868150de746930c5dff8dc61e4e58aa4a9c7bff",
+  "datePreserved": "2026-10-22",
+  "count": 10,
+  "format": "Individual LocalisedArticle JSON objects",
+  "validation": "Passed exact fields, duplicate-key rejection, 6 sections/12 paragraphs/6 steps/3 FAQs/2 sources, descriptions <=155 Unicode characters, exact source URLs/date/empty claims, disclosure and actual locale-module related routes",
+  "meaningReview": [
+    "Current/selected weather location, not automatic event address.",
+    "Daily list up to ten returned WeatherKit days; hourly coverage and calendar navigation separate.",
+    "Regional availability and value definitions; probability/amount/duration distinct.",
+    "Weather-hour action opens a draft using weather place timezone, proposed one-hour duration and default new-event calendar.",
+    "Draft neither grants permissions nor notifies venue nor reserves room; saved details/agreement checked.",
+    "Website Open-Meteo distinct from app Apple WeatherKit."
+  ],
+  "relatedRouteMethod": "Read actual current articles*.ts exports in each assigned locale. No new English-only route added to localized seeAlso.",
+  "reviewCaveats": "Full model translations, not native-speaker certification. Arabic/Hebrew RTL rendering unpreviewed.",
+  "scope": "Only requested research files. No integration/build/deploy/native edits or paid API. Generator removed after validation.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "descriptionCharacters": 147,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "omittedRelatedSlugs": [
+        "weather-where-the-event-is"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 6695,
+      "sha256": "4724c6e22ced0331137d5282346d060478856a625ed366dafb01aac44fb0204d",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "descriptionCharacters": 144,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "omittedRelatedSlugs": [
+        "weather-where-the-event-is"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 6550,
+      "sha256": "a0bfb6dedd4c6ec4848aa3966007ef7962f973adb965bab524899a8a2573b5bc",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "descriptionCharacters": 148,
+      "seeAlso": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "omittedRelatedSlugs": [
+        "weather-where-the-event-is"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 6957,
+      "sha256": "841661496ea80f25385ced21629d1e9eb46d617d656fcacb19b75f42cb2fe93d",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "da",
+      "descriptionCharacters": 138,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 5901,
+      "sha256": "0b02d79ce5a05660e720233e2d3044d5458c60ab5af4a80dd218dbc23f3ca552",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "bg",
+      "descriptionCharacters": 143,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 10033,
+      "sha256": "3ea8f45dc6dd560cf1cf62d12597e6938257735f9e6c2e37672fc7ccb215ae0b",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "cs",
+      "descriptionCharacters": 136,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 6115,
+      "sha256": "ea87d0b09d1748bd74e3344c45d9b74de3232aedcb6211b27012483cb9bc5925",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "fi",
+      "descriptionCharacters": 145,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 6049,
+      "sha256": "c4ca91e7e42c07150bd78c27e50130510d1b3b9f706d2dd228d9f5cce0f1e516",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "el",
+      "descriptionCharacters": 142,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 10458,
+      "sha256": "765a6930e67e6e9a31db81413ab6a7fe0e8a433bb8dd82dae1a3bc099cfe1838",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "ar-SA",
+      "descriptionCharacters": 109,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 7842,
+      "sha256": "59b9045457526a5eec13a089c16138d52eed1af2591220e9dbb56c155214c5ce",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "he",
+      "descriptionCharacters": 107,
+      "seeAlso": [],
+      "omittedRelatedSlugs": [
+        "forecast-beside-every-event",
+        "a-fourteen-day-view-of-the-weather",
+        "weather-where-the-event-is",
+        "planning-outdoors-without-being-rained-on"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sources": 2,
+      "bytes": 7687,
+      "sha256": "76d22444750466003a61f44fbc34d9b2c94e743edc16d4b82795ccabc883ac4e",
+      "translationConfidence": "medium"
+    }
+  ]
+}

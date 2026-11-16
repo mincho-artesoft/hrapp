@@ -1,0 +1,338 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+.showcase {
+  position: relative;
+  /* Roughly three quarters of a viewport of scroll per step. A full
+     viewport each felt like the page had stopped responding. */
+  height: calc((var(--steps) * 0.55 + 0.4) * 100vh);
+}
+
+.showcase__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* A colour wash that shifts hue as the tour advances. */
+.showcase__glow {
+  position: absolute;
+  inset: -25%;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 34% at 68% 42%, hsl(var(--hue) 92% 62% / 0.3), transparent 70%),
+    radial-gradient(34% 30% at 26% 62%, hsl(calc(var(--hue) + 46) 90% 62% / 0.2), transparent 72%);
+  filter: blur(30px);
+  transition: background 1.1s var(--ease-out);
+}
+
+.showcase__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  width: 100%;
+  @include stage(1600px);
+
+  @include upto($bp-lg) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Copy panels — all stacked, one visible
+--------------------------------------------------------------- */
+.showcase__copy {
+  /* `width` as well as `max-width`, and the width is the load-bearing one.
+     Below $bp-lg the grid uses `justify-items: center`, which sizes items to
+     their content — and every panel in here is absolutely positioned, so the
+     content this column measures is the word "The tour". Without a width the
+     whole column collapses to the eyebrow and the headline wraps one word to
+     a line. */
+  width: 100%;
+  max-width: 34rem;
+}
+
+/* Every panel sits in the same grid cell, so this block is as tall as the
+   tallest of them and stays that height for the whole tour — no jump as the
+   copy changes. It used to be absolute positioning plus a hand-tuned
+   `min-height` per breakpoint, which is a number that has to be re-guessed
+   every time the copy or the type scale moves, and was badly wrong on a
+   handset: the panels overflowed and the phone below rode up over the last
+   row of chips. */
+.showcase__panels {
+  display: grid;
+}
+
+.panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 26px, 0);
+  filter: blur(8px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.75s var(--ease-out),
+    filter 0.6s var(--ease-out),
+    visibility 0.6s;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    filter: none;
+  }
+}
+
+.panel__kicker {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #bfe8ff;
+  background: rgba(56, 224, 240, 0.11);
+  border: 1px solid rgba(56, 224, 240, 0.26);
+}
+
+.panel__title {
+  font-size: clamp(1.75rem, 3.3vw, 2.85rem);
+  margin-bottom: 1rem;
+  max-width: 17ch;
+
+  @include upto($bp-lg) { margin-inline: auto; }
+  @include upto($bp-sm) { font-size: 1.5rem; line-height: 1.2; }
+}
+
+.panel__body {
+  font-size: var(--t-lead);
+  color: var(--ink-3);
+  line-height: 1.62;
+  margin-bottom: 1.6rem;
+
+  @include upto($bp-sm) {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+}
+
+.panel__bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+
+  @include upto($bp-lg) { justify-content: center; }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.85rem;
+    border-radius: var(--r-pill);
+    font-size: 0.8rem;
+    color: var(--ink-2);
+    border: 1px solid var(--hair-strong);
+    background: rgba(255, 255, 255, 0.045);
+    opacity: 0;
+    transform: translateY(10px);
+
+    .panel.is-active & {
+      animation: bullet-in 0.55s var(--ease-out) forwards;
+      animation-delay: calc(0.28s + var(--i) * 0.08s);
+    }
+
+    svg { width: 14px; height: 14px; color: var(--aurora-2); }
+  }
+}
+
+@keyframes bullet-in {
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------
+   Step rail
+--------------------------------------------------------------- */
+.rail {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2.2rem;
+  list-style: none;
+
+  @include upto($bp-lg) { justify-content: center; }
+  @include upto($bp-sm) { display: none; }
+
+  li { flex: 1 1 0; max-width: 8rem; }
+}
+
+.rail__btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  @include focus-ring;
+
+  &:hover .rail__label { color: var(--ink-2); }
+}
+
+.rail__bar {
+  display: block;
+  height: 2px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.13);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.rail__fill {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  scale: 0 1;
+  background: linear-gradient(90deg, var(--aurora-2), var(--aurora-1));
+  box-shadow: 0 0 10px rgba(56, 224, 240, 0.7);
+}
+
+.rail__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-4);
+  transition: color 0.35s;
+
+  .rail__btn.is-active & { color: var(--ink); font-weight: 500; }
+}
+
+/* ---------------------------------------------------------------
+   Stage
+--------------------------------------------------------------- */
+.showcase__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+/* ---------------------------------------------------------------
+   Coverflow
+
+   Five screenshots on one track: the current one square on, its
+   neighbours turned away, pushed back and dimmed. Scrolling slides
+   the whole carousel, so where you have been and what is coming are
+   both on screen — which the cross-dissolve this replaced never
+   showed, and which is what those empty placeholder cards were
+   standing in for.
+--------------------------------------------------------------- */
+.coverflow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+
+  /* How far the neighbours sit from the centre, as a percentage of one
+     cover's width. It lives here rather than in the component because the
+     right answer is a question of how much room the column has, and that is
+     a breakpoint question: a phone is a fifth of a desktop viewport and two
+     thirds of a handset, so the same spread that reads as a tidy trio on one
+     runs off the edge of the other. The component reads it back through a
+     ResizeObserver. */
+  --flow-x: 78;
+
+  /* `perspective` on the parent, deliberately, rather than `preserve-3d` on
+     the track. Under preserve-3d the covers share one 3D space and the turned
+     ones can intersect the centre plane — which is exactly what drew a hard
+     diagonal seam across the phone in an earlier version of this section.
+     Here each cover is projected on its own and paint order is plain
+     z-index, so nothing can cut through anything. */
+  perspective: 1500px;
+  perspective-origin: 50% 46%;
+
+  @include upto($bp-lg) { --flow-x: 64; }
+  @include upto($bp-sm) {
+    --flow-x: 52;
+    /* Smaller than the `lg` preset anywhere else on the site: this stage has
+       to hold a headline, a paragraph, a row of chips and three phones inside
+       one handset viewport, and it is the phones that have to give. */
+    --device-lg-w: min(168px, 21vh);
+  }
+}
+
+.cover {
+  /* All in one grid cell: the track ends up exactly one phone tall, and
+     nothing needs absolute positioning to stack. */
+  grid-area: 1 / 1;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  cursor: pointer;
+  /* transform and opacity are written per frame by the component. This
+     transition is only here to smooth the jump when a cover or a rail step
+     is clicked — during a scroll each frame supersedes it. */
+  transition:
+    transform 0.3s var(--ease-out),
+    opacity 0.3s var(--ease-out);
+
+  /* Scoped to the section being on screen — see the IntersectionObserver.
+     Five promoted layers is a real amount of GPU memory to hold while the
+     visitor is a page and a half away. */
+  .coverflow.is-live & { will-change: transform, opacity; }
+}
+
+/* The light the front screen spills onto the page — one for the whole
+   carousel rather than one per phone, since it only ever comes from
+   whichever screen is at the front, and five blurred radial stacks is a
+   lot of paint for that. */
+.coverflow__bloom {
+  position: absolute;
+  z-index: 0;
+  inset: 4% 2%;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(46% 40% at 50% 44%, rgba(77, 124, 255, 0.42), transparent 70%),
+    radial-gradient(38% 34% at 30% 66%, rgba(56, 224, 240, 0.26), transparent 72%),
+    radial-gradient(40% 36% at 70% 30%, rgba(165, 102, 255, 0.24), transparent 74%);
+  filter: blur(46px);
+  animation: bloom-breathe 9s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes bloom-breathe {
+  from { opacity: 0.55; transform: scale(0.94); }
+  to   { opacity: 0.9;  transform: scale(1.05); }
+}
+
+/* ---------------------------------------------------------------
+   Reduced motion / small screens: unstick and stack
+--------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .showcase { height: auto; }
+  .showcase__sticky { position: static; height: auto; padding-block: 5rem; }
+  .showcase__panels { display: block; }
+  .panel {
+    grid-area: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    filter: none;
+    margin-bottom: 3rem;
+  }
+  /* The carousel is laid out once and then left alone — see `layout(0)` in
+     ngAfterViewInit, which runs before the reduced-motion bail-out. */
+  .cover { transition: none; animation: none; }
+  .coverflow__bloom { animation: none; opacity: 0.72; }
+}
+
+@include upto($bp-sm) {
+  .showcase__sticky { padding-block: 2rem; }
+}

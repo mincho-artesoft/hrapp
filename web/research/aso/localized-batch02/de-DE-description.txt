@@ -1,0 +1,22 @@
+Termine und Wetter gemeinsam planen: Cloud Calendars bringt berufliche und private Kalender auf deinem iPhone und iPad zusammen.
+
+KALENDER UND ANSICHTEN
+Nutze iCloud-Kalender und verbinde Google Kalender. Mit Premium kommt die Unterstützung für Microsoft-Kalender hinzu. Wechsle zwischen Tages-, Wochen-, Monats-, Jahres- und Listenansicht.
+
+Du kannst auch einen lokalen Kalender auf deinem Gerät anlegen, ohne ein Cloud Calendars-Konto zu erstellen. Zum Verbinden von Diensten und zum Teilen kann eine Anmeldung erforderlich sein.
+
+WETTER UND WIDGETS
+Prüfe die Wettervorhersage bei der Planung. Widgets für den Home-Bildschirm sind in kleinen, mittleren und großen Größen verfügbar. Die verfügbaren Vorhersagen hängen vom Standort und Wetteranbieter ab.
+
+BESPRECHUNGEN UND EINLADUNGEN
+Nutze Google Meet mit Google Kalender. Premium unterstützt zusätzlich Microsoft Teams. Teile Ereignisse und Kalender und lade andere per E-Mail, QR-Code oder App Clip ein. Die Zugriffsrechte hängen vom Kalender und der Art der Einladung ab.
+
+WÄHLE DEINEN TARIF
+Base ist kostenlos und umfasst Google-Kalender-Synchronisierung, Google Meet, mehrere Kalenderansichten, Wetter und Widgets.
+Advanced enthält die Funktionen von Base und entfernt Werbung.
+Premium enthält Advanced und ergänzt Microsoft-Kalender und Microsoft Teams.
+
+Der Download ist kostenlos. Optional sind Abonnements mit automatischer Verlängerung verfügbar. Aktuelle Preise findest du in der App oder im App Store. Die Zahlung wird bei Kaufbestätigung deinem Apple-ID-Konto belastet. Das Abonnement verlängert sich automatisch, wenn du es nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums kündigst. Die Verlängerung wird innerhalb der letzten 24 Stunden vor Ablauf berechnet. Verwalte oder kündige dein Abonnement in deinen App-Store-Account-Einstellungen.
+
+Datenschutz: https://www.cloud-calendars.com/privacy-policy
+Nutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

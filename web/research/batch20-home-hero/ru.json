@@ -1,0 +1,15 @@
+{
+  "locale": "ru",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Все календари, что у вас есть, — iCloud, Google, Microsoft — в одном месте, с прогнозом внутри самого дня. Хватит гадать, каким будет день.",
+      "after": "Просматривайте выбранные календари iCloud и Google на iPhone и iPad, а рядом с планами — доступный прогноз погоды. Premium добавляет подключение календарей Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Ваши календари и прогноз в одном месте. Сделано для iPhone и iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Календари iCloud и Google, погода и виджеты на iPhone и iPad. Скачайте бесплатно; Premium добавляет календари Microsoft и Teams."
+    }
+  ]
+}

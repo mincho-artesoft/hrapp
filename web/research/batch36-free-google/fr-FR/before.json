@@ -1,0 +1,36 @@
+{
+  "title": "Synchronisation Google gratuite, et ce que paie la publicité",
+  "short": "Gratuit, et la publicité",
+  "description": "Découvrez ce que comprend la formule gratuite, où intervient la publicité et quelle formule permet de la retirer.",
+  "lede": "Les applications d'agenda gratuites le sont généralement parce qu'autre chose se vend. Il vaut la peine de savoir quoi avant de leur confier sa semaine.",
+  "commonBelief": "Qu'une formule gratuite est un essai et que la vraie application se trouve derrière le paiement.",
+  "sections": [
+    {
+      "heading": "Ce que couvre le gratuit",
+      "body": [
+        "Toutes les vues, la synchronisation iCloud, la synchronisation Google, toute la météo dans l'agenda, les widgets, les liens Meet sur les événements et la modification par glisser. Pas un essai de ces choses : ces choses.",
+        "Si vos agendas sont chez Apple et Google, ce qui est le cas de la plupart des gens, la formule gratuite est l'application."
+      ]
+    },
+    {
+      "heading": "Ce que fait la publicité et ce que coûte son retrait",
+      "body": [
+        "La formule gratuite porte de la publicité. La retirer est la formule payante la moins chère, et retirer la publicité est honnêtement l'essentiel de ce que fait cette formule.",
+        "Le dire ainsi paraît préférable à l'arrangement habituel, où la formule sans publicité est empaquetée avec des fonctions que personne n'a demandées pour que le prix ait l'air d'acheter davantage."
+      ]
+    }
+  ],
+  "claims": {
+    "price": "Coût de la formule gratuite",
+    "advancedMonthly": "Coût mensuel du retrait de la publicité, en dollars"
+  },
+  "practical": [
+    "Commencez gratuitement : la synchronisation dont vous avez besoin est probablement déjà là.",
+    "Payez pour retirer la publicité, pas parce que vous attendez que l'application change.",
+    "La formule supérieure n'a de sens que si votre agenda professionnel est chez Microsoft."
+  ],
+  "seeAlso": [
+    "what-a-subscription-actually-buys",
+    "icloud-google-and-outlook-in-one-view"
+  ]
+}

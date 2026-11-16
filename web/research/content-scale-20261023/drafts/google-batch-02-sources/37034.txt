@@ -1,0 +1,124 @@
+Use keyboard shortcuts in Google Calendar
+When you turn on keyboard shortcuts, you can press keys to make changes to your Google Calendar and quickly navigate to certain pages.
+Turn on keyboard shortcuts
+On your computer, open
+Google Calendar
+.
+In the top right corner, click Settings
+Settings
+.
+Check the box next to “Enable keyboard shortcuts.”
+At the bottom of the page, click
+Save
+.
+Use shortcuts
+After you turn on keyboard shortcuts, you can see all the shortcuts you can use by typing a question mark
+?
+.
+Move around the calendar
+Action
+Shortcut
+Change your calendar view to the next date range
+j
+or
+n
+Refresh your calendar
+r
+Move to the current day
+t
+Move to add a calendar section
++
+Put your cursor in the search box
+/
+Go to the Settings page
+s
+Go to a specific date
+g
+Change your calendar view
+Action
+Shortcut
+Day view
+1
+or
+d
+Week view
+2
+or
+w
+Month view
+3
+or
+m
+Custom view
+4
+or
+x
+Agenda view
+5
+or
+a
+Make changes to an event
+Action
+Shortcut
+Create a new event
+c
+See an event's details
+e
+Delete an event
+Backspace
+or
+Delete
+Undo
+z
+Save event (from the event details page)
+⌘
++
+s
+(Mac)
+Ctrl
++
+s
+(Windows)
+Return to calendar grid from an event details page
+Esc
+View Tasks & Keep
+You can now use Keep and Tasks in a side panel while using Calendar. To go to the side panel, use these shortcuts:
+Windows:
+Ctrl
++
+Alt
++
+. (period)
+or
+Ctrl
++
+Alt
++
+, (comma)
+Chromebook:
+Alt
++
+Shift
++
+. (period)
+or
+Alt
++
+Shift
++
+, (comma)
+Mac:
+⌘
++
+Option
++
+. (period)
+or
+⌘
++
+Option
++ ,
+(comma)
+Computer
+Android phone & tablet
+More

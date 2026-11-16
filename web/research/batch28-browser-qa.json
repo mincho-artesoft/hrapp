@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-22T01:41:12.300178+00:00",
+  "allPassed": true,
+  "articleViews": [
+    {
+      "locale": "fr-FR",
+      "route": "/fr/articles/caldav-calendar-on-iphone/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "scrollWidth": 564,
+      "h1Matches": true,
+      "visualReadabilityReviewed": true
+    },
+    {
+      "locale": "it",
+      "route": "/it/articles/caldav-calendar-on-iphone/",
+      "viewport": 575,
+      "documentWidth": 564,
+      "scrollWidth": 564,
+      "h1Matches": true,
+      "visualReadabilityReviewed": true
+    }
+  ],
+  "supportFooterViews": [
+    {
+      "locale": "en-US",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "visibleAddressReviewed": true,
+      "ltrAddressIsolation": true
+    },
+    {
+      "locale": "bg",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "visibleAddressReviewed": true,
+      "ltrAddressIsolation": true
+    },
+    {
+      "locale": "ar-SA",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "visibleAddressReviewed": true,
+      "ltrAddressIsolation": true
+    },
+    {
+      "locale": "he",
+      "viewport": 390,
+      "documentWidth": 379,
+      "scrollWidth": 379,
+      "visibleAddressReviewed": true,
+      "ltrAddressIsolation": true
+    }
+  ],
+  "keyboardFocus": {
+    "locales": [
+      "bg",
+      "ar-SA"
+    ],
+    "focusedSupportAnchorObserved": true,
+    "solidOutlineObserved": true,
+    "mailtoNotActivated": true
+  },
+  "screenshots": [
+    "/tmp/cloud-calendar-batch28-fr-caldav.png",
+    "/tmp/cloud-calendar-batch28-bg-support.png"
+  ],
+  "viewportRestored": true,
+  "scope": "Rendered representative article/support/RTL/narrow and focus checks; no mailbox delivery, all30native-speaker or app runtime certification."
+}

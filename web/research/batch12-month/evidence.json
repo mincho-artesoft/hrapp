@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-22",
+  "sourceProofs": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MonthView/MonthCalendarView.swift",
+      "sha256": "f9f0cd342733a801a00408d7a0991caf09cee4c824c12c5b144776f1e34b0ff5",
+      "rootReadRanges": [
+        [
+          24,
+          32
+        ],
+        [
+          85,
+          158
+        ],
+        [
+          228,
+          286
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/MonthView/DayCellView.swift",
+      "sha256": "fbb00a573d2c14fadaa67ec87f106760e7dde2db89486cb21dc28c7b88f4377e",
+      "rootReadRanges": [
+        [
+          22,
+          65
+        ],
+        [
+          86,
+          125
+        ]
+      ]
+    }
+  ],
+  "primaryRead": [
+    {
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios",
+      "scope": "Body1155-1189; Apple controls attributed, not Cloud controls."
+    },
+    {
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+      "scope": "Full substantive2-147; Teamup browser/mobile distinction not feature parity."
+    }
+  ],
+  "changes": [
+    "Replace categorical phone-is-only-heatmap claim with actual date/hour workflow.",
+    "Remove promise biggeriPadmeansfullschedule; currentcellhas3chiplimit andoverflow.",
+    "Selectedcalendar/date/repeatpermission checks and original workshop example.",
+    "Forecast horizon separate from calendar month."
+  ],
+  "limits": [
+    "Current source inspection, not released binary or real-device interaction test.",
+    "Other29localized monthbodies remain unchanged; translation is separate work.",
+    "No universal simultaneous visibility, activity suitability, provider edit acceptance or participant receipt guarantee."
+  ]
+}

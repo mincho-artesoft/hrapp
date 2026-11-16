@@ -1,0 +1,90 @@
+{
+  "updated": "2026-10-22",
+  "title": "Calendrier CalDAV sur iPhone : configuration, accès et événements manquants",
+  "short": "Calendriers CalDAV sur iPhone",
+  "description": "Ajoutez un compte CalDAV dans les réglages de l’iPhone, puis vérifiez les accès et calendriers sélectionnés. Distinguez compte, abonnement et copie.",
+  "lede": "Un calendrier peut être présent sur son serveur sans apparaître dans une app iPhone. Vérifiez dans l’ordre le compte, le système de calendrier de l’appareil, puis la sélection dans l’app. Ce guide est publié par Arte Soft, le développeur de Cloud Calendars.",
+  "commonBelief": "N’importe quelle URL de calendrier équivaut à un compte CalDAV, et un seul ajout permet à toutes les apps de le lire et de le modifier.",
+  "sections": [
+    {
+      "heading": "Distinguer un compte, un abonnement et un fichier importé",
+      "body": [
+        "Avant toute saisie, demandez au fournisseur quelle connexion il prend en charge sur iPhone. Un compte CalDAV utilise des informations de serveur et de compte. Un abonnement iCal suit un flux de calendrier ; ouvrir un fichier de calendrier exporté peut créer une copie distincte. Ces méthodes répondent à des besoins différents, même si elles affichent des rendez-vous portant les mêmes titres.",
+        "Par exemple, la personne qui administre un club et doit actualiser le planning partagé a besoin d’une méthode de modification autorisée par le fournisseur. Un membre qui consulte simplement le planning peut avoir un abonnement. Il ne doit pas multiplier les essais en utilisant l’URL du flux comme identifiant, ni supposer que voir un événement lui donne le droit de le modifier."
+      ]
+    },
+    {
+      "heading": "Suivre les instructions iPhone du fournisseur et les réglages de compte Apple",
+      "body": [
+        "Le guide actuel d’Apple indique le chemin suivant pour configurer CalDAV : Settings > Apps > Calendar > Calendar Accounts > Add Account > Add Other Account > CalDAV account. Saisissez les informations de serveur et de compte fournies par votre service. Les intitulés peuvent différer sur les anciennes versions d’iOS. Choisissez l’option de compte propre au service lorsque ses instructions le demandent.",
+        "Vérifiez les exigences d’authentification du fournisseur avant de saisir un mot de passe : certains services utilisent un mot de passe spécifique à une app ou une autre procédure approuvée. Ne remplacez pas ces instructions par celles d’une autre app de calendrier et ne déduisez pas une adresse de serveur du domaine d’une adresse e-mail. Pour un compte professionnel, utilisez la configuration approuvée par votre organisation plutôt que de modifier les contrôles de sécurité pour réussir la connexion."
+      ]
+    },
+    {
+      "heading": "Vérifier d’abord que le calendrier apparaît dans Calendrier d’Apple",
+      "body": [
+        "Ouvrez Calendrier d’Apple et recherchez le compte et le calendrier concerné dans sa liste de calendriers. Comparez un rendez-vous ordinaire avec la vue du fournisseur : titre, nom du calendrier, date et heure locale. Une connexion au compte réussie n’est qu’une première observation ; elle ne permet pas de savoir quels calendriers et quelles dates sont réellement arrivés sur l’appareil.",
+        "Si le rendez-vous manque déjà à cet endroit, examinez le compte avec le fournisseur avant de l’ajouter à répétition dans une autre app. Apple décrit une fréquence de récupération des données pour les comptes sans prise en charge de Push. Cela ne garantit pas l’actualisation immédiate de chaque compte ou app destinataire. Notez où le rendez-vous est visible et l’heure de votre vérification."
+      ]
+    },
+    {
+      "heading": "Vérifier l’accès de Cloud Calendars et les calendriers sélectionnés",
+      "body": [
+        "Cloud Calendars lit les calendriers de l’appareil par l’intermédiaire du système de calendrier d’Apple. Dans les réglages de confidentialité et de sécurité de l’iPhone, consultez son accès aux calendriers. Un accès complet au calendrier est nécessaire pour lire les événements existants ; l’autorisation d’ajouter des événements ne donne pas accès au planning existant.",
+        "Ouvrez ensuite la liste des calendriers dans Cloud Calendars. Recherchez le calendrier voulu, notamment dans le groupe Other, et vérifiez qu’il est sélectionné. Un calendrier disponible sur l’appareil peut néanmoins présenter des limites de compatibilité ou de partage propres au fournisseur. S’il apparaît dans Calendrier d’Apple mais pas ici, notez cette différence plutôt que de créer une seconde connexion au compte."
+      ]
+    },
+    {
+      "heading": "Vérifier séparément la modification et la destination",
+      "body": [
+        "Un compte peut contenir des calendriers avec des autorisations différentes. Voir un événement ne prouve pas que le fournisseur acceptera une modification, et disposer d’un éditeur local ne confère aucun droit. Conservez une invitation reçue ou une réunion récurrente déjà établie dans son calendrier d’origine pendant la vérification de la connexion.",
+        "Si vous possédez un calendrier modifiable et devez tester cette méthode, utilisez un rendez-vous d’essai au nom explicite, sans données sensibles. Choisissez expressément le calendrier de destination, enregistrez, puis vérifiez la vue du fournisseur. Effectuez ensuite une petite modification et comparez de nouveau. Ne testez pas en déplaçant une véritable réunion partagée entre calendriers : cela modifie l’organisation que vous cherchez à examiner."
+      ]
+    },
+    {
+      "heading": "Diagnostiquer les doublons sans supprimer la source",
+      "body": [
+        "Si le même rendez-vous apparaît deux fois, notez les deux noms de calendrier et la méthode par laquelle chacun est arrivé sur le téléphone. Une connexion de compte, un abonnement à un flux et un ancien import peuvent coexister. Masquez temporairement un calendrier pour identifier l’affichage qu’il fournit ; masquer n’est pas supprimer un événement ni retirer un compte. Notez la sélection initiale et rétablissez-la après la comparaison. Dans Cloud Calendars, la sélection peut aussi avoir un effet sur les widgets, la programmation des notifications et la synchronisation Google.",
+        "Pour contacter l’assistance, précisez le fournisseur, la version d’iOS, le nom du calendrier, la méthode de connexion et les endroits où le rendez-vous d’essai est visible. N’incluez pas de mots de passe, d’URL de flux privées ou de détails sensibles d’événements dans les captures d’écran. Ce guide décrit une procédure de compte sur l’appareil ; il n’établit pas que Cloud Calendars assure une synchronisation CalDAV directe entre serveurs ou une copie automatique des disponibilités entre fournisseurs."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Déterminez si vous disposez d’un compte CalDAV, d’un abonnement à un flux ou d’un fichier exporté.",
+    "Suivez la procédure de configuration et d’authentification iPhone approuvée par le fournisseur.",
+    "Vérifiez le calendrier voulu et un rendez-vous connu dans Calendrier d’Apple.",
+    "Examinez l’accès de Cloud Calendars aux calendriers et sélectionnez le calendrier voulu.",
+    "Utilisez un événement d’essai jetable dans un calendrier qui vous appartient pour vérifier les modifications autorisées.",
+    "Comparez les méthodes de connexion avant de masquer un affichage en double ou de demander de l’aide."
+  ],
+  "faq": [
+    {
+      "q": "Un compte CalDAV est-il la même chose qu’un abonnement iCal ?",
+      "a": "Non. L’accès à un compte et l’abonnement à un flux de calendrier sont des connexions différentes. Vérifiez la méthode fournie par votre service et si elle permet la modification."
+    },
+    {
+      "q": "Pourquoi Calendrier d’Apple affiche-t-il un événement absent de Cloud Calendars ?",
+      "a": "Vérifiez l’autorisation d’accès aux calendriers de Cloud Calendars et la sélection du calendrier concerné. S’il reste absent, notez le compte et le calendrier en cause ; sa présence dans une app ne garantit pas le comportement de toutes les autres."
+    },
+    {
+      "q": "Cela signifie-t-il que Cloud Calendars se connecte directement à n’importe quel serveur CalDAV ?",
+      "a": "Non. Cette procédure ajoute le compte dans les réglages de l’iPhone, puis vérifie les calendriers de l’appareil accessibles à l’app. La compatibilité du fournisseur, l’authentification et les droits de modification restent à vérifier."
+    }
+  ],
+  "sourcesHeading": "Instructions officielles sur les comptes et les autorisations",
+  "sources": [
+    {
+      "label": "Apple : réglages des comptes de calendrier, configuration CalDAV et récupération des données",
+      "url": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios"
+    },
+    {
+      "label": "Apple : vérifier l’accès aux informations du calendrier",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "calendar-export-ics-pdf-and-backup"
+  ]
+}

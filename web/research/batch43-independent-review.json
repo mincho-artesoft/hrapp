@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-22",
+  "decision": "PASS English revision and complete German edition; no required corrections",
+  "files": [
+    {
+      "path": "research/batch43-week-en-proposal.json",
+      "rawSha256": "9c65950cfba1d703587be23d3734a25125592fea79944af950c3afee8a981e68"
+    },
+    {
+      "path": "research/batch43-week-before.json",
+      "rawSha256": "7f90d249e37d16c20b786eaaf86bc52c88271d618e8d31103474bc0f6584c2d3"
+    },
+    {
+      "path": "research/batch43-week-de-proposal.json",
+      "rawSha256": "89b13fe1e881e7eb79795ac9b6c602a0d465be6df7ebd87edb1260c336748e79"
+    },
+    {
+      "path": "research/batch43-discovery.json",
+      "rawSha256": "9bb8b809b65fb17b4178f52ac475ec87944ec8bb621679c01ec6144b10c1889d"
+    },
+    {
+      "path": "research/batch43-week-settings-source.json",
+      "rawSha256": "9ae38d71ba9d80872c00152848c3334723687cf64dfd775ed9cf9fd225c20614"
+    },
+    {
+      "path": "research/batch43-root-review.json",
+      "rawSha256": "4adae7cede95624daca127a0963d21ab3db1869f8f021ac13e094066abf49ad4"
+    }
+  ],
+  "readScope": "Full English before and final proposal, complete discovery/native evidence/root supplement, then entire German proposal article and embedded English comparator read without truncation. German absent at first check; review waited for actual completed file.",
+  "checks": {
+    "englishInversePreservesBefore": true,
+    "germanComparatorIsFinalEnglish": true,
+    "englishShape": {
+      "sections": 7,
+      "paragraphs": 18,
+      "practical": 7,
+      "faq": 4,
+      "sources": 4
+    },
+    "germanShape": {
+      "sections": 7,
+      "paragraphs": 18,
+      "practical": 7,
+      "faq": 4,
+      "sources": 4
+    },
+    "exactGermanSourceURLs": true,
+    "descriptions": {
+      "en": 133,
+      "de": 135
+    },
+    "dateEqual": true,
+    "claimsEmpty": true,
+    "actualGermanRelated": [
+      {
+        "slug": "month-view-on-a-bigger-screen",
+        "present": true
+      },
+      {
+        "slug": "drag-an-event-to-move-it",
+        "present": true
+      },
+      {
+        "slug": "recurring-events-without-the-mess",
+        "present": true
+      }
+    ]
+  },
+  "requiredCorrections": [],
+  "findings": [
+    "First displayed weekday, rolling start, numbered week convention and alternate date overlay are consistently separate; Monday is not advertised as ISO numbering.",
+    "Apple and Fantastical named controls remain attributed to those applications. No Cloud week-number/custom-week/dual-date feature inferred from source identifier mapping.",
+    "English new description and German Kalenderwoche describe task to check; complete context attributes controls and never promises Cloud numbered-week display.",
+    "German complete translation is coherent in du voice. English setting labels retained with explanations rather than invented localized UI. Hidschri dates and Gregorian comparison preserve source meaning.",
+    "Original overnight-shift, all-day visibility, edit permission, recurrence and weather qualifications preserved. No automatic shift-swap approval or shared availability promise.",
+    "Three German related destinations exist; missing list/room editions correctly omitted.",
+    "Source evidence concerns draft1.7.4/build16. Neither proposal introduces an exact Cloud public-menu workflow or treats public1.7.3/build12 as certified by that source."
+  ],
+  "sourceAssessment": "Supplied complete primary-read records and root fresh-read findings used, not new primary fetch by this reviewer. Source-derived additions are bounded paraphrases plus original date-comparison advice; no lengthy verbatim reconstruction identified.",
+  "limits": [
+    "Independent cross-agent semantic review, not independent native-speaker certification.",
+    "No runtime/native source verification newly performed in this review; supplied immutable evidence boundaries retained.",
+    "No draft/source/build/deploy/API changes."
+  ]
+}

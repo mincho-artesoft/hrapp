@@ -1,0 +1,15 @@
+{
+  "locale": "th",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "ปฏิทินทุกเล่มที่คุณมี — iCloud, Google, Microsoft — อยู่ในที่เดียว โดยพยากรณ์ถูกสร้างไว้ในตัววันนั้นเอง เลิกเดาว่าบ่ายนี้จะเป็นอย่างไรได้แล้ว",
+      "after": "ดูปฏิทิน iCloud และ Google ที่เลือกบน iPhone และ iPad พร้อมพยากรณ์อากาศที่มีให้ข้างแผนของคุณ Premium เพิ่มการเชื่อมต่อปฏิทิน Microsoft"
+    },
+    {
+      "path": "metaDescription",
+      "before": "ปฏิทินของคุณและพยากรณ์ อยู่ในที่เดียวกัน สร้างมาเพื่อ iPhone และ iPad iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "ปฏิทิน iCloud และ Google อากาศและวิดเจ็ตบน iPhone และ iPad ดาวน์โหลดฟรี; Premium เพิ่มปฏิทิน Microsoft และ Teams"
+    }
+  ]
+}

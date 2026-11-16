@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-22T11:19:44.480685+00:00",
+  "publicURL": "https://www.cloud-calendars.com/#store-media-title",
+  "scope": "Interim20completeddevicesets/7mediafolders; fullpipelinepending",
+  "build": {
+    "prerenderedRoutes": 587,
+    "postbuildPages": 592,
+    "initialMB": 1.14
+  },
+  "deploy": {
+    "invalidation": "I890MT8UDZQNPJF25WZIK0GLCJ",
+    "status": "Completed",
+    "indexNow": 200,
+    "sitemapURLs200": 528,
+    "llmsLinksResolved": 470,
+    "associatedDomain": "GET/HEADallaliasesPASS"
+  },
+  "privacy": {
+    "publicTextMatchesPreservedLocalBaseline": true,
+    "textSHA256": "0190b02d0ddf8806355c61a61d9d26b73dd58c3dbc947aa54f3ba118777399a7",
+    "sourceSHA256": "25ce1d341a18967caf5ef68782358b48e3fb192346ff13aa7712b1935f5b28e4"
+  },
+  "browser": "Root independently reviewing; not claimed by this agent"
+}

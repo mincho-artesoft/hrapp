@@ -1,0 +1,15 @@
+{
+  "locale": "id",
+  "changes": [
+    {
+      "path": "hero.lead",
+      "before": "Setiap kalender yang Anda punya — iCloud, Google, Microsoft — di satu tempat, dengan prakiraan tertanam di dalam harinya sendiri. Berhenti menebak seperti apa sorenya.",
+      "after": "Lihat kalender iCloud dan Google yang dipilih di iPhone dan iPad, dengan informasi cuaca yang tersedia di samping rencana Anda. Premium menambahkan koneksi kalender Microsoft."
+    },
+    {
+      "path": "metaDescription",
+      "before": "Kalender Anda dan prakiraannya, di satu tempat. Dibuat untuk iPhone dan iPad. iCloud · Google Calendar · Microsoft Calendar.",
+      "after": "Kalender iCloud dan Google, cuaca, widget di iPhone dan iPad. Unduh gratis; Premium menambahkan kalender Microsoft dan Teams."
+    }
+  ]
+}

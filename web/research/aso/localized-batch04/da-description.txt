@@ -1,0 +1,19 @@
+Se arbejdsplaner, private aftaler og vejret på din iPhone og iPad med Cloud Calendars.
+
+KALENDERE OG VISNINGER
+Brug iCloud-kalendere, og tilslut Google Kalender. Premium tilføjer understøttelse af Microsoft-kalendere. Vælg dags-, uge-, måneds-, års- eller listevisning.
+
+Du kan også oprette en lokal kalender på enheden uden en Cloud Calendars-konto. Tilslutning til tjenester og deling kan kræve login.
+
+VEJR, WIDGETS OG DELING
+Se vejrudsigten, mens du planlægger. Widgets til hjemmeskærmen findes i små, mellemstore og store størrelser. Tilgængelige prognoser afhænger af placering og vejrudbyder. Del begivenheder og kalendere, og send invitationer via e-mail, QR-kode eller App Clip. Adgang afhænger af kalenderen og invitationstypen.
+
+VÆLG DIT ABONNEMENT
+Gratisplanen Base omfatter synkronisering med Google Kalender, Google Meet, forskellige kalendervisninger, vejr og widgets.
+Advanced indeholder Base-funktionerne og fjerner reklamer.
+Premium indeholder Advanced og tilføjer Microsoft-kalendere og Microsoft Teams.
+
+Appen er gratis at hente med valgfrie abonnementer, der fornyes automatisk. Kontrollér den aktuelle lokale pris og faktureringsperiode i appen eller App Store, før du abonnerer. Abonnementet fornyes, medmindre du opsiger det mindst 24 timer før periodens udløb. Administrer eller opsig det i indstillingerne for din App Store-konto.
+
+Privatliv: https://www.cloud-calendars.com/privacy-policy
+Brugsbetingelser: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

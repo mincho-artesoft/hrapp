@@ -1,0 +1,93 @@
+{
+  "status": "proposal_only_not_applied",
+  "locale": "pl",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "0ff8556b-b5db-46d8-bca3-c6f2c92af369",
+  "versionLocalizationId": "0bc52ccb-22c8-4b17-af7c-6783c1bd3428",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Kalendarz",
+      "characters": 26,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Pogoda, terminy i widżety",
+      "characters": 25,
+      "utf8Bytes": 26,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "planer,agenda,tydzień,miesiąc,przypomnienie,spotkanie,wydarzenie,udostępnianie,zaproszenie,prognoza",
+      "characters": 99,
+      "utf8Bytes": 102,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Plany i pogoda w jednym miejscu. Korzystaj z widżetów i różnych widoków albo zacznij od lokalnego kalendarza bez konta w aplikacji.",
+      "characters": 131,
+      "utf8Bytes": 136,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Połącz kalendarze i pogodę na iPhonie i iPadzie. W Cloud Calendars możesz przeglądać plany zawodowe i prywatne podczas organizowania dnia.\n\nKALENDARZE I WIDOKI\nKorzystaj z kalendarzy iCloud i połącz Kalendarz Google. Premium dodaje obsługę kalendarzy Microsoft. Wybierz widok dnia, tygodnia, miesiąca, roku lub listy.\n\nMożesz też utworzyć lokalny kalendarz na urządzeniu bez konta Cloud Calendars. Łączenie usług i udostępnianie mogą wymagać zalogowania.\n\nPOGODA I WIDŻETY\nSprawdzaj prognozę podczas planowania. Widżety na ekran początkowy są dostępne w małym, średnim i dużym rozmiarze. Dostępność prognoz zależy od lokalizacji i dostawcy danych pogodowych.\n\nSPOTKANIA I UDOSTĘPNIANIE\nKorzystaj z Google Meet z Kalendarzem Google. Premium obsługuje także Microsoft Teams. Udostępniaj wydarzenia i kalendarze oraz wysyłaj zaproszenia przez e-mail, kod QR lub App Clip. Uprawnienia zależą od kalendarza i rodzaju zaproszenia.\n\nWYBIERZ PLAN\nBezpłatny Base obejmuje synchronizację z Kalendarzem Google, Google Meet, różne widoki kalendarza, pogodę i widżety.\nAdvanced zawiera funkcje Base i usuwa reklamy.\nPremium zawiera Advanced oraz dodaje kalendarze Microsoft i Microsoft Teams.\n\nPrzed zakupem sprawdź aktualną cenę lokalną i okres rozliczeniowy w aplikacji lub App Store.\n\nAplikację można pobrać bezpłatnie. Opcjonalne subskrypcje odnawiają się automatycznie, chyba że anulujesz je co najmniej 24 godziny przed końcem bieżącego okresu. Subskrypcją możesz zarządzać lub ją anulować w ustawieniach konta App Store.\n\nPrywatność: https://www.cloud-calendars.com/privacy-policy\nWarunki użytkowania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1661,
+      "utf8Bytes": 1731,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "pl",
+      "name": "Cloud Calendars: Kalendarz",
+      "subtitle": "Wszystkie kalendarze razem",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planuj dzień z kalendarzem i pogodą razem\n\nCloud Calendars łączy Twoje kalendarze i pogodę w jedno pięknie zorganizowane środowisko do planowania.\n\nZarządzaj kalendarzami iCloud, Google Calendar i Microsoft w jednej aplikacji, przeglądając prognozy bezpośrednio w harmonogramie, widżetach i widokach planowania.\n\nPrzygotuj się na spotkania, podróże, odbieranie dzieci ze szkoły, aktywności na zewnątrz i intensywne dni dzięki widokom kalendarza zaprojektowanym do szybszego planowania.\n\nWIDŻETY EKRANU POCZĄTKOWEGO\n\nDodaj piękne widżety łączące:\n• Wydarzenia kalendarza\n• Prognozy pogody\n• Nadchodzący harmonogram\n• Fazę Księżyca i warunki\n• Wiatr i temperaturę\n• Przegląd dziennego planu\n\nWybierz spośród wielu stylów widżetów, aby zobaczyć swój dzień bezpośrednio na ekranie początkowym.\n\nDLACZEGO CLOUD CALENDARS\n\n• Wyświetlaj razem kalendarze iCloud, Google Calendar i Microsoft\n• Planuj z wbudowanymi prognozami pogody\n• Korzystaj z pięknych widżetów ekranu początkowego\n• Naturalnie przeciągaj, przenoś i zmieniaj czas trwania wydarzeń\n• Twórz linki Google Meet i Microsoft Teams\n• Przełączaj widoki Dnia, Tygodnia, Miesiąca, Roku i Listy\n• Zarządzaj kalendarzami służbowymi i prywatnymi w jednym miejscu\n\nFUNKCJE\n\nWszystkie kalendarze razem\nPołącz kalendarze iCloud, Google Calendar i Microsoft oraz zarządzaj nimi w jednym przejrzystym, oznaczonym kolorami środowisku.\n\nPogoda wbudowana w kalendarz\nPrzeglądaj prognozy godzinowe i dzienne bezpośrednio podczas planowania, w tym temperaturę, warunki, fazę Księżyca, wiatr i ikony pogody.\n\nWidżety kalendarza i pogody\nWyświetlaj harmonogram i pogodę natychmiast w konfigurowalnych widżetach ekranu początkowego.\n\nWiele widoków kalendarza\nWybierz widok Dnia, Tygodnia, Miesiąca, Roku lub Listy zależnie od sposobu planowania czasu.\n\nŁatwa edycja wydarzeń\nStukaj, przeciągaj i zmieniaj czas trwania wydarzeń bezpośrednio w kalendarzu, aby planować szybko i naturalnie.\n\nOsobny widok pogody\nPrzeglądaj szczegółowe prognozy z warunkami godzinowymi i przydatnymi informacjami do planowania.\n\nTwórz wydarzenia z prognoz\nStuknij godzinę prognozy, aby natychmiast utworzyć nowe wydarzenie o wybranej porze.\n\nWbudowane linki do spotkań\nSzybko dodawaj linki Google Meet i Microsoft Teams do wydarzeń.\n\nIDEALNE DO\n\n• Zarządzania kalendarzem służbowym i prywatnym\n• Planowania z uwzględnieniem pogody\n• Aktywności na zewnątrz i podróży\n• Intensywnych harmonogramów i planowania rodzinnego\n• Użytkowników Google Calendar i iCloud\n• Użytkowników kalendarza Microsoft\n\nWypróbuj Cloud Calendars i ułatw sobie planowanie każdego dnia.\n\nINFORMACJE O SUBSKRYPCJI\n\nCloud Calendars oferuje automatycznie odnawiane subskrypcje.\n\nPlan bezpłatny\n• Synchronizacja Google Calendar\n• Wiele widoków kalendarza\n• Funkcje pogody\n• Widżety\n• Obsługa Google Meet\n\nPłatność zostanie pobrana z konta Apple ID po potwierdzeniu zakupu. Subskrypcje odnawiają się automatycznie, chyba że zostaną anulowane co najmniej 24 godziny przed końcem bieżącego okresu. Opłata za odnowienie zostanie pobrana w ciągu 24 godzin przed końcem bieżącego okresu. Subskrypcjami można zarządzać i je anulować w ustawieniach konta App Store.\n\nPolityka prywatności: https://www.cloud-calendars.com/privacy-policy\nWarunki użytkowania: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "pl",
+      "keywords": "pogoda,widżet,harmonogram,planer,agenda,prognoza,iCloud,wydarzenia,praca,ekran blokady,deszcz,dziś",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact tokens only; compounds, inflections and CJK segmentation require linguistic judgment. UTF-8 bytes reported separately, no forced byte cap."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium",
+  "caveat": "Model-authored localized proposals, no native-speaker review or ASC write validation. Confirm tier names match shipping UI. No popularity/rank claim.",
+  "evidence": [
+    "../../product-facts.json",
+    "../localized-batch02/validation.json",
+    "asc-current.json"
+  ],
+  "applyOnly": [
+    "subtitle",
+    "keywords",
+    "promotionalText",
+    "description"
+  ],
+  "preserve": [
+    "name",
+    "release notes",
+    "URLs",
+    "privacy declarations",
+    "screenshots",
+    "other locales"
+  ]
+}

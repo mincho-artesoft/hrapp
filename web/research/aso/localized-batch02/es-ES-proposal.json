@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "status": "proposal_only_not_applied",
+  "locale": "es-ES",
+  "appId": "6744690319",
+  "targetVersion": "1.7.4",
+  "targetState": "PREPARE_FOR_SUBMISSION",
+  "appInfoLocalizationId": "4cb37d87-cc8f-4944-90f8-7f0782c021fa",
+  "versionLocalizationId": "00a6748f-cdd1-4679-84bc-ac1e461426a0",
+  "nameAction": "preserve_exact_current_draft_name",
+  "fields": {
+    "name": {
+      "value": "Cloud Calendars: Calendario",
+      "characters": 27,
+      "utf8Bytes": 27,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "subtitle": {
+      "value": "Tiempo, agenda y widgets",
+      "characters": 24,
+      "utf8Bytes": 24,
+      "characterLimit": 30,
+      "withinCharacterLimit": true
+    },
+    "keywords": {
+      "value": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,previsión,citas",
+      "characters": 96,
+      "utf8Bytes": 99,
+      "characterLimit": 100,
+      "withinCharacterLimit": true
+    },
+    "promotionalText": {
+      "value": "Consulta tus planes y el tiempo en un mismo lugar. Prueba los widgets y las distintas vistas, o crea un calendario local sin una cuenta en la app.",
+      "characters": 146,
+      "utf8Bytes": 146,
+      "characterLimit": 170,
+      "withinCharacterLimit": true
+    },
+    "description": {
+      "value": "Reúne tus calendarios y el tiempo en tu iPhone y iPad. Consulta tus planes de trabajo y personales con Cloud Calendars para organizar el día.\n\nTUS CALENDARIOS, DISTINTAS VISTAS\nUtiliza calendarios de iCloud y conecta Google Calendar. Premium añade compatibilidad con calendarios de Microsoft. Elige entre las vistas de día, semana, mes, año y lista.\n\nTambién puedes crear un calendario local en el dispositivo sin una cuenta de Cloud Calendars. Para conectar servicios y compartir contenido puede ser necesario iniciar sesión.\n\nEL TIEMPO Y LOS WIDGETS\nConsulta la previsión mientras organizas tus actividades. Los widgets para la pantalla de inicio están disponibles en tamaño pequeño, mediano y grande. Las previsiones disponibles dependen de la ubicación y del proveedor meteorológico.\n\nREUNIONES E INVITACIONES\nUtiliza Google Meet con Google Calendar. Premium también admite Microsoft Teams. Comparte eventos y calendarios y envía invitaciones por correo electrónico, código QR o App Clip. Los permisos dependen del calendario y del tipo de invitación.\n\nELIGE TU PLAN\nBase es gratuito e incluye sincronización con Google Calendar, Google Meet, distintas vistas de calendario, el tiempo y widgets.\nAdvanced incluye las funciones de Base y elimina los anuncios.\nPremium incluye Advanced y añade calendarios de Microsoft y Microsoft Teams.\n\nLa descarga es gratuita y hay suscripciones opcionales con renovación automática. Consulta los precios actuales en la app o el App Store. El pago se carga a tu cuenta de Apple al confirmar la compra. La suscripción se renueva automáticamente salvo que la canceles al menos 24 horas antes de que termine el periodo actual. El cobro de la renovación se realiza en las 24 horas anteriores al final del periodo. Puedes gestionar o cancelar la suscripción en los ajustes de tu cuenta del App Store.\n\nPrivacidad: https://www.cloud-calendars.com/privacy-policy\nCondiciones de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "characters": 1980,
+      "utf8Bytes": 2006,
+      "characterLimit": 4000,
+      "withinCharacterLimit": true
+    }
+  },
+  "current": {
+    "appInfo": {
+      "locale": "es-ES",
+      "name": "Cloud Calendars: Calendario",
+      "subtitle": "Todos tus calendarios en uno",
+      "privacyPolicyUrl": "https://www.cloud-calendars.com/privacy-policy",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "version": {
+      "description": "Planifica tu día con calendario y tiempo juntos\n\nCloud Calendars combina tus calendarios y el tiempo en una experiencia de planificación bonita y organizada.\n\nGestiona los calendarios de iCloud, Google Calendar y Microsoft en una sola app y consulta las previsiones directamente en tu horario, widgets y vistas de planificación.\n\nAnticípate a reuniones, viajes, recogidas del colegio, actividades al aire libre y días ajetreados con vistas de calendario diseñadas para planificar más rápido.\n\nWIDGETS DE LA PANTALLA DE INICIO\n\nAñade preciosos widgets que combinan:\n• Eventos del calendario\n• Previsiones meteorológicas\n• Próximo horario\n• Fase lunar y condiciones\n• Viento y temperatura\n• Resumen de la agenda diaria\n\nElige entre varios estilos de widget para ver tu día directamente desde la pantalla de inicio.\n\nPOR QUÉ CLOUD CALENDARS\n\n• Consulta juntos los calendarios de iCloud, Google Calendar y Microsoft\n• Planifica con previsiones meteorológicas integradas\n• Usa bonitos widgets en la pantalla de inicio\n• Arrastra, mueve y cambia la duración de los eventos de forma natural\n• Crea enlaces de Google Meet y Microsoft Teams\n• Cambia entre las vistas Día, Semana, Mes, Año y Lista\n• Gestiona calendarios laborales y personales en un solo lugar\n\nFUNCIONES\n\nTodos tus calendarios juntos\nConecta y gestiona calendarios de iCloud, Google Calendar y Microsoft en una experiencia limpia y codificada por colores.\n\nEl tiempo integrado en tu calendario\nConsulta previsiones horarias y diarias directamente durante la planificación, incluida la temperatura, las condiciones, la fase lunar, el viento y los iconos del tiempo.\n\nWidgets de calendario y tiempo\nConsulta al instante tu horario y el tiempo desde widgets personalizables de la pantalla de inicio.\n\nVarias vistas de calendario\nElige la vista Día, Semana, Mes, Año o Lista según cómo planifiques tu tiempo.\n\nEdición sencilla de eventos\nToca, arrastra y cambia la duración de los eventos directamente en el calendario para programar de forma rápida y natural.\n\nVista meteorológica dedicada\nExplora previsiones detalladas con condiciones horarias e información útil para planificar.\n\nCrea eventos desde las previsiones\nToca una hora de la previsión para crear al instante un nuevo evento a la hora seleccionada.\n\nEnlaces de reunión integrados\nAñade rápidamente enlaces de Google Meet y Microsoft Teams a los eventos.\n\nPERFECTO PARA\n\n• Gestión de calendarios laborales y personales\n• Planificación teniendo en cuenta el tiempo\n• Actividades al aire libre y viajes\n• Horarios ajetreados y planificación familiar\n• Usuarios de Google Calendar e iCloud\n• Usuarios de calendarios Microsoft\n\nPrueba Cloud Calendars y facilita la planificación de cada día.\n\nINFORMACIÓN DE LA SUSCRIPCIÓN\n\nCloud Calendars ofrece suscripciones con renovación automática.\n\nPlan gratuito\n• Sincronización de Google Calendar\n• Varias vistas de calendario\n• Funciones meteorológicas\n• Widgets\n• Compatibilidad con Google Meet\n\nEl pago se cargará en tu cuenta de Apple ID al confirmar la compra. Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo actual. La renovación se cargará en tu cuenta durante las 24 horas anteriores al final del periodo actual. Puedes gestionar y cancelar las suscripciones en los ajustes de tu cuenta del App Store.\n\nPolítica de privacidad: https://www.cloud-calendars.com/privacy-policy\nCondiciones de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+      "locale": "es-ES",
+      "keywords": "tiempo,widget,horario,planificador,agenda,previsión,iCloud,eventos,viajes,pantalla de bloqueo,lluvia",
+      "marketingUrl": "https://www.cloud-calendars.com/",
+      "promotionalText": null,
+      "supportUrl": "https://www.cloud-calendars.com/",
+      "whatsNew": null
+    }
+  },
+  "keywordChecks": {
+    "exactDuplicateKeywords": false,
+    "exactTitleSubtitleTokenDuplicates": [],
+    "note": "Exact Unicode token check only. Japanese/Korean segmentation and grammatical forms require linguistic judgment. Keywords use actual localized terms; no provider trademarks added to keyword field. UTF-8 bytes reported, not treated as a rejection threshold."
+  },
+  "readiness": "ready_for_editorial_review_not_applied",
+  "translationConfidence": "medium-high",
+  "translationCaveat": "Model-authored localization; no native-speaker review or live ASC validation performed. Brand and tier names preserved. Confirm localized tier labels match shipping UI before submission.",
+  "evidence": [
+    "../../product-facts.json",
+    "../english-applied-20261021.json",
+    "asc-current-20261021.json"
+  ],
+  "claims": "Supported features only. No standalone Lock Screen widget, blanket Exchange, forecast-duration, privacy guarantee, superiority, search-volume or ranking claim. Sharing permissions and sign-in qualified.",
+  "mutationPolicy": "Do not change name, URLs, privacy fields, release notes, screenshots or other locales as part of applying these four proposed fields."
+}

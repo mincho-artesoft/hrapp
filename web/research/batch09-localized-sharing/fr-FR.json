@@ -1,0 +1,97 @@
+{
+  "sharing-one-event-not-your-calendar": {
+    "updated": "2026-10-21",
+    "title": "Partager un événement : choisir le lien et les droits adaptés",
+    "short": "Partager un événement",
+    "description": "Partagez un événement sans partager tout votre calendrier. Distinguez les accès Reader, Writer et Owner, les aperçus, les mises à jour et les limites de la révocation.",
+    "lede": "Transmettre les détails d’un dîner, autoriser un coorganisateur à modifier un événement et recueillir des réponses de présence sont trois tâches différentes. Définissez votre besoin avant de choisir le mode de partage. Ce guide est rédigé par Arte Soft, développeur de Cloud Calendars.",
+    "commonBelief": "Tous les liens d’événement seraient des abonnements en lecture seule, mis à jour immédiatement et enregistrant une réponse.",
+    "sections": [
+      {
+        "heading": "Commencer par vérifier les détails de l’événement",
+        "body": [
+          "Le partage d’un événement porte sur cet événement, et non sur tout le calendrier de l’expéditeur. Avant l’envoi, vérifiez le titre, le fuseau horaire, le lieu, les notes et les éventuels liens de réunion. Une information utile à un invité n’a pas forcément sa place dans un lien largement diffusé.",
+          "Partager un dîner ne nécessite pas de partager le calendrier de vos rendez-vous médicaux. Le lieu et les liens du dîner restent toutefois inclus dans l’événement partagé. Vérifiez son contenu plutôt que de vous fier à la confidentialité du calendrier qui l’entoure."
+        ]
+      },
+      {
+        "heading": "Choisir un aperçu, une invitation par e-mail ou un code QR",
+        "body": [
+          "Cloud Calendars propose plusieurs modes de partage. Son App Clip affiche un aperçu ; l’application complète est nécessaire pour ajouter l’événement depuis ce parcours. Les invitations par e-mail et code QR passent par une page web proposant d’ouvrir Cloud Calendars. Ces liens ne sont pas des URL d’abonnement interchangeables.",
+          "L’expéditeur se connecte pour utiliser le partage synchronisé de l’application. Un lien ou un code QR peut être transféré : envoyez-le uniquement à un public auquel son contenu convient. Le code QR transmet un lien ; il ne prouve pas l’identité de la personne qui l’ouvre."
+        ]
+      },
+      {
+        "heading": "Accorder uniquement les droits nécessaires",
+        "body": [
+          "Les invitations par e-mail permettent de choisir Reader, Writer ou Owner. Reader peut consulter et synchroniser ; Writer peut modifier ; Owner peut aussi partager et gérer les accès. Ces rôles ont des conséquences différentes. Choisissez Reader pour quelqu’un qui a seulement besoin du programme.",
+          "Choisissez Writer pour un coorganisateur chargé de modifier l’événement. Réservez Owner à une personne qui doit aussi gérer l’accès des autres. Le destinataire doit utiliser l’identité connectée appropriée pour recevoir des droits étendus. Un destinataire anonyme n’est pas un copropriétaire identifié."
+        ]
+      },
+      {
+        "heading": "Comprendre comment le destinataire ajoute l’événement",
+        "body": [
+          "Dans l’application complète, l’ajout d’un événement partagé exige l’autorisation d’accéder aux calendriers et un calendrier de destination modifiable. Le destinataire doit vérifier cette destination avant d’enregistrer. La copie reçue peut ensuite être associée à l’événement partagé pour les mises à jour ultérieures.",
+          "Ce mécanisme diffère de l’importation d’un fichier ICS ordinaire dans un autre calendrier. L’importation crée une copie, tandis qu’un abonnement consulte périodiquement un flux. Si vous envoyez un flux ICS plutôt qu’une invitation de l’application, expliquez-le et vérifiez sa compatibilité avec le calendrier du destinataire."
+        ]
+      },
+      {
+        "heading": "Vérifier les modifications avant de s’y fier",
+        "body": [
+          "Un partage synchronisé peut transmettre des modifications ou une annulation, mais l’appareil du destinataire doit pouvoir les recevoir. Une indication de fréquence d’actualisation n’est pas un délai de livraison garanti. Un appareil hors ligne, un abonnement non actualisé ou une copie importée indépendante peuvent encore afficher d’anciennes informations.",
+          "Si l’heure du dîner change au dernier moment, modifiez l’événement et contactez directement les invités. Demandez-leur de confirmer la nouvelle heure. Envoyer une mise à jour et obtenir une réponse de présence sont deux démarches distinctes."
+        ]
+      },
+      {
+        "heading": "Gérer l’accès sans promettre l’effacement des copies",
+        "body": [
+          "Vérifiez les droits des destinataires et retirez ceux qui ne sont plus nécessaires. Supprimer l’accès d’une personne et révoquer un lien de flux sont deux opérations distinctes. Aucune ne doit être présentée comme effaçant à distance les captures d’écran, messages ou toutes les copies du calendrier.",
+          "Si un lien a circulé au-delà du public prévu, identifiez le lien ou l’autorisation concerné. Vérifiez le parcours affecté après la modification des accès. Pour les événements futurs, évitez les détails privés dans les liens largement diffusés plutôt que de compter sur une révocation ultérieure pour les récupérer."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Vérifiez les détails et choisissez entre consultation, modification et réponses de présence.",
+      "Choisissez le mode de partage voulu et connectez-vous si nécessaire.",
+      "Utilisez Reader pour consulter ; réservez Writer et Owner aux responsabilités correspondantes.",
+      "Demandez au destinataire de vérifier l’heure et le calendrier de destination lors de l’ajout.",
+      "Pour un changement urgent, modifiez l’événement et envoyez un message direct.",
+      "À la fin du partage, examinez séparément les droits des destinataires et l’accès par lien."
+    ],
+    "faq": [
+      {
+        "q": "Partager un événement expose-t-il tout mon calendrier ?",
+        "a": "Le partage synchronisé d’un seul événement porte sur cet événement. Il transmet néanmoins ses propres détails par le parcours choisi. Vérifiez-les et n’envoyez pas une invitation à tout le calendrier si vous voulez partager un seul événement."
+      },
+      {
+        "q": "Le destinataire peut-il modifier l’événement ?",
+        "a": "Oui, avec les droits Writer ou Owner appropriés et le parcours connecté pris en charge. Reader permet la consultation et la synchronisation. Un abonnement ICS ordinaire n’offre pas le même mécanisme de modification."
+      },
+      {
+        "q": "Retirer une personne annule-t-il tout ce qu’elle a reçu ?",
+        "a": "Il ne faut pas supposer une telle garantie. La modification des droits agit sur la relation de partage prise en charge, mais des copies enregistrées, captures d’écran et messages peuvent subsister. Une URL de flux partagé doit aussi être examinée séparément."
+      }
+    ],
+    "sourcesHeading": "Références sur les options du destinataire",
+    "sources": [
+      {
+        "label": "Apple : présentation des App Clips",
+        "url": "https://developer.apple.com/help/app-store-connect/offer-app-clip-experiences/overview-of-app-clips/"
+      },
+      {
+        "label": "Google : importation d’événements et limites",
+        "url": "https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en"
+      },
+      {
+        "label": "Microsoft : importer un calendrier ou s’y abonner",
+        "url": "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web"
+      }
+    ],
+    "seeAlso": [
+      "keeping-track-of-who-replied",
+      "who-can-see-what-in-google-calendar",
+      "what-guests-can-do-to-your-event"
+    ]
+  }
+}

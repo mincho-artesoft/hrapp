@@ -1,0 +1,198 @@
+{
+  "slug": "what-guests-can-do-to-your-event",
+  "source": "src/app/content/en-US/articles-google.ts",
+  "sourceObjectSha256": "26bf2bfe46711965d0528b91dbeb76a8b1f04736a49d32443fb8210b917b34ed",
+  "datePreserved": "2026-10-21",
+  "count": 10,
+  "format": "Individual LocalisedArticle JSON objects",
+  "validation": "Passed exact top-level field shape, duplicate-key rejection, 6 sections/12 paragraphs/6 steps/3 FAQs, descriptions under 160 characters, exact source URLs/date/empty claims, developer disclosure and locale-available related routes",
+  "meaningReview": [
+    "Modify event is broad management permission, not only suggesting a time.",
+    "Invite others and see guests remain separate controls from editing and calendar access.",
+    "Defaults exist; no retroactive change to existing invitations is assumed.",
+    "Reader viewing/sync, Writer editing, Owner sharing/access with invited identity remain separate from Google guest switches.",
+    "Sharing receipt is not attendance RSVP.",
+    "No immediate-update, universal edit, pricing or deletion guarantees added."
+  ],
+  "reviewCaveats": "Own model translations; no native-speaker certification. Arabic/Hebrew rendering not previewed. Exact English UI labels retained rather than invented localized labels.",
+  "scope": "Only requested research output files; no source integration, build, deploy or native changes; no paid translation API. Generation intermediate removed after validation.",
+  "locales": [
+    {
+      "locale": "de-DE",
+      "descriptionCharacters": 140,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "keeping-track-of-who-replied"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7357,
+      "sha256": "93a9a61a673e9cee0b6a6ec25869a8de56caad8887a21b72d8e3ff5202bb47d4",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "es-ES",
+      "descriptionCharacters": 136,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "keeping-track-of-who-replied"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7051,
+      "sha256": "acb6866b67ada43de42bbb9e64dbfba6fea4771d2e67d038478fba2f208aa580",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "fr-FR",
+      "descriptionCharacters": 145,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar",
+        "keeping-track-of-who-replied"
+      ],
+      "omittedRelatedSlugs": [],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 7460,
+      "sha256": "d0f5a0d657f403700ca654717ecc28f1d1f04ecfc7a68b0779dd25927f9851f5",
+      "translationConfidence": "medium-high"
+    },
+    {
+      "locale": "da",
+      "descriptionCharacters": 140,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6648,
+      "sha256": "95c77d121a219955d7760d2e38fab66fbf0ea727bef18c1f43071462e11feeb5",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "bg",
+      "descriptionCharacters": 135,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 10657,
+      "sha256": "9dfe64094cdb06ddb4374aaf19fb20c07e73e09f5a7f719b569c756701682449",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "cs",
+      "descriptionCharacters": 128,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6518,
+      "sha256": "ad52ca5a7afdae1d09521fe79047ca0d9811f364debf033328e2e313c05a10c3",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "fi",
+      "descriptionCharacters": 131,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 6573,
+      "sha256": "915b72eea67afb82855c85a2111e3ad7d7d798be96ae969186549724bb09207f",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "el",
+      "descriptionCharacters": 127,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 11088,
+      "sha256": "74e4ce322384cf82c579cf38ff98b14729fc3ec0e8434daf2d2d5982c33ca3e9",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "ar-SA",
+      "descriptionCharacters": 129,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8396,
+      "sha256": "6bb466aa3c965d77de716ff12bc3ae83841538057b654f66c7d144fefe0a946a",
+      "translationConfidence": "medium"
+    },
+    {
+      "locale": "he",
+      "descriptionCharacters": 115,
+      "seeAlso": [
+        "who-can-see-what-in-google-calendar",
+        "sharing-one-event-not-your-calendar"
+      ],
+      "omittedRelatedSlugs": [
+        "keeping-track-of-who-replied"
+      ],
+      "sections": 6,
+      "paragraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "bytes": 8012,
+      "sha256": "1e9a9670ee62cfb01b61e6a63ffc9aff76eeb168250f0170457b3bd5141468e7",
+      "translationConfidence": "medium"
+    }
+  ]
+}

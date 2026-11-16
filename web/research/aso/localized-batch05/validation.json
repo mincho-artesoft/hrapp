@@ -1,0 +1,287 @@
+{
+  "retrievedAt": "2026-10-21T16:59:23.912800+00:00",
+  "prepared": 10,
+  "applied": 0,
+  "locales": [
+    {
+      "locale": "en-GB",
+      "name": "Cloud Calendars: Sync & Widget",
+      "subtitle": "Google, Microsoft & iCloud",
+      "counts": {
+        "name": {
+          "characters": 30,
+          "utf8Bytes": 30
+        },
+        "subtitle": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "characters": 97,
+          "utf8Bytes": 97
+        },
+        "promotionalText": {
+          "characters": 136,
+          "utf8Bytes": 136
+        },
+        "description": {
+          "characters": 1469,
+          "utf8Bytes": 1469
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "en-CA",
+      "name": "Cloud Calendars: Sync & Widget",
+      "subtitle": "Google, Microsoft & iCloud",
+      "counts": {
+        "name": {
+          "characters": 30,
+          "utf8Bytes": 30
+        },
+        "subtitle": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "characters": 100,
+          "utf8Bytes": 100
+        },
+        "promotionalText": {
+          "characters": 148,
+          "utf8Bytes": 148
+        },
+        "description": {
+          "characters": 1469,
+          "utf8Bytes": 1469
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "en-AU",
+      "name": "Cloud Calendars: Sync & Widget",
+      "subtitle": "Google, Microsoft & iCloud",
+      "counts": {
+        "name": {
+          "characters": 30,
+          "utf8Bytes": 30
+        },
+        "subtitle": {
+          "characters": 26,
+          "utf8Bytes": 26
+        },
+        "keywords": {
+          "characters": 95,
+          "utf8Bytes": 95
+        },
+        "promotionalText": {
+          "characters": 137,
+          "utf8Bytes": 137
+        },
+        "description": {
+          "characters": 1469,
+          "utf8Bytes": 1469
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "es-MX",
+      "name": "Cloud Calendars: Calendario",
+      "subtitle": "Clima, agenda y widgets",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "subtitle": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "keywords": {
+          "characters": 97,
+          "utf8Bytes": 100
+        },
+        "promotionalText": {
+          "characters": 140,
+          "utf8Bytes": 140
+        },
+        "description": {
+          "characters": 1710,
+          "utf8Bytes": 1732
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "fr-CA",
+      "name": "Cloud Calendars: Agenda",
+      "subtitle": "Météo, rendez-vous et widgets",
+      "counts": {
+        "name": {
+          "characters": 23,
+          "utf8Bytes": 23
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 31
+        },
+        "keywords": {
+          "characters": 100,
+          "utf8Bytes": 104
+        },
+        "promotionalText": {
+          "characters": 139,
+          "utf8Bytes": 146
+        },
+        "description": {
+          "characters": 1772,
+          "utf8Bytes": 1820
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "el",
+      "name": "Cloud Calendars: Ημερολόγιο",
+      "subtitle": "Καιρός, ραντεβού και widget",
+      "counts": {
+        "name": {
+          "characters": 27,
+          "utf8Bytes": 37
+        },
+        "subtitle": {
+          "characters": 27,
+          "utf8Bytes": 44
+        },
+        "keywords": {
+          "characters": 91,
+          "utf8Bytes": 173
+        },
+        "promotionalText": {
+          "characters": 151,
+          "utf8Bytes": 273
+        },
+        "description": {
+          "characters": 1704,
+          "utf8Bytes": 2848
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "hr",
+      "name": "Cloud Calendars: Kalendar",
+      "subtitle": "Vrijeme, sastanci i widgeti",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 25
+        },
+        "subtitle": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "keywords": {
+          "characters": 85,
+          "utf8Bytes": 86
+        },
+        "promotionalText": {
+          "characters": 135,
+          "utf8Bytes": 138
+        },
+        "description": {
+          "characters": 1529,
+          "utf8Bytes": 1552
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "sk",
+      "name": "Cloud Calendars: Kalendár",
+      "subtitle": "Počasie, stretnutia a widgety",
+      "counts": {
+        "name": {
+          "characters": 25,
+          "utf8Bytes": 26
+        },
+        "subtitle": {
+          "characters": 29,
+          "utf8Bytes": 30
+        },
+        "keywords": {
+          "characters": 83,
+          "utf8Bytes": 93
+        },
+        "promotionalText": {
+          "characters": 130,
+          "utf8Bytes": 140
+        },
+        "description": {
+          "characters": 1494,
+          "utf8Bytes": 1585
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "sl-SI",
+      "name": "Cloud Calendars: Koledar",
+      "subtitle": "Vreme, sestanki in gradniki",
+      "counts": {
+        "name": {
+          "characters": 24,
+          "utf8Bytes": 24
+        },
+        "subtitle": {
+          "characters": 27,
+          "utf8Bytes": 27
+        },
+        "keywords": {
+          "characters": 79,
+          "utf8Bytes": 80
+        },
+        "promotionalText": {
+          "characters": 133,
+          "utf8Bytes": 137
+        },
+        "description": {
+          "characters": 1542,
+          "utf8Bytes": 1566
+        }
+      },
+      "ready": true
+    },
+    {
+      "locale": "ru",
+      "name": "Cloud Calendars: Календарь",
+      "subtitle": "Погода, встречи и виджеты",
+      "counts": {
+        "name": {
+          "characters": 26,
+          "utf8Bytes": 35
+        },
+        "subtitle": {
+          "characters": 25,
+          "utf8Bytes": 46
+        },
+        "keywords": {
+          "characters": 94,
+          "utf8Bytes": 178
+        },
+        "promotionalText": {
+          "characters": 133,
+          "utf8Bytes": 245
+        },
+        "description": {
+          "characters": 1608,
+          "utf8Bytes": 2700
+        }
+      },
+      "ready": true
+    }
+  ]
+}

@@ -1,0 +1,681 @@
+import type { LocalisedArticle } from '../types';
+
+export const PRIORITY_VI: Readonly<Record<string, LocalisedArticle>> = {
+  "forecast-beside-every-event": {
+    "title": "Kiểm tra thời tiết theo giờ cho một sự kiện lịch trên iPhone và iPad",
+    "short": "Thời tiết theo giờ diễn ra sự kiện",
+    "description": "Đối chiếu địa điểm, ngày và các giờ của sự kiện với dự báo thời tiết hiện có.",
+    "lede": "Để kiểm tra thời tiết cho một sự kiện lịch, hãy khớp ba yếu tố: địa điểm diễn ra, ngày theo giờ địa phương của sự kiện và khoảng thời gian từ bắt đầu đến kết thúc. Trong Cloud Calendars, hãy chọn địa điểm thời tiết và xem các giờ hiện có. Địa chỉ của một sự kiện và một biểu tượng thời tiết gần đó, tự chúng, không phải là bằng chứng rằng các yếu tố này khớp nhau. Hướng dẫn này do Arte Soft, nhà phát triển, xuất bản.",
+    "commonBelief": "Nghĩ rằng biểu tượng thời tiết hằng ngày trên lịch cũng chính là tính năng dự báo gắn với một sự kiện.",
+    "sections": [
+      {
+        "heading": "Bắt đầu với địa điểm và ngày",
+        "body": [
+          "Mở dự báo cho địa điểm dự kiến và đối chiếu ngày của dự báo với mục trên lịch. Thời tiết trên lịch có thể phản ánh địa điểm thời tiết đang được chọn, vì vậy hãy kiểm tra xem địa điểm đó có phù hợp với sự kiện hay không, thay vì cho rằng địa chỉ sự kiện sẽ tự quyết định điều này.",
+          "Một sự kiện vào tháng sau có thể đã tồn tại trước khi có dữ liệu thời tiết cho ngày đó. Hãy giữ nguyên sự kiện và quay lại xem dự báo khi gần đến ngày hơn; việc chưa có thông tin thời tiết không có nghĩa là trời quang."
+        ]
+      },
+      {
+        "heading": "Dùng chi tiết theo giờ cho câu hỏi theo giờ",
+        "body": [
+          "Tóm tắt theo ngày và dự báo theo giờ trả lời hai câu hỏi khác nhau. Nếu sự kiện diễn ra từ hai giờ đến năm giờ, hãy xem các khung giờ hiện có bao phủ khoảng đó thay vì coi một biểu tượng thời tiết trong ngày là toàn bộ bức tranh.",
+          "Nếu chỉ có dữ liệu cho một phần của khoảng thời gian đó, hãy coi phần còn lại là chưa xác định. Ứng dụng không hứa hẹn có thời tiết theo giờ đầy đủ cho mọi sự kiện bạn có thể tạo, và hướng dẫn này cũng không khẳng định rằng mở bất kỳ sự kiện nào cũng luôn hiển thị toàn bộ khoảng thời tiết của sự kiện đó."
+        ]
+      },
+      {
+        "heading": "Tách biệt khả năng, lượng và thời điểm",
+        "body": [
+          "Hãy đọc nhãn của giá trị bạn đang xem. Xác suất mưa không phải là lượng mưa hoặc thời gian mưa. Tương tự, một giá trị theo giờ và một bản tóm tắt theo ngày bao quát các khoảng thời gian khác nhau; khi cân nhắc giữa hai thời điểm có thể chọn, hãy so sánh các khoảng tương đương.",
+          "Hãy chọn phương án dự phòng phù hợp với gói của bạn thay vì xem một tỷ lệ phần trăm duy nhất như quy tắc chung để quyết định đi hay hủy. Thông tin thời tiết có thể thay đổi, vì vậy hãy xem lại khi cần đưa ra quyết định."
+        ]
+      },
+      {
+        "heading": "Kiểm tra lại trước khi lưu sự kiện dựa trên thời tiết",
+        "body": [
+          "Ứng dụng có thể bắt đầu một bản nháp sự kiện từ một giờ dự báo. Trước khi lưu, hãy kiểm tra lại ngày, giờ bắt đầu, giờ kết thúc và lịch đích của bản nháp. Việc chọn từ dự báo không thay thế cho bước xác nhận rằng bạn đang tạo đúng kế hoạch cần tham gia.",
+          "Nếu quyền truy cập lịch hoặc lịch đích ngăn việc lưu, hãy xử lý quyền đó riêng với quyền truy cập thời tiết. Việc tìm thấy dự báo không cấp quyền chỉnh sửa cho một lịch dùng chung."
+        ]
+      },
+      {
+        "heading": "Dùng đầy đủ dự báo khi phần tóm tắt là chưa đủ",
+        "body": [
+          "Với một hoạt động ngoài trời, hãy xem các biến số liên quan đến hoạt động đó và đúng địa điểm bạn thực sự đã chọn. Tiện ích thời tiết hiện tại hoặc bản minh họa trên trang chủ không thể thay thế cho việc kiểm tra các khung giờ dự báo hiện có trong ứng dụng.",
+          "Nếu bạn nhận thấy có chênh lệch, trước tiên hãy so sánh địa điểm và dấu thời gian. Các nhà cung cấp khác nhau, địa điểm được chọn khác nhau và các khoảng dự báo khác nhau có thể tạo ra cách hiển thị khác nhau mà không chứng minh rằng sự kiện trên lịch đã thay đổi."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Xác nhận địa điểm và ngày của sự kiện.",
+      "Kiểm tra các khung giờ hiện có trong suốt hoạt động.",
+      "Hiểu xác suất và lượng là hai giá trị khác nhau.",
+      "Xem lại bản nháp sự kiện trước khi lưu."
+    ],
+    "seeAlso": [
+      "weather-inside-your-calendar",
+      "planning-outdoors-without-being-rained-on"
+    ],
+    "updated": "2026-10-23",
+    "faq": [
+      {
+        "q": "Mọi sự kiện đều có dự báo đầy đủ không?",
+        "a": "Không. Mức độ bao phủ phụ thuộc vào địa điểm được chọn và các ngày, giờ hiện có."
+      },
+      {
+        "q": "Biểu tượng thời tiết có dành riêng cho địa chỉ sự kiện không?",
+        "a": "Đừng suy ra điều đó chỉ vì nó nằm gần sự kiện. Hãy xác nhận riêng địa điểm thời tiết."
+      },
+      {
+        "q": "Chạm vào một giờ có lưu sự kiện mới không?",
+        "a": "Thao tác đó sẽ bắt đầu một bản nháp sự kiện nếu tính năng khả dụng. Hãy kiểm tra ngày, giờ và lịch trước khi lưu."
+      }
+    ],
+    "sourcesHeading": "Nguồn thời tiết và cài đặt vị trí",
+    "sources": [
+      {
+        "label": "Apple: Dự báo WeatherKit và phạm vi khả dụng theo khu vực",
+        "url": "https://developer.apple.com/weatherkit/"
+      },
+      {
+        "label": "Apple: Quyền riêng tư và Dịch vụ định vị",
+        "url": "https://support.apple.com/en-us/102515"
+      }
+    ],
+    "comparison": {
+      "heading": "Một bước kiểm tra thực tế trước một sự kiện ngoài trời",
+      "columns": [
+        "Kiểm tra",
+        "Ví dụ",
+        "Quyết định"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Địa điểm",
+            "Sự kiện diễn ra ở thành phố khác.",
+            "Chọn điểm đến đó trong chế độ xem thời tiết và đọc tên của nó."
+          ]
+        },
+        {
+          "cells": [
+            "Khoảng thời gian",
+            "Hoạt động diễn ra từ 14:00 đến 16:00.",
+            "Kiểm tra cả hai giờ đó, cùng thời gian chuẩn bị hoặc di chuyển có liên quan."
+          ]
+        },
+        {
+          "cells": [
+            "Phạm vi",
+            "Chỉ có sẵn một phần các giờ cần thiết.",
+            "Giữ kế hoạch ở trạng thái tạm thời và sắp xếp một lần kiểm tra khác."
+          ]
+        },
+        {
+          "cells": [
+            "Sự kiện đã lưu",
+            "Bạn bắt đầu một bản nháp từ một giờ thời tiết.",
+            "Kiểm tra ngày, múi giờ, thời lượng và lịch đích trước khi lưu."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-right",
+      "week-left"
+    ],
+    "galleryCaption": "Chế độ xem thời tiết và tuần hiển thị các phần khác nhau của cùng một nhiệm vụ lập kế hoạch. Hãy xác nhận riêng địa điểm dự báo với địa điểm của sự kiện.",
+    "actionHeading": "Đối chiếu dự báo với các sự kiện thực tế của bạn",
+    "actionText": "Dùng Cloud Calendars trên iPhone hoặc iPad để xem lại dự báo hiện có và lịch trình của bạn. Thời tiết giúp bạn đưa ra lựa chọn; nó không tự động dời một sự kiện hoặc xác nhận thay đổi với người tham gia.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Hiểu các chế độ xem lịch và thời tiết"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Chọn một chế độ tổng quan nhanh trên Màn hình chính"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Kiểm tra các lịch đứng sau lịch trình của bạn"
+      }
+    ]
+  },
+  "the-widget-that-shows-what-is-next": {
+    "updated": "2026-10-23",
+    "title": "Widget lịch trên iPhone và iPad: sự kiện sắp tới và thời tiết",
+    "short": "Các sự kiện sắp tới trên Màn hình chính",
+    "description": "Chọn một widget Cloud Calendars cho các sự kiện sắp tới, ngày hoặc thời tiết.",
+    "lede": "Hãy chọn Calendar Events hoặc Calendar Events Large khi bạn muốn các sự kiện sắp tới trên Màn hình chính. Hãy chọn Calendar & Weather để hiển thị ngày và thời tiết. Các bố cục này trả lời những câu hỏi khác nhau; hãy xem trước bố cục được cung cấp trên thiết bị của bạn trước khi thêm. Hướng dẫn này do Arte Soft, nhà phát triển của Cloud Calendars, xuất bản.",
+    "sections": [
+      {
+        "heading": "Trước tiên, hãy chọn bố cục sự kiện",
+        "body": [
+          "Trong thư viện tiện ích Cloud Calendars, Calendar Events là bố cục danh sách sự kiện cỡ vừa. Calendar Events Large có nhiều chỗ hơn cho các sự kiện sắp tới. Calendar & Weather là bố cục ngày và thời tiết riêng; kích thước nhỏ của nó không đảm bảo có hàng hiển thị sự kiện tiếp theo. Tên có thể được dịch trên thiết bị của bạn.",
+          "Trên iPhone, chạm và giữ vùng trống trên Màn hình chính, chọn Edit rồi Add Widget, sau đó tìm Cloud Calendars và chọn bố cục mong muốn. Hãy xem kỹ bản xem trước trước khi thêm. Hướng dẫn tiện ích của Apple áp dụng cho thư viện hệ thống này; thư viện này tách biệt với các chế độ xem lịch trong ứng dụng."
+        ]
+      },
+      {
+        "heading": "Thêm và kiểm tra tiện ích trên iPad",
+        "body": [
+          "Trên iPad, dùng thư viện tiện ích Màn hình chính của Apple: chạm và giữ nền, mở Edit rồi Add Widget. Tìm Cloud Calendars, xem các kiểu và kích thước được cung cấp, thêm bố cục bạn cần, đặt vào vị trí rồi kết thúc bằng Done. Hãy làm theo các điều khiển hiển thị trên phiên bản iPadOS của bạn; bản xem trước không xác nhận rằng dữ liệu lịch của bạn đã được tải.",
+          "Hãy chọn Calendar Events hoặc Calendar Events Large khi bạn cần xem sự kiện. So sánh các kiểu mà ứng dụng đã cài đặt cung cấp; ô ngày và thời tiết trả lời một nhu cầu khác với danh sách sự kiện.",
+          "Mở Cloud Calendars trên iPad đó và tìm một sự kiện có giờ cụ thể trong tương lai mà bạn biết rõ, thuộc một lịch đã chọn. Việc hiển thị đúng trên iPhone không xác nhận tài khoản, quyền truy cập hoặc dữ liệu đã tải trên iPad. Hãy đối chiếu tiêu đề, ngày và giờ bắt đầu, rồi tiếp tục các bước kiểm tra điều kiện hiển thị và cập nhật bên dưới nếu tiện ích khác đi."
+        ]
+      },
+      {
+        "heading": "Kiểm tra điều gì được tính là sắp tới",
+        "body": [
+          "Phần hiển thị sự kiện dùng các lịch đã chọn và các sự kiện tương lai có giờ cụ thể. Các mục cả ngày và các sự kiện mà giờ bắt đầu đã trôi qua đều bị loại khỏi danh sách sắp tới này. Vì vậy, một sinh nhật hoặc một cuộc họp đang diễn ra có thể vẫn thấy trong ứng dụng nhưng không xuất hiện ở đây.",
+          "Ví dụ, nếu mục duy nhất của bạn hôm nay là một nhãn chuyến đi cả ngày, thì danh sách sắp tới trống không có nghĩa là nhãn đó đã mất. Hãy mở ứng dụng để xem đầy đủ cả ngày. Tương tự, sự kiện có giờ cụ thể tiếp theo có thể là vào ngày mai hoặc muộn hơn; hãy đọc ngày của nó thay vì cho rằng mọi dòng đều là hôm nay."
+        ]
+      },
+      {
+        "heading": "Phân biệt giữa sự kiện bị thiếu và danh sách đã hết dòng hiển thị",
+        "body": [
+          "Một tiện ích chỉ hiển thị số lượng giới hạn các sự kiện sắp tới. Nếu các sự kiện sớm hơn đã chiếm hết các dòng, một sự kiện muộn hơn có thể không xuất hiện dù vẫn có trong ứng dụng và đủ điều kiện vào danh sách sắp tới. Bố cục sự kiện lớn hơn có thể hiển thị nhiều dòng hơn; nhưng nó vẫn không phải toàn bộ lịch.",
+          "Hãy bắt đầu với sự kiện tương lai gần nhất có giờ cụ thể trong một lịch đã chọn. Nếu sự kiện đó xuất hiện nhưng một sự kiện muộn hơn thì không, hãy mở ứng dụng để xem phần còn lại của lịch trình. Nếu ngay cả sự kiện đủ điều kiện gần nhất cũng bị thiếu, hãy tiếp tục kiểm tra lựa chọn lịch, quyền truy cập và cập nhật. Đừng di chuyển hoặc xóa sự kiện chỉ để làm cho một mục muộn hơn xuất hiện."
+        ]
+      },
+      {
+        "heading": "Lấy ứng dụng làm mốc so sánh đầu tiên",
+        "body": [
+          "Mở Cloud Calendars và tìm một sự kiện tương lai có giờ cụ thể. Xác nhận rằng lịch chứa sự kiện đó đang được chọn và ứng dụng có quyền truy cập lịch cần thiết. So sánh tiêu đề, ngày và giờ bắt đầu với tiện ích. Nếu sự kiện cũng không có trong ứng dụng, trước tiên hãy kiểm tra tài khoản hoặc đồng bộ hóa.",
+          "Nếu bạn cần một ví dụ rõ ràng, hãy dùng một sự kiện thử nghiệm vô hại trong lịch do bạn sở hữu. Đặt giờ bắt đầu trong tương lai và tiêu đề dễ nhận biết. Tránh chỉnh sửa một lời mời thật hoặc xóa tài khoản chỉ để thử Màn hình chính."
+        ]
+      },
+      {
+        "heading": "Chờ cập nhật nhưng đừng giả định có một thời hạn cố định",
+        "body": [
+          "Tiện ích hiển thị thông tin đã lưu và không chạy liên tục như khi ứng dụng đang mở. Apple kiểm soát lịch cập nhật của chúng. Việc mở ứng dụng và kiểm tra sự kiện cho bạn một mốc so sánh mới, nhưng không xác lập chính xác bao nhiêu giây thì tiện ích buộc phải thay đổi.",
+          "Nếu ứng dụng vẫn đúng trong khi tiện ích vẫn sai, hãy ghi lại bố cục, lịch đã chọn, thời gian sự kiện và phiên bản ứng dụng/iOS. Danh sách trống, một sự kiện cũ và một giờ không chính xác là các hiện tượng khác nhau; hãy báo rõ bạn đang thấy trường hợp nào."
+        ]
+      },
+      {
+        "heading": "Hiểu phần thời tiết như một bản tóm tắt riêng",
+        "body": [
+          "Thông tin thời tiết cạnh ngày không phải là dự báo gắn với địa điểm và giờ bắt đầu của từng sự kiện. Trước một sự kiện ngoài trời, hãy mở chế độ xem thời tiết và kiểm tra địa điểm cùng khung giờ dự định. Biểu tượng điều kiện hiện tại không thể cho biết điều kiện sẽ như thế nào ở một cuộc họp diễn ra sau đó.",
+          "Hãy dùng tiện ích này để định hướng nhanh. Dùng lịch đầy đủ cho các cam kết cả ngày, chi tiết sự kiện và những quyết định cần xem toàn bộ lịch trình."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Chọn Calendar Events hoặc Calendar Events Large để xem danh sách sự kiện.",
+      "Xác minh một sự kiện trong tương lai có giờ cụ thể trong một lịch đã chọn.",
+      "So sánh ngày và giờ của sự kiện đó trong ứng dụng trước khi khắc phục sự cố tiện ích.",
+      "Ghi lại các khác biệt kéo dài thay vì xóa dữ liệu lịch."
+    ],
+    "faq": [
+      {
+        "q": "Vì sao sinh nhật của tôi bị thiếu?",
+        "a": "Danh sách sắp tới không bao gồm các sự kiện cả ngày. Hãy kiểm tra lịch đầy đủ để xem sinh nhật và các mục chỉ có ngày khác."
+      },
+      {
+        "q": "Tiện ích nhỏ có hiển thị cuộc họp tiếp theo không?",
+        "a": "Bố cục Calendar & Weather cỡ nhỏ hiển thị ngày và thời tiết. Hãy chọn bố cục danh sách sự kiện để xem các sự kiện."
+      },
+      {
+        "q": "Không có sự kiện sắp tới có nghĩa là hôm nay tôi rảnh chứ?",
+        "a": "Không. Các mục cả ngày, sự kiện đang diễn ra, lịch chưa được chọn và thông tin cũ có thể làm kết luận đó sai."
+      }
+    ],
+    "sourcesHeading": "Nguồn và hướng dẫn của Apple",
+    "sources": [
+      {
+        "label": "Apple: Thêm và chỉnh sửa tiện ích trên iPhone",
+        "url": "https://support.apple.com/118610"
+      },
+      {
+        "label": "Apple: Giữ cho tiện ích luôn được cập nhật",
+        "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date"
+      },
+      {
+        "label": "Apple: Thêm, chỉnh sửa và xóa tiện ích trên iPad",
+        "url": "https://support.apple.com/guide/ipad/add-edit-and-remove-widgets-ipadb0de8630/ipados"
+      }
+    ],
+    "seeAlso": [
+      "choosing-a-widget-size",
+      "a-countdown-to-your-next-meeting",
+      "calendar-on-apple-watch"
+    ],
+    "comparison": {
+      "heading": "Chọn kiểu hiển thị đúng với nhu cầu thực tế của bạn",
+      "columns": [
+        "Kiểu hiển thị",
+        "Dùng cho",
+        "Cần kiểm tra trước khi dựa vào"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Calendar Events",
+            "Chế độ xem gọn các sự kiện sắp tới có giờ cụ thể.",
+            "Sự kiện thuộc một lịch đã chọn và chưa bắt đầu."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar Events Large",
+            "Nhiều chỗ hơn cho các sự kiện sắp tới.",
+            "Ngay cả bố cục lớn hơn cũng chỉ có số dòng giới hạn."
+          ]
+        },
+        {
+          "cells": [
+            "Calendar & Weather",
+            "Tổng quan nhanh về ngày và thời tiết.",
+            "Bố cục nhỏ của nó không đảm bảo có một dòng sự kiện sắp tới."
+          ]
+        },
+        {
+          "cells": [
+            "Live Activity",
+            "Bộ đếm ngược sự kiện tiếp theo riêng trên các bề mặt iPhone được hỗ trợ.",
+            "Đây không phải là tiện ích Màn hình chính hoặc bố cục tiện ích Màn hình khóa chuyên dụng."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "widgets",
+      "live"
+    ],
+    "galleryCaption": "Các tiện ích Màn hình chính và Live Activity là những kiểu hiển thị riêng biệt. Hãy chọn bố cục phù hợp với thông tin bạn cần.",
+    "actionHeading": "Đưa phần hữu ích của lịch trình lên Màn hình chính",
+    "actionText": "Mở Cloud Calendars, kiểm tra một sự kiện có giờ cụ thể trong tương lai mà bạn biết rõ, rồi thêm tiện ích phù hợp trên iPhone hoặc iPad. Ứng dụng vẫn là nơi để xem toàn bộ lịch.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Xem thời tiết bên cạnh lịch trình của bạn"
+      },
+      {
+        "slug": "forecast-beside-every-event",
+        "label": "Kiểm tra thời gian của một sự kiện ngoài trời"
+      },
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Kiểm tra các tài khoản lịch đã kết nối của bạn"
+      }
+    ]
+  },
+  "onecal-alternative-iphone-calendar-view-or-sync": {
+    "updated": "2026-10-23",
+    "title": "Cloud Calendars hay OneCal? Chọn chế độ xem kết hợp hoặc đồng bộ lịch",
+    "short": "Cloud Calendars và OneCal theo quy trình làm việc",
+    "description": "So sánh OneCal và Cloud Calendars theo chế độ xem, sự kiện được sao chép, điều khiển trên di động và các gói.",
+    "lede": "Hãy chọn theo kết quả bạn cần: xem nhiều lịch trình cùng lúc, chỉnh sửa một sự kiện gốc hoặc sao chép thời gian bận sang tài khoản khác. Cloud Calendars cung cấp các chế độ xem lập kế hoạch trên iPhone và iPad; OneCal mô tả chế độ Unified Calendar View và các quy tắc Calendar Sync riêng biệt. Bài so sánh này do Arte Soft, nhà phát triển Cloud Calendars, xuất bản.",
+    "commonBelief": "Hai sản phẩm hiển thị lịch Google, iCloud và Outlook thì đương nhiên sẽ đồng bộ trạng thái rảnh/bận, chỉnh sửa sự kiện và bản sao theo cùng một cách.",
+    "sections": [
+      {
+        "heading": "Chọn giữa cái nhìn tổng quan và thay đổi trong một tài khoản khác",
+        "body": [
+          "Nếu mục tiêu của bạn là xem một sự kiện cá nhân cạnh một cuộc họp công việc, bạn cần một chế độ xem kết hợp. Nếu lịch công việc của bạn cũng phải có một khoảng bận cho sự kiện cá nhân đó, bạn cần một quy trình xác định rõ từ nguồn đến đích. Kết quả thứ nhất không tự động tạo ra kết quả thứ hai.",
+          "Cloud Calendars đưa các lịch đã chọn vào chế độ xem lập kế hoạch trên iPhone và iPad. OneCal mô tả Unified Calendar View tách biệt với Calendar Sync; nhà phát hành của OneCal cho biết bạn có thể dùng chế độ xem đó mà không cần cấu hình quy tắc đồng bộ. Hãy xác định kết quả nào quan trọng trước khi kết nối tài khoản hoặc so sánh tên các gói đăng ký."
+        ]
+      },
+      {
+        "heading": "Hiểu một sự kiện được sao chép có thể thay đổi điều gì",
+        "body": [
+          "Tài liệu Calendar Sync của OneCal mô tả các quy tắc một chiều và nhiều chiều để tạo sự kiện bản sao. Tài liệu phạm vi hỗ trợ riêng của OneCal cho biết các chỉnh sửa đối với bản sao không được truyền ngược lại sự kiện gốc. Hãy xác định sự kiện gốc và lịch sở hữu nó trước khi coi một sự kiện được sao chép là nơi để đổi lịch một cuộc họp.",
+          "Các kết nối nhà cung cấp của Cloud Calendars cũng có thể tạo lịch phản chiếu trong kho lưu trữ iOS. Việc hiển thị kết hợp không chứng minh rằng các bản ghi đã được gộp hoặc một chỉnh sửa đã đến được nhà cung cấp. Với một lịch do bạn sở hữu và được phép chỉnh sửa, hãy kiểm tra một sự kiện thử nghiệm có thể xóa, không có khách mời, ở phía nhà cung cấp cũng như trong ứng dụng."
+        ]
+      },
+      {
+        "heading": "Kiểm tra các điều khiển trên chính thiết bị bạn thực sự sẽ dùng",
+        "body": [
+          "Hướng dẫn di động hiện tại của OneCal mô tả việc tạo và chỉnh sửa sự kiện lịch, các lựa chọn lặp lại, RSVP và tham gia cuộc họp. Hướng dẫn này cũng nói riêng rằng việc tạo, chỉnh sửa, tạm dừng hoặc xóa cấu hình Calendar Sync diễn ra trong ứng dụng web; trên di động chỉ hiển thị các cấu hình đó. Thiết lập liên kết đặt lịch cũng được mô tả là tác vụ trên web.",
+          "Cloud Calendars là ứng dụng dành cho iPhone và iPad với chế độ xem ngày, tuần, tháng, năm và danh sách. Hãy thử thao tác chỉnh sửa bạn cần trong chế độ xem đã cài đặt, đọc kỹ mọi lựa chọn lặp lại và xác nhận sự kiện đã được lưu. Đừng giả định rằng menu di động, quy trình đặt lịch hoặc các điều khiển tự động hóa của sản phẩm khác đều có sẵn ở đây."
+        ]
+      },
+      {
+        "heading": "Xác minh phạm vi hỗ trợ thay vì cho rằng lịch sử là không giới hạn",
+        "body": [
+          "Hướng dẫn phạm vi hỗ trợ hiện tại của OneCal nêu cửa sổ đồng bộ tương lai tối đa một năm cho Google và iCloud, và tối đa ba tháng cho Outlook. Tài liệu này cũng phân biệt chuỗi sự kiện lặp lại trong tương lai với các sự kiện lịch sử độc lập. Đây là các giới hạn do nhà phát hành công bố, không phải là phép thử cho tài khoản cụ thể của bạn hay khẳng định về mọi tính năng trong chế độ xem lịch của họ.",
+          "Cloud Calendars cũng cần được kiểm tra về cách kết nối tài khoản, các lịch đã chọn và những ngày liên quan. Nếu các cuộc họp cũ là quan trọng, hãy đối chiếu một sự kiện đã xác định giữa phía nhà cung cấp và ứng dụng. Một ứng dụng lịch không tự động là bản sao lưu đầy đủ hoặc là bảo đảm rằng mọi bản ghi trong quá khứ đều đã được tải về."
+        ]
+      },
+      {
+        "heading": "So sánh yêu cầu gói và kênh thanh toán",
+        "body": [
+          "Cloud Calendars bao gồm đồng bộ Google Calendar trong Base; Advanced bỏ quảng cáo và Premium bổ sung hỗ trợ Microsoft Calendar và Teams. Hãy xác minh quyền của tài khoản riêng với gói. Trước khi mua, hãy kiểm tra giá địa phương hiện tại và chu kỳ thanh toán thay vì dựa vào so sánh giá quốc tế cố định.",
+          "Hướng dẫn gói trên web của OneCal mô tả các gói theo từng thành viên và thời gian dùng thử mười bốn ngày, bao gồm việc xóa các bản sao khi thời gian dùng thử kết thúc. Hướng dẫn thanh toán trên di động của OneCal mô tả các giao dịch mua do cửa hàng quản lý và các giới hạn khi thêm thành viên nhóm. Hãy kiểm tra những tính năng nào cần gói đang hoạt động và nơi giao dịch mua được quản lý; chỉ riêng việc tải xuống miễn phí không trả lời được các câu hỏi đó."
+        ]
+      },
+      {
+        "heading": "Hãy thử quy trình lập kế hoạch thực tế của bạn trước khi chuyển đổi",
+        "body": [
+          "Nếu thời tiết, tiện ích hoặc Live Activity là quan trọng, hãy đưa chúng vào quá trình dùng thử trên thiết bị bạn sử dụng. Cloud Calendars cung cấp các bề mặt lập kế hoạch đó, với thông tin thời tiết chỉ giới hạn trong những ngày khả dụng và địa điểm đã chọn. Các trang OneCal được xem xét ở đây không xác nhận sự tương đương tính năng cho các bề mặt đó; hãy kiểm tra sản phẩm hiện tại của họ thay vì suy ra là không có chỉ từ một hướng dẫn.",
+          "Hãy giữ lại các ứng dụng gốc và thông tin kết nối cho đến khi bạn kiểm tra xong kết quả cần thiết. Ghi lại xem bạn đã xác minh khả năng hiển thị, chỉnh sửa sự kiện gốc, sao chép thời gian bận hay lời nhắc; đó là những kết quả khác nhau. Trước khi ngắt kết nối một dịch vụ, hãy xem điều gì xảy ra với các bản sao hiện có và tránh thử nghiệm trên một lời mời đang dùng thật hoặc một cuộc họp thật với khách hàng."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Hãy ghi rõ bạn cần một chế độ xem kết hợp hay cần sự kiện được sao chép sang tài khoản khác.",
+      "Xác định sự kiện gốc, bản sao và tài khoản sở hữu từng sự kiện quan trọng.",
+      "Kiểm tra các điều khiển cần thiết trên đúng điện thoại, máy tính bảng hoặc quy trình web mà bạn thực sự dùng.",
+      "So sánh một tuần thông thường và mọi ngày trong quá khứ mà bạn phụ thuộc vào.",
+      "Kiểm tra yêu cầu gói hiện tại, giá địa phương và nhà cung cấp giao dịch mua.",
+      "Xác minh bằng một sự kiện thử nghiệm có thể xóa và xem lại quy tắc xóa bản sao trước khi chuyển đổi."
+    ],
+    "faq": [
+      {
+        "q": "Chế độ xem lịch kết hợp có giống với việc đồng bộ thời gian bận không?",
+        "a": "Không. Chế độ xem kết hợp cho phép bạn so sánh các cam kết lịch trình. Việc tạo một mục trong tài khoản khác cần một quy trình hỗ trợ riêng; OneCal mô tả các quy tắc Calendar Sync tách biệt với Unified Calendar View."
+      },
+      {
+        "q": "Tôi có thể thay đổi một bản sao OneCal để dời lịch cuộc họp gốc không?",
+        "a": "Hướng dẫn phạm vi hỗ trợ của OneCal cho biết các chỉnh sửa trên bản sao không được truyền về bản gốc. Hãy xác định sự kiện gốc và tuân theo quyền chỉnh sửa cũng như quyền của người tổ chức trong lịch đó."
+      },
+      {
+        "q": "Ứng dụng nào rẻ hơn cho thiết lập của tôi?",
+        "a": "Điều đó phụ thuộc vào các tính năng, tài khoản, kênh thanh toán và giá tại địa phương mà bạn cần. Cloud Calendars bao gồm đồng bộ Google trong Base và hỗ trợ Microsoft trong Premium. Hãy xem các điều khoản gói hiện tại và thanh toán di động của OneCal cho quy trình bạn dự định dùng; hướng dẫn này không khẳng định có một lựa chọn rẻ nhất cho mọi trường hợp."
+      }
+    ],
+    "sourcesHeading": "Tài liệu chính thức của OneCal về quy trình làm việc và gói",
+    "sources": [
+      {
+        "label": "OneCal: tính năng di động và các tác vụ cấu hình chỉ có trên web",
+        "url": "https://docs.onecal.io/docs/mobile-apps"
+      },
+      {
+        "label": "OneCal: Calendar Sync và các quy tắc từ nguồn đến đích",
+        "url": "https://docs.onecal.io/docs/calendar-sync/calendar-sync-intro"
+      },
+      {
+        "label": "OneCal: cửa sổ đồng bộ và chỉnh sửa đối với sự kiện bản sao",
+        "url": "https://docs.onecal.io/docs/calendar-sync/what-does-onecal-sync"
+      },
+      {
+        "label": "OneCal: các gói, dùng thử và cách xử lý khi hết hạn",
+        "url": "https://docs.onecal.io/docs/billing/plans-and-free-trial"
+      },
+      {
+        "label": "OneCal: đăng ký qua App Store và Google Play",
+        "url": "https://docs.onecal.io/docs/billing/mobile-subscriptions"
+      }
+    ],
+    "seeAlso": [
+      "what-calendar-sync-actually-does",
+      "three-calendar-apps-is-two-too-many",
+      "free-google-sync-without-adverts",
+      "disconnect-calendar-integration-without-losing-track",
+      "what-fantastical-costs-and-what-this-does"
+    ],
+    "comparison": {
+      "heading": "So sánh quy trình làm việc trước khi đăng ký",
+      "columns": [
+        "Câu hỏi",
+        "Cloud Calendars",
+        "Tài liệu OneCal"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Tôi xem lịch trình của mình ở đâu?",
+            "Trên iPhone và iPad, với chế độ xem ngày, tuần, tháng, năm và danh sách.",
+            "Unified Calendar View tách biệt với việc cấu hình Calendar Sync."
+          ]
+        },
+        {
+          "cells": [
+            "Tôi có cần các khoảng bận được sao chép giữa các tài khoản không?",
+            "Đừng suy ra điều đó từ chế độ xem kết hợp; các kết nối nhà cung cấp có thể phản chiếu lịch cục bộ.",
+            "Calendar Sync tạo các sự kiện bản sao bằng quy tắc một chiều hoặc nhiều chiều."
+          ]
+        },
+        {
+          "cells": [
+            "Tôi thay đổi các quy tắc đồng bộ ở đâu?",
+            "Sử dụng các điều khiển được mô tả cho kết nối tài khoản của ứng dụng.",
+            "Hướng dẫn di động đã xem xét giao các thay đổi cấu hình đồng bộ cho ứng dụng web."
+          ]
+        },
+        {
+          "cells": [
+            "Tôi cần gói Cloud Calendars nào?",
+            "Base bao gồm đồng bộ Google Calendar; Advanced bỏ quảng cáo; Premium bổ sung Microsoft Calendar và Teams.",
+            "Hãy kiểm tra gói OneCal hiện tại và kênh thanh toán cho quy trình bạn cần."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "hook"
+    ],
+    "galleryCaption": "Các màn hình lịch thực tế của Cloud Calendars cho thấy chế độ xem lập kế hoạch. Bài so sánh này phân biệt chế độ xem đó với các quy tắc bản sao phía máy chủ của một dịch vụ.",
+    "actionHeading": "Chọn kết quả bạn muốn xác minh",
+    "actionText": "Nếu bạn cần một cái nhìn tổng quan trên iPhone hoặc iPad với thời tiết và tiện ích, hãy thử Cloud Calendars bằng một sự kiện thử nghiệm vô hại. Nếu yêu cầu của bạn là sao chép thời gian bận sang tài khoản khác, hãy đánh giá một dịch vụ có tài liệu mô tả rõ thao tác đó.",
+    "articleLinks": [
+      {
+        "slug": "icloud-google-and-outlook-in-one-view",
+        "label": "Thiết lập chế độ xem lịch kết hợp"
+      },
+      {
+        "slug": "fantastical-readdle-calendar366-iphone-comparison",
+        "label": "So sánh các lựa chọn lịch khác trên iPhone"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "Chọn nội dung hiển thị trên Màn hình chính"
+      }
+    ]
+  },
+  "fantastical-readdle-calendar366-iphone-comparison": {
+    "updated": "2026-10-23",
+    "title": "Các lựa chọn thay thế lịch iPhone: Cloud Calendars, Fantastical, Readdle và BusyCal",
+    "short": "So sánh các ứng dụng lịch thay thế trên iPhone",
+    "description": "So sánh các lịch trên iPhone theo thời tiết, chế độ xem, tác vụ và quy trình làm việc bạn cần.",
+    "lede": "Hãy chọn lịch dựa trên việc bạn muốn hoàn thành: xem lại sự kiện cùng thời tiết, nhập sự kiện nhanh, quản lý tác vụ hoặc kết hợp chế độ xem từ nhiều tài khoản. Cloud Calendars, Fantastical, Calendars by Readdle, Calendar 366 và BusyCal khác nhau ở các quy trình này và các yêu cầu về gói. Arte Soft phát triển Cloud Calendars và công bố bài so sánh này.",
+    "sections": [
+      {
+        "heading": "Chọn các yêu cầu bắt buộc trước khi so sánh giao diện",
+        "body": [
+          "Hãy ghi ra nhà cung cấp lịch, thiết bị và ba thao tác thiết yếu của bạn. Ví dụ: xem lịch công việc và cá nhân cùng lúc, hoàn thành một lời nhắc và thêm nhanh một cuộc họp. Hãy thử các thao tác đó bằng dữ liệu mẫu riêng tư trước khi nhập toàn bộ lịch trình.",
+          "Việc một sản phẩm hỗ trợ tên nhà cung cấp của bạn không có nghĩa là mọi phương thức kết nối đều có quyền và tính năng giống hệt nhau. Lịch của thiết bị, tài khoản kết nối trực tiếp và nguồn cấp đã đăng ký có thể tạo ra các mục trông giống nhau nhưng cho phép thao tác khác nhau."
+        ]
+      },
+      {
+        "heading": "Dùng chính lịch của nhà cung cấp làm mốc tham chiếu",
+        "body": [
+          "Hướng dẫn bắt đầu của Google mô tả chính giao diện lịch của họ cho việc lên lịch, tác vụ, chia sẻ và nhiều lịch. Nếu lịch trình của bạn đã nằm ở đó, hãy thử thao tác cần thiết ngay tại nguồn trước khi quyết định có cần ứng dụng khác hay không.",
+          "Ví dụ, hãy so sánh cùng một sự kiện trong Google Calendar và Fantastical sau khi kết nối đúng tài khoản dự định dùng. Kiểm tra xem lợi thế bạn cần là chế độ xem kết hợp, kết nối tác vụ, nhập nhanh hay một giao diện thiết bị cụ thể. Một ứng dụng lịch khác không tự động đồng nghĩa với việc chuyển sang nhà cung cấp khác."
+        ]
+      },
+      {
+        "heading": "Fantastical: kiểm tra kết nối tài khoản và nhập nhanh",
+        "body": [
+          "Flexibits có tài liệu cho cả kết nối trực tiếp với tài khoản lịch lẫn các tùy chọn dành cho lịch và lời nhắc đã được cấu hình trong iOS. Hướng dẫn bắt đầu của họ khuyến nghị kết nối trực tiếp để sử dụng đầy đủ tính năng của ứng dụng. Hãy xác định bạn đã chọn cách nào thay vì kết nối cùng một lịch hai lần mà không có lý do.",
+          "Fantastical cũng có tài liệu về nhập liệu bằng câu và các mẫu sự kiện hoặc tác vụ có thể tái sử dụng. Hãy thử với ngày, thời lượng và lịch đích được nêu rõ, rồi kiểm tra kết quả đã lưu. Cú pháp đó thuộc về Fantastical; trường văn bản của ứng dụng khác có thể hiểu cùng một câu theo cách khác."
+        ]
+      },
+      {
+        "heading": "Calendars by Readdle: kiểm tra nguồn tác vụ",
+        "body": [
+          "Readdle hiển thị lịch Google, Outlook và iCloud cùng với các tính năng tác vụ và nhập ngôn ngữ tự nhiên. Hướng dẫn thiết lập tác vụ của họ mô tả việc chọn iOS Reminders hoặc Google Tasks trong Task Options. Lựa chọn đó rất quan trọng nếu việc hoàn thành một tác vụ trên điện thoại phải cập nhật đúng danh sách gốc cụ thể.",
+          "Hãy dùng một tác vụ tạm để kiểm tra việc hoàn thành ở cả hai đầu, không chỉ xem tiêu đề có xuất hiện trên dòng thời gian hay không. Nếu bạn cũng cần một chế độ xem hoặc thao tác trên Mac ngoài iPhone, hãy kiểm tra ở đó nữa. Đừng cho rằng các điều khiển sẽ giống hệt nhau chỉ vì cùng tên sản phẩm."
+        ]
+      },
+      {
+        "heading": "Calendar 366: kiểm tra quyền truy cập hệ thống, bộ lịch và vị trí thời tiết",
+        "body": [
+          "Tài liệu của Calendar 366 phân biệt giữa quyền truy cập vào lịch và lời nhắc của hệ thống với các tích hợp tài khoản trực tiếp. Tài liệu này mô tả các bộ lịch dùng để chọn lịch và danh sách đang hiển thị. Các bộ đó cũng có thể xác định lịch mặc định, vì vậy hãy kiểm tra sự kiện mới tạo sẽ thuộc về lịch nào.",
+          "Cùng bộ tài liệu đó cũng mô tả bộ phân tích ngôn ngữ tự nhiên riêng và thời tiết dùng Apple Weather, với tùy chọn vị trí hệ thống hoặc vị trí tùy chỉnh. Với việc lập kế hoạch ngoài trời, hãy xác minh địa điểm đã chọn thay vì cho rằng dự báo sẽ tự theo địa chỉ của từng sự kiện. Đây là các khả năng được nhà phát hành mô tả trong tài liệu, không phải các tính năng đã được kiểm thử trên tài khoản của bạn."
+        ]
+      },
+      {
+        "heading": "BusyCal: kiểm tra cách hiển thị tác vụ và chế độ xem dùng cho thời tiết",
+        "body": [
+          "Hướng dẫn tác vụ trên iOS của BusyCal phân biệt tác vụ có ngày, có giờ và không có ngày. Tài liệu này mô tả các điều khiển hoàn thành và việc chuyển tiếp các tác vụ có ngày nhưng chưa xong. Hướng dẫn thời tiết của họ đặt dự báo trong các chế độ xem List, Day và Month, vì vậy hãy thử đúng chế độ xem bạn dùng thay vì cho rằng thời tiết xuất hiện ở mọi nơi.",
+          "BusyCal cũng ghi nhận nhập ngôn ngữ tự nhiên là một tùy chọn trong mặc định sự kiện mới. Hãy thử cùng một sự kiện mẫu riêng tư đã dùng cho các ứng dụng khác, rồi kiểm tra lịch và thời gian đã lưu. Đây là các điều khiển của BusyCal, không phải lệnh chung cho mọi ứng dụng lịch."
+        ]
+      },
+      {
+        "heading": "Kiểm tra quy trình làm việc trên Watch tách riêng với điện thoại",
+        "body": [
+          "Hướng dẫn Watch của Fantastical mô tả các chế độ xem Up Next, List và Tasks, bao gồm cả hoàn thành tác vụ. Hướng dẫn tác vụ của BusyCal phân biệt các tác vụ có ngày và có giờ được hiển thị trên Watch với các tác vụ không có ngày. Nếu danh sách việc tồn đọng không có ngày là quan trọng, hãy đưa nó vào quá trình dùng thử thay vì chỉ kiểm tra sự kiện kế tiếp.",
+          "Một complication trên Watch là phần xem nhanh, còn ứng dụng Watch có thể cung cấp thêm thao tác. Hãy xác minh dữ liệu và thao tác trên chính đồng hồ và điện thoại, đồng thời xem lại gói hiện tại. Giao diện máy tính, điện thoại và đồng hồ không thể thay thế cho nhau chỉ vì chúng dùng cùng một tên sản phẩm."
+        ]
+      },
+      {
+        "heading": "Xem giá và quyền lợi như một bước kiểm tra riêng",
+        "body": [
+          "Hãy kiểm tra màn hình mua hàng hiện tại tại khu vực của bạn, các tính năng còn dùng được sau khi thời gian dùng thử kết thúc và liệu một giao dịch mua trước đây có thay đổi quyền lợi của bạn hay không. Bản tải xuống miễn phí, gói đăng ký định kỳ và giao dịch mua cũ không nhất thiết mở khóa cùng một bộ tính năng.",
+          "Các trang của nhà phát hành có thể được cập nhật vào những thời điểm khác nhau. Câu hỏi thường gặp hiện tại của Readdle mô tả một số khả năng cốt lõi là miễn phí, trong khi một trang trợ giúp riêng về miễn phí so với đầy đủ lại nêu cách phân chia khác. Thay vì xem một mô tả như lời hứa chung cho mọi nơi, hãy xác minh thao tác cần thiết trong ứng dụng đã cài đặt và các điều khoản mua hiện hành của ứng dụng đó."
+        ]
+      },
+      {
+        "heading": "Cloud Calendars nằm ở đâu trong danh sách rút gọn",
+        "body": [
+          "Cloud Calendars là một lựa chọn khác cho iPhone và iPad, với lịch được chọn, nhiều chế độ xem lập kế hoạch, thời tiết và widget. Đồng bộ Google có trong Base, Advanced loại bỏ quảng cáo và Premium bổ sung hỗ trợ lịch Microsoft. Hãy kiểm tra gói hiện tại và quyền của nhà cung cấp trong cấu hình của bạn.",
+          "Nếu kết nối tác vụ chuyên biệt, lệnh mẫu hoặc quy trình làm việc trên máy tính là điều thiết yếu, hãy dùng sản phẩm có tài liệu ghi nhận và thực hiện thành công yêu cầu đó. Hãy so sánh kết quả đã lưu và công sức hằng ngày; danh sách kiểm tra nên giúp bạn chọn, chứ không ngụ ý rằng mọi tính năng được nhắc ở đây đều có trong Cloud Calendars."
+        ]
+      }
+    ],
+    "claims": {},
+    "practical": [
+      "Liệt kê các tài khoản, thiết bị và thao tác thiết yếu của bạn.",
+      "Chọn một cách kết nối tài khoản và kiểm tra các lịch mà cách đó hiển thị.",
+      "Kiểm tra nhập nhanh và hoàn thành tác vụ bằng các ví dụ an toàn.",
+      "Xác minh vị trí thời tiết và các chế độ xem dùng trên từng thiết bị.",
+      "Kiểm tra điều khoản mua hiện tại sau mọi giai đoạn dùng thử hoặc quyền lợi cũ."
+    ],
+    "faq": [
+      {
+        "q": "Đâu là lựa chọn thay thế tốt nhất cho Fantastical?",
+        "a": "Điều đó phụ thuộc vào quy trình làm việc bạn cần. Hãy so sánh nguồn lịch và tác vụ, cách nhập sự kiện, hỗ trợ thiết bị và quyền lợi hiện tại. Hướng dẫn này không tuyên bố có một sản phẩm thắng tuyệt đối cho mọi trường hợp."
+      },
+      {
+        "q": "Cùng tên nhà cung cấp có nghĩa là mọi ứng dụng đều đồng bộ giống hệt nhau không?",
+        "a": "Không. Hãy kiểm tra riêng các kết nối trực tiếp, lịch trên thiết bị, nguồn cấp và quyền, rồi xác minh một thay đổi mẫu ngay tại nguồn của nó."
+      },
+      {
+        "q": "Tôi có thể cho rằng mọi tính năng được quảng bá đều miễn phí không?",
+        "a": "Không. Hãy kiểm tra ứng dụng đã cài đặt, màn hình mua hàng tại địa phương và các tính năng còn lại sau khi thời gian dùng thử kết thúc. Tài liệu của nhà phát hành có thể mô tả các phiên bản hoặc quyền lợi khác nhau."
+      }
+    ],
+    "sourcesHeading": "Tài liệu chính thức được kiểm tra cho hướng dẫn này",
+    "sources": [
+      {
+        "label": "Fantastical: các cách kết nối tài khoản",
+        "url": "https://flexibits.com/fantastical-ios/help/getting-started"
+      },
+      {
+        "label": "Fantastical: nhập ngôn ngữ tự nhiên và mẫu",
+        "url": "https://flexibits.com/fantastical-ios/help/adding-events-and-tasks"
+      },
+      {
+        "label": "Readdle: khả năng hiện tại của sản phẩm và câu hỏi thường gặp",
+        "url": "https://readdle.com/calendars"
+      },
+      {
+        "label": "Readdle: chọn nguồn tác vụ",
+        "url": "https://support.readdle.com/calendars/synchronization/how-to-sync-tasks-with-ios-reminders-or-google-tasks"
+      },
+      {
+        "label": "Readdle: hướng dẫn riêng về gói miễn phí/đầy đủ",
+        "url": "https://apphelp.readdle.com/en/index.php?id=585&pg=kb.page"
+      },
+      {
+        "label": "Calendar 366: tích hợp, bộ lịch, nhập nhanh và thời tiết",
+        "url": "https://calendar366.com/help/index.html"
+      },
+      {
+        "label": "BusyCal cho iOS: tác vụ và giới hạn tác vụ trên Watch",
+        "url": "https://www.busymac.com/docs/busycalios/70659-tasks/"
+      },
+      {
+        "label": "BusyCal cho iOS: thời tiết và các chế độ xem được hỗ trợ",
+        "url": "https://www.busymac.com/docs/busycalios/70665-weather/"
+      },
+      {
+        "label": "BusyCal cho iOS: nhập ngôn ngữ tự nhiên",
+        "url": "https://www.busymac.com/docs/busycalios/70669-natural-language/"
+      },
+      {
+        "label": "Fantastical: chế độ xem và thao tác trên Apple Watch",
+        "url": "https://flexibits.com/fantastical-ios/help/apple-watch"
+      },
+      {
+        "label": "Google: giao diện lịch riêng dựa trên tài khoản",
+        "url": "https://support.google.com/calendar/answer/2465776?hl=en"
+      }
+    ],
+    "seeAlso": [
+      "what-fantastical-costs-and-what-this-does",
+      "natural-language-calendar-events-iphone",
+      "iphone-calendar-tasks-reminders-versus-event-alerts"
+    ],
+    "comparison": {
+      "heading": "Hãy bắt đầu từ yêu cầu chính của bạn",
+      "columns": [
+        "Yêu cầu",
+        "Các lựa chọn liên quan cần kiểm tra",
+        "Điểm khác biệt quan trọng"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Sự kiện kèm thời tiết và các chế độ xem trên iPhone/iPad",
+            "Cloud Calendars và các chế độ xem thời tiết đã được tài liệu hóa trong các ứng dụng được so sánh.",
+            "Hãy kiểm tra vị trí dự báo, khoảng thời gian có sẵn và chế độ xem; phạm vi thời tiết không phải là không giới hạn."
+          ]
+        },
+        {
+          "cells": [
+            "Nhập sự kiện bằng ngôn ngữ tự nhiên",
+            "Fantastical và tính năng tương ứng của Readdle hoặc BusyCal.",
+            "Phân tích câu không giống với đọc chính tả hoặc chỉnh sửa sự kiện thông thường."
+          ]
+        },
+        {
+          "cells": [
+            "Tác vụ bên cạnh sự kiện",
+            "Nguồn tác vụ được tài liệu hóa trong Readdle, Calendar 366, BusyCal hoặc Fantastical.",
+            "Lời nhắc sự kiện không phải là tích hợp hoàn thành tác vụ."
+          ]
+        },
+        {
+          "cells": [
+            "Đồng bộ Google Calendar và tùy chọn bỏ quảng cáo",
+            "Cloud Calendars Base bao gồm đồng bộ Google Calendar; Advanced loại bỏ quảng cáo.",
+            "Hỗ trợ Microsoft Calendar và Teams yêu cầu Premium."
+          ]
+        },
+        {
+          "cells": [
+            "Một mô hình mua khác",
+            "Mục niêm yết hiện tại trên cửa hàng và quyền lợi của từng ứng dụng, trên từng nền tảng.",
+            "Bản tải xuống miễn phí không chứng minh rằng mọi tính năng đều miễn phí; giá và gói theo khu vực có thể thay đổi."
+          ]
+        }
+      ]
+    },
+    "galleryKinds": [
+      "week-left",
+      "week-right",
+      "widgets"
+    ],
+    "galleryDevice": "iPad",
+    "galleryCaption": "Đây là các màn hình Cloud Calendars cho những chế độ xem, thời tiết và widget của ứng dụng. Chúng không phải ảnh chụp màn hình của các sản phẩm khác trong bài so sánh.",
+    "actionHeading": "Hãy thử lịch với một nhu cầu lập kế hoạch thực tế",
+    "actionText": "Nếu yêu cầu chính của bạn là một lịch trình trên iPhone hoặc iPad có thời tiết và widget, hãy đánh giá Cloud Calendars bằng một sự kiện tạm. Hãy tách riêng các yêu cầu chuyên biệt về tác vụ, đặt lịch và ngôn ngữ tự nhiên khi so sánh sản phẩm.",
+    "articleLinks": [
+      {
+        "slug": "weather-inside-your-calendar",
+        "label": "Xem thời tiết phù hợp với quy trình lịch như thế nào"
+      },
+      {
+        "slug": "the-widget-that-shows-what-is-next",
+        "label": "So sánh các widget của Cloud Calendars"
+      },
+      {
+        "slug": "onecal-alternative-iphone-calendar-view-or-sync",
+        "label": "Phân biệt chế độ xem kết hợp với thời gian bận được sao chép"
+      }
+    ]
+  }
+};

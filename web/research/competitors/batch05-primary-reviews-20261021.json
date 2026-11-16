@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-21",
+  "batch": "05",
+  "input": "research/competitors/batch04-search-discovery-20261021.json",
+  "method": "Official URLs discovered through search results and one observed primary-page link. Search listings were discovery only. Nine selected primary bodies reviewed: six publisher overview/FAQ bodies plus three help bodies.",
+  "scope": {
+    "publishers": 6,
+    "selectedPrimaryBodies": 6,
+    "additionalHelpBodies": 3,
+    "completeSubstantiveTextBodies": 9,
+    "partialSelectedBodies": 0,
+    "failedSelectedUrls": 0,
+    "knownFailureRetries": 0,
+    "screenshotOrRuntimeChecks": 0
+  },
+  "reviews": [
+    {
+      "id": "calendar366",
+      "url": "https://calendar366.com/",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Product page; complete substantive text lines10–318 read across overlapping views. Images, linked documentation and runtime not inspected.",
+      "publisherObservation": "Events, task lists, natural-language input, calendar sets, meeting creation, widgets, travel notices and Apple-device coverage. FAQ separates importing ICS from subscribing and directs calendar sharing to providers. Automation includes Shortcuts and Mac-only MCP; AI availability is qualified by platform, hardware, language and beta restrictions.",
+      "limits": "Publisher claims only. Do not transplant its tasks, AI, watch, Mac, integration, privacy or widget-count claims to Cloud. Reset/delete instructions are competitor-specific and not recommended here."
+    },
+    {
+      "id": "timetree",
+      "url": "https://timetreeapp.com/intl/en?LanguageId=1",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Product page; complete substantive body lines7–44; navigation/footer through144 also displayed.",
+      "publisherObservation": "Multiple calendars for different groups, invitation-based participation, combined or filtered views; paid tier advertises attachments, pinned events and additional view options.",
+      "limits": "Price varies by region; no comparative price conclusion. Group membership is not equivalent to every provider permission model."
+    },
+    {
+      "id": "cozi",
+      "url": "https://www.cozi.com/",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Product page; complete substantive body lines22–221, including onboarding and plan summaries.",
+      "publisherObservation": "Family schedule coordinates people, reminders and agenda emails alongside lists and meal planning. Publisher describes iPhone, Android and web access and a family account. Higher plans add search, change notifications and AI tools.",
+      "limits": "Popularity, rating, testimonials and promotional superiority were not adopted as evidence. Do not infer bidirectional sync from generic compatibility wording."
+    },
+    {
+      "id": "howbout",
+      "url": "https://howbout.app/get-help/group-calendar",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Publisher FAQ used as selected primary body; complete substantive body lines1–11; homepage not reviewed.",
+      "publisherObservation": "Explicitly says groups are planning/chat conveniences rather than separate communal calendars. Visibility is controlled through friends, close-friends and private-event settings.",
+      "limits": "Do not label its group model the same as an editable shared provider calendar. No claim Cloud includes social graph or chat."
+    },
+    {
+      "id": "familywall",
+      "url": "https://www.familywall.com/index.html?lang=en",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Product page; complete substantive body lines9–174 across two views.",
+      "publisherObservation": "Family calendar sits alongside shared lists, household budget, meal planning, media, messaging, location/safe-zone alerts and private groups. Advertises mobile and desktop access.",
+      "limits": "These household functions are not Cloud capabilities. Marketing promises such as never missing events were not adopted."
+    },
+    {
+      "id": "teamup",
+      "url": "https://www.teamup.com/features/",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Feature page; complete substantive body lines55–223, including linked feature labels and solution examples; target bodies not implied read.",
+      "publisherObservation": "Organization-oriented sub-calendars, differentiated permissions, custom fields, multiple views, feeds, event pages and website embedding; examples cover equipment, rooms and staff availability.",
+      "limits": "Feature labels are publisher evidence, not runtime verification. Resource availability/booking is not established for Cloud. Browser/mobile parity must not be inferred."
+    },
+    {
+      "id": "timetree-scope",
+      "url": "https://support.timetreeapp.com/hc/en-us/articles/900002172746-Can-other-calendar-members-see-my-events",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Additional help body; complete substantive lines6–33.",
+      "publisherObservation": "Explains visibility by calendar membership; personal home/activity views and linked external calendars are not automatically visible to other members.",
+      "limits": "TimeTree-specific behavior; do not generalize to Cloud or Google."
+    },
+    {
+      "id": "familywall-import",
+      "url": "https://support.familywall.com/en/support/solutions/articles/47001262794-how-to-import-a-cozi-calendar-into-familywall-",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Additional help body; complete substantive lines1–80; related link labels110–121 also read.",
+      "publisherObservation": "Cozi URL import is a snapshot; continuing subscription is read-only and described as premium. Gives mobile/web import steps, preview and a free-import event limit.",
+      "limits": "June2024 page; do not promote limits/pricing without fresh product confirmation. Cozi instructions are FamilyWall documentation, not a first-party Cozi workflow verification."
+    },
+    {
+      "id": "teamup-access",
+      "url": "https://calendar.teamup.com/kb/share-selected-calendars/",
+      "status": "complete-substantive-body-reviewed",
+      "readScope": "Additional help body; complete substantive lines2–69; reached through observed feature-page link6.",
+      "publisherObservation": "Administrator chooses accessible sub-calendars and a permission for each. Separate controls cover new-calendar defaults, changing access and revocation.",
+      "limits": "Do not import its permission matrix into Cloud; check actual provider/product permissions."
+    }
+  ],
+  "discoveredNotBodyReviewed": [
+    {
+      "url": "https://support.timetreeapp.com/hc/en-us/articles/900004492623-How-to-use-shared-calendar-app",
+      "status": "search-result-only"
+    },
+    {
+      "url": "https://support.familywall.com/en/support/solutions/articles/47001013681-about-familywall",
+      "status": "search-result-only"
+    },
+    {
+      "url": "https://www.teamup.com/features/calendar-views/",
+      "status": "search-result-only"
+    },
+    {
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/",
+      "status": "search-result-only"
+    },
+    {
+      "url": "https://www.teamup.com/faq/access-users/",
+      "status": "search-result-only"
+    },
+    {
+      "url": "https://www.cozi.com/calendar/",
+      "status": "search-result-only"
+    }
+  ],
+  "limits": [
+    "No measured Google ranking, search volume, popularity or ChatGPT citation evidence.",
+    "No third-party ranking or review claims adopted.",
+    "Complete body means accessible textual main content, not images/video, every linked page, authenticated features or hands-on testing.",
+    "No Cloud feature verification undertaken in this batch."
+  ]
+}

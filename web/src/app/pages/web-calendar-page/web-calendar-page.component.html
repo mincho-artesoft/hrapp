@@ -1,0 +1,1489 @@
+<section
+  class="studio"
+  [class.studio--light]="surfaceTheme() === 'light'"
+>
+  <!-- Top Workspace & Role Bar -->
+  <div class="studio-bar shell">
+    <div class="studio-bar__tabs" role="tablist" aria-label="Host Studio Tabs">
+      <button
+        type="button"
+        role="tab"
+        class="tab-pill"
+        [class.is-active]="activeTab() === 'calendar'"
+        [attr.aria-selected]="activeTab() === 'calendar'"
+        (click)="activeTab.set('calendar')"
+      >
+        <span class="tab-pill__dot"></span>
+        Web Calendar
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        class="tab-pill"
+        [class.is-active]="activeTab() === 'availability'"
+        [attr.aria-selected]="activeTab() === 'availability'"
+        (click)="activeTab.set('availability')"
+      >
+        Create Booking Slots &amp; Link
+        @if (bookingConfig().enabled && api.profile()?.isHost) {
+          <span class="tab-pill__live">LIVE</span>
+        }
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        class="tab-pill"
+        [class.is-active]="activeTab() === 'incoming'"
+        [attr.aria-selected]="activeTab() === 'incoming'"
+        (click)="activeTab.set('incoming')"
+      >
+        Incoming Bookings
+        @if (hostBookings().length > 0) {
+          <span class="tab-pill__count">{{ hostBookings().length }}</span>
+        }
+      </button>
+    </div>
+
+    <div class="studio-bar__right">
+      <!-- Role Separation Switchers -->
+      <a class="role-chip" [href]="guestPortalHref()">
+        My Booked Meetings (Guest) →
+      </a>
+
+      @if (api.profile()?.isAdmin) {
+        <a class="role-chip role-chip--admin" [href]="adminHref()">
+          Admin Console
+        </a>
+      }
+
+      <!-- Entitlement / Free iOS Unlock / Billing Status -->
+      @if (webAccess()?.iosUnlocked) {
+        <span class="entitlement-pill entitlement-pill--ios" title="Unlocked permanently via Cloud Calendars iOS app">
+           iOS Free Forever ✓
+        </span>
+      } @else if (webAccess()?.entitled && webAccess()?.hasBillingPortal) {
+        <button
+          type="button"
+          class="entitlement-pill entitlement-pill--pro"
+          (click)="openBillingPortal()"
+          title="Manage Web Studio subscription"
+        >
+          Studio Pro ✓ · Billing
+        </button>
+      } @else if (!webAccess()?.entitled) {
+        <button
+          type="button"
+          class="entitlement-pill entitlement-pill--unlock"
+          (click)="openUnlockModal()"
+        >
+          {{ iosQrEnabled() ? 'Unlock Studio ($0 iOS / $1.99)' : 'Unlock Studio ($1.99/mo)' }}
+        </button>
+      }
+
+      <!-- iOS Surface Theme Switch -->
+      <button
+        type="button"
+        class="surface-btn"
+        (click)="surfaceTheme.set(surfaceTheme() === 'dark' ? 'light' : 'dark')"
+        [attr.aria-label]="'Switch calendar surface theme'"
+      >
+        {{ surfaceTheme() === 'dark' ? '☀ Light' : '☾ Dark' }}
+      </button>
+
+      <!-- Account / Sign-In Pill -->
+      @if (api.isSignedInWithAccount()) {
+        <div class="acct-pill">
+          <span class="acct-pill__avatar">
+            {{ (api.profile()?.displayName || api.profile()?.email || 'U').slice(0, 1).toUpperCase() }}
+          </span>
+          <span class="acct-pill__email">
+            {{ api.profile()?.email || api.profile()?.displayName }}
+          </span>
+          <button type="button" class="acct-pill__out" (click)="signOut()">Sign out</button>
+        </div>
+      } @else {
+        <button type="button" class="btn btn--primary signin-cta" (click)="showAuthModal.set(true)">
+          Sign in (Google / Microsoft / Email)
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       TAB 1: INTERACTIVE CLOUDCALENDARS iOS DRAG & DROP CALENDAR
+  ======================================================================== -->
+  @if (activeTab() === 'calendar') {
+    <div class="cal-shell shell">
+      <!-- Left iOS Sidebar -->
+      <aside class="cal-side">
+        <div class="cal-side__actions">
+          <button type="button" class="new-ev-btn" (click)="openNewEventDefault()">
+            <span>＋</span> New Event
+          </button>
+          <button
+            type="button"
+            class="pub-hours-btn"
+            (click)="activeTab.set('availability')"
+          >
+            Share Booking Link
+          </button>
+        </div>
+
+        <!-- Up Next Card -->
+        <div class="side-card">
+          <div class="side-card__hdr">UP NEXT</div>
+          @if (upNextEvent(); as nextEv) {
+            <div
+              class="up-next"
+              [ngStyle]="cardStyle(nextEv.color)"
+              (click)="openEditEventModal(nextEv)"
+            >
+              <span class="up-next__bar"></span>
+              <div class="up-next__body">
+                <strong>{{ nextEv.title }}</strong>
+                <span>{{ formatFullDateTime(nextEv.start) }}</span>
+                @if (nextEv.details?.videoCallURL) {
+                  <a
+                    class="up-next__join"
+                    [href]="nextEv.details?.videoCallURL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    (click)="$event.stopPropagation()"
+                  >
+                    Join Video Call ↗
+                  </a>
+                }
+              </div>
+            </div>
+          } @else {
+            <p class="side-empty">No upcoming timed events. Click or drag on the grid to add one.</p>
+          }
+        </div>
+
+        <!-- Mini 42-Day Month Picker -->
+        <div class="side-card">
+          <div class="mini-hdr">
+            <span>{{ anchorDate() | date: 'MMMM yyyy' }}</span>
+            <div class="mini-hdr__nav">
+              <button type="button" (click)="stepPeriod(-1)" aria-label="Previous">‹</button>
+              <button type="button" (click)="stepPeriod(1)" aria-label="Next">›</button>
+            </div>
+          </div>
+          <div class="mini-dow">
+            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+          </div>
+          <div class="mini-grid">
+            @for (cell of miniMonthDays(); track cell.key) {
+              <button
+                type="button"
+                class="mini-day"
+                [class.is-muted]="!cell.inMonth"
+                [class.is-today]="cell.isToday"
+                [class.is-selected]="cell.isSelected && !cell.isToday"
+                (click)="selectMiniDay(cell.date)"
+              >
+                <span>{{ cell.dayNum }}</span>
+                @if (cell.dots.length) {
+                  <i class="mini-dots">
+                    @for (c of cell.dots; track $index) {
+                      <em [style.background]="c"></em>
+                    }
+                  </i>
+                }
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- 2-Way Google & Microsoft Calendar Sync -->
+        <div class="side-card">
+          <div class="side-card__hdr">2-WAY CALENDAR SYNC</div>
+          <p class="side-hint">
+            Syncs free/busy conflicts live &amp; automatically pushes booked appointments into your Google / Outlook calendar.
+          </p>
+
+          <div class="sync-btns">
+            <div class="sync-row">
+              <button
+                type="button"
+                class="sync-btn"
+                [disabled]="syncingExternal() === 'google'"
+                (click)="syncGoogleBusy()"
+              >
+                <span class="sync-dot" style="background:#34A853"></span>
+                {{
+                  api.profile()?.connectedProviders?.google?.connected || externalBusy().sources['google']
+                    ? 'Google 2-Way Synced ✓'
+                    : 'Connect Google Calendar'
+                }}
+              </button>
+              @if (api.profile()?.connectedProviders?.google?.connected || externalBusy().sources['google']) {
+                <button type="button" class="sync-x" (click)="disconnectExternal('google')" title="Disconnect">✕</button>
+              }
+            </div>
+
+            <div class="sync-row">
+              <button
+                type="button"
+                class="sync-btn"
+                [disabled]="syncingExternal() === 'microsoft'"
+                (click)="syncMicrosoftBusy()"
+              >
+                <span class="sync-dot" style="background:#00A4EF"></span>
+                {{
+                  api.profile()?.connectedProviders?.microsoft?.connected || externalBusy().sources['microsoft']
+                    ? 'Microsoft 2-Way Synced ✓'
+                    : 'Connect Microsoft Calendar'
+                }}
+              </button>
+              @if (api.profile()?.connectedProviders?.microsoft?.connected || externalBusy().sources['microsoft']) {
+                <button type="button" class="sync-x" (click)="disconnectExternal('microsoft')" title="Disconnect">✕</button>
+              }
+            </div>
+          </div>
+
+          <div class="ics-sync-box">
+            <input
+              type="url"
+              placeholder="https:// or webcal:// .ics feed"
+              [ngModel]="icsFeedInput()"
+              (ngModelChange)="icsFeedInput.set($event)"
+            />
+            <button
+              type="button"
+              [disabled]="syncingExternal() === 'ics'"
+              (click)="syncIcsUrl()"
+            >
+              {{ syncingExternal() === 'ics' ? '…' : 'Sync' }}
+            </button>
+          </div>
+
+          @if (syncFeedback()) {
+            <p class="sync-msg">{{ syncFeedback() }}</p>
+          }
+        </div>
+
+        <!-- CloudCalendars iOS / Apple Calendar Feed -->
+        @if (api.profile()?.feedUrl; as feedUrl) {
+          <div class="side-card">
+            <div class="side-card__hdr">CLOUDCALENDARS .ICS FEED</div>
+            <div class="feed-actions">
+              <button type="button" class="sync-btn" (click)="copyText(feedUrl, 'Copied .ics feed URL!')">
+                Copy .ics Feed URL
+              </button>
+              @if (api.profile()?.webcalUrl; as wc) {
+                <a class="sync-btn" [href]="wc">Subscribe (webcal://)</a>
+              }
+            </div>
+          </div>
+        }
+      </aside>
+
+      <!-- Main Calendar Canvas -->
+      <div class="cal-main">
+        <!-- Toolbar -->
+        <div class="cal-toolbar">
+          <div class="cal-toolbar__left">
+            <button type="button" class="cal-nav-btn cal-nav-btn--today" (click)="jumpToday()">
+              Today
+            </button>
+            <div class="cal-arrows">
+              <button type="button" class="cal-nav-btn" (click)="stepPeriod(-1)" aria-label="Previous period">‹</button>
+              <button type="button" class="cal-nav-btn" (click)="stepPeriod(1)" aria-label="Next period">›</button>
+            </div>
+            <h1 class="cal-range-title">{{ headerRangeLabel() }}</h1>
+          </div>
+
+          <div class="cal-toolbar__right">
+            <span class="tz-badge">{{ calendarTimeZone() }}</span>
+            <div class="seg-ctrl" role="group" aria-label="Calendar view mode">
+              <button type="button" [class.is-on]="viewMode() === 'day'" (click)="viewMode.set('day')">Day</button>
+              <button type="button" [class.is-on]="viewMode() === 'workweek'" (click)="viewMode.set('workweek')">5 Days</button>
+              <button type="button" [class.is-on]="viewMode() === 'week'" (click)="viewMode.set('week')">Week</button>
+              <button type="button" [class.is-on]="viewMode() === 'month'" (click)="viewMode.set('month')">Month</button>
+              <button type="button" [class.is-on]="viewMode() === 'agenda'" (click)="viewMode.set('agenda')">Agenda</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE GRID (DAY / 5-DAY / WEEK) -->
+        @if (viewMode() === 'day' || viewMode() === 'workweek' || viewMode() === 'week') {
+          <!-- Sticky Day Headers + All-Day Strip -->
+          <div class="tl-head">
+            <div class="tl-gutter tl-gutter--head">
+              <span>ALL DAY</span>
+            </div>
+            <div
+              class="tl-day-headers"
+              [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
+            >
+              @for (d of visibleDays(); track d.getTime(); let di = $index) {
+                <div
+                  class="tl-day-hdr"
+                  [class.is-today]="isTodayDay(d)"
+                  [class.is-drop-col]="drag()?.hasMoved && drag()?.previewDayIdx === di"
+                >
+                  <div class="tl-day-hdr__top">
+                    <span class="tl-dow">{{ formatDayHeaderWeek(d).dow }}</span>
+                    <span class="tl-dnum">{{ formatDayHeaderWeek(d).num }}</span>
+                  </div>
+                  <div class="tl-allday-zone">
+                    @for (adev of allDayEventsForDay(d); track adev.id) {
+                      <button
+                        type="button"
+                        class="allday-pill"
+                        [ngStyle]="cardStyle(adev.color)"
+                        (click)="openEditEventModal(adev)"
+                      >
+                        <span class="allday-pill__bar"></span>
+                        <span class="allday-pill__txt">{{ adev.title }}</span>
+                      </button>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Scrollable 24-Hour Pointer-Captured Canvas -->
+          <div class="tl-scroll" #timelineScroll>
+            <div class="tl-body" [style.height.px]="24 * hourPx">
+              <!-- Left 60px Hours Column -->
+              <div class="tl-gutter">
+                @for (h of hours; track h) {
+                  <div class="tl-hour-lbl" [style.top.px]="h * hourPx">
+                    {{ formatHourLabel(h) }}
+                  </div>
+                }
+
+                <!-- iOS Red Current Time Pill -->
+                <div class="tl-now-pill" [style.top.px]="currentTimeTopPx()">
+                  {{ currentTimeLabel() }}
+                </div>
+
+                <!-- Live Snapped Drag Time Pill in Hours Gutter -->
+                @if (drag(); as activeDrag) {
+                  @if (activeDrag.hasMoved) {
+                    <div
+                      class="tl-drag-pill"
+                      [style.top.px]="(activeDrag.previewStartMin / 60) * hourPx"
+                    >
+                      {{ formatMinutesHm(activeDrag.previewStartMin) }}
+                    </div>
+                  }
+                }
+              </div>
+
+              <!-- Day Columns Container -->
+              <div
+                class="tl-cols"
+                #daysColumnsEl
+                [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
+              >
+                @for (d of visibleDays(); track d.getTime(); let di = $index) {
+                  <div
+                    class="tl-col"
+                    [class.is-today]="isTodayDay(d)"
+                    [class.is-drop-col]="drag()?.hasMoved && drag()?.previewDayIdx === di"
+                    (pointerdown)="onDayColumnPointerDown($event, di)"
+                  >
+                    <!-- Hour & Half-Hour Hairlines -->
+                    @for (h of hours; track h) {
+                      <div class="tl-line" [style.top.px]="h * hourPx"></div>
+                      <div class="tl-line tl-line--half" [style.top.px]="h * hourPx + hourPx / 2"></div>
+                    }
+
+                    <!-- Red Current Time Line on Today -->
+                    @if (isTodayDay(d)) {
+                      <div class="tl-now-line" [style.top.px]="currentTimeTopPx()">
+                        <span class="tl-now-dot"></span>
+                      </div>
+                    }
+
+                    <!-- Live Click-and-Drag New Event Creation Preview -->
+                    @if (drag(); as activeDrag) {
+                      @if (activeDrag.mode === 'create' && activeDrag.previewDayIdx === di && activeDrag.hasMoved) {
+                        <div
+                          class="ev-block ev-block--creating"
+                          [style.top.px]="(activeDrag.previewStartMin / 60) * hourPx"
+                          [style.height.px]="((activeDrag.previewEndMin - activeDrag.previewStartMin) / 60) * hourPx"
+                          [ngStyle]="cardStyle('#0A84FF', true)"
+                        >
+                          <span class="ev-block__bar"></span>
+                          <div class="ev-block__inner">
+                            <strong class="ev-block__title">New Event</strong>
+                            <span class="ev-block__time">
+                              {{ formatMinutesHm(activeDrag.previewStartMin) }} – {{ formatMinutesHm(activeDrag.previewEndMin) }}
+                            </span>
+                          </div>
+                        </div>
+                      }
+                    }
+
+                    <!-- Positioned Timed Event Cards (Exact iOS Geometry) -->
+                    @for (blk of timedBlocksForDay(d, di); track blk.id) {
+                      @let isThisDragging = drag()?.eventId === blk.id && !!drag()?.hasMoved;
+                      <div
+                        class="ev-block"
+                        [class.is-dragging]="isThisDragging"
+                        [class.is-readonly]="blk.data.readOnly"
+                        [class.is-booked]="!!blk.data.booking?.bookingId"
+                        [ngStyle]="blockPositionStyle(blk, isThisDragging)"
+                        (pointerdown)="onEventPointerDown($event, blk.data, di)"
+                      >
+                        <!-- 3px Rounded Left Accent Bar -->
+                        <span class="ev-block__bar" aria-hidden="true"></span>
+
+                        <div class="ev-block__inner">
+                          <div class="ev-block__toprow">
+                            <strong class="ev-block__title">{{ blk.data.title }}</strong>
+                            @if (blk.data.booking?.bookingId) {
+                              <span class="ev-booked-tag" title="Booked Meeting">BOOKED</span>
+                            }
+                          </div>
+                          <span class="ev-block__time">
+                            @if (isThisDragging && drag()) {
+                              {{ formatMinutesHm(drag()!.previewStartMin) }} – {{ formatMinutesHm(drag()!.previewEndMin) }}
+                            } @else {
+                              {{ formatEventTimeSpan(blk.data) }}
+                            }
+                          </span>
+                          @if (blk.endMinutes - blk.startMinutes >= 45 && (blk.data.location || blk.data.booking?.guestName)) {
+                            <span class="ev-block__loc">
+                              {{ blk.data.booking?.guestName ? '👤 ' + blk.data.booking!.guestName : blk.data.location }}
+                            </span>
+                          }
+                        </div>
+
+                        <!-- Signature iOS Circular White + Accent Ring Resize Handles -->
+                        @if (!blk.data.readOnly) {
+                          <span
+                            class="ev-handle ev-handle--top"
+                            title="Drag to adjust start time"
+                            (pointerdown)="onResizeHandlePointerDown($event, 'resize-start', blk.data, di)"
+                          ></span>
+                          <span
+                            class="ev-handle ev-handle--bottom"
+                            title="Drag to adjust end time"
+                            (pointerdown)="onResizeHandlePointerDown($event, 'resize-end', blk.data, di)"
+                          ></span>
+                        }
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- MONTH VIEW (WITH DRAG & DROP ACROSS DAYS) -->
+        @if (viewMode() === 'month') {
+          <div class="month-wrap">
+            <div class="month-dow">
+              <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+            </div>
+            <div class="month-grid">
+              @for (cell of monthGridCells(); track cell.key) {
+                <div
+                  class="month-cell"
+                  [class.is-muted]="!cell.inMonth"
+                  [class.is-today]="cell.isToday"
+                  [class.is-drop-target]="monthDropTargetKey() === cell.key"
+                  (dragover)="onMonthCellDragOver($event, cell.key)"
+                  (dragleave)="monthDropTargetKey.set(null)"
+                  (drop)="onMonthCellDrop($event, cell.date)"
+                  (dblclick)="openNewEventModal(cell.date, cell.date, true)"
+                >
+                  <div class="month-cell__hdr">
+                    <span class="month-cell__num">{{ cell.dayNum }}</span>
+                    <button
+                      type="button"
+                      class="month-cell__add"
+                      title="Add event"
+                      (click)="openNewEventModal(cell.date, cell.date, false)"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="month-cell__list">
+                    @for (ev of cell.events; track ev.id) {
+                      <div
+                        class="month-pill"
+                        [attr.draggable]="!ev.readOnly"
+                        [ngStyle]="cardStyle(ev.color)"
+                        (dragstart)="onMonthPillDragStart($event, ev)"
+                        (click)="openEditEventModal(ev)"
+                      >
+                        <span class="month-pill__dot" [style.background]="ev.color || '#0A84FF'"></span>
+                        <span class="month-pill__title">{{ ev.title }}</span>
+                      </div>
+                    }
+                    @if (cell.moreCount > 0) {
+                      <button
+                        type="button"
+                        class="month-more"
+                        (click)="selectMiniDay(cell.date); viewMode.set('day')"
+                      >
+                        +{{ cell.moreCount }} more
+                      </button>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- AGENDA VIEW -->
+        @if (viewMode() === 'agenda') {
+          <div class="agenda-wrap">
+            @if (agendaGroups().length === 0) {
+              <div class="empty-state">
+                <h3>No events in the next 30 days</h3>
+                <p>Create an event or share your booking link so guests can schedule time with you.</p>
+                <button type="button" class="btn btn--primary" (click)="openNewEventDefault()">
+                  + Create Event
+                </button>
+              </div>
+            } @else {
+              @for (grp of agendaGroups(); track grp.label) {
+                <div class="agenda-day">
+                  <h3 class="agenda-day__title">{{ grp.label }}</h3>
+                  <div class="agenda-day__items">
+                    @for (ev of grp.events; track ev.id) {
+                      <div
+                        class="agenda-card"
+                        [ngStyle]="cardStyle(ev.color)"
+                        (click)="openEditEventModal(ev)"
+                      >
+                        <span class="agenda-card__bar"></span>
+                        <div class="agenda-card__time">{{ formatEventTimeSpan(ev) }}</div>
+                        <div class="agenda-card__info">
+                          <strong>{{ ev.title }}</strong>
+                          @if (ev.booking?.guestName) {
+                            <span>Booked by {{ ev.booking!.guestName }} ({{ ev.booking!.guestEmail }})</span>
+                          } @else if (ev.location) {
+                            <span>{{ ev.location }}</span>
+                          }
+                        </div>
+                        @if (ev.details?.videoCallURL) {
+                          <a
+                            class="btn btn--ghost agenda-join"
+                            [href]="ev.details!.videoCallURL!"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            (click)="$event.stopPropagation()"
+                          >
+                            Join Call ↗
+                          </a>
+                        }
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- =======================================================================
+       TAB 2: AVAILABILITY & PUBLIC BOOKING PAGE BUILDER (HOST PANEL)
+  ======================================================================== -->
+  @if (activeTab() === 'availability') {
+    <div class="avail-shell shell">
+      <div class="avail-grid">
+        <!-- Left Builder Column -->
+        <div class="avail-col">
+          <div class="panel-card">
+            <div class="panel-card__hdr">
+              <div>
+                <h2>Public Booking Profile &amp; Link</h2>
+                <p>Publish your open hours like Calendly — every booking lands directly on your CloudCalendars timeline.</p>
+              </div>
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  [ngModel]="bookingConfig().enabled"
+                  (ngModelChange)="updateCfgField('enabled', $event)"
+                />
+                <span>{{ bookingConfig().enabled ? 'Accepting Bookings' : 'Paused' }}</span>
+              </label>
+            </div>
+
+            <div class="form-grid-2">
+              <label class="field">
+                <span>Your Booking Handle</span>
+                <div class="handle-input">
+                  <em>/book/?u=</em>
+                  <input
+                    type="text"
+                    [ngModel]="bookingConfig().handle"
+                    (ngModelChange)="updateCfgField('handle', $event)"
+                    (blur)="onHandleBlur()"
+                    placeholder="alex-studio"
+                  />
+                </div>
+                @if (handleStatus() === 'available') {
+                  <small class="hint-ok">✓ Handle is available</small>
+                } @else if (handleStatus() === 'taken') {
+                  <small class="hint-err">{{ handleReason() || 'Handle is already taken' }}</small>
+                }
+              </label>
+
+              <label class="field">
+                <span>Host Display Name</span>
+                <input
+                  type="text"
+                  [ngModel]="bookingConfig().displayName"
+                  (ngModelChange)="updateCfgField('displayName', $event)"
+                />
+              </label>
+
+              <label class="field field--full">
+                <span>Page Headline</span>
+                <input
+                  type="text"
+                  [ngModel]="bookingConfig().headline"
+                  (ngModelChange)="updateCfgField('headline', $event)"
+                />
+              </label>
+
+              <label class="field field--full">
+                <span>Welcome Bio / Instructions</span>
+                <textarea
+                  rows="2"
+                  [ngModel]="bookingConfig().bio"
+                  (ngModelChange)="updateCfgField('bio', $event)"
+                ></textarea>
+              </label>
+
+              <label class="field">
+                <span>Host Timezone</span>
+                <select
+                  [ngModel]="bookingConfig().timeZone"
+                  (ngModelChange)="updateCfgField('timeZone', $event)"
+                >
+                  @for (tz of timezones; track tz) {
+                    <option [value]="tz">{{ tz }}</option>
+                  }
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Slot Increment</span>
+                <select
+                  [ngModel]="bookingConfig().slotIntervalMinutes"
+                  (ngModelChange)="updateCfgField('slotIntervalMinutes', +$event)"
+                >
+                  <option [ngValue]="10">Every 10 minutes</option>
+                  <option [ngValue]="15">Every 15 minutes</option>
+                  <option [ngValue]="20">Every 20 minutes</option>
+                  <option [ngValue]="30">Every 30 minutes</option>
+                  <option [ngValue]="60">Every 60 minutes</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Minimum Notice (minutes)</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="10080"
+                  [ngModel]="bookingConfig().minNoticeMinutes"
+                  (ngModelChange)="updateCfgField('minNoticeMinutes', +$event)"
+                />
+              </label>
+
+              <label class="field">
+                <span>Max Advance Days</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="365"
+                  [ngModel]="bookingConfig().maxAdvanceDays"
+                  (ngModelChange)="updateCfgField('maxAdvanceDays', +$event)"
+                />
+              </label>
+            </div>
+
+            <label class="verify-toggle">
+              <input
+                type="checkbox"
+                [ngModel]="bookingConfig().requireEmailVerification"
+                (ngModelChange)="updateCfgField('requireEmailVerification', $event)"
+              />
+              <div>
+                <strong>Require 6-digit email verification code from guests before booking</strong>
+                <span>Eliminates spam bookings by verifying guest email via instant SES OTP.</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Weekly Working Hours -->
+          <div class="panel-card">
+            <div class="panel-card__hdr">
+              <div>
+                <h2>Weekly Available Hours</h2>
+                <p>Add split shifts (morning + afternoon) or copy Monday across the week.</p>
+              </div>
+              <button type="button" class="mini-action-btn" (click)="copyMondayToWeekdays()">
+                Copy Mon → Fri
+              </button>
+            </div>
+
+            <div class="weekly-list">
+              @for (d of weekdayRows; track d.key) {
+                @let wins = windowsForDay(d.key);
+                <div class="wk-row">
+                  <label class="wk-day">
+                    <input
+                      type="checkbox"
+                      [checked]="wins.length > 0"
+                      (change)="toggleWeekday(d.key)"
+                    />
+                    <span>{{ d.label }}</span>
+                  </label>
+
+                  @if (wins.length === 0) {
+                    <span class="wk-closed">Unavailable</span>
+                  } @else {
+                    <div class="wk-windows">
+                      @for (w of wins; track $index; let wi = $index) {
+                        <div class="wk-win">
+                          <input
+                            type="time"
+                            [value]="formatMinutesHm(w.start)"
+                            (change)="updateWindowTime(d.key, wi, 'start', $any($event.target).value)"
+                          />
+                          <span>–</span>
+                          <input
+                            type="time"
+                            [value]="formatMinutesHm(w.end)"
+                            (change)="updateWindowTime(d.key, wi, 'end', $any($event.target).value)"
+                          />
+                          @if (wins.length > 1) {
+                            <button type="button" class="wk-rm" (click)="removeWeekdayWindow(d.key, wi)">✕</button>
+                          }
+                        </div>
+                      }
+                      <button type="button" class="wk-add" (click)="addWeekdayWindow(d.key)">+ Split</button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Date-Specific Custom Booking Slots & Overrides -->
+          <div class="panel-card">
+            <div class="panel-card__hdr">
+              <div>
+                <h2>Custom Date Slots &amp; Holiday Overrides</h2>
+                <p>Open specific custom booking slots on any date (add multiple windows per day) or mark a holiday closed.</p>
+              </div>
+            </div>
+
+            <div class="override-bar">
+              <input type="date" [ngModel]="newOverrideDate()" (ngModelChange)="newOverrideDate.set($event)" />
+              <label class="ov-chk">
+                <input type="checkbox" [ngModel]="newOverrideClosed()" (ngModelChange)="newOverrideClosed.set($event)" />
+                <span>Closed all day</span>
+              </label>
+              @if (!newOverrideClosed()) {
+                <input type="time" [ngModel]="newOverrideStart()" (ngModelChange)="newOverrideStart.set($event)" />
+                <span>–</span>
+                <input type="time" [ngModel]="newOverrideEnd()" (ngModelChange)="newOverrideEnd.set($event)" />
+              }
+              <button type="button" class="mini-action-btn" (click)="addDateOverride()">+ Add Date Slot</button>
+            </div>
+
+            @if (overrideEntries().length > 0) {
+              <div class="override-chips">
+                @for (ov of overrideEntries(); track ov.date) {
+                  <span class="ov-chip">
+                    <strong>{{ ov.date }}</strong>:
+                    {{ formatWindowsSummary(ov.windows) }}
+                    <button type="button" (click)="removeDateOverride(ov.date)">✕</button>
+                  </span>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Meeting Types -->
+          <div class="panel-card">
+            <div class="panel-card__hdr">
+              <div>
+                <h2>Meeting Types</h2>
+                <p>Offer different durations, colors, buffers, and video call links.</p>
+              </div>
+              <button type="button" class="mini-action-btn" (click)="addMeetingType()">+ Add Type</button>
+            </div>
+
+            <div class="mt-list">
+              @for (mt of bookingConfig().meetingTypes; track mt.id) {
+                <div class="mt-card">
+                  <div class="mt-card__top">
+                    <span class="mt-swatch" [style.background]="mt.color"></span>
+                    <input
+                      type="text"
+                      class="mt-name-in"
+                      [ngModel]="mt.name"
+                      (ngModelChange)="updateMeetingType(mt.id, 'name', $event)"
+                    />
+                    <button type="button" class="wk-rm" (click)="removeMeetingType(mt.id)" title="Delete">✕</button>
+                  </div>
+
+                  <div class="form-grid-3">
+                    <label class="field">
+                      <span>Duration (min)</span>
+                      <input
+                        type="number"
+                        min="5"
+                        max="480"
+                        [ngModel]="mt.durationMinutes"
+                        (ngModelChange)="updateMeetingType(mt.id, 'durationMinutes', +$event)"
+                      />
+                    </label>
+                    <label class="field">
+                      <span>Buffer After (min)</span>
+                      <input
+                        type="number"
+                        min="0"
+                        max="120"
+                        [ngModel]="mt.bufferAfterMinutes"
+                        (ngModelChange)="updateMeetingType(mt.id, 'bufferAfterMinutes', +$event)"
+                      />
+                    </label>
+                    <label class="field">
+                      <span>Color</span>
+                      <select
+                        [ngModel]="mt.color"
+                        (ngModelChange)="updateMeetingType(mt.id, 'color', $event)"
+                      >
+                        @for (c of colors; track c.hex) {
+                          <option [value]="c.hex">{{ c.label }} ({{ c.hex }})</option>
+                        }
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="form-grid-2">
+                    <label class="field">
+                      <span>Location Type</span>
+                      <select
+                        [ngModel]="mt.locationKind"
+                        (ngModelChange)="updateMeetingType(mt.id, 'locationKind', $event)"
+                      >
+                        <option value="google_meet">Google Meet (Auto-Link with Google Sync)</option>
+                        <option value="microsoft_teams">Microsoft Teams (Auto-Link with Microsoft Sync)</option>
+                        <option value="zoom">Zoom</option>
+                        <option value="phone">Phone Call</option>
+                        <option value="in_person">In Person</option>
+                        <option value="custom">Custom Link / Place</option>
+                      </select>
+                    </label>
+                    <label class="field">
+                      <span>Meeting Link or Address</span>
+                      <input
+                        type="text"
+                        placeholder="https://meet.google.com/..."
+                        [ngModel]="mt.locationValue"
+                        (ngModelChange)="updateMeetingType(mt.id, 'locationValue', $event)"
+                      />
+                    </label>
+                  </div>
+
+                  <label class="field">
+                    <span>Short Description</span>
+                    <input
+                      type="text"
+                      [ngModel]="mt.description"
+                      (ngModelChange)="updateMeetingType(mt.id, 'description', $event)"
+                    />
+                  </label>
+                </div>
+              }
+            </div>
+
+            <div class="save-bar">
+              <button
+                type="button"
+                class="btn btn--primary btn--lg"
+                [disabled]="savingConfig()"
+                (click)="saveAvailabilityConfig()"
+              >
+                {{ savingConfig() ? 'Publishing…' : 'Save & Publish Booking Page' }}
+              </button>
+              @if (configSavedMsg()) {
+                <span class="hint-ok">{{ configSavedMsg() }}</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Share, Expiring Invite Links, QR & Embed Column -->
+        <aside class="avail-share">
+          <!-- Expiring Public Invite Links Card -->
+          <div class="panel-card invite-gen-card">
+            <span class="share-eyebrow">EXPIRING INVITE LINKS</span>
+            <h3>Send an expiring booking link</h3>
+            <p class="invite-gen-sub">
+              Send a private link that expires automatically (even if your public page is paused). Signed-in Google &amp; Microsoft guests get the meeting added straight to their calendar; others confirm via email.
+            </p>
+
+            <div class="invite-gen-form">
+              <label class="field">
+                <span>Link Label (for your reference)</span>
+                <input
+                  type="text"
+                  placeholder="VIP Client / Discovery Call"
+                  [ngModel]="inviteLabel()"
+                  (ngModelChange)="inviteLabel.set($event)"
+                />
+              </label>
+
+              <div class="form-grid-2">
+                <label class="field">
+                  <span>Expires After</span>
+                  <select
+                    [ngModel]="inviteExpiresHours()"
+                    (ngModelChange)="inviteExpiresHours.set(+$event)"
+                  >
+                    <option [ngValue]="24">24 hours</option>
+                    <option [ngValue]="72">3 days</option>
+                    <option [ngValue]="168">7 days</option>
+                    <option [ngValue]="336">14 days</option>
+                    <option [ngValue]="720">30 days</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Usage Limit</span>
+                  <select
+                    [ngModel]="inviteMaxUses()"
+                    (ngModelChange)="inviteMaxUses.set(+$event)"
+                  >
+                    <option [ngValue]="1">Single-use (1 booking)</option>
+                    <option [ngValue]="0">Unlimited until expiry</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Meeting Type Scope</span>
+                <select
+                  [ngModel]="inviteMeetingTypeId()"
+                  (ngModelChange)="inviteMeetingTypeId.set($event)"
+                >
+                  <option value="">All active meeting types</option>
+                  @for (mt of bookingConfig().meetingTypes; track mt.id) {
+                    <option [value]="mt.id">{{ mt.name }} ({{ mt.durationMinutes }}m)</option>
+                  }
+                </select>
+              </label>
+
+              <button
+                type="button"
+                class="btn btn--primary"
+                [disabled]="creatingInvite()"
+                (click)="generateExpiringInviteLink()"
+              >
+                {{ creatingInvite() ? 'Generating…' : '⏳ Generate & Copy Expiring Link' }}
+              </button>
+            </div>
+
+            @if (inviteLinks().length > 0) {
+              <div class="invite-links-list">
+                <span class="invite-links-hdr">RECENT EXPIRING LINKS</span>
+                @for (lnk of inviteLinks(); track lnk.token) {
+                  <div class="inv-item" [class.is-inactive]="lnk.state !== 'active'">
+                    <div class="inv-item__top">
+                      <strong>{{ lnk.label }}</strong>
+                      <span class="inv-state" [attr.data-state]="lnk.state">{{ lnk.state }}</span>
+                    </div>
+                    <div class="inv-item__meta">
+                      <span>
+                        {{ lnk.maxUses === 1 ? 'Single-use' : 'Multi-use' }} · {{ lnk.usedCount }}{{ lnk.maxUses > 0 ? '/' + lnk.maxUses : '' }} booked
+                      </span>
+                      <span>Exp {{ lnk.expiresAt | date: 'MMM d, HH:mm' }}</span>
+                    </div>
+                    <div class="inv-item__actions">
+                      @if (lnk.state === 'active') {
+                        <button
+                          type="button"
+                          class="mini-action-btn"
+                          (click)="copyText(lnk.shareUrl, 'Copied expiring invite link!')"
+                        >
+                          Copy Link
+                        </button>
+                        <a
+                          class="mini-action-btn"
+                          [href]="invitePreviewHref(lnk.token)"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          Open ↗
+                        </a>
+                        <button
+                          type="button"
+                          class="mini-action-btn mini-action-btn--danger"
+                          (click)="revokeInviteLink(lnk.token)"
+                        >
+                          Deactivate
+                        </button>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="panel-card share-card">
+            <span class="share-eyebrow">PERMANENT BOOKING LINK</span>
+            <h3>Share with clients &amp; teammates</h3>
+            <div class="share-url-box">{{ publicShareUrl() }}</div>
+
+            <div class="share-btns">
+              <button type="button" class="btn btn--primary" (click)="copyText(publicShareUrl())">
+                Copy Booking Link
+              </button>
+              <a class="btn btn--ghost" [href]="publicPreviewHref()" target="_blank" rel="noopener">
+                Open Live Booking Page ↗
+              </a>
+            </div>
+
+            @if (shareQrDataUrl(); as qr) {
+              <div class="qr-box">
+                <img [src]="qr" alt="Booking QR Code" width="156" height="156" />
+                <span>Scan with iPhone or Android camera to book instantly</span>
+              </div>
+            }
+
+            <div class="embed-box">
+              <span>Embed on any website</span>
+              <code>{{ embedSnippet() }}</code>
+              <button
+                type="button"
+                class="mini-action-btn"
+                (click)="copyText(embedSnippet(), 'Copied iframe embed code!')"
+              >
+                Copy &lt;iframe&gt; Code
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  }
+
+  <!-- =======================================================================
+       TAB 3: INCOMING GUEST BOOKINGS QUEUE (HOST MANAGEMENT)
+  ======================================================================== -->
+  @if (activeTab() === 'incoming') {
+    <div class="incoming-shell shell">
+      <div class="panel-card">
+        <div class="panel-card__hdr">
+          <div>
+            <h2>Incoming Guest Bookings</h2>
+            <p>Manage appointments booked on your schedule — rescheduling or cancelling automatically emails the invitee an updated .ics invite.</p>
+          </div>
+          <div class="seg-ctrl">
+            <button type="button" [class.is-on]="incomingFilter() === 'upcoming'" (click)="incomingFilter.set('upcoming')">Upcoming</button>
+            <button type="button" [class.is-on]="incomingFilter() === 'past'" (click)="incomingFilter.set('past')">Past</button>
+            <button type="button" [class.is-on]="incomingFilter() === 'cancelled'" (click)="incomingFilter.set('cancelled')">Cancelled</button>
+          </div>
+        </div>
+
+        @if (filteredHostBookings().length === 0) {
+          <div class="empty-state">
+            <h3>No {{ incomingFilter() }} bookings yet</h3>
+            <p>Share your booking link to let clients, teammates, or leads pick open times on your calendar.</p>
+            <button type="button" class="btn btn--primary" (click)="activeTab.set('availability')">
+              Configure &amp; Share Booking Link →
+            </button>
+          </div>
+        } @else {
+          <div class="bk-list">
+            @for (b of filteredHostBookings(); track b.bookingId) {
+              <div class="bk-row" [ngStyle]="cardStyle(b.color)">
+                <span class="bk-row__bar"></span>
+                <div class="bk-row__main">
+                  <div class="bk-row__top">
+                    <strong>{{ b.title }}</strong>
+                    <span class="bk-status" [class.is-cancelled]="b.status === 'cancelled'">
+                      {{ b.status }}
+                    </span>
+                  </div>
+                  <div class="bk-row__meta">
+                    <span>📅 {{ formatFullDateTime(b.start) }}</span>
+                    <span>👤 {{ b.guestName }} ({{ b.guestEmail }})</span>
+                    <span>🌍 {{ b.guestTimeZone }}</span>
+                  </div>
+                  @if (b.guestNotes) {
+                    <p class="bk-row__notes">“{{ b.guestNotes }}”</p>
+                  }
+                </div>
+                <div class="bk-row__actions">
+                  @if (b.videoCallURL && b.status !== 'cancelled') {
+                    <a class="mini-action-btn" [href]="b.videoCallURL" target="_blank" rel="noopener noreferrer">
+                      Join Call ↗
+                    </a>
+                  }
+                  <button type="button" class="mini-action-btn" (click)="jumpToBookingOnCalendar(b)">
+                    View on Grid
+                  </button>
+                  @if (b.status !== 'cancelled') {
+                    <button type="button" class="mini-action-btn" (click)="openHostReschedule(b)">
+                      Move Time
+                    </button>
+                    <button type="button" class="mini-action-btn mini-action-btn--danger" (click)="cancelIncomingBooking(b)">
+                      Cancel
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- =======================================================================
+       MODALS & FLOATING UNDO TOAST
+  ======================================================================== -->
+
+  <!-- Event Inspector / Editor Modal -->
+  @if (editorDraft(); as d) {
+    <div class="modal-backdrop" (click)="closeEditor()">
+      <div class="modal-sheet" (click)="$event.stopPropagation()">
+        <div class="modal-sheet__hdr">
+          <h3>{{ d.isNew ? 'New CloudCalendars Event' : (d.isBookedMeeting ? 'Booked Appointment' : 'Edit Event') }}</h3>
+          <button type="button" class="modal-x" (click)="closeEditor()">✕</button>
+        </div>
+
+        @if (d.isBookedMeeting) {
+          <div class="booked-banner">
+            <strong>Guest Booking:</strong> {{ d.guestName }} ({{ d.guestEmail }}).
+            Changing the time or cancelling automatically emails an updated RFC 5545 <code>.ics</code> invite.
+          </div>
+        }
+
+        <div class="modal-body">
+          <input
+            type="text"
+            class="title-input"
+            placeholder="Event title (e.g. Product Review)"
+            [ngModel]="d.title"
+            (ngModelChange)="d.title = $event"
+          />
+
+          <!-- iOS 8-Swatch Color Picker -->
+          <div class="swatch-row">
+            @for (c of colors; track c.hex) {
+              <button
+                type="button"
+                class="color-dot"
+                [class.is-picked]="d.color.toUpperCase() === c.hex"
+                [style.background]="c.hex"
+                [title]="c.label"
+                (click)="d.color = c.hex"
+              ></button>
+            }
+          </div>
+
+          <label class="ov-chk">
+            <input type="checkbox" [ngModel]="d.allDay" (ngModelChange)="d.allDay = $event" />
+            <span>All-day event</span>
+          </label>
+
+          <div class="form-grid-2">
+            <label class="field">
+              <span>Start Date</span>
+              <input type="date" [ngModel]="d.startDate" (ngModelChange)="d.startDate = $event; d.endDate = $event" />
+            </label>
+            @if (!d.allDay) {
+              <label class="field">
+                <span>Start Time</span>
+                <input type="time" [ngModel]="d.startTime" (ngModelChange)="d.startTime = $event" />
+              </label>
+            }
+            <label class="field">
+              <span>End Date</span>
+              <input type="date" [ngModel]="d.endDate" (ngModelChange)="d.endDate = $event" />
+            </label>
+            @if (!d.allDay) {
+              <label class="field">
+                <span>End Time</span>
+                <input type="time" [ngModel]="d.endTime" (ngModelChange)="d.endTime = $event" />
+              </label>
+            }
+          </div>
+
+          <div class="form-grid-2">
+            <label class="field">
+              <span>Video Call URL (Meet / Teams / Zoom)</span>
+              <input
+                type="url"
+                placeholder="https://meet.google.com/..."
+                [ngModel]="d.videoCallURL"
+                (ngModelChange)="d.videoCallURL = $event"
+              />
+            </label>
+            <label class="field">
+              <span>Location</span>
+              <input
+                type="text"
+                placeholder="Conference Room / Address"
+                [ngModel]="d.location"
+                (ngModelChange)="d.location = $event"
+              />
+            </label>
+          </div>
+
+          <div class="form-grid-3">
+            <label class="field">
+              <span>Availability</span>
+              <select [ngModel]="d.availability" (ngModelChange)="d.availability = $event">
+                <option value="busy">Busy (blocks booking)</option>
+                <option value="free">Free</option>
+                <option value="tentative">Tentative</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Repeat</span>
+              <select [ngModel]="d.recurrence" (ngModelChange)="d.recurrence = $event">
+                <option value="none">Does not repeat</option>
+                <option value="daily">Every day</option>
+                <option value="weekly">Every week</option>
+                <option value="monthly">Every month</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Alert</span>
+              <select [ngModel]="d.reminderMin" (ngModelChange)="d.reminderMin = +$event">
+                <option [ngValue]="-1">None</option>
+                <option [ngValue]="10">10 min before</option>
+                <option [ngValue]="15">15 min before</option>
+                <option [ngValue]="30">30 min before</option>
+                <option [ngValue]="60">1 hour before</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Notes</span>
+            <textarea rows="3" placeholder="Agenda, links, preparation notes…" [ngModel]="d.notes" (ngModelChange)="d.notes = $event"></textarea>
+          </label>
+        </div>
+
+        <div class="modal-ftr">
+          <div class="modal-ftr__left">
+            @if (!d.isNew) {
+              <button type="button" class="mini-action-btn mini-action-btn--danger" [disabled]="savingEvent()" (click)="deleteDraftEvent()">
+                {{ d.isBookedMeeting ? 'Cancel Booking' : 'Delete Event' }}
+              </button>
+              <button type="button" class="mini-action-btn" (click)="exportDraftIcs()">
+                Download .ics
+              </button>
+            }
+          </div>
+          <div class="modal-ftr__right">
+            <button type="button" class="mini-action-btn" (click)="closeEditor()">Cancel</button>
+            <button type="button" class="btn btn--primary" [disabled]="savingEvent()" (click)="saveDraftEvent()">
+              {{ savingEvent() ? 'Saving…' : 'Save Event' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Host Quick Reschedule Modal -->
+  @if (rescheduleModalItem(); as rb) {
+    <div class="modal-backdrop" (click)="rescheduleModalItem.set(null)">
+      <div class="modal-sheet modal-sheet--sm" (click)="$event.stopPropagation()">
+        <div class="modal-sheet__hdr">
+          <h3>Move Meeting with {{ rb.guestName }}</h3>
+          <button type="button" class="modal-x" (click)="rescheduleModalItem.set(null)">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid-2">
+            <label class="field">
+              <span>New Date</span>
+              <input type="date" [ngModel]="rescheduleNewDate()" (ngModelChange)="rescheduleNewDate.set($event)" />
+            </label>
+            <label class="field">
+              <span>New Start Time</span>
+              <input type="time" [ngModel]="rescheduleNewTime()" (ngModelChange)="rescheduleNewTime.set($event)" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Note to Guest (optional)</span>
+            <input type="text" placeholder="Moved by 30 minutes — see you then!" [ngModel]="rescheduleNote()" (ngModelChange)="rescheduleNote.set($event)" />
+          </label>
+        </div>
+        <div class="modal-ftr">
+          <span></span>
+          <div class="modal-ftr__right">
+            <button type="button" class="mini-action-btn" (click)="rescheduleModalItem.set(null)">Cancel</button>
+            <button type="button" class="btn btn--primary" (click)="confirmHostReschedule()">Move &amp; Notify Guest</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Sign-In Modal -->
+  @if (showAuthModal()) {
+    <div class="modal-backdrop" (click)="showAuthModal.set(false)">
+      <div class="auth-modal-wrap" (click)="$event.stopPropagation()">
+        <button type="button" class="auth-modal-close" (click)="showAuthModal.set(false)">✕</button>
+        <app-platform-auth-card
+          [includeCalendarScopeOnOAuth]="true"
+          (signedIn)="onAuthSignedIn()"
+        />
+      </div>
+    </div>
+  }
+
+  <!-- Unlock Web Studio Modal ($0 Forever via iOS QR OR $1.99/mo · $19.99/yr Stripe) -->
+  @if (showUnlockModal()) {
+    <div class="modal-backdrop" (click)="closeUnlockModal()">
+      <div
+        class="modal-sheet unlock-modal"
+        [class.unlock-modal--compact]="!iosQrEnabled()"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="modal-sheet__hdr">
+          <div>
+            <span class="unlock-modal__eyebrow">CLOUD CALENDARS WEB STUDIO</span>
+            <h3>Unlock Event Creation &amp; Host Scheduling</h3>
+          </div>
+          <button type="button" class="modal-x" (click)="closeUnlockModal()">✕</button>
+        </div>
+
+        <p class="unlock-modal__lead">
+          @if (iosQrEnabled()) {
+            Guest RSVP &amp; booking links remain <strong>100% free for everyone</strong>. To create
+            events, sync calendars, and publish your own host booking page, unlock Web Studio for
+            <strong>$0 forever</strong> with the Cloud Calendars iOS app — or subscribe on the web:
+          } @else {
+            Guest RSVP &amp; booking links remain <strong>100% free for everyone</strong>. To create
+            events, sync calendars, and publish your own host booking page, activate Web Studio:
+          }
+        </p>
+
+        @if (unlockError()) {
+          <div class="unlock-alert">{{ unlockError() }}</div>
+        }
+
+        <div class="unlock-grid" [class.unlock-grid--single]="!iosQrEnabled()">
+          @if (iosQrEnabled()) {
+            <!-- Option 1: Free Forever with iOS App -->
+            <div class="unlock-card unlock-card--ios">
+              <div class="unlock-card__badge">RECOMMENDED · $0 FOREVER</div>
+              <h4>Cloud Calendars iOS App</h4>
+              <p>
+                Scan this QR code with your iPhone Camera (or inside <em>Cloud Calendars → Scan QR Code</em>)
+                and tap <strong>Approve Sign-In</strong>. Unlocks your Web Studio permanently + gives
+                you a built-in 6-digit Authenticator code.
+              </p>
+
+              <div class="unlock-qr-box">
+                @if (unlockQrDataUrl(); as qrImg) {
+                  <img [src]="qrImg" alt="Scan with iPhone to unlock Web Studio for free" width="148" height="148" />
+                } @else {
+                  <div class="unlock-qr-loading">Generating QR…</div>
+                }
+              </div>
+
+              <div class="unlock-ios-actions">
+                <a
+                  class="btn btn--primary unlock-store-btn"
+                  [href]="appStoreUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download Free on App Store ↗
+                </a>
+                <button type="button" class="mini-action-btn" (click)="refreshUnlockQrChallenge()">
+                  Refresh QR
+                </button>
+              </div>
+            </div>
+          }
+
+          <!-- Option 2: Web Subscription ($1.99/mo or $19.99/yr) -->
+          <div class="unlock-card unlock-card--web">
+            <div class="unlock-card__badge unlock-card__badge--alt">
+              {{ iosQrEnabled() ? 'NO iOS DEVICE NEEDED' : 'WEB STUDIO PRO' }}
+            </div>
+            <h4>Web Studio Subscription</h4>
+            <p>
+              {{
+                iosQrEnabled()
+                  ? 'Using Android, Windows, or Web-only? Unlock unlimited events, 2-way Google & Outlook sync, and custom public booking links right in your browser.'
+                  : 'Unlock unlimited events, 2-way Google & Outlook sync, shareable Event RSVP pages, and custom public booking links right in your browser.'
+              }}
+            </p>
+
+            <div class="plan-buttons">
+              <button
+                type="button"
+                class="plan-choice"
+                [disabled]="unlockBusy()"
+                (click)="startStripeSubscription('monthly')"
+              >
+                <div>
+                  <strong>Monthly</strong>
+                  <span>Cancel anytime</span>
+                </div>
+                <div class="plan-choice__price">
+                  <strong>$1.99</strong><span>/mo</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                class="plan-choice plan-choice--featured"
+                [disabled]="unlockBusy()"
+                (click)="startStripeSubscription('yearly')"
+              >
+                <div>
+                  <strong>Yearly · <em>Save 16%</em></strong>
+                  <span>Best value — billed annually</span>
+                </div>
+                <div class="plan-choice__price">
+                  <strong>$19.99</strong><span>/yr</span>
+                </div>
+              </button>
+            </div>
+
+            <p class="unlock-fineprint">
+              Secure checkout powered by Stripe. Switch plans or cancel in 1 click anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Undo / Feedback Toast -->
+  @if (toast(); as t) {
+    <div class="studio-toast" role="status">
+      <span>{{ t.message }}</span>
+      @if (t.undoEventId) {
+        <button type="button" class="studio-toast__undo" (click)="undoLastMove()">Undo</button>
+      }
+    </div>
+  }
+</section>

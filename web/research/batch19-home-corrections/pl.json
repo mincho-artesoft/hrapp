@@ -1,0 +1,26 @@
+{
+  "locale": "pl",
+  "changes": [
+    {
+      "path": "cta.title",
+      "before": [
+        "Jutro już przychodzi",
+        "z prognozą w komplecie."
+      ],
+      "after": [
+        "Zaplanuj kolejny dzień.",
+        "Sprawdź dostępną prognozę."
+      ]
+    },
+    {
+      "path": "showcase.panels[1].body",
+      "before": "Siedem kolumn, każda z własną wartością najwyższą, najniższą i własnymi warunkami. Obróć poziomo, by zobaczyć całość. Chwyć wydarzenie i przesuń je na inny dzień.",
+      "after": "Porównaj wydarzenia tygodnia z dostępną prognozą pogody na poszczególne dni. Obróć urządzenie poziomo, aby uzyskać szerszy widok. Przenoś wydarzenia, które możesz edytować, na inny dzień, a przy wydarzeniu cyklicznym sprawdź, które wystąpienia chcesz zmienić."
+    },
+    {
+      "path": "features.gestures.title",
+      "before": "Przeciągnij. Rozciągnij. Gotowe.",
+      "after": "Przeciągnij. Zmień rozmiar. Sprawdź."
+    }
+  ]
+}

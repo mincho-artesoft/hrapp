@@ -1,0 +1,272 @@
+[
+  {
+    "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+    "path": [
+      "sections",
+      3,
+      "body",
+      1
+    ],
+    "before": "Check the help for the installed calendar and version if it offers a first-week-of-year option. The generic Outlook getting-started page cited in the raw draft does not document the exact dropdown labels, so this guide does not supply an unverified menu path.",
+    "proposedAfter": "Check the help for your installed calendar and version for a first-week-of-year option. The cited sources do not establish a universal Outlook menu path for that setting.",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+    "path": [
+      "short"
+    ],
+    "before": "`:30` and `:45` UTC Offset Scheduling",
+    "proposedAfter": ":30 and :45 UTC Offset Scheduling",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "heading"
+    ],
+    "before": "Verified 2026 Monthly Resolution Table: `BYMONTHDAY=31` vs `BYMONTHDAY=-1` vs `BYDAY=-1FR` vs Last Mon–Fri Date (`BYSETPOS=-1`)",
+    "proposedAfter": "Verified 2026 Monthly Resolution Table: BYMONTHDAY=31 vs BYMONTHDAY=-1 vs BYDAY=-1FR vs Last Mon–Fri Date (BYSETPOS=-1)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "columns",
+      1
+    ],
+    "before": "`BYMONTHDAY=31` (Fixed 31st)",
+    "proposedAfter": "BYMONTHDAY=31 (Fixed 31st)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "columns",
+      2
+    ],
+    "before": "`BYMONTHDAY=-1` (Last Calendar Day)",
+    "proposedAfter": "BYMONTHDAY=-1 (Last Calendar Day)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "columns",
+      3
+    ],
+    "before": "`BYDAY=-1FR` (Last Friday)",
+    "proposedAfter": "BYDAY=-1FR (Last Friday)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "columns",
+      4
+    ],
+    "before": "`BYDAY=MO..FR;BYSETPOS=-1` (Last Mon–Fri Date)",
+    "proposedAfter": "BYDAY=MO..FR;BYSETPOS=-1 (Last Mon–Fri Date)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      0,
+      "cells",
+      4
+    ],
+    "before": "**Fri Jan 30** (Steps back from Sat 31)",
+    "proposedAfter": "Fri Jan 30 (Steps back from Sat 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      1,
+      "cells",
+      1
+    ],
+    "before": "**SKIPPED** (No Feb 31)",
+    "proposedAfter": "SKIPPED (No Feb 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      1,
+      "cells",
+      4
+    ],
+    "before": "**Fri Feb 27** (Steps back from Sat 28)",
+    "proposedAfter": "Fri Feb 27 (Steps back from Sat 28)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      2,
+      "cells",
+      4
+    ],
+    "before": "**Tue Mar 31**",
+    "proposedAfter": "Tue Mar 31",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      3,
+      "cells",
+      1
+    ],
+    "before": "**SKIPPED** (No Apr 31)",
+    "proposedAfter": "SKIPPED (No Apr 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      3,
+      "cells",
+      4
+    ],
+    "before": "**Thu Apr 30**",
+    "proposedAfter": "Thu Apr 30",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      4,
+      "cells",
+      4
+    ],
+    "before": "**Fri May 29** (Steps back from Sun 31)",
+    "proposedAfter": "Fri May 29 (Steps back from Sun 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      5,
+      "cells",
+      1
+    ],
+    "before": "**SKIPPED** (No Jun 31)",
+    "proposedAfter": "SKIPPED (No Jun 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      5,
+      "cells",
+      4
+    ],
+    "before": "**Tue Jun 30**",
+    "proposedAfter": "Tue Jun 30",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      6,
+      "cells",
+      4
+    ],
+    "before": "**Fri Jul 31 & Mon Aug 31**",
+    "proposedAfter": "Fri Jul 31 & Mon Aug 31",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      7,
+      "cells",
+      1
+    ],
+    "before": "**SKIPPED** (No Sep 31)",
+    "proposedAfter": "SKIPPED (No Sep 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      7,
+      "cells",
+      4
+    ],
+    "before": "**Wed Sep 30**",
+    "proposedAfter": "Wed Sep 30",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      8,
+      "cells",
+      4
+    ],
+    "before": "**Fri Oct 30** (Steps back from Sat 31)",
+    "proposedAfter": "Fri Oct 30 (Steps back from Sat 31)",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      9,
+      "cells",
+      1
+    ],
+    "before": "Nov: **SKIPPED** | Dec: Thu Dec 31",
+    "proposedAfter": "Nov: SKIPPED | Dec: Thu Dec 31",
+    "severity": "reader-facing-copy"
+  },
+  {
+    "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+    "path": [
+      "comparison",
+      "rows",
+      9,
+      "cells",
+      4
+    ],
+    "before": "**Mon Nov 30 & Thu Dec 31**",
+    "proposedAfter": "Mon Nov 30 & Thu Dec 31",
+    "severity": "reader-facing-copy"
+  }
+]

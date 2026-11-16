@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-22T04:45:05.259483+00:00",
+  "decision": "No material outdated product claim found in the two relevant current CalDAV locale objects reviewed. Preserve boundaries; do not manufacture a correction.",
+  "scope": "Bounded product-evidence support for DE/FR/ES/IT locale audit; not whole-repository or every localized body review.",
+  "currentLocalizedReads": [
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/fr-FR/articles-help.ts",
+      "sha256": "0efdd3c51bf9d420f111016490cff190bc8c5959b78e0e97c4babbc5ce8462a5",
+      "slug": "caldav-calendar-on-iphone",
+      "objectSha256": "8ce2f5890c922a17a153391d76311b4079dea9f3cf91a57ea863896e2c8245f9",
+      "readScope": "Full object, all6sections12paragraphs/6steps/3FAQ/metadata/sources/related. Other module articles not claimed fully reviewed.",
+      "decision": "No material product assertion defect identified."
+    },
+    {
+      "file": "/Users/minchomilev/cloud-calendars/src/app/content/it/articles-help.ts",
+      "sha256": "abdd4c921183c4c64859bf5d04a0d5fe741a36cc6210415614ac7db945b7646c",
+      "slug": "caldav-calendar-on-iphone",
+      "objectSha256": "f8fa621e245d3360b6fca4f7e1308ee47f9f3f9f30acfbcc2848734446487bb8",
+      "readScope": "Full object, all6sections12paragraphs/6steps/3FAQ/metadata/sources/related. Other module articles not claimed fully reviewed.",
+      "decision": "No material product assertion defect identified."
+    }
+  ],
+  "freshNativeReads": [
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "sha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "readRanges": [
+        [
+          612,
+          627
+        ],
+        [
+          1183,
+          1200
+        ],
+        [
+          1440,
+          1465
+        ]
+      ],
+      "proof": "Date rows share eventTimeZone; all-day persisted end is exclusive nextday; writable EventKit calendar required; existing timezone preserved or assigned. No universal separate endpoint-zone selector established."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "readRanges": [
+        [
+          438,
+          465
+        ]
+      ],
+      "proof": "Other group displays returned calendars with selectedCalendarIDs; no universal provider compatibility guaranteed."
+    },
+    {
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "readRanges": [
+        [
+          602,
+          618
+        ],
+        [
+          667,
+          680
+        ],
+        [
+          175,
+          200
+        ]
+      ],
+      "proof": "FullAccess check; EventKit calendar reload; selection persists widget snapshot and reschedules notifications/LiveActivity."
+    }
+  ],
+  "reusedNativeEvidence": [
+    {
+      "priorReport": "research/batch05-all-day/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "priorSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "currentSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "unchanged": true,
+      "priorReadRanges": [
+        [
+          613,
+          625
+        ],
+        [
+          1183,
+          1200
+        ],
+        [
+          1440,
+          1464
+        ]
+      ],
+      "finding": [
+        "All-day toggles date controls; selectedendingday persisted with nextday exclusive boundary.",
+        "System-event save sets isAllDay and preserves/assigns zone; cannot claim everyprovider nozone universally."
+      ]
+    },
+    {
+      "priorReport": "research/batch05-all-day/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Main/CalendarWidgetStore.swift",
+      "priorSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "currentSha256": "0e766b69fcf12e3cbc99c40b033e5e80b1d34899627844676d989d52b552a2c7",
+      "unchanged": true,
+      "priorReadRanges": "Previously read by widget audit, 174:280; source-backed exclusion matches widget batch evidence.",
+      "finding": [
+        "Future widget event feed excludes all-day and already started events."
+      ]
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/MonthView/EventEditViewWrapper.swift",
+      "priorSha256": "865cca145de3a12fa19a7408b847024b378b439cb1aab47d884c257bb353114a",
+      "currentSha256": "865cca145de3a12fa19a7408b847024b378b439cb1aab47d884c257bb353114a",
+      "unchanged": true,
+      "priorReadRanges": [
+        5,
+        21
+      ],
+      "finding": "Creation wrapper routes through AppLocalEventEditorView."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "priorSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "currentSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "unchanged": true,
+      "priorReadRanges": [
+        612,
+        710
+      ],
+      "finding": "Date rows share eventTimeZone environment; Repeat/Custom/End Repeat controls, not separate endpoint zone selectors."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "priorSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "currentSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "unchanged": true,
+      "priorReadRanges": [
+        1197,
+        1215
+      ],
+      "finding": "Calendar and rule construction; saved local zone then EventKit zone then autoupdating current fallback."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "priorSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "currentSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "unchanged": true,
+      "priorReadRanges": [
+        1376,
+        1435
+      ],
+      "finding": "Write permission and local save: local/system/current zone precedence, recurrence rule serialized on event record."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalEventEditorView.swift",
+      "priorSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "currentSha256": "5f021ab6f986148e70fe3b932e0e9e530fecb8d01fdc436e78217c6116f9a093",
+      "unchanged": true,
+      "priorReadRanges": [
+        1439,
+        1472
+      ],
+      "finding": "EventKit calendar allowsContentModifications guard; preserve zone or assign fallback; recurrence replaced then futureEvents span for existing rule-bearing event."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "priorSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "currentSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "unchanged": true,
+      "priorReadRanges": [
+        70,
+        70
+      ],
+      "finding": "Local writable access excludes revoked calendars and reader access."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/AppLocal/AppLocalCalendarStore.swift",
+      "priorSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "currentSha256": "2ed2d5ad2104857441a4f8d3bcafe80227058ef24cc49c24c8ec7f70189d6e42",
+      "unchanged": true,
+      "priorReadRanges": [
+        407,
+        416
+      ],
+      "finding": "Local save replaces/appends event record by id; not evidence of single occurrence edit."
+    },
+    {
+      "priorReport": "research/batch05-timezone-recurrence/evidence.json",
+      "file": "/Users/minchomilev/work/hrapp/Calendar/Components/CalendarRecurrencePattern.swift",
+      "priorSha256": "e33a5273cbf88b60f0356881158dfe71b03bfd9fc711f1356afa73db2391b5cf",
+      "currentSha256": "e33a5273cbf88b60f0356881158dfe71b03bfd9fc711f1356afa73db2391b5cf",
+      "unchanged": true,
+      "priorReadRanges": [
+        4,
+        58
+      ],
+      "finding": "Original dimensions preserved when pattern unedited; not proof of exception preservation through provider operations."
+    }
+  ],
+  "inventoryBoundary": "Current article-index and exact-slug source search show FR/IT CalDAV editions. DE/ES have none of the targeted timezone/all-day/storage/CalDAV canonical names; localized index keyword scan zone/all-day/saved/stored/storage/caldav/local returns only FR/IT CalDAV. Other relevant prose may exist in differently named guides; broader locale review belongs to calendar_aso_audit.",
+  "confirmedBounds": [
+    "FR/IT CalDAV guides distinguish device system-account setup from direct universal Cloud CalDAV connection and retain provider authentication/edit restrictions.",
+    "FR/IT selection diagnosis restores prior selection and explicitly mentions widgets, notifications and Google synchronization; no all-provider pause/resume assertion.",
+    "Event editor uses one event timezone environment. Apple Calendar timezone override is not established as a Cloud override, and separate Cloud departure/arrival timezone selectors are not established.",
+    "All-day events use dates/exclusive nextday boundary in current editor. Do not say every provider stores them without timezone or that they universally block availability.",
+    "Upcoming widget evidence excludes all-day and already-started events; this does not imply all-day events cannot have notifications.",
+    "App-local versus provider/EventKit storage must remain separate. Direct Google/Microsoft mirror placement can depend on device sources; no all-data-always-on-device/no-copy assertion."
+  ],
+  "remainingUncertainty": [
+    "Source inspection and unchanged hashes do not establish released1.7.3 runtime behavior.",
+    "No fresh Apple/provider web pages fetched; provider settings interpretation reuses prior reviewed reports and is not presented as new current documentation verification.",
+    "No calendar or customer data, builds, runtime tests, backend requests or production operations accessed."
+  ],
+  "coordination": "ASO audit notified of complete FR/IT CalDAV reads and no material defect; waiting for any separately identified concrete claim does not justify inventing one.",
+  "writes": "This research JSON only."
+}

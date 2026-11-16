@@ -1,0 +1,142 @@
+{
+  "reviewedAt": "2026-10-22T03:54:45.847910+00:00",
+  "decision": "Use meaningful concise alt descriptions for these five screenshot subjects in the article gallery. Empty alt currently hides useful UI examples; the gallery heading alone does not describe them.",
+  "reasoning": "The atmospheric background/device frames and promotional slogans are decorative, but the screenshots show distinct calendar, forecast, Home Screen and Lock Screen layouts. A short subject description communicates the gallery purpose without transcribing sample appointments or repeating advertising copy. This is a contextual editorial assessment, not a formal compliance certification.",
+  "proposedEnglishLabels": {
+    "hook": "Day calendar with appointments and weather",
+    "week-left": "Week calendar with color-coded appointments",
+    "week-right": "Weather view with hourly and daily forecasts",
+    "widgets": "Home Screen widgets with the date, weather and upcoming events",
+    "live": "Lock Screen Live Activity showing the next event and time until it starts"
+  },
+  "sourceReadScopes": [
+    {
+      "file": "src/app/components/shot-rail/shot-rail.component.ts",
+      "sha256": "36980d5df8296df997c3a080e0da9d11614066f94153018b9a475db04aa52418",
+      "scope": "Full1–118; template32–49 includes emptyalt40; filenames102–115"
+    },
+    {
+      "file": "src/app/core/media-manifest.json",
+      "sha256": "c7b74db44762cce88ec43b33b9fa5c53aaa042dbace39c135c29016fac4be679",
+      "scope": "Full JSON parsed; base,widths,EN,ar-SA,he ordering manually inspected"
+    },
+    {
+      "file": "src/app/pages/article-page/article-page.component.html",
+      "sha256": "f9f48285927e0a58fb9343aeb17c96a7e4e02bd45588a8ce7d8e87ce66f27c06",
+      "scope": "49–52: galleryheading and rail, no per-image equivalent descriptions"
+    }
+  ],
+  "visualEvidence": [
+    {
+      "file": "media-build/panel/en-US/iPhone/01-hook-680.webp",
+      "sha256": "f32926906d5259376f9ee3a60e24fd536e4b6fffa13feaf21c95ddc805523c95",
+      "semanticKey": "hook",
+      "device": "iPhone",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Angled dark day calendar with timed colored event blocks and a weather column. Marketing headline compares a meeting and rain."
+    },
+    {
+      "file": "media-build/panel/en-US/iPhone/02-week-left-680.webp",
+      "sha256": "2b3e6b186e6abe1303fb640fbd31ffee42a0a678a1199447121cb6631c39e08f",
+      "semanticKey": "week-left",
+      "device": "iPhone",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Left portion of a two-image composition: cropped week calendar with multiple day columns and colored events."
+    },
+    {
+      "file": "media-build/panel/en-US/iPhone/03-week-right-680.webp",
+      "sha256": "7e0531304211b66435083c41ee7a1e73cdeb120f7fad9619bb0becabfedd1a8b",
+      "semanticKey": "week-right",
+      "device": "iPhone",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Right continuation of partial week calendar beside a separate weather screen with temperature, hourly strip and daily forecast rows."
+    },
+    {
+      "file": "media-build/panel/en-US/iPhone/04-widgets-680.webp",
+      "sha256": "421ce8c5aa7e66cba9b1aa54e87d768c69468a03cef2a8a1e699a93a3505a9b6",
+      "semanticKey": "widgets",
+      "device": "iPhone",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Two Home Screen device mockups display medium/large blue date, weather and event-list widgets. Some screenshot entries differ from current inspected native eligibility; do not turn sample contents into all-day eligibility claims."
+    },
+    {
+      "file": "media-build/panel/en-US/iPhone/05-live-680.webp",
+      "sha256": "a1c352e0d69cfd90cdc2ca5908d378c30db0d556e72004f309cd4cb9f364eb96",
+      "semanticKey": "live",
+      "device": "iPhone",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Cropped Lock Screen next-event card shows event title, time, location and time-until-start."
+    },
+    {
+      "file": "media-build/panel/en-US/iPad/01-hook-960.webp",
+      "sha256": "c26187422b80139f08b3bbc91945420133131fd51dc800e4f5591cd5d20c978d",
+      "semanticKey": "hook",
+      "device": "iPad",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Light iPad day calendar plus smaller dark iPhone day calendar, both with event blocks and weather."
+    },
+    {
+      "file": "media-build/panel/en-US/iPad/02-week-left-960.webp",
+      "sha256": "df4e6b48d533f095aa103a5163a099d2af67684630911b253bc38aaa09efba45",
+      "semanticKey": "week-left",
+      "device": "iPad",
+      "visuallyRead": "entire image via view_image",
+      "observation": "A full light iPad week calendar beside a smaller dark iPhone week calendar. Main information is week layout, not a claim that every appointment fits."
+    },
+    {
+      "file": "media-build/panel/en-US/iPad/03-week-right-960.webp",
+      "sha256": "799797bc8ccf3631c7d617fc90fe60915b3819547425dc9ca3aa76bee5f4ae96",
+      "semanticKey": "week-right",
+      "device": "iPad",
+      "visuallyRead": "entire image via view_image",
+      "observation": "Large iPad weather view and smaller iPhone weather view, showing hourly and daily forecasts. No week calendar in this rendition."
+    },
+    {
+      "file": "media-build/panel/en-US/iPad/04-widgets-960.webp",
+      "sha256": "e7c6706250ee103ce2a5a29d591c123d7e30a27666ec31523b0fb9d1fb4685aa",
+      "semanticKey": "widgets",
+      "device": "iPad",
+      "visuallyRead": "entire image via view_image",
+      "observation": "iPad Home Screen with two widget layouts and smaller iPhone Home Screen. Date, weather and event lists are visible."
+    },
+    {
+      "file": "media-build/panel/en-US/iPad/05-live-960.webp",
+      "sha256": "83b296263adea121c3b4db157c53c7f77986972dce47418fe22aaac62615d982",
+      "semanticKey": "live",
+      "device": "iPad",
+      "visuallyRead": "entire image via view_image",
+      "observation": "iPad and iPhone Lock Screens each show a next-event card with time-until-start. Static image is not proof of ongoing update accuracy or every-device availability."
+    }
+  ],
+  "mapping": {
+    "method": "Remove the leading numeric ordinal and hyphen from manifest name, then exact match the complete remaining suffix.",
+    "example": "04-week-left -> week-left, not left",
+    "rtl": "ar-SA and he order live/widgets/week-right/week-left/hook; do not attach labels by array index.",
+    "scope": "Five labels describe both inspected English device sets; labels omit device names because iPad images also depict iPhone. Other locales and future image replacements need corresponding verification."
+  },
+  "implementationBoundaries": [
+    "Use the label on the img alt; sources in picture do not need separate duplicate alternatives.",
+    "Keep gallery aria-label as a group label, not a replacement for each image description.",
+    "No need to repeat marketing slogans, dates, temperatures, sample appointment names or number of visible rows.",
+    "Do not describe the Live Activity as a Lock Screen widget or promise it updates reliably.",
+    "Do not promise a forecast duration, every appointment, automatic location weather, all-day widget eligibility or feature availability from static screenshots.",
+    "Unknown future suffix should not silently borrow an unrelated verified label; flag for editorial review."
+  ],
+  "primaryGuidance": [
+    {
+      "url": "https://www.w3.org/WAI/tutorials/images/informative/",
+      "readRanges": "77–141",
+      "application": "Short alternatives convey the relevant meaning of informative images; assessment depends on page purpose."
+    },
+    {
+      "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+      "readRanges": "77–89,135–160",
+      "application": "Empty alternatives suit decoration or information already adequately described nearby. Current gallery has no per-shot equivalent text."
+    }
+  ],
+  "limits": [
+    "Ten current EN high-width WebP files visually inspected, not all locales or AVIF visual parity. Exact hashes pin this evidence.",
+    "No image was regenerated or modified. No native/runtime/device behavior was tested.",
+    "No source integration, builds, deployment or robots re-audit performed."
+  ]
+}

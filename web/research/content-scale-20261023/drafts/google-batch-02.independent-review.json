@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-23",
+  "reviewer": "primary_source_catalog",
+  "method": "Independent re-fetch and full extracted-body reads for all12officialarticles; per-claim draft check; closest baseline/Claude source-body/intent comparisons. No paid APIs or runtime tests.",
+  "qualityBasis": "Factual fidelity, completed reader task, original worked examples and intent boundaries; word count is not an approval score.",
+  "summary": {
+    "draftsReviewed": 12,
+    "approvedInReviewedCopy": 12,
+    "appliedPrecisionEdits": 12,
+    "merge": 0,
+    "hold": 0,
+    "majorFactualErrors": 0
+  },
+  "originalUnchanged": true,
+  "originalSha256": "bc5c8939687d3b4656eb0e3209498469acd14e9c40bb93e311f489e4838d6aef",
+  "reviewedFile": "google-batch-02-reviewed.json",
+  "changesFile": "google-batch-02.change-evidence.json",
+  "crossArticleIntegrationNotes": [
+    {
+      "existingDraft": "google-calendar-email-notifications-filter",
+      "instruction": "Crosslink to the reviewed third-party RSVP article and keep its FAQ explicitly about calendar-wide Other notifications, not the per-event Get an email when guests respond checkbox."
+    },
+    {
+      "existingDraft": "google-appointment-cancel-booked-slot",
+      "instruction": "Crosslink the Stripe refund article; do not imply the Calendar cancellation automatically returns money."
+    },
+    {
+      "existingDraft": "google-calendar-find-a-time-blank-is-not-free",
+      "instruction": "Keep manual free/busy inspection distinct from Gemini eligibility and Suggested times UI. Do not copy the manual50guest display limit into Gemini: its cited page supplies no numerical attendee threshold."
+    }
+  ],
+  "articles": [
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "decision": "approve",
+      "rationale": "Cancellation is the scheduling operation; Stripe refund/payment requirement is a separate transaction lifecycle. Keep both and crosslink.",
+      "adjacentCanonicalsReviewed": [
+        "google-appointment-cancel-booked-slot",
+        "booking-link-or-shared-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 0,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "2e5773bfeae75eec070c9aebc2a02e085cc3fc048314dd21947594ccd79836b8",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Inbox verification and guest journey differ from slot-conflict calculation and the general booking-model choice.",
+      "adjacentCanonicalsReviewed": [
+        "google-appointment-schedule-which-calendars-block-booking-slots",
+        "booking-link-or-shared-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "27af5f75929e8131bfccbe8f4bd67b6f229c71d176a02173c3c07e2311d92ded",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Appointment-service destination and booking widgets are different from publicly displaying an event calendar.",
+      "adjacentCanonicalsReviewed": [
+        "google-calendar-public-embed-on-website",
+        "booking-link-or-shared-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "c37535720a038d775e190fce8211e73981257c0b5b43f116a4acb3960a64b447",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Provider-specific qualifying/average/overlap calculation completes a distinct analytics interpretation task.",
+      "adjacentCanonicalsReviewed": [
+        "planning-a-week-in-ten-minutes",
+        "automatic-time-blocking-versus-manual-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "e7def15db1c895ae32a8d1ea191eb154ce55a33dc9d54243104b2039689bf305",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Chrome setup/readiness/read-only scope differs materially from installed mobile-app offline and Android sync diagnosis.",
+      "adjacentCanonicalsReviewed": [
+        "what-calendar-sync-actually-does",
+        "google-calendar-android-app-not-syncing"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "39a1bfb69a98b6d5f4d9943a555eac0ef6317be21ef98c7ab9bd8ff7404c191c",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Desktop enablement/navigation/save routine differs from natural-language parsing and destination repair.",
+      "adjacentCanonicalsReviewed": [
+        "natural-language-calendar-events-iphone",
+        "event-saved-to-wrong-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "e260a9d070a7f15fa4969d2f2635247b040477714ac8ac2ac54b66d8e031c5f6",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Date-label display versus Moon/sports source selection is distinct from holiday sources and iPhone app-language settings.",
+      "adjacentCanonicalsReviewed": [
+        "google-calendar-holidays-by-country-and-religion",
+        "iphone-calendar-language-alternate-calendar-settings"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "498fb40a511c6add916e5e4496dd7a5a4f6240d5ceccc9b89f6d7d4af64fc353",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Marketplace eligibility, installation and provider identity are operational prerequisites beyond adding native Meet/Teams links.",
+      "adjacentCanonicalsReviewed": [
+        "meeting-links-that-make-themselves",
+        "disconnect-calendar-integration-without-losing-track"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "e624729f3e6a70479770e40056da92ef28ff7b908db999a5fca964cd7e6e26ee",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Admin-approved Android cross-profile viewing and duplicate connection routes are distinct from account aggregation or sync diagnosis.",
+      "adjacentCanonicalsReviewed": [
+        "work-and-personal-without-two-apps",
+        "google-calendar-android-app-not-syncing"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 2,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "a6370b02eef0a7483be031eff4dbe7b21940379c86cc3dcc9baaf436873fa15c",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Eligibility and suggestion-specific create/reschedule controls differ from manual Find a time and automatic task placement.",
+      "adjacentCanonicalsReviewed": [
+        "google-calendar-find-a-time-blank-is-not-free",
+        "automatic-time-blocking-versus-manual-calendar"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "ed894485086149cccfaaab367a951f68881d29a5b469ca5b55582f28f62d899e",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Specific per-event third-party RSVP suppression is a distinct failure mode from calendar-wide categories or Gmail sorting.",
+      "adjacentCanonicalsReviewed": [
+        "google-calendar-email-notifications-filter",
+        "keeping-track-of-who-replied"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "813e6beb9ce6fec3dcaf56e9056430e4fefc7f09f332890eb4a2a5c21ba42a4c",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "decision": "approve_after_applied_precision_edits",
+      "rationale": "Assigned-task report changes assignment in a shared surface; it is not calendar invitation spam or recurring-task completion.",
+      "adjacentCanonicalsReviewed": [
+        "unwanted-calendar-events-iphone",
+        "google-tasks-repeating-task-complete-delete"
+      ],
+      "factualBlockersRemaining": [],
+      "changeCount": 1,
+      "draftStatus": "Independent content approval; root still controls integration and publication.",
+      "reviewedArticleSha256": "32204141a88a703c74aaa859ab88baabe8c8f1b46f1f67a54df30290862ab740",
+      "demandEvidenceLimit": "No measured search volume, ranking or guaranteed indexing inferred."
+    }
+  ]
+}

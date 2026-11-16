@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "articles": [
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "primaryKeyword": "icloud shared calendar update emails",
+      "intentKey": "apple/icloud/shared-calendar/update-email-routing",
+      "readerOutcome": "Choose and verify a shared-calendar change email without altering calendar access.",
+      "distinctValue": "Role-based routing worksheet and a non-sensitive single-change verification protocol.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ],
+      "overlapReview": "Existing notifications page diagnoses app reminders; it does not explain this iCloud web update-email routing workflow.",
+      "existingOverlapSlug": "calendar-notifications-missing-silent-or-duplicated",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "primaryKeyword": "icloud hide past calendar events",
+      "intentKey": "apple/icloud/display/past-event-cutoff",
+      "readerOutcome": "Inspect and reverse a web history-hiding preference without unnecessary restoration.",
+      "distinctValue": "Age-boundary diagnostic case and explicit show/search/restore decision table.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "find-old-calendar-events-by-account-date-and-title",
+        "recover-deleted-calendar-events-iphone",
+        "what-calendar-sync-actually-does"
+      ],
+      "overlapReview": "Existing historical-search article covers source and query range but does not document iCloud’s reversible hide-past-events control.",
+      "existingOverlapSlug": "find-old-calendar-events-by-account-date-and-title",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "primaryKeyword": "icloud calendar invitation sender email",
+      "intentKey": "apple/icloud/invitations/outgoing-address",
+      "readerOutcome": "Select an offered invitation identity and validate it without exposing an important meeting.",
+      "distinctValue": "Two-identity worked case, recipient-side verification and coordinator handoff record.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "event-saved-to-wrong-calendar",
+        "sharing-one-event-not-your-calendar",
+        "keeping-track-of-who-replied"
+      ],
+      "overlapReview": "Existing wrong-calendar article addresses destination ownership; this is the separate outgoing-email identity setting.",
+      "existingOverlapSlug": "event-saved-to-wrong-calendar",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "primaryKeyword": "icloud private calendar invitation pending",
+      "intentKey": "apple/icloud/private-sharing/acceptance-state",
+      "readerOutcome": "Resolve a private-calendar acceptance state before troubleshooting device display.",
+      "distinctValue": "Owner/recipient state transition and a three-person membership-versus-RSVP ledger.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "why-a-shared-calendar-does-not-appear",
+        "a-calendar-that-is-yours-to-share",
+        "keeping-track-of-who-replied"
+      ],
+      "overlapReview": "Generic missing-shared-calendar article is Google-oriented; this supplies iCloud eligibility, participant state and specific recipient acceptance workflow.",
+      "existingOverlapSlug": "why-a-shared-calendar-does-not-appear",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "primaryKeyword": "icloud public calendar publish stop",
+      "intentKey": "apple/icloud/public-calendar/publication-lifecycle",
+      "readerOutcome": "Publish an intentionally public schedule and retire its live distribution without deleting the source.",
+      "distinctValue": "Audience/content/distribution/retirement worksheet and explicit recipient-route check.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "a-calendar-that-is-yours-to-share",
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared"
+      ],
+      "overlapReview": "Existing revocation article mainly explains Google grants and secret feeds; this is an owner-run iCloud public publication lifecycle.",
+      "existingOverlapSlug": "a-calendar-that-is-yours-to-share",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "icloud-calendar-restore-sharing-inventory",
+      "primaryKeyword": "icloud calendar restore sharing inventory",
+      "intentKey": "apple/icloud/recovery/collaboration-preflight",
+      "readerOutcome": "Prepare and complete collaboration reconciliation around a necessary iCloud archive restore.",
+      "distinctValue": "Copyable owner/participant/archive-decision inventory and a current-venue reconciliation example.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/restore-your-calendars-and-events-mm7478c562f3/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "recover-deleted-calendar-events-iphone",
+        "a-calendar-that-is-yours-to-share",
+        "when-two-calendars-disagree"
+      ],
+      "overlapReview": "Existing recovery guide already states sharing erasure. Keep only if the complete preflight/rebuild artifact earns a separate task; otherwise merge as a worksheet section.",
+      "existingOverlapSlug": "recover-deleted-calendar-events-iphone",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "apple-calendar-icbu-archive-restore-checklist",
+      "primaryKeyword": "apple calendar icbu archive restore",
+      "intentKey": "apple/mac/calendar-archive/replacement-preflight",
+      "readerOutcome": "Avoid an archive replacement when a one-calendar copy or display check was intended.",
+      "distinctValue": "Outcome-based replacement worksheet, explicit record checkpoints and a format-to-operation matrix.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/import-or-export-calendars-icl1023/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "calendar-export-ics-pdf-and-backup",
+        "what-calendar-sync-actually-does",
+        "recurring-events-without-the-mess"
+      ],
+      "overlapReview": "Existing export article already introduces ICBU and replacement warning. Proposed narrow complete replacement preflight must survive independent overlap review; merge if not sufficiently distinct.",
+      "existingOverlapSlug": "calendar-export-ics-pdf-and-backup",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "primaryKeyword": "iphone calendar add only full access",
+      "intentKey": "apple/ios/calendar-permission/create-versus-read",
+      "readerOutcome": "Recognize a limited event-store grant and review it without unnecessary account deletion.",
+      "distinctValue": "Create-versus-read diagnostic scenario and a three-layer system/provider/display matrix.",
+      "proposedFamily": "unify",
+      "proposedIntent": "unify",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios",
+          "verifiedAt": "2026-10-23",
+          "note": "Exact substantive Apple documentation read through web text; claim-specific scope recorded in apple-batch-01.source-checks.json. No firsthand test."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent source/intent review and integration approval required."
+      },
+      "adjacentArticlesRead": [
+        "what-calendar-sync-actually-does",
+        "event-saved-to-wrong-calendar",
+        "who-can-see-what-in-google-calendar"
+      ],
+      "overlapReview": "Existing Google-sharing page covers provider audience, not EventKit authorization. Existing sync overview does not explain write-only versus full access.",
+      "existingOverlapSlug": "what-calendar-sync-actually-does",
+      "canonicalDecision": "proposed_separate_operational_task_pending_independent_review",
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional case and decision table; not a measured app result."
+    }
+  ]
+}

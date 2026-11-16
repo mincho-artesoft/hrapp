@@ -1,0 +1,70 @@
+{
+  "decision": "PASS_WITH_CORRECTION_APPLIED_TO_PROPOSAL_ONLY",
+  "reviewRole": "Follow-up factual self-review of prior proposal, not a separate independent author; requested independent-review filename retained.",
+  "beforeProposalSHA256": "ebe6acf218e16fc0bc72778e0f86355bbfbefa933748760342b350248b22374b",
+  "reviewedProposalSHA256": "2a5d5ab2c76cbe5b588745385b9fb175a74ab463d5c57b862b384131628cf979",
+  "scope": "Complete proposal reviewed against prior account/sharing/contacts/weather/ad evidence and new owner confirmations; fresh full immutable InvitationPushRegistration file read and backend push service25–145 read. No current native working-tree source used.",
+  "corrections": [
+    {
+      "id": "push-registration-not-gated-by-delivery",
+      "before": "Where invitation notifications are enabled, device registration information and notification tokens are used to route those notifications.",
+      "after": "When the App registers a signed-in installation for invitation notifications, our services store its installation identifier, notification token, account association and enabled or disabled status. A registration can be stored even when notification delivery is disabled; turning notifications off does not itself erase that registration.",
+      "reason": "syncOnce checks token/session, computes enabled from permission/preference, then registers regardless of false. Backend persists record before returning configured&&enabled. Signout submits enabled=false rather than deleting record."
+    }
+  ],
+  "freshEvidence": [
+    {
+      "gitCommit": "eda40b44af01f813d7700d1e00ec8e62b30fd67e",
+      "file": "Calendar/Sources/InvitationPushRegistration.swift",
+      "sha256": "3128f50b395fe548b4a5b1823696425cc10abd2eae9aee5427255d577efa3ce6",
+      "lines": [
+        [
+          37,
+          48
+        ],
+        [
+          77,
+          106
+        ],
+        [
+          111,
+          125
+        ]
+      ]
+    },
+    {
+      "file": "/Users/minchomilev/work/cloud-calendars-api-nest/src/push/push.service.ts",
+      "sha256": "29e682ae6d93d4ef786003b3fd0499438badaf500da3951d7b0521ea4ec1ac55",
+      "lines": [
+        [
+          31,
+          62
+        ],
+        [
+          66,
+          74
+        ],
+        [
+          105,
+          116
+        ]
+      ],
+      "finding": "Registration storage distinct from configured enqueue/dispatch; validation still requires accepted APNs environment and verified account."
+    }
+  ],
+  "remainingIssues": [
+    {
+      "severity": "owner-process-fact-not-invented",
+      "finding": "Retention periods and completed account-deletion procedure remain unverified. Proposal gives contact route and does not invent deletion timing or full erasure."
+    },
+    {
+      "severity": "release-evidence-limit",
+      "finding": "Owner production confirmations and pinned SDK declarations do not establish byte-for-byte uploaded binary correspondence or every SDK path execution."
+    },
+    {
+      "severity": "scope-limit",
+      "finding": "This is a factual correction proposal, not legal compliance certification or authorization to publish. No global no-collection/no-server statement remains in proposed text; selected sharing and SDK flows stated separately."
+    }
+  ],
+  "preservation": "Only device-information replacement and corresponding internal evidence/limitation bookkeeping changed; all other proposed policy copy retained. Exact source before guards unchanged. No source or ASC writes."
+}

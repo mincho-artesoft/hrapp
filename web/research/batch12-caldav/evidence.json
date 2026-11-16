@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-22",
+  "sources": [
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Sources/CalendarViewModel.swift",
+      "sha256": "a0b207cb78810816775ff1aff4399a33dc3ce7331cbb1af2aa4468bb0828ccf4",
+      "rootReadRanges": [
+        [
+          600,
+          607
+        ],
+        [
+          667,
+          678
+        ],
+        [
+          899,
+          920
+        ],
+        [
+          947,
+          988
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarsSheetView.swift",
+      "sha256": "901ac260f4566d8ef7b2c65997248c7a1ad241924bf2d998ad3008292d9d25e8",
+      "rootReadRanges": [
+        [
+          444,
+          468
+        ]
+      ]
+    },
+    {
+      "path": "/Users/minchomilev/work/hrapp/Calendar/Calendar/CalendarRowView.swift",
+      "sha256": "33d41287f150b9b2cf8247782669f40eb62c8e96d3eb97e70f328d1f12b57ac0",
+      "rootReadRanges": [
+        [
+          40,
+          62
+        ]
+      ]
+    }
+  ],
+  "primaryRead": [
+    {
+      "url": "https://support.apple.com/guide/iphone/change-calendar-settings-iphc37be2016/ios",
+      "scope": "Body1169-1180 CalDAV/account/Fetch, no otherApplefeature copied."
+    },
+    {
+      "url": "https://support.apple.com/en-ca/guide/iphone/iph251e92810/ios",
+      "scope": "Body1155-1165 permission control."
+    }
+  ],
+  "editorialDecision": "Distinct uncovered CalDAV account-on-device workflow found in primary competitor documentation; no CalDAV occurrence in current50ENguides. Account versus feed versus import, three-stage visibility, permissions and duplicate diagnosis. No direct all-provider connector or feature parity claim.",
+  "limits": [
+    "Current code inspection, not released build or real CalDAV account runtime test.",
+    "No native/calendar/account data changed; no real event written.",
+    "No all-provider compatibility, immediate refresh or read-only feed edit guarantee.",
+    "No keyword volume/rank/ChatGPT citation measured."
+  ]
+}

@@ -1,0 +1,1869 @@
+{
+  "generatedAt": "2026-10-23",
+  "targetNewEnglishPages": 100,
+  "baselinePages": 73,
+  "candidateCount": 111,
+  "selectedCount": 100,
+  "deferredCount": 11,
+  "methodology": {
+    "intent": "Prioritize useful reproducible calendar operations, clear outcomes, source fidelity and distance from existing intent. Do not rank by arbitrary word count.",
+    "demandEvidence": "This is editorial relevance prioritization, not a keyword-volume study. Official help coverage establishes supported task behavior, not popularity, traffic, ranking or conversion.",
+    "pendingGate": "All final selected source articles have independent approved reviews. Publication and live verification remain separate.",
+    "measurement": "After publication compare English Search Console indexed/discovered pages, impressions, queries and click-through against baseline; a few days is an initial crawl check, not a reliable ranking verdict.",
+    "priorityTiers": "A/B are transparent editorial utility buckets, not search-volume scores; order within each tier is alphabetical."
+  },
+  "holdRecommendations": [
+    {
+      "slug": "icalendar-dtstamp-last-modified-created",
+      "title": "ICS DTSTAMP, LAST-MODIFIED and CREATED: which timestamp explains a change?",
+      "short": "Read calendar revision timestamps",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.1",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.2",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.3",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4"
+      ],
+      "selected": false,
+      "decision": "defer_technical_reference",
+      "mergeTarget": null,
+      "reason": "Correct standards reference, but timestamp serialization is narrower than a consumer calendar operation; reserve for later developer troubleshooting cluster.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "icalendar-alarm-repeat-duration-count",
+      "title": "ICS REPEAT and DURATION: count repeated alarms without an off-by-one error",
+      "short": "How many times does an alarm repeat?",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.2",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6"
+      ],
+      "selected": false,
+      "decision": "defer_technical_reference",
+      "mergeTarget": "icalendar-valarm-relative-absolute-trigger",
+      "reason": "Alarm-repeat encoding is a narrow diagnostic subcase; relative/absolute trigger guide is the stronger first-wave task.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "icalendar-vfreebusy-periods-not-event-details",
+      "title": "Why a free/busy calendar file contains time blocks but no meeting titles",
+      "short": "Read a free/busy calendar result",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.4",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.6",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.2.9",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.9"
+      ],
+      "selected": false,
+      "decision": "defer_technical_reference",
+      "mergeTarget": null,
+      "reason": "VFREEBUSY wire-format interpretation serves implementers more than first-wave app customers; provider availability guides solve the common user task.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "ics-line-folding-utf8-octets",
+      "title": "ICS line folding: 75 bytes, UTF-8 text and the continuation space",
+      "short": "Fix a folded ICS text line",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.4"
+      ],
+      "selected": false,
+      "decision": "defer_technical_reference",
+      "mergeTarget": null,
+      "reason": "Useful parser fixture but low direct consumer utility absent evidence of calendar import corruption demand.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "ics-text-escaping-commas-semicolons-newlines",
+      "title": "ICS text escaping: commas, semicolons, backslashes and real newlines",
+      "short": "Keep punctuation in ICS text",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.11",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1.1",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.1"
+      ],
+      "selected": false,
+      "decision": "defer_technical_reference",
+      "mergeTarget": null,
+      "reason": "Keep as a later import/debug reference; punctuation escaping is not a strong first-wave consumer acquisition topic without observed failure demand.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "overnight-event-across-dst-spring-forward-fall-back-duration",
+      "title": "Overnight DST events: verify the endpoint and elapsed hours",
+      "short": "Overnight DST events",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3",
+        "https://www.rfc-editor.org/rfc/rfc5545#section-3.3.10",
+        "https://aa.usno.navy.mil/faq/daylight_time"
+      ],
+      "selected": false,
+      "decision": "merge_into_existing_candidate",
+      "mergeTarget": "icalendar-duration-p1d-pt24h-dst",
+      "reason": "Same elapsed-versus-nominal duration problem; preserve strongest practical example in one page rather than two pilot URLs.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "separate-start-and-end-time-zones-calendar-events",
+      "title": "Separate start and end time zones: verify a travel event",
+      "short": "Separate start and end time zones",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.5"
+      ],
+      "selected": false,
+      "decision": "merge_into_baseline",
+      "mergeTarget": "time-zones-and-the-flight-you-booked",
+      "reason": "Baseline already handles the travel-event start/end-zone task; strengthen it instead of starting a competing URL.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "recurring-calendar-event-anchored-in-utc-versus-local-tzid",
+      "title": "recurring event anchored in utc vs local time zone",
+      "short": "recurring event anchored in utc vs local time zone",
+      "draftFile": null,
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "await_complete_draft_and_independent_source_review",
+      "intent": "Why does a recurring calendar series anchored in fixed UTC (`DTSTART:...Z`) shift by one hour on your local clock when Daylight Saving Time starts or ends, whereas a series anchored in a local time zone (`DTSTART;TZID=...`) stays at the same wall-clock hour?",
+      "selected": false,
+      "decision": "merge_into_existing_candidate",
+      "mergeTarget": "icalendar-floating-time-utc-tzid",
+      "reason": "Overlap is the UTC-versus-TZID representation and seasonal display consequence. Add the weekly expansion matrix to the broader time-representation guide instead of another competing page.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "iso-week-1-and-week-53-calendar-boundary-dates",
+      "title": "iso week 1 week 53 calendar dates",
+      "short": "iso week 1 week 53 calendar dates",
+      "draftFile": null,
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "await_complete_draft_and_independent_source_review",
+      "intent": "How does the ISO 8601 week-numbering rule (and iCalendar `BYWEEKNO` with `WKST=MO`) decide whether December 29–31 belongs to Week 52, Week 53, or Week 1 of the next year, and why does 2026 have 53 ISO weeks?",
+      "selected": false,
+      "decision": "merge_into_candidate",
+      "mergeTarget": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "reason": "Keep one actionable week-number mismatch page and incorporate concise boundary examples; a second formula-focused URL can wait for measured demand.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "4-4-5-calendar-quarter-cycles-and-53-week-leap-year-math",
+      "title": "4 4 5 calendar 53 week year schedule",
+      "short": "4 4 5 calendar 53 week year schedule",
+      "draftFile": null,
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "await_complete_draft_and_independent_source_review",
+      "intent": "How do 4-4-5, 4-5-4, and 5-4-4 calendar schedules divide a 52-week (`364-day`) year into four 13-week (`91-day`) quarters, why does the start date drift earlier by 1–2 days every year, and how does a 53-week (`371-day`) year realign the calendar?",
+      "selected": false,
+      "decision": "defer_adjacent_domain",
+      "mergeTarget": null,
+      "reason": "Retail accounting-period construction is farther from app capabilities than actual calendar planning tasks; exact arithmetic does not establish consumer relevance.",
+      "priorityTier": "deferred"
+    },
+    {
+      "slug": "viewer-display-time-zone-versus-event-time-zone-calendar",
+      "reason": "Author-independent review found the same viewer-versus-stored-time distinction in the existing travel/time-zone guide. Merge supporting material instead of creating another pilot URL."
+    }
+  ],
+  "selectedArticles": [
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "title": "A booking appeared in Siri Suggestions on Mac: confirm it or ignore it",
+      "short": "Review suggested calendar events",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "natural-language-calendar-events-iphone"
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "title": "A calendar subscription is only on your Mac: check its Location",
+      "short": "Choose where a subscription lives",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "caldav-calendar-on-iphone"
+    },
+    {
+      "slug": "google-calendar-keyboard-shortcuts-workflow",
+      "title": "A Google Calendar keyboard workflow: navigate, create, verify and return",
+      "short": "A Google Calendar keyboard workflow",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/37034?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "planning-a-week-in-ten-minutes"
+    },
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "title": "A subscribed calendar is stale on Mac: check Auto-refresh before importing again",
+      "short": "Refresh a subscribed calendar",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac",
+        "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "caldav-calendar-on-iphone"
+    },
+    {
+      "slug": "outlook-subscribe-or-import-ics-calendar",
+      "title": "Add an internet calendar to Outlook: subscribe for updates or import a snapshot",
+      "short": "Subscribe or import in Outlook",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-export-ics-pdf-and-backup"
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "title": "Add another country’s holidays on Mac without duplicating your own events",
+      "short": "Show another region’s holidays",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "iphone-calendar-language-alternate-calendar-settings"
+    },
+    {
+      "slug": "google-calendar-holidays-by-country-and-religion",
+      "title": "Add holidays to Google Calendar for more than one country",
+      "short": "Holidays in Google Calendar",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/13748345?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "iphone-calendar-language-alternate-calendar-settings"
+    },
+    {
+      "slug": "alternating-a-b-week-school-timetable-calendar-vacation-exceptions",
+      "title": "Alternating A/B week timetable: decide what a holiday skips",
+      "short": "Week A / Week B Timetable & Holidays",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "How do you set up an alternating Week A / Week B school or university timetable in a calendar, and how do you handle a 1-week vacation when your school either keeps odd/even calendar weeks or pauses the rotation so Week A and Week B flip after the break?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "icloud-private-calendar-pending-invitations",
+      "title": "An iCloud private calendar invitation is still pending: verify, resend, then check access",
+      "short": "Pending private invitations",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+        "https://support.apple.com/guide/icloud/accept-a-shared-calendar-invitation-mm6b1a88ad/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "keeping-track-of-who-replied"
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "title": "Attach the right file to an iPhone Calendar event, then check the saved version",
+      "short": "Add or remove an event attachment",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "sharing-one-event-not-your-calendar"
+    },
+    {
+      "slug": "backward-planning-project-deadlines-across-weekends-and-holidays",
+      "title": "Plan backward across weekends and days off: a counted example",
+      "short": "Backward Planning Across Weekends",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "How do you count backward from a fixed delivery deadline across weekends and public holidays (`N` business days vs `N` calendar days) so every milestone lands on an open working weekday?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "planning-a-week-in-ten-minutes",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "calendar-travel-time-versus-separate-buffer-event-blocks",
+      "title": "Calendar travel time or separate buffers? Check both journeys",
+      "short": "Travel Time vs Buffer Event Blocks",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "What is the operational difference between Apple Calendar's native `Travel Time` field, Google Calendar Appointment Schedule's `Buffer time` setting, and standalone `Busy` (`TRANSP:OPAQUE`) buffer events for commutes and meeting transitions?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "the-commute-and-the-sky",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+        "https://support.google.com/calendar/answer/10729749?hl=en",
+        "https://support.google.com/calendar/answer/16287054?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch",
+      "title": "Calendar week numbers disagree: compare the year rule and first weekday",
+      "short": "Why Calendar Week Numbers Disagree",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "Why do two calendars display different week numbers for the same date when one uses Sunday start / January 1 (`First day of year`) and the other uses Monday start / `First 4-day week` (ISO)?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "planning-a-week-in-ten-minutes",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://support.apple.com/guide/iphone/iphc37be2016/ios",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "google-appointment-cancel-booked-slot",
+      "title": "Cancel a booked Google Calendar appointment and what happens to the slot",
+      "short": "Cancel a booked appointment",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/10737245?hl=en",
+        "https://support.google.com/calendar/answer/10730791?hl=en",
+        "https://support.google.com/calendar/answer/16287054?hl=en",
+        "https://support.google.com/calendar/answer/11423292?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "booking-link-or-shared-calendar"
+    },
+    {
+      "slug": "google-calendar-change-event-owner-before-handover",
+      "title": "Change the owner of a Google Calendar event before you hand over a meeting",
+      "short": "Hand a meeting to a new owner",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/78739?hl=en",
+        "https://support.google.com/meet/answer/10003792?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "event-saved-to-wrong-calendar"
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "title": "Changed a meeting’s location on Mac? Recheck Travel Time as well",
+      "short": "Recheck travel time after a move",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+        "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "the-commute-and-the-sky"
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "title": "Check invitee availability in Mac Calendar—and why the button may be missing",
+      "short": "Check availability before sending",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-event-or-room-reservation"
+    },
+    {
+      "slug": "icloud-calendar-invitation-sender-email",
+      "title": "Choose the email address that sends your iCloud event invitations",
+      "short": "Invitation sender identity",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/invite-people-to-an-event-mm6b1a805a/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "event-saved-to-wrong-calendar"
+    },
+    {
+      "slug": "outlook-calendar-color-categories",
+      "title": "Colour-code your Outlook calendar with categories",
+      "short": "Outlook colour categories",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook",
+        "https://support.microsoft.com/en-US/Outlook/calendar/assign-a-color-category-to-a-calendar-event-in-outlook"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "change-calendar-color-iphone"
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "title": "Delete an iCloud calendar or just stop seeing it? Check the scope first",
+      "short": "Delete an iCloud calendar deliberately",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud",
+        "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "disconnect-calendar-integration-without-losing-track"
+    },
+    {
+      "slug": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "title": "Show additional time zones in Google Calendar and Outlook",
+      "short": "Display 2 or 3 Time Zones on Grid",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "How do you display two or three time zones side by side in Google Calendar and Microsoft Outlook, which views and versions support a third column, and does adding a display column alter stored event times?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-week-view-that-fits-a-week",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.microsoft.com/en-us/outlook/getstarted/manage-time-zone-settings-in-outlook"
+      ]
+    },
+    {
+      "slug": "google-calendar-public-embed-on-website",
+      "title": "Embed a Google Calendar on your website: public details or free/busy only",
+      "short": "Embed a calendar on a website",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/37083?hl=en",
+        "https://support.google.com/calendar/answer/41207?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "inviting-people-who-do-not-have-the-app"
+    },
+    {
+      "slug": "outlook-end-recurring-meeting-early-keep-history",
+      "title": "End a recurring Outlook meeting early without wiping its history",
+      "short": "End an Outlook series early",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/Outlook/cancel-all-future-meetings-in-a-series",
+        "https://support.microsoft.com/en-gb/office/cancel-a-recurring-meeting-series-in-outlook-6111a4d4-70d9-4205-8e3f-1a937863813e",
+        "https://support.microsoft.com/en-US/Outlook/delete-an-appointment-or-a-meeting",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess"
+    },
+    {
+      "slug": "outlook-events-from-email-flights-hotels",
+      "title": "Flights and hotels added to Outlook from email: control what appears",
+      "short": "Outlook events from email",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/automatically-add-events-from-your-email-to-your-calendar",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-US/Outlook/automatically-add-events-from-your-email-to-your-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "google-calendar-events-from-gmail-visibility"
+    },
+    {
+      "slug": "google-calendar-events-from-gmail-visibility",
+      "title": "Flights and reservations from Gmail in Google Calendar: who can see them",
+      "short": "Events from Gmail",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/6084018?hl=en",
+        "https://support.google.com/calendar/answer/15454771?hl=en",
+        "https://support.google.com/calendar/answer/15716974?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "who-can-see-what-in-google-calendar"
+    },
+    {
+      "slug": "outlook-forward-meeting-and-allow-forwarding",
+      "title": "Forwarding Outlook meetings: what attendees can do and how to stop it",
+      "short": "Outlook meeting forwarding",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/forward-a-meeting-in-outlook",
+        "https://support.microsoft.com/en-US/Outlook/prevent-forwarding-of-a-meeting",
+        "https://support.microsoft.com/en-us/Support/known-issues/allow-forwarding-option-is-missing-from-response-options-for-a-shared-calendar",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "keeping-track-of-who-replied"
+    },
+    {
+      "slug": "google-calendar-gemini-suggested-meeting-times",
+      "title": "Gemini suggested meeting times in Google Calendar: check eligibility and review the result",
+      "short": "Gemini suggested meeting times in Google Calendar",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/16690875?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-event-or-room-reservation"
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "title": "Give a colleague CalDAV calendar-account access in Mac Calendar",
+      "short": "CalDAV account delegation on Mac",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+        "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "caldav-calendar-on-iphone"
+    },
+    {
+      "slug": "google-calendar-alternate-calendar-moon-sports",
+      "title": "Google alternate dates, Moon phases or sports: choose the right calendar source",
+      "short": "Google alternate dates, Moon phases or sports",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/13748650?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "iphone-calendar-language-alternate-calendar-settings"
+    },
+    {
+      "slug": "google-appointment-email-verification",
+      "title": "Google appointment email verification: what guests must do and what it proves",
+      "short": "Google appointment email verification",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/11902347?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "booking-link-or-shared-calendar"
+    },
+    {
+      "slug": "google-appointment-schedule-which-calendars-block-booking-slots",
+      "title": "Google appointment schedule: which calendars and events block a booking slot",
+      "short": "Why a booking slot is open or hidden",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/16287054?hl=en",
+        "https://support.google.com/calendar/answer/11423292?hl=en",
+        "https://support.google.com/calendar/answer/10729749?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "booking-link-or-shared-calendar"
+    },
+    {
+      "slug": "google-calendar-birthdays-from-contacts",
+      "title": "Google Calendar birthdays: check the contact, manual entry and account behind a date",
+      "short": "Find the source of a Google birthday",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/13748346?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "family-pickup-calendar-handoff"
+    },
+    {
+      "slug": "google-calendar-find-a-time-blank-is-not-free",
+      "title": "Google Calendar Find a time: a blank column does not mean the guest is free",
+      "short": "Reading Find a time correctly",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/6294878?hl=en",
+        "https://support.google.com/calendar/answer/15716974?hl=en",
+        "https://support.google.com/calendar/answer/34580?hl=en",
+        "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-event-or-room-reservation"
+    },
+    {
+      "slug": "google-calendar-meeting-notes-not-updating",
+      "title": "Google Calendar meeting notes not updating? The document is not a live event mirror",
+      "short": "Meeting notes and event changes",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/6192039?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "meeting-links-that-make-themselves"
+    },
+    {
+      "slug": "google-calendar-android-app-not-syncing",
+      "title": "Google Calendar not syncing on Android: checks in a safe order",
+      "short": "Android Calendar not syncing",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/6261951?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-calendar-sync-actually-does"
+    },
+    {
+      "slug": "google-calendar-offline-desktop-limits",
+      "title": "Google Calendar offline on a computer: prepare the view and know what cannot change",
+      "short": "Google Calendar offline on a computer",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/1340696?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "google-calendars-that-never-reach-your-iphone"
+    },
+    {
+      "slug": "google-calendar-ownership-transfer-pending-acceptance",
+      "title": "Google Calendar ownership transfer: finish the handoff before an account closes",
+      "short": "Finish a Google calendar handoff",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/78739?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-calendar-that-is-yours-to-share"
+    },
+    {
+      "slug": "google-calendar-event-visibility-private-public-default",
+      "title": "Google Calendar private events: what each person with access actually sees",
+      "short": "Private, public and default events",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/34580?hl=en",
+        "https://support.google.com/calendar/answer/15716974?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "who-can-see-what-in-google-calendar"
+    },
+    {
+      "slug": "google-calendar-time-insights-counted-meetings",
+      "title": "Google Calendar Time Insights: reconcile the meetings that actually count",
+      "short": "Google Calendar Time Insights",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/10738043?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "planning-a-week-in-ten-minutes"
+    },
+    {
+      "slug": "google-calendar-working-hours-location-out-of-office-focus-time",
+      "title": "Google Calendar working hours, working location, out of office or focus time: which one to set",
+      "short": "Working hours, location, OOO or focus time",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.google.com/calendar/answer/18616218?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.google.com/calendar/answer/11190973?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "work-and-personal-without-two-apps"
+    },
+    {
+      "slug": "google-family-calendar-membership",
+      "title": "Google family calendar: who gets it, who can edit, what happens when someone leaves",
+      "short": "Google family calendar",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/7157782?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-calendar-that-is-yours-to-share"
+    },
+    {
+      "slug": "non-integer-30-and-45-minute-utc-offset-calendar-scheduling",
+      "title": "Half-hour and quarter-hour time zones: calculate a meeting that fits",
+      "short": ":30 and :45 UTC Offset Scheduling",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "How do `:30` and `:45` UTC offsets—such as India (`UTC+05:30`), Adelaide (`UTC+09:30`/`+10:30`), Newfoundland (`UTC-03:30`/`-02:30`), and Nepal (`UTC+05:45`)—affect `:00` calendar slots and daily working-hours overlap?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "display-multiple-time-zone-columns-google-calendar-outlook",
+      "sourceURLs": [
+        "https://www.iana.org/time-zones",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.14",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://support.google.com/calendar/answer/7638168?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "google-calendar-hide-unsubscribe-or-delete",
+      "title": "Hide, unsubscribe or delete a Google calendar: pick the one you can undo",
+      "short": "Hide, unsubscribe or delete",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/37188?hl=en",
+        "https://support.google.com/calendar/answer/41067?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "disconnect-calendar-integration-without-losing-track"
+    },
+    {
+      "slug": "icloud-shared-calendar-update-emails",
+      "title": "iCloud shared calendar update emails: choose the right inbox and signal",
+      "short": "Shared-calendar update emails",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/receive-emails-updates-shared-calendars-mm8074582205/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-notifications-missing-silent-or-duplicated"
+    },
+    {
+      "slug": "iphone-calendar-add-only-full-access",
+      "title": "iPhone calendar access: why an app can add events but cannot show your schedule",
+      "short": "Calendar permission levels",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://developer.apple.com/documentation/eventkit/accessing-the-event-store",
+        "https://support.apple.com/guide/iphone/control-access-to-information-in-apps-iph251e92810/ios"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "unwanted-calendar-events-iphone"
+    },
+    {
+      "slug": "outlook-show-declined-meetings-on-calendar",
+      "title": "Keep declined meetings visible in Outlook, or get one back",
+      "short": "Declined meetings in Outlook",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/show-a-declined-meeting-on-my-calendar-in-outlook",
+        "https://support.microsoft.com/en-us/office/show-a-declined-meeting-on-my-calendar-in-outlook-24e81b9b-3906-4c02-8b63-f97b02161763"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "keeping-track-of-who-replied"
+    },
+    {
+      "slug": "outlook-shorten-meetings-automatically",
+      "title": "Make Outlook meetings end early or start late automatically",
+      "short": "Shorten Outlook meetings",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/make-all-your-events-shorter-automatically",
+        "https://support.microsoft.com/en-us/office/make-all-your-events-shorter-automatically-8fa0fdcb-5eee-4e12-9452-8d59ee33f70a"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "planning-a-week-in-ten-minutes"
+    },
+    {
+      "slug": "outlook-calendar-delegate-or-editor-permission",
+      "title": "Microsoft 365 calendar: give an assistant Can edit or Delegate access?",
+      "short": "Outlook delegate or editor",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/sharing/share-and-access-a-calendar-with-edit-or-delegate-permissions-in-outlook",
+        "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "exchange-calendars-on-an-iphone"
+    },
+    {
+      "slug": "outlook-group-calendar-versus-shared-calendar",
+      "title": "Microsoft 365 group calendar or a shared calendar: who can cancel, who gets invited",
+      "short": "Group calendar vs shared calendar",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/people/use-a-group-calendar-in-outlook-to-schedule-and-edit-events",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "exchange-calendars-on-an-iphone"
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "title": "Mute one calendar on Mac without deleting its appointments",
+      "short": "Ignore alerts for one calendar",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-notifications-missing-silent-or-duplicated"
+    },
+    {
+      "slug": "outlook-teams-meeting-button-missing",
+      "title": "No Teams meeting option in Outlook: check which Outlook you have first",
+      "short": "Teams option missing in Outlook",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/meetings/resolve-teams-meeting-add-in-issues",
+        "https://support.microsoft.com/office/teams-meeting-add-in-missing-in-new-outlook-2ba1d660-29d9-4bdb-b651-c62d9d790865"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "meeting-links-that-make-themselves"
+    },
+    {
+      "slug": "icloud-calendar-hide-past-events",
+      "title": "Old iCloud events disappeared? Check the web hide-past-events setting",
+      "short": "Hidden past iCloud events",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/delete-or-hide-an-event-mmfbbb4470/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "find-old-calendar-events-by-account-date-and-title"
+    },
+    {
+      "slug": "on-call-standby-calendar-versus-confirmed-shift",
+      "title": "On-call calendar: separate coverage from confirmed work",
+      "short": "On-call calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "shift-work-calendar-iphone-rotating-schedules"
+    },
+    {
+      "slug": "outlook-appointment-meeting-event-convert-and-update",
+      "title": "Outlook appointment, meeting or event: convert one to another and update correctly",
+      "short": "Appointment, meeting or event",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-an-all-day-event-really-means"
+    },
+    {
+      "slug": "outlook-birthday-calendar-from-contacts",
+      "title": "Outlook birthday calendar: turn it on, fix dates in contacts, hide it",
+      "short": "Outlook birthdays",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-gb/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/calendar/add-a-birthday-calendar-and-reminder-in-outlook"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "google-calendar-birthdays-from-contacts"
+    },
+    {
+      "slug": "outlook-calendar-sharing-levels-busy-titles-details",
+      "title": "Outlook calendar sharing levels: busy only, titles and locations, or all details",
+      "short": "Outlook sharing levels",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "exchange-calendars-on-an-iphone"
+    },
+    {
+      "slug": "google-calendar-response-emails-outlook-rsvp",
+      "title": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+      "short": "Outlook RSVP missing in Google Calendar? Check the event’s response-email switch",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/16713792?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "keeping-track-of-who-replied"
+    },
+    {
+      "slug": "outlook-show-as-free-busy-tentative-working-elsewhere",
+      "title": "Outlook Show As: free, tentative, busy, working elsewhere or out of office",
+      "short": "Outlook Show As statuses",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "https://learn.microsoft.com/en-us/office/vba/api/Outlook.OlBusyStatus",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.microsoft.com/en-US/Outlook/send-automatic-out-of-office-replies-from-outlook-com-or-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "work-and-personal-without-two-apps"
+    },
+    {
+      "slug": "outlook-work-hours-and-location",
+      "title": "Outlook work hours and location: set office and remote days",
+      "short": "Outlook work hours and location",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "work-and-personal-without-two-apps"
+    },
+    {
+      "slug": "overnight-shift-crossing-midnight-calendar-end-date",
+      "title": "Overnight shift calendar: put the end on the next date",
+      "short": "Overnight shift calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-an-all-day-event-really-means"
+    },
+    {
+      "slug": "google-appointment-payments-stripe-refunds",
+      "title": "Paid Google appointments: separate booking cancellation from a Stripe refund",
+      "short": "Paid Google appointments",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/13762729?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "booking-link-or-shared-calendar"
+    },
+    {
+      "slug": "non-dst-time-zone-arizona-hawaii-recurring-calendar",
+      "title": "Phoenix and Hawaii meeting times: use the right city zone",
+      "short": "Phoenix and Hawaii meeting times",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.iana.org/time-zones"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "slug": "google-calendar-print-date-range",
+      "title": "Print a Google Calendar: choose the range, the calendars and the details",
+      "short": "Print Google Calendar",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/41067?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-export-ics-pdf-and-backup"
+    },
+    {
+      "slug": "outlook-print-calendar-styles",
+      "title": "Print an Outlook calendar: pick the style that shows what you need",
+      "short": "Print an Outlook calendar",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-au/office/print-a-calendar-048370ac-c799-4127-b50a-0f42c70f0100",
+        "https://support.microsoft.com/topic/ad03c408-1607-4a24-8b35-2c9f46930760"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-export-ics-pdf-and-backup"
+    },
+    {
+      "slug": "outlook-propose-new-meeting-time",
+      "title": "Propose a new meeting time in Outlook, and accept one as organizer",
+      "short": "Propose a new time in Outlook",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/propose-a-new-meeting-time-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/calendar/change-an-appointment-meeting-or-event-in-outlook"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "keeping-track-of-who-replied"
+    },
+    {
+      "slug": "icloud-public-calendar-publish-stop",
+      "title": "Publish an iCloud calendar as a public feed, then retire it deliberately",
+      "short": "Publish and retire a public calendar",
+      "draftFile": "drafts/apple-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/icloud/share-a-calendar-mm6b1a9479/icloud",
+        "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-calendar-that-is-yours-to-share"
+    },
+    {
+      "slug": "outlook-scheduling-assistant-read-colleague-availability",
+      "title": "Reading a colleague’s availability in Outlook’s Scheduling Assistant",
+      "short": "Read the Scheduling Assistant",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+        "https://support.microsoft.com/en-gb/office/learn-more-about-work-hours-in-outlook-af2fddf9-249e-4710-9c95-5911edfd76f6",
+        "https://learn.microsoft.com/en-us/troubleshoot/outlook/calendaring/cannot-view-free-busy-information"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-event-or-room-reservation"
+    },
+    {
+      "slug": "outlook-recover-deleted-calendar-items",
+      "title": "Recover a deleted Outlook calendar event: Deleted Items first, then the server",
+      "short": "Recover deleted Outlook events",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-au/office/recover-deleted-calendar-items-7ea77612-660b-4781-963d-8c08a8dfce6d",
+        "https://support.microsoft.com/en-au/office/recover-deleted-items-from-the-server-9e070d4e-d03a-46af-a9b2-8288f625279c"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recover-deleted-calendar-events-iphone"
+    },
+    {
+      "slug": "monthly-recurring-last-weekday-byday-minus-1-versus-fixed-date",
+      "title": "Last weekday of the month or the 31st? Check the recurrence rule",
+      "short": "Last Weekday of Month vs Fixed 31st",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "What happens across a 12-month year when a monthly recurring event is set to the `31st` (`BYMONTHDAY=31`) versus the last calendar day (`BYMONTHDAY=-1`), the last Friday (`BYDAY=-1FR`), or the last working weekday (`BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`)?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.4",
+        "https://support.apple.com/guide/calendar/icl1018/mac",
+        "https://support.microsoft.com/en-gb/outlook/get-started-with-the-outlook-calendar",
+        "https://support.google.com/calendar/answer/37115?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "google-tasks-repeating-task-complete-delete",
+      "title": "Repeating tasks in Google Tasks and Calendar: complete, skip or stop them",
+      "short": "Repeating Google tasks",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/12132599?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "iphone-calendar-tasks-reminders-versus-event-alerts"
+    },
+    {
+      "slug": "outlook-schedule-meeting-on-behalf-of-someone",
+      "title": "Schedule a meeting on someone else’s Outlook calendar: save, send and check",
+      "short": "Scheduling on behalf of someone",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/manage-someone-else-s-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-gb/outlook/sharing/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook",
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "exchange-calendars-on-an-iphone"
+    },
+    {
+      "slug": "google-booking-page-link-button-embed",
+      "title": "Share a Google booking page: link, popup button or inline embed",
+      "short": "Share a Google booking page",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/10733297?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "booking-link-or-shared-calendar"
+    },
+    {
+      "slug": "outlook-share-calendar-outside-organization",
+      "title": "Share a Microsoft 365 calendar with someone outside your organisation",
+      "short": "Outlook sharing with externals",
+      "draftFile": "claude/claude-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/share-calendars-with-external-users",
+        "https://support.microsoft.com/en-us/outlook/share-your-calendar-in-outlook-on-the-web",
+        "https://support.microsoft.com/en-us/outlook/calendar-sharing-in-microsoft-365"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "exchange-calendars-on-an-iphone"
+    },
+    {
+      "slug": "outlook-shared-mailbox-calendar",
+      "title": "Shared mailbox calendar in Outlook: who can use it and its limits",
+      "short": "Shared mailbox calendar",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/office/open-and-use-a-shared-mailbox-in-outlook-98b5a90d-4e38-415d-a030-f09a4cd28207",
+        "https://learn.microsoft.com/en-us/microsoft-365/admin/email/about-shared-mailboxes"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-calendar-that-is-yours-to-share"
+    },
+    {
+      "slug": "google-calendar-android-personal-work-profile",
+      "title": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+      "short": "Show personal calendars in an Android Work Profile without confusing it with sharing",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/15620294?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "google-calendars-that-never-reach-your-iphone"
+    },
+    {
+      "slug": "split-shift-two-work-periods-calendar-blocking",
+      "title": "Split-shift calendar: keep two work periods and the gap separate",
+      "short": "Split-shift calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "shift-work-calendar-iphone-rotating-schedules"
+    },
+    {
+      "slug": "southern-hemisphere-reverse-dst-two-hour-meeting-shift",
+      "title": "Sydney–New York recurring meetings: plan the two-hour seasonal swing",
+      "short": "Sydney–New York recurring meetings",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://dcj.nsw.gov.au/about-us/daylight-saving.html",
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "slug": "google-calendar-task-deadline-versus-scheduled-time-block",
+      "title": "Google task deadline or work block? Reserve the time before it is due",
+      "short": "Task Deadline vs Scheduled Work Block",
+      "draftFile": "argon/argon-drafts-02-final-reviewed.json",
+      "briefFile": "argon/claimed-briefs-02.json",
+      "evidenceGate": "independently_reviewed",
+      "intent": "In Google Calendar and iCalendar (`VTODO` vs `VEVENT`), how does an all-day task **Deadline** (`DUE`) differ from a timed task (**Start date and time**) and a **Busy work block** (`VEVENT` / `Focus time`) when you need to reserve actual execution hours?",
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "iphone-calendar-tasks-reminders-versus-event-alerts",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/9901136?hl=en",
+        "https://support.google.com/calendar/answer/11190973?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.2",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+        "https://www.rfc-editor.org/rfc/rfc5545"
+      ]
+    },
+    {
+      "slug": "iana-tzdb-government-time-zone-rule-change-calendar",
+      "title": "Time-zone rule changes: diagnose a calendar before moving events",
+      "short": "Time-zone rule changes",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.iana.org/time-zones",
+        "https://support.google.com/calendar/answer/37064?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.5"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "slug": "google-calendar-email-notifications-filter",
+      "title": "Too many Google Calendar emails: choose categories, then filter in Gmail",
+      "short": "Google Calendar email noise",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/17366804?hl=en",
+        "https://support.google.com/calendar/answer/37242?hl=en&co=GENIE.Platform%3DDesktop",
+        "https://support.google.com/calendar/answer/15077640?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-notifications-missing-silent-or-duplicated"
+    },
+    {
+      "slug": "outlook-create-meeting-from-email",
+      "title": "Turn an Outlook email thread into a meeting request",
+      "short": "Meeting from an email",
+      "draftFile": "claude/claude-drafts-04-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/respond-to-an-email-message-with-a-meeting-request-in-outlook",
+        "https://support.microsoft.com/en-gb/office/create-a-meeting-from-an-email-message-in-outlook-ef65f361-cee9-41fb-8cb6-e00300b765d3",
+        "https://support.microsoft.com/en-us/office/respond-to-an-email-message-with-a-meeting-request-in-outlook-b04e0d58-b221-4ffd-9981-26ceb2bef0ae"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "natural-language-calendar-events-iphone"
+    },
+    {
+      "slug": "google-calendar-report-assigned-task-spam",
+      "title": "Unwanted assigned Google task? Identify the shared source before reporting it",
+      "short": "Unwanted assigned Google task? Identify the shared source before reporting it",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/13012543?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "unwanted-calendar-events-iphone"
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "title": "Use a custom Mac Calendar alert to open a file or send yourself email",
+      "short": "Choose a custom alert action",
+      "draftFile": "drafts/apple-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-notifications-missing-silent-or-duplicated"
+    },
+    {
+      "slug": "us-uk-dst-mismatch-weeks-recurring-meeting-calendar",
+      "title": "US–UK DST mismatch: check each recurring meeting date",
+      "short": "US–UK DST mismatch",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://aa.usno.navy.mil/faq/daylight_time",
+        "https://www.gov.uk/when-do-the-clocks-change",
+        "https://support.google.com/calendar/answer/37064?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "slug": "outlook-split-view-overlay-calendars",
+      "title": "View several Outlook calendars at once: split view or overlay",
+      "short": "Outlook split view and overlay",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/calendar/view-multiple-calendars-at-the-same-time-in-outlook"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "a-week-view-that-fits-a-week"
+    },
+    {
+      "slug": "google-keep-reminders-moved-to-tasks",
+      "title": "Where Google Keep reminders went: finding them in Google Tasks",
+      "short": "Keep reminders in Tasks",
+      "draftFile": "claude/claude-drafts-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/16540694?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "sync-google-tasks-apple-reminders-iphone"
+    },
+    {
+      "slug": "outlook-change-meeting-organizer-or-copy-meeting",
+      "title": "You can’t change an Outlook meeting’s organizer: hand it over instead",
+      "short": "Change an Outlook organizer",
+      "draftFile": "claude/claude-drafts-03-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.microsoft.com/en-us/outlook/best-practices-for-organizations-when-using-the-outlook-calendar",
+        "https://support.microsoft.com/en-us/Support/known-issues/outlook-blocks-copying-meetings-with-copying-meetings-is-not-supported"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "A_operational_consumer_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "taking-back-a-calendar-you-shared"
+    },
+    {
+      "slug": "firefighter-24-48-kelly-day-calendar-pattern",
+      "title": "24/48 firefighter calendar: add a Kelly day without shifting the roster",
+      "short": "24/48 firefighter calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.southburlingtonvt.gov/170/Careers",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+        "https://support.google.com/calendar/answer/37115?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "shift-work-calendar-iphone-rotating-schedules"
+    },
+    {
+      "slug": "dupont-28-day-rotating-shift-calendar-cycle",
+      "title": "DuPont 28-day shift calendar: map the cycle before repeating it",
+      "short": "DuPont 28-day shift calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.hendersoncountync.gov/ems/page/working-hcems",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://support.google.com/calendar/answer/37115?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "shift-work-calendar-iphone-rotating-schedules"
+    },
+    {
+      "slug": "icalendar-exdate-recurrence-id-moved-instance",
+      "title": "EXDATE or RECURRENCE-ID: skip one meeting or move it to another day",
+      "short": "Skip or move a recurring instance",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.2"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess"
+    },
+    {
+      "slug": "icalendar-floating-time-utc-tzid",
+      "title": "iCalendar floating time, UTC and TZID: which time does the file mean?",
+      "short": "Floating time or a fixed instant",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "time-zones-and-the-flight-you-booked"
+    },
+    {
+      "slug": "icalendar-duration-p1d-pt24h-dst",
+      "title": "iCalendar P1D versus PT24H: why a day can end at a different hour",
+      "short": "One day or exactly 24 hours?",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.6",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.5",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-an-all-day-event-really-means"
+    },
+    {
+      "slug": "icalendar-valarm-relative-absolute-trigger",
+      "title": "ICS alarm TRIGGER: before the start, after the end or at a fixed time?",
+      "short": "Read an alarm trigger",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.6.3",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.6"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "calendar-notifications-missing-silent-or-duplicated"
+    },
+    {
+      "slug": "ics-method-cancel-versus-delete-event",
+      "title": "ICS METHOD:CANCEL is not the same as deleting your calendar copy",
+      "short": "Cancel a meeting or remove a copy",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5546.html#section-3.2.5",
+        "https://www.rfc-editor.org/rfc/rfc5546.html#section-6",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess"
+    },
+    {
+      "slug": "icalendar-transp-class-busy-private",
+      "title": "ICS TRANSP versus CLASS: private and busy are different settings",
+      "short": "Private does not mean free",
+      "draftFile": "drafts/technical-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.2.7",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.1.3"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "who-can-see-what-in-google-calendar"
+    },
+    {
+      "slug": "icalendar-uid-sequence-event-updates",
+      "title": "ICS UID and SEQUENCE: why a changed title is still the same meeting",
+      "short": "Match an ICS event update",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.7",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.7.4",
+        "https://support.google.com/calendar/answer/37118?hl=en",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.4.4"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-calendar-sync-actually-does"
+    },
+    {
+      "slug": "pitman-2-2-3-shift-schedule-calendar-setup",
+      "title": "Pitman 2-2-3 shift calendar: verify the 14-day pattern",
+      "short": "Pitman 2-2-3 shift calendar",
+      "draftFile": "argon/argon-drafts-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.nantucket-ma.gov/m/faq?cat=154",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://support.google.com/calendar/answer/37115?hl=en"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "shift-work-calendar-iphone-rotating-schedules"
+    },
+    {
+      "slug": "rrule-count-until-excluded-occurrences",
+      "title": "RRULE COUNT or UNTIL: end a recurring schedule without an extra session",
+      "short": "COUNT, UNTIL and skipped dates",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.10",
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.8.5.1"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "recurring-events-without-the-mess"
+    },
+    {
+      "slug": "ics-all-day-dtend-exclusive-end-date",
+      "title": "Why an ICS all-day event ends one date after its last visible day",
+      "short": "ICS all-day end dates",
+      "draftFile": "drafts/source-batch-01-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://www.rfc-editor.org/rfc/rfc5545.html#section-3.6.1"
+      ],
+      "selected": true,
+      "decision": "retain_for_pilot_subject_to_evidence_gate",
+      "priorityTier": "B_supporting_specific_task",
+      "reason": "Specific end-user operation or failure with differentiated worked example and primary-documentation basis; no measured search-volume claim.",
+      "contextParent": "what-an-all-day-event-really-means"
+    },
+    {
+      "slug": "google-calendar-add-ons-conferencing-permissions",
+      "title": "Google Calendar add-ons: install the intended integration and check its meeting account",
+      "short": "Google Calendar add-ons",
+      "draftFile": "drafts/google-batch-02-reviewed.json",
+      "evidenceGate": "independently_reviewed",
+      "sourceURLs": [
+        "https://support.google.com/calendar/answer/9117864?hl=en"
+      ],
+      "selected": true,
+      "decision": "retained_after_independent_source_and_neighbor_review",
+      "mergeTarget": null,
+      "reason": "Google third-party conferencing installation, permissions and removal is a different supported task from built-in meeting-link creation and Outlook Teams repair. Restored in place of the duplicate viewer/event-zone article.",
+      "priorityTier": "deferred"
+    }
+  ],
+  "linkValidation": {
+    "selectedHaveNonHubIncoming": true,
+    "baselineParentMaxAdditions": 6,
+    "links": 100,
+    "baselineParentCounts": {
+      "a-calendar-that-is-yours-to-share": 4,
+      "a-week-view-that-fits-a-week": 2,
+      "booking-link-or-shared-calendar": 5,
+      "caldav-calendar-on-iphone": 3,
+      "calendar-event-or-room-reservation": 4,
+      "calendar-export-ics-pdf-and-backup": 3,
+      "calendar-notifications-missing-silent-or-duplicated": 5,
+      "change-calendar-color-iphone": 1,
+      "disconnect-calendar-integration-without-losing-track": 2,
+      "event-saved-to-wrong-calendar": 2,
+      "exchange-calendars-on-an-iphone": 5,
+      "family-pickup-calendar-handoff": 1,
+      "find-old-calendar-events-by-account-date-and-title": 1,
+      "google-calendars-that-never-reach-your-iphone": 2,
+      "inviting-people-who-do-not-have-the-app": 1,
+      "iphone-calendar-language-alternate-calendar-settings": 3,
+      "iphone-calendar-tasks-reminders-versus-event-alerts": 2,
+      "keeping-track-of-who-replied": 5,
+      "meeting-links-that-make-themselves": 2,
+      "natural-language-calendar-events-iphone": 2,
+      "planning-a-week-in-ten-minutes": 5,
+      "recover-deleted-calendar-events-iphone": 1,
+      "recurring-events-without-the-mess": 6,
+      "sharing-one-event-not-your-calendar": 1,
+      "shift-work-calendar-iphone-rotating-schedules": 5,
+      "sync-google-tasks-apple-reminders-iphone": 1,
+      "taking-back-a-calendar-you-shared": 1,
+      "the-commute-and-the-sky": 2,
+      "time-zones-and-the-flight-you-booked": 6,
+      "unwanted-calendar-events-iphone": 2,
+      "what-an-all-day-event-really-means": 4,
+      "what-calendar-sync-actually-does": 2,
+      "who-can-see-what-in-google-calendar": 3,
+      "work-and-personal-without-two-apps": 3
+    }
+  },
+  "evidenceGateCounts": {
+    "independently_reviewed": 100
+  },
+  "finalizedAt": "2026-10-23T10:29:54.070Z"
+}

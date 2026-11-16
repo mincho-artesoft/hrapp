@@ -1,0 +1,502 @@
+{
+  "ar-SA": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud وتقويم Google وMicrosoft Outlook، تتزامن في الاتجاهين وتُميَّز بالألوان في عرض واحد. أوقف أي تقويم حين لا تريد رؤيته — ويستمر الباقي في العمل."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "أمسك حدثًا وحرّكه إلى وقت آخر أو يوم آخر. اسحب حافته العليا أو السفلى لتغيير مدته. لا نافذة ولا زر حفظ."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "هذه هي الطريقة الأساسية للتحرير. اسحب الحدث إلى وقت آخر أو يوم آخر، أو اسحب حافته العليا أو السفلى لتغيير المدة. وتتزامن التغييرات مباشرة إلى التقويم المصدر."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "الأحداث نفسها، مرتّبة وفق السؤال الذي تطرحه فعلًا — وكل واحد منها يحمل توقعاته."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "شبكة ساعية يحمل فيها كل صف توقعاته الخاصة. ترى اجتماع الثالثة ومطر الثالثة في اللمحة نفسها — دون تطبيق ثانٍ ودون تخمين."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "عرض الشهر يضع علامة على كل يوم فيه شيء. وعرض السنة يضع اثني عشر شهرًا على شاشة واحدة — أسرع طريقة لإيجاد أسبوع خالٍ."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "المس أي ساعة في مركز الطقس فيُفتح حدث جديد مضبوط على ذلك الوقت. اعثر على النافذة الجافة ثم احجزها."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "الإصدار {v} — الأحداث المشتركة تحدّث نفسها الآن"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "تدير Apple الاشتراكات، فالإلغاء يتم من إعدادات حسابك في App Store. افعل ذلك قبل انتهاء الفترة بأربع وعشرين ساعة على الأقل فلا يُحتسب عليك مبلغ جديد."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "تتجدد الاشتراكات تلقائيًا وتُحتسب عبر Apple ID. ألغِ متى شئت من إعدادات حسابك في App Store، قبل انتهاء الفترة بأربع وعشرين ساعة على الأقل."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "في الاتجاهين"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "الأكثر اختيارًا"
+    }
+  ],
+  "bg": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google Calendar и Microsoft Outlook, синхронизирани в двете посоки и оцветени в един изглед. Изключете който календар не искате да виждате — останалите продължават да работят."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Хванете събитие и го плъзнете в нов час или в друг ден. Дръпнете горния или долния му край, за да промените продължителността. Без прозорец, без бутон за запазване."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Това е основният начин за редактиране. Влачете събитие към друг час или друг ден, или дръпнете горния или долния му край, за да смените продължителността. Промените се връщат направо в изходния календар."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Същите събития, подредени според въпроса, който всъщност си задавате — и всяко от тях носи прогнозата."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Почасова решетка, в която всеки ред носи собствената си прогноза. Виждате срещата в 15 ч и дъжда в 15 ч с един поглед — без второ приложение и без гадаене."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Месечният изглед отбелязва всеки ден, в който има нещо. Годишният събира дванайсет месеца на един екран — най-бързият начин да намерите свободна седмица."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Докоснете час в центъра за времето и се отваря ново събитие, вече нагласено за него. Намерете сухия прозорец и го заемете."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Версия {v} — споделените събития вече се обновяват сами"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Абонаментите се управляват от Apple, така че отказът става в настройките на профила ви в App Store. Направете го поне 24 часа преди края на периода и няма да бъдете таксувани отново."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Абонаментите се подновяват автоматично и се таксуват през вашия Apple ID. Отказвате ги по всяко време в настройките на профила си в App Store, поне 24 часа преди края на периода."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "В двете посоки"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Най-избирано"
+    }
+  ],
+  "cs": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Kalendář Google a Microsoft Outlook, synchronizované oběma směry a barevně odlišené v jednom pohledu. Vypněte kterýkoli kalendář, když ho nechcete vidět — zbytek běží dál."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Chyťte událost a posuňte ji na jiný čas nebo jiný den. Zatáhněte za horní nebo dolní okraj a změňte, jak dlouho trvá. Žádné okno, žádné tlačítko uložit."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "To je hlavní způsob úprav. Přetáhněte událost na jiný čas nebo jiný den, případně zatáhněte za její horní či dolní okraj a změňte délku. Změny se hned promítnou zpět do zdrojového kalendáře."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Tytéž události, uspořádané podle otázky, kterou si opravdu kladete — a každá nese svou předpověď."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Hodinová mřížka, v níž každý řádek nese vlastní předpověď. Schůzku ve tři a déšť ve tři vidíte jedním pohledem — žádná druhá aplikace, žádné hádání."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Měsíční pohled označí každý den, v němž něco je. Roční položí dvanáct měsíců na jednu obrazovku — nejrychlejší způsob, jak najít volný týden."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Klepněte na kteroukoli hodinu v centru počasí a otevře se nová událost, už nastavená na tento čas. Najděte suché okno a zabraňte ho."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Verze {v} — sdílené události se teď udržují aktuální samy"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Předplatné spravuje Apple, takže se ruší v nastavení účtu App Store. Udělejte to nejpozději 24 hodin před koncem období a už vám nic nebude účtováno."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Předplatné se automaticky obnovuje a účtuje přes vaše Apple ID. Zrušte kdykoli v nastavení účtu App Store, nejpozději 24 hodin před koncem období."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Oběma směry"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Nejčastější volba"
+    }
+  ],
+  "da": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google Kalender og Microsoft Outlook, synkroniseret begge veje og farvekodet i én visning. Slå en kalender fra, når du ikke vil se den — resten kører videre."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Tag fat i en begivenhed, og skub den til et andet tidspunkt eller en anden dag. Træk i dens øverste eller nederste kant for at ændre, hvor længe den varer. Ingen dialog, ingen gem-knap."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Det er den primære måde at redigere på. Træk en begivenhed til et andet tidspunkt eller en anden dag, eller træk i dens øverste eller nederste kant for at ændre varigheden. Ændringerne synkroniseres direkte tilbage til kildekalenderen."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "De samme begivenheder, ordnet efter det spørgsmål, du faktisk stiller — og hver af dem bærer sin udsigt."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Et timegitter, hvor hver række bærer sin egen udsigt. Du ser mødet klokken tre og regnen klokken tre i samme øjekast — ingen anden app, ingen gætterier."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Månedsvisningen markerer hver dag, hvor der er noget. Årsvisningen sætter tolv måneder på én skærm — den hurtigste måde at finde en fri uge."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Tryk på en hvilken som helst time i vejrcentret, og en ny begivenhed åbner, allerede sat til det tidspunkt. Find det tørre vindue, og book det."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Version {v} — delte begivenheder holder sig nu selv opdaterede"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Abonnementer håndteres af Apple, så du opsiger i indstillingerne for din App Store-konto. Gør det senest 24 timer før perioden slutter, så bliver du ikke opkrævet igen."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Abonnementer fornyes automatisk og opkræves via dit Apple-id. Opsig når som helst i indstillingerne for din App Store-konto, senest 24 timer før perioden slutter."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Begge veje"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Mest valgte"
+    }
+  ],
+  "de-DE": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google Kalender und Microsoft Outlook, in beide Richtungen synchronisiert und in einer Ansicht farblich getrennt. Schalten Sie einen Kalender aus, wenn Sie ihn nicht sehen wollen — der Rest arbeitet weiter."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Greifen Sie einen Termin und schieben Sie ihn auf eine andere Zeit oder einen anderen Tag. Ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Kein Dialog, kein Sichern-Knopf."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Das ist die wichtigste Art zu bearbeiten. Ziehen Sie einen Termin auf eine andere Zeit oder einen anderen Tag, oder ziehen Sie an der oberen oder unteren Kante, um die Dauer zu ändern. Die Änderungen werden direkt in den Ursprungskalender zurückgeschrieben."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Dieselben Termine, angeordnet nach der Frage, die Sie tatsächlich stellen — und jede einzelne mit der Vorhersage dabei."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Ein Stundenraster, in dem jede Zeile ihre eigene Vorhersage trägt. Sie sehen den Termin um 15 Uhr und den Regen um 15 Uhr im selben Blick — keine zweite App, kein Raten."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Die Monatsansicht markiert jeden Tag, an dem etwas ansteht. Die Jahresansicht bringt zwölf Monate auf einen Bildschirm — der schnellste Weg zu einer freien Woche."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Tippen Sie eine Stunde in der Wetterzentrale an, und ein neuer Termin öffnet sich, bereits auf diese Zeit gesetzt. Finden Sie das trockene Fenster und belegen Sie es."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Version {v} — geteilte Termine halten sich jetzt selbst aktuell"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Abonnements werden von Apple abgewickelt, Sie kündigen also in Ihren App-Store-Kontoeinstellungen. Tun Sie das mindestens 24 Stunden vor Ende des Zeitraums, dann wird Ihnen nichts mehr berechnet."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Abonnements verlängern sich automatisch und werden über Ihre Apple-ID abgerechnet. Sie können jederzeit in den App-Store-Kontoeinstellungen kündigen, spätestens 24 Stunden vor Ende des Zeitraums."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Beidseitig"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Am beliebtesten"
+    }
+  ],
+  "el": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Ημερολόγιο Google και Microsoft Outlook, συγχρονισμένα και προς τις δύο κατευθύνσεις και ξεχωρισμένα με χρώμα σε μία προβολή. Απενεργοποιήστε όποιο ημερολόγιο δεν θέλετε να βλέπετε — τα υπόλοιπα συνεχίζουν."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Πιάστε ένα γεγονός και σύρετέ το σε άλλη ώρα ή άλλη μέρα. Τραβήξτε την πάνω ή κάτω άκρη του για να αλλάξετε τη διάρκεια. Κανένα παράθυρο, κανένα κουμπί αποθήκευσης."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Είναι ο κύριος τρόπος επεξεργασίας. Σύρετε ένα γεγονός σε άλλη ώρα ή άλλη μέρα, ή τραβήξτε την πάνω ή κάτω άκρη του για να αλλάξετε τη διάρκεια. Οι αλλαγές συγχρονίζονται κατευθείαν πίσω στο ημερολόγιο προέλευσης."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Τα ίδια γεγονότα, τακτοποιημένα σύμφωνα με την ερώτηση που πραγματικά κάνετε — και καθένα κουβαλά την πρόγνωσή του."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Ένα ωριαίο πλέγμα όπου κάθε γραμμή κουβαλά τη δική της πρόγνωση. Βλέπετε τη συνάντηση των τριών και τη βροχή των τριών με το ίδιο βλέμμα — καμία δεύτερη εφαρμογή, καμία εικασία."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Η μηνιαία προβολή σημειώνει κάθε μέρα που έχει κάτι. Η ετήσια βάζει δώδεκα μήνες σε μία οθόνη — ο πιο γρήγορος τρόπος να βρείτε μια ελεύθερη εβδομάδα."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Αγγίξτε οποιαδήποτε ώρα στο κέντρο καιρού και ανοίγει νέο γεγονός, ήδη ρυθμισμένο σε εκείνη την ώρα. Βρείτε το στεγνό παράθυρο και κλείστε το."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Έκδοση {v} — τα κοινόχρηστα γεγονότα ενημερώνονται πλέον μόνα τους"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Οι συνδρομές διαχειρίζονται από την Apple, οπότε ακυρώνετε από τις ρυθμίσεις του λογαριασμού σας στο App Store. Κάντε το τουλάχιστον 24 ώρες πριν λήξει η περίοδος και δεν θα χρεωθείτε ξανά."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Οι συνδρομές ανανεώνονται αυτόματα και χρεώνονται μέσω του Apple ID σας. Ακυρώστε όποτε θέλετε από τις ρυθμίσεις του λογαριασμού σας στο App Store, τουλάχιστον 24 ώρες πριν λήξει η περίοδος."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Και προς τις δύο"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Η πιο δημοφιλής"
+    }
+  ],
+  "es-ES": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google Calendar y Microsoft Outlook, sincronizados en ambos sentidos y con código de color en una sola vista. Oculta cualquier calendario cuando no quieras verlo: el resto sigue funcionando."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Agarra un evento y deslízalo a otra hora o a otro día. Tira de su borde superior o inferior para cambiar cuánto dura. Sin ventana ni botón de guardar."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Es la forma principal de editar. Arrastra un evento a otra hora o a otro día, o tira de su borde superior o inferior para cambiar la duración. Los cambios se sincronizan directamente con el calendario de origen."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Los mismos eventos, ordenados según la pregunta que de verdad estás haciendo — y cada uno con la previsión encima."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Una cuadrícula horaria en la que cada fila lleva su propia previsión. Ves la reunión de las tres y la lluvia de las tres en el mismo golpe de vista: ni segunda aplicación ni conjeturas."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "La vista de mes marca cada día que tiene algo. La de año pone doce meses en una pantalla: la forma más rápida de encontrar una semana libre."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Toca cualquier hora del centro meteorológico y se abre un evento nuevo, ya puesto a esa hora. Encuentra la ventana seca y resérvala."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Versión {v} — los eventos compartidos ya se mantienen al día solos"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Las suscripciones las gestiona Apple, así que se cancelan en los ajustes de tu cuenta del App Store. Hazlo al menos 24 horas antes de que termine el periodo y no se te volverá a cobrar."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Las suscripciones se renuevan automáticamente y se cobran a través de tu Apple ID. Cancela cuando quieras en los ajustes de tu cuenta del App Store, al menos 24 horas antes de que termine el periodo."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Bidireccional"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "El más elegido"
+    }
+  ],
+  "fi": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google-kalenteri ja Microsoft Outlook, synkronoituina molempiin suuntiin ja värein eroteltuina yhdessä näkymässä. Ota mikä tahansa kalenteri pois näkyvistä, kun et halua nähdä sitä — loput toimivat edelleen."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Tartu tapahtumaan ja liu'uta se toiseen aikaan tai toiseen päivään. Vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Ei ikkunaa, ei tallennuspainiketta."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "Se on pääasiallinen tapa muokata. Vedä tapahtuma toiseen aikaan tai toiseen päivään, tai vedä sen ylä- tai alareunasta muuttaaksesi kestoa. Muutokset siirtyvät suoraan takaisin lähdekalenteriin."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Samat tapahtumat, järjestettyinä sen kysymyksen mukaan, jota oikeasti kysyt — ja jokainen kantaa ennusteensa."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Tuntiruudukko, jossa jokainen rivi kantaa oman ennusteensa. Näet kolmen kokouksen ja kolmen sateen samalla silmäyksellä — ei toista sovellusta, ei arvailua."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "Kuukausinäkymä merkitsee jokaisen päivän, jolla on jotain. Vuosinäkymä asettaa kaksitoista kuukautta yhdelle näytölle — nopein tapa löytää vapaa viikko."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Kosketa mitä tahansa tuntia sääkeskuksessa, ja uusi tapahtuma avautuu jo tuohon aikaan asetettuna. Löydä kuiva ikkuna ja varaa se."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Versio {v} — jaetut tapahtumat pysyvät nyt itse ajan tasalla"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Tilaukset hoitaa Apple, joten perut ne App Store -tilisi asetuksista. Tee se viimeistään 24 tuntia ennen jakson päättymistä, niin sinulta ei veloiteta uudelleen."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Tilaukset uusiutuvat automaattisesti ja veloitetaan Apple ID:si kautta. Peru milloin tahansa App Store -tilisi asetuksista, viimeistään 24 tuntia ennen jakson päättymistä."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Molempiin suuntiin"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Suosituin"
+    }
+  ],
+  "fr-FR": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, Google Agenda et Microsoft Outlook, synchronisés dans les deux sens et distingués par couleur dans une vue unique. Masquez un agenda quand vous ne voulez pas le voir — le reste continue de fonctionner."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "Attrapez un événement et faites-le glisser vers une autre heure ou un autre jour. Tirez son bord haut ou bas pour changer sa durée. Pas de fenêtre, pas de bouton Enregistrer."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "C’est la façon principale de modifier. Faites glisser un événement vers une autre heure ou un autre jour, ou tirez son bord haut ou bas pour changer la durée. Les changements repartent directement dans l’agenda d’origine."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "Les mêmes événements, disposés selon la question que vous vous posez réellement — et chacun porte sa prévision."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "Une grille horaire où chaque ligne porte sa propre prévision. Vous voyez la réunion de 15 h et la pluie de 15 h d’un même coup d’œil — pas de seconde application, pas de supposition."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "La vue mensuelle marque chaque jour qui contient quelque chose. La vue annuelle met douze mois sur un écran — le moyen le plus rapide de trouver une semaine libre."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "Touchez une heure dans le pôle météo et un nouvel événement s’ouvre, déjà réglé sur cette heure. Trouvez la fenêtre sèche, puis réservez-la."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "Version {v} — les événements partagés se tiennent désormais à jour tout seuls"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "Les abonnements sont gérés par Apple : la résiliation se fait donc dans les réglages de votre compte App Store. Faites-le au moins 24 heures avant la fin de la période et vous ne serez plus facturé."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "Les abonnements se renouvellent automatiquement et sont facturés via votre identifiant Apple. Résiliez quand vous voulez dans les réglages de votre compte App Store, au moins 24 heures avant la fin de la période."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "Bidirectionnel"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "Le plus choisi"
+    }
+  ],
+  "he": [
+    {
+      "field_path": "features.unified.body",
+      "before": "iCloud, יומן Google ו‑Microsoft Outlook, מסונכרנים לשני הכיוונים ומסומנים בצבע בתצוגה אחת. כבו כל יומן שאינכם רוצים לראות — השאר ממשיך לעבוד."
+    },
+    {
+      "field_path": "features.gestures.body",
+      "before": "תפסו אירוע והחליקו אותו לשעה אחרת או ליום אחר. משכו את הקצה העליון או התחתון כדי לשנות את משכו. בלי חלון ובלי כפתור שמירה."
+    },
+    {
+      "field_path": "faq.items[3].a",
+      "before": "זו הדרך העיקרית לערוך. גררו אירוע לשעה אחרת או ליום אחר, או משכו את הקצה העליון או התחתון כדי לשנות את המשך. השינויים מסונכרנים ישירות חזרה ליומן המקור."
+    },
+    {
+      "field_path": "showcase.lead",
+      "before": "אותם אירועים, מסודרים לפי השאלה שאתם באמת שואלים — וכל אחד מהם נושא את התחזית שלו."
+    },
+    {
+      "field_path": "showcase.panels[0].body",
+      "before": "רשת שעות שבה כל שורה נושאת את התחזית שלה. אתם רואים את הפגישה בשלוש ואת הגשם בשלוש באותה מבט — בלי אפליקציה שנייה ובלי ניחושים."
+    },
+    {
+      "field_path": "showcase.panels[3].body",
+      "before": "תצוגת החודש מסמנת כל יום שיש בו משהו. תצוגת השנה מציבה שנים‑עשר חודשים במסך אחד — הדרך המהירה ביותר למצוא שבוע פנוי."
+    },
+    {
+      "field_path": "features.tiles[1].body",
+      "before": "געו בכל שעה במרכז מזג האוויר וייפתח אירוע חדש, כבר מוגדר לאותה שעה. מצאו את החלון היבש ותפסו אותו."
+    },
+    {
+      "field_path": "hero.badge",
+      "before": "גרסה {v} — אירועים ששיתפתם מתעדכנים מעצמם מעכשיו"
+    },
+    {
+      "field_path": "faq.items[6].a",
+      "before": "המנויים מנוהלים על ידי Apple, ולכן הביטול נעשה בהגדרות חשבון ה‑App Store. עשו זאת לפחות 24 שעות לפני תום התקופה ולא תחויבו שוב."
+    },
+    {
+      "field_path": "pricing.note",
+      "before": "המנויים מתחדשים אוטומטית ומחויבים דרך ה‑Apple ID שלכם. בטלו מתי שתרצו בהגדרות חשבון ה‑App Store, לפחות 24 שעות לפני תום התקופה."
+    },
+    {
+      "field_path": "features.sourceNotes.twoWay",
+      "before": "לשני הכיוונים"
+    },
+    {
+      "field_path": "pricing.mostPopular",
+      "before": "הנבחר ביותר"
+    }
+  ]
+}

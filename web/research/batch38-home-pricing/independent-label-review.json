@@ -1,0 +1,292 @@
+{
+  "reviewedAt": "2026-10-22T04:45:54.612730+00:00",
+  "decision": "PASS",
+  "proposal": "research/batch38-home-pricing/proposed-changes.json",
+  "proposalSha256": "c7038438d840d14e8d6df42e3a2f5f712bba33ebd518da92b3df569522ff72e7",
+  "readScope": "Full29 before/after labels, reasons and scope read. Each current locale forever value independently matched. Pricing component40–75 read, including zero-price period selection; not a full30homepage review.",
+  "component": {
+    "file": "src/app/components/pricing/pricing.component.ts",
+    "sha256": "4b68dacdab502762e4cd2c6fe1e3502793d370e69eb06f2764754229419170b6",
+    "finding": "period returns copy.forever only when monthly is string0; paid tiers retain perYear/perMonth. This is current free-tier descriptive text, not subscription registration."
+  },
+  "reviewedLabels": [
+    {
+      "locale": "en-US",
+      "before": "forever",
+      "proposedAfter": "free plan",
+      "decision": "pass",
+      "recommendedAfter": "free plan",
+      "sourceSha256": "8866accd9cdbe31a2591af482181d149b24b7344bfd105f525e5fb815886af78"
+    },
+    {
+      "locale": "ar-SA",
+      "before": "إلى الأبد",
+      "proposedAfter": "الخطة المجانية",
+      "decision": "pass",
+      "recommendedAfter": "الخطة المجانية",
+      "sourceSha256": "3a575d1bd1288a43bed44df39042e1d4f6bee526402bd03e39b7a7041bbec352"
+    },
+    {
+      "locale": "bg",
+      "before": "завинаги",
+      "proposedAfter": "безплатен план",
+      "decision": "pass",
+      "recommendedAfter": "безплатен план",
+      "sourceSha256": "cd819de959c11e4eb054a0f3fd674bdfe04485eca59ae25e51e306608b0a98b0"
+    },
+    {
+      "locale": "cs",
+      "before": "navždy",
+      "proposedAfter": "bezplatný plán",
+      "decision": "pass",
+      "recommendedAfter": "bezplatný plán",
+      "sourceSha256": "606f898c197b23f50de1b5794feba6f25e1dad6e1d0feb8d626b086dfa7c564a"
+    },
+    {
+      "locale": "da",
+      "before": "for altid",
+      "proposedAfter": "gratisversion",
+      "decision": "replace_subscription_noun",
+      "recommendedAfter": "gratisversion",
+      "sourceSha256": "6bfd8e5aa3432b1f46c610b556c2d994c9e52816bbf788aecc15019ca582d769"
+    },
+    {
+      "locale": "de-DE",
+      "before": "für immer",
+      "proposedAfter": "kostenloser Tarif",
+      "decision": "pass",
+      "recommendedAfter": "kostenloser Tarif",
+      "sourceSha256": "a29c2d9d26db602a436916eaf802126ad6cd0d48a9f12315916bc45d2d7dd15e"
+    },
+    {
+      "locale": "el",
+      "before": "για πάντα",
+      "proposedAfter": "δωρεάν πρόγραμμα",
+      "decision": "pass",
+      "recommendedAfter": "δωρεάν πρόγραμμα",
+      "sourceSha256": "828e699d6ea97ca23816afa42cc412d2e023cf773366d6ccf18f2419b5430c0e"
+    },
+    {
+      "locale": "es-ES",
+      "before": "para siempre",
+      "proposedAfter": "plan gratuito",
+      "decision": "pass",
+      "recommendedAfter": "plan gratuito",
+      "sourceSha256": "f5c11719db7b2049fb31ff358dbf1147c6d5b46f38637c5599d0277d99646760"
+    },
+    {
+      "locale": "fi",
+      "before": "ikuisesti",
+      "proposedAfter": "ilmainen paketti",
+      "decision": "pass",
+      "recommendedAfter": "ilmainen paketti",
+      "sourceSha256": "177f3ad7c2cb36fe7c238aea93aaf66ab0542fb4986f2863c647d0edbcf5b11f"
+    },
+    {
+      "locale": "fr-FR",
+      "before": "pour toujours",
+      "proposedAfter": "offre gratuite",
+      "decision": "pass",
+      "recommendedAfter": "offre gratuite",
+      "sourceSha256": "77bd90a156f610f627424dc84fc016debc7f969bcd6d9eabc9bcf8f2f0539aeb"
+    },
+    {
+      "locale": "he",
+      "before": "לתמיד",
+      "proposedAfter": "מסלול חינמי",
+      "decision": "pass",
+      "recommendedAfter": "מסלול חינמי",
+      "sourceSha256": "d638eb423c8627861b145d12062b5a4aaf831d14271bc9cba04653e4440aabe0"
+    },
+    {
+      "locale": "hi",
+      "before": "हमेशा के लिए",
+      "proposedAfter": "मुफ़्त प्लान",
+      "decision": "pass",
+      "recommendedAfter": "मुफ़्त प्लान",
+      "sourceSha256": "eb726356c250b568a989a4f70c588a8d59ea00224567688178e1459168c7bb18"
+    },
+    {
+      "locale": "hu",
+      "before": "örökre",
+      "proposedAfter": "ingyenes csomag",
+      "decision": "pass",
+      "recommendedAfter": "ingyenes csomag",
+      "sourceSha256": "62f0d68650be3da278f7c31aec64dfc63bd50316d5322e54962572d3daca6ace"
+    },
+    {
+      "locale": "id",
+      "before": "selamanya",
+      "proposedAfter": "paket gratis",
+      "decision": "pass",
+      "recommendedAfter": "paket gratis",
+      "sourceSha256": "87681780db6499efc75203dd33ad8e30f8554eee85d09c09ecb1dbe8decc1fd1"
+    },
+    {
+      "locale": "ja",
+      "before": "ずっと",
+      "proposedAfter": "無料プラン",
+      "decision": "pass",
+      "recommendedAfter": "無料プラン",
+      "sourceSha256": "116e5088238f9b390f92952c959f75800038f5972b1cf430e3ffe937567e8c1b"
+    },
+    {
+      "locale": "ko",
+      "before": "영원히",
+      "proposedAfter": "무료 플랜",
+      "decision": "pass",
+      "recommendedAfter": "무료 플랜",
+      "sourceSha256": "f8e1013a8ddd05c1502d9440c0bc5c74634609cace910fe616b513e73567c980"
+    },
+    {
+      "locale": "ms",
+      "before": "selamanya",
+      "proposedAfter": "pelan percuma",
+      "decision": "pass",
+      "recommendedAfter": "pelan percuma",
+      "sourceSha256": "b6ae937a69fd841cadf7c43223098fb886fc01d01bd12c5c49c2272a13e26af4"
+    },
+    {
+      "locale": "nl-NL",
+      "before": "voor altijd",
+      "proposedAfter": "gratis versie",
+      "decision": "replace_subscription_noun",
+      "recommendedAfter": "gratis versie",
+      "sourceSha256": "972ed02d27ba7e62f8022ff0846900771dfc9a0e857cbf4681df4ea9ad8304da"
+    },
+    {
+      "locale": "no",
+      "before": "for alltid",
+      "proposedAfter": "gratisversjon",
+      "decision": "replace_subscription_noun",
+      "recommendedAfter": "gratisversjon",
+      "sourceSha256": "5eac872781ed5338829be2011b0c189531af60194ec21e468ac53b1ccdadf1ff"
+    },
+    {
+      "locale": "pl",
+      "before": "na zawsze",
+      "proposedAfter": "plan bezpłatny",
+      "decision": "pass",
+      "recommendedAfter": "plan bezpłatny",
+      "sourceSha256": "3c7f906a570ad736c29ce97be1e22d4f30dcd899924236646ba666e34a2c8995"
+    },
+    {
+      "locale": "pt-BR",
+      "before": "para sempre",
+      "proposedAfter": "plano gratuito",
+      "decision": "pass",
+      "recommendedAfter": "plano gratuito",
+      "sourceSha256": "b13643b7863947f26d365b1b07d94e816d1b980b7a22720cab472b4e6f57870a"
+    },
+    {
+      "locale": "ro",
+      "before": "pentru totdeauna",
+      "proposedAfter": "plan gratuit",
+      "decision": "pass",
+      "recommendedAfter": "plan gratuit",
+      "sourceSha256": "42675abb6df8ffeb62742b6ccba49e66abf76dd322cc22e372412c004981303a"
+    },
+    {
+      "locale": "ru",
+      "before": "навсегда",
+      "proposedAfter": "бесплатный план",
+      "decision": "pass",
+      "recommendedAfter": "бесплатный план",
+      "sourceSha256": "de2677e3e467fb9076895b80ef0fe590600a53f9dcbd999e7a0da70b01788d66"
+    },
+    {
+      "locale": "sv",
+      "before": "för alltid",
+      "proposedAfter": "gratisplan",
+      "decision": "pass",
+      "recommendedAfter": "gratisplan",
+      "sourceSha256": "60e47a666d2017d4e672ed972961cc50933b3bd392362955af4dcf5b9f7535e1"
+    },
+    {
+      "locale": "th",
+      "before": "ตลอดไป",
+      "proposedAfter": "แผนฟรี",
+      "decision": "pass",
+      "recommendedAfter": "แผนฟรี",
+      "sourceSha256": "23562988b04d09eb5b4492a0c1e6d0f01bfbd2b08281f8a3e3ba5ac6544583b9"
+    },
+    {
+      "locale": "tr",
+      "before": "sonsuza dek",
+      "proposedAfter": "ücretsiz plan",
+      "decision": "pass",
+      "recommendedAfter": "ücretsiz plan",
+      "sourceSha256": "6519a0b8cac95b593cc69a4099c2fddece22210a59a7a1ea90a4dde9b6d4ff66"
+    },
+    {
+      "locale": "vi",
+      "before": "mãi mãi",
+      "proposedAfter": "gói miễn phí",
+      "decision": "pass",
+      "recommendedAfter": "gói miễn phí",
+      "sourceSha256": "5918a565f8dd22376cc41673765a2a225cb5e100cb7ff04a48b99a9cda685659"
+    },
+    {
+      "locale": "zh-Hans",
+      "before": "永久",
+      "proposedAfter": "免费方案",
+      "decision": "pass",
+      "recommendedAfter": "免费方案",
+      "sourceSha256": "a0786ec56afdaaf9a2e4b38aa538779e0b70b7a990b5abd22c879fb1e81787c7"
+    },
+    {
+      "locale": "zh-Hant",
+      "before": "永久",
+      "proposedAfter": "免費方案",
+      "decision": "pass",
+      "recommendedAfter": "免費方案",
+      "sourceSha256": "f9f69eccbe71f4ec0868e3171bb7b4fb15c2d8c19bd5ae91a613f8f141d23b27"
+    }
+  ],
+  "otherFindings": [
+    "Other26 labels naturally communicate a free plan/package/offer and remove an unconditional future-pricing promise.",
+    "No amount, feature entitlement, provider permission, billing period or renewal change is represented by these label substitutions.",
+    "Italian already uses piano gratuito and is intentionally excluded.",
+    "Arabic/Hebrew strings contain no interpolated Latin account/price text or altered direction logic; no new RTL rendering requirement introduced by the labels."
+  ],
+  "limits": [
+    "Own semantic review, not independent native-speaker certification.",
+    "No runtime/layout/screen-reader test or source edits."
+  ],
+  "finalVerification": {
+    "at": "2026-10-22T04:47:17.371859+00:00",
+    "updatedProposalSha256": "c7038438d840d14e8d6df42e3a2f5f712bba33ebd518da92b3df569522ff72e7",
+    "exactThreeCorrected": {
+      "da": "gratisversion",
+      "nl-NL": "gratis versie",
+      "no": "gratisversjon"
+    },
+    "other26AfterLabelsUnchanged": true,
+    "all29BeforeValuesUnchanged": true,
+    "scope": "All29current pairs match prior saved review recommendations. Initial visible full read showed gratis abonnement for3; root applied corrections before prior review script captured current proposedAfter/hash. Final explicit reread confirms3accepted corrections and remaining26unchanged. No claim of a distinct raw pre-correction hash; no source edits."
+  },
+  "requiredCorrectionsResolved": [
+    {
+      "locale": "da",
+      "path": "pricing.forever",
+      "beforeProposed": "gratis abonnement",
+      "recommendedAfter": "gratisversion",
+      "reason": "Abonnement can denote a subscription. Free-version wording describes Base without suggesting recurring enrollment. This is a bounded semantic clarity improvement, not an assertion the original phrase is always invalid in the language."
+    },
+    {
+      "locale": "nl-NL",
+      "path": "pricing.forever",
+      "beforeProposed": "gratis abonnement",
+      "recommendedAfter": "gratis versie",
+      "reason": "Abonnement can denote a subscription. Free-version wording describes Base without suggesting recurring enrollment. This is a bounded semantic clarity improvement, not an assertion the original phrase is always invalid in the language."
+    },
+    {
+      "locale": "no",
+      "path": "pricing.forever",
+      "beforeProposed": "gratis abonnement",
+      "recommendedAfter": "gratisversjon",
+      "reason": "Abonnement can denote a subscription. Free-version wording describes Base without suggesting recurring enrollment. This is a bounded semantic clarity improvement, not an assertion the original phrase is always invalid in the language."
+    }
+  ],
+  "requiredCorrections": []
+}

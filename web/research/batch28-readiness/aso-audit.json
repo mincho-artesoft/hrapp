@@ -1,0 +1,873 @@
+{
+  "date": "2026-10-22",
+  "scope": "Saved evidence reconciliation and current local-source editorial audit only. No fresh ASC/public API/web request, metadata write, submission, build, deploy or native action.",
+  "conclusion": "Do not perform another broad ASC write or identical 250-field read now. Initial rollout is complete as a saved persistence check, but one concrete sharing-copy clarification remains and the saved support destination warrants a focused usability check. Neither provides evidence to reshuffle keywords or rename the app.",
+  "authoritativeState": {
+    "draftReadback": {
+      "checkedAt": "2026-10-21T23:08:19.029387+00:00",
+      "app": "6744690319",
+      "version": "1.7.4",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "locales": [
+        {
+          "locale": "ar-SA",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "bn-BD",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ca",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "cs",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "da",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "de-DE",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "el",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "en-AU",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "en-CA",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "en-GB",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "en-US",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "es-ES",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "es-MX",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "fi",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "fr-CA",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "fr-FR",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "gu-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "he",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "hi",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "hr",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "hu",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "id",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "it",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ja",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "kn-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ko",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ml-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "mr-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ms",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "nl-NL",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "no",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "or-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "pa-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "pl",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "pt-BR",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "pt-PT",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ro",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ru",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "sk",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "sl-SI",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "sv",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ta-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "te-IN",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "th",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "tr",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "uk",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "ur-PK",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "vi",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "zh-Hans",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        },
+        {
+          "locale": "zh-Hant",
+          "verified": true,
+          "checks": {
+            "description": true,
+            "keywords": true,
+            "promotionalText": true,
+            "subtitle": true,
+            "name": true
+          }
+        }
+      ],
+      "totalLocales": 50,
+      "allVerified": true,
+      "writesInThisCheck": false,
+      "scope": "Fresh full APIreadback of four targeted text fields and exact preserved app names across all50draftlocales. Does not certify translation quality, rankings or released copy.",
+      "submission": "not_performed"
+    },
+    "publicFacts": {
+      "checkedAt": "2026-10-21T23:27:17.394677+00:00",
+      "source": "https://itunes.apple.com/lookup?id=6744690319&country=us",
+      "country": "us",
+      "listing": {
+        "trackId": 6744690319,
+        "trackName": "Cloud Calendars: Sync & Widget",
+        "version": "1.7.3",
+        "fileSizeBytes": "49778688",
+        "averageUserRating": 4.5,
+        "userRatingCount": 12,
+        "minimumOsVersion": "18.0",
+        "price": 0,
+        "currency": "USD",
+        "currentVersionReleaseDate": "2026-10-04T14:38:25Z",
+        "trackViewUrl": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?uo=4"
+      },
+      "scope": "Public US storefront API only; not all storefronts, production privacy certification or released-binary feature verification."
+    },
+    "interpretation": "Saved draft1.7.4 PREPARE_FOR_SUBMISSION versus saved publicUS1.7.3. Not newly verified live state. Readback comparison code reads proposal field values, not their stale proposal_only status labels. Persistence is not linguistic approval, shipped feature parity, conversion or rank evidence."
+  },
+  "currentLedger": {
+    "inventory": {
+      "articles": 449,
+      "locales": [
+        "ar-SA",
+        "bg",
+        "cs",
+        "da",
+        "de-DE",
+        "el",
+        "en-US",
+        "es-ES",
+        "fi",
+        "fr-FR",
+        "he",
+        "hi",
+        "hu",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "ms",
+        "nl-NL",
+        "no",
+        "pl",
+        "pt-BR",
+        "ro",
+        "ru",
+        "sv",
+        "th",
+        "tr",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "englishArticles": 54,
+      "evidence": "research/content-inventory-20261021.json",
+      "scope": "Current route inventory, not coverage or quality approval."
+    },
+    "clusterStatuses": [
+      {
+        "id": "sync-versus-subscription",
+        "status": "english_revised_published_verified"
+      },
+      {
+        "id": "combine-calendars",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "sharing-permissions",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "calendar-views",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "widgets",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "work-personal-filtering",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "sync-troubleshooting",
+        "status": "english_existing_bodies_reviewed_substantive_diagnostics_coverage_provider_specific_gaps"
+      },
+      {
+        "id": "timezones",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      },
+      {
+        "id": "tasks-timeblocking",
+        "status": "english_existing_bodies_reviewed_substantive_core_coverage_scoped_gaps"
+      }
+    ],
+    "scope": "Read complete ledger in memory; examined cluster assessments and followups. All nine have recorded bounded body review; no inference of exhaustive query coverage from449routes."
+  },
+  "staleStatements": [
+    {
+      "file": "research/aso/english-proposal-20261021.json and localized proposal files",
+      "statement": "proposal_only_not_applied / ready_for_editorial_review_not_applied",
+      "resolution": "Historical proposal status. Applied records and latest saved50locale readback supersede for persistence only."
+    },
+    {
+      "file": "research/aso/audit-20261021.json",
+      "statement": "No locale rollout; duplicate sync/day planner/lock screen keywords; blank promotionalText; missing tier distinction",
+      "resolution": "Historical pre-apply audit. Inspected six current proposal fields and full rollout check; these are not new to-dos. Release notes are a separate release-owner task, not invented ASO copy."
+    },
+    {
+      "file": "research/keyword-coverage-ledger.json",
+      "statement": "combine-calendars remainingIntentGaps asks for goal-routing to export; sync-troubleshooting asks for diagnostic routing",
+      "resolution": "Current complete provider overview contains goal-choice paragraph and export/OneCal seeAlso. Current sync guide practical list contains all five symptom branches with actual related routes. Do not repeat those additions."
+    },
+    {
+      "file": "research/keyword-coverage-ledger.json",
+      "statement": "Earlier publication fields show43/35remainingASC locales and398/50inventory",
+      "resolution": "Historical accounting explicitly labelled by historyNote. Current inventory449/54 and current ASC50/250 take precedence; not quality scores."
+    }
+  ],
+  "prioritizedGaps": [
+    {
+      "priority": 1,
+      "id": "app-clip-preview-description-clarity",
+      "kind": "semantic clarification; not a false universal no-install claim",
+      "confirmedLocales": [
+        "en-US",
+        "en-GB",
+        "en-CA",
+        "en-AU",
+        "de-DE",
+        "es-ES"
+      ],
+      "exactEnglishBefore": "Share events and calendars, and send invitations by email, QR code or App Clip.",
+      "issue": "Grouping App Clip with email/QR invitations leaves preview versus add-event requirements implicit. Later complete guides and recorded native evidence make the difference explicit. Existing access qualification helps but does not state the full-app requirement.",
+      "proposedEnglishReplacement": "Share events and calendars with email or QR invitations. App Clip offers an event preview; adding the event through that experience requires the full app.",
+      "support": [
+        "src/app/content/en-US/articles-sharing.ts: sharing-one-event-not-your-calendar sections2–4",
+        "src/app/content/en-US/articles-sharing.ts: inviting-people-who-do-not-have-the-app sections2–4",
+        "research/batch08-sharing/evidence.json: EventClipPreviewView.swift60–96 and calendar.controller.ts11–20/45–51/75–119/149–156/277–313"
+      ],
+      "action": "Review a narrowly scoped description-only replacement and actual localized equivalents before any later approved apply. Retain name/subtitle/keywords/promotional text. Confirm current target values with a targeted read immediately before a write; no batch-wide reread solely to reconfirm yesterday’s persistence.",
+      "limits": "Six full proposal descriptions directly editorial-reviewed here. Other44 descriptions may share phrasing but were not assessed linguistically; no blanket defect or native-speaker review claimed."
+    },
+    {
+      "priority": 2,
+      "id": "support-destination-discoverability",
+      "kind": "URL destination usability; not an asserted Apple policy failure",
+      "savedExactFields": [
+        {
+          "locale": "en-AU",
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "marketingUrl": "https://www.cloud-calendars.com/"
+        },
+        {
+          "locale": "en-GB",
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "marketingUrl": "https://www.cloud-calendars.com/"
+        },
+        {
+          "locale": "en-CA",
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "marketingUrl": "https://www.cloud-calendars.com/"
+        },
+        {
+          "locale": "en-US",
+          "supportUrl": "https://www.cloud-calendars.com/",
+          "marketingUrl": "https://www.cloud-calendars.com/"
+        }
+      ],
+      "savedEvidence": "research/aso/asc-readonly-snapshot-20261021.json (initial snapshot); localized-batch05 English current.version fields repeat homepage URLs. Batch18 checks five text fields, not URLs.",
+      "currentSourceEvidence": [
+        "src/app/components/footer/footer.component.html has product/legal/store links, no direct support contact",
+        "src/app/components/footer/footer.component.ts productLinks lists tour/widgets/weather/features/pricing/faq",
+        "src/app/core/app-facts.ts declares SUPPORT_EMAIL, but repository search found no consumer",
+        "Privacy/terms pages contain contact addresses, accessible indirectly through footer"
+      ],
+      "issue": "The saved support URL lands on a marketing homepage whose footer offers no explicit support entry. Contact exists on legal pages, so this is discoverability rather than proven absence of contact.",
+      "action": "First verify the single current supportUrl and its rendered destination. If unchanged, expose a clear support contact/help entry at that existing destination or prepare a real dedicated support page before considering an ASC URL change. Do not point supportUrl at an invented route or automatically replace marketingUrl.",
+      "limits": "No live destination fetch or mailbox deliverability test in this audit; no assertion that all50URL fields remain unchanged."
+    }
+  ],
+  "keywordAssessment": {
+    "inspectedExactFields": [
+      "en-US",
+      "en-GB",
+      "en-CA",
+      "en-AU",
+      "de-DE",
+      "es-ES"
+    ],
+    "mechanicalScope": "50proposal objects read for counts; linguistic review limited to six stated locales",
+    "decision": "No keyword rewrite justified now. Inspected allocations contain calendar/planning/weather/sharing intent and avoid old lock/screen and repeated sync allocation. Locale variation is an editorial hypothesis, not measured territory demand. Do not fill unused space or add specialist rota/payroll terms merely because competitor research found them.",
+    "measurement": "Use a separately authorized App Store performance baseline around an actual release and comparable periods. Draft persistence and website coverage do not demonstrate search lift. No rank/search-volume/citation claim."
+  },
+  "completeBodyReads": [
+    {
+      "slug": "sharing-one-event-not-your-calendar",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "scope": "Full object including every paragraph, practical, FAQ, metadata, sources and seeAlso",
+      "sha256JsonStringify": "94df5d346cead4ad6e0d07bd244bdafc3d64e2a927f3d37b33eb14df4356704d"
+    },
+    {
+      "slug": "inviting-people-who-do-not-have-the-app",
+      "file": "src/app/content/en-US/articles-sharing.ts",
+      "scope": "Full object including every paragraph, practical, FAQ, metadata, sources and seeAlso",
+      "sha256JsonStringify": "2fe1b7dfa3b2dffd8c942b7e98477b1882051563b84c8ef68b84885debd2fbd9"
+    },
+    {
+      "slug": "icloud-google-and-outlook-in-one-view",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "scope": "Full object including every paragraph, practical, FAQ, metadata, sources and seeAlso",
+      "sha256JsonStringify": "247e2c75295a5b966eb16baac402a6cb767f5d950565c6ce541188a71ae00e51"
+    },
+    {
+      "slug": "what-calendar-sync-actually-does",
+      "file": "src/app/content/en-US/articles-unify.ts",
+      "scope": "Full object including every paragraph, practical, FAQ, metadata, sources and seeAlso",
+      "sha256JsonStringify": "b1050afa8428e67ddd157855c69212080968ad218f7162cb90ed04775220b49c"
+    }
+  ],
+  "exactReviewedProposalFields": [
+    {
+      "locale": "en-US",
+      "file": "research/aso/english-proposal-20261021.json",
+      "rawSha256": "f7068fa782ff3a74b10b433c49141cfb34c1293a11e5d59ef77d141a37b5a411",
+      "fields": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "weather,schedule,planner,agenda,forecast,month,week,reminder,event,meeting,shared,invite,appointment",
+        "promotionalText": "Plan with your calendars and weather together. Explore Home Screen widgets, flexible calendar views and local calendars you can start without an account.",
+        "description": "Bring your calendars and weather into one planning app for iPhone and iPad. See work and personal plans together, check the forecast and choose a calendar view that fits your day.\n\nYOUR CALENDARS, TOGETHER\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Or start with a local calendar on your device without creating an account. Connecting providers and sharing require sign-in where applicable.\n\nA VIEW FOR EVERY PLAN\nSwitch between Day, Week, Month, Year and List views. Use multiple calendars to keep different parts of your schedule visible in one place.\n\nWEATHER WHILE YOU PLAN\nCheck weather forecasts alongside your plans, explore detailed weather views and use the interactive weather map with wind and temperature layers. Forecast availability depends on your location and the weather provider.\n\nHOME SCREEN WIDGETS\nSee calendar information and weather from your Home Screen, with small, medium and large widget options.\n\nMEETINGS AND SHARING\nUse Google Meet support with Google Calendar. Premium adds Microsoft Teams support. Share events and calendars, and send invitations by email, QR code or App Clip. Sharing access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nThe free Base plan includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced features and adds Microsoft Calendar and Microsoft Teams support.\n\nCloud Calendars is free to download with optional auto-renewing subscriptions. Check current local prices in the app or App Store. Payment is charged to your Apple ID account at purchase confirmation. Subscriptions renew automatically unless canceled at least 24 hours before the current period ends. Your account is charged for renewal within 24 hours before that period ends. Manage or cancel subscriptions in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    },
+    {
+      "locale": "de-DE",
+      "file": "research/aso/localized-batch02/de-DE-proposal.json",
+      "rawSha256": "e773c8292c8e30d51926c35e2849df7996cd3b00260c0080d2e01a33c33aa5eb",
+      "fields": {
+        "name": "Cloud Calendars: Kalender",
+        "subtitle": "Termine, Wetter und Widgets",
+        "keywords": "planer,wochenansicht,monatsansicht,erinnerung,besprechung,ereignis,teilen,einladung,vorhersage",
+        "promotionalText": "Plane mit Terminen und Wetter an einem Ort. Entdecke Home-Bildschirm-Widgets und flexible Ansichten oder starte mit einem lokalen Kalender ohne App-Konto.",
+        "description": "Termine und Wetter gemeinsam planen: Cloud Calendars bringt berufliche und private Kalender auf deinem iPhone und iPad zusammen.\n\nKALENDER UND ANSICHTEN\nNutze iCloud-Kalender und verbinde Google Kalender. Mit Premium kommt die Unterstützung für Microsoft-Kalender hinzu. Wechsle zwischen Tages-, Wochen-, Monats-, Jahres- und Listenansicht.\n\nDu kannst auch einen lokalen Kalender auf deinem Gerät anlegen, ohne ein Cloud Calendars-Konto zu erstellen. Zum Verbinden von Diensten und zum Teilen kann eine Anmeldung erforderlich sein.\n\nWETTER UND WIDGETS\nPrüfe die Wettervorhersage bei der Planung. Widgets für den Home-Bildschirm sind in kleinen, mittleren und großen Größen verfügbar. Die verfügbaren Vorhersagen hängen vom Standort und Wetteranbieter ab.\n\nBESPRECHUNGEN UND EINLADUNGEN\nNutze Google Meet mit Google Kalender. Premium unterstützt zusätzlich Microsoft Teams. Teile Ereignisse und Kalender und lade andere per E-Mail, QR-Code oder App Clip ein. Die Zugriffsrechte hängen vom Kalender und der Art der Einladung ab.\n\nWÄHLE DEINEN TARIF\nBase ist kostenlos und umfasst Google-Kalender-Synchronisierung, Google Meet, mehrere Kalenderansichten, Wetter und Widgets.\nAdvanced enthält die Funktionen von Base und entfernt Werbung.\nPremium enthält Advanced und ergänzt Microsoft-Kalender und Microsoft Teams.\n\nDer Download ist kostenlos. Optional sind Abonnements mit automatischer Verlängerung verfügbar. Aktuelle Preise findest du in der App oder im App Store. Die Zahlung wird bei Kaufbestätigung deinem Apple-ID-Konto belastet. Das Abonnement verlängert sich automatisch, wenn du es nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums kündigst. Die Verlängerung wird innerhalb der letzten 24 Stunden vor Ablauf berechnet. Verwalte oder kündige dein Abonnement in deinen App-Store-Account-Einstellungen.\n\nDatenschutz: https://www.cloud-calendars.com/privacy-policy\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    },
+    {
+      "locale": "es-ES",
+      "file": "research/aso/localized-batch02/es-ES-proposal.json",
+      "rawSha256": "35f99aa1dde92ec632c78753b8b13af13749df78878500e2ae613d0409f21c2f",
+      "fields": {
+        "name": "Cloud Calendars: Calendario",
+        "subtitle": "Tiempo, agenda y widgets",
+        "keywords": "planificador,horario,semana,mes,recordatorio,reunión,evento,compartir,invitación,previsión,citas",
+        "promotionalText": "Consulta tus planes y el tiempo en un mismo lugar. Prueba los widgets y las distintas vistas, o crea un calendario local sin una cuenta en la app.",
+        "description": "Reúne tus calendarios y el tiempo en tu iPhone y iPad. Consulta tus planes de trabajo y personales con Cloud Calendars para organizar el día.\n\nTUS CALENDARIOS, DISTINTAS VISTAS\nUtiliza calendarios de iCloud y conecta Google Calendar. Premium añade compatibilidad con calendarios de Microsoft. Elige entre las vistas de día, semana, mes, año y lista.\n\nTambién puedes crear un calendario local en el dispositivo sin una cuenta de Cloud Calendars. Para conectar servicios y compartir contenido puede ser necesario iniciar sesión.\n\nEL TIEMPO Y LOS WIDGETS\nConsulta la previsión mientras organizas tus actividades. Los widgets para la pantalla de inicio están disponibles en tamaño pequeño, mediano y grande. Las previsiones disponibles dependen de la ubicación y del proveedor meteorológico.\n\nREUNIONES E INVITACIONES\nUtiliza Google Meet con Google Calendar. Premium también admite Microsoft Teams. Comparte eventos y calendarios y envía invitaciones por correo electrónico, código QR o App Clip. Los permisos dependen del calendario y del tipo de invitación.\n\nELIGE TU PLAN\nBase es gratuito e incluye sincronización con Google Calendar, Google Meet, distintas vistas de calendario, el tiempo y widgets.\nAdvanced incluye las funciones de Base y elimina los anuncios.\nPremium incluye Advanced y añade calendarios de Microsoft y Microsoft Teams.\n\nLa descarga es gratuita y hay suscripciones opcionales con renovación automática. Consulta los precios actuales en la app o el App Store. El pago se carga a tu cuenta de Apple al confirmar la compra. La suscripción se renueva automáticamente salvo que la canceles al menos 24 horas antes de que termine el periodo actual. El cobro de la renovación se realiza en las 24 horas anteriores al final del periodo. Puedes gestionar o cancelar la suscripción en los ajustes de tu cuenta del App Store.\n\nPrivacidad: https://www.cloud-calendars.com/privacy-policy\nCondiciones de uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    },
+    {
+      "locale": "en-AU",
+      "file": "research/aso/localized-batch05/en-AU-proposal.json",
+      "rawSha256": "3fffcf823c9eb278dbc16a21dd6dcdac58e43dfc64b81803e289789c0c1a3b90",
+      "fields": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "weather,forecast,planner,agenda,schedule,outdoor,daily,meeting,event,reminder,week,month,shared",
+        "promotionalText": "Check the forecast while planning your day. Use calendar views and Home Screen widgets, or start a local calendar without an app account.",
+        "description": "Bring your calendars and weather together on iPhone and iPad. See work appointments and personal plans while planning your day.\n\nCALENDARS AND VIEWS\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Choose Day, Week, Month, Year or List view.\n\nYou can also create a local calendar on your device without a Cloud Calendars account. Connecting services and sharing may require sign-in.\n\nWEATHER, WIDGETS AND SHARING\nCheck the forecast as you plan. Home Screen widgets come in small, medium and large sizes. Available forecasts depend on your location and weather provider. Share events and calendars, and send invitations by email, QR code or App Clip. Access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nFree Base includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced and adds Microsoft Calendar and Microsoft Teams support.\n\nThe app is free to download, with optional auto-renewing subscriptions. Check the current local price and billing period in the app or App Store before subscribing. Subscriptions renew unless cancelled at least 24 hours before the current period ends. Manage or cancel your subscription in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    },
+    {
+      "locale": "en-CA",
+      "file": "research/aso/localized-batch05/en-CA-proposal.json",
+      "rawSha256": "0b283e02a985ffd28a47ac7d4f23a35123792f3124a74bcfa01584133b866fa6",
+      "fields": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "schedule,planner,agenda,meeting,reminder,event,shared,invite,month,week,weather,forecast,appointment",
+        "promotionalText": "See work and personal plans alongside the weather. Explore calendar views and Home Screen widgets, or start a local calendar without an app account.",
+        "description": "Bring your calendars and weather together on iPhone and iPad. See work appointments and personal plans while planning your day.\n\nCALENDARS AND VIEWS\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Choose Day, Week, Month, Year or List view.\n\nYou can also create a local calendar on your device without a Cloud Calendars account. Connecting services and sharing may require sign-in.\n\nWEATHER, WIDGETS AND SHARING\nCheck the forecast as you plan. Home Screen widgets come in small, medium and large sizes. Available forecasts depend on your location and weather provider. Share events and calendars, and send invitations by email, QR code or App Clip. Access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nFree Base includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced and adds Microsoft Calendar and Microsoft Teams support.\n\nThe app is free to download, with optional auto-renewing subscriptions. Check the current local price and billing period in the app or App Store before subscribing. Subscriptions renew unless cancelled at least 24 hours before the current period ends. Manage or cancel your subscription in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    },
+    {
+      "locale": "en-GB",
+      "file": "research/aso/localized-batch05/en-GB-proposal.json",
+      "rawSha256": "a8e36d857ba97297834df995f3ea856f468ddca63caf83b5920a2cf1b3c22837",
+      "fields": {
+        "name": "Cloud Calendars: Sync & Widget",
+        "subtitle": "Google, Microsoft & iCloud",
+        "keywords": "diary,planner,agenda,appointment,week,month,reminder,meeting,event,shared,invite,weather,forecast",
+        "promotionalText": "Plan work appointments and personal time with calendars, weather and Home Screen widgets. Start a local calendar without an app account.",
+        "description": "Bring your calendars and weather together on iPhone and iPad. See work appointments and personal plans while planning your day.\n\nCALENDARS AND VIEWS\nUse iCloud calendars and connect Google Calendar. Premium adds Microsoft Calendar support. Choose Day, Week, Month, Year or List view.\n\nYou can also create a local calendar on your device without a Cloud Calendars account. Connecting services and sharing may require sign-in.\n\nWEATHER, WIDGETS AND SHARING\nCheck the forecast as you plan. Home Screen widgets come in small, medium and large sizes. Available forecasts depend on your location and weather provider. Share events and calendars, and send invitations by email, QR code or App Clip. Access depends on the calendar and invitation type.\n\nCHOOSE YOUR PLAN\nFree Base includes Google Calendar sync, Google Meet support, multiple calendar views, weather and widgets.\nAdvanced includes Base features and removes ads.\nPremium includes Advanced and adds Microsoft Calendar and Microsoft Teams support.\n\nThe app is free to download, with optional auto-renewing subscriptions. Check the current local price and billing period in the app or App Store before subscribing. Subscriptions renew unless cancelled at least 24 hours before the current period ends. Manage or cancel your subscription in your App Store account settings.\n\nPrivacy Policy: https://www.cloud-calendars.com/privacy-policy\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      }
+    }
+  ],
+  "evidenceLimits": [
+    "Saved report dates retained; no fresh primary webpage read or native code read in this audit.",
+    "No independent native-speaker approval across50locales.",
+    "Release/privacy/media correspondence remains separate; do not treat unresolved release work as keyword optimization or perform it here.",
+    "Root is publishing batch27; audit does not certify that deployment."
+  ],
+  "hashMethod": "File hashes use exact raw bytes. Article hashes use UTF-8 JSON.stringify of parsed objects in property order, not sorted canonical JSON."
+}

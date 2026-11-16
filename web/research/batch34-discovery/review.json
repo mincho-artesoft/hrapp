@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-22",
+  "decision": "pass_no_required_corrections",
+  "independentEditorialReview": true,
+  "pins": [
+    {
+      "file": "research/batch34-discovery/before.json",
+      "rawFileSha256": "9b070e426b48c3ae1d3b9f484c74aa447be1498c096e38f29c33715d8512090e",
+      "jsonStringifySha256": "c7ccb76225c59ee8866766f960f01e9383b4ce70d74113ca74212f36bb3c6e44"
+    },
+    {
+      "file": "research/batch34-discovery/what-guests-can-do-to-your-event.json",
+      "rawFileSha256": "a70fc5e2db382e704e168910dfc8c53c91415a059f981760406bcf29803ca78d",
+      "jsonStringifySha256": "ee120379131f1588e27d0190e13b45e9e84c753806b50002013c98188ad4ed59"
+    },
+    {
+      "file": "research/batch34-discovery/draft-checks.json",
+      "rawFileSha256": "039561f6527122390c421063ed9352f3359a220d1fd945b26975226270d24071",
+      "jsonStringifySha256": "3a66bb7b1b55b4ae7983a6026a51f64e09e39b8950a79e96fc492b58f2e689e0"
+    },
+    {
+      "file": "research/batch34-discovery/decision.json",
+      "rawFileSha256": "face8735d371cc96f73b45bd266ab302e761229f8fed6c10f45ff4c30b94f4a3",
+      "jsonStringifySha256": "147d350cb812db94b9ad777b27d93ab26d10e05a8ebf921c876a3ba574a57f71"
+    }
+  ],
+  "readScope": "Complete before object, complete proposed object and complete draft-checks in untruncated 4889-token output. Complete decision/source evidence in separate untruncated 2284-token output. No independent fresh external fetch; comparison uses author recorded full Google computer body and parent fresh primary confirmation.",
+  "checks": {
+    "reversingOnlyListedAdditionsAndDateReproducesBeforeExactly": true,
+    "priorSixSectionsPreserved": true,
+    "priorMetadataPracticalFAQSourcesRelatedPreserved": true,
+    "sections": 7,
+    "paragraphs": 14,
+    "practical": 7,
+    "faq": 4,
+    "sources": 3,
+    "claimsEmpty": true,
+    "descriptionUnicodeCharacters": 150,
+    "date": "2026-10-22"
+  },
+  "assessment": [
+    "New section clearly concerns Google event attachments stored in Drive; event visibility, filename visibility and file-content access are separate. No Cloud attachment upload/display/edit/preservation feature asserted.",
+    "File-owner review for intended audience/account avoids escalation of event/calendar permissions or publication as a blanket remedy. Missing-control note checks organising Google identity and organisation Drive availability without claiming these are the only causes.",
+    "New practical item preserves Google Drive attribution. New FAQ expressly qualifies filename exposure to viewers of event details and retains intended-account/file-owner checks.",
+    "Existing guest edit/invite/list permissions, defaults versus existing events, recurrence scope, Cloud roles and attendance-versus-receipt boundaries remain unchanged.",
+    "Source is exact successfully read en-RW computer edition from recorded evidence, rather than failed iOS URL; no iPhone attachment recipe inferred. Parent supplied en primary confirmation supports same provider distinction.",
+    "One targeted document-access branch adds a distinct diagnostic action to existing permissions canonical without new route or redundant guide. Date22 is justified by substantive addition."
+  ],
+  "requiredCorrections": [],
+  "limitations": [
+    "Source evidence comparison, not fresh native/runtime/release certification.",
+    "No source/draft/build/deploy/ASC/customer/provider changes."
+  ]
+}

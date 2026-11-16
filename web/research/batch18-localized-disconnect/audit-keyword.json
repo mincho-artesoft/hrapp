@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-22",
+  "slug": "disconnect-calendar-integration-without-losing-track",
+  "source": "src/app/content/en-US/articles-help.ts",
+  "sourceObjectSha256": "0dc5a1d31372bcb29e02e23da179545f931fb05f4f343578eb12207858a9ba19",
+  "method": "Full own-language French and Italian translations, not summaries; no paid API or native-speaker certification.",
+  "checks": [
+    "Required 6/12/6/3 structure, four exact URLs, date and empty claims preserved.",
+    "Descriptions at most 155 Unicode characters.",
+    "Provider profiles, device account, iCalendar subscription and sharing identity remain distinct.",
+    "Google and Microsoft mapped calendar removal attempts are not described as a pause; provider permission checks are separate.",
+    "Multiple sharing identity removal versus last identity local sign-out/recovery retained; no server-data deletion claim.",
+    "Stored copies and provider access are separate; no universal removal or immediate sync claim.",
+    "Related slugs checked against actual localized modules; unavailable English routes replaced with relevant existing guides."
+  ],
+  "sourceFidelityNote": "Parent confirmed exact current English should be followed. No disposable test event or explicit Google callback-failure detail was added because neither is present in this source object. Existing removal-attempt/error warning translated in full.",
+  "scope": "Only two research drafts and this audit. No integration, build, deployment, native edits or paid API calls. Temporary helper removed after validation.",
+  "files": [
+    {
+      "locale": "fr-FR",
+      "file": "research/batch18-localized-disconnect/fr-FR.json",
+      "sha256": "2a68f6106435536353d380427c57bcb3fca01630f0a109b7b71ce06a08e9c81c",
+      "descriptionUnicodeCharacters": 140,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceURLs": 4,
+      "relatedRoutesVerified": [
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "icloud-google-and-outlook-in-one-view",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "retainedOriginalRelatedRoutes": [
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "modulesChecked": [
+        "src/app/content/fr-FR/articles.ts",
+        "src/app/content/fr-FR/articles-google.ts",
+        "src/app/content/fr-FR/articles-help.ts"
+      ]
+    },
+    {
+      "locale": "it",
+      "file": "research/batch18-localized-disconnect/it.json",
+      "sha256": "b6d80a0ad472c8c44a467a2a7e6c382abf11e33ece5d2201cee17d2490ad43ac",
+      "descriptionUnicodeCharacters": 149,
+      "sections": 6,
+      "bodyParagraphs": 12,
+      "practicalSteps": 6,
+      "faqs": 3,
+      "sourceURLs": 4,
+      "relatedRoutesVerified": [
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar",
+        "icloud-google-and-outlook-in-one-view",
+        "google-calendars-that-never-reach-your-iphone"
+      ],
+      "retainedOriginalRelatedRoutes": [
+        "calendar-export-ics-pdf-and-backup",
+        "taking-back-a-calendar-you-shared",
+        "the-secret-address-of-a-google-calendar"
+      ],
+      "modulesChecked": [
+        "src/app/content/it/articles.ts",
+        "src/app/content/it/articles-google.ts",
+        "src/app/content/it/articles-help.ts"
+      ]
+    }
+  ]
+}

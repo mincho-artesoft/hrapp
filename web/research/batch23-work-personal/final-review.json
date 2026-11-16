@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-22",
+  "requestedHead": "83c1da6",
+  "slug": "work-and-personal-without-two-apps",
+  "sourceFile": "src/app/content/en-US/articles-unify.ts",
+  "sourceObjectSha256": "22a9844d2cefa22601168684cb8797ff59b9af549be0d445e94584977565b702",
+  "sourceMatchesPreviouslyFullyReadEnglish": true,
+  "verdict": "pass_no_material_corrections_required",
+  "reviewScope": "All six full draft objects read against the complete English source: title, short, description, lede, commonBelief, all eleven body paragraphs, five practical steps, three FAQs, source labels/URLs and related routes. English object hash confirms unchanged since complete source read for DE/ES preparation.",
+  "independenceDisclosure": "DE/ES were authored by this reviewer: those checks are self-review, not independent review. BG/JA/FR/IT were authored by other agents and reviewed here. No native-speaker certification is claimed for any locale.",
+  "findings": [],
+  "localeChecks": [
+    {
+      "locale": "bg",
+      "reviewType": "review_of_another_agent_translation",
+      "objectSha256": "d0db2d1e422fcd0dd30c60e500296b18d2f88ea99dafe756947376c267bd58b2",
+      "descriptionCharacters": 141,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/bg/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/bg/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    },
+    {
+      "locale": "ja",
+      "reviewType": "review_of_another_agent_translation",
+      "objectSha256": "6124d8aef3a1d61c828eccbc8c0d67af08c2baf71c22a7f95aea906217fcb86a",
+      "descriptionCharacters": 76,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/ja/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/ja/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    },
+    {
+      "locale": "de-DE",
+      "reviewType": "author_self_review",
+      "objectSha256": "a501243dc785843367cee8aa2e95d1ce96e7fa78af5cc5f2fa7b7b98973e771b",
+      "descriptionCharacters": 136,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/de-DE/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "route": "/de-DE/articles/google-calendars-that-never-reach-your-iphone/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/de-DE/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    },
+    {
+      "locale": "es-ES",
+      "reviewType": "author_self_review",
+      "objectSha256": "8c885ec44b13cf4ec0bd120189b1cff7fcbb87af19d9381c80e08c45c17b78d9",
+      "descriptionCharacters": 151,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/es-ES/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "google-calendars-that-never-reach-your-iphone",
+          "route": "/es-ES/articles/google-calendars-that-never-reach-your-iphone/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/es-ES/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    },
+    {
+      "locale": "fr-FR",
+      "reviewType": "review_of_another_agent_translation",
+      "objectSha256": "8df2fc8dc55ea716c981ca72077db9023120cfc077d98dd021212ca46662c0ed",
+      "descriptionCharacters": 136,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/fr-FR/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "route": "/fr-FR/articles/calendar-notifications-missing-silent-or-duplicated/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/fr-FR/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    },
+    {
+      "locale": "it",
+      "reviewType": "review_of_another_agent_translation",
+      "objectSha256": "c6a0c9c8eeaed84673926602e0ba92b2d57df262f1057986c1df2cbf4c833da7",
+      "descriptionCharacters": 147,
+      "sections": 5,
+      "paragraphs": 11,
+      "paragraphDistribution": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "practical": 5,
+      "faq": 3,
+      "sourceUrlsExact": true,
+      "sourceDateExact": true,
+      "schemaExact": true,
+      "emptyClaims": true,
+      "relatedRoutes": [
+        {
+          "slug": "icloud-google-and-outlook-in-one-view",
+          "route": "/it/articles/icloud-google-and-outlook-in-one-view/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "calendar-notifications-missing-silent-or-duplicated",
+          "route": "/it/articles/calendar-notifications-missing-silent-or-duplicated/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        },
+        {
+          "slug": "who-can-see-what-in-google-calendar",
+          "route": "/it/articles/who-can-see-what-in-google-calendar/",
+          "inCurrentLocaleModules": true,
+          "inArticleIndex": true
+        }
+      ],
+      "semanticVerdict": "pass_no_material_translation_error_found",
+      "structurePass": true,
+      "allPass": true
+    }
+  ],
+  "semanticChecks": [
+    {
+      "fields": [
+        "sections[0].body[0]",
+        "commonBelief",
+        "faq[0]"
+      ],
+      "result": "All six retain that combined display does not merge permissions or itself grant employer access; account ownership/sharing/device policy remain relevant."
+    },
+    {
+      "fields": [
+        "sections[0].body[1]",
+        "sections[0].body[2]"
+      ],
+      "result": "All six retain workplace approval and Google/Microsoft copies in the iPhone calendar store, with storage dependent on available calendar sources. No claim that all data stays solely with original providers."
+    },
+    {
+      "fields": [
+        "sections[1].body[0]",
+        "sections[1].body[1]"
+      ],
+      "result": "All six retain restore-before-free-time check and Google synchronization/notification effects of selection, without asserting identical behavior for every provider."
+    },
+    {
+      "fields": [
+        "sections[2].body"
+      ],
+      "result": "All six retain explicit destination selection and the distinction between modifying an owned event and changing a personal displayed copy of another organiser’s invitation."
+    },
+    {
+      "fields": [
+        "sections[3].body",
+        "faq[1]"
+      ],
+      "result": "All six preserve Base Google/multiple calendars, Advanced ad removal, Premium Microsoft/Teams; plan does not grant provider editing rights or override policy. Local-calendar account-free scope retained."
+    },
+    {
+      "fields": [
+        "sections[4].body",
+        "faq[2]"
+      ],
+      "result": "All six preserve a manual, organisation-approved availability block, field review, recipient-side check, no copied private detail, no automatic Cloud privacy masking or extra invitation."
+    }
+  ],
+  "minorLanguageObservations": [
+    {
+      "locale": "de-DE",
+      "field": "title",
+      "note": "Zuständigkeiten is a looser rendering of ownership than Eigentümerschaft, but the body and FAQ explicitly identify the owning account and permissions. No material access implication or correction required."
+    },
+    {
+      "locale": "fr-FR",
+      "field": "sections[0].body[2]",
+      "note": "copies de calendriers is less technical than mirrored calendars, but retains iPhone storage/source dependence and does not imply a display-only connection. No material omission."
+    }
+  ],
+  "limits": [
+    "No source edits or integration; only this review JSON written.",
+    "No build/deploy/native/ASC/customer action or runtime verification.",
+    "Source URLs compared exactly; external documentation not fetched again."
+  ]
+}

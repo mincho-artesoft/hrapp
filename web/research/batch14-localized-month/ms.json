@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Kalendar bulanan pada iPad dan iPhone: lihat tarikh, kemudian semak butiran",
+  "short": "Gunakan paparan bulan tanpa terlepas butiran",
+  "description": "Bandingkan tarikh pada iPad atau iPhone. Semak acara tersembunyi, kalendar dipilih dan waktu sebelum memindahkan janji temu bersama atau berulang.",
+  "lede": "Paparan bulan menunjukkan tarikh komitmen sepanjang bulan. Ia kurang sesuai untuk membuktikan sesuatu waktu lapang. Pilih tarikh melalui gambaran keseluruhan, kemudian semak hari dan acara sebelum bersetuju. Panduan ini diterbitkan oleh Arte Soft, pembangun Cloud Calendars.",
+  "commonBelief": "Grid bulan yang lebih besar memaparkan setiap butiran, dan tarikh yang kelihatan kosong membuktikan semua orang lapang.",
+  "sections": [
+    {
+      "heading": "Tentukan sama ada anda memerlukan tarikh atau waktu tepat",
+      "body": [
+        "Gunakan bulan untuk membandingkan tarikh akhir projek, perjalanan dan janji temu keluarga merentasi beberapa minggu. Jika persoalannya ialah pertindihan dua janji temu pada 14:30, beralih kepada paparan hari atau minggu dan semak waktu mula serta tamat. Petak bulan tidak mempunyai skala masa yang sama dengan grid mengikut jam.",
+        "Contohnya, penganjur bengkel boleh mengelakkan minggu perjalanan terlebih dahulu. Seterusnya semak hari yang dicadangkan: komitmen, persediaan, perjalanan dan waktu perlu tamat. Petak yang kelihatan kosong ialah pilihan untuk diperiksa, bukan tempahan disahkan atau kenyataan bahawa orang lain lapang."
+      ]
+    },
+    {
+      "heading": "Baca bilangan tambahan, bukan hanya tajuk yang kelihatan",
+      "body": [
+        "Petak bulan Cloud Calendars kini memaparkan bilangan label acara yang terhad serta bilangan tambahan jika terdapat acara lain pada tarikh itu. Tajuk dihadkan kepada satu baris dan mungkin dipendekkan. Buka hari atau acara apabila tajuk penuh atau komitmen lain penting.",
+        "Skrin iPad yang lebih besar boleh memudahkan pembacaan, tetapi ruang fizikal tambahan tidak semestinya menghapuskan semua had paparan. Tetingkap aplikasi sempit atau teks besar boleh mengubah apa yang muat. Buat semakan sama pada iPhone: buka hari sebelum menganggap label yang kelihatan sebagai seluruh jadual."
+      ]
+    },
+    {
+      "heading": "Semak bulan, kalendar dipilih dan tarikh bersebelahan",
+      "body": [
+        "Baca bulan dan tahun yang dipaparkan sebelum memilih tarikh. Grid boleh menyertakan tarikh bulan bersebelahan untuk melengkapkan baris. Dalam Cloud Calendars, gunakan navigasi bulan dan periksa tarikh dipilih, bukan bergantung pada kedudukan petak sahaja.",
+        "Semak kalendar yang dipilih. Menyembunyikan acara kerja boleh memudahkan pembacaan rancangan keluarga, tetapi turut mengeluarkan komitmen itu daripada gambaran tersebut. Untuk menyiasat pendua, sembunyikan satu sumber sementara dan bandingkan; jangan padam janji temu semata-mata untuk mengurangkan kesesakan bulan."
+      ]
+    },
+    {
+      "heading": "Buka acara sebelum mengubah persetujuan bersama",
+      "body": [
+        "Sahkan tajuk, pemilik atau kalendar, waktu tempatan dan tempoh dalam butiran acara. Warna membantu imbasan, tetapi tidak menggantikan pengetahuan tentang akaun atau kebenaran menyunting. Jemputan yang kelihatan berbeza daripada janji temu yang anda anjurkan sendiri.",
+        "Cloud Calendars menyediakan seret dan lepas dalam bulan untuk memindahkan acara ke tarikh lain. Sebelum menggunakannya pada komitmen sebenar, pastikan tarikh tujuan dan skop ulangan. Selepas perubahan yang dibenarkan, buka semula acara dan semak hasilnya; gerakan setempat bukan bukti penyedia atau setiap peserta menerima aturan baharu."
+      ]
+    },
+    {
+      "heading": "Semak acara berulang dan zon waktu secara berasingan",
+      "body": [
+        "Jika hanya kelas minggu ini berpindah, jangan tersilap mengubah corak masa hadapan. Baca pilihan skop ulangan yang tersedia, kemudian semak kejadian yang diubah dan satu kejadian kemudian. Paparan bulan memudahkan perbandingan tarikh berulang, tetapi skop suntingan menentukan kesan perubahan.",
+        "Untuk perjalanan atau mesyuarat merentasi zon waktu, semak tarikh dan waktu tempatan acara dengan jelas. Memindahkan acara ke hari lain bukan penukaran automatik waktu mesyuarat yang dimaksudkan. Semak peralihan waktu musim panas jika berkaitan dan sahkan waktu yang dipersetujui dengan pihak terlibat."
+      ]
+    },
+    {
+      "heading": "Gunakan paparan lebih besar tanpa mengelirukannya dengan produk lain",
+      "body": [
+        "Apple Calendar menawarkan pilihan bulan sendiri, manakala Teamup menerangkan set paparan berbeza bagi pelayar dan aplikasi mudah alih. Kawalan itu milik produk masing-masing. Jangan cari konfigurasi pelayar Teamup atau menu paparan Apple Calendar dalam Cloud Calendars hanya kerana namanya sama.",
+        "Sebulan janji temu juga bukan sebulan ramalan cuaca. Untuk rancangan luar, semak tempat, tarikh dan jam ramalan yang tersedia secara berasingan. Simpan janji temu akhir dalam kalendar yang dimaksudkan dan sahkan perubahan terus dengan peserta."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Gunakan bulan untuk menyenarai pendek tarikh, kemudian semak waktu tepat dalam paparan hari atau minggu.",
+    "Buka hari dengan bilangan tambahan atau tajuk dipendekkan.",
+    "Semak bulan, tahun dan kalendar dipilih sebelum menganggap tarikh lapang.",
+    "Sahkan kalendar, waktu, tempoh dan kebenaran menyunting acara.",
+    "Baca skop ulangan dan semak kejadian yang disimpan selepas pemindahan.",
+    "Semak ketersediaan cuaca secara berasingan dan sahkan perubahan dengan peserta."
+  ],
+  "faq": [
+    {
+      "q": "Adakah paparan bulan iPad menunjukkan setiap janji temu sepenuhnya?",
+      "a": "Jangan anggap begitu. Cloud Calendars mengehadkan label acara dalam petak bulan dan menunjukkan bilangan tambahan. Buka hari dan acara untuk menyemak seluruh jadual."
+    },
+    {
+      "q": "Adakah hari kosong bermakna saya lapang?",
+      "a": "Semak dahulu kalendar dipilih, tarikh dan kewujudan data akaun berkaitan. Gambaran keseluruhan hanya mewakili maklumat yang kini tersedia dan dipaparkan."
+    },
+    {
+      "q": "Adakah memindahkan acara berulang hanya mengubah tarikh itu?",
+      "a": "Baca pilihan skop suntingan dan jangan membuat andaian. Selepas menyimpan, semak kejadian yang diubah dan satu kejadian kemudian, lalu sahkan aturan yang dimaksudkan."
+    }
+  ],
+  "sourcesHeading": "Bandingkan penerangan paparan rasmi",
+  "sources": [
+    {
+      "label": "Apple: paparan bulan, berbilang hari dan senarai dalam Apple Calendar",
+      "url": "https://support.apple.com/en-ca/guide/iphone/iphfd1054569/ios"
+    },
+    {
+      "label": "Teamup: paparan kalendar serta konfigurasi pelayar berbanding aplikasi",
+      "url": "https://calendar.teamup.com/kb/how-to-use-calendar-views/"
+    }
+  ],
+  "seeAlso": [
+    "icloud-google-and-outlook-in-one-view",
+    "weather-inside-your-calendar",
+    "sharing-one-event-not-your-calendar"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-22",
+  "title": "Wie weit reicht die Wettervorhersage in Cloud Calendars?",
+  "short": "Die tatsächlich verfügbaren Vorhersagedaten prüfen",
+  "description": "Prüfe die verfügbaren Vorhersagedaten in Cloud Calendars. Unterscheide Tages- und Stundenwerte, zukünftige Termine und die Wetterdemo der Website.",
+  "lede": "Ein weit vorausreichender Kalender und eine langfristige Wettervorhersage sind verschiedene Dinge. Du kannst eine Besprechung vereinbaren, bevor ihre Vorhersage vorliegt. Lies die verfügbaren Daten in der App, statt sie aus dem aufrufbaren Kalendermonat abzuleiten. Dieser Leitfaden stammt von Arte Soft, dem Entwickler von Cloud Calendars.",
+  "commonBelief": "Jedes zukünftige Kalenderdatum hat eine Vorhersage, und die Vierzehntage-Demo der Website entspricht dem Vorhersagezeitraum der App.",
+  "sections": [
+    {
+      "heading": "Die Daten in der Wetteranzeige lesen",
+      "body": [
+        "Öffne das Wetter für den vorgesehenen Ort und prüfe die tatsächlich aufgeführten Daten. Leite die Verfügbarkeit nicht aus der Monats- oder Jahresnavigation ab. Fehlende Vorhersagedaten bedeuten, dass eine spätere Prüfung nötig ist; sie bedeuten keinen klaren Tag.",
+        "Wenn du ein Treffen mehrere Wochen im Voraus organisierst, speichere das vereinbarte Datum und halte die Wetterentscheidung gesondert fest. Verfügbarkeit des Veranstaltungsorts, Einladungen und eine spätere Vorhersage sind unterschiedliche Grundlagen dieses Plans."
+      ]
+    },
+    {
+      "heading": "Die Tagesliste der App verstehen",
+      "body": [
+        "Die App verwendet Apple WeatherKit. Ihre aktuelle Tagesliste übernimmt bis zu zehn vom Dienst zurückgegebene Tage. Lies für den gewählten Ort das tatsächliche erste und letzte Datum, statt bei jeder Ansicht oder Anfrage volle zehn Tage vorauszusetzen.",
+        "Diese Grenze beschreibt die angezeigte Tagesliste. Sie verspricht weder gleiche Verlässlichkeit aller Wetterwerte noch eine vollständige Vorhersage für jeden Termin innerhalb dieser Daten. Nutze die Detailtiefe, die deine Entscheidung erfordert."
+      ]
+    },
+    {
+      "heading": "Stundenwerte für zeitlich festgelegte Aktivitäten prüfen",
+      "body": [
+        "Eine Tagesübersicht belegt nicht die genauen Bedingungen während des gesamten Termins. Öffne den betreffenden Tag und vergleiche die verfügbaren Stunden für Ankunft, Aktivität und Abreise. Fehlt ein Teil des Zeitraums, behandle ihn als ungeklärt.",
+        "Prüfe bei einer Abendveranstaltung, ob gewählter Ort und lokales Datum noch zum Plan passen. Eine späte Ankunft nach Mitternacht gehört zum nächsten Datum. Prüfe die tatsächlichen Zeitangaben, statt das Ende der Tagesliste mit dem Ende jeder Stundenreihe gleichzusetzen."
+      ]
+    },
+    {
+      "heading": "Die Website-Demonstration unterscheiden",
+      "body": [
+        "Die aktuelle Website fordert für ihre Wetterdemonstration vierzehn Vorhersagetage von Open-Meteo an. Open-Meteo beschreibt konfigurierbare Zeiträume; diese Website-Anfrage ist eine getrennte Umsetzung von der iOS-App.",
+        "Leite aus dem Webergebnis nicht ab, dass die App vierzehn WeatherKit-Tage liefert. Unterscheiden sich die Anzeigen, vergleiche zuerst Ort, Zeit und Anbieter. Ein anderer Vorhersagezeitraum bedeutet nicht, dass der Kalender einen Termin verloren hat."
+      ]
+    },
+    {
+      "heading": "Eine spätere Prüfung einplanen, wenn die Vorhersage noch fehlt",
+      "body": [
+        "Behalte das echte Datum der Buchung und plane eine Prüfung mit genügend Zeit für eine Ortsentscheidung oder Nachricht an die Teilnehmer. Eine Feier im Freien kann beispielsweise eine vereinbarte Innenraumalternative brauchen, bevor das Wetter erneut geprüft wird.",
+        "Richte die Prüfung nach den tatsächlichen Einschränkungen der Aktivität aus. Dieser Leitfaden ordnet keinem nummerierten Vorhersagetag einen Genauigkeitsprozentsatz oder eine allgemeine Durchführungs- oder Absagegrenze zu. Prüfe aktuelle Informationen, wenn sie eine noch umsetzbare Entscheidung beeinflussen können."
+      ]
+    },
+    {
+      "heading": "Nach der Zeitwahl die Termindetails prüfen",
+      "body": [
+        "Wenn eine verfügbare Vorhersagestunde bei der Zeitwahl hilft, prüfe den daraus entstehenden Terminentwurf. Bestätige lokales Datum, Beginn, Ende, Zielkalender und Ort. Die Navigation durch Vorhersagen ersetzt weder Kalenderberechtigungen noch die Zustimmung des Organisators.",
+        "Öffne nach einer erlaubten Änderung den Termin erneut und prüfe die gewünschte Wiederholung oder Serie. Bestätige wichtige Änderungen gesondert mit den Teilnehmern. Verfügbare Wetterdaten sind nicht gleichbedeutend mit dem Empfang einer geänderten Einladung."
+      ]
+    }
+  ],
+  "claims": {},
+  "practical": [
+    "Den für den Termin relevanten Ort wählen.",
+    "Das erste und letzte Datum der Tagesliste in der App lesen.",
+    "Den benötigten Stundenzeitraum einschließlich Mitternachtsgrenzen getrennt prüfen.",
+    "Open-Meteo-Abdeckung der Website von WeatherKit-Abdeckung der App unterscheiden.",
+    "Für Pläne jenseits der Vorhersage eine spätere Prüfung vereinbaren.",
+    "Den gespeicherten Termin prüfen und gemeinsame Änderungen mit Teilnehmern bestätigen."
+  ],
+  "faq": [
+    {
+      "q": "Bietet Cloud Calendars in der App eine Vierzehntage-Vorhersage?",
+      "a": "Die aktuelle Tagesliste der App nutzt bis zu zehn zurückgegebene WeatherKit-Tage. Die Website fordert getrennt vierzehn Open-Meteo-Tage an. Prüfe die tatsächlich in der App verfügbaren Daten."
+    },
+    {
+      "q": "Warum kann ich einen Termin nach dem letzten Wetterdatum erstellen?",
+      "a": "Kalenderspeicherung und Wetterverfügbarkeit sind getrennt. Behalte den Termin und prüfe die Vorhersage näher am Datum."
+    },
+    {
+      "q": "Garantiert ein Tageseintrag Wetter für jede Stunde meines Termins?",
+      "a": "Nein. Prüfe die tatsächlich gelieferten Stunden für Ort und Zeitraum. Leite aus der Tagesliste keine vollständige Stundenabdeckung ab."
+    }
+  ],
+  "seeAlso": [
+    "weather-inside-your-calendar",
+    "forecast-beside-every-event",
+    "planning-outdoors-without-being-rained-on"
+  ],
+  "sourcesHeading": "Offizielle Quellen und weiterführende Informationen",
+  "sources": [
+    {
+      "label": "Apple: WeatherKit-Vorhersagen und regionale Verfügbarkeit",
+      "url": "https://developer.apple.com/weatherkit/"
+    },
+    {
+      "label": "Open-Meteo: Vorhersageparameter und verfügbare Zeiträume",
+      "url": "https://open-meteo.com/en/docs"
+    }
+  ]
+}

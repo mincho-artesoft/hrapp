@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23",
+  "articles": [
+    {
+      "slug": "mac-calendar-subscription-auto-refresh",
+      "primaryKeyword": "mac subscribed calendar not updating",
+      "intentKey": "apple/mac/subscription-refresh",
+      "readerOutcome": "Choose the correct refresh path for a stale subscribed entry without duplicating it.",
+      "distinctValue": "Source-to-client changed-venue diagnostic with separate account and feed routes.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/refresh-calendars-icl1024/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body63–107; subscription Auto-refresh, account Refresh Calendars/Push, manual Refresh Calendars, connection warning. Main subscription path corroborated with share-calendars body. Official documentation, not firsthand testing."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive body89–204; subscription170–201 and CalDAV delegation153–169 read independently. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "what-calendar-sync-actually-does",
+        "calendar-export-ics-pdf-and-backup",
+        "when-two-calendars-disagree"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-subscription-icloud-on-my-mac",
+      "primaryKeyword": "calendar subscription on my mac icloud",
+      "intentKey": "apple/mac/subscription-location",
+      "readerOutcome": "Place a read-only subscription in the intended Apple setup and verify another device.",
+      "distinctValue": "A three-axis location/update/authority matrix and a two-device school-feed checklist.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive body89–204; subscription170–201 and CalDAV delegation153–169 read independently. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "what-calendar-sync-actually-does",
+        "caldav-calendar-on-iphone",
+        "calendar-export-ics-pdf-and-backup"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-ignore-alerts-one-calendar",
+      "primaryKeyword": "mac calendar ignore alerts",
+      "intentKey": "apple/mac/calendar-specific-alert-mute",
+      "readerOutcome": "Mute one calendar’s native Mac alerts while keeping its events and other reminders.",
+      "distinctValue": "An action-scope table and noisy-reference-calendar case rather than another missing-notification guide.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body79–174; custom alerts, one-alert Exchange limit, per-calendar Ignore alerts and system notification layers. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "what-calendar-sync-actually-does",
+        "a-calendar-that-is-yours-to-share"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-custom-alert-email-open-file",
+      "primaryKeyword": "mac calendar custom alert open file",
+      "intentKey": "apple/mac/custom-alarm-action",
+      "readerOutcome": "Choose and verify a custom Mac reminder action without inventing cross-device automation.",
+      "distinctValue": "An action/target verification table and a presentation-file case with explicit account limitations.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body79–174; custom alerts, one-alert Exchange limit, per-calendar Ignore alerts and system notification layers. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "calendar-notifications-missing-silent-or-duplicated",
+        "keeping-track-of-who-replied",
+        "drag-an-event-to-move-it"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-holidays-different-region",
+      "primaryKeyword": "mac calendar holidays different country",
+      "intentKey": "apple/mac/holiday-region-subscription",
+      "readerOutcome": "Add a second regional holiday reference without manufacturing duplicate personal meetings.",
+      "distinctValue": "Reference-versus-approved-leave distinction and a duplicate-source check for two-region teams.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/show-holidays-and-birthdays-iclead4e0ec3/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive body87–122; regional calendar visibility, read-only subscription, File>New Holiday Calendar. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "what-an-all-day-event-really-means",
+        "iphone-calendar-language-alternate-calendar-settings",
+        "work-and-personal-without-two-apps"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-travel-time-after-location-change",
+      "primaryKeyword": "mac calendar travel time not updating location",
+      "intentKey": "apple/mac/changed-location-stale-travel-time",
+      "readerOutcome": "Correct a stale travel allowance after a venue edit without rescheduling the meeting.",
+      "distinctValue": "A four-field venue-change checklist based on Apple’s specific non-update caveat, unlike a generic route-planning article.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/add-modify-or-delete-events-icalwr13-events/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body89–167; travel-time field and explicit warning it does not update automatically after location changes. Official documentation, not firsthand testing."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/manage-notifications-icl624fd1912/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body79–174; custom alerts, one-alert Exchange limit, per-calendar Ignore alerts and system notification layers. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "the-commute-and-the-sky",
+        "weather-where-the-event-is",
+        "calendar-notifications-missing-silent-or-duplicated"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-caldav-delegation-allow-write",
+      "primaryKeyword": "mac calendar caldav delegation",
+      "intentKey": "apple/mac/caldav-account-delegation",
+      "readerOutcome": "Grant and verify same-service CalDAV account access with deliberate writing authority.",
+      "distinctValue": "A one-calendar-versus-account access decision and a substitute-coordinator permission checklist.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/share-calendars-icl32362/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive body89–204; subscription170–201 and CalDAV delegation153–169 read independently. Official documentation, not firsthand testing."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/manage-shared-calendars-icl27527/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive body89–149; Accounts>Delegation>Accounts I can access for CalDAV; publication/removal controls also reviewed. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "caldav-calendar-on-iphone",
+        "a-calendar-that-is-yours-to-share",
+        "who-can-see-what-in-google-calendar"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-siri-suggestions-confirm-ignore",
+      "primaryKeyword": "mac calendar siri suggestions ignore",
+      "intentKey": "apple/mac/siri-suggestion-confirmation",
+      "readerOutcome": "Resolve an unconfirmed suggested booking without duplicating a saved event or losing pending suggestions unintentionally.",
+      "distinctValue": "A three-record booking ledger and a one-suggestion-versus-global-disable decision.",
+      "proposedFamily": "planning",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/use-siri-suggestions-iclc121e66ee/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body59–96; suggestions from known providers, add/default/other calendar, Ignore, and disabling deletes unconfirmed suggestions. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "natural-language-calendar-events-iphone",
+        "event-saved-to-wrong-calendar",
+        "when-two-calendars-disagree"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "icloud-delete-calendar-every-device",
+      "primaryKeyword": "delete icloud calendar all devices",
+      "intentKey": "apple/icloud/whole-calendar-deletion-scope",
+      "readerOutcome": "Choose a deliberate whole-calendar operation instead of accidentally treating deletion as a local display change.",
+      "distinctValue": "A scope matrix and a completed-project case contrasting display, access, owned records and recovery.",
+      "proposedFamily": "unify",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/delete-a-calendar-mmfbbb36ac/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body303–319; associated events deleted across iCloud-enabled devices, at least one calendar remains, Actions>Delete Calendar. Official documentation, not firsthand testing."
+        },
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/icloud/stop-sharing-a-calendar-mm6b1a8f9f/icloud",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body277–306 independently reviewed; Remove Person/Stop Sharing/Public Calendar off and Save. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "disconnect-calendar-integration-without-losing-track",
+        "taking-back-a-calendar-you-shared",
+        "recover-deleted-calendar-events-iphone"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "iphone-calendar-add-remove-event-attachments",
+      "primaryKeyword": "iphone calendar add attachment",
+      "intentKey": "apple/iphone/event-attachment-version",
+      "readerOutcome": "Attach or replace the intended document and verify the saved event without deleting it.",
+      "distinctValue": "A file-version/event/recipient matrix with an old-versus-approved workshop-agenda case.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/iphone/create-and-edit-events-in-calendar-iph3d110f84/ios",
+          "verifiedAt": "2026-10-23",
+          "note": "Substantive attachment section1149–1164; Edit>Add attachment, Files browsing and Done; removal swipes left then Remove. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "what-guests-can-do-to-your-event",
+        "sharing-one-event-not-your-calendar",
+        "event-saved-to-wrong-calendar"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    },
+    {
+      "slug": "mac-calendar-check-invitee-availability",
+      "primaryKeyword": "mac calendar check availability missing",
+      "intentKey": "apple/mac/invitee-availability-preflight",
+      "readerOutcome": "Resolve intended guests, inspect supported availability and send a clear proposal without confusing it with acceptance.",
+      "distinctValue": "A four-stage invitee/availability/send/reply ledger and the documented incomplete-recipient edge case.",
+      "proposedFamily": "sharing",
+      "proposedIntent": "editing",
+      "language": "en-US",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://support.apple.com/guide/calendar/send-and-receive-invitations-to-events-icl1016/mac",
+          "verifiedAt": "2026-10-23",
+          "note": "Complete substantive body63–141; correct name/address completion, provider-dependent Check Availability and Next Available Time, Send. Official documentation, not firsthand testing."
+        }
+      ],
+      "review": {
+        "status": "draft",
+        "reason": "Independent factual, overlap and consumer-relevance review required before integration."
+      },
+      "adjacentArticlesRead": [
+        "keeping-track-of-who-replied",
+        "calendar-event-or-room-reservation",
+        "icloud-google-and-outlook-in-one-view"
+      ],
+      "firsthandTesting": false,
+      "originalExampleStatus": "Author-created fictional scenario, decision table and verification checklist; not a measured provider or app outcome."
+    }
+  ]
+}
