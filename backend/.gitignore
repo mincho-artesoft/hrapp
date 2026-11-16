@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build-staging/
+.env
+.env.*
+.local-secrets/
+*.log
+.staging-endpoint
+.debug-endpoint
+.endpoint
+.DS_Store
+*.zip
+__pycache__/
+*.pyc
