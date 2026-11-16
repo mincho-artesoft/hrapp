@@ -58,3 +58,10 @@ __pycache__/
 
 # Xcode per-user window/editor state — noise in every diff
 *.xcuserstate
+
+# Local scratch & verification artifacts
+/artifacts/admob-rollout-20261113/
+/artifacts/travel-reminders-2026-09-30/
+/artifacts/weather-check-2026-09-12/
+/projects/
+/prolific.log
