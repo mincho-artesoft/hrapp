@@ -13,13 +13,19 @@ import { AllExceptionsFilter } from './common/all-exceptions.filter';
  */
 export async function createApp(expressApp?: Express): Promise<INestApplication> {
   const app = expressApp
-    ? await NestFactory.create(AppModule, new ExpressAdapter(expressApp), { logger: ['error', 'warn'] })
-    : await NestFactory.create(AppModule, { logger: ['error', 'warn'] });
+    ? await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
+        rawBody: true,
+        logger: ['error', 'warn'],
+      })
+    : await NestFactory.create(AppModule, {
+        rawBody: true,
+        logger: ['error', 'warn'],
+      });
 
   app.enableCors({
     origin: '*',
     methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-    allowedHeaders: 'authorization,content-type,cache-control',
+    allowedHeaders: 'authorization,content-type,cache-control,stripe-signature',
     maxAge: 86400,
   });
   app.useGlobalFilters(new AllExceptionsFilter());

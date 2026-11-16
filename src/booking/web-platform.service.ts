@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createHash, randomInt } from 'node:crypto';
+import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
 import { StoreService } from '../store/store.service';
 import { CoreService } from '../core/core.service';
 import { EmailService } from '../email/email.service';
@@ -8,6 +8,18 @@ import { ApiResult, result } from '../common/api-result';
 import { randomId } from '../util/ids';
 import { buildFeed } from '../util/ics';
 import { verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
+import {
+  buildOtpAuthUri,
+  generateTotpSecret,
+  verifyTotpCode,
+} from '../util/totp';
+import {
+  StripeRestError,
+  isStripeLiveKey,
+  loadLocalStripeCatalog,
+  stripeRequest,
+  verifyStripeWebhookEvent,
+} from '../util/stripe-rest';
 import {
   OAuthConnectionsDoc,
   exchangeGoogleAuthCode,
@@ -42,7 +54,7 @@ const DEFAULT_ADMIN_EMAILS = [
 ];
 
 const RESERVED_HANDLES = new Set([
-  'admin', 'api', 'app', 'articles', 'auth', 'book', 'booking', 'bookings',
+  'admin', 'api', 'app', 'app-auth', 'articles', 'auth', 'billing', 'book', 'booking', 'bookings',
   'calendar', 'compare', 'demo', 'event', 'events', 'feed', 'feeds', 'guest',
   'help', 'home', 'login', 'manage', 'me', 'oauth', 'pricing', 'privacy',
   'privacy-policy', 'register', 'resolve', 'root', 'schedule', 'settings',
@@ -142,6 +154,61 @@ export class WebPlatformService {
   private isAdminPrincipal(principalDoc: any): boolean {
     const admins = this.adminEmailSet();
     return this.verifiedEmailsForPrincipal(principalDoc).some((em) => admins.has(em));
+  }
+
+  public computeWebAccess(principalDoc: any) {
+    const isAdmin = this.isAdminPrincipal(principalDoc);
+    const iosUnlocked = Boolean(principalDoc?.iosUnlocked || principalDoc?.iosUnlockedAt);
+    const billing = principalDoc?.billing ?? null;
+    const subStatus = billing?.status ? String(billing.status) : null;
+    const stripeActive = Boolean(subStatus && ['active', 'trialing'].includes(subStatus));
+
+    const entitled = isAdmin || iosUnlocked || stripeActive;
+    const accessSource: 'admin' | 'ios_app' | 'stripe_monthly' | 'stripe_yearly' | 'none' = isAdmin
+      ? 'admin'
+      : iosUnlocked
+        ? 'ios_app'
+        : stripeActive
+          ? billing?.plan === 'yearly'
+            ? 'stripe_yearly'
+            : 'stripe_monthly'
+          : 'none';
+
+    const plan: 'ios_free' | 'monthly' | 'yearly' | 'admin' | 'none' = isAdmin
+      ? 'admin'
+      : iosUnlocked
+        ? 'ios_free'
+        : stripeActive
+          ? billing?.plan === 'yearly'
+            ? 'yearly'
+            : 'monthly'
+          : 'none';
+
+    return {
+      entitled,
+      accessSource,
+      iosUnlocked,
+      iosUnlockedAt: principalDoc?.iosUnlockedAt ?? null,
+      totpEnabled: Boolean(principalDoc?.totpSecret),
+      plan,
+      subscriptionStatus: subStatus,
+      cancelAtPeriodEnd: Boolean(billing?.cancelAtPeriodEnd),
+      currentPeriodEnd: billing?.currentPeriodEnd ?? null,
+      hasBillingPortal: Boolean(billing?.stripeCustomerId),
+      pricing: {
+        monthlyUsd: 1.99,
+        yearlyUsd: 19.99,
+      },
+    };
+  }
+
+  private unentitledStudioResult(principalDoc: any): ApiResult {
+    return result(402, {
+      code: 'subscription_required',
+      error:
+        'Unlock Cloud Calendars Web Studio for free forever by signing in with the Cloud Calendars iOS app, or subscribe on the web ($1.99/month or $19.99/year).',
+      webAccess: this.computeWebAccess(principalDoc),
+    });
   }
 
   // ── 1. Auth Providers, Email OTP & Enriched Profile ──────────────────────
@@ -420,6 +487,7 @@ export class WebPlatformService {
       bookingHandle: bookingCfg?.handle ?? null,
       bookingShareUrl: bookingCfg?.handle ? `${this.SITE_URL}/book/?u=${encodeURIComponent(bookingCfg.handle)}` : null,
       guestBookingsCount,
+      webAccess: this.computeWebAccess(principalDoc),
     });
   }
 
@@ -469,7 +537,8 @@ export class WebPlatformService {
       force: query?.sync === '1',
     }).catch(() => {});
 
-    const [meta, eventKeys, receivedKeys, busyDoc, bookingCfg, connDoc] = await Promise.all([
+    const [principalDoc, meta, eventKeys, receivedKeys, busyDoc, bookingCfg, connDoc] = await Promise.all([
+      this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
       this.store.listKeys(this.keys.events(calId)),
       this.store.listKeys(this.keys.receivedInvites(principalId)),
@@ -534,6 +603,7 @@ export class WebPlatformService {
       },
       connectedProviders: sanitizeConnectionsDoc(connDoc),
       bookingConfig: bookingCfg ?? null,
+      webAccess: this.computeWebAccess(principalDoc),
     });
   }
 
@@ -542,7 +612,12 @@ export class WebPlatformService {
    * drag-and-drop move, edge resize, all-day conversion, and full editor saves).
    * If the event is a booked appointment, atomically updates slot locks and notifies the guest!
    */
-  async upsertWebCalendarEvent(principal: any, eventId: string, body: any): Promise<ApiResult> {
+  async upsertWebCalendarEvent(
+    principal: any,
+    eventId: string,
+    body: any,
+    opts?: { skipEntitlementCheck?: boolean },
+  ): Promise<ApiResult> {
     const { principalId, calId } = principal;
     if (!eventId || !/^[A-Za-z0-9_-]{3,128}$/.test(eventId)) {
       return result(400, { error: 'Invalid event id.' });
@@ -557,6 +632,9 @@ export class WebPlatformService {
       this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
     ]);
+    if (!opts?.skipEntitlementCheck && !this.computeWebAccess(principalDoc).entitled) {
+      return this.unentitledStudioResult(principalDoc);
+    }
     const ownerEmail = this.verifiedEmailsForPrincipal(principalDoc)[0] ?? null;
     const ownerName = principalDoc?.displayName ?? meta?.name ?? 'Cloud Calendars';
 
@@ -637,10 +715,25 @@ export class WebPlatformService {
         : (existing?.details?.availability ?? 0),
       alarms,
       recurrenceRules,
-      structuredLocation: existing?.details?.structuredLocation ?? null,
+      structuredLocation:
+        body?.structuredLocation !== undefined
+          ? body.structuredLocation
+          : body?.details?.structuredLocation !== undefined
+            ? body.details.structuredLocation
+            : (existing?.details?.structuredLocation ?? null),
       videoCallURL,
-      travelTime: existing?.details?.travelTime ?? null,
-      attachments: existing?.details?.attachments ?? [],
+      travelTime:
+        body?.travelTime !== undefined
+          ? body.travelTime
+          : body?.details?.travelTime !== undefined
+            ? body.details.travelTime
+            : (existing?.details?.travelTime ?? null),
+      attachments:
+        Array.isArray(body?.attachments)
+          ? body.attachments.slice(0, 12)
+          : Array.isArray(body?.details?.attachments)
+            ? body.details.attachments.slice(0, 12)
+            : (existing?.details?.attachments ?? []),
       organizer: existing?.details?.organizer ?? (ownerEmail ? {
         name: ownerName,
         email: ownerEmail,
@@ -735,8 +828,19 @@ export class WebPlatformService {
     });
   }
 
-  async deleteWebCalendarEvent(principal: any, eventId: string, query: any): Promise<ApiResult> {
+  async deleteWebCalendarEvent(
+    principal: any,
+    eventId: string,
+    query: any,
+    opts?: { skipEntitlementCheck?: boolean },
+  ): Promise<ApiResult> {
     const { principalId, calId } = principal;
+    if (!opts?.skipEntitlementCheck) {
+      const principalDocCheck = await this.store.getJSON(this.keys.principal(principalId));
+      if (!this.computeWebAccess(principalDocCheck).entitled) {
+        return this.unentitledStudioResult(principalDocCheck);
+      }
+    }
     const existing = await this.store.getJSON(this.keys.event(calId, eventId));
     if (!existing) return result(404, { error: 'Event not found.' });
     if (existing.status === 'cancelled') {
@@ -803,13 +907,140 @@ export class WebPlatformService {
   }
 
   /**
+   * Two-way delta & snapshot sync for the personal `Cloud Calendars` (`cal/{calId}/events/`)
+   * workspace inside the native iOS app.
+   * Applies local iOS upserts, deletions, and calendar metadata updates, then returns
+   * the authoritative active events list so Web Studio, RSVP pages (`/event`),
+   * guest bookings (`/book`), and the iPhone personal Cloud Calendar stay 1:1 in sync.
+   */
+  async syncIosPersonalCalendar(principal: any, body: any): Promise<ApiResult> {
+    const { calId } = principal;
+    if (body?.calendarMeta && typeof body.calendarMeta === 'object') {
+      const meta = (await this.store.getJSON(this.keys.meta(calId))) ?? { id: calId };
+      let metaChanged = false;
+      if (typeof body.calendarMeta.name === 'string' && body.calendarMeta.name.trim()) {
+        const trimmed = body.calendarMeta.name.trim().slice(0, 120);
+        if (trimmed !== meta.name) {
+          meta.name = trimmed;
+          metaChanged = true;
+        }
+      }
+      if (body.calendarMeta.color !== undefined) {
+        const nextColor = validHexColor(body.calendarMeta.color, meta.defaultColor ?? '#0A84FF');
+        if (nextColor !== meta.defaultColor) {
+          meta.defaultColor = nextColor;
+          metaChanged = true;
+        }
+      }
+      if (isValidTimeZone(body.calendarMeta.timeZone) && body.calendarMeta.timeZone !== meta.timeZone) {
+        meta.timeZone = body.calendarMeta.timeZone;
+        metaChanged = true;
+      }
+      if (metaChanged) {
+        meta.lastWriteAt = new Date().toISOString();
+        await this.store.putJSON(this.keys.meta(calId), meta);
+        await this.core.regenerate(calId);
+      }
+    }
+
+    const upserts = Array.isArray(body?.upserts) ? body.upserts.slice(0, 250) : [];
+    const deletions = Array.isArray(body?.deletions) ? body.deletions.slice(0, 250) : [];
+    let appliedUpserts = 0;
+    let appliedDeletions = 0;
+    const conflicts: Array<{ id: string; status: number; error: string }> = [];
+
+    for (const rawEv of upserts) {
+      const evId = String(rawEv?.id ?? '').trim();
+      if (!evId) continue;
+      const sMs = Date.parse(String(rawEv?.start ?? ''));
+      let eMs = Date.parse(String(rawEv?.end ?? ''));
+      if (Number.isFinite(sMs) && (!Number.isFinite(eMs) || eMs <= sMs)) {
+        eMs = sMs + (rawEv?.allDay ? 86_400_000 : 1_800_000);
+      }
+      const normalizedPayload = {
+        ...rawEv,
+        start: Number.isFinite(sMs) ? new Date(sMs).toISOString() : rawEv?.start,
+        end: Number.isFinite(eMs) ? new Date(eMs).toISOString() : rawEv?.end,
+      };
+      const res = await this.upsertWebCalendarEvent(principal, evId, normalizedPayload, {
+        skipEntitlementCheck: true,
+      });
+      if (res.status >= 200 && res.status < 300) {
+        appliedUpserts += 1;
+      } else {
+        conflicts.push({
+          id: evId,
+          status: res.status,
+          error: String(res.body?.error ?? 'Sync conflict'),
+        });
+      }
+    }
+
+    for (const rawId of deletions) {
+      const evId = String(rawId ?? '').trim();
+      if (!evId) continue;
+      const res = await this.deleteWebCalendarEvent(
+        principal,
+        evId,
+        {},
+        { skipEntitlementCheck: true },
+      );
+      if (res.status === 200 || res.status === 404) {
+        appliedDeletions += 1;
+      } else {
+        conflicts.push({
+          id: evId,
+          status: res.status,
+          error: String(res.body?.error ?? 'Delete conflict'),
+        });
+      }
+    }
+
+    const [meta, eventKeys] = await Promise.all([
+      this.store.getJSON(this.keys.meta(calId)),
+      this.store.listKeys(this.keys.events(calId)),
+    ]);
+
+    const defaultColor = validHexColor(meta?.defaultColor, '#0A84FF');
+    const rawEvents = (await Promise.all(eventKeys.map((k) => this.store.getJSON(k)))).filter(Boolean);
+    const events = rawEvents
+      .filter((ev) => ev.status !== 'cancelled')
+      .map((ev) => ({
+        ...ev,
+        color: validHexColor(ev.color ?? ev.details?.color, defaultColor),
+      }))
+      .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
+
+    return result(200, {
+      calendar: {
+        id: calId,
+        name: meta?.name ?? 'Cloud Calendars',
+        color: defaultColor,
+        timeZone: meta?.timeZone ?? 'UTC',
+        updatedAt: meta?.lastWriteAt ?? null,
+      },
+      events,
+      appliedUpserts,
+      appliedDeletions,
+      conflicts,
+      syncedAt: new Date().toISOString(),
+    });
+  }
+
+  /**
    * Connects or resyncs an external calendar provider (`google`, `microsoft`, or `ics`).
    * For Google & Microsoft, persists `accessToken` + optional `refreshToken` in `oauth-connections.json`
    * so 2-way read (free/busy conflict detection) + 2-way write (booking create / drag-drop / cancel) work automatically!
    */
   async syncExternalProvider(principal: any, body: any): Promise<ApiResult> {
-    const { calId } = principal;
+    const { principalId, calId } = principal;
     const provider = String(body?.provider ?? '').toLowerCase();
+    if (body?.disconnect !== true) {
+      const principalDoc = await this.store.getJSON(this.keys.principal(principalId));
+      if (!this.computeWebAccess(principalDoc).entitled) {
+        return this.unentitledStudioResult(principalDoc);
+      }
+    }
     const now = Date.now();
     const rangeStartMs = now - 7 * 86_400_000;
     const rangeEndMs = now + 90 * 86_400_000;
@@ -1049,6 +1280,9 @@ export class WebPlatformService {
       this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
     ]);
+    if (!this.computeWebAccess(principalDoc).entitled) {
+      return this.unentitledStudioResult(principalDoc);
+    }
 
     const fallback = this.defaultBookingConfig(
       principalDoc?.displayName ?? meta?.name ?? 'Calendar Host',
@@ -1304,6 +1538,9 @@ export class WebPlatformService {
       this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
     ]);
+    if (!this.computeWebAccess(principalDoc).entitled) {
+      return this.unentitledStudioResult(principalDoc);
+    }
 
     if (!existingCfg) {
       const seedCfg = this.defaultBookingConfig(
@@ -3084,5 +3321,846 @@ export class WebPlatformService {
     await this.mirrorEventToConnectedProviders(guestCalId, eventDoc, mode, {
       forGuestCalendar: true,
     });
+  }
+
+  // ── 7. iOS QR Login, TOTP Web Authenticator & Stripe Web Subscriptions ───
+
+  private hashSecretToken(value: string): string {
+    return createHash('sha256').update(`cc-secret:${value}`).digest('hex');
+  }
+
+  async startIosQrChallenge(authHeader: string): Promise<ApiResult> {
+    const rawBearer = authHeader?.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
+    const caller = rawBearer ? await this.core.resolveToken(rawBearer) : null;
+
+    let webEmail: string | null = null;
+    if (caller?.principalId) {
+      const webDoc = await this.store.getJSON(this.keys.principal(caller.principalId));
+      webEmail = this.verifiedEmailsForPrincipal(webDoc)[0] ?? null;
+    }
+
+    const challengeId = randomId(20);
+    const pollToken = randomId(24);
+    const now = Date.now();
+    const expiresAt = now + 5 * 60_000;
+
+    await this.store.putJSON(this.keys.iosQrChallenge(challengeId), {
+      id: challengeId,
+      pollTokenHash: this.hashSecretToken(pollToken),
+      status: 'pending',
+      createdAt: now,
+      expiresAt,
+      webPrincipalId: caller?.principalId ?? null,
+      webCalId: caller?.calId ?? null,
+      webEmail,
+    });
+
+    const encodedId = encodeURIComponent(challengeId);
+    return result(200, {
+      challengeId,
+      pollToken,
+      qrUrl: `${this.SITE_URL}/app-auth/?c=${encodedId}`,
+      appDeepLink: `cloudcalendars://app-auth?c=${encodedId}`,
+      expiresAt: new Date(expiresAt).toISOString(),
+      expiresInSeconds: 300,
+    });
+  }
+
+  async getIosQrChallengeInfo(iosPrincipal: any, rawChallengeId: string): Promise<ApiResult> {
+    const challengeId = String(rawChallengeId ?? '').trim();
+    if (!/^[A-Za-z0-9_-]{12,64}$/.test(challengeId)) {
+      return result(400, { error: 'Invalid QR login challenge.' });
+    }
+
+    const [challenge, iosDoc, meta] = await Promise.all([
+      this.store.getJSON(this.keys.iosQrChallenge(challengeId)),
+      this.store.getJSON(this.keys.principal(iosPrincipal.principalId)),
+      this.store.getJSON(this.keys.meta(iosPrincipal.calId)),
+    ]);
+
+    if (!challenge) {
+      return result(404, { code: 'qr_not_found', error: 'This QR code has expired or was already used.' });
+    }
+
+    const expired = Date.now() > Number(challenge.expiresAt ?? 0);
+    const status = expired && challenge.status === 'pending' ? 'expired' : challenge.status;
+    const iosEmails = this.verifiedEmailsForPrincipal(iosDoc);
+
+    return result(200, {
+      challengeId,
+      status,
+      expiresAt: new Date(Number(challenge.expiresAt ?? Date.now())).toISOString(),
+      webEmail: challenge.webEmail ?? null,
+      iosEmail: iosEmails[0] ?? null,
+      iosDisplayName: iosDoc?.displayName ?? meta?.name ?? 'Cloud Calendars',
+      alreadyUnlocked: Boolean(iosDoc?.iosUnlocked || iosDoc?.iosUnlockedAt),
+    });
+  }
+
+  async approveIosQrChallenge(iosPrincipal: any, body: any): Promise<ApiResult> {
+    const challengeId = String(body?.challengeId ?? body?.c ?? '').trim();
+    if (!/^[A-Za-z0-9_-]{12,64}$/.test(challengeId)) {
+      return result(400, { error: 'Invalid QR login challenge.' });
+    }
+
+    const challengeKey = this.keys.iosQrChallenge(challengeId);
+    const challenge = await this.store.getJSON(challengeKey);
+    if (!challenge) {
+      return result(404, { code: 'qr_not_found', error: 'This QR code has expired or was already used.' });
+    }
+    if (challenge.status !== 'pending' || Date.now() > Number(challenge.expiresAt ?? 0)) {
+      return result(410, { code: 'qr_expired', error: 'This QR code has expired. Scan the refreshed QR code on your computer.' });
+    }
+
+    const nowIso = new Date().toISOString();
+    const { principalId: iosPrincipalId, calId: iosCalId } = iosPrincipal;
+    const [existingIosDoc, iosMeta] = await Promise.all([
+      this.store.getJSON(this.keys.principal(iosPrincipalId)),
+      this.store.getJSON(this.keys.meta(iosCalId)),
+    ]);
+
+    const iosDoc: any = {
+      ...(existingIosDoc ?? { id: iosPrincipalId, calId: iosCalId, createdAt: nowIso }),
+    };
+    iosDoc.iosUnlocked = true;
+    iosDoc.iosUnlockedAt = iosDoc.iosUnlockedAt ?? nowIso;
+    iosDoc.totpSecret = iosDoc.totpSecret || generateTotpSecret();
+    iosDoc.totpConfiguredAt = iosDoc.totpConfiguredAt ?? nowIso;
+
+    const iosEmails = this.verifiedEmailsForPrincipal(iosDoc);
+    const primaryIosEmail = iosEmails[0] ?? null;
+
+    const writes: Promise<any>[] = [
+      this.store.putJSON(this.keys.principal(iosPrincipalId), iosDoc),
+      ...iosEmails.map((em) =>
+        this.store.putJSON(this.keys.accountEmail(this.core.emailHash(em)), {
+          principalId: iosPrincipalId,
+        }),
+      ),
+    ];
+
+    let targetPrincipalId = iosPrincipalId;
+    let targetCalId = iosCalId;
+    let targetEmail = primaryIosEmail;
+
+    if (
+      challenge.webPrincipalId &&
+      challenge.webCalId &&
+      challenge.webPrincipalId !== iosPrincipalId
+    ) {
+      const webDoc = await this.store.getJSON(this.keys.principal(challenge.webPrincipalId));
+      const webEmails = this.verifiedEmailsForPrincipal(webDoc);
+      if (webDoc && webEmails.length > 0) {
+        const updatedWebDoc = {
+          ...webDoc,
+          iosUnlocked: true,
+          iosUnlockedAt: webDoc.iosUnlockedAt ?? nowIso,
+          iosPairedPrincipalId: iosPrincipalId,
+          totpSecret: webDoc.totpSecret || iosDoc.totpSecret,
+          totpConfiguredAt: webDoc.totpConfiguredAt ?? nowIso,
+        };
+        writes.push(this.store.putJSON(this.keys.principal(challenge.webPrincipalId), updatedWebDoc));
+        targetPrincipalId = challenge.webPrincipalId;
+        targetCalId = challenge.webCalId;
+        targetEmail = webEmails[0] ?? primaryIosEmail;
+      }
+    }
+
+    const acl = await this.store.getJSON(this.keys.acl(targetCalId));
+    const ownerFeedId =
+      Object.keys(acl?.feeds ?? {}).find((f) => acl.feeds[f].role === 'owner') ?? null;
+
+    const deviceToken = await this.core.issueToken(targetPrincipalId, targetCalId, {
+      provider: 'ios_qr',
+      id: `ios_qr:${iosPrincipalId}`,
+    });
+
+    writes.push(
+      this.store.putJSON(challengeKey, {
+        ...challenge,
+        status: 'approved',
+        approvedAt: nowIso,
+        approvedByPrincipalId: iosPrincipalId,
+        approvedSession: {
+          calendarId: targetCalId,
+          deviceToken,
+          feedId: ownerFeedId,
+          feedUrl: ownerFeedId ? this.core.feedUrl(ownerFeedId) : null,
+          email: targetEmail,
+          provider: 'ios_qr',
+          ownerId: targetPrincipalId,
+        },
+      }),
+    );
+
+    await Promise.all(writes);
+
+    const displayName = iosDoc?.displayName ?? iosMeta?.name ?? 'Cloud Calendars';
+    return result(200, {
+      approved: true,
+      email: primaryIosEmail ?? targetEmail,
+      verifiedEmails: iosEmails,
+      displayName,
+      totpSecret: iosDoc.totpSecret,
+      otpauthUrl: (primaryIosEmail ?? targetEmail)
+        ? buildOtpAuthUri({
+            email: (primaryIosEmail ?? targetEmail)!,
+            secret: iosDoc.totpSecret,
+          })
+        : null,
+      periodSeconds: 30,
+      digits: 6,
+      iosUnlocked: true,
+    });
+  }
+
+  async pollIosQrChallenge(body: any): Promise<ApiResult> {
+    const challengeId = String(body?.challengeId ?? '').trim();
+    const pollToken = String(body?.pollToken ?? '').trim();
+    if (!/^[A-Za-z0-9_-]{12,64}$/.test(challengeId) || !pollToken) {
+      return result(400, { error: 'challengeId and pollToken are required.' });
+    }
+
+    const challengeKey = this.keys.iosQrChallenge(challengeId);
+    const challenge = await this.store.getJSON(challengeKey);
+    if (!challenge) {
+      return result(200, { status: 'expired' });
+    }
+
+    const expectedBuf = Buffer.from(String(challenge.pollTokenHash ?? ''), 'utf8');
+    const actualBuf = Buffer.from(this.hashSecretToken(pollToken), 'utf8');
+    if (expectedBuf.length !== actualBuf.length || !timingSafeEqual(expectedBuf, actualBuf)) {
+      return result(403, { error: 'Invalid pollToken.' });
+    }
+
+    if (challenge.status === 'pending') {
+      if (Date.now() > Number(challenge.expiresAt ?? 0)) {
+        await this.store.del(challengeKey).catch(() => {});
+        return result(200, { status: 'expired' });
+      }
+      return result(200, {
+        status: 'pending',
+        expiresAt: new Date(Number(challenge.expiresAt)).toISOString(),
+      });
+    }
+
+    if (challenge.status === 'approved' && challenge.approvedSession) {
+      const sessionPayload = challenge.approvedSession;
+      // Consume immediately so the minted session token cannot be replayed
+      await this.store.del(challengeKey);
+      const profileRes = await this.getProfile({
+        principalId: sessionPayload.ownerId,
+        calId: sessionPayload.calendarId,
+      });
+      return result(200, {
+        status: 'approved',
+        ...sessionPayload,
+        profile: profileRes.body,
+      });
+    }
+
+    return result(200, { status: 'expired' });
+  }
+
+  async setupIosAuthenticator(iosPrincipal: any): Promise<ApiResult> {
+    const { principalId, calId } = iosPrincipal;
+    const nowIso = new Date().toISOString();
+    const [existingDoc, meta] = await Promise.all([
+      this.store.getJSON(this.keys.principal(principalId)),
+      this.store.getJSON(this.keys.meta(calId)),
+    ]);
+
+    const doc: any = {
+      ...(existingDoc ?? { id: principalId, calId, createdAt: nowIso }),
+    };
+    doc.iosUnlocked = true;
+    doc.iosUnlockedAt = doc.iosUnlockedAt ?? nowIso;
+    doc.totpSecret = doc.totpSecret || generateTotpSecret();
+    doc.totpConfiguredAt = doc.totpConfiguredAt ?? nowIso;
+
+    const emails = this.verifiedEmailsForPrincipal(doc);
+    const primaryEmail = emails[0] ?? null;
+
+    await Promise.all([
+      this.store.putJSON(this.keys.principal(principalId), doc),
+      ...emails.map((em) =>
+        this.store.putJSON(this.keys.accountEmail(this.core.emailHash(em)), { principalId }),
+      ),
+    ]);
+
+    return result(200, {
+      email: primaryEmail,
+      verifiedEmails: emails,
+      displayName: doc?.displayName ?? meta?.name ?? 'Cloud Calendars',
+      totpSecret: doc.totpSecret,
+      otpauthUrl: primaryEmail
+        ? buildOtpAuthUri({ email: primaryEmail, secret: doc.totpSecret })
+        : null,
+      periodSeconds: 30,
+      digits: 6,
+      iosUnlocked: true,
+    });
+  }
+
+  async verifyTotpLogin(authHeader: string, body: any): Promise<ApiResult> {
+    const email = normalizeEmail(body?.email);
+    const code = String(body?.code ?? '').replace(/\s+/g, '');
+    if (!email || !/^\d{6}$/.test(code)) {
+      return result(400, { error: 'Please enter your email and 6-digit Authenticator code.' });
+    }
+
+    const emailHash = this.core.emailHash(email);
+    const attemptsKey = this.keys.totpAttempts(emailHash);
+    const attemptsDoc = await this.store.getJSON(attemptsKey);
+    const now = Date.now();
+    if (
+      attemptsDoc &&
+      Number(attemptsDoc.windowExpiresAt ?? 0) > now &&
+      Number(attemptsDoc.count ?? 0) >= 6
+    ) {
+      return result(429, {
+        error: 'Too many failed code attempts. Please wait a few minutes and try again.',
+      });
+    }
+
+    const emailOwner = await this.store.getJSON(this.keys.accountEmail(emailHash));
+    if (!emailOwner?.principalId) {
+      await this.recordFailedTotpAttempt(attemptsKey, attemptsDoc, now);
+      return result(401, {
+        code: 'totp_not_configured',
+        error:
+          'No Cloud Calendars iOS Authenticator is linked to this email yet. Scan the QR code with the Cloud Calendars iOS app first.',
+      });
+    }
+
+    const principalId = String(emailOwner.principalId);
+    const principalDoc = await this.store.getJSON(this.keys.principal(principalId));
+    if (!principalDoc?.totpSecret || !principalDoc?.calId) {
+      await this.recordFailedTotpAttempt(attemptsKey, attemptsDoc, now);
+      return result(401, {
+        code: 'totp_not_configured',
+        error:
+          'Open Cloud Calendars on your iPhone → Cloud Account → Web Authenticator to activate your 6-digit code.',
+      });
+    }
+
+    const check = verifyTotpCode(principalDoc.totpSecret, code, {
+      nowMs: now,
+      window: 1,
+      lastAcceptedStep:
+        typeof principalDoc.lastTotpStep === 'number' ? principalDoc.lastTotpStep : null,
+    });
+
+    if (!check.valid) {
+      await this.recordFailedTotpAttempt(attemptsKey, attemptsDoc, now);
+      return result(401, {
+        error: 'Invalid or already-used 6-digit Authenticator code. Check the live code in your iOS app.',
+      });
+    }
+
+    const nowIso = new Date(now).toISOString();
+    const updatedDoc = {
+      ...principalDoc,
+      iosUnlocked: true,
+      iosUnlockedAt: principalDoc.iosUnlockedAt ?? nowIso,
+      lastTotpStep: check.matchedStep,
+      lastTotpLoginAt: nowIso,
+    };
+
+    const calId = String(principalDoc.calId);
+    const acl = await this.store.getJSON(this.keys.acl(calId));
+    const ownerFeedId =
+      Object.keys(acl?.feeds ?? {}).find((f) => acl.feeds[f].role === 'owner') ?? null;
+
+    await Promise.all([
+      this.store.putJSON(this.keys.principal(principalId), updatedDoc),
+      this.store.del(attemptsKey).catch(() => {}),
+    ]);
+
+    const deviceToken = await this.core.issueToken(principalId, calId, {
+      provider: 'ios_totp',
+      id: `ios_totp:${emailHash}`,
+    });
+
+    const profileRes = await this.getProfile({ principalId, calId });
+    return result(200, {
+      calendarId: calId,
+      deviceToken,
+      feedId: ownerFeedId,
+      feedUrl: ownerFeedId ? this.core.feedUrl(ownerFeedId) : null,
+      email,
+      provider: 'ios_totp',
+      ownerId: principalId,
+      profile: profileRes.body,
+    });
+  }
+
+  private async recordFailedTotpAttempt(
+    attemptsKey: string,
+    existing: any,
+    now: number,
+  ): Promise<void> {
+    const expired = !existing || Number(existing.windowExpiresAt ?? 0) <= now;
+    const count = expired ? 1 : Number(existing.count ?? 0) + 1;
+    const windowExpiresAt = expired ? now + 5 * 60_000 : Number(existing.windowExpiresAt);
+    await this.store.putJSON(attemptsKey, { count, windowExpiresAt });
+  }
+
+  // ── Stripe Web Subscriptions ($1.99/mo & $19.99/yr) ───────────────────────
+
+  private stripeConfig() {
+    const secretKey = String(process.env.STRIPE_SECRET_KEY ?? '').trim();
+    const webhookSecret = String(process.env.STRIPE_WEBHOOK_SECRET ?? '').trim();
+    const catalog = secretKey ? loadLocalStripeCatalog(secretKey) : null;
+    const monthlyPriceId = String(
+      process.env.STRIPE_PRICE_MONTHLY_ID ?? catalog?.plans?.monthly?.priceId ?? '',
+    ).trim();
+    const yearlyPriceId = String(
+      process.env.STRIPE_PRICE_YEARLY_ID ?? catalog?.plans?.yearly?.priceId ?? '',
+    ).trim();
+    const portalConfigurationId = String(
+      process.env.STRIPE_PORTAL_CONFIGURATION_ID ?? catalog?.portalConfigurationId ?? '',
+    ).trim();
+    return {
+      secretKey,
+      webhookSecret,
+      monthlyPriceId,
+      yearlyPriceId,
+      portalConfigurationId,
+      configured: Boolean(secretKey),
+    };
+  }
+
+  private safeReturnUrl(candidate: unknown): string {
+    const fallback = `${this.SITE_URL}/calendar/`;
+    const raw = String(candidate ?? '').trim();
+    if (!raw) return fallback;
+    try {
+      const parsed = new URL(raw, this.SITE_URL);
+      const allowedHost = new URL(this.SITE_URL).hostname;
+      if (parsed.hostname === allowedHost || parsed.hostname === 'localhost') {
+        parsed.searchParams.delete('billing');
+        parsed.searchParams.delete('session_id');
+        return parsed.toString();
+      }
+    } catch {
+      // fall through
+    }
+    return fallback;
+  }
+
+  async getBillingPlans(): Promise<ApiResult> {
+    const cfg = this.stripeConfig();
+    return result(200, {
+      configured: cfg.configured,
+      iosFreeForever: true,
+      plans: {
+        monthly: {
+          id: 'monthly',
+          name: 'Cloud Calendars Web Studio — Monthly',
+          priceUsd: 1.99,
+          unitAmountCents: 199,
+          interval: 'month',
+        },
+        yearly: {
+          id: 'yearly',
+          name: 'Cloud Calendars Web Studio — Yearly',
+          priceUsd: 19.99,
+          unitAmountCents: 1999,
+          interval: 'year',
+          savingsLabel: 'Save 16%',
+        },
+      },
+    });
+  }
+
+  async createBillingCheckoutSession(principal: any, body: any): Promise<ApiResult> {
+    const cfg = this.stripeConfig();
+    if (!cfg.secretKey) {
+      return result(503, {
+        code: 'billing_not_configured',
+        error: 'Web billing is being configured. You can unlock Web Studio for free right now with the Cloud Calendars iOS app.',
+      });
+    }
+
+    const plan: 'monthly' | 'yearly' = body?.plan === 'yearly' ? 'yearly' : 'monthly';
+    const { principalId, calId } = principal;
+    const principalDoc = await this.store.getJSON(this.keys.principal(principalId));
+    const access = this.computeWebAccess(principalDoc);
+
+    if (access.iosUnlocked) {
+      return result(409, {
+        code: 'already_unlocked_ios',
+        error: 'Your account is already unlocked for free forever via the Cloud Calendars iOS app!',
+      });
+    }
+    if (access.entitled && ['stripe_monthly', 'stripe_yearly'].includes(access.accessSource)) {
+      return result(409, {
+        code: 'already_subscribed',
+        error: 'You already have an active Web Studio subscription. Use Manage Billing to switch plans.',
+      });
+    }
+
+    const emails = this.verifiedEmailsForPrincipal(principalDoc);
+    const primaryEmail = emails[0] ?? null;
+    if (!primaryEmail) {
+      return result(400, {
+        code: 'email_required',
+        error: 'Please sign in with Google, Microsoft, or a verified email address before subscribing.',
+      });
+    }
+
+    const returnBase = this.safeReturnUrl(body?.returnUrl);
+    const successUrlObj = new URL(returnBase);
+    successUrlObj.searchParams.set('billing', 'success');
+    const successUrl = `${successUrlObj.toString()}${successUrlObj.toString().includes('?') ? '&' : '?'}session_id={CHECKOUT_SESSION_ID}`;
+    const cancelUrlObj = new URL(returnBase);
+    cancelUrlObj.searchParams.set('billing', 'cancelled');
+
+    const metadata = {
+      app: 'cloud_calendars',
+      principalId,
+      calId,
+      plan,
+    };
+
+    const configuredPriceId = plan === 'yearly' ? cfg.yearlyPriceId : cfg.monthlyPriceId;
+    const lineItem = configuredPriceId
+      ? { price: configuredPriceId, quantity: 1 }
+      : {
+          quantity: 1,
+          price_data: {
+            currency: 'usd',
+            unit_amount: plan === 'yearly' ? 1999 : 199,
+            recurring: { interval: plan === 'yearly' ? 'year' : 'month' },
+            product_data: {
+              name:
+                plan === 'yearly'
+                  ? 'Cloud Calendars Web Studio (Yearly)'
+                  : 'Cloud Calendars Web Studio (Monthly)',
+              description:
+                'Full Web Calendar, Event & Appointment Scheduling Studio at cloud-calendars.com',
+              metadata: { app: 'cloud_calendars', plan },
+            },
+          },
+        };
+
+    const existingCustomerId = principalDoc?.billing?.stripeCustomerId ?? null;
+
+    try {
+      const session = await stripeRequest<any>({
+        secretKey: cfg.secretKey,
+        method: 'POST',
+        path: '/checkout/sessions',
+        form: {
+          mode: 'subscription',
+          ...(existingCustomerId
+            ? {
+                customer: existingCustomerId,
+                customer_update: { address: 'auto', name: 'auto' },
+              }
+            : { customer_email: primaryEmail }),
+          line_items: [lineItem],
+          allow_promotion_codes: true,
+          billing_address_collection: 'auto',
+          client_reference_id: principalId,
+          metadata,
+          subscription_data: { metadata },
+          success_url: successUrl,
+          cancel_url: cancelUrlObj.toString(),
+        },
+      });
+
+      await this.store.putJSON(this.keys.stripeCheckout(session.id), {
+        sessionId: session.id,
+        principalId,
+        calId,
+        plan,
+        status: 'pending',
+        createdAt: new Date().toISOString(),
+      });
+
+      return result(200, {
+        sessionId: session.id,
+        url: session.url,
+        checkoutUrl: session.url,
+        plan,
+      });
+    } catch (err: any) {
+      const status = err instanceof StripeRestError && err.status >= 400 && err.status < 500 ? 400 : 502;
+      return result(status, {
+        error: err?.message || 'Could not start Stripe Checkout session.',
+      });
+    }
+  }
+
+  async reconcileBillingCheckoutSession(principal: any, body: any): Promise<ApiResult> {
+    const cfg = this.stripeConfig();
+    if (!cfg.secretKey) {
+      return result(503, { error: 'Stripe billing is not configured.' });
+    }
+    const sessionId = String(body?.sessionId ?? '').trim();
+    if (!sessionId.startsWith('cs_')) {
+      return result(400, { error: 'Valid Stripe Checkout sessionId is required.' });
+    }
+
+    try {
+      const session = await stripeRequest<any>({
+        secretKey: cfg.secretKey,
+        method: 'GET',
+        path: `/checkout/sessions/${encodeURIComponent(sessionId)}`,
+        form: { expand: ['subscription'] },
+      });
+
+      if (
+        session?.metadata?.app !== 'cloud_calendars' ||
+        session?.metadata?.principalId !== principal.principalId
+      ) {
+        return result(403, { error: 'This checkout session belongs to another account.' });
+      }
+
+      if (session.payment_status !== 'paid' && session.status !== 'complete') {
+        return result(200, {
+          reconciled: false,
+          status: session.status,
+          paymentStatus: session.payment_status,
+        });
+      }
+
+      await this.activateSubscriptionFromCheckout(session);
+      const profileRes = await this.getProfile(principal);
+      return result(200, {
+        reconciled: true,
+        profile: profileRes.body,
+      });
+    } catch (err: any) {
+      return result(502, {
+        error: err?.message || 'Could not reconcile Stripe Checkout session.',
+      });
+    }
+  }
+
+  async createBillingPortalSession(principal: any, body: any): Promise<ApiResult> {
+    const cfg = this.stripeConfig();
+    if (!cfg.secretKey) {
+      return result(503, { error: 'Stripe billing is not configured.' });
+    }
+
+    const principalDoc = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const customerId = principalDoc?.billing?.stripeCustomerId;
+    if (!customerId) {
+      return result(409, { error: 'No Stripe subscription customer found on this account.' });
+    }
+
+    try {
+      const session = await stripeRequest<any>({
+        secretKey: cfg.secretKey,
+        method: 'POST',
+        path: '/billing_portal/sessions',
+        form: {
+          customer: customerId,
+          ...(cfg.portalConfigurationId ? { configuration: cfg.portalConfigurationId } : {}),
+          return_url: this.safeReturnUrl(body?.returnUrl),
+        },
+      });
+      return result(200, { url: session.url, portalUrl: session.url });
+    } catch (err: any) {
+      return result(502, {
+        error: err?.message || 'Could not open Stripe Billing Portal.',
+      });
+    }
+  }
+
+  async handleStripeWebhook(rawBody: Buffer | string, signatureHeader: string): Promise<ApiResult> {
+    const cfg = this.stripeConfig();
+    if (!cfg.secretKey || !cfg.webhookSecret) {
+      return result(503, { error: 'Stripe webhook is not configured.' });
+    }
+
+    let event: any;
+    try {
+      event = verifyStripeWebhookEvent({
+        rawBody,
+        signatureHeader,
+        webhookSecret: cfg.webhookSecret,
+      });
+    } catch (err: any) {
+      return result(400, { error: err?.message || 'Invalid Stripe webhook signature.' });
+    }
+
+    if (typeof event?.livemode === 'boolean' && event.livemode !== isStripeLiveKey(cfg.secretKey)) {
+      return result(400, { error: 'Stripe webhook mode mismatch.' });
+    }
+
+    const type = String(event?.type ?? '');
+    const obj = event?.data?.object ?? {};
+
+    if (type === 'checkout.session.completed' || type === 'checkout.session.async_payment_succeeded') {
+      if (obj?.metadata?.app !== 'cloud_calendars') {
+        return result(200, { received: true, ignored: true });
+      }
+      if (obj.payment_status === 'paid' || obj.status === 'complete') {
+        await this.activateSubscriptionFromCheckout(obj);
+      }
+      return result(200, { received: true, type });
+    }
+
+    if (
+      type === 'customer.subscription.created' ||
+      type === 'customer.subscription.updated' ||
+      type === 'customer.subscription.deleted'
+    ) {
+      const customerId = typeof obj.customer === 'string' ? obj.customer : obj.customer?.id;
+      const appMeta = obj?.metadata?.app;
+      const customerIndex = customerId
+        ? await this.store.getJSON(this.keys.stripeCustomer(customerId))
+        : null;
+
+      if (appMeta && appMeta !== 'cloud_calendars') {
+        return result(200, { received: true, ignored: true });
+      }
+      const principalId = obj?.metadata?.principalId ?? customerIndex?.principalId;
+      if (!principalId) {
+        return result(200, { received: true, ignored: true });
+      }
+
+      const principalDoc = await this.store.getJSON(this.keys.principal(principalId));
+      if (!principalDoc) {
+        return result(200, { received: true, ignored: true });
+      }
+
+      const lastEventCreated = Number(principalDoc?.billing?.lastEventCreated ?? 0);
+      if (Number(event.created ?? 0) < lastEventCreated) {
+        return result(200, { received: true, stale: true });
+      }
+
+      const interval = obj?.items?.data?.[0]?.price?.recurring?.interval;
+      const plan: 'monthly' | 'yearly' =
+        obj?.metadata?.plan === 'yearly' || interval === 'year'
+          ? 'yearly'
+          : principalDoc?.billing?.plan === 'yearly' && !interval
+            ? 'yearly'
+            : 'monthly';
+
+      const status = type === 'customer.subscription.deleted' ? 'canceled' : String(obj.status ?? 'active');
+      const periodEndSec = Number(
+        obj.current_period_end ?? obj?.items?.data?.[0]?.current_period_end ?? 0,
+      );
+
+      const updatedDoc = {
+        ...principalDoc,
+        billing: {
+          ...(principalDoc.billing ?? {}),
+          stripeCustomerId: customerId ?? principalDoc.billing?.stripeCustomerId ?? null,
+          stripeSubscriptionId: obj.id ?? principalDoc.billing?.stripeSubscriptionId ?? null,
+          plan,
+          status,
+          cancelAtPeriodEnd: Boolean(obj.cancel_at_period_end),
+          currentPeriodEnd:
+            periodEndSec > 0
+              ? new Date(periodEndSec * 1000).toISOString()
+              : (principalDoc.billing?.currentPeriodEnd ?? null),
+          lastEventCreated: Number(event.created ?? 0),
+          updatedAt: new Date().toISOString(),
+        },
+      };
+
+      await Promise.all([
+        this.store.putJSON(this.keys.principal(principalId), updatedDoc),
+        customerId
+          ? this.store.putJSON(this.keys.stripeCustomer(customerId), {
+              principalId,
+              calId: principalDoc.calId,
+            })
+          : Promise.resolve(),
+      ]);
+      return result(200, { received: true, type });
+    }
+
+    if (type === 'invoice.payment_failed') {
+      const customerId = typeof obj.customer === 'string' ? obj.customer : obj.customer?.id;
+      const customerIndex = customerId
+        ? await this.store.getJSON(this.keys.stripeCustomer(customerId))
+        : null;
+      if (!customerIndex?.principalId) {
+        return result(200, { received: true, ignored: true });
+      }
+      const principalDoc = await this.store.getJSON(this.keys.principal(customerIndex.principalId));
+      if (principalDoc?.billing) {
+        await this.store.putJSON(this.keys.principal(customerIndex.principalId), {
+          ...principalDoc,
+          billing: {
+            ...principalDoc.billing,
+            status: 'past_due',
+            updatedAt: new Date().toISOString(),
+          },
+        });
+      }
+      return result(200, { received: true, type });
+    }
+
+    return result(200, { received: true, ignored: true });
+  }
+
+  private async activateSubscriptionFromCheckout(session: any): Promise<void> {
+    const principalId = String(session?.metadata?.principalId ?? session?.client_reference_id ?? '').trim();
+    if (!principalId) return;
+
+    const principalDoc = await this.store.getJSON(this.keys.principal(principalId));
+    if (!principalDoc) return;
+
+    const customerId =
+      typeof session.customer === 'string'
+        ? session.customer
+        : (session.customer?.id ?? principalDoc?.billing?.stripeCustomerId ?? null);
+    const subObj = typeof session.subscription === 'object' ? session.subscription : null;
+    const subscriptionId =
+      typeof session.subscription === 'string'
+        ? session.subscription
+        : (subObj?.id ?? principalDoc?.billing?.stripeSubscriptionId ?? null);
+
+    const plan: 'monthly' | 'yearly' =
+      session?.metadata?.plan === 'yearly' ? 'yearly' : 'monthly';
+    const periodEndSec = Number(
+      subObj?.current_period_end ?? subObj?.items?.data?.[0]?.current_period_end ?? 0,
+    );
+    const nowIso = new Date().toISOString();
+
+    const updatedDoc = {
+      ...principalDoc,
+      billing: {
+        ...(principalDoc.billing ?? {}),
+        stripeCustomerId: customerId,
+        stripeSubscriptionId: subscriptionId,
+        plan,
+        status: subObj?.status ? String(subObj.status) : 'active',
+        cancelAtPeriodEnd: Boolean(subObj?.cancel_at_period_end),
+        currentPeriodEnd:
+          periodEndSec > 0
+            ? new Date(periodEndSec * 1000).toISOString()
+            : (principalDoc?.billing?.currentPeriodEnd ?? null),
+        updatedAt: nowIso,
+      },
+    };
+
+    await Promise.all([
+      this.store.putJSON(this.keys.principal(principalId), updatedDoc),
+      this.store.putJSON(this.keys.stripeCheckout(session.id), {
+        sessionId: session.id,
+        principalId,
+        calId: principalDoc.calId,
+        plan,
+        status: 'completed',
+        stripeCustomerId: customerId,
+        stripeSubscriptionId: subscriptionId,
+        completedAt: nowIso,
+      }),
+      customerId
+        ? this.store.putJSON(this.keys.stripeCustomer(customerId), {
+            principalId,
+            calId: principalDoc.calId,
+          })
+        : Promise.resolve(),
+    ]);
   }
 }

@@ -52,6 +52,111 @@ export class WebPlatformController {
     return reply(res, await this.svc.signInWithGoogleAuthCode(auth ?? '', body ?? {}));
   }
 
+  // ── iOS QR Sign-In, TOTP Web Authenticator & Stripe Subscriptions ─────────
+
+  @Post('auth/ios-qr/start')
+  async startIosQr(
+    @Headers('authorization') auth: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.startIosQrChallenge(auth ?? ''));
+  }
+
+  @Get('auth/ios-qr/info')
+  @UseGuards(AuthGuard)
+  async iosQrInfo(
+    @Req() req: any,
+    @Query('c') challengeId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.getIosQrChallengeInfo(req.principal, challengeId ?? ''));
+  }
+
+  @Post('auth/ios-qr/approve')
+  @UseGuards(AuthGuard)
+  async approveIosQr(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.approveIosQrChallenge(req.principal, body ?? {}));
+  }
+
+  @Post('auth/ios-qr/poll')
+  async pollIosQr(@Body() body: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.pollIosQrChallenge(body ?? {}));
+  }
+
+  @Post('auth/ios-authenticator/setup')
+  @UseGuards(AuthGuard)
+  async setupIosAuthenticator(@Req() req: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.setupIosAuthenticator(req.principal));
+  }
+
+  @Post('ios/personal-calendar/sync')
+  @UseGuards(AuthGuard)
+  async syncIosPersonalCalendar(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.syncIosPersonalCalendar(req.principal, body ?? {}));
+  }
+
+  @Post('auth/totp/verify')
+  async verifyTotp(
+    @Headers('authorization') auth: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.verifyTotpLogin(auth ?? '', body ?? {}));
+  }
+
+  @Get('billing/plans')
+  async billingPlans(@Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.getBillingPlans());
+  }
+
+  @Post('billing/checkout')
+  @UseGuards(AuthGuard)
+  async createBillingCheckout(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.createBillingCheckoutSession(req.principal, body ?? {}));
+  }
+
+  @Post('billing/reconcile')
+  @UseGuards(AuthGuard)
+  async reconcileBillingCheckout(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.reconcileBillingCheckoutSession(req.principal, body ?? {}));
+  }
+
+  @Post('billing/portal')
+  @UseGuards(AuthGuard)
+  async createBillingPortal(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.createBillingPortalSession(req.principal, body ?? {}));
+  }
+
+  @Post('billing/webhook')
+  async stripeWebhook(
+    @Req() req: any,
+    @Headers('stripe-signature') sig: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const rawBody = req.rawBody ?? (Buffer.isBuffer(req.body) ? req.body : JSON.stringify(req.body ?? {}));
+    return reply(res, await this.svc.handleStripeWebhook(rawBody, sig ?? ''));
+  }
+
   @Get('me/profile')
   @UseGuards(AuthGuard)
   async getProfile(@Req() req: any, @Res({ passthrough: true }) res: Response) {

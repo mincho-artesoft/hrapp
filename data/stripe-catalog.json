@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-11-12T22:10:31.067Z",
+  "livemode": true,
+  "portalConfigurationId": "bpc_1Ub6CQI4UZIMTFOHyr5Ciwxn",
+  "plans": {
+    "monthly": {
+      "productId": "prod_VcJJHxjmFERavf",
+      "priceId": "price_1Ub4h6I4UZIMTFOHotW1KAi4",
+      "unitAmount": 199,
+      "interval": "month"
+    },
+    "yearly": {
+      "productId": "prod_VcJJHxjmFERavf",
+      "priceId": "price_1Ub4inI4UZIMTFOHlsxxlL0I",
+      "unitAmount": 1999,
+      "interval": "year"
+    }
+  }
+}

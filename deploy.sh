@@ -33,12 +33,19 @@ package() {
   log "staging production dependencies (including pinned SES SDK)"
   rm -rf "$STAGE_DIR"; mkdir -p "$STAGE_DIR"
   cp -R "$HERE/dist" "$STAGE_DIR/dist"
+  if [[ -d "$HERE/data" ]]; then
+    cp -R "$HERE/data" "$STAGE_DIR/data"
+  fi
   cp "$HERE/package.json" "$HERE/package-lock.json" "$STAGE_DIR/"
   (cd "$STAGE_DIR" && npm ci --omit=dev --no-audit --no-fund >/dev/null 2>&1)
 
   log "zip"
   rm -f "$ZIP"
-  (cd "$STAGE_DIR" && zip -qr "$ZIP" dist node_modules package.json)
+  if [[ -d "$STAGE_DIR/data" ]]; then
+    (cd "$STAGE_DIR" && zip -qr "$ZIP" dist data node_modules package.json)
+  else
+    (cd "$STAGE_DIR" && zip -qr "$ZIP" dist node_modules package.json)
+  fi
   log "package ready: $(du -h "$ZIP" | cut -f1) → $ZIP"
 }
 

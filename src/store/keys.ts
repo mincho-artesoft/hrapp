@@ -61,4 +61,10 @@ export const keys = {
   allBookingsPrefix: () => `idx/booking-all/`,
   allBookingRecord: (bookingId: string) => `idx/booking-all/${bookingId}.json`,
   adminSettings: () => `idx/admin/settings.json`,
+
+  // iOS QR Login, TOTP Web Authenticator & Stripe Web Subscriptions
+  iosQrChallenge: (id: string) => `idx/ios-qr/${id}.json`,
+  totpAttempts: (emailHash: string) => `idx/totp-attempts/${emailHash}.json`,
+  stripeCustomer: (customerId: string) => `idx/stripe-customer/${customerId}.json`,
+  stripeCheckout: (sessionId: string) => `idx/stripe-checkout/${sessionId}.json`,
 };

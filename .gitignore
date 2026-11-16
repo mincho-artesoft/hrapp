@@ -1,6 +1,9 @@
 node_modules/
 dist/
 build-staging/
+.env
+.env.*
+.local-secrets/
 *.log
 .staging-endpoint
 .debug-endpoint
