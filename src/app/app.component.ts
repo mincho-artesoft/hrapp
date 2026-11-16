@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AppStoreBridgeComponent } from './components/app-store-bridge/app-store-bridge.component';
 import { ScrollService } from './core/scroll.service';
 import { ActiveLocaleService } from './core/active-locale.service';
 import { APP_STORE_URL } from './core/app-facts';
@@ -29,7 +30,7 @@ declare global {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, AppStoreBridgeComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -3,7 +3,7 @@
 
   <span class="auth-card__badge">{{ badgeText }}</span>
   <h2 class="auth-card__title">{{ title }}</h2>
-  <p class="auth-card__sub">{{ subtitle }}</p>
+  <p class="auth-card__sub">{{ effectiveSubtitle() }}</p>
 
   @if (errorMsg()) {
     <div class="auth-alert auth-alert--error" role="alert">
@@ -18,6 +18,105 @@
   }
 
   @if (step() === 'method') {
+    @if (iosQrEnabled()) {
+      <!-- Flagship Free Forever iOS QR + 6-Digit TOTP Authenticator Box -->
+      <div class="ios-unlock-box">
+        <div class="ios-unlock-box__top">
+          <span class="ios-unlock-pill">FREE FOREVER WITH iOS APP</span>
+          <div class="ios-mode-tabs" role="tablist">
+            <button
+              type="button"
+              class="ios-mode-tab"
+              [class.is-active]="iosTab() === 'qr'"
+              (click)="switchIosTab('qr')"
+            >
+              Scan QR
+            </button>
+            <button
+              type="button"
+              class="ios-mode-tab"
+              [class.is-active]="iosTab() === 'totp'"
+              (click)="switchIosTab('totp')"
+            >
+              6-Digit Authenticator
+            </button>
+          </div>
+        </div>
+
+        @if (iosTab() === 'qr') {
+          <div class="ios-qr-panel">
+            <div class="ios-qr-frame">
+              @if (qrDataUrl(); as qrImg) {
+                <img [src]="qrImg" alt="Scan with Cloud Calendars iOS app" width="136" height="136" />
+              } @else {
+                <div class="ios-qr-placeholder">
+                  {{ qrLoading() ? 'Generating QR…' : 'QR unavailable' }}
+                </div>
+              }
+            </div>
+            <div class="ios-qr-copy">
+              <strong>Scan with iPhone Camera or Cloud Calendars</strong>
+              <p>
+                Opens <em>Cloud Calendars</em> on iOS. Tap <strong>Approve Sign-In</strong> to log in
+                here instantly and unlock Web Studio for <strong>$0 forever</strong>.
+              </p>
+              <div class="ios-qr-links">
+                <a [href]="appStoreUrl" target="_blank" rel="noopener noreferrer">
+                  Get free iOS app ↗
+                </a>
+                <button type="button" class="text-link" (click)="refreshQrChallenge()">
+                  Refresh QR
+                </button>
+              </div>
+            </div>
+          </div>
+        } @else {
+          <form class="auth-form ios-totp-form" (ngSubmit)="submitTotpLogin()">
+            <p class="ios-totp-hint">
+              Open <strong>Cloud Calendars on iPhone → Sharing → Web Sign-In &amp; Authenticator</strong>
+              and enter your live 6-digit security code:
+            </p>
+            <div class="ios-totp-row">
+              <label class="auth-field">
+                <span>Account email</span>
+                <input
+                  type="email"
+                  name="totpEmail"
+                  autocomplete="email"
+                  placeholder="you@company.com"
+                  [ngModel]="totpEmail()"
+                  (ngModelChange)="totpEmail.set($event)"
+                  required
+                />
+              </label>
+              <label class="auth-field ios-totp-code-field">
+                <span>6-digit code</span>
+                <input
+                  type="text"
+                  name="totpCode"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  maxlength="7"
+                  placeholder="123 456"
+                  class="totp-mini-input"
+                  [ngModel]="totpCode()"
+                  (ngModelChange)="totpCode.set($event)"
+                  required
+                />
+              </label>
+            </div>
+            <button type="submit" class="btn btn--primary auth-submit" [disabled]="busy()">
+              {{ busy() ? 'Signing in…' : 'Sign In with iOS Authenticator →' }}
+            </button>
+          </form>
+        }
+      </div>
+
+      <div class="auth-sep">
+        <span>or web-only account ($1.99/mo · $19.99/yr without iOS app)</span>
+      </div>
+    }
+
     <div class="oauth-grid">
       <button
         type="button"
@@ -51,7 +150,7 @@
     </div>
 
     <div class="auth-sep">
-      <span>or instant verified email code</span>
+      <span>or email verification code</span>
     </div>
 
     <form class="auth-form" (ngSubmit)="sendCode()">
@@ -81,7 +180,7 @@
       </label>
 
       <button type="submit" class="btn btn--primary auth-submit" [disabled]="busy()">
-        {{ busy() ? 'Sending 6-digit code…' : 'Send 6-Digit Verification Code →' }}
+        {{ busy() ? 'Sending 6-digit code…' : 'Send 6-Digit Email Code →' }}
       </button>
     </form>
 

@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
-import { SITE_URL } from './app-facts';
+import { APP_STORE_ID, SITE_URL } from './app-facts';
 import { DEFAULT_LOCALE, Locale } from './locales';
 
 export interface SeoInput {
@@ -101,6 +101,7 @@ export class SeoService {
       this.doc.documentElement.setAttribute('dir', input.locale.dir);
     }
 
+    this.set('apple-itunes-app', `app-id=${APP_STORE_ID}, app-argument=${url}`);
     this.setCanonical(url);
     this.setAlternates(input.alternates ?? []);
   }

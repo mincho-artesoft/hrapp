@@ -4875,6 +4875,220 @@
         "parentType": "baseline_article",
         "publicationGate": "await_complete_draft_and_independent_source_review"
       }
+    },
+    {
+      "slug": "qr-code-sign-in-and-ios-totp-authenticator-guide",
+      "family": "sharing",
+      "primaryKeyword": "cloud calendars qr code sign in ios 6 digit totp authenticator",
+      "intentKey": "auth:web-studio-qr-universal-link-pairing-and-rfc6238-totp",
+      "readerOutcome": "Pair Cloud Calendars Web Studio with the iPhone or iPad app via Universal Link QR challenge and use the offline Keychain RFC 6238 6-digit authenticator code to unlock Web Studio for $0.",
+      "distinctValue": "Walks through cryptographic 5-minute QR challenge pairing, Apple Universal Links, and offline 30-second HMAC-SHA1 RFC 6238 6-digit TOTP codes alongside a side-by-side comparison of iOS-linked ($0) vs standalone web ($1.99/mo) access.",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc6238",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified RFC 6238 Time-Based One-Time Password (TOTP) 30-second time-step and HMAC-SHA1 6-digit truncation specification."
+        },
+        {
+          "type": "primary",
+          "url": "https://developer.apple.com/documentation/xcode/supporting-associated-domains",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified Apple Associated Domains and HTTPS Universal Links routing behavior used by iOS Camera QR scan."
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Arte Soft engineering & editorial verification against live /auth/qr/* and /auth/totp/* implementation",
+        "checkedAt": "2026-11-13"
+      }
+    },
+    {
+      "slug": "two-way-personal-cloud-calendar-sync-iphone-web",
+      "family": "unify",
+      "primaryKeyword": "two way personal cloud calendar sync iphone web studio",
+      "intentKey": "sync:personal-cloud-calendar-two-way-three-way-merge-ios-web",
+      "readerOutcome": "Understand and verify automatic two-way sync between the personal Cloud Calendars calendar on iPhone/iPad and Web Studio, including offline three-way merge and EventKit share duplicate prevention.",
+      "distinctValue": "Documents the four directional sync flows (iOS edits, Web Studio edits, /book/ guest appointments, and /event/ RSVPs), three-way baseline conflict resolution, and outgoing EventKit share ID deduplication.",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified RFC 5545 VEVENT UID, DTSTAMP, and alarm properties preserved across canonical personal cloud sync."
+        },
+        {
+          "type": "primary",
+          "url": "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified official Cloud Calendars iOS & iPadOS App Store product capabilities."
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Arte Soft engineering & editorial verification against PersonalCloudCalendarSyncService and /ios/personal-calendar/sync",
+        "checkedAt": "2026-11-13"
+      }
+    },
+    {
+      "slug": "create-public-booking-page-buffers-and-one-time-links",
+      "family": "sharing",
+      "primaryKeyword": "create public booking page buffers daily cap single use link",
+      "intentKey": "booking:configure-handle-google-outlook-busy-buffers-one-time-tokens",
+      "readerOutcome": "Set up a @handle public booking page in Cloud Calendars Web Studio with combined Google + Microsoft busy checks, before/after buffers, minimum notice, daily booking caps, and single-use invite links.",
+      "distinctValue": "Includes a concrete worked-example guardrail table on a 09:00-17:00 schedule showing exact slot blocking from 10/15-minute buffers, 4-hour minimum notice, daily caps, atomic slot locks, and one-time booking tokens.",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5545#section-3.6.1",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified RFC 5545 Section 3.6.1 VEVENT DTSTART/DTEND interval semantics used in slot-availability calculation and confirmation invites."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.cloud-calendars.com/calendar/",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified Cloud Calendars Web Studio /book/ configuration parameters (duration, buffers, minimum notice, daily cap, single-use links)."
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Arte Soft engineering & editorial verification against WebPlatformService booking engine",
+        "checkedAt": "2026-11-13"
+      }
+    },
+    {
+      "slug": "host-event-rsvp-page-with-qr-code-and-live-ics-feed",
+      "family": "sharing",
+      "primaryKeyword": "shareable event rsvp page qr code live ics feed",
+      "intentKey": "sharing:publish-event-rsvp-url-qr-code-and-scoped-live-ics",
+      "readerOutcome": "Publish a single-event /event/ RSVP page and printable QR code from Web Studio or iPhone, collect Going/Maybe/Declined responses without guest sign-up, and keep guest calendars updated via a scoped live .ics feed.",
+      "distinctValue": "Contrasts static one-off .ics file attachments and full-calendar sharing against scoped single-VEVENT /event/ RSVP pages + live feeds, covering iOS App Clip / mobile web RSVPs and Apple WeatherKit outdoor checks.",
+      "evidence": [
+        {
+          "type": "primary",
+          "url": "https://www.rfc-editor.org/rfc/rfc5546",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified RFC 5546 iTIP event revision SEQUENCE and attendee PARTSTAT (ACCEPTED/TENTATIVE/DECLINED) semantics."
+        },
+        {
+          "type": "primary",
+          "url": "https://www.cloud-calendars.com/calendar/",
+          "verifiedAt": "2026-11-13",
+          "note": "Verified Cloud Calendars /event/ shareable RSVP page, QR invite generator, and scoped live .ics feed."
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Arte Soft engineering & editorial verification against EventAppClipSharing and /event/ web routes",
+        "checkedAt": "2026-11-13"
+      }
+    },
+    {
+      "slug": "outlook-automatic-replies-out-of-office-auto-decline-meetings",
+      "family": "planning",
+      "proposedIntent": "editing",
+      "primaryKeyword": "Outlook automatic replies out of office decline meetings",
+      "intentKey": "outlook-automatic-replies-vs-out-of-office-auto-decline",
+      "readerOutcome": "Configures Outlook Automatic Replies together with calendar Out of Office blocking and selective meeting auto-decline across New Outlook, web, and Classic Outlook.",
+      "distinctValue": "4-row client behavior matrix contrasting mailbox-only auto-replies against New Outlook/web calendar block + auto-decline checkboxes and external booking conflict checks.",
+      "evidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/office/send-automatic-out-of-office-replies-from-outlook-9742f476-5348-4f9f-997f-5e208513bd67",
+          "note": "Verified HTTP 200 primary Microsoft Support documentation covering New Outlook, Classic Outlook, and Outlook on the web Automatic Replies, Block my calendar, Automatically decline new invitations, and once-per-sender loop prevention.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        },
+        {
+          "url": "https://support.microsoft.com/en-us/office/manage-your-availability-in-your-outlook-calendar-fbbf6d5c-bdb8-4018-a2e0-2e2f60642117",
+          "note": "Verified HTTP 200 Microsoft Support guide on Show As Out of Office calendar status vs mailbox replies.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Antigravity primary-source & GSC intent review",
+        "checkedAt": "2026-11-15"
+      }
+    },
+    {
+      "slug": "google-calendar-out-of-office-auto-decline-meetings-settings",
+      "family": "planning",
+      "proposedIntent": "editing",
+      "primaryKeyword": "Google Calendar out of office auto decline meetings",
+      "intentKey": "google-calendar-out-of-office-decline-scope-and-gmail-workaround",
+      "readerOutcome": "Chooses the right Google Calendar Out of office decline scope without accidentally canceling kept meetings, and avoids the Free all-day trap on personal Gmail.",
+      "distinctValue": "Side-by-side Workspace vs personal @gmail.com table separating New and existing meetings from Only new meeting invitations and default Free all-day events.",
+      "evidence": [
+        {
+          "url": "https://support.google.com/calendar/answer/7638168",
+          "note": "Verified HTTP 200 Google Calendar Help documentation on Out of office availability, decline scope (New and existing meetings vs Only new meeting invitations), and Workspace account eligibility.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        },
+        {
+          "url": "https://support.google.com/calendar/answer/37161",
+          "note": "Verified HTTP 200 Google Calendar Help documentation on Free vs Busy event availability status.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Antigravity primary-source & GSC intent review",
+        "checkedAt": "2026-11-15"
+      }
+    },
+    {
+      "slug": "outlook-room-finder-book-conference-room-workspace",
+      "family": "planning",
+      "proposedIntent": "core",
+      "primaryKeyword": "Outlook Room Finder book conference room",
+      "intentKey": "outlook-room-finder-exchange-resource-auto-decline-fixes",
+      "readerOutcome": "Books Microsoft 365 conference rooms properly via Room Finder and resolves recurring series rejections caused by the 180-day horizon or single-date conflicts.",
+      "distinctValue": "Maps real organizer rejection symptoms directly to Exchange Online CalendarProcessing limits (BookingWindowInDays 180d, AllowConflicts, MaximumDurationInMinutes 1440m).",
+      "evidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/outlook/use-the-scheduling-assistant-and-room-finder-for-meetings-in-outlook",
+          "note": "Verified HTTP 200 Microsoft Support guide on Room Finder building/floor/capacity selection and Scheduling Assistant availability.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-resource-mailboxes",
+          "note": "Verified HTTP 200 Microsoft Learn documentation on Exchange Online room mailbox CalendarProcessing policies including BookingWindowInDays (180 days), MaximumDurationInMinutes, and conflict handling.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Antigravity primary-source & GSC intent review",
+        "checkedAt": "2026-11-15"
+      }
+    },
+    {
+      "slug": "teams-channel-calendar-meeting-invite-all-members-vs-selected",
+      "family": "sharing",
+      "proposedIntent": "unify",
+      "primaryKeyword": "Microsoft Teams channel meeting invites everyone",
+      "intentKey": "teams-channel-meeting-group-inbox-subscription-vs-personal-calendar",
+      "readerOutcome": "Predicts and controls whether a Microsoft Teams channel meeting emails everyone in the Team or misses personal Outlook and iPhone calendars.",
+      "distinctValue": "4-scenario delivery matrix connecting Teams channel meetings to Microsoft 365 Group inbox subscription settings, Required attendees, and iPhone personal calendar sync.",
+      "evidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/office/schedule-a-meeting-in-a-teams-channel-eb571219-517b-49bf-afe1-4fff091efa85",
+          "note": "Verified HTTP 200 Microsoft Support documentation on scheduling Teams channel meetings, Standard vs Private/Shared channel restrictions, and personal calendar visibility.",
+          "type": "primary",
+          "verifiedAt": "2026-11-15"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "Antigravity primary-source & GSC intent review",
+        "checkedAt": "2026-11-15"
+      }
     }
   ],
   "pilot": {

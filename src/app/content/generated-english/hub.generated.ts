@@ -85,10 +85,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "google-calendar-holidays-by-country-and-religion": {
-      "title": "Add holidays to Google Calendar for more than one country",
+      "title": "Add Multiple Country & Religious Holiday Calendars in Google Calendar",
       "short": "Holidays in Google Calendar",
-      "description": "Add regional and religious holiday calendars in Google Calendar, choose public holidays or observances, hide single days and know what you can’t edit.",
-      "updated": "2026-10-23",
+      "description": "Add public holidays for multiple countries or religious observances in Google Calendar, filter out optional observances, and hide individual days cleanly.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -145,30 +145,30 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch": {
-      "title": "Calendar week numbers disagree: compare the year rule and first weekday",
+      "title": "Why Calendar Week Numbers Disagree: ISO Monday vs Sunday Start Fixed",
       "short": "Why Calendar Week Numbers Disagree",
-      "description": "Diagnose different week numbers with dated examples. Separate ISO week years, the first weekday and a January 1 rule before changing calendar events.",
-      "updated": "2026-10-23",
+      "description": "Why does one calendar say Week 1 while another says Week 52 or 53? Compare ISO 8601 (first 4-day week) vs US January 1 rules in Outlook, Google & Apple.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "google-appointment-cancel-booked-slot": {
-      "title": "How to Cancel a Booked Google Calendar Appointment Slot",
+      "title": "Cancel a Booked Google Calendar Appointment Slot (& Reopen the Time)",
       "short": "Cancel a booked appointment",
-      "description": "Cancel a booked Google Calendar appointment as host or guest, check whether the slot reopens on your booking page, and avoid forwarded-email surprises.",
-      "updated": "2026-11-04",
+      "description": "How hosts and guests cancel a booked Google Calendar appointment schedule slot so the time reopens automatically—plus the forwarded-invite caveat.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "google-calendar-change-event-owner-before-handover": {
-      "title": "Change Event Owner in Google Calendar (Single & Series)",
+      "title": "How to Change Event Owner in Google Calendar (Single & Recurring)",
       "short": "Hand a meeting to a new owner",
-      "description": "Transfer ownership of a single or recurring Google Calendar meeting on desktop: check the 60-day acceptance window, 200-guest cap, and Google Meet rules.",
-      "updated": "2026-11-04",
+      "description": "Transfer a single or recurring Google Calendar meeting to a new owner: exact desktop steps, the 60-day acceptance rule, 200-guest limit, and Google Meet.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -245,10 +245,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-end-recurring-meeting-early-keep-history": {
-      "title": "End a Recurring Outlook Meeting Without Losing Past History",
+      "title": "End a Recurring Meeting in Outlook Early Without Deleting Past Dates",
       "short": "End an Outlook series early",
-      "description": "Cancel Series wipes past meetings—change the series end date in Outlook instead to keep past occurrences on everyone’s calendar, plus key trade-offs.",
-      "updated": "2026-11-04",
+      "description": "Do not click Cancel Series—it deletes past meetings too. Change the recurrence end date in Outlook instead so historical occurrences stay on every calendar.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -275,10 +275,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-forward-meeting-and-allow-forwarding": {
-      "title": "Forwarding Outlook Invites: Does It Notify the Organizer?",
+      "title": "Forwarding Outlook Meeting Invites: Organizer Alerts & How to Block It",
       "short": "Outlook meeting forwarding",
-      "description": "See whether forwarding an Outlook calendar invite notifies the organizer or other attendees, how Allow Forwarding works, and how to turn forwarding off.",
-      "updated": "2026-11-04",
+      "description": "Yes—forwarding an Outlook meeting invite sends a forward notification to the organizer. Learn what attendees see and how to turn off Allow Forwarding.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -365,10 +365,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "google-calendar-android-app-not-syncing": {
-      "title": "Fix Google Calendar Not Syncing on Android (Safe Order)",
+      "title": "Fix Google Calendar Not Syncing on Android (Without Losing Events)",
       "short": "Android Calendar not syncing",
-      "description": "Fix Google Calendar not syncing on Android without losing unsynced events: check calendar visibility, account sync, storage, and the 1-year past limit.",
-      "updated": "2026-11-04",
+      "description": "Solve Google Calendar sync issues on Android in a safe order: check hidden calendar toggles, system account sync, storage space, and the 1-year sync window.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -395,10 +395,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "google-calendar-event-visibility-private-public-default": {
-      "title": "Google Calendar Private vs Public vs Default Visibility",
+      "title": "Google Calendar Private vs Public vs Default Visibility: What Others See",
       "short": "Private, public and default events",
-      "description": "What does a Private, Public, or Default event show on a shared Google Calendar? Compare all 5 calendar permission levels before saving sensitive meetings.",
-      "updated": "2026-11-04",
+      "description": "What do colleagues actually see when you mark a Google Calendar event Private, Public, or Default? Exact breakdown across all calendar sharing permissions.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -415,10 +415,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "google-calendar-working-hours-location-out-of-office-focus-time": {
-      "title": "Google Calendar Working Hours, Location & Out of Office",
+      "title": "Google Calendar Working Hours, Location, Out of Office & Focus Time",
       "short": "Working hours, location, OOO or focus time",
-      "description": "Compare Google Calendar Working Hours, Working Location, Out of Office, and Focus Time—see what colleagues view and which settings auto-decline invites.",
-      "updated": "2026-11-04",
+      "description": "Which Google Calendar status auto-declines invites? Compare Working Hours, Working Location, Out of Office, and Focus Time in Google Workspace.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -475,10 +475,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-show-declined-meetings-on-calendar": {
-      "title": "Show Declined Meetings in Outlook (New & Classic)",
+      "title": "How to Show Declined Meetings in Outlook (New, Web & Classic)",
       "short": "Declined meetings in Outlook",
-      "description": "Turn on Show Declined Events in new Outlook or Outlook on the web (work/school accounts), and see how to find and re-accept a declined invite in classic.",
-      "updated": "2026-11-04",
+      "description": "Keep declined invitations visible on your calendar in new Outlook and Outlook on the web, or find and re-accept a declined invite from Deleted Items in classic.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -555,30 +555,30 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-appointment-meeting-event-convert-and-update": {
-      "title": "Outlook appointment, meeting or event: convert one to another and update correctly",
+      "title": "Outlook Appointment vs Meeting vs Event: Differences & Safe Updates",
       "short": "Appointment, meeting or event",
-      "description": "See how Outlook treats appointments, meetings and all-day events, convert between them, and send updates to everyone or only to added attendees.",
-      "updated": "2026-10-23",
+      "description": "Understand the exact difference between an Outlook appointment, meeting, and all-day event, how to convert one into another, and who receives update emails.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "outlook-birthday-calendar-from-contacts": {
-      "title": "Outlook Birthday Calendar: Turn On, Edit Dates or Turn Off",
+      "title": "Outlook Birthday Calendar: How to Turn On, Fix Dates, or Turn Off",
       "short": "Outlook birthdays",
-      "description": "Turn the Outlook birthday calendar on or off, fix wrong dates via Contacts, and hide or delete birthday entries without losing contacts (New & Classic).",
-      "updated": "2026-11-04",
+      "description": "Enable or disable the Outlook birthday calendar, fix wrong birthday dates at their Contact source, and delete duplicate entries in new & classic Outlook.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "outlook-calendar-sharing-levels-busy-titles-details": {
-      "title": "Outlook Sharing Levels: Busy, Titles & Locations, Details",
+      "title": "Outlook Calendar Sharing Levels Compared: Busy, Titles & Full Details",
       "short": "Outlook sharing levels",
-      "description": "Compare Outlook calendar permissions—Can view when I’m busy, Can view titles and locations, Can view all details, Can edit, and Delegate—with examples.",
-      "updated": "2026-11-04",
+      "description": "Compare all 5 Outlook calendar sharing levels—Can view when I’m busy, Can view titles and locations, Can view all details, Can edit, and Delegate.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -595,10 +595,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-show-as-free-busy-tentative-working-elsewhere": {
-      "title": "Outlook Show As: Working Elsewhere, Tentative, Free & Busy",
+      "title": "Outlook Show As: Working Elsewhere, Tentative, Free & Busy Explained",
       "short": "Outlook Show As statuses",
-      "description": "What Free, Tentative, Busy, Working Elsewhere, and Out of Office mean on an Outlook calendar—and how colleagues see your availability when booking time.",
-      "updated": "2026-11-04",
+      "description": "See exactly what colleagues view when you set an Outlook event to Working Elsewhere, Tentative, Free, Busy, or Out of Office in Scheduling Assistant.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -655,20 +655,20 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-print-calendar-styles": {
-      "title": "How to Print an Outlook Calendar With Full Event Details",
+      "title": "How to Print an Outlook Calendar (Full Event Titles & PDF Styles)",
       "short": "Print an Outlook calendar",
-      "description": "Print or save an Outlook calendar as PDF without cut-off titles: compare Weekly Agenda Style in classic Outlook with detailed layouts in new Outlook & Mac.",
-      "updated": "2026-11-04",
+      "description": "Stop Outlook from cutting off meeting titles when printing or saving to PDF: choose Weekly Agenda Style in classic Outlook or Detailed view in new Outlook.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "outlook-propose-new-meeting-time": {
-      "title": "How to Propose a New Time in Outlook (New & Classic)",
+      "title": "How to Propose a New Meeting Time in Outlook (New & Classic)",
       "short": "Propose a new time in Outlook",
-      "description": "Suggest a new meeting time in new or classic Outlook, see why Propose New Time can be missing, and learn how organizers review and accept time proposals.",
-      "updated": "2026-11-04",
+      "description": "Suggest an alternate meeting time in new or classic Outlook, see how organizers approve proposals, and learn why Propose New Time is grayed out or missing.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -695,10 +695,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-recover-deleted-calendar-items": {
-      "title": "Recover Deleted Calendar Events in Outlook (2 Methods)",
+      "title": "How to Recover Deleted Calendar Events in Outlook (New & Classic)",
       "short": "Recover deleted Outlook events",
-      "description": "Find and restore deleted Outlook calendar events from Deleted Items or Recoverable Items on the server—step-by-step for both new and classic Outlook.",
-      "updated": "2026-11-04",
+      "description": "Restore accidentally deleted Outlook meetings and appointments from Deleted Items or Exchange Recoverable Items—exact steps for new and classic Outlook.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -815,10 +815,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "google-calendar-email-notifications-filter": {
-      "title": "Too many Google Calendar emails: choose categories, then filter in Gmail",
+      "title": "How to Stop or Auto-Filter Google Calendar Notification Emails in Gmail",
       "short": "Google Calendar email noise",
-      "description": "Cut Google Calendar email noise: pick which change and response emails each calendar sends, then label or archive the rest with a Gmail header filter.",
-      "updated": "2026-10-23",
+      "description": "Turn off unwanted Google Calendar RSVP and change emails per calendar, or auto-archive invite responses in Gmail without missing real messages.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -865,10 +865,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "outlook-split-view-overlay-calendars": {
-      "title": "Outlook Split View vs Overlay: View Multiple Calendars",
+      "title": "Outlook Split View vs Overlay: Compare Calendars Side by Side or Merged",
       "short": "Outlook split view and overlay",
-      "description": "Switch between Split View (side-by-side columns) and Overlay (combined grid) in new Outlook, Outlook on the web, and classic Outlook without merging data.",
-      "updated": "2026-11-04",
+      "description": "Switch between side-by-side Split View columns and single-grid Overlay mode in new Outlook, Outlook on the web, and classic desktop Outlook.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -945,10 +945,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "icalendar-valarm-relative-absolute-trigger": {
-      "title": "ICS alarm TRIGGER: before the start, after the end or at a fixed time?",
+      "title": "iCalendar (ICS) VALARM TRIGGER Explained: Relative vs Fixed UTC Alarms",
       "short": "Read an alarm trigger",
-      "description": "Calculate relative and absolute VALARM triggers in an ICS file. Check RELATED=END and explain an alarm that stays fixed after a meeting moves.",
-      "updated": "2026-10-23",
+      "description": "Decode TRIGGER:-PT15M, RELATED=END, and VALUE=DATE-TIME in ICS files—and see why an absolute UTC alarm stays stuck at the old hour when a meeting moves.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1285,10 +1285,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "who-can-see-what-in-google-calendar": {
-      "title": "Who Can See My Google Calendar? Sharing & Privacy Levels",
+      "title": "Who Can See My Google Calendar? All 4 Permission Levels Explained",
       "short": "Google Calendar access and privacy",
-      "description": "Check who can see your Google Calendar events, compare free/busy vs full details permissions, and verify public, group, or work sharing settings safely.",
-      "updated": "2026-11-04",
+      "description": "Verify exactly who can see your Google Calendar events—from public links and domain-wide work defaults to Free/Busy vs full event detail permissions.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1465,20 +1465,20 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "change-calendar-color-iphone": {
-      "title": "How to Change Calendar Colors on iPhone (iCloud & Google)",
+      "title": "How to Change Calendar & Event Colors on iPhone (iCloud, Google & Sync)",
       "short": "Calendar colors and event colors",
-      "description": "Change calendar colors on iPhone without moving events: compare iCloud, local, Google Calendar, and shared-calendar color settings and per-event colors.",
-      "updated": "2026-11-04",
+      "description": "Change calendar colors on iPhone step by step: tap Calendars → (i) for iCloud/local lists, compare Google per-event colors, and see which changes sync.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "recover-deleted-calendar-events-iphone": {
-      "title": "How to Recover Deleted Calendar Events on iPhone Safely",
+      "title": "How to Recover Deleted Calendar Events on iPhone (iCloud, Google & Outlook)",
       "short": "Recover a deleted calendar event",
-      "description": "Check whether a missing iPhone event is hidden or deleted, then restore it safely via Google Calendar Trash or iCloud.com Data Recovery without surprises.",
-      "updated": "2026-11-04",
+      "description": "Missing an iPhone calendar event? First check hidden calendars and sync limits, then restore deleted events from iCloud.com Data Recovery or Google Trash.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1505,10 +1505,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "calendar-notifications-missing-silent-or-duplicated": {
-      "title": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
+      "title": "Fix iPhone Calendar Alerts Missing, Silent, or Firing Twice",
       "short": "Troubleshoot calendar notifications",
-      "description": "Fix missing, silent, or duplicate calendar notifications on iPhone: check saved event alerts, iOS Notification & Focus settings, and multiple apps.",
-      "updated": "2026-11-04",
+      "description": "Troubleshoot missing, silent, or duplicate calendar notifications on iPhone: check event alert times, iOS Focus modes, Time Sensitive settings, and extra apps.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1605,20 +1605,20 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "shift-work-calendar-iphone-rotating-schedules": {
-      "title": "Shift work calendar on iPhone: plan a rotating schedule without losing changes",
+      "title": "Shift Work Calendar on iPhone: Manage Rotating & Overnight Schedules",
       "short": "Rotating shifts on iPhone",
-      "description": "Choose a shift planner or calendar view, anchor a repeating rota, handle overnight shifts and check exported changes alongside personal appointments.",
-      "updated": "2026-10-22",
+      "description": "Set up rotating shifts (4-on/4-off, Pitman, 2-2-3) and overnight hours alongside personal events on iPhone without breaking dates when shifts swap.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
       "claims": {}
     },
     "booking-link-or-shared-calendar": {
-      "title": "Booking link, event invitation or shared calendar: which should you send?",
+      "title": "Booking Link vs Shared Calendar vs Meeting Invite: Which Should You Send?",
       "short": "Booking versus calendar sharing",
-      "description": "Let someone choose a time, invite them to an existing meeting or share an ongoing schedule. Compare booking links with invitations and calendar access.",
-      "updated": "2026-10-23",
+      "description": "Should you send a booking link, propose time slots, send a calendar invite, or share your calendar? Compare privacy, friction, and sync for each option.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1645,10 +1645,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "iphone-calendar-tasks-reminders-versus-event-alerts": {
-      "title": "Tasks and reminders in an iPhone calendar: choose the right kind of item",
+      "title": "iPhone Calendar Tasks & Reminders vs Event Alerts: How to Use Each",
       "short": "Tasks, reminders and event alerts",
-      "description": "See tasks beside appointments without confusing due dates, work time and alerts. Compare Apple Calendar and Readdle task integration on iPhone.",
-      "updated": "2026-10-23",
+      "description": "See scheduled Apple Reminders directly inside iPhone Calendar on iOS 18+, and decide when to use a due-date task, a time block, or an event alert.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1705,10 +1705,10 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "claims": {}
     },
     "can-others-see-google-calendar-tasks": {
-      "title": "Can others see your Google Calendar tasks? Check timed tasks and permissions",
+      "title": "Can Others See Your Google Calendar Tasks? Timed vs Untimed Privacy",
       "short": "Google task visibility",
-      "description": "Check whether Google tasks have start and end times, how busy blocks appear, and how task visibility interacts with shared calendar permissions.",
-      "updated": "2026-10-23",
+      "description": "Untimed Google Tasks stay private, while timed tasks with start and end times have configurable Busy and visibility settings on shared Google Calendars.",
+      "updated": "2026-11-12",
       "lede": "",
       "sections": [],
       "practical": [],
@@ -1749,6 +1749,86 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       "short": "Build a weekly schedule",
       "description": "Build a weekly draft with editable time blocks, overlap warnings and a text preview. Separate an ideal-week template from dated appointments and calendar sync.",
       "updated": "2026-10-23",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "qr-code-sign-in-and-ios-totp-authenticator-guide": {
+      "title": "How to Sign In to Cloud Calendars Web Studio with QR Scan & Your 6-Digit iOS Code",
+      "short": "QR Sign-In & 6-Digit iOS Authenticator",
+      "description": "Step-by-step guide to pairing Cloud Calendars Web Studio with the iPhone or iPad app via QR code and RFC 6238 6-digit TOTP codes to unlock Web Studio for $0.",
+      "updated": "2026-11-13",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "two-way-personal-cloud-calendar-sync-iphone-web": {
+      "title": "Two-Way Personal Cloud Calendar Sync Between iPhone, iPad & Web Studio Explained",
+      "short": "Two-Way iPhone & Web Cloud Sync",
+      "description": "Learn how your personal Cloud Calendars calendar syncs events, guest RSVPs, and /book/ appointments two ways between iPhone/iPad and Web Studio without duplicates.",
+      "updated": "2026-11-13",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "create-public-booking-page-buffers-and-one-time-links": {
+      "title": "How to Set Up a Public Booking Page (/book/) with Google + Outlook Checks, Buffers & Single-Use Links",
+      "short": "Set Up Public /book/ Scheduling Links",
+      "description": "Configure your @handle booking page in Cloud Calendars Web Studio with working hours, before/after buffers, minimum notice, daily caps, and one-time invite links.",
+      "updated": "2026-11-13",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "host-event-rsvp-page-with-qr-code-and-live-ics-feed": {
+      "title": "How to Publish a Shareable Event RSVP Page (/event/) with QR Invites & Live ICS Updates",
+      "short": "Event RSVP Pages, QR Codes & Live ICS",
+      "description": "Share a single event via URL or printable QR code, collect Going/Maybe/Declined RSVPs from any device without app signup, and keep guest calendars updated via live ICS.",
+      "updated": "2026-11-13",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "outlook-automatic-replies-out-of-office-auto-decline-meetings": {
+      "title": "Outlook Automatic Replies vs Out-of-Office Calendar Events: How Auto-Declining New and Existing Meetings Actually Works",
+      "short": "Outlook Automatic Replies & Auto-Decline",
+      "description": "Learn the exact difference between Outlook Automatic Replies and an Out-of-Office calendar block, including how New vs Classic Outlook declines meetings.",
+      "updated": "2026-11-15",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "google-calendar-out-of-office-auto-decline-meetings-settings": {
+      "title": "Google Calendar Out of Office Auto-Decline Rules: \"New and Existing\" vs \"Only New Invitations\" (Plus Personal Gmail Workarounds)",
+      "short": "Google Calendar Out of Office Auto-Decline",
+      "description": "How Google Calendar Out of Office events auto-decline new vs existing meetings, why all-day blocks span midnight to midnight, and what personal Gmail users can do.",
+      "updated": "2026-11-15",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "outlook-room-finder-book-conference-room-workspace": {
+      "title": "Outlook Room Finder & Conference Room Mailboxes: How Auto-Accept Works and Why Recurring Series Get Declined",
+      "short": "Outlook Room Finder & Recurring Room Declines",
+      "description": "Master Outlook Room Finder for Microsoft 365 conference rooms and workspaces, and fix the 180-day booking window or conflict rules that reject recurring meetings.",
+      "updated": "2026-11-15",
+      "lede": "",
+      "sections": [],
+      "practical": [],
+      "claims": {}
+    },
+    "teams-channel-calendar-meeting-invite-all-members-vs-selected": {
+      "title": "Microsoft Teams Channel Meetings Explained: Why They Email Everybody (or Miss Personal Outlook & iPhone Calendars)",
+      "short": "Teams Channel Meetings & Personal Calendars",
+      "description": "Understand who actually receives an Outlook and iPhone calendar invite when you schedule a Microsoft Teams channel meeting versus inviting specific attendees.",
+      "updated": "2026-11-15",
       "lede": "",
       "sections": [],
       "practical": [],

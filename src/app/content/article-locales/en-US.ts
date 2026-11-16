@@ -10,6 +10,8 @@ import { COMPARE_EN_US } from '../en-US/articles-compare';
 import { HELP_EN_US } from '../en-US/articles-help';
 import { DISCOVERY_EN_US } from '../en-US/articles-discovery';
 import { GOOGLE_EN_US } from '../en-US/articles-google';
+import { WEB_STUDIO_EN_US } from '../en-US/articles-web-studio';
+import { OPERATIONS_20261115_EN_US } from '../en-US/articles-operations-20261115';
 export const ARTICLE_LOCALE: ArticleLocale = {
     chrome: CHROME_EN_US,
     articles: { ...PILOT_EN_US,
@@ -22,5 +24,7 @@ export const ARTICLE_LOCALE: ArticleLocale = {
       ...HELP_EN_US,
       ...GOOGLE_EN_US,
       ...DISCOVERY_EN_US,
+      ...WEB_STUDIO_EN_US,
+      ...OPERATIONS_20261115_EN_US,
     },
   };

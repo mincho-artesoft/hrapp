@@ -42,6 +42,42 @@ export interface ConnectedProvidersMap {
   microsoft: ConnectedProviderStatus;
 }
 
+export interface WebStudioAccess {
+  entitled: boolean;
+  accessSource: 'admin' | 'ios_app' | 'stripe_monthly' | 'stripe_yearly' | 'none';
+  iosUnlocked: boolean;
+  iosUnlockedAt: string | null;
+  totpEnabled: boolean;
+  plan: 'ios_free' | 'monthly' | 'yearly' | 'admin' | 'none';
+  subscriptionStatus: string | null;
+  cancelAtPeriodEnd: boolean;
+  currentPeriodEnd: string | null;
+  hasBillingPortal: boolean;
+  pricing: {
+    monthlyUsd: number;
+    yearlyUsd: number;
+  };
+}
+
+export interface IosQrChallengeStartResponse {
+  challengeId: string;
+  pollToken: string;
+  qrUrl: string;
+  appDeepLink: string;
+  expiresAt: string;
+  expiresInSeconds: number;
+}
+
+export interface IosQrPollResponse {
+  status: 'pending' | 'expired' | 'approved';
+  expiresAt?: string;
+  calendarId?: string;
+  deviceToken?: string;
+  email?: string | null;
+  ownerId?: string;
+  profile?: UserProfile;
+}
+
 export interface UserProfile {
   principalId: string;
   calId: string;
@@ -63,6 +99,7 @@ export interface UserProfile {
   bookingHandle: string | null;
   bookingShareUrl: string | null;
   guestBookingsCount: number;
+  webAccess?: WebStudioAccess;
 }
 
 export interface WebCalendarEventDetails {
@@ -180,6 +217,7 @@ export interface WebCalendarStateResponse {
   externalBusy: ExternalBusyState;
   connectedProviders?: ConnectedProvidersMap;
   bookingConfig: BookingScheduleConfig | null;
+  webAccess?: WebStudioAccess;
 }
 
 export interface BookingInviteLink {
@@ -1248,5 +1286,99 @@ export class CalendarPlatformApiService {
     );
     await this.loadAuthProviders().catch(() => null);
     return res;
+  }
+
+  // ── iOS QR Login, 6-Digit Authenticator & Stripe Web Billing ─────────────
+
+  async startIosQrChallenge(linkCurrentAccount = false): Promise<IosQrChallengeStartResponse> {
+    return this.request<IosQrChallengeStartResponse>('/auth/ios-qr/start', {
+      method: 'POST',
+      auth: linkCurrentAccount && Boolean(this.token()),
+      body: {},
+    });
+  }
+
+  async pollIosQrChallenge(
+    challengeId: string,
+    pollToken: string,
+  ): Promise<IosQrPollResponse> {
+    const res = await this.request<IosQrPollResponse>('/auth/ios-qr/poll', {
+      method: 'POST',
+      body: { challengeId, pollToken },
+    });
+    if (res.status === 'approved' && res.deviceToken) {
+      this.token.set(res.deviceToken);
+      this.writeSavedToken(res.deviceToken);
+      if (res.profile) {
+        this.profile.set(res.profile);
+      } else {
+        await this.refreshProfile().catch(() => null);
+      }
+    }
+    return res;
+  }
+
+  async verifyTotpLogin(payload: { email: string; code: string }): Promise<UserProfile> {
+    const res = await this.request<{
+      deviceToken: string;
+      profile: UserProfile;
+    }>('/auth/totp/verify', {
+      method: 'POST',
+      auth: this.isSignedInWithAccount(),
+      body: {
+        email: payload.email.trim().toLowerCase(),
+        code: payload.code.trim().replace(/\s+/g, ''),
+      },
+    });
+    if (res.deviceToken) {
+      this.token.set(res.deviceToken);
+      this.writeSavedToken(res.deviceToken);
+    }
+    const profile = res.profile ?? (await this.refreshProfile());
+    this.profile.set(profile);
+    return profile;
+  }
+
+  async createBillingCheckout(
+    plan: 'monthly' | 'yearly',
+    returnUrl?: string,
+  ): Promise<{ sessionId: string; url: string; checkoutUrl: string }> {
+    return this.request('/billing/checkout', {
+      method: 'POST',
+      auth: true,
+      body: {
+        plan,
+        returnUrl: returnUrl || (this.isBrowser ? window.location.href : undefined),
+      },
+    });
+  }
+
+  async reconcileBillingCheckout(
+    sessionId: string,
+  ): Promise<{ reconciled: boolean; profile?: UserProfile }> {
+    const res = await this.request<{ reconciled: boolean; profile?: UserProfile }>(
+      '/billing/reconcile',
+      {
+        method: 'POST',
+        auth: true,
+        body: { sessionId },
+      },
+    );
+    if (res.profile) {
+      this.profile.set(res.profile);
+    } else if (res.reconciled) {
+      await this.refreshProfile().catch(() => null);
+    }
+    return res;
+  }
+
+  async createBillingPortal(returnUrl?: string): Promise<{ url: string; portalUrl: string }> {
+    return this.request('/billing/portal', {
+      method: 'POST',
+      auth: true,
+      body: {
+        returnUrl: returnUrl || (this.isBrowser ? window.location.href : undefined),
+      },
+    });
   }
 }

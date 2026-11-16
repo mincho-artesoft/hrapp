@@ -707,11 +707,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryAfterContent": true
   },
   "google-calendar-holidays-by-country-and-religion": {
-    "updated": "2026-10-23",
-    "title": "Add holidays to Google Calendar for more than one country",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Add Country & Religious Holidays in Google Calendar",
+    "title": "Add Multiple Country & Religious Holiday Calendars in Google Calendar",
     "short": "Holidays in Google Calendar",
-    "description": "Add regional and religious holiday calendars in Google Calendar, choose public holidays or observances, hide single days and know what you can’t edit.",
-    "lede": "A household or team that spans countries needs more than the default holiday calendar. Google lets you combine regional and religious holiday calendars, but not edit them. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Add public holidays for multiple countries or religious observances in Google Calendar, filter out optional observances, and hide individual days cleanly.",
+    "lede": "In Google Calendar on a computer or mobile app, open Browse calendars of interest → Regional holidays (or Religious holidays) to display public holidays from multiple countries side by side, choose Public holidays only to cut clutter, and copy or hide individual dates since Google’s read-only feeds cannot be edited directly.",
     "commonBelief": "The holidays in my calendar are my days off.",
     "sections": [
       {
@@ -1536,11 +1537,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "calendar-week-numbers-iso-monday-versus-sunday-start-mismatch": {
-    "updated": "2026-10-23",
-    "title": "Calendar week numbers disagree: compare the year rule and first weekday",
+    "updated": "2026-11-12",
+    "seoTitle": "Why Calendar Week Numbers Disagree (ISO vs US Week 1 Rules)",
+    "title": "Why Calendar Week Numbers Disagree: ISO Monday vs Sunday Start Fixed",
     "short": "Why Calendar Week Numbers Disagree",
-    "description": "Diagnose different week numbers with dated examples. Separate ISO week years, the first weekday and a January 1 rule before changing calendar events.",
-    "lede": "Two calendars can show the same appointment date with different week labels. Compare both the first weekday and the rule for week 1. A Sunday-first grid alone does not tell you which numbering rule the calendar uses.",
+    "description": "Why does one calendar say Week 1 while another says Week 52 or 53? Compare ISO 8601 (first 4-day week) vs US January 1 rules in Outlook, Google & Apple.",
+    "lede": "When two calendars show different week numbers for the exact same date, check two separate settings: which day starts the week (Monday vs Sunday) and which rule defines Week 1 (ISO 8601’s first 4-day week / first Thursday vs the week containing January 1). Aligning both settings fixes the mismatch across Apple Calendar, Outlook, and Google Calendar.",
     "commonBelief": "",
     "sections": [
       {
@@ -1684,11 +1686,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-appointment-cancel-booked-slot": {
-    "updated": "2026-11-04",
-    "title": "How to Cancel a Booked Google Calendar Appointment Slot",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Cancel a Booked Google Calendar Appointment Slot",
+    "title": "Cancel a Booked Google Calendar Appointment Slot (& Reopen the Time)",
     "short": "Cancel a booked appointment",
-    "description": "Cancel a booked Google Calendar appointment as host or guest, check whether the slot reopens on your booking page, and avoid forwarded-email surprises.",
-    "lede": "Cancelling a booked appointment is not the same as deleting a calendar event: it notifies the guest and puts the time back on your booking page. Google also documents a quirk with forwarded confirmations that every booking-page owner should know. Arte Soft, the developer of Cloud Calendars, explains.",
+    "description": "How hosts and guests cancel a booked Google Calendar appointment schedule slot so the time reopens automatically—plus the forwarded-invite caveat.",
+    "lede": "When a host deletes a booked appointment from Google Calendar (or the guest clicks Cancel appointment in their confirmation email), Google notifies both sides and automatically reopens that time slot on the booking page—provided no remaining guest or room keeps blocking the calendar.",
     "commonBelief": "Only I can cancel appointments people book with me.",
     "sections": [
       {
@@ -1814,11 +1817,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-calendar-change-event-owner-before-handover": {
-    "updated": "2026-11-04",
-    "title": "Change Event Owner in Google Calendar (Single & Series)",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Change Event Owner in Google Calendar (Steps & Limits)",
+    "title": "How to Change Event Owner in Google Calendar (Single & Recurring)",
     "short": "Hand a meeting to a new owner",
-    "description": "Transfer ownership of a single or recurring Google Calendar meeting on desktop: check the 60-day acceptance window, 200-guest cap, and Google Meet rules.",
-    "lede": "When you change roles, the meetings you organise do not follow your job title. Until someone else owns them, you remain the organiser, and a Meet link can depend on you staying in the organisation. Arte Soft, the developer of Cloud Calendars, wrote this checklist; the transfer itself happens in Google Calendar on a computer.",
+    "description": "Transfer a single or recurring Google Calendar meeting to a new owner: exact desktop steps, the 60-day acceptance rule, 200-guest limit, and Google Meet.",
+    "lede": "To transfer a Google Calendar meeting on a computer, open the event → Options (⋮) → Change owner, enter the new owner, and send the invite—they have 60 days to accept via email while you remain organizer until they click the link. Before handing off recurring series or recorded Google Meet calls, check the 200-guest transfer cap and Meet host rules below.",
     "commonBelief": "Sending a colleague “Change owner” hands the meeting over immediately.",
     "sections": [
       {
@@ -2812,11 +2816,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-end-recurring-meeting-early-keep-history": {
-    "updated": "2026-11-04",
-    "title": "End a Recurring Outlook Meeting Without Losing Past History",
+    "updated": "2026-11-12",
+    "seoTitle": "How to End a Recurring Outlook Meeting & Keep Past History",
+    "title": "End a Recurring Meeting in Outlook Early Without Deleting Past Dates",
     "short": "End an Outlook series early",
-    "description": "Cancel Series wipes past meetings—change the series end date in Outlook instead to keep past occurrences on everyone’s calendar, plus key trade-offs.",
-    "lede": "Cancelling a whole recurring meeting removes its past occurrences along with the future ones. Microsoft recommends a different move: change the series end date. That keeps the record, but not everything. Arte Soft, the developer of Cloud Calendars, explains the trade-off.",
+    "description": "Do not click Cancel Series—it deletes past meetings too. Change the recurrence end date in Outlook instead so historical occurrences stay on every calendar.",
+    "lede": "Clicking Cancel Series on an Outlook recurring meeting deletes every past occurrence along with future ones from attendees’ calendars. To stop future sessions while preserving your meeting history and notes, open the series, edit the recurrence pattern’s End by date to the final completed date, and send the update.",
     "commonBelief": "Cancel Series is the right way to stop a weekly meeting.",
     "sections": [
       {
@@ -3190,11 +3195,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "outlook-forward-meeting-and-allow-forwarding": {
-    "updated": "2026-11-04",
-    "title": "Forwarding Outlook Invites: Does It Notify the Organizer?",
+    "updated": "2026-11-12",
+    "seoTitle": "Does Forwarding an Outlook Invite Notify the Organizer?",
+    "title": "Forwarding Outlook Meeting Invites: Organizer Alerts & How to Block It",
     "short": "Outlook meeting forwarding",
-    "description": "See whether forwarding an Outlook calendar invite notifies the organizer or other attendees, how Allow Forwarding works, and how to turn forwarding off.",
-    "lede": "An attendee who forwards your meeting effectively adds a guest. Outlook tells the organiser in some cases and lets you switch forwarding off in others, but neither is a confidentiality guarantee. Arte Soft, the developer of Cloud Calendars, explains the controls and their limits.",
+    "description": "Yes—forwarding an Outlook meeting invite sends a forward notification to the organizer. Learn what attendees see and how to turn off Allow Forwarding.",
+    "lede": "When an attendee forwards an Outlook meeting invite on Microsoft 365 or Exchange, Outlook adds the recipient to the meeting and sends a Meeting Forward Notification to the organizer (without alerting every other guest). Organizers who want a fixed guest list can uncheck Allow Forwarding in Response Options before sending.",
     "commonBelief": "Turning off Allow forwarding makes a meeting invitation impossible to pass on.",
     "sections": [
       {
@@ -4384,11 +4390,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-calendar-android-app-not-syncing": {
-    "updated": "2026-11-04",
-    "title": "Fix Google Calendar Not Syncing on Android (Safe Order)",
+    "updated": "2026-11-12",
+    "seoTitle": "Google Calendar Not Syncing on Android? 6 Safe Fixes",
+    "title": "Fix Google Calendar Not Syncing on Android (Without Losing Events)",
     "short": "Android Calendar not syncing",
-    "description": "Fix Google Calendar not syncing on Android without losing unsynced events: check calendar visibility, account sync, storage, and the 1-year past limit.",
-    "lede": "Google’s Android Calendar troubleshooting separates connection and visibility checks from the last-resort option to clear app data. Preserve any unsynced information before a destructive step, and identify the exact Google Calendar app and account first. These are Google’s Android instructions, not Cloud Calendars settings. Arte Soft develops Cloud Calendars.",
+    "description": "Solve Google Calendar sync issues on Android in a safe order: check hidden calendar toggles, system account sync, storage space, and the 1-year sync window.",
+    "lede": "Before clearing app storage—which permanently wipes any unsynced phone edits—check the four safe causes of missing events in the Google Calendar Android app: unchecked calendar boxes in the side menu, disabled Google Account Calendar sync, low device storage, and Google’s ~1-year mobile sync window.",
     "commonBelief": "Reinstalling or clearing the app is the first fix to try.",
     "sections": [
       {
@@ -4770,11 +4777,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-calendar-event-visibility-private-public-default": {
-    "updated": "2026-11-04",
-    "title": "Google Calendar Private vs Public vs Default Visibility",
+    "updated": "2026-11-12",
+    "seoTitle": "Google Calendar Private vs Public vs Default Visibility",
+    "title": "Google Calendar Private vs Public vs Default Visibility: What Others See",
     "short": "Private, public and default events",
-    "description": "What does a Private, Public, or Default event show on a shared Google Calendar? Compare all 5 calendar permission levels before saving sensitive meetings.",
-    "lede": "Marking an event Private feels like closing a door, but who is on the other side depends on the calendar’s sharing. Marking one Public can do the opposite of what people expect. This guide crosses Google’s three event visibility options with its calendar permission levels so you can predict the result before you save.",
+    "description": "What do colleagues actually see when you mark a Google Calendar event Private, Public, or Default? Exact breakdown across all calendar sharing permissions.",
+    "lede": "Marking a Google Calendar event Private hides its title, guests, and description from colleagues who have \"See all event details\" access (showing only \"Busy\"), but anyone granted \"Make changes to events\" or higher can still read full Private event details. Compare Private, Default, and Public across every calendar permission level before saving sensitive appointments.",
     "commonBelief": "Private hides an event from everyone, and Public only matters on a public calendar.",
     "sections": [
       {
@@ -5037,11 +5045,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-calendar-working-hours-location-out-of-office-focus-time": {
-    "updated": "2026-11-04",
-    "title": "Google Calendar Working Hours, Location & Out of Office",
+    "updated": "2026-11-12",
+    "seoTitle": "Google Calendar Working Hours vs Out of Office & Focus Time",
+    "title": "Google Calendar Working Hours, Location, Out of Office & Focus Time",
     "short": "Working hours, location, OOO or focus time",
-    "description": "Compare Google Calendar Working Hours, Working Location, Out of Office, and Focus Time—see what colleagues view and which settings auto-decline invites.",
-    "lede": "Google Workspace gives you four ways to tell colleagues about your time, and only two of them can turn down meetings for you. Choosing the wrong one either leaves your calendar looking open when you are not, or declines meetings you meant to attend. Arte Soft, the developer of Cloud Calendars, wrote this guide; every control below is Google’s own.",
+    "description": "Which Google Calendar status auto-declines invites? Compare Working Hours, Working Location, Out of Office, and Focus Time in Google Workspace.",
+    "lede": "Out of Google Calendar’s four availability features, only Out of Office and Focus Time can automatically decline meeting invitations—Working Hours warns colleagues when they pick an after-hours slot, while Working Location simply displays whether you are at the office, home, or elsewhere.",
     "commonBelief": "Working location and out of office are two names for the same “I’m not at my desk” setting.",
     "sections": [
       {
@@ -5848,11 +5857,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryAfterContent": true
   },
   "outlook-show-declined-meetings-on-calendar": {
-    "updated": "2026-11-04",
-    "title": "Show Declined Meetings in Outlook (New & Classic)",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Show Declined Meetings on Outlook Calendar",
+    "title": "How to Show Declined Meetings in Outlook (New, Web & Classic)",
     "short": "Declined meetings in Outlook",
-    "description": "Turn on Show Declined Events in new Outlook or Outlook on the web (work/school accounts), and see how to find and re-accept a declined invite in classic.",
-    "lede": "Declining a meeting usually makes it vanish, which is awkward when you want to remember it exists or change your mind. New Outlook can keep declined meetings on view; classic Outlook cannot, but offers a way back. Arte Soft, the developer of Cloud Calendars, explains Microsoft’s documented options.",
+    "description": "Keep declined invitations visible on your calendar in new Outlook and Outlook on the web, or find and re-accept a declined invite from Deleted Items in classic.",
+    "lede": "In new Outlook and Outlook on the web (with a Microsoft 365 work or school account), you can keep declined invitations visible on your grid via Settings → Calendar → Events and invitations → Save declined events. In classic desktop Outlook, declined invites move to Deleted Items instead—here is how to view or re-accept them in both clients.",
     "commonBelief": "Once I decline a meeting it is gone unless the organiser re-sends it.",
     "sections": [
       {
@@ -6827,11 +6837,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-appointment-meeting-event-convert-and-update": {
-    "updated": "2026-10-23",
-    "title": "Outlook appointment, meeting or event: convert one to another and update correctly",
+    "updated": "2026-11-12",
+    "seoTitle": "Outlook Appointment vs Meeting vs All-Day Event (Convert Safely)",
+    "title": "Outlook Appointment vs Meeting vs Event: Differences & Safe Updates",
     "short": "Appointment, meeting or event",
-    "description": "See how Outlook treats appointments, meetings and all-day events, convert between them, and send updates to everyone or only to added attendees.",
-    "lede": "In Outlook the same calendar entry can be an appointment, an event or a meeting, and the type decides whether others are notified and how the time shows. Converting is easy; updating without confusing people takes a little care. Arte Soft, the developer of Cloud Calendars, explains.",
+    "description": "Understand the exact difference between an Outlook appointment, meeting, and all-day event, how to convert one into another, and who receives update emails.",
+    "lede": "In Outlook, an appointment is just for your own calendar, adding attendees turns it into a meeting that sends email invitations, and checking All day creates a banner event that defaults to Free instead of Busy. Know how each conversion affects availability and when Outlook emails every guest versus only added or removed attendees.",
     "commonBelief": "Changing any calendar entry automatically tells the people involved.",
     "sections": [
       {
@@ -6962,11 +6973,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-birthday-calendar-from-contacts": {
-    "updated": "2026-11-04",
-    "title": "Outlook Birthday Calendar: Turn On, Edit Dates or Turn Off",
+    "updated": "2026-11-12",
+    "seoTitle": "Outlook Birthday Calendar: Turn On, Edit Dates or Remove",
+    "title": "Outlook Birthday Calendar: How to Turn On, Fix Dates, or Turn Off",
     "short": "Outlook birthdays",
-    "description": "Turn the Outlook birthday calendar on or off, fix wrong dates via Contacts, and hide or delete birthday entries without losing contacts (New & Classic).",
-    "lede": "Outlook’s birthdays come from your contacts, and the steps differ between new Outlook or the web and classic Outlook. Birthdays can also take hours to appear. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "description": "Enable or disable the Outlook birthday calendar, fix wrong birthday dates at their Contact source, and delete duplicate entries in new & classic Outlook.",
+    "lede": "Outlook generates its Birthday calendar automatically from birthday fields saved in your Contacts, which can take up to 24 hours to refresh after turning it on. Here is how to toggle the birthday calendar on or off, correct a wrong date without breaking the contact record, and hide unwanted reminders in new and classic Outlook.",
     "commonBelief": "Deleting the birthday calendar deletes the birthdays from my contacts.",
     "sections": [
       {
@@ -7079,11 +7091,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-calendar-sharing-levels-busy-titles-details": {
-    "updated": "2026-11-04",
-    "title": "Outlook Sharing Levels: Busy, Titles & Locations, Details",
+    "updated": "2026-11-12",
+    "seoTitle": "Outlook Calendar Sharing Permissions: Busy vs Titles vs Details",
+    "title": "Outlook Calendar Sharing Levels Compared: Busy, Titles & Full Details",
     "short": "Outlook sharing levels",
-    "description": "Compare Outlook calendar permissions—Can view when I’m busy, Can view titles and locations, Can view all details, Can edit, and Delegate—with examples.",
-    "lede": "Outlook offers several sharing levels, and the difference between the first three is exactly the information a colleague learns about each appointment. Removing someone does not always take them to zero, because of an organisation-wide default. Arte Soft, the developer of Cloud Calendars, wrote this guide to Microsoft 365’s own sharing controls.",
+    "description": "Compare all 5 Outlook calendar sharing levels—Can view when I’m busy, Can view titles and locations, Can view all details, Can edit, and Delegate.",
+    "lede": "Microsoft 365 Outlook offers five calendar permission tiers: \"Can view when I’m busy\" reveals only time blocks, \"Can view titles and locations\" hides notes and attendees, \"Can view all details\" exposes subjects and descriptions (except Private items), while \"Can edit\" and \"Delegate\" grant write and invite powers.",
     "commonBelief": "Removing a colleague from my sharing list means they can no longer see anything on my calendar.",
     "sections": [
       {
@@ -7353,11 +7366,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-show-as-free-busy-tentative-working-elsewhere": {
-    "updated": "2026-11-04",
-    "title": "Outlook Show As: Working Elsewhere, Tentative, Free & Busy",
+    "updated": "2026-11-12",
+    "seoTitle": "Outlook \"Working Elsewhere\" vs Free, Busy & Tentative",
+    "title": "Outlook Show As: Working Elsewhere, Tentative, Free & Busy Explained",
     "short": "Outlook Show As statuses",
-    "description": "What Free, Tentative, Busy, Working Elsewhere, and Out of Office mean on an Outlook calendar—and how colleagues see your availability when booking time.",
-    "lede": "Every Outlook appointment carries a status that colleagues see when they try to book you. Accepting a meeting or adding an item usually marks the time Busy, which is not always what you mean. Arte Soft, the developer of Cloud Calendars, explains how to choose each status and when automatic replies should do the work instead.",
+    "description": "See exactly what colleagues view when you set an Outlook event to Working Elsewhere, Tentative, Free, Busy, or Out of Office in Scheduling Assistant.",
+    "lede": "In Outlook, Show As controls how your time blocks appear to colleagues in Scheduling Assistant: Busy and Out of Office block booking slots, while Free, Tentative, and Working Elsewhere signal different availability levels. Choose the status that matches whether others should still invite you during that window.",
     "commonBelief": "Out of office and Working elsewhere both just mean “not at my desk”.",
     "sections": [
       {
@@ -8107,11 +8121,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-print-calendar-styles": {
-    "updated": "2026-11-04",
-    "title": "How to Print an Outlook Calendar With Full Event Details",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Print an Outlook Calendar Without Cut-Off Titles",
+    "title": "How to Print an Outlook Calendar (Full Event Titles & PDF Styles)",
     "short": "Print an Outlook calendar",
-    "description": "Print or save an Outlook calendar as PDF without cut-off titles: compare Weekly Agenda Style in classic Outlook with detailed layouts in new Outlook & Mac.",
-    "lede": "Outlook printing differs by client: classic Outlook has named print styles, new Outlook and Mac use a simpler layout picker. The choice decides whether titles are cut off and whether private details appear. Arte Soft, the developer of Cloud Calendars, explains.",
+    "description": "Stop Outlook from cutting off meeting titles when printing or saving to PDF: choose Weekly Agenda Style in classic Outlook or Detailed view in new Outlook.",
+    "lede": "If printed Outlook calendars chop off long meeting titles, switch the layout before printing or exporting to PDF: use Weekly Agenda Style or Tri-fold Style in classic desktop Outlook, or select the Detailed / Agenda print view in new Outlook, Outlook on the web, and Mac.",
     "commonBelief": "Any Outlook print style shows full meeting titles and details.",
     "sections": [
       {
@@ -8235,11 +8250,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-propose-new-meeting-time": {
-    "updated": "2026-11-04",
-    "title": "How to Propose a New Time in Outlook (New & Classic)",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Propose a New Time in Outlook (& Why It Is Missing)",
+    "title": "How to Propose a New Meeting Time in Outlook (New & Classic)",
     "short": "Propose a new time in Outlook",
-    "description": "Suggest a new meeting time in new or classic Outlook, see why Propose New Time can be missing, and learn how organizers review and accept time proposals.",
-    "lede": "Outlook lets an attendee suggest a different time without editing the organizer’s meeting, but only for some meetings and some accounts. If the button is missing, the cause is usually one of three documented restrictions. Arte Soft, the developer of Cloud Calendars, wrote this guide; the controls are Microsoft’s.",
+    "description": "Suggest an alternate meeting time in new or classic Outlook, see how organizers approve proposals, and learn why Propose New Time is grayed out or missing.",
+    "lede": "In Outlook, attendees can click Tentative or Decline → Propose New Time to check everyone’s free/busy grid and send a time suggestion exclusively to the organizer. If Propose New Time is missing or disabled, the meeting is usually recurring, an all-day event, or the organizer unchecked Allow new time proposals.",
     "commonBelief": "If I can’t make a meeting, I can always use Propose New Time.",
     "sections": [
       {
@@ -8639,11 +8655,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-recover-deleted-calendar-items": {
-    "updated": "2026-11-04",
-    "title": "Recover Deleted Calendar Events in Outlook (2 Methods)",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Recover Deleted Outlook Calendar Events (2 Steps)",
+    "title": "How to Recover Deleted Calendar Events in Outlook (New & Classic)",
     "short": "Recover deleted Outlook events",
-    "description": "Find and restore deleted Outlook calendar events from Deleted Items or Recoverable Items on the server—step-by-step for both new and classic Outlook.",
-    "lede": "A deleted Outlook appointment usually goes to Deleted Items first, and can sometimes be recovered from the server after that. The steps differ between new and classic Outlook. Arte Soft, the developer of Cloud Calendars, explains what Microsoft documents.",
+    "description": "Restore accidentally deleted Outlook meetings and appointments from Deleted Items or Exchange Recoverable Items—exact steps for new and classic Outlook.",
+    "lede": "Deleted Outlook calendar appointments go to Deleted Items first, and if emptied from there, can often still be restored from Exchange’s server-side Recoverable Items folder. Follow the exact path below for either new Outlook (or Outlook on the web) or classic desktop Outlook.",
     "commonBelief": "Once Deleted Items is emptied, a calendar event is gone for good.",
     "sections": [
       {
@@ -10221,11 +10238,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "google-calendar-email-notifications-filter": {
-    "updated": "2026-10-23",
-    "title": "Too many Google Calendar emails: choose categories, then filter in Gmail",
+    "updated": "2026-11-12",
+    "seoTitle": "Stop Google Calendar Email Spam: Settings & Gmail Filters",
+    "title": "How to Stop or Auto-Filter Google Calendar Notification Emails in Gmail",
     "short": "Google Calendar email noise",
-    "description": "Cut Google Calendar email noise: pick which change and response emails each calendar sends, then label or archive the rest with a Gmail header filter.",
-    "lede": "Every accepted invitation, moved meeting and changed room can produce an email. Google lets you switch categories off per calendar and, for what you keep, filter by a header Calendar adds. Arte Soft, the developer of Cloud Calendars, set out the two steps.",
+    "description": "Turn off unwanted Google Calendar RSVP and change emails per calendar, or auto-archive invite responses in Gmail without missing real messages.",
+    "lede": "You can silence noisy Google Calendar RSVP, new-event, and cancellation emails in two layers: first turn off unnecessary notification categories inside each calendar’s Other notifications settings, then create a targeted Gmail filter for the remaining automated headers so responses skip your inbox.",
     "commonBelief": "The only way to stop Calendar emails is to turn off all notifications.",
     "sections": [
       {
@@ -10842,11 +10860,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryCaption": "Cloud Calendars overview, using our product images. Provider settings and protocol examples described in this guide are separate from the screens shown here."
   },
   "outlook-split-view-overlay-calendars": {
-    "updated": "2026-11-04",
-    "title": "Outlook Split View vs Overlay: View Multiple Calendars",
+    "updated": "2026-11-12",
+    "seoTitle": "Outlook Split View vs Overlay: View Calendars Side by Side",
+    "title": "Outlook Split View vs Overlay: Compare Calendars Side by Side or Merged",
     "short": "Outlook split view and overlay",
-    "description": "Switch between Split View (side-by-side columns) and Overlay (combined grid) in new Outlook, Outlook on the web, and classic Outlook without merging data.",
-    "lede": "Comparing your calendar with a colleague’s or a team calendar is easier when you choose the right layout. Outlook offers side-by-side columns and an overlay, with different controls in new and classic Outlook. Arte Soft, the developer of Cloud Calendars, explains each.",
+    "description": "Switch between side-by-side Split View columns and single-grid Overlay mode in new Outlook, Outlook on the web, and classic desktop Outlook.",
+    "lede": "Outlook gives you two ways to view multiple calendars without copying events between them: Split View places each person or team calendar in its own side-by-side column, while Overlay stacks color-coded calendars onto one shared time grid. Here is where the toggle lives in new Outlook, web, and classic Outlook.",
     "commonBelief": "An overlay merges calendars, so moving an item moves it in all of them.",
     "sections": [
       {
@@ -11834,11 +11853,12 @@ export const PILOT_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "galleryAfterContent": true
   },
   "icalendar-valarm-relative-absolute-trigger": {
-    "updated": "2026-10-23",
-    "title": "ICS alarm TRIGGER: before the start, after the end or at a fixed time?",
+    "updated": "2026-11-12",
+    "seoTitle": "iCalendar VALARM TRIGGER: Relative (-PT15M) vs Absolute UTC",
+    "title": "iCalendar (ICS) VALARM TRIGGER Explained: Relative vs Fixed UTC Alarms",
     "short": "Read an alarm trigger",
-    "description": "Calculate relative and absolute VALARM triggers in an ICS file. Check RELATED=END and explain an alarm that stays fixed after a meeting moves.",
-    "lede": "A reminder at 09:45 can mean “15 minutes before a 10:00 meeting” or “at 09:45 UTC regardless of the meeting.” Those alarms look identical until the event moves. Read the trigger’s value type and reference point before diagnosing the reminder.",
+    "description": "Decode TRIGGER:-PT15M, RELATED=END, and VALUE=DATE-TIME in ICS files—and see why an absolute UTC alarm stays stuck at the old hour when a meeting moves.",
+    "lede": "In an iCalendar (.ics) VALARM block, a duration trigger like TRIGGER:-PT15M fires 15 minutes before DTSTART (or relative to DTEND when RELATED=END is set) and shifts automatically if the event moves, whereas TRIGGER;VALUE=DATE-TIME:20261115T094500Z locks the reminder to a fixed UTC timestamp.",
     "sections": [
       {
         "heading": "Find the reference point",

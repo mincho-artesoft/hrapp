@@ -3,11 +3,12 @@ import type { LocalisedArticle } from '../types';
 /** Practical intent gaps identified in observed Google results; competitor features are attributed. */
 export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   "shift-work-calendar-iphone-rotating-schedules": {
-  "updated": "2026-10-22",
-  "title": "Shift work calendar on iPhone: plan a rotating schedule without losing changes",
+  "updated": "2026-11-12",
+  "seoTitle": "Shift Work Calendar on iPhone: Plan Rotating & Night Shifts",
+  "title": "Shift Work Calendar on iPhone: Manage Rotating & Overnight Schedules",
   "short": "Rotating shifts on iPhone",
-  "description": "Choose a shift planner or calendar view, anchor a repeating rota, handle overnight shifts and check exported changes alongside personal appointments.",
-  "lede": "A rotating work pattern rarely fits neatly into a Monday-to-Friday calendar. The useful setup keeps the employer’s latest rota authoritative while letting you see work beside appointments and family plans. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Set up rotating shifts (4-on/4-off, Pitman, 2-2-3) and overnight hours alongside personal events on iPhone without breaking dates when shifts swap.",
+  "lede": "Managing a rotating 4-on/4-off, 2-2-3, or overnight shift schedule on iPhone works best when you anchor the cycle to a verified start date, enter explicit next-day end times for night shifts, and view your work rota alongside personal iCloud, Google, and Outlook events in one unified grid.",
   "sections": [
     {
       "heading": "Choose a shift planner or a calendar overview",
@@ -111,11 +112,12 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ]
 },
   "booking-link-or-shared-calendar": {
-  "updated": "2026-10-23",
-  "title": "Booking link, event invitation or shared calendar: which should you send?",
+  "updated": "2026-11-12",
+  "seoTitle": "Booking Link vs Shared Calendar vs Invite: Which Works Best?",
+  "title": "Booking Link vs Shared Calendar vs Meeting Invite: Which Should You Send?",
   "short": "Booking versus calendar sharing",
-  "description": "Let someone choose a time, invite them to an existing meeting or share an ongoing schedule. Compare booking links with invitations and calendar access.",
-  "lede": "“Send me your calendar” can mean three different things: offer a choice of appointment times, invite someone to a meeting already arranged, or give continuing access to a schedule. Choosing the right link avoids both extra messages and unnecessary disclosure. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+  "description": "Should you send a booking link, propose time slots, send a calendar invite, or share your calendar? Compare privacy, friction, and sync for each option.",
+  "lede": "Send a booking link when an external client or guest needs to pick one open slot without seeing your schedule; send a direct calendar invitation once a specific time is already agreed; and use calendar sharing only for teammates or family who need ongoing visibility into your week.",
   "sections": [
     {
       "heading": "Use a booking page when the time is still undecided",
@@ -430,11 +432,12 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "iphone-calendar-tasks-reminders-versus-event-alerts": {
-  "updated": "2026-10-23",
-  "title": "Tasks and reminders in an iPhone calendar: choose the right kind of item",
+  "updated": "2026-11-12",
+  "seoTitle": "Apple Reminders in iPhone Calendar: Tasks vs Event Alerts",
+  "title": "iPhone Calendar Tasks & Reminders vs Event Alerts: How to Use Each",
   "short": "Tasks, reminders and event alerts",
-  "description": "See tasks beside appointments without confusing due dates, work time and alerts. Compare Apple Calendar and Readdle task integration on iPhone.",
-  "lede": "A meeting at 11:00, a task due on Friday and an alert thirty minutes before a meeting describe different things. A useful combined calendar preserves those differences while helping you decide what to do next. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "See scheduled Apple Reminders directly inside iPhone Calendar on iOS 18+, and decide when to use a due-date task, a time block, or an event alert.",
+  "lede": "Scheduled Apple Reminders with a date and time now appear directly inside the iPhone Calendar timeline where you can check them off, while appointments block out committed hours and event alerts simply fire advance warnings. Picking the right item type keeps unfinished tasks from vanishing like past meetings.",
   "sections": [
     {
       "heading": "Separate an appointment, an action and an alert",
@@ -1139,11 +1142,12 @@ export const DISCOVERY_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "can-others-see-google-calendar-tasks": {
-    "updated": "2026-10-23",
-    "title": "Can others see your Google Calendar tasks? Check timed tasks and permissions",
+    "updated": "2026-11-12",
+    "seoTitle": "Can Others See My Google Calendar Tasks? Privacy Rules",
+    "title": "Can Others See Your Google Calendar Tasks? Timed vs Untimed Privacy",
     "short": "Google task visibility",
-    "description": "Check whether Google tasks have start and end times, how busy blocks appear, and how task visibility interacts with shared calendar permissions.",
-    "lede": "Google’s current guidance distinguishes timed tasks from other tasks. Check the item before assuming it is visible—or hidden. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "description": "Untimed Google Tasks stay private, while timed tasks with start and end times have configurable Busy and visibility settings on shared Google Calendars.",
+    "lede": "In Google Calendar, untimed tasks stay private to you, whereas timed tasks (with both a start and end time) can display a Busy block and configurable details depending on Advanced task settings and your shared calendar permissions.",
     "sections": [
       {
         "heading": "Identify the kind of item before checking access",

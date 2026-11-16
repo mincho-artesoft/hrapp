@@ -20,6 +20,24 @@ interface SeeAlsoLink {
   readonly label: string;
 }
 
+const WEB_CTA_LABELS: Readonly<Record<string, readonly [string, string]>> = {
+  'en-US': ['Open Web Calendar', 'Create Free Booking Link'],
+  bg: ['Отвори уеб календара', 'Безплатен линк за резервации'],
+  'de-DE': ['Web-Kalender öffnen', 'Kostenloser Buchungslink'],
+  'fr-FR': ['Ouvrir le calendrier web', 'Lien de réservation gratuit'],
+  'es-ES': ['Abrir calendario web', 'Enlace de reservas gratis'],
+  it: ['Apri calendario web', 'Link di prenotazione gratuito'],
+  'pt-BR': ['Abrir calendário web', 'Link de agendamento grátis'],
+  ja: ['Webカレンダーを開く', '無料予約リンクを作成'],
+  pl: ['Otwórz kalendarz WWW', 'Darmowy link rezerwacji'],
+  'nl-NL': ['Webagenda openen', 'Gratis boekingslink'],
+  'zh-Hans': ['打开网页版日历', '创建免费预约链接'],
+  'zh-Hant': ['開啟網頁版日曆', '建立免費預約連結'],
+  ko: ['웹 캘린더 열기', '무료 예약 링크 만들기'],
+  ru: ['Открыть веб-календарь', 'Бесплатная ссылка записи'],
+  tr: ['Web Takvimini Aç', 'Ücretsiz Randevu Bağlantısı'],
+};
+
 /**
  * One article.
  *
@@ -55,6 +73,8 @@ export class ArticlePageComponent implements OnDestroy {
     storeUrl(this.locale, APP_STORE_URL, this.active.tagged(this.slug || 'articles')),
   );
   readonly storeLabel: string;
+  readonly webCalendarLabel: string;
+  readonly freeBookingLabel: string;
   readonly showScheduleBuilder: boolean;
   readonly inlineCtaAfter: number = -1;
 
@@ -73,6 +93,9 @@ export class ArticlePageComponent implements OnDestroy {
     this.hubHref = this.isComparison ? '/compare/' : linkPath(this.locale, '/articles');
     this.hubLabel = this.isComparison ? 'All comparisons' : this.chrome.allArticles;
     this.storeLabel = storeCta(this.locale.code);
+    const [webCalLbl, bookingLbl] = WEB_CTA_LABELS[this.locale.code] ?? WEB_CTA_LABELS['en-US'];
+    this.webCalendarLabel = webCalLbl;
+    this.freeBookingLabel = bookingLbl;
 
     const facts = ARTICLE_FACTS[slug];
     if (!this.article || (!this.isComparison && !facts)) return;
@@ -171,6 +194,7 @@ export class ArticlePageComponent implements OnDestroy {
     // is served from an S3 website endpoint that answers the slashless form with
     // a redirect, and an @id pointing at a redirect describes a different page.
     const url = absolute(this.isComparison ? `/compare/${slug}` : localePath(this.locale, `/articles/${slug}`));
+    const isoUpdated = /^\d{4}-\d{2}-\d{2}$/.test(updated) ? `${updated}T00:00:00Z` : updated;
     const publisher = { '@type': 'Organization', name: APP_DEVELOPER, url: SITE_URL };
     const script = doc.createElement('script');
     script.id = id;
@@ -181,7 +205,7 @@ export class ArticlePageComponent implements OnDestroy {
       headline: this.article!.title,
       description: this.article!.description,
       inLanguage: this.locale.hreflang,
-      dateModified: updated,
+      dateModified: isoUpdated,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
       author: publisher,
       publisher,
@@ -190,7 +214,7 @@ export class ArticlePageComponent implements OnDestroy {
         '@type': 'SoftwareApplication',
         name: APP_NAME,
         applicationCategory: 'ProductivityApplication',
-        operatingSystem: 'iOS',
+        operatingSystem: 'Web, iOS, iPadOS, macOS, watchOS',
         url: APP_STORE_URL,
         sameAs: [
           'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319',

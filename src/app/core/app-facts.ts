@@ -3,12 +3,13 @@
  * Update here when the app ships and the whole site follows.
  */
 
+export const APP_STORE_ID = '6744690319';
 export const APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319';
 export const APP_NAME = 'Cloud Calendars';
 /** Exactly as Apple prints it. EOOD is the Bulgarian single-member limited
  *  form; a reader matching this against a receipt will not find 'Ltd'. */
 export const APP_DEVELOPER = 'ARTE SOFT EOOD';
-export const APP_VERSION = '1.7.3';
+export const APP_VERSION = '1.8.1';
 /**
  * The release that introduced the widgets and the Live Activity.
  *
@@ -26,6 +27,32 @@ export const APP_MIN_IOS = '18.0';
 export const APP_SIZE_MB = 49.8;
 export const SITE_URL = 'https://www.cloud-calendars.com';
 export const SUPPORT_EMAIL = 'support@arte-soft.com';
+
+/**
+ * Flip to `true` once the iOS update with QR Sign-In & 6-Digit Authenticator
+ * is approved in App Store Connect. While `false`, QR scan & TOTP login UI are
+ * hidden on the public website (can still be previewed locally via `?iosQrPreview=1`).
+ */
+export const IOS_QR_AUTH_PUBLIC = true;
+
+export function isIosQrAuthEnabled(): boolean {
+  if (IOS_QR_AUTH_PUBLIC) return true;
+  if (typeof window === 'undefined') return false;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('iosQrPreview') === '1') {
+      window.localStorage.setItem('cc_ios_qr_preview', '1');
+      return true;
+    }
+    if (params.get('iosQrPreview') === '0') {
+      window.localStorage.removeItem('cc_ios_qr_preview');
+      return false;
+    }
+    return window.localStorage.getItem('cc_ios_qr_preview') === '1';
+  } catch {
+    return false;
+  }
+}
 
 /** Subscription tiers, mirroring the App Store in-app purchase list. */
 export interface Plan {

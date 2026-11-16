@@ -58,6 +58,30 @@
         </a>
       }
 
+      <!-- Entitlement / Free iOS Unlock / Billing Status -->
+      @if (webAccess()?.iosUnlocked) {
+        <span class="entitlement-pill entitlement-pill--ios" title="Unlocked permanently via Cloud Calendars iOS app">
+           iOS Free Forever ✓
+        </span>
+      } @else if (webAccess()?.entitled && webAccess()?.hasBillingPortal) {
+        <button
+          type="button"
+          class="entitlement-pill entitlement-pill--pro"
+          (click)="openBillingPortal()"
+          title="Manage Web Studio subscription"
+        >
+          Studio Pro ✓ · Billing
+        </button>
+      } @else if (!webAccess()?.entitled) {
+        <button
+          type="button"
+          class="entitlement-pill entitlement-pill--unlock"
+          (click)="openUnlockModal()"
+        >
+          {{ iosQrEnabled() ? 'Unlock Studio ($0 iOS / $1.99)' : 'Unlock Studio ($1.99/mo)' }}
+        </button>
+      }
+
       <!-- iOS Surface Theme Switch -->
       <button
         type="button"
@@ -1327,6 +1351,128 @@
           [includeCalendarScopeOnOAuth]="true"
           (signedIn)="onAuthSignedIn()"
         />
+      </div>
+    </div>
+  }
+
+  <!-- Unlock Web Studio Modal ($0 Forever via iOS QR OR $1.99/mo · $19.99/yr Stripe) -->
+  @if (showUnlockModal()) {
+    <div class="modal-backdrop" (click)="closeUnlockModal()">
+      <div
+        class="modal-sheet unlock-modal"
+        [class.unlock-modal--compact]="!iosQrEnabled()"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="modal-sheet__hdr">
+          <div>
+            <span class="unlock-modal__eyebrow">CLOUD CALENDARS WEB STUDIO</span>
+            <h3>Unlock Event Creation &amp; Host Scheduling</h3>
+          </div>
+          <button type="button" class="modal-x" (click)="closeUnlockModal()">✕</button>
+        </div>
+
+        <p class="unlock-modal__lead">
+          @if (iosQrEnabled()) {
+            Guest RSVP &amp; booking links remain <strong>100% free for everyone</strong>. To create
+            events, sync calendars, and publish your own host booking page, unlock Web Studio for
+            <strong>$0 forever</strong> with the Cloud Calendars iOS app — or subscribe on the web:
+          } @else {
+            Guest RSVP &amp; booking links remain <strong>100% free for everyone</strong>. To create
+            events, sync calendars, and publish your own host booking page, activate Web Studio:
+          }
+        </p>
+
+        @if (unlockError()) {
+          <div class="unlock-alert">{{ unlockError() }}</div>
+        }
+
+        <div class="unlock-grid" [class.unlock-grid--single]="!iosQrEnabled()">
+          @if (iosQrEnabled()) {
+            <!-- Option 1: Free Forever with iOS App -->
+            <div class="unlock-card unlock-card--ios">
+              <div class="unlock-card__badge">RECOMMENDED · $0 FOREVER</div>
+              <h4>Cloud Calendars iOS App</h4>
+              <p>
+                Scan this QR code with your iPhone Camera (or inside <em>Cloud Calendars → Scan QR Code</em>)
+                and tap <strong>Approve Sign-In</strong>. Unlocks your Web Studio permanently + gives
+                you a built-in 6-digit Authenticator code.
+              </p>
+
+              <div class="unlock-qr-box">
+                @if (unlockQrDataUrl(); as qrImg) {
+                  <img [src]="qrImg" alt="Scan with iPhone to unlock Web Studio for free" width="148" height="148" />
+                } @else {
+                  <div class="unlock-qr-loading">Generating QR…</div>
+                }
+              </div>
+
+              <div class="unlock-ios-actions">
+                <a
+                  class="btn btn--primary unlock-store-btn"
+                  [href]="appStoreUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download Free on App Store ↗
+                </a>
+                <button type="button" class="mini-action-btn" (click)="refreshUnlockQrChallenge()">
+                  Refresh QR
+                </button>
+              </div>
+            </div>
+          }
+
+          <!-- Option 2: Web Subscription ($1.99/mo or $19.99/yr) -->
+          <div class="unlock-card unlock-card--web">
+            <div class="unlock-card__badge unlock-card__badge--alt">
+              {{ iosQrEnabled() ? 'NO iOS DEVICE NEEDED' : 'WEB STUDIO PRO' }}
+            </div>
+            <h4>Web Studio Subscription</h4>
+            <p>
+              {{
+                iosQrEnabled()
+                  ? 'Using Android, Windows, or Web-only? Unlock unlimited events, 2-way Google & Outlook sync, and custom public booking links right in your browser.'
+                  : 'Unlock unlimited events, 2-way Google & Outlook sync, shareable Event RSVP pages, and custom public booking links right in your browser.'
+              }}
+            </p>
+
+            <div class="plan-buttons">
+              <button
+                type="button"
+                class="plan-choice"
+                [disabled]="unlockBusy()"
+                (click)="startStripeSubscription('monthly')"
+              >
+                <div>
+                  <strong>Monthly</strong>
+                  <span>Cancel anytime</span>
+                </div>
+                <div class="plan-choice__price">
+                  <strong>$1.99</strong><span>/mo</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                class="plan-choice plan-choice--featured"
+                [disabled]="unlockBusy()"
+                (click)="startStripeSubscription('yearly')"
+              >
+                <div>
+                  <strong>Yearly · <em>Save 16%</em></strong>
+                  <span>Best value — billed annually</span>
+                </div>
+                <div class="plan-choice__price">
+                  <strong>$19.99</strong><span>/yr</span>
+                </div>
+              </button>
+            </div>
+
+            <p class="unlock-fineprint">
+              Secure checkout powered by Stripe. Switch plans or cancel in 1 click anytime.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   }

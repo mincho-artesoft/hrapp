@@ -12,18 +12,21 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { SeoService } from '../../core/seo.service';
+import { SeoService, absolute } from '../../core/seo.service';
+import { APP_DEVELOPER, APP_STORE_URL, SITE_URL, isIosQrAuthEnabled } from '../../core/app-facts';
 import { DEFAULT_LOCALE, LOCALES, Locale, linkPath, localePath } from '../../core/locales';
 import {
   BookingInviteLink,
   BookingScheduleConfig,
+  CalendarApiError,
   CalendarPlatformApiService,
   ExternalBusyState,
   HostBookingItem,
+  IosQrChallengeStartResponse,
   MeetingTypeConfig,
   TimeWindow,
   WebCalendarEvent,
@@ -99,6 +102,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
+  private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   readonly api = inject(CalendarPlatformApiService);
@@ -115,6 +119,20 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   readonly viewMode = signal<CalendarViewMode>('week');
   readonly surfaceTheme = signal<'dark' | 'light'>('dark');
   readonly showAuthModal = signal(false);
+  readonly showUnlockModal = signal(false);
+  readonly unlockBusy = signal(false);
+  readonly unlockError = signal<string | null>(null);
+  readonly unlockQrChallenge = signal<IosQrChallengeStartResponse | null>(null);
+  readonly unlockQrDataUrl = computed(() => {
+    const ch = this.unlockQrChallenge();
+    return ch?.qrUrl ? generateQrSvgDataUrl(ch.qrUrl) : null;
+  });
+  readonly appStoreUrl = APP_STORE_URL;
+  readonly iosQrEnabled = signal(isIosQrAuthEnabled());
+  readonly webAccess = computed(() => this.api.profile()?.webAccess ?? null);
+  private unlockPollTimer: any = null;
+  private unlockPollInFlight = false;
+  private pendingCheckoutPlan: 'monthly' | 'yearly' | null = null;
   readonly loadingWorkspace = signal(false);
   readonly toast = signal<{
     message: string;
@@ -405,17 +423,38 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   async ngOnInit(): Promise<void> {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
+    const calPath = localePath(this.locale, '/calendar');
+    const calTitle = 'Cloud Calendars Web Studio — Free Online Calendar & Booking Links';
+    const calDesc =
+      'Free drag-and-drop web calendar and Calendly-style public booking links synced with Google Calendar, Microsoft Outlook, and Cloud Calendars on iOS.';
     this.seo.apply({
-      title: 'Web Calendar & Booking Studio — Cloud Calendars',
-      description:
-        'Interactive drag-and-drop web calendar and online appointment scheduling synced with Cloud Calendars, Google, and Microsoft.',
-      path: localePath(this.locale, '/calendar'),
+      title: calTitle,
+      description: calDesc,
+      path: calPath,
       locale: this.locale,
-      noindex: true,
+      robots: 'index,follow',
       alternates: LOCALES.map((l) => ({ hreflang: l.hreflang, path: localePath(l, '/calendar') })),
     });
+    this.doc.getElementById('web-calendar-jsonld')?.remove();
+    const ld = this.doc.createElement('script');
+    ld.id = 'web-calendar-jsonld';
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: 'Cloud Calendars Web Studio & Online Booking',
+      url: absolute(calPath),
+      inLanguage: this.locale.hreflang,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web, macOS, Windows, iOS, iPadOS, Android',
+      description: calDesc,
+      author: { '@type': 'Organization', name: APP_DEVELOPER, url: SITE_URL },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Web Calendar & Booking Links' },
+    });
+    this.doc.head.appendChild(ld);
 
     if (!this.isBrowser) return;
+    this.iosQrEnabled.set(isIosQrAuthEnabled());
 
     const qp = this.route.snapshot.queryParamMap;
     // If this window is the Microsoft OAuth PKCE popup landing back on `/calendar/?code=...&state=ms_...`,
@@ -464,6 +503,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngOnDestroy(): void {
+    this.doc.getElementById('web-calendar-jsonld')?.remove();
+    this.stopUnlockQrPolling();
     if (this.toastTimer) clearTimeout(this.toastTimer);
     if (this.clockTimer) clearInterval(this.clockTimer);
     if (this.liveSyncTimer) clearInterval(this.liveSyncTimer);
@@ -475,6 +516,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
+    this.iosQrEnabled.set(isIosQrAuthEnabled());
     setTimeout(() => this.scrollToWorkingHours(), 120);
   }
 
@@ -489,6 +531,18 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     this.loadingWorkspace.set(true);
     try {
       await this.api.ensureWorkspaceSession('My Cloud Calendar');
+      if (this.isBrowser) {
+        const qp = this.route.snapshot.queryParamMap;
+        const billingStatus = qp.get('billing');
+        const sessionId = qp.get('session_id');
+        if (billingStatus === 'success' && sessionId) {
+          await this.api.reconcileBillingCheckout(sessionId).catch(() => null);
+          this.stripBillingQueryParams();
+          this.showToast('Cloud Calendars Web Studio subscription active!');
+        } else if (billingStatus === 'cancelled') {
+          this.stripBillingQueryParams();
+        }
+      }
       await this.reloadAllWorkspaceData();
     } catch {
       // Seed rich local preview events if offline
@@ -497,10 +551,127 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     }
   }
 
+  private stripBillingQueryParams(): void {
+    if (!this.isBrowser) return;
+    this.iosQrEnabled.set(isIosQrAuthEnabled());
+    try {
+      const clean = new URL(window.location.href);
+      clean.searchParams.delete('billing');
+      clean.searchParams.delete('session_id');
+      window.history.replaceState({}, '', clean.toString());
+    } catch {
+      // ignore
+    }
+  }
+
   async onAuthSignedIn(): Promise<void> {
     this.showAuthModal.set(false);
     await this.reloadAllWorkspaceData();
+    const pendingPlan = this.pendingCheckoutPlan;
+    this.pendingCheckoutPlan = null;
+    if (pendingPlan && !this.webAccess()?.entitled) {
+      await this.startStripeSubscription(pendingPlan);
+      return;
+    }
     this.showToast('Signed in & synced with your CloudCalendars account.');
+  }
+
+  openUnlockModal(): void {
+    this.unlockError.set(null);
+    this.showUnlockModal.set(true);
+    if (this.iosQrEnabled()) {
+      this.refreshUnlockQrChallenge().catch(() => null);
+    }
+  }
+
+  closeUnlockModal(): void {
+    this.showUnlockModal.set(false);
+    this.stopUnlockQrPolling();
+  }
+
+  async refreshUnlockQrChallenge(): Promise<void> {
+    if (!this.isBrowser) return;
+    this.iosQrEnabled.set(isIosQrAuthEnabled());
+    this.stopUnlockQrPolling();
+    try {
+      const ch = await this.api.startIosQrChallenge(true);
+      this.unlockQrChallenge.set(ch);
+      this.unlockPollTimer = setInterval(() => {
+        this.tickUnlockQrPoll().catch(() => null);
+      }, 2200);
+    } catch {
+      this.unlockQrChallenge.set(null);
+    }
+  }
+
+  private stopUnlockQrPolling(): void {
+    if (this.unlockPollTimer) {
+      clearInterval(this.unlockPollTimer);
+      this.unlockPollTimer = null;
+    }
+  }
+
+  private async tickUnlockQrPoll(): Promise<void> {
+    if (this.unlockPollInFlight || !this.showUnlockModal()) return;
+    const ch = this.unlockQrChallenge();
+    if (!ch) return;
+    this.unlockPollInFlight = true;
+    try {
+      const res = await this.api.pollIosQrChallenge(ch.challengeId, ch.pollToken);
+      if (res.status === 'approved') {
+        this.closeUnlockModal();
+        await this.reloadAllWorkspaceData();
+        this.showToast('Unlocked for free forever via Cloud Calendars iOS!');
+      } else if (res.status === 'expired') {
+        await this.refreshUnlockQrChallenge();
+      }
+    } finally {
+      this.unlockPollInFlight = false;
+    }
+  }
+
+  async startStripeSubscription(plan: 'monthly' | 'yearly'): Promise<void> {
+    this.unlockError.set(null);
+    if (!this.api.isSignedInWithAccount()) {
+      this.pendingCheckoutPlan = plan;
+      this.closeUnlockModal();
+      this.showAuthModal.set(true);
+      this.showToast('Sign in with your email, Google, or Microsoft first to activate your subscription.');
+      return;
+    }
+    this.unlockBusy.set(true);
+    try {
+      const res = await this.api.createBillingCheckout(plan);
+      if (res.url && this.isBrowser) {
+        window.location.href = res.url;
+      }
+    } catch (e) {
+      this.unlockError.set(
+        e instanceof Error ? e.message : 'Could not start Stripe Checkout.',
+      );
+    } finally {
+      this.unlockBusy.set(false);
+    }
+  }
+
+  async openBillingPortal(): Promise<void> {
+    try {
+      const res = await this.api.createBillingPortal();
+      if (res.url && this.isBrowser) {
+        window.location.href = res.url;
+      }
+    } catch (e) {
+      this.showToast(e instanceof Error ? e.message : 'Could not open Billing Portal.');
+    }
+  }
+
+  private handleMutationError(e: unknown, fallbackMessage: string): void {
+    if (e instanceof CalendarApiError && (e.status === 402 || e.code === 'subscription_required')) {
+      this.editorDraft.set(null);
+      this.openUnlockModal();
+      return;
+    }
+    this.showToast(e instanceof Error ? e.message : fallbackMessage);
   }
 
   async signOut(): Promise<void> {
@@ -1007,7 +1178,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.ownedEvents.update((list) =>
         list.map((ev) => (ev.id === original.id ? { ...ev, start: prevStart, end: prevEnd } : ev)),
       );
-      this.showToast(e instanceof Error ? e.message : 'Could not move event to that time.');
+      this.handleMutationError(e, 'Could not move event to that time.');
     }
   }
 
@@ -1157,7 +1328,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.editorDraft.set(null);
       this.showToast(d.isNew ? `Created "${title}".` : `Saved "${title}".`);
     } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not save event.');
+      this.handleMutationError(e, 'Could not save event.');
     } finally {
       this.savingEvent.set(false);
     }
@@ -1183,7 +1354,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
           : 'Event deleted.',
       );
     } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not delete event.');
+      this.handleMutationError(e, 'Could not delete event.');
     } finally {
       this.savingEvent.set(false);
     }
@@ -1255,7 +1426,11 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       const count = nextBusy.sources?.['ics']?.count ?? 0;
       this.syncFeedback.set(`Synced ${count} busy events from .ics feed.`);
     } catch (e) {
-      this.syncFeedback.set(e instanceof Error ? e.message : 'Could not sync .ics URL.');
+      if (e instanceof CalendarApiError && (e.status === 402 || e.code === 'subscription_required')) {
+        this.openUnlockModal();
+      } else {
+        this.syncFeedback.set(e instanceof Error ? e.message : 'Could not sync .ics URL.');
+      }
     } finally {
       this.syncingExternal.set(null);
     }
@@ -1270,6 +1445,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   copyText(text: string, label = 'Link copied to clipboard!'): void {
     if (!this.isBrowser) return;
+    this.iosQrEnabled.set(isIosQrAuthEnabled());
     navigator.clipboard?.writeText(text);
     this.showToast(label);
   }
@@ -1449,7 +1625,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.configSavedMsg.set(`Published live at ${res.shareUrl}`);
       this.showToast('Booking page & availability saved!');
     } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not save booking page.');
+      this.handleMutationError(e, 'Could not save booking page.');
     } finally {
       this.savingConfig.set(false);
     }
@@ -1471,7 +1647,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       }
       this.showToast('Expiring invite link generated & copied to clipboard!');
     } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not generate invite link.');
+      this.handleMutationError(e, 'Could not generate invite link.');
     } finally {
       this.creatingInvite.set(false);
     }

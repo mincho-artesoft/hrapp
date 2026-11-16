@@ -438,10 +438,11 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   'who-can-see-what-in-google-calendar': {
-  "title": "Who Can See My Google Calendar? Sharing & Privacy Levels",
+  "seoTitle": "Who Can See My Google Calendar? Permissions & Privacy Check",
+  "title": "Who Can See My Google Calendar? All 4 Permission Levels Explained",
   "short": "Google Calendar access and privacy",
-  "description": "Check who can see your Google Calendar events, compare free/busy vs full details permissions, and verify public, group, or work sharing settings safely.",
-  "lede": "Before sharing a calendar, decide what the other person needs to do. Scheduling around you, reading event details and maintaining the calendar are different tasks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Verify exactly who can see your Google Calendar events—from public links and domain-wide work defaults to Free/Busy vs full event detail permissions.",
+  "lede": "Who can read your Google Calendar depends on three settings combined: whether public access is enabled, what default visibility your Google Workspace organization sets, and which individual permission level (Free/Busy, See all event details, Make changes, or Manage sharing) each person holds.",
   "commonBelief": "Giving one person a restricted setting guarantees they cannot see details through any other route.",
   "sections": [
     {
@@ -531,7 +532,7 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     "why-a-shared-calendar-does-not-appear",
     "work-and-personal-without-two-apps"
   ],
-  "updated": "2026-11-04",
+  "updated": "2026-11-12",
   "articleLinks": [
     {
       "slug": "icalendar-transp-class-busy-private",

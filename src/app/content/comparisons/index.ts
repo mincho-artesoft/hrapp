@@ -229,6 +229,46 @@ export const COMPARISON_CARDS: readonly ComparisonCardMeta[] = [
       'Neither aCalendar nor DigiCal runs on iOS; Android switchers get the closest free Google sync + readable Month event chips + built-in weather widgets in Cloud Calendars on iPhone.',
     updated: '2026-11-04',
   },
+  {
+    slug: 'busycal-vs-fantastical-vs-cloud-calendars',
+    group: 'apps',
+    badge: 'BusyCal vs Fantastical',
+    title: 'BusyCal vs Fantastical vs Cloud Calendars: 3-Way iOS, Mac & Web Breakdown',
+    seoTitle: 'BusyCal vs Fantastical vs Cloud Calendars (2026)',
+    short: 'BusyCal vs Fantastical vs Cloud Calendars',
+    description:
+      'Side-by-side 2026 comparison of BusyCal, Fantastical, and Cloud Calendars across iPhone, iPad, Mac, Web, weather forecasts, booking links, and 3-year cost.',
+    verdict:
+      'Pick Cloud Calendars for $0–$4.99/yr iOS + Web Studio + WeatherKit; pick BusyCal for one-time Mac/iOS CalDAV filters; pick Fantastical (~$57/yr) for Mac + NLP.',
+    updated: '2026-11-15',
+    featuredOnHome: true,
+  },
+  {
+    slug: 'flowsavvy-vs-reclaim-vs-motion-calendar-comparison',
+    group: 'apps',
+    badge: 'AI Auto-Schedulers',
+    title: 'FlowSavvy vs Reclaim.ai vs Motion vs Cloud Calendars: Auto-Scheduling vs Clear Control',
+    seoTitle: 'FlowSavvy vs Reclaim vs Motion vs Cloud Calendars',
+    short: 'FlowSavvy vs Reclaim vs Motion',
+    description:
+      'Compare AI task auto-schedulers (FlowSavvy, Reclaim.ai, Motion) with Cloud Calendars across algorithmic task reshuffling vs stable multi-account views.',
+    verdict:
+      'Pick FlowSavvy for budget task auto-blocking, Reclaim for team Habits, Motion for PM timelines, or Cloud Calendars for stable iCloud + Google + Outlook + WeatherKit.',
+    updated: '2026-11-15',
+  },
+  {
+    slug: 'vimcal-vs-amie-vs-akiflow-calendar-comparison',
+    group: 'apps',
+    badge: 'Speed & Executive',
+    title: 'Vimcal vs Amie vs Akiflow vs Cloud Calendars: Speed, Task Consolidation & Real Cost',
+    seoTitle: 'Vimcal vs Amie vs Akiflow vs Cloud Calendars',
+    short: 'Vimcal vs Amie vs Akiflow',
+    description:
+      'Compare executive productivity calendars (Vimcal, Amie, Akiflow) with Cloud Calendars across keyboard speed, iCloud + Outlook sync, booking links, and price.',
+    verdict:
+      'Skip $180–$228/yr desktop subscriptions unless Slack/Jira task triage or Vimcal hotkeys pay for themselves; Cloud Calendars gives iOS + Web booking for $0.',
+    updated: '2026-11-15',
+  },
 
   // 15–20: Multi-Account Sync, Protocols & Sharing Setups
   {
@@ -286,17 +326,111 @@ export const COMPARISON_CARDS: readonly ComparisonCardMeta[] = [
     updated: '2026-11-04',
   },
   {
+    slug: 'cloud-calendars-vs-calendly',
+    group: 'sync',
+    badge: 'vs Calendly',
+    title: 'Cloud Calendars vs Calendly: Free Booking Links + Full Web & iOS Calendar',
+    seoTitle: 'Cloud Calendars vs Calendly: Free Booking & Calendar App',
+    short: 'Cloud Calendars vs Calendly',
+    description:
+      'Compare Cloud Calendars and Calendly across free meeting types, Google & Microsoft Outlook sync, browser calendar timeline, and iPhone weather & widgets.',
+    verdict:
+      'Pick Cloud Calendars for multiple free meeting types, Google + Outlook busy checks, and a full Web + iOS calendar; pick Calendly Teams for round-robin sales routing and Stripe checkout.',
+    updated: '2026-11-12',
+    featuredOnHome: true,
+  },
+  {
+    slug: 'cloud-calendars-vs-cal-com',
+    group: 'sync',
+    badge: 'vs Cal.com',
+    title: 'Cloud Calendars vs Cal.com: Full Calendar App + Hosted Booking Compared',
+    seoTitle: 'Cloud Calendars vs Cal.com: Calendar + Booking Compared',
+    short: 'Cloud Calendars vs Cal.com',
+    description:
+      'Compare Cloud Calendars and Cal.com across zero-setup web booking, built-in Day/Week/Month calendar views, Google & Outlook sync, and native iOS widgets.',
+    verdict:
+      'Pick Cloud Calendars for an instant Web Calendar + Booking Studio paired with a native iOS weather & widget app; pick Cal.com for self-hosted Docker infrastructure and custom developer webhooks.',
+    updated: '2026-11-12',
+  },
+  {
+    slug: 'cloud-calendars-vs-google-appointment-schedules',
+    group: 'sync',
+    badge: 'vs Google Schedules',
+    title: 'Cloud Calendars vs Google Calendar Appointment Schedules (Google + Outlook)',
+    seoTitle: 'Cloud Calendars vs Google Appointment Schedules',
+    short: 'Cloud Calendars vs Google Schedules',
+    description:
+      'Compare Cloud Calendars Web Booking and Google Calendar Appointment Schedules across Microsoft Outlook conflict checks, personal Gmail limits, and iOS views.',
+    verdict:
+      'Pick Cloud Calendars to check both Google Calendar and Microsoft Outlook busy times with single-use invite links; keep Google Schedules for Workspace-only auto-Meet & Stripe booking.',
+    updated: '2026-11-12',
+  },
+  {
+    slug: 'cloud-calendars-vs-doodle',
+    group: 'sync',
+    badge: 'vs Doodle',
+    title: 'Cloud Calendars vs Doodle: Clean Guest Booking, Event RSVPs & Two-Way iOS Sync',
+    seoTitle: 'Cloud Calendars vs Doodle: Ad-Free Booking & Event RSVPs',
+    short: 'Cloud Calendars vs Doodle',
+    description:
+      'Compare Cloud Calendars and Doodle across ad-free guest booking pages, shareable Event RSVP links, QR sign-in, Google & Outlook conflict checks, and iPhone views.',
+    verdict:
+      'Pick Cloud Calendars for ad-free /book/ and /event/ guest pages, QR sign-in ($0 with iOS app), and two-way iPhone sync; pick Doodle when a group must vote across candidate dates.',
+    updated: '2026-11-13',
+    featuredOnHome: true,
+  },
+  {
+    slug: 'cloud-calendars-vs-acuity-scheduling',
+    group: 'sync',
+    badge: 'vs Acuity Scheduling',
+    title: 'Cloud Calendars vs Acuity Scheduling: $0 iOS-Linked Booking vs Salon POS',
+    seoTitle: 'Cloud Calendars vs Acuity Scheduling: Booking & Calendar',
+    short: 'Cloud Calendars vs Acuity Scheduling',
+    description:
+      'Compare Cloud Calendars Web Booking + iOS Calendar against Acuity Scheduling (Squarespace) across pricing, intake forms, deposits, Google/Outlook busy checks, and iPhone sync.',
+    verdict:
+      'Pick Cloud Calendars for $0 iOS-linked Web Booking + a full daily iPhone/Web calendar; pick Acuity Scheduling ($16–$49/mo) when you need client deposits, packages, or HIPAA BAA.',
+    updated: '2026-11-13',
+  },
+  {
+    slug: 'cloud-calendars-vs-savvycal',
+    group: 'sync',
+    badge: 'vs SavvyCal',
+    title: 'Cloud Calendars vs SavvyCal: Single-Use Booking Links, QR Auth & iOS Calendar',
+    seoTitle: 'Cloud Calendars vs SavvyCal: Booking Links & iOS Sync',
+    short: 'Cloud Calendars vs SavvyCal',
+    description:
+      'Compare Cloud Calendars and SavvyCal across single-use invite links, Google & Microsoft 365 busy checks, recipient calendar overlays, pricing, and native iPhone planning.',
+    verdict:
+      'Pick Cloud Calendars for $0 iOS-unlocked Web Studio, single-use /book/ links, Event RSVPs, and a native WeatherKit iPhone app; pick SavvyCal ($12–$20/mo) for guest overlay grids and round-robin.',
+    updated: '2026-11-13',
+  },
+  {
+    slug: 'cloud-calendars-vs-luma-and-partiful',
+    group: 'sync',
+    badge: 'vs Luma & Partiful',
+    title: 'Cloud Calendars vs Luma & Partiful: QR Event RSVPs, Live ICS Feeds & Weather',
+    seoTitle: 'Cloud Calendars vs Luma & Partiful: Event RSVP & Sync',
+    short: 'Cloud Calendars vs Luma & Partiful',
+    description:
+      'Compare Cloud Calendars shareable Event RSVP pages (/event/) with Luma and Partiful across QR invites, live-updating .ics feeds, two-way iPhone sync, ticketing, and WeatherKit.',
+    verdict:
+      'Pick Cloud Calendars when Event RSVPs, QR invites, live .ics updates, and your daily Google/Outlook/iCloud + WeatherKit calendar belong in one place; pick Luma for paid tickets or Partiful for SMS blasts.',
+    updated: '2026-11-13',
+    featuredOnHome: true,
+  },
+  {
     slug: 'calendar-conflict-detection-vs-calendly-booking-links',
     group: 'sync',
-    badge: 'Booking vs Viewing',
-    title: 'Calendar Conflict Views vs Calendly Booking Links',
-    seoTitle: 'Calendar Conflict Views vs Calendly Booking Links',
-    short: 'Conflict Views vs Calendly Booking Links',
+    badge: 'Booking + Conflict View',
+    title: 'Calendar Conflict Views & Web Booking vs Calendly Links',
+    seoTitle: 'Cloud Calendars Booking & Conflict Views vs Calendly',
+    short: 'Conflict Views & Web Booking vs Calendly',
     description:
-      'Compare external slot-booking tools (Calendly, Google Appointment Schedules, Fantastical Openings, SavvyCal) with multi-column conflict inspection in Cloud Calendars.',
+      'Compare Cloud Calendars Web Booking & multi-column iPhone conflict views with Calendly, Google Appointment Schedules, and Fantastical Openings.',
     verdict:
-      'Use Calendly or Google Appointment Schedules when external clients pick an open slot; use Cloud Calendars Multi-calendar columns to spot overlaps visually and share single events.',
-    updated: '2026-11-04',
+      'Use Cloud Calendars Web Studio (/calendar/) for free @handle booking links synced with Google & Outlook plus Multi-calendar iOS columns to spot iCloud/work overlaps visually.',
+    updated: '2026-11-12',
   },
   {
     slug: 'timezone-travel-calendar-handling-comparison-iphone',
@@ -310,6 +444,46 @@ export const COMPARISON_CARDS: readonly ComparisonCardMeta[] = [
     verdict:
       'Anchor flights to departure/arrival local zones, check Time Zone Override settings before landing, and use Cloud Calendars’ city-selectable WeatherKit hub to check destination forecasts.',
     updated: '2026-11-04',
+  },
+  {
+    slug: 'icloud-calendar-on-windows-pc-and-web-browser',
+    group: 'sync',
+    badge: 'Windows + iPhone QR',
+    title: 'How to Use iCloud, Google & Outlook Calendars Together on a Windows PC (Without Apple ID Prompts)',
+    seoTitle: 'iCloud, Google & Outlook Calendar on Windows PC & Web',
+    short: 'iCloud + Google + Outlook on Windows & Web',
+    description:
+      'Compare iCloud.com, iCloud for Windows, New Outlook, and Cloud Calendars Web Studio (with instant iPhone QR sign-in) across Windows PCs and iOS.',
+    verdict:
+      'Scan the Web Studio QR code from your iPhone to unlock browser Day/Week/Month views, Google + Outlook overlays, and /book/ links on Windows for $0.',
+    updated: '2026-11-15',
+    featuredOnHome: true,
+  },
+  {
+    slug: 'calendly-vs-cal-com-vs-savvycal-booking-links',
+    group: 'sync',
+    badge: '4-Way Booking Links',
+    title: 'Calendly vs Cal.com vs SavvyCal vs Cloud Calendars: 4-Way Booking Link Architecture',
+    seoTitle: 'Calendly vs Cal.com vs SavvyCal vs Cloud Calendars',
+    short: 'Calendly vs Cal.com vs SavvyCal',
+    description:
+      'Compare Calendly, Cal.com, SavvyCal, and Cloud Calendars across multi-calendar conflict checks, single-use links, guest UX, iPhone apps, and annual cost.',
+    verdict:
+      'Pick Cloud Calendars for $0 iOS-linked /book/ + /event/ pages and an iPhone WeatherKit calendar; pick Cal.com for self-hosting or SavvyCal for guest overlays.',
+    updated: '2026-11-15',
+  },
+  {
+    slug: 'microsoft-bookings-vs-bookings-with-me-vs-cloud-calendars',
+    group: 'sync',
+    badge: 'Microsoft Bookings',
+    title: 'Microsoft Bookings vs Outlook "Bookings with Me" vs Cloud Calendars: External Scheduling Compared',
+    seoTitle: 'Microsoft Bookings vs Bookings with Me vs Cloud Calendars',
+    short: 'Microsoft Bookings vs Cloud Calendars',
+    description:
+      'Compare shared Microsoft Bookings mailboxes, personal Outlook "Bookings with Me" pages, and Cloud Calendars when you also have Google or iCloud calendars.',
+    verdict:
+      'Microsoft Bookings cannot check personal Gmail/iCloud busy slots; Cloud Calendars checks both Microsoft 365/Outlook and Google Calendar before offering slots.',
+    updated: '2026-11-15',
   },
 
   // 21–24: Widgets, Month Titles, Weather & Quick Entry
@@ -448,6 +622,32 @@ export const COMPARISON_CARDS: readonly ComparisonCardMeta[] = [
       'Cloud Calendars separates multi-day all-day banners cleanly in the app while keeping Home Screen event widgets focused strictly on timed meetings; use Apple Calendar or Fantastical when ISO week numbers are required.',
     updated: '2026-11-04',
   },
+  {
+    slug: '2-2-3-and-2-2-5-5-co-parenting-custody-calendar-iphone',
+    group: 'devices',
+    badge: 'Co-Parenting Rotas',
+    title: '2-2-3 & 2-2-5-5 Co-Parenting Custody Calendar Setup on iPhone & Web',
+    seoTitle: '2-2-3 & 2-2-5-5 Co-Parenting Custody Calendar Setup',
+    short: '2-2-3 & 2-2-5-5 Co-Parenting Calendars',
+    description:
+      'Exact recurrence math and app comparison for 2-2-3, 2-2-5-5, 3-4-4-3, and 7/7 custody schedules across Cloud Calendars, shared iCloud/Google, and court apps.',
+    verdict:
+      'Model 2-2-3 and 2-2-5-5 as clean 14-day recurring blocks in a shared calendar, then view custody, work, and WeatherKit side by side in Cloud Calendars.',
+    updated: '2026-11-15',
+  },
+  {
+    slug: '24-48-and-48-96-firefighter-shift-calendar-iphone',
+    group: 'devices',
+    badge: '24/48 & 48/96 Shifts',
+    title: '24/48 & 48/96 Firefighter Shift Calendar on iPhone: Platoon Colors, Kelly Days & Family Sync',
+    seoTitle: '24/48 & 48/96 Firefighter Shift Calendar on iPhone',
+    short: '24/48 & 48/96 Firefighter Shift Calendars',
+    description:
+      'Exact cycle lengths (3-day 24/48, 6-day 48/96, 9-day California) and how to overlay A/B/C platoon shifts with family iCloud, Google, and weather on iPhone.',
+    verdict:
+      'Publish platoon shifts + Kelly day exceptions to a shared calendar so spouses see 12-month duty blocks alongside family events and hourly station weather.',
+    updated: '2026-11-15',
+  },
 ];
 
 export const COMPARISON_SLUGS: readonly string[] = COMPARISON_CARDS.map((card) => card.slug);
@@ -497,6 +697,30 @@ const BATCH_5 = new Set([
   'all-day-multi-day-banners-and-week-numbers-calendars-ios',
 ]);
 
+const BATCH_6 = new Set([
+  'cloud-calendars-vs-calendly',
+  'cloud-calendars-vs-cal-com',
+  'cloud-calendars-vs-google-appointment-schedules',
+]);
+
+const BATCH_7 = new Set([
+  'cloud-calendars-vs-doodle',
+  'cloud-calendars-vs-acuity-scheduling',
+  'cloud-calendars-vs-savvycal',
+  'cloud-calendars-vs-luma-and-partiful',
+]);
+
+const BATCH_8 = new Set([
+  'icloud-calendar-on-windows-pc-and-web-browser',
+  'busycal-vs-fantastical-vs-cloud-calendars',
+  'flowsavvy-vs-reclaim-vs-motion-calendar-comparison',
+  'vimcal-vs-amie-vs-akiflow-calendar-comparison',
+  'calendly-vs-cal-com-vs-savvycal-booking-links',
+  'microsoft-bookings-vs-bookings-with-me-vs-cloud-calendars',
+  '2-2-3-and-2-2-5-5-co-parenting-custody-calendar-iphone',
+  '24-48-and-48-96-firefighter-shift-calendar-iphone',
+]);
+
 export async function loadComparisonArticle(slug: string): Promise<LocalisedArticle | undefined> {
   if (BATCH_1.has(slug)) {
     return (await import('./batch-1-core-apps')).COMPARISONS_BATCH_1[slug];
@@ -512,6 +736,15 @@ export async function loadComparisonArticle(slug: string): Promise<LocalisedArti
   }
   if (BATCH_5.has(slug)) {
     return (await import('./batch-5-devices-alternatives-workflows')).COMPARISONS_BATCH_5[slug];
+  }
+  if (BATCH_6.has(slug)) {
+    return (await import('./batch-6-web-booking')).COMPARISONS_BATCH_6[slug];
+  }
+  if (BATCH_7.has(slug)) {
+    return (await import('./batch-7-events-qr-scheduling')).COMPARISONS_BATCH_7[slug];
+  }
+  if (BATCH_8.has(slug)) {
+    return (await import('./batch-8-nonbranded-and-workflows')).COMPARISONS_BATCH_8[slug];
   }
   return undefined;
 }

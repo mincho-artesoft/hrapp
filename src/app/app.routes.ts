@@ -82,6 +82,11 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
       loadComponent: () => import('./pages/admin-console-page/admin-console-page.component').then((m) => m.AdminConsolePageComponent),
       data: { locale },
     },
+    {
+      path: p('app-auth'),
+      loadComponent: () => import('./pages/app-auth-page/app-auth-page.component').then((m) => m.AppAuthPageComponent),
+      data: { locale },
+    },
   ];
 });
 

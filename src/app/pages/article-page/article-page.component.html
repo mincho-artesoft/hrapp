@@ -10,6 +10,12 @@
         <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
           {{ storeLabel }}
         </a>
+        <a class="btn btn--ghost" [href]="localised('/calendar')">
+          {{ webCalendarLabel }}
+        </a>
+        <a class="btn btn--ghost" [href]="localised('/') + '#booking'">
+          {{ freeBookingLabel }}
+        </a>
       </div>
     </header>
 
@@ -73,9 +79,14 @@
       @if (i === inlineCtaAfter) {
         <aside class="cta cta--inline">
           <p class="article__cta">{{ chrome.ctaLine }}</p>
-          <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
-            {{ storeLabel }}
-          </a>
+          <div class="art__top-cta">
+            <a class="btn btn--primary" [href]="store()" target="_blank" rel="noopener">
+              {{ storeLabel }}
+            </a>
+            <a class="btn btn--ghost" [href]="localised('/calendar')">
+              {{ webCalendarLabel }}
+            </a>
+          </div>
         </aside>
       }
     }

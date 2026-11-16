@@ -123,11 +123,12 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   "change-calendar-color-iphone": {
-  "updated": "2026-11-04",
-  "title": "How to Change Calendar Colors on iPhone (iCloud & Google)",
+  "updated": "2026-11-12",
+  "seoTitle": "How to Change Calendar Colors on iPhone (iCloud & Google)",
+  "title": "How to Change Calendar & Event Colors on iPhone (iCloud, Google & Sync)",
   "short": "Calendar colors and event colors",
-  "description": "Change calendar colors on iPhone without moving events: compare iCloud, local, Google Calendar, and shared-calendar color settings and per-event colors.",
-  "lede": "A color can identify a calendar, override one event or simply reflect an app’s display style. First choose which of those you want to change. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Change calendar colors on iPhone step by step: tap Calendars → (i) for iCloud/local lists, compare Google per-event colors, and see which changes sync.",
+  "lede": "To change a calendar’s color on iPhone, open Calendar → tap Calendars at the bottom → tap the info (i) button beside the list → pick a new color; iCloud colors sync across your Apple devices, whereas subscribed feeds and per-event Google Calendar colors follow their own sync rules.",
   "commonBelief": "Changing a calendar’s color changes only one event, appears identically in every app and has the same effect for every person viewing the calendar.",
   "sections": [
     {
@@ -240,11 +241,12 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
 },
 
   "recover-deleted-calendar-events-iphone": {
-  "updated": "2026-11-04",
-  "title": "How to Recover Deleted Calendar Events on iPhone Safely",
+  "updated": "2026-11-12",
+  "seoTitle": "How to Recover Deleted Calendar Events on iPhone (3 Ways)",
+  "title": "How to Recover Deleted Calendar Events on iPhone (iCloud, Google & Outlook)",
   "short": "Recover a deleted calendar event",
-  "description": "Check whether a missing iPhone event is hidden or deleted, then restore it safely via Google Calendar Trash or iCloud.com Data Recovery without surprises.",
-  "lede": "A missing appointment does not always need restoring. First establish where it was stored and whether it still exists there. If it was deleted, the recovery method depends on that provider. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Missing an iPhone calendar event? First check hidden calendars and sync limits, then restore deleted events from iCloud.com Data Recovery or Google Trash.",
+  "lede": "When an appointment disappears on iPhone, first check whether its calendar is simply unchecked or outside your sync window—if it was truly deleted, you can restore it through iCloud.com Data Recovery (for iCloud calendars), Google Calendar Trash (within 30 days), or Outlook Deleted Items depending on which account stored it.",
   "commonBelief": "Restoring a calendar always brings back just the missing appointment, with every invitation and sharing arrangement unchanged.",
   "sections": [
     {
@@ -568,11 +570,12 @@ export const HELP_EN_US: Readonly<Record<string, LocalisedArticle>> = {
   ]
 },
   "calendar-notifications-missing-silent-or-duplicated": {
-  "updated": "2026-11-04",
-  "title": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
+  "updated": "2026-11-12",
+  "seoTitle": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
+  "title": "Fix iPhone Calendar Alerts Missing, Silent, or Firing Twice",
   "short": "Troubleshoot calendar notifications",
-  "description": "Fix missing, silent, or duplicate calendar notifications on iPhone: check saved event alerts, iOS Notification & Focus settings, and multiple apps.",
-  "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+  "description": "Troubleshoot missing, silent, or duplicate calendar notifications on iPhone: check event alert times, iOS Focus modes, Time Sensitive settings, and extra apps.",
+  "lede": "When iPhone calendar notifications fail, match the fix to the exact symptom: an absent banner usually means the event itself was saved with Alert: None or Notifications are off; a silent banner points to Focus mode, Scheduled Summary, or muted alert sounds; and double alerts happen when two calendar apps notify for the same synced account.",
   "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
   "sections": [
     {

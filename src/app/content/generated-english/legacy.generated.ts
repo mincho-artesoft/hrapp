@@ -2811,10 +2811,11 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "who-can-see-what-in-google-calendar": {
-    "title": "Who Can See My Google Calendar? Sharing & Privacy Levels",
+    "seoTitle": "Who Can See My Google Calendar? Permissions & Privacy Check",
+    "title": "Who Can See My Google Calendar? All 4 Permission Levels Explained",
     "short": "Google Calendar access and privacy",
-    "description": "Check who can see your Google Calendar events, compare free/busy vs full details permissions, and verify public, group, or work sharing settings safely.",
-    "lede": "Before sharing a calendar, decide what the other person needs to do. Scheduling around you, reading event details and maintaining the calendar are different tasks. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Verify exactly who can see your Google Calendar events—from public links and domain-wide work defaults to Free/Busy vs full event detail permissions.",
+    "lede": "Who can read your Google Calendar depends on three settings combined: whether public access is enabled, what default visibility your Google Workspace organization sets, and which individual permission level (Free/Busy, See all event details, Make changes, or Manage sharing) each person holds.",
     "commonBelief": "Giving one person a restricted setting guarantees they cannot see details through any other route.",
     "sections": [
       {
@@ -2904,7 +2905,7 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
       "why-a-shared-calendar-does-not-appear",
       "work-and-personal-without-two-apps"
     ],
-    "updated": "2026-11-04",
+    "updated": "2026-11-12",
     "articleLinks": [
       {
         "slug": "icalendar-transp-class-busy-private",
@@ -4790,11 +4791,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "change-calendar-color-iphone": {
-    "updated": "2026-11-04",
-    "title": "How to Change Calendar Colors on iPhone (iCloud & Google)",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Change Calendar Colors on iPhone (iCloud & Google)",
+    "title": "How to Change Calendar & Event Colors on iPhone (iCloud, Google & Sync)",
     "short": "Calendar colors and event colors",
-    "description": "Change calendar colors on iPhone without moving events: compare iCloud, local, Google Calendar, and shared-calendar color settings and per-event colors.",
-    "lede": "A color can identify a calendar, override one event or simply reflect an app’s display style. First choose which of those you want to change. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Change calendar colors on iPhone step by step: tap Calendars → (i) for iCloud/local lists, compare Google per-event colors, and see which changes sync.",
+    "lede": "To change a calendar’s color on iPhone, open Calendar → tap Calendars at the bottom → tap the info (i) button beside the list → pick a new color; iCloud colors sync across your Apple devices, whereas subscribed feeds and per-event Google Calendar colors follow their own sync rules.",
     "commonBelief": "Changing a calendar’s color changes only one event, appears identically in every app and has the same effect for every person viewing the calendar.",
     "sections": [
       {
@@ -4906,11 +4908,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "recover-deleted-calendar-events-iphone": {
-    "updated": "2026-11-04",
-    "title": "How to Recover Deleted Calendar Events on iPhone Safely",
+    "updated": "2026-11-12",
+    "seoTitle": "How to Recover Deleted Calendar Events on iPhone (3 Ways)",
+    "title": "How to Recover Deleted Calendar Events on iPhone (iCloud, Google & Outlook)",
     "short": "Recover a deleted calendar event",
-    "description": "Check whether a missing iPhone event is hidden or deleted, then restore it safely via Google Calendar Trash or iCloud.com Data Recovery without surprises.",
-    "lede": "A missing appointment does not always need restoring. First establish where it was stored and whether it still exists there. If it was deleted, the recovery method depends on that provider. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Missing an iPhone calendar event? First check hidden calendars and sync limits, then restore deleted events from iCloud.com Data Recovery or Google Trash.",
+    "lede": "When an appointment disappears on iPhone, first check whether its calendar is simply unchecked or outside your sync window—if it was truly deleted, you can restore it through iCloud.com Data Recovery (for iCloud calendars), Google Calendar Trash (within 30 days), or Outlook Deleted Items depending on which account stored it.",
     "commonBelief": "Restoring a calendar always brings back just the missing appointment, with every invitation and sharing arrangement unchanged.",
     "sections": [
       {
@@ -5232,11 +5235,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "calendar-notifications-missing-silent-or-duplicated": {
-    "updated": "2026-11-04",
-    "title": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
+    "updated": "2026-11-12",
+    "seoTitle": "iPhone Calendar Alerts Not Working, Silent, or Duplicated?",
+    "title": "Fix iPhone Calendar Alerts Missing, Silent, or Firing Twice",
     "short": "Troubleshoot calendar notifications",
-    "description": "Fix missing, silent, or duplicate calendar notifications on iPhone: check saved event alerts, iOS Notification & Focus settings, and multiple apps.",
-    "lede": "Start with what actually happened: was the event missing, was its notification absent, did it appear without sound, or did two apps alert you? Each points to a different check. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Troubleshoot missing, silent, or duplicate calendar notifications on iPhone: check event alert times, iOS Focus modes, Time Sensitive settings, and extra apps.",
+    "lede": "When iPhone calendar notifications fail, match the fix to the exact symptom: an absent banner usually means the event itself was saved with Alert: None or Notifications are off; a silent banner points to Focus mode, Scheduled Summary, or muted alert sounds; and double alerts happen when two calendar apps notify for the same synced account.",
     "commonBelief": "If an event appears in the calendar, every alert and notification permission must already be configured.",
     "sections": [
       {
@@ -6295,11 +6299,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "shift-work-calendar-iphone-rotating-schedules": {
-    "updated": "2026-10-22",
-    "title": "Shift work calendar on iPhone: plan a rotating schedule without losing changes",
+    "updated": "2026-11-12",
+    "seoTitle": "Shift Work Calendar on iPhone: Plan Rotating & Night Shifts",
+    "title": "Shift Work Calendar on iPhone: Manage Rotating & Overnight Schedules",
     "short": "Rotating shifts on iPhone",
-    "description": "Choose a shift planner or calendar view, anchor a repeating rota, handle overnight shifts and check exported changes alongside personal appointments.",
-    "lede": "A rotating work pattern rarely fits neatly into a Monday-to-Friday calendar. The useful setup keeps the employer’s latest rota authoritative while letting you see work beside appointments and family plans. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "Set up rotating shifts (4-on/4-off, Pitman, 2-2-3) and overnight hours alongside personal events on iPhone without breaking dates when shifts swap.",
+    "lede": "Managing a rotating 4-on/4-off, 2-2-3, or overnight shift schedule on iPhone works best when you anchor the cycle to a verified start date, enter explicit next-day end times for night shifts, and view your work rota alongside personal iCloud, Google, and Outlook events in one unified grid.",
     "sections": [
       {
         "heading": "Choose a shift planner or a calendar overview",
@@ -6403,11 +6408,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "booking-link-or-shared-calendar": {
-    "updated": "2026-10-23",
-    "title": "Booking link, event invitation or shared calendar: which should you send?",
+    "updated": "2026-11-12",
+    "seoTitle": "Booking Link vs Shared Calendar vs Invite: Which Works Best?",
+    "title": "Booking Link vs Shared Calendar vs Meeting Invite: Which Should You Send?",
     "short": "Booking versus calendar sharing",
-    "description": "Let someone choose a time, invite them to an existing meeting or share an ongoing schedule. Compare booking links with invitations and calendar access.",
-    "lede": "“Send me your calendar” can mean three different things: offer a choice of appointment times, invite someone to a meeting already arranged, or give continuing access to a schedule. Choosing the right link avoids both extra messages and unnecessary disclosure. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "description": "Should you send a booking link, propose time slots, send a calendar invite, or share your calendar? Compare privacy, friction, and sync for each option.",
+    "lede": "Send a booking link when an external client or guest needs to pick one open slot without seeing your schedule; send a direct calendar invitation once a specific time is already agreed; and use calendar sharing only for teammates or family who need ongoing visibility into your week.",
     "sections": [
       {
         "heading": "Use a booking page when the time is still undecided",
@@ -6722,11 +6728,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "iphone-calendar-tasks-reminders-versus-event-alerts": {
-    "updated": "2026-10-23",
-    "title": "Tasks and reminders in an iPhone calendar: choose the right kind of item",
+    "updated": "2026-11-12",
+    "seoTitle": "Apple Reminders in iPhone Calendar: Tasks vs Event Alerts",
+    "title": "iPhone Calendar Tasks & Reminders vs Event Alerts: How to Use Each",
     "short": "Tasks, reminders and event alerts",
-    "description": "See tasks beside appointments without confusing due dates, work time and alerts. Compare Apple Calendar and Readdle task integration on iPhone.",
-    "lede": "A meeting at 11:00, a task due on Friday and an alert thirty minutes before a meeting describe different things. A useful combined calendar preserves those differences while helping you decide what to do next. This guide is published by Arte Soft, the developer of Cloud Calendars.",
+    "description": "See scheduled Apple Reminders directly inside iPhone Calendar on iOS 18+, and decide when to use a due-date task, a time block, or an event alert.",
+    "lede": "Scheduled Apple Reminders with a date and time now appear directly inside the iPhone Calendar timeline where you can check them off, while appointments block out committed hours and event alerts simply fire advance warnings. Picking the right item type keeps unfinished tasks from vanishing like past meetings.",
     "sections": [
       {
         "heading": "Separate an appointment, an action and an alert",
@@ -7431,11 +7438,12 @@ export const ARTICLES: Readonly<Record<string, LocalisedArticle>> = {
     ]
   },
   "can-others-see-google-calendar-tasks": {
-    "updated": "2026-10-23",
-    "title": "Can others see your Google Calendar tasks? Check timed tasks and permissions",
+    "updated": "2026-11-12",
+    "seoTitle": "Can Others See My Google Calendar Tasks? Privacy Rules",
+    "title": "Can Others See Your Google Calendar Tasks? Timed vs Untimed Privacy",
     "short": "Google task visibility",
-    "description": "Check whether Google tasks have start and end times, how busy blocks appear, and how task visibility interacts with shared calendar permissions.",
-    "lede": "Google’s current guidance distinguishes timed tasks from other tasks. Check the item before assuming it is visible—or hidden. Arte Soft, the developer of Cloud Calendars, publishes this guide.",
+    "description": "Untimed Google Tasks stay private, while timed tasks with start and end times have configurable Busy and visibility settings on shared Google Calendars.",
+    "lede": "In Google Calendar, untimed tasks stay private to you, whereas timed tasks (with both a start and end time) can display a Busy block and configurable details depending on Advanced task settings and your shared calendar permissions.",
     "sections": [
       {
         "heading": "Identify the kind of item before checking access",

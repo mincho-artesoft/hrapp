@@ -413,6 +413,62 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     ],
     updated: '2026-08-27',
   },
+  'qr-code-sign-in-and-ios-totp-authenticator-guide': {
+    slug: 'qr-code-sign-in-and-ios-totp-authenticator-guide',
+    family: 'sharing',
+    intent: 'device',
+    claims: [],
+    updated: '2026-11-13',
+  },
+  'two-way-personal-cloud-calendar-sync-iphone-web': {
+    slug: 'two-way-personal-cloud-calendar-sync-iphone-web',
+    family: 'unify',
+    intent: 'unify',
+    claims: [],
+    updated: '2026-11-13',
+  },
+  'create-public-booking-page-buffers-and-one-time-links': {
+    slug: 'create-public-booking-page-buffers-and-one-time-links',
+    family: 'sharing',
+    intent: 'core',
+    claims: [],
+    updated: '2026-11-13',
+  },
+  'host-event-rsvp-page-with-qr-code-and-live-ics-feed': {
+    slug: 'host-event-rsvp-page-with-qr-code-and-live-ics-feed',
+    family: 'sharing',
+    intent: 'core',
+    claims: [],
+    updated: '2026-11-13',
+  },
+  'outlook-automatic-replies-out-of-office-auto-decline-meetings': {
+    slug: 'outlook-automatic-replies-out-of-office-auto-decline-meetings',
+    family: 'planning',
+    intent: 'editing',
+    claims: [],
+    updated: '2026-11-15',
+  },
+  'google-calendar-out-of-office-auto-decline-meetings-settings': {
+    slug: 'google-calendar-out-of-office-auto-decline-meetings-settings',
+    family: 'planning',
+    intent: 'editing',
+    claims: [],
+    updated: '2026-11-15',
+  },
+  'outlook-room-finder-book-conference-room-workspace': {
+    slug: 'outlook-room-finder-book-conference-room-workspace',
+    family: 'planning',
+    intent: 'core',
+    claims: [],
+    updated: '2026-11-15',
+  },
+  'teams-channel-calendar-meeting-invite-all-members-vs-selected': {
+    slug: 'teams-channel-calendar-meeting-invite-all-members-vs-selected',
+    family: 'sharing',
+    intent: 'unify',
+    claims: [],
+    updated: '2026-11-15',
+  },
 };
 
 /** Slugs in publication order. The hub groups them by family. */

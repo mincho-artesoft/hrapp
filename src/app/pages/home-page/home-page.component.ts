@@ -79,7 +79,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
       name: APP_NAME,
-      operatingSystem: `iOS ${APP_MIN_IOS} or later`,
+      operatingSystem: `Web, iOS ${APP_MIN_IOS} or later, iPadOS ${APP_MIN_IOS} or later`,
       applicationCategory: 'ProductivityApplication',
       downloadUrl: APP_STORE_URL,
       sameAs: [

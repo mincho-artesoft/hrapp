@@ -301,7 +301,15 @@ export const ARTICLE_SLUGS: Readonly<Record<string, readonly string[]>> = {
     "ipad-family-calendar-display-skylight-dakboard",
     "sync-google-tasks-apple-reminders-iphone",
     "weather-calendar-history-versus-forecast-iphone",
-    "weekly-schedule-builder"
+    "weekly-schedule-builder",
+    "qr-code-sign-in-and-ios-totp-authenticator-guide",
+    "two-way-personal-cloud-calendar-sync-iphone-web",
+    "create-public-booking-page-buffers-and-one-time-links",
+    "host-event-rsvp-page-with-qr-code-and-live-ics-feed",
+    "outlook-automatic-replies-out-of-office-auto-decline-meetings",
+    "google-calendar-out-of-office-auto-decline-meetings-settings",
+    "outlook-room-finder-book-conference-room-workspace",
+    "teams-channel-calendar-meeting-invite-all-members-vs-selected"
   ],
   "es-ES": [
     "onecal-alternative-iphone-calendar-view-or-sync",

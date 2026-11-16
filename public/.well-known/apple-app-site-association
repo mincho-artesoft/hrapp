@@ -1,6 +1,26 @@
 {
   "applinks": {
-    "details": []
+    "details": [
+      {
+        "appIDs": [
+          "8293TNMX6S.Deksan.CalendarASD"
+        ],
+        "components": [
+          {
+            "/": "/app-auth"
+          },
+          {
+            "/": "/app-auth/*"
+          },
+          {
+            "/": "/*/app-auth"
+          },
+          {
+            "/": "/*/app-auth/*"
+          }
+        ]
+      }
+    ]
   },
   "appclips": {
     "apps": [

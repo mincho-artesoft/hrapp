@@ -2,22 +2,22 @@ import type { LocalisedArticle } from '../types';
 
 export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
   'calendar-conflict-detection-vs-calendly-booking-links': {
-    updated: '2026-11-04',
-    seoTitle: 'Calendar Conflict Views vs Calendly Booking Links',
-    title: 'Calendar Conflict Views vs Calendly Booking Links',
-    short: 'Conflict Views vs Calendly Booking Links',
+    updated: '2026-11-12',
+    seoTitle: 'Cloud Calendars Booking & Conflict Views vs Calendly',
+    title: 'Calendar Conflict Views & Web Booking vs Calendly Links',
+    short: 'Conflict Views & Web Booking vs Calendly',
     description:
-      'Compare external slot-booking tools (Calendly, Google Appointment Schedules, Fantastical Openings, SavvyCal) with multi-column conflict inspection in Cloud Calendars.',
-    lede: 'Booking-link services (Calendly, Google Appointment Schedules, SavvyCal, and Fantastical Openings) and unified calendar apps (Cloud Calendars) solve opposite halves of scheduling: a booking link lets external clients or candidates pick an open slot from a web page, whereas a multi-calendar column viewer lets you inspect your own iCloud, Google, and Microsoft 365 schedules side by side before proposing or accepting times. Cloud Calendars does not host public booking pages; instead, it pairs cleanly with Calendly or Google Appointment Schedules and adds single-event link, QR, and iPhone App Clip sharing once a time is agreed. Arte Soft develops Cloud Calendars and publishes this comparison.',
+      'Compare Cloud Calendars Web Booking & multi-column iPhone conflict views with Calendly, Google Appointment Schedules, and Fantastical Openings.',
+    lede: 'Modern scheduling needs two surfaces working together: a self-serve public booking page where external clients pick an open slot, and a multi-calendar timeline where you inspect your own iCloud, Google, and Microsoft 365 schedules side by side. Cloud Calendars combines both—offering free browser-based `@handle` booking links (`/calendar/` and `/book/`) synced with Google Calendar and Microsoft Outlook alongside multi-column conflict inspection, hourly Apple WeatherKit forecasts, and single-event App Clip sharing on iPhone and iPad.',
     comparison: {
-      heading: 'Feature-by-Feature Comparison Matrix: Conflict Viewers vs Booking Pages',
+      heading: 'Feature-by-Feature Comparison Matrix: Unified Calendar + Booking vs Standalone Links',
       caption: 'Cloud Calendars vs Calendly, Google Appointment Schedules, and Fantastical Openings',
-      columns: ['Scheduling Capability', 'Cloud Calendars (iOS)', 'Calendly / SavvyCal', 'Google Appointment Schedules', 'Fantastical Openings'],
+      columns: ['Scheduling Capability', 'Cloud Calendars (Web + iOS)', 'Calendly / SavvyCal', 'Google Appointment Schedules', 'Fantastical Openings'],
       rows: [
         {
           cells: [
             'Primary scheduling role',
-            'Personal multi-account conflict viewer + single-event / calendar sharing',
+            'Web Calendar & public `@handle` booking links + multi-account iOS conflict viewer',
             'Public self-serve web booking links, routing forms & round-robin',
             'Web booking pages built directly into Google Calendar',
             'Personal booking links bundled inside Flexibits Premium',
@@ -26,7 +26,7 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
         {
           cells: [
             'External guest picks an open slot on web?',
-            'No — share a chosen event or calendar instead',
+            'Yes — free public `/book/?u=handle` & expiring invite links',
             'Yes — core product workflow',
             'Yes — guests book via browser without a Google account',
             'Yes — guests book or vote on polls in browser',
@@ -44,7 +44,7 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
         {
           cells: [
             'Multi-account conflict check coverage',
-            'Visual check across all selected iCloud, CalDAV, Google & M365 lists',
+            'Google + Microsoft OAuth on Web Booking; iCloud, CalDAV, Google & M365 on iOS',
             'Up to 1 calendar on Free; up to 6 connected calendars on Paid',
             'Checks selected secondary Google calendars (not native iCloud Push)',
             'Checks calendars connected to your Flexibits account',
@@ -118,7 +118,7 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
             {
               cells: [
                 'Buffer times & travel blocks',
-                'Manual buffer events + drag/resize in timeline',
+                'Configurable pre/post buffers on Web Meeting Types + drag/resize in timeline',
                 'Automated pre/post-meeting buffer rules on Event Types',
                 'Configurable buffer time & max bookings per day (Workspace)',
               ],
@@ -126,7 +126,7 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
             {
               cells: [
                 'Supported Platforms',
-                'iPhone & iPad (iOS / iPadOS 18.0+)',
+                'Web Browser (`/calendar/`, `/book/`) + iPhone & iPad (iOS / iPadOS 18.0+)',
                 'Web, iOS/Android companion apps & browser extensions',
                 'Configured on Desktop Web; booked from any browser',
               ],
@@ -156,9 +156,9 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
             {
               cells: [
                 'Inbound sales demos, coaching calls, or student office hours',
-                'No self-serve slot-picker web page',
-                'Calendly ($0–$12+/mo) or Google Appointment Schedules',
-                'Calendly / Google Schedules',
+                'Free public `@handle` & one-time booking links (`/calendar/`) with Google & Microsoft sync',
+                'Calendly ($0 for 1 event type / $10+ mo) or Google Appointment Schedules',
+                'Cloud Calendars Web Booking (1-on-1) or Calendly (team round-robin)',
               ],
             },
             {
@@ -195,10 +195,10 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
             },
             {
               cells: [
-                'All-in-one iOS/Mac calendar app + personal booking link under one bill',
-                'Calendar viewer & event sharing only',
+                'All-in-one Web/iOS calendar app + personal booking link',
+                'Free Web Calendar + Booking Studio (`/calendar/`) + iOS app ($0 Free / $4.99 yr ad-free)',
                 'Fantastical (~$57/yr) includes Openings',
-                'Fantastical',
+                'Cloud Calendars (lowest cost) or Fantastical (macOS desktop)',
               ],
             },
           ],
@@ -230,7 +230,7 @@ export const COMPARISONS_BATCH_4: Readonly<Record<string, LocalisedArticle>> = {
     faq: [
       {
         q: 'Does Cloud Calendars include a Calendly-style public booking link?',
-        a: 'No. Cloud Calendars is a multi-account calendar viewer and planner for iPhone and iPad with single-event and whole-calendar sharing (Reader, Writer, Owner), not a public slot-booking funnel.',
+        a: 'Yes. Cloud Calendars Web Studio (/calendar/) includes free public @handle booking pages (/book/?u=handle), custom meeting types with buffer times, one-time or expiring invite links, guest reschedule/cancel links, and Google Calendar + Microsoft Outlook busy-check and event write-back.',
       },
       {
         q: 'Do appointments booked through Calendly appear automatically in Cloud Calendars?',

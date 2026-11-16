@@ -138,7 +138,7 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
   # it per object at upload time.
   IMMUTABLE="public,max-age=31536000,immutable"
   SHORT="public,max-age=86400"
-  NEVER="no-cache,no-store,must-revalidate"
+  HTML_CACHE="public, max-age=3600"
 
   sync_flags=(--only-show-errors)
   [[ "$PRUNE" == "1" ]] && sync_flags+=(--delete)
@@ -155,16 +155,39 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
     --exclude "*.js" --exclude "*.css" --exclude "media/*" --exclude "*.html" \
     --cache-control "$SHORT"
 
-  # Every route is a real prerendered file now, so this is a plain recursive
-  # sync rather than the old arrangement: one index.html copied to a hand-kept
-  # list of route keys. That list had two failure modes -- a new route nobody
-  # added served a 404, and every route served the same empty <app-root>, so
-  # the 216 pages built above would never have reached the web at all.
-  log "3/3  prerendered HTML → never cached"
-  aws_do s3 sync "$DIST_DIR" "s3://$NG_DEPLOY_AWS_BUCKET" \
-    "${sync_flags[@]}" \
-    --exclude "*" --include "*.html" \
-    --cache-control "$NEVER" --content-type "text/html; charset=utf-8"
+  # Every route is a real prerendered file; upload only MD5-changed HTML objects.
+  log "3/3  prerendered HTML → public, max-age=3600 (MD5-only changed uploads)"
+  if [[ "$DRY_RUN" == "1" ]]; then
+    aws_do s3 sync "$DIST_DIR" "s3://$NG_DEPLOY_AWS_BUCKET" \
+      "${sync_flags[@]}" \
+      --exclude "*" --include "*.html" \
+      --cache-control "$HTML_CACHE" --content-type "text/html; charset=utf-8"
+  else
+    "$HOME/.venvs/aws/bin/python3" - "$DIST_DIR" "$NG_DEPLOY_AWS_BUCKET" "$NG_DEPLOY_AWS_REGION" "$HTML_CACHE" <<'PY'
+import hashlib, pathlib, sys
+from concurrent.futures import ThreadPoolExecutor
+import boto3
+
+dist_dir, bucket, region, cc = pathlib.Path(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4]
+s3 = boto3.client("s3", region_name=region)
+existing = {
+    o["Key"]: o["ETag"].strip('"')
+    for p in s3.get_paginator("list_objects_v2").paginate(Bucket=bucket)
+    for o in p.get("Contents", [])
+}
+files = [p for p in dist_dir.rglob("*.html") if p.is_file()]
+def put_if_changed(p: pathlib.Path) -> bool:
+    key = p.relative_to(dist_dir).as_posix()
+    body = p.read_bytes()
+    if existing.get(key) == hashlib.md5(body).hexdigest():
+        return False
+    s3.put_object(Bucket=bucket, Key=key, Body=body, ContentType="text/html; charset=utf-8", CacheControl=cc)
+    return True
+with ThreadPoolExecutor(max_workers=32) as ex:
+    uploaded = sum(1 for r in ex.map(put_if_changed, files) if r)
+print(f"     HTML MD5 sync: uploaded {uploaded} changed/new, skipped {len(files) - uploaded} unchanged.")
+PY
+  fi
 
   # The Apple App Site Association file has no extension, so the syncs above
   # would leave it as application/octet-stream. Apple's swcd fetches it directly
