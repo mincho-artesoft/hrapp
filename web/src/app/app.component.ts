@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppStoreBridgeComponent } from './components/app-store-bridge/app-store-bridge.component';
 import { ScrollService } from './core/scroll.service';
 import { ActiveLocaleService } from './core/active-locale.service';
+import { AdsenseService } from './core/adsense.service';
 import { APP_STORE_URL } from './core/app-facts';
 import { storeUrl } from './core/locales';
 import { isBrowser } from './core/motion';
@@ -46,6 +47,7 @@ export class AppComponent {
   readonly mainHref = computed(() => `${this.active.currentPath()}#main`);
   /** Instantiated here so the single rAF loop starts with the app. */
   private readonly scroll = inject(ScrollService);
+  private readonly adsense = inject(AdsenseService);
 
   constructor() {
     afterNextRender(() => {

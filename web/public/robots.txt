@@ -4,8 +4,11 @@
 # crawler and no admin surface, so the only rules are the ones that stop bots
 # wasting their budget on files that are not pages.
 #
-# Note: do not disallow /app-ads.txt or the JS/CSS bundles. AdMob's crawler
-# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization.
+# Note: do not disallow /ads.txt, /app-ads.txt or the JS/CSS bundles. AdSense
+# and AdMob crawlers obey robots.txt, so disallowing them fails authorization.
+
+User-agent: Mediapartners-Google
+Allow: /
 #
 # The pages are prerendered now -- every route ships as real HTML, so a crawler
 # that never runs JavaScript still sees the words. The bundles stay allowed
