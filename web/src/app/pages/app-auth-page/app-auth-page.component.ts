@@ -25,7 +25,7 @@ import { SeoService } from '../../core/seo.service';
         <h1>Sign in &amp; unlock Web Studio for free</h1>
         <p class="handoff-sub">
           Approve your browser sign-in in the <strong>Cloud Calendars</strong> iPhone or iPad app to
-          unlock the full Web Calendar, Event &amp; Booking Studio for free forever — plus your
+          unlock the full Web Calendar &amp; Event Studio for free forever — plus your
           built-in 6-digit Web Authenticator code.
         </p>
 
@@ -63,74 +63,94 @@ import { SeoService } from '../../core/seo.service';
         padding: 3rem 1.25rem;
       }
       .handoff-card {
-        max-width: 480px;
+        max-width: 460px;
         width: 100%;
-        padding: 2.2rem;
-        border-radius: 26px;
-        background: linear-gradient(165deg, rgba(19, 26, 54, 0.94), rgba(9, 13, 28, 0.97));
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 28px 80px -24px rgba(0, 0, 0, 0.85);
+        padding: 2rem;
+        border-radius: 22px;
+        background: var(--surface, #1c1c1e);
+        border: 1px solid var(--hair, #2c2c2e);
+        box-shadow: var(--shadow-mid);
         text-align: center;
       }
       .handoff-badge {
         display: inline-block;
-        padding: 0.3rem 0.78rem;
+        padding: 0.28rem 0.72rem;
         border-radius: 999px;
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.13em;
-        color: #8ef3ff;
-        background: rgba(56, 224, 240, 0.12);
-        border: 1px solid rgba(56, 224, 240, 0.28);
-        margin-bottom: 1rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--aurora-2);
+        background: var(--aurora-1-soft);
+        margin-bottom: 0.9rem;
       }
       h1 {
-        font-size: clamp(1.45rem, 3vw, 1.85rem);
+        font-size: clamp(1.4rem, 2.8vw, 1.75rem);
         line-height: 1.18;
-        margin: 0 0 0.75rem;
+        margin: 0 0 0.65rem;
       }
       .handoff-sub {
         font-size: 0.94rem;
-        line-height: 1.58;
-        color: rgba(230, 236, 255, 0.78);
-        margin: 0 0 1.5rem;
+        line-height: 1.55;
+        color: var(--ink-3);
+        margin: 0 0 1.4rem;
       }
       .handoff-btn {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding: 0.9rem 1.2rem;
+        min-height: 48px;
+        padding: 0.82rem 1.2rem;
         border-radius: 14px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 0.95rem;
         text-decoration: none;
-        margin-bottom: 0.75rem;
-        transition: transform 0.18s ease, opacity 0.18s ease;
-      }
-      .handoff-btn:hover {
-        transform: translateY(-1px);
+        margin-bottom: 0.65rem;
+        transition: background-color 0.18s ease, opacity 0.18s ease;
       }
       .handoff-btn--primary {
-        background: linear-gradient(135deg, #0a84ff, #38e0f0);
-        color: #041024;
+        background: var(--aurora-1, #2168de);
+        color: #ffffff;
+      }
+      .handoff-btn--primary:hover {
+        background: #2b74eb;
       }
       .handoff-btn--store {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        color: #ffffff;
+        background: var(--surface-2, #2c2c2e);
+        border: 1px solid var(--hair-strong, #38383a);
+        color: var(--ink);
       }
       .handoff-note {
         font-size: 0.82rem;
         line-height: 1.5;
-        color: rgba(230, 236, 255, 0.62);
-        margin: 0.8rem 0 1.25rem;
+        color: var(--ink-3);
+        margin: 0.75rem 0 1.15rem;
       }
       .handoff-back {
         font-size: 0.84rem;
-        color: #8ef3ff;
+        color: var(--accent-link);
         text-decoration: underline;
         text-underline-offset: 3px;
+      }
+      :host-context([data-theme='light']) {
+        .handoff-card {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.12);
+          box-shadow: var(--shadow-mid);
+        }
+        .handoff-badge {
+          color: #0369a1;
+          background: rgba(2, 132, 199, 0.1);
+          border-color: rgba(2, 132, 199, 0.26);
+        }
+        .handoff-sub { color: var(--ink-2); }
+        .handoff-note { color: var(--ink-3); }
+        .handoff-btn--primary { color: #ffffff; background: linear-gradient(135deg, #2563eb, #0284c7); }
+        .handoff-btn--store {
+          background: #f1f5f9;
+          border-color: rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
       }
     `,
   ],

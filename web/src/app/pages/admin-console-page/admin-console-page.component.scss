@@ -333,3 +333,55 @@
   color: #fff;
   font-size: 0.84rem;
 }
+
+:host-context([data-theme='light']) {
+  .adm-badge {
+    color: #7e22ce;
+    background: rgba(147, 51, 234, 0.1);
+    border-color: rgba(147, 51, 234, 0.3);
+  }
+  .adm-link {
+    background: #ffffff;
+    border-color: var(--hair-strong);
+    color: var(--ink);
+    &--out { color: #dc2626; }
+  }
+  .kpi-card,
+  .adm-panel {
+    background: #ffffff;
+    border-color: var(--hair);
+    box-shadow: var(--shadow-near);
+  }
+  .health-strip {
+    background: #ffffff;
+    border-color: var(--hair);
+    .is-ok { color: #047857; font-weight: 600; }
+  }
+  .adm-tabs {
+    background: #e2e8f0;
+    border-color: var(--hair);
+  }
+  .adm-search,
+  .adm-field input {
+    background: #f8fafc;
+    border-color: var(--hair-strong);
+    color: var(--ink);
+  }
+  .adm-table th,
+  .adm-table td {
+    border-bottom-color: var(--hair);
+  }
+  .tbl-link,
+  .uri-guide code {
+    color: #0369a1;
+  }
+  .pill {
+    background: rgba(15, 23, 42, 0.08);
+    &--ok { background: rgba(16, 185, 129, 0.14); color: #047857; }
+    &--err { background: rgba(239, 68, 68, 0.14); color: #b91c1c; }
+  }
+  .tbl-btn {
+    border-color: var(--hair-strong);
+    background: #f8fafc;
+  }
+}

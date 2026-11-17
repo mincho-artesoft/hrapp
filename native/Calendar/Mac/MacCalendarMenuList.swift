@@ -47,17 +47,35 @@ struct MacCalendarMenuList: View {
                                         .font(CalendarTypography.footnote).foregroundStyle(.secondary)
                                 }
                                 ForEach(items, id: \.calendarIdentifier) { item in
+                                    if let record = store.local.record(for: item) {
+                                        LocalCalendarListRow(
+                                            title: record.title, color: store.color(for: item),
+                                            isSelected: store.visibleCalendarIDs.contains(item.calendarIdentifier),
+                                            ownerEmail: record.sharing?.ownerEmail,
+                                            access: record.isReceivedSharedCalendar
+                                                ? (record.sharing.flatMap { CloudCalendarsAPI.EventAccess(rawValue: $0.access) } ?? .reader) : nil,
+                                            isRevoked: !record.available,
+                                            isPersonalCloud: record.accountLocal == true,
+                                            toggleAction: { store.toggleCalendar(item) },
+                                            editAction: { editCalendar(.init(destination: .local, calendar: item)) },
+                                            shareAction: store.canManage(item) ? {
+                                                guard store.backend.signedIn else { openAccount(); return }
+                                                sharing = .init(calendar: item)
+                                            } : nil
+                                        )
+                                    } else {
                                     CalendarRowView(calendar: item, isSelected: store.visibleCalendarIDs.contains(item.calendarIdentifier), toggleAction: store.toggleCalendar,
                                         editAction: { editCalendar(.init(destination: store.local.isLocal(item) ? .local : .iCloud, calendar: item)) },
                                         showEditButton: true, showShareButton: store.canManage(item), shareAction: {
                                             guard store.backend.signedIn else { openAccount(); return }
                                             sharing = .init(calendar: item)
                                         }, allowsEdit: (store.canEdit(item) || store.local.isLocal(item)) && !(store.local.record(for: item).map { store.backend.providers.contains(calendarID: $0.id) } ?? false))
+                                    }
                                 }
                             }
                             .disclosureGroupStyle(AppCalendarDisclosureStyle())
                             .padding(.horizontal, 16).padding(.vertical, 10)
-                            .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                            .background(group == "Shared with me" ? .clear : CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
                         }
                         MacCalendarProviderSections(store: store, providers: store.backend.providers,
                             editCalendar: editCalendar)

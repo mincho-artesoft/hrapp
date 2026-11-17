@@ -15,13 +15,17 @@ final class InvitationPushRegistration {
         var revision: Int
         var lastToken: String?
         var registered: Bool = false
+        // Protected, excluded-from-backup credential used only to disable the
+        // old installation. It never becomes a CalendarFeedSession again.
+        var pendingSignOut: CloudCalendarsAPI.Session?
     }
 
     private var installation: Installation?
     private var deviceToken: String?
     private var syncTask: Task<Void, Never>?
     private var needsSync = false
-    private var signingOut = false
+    private var generation = 0
+    private var cleanupTask: Task<Void, Never>?
     private(set) var remoteInvitationsEnabled = false
     private(set) var lastError: String?
 
@@ -35,13 +39,26 @@ final class InvitationPushRegistration {
     private init() {}
 
     func start() {
-        // Always ask APNs for a current token. A token saved for sign-out cleanup
-        // is never treated as a successful registration for this launch.
-        UIApplication.shared.registerForRemoteNotifications()
-        requestSync()
+        Task {
+            await retrySignOutCleanup()
+            guard CalendarFeedSession.existing != nil,
+                  (try? loadInstallation().pendingSignOut) == nil else {
+                UIApplication.shared.unregisterForRemoteNotifications()
+                return
+            }
+            // Re-register after a later login, but only after the old account's
+            // push binding has been disabled on the server.
+            UIApplication.shared.registerForRemoteNotifications()
+            requestSync()
+        }
     }
 
     func received(token: Data) {
+        guard CalendarFeedSession.existing != nil,
+              (try? loadInstallation().pendingSignOut) == nil else {
+            UIApplication.shared.unregisterForRemoteNotifications()
+            return
+        }
         deviceToken = token.map { String(format: "%02x", $0) }.joined()
         lastError = nil
         print("[InvitationPush] APNs device registration succeeded")
@@ -61,10 +78,12 @@ final class InvitationPushRegistration {
 
     func synchronize() async {
         if let syncTask { await syncTask.value; return }
-        guard !signingOut else { return }
+        guard CalendarFeedSession.existing != nil,
+              (try? loadInstallation().pendingSignOut) == nil else { return }
+        let currentGeneration = generation
         needsSync = true
         let task = Task { @MainActor in
-            while self.needsSync && !self.signingOut {
+            while self.needsSync && self.generation == currentGeneration && !Task.isCancelled {
                 self.needsSync = false
                 await self.syncOnce()
             }
@@ -79,7 +98,9 @@ final class InvitationPushRegistration {
             remoteInvitationsEnabled = false
             return
         }
+        let currentGeneration = generation
         let settings = await UNUserNotificationCenter.current().notificationSettings()
+        guard !Task.isCancelled, generation == currentGeneration, CalendarFeedSession.isCurrent(session) else { return }
         let authorized = settings.authorizationStatus == .authorized
             || settings.authorizationStatus == .provisional
             || settings.authorizationStatus == .ephemeral
@@ -93,12 +114,15 @@ final class InvitationPushRegistration {
                 installationId: state.id, secret: state.secret, revision: state.revision,
                 token: token, environment: Self.environment, enabled: enabled, session: session
             )
+            guard !Task.isCancelled, generation == currentGeneration,
+                  CalendarFeedSession.isCurrent(session) else { return }
             state.registered = true
             try save(state)
             remoteInvitationsEnabled = remote
             lastError = nil
             print("[InvitationPush] Server registration complete; remote invitations: \(remote)")
         } catch {
+            guard generation == currentGeneration, CalendarFeedSession.isCurrent(session) else { return }
             // Keep the previous remote state on a transient refresh error to
             // avoid doubling a push with the foreground polling notification.
             lastError = "Push registration could not reach the server"
@@ -106,24 +130,56 @@ final class InvitationPushRegistration {
         }
     }
 
-    /// Finish deregistration before forgetting the account. Otherwise a closed
-    /// app could still disclose the previous user's invitation on this phone.
-    func prepareForSignOut(session: CloudCalendarsAPI.Session?) async throws {
-        signingOut = true
-        defer { signingOut = false }
-        if let syncTask { await syncTask.value }
-        guard let session else { remoteInvitationsEnabled = false; return }
-        var state = try loadInstallation()
-        guard state.registered, let token = state.lastToken else { return }
-        state.revision += 1
-        try save(state)
-        _ = try await CloudCalendarsAPI.registerInvitationPush(
-            installationId: state.id, secret: state.secret, revision: state.revision,
-            token: token, environment: Self.environment, enabled: false, session: session
-        )
-        state.registered = false
-        try save(state)
+    /// Local logout must not depend on a network response. Stop APNs delivery
+    /// immediately, then durably retry server cleanup without keeping the UI
+    /// or received shares signed in. Independent provider accounts are untouched.
+    func prepareForSignOut(session: CloudCalendarsAPI.Session?) {
+        generation += 1
+        needsSync = false
+        syncTask?.cancel()
+        deviceToken = nil
         remoteInvitationsEnabled = false
+        UIApplication.shared.unregisterForRemoteNotifications()
+        do {
+            var state = try loadInstallation()
+            if let session, state.lastToken != nil {
+                state.pendingSignOut = session
+                state.revision += 1
+            }
+            state.registered = false
+            try save(state)
+        } catch {
+            lastError = "Push cleanup could not be saved"
+        }
+        Task { await retrySignOutCleanup() }
+    }
+
+    private func retrySignOutCleanup() async {
+        if let cleanupTask { await cleanupTask.value; return }
+        let task = Task { @MainActor in
+            do {
+                var state = try self.loadInstallation()
+                guard let session = state.pendingSignOut, let token = state.lastToken else { return }
+                // Each retry is newer: a timed-out response may already have
+                // committed the previous disable on the server.
+                state.revision += 1
+                try self.save(state)
+                _ = try await CloudCalendarsAPI.registerInvitationPush(
+                    installationId: state.id, secret: state.secret, revision: state.revision,
+                    token: token, environment: Self.environment, enabled: false, session: session
+                )
+                guard try self.loadInstallation().revision == state.revision else { return }
+                state.pendingSignOut = nil
+                state.registered = false
+                try self.save(state)
+                self.lastError = nil
+            } catch {
+                self.lastError = "Push sign-out cleanup will retry"
+            }
+        }
+        cleanupTask = task
+        await task.value
+        cleanupTask = nil
     }
 
     private static var environment: String {

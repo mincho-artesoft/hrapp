@@ -49,7 +49,7 @@ enum SharedInviteTracker {
               let localEventIdentifier
         else { return }
 
-        var all = tracked()
+        var all = allTracked()
         let previous = all[eventID]
         let sameLocalCopy = previous?.localEventIdentifier == localEventIdentifier
             && previous?.feedID == feedID
@@ -69,10 +69,33 @@ enum SharedInviteTracker {
             lastSyncedSnapshot: sameLocalCopy ? (previous?.lastSyncedSnapshot ?? localSnapshot) : nil,
             receiptRecorded: sameLocalCopy ? previous?.receiptRecorded : nil
         )
+        if let session = CalendarFeedSession.existing {
+            ReceivedSharingVisibility.register([localEventIdentifier], kind: "event", accountID: session.calendarId)
+        }
         save(all)
     }
 
+    static func registerReceivedAccountScope() {
+        let accountID = CalendarFeedSession.existing?.calendarId ?? "signed-out-legacy"
+        ReceivedSharingVisibility.register(Set(allTracked().values.map(\.localEventIdentifier)),
+            kind: "event", accountID: accountID, onlyUnscoped: true)
+    }
+
     static func tracked() -> [String: Invite] {
+        registerReceivedAccountScope()
+        guard CalendarFeedSession.existing != nil else { return [:] }
+        return allTracked().filter { ReceivedSharingVisibility.isVisible(
+            $0.value.localEventIdentifier, kind: "event", requiresAccount: true) }
+    }
+
+    static func isVisible(_ event: EKEvent) -> Bool {
+        // Retired EventKit mirrors never reappear when a selection is restored.
+        if let calendarID = event.calendar?.calendarIdentifier,
+           SharedICloudCalendarLocalStore.isShared(localCalendarIdentifier: calendarID) { return false }
+        return ReceivedSharingVisibility.isVisible(event.eventIdentifier ?? event.calendarItemIdentifier, kind: "event")
+    }
+
+    private static func allTracked() -> [String: Invite] {
         guard let data = UserDefaults.standard.data(forKey: storageKey),
               let decoded = try? JSONDecoder().decode([String: Invite].self, from: data)
         else { return [:] }
@@ -80,13 +103,13 @@ enum SharedInviteTracker {
     }
 
     static func update(_ invite: Invite) {
-        var all = tracked()
+        var all = allTracked()
         all[invite.eventID] = invite
         save(all)
     }
 
     static func forget(eventID: String) {
-        var all = tracked()
+        var all = allTracked()
         let removed = all.removeValue(forKey: eventID)
         save(all)
         if let removed {
@@ -110,7 +133,7 @@ enum SharedInviteTracker {
         _ remote: CloudCalendarsAPI.RemoteSharedEvent,
         localEventIdentifier: String
     ) {
-        var all = tracked()
+        var all = allTracked()
         let previous = all[remote.id]
         all[remote.id] = Invite(
             eventID: remote.id,
@@ -123,6 +146,9 @@ enum SharedInviteTracker {
             lastSyncedSnapshot: previous?.lastSyncedSnapshot,
             receiptRecorded: true
         )
+        if let session = CalendarFeedSession.existing {
+            ReceivedSharingVisibility.register([localEventIdentifier], kind: "event", accountID: session.calendarId)
+        }
         save(all)
     }
 
@@ -213,7 +239,7 @@ enum SharedInviteTracker {
     }
 
     static func demoteAllToReader() {
-        var all = tracked()
+        var all = allTracked()
         var changed = false
         for eventID in Array(all.keys) {
             guard all[eventID]?.effectiveAccess != .reader else { continue }
@@ -227,7 +253,7 @@ enum SharedInviteTracker {
     }
 
     static func markReceiptRecorded(eventID: String) {
-        var all = tracked()
+        var all = allTracked()
         guard var invite = all[eventID], invite.receiptRecorded != true else { return }
         invite.receiptRecorded = true
         all[eventID] = invite

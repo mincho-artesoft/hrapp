@@ -42,33 +42,53 @@ function parseHexRgb(hex?: string | null): [number, number, number, string] {
   ];
 }
 
+export function isLightEventColor(hex?: string | null): boolean {
+  const [r, g, b] = parseHexRgb(hex);
+  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+  return lum > 175;
+}
+
 /**
  * Exact algorithmic port of `EventTimelineColors.swift`:
  * - Dark mode uses an opaque darkened card fill (`0.33 * RGB`) so grid lines never bleed through,
  *   full-saturation event color for title text, and `0.82 * RGB` for time/location details.
- * - Light mode uses `rgba(R,G,B,0.15)` fill with darkened `0.52 * RGB` title text.
+ * - Light mode uses `rgba(R,G,B,0.15)` fill with darkened title/detail text guaranteed legible on white.
  */
 export function computeIosEventStyle(
   hex?: string | null,
   surface: 'dark' | 'light' = 'dark',
 ): IosEventVisualStyle {
   const [r, g, b, normalized] = parseHexRgb(hex);
+  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
 
   if (surface === 'light') {
-    const tr = Math.round(r * 0.48);
-    const tg = Math.round(g * 0.48);
-    const tb = Math.round(b * 0.48);
-    const dr = Math.round(r * 0.62);
-    const dg = Math.round(g * 0.62);
-    const db = Math.round(b * 0.62);
+    if (lum > 225) {
+      return {
+        hex: normalized,
+        fill: 'rgba(100, 116, 139, 0.14)',
+        fillDragging: 'rgba(100, 116, 139, 0.24)',
+        accentBar: '#475569',
+        titleColor: '#0f172a',
+        detailColor: '#334155',
+        borderColor: 'rgba(71, 85, 105, 0.32)',
+      };
+    }
+    const tFactor = lum > 165 ? 0.34 : 0.48;
+    const dFactor = lum > 165 ? 0.44 : 0.6;
+    const tr = Math.round(r * tFactor);
+    const tg = Math.round(g * tFactor);
+    const tb = Math.round(b * tFactor);
+    const dr = Math.round(r * dFactor);
+    const dg = Math.round(g * dFactor);
+    const db = Math.round(b * dFactor);
     return {
       hex: normalized,
-      fill: `rgba(${r}, ${g}, ${b}, 0.15)`,
-      fillDragging: `rgba(${r}, ${g}, ${b}, 0.28)`,
-      accentBar: normalized,
+      fill: `rgba(${r}, ${g}, ${b}, ${lum > 180 ? 0.22 : 0.15})`,
+      fillDragging: `rgba(${r}, ${g}, ${b}, 0.3)`,
+      accentBar: lum > 200 ? `rgb(${Math.round(r * 0.78)}, ${Math.round(g * 0.78)}, ${Math.round(b * 0.78)})` : normalized,
       titleColor: `rgb(${tr}, ${tg}, ${tb})`,
       detailColor: `rgb(${dr}, ${dg}, ${db})`,
-      borderColor: `rgba(${r}, ${g}, ${b}, 0.28)`,
+      borderColor: `rgba(${r}, ${g}, ${b}, ${lum > 180 ? 0.42 : 0.28})`,
     };
   }
 
@@ -85,7 +105,6 @@ export function computeIosEventStyle(
   const db = Math.round(baseB * 0.54 + b * 0.46);
 
   // Boost luminance slightly for very dark custom colors so text stays legible
-  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
   const boost = lum < 95 ? 1.45 : 1;
   const tr = Math.min(255, Math.round(r * boost + (lum < 95 ? 45 : 0)));
   const tg = Math.min(255, Math.round(g * boost + (lum < 95 ? 45 : 0)));

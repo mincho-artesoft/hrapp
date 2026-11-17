@@ -229,6 +229,18 @@ final class AppLocalCalendarStore: ObservableObject {
         try? fileManager.createDirectory(at: root, withIntermediateDirectories: true)
         fileURL = root.appendingPathComponent("app-local-calendars.json")
         load()
+        registerReceivedAccountScope()
+    }
+
+    func registerReceivedAccountScope() {
+        let accountID = CalendarFeedSession.existing?.calendarId ?? "signed-out-legacy"
+        ReceivedSharingVisibility.register(Set(calendars.filter { $0.origin == .received }.map(\.id)),
+            kind: "calendar", accountID: accountID, onlyUnscoped: true)
+    }
+
+    var visibleCalendars: [AppLocalCalendarRecord] {
+        calendars.filter { $0.origin != .received || ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true) }
     }
 
     var ownedCalendars: [AppLocalCalendarRecord] {
@@ -242,7 +254,7 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     var receivedCalendars: [AppLocalCalendarRecord] {
-        calendars.filter { $0.origin == .received }
+        visibleCalendars.filter { $0.origin == .received }
             .sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
     }
 
@@ -298,6 +310,9 @@ final class AppLocalCalendarStore: ObservableObject {
                 && $0.remoteOwnerID == remote.ownerId
                 && $0.remoteCalendarID == remote.calendarId
         })?.id ?? Self.receivedCalendarID(remote)
+        if ownedCalendarID == nil, let session = CalendarFeedSession.existing {
+            ReceivedSharingVisibility.register([localID], kind: "calendar", accountID: session.calendarId)
+        }
         let previous = calendar(id: localID)
         let updated = AppLocalCalendarRecord(
             id: localID,
@@ -381,6 +396,7 @@ final class AppLocalCalendarStore: ObservableObject {
     func removeRemoteCalendarsNotPresent(in remoteKeys: Set<String>) {
         let removedIDs = Set(calendars.filter {
             $0.origin == .received
+                && ReceivedSharingVisibility.isVisible($0.id, kind: "calendar", requiresAccount: true)
                 && !remoteKeys.contains(Self.remoteKey(ownerID: $0.remoteOwnerID, calendarID: $0.remoteCalendarID))
         }.map(\.id))
         guard !removedIDs.isEmpty else { return }
@@ -537,8 +553,11 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [AppLocalEventRecord] {
-        events.filter {
-            selectedCalendarIDs.contains($0.calendarID)
+        let visibleIDs = Set(visibleCalendars.map(\.id))
+        return events.filter {
+            visibleIDs.contains($0.calendarID)
+                && ReceivedSharingVisibility.isVisible($0.id, kind: "event")
+                && selectedCalendarIDs.contains($0.calendarID)
                 && $0.startDate < end
                 && $0.endDate > start
         }

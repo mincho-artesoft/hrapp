@@ -32,11 +32,11 @@
     gap: 0.45rem;
     padding: 0.38rem 0.85rem;
     border-radius: var(--r-pill);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--aurora-2);
-    border: 1px solid rgba(56, 224, 240, 0.26);
-    background: rgba(56, 224, 240, 0.08);
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    border: 1px solid var(--nav-active-border);
+    background: var(--aurora-1-soft);
+    transition: background 0.2s, border-color 0.2s;
 
     &::before {
       content: '←';
@@ -44,9 +44,8 @@
     }
 
     &:hover {
-      background: rgba(56, 224, 240, 0.15);
-      border-color: rgba(56, 224, 240, 0.45);
-      transform: translateX(-2px);
+      background: rgba(33, 104, 222, 0.24);
+      border-color: var(--aurora-2);
     }
   }
 }
@@ -67,9 +66,9 @@
 
 .cta--inline {
   padding: clamp(1.25rem, 2.8vw, 1.65rem);
-  border: 1px dashed rgba(56, 224, 240, 0.36);
-  border-radius: var(--r-md);
-  background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+  border: 1px solid var(--hair);
+  border-radius: var(--r-lg);
+  background: var(--surface);
   display: grid;
   gap: 0.85rem;
   justify-items: start;
@@ -82,15 +81,15 @@
 .article h2 {
   font-size: clamp(1.28rem, 2.3vw, 1.65rem);
   line-height: 1.2;
-  letter-spacing: -0.028em;
+  letter-spacing: -0.024em;
   margin-bottom: 0.85rem;
 }
 
 .article__belief {
   padding: 1.25rem 1.45rem;
-  border-left: 3px solid var(--aurora-2);
+  border-left: 3px solid var(--aurora-1);
   border-radius: 0 var(--r-md) var(--r-md) 0;
-  background: linear-gradient(145deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.04));
+  background: var(--surface);
 
   h2 {
     margin-bottom: 0.55rem;
@@ -115,7 +114,7 @@
 .article__numbers {
   padding: clamp(1.2rem, 2.6vw, 1.7rem);
   border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--control-bg);
   border: 1px solid var(--hair);
 
   table {
@@ -147,7 +146,7 @@
 .article__practical {
   padding: clamp(1.35rem, 2.8vw, 1.85rem);
   border-radius: var(--r-md);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02));
+  background: var(--control-bg);
   border: 1px solid var(--hair-strong);
 
   ol {
@@ -178,7 +177,7 @@
     line-height: 1.38;
     color: var(--ink);
     padding: 1.1rem 1.25rem 0.35rem;
-    background: rgba(255, 255, 255, 0.035);
+    background: var(--control-bg);
     border: 1px solid var(--hair);
     border-bottom: 0;
     border-radius: var(--r-sm) var(--r-sm) 0 0;
@@ -190,7 +189,7 @@
     font-size: 0.95rem;
     line-height: 1.66;
     color: var(--ink-3);
-    background: rgba(255, 255, 255, 0.035);
+    background: var(--control-bg);
     border: 1px solid var(--hair);
     border-top: 0;
     border-radius: 0 0 var(--r-sm) var(--r-sm);
@@ -210,7 +209,7 @@
   }
 
   a {
-    color: #9beeff;
+    color: var(--accent-link);
     text-decoration: underline;
     text-decoration-color: rgba(56, 224, 240, 0.35);
     text-underline-offset: 3px;
@@ -268,7 +267,7 @@
   overflow-x: auto;
   border: 1px solid var(--hair-strong);
   border-radius: var(--r-md);
-  background: rgba(8, 13, 30, 0.55);
+  background: var(--table-bg, rgba(8, 13, 30, 0.55));
 }
 
 .article__comparison table,
@@ -287,7 +286,7 @@
   line-height: 1.45;
   color: var(--ink-3);
   border-bottom: 1px solid var(--hair);
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--control-bg);
 }
 
 .article__comparison th,
@@ -312,14 +311,14 @@
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--table-head-bg, rgba(255, 255, 255, 0.06));
 }
 
 .article__action {
   padding: clamp(1.25rem, 3vw, 1.85rem);
-  border: 1px solid rgba(56, 224, 240, 0.32);
-  border-radius: var(--r-md);
-  background: linear-gradient(155deg, rgba(56, 224, 240, 0.1), rgba(77, 124, 255, 0.08));
+  border: 1px solid var(--hair);
+  border-radius: var(--r-lg);
+  background: var(--surface);
 
   h2 {
     margin-top: 0;
@@ -342,7 +341,7 @@
     }
 
     a {
-      color: #9beeff;
+      color: var(--accent-link);
       text-decoration: underline;
       text-decoration-color: rgba(56, 224, 240, 0.35);
       text-underline-offset: 3px;

@@ -1,24 +1,15 @@
 <header class="hdr" [class.is-stuck]="isScrolled()">
-  <!-- Reading-progress hairline -->
-  <span
-    class="hdr__progress"
-    [style.scale]="progress() + ' 1'"
-    aria-hidden="true"
-  ></span>
-
   <div class="hdr__inner">
     <a class="brand" [href]="homePath()" (click)="closeMenu()" aria-label="Cloud Calendars — home">
       <img
         class="brand__mark"
         src="icons/mark-128.webp"
         alt=""
-        width="34"
-        height="34"
+        width="32"
+        height="32"
         decoding="async"
       />
-      <span class="brand__text">
-        Cloud<span>Calendars</span>
-      </span>
+      <span class="brand__text">Cloud Calendars</span>
     </a>
 
     <nav class="hdr__nav" aria-label="Primary">
@@ -36,6 +27,17 @@
     </nav>
 
     <div class="hdr__actions">
+      <button
+        type="button"
+        class="theme-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+        [attr.title]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+      >
+        <span class="theme-btn__icon" aria-hidden="true">{{ theme() === 'dark' ? '☀' : '☾' }}</span>
+        <span class="theme-btn__label">{{ theme() === 'dark' ? 'Light' : 'Dark' }}</span>
+      </button>
+
       <app-language-switcher />
 
       <a
@@ -68,27 +70,28 @@
   [class.is-open]="menuOpen()"
   [attr.inert]="menuOpen() ? null : ''"
 >
-  <nav class="sheet__nav" aria-label="Mobile">
-    @for (item of nav(); track item.key; let i = $index) {
-      <a
-        class="sheet__link"
-        [href]="item.href"
-        [style.--i]="i"
-        (click)="closeMenu()"
-      >
-        <span class="sheet__num">0{{ i + 1 }}</span>
-        {{ item.label }}
-      </a>
-    }
-  </nav>
+  <div class="sheet__card">
+    <nav class="sheet__nav" aria-label="Mobile">
+      @for (item of nav(); track item.key) {
+        <a
+          class="sheet__link"
+          [href]="item.href"
+          (click)="closeMenu()"
+        >
+          <span>{{ item.label }}</span>
+          <span class="sheet__chev" aria-hidden="true">›</span>
+        </a>
+      }
+    </nav>
 
-  <a
-    class="btn btn--primary btn--lg sheet__cta"
-    [href]="appStoreUrl()"
-    target="_blank"
-    rel="noopener noreferrer"
-    (click)="closeMenu()"
-  >
-    {{ storeCta() }}
-  </a>
+    <a
+      class="btn btn--primary btn--lg sheet__cta"
+      [href]="appStoreUrl()"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="closeMenu()"
+    >
+      {{ storeCta() }}
+    </a>
+  </div>
 </div>

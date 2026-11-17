@@ -5,7 +5,7 @@
 .faq__inner {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 
   @include upto($bp-md) { grid-template-columns: 1fr; }
@@ -13,7 +13,7 @@
 
 .faq__head {
   position: sticky;
-  top: calc(var(--header-h) + 3rem);
+  top: calc(var(--header-h) + 2.5rem);
 
   @include upto($bp-md) { position: static; }
 
@@ -21,25 +21,21 @@
     color: var(--aurora-2);
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    transition: color 0.3s;
-
-    &:hover { color: #b6f4ff; }
   }
 }
 
-/* ---------------------------------------------------------------
-   Accordion
---------------------------------------------------------------- */
+/* Inset-grouped FAQ card list */
 .faq__list {
-  border-top: 1px solid var(--hair);
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  overflow: hidden;
 }
 
 .qa {
   border-bottom: 1px solid var(--hair);
-  transition: border-color 0.4s;
 
-  &.is-open { border-bottom-color: rgba(120, 190, 255, 0.28); }
+  &:last-child { border-bottom: 0; }
 
   h3 { margin: 0; font-size: inherit; font-weight: inherit; letter-spacing: normal; }
 }
@@ -49,31 +45,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.25rem;
-  padding: 1.35rem 0;
+  gap: 1.1rem;
+  padding: 1.15rem 1.35rem;
   text-align: left;
-  font-family: var(--font-display);
-  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: -0.022em;
-  color: var(--ink-2);
-  transition: color 0.35s var(--ease-out);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  transition: background-color 0.15s ease;
   @include focus-ring;
 
-  &:hover { color: var(--ink); }
-
-  .qa.is-open & { color: var(--ink); }
+  &:hover { background: var(--control-bg-hover); }
 }
 
-/* A plus that becomes a minus. */
 .qa__icon {
   position: relative;
   flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--hair-strong);
-  transition: border-color 0.4s, background 0.4s, rotate 0.5s var(--ease-spring);
+  background: var(--surface-2);
+  color: var(--ink-3);
+  transition: background-color 0.25s, color 0.25s, rotate 0.3s var(--ease-spring);
 
   &::before,
   &::after {
@@ -84,26 +77,24 @@
     translate: -50% -50%;
     background: currentColor;
     border-radius: 2px;
-    transition: opacity 0.35s var(--ease-out), scale 0.4s var(--ease-out);
+    transition: opacity 0.2s ease, scale 0.25s ease;
   }
   &::before { width: 11px; height: 1.6px; }
   &::after  { width: 1.6px; height: 11px; }
 
   .qa.is-open & {
     rotate: 180deg;
-    border-color: rgba(120, 200, 255, 0.5);
-    background: rgba(56, 224, 240, 0.12);
+    background: var(--aurora-1-soft);
+    color: var(--aurora-2);
 
     &::after { opacity: 0; scale: 0 1; }
   }
 }
 
-/* Grid-template-rows animates cleanly from 0fr to 1fr, which is the only
-   way to transition to "whatever height the content is" without JS. */
 .qa__panel {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.55s var(--ease-out);
+  transition: grid-template-rows 0.35s var(--ease-out);
 
   .qa.is-open & { grid-template-rows: 1fr; }
 }
@@ -112,15 +103,9 @@
   overflow: hidden;
 
   p {
-    padding-bottom: 1.5rem;
-    padding-right: clamp(0rem, 6vw, 3.5rem);
+    padding: 0 1.35rem 1.25rem;
     font-size: 0.94rem;
-    line-height: 1.68;
+    line-height: 1.62;
     color: var(--ink-3);
-    opacity: 0;
-    translate: 0 -8px;
-    transition: opacity 0.45s var(--ease-out) 0.1s, translate 0.55s var(--ease-out) 0.1s;
   }
-
-  .qa.is-open & p { opacity: 1; translate: 0; }
 }

@@ -91,7 +91,7 @@ private final class CalendarIPadSidebarSnapshot: ObservableObject {
         for range in ranges {
             if model.isCalendarAccessGranted(), !calendars.isEmpty {
                 let predicate = model.eventStore.predicateForEvents(withStart: range.start, end: range.end, calendars: calendars)
-                for event in model.eventStore.events(matching: predicate) {
+                for event in model.eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible) {
                     let item = CalendarSidebarEvent(event: event)
                     items[item.id] = item
                 }

@@ -37,10 +37,11 @@ final class MacLocalDocuments {
     let backend: CalendarMacStore
     init(backend: CalendarMacStore) { self.backend = backend }
     var calendars: [DeviceCalendarDocument] { backend.local }
-    var ownedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.available && $0.origin == .owned } }
-    var receivedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.available && $0.origin == .received } }
+    var ownedCalendars: [DeviceCalendarDocument] { backend.visibleLocalCalendars.filter { $0.available && $0.origin == .owned } }
+    var receivedCalendars: [DeviceCalendarDocument] { backend.visibleLocalCalendars.filter { $0.available && $0.origin == .received } }
     func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [DeviceCalendarEvent] {
-        calendars.filter { $0.available && selectedCalendarIDs.contains($0.id) }.flatMap(\.events).flatMap { AppLocalRecurrence.occurrences(of: $0, from: start, to: end) }
+        backend.visibleLocalCalendars.filter { $0.available && selectedCalendarIDs.contains($0.id) }
+            .flatMap(\.events).filter { ReceivedSharingVisibility.isVisible($0.id, kind: "event") }.flatMap { AppLocalRecurrence.occurrences(of: $0, from: start, to: end) }
     }
     func createCalendar(title: String, color: NSColor) throws -> DeviceCalendarDocument {
         let record = DeviceCalendarDocument(id: UUID().uuidString.lowercased(), deviceId: DeviceCalendarReplica.deviceID,

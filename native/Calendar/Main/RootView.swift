@@ -963,7 +963,7 @@ extension RootView {
         let found: [EKEvent]
         if CalendarViewModel.shared.isCalendarAccessGranted(), !localCals.isEmpty {
             let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
-            found = store.events(matching: predicate)
+            found = store.events(matching: predicate).filter(SharedInviteTracker.isVisible)
         } else { found = [] }
 
         var splitted: [EventDescriptor] = []
@@ -999,7 +999,7 @@ extension RootView {
                 end: to,
                 calendars: allowedCalendars
             )
-            found = store.events(matching: predicate)
+            found = store.events(matching: predicate).filter(SharedInviteTracker.isVisible)
         }
 
         var splitted: [EventDescriptor] = []
@@ -1260,7 +1260,7 @@ extension RootView {
                      end: toDate,
                      calendars: allowedCalendars
                  )
-             found = CalendarViewModel.shared.eventStore.events(matching: predicate)
+             found = CalendarViewModel.shared.eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible)
          }
 
          var descriptors: [EventDescriptor] = []

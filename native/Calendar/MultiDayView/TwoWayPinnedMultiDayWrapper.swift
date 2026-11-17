@@ -315,7 +315,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                     end: actualEnd,
                     calendars: allowedCals
                 )
-                found = parent.eventStore.events(matching: predicate)
+                found = parent.eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible)
             }
             
             var splitted: [EventDescriptor] = []

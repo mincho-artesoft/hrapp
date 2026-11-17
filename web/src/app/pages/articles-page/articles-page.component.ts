@@ -154,16 +154,15 @@ interface Group {
         padding: 0.42rem 0.9rem;
         border-radius: var(--r-pill);
         font-size: 0.84rem;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--aurora-2);
-        border: 1px solid rgba(56, 224, 240, 0.28);
-        background: rgba(56, 224, 240, 0.08);
-        transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+        border: 1px solid var(--nav-active-border);
+        background: var(--aurora-1-soft);
+        transition: background 0.2s, border-color 0.2s;
       }
       .hub__back:hover {
-        background: rgba(56, 224, 240, 0.15);
-        border-color: rgba(56, 224, 240, 0.48);
-        transform: translateX(-2px);
+        background: rgba(33, 104, 222, 0.24);
+        border-color: var(--aurora-2);
       }
 
       .hub__head h1 {
@@ -188,9 +187,9 @@ interface Group {
 
       .cta--inline {
         padding: clamp(1.25rem, 2.8vw, 1.65rem);
-        border: 1px dashed rgba(56, 224, 240, 0.36);
-        border-radius: var(--r-md);
-        background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+        border: 1px solid var(--hair);
+        border-radius: var(--r-lg);
+        background: var(--surface);
         display: grid;
         gap: 0.85rem;
         justify-items: start;
@@ -214,8 +213,8 @@ interface Group {
         align-items: center;
         justify-content: space-between;
         gap: 1.25rem 2rem;
-        border-color: rgba(56, 224, 240, 0.34);
-        background: linear-gradient(150deg, rgba(56, 224, 240, 0.1), rgba(77, 124, 255, 0.06));
+        border-color: var(--nav-active-border);
+        background: var(--surface);
       }
 
       .hub__compare-copy {
@@ -244,9 +243,8 @@ interface Group {
       }
       .hub__topic:hover {
         color: var(--ink);
-        border-color: rgba(56, 224, 240, 0.42);
-        background: rgba(56, 224, 240, 0.1);
-        transform: translateY(-2px);
+        border-color: var(--aurora-2);
+        background: var(--aurora-1-soft);
       }
 
       .hub__topic-dot {
@@ -254,13 +252,12 @@ interface Group {
         height: 7px;
         border-radius: 50%;
         background: var(--aurora-2);
-        box-shadow: 0 0 8px rgba(56, 224, 240, 0.7);
       }
-      .hub__topic-dot[data-family='unify'] { background: var(--aurora-1); box-shadow: 0 0 8px rgba(77, 124, 255, 0.7); }
-      .hub__topic-dot[data-family='widgets'] { background: var(--aurora-3); box-shadow: 0 0 8px rgba(165, 102, 255, 0.7); }
-      .hub__topic-dot[data-family='sharing'] { background: var(--aurora-4); box-shadow: 0 0 8px rgba(255, 122, 89, 0.7); }
-      .hub__topic-dot[data-family='planning'] { background: var(--aurora-5); box-shadow: 0 0 8px rgba(255, 203, 92, 0.7); }
-      .hub__topic-dot[data-family='compare'] { background: #52e39b; box-shadow: 0 0 8px rgba(82, 227, 155, 0.7); }
+      .hub__topic-dot[data-family='unify'] { background: var(--aurora-1); }
+      .hub__topic-dot[data-family='widgets'] { background: var(--aurora-3); }
+      .hub__topic-dot[data-family='sharing'] { background: var(--aurora-4); }
+      .hub__topic-dot[data-family='planning'] { background: var(--aurora-5); }
+      .hub__topic-dot[data-family='compare'] { background: #30d158; }
 
       .hub__topic-count {
         font-family: var(--font-mono);
@@ -268,7 +265,7 @@ interface Group {
         color: var(--ink-3);
         padding: 0.08rem 0.42rem;
         border-radius: var(--r-pill);
-        background: rgba(255, 255, 255, 0.06);
+        background: var(--control-bg-hover);
       }
 
       .hub__group {
@@ -294,8 +291,8 @@ interface Group {
         color: var(--aurora-2);
         padding: 0.18rem 0.58rem;
         border-radius: var(--r-pill);
-        background: rgba(56, 224, 240, 0.1);
-        border: 1px solid rgba(56, 224, 240, 0.24);
+        background: var(--aurora-1-soft);
+        border: 1px solid var(--nav-active-border);
       }
 
       .hub__grid {
@@ -326,8 +323,8 @@ interface Group {
       }
 
       .hub__card:hover {
-        border-color: rgba(56, 224, 240, 0.34);
-        box-shadow: var(--shadow-mid), 0 0 48px -22px rgba(56, 224, 240, 0.6);
+        border-color: var(--aurora-2);
+        box-shadow: var(--shadow-mid);
       }
 
       .hub__card-link {
@@ -352,7 +349,7 @@ interface Group {
       }
 
       .hub__card:hover .hub__card-link {
-        color: #9beeff;
+        color: var(--accent-link);
       }
 
       .hub__card-arrow {
@@ -404,22 +401,28 @@ interface Group {
         font-size: 0.86rem;
         color: var(--ink-2);
         border: 1px solid var(--hair-strong);
-        background: rgba(255, 255, 255, 0.04);
+        background: var(--control-bg);
         transition: border-color 0.25s, background 0.25s, color 0.25s;
       }
 
       .hub__page:hover {
-        border-color: rgba(56, 224, 240, 0.4);
-        background: rgba(56, 224, 240, 0.1);
+        border-color: var(--aurora-2);
+        background: var(--aurora-1-soft);
         color: var(--ink);
       }
 
       .hub__page[aria-current="page"] {
-        font-weight: 700;
-        color: #030614;
-        background: var(--aurora-2);
-        border-color: var(--aurora-2);
-        box-shadow: 0 0 20px rgba(56, 224, 240, 0.45);
+        font-weight: 600;
+        color: #ffffff;
+        background: var(--aurora-1);
+        border-color: var(--aurora-1);
+      }
+
+      :host-context([data-theme='light']) .hub__page[aria-current="page"] {
+        color: #ffffff;
+        background: var(--aurora-1);
+        border-color: var(--aurora-1);
+        box-shadow: 0 6px 16px -4px rgba(37, 99, 235, 0.4);
       }
     `,
   ],

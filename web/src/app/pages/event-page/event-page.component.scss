@@ -49,8 +49,9 @@
 .ev__lead { color: var(--ink-2); margin: 0; max-width: 44ch; }
 .ev__check {
   width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
-  font-size: 1.8rem; color: var(--void);
+  font-size: 1.8rem; color: #03050c;
   background: linear-gradient(135deg, var(--aurora-2), #52e39b); box-shadow: var(--glow-cyan);
+  :host-context([data-theme='light']) & { color: #ffffff; }
   &--off {
     color: #fff;
     background: linear-gradient(135deg, var(--aurora-4), #b4477a);

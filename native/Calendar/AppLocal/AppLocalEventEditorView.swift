@@ -349,7 +349,7 @@ struct AppLocalEventEditorView: View {
     }
 
     private var choices: [CalendarChoice] {
-        let localChoices = localStore.calendars.filter { !$0.isRevoked }.map {
+        let localChoices = localStore.visibleCalendars.filter { !$0.isRevoked }.map {
             CalendarChoice(
                 id: $0.id,
                 title: $0.title,

@@ -133,7 +133,9 @@ final class MacTabletCalendarStore: ObservableObject {
         let start = calendar.date(byAdding: .year, value: -1, to: today) ?? today
         let end = calendar.date(byAdding: .year, value: 3, to: today) ?? today
         let predicate = eventStore.predicateForEvents(withStart: start, end: end, calendars: systemCalendars)
-        let nativeEvents = systemCalendars.isEmpty ? [] : eventStore.events(matching: predicate)
+        let nativeEvents = systemCalendars.isEmpty ? [] : eventStore.events(matching: predicate).filter {
+            ReceivedSharingVisibility.isVisible(backend.adapter.identity($0), kind: "event")
+        }
         let localEvents = local.store.events(from: start, to: end,
             selectedCalendarIDs: Set(local.store.calendars.map(\.id)))
         events = (nativeEvents + localEvents.compactMap(local.event)).sorted {
@@ -147,7 +149,8 @@ final class MacTabletCalendarStore: ObservableObject {
             if local.isLocal(selected) {
                 selectedSidebarEvent = events.first { $0 === selected }.map(CalendarSidebarEvent.init(event:))
             } else {
-                selectedSidebarEvent = selected.refresh() ? CalendarSidebarEvent(event: selected) : nil
+                selectedSidebarEvent = ReceivedSharingVisibility.isVisible(backend.adapter.identity(selected), kind: "event")
+                    && selected.refresh() ? CalendarSidebarEvent(event: selected) : nil
             }
         }
     }

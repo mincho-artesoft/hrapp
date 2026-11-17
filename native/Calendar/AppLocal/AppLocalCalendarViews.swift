@@ -9,89 +9,17 @@ struct AppLocalCalendarRow: View {
     var showsEditButton = true
 
     var body: some View {
-        HStack(spacing: 12) {
-            Button(action: toggleAction) {
-                ZStack {
-                    Circle()
-                        .fill(color)
-                        .frame(width: 28, height: 28)
-                    if isSelected {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(.white)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-
-            Button(action: editAction) {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 5) {
-                        Text(calendar.title)
-                            .foregroundStyle(.primary)
-                            .lineLimit(1)
-                            .strikethrough(calendar.isRevoked, color: color)
-                        if calendar.isPersonalCloud {
-                            Image(systemName: "icloud.fill")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    if calendar.isPersonalCloud {
-                        Text("Web & Events Sync")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    } else if calendar.origin == .received {
-                        Text(calendar.remoteOwnerEmail ?? NSLocalizedString("Shared calendar", comment: "Shared calendar owner fallback"))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .buttonStyle(.plain)
-
-            if calendar.origin == .received {
-                Text(calendar.isRevoked ? NSLocalizedString("Access removed", comment: "Revoked calendar access") : calendar.access.title)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(calendar.isRevoked ? .red : .secondary)
-                    .padding(.horizontal, 9)
-                    .padding(.vertical, 5)
-                    .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
-            }
-
-            if let shareAction {
-                Button(action: shareAction) {
-                    Image(systemName: "person.2.fill")
-                        .font(.system(size: 18))
-                }
-                .buttonStyle(.borderless)
-                .accessibilityLabel("Manage calendar sharing")
-            }
-
-            if showsEditButton {
-            Button(action: editAction) {
-                Image(systemName: "info.circle")
-                    .font(.system(size: 18))
-            }
-            .buttonStyle(.borderless)
-            .accessibilityLabel("Edit local calendar")
-            }
-        }
-        .padding(.vertical, 4)
-        .padding(.horizontal, 5)
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(isSelected ? Color(uiColor: UIColor.systemGray4.withAlphaComponent(0.5)) : .clear)
+        LocalCalendarListRow(
+            title: calendar.title,
+            color: Color(uiColor: AppLocalCalendarStore.color(calendar.displayColorHex)),
+            isSelected: isSelected,
+            ownerEmail: calendar.remoteOwnerEmail,
+            access: calendar.origin == .received ? calendar.access : nil,
+            isRevoked: calendar.isRevoked,
+            isPersonalCloud: calendar.isPersonalCloud,
+            toggleAction: toggleAction, editAction: editAction,
+            shareAction: shareAction, showsEditButton: showsEditButton
         )
-        .padding(.leading, -32)
-    }
-
-    private var color: Color {
-        Color(uiColor: AppLocalCalendarStore.color(calendar.displayColorHex))
     }
 }
 

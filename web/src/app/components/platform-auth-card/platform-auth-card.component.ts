@@ -34,8 +34,8 @@ export class PlatformAuthCardComponent implements OnInit, OnDestroy {
   readonly api = inject(CalendarPlatformApiService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  @Input() badgeText = 'CLOUD CALENDARS WEB';
-  @Input() title = 'Sign in to your Calendar & Scheduling Studio';
+  @Input() badgeText = 'Cloud Calendars Account';
+  @Input() title = 'Sign in to Web Calendar';
   @Input() subtitle = '';
   @Input() allowSandbox = false;
   @Input() includeCalendarScopeOnOAuth = true;
@@ -47,8 +47,8 @@ export class PlatformAuthCardComponent implements OnInit, OnDestroy {
   readonly effectiveSubtitle = computed(() => {
     if (this.subtitle) return this.subtitle;
     return this.iosQrEnabled()
-      ? 'Scan with the Cloud Calendars iOS app to sign in and unlock Web Studio for free forever — or continue with Google, Microsoft, or Email.'
-      : 'Continue with Google, Microsoft, or a 6-digit email verification code to open your Calendar & Scheduling Studio.';
+      ? 'Sign in with the Cloud Calendars app, Google, Microsoft, or a 6-digit email verification code.'
+      : 'Use Google, Microsoft, or a 6-digit email verification code to access your calendars.';
   });
   readonly iosTab = signal<'qr' | 'totp'>('qr');
   readonly step = signal<'method' | 'code'>('method');

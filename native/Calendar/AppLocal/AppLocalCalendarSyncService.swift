@@ -92,7 +92,7 @@ enum AppLocalCalendarSyncService {
         do {
             let remote = try await CloudCalendarsAPI
                 .iCloudCalendarsSharedWithMe(session: session)
-            guard CalendarFeedSession.existing?.calendarId == session.calendarId else { return 0 }
+            guard CalendarFeedSession.isCurrent(session) else { return 0 }
             var remoteKeys = Set<String>()
             for fetched in remote where !SharedICloudCalendarLocalStore.isRemovedLocally(shareID: fetched.id) {
                 let calendar = try await SharedICloudCalendarLocalStore.migrateReceivedCalendarIfNeeded(fetched, session: session)
@@ -105,6 +105,7 @@ enum AppLocalCalendarSyncService {
                 }
                 SharedICloudCalendarLocalStore.finishLocalMigration(calendar)
             }
+            guard CalendarFeedSession.isCurrent(session) else { return 0 }
             store.removeRemoteCalendarsNotPresent(in: remoteKeys)
         } catch {
             print("App-local received calendar sync failed: \(error.localizedDescription)")
@@ -169,7 +170,7 @@ enum AppLocalCalendarSyncService {
         local: AppLocalCalendarRecord?, owned: Bool,
         store: AppLocalCalendarStore, session: CloudCalendarsAPI.Session
     ) async throws -> Bool {
-        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
+        guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
         let key = AppLocalCalendarStore.remoteKey(ownerID: remote.ownerId, calendarID: remote.calendarId)
         let previous = baselines[key]
         let current = baseline(remote)
@@ -216,7 +217,7 @@ enum AppLocalCalendarSyncService {
                 session: session
             )
         }
-        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
+        guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
         // A response describes the snapshot sent before suspension, not newer
         // edits made while that request was running. Keep those edits pending.
         var applied = merged

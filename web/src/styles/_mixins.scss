@@ -1,5 +1,5 @@
 // ============================================================
-//  Cloud Calendars — shared SCSS toolkit
+//  Cloud Calendars — shared SCSS toolkit (Native App Style)
 //  Imported by every component via stylePreprocessorOptions.
 // ============================================================
 
@@ -27,78 +27,48 @@ $bp-xl: 1440px;
   width: 100%;
   max-width: $max;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.75rem);
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
 }
 
-// ---------- Glass surface ----------
-/// $blur: 0 (the default) emits no backdrop-filter. Only pass a blur for
-/// surfaces that genuinely sit over moving content — the header and the
-/// floating chips. Everywhere else it is pure cost.
-@mixin glass($alpha: 0.055, $blur: 0, $border: 0.09) {
-  background:
-    linear-gradient(
-      160deg,
-      rgba(255, 255, 255, $alpha + 0.045) 0%,
-      rgba(255, 255, 255, $alpha) 42%,
-      rgba(255, 255, 255, $alpha * 0.45) 100%
-    );
-  border: 1px solid rgba(255, 255, 255, $border);
+// ---------- Native iOS / macOS grouped surface ----------
+@mixin glass($alpha: 0.06, $blur: 0, $border: 0.1) {
+  background: var(--surface, #1c1c1e);
+  border: 1px solid var(--hair-strong, #38383a);
 
   @if $blur > 0 {
-    backdrop-filter: blur($blur) saturate(150%);
-    -webkit-backdrop-filter: blur($blur) saturate(150%);
+    background: rgba(28, 28, 30, 0.84);
+    backdrop-filter: blur($blur) saturate(180%);
+    -webkit-backdrop-filter: blur($blur) saturate(180%);
   }
 }
 
-// Hairline highlight along the top edge — reads as a lit bevel.
-@mixin bevel($opacity: 0.55) {
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      160deg,
-      rgba(255, 255, 255, $opacity),
-      rgba(255, 255, 255, 0) 38%,
-      rgba(255, 255, 255, 0) 62%,
-      rgba(120, 160, 255, $opacity * 0.5)
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 2;
-  }
+// Subtle native card treatment (replaces multi-colour neon bevel).
+@mixin bevel($opacity: 0.12) {
+  // Clean solid border already handled on .card
 }
 
 // ---------- Text ----------
-@mixin display($size: 4rem, $weight: 700) {
+@mixin display($size: 3.5rem, $weight: 700) {
   font-family: var(--font-display);
   font-weight: $weight;
   font-size: $size;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
 }
 
-@mixin gradient-text($from: var(--aurora-2), $to: var(--aurora-3)) {
-  background: linear-gradient(100deg, $from, $to);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+@mixin gradient-text($from: var(--aurora-2), $to: var(--aurora-1)) {
+  color: $from;
+  -webkit-text-fill-color: currentColor;
+  background: none;
 }
 
 @mixin eyebrow {
-  font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  color: var(--aurora-2);
 }
 
 // ---------- 3D ----------
@@ -109,10 +79,9 @@ $bp-xl: 1440px;
 
 @mixin lift {
   transition:
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.7s ease;
-  will-change: transform;
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 // ---------- Focus ----------
@@ -120,6 +89,6 @@ $bp-xl: 1440px;
   &:focus-visible {
     outline: 2px solid var(--aurora-2);
     outline-offset: 3px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 }

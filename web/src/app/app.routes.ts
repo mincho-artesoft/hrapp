@@ -63,21 +63,6 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
       data: { locale },
     },
     {
-      path: p('book'),
-      loadComponent: () => import('./pages/public-booking-page/public-booking-page.component').then((m) => m.PublicBookingPageComponent),
-      data: { locale },
-    },
-    {
-      path: p('bookings'),
-      loadComponent: () => import('./pages/guest-bookings-page/guest-bookings-page.component').then((m) => m.GuestBookingsPageComponent),
-      data: { locale },
-    },
-    {
-      path: p('booking/manage'),
-      loadComponent: () => import('./pages/booking-manage-page/booking-manage-page.component').then((m) => m.BookingManagePageComponent),
-      data: { locale },
-    },
-    {
       path: p('admin'),
       loadComponent: () => import('./pages/admin-console-page/admin-console-page.component').then((m) => m.AdminConsolePageComponent),
       data: { locale },

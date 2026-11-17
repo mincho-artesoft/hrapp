@@ -184,7 +184,7 @@ enum CalendarWidgetStore {
         }
 
         return Set(eventStore.calendars(for: .event).map(\.calendarIdentifier))
-            .union(AppLocalCalendarStore.shared.calendars.map(\.id))
+            .union(AppLocalCalendarStore.shared.visibleCalendars.map(\.id))
     }
 
     #endif
@@ -227,14 +227,14 @@ enum CalendarWidgetStore {
             // explicit local-only selection into all native calendars.
             if !calendars.isEmpty {
                 let predicate = eventStore.predicateForEvents(withStart: now, end: end, calendars: calendars)
-                nativeEvents = eventStore.events(matching: predicate)
+                nativeEvents = eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible)
             }
         }
 
         let localStore = AppLocalCalendarStore.shared
         return combineUpcomingEventSnapshots(nativeEvents: nativeEvents,
             localEvents: localStore.events(from: now, to: end, selectedCalendarIDs: selectedCalendarIDs),
-            localCalendars: localStore.calendars, selectedCalendarIDs: selectedCalendarIDs,
+            localCalendars: localStore.visibleCalendars, selectedCalendarIDs: selectedCalendarIDs,
             now: now, limit: limit)
     }
 

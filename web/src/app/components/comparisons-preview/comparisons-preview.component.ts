@@ -119,8 +119,8 @@ import { RevealDirective } from '../../core/reveal.directive';
       }
 
       .cmp-preview__card:hover {
-        border-color: rgba(56, 224, 240, 0.36);
-        box-shadow: var(--shadow-mid), 0 0 54px -22px rgba(56, 224, 240, 0.65);
+        border-color: var(--aurora-2);
+        box-shadow: var(--shadow-mid);
       }
 
       .cmp-preview__top {
@@ -133,13 +133,13 @@ import { RevealDirective } from '../../core/reveal.directive';
       .cmp-preview__badge {
         padding: 0.26rem 0.66rem;
         border-radius: var(--r-pill);
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        letter-spacing: 0.07em;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #a9e8ff;
-        background: rgba(56, 224, 240, 0.1);
-        border: 1px solid rgba(56, 224, 240, 0.24);
+        color: var(--aurora-2);
+        background: var(--aurora-1-soft);
+        border: 1px solid var(--nav-active-border);
       }
       .cmp-preview__badge[data-group='sync'] {
         color: #c5d6ff;
@@ -155,6 +155,27 @@ import { RevealDirective } from '../../core/reveal.directive';
         color: #dfc2ff;
         background: rgba(165, 102, 255, 0.14);
         border-color: rgba(165, 102, 255, 0.3);
+      }
+
+      :host-context([data-theme='light']) .cmp-preview__badge {
+        color: #0369a1;
+        background: rgba(2, 132, 199, 0.1);
+        border-color: rgba(2, 132, 199, 0.25);
+      }
+      :host-context([data-theme='light']) .cmp-preview__badge[data-group='sync'] {
+        color: #1d4ed8;
+        background: rgba(37, 99, 235, 0.1);
+        border-color: rgba(37, 99, 235, 0.25);
+      }
+      :host-context([data-theme='light']) .cmp-preview__badge[data-group='views'] {
+        color: #047857;
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.28);
+      }
+      :host-context([data-theme='light']) .cmp-preview__badge[data-group='devices'] {
+        color: #6d28d9;
+        background: rgba(124, 58, 237, 0.1);
+        border-color: rgba(124, 58, 237, 0.26);
       }
 
       .cmp-preview__icon {
@@ -174,7 +195,7 @@ import { RevealDirective } from '../../core/reveal.directive';
       }
 
       .cmp-preview__card:hover .cmp-preview__title {
-        color: #9beeff;
+        color: var(--accent-link);
       }
 
       .cmp-preview__desc {
@@ -189,7 +210,7 @@ import { RevealDirective } from '../../core/reveal.directive';
         padding: clamp(1.1rem, 2.2vw, 1.45rem);
         border-radius: var(--r-md);
         border: 1px solid var(--hair);
-        background: rgba(255, 255, 255, 0.025);
+        background: var(--control-bg);
       }
 
       .cmp-preview__dir-label {
@@ -214,8 +235,8 @@ import { RevealDirective } from '../../core/reveal.directive';
 
       .cmp-preview__pill:hover {
         color: var(--ink);
-        border-color: rgba(56, 224, 240, 0.42);
-        background: rgba(56, 224, 240, 0.1);
+        border-color: var(--aurora-2);
+        background: var(--aurora-1-soft);
       }
 
       .cmp-preview__foot {

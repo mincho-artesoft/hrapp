@@ -1219,3 +1219,11 @@
 "Restoring purchases..." = "Възстановяване на покупките…";
 
 "Open Web Calendar" = "Отвори уеб календара";
+
+/* Web authenticator presentation. */
+"Your calendar, in any browser." = "Твоят календар във всеки браузър.";
+"Sign-in code" = "Код за вход";
+"Copy Code" = "Копирай кода";
+"Enter this email and code on the website." = "Въведи този имейл и код в сайта.";
+"Scan the code shown on the website." = "Сканирай кода, показан в сайта.";
+"New code in %lld seconds" = "Нов код след %lld секунди";

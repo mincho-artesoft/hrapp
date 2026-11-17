@@ -62,8 +62,8 @@ import { ShotRailComponent } from '../shot-rail/shot-rail.component';
       height: auto;
       max-height: 540px;
       border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--hair-strong);
+      box-shadow: var(--shadow-mid);
       background: #080c1c;
       object-fit: contain;
     }

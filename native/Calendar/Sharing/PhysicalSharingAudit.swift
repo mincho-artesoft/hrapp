@@ -88,6 +88,36 @@ enum PhysicalSharingAudit {
     }
     static func perform(_ r: [String: Any]) async throws -> [String: Any] {
         try require(CloudCalendarsAPI.baseURL.absoluteString == "https://storage.wonek.com/cloud-calendars-debug", "Debug backend required")
+        #if os(iOS)
+        // Read-only diagnosis also works after logout; no credentials, email,
+        // event text or server records are included in this report.
+        if r["action"] as? String == "account-state" {
+            CloudAccountManager.shared.reloadFromStorage()
+            let store = AppLocalCalendarStore.shared
+            let viewModel = CalendarViewModel.shared
+            let pending = PendingEventInvitationManager.shared
+            await pending.refresh()
+            let receivedIDs = Set(store.calendars.filter { $0.origin == .received }.map(\.id))
+            let visible = store.events(from: .distantPast, to: .distantFuture,
+                                       selectedCalendarIDs: Set(store.calendars.map(\.id)))
+            return [
+                "signedIn": CloudAccountManager.shared.isSignedIn,
+                "providers": CloudAccountManager.shared.account?.identities.map(\.provider) ?? [],
+                "hasSession": CalendarFeedSession.existing != nil,
+                "hasAuthenticator": WebStudioAuthenticatorStore.shared.credentials != nil,
+                "receivedCalendarsVisible": store.receivedCalendars.count,
+                "receivedCalendarEventsVisible": visible.filter { receivedIDs.contains($0.calendarID) }.count,
+                "receivedEventsVisible": SharedInviteTracker.tracked().count,
+                "pendingInvitations": pending.totalInvitationCount,
+                "ownedCalendarsRetained": store.calendars.filter { $0.origin == .owned }.count,
+                "eventsRetainedOnDisk": store.events.count,
+                "outgoingSharesRetained": SharedOutgoingEventTracker.sentEvents(in: ek).count,
+                "googleCalendarConnections": viewModel.storedUsers.count,
+                "microsoftCalendarConnections": viewModel.storedMsUsers.count,
+                "push": InvitationPushRegistration.shared.auditStatus
+            ]
+        }
+        #endif
         guard let session = CalendarFeedSession.existing else { throw CalendarFeedSession.SessionError.signInRequired }
         try require(session.email?.lowercased() == (try string(r, "email")).lowercased(), "Unexpected signed-in account")
         let prefix = try string(r, "prefix")

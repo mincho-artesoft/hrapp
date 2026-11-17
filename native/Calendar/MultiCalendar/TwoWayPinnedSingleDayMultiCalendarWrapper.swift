@@ -288,7 +288,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                     end: actualEnd,
                     calendars: allowedCalendars
                 )
-                found = parent.eventStore.events(matching: predicate)
+                found = parent.eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible)
             }
             if debug {
                 print("⇢ EventKit returned =", found.count, "events")

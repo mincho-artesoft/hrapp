@@ -695,35 +695,27 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     func signOut() {
         guard !isSigningIn else { return }
-        isSigningIn = true
-        Task {
-            defer { isSigningIn = false }
-            do {
-                #if os(iOS)
-                try await InvitationPushRegistration.shared.prepareForSignOut(session: CalendarFeedSession.existing)
-                #endif
-                CalendarFeedSession.forget()
-                #if os(iOS)
-                SharedInviteTracker.demoteAllToReader()
-                SharedICloudCalendarLocalStore.demoteAllToReader()
-                #endif
-                account = nil
-                providerErrors.removeAll()
-                #if os(iOS)
-                PendingEventInvitationManager.shared.removeInvitationNotifications()
-                #endif
-                NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
-            } catch {
-                for identity in account?.identities ?? [] {
-                    setError(NSLocalizedString("Connect to the internet to safely stop invitation notifications and sign out.",
-                        comment: "Push registration sign out failure"), for: identity.provider)
-                }
-            }
-        }
+        #if os(iOS)
+        // Adopt legacy received copies before invalidating their account.
+        AppLocalCalendarStore.shared.registerReceivedAccountScope()
+        SharedInviteTracker.registerReceivedAccountScope()
+        InvitationPushRegistration.shared.prepareForSignOut(session: CalendarFeedSession.existing)
+        #endif
+        CalendarFeedSession.forget()
+        account = nil
+        providerErrors.removeAll()
+        #if os(iOS)
+        PendingEventInvitationManager.shared.clearForSignOut()
+        NotificationCenter.default.post(name: .appLocalCalendarStoreChanged, object: nil,
+                                        userInfo: ["providerSync": true])
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+        NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+        #endif
+        NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
     }
 
     func signOut(provider: String) {
-        guard !isSigningIn, let account else { return }
+        guard !isSigningIn, let account, account.identity(for: provider) != nil else { return }
 
         // The final identity remains linked on the server so this person's
         // events can still be recovered after signing in again. Locally this is
@@ -738,11 +730,11 @@ final class CloudAccountManager: NSObject, ObservableObject {
         Task {
             defer { isSigningIn = false }
             do {
-                let session = try await CalendarFeedSession.disconnect(provider: provider)
-                self.account = Account(
-                    identities: normalizedIdentities(from: session),
-                    ownerId: session.ownerId
-                )
+                _ = try await CalendarFeedSession.disconnect(provider: provider)
+                reloadFromStorage()
+                #if os(iOS)
+                if self.account == nil { PendingEventInvitationManager.shared.clearForSignOut() }
+                #endif
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             } catch {
                 setError(error.localizedDescription, for: provider)
@@ -771,7 +763,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
             finishSignIn(attempt)
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             #if os(iOS)
-            InvitationPushRegistration.shared.requestSync()
+            InvitationPushRegistration.shared.start()
             Task {
                 await SharedEventRecovery.restoreFromServer()
                 await PendingEventInvitationManager.shared.refresh(notifyForNewInvitations: true)
@@ -797,18 +789,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     private func normalizedIdentities(
         from session: CloudCalendarsAPI.Session
     ) -> [CloudCalendarsAPI.AccountIdentity] {
-        var identities: [String: CloudCalendarsAPI.AccountIdentity] = [:]
-        for identity in session.identities ?? [] {
-            if CalendarFeedSession.validEmail(identity.email) {
-                identities[identity.provider] = identity
-            }
-        }
-        if let provider = session.provider,
-           identities[provider] == nil,
-           CalendarFeedSession.validEmail(session.email) {
-            identities[provider] = .init(provider: provider, email: session.email)
-        }
-        return identities.values.sorted { $0.provider < $1.provider }
+        CalendarFeedSession.appIdentities(in: session)
     }
 
     #if os(iOS)

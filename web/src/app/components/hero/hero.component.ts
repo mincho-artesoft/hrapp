@@ -9,7 +9,6 @@ import {
   inject,
 } from '@angular/core';
 
-import { WebglBackdropComponent } from '../webgl-backdrop/webgl-backdrop.component';
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective } from '../../core/reveal.directive';
 import { ActiveLocaleService } from '../../core/active-locale.service';
@@ -34,7 +33,7 @@ const line = (text: string, accent = false): TitleLine => ({
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [WebglBackdropComponent, DeviceFrameComponent, RevealDirective],
+  imports: [DeviceFrameComponent, RevealDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',

@@ -13,3 +13,14 @@ button { min-height:44px; margin:.8rem 0 0; padding:.6rem 1rem; border:1px solid
 .builder__week section { padding:.8rem; border:1px solid #517a6e; border-radius:.6rem; overflow-wrap:anywhere; } h4 { margin:.1rem 0 .7rem; }
 .builder__warnings { border:1px solid #e0ba72; border-radius:.6rem; padding:.8rem; background:#30291c; }
 .builder__empty { color:#a9c5bc; } textarea { white-space:pre; }
+:host-context([data-theme='light']) {
+  .builder { background:#f0fdf4; border-color:#86efac; color:#064e3b; }
+  h2,h3,h4 { color:#064e3b; }
+  .builder__note { border-left-color:#10b981; }
+  fieldset, .builder__week section { border-color:#86efac; background:#ffffff; }
+  input,select,textarea { background:#ffffff; color:#0f172a; border-color:#94a3b8; color-scheme:light; }
+  button { background:#ecfdf5; color:#065f46; border-color:#6ee7b7; }
+  .builder__add { background:#059669; color:#ffffff; border-color:#059669; }
+  .builder__warnings { background:#fffbeb; border-color:#fcd34d; color:#92400e; }
+  .builder__empty { color:#475569; }
+}

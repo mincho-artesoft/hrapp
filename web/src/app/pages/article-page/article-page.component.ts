@@ -74,7 +74,6 @@ export class ArticlePageComponent implements OnDestroy {
   );
   readonly storeLabel: string;
   readonly webCalendarLabel: string;
-  readonly freeBookingLabel: string;
   readonly showScheduleBuilder: boolean;
   readonly inlineCtaAfter: number = -1;
 
@@ -93,9 +92,8 @@ export class ArticlePageComponent implements OnDestroy {
     this.hubHref = this.isComparison ? '/compare/' : linkPath(this.locale, '/articles');
     this.hubLabel = this.isComparison ? 'All comparisons' : this.chrome.allArticles;
     this.storeLabel = storeCta(this.locale.code);
-    const [webCalLbl, bookingLbl] = WEB_CTA_LABELS[this.locale.code] ?? WEB_CTA_LABELS['en-US'];
+    const [webCalLbl] = WEB_CTA_LABELS[this.locale.code] ?? WEB_CTA_LABELS['en-US'];
     this.webCalendarLabel = webCalLbl;
-    this.freeBookingLabel = bookingLbl;
 
     const facts = ARTICLE_FACTS[slug];
     if (!this.article || (!this.isComparison && !facts)) return;

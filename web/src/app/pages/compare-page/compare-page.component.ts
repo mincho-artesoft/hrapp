@@ -210,16 +210,16 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         padding: 0.4rem 0.9rem;
         border-radius: var(--r-pill);
         font-size: 0.84rem;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--aurora-2);
-        border: 1px solid rgba(56, 224, 240, 0.28);
-        background: rgba(56, 224, 240, 0.08);
-        transition: background 0.25s, border-color 0.25s;
+        border: 1px solid var(--nav-active-border);
+        background: var(--aurora-1-soft);
+        transition: background 0.2s, border-color 0.2s;
       }
 
       .cmp-hub__back:hover {
-        background: rgba(56, 224, 240, 0.16);
-        border-color: rgba(56, 224, 240, 0.48);
+        background: rgba(33, 104, 222, 0.24);
+        border-color: var(--aurora-2);
       }
 
       .cmp-hub__head h1 {
@@ -245,9 +245,9 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
 
       .cta--inline {
         padding: clamp(1.25rem, 2.8vw, 1.65rem);
-        border: 1px dashed rgba(56, 224, 240, 0.36);
-        border-radius: var(--r-md);
-        background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+        border: 1px solid var(--hair);
+        border-radius: var(--r-lg);
+        background: var(--surface);
         display: grid;
         gap: 0.85rem;
         justify-items: start;
@@ -269,7 +269,6 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         height: 7px;
         border-radius: 50%;
         background: var(--aurora-2);
-        box-shadow: 0 0 8px rgba(56, 224, 240, 0.7);
       }
       .cmp-hub__dot[data-group='sync'] { background: var(--aurora-1); }
       .cmp-hub__dot[data-group='views'] { background: #52e39b; }
@@ -281,7 +280,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         color: var(--ink-3);
         padding: 0.08rem 0.44rem;
         border-radius: var(--r-pill);
-        background: rgba(255, 255, 255, 0.06);
+        background: var(--control-bg-hover);
       }
 
       .cmp-hub__matrix h2,
@@ -295,7 +294,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         overflow-x: auto;
         border: 1px solid var(--hair-strong);
         border-radius: var(--r-md);
-        background: rgba(8, 13, 30, 0.55);
+        background: var(--table-bg, rgba(8, 13, 30, 0.55));
       }
 
       .cmp-hub__matrix table {
@@ -311,7 +310,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         font-size: 0.82rem;
         color: var(--ink-3);
         border-bottom: 1px solid var(--hair);
-        background: rgba(255, 255, 255, 0.025);
+        background: var(--control-bg);
       }
 
       .cmp-hub__matrix th,
@@ -333,7 +332,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         font-size: 0.84rem;
         font-weight: 600;
         color: var(--ink);
-        background: rgba(255, 255, 255, 0.06);
+        background: var(--table-head-bg, rgba(255, 255, 255, 0.06));
       }
 
       .cmp-hub__group {
@@ -370,8 +369,8 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         color: var(--aurora-2);
         padding: 0.22rem 0.65rem;
         border-radius: var(--r-pill);
-        background: rgba(56, 224, 240, 0.1);
-        border: 1px solid rgba(56, 224, 240, 0.24);
+        background: var(--aurora-1-soft);
+        border: 1px solid var(--nav-active-border);
       }
 
       .cmp-hub__grid {
@@ -399,8 +398,8 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       }
 
       .cmp-hub__card:hover {
-        border-color: rgba(56, 224, 240, 0.36);
-        box-shadow: var(--shadow-mid), 0 0 48px -22px rgba(56, 224, 240, 0.55);
+        border-color: var(--aurora-2);
+        box-shadow: var(--shadow-mid);
       }
 
       .cmp-hub__card-top {
@@ -413,13 +412,13 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       .cmp-hub__pill {
         padding: 0.24rem 0.64rem;
         border-radius: var(--r-pill);
-        font-family: var(--font-mono);
         font-size: 0.66rem;
-        letter-spacing: 0.06em;
+        font-weight: 600;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #a9e8ff;
-        background: rgba(56, 224, 240, 0.1);
-        border: 1px solid rgba(56, 224, 240, 0.24);
+        color: var(--aurora-2);
+        background: var(--aurora-1-soft);
+        border: 1px solid var(--nav-active-border);
       }
       .cmp-hub__pill[data-group='sync'] {
         color: #c5d6ff;
@@ -435,6 +434,27 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
         color: #dfc2ff;
         background: rgba(165, 102, 255, 0.14);
         border-color: rgba(165, 102, 255, 0.3);
+      }
+
+      :host-context([data-theme='light']) .cmp-hub__pill {
+        color: #0369a1;
+        background: rgba(2, 132, 199, 0.1);
+        border-color: rgba(2, 132, 199, 0.25);
+      }
+      :host-context([data-theme='light']) .cmp-hub__pill[data-group='sync'] {
+        color: #1d4ed8;
+        background: rgba(37, 99, 235, 0.1);
+        border-color: rgba(37, 99, 235, 0.25);
+      }
+      :host-context([data-theme='light']) .cmp-hub__pill[data-group='views'] {
+        color: #047857;
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.28);
+      }
+      :host-context([data-theme='light']) .cmp-hub__pill[data-group='devices'] {
+        color: #6d28d9;
+        background: rgba(124, 58, 237, 0.1);
+        border-color: rgba(124, 58, 237, 0.26);
       }
 
       .cmp-hub__arrow {
@@ -461,7 +481,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       }
 
       .cmp-hub__card:hover .cmp-hub__card-link {
-        color: #9beeff;
+        color: var(--accent-link);
       }
 
       .cmp-hub__card-desc {
@@ -481,7 +501,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       }
 
       .cmp-hub__verdict strong {
-        color: #9beeff;
+        color: var(--accent-link);
       }
 
       .cmp-hub__links {
@@ -491,7 +511,7 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
       }
 
       .cmp-hub__links a {
-        color: #9beeff;
+        color: var(--accent-link);
         text-decoration: underline;
         text-decoration-color: rgba(56, 224, 240, 0.35);
         text-underline-offset: 3px;
@@ -499,9 +519,9 @@ const GROUP_ORDER: readonly ComparisonGroup[] = ['apps', 'sync', 'views', 'devic
 
       .cmp-hub__foot {
         padding: clamp(1.3rem, 3vw, 1.9rem);
-        border-radius: var(--r-md);
-        border: 1px solid var(--hair-strong);
-        background: linear-gradient(155deg, rgba(56, 224, 240, 0.08), rgba(77, 124, 255, 0.05));
+        border-radius: var(--r-lg);
+        border: 1px solid var(--hair);
+        background: var(--surface);
         display: grid;
         gap: 1rem;
       }

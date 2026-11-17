@@ -1223,3 +1223,11 @@
 "Restoring purchases..." = "Restoring purchases...";
 
 "Open Web Calendar" = "Open Web Calendar";
+
+/* Web authenticator presentation. */
+"Your calendar, in any browser." = "Your calendar, in any browser.";
+"Sign-in code" = "Sign-in code";
+"Copy Code" = "Copy Code";
+"Enter this email and code on the website." = "Enter this email and code on the website.";
+"Scan the code shown on the website." = "Scan the code shown on the website.";
+"New code in %lld seconds" = "New code in %lld seconds";

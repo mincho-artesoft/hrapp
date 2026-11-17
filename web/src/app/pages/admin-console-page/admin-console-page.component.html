@@ -3,12 +3,11 @@
     <div class="admin-hdr">
       <div>
         <span class="adm-badge">PLATFORM ADMIN CONSOLE</span>
-        <h1>Scheduling &amp; Calendar Administration</h1>
-        <p>Monitor active hosts, audit global bookings, moderate schedules, and configure Google &amp; Microsoft OAuth Client IDs.</p>
+        <h1>Calendar Platform Administration</h1>
+        <p>Monitor active accounts and configure Google &amp; Microsoft OAuth Client IDs.</p>
       </div>
       <div class="admin-hdr__links">
-        <a class="adm-link" [href]="calendarHref()">Host Studio &amp; Calendar</a>
-        <a class="adm-link" [href]="guestHref()">Guest Portal</a>
+        <a class="adm-link" [href]="calendarHref()">Web Calendar</a>
         @if (api.isSignedInWithAccount()) {
           <button type="button" class="adm-link adm-link--out" (click)="api.signOut(); data.set(null)">
             Sign out ({{ api.profile()?.email }})
@@ -83,10 +82,7 @@
       <div class="adm-bar">
         <div class="adm-tabs">
           <button type="button" [class.is-on]="tab() === 'hosts'" (click)="tab.set('hosts')">
-            Hosts Directory ({{ d.hosts.length }})
-          </button>
-          <button type="button" [class.is-on]="tab() === 'bookings'" (click)="tab.set('bookings')">
-            Global Bookings ({{ d.recentBookings.length }})
+            Accounts Directory ({{ d.hosts.length }})
           </button>
           <button type="button" [class.is-on]="tab() === 'oauth'" (click)="tab.set('oauth')">
             OAuth &amp; Platform Settings
@@ -108,7 +104,7 @@
       @if (tab() === 'hosts') {
         <div class="adm-panel">
           @if (filteredHosts().length === 0) {
-            <p class="adm-empty">No matching host schedules found.</p>
+            <p class="adm-empty">No matching accounts found.</p>
           } @else {
             <div class="table-wrap">
               <table class="adm-table">
@@ -125,11 +121,7 @@
                 <tbody>
                   @for (h of filteredHosts(); track h.calId) {
                     <tr>
-                      <td>
-                        <a class="tbl-link" [href]="hostPageHref(h.handle)" target="_blank" rel="noopener">
-                          &#64;{{ h.handle }} ↗
-                        </a>
-                      </td>
+                      <td>&#64;{{ h.handle }}</td>
                       <td>{{ h.displayName }}</td>
                       <td>{{ h.email || '—' }}</td>
                       <td>{{ h.meetingTypeCount }} · {{ h.timeZone }}</td>
@@ -150,44 +142,6 @@
                         >
                           {{ h.disabledByAdmin ? 'Re-enable' : 'Suspend' }}
                         </button>
-                      </td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
-            </div>
-          }
-        </div>
-      }
-
-      <!-- TAB 2: GLOBAL BOOKINGS -->
-      @if (tab() === 'bookings') {
-        <div class="adm-panel">
-          @if (filteredBookings().length === 0) {
-            <p class="adm-empty">No bookings recorded yet.</p>
-          } @else {
-            <div class="table-wrap">
-              <table class="adm-table">
-                <thead>
-                  <tr>
-                    <th>When (UTC)</th>
-                    <th>Meeting</th>
-                    <th>Host</th>
-                    <th>Guest</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (b of filteredBookings(); track b.bookingId) {
-                    <tr>
-                      <td>{{ b.start | date: 'MMM d, HH:mm' }}</td>
-                      <td>{{ b.title }}</td>
-                      <td>&#64;{{ b.hostHandle }}</td>
-                      <td>{{ b.guestName }} ({{ b.guestEmail }})</td>
-                      <td>
-                        <span class="pill" [class.pill--ok]="b.status !== 'cancelled'" [class.pill--err]="b.status === 'cancelled'">
-                          {{ b.status }}
-                        </span>
                       </td>
                     </tr>
                   }

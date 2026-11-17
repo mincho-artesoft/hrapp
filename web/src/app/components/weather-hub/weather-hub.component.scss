@@ -4,21 +4,7 @@
 
 .weather {
   position: relative;
-  // Contain the decorative glow without widening the mobile document.
   overflow-x: clip;
-
-  /* a warm counterpoint to the blue elsewhere on the page */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 8% -12% auto -12%;
-    height: 60%;
-    pointer-events: none;
-    background:
-      radial-gradient(40% 46% at 78% 22%, rgba(255, 176, 90, 0.16), transparent 70%),
-      radial-gradient(44% 40% at 16% 70%, rgba(86, 214, 255, 0.14), transparent 72%);
-    filter: blur(20px);
-  }
 }
 
 .weather__head {
@@ -127,7 +113,7 @@
   padding: 3px;
   border-radius: var(--r-pill);
   border: 1px solid var(--hair-strong);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--control-bg);
 
   @include upto($bp-sm) { flex: 1 1 100%; }
 }
@@ -149,8 +135,13 @@
   &:hover { color: var(--ink-2); }
 
   &.is-on {
-    color: #04121c;
-    background: linear-gradient(120deg, var(--aurora-2), #9fe8ff);
+    color: #ffffff;
+    background: var(--aurora-1);
+  }
+
+  :host-context([data-theme='light']) &.is-on {
+    color: #ffffff;
+    background: var(--aurora-1);
   }
 
   &:focus-visible { outline: 2px solid var(--aurora-2); outline-offset: 2px; }
@@ -163,12 +154,12 @@
   padding: 0.5rem 0.8rem;
   border-radius: var(--r-pill);
   border: 1px solid var(--hair-strong);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--control-bg);
   transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
 
   &:focus-within {
-    border-color: rgba(56, 224, 240, 0.55);
-    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--aurora-2);
+    background: var(--control-bg-hover);
   }
 }
 
@@ -222,8 +213,8 @@
   padding: 0.3rem;
   border-radius: var(--r-md);
   border: 1px solid var(--hair-strong);
-  background: rgba(10, 14, 30, 0.96);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  background: var(--dropdown-bg, rgba(10, 14, 30, 0.96));
+  box-shadow: var(--shadow-mid);
   animation: finder-drop 0.22s var(--ease-out);
 }
 
@@ -243,7 +234,7 @@
   transition: background 0.2s var(--ease-out);
 
   &:hover,
-  &:focus-visible { background: rgba(255, 255, 255, 0.07); outline: none; }
+  &:focus-visible { background: var(--control-bg-hover); outline: none; }
 }
 
 .finder__name { font-size: 0.88rem; color: var(--ink); }
@@ -289,8 +280,8 @@
     }
 
     &:first-child {
-      background: linear-gradient(160deg, rgba(77, 124, 255, 0.28), rgba(56, 224, 240, 0.12));
-      box-shadow: inset 0 0 0 1px rgba(120, 190, 255, 0.32);
+      background: var(--aurora-1-soft);
+      box-shadow: inset 0 0 0 1px var(--nav-active-border);
     }
   }
 }
@@ -349,8 +340,9 @@
 
   /* The weekend is what most people are scanning for. */
   &.is-weekend {
-    background: rgba(56, 224, 240, 0.06);
+    background: var(--aurora-2-soft);
     .day__name { color: #bfe8ff; }
+    :host-context([data-theme='light']) & .day__name { color: #0369a1; font-weight: 600; }
   }
 
   .glyph { justify-self: center; }
@@ -371,6 +363,7 @@
   font-size: 0.7rem;
   color: #7fc9ff;
   text-align: right;
+  :host-context([data-theme='light']) & { color: #0284c7; font-weight: 600; }
 }
 
 .day__lo,
@@ -386,7 +379,7 @@
   position: relative;
   height: 4px;
   border-radius: 99px;
-  background: rgba(255, 255, 255, 0.09);
+  background: var(--hair);
 
   i {
     position: absolute;
@@ -530,12 +523,14 @@
       left: 2px; bottom: 3px;
       border-radius: 99px;
       background: #d7e3f5;
+      :host-context([data-theme='light']) & { background: #94a3b8; }
     }
     &::after {
       width: 9px; height: 9px;
       left: 4px; top: 2px;
       border-radius: 50%;
       background: #e8f0fb;
+      :host-context([data-theme='light']) & { background: #b2bfd2; }
     }
   }
 
@@ -547,6 +542,7 @@
       border-radius: 99px;
       background: #b9c9e0;
       box-shadow: 4px -3px 0 -1px #cfdcef;
+      :host-context([data-theme='light']) & { background: #64748b; box-shadow: 4px -3px 0 -1px #94a3b8; }
     }
     &::after {
       width: 2px; height: 5px;
@@ -566,6 +562,9 @@
     background: radial-gradient(circle at 34% 28%, #f4f7ff, #c3ccdd 60%, #94a0b8);
     box-shadow: inset -3px -1px 4px rgba(20, 30, 60, 0.4);
     animation: moon-glow 5s var(--ease-in-out) infinite alternate;
+    :host-context([data-theme='light']) & {
+      background: radial-gradient(circle at 34% 28%, #94a3b8, #64748b 65%, #475569);
+    }
   }
 }
 

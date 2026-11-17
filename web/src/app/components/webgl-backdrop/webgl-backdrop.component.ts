@@ -88,6 +88,24 @@ import type { BackdropScene } from './scene';
           radial-gradient(58% 46% at 50% 42%, rgba(3, 5, 12, 0.62), transparent 72%),
           linear-gradient(180deg, rgba(3, 5, 12, 0.7) 0%, transparent 22%, transparent 62%, rgba(3, 5, 12, 0.94) 100%);
       }
+
+      :host-context([data-theme='light']) {
+        .backdrop__canvas {
+          opacity: 0 !important;
+        }
+        .backdrop__fallback {
+          background:
+            radial-gradient(70% 52% at 50% 4%, rgba(37, 99, 235, 0.14), transparent 68%),
+            radial-gradient(46% 40% at 14% 26%, rgba(124, 58, 237, 0.1), transparent 70%),
+            radial-gradient(50% 44% at 88% 20%, rgba(2, 132, 199, 0.12), transparent 70%),
+            linear-gradient(180deg, #f8fafc 0%, #f1f5fb 55%, #eef2f9 100%);
+        }
+        .backdrop__vignette {
+          background:
+            radial-gradient(58% 46% at 50% 42%, rgba(255, 255, 255, 0.55), transparent 72%),
+            linear-gradient(180deg, rgba(248, 250, 252, 0.75) 0%, transparent 24%, transparent 64%, rgba(246, 248, 252, 0.96) 100%);
+        }
+      }
     `,
   ],
 })

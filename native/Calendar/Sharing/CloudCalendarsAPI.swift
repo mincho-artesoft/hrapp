@@ -1087,7 +1087,14 @@ final class PendingEventInvitationManager: ObservableObject {
         foregroundPollingTask = nil
     }
 
+    func clearForSignOut() {
+        invitations = []; calendarInvitations = []; errorMessage = nil
+        isLoading = false
+        removeInvitationNotifications()
+    }
+
     func refresh(notifyForNewInvitations: Bool = false) async {
+        guard CalendarFeedSession.existing != nil else { clearForSignOut(); return }
         guard !isRefreshing else {
             pendingNotificationRefresh = pendingNotificationRefresh
                 || notifyForNewInvitations
@@ -1119,7 +1126,7 @@ final class PendingEventInvitationManager: ObservableObject {
             async let loadedEvents = loadEventInvitations(session: session)
             async let loadedCalendars = loadCalendarInvitations(session: session)
             let (eventValues, calendarValues) = await (loadedEvents, loadedCalendars)
-            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return }
+            guard CalendarFeedSession.isCurrent(session), !Task.isCancelled else { return }
             let sorted = (eventValues ?? []).sorted {
                 ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture)
             }
@@ -1172,11 +1179,11 @@ final class PendingEventInvitationManager: ObservableObject {
     private func loadEventInvitations(session: CloudCalendarsAPI.Session) async -> [CloudCalendarsAPI.PendingEventInvitation]? {
         do {
             let values = try await CloudCalendarsAPI.pendingEventInvitations(session: session)
-            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return nil }
+            guard CalendarFeedSession.isCurrent(session), !Task.isCancelled else { return nil }
             invitations = values.sorted { ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture) }
             return values
         } catch {
-            if CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled {
+            if CalendarFeedSession.isCurrent(session), !Task.isCancelled {
                 errorMessage = error.localizedDescription
             }
             return nil
@@ -1186,11 +1193,11 @@ final class PendingEventInvitationManager: ObservableObject {
     private func loadCalendarInvitations(session: CloudCalendarsAPI.Session) async -> [CloudCalendarsAPI.PendingICloudCalendarInvitation]? {
         do {
             let values = try await CloudCalendarsAPI.pendingICloudCalendarInvitations(session: session)
-            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return nil }
+            guard CalendarFeedSession.isCurrent(session), !Task.isCancelled else { return nil }
             calendarInvitations = values.sorted { ($0.invitedAt ?? "") > ($1.invitedAt ?? "") }
             return values
         } catch {
-            if CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled {
+            if CalendarFeedSession.isCurrent(session), !Task.isCancelled {
                 errorMessage = error.localizedDescription
             }
             return nil

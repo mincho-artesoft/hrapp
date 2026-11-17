@@ -78,14 +78,14 @@ interface Shot {
       .rail__item a {
         display: block;
         border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.72);
+        border: 1px solid var(--hair-strong);
+        box-shadow: var(--shadow-near);
         overflow: hidden;
         transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
       }
       .rail__item a:hover {
-        transform: translateY(-3px);
-        border-color: rgba(56, 224, 240, 0.35);
+        transform: translateY(-2px);
+        border-color: var(--aurora-2);
       }
       .rail__item a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 

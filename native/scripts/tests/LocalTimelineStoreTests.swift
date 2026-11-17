@@ -15,6 +15,8 @@ struct SharedEventLocation: Codable, Equatable {
     init(location: EKStructuredLocation) { title = location.title ?? "" }
     func makeLocation(title: String) -> EKStructuredLocation { EKStructuredLocation(title: title) }
 }
+// Provider payloads are opaque to this local-store suite.
+struct DeviceCalendarEvent: Codable, Equatable {}
 struct SharedEventDetails {
     var travelTime: Double?; var attachments: [SharedEventAttachment]?; var videoCallURL: String?
 }
@@ -43,6 +45,13 @@ enum CloudCalendarsAPI {
         var revokedAt: String?; var revokedReason: String?; var events: [RemoteEvent]?
         var eventsUpdatedAt: String?; var isRevoked: Bool
     }
+}
+@MainActor enum CalendarFeedSession {
+    struct Session { let calendarId: String }
+    static var existing: Session? = {
+        ReceivedSharingVisibility.activate(accountID: "local-store-test-account")
+        return Session(calendarId: "local-store-test-account")
+    }()
 }
 @MainActor final class CalendarViewModel {
     static let shared = CalendarViewModel()

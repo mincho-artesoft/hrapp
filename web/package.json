@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "bash scripts/deploy.sh",
+    "deploy:cloudflare": "npm run build && node scripts/deploy-cloudflare-pages.mjs",
     "deploy:dry": "DRY_RUN=1 bash scripts/deploy.sh",
     "deploy:invalidate": "INVALIDATE_ONLY=1 bash scripts/deploy.sh",
     "test:cloudfront": "node --test scripts/tests/cloudfront-router.test.mjs",

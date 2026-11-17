@@ -30,8 +30,7 @@
   min-height: 15rem;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: var(--shadow-mid), 0 0 60px -22px rgba(90, 150, 255, 0.8);
+    border-color: var(--hair-strong);
   }
 
   &--wide {
@@ -116,15 +115,15 @@
 
 .tile__badge {
   align-self: flex-start;
-  padding: 0.32rem 0.7rem;
+  padding: 0.28rem 0.68rem;
   border-radius: var(--r-pill);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #a9e8ff;
-  background: rgba(56, 224, 240, 0.1);
-  border: 1px solid rgba(56, 224, 240, 0.24);
+  color: var(--aurora-2);
+  background: var(--aurora-1-soft);
+  border: 1px solid var(--nav-active-border);
 }
 
 /* A highlight that follows the pointer across the small tiles. */
@@ -165,13 +164,13 @@
 .orbit__ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid var(--hair);
   /* flattened into perspective — reads as a disc, not a circle */
   transform: rotateX(60deg);
 
   &--1 { width: 12.5rem; height: 12.5rem; }
-  &--2 { width: 16rem; height: 16rem; border-color: rgba(255, 255, 255, 0.07); }
-  &--3 { width: 19.5rem; height: 19.5rem; border-color: rgba(255, 255, 255, 0.05); }
+  &--2 { width: 16rem; height: 16rem; }
+  &--3 { width: 19.5rem; height: 19.5rem; opacity: 0.7; }
 }
 
 .orbit__core {
@@ -235,6 +234,12 @@
 
   .orbit__node[data-src='google'] & { animation-duration: 32s; }
   .orbit__node[data-src='microsoft'] & { animation-duration: 42s; }
+
+  :host-context([data-theme='light']) & {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow: 0 12px 28px -10px rgba(15, 23, 42, 0.2);
+  }
 }
 
 /* The node rides the tilted ring; the chip undoes that tilt and rotation so
@@ -403,4 +408,38 @@
   .gesture__event--live { animation: none; top: 5.4rem; height: 3.4rem; }
   .gesture__cursor { display: none; }
   .gesture__handle { opacity: 1; animation: none; }
+}
+
+:host-context([data-theme='light']) {
+  .bento__tile:hover {
+    border-color: rgba(37, 99, 235, 0.32);
+    box-shadow: var(--shadow-mid);
+  }
+  .gesture {
+    background: #f8fafc;
+    border-color: var(--hair-strong);
+  }
+  .gesture__row {
+    border-top-color: rgba(15, 23, 42, 0.08);
+    em { background: #f8fafc; color: var(--ink-4); }
+  }
+  .gesture__event--static {
+    background: rgba(124, 58, 237, 0.14);
+    border-left-color: #7c3aed;
+    b { color: #4c1d95; }
+    i { color: #5b21b6; }
+  }
+  .gesture__event--live {
+    background: rgba(37, 99, 235, 0.16);
+    border-left-color: #2563eb;
+    box-shadow: 0 10px 24px -10px rgba(37, 99, 235, 0.35);
+    b { color: #1e3a8a; }
+    i { color: #1d4ed8; }
+  }
+  .gesture__handle { background: #2563eb; }
+  .gesture__cursor {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.16);
+    box-shadow: 0 0 14px rgba(37, 99, 235, 0.35);
+  }
 }

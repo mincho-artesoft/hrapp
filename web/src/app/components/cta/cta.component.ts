@@ -2,20 +2,18 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { ActiveLocaleService } from '../../core/active-locale.service';
-import { RevealDirective } from '../../core/reveal.directive';
 import { storeCta } from '../../core/store-cta';
 import {
   APP_MIN_IOS,
   APP_RATING,
   APP_RATING_COUNT,
   APP_SIZE_MB,
-  APP_STORE_URL,
 } from '../../core/app-facts';
 
 @Component({
   selector: 'app-cta',
   standalone: true,
-  imports: [DeviceFrameComponent, RevealDirective],
+  imports: [DeviceFrameComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './cta.component.html',
   styleUrl: './cta.component.scss',

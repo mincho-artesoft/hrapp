@@ -130,7 +130,7 @@ enum AccountLocalCalendarSync {
         }
     }
     private static func verify(_ session: CloudCalendarsAPI.Session) throws {
-        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
+        guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
     }
     static func normalizedEvent(_ event: DeviceCalendarEvent) throws -> DeviceCalendarEvent {
         var result = try MacEventShareSnapshot.canonical(event)

@@ -22,19 +22,26 @@ summary {
   gap: 0.4rem;
   padding: 0.45rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid var(--ink-4);
-  background: transparent;
+  border: 1px solid var(--hair-strong);
+  background: var(--control-bg, transparent);
   color: var(--ink-2);
   font: inherit;
   font-size: 0.85rem;
   line-height: 1;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 
   &:hover,
   &:focus-visible {
     border-color: var(--aurora-2);
     color: var(--ink);
+    background: var(--control-bg-hover);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.42rem 0.56rem;
+    font-size: 0.78rem;
+    gap: 0.28rem;
   }
 }
 
@@ -65,9 +72,9 @@ summary {
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: 0.9rem;
-  border: 1px solid var(--ink-4);
-  background: var(--surface-2, #111834);
-  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.45);
+  border: 1px solid var(--hair-strong);
+  background: var(--dropdown-bg, #111834);
+  box-shadow: var(--shadow-mid);
 
   a {
     display: block;
@@ -80,12 +87,13 @@ summary {
 
     &:hover,
     &:focus-visible {
-      background: rgb(255 255 255 / 0.06);
+      background: var(--control-bg-hover, rgb(255 255 255 / 0.06));
       color: var(--ink);
     }
 
     &.is-current {
       color: var(--aurora-2);
+      font-weight: 600;
     }
   }
 }

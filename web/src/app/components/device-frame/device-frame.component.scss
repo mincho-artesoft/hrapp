@@ -5,29 +5,15 @@
   --device-w: 268px;
 }
 
-/* The screenshots are 735 x 1506 with their frame included; matching that
-   ratio here lets the stacked images in the product tour sit on inset: 0. */
 .device {
   position: relative;
   width: var(--device-w);
   aspect-ratio: 735 / 1506;
 
-  /* Sized against viewport height as well as a pixel cap — the phone is over
-     twice as tall as it is wide, so a width-only rule overflows short screens. */
-  /* Each preset is an overridable default. A section that needs a smaller
-     phone than the preset — the tour, whose sticky stage has to fit copy and
-     three devices in one viewport — sets `--device-lg-w` on an ancestor and
-     it wins, because these declarations read it. Setting `--device-w` from
-     outside would not work: it is declared here, on the element itself, and
-     a declaration always beats an inherited value. */
   &--sm { --device-w: var(--device-sm-w, min(206px, 23vh)); }
   &--md { --device-w: var(--device-md-w, min(268px, 29vh)); }
   &--lg { --device-w: var(--device-lg-w, min(318px, 33vh)); }
 
-  /* On a handset the viewport-height cap stops doing its job: 33vh of a tall
-     phone screen is still most of the width, and a section that pairs the
-     device with copy has nowhere left to put the words. The pixel caps are
-     what bind here, so they come down too. */
   @include upto($bp-sm) {
     &--sm { --device-w: var(--device-sm-w, min(158px, 20vh)); }
     &--md { --device-w: var(--device-md-w, min(206px, 25vh)); }
@@ -35,48 +21,19 @@
   }
 }
 
-/* ---------------------------------------------------------------
-   Light spill — the phone lights the page around it, which is what
-   makes it sit *in* the scene rather than on top of it.
---------------------------------------------------------------- */
 .device__bloom {
-  position: absolute;
-  inset: -14% -30%;
-  border-radius: 50%;
-  pointer-events: none;
-  background:
-    radial-gradient(48% 42% at 50% 42%, rgba(77, 124, 255, 0.45), transparent 70%),
-    radial-gradient(40% 36% at 32% 66%, rgba(56, 224, 240, 0.28), transparent 72%),
-    radial-gradient(42% 38% at 72% 30%, rgba(165, 102, 255, 0.26), transparent 74%);
-  filter: blur(44px);
-  opacity: 0.8;
-  animation: bloom-pulse 9s var(--ease-in-out) infinite alternate;
-  z-index: 0;
+  display: none;
 }
 
-@keyframes bloom-pulse {
-  from { opacity: 0.58; transform: scale(0.94); }
-  to   { opacity: 0.92; transform: scale(1.06); }
-}
-
-/* ---------------------------------------------------------------
-   The screenshot. Its own frame is part of the artwork, so all that
-   is added here is the shadow it casts on the page.
---------------------------------------------------------------- */
 .device__shot {
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter:
-    drop-shadow(0 26px 44px rgba(0, 0, 0, 0.62))
-    drop-shadow(0 60px 110px rgba(4, 8, 24, 0.72));
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.38));
 }
 
-/* ---------------------------------------------------------------
-   Projected content
---------------------------------------------------------------- */
 .device__slot {
   position: absolute;
   inset: 0;

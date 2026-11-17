@@ -44,7 +44,9 @@ enum SharedInviteRefresher {
     private static func performRefresh(_ original: SharedInviteTracker.Invite) async -> Bool {
         // Revocation freezes the recipient's copy. It remains in their chosen
         // calendar until they delete it locally, but no longer talks to S3.
-        guard original.isRevoked != true else { return false }
+        guard original.isRevoked != true,
+              let activeSession = CalendarFeedSession.existing,
+              SharedInviteTracker.invite(eventID: original.eventID) != nil else { return false }
 
         // Removing a received Writer/Reader copy is strictly local. Removing a
         // delegated Owner copy is different: Owner is allowed to call off the
@@ -167,6 +169,7 @@ enum SharedInviteRefresher {
 
         do {
             let remote = try await fetchRemote(invite)
+            guard CalendarFeedSession.isCurrent(activeSession) else { return false }
 
             // At an unchanged server revision, a Writer's local difference is
             // a new edit. Push it before the normal pull step can restore the
@@ -228,7 +231,8 @@ enum SharedInviteRefresher {
     }
 
     private static func markRevokedInvite(_ invite: SharedInviteTracker.Invite) -> Bool {
-        guard invite.isRevoked != true else { return false }
+        guard SharedInviteTracker.invite(eventID: invite.eventID) != nil,
+              invite.isRevoked != true else { return false }
         var updated = invite
         updated.isRevoked = true
         updated.access = .reader
@@ -268,7 +272,8 @@ enum SharedInviteRefresher {
         // revision is intentionally still compared with EventKit: recipients
         // can edit this writable local copy from another calendar app, and the
         // organiser's S3 version must win again on the next refresh.
-        guard remote.sequence >= invite.lastSequence else { return false }
+        guard SharedInviteTracker.invite(eventID: invite.eventID) != nil,
+              remote.sequence >= invite.lastSequence else { return false }
 
         let store = CalendarViewModel.shared.eventStore
         guard let event = store.event(withIdentifier: invite.localEventIdentifier) else {
@@ -421,6 +426,7 @@ enum SharedEventRecovery {
             // One-time migration for invites accepted before account-backed
             // recovery existed.
             for invite in SharedInviteTracker.tracked().values {
+                guard CalendarFeedSession.isCurrent(session) else { return }
                 try? await CloudCalendarsAPI.rememberReceivedInvite(
                     eventId: invite.eventID,
                     feedId: invite.feedID,
@@ -431,6 +437,7 @@ enum SharedEventRecovery {
             }
 
             let state = try await CloudCalendarsAPI.sharedState(session: session)
+            guard CalendarFeedSession.isCurrent(session) else { return }
             let store = CalendarViewModel.shared.eventStore
 
             for remote in state.outgoing {
@@ -447,6 +454,7 @@ enum SharedEventRecovery {
             }
 
             for remote in state.received {
+                guard CalendarFeedSession.isCurrent(session) else { return }
                 let preferred = SharedInviteTracker.invite(eventID: remote.id)?.localEventIdentifier
                 let local = findEvent(
                     remote,
@@ -466,6 +474,7 @@ enum SharedEventRecovery {
                 }
             }
 
+            guard CalendarFeedSession.isCurrent(session) else { return }
             restoredAccountKey = accountKey
             NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)

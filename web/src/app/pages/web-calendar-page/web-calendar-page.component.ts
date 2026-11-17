@@ -17,18 +17,12 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { SeoService, absolute } from '../../core/seo.service';
-import { APP_DEVELOPER, APP_STORE_URL, SITE_URL, isIosQrAuthEnabled } from '../../core/app-facts';
+import { ThemeService } from '../../core/theme.service';
+import { APP_DEVELOPER, SITE_URL, isIosQrAuthEnabled } from '../../core/app-facts';
 import { DEFAULT_LOCALE, LOCALES, Locale, linkPath, localePath } from '../../core/locales';
 import {
-  BookingInviteLink,
-  BookingScheduleConfig,
-  CalendarApiError,
   CalendarPlatformApiService,
   ExternalBusyState,
-  HostBookingItem,
-  IosQrChallengeStartResponse,
-  MeetingTypeConfig,
-  TimeWindow,
   WebCalendarEvent,
   DeviceCalendar,
 } from '../../core/calendar-platform-api.service';
@@ -37,15 +31,14 @@ import {
   IOS_EVENT_COLORS,
   PositionedTimedBlock,
   computeIosEventStyle,
+  isLightEventColor,
   detectBrowserTimeZone,
   downloadIcsFile,
   buildSingleEventIcs,
-  generateQrSvgDataUrl,
   layoutTimedBlocks,
 } from '../../core/ios-event-palette';
 import { PlatformAuthCardComponent } from '../../components/platform-auth-card/platform-auth-card.component';
 
-type StudioTab = 'calendar' | 'availability' | 'incoming';
 type CalendarViewMode = 'day' | 'workweek' | 'week' | 'month' | 'agenda';
 
 interface DragSession {
@@ -83,9 +76,6 @@ interface EventDraft {
   notes: string;
   recurrence: 'none' | 'daily' | 'weekly' | 'monthly';
   reminderMin: number; // -1 for none
-  isBookedMeeting: boolean;
-  guestName?: string;
-  guestEmail?: string;
 }
 
 const HOUR_PX = 56;
@@ -118,24 +108,12 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   protected locale: Locale = DEFAULT_LOCALE;
 
   // Workspace UI signals
-  readonly activeTab = signal<StudioTab>('calendar');
+  private readonly themeService = inject(ThemeService);
   readonly viewMode = signal<CalendarViewMode>('week');
-  readonly surfaceTheme = signal<'dark' | 'light'>('dark');
-  readonly showAuthModal = signal(false);
-  readonly showUnlockModal = signal(false);
-  readonly unlockBusy = signal(false);
-  readonly unlockError = signal<string | null>(null);
-  readonly unlockQrChallenge = signal<IosQrChallengeStartResponse | null>(null);
-  readonly unlockQrDataUrl = computed(() => {
-    const ch = this.unlockQrChallenge();
-    return ch?.qrUrl ? generateQrSvgDataUrl(ch.qrUrl) : null;
-  });
-  readonly appStoreUrl = APP_STORE_URL;
+  readonly surfaceTheme = this.themeService.theme;
+  readonly isLightColor = isLightEventColor;
+  readonly authReady = signal(false);
   readonly iosQrEnabled = signal(isIosQrAuthEnabled());
-  readonly webAccess = computed(() => this.api.profile()?.webAccess ?? null);
-  private unlockPollTimer: any = null;
-  private unlockPollInFlight = false;
-  private pendingCheckoutPlan: 'monthly' | 'yearly' | null = null;
   readonly loadingWorkspace = signal(false);
   readonly toast = signal<{
     message: string;
@@ -199,51 +177,9 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   readonly syncingExternal = signal<string | null>(null);
   readonly syncFeedback = signal<string | null>(null);
 
-  // Availability & Booking Config State
-  readonly bookingConfig = signal<BookingScheduleConfig>(this.createDefaultConfig());
-  readonly handleStatus = signal<'idle' | 'checking' | 'available' | 'taken'>('idle');
-  readonly handleReason = signal<string | null>(null);
-  readonly savingConfig = signal(false);
-  readonly configSavedMsg = signal<string | null>(null);
-  readonly newOverrideDate = signal('');
-  readonly newOverrideClosed = signal(false);
-  readonly newOverrideStart = signal('10:00');
-  readonly newOverrideEnd = signal('15:00');
-
-  // Expiring Public Invite Links State
-  readonly inviteLinks = signal<BookingInviteLink[]>([]);
-  readonly inviteLabel = signal('Client Booking Invite');
-  readonly inviteExpiresHours = signal<number>(168);
-  readonly inviteMaxUses = signal<number>(1);
-  readonly inviteMeetingTypeId = signal<string>('');
-  readonly creatingInvite = signal(false);
-
-  // Incoming Host Bookings State
-  readonly hostBookings = signal<HostBookingItem[]>([]);
-  readonly incomingFilter = signal<'upcoming' | 'past' | 'cancelled'>('upcoming');
-  readonly rescheduleModalItem = signal<HostBookingItem | null>(null);
-  readonly rescheduleNewDate = signal('');
-  readonly rescheduleNewTime = signal('10:00');
-  readonly rescheduleNote = signal('');
-
   // Navigation Links (trailing-slash compliant for postbuild)
   readonly homeHref = computed(() => linkPath(this.locale, '/'));
-  readonly guestPortalHref = computed(() => linkPath(this.locale, '/bookings'));
   readonly adminHref = computed(() => linkPath(this.locale, '/admin'));
-
-  readonly publicShareUrl = computed(() => {
-    const h = this.bookingConfig().handle || 'demo';
-    return `https://www.cloud-calendars.com/book/?u=${encodeURIComponent(h)}`;
-  });
-  readonly publicPreviewHref = computed(() => {
-    const h = this.bookingConfig().handle || 'demo';
-    return `${linkPath(this.locale, '/book')}?u=${encodeURIComponent(h)}`;
-  });
-  readonly shareQrDataUrl = computed(() => generateQrSvgDataUrl(this.publicShareUrl()));
-  readonly embedSnippet = computed(
-    () =>
-      `<iframe src="${this.publicShareUrl()}&embed=1" width="100%" height="720" frameborder="0" style="border-radius:16px;border:1px solid rgba(128,128,128,0.2);"></iframe>`,
-  );
 
   // Unified display events across owned + shared + external busy
   readonly allDisplayEvents = computed<WebCalendarEvent[]>(() => {
@@ -412,18 +348,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     return [...map.values()];
   });
 
-  // Filtered incoming bookings
-  readonly filteredHostBookings = computed(() => {
-    const filter = this.incomingFilter();
-    const nowMs = Date.now();
-    return this.hostBookings().filter((b) => {
-      if (filter === 'cancelled') return b.status === 'cancelled';
-      if (b.status === 'cancelled') return false;
-      const endMs = Date.parse(b.end);
-      return filter === 'upcoming' ? endMs >= nowMs : endMs < nowMs;
-    });
-  });
-
   readonly currentTimeTopPx = computed(() => {
     const now = this.nowTick();
     return ((now.getHours() * 60 + now.getMinutes()) / 60) * HOUR_PX;
@@ -434,22 +358,12 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
   });
 
-  readonly weekdayRows = [
-    { key: '1', label: 'Monday', short: 'Mon' },
-    { key: '2', label: 'Tuesday', short: 'Tue' },
-    { key: '3', label: 'Wednesday', short: 'Wed' },
-    { key: '4', label: 'Thursday', short: 'Thu' },
-    { key: '5', label: 'Friday', short: 'Fri' },
-    { key: '6', label: 'Saturday', short: 'Sat' },
-    { key: '0', label: 'Sunday', short: 'Sun' },
-  ];
-
   async ngOnInit(): Promise<void> {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
     const calPath = localePath(this.locale, '/calendar');
-    const calTitle = 'Cloud Calendars Web Studio — Free Online Calendar & Booking Links';
+    const calTitle = 'Cloud Calendars Web Studio — Free Online Calendar';
     const calDesc =
-      'Free drag-and-drop web calendar and Calendly-style public booking links synced with Google Calendar, Microsoft Outlook, and Cloud Calendars on iOS.';
+      'Free drag-and-drop web calendar synced with Google Calendar, Microsoft Outlook, and Cloud Calendars on iOS.';
     this.seo.apply({
       title: calTitle,
       description: calDesc,
@@ -465,14 +379,14 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     ld.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
-      name: 'Cloud Calendars Web Studio & Online Booking',
+      name: 'Cloud Calendars Web Studio',
       url: absolute(calPath),
       inLanguage: this.locale.hreflang,
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web, macOS, Windows, iOS, iPadOS, Android',
       description: calDesc,
       author: { '@type': 'Organization', name: APP_DEVELOPER, url: SITE_URL },
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Web Calendar & Booking Links' },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Web Calendar' },
     });
     this.doc.head.appendChild(ld);
 
@@ -502,24 +416,25 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       return;
     }
 
-    const tabParam = qp.get('tab');
-    if (tabParam === 'availability' || tabParam === 'incoming' || tabParam === 'calendar') {
-      this.activeTab.set(tabParam);
-    }
-    if (qp.get('signin') === '1') {
-      this.showAuthModal.set(true);
-    }
-
     // Tick current red time line every 30s
     this.clockTimer = setInterval(() => this.nowTick.set(new Date()), 30_000);
 
-    await this.bootstrapSession();
+    await this.api.ensureInitialized();
+    this.authReady.set(true);
+
+    if (this.api.isSignedInWithAccount()) {
+      await this.bootstrapSession();
+    }
 
     // Lightweight visibility-aware live sync while user is viewing the site (20s active interval, 0 requests when hidden)
     document.addEventListener('visibilitychange', this.onVisibilityOrFocus);
     window.addEventListener('focus', this.onVisibilityOrFocus);
     this.liveSyncTimer = setInterval(() => {
-      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+      if (
+        typeof document !== 'undefined' &&
+        document.visibilityState === 'visible' &&
+        this.api.isSignedInWithAccount()
+      ) {
         this.pollLiveCalendarUpdates(false).catch(() => null);
       }
     }, 20_000);
@@ -527,7 +442,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   ngOnDestroy(): void {
     this.doc.getElementById('web-calendar-jsonld')?.remove();
-    this.stopUnlockQrPolling();
     if (this.toastTimer) clearTimeout(this.toastTimer);
     if (this.clockTimer) clearInterval(this.clockTimer);
     if (this.liveSyncTimer) clearInterval(this.liveSyncTimer);
@@ -540,7 +454,9 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
     this.iosQrEnabled.set(isIosQrAuthEnabled());
-    setTimeout(() => this.scrollToWorkingHours(), 120);
+    if (this.api.isSignedInWithAccount()) {
+      setTimeout(() => this.scrollToWorkingHours(), 120);
+    }
   }
 
   private scrollToWorkingHours(): void {
@@ -553,165 +469,37 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   private async bootstrapSession(): Promise<void> {
     this.loadingWorkspace.set(true);
     try {
-      await this.api.ensureWorkspaceSession('My Cloud Calendar');
-      if (this.isBrowser) {
-        const qp = this.route.snapshot.queryParamMap;
-        const billingStatus = qp.get('billing');
-        const sessionId = qp.get('session_id');
-        if (billingStatus === 'success' && sessionId) {
-          await this.api.reconcileBillingCheckout(sessionId).catch(() => null);
-          this.stripBillingQueryParams();
-          this.showToast('Cloud Calendars Web Studio subscription active!');
-        } else if (billingStatus === 'cancelled') {
-          this.stripBillingQueryParams();
-        }
-      }
       await this.reloadAllWorkspaceData();
+      setTimeout(() => this.scrollToWorkingHours(), 80);
     } catch {
-      // Seed rich local preview events if offline
+      // Ignore offline initialization error
     } finally {
       this.loadingWorkspace.set(false);
     }
   }
 
-  private stripBillingQueryParams(): void {
-    if (!this.isBrowser) return;
-    this.iosQrEnabled.set(isIosQrAuthEnabled());
-    try {
-      const clean = new URL(window.location.href);
-      clean.searchParams.delete('billing');
-      clean.searchParams.delete('session_id');
-      window.history.replaceState({}, '', clean.toString());
-    } catch {
-      // ignore
-    }
-  }
-
   async onAuthSignedIn(): Promise<void> {
-    this.showAuthModal.set(false);
-    await this.reloadAllWorkspaceData();
-    const pendingPlan = this.pendingCheckoutPlan;
-    this.pendingCheckoutPlan = null;
-    if (pendingPlan && !this.webAccess()?.entitled) {
-      await this.startStripeSubscription(pendingPlan);
-      return;
-    }
-    this.showToast('Signed in & synced with your CloudCalendars account.');
-  }
-
-  openUnlockModal(): void {
-    this.unlockError.set(null);
-    this.showUnlockModal.set(true);
-    if (this.iosQrEnabled()) {
-      this.refreshUnlockQrChallenge().catch(() => null);
-    }
-  }
-
-  closeUnlockModal(): void {
-    this.showUnlockModal.set(false);
-    this.stopUnlockQrPolling();
-  }
-
-  async refreshUnlockQrChallenge(): Promise<void> {
-    if (!this.isBrowser) return;
-    this.iosQrEnabled.set(isIosQrAuthEnabled());
-    this.stopUnlockQrPolling();
-    try {
-      const ch = await this.api.startIosQrChallenge(true);
-      this.unlockQrChallenge.set(ch);
-      this.unlockPollTimer = setInterval(() => {
-        this.tickUnlockQrPoll().catch(() => null);
-      }, 2200);
-    } catch {
-      this.unlockQrChallenge.set(null);
-    }
-  }
-
-  private stopUnlockQrPolling(): void {
-    if (this.unlockPollTimer) {
-      clearInterval(this.unlockPollTimer);
-      this.unlockPollTimer = null;
-    }
-  }
-
-  private async tickUnlockQrPoll(): Promise<void> {
-    if (this.unlockPollInFlight || !this.showUnlockModal()) return;
-    const ch = this.unlockQrChallenge();
-    if (!ch) return;
-    this.unlockPollInFlight = true;
-    try {
-      const res = await this.api.pollIosQrChallenge(ch.challengeId, ch.pollToken);
-      if (res.status === 'approved') {
-        this.closeUnlockModal();
-        await this.reloadAllWorkspaceData();
-        this.showToast('Unlocked for free forever via Cloud Calendars iOS!');
-      } else if (res.status === 'expired') {
-        await this.refreshUnlockQrChallenge();
-      }
-    } finally {
-      this.unlockPollInFlight = false;
-    }
-  }
-
-  async startStripeSubscription(plan: 'monthly' | 'yearly'): Promise<void> {
-    this.unlockError.set(null);
-    if (!this.api.isSignedInWithAccount()) {
-      this.pendingCheckoutPlan = plan;
-      this.closeUnlockModal();
-      this.showAuthModal.set(true);
-      this.showToast('Sign in with your email, Google, or Microsoft first to activate your subscription.');
-      return;
-    }
-    this.unlockBusy.set(true);
-    try {
-      const res = await this.api.createBillingCheckout(plan);
-      if (res.url && this.isBrowser) {
-        window.location.href = res.url;
-      }
-    } catch (e) {
-      this.unlockError.set(
-        e instanceof Error ? e.message : 'Could not start Stripe Checkout.',
-      );
-    } finally {
-      this.unlockBusy.set(false);
-    }
-  }
-
-  async openBillingPortal(): Promise<void> {
-    try {
-      const res = await this.api.createBillingPortal();
-      if (res.url && this.isBrowser) {
-        window.location.href = res.url;
-      }
-    } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not open Billing Portal.');
-    }
+    await this.bootstrapSession();
+    this.showToast('Signed in & synced with your Cloud Calendars account.');
   }
 
   private handleMutationError(e: unknown, fallbackMessage: string): void {
-    if (e instanceof CalendarApiError && (e.status === 402 || e.code === 'subscription_required')) {
-      this.editorDraft.set(null);
-      this.openUnlockModal();
-      return;
-    }
     this.showToast(e instanceof Error ? e.message : fallbackMessage);
   }
 
   async signOut(): Promise<void> {
     this.api.signOut();
-    await this.bootstrapSession();
-    this.deviceCalendars.set([]); this.destinationCalendarID.set(''); this.hiddenCalendarIDs.set(new Set());
-    this.ownedEvents.set([]); this.sharedEvents.set([]);
+    this.deviceCalendars.set([]);
+    this.destinationCalendarID.set('');
+    this.hiddenCalendarIDs.set(new Set());
+    this.ownedEvents.set([]);
+    this.sharedEvents.set([]);
+    this.externalBusy.set({ updatedAt: null, sources: {}, events: [] });
     this.showToast('Signed out.');
   }
 
   async reloadAllWorkspaceData(): Promise<void> {
-    const [state, cfgWrap, hostBk, invWrap] = await Promise.all([
-      this.api.getCalendarState(),
-      this.api.getBookingConfig().catch(() => null),
-      this.api.getHostBookings().catch(() => ({ bookings: [] })),
-      this.api.getBookingInviteLinks().catch(() => ({ links: [] })),
-    ]);
+    const state = await this.api.getCalendarState();
 
     this.updateCalendars(state.calendars ?? []);
     this.ownedEvents.set(state.events ?? []);
@@ -724,19 +512,12 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     if (existingIcs) {
       this.icsFeedInput.set(existingIcs);
     }
-    if (cfgWrap?.config) {
-      this.bookingConfig.set(cfgWrap.config);
-    } else if (state.bookingConfig) {
-      this.bookingConfig.set(state.bookingConfig);
-    }
-    this.hostBookings.set(hostBk.bookings ?? []);
-    this.inviteLinks.set(invWrap.links ?? []);
     this.lastLiveSyncAt = Date.now();
   }
 
   /**
    * Silent, zero-flicker background sync while the browser tab is active (`visibilityState === 'visible'`).
-   * Skips during active drag/save operations and never overwrites Tab 2 unsaved availability form edits.
+   * Skips during active drag/save operations.
    */
   private async pollLiveCalendarUpdates(forceProviderSync = false): Promise<void> {
     if (
@@ -744,46 +525,22 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.loadingWorkspace() ||
       Boolean(this.drag()) ||
       this.savingEvent() ||
-      this.savingConfig() ||
       !this.api.isAuthenticated()
     ) {
       return;
     }
     this.liveSyncInFlight = true;
     try {
-      const prevBookingIds = new Set(
-        this.hostBookings()
-          .filter((b) => b.status !== 'cancelled')
-          .map((b) => b.bookingId),
-      );
-
-      const [state, hostBk, invWrap] = await Promise.all([
-        this.api.getCalendarState({ sync: forceProviderSync }),
-        this.api.getHostBookings().catch(() => ({ bookings: this.hostBookings() })),
-        this.activeTab() === 'availability'
-          ? this.api.getBookingInviteLinks().catch(() => ({ links: this.inviteLinks() }))
-          : Promise.resolve({ links: this.inviteLinks() }),
-      ]);
+      const state = await this.api.getCalendarState({ sync: forceProviderSync });
 
       // Re-check drag/save guard before applying signal updates
       if (this.drag() || this.savingEvent()) return;
 
       this.updateCalendars(state.calendars ?? []);
-    this.ownedEvents.set(state.events ?? []);
+      this.ownedEvents.set(state.events ?? []);
       this.sharedEvents.set(state.receivedEvents ?? []);
       this.externalBusy.set(state.externalBusy ?? { updatedAt: null, sources: {}, events: [] });
-
-      const nextBookings = hostBk.bookings ?? [];
-      this.hostBookings.set(nextBookings);
-      this.inviteLinks.set(invWrap.links ?? []);
       this.lastLiveSyncAt = Date.now();
-
-      const newArrival = nextBookings.find(
-        (b) => b.status !== 'cancelled' && !prevBookingIds.has(b.bookingId),
-      );
-      if (newArrival) {
-        this.showToast(`🔔 New booking arrived: "${newArrival.title}"`);
-      }
     } catch {
       // Ignore transient network blips during silent poll
     } finally {
@@ -1192,9 +949,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.ownedEvents.update((list) =>
         list.map((e) => (e.id === original.id ? res.event : e)),
       );
-      if (original.booking?.bookingId) {
-        this.api.getHostBookings().then((r) => this.hostBookings.set(r.bookings)).catch(() => null);
-      }
       const timeText = this.formatFullDateTime(newStartIso);
       const suffix = res.notifiedGuest ? ' · Guest notified by email' : '';
       this.showToast(`Moved "${original.title}" to ${timeText}${suffix}`, {
@@ -1276,7 +1030,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       notes: '',
       recurrence: 'none',
       reminderMin: 15,
-      isBookedMeeting: false,
     });
   }
 
@@ -1311,9 +1064,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       notes: ev.details?.notes || '',
       recurrence: rec as any,
       reminderMin,
-      isBookedMeeting: Boolean(ev.booking?.bookingId),
-      guestName: ev.booking?.guestName,
-      guestEmail: ev.booking?.guestEmail,
     });
   }
 
@@ -1384,15 +1134,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     try {
       await this.api.deleteCalendarEvent(d.id, { notifyGuest: true });
       this.ownedEvents.update((list) => list.filter((x) => x.id !== d.id));
-      if (d.isBookedMeeting) {
-        this.api.getHostBookings().then((r) => this.hostBookings.set(r.bookings)).catch(() => null);
-      }
       this.editorDraft.set(null);
-      this.showToast(
-        d.isBookedMeeting
-          ? 'Booking cancelled & guest notified by email.'
-          : 'Event deleted.',
-      );
+      this.showToast('Event deleted.');
     } catch (e) {
       this.handleMutationError(e, 'Could not delete event.');
     } finally {
@@ -1466,11 +1209,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       const count = nextBusy.sources?.['ics']?.count ?? 0;
       this.syncFeedback.set(`Synced ${count} busy events from .ics feed.`);
     } catch (e) {
-      if (e instanceof CalendarApiError && (e.status === 402 || e.code === 'subscription_required')) {
-        this.openUnlockModal();
-      } else {
-        this.syncFeedback.set(e instanceof Error ? e.message : 'Could not sync .ics URL.');
-      }
+      this.syncFeedback.set(e instanceof Error ? e.message : 'Could not sync .ics URL.');
     } finally {
       this.syncingExternal.set(null);
     }
@@ -1488,272 +1227,6 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     this.iosQrEnabled.set(isIosQrAuthEnabled());
     navigator.clipboard?.writeText(text);
     this.showToast(label);
-  }
-
-  // ── Tab 2: Host Availability & Meeting Types Builder ─────────────────────
-
-  updateCfgField<K extends keyof BookingScheduleConfig>(
-    key: K,
-    value: BookingScheduleConfig[K],
-  ): void {
-    this.bookingConfig.update((c) => ({ ...c, [key]: value }));
-  }
-
-  async onHandleBlur(): Promise<void> {
-    const h = this.bookingConfig().handle.trim().toLowerCase();
-    if (h.length < 3) return;
-    this.handleStatus.set('checking');
-    this.handleReason.set(null);
-    try {
-      const res = await this.api.checkHandle(h);
-      this.bookingConfig.update((c) => ({ ...c, handle: res.handle || h }));
-      this.handleStatus.set(res.available ? 'available' : 'taken');
-      this.handleReason.set(res.reason || null);
-    } catch {
-      this.handleStatus.set('idle');
-    }
-  }
-
-  windowsForDay(dayKey: string): TimeWindow[] {
-    return this.bookingConfig().weekly?.[dayKey] ?? [];
-  }
-
-  toggleWeekday(dayKey: string): void {
-    const cur = this.windowsForDay(dayKey);
-    const next = cur.length > 0 ? [] : [{ start: 540, end: 1020 }];
-    this.bookingConfig.update((c) => ({
-      ...c,
-      weekly: { ...c.weekly, [dayKey]: next },
-    }));
-  }
-
-  addWeekdayWindow(dayKey: string): void {
-    const cur = this.windowsForDay(dayKey);
-    const lastEnd = cur.length ? cur[cur.length - 1].end : 480;
-    const start = Math.min(1320, lastEnd + 60);
-    const end = Math.min(1440, start + 180);
-    this.bookingConfig.update((c) => ({
-      ...c,
-      weekly: { ...c.weekly, [dayKey]: [...cur, { start, end }] },
-    }));
-  }
-
-  removeWeekdayWindow(dayKey: string, idx: number): void {
-    const cur = this.windowsForDay(dayKey).filter((_, i) => i !== idx);
-    this.bookingConfig.update((c) => ({
-      ...c,
-      weekly: { ...c.weekly, [dayKey]: cur },
-    }));
-  }
-
-  updateWindowTime(dayKey: string, idx: number, field: 'start' | 'end', hhmm: string): void {
-    const mins = this.parseHmToMinutes(hhmm);
-    const cur = this.windowsForDay(dayKey).map((w, i) =>
-      i === idx ? { ...w, [field]: mins } : w,
-    );
-    this.bookingConfig.update((c) => ({
-      ...c,
-      weekly: { ...c.weekly, [dayKey]: cur },
-    }));
-  }
-
-  copyMondayToWeekdays(): void {
-    const mon = this.windowsForDay('1').map((w) => ({ ...w }));
-    this.bookingConfig.update((c) => ({
-      ...c,
-      weekly: {
-        ...c.weekly,
-        '2': mon.map((w) => ({ ...w })),
-        '3': mon.map((w) => ({ ...w })),
-        '4': mon.map((w) => ({ ...w })),
-        '5': mon.map((w) => ({ ...w })),
-      },
-    }));
-    this.showToast('Copied Monday hours to Tuesday – Friday.');
-  }
-
-  overrideEntries(): Array<{ date: string; windows: TimeWindow[] }> {
-    const ov = this.bookingConfig().dateOverrides ?? {};
-    return Object.keys(ov)
-      .sort()
-      .map((date) => ({ date, windows: ov[date] }));
-  }
-
-  addDateOverride(): void {
-    const dt = this.newOverrideDate().trim();
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(dt)) return;
-    const prevForDate = this.bookingConfig().dateOverrides?.[dt] ?? [];
-    const nextWindows: TimeWindow[] = this.newOverrideClosed()
-      ? []
-      : [
-          ...prevForDate,
-          {
-            start: this.parseHmToMinutes(this.newOverrideStart()),
-            end: this.parseHmToMinutes(this.newOverrideEnd()),
-          },
-        ]
-          .filter((w) => w.end > w.start)
-          .sort((a, b) => a.start - b.start);
-    this.bookingConfig.update((c) => ({
-      ...c,
-      dateOverrides: { ...(c.dateOverrides ?? {}), [dt]: nextWindows },
-    }));
-  }
-
-  formatWindowsSummary(wins: TimeWindow[]): string {
-    if (!wins.length) return 'Closed';
-    return wins.map((w) => `${this.formatMinutesHm(w.start)}–${this.formatMinutesHm(w.end)}`).join(', ');
-  }
-
-  removeDateOverride(dt: string): void {
-    this.bookingConfig.update((c) => {
-      const next = { ...(c.dateOverrides ?? {}) };
-      delete next[dt];
-      return { ...c, dateOverrides: next };
-    });
-  }
-
-  addMeetingType(): void {
-    const id = `mt_${Math.random().toString(36).slice(2, 8)}`;
-    const nextType: MeetingTypeConfig = {
-      id,
-      slug: `session-${this.bookingConfig().meetingTypes.length + 1}`,
-      name: '45m Strategy Session',
-      durationMinutes: 45,
-      color: '#BF5AF2',
-      bufferBeforeMinutes: 5,
-      bufferAfterMinutes: 5,
-      locationKind: 'google_meet',
-      locationValue: '',
-      description: 'Focused 1-on-1 strategy & architecture call.',
-      active: true,
-    };
-    this.bookingConfig.update((c) => ({
-      ...c,
-      meetingTypes: [...c.meetingTypes, nextType],
-    }));
-  }
-
-  removeMeetingType(id: string): void {
-    if (this.bookingConfig().meetingTypes.length <= 1) {
-      this.showToast('At least one meeting type is required.');
-      return;
-    }
-    this.bookingConfig.update((c) => ({
-      ...c,
-      meetingTypes: c.meetingTypes.filter((m) => m.id !== id),
-    }));
-  }
-
-  updateMeetingType<K extends keyof MeetingTypeConfig>(
-    id: string,
-    field: K,
-    value: MeetingTypeConfig[K],
-  ): void {
-    this.bookingConfig.update((c) => ({
-      ...c,
-      meetingTypes: c.meetingTypes.map((m) => (m.id === id ? { ...m, [field]: value } : m)),
-    }));
-  }
-
-  async saveAvailabilityConfig(): Promise<void> {
-    this.savingConfig.set(true);
-    this.configSavedMsg.set(null);
-    try {
-      const res = await this.api.saveBookingConfig(this.bookingConfig());
-      this.bookingConfig.set(res.config);
-      this.configSavedMsg.set(`Published live at ${res.shareUrl}`);
-      this.showToast('Booking page & availability saved!');
-    } catch (e) {
-      this.handleMutationError(e, 'Could not save booking page.');
-    } finally {
-      this.savingConfig.set(false);
-    }
-  }
-
-  async generateExpiringInviteLink(): Promise<void> {
-    this.creatingInvite.set(true);
-    try {
-      const res = await this.api.createBookingInviteLink({
-        label: this.inviteLabel().trim() || 'Booking Invite',
-        expiresInHours: Number(this.inviteExpiresHours()) || 168,
-        maxUses: Number(this.inviteMaxUses()),
-        meetingTypeId: this.inviteMeetingTypeId() || null,
-        requireEmailConfirmIfUnauthenticated: true,
-      });
-      this.inviteLinks.update((list) => [res.link, ...list.filter((x) => x.token !== res.link.token)]);
-      if (this.isBrowser) {
-        navigator.clipboard?.writeText(res.link.shareUrl);
-      }
-      this.showToast('Expiring invite link generated & copied to clipboard!');
-    } catch (e) {
-      this.handleMutationError(e, 'Could not generate invite link.');
-    } finally {
-      this.creatingInvite.set(false);
-    }
-  }
-
-  async revokeInviteLink(token: string): Promise<void> {
-    try {
-      const res = await this.api.revokeBookingInviteLink(token);
-      this.inviteLinks.update((list) =>
-        list.map((x) => (x.token === token ? res.link : x)),
-      );
-      this.showToast('Expiring invite link deactivated.');
-    } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not deactivate link.');
-    }
-  }
-
-  invitePreviewHref(token: string): string {
-    return `${linkPath(this.locale, '/book')}?i=${encodeURIComponent(token)}`;
-  }
-
-  // ── Tab 3: Incoming Guest Bookings Actions ────────────────────────────────
-
-  openHostReschedule(b: HostBookingItem): void {
-    const d = new Date(b.start);
-    this.rescheduleModalItem.set(b);
-    this.rescheduleNewDate.set(this.toInputDate(d));
-    this.rescheduleNewTime.set(this.toInputTime(d));
-    this.rescheduleNote.set('');
-  }
-
-  async confirmHostReschedule(): Promise<void> {
-    const item = this.rescheduleModalItem();
-    if (!item) return;
-    const durationMs = Math.max(900_000, Date.parse(item.end) - Date.parse(item.start));
-    const nextStart = new Date(`${this.rescheduleNewDate()}T${this.rescheduleNewTime()}:00`);
-    const nextEnd = new Date(nextStart.getTime() + durationMs);
-
-    try {
-      await this.api.rescheduleHostBooking(item.eventId, {
-        start: nextStart.toISOString(),
-        end: nextEnd.toISOString(),
-        reason: this.rescheduleNote().trim() || undefined,
-        notifyGuest: true,
-      });
-      this.rescheduleModalItem.set(null);
-      await this.reloadAllWorkspaceData();
-      this.showToast('Booking moved & guest notified by email.');
-    } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not reschedule booking.');
-    }
-  }
-
-  async cancelIncomingBooking(b: HostBookingItem): Promise<void> {
-    try {
-      await this.api.cancelHostBooking(b.eventId, { notifyGuest: true });
-      await this.reloadAllWorkspaceData();
-      this.showToast(`Cancelled meeting with ${b.guestName}.`);
-    } catch (e) {
-      this.showToast(e instanceof Error ? e.message : 'Could not cancel booking.');
-    }
-  }
-
-  jumpToBookingOnCalendar(b: HostBookingItem): void {
-    this.anchorDate.set(this.startOfLocalDay(new Date(b.start)));
-    this.activeTab.set('calendar');
   }
 
   // ── Date & Toast Utilities ────────────────────────────────────────────────
@@ -1794,65 +1267,5 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
   private toInputTime(d: Date): string {
     return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-  }
-
-  private parseHmToMinutes(hhmm: string): number {
-    const [h, m] = (hhmm || '09:00').split(':').map((x) => parseInt(x, 10) || 0);
-    return Math.max(0, Math.min(1440, h * 60 + m));
-  }
-
-  private createDefaultConfig(): BookingScheduleConfig {
-    return {
-      enabled: true,
-      handle: 'my-schedule',
-      displayName: 'My Cloud Calendar',
-      headline: 'Book a time that works for both of us',
-      bio: 'Pick a slot below — you will receive an instant calendar invite (.ics) & video call link.',
-      avatarColor: '#0A84FF',
-      timeZone: detectBrowserTimeZone(),
-      slotIntervalMinutes: 15,
-      minNoticeMinutes: 60,
-      maxAdvanceDays: 60,
-      maxBookingsPerDay: 0,
-      requireEmailVerification: false,
-      weekly: {
-        '0': [],
-        '1': [{ start: 540, end: 1020 }],
-        '2': [{ start: 540, end: 1020 }],
-        '3': [{ start: 540, end: 1020 }],
-        '4': [{ start: 540, end: 1020 }],
-        '5': [{ start: 540, end: 1020 }],
-        '6': [],
-      },
-      dateOverrides: {},
-      meetingTypes: [
-        {
-          id: 'mt_15',
-          slug: 'intro-15',
-          name: '15m Quick Intro',
-          durationMinutes: 15,
-          color: '#38E0F0',
-          bufferBeforeMinutes: 0,
-          bufferAfterMinutes: 5,
-          locationKind: 'google_meet',
-          locationValue: '',
-          description: 'Fast introductory call.',
-          active: true,
-        },
-        {
-          id: 'mt_30',
-          slug: 'sync-30',
-          name: '30m Collaboration Sync',
-          durationMinutes: 30,
-          color: '#0A84FF',
-          bufferBeforeMinutes: 5,
-          bufferAfterMinutes: 5,
-          locationKind: 'google_meet',
-          locationValue: '',
-          description: 'Standard 1-on-1 product or client meeting.',
-          active: true,
-        },
-      ],
-    };
   }
 }

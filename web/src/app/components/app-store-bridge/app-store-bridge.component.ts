@@ -111,19 +111,16 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         gap: 10px;
         padding: 9px 10px 9px 11px;
         border-radius: 16px;
-        background: rgba(10, 15, 30, 0.94);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(56, 224, 240, 0.28);
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.52);
-        color: #f4f7ff;
+        background: var(--surface, #1c1c1e);
+        border: 1px solid var(--hair-strong, #38383a);
+        box-shadow: var(--shadow-mid);
+        color: var(--ink, #f5f5f7);
       }
       .cc-mbar__icon {
         width: 40px;
         height: 40px;
         border-radius: 10px;
         flex-shrink: 0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
       }
       .cc-mbar__meta {
         min-width: 0;
@@ -142,8 +139,8 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
       .cc-mbar__stars {
         padding: 1px 6px;
         border-radius: 999px;
-        background: rgba(56, 224, 240, 0.16);
-        color: #38e0f0;
+        background: var(--aurora-1-soft);
+        color: var(--aurora-2);
         font-size: 0.66rem;
         font-weight: 700;
       }
@@ -151,7 +148,7 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         margin: 2px 0 0;
         font-size: 0.74rem;
         line-height: 1.25;
-        color: rgba(226, 234, 255, 0.76);
+        color: var(--ink-3);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -160,9 +157,9 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         flex-shrink: 0;
         padding: 8px 13px;
         border-radius: 999px;
-        background: linear-gradient(135deg, #38e0f0 0%, #3b82f6 100%);
-        color: #030712 !important;
-        font-weight: 700;
+        background: var(--aurora-1, #2168de);
+        color: #ffffff !important;
+        font-weight: 600;
         font-size: 0.8rem;
         text-decoration: none !important;
         white-space: nowrap;
@@ -173,8 +170,8 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         height: 26px;
         border-radius: 999px;
         border: 0;
-        background: rgba(255, 255, 255, 0.08);
-        color: rgba(255, 255, 255, 0.72);
+        background: var(--surface-2, #2c2c2e);
+        color: var(--ink-3);
         font-size: 1rem;
         line-height: 1;
         cursor: pointer;
@@ -195,13 +192,11 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         gap: 12px;
         max-width: 300px;
         padding: 11px 28px 11px 11px;
-        border-radius: 16px;
-        background: rgba(10, 15, 30, 0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(56, 224, 240, 0.26);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.48);
-        color: #f4f7ff;
+        border-radius: 18px;
+        background: var(--surface, #1c1c1e);
+        border: 1px solid var(--hair-strong, #38383a);
+        box-shadow: var(--shadow-mid);
+        color: var(--ink, #f5f5f7);
       }
       .cc-dqr__qr-wrap {
         flex-shrink: 0;
@@ -210,6 +205,7 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         padding: 3px;
         border-radius: 10px;
         background: #ffffff;
+        border: 1px solid var(--hair);
         display: grid;
         place-items: center;
       }
@@ -227,24 +223,24 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
       .cc-dqr__eyebrow {
         font-size: 0.64rem;
         font-weight: 700;
-        letter-spacing: 0.07em;
-        color: #38e0f0;
+        letter-spacing: 0.05em;
+        color: var(--aurora-2);
       }
       .cc-dqr__heading {
         font-size: 0.88rem;
         line-height: 1.2;
-        color: #ffffff;
+        color: var(--ink);
       }
       .cc-dqr__desc {
         font-size: 0.73rem;
         line-height: 1.3;
-        color: rgba(226, 234, 255, 0.74);
+        color: var(--ink-3);
       }
       .cc-dqr__link {
         margin-top: 2px;
         font-size: 0.75rem;
         font-weight: 600;
-        color: #38e0f0 !important;
+        color: var(--aurora-2) !important;
         text-decoration: none;
       }
       .cc-dqr__link:hover {
@@ -258,8 +254,8 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         height: 22px;
         border-radius: 999px;
         border: 0;
-        background: rgba(255, 255, 255, 0.08);
-        color: rgba(255, 255, 255, 0.7);
+        background: var(--surface-2, #2c2c2e);
+        color: var(--ink-3);
         font-size: 0.92rem;
         line-height: 1;
         cursor: pointer;
@@ -275,6 +271,43 @@ const DISMISS_KEY = 'cc_app_bridge_dismissed_v1';
         display: none !important;
       }
     }
+
+    :host-context([data-theme='light']) {
+      .cc-mbar,
+      .cc-dqr {
+        background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(15, 23, 42, 0.14);
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+        color: #0f172a;
+      }
+      .cc-mbar__stars {
+        background: rgba(2, 132, 199, 0.12);
+        color: #0369a1;
+      }
+      .cc-mbar__sub,
+      .cc-dqr__desc {
+        color: #475569;
+      }
+      .cc-mbar__cta {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff !important;
+      }
+      .cc-mbar__close,
+      .cc-dqr__close {
+        background: rgba(15, 23, 42, 0.07);
+        color: #334155;
+      }
+      .cc-dqr__eyebrow,
+      .cc-dqr__link {
+        color: #0369a1 !important;
+      }
+      .cc-dqr__heading {
+        color: #0f172a;
+      }
+      .cc-dqr__qr-wrap {
+        border: 1px solid rgba(15, 23, 42, 0.1);
+      }
+    }
   `],
 })
 export class AppStoreBridgeComponent {
@@ -286,7 +319,7 @@ export class AppStoreBridgeComponent {
     if (this.dismissed()) return false;
     const p = this.active.currentPath();
     if (
-      /(?:^|\/)(?:calendar|app-auth|book|event)(?:\/|$)/.test(p)
+      /(?:^|\/)(?:calendar|app-auth|event)(?:\/|$)/.test(p)
     ) {
       return false;
     }

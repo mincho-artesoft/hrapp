@@ -173,6 +173,7 @@ struct SharingSheetView: View {
             reloadSharedEvents()
         }
         .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
+            reloadSharedEvents()
             Task { await pendingInvitationManager.refresh() }
         }
         .appFullScreenCover(isPresented: $showCloudAccount) {

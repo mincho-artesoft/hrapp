@@ -40,7 +40,7 @@ export class AdminConsolePageComponent implements OnInit {
   readonly loading = signal(false);
   readonly forbiddenMsg = signal<string | null>(null);
   readonly data = signal<AdminOverviewResponse | null>(null);
-  readonly tab = signal<'hosts' | 'bookings' | 'oauth'>('hosts');
+  readonly tab = signal<'hosts' | 'oauth'>('hosts');
   readonly searchQuery = signal('');
 
   // Editable OAuth Settings
@@ -53,7 +53,6 @@ export class AdminConsolePageComponent implements OnInit {
   readonly toast = signal<string | null>(null);
 
   readonly calendarHref = computed(() => linkPath(this.locale, '/calendar'));
-  readonly guestHref = computed(() => linkPath(this.locale, '/bookings'));
 
   readonly filteredHosts = computed(() => {
     const list = this.data()?.hosts ?? [];
@@ -64,19 +63,6 @@ export class AdminConsolePageComponent implements OnInit {
         h.handle?.toLowerCase().includes(q) ||
         h.displayName?.toLowerCase().includes(q) ||
         (h.email || '').toLowerCase().includes(q),
-    );
-  });
-
-  readonly filteredBookings = computed(() => {
-    const list = this.data()?.recentBookings ?? [];
-    const q = this.searchQuery().trim().toLowerCase();
-    if (!q) return list;
-    return list.filter(
-      (b) =>
-        b.guestEmail?.toLowerCase().includes(q) ||
-        b.guestName?.toLowerCase().includes(q) ||
-        b.hostHandle?.toLowerCase().includes(q) ||
-        b.title?.toLowerCase().includes(q),
     );
   });
 
@@ -155,10 +141,6 @@ export class AdminConsolePageComponent implements OnInit {
     } finally {
       this.savingSettings.set(false);
     }
-  }
-
-  hostPageHref(handle: string): string {
-    return `${linkPath(this.locale, '/book')}?u=${encodeURIComponent(handle)}`;
   }
 
   private notify(msg: string): void {

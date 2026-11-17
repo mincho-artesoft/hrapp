@@ -272,7 +272,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
                     calendars: allowedCalendars
                 )
 
-                scheduled.append(contentsOf: viewModel.eventStore.events(matching: predicate)
+                scheduled.append(contentsOf: viewModel.eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible)
                     .flatMap { storedNotifications(for: $0, now: now) })
             }
         }

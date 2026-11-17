@@ -136,9 +136,8 @@ interface FeaturedGuideCard {
 
       .guides__topic:hover {
         color: var(--ink);
-        border-color: rgba(56, 224, 240, 0.42);
-        background: rgba(56, 224, 240, 0.1);
-        transform: translateY(-2px);
+        border-color: var(--aurora-2);
+        background: var(--aurora-1-soft);
       }
 
       .guides__topic-dot {
@@ -146,13 +145,12 @@ interface FeaturedGuideCard {
         height: 7px;
         border-radius: 50%;
         background: var(--aurora-2);
-        box-shadow: 0 0 8px rgba(56, 224, 240, 0.7);
       }
-      .guides__topic-dot[data-family='unify'] { background: var(--aurora-1); box-shadow: 0 0 8px rgba(77, 124, 255, 0.7); }
-      .guides__topic-dot[data-family='widgets'] { background: var(--aurora-3); box-shadow: 0 0 8px rgba(165, 102, 255, 0.7); }
-      .guides__topic-dot[data-family='sharing'] { background: var(--aurora-4); box-shadow: 0 0 8px rgba(255, 122, 89, 0.7); }
-      .guides__topic-dot[data-family='planning'] { background: var(--aurora-5); box-shadow: 0 0 8px rgba(255, 203, 92, 0.7); }
-      .guides__topic-dot[data-family='compare'] { background: #52e39b; box-shadow: 0 0 8px rgba(82, 227, 155, 0.7); }
+      .guides__topic-dot[data-family='unify'] { background: var(--aurora-1); }
+      .guides__topic-dot[data-family='widgets'] { background: var(--aurora-3); }
+      .guides__topic-dot[data-family='sharing'] { background: var(--aurora-4); }
+      .guides__topic-dot[data-family='planning'] { background: var(--aurora-5); }
+      .guides__topic-dot[data-family='compare'] { background: #30d158; }
 
       .guides__topic-count {
         font-family: var(--font-mono);
@@ -160,7 +158,7 @@ interface FeaturedGuideCard {
         color: var(--ink-3);
         padding: 0.08rem 0.42rem;
         border-radius: var(--r-pill);
-        background: rgba(255, 255, 255, 0.06);
+        background: var(--control-bg-hover);
       }
 
       .guides__grid {
@@ -194,8 +192,8 @@ interface FeaturedGuideCard {
       }
 
       .guides__card:hover {
-        border-color: rgba(56, 224, 240, 0.34);
-        box-shadow: var(--shadow-mid), 0 0 54px -22px rgba(56, 224, 240, 0.65);
+        border-color: var(--aurora-2);
+        box-shadow: var(--shadow-mid);
       }
 
       .guides__card-top {
@@ -208,13 +206,13 @@ interface FeaturedGuideCard {
       .guides__badge {
         padding: 0.28rem 0.68rem;
         border-radius: var(--r-pill);
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        letter-spacing: 0.07em;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #a9e8ff;
-        background: rgba(56, 224, 240, 0.1);
-        border: 1px solid rgba(56, 224, 240, 0.24);
+        color: var(--aurora-2);
+        background: var(--aurora-1-soft);
+        border: 1px solid var(--nav-active-border);
       }
 
       .guides__badge[data-family='unify'] {
@@ -241,6 +239,37 @@ interface FeaturedGuideCard {
         color: #b4f5d3;
         background: rgba(82, 227, 155, 0.12);
         border-color: rgba(82, 227, 155, 0.28);
+      }
+
+      :host-context([data-theme='light']) .guides__badge {
+        color: #0369a1;
+        background: rgba(2, 132, 199, 0.1);
+        border-color: rgba(2, 132, 199, 0.25);
+      }
+      :host-context([data-theme='light']) .guides__badge[data-family='unify'] {
+        color: #1d4ed8;
+        background: rgba(37, 99, 235, 0.1);
+        border-color: rgba(37, 99, 235, 0.25);
+      }
+      :host-context([data-theme='light']) .guides__badge[data-family='widgets'] {
+        color: #6d28d9;
+        background: rgba(124, 58, 237, 0.1);
+        border-color: rgba(124, 58, 237, 0.25);
+      }
+      :host-context([data-theme='light']) .guides__badge[data-family='sharing'] {
+        color: #b91c1c;
+        background: rgba(220, 38, 38, 0.1);
+        border-color: rgba(220, 38, 38, 0.25);
+      }
+      :host-context([data-theme='light']) .guides__badge[data-family='planning'] {
+        color: #b45309;
+        background: rgba(217, 119, 6, 0.12);
+        border-color: rgba(217, 119, 6, 0.28);
+      }
+      :host-context([data-theme='light']) .guides__badge[data-family='compare'] {
+        color: #047857;
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.28);
       }
 
       .guides__card-icon {

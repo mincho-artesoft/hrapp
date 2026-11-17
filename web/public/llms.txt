@@ -1,17 +1,17 @@
 # Cloud Calendars
 
-> Unified calendar views, hourly weather, and online appointment scheduling across Web, iPhone, and iPad — developed by ARTE SOFT EOOD. Connect Google Calendar, Microsoft Outlook, and Apple iCloud while keeping calendar ownership and permissions distinct.
+> Unified calendar views, hourly weather, and cross-device calendar sync across Web, iPhone, iPad, and Mac — developed by ARTE SOFT EOOD. Connect Google Calendar, Microsoft Outlook, and Apple iCloud while keeping calendar ownership and permissions distinct.
 
 ## Product
 
-- [Cloud Calendars](https://www.cloud-calendars.com/): overview, live booking showcase, hourly weather, Home Screen widgets, and plan details.
-- [Web Calendar & Host Booking Studio](https://www.cloud-calendars.com/calendar/): browser drag-and-drop Day/Week/Month/Agenda calendar, availability hours, custom meeting types, public `@handle` booking links, QR codes, and Google Calendar / Microsoft Outlook sync.
-- [App Store listing](https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319): iOS and iPadOS app version, availability, local pricing, and supported devices.
-- [Calendar comparisons hub](https://www.cloud-calendars.com/compare/): multi-table comparisons across Calendly, Cal.com, Google Appointment Schedules, iPhone calendar apps, unified account views, and CalDAV vs ICS vs native OAuth sync.
+- [Cloud Calendars](https://www.cloud-calendars.com/): overview, hourly weather, Home Screen widgets, and plan details.
+- [Web Calendar](https://www.cloud-calendars.com/calendar/): browser drag-and-drop Day/Week/Month/Agenda calendar, iOS QR sign-in, and Google Calendar / Microsoft Outlook sync.
+- [App Store listing](https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319): iOS, iPadOS, and macOS app version, availability, local pricing, and supported devices.
+- [Calendar comparisons hub](https://www.cloud-calendars.com/compare/): multi-table comparisons across iPhone, iPad, and Mac calendar apps, unified account views, and CalDAV vs ICS vs native OAuth sync.
 
 ## Capabilities and limits
 
-- Web Calendar & Public Booking Platform (`/calendar/` and `/book/`): interactive browser calendar, public self-serve appointment booking pages, one-time or expiring invite links, guest self-service reschedule/cancel links, `.ics` invites, and OAuth busy-time + event write-back for Google Calendar and Microsoft Outlook.
+- Web Calendar (`/calendar/`): interactive browser calendar, QR and 6-digit authenticator sign-in, `.ics` invites, and OAuth sync + event write-back for Google Calendar and Microsoft Outlook.
 - Native iOS & iPadOS app: Day, Week, Month, Year, and List views, including a multi-calendar side-by-side day overview.
 - Base (Free) on iOS includes iCloud/device calendar access, Google Calendar sync, Google Meet support, Apple WeatherKit forecasts, and Home Screen widgets. Advanced removes ads. Premium adds Microsoft Calendar (Outlook / Exchange / Microsoft 365) and Microsoft Teams support on iOS.
 - Local calendars can be used on the device without an app account. Provider connections and sharing services may require sign-in and the appropriate permissions.

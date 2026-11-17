@@ -69,12 +69,21 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         if let authenticated = CalendarFeedSession.existing {
             accountEmail = authenticated.email ?? ""
             MacEventSharing.restoreReceivedPermissions(backend: self, session: authenticated)
+        } else {
+            clearLegacySession()
         }
+        registerReceivedAccountScopes()
         observers.append(NotificationCenter.default.addObserver(forName: .cloudAccountChanged, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
                 guard let self else { return }
                 self.clearLegacySession()
                 self.accountEmail = CalendarFeedSession.existing?.email ?? ""
+                self.receivedEventAccess = [:]
+                self.receivedEventUnavailable = []
+                if let session = CalendarFeedSession.existing {
+                    MacEventSharing.restoreReceivedPermissions(backend: self, session: session)
+                }
+                self.interactionActive = false
                 self.reload()
                 await self.sync()
             }
@@ -94,23 +103,34 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
             self?.reload()
         }
     }
+    var visibleLocalCalendars: [DeviceCalendarDocument] {
+        local.filter { !$0.isReceivedSharedCalendar || ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true) }
+    }
+    private func registerReceivedAccountScopes() {
+        for (id, binding) in (try? loadSharedBindings()) ?? [:] {
+            ReceivedSharingVisibility.register([id], kind: "calendar", accountID: binding.accountID)
+        }
+        MacEventSharing.registerReceivedAccountScopes()
+    }
     func reload() {
         guard !interactionActive else { reloadPending = true; return }
         let previous = Set(calendars.map(\.id))
         let native = EKEventStore.authorizationStatus(for: .event) == .fullAccess ? eventStore.calendars(for: .event) : []
         let nextCalendars = native.map { c in MacCalendarItem(id: c.calendarIdentifier, title: c.title, source: c.source.title,
             color: Color(cgColor: c.cgColor ?? NSColor.systemBlue.cgColor), writable: c.allowsContentModifications, native: c) }
-            + local.filter(\.available).map { MacCalendarItem(id: $0.id, title: $0.title, source: $0.source, color: Color(hex: $0.displayColorHex), writable: $0.canEditEvents, native: nil) }
+            + visibleLocalCalendars.filter(\.available).map { MacCalendarItem(id: $0.id, title: $0.title, source: $0.source, color: Color(hex: $0.displayColorHex), writable: $0.canEditEvents, native: nil) }
         var nextNative: [String: EKEvent] = [:], nextEventCalendars: [String: String] = [:]
         var nextEvents: [DeviceCalendarEvent] = []
         for calendar in native {
             for event in adapter.events(in: calendar) {
                 let item = adapter.snapshot(event)
+                guard ReceivedSharingVisibility.isVisible(item.id, kind: "event") else { continue }
                 nextNative[item.id] = event; nextEventCalendars[item.id] = calendar.calendarIdentifier; nextEvents.append(item)
             }
         }
-        for calendar in local where calendar.available {
-            for event in calendar.events { nextEventCalendars[event.id] = calendar.id; nextEvents.append(event) }
+        for calendar in visibleLocalCalendars where calendar.available {
+            for event in calendar.events where ReceivedSharingVisibility.isVisible(event.id, kind: "event") { nextEventCalendars[event.id] = calendar.id; nextEvents.append(event) }
         }
         nativeEvents = nextNative; eventCalendars = nextEventCalendars
         let nextSelection = selection.union(Set(nextCalendars.map(\.id)).subtracting(previous))
@@ -260,6 +280,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
                 access: remote.access.rawValue, calendarKind: remote.calendarKind,
                 localColorOverride: existing?.sharing?.localColorOverride))
         if let index = documents.firstIndex(where: { $0.id == id }) { documents[index] = value } else { documents.append(value) }
+        ReceivedSharingVisibility.register([id], kind: "calendar", accountID: session.calendarId)
         try saveSharedBindings(bindings)
         try replaceLocalCalendars(documents)
     }

@@ -9,6 +9,7 @@ import {
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
+import { ThemeService } from '../../core/theme.service';
 import { linkPath } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
@@ -30,8 +31,14 @@ interface NavItem {
 })
 export class HeaderComponent {
   private readonly scroll = inject(ScrollService);
-
+  private readonly themeService = inject(ThemeService);
   private readonly active = inject(ActiveLocaleService);
+
+  readonly theme = this.themeService.theme;
+
+  toggleTheme(): void {
+    this.themeService.toggle();
+  }
 
   /** Follows the language of the page being read, not the site default. */
   readonly appStoreUrl = this.active.storeHref;

@@ -45,6 +45,11 @@ enum CalendarFeedSession {
     #endif
 
     private static var cached: CloudCalendarsAPI.Session?
+    private static var didLoad = false
+
+    static func isCurrent(_ session: CloudCalendarsAPI.Session) -> Bool {
+        existing?.calendarId == session.calendarId && existing?.deviceToken == session.deviceToken
+    }
 
     /// Returns only an explicitly authenticated Cloud Calendars session.
     @discardableResult
@@ -58,26 +63,41 @@ enum CalendarFeedSession {
     static var existing: CloudCalendarsAPI.Session? {
         let session = rawExisting
         guard let session,
-              session.provider != nil,
-              sessionHasVerifiedEmail(session)
+              !appIdentities(in: session).isEmpty
         else { return nil }
         return session
     }
 
     private static var rawExisting: CloudCalendarsAPI.Session? {
-        if let cached { return cached }
-        guard let stored = loadFromStorage() else { return nil }
-        cached = stored
-        return stored
+        if !didLoad {
+            didLoad = true
+            cached = loadFromStorage()
+            if let session = cached, session.provider != nil, appIdentities(in: session).isEmpty {
+                // Web email recovery is not a native app login. Older builds
+                // left this invisible identity active after the last Sign Out.
+                #if os(iOS)
+                InvitationPushRegistration.shared.prepareForSignOut(session: session)
+                #endif
+                forget()
+            } else {
+                ReceivedSharingVisibility.activate(accountID: cached.flatMap {
+                    appIdentities(in: $0).isEmpty ? nil : $0.calendarId
+                })
+            }
+        }
+        return cached
     }
 
     static func forget() {
+        // Invalidate memory before notifying any stores. A nil cache used to
+        // reload the still-present file during synchronous store callbacks.
+        didLoad = true
         cached = nil
-        #if os(iOS)
-        AppLocalCalendarStore.shared.removePersonalCloudCalendars(except: nil)
-        #endif
-        guard let url = try? storageURL(createDirectory: false) else { return }
-        try? FileManager.default.removeItem(at: url)
+        ReceivedSharingVisibility.activate(accountID: nil)
+        WebStudioAuthenticatorStore.shared.clear()
+        if let url = try? storageURL(createDirectory: false) {
+            try? FileManager.default.removeItem(at: url)
+        }
     }
 
     /// Disconnects one provider while retaining the stable shared-events
@@ -89,7 +109,14 @@ enum CalendarFeedSession {
             provider: provider,
             session: session
         )
-        guard sessionHasVerifiedEmail(updated) else { throw SessionError.emailRequired }
+        guard isCurrent(session) else { throw CancellationError() }
+        guard !appIdentities(in: updated).isEmpty else {
+            #if os(iOS)
+            InvitationPushRegistration.shared.prepareForSignOut(session: updated)
+            #endif
+            forget()
+            return updated
+        }
         try store(updated)
         return updated
     }
@@ -169,9 +196,20 @@ enum CalendarFeedSession {
         return parts.count == 2 && parts.allSatisfy { !$0.isEmpty } && parts[1].contains(".")
     }
 
-    private static func sessionHasVerifiedEmail(_ session: CloudCalendarsAPI.Session) -> Bool {
-        if validEmail(session.email) { return true }
-        return (session.identities ?? []).contains { validEmail($0.email) }
+    /// Only identities with a native Connect/Sign Out row keep this app signed
+    /// in. The server can also return a web-only email recovery identity.
+    static func appIdentities(in session: CloudCalendarsAPI.Session) -> [CloudCalendarsAPI.AccountIdentity] {
+        let supported: Set<String> = ["apple", "google", "microsoft"]
+        var identities: [String: CloudCalendarsAPI.AccountIdentity] = [:]
+        // An explicit server list is authoritative; do not resurrect a provider
+        // from the token's old primary identity after it has been disconnected.
+        let candidates = session.identities ?? session.provider.map {
+            [CloudCalendarsAPI.AccountIdentity(provider: $0, email: session.email)]
+        } ?? []
+        for identity in candidates where supported.contains(identity.provider) && validEmail(identity.email) {
+            identities[identity.provider] = identity
+        }
+        return identities.values.sorted { $0.provider < $1.provider }
     }
 
     // MARK: - Device-local storage
@@ -238,6 +276,8 @@ enum CalendarFeedSession {
         // durably stored. Otherwise the UI would look connected only until the
         // next launch.
         cached = session
+        didLoad = true
+        ReceivedSharingVisibility.activate(accountID: session.calendarId)
     }
 
     private static func loadFromStorage() -> CloudCalendarsAPI.Session? {

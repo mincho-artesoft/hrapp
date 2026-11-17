@@ -203,6 +203,22 @@ final class CalendarViewModel: ObservableObject {
                object: eventStore
            )
 
+        NotificationCenter.default.publisher(for: .cloudAccountChanged)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                SharedInviteTracker.registerReceivedAccountScope()
+                AppLocalCalendarStore.shared.registerReceivedAccountScope()
+                self.reloadCalendars()
+                self.appLocalRevision &+= 1
+                self.eventsByDay = [:]
+                self.eventsByID = [:]
+                self.calendarContentDidChange.send()
+                EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                CalendarLiveActivityManager.shared.update()
+            }
+            .store(in: &cancellables)
+
         NotificationCenter.default.publisher(for: .appLocalCalendarStoreChanged)
             .receive(on: RunLoop.main)
             .sink { [weak self] notification in
@@ -225,6 +241,7 @@ final class CalendarViewModel: ObservableObject {
             .store(in: &cancellables)
 
            // Първоначално зареждане на локални събития и запис в oldEventCalendarMap
+           SharedInviteTracker.registerReceivedAccountScope()
            loadAndStoreCurrentEvents()
         
     }
@@ -598,7 +615,7 @@ final class CalendarViewModel: ObservableObject {
             )
         }
 
-        for appCalendar in AppLocalCalendarStore.shared.calendars where !appCalendar.isRevoked {
+        for appCalendar in AppLocalCalendarStore.shared.visibleCalendars where !appCalendar.isRevoked {
             result[appCalendar.id] = MultiCalendarInfo(
                 id: appCalendar.id,
                 title: appCalendar.title,
@@ -632,11 +649,11 @@ final class CalendarViewModel: ObservableObject {
 
     var allSelectableCalendarIDs: Set<String> {
         Set(allCalendars.map(\.calendarIdentifier))
-            .union(AppLocalCalendarStore.shared.calendars.map(\.id))
+            .union(AppLocalCalendarStore.shared.visibleCalendars.map(\.id))
     }
 
     func pickFirstWritableSelectedAppLocalCalendar() -> AppLocalCalendarRecord? {
-        AppLocalCalendarStore.shared.calendars.first {
+        AppLocalCalendarStore.shared.visibleCalendars.first {
             selectedCalendarIDs.contains($0.id) && $0.canEditEvents
         }
     }
@@ -647,7 +664,7 @@ final class CalendarViewModel: ObservableObject {
     func newEventCalendar(preferredCalendarID: String? = nil) -> MultiCalendarInfo? {
         let metadata = multiCalendarsDict
         var candidates = (isCalendarAccessGranted() ? allCalendars : []).compactMap { metadata[$0.calendarIdentifier] }
-        candidates += AppLocalCalendarStore.shared.calendars.compactMap { metadata[$0.id] }
+        candidates += AppLocalCalendarStore.shared.visibleCalendars.compactMap { metadata[$0.id] }
         let systemDefault = isCalendarAccessGranted() ? eventStore.defaultCalendarForNewEvents : nil
         // EventKit can expose its default before the observable list reloads.
         if let calendar = systemDefault,
@@ -675,7 +692,7 @@ final class CalendarViewModel: ObservableObject {
             return
         }
 
-        let allIDs = Set(allCalendars.map(\.calendarIdentifier)).union(AppLocalCalendarStore.shared.calendars.map(\.id))
+        let allIDs = Set(allCalendars.map(\.calendarIdentifier)).union(AppLocalCalendarStore.shared.visibleCalendars.map(\.id))
         guard !allIDs.isEmpty else { return }
 
         selectedCalendarIDs = allIDs
@@ -721,7 +738,7 @@ final class CalendarViewModel: ObservableObject {
                 allowedCalendarIDs: selectedCalendarIDs
             )
             for (day, events) in fetched {
-                let descriptors = events.map(EKMultiDayWrapper.init(realEvent:))
+                let descriptors = events.filter(SharedInviteTracker.isVisible).map(EKMultiDayWrapper.init(realEvent:))
                 combined[day, default: []].append(contentsOf: descriptors)
                 for descriptor in descriptors {
                     byID[descriptor.realEvent.eventIdentifier] = descriptor
@@ -853,7 +870,7 @@ final class CalendarViewModel: ObservableObject {
                     end: startOfNextYear,
                     calendars: allowedCals
                 )
-                for event in eventStore.events(matching: predicate) {
+                for event in eventStore.events(matching: predicate).filter(SharedInviteTracker.isVisible) {
                     let descriptor = EKMultiDayWrapper(realEvent: event)
                     let dayKey = calendar.startOfDay(for: event.startDate)
                     dict[dayKey, default: []].append(descriptor)
