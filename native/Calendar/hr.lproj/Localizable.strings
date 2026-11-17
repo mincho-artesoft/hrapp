@@ -1197,3 +1197,27 @@
 "Web Events" = "Web-događaji";
 "yesterday" = "jučer";
 "Open Sign-In in Browser" = "Otvori prijavu u pregledniku";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Odaberite svoj Cloud Calendars plan";
+"Redeem Offer Code" = "Iskoristi kod ponude";
+"Introductory offer" = "Uvodna ponuda";
+"Welcome back offer" = "Ponuda za povratak";
+"Free" = "Besplatno";
+"%@ free" = "%@ besplatno";
+"%@ every %@ for %@" = "%@ svakih %@ tijekom %@";
+"%@ for %@" = "%@ za %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Zatim %@ svakih %@. Automatski se obnavlja. Otkažite bilo kada.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ svakih %@. Automatski se obnavlja. Otkažite bilo kada.";
+"Offer ends in" = "Ponuda završava za";
+"Get Offer" = "Iskoristi ponudu";
+"Starts at next renewal" = "Počinje pri sljedećoj obnovi";
+"Expires on %@" = "Istječe %@";
+"This offer or plan has changed. Review the updated price and try again." = "Ova ponuda ili plan su promijenjeni. Pregledajte ažuriranu cijenu i pokušajte ponovno.";
+"Purchase awaiting approval." = "Kupnja čeka odobrenje.";
+"Loading plans..." = "Učitavanje planova…";
+"No plans available at the moment." = "Trenutačno nema dostupnih planova.";
+"Plans" = "Planovi";
+"Restoring purchases..." = "Obnavljanje kupnji…";
+"Only owners can manage event access." = "Samo vlasnici mogu upravljati pristupom događajima.";
+"Open Web Calendar" = "Otvori web-kalendar";

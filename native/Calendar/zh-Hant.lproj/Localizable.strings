@@ -1195,3 +1195,27 @@
 "Web Events" = "網頁行程";
 "yesterday" = "昨天";
 "Open Sign-In in Browser" = "在瀏覽器中開啟登入";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "選擇你的 Cloud Calendars 方案";
+"Redeem Offer Code" = "兌換優惠代碼";
+"Introductory offer" = "新用戶優惠";
+"Welcome back offer" = "回歸優惠";
+"Free" = "免費";
+"%@ free" = "%@免費";
+"%@ every %@ for %@" = "%3$@內每%2$@支付%1$@";
+"%@ for %@" = "%1$@享用%2$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "之後每%2$@支付%1$@。自動續訂，隨時可取消。";
+"%@ every %@. Auto-renews. Cancel anytime." = "每%2$@支付%1$@。自動續訂，隨時可取消。";
+"Offer ends in" = "優惠倒數";
+"Get Offer" = "取得優惠";
+"Starts at next renewal" = "下次續訂時生效";
+"Expires on %@" = "於%@到期";
+"This offer or plan has changed. Review the updated price and try again." = "此優惠或方案已變更。請查看更新後的價格並再試一次。";
+"Purchase awaiting approval." = "購買等待批准。";
+"Loading plans..." = "正在載入方案…";
+"No plans available at the moment." = "目前沒有可用方案。";
+"Plans" = "方案";
+"Restoring purchases..." = "正在回復購買項目…";
+"Only owners can manage event access." = "只有擁有者可以管理行程存取權限。";
+"Open Web Calendar" = "開啟網頁行事曆";

@@ -8,14 +8,14 @@ struct SubscriptionOfferPresentation {
 
     var title: String {
         offer.type == .winBack
-            ? String(localized: "Welcome back offer")
-            : String(localized: "Introductory offer")
+            ? NSLocalizedString("Welcome back offer", comment: "Subscription offer title")
+            : NSLocalizedString("Introductory offer", comment: "Subscription offer title")
     }
 
     var price: String {
         offer.paymentMode == .freeTrial
-            ? String(localized: "Free")
-            : offer.price.formatted(product.priceFormatStyle.locale(Locale.current))
+            ? NSLocalizedString("Free", comment: "Free trial price")
+            : offer.price.formatted(product.priceFormatStyle.locale(Locale.appFormatting))
     }
 
     var summary: String {
@@ -23,28 +23,28 @@ struct SubscriptionOfferPresentation {
         let totalPeriod = Self.duration(offer.period, count: offer.periodCount)
         switch offer.paymentMode {
         case .freeTrial:
-            return String.localizedStringWithFormat(
-                String(localized: "%@ free"), totalPeriod)
+            return localizedFormat(
+                NSLocalizedString("%@ free", comment: "Free trial duration"), totalPeriod)
         case .payAsYouGo:
-            return String.localizedStringWithFormat(
-                String(localized: "%@ every %@ for %@"), price, period, totalPeriod)
+            return localizedFormat(
+                NSLocalizedString("%@ every %@ for %@", comment: "Offer price, billing period and duration"), price, period, totalPeriod)
         default:
-            return String.localizedStringWithFormat(
-                String(localized: "%@ for %@"), price, totalPeriod)
+            return localizedFormat(
+                NSLocalizedString("%@ for %@", comment: "Offer price and duration"), price, totalPeriod)
         }
     }
 
     var renewalTerms: String {
         guard let subscription = product.subscription else { return "" }
-        return String.localizedStringWithFormat(
-            String(localized: "Then %@ every %@. Auto-renews. Cancel anytime."),
+        return localizedFormat(
+            NSLocalizedString("Then %@ every %@. Auto-renews. Cancel anytime.", comment: "Price and billing period after an offer"),
             product.displayPrice, Self.duration(subscription.subscriptionPeriod))
     }
 
     static func duration(_ period: Product.SubscriptionPeriod, count: Int = 1) -> String {
         let value = period.value * count
         var calendar = Calendar(identifier: .gregorian)
-        calendar.locale = Locale.current
+        calendar.locale = Locale.appFormatting
         let formatter = DateComponentsFormatter()
         formatter.calendar = calendar
         formatter.unitsStyle = .full

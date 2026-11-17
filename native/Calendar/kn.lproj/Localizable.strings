@@ -1197,3 +1197,27 @@
 "Web Events" = "ವೆಬ್ ಈವೆಂಟ್‌ಗಳು";
 "yesterday" = "ನಿನ್ನೆ";
 "Open Sign-In in Browser" = "ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಸೈನ್ ಇನ್ ತೆರೆಯಿರಿ";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "ನಿಮ್ಮ Cloud Calendars ಯೋಜನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+"Redeem Offer Code" = "ಆಫರ್ ಕೋಡ್ ಬಳಸಿ";
+"Introductory offer" = "ಆರಂಭಿಕ ಆಫರ್";
+"Welcome back offer" = "ಮರಳಿ ಬರುವವರಿಗೆ ಆಫರ್";
+"Free" = "ಉಚಿತ";
+"%@ free" = "%@ ಉಚಿತ";
+"%@ every %@ for %@" = "%3$@ ಅವಧಿಗೆ ಪ್ರತಿ %2$@ಗೆ %1$@";
+"%@ for %@" = "%2$@ಗೆ %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "ನಂತರ ಪ್ರತಿ %2$@ಗೆ %1$@. ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ. ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಮಾಡಿ.";
+"%@ every %@. Auto-renews. Cancel anytime." = "ಪ್ರತಿ %2$@ಗೆ %1$@. ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಣಗೊಳ್ಳುತ್ತದೆ. ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಮಾಡಿ.";
+"Offer ends in" = "ಆಫರ್ ಮುಗಿಯಲು ಉಳಿದ ಸಮಯ";
+"Get Offer" = "ಆಫರ್ ಪಡೆಯಿರಿ";
+"Starts at next renewal" = "ಮುಂದಿನ ನವೀಕರಣದಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ";
+"Expires on %@" = "%@ ರಂದು ಮುಕ್ತಾಯಗೊಳ್ಳುತ್ತದೆ";
+"This offer or plan has changed. Review the updated price and try again." = "ಈ ಆಫರ್ ಅಥವಾ ಯೋಜನೆ ಬದಲಾಗಿದೆ. ಹೊಸ ಬೆಲೆಯನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Purchase awaiting approval." = "ಖರೀದಿ ಅನುಮೋದನೆಗಾಗಿ ಕಾಯುತ್ತಿದೆ.";
+"Loading plans..." = "ಯೋಜನೆಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…";
+"No plans available at the moment." = "ಸದ್ಯಕ್ಕೆ ಯಾವುದೇ ಯೋಜನೆಗಳು ಲಭ್ಯವಿಲ್ಲ.";
+"Plans" = "ಯೋಜನೆಗಳು";
+"Restoring purchases..." = "ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…";
+"Only owners can manage event access." = "ಮಾಲೀಕರು ಮಾತ್ರ ಈವೆಂಟ್‌ಗಳ ಪ್ರವೇಶವನ್ನು ನಿರ್ವಹಿಸಬಹುದು.";
+"Open Web Calendar" = "ವೆಬ್ ಕ್ಯಾಲೆಂಡರ್ ತೆರೆಯಿರಿ";

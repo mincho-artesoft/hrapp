@@ -1195,3 +1195,27 @@
 "Web Events" = "웹 이벤트";
 "yesterday" = "어제";
 "Open Sign-In in Browser" = "브라우저에서 로그인 열기";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Cloud Calendars 요금제 선택";
+"Redeem Offer Code" = "혜택 코드 사용";
+"Introductory offer" = "신규 가입 혜택";
+"Welcome back offer" = "재가입 혜택";
+"Free" = "무료";
+"%@ free" = "%@ 무료";
+"%@ every %@ for %@" = "%3$@ 동안 %2$@마다 %1$@";
+"%@ for %@" = "%2$@에 %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "이후 %2$@마다 %1$@. 자동 갱신됩니다. 언제든지 취소할 수 있습니다.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%2$@마다 %1$@. 자동 갱신됩니다. 언제든지 취소할 수 있습니다.";
+"Offer ends in" = "혜택 종료까지";
+"Get Offer" = "혜택 받기";
+"Starts at next renewal" = "다음 갱신 시 시작";
+"Expires on %@" = "%@에 만료";
+"This offer or plan has changed. Review the updated price and try again." = "이 혜택 또는 요금제가 변경되었습니다. 변경된 가격을 확인하고 다시 시도하세요.";
+"Purchase awaiting approval." = "구매 승인 대기 중입니다.";
+"Loading plans..." = "요금제 불러오는 중…";
+"No plans available at the moment." = "현재 이용 가능한 요금제가 없습니다.";
+"Plans" = "요금제";
+"Restoring purchases..." = "구입 항목 복원 중…";
+"Only owners can manage event access." = "소유자만 이벤트 접근 권한을 관리할 수 있습니다.";
+"Open Web Calendar" = "웹 캘린더 열기";

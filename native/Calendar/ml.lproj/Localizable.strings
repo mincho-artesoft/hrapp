@@ -1197,3 +1197,27 @@
 "Web Events" = "വെബ് ഇവന്റുകൾ";
 "yesterday" = "ഇന്നലെ";
 "Open Sign-In in Browser" = "ബ്രൗസറിൽ സൈൻ ഇൻ തുറക്കുക";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "നിങ്ങളുടെ Cloud Calendars പ്ലാൻ തിരഞ്ഞെടുക്കുക";
+"Redeem Offer Code" = "ഓഫർ കോഡ് ഉപയോഗിക്കുക";
+"Introductory offer" = "ആദ്യകാല ഓഫർ";
+"Welcome back offer" = "തിരിച്ചുവരവിനുള്ള ഓഫർ";
+"Free" = "സൗജന്യം";
+"%@ free" = "%@ സൗജന്യം";
+"%@ every %@ for %@" = "%3$@ കാലത്തേക്ക് ഓരോ %2$@ നും %1$@";
+"%@ for %@" = "%2$@ ന് %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "തുടർന്ന് ഓരോ %2$@ നും %1$@. സ്വയമേവ പുതുക്കും. എപ്പോൾ വേണമെങ്കിലും റദ്ദാക്കാം.";
+"%@ every %@. Auto-renews. Cancel anytime." = "ഓരോ %2$@ നും %1$@. സ്വയമേവ പുതുക്കും. എപ്പോൾ വേണമെങ്കിലും റദ്ദാക്കാം.";
+"Offer ends in" = "ഓഫർ അവസാനിക്കാൻ ശേഷിക്കുന്ന സമയം";
+"Get Offer" = "ഓഫർ നേടുക";
+"Starts at next renewal" = "അടുത്ത പുതുക്കലിൽ ആരംഭിക്കും";
+"Expires on %@" = "%@ ന് കാലഹരണപ്പെടും";
+"This offer or plan has changed. Review the updated price and try again." = "ഈ ഓഫർ അല്ലെങ്കിൽ പ്ലാൻ മാറിയിരിക്കുന്നു. പുതുക്കിയ വില പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.";
+"Purchase awaiting approval." = "വാങ്ങൽ അംഗീകാരത്തിനായി കാത്തിരിക്കുന്നു.";
+"Loading plans..." = "പ്ലാനുകൾ ലോഡ് ചെയ്യുന്നു…";
+"No plans available at the moment." = "ഇപ്പോൾ പ്ലാനുകളൊന്നും ലഭ്യമല്ല.";
+"Plans" = "പ്ലാനുകൾ";
+"Restoring purchases..." = "വാങ്ങലുകൾ പുനഃസ്ഥാപിക്കുന്നു…";
+"Only owners can manage event access." = "ഉടമകൾക്ക് മാത്രമേ ഇവന്റുകളിലേക്കുള്ള പ്രവേശനം നിയന്ത്രിക്കാനാകൂ.";
+"Open Web Calendar" = "വെബ് കലണ്ടർ തുറക്കുക";

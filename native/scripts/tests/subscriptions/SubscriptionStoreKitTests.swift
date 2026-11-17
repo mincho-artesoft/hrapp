@@ -3,8 +3,12 @@ import StoreKit
 import StoreKitTest
 
 // Only the app's localization helper is supplied by the isolated test host.
+extension Locale {
+    nonisolated(unsafe) static var appFormatting = Locale(identifier: "en_US")
+}
+
 func localizedFormat(_ format: String, _ arguments: CVarArg...) -> String {
-    String(format: format, arguments: arguments)
+    String(format: format, locale: Locale.appFormatting, arguments: arguments)
 }
 
 @MainActor
@@ -24,6 +28,13 @@ final class SubscriptionStoreKitTests: XCTestCase {
             let presentation = SubscriptionOfferPresentation(product: product, offer: offer)
             XCTAssertTrue(presentation.renewalTerms.contains(product.displayPrice))
             XCTAssertFalse(presentation.summary.isEmpty)
+            let originalLocale = Locale.appFormatting
+            let englishDuration = SubscriptionOfferPresentation.duration(offer.period)
+            Locale.appFormatting = Locale(identifier: "bg_BG")
+            let bulgarianDuration = SubscriptionOfferPresentation.duration(offer.period)
+            Locale.appFormatting = originalLocale
+            XCTAssertNotEqual(bulgarianDuration, englishDuration, "Billing periods must follow the selected app language")
+            XCTAssertTrue(bulgarianDuration.range(of: "[А-Яа-я]", options: .regularExpression) != nil)
             if scenario == "FreeTrial" {
                 XCTAssertEqual(offer.paymentMode, .freeTrial)
                 XCTAssertEqual(presentation.price, String(localized: "Free"))

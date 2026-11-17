@@ -1195,3 +1195,27 @@
 "Web Events" = "Evenimente web";
 "yesterday" = "ieri";
 "Open Sign-In in Browser" = "Deschide autentificarea în browser";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Alege planul tău Cloud Calendars";
+"Redeem Offer Code" = "Valorifică un cod de ofertă";
+"Introductory offer" = "Ofertă introductivă";
+"Welcome back offer" = "Ofertă de revenire";
+"Free" = "Gratuit";
+"%@ free" = "%@ gratuit";
+"%@ every %@ for %@" = "%@ la fiecare %@ timp de %@";
+"%@ for %@" = "%@ pentru %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Apoi %@ la fiecare %@. Reînnoire automată. Anulează oricând.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ la fiecare %@. Reînnoire automată. Anulează oricând.";
+"Offer ends in" = "Oferta se încheie în";
+"Get Offer" = "Profită de ofertă";
+"Starts at next renewal" = "Începe la următoarea reînnoire";
+"Expires on %@" = "Expiră la %@";
+"This offer or plan has changed. Review the updated price and try again." = "Această ofertă sau acest plan s-a modificat. Verifică prețul actualizat și încearcă din nou.";
+"Purchase awaiting approval." = "Achiziția așteaptă aprobarea.";
+"Loading plans..." = "Se încarcă planurile…";
+"No plans available at the moment." = "Nu există planuri disponibile momentan.";
+"Plans" = "Planuri";
+"Restoring purchases..." = "Se restaurează achizițiile…";
+"Only owners can manage event access." = "Doar proprietarii pot gestiona accesul la evenimente.";
+"Open Web Calendar" = "Deschide calendarul web";

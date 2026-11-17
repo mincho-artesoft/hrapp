@@ -56,7 +56,7 @@ struct SubscriptionListView: View {
                                          NSLocalizedString(product.id.contains("Premium") ? "Premium" : "Advanced", comment: ""), product.periodUnitOnly))
                         .font(.system(size: 15, weight: .bold, design: .rounded))
                     Text(localizedFormat(NSLocalizedString(manager.isDisplayedRenewing(product) ? "RenewsOn" : "Expires on %@", comment: ""),
-                                         DateFormatter.localizedString(from: expiry, dateStyle: .medium, timeStyle: .none)))
+                                         expirationLabel(expiry)))
                         .font(.caption)
                 }
             }
@@ -97,6 +97,15 @@ struct SubscriptionListView: View {
             }
         }.padding(.top, 10)
     }
+    private func expirationLabel(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = .appFormatting
+        formatter.calendar = AppPreferences.shared.presentationCalendar
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
+    }
+
     private func purchaseTitle(_ quote: SubscriptionPurchaseQuote) -> LocalizedStringKey {
         if manager.hasActiveSubscription || manager.isDebugPremiumEnabled { return "Change Plan" }
         if let offer = quote.offer { return offer.paymentMode == .freeTrial ? "Start Free Trial" : "Get Offer" }

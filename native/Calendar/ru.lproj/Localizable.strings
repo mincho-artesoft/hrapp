@@ -1191,3 +1191,27 @@
 "Web Events" = "Веб-события";
 "yesterday" = "вчера";
 "Open Sign-In in Browser" = "Открыть вход в браузере";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Выберите тариф Cloud Calendars";
+"Redeem Offer Code" = "Активировать код предложения";
+"Introductory offer" = "Приветственное предложение";
+"Welcome back offer" = "Предложение для возвращения";
+"Free" = "Бесплатно";
+"%@ free" = "%@ бесплатно";
+"%@ every %@ for %@" = "%@ каждые %@ в течение %@";
+"%@ for %@" = "%@ за %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Затем %@ каждые %@. Автопродление. Отменить можно в любое время.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ каждые %@. Автопродление. Отменить можно в любое время.";
+"Offer ends in" = "Предложение закончится через";
+"Get Offer" = "Воспользоваться предложением";
+"Starts at next renewal" = "Начнётся при следующем продлении";
+"Expires on %@" = "Истекает %@";
+"This offer or plan has changed. Review the updated price and try again." = "Это предложение или тариф изменились. Проверьте обновлённую цену и повторите попытку.";
+"Purchase awaiting approval." = "Покупка ожидает одобрения.";
+"Loading plans..." = "Загрузка тарифов…";
+"No plans available at the moment." = "Сейчас нет доступных тарифов.";
+"Plans" = "Тарифы";
+"Restoring purchases..." = "Восстановление покупок…";
+"Only owners can manage event access." = "Только владельцы могут управлять доступом к событиям.";
+"Open Web Calendar" = "Открыть веб-календарь";

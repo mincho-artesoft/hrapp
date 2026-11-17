@@ -110,7 +110,7 @@ struct CalendarColorSelectionView: View {
         }
         // Заглавието на NavigationBar също го правим локализирано
         .navigationTitle(LocalizedStringKey("Calendar Color"))
-        .sheet(isPresented: $showSystemColorPicker) {
+        .appSheet(isPresented: $showSystemColorPicker) {
             UIKitColorPicker(selectedColor: customColorBinding)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)

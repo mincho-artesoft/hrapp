@@ -1197,3 +1197,27 @@
 "Web Events" = "Webové udalosti";
 "yesterday" = "včera";
 "Open Sign-In in Browser" = "Otvoriť prihlásenie v prehliadači";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Vyberte si program Cloud Calendars";
+"Redeem Offer Code" = "Uplatniť kód ponuky";
+"Introductory offer" = "Úvodná ponuka";
+"Welcome back offer" = "Ponuka pre vracajúcich sa zákazníkov";
+"Free" = "Zadarmo";
+"%@ free" = "%@ zadarmo";
+"%@ every %@ for %@" = "%@ každých %@ počas %@";
+"%@ for %@" = "%@ na %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Potom %@ každých %@. Automaticky sa obnovuje. Zrušenie kedykoľvek.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ každých %@. Automaticky sa obnovuje. Zrušenie kedykoľvek.";
+"Offer ends in" = "Ponuka sa končí o";
+"Get Offer" = "Využiť ponuku";
+"Starts at next renewal" = "Začína sa pri ďalšom obnovení";
+"Expires on %@" = "Platnosť vyprší %@";
+"This offer or plan has changed. Review the updated price and try again." = "Táto ponuka alebo program sa zmenili. Skontrolujte aktuálnu cenu a skúste to znova.";
+"Purchase awaiting approval." = "Nákup čaká na schválenie.";
+"Loading plans..." = "Načítavajú sa programy…";
+"No plans available at the moment." = "Momentálne nie sú k dispozícii žiadne programy.";
+"Plans" = "Programy";
+"Restoring purchases..." = "Obnovujú sa nákupy…";
+"Only owners can manage event access." = "Prístup k udalostiam môžu spravovať iba vlastníci.";
+"Open Web Calendar" = "Otvoriť webový kalendár";

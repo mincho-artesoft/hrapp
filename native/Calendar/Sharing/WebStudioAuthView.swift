@@ -265,7 +265,7 @@ struct WebStudioAuthSheetView: View {
         CalendarSheetNavigation {
             VStack(spacing: 0) {
                 #if os(macOS)
-                MacCalendarSheetHeader(title: Text(activeChallenge != nil && !approvedSuccessfully ? "Web Sign-In" : "Web Authenticator")) {
+                MacCalendarSheetHeader(title: Text(LocalizedStringKey(activeChallenge != nil && !approvedSuccessfully ? "Web Sign-In" : "Web Authenticator"))) {
                     AppToolbarTextButton("Close") { cloudAccountManager.cancelSignIn(); dismiss() }
                 } trailing: { EmptyView() }
                 #endif

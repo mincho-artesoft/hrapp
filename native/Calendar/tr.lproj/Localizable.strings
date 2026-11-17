@@ -1195,3 +1195,27 @@
 "Web Events" = "Web Etkinlikleri";
 "yesterday" = "dün";
 "Open Sign-In in Browser" = "Giriş Yapmayı Tarayıcıda Aç";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Cloud Calendars planınızı seçin";
+"Redeem Offer Code" = "Teklif kodunu kullan";
+"Introductory offer" = "Tanışma teklifi";
+"Welcome back offer" = "Geri dönüş teklifi";
+"Free" = "Ücretsiz";
+"%@ free" = "%@ ücretsiz";
+"%@ every %@ for %@" = "%3$@ boyunca her %2$@ için %1$@";
+"%@ for %@" = "%2$@ için %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Sonrasında her %2$@ için %1$@. Otomatik yenilenir. İstediğiniz zaman iptal edin.";
+"%@ every %@. Auto-renews. Cancel anytime." = "Her %2$@ için %1$@. Otomatik yenilenir. İstediğiniz zaman iptal edin.";
+"Offer ends in" = "Teklifin bitmesine kalan süre";
+"Get Offer" = "Tekliften yararlan";
+"Starts at next renewal" = "Bir sonraki yenilemede başlar";
+"Expires on %@" = "Bitiş tarihi: %@";
+"This offer or plan has changed. Review the updated price and try again." = "Bu teklif veya plan değişti. Güncel fiyatı inceleyip tekrar deneyin.";
+"Purchase awaiting approval." = "Satın alma onay bekliyor.";
+"Loading plans..." = "Planlar yükleniyor…";
+"No plans available at the moment." = "Şu anda kullanılabilir plan yok.";
+"Plans" = "Planlar";
+"Restoring purchases..." = "Satın almalar geri yükleniyor…";
+"Only owners can manage event access." = "Etkinlik erişimini yalnızca sahipler yönetebilir.";
+"Open Web Calendar" = "Web takvimini aç";

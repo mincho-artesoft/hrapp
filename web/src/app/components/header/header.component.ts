@@ -48,7 +48,6 @@ export class HeaderComponent {
   readonly isArticlesRoute = computed(() => this.active.currentPath().includes('/articles/'));
   readonly isCompareRoute = computed(() => this.active.currentPath().startsWith('/compare/'));
   readonly isCalendarRoute = computed(() => this.active.currentPath().includes('/calendar'));
-  readonly isBookingsRoute = computed(() => this.active.currentPath().includes('/bookings'));
 
   /** Labels come from the active language; the fragments never change. */
   readonly nav = computed<NavItem[]>(() => {
@@ -57,11 +56,8 @@ export class HeaderComponent {
     const locale = this.active.locale();
     const articlesHref = linkPath(locale, '/articles');
     const calendarHref = linkPath(locale, '/calendar');
-    const bookingsHref = linkPath(locale, '/bookings');
     const items: NavItem[] = [
       { label: 'Web Calendar', href: calendarHref, key: 'calendar', isRoute: true },
-      { label: 'Booking', href: `${base}#booking`, key: 'booking' },
-      { label: 'My Bookings', href: bookingsHref, key: 'bookings', isRoute: true },
       { label: n.widgets, href: `${base}#widgets`, key: 'widgets' },
       { label: n.features, href: `${base}#features`, key: 'features' },
       { label: n.pricing, href: `${base}#pricing`, key: 'pricing' },

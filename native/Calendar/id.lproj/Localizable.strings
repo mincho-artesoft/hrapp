@@ -1195,3 +1195,27 @@
 "Web Events" = "Acara Web";
 "yesterday" = "kemarin";
 "Open Sign-In in Browser" = "Buka Masuk di Browser";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Pilih paket Cloud Calendars Anda";
+"Redeem Offer Code" = "Tukarkan Kode Penawaran";
+"Introductory offer" = "Penawaran perkenalan";
+"Welcome back offer" = "Penawaran selamat datang kembali";
+"Free" = "Gratis";
+"%@ free" = "%@ gratis";
+"%@ every %@ for %@" = "%@ setiap %@ selama %@";
+"%@ for %@" = "%@ untuk %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Lalu %@ setiap %@. Diperpanjang otomatis. Batalkan kapan saja.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ setiap %@. Diperpanjang otomatis. Batalkan kapan saja.";
+"Offer ends in" = "Penawaran berakhir dalam";
+"Get Offer" = "Dapatkan Penawaran";
+"Starts at next renewal" = "Dimulai pada perpanjangan berikutnya";
+"Expires on %@" = "Berakhir pada %@";
+"This offer or plan has changed. Review the updated price and try again." = "Penawaran atau paket ini telah berubah. Periksa harga terbaru dan coba lagi.";
+"Purchase awaiting approval." = "Pembelian menunggu persetujuan.";
+"Loading plans..." = "Memuat paket…";
+"No plans available at the moment." = "Tidak ada paket yang tersedia saat ini.";
+"Plans" = "Paket";
+"Restoring purchases..." = "Memulihkan pembelian…";
+"Only owners can manage event access." = "Hanya pemilik yang dapat mengelola akses acara.";
+"Open Web Calendar" = "Buka Kalender Web";

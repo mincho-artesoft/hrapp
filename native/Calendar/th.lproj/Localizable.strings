@@ -1195,3 +1195,27 @@
 "Web Events" = "กิจกรรมบนเว็บ";
 "yesterday" = "เมื่อวานนี้";
 "Open Sign-In in Browser" = "เปิดการลงชื่อเข้าใช้ในเบราว์เซอร์";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "เลือกแผน Cloud Calendars ของคุณ";
+"Redeem Offer Code" = "แลกรหัสข้อเสนอ";
+"Introductory offer" = "ข้อเสนอสำหรับผู้ใช้ใหม่";
+"Welcome back offer" = "ข้อเสนอต้อนรับกลับ";
+"Free" = "ฟรี";
+"%@ free" = "ฟรี %@";
+"%@ every %@ for %@" = "%@ ทุก %@ เป็นเวลา %@";
+"%@ for %@" = "%@ สำหรับ %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "จากนั้น %@ ทุก %@ ต่ออายุอัตโนมัติ ยกเลิกได้ทุกเมื่อ";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ ทุก %@ ต่ออายุอัตโนมัติ ยกเลิกได้ทุกเมื่อ";
+"Offer ends in" = "ข้อเสนอจะสิ้นสุดใน";
+"Get Offer" = "รับข้อเสนอ";
+"Starts at next renewal" = "เริ่มในการต่ออายุครั้งถัดไป";
+"Expires on %@" = "หมดอายุวันที่ %@";
+"This offer or plan has changed. Review the updated price and try again." = "ข้อเสนอหรือแผนนี้มีการเปลี่ยนแปลง โปรดตรวจสอบราคาล่าสุดแล้วลองอีกครั้ง";
+"Purchase awaiting approval." = "การซื้อกำลังรอการอนุมัติ";
+"Loading plans..." = "กำลังโหลดแผน…";
+"No plans available at the moment." = "ไม่มีแผนที่ใช้ได้ในขณะนี้";
+"Plans" = "แผน";
+"Restoring purchases..." = "กำลังกู้คืนการซื้อ…";
+"Only owners can manage event access." = "เฉพาะเจ้าของเท่านั้นที่สามารถจัดการการเข้าถึงกิจกรรมได้";
+"Open Web Calendar" = "เปิดปฏิทินบนเว็บ";

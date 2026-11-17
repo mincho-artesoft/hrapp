@@ -1195,3 +1195,27 @@
 "Web Events" = "Συμβάντα ιστού";
 "yesterday" = "χθες";
 "Open Sign-In in Browser" = "Άνοιγμα σύνδεσης στο πρόγραμμα περιήγησης";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Επιλέξτε το πρόγραμμα Cloud Calendars";
+"Redeem Offer Code" = "Εξαργύρωση κωδικού προσφοράς";
+"Introductory offer" = "Εισαγωγική προσφορά";
+"Welcome back offer" = "Προσφορά επιστροφής";
+"Free" = "Δωρεάν";
+"%@ free" = "%@ δωρεάν";
+"%@ every %@ for %@" = "%@ κάθε %@ για %@";
+"%@ for %@" = "%@ για %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Έπειτα %@ κάθε %@. Αυτόματη ανανέωση. Ακύρωση ανά πάσα στιγμή.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ κάθε %@. Αυτόματη ανανέωση. Ακύρωση ανά πάσα στιγμή.";
+"Offer ends in" = "Η προσφορά λήγει σε";
+"Get Offer" = "Αξιοποίηση προσφοράς";
+"Starts at next renewal" = "Ξεκινά στην επόμενη ανανέωση";
+"Expires on %@" = "Λήγει στις %@";
+"This offer or plan has changed. Review the updated price and try again." = "Αυτή η προσφορά ή το πρόγραμμα έχει αλλάξει. Ελέγξτε την ενημερωμένη τιμή και δοκιμάστε ξανά.";
+"Purchase awaiting approval." = "Η αγορά αναμένει έγκριση.";
+"Loading plans..." = "Φόρτωση προγραμμάτων…";
+"No plans available at the moment." = "Δεν υπάρχουν διαθέσιμα προγράμματα αυτή τη στιγμή.";
+"Plans" = "Προγράμματα";
+"Restoring purchases..." = "Επαναφορά αγορών…";
+"Only owners can manage event access." = "Μόνο οι κάτοχοι μπορούν να διαχειρίζονται την πρόσβαση σε συμβάντα.";
+"Open Web Calendar" = "Άνοιγμα διαδικτυακού ημερολογίου";

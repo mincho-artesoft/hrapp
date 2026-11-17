@@ -1195,3 +1195,27 @@
 "Web Events" = "Sự kiện trên web";
 "yesterday" = "hôm qua";
 "Open Sign-In in Browser" = "Mở đăng nhập trong trình duyệt";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Chọn gói Cloud Calendars của bạn";
+"Redeem Offer Code" = "Đổi mã ưu đãi";
+"Introductory offer" = "Ưu đãi dùng thử";
+"Welcome back offer" = "Ưu đãi chào mừng trở lại";
+"Free" = "Miễn phí";
+"%@ free" = "Miễn phí %@";
+"%@ every %@ for %@" = "%@ mỗi %@ trong %@";
+"%@ for %@" = "%@ cho %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Sau đó %@ mỗi %@. Tự động gia hạn. Hủy bất cứ lúc nào.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ mỗi %@. Tự động gia hạn. Hủy bất cứ lúc nào.";
+"Offer ends in" = "Ưu đãi kết thúc sau";
+"Get Offer" = "Nhận ưu đãi";
+"Starts at next renewal" = "Bắt đầu vào lần gia hạn tiếp theo";
+"Expires on %@" = "Hết hạn vào %@";
+"This offer or plan has changed. Review the updated price and try again." = "Ưu đãi hoặc gói này đã thay đổi. Kiểm tra giá mới và thử lại.";
+"Purchase awaiting approval." = "Giao dịch mua đang chờ phê duyệt.";
+"Loading plans..." = "Đang tải các gói…";
+"No plans available at the moment." = "Hiện không có gói nào khả dụng.";
+"Plans" = "Các gói";
+"Restoring purchases..." = "Đang khôi phục giao dịch mua…";
+"Only owners can manage event access." = "Chỉ chủ sở hữu mới có thể quản lý quyền truy cập sự kiện.";
+"Open Web Calendar" = "Mở lịch web";

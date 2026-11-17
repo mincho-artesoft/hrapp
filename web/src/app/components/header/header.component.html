@@ -26,9 +26,9 @@
         <a
           class="hdr__link"
           [class.hdr__link--route]="item.isRoute"
-          [class.is-active]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) || (item.key === 'bookings' && isBookingsRoute())"
+          [class.is-active]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute())"
           [href]="item.href"
-          [attr.aria-current]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) || (item.key === 'bookings' && isBookingsRoute()) ? 'page' : null"
+          [attr.aria-current]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) ? 'page' : null"
         >
           <span>{{ item.label }}</span>
         </a>

@@ -1195,3 +1195,27 @@
 "Web Events" = "Webactiviteiten";
 "yesterday" = "gisteren";
 "Open Sign-In in Browser" = "Inloggen openen in browser";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Kies je Cloud Calendars-abonnement";
+"Redeem Offer Code" = "Aanbiedingscode inwisselen";
+"Introductory offer" = "Introductieaanbieding";
+"Welcome back offer" = "Aanbieding voor terugkerende klanten";
+"Free" = "Gratis";
+"%@ free" = "%@ gratis";
+"%@ every %@ for %@" = "%@ elke %@ gedurende %@";
+"%@ for %@" = "%@ voor %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Daarna %@ elke %@. Wordt automatisch verlengd. Altijd opzegbaar.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ elke %@. Wordt automatisch verlengd. Altijd opzegbaar.";
+"Offer ends in" = "Aanbieding eindigt over";
+"Get Offer" = "Aanbieding gebruiken";
+"Starts at next renewal" = "Begint bij de volgende verlenging";
+"Expires on %@" = "Verloopt op %@";
+"This offer or plan has changed. Review the updated price and try again." = "Deze aanbieding of dit abonnement is gewijzigd. Bekijk de bijgewerkte prijs en probeer het opnieuw.";
+"Purchase awaiting approval." = "Aankoop wacht op goedkeuring.";
+"Loading plans..." = "Abonnementen laden…";
+"No plans available at the moment." = "Er zijn momenteel geen abonnementen beschikbaar.";
+"Plans" = "Abonnementen";
+"Restoring purchases..." = "Aankopen herstellen…";
+"Only owners can manage event access." = "Alleen eigenaren kunnen de toegang tot afspraken beheren.";
+"Open Web Calendar" = "Webagenda openen";

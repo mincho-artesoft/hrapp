@@ -1195,3 +1195,27 @@
 "Web Events" = "Verkkotapahtumat";
 "yesterday" = "eilen";
 "Open Sign-In in Browser" = "Avaa kirjautuminen selaimessa";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Valitse Cloud Calendars -tilauksesi";
+"Redeem Offer Code" = "Lunasta tarjouskoodi";
+"Introductory offer" = "Tutustumistarjous";
+"Welcome back offer" = "Tarjous palaaville asiakkaille";
+"Free" = "Ilmainen";
+"%@ free" = "%@ ilmaiseksi";
+"%@ every %@ for %@" = "%@ / %@, kesto %@";
+"%@ for %@" = "%@ / %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Sen jälkeen %@ / %@. Uusiutuu automaattisesti. Voit perua milloin tahansa.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ / %@. Uusiutuu automaattisesti. Voit perua milloin tahansa.";
+"Offer ends in" = "Tarjous päättyy ajassa";
+"Get Offer" = "Hyödynnä tarjous";
+"Starts at next renewal" = "Alkaa seuraavasta uusimisesta";
+"Expires on %@" = "Päättyy %@";
+"This offer or plan has changed. Review the updated price and try again." = "Tämä tarjous tai tilaus on muuttunut. Tarkista päivitetty hinta ja yritä uudelleen.";
+"Purchase awaiting approval." = "Osto odottaa hyväksyntää.";
+"Loading plans..." = "Ladataan tilauksia…";
+"No plans available at the moment." = "Tilauksia ei ole tällä hetkellä saatavilla.";
+"Plans" = "Tilaukset";
+"Restoring purchases..." = "Palautetaan ostoja…";
+"Only owners can manage event access." = "Vain omistajat voivat hallita tapahtumien käyttöoikeuksia.";
+"Open Web Calendar" = "Avaa verkkokalenteri";

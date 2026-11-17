@@ -1197,3 +1197,27 @@
 "Web Events" = "Esdeveniments web";
 "yesterday" = "ahir";
 "Open Sign-In in Browser" = "Obre l’inici de sessió al navegador";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Tria el teu pla de Cloud Calendars";
+"Redeem Offer Code" = "Bescanvia el codi de l’oferta";
+"Introductory offer" = "Oferta de benvinguda";
+"Welcome back offer" = "Oferta de retorn";
+"Free" = "Gratis";
+"%@ free" = "%@ gratis";
+"%@ every %@ for %@" = "%@ cada %@ durant %@";
+"%@ for %@" = "%@ per %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Després, %@ cada %@. Renovació automàtica. Cancel·la quan vulguis.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ cada %@. Renovació automàtica. Cancel·la quan vulguis.";
+"Offer ends in" = "L’oferta acaba d’aquí a";
+"Get Offer" = "Aprofita l’oferta";
+"Starts at next renewal" = "Comença a la pròxima renovació";
+"Expires on %@" = "Caduca el %@";
+"This offer or plan has changed. Review the updated price and try again." = "Aquesta oferta o pla ha canviat. Revisa el preu actualitzat i torna-ho a provar.";
+"Purchase awaiting approval." = "Compra pendent d’aprovació.";
+"Loading plans..." = "S’estan carregant els plans…";
+"No plans available at the moment." = "No hi ha plans disponibles en aquest moment.";
+"Plans" = "Plans";
+"Restoring purchases..." = "S’estan restaurant les compres…";
+"Only owners can manage event access." = "Només els propietaris poden gestionar l’accés als esdeveniments.";
+"Open Web Calendar" = "Obre el calendari web";

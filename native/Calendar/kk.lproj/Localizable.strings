@@ -1197,3 +1197,27 @@
 "Web Events" = "Веб оқиғалар";
 "yesterday" = "кеше";
 "Open Sign-In in Browser" = "Браузерде кіруді ашу";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Cloud Calendars жоспарын таңдаңыз";
+"Redeem Offer Code" = "Ұсыныс кодын пайдалану";
+"Introductory offer" = "Алғашқы ұсыныс";
+"Welcome back offer" = "Қайта оралу ұсынысы";
+"Free" = "Тегін";
+"%@ free" = "%@ тегін";
+"%@ every %@ for %@" = "%3$@ бойы әр %2$@ сайын %1$@";
+"%@ for %@" = "%2$@ үшін %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Содан кейін әр %2$@ сайын %1$@. Автоматты түрде жаңартылады. Кез келген уақытта бас тарта аласыз.";
+"%@ every %@. Auto-renews. Cancel anytime." = "Әр %2$@ сайын %1$@. Автоматты түрде жаңартылады. Кез келген уақытта бас тарта аласыз.";
+"Offer ends in" = "Ұсыныстың аяқталуына қалды";
+"Get Offer" = "Ұсынысты пайдалану";
+"Starts at next renewal" = "Келесі жаңартудан басталады";
+"Expires on %@" = "%@ күні аяқталады";
+"This offer or plan has changed. Review the updated price and try again." = "Бұл ұсыныс немесе жоспар өзгерді. Жаңартылған бағаны тексеріп, қайталап көріңіз.";
+"Purchase awaiting approval." = "Сатып алу мақұлдауды күтуде.";
+"Loading plans..." = "Жоспарлар жүктелуде…";
+"No plans available at the moment." = "Қазір қолжетімді жоспарлар жоқ.";
+"Plans" = "Жоспарлар";
+"Restoring purchases..." = "Сатып алулар қалпына келтірілуде…";
+"Only owners can manage event access." = "Оқиғаларға қолжетімділікті тек иелері басқара алады.";
+"Open Web Calendar" = "Веб-күнтізбені ашу";

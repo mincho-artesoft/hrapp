@@ -1197,3 +1197,27 @@
 "Web Events" = "வலை நிகழ்வுகள்";
 "yesterday" = "நேற்று";
 "Open Sign-In in Browser" = "உலாவியில் உள்நுழைவைத் திற";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "உங்கள் Cloud Calendars திட்டத்தைத் தேர்ந்தெடுக்கவும்";
+"Redeem Offer Code" = "சலுகைக் குறியீட்டைப் பயன்படுத்தவும்";
+"Introductory offer" = "அறிமுகச் சலுகை";
+"Welcome back offer" = "மீண்டும் வருவதற்கான சலுகை";
+"Free" = "இலவசம்";
+"%@ free" = "%@ இலவசம்";
+"%@ every %@ for %@" = "%3$@ வரை ஒவ்வொரு %2$@க்கும் %1$@";
+"%@ for %@" = "%2$@க்கு %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "அதன்பின் ஒவ்வொரு %2$@க்கும் %1$@. தானாகப் புதுப்பிக்கப்படும். எப்போது வேண்டுமானாலும் ரத்துசெய்யலாம்.";
+"%@ every %@. Auto-renews. Cancel anytime." = "ஒவ்வொரு %2$@க்கும் %1$@. தானாகப் புதுப்பிக்கப்படும். எப்போது வேண்டுமானாலும் ரத்துசெய்யலாம்.";
+"Offer ends in" = "சலுகை முடிய மீதமுள்ள நேரம்";
+"Get Offer" = "சலுகையைப் பெறவும்";
+"Starts at next renewal" = "அடுத்த புதுப்பிப்பில் தொடங்கும்";
+"Expires on %@" = "%@ அன்று காலாவதியாகும்";
+"This offer or plan has changed. Review the updated price and try again." = "இந்தச் சலுகை அல்லது திட்டம் மாறியுள்ளது. புதுப்பிக்கப்பட்ட விலையைப் பார்த்து மீண்டும் முயலவும்.";
+"Purchase awaiting approval." = "கொள்முதல் ஒப்புதலுக்காகக் காத்திருக்கிறது.";
+"Loading plans..." = "திட்டங்கள் ஏற்றப்படுகின்றன…";
+"No plans available at the moment." = "தற்போது திட்டங்கள் எதுவும் இல்லை.";
+"Plans" = "திட்டங்கள்";
+"Restoring purchases..." = "கொள்முதல்கள் மீட்டெடுக்கப்படுகின்றன…";
+"Only owners can manage event access." = "உரிமையாளர்கள் மட்டுமே நிகழ்வுகளுக்கான அணுகலை நிர்வகிக்க முடியும்.";
+"Open Web Calendar" = "வலை நாள்காட்டியைத் திறக்கவும்";

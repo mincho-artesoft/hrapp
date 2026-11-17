@@ -1195,3 +1195,27 @@
 "Web Events" = "Webes események";
 "yesterday" = "tegnap";
 "Open Sign-In in Browser" = "Bejelentkezés megnyitása a böngészőben";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Válasszon Cloud Calendars-csomagot";
+"Redeem Offer Code" = "Ajánlatkód beváltása";
+"Introductory offer" = "Bevezető ajánlat";
+"Welcome back offer" = "Ajánlat visszatérő ügyfeleknek";
+"Free" = "Ingyenes";
+"%@ free" = "%@ ingyen";
+"%@ every %@ for %@" = "%1$@ / %2$@, időtartam: %3$@";
+"%@ for %@" = "%@ / %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Ezután %@ / %@. Automatikusan megújul. Bármikor lemondható.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ / %@. Automatikusan megújul. Bármikor lemondható.";
+"Offer ends in" = "Az ajánlat lejártáig";
+"Get Offer" = "Ajánlat igénybevétele";
+"Starts at next renewal" = "A következő megújításkor kezdődik";
+"Expires on %@" = "Lejárat: %@";
+"This offer or plan has changed. Review the updated price and try again." = "Ez az ajánlat vagy csomag megváltozott. Ellenőrizze a frissített árat, és próbálja újra.";
+"Purchase awaiting approval." = "A vásárlás jóváhagyásra vár.";
+"Loading plans..." = "Csomagok betöltése…";
+"No plans available at the moment." = "Jelenleg nincs elérhető csomag.";
+"Plans" = "Csomagok";
+"Restoring purchases..." = "Vásárlások visszaállítása…";
+"Only owners can manage event access." = "Csak a tulajdonosok kezelhetik az eseményekhez való hozzáférést.";
+"Open Web Calendar" = "Webes naptár megnyitása";

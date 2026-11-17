@@ -1197,3 +1197,27 @@
 "Web Events" = "Eventos da web";
 "yesterday" = "ontem";
 "Open Sign-In in Browser" = "Abrir início de sessão no navegador";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Escolha o seu plano do Cloud Calendars";
+"Redeem Offer Code" = "Usar código de oferta";
+"Introductory offer" = "Oferta introdutória";
+"Welcome back offer" = "Oferta de regresso";
+"Free" = "Grátis";
+"%@ free" = "%@ grátis";
+"%@ every %@ for %@" = "%@ a cada %@ durante %@";
+"%@ for %@" = "%@ por %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Depois, %@ a cada %@. Renovação automática. Cancele quando quiser.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ a cada %@. Renovação automática. Cancele quando quiser.";
+"Offer ends in" = "A oferta termina dentro de";
+"Get Offer" = "Aproveitar oferta";
+"Starts at next renewal" = "Começa na próxima renovação";
+"Expires on %@" = "Expira em %@";
+"This offer or plan has changed. Review the updated price and try again." = "Esta oferta ou plano mudou. Consulte o preço atualizado e tente novamente.";
+"Purchase awaiting approval." = "Compra a aguardar aprovação.";
+"Loading plans..." = "A carregar planos…";
+"No plans available at the moment." = "Não há planos disponíveis de momento.";
+"Plans" = "Planos";
+"Restoring purchases..." = "A restaurar compras…";
+"Only owners can manage event access." = "Apenas os proprietários podem gerir o acesso aos eventos.";
+"Open Web Calendar" = "Abrir calendário web";

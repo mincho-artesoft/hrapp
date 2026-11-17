@@ -1195,3 +1195,27 @@
 "Web Events" = "Netthendelser";
 "yesterday" = "i går";
 "Open Sign-In in Browser" = "Åpne innlogging i nettleseren";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Velg Cloud Calendars-abonnementet ditt";
+"Redeem Offer Code" = "Løs inn tilbudskode";
+"Introductory offer" = "Introduksjonstilbud";
+"Welcome back offer" = "Velkommen tilbake-tilbud";
+"Free" = "Gratis";
+"%@ free" = "%@ gratis";
+"%@ every %@ for %@" = "%@ hver %@ i %@";
+"%@ for %@" = "%@ for %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Deretter %@ hver %@. Fornyes automatisk. Si opp når som helst.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ hver %@. Fornyes automatisk. Si opp når som helst.";
+"Offer ends in" = "Tilbudet slutter om";
+"Get Offer" = "Benytt tilbud";
+"Starts at next renewal" = "Starter ved neste fornyelse";
+"Expires on %@" = "Utløper %@";
+"This offer or plan has changed. Review the updated price and try again." = "Dette tilbudet eller abonnementet er endret. Se den oppdaterte prisen og prøv igjen.";
+"Purchase awaiting approval." = "Kjøpet venter på godkjenning.";
+"Loading plans..." = "Laster abonnementer…";
+"No plans available at the moment." = "Ingen abonnementer er tilgjengelige for øyeblikket.";
+"Plans" = "Abonnementer";
+"Restoring purchases..." = "Gjenoppretter kjøp…";
+"Only owners can manage event access." = "Bare eiere kan administrere tilgang til hendelser.";
+"Open Web Calendar" = "Åpne nettkalender";

@@ -1192,3 +1192,27 @@
 "Web Events" = "Web-Ereignisse";
 "yesterday" = "gestern";
 "Open Sign-In in Browser" = "Anmeldung im Browser öffnen";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Wähle deinen Cloud Calendars-Tarif";
+"Redeem Offer Code" = "Angebotscode einlösen";
+"Introductory offer" = "Einführungsangebot";
+"Welcome back offer" = "Angebot für Rückkehrer";
+"Free" = "Kostenlos";
+"%@ free" = "%@ kostenlos";
+"%@ every %@ for %@" = "%@ alle %@ für %@";
+"%@ for %@" = "%@ für %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Danach %@ alle %@. Verlängert sich automatisch. Jederzeit kündbar.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ alle %@. Verlängert sich automatisch. Jederzeit kündbar.";
+"Offer ends in" = "Angebot endet in";
+"Get Offer" = "Angebot nutzen";
+"Starts at next renewal" = "Beginnt bei der nächsten Verlängerung";
+"Expires on %@" = "Läuft am %@ ab";
+"This offer or plan has changed. Review the updated price and try again." = "Dieses Angebot oder dieser Tarif hat sich geändert. Prüfe den aktualisierten Preis und versuche es erneut.";
+"Purchase awaiting approval." = "Kauf wartet auf Genehmigung.";
+"Loading plans..." = "Tarife werden geladen…";
+"No plans available at the moment." = "Derzeit sind keine Tarife verfügbar.";
+"Plans" = "Tarife";
+"Restoring purchases..." = "Käufe werden wiederhergestellt…";
+"Only owners can manage event access." = "Nur Eigentümer können den Zugriff auf Termine verwalten.";
+"Open Web Calendar" = "Webkalender öffnen";

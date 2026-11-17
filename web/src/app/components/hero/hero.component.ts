@@ -60,7 +60,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   readonly appStore = this.active.storeHref;
   readonly tourHref = computed(() => {
     const path = this.active.path('/');
-    return `${path.endsWith('/') ? path : `${path}/`}#booking`;
+    return `${path.endsWith('/') ? path : `${path}/`}#showcase`;
   });
   readonly webCalendarHref = computed(() => linkPath(this.active.locale(), '/calendar'));
   readonly storeCta = computed(() => storeCta(this.active.locale().code));

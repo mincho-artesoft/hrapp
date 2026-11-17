@@ -1197,3 +1197,27 @@
 "Web Events" = "Вебподії";
 "yesterday" = "вчора";
 "Open Sign-In in Browser" = "Відкрити вхід у браузері";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Виберіть тариф Cloud Calendars";
+"Redeem Offer Code" = "Активувати код пропозиції";
+"Introductory offer" = "Вітальна пропозиція";
+"Welcome back offer" = "Пропозиція для повернення";
+"Free" = "Безкоштовно";
+"%@ free" = "%@ безкоштовно";
+"%@ every %@ for %@" = "%@ кожні %@ протягом %@";
+"%@ for %@" = "%@ за %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Потім %@ кожні %@. Автоматичне поновлення. Скасувати можна будь-коли.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ кожні %@. Автоматичне поновлення. Скасувати можна будь-коли.";
+"Offer ends in" = "Пропозиція закінчиться через";
+"Get Offer" = "Скористатися пропозицією";
+"Starts at next renewal" = "Почнеться під час наступного поновлення";
+"Expires on %@" = "Термін дії закінчується %@";
+"This offer or plan has changed. Review the updated price and try again." = "Ця пропозиція або тариф змінилися. Перевірте оновлену ціну та повторіть спробу.";
+"Purchase awaiting approval." = "Покупка очікує схвалення.";
+"Loading plans..." = "Завантаження тарифів…";
+"No plans available at the moment." = "Наразі немає доступних тарифів.";
+"Plans" = "Тарифи";
+"Restoring purchases..." = "Відновлення покупок…";
+"Only owners can manage event access." = "Лише власники можуть керувати доступом до подій.";
+"Open Web Calendar" = "Відкрити вебкалендар";

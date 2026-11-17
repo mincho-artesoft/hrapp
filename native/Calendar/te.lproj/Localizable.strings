@@ -1197,3 +1197,27 @@
 "Web Events" = "వెబ్ ఈవెంట్‌లు";
 "yesterday" = "నిన్న";
 "Open Sign-In in Browser" = "బ్రౌజర్‌లో సైన్ ఇన్ తెరవండి";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "మీ Cloud Calendars ప్లాన్‌ను ఎంచుకోండి";
+"Redeem Offer Code" = "ఆఫర్ కోడ్‌ను ఉపయోగించండి";
+"Introductory offer" = "ప్రారంభ ఆఫర్";
+"Welcome back offer" = "తిరిగి చేరేవారికి ఆఫర్";
+"Free" = "ఉచితం";
+"%@ free" = "%@ ఉచితం";
+"%@ every %@ for %@" = "%3$@ పాటు ప్రతి %2$@కు %1$@";
+"%@ for %@" = "%2$@కు %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "ఆ తర్వాత ప్రతి %2$@కు %1$@. స్వయంచాలకంగా పునరుద్ధరించబడుతుంది. ఎప్పుడైనా రద్దు చేయవచ్చు.";
+"%@ every %@. Auto-renews. Cancel anytime." = "ప్రతి %2$@కు %1$@. స్వయంచాలకంగా పునరుద్ధరించబడుతుంది. ఎప్పుడైనా రద్దు చేయవచ్చు.";
+"Offer ends in" = "ఆఫర్ ముగియడానికి మిగిలిన సమయం";
+"Get Offer" = "ఆఫర్ పొందండి";
+"Starts at next renewal" = "తదుపరి పునరుద్ధరణలో ప్రారంభమవుతుంది";
+"Expires on %@" = "%@న గడువు ముగుస్తుంది";
+"This offer or plan has changed. Review the updated price and try again." = "ఈ ఆఫర్ లేదా ప్లాన్ మారింది. తాజా ధరను చూసి మళ్లీ ప్రయత్నించండి.";
+"Purchase awaiting approval." = "కొనుగోలు ఆమోదం కోసం వేచి ఉంది.";
+"Loading plans..." = "ప్లాన్‌లు లోడ్ అవుతున్నాయి…";
+"No plans available at the moment." = "ప్రస్తుతం ప్లాన్‌లు అందుబాటులో లేవు.";
+"Plans" = "ప్లాన్‌లు";
+"Restoring purchases..." = "కొనుగోళ్లు పునరుద్ధరించబడుతున్నాయి…";
+"Only owners can manage event access." = "యజమానులు మాత్రమే ఈవెంట్‌ల యాక్సెస్‌ను నిర్వహించగలరు.";
+"Open Web Calendar" = "వెబ్ క్యాలెండర్‌ను తెరవండి";

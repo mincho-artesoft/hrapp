@@ -1195,3 +1195,27 @@
 "Web Events" = "वेब इवेंट";
 "yesterday" = "कल";
 "Open Sign-In in Browser" = "ब्राउज़र में साइन इन खोलें";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "अपना Cloud Calendars प्लान चुनें";
+"Redeem Offer Code" = "ऑफ़र कोड रिडीम करें";
+"Introductory offer" = "शुरुआती ऑफ़र";
+"Welcome back offer" = "वापसी का ऑफ़र";
+"Free" = "मुफ़्त";
+"%@ free" = "%@ मुफ़्त";
+"%@ every %@ for %@" = "%3$@ तक हर %2$@ के लिए %1$@";
+"%@ for %@" = "%2$@ के लिए %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "इसके बाद हर %2$@ के लिए %1$@। अपने आप नवीनीकृत होता है। कभी भी रद्द करें।";
+"%@ every %@. Auto-renews. Cancel anytime." = "हर %2$@ के लिए %1$@। अपने आप नवीनीकृत होता है। कभी भी रद्द करें।";
+"Offer ends in" = "ऑफ़र समाप्त होने में बाकी समय";
+"Get Offer" = "ऑफ़र पाएँ";
+"Starts at next renewal" = "अगले नवीनीकरण पर शुरू होगा";
+"Expires on %@" = "%@ को समाप्त होगा";
+"This offer or plan has changed. Review the updated price and try again." = "यह ऑफ़र या प्लान बदल गया है। नई कीमत देखें और फिर कोशिश करें।";
+"Purchase awaiting approval." = "खरीदारी मंज़ूरी का इंतज़ार कर रही है।";
+"Loading plans..." = "प्लान लोड हो रहे हैं…";
+"No plans available at the moment." = "फ़िलहाल कोई प्लान उपलब्ध नहीं है।";
+"Plans" = "प्लान";
+"Restoring purchases..." = "खरीदारियाँ बहाल हो रही हैं…";
+"Only owners can manage event access." = "सिर्फ़ मालिक ही इवेंट का ऐक्सेस प्रबंधित कर सकते हैं।";
+"Open Web Calendar" = "वेब कैलेंडर खोलें";

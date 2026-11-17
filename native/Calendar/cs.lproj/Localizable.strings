@@ -1195,3 +1195,27 @@
 "Web Events" = "Webové události";
 "yesterday" = "včera";
 "Open Sign-In in Browser" = "Otevřít přihlášení v prohlížeči";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Vyberte si tarif Cloud Calendars";
+"Redeem Offer Code" = "Uplatnit kód nabídky";
+"Introductory offer" = "Úvodní nabídka";
+"Welcome back offer" = "Nabídka pro vracející se zákazníky";
+"Free" = "Zdarma";
+"%@ free" = "%@ zdarma";
+"%@ every %@ for %@" = "%@ každých %@ po dobu %@";
+"%@ for %@" = "%@ na %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Poté %@ každých %@. Automaticky se obnovuje. Zrušení kdykoli.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ každých %@. Automaticky se obnovuje. Zrušení kdykoli.";
+"Offer ends in" = "Nabídka končí za";
+"Get Offer" = "Využít nabídku";
+"Starts at next renewal" = "Začíná při příštím obnovení";
+"Expires on %@" = "Vyprší %@";
+"This offer or plan has changed. Review the updated price and try again." = "Tato nabídka nebo tarif se změnily. Zkontrolujte aktuální cenu a zkuste to znovu.";
+"Purchase awaiting approval." = "Nákup čeká na schválení.";
+"Loading plans..." = "Načítání tarifů…";
+"No plans available at the moment." = "Momentálně nejsou dostupné žádné tarify.";
+"Plans" = "Tarify";
+"Restoring purchases..." = "Obnovování nákupů…";
+"Only owners can manage event access." = "Přístup k událostem mohou spravovat pouze vlastníci.";
+"Open Web Calendar" = "Otevřít webový kalendář";

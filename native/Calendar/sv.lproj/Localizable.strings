@@ -1195,3 +1195,27 @@
 "Web Events" = "Webbhändelser";
 "yesterday" = "igår";
 "Open Sign-In in Browser" = "Öppna inloggning i webbläsaren";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "Välj ditt Cloud Calendars-abonnemang";
+"Redeem Offer Code" = "Lös in erbjudandekod";
+"Introductory offer" = "Introduktionserbjudande";
+"Welcome back offer" = "Välkommen tillbaka-erbjudande";
+"Free" = "Gratis";
+"%@ free" = "%@ gratis";
+"%@ every %@ for %@" = "%@ var %@ i %@";
+"%@ for %@" = "%@ för %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Därefter %@ var %@. Förnyas automatiskt. Säg upp när som helst.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ var %@. Förnyas automatiskt. Säg upp när som helst.";
+"Offer ends in" = "Erbjudandet slutar om";
+"Get Offer" = "Ta del av erbjudandet";
+"Starts at next renewal" = "Börjar vid nästa förnyelse";
+"Expires on %@" = "Löper ut den %@";
+"This offer or plan has changed. Review the updated price and try again." = "Det här erbjudandet eller abonnemanget har ändrats. Kontrollera det uppdaterade priset och försök igen.";
+"Purchase awaiting approval." = "Köpet väntar på godkännande.";
+"Loading plans..." = "Läser in abonnemang…";
+"No plans available at the moment." = "Inga abonnemang är tillgängliga just nu.";
+"Plans" = "Abonnemang";
+"Restoring purchases..." = "Återställer köp…";
+"Only owners can manage event access." = "Endast ägare kan hantera åtkomst till händelser.";
+"Open Web Calendar" = "Öppna webbkalender";

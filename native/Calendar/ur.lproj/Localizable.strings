@@ -1197,3 +1197,27 @@
 "Web Events" = "ویب ایونٹس";
 "yesterday" = "کل";
 "Open Sign-In in Browser" = "براؤزر میں سائن ان کھولیں";
+
+/* Subscription offers and account actions */
+"Choose your Cloud Calendars plan" = "اپنا Cloud Calendars پلان منتخب کریں";
+"Redeem Offer Code" = "آفر کوڈ استعمال کریں";
+"Introductory offer" = "تعارفی آفر";
+"Welcome back offer" = "واپسی کی آفر";
+"Free" = "مفت";
+"%@ free" = "%@ مفت";
+"%@ every %@ for %@" = "%3$@ تک ہر %2$@ کے لیے %1$@";
+"%@ for %@" = "%2$@ کے لیے %1$@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "پھر ہر %2$@ کے لیے %1$@۔ خودکار تجدید ہوتی ہے۔ کسی بھی وقت منسوخ کریں۔";
+"%@ every %@. Auto-renews. Cancel anytime." = "ہر %2$@ کے لیے %1$@۔ خودکار تجدید ہوتی ہے۔ کسی بھی وقت منسوخ کریں۔";
+"Offer ends in" = "آفر ختم ہونے میں باقی وقت";
+"Get Offer" = "آفر حاصل کریں";
+"Starts at next renewal" = "اگلی تجدید پر شروع ہوگا";
+"Expires on %@" = "%@ کو میعاد ختم ہوگی";
+"This offer or plan has changed. Review the updated price and try again." = "یہ آفر یا پلان تبدیل ہو گیا ہے۔ نئی قیمت دیکھیں اور دوبارہ کوشش کریں۔";
+"Purchase awaiting approval." = "خریداری منظوری کی منتظر ہے۔";
+"Loading plans..." = "پلان لوڈ ہو رہے ہیں…";
+"No plans available at the moment." = "اس وقت کوئی پلان دستیاب نہیں ہے۔";
+"Plans" = "پلان";
+"Restoring purchases..." = "خریداریاں بحال ہو رہی ہیں…";
+"Only owners can manage event access." = "صرف مالکان ایونٹس تک رسائی کا انتظام کر سکتے ہیں۔";
+"Open Web Calendar" = "ویب کیلنڈر کھولیں";
