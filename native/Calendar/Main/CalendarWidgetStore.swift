@@ -1,6 +1,10 @@
 import Foundation
 import EventKit
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 import WidgetKit
 
 enum CalendarWidgetStore {
@@ -151,6 +155,7 @@ enum CalendarWidgetStore {
         reloadWidgets()
     }
 
+    #if os(iOS)
     @MainActor
     static func saveUpcomingEventsSnapshot(limit: Int = 25) {
         let eventStore = CalendarViewModel.shared.eventStore
@@ -182,6 +187,8 @@ enum CalendarWidgetStore {
             .union(AppLocalCalendarStore.shared.calendars.map(\.id))
     }
 
+    #endif
+
     static func saveCalendarSelectionSnapshot(_ selectedCalendarIDs: Set<String>) {
         guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
 
@@ -193,6 +200,7 @@ enum CalendarWidgetStore {
         defaults.synchronize()
     }
 
+    #if os(iOS)
     @MainActor
     static func makeUpcomingEventSnapshots(
         from eventStore: EKEventStore,
@@ -264,6 +272,21 @@ enum CalendarWidgetStore {
             .prefix(max(0, limit)).map { $0 }
     }
 
+    #else
+    /// The Mac store already combines native events and app-local occurrences.
+    /// Passing the filtered feed keeps the widget usable without EventKit access.
+    @MainActor
+    static func saveUpcomingEventsSnapshot(events: [EKEvent], limit: Int = 25, now: Date = Date()) {
+        let snapshots = events.filter {
+            !$0.isAllDay && $0.startDate > now && $0.status != .canceled
+        }.sorted {
+            if $0.startDate != $1.startDate { return $0.startDate < $1.startDate }
+            return $0.calendarItemIdentifier < $1.calendarItemIdentifier
+        }.prefix(max(0, limit)).map(makeUpcomingEventSnapshot)
+        saveUpcomingEventSnapshots(snapshots)
+    }
+    #endif
+
     static func saveUpcomingEventSnapshots(_ snapshots: [UpcomingEventSnapshot]) {
         guard let defaults = UserDefaults(suiteName: appGroupID),
               let data = try? JSONEncoder().encode(snapshots)
@@ -313,7 +336,11 @@ enum CalendarWidgetStore {
     }
 
     private static func makeUpcomingEventSnapshot(from event: EKEvent) -> UpcomingEventSnapshot {
+        #if os(iOS)
         let color = UIColor(cgColor: event.calendar.cgColor)
+        #else
+        let color = NSColor(cgColor: event.calendar.cgColor)?.usingColorSpace(.deviceRGB) ?? .systemBlue
+        #endif
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0

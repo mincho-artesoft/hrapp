@@ -77,146 +77,7 @@ struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var systemColorScheme
     
-    private var promotionalApps: [AppPromoData] {[
-        AppPromoData(
-            appName: "Brass Pawn: Chess Trainer",
-            description: NSLocalizedString("Promo.BrassPawn.description", comment: "Promoted app description"),
-            iconName: "BrassPawnIcon",
-            systemImageFallback: "checkerboard.rectangle",
-            appStoreURL: "https://apps.apple.com/app/id6803566012",
-            accentColor: .brown
-        ),
-        AppPromoData(
-            appName: "Ayurveda & Asana Yoga",
-            description: NSLocalizedString("Promo.Ayurveda.description", comment: "Promoted app description"),
-            iconName: "AyurvedaAsanaIcon",
-            systemImageFallback: "figure.yoga",
-            appStoreURL: "https://apps.apple.com/app/id6800370073",
-            accentColor: .purple
-        ),
-        AppPromoData(
-            appName: NSLocalizedString("Promo.WiseEating.name", comment: "Promoted app name"),
-            description: NSLocalizedString("Promo.WiseEating.description", comment: "Promoted app description"),
-            iconName: "WiseEatingIcon",
-            systemImageFallback: "carrot.fill",
-            appStoreURL: "https://apps.apple.com/us/app/wise-eating-fitness-planner/id6751406823",
-            accentColor: .green
-        ),
-        AppPromoData(
-            appName: NSLocalizedString("Promo.StoreFront.name", comment: "Promoted app name"),
-            description: NSLocalizedString("Promo.StoreFront.description", comment: "Promoted app description"),
-            iconName: "StoreFrontIcon",
-            systemImageFallback: "heart.text.square.fill",
-            appStoreURL: "https://apps.apple.com/us/app/storefront-studio/id6757389314",
-            accentColor: .cyan
-        ),
-
-        AppPromoData(
-            appName: NSLocalizedString("Promo.ReelStudio.name", comment: "Promoted app name"),
-            description: NSLocalizedString("Promo.ReelStudio.description", comment: "Promoted app description"),
-            iconName: "ReelStudioIcon",
-            systemImageFallback: "record.circle.fill",
-            appStoreURL: "https://apps.apple.com/app/id6758941990",
-            accentColor: .purple
-        ),
-
-        AppPromoData(
-            appName: NSLocalizedString("Promo.MarketBrief.name", comment: "Promoted app name"),
-            description: NSLocalizedString("Promo.MarketBrief.description", comment: "Promoted app description"),
-            iconName: "MarketBriefIcon",
-            systemImageFallback: "chart.line.uptrend.xyaxis",
-            appStoreURL: "https://apps.apple.com/app/id6758329388",
-            accentColor: .blue.opacity(0.75)
-        ),
-        AppPromoData(
-            appName: "Fastest Screenshot Cleaner",
-            description: NSLocalizedString("Promo.FastestScreenshotCleaner.description", comment: "Promoted app description"),
-            iconName: "ScreenshotCleanerIcon",
-            systemImageFallback: "photo.on.rectangle.angled",
-            appStoreURL: "https://apps.apple.com/app/id6760660697",
-            accentColor: .blue
-        ),
-        AppPromoData(
-            appName: "PureStrike Billiard",
-            description: NSLocalizedString("Promo.PureStrike.description", comment: "Promoted app description"),
-            iconName: "PureStrikeIcon",
-            systemImageFallback: "circle.circle.fill",
-            appStoreURL: "https://apps.apple.com/app/id6760551465",
-            accentColor: .green
-        ),
-        AppPromoData(
-            appName: "Survival: StarFront",
-            description: NSLocalizedString("Promo.StarFront.description", comment: "Promoted app description"),
-            iconName: "StarFrontIcon",
-            systemImageFallback: "sparkles",
-            appStoreURL: "https://apps.apple.com/app/id6795571800",
-            accentColor: .indigo
-        ),
-        AppPromoData(
-            appName: "PolyCore TD",
-            description: NSLocalizedString("Promo.PolyCore.description", comment: "Promoted app description"),
-            iconName: "PolyCoreIcon",
-            systemImageFallback: "shield.lefthalf.filled",
-            appStoreURL: "https://apps.apple.com/app/id6758268849",
-            accentColor: .purple
-        ),
-        AppPromoData(
-            appName: "GPT Realtime Assistant",
-            description: NSLocalizedString("Promo.RealtimeAssistant.description", comment: "Promoted app description"),
-            iconName: "RealtimeAssistantIcon",
-            systemImageFallback: "waveform.and.mic",
-            appStoreURL: "https://apps.apple.com/app/id6770536523",
-            accentColor: .cyan
-        ),
-        AppPromoData(
-            appName: "Photo2Video Archive",
-            description: NSLocalizedString("Promo.PhotoArchive.description", comment: "Promoted app description"),
-            iconName: "PhotoArchiveIcon",
-            systemImageFallback: "photo.stack.fill",
-            appStoreURL: "https://apps.apple.com/app/id6760718313",
-            accentColor: .orange
-        ),
-        AppPromoData(
-            appName: "Dreams Calendar",
-            description: NSLocalizedString("Promo.DreamsCalendar.description", comment: "Promoted app description"),
-            iconName: "DreamsCalendarIcon",
-            systemImageFallback: "moon.stars.fill",
-            appStoreURL: "https://apps.apple.com/app/id6760776853",
-            accentColor: .indigo
-        ),
-        AppPromoData(
-            appName: "Liquid Color Puzzle",
-            description: NSLocalizedString("Promo.LiquidColorPuzzle.description", comment: "Promoted app description"),
-            iconName: "LiquidColorPuzzleIcon",
-            systemImageFallback: "testtube.2",
-            appStoreURL: "https://apps.apple.com/app/id6798603985",
-            accentColor: .mint
-        ),
-        AppPromoData(
-            appName: "Glance Studio",
-            description: NSLocalizedString("Promo.GlanceStudio.description", comment: "Promoted app description"),
-            iconName: "GlanceStudioIcon",
-            systemImageFallback: "message.fill",
-            appStoreURL: "https://apps.apple.com/app/id6774151809",
-            accentColor: .pink
-        ),
-        AppPromoData(
-            appName: "Wonek Video Studio",
-            description: NSLocalizedString("Promo.Wonek.description", comment: "Promoted app description"),
-            iconName: "WonekIcon",
-            systemImageFallback: "film.stack.fill",
-            appStoreURL: "https://apps.apple.com/app/id6761376446",
-            accentColor: .orange
-        ),
-        AppPromoData(
-            appName: "Glance Studio Desktop",
-            description: NSLocalizedString("Promo.GlanceStudioDesktop.description", comment: "Promoted app description"),
-            iconName: "GlanceStudioIcon",
-            systemImageFallback: "desktopcomputer",
-            appStoreURL: "https://apps.apple.com/app/id6775389610",
-            accentColor: .pink
-        )
-    ]}
+    private var promotionalApps: [AppPromoData] { AppPromoCatalog.apps }
 
 
     
@@ -367,20 +228,19 @@ struct RootView: View {
                                     Task {
                                         let currentAccessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                                         self.accessGranted = currentAccessGranted // Update local state
-                                        if currentAccessGranted {
-                                            CalendarViewModel.shared.reloadCalendars()
-                                            let year = Calendar.current.component(.year, from: Date())
-                                            CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-                                            
-                                            // Reload data for the *currently selected main tab*
-                                            switch self.selectedTab { // use self.selectedTab
-                                            case 1: loadSingleDayEvents()
-                                            case 3: loadMultiDayEvents()
-                                            case 5: reloadSingleDayEventsWithVisibleCalendars()
-                                            default: break
-                                            }
-                                            refreshCalendarWidgetEventsSnapshot()
+                                        CalendarViewModel.shared.reloadCalendars()
+                                        let year = Calendar.current.component(.year, from: Date())
+                                        CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+
+                                        // Reload data for the *currently selected main tab*
+                                        switch self.selectedTab { // use self.selectedTab
+                                        case 1: loadSingleDayEvents()
+                                        case 3: loadMultiDayEvents()
+                                        case 5: reloadSingleDayEventsWithVisibleCalendars()
+                                        default: break
                                         }
+                                        refreshCalendarWidgetEventsSnapshot()
+
                                     }
                                 }
                             )
@@ -441,7 +301,7 @@ struct RootView: View {
                     .zIndex(100)
             }
         }
-        .sheet(item: $sidebarEventTarget, onDismiss: reloadActiveEventRangeForCalendarContentChange) { target in
+        .appSheet(item: $sidebarEventTarget, onDismiss: reloadActiveEventRangeForCalendarContentChange) { target in
             AppLocalEventEditorView(target: target)
         }
         .animation(.spring(response: 0.35, dampingFraction: 0.86), value: eventSharePromptManager.event != nil)
@@ -481,7 +341,6 @@ struct RootView: View {
             for: .sharedEventImported)) { _ in
                 Task {
                     accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
-                    guard accessGranted else { return }
                     CalendarViewModel.shared.reloadCalendars()
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
@@ -511,22 +370,19 @@ struct RootView: View {
 
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
-                if accessGranted {
-                    CalendarViewModel.shared.reloadCalendars()
-                    let year = Calendar.current.component(.year, from: Date())
-                    CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-                    // Initial load based on selectedTab
-                    switch selectedTab {
-                        case 1: loadSingleDayEvents()
-                        case 3: loadMultiDayEvents()
-                        case 5: reloadSingleDayEventsWithVisibleCalendars()
-                        default: break
-                    }
-                    refreshCalendarWidgetEventsSnapshot()
-                    openPendingEventNotificationDayIfNeeded()
-                } else {
-                    refreshCalendarWidgetEventsSnapshot()
+                CalendarViewModel.shared.reloadCalendars()
+                let year = Calendar.current.component(.year, from: Date())
+                CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+                // Initial load based on selectedTab
+                switch selectedTab {
+                    case 1: loadSingleDayEvents()
+                    case 3: loadMultiDayEvents()
+                    case 5: reloadSingleDayEventsWithVisibleCalendars()
+                    default: break
                 }
+                refreshCalendarWidgetEventsSnapshot()
+                openPendingEventNotificationDayIfNeeded()
+
                 initialCalendarLoadFinished = true
             }
             liveActivityManager.refreshStatus()
@@ -534,6 +390,9 @@ struct RootView: View {
         }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
+                accessGranted = CalendarViewModel.shared.isCalendarAccessGranted()
+                CalendarViewModel.shared.reloadCalendars()
+                reloadActiveEventRangeForCalendarContentChange()
                 openPendingEventNotificationDayIfNeeded()
                 refreshCalendarWidgetEventsSnapshot()
                 liveActivityManager.refreshStatus()
@@ -542,7 +401,7 @@ struct RootView: View {
         .task(id: canScheduleSharingIntroduction) {
             await presentSharingIntroductionWhenReady()
         }
-        .sheet(isPresented: $showSharingIntroduction, onDismiss: {
+        .appSheet(isPresented: $showSharingIntroduction, onDismiss: {
             sharingIntroduction.releasePresentation()
         }) {
             CalendarSharingIntroductionView {
@@ -553,29 +412,28 @@ struct RootView: View {
             .presentationDragIndicator(.hidden)
             .interactiveDismissDisabled()
         }
-        .sheet(item: $eventToEdit) { theEvent in
+        .appSheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent) {
                 // onEventUpdated closure for EventEditViewWrapper
                 Task {
-                    if accessGranted { // Check access again or rely on previous check
-                        CalendarViewModel.shared.reloadCalendars() // Reload calendars in case of changes
-                        let year = Calendar.current.component(.year, from: Date())
-                        CalendarViewModel.shared.loadEventsForWholeYear(year: year) // Reload events
-                        
-                        // Reload data for the currently active main tab
-                        switch selectedTab {
-                        case 1: loadSingleDayEvents()
-                        case 3: loadMultiDayEvents()
-                        case 4: reloadAllEvents() // If list view needs refresh
-                        case 5: reloadSingleDayEventsWithVisibleCalendars()
-                        default: break
-                        }
-                        refreshCalendarWidgetEventsSnapshot()
+                    CalendarViewModel.shared.reloadCalendars() // Reload calendars in case of changes
+                    let year = Calendar.current.component(.year, from: Date())
+                    CalendarViewModel.shared.loadEventsForWholeYear(year: year) // Reload events
+
+                    // Reload data for the currently active main tab
+                    switch selectedTab {
+                    case 1: loadSingleDayEvents()
+                    case 3: loadMultiDayEvents()
+                    case 4: reloadAllEvents() // If list view needs refresh
+                    case 5: reloadSingleDayEventsWithVisibleCalendars()
+                    default: break
                     }
+                    refreshCalendarWidgetEventsSnapshot()
+
                 }
             }
         }
-        .sheet(item: $appLocalEventTarget) { target in
+        .appSheet(item: $appLocalEventTarget) { target in
             AppLocalEventEditorView(target: target) {
                 reloadVisibleEventRanges()
             }
@@ -609,16 +467,15 @@ struct RootView: View {
                 }
             }
             Task {
-                if accessGranted { // Use the @State variable
-                    switch newValue {
-                    case 1: loadSingleDayEvents()
-                    case 3: loadMultiDayEvents()
-                    case 4: reloadAllEvents()
-                    case 5: reloadSingleDayEventsWithVisibleCalendars()
-                    default: break
-                    }
-                    refreshCalendarWidgetEventsSnapshot()
+                switch newValue {
+                case 1: loadSingleDayEvents()
+                case 3: loadMultiDayEvents()
+                case 4: reloadAllEvents()
+                case 5: reloadSingleDayEventsWithVisibleCalendars()
+                default: break
                 }
+                refreshCalendarWidgetEventsSnapshot()
+
             }
         }
     }
@@ -1064,7 +921,6 @@ extension RootView {
     }
 
     private func loadSingleDayEvents() {
-        guard accessGranted else { return }
         let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
         guard let toDate = Calendar.current.date(byAdding: .day, value: 1, to: fromOnly) else {
             replacePinnedEventsSingle(with: [])
@@ -1074,7 +930,6 @@ extension RootView {
     }
 
     private func loadMultiDayEvents() {
-        guard accessGranted else { return }
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: pinnedFromDateMulti)
         let toOnly   = cal.startOfDay(for: pinnedToDateMulti)
@@ -1105,8 +960,11 @@ extension RootView {
             $0.source.sourceType == .local &&
             (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true)
         }
-        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
-        let found = store.events(matching: predicate)
+        let found: [EKEvent]
+        if CalendarViewModel.shared.isCalendarAccessGranted(), !localCals.isEmpty {
+            let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
+            found = store.events(matching: predicate)
+        } else { found = [] }
 
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
@@ -1133,7 +991,7 @@ extension RootView {
         }
 
         let found: [EKEvent]
-        if allowedCalendars.isEmpty {
+        if !CalendarViewModel.shared.isCalendarAccessGranted() || allowedCalendars.isEmpty {
             found = []
         } else {
             let predicate = store.predicateForEvents(
@@ -1200,7 +1058,6 @@ extension RootView {
 // MARK: - Lazy loading helpers for AllEventsListView (Original from your file)
 extension RootView {
     func loadInitialMonth() {
-        guard accessGranted else { return }
         let now = Date()
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
               let end   = Calendar.current.date(byAdding: .month, value: 1, to: now)
@@ -1212,7 +1069,6 @@ extension RootView {
     }
 
     func loadNextMonth(completion: (() -> Void)? = nil) {
-        guard accessGranted else { completion?(); return }
         let newStart = loadedEndDate.addingTimeInterval(1)
         guard let newEnd = Calendar.current.date(byAdding: .month, value: 1, to: newStart) else {
             completion?()
@@ -1225,7 +1081,6 @@ extension RootView {
     }
 
     func loadPreviousMonth(completion: (() -> Void)? = nil) {
-        guard accessGranted else { completion?(); return }
         let newEnd = loadedStartDate.addingTimeInterval(-1)
         guard let newStart = Calendar.current.date(byAdding: .month, value: -1, to: newEnd) else {
             completion?()
@@ -1241,7 +1096,6 @@ extension RootView {
 // MARK: - Chunk Loading (Original from your file)
 extension RootView {
     private func loadNextChunkOfEvents() {
-        guard accessGranted else { return }
         let cal = Calendar.current
         let fromDate = loadedUntil
         guard fromDate < maxLoadDate else { return }
@@ -1256,7 +1110,6 @@ extension RootView {
     }
 
     private func loadPreviousChunkOfEvents() {
-        guard accessGranted else { return }
         let cal = Calendar.current
         let toDate = loadedFrom
         guard toDate > minLoadDate else { return }
@@ -1398,7 +1251,7 @@ extension RootView {
          }
 
          let found: [EKEvent]
-         if allowedCalendars.isEmpty {
+         if !CalendarViewModel.shared.isCalendarAccessGranted() || allowedCalendars.isEmpty {
              found = []
          } else {
              let predicate = CalendarViewModel.shared.eventStore

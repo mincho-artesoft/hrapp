@@ -71,7 +71,7 @@ struct SharedEventImportView: View {
             .navigationTitle(Text("Shared event"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                AppSheetToolbarItem(placement: .topBarLeading) {
                     AppToolbarTextButton("Close") { dismiss() }
                         .disabled(importState == .adding)
                 }

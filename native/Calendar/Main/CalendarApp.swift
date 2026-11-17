@@ -95,9 +95,7 @@ struct CalendarApp: App {
                 #endif
             }
                 .calendarWindowLayout()
-                .environment(\.locale, appPreferences.presentationLocale)
-                .environment(\.calendar, appPreferences.presentationCalendar)
-                .environment(\.layoutDirection, appPreferences.layoutDirection)
+                .tint(.appBlue)
                 .preferredColorScheme(appPreferences.theme.preferredColorScheme)
                 .onAppear {
                     #if DEBUG
@@ -193,15 +191,20 @@ struct CalendarApp: App {
                         pendingSharedEvent = payload
                     }
                 }
-                .sheet(item: $pendingSharedEvent) { payload in
+                .appSheet(item: $pendingSharedEvent) { payload in
                     SharedEventImportView(payload: payload)
                 }
-                .sheet(item: $pendingSharedCalendar) { payload in
+                .appSheet(item: $pendingSharedCalendar) { payload in
                     SharedCalendarInvitationView(payload: payload)
                 }
-                .sheet(item: $pendingWebAuthChallenge) { challenge in
+                .appSheet(item: $pendingWebAuthChallenge) { challenge in
                     WebStudioAuthSheetView(initialChallenge: challenge)
                 }
+                // URL-driven invitation/auth sheets must use the same language
+                // and formatting preferences as the calendar underneath.
+                .environment(\.locale, appPreferences.presentationLocale)
+                .environment(\.calendar, appPreferences.presentationCalendar)
+                .environment(\.layoutDirection, appPreferences.layoutDirection)
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
             await CalendarLiveActivityBackgroundRefreshTask.run()

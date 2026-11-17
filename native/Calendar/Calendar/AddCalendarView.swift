@@ -56,17 +56,19 @@ struct AddCalendarView: View {
                     : LocalizedStringKey("Add Local Calendar"),
                 displayMode: .inline
             )
-            .navigationBarItems(
-                leading:
+            .toolbar {
+                AppSheetToolbarItem(placement: .topBarLeading) {
                     AppToolbarTextButton("Cancel") {
                         presentationMode.wrappedValue.dismiss()
-                    },
-                trailing:
+                    }
+                }
+                AppSheetToolbarItem(placement: .topBarTrailing) {
                     AppToolbarTextButton("Done") {
                         createCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)
-            )
+                }
+            }
         }
     }
 

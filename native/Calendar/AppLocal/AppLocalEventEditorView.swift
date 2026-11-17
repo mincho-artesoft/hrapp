@@ -471,7 +471,7 @@ struct AppLocalEventEditorView: View {
                 allowsMultipleSelection: true,
                 onCompletion: importFiles
             )
-            .sheet(isPresented: $showLocationEditor) {
+            .appSheet(isPresented: $showLocationEditor) {
                 EventLocationEditorSheet(
                     location: $location,
                     structuredLocation: $structuredLocation,

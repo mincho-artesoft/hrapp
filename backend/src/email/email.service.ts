@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { SESv2Client, SendEmailCommand, Attachment } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
 import { eventPalette } from '../presentation/event-card';
-import { canonicalInvitationURL, eventInvitationURLWithPreview } from './invitation-url';
+import { apiEndpoint, canonicalInvitationURL, eventInvitationURLWithPreview } from './invitation-url';
 import { EmailSendGuard } from './send-guard';
 
 const PNGJS: any = require('pngjs');
@@ -42,29 +42,40 @@ export class EmailService {
       return;
     }
     try {
-      await this.sendGuard.claim(this.EMAIL_FROM, to, subject, html);
-      const sent = await this.ses.send(
-        new SendEmailCommand({
-          FromEmailAddress: this.EMAIL_FROM,
-          Destination: { ToAddresses: [to] },
-          ReplyToAddresses: options.replyTo ? [options.replyTo] : undefined,
-          Content: {
-            Simple: {
-              Subject: { Data: subject, Charset: 'UTF-8' },
-              Attachments: options.attachments,
-              Body: {
-                Html: { Data: html, Charset: 'UTF-8' },
-                Text: { Data: this.plainText(html), Charset: 'UTF-8' },
-              },
-            },
-          },
-        }),
-      );
-      console.info('[email sent]', JSON.stringify({ messageId: sent.MessageId }));
+      if (process.env.EMAIL_RELAY_URL) {
+        const response = await fetch(process.env.EMAIL_RELAY_URL, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${process.env.EMAIL_RELAY_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ to, subject, html, replyTo: options.replyTo,
+            attachments: options.attachments?.map(a => ({ ...a, RawContent: Buffer.from(a.RawContent).toString('base64') })) }),
+          signal: AbortSignal.timeout(20_000),
+        });
+        if (!response.ok) throw new Error('Email relay rejected delivery');
+      } else {
+        await this.deliverThroughSES(to, subject, html, options);
+      }
     } catch (err: any) {
       // Delivery failure must not roll back an already-saved calendar action.
       console.error('[email not sent or needs review]', JSON.stringify({ type: err?.name ?? 'Error' }));
     }
+  }
+
+  /** Only the authenticated server-to-server relay can call this entry point. */
+  async deliverThroughSES(to: string, subject: string, html: string,
+    options: { replyTo?: string | null; attachments?: Attachment[] } = {}): Promise<void> {
+    if (!this.ses || !this.EMAIL_FROM || process.env.EMAIL_RELAY_URL) throw new Error('SES relay is not configured');
+    await this.sendGuard.claim(this.EMAIL_FROM, to, subject, html);
+    const sent = await this.ses.send(new SendEmailCommand({
+      FromEmailAddress: this.EMAIL_FROM,
+      Destination: { ToAddresses: [to] },
+      ReplyToAddresses: options.replyTo ? [options.replyTo] : undefined,
+      Content: { Simple: {
+        Subject: { Data: subject, Charset: 'UTF-8' },
+        Attachments: options.attachments,
+        Body: { Html: { Data: html, Charset: 'UTF-8' }, Text: { Data: this.plainText(html), Charset: 'UTF-8' } },
+      } },
+    }));
+    console.info('[email sent]', JSON.stringify({ messageId: sent.MessageId }));
   }
 
   private fmtWhen(startISO: string, endISO: string, timeZone?: string): string {
@@ -215,14 +226,14 @@ export class EmailService {
     kind: 'calendar' | 'clock' | 'location',
     color: string,
   ): string {
-    const url = new URL('/email-assets/shared-event-icon', this.API_URL);
+    const url = apiEndpoint('/email-assets/shared-event-icon', this.API_URL);
     url.searchParams.set('kind', kind);
     url.searchParams.set('color', this.validEventColor(color));
     return url.toString();
   }
 
   private sharedEventQRCodeURL(eventUrl: string): string {
-    const url = new URL('/email-assets/shared-event-qr', this.API_URL);
+    const url = apiEndpoint('/email-assets/shared-event-qr', this.API_URL);
     url.searchParams.set('url', eventUrl);
     return url.toString();
   }
@@ -457,7 +468,7 @@ export class EmailService {
     calendarId,
     senderEmail,
   }: any): Promise<void> {
-    const invitationURL = new URL('/icloud-calendar-invites/open', this.API_URL);
+    const invitationURL = apiEndpoint('/icloud-calendar-invites/open', this.API_URL);
     invitationURL.searchParams.set('o', String(ownerId));
     invitationURL.searchParams.set('c', String(calendarId));
 

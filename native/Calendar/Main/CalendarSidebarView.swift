@@ -80,9 +80,9 @@ struct CalendarSidebarView: View {
                                 eventCard(event)
                             } else {
                                 Text("Nothing upcoming")
-                                    .font(.subheadline).foregroundStyle(.secondary)
+                                    .font(CalendarTypography.subheadline).foregroundStyle(.secondary)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(12).background(Color(uiColor: .systemGray6), in: RoundedRectangle(cornerRadius: 8))
+                                    .padding(12).background(CalendarSurfaceColors.gray6, in: RoundedRectangle(cornerRadius: 8))
                             }
                         }
                         // Reserve the same slot for an appointment or an empty
@@ -98,7 +98,7 @@ struct CalendarSidebarView: View {
             }
             .padding(16)
         }
-        .background(Color(uiColor: .systemBackground).opacity(0.76))
+        .background(CalendarSurfaceColors.background.opacity(0.76))
         .frame(maxHeight: .infinity, alignment: .top)
         .accessibilityIdentifier("calendar.sidebar")
         .onChange(of: selectedDate) { _, date in
@@ -113,7 +113,7 @@ struct CalendarSidebarView: View {
                 Button { moveMonth(-1) } label: { Image(systemName: "chevron.left").frame(width: 28, height: 28) }
                     .accessibilityLabel("Previous month").accessibilityIdentifier("calendar.sidebar.previousMonth")
                 Spacer(minLength: 0)
-                Text(dateLabel(month, template: "MMMM y")).font(.subheadline.weight(.semibold))
+                Text(dateLabel(month, template: "MMMM y")).font(CalendarTypography.subheadline.weight(.semibold))
                     .lineLimit(1).minimumScaleFactor(0.7)
                 Spacer(minLength: 0)
                 Button { moveMonth(1) } label: { Image(systemName: "chevron.right").frame(width: 28, height: 28) }
@@ -122,21 +122,21 @@ struct CalendarSidebarView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4, alignment: .top), count: 7), spacing: 6) {
                 ForEach(0..<7, id: \.self) { offset in
                     Text(calendar.veryShortStandaloneWeekdaySymbols[(calendar.firstWeekday - 1 + offset) % 7])
-                        .font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+                        .font(CalendarTypography.caption2.weight(.semibold)).foregroundStyle(.secondary)
                 }
                 ForEach(days, id: \.self) { day in
                     dayButton(day, colors: eventColors(on: day, events: events))
                 }
             }
             Button("Today") { selectDate(Date()) }
-                .font(.caption.weight(.semibold)).buttonStyle(.plain).foregroundStyle(.blue)
+                .font(CalendarTypography.caption.weight(.semibold)).buttonStyle(.plain).foregroundStyle(.blue)
                 .frame(maxWidth: .infinity, minHeight: 28)
                 .accessibilityIdentifier("calendar.sidebar.today")
         }
         .padding(12)
         .background {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                .fill(CalendarSurfaceColors.secondaryGrouped)
                 .shadow(color: .black.opacity(0.06), radius: 5, y: 2)
         }
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -155,8 +155,8 @@ struct CalendarSidebarView: View {
         let inMonth = calendar.isDate(day, equalTo: month, toGranularity: .month)
         return Button { selectDate(day) } label: {
             VStack(spacing: 2) {
-                Text(localizedIntegerString(calendar.component(.day, from: day)))
-                    .font(.caption.weight(selected || today ? .bold : .medium))
+                Text(calendar.component(.day, from: day).formatted())
+                    .font(CalendarTypography.caption.weight(selected || today ? .bold : .medium))
                     .foregroundStyle(selected ? Color.white : today ? .red : inMonth ? .primary : .secondary.opacity(0.55))
                     .frame(width: 26, height: 26)
                     .background(selected ? (today ? Color.red : .blue) : .clear, in: Circle())
@@ -171,7 +171,7 @@ struct CalendarSidebarView: View {
     }
 
     private func sectionTitle(_ text: LocalizedStringKey) -> some View {
-        Text(text).font(.caption.weight(.bold)).foregroundStyle(.secondary).textCase(.uppercase)
+        Text(text).font(CalendarTypography.caption.weight(.bold)).foregroundStyle(.secondary).textCase(.uppercase)
     }
 
     private func eventCard(_ event: CalendarSidebarEvent) -> some View {
@@ -181,7 +181,7 @@ struct CalendarSidebarView: View {
         } label: {
             VStack(alignment: .leading, spacing: 6) {
                 Text(eventDateLabel(event.start))
-                    .font(.caption).foregroundStyle(.secondary)
+                    .font(CalendarTypography.caption).foregroundStyle(.secondary)
                 CalendarSidebarEventRow(title: event.displayTitle, color: event.color,
                     allDay: event.isAllDay,
                     symbol: nil,
@@ -205,22 +205,22 @@ struct CalendarSidebarView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .top, spacing: 8) {
                 Circle().fill(event.color).frame(width: 10, height: 10).padding(.top, 5)
-                Text(event.displayTitle).font(.title3.weight(.semibold))
+                Text(event.displayTitle).font(CalendarTypography.title3.weight(.semibold))
                     .accessibilityIdentifier("calendar.sidebar.selectedTitle")
             }
-            Text(eventDateLabel(event.start)).font(.caption).foregroundStyle(.secondary)
-            Text(eventTime(event)).font(.subheadline.weight(.medium))
-            Label(event.calendarTitle, systemImage: "calendar").font(.caption).foregroundStyle(.secondary)
+            Text(eventDateLabel(event.start)).font(CalendarTypography.caption).foregroundStyle(.secondary)
+            Text(eventTime(event)).font(CalendarTypography.subheadline.weight(.medium))
+            Label(event.calendarTitle, systemImage: "calendar").font(CalendarTypography.caption).foregroundStyle(.secondary)
             if !event.location.isEmpty {
-                Label(event.location, systemImage: "mappin.and.ellipse").font(.caption).foregroundStyle(.secondary)
+                Label(event.location, systemImage: "mappin.and.ellipse").font(CalendarTypography.caption).foregroundStyle(.secondary)
             }
             if !event.notes.isEmpty {
                 Divider()
-                Text(event.notes).font(.subheadline).foregroundStyle(.secondary).lineLimit(5)
+                Text(event.notes).font(CalendarTypography.subheadline).foregroundStyle(.secondary).lineLimit(5)
             }
             Button { onOpenEvent(event) } label: {
                 Label("Open event", systemImage: "arrow.forward.circle")
-            }.buttonStyle(.borderedProminent).controlSize(.small)
+            }.buttonStyle(AppSheetHeaderButtonStyle())
                 .accessibilityIdentifier("calendar.sidebar.openEvent")
         }.frame(maxWidth: .infinity, alignment: .leading)
             .accessibilityElement(children: .contain)
@@ -253,7 +253,7 @@ struct CalendarSidebarView: View {
     /// Event dates use the exact Settings format, not a sidebar-only template.
     private func eventDateLabel(_ date: Date) -> String {
         #if os(macOS)
-        let formatter = MacCalendarFormatting.dateFormatter()
+        let formatter = DateFormatter(); formatter.dateStyle = .short
         formatter.timeZone = calendar.timeZone
         #else
         let formatter = appShortDateFormatter(timeZone: calendar.timeZone)
@@ -278,9 +278,9 @@ private struct CalendarSidebarEventRow<Times: View>: View {
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             if let symbol { Image(systemName: symbol).foregroundStyle(color) }
-            Text(title).font(.body).foregroundStyle(.primary).strikethrough(isCancelled, color: color)
+            Text(title).font(CalendarTypography.body).foregroundStyle(.primary).strikethrough(isCancelled, color: color)
             Spacer()
-            times().font(.subheadline).foregroundStyle(.gray)
+            times().font(CalendarTypography.subheadline).foregroundStyle(.gray)
         }
         .calendarEventRowAccent(color, isVisible: !allDay)
         .padding(.vertical, 6)

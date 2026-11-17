@@ -47,7 +47,7 @@ struct SubscriptionListView: View {
                 // out of reach once one card is marked as current.
                 Text(NSLocalizedString("You can change your plan or billing period at any time.",
                                        comment: "Note that all plans belong to one subscription group"))
-                    .font(.caption)
+                    .font(CalendarTypography.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
@@ -56,7 +56,8 @@ struct SubscriptionListView: View {
 
                 ActiveSubscriptionStatusView()
                 
-                if let id = selectedProductID,
+                if !manager.isDebugPremiumEnabled,
+                   let id = selectedProductID,
                    let product = manager.products.first(where: { $0.id == id }),
                    !manager.isCurrentPlan(product) {
                     PurchaseSectionView(selectedProductID: id)
@@ -73,7 +74,8 @@ struct SubscriptionListView: View {
                                                   comment: "Button to open subscription management"),
                                 systemImage: "creditcard")
                         }
-                        .font(.footnote)
+                        .font(CalendarTypography.footnote)
+                        .foregroundStyle(Color.appBlue)
                         .lineLimit(2)
                         .minimumScaleFactor(0.85)
                         .fixedSize(horizontal: false, vertical: true)
@@ -87,7 +89,8 @@ struct SubscriptionListView: View {
                                                   comment: "Open privacy policy link"),
                                 systemImage: "lock.shield")
                         }
-                        .font(.footnote)
+                        .font(CalendarTypography.footnote)
+                        .foregroundStyle(Color.appBlue)
                         .lineLimit(2)
                         .minimumScaleFactor(0.85)
                         .fixedSize(horizontal: false, vertical: true)
@@ -105,7 +108,8 @@ struct SubscriptionListView: View {
                                                   comment: "Restore"),
                                 systemImage: "arrow.trianglehead.2.clockwise")
                         }
-                        .font(.footnote)
+                        .font(CalendarTypography.footnote)
+                        .foregroundStyle(Color.appBlue)
                         .lineLimit(2)
                         .minimumScaleFactor(0.85)
                         .fixedSize(horizontal: false, vertical: true)
@@ -119,7 +123,8 @@ struct SubscriptionListView: View {
                                                   comment: "Open terms of service link"),
                                 systemImage: "doc.text")
                         }
-                        .font(.footnote)
+                        .font(CalendarTypography.footnote)
+                        .foregroundStyle(Color.appBlue)
                         .lineLimit(2)
                         .minimumScaleFactor(0.85)
                         .fixedSize(horizontal: false, vertical: true)
@@ -130,9 +135,13 @@ struct SubscriptionListView: View {
                 .padding(.horizontal, 25)
                 .padding(.top, 10)
             }
-            .sheet(item: $presentedURL) { url in
-                SafariView(url: url)
+            #if os(iOS)
+            .appSheet(item: $presentedURL) { url in SafariView(url: url) }
+            #else
+            .onChange(of: presentedURL) { _, url in
+                if let url { NSWorkspace.shared.open(url); presentedURL = nil }
             }
+            #endif
         }
         Spacer()
     }
@@ -179,7 +188,7 @@ struct SubscriptionListView: View {
                          periodLocalized
                      )
                  )
-                 .font(.headline)
+                 .font(CalendarTypography.headline)
 
                  Text(
                      localizedFormat(NSLocalizedString(
@@ -193,7 +202,7 @@ struct SubscriptionListView: View {
                          )
                      )
                  )
-                 .font(.subheadline)
+                 .font(CalendarTypography.subheadline)
                  .foregroundColor(.secondary)
             }
             .padding(.top, 10)
@@ -217,13 +226,11 @@ struct SubscriptionListView: View {
                             return NSLocalizedString("Change Plan",
                                                      comment: "Button to move to another plan or duration")
                         }
-                        return product.subscription?.introductoryOffer != nil
-                            ? NSLocalizedString("Start Free Trial", comment: "Button to start trial")
-                            : NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
+                        return NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
                     }()
                     
                     Text(labelKey)
-                        .font(.headline.weight(.semibold))
+                        .font(CalendarTypography.headline.weight(.semibold))
                         .lineLimit(2)
                         .minimumScaleFactor(0.85)
                         .padding(.vertical, 12)

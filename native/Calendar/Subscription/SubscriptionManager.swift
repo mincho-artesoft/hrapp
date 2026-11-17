@@ -1,7 +1,11 @@
 
 import SwiftUI
 import StoreKit
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 typealias StoreTransaction = StoreKit.Transaction
 
@@ -10,9 +14,25 @@ class SubscriptionManager: ObservableObject {
     @AppStorage("subscriptionStatus") private var subscriptionStatusRaw: String = SubscriptionStatus.base.rawValue
     @Published var restorationAlertMessage: String?       // ← НОВО
 
+    /// Development access is computed, never saved as an App Store entitlement.
+    /// Launch with -DebugPremium NO to test the regular purchase flow in Debug.
+    var isDebugPremiumEnabled: Bool {
+        #if DEBUG
+        let arguments = ProcessInfo.processInfo.arguments
+        if let index = arguments.lastIndex(of: "-DebugPremium"),
+           arguments.indices.contains(index + 1) {
+            return !["no", "false", "0"].contains(arguments[index + 1].lowercased())
+        }
+        return true
+        #else
+        return false
+        #endif
+    }
+
     var subscriptionStatus: SubscriptionStatus {
         get {
-            #if DEBUG
+            if isDebugPremiumEnabled { return .premium }
+            #if DEBUG && os(iOS)
             // Render the ad-free app for explicit marketing captures. This
             // neither changes persisted entitlement state nor buys a plan.
             if ScreenshotMode.isActive { return .premium }
@@ -74,7 +94,7 @@ class SubscriptionManager: ObservableObject {
                     fetched.first(where: { $0.id == id })
                 }
                 // 4️⃣  За дебъг – ще виждате 0, 2 или 4 продукта според статуса им
-                #if DEBUG
+                #if DEBUG && os(iOS)
                 print("💡 [StoreKit] Loaded products:", self.products.map(\.id))
                 #endif
             }
@@ -101,6 +121,7 @@ class SubscriptionManager: ObservableObject {
     // products (guideline 3.1.2(b)), so the decision now belongs to StoreKit,
     // which is the only place that can make it correctly anyway.
     func purchase(_ product: Product) async {
+        guard !isDebugPremiumEnabled else { return }
         do {
             let result = try await product.purchase()
             switch result {
@@ -190,9 +211,6 @@ class SubscriptionManager: ObservableObject {
         products.sorted {
             guard let u1 = $0.subscription?.subscriptionPeriod.unit,
                   let u2 = $1.subscription?.subscriptionPeriod.unit else { return false }
-            let u1Yearly = (u1 == .year)
-            let u2Yearly = (u2 == .year)
-            if u1Yearly != u2Yearly { return u1Yearly }
             return u1.sortIndex < u2.sortIndex
         }
     }
@@ -215,6 +233,7 @@ class SubscriptionManager: ObservableObject {
 
     @MainActor
     func openManageSubscriptions() async {
+        #if os(iOS)
         guard let windowScene = UIApplication.shared.connectedScenes
                 .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
         else { return }
@@ -226,6 +245,9 @@ class SubscriptionManager: ObservableObject {
         } catch {
             print("Неуспешно показване на управлението на абонаменти: \(error)")
         }
+        #else
+        NSWorkspace.shared.open(URL(string: "https://apps.apple.com/account/subscriptions")!)
+        #endif
     }
     
     @MainActor

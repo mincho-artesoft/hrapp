@@ -20,15 +20,23 @@ struct SubscriptionView: View {
 
     var body: some View {
             VStack {
-                Picker("", selection: $selectedCategory) {
-                    ForEach(SubscriptionCategory.allCases) { category in
-                        Text(category.title)
-                            .tag(category)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .labelsHidden()
+                SubscriptionCategoryPicker(selection: $selectedCategory)
                 .padding(.top, DraggableMenuContentLayout.verticalInset)
+
+                #if DEBUG
+                if manager.isDebugPremiumEnabled {
+                    Label {
+                        Text("Premium") + Text(verbatim: " · Debug")
+                    } icon: {
+                        Image(systemName: "checkmark.seal.fill")
+                    }
+                        .font(CalendarTypography.headline)
+                        .foregroundStyle(.green)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .accessibilityIdentifier("subscription.debugPremium")
+                }
+                #endif
 
                 // Tab content
                 Group {
@@ -54,7 +62,8 @@ struct SubscriptionView: View {
 
                 Spacer()
             }
-            .background(Color(.systemGroupedBackground).ignoresSafeArea())
+            .background(CalendarPalette.groupedBackground.ignoresSafeArea())
+            .buttonStyle(.plain)
 
             // MARK: – реагира на промени
             .onAppear {
@@ -160,13 +169,11 @@ struct SubscriptionView: View {
             categoryMatches(product) && !manager.purchasedProductIDs.contains(product.id)
         }
 
-        // Приоритетно избираме Годишния план със 7-дневен Free Trial
-        if let yearlyTrial = candidates.first(where: {
-            $0.subscription?.subscriptionPeriod.unit == .year && $0.subscription?.introductoryOffer != nil
-        }) ?? candidates.first(where: {
+        // Годишният план остава избран по подразбиране.
+        if let preferredProduct = candidates.first(where: {
             $0.subscription?.subscriptionPeriod.unit == .year
         }) ?? candidates.first {
-            selectedProductID = yearlyTrial.id
+            selectedProductID = preferredProduct.id
         } else {
             selectedProductID = nil
         }

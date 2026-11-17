@@ -463,6 +463,38 @@ final class AppLocalCalendarStore: ObservableObject {
         return true
     }
 
+    /// Preserve existing events while retiring the synthetic account calendar.
+    func retirePersonalCloudCalendars() {
+        let legacy = calendars.filter(\.isPersonalCloud)
+        guard !legacy.isEmpty else { return }
+        var nextCalendars = calendars, nextEvents = events
+        var selected = CalendarViewModel.shared.selectedCalendarIDs
+        for old in legacy {
+            let records = nextEvents.filter { $0.calendarID == old.id }
+            var destination = nextCalendars.first { !$0.isPersonalCloud && $0.origin == .owned && $0.canEditEvents }
+            if destination == nil && !records.isEmpty {
+                var retained = old
+                retained.id = AppLocalCalendarRecord.identifierPrefix + UUID().uuidString.lowercased()
+                retained.title = NSLocalizedString("Web Events", comment: "Preserved events from the retired account feed")
+                retained.remoteOwnerID = nil; retained.remoteOwnerEmail = nil; retained.remoteCalendarID = nil
+                retained.origin = .owned; retained.access = .owner; retained.isOriginalCreator = true
+                nextCalendars.append(retained); destination = retained
+            }
+            if let destination {
+                for index in nextEvents.indices where nextEvents[index].calendarID == old.id { nextEvents[index].calendarID = destination.id }
+                if selected.contains(old.id) { selected.insert(destination.id) }
+            }
+            nextCalendars.removeAll { $0.id == old.id }; selected.remove(old.id)
+        }
+        do {
+            let snapshot = Snapshot(schemaVersion: 1, calendars: nextCalendars, events: nextEvents)
+            try JSONEncoder().encode(snapshot).write(to: fileURL, options: .atomic)
+            calendars = nextCalendars; events = nextEvents
+            CalendarViewModel.shared.selectedCalendarIDs = selected
+            NotificationCenter.default.post(name: .appLocalCalendarStoreChanged, object: nil)
+        } catch { print("Could not retire account calendar: \(error.localizedDescription)") }
+    }
+
     func removePersonalCloudCalendars(except activeRemoteCalendarID: String?) {
         let keepID = activeRemoteCalendarID.map(AppLocalCalendarRecord.personalCloudCalendarID(for:))
         let removedIDs = Set(calendars.filter {

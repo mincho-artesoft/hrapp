@@ -10,7 +10,7 @@ struct FeatureRow: View {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundColor(.accentColor)
             Text(feature)
-                .font(.subheadline)
+                .font(CalendarTypography.subheadline)
                 .foregroundColor(.primary)
                 .fixedSize(horizontal: false, vertical: true)
         }

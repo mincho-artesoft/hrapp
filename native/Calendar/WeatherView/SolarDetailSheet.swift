@@ -35,7 +35,7 @@ struct SolarDetailSheet: View {
     }
 
     var body: some View {
-        NavigationStack {
+        CalendarSheetNavigation {
             VStack(spacing: 0) {
                 sheetHeader
 
@@ -47,7 +47,9 @@ struct SolarDetailSheet: View {
                             solarTimesCard(displayedDay)
                         }
 
+                        #if os(iOS)
                         WeatherRotatingAdPlacement()
+                        #endif
 
                         if !days.isEmpty {
                             upcomingDaysCard
@@ -63,7 +65,9 @@ struct SolarDetailSheet: View {
                 }
             }
             .background(Color.black.ignoresSafeArea())
+            #if os(iOS)
             .toolbar(.hidden, for: .navigationBar)
+            #endif
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
@@ -89,8 +93,6 @@ struct SolarDetailSheet: View {
             .accessibilityElement(children: .combine)
 
             HStack {
-                Spacer()
-
                 Button {
                     dismiss()
                 } label: {
@@ -103,6 +105,8 @@ struct SolarDetailSheet: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel(NSLocalizedString("Close", comment: "Close button"))
+
+                Spacer()
             }
         }
         .frame(height: 62)

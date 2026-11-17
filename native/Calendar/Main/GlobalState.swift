@@ -1,6 +1,9 @@
 import Foundation
+#if os(iOS)
 import UIKit
+#endif
 
+#if os(iOS)
 enum CalendarSearchAppearance {
     static let iconPointSize: CGFloat = 22
     static let buttonSize = CalendarHeaderLayout.buttonSize
@@ -11,6 +14,8 @@ enum CalendarSearchAppearance {
 
     static var iconImage: UIImage { CalendarHeaderAppearance.image("magnifyingglass") }
 }
+
+#endif
 
 extension Locale {
     /// Arabic UI should use Arabic-Indic digits even when the device region
@@ -367,6 +372,7 @@ extension GlobalState {
 // Compact calendar controls contain dates and translated labels whose length
 // varies considerably between locales. Keep the complete value visible before
 // UIKit falls back to an ellipsis.
+#if os(iOS)
 extension UILabel {
     func useAdaptiveSingleLine(minimumScale: CGFloat = 0.4) {
         numberOfLines = 1
@@ -389,6 +395,8 @@ extension UIButton {
         )
     }
 }
+
+#endif
 
 extension View {
     func adaptiveSingleLine(minimumScale: CGFloat = 0.4) -> some View {

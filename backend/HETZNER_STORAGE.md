@@ -1,5 +1,34 @@
 # Cloud Calendars storage and deployment
 
+## Debug API migration, 2026-11-16
+
+The current Debug native app and development web app use
+`https://storage.wonek.com/cloud-calendars-debug`. NestJS runs as the isolated
+`cloud-calendars-debug` container on Hetzner, behind the existing HTTPS host.
+The calendar namespace and account tokens are unchanged. Client merge baselines
+and Mac account storage retain their legacy keys, so changing the API does not
+create a fresh inventory or sign users out.
+
+The old Debug Lambda/API Gateway address remains active for older releases.
+Hetzner handles API requests, calendar data and the durable APNs work queue.
+Email remains Amazon SES, through a private bearer-authenticated endpoint in
+the Debug Lambda with the existing email deduplication guard. No AWS access
+keys are copied to Hetzner. The relay is not exposed through the Hetzner API.
+Production API, feeds and storage are unchanged by this Debug deployment.
+
+Build and package the backend with `bash deploy.sh package` before running
+`python3 deploy-hetzner-debug.py`. The Hetzner deployment script accepts only
+the existing Debug Lambda and Debug storage namespace, preserves its private
+configuration, updates the compatibility Lambda, and health-checks the new
+container before updating its isolated nginx location. Private backups and
+relay credentials live outside the repository in
+`~/Library/Application Support/CloudCalendarsInfrastructure/`.
+
+Validation: the sharing suite, native calendar route/merge tests and durable
+queue/email relay tests pass. Both public Debug sync routes reject an
+unauthenticated request with 401; the Hetzner provider discovery route returns
+200. Relay tests use a fake sender and do not deliver email.
+
 Both Lambda functions remain in AWS account `303803840503`, region `us-east-1`:
 
 | Function | API | Hetzner namespace |

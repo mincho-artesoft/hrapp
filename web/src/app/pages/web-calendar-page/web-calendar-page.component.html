@@ -4,6 +4,7 @@
 >
   <!-- Top Workspace & Role Bar -->
   <div class="studio-bar shell">
+    <a class="calendar-brand" href="/">Cloud Calendars</a>
     <div class="studio-bar__tabs" role="tablist" aria-label="Host Studio Tabs">
       <button
         type="button"
@@ -111,26 +112,22 @@
     </div>
   </div>
 
+  @if (activeTab() === 'calendar') {
+    <nav class="calendar-bottom-bar" aria-label="Calendar actions">
+      <button type="button" (click)="jumpToday()"><span aria-hidden="true">▣</span>Today</button>
+      <button type="button" (click)="openNewEventDefault()"><span aria-hidden="true">＋</span>Add</button>
+      <button type="button" (click)="showCalendars.set(!showCalendars())" [attr.aria-pressed]="showCalendars()"><span aria-hidden="true">▦</span>Calendars</button>
+      <button type="button" (click)="activeTab.set('availability')"><span aria-hidden="true">↗</span>Sharing</button>
+    </nav>
+  }
+
   <!-- =======================================================================
        TAB 1: INTERACTIVE CLOUDCALENDARS iOS DRAG & DROP CALENDAR
   ======================================================================== -->
   @if (activeTab() === 'calendar') {
-    <div class="cal-shell shell">
+    <div class="cal-shell shell" [class.cal-shell--hide-calendars]="!showCalendars()">
       <!-- Left iOS Sidebar -->
-      <aside class="cal-side">
-        <div class="cal-side__actions">
-          <button type="button" class="new-ev-btn" (click)="openNewEventDefault()">
-            <span>＋</span> New Event
-          </button>
-          <button
-            type="button"
-            class="pub-hours-btn"
-            (click)="activeTab.set('availability')"
-          >
-            Share Booking Link
-          </button>
-        </div>
-
+      <aside class="cal-side" aria-label="Calendars">
         <!-- Up Next Card -->
         <div class="side-card">
           <div class="side-card__hdr">UP NEXT</div>
@@ -167,8 +164,8 @@
           <div class="mini-hdr">
             <span>{{ anchorDate() | date: 'MMMM yyyy' }}</span>
             <div class="mini-hdr__nav">
-              <button type="button" (click)="stepPeriod(-1)" aria-label="Previous">‹</button>
-              <button type="button" (click)="stepPeriod(1)" aria-label="Next">›</button>
+              <button type="button" (click)="stepMiniMonth(-1)" aria-label="Previous month">‹</button>
+              <button type="button" (click)="stepMiniMonth(1)" aria-label="Next month">›</button>
             </div>
           </div>
           <div class="mini-dow">
@@ -197,6 +194,31 @@
           </div>
         </div>
 
+        <div class="calendar-list side-card">
+          <h2>Calendars</h2>
+          @for (group of calendarGroups(); track group.source) {
+            <details open>
+              <summary>{{ group.source }}</summary>
+              @for (calendar of group.calendars; track calendar.id) {
+                <button type="button" class="calendar-row" [attr.aria-pressed]="!hiddenCalendarIDs().has(calendar.id)" (click)="toggleCalendar(calendar.id)">
+                  <span class="calendar-check" [style.background]="calendar.color">{{ hiddenCalendarIDs().has(calendar.id) ? '' : '✓' }}</span>
+                  <span class="calendar-row__name">{{ calendar.title }}<small>{{ calendar.deviceName }}{{ calendar.allowsChanges ? '' : ' · Read only' }}</small></span>
+                </button>
+              }
+            </details>
+          } @empty {
+            <p class="side-empty">Open the app while signed in to see your calendars here.</p>
+          }
+          @if (writableCalendars().length) {
+            <label class="field"><span>New events in</span>
+              <select [ngModel]="destinationCalendarID()" (ngModelChange)="chooseDestination($event)">
+                @for (calendar of writableCalendars(); track calendar.id) { <option [value]="calendar.id">{{ calendar.title }} · {{ calendar.source }}</option> }
+              </select>
+            </label>
+          }
+        </div>
+        <details class="calendar-connections">
+          <summary>Accounts &amp; subscriptions</summary>
         <!-- 2-Way Google & Microsoft Calendar Sync -->
         <div class="side-card">
           <div class="side-card__hdr">2-WAY CALENDAR SYNC</div>
@@ -279,6 +301,7 @@
             </div>
           </div>
         }
+        </details>
       </aside>
 
       <!-- Main Calendar Canvas -->
@@ -298,13 +321,10 @@
 
           <div class="cal-toolbar__right">
             <span class="tz-badge">{{ calendarTimeZone() }}</span>
-            <div class="seg-ctrl" role="group" aria-label="Calendar view mode">
-              <button type="button" [class.is-on]="viewMode() === 'day'" (click)="viewMode.set('day')">Day</button>
-              <button type="button" [class.is-on]="viewMode() === 'workweek'" (click)="viewMode.set('workweek')">5 Days</button>
-              <button type="button" [class.is-on]="viewMode() === 'week'" (click)="viewMode.set('week')">Week</button>
-              <button type="button" [class.is-on]="viewMode() === 'month'" (click)="viewMode.set('month')">Month</button>
-              <button type="button" [class.is-on]="viewMode() === 'agenda'" (click)="viewMode.set('agenda')">Agenda</button>
-            </div>
+            <select class="calendar-view-picker" aria-label="Calendar view" [ngModel]="viewMode()" (ngModelChange)="viewMode.set($event)">
+              <option value="day">Day</option><option value="workweek">5 Days</option>
+              <option value="week">Week</option><option value="month">Month</option><option value="agenda">List</option>
+            </select>
           </div>
         </div>
 
@@ -1166,7 +1186,7 @@
     <div class="modal-backdrop" (click)="closeEditor()">
       <div class="modal-sheet" (click)="$event.stopPropagation()">
         <div class="modal-sheet__hdr">
-          <h3>{{ d.isNew ? 'New CloudCalendars Event' : (d.isBookedMeeting ? 'Booked Appointment' : 'Edit Event') }}</h3>
+          <h3>{{ d.isNew ? 'New Event' : (d.isBookedMeeting ? 'Booked Appointment' : 'Edit Event') }}</h3>
           <button type="button" class="modal-x" (click)="closeEditor()">✕</button>
         </div>
 
@@ -1178,6 +1198,13 @@
         }
 
         <div class="modal-body">
+          @if (d.calendarId) {
+            <label class="field"><span>Calendar</span>
+              <select [ngModel]="d.calendarId" (ngModelChange)="d.calendarId = $event; chooseDestination($event)" [disabled]="!d.isNew">
+                @for (calendar of writableCalendars(); track calendar.id) { <option [value]="calendar.id">{{ calendar.title }} · {{ calendar.source }}</option> }
+              </select>
+            </label>
+          }
           <input
             type="text"
             class="title-input"

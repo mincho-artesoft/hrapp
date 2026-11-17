@@ -59,7 +59,7 @@ enum LocalSharingE2ETest {
                 "writer-update", "owner-check-writer", "revoke", "receiver-check-revoked"].contains(action), "Unknown test action")
             try require(["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98"]
                 .contains(env["SIMULATOR_UDID"] ?? ""), "Not an authorized test simulator")
-            try require(CloudCalendarsAPI.baseURL.host == "63yo3ore3c.execute-api.us-east-1.amazonaws.com",
+            try require(CloudCalendarsAPI.baseURL.absoluteString == "https://storage.wonek.com/cloud-calendars-debug",
                         "Tests must use the Debug backend")
             let session = try await CalendarFeedSession.current()
             if action == "seed" {

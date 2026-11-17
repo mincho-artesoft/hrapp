@@ -1,5 +1,9 @@
 import SwiftUI
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 /// A lightweight hybrid weather scene. AI-generated cloud sprite cycles add
 /// organic detail while SwiftUI drives movement, lighting and precipitation.
@@ -1716,7 +1720,7 @@ private enum WeatherCloudSpriteFrames {
     static let storm = makeFrames(named: "weather_cloud_storm_sprite")
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
+        guard let atlas = weatherAtlasImage(named: name) else { return [] }
 
         let columns = 4
         let rows = 2
@@ -1746,7 +1750,7 @@ private enum WeatherLightningSpriteFrames {
     ].filter { !$0.isEmpty }
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
+        guard let atlas = weatherAtlasImage(named: name) else { return [] }
         let columns = 4
         let rows = 2
         let frameWidth = atlas.width / columns
@@ -1771,7 +1775,7 @@ private enum WeatherPrecipitationSpriteFrames {
     static let hail = makeFrames(named: "weather_hail_particles")
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
+        guard let atlas = weatherAtlasImage(named: name) else { return [] }
         let columns = 4
         let rows = 3
         let frameWidth = atlas.width / columns
@@ -1816,4 +1820,12 @@ private enum WeatherSunImage {
 @MainActor
 private enum WeatherFrostEdgeImage {
     static let image = Image("weather_frost_edges")
+}
+
+private func weatherAtlasImage(named name: String) -> CGImage? {
+    #if os(iOS)
+    UIImage(named: name)?.cgImage
+    #else
+    NSImage(named: name)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    #endif
 }

@@ -73,7 +73,9 @@ enum CalendarFeedSession {
 
     static func forget() {
         cached = nil
+        #if os(iOS)
         AppLocalCalendarStore.shared.removePersonalCloudCalendars(except: nil)
+        #endif
         guard let url = try? storageURL(createDirectory: false) else { return }
         try? FileManager.default.removeItem(at: url)
     }
@@ -104,7 +106,7 @@ enum CalendarFeedSession {
         name: String? = nil
     ) async throws -> CloudCalendarsAPI.Session {
         let feedName = name
-            ?? NSLocalizedString("Invites", comment: "Default name of the shared-events feed")
+            ?? NSLocalizedString("Cloud Calendars", comment: "Account feed name")
         let currentSession = rawExisting
         let resolved: CloudCalendarsAPI.Session
         do {
@@ -153,9 +155,11 @@ enum CalendarFeedSession {
             identities: identitiesByProvider.values.sorted { $0.provider < $1.provider }
         )
         try store(authenticated)
+        #if os(iOS)
         Task { @MainActor in
-            _ = await PersonalCloudCalendarSyncService.syncNow()
+            _ = await NativeCalendarSyncService.syncNow()
         }
+        #endif
         return authenticated
     }
 
@@ -177,6 +181,21 @@ enum CalendarFeedSession {
     // therefore disappears on uninstall. A user can recover the server account
     // by signing in again with any linked identity.
 
+    private static var storageAttributes: [FileAttributeKey: Any] {
+        #if os(macOS)
+        [.posixPermissions: 0o700]
+        #else
+        [.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication]
+        #endif
+    }
+    private static var storageWriteOptions: Data.WritingOptions {
+        #if os(macOS)
+        [.atomic]
+        #else
+        [.atomic, .completeFileProtectionUntilFirstUserAuthentication]
+        #endif
+    }
+
     private static func storageURL(createDirectory: Bool) throws -> URL {
         guard let root = FileManager.default.urls(
             for: .applicationSupportDirectory,
@@ -194,9 +213,7 @@ enum CalendarFeedSession {
                 try FileManager.default.createDirectory(
                     at: directory,
                     withIntermediateDirectories: true,
-                    attributes: [
-                        .protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
-                    ]
+                    attributes: storageAttributes
                 )
             } catch {
                 throw SessionError.sessionStorageFailed
@@ -211,7 +228,7 @@ enum CalendarFeedSession {
             let url = try storageURL(createDirectory: true)
             try data.write(
                 to: url,
-                options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication]
+                options: storageWriteOptions
             )
         } catch {
             throw SessionError.sessionStorageFailed
@@ -241,7 +258,7 @@ enum CalendarFeedSession {
             let probe = Data("cloud-calendars-storage-probe".utf8)
             try probe.write(
                 to: probeURL,
-                options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication]
+                options: storageWriteOptions
             )
             let loaded = try Data(contentsOf: probeURL)
             try FileManager.default.removeItem(at: probeURL)

@@ -1101,7 +1101,9 @@ struct CalendarWidgetBundle: WidgetBundle {
         CalendarIconWidget()
         CalendarIconClassicWidget()
         CalendarIconLargeEventsWidget()
+        #if os(iOS)
         CalendarLiveActivityWidget()
+        #endif
     }
 }
 

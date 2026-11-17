@@ -52,6 +52,7 @@ struct CalendarsSheetView: View {
     @State private var msExpandedStates: [UUID: Bool] = [:]
     @State private var calendarToEdit: EKCalendar? = nil
     @State private var showAddCalendarSheet = false
+    @State private var showCalendarPermission = false
     @State private var showAddAppLocalCalendarSheet = false
     @State private var appLocalCalendarEditTarget: AppLocalCalendarEditTarget?
     @State private var showICloudSheet = false
@@ -149,16 +150,25 @@ struct CalendarsSheetView: View {
             Task { await loadSharedICloudCalendars() }
         }
 
+        .alert("Permission required", isPresented: $showCalendarPermission) {
+            Button("Open Settings") {
+                if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Allow full calendar access for Cloud Calendars in Settings to create an iCloud calendar.")
+        }
+
         // MARK: Sheets…
 
         // Edit local calendar
-        .sheet(item: $calendarToEdit, onDismiss: {
+        .appSheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
 
-        .sheet(item: $sharedICloudCalendarInfoTarget, onDismiss: {
+        .appSheet(item: $sharedICloudCalendarInfoTarget, onDismiss: {
             viewModel.reloadCalendars()
             Task { await loadSharedICloudCalendars() }
         }) { target in
@@ -175,29 +185,29 @@ struct CalendarsSheetView: View {
         }
 
         // Add iCloud Calendar
-        .sheet(isPresented: $showAddCalendarSheet) {
+        .appSheet(isPresented: $showAddCalendarSheet) {
             AddCalendarView()
         }
 
-        .sheet(isPresented: $showAddAppLocalCalendarSheet) {
+        .appSheet(isPresented: $showAddAppLocalCalendarSheet) {
             AddCalendarView(destination: .appLocal)
         }
 
-        .sheet(item: $appLocalCalendarEditTarget) { target in
+        .appSheet(item: $appLocalCalendarEditTarget) { target in
             AppLocalCalendarEditView(calendarID: target.id)
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
         }
 
         // Open iCloud share
-        .sheet(isPresented: $showICloudSheet) {
+        .appSheet(isPresented: $showICloudSheet) {
             if let url = URL(string: "https://www.icloud.com/calendar/") {
                 SafariView(url: url)
             }
         }
 
         // Add Google Calendar
-        .sheet(item: $showAddGoogleCalendarSheet) { gUser in
+        .appSheet(item: $showAddGoogleCalendarSheet) { gUser in
             AddGoogleCalendarView(user: gUser) { name, color in
                 addingGoogleUserID = gUser.uniqueID
                 addingGoogleCalendarTitle = name
@@ -212,7 +222,7 @@ struct CalendarsSheetView: View {
         }
 
         // Manage sharing for the Google calendar selected from its row.
-        .sheet(item: $googleCalendarSharingTarget) { target in
+        .appSheet(item: $googleCalendarSharingTarget) { target in
             GoogleCalendarSharingView(
                 googleCalID: target.googleCalendarID,
                 user: target.user,
@@ -220,7 +230,7 @@ struct CalendarsSheetView: View {
             )
         }
 
-        .sheet(item: $iCloudCalendarSharingTarget) { target in
+        .appSheet(item: $iCloudCalendarSharingTarget) { target in
             ICloudCalendarSharingView(
                 calendarID: target.calendarID,
                 calendarTitle: target.calendarTitle,
@@ -641,56 +651,28 @@ struct CalendarsSheetView: View {
     private var addCalendarSection: some View {
         Section {
             Button { showAddAppLocalCalendarSheet = true } label: {
-                Label("Add Local Calendar", systemImage: "calendar.badge.plus")
-            }
-            .buttonStyle(.plain)
+                CalendarProviderActionLabel(title: "Add Local Calendar", icon: .local)
+            }.buttonStyle(.plain)
+            Button(action: handleAddICloudCalendar) {
+                CalendarProviderActionLabel(title: "Add iCloud Calendar", icon: .iCloud)
+            }.buttonStyle(.plain)
+        }
+    }
 
-            Button { showAddCalendarSheet = true } label: {
-                HStack {
-                    Image(systemName: "icloud.fill")
-                        .foregroundStyle(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.69, green: 0.85, blue: 0.98),
-                                    Color(red: 0.46, green: 0.70, blue: 0.97),
-                                    Color(red: 0.26, green: 0.57, blue: 0.96),
-                                    Color(red: 0.09, green: 0.44, blue: 0.94),
-                                    Color(red: 0.04, green: 0.35, blue: 0.92)
-                                ]),
-                                startPoint: .leading, endPoint: .trailing
-                            )
-                        )
-                        .frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Add iCloud Calendar"))
-                }
-            }
-            .buttonStyle(PlainButtonStyle())
+    private func handleAddICloudCalendar() {
+        Task { @MainActor in
+            if await viewModel.requestCalendarAccessIfNeeded() {
+                viewModel.reloadCalendars()
+                showAddCalendarSheet = true
+            } else { showCalendarPermission = true }
         }
     }
 
     private var shareCalendarsSection: some View {
         Section {
             Button { showICloudSheet = true } label: {
-                HStack {
-                    Image(systemName: "link.icloud.fill")
-                        .foregroundStyle(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.69, green: 0.85, blue: 0.98),
-                                    Color(red: 0.46, green: 0.70, blue: 0.97),
-                                    Color(red: 0.26, green: 0.57, blue: 0.96),
-                                    Color(red: 0.09, green: 0.44, blue: 0.94),
-                                    Color(red: 0.04, green: 0.35, blue: 0.92)
-                                ]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Share calendars with iCloud Calendar"))
-                }
-            }
-            .buttonStyle(.plain)
+                CalendarProviderActionLabel(title: "Share calendars with iCloud Calendar", icon: .iCloudSharing)
+            }.buttonStyle(.plain)
         }
     }
 
@@ -701,11 +683,7 @@ struct CalendarsSheetView: View {
                 // Сега директно викаме функцията за вход.
                 viewModel.signInWithGoogle()
             }) {
-                HStack {
-                    Image("google_icon")
-                        .resizable().aspectRatio(contentMode: .fit).frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Sign in with Google"))
-                }
+                CalendarProviderActionLabel(title: "Sign in with Google", icon: .google)
             }
             .buttonStyle(PlainButtonStyle())
         }
@@ -732,11 +710,7 @@ struct CalendarsSheetView: View {
                     viewModel.signInWithMicrosoft()
                 }
             }) {
-                HStack {
-                    Image("microsoft_icon")
-                        .resizable().aspectRatio(contentMode: .fit).frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Sign in with Microsoft"))
-                }
+                CalendarProviderActionLabel(title: "Sign in with Microsoft", icon: .microsoft)
             }
             .buttonStyle(PlainButtonStyle())
         }
@@ -766,7 +740,7 @@ struct CalendarsSheetView: View {
             // used to overwrite a local edit before the foreground sync could
             // upload it.
             _ = await SharedICloudCalendarLocalStore.refreshAll()
-            _ = await PersonalCloudCalendarSyncService.syncNow()
+            _ = await NativeCalendarSyncService.syncNow()
             _ = await AppLocalCalendarSyncService.syncAll()
             // The sync mutates EventKit in place. Refresh this sheet's
             // observed calendar collection as well, otherwise its open rows
@@ -1051,10 +1025,14 @@ private struct SharedICloudCalendarInfoView: View {
                 }
             }
             .navigationBarTitle(LocalizedStringKey("Edit Calendar"), displayMode: .inline)
-            .navigationBarItems(
-                leading: AppToolbarTextButton("Cancel") { dismiss() },
-                trailing: AppToolbarTextButton("Done") { saveLocalColor() }
-            )
+            .toolbar {
+                AppSheetToolbarItem(placement: .topBarLeading) {
+                    AppToolbarTextButton("Cancel") { dismiss() }
+                }
+                AppSheetToolbarItem(placement: .topBarTrailing) {
+                    AppToolbarTextButton("Done") { saveLocalColor() }
+                }
+            }
         }
         .alert(item: $presentedAlert) { alert in
             switch alert {

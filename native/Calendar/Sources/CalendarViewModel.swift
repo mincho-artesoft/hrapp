@@ -665,7 +665,8 @@ final class CalendarViewModel: ObservableObject {
 
     // MARK: - Load Calendars
     func reloadCalendars() {
-        let cals = eventStore.calendars(for: .event)
+        accessGranted = isCalendarAccessGranted()
+        let cals = accessGranted ? eventStore.calendars(for: .event) : []
         let snapshot = calendarPresentationSnapshot(cals)
         if snapshot != lastPublishedCalendarSnapshot {
             lastPublishedCalendarSnapshot = snapshot
@@ -838,9 +839,9 @@ final class CalendarViewModel: ObservableObject {
     /// writable calendar policy from 49b5bbac, across both backing stores.
     func newEventCalendar(preferredCalendarID: String? = nil) -> MultiCalendarInfo? {
         let metadata = multiCalendarsDict
-        var candidates = allCalendars.compactMap { metadata[$0.calendarIdentifier] }
+        var candidates = (isCalendarAccessGranted() ? allCalendars : []).compactMap { metadata[$0.calendarIdentifier] }
         candidates += AppLocalCalendarStore.shared.calendars.compactMap { metadata[$0.id] }
-        let systemDefault = eventStore.defaultCalendarForNewEvents
+        let systemDefault = isCalendarAccessGranted() ? eventStore.defaultCalendarForNewEvents : nil
         // EventKit can expose its default before the observable list reloads.
         if let calendar = systemDefault,
            !candidates.contains(where: { $0.id == calendar.calendarIdentifier }) {
@@ -867,7 +868,7 @@ final class CalendarViewModel: ObservableObject {
             return
         }
 
-        let allIDs = Set(allCalendars.map(\.calendarIdentifier))
+        let allIDs = Set(allCalendars.map(\.calendarIdentifier)).union(AppLocalCalendarStore.shared.calendars.map(\.id))
         guard !allIDs.isEmpty else { return }
 
         selectedCalendarIDs = allIDs

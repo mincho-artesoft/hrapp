@@ -9,9 +9,7 @@ extension WeatherDetailView {
         let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
         // взимаме час/минути/секунди от now според customCalendar
         let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
-        let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
-                               + Double(comps.minute ?? 0) * 60
-                               + Double(comps.second ?? 0)
+        let secondsFromMidnight = weatherSecondsSinceMidnight(comps)
         // дял от деня (0…1)
         let fractionOfDay = secondsFromMidnight / (24 * 3600)
 

@@ -54,6 +54,7 @@ struct WeekCarouselView2: View {
                         }
                         .frame(maxWidth: .infinity)
                         .opacity(isSelectable ? 1.0 : 0.4)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             guard isSelectable else { return }
                             selectedDay = day

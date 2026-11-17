@@ -60,7 +60,7 @@ enum SharingMatrixE2ETest {
     }
     static func run(action: String) async -> String {
         do {
-            try require(CloudCalendarsAPI.baseURL.host == "63yo3ore3c.execute-api.us-east-1.amazonaws.com", "Debug only")
+            try require(CloudCalendarsAPI.baseURL.absoluteString == "https://storage.wonek.com/cloud-calendars-debug", "Debug only")
             let device = ProcessInfo.processInfo.environment["SIMULATOR_UDID"] ?? ""
             try require(["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98"].contains(device), "Wrong simulator")
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

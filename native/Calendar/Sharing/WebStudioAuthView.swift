@@ -3,7 +3,11 @@ import CryptoKit
 import Foundation
 import Security
 import SwiftUI
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 struct WebAuthChallengePayload: Identifiable, Equatable {
     let challengeId: String
@@ -41,7 +45,8 @@ struct WebAuthChallengePayload: Identifiable, Equatable {
             return pathSegments.last == "app-auth" || pathSegments.contains("app-auth")
         }()
 
-        guard isCustomScheme || isUniversalLink else { return nil }
+        let isAPIChallenge = SharedInvitationServer.baseURL(for: url, route: "app-auth") != nil
+        guard isCustomScheme || isUniversalLink || isAPIChallenge else { return nil }
 
         let rawChallenge = components.queryItems?
             .first(where: { $0.name == "c" || $0.name == "challenge" || $0.name == "challengeId" })?
@@ -257,10 +262,16 @@ struct WebStudioAuthSheetView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text(activeChallenge != nil && !approvedSuccessfully ? "Web Sign-In" : "Web Authenticator")) {
+                    AppToolbarTextButton("Close") { cloudAccountManager.cancelSignIn(); dismiss() }
+                } trailing: { EmptyView() }
+                #endif
             ScrollView {
                 VStack(spacing: 20) {
-                    headerCard
+                    if cloudAccountManager.isSignedIn { headerCard }
 
                     if !cloudAccountManager.isSignedIn {
                         signInRequiredCard
@@ -286,7 +297,9 @@ struct WebStudioAuthSheetView: View {
                 }
                 .padding(20)
             }
-            .background(Color(uiColor: .systemGroupedBackground))
+            }
+            .background(CalendarSurfaceColors.gray6)
+            #if os(iOS)
             .navigationTitle(
                 LocalizedStringKey(
                     activeChallenge != nil && !approvedSuccessfully ? "Web Sign-In" : "Web Authenticator"
@@ -294,13 +307,14 @@ struct WebStudioAuthSheetView: View {
             )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Close") {
                         cloudAccountManager.cancelSignIn()
                         dismiss()
                     }
                 }
             }
+            #endif
             .onAppear {
                 Task { await refreshStateAfterAppearOrSignIn() }
             }
@@ -310,7 +324,18 @@ struct WebStudioAuthSheetView: View {
             .onReceive(ticker) { tick in
                 now = tick
             }
-            .fullScreenCover(isPresented: $showInlineQRScanner) {
+            #if os(macOS)
+            .appSheet(isPresented: $showInlineQRScanner) {
+                MacCalendarQRImportView { url in
+                    guard let payload = WebAuthChallengePayload(url: url) else { return false }
+                    approvedSuccessfully = false; errorMessage = nil; activeChallenge = payload
+                    showInlineQRScanner = false
+                    Task { await loadChallengeInfo(payload) }
+                    return true
+                }
+            }
+            #else
+            .appFullScreenCover(isPresented: $showInlineQRScanner) {
                 SharedEventQRScannerView { scanned in
                     if case .webAuth(let payload) = scanned {
                         approvedSuccessfully = false
@@ -320,20 +345,24 @@ struct WebStudioAuthSheetView: View {
                     }
                 }
             }
+            #endif
         }
+        #if os(macOS)
+        .frame(width: 620, height: 680)
+        #endif
     }
 
     private var headerCard: some View {
         HStack(spacing: 14) {
             Image(systemName: "lock.laptopcomputer")
-                .font(.title2.weight(.semibold))
+                .font(CalendarTypography.title2.weight(.semibold))
                 .foregroundStyle(.blue)
                 .frame(width: 48, height: 48)
                 .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
 
             VStack(alignment: .leading, spacing: 3) {
                 Text("Cloud Calendars Web")
-                    .font(.headline)
+                    .font(CalendarTypography.headline)
                 Text(
                     LocalizedStringKey(
                         activeChallenge != nil && !approvedSuccessfully
@@ -341,45 +370,32 @@ struct WebStudioAuthSheetView: View {
                             : "Sign in at cloud-calendars.com by QR scan or with your 6-digit security code."
                     )
                 )
-                .font(.footnote)
+                .font(CalendarTypography.footnote)
                 .foregroundStyle(.secondary)
             }
 
             Spacer(minLength: 0)
         }
         .padding(16)
-        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(CalendarSurfaceColors.secondaryGrouped, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var signInRequiredCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Label("Sign in to continue", systemImage: "person.crop.circle.badge.exclamationmark")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.blue)
-
-            Text("Connect your Cloud Calendars account with Apple, Google, or Microsoft first.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-
-            CloudAccountSignInContent()
-                .padding(.top, 4)
-        }
-        .padding(16)
-        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        CloudAccountSignInContent()
     }
 
     private func qrApprovalCard(for challenge: WebAuthChallengePayload) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 10) {
                 Image(systemName: "qrcode.viewfinder")
-                    .font(.title3.weight(.semibold))
+                    .font(CalendarTypography.title3.weight(.semibold))
                     .foregroundStyle(.green)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Approve Browser Sign-In")
-                        .font(.headline)
+                        .font(CalendarTypography.headline)
                     if let email = challengeInfo?.iosEmail ?? primaryAccountEmail {
                         Text(email)
-                            .font(.footnote)
+                            .font(CalendarTypography.footnote)
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -398,11 +414,11 @@ struct WebStudioAuthSheetView: View {
                         webEmail
                     )
                 )
-                    .font(.footnote)
+                    .font(CalendarTypography.footnote)
                     .foregroundStyle(.secondary)
             } else {
                 Text("Tap Approve below to sign in immediately on your computer.")
-                    .font(.footnote)
+                    .font(CalendarTypography.footnote)
                     .foregroundStyle(.secondary)
             }
 
@@ -417,7 +433,7 @@ struct WebStudioAuthSheetView: View {
                         Image(systemName: "checkmark.shield.fill")
                     }
                     Text(LocalizedStringKey(isApproving ? "Approving…" : "Approve Sign-In"))
-                        .font(.body.weight(.semibold))
+                        .font(CalendarTypography.body.weight(.semibold))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
@@ -428,19 +444,19 @@ struct WebStudioAuthSheetView: View {
             .disabled(isApproving || challengeInfo?.status == "expired")
         }
         .padding(18)
-        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(CalendarSurfaceColors.secondaryGrouped, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var approvedBanner: some View {
         HStack(spacing: 12) {
             Image(systemName: "checkmark.circle.fill")
-                .font(.title2)
+                .font(CalendarTypography.title2)
                 .foregroundStyle(.green)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Browser Sign-In Approved")
-                    .font(.subheadline.weight(.semibold))
+                    .font(CalendarTypography.subheadline.weight(.semibold))
                 Text("Your web workspace is now open and synced with this account.")
-                    .font(.footnote)
+                    .font(CalendarTypography.footnote)
                     .foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
@@ -463,7 +479,7 @@ struct WebStudioAuthSheetView: View {
         return VStack(alignment: .leading, spacing: 14) {
             HStack {
                 Label("6-Digit Authenticator Code", systemImage: "key.horizontal.fill")
-                    .font(.subheadline.weight(.semibold))
+                    .font(CalendarTypography.subheadline.weight(.semibold))
                     .foregroundStyle(.primary)
                 Spacer()
                 if let token {
@@ -482,7 +498,7 @@ struct WebStudioAuthSheetView: View {
                         .frame(width: 18, height: 18)
 
                         Text("\(token.secondsRemaining)s")
-                            .font(.caption.monospacedDigit().weight(.semibold))
+                            .font(CalendarTypography.caption.monospacedDigit().weight(.semibold))
                             .foregroundStyle(token.secondsRemaining <= 5 ? .orange : .secondary)
                     }
                 }
@@ -498,7 +514,12 @@ struct WebStudioAuthSheetView: View {
                     Spacer()
 
                     Button {
+                        #if os(macOS)
+                        NSPasteboard.general.clearContents()
+                        NSPasteboard.general.setString(token.raw, forType: .string)
+                        #else
                         UIPasteboard.general.string = token.raw
+                        #endif
                         copiedCode = true
                         Task { @MainActor in
                             try? await Task.sleep(for: .seconds(2))
@@ -509,7 +530,7 @@ struct WebStudioAuthSheetView: View {
                             LocalizedStringKey(copiedCode ? "Copied" : "Copy"),
                             systemImage: copiedCode ? "checkmark" : "doc.on.doc"
                         )
-                            .font(.footnote.weight(.semibold))
+                            .font(CalendarTypography.footnote.weight(.semibold))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
                             .background(Color.blue.opacity(0.12), in: Capsule())
@@ -529,18 +550,18 @@ struct WebStudioAuthSheetView: View {
                             email
                         )
                     )
-                        .font(.caption.weight(.medium))
+                        .font(CalendarTypography.caption.weight(.medium))
                         .foregroundStyle(.secondary)
                 }
 
                 Text("You can enter this email and 6-digit code anytime at cloud-calendars.com to sign in without scanning a QR code.")
-                    .font(.footnote)
+                    .font(CalendarTypography.footnote)
                     .foregroundStyle(.secondary)
             } else if isLoading {
                 HStack(spacing: 10) {
                     ProgressView()
                     Text("Preparing your Authenticator key…")
-                        .font(.footnote)
+                        .font(CalendarTypography.footnote)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.vertical, 8)
@@ -549,12 +570,12 @@ struct WebStudioAuthSheetView: View {
                     Task { await ensureAuthenticatorConfigured() }
                 } label: {
                     Label("Activate 6-Digit Authenticator Code", systemImage: "arrow.clockwise")
-                        .font(.subheadline.weight(.semibold))
+                        .font(CalendarTypography.subheadline.weight(.semibold))
                 }
             }
         }
         .padding(18)
-        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .background(CalendarSurfaceColors.secondaryGrouped, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var scanAnotherQRButton: some View {
@@ -563,9 +584,9 @@ struct WebStudioAuthSheetView: View {
         } label: {
             HStack(spacing: 10) {
                 Image(systemName: "qrcode.viewfinder")
-                    .font(.body.weight(.semibold))
+                    .font(CalendarTypography.body.weight(.semibold))
                 Text("Scan Web Sign-In QR Code")
-                    .font(.body.weight(.semibold))
+                    .font(CalendarTypography.body.weight(.semibold))
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 13)
@@ -580,7 +601,7 @@ struct WebStudioAuthSheetView: View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundStyle(.orange)
             Text(message)
-                .font(.footnote)
+                .font(CalendarTypography.footnote)
                 .foregroundStyle(.primary)
             Spacer(minLength: 0)
         }
@@ -604,7 +625,9 @@ struct WebStudioAuthSheetView: View {
         if authenticatorStore.activeCredentials(for: session) == nil {
             await ensureAuthenticatorConfigured()
         }
-        _ = await PersonalCloudCalendarSyncService.syncNow()
+        #if os(iOS)
+        _ = await NativeCalendarSyncService.syncNow()
+        #endif
     }
 
     private func loadChallengeInfo(_ challenge: WebAuthChallengePayload) async {
@@ -651,8 +674,12 @@ struct WebStudioAuthSheetView: View {
             )
             authenticatorStore.save(response: response, session: session)
             approvedSuccessfully = true
+            #if os(iOS)
             UINotificationFeedbackGenerator().notificationOccurred(.success)
-            _ = await PersonalCloudCalendarSyncService.syncNow()
+            #endif
+            #if os(iOS)
+        _ = await NativeCalendarSyncService.syncNow()
+        #endif
         } catch {
             errorMessage = friendlyServerError(error)
         }

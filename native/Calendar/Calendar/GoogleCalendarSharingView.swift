@@ -152,7 +152,7 @@ struct GoogleCalendarSharingView: View {
             .navigationTitle(localizedFormat(NSLocalizedString("Sharing: %@", comment: "Sharing screen title"), calendarTitle))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                AppSheetToolbarItem(placement: .navigationBarTrailing) {
                     AppToolbarTextButton(
                         localizedTitle: NSLocalizedString("Done", comment: "Done button")
                     ) {

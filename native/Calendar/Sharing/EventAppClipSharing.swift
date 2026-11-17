@@ -44,179 +44,6 @@ private final class EventShareMailDelegate: NSObject, @preconcurrency MFMailComp
 }
 
 @MainActor
-struct EventShareMethodPicker: View {
-    let eventTitle: String
-    let onAppClip: () -> Void
-    let onEmail: () -> Void
-    let onQRCode: () -> Void
-    let onCancel: () -> Void
-
-    var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading, spacing: 18) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(eventTitle)
-                        .font(.title3.weight(.semibold))
-                        .lineLimit(2)
-                    Text("Choose how to share this synced event.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-
-                VStack(spacing: 12) {
-                    methodButton(
-                        title: "App Clip",
-                        subtitle: "Messages, AirDrop, and more",
-                        systemImage: "appclip",
-                        color: .blue,
-                        action: onAppClip
-                    )
-                    methodButton(
-                        title: "Email",
-                        subtitle: "Invite people and assign access",
-                        systemImage: "envelope.fill",
-                        color: .orange,
-                        action: onEmail
-                    )
-                    methodButton(
-                        title: "QR Code",
-                        subtitle: "Let someone scan the event",
-                        systemImage: "qrcode",
-                        color: .purple,
-                        action: onQRCode
-                    )
-                }
-
-                Spacer(minLength: 0)
-            }
-            .padding(20)
-            .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Share Event")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: onCancel) {
-                        Image(systemName: "xmark")
-                    }
-                    .accessibilityLabel("Cancel")
-                }
-            }
-        }
-    }
-
-    private func methodButton(
-        title: LocalizedStringKey,
-        subtitle: LocalizedStringKey,
-        systemImage: String,
-        color: Color,
-        action: @escaping () -> Void
-    ) -> some View {
-        Button(action: action) {
-            HStack(spacing: 14) {
-                Image(systemName: systemImage)
-                    .font(.title2.weight(.semibold))
-                    .foregroundStyle(color)
-                    .frame(width: 42, height: 42)
-                    .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.primary)
-                    Text(subtitle)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                }
-
-                Spacer(minLength: 8)
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(14)
-            .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18))
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-@MainActor
-private struct EventShareQRCodeView: View {
-    let eventTitle: String
-    let url: URL
-
-    @Environment(\.dismiss) private var dismiss
-    @State private var copied = false
-
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 22) {
-                    VStack(spacing: 5) {
-                        Text(eventTitle)
-                            .font(.title2.weight(.bold))
-                            .multilineTextAlignment(.center)
-                        Text("Scan to open this event")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    if let image = qrImage {
-                        Image(uiImage: image)
-                            .interpolation(.none)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 290)
-                            .padding(18)
-                            .background(.white, in: RoundedRectangle(cornerRadius: 24))
-                            .shadow(color: .black.opacity(0.08), radius: 16, y: 6)
-                            .accessibilityLabel("QR code for \(eventTitle)")
-                    }
-
-                    Text(url.absoluteString)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-                        .textSelection(.enabled)
-
-                    Button {
-                        UIPasteboard.general.url = url
-                        copied = true
-                    } label: {
-                        Label(LocalizedStringKey(copied ? "Copied" : "Copy Link"), systemImage: copied ? "checkmark" : "doc.on.doc")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                }
-                .padding(24)
-            }
-            .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("QR Code")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
-                }
-            }
-        }
-    }
-
-    private var qrImage: UIImage? {
-        let filter = CIFilter.qrCodeGenerator()
-        filter.message = Data(url.absoluteString.utf8)
-        filter.correctionLevel = "M"
-        guard let output = filter.outputImage?.transformed(
-            by: CGAffineTransform(scaleX: 12, y: 12)
-        ), let cgImage = CIContext().createCGImage(output, from: output.extent)
-        else { return nil }
-        return UIImage(cgImage: cgImage)
-    }
-}
-
-@MainActor
 final class EventSharePromptManager: ObservableObject {
     static let shared = EventSharePromptManager()
     static let displayDuration: TimeInterval = 10
@@ -367,7 +194,7 @@ enum EventShareEndpoint {
         components.scheme = server.scheme
         components.host = server.host
         components.port = server.port
-        components.path = serverPath
+        components.path = server.appendingPathComponent(serverPath).path
         components.queryItems = components.queryItems?.filter { $0.name != "p" }
         return components.url
     }
@@ -1169,7 +996,7 @@ enum SharedEventSyncManager {
 
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
-        _ = await PersonalCloudCalendarSyncService.syncNow()
+        _ = await NativeCalendarSyncService.syncNow()
         _ = await AppLocalCalendarSyncService.syncAll()
         _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: store)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)

@@ -183,9 +183,11 @@ struct WeatherDetailView: View {
                                 .padding(.horizontal)
                                 .padding(.bottom)
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                             chanceOfPrecipGraphSection()
                                 .padding(.horizontal)
@@ -218,9 +220,11 @@ struct WeatherDetailView: View {
                                 .padding(.horizontal)
                                 .padding(.bottom)
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                         case 2:
                             windGraphSection()
@@ -235,9 +239,11 @@ struct WeatherDetailView: View {
                                     .padding(.bottom)
                             }
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                             windTableSection()
                                 .padding(.horizontal)
@@ -255,9 +261,11 @@ struct WeatherDetailView: View {
                                 .padding(.horizontal)
                                 .padding(.bottom)
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                             chanceOfPrecipGraphSection()
                                 .padding(.horizontal)
@@ -297,9 +305,11 @@ struct WeatherDetailView: View {
                                     .padding(.bottom)
                             }
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                           
                             aboutHumiditySection()
                                 .padding(.horizontal)
@@ -322,9 +332,11 @@ struct WeatherDetailView: View {
                                     .padding(.bottom)
                             }
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                             aboutVisibilitySection()
                                 .padding(.horizontal)
@@ -343,9 +355,11 @@ struct WeatherDetailView: View {
                                     .padding(.bottom)
                             }
 
+                            #if os(iOS)
                             WeatherRotatingAdPlacement()
                                 .padding(.horizontal)
                                 .padding(.bottom, 24)
+                            #endif
                             
                             aboutPressureSection()
                                 .padding(.horizontal)
@@ -401,21 +415,28 @@ struct WeatherDetailView: View {
     }
 
     private var customNavBar: some View {
-        HStack {
-            Spacer()
+        ZStack {
             Label(dynamicLabelText, systemImage: dynamicLabelIcon)
                 .font(.headline)
                 .foregroundColor(.white)
-            Spacer()
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.gray)
-                    .padding(8)
-                    .background(Color.white.opacity(0.15))
-                    .clipShape(Circle())
+                .padding(.horizontal, 44)
+
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.gray)
+                        .padding(8)
+                        .background(Color.white.opacity(0.15))
+                        .clipShape(Circle())
+                        .contentShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(NSLocalizedString("Close", comment: "Close button"))
+
+                Spacer()
             }
         }
         .padding(.horizontal)
@@ -1368,7 +1389,7 @@ struct WeatherDetailView: View {
         let kmhRange: String
     }
     
-    func interpolateColor(from: UIColor, to: UIColor, fraction: CGFloat) -> UIColor {
+    func interpolateColor(from: WeatherPlatformColor, to: WeatherPlatformColor, fraction: CGFloat) -> WeatherPlatformColor {
         var fRed: CGFloat = 0, fGreen: CGFloat = 0, fBlue: CGFloat = 0, fAlpha: CGFloat = 0
         var tRed: CGFloat = 0, tGreen: CGFloat = 0, tBlue: CGFloat = 0, tAlpha: CGFloat = 0
         from.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
@@ -1377,24 +1398,24 @@ struct WeatherDetailView: View {
         let green = fGreen + (tGreen - fGreen) * fraction
         let blue  = fBlue  + (tBlue  - fBlue)  * fraction
         let alpha = fAlpha + (tAlpha - fAlpha) * fraction
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return WeatherPlatformColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     func gradientColor(for progress: Double) -> Color {
         let clamped = min(max(progress, 0.0), 1.0)
-        let uiColor: UIColor
+        let uiColor: WeatherPlatformColor
         if clamped <= 0.33 {
             let fraction = CGFloat(clamped / 0.33)
             // teal to yellow
-            uiColor = interpolateColor(from: UIColor.systemTeal, to: UIColor.yellow, fraction: fraction)
+            uiColor = interpolateColor(from: WeatherPlatformColor.systemTeal, to: WeatherPlatformColor.yellow, fraction: fraction)
         } else if clamped <= 0.66 {
             let fraction = CGFloat((clamped - 0.33) / 0.33)
             // yellow to orange
-            uiColor = interpolateColor(from: UIColor.yellow, to: UIColor.orange, fraction: fraction)
+            uiColor = interpolateColor(from: WeatherPlatformColor.yellow, to: WeatherPlatformColor.orange, fraction: fraction)
         } else {
             let fraction = CGFloat((clamped - 0.66) / 0.34)
             // orange to red
-            uiColor = interpolateColor(from: UIColor.orange, to: UIColor.red, fraction: fraction)
+            uiColor = interpolateColor(from: WeatherPlatformColor.orange, to: WeatherPlatformColor.red, fraction: fraction)
         }
         return Color(uiColor)
     }

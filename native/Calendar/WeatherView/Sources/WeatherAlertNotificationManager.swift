@@ -389,7 +389,7 @@ actor WeatherAlertNotificationManager {
         )
     }
 
-    #if DEBUG
+    #if DEBUG && os(iOS)
     /// Synthetic, clearly labelled simulator alerts. Do not alter real GPS
     /// data or permanently replace the user's active alert fingerprints.
     func testNotificationDelivery(_ alerts: [WeatherAlert]) async {

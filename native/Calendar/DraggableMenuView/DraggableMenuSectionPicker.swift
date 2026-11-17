@@ -32,7 +32,7 @@ struct DraggableMenuSectionPicker: View {
             }
         }
         .padding(3)
-        .background(Color(uiColor: .tertiarySystemFill))
+        .background(CalendarSurfaceColors.tertiaryFill)
         .clipShape(RoundedRectangle(cornerRadius: 21, style: .continuous))
         .accessibilityElement(children: .contain)
     }
@@ -44,7 +44,7 @@ struct DraggableMenuSectionPicker: View {
             selection = item.id
         } label: {
             Text(item.title)
-                .font(.subheadline.weight(isSelected ? .semibold : .regular))
+                .font(CalendarTypography.subheadline.weight(isSelected ? .semibold : .regular))
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
                 .frame(maxWidth: .infinity, minHeight: 32)
@@ -54,7 +54,7 @@ struct DraggableMenuSectionPicker: View {
         .background {
             if isSelected {
                 RoundedRectangle(cornerRadius: 17, style: .continuous)
-                    .fill(Color(uiColor: .systemBackground))
+                    .fill(CalendarSurfaceColors.background)
                     .shadow(color: .black.opacity(0.08), radius: 1, y: 1)
             }
         }

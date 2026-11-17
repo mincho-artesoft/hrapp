@@ -1986,3 +1986,82 @@
   text-align: center;
   margin: 0.75rem 0 0 !important;
 }
+
+/* Calendar surfaces follow the native Wonek/HRApp geometry and system palette. */
+.studio {
+  --cal-bg: #000; --cal-panel: #1c1c1e; --cal-panel-2: #2c2c2e;
+  --cal-text: #f5f5f7; --cal-muted: #a1a1a6; --cal-subtle: #8e8e93;
+  --cal-input: #1c1c1e; --cal-line: #38383a;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter Variable', sans-serif;
+  background: var(--cal-bg); padding-bottom: 100px;
+  &--light { --cal-bg: #fff; --cal-panel: #f2f2f7; --cal-panel-2: #e5e5ea; --cal-text: #1c1c1e; --cal-muted: #636366; --cal-subtle: #8e8e93; --cal-input: #fff; --cal-line: #d1d1d6; }
+  .shell { width: calc(100% - 32px); max-width: 1800px; }
+  button, select, input { font-family: inherit; }
+  button:focus-visible, select:focus-visible { outline: 2px solid #568fff; outline-offset: 3px; }
+  .new-ev-btn, .signin-cta, .tab-pill.is-active { background: #2168de; color: #fff; box-shadow: none; }
+  .cal-main, .side-card { box-shadow: none; background: var(--cal-panel); border-radius: 20px; }
+  .cal-main { background: var(--cal-bg); }
+  .side-card { border: 0; }
+  .cal-toolbar { background: var(--cal-bg); border-bottom: 1px solid var(--cal-line); }
+  .modal-sheet { background: var(--cal-panel); border-radius: 24px; }
+  .modal-x { width: 38px; height: 38px; border-radius: 50%; background: #2168de; color: #fff; }
+  .seg-ctrl { background: var(--cal-panel-2); border-radius: 12px; }
+  .seg-ctrl button { border-radius: 9px; }
+}
+.calendar-list {
+  h2 { font-size: 22px; margin: 0 0 20px; font-weight: 700; }
+  summary { padding: 12px 0; font-size: 15px; font-weight: 600; cursor: pointer; }
+  details + details { margin-top: 8px; }
+  .field { margin-top: 20px; }
+  select { width: 100%; padding: 10px; border-radius: 10px; background: var(--cal-input); color: var(--cal-text); border: 1px solid var(--cal-line); }
+}
+.calendar-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px; text-align: left; border-radius: 18px; }
+.calendar-row[aria-pressed=true] { background: var(--cal-panel-2); }
+.calendar-check { flex: 0 0 28px; width: 28px; height: 28px; display: grid; place-items: center; color: #fff; border-radius: 50%; }
+.calendar-row__name { font-size: 17px; overflow-wrap: anywhere; small { display: block; color: var(--cal-muted); font-size: 12px; margin-top: 3px; } }
+.calendar-bottom-bar { position: fixed; z-index: 30; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; padding: 9px 24px; background: var(--cal-panel); border: 1px solid var(--cal-line); border-radius: 28px; box-shadow: 0 8px 28px #0003; }
+.calendar-bottom-bar button { display: grid; gap: 4px; min-width: 62px; min-height: 44px; color: #568fff; font-size: 12px; span { font-size: 23px; line-height: 1; } }
+.cal-shell--hide-calendars { grid-template-columns: 1fr !important; .cal-side { display: none; } }
+@media (max-width: 700px) {
+  .studio .shell { width: calc(100% - 16px); }
+  .cal-side { max-height: 45vh; overflow-y: auto; }
+  .calendar-bottom-bar { bottom: 8px; gap: 4px; padding: 8px 12px; max-width: calc(100vw - 16px); }
+  .studio-bar__right { gap: 6px; }
+}
+
+/* The calendar route uses the app workspace instead of the marketing page shell. */
+.studio {
+  padding-top: 12px;
+  .shell { width: 100%; padding-left: 16px; padding-right: 16px; max-width: none; }
+  .cal-shell { gap: 0; grid-template-columns: minmax(280px, 28%) minmax(0, 1fr); }
+  .cal-side { order: 0; padding: 16px; border-right: 1px solid var(--cal-line); }
+  .cal-main { border: 0; border-radius: 0; }
+  .cal-toolbar { min-height: 52px; padding: 6px 16px; }
+  .cal-range-title { font-size: 17px; font-weight: 600; }
+  .month-grid { gap: 8px; padding: 8px; }
+  .month-cell { min-height: 84px; border: 0; padding: 2px; }
+  .month-cell__hdr { justify-content: center; position: relative; }
+  .month-cell__num { width: 32px; height: 32px; font-size: 15px; font-weight: 400; }
+  .month-cell__add { position: absolute; right: 0; }
+  .month-dow span { border: 0; font-size: 13px; font-weight: 400; }
+}
+.calendar-brand { color: var(--cal-text); font-size: 20px; font-weight: 700; text-decoration: none; }
+.calendar-view-picker { border: 0; color: #568fff; background: var(--cal-bg); min-height: 40px; font-size: 16px; }
+.calendar-connections { padding: 12px; summary { cursor: pointer; color: var(--cal-muted); font-size: 14px; margin-bottom: 12px; } }
+.calendar-bottom-bar { bottom: 0; left: 0; transform: none; width: 100%; height: 64px; border-radius: 0; border-width: 1px 0 0; justify-content: space-around; padding: 5px 16px; box-shadow: none; }
+.calendar-bottom-bar button { flex: 1; max-width: 220px; }
+@media (max-width: 800px) {
+  .studio .cal-shell { grid-template-columns: 1fr; }
+  .studio .cal-side { order: 2; border: 0; max-height: none; }
+  .studio .shell { padding-left: 8px; padding-right: 8px; }
+  .calendar-bottom-bar { max-width: none; }
+  .studio-bar__tabs { width: 100%; }
+  .studio-bar__right { justify-content: flex-start; }
+}
+
+.studio .mini-day {
+  background: transparent;
+  span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; }
+  &.is-today span { background: #ff3b30; color: #fff; }
+  &.is-selected span { background: #2168de; color: #fff; }
+}

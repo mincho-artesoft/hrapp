@@ -1,8 +1,9 @@
+import { isDevMode } from '@angular/core';
 import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { detectBrowserTimeZone } from './ios-event-palette';
 
-const API_BASE = 'https://api.cloud-calendars.com';
+const API_BASE = isDevMode() ? 'https://storage.wonek.com/cloud-calendars-debug' : 'https://api.cloud-calendars.com';
 const SESSION_STORAGE_KEY = 'cc_web_session_v1';
 
 export class CalendarApiError extends Error {
@@ -120,7 +121,14 @@ export interface WebCalendarEventDetails {
   attendees?: Array<{ name?: string; email?: string; status?: string }>;
 }
 
+export interface DeviceCalendar {
+  id: string; title: string; source: string; color: string;
+  deviceName: string; allowsChanges: boolean; updatedAt?: string;
+}
+
 export interface WebCalendarEvent {
+  calendarId?: string;
+  calendarTitle?: string;
   id: string;
   title: string;
   start: string;
@@ -203,6 +211,7 @@ export interface BookingScheduleConfig {
 }
 
 export interface WebCalendarStateResponse {
+  calendars?: DeviceCalendar[];
   calendar: {
     id: string;
     name: string;
@@ -980,6 +989,8 @@ export class CalendarPlatformApiService {
   async upsertCalendarEvent(
     eventId: string,
     payload: {
+      calendarId?: string;
+      expectedUpdatedAt?: string;
       title?: string;
       start: string;
       end: string;

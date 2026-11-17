@@ -12,6 +12,7 @@ struct CalendarRowView: View {
     // Новите 2 параметъра:
     let showShareButton: Bool
     let shareAction: () -> Void
+    var allowsEdit: Bool? = nil
 
     var body: some View {
         HStack(spacing: 16) {
@@ -19,7 +20,7 @@ struct CalendarRowView: View {
             Button(action: { toggleAction(calendar) }) {
                 ZStack {
                     Circle()
-                        .fill(Color(uiColor: UIColor(cgColor: calendar.cgColor ?? UIColor.gray.cgColor)))
+                        .fill(Color(cgColor: calendar.cgColor ?? CGColor(gray: 0.5, alpha: 1)))
                         .frame(width: 28, height: 28)
                     
                     if isSelected {
@@ -47,7 +48,7 @@ struct CalendarRowView: View {
             }
 
             // Бутон „Edit“ (ако е разрешено)
-            if showEditButton && calendar.allowsContentModifications {
+            if showEditButton && (allowsEdit ?? calendar.allowsContentModifications) {
                 Button(action: { editAction() }) {
                     Image(systemName: "info.circle")
                         .foregroundColor(.blue)
@@ -61,7 +62,7 @@ struct CalendarRowView: View {
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .fill(isSelected
-                      ? Color(UIColor.systemGray4.withAlphaComponent(0.5))
+                      ? CalendarPalette.selectedCalendar
                       : Color.clear)
         )
         // DisclosureGroup adds about 32 pt only on the leading side of its content.

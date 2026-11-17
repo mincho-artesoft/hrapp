@@ -1,18 +1,28 @@
 /** Normalize only our invitation routes. Compact QR payloads retain the small
  * preview required by older scanners; long optional content comes from the feed. */
+export function apiEndpoint(path: string, apiURL: string): URL {
+  return new URL(path.replace(/^\/+/, ''), apiURL.replace(/\/+$/, '') + '/');
+}
+
 export function canonicalInvitationURL(value: unknown, apiURL: string, compact = false): URL | null {
   const raw = String(value ?? '');
   if (!raw || raw.length > 8192) return null;
   try {
     const input = new URL(raw);
     const api = new URL(apiURL);
+    const debugBases = ['https://63yo3ore3c.execute-api.us-east-1.amazonaws.com',
+      'https://storage.wonek.com/cloud-calendars-debug'];
+    const bases = debugBases.includes(apiURL.replace(/\/+$/, '')) ? debugBases : [apiURL];
     const legacy = input.origin === 'https://appclip.apple.com'
       && input.pathname === '/id' && input.searchParams.get('p') === 'Deksan.CalendarASD.Clip';
-    const path = legacy ? '/event-invites/open' : input.pathname;
+    const routes = ['/event-invites/open', '/icloud-calendar-invites/open'];
+    const path = legacy ? routes[0] : routes.find(route => bases.some(base => {
+      const expected = apiEndpoint(route, base);
+      return input.origin === expected.origin && input.pathname === expected.pathname;
+    }));
     if (input.username || input.password || input.protocol !== 'https:'
-      || (!legacy && input.origin !== api.origin)
-      || !['/event-invites/open', '/icloud-calendar-invites/open'].includes(path)) return null;
-    const output = new URL(path, api);
+      || !path) return null;
+    const output = apiEndpoint(path, api.href);
     for (const key of path === '/event-invites/open' ? ['e', 'c'] : ['o', 'c']) {
       const id = input.searchParams.get(key) ?? '';
       if (!/^[A-Za-z0-9_-]{1,128}$/.test(id)) return null;

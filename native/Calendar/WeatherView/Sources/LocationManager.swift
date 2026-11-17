@@ -17,7 +17,7 @@ class LocationManager: NSObject, ObservableObject {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        #if DEBUG
+        #if DEBUG && os(iOS)
         if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
         manager.requestWhenInUseAuthorization()
@@ -27,14 +27,17 @@ class LocationManager: NSObject, ObservableObject {
 extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.authorizationStatus = status
-        #if DEBUG
+        #if DEBUG && os(iOS)
         if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
         
         print("🌦️ [WeatherAlerts] Location authorization changed: \(status.rawValue)")
 
         switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
+        #if os(iOS)
+        case .authorizedWhenInUse: manager.startUpdatingLocation()
+        #endif
+        case .authorizedAlways:
             manager.startUpdatingLocation()
         case .denied, .restricted:
             print("Location denied or restricted")
@@ -51,7 +54,7 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
 
-        #if DEBUG
+        #if DEBUG && os(iOS)
         if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
 

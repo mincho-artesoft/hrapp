@@ -75,17 +75,19 @@ struct EditCalendarView: View {
             }
             // Вместо "Edit Calendar" ползвате локализиран ключ
             .navigationBarTitle(LocalizedStringKey("Edit Calendar"), displayMode: .inline)
-            .navigationBarItems(
-                leading:
+            .toolbar {
+                AppSheetToolbarItem(placement: .topBarLeading) {
                     AppToolbarTextButton("Cancel") {
                         presentationMode.wrappedValue.dismiss()
-                    },
-                trailing:
+                    }
+                }
+                AppSheetToolbarItem(placement: .topBarTrailing) {
                     AppToolbarTextButton("Done") {
                         updateCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)
-            )
+                }
+            }
         }
     }
 

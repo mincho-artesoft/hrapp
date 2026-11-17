@@ -1,9 +1,6 @@
 import SwiftUI
 
-enum DraggableMenuContentLayout {
-    static let horizontalInset: CGFloat = 16
-    static let verticalInset: CGFloat = 8
-}
+
 
 /// A draggable bottom sheet menu with customizable bottom bar, horizontal & vertical content.
 struct DraggableMenuView<
@@ -16,7 +13,7 @@ struct DraggableMenuView<
     private let fixedBottomBarHeight = CalendarScrollLayout.bottomBarHeight
     private let handleHeight = CalendarScrollLayout.handleHeight
     private let collapsedPeekExtra = CalendarScrollLayout.collapsedPeekExtra
-    private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
+    private var topGapWhenExpanded: CGFloat = CalendarMenuViewport.initialHeight * 0.2
 
     @Binding var adaptiveBackgroundOpacity: CGFloat
     let backgroundOverride: Color?
@@ -73,8 +70,8 @@ struct DraggableMenuView<
         self.verticalScrollContent = verticalContent()
 
         // Compute initial offsets
-        let fullOffset = UIScreen.main.bounds.height * 0.2
-        let clippingHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
+        let fullOffset = CalendarMenuViewport.initialHeight * 0.2
+        let clippingHeight = CalendarMenuViewport.initialHeight - fixedBottomBarHeight
         let collapsedOffset = max(fullOffset, clippingHeight - handleHeight + collapsedPeekExtra)
 
         _currentOffsetY = State(
@@ -126,7 +123,7 @@ struct DraggableMenuView<
                     // or rotating, without changing other devices' layout.
                     let contentHeight = CalendarSafeAreaLayout.preservesHorizontalInsets
                         ? clippingHeight
-                        : UIScreen.main.bounds.height - fixedBottomBarHeight
+                        : CalendarMenuViewport.initialHeight - fixedBottomBarHeight
 
                     // 2.1 The sliding content
                     slidingContentView(fullOffsetY: fullOffsetY,
@@ -235,4 +232,14 @@ struct DraggableMenuView<
             }
     }
 
+}
+
+private enum CalendarMenuViewport {
+    static var initialHeight: CGFloat {
+        #if os(macOS)
+        800 // Replaced by the owning window's geometry on appearance.
+        #else
+        UIScreen.main.bounds.height
+        #endif
+    }
 }

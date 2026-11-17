@@ -1,3 +1,4 @@
+import { DurablePushQueue } from './durable-push-queue';
 import { Injectable } from '@nestjs/common';
 import { SendMessageCommand, SQSClient } from '@aws-sdk/client-sqs';
 import { randomUUID } from 'node:crypto';
@@ -17,9 +18,20 @@ const principalDevices = (id: string) => `principal/${id}/push-devices/`;
 @Injectable()
 export class PushService {
   private readonly sqs = new SQSClient({});
+  private queue?: DurablePushQueue;
+  private timer?: ReturnType<typeof setInterval>;
   constructor(private readonly store: StoreService, private readonly apns: APNsService) {}
 
-  get configured(): boolean { return Boolean(process.env.PUSH_QUEUE_URL) && this.apns.configured; }
+  onModuleInit() {
+    if (process.env.PUSH_TRANSPORT !== 'storage') return;
+    this.queue = new DurablePushQueue(this.store, job => this.dispatch(job));
+    this.timer = setInterval(() => void this.queue.drain().catch(() => console.error('[Push] Queue retry pending')), 5_000);
+    this.timer.unref();
+  }
+  onModuleDestroy() { if (this.timer) clearInterval(this.timer); }
+
+
+  get configured(): boolean { return (process.env.PUSH_TRANSPORT === 'storage' || Boolean(process.env.PUSH_QUEUE_URL)) && this.apns.configured; }
 
   private identityHashes(account: any): Set<string> {
     return new Set(Object.values(account?.identities ?? {}).flatMap((identity: any) =>
@@ -65,17 +77,22 @@ export class PushService {
   }
 
   /** Enqueue after the canonical invitation and recipient index are committed.
-   * SQS owns retries independently of the API request and the sender app. */
+   * The configured durable queue owns retries independently of the request. */
   async enqueue(kind: 'event' | 'calendar', email: string, ownerId: string, resourceId: string): Promise<void> {
     if (!this.configured) return; // Existing production stays untouched until configured.
     const job: InvitationJob = {
       version: 1, id: randomUUID(), kind, emailHash: hashKey(normalize(email)),
       ownerId, resourceId, createdAt: Date.now(),
     };
-    await this.sqs.send(new SendMessageCommand({ QueueUrl: process.env.PUSH_QUEUE_URL, MessageBody: JSON.stringify(job) }));
+    if (process.env.PUSH_TRANSPORT === 'storage') {
+      this.queue ??= new DurablePushQueue(this.store, item => this.dispatch(item));
+      await this.queue.enqueue(job);
+    } else {
+      await this.sqs.send(new SendMessageCommand({ QueueUrl: process.env.PUSH_QUEUE_URL, MessageBody: JSON.stringify(job) }));
+    }
   }
 
-  /** Called only by the SQS-triggered Lambda, never by a public HTTP route. */
+  /** Called only by the queue worker, never by a public HTTP route. */
   async dispatch(job: InvitationJob): Promise<void> {
     if (job.version !== 1 || !['event', 'calendar'].includes(job.kind)
         || !/^[0-9a-f-]{36}$/i.test(job.id) || !job.ownerId || !job.resourceId

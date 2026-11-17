@@ -1,6 +1,6 @@
 <a class="skip-link" [href]="mainHref()">Skip to content</a>
 
-<app-header />
+@if (!isCalendarWorkspace()) { <app-header /> }
 
 <main id="main">
   <router-outlet />
@@ -8,4 +8,4 @@
 
 <cc-app-store-bridge />
 
-<app-footer />
+@if (!isCalendarWorkspace()) { <app-footer /> }

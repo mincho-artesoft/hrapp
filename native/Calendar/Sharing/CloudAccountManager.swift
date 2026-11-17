@@ -2,13 +2,19 @@ import AuthenticationServices
 import CryptoKit
 import Foundation
 import SwiftUI
+#if os(macOS)
+import AppKit
+typealias CloudAccountWindow = NSWindow
+#else
 import UIKit
+typealias CloudAccountWindow = UIWindow
+#endif
 
 /// The identity that owns App Clip shares. This is intentionally separate from
 /// the Google/Microsoft accounts connected as calendar data sources.
 @MainActor
 final class CloudAccountManager: NSObject, ObservableObject {
-    private struct OAuthConfiguration: Sendable {
+    struct OAuthConfiguration: Sendable {
         let provider: String
         let clientID: String
         let authorizationEndpoint: URL
@@ -46,17 +52,21 @@ final class CloudAccountManager: NSObject, ObservableObject {
         )
     }
 
-    private struct OAuthTokenResponse: Decodable, Sendable {
+    struct OAuthTokenResponse: Decodable, Sendable {
         let accessToken: String?
         let idToken: String?
         let error: String?
         let errorDescription: String?
+        let refreshToken: String?
+        let expiresIn: Double?
 
         enum CodingKeys: String, CodingKey {
             case accessToken = "access_token"
             case idToken = "id_token"
             case error
             case errorDescription = "error_description"
+            case refreshToken = "refresh_token"
+            case expiresIn = "expires_in"
         }
     }
 
@@ -120,15 +130,50 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     private var appleAuthorizationController: ASAuthorizationController?
     private var webAuthenticationSession: ASWebAuthenticationSession?
-    private weak var accountPresentationWindow: UIWindow?
-    private var authenticationWindow: UIWindow?
+    private weak var accountPresentationWindow: CloudAccountWindow?
+    private var authenticationWindow: CloudAccountWindow?
     private var signInState = CloudSignInAttemptState()
     private var signInTask: Task<Void, Never>?
     private var signInTimeoutTask: Task<Void, Never>?
+    #if os(macOS)
+    @Published private(set) var canOpenBrowserSignIn = false
+    private var browserFallbackTask: Task<Void, Never>?
+    private var browserAuthorizationURL: URL?
+    private var browserCallback: ((URL?, Error?) -> Void)?
+    private var browserCallbackScheme: String?
+    private var browserCallbackState: String?
+    private var usesBrowserFallback = false
+
+    func openBrowserSignIn() {
+        guard canOpenBrowserSignIn, let url = browserAuthorizationURL else { return }
+        usesBrowserFallback = true
+        canOpenBrowserSignIn = false
+        webAuthenticationSession?.cancel()
+        webAuthenticationSession = nil
+        // Register this build before the browser returns its private callback.
+        LSRegisterURL(Bundle.main.bundleURL as CFURL, true)
+        if !NSWorkspace.shared.open(url), let attempt = signInState.current {
+            finishSignIn(attempt)
+            setError(OAuthError.couldNotStart.localizedDescription, for: attempt.provider)
+        }
+    }
+
+    @discardableResult func handleBrowserCallback(_ url: URL) -> Bool {
+        guard usesBrowserFallback, signInState.current != nil,
+              url.scheme?.lowercased() == browserCallbackScheme?.lowercased(),
+              URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?
+                .first(where: { $0.name == "state" })?.value == browserCallbackState,
+              let callback = browserCallback else { return false }
+        browserCallback = nil
+        callback(url, nil)
+        NSApp.activate(ignoringOtherApps: true)
+        return true
+    }
+    #endif
 
     var canCancelSignIn: Bool { signInState.current != nil }
 
-    func updatePresentationWindow(_ window: UIWindow?) {
+    func updatePresentationWindow(_ window: CloudAccountWindow?) {
         if let window { accountPresentationWindow = window }
     }
 
@@ -136,13 +181,29 @@ final class CloudAccountManager: NSObject, ObservableObject {
         guard !isSigningIn else { return nil }
         // Capture the account sheet's actual window before the system login
         // makes the scene inactive. Never start against a new, invisible window.
+        #if os(macOS)
+        let window = accountPresentationWindow ?? NSApp.keyWindow ?? NSApp.mainWindow
+            ?? NSApp.windows.first(where: { $0.isVisible && $0.canBecomeKey })
+        guard let window, window.isVisible else {
+            setError(OAuthError.couldNotStart.localizedDescription, for: provider)
+            return nil
+        }
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        #else
         let window = accountPresentationWindow ?? Self.presentingViewController()?.view.window
         guard let window, !window.isHidden, window.windowScene != nil else {
             setError(OAuthError.couldNotStart.localizedDescription, for: provider)
             return nil
         }
+        #endif
         guard let attempt = signInState.begin(provider: provider) else { return nil }
+        #if os(macOS)
+        // Anchor browser authentication to the app window, not its account sheet.
+        authenticationWindow = window.sheetParent ?? window
+        #else
         authenticationWindow = window
+        #endif
         isSigningIn = true
         clearError(for: provider)
         scheduleSignInTimeout(attempt, seconds: 300)
@@ -171,6 +232,12 @@ final class CloudAccountManager: NSObject, ObservableObject {
         authenticationWindow = nil
         signInTask = nil
         isSigningIn = false
+        #if os(macOS)
+        browserFallbackTask?.cancel(); browserFallbackTask = nil
+        browserAuthorizationURL = nil; browserCallback = nil
+        browserCallbackScheme = nil; browserCallbackState = nil
+        usesBrowserFallback = false; canOpenBrowserSignIn = false
+        #endif
         recordSignInPhase("finished", provider: attempt.provider)
     }
 
@@ -316,7 +383,8 @@ final class CloudAccountManager: NSObject, ObservableObject {
     /// identity tokens are held only long enough to establish the app's own
     /// server session; neither GoogleSignIn nor MSAL gets a chance to create a
     /// Keychain item for this dedicated sharing identity.
-    private func startOAuth(_ configuration: OAuthConfiguration) {
+    private func startOAuth(_ configuration: OAuthConfiguration,
+        onTokens: ((OAuthTokenResponse) async throws -> Void)? = nil) {
         guard !isSigningIn else { return }
 
         let codeVerifier = Self.randomURLSafeValue()
@@ -335,16 +403,20 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
         guard let attempt = beginSignIn(provider: configuration.provider) else { return }
 
-        let session = ASWebAuthenticationSession(
-            url: authorizationURL,
-            callbackURLScheme: configuration.callbackScheme
-        ) { [weak self] callbackURL, error in
+        let completion: (URL?, Error?) -> Void = { [weak self] callbackURL, error in
             let errorDescription = error?.localizedDescription
             let errorCode = (error as NSError?)?.code
             let errorDomain = (error as NSError?)?.domain
 
             Task { @MainActor [weak self, callbackURL, errorDescription, errorCode, errorDomain] in
                 guard let self, self.signInState.contains(attempt.id) else { return }
+                #if os(macOS)
+                // Switching to the external browser cancels only the system
+                // presentation; the same PKCE/state-bound login remains active.
+                if callbackURL == nil && self.usesBrowserFallback { return }
+                self.browserFallbackTask?.cancel()
+                self.canOpenBrowserSignIn = false
+                #endif
                 self.signInTask = Task { @MainActor in
                     guard self.signInState.contains(attempt.id) else { return }
                     self.webAuthenticationSession = nil
@@ -379,6 +451,11 @@ final class CloudAccountManager: NSObject, ObservableObject {
                         )
                         try Task.checkCancellation()
                         guard self.signInState.contains(attempt.id) else { return }
+                        if let onTokens {
+                            try await onTokens(response)
+                            self.finishSignIn(attempt)
+                            return
+                        }
                         let token: String?
                         switch configuration.backendToken {
                         case .identityToken:
@@ -405,10 +482,26 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 }
             }
         }
+        // The system owns the callback for this exact session. Opening a plain
+        // browser tab lets Launch Services route the response to another build.
+        let session = ASWebAuthenticationSession(url: authorizationURL,
+            callbackURLScheme: configuration.callbackScheme, completionHandler: completion)
         session.presentationContextProvider = self
+        #if os(iOS)
         session.prefersEphemeralWebBrowserSession = true
+        #endif
         webAuthenticationSession = session
-
+        #if os(macOS)
+        browserAuthorizationURL = authorizationURL
+        browserCallback = completion
+        browserCallbackScheme = configuration.callbackScheme
+        browserCallbackState = state
+        browserFallbackTask = Task { @MainActor [weak self] in
+            do { try await Task.sleep(for: .seconds(8)) } catch { return }
+            guard let self, self.signInState.contains(attempt.id), self.webAuthenticationSession != nil else { return }
+            self.canOpenBrowserSignIn = true
+        }
+        #endif
         guard session.canStart, session.start() else {
             finishSignIn(attempt)
             setError(OAuthError.couldNotStart.localizedDescription, for: configuration.provider)
@@ -416,6 +509,38 @@ final class CloudAccountManager: NSObject, ObservableObject {
         }
         recordSignInPhase("provider-presented", provider: configuration.provider)
     }
+
+    #if os(macOS)
+    /// Calendar consent is independent of the sharing identity and its scopes.
+    static let calendarConnections = CloudAccountManager()
+    static func calendarConfiguration(_ provider: String) -> OAuthConfiguration {
+        let identity = provider == "google" ? OAuthConfiguration.google : .microsoft
+        return OAuthConfiguration(provider: identity.provider, clientID: identity.clientID,
+            authorizationEndpoint: identity.authorizationEndpoint, tokenEndpoint: identity.tokenEndpoint,
+            redirectURI: identity.redirectURI, callbackScheme: identity.callbackScheme,
+            scopes: provider == "google"
+                ? "openid email profile https://www.googleapis.com/auth/calendar"
+                : "openid profile email offline_access User.Read Calendars.ReadWrite",
+            backendToken: identity.backendToken)
+    }
+    func connectCalendars(provider: String, onTokens: @escaping (OAuthTokenResponse) async throws -> Void) {
+        startOAuth(Self.calendarConfiguration(provider), onTokens: onTokens)
+    }
+    static func refreshCalendarToken(provider: String, refreshToken: String) async throws -> OAuthTokenResponse {
+        let configuration = calendarConfiguration(provider)
+        var request = URLRequest(url: configuration.tokenEndpoint)
+        request.httpMethod = "POST"; request.timeoutInterval = 20
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = formEncoded(["client_id": configuration.clientID,
+            "grant_type": "refresh_token", "refresh_token": refreshToken, "scope": configuration.scopes])
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let value = try JSONDecoder().decode(OAuthTokenResponse.self, from: data)
+        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode), value.accessToken != nil else {
+            throw OAuthError.tokenExchangeFailed(value.errorDescription ?? NSLocalizedString("Reconnect your calendar account to continue syncing.", comment: ""))
+        }
+        return value
+    }
+    #endif
 
     private static func authorizationURL(
         for configuration: OAuthConfiguration,
@@ -438,6 +563,11 @@ final class CloudAccountManager: NSObject, ObservableObject {
             URLQueryItem(name: "nonce", value: nonce),
             URLQueryItem(name: "prompt", value: "select_account")
         ]
+        if configuration.provider == "google", configuration.scopes.contains("calendar") {
+            components?.queryItems?.append(URLQueryItem(name: "access_type", value: "offline"))
+            components?.queryItems?.removeAll { $0.name == "prompt" }
+            components?.queryItems?.append(URLQueryItem(name: "prompt", value: "consent select_account"))
+        }
         return components?.url
     }
 
@@ -535,13 +665,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     }
 
     func requestMicrosoftSubscription() {
-        setError(
-            NSLocalizedString(
-                "A Premium subscription is required to connect Microsoft.",
-                comment: "Microsoft identity subscription requirement"
-            ),
-            for: "microsoft"
-        )
+        clearError(for: "microsoft")
         let payload: [String: Any] = ["subscriptionStatusRaw": "Premium"]
         NotificationCenter.default.post(
             name: .notificationDraggableMenuViewSub,
@@ -563,13 +687,19 @@ final class CloudAccountManager: NSObject, ObservableObject {
         Task {
             defer { isSigningIn = false }
             do {
+                #if os(iOS)
                 try await InvitationPushRegistration.shared.prepareForSignOut(session: CalendarFeedSession.existing)
+                #endif
                 CalendarFeedSession.forget()
+                #if os(iOS)
                 SharedInviteTracker.demoteAllToReader()
                 SharedICloudCalendarLocalStore.demoteAllToReader()
+                #endif
                 account = nil
                 providerErrors.removeAll()
+                #if os(iOS)
                 PendingEventInvitationManager.shared.removeInvitationNotifications()
+                #endif
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             } catch {
                 for identity in account?.identities ?? [] {
@@ -628,11 +758,13 @@ final class CloudAccountManager: NSObject, ObservableObject {
             // all Connect buttons disabled while other network work finishes.
             finishSignIn(attempt)
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+            #if os(iOS)
             InvitationPushRegistration.shared.requestSync()
             Task {
                 await SharedEventRecovery.restoreFromServer()
                 await PendingEventInvitationManager.shared.refresh(notifyForNewInvitations: true)
             }
+            #endif
         } catch CalendarFeedSession.SessionError.emailRequired where provider == "apple" {
             guard signInState.contains(attempt.id) else { return }
             finishSignIn(attempt)
@@ -667,6 +799,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         return identities.values.sorted { $0.provider < $1.provider }
     }
 
+    #if os(iOS)
     private static func presentingViewController() -> UIViewController? {
         let scenes = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
@@ -681,6 +814,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         }
         return controller
     }
+    #endif
 }
 
 extension CloudAccountManager: ASAuthorizationControllerDelegate {
@@ -703,23 +837,31 @@ extension CloudAccountManager: ASAuthorizationControllerDelegate {
 
 extension CloudAccountManager: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        #if os(macOS)
+        authenticationWindow ?? NSApp.keyWindow ?? NSApp.mainWindow ?? ASPresentationAnchor()
+        #else
         authenticationWindow ?? accountPresentationWindow ?? Self.presentingViewController()?.view.window
             ?? UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows)
                 .first
             ?? ASPresentationAnchor()
+        #endif
     }
 }
 
 extension CloudAccountManager: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        #if os(macOS)
+        authenticationWindow ?? NSApp.keyWindow ?? NSApp.mainWindow ?? ASPresentationAnchor()
+        #else
         authenticationWindow ?? accountPresentationWindow ?? Self.presentingViewController()?.view.window
             ?? UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows)
                 .first
             ?? ASPresentationAnchor()
+        #endif
     }
 }
 
@@ -751,7 +893,7 @@ struct CloudAccountSignInContent: View {
             if manager.isSignedIn {
                 HStack {
                     Label("App Clip sharing account", systemImage: "checkmark.shield.fill")
-                        .font(.subheadline.weight(.medium))
+                        .font(CalendarTypography.subheadline.weight(.medium))
                         .foregroundStyle(.green)
                     Spacer()
                 }
@@ -763,13 +905,20 @@ struct CloudAccountSignInContent: View {
                     ProgressView()
                     Text("Signing in…")
                         .foregroundStyle(.secondary)
+                    #if os(macOS)
+                    if manager.canOpenBrowserSignIn {
+                        Button("Open Sign-In in Browser", action: manager.openBrowserSignIn)
+                            .buttonStyle(.plain)
+                            .foregroundStyle(Color.accentColor)
+                    }
+                    #endif
                     Spacer(minLength: 8)
                     if manager.canCancelSignIn {
                         Button("Cancel", action: manager.cancelSignIn)
                             .buttonStyle(.borderless)
                     }
                 }
-                .font(.subheadline)
+                .font(CalendarTypography.subheadline)
             }
 
         }
@@ -780,20 +929,20 @@ struct CloudAccountSignInContent: View {
     private var guidanceCard: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: manager.isSignedIn ? "person.crop.circle.badge.checkmark" : "person.crop.circle.badge.exclamationmark")
-                .font(.title2)
+                .font(CalendarTypography.title2)
                 .foregroundStyle(manager.isSignedIn ? .green : .blue)
                 .frame(width: 30)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Sign in with at least one account")
-                    .font(.body.weight(.semibold))
+                    .font(CalendarTypography.body.weight(.semibold))
                     .fixedSize(horizontal: false, vertical: true)
                 Text("Use Apple, Google, or Microsoft.")
-                    .font(.subheadline)
+                    .font(CalendarTypography.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
                 Text("A verified email is required to share, recover, or use access granted by an owner.")
-                    .font(.subheadline)
+                    .font(CalendarTypography.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -830,7 +979,7 @@ struct CloudAccountSignInContent: View {
                         systemImage: systemImage
                     ) {
                         Text("Connect")
-                            .font(.subheadline.weight(.semibold))
+                            .font(CalendarTypography.subheadline.weight(.semibold))
                             .foregroundStyle(.blue)
                     }
                 }
@@ -861,11 +1010,11 @@ struct CloudAccountSignInContent: View {
                     providerLabel(title: "Microsoft", assetName: "microsoft_icon") {
                         if subscriptionManager.subscriptionStatus == .premium {
                             Text("Connect")
-                                .font(.subheadline.weight(.semibold))
+                                .font(CalendarTypography.subheadline.weight(.semibold))
                                 .foregroundStyle(.blue)
                         } else {
                             Label("Premium", systemImage: "lock.fill")
-                                .font(.subheadline.weight(.semibold))
+                                .font(CalendarTypography.subheadline.weight(.semibold))
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -887,7 +1036,7 @@ struct CloudAccountSignInContent: View {
                 Text(error)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .font(.subheadline)
+            .font(CalendarTypography.subheadline)
             .foregroundStyle(.red)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 12)
@@ -909,7 +1058,7 @@ struct CloudAccountSignInContent: View {
                     Image(systemName: "checkmark.circle.fill")
                     Text("Connected")
                 }
-                .font(.subheadline.weight(.semibold))
+                .font(CalendarTypography.subheadline.weight(.semibold))
                 .foregroundStyle(.green)
             } subtitle: {
                 manager.account?.identity(for: provider)?.email
@@ -919,7 +1068,7 @@ struct CloudAccountSignInContent: View {
                 manager.signOut(provider: provider)
             } label: {
                 Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
-                    .font(.subheadline.weight(.semibold))
+                    .font(CalendarTypography.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
             }
@@ -955,11 +1104,11 @@ struct CloudAccountSignInContent: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.body.weight(.semibold))
+                    .font(CalendarTypography.body.weight(.semibold))
                     .foregroundStyle(.primary)
                 if let subtitle = subtitle(), !subtitle.isEmpty {
                     Text(subtitle)
-                        .font(.subheadline)
+                        .font(CalendarTypography.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
@@ -970,8 +1119,9 @@ struct CloudAccountSignInContent: View {
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 14)
         .frame(minHeight: 50)
-        .background(Color(uiColor: .secondarySystemBackground))
+        .background(CalendarSurfaceColors.gray6)
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(Color.primary.opacity(0.06), lineWidth: 1)
@@ -979,6 +1129,7 @@ struct CloudAccountSignInContent: View {
     }
 }
 
+#if os(iOS)
 struct CloudAccountSignInView: View {
     @ObservedObject private var manager = CloudAccountManager.shared
     @Environment(\.dismiss) private var dismiss
@@ -1000,14 +1151,14 @@ struct CloudAccountSignInView: View {
             .navigationTitle("Sign In")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Close") {
+                AppSheetToolbarItem(placement: .topBarLeading) {
+                    AppToolbarTextButton("Close") {
                         manager.cancelSignIn()
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
+                AppSheetToolbarItem(placement: .topBarTrailing) {
+                    AppToolbarTextButton("Done") {
                         manager.cancelSignIn()
                         if let onDone {
                             onDone()
@@ -1026,7 +1177,7 @@ struct CloudAccountSignInView: View {
 /// Reads the window belonging to this particular sheet, including in iPad
 /// multi-window mode. It never makes a window key or presents its own controller.
 private struct CloudAccountWindowReader: UIViewRepresentable {
-    let onWindow: (UIWindow?) -> Void
+    let onWindow: (CloudAccountWindow?) -> Void
     func makeUIView(context: Context) -> WindowView {
         let view = WindowView()
         view.isUserInteractionEnabled = false
@@ -1038,10 +1189,32 @@ private struct CloudAccountWindowReader: UIViewRepresentable {
         if let window = uiView.window { onWindow(window) }
     }
     final class WindowView: UIView {
-        var onWindow: ((UIWindow?) -> Void)?
+        var onWindow: ((CloudAccountWindow?) -> Void)?
         override func didMoveToWindow() {
             super.didMoveToWindow()
             onWindow?(window)
         }
     }
 }
+
+#endif
+
+#if os(macOS)
+struct CloudAccountWindowReader: NSViewRepresentable {
+    let onWindow: (NSWindow?) -> Void
+    func makeNSView(context: Context) -> WindowView {
+        let view = WindowView(); view.onWindow = onWindow; return view
+    }
+    func updateNSView(_ view: WindowView, context: Context) {
+        view.onWindow = onWindow
+        if let window = view.window { onWindow(window) }
+    }
+    final class WindowView: NSView {
+        var onWindow: ((NSWindow?) -> Void)?
+        override func viewDidMoveToWindow() {
+            super.viewDidMoveToWindow()
+            if let window { onWindow?(window) }
+        }
+    }
+}
+#endif

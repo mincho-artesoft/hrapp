@@ -46,14 +46,13 @@ struct YearCalendarView: View {
     // MARK: - Тяло
     var body: some View {
         VStack(spacing: 0) {
-            if showSearchBar {
+            CalendarSearchHeader(isSearching: showSearchBar, height: CalendarHeaderLayout.height) {
+                topBar
+            } search: {
                 CalendarEventSearchField(text: $searchText) {
                     showSearchBar = false
                     searchText = ""
                 }
-                    .transition(.move(edge: .top))
-            } else {
-                topBar
             }
             
             // (B) Header с навигация по години (скрит при активно търсене)
@@ -166,10 +165,9 @@ struct YearCalendarView: View {
         .onReceive(viewModel.calendarContentDidChange) { _ in
             viewModel.loadEventsForWholeYear(year: year)
         }
-        .animation(.easeInOut, value: showSearchBar)
 
         // (D) Sheet за създаване/редактиране на събитие
-        .sheet(item: $eventToEdit, onDismiss: {
+        .appSheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEventsForWholeYear(year: year)
         }) { ev in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)

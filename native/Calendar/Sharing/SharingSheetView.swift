@@ -175,10 +175,10 @@ struct SharingSheetView: View {
         .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
             Task { await pendingInvitationManager.refresh() }
         }
-        .fullScreenCover(isPresented: $showCloudAccount) {
+        .appFullScreenCover(isPresented: $showCloudAccount) {
             cloudAccountView
         }
-        .fullScreenCover(isPresented: $showQRScanner, onDismiss: presentScannedEvent) {
+        .appFullScreenCover(isPresented: $showQRScanner, onDismiss: presentScannedEvent) {
             SharedEventQRScannerView { share in
                 switch share {
                 case .event(let payload):
@@ -190,19 +190,19 @@ struct SharingSheetView: View {
                 }
             }
         }
-        .sheet(item: $scannedEvent) { payload in
+        .appSheet(item: $scannedEvent) { payload in
             SharedEventImportView(payload: payload)
         }
-        .sheet(item: $scannedCalendar) { payload in
+        .appSheet(item: $scannedCalendar) { payload in
             SharedCalendarInvitationView(payload: payload)
         }
-        .sheet(item: $scannedWebAuth) { payload in
+        .appSheet(item: $scannedWebAuth) { payload in
             WebStudioAuthSheetView(initialChallenge: payload)
         }
-        .sheet(isPresented: $showWebAuthenticator) {
+        .appSheet(isPresented: $showWebAuthenticator) {
             WebStudioAuthSheetView(initialChallenge: nil)
         }
-        .fullScreenCover(item: $sharedEventsDestination) { destination in
+        .appFullScreenCover(item: $sharedEventsDestination) { destination in
             sharedEventsList(destination)
         }
     }
@@ -265,70 +265,13 @@ struct SharingSheetView: View {
     }
 
     private var scanEventQRCodeButton: some View {
-        Button { showQRScanner = true } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "qrcode.viewfinder")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.blue)
-                    .frame(width: 38, height: 38)
-                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Scan QR Code")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.primary)
-                    Text("Open a shared event or calendar")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 8)
-
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
+        AppMenuNavigationRow(title: "Scan QR Code", subtitle: NSLocalizedString("Open a shared event or calendar", comment: ""), symbol: "qrcode.viewfinder", color: .blue) { showQRScanner = true }
     }
 
     private var cloudAccountButton: some View {
-            Button {
-                showCloudAccount = true
-            } label: {
-                HStack(spacing: 12) {
-                    Image(systemName: cloudAccountManager.isSignedIn
-                          ? "person.crop.circle.badge.checkmark"
-                          : "person.crop.circle.badge.exclamationmark")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(cloudAccountManager.isSignedIn ? .green : .blue)
-                        .frame(width: 38, height: 38)
-                        .background(
-                            (cloudAccountManager.isSignedIn ? Color.green : Color.blue).opacity(0.12),
-                            in: RoundedRectangle(cornerRadius: 10)
-                        )
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Cloud Calendars account")
-                            .font(.body.weight(.semibold))
-                            .foregroundStyle(.primary)
-                        Text(cloudAccountSummary)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Spacer(minLength: 8)
-
-                    Image(systemName: "chevron.forward")
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(.tertiary)
-                }
-                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
+        AppMenuNavigationRow(title: "Cloud Calendars account", subtitle: cloudAccountSummary,
+            symbol: cloudAccountManager.isSignedIn ? "person.crop.circle.badge.checkmark" : "person.crop.circle.badge.exclamationmark",
+            color: cloudAccountManager.isSignedIn ? .green : .blue) { showCloudAccount = true }
     }
 
     private var cloudAccountSummary: String {
@@ -341,35 +284,7 @@ struct SharingSheetView: View {
     }
 
     private var webAuthenticatorButton: some View {
-        Button {
-            showWebAuthenticator = true
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "key.horizontal.fill")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.teal)
-                    .frame(width: 38, height: 38)
-                    .background(Color.teal.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Web Sign-In & Authenticator")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.primary)
-                    Text("6-digit security code for cloud-calendars.com")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 8)
-
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
+        AppMenuNavigationRow(title: "Web Sign-In & Authenticator", subtitle: NSLocalizedString("6-digit security code for cloud-calendars.com", comment: ""), symbol: "key.horizontal.fill", color: .teal) { showWebAuthenticator = true }
     }
 
     private var cloudAccountView: some View {
@@ -395,8 +310,8 @@ struct SharingSheetView: View {
             .navigationTitle("Cloud Calendars account")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Close") {
                         cloudAccountManager.cancelSignIn()
                         showCloudAccount = false
                     }
@@ -436,46 +351,8 @@ struct SharingSheetView: View {
         color: Color,
         destination: SharedEventsDestination
     ) -> some View {
-        Button {
-            sharedEventsDestination = destination
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: systemImage)
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(color)
-                    .frame(width: 38, height: 38)
-                    .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.primary)
-                    Text(sharedEventsCountText(count, destination: destination))
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 8)
-
-                if destination == .pending, count > 0 {
-                    Text(verbatim: localizedIntegerString(count))
-                        .font(.caption2.weight(.bold))
-                        .foregroundStyle(.white)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.65)
-                        .frame(width: 26, height: 26)
-                        .background(color, in: Circle())
-                        .accessibilityLabel("\(count) pending invitations")
-                }
-
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
+        AppMenuNavigationRow(title: title, subtitle: sharedEventsCountText(count, destination: destination), symbol: systemImage, color: color,
+            badge: destination == .pending ? count : 0) { sharedEventsDestination = destination }
     }
 
     private func sharedEventsCountText(
@@ -497,35 +374,34 @@ struct SharingSheetView: View {
     private func sharedEventsList(_ destination: SharedEventsDestination) -> some View {
         NavigationStack {
             VStack(spacing: 0) {
-                if showSharedEventsSearch, destination != .pending {
+                CalendarSearchHeader(isSearching: showSharedEventsSearch && destination != .pending,
+                                     height: CalendarHeaderLayout.height) {
+                    sharedEventsListHeader(destination)
+                } search: {
                     CalendarEventSearchField(text: $sharedEventsSearchText) {
                         showSharedEventsSearch = false
                         sharedEventsSearchText = ""
                     }
-                    .transition(.move(edge: .top))
-                } else {
-                    sharedEventsListHeader(destination)
                 }
 
                 sharedEventsListContent(destination)
                     .allowsHitTesting(!isSurfaceFixture)
             }
-            .animation(.easeInOut, value: showSharedEventsSearch)
             .toolbar(.hidden, for: .navigationBar)
-            .sheet(item: $selectedEventAccessTarget) { event in
+            .appSheet(item: $selectedEventAccessTarget) { event in
                 SharedEventAccessSheet(event: event)
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
             }
-            .sheet(item: $selectedReceivedEvent, onDismiss: reloadSharedEvents) { event in
+            .appSheet(item: $selectedReceivedEvent, onDismiss: reloadSharedEvents) { event in
                 EventDetailViewWrapper(event: event)
             }
-            .sheet(item: $selectedPendingInvitation, onDismiss: {
+            .appSheet(item: $selectedPendingInvitation, onDismiss: {
                 Task { await pendingInvitationManager.refresh() }
             }) { payload in
                 SharedEventImportView(payload: payload)
             }
-            .sheet(item: $selectedPendingCalendarInvitation, onDismiss: {
+            .appSheet(item: $selectedPendingCalendarInvitation, onDismiss: {
                 Task { await pendingInvitationManager.refresh() }
             }) { payload in
                 SharedCalendarInvitationView(payload: payload)
@@ -558,47 +434,8 @@ struct SharingSheetView: View {
     }
 
     private func sharedEventsListHeader(_ destination: SharedEventsDestination) -> some View {
-        HStack(spacing: 0) {
-            Button {
-                closeSharedEventsList()
-            } label: {
-                Text(LocalizedStringKey("Close"))
-                    .font(.body)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.plain)
-            .frame(width: 72, alignment: .leading)
-
-            Text(destination.title)
-                .font(.headline)
-                .lineLimit(1)
-                .frame(maxWidth: .infinity)
-
-            if destination == .pending {
-                Color.clear
-                    .frame(width: 72, height: CalendarSearchAppearance.buttonSize)
-                    .accessibilityHidden(true)
-            } else {
-                Button {
-                    showSharedEventsSearch = true
-                } label: {
-                    Image(uiImage: CalendarSearchAppearance.iconImage)
-                        .renderingMode(.template)
-                        .foregroundStyle(.blue)
-                }
-                .frame(
-                    width: CalendarSearchAppearance.buttonSize,
-                    height: CalendarSearchAppearance.buttonSize
-                )
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-                .frame(width: 72, alignment: .trailing)
-                .accessibilityLabel("Search events")
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
+        SharedEventsPageHeader(title: destination.title, close: closeSharedEventsList,
+            search: destination == .pending ? nil : { showSharedEventsSearch = true })
     }
 
     private func closeSharedEventsList() {
@@ -1001,80 +838,9 @@ struct SharingSheetView: View {
         optionsAction: (() -> Void)? = nil,
         infoAction: (() -> Void)? = nil
     ) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title)
-                    .font(.body)
-                    .strikethrough(isCancelled, color: color)
-                    .foregroundStyle(.primary)
-
-                if let location, !location.isEmpty {
-                    Label(location, systemImage: "location")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                }
-            }
-
-            Spacer(minLength: 8)
-
-            VStack(alignment: .trailing, spacing: 5) {
-                if isAllDay {
-                    Text(LocalizedStringKey("all-day"))
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                } else {
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text(start.formatted(date: .omitted, time: .shortened))
-                        Text(end.formatted(date: .omitted, time: .shortened))
-                    }
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                }
-
-                if accessWasRemoved {
-                    Text(LocalizedStringKey("Access removed"))
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(Color.red)
-                        .fixedSize()
-                        .accessibilityLabel("Event access removed")
-                } else if let access {
-                    Text(access.title)
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(.thinMaterial, in: Capsule())
-                        .fixedSize()
-                        .accessibilityLabel("Event access: \(access.title)")
-                }
-
-                HStack(spacing: 2) {
-                    if let optionsAction {
-                        Button(action: optionsAction) {
-                            Image(systemName: "person.2.fill")
-                                .font(.body.weight(.semibold))
-                                .frame(width: 30, height: 30)
-                        }
-                        .buttonStyle(.borderless)
-                        .accessibilityLabel("Manage event access")
-                    }
-
-                    if let infoAction {
-                        Button(action: infoAction) {
-                            Image(systemName: "info.circle")
-                                .font(.body.weight(.semibold))
-                                .frame(width: 30, height: 30)
-                        }
-                        .buttonStyle(.borderless)
-            .accessibilityLabel("Event Details")
-                    }
-                }
-            }
-        }
-        .calendarEventRowAccent(color)
-        .padding(.vertical, 6)
-        .contentShape(Rectangle())
+        SharedEventPresentationRow(title: title, start: start, end: end, isAllDay: isAllDay,
+            location: location, isCancelled: isCancelled, color: color, access: access,
+            accessWasRemoved: accessWasRemoved, optionsAction: optionsAction, infoAction: infoAction)
     }
 
     #if DEBUG
@@ -1264,8 +1030,8 @@ private struct SharedEventAccessSheet: View {
                     .accessibilityLabel("Share Event")
                     .disabled(editableEvent == nil || isSaving)
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                AppSheetToolbarItem(placement: .confirmationAction) {
+                    AppToolbarTextButton("Done") { dismiss() }
                     .disabled(isLoading || isSaving)
                 }
             }
@@ -1290,7 +1056,7 @@ private struct SharedEventAccessSheet: View {
             } message: { recipient in
                 Text(recipient.displayEmail)
             }
-            .sheet(isPresented: $showEventEditor) {
+            .appSheet(isPresented: $showEventEditor) {
                 if let editableEvent {
                     AppLocalEventEditorView(
                         target: AppLocalEventEditorTarget(

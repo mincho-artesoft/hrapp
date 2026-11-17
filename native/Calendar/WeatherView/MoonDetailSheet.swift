@@ -68,7 +68,7 @@ struct MoonDetailSheet: View {
     }
 
     private var todayAccentColor: Color {
-        Color(uiColor: .systemOrange)
+        Color.orange
     }
 
     /// The moon card intentionally uses an all-caps section heading. The
@@ -83,7 +83,7 @@ struct MoonDetailSheet: View {
     }
 
     var body: some View {
-        NavigationStack {
+        CalendarSheetNavigation {
             VStack(spacing: 0) {
                 sheetHeader
 
@@ -91,7 +91,9 @@ struct MoonDetailSheet: View {
                     LazyVStack(spacing: 18) {
                         selectedDaySummary
                         moonCalendarCard
+                        #if os(iOS)
                         WeatherRotatingAdPlacement()
+                        #endif
                         tenDayMoonForecastCard
                     }
                     .padding(.horizontal, 16)
@@ -100,7 +102,9 @@ struct MoonDetailSheet: View {
                 }
             }
             .background(Color.black.ignoresSafeArea())
+            #if os(iOS)
             .toolbar(.hidden, for: .navigationBar)
+            #endif
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
@@ -121,8 +125,6 @@ struct MoonDetailSheet: View {
             .padding(.horizontal, 62)
 
             HStack {
-                Spacer()
-
                 Button {
                     dismiss()
                 } label: {
@@ -135,6 +137,8 @@ struct MoonDetailSheet: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel(NSLocalizedString("Close", comment: "Close button"))
+
+                Spacer()
             }
         }
         .frame(height: 62)

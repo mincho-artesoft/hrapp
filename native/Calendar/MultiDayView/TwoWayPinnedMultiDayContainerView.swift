@@ -437,7 +437,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchFieldHostingController = controller
         navBar.addSubview(controller.view)
 
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: CalendarSearchPresentation.duration) {
             controller.view.alpha = 1
             controller.view.transform = .identity
         }
@@ -446,7 +446,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     private func animateSearchBarOut() {
         guard let controller = searchFieldHostingController else { return }
 
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: CalendarSearchPresentation.duration, animations: {
             controller.view.alpha = 0
             controller.view.transform = CGAffineTransform(translationX: 0, y: -self.navBarHeight)
         }, completion: { _ in

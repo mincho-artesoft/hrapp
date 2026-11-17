@@ -69,14 +69,13 @@ struct MonthCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if showSearchBar {
+            CalendarSearchHeader(isSearching: showSearchBar, height: CalendarHeaderLayout.height) {
+                topBar
+            } search: {
                 CalendarEventSearchField(text: $searchText) {
                     showSearchBar = false
                     searchText = ""
                 }
-                    .transition(.move(edge: .top))
-            } else {
-                topBar
             }
             
             // (B) Навигация за месеца
@@ -146,7 +145,6 @@ struct MonthCalendarView: View {
                 }
             }
         }
-        .animation(.easeInOut, value: showSearchBar)
         .onAppear {
             // Зареждаме събития за текущия месец
             viewModel.loadEvents(for: currentMonth)
@@ -164,20 +162,20 @@ struct MonthCalendarView: View {
         .navigationBarHidden(true)
 
         // (E) Sheet за детайлен изглед
-        .sheet(item: $eventToView, onDismiss: {
+        .appSheet(item: $eventToView, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventDetailViewWrapper(event: theEvent)
         }
         
         // (F) Sheet за създаване/редакция
-        .sheet(item: $eventToEdit, onDismiss: {
+        .appSheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
 
-        .sheet(item: $appLocalEventTarget, onDismiss: {
+        .appSheet(item: $appLocalEventTarget, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { target in
             AppLocalEventEditorView(target: target)

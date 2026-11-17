@@ -1,0 +1,232 @@
+[
+  {
+    "file": "MacTabletCalendarViews.swift",
+    "source": "Main/MacTabletCalendarView.swift",
+    "sourceSHA256": "b53638db833a15c51d2f9414b30f5608a80dec1c06beedabcd251f5737897938"
+  },
+  {
+    "file": "MacCalendarDateRangePicker.swift",
+    "source": "Main/MacCalendarDateRangePicker.swift",
+    "sourceSHA256": "05f4dafb9c77618261e9a527b1c3ceebaab0c3e9c0175401e6cd59a54491f024"
+  },
+  {
+    "file": "MacCalendarFormStyle.swift",
+    "source": "Main/MacCalendarFormStyle.swift",
+    "sourceSHA256": "a1194f2053bfae8da942de4d762053c797a28b5cc0a4a85136e000f33571049c"
+  },
+  {
+    "file": "MacCalendarEventActivation.swift",
+    "source": "Main/MacCalendarEventActivation.swift",
+    "sourceSHA256": "5c7b5ebe4d3130de710c3de65614c6a1540567c64572c8f1496a7d4043844123"
+  },
+  {
+    "file": "MacCalendarEmptySpaceInteraction.swift",
+    "source": "Main/MacCalendarEmptySpaceInteraction.swift",
+    "sourceSHA256": "d09302e75855be0ced2df210c89c042dee3a09e50f4e7b4a0717af325933015d"
+  },
+  {
+    "file": "MacCalendarFormatting.swift",
+    "source": "Main/MacCalendarFormatting.swift",
+    "sourceSHA256": "aa01ee59a9ff09bd86a8f5ff9964d9ea1404fa4f1c2e0bbf14e938f4f5522f61"
+  },
+  {
+    "file": "MacCalendarWeekCarousel.swift",
+    "source": "Main/MacCalendarWeekCarousel.swift",
+    "sourceSHA256": "c24aa9cdacdd55a7c694fb2c1558d799fbc770b5b4b572b2f21428e553244b8f"
+  },
+  {
+    "file": "MacCalendarWheelPicker.swift",
+    "source": "Main/MacCalendarWheelPicker.swift",
+    "sourceSHA256": "f2f9f8aa0bc4de7639dea7e6c6dba20557b479dc5f3b304382d23bd8e4144d67"
+  },
+  {
+    "file": "MacCalendarPickerDay.swift",
+    "source": "Main/MacCalendarPickerDay.swift",
+    "sourceSHA256": "99bceacf9f8f8aa72f34de669e6a15038e6f023d70e10c3952b235ecf978c9be"
+  },
+  {
+    "file": "MacCalendarTimelineGeometry.swift",
+    "source": "Main/MacCalendarTimelineGeometry.swift",
+    "sourceSHA256": "174d1e61d9cbd48935f1ed606f1234d54fe94c02b59896bca4b666ec78d2f471"
+  },
+  {
+    "file": "MacCalendarEventCard.swift",
+    "source": "Main/MacCalendarEventCard.swift",
+    "sourceSHA256": "9b7611eb34165a261655d3b936f2cd36de510e84f5189eb5eddb37a356d7ae32"
+  },
+  {
+    "file": "MacCalendarDetailTimelinePreview.swift",
+    "source": "Main/MacCalendarDetailTimelinePreview.swift",
+    "sourceSHA256": "eae94d158a0604b37b26e3ec7f9cc144083db03f786e8db691c251ac677555a1"
+  },
+  {
+    "file": "MacCalendarDragGeometry.swift",
+    "source": "Main/MacCalendarDragGeometry.swift",
+    "sourceSHA256": "a29d7d0a1143ee448060e9dd20b4809500487ff8e02fc18c0eb244e396f849cf"
+  },
+  {
+    "file": "MacCalendarInlineDatePicker.swift",
+    "source": "Main/MacCalendarInlineDatePicker.swift",
+    "sourceSHA256": "41527938c865070bf5cb8fdf0fcc8d5f1e0f106ad26e9e6dffd0fde4ce7d2e3a"
+  },
+  {
+    "file": "MacCalendarTimelineInteractionLayer.swift",
+    "source": "Main/MacCalendarTimelineInteractionLayer.swift",
+    "sourceSHA256": "626c31527927ad172b9c1e63719dfdea93e0ce345c4da0e437caaf18b48c7999"
+  },
+  {
+    "file": "MacCalendarRangeSelection.swift",
+    "source": "Main/MacCalendarRangeSelection.swift",
+    "sourceSHA256": "6f2ded3312fb6154aae57430a4d61d065c656eb9a1e83350f64faef7b36be290"
+  },
+  {
+    "file": "MacCalendarTimelineColumns.swift",
+    "source": "Main/MacCalendarTimelineColumns.swift",
+    "sourceSHA256": "704ee3da12c5e400686dc3a5704fe553838bf633c7c26b6a97a20e0fe1091b61"
+  },
+  {
+    "file": "CalendarWeekCarouselMath.swift",
+    "source": "Main/CalendarWeekCarouselMath.swift",
+    "sourceSHA256": "ef80f920f699ef613c7fb6b8de36de206ad40aeb15f77fa9494fee7bdfc5504c"
+  },
+  {
+    "file": "AppFormatting.swift",
+    "source": "Main/AppFormatting.swift",
+    "sourceSHA256": "6372b1a9da8572a2af9fa79bc3043c9fc1e2e100303c430c3b2cc58d55cfdeef"
+  },
+  {
+    "file": "MacCalendarInitialFocus.swift",
+    "source": "Components/MacCalendarInitialFocus.swift",
+    "sourceSHA256": "a935784f63cbdcd2d2d016afd535b14c0bbf9e6bfdbd8d8b15723e2fe700b4cd"
+  },
+  {
+    "file": "CalendarDateTimePickerRow.swift",
+    "source": "Components/CalendarDateTimePickerRow.swift",
+    "sourceSHA256": "9abc921dedded21c212c120f18fe52b766f65096ca3dd9430b9069a840efa270"
+  },
+  {
+    "file": "CalendarDatePickerStyle.swift",
+    "source": "Components/CalendarDatePickerStyle.swift",
+    "sourceSHA256": "c780f95e3bc7d5f1a1c0691bce3137ee04164cd6be6225544b6d818ef561190f"
+  },
+  {
+    "file": "CalendarInlineDateGrid.swift",
+    "source": "Components/CalendarInlineDateGrid.swift",
+    "sourceSHA256": "c0337f889dc8657d157497d41cc84935f368aa0f357a49f42e4e67f0fde490df"
+  },
+  {
+    "file": "CalendarPickerDay.swift",
+    "source": "Components/CalendarPickerDay.swift",
+    "sourceSHA256": "ec41881f56b4b830b0d6edf7bfdfb4924e3281070ce30f45cf672fcce24daeef"
+  },
+  {
+    "file": "CalendarTravelTimeOption.swift",
+    "source": "Components/CalendarTravelTimeOption.swift",
+    "sourceSHA256": "fc977cf11283236f63da2a9f77dc719d3c5fc20d0470c21686bd0a1d72247c8e"
+  },
+  {
+    "file": "AdaptiveControlLabel.swift",
+    "source": "Components/AdaptiveControlLabel.swift",
+    "sourceSHA256": "772164e2f05e31e01191369c69e61815ab853845e66dab94cdde7e3d11d3b529"
+  },
+  {
+    "file": "AppLocalization.swift",
+    "source": "Components/AppLocalization.swift",
+    "sourceSHA256": "7c1e4255f4c0b412fc34dbb569737323e62496c4328825b539480b09e2cb73b4"
+  },
+  {
+    "file": "CalendarRecurrenceEditor.swift",
+    "source": "Components/CalendarRecurrenceEditor.swift",
+    "sourceSHA256": "7ae66e6a682ee6081689312a30b9807cab0bad723fe50e3ddb70fdcfde56b8e2"
+  },
+  {
+    "file": "CalendarRecurrencePattern.swift",
+    "source": "Components/CalendarRecurrencePattern.swift",
+    "sourceSHA256": "e33a5273cbf88b60f0356881158dfe71b03bfd9fc711f1356afa73db2391b5cf"
+  },
+  {
+    "file": "CalendarRecurrenceSummary.swift",
+    "source": "Components/CalendarRecurrenceSummary.swift",
+    "sourceSHA256": "beb1b04219c2e081f29d92ff92f549a5ca4e57f84debc3800216c60cc44deca6"
+  },
+  {
+    "file": "AppMenuValueLabel.swift",
+    "source": "Components/AppMenuValueLabel.swift",
+    "sourceSHA256": "9782c2058f29dce2dec513bc7a4cb6d38dcc731bad6623e5ee3437290ac929d2"
+  },
+  {
+    "file": "EventTimelineColors.swift",
+    "source": "CalendarKit/EventTimelineColors.swift",
+    "sourceSHA256": "ad4c6d5d9d19ee5963a4ab611b931a50f719ae0ec556d1f071d2228fb9a6e55a"
+  },
+  {
+    "file": "TimelineInteractionGeometry.swift",
+    "source": "CalendarKit/TimelineInteractionGeometry.swift",
+    "sourceSHA256": "5c2c83ae791443710b052f417ccc0a5a791cde2fcca4d10cd1c033d85496663f"
+  },
+  {
+    "file": "TimelineTimeLabels.swift",
+    "source": "CalendarKit/TimelineTimeLabels.swift",
+    "sourceSHA256": "e74159b6930e1a9d7eb09eebdf184352a35c9ec19d6ab7fd99e7e9c460b6f9e4"
+  },
+  {
+    "file": "CalendarVisualComponents.swift",
+    "source": "Main/CalendarVisualStyle.swift",
+    "sourceSHA256": "7de1d38fcae279f2c33f6965fea6f0c2907656afcac3d4d54d904d954d849eef"
+  },
+  {
+    "file": "EventKitEventSupplementStore.swift",
+    "source": "AppLocal/EventKitEventSupplementStore.swift",
+    "sourceSHA256": "766a93ee341625735bd213fb938010627f1e2f8bbf87c1ef3fb9aa277c37f6f8"
+  },
+  {
+    "file": "MacTabletCalendarStore.swift",
+    "source": "Main/MacTabletCalendarView.swift",
+    "sourceSHA256": "b53638db833a15c51d2f9414b30f5608a80dec1c06beedabcd251f5737897938"
+  },
+  {
+    "file": "AppPicker.swift",
+    "source": "Components/AppPicker.swift",
+    "sourceSHA256": "cb85592259659bd88e8da2a417f5d12aa4c94d9eda846da61152fa45801eb110"
+  },
+  {
+    "file": "AppContextMenu.swift",
+    "source": "Components/AppContextMenu.swift",
+    "sourceSHA256": "26b6cdba4e9298b26ca14d55298f156b1bc9472557d53a81fa5283d48213159d"
+  },
+  {
+    "file": "MacMenuSizing.swift",
+    "source": "Components/MacMenuSizing.swift",
+    "sourceSHA256": "78c183cb11765161badd7ae2316704c14a0318077c5932acee0d7276e928defa"
+  },
+  {
+    "file": "AppActionButtonStyle.swift",
+    "source": "Components/AppActionButtonStyle.swift",
+    "sourceSHA256": "c34905ff93a487221fe357c5efea58c0fdbfc55d2618d1eb12e0fb2e0ff8f03c"
+  },
+  {
+    "file": "CalendarProgressView.swift",
+    "source": "Main/CalendarProgressView.swift",
+    "sourceSHA256": "4b2366687be749fb9c2470aee9c6aca906f4f6d908735df934262481a47c7147"
+  },
+  {
+    "file": "MacTextInputAlignment.swift",
+    "source": "Components/AppAppearance.swift",
+    "sourceSHA256": "b6b4de3090b0a03c3be0ed11c349954cec19de3f4ae1372ce50036a7b3f1b43f"
+  },
+  {
+    "file": "AppLocalRecurrence.swift",
+    "source": "AppLocal/AppLocalRecurrence.swift",
+    "sourceSHA256": "04d237a61279fc139b3aaeb93f305147e6f1d2c891091f8d23224093fb9219e3"
+  },
+  {
+    "file": "MacTextInputAlignment.swift",
+    "source": "../sandBOX/UI/Platform.swift",
+    "sourceSHA256": "071bfabaa36f180e49d7be42024fe0cf5c2b4c5bce221a5fbbfe1faa3e69e82e"
+  },
+  {
+    "file": "MacCalendarNotifications.swift",
+    "source": "Sources/MacCalendarNotifications.swift",
+    "sourceSHA256": "36ae433076fc5c7b1d7737457dd111089d07b3ab43790a9c2d902394cd94856b"
+  }
+]

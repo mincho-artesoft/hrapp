@@ -5,7 +5,7 @@ struct PremiumSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(LocalizedStringKey("Premium Plan"))
-                .font(.title.bold())
+                .font(CalendarTypography.title.bold())
 
             VStack(alignment: .leading, spacing: 8) {
                 FeatureRow(feature: "All Advanced Plan features")

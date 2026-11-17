@@ -37,14 +37,14 @@ struct AddGoogleCalendarView: View {
             .navigationTitle(NSLocalizedString("Add Google Calendar", comment: "Add Google calendar screen title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
+                AppSheetToolbarItem(placement: .cancellationAction) {
                     AppToolbarTextButton(
                         localizedTitle: NSLocalizedString("Cancel", comment: "Cancel button")
                     ) {
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                AppSheetToolbarItem(placement: .confirmationAction) {
                     AppToolbarTextButton(
                         localizedTitle: NSLocalizedString("Done", comment: "Done button")
                     ) {

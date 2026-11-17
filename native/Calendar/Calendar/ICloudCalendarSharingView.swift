@@ -59,14 +59,14 @@ struct ICloudCalendarSharingView: View {
             .navigationTitle("Sharing: \(calendarTitle)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Close") {
                         cloudAccountManager.cancelSignIn()
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                AppSheetToolbarItem(placement: .confirmationAction) {
+                    AppToolbarTextButton("Done") { dismiss() }
                     .disabled(isSaving || isLoading || (CalendarFeedSession.existing == nil && !screenshotPreviewEnabled))
                 }
             }
@@ -94,7 +94,7 @@ struct ICloudCalendarSharingView: View {
             .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
                 Task { await load(showProgress: false) }
             }
-            .sheet(isPresented: $showQRCode) {
+            .appSheet(isPresented: $showQRCode) {
                 if let calendarInvitationURL {
                     ICloudCalendarQRCodeView(
                         calendarTitle: calendarTitle,
@@ -104,7 +104,7 @@ struct ICloudCalendarSharingView: View {
                     .presentationDragIndicator(.visible)
                 }
             }
-            .sheet(isPresented: $showEmailInvitations) {
+            .appSheet(isPresented: $showEmailInvitations) {
                 ICloudCalendarEmailInvitationsView(
                     calendarID: calendarID,
                     originalOwnerID: originalOwnerID,
@@ -637,12 +637,12 @@ private struct ICloudCalendarEmailInvitationsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled(isSaving)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Cancel") { dismiss() }
                         .disabled(isSaving)
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                AppSheetToolbarItem(placement: .confirmationAction) {
+                    AppToolbarTextButton("Save") {
                         Task { await saveInvitations() }
                     }
                     .disabled(isSaving || !hasEnteredEmail)
@@ -848,8 +848,8 @@ private struct ICloudCalendarQRCodeView: View {
             .navigationTitle("QR Code")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { dismiss() }
+                AppSheetToolbarItem(placement: .confirmationAction) {
+                    AppToolbarTextButton("Done") { dismiss() }
                 }
             }
         }

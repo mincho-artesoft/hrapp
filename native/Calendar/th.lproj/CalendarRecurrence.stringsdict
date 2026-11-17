@@ -27,7 +27,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>ld</string>
 			<key>other</key>
-			<string>กิจกรรมจะมีขึ้นใน%3$[tt]@ของ%2$[tt]@ของทุก %1$ld เดือน</string>
+			<string>กิจกรรมจะมีขึ้นใน%3$@ของ%2$@ของทุก %1$ld เดือน</string>
 		</dict>
 	</dict>
 	<key>Event will occur every %ld months on the %@.</key>
@@ -69,7 +69,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>ld</string>
 			<key>other</key>
-			<string>กิจกรรมจะมีขึ้นใน%2$[tt]@ของทุก %1$ld สัปดาห์</string>
+			<string>กิจกรรมจะมีขึ้นใน%2$@ของทุก %1$ld สัปดาห์</string>
 		</dict>
 	</dict>
 	<key>Event will occur every %ld weeks.</key>
@@ -97,7 +97,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>ld</string>
 			<key>other</key>
-			<string>กิจกรรมจะมีขึ้นในเดือน%2$[tt]@ของทุก %1$ld ปี</string>
+			<string>กิจกรรมจะมีขึ้นในเดือน%2$@ของทุก %1$ld ปี</string>
 		</dict>
 	</dict>
 	<key>Event will occur every %ld years.</key>
@@ -125,7 +125,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>ld</string>
 			<key>other</key>
-			<string>กิจกรรมจะมีขึ้นใน%3$[tt]@%2$[tt]@%4$[tt]@ของทุก %1$ld ปี</string>
+			<string>กิจกรรมจะมีขึ้นใน%3$@%2$@%4$@ของทุก %1$ld ปี</string>
 		</dict>
 	</dict>
 </dict>

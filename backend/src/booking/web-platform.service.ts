@@ -1,3 +1,4 @@
+import { NativeCalendarStore } from './native-calendar-store';
 import { Injectable } from '@nestjs/common';
 import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
 import { StoreService } from '../store/store.service';
@@ -127,6 +128,12 @@ export class WebPlatformService {
     private readonly email: EmailService,
     private readonly calendarService: CalendarService,
   ) {}
+
+  private get nativeCalendars() { return new NativeCalendarStore(this.store); }
+
+  async syncNativeCalendar(principal: any, body: any): Promise<ApiResult> {
+    return this.nativeCalendars.sync(principal, body);
+  }
 
   private get keys() {
     return this.store.keys;
@@ -586,7 +593,12 @@ export class WebPlatformService {
       )
     ).filter(Boolean);
 
+    const deviceCalendars = await this.nativeCalendars.list(principal);
+    const activeCalendars = deviceCalendars.filter(c => c.available !== false);
+    const nativeEvents = activeCalendars.flatMap(c => c.events.map((e: any) => this.nativeCalendars.eventForWeb(c, e)));
+
     return result(200, {
+      calendars: activeCalendars.map(({ events, ...calendar }) => calendar),
       calendar: {
         id: calId,
         name: meta?.name ?? 'Cloud Calendars',
@@ -594,7 +606,7 @@ export class WebPlatformService {
         defaultColor: validHexColor(meta?.defaultColor, '#0A84FF'),
         firstWeekday: Number.isInteger(meta?.firstWeekday) ? meta.firstWeekday : 1,
       },
-      events,
+      events: [...events, ...nativeEvents],
       receivedEvents,
       externalBusy: {
         updatedAt: busyDoc?.updatedAt ?? null,
@@ -618,6 +630,11 @@ export class WebPlatformService {
     body: any,
     opts?: { skipEntitlementCheck?: boolean },
   ): Promise<ApiResult> {
+    if (eventId.startsWith('native.') || body?.calendarId) {
+      const doc = await this.store.getJSON(this.keys.principal(principal.principalId));
+      if (!opts?.skipEntitlementCheck && !this.computeWebAccess(doc).entitled) return this.unentitledStudioResult(doc);
+      return this.nativeCalendars.mutate(principal, eventId, body);
+    }
     const { principalId, calId } = principal;
     if (!eventId || !/^[A-Za-z0-9_-]{3,128}$/.test(eventId)) {
       return result(400, { error: 'Invalid event id.' });
@@ -834,6 +851,11 @@ export class WebPlatformService {
     query: any,
     opts?: { skipEntitlementCheck?: boolean },
   ): Promise<ApiResult> {
+    if (eventId.startsWith('native.')) {
+      const doc = await this.store.getJSON(this.keys.principal(principal.principalId));
+      if (!opts?.skipEntitlementCheck && !this.computeWebAccess(doc).entitled) return this.unentitledStudioResult(doc);
+      return this.nativeCalendars.mutate(principal, eventId, {}, true);
+    }
     const { principalId, calId } = principal;
     if (!opts?.skipEntitlementCheck) {
       const principalDocCheck = await this.store.getJSON(this.keys.principal(principalId));

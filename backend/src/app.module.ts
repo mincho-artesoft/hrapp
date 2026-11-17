@@ -1,3 +1,4 @@
+import { EmailRelayController } from './email/email-relay.controller';
 import { Module } from '@nestjs/common';
 import { CoreModule } from './core/core.module';
 import { CalendarController } from './calendar/calendar.controller';
@@ -14,6 +15,7 @@ import { WebPlatformService } from './booking/web-platform.service';
   imports: [CoreModule],
   controllers: [
     PushController,
+    EmailRelayController,
     CalendarController,
     MeController,
     SharedEventController,

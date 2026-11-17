@@ -14,6 +14,9 @@ struct EventEmailInvitationsView: View {
     @FocusState private var focusedInvitationID: UUID?
 
     var body: some View {
+        #if os(macOS)
+        macBody
+        #else
         NavigationStack {
             Form {
                 Section {
@@ -82,8 +85,8 @@ struct EventEmailInvitationsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled(isSending)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Cancel") { dismiss() }
                         .disabled(isSending)
                 }
                 ToolbarItem(placement: .confirmationAction) {
@@ -94,7 +97,43 @@ struct EventEmailInvitationsView: View {
                 }
             }
         }
+        #endif
     }
+
+    #if os(macOS)
+    private var macBody: some View {
+        VStack(spacing: 0) {
+            MacCalendarSheetHeader(title: Text("Invite by Email")) {
+                AppToolbarTextButton("Cancel") { dismiss() }.disabled(isSending)
+            } trailing: {
+                AppToolbarTextButton("Send") { Task { await sendInvitations() } }
+                    .disabled(isSending || !hasEnteredEmail)
+            }
+            MacCalendarForm {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(eventTitle).font(CalendarTypography.headline).lineLimit(2)
+                    Text("Add everyone who should receive this event and choose their access.")
+                        .font(CalendarTypography.footnote).foregroundStyle(.secondary)
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                MacCalendarFormSection(title: "People") {
+                    ForEach($invitations) { $invitation in
+                        MacCalendarFormRow { invitationRow($invitation) }
+                    }
+                    MacCalendarFormRow(separator: false) {
+                        Button {
+                            let draft = InvitationDraft(); invitations.append(draft); focusedInvitationID = draft.id
+                        } label: { Label("Add another person", systemImage: "person.badge.plus") }
+                        .buttonStyle(.plain).foregroundStyle(Color.appBlue).disabled(isSending)
+                    }
+                }
+                Text("Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.")
+                    .font(CalendarTypography.footnote).foregroundStyle(.secondary)
+                if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
+                if isSending { ProgressView() }
+            }
+        }.background(CalendarPalette.groupedBackground).font(CalendarTypography.body)
+    }
+    #endif
 
     @ViewBuilder
     private func invitationRow(_ invitation: Binding<InvitationDraft>) -> some View {
@@ -104,8 +143,12 @@ struct EventEmailInvitationsView: View {
                 .foregroundStyle(.blue)
 
             TextField("Email address", text: invitation.email)
+                #if os(iOS)
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
+                #else
+                .textFieldStyle(.plain)
+                #endif
                 .autocorrectionDisabled()
                 .focused($focusedInvitationID, equals: invitation.wrappedValue.id)
                 .submitLabel(.next)
@@ -115,6 +158,13 @@ struct EventEmailInvitationsView: View {
                     focusedInvitationID = draft.id
                 }
 
+            #if os(macOS)
+            AppPicker("Access", selection: invitation.access) {
+                ForEach(CloudCalendarsAPI.EventAccess.allCases) { Text($0.title).tag($0) }
+            }
+            .labelsHidden()
+            .fixedSize()
+            #else
             Menu {
                 ForEach(CloudCalendarsAPI.EventAccess.allCases) { access in
                     Button {
@@ -138,6 +188,7 @@ struct EventEmailInvitationsView: View {
                 .fixedSize()
             }
             .accessibilityLabel("Access")
+            #endif
 
             if invitations.count > 1 {
                 Button(role: .destructive) {

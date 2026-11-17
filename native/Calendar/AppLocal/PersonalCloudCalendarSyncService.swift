@@ -20,7 +20,7 @@ enum PersonalCloudCalendarSyncService {
     private static var needsAnotherPass = false
 
     private static func baselineKey(for calendarId: String) -> String {
-        let host = CloudCalendarsAPI.baseURL.host ?? "api.cloud-calendars.com"
+        let host = DeviceCalendarReplica.storageHost(for: CloudCalendarsAPI.baseURL)
         return "personalCloud.syncBaseline.v1.\(host).\(calendarId)"
     }
 

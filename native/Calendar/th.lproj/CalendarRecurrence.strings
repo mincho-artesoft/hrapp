@@ -1,14 +1,14 @@
 /* Complete recurrence summaries and grammatical forms. */
 "1: ordinal | 0: cardinal" = "0";
 "Event will occur every day." = "กิจกรรมจะมีขึ้นทุกวัน";
-"Event will occur every month on the %@ %@." = "กิจกรรมจะมีขึ้นใน%2$[tt]@ของ%1$[tt]@ของทุกเดือน";
+"Event will occur every month on the %@ %@." = "กิจกรรมจะมีขึ้นใน%2$@ของ%1$@ของทุกเดือน";
 "Event will occur every month on the %@." = "กิจกรรมจะมีขึ้นในวันที่ %@ ของทุกเดือน";
 "Event will occur every month." = "กิจกรรมจะมีขึ้นทุกเดือน";
-"Event will occur every week on %@." = "กิจกรรมจะมีขึ้นใน%[tt]@ของทุกสัปดาห์";
+"Event will occur every week on %@." = "กิจกรรมจะมีขึ้นใน%@ของทุกสัปดาห์";
 "Event will occur every week." = "กิจกรรมจะมีขึ้นทุกสัปดาห์";
 "Event will occur every weekday." = "กิจกรรมจะมีขึ้นทุกวันธรรมดา";
-"Event will occur every year in %@." = "กิจกรรมจะมีขึ้นในเดือน%[tt]@ของทุกปี";
-"Event will occur every year on the %@ %@ %@." = "กิจกรรมจะมีขึ้นใน%2$[tt]@ของ%1$[tt]@%3$[tt]@ของทุกปี";
+"Event will occur every year in %@." = "กิจกรรมจะมีขึ้นในเดือน%@ของทุกปี";
+"Event will occur every year on the %@ %@ %@." = "กิจกรรมจะมีขึ้นใน%2$@ของ%1$@%3$@ของทุกปี";
 "Event will occur every year." = "กิจกรรมจะมีขึ้นทุกปี";
 "day" = "วัน";
 "last" = "สุดท้าย";

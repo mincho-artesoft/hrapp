@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
-		50964E892DE85D4200564847 /* GoogleUserMessagingPlatform in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E882DE85D4200564846 /* GoogleUserMessagingPlatform */; };
+		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
+		50964E892DE85D4200564847 /* GoogleUserMessagingPlatform in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50964E882DE85D4200564846 /* GoogleUserMessagingPlatform */; };
 		50AA00000000000000000001 /* Calendar/CalendarKit/CalendarEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA00000000000000000005 /* Calendar/CalendarKit/CalendarEventCard.swift */; };
 		50AA00000000000000000002 /* Calendar/CalendarKit/EventTimelineColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA00000000000000000006 /* Calendar/CalendarKit/EventTimelineColors.swift */; };
 		50AA00000000000000000003 /* Calendar/CalendarKit/CalendarEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA00000000000000000005 /* Calendar/CalendarKit/CalendarEventCard.swift */; };
 		50AA00000000000000000004 /* Calendar/CalendarKit/EventTimelineColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA00000000000000000006 /* Calendar/CalendarKit/EventTimelineColors.swift */; };
-		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
-		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
-		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
+		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
+		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
+		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
 		50E000082DE9000000000008 /* CalendarWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50E000012DE9000000000001 /* CalendarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		50F000082DF0000000000008 /* CalendarAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 50F000012DF0000000000001 /* CalendarAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50F000082DF0000000000008 /* CalendarAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 50F000012DF0000000000001 /* CalendarAppClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F100022DF0000000000002 /* Calendar/Cloud Calendars Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 50F100012DF0000000000001 /* Calendar/Cloud Calendars Icon.icon */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +77,211 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Mac/Info.plist,
 			);
+			platformFiltersByRelativePath = {
+				Ads/AppOpenAdManager.swift = (ios, );
+				Ads/BannerAdView.swift = (ios, );
+				Ads/ConsentManager.swift = (ios, );
+				Ads/InterstitialAdManager.swift = (ios, );
+				Ads/ReviewManager.swift = (ios, );
+				Ads/WeatherNativeAdView.swift = (ios, );
+				Ads/WeatherRotatingAdPlacement.swift = (ios, );
+				AppLocal/AppLocalCalendarMerge.swift = (ios, );
+				AppLocal/AppLocalCalendarStore.swift = (ios, );
+				AppLocal/AppLocalCalendarSyncService.swift = (ios, );
+				AppLocal/AppLocalCalendarViews.swift = (ios, );
+				AppLocal/AppLocalEventEditorView.swift = (ios, );
+				AppLocal/CalendarTimelineTransfer.swift = (ios, );
+				AppLocal/EventEditorInitialSchedule.swift = (ios, );
+				AppLocal/EventKitEventSupplementStore.swift = (ios, );
+				AppLocal/NativeCalendarSyncService.swift = (ios, );
+				AppLocal/PersonalCloudCalendarSyncService.swift = (ios, );
+				Calendar/AddCalendarView.swift = (ios, );
+				Calendar/AddGoogleCalendarView.swift = (ios, );
+				Calendar/CalendarColorSelectionView.swift = (ios, );
+				Calendar/CalendarsSheetView.swift = (ios, );
+				Calendar/EditCalendarView.swift = (ios, );
+				Calendar/GoogleCalendarSharingView.swift = (ios, );
+				Calendar/ICloudCalendarSharingView.swift = (ios, );
+				Calendar/SafariView.swift = (ios, );
+				Calendar/UIKitColorPicker.swift = (ios, );
+				CalendarDateRange/CalendarDateRangePickerCell.swift = (ios, );
+				CalendarDateRange/CalendarDateRangePickerViewController.swift = (ios, );
+				CalendarDateRange/CalendarDateRangePickerViewControllerDelegate.swift = (ios, );
+				CalendarDateRange/CalendarDateRangePickerWrapper.swift = (ios, );
+				CalendarDateRange/MonthYearPickerView.swift = (ios, );
+				CalendarKit/BasicEvent.swift = (ios, );
+				CalendarKit/CalendarEventCard.swift = (ios, );
+				CalendarKit/EventDescriptor.swift = (ios, );
+				CalendarKit/EventLayoutAttributes.swift = (ios, );
+				CalendarKit/EventResizeHandleDotView.swift = (ios, );
+				CalendarKit/EventResizeHandleView.swift = (ios, );
+				CalendarKit/EventTimelineColors.swift = (ios, );
+				CalendarKit/EventView.swift = (ios, );
+				CalendarKit/NewEventCalendarSelection.swift = (ios, );
+				CalendarKit/SystemColors.swift = (ios, );
+				CalendarKit/TimedEventLayout.swift = (ios, );
+				CalendarKit/TimelineInteractionGeometry.swift = (ios, );
+				CalendarKit/TimelineTimeLinesOverlay.swift = (ios, );
+				Components/CalendarDatePickerStyle.swift = (ios, );
+				Components/CalendarDateTimePickerRow.swift = (ios, );
+				Components/CalendarInlineDateGrid.swift = (ios, );
+				Components/CalendarPickerDay.swift = (ios, );
+				Components/CalendarRecurrenceEditor.swift = (ios, );
+				Components/CalendarRecurrencePattern.swift = (ios, );
+				Components/CalendarRecurrenceSummary.swift = (ios, );
+				Components/CalendarTravelTimeOption.swift = (ios, );
+				LaunchScreen.storyboard = (ios, );
+				ListView/AllEventsListView.swift = (ios, );
+				ListView/DaySectionView.swift = (ios, );
+				ListView/EventRowView.swift = (ios, );
+				ListView/SearchEventRowView.swift = (ios, );
+				ListView/SearchResultsView.swift = (ios, );
+				Mac/CalendarMacApp.swift = (macos, );
+				Mac/CalendarMacRoot.swift = (macos, );
+				Mac/CalendarMacStore.swift = (macos, );
+				Mac/MacCalendarAdapters.swift = (macos, );
+				Mac/MacCalendarLaunch.swift = (macos, );
+				Mac/MacCalendarMenuList.swift = (macos, );
+				Mac/MacCalendarModeMenu.swift = (macos, );
+				Mac/MacCalendarSettingsView.swift = (macos, );
+				Mac/MacCalendarSharingEditor.swift = (macos, );
+				Mac/MacCalendarSharingView.swift = (macos, );
+				Mac/MacCalendarToolbar.swift = (macos, );
+				Mac/MacEventData.swift = (macos, );
+				Mac/Weather/MacWeatherKitView.swift = (macos, );
+				Mac/Weather/MacWindMapCanvas.swift = (macos, );
+				Mac/Weather/WeekCarouselView2.swift = (macos, );
+				Mac/Wonek/AdaptiveControlLabel.swift = (macos, );
+				Mac/Wonek/AppActionButtonStyle.swift = (macos, );
+				Mac/Wonek/AppContextMenu.swift = (macos, );
+				Mac/Wonek/AppFormatting.swift = (macos, );
+				Mac/Wonek/AppLocalRecurrence.swift = (macos, );
+				Mac/Wonek/AppLocalization.swift = (macos, );
+				Mac/Wonek/AppMenuValueLabel.swift = (macos, );
+				Mac/Wonek/AppPicker.swift = (macos, );
+				Mac/Wonek/CalendarDatePickerStyle.swift = (macos, );
+				Mac/Wonek/CalendarDateTimePickerRow.swift = (macos, );
+				Mac/Wonek/CalendarInlineDateGrid.swift = (macos, );
+				Mac/Wonek/CalendarPickerDay.swift = (macos, );
+				Mac/Wonek/CalendarProgressView.swift = (macos, );
+				Mac/Wonek/CalendarRecurrenceEditor.swift = (macos, );
+				Mac/Wonek/CalendarRecurrencePattern.swift = (macos, );
+				Mac/Wonek/CalendarRecurrenceSummary.swift = (macos, );
+				Mac/Wonek/CalendarTravelTimeOption.swift = (macos, );
+				Mac/Wonek/CalendarVisualComponents.swift = (macos, );
+				Mac/Wonek/CalendarWeekCarouselMath.swift = (macos, );
+				Mac/Wonek/EventKitEventSupplementStore.swift = (macos, );
+				Mac/Wonek/EventTimelineColors.swift = (macos, );
+				Mac/Wonek/MacCalendarDateRangePicker.swift = (macos, );
+				Mac/Wonek/MacCalendarDetailTimelinePreview.swift = (macos, );
+				Mac/Wonek/MacCalendarDragGeometry.swift = (macos, );
+				Mac/Wonek/MacCalendarEmptySpaceInteraction.swift = (macos, );
+				Mac/Wonek/MacCalendarEventActivation.swift = (macos, );
+				Mac/Wonek/MacCalendarEventCard.swift = (macos, );
+				Mac/Wonek/MacCalendarFormStyle.swift = (macos, );
+				Mac/Wonek/MacCalendarFormatting.swift = (macos, );
+				Mac/Wonek/MacCalendarInitialFocus.swift = (macos, );
+				Mac/Wonek/MacCalendarInlineDatePicker.swift = (macos, );
+				Mac/Wonek/MacCalendarNotifications.swift = (macos, );
+				Mac/Wonek/MacCalendarPickerDay.swift = (macos, );
+				Mac/Wonek/MacCalendarRangeSelection.swift = (macos, );
+				Mac/Wonek/MacCalendarTimelineColumns.swift = (macos, );
+				Mac/Wonek/MacCalendarTimelineGeometry.swift = (macos, );
+				Mac/Wonek/MacCalendarTimelineInteractionLayer.swift = (macos, );
+				Mac/Wonek/MacCalendarWeekCarousel.swift = (macos, );
+				Mac/Wonek/MacCalendarWheelPicker.swift = (macos, );
+				Mac/Wonek/MacMenuSizing.swift = (macos, );
+				Mac/Wonek/MacTabletCalendarStore.swift = (macos, );
+				Mac/Wonek/MacTabletCalendarViews.swift = (macos, );
+				Mac/Wonek/MacTextInputAlignment.swift = (macos, );
+				Mac/Wonek/TimelineInteractionGeometry.swift = (macos, );
+				Mac/Wonek/TimelineTimeLabels.swift = (macos, );
+				Main/AppDelegate.swift = (ios, );
+				Main/CalendarApp.swift = (ios, );
+				Main/CalendarIPadSidebar.swift = (ios, );
+				Main/CalendarSharingIntroductionState.swift = (ios, );
+				Main/CalendarSharingIntroductionView.swift = (ios, );
+				Main/CalendarWindowLayout.swift = (ios, );
+				Main/EmailPickerViewController.swift = (ios, );
+				Main/RootView.swift = (ios, );
+				MenuButton/UIWeatherMenuButtonRepresentable.swift = (ios, );
+				MonthView/DayCellView.swift = (ios, );
+				MonthView/DraggableModifier.swift = (ios, );
+				MonthView/EventDetailViewWrapper.swift = (ios, );
+				MonthView/EventEditViewWrapper.swift = (ios, );
+				MonthView/MonthCalendarView.swift = (ios, );
+				MonthView/WeekdayHeaderView.swift = (ios, );
+				MultiCalendar/AllDayMultiCalendarView.swift = (ios, );
+				MultiCalendar/CalendarColumnOrder.swift = (ios, );
+				MultiCalendar/CalendarsDropdownRepresentable.swift = (ios, );
+				MultiCalendar/CalendarsDropdownView.swift = (ios, );
+				MultiCalendar/CalendarsHeaderView.swift = (ios, );
+				MultiCalendar/SingleDayTimelineMultiCalendarView.swift = (ios, );
+				MultiCalendar/TwoWayPinnedSingleDayMultiCalendarContainerView.swift = (ios, );
+				MultiCalendar/TwoWayPinnedSingleDayMultiCalendarWrapper.swift = (ios, );
+				MultiDayView/AllDayView.swift = (ios, );
+				MultiDayView/DayCell.swift = (ios, );
+				MultiDayView/DaysHeaderView.swift = (ios, );
+				MultiDayView/HourlyWeatherForecast.swift = (ios, );
+				MultiDayView/HoursColumnView.swift = (ios, );
+				MultiDayView/MultiDayTimelineView.swift = (ios, );
+				MultiDayView/TimelineStyle.swift = (ios, );
+				MultiDayView/TwoWayPinnedMultiDayContainerView.swift = (ios, );
+				MultiDayView/TwoWayPinnedMultiDayWrapper.swift = (ios, );
+				MultiDayView/WeekCarouselView.swift = (ios, );
+				MultiDayView/WeekFlowLayout.swift = (ios, );
+				Screenshots/EventSurfaceFullScreen.swift = (ios, );
+				Screenshots/EventSurfaceSnapshotSupport.swift = (ios, );
+				Screenshots/EventSurfaceSnapshots.swift = (ios, );
+				Screenshots/LocalSharingE2ETest.swift = (ios, );
+				Screenshots/NotificationDeliveryE2ETest.swift = (ios, );
+				Screenshots/ScreenshotMode.swift = (ios, );
+				Screenshots/SharingMatrixE2ETest.swift = (ios, );
+				Screenshots/WidgetSelectionRegressionTests.swift = (ios, );
+				Settings/SettingsSheetView.swift = (ios, );
+				Sharing/EventAppClipSharing.swift = (ios, );
+				Sharing/SharedCalendarInvitationView.swift = (ios, );
+				Sharing/SharedEventImportView.swift = (ios, );
+				Sharing/SharedEventImporter.swift = (ios, );
+				Sharing/SharedEventInvitationResolver.swift = (ios, );
+				Sharing/SharedEventQRScannerView.swift = (ios, );
+				Sharing/SharedICloudCalendarLocalStore.swift = (ios, );
+				Sharing/SharedInviteCalendar.swift = (ios, );
+				Sharing/SharedInviteRefresher.swift = (ios, );
+				Sharing/SharedInviteTracker.swift = (ios, );
+				Sharing/SharingSheetView.swift = (ios, );
+				Sources/Attendee.swift = (ios, );
+				Sources/CalendarLiveActivityManager.swift = (ios, );
+				Sources/CalendarViewModel.swift = (ios, );
+				Sources/EKMultiDayWrapper.swift = (ios, );
+				Sources/EventNotificationManager.swift = (ios, );
+				Sources/EventNotificationNavigation.swift = (ios, );
+				Sources/InvitationPushRegistration.swift = (ios, );
+				Subscriptions.storekit = (ios, );
+				WeatherView/WeatherDetailView/WeekCarouselView2.swift = (ios, );
+				WeatherView/WeatherKitView.swift = (ios, );
+				WeatherView/WindMap/WindMapCanvas.swift = (ios, );
+				YearView/MiniDayCellView.swift = (ios, );
+				YearView/YearCalendarView.swift = (ios, );
+				YearView/YearMonthMiniView.swift = (ios, );
+				"Еxtensions/Array+Extension.swift" = (ios, );
+				"Еxtensions/Calendar+Еxtension.swift" = (ios, );
+				"Еxtensions/Collection+Extension.swift" = (ios, );
+				"Еxtensions/Color+Extension.swift" = (ios, );
+				"Еxtensions/Date+Еxtension.swift" = (ios, );
+				"Еxtensions/Double+Extension.swift" = (ios, );
+				"Еxtensions/EKCalendar+Extension.swift" = (ios, );
+				"Еxtensions/EKEvent+Еxtension.swift" = (ios, );
+				"Еxtensions/EKEventStore+Еxtension.swift" = (ios, );
+				"Еxtensions/EKMultiDayWrapper+Extension.swift" = (ios, );
+				"Еxtensions/Timer+Еxtension.swift" = (ios, );
+				"Еxtensions/UIApplication+Extension.swift" = (ios, );
+				"Еxtensions/UIScreen+Extension.swift" = (ios, );
+				"Еxtensions/UIStackView+StackView.swift" = (ios, );
+				"Еxtensions/UIView+Extension.swift" = (ios, );
+			};
 			target = 50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */;
 		};
 		50E000032DE9000000000003 /* Exceptions for "CalendarWidget" folder in "CalendarWidget" target */ = {
@@ -85,6 +289,9 @@
 			membershipExceptions = (
 				Info.plist,
 			);
+			platformFiltersByRelativePath = {
+				CalendarLiveActivityWidget.swift = (ios, );
+			};
 			target = 50E000042DE9000000000004 /* CalendarWidget */;
 		};
 		50F000032DF0000000000003 /* Exceptions for "CalendarAppClip" folder in "CalendarAppClip" target */ = {
@@ -234,8 +441,6 @@
 				50E000022DE9000000000002 /* CalendarWidget */,
 			);
 			name = CalendarWidget;
-			packageProductDependencies = (
-			);
 			productName = CalendarWidget;
 			productReference = 50E000012DE9000000000001 /* CalendarWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -256,8 +461,6 @@
 				50F000022DF0000000000002 /* CalendarAppClip */,
 			);
 			name = CalendarAppClip;
-			packageProductDependencies = (
-			);
 			productName = CalendarAppClip;
 			productReference = 50F000012DF0000000000001 /* CalendarAppClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -424,6 +627,7 @@
 		};
 		50F0000B2DF000000000000B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 50F000042DF0000000000004 /* CalendarAppClip */;
 			targetProxy = 50F0000A2DF000000000000A /* PBXContainerItemProxy */;
 		};
@@ -559,22 +763,30 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Cloud Calendars Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = Calendar/Mac/CalendarMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
+				"ENABLE_APP_SANDBOX[sdk=macosx*]" = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
+				"ENABLE_USER_SELECTED_FILES[sdk=macosx*]" = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = Calendar/Mac/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "View and edit the calendars you choose, and sync them with Cloud Calendars on the web.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to show the weather forecast for your area.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show the weather forecast for your area.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=macosx*]" = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				"INFOPLIST_KEY_UILaunchStoryboardName[sdk=macosx*]" = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -583,10 +795,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -602,22 +820,30 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Cloud Calendars Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = Calendar/Mac/CalendarMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
+				"ENABLE_APP_SANDBOX[sdk=macosx*]" = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
+				"ENABLE_USER_SELECTED_FILES[sdk=macosx*]" = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = Calendar/Mac/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "View and edit the calendars you choose, and sync them with Cloud Calendars on the web.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is used to show the weather forecast for your area.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to show the weather forecast for your area.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=macosx*]" = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				"INFOPLIST_KEY_UILaunchStoryboardName[sdk=macosx*]" = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -626,10 +852,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -644,6 +876,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CalendarWidget/CalendarWidgetMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
@@ -656,12 +889,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -676,6 +913,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CalendarWidget/CalendarWidgetMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
@@ -688,12 +926,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;

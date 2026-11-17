@@ -71,17 +71,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
         let scheme = url.scheme?.lowercased()
         let host = url.host?.lowercased()
         let isAppClipLink = scheme == "https" && host == "appclip.apple.com"
-        #if DEBUG
-        let serverInvitationHosts = [
-            "api.cloud-calendars.com",
-            "63yo3ore3c.execute-api.us-east-1.amazonaws.com"
-        ]
-        #else
-        let serverInvitationHosts = ["api.cloud-calendars.com"]
-        #endif
-        let isServerInvitationLink = scheme == "https"
-            && serverInvitationHosts.contains(host ?? "")
-            && url.path == "/event-invites/open"
+        let isServerInvitationLink = SharedInvitationServer.baseURL(for: url, route: "event-invites/open") != nil
         let isFullAppHandoff = scheme == "cloudcalendars" && host == "shared-event"
 
         guard isAppClipLink || isServerInvitationLink || isFullAppHandoff,
@@ -175,5 +165,20 @@ private extension Color {
             green: Double((number >> 8) & 0xFF) / 255,
             blue: Double(number & 0xFF) / 255
         )
+    }
+}
+
+/// Match exact API origins and prefixes so invitation URLs cannot fetch arbitrary hosts.
+enum SharedInvitationServer {
+    static func baseURL(for url: URL, route: String) -> URL? {
+        guard url.scheme == "https", url.user == nil, url.password == nil, url.port == nil else { return nil }
+        var bases = ["https://api.cloud-calendars.com"]
+        #if DEBUG
+        bases += ["https://63yo3ore3c.execute-api.us-east-1.amazonaws.com",
+                  "https://storage.wonek.com/cloud-calendars-debug"]
+        #endif
+        return bases.compactMap(URL.init(string:)).first {
+            $0.host == url.host && $0.appendingPathComponent(route).path == url.path
+        }
     }
 }

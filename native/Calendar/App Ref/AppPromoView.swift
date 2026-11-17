@@ -22,7 +22,7 @@ struct AppsPromoListView: View {
                 ForEach(apps) { app in
                     HStack(alignment: .top, spacing: 16) {
                         // Икона на приложението
-                        if let _ = UIImage(named: app.iconName) {
+                        if app.hasIcon {
                             Image(app.iconName)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -43,12 +43,12 @@ struct AppsPromoListView: View {
                         // Текст и бутон
                         VStack(alignment: .leading, spacing: 6) {
                             Text(app.appName)
-                                .font(.headline)
+                                .font(CalendarTypography.headline)
                                 .foregroundColor(.primary)
                             
                             if !app.description.isEmpty {
                                 Text(app.description)
-                                    .font(.subheadline)
+                                    .font(CalendarTypography.subheadline)
                                     .foregroundColor(.secondary)
                                     .lineLimit(nil)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -58,7 +58,7 @@ struct AppsPromoListView: View {
                             // Бутон към App Store
                             Link(destination: URL(string: app.appStoreURL)!) {
                                 Text(LocalizedStringKey("Get"))
-                                    .font(.body.weight(.semibold))
+                                    .font(CalendarTypography.body.weight(.semibold))
                                     .foregroundColor(.white)
                                     .frame(minWidth: 88, minHeight: 40)
                                     .padding(.horizontal, 8)
@@ -71,12 +71,22 @@ struct AppsPromoListView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                    .background(Color(.secondarySystemBackground))
+                    .background(CalendarSurfaceColors.gray6)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
                 Spacer(minLength: 150)
             }
             .padding(.horizontal, DraggableMenuContentLayout.horizontalInset)
         }
+    }
+}
+
+extension AppPromoData {
+    var hasIcon: Bool {
+        #if os(macOS)
+        NSImage(named: iconName) != nil
+        #else
+        UIImage(named: iconName) != nil
+        #endif
     }
 }

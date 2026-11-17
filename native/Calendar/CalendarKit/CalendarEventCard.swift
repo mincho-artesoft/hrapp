@@ -22,9 +22,13 @@ struct CalendarEventCard: View {
     var showsBackground = true
     var foregroundColor: Color? = nil
 
-    private var baseColor: UIColor {
+    private var baseColor: EventTimelinePlatformColor {
+        #if os(iOS)
         UIColor(color).resolvedColor(with: UITraitCollection(
             userInterfaceStyle: colorScheme == .dark ? .dark : .light))
+        #else
+        NSColor(color)
+        #endif
     }
 
     var body: some View {
@@ -38,22 +42,22 @@ struct CalendarEventCard: View {
                 if isRecurring { Image(systemName: "repeat") }
             }
             .font(.system(size: titleSize, weight: .semibold))
-            .foregroundStyle(foregroundColor ?? Color(uiColor: EventTimelineColors.text(baseColor,
-                strength: 0.58, dark: colorScheme == .dark)))
+            .foregroundStyle(foregroundColor ?? Color(cgColor: EventTimelineColors.text(baseColor,
+                strength: 0.58, dark: colorScheme == .dark).cgColor))
             if let timeText, !timeText.isEmpty {
                 detail(timeText, symbol: isAllDay ? "calendar" : "clock")
             }
             if let videoCall, !videoCall.isEmpty { detail(videoCall, symbol: "video") }
             if let location, !location.isEmpty { detail(location, symbol: "location") }
         }
-        .foregroundStyle(foregroundColor?.opacity(0.82) ?? Color(uiColor: EventTimelineColors.text(baseColor,
-            strength: 0.82, dark: colorScheme == .dark)))
+        .foregroundStyle(foregroundColor?.opacity(0.82) ?? Color(cgColor: EventTimelineColors.text(baseColor,
+            strength: 0.82, dark: colorScheme == .dark).cgColor))
         .padding(.leading, isAllDay ? 8 : 12)
         .padding(.trailing, 7)
         .padding(.vertical, verticalPadding)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(showsBackground ? Color(uiColor: EventTimelineColors.background(baseColor,
-            selected: false, depth: 0, dark: colorScheme == .dark)) : .clear,
+        .background(showsBackground ? Color(cgColor: EventTimelineColors.background(baseColor,
+            selected: false, depth: 0, dark: colorScheme == .dark).cgColor) : .clear,
             in: RoundedRectangle(cornerRadius: 5))
         .overlay(alignment: .leading) {
             if !isAllDay {

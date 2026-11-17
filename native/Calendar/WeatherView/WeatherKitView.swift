@@ -28,6 +28,8 @@ struct WeatherKitView: View {
     var onViewChange: ((Int) -> Void)
     var onSavedRegionsPresentationChange: (Bool) -> Void
     let eventEditorColorScheme: ColorScheme?
+    @State private var appLocalEventTarget: AppLocalEventEditorTarget?
+    @State private var noWritableCalendar = false
     @State private var eventToEdit: EKEvent? = nil
     @FocusState private var isSearchFieldFocused: Bool
     // MARK: - State Objects
@@ -175,17 +177,11 @@ struct WeatherKitView: View {
             }
             selectSavedRegion(region)
         }
-        .safeAreaInset(edge: .top) {
-            VStack(spacing: 0) {
+        .safeAreaInset(edge: .top, spacing: 0) {
+            CalendarSearchHeader(isSearching: showSearchBar, height: CalendarHeaderLayout.height) {
                 weatherTopBar
-
-                if showSearchBar {
-                    searchField
-                        .padding(.top, 8)
-                        .padding(.horizontal)
-                        .transition(.move(edge: .top).combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.25), value: showSearchBar)
-                }
+            } search: {
+                searchField
             }
         }
         .overlay {
@@ -198,7 +194,7 @@ struct WeatherKitView: View {
         .animation(.easeInOut(duration: 0.34), value: showSavedRegions)
 
         // Sheet-ове за детайлен изглед при избор на ден или тап върху определени данни
-        .sheet(item: $selectedDay) { day in
+        .appSheet(item: $selectedDay) { day in
             WeatherDetailView(
                 allHourlyItems: vm.hourlyForecast,
                 allDailyItems: vm.dailyForecast,
@@ -209,7 +205,7 @@ struct WeatherKitView: View {
                 selectedOption: 0
             )
         }
-        .sheet(isPresented: $showFeelsLikeDetail) {
+        .appSheet(isPresented: $showFeelsLikeDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -232,7 +228,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showUVDetail) {
+        .appSheet(isPresented: $showUVDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -255,7 +251,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showWindDetail) {
+        .appSheet(isPresented: $showWindDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -278,7 +274,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showPrecipitationDetail) {
+        .appSheet(isPresented: $showPrecipitationDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -301,7 +297,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showHumidityDetail) {
+        .appSheet(isPresented: $showHumidityDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -324,7 +320,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showVisibilityDetail) {
+        .appSheet(isPresented: $showVisibilityDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -347,7 +343,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showPressureDetail) {
+        .appSheet(isPresented: $showPressureDetail) {
             if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
@@ -370,7 +366,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(isPresented: $showSolarDetail) {
+        .appSheet(isPresented: $showSolarDetail) {
             SolarDetailSheet(
                 days: vm.solarDayForecast,
                 timeZone: vm.locationTimeZone,
@@ -378,14 +374,23 @@ struct WeatherKitView: View {
                 coordinate: vm.locationCoordinate
             )
         }
-        .sheet(isPresented: $showMoonDetail) {
+        .appSheet(isPresented: $showMoonDetail) {
             MoonDetailSheet(
                 forecastDays: vm.dailyForecast,
                 timeZone: vm.locationTimeZone,
                 observationDate: weatherPreviewObservationDate ?? Date()
             )
         }
-        .sheet(isPresented: Binding(
+        .appSheet(item: $appLocalEventTarget) { target in
+            AppLocalEventEditorView(target: target)
+                .environment(\.colorScheme, eventEditorColorScheme ?? .dark)
+        }
+        .alert("Calendar", isPresented: $noWritableCalendar) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Add a writable calendar first.")
+        }
+        .appSheet(isPresented: Binding(
                 get: { eventToEdit != nil },
                 set: { if !$0 { eventToEdit = nil } }   // зануляваме при затваряне
         )) {
@@ -474,10 +479,7 @@ struct WeatherKitView: View {
     }
 
     private func beginCitySearch() {
-        withAnimation { showSearchBar = true }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            isSearchFieldFocused = true
-        }
+        showSearchBar = true
     }
 
     private var weatherLocationPrompt: some View {
@@ -549,43 +551,57 @@ struct WeatherKitView: View {
     }
     
     private var searchField: some View {
-        HStack {
-            TextField(
-                "",
-                text: $locationSearchVM.queryFragment,
-                prompt: Text(NSLocalizedString("Search for a city…", comment: "City search placeholder"))
-                    .foregroundColor(.white.opacity(0.5))
-            )
-            .textInputAutocapitalization(.never)   // без автоматични главни букви
-            .autocorrectionDisabled(true)          // без автокорекция
-            .keyboardType(.default)
-            .focused($isSearchFieldFocused)              // ← тук
-            .onSubmit { isEditing = false }
-            .onChange(of: locationSearchVM.queryFragment) { isEditing = true }
-            .textFieldStyle(.plain)
-            .font(.subheadline)
-            .foregroundColor(.white.opacity(0.85))   // цвят на въведения текст
-            .accentColor(.white)
-
-
+        TextField(
+            "",
+            text: $locationSearchVM.queryFragment,
+            prompt: Text(NSLocalizedString("Search for a city…", comment: "City search placeholder"))
+                .foregroundColor(.white.opacity(0.5))
+        )
+        .textInputAutocapitalization(.never)
+        .autocorrectionDisabled(true)
+        .submitLabel(.search)
+        .focused($isSearchFieldFocused)
+        .onSubmit {
+            isEditing = false
+            isSearchFieldFocused = false
+        }
+        .onChange(of: locationSearchVM.queryFragment) {
+            isEditing = !locationSearchVM.queryFragment.isEmpty
+        }
+        .textFieldStyle(.plain)
+        .font(.body)
+        .foregroundColor(.white.opacity(0.85))
+        .tint(.white)
+        .padding(.vertical, 8)
+        .padding(.leading, 12)
+        .padding(.trailing, 36)
+        .background(Color.black.opacity(0.35), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .overlay(alignment: .trailing) {
             Button(action: hideSearch) {
-                Image(systemName: "xmark")                  // ⨉ вместо текст
-                    .font(.subheadline.weight(.semibold))   // същия размер като преди
-                    .foregroundColor(Color.white.opacity(0.35))            // сив (и в light, и в dark)
+                Image(systemName: "xmark")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(.white.opacity(0.5))
+                    .frame(width: 32, height: 32)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .padding(.trailing, 2)
+            .accessibilityLabel("Close search")
+            .accessibilityIdentifier("weather-search-close")
+        }
+        .padding(.horizontal, CalendarHeaderLayout.horizontalInset)
+        .frame(height: CalendarHeaderLayout.height)
+        .accessibilityIdentifier("weather-search-field")
+        .onAppear {
+            DispatchQueue.main.async {
+                guard showSearchBar else { return }
+                isSearchFieldFocused = true
             }
         }
-        .padding(.vertical, 6)
-        .padding(.horizontal, 12)
-        .frame(height: 34)
-        .background(
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(Color.black.opacity(0.35))
-        )
     }
 
     private var weatherTopBar: some View {
         CalendarScreenHeader(currentView: selectedTab, tint: .white,
-            controlsHidden: showSearchBar,
             onSavedRegions: openSavedRegions,
             onSearch: beginCitySearch, onViewChange: onViewChange)
             .background(Color.black.opacity(0.001))
@@ -640,7 +656,7 @@ struct WeatherKitView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                AppSheetToolbarItem(placement: .confirmationAction) {
                     AppToolbarTextButton(
                         localizedTitle: NSLocalizedString("Done", comment: "Done button")
                     ) {
@@ -841,7 +857,8 @@ struct WeatherKitView: View {
                                 .foregroundStyle(Color.accentColor.opacity(0.84))
                         }
                         .padding(.horizontal, 14)
-                        .frame(minHeight: 58)
+                        .frame(maxWidth: .infinity, minHeight: 58)
+                        .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
                     if completion != locationSearchVM.searchResults.last {
@@ -1214,7 +1231,13 @@ struct WeatherKitView: View {
                                     .foregroundColor(.secondary)
                             }
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                        .contentShape(Rectangle())
                     }
+                    .buttonStyle(.plain)
+                    .listRowInsets(EdgeInsets())
                     .listRowBackground(Color(UIColor.systemBackground).opacity(0.2))
                 }
                 .listStyle(.plain)
@@ -1223,7 +1246,7 @@ struct WeatherKitView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(radius: 5)
                 .padding(.horizontal)
-                .offset(y: 60)
+                .padding(.top, 8)
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
@@ -1682,6 +1705,7 @@ struct WeatherKitView: View {
     private func hideSearch() {
         showSearchBar = false
         locationSearchVM.queryFragment = ""
+        locationSearchVM.searchResults = []
         isEditing = false
         isSearchFieldFocused = false  // ← премахва фокуса и клавиатурата
         hideKeyboard()
@@ -1732,12 +1756,21 @@ struct WeatherKitView: View {
             return
         }
         
+        guard let destination = viewModel.newEventCalendar() else {
+            noWritableCalendar = true
+            return
+        }
+        if let calendarID = destination.appLocalCalendarID {
+            appLocalEventTarget = AppLocalEventEditorTarget(date: eventStart, calendarID: calendarID,
+                initialInterval: DateInterval(start: eventStart, duration: 3600))
+            return
+        }
         let eventEnd = eventStart.addingTimeInterval(3600)
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
         newEvent.startDate = eventStart
         newEvent.endDate = eventEnd
         newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
-        newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
+        newEvent.calendar = destination.calendar
         
         eventToEdit = newEvent
     }
@@ -1745,26 +1778,7 @@ struct WeatherKitView: View {
     /// Функция, която се извиква при тап върху елемент от hourlyForecastCard.
     /// Тук трябва да извлечете избрания час (например от модела на елемента) и да подадете и деня.
     private func createAndEditNewEvent(from tappedHour: Int, for day: Date) {
-        // Проверяваме статуса на достъпа до календар (примерно както имате в оригиналния метод)
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if #available(iOS 17.0, *) {
-            switch status {
-            case .fullAccess, .writeOnly:
-                presentNewEvent(on: day, selectedHour: tappedHour)
-            case .notDetermined:
-                print("Още не е поискан достъп.")
-            default:
-                print("Нямате достъп до календара.")
-            }
-        } else {
-            if status == .authorized {
-                presentNewEvent(on: day, selectedHour: tappedHour)
-            } else if status == .notDetermined {
-                print("Още не е поискан достъп.")
-            } else {
-                print("Нямате достъп до календара.")
-            }
-        }
+        presentNewEvent(on: day, selectedHour: tappedHour)
     }
 
 }

@@ -2,6 +2,52 @@ import Foundation
 import ObjectiveC.runtime
 import SwiftUI
 
+/// macOS can create a sheet with the system locale even when its presenting
+/// view has an app-language override. Apply preferences inside each new
+/// presentation, and observe changes while that presentation is open.
+private struct AppPresentationPreferences: ViewModifier {
+    @ObservedObject private var preferences = AppPreferences.shared
+
+    func body(content: Content) -> some View {
+        content
+            .environment(\.locale, preferences.presentationLocale)
+            .environment(\.calendar, preferences.presentationCalendar)
+            .environment(\.layoutDirection, preferences.layoutDirection)
+    }
+}
+
+extension View {
+    func appSheet<Sheet: View>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil,
+                              @ViewBuilder content: @escaping () -> Sheet) -> some View {
+        sheet(isPresented: isPresented, onDismiss: onDismiss) {
+            content().modifier(AppPresentationPreferences())
+        }
+    }
+
+    func appSheet<Item: Identifiable, Sheet: View>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil,
+                                                  @ViewBuilder content: @escaping (Item) -> Sheet) -> some View {
+        sheet(item: item, onDismiss: onDismiss) { item in
+            content(item).modifier(AppPresentationPreferences())
+        }
+    }
+
+    #if os(iOS)
+    func appFullScreenCover<Cover: View>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil,
+                                        @ViewBuilder content: @escaping () -> Cover) -> some View {
+        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss) {
+            content().modifier(AppPresentationPreferences())
+        }
+    }
+
+    func appFullScreenCover<Item: Identifiable, Cover: View>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil,
+                                                            @ViewBuilder content: @escaping (Item) -> Cover) -> some View {
+        fullScreenCover(item: item, onDismiss: onDismiss) { item in
+            content(item).modifier(AppPresentationPreferences())
+        }
+    }
+    #endif
+}
+
 enum AppPreferenceKey {
     static let language = "AppLanguagePreference"
     static let theme = "AppThemePreference"

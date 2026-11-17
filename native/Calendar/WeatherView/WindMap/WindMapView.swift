@@ -89,7 +89,7 @@ struct WindMapCard: View {
                 Task { await store.load(coordinate) }
             }
         }
-        .fullScreenCover(isPresented: $expanded, onDismiss: {
+        .weatherMapPresentation(isPresented: $expanded, onDismiss: {
             store.isPlaying = false
             store.hour = 0
             if allowsNetwork, let coordinate { Task { await store.load(coordinate) } }
@@ -140,6 +140,7 @@ private struct WindMapFullScreen: View {
     @State private var timelinePosition: Double = 4
     @State private var placesVisible = false
     @State private var infoVisible = false
+    @State private var layersVisible = false
     @State private var layer = WeatherMapLayer.wind
     @State private var conditions: [String: WeatherMapPlaceConditions] = [:]
     @State private var selectedPointForecast: WindMapPointForecast?
@@ -249,8 +250,8 @@ private struct WindMapFullScreen: View {
             else if allowsNetwork, let viewportGrid { Task { await store.load(viewportGrid) } }
         }
         .onDisappear { store.isPlaying = false }
-        .sheet(isPresented: $placesVisible) { placesSheet }
-        .sheet(isPresented: $infoVisible) { infoSheet }
+        .appSheet(isPresented: $placesVisible) { placesSheet }
+        .appSheet(isPresented: $infoVisible) { infoSheet }
     }
 
     private var topControls: some View {
@@ -270,16 +271,7 @@ private struct WindMapFullScreen: View {
             Spacer()
             VStack(spacing: 10) {
                 VStack(spacing: 0) {
-                    Menu {
-                        ForEach(WeatherMapLayer.allCases, id: \.self) { option in
-                            Button { layer = option } label: {
-                                Label(option.title, systemImage: layer == option ? "checkmark" : option.symbol)
-                            }
-                            .accessibilityIdentifier("weather.map.layer." + option.rawValue)
-                        }
-                    } label: { Image(systemName: "square.3.layers.3d.top.filled").frame(width: 44, height: 44) }
-                    .accessibilityLabel(WindMapLabels.text("Map layers"))
-                    .accessibilityIdentifier("weather.windMap.layers")
+                    layerControl
                     Button {
                         if let currentLocation {
                             selection = WindMapPlace(id: "current", name: WindMapLabels.text("My Location"), coordinate: currentLocation, timeZone: .current)
@@ -301,10 +293,60 @@ private struct WindMapFullScreen: View {
         }.font(.system(size: 18, weight: .medium)).buttonStyle(.plain)
     }
 
+    private var layerControl: some View {
+        Group {
+            #if os(macOS)
+            Button { layersVisible.toggle() } label: { layerControlLabel }
+                .buttonStyle(.plain)
+                .appMacMenu(isPresented: $layersVisible) {
+                    VStack(spacing: 0) {
+                        ForEach(WeatherMapLayer.allCases, id: \.self) { option in
+                            Button { layer = option; layersVisible = false } label: {
+                                HStack(spacing: 14) {
+                                    Image(systemName: layer == option ? "checkmark" : option.symbol)
+                                        .frame(width: 24)
+                                    Text(option.title).frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.system(size: 17))
+                                .padding(.horizontal, 16).frame(minHeight: 44)
+                                .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(layer == option ? .isSelected : [])
+                            .accessibilityIdentifier("weather.map.layer." + option.rawValue)
+                        }
+                    }
+                    .padding(6).frame(minWidth: 230)
+                    .fixedSize(horizontal: true, vertical: true)
+                    .foregroundStyle(.white).tint(.white)
+                    .background(panelTint)
+                    .environment(\.colorScheme, .dark)
+                }
+            #else
+            Menu {
+                ForEach(WeatherMapLayer.allCases, id: \.self) { option in
+                    Button { layer = option } label: {
+                        Label(option.title, systemImage: layer == option ? "checkmark" : option.symbol)
+                    }
+                    .accessibilityIdentifier("weather.map.layer." + option.rawValue)
+                }
+            } label: { layerControlLabel }
+            #endif
+        }
+        .accessibilityLabel(WindMapLabels.text("Map layers"))
+        .accessibilityIdentifier("weather.windMap.layers")
+    }
+
+    private var layerControlLabel: some View {
+        Image(systemName: "square.3.layers.3d.top.filled").frame(width: 44, height: 44)
+    }
+
     private func roundButton(_ title: String, symbol: String, identifier: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Image(systemName: symbol).frame(width: 44, height: 44).background(panelTint, in: Circle())
-        }.accessibilityLabel(WindMapLabels.text(title)).accessibilityIdentifier(identifier)
+        }
+        .buttonStyle(.plain).foregroundStyle(.white)
+        .accessibilityLabel(WindMapLabels.text(title)).accessibilityIdentifier(identifier)
     }
 
     private var retryPanel: some View {
@@ -369,8 +411,13 @@ private struct WindMapFullScreen: View {
                     }
                 }.background(.white.opacity(0.07), in: RoundedRectangle(cornerRadius: 20))
             }
+            .scrollBounceBehavior(.basedOnSize)
         }
         .padding(16).foregroundStyle(.white).background(panelTint.ignoresSafeArea())
+        #if os(macOS)
+        .frame(width: 420, height: min(520, max(280, 112 + CGFloat(availablePlaces.count) * 76)))
+        .presentationBackground(panelTint)
+        #endif
         .presentationDetents([.medium, .large]).presentationDragIndicator(.hidden)
     }
 
@@ -409,7 +456,15 @@ private struct WindMapFullScreen: View {
     }
 
     private var infoSheet: some View {
-        NavigationStack {
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text(WindMapLabels.text("Map Data"))) {
+                    EmptyView()
+                } trailing: {
+                    AppToolbarTextButton("Done") { infoVisible = false }
+                }
+                #endif
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Label(layer.title, systemImage: layer.symbol).font(.title2.bold())
@@ -424,8 +479,12 @@ private struct WindMapFullScreen: View {
                     Link("Natural Earth · " + WindMapLabels.text("Map Data"), destination: URL(string: "https://www.naturalearthdata.com/about/terms-of-use/")!)
                 }.padding(24)
             }
-            .navigationTitle(WindMapLabels.text("Map Data")).navigationBarTitleDisplayMode(.inline)
+            }
+            #if os(iOS)
+            .navigationTitle(WindMapLabels.text("Map Data"))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(WindMapLabels.text("Done")) { infoVisible = false } } }
+            #endif
         }.presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
     }
 }

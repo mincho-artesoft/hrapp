@@ -70,7 +70,7 @@ class WeatherKitViewModel: ObservableObject {
     @Published var locationCoordinate: CLLocationCoordinate2D?
 
     private var observationDate: Date {
-        #if DEBUG
+        #if DEBUG && os(iOS)
         if let reference = ScreenshotMode.referenceDate { return reference }
         #endif
         return Date()
@@ -118,7 +118,7 @@ class WeatherKitViewModel: ObservableObject {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
                 var hourlyQuery: WeatherQuery<Forecast<HourWeather>> = .hourly
-                #if DEBUG
+                #if DEBUG && os(iOS)
                 if let reference = ScreenshotMode.referenceDate {
                     let start = reference.addingTimeInterval(-60 * 60)
                     hourlyQuery = .hourly(startDate: start, endDate: start.addingTimeInterval(48 * 60 * 60))
@@ -144,7 +144,7 @@ class WeatherKitViewModel: ObservableObject {
                 }
 
                 updateCurrentWeather(current)
-                #if DEBUG
+                #if DEBUG && os(iOS)
                 if let reference = ScreenshotMode.referenceDate,
                    let hour = hourlyData.forecast.last(where: { $0.date <= reference }) {
                     updateScreenshotWeather(hour)
@@ -256,7 +256,7 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     // MARK: - Current Weather Conversion
-    #if DEBUG
+    #if DEBUG && os(iOS)
     /// Use the real WeatherKit hour matching the capture clock. This keeps the
     /// native weather UI and widgets consistent without inventing a forecast.
     private func updateScreenshotWeather(_ hour: HourWeather) {

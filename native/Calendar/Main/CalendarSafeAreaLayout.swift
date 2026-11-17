@@ -5,6 +5,9 @@ enum CalendarSafeAreaLayout {
     // Keep the existing layout on iPad and other iPhones. Duo's camera/status
     // rail needs the horizontal safe area in both folded and unfolded layouts.
     static let preservesHorizontalInsets: Bool = {
+        #if os(macOS)
+        return true
+        #else
         #if targetEnvironment(simulator)
         let model = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] ?? ""
         #else
@@ -15,6 +18,7 @@ enum CalendarSafeAreaLayout {
         }
         #endif
         return model == "iPhone19,4"
+        #endif
     }()
 
     /// Only remove horizontal edges from the ignored set. SwiftUI continues

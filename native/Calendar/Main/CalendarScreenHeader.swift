@@ -1,5 +1,7 @@
 import SwiftUI
+#if os(iOS)
 import UIKit
+#endif
 
 /// One header for every calendar mode, including the UIKit-owned timelines.
 /// HRApp intentionally has no add-event button here. Weather retains its white
@@ -9,7 +11,7 @@ struct CalendarScreenHeader: View {
     var title: String? = nil
     var rangeTitle: String? = nil
     var rangeIsSelected = false
-    var tint: Color = .blue
+    var tint: Color = .appBlue
     var controlsHidden = false
     var onTitle: (() -> Void)? = nil
     var onRange: (() -> Void)? = nil
@@ -32,7 +34,7 @@ struct CalendarScreenHeader: View {
                             .foregroundStyle(rangeIsSelected ? tint : .primary)
                             .lineLimit(1).minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity, minHeight: 40)
-                            .background(Color(uiColor: .systemGray5), in: RoundedRectangle(cornerRadius: 8))
+                            .background(CalendarSurfaceColors.tertiaryFill, in: RoundedRectangle(cornerRadius: 8))
                     }
                     .accessibilityIdentifier("calendar-header-date-range")
                 } else if let title {
@@ -41,6 +43,7 @@ struct CalendarScreenHeader: View {
                             .lineLimit(1).minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(minHeight: CalendarHeaderLayout.buttonSize)
+                            .contentShape(Rectangle())
                     }
                     .accessibilityIdentifier("calendar-header-month")
                 } else {
@@ -49,8 +52,11 @@ struct CalendarScreenHeader: View {
                 Button(action: onSearch) { icon("magnifyingglass") }
                     .accessibilityLabel(currentView == 6 ? Text("Search for a city…") : Text("Search events..."))
                     .accessibilityIdentifier("calendar-header-search")
+                #if os(macOS)
+                MacCalendarViewPicker(selectedTab: currentView, tint: tint, onSelect: onViewChange)
+                #else
                 Menu {
-                    Picker("", selection: Binding(get: { currentView }, set: onViewChange)) {
+                    Picker("", selection: Binding(get: { currentView }, set: { onViewChange($0) })) {
                         ForEach(CalendarHeaderMode.allCases, id: \.rawValue) { mode in
                             Label(LocalizedStringKey(mode.title), systemImage: mode.symbol).tag(mode.rawValue)
                         }
@@ -58,8 +64,10 @@ struct CalendarScreenHeader: View {
                 } label: {
                     icon(CalendarHeaderMode(rawValue: currentView)?.symbol ?? "calendar")
                 }
+                .menuIndicator(.hidden)
                 .accessibilityLabel(Text("Menu"))
                 .accessibilityIdentifier("calendar-view-menu")
+                #endif
             } else {
                 Spacer(minLength: 0)
             }
@@ -71,13 +79,19 @@ struct CalendarScreenHeader: View {
     }
 
     private func icon(_ symbol: String) -> some View {
-        Image(uiImage: CalendarHeaderAppearance.image(symbol))
-            .renderingMode(.template)
+        Group {
+            #if os(iOS)
+            Image(uiImage: CalendarHeaderAppearance.image(symbol)).renderingMode(.template)
+            #else
+            Image(systemName: symbol).font(.system(size: 22, weight: .regular))
+            #endif
+        }
             .frame(width: CalendarHeaderLayout.buttonSize, height: CalendarHeaderLayout.buttonSize)
             .contentShape(Rectangle())
     }
 }
 
+#if os(iOS)
 enum CalendarHeaderAppearance {
     static func image(_ symbol: String) -> UIImage {
         (UIImage(systemName: symbol, withConfiguration:
@@ -139,3 +153,5 @@ final class CalendarScreenHeaderHost {
         controller.removeFromParent()
     }
 }
+
+#endif

@@ -193,11 +193,11 @@ struct AppLocalCalendarEditView: View {
             .navigationTitle("Edit Calendar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Cancel") { dismiss() }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { saveAndDismiss() }
+                AppSheetToolbarItem(placement: .confirmationAction) {
+                    AppToolbarTextButton("Done") { saveAndDismiss() }
                         .disabled(calendarName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }

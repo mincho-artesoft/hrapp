@@ -6,15 +6,9 @@ extension SharedEventImportPayload {
     /// work offline and are refreshed by the importer after acceptance.
     static func resolve(url: URL) async -> SharedEventImportPayload? {
         if let payload = SharedEventImportPayload(url: url) { return payload }
-        guard url.scheme == "https", url.path == "/event-invites/open",
-              url.user == nil, url.password == nil, url.port == nil,
+        guard let serverBase = SharedInvitationServer.baseURL(for: url, route: "event-invites/open"),
               var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { return nil }
-        var allowed = ["api.cloud-calendars.com"]
-        #if DEBUG
-        allowed.append(CloudCalendarsAPI.baseURL.host ?? "")
-        #endif
-        guard allowed.contains(url.host ?? "") else { return nil }
         let values = components.sharedEventFormQueryValues
         func validID(_ value: String?) -> Bool {
             guard let value, !value.isEmpty, value.count <= 128 else { return false }
@@ -23,7 +17,7 @@ extension SharedEventImportPayload {
         guard validID(values["e"]), validID(values["c"]),
               let eventID = values["e"], let feedID = values["c"] else { return nil }
         let base = url.host == "api.cloud-calendars.com"
-            ? URL(string: "https://cal.cloud-calendars.com")! : CloudCalendarsAPI.baseURL
+            ? URL(string: "https://cal.cloud-calendars.com")! : serverBase
         let feed = base.appendingPathComponent("f").appendingPathComponent(feedID + ".ics")
         do {
             let (data, response) = try await URLSession.shared.data(for: URLRequest(

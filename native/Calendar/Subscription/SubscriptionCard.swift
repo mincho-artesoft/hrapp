@@ -13,11 +13,11 @@ struct SubscriptionCard: View {
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(product.periodUnitOnly)
-                        .font(.headline)
+                        .font(CalendarTypography.headline)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
                     Text(product.displayPrice)
-                        .font(.title2.weight(.semibold))
+                        .font(CalendarTypography.title2.weight(.semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.85)
                     
@@ -32,7 +32,7 @@ struct SubscriptionCard: View {
                                 monthly
                             )
                         )
-                        .font(.caption)
+                        .font(CalendarTypography.caption)
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                     }
@@ -40,27 +40,9 @@ struct SubscriptionCard: View {
                     if isActive {
                         Text(NSLocalizedString("Current Plan",
                                                comment: "Marks the plan the customer is subscribed to"))
-                            .font(.caption.weight(.semibold))
+                            .font(CalendarTypography.caption.weight(.semibold))
                             .foregroundColor(.green)
                             .fixedSize(horizontal: false, vertical: true)
-                    }
-
-                    if !isActive, let intro = product.subscription?.introductoryOffer {
-                        let plural = intro.period.value > 1
-                        let unit = intro.period.unit.noun(plural: plural).lowercased()
-                        Text(
-                            localizedFormat(NSLocalizedString(
-                                    "%d %@ free",
-                                    comment: "Introductory free period"
-                                ),
-                                intro.period.value,
-                                unit
-                            )
-                        )
-                        .font(.subheadline.weight(.medium))
-                        .foregroundColor(.orange)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.top, 2)
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -71,19 +53,19 @@ struct SubscriptionCard: View {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(isSelected ? .accentColor : Color(.systemGray3))
+                    .foregroundColor(isSelected ? .accentColor : Color.secondary.opacity(0.5))
                     .animation(.easeInOut(duration: 0.2), value: isSelected)
             }
             .padding(.vertical, 18)
             .padding(.horizontal, 10)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(CalendarSurfaceColors.secondaryGrouped)
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(
                         isActive
                             ? Color.green
-                            : (isSelected ? Color.accentColor : Color(.systemGray4)),
+                            : (isSelected ? Color.accentColor : Color.secondary.opacity(0.35)),
                         lineWidth: isSelected || isActive ? 2.5 : 1.5
                     )
             )

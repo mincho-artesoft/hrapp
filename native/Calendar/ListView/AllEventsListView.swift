@@ -27,14 +27,13 @@ struct AllEventsListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if showSearchBar {
+            CalendarSearchHeader(isSearching: showSearchBar, height: CalendarHeaderLayout.height) {
+                topBar
+            } search: {
                 CalendarEventSearchField(text: $searchText) {
                     showSearchBar = false
                     searchText = ""
                 }
-                    .transition(.move(edge: .top))
-            } else {
-                topBar
             }
             
             // 2) Main Content
@@ -47,7 +46,7 @@ struct AllEventsListView: View {
                     }
                     .padding(.top,1)
 //                    .frame(height: cardHeight)
-                    .sheet(item: $eventToView, onDismiss: {
+                    .appSheet(item: $eventToView, onDismiss: {
                         loadInitialEvents()
                     }) { event in
                         EventDetailViewWrapper(event: event)
@@ -55,7 +54,6 @@ struct AllEventsListView: View {
                 }
             }
         }
-        .animation(.easeInOut, value: showSearchBar)
         .navigationBarHidden(true)
         .onChange(of: scrollRequest) { _, _ in
             showSearchBar = false

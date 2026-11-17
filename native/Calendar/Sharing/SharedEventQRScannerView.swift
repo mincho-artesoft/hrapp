@@ -46,8 +46,8 @@ struct SharedEventQRScannerView: View {
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Close") { dismiss() }
                 }
             }
             .alert("Unable to scan", isPresented: errorIsPresented) {

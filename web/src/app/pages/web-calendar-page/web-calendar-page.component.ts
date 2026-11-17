@@ -30,6 +30,7 @@ import {
   MeetingTypeConfig,
   TimeWindow,
   WebCalendarEvent,
+  DeviceCalendar,
 } from '../../core/calendar-platform-api.service';
 import {
   COMMON_TIMEZONES,
@@ -64,6 +65,8 @@ interface DragSession {
 }
 
 interface EventDraft {
+  calendarId?: string;
+  expectedUpdatedAt?: string;
   id: string;
   isNew: boolean;
   title: string;
@@ -161,6 +164,26 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   readonly sharedEvents = signal<WebCalendarEvent[]>([]);
   readonly externalBusy = signal<ExternalBusyState>({ updatedAt: null, sources: {}, events: [] });
   readonly calendarTimeZone = signal<string>(detectBrowserTimeZone());
+  readonly deviceCalendars = signal<DeviceCalendar[]>([]);
+  readonly hiddenCalendarIDs = signal<Set<string>>(new Set());
+  readonly destinationCalendarID = signal('');
+  readonly showCalendars = signal(true);
+  readonly writableCalendars = computed(() => this.deviceCalendars().filter(c => c.allowsChanges));
+  readonly calendarGroups = computed(() => [...new Set(this.deviceCalendars().map(c => c.source))].map(source => ({
+    source, calendars: this.deviceCalendars().filter(c => c.source === source)
+  })));
+  toggleCalendar(id: string): void {
+    this.hiddenCalendarIDs.update(previous => { const next = new Set(previous); next.has(id) ? next.delete(id) : next.add(id); return next; });
+  }
+  chooseDestination(id: string): void {
+    this.destinationCalendarID.set(id);
+    if (this.isBrowser) localStorage.setItem('calendarDestination.' + (this.api.profile()?.email ?? ''), id);
+  }
+  private updateCalendars(calendars: DeviceCalendar[]): void {
+    this.deviceCalendars.set(calendars);
+    const saved = this.destinationCalendarID() || (this.isBrowser ? localStorage.getItem('calendarDestination.' + (this.api.profile()?.email ?? '')) : '');
+    this.destinationCalendarID.set(calendars.find(c => c.id === saved && c.allowsChanges)?.id ?? calendars.find(c => c.allowsChanges)?.id ?? '');
+  }
 
   // Pointer Drag State
   readonly drag = signal<DragSession | null>(null);
@@ -225,8 +248,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   // Unified display events across owned + shared + external busy
   readonly allDisplayEvents = computed<WebCalendarEvent[]>(() => {
     const owned = this.ownedEvents()
-      .filter((e) => e.status !== 'cancelled')
-      .map((e) => ({ ...e, sourceKind: 'owned' as const, readOnly: false }));
+      .filter((e) => e.status !== 'cancelled' && (!e.calendarId || !this.hiddenCalendarIDs().has(e.calendarId)))
+      .map((e) => ({ ...e, sourceKind: 'owned' as const, readOnly: e.readOnly ?? false }));
     const shared = this.sharedEvents()
       .filter((e) => e.status !== 'cancelled')
       .map((e) => ({ ...e, sourceKind: 'shared' as const, readOnly: true }));
@@ -677,6 +700,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   async signOut(): Promise<void> {
     this.api.signOut();
     await this.bootstrapSession();
+    this.deviceCalendars.set([]); this.destinationCalendarID.set(''); this.hiddenCalendarIDs.set(new Set());
+    this.ownedEvents.set([]); this.sharedEvents.set([]);
     this.showToast('Signed out.');
   }
 
@@ -688,6 +713,7 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       this.api.getBookingInviteLinks().catch(() => ({ links: [] })),
     ]);
 
+    this.updateCalendars(state.calendars ?? []);
     this.ownedEvents.set(state.events ?? []);
     this.sharedEvents.set(state.receivedEvents ?? []);
     this.externalBusy.set(state.externalBusy ?? { updatedAt: null, sources: {}, events: [] });
@@ -742,7 +768,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
       // Re-check drag/save guard before applying signal updates
       if (this.drag() || this.savingEvent()) return;
 
-      this.ownedEvents.set(state.events ?? []);
+      this.updateCalendars(state.calendars ?? []);
+    this.ownedEvents.set(state.events ?? []);
       this.sharedEvents.set(state.receivedEvents ?? []);
       this.externalBusy.set(state.externalBusy ?? { updatedAt: null, sources: {}, events: [] });
 
@@ -1156,6 +1183,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
 
     try {
       const res = await this.api.upsertCalendarEvent(original.id, {
+        calendarId: original.calendarId,
+        expectedUpdatedAt: original.updatedAt,
         start: newStartIso,
         end: newEndIso,
         notifyGuest: true,
@@ -1205,6 +1234,11 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     }
   }
 
+  stepMiniMonth(dir: -1 | 1): void {
+    const date = this.anchorDate();
+    this.anchorDate.set(new Date(date.getFullYear(), date.getMonth() + dir, 1));
+  }
+
   jumpToday(): void {
     this.anchorDate.set(this.startOfLocalDay(new Date()));
   }
@@ -1222,12 +1256,14 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   openNewEventModal(start: Date, end: Date, allDay: boolean): void {
+    if (!this.destinationCalendarID()) { this.showToast('Open Cloud Calendars on your device to sync a writable calendar, then choose it here.'); return; }
     const id = `ev_${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
     this.editorDraft.set({
       id,
       isNew: true,
+      calendarId: this.destinationCalendarID(),
       title: '',
-      color: this.api.profile()?.defaultColor || '#0A84FF',
+      color: this.deviceCalendars().find(c => c.id === this.destinationCalendarID())?.color || '#0A84FF',
       allDay,
       startDate: this.toInputDate(start),
       startTime: this.toInputTime(start),
@@ -1258,6 +1294,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     this.editorDraft.set({
       id: ev.id,
       isNew: false,
+      calendarId: ev.calendarId,
+      expectedUpdatedAt: ev.updatedAt,
       title: ev.title,
       color: ev.color || ev.details?.color || '#0A84FF',
       allDay: Boolean(ev.allDay),
@@ -1305,6 +1343,8 @@ export class WebCalendarPageComponent implements OnInit, AfterViewInit, OnDestro
     this.savingEvent.set(true);
     try {
       const res = await this.api.upsertCalendarEvent(d.id, {
+        calendarId: d.calendarId,
+        expectedUpdatedAt: d.expectedUpdatedAt,
         title,
         start: startIso,
         end: endIso,

@@ -1,4 +1,20 @@
-# HRApp simulator workflow
+# HRApp device workflow
+
+## Current workflow (user request, 2026-11-16)
+
+- After each change to application code, Debug-build, update-install, and launch on **both connected physical devices and native Mac**:
+  - Aleksandar’s iPhone (iPhone SE): `00008030-001204D12E04C02E`
+  - Aleksandar’s iPad (iPad Air 11-inch M3): `00008122-000240191451801C`
+  - Native macOS, the same `Calendar` target and `Deksan.CalendarASD` bundle ID.
+- Build only HRApp from this repository. Do not build, install, launch, or change the Wonek app or its simulators; its repository is a read-only design reference.
+- Preserve device and Mac application data. Use normal launch arguments listed below.
+- Native Mac requires Apple Development signing with its WeatherKit capability; use automatic provisioning, not ad-hoc signing.
+- Update-install the signed Mac build into `/Users/aleksandarsvinarov/Applications/Cloud Calendars.app` and launch that installed copy. Do not launch the build directly from `/tmp`: Launch Services excludes apps in temporary directories from OAuth/deep-link handler resolution. Keep the same bundle ID and container data, and quit the running app before replacing its bundle. Register the installed bundle with `lsregister -f` after updating it.
+- Do not reset permissions in routine cycles. The explicit one-time Mac permission reset requested on 2026-11-16 was completed after verification with `tccutil reset All Deksan.CalendarASD`; the app was left closed. Do not repeat this reset without a new user request.
+- The physical-device workflow supersedes the historical simulator workflow below. Do not create or alter Wonek simulators.
+
+## Historical simulator workflow
+
 
 - After changes to application code, run a Debug build and update-install it on both HRApp simulators, then launch and verify the affected UI:
   - Sender (English US, iPhone 17, iOS 27.0): `1ECB51E0-0840-4C24-BF9E-39F427B7823F`

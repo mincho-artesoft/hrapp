@@ -353,9 +353,7 @@ extension WeatherDetailView{
 
                     // 2) Час/минути/секунди от now според customCalendar
                     let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
-                    let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
-                                           + Double(comps.minute ?? 0) * 60
-                                           + Double(comps.second ?? 0)
+                    let secondsFromMidnight = weatherSecondsSinceMidnight(comps)
 
                     // 3) Дял от деня
                     let fractionOfDay = secondsFromMidnight / (24 * 3600)
@@ -496,9 +494,11 @@ extension WeatherDetailView{
                     .foregroundColor(!showingFeelsLike ? .black : .gray)
                     .background(!showingFeelsLike ? Color.white : Color.clear)
                     .cornerRadius(15)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .contentShape(Rectangle())
+            .accessibilityAddTraits(!showingFeelsLike ? .isSelected : [])
+            .accessibilityIdentifier("weather.temperature.actual")
 
             Button {
                 showingFeelsLike = true
@@ -512,9 +512,11 @@ extension WeatherDetailView{
                     .foregroundColor(showingFeelsLike ? .black : .gray)
                     .background(showingFeelsLike ? Color.white : Color.clear)
                     .cornerRadius(15)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .contentShape(Rectangle())
+            .accessibilityAddTraits(showingFeelsLike ? .isSelected : [])
+            .accessibilityIdentifier("weather.temperature.feelsLike")
 
         }
         .padding(3)
