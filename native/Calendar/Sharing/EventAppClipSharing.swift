@@ -979,7 +979,7 @@ enum SharedEventSyncManager {
         #if DEBUG
         // Explicit E2E runs drive the real sync services at deterministic
         // checkpoints; ordinary launches retain automatic debounced sync.
-        if LocalSharingE2ETest.requested { return }
+        if LocalSharingE2ETest.requested || PhysicalSharingAudit.requested { return }
         #endif
         changeTask?.cancel()
         changeTask = Task { @MainActor in
@@ -996,13 +996,14 @@ enum SharedEventSyncManager {
 
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
-        _ = await NativeCalendarSyncService.syncNow()
         _ = await AppLocalCalendarSyncService.syncAll()
+        _ = await NativeCalendarSyncService.syncNow()
         _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: store)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
         _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: store)
         _ = await SharedInviteRefresher.refreshAll()
-        _ = await SharedICloudCalendarLocalStore.refreshAll()
+        // AppLocalCalendarSyncService already refreshed received calendars in
+        // this pass. Do not upload and download the same account twice.
     }
 }
 

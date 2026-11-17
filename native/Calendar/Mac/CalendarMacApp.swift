@@ -6,7 +6,13 @@ struct CalendarMacApp: App {
     init() { MacMenuSizing.shared.start() }
     var body: some Scene {
         WindowGroup("Cloud Calendars") {
-            CalendarMacRoot().frame(minWidth: 1280, minHeight: 720).tint(.appBlue)
+            Group {
+                #if DEBUG
+                if PhysicalSharingAudit.requested { PhysicalSharingAuditView() } else { CalendarMacRoot() }
+                #else
+                CalendarMacRoot()
+                #endif
+            }.frame(minWidth: 1280, minHeight: 720).tint(.appBlue)
                 .handlesExternalEvents(preferring: ["*"], allowing: ["*"])
                 .onOpenURL { url in
                     if !CloudAccountManager.shared.handleBrowserCallback(url) {

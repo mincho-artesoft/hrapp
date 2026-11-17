@@ -112,14 +112,57 @@ enum MacEventSharing {
         UserDefaults.standard.set(try JSONEncoder().encode(all), forKey: key(session))
     }
     private static func canonical(_ event: DeviceCalendarEvent) throws -> DeviceCalendarEvent {
-        try MacEventShareSnapshot.canonical(event)
+        try MacCalendarSharingMerge.wireSnapshot(event)
     }
-    private static func upload(_ event: DeviceCalendarEvent, remoteID: String, session: CloudCalendarsAPI.Session) async throws {
+    private static func upload(_ event: DeviceCalendarEvent, remoteID: String, session: CloudCalendarsAPI.Session, receivedFeedID: String? = nil) async throws {
         let details = try MacEventShareSnapshot.details(event)
         try await CloudCalendarsAPI.upsertEvent(.init(id: remoteID, title: event.title, start: event.startDate, end: event.endDate,
             isAllDay: event.allDay, location: event.location, url: event.url.flatMap(URL.init(string:)), details: details,
-            localEventIdentifier: event.id, organizerName: nil, organizerEmail: nil), session: session)
+            localEventIdentifier: event.id, organizerName: nil, organizerEmail: nil), session: session, receivedFeedId: receivedFeedID)
     }
+    #if DEBUG
+    static func discardAuditRecords(prefix: String, eventIDs: Set<String>, session: CloudCalendarsAPI.Session) throws {
+        let kept = records(session).filter { !$0.value.baseline.title.hasPrefix(prefix) }
+        UserDefaults.standard.set(try JSONEncoder().encode(kept), forKey: key(session))
+        let baselines = receivedBaselines(session)
+        let removed = eventIDs.union(baselines.filter { $0.value.title.hasPrefix(prefix) }.keys)
+        UserDefaults.standard.set(try JSONEncoder().encode(baselines.filter { !removed.contains($0.key) }), forKey: key(session) + ".receivedBaselines")
+        UserDefaults.standard.set(receivedCopies(session).filter { !removed.contains($0.key) }, forKey: key(session) + ".receivedCopies")
+    }
+    #endif
+    private static func receivedCopies(_ session: CloudCalendarsAPI.Session) -> [String: String] {
+        UserDefaults.standard.dictionary(forKey: key(session) + ".receivedCopies") as? [String: String] ?? [:]
+    }
+    private static func receivedBaselines(_ session: CloudCalendarsAPI.Session) -> [String: DeviceCalendarEvent] {
+        UserDefaults.standard.data(forKey: key(session) + ".receivedBaselines").flatMap {
+            try? JSONDecoder().decode([String: DeviceCalendarEvent].self, from: $0)
+        } ?? [:]
+    }
+    /// A server receipt is account-wide; the local copy identifier is device-specific.
+    @discardableResult
+    static func accept(_ payload: SharedEventImportPayload, target: EKCalendar,
+                       bridge: MacAppLocalCalendarBridge, session: CloudCalendarsAPI.Session) async throws -> String {
+        let backend = bridge.store.backend
+        var copies = receivedCopies(session)
+        let knownID = payload.eventID.flatMap { copies[$0] ?? receivedBaselines(session)[$0]?.id }
+        let localID: String
+        if let knownID, let existing = backend.event(matchingLocalIdentifier: knownID) {
+            localID = existing.id
+        } else {
+            let event = EKEvent(eventStore: backend.eventStore)
+            event.calendar = target; event.title = payload.title; event.startDate = payload.start; event.endDate = payload.end
+            event.isAllDay = payload.isAllDay; event.location = payload.location; event.url = payload.eventURL; event.timeZone = payload.timeZone
+            let saved = try bridge.persist(event, replacing: nil, span: .thisEvent)
+            localID = bridge.record(for: saved)?.id ?? backend.adapter.identity(saved)
+        }
+        if let id = payload.eventID, let feed = payload.feedID {
+            copies[id] = localID
+            UserDefaults.standard.set(copies, forKey: key(session) + ".receivedCopies")
+            try await CloudCalendarsAPI.rememberReceivedInvite(eventId: id, feedId: feed, localEventIdentifier: localID, session: session)
+        }
+        return localID
+    }
+
     static func prepare(_ event: DeviceCalendarEvent, calendarID: String, native: Bool,
                         session: CloudCalendarsAPI.Session) async throws -> Record {
         let existing = records(session)[event.id]
@@ -133,10 +176,17 @@ enum MacEventSharing {
         try store(record, session: session)
         return record
     }
+    static func restoreReceivedPermissions(backend: CalendarMacStore, session: CloudCalendarsAPI.Session) {
+        let roles = UserDefaults.standard.dictionary(forKey: key(session) + ".receivedAccess") as? [String: String] ?? [:]
+        backend.receivedEventAccess = roles.compactMapValues(CloudCalendarsAPI.EventAccess.init(rawValue:))
+        backend.receivedEventUnavailable = Set(UserDefaults.standard.stringArray(forKey: key(session) + ".receivedUnavailable") ?? [])
+    }
     static func sync(backend: CalendarMacStore, session: CloudCalendarsAPI.Session) async throws {
         let all = records(session).filter { !$0.value.cancelled }
-        guard !all.isEmpty else { return }
-        let remote = try await CloudCalendarsAPI.sharedState(session: session).outgoing
+        let state = try await CloudCalendarsAPI.sharedState(session: session)
+        guard backend.cloudSession?.calendarId == session.calendarId else { return }
+        try await syncReceived(state.received, backend: backend, session: session)
+        let remote = state.outgoing
         for (_, original) in all {
             guard backend.cloudSession?.calendarId == session.calendarId else { return }
             var record = original
@@ -162,16 +212,79 @@ enum MacEventSharing {
             incoming.readOnly = current.readOnly
             let merged = DeviceCalendarReplica.merge(base: [record.baseline], local: [try canonical(current)], remote: [try canonical(incoming)])[0]
             if merged.content != (try canonical(incoming)).content { try await upload(merged, remoteID: record.remoteID, session: session) }
-            if merged.content != (try canonical(current)).content, let calendar = backend.calendar(for: current), calendar.writable {
-                var applied = merged
-                // Sharing owns known portable fields; keep provider-only metadata locally.
-                var details = current.details ?? [:]
-                details.merge(merged.details ?? [:]) { _, shared in shared }
-                applied.details = details
-                try backend.save(applied, calendarID: calendar.id)
+            if let latest = backend.events.first(where: { $0.id == current.id }),
+               let calendar = backend.calendar(for: latest), calendar.writable {
+                let preserved = try MacCalendarSharingMerge.preservingInFlightEdits(
+                    beforeUpload: [current], uploaded: [merged], current: [latest])
+                if var applied = preserved.first, applied.content != (try canonical(latest)).content {
+                    var details = latest.details ?? [:]
+                    details.merge(applied.details ?? [:]) { _, shared in shared }
+                    applied.details = details; applied.readOnly = latest.readOnly
+                    try backend.save(applied, calendarID: calendar.id, scheduleSync: false)
+                }
             }
             record.baseline = merged; try store(record, session: session)
         }
     }
+    private static func syncReceived(_ received: [CloudCalendarsAPI.RemoteSharedEvent], backend: CalendarMacStore,
+                                     session: CloudCalendarsAPI.Session) async throws {
+        let storageKey = key(session) + ".receivedBaselines"
+        var baselines = UserDefaults.standard.data(forKey: storageKey).flatMap {
+            try? JSONDecoder().decode([String: DeviceCalendarEvent].self, from: $0)
+        } ?? [:]
+        var copies = receivedCopies(session)
+        var access: [String: CloudCalendarsAPI.EventAccess] = [:]
+        var unavailable = Set<String>()
+        for remote in received {
+            guard backend.cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
+            guard let identifier = copies[remote.id] ?? baselines[remote.id]?.id ?? remote.localEventIdentifier,
+                  let current = backend.event(matchingLocalIdentifier: identifier),
+                  let calendar = backend.calendar(for: current) else { continue }
+            copies[remote.id] = current.id
+            let role = remote.access ?? .reader
+            access[current.id] = role
+            if remote.isCancelled { unavailable.insert(current.id) }
+            var incoming = DeviceCalendarEvent(id: current.id, title: remote.title, start: remote.start, end: remote.end,
+                allDay: remote.allDay, location: remote.location, url: remote.url,
+                details: try remote.details.map { try CalendarJSON.object(encoding: $0) })
+            incoming = try canonical(incoming)
+            let writable = role != .reader && !remote.isCancelled
+            let merged = writable ? try MacCalendarSharingMerge.reconcile(base: [baselines[remote.id] ?? incoming],
+                local: [current], remote: [incoming])[0] : incoming
+            if writable && merged.content != incoming.content {
+                try await upload(merged, remoteID: remote.id, session: session, receivedFeedID: remote.feedId)
+            }
+            guard backend.cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
+            if let latest = backend.events.first(where: { $0.id == current.id }) {
+                let preserved = writable ? try MacCalendarSharingMerge.preservingInFlightEdits(
+                    beforeUpload: [current], uploaded: [merged], current: [latest]) : [merged]
+                if var applied = preserved.first {
+                    var details = latest.details ?? [:]
+                    details.merge(applied.details ?? [:]) { _, shared in shared }
+                    applied.details = details; applied.readOnly = !writable
+                    if applied.content != latest.content {
+                        try backend.save(applied, calendarID: calendar.id, scheduleSync: false)
+                    }
+                }
+            }
+            baselines[remote.id] = merged
+            UserDefaults.standard.set(try JSONEncoder().encode(baselines), forKey: storageKey)
+        }
+        let present = Set(received.map(\.id))
+        for (remoteID, localID) in copies where !present.contains(remoteID) {
+            guard var event = backend.event(matchingLocalIdentifier: localID), let calendar = backend.calendar(for: event) else { continue }
+            access[event.id] = .reader; unavailable.insert(event.id)
+            if event.readOnly != true {
+                event.readOnly = true
+                try backend.save(event, calendarID: calendar.id, scheduleSync: false)
+            }
+        }
+        UserDefaults.standard.set(copies, forKey: key(session) + ".receivedCopies")
+        UserDefaults.standard.set(access.mapValues(\.rawValue), forKey: key(session) + ".receivedAccess")
+        UserDefaults.standard.set(Array(unavailable), forKey: key(session) + ".receivedUnavailable")
+        backend.receivedEventAccess = access
+        backend.receivedEventUnavailable = unavailable
+    }
+
 }
 #endif

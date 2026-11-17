@@ -15,6 +15,7 @@ struct MacCalendarEventCard: NSViewRepresentable {
     var depth: Int? = nil
     var textHeight: CGFloat? = nil
     var isCreation = false
+    var isCancelled = false
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var direction
 
@@ -164,7 +165,7 @@ struct MacCalendarEventCard: NSViewRepresentable {
             paragraph.alignment = rtl ? .right : .left
             paragraph.baseWritingDirection = rtl ? .rightToLeft : .leftToRight
             result.addAttribute(.paragraphStyle, value: paragraph, range: range)
-            if c.event?.status == .canceled {
+            if c.isCancelled || c.event?.status == .canceled {
                 result.addAttributes([.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                                       .strikethroughColor: c.color], range: range)
             }

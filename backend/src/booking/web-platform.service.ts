@@ -131,6 +131,11 @@ export class WebPlatformService {
 
   private get nativeCalendars() { return new NativeCalendarStore(this.store); }
 
+  async listAccountLocalCalendars(principal: any): Promise<ApiResult> {
+    return result(200, { ownerID: principal.principalId,
+      calendars: (await this.nativeCalendars.list(principal)).filter(calendar => calendar.accountLocal === true) });
+  }
+
   async syncNativeCalendar(principal: any, body: any): Promise<ApiResult> {
     return this.nativeCalendars.sync(principal, body);
   }

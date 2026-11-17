@@ -273,12 +273,17 @@ enum SharedICloudCalendarLocalStore {
     /// snapshot. Metadata is included on every pass, which also repairs name
     /// and color changes made from the normal calendar editor.
     @discardableResult
-    static func syncOwnedCalendars(in eventStore: EKEventStore) async -> Int {
+    static func syncOwnedCalendars(in eventStore: EKEventStore, onlyShareID: String? = nil) async -> Int {
+        // Initial publication must complete, but it does not need to upload
+        // every other owned calendar or rediscover the account's inventory.
+        while onlyShareID != nil && isUploading {
+            do { try await Task.sleep(for: .milliseconds(50)) } catch { return 0 }
+        }
         guard !isUploading, let session = CalendarFeedSession.existing else { return 0 }
         isUploading = true
         defer { isUploading = false }
 
-        await discoverOwnedCalendars(in: eventStore, session: session)
+        if onlyShareID == nil { await discoverOwnedCalendars(in: eventStore, session: session) }
 
         let calendar = Calendar.current
         let windowStart = calendar.date(byAdding: .year, value: -1, to: Date()) ?? Date()
@@ -286,7 +291,7 @@ enum SharedICloudCalendarLocalStore {
         var synced = 0
         var validMappings = ownedIdentifiers
 
-        for (shareID, localIdentifier) in ownedIdentifiers {
+        for (shareID, localIdentifier) in ownedIdentifiers where onlyShareID == nil || shareID == onlyShareID {
             guard let localCalendar = eventStore.calendar(withIdentifier: localIdentifier) else {
                 do {
                     try await CloudCalendarsAPI.deleteICloudCalendarSharing(
@@ -587,126 +592,38 @@ enum SharedICloudCalendarLocalStore {
     /// current even while the Calendars sheet is closed.
     @discardableResult
     static func refreshAll() async -> Int {
-        guard let session = CalendarFeedSession.existing else {
-            return 0
-        }
-        guard !isRefreshing else {
-            pendingRefresh = true
-            return 0
-        }
-
-        isRefreshing = true
-        defer {
-            isRefreshing = false
-            if pendingRefresh {
-                pendingRefresh = false
-                Task { @MainActor in
-                    _ = await refreshAll()
-                }
-            }
-        }
-
-        do {
-            let sharedCalendars = try await CloudCalendarsAPI
-                .iCloudCalendarsSharedWithMe(session: session)
-            let eventStore = CalendarViewModel.shared.eventStore
-            var changed = 0
-
-            for sharedCalendar in sharedCalendars
-                where sharedCalendar.calendarKind != "app_local"
-                    && !isRemovedLocally(shareID: sharedCalendar.id) {
-                let upload = try await uploadReceivedChangesIfNeeded(
-                    sharedCalendar,
-                    in: eventStore,
-                    session: session
-                )
-
-                let result = try reconcile(
-                    sharedCalendar,
-                    in: eventStore,
-                    applyMetadata: !upload.metadataUploaded,
-                    applyEvents: !upload.eventsUploaded
-                )
-                if result.created {
-                    CalendarViewModel.shared.selectedCalendarIDs.insert(
-                        result.calendar.calendarIdentifier
-                    )
-                }
-                if result.changed || upload.didUpload {
-                    changed += 1
-                }
-                if !upload.didUpload {
-                    setSyncBaseline(for: sharedCalendar, in: eventStore)
-                }
-            }
-
-            if changed > 0 {
-                CalendarViewModel.shared.reloadCalendars()
-                NotificationCenter.default.post(name: .sharedEventImported, object: nil)
-            }
-            return changed
-        } catch {
-            print("Shared calendar refresh failed: \(error.localizedDescription)")
-            return 0
-        }
+        await AppLocalCalendarSyncService.refreshReceivedCalendars()
     }
 
-    @discardableResult
-    static func reconcile(
-        _ sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
-        in eventStore: EKEventStore,
-        applyMetadata: Bool = true,
-        applyEvents: Bool = true
-    ) throws -> (calendar: EKCalendar, created: Bool, changed: Bool) {
-        let revocationChanged = setRevoked(
-            sharedCalendar.isRevoked,
-            shareID: sharedCalendar.id
-        )
-        let accessChanged = setAccess(
-            sharedCalendar.access,
-            shareID: sharedCalendar.id
-        )
-        if let existing = localCalendar(for: sharedCalendar, in: eventStore) {
-            let color = uiColor(
-                localColorOverrides[sharedCalendar.id] ?? sharedCalendar.color
-            )
-            var changed = revocationChanged || accessChanged
-            if applyMetadata && (existing.title != sharedCalendar.title
-                || !colorsMatch(existing.cgColor, color.cgColor)) {
-                existing.title = sharedCalendar.title
-                existing.cgColor = color.cgColor
-                try eventStore.saveCalendar(existing, commit: true)
-                changed = true
-            }
-            if applyEvents {
-                changed = try reconcileEvents(
-                    sharedCalendar,
-                    into: existing,
-                    eventStore: eventStore
-                ) || changed
-            }
-            return (existing, false, changed)
+    /// Import a legacy EventKit mirror once, preserving unsent Writer/Owner
+    /// changes. New received calendars never enter EventKit or iCloud.
+    static func migrateReceivedCalendarIfNeeded(
+        _ remote: CloudCalendarsAPI.SharedICloudCalendar, session: CloudCalendarsAPI.Session
+    ) async throws -> CloudCalendarsAPI.SharedICloudCalendar {
+        guard !AppLocalCalendarStore.shared.receivedCalendars.contains(where: {
+            $0.remoteOwnerID == remote.ownerId && $0.remoteCalendarID == remote.calendarId
+        }), localCalendar(for: remote, in: CalendarViewModel.shared.eventStore) != nil else { return remote }
+        let upload = try await uploadReceivedChangesIfNeeded(remote,
+            in: CalendarViewModel.shared.eventStore, session: session)
+        if upload.didUpload {
+            return try await CloudCalendarsAPI.iCloudCalendarsSharedWithMe(session: session)
+                .first(where: { $0.id == remote.id }) ?? remote
         }
+        return remote
+    }
 
-        guard let source = eventStore.sources.first(where: { $0.sourceType == .local })
-            ?? eventStore.defaultCalendarForNewEvents?.source
-        else {
-            throw SharedCalendarLocalError.noWritableSource
+    static func finishLocalMigration(_ remote: CloudCalendarsAPI.SharedICloudCalendar) {
+        guard let legacyID = identifiers[remote.id],
+              let calendar = AppLocalCalendarStore.shared.receivedCalendars.first(where: {
+                  $0.remoteOwnerID == remote.ownerId && $0.remoteCalendarID == remote.calendarId
+              }) else { return }
+        if let override = localColorOverrides[remote.id], calendar.localColorOverrideHex == nil {
+            AppLocalCalendarStore.shared.setLocalColorOverride(uiColor(override), calendarID: calendar.id)
+            var overrides = localColorOverrides; overrides.removeValue(forKey: remote.id); localColorOverrides = overrides
         }
-
-        let calendar = EKCalendar(for: .event, eventStore: eventStore)
-        calendar.title = sharedCalendar.title
-        calendar.cgColor = uiColor(
-            localColorOverrides[sharedCalendar.id] ?? sharedCalendar.color
-        ).cgColor
-        calendar.source = source
-        try eventStore.saveCalendar(calendar, commit: true)
-
-        var updated = identifiers
-        updated[sharedCalendar.id] = calendar.calendarIdentifier
-        identifiers = updated
-        _ = try reconcileEvents(sharedCalendar, into: calendar, eventStore: eventStore)
-        return (calendar, true, true)
+        // Keep the known mirror mapping so old iCloud copies stay excluded.
+        // Do not delete an existing calendar from the user's Apple account.
+        CalendarViewModel.shared.selectedCalendarIDs.remove(legacyID)
     }
 
     /// Uploads edits made in a received calendar before the next pull can

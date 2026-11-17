@@ -30,8 +30,29 @@ enum AppLocalCalendarSyncService {
             }
         }
     }
+    #if DEBUG
+    /// Deterministic on-device regression probe; never set during ordinary launches.
+    static var auditBeforeEventUpload: ((String) -> Void)?
+    #endif
     private static var isSyncing = false
     private static var needsAnotherPass = false
+    private static let ownedRequests = CalendarRequestCoalescer<String, Bool>()
+    private static let receivedRequests = CalendarRequestCoalescer<String, Int>()
+
+    static func prepareOwnedCalendar(id: String) async throws {
+        guard let session = CalendarFeedSession.existing,
+              let calendar = AppLocalCalendarStore.shared.registerForSharing(id: id),
+              calendar.origin == .owned else { return }
+        _ = try await syncOwned(calendar, store: .shared, session: session)
+    }
+
+    @discardableResult
+    static func refreshReceivedCalendars() async -> Int {
+        guard let session = CalendarFeedSession.existing else { return 0 }
+        return (try? await receivedRequests.run(session.calendarId) {
+            await refreshReceivedCalendars(store: .shared, session: session)
+        }) ?? 0
+    }
 
     @discardableResult
     static func syncAll() async -> Int {
@@ -62,12 +83,19 @@ enum AppLocalCalendarSyncService {
             }
         }
 
+        changes += await refreshReceivedCalendars()
+        return changes
+    }
+
+    private static func refreshReceivedCalendars(store: AppLocalCalendarStore, session: CloudCalendarsAPI.Session) async -> Int {
+        var changes = 0
         do {
             let remote = try await CloudCalendarsAPI
                 .iCloudCalendarsSharedWithMe(session: session)
-                .filter { $0.calendarKind == "app_local" }
+            guard CalendarFeedSession.existing?.calendarId == session.calendarId else { return 0 }
             var remoteKeys = Set<String>()
-            for calendar in remote {
+            for fetched in remote where !SharedICloudCalendarLocalStore.isRemovedLocally(shareID: fetched.id) {
+                let calendar = try await SharedICloudCalendarLocalStore.migrateReceivedCalendarIfNeeded(fetched, session: session)
                 remoteKeys.insert(AppLocalCalendarStore.remoteKey(
                     ownerID: calendar.ownerId,
                     calendarID: calendar.calendarId
@@ -75,6 +103,7 @@ enum AppLocalCalendarSyncService {
                 if try await syncReceived(calendar, store: store, session: session) {
                     changes += 1
                 }
+                SharedICloudCalendarLocalStore.finishLocalMigration(calendar)
             }
             store.removeRemoteCalendarsNotPresent(in: remoteKeys)
         } catch {
@@ -90,6 +119,13 @@ enum AppLocalCalendarSyncService {
         store: AppLocalCalendarStore,
         session: CloudCalendarsAPI.Session
     ) async throws -> Bool {
+        try await ownedRequests.run(session.calendarId + ":" + calendar.shareID) {
+            try await performOwnedSync(calendar, store: store, session: session)
+        }
+    }
+
+    private static func performOwnedSync(_ calendar: AppLocalCalendarRecord, store: AppLocalCalendarStore,
+                                         session: CloudCalendarsAPI.Session) async throws -> Bool {
         let calendarID = calendar.shareID
         var sharing = try await CloudCalendarsAPI.iCloudCalendarSharing(
             calendarId: calendarID,
@@ -133,6 +169,7 @@ enum AppLocalCalendarSyncService {
         local: AppLocalCalendarRecord?, owned: Bool,
         store: AppLocalCalendarStore, session: CloudCalendarsAPI.Session
     ) async throws -> Bool {
+        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
         let key = AppLocalCalendarStore.remoteKey(ownerID: remote.ownerId, calendarID: remote.calendarId)
         let previous = baselines[key]
         let current = baseline(remote)
@@ -159,13 +196,16 @@ enum AppLocalCalendarSyncService {
                 calendarId: remote.calendarId, ownerId: owned ? nil : remote.ownerId, session: session)
             let saved = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                 calendarId: remote.calendarId, ownerId: owned ? nil : remote.ownerId,
-                title: merged.title, color: merged.color, timeZone: merged.timeZone, calendarKind: "app_local",
+                title: merged.title, color: merged.color, timeZone: merged.timeZone, calendarKind: remote.calendarKind ?? "eventkit",
                 recipients: sharing.recipients.map { (email: $0.email, access: $0.access) },
                 expectedUpdatedAt: current.metadataUpdatedAt, session: session)
             merged.metadataUpdatedAt = saved.updatedAt
         }
         if merged.events != current.events, let local {
             let window = syncWindow(for: store.events.filter { $0.calendarID == local.id })
+            #if DEBUG
+            auditBeforeEventUpload?(local.id)
+            #endif
             merged.eventsUpdatedAt = try await CloudCalendarsAPI.saveICloudCalendarEvents(
                 calendarId: remote.calendarId,
                 ownerId: owned ? nil : remote.ownerId,
@@ -176,11 +216,25 @@ enum AppLocalCalendarSyncService {
                 session: session
             )
         }
+        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
+        // A response describes the snapshot sent before suspension, not newer
+        // edits made while that request was running. Keep those edits pending.
+        var applied = merged
+        if !remote.isRevoked, remote.access != .reader, let local,
+           let latest = store.calendar(id: local.id) {
+            let latestEvents = portableEvents(store.events.filter { $0.calendarID == local.id })
+            applied.events = AppLocalCalendarMerge.events(base: localEvents, local: merged.events, remote: latestEvents)
+            if remote.access == .owner {
+                if latest.title != local.title { applied.title = latest.title }
+                if latest.colorHex != local.colorHex { applied.color = latest.colorHex }
+                if latest.timeZoneIdentifier != local.timeZoneIdentifier { applied.timeZone = latest.timeZoneIdentifier }
+            }
+        }
         let resolved = CloudCalendarsAPI.SharedICloudCalendar(
             id: remote.id, ownerId: remote.ownerId, ownerEmail: remote.ownerEmail, calendarId: remote.calendarId,
-            title: merged.title, color: merged.color, timeZone: merged.timeZone, calendarKind: "app_local",
+            title: applied.title, color: applied.color, timeZone: applied.timeZone, calendarKind: remote.calendarKind ?? "eventkit",
             access: remote.access, invitedAt: remote.invitedAt, updatedAt: merged.metadataUpdatedAt,
-            events: merged.events, eventsUpdatedAt: merged.eventsUpdatedAt, windowStart: remote.windowStart,
+            events: applied.events, eventsUpdatedAt: merged.eventsUpdatedAt, windowStart: remote.windowStart,
             windowEnd: remote.windowEnd, revokedAt: remote.revokedAt, revokedReason: remote.revokedReason)
         let changed = store.applyRemoteCalendar(resolved, ownedCalendarID: owned ? local?.id : nil)
         baselines[key] = merged

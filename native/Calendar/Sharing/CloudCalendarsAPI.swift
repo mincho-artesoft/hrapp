@@ -1043,6 +1043,7 @@ final class PendingEventInvitationManager: ObservableObject {
     private let seenInvitationIDsKey = "pendingEventInvitations.seenIDs.v1"
     private let seenCalendarInvitationIDsKey = "pendingCalendarInvitations.seenIDs.v1"
     private var pendingNotificationRefresh = false
+    private var isRefreshing = false
     private var foregroundPollingTask: Task<Void, Never>?
 
     private init() {
@@ -1087,7 +1088,7 @@ final class PendingEventInvitationManager: ObservableObject {
     }
 
     func refresh(notifyForNewInvitations: Bool = false) async {
-        guard !isLoading else {
+        guard !isRefreshing else {
             pendingNotificationRefresh = pendingNotificationRefresh
                 || notifyForNewInvitations
             return
@@ -1099,8 +1100,10 @@ final class PendingEventInvitationManager: ObservableObject {
             return
         }
 
+        isRefreshing = true
         isLoading = true
         defer {
+            isRefreshing = false
             isLoading = false
             if pendingNotificationRefresh {
                 pendingNotificationRefresh = false
@@ -1109,16 +1112,18 @@ final class PendingEventInvitationManager: ObservableObject {
                 }
             }
         }
+        errorMessage = nil
         do {
-            async let loadedEvents = CloudCalendarsAPI.pendingEventInvitations(session: session)
-            async let loadedCalendars = CloudCalendarsAPI.pendingICloudCalendarInvitations(
-                session: session
-            )
-            let (eventValues, calendarValues) = try await (loadedEvents, loadedCalendars)
-            let sorted = eventValues.sorted {
+            // Publish each list as it arrives. A slow or failed calendar
+            // request must not hide already-loaded event invitations.
+            async let loadedEvents = loadEventInvitations(session: session)
+            async let loadedCalendars = loadCalendarInvitations(session: session)
+            let (eventValues, calendarValues) = await (loadedEvents, loadedCalendars)
+            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return }
+            let sorted = (eventValues ?? []).sorted {
                 ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture)
             }
-            let sortedCalendars = calendarValues.sorted {
+            let sortedCalendars = (calendarValues ?? []).sorted {
                 ($0.invitedAt ?? "") > ($1.invitedAt ?? "")
             }
             let seen = Set(defaults.stringArray(forKey: seenInvitationIDsKey) ?? [])
@@ -1130,9 +1135,9 @@ final class PendingEventInvitationManager: ObservableObject {
                 !seenCalendars.contains($0.id)
             }
 
-            invitations = sorted
-            calendarInvitations = sortedCalendars
-            errorMessage = nil
+            // Push-token registration can be slow and is unrelated to whether
+            // the invitation list is ready for the person opening this screen.
+            isLoading = false
 
             if notifyForNewInvitations {
                 var updatedSeen = seen
@@ -1161,8 +1166,34 @@ final class PendingEventInvitationManager: ObservableObject {
                     await postCalendarNotifications(for: newCalendarInvitations)
                 }
             }
+        }
+    }
+
+    private func loadEventInvitations(session: CloudCalendarsAPI.Session) async -> [CloudCalendarsAPI.PendingEventInvitation]? {
+        do {
+            let values = try await CloudCalendarsAPI.pendingEventInvitations(session: session)
+            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return nil }
+            invitations = values.sorted { ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture) }
+            return values
         } catch {
-            errorMessage = error.localizedDescription
+            if CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled {
+                errorMessage = error.localizedDescription
+            }
+            return nil
+        }
+    }
+
+    private func loadCalendarInvitations(session: CloudCalendarsAPI.Session) async -> [CloudCalendarsAPI.PendingICloudCalendarInvitation]? {
+        do {
+            let values = try await CloudCalendarsAPI.pendingICloudCalendarInvitations(session: session)
+            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return nil }
+            calendarInvitations = values.sorted { ($0.invitedAt ?? "") > ($1.invitedAt ?? "") }
+            return values
+        } catch {
+            if CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled {
+                errorMessage = error.localizedDescription
+            }
+            return nil
         }
     }
 

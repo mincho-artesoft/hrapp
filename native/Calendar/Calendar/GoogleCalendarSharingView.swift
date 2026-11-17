@@ -2,10 +2,17 @@ import SwiftUI
 @preconcurrency import Contacts
 
 struct GoogleCalendarSharingView: View {
+    #if os(macOS)
+    @ObservedObject var viewModel: MacGoogleCalendarSharingAdapter
+    #else
     @ObservedObject var viewModel: CalendarViewModel = .shared
-    
+    #endif
     let googleCalID: String
+    #if os(macOS)
+    let user: MacCalendarProviderStore.Account
+    #else
     let user: StoredGoogleUser
+    #endif
     let calendarTitle: String
 
     @Environment(\.dismiss) private var dismiss
@@ -60,8 +67,15 @@ struct GoogleCalendarSharingView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            VStack {
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text("Sharing: \(calendarTitle)")) {
+                    EmptyView()
+                } trailing: {
+                    AppToolbarTextButton("Done") { dismiss() }.disabled(isAddingShares || !updatingRuleIDs.isEmpty)
+                }
+                #endif
                 if isLoading {
                     ProgressView(NSLocalizedString("Loading sharing settings…", comment: "Sharing settings loading message"))
                 } else {
@@ -72,8 +86,8 @@ struct GoogleCalendarSharingView: View {
                     }
                     
                     if isUserOwner {
-                        List {
-                            Section(header: Text(NSLocalizedString("Shared with these users", comment: "Shared users section title"))) {
+                        CalendarSharingForm {
+                            CalendarSharingSection("Shared with these users") {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
@@ -87,7 +101,7 @@ struct GoogleCalendarSharingView: View {
                                 }
                             }
                             
-                            Section(header: Text(NSLocalizedString("Add New Email", comment: "Add sharing email section title"))) {
+                            CalendarSharingSection("Add New Email") {
                                 ForEach($shareDrafts) { $draft in
                                     newGoogleShareRow($draft)
 
@@ -112,10 +126,13 @@ struct GoogleCalendarSharingView: View {
                                 } label: {
                                     Label("Add another person", systemImage: "person.badge.plus")
                                 }
+                                #if os(macOS)
+                                .buttonStyle(AppActionButtonStyle(tint: .appBlue, compact: true))
+                                #endif
                                 .disabled(isAddingShares)
                             }
                             
-                            Section {
+                            CalendarSharingSection {
                                 Button {
                                     Task {
                                         await addEmailsToShare()
@@ -128,16 +145,19 @@ struct GoogleCalendarSharingView: View {
                                                 .padding(.trailing, 6)
                                         }
                                         Label(LocalizedStringKey(isAddingShares ? "Adding…" : "Add"), systemImage: "person.badge.plus")
-                                        .font(.body.weight(.semibold))
+                                        .font(CalendarTypography.body.weight(.semibold))
                                         Spacer()
                                     }
                                 }
+                                #if os(macOS)
+                                .buttonStyle(AppActionButtonStyle(prominent: true, tint: .appBlue))
+                                #endif
                                 .disabled(isAddingShares || !hasEnteredShareEmail)
                             }
                         }
                     } else {
-                        List {
-                            Section(header: Text(NSLocalizedString("Shared with these users", comment: "Shared users section title"))) {
+                        CalendarSharingForm {
+                            CalendarSharingSection("Shared with these users") {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
@@ -149,6 +169,8 @@ struct GoogleCalendarSharingView: View {
                     }
                 }
             }
+            .background(CalendarPalette.groupedBackground)
+            #if os(iOS)
             .navigationTitle(localizedFormat(NSLocalizedString("Sharing: %@", comment: "Sharing screen title"), calendarTitle))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -160,11 +182,14 @@ struct GoogleCalendarSharingView: View {
                     }
                 }
             }
+            #endif
             .onAppear {
                 Task {
                     await loadAclList()
                 }
+                #if os(iOS)
                 fetchEmailsFromContacts()
+                #endif
             }
         }
     }
@@ -172,15 +197,19 @@ struct GoogleCalendarSharingView: View {
     private func newGoogleShareRow(_ draft: Binding<ShareDraft>) -> some View {
         HStack(spacing: 10) {
             Image(systemName: "person.crop.circle")
-                .font(.title3)
+                .font(CalendarTypography.title3)
                 .foregroundStyle(.blue)
 
             TextField(
                 NSLocalizedString("Email to share", comment: "Email share field placeholder"),
                 text: draft.email
             )
+            #if os(iOS)
             .keyboardType(.emailAddress)
             .textInputAutocapitalization(.never)
+            #else
+            .textFieldStyle(.plain)
+            #endif
             .autocorrectionDisabled()
             .focused($focusedShareDraftID, equals: draft.wrappedValue.id)
             .submitLabel(.next)
@@ -191,6 +220,11 @@ struct GoogleCalendarSharingView: View {
                 updateEmailSuggestions(newValue, for: draft.wrappedValue.id)
             }
 
+            #if os(macOS)
+            AppPicker("Access", selection: draft.role) {
+                ForEach(availableRoles, id: \.self) { Text(localizedRoleDisplayName($0)).tag($0) }
+            }.labelsHidden().fixedSize()
+            #else
             Menu {
                 ForEach(availableRoles, id: \.self) { rawRole in
                     Button {
@@ -211,14 +245,16 @@ struct GoogleCalendarSharingView: View {
                     Text(localizedRoleDisplayName(draft.wrappedValue.role))
                         .foregroundStyle(.secondary)
                     Image(systemName: "chevron.up.chevron.down")
-                        .font(.caption2.weight(.bold))
+                        .font(CalendarTypography.caption2.weight(.bold))
                 }
-                .font(.subheadline.weight(.semibold))
+                .font(CalendarTypography.subheadline.weight(.semibold))
                 .fixedSize()
             }
             .accessibilityLabel(
                 NSLocalizedString("Permission:", comment: "Sharing permission picker label")
             )
+
+            #endif
 
             if shareDrafts.count > 1 {
                 Button(role: .destructive) {
@@ -242,13 +278,13 @@ struct GoogleCalendarSharingView: View {
     ) -> some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "person.crop.circle.fill")
-                .font(.title2)
+                .font(CalendarTypography.title2)
                 .foregroundStyle(.blue)
                 .padding(.top, 2)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
-                    .font(.body.weight(.medium))
+                    .font(CalendarTypography.body.weight(.medium))
                     .lineLimit(1)
                     .truncationMode(.middle)
 
@@ -265,7 +301,7 @@ struct GoogleCalendarSharingView: View {
                                 Image(systemName: "arrow.clockwise")
                                 Text("Resend")
                             }
-                            .font(.caption.weight(.semibold))
+                            .font(CalendarTypography.caption.weight(.semibold))
                             .padding(.vertical, 2)
                         }
                         .buttonStyle(.borderless)
@@ -277,6 +313,11 @@ struct GoogleCalendarSharingView: View {
 
             HStack(alignment: .center, spacing: 7) {
                 if canManage {
+                    #if os(macOS)
+                    AppPicker("Access", selection: binding(for: rule)) {
+                        ForEach(availableRoles, id: \.self) { Text(localizedRoleDisplayName($0)).tag($0) }
+                    }.labelsHidden().fixedSize().disabled(updatingRuleIDs.contains(rule.id))
+                    #else
                     Menu {
                         ForEach(availableRoles, id: \.self) { rawRole in
                             Button {
@@ -297,9 +338,9 @@ struct GoogleCalendarSharingView: View {
                             Text(localizedRoleDisplayName(rule.role))
                                 .foregroundStyle(.secondary)
                             Image(systemName: "chevron.up.chevron.down")
-                                .font(.caption2.weight(.bold))
+                                .font(CalendarTypography.caption2.weight(.bold))
                         }
-                        .font(.subheadline.weight(.semibold))
+                        .font(CalendarTypography.subheadline.weight(.semibold))
                         .frame(minWidth: 68, alignment: .trailing)
                         .fixedSize(horizontal: true, vertical: true)
                     }
@@ -307,11 +348,13 @@ struct GoogleCalendarSharingView: View {
                     .fixedSize(horizontal: true, vertical: true)
                     .disabled(updatingRuleIDs.contains(rule.id))
 
+                    #endif
+
                     Button(role: .destructive) {
                         Task { await deleteAclRule(rule) }
                     } label: {
                         Image(systemName: "person.crop.circle.badge.minus")
-                            .font(.body)
+                            .font(CalendarTypography.body)
                             .foregroundStyle(.red)
                             .frame(width: 28, height: 28)
                     }
@@ -320,7 +363,7 @@ struct GoogleCalendarSharingView: View {
                     .accessibilityLabel("Remove Access")
                 } else {
                     Text(localizedRoleDisplayName(rule.role))
-                        .font(.subheadline.weight(.semibold))
+                        .font(CalendarTypography.subheadline.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: true, vertical: true)
                 }
@@ -335,24 +378,24 @@ struct GoogleCalendarSharingView: View {
     private func pendingShareRow(_ item: PendingShare) -> some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "person.crop.circle.fill")
-                .font(.title2)
+                .font(CalendarTypography.title2)
                 .foregroundStyle(.blue)
                 .padding(.top, 2)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(item.email)
-                    .font(.body.weight(.medium))
+                    .font(CalendarTypography.body.weight(.medium))
                     .lineLimit(1)
                     .truncationMode(.middle)
 
                 Text("Invitation pending")
-                    .font(.caption)
+                    .font(CalendarTypography.caption)
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
             Text(localizedRoleDisplayName(item.role))
-                .font(.subheadline.weight(.semibold))
+                .font(CalendarTypography.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: true, vertical: true)
 
@@ -478,7 +521,7 @@ struct GoogleCalendarSharingView: View {
 
     // MARK: - Data ops
     private func loadAclList() async {
-        isLoading = true
+        isLoading = aclRules.isEmpty
         errorMessage = ""
         do {
             let rules = try await viewModel.fetchGoogleCalendarAclList(

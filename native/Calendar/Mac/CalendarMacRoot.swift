@@ -88,7 +88,6 @@ struct CalendarMacRoot: View {
         }
         .onReceive(store.$events) { _ in MacCalendarReminderScheduler.shared.refresh(store: store) }
         .onChange(of: eventNotifications) { _, enabled in MacCalendarReminderScheduler.shared.refresh(store: store, requestPermission: enabled) }
-        .onReceive(NotificationCenter.default.publisher(for: .EKEventStoreChanged)) { _ in store.reload() }
         .onChange(of: selectedTab) { oldTab, _ in
             if oldTab < 6 { lastCalendarTab = oldTab }
             searching = false; search = ""; rangePickerIsOpen = false; viewMenuIsOpen = false
@@ -280,7 +279,8 @@ private struct MacCalendarAccountView: View {
                     MacCalendarSyncStatus(store: store)
                 }.padding(20)
             }
-        }.frame(width: 600, height: 620)
+        }.background(CalendarPalette.groupedBackground)
+            .frame(width: 600, height: 620)
             .onDisappear { CloudAccountManager.shared.cancelSignIn() }
     }
 }

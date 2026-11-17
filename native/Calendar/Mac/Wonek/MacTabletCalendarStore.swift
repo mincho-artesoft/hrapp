@@ -23,6 +23,13 @@ final class MacTabletCalendarStore: ObservableObject {
     private var calendar: Calendar { MacCalendarFormatting.calendar }
     private var didInitializeVisibility = false
     private var backendObserver: AnyCancellable?
+    private var interactionActive = false
+    private var reloadPending = false
+    func setInteractionActive(_ active: Bool) {
+        interactionActive = active
+        backend.setTimelineInteractionActive(active)
+        if !active && reloadPending { reloadPending = false; reload() }
+    }
     var backend: CalendarMacStore { local.store.backend }
 
     init(local: MacAppLocalCalendarBridge = .shared, includesSystemCalendars: Bool = true) {
@@ -33,7 +40,7 @@ final class MacTabletCalendarStore: ObservableObject {
         // Activation can still request permission, but reopening must not flash
         // an empty Up next row and then push the month card down.
         reload()
-        backendObserver = backend.$events.dropFirst().debounce(for: .milliseconds(50), scheduler: RunLoop.main).sink { [weak self] _ in self?.reload() }
+        backendObserver = backend.$events.combineLatest(backend.$calendars).dropFirst().debounce(for: .milliseconds(50), scheduler: RunLoop.main).sink { [weak self] _ in self?.reload() }
     }
 
 
@@ -48,11 +55,19 @@ final class MacTabletCalendarStore: ObservableObject {
     func canEdit(_ calendar: EKCalendar?) -> Bool { local.canEdit(calendar) }
     func canEdit(_ event: EKEvent?) -> Bool {
         guard let event else { return false }
-        return canEdit(event.calendar) && !event.hasAttendees && local.record(for: event)?.readOnly != true
+        let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
+        return !backend.receivedEventUnavailable.contains(id) && backend.receivedEventAccess[id] != .reader && canEdit(event.calendar) && !event.hasAttendees && local.record(for: event)?.readOnly != true
     }
     func canShare(_ event: EKEvent) -> Bool {
+        let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
+        if backend.receivedEventUnavailable.contains(id) { return false }
+        if let access = backend.receivedEventAccess[id] { return access == .owner }
         if let calendar = local.record(for: event.calendar) { return calendar.canManageSharing }
         return canEdit(event)
+    }
+    func isCancelled(_ event: EKEvent) -> Bool {
+        let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
+        return event.status == .canceled || backend.receivedEventUnavailable.contains(id)
     }
     func canManage(_ calendar: EKCalendar) -> Bool {
         if let record = local.record(for: calendar) { return record.canManageSharing }
@@ -89,6 +104,8 @@ final class MacTabletCalendarStore: ObservableObject {
     }
 
     func reload() {
+        guard !interactionActive else { reloadPending = true; return }
+        local.prepareSnapshot()
         authorizationStatus = EKEventStore.authorizationStatus(for: .event)
         let systemCalendars = (hasFullAccess && includesSystemCalendars ? eventStore.calendars(for: .event) : []).sorted {
             if $0.source.title == $1.source.title {
@@ -359,7 +376,8 @@ final class MacTabletCalendarStore: ObservableObject {
 
     func deleteCalendar(_ calendar: EKCalendar) async throws {
         if let record = local.record(for: calendar) {
-            try local.store.removeCalendar(id: record.id)
+            if record.origin == .received { try await backend.leaveReceivedCalendar(id: record.id) }
+            else { try local.store.removeCalendar(id: record.id) }
             reload()
             return
         }
@@ -373,11 +391,13 @@ final class MacTabletCalendarStore: ObservableObject {
 
     func saveCalendar(_ existing: EKCalendar?, title: String, color: NSColor,
                       destination: MacCalendarEditorTarget.Destination,
-                      usesCreatorDefault: Bool = false) throws {
+                      usesCreatorDefault: Bool = false) async throws {
         let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         if let existing, let record = local.record(for: existing) {
-            try local.store.updateCalendar(id: record.id, title: trimmed, color: color)
+            if record.origin == .received {
+                try await backend.saveReceivedCalendar(id: record.id, title: trimmed, localColor: usesCreatorDefault ? nil : color)
+            } else { try local.store.updateCalendar(id: record.id, title: trimmed, color: color) }
             reload()
             return
         }

@@ -11,7 +11,11 @@ async function main() {
   const store = app.get(StoreService);
   core.resolveToken = async token => token === 'route-test' ? { principalId: 'route-test' } as any : null;
   store.getJSONWithETag = async () => null;
-  store.getJSON = async () => null;
+  store.getJSON = async key => ({ id: key.endsWith('account.json') ? 'account' : 'native', accountLocal: key.endsWith('account.json') });
+  store.listKeys = async prefix => {
+    assert.equal(prefix, 'principal/route-test/native-calendars/');
+    return [prefix + 'account.json', prefix + 'native.json'];
+  };
   try {
     await app.listen(0, '127.0.0.1');
     const url = `${await app.getUrl()}/ios/calendars/sync`;
@@ -25,6 +29,12 @@ async function main() {
     const response = await request('route-test');
     assert.equal(response.status, 200);
     assert.equal((await response.json() as any).calendar, null);
+    const accountURL = `${await app.getUrl()}/ios/calendars/account`;
+    assert.equal((await fetch(accountURL)).status, 401);
+    const inventory = await fetch(accountURL, { headers: { Authorization: 'Bearer route-test' } });
+    assert.equal(inventory.status, 200);
+    assert.deepEqual(await inventory.json(), { ownerID: 'route-test', calendars: [{ id: 'account', accountLocal: true }] });
+    console.log('PASS: account-local authenticated inventory excludes device-native calendars');
     console.log('PASS: native calendar HTTP route, authentication and read-only lookup');
   } finally {
     await app.close();

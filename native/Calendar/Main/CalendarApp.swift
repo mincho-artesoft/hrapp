@@ -75,7 +75,9 @@ struct CalendarApp: App {
         WindowGroup {
             Group {
                 #if DEBUG
-                if LocalSharingE2ETest.requested {
+                if PhysicalSharingAudit.requested {
+                    PhysicalSharingAuditView()
+                } else if LocalSharingE2ETest.requested {
                     LocalSharingE2ETestView()
                 } else if ScreenshotSharingCaptureView.isRequested {
                     ScreenshotSharingCaptureView()
@@ -99,7 +101,7 @@ struct CalendarApp: App {
                 .preferredColorScheme(appPreferences.theme.preferredColorScheme)
                 .onAppear {
                     #if DEBUG
-                    guard !LocalSharingE2ETest.requested,
+                    guard !PhysicalSharingAudit.requested, !LocalSharingE2ETest.requested,
                           EventSurfaceFullScreen.destination == nil,
                           EventSurfaceFullScreen.appScreen == nil,
                           !EventSurfaceSnapshotSupport.requested,
@@ -217,7 +219,7 @@ struct CalendarApp: App {
         }
         .onChange(of: scenePhase) { _, newPhase in
             #if DEBUG
-            guard !LocalSharingE2ETest.requested,
+            guard !PhysicalSharingAudit.requested, !LocalSharingE2ETest.requested,
                   EventSurfaceFullScreen.destination == nil,
                   EventSurfaceFullScreen.appScreen == nil,
                   !EventSurfaceSnapshotSupport.requested,

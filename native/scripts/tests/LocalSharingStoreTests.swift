@@ -147,10 +147,21 @@ extension LocalStoreTestApp {
 
         var nativeRemote = remote
         nativeRemote.calendarKind = "eventkit"
-        nativeRemote.id = "must-not-import"
+        nativeRemote.id = "another-recipient-identity"
         let count = store.calendars.count
-        check(!store.applyRemoteCalendar(nativeRemote) && store.calendars.count == count,
-              "EventKit calendars do not leak into the app-local store")
+        _ = store.applyRemoteCalendar(nativeRemote)
+        check(store.calendars.count == count && store.calendar(id: received.id)?.remoteCalendarKind == "eventkit",
+              "Source kind and recipient identity changes keep the same app-local received calendar")
+        nativeRemote.id = "native-owner:different-native-calendar"
+        nativeRemote.calendarId = "different-native-calendar"
+        _ = store.applyRemoteCalendar(nativeRemote)
+        check(store.receivedCalendars.contains { $0.remoteCalendarID == nativeRemote.calendarId },
+              "Received Apple calendars are stored inside the app, not EventKit")
+        var duplicateEvents = remote
+        duplicateEvents.events = [allDay, allDay]
+        _ = store.applyRemoteCalendar(duplicateEvents)
+        check(store.events.filter { $0.calendarID == received.id }.count == 1,
+              "Repeated wire event identities do not create duplicate local events")
 
         remote.isRevoked = true
         remote.revokedAt = "2026-09-09T09:02:00.000Z"

@@ -1,6 +1,10 @@
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 struct ICloudCalendarSharingView: View {
     let calendarID: String
@@ -12,12 +16,15 @@ struct ICloudCalendarSharingView: View {
     let originalOwnerID: String?
     let originalOwnerEmail: String?
 
+    /// The Mac document store supplies the same continuous sharing sync as iOS.
+    var synchronizeCalendar: (@MainActor () async throws -> Void)? = nil
+
     #if DEBUG
     var isScreenshotPreview = false
     #endif
 
     private var screenshotPreviewEnabled: Bool {
-        #if DEBUG
+        #if DEBUG && os(iOS)
         return isScreenshotPreview && ScreenshotMode.isActive
         #else
         return false
@@ -32,6 +39,8 @@ struct ICloudCalendarSharingView: View {
     @State private var isLoading = false
     @State private var isRefreshing = false
     @State private var isSaving = false
+    @State private var isPreparingCalendar = false
+    @State private var preparedSessionID: String?
     @State private var sharingUpdatedAt: String?
     @State private var errorMessage: String?
     @State private var showQRCode = false
@@ -40,11 +49,19 @@ struct ICloudCalendarSharingView: View {
     @State private var resendingRecipientIDs: Set<String> = []
 
     var body: some View {
-        NavigationStack {
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text("Sharing: \(calendarTitle)")) {
+                    AppToolbarTextButton("Close") { cloudAccountManager.cancelSignIn(); dismiss() }
+                } trailing: {
+                    AppToolbarTextButton("Done") { dismiss() }.disabled(isSaving || isLoading)
+                }
+                #endif
             Group {
                 if CalendarFeedSession.existing == nil && !screenshotPreviewEnabled {
-                    Form {
-                        Section {
+                    CalendarSharingForm {
+                        CalendarSharingSection {
                             CloudAccountSignInContent()
                                 .padding(.vertical, 4)
                         }
@@ -56,6 +73,9 @@ struct ICloudCalendarSharingView: View {
                     sharingForm
                 }
             }
+            }
+            .background(CalendarPalette.groupedBackground)
+            #if os(iOS)
             .navigationTitle("Sharing: \(calendarTitle)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -70,6 +90,7 @@ struct ICloudCalendarSharingView: View {
                     .disabled(isSaving || isLoading || (CalendarFeedSession.existing == nil && !screenshotPreviewEnabled))
                 }
             }
+            #endif
             .task {
                 #if DEBUG
                 if screenshotPreviewEnabled {
@@ -100,6 +121,7 @@ struct ICloudCalendarSharingView: View {
                         calendarTitle: calendarTitle,
                         url: calendarInvitationURL
                     )
+                    .calendarSharingSheetSize()
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
                 }
@@ -119,6 +141,7 @@ struct ICloudCalendarSharingView: View {
                     errorMessage = nil
                     Task { await load(showProgress: false) }
                 }
+                .calendarSharingSheetSize()
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
             }
@@ -147,23 +170,23 @@ struct ICloudCalendarSharingView: View {
     }
 
     private var sharingForm: some View {
-        Form {
+        CalendarSharingForm {
             sharingMethodsSection
 
             if let errorMessage {
-                Section {
+                CalendarSharingSection {
                     Label(errorMessage, systemImage: "exclamationmark.circle.fill")
                         .foregroundStyle(.red)
                 }
             }
 
-            Section("Shared with these users") {
+            CalendarSharingSection("Shared with these users") {
                 ownerRow
 
                 ForEach($recipients) { $recipient in
                     HStack(spacing: 10) {
                         Image(systemName: "person.crop.circle.fill")
-                            .font(.title2)
+                            .font(CalendarTypography.title2)
                             .foregroundStyle(.blue)
 
                         VStack(alignment: .leading, spacing: 3) {
@@ -173,7 +196,7 @@ struct ICloudCalendarSharingView: View {
 
                             if recipient.isPendingInvitation {
                                 Text("Invitation pending")
-                                    .font(.footnote)
+                                    .font(CalendarTypography.footnote)
                                     .foregroundStyle(.secondary)
 
                                 Button {
@@ -184,7 +207,7 @@ struct ICloudCalendarSharingView: View {
                                             .controlSize(.small)
                                     } else {
                                         Label("Resend", systemImage: "arrow.clockwise")
-                                            .font(.footnote.weight(.semibold))
+                                            .font(CalendarTypography.footnote.weight(.semibold))
                                     }
                                 }
                                 .buttonStyle(.borderless)
@@ -201,7 +224,7 @@ struct ICloudCalendarSharingView: View {
                             recipientPendingRemoval = recipient
                         } label: {
                             Image(systemName: "person.crop.circle.badge.minus")
-                                .font(.title3)
+                                .font(CalendarTypography.title3)
                                 .foregroundStyle(.red)
                         }
                         .buttonStyle(.borderless)
@@ -240,7 +263,7 @@ struct ICloudCalendarSharingView: View {
     }
 
     private var sharingMethodsSection: some View {
-        Section("Share calendar") {
+        CalendarSharingSection("Share calendar", cards: true) {
             VStack(spacing: 12) {
                 if let appClipURL {
                     ShareLink(item: appClipURL) {
@@ -279,9 +302,11 @@ struct ICloudCalendarSharingView: View {
                 .buttonStyle(.plain)
                 .disabled(calendarInvitationURL == nil)
             }
+            .disabled(isPreparingCalendar)
             .listRowInsets(EdgeInsets())
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
+            if isPreparingCalendar { ProgressView("Syncing…") }
         }
     }
 
@@ -293,17 +318,17 @@ struct ICloudCalendarSharingView: View {
     ) -> some View {
         HStack(spacing: 14) {
             Image(systemName: systemImage)
-                .font(.title2.weight(.semibold))
+                .font(CalendarTypography.title2.weight(.semibold))
                 .foregroundStyle(color)
                 .frame(width: 42, height: 42)
                 .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
-                    .font(.body.weight(.semibold))
+                    .font(CalendarTypography.body.weight(.semibold))
                     .foregroundStyle(.primary)
                 Text(subtitle)
-                    .font(.footnote)
+                    .font(CalendarTypography.footnote)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
             }
@@ -311,12 +336,12 @@ struct ICloudCalendarSharingView: View {
             Spacer(minLength: 8)
 
             Image(systemName: "chevron.forward")
-                .font(.footnote.weight(.semibold))
+                .font(CalendarTypography.footnote.weight(.semibold))
                 .foregroundStyle(.tertiary)
         }
         .padding(14)
         .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
+            CalendarPalette.secondaryGroupedBackground,
             in: RoundedRectangle(cornerRadius: 18)
         )
         .contentShape(Rectangle())
@@ -354,7 +379,7 @@ struct ICloudCalendarSharingView: View {
     private var ownerRow: some View {
         HStack(spacing: 10) {
             Image(systemName: "person.crop.circle.fill")
-                .font(.title2)
+                .font(CalendarTypography.title2)
                 .foregroundStyle(.blue)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -362,7 +387,7 @@ struct ICloudCalendarSharingView: View {
                     .lineLimit(1)
                     .truncationMode(.middle)
                 Text("Original creator")
-                    .font(.caption)
+                    .font(CalendarTypography.caption)
                     .foregroundStyle(.secondary)
             }
 
@@ -397,6 +422,13 @@ struct ICloudCalendarSharingView: View {
         access: Binding<CloudCalendarsAPI.EventAccess>,
         onChange: @escaping () -> Void
     ) -> some View {
+        #if os(macOS)
+        AppPicker("Access", selection: access) {
+            ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { Text($0.title).tag($0) }
+        }
+        .labelsHidden().fixedSize()
+        .onChange(of: access.wrappedValue) { _, _ in onChange() }
+        #else
         Menu {
             ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { option in
                 Button {
@@ -416,11 +448,12 @@ struct ICloudCalendarSharingView: View {
                 Text(access.wrappedValue.title)
                     .foregroundStyle(.secondary)
                 Image(systemName: "chevron.up.chevron.down")
-                    .font(.caption2.weight(.bold))
+                    .font(CalendarTypography.caption2.weight(.bold))
             }
-            .font(.subheadline.weight(.semibold))
+            .font(CalendarTypography.subheadline.weight(.semibold))
             .fixedSize()
         }
+        #endif
     }
 
     @MainActor
@@ -430,6 +463,7 @@ struct ICloudCalendarSharingView: View {
             recipients = []
             loadedRecipients = []
             sharingUpdatedAt = nil
+            preparedSessionID = nil
             errorMessage = nil
             return
         }
@@ -464,28 +498,47 @@ struct ICloudCalendarSharingView: View {
                     session: session
                 )
             }
-            if isOriginalOwner && calendarKind == "eventkit" {
-                SharedICloudCalendarLocalStore.registerOwnedCalendar(
-                    shareID: calendarID,
-                    localCalendarIdentifier: localCalendarIdentifier
-                )
-                _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
-                    in: CalendarViewModel.shared.eventStore
-                )
-            } else if calendarKind == "app_local" {
-                _ = AppLocalCalendarStore.shared.registerForSharing(
-                    id: localCalendarIdentifier
-                )
-                _ = await AppLocalCalendarSyncService.syncAll()
-            }
+            guard CalendarFeedSession.existing?.calendarId == session.calendarId, !Task.isCancelled else { return }
             recipients = sharing.recipients
             loadedRecipients = sharing.recipients
             sharingUpdatedAt = sharing.updatedAt
             removedRecipientEmails = []
             errorMessage = nil
+            // Rendering access settings must not wait for event/provider sync.
+            // Only the original owner needs to publish a new calendar snapshot.
+            if isOriginalOwner, preparedSessionID != session.calendarId {
+                preparedSessionID = session.calendarId
+                isPreparingCalendar = sharing.eventsUpdatedAt == nil
+                Task { @MainActor in
+                    defer { if CalendarFeedSession.existing?.calendarId == session.calendarId { isPreparingCalendar = false } }
+                    do { try await synchronizeSharedCalendar() }
+                    catch {
+                        guard CalendarFeedSession.existing?.calendarId == session.calendarId else { return }
+                        preparedSessionID = nil
+                        errorMessage = error.localizedDescription
+                    }
+                }
+            }
         } catch {
+            guard !Task.isCancelled else { return }
             errorMessage = error.localizedDescription
         }
+    }
+
+    @MainActor
+    private func synchronizeSharedCalendar() async throws {
+        #if os(macOS)
+        try await synchronizeCalendar?()
+        #else
+        if AppLocalCalendarStore.shared.calendar(id: localCalendarIdentifier) != nil {
+            try await AppLocalCalendarSyncService.prepareOwnedCalendar(id: localCalendarIdentifier)
+        } else if isOriginalOwner && calendarKind == "eventkit" {
+            SharedICloudCalendarLocalStore.registerOwnedCalendar(
+                shareID: calendarID, localCalendarIdentifier: localCalendarIdentifier
+            )
+            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: CalendarViewModel.shared.eventStore, onlyShareID: calendarID)
+        }
+        #endif
     }
 
     @MainActor
@@ -523,17 +576,6 @@ struct ICloudCalendarSharingView: View {
             loadedRecipients = sharing.recipients
             sharingUpdatedAt = sharing.updatedAt
             removedRecipientEmails = []
-            if isOriginalOwner && calendarKind == "eventkit" {
-                SharedICloudCalendarLocalStore.registerOwnedCalendar(
-                    shareID: calendarID,
-                    localCalendarIdentifier: localCalendarIdentifier
-                )
-                _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
-                    in: CalendarViewModel.shared.eventStore
-                )
-            } else if calendarKind == "app_local" {
-                _ = await AppLocalCalendarSyncService.syncAll()
-            }
             errorMessage = nil
         } catch {
             recipients = loadedRecipients
@@ -567,72 +609,81 @@ private struct ICloudCalendarEmailInvitationsView: View {
     @FocusState private var focusedInvitationID: UUID?
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(calendarTitle)
-                            .font(.headline)
-                            .lineLimit(2)
-                        Text("Add everyone who should receive this calendar and choose their access.")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.vertical, 3)
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text("Invite by Email")) {
+                    AppToolbarTextButton("Cancel") { dismiss() }.disabled(isSaving)
+                } trailing: {
+                    AppToolbarTextButton("Save") { Task { await saveInvitations() } }
+                        .disabled(isSaving || !hasEnteredEmail)
                 }
-
-                Section {
-                    ForEach($invitations) { $invitation in
-                        invitationRow($invitation)
+                #endif
+                CalendarSharingForm {
+                    CalendarSharingSection(rows: true) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(calendarTitle)
+                                .font(CalendarTypography.headline)
+                                .lineLimit(2)
+                            Text("Add everyone who should receive this calendar and choose their access.")
+                                .font(CalendarTypography.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 3)
                     }
-                    .onDelete(perform: removeInvitations)
 
-                    Button {
-                        let draft = InvitationDraft()
-                        invitations.append(draft)
-                        focusedInvitationID = draft.id
-                    } label: {
-                        Label("Add another person", systemImage: "person.badge.plus")
+                    CalendarSharingSection("People", footer: "Reader can view. Writer can edit events. Owner can also share the calendar and manage access.", rows: true) {
+                        ForEach($invitations) { $invitation in
+                            invitationRow($invitation)
+                        }
+                        .onDelete(perform: removeInvitations)
+
+                        Button {
+                            let draft = InvitationDraft()
+                            invitations.append(draft)
+                            focusedInvitationID = draft.id
+                        } label: {
+                            Label("Add another person", systemImage: "person.badge.plus")
+                        }
+                        .calendarSharingRowAction()
+                        .disabled(isSaving)
                     }
-                    .disabled(isSaving)
-                } header: {
-                    Text("People")
-                } footer: {
-                    Text(
-                        "Reader can view. Writer can edit events. Owner can also share the calendar and manage access."
-                    )
-                }
 
-                if let errorMessage {
-                    Section {
-                        Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
-                            .font(.subheadline)
-                            .foregroundStyle(.red)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-
-                Section {
-                    Button {
-                        Task { await saveInvitations() }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if isSaving {
-                                ProgressView()
-                                    .padding(.trailing, 6)
-                            }
-                            Label(
-                                LocalizedStringKey(isSaving ? "Saving…" : "Save Invitations"),
-                                systemImage: "paperplane.fill"
-                            )
-                            .font(.body.weight(.semibold))
-                            Spacer()
+                    if let errorMessage {
+                        CalendarSharingSection(rows: true) {
+                            Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
+                                .font(CalendarTypography.subheadline)
+                                .foregroundStyle(.red)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                     }
-                    .disabled(isSaving || !hasEnteredEmail)
+
+                    CalendarSharingSection(rows: true) {
+                        Button {
+                            Task { await saveInvitations() }
+                        } label: {
+                            HStack {
+                                Spacer()
+                                if isSaving {
+                                    ProgressView()
+                                        .padding(.trailing, 6)
+                                }
+                                Label(
+                                    LocalizedStringKey(isSaving ? "Saving…" : "Save Invitations"),
+                                    systemImage: "paperplane.fill"
+                                )
+                                .font(CalendarTypography.body.weight(.semibold))
+                                Spacer()
+                            }
+                        }
+                        .calendarSharingRowAction()
+                        .disabled(isSaving || !hasEnteredEmail)
+                    }
                 }
             }
+            .background(CalendarPalette.groupedBackground)
+            .interactiveDismissDisabled(isSaving)
+            #if os(iOS)
             .navigationTitle("Invite by Email")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled(isSaving)
@@ -648,6 +699,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
                     .disabled(isSaving || !hasEnteredEmail)
                 }
             }
+            #endif
         }
     }
 
@@ -655,12 +707,16 @@ private struct ICloudCalendarEmailInvitationsView: View {
     private func invitationRow(_ invitation: Binding<InvitationDraft>) -> some View {
         HStack(spacing: 10) {
             Image(systemName: "person.crop.circle")
-                .font(.title3)
+                .font(CalendarTypography.title3)
                 .foregroundStyle(.blue)
 
             TextField("Email address", text: invitation.email)
+                #if os(iOS)
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
+                #else
+                .textFieldStyle(.plain)
+                #endif
                 .autocorrectionDisabled()
                 .focused($focusedInvitationID, equals: invitation.wrappedValue.id)
                 .submitLabel(.next)
@@ -670,7 +726,8 @@ private struct ICloudCalendarEmailInvitationsView: View {
                     focusedInvitationID = draft.id
                 }
 
-            accessPicker(access: invitation.access)
+            CalendarSharingAccessPicker(selection: invitation.access,
+                                        options: CloudCalendarsAPI.EventAccess.calendarSharingCases)
 
             if invitations.count > 1 {
                 Button(role: .destructive) {
@@ -685,34 +742,6 @@ private struct ICloudCalendarEmailInvitationsView: View {
         }
         .padding(.vertical, 4)
         .disabled(isSaving)
-    }
-
-    private func accessPicker(
-        access: Binding<CloudCalendarsAPI.EventAccess>
-    ) -> some View {
-        Menu {
-            ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { option in
-                Button {
-                    access.wrappedValue = option
-                } label: {
-                    if access.wrappedValue == option {
-                        Label(option.title, systemImage: "checkmark")
-                    } else {
-                        Text(option.title)
-                    }
-                }
-            }
-        } label: {
-            HStack(spacing: 5) {
-                Text(access.wrappedValue.title)
-                    .foregroundStyle(.secondary)
-                Image(systemName: "chevron.up.chevron.down")
-                    .font(.caption2.weight(.bold))
-            }
-            .font(.subheadline.weight(.semibold))
-            .fixedSize()
-        }
-        .accessibilityLabel("Access")
     }
 
     private var hasEnteredEmail: Bool {
@@ -794,75 +823,7 @@ private struct ICloudCalendarQRCodeView: View {
     let calendarTitle: String
     let url: URL
 
-    @Environment(\.dismiss) private var dismiss
-    @State private var copied = false
-
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 22) {
-                    VStack(spacing: 5) {
-                        Text(calendarTitle)
-                            .font(.title2.weight(.bold))
-                            .multilineTextAlignment(.center)
-                        Text("Scan to open this calendar")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    if let qrImage {
-                        Image(uiImage: qrImage)
-                            .interpolation(.none)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 290)
-                            .padding(18)
-                            .background(.white, in: RoundedRectangle(cornerRadius: 24))
-                            .shadow(color: .black.opacity(0.08), radius: 16, y: 6)
-                            .accessibilityLabel("QR code for \(calendarTitle)")
-                    }
-
-                    Text(url.absoluteString)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.center)
-                        .textSelection(.enabled)
-
-                    Button {
-                        UIPasteboard.general.url = url
-                        copied = true
-                    } label: {
-                        Label(
-                            LocalizedStringKey(copied ? "Copied" : "Copy Link"),
-                            systemImage: copied ? "checkmark" : "doc.on.doc"
-                        )
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                }
-                .padding(24)
-            }
-            .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("QR Code")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                AppSheetToolbarItem(placement: .confirmationAction) {
-                    AppToolbarTextButton("Done") { dismiss() }
-                }
-            }
-        }
-    }
-
-    private var qrImage: UIImage? {
-        let filter = CIFilter.qrCodeGenerator()
-        filter.message = Data(url.absoluteString.utf8)
-        filter.correctionLevel = "M"
-        guard let output = filter.outputImage?.transformed(
-            by: CGAffineTransform(scaleX: 12, y: 12)
-        ), let cgImage = CIContext().createCGImage(output, from: output.extent)
-        else { return nil }
-        return UIImage(cgImage: cgImage)
+        EventShareQRCodeView(eventTitle: calendarTitle, url: url, scanInstruction: "Scan to open this calendar")
     }
 }

@@ -145,7 +145,7 @@ enum SharedInviteTracker {
         }
         guard let identifier = event.eventIdentifier else { return false }
         guard let invite = invite(localEventIdentifier: identifier) else { return false }
-        return invite.isRevoked == true || invite.effectiveAccess == .reader
+        return invite.isCancelled || invite.isRevoked == true || invite.effectiveAccess == .reader
     }
 
     static func isReadOnly(_ descriptor: EventDescriptor) -> Bool {
@@ -190,7 +190,7 @@ enum SharedInviteTracker {
         guard let identifier = event.eventIdentifier,
               let invite = invite(localEventIdentifier: identifier)
         else { return true }
-        return invite.isRevoked != true && invite.effectiveAccess == .owner
+        return !invite.isCancelled && invite.isRevoked != true && invite.effectiveAccess == .owner
     }
 
     static func canShare(_ descriptor: EventDescriptor) -> Bool {

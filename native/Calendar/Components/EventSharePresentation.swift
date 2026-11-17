@@ -119,6 +119,7 @@ struct EventShareMethodPicker: View {
 struct EventShareQRCodeView: View {
     let eventTitle: String
     let url: URL
+    var scanInstruction: LocalizedStringKey = "Scan to open this event"
 
     @Environment(\.dismiss) private var dismiss
     @State private var copied = false
@@ -139,7 +140,7 @@ struct EventShareQRCodeView: View {
                         Text(eventTitle)
                             .font(CalendarTypography.title2.weight(.bold))
                             .multilineTextAlignment(.center)
-                        Text("Scan to open this event")
+                        Text(scanInstruction)
                             .font(CalendarTypography.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -175,7 +176,11 @@ struct EventShareQRCodeView: View {
                         Label(LocalizedStringKey(copied ? "Copied" : "Copy Link"), systemImage: copied ? "checkmark" : "doc.on.doc")
                             .frame(maxWidth: .infinity)
                     }
+                    #if os(macOS)
+                    .buttonStyle(AppActionButtonStyle(prominent: true, tint: .appBlue))
+                    #else
                     .buttonStyle(.borderedProminent)
+                    #endif
                     .controlSize(.large)
                 }
                 .padding(24)

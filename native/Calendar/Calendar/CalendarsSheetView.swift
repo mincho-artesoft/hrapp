@@ -102,6 +102,9 @@ struct CalendarsSheetView: View {
                 appLocalSection
                 sharedWithMeICloudSection
                 otherSection
+                if let error = viewModel.providerSyncError {
+                    Section { Text(error).foregroundStyle(.red).font(CalendarTypography.footnote) }
+                }
                 googleSection
                 microsoftSection
                 addCalendarSection
@@ -379,7 +382,7 @@ struct CalendarsSheetView: View {
                                     localCalendarIdentifier: calendar.id,
                                     originalOwnerID: calendar.remoteOwnerID,
                                     originalOwnerEmail: calendar.remoteOwnerEmail,
-                                    calendarKind: "app_local"
+                                    calendarKind: calendar.remoteCalendarKind ?? "app_local"
                                 )
                             } : nil
                         )
@@ -489,35 +492,23 @@ struct CalendarsSheetView: View {
                 )
                 Section {
                     DisclosureGroup(isExpanded: isExpanded) {
-                        let googleCals = googleCopiedCalendars(for: user)
+                        let googleCals = viewModel.providerCalendars(provider: "google", identity: user.email ?? user.userID ?? user.uniqueID.uuidString)
                         if googleCals.isEmpty {
                             Text(LocalizedStringKey("No synced Google calendars yet."))
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                                 .listRowBackground(Color.clear)
                         } else {
-                            ForEach(googleCals, id: \.calendarIdentifier) { cal in
-                                CalendarRowView(
-                                    calendar: cal,
-                                    isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
-                                    toggleAction: toggleCalendar,
-                                    editAction: {},
-                                    showEditButton: false,
-                                    showShareButton: user.refreshToken?.isEmpty == false,
-                                    shareAction: {
-                                        guard let googleCalendarID = googleCalendarID(
-                                            for: cal,
-                                            user: user
-                                        ) else { return }
-
-                                        googleCalendarSharingTarget = GoogleCalendarSharingTarget(
-                                            googleCalendarID: googleCalendarID,
-                                            user: user,
-                                            calendarTitle: cal.title
-                                        )
-                                    }
-                                )
-                                .listRowSeparator(.hidden)
+                            ForEach(googleCals) { cal in
+                                AppLocalCalendarRow(calendar: cal,
+                                    isSelected: viewModel.selectedCalendarIDs.contains(cal.id),
+                                    toggleAction: { toggleAppLocalCalendar(cal) },
+                                    editAction: { toggleAppLocalCalendar(cal) },
+                                    shareAction: user.refreshToken?.isEmpty == false ? {
+                                        guard let remoteID = AppLocalProviderCalendarStore.shared.engine.remoteCalendarID(for: cal.id) else { return }
+                                        googleCalendarSharingTarget = .init(googleCalendarID: remoteID, user: user, calendarTitle: cal.title)
+                                    } : nil, showsEditButton: false)
+                                    .listRowSeparator(.hidden)
                             }
                             // Temporary spinner row while adding
                             if addingGoogleUserID == user.uniqueID,
@@ -605,23 +596,18 @@ struct CalendarsSheetView: View {
                 )
                 Section {
                     DisclosureGroup(isExpanded: isExpanded) {
-                        let msCals = viewModel.microsoftCopiedCalendars(for: user)
+                        let msCals = viewModel.providerCalendars(provider: "microsoft", identity: user.email ?? user.msAccountID ?? user.uniqueID.uuidString)
                         if msCals.isEmpty {
                             Text(LocalizedStringKey("No synced Microsoft calendars yet."))
                                 .font(.footnote).foregroundColor(.secondary)
                                 .listRowBackground(Color.clear)
                         } else {
-                            ForEach(msCals, id: \.calendarIdentifier) { cal in
-                                CalendarRowView(
-                                    calendar: cal,
-                                    isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
-                                    toggleAction: toggleCalendar,
-                                    editAction: { calendarToEdit = cal },
-                                    showEditButton: false,
-                                    showShareButton: false,
-                                    shareAction: {}
-                                )
-                                .listRowSeparator(.hidden)
+                            ForEach(msCals) { cal in
+                                AppLocalCalendarRow(calendar: cal,
+                                    isSelected: viewModel.selectedCalendarIDs.contains(cal.id),
+                                    toggleAction: { toggleAppLocalCalendar(cal) }, editAction: { toggleAppLocalCalendar(cal) },
+                                    shareAction: nil, showsEditButton: false)
+                                    .listRowSeparator(.hidden)
                             }
                         }
                         Section {
@@ -726,7 +712,7 @@ struct CalendarsSheetView: View {
 
     @MainActor
     private func loadSharedICloudCalendars() async {
-        guard let session = CalendarFeedSession.existing else {
+        guard CalendarFeedSession.existing != nil else {
             sharedICloudCalendars = []
             sharedICloudCalendarsError = nil
             return
@@ -734,37 +720,14 @@ struct CalendarsSheetView: View {
         guard !isLoadingSharedICloudCalendars else { return }
         isLoadingSharedICloudCalendars = true
         defer { isLoadingSharedICloudCalendars = false }
-        do {
-            // Push permitted Writer/Owner changes before reading the latest
-            // server snapshot. Reconciling the fetched payload directly here
-            // used to overwrite a local edit before the foreground sync could
-            // upload it.
-            _ = await SharedICloudCalendarLocalStore.refreshAll()
-            _ = await NativeCalendarSyncService.syncNow()
-            _ = await AppLocalCalendarSyncService.syncAll()
-            // The sync mutates EventKit in place. Refresh this sheet's
-            // observed calendar collection as well, otherwise its open rows
-            // can keep rendering the old EKCalendar instances while the
-            // timeline already shows the new metadata and events.
-            viewModel.reloadCalendars()
-            let fetchedCalendars = try await CloudCalendarsAPI
-                .iCloudCalendarsSharedWithMe(session: session)
-                .filter {
-                    $0.calendarKind != "app_local"
-                        &&
-                    !SharedICloudCalendarLocalStore.isRemovedLocally(
-                        shareID: $0.id
-                    )
-                }
-
-            // Assign the fresh value on every completed refresh. Besides the
-            // title/color, the row also renders role and revocation fields
-            // that do not originate from EventKit.
-            sharedICloudCalendars = fetchedCalendars
-            sharedICloudCalendarsError = nil
-        } catch {
-            sharedICloudCalendarsError = error.localizedDescription
-        }
+        // The list needs received calendars, not uploads of every local,
+        // EventKit and provider calendar before it can finish loading.
+        _ = await AppLocalCalendarSyncService.refreshReceivedCalendars()
+        Task { _ = await NativeCalendarSyncService.syncNow() }
+        viewModel.reloadCalendars()
+        // Every received source uses AppLocal; do not also render old EventKit mirrors.
+        sharedICloudCalendars = []
+        sharedICloudCalendarsError = nil
     }
 
     private func toggleSelectAll() {

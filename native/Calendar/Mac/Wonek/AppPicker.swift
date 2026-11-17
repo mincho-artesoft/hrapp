@@ -10,9 +10,11 @@ struct AppPicker<Value: Hashable, Content: View>: View {
     @Binding var selection: Value
     let content: Content
     private var hidesLabel = false
+    private var compactSecondaryLabel = false
     @State private var presented = false
     @State private var focused: Value?
     @FocusState private var keyboardFocus: Bool
+    @Environment(\.font) private var inheritedFont
 
     init(_ title: LocalizedStringKey, selection: Binding<Value>, @ViewBuilder content: () -> Content) {
         self.title = title
@@ -26,22 +28,32 @@ struct AppPicker<Value: Hashable, Content: View>: View {
         return copy
     }
 
+    func compactSecondaryValue() -> Self {
+        var copy = self
+        copy.compactSecondaryLabel = true
+        return copy
+    }
+
     var body: some View {
         #if os(macOS)
         Group(subviews: content) { choices in
             Button { presented = true } label: {
                 HStack {
                     if !hidesLabel { Text(title).foregroundStyle(.primary); Spacer(minLength: 12) }
-                    HStack(spacing: 6) {
+                    HStack(spacing: compactSecondaryLabel ? 5 : 6) {
                         ForEach(choices) { choice in
-                            if choice.containerValues.hasTag(selection) { choice }
+                            if choice.containerValues.hasTag(selection) {
+                                choice.foregroundStyle(compactSecondaryLabel ? AnyShapeStyle(Color.secondary) : AnyShapeStyle(Color.appBlue))
+                            }
                         }
-                        Image(systemName: "chevron.up.chevron.down").font(.caption2)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(compactSecondaryLabel ? CalendarTypography.caption2.weight(.bold) : .caption2)
                     }
+                    .font(compactSecondaryLabel ? CalendarTypography.subheadline.weight(.semibold) : inheritedFont)
                     .adaptiveSingleLine()
                     .foregroundStyle(.appBlue)
                 }
-                .frame(maxWidth: .infinity, minHeight: 30, alignment: .trailing)
+                .frame(maxWidth: .infinity, minHeight: compactSecondaryLabel ? 0 : 30, alignment: .trailing)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)

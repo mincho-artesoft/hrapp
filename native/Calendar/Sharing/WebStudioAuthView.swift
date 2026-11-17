@@ -626,7 +626,7 @@ struct WebStudioAuthSheetView: View {
             await ensureAuthenticatorConfigured()
         }
         #if os(iOS)
-        _ = await NativeCalendarSyncService.syncNow()
+        Task { _ = await NativeCalendarSyncService.syncNow() }
         #endif
     }
 
@@ -678,7 +678,7 @@ struct WebStudioAuthSheetView: View {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             #endif
             #if os(iOS)
-        _ = await NativeCalendarSyncService.syncNow()
+        Task { _ = await NativeCalendarSyncService.syncNow() }
         #endif
         } catch {
             errorMessage = friendlyServerError(error)

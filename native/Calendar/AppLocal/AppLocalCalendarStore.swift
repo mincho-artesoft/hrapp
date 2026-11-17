@@ -35,6 +35,8 @@ struct AppLocalCalendarRecord: Codable, Equatable, Identifiable {
     var revokedAt: Date?
     var revokedReason: String?
     var localColorOverrideHex: String?
+    var remoteCalendarKind: String?
+    var providerSource: String? = nil
 
     init(
         id: String = Self.identifierPrefix + UUID().uuidString.lowercased(),
@@ -51,7 +53,8 @@ struct AppLocalCalendarRecord: Codable, Equatable, Identifiable {
         isOriginalCreator: Bool = true,
         revokedAt: Date? = nil,
         revokedReason: String? = nil,
-        localColorOverrideHex: String? = nil
+        localColorOverrideHex: String? = nil,
+        remoteCalendarKind: String? = nil
     ) {
         self.id = id
         self.title = title
@@ -68,13 +71,15 @@ struct AppLocalCalendarRecord: Codable, Equatable, Identifiable {
         self.revokedAt = revokedAt
         self.revokedReason = revokedReason
         self.localColorOverrideHex = localColorOverrideHex
+        self.remoteCalendarKind = remoteCalendarKind
     }
 
+    var isProvider: Bool { id.hasPrefix("app-local:provider-") }
     var isPersonalCloud: Bool { id.hasPrefix(Self.personalCloudPrefix) }
     var displayColorHex: String { localColorOverrideHex ?? colorHex }
     var isRevoked: Bool { revokedAt != nil }
     var canEditEvents: Bool { !isRevoked && access != .reader }
-    var canManageSharing: Bool { !isRevoked && access == .owner && !isPersonalCloud }
+    var canManageSharing: Bool { !isRevoked && access == .owner && !isPersonalCloud && !isProvider }
 
     /// The backend deliberately receives a one-way fingerprint rather than
     /// the app's raw local identifier.
@@ -148,6 +153,8 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
     var recurrenceRules: [SharedEventRecurrenceRule]?
     var structuredLocation: SharedEventLocation?
     var attachments: [AppLocalEventAttachment]?
+    var providerSnapshot: DeviceCalendarEvent? = nil
+    var providerReadOnly: Bool? = nil
 
     init(
         id: String = "app-local-event:" + UUID().uuidString.lowercased(),
@@ -208,13 +215,13 @@ final class AppLocalCalendarStore: ObservableObject {
     @Published private(set) var calendars: [AppLocalCalendarRecord] = []
     @Published private(set) var events: [AppLocalEventRecord] = []
 
-    private struct Snapshot: Codable {
+    struct Snapshot: Codable {
         var schemaVersion: Int
         var calendars: [AppLocalCalendarRecord]
         var events: [AppLocalEventRecord]
     }
 
-    private let fileURL: URL
+    let fileURL: URL
 
     private init(fileManager: FileManager = .default) {
         let root = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
@@ -225,7 +232,7 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     var ownedCalendars: [AppLocalCalendarRecord] {
-        calendars.filter { $0.origin == .owned }
+        calendars.filter { $0.origin == .owned && !$0.isProvider }
             .sorted { lhs, rhs in
                 if lhs.isPersonalCloud != rhs.isPersonalCloud {
                     return lhs.isPersonalCloud
@@ -282,7 +289,6 @@ final class AppLocalCalendarStore: ObservableObject {
     /// all metadata and events remain inside this store.
     @discardableResult
     func applyRemoteCalendar(_ remote: CloudCalendarsAPI.SharedICloudCalendar, ownedCalendarID: String? = nil) -> Bool {
-        guard remote.calendarKind == "app_local" else { return false }
         if let ownedCalendarID {
             guard let owned = calendar(id: ownedCalendarID), owned.origin == .owned,
                   owned.shareID == remote.calendarId else { return false }
@@ -308,7 +314,8 @@ final class AppLocalCalendarStore: ObservableObject {
             isOriginalCreator: ownedCalendarID != nil,
             revokedAt: Self.date(remote.revokedAt),
             revokedReason: remote.revokedReason,
-            localColorOverrideHex: previous?.localColorOverrideHex
+            localColorOverrideHex: previous?.localColorOverrideHex,
+            remoteCalendarKind: remote.calendarKind
         )
 
         // Acceptance/metadata responses omit events. Omission must never be
@@ -319,7 +326,8 @@ final class AppLocalCalendarStore: ObservableObject {
                 preserved.isCancelled = remote.isRevoked
                 return preserved
             }
-            : (remote.events ?? []).compactMap { value -> AppLocalEventRecord? in
+            : Dictionary((remote.events ?? []).map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
+                .values.sorted { $0.id < $1.id }.compactMap { value -> AppLocalEventRecord? in
             guard let start = value.startDate, let end = value.endDate else { return nil }
             let old = events.first { $0.calendarID == localID && $0.shareID == value.id }
             var availableAlarms = old?.alarms ?? []
@@ -541,6 +549,7 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     func saveEvent(_ event: AppLocalEventRecord) {
+        guard event.providerReadOnly != true, calendar(id: event.calendarID)?.canEditEvents == true else { return }
         var value = event
         value.endDate = max(value.endDate, value.startDate)
         value.updatedAt = Date()
@@ -553,6 +562,7 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     func deleteEvent(id: String) {
+        guard let event = event(id: id), event.providerReadOnly != true, calendar(id: event.calendarID)?.canEditEvents == true else { return }
         events.removeAll { $0.id == id }
         persistAndNotify()
     }
@@ -632,6 +642,15 @@ final class AppLocalCalendarStore: ObservableObject {
         NotificationCenter.default.post(name: .appLocalCalendarStoreChanged, object: nil)
         EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
         SharedEventSyncManager.eventStoreDidChange()
+    }
+
+    func replaceProviderSnapshot(calendars nextCalendars: [AppLocalCalendarRecord], events nextEvents: [AppLocalEventRecord]) throws {
+        guard calendars != nextCalendars || events != nextEvents else { return }
+        try JSONEncoder().encode(Snapshot(schemaVersion: 1, calendars: nextCalendars, events: nextEvents))
+            .write(to: fileURL, options: .atomic)
+        calendars = nextCalendars; events = nextEvents
+        NotificationCenter.default.post(name: .appLocalCalendarStoreChanged, object: nil, userInfo: ["providerSync": true])
+        EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
     }
 
     nonisolated static func colorHex(_ color: UIColor) -> String {
@@ -761,7 +780,7 @@ final class AppLocalEventDescriptor: EventDescriptor {
     }
     var notes: String { event?.notes ?? "" }
     var isCancelled: Bool { event?.isCancelled == true || calendar?.isRevoked == true }
-    var isReadOnly: Bool { calendar?.canEditEvents != true }
+    var isReadOnly: Bool { calendar?.canEditEvents != true || event?.providerReadOnly == true }
 
     func makeEditable() -> Self {
         let copy = Self(eventID: eventID, partialStart: partialStart, partialEnd: partialEnd)

@@ -15,10 +15,11 @@ struct AppLocalEventAttachment: Codable, Equatable, Identifiable {
 
 extension DeviceCalendarDocument {
     enum Origin { case owned, received }
-    var origin: Origin { source == "Shared with me" ? .received : .owned }
-    var canManageSharing: Bool { allowsChanges && origin == .owned }
+    var origin: Origin { isReceivedSharedCalendar ? .received : .owned }
+    var canManageSharing: Bool { available && allowsChanges && (origin == .owned || sharing?.access == "owner") }
     var canEditEvents: Bool { allowsChanges && available }
-    var localColorOverrideHex: String? { nil }
+    var localColorOverrideHex: String? { sharing?.localColorOverride }
+    var displayColorHex: String { localColorOverrideHex ?? color }
     var colorHex: String { color }
 }
 
@@ -36,10 +37,10 @@ final class MacLocalDocuments {
     let backend: CalendarMacStore
     init(backend: CalendarMacStore) { self.backend = backend }
     var calendars: [DeviceCalendarDocument] { backend.local }
-    var ownedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.origin == .owned } }
-    var receivedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.origin == .received } }
+    var ownedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.available && $0.origin == .owned } }
+    var receivedCalendars: [DeviceCalendarDocument] { calendars.filter { $0.available && $0.origin == .received } }
     func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [DeviceCalendarEvent] {
-        calendars.filter { selectedCalendarIDs.contains($0.id) }.flatMap(\.events).flatMap { AppLocalRecurrence.occurrences(of: $0, from: start, to: end) }
+        calendars.filter { $0.available && selectedCalendarIDs.contains($0.id) }.flatMap(\.events).flatMap { AppLocalRecurrence.occurrences(of: $0, from: start, to: end) }
     }
     func createCalendar(title: String, color: NSColor) throws -> DeviceCalendarDocument {
         let record = DeviceCalendarDocument(id: UUID().uuidString.lowercased(), deviceId: DeviceCalendarReplica.deviceID,
@@ -66,6 +67,19 @@ final class MacAppLocalCalendarBridge {
     let eventStore: EKEventStore
     private var calendarsByID: [String: EKCalendar] = [:]
     private var eventsByID: [String: EKEvent] = [:]
+    private var eventSnapshots: [String: DeviceCalendarEvent] = [:]
+    private var indexedDocuments: [DeviceCalendarDocument] = []
+    private var sourcesByEventID: [String: DeviceCalendarDocument] = [:]
+    private var recordsByID: [String: DeviceCalendarEvent] = [:]
+    private func refreshIndex() {
+        guard indexedDocuments != store.calendars else { return }
+        indexedDocuments = store.calendars
+        sourcesByEventID.removeAll(keepingCapacity: true); recordsByID.removeAll(keepingCapacity: true)
+        for document in indexedDocuments {
+            for event in document.events { sourcesByEventID[event.id] = document; recordsByID[event.id] = event }
+        }
+    }
+    func prepareSnapshot() { refreshIndex() }
     private var calendarIDs: [String: String] = [:]
     private var eventIDs: [String: String] = [:]
     init(backend: CalendarMacStore) { store = MacLocalDocuments(backend: backend); eventStore = backend.eventStore }
@@ -84,16 +98,24 @@ final class MacAppLocalCalendarBridge {
     }
     func calendar(_ record: DeviceCalendarDocument) -> EKCalendar {
         let value = calendarsByID[record.id] ?? EKCalendar(for: .event, eventStore: eventStore)
-        value.title = record.title; value.cgColor = MacLocalDocuments.color(record.color).cgColor
+        if value.title != record.title { value.title = record.title }
+        let color = MacLocalDocuments.color(record.displayColorHex).cgColor
+        if value.cgColor != color { value.cgColor = color }
         calendarsByID[record.id] = value; calendarIDs[value.calendarIdentifier] = record.id
         return value
     }
     func event(_ record: DeviceCalendarEvent) -> EKEvent? {
-        guard let source = store.calendars.first(where: { $0.events.contains { $0.id == record.id } }) else { return nil }
-        let anchor = source.events.first { $0.id == record.id }
+        // prepareSnapshot builds this once for the whole reload, avoiding a scan
+        // of all calendars and events for every expanded recurrence.
+        if sourcesByEventID[record.id] == nil { refreshIndex() }
+        guard let source = sourcesByEventID[record.id] else { return nil }
+        let anchor = recordsByID[record.id]
         let displayID = anchor?.startDate == record.startDate ? record.id : record.id + ":" + record.start
         let value = eventsByID[displayID] ?? EKEvent(eventStore: eventStore)
-        value.calendar = calendar(source); value.title = record.title
+        let destination = calendar(source)
+        if eventSnapshots[displayID] == record, value.calendar === destination { return value }
+        eventSnapshots[displayID] = record
+        value.calendar = destination; value.title = record.title
         value.startDate = record.startDate; value.endDate = record.endDate; value.isAllDay = record.allDay
         value.location = record.location; value.notes = record.details?["notes"]?.string
         value.url = record.url.flatMap(URL.init(string:)); value.timeZone = record.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:))
@@ -165,6 +187,7 @@ final class MacAppLocalCalendarBridge {
             }
             var display = item
             if old != nil && !item.macRecurrenceRules.isEmpty { display.start = DeviceCalendarEvent.iso(draft.startDate); display.end = DeviceCalendarEvent.iso(draft.endDate) }
+            prepareSnapshot()
             return event(display) ?? draft
         }
         try eventStore.save(draft, span: span, commit: true)

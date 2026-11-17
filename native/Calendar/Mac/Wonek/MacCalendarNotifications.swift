@@ -29,7 +29,7 @@ final class MacCalendarReminderScheduler {
         let enabled = (
             UserDefaults.standard.bool(forKey: "EventNotificationsEnabled"))
         if enabled {
-            for event in store.filteredEvents() where event.status != .canceled {
+            for event in store.filteredEvents() where !store.isCancelled(event) {
                 let record = store.local.record(for: event)
                 let eventID = record?.id ?? event.eventIdentifier ?? event.calendarItemIdentifier
                 for (index, alarm) in (event.alarms ?? []).enumerated() {

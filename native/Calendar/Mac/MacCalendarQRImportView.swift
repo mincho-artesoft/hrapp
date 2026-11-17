@@ -35,19 +35,11 @@ struct MacCalendarQRImportView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipped()
 
-            HStack(spacing: 16) {
-                Button { choosingImage = true } label: {
-                    Label("Choose QR Image…", systemImage: "photo.badge.plus")
-                        .frame(maxWidth: .infinity).padding(14)
-                        .background(Color.appBlue.opacity(0.2), in: RoundedRectangle(cornerRadius: 14))
-                        .contentShape(Rectangle())
-                }
-                Button {
-                    open(NSPasteboard.general.string(forType: .string) ?? "")
-                } label: {
-                    Label("Paste", systemImage: "doc.on.clipboard").padding(14).contentShape(Rectangle())
-                }
-                .help(Text("Invitation link"))
+            Button { choosingImage = true } label: {
+                Label("Choose QR Image…", systemImage: "photo.badge.plus")
+                    .frame(maxWidth: .infinity).padding(14)
+                    .background(Color.appBlue.opacity(0.2), in: RoundedRectangle(cornerRadius: 14))
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             .foregroundStyle(Color.appBlue)

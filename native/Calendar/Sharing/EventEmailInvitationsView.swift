@@ -14,73 +14,81 @@ struct EventEmailInvitationsView: View {
     @FocusState private var focusedInvitationID: UUID?
 
     var body: some View {
-        #if os(macOS)
-        macBody
-        #else
-        NavigationStack {
-            Form {
-                Section {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(eventTitle)
-                            .font(.headline)
-                            .lineLimit(2)
-                        Text("Add everyone who should receive this event and choose their access.")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.vertical, 3)
+        CalendarSheetNavigation {
+            VStack(spacing: 0) {
+                #if os(macOS)
+                MacCalendarSheetHeader(title: Text("Invite by Email")) {
+                    AppToolbarTextButton("Cancel") { dismiss() }.disabled(isSending)
+                } trailing: {
+                    AppToolbarTextButton("Send") { Task { await sendInvitations() } }
+                        .disabled(isSending || !hasEnteredEmail)
                 }
-
-                Section {
-                    ForEach($invitations) { $invitation in
-                        invitationRow($invitation)
+                #endif
+                CalendarSharingForm {
+                    CalendarSharingSection(rows: true) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(eventTitle)
+                                .font(CalendarTypography.headline)
+                                .lineLimit(2)
+                            Text("Add everyone who should receive this event and choose their access.")
+                                .font(CalendarTypography.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 3)
                     }
-                    .onDelete(perform: removeInvitations)
 
-                    Button {
-                        let draft = InvitationDraft()
-                        invitations.append(draft)
-                        focusedInvitationID = draft.id
-                    } label: {
-                        Label("Add another person", systemImage: "person.badge.plus")
+                    CalendarSharingSection("People", footer: "Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.", rows: true) {
+                        ForEach($invitations) { $invitation in
+                            invitationRow($invitation)
+                        }
+                        .onDelete(perform: removeInvitations)
+
+                        Button {
+                            let draft = InvitationDraft()
+                            invitations.append(draft)
+                            focusedInvitationID = draft.id
+                        } label: {
+                            Label("Add another person", systemImage: "person.badge.plus")
+                        }
+                        .calendarSharingRowAction()
+                        .disabled(isSending)
                     }
-                    .disabled(isSending)
-                } header: {
-                    Text("People")
-                } footer: {
-                    Text("Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.")
-                }
 
-                if let errorMessage {
-                    Section {
-                        Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
-                            .font(.subheadline)
-                            .foregroundStyle(.red)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-
-                Section {
-                    Button {
-                        Task { await sendInvitations() }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if isSending {
-                                ProgressView()
-                                    .padding(.trailing, 6)
-                            }
-                            Label(
-                                LocalizedStringKey(isSending ? "Sending…" : "Send Invitations"),
-                                systemImage: "paperplane.fill"
-                            )
-                            .font(.body.weight(.semibold))
-                            Spacer()
+                    if let errorMessage {
+                        CalendarSharingSection(rows: true) {
+                            Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
+                                .font(CalendarTypography.subheadline)
+                                .foregroundStyle(.red)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                     }
-                    .disabled(isSending || !hasEnteredEmail)
+
+                    CalendarSharingSection(rows: true) {
+                        Button {
+                            Task { await sendInvitations() }
+                        } label: {
+                            HStack {
+                                Spacer()
+                                if isSending {
+                                    ProgressView()
+                                        .padding(.trailing, 6)
+                                }
+                                Label(
+                                    LocalizedStringKey(isSending ? "Sending…" : "Send Invitations"),
+                                    systemImage: "paperplane.fill"
+                                )
+                                .font(CalendarTypography.body.weight(.semibold))
+                                Spacer()
+                            }
+                        }
+                        .calendarSharingRowAction()
+                        .disabled(isSending || !hasEnteredEmail)
+                    }
                 }
             }
+            .background(CalendarPalette.groupedBackground)
+            .interactiveDismissDisabled(isSending)
+            #if os(iOS)
             .navigationTitle("Invite by Email")
             .navigationBarTitleDisplayMode(.inline)
             .interactiveDismissDisabled(isSending)
@@ -96,50 +104,15 @@ struct EventEmailInvitationsView: View {
                     .disabled(isSending || !hasEnteredEmail)
                 }
             }
+            #endif
         }
-        #endif
     }
-
-    #if os(macOS)
-    private var macBody: some View {
-        VStack(spacing: 0) {
-            MacCalendarSheetHeader(title: Text("Invite by Email")) {
-                AppToolbarTextButton("Cancel") { dismiss() }.disabled(isSending)
-            } trailing: {
-                AppToolbarTextButton("Send") { Task { await sendInvitations() } }
-                    .disabled(isSending || !hasEnteredEmail)
-            }
-            MacCalendarForm {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(eventTitle).font(CalendarTypography.headline).lineLimit(2)
-                    Text("Add everyone who should receive this event and choose their access.")
-                        .font(CalendarTypography.footnote).foregroundStyle(.secondary)
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                MacCalendarFormSection(title: "People") {
-                    ForEach($invitations) { $invitation in
-                        MacCalendarFormRow { invitationRow($invitation) }
-                    }
-                    MacCalendarFormRow(separator: false) {
-                        Button {
-                            let draft = InvitationDraft(); invitations.append(draft); focusedInvitationID = draft.id
-                        } label: { Label("Add another person", systemImage: "person.badge.plus") }
-                        .buttonStyle(.plain).foregroundStyle(Color.appBlue).disabled(isSending)
-                    }
-                }
-                Text("Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.")
-                    .font(CalendarTypography.footnote).foregroundStyle(.secondary)
-                if let errorMessage { Text(errorMessage).foregroundStyle(.red) }
-                if isSending { ProgressView() }
-            }
-        }.background(CalendarPalette.groupedBackground).font(CalendarTypography.body)
-    }
-    #endif
 
     @ViewBuilder
     private func invitationRow(_ invitation: Binding<InvitationDraft>) -> some View {
         HStack(spacing: 10) {
             Image(systemName: "person.crop.circle")
-                .font(.title3)
+                .font(CalendarTypography.title3)
                 .foregroundStyle(.blue)
 
             TextField("Email address", text: invitation.email)
@@ -158,37 +131,7 @@ struct EventEmailInvitationsView: View {
                     focusedInvitationID = draft.id
                 }
 
-            #if os(macOS)
-            AppPicker("Access", selection: invitation.access) {
-                ForEach(CloudCalendarsAPI.EventAccess.allCases) { Text($0.title).tag($0) }
-            }
-            .labelsHidden()
-            .fixedSize()
-            #else
-            Menu {
-                ForEach(CloudCalendarsAPI.EventAccess.allCases) { access in
-                    Button {
-                        invitation.wrappedValue.access = access
-                    } label: {
-                        if invitation.wrappedValue.access == access {
-                            Label(access.title, systemImage: "checkmark")
-                        } else {
-                            Text(access.title)
-                        }
-                    }
-                }
-            } label: {
-                HStack(spacing: 5) {
-                    Text(invitation.wrappedValue.access.title)
-                        .foregroundStyle(.secondary)
-                    Image(systemName: "chevron.up.chevron.down")
-                        .font(.caption2.weight(.bold))
-                }
-                .font(.subheadline.weight(.semibold))
-                .fixedSize()
-            }
-            .accessibilityLabel("Access")
-            #endif
+            CalendarSharingAccessPicker(selection: invitation.access)
 
             if invitations.count > 1 {
                 Button(role: .destructive) {

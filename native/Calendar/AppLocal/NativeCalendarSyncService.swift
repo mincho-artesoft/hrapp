@@ -15,8 +15,10 @@ enum NativeCalendarSyncService {
         let replica = DeviceCalendarReplica(baseURL: CloudCalendarsAPI.baseURL, token: session.deviceToken, accountID: session.calendarId)
         let adapter = DeviceEventKitAdapter(store: vm.eventStore)
         var succeeded = false
+        do { try await AccountLocalCalendarSync.sync(storage: AppLocalAccountCalendarStorage.shared); succeeded = true }
+        catch { print("Account local calendar sync: \(error.localizedDescription)") }
         if EKEventStore.authorizationStatus(for: .event) == .fullAccess {
-            for calendar in vm.eventStore.calendars(for: .event) {
+            for calendar in vm.eventStore.calendars(for: .event) where !SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers.contains(calendar.calendarIdentifier) && !vm.hiddenLegacyProviderCalendarIDs.contains(calendar.calendarIdentifier) {
                 do {
                     let original = adapter.events(in: calendar)
                     let id = DeviceCalendarReplica.calendarID(calendar.calendarIdentifier)
@@ -37,29 +39,24 @@ enum NativeCalendarSyncService {
                 } catch { print("Calendar web sync: \(error.localizedDescription)") }
             }
         }
-        for calendar in local.calendars where !calendar.isPersonalCloud && !calendar.isRevoked {
+        for calendar in local.calendars where calendar.origin == .owned && calendar.isProvider && !calendar.isRevoked {
             do {
                 let originals = local.events.filter { $0.calendarID == calendar.id }
-                let items = try originals.map { record -> DeviceCalendarEvent in
-                    let details = SharedEventDetails(notes: record.notes, timeZone: record.timeZoneIdentifier,
-                        alarms: record.alarms.map { SharedEventAlarm(relativeOffset: $0.relativeOffset) },
-                        recurrenceRules: record.recurrenceRules ?? [], structuredLocation: record.structuredLocation,
-                        videoCallURL: record.videoCallURL, travelTime: record.travelTime, attachments: record.attachments?.map(\.sharedValue))
-                    return DeviceCalendarEvent(id: record.shareID, title: record.title, start: DeviceCalendarEvent.iso(record.startDate), end: DeviceCalendarEvent.iso(record.endDate),
-                        allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: details))
-                }
+                let items = try originals.map(snapshot)
                 let id = DeviceCalendarReplica.calendarID(calendar.id)
                 let doc = DeviceCalendarDocument(id: id, deviceId: DeviceCalendarReplica.deviceID, deviceName: UIDevice.current.name,
-                    title: calendar.title, source: calendar.origin == .received ? NSLocalizedString("Shared with me", comment: "") : NSLocalizedString("Local Calendars", comment: ""),
+                    title: calendar.title, source: NSLocalizedString("Local Calendars", comment: ""),
                     color: calendar.displayColorHex, allowsChanges: calendar.canEditEvents, events: items)
                 try await replica.sync(doc) { result in
                     guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
                     guard calendar.canEditEvents else { return }
-                    let remoteIDs = Set(result.map(\.id)), baseIDs = Set(replica.baseline(id)?.events.map(\.id) ?? [])
-                    for old in originals where baseIDs.contains(old.shareID) && !remoteIDs.contains(old.shareID) { try local.deleteTransferredEvent(id: old.id) }
-                    for item in result {
-                        if items.first(where: { $0.id == item.id })?.content == item.content { continue }
-                        var event = originals.first { $0.shareID == item.id } ?? AppLocalEventRecord(calendarID: calendar.id, title: item.title, startDate: item.startDate, endDate: item.endDate, remoteEventID: item.id)
+                    let latest = local.events.filter { $0.calendarID == calendar.id }
+                    let retained = DeviceCalendarReplica.merge(base: items, local: result, remote: try latest.map(snapshot))
+                    let remoteIDs = Set(retained.map(\.id)), baseIDs = Set(replica.baseline(id)?.events.map(\.id) ?? [])
+                    for old in latest where baseIDs.contains(old.shareID) && !remoteIDs.contains(old.shareID) { try local.deleteTransferredEvent(id: old.id) }
+                    for item in retained {
+                        if try latest.first(where: { $0.shareID == item.id }).map(snapshot)?.content == item.content { continue }
+                        var event = latest.first { $0.shareID == item.id } ?? AppLocalEventRecord(calendarID: calendar.id, title: item.title, startDate: item.startDate, endDate: item.endDate, remoteEventID: item.id)
                         event.title = item.title; event.startDate = item.startDate; event.endDate = item.endDate; event.isAllDay = item.allDay
                         event.location = item.location ?? ""; event.urlString = item.url ?? ""
                         if let details = item.details {
@@ -77,12 +74,27 @@ enum NativeCalendarSyncService {
             } catch { print("Local calendar web sync: \(error.localizedDescription)") }
         }
         if EKEventStore.authorizationStatus(for: .event) == .fullAccess {
-            let ids = vm.eventStore.calendars(for: .event).map(\.calendarIdentifier)
-                + local.calendars.filter { !$0.isPersonalCloud && !$0.isRevoked }.map(\.id)
+            let ids = vm.eventStore.calendars(for: .event).filter { !SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers.contains($0.calendarIdentifier) && !vm.hiddenLegacyProviderCalendarIDs.contains($0.calendarIdentifier) }.map(\.calendarIdentifier)
+                + local.calendars.filter { $0.origin == .owned && !$0.isPersonalCloud && !$0.isRevoked }.map(\.id)
             do { try await replica.hideMissingCalendars(keeping: Set(ids.map(DeviceCalendarReplica.calendarID))) }
             catch { print("Calendar inventory sync: \(error.localizedDescription)") }
         }
+        let receivedIDs = SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers.union(local.receivedCalendars.map(\.id))
+        do { try await replica.hideCalendars(Set(receivedIDs.union(local.ownedCalendars.map(\.id)).map(DeviceCalendarReplica.calendarID))) }
+        catch { print("Received calendar replica retirement: \(error.localizedDescription)") }
         if succeeded { vm.reloadCalendars(); EventNotificationManager.shared.rescheduleUpcomingEventNotifications() }
         return succeeded
     }
+    static func snapshot(_ record: AppLocalEventRecord) throws -> DeviceCalendarEvent {
+        if record.providerSnapshot != nil || AppLocalCalendarStore.shared.calendar(id: record.calendarID)?.isProvider == true {
+            var value = AppLocalProviderCalendarStore.snapshot(record); value.id = record.shareID; return value
+        }
+        let details = SharedEventDetails(notes: record.notes, timeZone: record.timeZoneIdentifier,
+            alarms: record.alarms.map { SharedEventAlarm(relativeOffset: $0.relativeOffset) },
+            recurrenceRules: record.recurrenceRules ?? [], structuredLocation: record.structuredLocation,
+            videoCallURL: record.videoCallURL, travelTime: record.travelTime, attachments: record.attachments?.map(\.sharedValue))
+        return DeviceCalendarEvent(id: record.shareID, title: record.title, start: DeviceCalendarEvent.iso(record.startDate), end: DeviceCalendarEvent.iso(record.endDate),
+            allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: details), readOnly: record.providerReadOnly)
+    }
+
 }

@@ -129,6 +129,7 @@ struct MacCalendarTimelineInteractionLayer: View {
     var commit: (EKEvent, DateInterval, Bool, String) -> Void
     var reportError: (String) -> Void
     var previewChanged: ((MacCalendarDragGeometry.Preview?) -> Void)? = nil
+    var canEditEvent: (EKEvent) -> Bool = { !$0.hasAttendees }
     var canEdit: (EKCalendar) -> Bool = { $0.allowsContentModifications }
     @State private var drag: Drag?
     @State private var preview: MacCalendarDragGeometry.Preview?
@@ -201,7 +202,7 @@ struct MacCalendarTimelineInteractionLayer: View {
         let resizeHit = resizeHandles.first { $0.rect.insetBy(dx: -15, dy: -15).contains(point) }
         let item = resizeHit?.item ?? hit(point)
         if let item {
-            guard canEdit(item.event.calendar), !item.event.hasAttendees else { return nil }
+            guard canEdit(item.event.calendar), canEditEvent(item.event) else { return nil }
             let operation: MacCalendarDragGeometry.Operation = resizeHit.map { $0.isTop ? .resizeStart : .resizeEnd } ?? .move
             let sourceFrame = columnFrame(item.column)
             let anchorY: CGFloat
@@ -311,7 +312,7 @@ struct MacCalendarTimelineInteractionLayer: View {
         let isTop: Bool
     }
     private var resizeHandles: [Handle] {
-        items.filter { $0.id == selectedID && !$0.event.isAllDay && canEdit($0.event.calendar) && !$0.event.hasAttendees }
+        items.filter { $0.id == selectedID && !$0.event.isAllDay && canEdit($0.event.calendar) && canEditEvent($0.event) }
             .flatMap { item -> [Handle] in
                 let start = calendar.startOfDay(for: day(item.column))
                 guard let end = calendar.date(byAdding: .day, value: 1, to: start) else { return [] }

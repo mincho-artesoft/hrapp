@@ -93,6 +93,12 @@ export class WebPlatformController {
     return reply(res, await this.svc.setupIosAuthenticator(req.principal));
   }
 
+  @Get('ios/calendars/account')
+  @UseGuards(AuthGuard)
+  async accountLocalCalendars(@Req() req: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.listAccountLocalCalendars(req.principal));
+  }
+
   @Post('ios/calendars/sync')
   @UseGuards(AuthGuard)
   async syncNativeCalendar(@Req() req: any, @Body() body: any, @Res({ passthrough: true }) res: Response) {

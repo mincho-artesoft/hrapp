@@ -1193,3 +1193,5 @@
 "Web Events" = "Уеб събития";
 "yesterday" = "вчера";
 "Open Sign-In in Browser" = "Отвори входа в браузъра";
+
+"Only owners can manage event access." = "Само собствениците могат да управляват достъпа до събитието.";

@@ -18,7 +18,8 @@ export class NativeCalendarStore {
     if (!this.validID(body?.id) || !this.validID(body?.deviceId)) return result(400, { error: 'Invalid calendar identity.' });
     const key = this.key(principal, body.id);
     const stored = await this.store.getJSONWithETag(key);
-    if (stored && stored.value.deviceId !== body.deviceId) return result(403, { error: 'Calendar belongs to another device.' });
+    if (stored && stored.value.deviceId !== body.deviceId && stored.value.accountLocal !== true) return result(403, { error: 'Calendar belongs to another device.' });
+    if (stored && (body.accountLocal === true) !== (stored.value.accountLocal === true) && body.readOnly !== true) return result(403, { error: 'Calendar scope cannot be changed.' });
     if (body.readOnly === true) return result(200, { calendar: stored?.value ?? null });
     if (!Number.isInteger(body.expectedRevision) || body.expectedRevision !== (stored?.value.revision ?? 0)) {
       return result(409, { error: 'Calendar changed. Refresh and merge before retrying.' });
@@ -41,7 +42,9 @@ export class NativeCalendarStore {
       return { ...event, updatedAt: old && isDeepStrictEqual(content(old), content(event)) ? old.updatedAt ?? now : now };
     });
     const calendar = {
-      id: body.id, deviceId: body.deviceId, deviceName: String(body.deviceName ?? '').slice(0, 100),
+      id: body.id, deviceId: stored?.value.deviceId ?? body.deviceId, deviceName: String(stored?.value.deviceName ?? body.deviceName ?? '').slice(0, 100),
+      ...(body.accountLocal === true ? { accountLocal: true,
+        sharingCalendarID: typeof body.sharingCalendarID === 'string' && /^[0-9a-f]{64}$/i.test(body.sharingCalendarID) ? body.sharingCalendarID : undefined } : {}),
       title: body.title.trim().slice(0, 200), source: String(body.source ?? 'Local Calendars').slice(0, 200),
       color: /^#[0-9a-f]{6}$/i.test(body.color) ? body.color : '#0A84FF',
       allowsChanges: body.allowsChanges === true, available: body.available !== false,

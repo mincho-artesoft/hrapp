@@ -43,6 +43,22 @@ async function main() {
   assert.equal((await api.sync(owner, changed)).status, 200);
   assert.equal((await api.mutate(owner, 'native.work.event_one', { title: 'Stale edit', expectedUpdatedAt: '2000-01-01T00:00:00Z' })).status, 409);
   assert.equal((await api.mutate(owner, 'native.work.event_one.extra', { title: 'Invalid' })).status, 400);
+  const personal = { ...calendar, id: 'account_local', source: 'Local Calendars', accountLocal: true };
+  const created = await api.sync(owner, personal);
+  assert.equal(created.status, 200);
+  const otherDevice = await api.sync(owner, { ...created.body.calendar, deviceId: 'tablet', expectedRevision: 1,
+    events: [{ ...event, title: 'Edited from tablet' }] });
+  assert.equal(otherDevice.status, 200);
+  assert.equal(otherDevice.body.calendar.deviceId, 'phone');
+  assert.equal(otherDevice.body.calendar.events[0].title, 'Edited from tablet');
+  assert.equal((await api.sync(owner, { ...personal, deviceId: 'mac', expectedRevision: 1 })).status, 409);
+  assert.equal((await api.sync(owner, { ...otherDevice.body.calendar, accountLocal: false, expectedRevision: 2 })).status, 403);
+  const isolated = await api.sync(stranger, { id: personal.id, deviceId: 'tablet', readOnly: true });
+  assert.equal(isolated.body.calendar, null);
+  const removed = await api.sync(owner, { ...otherDevice.body.calendar, deviceId: 'mac', available: false, expectedRevision: 2 });
+  assert.equal(removed.status, 200);
+  assert.equal(removed.body.calendar.available, false);
+  console.log('PASS: account-local cross-device edits, immutable scope, account isolation, conflict and tombstone');
   console.log('PASS: native calendars, isolation, read-only access, CAS conflicts, metadata preservation, concurrent edits and deletion');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

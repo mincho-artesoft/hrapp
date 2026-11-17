@@ -138,24 +138,8 @@ struct SharedCalendarInvitationView: View {
                     calendarId: payload.calendarID,
                     session: session
                 )
-                if accepted.calendarKind == "app_local" {
-                    _ = AppLocalCalendarStore.shared.applyRemoteCalendar(accepted)
-                    _ = await AppLocalCalendarSyncService.syncAll()
-                } else {
-                    SharedICloudCalendarLocalStore.restoreLocally(
-                        ownerID: payload.ownerID,
-                        calendarID: payload.calendarID
-                    )
-                    // Reconcile the exact record returned by the atomic accept
-                    // request before the periodic list refresh. This prevents the
-                    // newly copied calendar from briefly entering an unregistered
-                    // state and being rendered as access-removed.
-                    _ = try SharedICloudCalendarLocalStore.reconcile(
-                        accepted,
-                        in: CalendarViewModel.shared.eventStore
-                    )
-                    _ = await SharedICloudCalendarLocalStore.refreshAll()
-                }
+                SharedICloudCalendarLocalStore.restoreLocally(ownerID: payload.ownerID, calendarID: payload.calendarID)
+                _ = AppLocalCalendarStore.shared.applyRemoteCalendar(accepted)
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
                 dismiss()
             } catch {

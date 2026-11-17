@@ -136,30 +136,51 @@ final class CloudAccountManager: NSObject, ObservableObject {
     private var signInTask: Task<Void, Never>?
     private var signInTimeoutTask: Task<Void, Never>?
     #if os(macOS)
-    @Published private(set) var canOpenBrowserSignIn = false
-    private var browserFallbackTask: Task<Void, Never>?
     private var browserAuthorizationURL: URL?
     private var browserCallback: ((URL?, Error?) -> Void)?
     private var browserCallbackScheme: String?
     private var browserCallbackState: String?
-    private var usesBrowserFallback = false
+    private var usesExternalBrowser = false
 
-    func openBrowserSignIn() {
-        guard canOpenBrowserSignIn, let url = browserAuthorizationURL else { return }
-        usesBrowserFallback = true
-        canOpenBrowserSignIn = false
-        webAuthenticationSession?.cancel()
-        webAuthenticationSession = nil
+    private func openBrowserSignIn(for attempt: CloudSignInAttemptState.Attempt) {
+        guard signInState.contains(attempt.id), let url = browserAuthorizationURL else { return }
+        guard let browserURL = NSWorkspace.shared.urlForApplication(toOpen: url) else {
+            browserSignInDidFail(attempt)
+            return
+        }
         // Register this build before the browser returns its private callback.
         LSRegisterURL(Bundle.main.bundleURL as CFURL, true)
-        if !NSWorkspace.shared.open(url), let attempt = signInState.current {
-            finishSignIn(attempt)
-            setError(OAuthError.couldNotStart.localizedDescription, for: attempt.provider)
+        usesExternalBrowser = true
+        let configuration = NSWorkspace.OpenConfiguration()
+        configuration.activates = true
+        configuration.addsToRecentItems = false
+        // Target the default browser directly, including when it is already
+        // running. The synchronous open(URL) only acknowledged the request;
+        // use launch completion before reporting that the provider is open.
+        NSWorkspace.shared.open([url], withApplicationAt: browserURL,
+                                configuration: configuration) { [weak self] application, error in
+            let didOpen = application != nil && error == nil
+            Task { @MainActor [weak self] in
+                guard let self, self.signInState.contains(attempt.id),
+                      self.browserCallback != nil else { return }
+                guard didOpen else {
+                    self.browserSignInDidFail(attempt)
+                    return
+                }
+                self.recordSignInPhase("provider-presented", provider: attempt.provider)
+            }
         }
     }
 
+    private func browserSignInDidFail(_ attempt: CloudSignInAttemptState.Attempt) {
+        guard signInState.contains(attempt.id) else { return }
+        finishSignIn(attempt)
+        setError(OAuthError.couldNotStart.localizedDescription, for: attempt.provider)
+        recordSignInPhase("browser-open-failed", provider: attempt.provider)
+    }
+
     @discardableResult func handleBrowserCallback(_ url: URL) -> Bool {
-        guard usesBrowserFallback, signInState.current != nil,
+        guard usesExternalBrowser, signInState.current != nil,
               url.scheme?.lowercased() == browserCallbackScheme?.lowercased(),
               URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?
                 .first(where: { $0.name == "state" })?.value == browserCallbackState,
@@ -233,10 +254,9 @@ final class CloudAccountManager: NSObject, ObservableObject {
         signInTask = nil
         isSigningIn = false
         #if os(macOS)
-        browserFallbackTask?.cancel(); browserFallbackTask = nil
         browserAuthorizationURL = nil; browserCallback = nil
         browserCallbackScheme = nil; browserCallbackState = nil
-        usesBrowserFallback = false; canOpenBrowserSignIn = false
+        usesExternalBrowser = false
         #endif
         recordSignInPhase("finished", provider: attempt.provider)
     }
@@ -379,7 +399,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         startOAuth(.microsoft)
     }
 
-    /// Uses an ephemeral browser OAuth session and PKCE. Provider access and
+    /// Uses browser OAuth and PKCE (an ephemeral session on iOS). Provider access and
     /// identity tokens are held only long enough to establish the app's own
     /// server session; neither GoogleSignIn nor MSAL gets a chance to create a
     /// Keychain item for this dedicated sharing identity.
@@ -411,11 +431,8 @@ final class CloudAccountManager: NSObject, ObservableObject {
             Task { @MainActor [weak self, callbackURL, errorDescription, errorCode, errorDomain] in
                 guard let self, self.signInState.contains(attempt.id) else { return }
                 #if os(macOS)
-                // Switching to the external browser cancels only the system
-                // presentation; the same PKCE/state-bound login remains active.
-                if callbackURL == nil && self.usesBrowserFallback { return }
-                self.browserFallbackTask?.cancel()
-                self.canOpenBrowserSignIn = false
+                // External callbacks use the same PKCE/state validation below.
+                if callbackURL == nil && self.usesExternalBrowser { return }
                 #endif
                 self.signInTask = Task { @MainActor in
                     guard self.signInState.contains(attempt.id) else { return }
@@ -482,32 +499,27 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 }
             }
         }
-        // The system owns the callback for this exact session. Opening a plain
-        // browser tab lets Launch Services route the response to another build.
-        let session = ASWebAuthenticationSession(url: authorizationURL,
-            callbackURLScheme: configuration.callbackScheme, completionHandler: completion)
-        session.presentationContextProvider = self
-        #if os(iOS)
-        session.prefersEphemeralWebBrowserSession = true
-        #endif
-        webAuthenticationSession = session
         #if os(macOS)
+        // Open the provider on the initiating click. ASWebAuthenticationSession
+        // can stay pending on Mac without presenting its browser window.
         browserAuthorizationURL = authorizationURL
         browserCallback = completion
         browserCallbackScheme = configuration.callbackScheme
         browserCallbackState = state
-        browserFallbackTask = Task { @MainActor [weak self] in
-            do { try await Task.sleep(for: .seconds(8)) } catch { return }
-            guard let self, self.signInState.contains(attempt.id), self.webAuthenticationSession != nil else { return }
-            self.canOpenBrowserSignIn = true
-        }
-        #endif
+        openBrowserSignIn(for: attempt)
+        #else
+        let session = ASWebAuthenticationSession(url: authorizationURL,
+            callbackURLScheme: configuration.callbackScheme, completionHandler: completion)
+        session.presentationContextProvider = self
+        session.prefersEphemeralWebBrowserSession = true
+        webAuthenticationSession = session
         guard session.canStart, session.start() else {
             finishSignIn(attempt)
             setError(OAuthError.couldNotStart.localizedDescription, for: configuration.provider)
             return
         }
         recordSignInPhase("provider-presented", provider: configuration.provider)
+        #endif
     }
 
     #if os(macOS)
@@ -905,13 +917,6 @@ struct CloudAccountSignInContent: View {
                     ProgressView()
                     Text("Signing in…")
                         .foregroundStyle(.secondary)
-                    #if os(macOS)
-                    if manager.canOpenBrowserSignIn {
-                        Button("Open Sign-In in Browser", action: manager.openBrowserSignIn)
-                            .buttonStyle(.plain)
-                            .foregroundStyle(Color.accentColor)
-                    }
-                    #endif
                     Spacer(minLength: 8)
                     if manager.canCancelSignIn {
                         Button("Cancel", action: manager.cancelSignIn)

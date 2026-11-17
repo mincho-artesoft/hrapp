@@ -300,7 +300,7 @@ struct MacTabletTimedEventBlock: View {
             activate()
         } label: {
             MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
-                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight)
+                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight, isCancelled: store.isCancelled(event))
                 .frame(width: width, height: height)
                 .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
         }
@@ -464,9 +464,11 @@ struct MacTabletTimelineView: View {
                     let change = TimelineChange(event: event, interval: interval, allDay: allDay, calendarID: calendarID)
                     if event.hasRecurrenceRules { pendingTimelineChange = change }
                     else { saveTimelineChange(change, span: .thisEvent) }
-                }, reportError: { store.errorMessage = $0 }, canEdit: store.canEdit)
+                }, reportError: { store.errorMessage = $0 }, canEditEvent: store.canEdit, canEdit: store.canEdit)
             }
         }
+        .onChange(of: activeEventID) { _, id in store.setInteractionActive(id != nil) }
+        .onDisappear { store.setInteractionActive(false) }
         .onChange(of: selectedEventID) { _, id in
             updateSidebarSelection(id)
         }
@@ -894,7 +896,7 @@ struct MacTabletMonthView: View {
         let textColor = Color(nsColor: EventTimelineColors.text(color, strength: 0.58, dark: dark))
         return Text(event.title)
             .font(CalendarTypography.caption2).lineLimit(1)
-            .strikethrough(event.status == .canceled, color: textColor)
+            .strikethrough(store.isCancelled(event), color: textColor)
             .foregroundStyle(textColor)
             .minimumScaleFactor(0.45).allowsTightening(true)
             .padding(.horizontal, 6).padding(.vertical, 2)
@@ -1107,7 +1109,7 @@ struct MacTabletEventList: View {
                                         title: event.title.isEmpty ? NSLocalizedString("No Title", comment: "") : event.title,
                                         color: store.color(for: event.calendar), allDay: event.isAllDay,
                                         symbol: CalendarEventSymbol.name(calendar: event.calendar, allDay: event.isAllDay),
-                                        isCancelled: event.status == .canceled
+                                        isCancelled: store.isCancelled(event)
                                     ) {
                                         if event.isAllDay || (!row.segment.isFirst && !row.segment.isLast) {
                                             Text("all-day")
@@ -1940,6 +1942,7 @@ struct MacTabletCalendarEditor: View {
     @State private var confirmsDeletion = false
     @State private var isSaving = false
     @State private var createdGoogleCalendarID: String?
+    @StateObject private var customColorPanel = MacCalendarCustomColorPanel()
     private let colors: [(String, Color)] = [
         ("Red", Color(nsColor: .systemRed)), ("Orange", Color(nsColor: .systemOrange)),
         ("Yellow", Color(nsColor: .systemYellow)), ("Green", Color(nsColor: .systemGreen)),
@@ -1956,11 +1959,11 @@ struct MacTabletCalendarEditor: View {
 
     private var localCalendar: DeviceCalendarDocument? { target.calendar.flatMap(store.local.record) }
     private var isReceivedLocal: Bool { localCalendar?.origin == .received }
-    private var showsAccount: Bool { target.calendar == nil || localCalendar != nil }
+    private var showsAccount: Bool { target.calendar == nil }
     private var removalTitle: LocalizedStringKey { isReceivedLocal ? "Remove from My Calendars" : "Delete Calendar" }
 
     private var colorName: String {
-        colors.first { NSColor($0.1).usingColorSpace(.deviceRGB) == NSColor(color).usingColorSpace(.deviceRGB) }?.0 ?? "Custom"
+        colors.first { NSColor($0.1).hex == NSColor(color).hex }?.0 ?? "Custom"
     }
     private var pageTitle: LocalizedStringKey {
         colorPage ? "Calendar Color" : target.calendar != nil ? "Edit Calendar"
@@ -1975,6 +1978,10 @@ struct MacTabletCalendarEditor: View {
                     pageContent(colorPage: true).navigationBarBackButtonHidden()
                 }
         }
+        .onChange(of: colorPage) { _, visible in
+            if !visible { customColorPanel.close() }
+        }
+        .onDisappear { customColorPanel.close() }
         .confirmationDialog(LocalizedStringKey(isReceivedLocal ? "Remove Shared Calendar?" : "Delete Calendar?"), isPresented: $confirmsDeletion, titleVisibility: .visible) {
             Button(LocalizedStringKey(isReceivedLocal ? "Remove" : "Delete Calendar"), role: .destructive) {
                 guard let existing = target.calendar else { return }
@@ -1993,6 +2000,18 @@ struct MacTabletCalendarEditor: View {
         } message: { Text(errorMessage ?? "") }
     }
 
+    private func colorChoiceRow(_ title: LocalizedStringKey, swatch: Color, selected: Bool) -> some View {
+        HStack(spacing: 12) {
+            Circle().fill(swatch).frame(width: 20, height: 20)
+            Text(title).foregroundStyle(Color.primary)
+            Spacer()
+            if selected { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
+        }
+        .frame(maxWidth: .infinity, minHeight: 44)
+        .contentShape(Rectangle())
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
     private func pageContent(colorPage: Bool) -> some View {
         VStack(spacing: 0) {
             MacCalendarSheetHeader(title: Text(pageTitle)) {
@@ -2009,39 +2028,45 @@ struct MacTabletCalendarEditor: View {
             }
             MacCalendarForm {
                 if colorPage {
-                    MacCalendarFormSection {
+                    CalendarSharingSection(rows: true) {
                         if isReceivedLocal, let localCalendar {
-                            MacCalendarFormRow {
-                                Button {
-                                    usesCreatorDefault = true
-                                    color = Color(nsColor: MacLocalDocuments.color(localCalendar.colorHex))
-                                } label: {
-                                    HStack {
-                                        Text("Default from creator")
-                                        Spacer()
-                                        if usesCreatorDefault { Image(systemName: "checkmark").foregroundStyle(.appBlue) }
-                                    }.contentShape(Rectangle())
-                                }.buttonStyle(.plain)
-                            }
+                            Button {
+                                usesCreatorDefault = true
+                                color = Color(nsColor: MacLocalDocuments.color(localCalendar.colorHex))
+                                customColorPanel.close()
+                            } label: {
+                                colorChoiceRow("Default from creator",
+                                    swatch: Color(nsColor: MacLocalDocuments.color(localCalendar.colorHex)), selected: usesCreatorDefault)
+                            }.calendarSharingRowAction()
                         }
                         ForEach(colors, id: \.0) { name, value in
-                            MacCalendarFormRow {
-                                Button { color = value; usesCreatorDefault = false } label: {
-                                    HStack(spacing: 8) {
-                                        Circle().fill(value).frame(width: 20, height: 20)
-                                        Text(LocalizedStringKey(name)).foregroundStyle(.primary)
-                                        Spacer()
-                                        if colorName == name && !usesCreatorDefault { Image(systemName: "checkmark").foregroundStyle(.appBlue) }
-                                    }
-                                    .contentShape(Rectangle())
-                                }.buttonStyle(.plain)
+                            Button {
+                                color = value; usesCreatorDefault = false
+                                customColorPanel.close()
+                            } label: {
+                                colorChoiceRow(LocalizedStringKey(name), swatch: value, selected: colorName == name && !usesCreatorDefault)
+                            }.calendarSharingRowAction()
+                        }
+                        Button {
+                            customColorPanel.show(color: color) { selected in
+                                color = selected; usesCreatorDefault = false
                             }
+                        } label: {
+                            colorChoiceRow("Custom...", swatch: color, selected: colorName == "Custom" && !usesCreatorDefault)
                         }
-                        MacCalendarFormRow(separator: false) {
-                            ColorPicker("Custom...", selection: Binding(get: { color }, set: {
-                                color = $0; usesCreatorDefault = false
-                            }), supportsOpacity: false)
-                        }
+                        .calendarSharingRowAction()
+                        .accessibilityIdentifier("calendar.color.custom")
+                    }
+                } else if target.calendar != nil {
+                    CalendarEditorSections(title: $title,
+                        canEditTitle: !isReceivedLocal || localCalendar?.canManageSharing == true,
+                        color: color, colorLabel: localCalendar != nil ? "Color" : LocalizedStringKey(colorName),
+                        colorFooter: isReceivedLocal ? LocalizedStringKey(usesCreatorDefault ? "Default from creator" : "Custom on this device") : nil,
+                        access: isReceivedLocal ? (CloudCalendarsAPI.EventAccess(rawValue: localCalendar?.sharing?.access ?? "reader")?.title) : nil,
+                        ownerEmail: localCalendar?.sharing?.ownerEmail,
+                        removalTitle: target.calendar.map { (store.local.isLocal($0) || $0.allowsContentModifications) && !$0.isSubscribed } == true ? removalTitle : nil,
+                        removing: isSaving, remove: { confirmsDeletion = true }, showColors: { self.colorPage = true }) {
+                            EmptyView()
                     }
                 } else {
                     MacCalendarFormSection {
@@ -2121,11 +2146,45 @@ struct MacTabletCalendarEditor: View {
             }
             return
         }
-        do {
-            try store.saveCalendar(target.calendar, title: title, color: NSColor(color), destination: target.destination,
-                usesCreatorDefault: usesCreatorDefault)
-            onClose()
-        } catch { errorMessage = error.localizedDescription }
+        isSaving = true
+        Task { @MainActor in
+            defer { isSaving = false }
+            do {
+                try await store.saveCalendar(target.calendar, title: title, color: NSColor(color), destination: target.destination,
+                    usesCreatorDefault: usesCreatorDefault)
+                onClose()
+            } catch { errorMessage = error.localizedDescription }
+        }
+    }
+}
+
+@MainActor
+private final class MacCalendarCustomColorPanel: NSObject, ObservableObject {
+    private var onChange: ((Color) -> Void)?
+
+    func show(color: Color, onChange: @escaping (Color) -> Void) {
+        self.onChange = onChange
+        let panel = NSColorPanel.shared
+        panel.showsAlpha = false
+        panel.worksWhenModal = true
+        panel.isFloatingPanel = true
+        panel.isContinuous = true
+        panel.color = NSColor(color)
+        panel.setTarget(self)
+        panel.setAction(#selector(colorChanged(_:)))
+        panel.makeKeyAndOrderFront(nil)
+    }
+
+    @objc private func colorChanged(_ panel: NSColorPanel) {
+        onChange?(Color(nsColor: panel.color))
+    }
+
+    func close() {
+        guard onChange != nil else { return }
+        NSColorPanel.shared.orderOut(nil)
+        NSColorPanel.shared.setTarget(nil)
+        NSColorPanel.shared.setAction(nil)
+        onChange = nil
     }
 }
 

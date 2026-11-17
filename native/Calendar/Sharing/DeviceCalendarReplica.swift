@@ -3,7 +3,7 @@ import CryptoKit
 import EventKit
 
 /// A lossless JSON value keeps fields unknown to this client through sync.
-enum CalendarJSON: Codable, Equatable {
+enum CalendarJSON: Codable, Equatable, Sendable {
     case string(String), number(Double), bool(Bool), object([String: CalendarJSON]), array([CalendarJSON]), null
     init(from decoder: Decoder) throws {
         let c = try decoder.singleValueContainer()
@@ -32,7 +32,7 @@ enum CalendarJSON: Codable, Equatable {
     }
 }
 
-struct DeviceCalendarEvent: Codable, Equatable, Identifiable {
+struct DeviceCalendarEvent: Codable, Equatable, Identifiable, Sendable {
     var id: String
     var title: String
     var start: String
@@ -46,11 +46,44 @@ struct DeviceCalendarEvent: Codable, Equatable, Identifiable {
     var content: Self { var copy = self; copy.updatedAt = nil; return copy }
     var startDate: Date { Self.date(start) ?? .distantPast }
     var endDate: Date { Self.date(end) ?? .distantPast }
-    static func date(_ text: String) -> Date? {
-        let f = ISO8601DateFormatter(); f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f.date(from: text) ?? ISO8601DateFormatter().date(from: text)
+    static func date(_ text: String) -> Date? { CalendarDateCodec.shared.date(text) }
+    static func iso(_ date: Date) -> String { CalendarDateCodec.shared.string(date) }
+
+}
+
+/// ISO parsing is used while laying out every event. Reuse formatters and parsed
+/// values; the lock also makes background sync callers safe.
+private final class CalendarDateCodec: @unchecked Sendable {
+    static let shared = CalendarDateCodec()
+    private let lock = NSLock()
+    private let fractional: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+    private let standard = ISO8601DateFormatter()
+    private var cache: [String: Date] = [:]
+    func date(_ text: String) -> Date? {
+        lock.lock(); defer { lock.unlock() }
+        if let value = cache[text] { return value }
+        guard let value = fractional.date(from: text) ?? standard.date(from: text) else { return nil }
+        if cache.count >= 16384 { cache.removeAll(keepingCapacity: true) }
+        cache[text] = value
+        return value
     }
-    static func iso(_ date: Date) -> String { ISO8601DateFormatter().string(from: date) }
+    func string(_ date: Date) -> String {
+        lock.lock(); defer { lock.unlock() }
+        return standard.string(from: date)
+    }
+}
+
+struct DeviceCalendarSharing: Codable, Equatable {
+    var ownerID: String
+    var calendarID: String
+    var ownerEmail: String?
+    var access: String
+    var calendarKind: String?
+    var localColorOverride: String?
 }
 
 struct DeviceCalendarDocument: Codable, Equatable, Identifiable {
@@ -64,7 +97,11 @@ struct DeviceCalendarDocument: Codable, Equatable, Identifiable {
     var available: Bool = true
     var events: [DeviceCalendarEvent]
     var revision: Int = 0
+    var sharing: DeviceCalendarSharing? = nil
+    var accountLocal: Bool? = nil
+    var sharingCalendarID: String? = nil
     var updatedAt: String?
+    var isReceivedSharedCalendar: Bool { sharing != nil || source == "Shared with me" || id.hasPrefix("shared-") }
 }
 
 @MainActor
@@ -74,7 +111,7 @@ final class DeviceCalendarReplica {
         case server(Int)
         var errorDescription: String? { if case .server(let status) = self { return "Calendar sync failed (\(status))." }; return nil }
     }
-    static func hash(_ string: String) -> String { SHA256.hash(data: Data(string.utf8)).map { String(format: "%02x", $0) }.joined() }
+    nonisolated static func hash(_ string: String) -> String { SHA256.hash(data: Data(string.utf8)).map { String(format: "%02x", $0) }.joined() }
     static var deviceID: String {
         if let saved = UserDefaults.standard.string(forKey: "calendarReplica.deviceID") { return saved }
         let id = UUID().uuidString.lowercased(); UserDefaults.standard.set(id, forKey: "calendarReplica.deviceID"); return id
@@ -99,7 +136,12 @@ final class DeviceCalendarReplica {
     /// Call only after a complete, authorized calendar inventory.
     func hideMissingCalendars(keeping ids: Set<String>) async throws {
         let known = UserDefaults.standard.stringArray(forKey: prefix + "catalog") ?? []
-        for id in known where !ids.contains(id) {
+        try await hideCalendars(Set(known).subtracting(ids))
+    }
+    /// Retire a known duplicate replica even when Apple Calendar access is unavailable.
+    func hideCalendars(_ ids: Set<String>) async throws {
+        let known = Set(UserDefaults.standard.stringArray(forKey: prefix + "catalog") ?? [])
+        for id in ids.intersection(known) {
             let request: [String: CalendarJSON] = ["id": .string(id), "deviceId": .string(Self.deviceID), "readOnly": .bool(true)]
             guard var remote = try await send(JSONEncoder().encode(request)), remote.available else { continue }
             remote.available = false
@@ -118,7 +160,7 @@ final class DeviceCalendarReplica {
             r[id]?.content == b[id]?.content ? l[id] : r[id]
         }.sorted { $0.id < $1.id }
     }
-    private func send(_ body: Data) async throws -> DeviceCalendarDocument? {
+    func send(_ body: Data) async throws -> DeviceCalendarDocument? {
         var request = URLRequest(url: baseURL.appendingPathComponent("ios/calendars/sync"))
         request.httpMethod = "POST"; request.httpBody = body
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")

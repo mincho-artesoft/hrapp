@@ -401,7 +401,7 @@ struct AppLocalEventEditorView: View {
         }
         if let event = existingLocalEvent,
            let calendar = localStore.calendar(id: event.calendarID) {
-            return !calendar.canEditEvents
+            return !calendar.canEditEvents || event.providerReadOnly == true
         }
         return selectedChoice?.canEdit != true
     }

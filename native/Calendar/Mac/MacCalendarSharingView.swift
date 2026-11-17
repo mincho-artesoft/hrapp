@@ -17,8 +17,9 @@ struct MacCalendarSharingView: View {
     @State private var calendarInvitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation] = []
     @State private var sent: [CloudCalendarsAPI.RemoteSharedEvent] = []
     @State private var received: [CloudCalendarsAPI.RemoteSharedEvent] = []
-    @State private var calendars: [CloudCalendarsAPI.SharedICloudCalendar] = []
     @State private var busy = false
+    @State private var loadingSections = Set<String>()
+    @State private var refreshID = UUID()
     @State private var error: String?
     @State private var link = ""
     @State private var importOpen = false
@@ -57,8 +58,8 @@ struct MacCalendarSharingView: View {
                         Divider()
                         sharingRow("Shared by me", count: sent.count, icon: "paperplane.fill", color: .blue, target: 2)
                         Divider()
-                        sharingRow("Shared with me", count: received.count + calendars.count, icon: "tray.and.arrow.down.fill", color: .indigo, target: 3)
-                        if busy { ProgressView().padding() }
+                        sharingRow("Shared with me", count: received.count, icon: "tray.and.arrow.down.fill", color: .indigo, target: 3)
+                        if busy || !loadingSections.isEmpty { ProgressView().padding() }
                         if let error { Text(error).foregroundStyle(.red) }
                     }.padding(.horizontal, DraggableMenuContentLayout.horizontalInset)
                         .padding(.vertical, DraggableMenuContentLayout.verticalInset)
@@ -72,48 +73,38 @@ struct MacCalendarSharingView: View {
         .task(id: account.accountEmail) { await refresh() }
         .appSheet(isPresented: $importOpen) { importSheet }
         .appSheet(item: $importEvent) { payload in
-            VStack(spacing: 20) {
-                MacCalendarSheetHeader(title: Text("Add Event")) {
-                    AppToolbarTextButton("Cancel") { importEvent = nil }
-                } trailing: { EmptyView() }
-                eventLabel(payload.title, date: payload.start, subtitle: payload.location ?? "")
-                AppPicker("Calendar", selection: $calendarID) {
-                    ForEach(store.writableCalendars, id: \.calendarIdentifier) { Text($0.title).tag($0.calendarIdentifier) }
-                }
-                if store.writableCalendars.isEmpty { Text("Add a writable calendar first.") }
-                Button("Add") { saveInvitation(payload) }.buttonStyle(AppActionButtonStyle()).disabled(calendarID.isEmpty || busy)
-                if let error { Text(error).foregroundStyle(.red) }
-                Spacer()
-            }.padding(24).frame(width: 540, height: 360)
+            MacSharedEventImportContent(payload: payload, calendars: store.writableCalendars,
+                calendarID: $calendarID, busy: busy, error: error,
+                close: { importEvent = nil }, add: { saveInvitation(payload) })
         }
         .appSheet(item: $accessEvent) { event in
-            MacEventRecipientsView(event: event, session: account.cloudSession)
+            MacEventRecipientsView(store: store, event: event, isOutgoing: destination == 2, session: account.cloudSession)
         }
         .appSheet(isPresented: $authenticatorOpen) { WebStudioAuthSheetView(initialChallenge: nil) }
         .appSheet(item: $webChallenge) { challenge in WebStudioAuthSheetView(initialChallenge: challenge) }
     }
 
     @ViewBuilder private var sharingDestination: some View {
-        if busy && invitations.isEmpty && calendarInvitations.isEmpty && sent.isEmpty && received.isEmpty {
+        if !account.signedIn {
+            CalendarSharingForm { CalendarSharingSection { CloudAccountSignInContent() } }
+        } else if destinationIsLoading && destinationIsEmpty {
             ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
         } else if destination == 1 {
             if invitations.isEmpty && calendarInvitations.isEmpty {
                 ContentUnavailableView("No pending invitations.", systemImage: "envelope.open")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(calendarInvitations) { item in
-                            invitationCard(title: item.title, sender: item.senderEmail ?? item.ownerEmail ?? "", access: item.access, date: nil, calendar: true,
-                                accept: { acceptCalendar(owner: item.ownerId, id: item.calendarId) },
-                                decline: { perform { session in try await CloudCalendarsAPI.declinePendingICloudCalendarInvitation(ownerId: item.ownerId, calendarId: item.calendarId, session: session) } })
-                        }
-                        ForEach(invitations) { item in
-                            invitationCard(title: item.title, sender: item.senderName, access: item.access, date: item.startDate, calendar: false,
-                                accept: { importEvent = item.importPayload; calendarID = store.defaultWritableCalendar?.calendarIdentifier ?? "" },
-                                decline: { perform { session in try await CloudCalendarsAPI.declinePendingEventInvitation(eventId: item.eventId, feedId: item.feedId, session: session) } })
-                        }
-                    }.padding(16)
+                PendingInvitationsList {
+                    ForEach(calendarInvitations) { item in
+                        PendingCalendarInvitationRow(invitation: item, isUpdating: busy,
+                            accept: { acceptCalendar(owner: item.ownerId, id: item.calendarId) },
+                            decline: { perform { session in try await CloudCalendarsAPI.declinePendingICloudCalendarInvitation(ownerId: item.ownerId, calendarId: item.calendarId, session: session) } })
+                    }
+                    ForEach(invitations) { item in
+                        PendingEventInvitationRow(invitation: item, isUpdating: busy,
+                            accept: { importEvent = item.importPayload; calendarID = store.defaultWritableCalendar?.calendarIdentifier ?? "" },
+                            decline: { perform { session in try await CloudCalendarsAPI.declinePendingEventInvitation(eventId: item.eventId, feedId: item.feedId, session: session) } })
+                    }
                 }.refreshable { await refresh() }
             }
         } else {
@@ -121,7 +112,7 @@ struct MacCalendarSharingView: View {
                 searchText.isEmpty || $0.title.localizedCaseInsensitiveContains(searchText) || ($0.location?.localizedCaseInsensitiveContains(searchText) ?? false)
             }
             let groups = Dictionary(grouping: filtered) { MacCalendarFormatting.calendar.startOfDay(for: $0.startDate ?? .distantPast) }
-            if groups.isEmpty && (destination != 3 || calendars.isEmpty) {
+            if groups.isEmpty {
                 ContentUnavailableView(LocalizedStringKey(searchText.isEmpty ? "No shared events yet." : "No matching events."),
                     systemImage: !searchText.isEmpty ? "magnifyingglass" : destination == 2 ? "paperplane" : "tray.and.arrow.down")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -135,14 +126,9 @@ struct MacCalendarSharingView: View {
                             ForEach((groups[day] ?? []).sorted { $0.start < $1.start }) { event in
                                 SharedEventPresentationRow(title: event.title, start: event.startDate ?? day, end: event.endDate ?? day,
                                     isAllDay: event.allDay, location: event.location, isCancelled: event.isCancelled,
-                                    color: .blue, access: destination == 3 ? event.access : nil, optionsAction: { accessEvent = event })
+                                    color: .blue, access: destination == 3 ? event.access : nil,
+                                    optionsAction: destination == 2 || event.access == .owner ? { accessEvent = event } : nil)
                                 Divider()
-                            }
-                        }
-                        if destination == 3 {
-                            ForEach(calendars) { item in
-                                AppMenuNavigationRow(title: LocalizedStringKey(item.title), subtitle: item.access.title,
-                                    symbol: "calendar", color: .blue) { acceptCalendar(owner: item.ownerId, id: item.calendarId) }
                             }
                         }
                     }.padding(.horizontal, 16)
@@ -151,27 +137,12 @@ struct MacCalendarSharingView: View {
         }
         if let error { Text(error).font(CalendarTypography.footnote).foregroundStyle(.red).padding(16) }
     }
-    private func invitationCard(title: String, sender: String, access: CloudCalendarsAPI.EventAccess,
-        date: Date?, calendar: Bool, accept: @escaping () -> Void, decline: @escaping () -> Void) -> some View {
-        VStack(alignment: .leading, spacing: 7) {
-            HStack(alignment: .firstTextBaseline) {
-                if calendar { Image(systemName: "calendar") }
-                Text(title).font(CalendarTypography.body.weight(.semibold)).lineLimit(2)
-                Spacer()
-                Text(access.title).font(CalendarTypography.caption.weight(.semibold)).foregroundStyle(.secondary)
-                    .padding(.horizontal, 8).padding(.vertical, 4).background(.thinMaterial, in: Capsule())
-            }
-            Text("From \(sender)").font(CalendarTypography.footnote).foregroundStyle(.secondary)
-            if let date { Text(invitationDate(date)).font(CalendarTypography.footnote).foregroundStyle(.secondary) }
-            HStack(spacing: 10) {
-                Button(role: .destructive, action: decline) { Text("Decline").frame(maxWidth: .infinity).contentShape(Rectangle()) }
-                    .buttonStyle(.bordered).tint(.red)
-                Button(action: accept) { Text("Accept").frame(maxWidth: .infinity).contentShape(Rectangle()) }
-                    .buttonStyle(.borderedProminent)
-            }.controlSize(.small).disabled(busy)
-        }.padding(.vertical, 6)
+    private var destinationIsLoading: Bool {
+        destination == 1 ? !loadingSections.isDisjoint(with: ["events", "calendars"]) : loadingSections.contains("shared")
     }
-
+    private var destinationIsEmpty: Bool {
+        destination == 1 ? invitations.isEmpty && calendarInvitations.isEmpty : (destination == 2 ? sent.isEmpty : received.isEmpty)
+    }
     private func sharingRow(_ title: LocalizedStringKey, count: Int, icon: String, color: Color, target: Int) -> some View {
         let key = target == 1 ? (count == 1 ? "%lld pending invitation" : "%lld pending invitations") : (count == 1 ? "%lld event" : "%lld events")
         return AppMenuNavigationRow(title: title, subtitle: localizedFormat(NSLocalizedString(key, comment: ""), Int64(count)),
@@ -214,18 +185,9 @@ struct MacCalendarSharingView: View {
         Task { @MainActor in
             defer { busy = false }
             do {
-                let event = EKEvent(eventStore: store.eventStore)
-                event.calendar = target; event.title = payload.title; event.startDate = payload.start; event.endDate = payload.end
-                event.isAllDay = payload.isAllDay; event.location = payload.location; event.url = payload.eventURL; event.timeZone = payload.timeZone
-                let saved = try store.local.persist(event, replacing: nil, span: .thisEvent)
-                if let session = account.cloudSession, let eventID = payload.eventID, let feedID = payload.feedID {
-                    do {
-                        try await CloudCalendarsAPI.rememberReceivedInvite(eventId: eventID, feedId: feedID, localEventIdentifier: saved.calendarItemIdentifier, session: session)
-                    } catch {
-                        // The local event remains usable; surface the sync failure instead of losing the user's import.
-                        self.error = error.localizedDescription
-                    }
-                }
+                let session = try await CalendarFeedSession.current()
+                try await MacEventSharing.accept(payload, target: target, bridge: store.local, session: session)
+                Task { await store.backend.sync() }
                 store.reload(); importEvent = nil; await refresh()
             } catch { self.error = error.localizedDescription }
         }
@@ -246,69 +208,43 @@ struct MacCalendarSharingView: View {
         }
     }
     private func refresh() async {
-        guard let session = account.cloudSession else { invitations = []; calendarInvitations = []; sent = []; received = []; calendars = []; return }
-        busy = true; defer { busy = false }
-        do {
-            async let pending = CloudCalendarsAPI.pendingEventInvitations(session: session)
-            async let pendingCalendars = CloudCalendarsAPI.pendingICloudCalendarInvitations(session: session)
-            async let shared = CloudCalendarsAPI.sharedState(session: session)
-            async let sharedCalendars = CloudCalendarsAPI.iCloudCalendarsSharedWithMe(session: session)
-            let result = try await (pending, pendingCalendars, shared, sharedCalendars)
-            invitations = result.0; calendarInvitations = result.1; sent = result.2.outgoing; received = result.2.received; calendars = result.3
-        } catch { self.error = error.localizedDescription }
+        let generation = UUID()
+        refreshID = generation
+        guard let session = account.cloudSession else {
+            invitations = []; calendarInvitations = []; sent = []; received = []; loadingSections = []; error = nil; return
+        }
+        loadingSections = ["events", "calendars", "shared"]
+        error = nil
+        async let events: Void = loadSection("events", session: session, generation: generation)
+        async let calendars: Void = loadSection("calendars", session: session, generation: generation)
+        async let shared: Void = loadSection("shared", session: session, generation: generation)
+        _ = await (events, calendars, shared)
     }
-}
 
-private struct MacEventRecipientsView: View {
-    let event: CloudCalendarsAPI.RemoteSharedEvent
-    let session: CloudCalendarsAPI.Session?
-    @Environment(\.dismiss) private var dismiss
-    @State private var recipients: [CloudCalendarsAPI.EventRecipient] = []
-    @State private var original: [CloudCalendarsAPI.EventRecipient] = []
-    @State private var error: String?
-    @State private var busy = false
-    var body: some View {
-        VStack {
-            MacCalendarSheetHeader(title: Text("People with this event")) {
-                AppToolbarTextButton("Cancel") { dismiss() }
-            } trailing: {
-                AppToolbarTextButton("Save") { save() }.disabled(busy)
+    private func loadSection(_ section: String, session: CloudCalendarsAPI.Session, generation: UUID) async {
+        defer { if refreshID == generation { loadingSections.remove(section) } }
+        do {
+            switch section {
+            case "events":
+                let result = try await CloudCalendarsAPI.pendingEventInvitations(session: session)
+                guard isCurrent(session, generation) else { return }
+                invitations = result
+            case "calendars":
+                let result = try await CloudCalendarsAPI.pendingICloudCalendarInvitations(session: session)
+                guard isCurrent(session, generation) else { return }
+                calendarInvitations = result
+            default:
+                let result = try await CloudCalendarsAPI.sharedState(session: session)
+                guard isCurrent(session, generation) else { return }
+                sent = result.outgoing; received = result.received
             }
-            Text(event.title).font(CalendarTypography.headline)
-            Form {
-                ForEach($recipients) { $recipient in
-                    HStack {
-                        Text(recipient.displayEmail); Spacer()
-                        if event.access == .owner || event.access == nil {
-                            AppPicker("Access", selection: $recipient.access) {
-                                ForEach(CloudCalendarsAPI.EventAccess.allCases) { Text($0.title).tag($0) }
-                            }.disabled(recipient.belongsToOriginalOwner)
-                            Button(role: .destructive) { recipients.removeAll { $0.id == recipient.id } } label: { Image(systemName: "trash") }
-                                .disabled(recipient.belongsToOriginalOwner)
-                        } else { Text(recipient.access.title) }
-                    }
-                }
-            }.formStyle(.grouped)
-            if let error { Text(error).foregroundStyle(.red) }
-            if busy { ProgressView() }
-        }.padding(20).frame(width: 650, height: 520)
-        .task {
-            guard let session else { return }
-            do { recipients = try await CloudCalendarsAPI.eventRecipients(eventId: event.id, session: session); original = recipients }
-            catch { self.error = error.localizedDescription }
+        } catch {
+            guard isCurrent(session, generation) else { return }
+            self.error = error.localizedDescription
         }
     }
-    private func save() {
-        guard let session else { return }; busy = true
-        Task { @MainActor in
-            defer { busy = false }
-            do {
-                _ = try await CloudCalendarsAPI.saveEventRecipientChanges(eventId: event.id,
-                    accessByRecipientID: Dictionary(uniqueKeysWithValues: recipients.map { ($0.id, $0.access) }),
-                    removedRecipientIDs: Set(original.map(\.id)).subtracting(recipients.map(\.id)), session: session)
-                dismiss()
-            } catch { self.error = error.localizedDescription }
-        }
+    private func isCurrent(_ session: CloudCalendarsAPI.Session, _ generation: UUID) -> Bool {
+        refreshID == generation && account.cloudSession?.calendarId == session.calendarId && !Task.isCancelled
     }
 }
 

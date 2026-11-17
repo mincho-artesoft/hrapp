@@ -52,7 +52,7 @@ struct MacCalendarMenuList: View {
                                         showEditButton: true, showShareButton: store.canManage(item), shareAction: {
                                             guard store.backend.signedIn else { openAccount(); return }
                                             sharing = .init(calendar: item)
-                                        }, allowsEdit: store.canEdit(item) && !(store.local.record(for: item).map { store.backend.providers.contains(calendarID: $0.id) } ?? false))
+                                        }, allowsEdit: (store.canEdit(item) || store.local.isLocal(item)) && !(store.local.record(for: item).map { store.backend.providers.contains(calendarID: $0.id) } ?? false))
                                 }
                             }
                             .disclosureGroupStyle(AppCalendarDisclosureStyle())
@@ -60,10 +60,7 @@ struct MacCalendarMenuList: View {
                             .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
                         }
                         MacCalendarProviderSections(store: store, providers: store.backend.providers,
-                            editCalendar: editCalendar, shareCalendar: { item in
-                                guard store.backend.signedIn else { openAccount(); return }
-                                sharing = .init(calendar: item)
-                            })
+                            editCalendar: editCalendar)
                         VStack(spacing: 0) {
                             actionRow("Add Local Calendar", icon: .local) { editCalendar(.init(destination: .local)) }
                             Divider()

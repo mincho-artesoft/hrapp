@@ -8,6 +8,13 @@ import Foundation
 /// keep whatever time it had the day they added it.
 @MainActor
 enum SharedInviteRefresher {
+    private static let requests = CalendarRequestCoalescer<String, Bool>()
+
+    @discardableResult
+    static func refresh(eventID: String) async -> Bool {
+        guard let invite = SharedInviteTracker.invite(eventID: eventID) else { return false }
+        return await refresh(invite)
+    }
 
     @discardableResult
     static func refreshAll() async -> Int {
@@ -30,6 +37,11 @@ enum SharedInviteRefresher {
 
     /// Returns true when the local copy was actually altered.
     private static func refresh(_ original: SharedInviteTracker.Invite) async -> Bool {
+        let key = (CalendarFeedSession.existing?.calendarId ?? "anonymous") + ":" + original.eventID
+        return (try? await requests.run(key) { await performRefresh(original) }) ?? false
+    }
+
+    private static func performRefresh(_ original: SharedInviteTracker.Invite) async -> Bool {
         // Revocation freezes the recipient's copy. It remains in their chosen
         // calendar until they delete it locally, but no longer talks to S3.
         guard original.isRevoked != true else { return false }
@@ -159,7 +171,8 @@ enum SharedInviteRefresher {
             // At an unchanged server revision, a Writer's local difference is
             // a new edit. Push it before the normal pull step can restore the
             // old S3 value. A newer server revision always wins first.
-            if invite.effectiveAccess == .writer || invite.effectiveAccess == .owner,
+            if !remote.isCancelled, !invite.isCancelled,
+               invite.effectiveAccess == .writer || invite.effectiveAccess == .owner,
                remote.sequence == invite.lastSequence,
                let session = CalendarFeedSession.existing,
                let event = CalendarViewModel.shared.eventStore

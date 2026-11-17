@@ -7,7 +7,7 @@ import { randomId, hashKey } from '../util/ids';
 import { nextRevisionTimestamp } from '../util/revision';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
-import { canonicalInvitationURL, eventInvitationURLWithPreview } from '../email/invitation-url';
+import { apiEndpoint, canonicalInvitationURL, eventInvitationURLWithPreview } from '../email/invitation-url';
 import { EVENT_CARD_CSS, eventIcon, eventPalette } from '../presentation/event-card';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
@@ -51,7 +51,7 @@ export class CalendarService {
   async sharedEventEmailQRCode(value: unknown): Promise<Buffer | null> {
     const url = canonicalInvitationURL(value, process.env.API_URL ?? 'https://api.cloud-calendars.com');
     if (!url) return null;
-    if (url.pathname === '/event-invites/open') {
+    if (url.pathname === apiEndpoint('/event-invites/open', process.env.API_URL ?? 'https://api.cloud-calendars.com').pathname) {
       const feedId = url.searchParams.get('c')!;
       const eventId = url.searchParams.get('e')!;
       const feed = await this.store.getJSON(this.keys.feedIndex(feedId));
@@ -951,7 +951,7 @@ export class CalendarService {
       return result(400, { error: 'a valid eventUrl is required' });
     }
     const eventURL = canonicalInvitationURL(rawEventURL, process.env.API_URL ?? 'https://api.cloud-calendars.com');
-    if (!eventURL || eventURL.pathname !== '/event-invites/open' || eventURL.searchParams.get('e') !== eventId) {
+    if (!eventURL || eventURL.pathname !== apiEndpoint('/event-invites/open', process.env.API_URL ?? 'https://api.cloud-calendars.com').pathname || eventURL.searchParams.get('e') !== eventId) {
       return result(400, { error: 'eventUrl is not a matching Cloud Calendars invitation link' });
     }
     const feedId = eventURL.searchParams.get('c')!;

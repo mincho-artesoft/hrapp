@@ -1197,3 +1197,5 @@
 "Web Events" = "Web Events";
 "yesterday" = "yesterday";
 "Open Sign-In in Browser" = "Open Sign-In in Browser";
+
+"Only owners can manage event access." = "Only owners can manage event access.";

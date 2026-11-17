@@ -13,9 +13,6 @@ struct MacCalendarProviderConnections: View {
                     ProgressView().controlSize(.small)
                     Text("Signing in…").foregroundStyle(.secondary)
                     Spacer()
-                    if authentication.canOpenBrowserSignIn {
-                        Button("Open Sign-In in Browser", action: authentication.openBrowserSignIn)
-                    }
                     Button("Cancel", action: authentication.cancelSignIn)
                 }.padding(16)
             }

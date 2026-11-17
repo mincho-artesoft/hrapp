@@ -22,14 +22,14 @@ struct CalendarEventCard: View {
     var showsBackground = true
     var foregroundColor: Color? = nil
 
+    #if os(macOS)
+    private var baseColor: NSColor { NSColor(color) }
+    #else
     private var baseColor: EventTimelinePlatformColor {
-        #if os(iOS)
         UIColor(color).resolvedColor(with: UITraitCollection(
             userInterfaceStyle: colorScheme == .dark ? .dark : .light))
-        #else
-        NSColor(color)
-        #endif
     }
+    #endif
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {

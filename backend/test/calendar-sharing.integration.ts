@@ -772,12 +772,51 @@ async function testLegacySharingWrites(service: CalendarService, store: MemorySt
   console.log(`PASS legacy sharing compatibility: ${kind}, all rights, extension preservation, explicit clear, calendar kind and conflict protection`);
 }
 
+async function testHetznerInvitationRoutes(): Promise<void> {
+  const previousAPI = process.env.API_URL;
+  process.env.API_URL = 'https://storage.wonek.com/cloud-calendars-debug';
+  try {
+    const store = new MemoryStore();
+    const core = new CoreService(store as any);
+    const email = new FakeEmailService();
+    const service = new CalendarService(store as any, core, email as any);
+    await seedAccount(store, core, owner, ownerEmail);
+    await seedAccount(store, core, recipient, recipientEmail);
+    const eventId = 'hetzner-invitation';
+    expectStatus(await service.upsertEvent(owner, eventId, eventPayload('Hetzner event')), 201, 'create Hetzner event');
+    const grant = expectStatus(await service.createGrant(owner, { role: 'viewer', eventId }), 201, 'Hetzner feed');
+    for (const base of [process.env.API_URL, 'https://63yo3ore3c.execute-api.us-east-1.amazonaws.com']) {
+      const eventUrl = `${base}/event-invites/open?e=${eventId}&c=${grant.feedId}`;
+      expectStatus(await service.inviteEventRecipients(owner, eventId, {
+        eventUrl, invitations: [{ email: recipientEmail, access: 'writer' }],
+      }), 201, 'Hetzner accepts current and legacy Debug invitations');
+      assert.equal(new URL(email.eventInvitations.at(-1).eventUrl).pathname, '/cloud-calendars-debug/event-invites/open');
+      assert.ok(await service.sharedEventEmailQRCode(eventUrl));
+      const qr = new URL(email.lastQRCodeURL!);
+      assert.equal(qr.pathname, '/cloud-calendars-debug/event-invites/open');
+      assert.equal(qr.searchParams.get('title'), 'Hetzner event');
+    }
+    const pending = expectStatus(await service.pendingEventInvitations(recipient), 200, 'Hetzner pending');
+    assert.equal(pending.invitations.length, 1);
+    expectStatus(await service.inviteEventRecipients(owner, eventId, {
+      eventUrl: `https://storage.wonek.com/other/event-invites/open?e=${eventId}&c=${grant.feedId}`,
+      invitations: [{ email: recipientEmail, access: 'reader' }],
+    }), 400, 'reject another namespace');
+    assert.equal(await service.sharedEventEmailQRCode(`${process.env.API_URL}/event-invites/open?e=missing&c=${grant.feedId}`), null);
+    console.log('PASS Hetzner invitation routes: current + legacy Debug, QR preview, namespace isolation');
+  } finally {
+    if (previousAPI === undefined) delete process.env.API_URL;
+    else process.env.API_URL = previousAPI;
+  }
+}
+
 async function main(): Promise<void> {
   const instant = Date.parse('2026-09-09T08:00:00.000Z');
   assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant), '2026-09-09T08:00:00.001Z');
   assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant - 1000), '2026-09-09T08:00:00.001Z');
   delete process.env.API_URL;
   await testInvitationEmailLinks();
+  await testHetznerInvitationRoutes();
   for (const kind of ['eventkit', 'app_local']) {
   process.env.API_URL = 'https://63yo3ore3c.execute-api.us-east-1.amazonaws.com';
   const store = new MemoryStore();

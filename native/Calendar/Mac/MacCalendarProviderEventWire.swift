@@ -1,4 +1,3 @@
-#if os(macOS)
 import Foundation
 import CryptoKit
 
@@ -25,7 +24,7 @@ enum MacCalendarProviderEventWire {
         let attendees = raw["attendees"] as? [[String: Any]] ?? []
         return DeviceCalendarEvent(id: id, title: (raw[google ? "summary" : "subject"] as? String) ?? "",
             start: DeviceCalendarEvent.iso(startDate), end: DeviceCalendarEvent.iso(endDate), allDay: allDay,
-            location: location?.isEmpty == true ? nil : location, details: details, readOnly: !attendees.isEmpty)
+            location: location?.isEmpty == true ? nil : location, details: details, readOnly: !attendees.isEmpty, updatedAt: (raw[google ? "updated" : "lastModifiedDateTime"] as? String))
     }
     private static func providerDate(_ value: [String: Any], allDay: Bool) -> Date? {
         if let date = value["date"] as? String ?? (allDay ? (value["dateTime"] as? String).map { String($0.prefix(10)) } : nil) {
@@ -142,4 +141,3 @@ enum MacCalendarProviderEventWire {
     }
 
 }
-#endif

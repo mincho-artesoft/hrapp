@@ -1,5 +1,4 @@
 // Same portable alarm/location/recurrence values used by HRApp iOS.
-#if os(macOS)
 import EventKit
 import Foundation
 import CoreLocation
@@ -10,5 +9,3 @@ extension DeviceCalendarEvent {
         return try? JSONDecoder().decode(T.self, from: data)
     }
 }
-
-#endif

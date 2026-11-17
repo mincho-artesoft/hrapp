@@ -294,18 +294,6 @@ struct SharingSheetView: View {
                     CloudAccountSignInContent()
                         .padding(.vertical, 4)
                 }
-                if cloudAccountManager.isSignedIn {
-                    Section {
-                        Button {
-                            showCloudAccount = false
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                                showWebAuthenticator = true
-                            }
-                        } label: {
-                            Label("Web Sign-In & 6-Digit Authenticator", systemImage: "key.horizontal.fill")
-                        }
-                    }
-                }
             }
             .navigationTitle("Cloud Calendars account")
             .navigationBarTitleDisplayMode(.inline)
@@ -458,7 +446,7 @@ struct SharingSheetView: View {
                     systemImage: "envelope.open"
                 )
             } else {
-                List {
+                PendingInvitationsList {
                     ForEach(displayedCalendarInvitations) { invitation in
                         pendingCalendarInvitationRow(invitation)
                     }
@@ -466,7 +454,6 @@ struct SharingSheetView: View {
                         pendingInvitationRow(invitation)
                     }
                 }
-                .listStyle(.plain)
                 .refreshable {
                     await pendingInvitationManager.refresh()
                 }
@@ -584,130 +571,19 @@ struct SharingSheetView: View {
     private func pendingInvitationRow(
         _ invitation: CloudCalendarsAPI.PendingEventInvitation
     ) -> some View {
-        let isUpdating = pendingInvitationActionIDs.contains(invitation.id)
-
-        return VStack(alignment: .leading, spacing: 7) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(invitation.title)
-                    .font(.body.weight(.semibold))
-                    .lineLimit(2)
-
-                Spacer(minLength: 8)
-
-                Text(invitation.access.title)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(.thinMaterial, in: Capsule())
-                    .fixedSize()
-            }
-
-            Text("From \(invitation.senderName)")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-
-            if let start = invitation.startDate,
-               let end = invitation.endDate {
-                Text(eventDateText(
-                    start: start,
-                    end: end,
-                    isAllDay: invitation.allDay
-                ))
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-            }
-
-            if let location = invitation.location, !location.isEmpty {
-                Label(location, systemImage: "location")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
-
-            HStack(spacing: 10) {
-                Button(role: .destructive) {
-                    Task { await declinePendingInvitation(invitation) }
-                } label: {
-                    Text("Decline")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
-                .tint(.red)
-
-                Button {
-                    selectedPendingInvitation = invitation.importPayload
-                } label: {
-                    Text("Accept")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(invitation.importPayload == nil)
-            }
-            .controlSize(.small)
-            .disabled(isUpdating)
-        }
-        .padding(.vertical, 6)
+        PendingEventInvitationRow(invitation: invitation,
+            isUpdating: pendingInvitationActionIDs.contains(invitation.id),
+            accept: { selectedPendingInvitation = invitation.importPayload },
+            decline: { Task { await declinePendingInvitation(invitation) } })
     }
 
     private func pendingCalendarInvitationRow(
         _ invitation: CloudCalendarsAPI.PendingICloudCalendarInvitation
     ) -> some View {
-        let isUpdating = pendingInvitationActionIDs.contains("calendar:\(invitation.id)")
-
-        return VStack(alignment: .leading, spacing: 7) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Label(invitation.title, systemImage: "calendar")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .lineLimit(2)
-
-                Spacer(minLength: 8)
-
-                Text(invitation.access.title)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(.thinMaterial, in: Capsule())
-                    .fixedSize()
-            }
-
-            Text("Calendar invitation")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-
-            if let sender = invitation.senderEmail ?? invitation.ownerEmail {
-                Text("From \(sender)")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .truncationMode(.middle)
-            }
-
-            HStack(spacing: 10) {
-                Button(role: .destructive) {
-                    Task { await declinePendingCalendarInvitation(invitation) }
-                } label: {
-                    Text("Decline")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
-                .tint(.red)
-
-                Button {
-                    selectedPendingCalendarInvitation = invitation.importPayload
-                } label: {
-                    Text("Accept")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(invitation.importPayload == nil)
-            }
-            .controlSize(.small)
-            .disabled(isUpdating)
-        }
-        .padding(.vertical, 6)
+        PendingCalendarInvitationRow(invitation: invitation,
+            isUpdating: pendingInvitationActionIDs.contains("calendar:\(invitation.id)"),
+            accept: { selectedPendingCalendarInvitation = invitation.importPayload },
+            decline: { Task { await declinePendingCalendarInvitation(invitation) } })
     }
 
     @MainActor

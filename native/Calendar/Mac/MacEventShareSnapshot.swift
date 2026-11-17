@@ -3,6 +3,11 @@ import Foundation
 /// Local calendars and EventKit omit fields that do not apply to them. Fill
 /// portable defaults before decoding, and compare values rather than wire shapes.
 enum MacEventShareSnapshot {
+    static func calendarEventID(_ localID: String) -> String {
+        if localID.count == 64 && localID.allSatisfy({ $0.isHexDigit }) { return localID }
+        return DeviceCalendarReplica.hash(localID)
+    }
+
     static func details(_ event: DeviceCalendarEvent) throws -> SharedEventDetails {
         var object = try CalendarJSON.object(encoding: SharedEventDetails(notes: nil, timeZone: nil))
         object.merge(event.details ?? [:]) { _, value in value }

@@ -251,17 +251,20 @@ enum SharingMatrixE2ETest {
         }
         let remote = try await CloudCalendarsAPI.acceptICloudCalendarInvitation(ownerId: manifest.ownerID, calendarId: item.calendarID, session: session)
         check(label + " calendar acceptance preserves kind and role", remote.calendarKind == item.kind && remote.access == item.access)
-        if item.kind == "app_local" { _ = store.applyRemoteCalendar(remote); _ = await AppLocalCalendarSyncService.syncAll() }
-        else { _ = try SharedICloudCalendarLocalStore.reconcile(remote, in: ek); _ = await SharedICloudCalendarLocalStore.refreshAll() }
-        if item.kind == "app_local" {
-            let calendar = store.receivedCalendars.first { $0.remoteCalendarID == item.calendarID }
-            check(label + " local calendar UI edit/share permissions", calendar?.canEditEvents == (item.access != .reader)
-                && calendar?.canManageSharing == (item.access == .owner))
-        } else if let calendar = SharedICloudCalendarLocalStore.localCalendar(for: remote, in: ek) {
-            check(label + " native calendar UI edit/share permissions",
-                SharedICloudCalendarLocalStore.canEditEvents(localCalendarIdentifier: calendar.calendarIdentifier) == (item.access != .reader)
-                    && SharedICloudCalendarLocalStore.canManageSharing(localCalendarIdentifier: calendar.calendarIdentifier) == (item.access == .owner))
-        }
+        let nativeIDsBefore = Set(ek.calendars(for: .event).map(\.calendarIdentifier))
+        _ = store.applyRemoteCalendar(remote)
+        _ = await AppLocalCalendarSyncService.syncAll()
+        let calendar = store.receivedCalendars.first { $0.remoteCalendarID == item.calendarID }
+        check(label + " received calendar is app-local for every source", calendar != nil)
+        check(label + " local calendar UI edit/share permissions", calendar?.canEditEvents == (item.access != .reader)
+            && calendar?.canManageSharing == (item.access == .owner))
+        let receivedIDsBefore = store.receivedCalendars.map(\.id)
+        let eventIDsBefore = store.events.filter { $0.calendarID == calendar?.id }.map(\.id).sorted()
+        _ = store.applyRemoteCalendar(remote)
+        _ = await AppLocalCalendarSyncService.syncAll()
+        check(label + " repeat acceptance does not duplicate calendars or events", store.receivedCalendars.map(\.id) == receivedIDsBefore
+            && store.events.filter { $0.calendarID == calendar?.id }.map(\.id).sorted() == eventIDsBefore)
+        check(label + " received sharing never creates an Apple calendar", Set(ek.calendars(for: .event).map(\.calendarIdentifier)) == nativeIDsBefore)
         // Acceptance returns metadata; event snapshots arrive through the
         // subsequent production refresh, not in the acceptance response.
         let refreshed = try await CloudCalendarsAPI.iCloudCalendarsSharedWithMe(session: session).first { $0.calendarId == item.calendarID }
@@ -274,19 +277,14 @@ enum SharingMatrixE2ETest {
                 _ = try await CloudCalendarsAPI.saveICloudCalendarEvents(calendarId: item.calendarID, ownerId: manifest.ownerID,
                     events: remote.events ?? [], windowStart: start, windowEnd: start.addingTimeInterval(7 * 86400), expectedUpdatedAt: remote.eventsUpdatedAt, session: session)
             }
-        } else if item.kind == "app_local" {
+        } else {
             guard let calendar = store.receivedCalendars.first(where: { $0.remoteCalendarID == item.calendarID }),
                   var long = store.events.first(where: { $0.calendarID == calendar.id && $0.title.contains("51h") })
             else { throw NSError(domain: "SharingMatrix", code: 2, userInfo: [NSLocalizedDescriptionKey: "Local 51h event missing after acceptance"]) }
             long.title = label + " — Recipient calendar edit 51h"; store.saveEvent(long)
             _ = await AppLocalCalendarSyncService.syncAll()
-        } else {
-            guard let calendar = SharedICloudCalendarLocalStore.localCalendar(for: remote, in: ek),
-                  let long = nativeEvents(calendar).first(where: { $0.title.contains("51h") })
-            else { throw NSError(domain: "SharingMatrix", code: 3, userInfo: [NSLocalizedDescriptionKey: "EventKit 51h event missing after acceptance"]) }
-            long.title = label + " — Recipient calendar edit 51h"; try ek.save(long, span: .thisEvent, commit: true)
-            _ = await SharedICloudCalendarLocalStore.refreshAll()
         }
+
         if item.access != .owner {
             await denied(label + " non-Owner cannot manage calendar sharing") { _ = try await CloudCalendarsAPI.iCloudCalendarSharing(calendarId: item.calendarID, ownerId: manifest.ownerID, session: session) }
         } else {

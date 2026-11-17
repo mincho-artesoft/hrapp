@@ -38,7 +38,7 @@ enum SharedEventImporter {
                 localEventIdentifier: existingEvent.eventIdentifier,
                 session: session
             )
-            if payload.isSyncable { _ = await SharedInviteRefresher.refreshAll() }
+            if payload.isSyncable, let eventID = payload.eventID { _ = await SharedInviteRefresher.refresh(eventID: eventID) }
             return .alreadyExists
         }
 
@@ -90,7 +90,7 @@ enum SharedEventImporter {
             // The App Clip URL deliberately stays compact. Pull the full S3
             // representation now so notes, alarms and recurrence arrive in
             // the same import action instead of waiting for the next poll.
-            if payload.isSyncable { _ = await SharedInviteRefresher.refreshAll() }
+            if payload.isSyncable, let eventID = payload.eventID { _ = await SharedInviteRefresher.refresh(eventID: eventID) }
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
             return .added

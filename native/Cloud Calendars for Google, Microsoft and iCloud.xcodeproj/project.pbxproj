@@ -92,18 +92,18 @@
 				AppLocal/AppLocalCalendarSyncService.swift = (ios, );
 				AppLocal/AppLocalCalendarViews.swift = (ios, );
 				AppLocal/AppLocalEventEditorView.swift = (ios, );
+				AppLocal/AppLocalProviderCalendarStore.swift = (ios, );
 				AppLocal/CalendarTimelineTransfer.swift = (ios, );
 				AppLocal/EventEditorInitialSchedule.swift = (ios, );
 				AppLocal/EventKitEventSupplementStore.swift = (ios, );
 				AppLocal/NativeCalendarSyncService.swift = (ios, );
 				AppLocal/PersonalCloudCalendarSyncService.swift = (ios, );
+				AppLocal/ProviderCalendarMigration.swift = (ios, );
 				Calendar/AddCalendarView.swift = (ios, );
 				Calendar/AddGoogleCalendarView.swift = (ios, );
 				Calendar/CalendarColorSelectionView.swift = (ios, );
 				Calendar/CalendarsSheetView.swift = (ios, );
 				Calendar/EditCalendarView.swift = (ios, );
-				Calendar/GoogleCalendarSharingView.swift = (ios, );
-				Calendar/ICloudCalendarSharingView.swift = (ios, );
 				Calendar/SafariView.swift = (ios, );
 				Calendar/UIKitColorPicker.swift = (ios, );
 				CalendarDateRange/CalendarDateRangePickerCell.swift = (ios, );
@@ -112,7 +112,6 @@
 				CalendarDateRange/CalendarDateRangePickerWrapper.swift = (ios, );
 				CalendarDateRange/MonthYearPickerView.swift = (ios, );
 				CalendarKit/BasicEvent.swift = (ios, );
-				CalendarKit/CalendarEventCard.swift = (ios, );
 				CalendarKit/EventDescriptor.swift = (ios, );
 				CalendarKit/EventLayoutAttributes.swift = (ios, );
 				CalendarKit/EventResizeHandleDotView.swift = (ios, );
@@ -149,7 +148,6 @@
 				Mac/MacCalendarSharingEditor.swift = (macos, );
 				Mac/MacCalendarSharingView.swift = (macos, );
 				Mac/MacCalendarToolbar.swift = (macos, );
-				Mac/MacEventData.swift = (macos, );
 				Mac/Weather/MacWeatherKitView.swift = (macos, );
 				Mac/Weather/MacWindMapCanvas.swift = (macos, );
 				Mac/Weather/WeekCarouselView2.swift = (macos, );

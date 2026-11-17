@@ -6,6 +6,7 @@ struct AppLocalCalendarRow: View {
     let toggleAction: () -> Void
     let editAction: () -> Void
     let shareAction: (() -> Void)?
+    var showsEditButton = true
 
     var body: some View {
         HStack(spacing: 12) {
@@ -71,12 +72,14 @@ struct AppLocalCalendarRow: View {
                 .accessibilityLabel("Manage calendar sharing")
             }
 
+            if showsEditButton {
             Button(action: editAction) {
                 Image(systemName: "info.circle")
                     .font(.system(size: 18))
             }
             .buttonStyle(.borderless)
             .accessibilityLabel("Edit local calendar")
+            }
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 5)
@@ -122,71 +125,24 @@ struct AppLocalCalendarEditView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    TextField("Calendar Name", text: $calendarName)
-                        .disabled(!canEditMetadata)
-                }
-
-                Section {
-                    NavigationLink {
-                        if calendar?.origin == .received {
-                            CalendarColorSelectionView(
-                                selectedColor: $selectedColor,
-                                defaultColor: AppLocalCalendarStore.color(calendar?.colorHex ?? "#0088FF"),
-                                usesDefault: $usesCreatorDefault
-                            )
-                        } else {
-                            CalendarColorSelectionView(selectedColor: $selectedColor)
-                        }
-                    } label: {
-                        HStack(spacing: 12) {
-                            Circle().fill(Color(uiColor: selectedColor)).frame(width: 20, height: 20)
-                            Text("Color")
-                        }
-                    }
-                } header: {
-                    Text("COLOR")
-                } footer: {
+            CalendarSharingForm {
+                CalendarEditorSections(title: $calendarName, canEditTitle: canEditMetadata,
+                    color: Color(uiColor: selectedColor),
+                    colorFooter: calendar?.origin == .received ? LocalizedStringKey(usesCreatorDefault ? "Default from creator" : "Custom on this device") : nil,
+                    access: calendar?.origin == .received ? calendar?.access.title : nil,
+                    ownerEmail: calendar?.remoteOwnerEmail,
+                    removalTitle: calendar?.isPersonalCloud == true ? nil : LocalizedStringKey(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar"),
+                    removing: isDeleting, errorMessage: errorMessage, remove: { showDeleteConfirmation = true }) {
                     if calendar?.origin == .received {
-                        Text(LocalizedStringKey(usesCreatorDefault ? "Default from creator" : "Custom on this device"))
-                    }
+                        CalendarColorSelectionView(selectedColor: $selectedColor,
+                            defaultColor: AppLocalCalendarStore.color(calendar?.colorHex ?? "#0088FF"), usesDefault: $usesCreatorDefault)
+                    } else { CalendarColorSelectionView(selectedColor: $selectedColor) }
                 }
-
-                if let calendar, calendar.origin == .received {
-                    Section {
-                        LabeledContent("Access") {
-                            Text(calendar.access.title)
-                                .foregroundStyle(.secondary)
-                        }
-                        if let email = calendar.remoteOwnerEmail, !email.isEmpty {
-                            LabeledContent("Owner", value: email)
-                        }
-                    }
-                }
-
                 if calendar?.isPersonalCloud == true {
                     Section {
-                        Label("Web & Events Sync", systemImage: "icloud.fill")
-                            .foregroundStyle(.secondary)
+                        Label("Web & Events Sync", systemImage: "icloud.fill").foregroundStyle(.secondary)
                     } footer: {
                         Text("Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links.")
-                    }
-                } else {
-                    Section {
-                        Button(role: .destructive) {
-                            showDeleteConfirmation = true
-                        } label: {
-                            Text(LocalizedStringKey(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar"))
-                                .frame(maxWidth: .infinity)
-                        }
-                        .disabled(isDeleting)
-
-                        if let errorMessage {
-                            Label(errorMessage, systemImage: "exclamationmark.circle.fill")
-                                .font(.footnote)
-                                .foregroundStyle(.red)
-                        }
                     }
                 }
             }
@@ -219,7 +175,7 @@ struct AppLocalCalendarEditView: View {
         if calendar.origin == .received {
             store.setLocalColorOverride(usesCreatorDefault ? nil : selectedColor, calendarID: calendarID)
             if canEditMetadata {
-                var updated = calendar
+                var updated = store.calendar(id: calendarID) ?? calendar
                 updated.title = calendarName.trimmingCharacters(in: .whitespacesAndNewlines)
                 store.upsertCalendar(updated)
             }

@@ -7,7 +7,7 @@ struct MacCalendarProviderSections: View {
     @ObservedObject var store: MacTabletCalendarStore
     @ObservedObject var providers: MacCalendarProviderStore
     let editCalendar: (MacCalendarEditorTarget) -> Void
-    let shareCalendar: (EKCalendar) -> Void
+    @State private var sharing: GoogleSharingTarget?
     @State private var collapsed: Set<String> = []
     @State private var disconnecting: MacCalendarProviderStore.Account?
     @State private var error: String?
@@ -16,6 +16,11 @@ struct MacCalendarProviderSections: View {
         VStack(alignment: .leading, spacing: 12) {
             providerSection("google", title: "Google calendars")
             providerSection("microsoft", title: "Microsoft calendars")
+        }
+        .appSheet(item: $sharing) { target in
+            GoogleCalendarSharingView(viewModel: MacGoogleCalendarSharingAdapter(providers: providers, accountID: target.account.id),
+                googleCalID: target.remoteID, user: target.account, calendarTitle: target.title)
+                .calendarSharingSheetSize()
         }
         .alert("Unable to Sign Out", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
             Button("OK", role: .cancel) { error = nil }
@@ -50,7 +55,11 @@ struct MacCalendarProviderSections: View {
                             isSelected: store.visibleCalendarIDs.contains(calendar.calendarIdentifier),
                             toggleAction: store.toggleCalendar, editAction: {}, showEditButton: false,
                             showShareButton: provider == "google" && store.canManage(calendar),
-                            shareAction: { shareCalendar(calendar) })
+                            shareAction: {
+                                guard let record = store.local.record(for: calendar),
+                                      let remoteID = providers.remoteCalendarID(for: record.id) else { return }
+                                sharing = GoogleSharingTarget(account: account, remoteID: remoteID, title: calendar.title)
+                            })
                     }
                     if provider == "google" {
                         Button("Add Google Calendar") {
@@ -74,6 +83,9 @@ struct MacCalendarProviderSections: View {
                                 .resizable().frame(width: 28, height: 28)
                         }
                         Text(account.email).textSelection(.enabled)
+                        if providers.syncingAccountIDs.contains(account.id) {
+                            ProgressView().controlSize(.small)
+                        }
                     }
                 }
                 .disclosureGroupStyle(AppCalendarDisclosureStyle())
@@ -81,6 +93,13 @@ struct MacCalendarProviderSections: View {
                 .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
             }
         }
+    }
+
+    private struct GoogleSharingTarget: Identifiable {
+        let account: MacCalendarProviderStore.Account
+        let remoteID: String
+        let title: String
+        var id: String { account.id + ":" + remoteID }
     }
 
     private func calendars(for account: MacCalendarProviderStore.Account) -> [EKCalendar] {
