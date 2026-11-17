@@ -1195,3 +1195,27 @@
 "Open Sign-In in Browser" = "Отвори входа в браузъра";
 
 "Only owners can manage event access." = "Само собствениците могат да управляват достъпа до събитието.";
+
+/* Subscription offers and code redemption */
+"Choose your Cloud Calendars plan" = "Изберете своя план за Cloud Calendars";
+"Redeem Offer Code" = "Осребряване на код";
+"Introductory offer" = "Въвеждаща оферта";
+"Welcome back offer" = "Оферта за завръщане";
+"Free" = "Безплатно";
+"%@ free" = "%@ безплатно";
+"%@ every %@ for %@" = "%@ на всеки %@ за %@";
+"%@ for %@" = "%@ за %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "След това %@ на всеки %@. Подновява се автоматично. Можете да прекратите по всяко време.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ на всеки %@. Подновява се автоматично. Можете да прекратите по всяко време.";
+"Offer ends in" = "Офертата изтича след";
+"Get Offer" = "Вземете офертата";
+"Starts at next renewal" = "Започва при следващото подновяване";
+"Expires on %@" = "Изтича на %@";
+"This offer or plan has changed. Review the updated price and try again." = "Офертата или планът е променен. Прегледайте актуалната цена и опитайте отново.";
+"Purchase awaiting approval." = "Покупката очаква одобрение.";
+"Loading plans..." = "Зареждане на плановете…";
+"No plans available at the moment." = "В момента няма налични планове.";
+"Plans" = "Планове";
+"Restoring purchases..." = "Възстановяване на покупките…";
+
+"Open Web Calendar" = "Отвори уеб календара";

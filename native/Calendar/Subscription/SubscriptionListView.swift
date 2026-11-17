@@ -1,247 +1,105 @@
 import SwiftUI
 import StoreKit
-import SafariServices
 
 struct SubscriptionListView: View {
-    let title: String
+    let category: SubscriptionCategory
     let products: [Product]
     @Binding var selectedProductID: String?
-    @StateObject private var manager = SubscriptionManager.shared
-    @State private var presentedURL: URL?
+    @ObservedObject private var manager = SubscriptionManager.shared
+
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                // Сравняваме вече локализирани заглавия
-                if title == "Advance Plans"{
-                    AdvanceSubscriptionView()
-                    
-                }else if title == "Premium Plans"{
-                    PremiumSubscriptionView()
+        VStack(spacing: 20) {
+            SubscriptionFeaturesView(category: category)
+            activeStatus
+            if manager.isLoading && products.isEmpty {
+                VStack(spacing: 12) {
+                    ProgressView().tint(SubscriptionPalette.pro)
+                    Text("Loading plans...").font(.subheadline).foregroundStyle(SubscriptionPalette.secondaryText)
+                }.frame(maxWidth: .infinity).padding(28)
+            } else if products.isEmpty {
+                SubscriptionPanel {
+                    Label("Plans", systemImage: "wifi.exclamationmark").font(.headline)
+                    Text("No plans available at the moment.").foregroundStyle(SubscriptionPalette.secondaryText)
+                    if let error = manager.productLoadError { Text(error).font(.caption).foregroundStyle(SubscriptionPalette.secondaryText) }
+                    SubscriptionActionButton(title: "Retry", icon: "arrow.clockwise") { Task { await manager.loadProducts() } }
                 }
-                
-                LazyVGrid(
-                    columns: Array(
-                        repeating: GridItem(.flexible(), spacing: 10),
-                        count: min(max(products.count, 1), 2)
-                    ),
-                    spacing: 10
-                ) {
+            } else {
+                VStack(spacing: 14) {
                     ForEach(products) { product in
-                        SubscriptionCard(
-                            product: product,
-                            isActive: manager.isCurrentPlan(product),
-                            isSelected: product.id == selectedProductID,
-                            expirationDate: manager.expirationDates[product.id]
-                        ) {
-                            selectedProductID = product.id
+                        SubscriptionCard(product: product, isActive: manager.isCurrentPlan(product),
+                                         isSelected: selectedProductID == product.id,
+                                         expirationDate: manager.displayedExpirationDate(for: product),
+                                         isScheduled: manager.scheduledProductIDs.contains(product.id),
+                                         offer: manager.offer(for: product), campaignEnd: manager.campaignEnd(for: product)) {
+                            withAnimation { selectedProductID = product.id }
                         }
-                        .frame(maxWidth: .infinity)
+                        .disabled(!manager.canPurchase(product) || manager.isPurchasing)
                     }
-                }
-                .padding(.horizontal)
-                .padding(.top, -20)
-
-                // Every plan sits in the same subscription group, so switching
-                // is always available. Saying so on the paywall keeps a
-                // subscriber from assuming the duration they did not pick is
-                // out of reach once one card is marked as current.
-                Text(NSLocalizedString("You can change your plan or billing period at any time.",
-                                       comment: "Note that all plans belong to one subscription group"))
-                    .font(CalendarTypography.caption)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    .padding(.top, 12)
-
-                ActiveSubscriptionStatusView()
-                
-                if !manager.isDebugPremiumEnabled,
-                   let id = selectedProductID,
-                   let product = manager.products.first(where: { $0.id == id }),
-                   !manager.isCurrentPlan(product) {
-                    PurchaseSectionView(selectedProductID: id)
-                        .padding(.horizontal)
-                }
-                // Вашият HStack с Manage и Restore бутони...
-                HStack(alignment: .top, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 10){
-                        Button {
-                            Task { await manager.openManageSubscriptions() }
-                        } label: {
-                            Label(
-                                NSLocalizedString("Manage Subscription",
-                                                  comment: "Button to open subscription management"),
-                                systemImage: "creditcard")
-                        }
-                        .font(CalendarTypography.footnote)
-                        .foregroundStyle(Color.appBlue)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Button {
-                            presentedURL = URL(string: "https://www.cloud-calendars.com/privacy-policy")!
-                        } label: {
-                            Label(
-                                NSLocalizedString("Privacy Policy",
-                                                  comment: "Open privacy policy link"),
-                                systemImage: "lock.shield")
-                        }
-                        .font(CalendarTypography.footnote)
-                        .foregroundStyle(Color.appBlue)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        
+                    if let product = products.first(where: { $0.id == selectedProductID }) {
+                        purchaseSection(product, quote: manager.quote(for: product))
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    VStack(alignment: .leading, spacing: 10){
-                        Button {
-                            Task { await manager.restorePurchases() }
-                        } label: {
-                            Label(
-                                NSLocalizedString("Restore Purchases",
-                                                  comment: "Restore"),
-                                systemImage: "arrow.trianglehead.2.clockwise")
-                        }
-                        .font(CalendarTypography.footnote)
-                        .foregroundStyle(Color.appBlue)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Button {
-                            presentedURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
-                        } label: {
-                            Label(
-                                NSLocalizedString("Terms of Service",
-                                                  comment: "Open terms of service link"),
-                                systemImage: "doc.text")
-                        }
-                        .font(CalendarTypography.footnote)
-                        .foregroundStyle(Color.appBlue)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("You can change your plan or billing period at any time.")
+                        .font(.caption).foregroundStyle(SubscriptionPalette.secondaryText)
+                        .multilineTextAlignment(.center)
                 }
-                .padding(.horizontal, 25)
-                .padding(.top, 10)
             }
-            #if os(iOS)
-            .appSheet(item: $presentedURL) { url in SafariView(url: url) }
-            #else
-            .onChange(of: presentedURL) { _, url in
-                if let url { NSWorkspace.shared.open(url); presentedURL = nil }
-            }
-            #endif
-        }
-        Spacer()
-    }
-    
-
-    @ViewBuilder
-    private func ActiveSubscriptionStatusView() -> some View {
-        if let activeID = manager.purchasedProductIDs.first,
-           let product = manager.products.first(where: { $0.id == activeID }),
-           let expiry = manager.expirationDates[activeID] {
-
-            let planTypeKey = manager.subscriptionStatus.rawValue
-
-            // 2. Ръчно правим mapping unit → String ключ, точно както в periodUnitOnly, но като String
-            let periodKey: String = {
-                guard let unit = product.subscription?.subscriptionPeriod.unit else { return "" }
-                switch unit {
-                case .day:   return "Daily"
-                case .week:  return "Weekly"
-                case .month: return "Monthly"
-                case .year:  return "Yearly"
-                @unknown default: return "Recurring"
-                }
-            }()
-
-            // 3. Локализираме двата ключа
-            let planTypeLocalized = NSLocalizedString(
-                planTypeKey,
-                comment: "Subscription plan type"
-            )
-            let periodLocalized = NSLocalizedString(
-                periodKey,
-                comment: "Subscription period unit"
-            )
-
-            VStack(alignment: .leading, spacing: 10) {
-                // Първата част – Subscription status
-                Text(
-                     localizedFormat(NSLocalizedString(
-                             "SubscriptionStatus",
-                             comment: "Status without the"
-                         ),
-                         planTypeLocalized,
-                         periodLocalized
-                     )
-                 )
-                 .font(CalendarTypography.headline)
-
-                 Text(
-                     localizedFormat(NSLocalizedString(
-                             "RenewsOn",
-                             comment: "Label for renewal date"
-                         ),
-                         DateFormatter.localizedString(
-                             from: expiry,
-                             dateStyle: .medium,
-                             timeStyle: .none
-                         )
-                     )
-                 )
-                 .font(CalendarTypography.subheadline)
-                 .foregroundColor(.secondary)
-            }
-            .padding(.top, 10)
-            .padding(.vertical)
-
         }
     }
 
-
-    @ViewBuilder
-    private func PurchaseSectionView(selectedProductID: String?) -> some View {
-        if let id = selectedProductID,
-           let product = manager.products.first(where: { $0.id == id }) {
-            
-            VStack(spacing: 15) {
-                Button {
-                    Task { await manager.purchase(product) }
-                } label: {
-                    let labelKey: String = {
-                        if manager.hasActiveSubscription {
-                            return NSLocalizedString("Change Plan",
-                                                     comment: "Button to move to another plan or duration")
-                        }
-                        return NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
-                    }()
-                    
-                    Text(labelKey)
-                        .font(CalendarTypography.headline.weight(.semibold))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.85)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
+    @ViewBuilder private var activeStatus: some View {
+        if let product = manager.sortedProducts.first(where: { manager.isCurrentPlan($0) }),
+           let expiry = manager.displayedExpirationDate(for: product) {
+            HStack(spacing: 10) {
+                Image(systemName: "checkmark.seal.fill")
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(localizedFormat(NSLocalizedString("SubscriptionStatus", comment: ""),
+                                         NSLocalizedString(product.id.contains("Premium") ? "Premium" : "Advanced", comment: ""), product.periodUnitOnly))
+                        .font(.system(size: 15, weight: .bold, design: .rounded))
+                    Text(localizedFormat(NSLocalizedString(manager.isDisplayedRenewing(product) ? "RenewsOn" : "Expires on %@", comment: ""),
+                                         DateFormatter.localizedString(from: expiry, dateStyle: .medium, timeStyle: .none)))
+                        .font(.caption)
                 }
             }
-            .padding(.vertical)
+            .foregroundStyle(SubscriptionPalette.success)
+            .frame(maxWidth: .infinity, alignment: .leading).padding(16)
+            .background(SubscriptionPalette.success.opacity(0.12), in: RoundedRectangle(cornerRadius: 20))
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(SubscriptionPalette.success.opacity(0.35)))
         }
+    }
+
+    private func purchaseSection(_ product: Product, quote: SubscriptionPurchaseQuote) -> some View {
+        VStack(spacing: 12) {
+            Button {
+                Task { await manager.purchase(product, confirming: quote) }
+            } label: {
+                HStack(spacing: 9) {
+                    if manager.isPurchasing { ProgressView().tint(.white) }
+                    else { Image(systemName: quote.offer == nil ? "creditcard" : "gift.fill") }
+                    Text(manager.isCurrentPlan(product) ? "Current Plan" : manager.scheduledProductIDs.contains(product.id) ? "Starts at next renewal" : purchaseTitle(quote))
+                }
+                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 14).padding(.vertical, 14)
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .background(Color.accentColor, in: Capsule())
+                .contentShape(Capsule())
+            }
+            .buttonStyle(.plain).disabled(manager.isPurchasing || manager.isRestoring || !manager.canPurchase(product))
+            .shadow(color: SubscriptionPalette.pro.opacity(0.42), radius: 12, y: 5)
+            .accessibilityIdentifier("subscription.purchase")
+            if let offer = quote.offer {
+                let details = SubscriptionOfferPresentation(product: product, offer: offer)
+                Text(details.summary + ". " + details.renewalTerms).font(.caption).foregroundStyle(SubscriptionPalette.secondaryText)
+            } else if let subscription = product.subscription {
+                Text(localizedFormat(NSLocalizedString("%@ every %@. Auto-renews. Cancel anytime.", comment: ""),
+                                     product.displayPrice, SubscriptionOfferPresentation.duration(subscription.subscriptionPeriod)))
+                    .font(.caption).foregroundStyle(SubscriptionPalette.secondaryText)
+            }
+        }.padding(.top, 10)
+    }
+    private func purchaseTitle(_ quote: SubscriptionPurchaseQuote) -> LocalizedStringKey {
+        if manager.hasActiveSubscription || manager.isDebugPremiumEnabled { return "Change Plan" }
+        if let offer = quote.offer { return offer.paymentMode == .freeTrial ? "Start Free Trial" : "Get Offer" }
+        return "Subscribe Now"
     }
 }

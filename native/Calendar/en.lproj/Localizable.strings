@@ -1199,3 +1199,27 @@
 "Open Sign-In in Browser" = "Open Sign-In in Browser";
 
 "Only owners can manage event access." = "Only owners can manage event access.";
+
+/* Subscription offers and code redemption */
+"Choose your Cloud Calendars plan" = "Choose your Cloud Calendars plan";
+"Redeem Offer Code" = "Redeem Offer Code";
+"Introductory offer" = "Introductory offer";
+"Welcome back offer" = "Welcome back offer";
+"Free" = "Free";
+"%@ free" = "%@ free";
+"%@ every %@ for %@" = "%@ every %@ for %@";
+"%@ for %@" = "%@ for %@";
+"Then %@ every %@. Auto-renews. Cancel anytime." = "Then %@ every %@. Auto-renews. Cancel anytime.";
+"%@ every %@. Auto-renews. Cancel anytime." = "%@ every %@. Auto-renews. Cancel anytime.";
+"Offer ends in" = "Offer ends in";
+"Get Offer" = "Get Offer";
+"Starts at next renewal" = "Starts at next renewal";
+"Expires on %@" = "Expires on %@";
+"This offer or plan has changed. Review the updated price and try again." = "This offer or plan has changed. Review the updated price and try again.";
+"Purchase awaiting approval." = "Purchase awaiting approval.";
+"Loading plans..." = "Loading plans...";
+"No plans available at the moment." = "No plans available at the moment.";
+"Plans" = "Plans";
+"Restoring purchases..." = "Restoring purchases...";
+
+"Open Web Calendar" = "Open Web Calendar";

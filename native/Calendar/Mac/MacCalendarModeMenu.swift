@@ -6,9 +6,29 @@ struct MacCalendarModeMenu: View {
     let selectedTab: Int
     let onSelect: (Int) -> Void
     var body: some View {
-        MacChoiceMenu(items: MacCalendarMode.allCases.map {
+        MacChoiceMenu(items: MacCalendarMode.allCases.filter { $0 != .menu }.map {
             .init(id: $0.rawValue, title: $0.title, symbol: $0.symbol)
         }, selection: selectedTab, onSelect: onSelect)
+    }
+}
+
+/// Menu navigation stays separate from the calendar display modes on Mac.
+struct MacCalendarMenuButton: View {
+    let tint: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "gearshape")
+                .font(.system(size: 20, weight: .regular))
+                .frame(width: 30, height: 30)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(tint)
+        .help("Menu")
+        .accessibilityLabel("Menu")
+        .accessibilityIdentifier("calendar.mac.openMenu")
     }
 }
 

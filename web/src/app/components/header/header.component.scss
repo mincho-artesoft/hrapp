@@ -40,10 +40,12 @@
 }
 
 .hdr__inner {
+  width: 100%;
   height: 100%;
+  padding-inline: clamp(1rem, 2vw, 2rem);
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 
 /* ---------------------------------------------------------------
@@ -51,6 +53,8 @@
 --------------------------------------------------------------- */
 .brand {
   display: inline-flex;
+  flex-shrink: 0;
+  white-space: nowrap;
   align-items: center;
   gap: 0.7rem;
   margin-right: auto;
@@ -89,11 +93,12 @@
   display: flex;
   gap: 0.25rem;
 
-  @include upto($bp-md) { display: none; }
+  @include upto($bp-xl) { display: none; }
 }
 
 .hdr__link {
   position: relative;
+  white-space: nowrap;
   padding: 0.5rem 0.85rem;
   border-radius: var(--r-pill);
   font-size: 0.88rem;
@@ -133,6 +138,7 @@
 --------------------------------------------------------------- */
 .hdr__actions {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.7rem;
 }
@@ -157,7 +163,7 @@
   place-items: center;
   @include focus-ring;
 
-  @include upto($bp-md) { display: grid; }
+  @include upto($bp-xl) { display: grid; }
 
   span,
   span::before,
@@ -214,7 +220,7 @@
     visibility: visible;
   }
 
-  @include from($bp-md) { display: none; }
+  @include from($bp-xl) { display: none; }
 }
 
 .sheet__nav {

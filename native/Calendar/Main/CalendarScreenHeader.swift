@@ -54,6 +54,7 @@ struct CalendarScreenHeader: View {
                     .accessibilityIdentifier("calendar-header-search")
                 #if os(macOS)
                 MacCalendarViewPicker(selectedTab: currentView, tint: tint, onSelect: onViewChange)
+                MacCalendarMenuButton(tint: tint) { onViewChange(MacCalendarMode.menu.rawValue) }
                 #else
                 Menu {
                     Picker("", selection: Binding(get: { currentView }, set: { onViewChange($0) })) {

@@ -58,7 +58,7 @@ struct CalendarMacRoot: View {
                             Color.black.opacity(0.001).contentShape(Rectangle())
                                 .onTapGesture { viewMenuIsOpen = false; rangePickerIsOpen = false }
                         }
-                        if viewMenuIsOpen { viewMenu.padding(.top, 48).padding(.trailing, 14) }
+                        if viewMenuIsOpen { viewMenu.padding(.top, 48).padding(.trailing, 53) }
                         if rangePickerIsOpen {
                             MacCalendarDateRangePicker(start: selectedDate, end: rangeEnd, onDismiss: { rangePickerIsOpen = false }) { start, end in
                                 selectedDate = start
@@ -148,9 +148,6 @@ struct CalendarMacRoot: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel("Choose date range")
                 .accessibilityValue(multiDayRangeTitle)
-            case 7:
-                Text("Menu")
-                    .font(CalendarTypography.title2.bold())
             default:
                 EmptyView()
             }
@@ -180,7 +177,7 @@ struct CalendarMacRoot: View {
             Button {
                 viewMenuIsOpen.toggle()
             } label: {
-                Image(systemName: icon(for: selectedTab))
+                Image(systemName: icon(for: selectedTab == 7 ? lastCalendarTab : selectedTab))
                     .font(.system(size: 20, weight: .regular))
                     .frame(width: 30, height: 30)
                     .contentShape(Rectangle())
@@ -190,7 +187,11 @@ struct CalendarMacRoot: View {
             .help("Calendar views")
             .accessibilityLabel("Calendar views")
 
-
+            MacCalendarMenuButton(tint: .appBlue) {
+                selectedTab = 7
+                viewMenuIsOpen = false
+                rangePickerIsOpen = false
+            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)

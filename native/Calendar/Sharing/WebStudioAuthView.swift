@@ -353,28 +353,46 @@ struct WebStudioAuthSheetView: View {
     }
 
     private var headerCard: some View {
-        HStack(spacing: 14) {
-            Image(systemName: "lock.laptopcomputer")
-                .font(CalendarTypography.title2.weight(.semibold))
-                .foregroundStyle(.blue)
-                .frame(width: 48, height: 48)
-                .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 14) {
+                Image(systemName: "lock.laptopcomputer")
+                    .font(CalendarTypography.title2.weight(.semibold))
+                    .foregroundStyle(.blue)
+                    .frame(width: 48, height: 48)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
 
-            VStack(alignment: .leading, spacing: 3) {
-                Text("Cloud Calendars Web")
-                    .font(CalendarTypography.headline)
-                Text(
-                    LocalizedStringKey(
-                        activeChallenge != nil && !approvedSuccessfully
-                            ? "Confirm sign-in on your browser with your Cloud Calendars account."
-                            : "Sign in at cloud-calendars.com by QR scan or with your 6-digit security code."
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Cloud Calendars Web")
+                        .font(CalendarTypography.headline)
+                    Text(
+                        LocalizedStringKey(
+                            activeChallenge != nil && !approvedSuccessfully
+                                ? "Confirm sign-in on your browser with your Cloud Calendars account."
+                                : "Sign in at cloud-calendars.com by QR scan or with your 6-digit security code."
+                        )
                     )
-                )
-                .font(CalendarTypography.footnote)
-                .foregroundStyle(.secondary)
+                    .font(CalendarTypography.footnote)
+                    .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 0)
             }
 
-            Spacer(minLength: 0)
+            Link(destination: URL(string: "https://www.cloud-calendars.com/calendar/")!) {
+                HStack(spacing: 10) {
+                    Label("Open Web Calendar", systemImage: "globe")
+                    Spacer(minLength: 0)
+                    Image(systemName: "arrow.up.right")
+                }
+                .font(CalendarTypography.subheadline.weight(.semibold))
+                .foregroundStyle(.blue)
+                .padding(13)
+                .frame(maxWidth: .infinity)
+                .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("webAuth.openWebCalendar")
         }
         .padding(16)
         .background(CalendarSurfaceColors.secondaryGrouped, in: RoundedRectangle(cornerRadius: 18, style: .continuous))

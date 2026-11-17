@@ -2029,9 +2029,9 @@
   .studio-bar__right { gap: 6px; }
 }
 
-/* The calendar route uses the app workspace instead of the marketing page shell. */
+/* Keep the full-width workspace below the fixed site header. */
 .studio {
-  padding-top: 12px;
+  padding-top: calc(var(--header-h) + 12px);
   .shell { width: 100%; padding-left: 16px; padding-right: 16px; max-width: none; }
   .cal-shell { gap: 0; grid-template-columns: minmax(280px, 28%) minmax(0, 1fr); }
   .cal-side { order: 0; padding: 16px; border-right: 1px solid var(--cal-line); }
