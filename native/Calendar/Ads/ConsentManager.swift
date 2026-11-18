@@ -1,5 +1,4 @@
 import UIKit
-import AppTrackingTransparency
 import UserMessagingPlatform
 import GoogleMobileAds
 
@@ -77,12 +76,6 @@ final class ConsentManager: ObservableObject {
 
         if let failure = await loadAndPresentFormIfRequired(from: presenter) {
             print("❌ Consent form failed: \(failure)")
-        }
-
-        if Bundle.main.object(forInfoDictionaryKey: "NSUserTrackingUsageDescription") != nil,
-           ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-            try? await Task.sleep(for: .milliseconds(300))
-            _ = await ATTrackingManager.requestTrackingAuthorization()
         }
 
         // Resolve StoreKit before requests; cached .base is not proof of entitlement.
