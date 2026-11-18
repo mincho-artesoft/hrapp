@@ -444,3 +444,10 @@ html[data-theme='light'] ::selection {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   user-select: none;
 }
+
+/* Suppress any Google Auto Ads placements on interactive calendar / booking routes */
+body.cc-no-ads ins.adsbygoogle,
+body.cc-no-ads .google-auto-placed,
+body.cc-no-ads iframe[id^="google_ads_iframe"] {
+  display: none !important;
+}

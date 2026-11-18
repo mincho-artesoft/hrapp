@@ -1,11 +1,11 @@
 {
-  "sitemapPages": 462,
-  "parsedPages": 462,
-  "articleSchemas": 380,
-  "faqSchemas": 406,
+  "sitemapPages": 483,
+  "parsedPages": 483,
+  "articleSchemas": 400,
+  "faqSchemas": 426,
   "softwareApplicationSchemas": 30,
   "appFactsExpected": {
-    "APP_VERSION": "1.7.3",
+    "APP_VERSION": "1.8.1",
     "APP_SIZE_MB": "49.8",
     "APP_RATING": "4.5",
     "APP_RATING_COUNT": "12"
