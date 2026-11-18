@@ -1,9 +1,13 @@
-import { isDevMode } from '@angular/core';
-import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { Injectable, InjectionToken, isDevMode, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { SITE_URL } from './app-facts';
 import { detectBrowserTimeZone } from './ios-event-palette';
 
-const API_BASE = isDevMode() ? 'https://storage.wonek.com/cloud-calendars-debug' : 'https://api.cloud-calendars.com';
+export const CALENDAR_DEBUG_API = 'https://storage.wonek.com/cloud-calendars-debug';
+export const CALENDAR_API_BASE = new InjectionToken<string>('Calendar API base URL', {
+  providedIn: 'root',
+  factory: () => isDevMode() ? CALENDAR_DEBUG_API : 'https://api.cloud-calendars.com',
+});
 const SESSION_STORAGE_KEY = 'cc_web_session_v1';
 
 export class CalendarApiError extends Error {
@@ -24,6 +28,7 @@ export interface AuthProvidersInfo {
   googleOfflineCapable?: boolean;
   microsoftWebClientId: string | null;
   microsoftTenant: string;
+  appleWebClientId?: string | null;
   emailOtpEnabled: boolean;
   featuredDemoHandle: string;
 }
@@ -103,30 +108,38 @@ export interface UserProfile {
   webAccess?: WebStudioAccess;
 }
 
+export interface CalendarRepeatRule {
+  frequency: 'daily'|'weekly'|'monthly'|'yearly'; interval?:number; endDate?:string; occurrenceCount?:number;
+  daysOfTheWeek?:Array<{weekday:number;weekNumber?:number}>; daysOfTheMonth?:number[];
+  monthsOfTheYear?:number[]; weeksOfTheYear?:number[]; daysOfTheYear?:number[]; setPositions?:number[];
+}
 export interface WebCalendarEventDetails {
+  structuredLocation?: { title: string; latitude?: number | null; longitude?: number | null; radius: number } | null;
   notes?: string;
   timeZone?: string;
   url?: string;
   videoCallURL?: string;
+  travelTime?:number;
+  attachments?:Array<{id:string;fileName:string;contentType?:string;dataBase64:string}>;
   color?: string;
   availability?: 'busy' | 'free' | 'tentative' | 'unavailable';
   alarms?: Array<{ relativeOffsetSeconds: number }>;
-  recurrenceRules?: Array<{
-    frequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
-    interval?: number;
-    endDate?: string;
-    occurrenceCount?: number;
-  }>;
+  recurrenceRules?: CalendarRepeatRule[];
   organizer?: { name?: string; email?: string };
   attendees?: Array<{ name?: string; email?: string; status?: string }>;
 }
 
 export interface DeviceCalendar {
   id: string; title: string; source: string; color: string;
+  providerMirrorID?: string;
+  provider?:'google'|'microsoft';remoteID?:string;providerOwner?:boolean;etag?:string;primary?:boolean;
   deviceName: string; allowsChanges: boolean; updatedAt?: string;
+  accountLocal?: boolean; sharingCalendarID?: string; ownerId?: string; ownerEmail?: string;
+  access?: 'reader' | 'writer' | 'owner'; calendarKind?: string; available?: boolean;
 }
 
 export interface WebCalendarEvent {
+  provider?:'google'|'microsoft';remoteID?:string;providerCalendarID?:string;providerEtag?:string;
   calendarId?: string;
   calendarTitle?: string;
   id: string;
@@ -155,6 +168,8 @@ export interface WebCalendarEvent {
   sourceKind?: 'owned' | 'shared' | 'external';
   externalSource?: string;
   readOnly?: boolean;
+  receivedFeedId?: string;
+  receivedAccess?: 'reader' | 'writer' | 'owner';
 }
 
 export interface ExternalBusyState {
@@ -372,12 +387,14 @@ export interface AdminOverviewResponse {
     googleWebConfigured: boolean;
     googleWebSecretConfigured?: boolean;
     microsoftWebConfigured: boolean;
+    appleWebConfigured?: boolean;
   };
   settings: {
     googleWebClientId: string;
     googleWebSecretConfigured?: boolean;
     microsoftWebClientId: string;
     microsoftTenant: string;
+    appleWebClientId?: string;
     featuredDemoHandle: string;
   };
   hosts: Array<{
@@ -414,11 +431,17 @@ export interface AdminOverviewResponse {
 declare global {
   interface Window {
     google?: any;
+    AppleID?: any;
   }
 }
 
 @Injectable({ providedIn: 'root' })
 export class CalendarPlatformApiService {
+  readonly apiBaseURL = inject(CALENDAR_API_BASE);
+  // Existing localhost sessions already belong to Debug. On the public origin the legacy key is production.
+  private readonly sessionKey = this.apiBaseURL === CALENDAR_DEBUG_API && !isDevMode()
+    ? SESSION_STORAGE_KEY + '_debug' : SESSION_STORAGE_KEY;
+
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
@@ -426,6 +449,7 @@ export class CalendarPlatformApiService {
   readonly profile = signal<UserProfile | null>(null);
   readonly providers = signal<AuthProvidersInfo | null>(null);
   readonly loadingSession = signal<boolean>(false);
+  readonly loadingProfile = signal(false);
 
   readonly isAuthenticated = computed(() => Boolean(this.token() && this.profile()));
   readonly isSignedInWithAccount = computed(() => {
@@ -435,6 +459,7 @@ export class CalendarPlatformApiService {
 
   private initPromise: Promise<void> | null = null;
   private gisScriptPromise: Promise<void> | null = null;
+  private appleScriptPromise: Promise<void> | null = null;
 
   constructor() {
     if (this.isBrowser) {
@@ -448,7 +473,7 @@ export class CalendarPlatformApiService {
   private readSavedToken(): string | null {
     if (!this.isBrowser) return null;
     try {
-      return localStorage.getItem(SESSION_STORAGE_KEY);
+      return localStorage.getItem(this.sessionKey);
     } catch {
       return null;
     }
@@ -457,8 +482,8 @@ export class CalendarPlatformApiService {
   private writeSavedToken(tok: string | null): void {
     if (!this.isBrowser) return;
     try {
-      if (tok) localStorage.setItem(SESSION_STORAGE_KEY, tok);
-      else localStorage.removeItem(SESSION_STORAGE_KEY);
+      if (tok) localStorage.setItem(this.sessionKey, tok);
+      else localStorage.removeItem(this.sessionKey);
     } catch {
       // ignore storage quota / private mode
     }
@@ -467,21 +492,22 @@ export class CalendarPlatformApiService {
   async ensureInitialized(): Promise<void> {
     if (!this.isBrowser) return;
     if (this.initPromise) return this.initPromise;
-    this.initPromise = (async () => {
-      this.loadingSession.set(true);
-      try {
-        await Promise.all([
-          this.loadAuthProviders().catch(() => null),
-          this.token() ? this.refreshProfile().catch(() => this.signOut()) : Promise.resolve(),
-        ]);
-      } finally {
-        this.loadingSession.set(false);
-      }
-    })();
-    return this.initPromise;
+    if (this.providers() && (!this.token() || this.profile())) return;
+    this.loadingSession.set(true);
+    this.initPromise = Promise.all([
+      this.providers() ? Promise.resolve() : this.loadAuthProviders().catch(() => null),
+      this.token() && !this.profile() ? this.refreshProfile().catch(() => null) : Promise.resolve(),
+    ]).then(() => {});
+    try {
+      await this.initPromise;
+    } finally {
+      this.loadingSession.set(false);
+      this.initPromise = null;
+    }
   }
 
   signOut(): void {
+    this.loadingProfile.set(false);
     this.token.set(null);
     this.profile.set(null);
     this.writeSavedToken(null);
@@ -505,11 +531,12 @@ export class CalendarPlatformApiService {
       headers['Authorization'] = `Bearer ${tok}`;
     }
 
-    const res = await fetch(`${API_BASE}${path}`, {
+    const res = await fetch(`${this.apiBaseURL}${path}`, {
       method: opts.method ?? 'GET',
       headers,
       body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
       cache: 'no-store',
+      signal: AbortSignal.timeout(30_000),
     });
 
     let data: any = null;
@@ -523,7 +550,7 @@ export class CalendarPlatformApiService {
     }
 
     if (!res.ok) {
-      if (res.status === 401 && opts.auth) {
+      if (res.status === 401 && opts.auth && this.token() === tok) {
         this.signOut();
       }
       const message =
@@ -540,6 +567,10 @@ export class CalendarPlatformApiService {
   async loadAuthProviders(): Promise<AuthProvidersInfo> {
     const info = await this.request<AuthProvidersInfo>('/auth/providers');
     this.providers.set(info);
+    if (info.appleWebClientId && this.isBrowser && window.location.origin === SITE_URL) {
+      // Have the SDK ready before the click so Safari retains user activation.
+      void this.loadAppleAuthScript().catch(() => {});
+    }
     return info;
   }
 
@@ -596,9 +627,9 @@ export class CalendarPlatformApiService {
     return this.refreshProfile();
   }
 
-  /** Resolves a Google or Microsoft token onto the unified CloudCalendars principal graph (`POST /resolve`). */
+  /** Resolves a Google, Apple, or Microsoft token onto the unified CloudCalendars principal graph (`POST /resolve`). */
   async signInWithProviderToken(
-    provider: 'google' | 'microsoft',
+    provider: 'google' | 'microsoft' | 'apple',
     idOrAccessToken: string,
     displayName?: string,
   ): Promise<UserProfile> {
@@ -648,6 +679,100 @@ export class CalendarPlatformApiService {
     return this.gisScriptPromise;
   }
 
+  private loadAppleAuthScript(): Promise<void> {
+    if (!this.isBrowser) return Promise.reject(new Error('Browser required'));
+    if (window.AppleID?.auth) return Promise.resolve();
+    if (this.appleScriptPromise) return this.appleScriptPromise;
+
+    this.appleScriptPromise = new Promise<void>((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => resolve();
+      script.onerror = () => {
+        this.appleScriptPromise = null;
+        reject(new Error('Could not load Apple Sign-In SDK.'));
+      };
+      document.head.appendChild(script);
+    });
+    return this.appleScriptPromise;
+  }
+
+  /**
+   * Launches official Sign in with Apple JS popup (`usePopup: true`) for pure account authentication.
+   * Verifies the RS256 `id_token` on `/resolve` (`provider: 'apple'`) so the user enters the exact same
+   * Cloud Calendars principal as on iPhone / iPad / Mac.
+   */
+  async signInWithApplePopup(): Promise<{
+    idToken: string;
+    profile: UserProfile;
+  }> {
+    if (!this.isBrowser) throw new Error('Browser required');
+    const prov = this.providers() ?? (await this.loadAuthProviders());
+    const clientId = (prov.appleWebClientId || '').trim();
+    if (!clientId) {
+      throw new CalendarApiError(
+        400,
+        'Apple Web Services ID is not configured yet. Scan the QR code with the Cloud Calendars app, enter your Apple / iCloud email below for a 6-digit code, or set Apple Web Services ID in /admin/.',
+        'oauth_not_configured',
+      );
+    }
+
+    if (window.location.origin !== SITE_URL) {
+      throw new CalendarApiError(400, 'Apple sign-in is available on www.cloud-calendars.com.', 'apple_registered_domain');
+    }
+    if (!window.AppleID?.auth) await this.loadAppleAuthScript();
+    const stateBytes = new Uint8Array(16);
+    crypto.getRandomValues(stateBytes);
+    const state = `ap_${this.base64UrlEncode(stateBytes)}`;
+    const nonce = this.base64UrlEncode(crypto.getRandomValues(new Uint8Array(32)));
+    const redirectURI = `${SITE_URL}/calendar/`;
+
+    window.AppleID.auth.init({
+      clientId,
+      scope: 'name email',
+      redirectURI,
+      state,
+      nonce,
+      usePopup: true,
+    });
+
+    let resp: any;
+    try {
+      resp = await window.AppleID.auth.signIn();
+    } catch (err: any) {
+      const code = err?.error || '';
+      if (code === 'popup_closed_by_user' || code === 'user_cancelled_authorize') {
+        throw new Error('Apple sign-in popup was closed.');
+      }
+      throw new Error(err?.message || code || 'Apple sign-in failed.');
+    }
+
+    const idToken = resp?.authorization?.id_token;
+    if (!idToken) {
+      throw new Error('No identity token returned by Apple.');
+    }
+
+    const payload = idToken.split('.')[1];
+    if (resp.authorization.state !== state || !payload ||
+        JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/'))).nonce !== nonce) {
+      throw new Error('Apple sign-in response does not match this request. Please try again.');
+    }
+
+    const fullName = [resp?.user?.name?.firstName, resp?.user?.name?.lastName]
+      .map((s) => String(s ?? '').trim())
+      .filter(Boolean)
+      .join(' ');
+
+    const profile = await this.signInWithProviderToken(
+      'apple',
+      idToken,
+      fullName || undefined,
+    );
+    return { idToken, profile };
+  }
+
   /**
    * Launches Google OAuth popup using the CloudCalendars Google Cloud Project (`540859420644`).
    * Requests the minimal least-privilege event scope `https://www.googleapis.com/auth/calendar.events.owned`
@@ -676,7 +801,7 @@ export class CalendarPlatformApiService {
       'openid',
       'email',
       'profile',
-      ...(wantCalendarSync ? ['https://www.googleapis.com/auth/calendar.events.owned'] : []),
+      ...(wantCalendarSync ? ['https://www.googleapis.com/auth/calendar'] : []),
     ].join(' ');
 
     // Path A: Full offline 2-way sync (`initCodeClient` -> `POST /auth/oauth/google-code` -> `refresh_token`)
@@ -958,9 +1083,16 @@ export class CalendarPlatformApiService {
   }
 
   async refreshProfile(): Promise<UserProfile> {
-    const p = await this.request<UserProfile>('/me/profile', { auth: true });
-    this.profile.set(p);
-    return p;
+    const token = this.token();
+    this.loadingProfile.set(true);
+    try {
+      const p = await this.request<UserProfile>('/me/profile', { auth: true });
+      if (this.token() !== token) throw new Error('Sign-in session changed.');
+      this.profile.set(p);
+      return p;
+    } finally {
+      if (this.token() === token) this.loadingProfile.set(false);
+    }
   }
 
   async updateProfile(patch: {
@@ -980,6 +1112,18 @@ export class CalendarPlatformApiService {
   }
 
   // ── Web Calendar Workspace ────────────────────────────────────────────────
+
+  /** Uses the same authenticated endpoints as the native app. Never accepts an external URL. */
+  nativeCalendarRequest<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
+    if (!/^\/(?:events|grants|shared-state|received-invites|event-invitations|icloud-calendars|icloud-calendar|ios\/calendars|identities|auth\/ios-qr|billing\/plans)(?:[/?-]|$)/.test(path)) {
+      return Promise.reject(new Error('Unsupported calendar operation.'));
+    }
+    return this.request<T>(path, { method, body, auth: true });
+  }
+
+  providerCalendarRequest<T>(provider: 'google' | 'microsoft', body: unknown): Promise<T> {
+    return this.request<T>(`/web-calendar/providers/${provider}`, {method: 'POST', body, auth: true});
+  }
 
   async getCalendarState(opts: { sync?: boolean } = {}): Promise<WebCalendarStateResponse> {
     const suffix = opts.sync ? '?sync=1' : '';
@@ -1285,6 +1429,7 @@ export class CalendarPlatformApiService {
     googleWebClientSecret?: string;
     microsoftWebClientId?: string;
     microsoftTenant?: string;
+    appleWebClientId?: string;
     featuredDemoHandle?: string;
   }): Promise<{ settings: AdminOverviewResponse['settings'] }> {
     const res = await this.request<{ settings: AdminOverviewResponse['settings'] }>(

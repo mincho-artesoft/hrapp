@@ -118,9 +118,28 @@
         </div>
       }
 
-      <!-- Right Column: Google / Microsoft / Email -->
+      <!-- Right Column: Apple / Google / Microsoft / Email -->
       <div class="auth-accounts">
         <div class="oauth-grid">
+          @if (appleUsesOtherDomain) {
+            <a class="oauth-row oauth-row--apple" [href]="appleWebUrl"
+               aria-label="Sign in with Apple on www.cloud-calendars.com" title="Sign in on www.cloud-calendars.com">
+              <cc-symbol class="oauth-row__apple-svg" name="apple.logo" />
+              <span class="oauth-row__title">Apple</span>
+            </a>
+          } @else {
+          <button
+            type="button"
+            class="oauth-row oauth-row--apple"
+            [disabled]="busy()"
+            aria-label="Sign in with Apple"
+            (click)="onAppleClick()"
+          >
+            <cc-symbol class="oauth-row__apple-svg" name="apple.logo" />
+            <span class="oauth-row__title">Apple</span>
+          </button>
+          }
+
           <button
             type="button"
             class="oauth-row"
@@ -131,8 +150,8 @@
               class="oauth-row__icon"
               src="icons/google_icon.png"
               alt=""
-              width="20"
-              height="20"
+              width="19"
+              height="19"
               decoding="async"
             />
             <span class="oauth-row__title">Google</span>
@@ -148,8 +167,8 @@
               class="oauth-row__icon oauth-row__icon--ms"
               src="icons/microsoft_icon.png"
               alt=""
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               decoding="async"
             />
             <span class="oauth-row__title">Microsoft</span>

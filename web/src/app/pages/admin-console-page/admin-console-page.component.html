@@ -76,6 +76,9 @@
         <span [class.is-ok]="d.system.microsoftWebConfigured">
           ● Microsoft Web OAuth: {{ d.system.microsoftWebConfigured ? 'Configured' : 'Email OTP Active (Set Client ID below)' }}
         </span>
+        <span [class.is-ok]="d.system.appleWebConfigured">
+          ● Apple Web Sign-In: {{ d.system.appleWebConfigured ? 'Configured' : 'QR / Email OTP Active (Set Services ID below)' }}
+        </span>
       </div>
 
       <!-- Admin Sub-Tabs -->
@@ -155,12 +158,16 @@
       <!-- TAB 3: LIVE OAUTH & PLATFORM SETTINGS -->
       @if (tab() === 'oauth') {
         <div class="adm-panel oauth-settings">
-          <h2>Google &amp; Microsoft Web OAuth Configuration</h2>
+          <h2>Apple, Google &amp; Microsoft Web Sign-In Configuration</h2>
           <p class="oauth-lead">
-            Paste your Web OAuth Client IDs below to activate 1-click Google &amp; Microsoft popup login + direct API busy-calendar sync across the entire web platform immediately (no redeploy needed).
+            Paste your Web Client / Services IDs below to activate 1-click Apple, Google &amp; Microsoft popup login immediately (no redeploy needed).
           </p>
 
           <div class="uri-guide">
+            <div>
+              <strong>Apple Developer (Services ID — Sign in with Apple JS):</strong>
+              <span>Domain: <code>www.cloud-calendars.com</code> · Return URL: <code>https://www.cloud-calendars.com/calendar/</code></span>
+            </div>
             <div>
               <strong>Google Cloud Console (Web application Client):</strong>
               <span>Authorized JavaScript origins: <code>https://www.cloud-calendars.com</code></span>
@@ -205,6 +212,16 @@
                 placeholder="00000000-0000-0000-0000-000000000000"
                 [ngModel]="microsoftWebClientId()"
                 (ngModelChange)="microsoftWebClientId.set($event)"
+              />
+            </label>
+
+            <label class="adm-field">
+              <span>Apple Web Services ID (Sign in with Apple Client ID, e.g. <code>Deksan.CalendarASD.web</code>)</span>
+              <input
+                type="text"
+                placeholder="Deksan.CalendarASD.web"
+                [ngModel]="appleWebClientId()"
+                (ngModelChange)="appleWebClientId.set($event)"
               />
             </label>
 

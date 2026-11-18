@@ -61,10 +61,14 @@ struct CalendarScreenHeader: View {
                         ForEach(CalendarHeaderMode.allCases, id: \.rawValue) { mode in
                             Label(LocalizedStringKey(mode.title), systemImage: mode.symbol).tag(mode.rawValue)
                         }
-                    }.pickerStyle(.inline)
+                    }
+                    .pickerStyle(.inline)
+                    .foregroundStyle(.primary)
                 } label: {
                     icon(CalendarHeaderMode(rawValue: currentView)?.symbol ?? "calendar")
+                        .foregroundStyle(tint)
                 }
+                .tint(.primary)
                 .menuIndicator(.hidden)
                 .accessibilityLabel(Text("Menu"))
                 .accessibilityIdentifier("calendar-view-menu")

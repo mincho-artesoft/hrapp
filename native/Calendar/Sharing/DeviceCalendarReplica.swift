@@ -100,8 +100,15 @@ struct DeviceCalendarDocument: Codable, Equatable, Identifiable {
     var sharing: DeviceCalendarSharing? = nil
     var accountLocal: Bool? = nil
     var sharingCalendarID: String? = nil
+    // Stable provider identity across device-specific replicas; never derived from a title.
+    var providerMirrorID: String? = nil
     var updatedAt: String?
     var isReceivedSharedCalendar: Bool { sharing != nil || source == "Shared with me" || id.hasPrefix("shared-") }
+    func withProviderMirrorID(_ value: String?) -> Self {
+        var document = self
+        document.providerMirrorID = value
+        return document
+    }
 }
 
 @MainActor

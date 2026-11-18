@@ -58,6 +58,23 @@ async function main() {
   const removed = await api.sync(owner, { ...otherDevice.body.calendar, deviceId: 'mac', available: false, expectedRevision: 2 });
   assert.equal(removed.status, 200);
   assert.equal(removed.body.calendar.available, false);
+  const mirrorID = 'a'.repeat(64);
+  const replica = await api.sync(owner, { ...calendar, id: 'provider_phone', source: 'Google · test@example.com', providerMirrorID: mirrorID });
+  assert.equal(replica.body.calendar.providerMirrorID, mirrorID);
+  const { providerMirrorID: ignored, ...oldClient } = replica.body.calendar;
+  const oldUpdate = await api.sync(owner, { ...oldClient, expectedRevision: replica.body.calendar.revision });
+  assert.equal(oldUpdate.body.calendar.providerMirrorID, mirrorID, 'Older clients retain the stable identity');
+  const web = api.webCalendars([
+    { ...replica.body.calendar, updatedAt: '2026-11-17T09:00:00Z' },
+    { ...replica.body.calendar, id: 'provider_mac', deviceId: 'mac', updatedAt: '2026-11-17T10:00:00Z', events: [{ ...event, title: 'Latest provider version' }] },
+    { ...calendar, id: 'same_name_local' },
+    { ...calendar, id: 'same_name_other' },
+  ]);
+  assert.equal(web.length, 3, 'Only proven provider replicas are deduplicated');
+  assert.equal(web[0].events[0].title, 'Latest provider version');
+  const extraEdit = await api.mutate(owner, 'native.provider_phone.event_one', { travelTime: 900, attachments: [{ id: 'file', dataBase64: 'dGVzdA==' }] });
+  assert.equal(extraEdit.body.event.details.travelTime, 900);
+  assert.deepEqual(extraEdit.body.event.details.attachments, [{ id: 'file', dataBase64: 'dGVzdA==' }]);
   console.log('PASS: account-local cross-device edits, immutable scope, account isolation, conflict and tombstone');
   console.log('PASS: native calendars, isolation, read-only access, CAS conflicts, metadata preservation, concurrent edits and deletion');
 }

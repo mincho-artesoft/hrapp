@@ -44,9 +44,12 @@ enum NativeCalendarSyncService {
                 let originals = local.events.filter { $0.calendarID == calendar.id }
                 let items = try originals.map(snapshot)
                 let id = DeviceCalendarReplica.calendarID(calendar.id)
+                let source = calendar.providerSource ?? NSLocalizedString("Local Calendars", comment: "")
+                let remoteID = AppLocalProviderCalendarStore.shared.engine.remoteCalendarID(for: calendar.id)
                 let doc = DeviceCalendarDocument(id: id, deviceId: DeviceCalendarReplica.deviceID, deviceName: UIDevice.current.name,
-                    title: calendar.title, source: NSLocalizedString("Local Calendars", comment: ""),
+                    title: calendar.title, source: source,
                     color: calendar.displayColorHex, allowsChanges: calendar.canEditEvents, events: items)
+                    .withProviderMirrorID(remoteID.map { DeviceCalendarReplica.hash(source.lowercased() + ":" + $0) })
                 try await replica.sync(doc) { result in
                     guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
                     guard calendar.canEditEvents else { return }

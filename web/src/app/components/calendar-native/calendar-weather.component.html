@@ -1,0 +1,580 @@
+<div class="weather-background" [class.touch-layout]="!isDesktop()">
+  <!-- Unified CalendarScreenHeader (white tint on Weather sky, matching native Mac & iOS) -->
+  @if (!regions()) {
+    <div class="weather-topbar">
+      @if (searchOpen()) {
+        <div class="weather-search-bar">
+          <cc-symbol name="magnifyingglass" />
+          <input
+            autofocus
+            placeholder="Search for a city…"
+            aria-label="Search for a city"
+            [ngModel]="query()"
+            (ngModelChange)="search($event)"
+          />
+          <button type="button" aria-label="Close search" (click)="closeSearch()">
+            <cc-symbol name="xmark" />
+          </button>
+        </div>
+      } @else {
+        <div class="weather-topbar__left">
+          <button
+            type="button"
+            class="weather-icon-btn"
+            aria-label="Saved Regions"
+            (click)="showRegions()"
+          >
+            <cc-symbol name="list.bullet" [pointSize]="22" />
+          </button>
+          <button
+            type="button"
+            class="weather-icon-btn"
+            aria-label="Current location"
+            (click)="currentLocation()"
+          >
+            <cc-symbol name="location.fill" [pointSize]="22" />
+          </button>
+        </div>
+        <div class="weather-topbar__right">
+          <button
+            type="button"
+            class="weather-icon-btn"
+            aria-label="Search for a city…"
+            (click)="beginSearch()"
+          >
+            <cc-symbol name="magnifyingglass" [pointSize]="22" />
+          </button>
+          @if (modes().length) {
+            <div class="weather-mode-anchor">
+              <button
+                type="button"
+                class="weather-icon-btn mode-button"
+                aria-label="Calendar views"
+                [attr.aria-expanded]="modePicker()"
+                (click)="modePicker.set(!modePicker()); $event.stopPropagation()"
+              >
+                <cc-symbol name="cloud.sun" [pointSize]="isDesktop() ? 20 : 22" />
+              </button>
+              @if (modePicker()) {
+                <div
+                  class="weather-mode-menu"
+                  role="menu"
+                  (click)="$event.stopPropagation()"
+                >
+                  @for (mode of modes(); track mode.value) {
+                    <button
+                      type="button"
+                      role="menuitemradio"
+                      [attr.aria-checked]="currentMode() === mode.value"
+                      (click)="modePicker.set(false); viewChange.emit(mode.value)"
+                    >
+                      <cc-symbol
+                        name="checkmark"
+                        [style.visibility]="
+                          currentMode() === mode.value ? 'visible' : 'hidden'
+                        "
+                      />
+                      @if (mode.symbol) {
+                        <cc-symbol [name]="mode.symbol" />
+                      }
+                      <span>{{ mode.label | nativeText }}</span>
+                    </button>
+                  }
+                </div>
+              }
+            </div>
+          }
+          @if (isDesktop()) {
+            <button
+              type="button"
+              class="weather-icon-btn mode-button"
+              aria-label="Menu"
+              (click)="openMenu.emit()"
+            >
+              <cc-symbol name="gearshape" [pointSize]="20" />
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  <div class="weather-content">
+    @if (!regions() && searchOpen() && query()) {
+      <div class="weather-search-results">
+        @for (place of results(); track place.id) {
+          <button type="button" class="city-result" (click)="select(place)">
+            <strong>{{ place.name }}</strong>
+            <small>{{ place.admin1 }} {{ place.country }}</small>
+            <cc-symbol name="plus" />
+          </button>
+        }
+      </div>
+    }
+
+    @if (regions()) {
+      <header class="regions-header">
+        <button type="button" class="weather-icon-btn" aria-label="Current location" (click)="currentLocation()">
+          <cc-symbol name="location.fill" />
+        </button>
+        <h1>{{ "Saved Regions" | nativeText }}</h1>
+        @if (weather()) {
+          <button
+            type="button"
+            class="done"
+            aria-label="Done"
+            (click)="regions.set(false)"
+          >
+            <cc-symbol [pointSize]="17" name="checkmark" />
+          </button>
+        } @else if (modes().length) {
+          <button
+            type="button"
+            class="done"
+            aria-label="Back to Calendar"
+            (click)="viewChange.emit('day')"
+          >
+            <cc-symbol [pointSize]="17" name="xmark" />
+          </button>
+        } @else {
+          <span class="header-spacer"></span>
+        }
+      </header>
+      <label class="city-search">
+        <cc-symbol name="magnifyingglass" />
+        <input
+          placeholder="Search for a city…"
+          aria-label="Search for a city"
+          [ngModel]="query()"
+          (ngModelChange)="search($event)"
+        />
+        @if (query()) {
+          <button
+            type="button"
+            class="clear-city"
+            aria-label="Clear search"
+            (click)="query.set(''); results.set([])"
+          >
+            <cc-symbol name="xmark.circle.fill" />
+          </button>
+        }
+      </label>
+      @if (query()) {
+        @for (place of results(); track place.id) {
+          <button type="button" class="city-result" (click)="select(place)">
+            <strong>{{ place.name }}</strong>
+            <small>{{ place.admin1 }} {{ place.country }}</small>
+            <cc-symbol name="plus" />
+          </button>
+        }
+      }
+      @for (place of saved(); track place.id) {
+        <article
+          draggable="true"
+          (dragstart)="dragRegion(place, $event)"
+          (dragover)="$event.preventDefault()"
+          (drop)="dropRegion(place, $event)"
+          (contextmenu)="contextRegion(place, $event)"
+          class="region-card"
+          [class.selected]="weather()?.place?.id === place.id"
+        >
+          <button type="button" class="region-main" (click)="select(place)">
+            <strong>{{ place.name }}</strong>
+            @if (snapshots()[place.id]; as s) {
+              <b>{{ s.temp }}°</b>
+              <span>{{ s.observedAt }}</span>
+              <small>H:{{ s.high }}° &nbsp; L:{{ s.low }}°</small>
+              <p>{{ s.condition }}</p>
+            }
+          </button>
+          <button
+            type="button"
+            class="delete-region"
+            aria-label="Region options"
+            (click)="contextRegion(place, $event)"
+          >
+            <cc-symbol name="line.3.horizontal" />
+          </button>
+        </article>
+      }
+      @if (!saved().length && !query()) {
+        <div class="weather-empty">
+          <cc-symbol [multicolor]="true" name="cloud.sun" />
+          <p>{{ "Add a city or use your current location." | nativeText }}</p>
+        </div>
+      }
+    } @else {
+      @if (weather(); as s) {
+        <div class="current">
+          <h1>{{ s.place.name }}</h1>
+          <strong>{{ s.temp }}°</strong>
+          <h2>{{ s.condition }}</h2>
+          <p>H:{{ s.high }}° &nbsp; L:{{ s.low }}°</p>
+        </div>
+        <section class="weather-card">
+          <h3>
+            <cc-symbol name="clock" />{{ "HOURLY FORECAST" | nativeText }}
+          </h3>
+          <div class="hourly">
+            @for (hour of forecastHours(); track hour.iso; let idx = $index) {
+              <button
+                type="button"
+                (click)="createEvent.emit({date:hour.iso,timeZone:s.place.timezone})"
+              >
+                <span>{{
+                  idx === 0 ? ("Now" | nativeText) : hour.iso.slice(11, 16)
+                }}</span>
+                <cc-symbol
+                  [multicolor]="true"
+                  [name]="hour.symbol || icon(hour.icon)"
+                />
+                @if (hour.precipitationChance >= 20) {
+                  <small class="precip-chance"
+                    >{{ hour.precipitationChance | number: "1.0-0" }}%</small
+                  >
+                }
+                <strong>{{ hour.temperature | number: "1.0-0" }}°</strong>
+              </button>
+            }
+          </div>
+        </section>
+        <section class="weather-card">
+          <h3>
+            <cc-symbol name="calendar" />{{ "10-DAY FORECAST" | nativeText }}
+          </h3>
+          @for (d of s.daily.slice(0, 10); track d.iso) {
+            <button
+              type="button"
+              class="forecast-day"
+              (click)="openDetail('temp', d.iso)"
+            >
+              <span class="day-title">{{ d.day | nativeText }}</span>
+              <span class="day-symbol-col">
+                <cc-symbol
+                  [multicolor]="true"
+                  [name]="d.symbol || icon(d.icon)"
+                />
+                @if (d.precip >= 10) {
+                  <small class="precip-chance">{{ d.precip }}%</small>
+                }
+              </span>
+              <span class="low">{{ d.min }}°</span>
+              <i>
+                <em
+                  [style.left.%]="d.barStart * 100"
+                  [style.width.%]="d.barWidth * 100"
+                ></em>
+                @if (todayDotPct(d, s); as dotPct) {
+                  <b class="today-dot" [style.left.%]="dotPct"></b>
+                }
+              </i>
+              <span class="high">{{ d.max }}°</span>
+            </button>
+          }
+        </section>
+        <div class="metrics">
+          @for (m of displayMetrics(); track m.id) {
+            <button
+              type="button"
+              class="weather-card metric"
+              (click)="openDetail(m.id)"
+            >
+              <h3>
+                <cc-symbol [name]="metricIcons[m.id]" />{{
+                  metricNames[m.id] | nativeText
+                }}
+              </h3>
+              <strong>{{ m.value }}{{ m.unit }}</strong>
+              <svg
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <polyline [attr.points]="graph(m.series)" />
+              </svg>
+              <p>{{ m.caption }}</p>
+            </button>
+          }
+        </div>
+        @if (s.skyDays?.[0]; as sky) {
+          @let solar = solarPosition(sky, s.place.timezone);
+          <div class="metrics sky-cards">
+            <button
+              type="button"
+              class="weather-card solar-card"
+              (click)="detailDate.set(sky.date); skyDetail.set('solar')"
+            >
+              <h3>
+                <cc-symbol
+                  [multicolor]="true"
+                  [name]="
+                    solar.isUpcomingSunrise ? 'sunrise.fill' : 'sunset.fill'
+                  "
+                />{{
+                  (solar.isUpcomingSunrise ? "SUNRISE" : "SUNSET") | nativeText
+                }}
+              </h3>
+              <strong>{{
+                solar.isUpcomingSunrise ? clock(sky.sunrise) : clock(sky.sunset)
+              }}</strong>
+              <div class="solar-arc-wrap">
+                <svg viewBox="0 0 300 84" aria-hidden="true">
+                  <path
+                    d="M 35 68 A 115 54 0 0 1 265 68"
+                    fill="none"
+                    stroke="#ffffff66"
+                    stroke-width="1.5"
+                    stroke-dasharray="4 4"
+                  />
+                  <path d="M 10 68 H 290" stroke="#ffffff35" stroke-width="1" />
+                </svg>
+                <img
+                  class="solar-arc-sun"
+                  src="/icons/calendar-native/artwork/weather_sun_realistic.png"
+                  alt=""
+                  [style.left.%]="(solar.x / 300) * 100"
+                  [style.top.%]="(solar.y / 84) * 100"
+                />
+              </div>
+              <div class="solar-times-row">
+                <span>
+                  <small>{{ "Sunrise" | nativeText }}</small>
+                  <b>{{ clock(sky.sunrise) }}</b>
+                </span>
+                <span>
+                  <small>{{ "Sunset" | nativeText }}</small>
+                  <b>{{ clock(sky.sunset) }}</b>
+                </span>
+              </div>
+            </button>
+            <button
+              type="button"
+              class="weather-card"
+              (click)="detailDate.set(sky.date); skyDetail.set('moon')"
+            >
+              <h3>
+                <cc-symbol [name]="moonSymbol(sky.moonPhase)" />{{
+                  "MOON PHASE" | nativeText
+                }}
+              </h3>
+              <strong>{{ moonPhase(sky.moonPhase) | nativeText }}</strong>
+              @if (moonArtwork(sky.moonPhase); as artwork) {
+                <img
+                  class="moon-illustration"
+                  [src]="artwork"
+                  [alt]="moonPhase(sky.moonPhase)"
+                />
+              }
+              <p>{{ "Moonrise" | nativeText }} {{ clock(sky.moonrise) }}</p>
+            </button>
+          </div>
+        }
+        <a
+          class="weather-credit"
+          href="https://open-meteo.com/"
+          target="_blank"
+          rel="noopener"
+          >{{ "Weather data by Open-Meteo" | nativeText }}</a
+        >
+      }
+    }
+    @if (loading()) {
+      <p class="weather-status" role="status">
+        {{ "Loading forecast…" | nativeText }}
+      </p>
+    }
+    @if (error()) {
+      <p class="weather-status" role="alert">{{ error() }}</p>
+    }
+  </div>
+</div>
+@if (detailOpen()) {
+  <div class="weather-modal" (click)="detailOpen.set(false)">
+    <section
+      class="forecast-detail"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Weather details"
+      (click)="$event.stopPropagation()"
+    >
+      <header>
+        <button
+          type="button"
+          class="done"
+          aria-label="Close"
+          (click)="detailOpen.set(false)"
+        >
+          <cc-symbol [pointSize]="17" name="xmark" />
+        </button>
+        <h2>{{ "Weather" | nativeText }}</h2>
+        <span class="header-spacer"></span>
+      </header>
+      <div class="detail-days">
+        @for (d of weather()?.daily?.slice(0, 10); track d.iso) {
+          <button
+            type="button"
+            [class.selected]="detailDate() === d.iso"
+            (click)="detailDate.set(d.iso); selectedHour.set(null)"
+          >
+            <small>{{ d.day | nativeText }}</small>
+            <strong>{{ d.iso.slice(8) }}</strong>
+            <cc-symbol
+              [multicolor]="true"
+              [name]="d.symbol || icon(d.icon)"
+            />
+          </button>
+        }
+      </div>
+      <div class="detail-picker">
+        <cc-choice
+          label="Weather metric"
+          [value]="detailMetric()"
+          [options]="metricChoices"
+          (valueChange)="detailMetric.set($event); selectedHour.set(null)"
+        />
+      </div>
+      @if (detailMetric() === "temp") {
+        <div class="temperature-picker">
+          <button
+            type="button"
+            [class.selected]="!feelsLike()"
+            (click)="feelsLike.set(false)"
+          >
+            {{ "Actual" | nativeText }}
+          </button>
+          <button
+            type="button"
+            [class.selected]="feelsLike()"
+            (click)="feelsLike.set(true)"
+          >
+            {{ "Feels Like" | nativeText }}
+          </button>
+        </div>
+      }
+      <strong class="detail-value">{{ detailValue() }}</strong>
+      <p>
+        {{
+          selectedHour() === null
+            ? ("Daily maximum" | nativeText)
+            : selectedHourLabel()
+        }}
+      </p>
+      <div
+        class="detail-chart"
+        (pointermove)="inspectChart($event)"
+        (pointerleave)="selectedHour.set(null)"
+      >
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path
+            d="M0 25 H100 M0 50 H100 M0 75 H100"
+            stroke="#ffffff20"
+            fill="none"
+          />
+          <polyline [attr.points]="detailGraph()" />
+          @if (selectedHour() !== null) {
+            <line
+              [attr.x1]="(selectedHour()! * 100) / Math.max(1, detailHours().length - 1)"
+              [attr.x2]="(selectedHour()! * 100) / Math.max(1, detailHours().length - 1)"
+              y1="0"
+              y2="100"
+              stroke="#ffffffaa"
+              stroke-width=".3"
+            />
+          }
+        </svg>
+      </div>
+      <div class="chart-hours">
+        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span
+        ><span>23:00</span>
+      </div>
+      <h3>{{ metricNames[detailMetric()] | nativeText }}</h3>
+      <p>
+        {{ "Hourly forecast" | nativeText }} · {{ weather()?.place?.name }} ·
+        {{ detailDate() }}
+      </p>
+    </section>
+  </div>
+}
+@if (skyDetail(); as kind) {
+  <div class="weather-modal" (click)="skyDetail.set(null)">
+    <section role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+      <header>
+        <button
+          type="button"
+          class="done"
+          aria-label="Close"
+          (click)="skyDetail.set(null)"
+        >
+          <cc-symbol [pointSize]="17" name="xmark" />
+        </button>
+        <h2 class="sky-modal-title">
+          @if (kind === "solar") {
+            <cc-symbol [multicolor]="true" name="sunrise.fill" />
+            <span>{{ "Sunrise and Sunset" | nativeText }}</span>
+            <cc-symbol [multicolor]="true" name="sunset.fill" />
+          } @else {
+            <span>{{ "Moon" | nativeText }}</span>
+          }
+        </h2>
+        <span class="header-spacer"></span>
+      </header>
+      <div class="detail-days">
+        @for (d of weather()?.skyDays?.slice(0, 10); track d.date) {
+          <button
+            type="button"
+            [class.selected]="detailDate() === d.date"
+            (click)="detailDate.set(d.date)"
+          >
+            {{ d.date.slice(8) }}
+          </button>
+        }
+      </div>
+      @if (skyDay(); as sky) {
+        @if (kind === "solar" || moonArtwork(sky.moonPhase)) {
+          <img
+            class="sky-illustration"
+            [src]="
+              kind === 'solar'
+                ? '/icons/calendar-native/artwork/weather_sun_realistic.png'
+                : moonArtwork(sky.moonPhase)
+            "
+            alt=""
+          />
+        }
+        <h2>
+          {{
+            kind === "solar"
+              ? ("Sunrise" | nativeText)
+              : (moonPhase(sky.moonPhase) | nativeText)
+          }}
+        </h2>
+        <p>
+          {{
+            kind === "solar"
+              ? clock(sky.sunrise)
+              : ("Moonrise" | nativeText) + " " + clock(sky.moonrise)
+          }}
+        </p>
+        <h2>{{ (kind === "solar" ? "Sunset" : "Moonset") | nativeText }}</h2>
+        <p>{{ kind === "solar" ? clock(sky.sunset) : clock(sky.moonset) }}</p>
+        <p>{{ weather()?.place?.name }} · {{ detailDate() }}</p>
+      }
+    </section>
+  </div>
+}
+@if (regionContext(); as context) {
+  <div
+    class="region-context"
+    role="menu"
+    [style.left.px]="context.x"
+    [style.top.px]="context.y"
+  >
+    <button
+      type="button"
+      role="menuitem"
+      (click)="remove(context.place); closeContext()"
+    >
+      <cc-symbol name="trash" />{{ "Delete" | nativeText }}
+    </button>
+  </div>
+}

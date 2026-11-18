@@ -54,10 +54,13 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, 
 const entries = [];
 for (const file of pages(DIST)) {
   let html = readFileSync(file, 'utf8');
-  const normalisedHtml = html.replace(
-    /href="(https:\/\/apps\.apple\.com\/[^"]+)"/g,
-    (_, url) => `href="${url.replace(/&amp;/g, '&')}"`,
-  );
+  // Pages also sends these links in HTTP headers, where the HTML base URL does not apply.
+  const normalisedHtml = html
+    .replace(/(<link rel="modulepreload" href=")(chunk-[\w-]+\.js")/g, '$1/$2')
+    .replace(
+      /href="(https:\/\/apps\.apple\.com\/[^"]+)"/g,
+      (_, url) => `href="${url.replace(/&amp;/g, '&')}"`,
+    );
   if (normalisedHtml !== html) {
     html = normalisedHtml;
     writeFileSync(file, html);

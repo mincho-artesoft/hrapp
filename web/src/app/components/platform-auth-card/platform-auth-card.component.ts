@@ -13,7 +13,8 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { APP_STORE_URL, isIosQrAuthEnabled } from '../../core/app-facts';
+import { CalendarSymbolComponent } from '../calendar-native/calendar-symbol.component';
+import { APP_STORE_URL, SITE_URL, isIosQrAuthEnabled } from '../../core/app-facts';
 import { generateQrSvgDataUrl } from '../../core/ios-event-palette';
 import {
   CalendarApiError,
@@ -25,7 +26,7 @@ import {
 @Component({
   selector: 'app-platform-auth-card',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CalendarSymbolComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './platform-auth-card.component.html',
   styleUrl: './platform-auth-card.component.scss',
@@ -38,17 +39,19 @@ export class PlatformAuthCardComponent implements OnInit, OnDestroy {
   @Input() title = 'Sign in to Web Calendar';
   @Input() subtitle = '';
   @Input() allowSandbox = false;
-  @Input() includeCalendarScopeOnOAuth = true;
+  @Input() includeCalendarScopeOnOAuth = false;
 
   @Output() signedIn = new EventEmitter<UserProfile>();
 
   readonly appStoreUrl = APP_STORE_URL;
+  readonly appleWebUrl = SITE_URL + '/calendar/';
+  readonly appleUsesOtherDomain = this.isBrowser && window.location.origin !== SITE_URL;
   readonly iosQrEnabled = signal(isIosQrAuthEnabled());
   readonly effectiveSubtitle = computed(() => {
     if (this.subtitle) return this.subtitle;
     return this.iosQrEnabled()
-      ? 'Sign in with the Cloud Calendars app, Google, Microsoft, or a 6-digit email verification code.'
-      : 'Use Google, Microsoft, or a 6-digit email verification code to access your calendars.';
+      ? 'Sign in with the Cloud Calendars app, Apple, Google, Microsoft, or a 6-digit email verification code.'
+      : 'Use Apple, Google, Microsoft, or a 6-digit email verification code to sign in.';
   });
   readonly iosTab = signal<'qr' | 'totp'>('qr');
   readonly step = signal<'method' | 'code'>('method');
@@ -160,6 +163,25 @@ export class PlatformAuthCardComponent implements OnInit, OnDestroy {
       this.signedIn.emit(profile);
     } catch (e) {
       this.errorMsg.set(e instanceof Error ? e.message : 'Invalid 6-digit Authenticator code.');
+    } finally {
+      this.busy.set(false);
+    }
+  }
+
+  async onAppleClick(): Promise<void> {
+    this.errorMsg.set(null);
+    this.infoMsg.set(null);
+    this.busy.set(true);
+    try {
+      const { profile } = await this.api.signInWithApplePopup();
+      this.stopQrPolling();
+      this.signedIn.emit(profile);
+    } catch (e) {
+      if (e instanceof CalendarApiError && e.code === 'oauth_not_configured') {
+        this.errorMsg.set('Sign in with Apple is currently unavailable.');
+      } else {
+        this.errorMsg.set(e instanceof Error ? e.message : 'Apple sign-in failed.');
+      }
     } finally {
       this.busy.set(false);
     }

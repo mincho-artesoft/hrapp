@@ -1,0 +1,218 @@
+[
+  {
+    "value": "ar",
+    "label": "ar"
+  },
+  {
+    "value": "bg",
+    "label": "bg"
+  },
+  {
+    "value": "bn",
+    "label": "bn"
+  },
+  {
+    "value": "ca",
+    "label": "ca"
+  },
+  {
+    "value": "cs",
+    "label": "cs"
+  },
+  {
+    "value": "da",
+    "label": "da"
+  },
+  {
+    "value": "de",
+    "label": "de"
+  },
+  {
+    "value": "el",
+    "label": "el"
+  },
+  {
+    "value": "en-AU",
+    "label": "en-AU"
+  },
+  {
+    "value": "en-CA",
+    "label": "en-CA"
+  },
+  {
+    "value": "en-GB",
+    "label": "en-GB"
+  },
+  {
+    "value": "en",
+    "label": "en"
+  },
+  {
+    "value": "es-419",
+    "label": "es-419"
+  },
+  {
+    "value": "es-MX",
+    "label": "es-MX"
+  },
+  {
+    "value": "es",
+    "label": "es"
+  },
+  {
+    "value": "fi",
+    "label": "fi"
+  },
+  {
+    "value": "fr-CA",
+    "label": "fr-CA"
+  },
+  {
+    "value": "fr",
+    "label": "fr"
+  },
+  {
+    "value": "gu",
+    "label": "gu"
+  },
+  {
+    "value": "he",
+    "label": "he"
+  },
+  {
+    "value": "hi",
+    "label": "hi"
+  },
+  {
+    "value": "hr",
+    "label": "hr"
+  },
+  {
+    "value": "hu",
+    "label": "hu"
+  },
+  {
+    "value": "id",
+    "label": "id"
+  },
+  {
+    "value": "it",
+    "label": "it"
+  },
+  {
+    "value": "ja",
+    "label": "ja"
+  },
+  {
+    "value": "kk",
+    "label": "kk"
+  },
+  {
+    "value": "kn",
+    "label": "kn"
+  },
+  {
+    "value": "ko",
+    "label": "ko"
+  },
+  {
+    "value": "ml",
+    "label": "ml"
+  },
+  {
+    "value": "mr",
+    "label": "mr"
+  },
+  {
+    "value": "ms",
+    "label": "ms"
+  },
+  {
+    "value": "nb",
+    "label": "nb"
+  },
+  {
+    "value": "nl",
+    "label": "nl"
+  },
+  {
+    "value": "or",
+    "label": "or"
+  },
+  {
+    "value": "pa",
+    "label": "pa"
+  },
+  {
+    "value": "pl",
+    "label": "pl"
+  },
+  {
+    "value": "pt-PT",
+    "label": "pt-PT"
+  },
+  {
+    "value": "pt",
+    "label": "pt"
+  },
+  {
+    "value": "ro",
+    "label": "ro"
+  },
+  {
+    "value": "ru",
+    "label": "ru"
+  },
+  {
+    "value": "sk",
+    "label": "sk"
+  },
+  {
+    "value": "sl",
+    "label": "sl"
+  },
+  {
+    "value": "sv",
+    "label": "sv"
+  },
+  {
+    "value": "ta",
+    "label": "ta"
+  },
+  {
+    "value": "te",
+    "label": "te"
+  },
+  {
+    "value": "th",
+    "label": "th"
+  },
+  {
+    "value": "tr",
+    "label": "tr"
+  },
+  {
+    "value": "uk",
+    "label": "uk"
+  },
+  {
+    "value": "ur",
+    "label": "ur"
+  },
+  {
+    "value": "vi",
+    "label": "vi"
+  },
+  {
+    "value": "zh-HK",
+    "label": "zh-HK"
+  },
+  {
+    "value": "zh-Hans",
+    "label": "zh-Hans"
+  },
+  {
+    "value": "zh-Hant",
+    "label": "zh-Hant"
+  }
+]

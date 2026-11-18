@@ -1,0 +1,1201 @@
+<div class="native-menu">
+  <nav class="section-picker" aria-label="Menu sections">
+    @for (s of sections; track s) {
+      <button
+        type="button"
+        [class.selected]="section() === s"
+        (click)="selectSection(s)"
+      >
+        {{ s | nativeText }}
+      </button>
+    }
+  </nav>
+  <div class="menu-scroll">
+    @if (section() === "Calendar" || section() === "MultiCalendar") {
+      @if (section() === "Calendar") {
+        <button
+          type="button"
+          class="text-action select-all"
+          (click)="toggleCalendar.emit('*')"
+        >
+          {{
+            (hiddenIDs().size ? "Select All" : "Deselect All") | nativeText
+          }}
+        </button>
+        @for (group of groups(); track group.source) {
+          <details
+            class="calendar-group"
+            [class.shared-group]="group.source === 'Shared with me'"
+            open
+          >
+            <summary>
+              {{ group.source | nativeText }}<cc-symbol name="chevron.down" />
+            </summary>
+            @for (c of group.calendars; track c.id) {
+              <div
+                class="calendar-item"
+                [class.selected]="!hiddenIDs().has(c.id)"
+              >
+                <button
+                  type="button"
+                  class="calendar-dot-btn"
+                  [attr.aria-label]="c.title"
+                  (click)="toggleCalendar.emit(c.id)"
+                >
+                  <span class="calendar-dot" [style.background]="c.color">
+                    @if (!hiddenIDs().has(c.id)) {
+                      <cc-symbol name="checkmark" />
+                    }
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="calendar-main"
+                  (click)="openCalendar(c)"
+                >
+                  <span>
+                    <span
+                      class="calendar-title-row"
+                      [class.revoked]="c.available === false"
+                    >
+                      {{ c.title }}
+                      @if (c.accountLocal && !c.ownerId) {
+                        <cc-symbol class="cloud-badge" name="icloud.fill" />
+                      }
+                    </span>
+                    @if (c.accountLocal && !c.ownerId) {
+                      <small>{{ "Web & Events Sync" | nativeText }}</small>
+                    } @else if (c.ownerEmail || c.access) {
+                      <small>{{
+                        c.ownerEmail || ("Shared calendar" | nativeText)
+                      }}</small>
+                    }
+                  </span>
+                </button>
+                @if (c.access) {
+                  <span class="role" [class.revoked]="c.available === false">{{
+                    (c.available === false
+                      ? "Access removed"
+                      : displayRole(c.access)
+                    ) | nativeText
+                  }}</span>
+                }
+                @if (
+                  (!c.ownerId && c.accountLocal) ||
+                  (!c.provider && c.access === "owner")
+                ) {
+                  <button
+                    type="button"
+                    class="icon-button"
+                    aria-label="Share calendar"
+                    (click)="shareCalendar(c)"
+                  >
+                    <cc-symbol name="person.2.fill" />
+                  </button>
+                }
+                <button
+                  type="button"
+                  class="icon-button"
+                  aria-label="Edit calendar"
+                  (click)="openCalendar(c)"
+                >
+                  <cc-symbol name="info.circle" />
+                </button>
+              </div>
+            } @empty {
+              <p class="empty-caption">
+                {{
+                  (group.source === "Shared with me"
+                    ? "No calendars have been shared with you yet."
+                    : "No local calendars yet."
+                  ) | nativeText
+                }}
+              </p>
+            }
+          </details>
+        }
+
+        <!-- Connected Google / Microsoft Provider Sections (MacCalendarProviderSections parity) -->
+        @for (provider of ["google", "microsoft"]; track provider) {
+          @if (isProviderConnected($any(provider))) {
+            <h3 class="provider-section-label">
+              {{
+                (provider === "google"
+                  ? "Google calendars"
+                  : "Microsoft calendars"
+                ) | nativeText
+              }}
+            </h3>
+            <details class="calendar-group provider-group" open>
+              <summary>
+                <span class="provider-account-hdr">
+                  <cc-symbol
+                    [name]="
+                      provider === 'google'
+                        ? 'person.crop.circle'
+                        : 'person.circle'
+                    "
+                  />
+                  <span>{{ connectedProviderEmail($any(provider)) }}</span>
+                </span>
+                <cc-symbol name="chevron.down" />
+              </summary>
+              @for (c of providerCalendars($any(provider)); track c.id) {
+                <div
+                  class="calendar-item"
+                  [class.selected]="!hiddenIDs().has(c.id)"
+                >
+                  <button
+                    type="button"
+                    class="calendar-dot-btn"
+                    [attr.aria-label]="c.title"
+                    (click)="toggleCalendar.emit(c.id)"
+                  >
+                    <span class="calendar-dot" [style.background]="c.color">
+                      @if (!hiddenIDs().has(c.id)) {
+                        <cc-symbol name="checkmark" />
+                      }
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    class="calendar-main"
+                    (click)="toggleCalendar.emit(c.id)"
+                  >
+                    <span>{{ c.title }}</span>
+                  </button>
+                  @if (c.provider === "google" && c.providerOwner) {
+                    <button
+                      type="button"
+                      class="icon-button"
+                      aria-label="Share Google Calendar"
+                      (click)="openProviderAccess(c)"
+                    >
+                      <cc-symbol name="person.2.fill" />
+                    </button>
+                  }
+                  <button
+                    type="button"
+                    class="icon-button"
+                    aria-label="Edit calendar"
+                    (click)="openCalendar(c)"
+                  >
+                    <cc-symbol name="info.circle" />
+                  </button>
+                </div>
+              } @empty {
+                <p class="empty-caption">
+                  {{
+                    (provider === "google"
+                      ? "No synced Google calendars yet."
+                      : "No synced Microsoft calendars yet."
+                    ) | nativeText
+                  }}
+                </p>
+              }
+              @if (provider === "google") {
+                <button
+                  type="button"
+                  class="provider-inline-action text-action"
+                  (click)="addProviderCalendar('google')"
+                >
+                  {{ "Add Google Calendar" | nativeText }}
+                </button>
+              }
+              @if (confirmingDisconnect() === provider) {
+                <div class="disconnect-confirm">
+                  <p>
+                    {{
+                      "This stops calendar syncing here. Calendars in your Google or Microsoft account are kept."
+                        | nativeText
+                    }}
+                  </p>
+                  <div class="equal-actions">
+                    <button
+                      type="button"
+                      class="action tinted"
+                      (click)="confirmingDisconnect.set(null)"
+                    >
+                      {{ "Cancel" | nativeText }}
+                    </button>
+                    <button
+                      type="button"
+                      class="action danger"
+                      (click)="
+                        confirmingDisconnect.set(null);
+                        disconnect.emit($any(provider))
+                      "
+                    >
+                      {{ "Sign out" | nativeText }}
+                    </button>
+                  </div>
+                </div>
+              } @else {
+                <button
+                  type="button"
+                  class="provider-inline-action danger-text"
+                  (click)="confirmingDisconnect.set($any(provider))"
+                >
+                  {{ "Sign out" | nativeText }}
+                </button>
+              }
+            </details>
+          }
+        }
+
+        <button
+          type="button"
+          class="action-row grouped"
+          (click)="openCalendar(null)"
+        >
+          <cc-symbol name="calendar.badge.plus" />{{
+            "Add Local Calendar" | nativeText
+          }}
+        </button>
+
+        @if (providerWorkspace.error()) {
+          <div class="error">
+            {{ providerWorkspace.error() }}
+            <button type="button" (click)="providerWorkspace.refresh(true)">
+              {{ "Try Again" | nativeText }}
+            </button>
+          </div>
+        }
+
+        <!-- Unconnected Provider Connection Cards (MacCalendarProviderConnections parity) -->
+        @for (provider of ["google", "microsoft"]; track provider) {
+          @if (!isProviderConnected($any(provider))) {
+            <div class="grouped">
+              <button
+                type="button"
+                class="action-row"
+                (click)="connect.emit($any(provider))"
+              >
+                <img [src]="'/icons/' + provider + '_icon.png'" alt="" />{{
+                  (provider === "google"
+                    ? "Sign in with Google"
+                    : "Sign in with Microsoft"
+                  ) | nativeText
+                }}
+              </button>
+            </div>
+          }
+        }
+      } @else {
+        @for (c of multiCalendars(); track c.id) {
+          <button
+            type="button"
+            class="calendar-item multi-item"
+            [class.selected]="multiIDs().has(c.id)"
+            (click)="toggleMulti.emit(c.id)"
+          >
+            <span class="calendar-dot" [style.background]="c.color">
+              @if (multiIDs().has(c.id)) {
+                <cc-symbol name="checkmark" />
+              }
+            </span>
+            <span>{{ c.title }}</span>
+          </button>
+        }
+      }
+    }
+    @if (section() === "Sharing") {
+      @if (!destination()) {
+        <button type="button" class="nav-row" (click)="openImport()">
+          <span class="tile blue"><cc-symbol name="qrcode.viewfinder" /></span>
+          <span>
+            <strong>{{ "Scan QR Code" | nativeText }}</strong>
+            <small>{{
+              "Open a shared event or calendar" | nativeText
+            }}</small>
+          </span>
+          <cc-symbol name="chevron.right" />
+        </button>
+        <button
+          type="button"
+          class="nav-row"
+          (click)="destination.set('pending')"
+        >
+          <span class="tile orange"
+            ><cc-symbol name="envelope.badge.fill"
+          /></span>
+          <span>
+            <strong>{{ "Pending invitations" | nativeText }}</strong>
+            <small
+              >{{ sharing.invitations().length }}
+              {{ "pending invitations" | nativeText }}</small
+            >
+          </span>
+          @if (sharing.invitations().length) {
+            <b class="badge">{{ sharing.invitations().length }}</b>
+          }
+          <cc-symbol name="chevron.right" />
+        </button>
+        <button type="button" class="nav-row" (click)="destination.set('sent')">
+          <span class="tile blue"><cc-symbol name="paperplane.fill" /></span>
+          <span>
+            <strong>{{ "Shared by me" | nativeText }}</strong>
+            <small
+              >{{ sharing.outgoing().length }}
+              {{ "events" | nativeText }}</small
+            >
+          </span>
+          <cc-symbol name="chevron.right" />
+        </button>
+        <button
+          type="button"
+          class="nav-row"
+          (click)="destination.set('received')"
+        >
+          <span class="tile indigo"
+            ><cc-symbol name="tray.and.arrow.down.fill"
+          /></span>
+          <span>
+            <strong>{{ "Shared with me" | nativeText }}</strong>
+            <small
+              >{{ sharing.received().length }}
+              {{ "events" | nativeText }}</small
+            >
+          </span>
+          <cc-symbol name="chevron.right" />
+        </button>
+      } @else {
+        <div class="page-heading">
+          <button
+            type="button"
+            class="round-button"
+            aria-label="Close"
+            (click)="
+              destination.set('');
+              search.set('');
+              destinationSearchOpen.set(false)
+            "
+          >
+            <cc-symbol [pointSize]="17" name="xmark" />
+          </button>
+          <h2>
+            {{
+              (destination() === "pending"
+                ? "Pending invitations"
+                : destination() === "sent"
+                  ? "Shared by me"
+                  : "Shared with me"
+              ) | nativeText
+            }}
+          </h2>
+          @if (destination() !== "pending") {
+            <button
+              type="button"
+              class="icon-button"
+              aria-label="Search events"
+              (click)="destinationSearchOpen.set(!destinationSearchOpen())"
+            >
+              <cc-symbol name="magnifyingglass" />
+            </button>
+          } @else {
+            <span class="round-spacer"></span>
+          }
+        </div>
+        @if (destination() !== "pending" && (destinationSearchOpen() || search())) {
+          <label class="search-field">
+            <cc-symbol name="magnifyingglass" />
+            <input
+              placeholder="Search events"
+              [ngModel]="search()"
+              (ngModelChange)="search.set($event)"
+            />
+            @if (search()) {
+              <button
+                type="button"
+                aria-label="Clear search"
+                (click)="search.set('')"
+              >
+                <cc-symbol name="xmark.circle.fill" />
+              </button>
+            }
+          </label>
+        }
+        @if (destination() === "pending") {
+          @for (item of sharing.invitations(); track item.id) {
+            <article class="invitation">
+              <div class="row">
+                <cc-symbol
+                  [name]="item.calendarId ? 'calendar' : 'envelope.badge.fill'"
+                />
+                <strong>{{ item.title }}</strong>
+                <span class="role">{{
+                  displayRole(item.access) | nativeText
+                }}</span>
+              </div>
+              @if (item.calendarId) {
+                <p>{{ "Calendar invitation" | nativeText }}</p>
+              }
+              <p>
+                {{ "From" | nativeText }}
+                {{ item.senderName || item.senderEmail || item.ownerEmail }}
+              </p>
+              @if (item.start) {
+                <p>
+                  {{ item.start | nativeDate: "shortDate" }} ·
+                  {{
+                    item.allDay
+                      ? ("all-day" | nativeText)
+                      : (item.start | nativeDate: "shortTime")
+                  }}
+                  @if (item.end && !item.allDay) {
+                    – {{ item.end | nativeDate: "shortTime" }}
+                  }
+                </p>
+              }
+              <div class="equal-actions">
+                <button
+                  type="button"
+                  class="action danger"
+                  [disabled]="busy()"
+                  (click)="respond(item, false)"
+                >
+                  {{ "Decline" | nativeText }}
+                </button>
+                <button
+                  type="button"
+                  class="action primary"
+                  [disabled]="busy()"
+                  (click)="respond(item, true)"
+                >
+                  {{ "Accept" | nativeText }}
+                </button>
+              </div>
+            </article>
+          } @empty {
+            <div class="empty">
+              <cc-symbol name="envelope.open" />
+              <strong>{{ "No pending invitations." | nativeText }}</strong>
+            </div>
+          }
+        } @else {
+          @for (group of eventGroups(); track group.date) {
+            <h3 class="day-label">
+              {{ group.date | nativeDate: "EEEE, MMMM d, y" }}
+            </h3>
+            @for (event of group.events; track event.id) {
+              <div
+                class="shared-event"
+                [class.cancelled]="event.status === 'cancelled'"
+              >
+                <button
+                  type="button"
+                  class="shared-event-main"
+                  (click)="openEvent.emit(event)"
+                >
+                  <span
+                    class="event-line"
+                    [style.background]="event.color || '#2168de'"
+                  ></span>
+                  <span>
+                    <strong>{{ event.title }}</strong>
+                    @if (event.location) {
+                      <small>
+                        <cc-symbol name="location" />{{
+                          event.location
+                        }}
+                      </small>
+                    }
+                  </span>
+                  <span class="event-time">
+                    {{
+                      event.allDay
+                        ? ("all-day" | nativeText)
+                        : (event.start | nativeDate: "shortTime")
+                    }}
+                    @if (!event.allDay) {
+                      <br />{{ event.end | nativeDate: "shortTime" }}
+                    }
+                    @if (event.access) {
+                      <span class="role">{{
+                        displayRole(event.access) | nativeText
+                      }}</span>
+                    }
+                  </span>
+                </button>
+                @if (destination() === "sent" || event.access === "owner") {
+                  <button
+                    type="button"
+                    class="icon-button access-button"
+                    aria-label="Event access"
+                    (click)="recipients(event)"
+                  >
+                    <cc-symbol name="person.2.fill" />
+                  </button>
+                }
+              </div>
+            }
+          } @empty {
+            <div class="empty">
+              <cc-symbol [name]="search() ? 'magnifyingglass' : destination() === 'sent' ? 'paperplane' : 'tray.and.arrow.down'" />
+              <strong>{{ (search() ? "No matching events." : "No shared events yet.") | nativeText }}</strong>
+            </div>
+          }
+        }
+      }
+      @if (sharing.loading()) {
+        <p class="status" role="status">{{ "Refreshing…" | nativeText }}</p>
+      }
+      @if (sharing.error()) {
+        <div class="error" role="alert">
+          {{ sharing.error() }}
+          <button type="button" (click)="sharing.refresh()">
+            {{ "Try Again" | nativeText }}
+          </button>
+        </div>
+      }
+    }
+    @if (section() === "Settings") {
+      @for (
+        notification of [
+          {
+            key: "eventNotifications",
+            label: "Event Notifications",
+            icon:
+              prefs()["eventNotifications"] === "true"
+                ? "bell.fill"
+                : "bell.slash",
+          },
+          {
+            key: "weatherNotifications",
+            label: "Weather Alert Notifications",
+            icon:
+              prefs()["weatherNotifications"] === "true"
+                ? "exclamationmark.triangle.fill"
+                : "exclamationmark.triangle",
+          },
+        ];
+        track notification.key
+      ) {
+        <label class="setting-row">
+          <cc-symbol [name]="notification.icon" [class.orange]="notification.key === 'weatherNotifications'" />
+          <strong>{{ notification.label | nativeText }}</strong>
+          <input
+            class="switch"
+            type="checkbox"
+            [disabled]="notification.key === 'weatherNotifications'"
+            [checked]="
+              notification.key === 'eventNotifications' &&
+              prefs()[notification.key] === 'true'
+            "
+            (change)="
+              setPreference(
+                notification.key,
+                $any($event.target).checked ? 'true' : 'false'
+              )
+            "
+          />
+        </label>
+      }
+      <p class="empty-caption">
+        {{
+          "Event alerts appear while this calendar is open. Weather alerts are available in the app."
+            | nativeText
+        }}
+      </p>
+      @for (setting of settings; track setting.key) {
+        <div class="setting-row">
+          <cc-symbol [name]="setting.icon" />
+          <strong>{{ setting.label | nativeText }}</strong>
+          <cc-choice
+            [label]="setting.label"
+            [value]="prefs()[setting.key]"
+            [options]="setting.options"
+            (valueChange)="setPreference(setting.key, $event)"
+          />
+        </div>
+      }
+    }
+    @if (section() === "Subscriptions") {
+      <!-- Visual 1:1 replica of SubscriptionView.swift / SubscriptionListView.swift (not wired to payments) -->
+      <div class="subscription-content">
+        <nav class="plan-picker" aria-label="Subscription tier">
+          @for (tier of ["Base", "Advanced", "Premium"]; track tier) {
+            <button
+              type="button"
+              [class.selected]="category() === tier"
+              (click)="category.set(tier); subscriptionNotice.set('')"
+            >
+              {{ tier | nativeText }}
+            </button>
+          }
+        </nav>
+
+        <div class="subscription-features">
+          <h2>
+            <cc-symbol name="sparkles" />{{ category() | nativeText }}
+            {{ "Plan" | nativeText }}
+          </h2>
+          @for (feature of planFeatures[category()]; track feature) {
+            <div>
+              <cc-symbol name="checkmark.circle.fill" />{{
+                feature | nativeText
+              }}
+            </div>
+          }
+        </div>
+
+        @if (category() !== "Base") {
+          @for (
+            plan of [
+              {
+                id: "monthly",
+                title: "Monthly",
+                premium: "$4.99",
+                advanced: "$0.49",
+              },
+              {
+                id: "yearly",
+                title: "Yearly",
+                premium: "$49.99",
+                advanced: "$4.99",
+              },
+            ];
+            track plan.id
+          ) {
+            <button
+              type="button"
+              class="plan-card"
+              [class.selected]="duration() === plan.id"
+              (click)="duration.set(plan.id); subscriptionNotice.set('')"
+            >
+              <span class="tile"><cc-symbol name="creditcard" /></span>
+              <span>
+                <strong>{{ plan.title | nativeText }}</strong>
+                <b>{{
+                  category() === "Premium" ? plan.premium : plan.advanced
+                }}</b>
+                @if (plan.id === "yearly") {
+                  <small
+                    >{{ "Equivalent to" | nativeText }}
+                    {{ category() === "Premium" ? "$4.17" : "$0.42" }}
+                    {{ "per month" | nativeText }}</small
+                  >
+                }
+              </span>
+              <cc-symbol
+                [class.selected-check]="duration() === plan.id"
+                [name]="
+                  duration() === plan.id ? 'checkmark.circle.fill' : 'circle'
+                "
+              />
+            </button>
+          }
+
+          <div class="purchase-section">
+            <button
+              type="button"
+              class="action primary subscribe-cta"
+              (click)="showVisualOnlySubscriptionNotice()"
+            >
+              <cc-symbol name="creditcard" />{{
+                "Subscribe Now" | nativeText
+              }}
+            </button>
+            <p class="renewal-caption">
+              {{ selectedPlanPrice() }}
+              {{
+                (duration() === "yearly" ? "every year" : "every month")
+                  | nativeText
+              }}. {{ "Auto-renews. Cancel anytime." | nativeText }}
+            </p>
+            <p class="renewal-caption">
+              {{
+                "You can change your plan or billing period at any time."
+                  | nativeText
+              }}
+            </p>
+            @if (subscriptionNotice()) {
+              <p class="subscription-notice" role="status">
+                {{ subscriptionNotice() | nativeText }}
+              </p>
+            }
+          </div>
+
+          <button
+            type="button"
+            class="action primary redeem-cta"
+            (click)="showVisualOnlySubscriptionNotice()"
+          >
+            <cc-symbol name="giftcard" />{{ "Redeem Offer Code" | nativeText }}
+          </button>
+
+          <div class="subscription-links">
+            <div class="subscription-links__col">
+              <button type="button" (click)="showVisualOnlySubscriptionNotice()">
+                <cc-symbol name="creditcard" />{{
+                  "Manage Subscription" | nativeText
+                }}
+              </button>
+              <a href="/privacy-policy/" target="_blank" rel="noopener">
+                <cc-symbol name="lock.shield" />{{
+                  "Privacy Policy" | nativeText
+                }}
+              </a>
+            </div>
+            <div class="subscription-links__col">
+              <button type="button" (click)="showVisualOnlySubscriptionNotice()">
+                <cc-symbol name="arrow.trianglehead.2.clockwise" />{{
+                  "Restore Purchases" | nativeText
+                }}
+              </button>
+              <a href="/terms-of-service/" target="_blank" rel="noopener">
+                <cc-symbol name="doc.text" />{{
+                  "Terms of Service" | nativeText
+                }}
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    }
+    @if (section() === "Apps") {
+      <div class="promo-list">
+        @for (app of apps; track app.url) {
+          <article class="promo-card">
+            <img class="promo-card__icon" [src]="app.icon" alt="" />
+            <div class="promo-card__body">
+              <strong>{{ app.name | nativeText }}</strong>
+              <p>{{ app.description | nativeText }}</p>
+              <a
+                class="promo-card__get"
+                [href]="app.url"
+                target="_blank"
+                rel="noopener"
+                [style.background]="app.accentColor"
+              >
+                {{ "Get" | nativeText }}
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+    }
+    @if (error() && !panel()) {
+      <div class="error" role="alert">{{ error() }}</div>
+    }
+  </div>
+</div>
+@if (panel()) {
+  <div class="native-backdrop" (click)="closePanel()">
+    <section
+      class="native-sheet"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="panel()"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="sheet-heading">
+        <button
+          type="button"
+          class="round-button"
+          aria-label="Close"
+          (click)="panel() === 'color' ? panel.set('calendar') : closePanel()"
+        >
+          <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.left' : 'xmark'" />
+        </button>
+        <h2>
+          {{
+            (panel() === "scan"
+              ? "Scan QR Code"
+              : panel() === "calendar"
+                ? calendar ? "Edit Calendar" : "Add Calendar"
+                : panel() === "color"
+                  ? "Calendar Color"
+                  : panel() === "recipients"
+                    ? "Event Access"
+                    : panel() === "provider-sharing"
+                      ? "Sharing: " + (providerCalendar?.title ?? "")
+                      : "Sharing: " + (sharedCalendar?.title ?? "Calendar")
+            ) | nativeText
+          }}
+        </h2>
+        @if (panel() === "calendar") {
+          <button
+            type="button"
+            class="round-button"
+            aria-label="Save calendar"
+            [disabled]="busy() || !calendarTitle.trim()"
+            (click)="saveCalendar()"
+          >
+            <cc-symbol [pointSize]="17" name="checkmark" />
+          </button>
+        } @else if (
+          panel() === "calendar-sharing" || panel() === "recipients"
+        ) {
+          <button
+            type="button"
+            class="round-button"
+            aria-label="Save sharing"
+            [disabled]="busy() || !validPeople()"
+            (click)="savePeople()"
+          >
+            <cc-symbol [pointSize]="17" name="checkmark" />
+          </button>
+        } @else {
+          <span class="round-spacer"></span>
+        }
+      </header>
+      <div class="sheet-body">
+        @if (panel() === "calendar") {
+          <div class="form-group">
+            <label class="form-row">
+              <input
+                placeholder="Calendar name"
+                [(ngModel)]="calendarTitle"
+                [readonly]="
+                  !!calendar &&
+                  !calendar.accountLocal &&
+                  !calendar.providerOwner &&
+                  !(calendar.ownerId && calendar.access === 'owner')
+                "
+              />
+            </label>
+            <div class="form-row">
+              <span>{{ "Account" | nativeText }}</span>
+              <span class="secondary">{{
+                (calendar?.source ||
+                  (calendarProvider === "google"
+                    ? "Google calendars"
+                    : calendarProvider === "microsoft"
+                      ? "Microsoft calendars"
+                      : "Local Calendars"))
+                  | nativeText
+              }}</span>
+            </div>
+          </div>
+          <h3 class="form-label">{{ "COLOR" | nativeText }}</h3>
+          <button
+            type="button"
+            class="form-row form-group"
+            (click)="panel.set('color')"
+          >
+            <span
+              class="calendar-dot"
+              [style.background]="calendarColor"
+            ></span>
+            <span>{{ colorName() | nativeText }}</span>
+            <cc-symbol name="chevron.right" />
+          </button>
+          @if (calendar?.ownerEmail) {
+            <p class="empty-caption">{{ calendar?.ownerEmail }}</p>
+            <div class="form-group form-row">
+              <span>{{ "Access" | nativeText }}</span>
+              <span class="secondary">{{
+                displayRole(calendar?.access) | nativeText
+              }}</span>
+            </div>
+          }
+          @if (
+            calendar &&
+            (calendar.accountLocal ||
+              calendar.ownerId ||
+              (calendar.providerOwner && !calendar.primary))
+          ) {
+            @if (confirmDelete) {
+              <div class="form-group confirmation">
+                <p>
+                  {{
+                    (calendar.ownerId
+                      ? "Remove this shared calendar from your calendars?"
+                      : "Delete this calendar and its events?"
+                    ) | nativeText
+                  }}
+                </p>
+                <div class="equal-actions">
+                  <button
+                    type="button"
+                    class="action tinted"
+                    (click)="confirmDelete = false"
+                  >
+                    {{ "Cancel" | nativeText }}
+                  </button>
+                  <button
+                    type="button"
+                    class="action danger"
+                    [disabled]="busy()"
+                    (click)="deleteCalendar()"
+                  >
+                    {{ (calendar.ownerId ? "Remove" : "Delete") | nativeText }}
+                  </button>
+                </div>
+              </div>
+            } @else {
+              <button
+                type="button"
+                class="action danger"
+                (click)="confirmDelete = true"
+              >
+                {{
+                  (calendar.ownerId
+                    ? "Remove from My Calendars"
+                    : "Delete Calendar"
+                  ) | nativeText
+                }}
+              </button>
+            }
+          }
+        }
+        @if (panel() === "provider-sharing") {
+          <h3 class="form-label">
+            {{ "People with this calendar" | nativeText }}
+          </h3>
+          <div class="form-group">
+            @for (person of providerAccess(); track $index) {
+              <div class="form-row">
+                <cc-symbol name="person.crop.circle" />
+                <input
+                  placeholder="Email address"
+                  [(ngModel)]="person.email"
+                  [readonly]="!!person.id"
+                />
+                <cc-choice
+                  label="Access"
+                  [value]="person.access"
+                  [options]="sharing.roles"
+                  [disabled]="!!person.isOriginalOwner"
+                  (valueChange)="person.access = $event"
+                />
+                @if (!person.isOriginalOwner) {
+                  <button
+                    type="button"
+                    class="icon-button"
+                    aria-label="Save access"
+                    [disabled]="busy()"
+                    (click)="saveProviderPerson(person)"
+                  >
+                    <cc-symbol name="checkmark" />
+                  </button>
+                  <button
+                    type="button"
+                    class="icon-button danger-text"
+                    aria-label="Remove person"
+                    [disabled]="busy()"
+                    (click)="
+                      person.id
+                        ? deleteProviderPerson(person)
+                        : providerAccess.set(
+                            providerAccess().filter(
+                              removeProviderDraftPerson(person)
+                            )
+                          )
+                    "
+                  >
+                    <cc-symbol name="minus.circle.fill" />
+                  </button>
+                }
+              </div>
+            }
+          </div>
+          <button
+            type="button"
+            class="action tinted"
+            (click)="addProviderPerson()"
+          >
+            <cc-symbol name="person.badge.plus" />{{
+              "Add Person" | nativeText
+            }}
+          </button>
+        }
+        @if (panel() === "color") {
+          <div class="form-group">
+            @if (calendar?.ownerId) {
+              <button
+                type="button"
+                class="form-row"
+                (click)="
+                  calendarColor = creatorColor(); usesCreatorDefault = true
+                "
+              >
+                <span
+                  class="calendar-dot"
+                  [style.background]="creatorColor()"
+                ></span>
+                <span>{{ "Default from creator" | nativeText }}</span>
+                @if (usesCreatorDefault) {
+                  <cc-symbol class="blue" name="checkmark" />
+                }
+              </button>
+            }
+            @for (color of colors; track color.hex) {
+              <button
+                type="button"
+                class="form-row"
+                (click)="selectColor(color.hex)"
+              >
+                <span
+                  class="calendar-dot"
+                  [style.background]="color.hex"
+                ></span>
+                <span>{{ color.label | nativeText }}</span>
+                @if (
+                  !usesCreatorDefault &&
+                  calendarColor.toUpperCase() === color.hex
+                ) {
+                  <cc-symbol class="blue" name="checkmark" />
+                }
+              </button>
+            }
+            <label class="form-row custom-color">
+              <span class="custom-wheel" aria-hidden="true"></span>
+              <span>{{ "Custom…" | nativeText }}</span>
+              @if (colorName() === "Custom") {
+                <span
+                  class="calendar-dot"
+                  [style.background]="calendarColor"
+                ></span>
+                <cc-symbol class="blue" name="checkmark" />
+              } @else {
+                <cc-symbol name="chevron.right" />
+              }
+              <input
+                type="color"
+                aria-label="Choose custom color"
+                [ngModel]="calendarColor"
+                (ngModelChange)="selectColor($event)"
+              />
+            </label>
+          </div>
+        }
+        @if (panel() === "calendar-sharing" || panel() === "recipients") {
+          <div class="form-group intro">
+            <strong>{{ sharedCalendar?.title || sharedEvent?.title }}</strong>
+            <p>
+              {{
+                "Choose Reader, Writer, or Owner. Owners can also share and manage access."
+                  | nativeText
+              }}
+            </p>
+          </div>
+          <h3 class="form-label">
+            {{ "People with this" | nativeText }}
+            {{ (sharedCalendar ? "calendar" : "event") | nativeText }}
+          </h3>
+          <div class="form-group">
+            @for (person of people; track $index; let index = $index) {
+              <div class="form-row person-row">
+                <cc-symbol class="blue" name="person.crop.circle" />
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  [(ngModel)]="person.email"
+                  [readonly]="panel() === 'recipients'"
+                />
+                @if (!person.isOriginalOwner) {
+                  <cc-choice
+                    label="Access"
+                    [value]="person.access"
+                    [options]="sharing.roles"
+                    (valueChange)="person.access = $any($event)"
+                  />
+                  <button
+                    type="button"
+                    class="icon-button danger-text"
+                    aria-label="Remove person"
+                    (click)="removePerson(index)"
+                  >
+                    <cc-symbol name="minus.circle.fill" />
+                  </button>
+                } @else {
+                  <span class="role">{{ "Owner" | nativeText }}</span>
+                }
+              </div>
+            } @empty {
+              <div class="empty">
+                <cc-symbol name="person.2.slash" />
+                <strong>{{ "No recipients yet" | nativeText }}</strong>
+              </div>
+            }
+            @if (sharedCalendar) {
+              <button
+                type="button"
+                class="action tinted add-person"
+                (click)="addPerson()"
+              >
+                <cc-symbol name="person.badge.plus" />{{
+                  "Add Person" | nativeText
+                }}
+              </button>
+            }
+          </div>
+        }
+        @if (panel() === "scan") {
+          @if (challenge(); as login) {
+            <div class="form-group intro">
+              <strong>{{ "Approve Browser Sign-In" | nativeText }}</strong>
+              <p>{{ login.webEmail || api.profile()?.email }}</p>
+              <p>
+                {{
+                  "Approve only if you are signing in on this browser."
+                    | nativeText
+                }}
+              </p>
+              <button
+                type="button"
+                class="action primary"
+                [disabled]="busy()"
+                (click)="approveBrowser()"
+              >
+                {{ "Approve Sign-In" | nativeText }}
+              </button>
+              <button
+                type="button"
+                class="action tinted"
+                (click)="challenge.set(null)"
+              >
+                {{ "Cancel" | nativeText }}
+              </button>
+            </div>
+          }
+          <div class="camera-frame">
+            <video #qrVideo playsinline muted></video>
+            <div class="scan-reticle"></div>
+            <button
+              type="button"
+              class="action tinted"
+              (click)="startCamera(qrVideo)"
+            >
+              <cc-symbol name="camera" />{{ "Use Camera" | nativeText }}
+            </button>
+          </div>
+          <p class="empty-caption">
+            {{
+              "Place a Cloud Calendars event or calendar QR code inside the frame."
+                | nativeText
+            }}
+          </p>
+          <label class="action tinted image-input">
+            <cc-symbol name="photo.badge.plus" />{{
+              "Choose QR Image…" | nativeText
+            }}
+            <input type="file" accept="image/*" (change)="scanImage($event)" />
+          </label>
+          <label class="form-group form-row">
+            <input placeholder="Invitation link" [(ngModel)]="qrInput" />
+          </label>
+          @if (qrMessage) {
+            <p>{{ qrMessage }}</p>
+          }
+          <button
+            type="button"
+            class="action primary"
+            [disabled]="busy() || !qrInput.trim()"
+            (click)="importLink(qrInput)"
+          >
+            {{ "Open Invitation" | nativeText }}
+          </button>
+        }
+        @if (busy()) {
+          <p class="status" role="status">{{ "Loading…" | nativeText }}</p>
+        }
+        @if (error()) {
+          <p class="error" role="alert">{{ error() }}</p>
+        }
+      </div>
+    </section>
+  </div>
+}

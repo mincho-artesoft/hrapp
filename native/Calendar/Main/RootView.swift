@@ -460,14 +460,9 @@ struct RootView: View {
                 tabSwitchCounter += 1
                 print("🔄 Tab switched. Count (saved): \(tabSwitchCounter)")
 
-                if tabSwitchCounter == 3 {
-                    InterstitialAdManager.shared.loadAd()
-                } else if tabSwitchCounter >= 4 {
-                    if InterstitialAdManager.shared.showAd() {
-                        tabSwitchCounter = 0
-                    } else {
-                        tabSwitchCounter = 4
-                    }
+                if tabSwitchCounter >= 10 {
+                    InterstitialAdManager.shared.showAd()
+                    tabSwitchCounter = 0
                 }
             }
             Task {

@@ -117,22 +117,10 @@ deploy_production() {
     echo "Production deploy is locked. Set ALLOW_PRODUCTION_DEPLOY=I_UNDERSTAND_THIS_UPDATES_LIVE only after explicit release approval." >&2
     exit 2
   fi
-  local STORAGE_URL
-  STORAGE_URL=$(aws lambda get-function-configuration --function-name "$PROD_NAME" --region "$REGION" \
-    --query 'Environment.Variables.CALENDAR_STORAGE_URL' --output text)
-  if [[ "$STORAGE_URL" != "https://storage.wonek.com" ]]; then
-    echo "Configure the production Lambda for Hetzner calendar storage before deploying." >&2
-    exit 1
-  fi
+  log "checking sharing, legacy web clients and account calendar contracts"
+  (cd "$HERE" && npx ts-node test/calendar-sharing.integration.ts && npx ts-node test/native-calendar-sync.ts && npx ts-node test/web-platform.integration.ts && npx ts-node test/ios-qr-totp-billing.integration.ts && npx ts-node test/provider-calendar-workspace.ts && npx ts-node test/native-calendar-route.ts)
   package
-  log "CUTOVER: updating live ${PROD_NAME} code"
-  aws lambda update-function-code --function-name "$PROD_NAME" --zip-file "fileb://$ZIP" --region "$REGION" >/dev/null
-  aws lambda wait function-updated --function-name "$PROD_NAME" --region "$REGION"
-  log "setting handler=${HANDLER} (runtime stays ${RUNTIME}; env untouched)"
-  aws lambda update-function-configuration --function-name "$PROD_NAME" --region "$REGION" \
-    --handler "$HANDLER" --runtime "$RUNTIME" >/dev/null
-  aws lambda wait function-updated --function-name "$PROD_NAME" --region "$REGION"
-  log "cutover complete. Live at https://api.cloud-calendars.com"
+  python3 "$HERE/scripts/deploy-production-compatible.py" "$ZIP"
 }
 
 case "$MODE" in

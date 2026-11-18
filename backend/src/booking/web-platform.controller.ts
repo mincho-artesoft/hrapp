@@ -217,6 +217,12 @@ export class WebPlatformController {
     return reply(res, await this.svc.deleteWebCalendarEvent(req.principal, id, query ?? {}));
   }
 
+  @Post('web-calendar/providers/:provider')
+  @UseGuards(AuthGuard)
+  async providerWorkspace(@Req() req:any,@Param('provider') provider:string,@Body() body:any,@Res({passthrough:true}) res:Response){
+    return reply(res,await this.svc.providerCalendarWorkspace(req.principal,provider,body??{}));
+  }
+
   @Post('web-calendar/sync-provider')
   @UseGuards(AuthGuard)
   async syncProvider(@Req() req: any, @Body() body: any, @Res({ passthrough: true }) res: Response) {

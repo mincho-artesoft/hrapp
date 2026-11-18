@@ -1,99 +1,111 @@
+@if (authReady() && api.token()) {
+  <ng-template #accountAction>
+    @if (api.isSignedInWithAccount()) {
+      <button #accountButton type="button" class="calendar-header-action calendar-account-action"
+        [attr.aria-label]="'Cloud Calendars account' | nativeText"
+        [attr.title]="'Cloud Calendars account' | nativeText"
+        aria-haspopup="dialog" (click)="accountPanel()?.open(accountButton)">
+        <cc-symbol name="person.crop.circle.badge.checkmark" [pointSize]="18" />
+        <span>{{ "Account" | nativeText }}</span>
+      </button>
+    }
+    <button type="button" class="calendar-header-action" [attr.aria-label]="'Sign Out' | nativeText"
+      [attr.title]="'Sign Out' | nativeText" (click)="signOut()">
+      <cc-symbol name="rectangle.portrait.and.arrow.right" [pointSize]="16" />
+      <span>{{ "Sign Out" | nativeText }}</span>
+    </button>
+  </ng-template>
+}
 <section
   class="studio"
+  [class.ios-layout]="!isDesktop()"
+  [class.phone-layout]="isPhone()"
+  [class.no-sidebar]="!showsSidebar()"
   [class.studio--light]="surfaceTheme() === 'light'"
 >
-  @if (!authReady()) {
+  @if (!authReady() || (api.token() && !api.profile() && api.loadingProfile())) {
     <div class="cal-login-screen">
-      <div class="cal-auth-loading" aria-live="polite">Loading…</div>
+      <div class="cal-auth-loading" aria-live="polite">
+        {{ "Loading…" | nativeText }}
+      </div>
+    </div>
+  } @else if (api.token() && !api.profile()) {
+    <div class="cal-login-screen">
+      <div class="workspace-status" role="status">
+        <span>{{ "Could not load your account." | nativeText }}</span>
+        <button type="button" class="native-pill" [disabled]="api.loadingSession()" (click)="restoreAccount()">{{ "Try Again" | nativeText }}</button>
+      </div>
     </div>
   } @else if (!api.isSignedInWithAccount()) {
     <div class="cal-login-screen">
       <app-platform-auth-card
         badgeText="Cloud Calendars"
         title="Sign in to Web Calendar"
-        [includeCalendarScopeOnOAuth]="true"
-        (signedIn)="onAuthSignedIn()"
+        [includeCalendarScopeOnOAuth]="false"
       />
     </div>
   } @else {
-  <!-- Top Workspace Bar -->
-  <div class="studio-bar shell">
-    <a class="calendar-brand" href="/">Cloud Calendars</a>
-
-    <div class="studio-bar__right">
-      @if (api.profile()?.isAdmin) {
-        <a class="role-chip role-chip--admin" [href]="adminHref()">
-          Admin Console
-        </a>
-      }
-
-      <!-- Account Pill -->
-      <div class="acct-pill">
-        <span class="acct-pill__avatar">
-          {{ (api.profile()?.displayName || api.profile()?.email || 'U').slice(0, 1).toUpperCase() }}
-        </span>
-        <span class="acct-pill__email">
-          {{ api.profile()?.email || api.profile()?.displayName }}
-        </span>
-        <button type="button" class="acct-pill__out" (click)="signOut()">Sign out</button>
-      </div>
-    </div>
-  </div>
-
-  <nav class="calendar-bottom-bar" aria-label="Calendar actions">
-    <button type="button" (click)="jumpToday()"><span aria-hidden="true">▣</span>Today</button>
-    <button type="button" (click)="openNewEventDefault()"><span aria-hidden="true">＋</span>Add</button>
-    <button type="button" (click)="showCalendars.set(!showCalendars())" [attr.aria-pressed]="showCalendars()"><span aria-hidden="true">▦</span>Calendars</button>
-  </nav>
-
-  <!-- =======================================================================
-       INTERACTIVE CLOUDCALENDARS iOS DRAG & DROP CALENDAR
-  ======================================================================== -->
-  <div class="cal-shell shell" [class.cal-shell--hide-calendars]="!showCalendars()">
-      <!-- Left iOS Sidebar -->
-      <aside class="cal-side" aria-label="Calendars">
-        <!-- Up Next Card -->
-        <div class="side-card">
-          <div class="side-card__hdr">UP NEXT</div>
-          @if (upNextEvent(); as nextEv) {
-            <div
-              class="up-next"
-              [ngStyle]="cardStyle(nextEv.color)"
-              (click)="openEditEventModal(nextEv)"
-            >
-              <span class="up-next__bar"></span>
-              <div class="up-next__body">
+    <cc-calendar-account />
+    <div
+      class="cal-shell shell"
+      [class.weather-shell]="viewMode() === 'weather'"
+    >
+      <aside class="cal-side" aria-label="Calendar sidebar">
+        <!-- Up Next Card (CalendarSidebarView parity) -->
+        <div class="side-card up-next-card">
+          <div class="side-card__hdr">{{ "UP NEXT" | nativeText }}</div>
+          <div class="up-next-slot">
+            @if (upNextEvent(); as nextEv) {
+              <p class="up-next-date">{{ formatShortDate(nextEv.start) }}</p>
+              <button
+                type="button"
+                class="up-next"
+                [ngStyle]="cardStyle(nextEv.color)"
+                (click)="selectUpNext(nextEv)"
+                (dblclick)="showEvent(nextEv)"
+              >
+                <span class="up-next__bar"></span>
                 <strong>{{ nextEv.title }}</strong>
-                <span>{{ formatFullDateTime(nextEv.start) }}</span>
-                @if (nextEv.details?.videoCallURL) {
-                  <a
-                    class="up-next__join"
-                    [href]="nextEv.details?.videoCallURL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    (click)="$event.stopPropagation()"
-                  >
-                    Join Video Call ↗
-                  </a>
-                }
-              </div>
-            </div>
-          } @else {
-            <p class="side-empty">No upcoming timed events. Click or drag on the grid to add one.</p>
-          }
+                <span class="up-next-time">
+                  {{
+                    nextEv.allDay
+                      ? ("all-day" | nativeText)
+                      : formatEventClock(nextEv.start)
+                  }}
+                  @if (!nextEv.allDay) {
+                    <br />{{ formatEventClock(nextEv.end) }}
+                  }
+                </span>
+              </button>
+            } @else {
+              <p class="side-empty">{{ "Nothing upcoming" | nativeText }}</p>
+            }
+          </div>
         </div>
 
-        <!-- Mini 42-Day Month Picker -->
-        <div class="side-card">
+        <!-- Mini 42-Day Month Picker (CalendarSidebarView parity) -->
+        <div class="side-card side-month-card">
           <div class="mini-hdr">
-            <span>{{ anchorDate() | date: 'MMMM yyyy' }}</span>
-            <div class="mini-hdr__nav">
-              <button type="button" (click)="stepMiniMonth(-1)" aria-label="Previous month">‹</button>
-              <button type="button" (click)="stepMiniMonth(1)" aria-label="Next month">›</button>
-            </div>
+            <button
+              type="button"
+              (click)="stepMiniMonth(-1)"
+              aria-label="Previous month"
+            >
+              <cc-symbol name="chevron.left" />
+            </button>
+            <strong>{{ sidebarMonth() | nativeDate: "MMMM yyyy" }}</strong>
+            <button
+              type="button"
+              (click)="stepMiniMonth(1)"
+              aria-label="Next month"
+            >
+              <cc-symbol name="chevron.right" />
+            </button>
           </div>
           <div class="mini-dow">
-            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+            @for (day of dayNames(); track $index) {
+              <span>{{ day[0] }}</span>
+            }
           </div>
           <div class="mini-grid">
             @for (cell of miniMonthDays(); track cell.key) {
@@ -102,7 +114,7 @@
                 class="mini-day"
                 [class.is-muted]="!cell.inMonth"
                 [class.is-today]="cell.isToday"
-                [class.is-selected]="cell.isSelected && !cell.isToday"
+                [class.is-selected]="cell.isSelected"
                 (click)="selectMiniDay(cell.date)"
               >
                 <span>{{ cell.dayNum }}</span>
@@ -116,568 +128,1627 @@
               </button>
             }
           </div>
+          <button type="button" class="mini-today" (click)="jumpToday()">
+            {{ "Today" | nativeText }}
+          </button>
         </div>
 
-        <div class="calendar-list side-card">
-          <h2>Calendars</h2>
-          @for (group of calendarGroups(); track group.source) {
-            <details open>
-              <summary>{{ group.source }}</summary>
-              @for (calendar of group.calendars; track calendar.id) {
-                <button type="button" class="calendar-row" [attr.aria-pressed]="!hiddenCalendarIDs().has(calendar.id)" (click)="toggleCalendar(calendar.id)">
-                  <span class="calendar-check" [style.background]="calendar.color" [style.color]="isLightColor(calendar.color) ? '#0f172a' : '#ffffff'">{{ hiddenCalendarIDs().has(calendar.id) ? '' : '✓' }}</span>
-                  <span class="calendar-row__name">{{ calendar.title }}<small>{{ calendar.deviceName }}{{ calendar.allowsChanges ? '' : ' · Read only' }}</small></span>
-                </button>
-              }
-            </details>
-          } @empty {
-            <p class="side-empty">Open the app while signed in to see your calendars here.</p>
-          }
-          @if (writableCalendars().length) {
-            <label class="field"><span>New events in</span>
-              <select [ngModel]="destinationCalendarID()" (ngModelChange)="chooseDestination($event)">
-                @for (calendar of writableCalendars(); track calendar.id) { <option [value]="calendar.id">{{ calendar.title }} · {{ calendar.source }}</option> }
-              </select>
-            </label>
-          }
-        </div>
-        <details class="calendar-connections">
-          <summary>Accounts &amp; subscriptions</summary>
-        <!-- 2-Way Google & Microsoft Calendar Sync -->
-        <div class="side-card">
-          <div class="side-card__hdr">2-WAY CALENDAR SYNC</div>
-          <p class="side-hint">
-            Syncs your Google and Microsoft Outlook events live with your Cloud Calendars workspace.
-          </p>
-
-           <div class="sync-btns">
-             <div class="sync-row">
-               <button
-                 type="button"
-                 class="sync-btn"
-                 [disabled]="syncingExternal() === 'google'"
-                 (click)="syncGoogleBusy()"
-               >
-                 <img class="sync-provider-icon" src="icons/google_icon.png" alt="" width="16" height="16" decoding="async" />
-                 {{
-                   api.profile()?.connectedProviders?.google?.connected || externalBusy().sources['google']
-                     ? 'Google 2-Way Synced ✓'
-                     : 'Connect Google Calendar'
-                 }}
-               </button>
-               @if (api.profile()?.connectedProviders?.google?.connected || externalBusy().sources['google']) {
-                 <button type="button" class="sync-x" (click)="disconnectExternal('google')" title="Disconnect">✕</button>
-               }
-             </div>
-
-             <div class="sync-row">
-               <button
-                 type="button"
-                 class="sync-btn"
-                 [disabled]="syncingExternal() === 'microsoft'"
-                 (click)="syncMicrosoftBusy()"
-               >
-                 <img class="sync-provider-icon sync-provider-icon--ms" src="icons/microsoft_icon.png" alt="" width="20" height="20" decoding="async" />
-                 {{
-                   api.profile()?.connectedProviders?.microsoft?.connected || externalBusy().sources['microsoft']
-                     ? 'Microsoft 2-Way Synced ✓'
-                     : 'Connect Microsoft Calendar'
-                 }}
-               </button>
-               @if (api.profile()?.connectedProviders?.microsoft?.connected || externalBusy().sources['microsoft']) {
-                 <button type="button" class="sync-x" (click)="disconnectExternal('microsoft')" title="Disconnect">✕</button>
-               }
-             </div>
-           </div>
-
-          <div class="ics-sync-box">
-            <input
-              type="url"
-              placeholder="https:// or webcal:// .ics feed"
-              [ngModel]="icsFeedInput()"
-              (ngModelChange)="icsFeedInput.set($event)"
-            />
+        @if (inspectorEvent(); as event) {
+          <article class="side-inspector">
+            <h2><i [style.background]="event.color"></i>{{ event.title }}</h2>
+            <p class="inspector-date">{{ formatShortDate(event.start) }}</p>
+            <h3>{{ formatEventTimeSpan(event) }}</h3>
+            <p>
+              <cc-symbol name="calendar" />{{ calendarName(event.calendarId) }}
+            </p>
+            @if (event.location) {
+              <p><cc-symbol name="mappin.and.ellipse" />{{ event.location }}</p>
+            }
+            @if (event.details?.notes) {
+              <hr class="inspector-divider" />
+              <p class="inspector-notes">{{ event.details?.notes }}</p>
+            }
             <button
               type="button"
-              [disabled]="syncingExternal() === 'ics'"
-              (click)="syncIcsUrl()"
+              class="native-pill primary"
+              (click)="showEvent(event)"
             >
-              {{ syncingExternal() === 'ics' ? '…' : 'Sync' }}
+              <cc-symbol name="arrow.forward.circle" />{{
+                "Open event" | nativeText
+              }}
             </button>
-          </div>
-
-          @if (syncFeedback()) {
-            <p class="sync-msg">{{ syncFeedback() }}</p>
-          }
-        </div>
-
-        <!-- CloudCalendars iOS / Apple Calendar Feed -->
-        @if (api.profile()?.feedUrl; as feedUrl) {
-          <div class="side-card">
-            <div class="side-card__hdr">CLOUDCALENDARS .ICS FEED</div>
-            <div class="feed-actions">
-              <button type="button" class="sync-btn" (click)="copyText(feedUrl, 'Copied .ics feed URL!')">
-                Copy .ics Feed URL
-              </button>
-              @if (api.profile()?.webcalUrl; as wc) {
-                <a class="sync-btn" [href]="wc">Subscribe (webcal://)</a>
-              }
-            </div>
-          </div>
+          </article>
         }
-        </details>
       </aside>
 
       <!-- Main Calendar Canvas -->
       <div class="cal-main">
-        <!-- Toolbar -->
-        <div class="cal-toolbar">
-          <div class="cal-toolbar__left">
-            <button type="button" class="cal-nav-btn cal-nav-btn--today" (click)="jumpToday()">
-              Today
-            </button>
-            <div class="cal-arrows">
-              <button type="button" class="cal-nav-btn" (click)="stepPeriod(-1)" aria-label="Previous period">‹</button>
-              <button type="button" class="cal-nav-btn" (click)="stepPeriod(1)" aria-label="Next period">›</button>
-            </div>
-            <h1 class="cal-range-title">{{ headerRangeLabel() }}</h1>
+        @if (workspaceError()) {
+          <div class="workspace-status" role="alert">
+            <span>{{ workspaceError() }}</span>
+            <button class="native-pill" type="button" (click)="bootstrapSession()">{{ "Try Again" | nativeText }}</button>
           </div>
-
-          <div class="cal-toolbar__right">
-            <span class="tz-badge">{{ calendarTimeZone() }}</span>
-            <select class="calendar-view-picker" aria-label="Calendar view" [ngModel]="viewMode()" (ngModelChange)="viewMode.set($event)">
-              <option value="day">Day</option><option value="workweek">5 Days</option>
-              <option value="week">Week</option><option value="month">Month</option><option value="agenda">List</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- TIMELINE GRID (DAY / 5-DAY / WEEK) -->
-        @if (viewMode() === 'day' || viewMode() === 'workweek' || viewMode() === 'week') {
-          <!-- Sticky Day Headers + All-Day Strip -->
-          <div class="tl-head">
-            <div class="tl-gutter tl-gutter--head">
-              <span>ALL DAY</span>
-            </div>
-            <div
-              class="tl-day-headers"
-              [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
-            >
-              @for (d of visibleDays(); track d.getTime(); let di = $index) {
-                <div
-                  class="tl-day-hdr"
-                  [class.is-today]="isTodayDay(d)"
-                  [class.is-drop-col]="drag()?.hasMoved && drag()?.previewDayIdx === di"
-                >
-                  <div class="tl-day-hdr__top">
-                    <span class="tl-dow">{{ formatDayHeaderWeek(d).dow }}</span>
-                    <span class="tl-dnum">{{ formatDayHeaderWeek(d).num }}</span>
+        }
+        @if (viewMode() !== "weather") {
+          <header class="cal-toolbar" [class.searching]="searchOpen()">
+            <div class="cal-toolbar__left">
+              @if (viewMode() !== "menu") {
+                @if (viewMode() === "day" || viewMode() === "multi") {
+                  <button
+                    type="button"
+                    class="month-link"
+                    (click)="setView('month')"
+                  >
+                    {{ anchorDate() | nativeDate: "MMMM" }}
+                  </button>
+                }
+                @if (viewMode() === "week") {
+                  <div class="range-anchor">
+                    <button
+                      type="button"
+                      class="month-link range-pill"
+                      (click)="rangeOpen.set(!rangeOpen()); $event.stopPropagation()"
+                    >
+                      {{ anchorDate() | nativeDate: "MMM d" }} –
+                      {{
+                        visibleDays()[visibleDays().length - 1]
+                          | nativeDate: "MMM d"
+                      }}
+                    </button>
+                    @if (rangeOpen()) {
+                      <div
+                        class="range-popover"
+                        (click)="$event.stopPropagation()"
+                      >
+                        <h2>{{ "Choose Date Range" | nativeText }}</h2>
+                        <p>
+                          {{
+                            (rangeStart()
+                              ? "Choose the last day"
+                              : "Choose the first day"
+                            ) | nativeText
+                          }}
+                        </p>
+                        <div class="range-months">
+                          @for (month of rangeMonths(); track month.date) {
+                            <section>
+                              <h3>
+                                {{ month.date | nativeDate: "MMMM yyyy" }}
+                              </h3>
+                              <div class="mini-dow">
+                                @for (day of dayNames(); track $index) {
+                                  <span>{{ day[0] }}</span>
+                                }
+                              </div>
+                              <div class="mini-grid">
+                                @for (day of month.days; track day) {
+                                  <button
+                                    type="button"
+                                    class="mini-day"
+                                    [class.is-muted]="
+                                      day.getMonth() !== month.date.getMonth()
+                                    "
+                                    [class.in-range]="inRange(day)"
+                                    (click)="pickRange(day)"
+                                  >
+                                    {{ day.getDate() }}
+                                  </button>
+                                }
+                              </div>
+                            </section>
+                          }
+                        </div>
+                        <button
+                          type="button"
+                          class="native-pill"
+                          (click)="rangeOpen.set(false); rangeStart.set(null)"
+                        >
+                          {{ "Cancel" | nativeText }}
+                        </button>
+                      </div>
+                    }
                   </div>
-                  <div class="tl-allday-zone">
-                    @for (adev of allDayEventsForDay(d); track adev.id) {
+                }
+              }
+            </div>
+            <div class="cal-toolbar__right">
+              @if (viewMode() !== "menu") {
+                <button
+                  type="button"
+                  class="toolbar-icon desktop-add"
+                  aria-label="Add event" [disabled]="loadingWorkspace()"
+                  (click)="openNewEventDefault()"
+                >
+                  <cc-symbol [pointSize]="21" name="plus" />
+                </button>
+                <button
+                  type="button"
+                  class="toolbar-icon"
+                  aria-label="Search events"
+                  (click)="searchOpen.set(!searchOpen())"
+                >
+                  <cc-symbol [pointSize]="isDesktop() ? 21 : 22" name="magnifyingglass" />
+                </button>
+              }
+              <div class="mode-menu-container">
+                <button
+                  type="button"
+                  class="toolbar-icon"
+                  aria-label="Calendar views"
+                  [attr.aria-expanded]="modePicker()"
+                  (click)="
+                    modePicker.set(!modePicker()); $event.stopPropagation()
+                  "
+                >
+                  <cc-symbol [pointSize]="isDesktop() ? 20 : 22" [name]="activeModeIcon()" />
+                </button>
+                @if (modePicker()) {
+                  <div
+                    class="native-mode-menu"
+                    role="menu"
+                    (click)="$event.stopPropagation()"
+                  >
+                    @for (mode of modes; track mode.value) {
                       <button
                         type="button"
-                        class="allday-pill"
-                        [ngStyle]="cardStyle(adev.color)"
-                        (click)="openEditEventModal(adev)"
+                        role="menuitemradio"
+                        [attr.aria-checked]="viewMode() === mode.value"
+                        (click)="setView(mode.value)"
                       >
-                        <span class="allday-pill__bar"></span>
-                        <span class="allday-pill__txt">{{ adev.title }}</span>
+                        <cc-symbol
+                          name="checkmark"
+                          [style.visibility]="
+                            viewMode() === mode.value ? 'visible' : 'hidden'
+                          "
+                        /><cc-symbol [name]="mode.symbol" />{{
+                          mode.label | nativeText
+                        }}
                       </button>
                     }
                   </div>
+                }
+              </div>
+              <button
+                type="button"
+                class="toolbar-icon desktop-menu"
+                [class.active]="viewMode() === 'menu'"
+                aria-label="Menu"
+                (click)="toggleMenu()"
+              >
+                <cc-symbol [pointSize]="20" name="gearshape" />
+              </button>
+            </div>
+          </header>
+        }
+
+        @if (viewMode() === "menu") {
+          <cc-calendar-menu
+            [calendars]="displayCalendars()"
+            [hiddenIDs]="hiddenCalendarIDs()"
+            [multiIDs]="multiIDs()"
+            (toggleCalendar)="toggleCalendar($event)"
+            (toggleMulti)="toggleMulti($event)"
+            (changed)="reloadAllWorkspaceData()"
+            (connect)="
+              $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
+            "
+            (disconnect)="disconnectExternal($event)"
+            (settingsChanged)="readPreferences()"
+            (openEvent)="showEvent($event)"
+          />
+        }
+
+        @if (
+          (viewMode() === "month" || viewMode() === "year") && !searchOpen()
+        ) {
+          <div class="period-heading">
+            <button
+              type="button"
+              aria-label="Previous period"
+              (click)="stepPeriod(-1)"
+            >
+              <cc-symbol name="chevron.left" />
+            </button>
+            <h1>{{ headerRangeLabel() }}</h1>
+            <button
+              type="button"
+              aria-label="Next period"
+              (click)="stepPeriod(1)"
+            >
+              <cc-symbol name="chevron.right" />
+            </button>
+          </div>
+        }
+
+        @if ((viewMode() === "day" || viewMode() === "multi") && !searchOpen()) {
+          <div
+            class="week-carousel"
+            (pointerdown)="weekPointerDown($event)"
+            (pointerup)="weekPointerUp($event)"
+          >
+            <button
+              type="button"
+              class="week-step"
+              aria-label="Previous week"
+              (click)="weekOffset.set(weekOffset() - 1)"
+            >
+              <cc-symbol name="chevron.left" />
+            </button>
+            @for (day of weekDays(); track day) {
+              <button
+                type="button"
+                class="week-day"
+                [class.today]="isTodayDay(day)"
+                [class.selected]="
+                  day.toDateString() === anchorDate().toDateString()
+                "
+                (click)="selectWeekDay(day)"
+              >
+                <small>{{ day | nativeDate: "EEEEE" }}</small>
+                <span>{{ day.getDate() }}</span>
+              </button>
+            }
+            <button
+              type="button"
+              class="week-step"
+              aria-label="Next week"
+              (click)="weekOffset.set(weekOffset() + 1)"
+            >
+              <cc-symbol name="chevron.right" />
+            </button>
+          </div>
+          <div
+            class="selected-day-heading" [class.multi]="viewMode() === 'multi'"
+            [class.today]="isTodayDay(anchorDate())"
+          >
+            {{ anchorDate() | nativeDate: "EEE dd.MM.yy" }}
+          </div>
+        }
+
+        @if (searchOpen() && viewMode() !== "menu" && viewMode() !== "weather") {
+          <div class="native-search">
+            <cc-symbol name="magnifyingglass" />
+            <input
+              autofocus
+              placeholder="Search events"
+              [ngModel]="searchText()"
+              (ngModelChange)="searchText.set($event)"
+            />
+            <button
+              type="button"
+              aria-label="Close search"
+              (click)="searchOpen.set(false); searchText.set('')"
+            >
+              <cc-symbol name="xmark.circle.fill" />
+            </button>
+          </div>
+          @if (searchText()) {
+            <div class="agenda-wrap native-list-wrap">
+              @for (grp of searchGroups(); track grp.key) {
+                <section class="native-list-day">
+                  <h3 class="native-list-day__hdr" [class.is-today]="grp.isToday">
+                    {{ grp.label }}
+                  </h3>
+                  @for (row of grp.rows; track $index) {
+                    <button
+                      type="button"
+                      class="native-list-row"
+                      [class.is-cancelled]="row.event.status === 'cancelled'"
+                      (click)="activateEvent(row.event)"
+                      (contextmenu)="contextEvent(row.event, $event)"
+                    >
+                      <span
+                        class="native-list-row__bar"
+                        [style.background]="row.event.color || '#0A84FF'"
+                      ></span>
+                      <span class="native-list-row__main">
+                        <strong>{{
+                          row.event.title || ("No Title" | nativeText)
+                        }}</strong>
+                        @if (row.event.location) {
+                          <small>{{ row.event.location }}</small>
+                        }
+                      </span>
+                      <span class="native-list-row__times">
+                        <span>{{
+                          row.allDayLabel
+                            ? ("all-day" | nativeText)
+                            : row.endsOnly
+                              ? ("Ends" | nativeText)
+                              : row.timeTop
+                        }}</span>
+                        @if (row.timeBottom) {
+                          <span>{{ row.timeBottom }}</span>
+                        }
+                      </span>
+                    </button>
+                  }
+                </section>
+              } @empty {
+                <div class="empty-state native-empty">
+                  <cc-symbol name="magnifyingglass" />
+                  <p>{{ "No matching events." | nativeText }}</p>
                 </div>
               }
             </div>
-          </div>
+          }
+        }
 
-          <!-- Scrollable 24-Hour Pointer-Captured Canvas -->
-          <div class="tl-scroll" #timelineScroll>
-            <div class="tl-body" [style.height.px]="24 * hourPx">
-              <!-- Left 60px Hours Column -->
-              <div class="tl-gutter">
-                @for (h of hours; track h) {
-                  <div class="tl-hour-lbl" [style.top.px]="h * hourPx">
-                    {{ formatHourLabel(h) }}
+        @if (syncingExternal() || syncFeedback()) {
+          <div class="sync-feedback" role="status">
+            {{ syncingExternal() ? ("Connecting…" | nativeText) : syncFeedback() }}
+            <button
+              type="button"
+              aria-label="Close status"
+              (click)="syncFeedback.set(null)"
+            >
+              <cc-symbol name="xmark" />
+            </button>
+          </div>
+        }
+
+        @if (!searchOpen() || !searchText()) {
+          @if (viewMode() === "weather") {
+            <cc-weather
+              [modes]="modes"
+              [currentMode]="viewMode()"
+              [isDesktop]="isDesktop()"
+              (viewChange)="setView($event)"
+              (openMenu)="toggleMenu()"
+              (createEvent)="openWeatherEvent($event)"
+            />
+          }
+
+          @if (viewMode() === "year") {
+            <div class="year-grid">
+              @for (month of yearMonths(); track month.date) {
+                <section>
+                  <button
+                    type="button"
+                    class="year-month"
+                    (click)="selectMiniDay(month.date); setView('month')"
+                  >
+                    {{ month.date | nativeDate: "MMM" }}
+                  </button>
+                  <div class="mini-dow">
+                    @for (day of dayNames(); track $index) {
+                      <span>{{ day[0] }}</span>
+                    }
+                  </div>
+                  <div class="mini-grid">
+                    @for (cell of month.days; track cell.day) {
+                      <button
+                        type="button"
+                        class="mini-day"
+                        [class.is-muted]="!cell.inMonth"
+                        [class.is-today]="cell.inMonth && isTodayDay(cell.day)"
+                        (click)="selectMiniDay(cell.day); setView('day')"
+                      >
+                        <span>{{ cell.day.getDate() }}</span>
+                        @if (cell.dots.length) {
+                          <i class="mini-dots">
+                            @for (c of cell.dots; track $index) {
+                              <em [style.background]="c"></em>
+                            }
+                          </i>
+                        }
+                      </button>
+                    }
+                  </div>
+                </section>
+              }
+            </div>
+          }
+
+          @if (viewMode() === "multi" && !multiCalendars().length) {
+            <div class="empty-state native-empty">
+              <cc-symbol name="align.vertical.top" />
+              <p>
+                {{ "Select calendars in Menu → MultiCalendar." | nativeText }}
+              </p>
+              <button
+                type="button"
+                class="native-pill"
+                (click)="toggleMenu()"
+              >
+                {{ "Choose Calendars" | nativeText }}
+              </button>
+            </div>
+          }
+
+          <!-- TIMELINE GRID (DAY / MULTI-DAY / MULTI-CALENDAR) -->
+          @if (
+            viewMode() === "day" ||
+            viewMode() === "workweek" ||
+            viewMode() === "week" ||
+            (viewMode() === "multi" && multiCalendars().length)
+          ) {
+            @if (viewMode() !== 'day') {
+              <div class="tl-head calendar-column-head" [class.multi]="viewMode() === 'multi'">
+                <div></div><div class="tl-day-headers" (scroll)="syncTimelineScroll($event)" [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(100px, 1fr))'">
+                  @for (d of visibleDays(); track $index; let di = $index) {
+                    @if (viewMode() === 'multi') {
+                      <strong class="column-calendar" [style.color]="multiCalendars()[di].color">{{ multiCalendars()[di].title }}</strong>
+                    } @else {
+                      <button class="column-date" type="button" [class.today]="isTodayDay(d)" (click)="selectMiniDay(d); setView('day')">{{ d | nativeDate: "EEE dd.MM.yy" }}</button>
+                    }
+                  }
+                </div>
+              </div>
+            }
+            <div class="tl-head all-day-head" [style.height.px]="allDayHeight()">
+              <div class="tl-gutter tl-gutter--head">
+                <span>{{ 'all-day' | nativeText }}</span>
+                @if (maxAllDay() > 3) {
+                  <button type="button" [attr.aria-expanded]="expandedAllDay()" aria-label="Show all-day events" (click)="expandedAllDay.set(!expandedAllDay())">
+                    <cc-symbol [name]="expandedAllDay() ? 'chevron.up' : 'chevron.down'" />
+                  </button>
+                }
+              </div>
+              <div class="tl-day-headers" (scroll)="syncTimelineScroll($event)" [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(100px, 1fr))'">
+                @for (d of visibleDays(); track $index; let di = $index) {
+                  <div class="tl-allday-zone" (pointerdown)="startTimelineGesture($event, 'create', di, undefined, true)" (dblclick)="doubleClickSlot($event, di, true)">
+                    @for (adev of timelineColumns()[di].allDay.slice(0, expandedAllDay() ? undefined : 3); track adev.id) {
+                      <button type="button" class="allday-pill" [class.ghost-source]="drag()?.active && drag()?.event?.id === adev.id"
+                        [class.is-cancelled]="adev.status === 'cancelled'" [ngStyle]="cardStyle(adev.color)"
+                        (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="$event.detail === 0 && selectEvent(adev)"
+                        (dblclick)="activateEvent(adev)" (contextmenu)="contextEvent(adev, $event)">
+                        <cc-symbol name="calendar.circle.fill" />
+                        @if (!isDesktop() && adev.receivedAccess === 'reader') { <cc-symbol name="lock.fill" /> }
+                        <span class="allday-pill__txt">{{ adev.title }}</span>
+                      </button>
+                    }
+                    @if (drag(); as g) {
+                      @if (g.active && g.valid && g.preview.allDay && g.previewDayIdx === di) {
+                        <span class="allday-pill all-day-ghost" [ngStyle]="cardStyle(g.event?.color, true)">{{ g.event?.title || ('New Event' | nativeText) }}</span>
+                      }
+                    }
                   </div>
                 }
+              </div>
+            </div>
 
-                <!-- iOS Red Current Time Pill -->
-                <div class="tl-now-pill" [style.top.px]="currentTimeTopPx()">
-                  {{ currentTimeLabel() }}
+            <div class="tl-scroll" #timelineScroll (scroll)="syncTimelineScroll($event)">
+              <div class="tl-body" [style.min-width.px]="60 + visibleDays().length * 100" [style.height.px]="24 * hourPx + 20">
+                <div class="tl-gutter">
+                  @for (h of hours; track h) {
+                    <div class="tl-hour-lbl" [style.visibility]="showsHourLabel(h) ? null : 'hidden'" [style.top.px]="10 + h * hourPx">
+                      {{ formatHourLabel(h) }}
+                    </div>
+                  }
+                  @if (timelineIncludesToday()) {
+                    <div class="tl-now-pill" [style.top.px]="10 + currentTimeTopPx()">{{ currentTimeLabel() }}</div>
+                  }
+                  @if (drag(); as activeDrag) {
+                    @if (activeDrag.active && activeDrag.valid && !activeDrag.preview.allDay) {
+                      <div
+                        class="tl-drag-pill"
+                        [style.top.px]="
+                          10 + previewMinute(activeDrag) / 60 * hourPx
+                        "
+                      >
+                        {{ formatMinutesHm(previewMinute(activeDrag)) }}
+                      </div>
+                    }
+                  }
                 </div>
 
-                <!-- Live Snapped Drag Time Pill in Hours Gutter -->
-                @if (drag(); as activeDrag) {
-                  @if (activeDrag.hasMoved) {
+                <div
+                  class="tl-cols"
+                  #daysColumnsEl
+                  [style.gridTemplateColumns]="
+                    'repeat(' + visibleDays().length + ', minmax(0, 1fr))'
+                  "
+                >
+                  @for (d of visibleDays(); track $index; let di = $index) {
                     <div
-                      class="tl-drag-pill"
-                      [style.top.px]="(activeDrag.previewStartMin / 60) * hourPx"
+                      class="tl-col"
+                      [class.is-today]="isTodayDay(d)"
+                      [class.is-drop-col]="
+                        drag()?.active && drag()?.valid && drag()?.previewDayIdx === di
+                      "
+                      (pointerdown)="startTimelineGesture($event, 'create', di)" (dblclick)="doubleClickSlot($event, di)"
                     >
-                      {{ formatMinutesHm(activeDrag.previewStartMin) }}
+                      @for (h of hours; track h) {
+                        <div class="tl-line" [style.top.px]="h * hourPx"></div>
+                      }
+
+                      @if (timelineIncludesToday() && (isDesktop() || isTodayDay(d))) {
+                        <div
+                          class="tl-now-line"
+                          [class.other-day]="!isTodayDay(d)"
+                          [style.top.px]="currentTimeTopPx()"
+                        >
+                          <span class="tl-now-dot"></span>
+                        </div>
+                      }
+
+                      @if (drag(); as g) {
+                        @if (g.active && g.valid && !g.preview.allDay && g.previewDayIdx === di) {
+                          <div class="ev-block ev-block--creating" [ngStyle]="ghostStyle(g.preview, di)"
+                            [style.background]="cardStyle(g.event?.color, true).background" [style.color]="cardStyle(g.event?.color, true).color">
+                            <strong class="ev-block__title">{{ g.event?.title || ('New Event' | nativeText) }}</strong>
+                            <span class="ev-block__time">{{ formatEventClock(g.preview.start) }} – {{ formatEventClock(g.preview.end) }}</span>
+                          </div>
+                        }
+                      }
+                      @for (blk of timelineColumns()[di].timed; track blk.id) {
+                        @let isSelected = inspectorEvent()?.id === blk.id;
+                        <div
+                          class="ev-block"
+                          [class.ghost-source]="drag()?.active && drag()?.event?.id === blk.id"
+                          [class.is-selected]="isSelected"
+                          [class.is-cancelled]="blk.data.status === 'cancelled'"
+                          [class.is-readonly]="blk.data.readOnly"
+                          [ngStyle]="blockPositionStyle(blk)"
+                          (pointerdown)="startTimelineGesture($event, 'move', di, blk.data)"
+                          (contextmenu)="contextEvent(blk.data, $event)"
+                          (dblclick)="activateEvent(blk.data)"
+                          (keydown.enter)="showEvent(blk.data)"
+                          role="button"
+                          tabindex="0"
+                          [attr.aria-label]="blk.data.title"
+                        >
+                          <span class="ev-block__bar" aria-hidden="true"></span>
+                          <div
+                            class="ev-block__inner"
+                            [style.max-height.px]="
+                              ((blk.contentEndMinutes - blk.startMinutes) *
+                                hourPx) /
+                                60 -
+                              4
+                            "
+                          >
+                            <div class="ev-block__toprow">
+                              <strong class="ev-block__title">@if (!isDesktop() && blk.data.receivedAccess === 'reader') {<cc-symbol name="lock.fill" />}{{ blk.data.title }}</strong>
+                            </div>
+                            @if (timelineVideoLabel(blk.data); as videoLabel) {
+                              <span class="ev-block__loc"><cc-symbol name="video" />{{ videoLabel }}</span>
+                            }
+                            <span class="ev-block__time">
+                              <cc-symbol name="clock" />
+                              {{ timelineTimeSpan(blk.data) }}
+                            </span>
+                            @if (
+                              blk.data.location
+                            ) {
+                              <span class="ev-block__loc">
+                                <cc-symbol name="location" />{{ blk.data.location }}
+                              </span>
+                            }
+                          </div>
+
+                          @if (!blk.data.readOnly && isSelected) {
+                            <span
+                              class="ev-handle ev-handle--top" [hidden]="!startsOnDay(blk.data, d)"
+                              title="Drag to adjust start time"
+                              (pointerdown)="
+                                startTimelineGesture($event, 'resize-start', di, blk.data)
+                              "
+                            ></span>
+                            <span
+                              class="ev-handle ev-handle--bottom" [hidden]="!endsOnDay(blk.data, d)"
+                              title="Drag to adjust end time"
+                              (pointerdown)="
+                                startTimelineGesture($event, 'resize-end', di, blk.data)
+                              "
+                            ></span>
+                          }
+                        </div>
+                      }
                     </div>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- MONTH VIEW (MacTabletMonthView parity) -->
+          @if (viewMode() === "month") {
+            <div class="month-wrap">
+              <div class="month-dow">
+                @for (day of dayNames(); track $index) {
+                  <span>{{ day[0] }}</span>
+                }
+              </div>
+              <div class="month-grid">
+                @for (cell of monthGridCells(); track cell.key) {
+                  <div
+                    class="month-cell"
+                    [class.is-muted]="!cell.inMonth"
+                    [class.is-today]="cell.isToday"
+                    [class.is-drop-target]="monthDropTargetKey() === cell.key"
+                    (dragover)="onMonthCellDragOver($event, cell.key)"
+                    (dragleave)="monthDropTargetKey.set(null)"
+                    (drop)="onMonthCellDrop($event, cell.date)"
+                    (click)="openMonthDay($event, cell.date)"
+                    (dblclick)="createFromMonth($event, cell.date)"
+                  >
+                    <div class="month-cell__hdr">
+                      <span class="month-cell__num">{{ cell.dayNum }}</span>
+                    </div>
+                    <div class="month-cell__list">
+                      @for (ev of cell.events; track ev.id) {
+                        <div
+                          class="month-pill"
+                          [class.is-cancelled]="ev.status === 'cancelled'"
+                          [attr.draggable]="!ev.readOnly"
+                          [ngStyle]="cardStyle(ev.color)"
+                          (dragstart)="onMonthPillDragStart($event, ev)" (dragend)="endMonthDrag()"
+                          (contextmenu)="contextEvent(ev, $event)"
+                          (click)="$event.stopPropagation(); showEvent(ev)"
+                        >
+                          <span class="month-pill__title">{{ ev.title }}</span>
+                        </div>
+                      }
+                      @if (cell.moreCount > 0) {
+                        <button
+                          type="button"
+                          class="month-more"
+                          (click)="
+                            $event.stopPropagation();
+                            selectMiniDay(cell.date);
+                            setView('day')
+                          "
+                        >
+                          ... +{{ cell.moreCount }}
+                        </button>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- LIST VIEW (MacTabletEventList parity) -->
+          @if (viewMode() === "agenda") {
+            <div class="agenda-wrap native-list-wrap">
+              @if (agendaGroups().length === 0) {
+                <div class="empty-state native-empty">
+                  <cc-symbol name="calendar" />
+                  <p>{{ "No events found" | nativeText }}</p>
+                </div>
+              } @else {
+                @for (grp of agendaGroups(); track grp.key) {
+                  <section class="native-list-day">
+                    <h3
+                      class="native-list-day__hdr"
+                      [class.is-today]="grp.isToday"
+                    >
+                      {{ grp.label }}
+                    </h3>
+                    @for (row of grp.rows; track $index) {
+                      <button
+                        type="button"
+                        class="native-list-row"
+                        [class.is-cancelled]="row.event.status === 'cancelled'"
+                        (click)="showEvent(row.event)"
+                        (contextmenu)="contextEvent(row.event, $event)"
+                      >
+                        <span
+                          class="native-list-row__bar"
+                          [style.background]="row.event.color || '#0A84FF'"
+                        ></span>
+                        <span class="native-list-row__main">
+                          <strong>{{
+                            row.event.title || ("No Title" | nativeText)
+                          }}</strong>
+                          @if (row.event.location) {
+                            <small>{{ row.event.location }}</small>
+                          }
+                        </span>
+                        <span class="native-list-row__times">
+                          <span>{{
+                            row.allDayLabel
+                              ? ("all-day" | nativeText)
+                              : row.endsOnly
+                                ? ("Ends" | nativeText)
+                                : row.timeTop
+                          }}</span>
+                          @if (row.timeBottom) {
+                            <span>{{ row.timeBottom }}</span>
+                          }
+                        </span>
+                      </button>
+                    }
+                  </section>
+                }
+              }
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    @if (!isDesktop()) {
+      @if (drawerOpen()) {
+        <button
+          type="button"
+          class="drawer-scrim"
+          aria-label="Close menu"
+          (click)="drawerOpen.set(false)"
+        ></button>
+      }
+      <div
+        class="ios-drawer"
+        [class.expanded]="drawerOpen()"
+        [class.weather-dimmed]="viewMode() === 'weather' && !drawerOpen()"
+        [style.height.px]="drawerHeight()"
+        [class.dragging]="drawerDrag() !== 0"
+      >
+        <button
+          type="button"
+          class="drawer-handle"
+          aria-label="Menu"
+          [attr.aria-expanded]="drawerOpen()"
+          (pointerdown)="drawerPointerDown($event)"
+          (pointermove)="drawerPointerMove($event)"
+          (pointerup)="drawerPointerUp($event)"
+          (pointercancel)="drawerDrag.set(0)"
+          (keydown.enter)="toggleMenu()"
+        >
+          <span></span>
+        </button>
+        <div class="drawer-content" [attr.inert]="drawerOpen() ? null : ''">
+          <cc-calendar-menu
+            [calendars]="displayCalendars()"
+            [hiddenIDs]="hiddenCalendarIDs()"
+            [multiIDs]="multiIDs()"
+            (toggleCalendar)="toggleCalendar($event)"
+            (toggleMulti)="toggleMulti($event)"
+            (changed)="reloadAllWorkspaceData()"
+            (connect)="
+              $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
+            "
+            (disconnect)="disconnectExternal($event)"
+            (settingsChanged)="readPreferences()"
+            (openEvent)="showEvent($event)"
+          />
+        </div>
+      </div>
+      <nav
+        class="ios-bottom-bar"
+        [class.weather-dimmed]="viewMode() === 'weather' && !drawerOpen()"
+        aria-label="Calendar actions"
+      >
+        <button type="button" (click)="bottomToday()">
+          <cc-symbol name="calendar.badge.checkmark" /><span>{{
+            "Today" | nativeText
+          }}</span>
+        </button>
+        <button type="button" (click)="openNewEventDefault()">
+          <cc-symbol name="calendar.badge.plus" /><span>{{
+            "Add" | nativeText
+          }}</span>
+        </button>
+        <button type="button" (click)="setView('weather')">
+          <cc-symbol name="cloud.sun.fill" /><span>{{
+            "Weather" | nativeText
+          }}</span>
+        </button>
+      </nav>
+    }
+
+    <!-- =======================================================================
+         MODALS, CONTEXT MENU & FLOATING UNDO TOAST
+    ======================================================================== -->
+
+    @if (shareEvent(); as event) {
+      <div class="modal-backdrop" (click)="shareEvent.set(null)">
+        <section
+          class="modal-sheet native-event-sheet share-sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Share Event"
+          (click)="$event.stopPropagation()"
+        >
+          <header class="native-sheet-header">
+            <button
+              type="button"
+              class="round-button"
+              aria-label="Close"
+              (click)="
+                shareDelivery() === 'methods'
+                  ? shareEvent.set(null)
+                  : shareDelivery.set('methods')
+              "
+            >
+              <cc-symbol [pointSize]="17"
+                [name]="shareDelivery() === 'methods' ? 'xmark' : 'chevron.left'"
+              />
+            </button>
+            <h2>
+              {{
+                (shareDelivery() === "qr"
+                  ? "QR Code"
+                  : shareDelivery() === "email"
+                    ? "Email Invitations"
+                    : "Share Event"
+                ) | nativeText
+              }}
+            </h2>
+            <span></span>
+          </header>
+          <div class="modal-body native-editor">
+            <h2 class="share-title">{{ event.title }}</h2>
+            @if (shareDelivery() === "methods") {
+              @for (
+                method of [
+                  {
+                    id: "link",
+                    title: "Share Link",
+                    subtitle: "Share this event with a link",
+                    icon: "square.and.arrow.up",
+                  },
+                  {
+                    id: "email",
+                    title: "Email",
+                    subtitle: "Invite people and choose their access",
+                    icon: "envelope",
+                  },
+                  {
+                    id: "qr",
+                    title: "QR Code",
+                    subtitle: "Scan to open this event",
+                    icon: "qrcode",
+                  },
+                ];
+                track method.id
+              ) {
+                <button
+                  type="button"
+                  class="share-method"
+                  [disabled]="shareBusy()"
+                  (click)="prepareShare($any(method.id))"
+                >
+                  <span class="share-icon"
+                    ><cc-symbol [name]="method.icon"
+                  /></span>
+                  <span>
+                    <strong>{{ method.title | nativeText }}</strong>
+                    <small>{{ method.subtitle | nativeText }}</small>
+                  </span>
+                  <cc-symbol name="chevron.right" />
+                </button>
+              }
+            }
+            @if (shareDelivery() === "qr") {
+              <p class="share-caption">
+                {{ "Scan to open this event" | nativeText }}
+              </p>
+              <img
+                class="share-qr"
+                [src]="qrImage()"
+                alt="Event invitation QR code"
+              />
+              <button
+                type="button"
+                class="native-pill full"
+                (click)="copyText(shareLink())"
+              >
+                <cc-symbol name="doc.on.doc" />{{ "Copy Link" | nativeText }}
+              </button>
+            }
+            @if (shareDelivery() === "email") {
+              <div class="native-form-group">
+                @for (person of invitePeople(); track $index) {
+                  <div class="native-form-row">
+                    <cc-symbol name="person.crop.circle" />
+                    <input
+                      placeholder="Email address"
+                      type="email"
+                      [(ngModel)]="person.email"
+                    />
+                    <cc-choice
+                      label="Access"
+                      [value]="person.access"
+                      [options]="native.roles"
+                      (valueChange)="person.access = $event"
+                    />
+                  </div>
+                }
+                <button
+                  type="button"
+                  class="native-pill"
+                  (click)="addInvitePerson()"
+                >
+                  <cc-symbol name="person.badge.plus" />{{
+                    "Add Person" | nativeText
+                  }}
+                </button>
+              </div>
+              <button
+                type="button"
+                class="native-pill primary full"
+                [disabled]="shareBusy() || !validInvitations()"
+                (click)="sendInvitations()"
+              >
+                <cc-symbol name="paperplane.fill" />{{
+                  "Send Invitations" | nativeText
+                }}
+              </button>
+            }
+            @if (shareBusy()) {
+              <p role="status">{{ "Preparing…" | nativeText }}</p>
+            }
+            @if (shareError()) {
+              <p class="share-error" role="alert">{{ shareError() }}</p>
+            }
+          </div>
+        </section>
+      </div>
+    }
+
+    <!-- Context Menu (MacTabletEventInteractions parity) -->
+    @if (eventContext(); as context) {
+      <div
+        class="native-context"
+        role="menu"
+        [style.left.px]="context.x"
+        [style.top.px]="context.y"
+        (click)="$event.stopPropagation()"
+      >
+        @if (meetingUrlForEvent(context.event); as meetUrl) {
+          <a
+            class="context-link"
+            role="menuitem"
+            [href]="meetUrl"
+            target="_blank"
+            rel="noopener"
+            (click)="eventContext.set(null)"
+          >
+            <cc-symbol name="video.fill" />{{ "Join Meeting" | nativeText }}
+          </a>
+        }
+        <button
+          type="button"
+          role="menuitem"
+          (click)="showEvent(context.event)"
+        >
+          <cc-symbol name="info.circle" />{{ "Detail" | nativeText }}
+        </button>
+        @if (!context.event.readOnly) {
+          <button
+            type="button"
+            role="menuitem"
+            (click)="openEditEventModal(context.event); eventContext.set(null)"
+          >
+            <cc-symbol name="square.and.pencil" />{{ "Edit" | nativeText }}
+          </button>
+        }
+        @if (canShare(context.event)) {
+          <button
+            type="button"
+            role="menuitem"
+            (click)="openShareEvent(context.event); eventContext.set(null)"
+          >
+            <cc-symbol name="square.and.arrow.up" />{{ "Share" | nativeText }}
+          </button>
+        }
+        @if (!context.event.readOnly) {
+          <button
+            type="button"
+            role="menuitem"
+            (click)="duplicateEvent(context.event); eventContext.set(null)"
+          >
+            <cc-symbol name="doc.on.doc" />{{ "Duplicate" | nativeText }}
+          </button>
+          <hr class="context-sep" />
+          <button
+            type="button"
+            role="menuitem"
+            class="danger-text"
+            (click)="
+              openEditEventModal(context.event);
+              pendingDelete.set(true);
+              eventContext.set(null)
+            "
+          >
+            <cc-symbol name="trash" />{{ "Delete" | nativeText }}
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Event Details Sheet (MacTabletEventEditor detailForm parity) -->
+    @if (selectedEvent(); as event) {
+      @let hasHeaderActions = !event.readOnly || canShare(event);
+      <div class="modal-backdrop" (click)="selectedEvent.set(null)">
+        <section
+          class="modal-sheet native-event-sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Event Details"
+          (click)="$event.stopPropagation()"
+        >
+          <header class="native-sheet-header">
+            @if (hasHeaderActions) {
+              <div class="event-toolbar">
+                @if (!event.readOnly) {
+                  <button
+                    type="button"
+                    aria-label="Edit event"
+                    (click)="openEditEventModal(event)"
+                  >
+                    <cc-symbol [pointSize]="17" name="pencil" />
+                  </button>
+                }
+                @if (canShare(event)) {
+                  <button
+                    type="button"
+                    aria-label="Share event"
+                    (click)="openShareEvent(event)"
+                  >
+                    <cc-symbol [pointSize]="17" name="square.and.arrow.up" />
+                  </button>
+                }
+              </div>
+            } @else {
+              <button
+                type="button"
+                class="round-button"
+                aria-label="Close"
+                (click)="selectedEvent.set(null)"
+              >
+                <cc-symbol [pointSize]="17" name="xmark" />
+              </button>
+            }
+            <h2>{{ "Event Details" | nativeText }}</h2>
+            @if (hasHeaderActions) {
+              <button
+                type="button"
+                class="round-button"
+                aria-label="Done"
+                (click)="selectedEvent.set(null)"
+              >
+                <cc-symbol [pointSize]="17" name="checkmark" />
+              </button>
+            } @else {
+              <span></span>
+            }
+          </header>
+          <div class="modal-body native-details">
+            <div class="native-form-group detail-title">
+              <h1>{{ event.title }}</h1>
+              @if (event.location) {
+                <p
+                  class="detail-location"
+                  [style.color]="event.color || '#0A84FF'"
+                >
+                  {{ event.location }}
+                </p>
+              }
+              @for (line of detailDateLines(event); track $index) { <p>{{ line }}</p> }
+              @if (event.details?.recurrenceRules?.length) {
+                <p class="detail-repeat">{{ recurrenceDescription(event) }}</p>
+              }
+            </div>
+
+            <div class="native-form-group">
+              <cc-detail-timeline
+                [timeFormat]="preferences()['time'] || 'system'"
+                [timeZone]="event.details?.timeZone || calendarTimeZone()"
+                [selected]="event"
+                [events]="allDisplayEvents()"
+                [dark]="surfaceTheme() === 'dark'"
+              />
+            </div>
+
+            <div class="native-form-group">
+              <div class="native-form-row">
+                <span>{{ "Calendar" | nativeText }}</span>
+                <span class="detail-calendar-val">
+                  <i [style.background]="event.color"></i>
+                  @if (!event.readOnly && calendarChoices().length > 1) {
+                    <cc-choice
+                      label="Calendar"
+                      [value]="event.calendarId || ''"
+                      [options]="calendarChoices()"
+                      [disabled]="savingEvent()"
+                      (valueChange)="updateEventCalendar(event, $event)"
+                    />
+                  } @else {
+                    <span>{{ calendarName(event.calendarId) }}</span>
+                  }
+                </span>
+              </div>
+              <div class="native-form-row">
+                <span>{{ "Travel Time" | nativeText }}</span>
+                <cc-choice
+                  label="Travel Time"
+                  [value]="'' + (event.details?.travelTime || 0)"
+                  [options]="travelChoices"
+                  [disabled]="!!event.readOnly || savingEvent()"
+                  (valueChange)="updateDetail(event, { travelTime: +$event })"
+                />
+              </div>
+            </div>
+
+            <div class="native-form-group">
+              <div class="native-form-row">
+                <span>{{ "Alert" | nativeText }}</span>
+                <cc-choice
+                  label="Alert"
+                  [value]="'' + eventAlert(event, 0)"
+                  [options]="alertChoices"
+                  [disabled]="!!event.readOnly || savingEvent()"
+                  (valueChange)="updateDetailAlert(event, 0, +$event)"
+                />
+              </div>
+              @if (eventAlert(event, 0) >= 0) {
+                <div class="native-form-row">
+                  <span>{{ "Second Alert" | nativeText }}</span>
+                  <cc-choice
+                    label="Second Alert"
+                    [value]="'' + eventAlert(event, 1)"
+                    [options]="alertChoices"
+                    [disabled]="!!event.readOnly || savingEvent()"
+                    (valueChange)="updateDetailAlert(event, 1, +$event)"
+                  />
+                </div>
+              }
+            </div>
+
+            @if ((event.details?.attachments ?? []).length) {
+              <div class="native-form-group">
+                @for (
+                  attachment of event.details?.attachments ?? [];
+                  track attachment.id
+                ) {
+                  <button
+                    type="button"
+                    class="native-form-row detail-attachment-row"
+                    (click)="downloadAttachment(attachment)"
+                  >
+                    <cc-symbol name="paperclip" />
+                    <span>{{ attachment.fileName }}</span>
+                  </button>
+                }
+              </div>
+            }
+
+            @if (
+              event.details?.videoCallURL ||
+              event.details?.url ||
+              event.details?.notes
+            ) {
+              <div class="native-form-group">
+                @if (safeLink(event.details?.videoCallURL); as videoHref) {
+                  <div class="native-form-row detail-stacked-row">
+                    <span>{{ "Video Call" | nativeText }}</span>
+                    <a [href]="videoHref" target="_blank" rel="noopener">{{
+                      event.details?.videoCallURL
+                    }}</a>
+                  </div>
+                }
+                @if (safeLink(event.details?.url); as urlHref) {
+                  <div class="native-form-row detail-stacked-row">
+                    <span>{{ "URL" | nativeText }}</span>
+                    <a [href]="urlHref" target="_blank" rel="noopener">{{
+                      event.details?.url
+                    }}</a>
+                  </div>
+                }
+                @if (event.details?.notes) {
+                  <div class="native-form-row detail-stacked-row">
+                    <span>{{ "Notes" | nativeText }}</span>
+                    <p class="notes">{{ event.details?.notes }}</p>
+                  </div>
+                }
+              </div>
+            }
+
+            @if (event.details?.structuredLocation; as place) {
+              @if (place.latitude != null && place.longitude != null) {
+                <cc-location-map class="native-form-group location-preview"
+                  [latitude]="place.latitude" [longitude]="place.longitude" [title]="event.location || place.title"
+                  [desktop]="isDesktop()" [dark]="surfaceTheme() === 'dark'" />
+              }
+            }
+            @if (!event.readOnly) {
+              @if (detailPendingDelete()) {
+                <div class="delete-confirm">
+                  <p>{{ "Delete this event?" | nativeText }}</p>
+                  <button
+                    type="button"
+                    class="native-pill"
+                    (click)="detailPendingDelete.set(false)"
+                  >
+                    {{ "Cancel" | nativeText }}
+                  </button>
+                  <button
+                    type="button"
+                    class="native-pill danger"
+                    [disabled]="savingEvent()"
+                    (click)="deleteEventInstance(event)"
+                  >
+                    {{ "Delete Event" | nativeText }}
+                  </button>
+                </div>
+              } @else {
+                <button
+                  type="button"
+                  class="native-pill danger full"
+                  (click)="detailPendingDelete.set(true)"
+                >
+                  {{ "Delete Event" | nativeText }}
+                </button>
+              }
+            }
+          </div>
+        </section>
+      </div>
+    }
+
+    <!-- Event Editor & Location / Custom Repeat Sub-Sheets (MacTabletEventEditor parity) -->
+    @if (editorDraft(); as d) {
+      <div class="modal-backdrop" (click)="closeEditor()">
+        <section
+          class="modal-sheet native-event-sheet"
+          role="dialog"
+          aria-modal="true"
+          [attr.aria-label]="editorPage() === 'location' ? 'Location' : editorPage() === 'recurrence' ? 'Custom Repeat' : d.isNew ? 'New Event' : 'Edit Event'"
+          (click)="$event.stopPropagation()"
+        >
+          <header class="native-sheet-header">
+            <button
+              type="button"
+              class="round-button"
+              [attr.aria-label]="editorPage() === 'main' ? 'Cancel' : 'Close'"
+              (click)="
+                editorPage() === 'location'
+                  ? commitLocationDraft()
+                  : editorPage() === 'recurrence'
+                    ? editorPage.set('main')
+                    : closeEditor()
+              "
+            >
+              <cc-symbol [pointSize]="17"
+                [name]="
+                  editorPage() === 'recurrence' ? 'chevron.left' : 'xmark'
+                "
+              />
+            </button>
+            <h2>
+              {{
+                (editorPage() === "location"
+                  ? "Location"
+                  : editorPage() === "recurrence"
+                    ? "Custom"
+                    : d.isNew
+                      ? "New Event"
+                      : "Edit Event"
+                ) | nativeText
+              }}
+            </h2>
+            @if (editorPage() === "main") {
+              <button
+                type="button"
+                class="round-button"
+                aria-label="Save event"
+                [disabled]="savingEvent() || !d.title.trim()"
+                (click)="saveDraftEvent()"
+              >
+                <cc-symbol [pointSize]="17" name="checkmark" />
+              </button>
+            } @else {
+              <span class="round-button-spacer"></span>
+            }
+          </header>
+          <div class="modal-body native-editor">
+            @if (editorPage() === "recurrence") {
+              <cc-repeat
+                [rule]="repeatRule(d)"
+                [start]="d.startDate"
+                (ruleChange)="changeRepeatRule($event)"
+              />
+            } @else if (editorPage() === "location") {
+              <div class="native-form-group">
+                <label class="native-form-row location-field-row">
+                  <span class="field-prefix"
+                    >{{ "Location" | nativeText }}:</span
+                  >
+                  <input
+                    autofocus
+                    aria-label="Location"
+                    [ngModel]="d.location"
+                    (ngModelChange)="
+                      changeLocation(d, $event)
+                    "
+                  />
+                  @if (d.location) {
+                    <button
+                      type="button"
+                      class="clear-location"
+                      aria-label="Clear location"
+                      (click)="changeLocation(d, '')"
+                    >
+                      <cc-symbol name="xmark.circle.fill" />
+                    </button>
+                  }
+                </label>
+                <label class="native-form-row location-field-row">
+                  <span class="field-prefix"
+                    >{{ "Video Call" | nativeText }}:</span
+                  >
+                  <input
+                    type="url"
+                    aria-label="Video Call"
+                    [(ngModel)]="d.videoCallURL"
+                  />
+                </label>
+              </div>
+              @if (d.location.trim()) {
+                <div class="native-form-group">
+                  <button
+                    type="button"
+                    class="native-form-row location-commit-btn"
+                    (click)="commitLocationDraft()"
+                  >
+                    “{{ d.location.trim() }}”
+                  </button>
+                </div>
+              }
+              @if (isDesktop() && searchingLocation()) {
+                <p class="location-searching">
+                  {{ "Searching…" | nativeText }}
+                </p>
+              }
+              @if (locationResults().length) {
+                <h3 class="editor-section-label">
+                  {{ "Map Locations" | nativeText }}
+                </h3>
+                <div class="native-form-group">
+                  @for (place of locationResults(); track place) {
+                    <button
+                      type="button"
+                      class="native-form-row map-result-row"
+                      (click)="pickLocationPlace(place)"
+                    >
+                      <cc-symbol
+                        class="map-pin-icon"
+                        name="mappin.and.ellipse"
+                      />
+                      <span class="map-result-text">
+                        <strong>{{ place.title }}</strong>
+                        @if (place.subtitle) { <small>{{ place.subtitle }}</small> }
+                      </span>
+                    </button>
+                  }
+                </div>
+              }
+            } @else {
+              <div class="native-form-group">
+                <label class="native-form-row">
+                  <input
+                    aria-label="Title"
+                    [placeholder]="'Title' | nativeText"
+                    [(ngModel)]="d.title"
+                  />
+                </label>
+                <div class="native-form-row location-row-wrap">
+                  <button
+                    type="button"
+                    class="location-row"
+                    (click)="openLocationPage(d)"
+                  >
+                    <span [class.placeholder]="!d.location">{{
+                      d.location || ("Location or Video Call" | nativeText)
+                    }}</span>
+                  </button>
+                  @if (d.location) {
+                    <button
+                      type="button"
+                      class="clear-location"
+                      aria-label="Clear"
+                      (click)="d.location = ''; d.structuredLocation = null"
+                    >
+                      <cc-symbol name="xmark.circle.fill" />
+                    </button>
+                  }
+                </div>
+              </div>
+
+              <div class="native-form-group">
+                <label class="native-form-row">
+                  <span>{{ "All-day" | nativeText }}</span>
+                  <input
+                    class="native-switch"
+                    type="checkbox"
+                    [ngModel]="d.allDay" (ngModelChange)="d.allDay = $event; expandedEventDate.set(null)"
+                  />
+                </label>
+                <cc-date-time
+                  label="Starts"
+                  [(focus)]="expandedEventDate"
+                  [date]="d.startDate"
+                  [time]="d.startTime"
+                  [showsTime]="!d.allDay"
+                  [timeFormat]="preferences()['time'] || 'system'"
+                  [firstWeekday]="firstWeekday()"
+                  (dateChange)="setStartPart('startDate', $event)"
+                  (timeChange)="setStartPart('startTime', $event)"
+                />
+                <cc-date-time
+                  label="Ends"
+                  [(focus)]="expandedEventDate"
+                  [date]="d.endDate"
+                  [time]="d.endTime"
+                  [minimum]="d.startDate"
+                  [showsTime]="!d.allDay"
+                  [timeFormat]="preferences()['time'] || 'system'"
+                  [firstWeekday]="firstWeekday()"
+                  (dateChange)="d.endDate = $event"
+                  (timeChange)="d.endTime = $event"
+                />
+                <div class="native-form-row">
+                  <span>{{ "Travel Time" | nativeText }}</span>
+                  <cc-choice
+                    label="Travel Time"
+                    [value]="'' + d.travelTime"
+                    [options]="travelChoices"
+                    (valueChange)="d.travelTime = +$event"
+                  />
+                </div>
+              </div>
+
+              <div class="native-form-group">
+                <div class="native-form-row">
+                  <span>{{ "Repeat" | nativeText }}</span>
+                  <cc-choice
+                    label="Repeat"
+                    [value]="repeatChoice(d)"
+                    [options]="repeatChoices"
+                    (valueChange)="chooseRepeat($event)"
+                  />
+                </div>
+                @if (d.recurrence !== "none") {
+                  <div class="native-form-row">
+                    <span>{{ "End Repeat" | nativeText }}</span>
+                    <cc-choice
+                      label="End Repeat"
+                      [value]="d.repeatUntil ? 'date' : 'never'"
+                      [options]="[
+                        { value: 'never', label: 'Never' },
+                        { value: 'date', label: 'On Date' },
+                      ]"
+                      (valueChange)="setRepeatEnd(d, $event)"
+                    />
+                  </div>
+                  @if (d.repeatUntil) {
+                    <cc-date-time
+                      label="End Date"
+                      [(focus)]="expandedEventDate"
+                      [date]="d.repeatUntil"
+                      [showsTime]="false"
+                      [minimum]="d.startDate"
+                      (dateChange)="d.repeatEdited = true; d.repeatUntil = $event"
+                    />
                   }
                 }
               </div>
 
-              <!-- Day Columns Container -->
-              <div
-                class="tl-cols"
-                #daysColumnsEl
-                [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
-              >
-                @for (d of visibleDays(); track d.getTime(); let di = $index) {
-                  <div
-                    class="tl-col"
-                    [class.is-today]="isTodayDay(d)"
-                    [class.is-drop-col]="drag()?.hasMoved && drag()?.previewDayIdx === di"
-                    (pointerdown)="onDayColumnPointerDown($event, di)"
-                  >
-                    <!-- Hour & Half-Hour Hairlines -->
-                    @for (h of hours; track h) {
-                      <div class="tl-line" [style.top.px]="h * hourPx"></div>
-                      <div class="tl-line tl-line--half" [style.top.px]="h * hourPx + hourPx / 2"></div>
-                    }
+              <div class="native-form-group">
+                <div class="native-form-row">
+                  <span>{{ "Calendar" | nativeText }}</span>
+                  <span class="detail-calendar-val">
+                    <i [style.background]="d.color"></i>
+                    <cc-choice label="Calendar" [value]="d.calendarId || ''"
+                      [options]="calendarChoices()" (valueChange)="setDraftCalendar(d, $event)" />
+                  </span>
+                </div>
+              </div>
 
-                    <!-- Red Current Time Line on Today -->
-                    @if (isTodayDay(d)) {
-                      <div class="tl-now-line" [style.top.px]="currentTimeTopPx()">
-                        <span class="tl-now-dot"></span>
-                      </div>
-                    }
-
-                    <!-- Live Click-and-Drag New Event Creation Preview -->
-                    @if (drag(); as activeDrag) {
-                      @if (activeDrag.mode === 'create' && activeDrag.previewDayIdx === di && activeDrag.hasMoved) {
-                        <div
-                          class="ev-block ev-block--creating"
-                          [style.top.px]="(activeDrag.previewStartMin / 60) * hourPx"
-                          [style.height.px]="((activeDrag.previewEndMin - activeDrag.previewStartMin) / 60) * hourPx"
-                          [ngStyle]="cardStyle('#0A84FF', true)"
-                        >
-                          <span class="ev-block__bar"></span>
-                          <div class="ev-block__inner">
-                            <strong class="ev-block__title">New Event</strong>
-                            <span class="ev-block__time">
-                              {{ formatMinutesHm(activeDrag.previewStartMin) }} – {{ formatMinutesHm(activeDrag.previewEndMin) }}
-                            </span>
-                          </div>
-                        </div>
-                      }
-                    }
-
-                    <!-- Positioned Timed Event Cards (Exact iOS Geometry) -->
-                    @for (blk of timedBlocksForDay(d, di); track blk.id) {
-                      @let isThisDragging = drag()?.eventId === blk.id && !!drag()?.hasMoved;
-                      <div
-                        class="ev-block"
-                        [class.is-dragging]="isThisDragging"
-                        [class.is-readonly]="blk.data.readOnly"
-                        [ngStyle]="blockPositionStyle(blk, isThisDragging)"
-                        (pointerdown)="onEventPointerDown($event, blk.data, di)"
-                      >
-                        <!-- 3px Rounded Left Accent Bar -->
-                        <span class="ev-block__bar" aria-hidden="true"></span>
-
-                        <div class="ev-block__inner">
-                          <div class="ev-block__toprow">
-                            <strong class="ev-block__title">{{ blk.data.title }}</strong>
-                          </div>
-                          <span class="ev-block__time">
-                            @if (isThisDragging && drag()) {
-                              {{ formatMinutesHm(drag()!.previewStartMin) }} – {{ formatMinutesHm(drag()!.previewEndMin) }}
-                            } @else {
-                              {{ formatEventTimeSpan(blk.data) }}
-                            }
-                          </span>
-                          @if (blk.endMinutes - blk.startMinutes >= 45 && blk.data.location) {
-                            <span class="ev-block__loc">
-                              {{ blk.data.location }}
-                            </span>
-                          }
-                        </div>
-
-                        <!-- Signature iOS Circular White + Accent Ring Resize Handles -->
-                        @if (!blk.data.readOnly) {
-                          <span
-                            class="ev-handle ev-handle--top"
-                            title="Drag to adjust start time"
-                            (pointerdown)="onResizeHandlePointerDown($event, 'resize-start', blk.data, di)"
-                          ></span>
-                          <span
-                            class="ev-handle ev-handle--bottom"
-                            title="Drag to adjust end time"
-                            (pointerdown)="onResizeHandlePointerDown($event, 'resize-end', blk.data, di)"
-                          ></span>
-                        }
-                      </div>
-                    }
+              <div class="native-form-group">
+                <div class="native-form-row">
+                  <span>{{ "Alert" | nativeText }}</span>
+                  <cc-choice
+                    label="Alert"
+                    [value]="'' + d.reminderMin"
+                    [options]="alertChoices"
+                    (valueChange)="d.alertsEdited = true; d.reminderMin = +$event; d.secondReminderMin = d.reminderMin < 0 ? -1 : d.secondReminderMin"
+                  />
+                </div>
+                @if (d.reminderMin >= 0) {
+                  <div class="native-form-row">
+                    <span>{{ "Second Alert" | nativeText }}</span>
+                    <cc-choice
+                      label="Second Alert"
+                      [value]="'' + d.secondReminderMin"
+                      [options]="alertChoices"
+                      (valueChange)="d.alertsEdited = true; d.secondReminderMin = +$event"
+                    />
                   </div>
                 }
               </div>
-            </div>
-          </div>
-        }
 
-        <!-- MONTH VIEW (WITH DRAG & DROP ACROSS DAYS) -->
-        @if (viewMode() === 'month') {
-          <div class="month-wrap">
-            <div class="month-dow">
-              <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
-            </div>
-            <div class="month-grid">
-              @for (cell of monthGridCells(); track cell.key) {
-                <div
-                  class="month-cell"
-                  [class.is-muted]="!cell.inMonth"
-                  [class.is-today]="cell.isToday"
-                  [class.is-drop-target]="monthDropTargetKey() === cell.key"
-                  (dragover)="onMonthCellDragOver($event, cell.key)"
-                  (dragleave)="monthDropTargetKey.set(null)"
-                  (drop)="onMonthCellDrop($event, cell.date)"
-                  (dblclick)="openNewEventModal(cell.date, cell.date, true)"
-                >
-                  <div class="month-cell__hdr">
-                    <span class="month-cell__num">{{ cell.dayNum }}</span>
+              <div class="native-form-group">
+                <label class="native-form-row attachment-input">
+                  <span>{{ "Add attachment…" | nativeText }}</span>
+                  <input
+                    type="file"
+                    multiple
+                    (change)="addAttachments($event)"
+                  />
+                </label>
+                @for (
+                  attachment of d.attachments;
+                  track attachment.id;
+                  let i = $index
+                ) {
+                  <div class="native-form-row">
+                    <cc-symbol name="paperclip" />
+                    <span>{{ attachment.fileName }}</span>
                     <button
                       type="button"
-                      class="month-cell__add"
-                      title="Add event"
-                      (click)="openNewEventModal(cell.date, cell.date, false)"
+                      class="toolbar-icon danger-text"
+                      aria-label="Remove attachment"
+                      (click)="removeAttachment(i)"
                     >
-                      +
+                      <cc-symbol [pointSize]="20" name="xmark.circle.fill" />
                     </button>
                   </div>
-                  <div class="month-cell__list">
-                    @for (ev of cell.events; track ev.id) {
-                      <div
-                        class="month-pill"
-                        [attr.draggable]="!ev.readOnly"
-                        [ngStyle]="cardStyle(ev.color)"
-                        (dragstart)="onMonthPillDragStart($event, ev)"
-                        (click)="openEditEventModal(ev)"
-                      >
-                        <span class="month-pill__dot" [style.background]="ev.color || '#0A84FF'"></span>
-                        <span class="month-pill__title">{{ ev.title }}</span>
-                      </div>
-                    }
-                    @if (cell.moreCount > 0) {
-                      <button
-                        type="button"
-                        class="month-more"
-                        (click)="selectMiniDay(cell.date); viewMode.set('day')"
-                      >
-                        +{{ cell.moreCount }} more
-                      </button>
-                    }
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-        }
-
-        <!-- AGENDA VIEW -->
-        @if (viewMode() === 'agenda') {
-          <div class="agenda-wrap">
-            @if (agendaGroups().length === 0) {
-              <div class="empty-state">
-                <h3>No events in the next 30 days</h3>
-                <p>Click or drag on the grid, or use the button below to create an event.</p>
-                <button type="button" class="btn btn--primary" (click)="openNewEventDefault()">
-                  + Create Event
-                </button>
+                }
               </div>
-            } @else {
-              @for (grp of agendaGroups(); track grp.label) {
-                <div class="agenda-day">
-                  <h3 class="agenda-day__title">{{ grp.label }}</h3>
-                  <div class="agenda-day__items">
-                    @for (ev of grp.events; track ev.id) {
-                      <div
-                        class="agenda-card"
-                        [ngStyle]="cardStyle(ev.color)"
-                        (click)="openEditEventModal(ev)"
-                      >
-                        <span class="agenda-card__bar"></span>
-                        <div class="agenda-card__time">{{ formatEventTimeSpan(ev) }}</div>
-                        <div class="agenda-card__info">
-                          <strong>{{ ev.title }}</strong>
-                          @if (ev.location) {
-                            <span>{{ ev.location }}</span>
-                          }
-                        </div>
-                        @if (ev.details?.videoCallURL) {
-                          <a
-                            class="btn btn--ghost agenda-join"
-                            [href]="ev.details!.videoCallURL!"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            (click)="$event.stopPropagation()"
-                          >
-                            Join Call ↗
-                          </a>
-                        }
-                      </div>
-                    }
+
+              @if (!isDesktop() && d.recurrence !== "none") {
+                <p class="form-footnote">{{ "Attachments will be applied to all occurrences" | nativeText }}</p>
+              }
+              <div class="native-form-group">
+                <label class="native-form-row">
+                  <input
+                    type="url"
+                    aria-label="URL"
+                    [placeholder]="'URL' | nativeText"
+                    [(ngModel)]="d.url"
+                  />
+                </label>
+                <label class="native-form-row">
+                  <textarea
+                    rows="3"
+                    aria-label="Notes"
+                    [placeholder]="'Notes' | nativeText"
+                    [(ngModel)]="d.notes"
+                  ></textarea>
+                </label>
+              </div>
+
+              @if (!d.isNew) {
+                @if (pendingDelete()) {
+                  <div class="delete-confirm">
+                    <p>{{ "Delete this event?" | nativeText }}</p>
+                    <button
+                      type="button"
+                      class="native-pill"
+                      (click)="pendingDelete.set(false)"
+                    >
+                      {{ "Cancel" | nativeText }}
+                    </button>
+                    <button
+                      type="button"
+                      class="native-pill danger"
+                      [disabled]="savingEvent()"
+                      (click)="deleteDraftEvent()"
+                    >
+                      {{ "Delete Event" | nativeText }}
+                    </button>
                   </div>
-                </div>
+                } @else {
+                  <button
+                    type="button"
+                    class="native-pill danger full"
+                    (click)="pendingDelete.set(true)"
+                  >
+                    {{ "Delete Event" | nativeText }}
+                  </button>
+                }
               }
             }
           </div>
-        }
+        </section>
       </div>
-    </div>
-
-  <!-- =======================================================================
-       MODALS & FLOATING UNDO TOAST
-  ======================================================================== -->
-
-  <!-- Event Inspector / Editor Modal -->
-  @if (editorDraft(); as d) {
-    <div class="modal-backdrop" (click)="closeEditor()">
-      <div class="modal-sheet" (click)="$event.stopPropagation()">
-        <div class="modal-sheet__hdr">
-          <h3>{{ d.isNew ? 'New Event' : 'Edit Event' }}</h3>
-          <button type="button" class="modal-x" (click)="closeEditor()">✕</button>
-        </div>
-
-        <div class="modal-body">
-          @if (d.calendarId) {
-            <label class="field"><span>Calendar</span>
-              <select [ngModel]="d.calendarId" (ngModelChange)="d.calendarId = $event; chooseDestination($event)" [disabled]="!d.isNew">
-                @for (calendar of writableCalendars(); track calendar.id) { <option [value]="calendar.id">{{ calendar.title }} · {{ calendar.source }}</option> }
-              </select>
-            </label>
-          }
-          <input
-            type="text"
-            class="title-input"
-            placeholder="Event title (e.g. Product Review)"
-            [ngModel]="d.title"
-            (ngModelChange)="d.title = $event"
-          />
-
-          <!-- iOS 8-Swatch Color Picker -->
-          <div class="swatch-row">
-            @for (c of colors; track c.hex) {
-              <button
-                type="button"
-                class="color-dot"
-                [class.is-picked]="d.color.toUpperCase() === c.hex"
-                [style.background]="c.hex"
-                [title]="c.label"
-                (click)="d.color = c.hex"
-              ></button>
-            }
-          </div>
-
-          <label class="ov-chk">
-            <input type="checkbox" [ngModel]="d.allDay" (ngModelChange)="d.allDay = $event" />
-            <span>All-day event</span>
-          </label>
-
-          <div class="form-grid-2">
-            <label class="field">
-              <span>Start Date</span>
-              <input type="date" [ngModel]="d.startDate" (ngModelChange)="d.startDate = $event; d.endDate = $event" />
-            </label>
-            @if (!d.allDay) {
-              <label class="field">
-                <span>Start Time</span>
-                <input type="time" [ngModel]="d.startTime" (ngModelChange)="d.startTime = $event" />
-              </label>
-            }
-            <label class="field">
-              <span>End Date</span>
-              <input type="date" [ngModel]="d.endDate" (ngModelChange)="d.endDate = $event" />
-            </label>
-            @if (!d.allDay) {
-              <label class="field">
-                <span>End Time</span>
-                <input type="time" [ngModel]="d.endTime" (ngModelChange)="d.endTime = $event" />
-              </label>
-            }
-          </div>
-
-          <div class="form-grid-2">
-            <label class="field">
-              <span>Video Call URL (Meet / Teams / Zoom)</span>
-              <input
-                type="url"
-                placeholder="https://meet.google.com/..."
-                [ngModel]="d.videoCallURL"
-                (ngModelChange)="d.videoCallURL = $event"
-              />
-            </label>
-            <label class="field">
-              <span>Location</span>
-              <input
-                type="text"
-                placeholder="Conference Room / Address"
-                [ngModel]="d.location"
-                (ngModelChange)="d.location = $event"
-              />
-            </label>
-          </div>
-
-          <div class="form-grid-3">
-            <label class="field">
-              <span>Availability</span>
-              <select [ngModel]="d.availability" (ngModelChange)="d.availability = $event">
-                <option value="busy">Busy</option>
-                <option value="free">Free</option>
-                <option value="tentative">Tentative</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Repeat</span>
-              <select [ngModel]="d.recurrence" (ngModelChange)="d.recurrence = $event">
-                <option value="none">Does not repeat</option>
-                <option value="daily">Every day</option>
-                <option value="weekly">Every week</option>
-                <option value="monthly">Every month</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Alert</span>
-              <select [ngModel]="d.reminderMin" (ngModelChange)="d.reminderMin = +$event">
-                <option [ngValue]="-1">None</option>
-                <option [ngValue]="10">10 min before</option>
-                <option [ngValue]="15">15 min before</option>
-                <option [ngValue]="30">30 min before</option>
-                <option [ngValue]="60">1 hour before</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="field">
-            <span>Notes</span>
-            <textarea rows="3" placeholder="Agenda, links, preparation notes…" [ngModel]="d.notes" (ngModelChange)="d.notes = $event"></textarea>
-          </label>
-        </div>
-
-        <div class="modal-ftr">
-          <div class="modal-ftr__left">
-            @if (!d.isNew) {
-              <button type="button" class="mini-action-btn mini-action-btn--danger" [disabled]="savingEvent()" (click)="deleteDraftEvent()">
-                Delete Event
-              </button>
-              <button type="button" class="mini-action-btn" (click)="exportDraftIcs()">
-                Download .ics
-              </button>
-            }
-          </div>
-          <div class="modal-ftr__right">
-            <button type="button" class="mini-action-btn" (click)="closeEditor()">Cancel</button>
-            <button type="button" class="btn btn--primary" [disabled]="savingEvent()" (click)="saveDraftEvent()">
-              {{ savingEvent() ? 'Saving…' : 'Save Event' }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  }
+    }
   }
 
   <!-- Undo / Feedback Toast -->
@@ -685,7 +1756,13 @@
     <div class="studio-toast" role="status">
       <span>{{ t.message }}</span>
       @if (t.undoEventId) {
-        <button type="button" class="studio-toast__undo" (click)="undoLastMove()">Undo</button>
+        <button
+          type="button"
+          class="studio-toast__undo"
+          (click)="undoLastMove()"
+        >
+          {{ "Undo" | nativeText }}
+        </button>
       }
     </div>
   }

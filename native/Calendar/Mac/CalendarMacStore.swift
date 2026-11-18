@@ -224,6 +224,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
                 }
                 let doc = DeviceCalendarDocument(id: id, deviceId: DeviceCalendarReplica.deviceID, deviceName: Host.current().localizedName ?? "Mac", title: calendar.title,
                     source: calendar.source, color: NSColor(calendar.color).hex, allowsChanges: calendar.writable, events: items)
+                    .withProviderMirrorID(providers.remoteCalendarID(for: calendar.id).map { DeviceCalendarReplica.hash(calendar.source.lowercased() + ":" + $0) })
                 try await replica.sync(doc) { result in
                     guard self.cloudSession?.calendarId == account else { throw CancellationError() }
                     if let native = calendar.native {

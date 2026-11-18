@@ -1,0 +1,58 @@
+@mixin layout {
+  .native-sheet {
+    width: 600px;
+    max-width: 100%;
+    height: min(720px, calc(100dvh - 48px));
+    display: flex;
+    flex-direction: column;
+    background: var(--cal-bg);
+    border-radius: 24px;
+    border: 1px solid var(--cal-line);
+    box-shadow: 0 20px 80px #0005;
+    overflow: hidden;
+  }
+  .sheet-heading {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    flex-shrink: 0;
+    background: var(--cal-bg);
+  }
+  .sheet-heading h2 {
+    flex: 1;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0;
+  }
+  .round-button {
+    position: relative;
+    margin-inline: 3px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--cal-blue);
+    flex-shrink: 0;
+  }
+  .round-button::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; }
+  .round-button cc-symbol {
+    width: 25px;
+    height: 25px;
+  }
+  .round-spacer {
+    width: 44px;
+  }
+  .sheet-body {
+    flex: 1;
+    overflow: auto;
+    padding: 16px;
+    scrollbar-width: thin;
+  }
+}

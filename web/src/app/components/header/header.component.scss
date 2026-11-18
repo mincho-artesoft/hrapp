@@ -197,6 +197,13 @@
   }
 }
 
+@media (max-width: 600px) {
+  .hdr__cta--secondary { display: none; }
+}
+@media (max-width: 480px) {
+  .hdr__actions:has(.hdr__cta--secondary) .theme-btn__label { display: none; }
+}
+
 /* ---------------------------------------------------------------
    Mobile sheet — iOS inset-grouped list
 --------------------------------------------------------------- */

@@ -1779,17 +1779,11 @@ private struct EventLocationEditorSheet: View {
             .navigationTitle("Location")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
+                AppSheetToolbarItem(placement: .cancellationAction) {
+                    AppToolbarTextButton("Close") {
                         commitTypedLocation()
                         dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
                     }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .tint(.secondary)
-                    .accessibilityLabel("Close")
                 }
             }
             .onAppear { searchModel.update(query: draftLocation) }

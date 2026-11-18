@@ -125,7 +125,7 @@ struct CalendarApp: App {
                             guard ConsentManager.shared.canRequestAds else { return }
 
                             await AppOpenAdManager.shared.loadAd()
-                            InterstitialAdManager.shared.preloadIfNeededForStoredProgress()
+                            InterstitialAdManager.shared.loadAd()
 
                             guard shouldShowColdStartAd else { return }
                             let remaining = 1.5 - Date().timeIntervalSince(startedAt)
@@ -253,7 +253,7 @@ struct CalendarApp: App {
                         await ConsentManager.shared.gatherConsentIfNeeded()
                         guard ConsentManager.shared.canRequestAds else { return }
                         await AppOpenAdManager.shared.loadAd()
-                        InterstitialAdManager.shared.preloadIfNeededForStoredProgress()
+                        InterstitialAdManager.shared.loadAd()
 
                         guard shouldShowForegroundAd else { return }
                         try? await Task.sleep(for: .milliseconds(600))

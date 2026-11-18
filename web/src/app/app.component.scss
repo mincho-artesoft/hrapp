@@ -12,3 +12,6 @@ main {
   position: relative;
   z-index: 1;
 }
+
+/* Calendar sheets must cover the site header, not inherit main's lower stacking level. */
+main:has(app-web-calendar-page :is(.modal-backdrop,.native-backdrop,.weather-modal)){z-index:1001;}

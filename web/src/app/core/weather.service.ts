@@ -39,8 +39,16 @@ export interface HourSample {
   label: string;
   temp: string;
   icon: 'sun' | 'cloud' | 'rain' | 'moon';
+  /** Native SF Symbol, retaining the actual weather condition. */
+  symbol?: string;
 }
 
+export interface ForecastHour {
+  iso:string; temperature:number; feelsLike:number; precipitation:number; precipitationChance:number;
+  uv:number; wind:number; gust:number; direction:number; humidity:number; visibility:number; pressure:number;
+  icon:HourSample['icon']; symbol?:string;
+}
+export interface SkyDay { date:string; sunrise:string|null; sunset:string|null; moonrise:string|null; moonset:string|null; moonPhase:number|null; }
 export interface MetricSample {
   id: string;
   value: string;
@@ -57,6 +65,7 @@ export interface DaySample {
   /** "2 Aug". */
   date: string;
   icon: HourSample['icon'];
+  symbol?: string;
   condition: string;
   max: string;
   min: string;
@@ -75,6 +84,7 @@ export interface DaySample {
 }
 
 export interface Snapshot {
+  forecastHours?:ForecastHour[]; skyDays?:SkyDay[]; visibilityUnit?:string;
   place: Place;
   temp: string;
   condition: string;
@@ -130,6 +140,21 @@ function glyph(code: number, isDay: boolean): HourSample['icon'] {
   if (d.wet) return 'rain';
   if (d.cloudy) return 'cloud';
   return isDay ? 'sun' : 'moon';
+}
+
+/** Same SF Symbols as WeatherKit's conditions in the native app. */
+export function nativeWeatherSymbol(code:number,isDay:boolean):string {
+  if(code===0||code===1)return isDay?'sun.max':'moon.stars';
+  if(code===2)return isDay?'cloud.sun':'cloud.moon';
+  if(code===3)return 'cloud';
+  if(code===45||code===48)return 'cloud.fog';
+  if(code===56||code===57||code===66||code===67)return 'cloud.sleet';
+  if(code>=51&&code<=55)return 'cloud.drizzle';
+  if(code===65||code===82)return 'cloud.heavyrain';
+  if((code>=71&&code<=77)||code===85||code===86)return 'cloud.snow';
+  if(code>=95)return 'cloud.bolt.rain';
+  if(code>=61&&code<=81)return isDay?'cloud.rain':'cloud.moon.rain';
+  return 'cloud';
 }
 
 /** Sixteen-point compass, spelled out the way the App Store listing does. */
@@ -206,8 +231,8 @@ export class WeatherService {
     }));
   }
 
-  async load(place: Place): Promise<Snapshot> {
-    const key = `${place.latitude.toFixed(3)},${place.longitude.toFixed(3)}`;
+  async load(place: Place, units?: 'metric'|'imperial'): Promise<Snapshot> {
+    const key = `${place.latitude.toFixed(3)},${place.longitude.toFixed(3)},${units??"auto"}`;
     const hit = this.cache.get(key);
     if (hit && Date.now() - hit.at < TTL_MS) return hit.snapshot;
 
@@ -215,14 +240,14 @@ export class WeatherService {
     // everywhere else. Guessing from the searched country rather than from the
     // visitor's browser, because the number sits next to a place name — "72°"
     // under "Berlin" is wrong however the reader's own phone is set.
-    const imperial = place.countryCode === 'US';
+    const imperial = units ? units === 'imperial' : place.countryCode === 'US';
 
     const params = new URLSearchParams({
       latitude: String(place.latitude),
       longitude: String(place.longitude),
       current: 'temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl',
-      hourly: 'temperature_2m,apparent_temperature,precipitation_probability,relative_humidity_2m,wind_speed_10m,pressure_msl,uv_index,weather_code,is_day',
-      daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,uv_index_max',
+      hourly: 'temperature_2m,apparent_temperature,precipitation_probability,precipitation,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,visibility,pressure_msl,uv_index,weather_code,is_day',
+      daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,uv_index_max,sunrise,sunset,moonrise,moonset,moon_phase',
       timezone: place.timezone || 'auto',
       // Fourteen, for the long-range view. It also means the hourly series
       // always extends well past a twelve-hour window whatever time it is.
@@ -231,7 +256,7 @@ export class WeatherService {
       wind_speed_unit: imperial ? 'mph' : 'kmh',
     });
 
-    const res = await fetch(`${BASE}?${params}`);
+    const res = await fetch(`${BASE}?${params}`,{signal:AbortSignal.timeout(20000)});
     if (!res.ok) throw new Error(`Forecast failed (${res.status})`);
     const json = await res.json();
 
@@ -274,6 +299,7 @@ export class WeatherService {
       label: i === 0 && startsNow ? 'Now' : this.hourLabel(t, imperial),
       temp: `${round(hourTemp[i])}°`,
       icon: glyph(Number(hourCodes[i]), Number(hourDay[i]) === 1),
+      symbol: nativeWeatherSymbol(Number(hourCodes[i]), Number(hourDay[i]) === 1),
     }));
 
     // ------------------------------------------------------------- metrics
@@ -336,6 +362,9 @@ export class WeatherService {
 
     return {
       place,
+      visibilityUnit:imperial?'mi':'km',
+      forecastHours:times.map((iso,i)=>({iso,temperature:h.temperature_2m?.[i],feelsLike:h.apparent_temperature?.[i],precipitation:h.precipitation?.[i],precipitationChance:h.precipitation_probability?.[i],uv:h.uv_index?.[i],wind:h.wind_speed_10m?.[i],gust:h.wind_gusts_10m?.[i],direction:h.wind_direction_10m?.[i],humidity:h.relative_humidity_2m?.[i],visibility:h.visibility?.[i]/(imperial?1609.344:1000),pressure:h.pressure_msl?.[i],icon:glyph(Number(h.weather_code?.[i]),h.is_day?.[i]===1),symbol:nativeWeatherSymbol(Number(h.weather_code?.[i]),h.is_day?.[i]===1)})),
+      skyDays:(d.time??[]).map((date:string,i:number)=>({date,sunrise:d.sunrise?.[i]??null,sunset:d.sunset?.[i]??null,moonrise:d.moonrise?.[i]??null,moonset:d.moonset?.[i]??null,moonPhase:d.moon_phase?.[i]??null})),
       temp: round(cur.temperature_2m),
       condition: cond.text,
       high: round(d.temperature_2m_max?.[0]),
@@ -377,6 +406,7 @@ export class WeatherService {
         date: `${dd} ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1]}`,
         // Daily rows are always a daytime summary, so never the moon.
         icon: glyph(code, true),
+        symbol: nativeWeatherSymbol(code, true),
         condition: describe(code).text,
         max: round(dayMax),
         min: round(dayMin),

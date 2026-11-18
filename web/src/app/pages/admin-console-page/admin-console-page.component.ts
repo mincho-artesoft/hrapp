@@ -48,6 +48,7 @@ export class AdminConsolePageComponent implements OnInit {
   readonly googleWebClientSecret = signal('');
   readonly microsoftWebClientId = signal('');
   readonly microsoftTenant = signal('common');
+  readonly appleWebClientId = signal('');
   readonly featuredDemoHandle = signal('demo');
   readonly savingSettings = signal(false);
   readonly toast = signal<string | null>(null);
@@ -97,6 +98,7 @@ export class AdminConsolePageComponent implements OnInit {
       this.googleWebClientId.set(ov.settings.googleWebClientId || '');
       this.microsoftWebClientId.set(ov.settings.microsoftWebClientId || '');
       this.microsoftTenant.set(ov.settings.microsoftTenant || 'common');
+      this.appleWebClientId.set(ov.settings.appleWebClientId || '');
       this.featuredDemoHandle.set(ov.settings.featuredDemoHandle || 'demo');
     } catch (e) {
       if (e instanceof CalendarApiError && e.status === 403) {
@@ -131,6 +133,7 @@ export class AdminConsolePageComponent implements OnInit {
           : {}),
         microsoftWebClientId: this.microsoftWebClientId().trim(),
         microsoftTenant: this.microsoftTenant().trim() || 'common',
+        appleWebClientId: this.appleWebClientId().trim(),
         featuredDemoHandle: this.featuredDemoHandle().trim() || 'demo',
       });
       this.googleWebClientSecret.set('');

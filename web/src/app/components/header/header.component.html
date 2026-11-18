@@ -42,12 +42,16 @@
 
       <a
         class="btn btn--primary hdr__cta"
+        [class.hdr__cta--secondary]="pageAction()"
         [href]="appStoreUrl()"
         target="_blank"
         rel="noopener noreferrer"
       >
         {{ copy().nav.getApp }}
       </a>
+      @if (pageAction(); as action) {
+        <ng-container [ngTemplateOutlet]="action" />
+      }
 
       <button
         class="hdr__burger"

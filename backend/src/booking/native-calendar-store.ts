@@ -14,6 +14,18 @@ export class NativeCalendarStore {
     return (await Promise.all(keys.map(key => this.store.getJSON(key)))).filter(Boolean);
   }
 
+  /** One provider calendar can have a replica on each device. Keep their storage
+   * and merge baselines intact, but present the newest snapshot only once. */
+  webCalendars(calendars: any[]): any[] {
+    const seen = new Map<string, any>();
+    for (const calendar of calendars.filter(c => c.available !== false)) {
+      const identity = calendar.providerMirrorID ? `provider:${calendar.providerMirrorID}` : `calendar:${calendar.id}`;
+      const previous = seen.get(identity);
+      if (!previous || String(calendar.updatedAt ?? '') > String(previous.updatedAt ?? '')) seen.set(identity, calendar);
+    }
+    return [...seen.values()];
+  }
+
   async sync(principal: any, body: any): Promise<ApiResult> {
     if (!this.validID(body?.id) || !this.validID(body?.deviceId)) return result(400, { error: 'Invalid calendar identity.' });
     const key = this.key(principal, body.id);
@@ -46,6 +58,8 @@ export class NativeCalendarStore {
       ...(body.accountLocal === true ? { accountLocal: true,
         sharingCalendarID: typeof body.sharingCalendarID === 'string' && /^[0-9a-f]{64}$/i.test(body.sharingCalendarID) ? body.sharingCalendarID : undefined } : {}),
       title: body.title.trim().slice(0, 200), source: String(body.source ?? 'Local Calendars').slice(0, 200),
+      providerMirrorID: typeof body.providerMirrorID === 'string' && /^[0-9a-f]{64}$/i.test(body.providerMirrorID)
+        ? body.providerMirrorID : stored?.value.providerMirrorID,
       color: /^#[0-9a-f]{6}$/i.test(body.color) ? body.color : '#0A84FF',
       allowsChanges: body.allowsChanges === true, available: body.available !== false,
       events, revision: (stored?.value.revision ?? 0) + 1, updatedAt: new Date().toISOString(),
@@ -97,7 +111,7 @@ export class NativeCalendarStore {
         }
         event.title = event.title.trim().slice(0, 1000);
         event.details = { availability: 0, alarms: [], recurrenceRules: [], attendees: [], ...previous?.details };
-        for (const field of ['notes', 'timeZone', 'availability', 'videoCallURL', 'alarms', 'recurrenceRules']) {
+        for (const field of ['notes', 'timeZone', 'availability', 'videoCallURL', 'travelTime', 'attachments', 'structuredLocation', 'alarms', 'recurrenceRules']) {
           if (body[field] !== undefined) event.details[field] = body[field];
         }
         if (typeof event.details.availability === 'string') event.details.availability = ({ busy: 0, free: 1, tentative: 2, unavailable: 3 } as any)[event.details.availability] ?? 0;

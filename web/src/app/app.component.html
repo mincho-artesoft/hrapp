@@ -1,9 +1,9 @@
 <a class="skip-link" [href]="mainHref()">Skip to content</a>
 
-<app-header />
+<app-header [pageAction]="activePage()?.headerAction?.()" />
 
 <main id="main">
-  <router-outlet />
+  <router-outlet (activate)="activePage.set($event)" (deactivate)="activePage.set(null)" />
 </main>
 
 <cc-app-store-bridge />

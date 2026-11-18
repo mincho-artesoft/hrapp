@@ -16,7 +16,8 @@
     "visibility:live": "node ai-visibility/live-check.mjs https://www.cloud-calendars.com",
     "visibility:indexnow": "node ai-visibility/indexnow.mjs https://www.cloud-calendars.com",
     "visibility:logs": "bash scripts/fetch-crawler-logs.sh && node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30",
-    "check:editorial": "node tools/validate-editorial-manifest.mjs"
+    "check:editorial": "node tools/validate-editorial-manifest.mjs",
+    "test:calendar-native": "node --test scripts/tests/calendar-native.test.mjs"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +36,9 @@
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
+    "jsqr": "^1.4.0",
     "qrcode-generator": "^1.5.2",
+    "rrule": "^2.8.1",
     "rxjs": "~7.8.0",
     "three": "^0.169.0",
     "tslib": "^2.3.0",
@@ -47,6 +50,7 @@
     "@angular/cli": "^19.2.27",
     "@angular/compiler-cli": "19.2.25",
     "@jefiozie/ngx-aws-deploy": "^4.1.0",
+    "@types/apple-mapkit-js": "^5.50.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^26.4.0",
     "@types/three": "^0.169.0",

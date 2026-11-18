@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import assert from 'node:assert/strict';
 import { createApp } from '../src/bootstrap';
 import { CoreService } from '../src/core/core.service';
+import { WebPlatformService } from '../src/booking/web-platform.service';
 import { StoreService } from '../src/store/store.service';
 
 // Exercise the actual Nest route and bearer guard, without remote storage.
@@ -34,6 +35,13 @@ async function main() {
     const inventory = await fetch(accountURL, { headers: { Authorization: 'Bearer route-test' } });
     assert.equal(inventory.status, 200);
     assert.deepEqual(await inventory.json(), { ownerID: 'route-test', calendars: [{ id: 'account', accountLocal: true }] });
+    const web=app.get(WebPlatformService);
+    web.providerCalendarWorkspace=async (principal,provider,body)=>{assert.equal(principal.principalId,'route-test');assert.equal(provider,'google');assert.equal(body.action,'state');return {status:200,body:{calendars:[],events:[]}};};
+    const providerURL=`${await app.getUrl()}/web-calendar/providers/google`;
+    const providerRequest=(token?:string)=>fetch(providerURL,{method:'POST',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify({action:'state'})});
+    assert.equal((await providerRequest()).status,401);assert.equal((await providerRequest('invalid')).status,401);
+    assert.equal((await providerRequest('route-test')).status,200);
+    console.log('PASS: provider workspace uses the existing bearer guard and account identity');
     console.log('PASS: account-local authenticated inventory excludes device-native calendars');
     console.log('PASS: native calendar HTTP route, authentication and read-only lookup');
   } finally {

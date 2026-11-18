@@ -4,8 +4,11 @@ import {
   HostListener,
   computed,
   inject,
+  input,
   signal,
+  type TemplateRef,
 } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
@@ -24,12 +27,13 @@ interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [LanguageSwitcherComponent],
+  imports: [LanguageSwitcherComponent, NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  readonly pageAction = input<TemplateRef<unknown>>();
   private readonly scroll = inject(ScrollService);
   private readonly themeService = inject(ThemeService);
   private readonly active = inject(ActiveLocaleService);

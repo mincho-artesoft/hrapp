@@ -1,0 +1,76 @@
+<dialog #sheet class="native-sheet" aria-labelledby="calendar-account-title"
+  (keydown.escape)="$event.stopPropagation()" (click)="dismissBackdrop($event)">
+  <header class="sheet-heading">
+    <button type="button" class="round-button" autofocus [attr.aria-label]="'Close' | nativeText" (click)="sheet.close()">
+      <cc-symbol name="xmark" [pointSize]="17" />
+    </button>
+    <h2 id="calendar-account-title">{{ "Cloud Calendars account" | nativeText }}</h2>
+    <span class="round-spacer"></span>
+  </header>
+  <div class="sheet-body" [attr.aria-busy]="busy()">
+    <div class="account-intro" [class.signed-out]="!api.profile()?.identities?.length">
+      <cc-symbol [name]="api.profile()?.identities?.length ? 'person.crop.circle.badge.checkmark' : 'person.crop.circle.badge.exclamationmark'" />
+      <div>
+        <strong>{{
+          "Sign in with at least one account" | nativeText
+        }}</strong>
+        <p>{{ "Use Apple, Google, or Microsoft." | nativeText }}</p>
+        <p>
+          {{
+            "A verified email is required to share, recover, or use access granted by an owner."
+              | nativeText
+          }}
+        </p>
+      </div>
+    </div>
+    @for (provider of providers; track provider) {
+      <div class="account-provider">
+        @if (provider === "apple") {
+          <cc-symbol name="apple.logo" />
+        } @else {
+          <img [src]="'/icons/' + provider + '_icon.png'" alt="" />
+        }
+        <span>
+          <strong>{{ provider | titlecase }}</strong>
+          @if (identity(provider)?.email; as email) {
+            <small>{{ email }}</small>
+          }
+        </span>
+        @if (identity(provider)) {
+          <strong class="connected">
+            <cc-symbol name="checkmark.circle.fill" />{{
+              "Connected" | nativeText
+            }}
+          </strong>
+        } @else {
+          <button
+            type="button"
+            class="text-action"
+            [disabled]="busy()"
+            (click)="connectIdentity(provider)"
+          >
+            {{ "Connect" | nativeText }}
+          </button>
+        }
+      </div>
+      @if (identity(provider)) {
+        <button
+          type="button"
+          class="unlink"
+          [disabled]="busy()"
+          (click)="unlink(provider)"
+        >
+          <cc-symbol name="rectangle.portrait.and.arrow.right" />{{
+            "Sign Out" | nativeText
+          }}
+        </button>
+      }
+    }
+    @if (busy()) {
+      <p class="status" role="status">{{ "Loading…" | nativeText }}</p>
+    }
+    @if (error()) {
+      <p class="error" role="alert">{{ error() }}</p>
+    }
+  </div>
+</dialog>

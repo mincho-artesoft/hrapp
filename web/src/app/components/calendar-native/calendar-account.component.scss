@@ -1,0 +1,98 @@
+@use "calendar-sheet";
+
+@include calendar-sheet.layout;
+
+:host { display: contents; }
+dialog.native-sheet {
+  margin: auto;
+  padding: 0;
+  max-width: calc(100% - 32px);
+  color: var(--cal-text);
+  font: 17px/1.35 var(--font-body);
+}
+dialog:not([open]) { display: none; }
+dialog::backdrop { background: #0006; backdrop-filter: blur(2px); }
+
+button { border: 0; font: inherit; cursor: pointer; }
+button:disabled { opacity: .45; cursor: default; }
+button:focus-visible { outline: 2px solid var(--cal-blue); outline-offset: 3px; }
+.text-action { background: none; color: var(--cal-blue); }
+.unlink {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: #ff3b301a;
+  color: #ff453a;
+  font-weight: 600;
+}
+.status { color: var(--cal-muted); font-size: 13px; }
+.error { color: #ff453a; }
+.account-intro.signed-out > cc-symbol { color: var(--cal-blue); }
+.account-intro {
+  display: flex;
+  gap: 14px;
+  background: #0a84ff12;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.account-intro > cc-symbol {
+  color: #34c759;
+  width: 28px;
+  height: 28px;
+}
+.account-intro p {
+  color: var(--cal-muted);
+  margin: 6px 0 0;
+  font-size: 15px;
+}
+.account-provider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  margin: 16px 0 6px;
+  min-height: 52px;
+  background: var(--cal-panel);
+  border-radius: 12px;
+}
+.account-provider > img,
+.account-provider > cc-symbol {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.account-provider > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.account-provider small {
+  display: block;
+  color: var(--cal-muted);
+  font-size: 14px;
+}
+.connected {
+  color: #34c759;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+.connected cc-symbol {
+  width: 17px;
+}
+
+:host-context(.phone-layout) dialog.native-sheet {
+  margin: auto 0 0;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100dvh - 32px);
+  border-radius: 20px 20px 0 0;
+}
+@media (max-width: 600px) { .connected { font-size: 12px; } }

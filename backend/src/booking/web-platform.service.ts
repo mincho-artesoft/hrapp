@@ -1,3 +1,4 @@
+import {ProviderCalendarWorkspace,ProviderCalendarError} from './provider-calendar-workspace';
 import { NativeCalendarStore } from './native-calendar-store';
 import { Injectable } from '@nestjs/common';
 import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
@@ -239,6 +240,9 @@ export class WebPlatformService {
     const microsoftTenant = String(
       settings.microsoftTenant ?? process.env.MICROSOFT_TENANT ?? 'common',
     ).trim() || 'common';
+    const appleWebClientId = String(
+      settings.appleWebClientId ?? process.env.APPLE_WEB_CLIENT_ID ?? '',
+    ).trim();
 
     return result(200, {
       googleWebClientId: googleWebClientId || null,
@@ -246,6 +250,7 @@ export class WebPlatformService {
       googleOfflineCapable: Boolean(googleWebClientId && googleWebClientSecret),
       microsoftWebClientId: microsoftWebClientId || null,
       microsoftTenant,
+      appleWebClientId: appleWebClientId || null,
       emailOtpEnabled: true,
       featuredDemoHandle: settings.featuredDemoHandle || 'demo',
     });
@@ -599,7 +604,7 @@ export class WebPlatformService {
     ).filter(Boolean);
 
     const deviceCalendars = await this.nativeCalendars.list(principal);
-    const activeCalendars = deviceCalendars.filter(c => c.available !== false);
+    const activeCalendars = this.nativeCalendars.webCalendars(deviceCalendars);
     const nativeEvents = activeCalendars.flatMap(c => c.events.map((e: any) => this.nativeCalendars.eventForWeb(c, e)));
 
     return result(200, {
@@ -2669,12 +2674,14 @@ export class WebPlatformService {
         googleWebConfigured: Boolean(settings?.googleWebClientId || process.env.GOOGLE_WEB_CLIENT_ID),
         googleWebSecretConfigured: Boolean(settings?.googleWebClientSecret || process.env.GOOGLE_WEB_CLIENT_SECRET),
         microsoftWebConfigured: Boolean(settings?.microsoftWebClientId || this.MICROSOFT_DEFAULT_CLIENT_ID),
+        appleWebConfigured: Boolean(settings?.appleWebClientId || process.env.APPLE_WEB_CLIENT_ID),
       },
       settings: {
         googleWebClientId: settings?.googleWebClientId ?? process.env.GOOGLE_WEB_CLIENT_ID ?? '',
         googleWebSecretConfigured: Boolean(settings?.googleWebClientSecret || process.env.GOOGLE_WEB_CLIENT_SECRET),
         microsoftWebClientId: settings?.microsoftWebClientId || this.MICROSOFT_DEFAULT_CLIENT_ID || '',
         microsoftTenant: settings?.microsoftTenant ?? process.env.MICROSOFT_TENANT ?? 'common',
+        appleWebClientId: settings?.appleWebClientId ?? process.env.APPLE_WEB_CLIENT_ID ?? '',
         featuredDemoHandle: settings?.featuredDemoHandle ?? 'demo',
       },
       hosts,
@@ -2730,6 +2737,9 @@ export class WebPlatformService {
       microsoftTenant: body?.microsoftTenant !== undefined
         ? (String(body.microsoftTenant ?? 'common').trim().slice(0, 120) || 'common')
         : (existing.microsoftTenant ?? 'common'),
+      appleWebClientId: body?.appleWebClientId !== undefined
+        ? String(body.appleWebClientId ?? '').trim().slice(0, 200)
+        : (existing.appleWebClientId ?? ''),
       featuredDemoHandle: body?.featuredDemoHandle !== undefined
         ? (String(body.featuredDemoHandle ?? 'demo').trim().toLowerCase().slice(0, 40) || 'demo')
         : (existing.featuredDemoHandle ?? 'demo'),
@@ -2978,6 +2988,16 @@ export class WebPlatformService {
     delete existing[provider];
     existing.updatedAt = new Date().toISOString();
     await this.store.putJSON(this.keys.oauthConnections(calId), existing);
+  }
+
+  async providerCalendarWorkspace(principal:any,provider:string,body:any):Promise<ApiResult>{
+    if(provider!=='google'&&provider!=='microsoft')return result(400,{error:'Unknown calendar provider.'});
+    const principalDoc=await this.store.getJSON(this.keys.principal(principal.principalId));
+    if(!this.computeWebAccess(principalDoc).entitled)return this.unentitledStudioResult(principalDoc);
+    const token=await this.getValidProviderAccessToken(principal.calId,provider);
+    if(!token)return result(409,{error:'Reconnect this calendar account to continue.'});
+    try{return result(200,await new ProviderCalendarWorkspace(provider,token).perform(body));}
+    catch(error){return result(error instanceof ProviderCalendarError?(error.status===401?409:error.status):502,{error:error instanceof ProviderCalendarError?error.message:'The calendar provider is temporarily unavailable. Try again.'});}
   }
 
   private async getValidProviderAccessToken(

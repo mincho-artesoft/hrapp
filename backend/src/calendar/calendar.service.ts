@@ -105,7 +105,16 @@ export class CalendarService {
           googleAudiences.length ? googleAudiences : null,
         );
       } else if (body.provider === 'apple') {
-        identity = await verifyAppleIdToken(body.token, APPLE_CLIENT_IDS);
+        const adminSettings = await this.store.getJSON(this.keys.adminSettings()).catch(() => null);
+        const appleAudiences = [
+          ...APPLE_CLIENT_IDS,
+          process.env.APPLE_WEB_CLIENT_ID ?? null,
+          adminSettings?.appleWebClientId ?? null,
+        ]
+          .flatMap((v) => (v ? String(v).split(',') : []))
+          .map((v) => v.trim())
+          .filter(Boolean);
+        identity = await verifyAppleIdToken(body.token, appleAudiences);
       } else if (body.provider === 'microsoft') {
         identity = await verifyMicrosoftToken(body.token);
       } else {

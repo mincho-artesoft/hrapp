@@ -3,9 +3,6 @@
 //  Native iOS / iPadOS / macOS system palette & geometry
 // ============================================================
 
-@use '@fontsource-variable/inter/index.css' as inter;
-@use '@fontsource-variable/jetbrains-mono/index.css' as mono;
-
 @use 'mixins' as *;
 
 /* ------------------------------------------------------------
@@ -13,9 +10,10 @@
 ------------------------------------------------------------ */
 :root {
   /* --- System UI Fonts --- */
-  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Variable', 'Inter', system-ui, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter Variable', 'Inter', system-ui, sans-serif;
-  --font-mono: 'SF Mono', ui-monospace, 'JetBrains Mono Variable', 'JetBrains Mono', Menlo, monospace;
+  --font-display: var(--font-body);
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-rounded: ui-rounded, var(--font-body);
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* --- Apple Dark Grouped Surfaces --- */
   --void: #000000;
@@ -227,6 +225,10 @@ h1, h2, h3, h4, h5 {
 }
 
 p { text-wrap: pretty; }
+
+input, select, textarea {
+  font-family: inherit;
+}
 
 select option {
   background: var(--surface);

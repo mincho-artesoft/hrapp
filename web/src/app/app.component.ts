@@ -4,6 +4,9 @@ import {
   afterNextRender,
   computed,
   inject,
+  signal,
+  type Signal,
+  type TemplateRef,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -40,6 +43,7 @@ declare global {
   },
 })
 export class AppComponent {
+  readonly activePage = signal<{ headerAction?: Signal<TemplateRef<unknown> | undefined> } | null>(null);
   private readonly active = inject(ActiveLocaleService);
   private readonly router = inject(Router);
   private readonly browser = isBrowser();

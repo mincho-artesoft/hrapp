@@ -1,0 +1,138 @@
+[
+  {
+    "name": "Brass Pawn: Chess Trainer",
+    "description": "Train with puzzles, tactics, endgames, engine analysis, and online chess. Sharpen your calculation, review positions, and make stronger decisions in every game.",
+    "icon": "/icons/calendar-native/BrassPawnIcon.jpg",
+    "fallbackSymbol": "checkerboard.rectangle",
+    "accentColor": "#a2845e",
+    "url": "https://apps.apple.com/app/id6803566012"
+  },
+  {
+    "name": "Ayurveda & Asana Yoga",
+    "description": "Plan dosha-based meals, build yoga sequences, and practice meditation and breathwork. Create a balanced daily routine that brings nutrition, movement, mindfulness, and breathing together.",
+    "icon": "/icons/calendar-native/AyurvedaAsanaIcon.jpg",
+    "fallbackSymbol": "figure.yoga",
+    "accentColor": "#bf5af2",
+    "url": "https://apps.apple.com/app/id6800370073"
+  },
+  {
+    "name": "Wise Eating & Fitness Planner",
+    "description": "Wise Eating is your AI-powered coach for smarter nutrition and training. It combines modern nutrition science with practical tools to help you plan meals, design workouts, manage your pantry, and understand how food and movement affect your body.",
+    "icon": "/icons/calendar-native/WiseEatingIcon.png",
+    "fallbackSymbol": "carrot.fill",
+    "accentColor": "#30d158",
+    "url": "https://apps.apple.com/us/app/wise-eating-fitness-planner/id6751406823"
+  },
+  {
+    "name": "StoreFront Studio",
+    "description": "StoreFront Studio is the elite 3D design environment for iOS and macOS developers. It combines high-fidelity RealityKit rendering with a powerful Rich Text editor to help you transform raw screenshots into professional, high-converting App Store assets.",
+    "icon": "/icons/calendar-native/StoreFrontIcon.png",
+    "fallbackSymbol": "heart.text.square.fill",
+    "accentColor": "#32ade6",
+    "url": "https://apps.apple.com/us/app/storefront-studio/id6757389314"
+  },
+  {
+    "name": "ReelStudio",
+    "description": "ReelStudio is the creator-grade screen recording studio for iOS and macOS. Capture your screen and camera at the same time, control mic + system audio, and export clean MP4s for tutorials, walkthroughs, and product demos. On iOS, you can even play a video inside the app and record it together with your camera for reaction-style and presenter-led content.",
+    "icon": "/icons/calendar-native/ReelStudioIcon.png",
+    "fallbackSymbol": "record.circle.fill",
+    "accentColor": "#bf5af2",
+    "url": "https://apps.apple.com/app/id6758941990"
+  },
+  {
+    "name": "MarketBrief AI",
+    "description": "MarketBrief AI helps you understand market movement with on-device analytics and a multi-agent workflow designed to separate signal from noise. Track real-time price data, explore regime-style probabilities, and use clear dashboards and charts to support your decision-making. Privacy-first: your configurations stay on your device.",
+    "icon": "/icons/calendar-native/MarketBriefIcon.png",
+    "fallbackSymbol": "chart.line.uptrend.xyaxis",
+    "accentColor": "#0a84ffbf",
+    "url": "https://apps.apple.com/app/id6758329388"
+  },
+  {
+    "name": "Fastest Screenshot Cleaner",
+    "description": "Fastest Screenshot Cleaner scans your photo library for screenshots, duplicates, and similar captures. Clean them up quickly to free storage while all analysis stays privately on your device.",
+    "icon": "/icons/calendar-native/ScreenshotCleanerIcon.jpg",
+    "fallbackSymbol": "photo.on.rectangle.angled",
+    "accentColor": "#0a84ff",
+    "url": "https://apps.apple.com/app/id6760660697"
+  },
+  {
+    "name": "PureStrike Billiard",
+    "description": "PureStrike Billiard lets you play 8-ball online, against AI, or with friends on one device. Fine-tune aim, power, spin, camera views, rules, and shot guides for every match.",
+    "icon": "/icons/calendar-native/PureStrikeIcon.jpg",
+    "fallbackSymbol": "circle.circle.fill",
+    "accentColor": "#30d158",
+    "url": "https://apps.apple.com/app/id6760551465"
+  },
+  {
+    "name": "Survival: StarFront",
+    "description": "Survival: StarFront is a three-lane sci-fi defense game where you move your squad between lanes while every soldier fires automatically. Adapt your formation and survive the advancing enemy waves.",
+    "icon": "/icons/calendar-native/StarFrontIcon.jpg",
+    "fallbackSymbol": "sparkles",
+    "accentColor": "#5e5ce6",
+    "url": "https://apps.apple.com/app/id6795571800"
+  },
+  {
+    "name": "PolyCore TD",
+    "description": "PolyCore TD is an arcade tower-defense survival game where you protect a central turret from relentless geometric enemies. Earn upgrades, combine weapons, and build a different arsenal during every run.",
+    "icon": "/icons/calendar-native/PolyCoreIcon.jpg",
+    "fallbackSymbol": "shield.lefthalf.filled",
+    "accentColor": "#bf5af2",
+    "url": "https://apps.apple.com/app/id6758268849"
+  },
+  {
+    "name": "GPT Realtime Assistant",
+    "description": "GPT Realtime Assistant is an AI productivity workspace for user-started live conversations. Use real-time transcription, contextual assistance, notes, and follow-up actions during meetings, brainstorming, translation, planning, and learning.",
+    "icon": "/icons/calendar-native/RealtimeAssistantIcon.jpg",
+    "fallbackSymbol": "waveform.and.mic",
+    "accentColor": "#32ade6",
+    "url": "https://apps.apple.com/app/id6770536523"
+  },
+  {
+    "name": "Photo2Video Archive",
+    "description": "Photo2Video Archive helps you save storage without deleting memories. It transforms photos into highly compressed video archives, preserving your content while making large collections easier to organize and store.",
+    "icon": "/icons/calendar-native/PhotoArchiveIcon.jpg",
+    "fallbackSymbol": "photo.stack.fill",
+    "accentColor": "#ff9f0a",
+    "url": "https://apps.apple.com/app/id6760718313"
+  },
+  {
+    "name": "Dreams Calendar",
+    "description": "Dreams Calendar is a private dream journal, mood tracker, and reflection diary for night and day dreams. Record experiences and emotions, then notice patterns across your days, sleep, and imagination.",
+    "icon": "/icons/calendar-native/DreamsCalendarIcon.jpg",
+    "fallbackSymbol": "moon.stars.fill",
+    "accentColor": "#5e5ce6",
+    "url": "https://apps.apple.com/app/id6760776853"
+  },
+  {
+    "name": "Liquid Color Puzzle",
+    "description": "Liquid Color Puzzle is a relaxing sorting game in a glowing futuristic laboratory. Pour colored liquids between glass tubes until every color is separated as each experiment becomes more complex.",
+    "icon": "/icons/calendar-native/LiquidColorPuzzleIcon.jpg",
+    "fallbackSymbol": "testtube.2",
+    "accentColor": "#63e6e2",
+    "url": "https://apps.apple.com/app/id6798603985"
+  },
+  {
+    "name": "Glance Studio",
+    "description": "Glance Studio helps you create cinematic chat-style videos for social media, advertising, and storytelling. Build animated conversations inside realistic 3D devices, simulate typing, attach media, and export engaging vertical content.",
+    "icon": "/icons/calendar-native/GlanceStudioIcon.jpg",
+    "fallbackSymbol": "message.fill",
+    "accentColor": "#ff375f",
+    "url": "https://apps.apple.com/app/id6774151809"
+  },
+  {
+    "name": "Wonek Video Studio",
+    "description": "Wonek Video Studio turns raw footage into publish-ready content. Find strong moments, create sharp clips, add clean subtitles and text-to-speech voiceovers, then polish video and audio in one focused workflow.",
+    "icon": "/icons/calendar-native/WonekIcon.png",
+    "fallbackSymbol": "film.stack.fill",
+    "accentColor": "#ff9f0a",
+    "url": "https://apps.apple.com/app/id6761376446"
+  },
+  {
+    "name": "Glance Studio Desktop",
+    "description": "Glance Studio Desktop brings cinematic chat-style video creation to your Mac. Build animated conversations inside realistic 3D devices, simulate typing, attach photos and videos, and export vertical content for social media.",
+    "icon": "/icons/calendar-native/GlanceStudioIcon.jpg",
+    "fallbackSymbol": "desktopcomputer",
+    "accentColor": "#ff375f",
+    "url": "https://apps.apple.com/app/id6775389610"
+  }
+]

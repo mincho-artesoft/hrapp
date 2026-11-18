@@ -11,8 +11,6 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
     private var generation = 0
     private var loadedAt: Date?
     private(set) var isShowing = false
-    private var lastShownDate: Date?
-    private let minimumInterval: TimeInterval = 120
 
     #if DEBUG
     private let adUnitID = "ca-app-pub-3940256099942544/4411468910" // Google test interstitial
@@ -64,34 +62,19 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
         isLoading = false
     }
 
-    func preloadIfNeededForStoredProgress() {
-        let savedCount = UserDefaults.standard.integer(forKey: "interstitialTabSwitchCount")
-        if savedCount >= 3 {
-            loadAd()
-        }
-    }
-
-    @discardableResult
-    func showAd() -> Bool {
-        guard ConsentManager.shared.canLoadAds else { return false }
+    func showAd() {
+        guard ConsentManager.shared.canLoadAds else { return }
         if let loadedAt, Date().timeIntervalSince(loadedAt) >= 3600 {
             interstitial = nil
         }
         guard !CloudAccountManager.shared.isSigningIn,
               !ReviewManager.shouldPauseAppOpenAds,
               !isShowing,
-              !AppOpenAdManager.shared.isShowingAd else { return false }
-        if let lastShownDate, Date().timeIntervalSince(lastShownDate) < minimumInterval {
-            return false
-        }
-        if let appOpenDate = AppOpenAdManager.shared.lastPresentationDate,
-           Date().timeIntervalSince(appOpenDate) < 45 {
-            return false
-        }
+              !AppOpenAdManager.shared.isShowingAd else { return }
         guard let interstitial else {
             print("⚠️ Ad wasn't ready")
             loadAd()
-            return false
+            return
         }
 
         guard let topVC = UIApplication.shared.topMostViewController,
@@ -99,13 +82,11 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
               !topVC.isBeingPresented, !topVC.isBeingDismissed,
               !(topVC is UIAlertController) else {
             print("⚠️ Could not find a view controller to present from")
-            return false
+            return
         }
 
         isShowing = true
-        lastShownDate = Date()
         interstitial.present(from: topVC)
-        return true
     }
 
     // MARK: - FullScreenContentDelegate
@@ -114,11 +95,13 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
         print("🔹 Interstitial ad dismissed")
         isShowing = false
         interstitial = nil
+        loadAd()
     }
 
     func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("❌ Ad failed to present: \(error.localizedDescription)")
         isShowing = false
         interstitial = nil
+        loadAd()
     }
 }

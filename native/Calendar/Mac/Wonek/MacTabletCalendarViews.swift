@@ -1318,11 +1318,11 @@ struct MacTabletEventEditor: View {
         .appSheet(isPresented: $showsLocationSheet) {
             VStack(spacing: 0) {
                 MacCalendarSheetHeader(title: Text("Location")) {
-                    EmptyView()
-                } trailing: {
                     MacCalendarToolbarIconButton(icon: "xmark", title: "Close", prominentTint: .appBlue) {
                         commitLocationDraft()
                     }
+                } trailing: {
+                    EmptyView()
                 }
                 locationForm
             }
