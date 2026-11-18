@@ -10,6 +10,39 @@ async function sourceModule(path) {
 }
 const {webEventDetails,nativeEventDetails,canShareEvent}=await sourceModule('../../src/app/core/calendar-native-model.ts');
 
+const {calendarForecastSeries, appleConditionSymbol} = await sourceModule('../../src/app/core/weatherkit-forecast.ts');
+test('WeatherKit timeline keeps wind, hail and sun showers distinct', () => {
+  assert.equal(appleConditionSymbol('Windy', true, 'sun.max'), 'wind');
+  assert.equal(appleConditionSymbol('Hail', true, 'cloud.sleet'), 'cloud.hail');
+  assert.equal(appleConditionSymbol('SunShowers', false, 'cloud.rain'), 'cloud.moon.rain');
+  assert.equal(appleConditionSymbol('PartlyCloudy', true, 'cloud.sun'), 'cloud.sun');
+});
+
+test('WeatherKit hourly and solar entries follow the selected city across UTC midnight', () => {
+  const midnight = '2026-11-17T22:00:00Z';
+  const reading = {
+    asOf: midnight, forecastStart: midnight, conditionCode: 'PartlyCloudy', daylight: false,
+    temperature: 10, temperatureApparent: 8, temperatureDewPoint: 6, humidity: 0.6,
+    cloudCover: 0.5, pressure: 1015, windSpeed: 16.09344, windGust: 19, windDirection: 30,
+    visibility: 10000, uvIndex: 0, precipitationAmount: 0, precipitationChance: 0.15,
+  };
+  const day = {
+    ...reading, temperatureMax: 15, temperatureMin: 5, maxUvIndex: 3, windSpeedMax: 18,
+    sunrise: '2026-11-18T05:22:00Z', moonPhase: 'firstQuarter',
+  };
+  const forecast = {currentWeather: reading, forecastHourly: {hours: [reading]}, forecastDaily: {days: [day]}};
+  const metric = calendarForecastSeries(forecast, 'Europe/Sofia', false);
+  assert.equal(metric.current.time, '2026-11-18T00:00');
+  assert.deepEqual(metric.daily.time, ['2026-11-18']);
+  assert.deepEqual(metric.daily.sunrise, ['2026-11-18T07:22']);
+  assert.deepEqual(metric.daily.moonrise, [null]);
+  assert.deepEqual(metric.daily.moon_phase, [0.25]);
+  assert.deepEqual(metric.hourly.precipitation_probability, [15]);
+  const imperial = calendarForecastSeries(forecast, 'Europe/Sofia', true);
+  assert.equal(imperial.current.temperature_2m, 50);
+  assert.equal(imperial.current.wind_speed_10m, 10);
+});
+
 test('native details survive web editing without dropping recurrence or attachments',()=>{
   const native={availability:2,alarms:[{relativeOffset:-900},{relativeOffset:-3600}],recurrenceRules:[{frequency:1,interval:2,daysOfTheWeek:[{weekday:2,weekNumber:0}],occurrenceCount:12}],attachments:[{id:'test',fileName:'notes.txt',contentType:'public.plain-text',dataBase64:'aGVsbG8='}],travelTime:900,attendees:[{email:'test@example.com'}]};
   assert.deepEqual(nativeEventDetails(webEventDetails(native)),native);

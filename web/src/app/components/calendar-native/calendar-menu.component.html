@@ -10,9 +10,7 @@
       </button>
     }
   </nav>
-  <div class="menu-scroll">
-    @if (section() === "Calendar" || section() === "MultiCalendar") {
-      @if (section() === "Calendar") {
+  @if (section() === "Calendar") {
         <button
           type="button"
           class="text-action select-all"
@@ -22,6 +20,10 @@
             (hiddenIDs().size ? "Select All" : "Deselect All") | nativeText
           }}
         </button>
+  }
+  <div class="menu-scroll">
+    @if (section() === "Calendar" || section() === "MultiCalendar") {
+      @if (section() === "Calendar") {
         @for (group of groups(); track group.source) {
           <details
             class="calendar-group"
@@ -103,6 +105,7 @@
                 </button>
               </div>
             } @empty {
+              @if (group.source === "Local Calendars" || group.source === "Shared with me") {
               <p class="empty-caption">
                 {{
                   (group.source === "Shared with me"
@@ -111,6 +114,7 @@
                   ) | nativeText
                 }}
               </p>
+              }
             }
           </details>
         }
@@ -783,7 +787,7 @@
 @if (panel()) {
   <div class="native-backdrop" (click)="closePanel()">
     <section
-      class="native-sheet"
+      class="native-sheet" [class.calendar-editor-sheet]="panel() === 'calendar' || panel() === 'color'"
       role="dialog"
       aria-modal="true"
       [attr.aria-label]="panel()"
@@ -793,7 +797,7 @@
         <button
           type="button"
           class="round-button"
-          aria-label="Close"
+          [attr.aria-label]="panel() === 'color' ? 'Back' : 'Close'"
           (click)="panel() === 'color' ? panel.set('calendar') : closePanel()"
         >
           <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.left' : 'xmark'" />
@@ -840,7 +844,7 @@
           <span class="round-spacer"></span>
         }
       </header>
-      <div class="sheet-body">
+      <div class="sheet-body" [class.calendar-form]="panel() === 'calendar' || panel() === 'color'">
         @if (panel() === "calendar") {
           <div class="form-group">
             <label class="form-row">
@@ -855,18 +859,19 @@
                 "
               />
             </label>
-            <div class="form-row">
+            @if (!calendar) {
+              <div class="form-row">
               <span>{{ "Account" | nativeText }}</span>
               <span class="secondary">{{
-                (calendar?.source ||
-                  (calendarProvider === "google"
+                (calendarProvider === "google"
                     ? "Google calendars"
                     : calendarProvider === "microsoft"
                       ? "Microsoft calendars"
-                      : "Local Calendars"))
+                      : "Local Calendars")
                   | nativeText
               }}</span>
             </div>
+            }
           </div>
           <h3 class="form-label">{{ "COLOR" | nativeText }}</h3>
           <button
@@ -878,33 +883,27 @@
               class="calendar-dot"
               [style.background]="calendarColor"
             ></span>
-            <span>{{ colorName() | nativeText }}</span>
+            <span>{{ (calendar && (calendar.accountLocal || calendar.ownerId) ? "Color" : colorName()) | nativeText }}</span>
             <cc-symbol name="chevron.right" />
           </button>
-          @if (calendar?.ownerEmail) {
-            <p class="empty-caption">{{ calendar?.ownerEmail }}</p>
-            <div class="form-group form-row">
+          @if (calendar?.ownerId) {
+            <p class="color-footer">{{ (usesCreatorDefault ? "Default from creator" : "Custom on this device") | nativeText }}</p>
+            <div class="form-group"><div class="form-row">
               <span>{{ "Access" | nativeText }}</span>
               <span class="secondary">{{
                 displayRole(calendar?.access) | nativeText
               }}</span>
             </div>
+            @if (calendar?.ownerEmail) {
+              <div class="form-row"><span>{{ "Owner" | nativeText }}</span><span class="secondary">{{ calendar?.ownerEmail }}</span></div>
+            }
+            </div>
           }
-          @if (
-            calendar &&
-            (calendar.accountLocal ||
-              calendar.ownerId ||
-              (calendar.providerOwner && !calendar.primary))
-          ) {
+          @if (calendarRemoval; as removal) {
             @if (confirmDelete) {
               <div class="form-group confirmation">
                 <p>
-                  {{
-                    (calendar.ownerId
-                      ? "Remove this shared calendar from your calendars?"
-                      : "Delete this calendar and its events?"
-                    ) | nativeText
-                  }}
+                  {{ removal.prompt | nativeText }}
                 </p>
                 <div class="equal-actions">
                   <button
@@ -920,22 +919,17 @@
                     [disabled]="busy()"
                     (click)="deleteCalendar()"
                   >
-                    {{ (calendar.ownerId ? "Remove" : "Delete") | nativeText }}
+                    {{ removal.confirm | nativeText }}
                   </button>
                 </div>
               </div>
             } @else {
               <button
                 type="button"
-                class="action danger"
+                class="form-row form-group remove-calendar"
                 (click)="confirmDelete = true"
               >
-                {{
-                  (calendar.ownerId
-                    ? "Remove from My Calendars"
-                    : "Delete Calendar"
-                  ) | nativeText
-                }}
+                {{ removal.label | nativeText }}
               </button>
             }
           }
@@ -1041,16 +1035,10 @@
               </button>
             }
             <label class="form-row custom-color">
-              <span class="custom-wheel" aria-hidden="true"></span>
-              <span>{{ "Custom…" | nativeText }}</span>
-              @if (colorName() === "Custom") {
-                <span
-                  class="calendar-dot"
-                  [style.background]="calendarColor"
-                ></span>
+              <span class="calendar-dot" [style.background]="calendarColor"></span>
+              <span>{{ "Custom..." | nativeText }}</span>
+              @if (!usesCreatorDefault && colorName() === "Custom") {
                 <cc-symbol class="blue" name="checkmark" />
-              } @else {
-                <cc-symbol name="chevron.right" />
               }
               <input
                 type="color"

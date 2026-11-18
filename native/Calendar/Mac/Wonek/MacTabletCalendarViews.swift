@@ -24,8 +24,21 @@ struct MacTabletEventEditorTarget: Identifiable {
     }
 }
 
+private struct MacTimelineWeatherSymbol: View {
+    let name: String
+    var hourly = false
+    @Environment(\.colorScheme) private var scheme
+
+    var body: some View {
+        if let image = timelineWeatherImage(name, light: scheme == .light, hourly: hourly) {
+            Image(nsImage: image).renderingMode(.original).resizable().scaledToFit().accessibilityHidden(true)
+        }
+    }
+}
+
 private struct MacCalendarDayHeader: View {
     let date: Date
+    @ObservedObject private var weather = WeatherKitViewModel.shared
     private var calendar: Calendar { MacCalendarFormatting.calendar }
 
     var body: some View {
@@ -34,8 +47,42 @@ private struct MacCalendarDayHeader: View {
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(calendar.isDateInToday(date) ? Color.orange : Color.primary)
                 .lineLimit(1).minimumScaleFactor(0.5)
+            if let day = weather.dailyForecast.first(where: { calendar.isDate($0.date, inSameDayAs: date) }) {
+                HStack(spacing: 3) {
+                    MacTimelineWeatherSymbol(name: day.symbol)
+                        .frame(width: 20, height: day.symbol == "cloud" ? 13 : 16)
+                    Text(verbatim: localizedFormat("%d°/%d°", Int(day.minTemp.rounded()), Int(day.maxTemp.rounded())))
+                        .font(.system(size: 10)).lineLimit(1).minimumScaleFactor(0.7)
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct MacTimelineHourlyWeather: View {
+    let date: Date
+    let hourHeight: CGFloat
+    let margin: CGFloat
+    @ObservedObject private var weather = WeatherKitViewModel.shared
+
+    var body: some View {
+        let calendar = MacCalendarFormatting.calendar
+        let dayOffset = calendar.dateComponents([.day], from: calendar.startOfDay(for: Date()),
+                                                to: calendar.startOfDay(for: date)).day ?? -1
+        if (0..<10).contains(dayOffset) {
+            ZStack(alignment: .top) {
+                ForEach(weather.hourlyForecast.filter { calendar.isDate($0.date, inSameDayAs: date) }) { hour in
+                    VStack(spacing: 2) {
+                        MacTimelineWeatherSymbol(name: hour.symbol, hourly: true).frame(width: 20, height: 18)
+                        Text(verbatim: localizedFormat("%.0f°", hour.temp)).font(.system(size: 10))
+                    }
+                    .offset(y: margin + CGFloat(calendar.component(.hour, from: hour.date)) * hourHeight + 11)
+                }
+            }
+            .frame(width: 30)
+            .allowsHitTesting(false)
+        }
     }
 }
 
@@ -96,7 +143,7 @@ struct MacTabletMultiCalendarView: View {
             HStack(spacing: 0) {
                 Color.clear.frame(width: 60)
                 MacCalendarDayHeader(date: selectedDate)
-            }.frame(height: 20)
+            }.frame(height: 40)
 
             let visible = store.multiCalendarIDs.isEmpty ? store.multiCalendars : store.multiCalendars.filter {
                 store.multiCalendarIDs.contains($0.calendarIdentifier)
@@ -399,6 +446,14 @@ struct MacTabletTimelineView: View {
                             .frame(width: timeWidth)
                             .background(MacCalendarFrameReader(name: "hours", space: interactionSpace))
                             .offset(x: columns.hoursX)
+                    }
+                    .overlay(alignment: columns.rightToLeft ? .topLeading : .topTrailing) {
+                        if onDayTap == nil, let date = dates.first {
+                            MacTimelineHourlyWeather(date: date, hourHeight: hourHeight, margin: timelineMargin)
+                                .modifier(MacCalendarPinnedScrollOffset(viewport: viewportState, axis: .vertical))
+                                .frame(maxHeight: .infinity, alignment: .top)
+                                .clipped().allowsHitTesting(false)
+                        }
                     }
                     .background {
                         HStack(spacing: 0) {
@@ -707,6 +762,7 @@ struct MacTabletTimelineView: View {
             .allowsHitTesting(false)
             .accessibilityHidden(true)
         }
+
     }
 
     private func hourGrid(currentTime: Date?, pinned: Bool = false, showsSeparators: Bool = true) -> some View {

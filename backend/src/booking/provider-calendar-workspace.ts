@@ -26,7 +26,7 @@ export class ProviderCalendarWorkspace {
         : response.status === 429 ? 'The calendar provider is busy. Try again shortly.' : `Calendar provider could not complete the request (${response.status}).`;
       throw new ProviderCalendarError(response.status === 412 ? 409 : response.status, message);
     }
-    return response.status === 204 ? {} : response.json();
+    return method === 'DELETE' || response.status === 204 ? {} : response.json();
   }
   private async pages(path: string, field: 'items'|'value'): Promise<any[]> {
     const values: any[] = [];let next: string|null = path;
@@ -46,11 +46,13 @@ export class ProviderCalendarWorkspace {
     return values;
   }
   private mapCalendar(c: any) {
-    const google = this.provider==='google';const role=google?c.accessRole:c.canEdit?'writer':'reader';
+    const google = this.provider==='google';
+    const role=google?c.accessRole:c.canShare?'owner':c.canEdit?'writer':'reader';
     return {id:`provider.${this.provider}.${key(c.id)}`,provider:this.provider,remoteID:c.id,
       title:google?(c.summaryOverride||c.summary):c.name,source:google?'Google calendars':'Microsoft calendars',deviceName:'',
       timeZone:c.timeZone,color:hex(google?c.backgroundColor:c.hexColor),allowsChanges:role==='owner'||role==='writer',
-      access:role==='owner'?'owner':role==='writer'?'writer':'reader',providerOwner:google?role==='owner':!!c.canEdit,
+      access:role==='owner'?'owner':role==='writer'?'writer':'reader',providerOwner:role==='owner',
+      isRemovable:google?!c.primary:!c.isDefaultCalendar && (c.isRemovable ?? role==='owner'),
       ownerEmail:google?undefined:c.owner?.address,primary:!!(c.primary||c.isDefaultCalendar),etag:c.etag||c['@odata.etag']};
   }
   private iso(value: any,allDay=false,zone='UTC') {
@@ -103,7 +105,18 @@ export class ProviderCalendarWorkspace {
       if(google&&input.color)await this.request(`users/me/calendarList/${encode(id)}?colorRgbFormat=true`,'PATCH',{backgroundColor:hex(input.color),foregroundColor:'#ffffff'});
       return {updated:true};
     }
-    if(action==='delete-calendar'){await this.request(calendarPath,'DELETE',undefined,input.etag);return {deleted:true};}
+    if(action==='delete-calendar'||action==='unsubscribe-calendar'){
+      const entryPath=google?`users/me/calendarList/${encode(id)}`:calendarPath;
+      const entry=this.mapCalendar(await this.request(entryPath));
+      if(!entry.isRemovable || entry.primary || entry.providerOwner !== (action==='delete-calendar'))
+        throw new ProviderCalendarError(403,'This calendar cannot be removed with that action.');
+      if(input.etag && entry.etag && input.etag!==entry.etag)
+        throw new ProviderCalendarError(409,'This calendar changed. Refresh before removing it.');
+      const deletingGoogleCalendar=google && action==='delete-calendar';
+      const etag=deletingGoogleCalendar?(await this.request(calendarPath)).etag:entry.etag;
+      await this.request(deletingGoogleCalendar?calendarPath:entryPath,'DELETE',undefined,etag);
+      return {deleted:true};
+    }
     if(action==='list-access'&&google){const items=await this.pages(calendarPath+'/acl?maxResults=250','items');return {people:items.map(p=>({id:p.id,email:p.scope?.value||p.scope?.type,access:p.role,isOriginalOwner:p.role==='owner'}))};}
     if(action==='save-access'&&google){
       const email=String(input.email||'').trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!['reader','writer','owner'].includes(input.access))throw new ProviderCalendarError(400,'Choose an email address and access role.');

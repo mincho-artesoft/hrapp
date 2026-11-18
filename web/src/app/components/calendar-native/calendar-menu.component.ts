@@ -187,6 +187,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
       ...new Set([
         "Local Calendars",
         "Shared with me",
+        "Other",
         ...nonProvider.map((c) => c.source),
       ]),
     ];
@@ -350,6 +351,21 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     },
   ];
   calendar: DeviceCalendar | null = null;
+  get calendarRemoval() {
+    const cal = this.calendar;
+    if (!cal) return null;
+    if (cal.ownerId) return {label: "Remove from My Calendars", prompt: "Remove this shared calendar from your calendars?", confirm: "Remove"};
+    if (cal.provider) {
+      if (cal.primary || cal.isRemovable === false) return null;
+      if (!cal.providerOwner) {
+        if (cal.provider === "microsoft" && !cal.isRemovable) return null;
+        return {label: "Remove from My Calendars", prompt: "Remove this calendar from your provider calendar list?", confirm: "Remove"};
+      }
+    } else if (!cal.accountLocal) {
+      return {label: "Remove from Web Calendar", prompt: "Remove this calendar and its events from the website? The calendar stays on your device.", confirm: "Remove"};
+    }
+    return {label: "Delete Calendar", prompt: "Delete this calendar and its events?", confirm: "Delete"};
+  }
   calendarTitle = "";
   calendarColor = "#0A84FF";
   usesCreatorDefault = false;
@@ -514,7 +530,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
   deleteCalendar() {
     void this.run(async () => {
-      if (!this.calendar) return;
+      if (!this.calendar || !this.calendarRemoval) return;
       if (this.calendar.provider)
         await this.providerWorkspace.deleteCalendar(this.calendar);
       else await this.sharing.removeCalendar(this.calendar);

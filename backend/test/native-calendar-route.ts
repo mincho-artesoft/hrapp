@@ -19,7 +19,8 @@ async function main() {
   };
   try {
     await app.listen(0, '127.0.0.1');
-    const url = `${await app.getUrl()}/ios/calendars/sync`;
+    const baseURL = await app.getUrl();
+    const url = `${baseURL}/ios/calendars/sync`;
     const request = (token?: string) => fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
@@ -30,12 +31,20 @@ async function main() {
     const response = await request('route-test');
     assert.equal(response.status, 200);
     assert.equal((await response.json() as any).calendar, null);
-    const accountURL = `${await app.getUrl()}/ios/calendars/account`;
+    const accountURL = `${baseURL}/ios/calendars/account`;
     assert.equal((await fetch(accountURL)).status, 401);
     const inventory = await fetch(accountURL, { headers: { Authorization: 'Bearer route-test' } });
     assert.equal(inventory.status, 200);
     assert.deepEqual(await inventory.json(), { ownerID: 'route-test', calendars: [{ id: 'account', accountLocal: true }] });
     const web=app.get(WebPlatformService);
+    const removedKeys: string[] = [];
+    store.putJSONIfAbsent = async key => { removedKeys.push(key); return true; };
+    const removeURL = (id: string) => `${baseURL}/web-calendar/device-calendars/${id}`;
+    assert.equal((await fetch(removeURL('native'), {method: 'DELETE'})).status, 401);
+    const remove = (id: string) => fetch(removeURL(id), {method: 'DELETE', headers: {Authorization: 'Bearer route-test'}});
+    assert.equal((await remove('account')).status, 400);
+    assert.equal((await remove('native')).status, 200);
+    assert.deepEqual(removedKeys, ['principal/route-test/web-calendar-removed/native.json']);
     web.providerCalendarWorkspace=async (principal,provider,body)=>{assert.equal(principal.principalId,'route-test');assert.equal(provider,'google');assert.equal(body.action,'state');return {status:200,body:{calendars:[],events:[]}};};
     const providerURL=`${await app.getUrl()}/web-calendar/providers/google`;
     const providerRequest=(token?:string)=>fetch(providerURL,{method:'POST',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify({action:'state'})});

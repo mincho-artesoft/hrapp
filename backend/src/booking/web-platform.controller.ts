@@ -16,6 +16,7 @@ import {
 import type { Response } from 'express';
 import { AuthGuard } from '../common/auth.guard';
 import { reply } from '../common/api-result';
+import { calendarWeather } from './calendar-weather';
 import { WebPlatformService } from './web-platform.service';
 
 @Controller()
@@ -183,6 +184,12 @@ export class WebPlatformController {
 
   // ── Web Calendar Workspace ────────────────────────────────────────────────
 
+  @Get('web-calendar/weather')
+  @UseGuards(AuthGuard)
+  weather(@Query() query: Record<string, unknown>) {
+    return calendarWeather(query);
+  }
+
   @Get('web-calendar/state')
   @UseGuards(AuthGuard)
   async webCalendarState(@Req() req: any, @Query() query: any, @Res({ passthrough: true }) res: Response) {
@@ -193,6 +200,12 @@ export class WebPlatformController {
   @UseGuards(AuthGuard)
   async updateCalendarSettings(@Req() req: any, @Body() body: any, @Res({ passthrough: true }) res: Response) {
     return reply(res, await this.svc.updateProfile(req.principal, body ?? {}));
+  }
+
+  @Delete('web-calendar/device-calendars/:id')
+  @UseGuards(AuthGuard)
+  async removeDeviceCalendar(@Req() req: any, @Param('id') id: string, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.removeDeviceCalendarFromWeb(req.principal, id));
   }
 
   @Put('web-calendar/events/:id')

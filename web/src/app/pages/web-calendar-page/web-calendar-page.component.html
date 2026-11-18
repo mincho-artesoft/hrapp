@@ -3,14 +3,13 @@
     @if (api.isSignedInWithAccount()) {
       <button #accountButton type="button" class="calendar-header-action calendar-account-action"
         [attr.aria-label]="'Cloud Calendars account' | nativeText"
-        [attr.title]="'Cloud Calendars account' | nativeText"
         aria-haspopup="dialog" (click)="accountPanel()?.open(accountButton)">
         <cc-symbol name="person.crop.circle.badge.checkmark" [pointSize]="18" />
         <span>{{ "Account" | nativeText }}</span>
       </button>
     }
     <button type="button" class="calendar-header-action" [attr.aria-label]="'Sign Out' | nativeText"
-      [attr.title]="'Sign Out' | nativeText" (click)="signOut()">
+      (click)="signOut()">
       <cc-symbol name="rectangle.portrait.and.arrow.right" [pointSize]="16" />
       <span>{{ "Sign Out" | nativeText }}</span>
     </button>
@@ -40,7 +39,8 @@
     <div class="cal-login-screen">
       <app-platform-auth-card
         badgeText="Cloud Calendars"
-        title="Sign in to Web Calendar"
+        class="calendar-auth"
+        [title]="'Sign in to Web Calendar'"
         [includeCalendarScopeOnOAuth]="false"
       />
     </div>
@@ -360,6 +360,14 @@
           </div>
         }
 
+        <ng-template #forecastLine let-day>
+          @if (dayForecast(day); as f) {
+            <span class="daily-forecast">
+              @if (f.symbol) { <img [src]="timelineSymbol(f.symbol)" [alt]="f.condition" /> }
+              <span>{{ f.min }}°/{{ f.max }}°</span>
+            </span>
+          }
+        </ng-template>
         @if ((viewMode() === "day" || viewMode() === "multi") && !searchOpen()) {
           <div
             class="week-carousel"
@@ -378,6 +386,7 @@
               <button
                 type="button"
                 class="week-day"
+                [attr.aria-pressed]="day.toDateString() === anchorDate().toDateString()"
                 [class.today]="isTodayDay(day)"
                 [class.selected]="
                   day.toDateString() === anchorDate().toDateString()
@@ -401,7 +410,8 @@
             class="selected-day-heading" [class.multi]="viewMode() === 'multi'"
             [class.today]="isTodayDay(anchorDate())"
           >
-            {{ anchorDate() | nativeDate: "EEE dd.MM.yy" }}
+            <span>{{ anchorDate() | nativeDate: "EEE dd.MM.yy" }}</span>
+            <ng-container *ngTemplateOutlet="forecastLine; context: {$implicit: anchorDate()}" />
           </div>
         }
 
@@ -490,6 +500,7 @@
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
             <cc-weather
+              [clockPreference]="preferences()['time']"
               [modes]="modes"
               [currentMode]="viewMode()"
               [isDesktop]="isDesktop()"
@@ -570,7 +581,10 @@
                     @if (viewMode() === 'multi') {
                       <strong class="column-calendar" [style.color]="multiCalendars()[di].color">{{ multiCalendars()[di].title }}</strong>
                     } @else {
-                      <button class="column-date" type="button" [class.today]="isTodayDay(d)" (click)="selectMiniDay(d); setView('day')">{{ d | nativeDate: "EEE dd.MM.yy" }}</button>
+                      <button class="column-date" type="button" [class.today]="isTodayDay(d)" (click)="selectMiniDay(d); setView('day')">
+                        <span>{{ d | nativeDate: "EEE dd.MM.yy" }}</span>
+                        <ng-container *ngTemplateOutlet="forecastLine; context: {$implicit: d}" />
+                      </button>
                     }
                   }
                 </div>
@@ -587,7 +601,7 @@
               </div>
               <div class="tl-day-headers" (scroll)="syncTimelineScroll($event)" [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(100px, 1fr))'">
                 @for (d of visibleDays(); track $index; let di = $index) {
-                  <div class="tl-allday-zone" (pointerdown)="startTimelineGesture($event, 'create', di, undefined, true)" (dblclick)="doubleClickSlot($event, di, true)">
+                  <div class="tl-allday-zone" [class.is-drop-col]="drag()?.preview?.allDay && previewCoversDay(drag()!, d, di)" (contextmenu)="$event.preventDefault()" (pointerdown)="startTimelineGesture($event, 'create', di, undefined, true)" (dblclick)="doubleClickSlot($event, di, true)">
                     @for (adev of timelineColumns()[di].allDay.slice(0, expandedAllDay() ? undefined : 3); track adev.id) {
                       <button type="button" class="allday-pill" [class.ghost-source]="drag()?.active && drag()?.event?.id === adev.id"
                         [class.is-cancelled]="adev.status === 'cancelled'" [ngStyle]="cardStyle(adev.color)"
@@ -599,8 +613,8 @@
                       </button>
                     }
                     @if (drag(); as g) {
-                      @if (g.active && g.valid && g.preview.allDay && g.previewDayIdx === di) {
-                        <span class="allday-pill all-day-ghost" [ngStyle]="cardStyle(g.event?.color, true)">{{ g.event?.title || ('New Event' | nativeText) }}</span>
+                      @if (g.preview.allDay && previewCoversDay(g, d, di)) {
+                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">{{ g.event?.title || ('New event' | nativeText) }}</span>
                       }
                     }
                   </div>
@@ -622,12 +636,12 @@
                   @if (drag(); as activeDrag) {
                     @if (activeDrag.active && activeDrag.valid && !activeDrag.preview.allDay) {
                       <div
-                        class="tl-drag-pill"
+                        class="tl-drag-pill" [hidden]="previewMinute(activeDrag) % 60 === 0"
                         [style.top.px]="
                           10 + previewMinute(activeDrag) / 60 * hourPx
                         "
                       >
-                        {{ formatMinutesHm(previewMinute(activeDrag)) }}
+                        .{{ (previewMinute(activeDrag) % 60) | number: '2.0-0' }}
                       </div>
                     }
                   }
@@ -645,9 +659,9 @@
                       class="tl-col"
                       [class.is-today]="isTodayDay(d)"
                       [class.is-drop-col]="
-                        drag()?.active && drag()?.valid && drag()?.previewDayIdx === di
+                        drag() && !drag()!.preview.allDay && previewCoversDay(drag()!, d, di)
                       "
-                      (pointerdown)="startTimelineGesture($event, 'create', di)" (dblclick)="doubleClickSlot($event, di)"
+                      (contextmenu)="$event.preventDefault()" (pointerdown)="startTimelineGesture($event, 'create', di)" (dblclick)="doubleClickSlot($event, di)"
                     >
                       @for (h of hours; track h) {
                         <div class="tl-line" [style.top.px]="h * hourPx"></div>
@@ -664,11 +678,21 @@
                       }
 
                       @if (drag(); as g) {
-                        @if (g.active && g.valid && !g.preview.allDay && g.previewDayIdx === di) {
-                          <div class="ev-block ev-block--creating" [ngStyle]="ghostStyle(g.preview, di)"
-                            [style.background]="cardStyle(g.event?.color, true).background" [style.color]="cardStyle(g.event?.color, true).color">
-                            <strong class="ev-block__title">{{ g.event?.title || ('New Event' | nativeText) }}</strong>
-                            <span class="ev-block__time">{{ formatEventClock(g.preview.start) }} – {{ formatEventClock(g.preview.end) }}</span>
+                        @if (!g.preview.allDay && previewCoversDay(g, d, di)) {
+                          <div class="ev-block ev-block--creating" [ngStyle]="ghostStyle(g, di)">
+                            <span class="ev-block__bar" aria-hidden="true"></span>
+                            <div class="ev-block__inner">
+                              <strong class="ev-block__title">{{ g.event?.title || ('New event' | nativeText) }}</strong>
+                              @if (g.event; as event) {
+                                @if (timelineVideoLabel(event); as video) { <span class="ev-block__loc"><cc-symbol name="video" />{{ video }}</span> }
+                                <span class="ev-block__time"><cc-symbol name="clock" />{{ formatEventClock(g.preview.start) }} – {{ formatEventClock(g.preview.end) }}</span>
+                                @if (event.location) { <span class="ev-block__loc"><cc-symbol name="location" />{{ event.location }}</span> }
+                              }
+                            </div>
+                            @if (g.event) {
+                              <span class="ev-handle ev-handle--top" aria-hidden="true"></span>
+                              <span class="ev-handle ev-handle--bottom" aria-hidden="true"></span>
+                            }
                           </div>
                         }
                       }
@@ -721,14 +745,14 @@
                           @if (!blk.data.readOnly && isSelected) {
                             <span
                               class="ev-handle ev-handle--top" [hidden]="!startsOnDay(blk.data, d)"
-                              title="Drag to adjust start time"
+                              aria-label="Drag to adjust start time"
                               (pointerdown)="
                                 startTimelineGesture($event, 'resize-start', di, blk.data)
                               "
                             ></span>
                             <span
                               class="ev-handle ev-handle--bottom" [hidden]="!endsOnDay(blk.data, d)"
-                              title="Drag to adjust end time"
+                              aria-label="Drag to adjust end time"
                               (pointerdown)="
                                 startTimelineGesture($event, 'resize-end', di, blk.data)
                               "
@@ -739,6 +763,16 @@
                     </div>
                   }
                 </div>
+                @if (timelineWeather().length) {
+                  <div class="hourly-forecast">
+                    @for (item of timelineWeather(); track item.hour) {
+                      <span class="hour-forecast" [style.top.px]="10 + item.hour * hourPx + 11">
+                        <img [src]="timelineSymbol(item.symbol, true)" alt="" />
+                        <span>{{ item.temperature }}°</span>
+                      </span>
+                    }
+                  </div>
+                }
               </div>
             </div>
           }
@@ -761,6 +795,8 @@
                     (dragover)="onMonthCellDragOver($event, cell.key)"
                     (dragleave)="monthDropTargetKey.set(null)"
                     (drop)="onMonthCellDrop($event, cell.date)"
+                    (pointerdown)="startMonthPress($event, cell.date)"
+                    (contextmenu)="$event.preventDefault()"
                     (click)="openMonthDay($event, cell.date)"
                     (dblclick)="createFromMonth($event, cell.date)"
                   >

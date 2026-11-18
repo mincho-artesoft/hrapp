@@ -4,6 +4,8 @@ import UIKit
 
 class DayCell: UICollectionViewCell {
     
+    private static let selectedFill = UIColor(AppColorPalette.blueViolet.primary)
+
     private let dayOfWeekLabel = UILabel()
     private let dayNumberLabel = UILabel()
     
@@ -82,22 +84,9 @@ class DayCell: UICollectionViewCell {
         let isToday = calendar.isDateInToday(date)
         
         if isSelected {
-            // Когато е избрана:
-            dayNumberLabel.textColor  = .white
-
-            if !isToday {
-                dayOfWeekLabel.textColor  = .label
-            }else{
-                dayOfWeekLabel.textColor  =  .systemRed
-            }
-           
-            
-            // Оцветяваме само кръгчето на dayNumberLabel
-            if isToday {
-                dayNumberLabel.backgroundColor = .systemRed  // днешен ден + избран
-            } else {
-                dayNumberLabel.backgroundColor = .black      // друг ден + избран
-            }
+            dayOfWeekLabel.textColor = isToday ? .systemRed : .label
+            dayNumberLabel.backgroundColor = isToday ? .systemRed : Self.selectedFill
+            dayNumberLabel.textColor = .white
         } else {
             // Когато не е избрана
             dayNumberLabel.backgroundColor = .clear

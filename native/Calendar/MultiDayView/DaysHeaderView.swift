@@ -60,7 +60,10 @@ public final class DaysHeaderView: UIView {
     
     // MARK: - Изчисляване на броя дни в [fromDate, toDate]
     
+    var singleDayOnly = false
+
     private var dayCount: Int {
+        if singleDayOnly { return 1 }
         let comps = calendarForLabels.dateComponents([.day], from: fromDateOnly, to: toDateOnly)
         return (comps.day ?? 0) + 1
     }
@@ -243,56 +246,7 @@ public final class DaysHeaderView: UIView {
     
     /// Връща конфигурация на палитрата в зависимост от името на иконата.
     private func paletteConfiguration(for iconName: String) -> UIImage.SymbolConfiguration {
-        let paletteColors: [UIColor]
-        switch iconName {
-        case "sun.max", "sunrise":
-            paletteColors = [.systemOrange, .systemOrange]
-        case "sunset":
-            paletteColors = [.systemOrange, .systemRed]
-        case "cloud.sun":
-            paletteColors = [.systemGray, .systemOrange]
-        case "cloud":
-            paletteColors = [.systemGray]
-        case "cloud.rain":
-            paletteColors = [.systemGray, .systemIndigo]
-        case "cloud.drizzle":
-            paletteColors = [.systemGray, .systemIndigo]
-        case "cloud.heavyrain", "cloud.rain.heavy":
-            paletteColors = [.systemGray, .systemIndigo]
-        case "cloud.bolt":
-            paletteColors = [.systemGray, .systemOrange]
-        case "cloud.snow":
-            paletteColors = [.systemGray, .systemGray]
-        case "wind":
-            paletteColors = [.systemGray]
-        case "cloud.fog", "fog":
-            paletteColors = [.systemGray, .systemGray]
-        case "smoke":
-            paletteColors = [.systemGray, .systemGray]
-        case "haze":
-            paletteColors = [.systemGray, .systemGray]
-        case "mist":
-            paletteColors = [.systemGray, .systemBlue]
-        case "cloud.sun.rain":
-            paletteColors = [.systemGray, .systemOrange]
-        case "cloud.sun.bolt":
-            paletteColors = [.systemGray, .systemOrange, .systemOrange]
-        case "tornado":
-            paletteColors = [.systemGray]
-        case "wind.snow":
-            paletteColors = [.systemGray, .systemGray]
-        case "moon", "moon.fill":
-            paletteColors = [.systemBlue, .systemBlue]
-        case "moon.stars":
-            paletteColors = [.systemBlue, .systemOrange]
-        case "cloud.moon.fill":
-            paletteColors = [.systemGray, .systemBlue, .systemGray]
-        case "cloud.moon":
-            paletteColors = [.systemGray, .systemBlue]
-        default:
-            paletteColors = [.systemBlue]
-        }
-        return UIImage.SymbolConfiguration(paletteColors: paletteColors)
+        UIImage.SymbolConfiguration(paletteColors: timelineWeatherColors(iconName, hourly: false))
     }
     
     // MARK: - Разположение на лейбълите

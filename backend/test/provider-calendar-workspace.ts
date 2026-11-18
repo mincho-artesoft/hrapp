@@ -35,6 +35,28 @@ async function main(){
  assert.match(generated,/^[a-f0-9]{64}$/);assert.ok(duplicateCalls[1].url.endsWith('/events/'+generated));assert.equal(retried.eventID,'already-created');
  await graph.perform({action:'save-event',calendarID:'c',clientRequestID:'same-draft-id',event:{title:'One event'}});
  assert.equal(JSON.parse(calls.at(-1)!.init.body).transactionId,'same-draft-id');
- console.log('Provider calendar contract passed: partial updates, ETags, URL boundaries, DST/all-day, recurrence, pagination, read-only roles, sanitized conflicts.');
+ const removals: string[]=[];
+ let entry:any={id:'public-holidays',accessRole:'reader',etag:'list-version'};
+ const transportRemoval:typeof fetch=async(url,init)=>{
+   if(init?.method==='DELETE'){removals.push(String(url));return new Response(null,{status:204});}
+   return ok(entry);
+ };
+ const lists=new ProviderCalendarWorkspace('google','test-only',transportRemoval);
+ await lists.perform({action:'unsubscribe-calendar',calendarID:entry.id,etag:entry.etag});
+ assert.ok(removals[0].endsWith('/users/me/calendarList/public-holidays'));
+ await assert.rejects(()=>lists.perform({action:'delete-calendar',calendarID:entry.id}),/cannot be removed/);
+ entry={...entry,accessRole:'owner'};
+ await lists.perform({action:'delete-calendar',calendarID:entry.id});
+ assert.ok(removals[1].endsWith('/v3/calendars/public-holidays'));
+ entry.primary=true;
+ await assert.rejects(()=>lists.perform({action:'delete-calendar',calendarID:entry.id}),/cannot be removed/);
+ entry={id:'shared-office',canEdit:true,canShare:false,isRemovable:true};
+ const office=new ProviderCalendarWorkspace('microsoft','test-only',transportRemoval);
+ await assert.rejects(()=>office.perform({action:'delete-calendar',calendarID:entry.id}),/cannot be removed/);
+ await office.perform({action:'unsubscribe-calendar',calendarID:entry.id});
+ entry.isRemovable=false;
+ await assert.rejects(()=>office.perform({action:'unsubscribe-calendar',calendarID:entry.id}),/cannot be removed/);
+ assert.equal(removals.length,3);
+ console.log('Provider calendar contract passed: membership removal, primary protection, updates, recurrence and read-only roles.');
 }
 void main().catch(e=>{console.error(e);process.exitCode=1;});

@@ -264,6 +264,8 @@ export class CalendarNativeService {
         `/icloud-calendars/${encodeURIComponent((calendar as SharedCalendar).calendarId ?? calendar.id)}/access?ownerId=${encodeURIComponent(calendar.ownerId)}`,
         "DELETE",
       );
+    if (!calendar.accountLocal)
+      return this.api.removeDeviceCalendarFromWeb(calendar.id);
     const all = await this.request<{ calendars: any[] }>(
       "/ios/calendars/account",
     );
@@ -430,7 +432,7 @@ export class CalendarNativeService {
       details: next.details,
       ...(feedId ? { feedId } : {}),
     });
-    await this.refresh();
+    await this.refreshAfterEventWrite();
     return { ...next, ...this.received().find((e) => e.id === event.id) };
   }
   async updateCalendarEvent(
@@ -463,8 +465,13 @@ export class CalendarNativeService {
         windowEnd: calendar.windowEnd,
       },
     );
-    await this.refresh();
+    await this.refreshAfterEventWrite();
     return { ...next, id: event.id };
+  }
+  private async refreshAfterEventWrite(): Promise<void> {
+    // A refresh started before the write can contain the old event.
+    if (this.inFlight) await this.inFlight;
+    await this.refresh();
   }
   async syncOwnedCalendar(calendarID: string) {
     const { calendars } = await this.request<{ calendars: any[] }>(

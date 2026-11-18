@@ -172,18 +172,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let leftColumnWidth: CGFloat = 60
     var bottomScrollPadding: CGFloat = 0 { didSet { if oldValue != bottomScrollPadding { setNeedsLayout() } } }
     fileprivate let weatherStripWidth: CGFloat = 50
-    /// Whether the hourly weather strip is drawn beside the timeline.
-    fileprivate var showsWeatherStrip: Bool {
-        guard showSingleDay else { return false }
-        let calendar = Calendar.current
-        let offset = calendar.dateComponents(
-            [.day],
-            from: calendar.startOfDay(for: Date()),
-            to: calendar.startOfDay(for: fromDate)
-        ).day ?? -1
-        return (0...9).contains(offset)
-    }
-
     private var usesRightToLeftLayout: Bool {
         effectiveUserInterfaceLayoutDirection == .rightToLeft
     }
@@ -683,36 +671,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-        // 7. Интеграция на данните за прогнозата
-        // Ако сме в режим showSingleDay и fromDate е в интервала [днес, днес + 9 дни],
-        // вземаме данни от WeatherKitViewModel.shared.hourlyForecast за избрания ден.
-        if showsWeatherStrip {
-            hoursColumnWeatherView.displayWeatherForecast = true
-            
-            let weatherVM = WeatherKitViewModel.shared
-            // Филтрираме часовете от прогнозата за избрания ден
-            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
-                cal.isDate($0.date, inSameDayAs: fromDate)
-            }
-            // Преобразуваме всеки HourlyForecastItem към модела HourlyWeatherForecast,
-            // използвайки часа (component .hour), символ (icon) и температура
-            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
-                let forecastHour = cal.component(.hour, from: forecast.date)
-                return HourlyWeatherForecast(
-                    hour: forecastHour,
-                    iconName: forecast.symbol,
-                    temperature: forecast.temp
-                )
-            }
-            hoursColumnWeatherView.hourlyWeatherForecasts = hourlyForecasts
-        } else {
-            hoursColumnWeatherView.displayWeatherForecast = false
-            hoursColumnWeatherView.hourlyWeatherForecasts = nil
-        }
-        
-        hoursColumnView.setNeedsDisplay()
-        hoursColumnWeatherView.setNeedsDisplay()
-
+        hoursColumnWeatherView.updateForecast(for: showSingleDay ? fromDate : nil)
         updateDaysHeaderForecast()
 
         // 8. Layout на рез-лтати от търсене (ако сме в режим на търсене)

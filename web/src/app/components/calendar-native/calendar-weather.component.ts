@@ -1,4 +1,5 @@
-import { CalendarNativeTextPipe } from "../../core/calendar-localization";
+import { CalendarForecastService } from '../../core/calendar-forecast.service';
+import { CalendarLocalization, CalendarNativeTextPipe } from "../../core/calendar-localization";
 import {
   Component,
   ChangeDetectionStrategy,
@@ -28,6 +29,8 @@ import {
 } from "./calendar-choice.component";
 import { CalendarSymbolComponent } from "./calendar-symbol.component";
 
+import { CalendarWindMapComponent } from './calendar-wind-map.component';
+
 @Component({
   selector: "cc-weather",
   standalone: true,
@@ -37,6 +40,7 @@ import { CalendarSymbolComponent } from "./calendar-symbol.component";
     FormsModule,
     CalendarSymbolComponent,
     CalendarChoiceComponent,
+    CalendarWindMapComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./calendar-weather.component.html",
@@ -45,8 +49,11 @@ import { CalendarSymbolComponent } from "./calendar-symbol.component";
 export class CalendarWeatherComponent implements OnInit {
   readonly Math = Math;
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly calendarForecast = inject(CalendarForecastService);
   readonly service = inject(WeatherService);
   readonly modes = input<CalendarChoice[]>([]);
+  private readonly localization = inject(CalendarLocalization);
+  readonly clockPreference = input<string>();
   readonly currentMode = input("weather");
   readonly isDesktop = input(true);
   readonly viewChange = output<string>();
@@ -131,14 +138,11 @@ export class CalendarWeatherComponent implements OnInit {
       )
       .join(" ");
   });
+  readonly currentHour = computed(() => this.forecastHours()[0]);
   readonly displayMetrics = computed(() => {
     const s = this.weather();
     if (!s) return [];
-    const hours = s.forecastHours ?? [],
-      current =
-        hours.find(
-          (h) => h.iso >= this.localNow(s.place.timezone).slice(0, 13),
-        ) ?? hours[0];
+    const hours = s.forecastHours ?? [], current = this.currentHour();
     const visibility: MetricSample = {
       id: "visibility",
       value: current ? current.visibility.toFixed(1) : "—",
@@ -160,6 +164,13 @@ export class CalendarWeatherComponent implements OnInit {
       )
       .filter(Boolean);
   });
+
+  windDirection(degrees: number): string {
+    return ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(degrees / 22.5) % 16];
+  }
+  uvCategory(uv: number) {
+    return uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : uv < 11 ? 'Very High' : 'Extreme';
+  }
 
   selectedHourLabel(): string {
     const idx = this.selectedHour();
@@ -186,13 +197,33 @@ export class CalendarWeatherComponent implements OnInit {
     }
   }
 
-  forecastHours() {
-    const s = this.weather();
-    return (s?.forecastHours ?? [])
-      .filter(
-        (h) => h.iso >= this.localNow(s?.place.timezone ?? "UTC").slice(0, 13),
-      )
-      .slice(0, 24);
+  readonly forecastHours = computed(() => {
+    const snapshot = this.weather();
+    if (!snapshot) return [];
+    const start = this.localNow(snapshot.place.timezone).slice(0, 13);
+    return (snapshot.forecastHours ?? []).filter(h => h.iso >= start).slice(0, 24);
+  });
+
+  readonly hasHourlyPrecipitation = computed(() => this.forecastHours().some(h => h.precipitationChance >= 10));
+  readonly hourlyStrip = computed(() => {
+    const hours = this.forecastHours();
+    const entries: {iso: string; hour?: ForecastHour; solar?: 'Sunrise' | 'Sunset'; now?: boolean}[] =
+      hours.map((hour, index) => ({iso: hour.iso, hour, now: index === 0}));
+    if (!hours.length) return entries;
+    const now = this.localNow(this.weather()!.place.timezone);
+    for (const day of this.weather()?.skyDays ?? []) {
+      for (const solar of ['Sunrise', 'Sunset'] as const) {
+        const iso = solar === 'Sunrise' ? day.sunrise : day.sunset;
+        if (iso && iso >= now && iso <= hours[hours.length - 1].iso) entries.push({iso, solar});
+      }
+    }
+    return entries.sort((a, b) => a.iso.localeCompare(b.iso));
+  });
+
+  temperatureBand(day: DaySample, imperial: boolean) {
+    const mid = (Number(day.min) + Number(day.max)) / 2;
+    const celsius = imperial ? (mid - 32) * 5 / 9 : mid;
+    return celsius < 0 ? 'freezing' : celsius < 12 ? 'cold' : celsius < 22 ? 'mild' : celsius < 30 ? 'warm' : 'hot';
   }
 
   todayDotPct(day: DaySample, s: Snapshot): number | null {
@@ -276,8 +307,15 @@ export class CalendarWeatherComponent implements OnInit {
       ) + this.detailUnit()
     );
   }
+  beginChartInspection(event: PointerEvent) {
+    if (event.button !== 0 || !event.isPrimary) return;
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+    this.inspectChart(event);
+  }
   inspectChart(event: PointerEvent) {
-    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    const chart = event.currentTarget as HTMLElement;
+    if (!event.isPrimary || !chart.hasPointerCapture(event.pointerId) || !this.detailHours().length) return;
+    const rect = chart.getBoundingClientRect();
     this.selectedHour.set(
       Math.min(
         this.detailHours().length - 1,
@@ -297,8 +335,22 @@ export class CalendarWeatherComponent implements OnInit {
       this.weather()?.skyDays?.[0]
     );
   }
-  clock(value: string | null | undefined) {
-    return value?.slice(11, 16) ?? "—";
+  private readonly weatherClocks = computed(() => {
+    const preference = this.clockPreference();
+    const options: Intl.DateTimeFormatOptions = {timeZone: 'UTC', hour: 'numeric',
+      hour12: preference === '12' ? true : preference === '24' ? false : undefined};
+    const locale = this.localization.locale();
+    return {hours: new Intl.DateTimeFormat(locale, options),
+      minutes: new Intl.DateTimeFormat(locale, {...options, minute: '2-digit'})};
+  });
+
+  clock(value: string | null | undefined, hoursOnly = false) {
+    if (!value) return '—';
+    // The service returns local clock values for the forecast city.
+    const time = Date.parse(value + 'Z');
+    if (!Number.isFinite(time)) return '—';
+    const clocks = this.weatherClocks();
+    return (hoursOnly ? clocks.hours : clocks.minutes).format(time);
   }
   moonPhase(value: number | null | undefined) {
     if (value == null) return "—";
@@ -347,43 +399,92 @@ export class CalendarWeatherComponent implements OnInit {
       ][Math.round(value * 8) % 8]
     );
   }
-  private units(): "metric" | "imperial" {
-    if (this.isBrowser && typeof localStorage !== "undefined") {
-      try {
-        const prefs = JSON.parse(
-          localStorage.getItem("cc.mac.preferences") || "{}",
-        );
-        if (["metric", "imperial"].includes(prefs.units)) return prefs.units;
-      } catch {}
-    }
-    const lang =
-      typeof navigator !== "undefined" ? navigator.language : "en-GB";
-    return /-US$/.test(lang) ? "imperial" : "metric";
-  }
   ngOnInit() {
     if (!this.isBrowser || typeof localStorage === "undefined") return;
     try {
       const places = JSON.parse(
         localStorage.getItem("cc.mac.regions") || "[]",
       ) as Place[];
-      this.saved.set(places);
-      if (places.length)
-        void this.select(
-          places.find(
-            (p) =>
-              String(p.id) === localStorage.getItem("cc.mac.selectedRegion"),
-          ) ?? places[0],
-        );
-      else this.regions.set(true);
-    } catch {
-      this.regions.set(true);
-    }
+      this.saved.set(places.filter(p => p.id !== 0));
+      const restored = this.calendarForecast.selectedPlace() ?? this.calendarForecast.restoredPlace(places);
+      if (restored) {
+        void this.select(restored);
+      } else if (navigator.permissions) {
+        void navigator.permissions.query({name: 'geolocation'}).then(permission => {
+          if (permission.state === 'granted' && !this.weather() && !this.searchOpen() && !this.regions()) this.currentLocation();
+        }).catch(() => {});
+      }
+    } catch { this.saved.set([]); }
   }
+  readonly scene = computed(() => {
+    const code = this.weather()?.currentWeatherCode;
+    if (code == null) return this.currentHour()?.icon ?? 'cloud';
+    if (code <= 2) return 'sun';
+    if (code === 3) return 'cloud';
+    if (code <= 48) return 'fog';
+    if ((code >= 71 && code <= 77) || code === 85 || code === 86) return 'snow';
+    if (code >= 95 || code === 65 || code === 82) return 'storm';
+    return 'rain';
+  });
+  readonly isNight = computed(() => !(this.weather()?.isDaylight ?? !this.currentHour()?.symbol?.includes('moon')));
+
+  readonly skyBodies = computed(() => {
+    const snapshot = this.weather();
+    const days = snapshot?.skyDays;
+    if (!snapshot || !days?.length) return [];
+    const now = Date.parse(this.localNow(snapshot.place.timezone) + 'Z');
+    const today = days[0], cover = snapshot.cloudCover ?? 0;
+    const bodies = [];
+    for (const lunar of [false, true]) {
+      const rise = lunar ? today.moonrise : today.sunrise;
+      const set = lunar ? today.moonset : today.sunset;
+      if (!rise || !set) continue;
+      let start = Date.parse(rise + 'Z'), end = Date.parse(set + 'Z');
+      if (end <= start) {
+        if (now < end) start -= 86400000;
+        else end = lunar && days[1]?.moonset ? Date.parse(days[1].moonset + 'Z') : end + 86400000;
+      }
+      if (now < start || now >= end) continue;
+      const progress = (now - start) / (end - start);
+      const src = lunar ? this.moonArtwork(today.moonPhase) : '/icons/calendar-native/artwork/weather_sun_realistic.png';
+      if (src) bodies.push({src, lunar, x: 14 + progress * 72, y: 34 - 25 * Math.sin(Math.PI * progress),
+        opacity: lunar ? (this.isNight() ? 1 : .48) * Math.max(.02, 1 - cover * 1.08) : Math.max(.015, 1 - cover * 1.12)});
+    }
+    return bodies;
+  });
+
+  readonly clouds = computed(() => {
+    const snapshot = this.weather();
+    if (!snapshot) return [];
+    const sky = this.scene();
+    const cover = snapshot.cloudCover ?? (sky === 'sun' ? .12 : .72);
+    if (cover < .18) return [];
+    const wind = this.currentHour();
+    const dx = Math.sin(((wind?.direction ?? 270) + 180) * Math.PI / 180);
+    const kph = (wind?.wind ?? 0) * (snapshot.windUnit === 'mph' ? 1.609 : 1);
+    const hash = (index: number, salt: number) => {
+      const n = Math.sin(index * 1103515245 + salt * 12345) * 43758.5453123;
+      return n - Math.floor(n);
+    };
+    return Array.from({length: cover >= .75 ? 8 : cover > .45 ? 5 : 4}, (_, i) => {
+      const depth = hash(i, 22), shape = hash(i, 25);
+      const width = (188 + hash(i, 26) * 58) * (.52 + depth * .38 + shape * .1);
+      const speed = Math.max(.5, Math.abs(dx) * (1.2 + Math.min(kph, 150) * .22) * (.32 + depth ** 1.45 * 1.55));
+      const storm = hash(i, 23) < (sky === 'storm' ? 1 : sky === 'rain' ? .82 : sky === 'cloud' ? .46 : sky === 'snow' ? .18 : 0);
+      return {width, top: 8.5 + depth * 24.5 + (hash(i, 27) - .5) * 10.5, storm,
+        opacity: (.32 + depth * .34 + shape * .05) * (this.isNight() ? .76 : 1),
+        blur: Math.max(.35, 2.8 - depth * 2.35), frame: (i % 4) * 100/3 + '% ' + Math.floor(i / 4) * 100 + '%',
+        // Normalized to a 1000-point viewport, just as the native drift scales with travel distance.
+        duration: (1000 + width) / speed, phase: hash(i, 20), reverse: dx < 0};
+    });
+  });
+
   beginSearch() {
     this.modePicker.set(false);
     this.searchOpen.set(true);
   }
   closeSearch() {
+    this.searchGeneration++;
     this.searchOpen.set(false);
     this.query.set("");
     this.results.set([]);
@@ -403,23 +504,30 @@ export class CalendarWeatherComponent implements OnInit {
         this.error.set(e instanceof Error ? e.message : "Search unavailable.");
     }
   }
-  async select(place: Place) {
+  private async forecast(place: Place) {
+    let units: string | undefined;
+    try { units = JSON.parse(localStorage.getItem('cc.mac.preferences') || '{}').units; } catch {}
+    return this.calendarForecast.load(place, units, this.localization.locale());
+  }
+
+  async select(place: Place, selection: 'saved' | 'preview' | 'add' = 'saved') {
     const generation = ++this.generation;
     this.loading.set(true);
     this.error.set("");
     try {
-      const snapshot = await this.service.load(place, this.units());
+      const snapshot = await this.forecast(place);
       if (generation !== this.generation) return;
       this.weather.set(snapshot);
-      if (this.isBrowser && typeof localStorage !== "undefined") {
+      this.calendarForecast.selectedPlace.set(snapshot.place);
+      if (selection !== 'preview' && this.isBrowser && typeof localStorage !== "undefined") {
         localStorage.setItem("cc.mac.selectedRegion", String(place.id));
       }
       this.snapshots.update((p) => ({ ...p, [place.id]: snapshot }));
-      if (!this.saved().some((p) => p.id === place.id)) {
+      if (selection === 'add' && !this.saved().some((p) => p.id === place.id)) {
         this.saved.update((p) => [...p, place]);
         this.persist();
       }
-      this.regions.set(false);
+      this.regions.set(selection === 'add');
       this.closeSearch();
     } catch (e) {
       if (generation === this.generation)
@@ -502,7 +610,7 @@ export class CalendarWeatherComponent implements OnInit {
     this.regions.set(true);
     await Promise.allSettled(
       this.saved().map(async (p) => {
-        const s = await this.service.load(p, this.units());
+        const s = await this.forecast(p);
         this.snapshots.update((a) => ({ ...a, [p.id]: s }));
       }),
     );
@@ -515,7 +623,8 @@ export class CalendarWeatherComponent implements OnInit {
       if (next) void this.select(next);
       else {
         this.weather.set(null);
-        this.regions.set(true);
+        this.calendarForecast.selectedPlace.set(null);
+        this.regions.set(false);
       }
     }
   }
@@ -535,13 +644,5 @@ export class CalendarWeatherComponent implements OnInit {
         } as Record<string, string>
       )[name] ?? "cloud.sun.fill"
     );
-  }
-  graph(series: number[]) {
-    return series
-      .map(
-        (v, i) =>
-          `${(i * 100) / Math.max(1, series.length - 1)},${90 - v * 80}`,
-      )
-      .join(" ");
   }
 }

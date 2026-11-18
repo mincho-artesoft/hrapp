@@ -106,6 +106,10 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     public let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView       = HoursColumnView()
     
+    private let forecastScroll = UIScrollView()
+    private let forecastStrip = HoursColumnWeatherView()
+    private let forecastWidth: CGFloat = 50
+
     fileprivate let daysHeaderScrollView = UIScrollView()
     fileprivate let daysHeaderView       = DaysHeaderView()
     fileprivate let cornerView           = UIView()
@@ -133,7 +137,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // MARK: - Layout constants
     // ---------------------------------------------------------
     fileprivate let navBarHeight = CalendarHeaderLayout.height
-    fileprivate let daysHeaderHeight: CGFloat = 20
+    fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat  = 60
     var bottomScrollPadding: CGFloat = 0 { didSet { if oldValue != bottomScrollPadding { setNeedsLayout() } } }
 
@@ -269,7 +273,20 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // ---------------------------------------------------------
     // MARK: - Setup на под-views
     // ---------------------------------------------------------
+    @objc private func forecastUpdated(_ notification: Notification) { setNeedsLayout() }
+
     private func setupViews() {
+        daysHeaderView.singleDayOnly = true
+        daysHeaderView.fromDate = fromDate
+        forecastScroll.contentInsetAdjustmentBehavior = .never
+        forecastScroll.isUserInteractionEnabled = false
+        forecastScroll.showsVerticalScrollIndicator = false
+        forecastScroll.addSubview(forecastStrip)
+        forecastScroll.layer.zPosition = 3
+        addSubview(forecastScroll)
+        NotificationCenter.default.addObserver(self, selector: #selector(forecastUpdated(_:)),
+                                               name: .weatherForecastUpdated, object: nil)
+
         backgroundColor = .systemBackground
         clipsToBounds   = true
         
@@ -578,6 +595,16 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2) + bottomScrollPadding
         
+        forecastScroll.frame = CGRect(x: isRTL ? 0 : bounds.width - forecastWidth, y: hoursColumnY,
+                                      width: forecastWidth, height: mainScrollView.bounds.height)
+        forecastStrip.frame = CGRect(x: 0, y: 0, width: forecastWidth, height: finalHeight)
+        forecastScroll.contentSize = forecastStrip.bounds.size
+        forecastScroll.contentOffset.y = mainScrollView.contentOffset.y
+        forecastStrip.hourHeight = weekView.hourHeight
+        forecastStrip.extraMarginTopBottom = weekView.topMargin
+        forecastStrip.updateForecast(for: fromDate)
+        daysHeaderView.dailyForecasts = WeatherKitViewModel.shared.dailyForecast
+
         let totalWidth = weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0,
@@ -647,11 +674,13 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
             calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             hoursColumnScrollView.contentOffset.y      = syncedOffsetY
+            forecastScroll.contentOffset.y = syncedOffsetY
         }
         else if scrollView == hoursColumnScrollView {
             let y = syncedVerticalOffset(for: scrollView.contentOffset.y)
             hoursColumnScrollView.contentOffset = CGPoint(x: 0, y: y)
             mainScrollView.contentOffset.y = y
+            forecastScroll.contentOffset.y = y
         }
         else if scrollView == allDayScrollView {
             mainScrollView.contentOffset.x           = scrollView.contentOffset.x
@@ -785,6 +814,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         mainScrollView.isHidden      = shouldShow
         hoursColumnScrollView.isHidden = shouldShow
+        forecastScroll.isHidden = shouldShow
         allDayScrollView.isHidden    = shouldShow
         cornerView.isHidden          = shouldShow
         allDayTitleLabel.isHidden    = shouldShow

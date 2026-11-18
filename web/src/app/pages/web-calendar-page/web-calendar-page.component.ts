@@ -15,6 +15,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  NgZone,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
@@ -88,7 +89,8 @@ import {
 import { PlatformAuthCardComponent } from "../../components/platform-auth-card/platform-auth-card.component";
 import { CalendarAppleMapsService, EventPlaceSuggestion } from "../../core/calendar-apple-maps.service";
 import { CalendarLocationMapComponent } from "../../components/calendar-native/calendar-location-map.component";
-import { WeatherService } from "../../core/weather.service";
+import { CalendarForecastService } from "../../core/calendar-forecast.service";
+import { Snapshot, WeatherService } from "../../core/weather.service";
 
 type CalendarViewMode =
   | "day"
@@ -111,6 +113,9 @@ interface DragSession {
   startClientY: number;
   anchorY: number;
   centerOffset: number;
+  visualX: number;
+  visualY: number;
+  color?: string;
   touch: boolean;
   active: boolean;
   valid: boolean;
@@ -158,7 +163,7 @@ const HOUR_PX = 50;
   selector: "app-web-calendar-page",
   providers: [
     { provide: CALENDAR_API_BASE, useValue: CALENDAR_DEBUG_API },
-    CalendarPlatformApiService, CalendarNativeService, CalendarProviderService,
+    CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
   imports: [
@@ -187,6 +192,7 @@ export class WebCalendarPageComponent
 
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
+  private readonly zone = inject(NgZone);
   private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
@@ -203,6 +209,41 @@ export class WebCalendarPageComponent
   private readonly themeService = inject(ThemeService);
   private readonly weatherService = inject(WeatherService);
   readonly viewMode = signal<CalendarViewMode>("month");
+  private readonly forecastSource = inject(CalendarForecastService);
+  private readonly forecast = signal<Snapshot | null>(null);
+  private readonly forecastRefreshPeriod = computed(() => Math.floor(this.nowTick().getTime() / 600000));
+  readonly dailyForecast = computed(() => new Map(this.forecast()?.daily.slice(0, 10).map(d => [d.instant ? this.dayKey(new Date(d.instant)) : d.iso, d])));
+  readonly timelineWeather = computed(() => {
+    const day = this.anchorDate();
+    const today = timelineDay(this.nowTick());
+    const snapshot = this.forecast();
+    if (!snapshot || !['day', 'multi'].includes(this.viewMode()) || timelineDay(day) < today || timelineDay(day) >= timelineDay(today, 10)) return [];
+    const zone = snapshot.place.timezone;
+    const localZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const dayKey = this.dayKey(day);
+    const byHour = new Map<number, {hour: number; temperature: number; symbol: string}>();
+    for (const h of snapshot.forecastHours ?? []) {
+      if (!Number.isFinite(h.temperature) || !h.symbol) continue;
+      let hour: number;
+      if (!zone || zone === 'auto' || zone === localZone) {
+        if (!h.iso.startsWith(dayKey)) continue;
+        hour = Number(h.iso.slice(11, 13));
+      } else {
+        const date = h.instant ? new Date(h.instant) : instant(new Date(h.iso + 'Z'), zone);
+        if (!date || this.dayKey(date) !== dayKey) continue;
+        hour = date.getHours();
+      }
+      byHour.set(hour, {hour, temperature: Math.round(h.temperature), symbol: h.symbol});
+    }
+    return [...byHour.values()];
+  });
+  dayForecast(date: Date) { return this.dailyForecast().get(this.dayKey(date)); }
+  timelineSymbol(name: string, hourly = false) {
+    const light = this.surfaceTheme() === 'light';
+    const variant = light && hourly && ['moon.stars', 'cloud.moon'].includes(name) ? 'hourly-' : '';
+    return '/icons/calendar-native/weather/' + (light ? 'timeline-light/' : '') + variant + name + '.png';
+  }
+
   readonly native = inject(CalendarNativeService);
   readonly providerWorkspace=inject(CalendarProviderService);
   readonly modes = [
@@ -827,6 +868,21 @@ export class WebCalendarPageComponent
   private workspaceSession: string | null = null;
 
   constructor() {
+    effect(onCleanup => {
+      if (!this.isBrowser || !this.api.isSignedInWithAccount() || !['day', 'multi', 'week', 'workweek'].includes(this.viewMode())) return;
+      const selected = this.forecastSource.selectedPlace();
+      const units = this.preferences()['units'];
+      const locale = this.localization.locale();
+      this.forecastRefreshPeriod();
+      let active = true;
+      onCleanup(() => { active = false; });
+      void (async () => {
+        const place = selected ?? await this.forecastSource.timelinePlace();
+        if (!active) return;
+        const result = place ? await this.forecastSource.load(place, units, locale) : null;
+        if (active) this.forecast.set(result);
+      })().catch(() => { if (active) this.forecast.set(null); });
+    });
     effect(() => {
       const session = this.api.isSignedInWithAccount() ? this.api.token() : null;
       if (!this.isBrowser || this.workspaceSession === session) return;
@@ -963,7 +1019,7 @@ export class WebCalendarPageComponent
   readonly adminHref = computed(() => linkPath(this.locale, "/admin"));
 
   // Unified display events across owned + shared + external busy
-  readonly allDisplayEvents = computed<WebCalendarEvent[]>(() => {
+  private readonly calendarOccurrences = computed<WebCalendarEvent[]>(() => {
     const owned = this.ownedEvents()
       .filter(
         (e) =>
@@ -1065,6 +1121,13 @@ export class WebCalendarPageComponent
         ),
       );
     return events.flatMap((event) => calendarOccurrences(event, lower, upper));
+  });
+
+  private readonly pendingTimelineEdit = signal<Pick<WebCalendarEvent, "id" | "start" | "end" | "allDay"> | null>(null);
+  readonly allDisplayEvents = computed(() => {
+    const events = this.calendarOccurrences();
+    const pending = this.pendingTimelineEdit();
+    return pending ? events.map(event => event.id === pending.id ? { ...event, ...pending } : event) : events;
   });
 
   // Visible columns for Day / Workweek / Week
@@ -1390,6 +1453,7 @@ export class WebCalendarPageComponent
     // Lightweight visibility-aware live sync while user is viewing the site (20s active interval, 0 requests when hidden)
     document.addEventListener("visibilitychange", this.onVisibilityOrFocus);
     window.addEventListener("resize", this.onWindowResize);
+    this.zone.runOutsideAngular(() => document.addEventListener("pointermove", this.onGlobalPointerMove));
     window.addEventListener("touchmove",this.preventHeldTouchScroll,{passive:false});
     window.addEventListener("focus", this.onVisibilityOrFocus);
     this.liveSyncTimer = setInterval(() => {
@@ -1449,6 +1513,7 @@ export class WebCalendarPageComponent
     this.cancelDrag();
     if (this.isBrowser && typeof window !== "undefined") {
       window.removeEventListener("resize", this.onWindowResize);
+      document.removeEventListener("pointermove", this.onGlobalPointerMove);
       window.removeEventListener("touchmove", this.preventHeldTouchScroll);
     }
     this.doc.getElementById("web-calendar-jsonld")?.remove();
@@ -1625,20 +1690,23 @@ export class WebCalendarPageComponent
     return this.formatMinutesHm(h * 60);
   }
 
+  private readonly wallClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
+    timeZone: "UTC", hour: "numeric", minute: "2-digit", hour12: this.hour12(),
+  }));
+  private readonly eventClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
+    hour: "numeric", minute: "2-digit", hour12: this.hour12(),
+  }));
+  private readonly intervalClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
+    hour: "2-digit", minute: "2-digit", hour12: this.hour12(),
+  }));
+
   formatMinutesHm(totalMinutes: number): string {
-    const clamped = Math.max(0, Math.min(1440, Math.round(totalMinutes)));
-    // A neutral UTC date formats wall-clock minutes without a DST jump.
-    return new Intl.DateTimeFormat(this.dateLocale(), {
-      timeZone: "UTC", hour: "numeric", minute: "2-digit", hour12: this.hour12(),
-    }).format(Date.UTC(2000, 0, 1, 0, clamped));
+    const minute = Math.max(0, Math.min(1440, Math.round(totalMinutes)));
+    return this.wallClock().format(Date.UTC(2000, 0, 1, 0, minute));
   }
 
   formatEventClock(iso: string | number) {
-    return new Intl.DateTimeFormat(this.dateLocale(), {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: this.hour12(),
-    }).format(new Date(iso));
+    return this.eventClock().format(new Date(iso));
   }
   timelineVideoLabel(event: WebCalendarEvent): string | undefined {
     const block = event.details?.notes?.split('----( Video Call )----')[1];
@@ -1658,11 +1726,7 @@ export class WebCalendarPageComponent
 
   formatEventTimeSpan(ev: WebCalendarEvent): string {
     if (ev.allDay) return this.localization.text("All-day");
-    const f = new Intl.DateTimeFormat(this.dateLocale(), {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: this.hour12(),
-    });
+    const f = this.intervalClock();
     return `${f.format(new Date(ev.start))} – ${f.format(new Date(ev.end))}`;
   }
 
@@ -1734,6 +1798,7 @@ export class WebCalendarPageComponent
 
   private holdTimer?: ReturnType<typeof setTimeout>;
   private scrollFrame = 0;
+  private pointerFrame = 0;
   private pointer = {x: 0, y: 0};
   private preventHeldTouchScroll = (event: TouchEvent) => {
     if (this.drag()?.active && event.cancelable) event.preventDefault();
@@ -1742,7 +1807,9 @@ export class WebCalendarPageComponent
   startTimelineGesture(ev: PointerEvent, mode: TimelineGesture, index: number, event?: WebCalendarEvent, allDay = false): void {
     if (ev.button !== 0 || !ev.isPrimary || this.savingEvent()) return;
     ev.stopPropagation();
+    if (this.drag()?.active) return;
     this.cancelDrag();
+    if (ev.pointerType === 'mouse') ev.preventDefault();
     const columns = this.daysColumnsRef?.nativeElement;
     const day = this.visibleDays()[index];
     if (!columns || !day) return;
@@ -1757,19 +1824,21 @@ export class WebCalendarPageComponent
       anchorY = ev.clientY - (mode === 'resize-start' ? block.top : block.bottom);
     } else if (event && !allDay) anchorY = ev.clientY - rect.top;
     const col = columns.children[index].getBoundingClientRect();
+    const writable = this.writableCalendars();
+    const destination = this.viewMode() === 'multi' ? this.multiCalendars()[index]
+      : writable.find(c => c.id === this.destinationCalendarID()) ?? writable[0];
+    if (mode === 'create') this.inspectorEvent.set(null);
     this.pointer = {x: ev.clientX, y: ev.clientY};
     this.drag.set({
       mode, event, original, originDayIdx: index, pointerId: ev.pointerId,
       startClientX: ev.clientX, startClientY: ev.clientY, touch: ev.pointerType === 'touch',
       centerOffset: mode === 'move' ? col.left + col.width / 2 - ev.clientX : 0, anchorY,
       active: false, valid: false, preview: original, previewDayIdx: index,
+      color: event?.color ?? destination?.color, visualX: 0, visualY: 0,
     });
     if (event?.readOnly) return;
-    if (resize) {
-      this.activateDrag();
-      return;
-    }
-    const delay = ev.pointerType === 'touch' || mode === 'create' ? 450 : this.inspectorEvent()?.id === event?.id ? 100 : 200;
+    const creationDelay = ev.pointerType === 'touch' && !allDay ? 700 : 450;
+    const delay = resize ? 50 : mode === 'create' ? creationDelay : this.inspectorEvent()?.id === event?.id ? 100 : 200;
     this.holdTimer = setTimeout(() => this.activateDrag(), delay);
   }
 
@@ -1794,7 +1863,14 @@ export class WebCalendarPageComponent
     if (!current || current.event?.readOnly) return;
     if (this.holdTimer) clearTimeout(this.holdTimer);
     const columns = this.daysColumnsRef?.nativeElement;
-    if (columns?.isConnected && this.drag()) columns.setPointerCapture(current.pointerId);
+    if (!columns?.isConnected) { this.cancelDrag(); return; }
+    if (current.mode === 'create' && (this.viewMode() === 'multi'
+      ? !this.multiCalendars()[current.originDayIdx]?.allowsChanges : !this.writableCalendars().length)) {
+      this.cancelDrag();
+      this.showToast("Open Menu to allow calendar access or add a writable calendar.");
+      return;
+    }
+    columns.setPointerCapture(current.pointerId);
     if (current.event) this.inspectorEvent.set(current.event);
     this.drag.set({...current, active: true});
     this.updatePlacement();
@@ -1807,25 +1883,38 @@ export class WebCalendarPageComponent
     const {x,y} = this.pointer;
     const viewport = scroll.getBoundingClientRect();
     const dates = this.visibleDays();
-    const columnIndex = Array.from(columns.children).findIndex(el => {
-      const rect = el.getBoundingClientRect();
-      return x + state.centerOffset >= rect.left && x + state.centerOffset < rect.right;
-    });
+    const bounds = columns.getBoundingClientRect();
+    const first = columns.children[0]?.getBoundingClientRect();
+    if (!first?.width) return;
+    const rtl = getComputedStyle(columns).direction === 'rtl';
+    const center = x + state.centerOffset;
+    const hitIndex = Math.floor((rtl ? first.right - center : center - first.left) / first.width);
+    const resizing = state.mode === 'resize-start' || state.mode === 'resize-end';
+    const columnIndex = resizing && this.viewMode() === 'multi' ? state.originDayIdx : hitIndex;
     const target = this.doc.elementFromPoint(x,y);
     const allDay = !!target?.closest('.tl-allday-zone');
     const withinView = y >= viewport.top && y < viewport.bottom && x >= viewport.left && x < viewport.right;
     const onGutter = !!target?.closest('.tl-gutter') || !!target?.closest('.calendar-column-head');
     const sameCalendar = this.viewMode() !== 'multi' || !state.event || columnIndex === state.originDayIdx;
     const canCreate = state.mode !== 'create' || this.viewMode() !== 'multi' || this.multiCalendars()[columnIndex]?.allowsChanges;
-    const minute = (y - columns.getBoundingClientRect().top - state.anchorY) / HOUR_PX * 60;
+    const minute = (y - bounds.top - state.anchorY) / HOUR_PX * 60;
     const interval = dates[columnIndex] && !onGutter && (allDay || withinView) && sameCalendar && canCreate
       ? timelinePlacement(state.mode, state.original, dates[state.originDayIdx], dates[columnIndex], minute, allDay) : null;
-    if (interval) this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: true});
-    else if (state.valid) this.drag.set({...state, valid: false});
+    if (interval) {
+      const column = columns.children[columnIndex].getBoundingClientRect();
+      const freeX = x + state.centerOffset - column.width / 2 + 2;
+      const left = state.mode === 'create' ? Math.max(bounds.left + 2, Math.min(bounds.right - column.width + 2, freeX)) : freeX;
+      const visualX = resizing ? 0 : left - column.left - 2;
+      const edge = state.mode === 'resize-end' ? interval.end : interval.start;
+      const snappedY = minuteOnDay(edge, dates[columnIndex]) * HOUR_PX / 60;
+      const visualY = allDay || state.mode === 'create' ? 0 : y - bounds.top - state.anchorY - snappedY;
+      const color = state.mode === 'create' && this.viewMode() === 'multi' ? this.multiCalendars()[columnIndex]?.color : state.color;
+      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: true, visualX, visualY, color});
+    } else if (state.valid) this.drag.set({...state, valid: false});
     if ((withinView || allDay) && !this.scrollFrame) {
       const edgeSpeed = (position: number, low: number, high: number) =>
-        position < low + 30 ? -Math.min(12, Math.ceil((low + 30 - position) / 3)) :
-        Math.max(0, Math.min(12, Math.ceil((position - high + 30) / 3)));
+        position < low + 44 ? -Math.min(10, Math.ceil((low + 44 - position) / 4.4)) :
+        Math.max(0, Math.min(10, Math.ceil((position - high + 44) / 4.4)));
       const rtl = getComputedStyle(scroll).direction === 'rtl';
       const dx = edgeSpeed(x, viewport.left + (rtl ? 0 : 60), viewport.right - (rtl ? 60 : 0));
       const dy = withinView ? edgeSpeed(y, viewport.top, viewport.bottom) : 0;
@@ -1838,31 +1927,43 @@ export class WebCalendarPageComponent
     }
   }
 
+  @HostListener('document:keydown.escape')
   @HostListener('window:blur')
   cancelDrag(): void {
+    this.cancelMonthPress();
     if (this.holdTimer) clearTimeout(this.holdTimer);
+    if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
+    this.pointerFrame = 0;
     if (this.scrollFrame) cancelAnimationFrame(this.scrollFrame);
     this.scrollFrame = 0;
+    const pointerId = this.drag()?.pointerId;
+    const columns = this.daysColumnsRef?.nativeElement;
+    if (pointerId !== undefined && columns?.hasPointerCapture(pointerId)) columns.releasePointerCapture(pointerId);
     this.drag.set(null);
   }
 
   @HostListener('document:pointercancel', ['$event'])
-  pointerCancelled(ev: PointerEvent): void { if (this.drag()?.pointerId === ev.pointerId) this.cancelDrag(); }
+  pointerCancelled(ev: PointerEvent): void { this.cancelMonthPress(ev); if (this.drag()?.pointerId === ev.pointerId) this.cancelDrag(); }
 
-  @HostListener('document:pointermove', ['$event'])
-  onGlobalPointerMove(ev: PointerEvent): void {
+  private readonly onGlobalPointerMove = (ev: PointerEvent): void => {
+    if (this.monthPress && Math.hypot(ev.clientX - this.monthPress.x, ev.clientY - this.monthPress.y) > 8) this.cancelMonthPress(ev);
     const state = this.drag();
     if (!state || ev.pointerId !== state.pointerId) return;
     this.pointer = {x: ev.clientX, y: ev.clientY};
-    if (state.active) this.updatePlacement();
-    else if (Math.hypot(ev.clientX - state.startClientX, ev.clientY - state.startClientY) > 8) {
+    if (state.active) {
+      if (!this.pointerFrame) this.pointerFrame = requestAnimationFrame(() => {
+        this.pointerFrame = 0;
+        this.zone.run(() => this.updatePlacement());
+      });
+    } else if (Math.hypot(ev.clientX - state.startClientX, ev.clientY - state.startClientY) > 8) {
       if (state.touch || state.mode === 'create' || state.event?.readOnly) this.cancelDrag();
-      else this.activateDrag();
+      else this.zone.run(() => this.activateDrag());
     }
   }
 
   @HostListener('document:pointerup', ['$event'])
   async onGlobalPointerUp(ev: PointerEvent): Promise<void> {
+    this.cancelMonthPress(ev);
     if (this.drag()?.pointerId !== ev.pointerId) return;
     this.pointer = {x: ev.clientX, y: ev.clientY};
     this.updatePlacement();
@@ -1905,15 +2006,58 @@ export class WebCalendarPageComponent
     return minuteOnDay(state.mode === 'resize-end' ? state.preview.end : state.preview.start, this.visibleDays()[state.previewDayIdx]);
   }
 
-  ghostStyle(interval: TimelineInterval, index: number) {
+  previewCoversDay(state: DragSession, day: Date, index: number): boolean {
+    return state.active && (this.viewMode() !== 'multi' || state.previewDayIdx === index)
+      && state.preview.start < timelineDay(day, 1).getTime() && state.preview.end > day.getTime();
+  }
+
+  previewColors(state: DragSession) {
+    const accent = state.color || '#0088ff';
+    return { color: accent, background: `color-mix(in srgb, ${accent} 30%, transparent)`,
+      borderColor: state.valid ? 'transparent' : '#ff453a', '--ev-accent': accent, '--ev-detail': accent };
+  }
+
+  ghostStyle(state: DragSession, index: number) {
     const day = this.visibleDays()[index];
-    const start = minuteOnDay(interval.start, day), end = minuteOnDay(interval.end, day);
-    return {top: start / 60 * HOUR_PX + 'px', height: Math.max(20, (end - start) / 60 * HOUR_PX - 2) + 'px'};
+    const start = minuteOnDay(state.preview.start, day), end = minuteOnDay(state.preview.end, day);
+    let height = Math.max(10, (end - start) / 60 * HOUR_PX - 2);
+    let offset = state.mode === 'move' ? state.visualY : 0;
+    if (state.mode === 'resize-start' && state.preview.start >= day.getTime()) {
+      offset = Math.min(state.visualY, Math.max(0, height - 20));
+      height -= offset;
+    } else if (state.mode === 'resize-end' && state.preview.end <= timelineDay(day, 1).getTime()) {
+      height = Math.max(20, height + state.visualY);
+    }
+    return {top: start / 60 * HOUR_PX + 'px', height: height + 'px',
+      transform: `translate(${state.visualX}px, ${offset}px)`, ...this.previewColors(state)};
   }
 
   private monthClickTimer?: ReturnType<typeof setTimeout>;
+  private monthPress?: { id: number; x: number; y: number; timer: ReturnType<typeof setTimeout> };
+  private monthHeld = false;
+
+  startMonthPress(event: PointerEvent, day: Date) {
+    this.cancelMonthPress();
+    this.monthHeld = false;
+    if (!event.isPrimary || event.button !== 0 || (event.target as Element).closest('button,.month-pill')) return;
+    const timer = setTimeout(() => {
+      this.monthHeld = true;
+      const start = timelineDay(day);
+      start.setHours(9);
+      this.openNewEventModal(start, new Date(start.getTime() + 3600000), false);
+    }, 500);
+    this.monthPress = {id: event.pointerId, x: event.clientX, y: event.clientY, timer};
+  }
+
+  private cancelMonthPress(event?: PointerEvent) {
+    if (!this.monthPress || (event && this.monthPress.id !== event.pointerId)) return;
+    clearTimeout(this.monthPress.timer);
+    this.monthPress = undefined;
+  }
+
 
   openMonthDay(ev: MouseEvent, date: Date): void {
+    if (this.monthHeld) { this.monthHeld = false; return; }
     if (this.monthClickTimer) clearTimeout(this.monthClickTimer);
     const open = () => { this.selectMiniDay(date); this.setView("day"); };
     if (ev.detail === 0 || !this.isDesktop()) open();
@@ -1976,16 +2120,9 @@ export class WebCalendarPageComponent
     newEndIso: string,
     allDay = !!original.allDay,
   ): Promise<void> {
-    const prevStart = original.start;
-    const prevEnd = original.end;
-
+    if (this.savingEvent()) return;
     this.savingEvent.set(true);
-    // Optimistic UI update for zero-jitter snap
-    this.ownedEvents.update((list) =>
-      list.map((e) =>
-        e.id === original.id ? { ...e, start: newStartIso, end: newEndIso, allDay } : e,
-      ),
-    );
+    this.pendingTimelineEdit.set({ id: original.id, start: newStartIso, end: newEndIso, allDay });
 
     try {
       const res = await this.persistEvent(original.id, {
@@ -1995,7 +2132,7 @@ export class WebCalendarPageComponent
         end: newEndIso,
         allDay,
         notifyGuest: true,
-      });
+      }, original);
       this.ownedEvents.update((list) =>
         list.map((e) => (e.id === res.event.id ? res.event : e)),
       );
@@ -2004,21 +2141,15 @@ export class WebCalendarPageComponent
       this.showToast(`Moved "${original.title}" to ${timeText}${suffix}`, {
         undoEventId: res.event.id,
         undoAllDay: !!original.allDay,
-        undoStart: (original as CalendarOccurrence).masterStart ?? prevStart,
-        undoEnd: (original as CalendarOccurrence).masterEnd ?? prevEnd,
+        undoStart: (original as CalendarOccurrence).masterStart ?? original.start,
+        undoEnd: (original as CalendarOccurrence).masterEnd ?? original.end,
       });
     } catch (e) {
-      // Revert optimistic move on conflict
-      this.ownedEvents.update((list) =>
-        list.map((ev) =>
-          ev.id === original.id
-            ? { ...ev, start: prevStart, end: prevEnd, allDay: original.allDay }
-            : ev,
-        ),
-      );
+      this.pendingTimelineEdit.set(null);
       this.handleMutationError(e, "Could not move event to that time.");
       await this.reloadAllWorkspaceData();
     } finally {
+      this.pendingTimelineEdit.set(null);
       this.savingEvent.set(false);
     }
   }
@@ -2438,9 +2569,10 @@ export class WebCalendarPageComponent
   private async persistEvent(
     id: string,
     body: any,
+    source?: WebCalendarEvent,
   ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
     ++this.stateVersion;
-    let original =
+    let original = source ??
       this.allDisplayEvents().find((e) => e.id === id) ??
       this.editorDraft()?.original;
     const providerCalendar=this.providerWorkspace.calendars().find(c=>c.id===(body.calendarId||original?.calendarId));

@@ -125,7 +125,7 @@
   transition: background-color 0.16s ease, border-color 0.16s ease;
   @include focus-ring;
 
-  &:hover:not(:disabled) {
+  :host(:not(.calendar-auth)) &:hover:not(:disabled) {
     background: var(--surface-3, #3a3a3c);
   }
 
@@ -260,7 +260,7 @@
   font-weight: 500;
   color: var(--aurora-2);
 
-  &:hover {
+  :host(:not(.calendar-auth)) &:hover {
     text-decoration: underline;
   }
 }
@@ -383,7 +383,7 @@
     color: var(--aurora-2);
     font-weight: 600;
 
-    &:hover {
+    :host(:not(.calendar-auth)) &:hover {
       text-decoration: underline;
     }
   }

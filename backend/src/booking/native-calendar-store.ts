@@ -1,12 +1,59 @@
 import { isDeepStrictEqual } from 'node:util';
+import { createHash } from 'node:crypto';
 import { StoreService } from '../store/store.service';
 import { ApiResult, result } from '../common/api-result';
+
+const webBirthdaysID = 'system:birthdays';
+
+function isAppleBirthdays(calendar: any): boolean {
+  if (calendar.allowsChanges !== false || calendar.accountLocal || calendar.providerMirrorID) return false;
+  if (calendar.eventKitKind) return calendar.eventKitKind === 'birthdays';
+  // Older clients only sent the EventKit source, a localized title and contact URLs.
+  if (!/^(Other|Други)$/iu.test(calendar.source)) return false;
+  if (calendar.events?.length) {
+    return calendar.events.every((e: any) => e.allDay && /^addressbook:\/\//i.test(e.url ?? ''));
+  }
+  return /^(Birthdays|Рождени дни)$/iu.test(calendar.title);
+}
+
+function birthdayCalendar(copies: any[]) {
+  const ordered = copies.slice().sort((a, b) =>
+    String(b.updatedAt ?? '').localeCompare(String(a.updatedAt ?? '')) || a.id.localeCompare(b.id));
+  const events = new Map<string, any>();
+  const formatters = new Map<string, Intl.DateTimeFormat>();
+  for (const calendar of ordered) {
+    const counts = new Map<string, number>();
+    for (const event of calendar.events ?? []) {
+      let day = event.start.slice(0, 10);
+      const zone = event.details?.timeZone;
+      if (zone) {
+        try {
+          let formatter = formatters.get(zone);
+          if (!formatter) {
+            formatter = new Intl.DateTimeFormat('en-CA', {timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit'});
+            formatters.set(zone, formatter);
+          }
+          day = formatter.format(new Date(event.start));
+        } catch { /* Older clients can send an unknown time zone. */ }
+      }
+      // Contact identifiers are device-local. Keep the maximum multiplicity per
+      // device so two contacts with the same name and birthday are preserved.
+      const key = JSON.stringify([event.title.trim().normalize('NFC'), day]);
+      const index = counts.get(key) ?? 0;
+      counts.set(key, index + 1);
+      const id = createHash('sha256').update(key + ':' + index).digest('hex');
+      if (!events.has(id)) events.set(id, {...event, id, readOnly: true});
+    }
+  }
+  return {...ordered[0], id: webBirthdaysID, deviceName: '', eventKitKind: 'birthdays', events: [...events.values()]};
+}
 
 /** Account-scoped replicas of actual device calendars. No synthetic calendar is created. */
 export class NativeCalendarStore {
   constructor(private readonly store: StoreService) {}
   private prefix(principal: any) { return `principal/${principal.principalId}/native-calendars/`; }
   private key(principal: any, id: string) { return `${this.prefix(principal)}${id}.json`; }
+  private removedPrefix(principal: any) { return `principal/${principal.principalId}/web-calendar-removed/`; }
   private validID(id: unknown): id is string { return typeof id === 'string' && /^[a-zA-Z0-9_-]{1,128}$/.test(id); }
 
   async list(principal: any): Promise<any[]> {
@@ -16,14 +63,39 @@ export class NativeCalendarStore {
 
   /** One provider calendar can have a replica on each device. Keep their storage
    * and merge baselines intact, but present the newest snapshot only once. */
-  webCalendars(calendars: any[]): any[] {
+  webCalendars(calendars: any[], removed: ReadonlySet<string> = new Set()): any[] {
     const seen = new Map<string, any>();
+    const birthdays: any[] = [];
     for (const calendar of calendars.filter(c => c.available !== false)) {
+      if (isAppleBirthdays(calendar)) {
+        birthdays.push(calendar);
+        continue;
+      }
+      if (removed.has(calendar.id)) continue;
       const identity = calendar.providerMirrorID ? `provider:${calendar.providerMirrorID}` : `calendar:${calendar.id}`;
       const previous = seen.get(identity);
       if (!previous || String(calendar.updatedAt ?? '') > String(previous.updatedAt ?? '')) seen.set(identity, calendar);
     }
+    if (birthdays.length && !removed.has(webBirthdaysID)) seen.set(webBirthdaysID, birthdayCalendar(birthdays));
     return [...seen.values()];
+  }
+
+  async listForWeb(principal: any): Promise<any[]> {
+    const prefix = this.removedPrefix(principal);
+    const [calendars, removed] = await Promise.all([this.list(principal), this.store.listKeys(prefix)]);
+    return this.webCalendars(calendars, new Set(removed.map(key => key.slice(prefix.length, -5))));
+  }
+
+  async removeFromWeb(principal: any, id: string): Promise<ApiResult> {
+    if (id !== webBirthdaysID) {
+      if (!this.validID(id)) return result(400, {error: 'Invalid calendar.'});
+      const calendar = await this.store.getJSON(this.key(principal, id));
+      if (!calendar) return result(404, {error: 'Calendar not found.'});
+      if (calendar.accountLocal) return result(400, {error: 'Use the account calendar action.'});
+      if (isAppleBirthdays(calendar)) id = webBirthdaysID;
+    }
+    await this.store.putJSONIfAbsent(this.removedPrefix(principal) + id + '.json', {removed: true});
+    return result(200, {removed: true});
   }
 
   async sync(principal: any, body: any): Promise<ApiResult> {
@@ -58,6 +130,7 @@ export class NativeCalendarStore {
       ...(body.accountLocal === true ? { accountLocal: true,
         sharingCalendarID: typeof body.sharingCalendarID === 'string' && /^[0-9a-f]{64}$/i.test(body.sharingCalendarID) ? body.sharingCalendarID : undefined } : {}),
       title: body.title.trim().slice(0, 200), source: String(body.source ?? 'Local Calendars').slice(0, 200),
+      eventKitKind: ['birthdays', 'regular'].includes(body.eventKitKind) ? body.eventKitKind : stored?.value.eventKitKind,
       providerMirrorID: typeof body.providerMirrorID === 'string' && /^[0-9a-f]{64}$/i.test(body.providerMirrorID)
         ? body.providerMirrorID : stored?.value.providerMirrorID,
       color: /^#[0-9a-f]{6}$/i.test(body.color) ? body.color : '#0A84FF',

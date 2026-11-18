@@ -132,7 +132,7 @@ export interface WebCalendarEventDetails {
 export interface DeviceCalendar {
   id: string; title: string; source: string; color: string;
   providerMirrorID?: string;
-  provider?:'google'|'microsoft';remoteID?:string;providerOwner?:boolean;etag?:string;primary?:boolean;
+  provider?:'google'|'microsoft';remoteID?:string;providerOwner?:boolean;etag?:string;primary?:boolean;isRemovable?:boolean;
   deviceName: string; allowsChanges: boolean; updatedAt?: string;
   accountLocal?: boolean; sharingCalendarID?: string; ownerId?: string; ownerEmail?: string;
   access?: 'reader' | 'writer' | 'owner'; calendarKind?: string; available?: boolean;
@@ -1119,6 +1119,14 @@ export class CalendarPlatformApiService {
       return Promise.reject(new Error('Unsupported calendar operation.'));
     }
     return this.request<T>(path, { method, body, auth: true });
+  }
+
+  getCalendarForecast(parameters: URLSearchParams) {
+    return this.request<import('./weatherkit-forecast').AppleForecast>('/web-calendar/weather?' + parameters, {auth: true});
+  }
+
+  removeDeviceCalendarFromWeb(id: string) {
+    return this.request<{removed: boolean}>(`/web-calendar/device-calendars/${encodeURIComponent(id)}`, {method: 'DELETE', auth: true});
   }
 
   providerCalendarRequest<T>(provider: 'google' | 'microsoft', body: unknown): Promise<T> {

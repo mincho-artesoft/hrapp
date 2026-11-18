@@ -72,6 +72,37 @@ async function main() {
   ]);
   assert.equal(web.length, 3, 'Only proven provider replicas are deduplicated');
   assert.equal(web[0].events[0].title, 'Latest provider version');
+
+  const birthday = {...event, title: "Sam’s Birthday", allDay: true, url: 'addressbook://phone-contact',
+    start: '2026-11-17T22:00:00Z', end: '2026-11-18T22:00:00Z', details: {timeZone: 'Europe/Sofia'}};
+  const phone = {...calendar, id: 'birthday_phone', source: 'Other', title: 'Birthdays', allowsChanges: false,
+    events: [birthday, {...birthday, id: 'second_sam', url: 'addressbook://another-contact'}]};
+  const tablet = {...phone, id: 'birthday_ipad', deviceId: 'ipad', title: 'Рождени дни', eventKitKind: 'birthdays',
+    events: [{...birthday, id: 'ipad_event', start: '2026-11-18T08:00:00Z', details: {timeZone: 'America/Los_Angeles'}},
+      {...birthday, id: 'ipad_only', title: "Lee’s Birthday"}]};
+  const ordinary = {...phone, id: 'custom_subscription', eventKitKind: 'regular', events: []};
+  const project = (docs: any[]) => api.webCalendars(docs).find(c => c.eventKitKind === 'birthdays');
+  const merged = project([phone, tablet, ordinary]);
+  assert.equal(merged.events.length, 3, 'Keep both contacts called Sam and the iPad-only contact');
+  assert.deepEqual(merged, project([ordinary, tablet, phone]), 'Display IDs are independent of fetch order');
+  assert.equal(api.webCalendars([phone, tablet, ordinary, {...phone, source: 'Google calendars', providerMirrorID: mirrorID}]).length, 3);
+  await api.sync(owner, phone);
+  await api.sync(owner, tablet);
+  const olderTabletWrite = await api.sync(owner, {...tablet, eventKitKind: undefined, expectedRevision: 1});
+  assert.equal(olderTabletWrite.body.calendar.eventKitKind, 'birthdays');
+  assert.equal((await api.removeFromWeb(stranger, phone.id)).status, 404);
+  await api.removeFromWeb(owner, merged.id);
+  assert.ok(!(await api.listForWeb(owner)).some(c => c.id === merged.id));
+  assert.equal((await api.list(owner)).find(c => c.id === phone.id).events.length, 2);
+  const holiday = {...calendar, id: 'old_holiday_copy', source: 'Local Calendars', allowsChanges: false};
+  await api.sync(owner, holiday);
+  await api.removeFromWeb(owner, holiday.id);
+  await api.removeFromWeb(owner, holiday.id);
+  await api.sync(owner, {...holiday, expectedRevision: 1});
+  assert.ok(!(await api.listForWeb(owner)).some(c => c.id === holiday.id));
+  assert.ok((await api.list(owner)).find(c => c.id === holiday.id).available);
+  assert.equal((await api.removeFromWeb(owner, personal.id)).status, 400);
+  console.log('PASS: account-scoped birthday aggregation, per-device contacts and persistent web removal');
   const extraEdit = await api.mutate(owner, 'native.provider_phone.event_one', { travelTime: 900, attachments: [{ id: 'file', dataBase64: 'dGVzdA==' }] });
   assert.equal(extraEdit.body.event.details.travelTime, 900);
   assert.deepEqual(extraEdit.body.event.details.attachments, [{ id: 'file', dataBase64: 'dGVzdA==' }]);

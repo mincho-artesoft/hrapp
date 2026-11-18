@@ -30,7 +30,8 @@ enum NativeCalendarSyncService {
                     let doc = DeviceCalendarDocument(id: id, deviceId: DeviceCalendarReplica.deviceID, deviceName: UIDevice.current.name,
                         title: calendar.title, source: calendar.source.title,
                         color: AppLocalCalendarStore.colorHex(calendar.cgColor.map(UIColor.init(cgColor:)) ?? .systemBlue),
-                        allowsChanges: calendar.allowsContentModifications, events: items)
+                        allowsChanges: calendar.allowsContentModifications, events: items,
+                        eventKitKind: calendar.type == .birthday ? "birthdays" : "regular")
                     try await replica.sync(doc) { result in
                         guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
                         try adapter.apply(result, calendar: calendar, original: original, base: replica.baseline(id)?.events ?? [])

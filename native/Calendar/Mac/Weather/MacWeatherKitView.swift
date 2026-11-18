@@ -34,7 +34,7 @@ struct MacWeatherKitView: View {
     @State private var eventToEdit: EKEvent? = nil
     @FocusState private var isSearchFieldFocused: Bool
     // MARK: - State Objects
-    @StateObject private var locationManager = LocationManager()
+    @EnvironmentObject private var locationManager: LocationManager
     @StateObject private var vm = WeatherKitViewModel.shared
     @StateObject private var savedRegions = SavedWeatherRegionsStore.shared
     let onCreateEvent: (Date) -> Void

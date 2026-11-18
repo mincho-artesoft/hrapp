@@ -118,7 +118,6 @@ export interface CalendarChoice {
         background: transparent;
         cursor: pointer;
       }
-      .choice-menu button:hover,
       .choice-menu button:focus-visible {
         background: var(--cal-panel-2, #2c2c2e);
       }

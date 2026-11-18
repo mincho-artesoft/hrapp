@@ -350,7 +350,7 @@ html[data-theme='light'] ::selection {
   color: #ffffff;
   background: var(--aurora-1);
 
-  &:hover:not(:disabled) {
+  &:where(:not(app-web-calendar-page *)):hover:not(:disabled) {
     background: #2b74eb;
   }
 }
@@ -360,7 +360,7 @@ html[data-theme='light'] ::selection {
   background: var(--aurora-1-soft);
   border: 1px solid var(--nav-active-border);
 
-  &:hover:not(:disabled) {
+  &:where(:not(app-web-calendar-page *)):hover:not(:disabled) {
     background: rgba(33, 104, 222, 0.24);
     border-color: var(--aurora-2);
   }

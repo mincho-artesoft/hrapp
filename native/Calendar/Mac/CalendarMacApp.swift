@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct CalendarMacApp: App {
+    @StateObject private var weatherLocation = LocationManager()
     @StateObject private var appPreferences = AppPreferences.shared
     init() { MacMenuSizing.shared.start() }
     var body: some Scene {
@@ -21,6 +22,7 @@ struct CalendarMacApp: App {
                 }
                 // Set preferences at the scene content boundary so sheets,
                 // including sheets opened by nested views, inherit them too.
+                .environmentObject(weatherLocation)
                 .environment(\.locale, appPreferences.presentationLocale)
                 .environment(\.calendar, appPreferences.presentationCalendar)
                 .environment(\.layoutDirection, appPreferences.layoutDirection)

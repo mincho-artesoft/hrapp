@@ -141,6 +141,10 @@ export class WebPlatformService {
     return this.nativeCalendars.sync(principal, body);
   }
 
+  async removeDeviceCalendarFromWeb(principal: any, id: string): Promise<ApiResult> {
+    return this.nativeCalendars.removeFromWeb(principal, id);
+  }
+
   private get keys() {
     return this.store.keys;
   }
@@ -603,8 +607,7 @@ export class WebPlatformService {
       )
     ).filter(Boolean);
 
-    const deviceCalendars = await this.nativeCalendars.list(principal);
-    const activeCalendars = this.nativeCalendars.webCalendars(deviceCalendars);
+    const activeCalendars = await this.nativeCalendars.listForWeb(principal);
     const nativeEvents = activeCalendars.flatMap(c => c.events.map((e: any) => this.nativeCalendars.eventForWeb(c, e)));
 
     return result(200, {

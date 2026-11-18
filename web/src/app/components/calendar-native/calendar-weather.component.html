@@ -1,3 +1,15 @@
+<div class="weather-scene" aria-hidden="true" [attr.data-sky]="scene()" [class.night]="isNight()">
+  @for (body of skyBodies(); track body.src) {
+    <img class="sky-body" [class.lunar]="body.lunar" [src]="body.src" alt=""
+      [style.left.%]="body.x" [style.top.%]="body.y" [style.opacity]="body.opacity" />
+  }
+  @for (cloud of clouds(); track $index) {
+    <i class="sky-cloud" [class.storm]="cloud.storm" [style.top.%]="cloud.top" [style.width.px]="cloud.width"
+      [style.background-position]="cloud.frame" [style.opacity]="cloud.opacity" [style.filter]="'blur(' + cloud.blur + 'px)'"
+      [style.animation-duration.s]="cloud.duration" [style.animation-delay.s]="-cloud.phase * cloud.duration"
+      [style.animation-direction]="cloud.reverse ? 'reverse' : 'normal'"></i>
+  }
+</div>
 <div class="weather-background" [class.touch-layout]="!isDesktop()">
   <!-- Unified CalendarScreenHeader (white tint on Weather sky, matching native Mac & iOS) -->
   @if (!regions()) {
@@ -26,14 +38,7 @@
           >
             <cc-symbol name="list.bullet" [pointSize]="22" />
           </button>
-          <button
-            type="button"
-            class="weather-icon-btn"
-            aria-label="Current location"
-            (click)="currentLocation()"
-          >
-            <cc-symbol name="location.fill" [pointSize]="22" />
-          </button>
+
         </div>
         <div class="weather-topbar__right">
           <button
@@ -103,7 +108,7 @@
     @if (!regions() && searchOpen() && query()) {
       <div class="weather-search-results">
         @for (place of results(); track place.id) {
-          <button type="button" class="city-result" (click)="select(place)">
+          <button type="button" class="city-result" (click)="select(place, 'preview')">
             <strong>{{ place.name }}</strong>
             <small>{{ place.admin1 }} {{ place.country }}</small>
             <cc-symbol name="plus" />
@@ -131,8 +136,8 @@
           <button
             type="button"
             class="done"
-            aria-label="Back to Calendar"
-            (click)="viewChange.emit('day')"
+            aria-label="Close saved regions"
+            (click)="regions.set(false); closeSearch()"
           >
             <cc-symbol [pointSize]="17" name="xmark" />
           </button>
@@ -161,13 +166,23 @@
       </label>
       @if (query()) {
         @for (place of results(); track place.id) {
-          <button type="button" class="city-result" (click)="select(place)">
+          <button type="button" class="city-result" (click)="select(place, 'add')">
             <strong>{{ place.name }}</strong>
             <small>{{ place.admin1 }} {{ place.country }}</small>
             <cc-symbol name="plus" />
           </button>
         }
       }
+      @if (!query()) {
+      <article class="region-card" [class.selected]="weather()?.place?.id === 0">
+        <button type="button" class="region-main" (click)="currentLocation()">
+          <strong><cc-symbol name="location.fill" /> {{ "Current Location" | nativeText }}</strong>
+          @if (snapshots()[0]; as gps) {
+            <b>{{ gps.temp }}°</b><span>{{ gps.observedAt }}</span>
+            <small>H:{{ gps.high }}° &nbsp; L:{{ gps.low }}°</small><p>{{ gps.condition | nativeText }}</p>
+          }
+        </button>
+      </article>
       @for (place of saved(); track place.id) {
         <article
           draggable="true"
@@ -184,7 +199,7 @@
               <b>{{ s.temp }}°</b>
               <span>{{ s.observedAt }}</span>
               <small>H:{{ s.high }}° &nbsp; L:{{ s.low }}°</small>
-              <p>{{ s.condition }}</p>
+              <p>{{ s.condition | nativeText }}</p>
             }
           </button>
           <button
@@ -197,46 +212,49 @@
           </button>
         </article>
       }
-      @if (!saved().length && !query()) {
-        <div class="weather-empty">
-          <cc-symbol [multicolor]="true" name="cloud.sun" />
-          <p>{{ "Add a city or use your current location." | nativeText }}</p>
-        </div>
       }
     } @else {
       @if (weather(); as s) {
         <div class="current">
           <h1>{{ s.place.name }}</h1>
           <strong>{{ s.temp }}°</strong>
-          <h2>{{ s.condition }}</h2>
+          <h2>{{ s.condition | nativeText }}</h2>
           <p>H:{{ s.high }}° &nbsp; L:{{ s.low }}°</p>
         </div>
-        <section class="weather-card">
-          <h3>
-            <cc-symbol name="clock" />{{ "HOURLY FORECAST" | nativeText }}
-          </h3>
-          <div class="hourly">
-            @for (hour of forecastHours(); track hour.iso; let idx = $index) {
-              <button
-                type="button"
-                (click)="createEvent.emit({date:hour.iso,timeZone:s.place.timezone})"
-              >
-                <span>{{
-                  idx === 0 ? ("Now" | nativeText) : hour.iso.slice(11, 16)
-                }}</span>
-                <cc-symbol
-                  [multicolor]="true"
-                  [name]="hour.symbol || icon(hour.icon)"
-                />
-                @if (hour.precipitationChance >= 20) {
-                  <small class="precip-chance"
-                    >{{ hour.precipitationChance | number: "1.0-0" }}%</small
-                  >
-                }
-                <strong>{{ hour.temperature | number: "1.0-0" }}°</strong>
-              </button>
+        @if (s.alerts?.length) {
+          <div class="weather-alerts">
+            @for (alert of s.alerts; track alert.id) {
+              <a class="weather-alert" [attr.data-severity]="alert.severity" [href]="alert.detailsUrl" target="_blank" rel="noopener">
+                <cc-symbol [name]="alert.severity === 'extreme' ? 'exclamationmark.triangle.fill' : 'exclamationmark.shield.fill'" />
+                <div><header><b>{{ alert.severity | nativeText }}</b><small>{{ alert.source }}</small></header>
+                  <strong>{{ alert.description }}</strong></div>
+              </a>
             }
           </div>
+        }
+        <section class="weather-card hourly-card" [attr.aria-label]="'Hourly forecast' | nativeText">
+          <div class="hourly" [class.with-rain]="hasHourlyPrecipitation()">
+            @for (entry of hourlyStrip(); track entry.iso + (entry.solar || 'hour')) {
+              @if (entry.hour; as hour) {
+                <button type="button" (click)="createEvent.emit({date:hour.iso,timeZone:s.place.timezone})">
+                  <span>{{ entry.now ? ("Now" | nativeText) : clock(hour.iso, true) }}</span>
+                  <cc-symbol [multicolor]="true" [name]="hour.symbol || icon(hour.icon)" />
+                  @if (hasHourlyPrecipitation()) {
+                    <small class="precip-chance">{{ hour.precipitationChance >= 10 ? (hour.precipitationChance | number:'1.0-0') + '%' : '' }}</small>
+                  }
+                  <strong>{{ hour.temperature | number:'1.0-0' }}°</strong>
+                </button>
+              } @else if (entry.solar) {
+                <div class="solar-hour">
+                  <span>{{ entry.solar | nativeText }}</span>
+                  <cc-symbol [multicolor]="true" [name]="entry.solar === 'Sunrise' ? 'sunrise.fill' : 'sunset.fill'" />
+                  @if (hasHourlyPrecipitation()) { <small class="precip-chance"></small> }
+                  <strong>{{ clock(entry.iso) }}</strong>
+                </div>
+              }
+            }
+          </div>
+          <p class="hourly-hint"><cc-symbol name="info.circle" />{{ "Tap an hour to quickly add a calendar event." | nativeText }}</p>
         </section>
         <section class="weather-card">
           <h3>
@@ -261,10 +279,12 @@
               <span class="low">{{ d.min }}°</span>
               <i>
                 <em
+                  [attr.data-band]="temperatureBand(d, s.windUnit === 'mph')"
                   [style.left.%]="d.barStart * 100"
                   [style.width.%]="d.barWidth * 100"
                 ></em>
-                @if (todayDotPct(d, s); as dotPct) {
+                @let dotPct = todayDotPct(d, s);
+                @if (dotPct !== null) {
                   <b class="today-dot" [style.left.%]="dotPct"></b>
                 }
               </i>
@@ -272,11 +292,14 @@
             </button>
           }
         </section>
+        @defer (on viewport) {
+          <cc-wind-map [place]="s.place" [imperial]="s.windUnit === 'mph'" />
+        } @placeholder { <div class="map-placeholder"></div> }
         <div class="metrics">
           @for (m of displayMetrics(); track m.id) {
             <button
               type="button"
-              class="weather-card metric"
+              class="weather-card metric" [style.order]="m.id === 'temp' ? 0 : m.id === 'uv' ? 1 : m.id === 'wind' ? 2 : 5" [class.full-width]="m.id === 'wind'"
               (click)="openDetail(m.id)"
             >
               <h3>
@@ -284,24 +307,47 @@
                   metricNames[m.id] | nativeText
                 }}
               </h3>
-              <strong>{{ m.value }}{{ m.unit }}</strong>
-              <svg
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <polyline [attr.points]="graph(m.series)" />
-              </svg>
-              <p>{{ m.caption }}</p>
+              @let now = currentHour();
+              @switch (m.id) {
+                @case ('wind') {
+                  @if (now) {
+                    <div class="wind-reading">
+                      <div>
+                        <p><span>{{ "Wind" | nativeText }}</span><b>{{ now.wind | number:'1.0-0' }} {{ s.windUnit }}</b></p>
+                        @if (now.gust > now.wind + 1) { <p><span>{{ "Gusts" | nativeText }}</span><b>{{ now.gust | number:'1.0-0' }} {{ s.windUnit }}</b></p> }
+                        <p><span>{{ "Direction" | nativeText }}</span><b>{{ now.direction | number:'1.0-0' }}° {{ windDirection(now.direction) }}</b></p>
+                      </div>
+                      <span class="compass"><b>N</b><i [style.transform]="'rotate('+now.direction+'deg)'">↑</i><small>S</small></span>
+                    </div>
+                  }
+                }
+                @case ('uv') {
+                  @if (now) {
+                    <strong>{{ now.uv | number:'1.0-0' }}</strong><span>{{ uvCategory(now.uv) | nativeText }}</span>
+                    <div class="uv-scale"><i [style.inset-inline-start.%]="Math.min(100, now.uv / 11 * 100)"></i></div>
+                  }
+                }
+                @case ('precip') {
+                  <strong>{{ s.precipitationToday == null ? '—' : (s.precipitationToday | number:'1.0-1') }} <small>{{ s.windUnit === 'mph' ? 'in' : 'mm' }}</small></strong>
+                  <p>{{ "Today" | nativeText }}</p>
+                }
+                @case ('humidity') {
+                  <strong>{{ m.value }}{{ m.unit }}</strong>
+                  @if (s.dewPoint != null) { <p>{{ "Dew Point" | nativeText }} {{ s.dewPoint | number:'1.0-0' }}°</p> }
+                }
+                @default {
+                  <strong>{{ m.value }}{{ m.unit }}</strong>
+                  <p>{{ m.caption | nativeText }}</p>
+                }
+              }
             </button>
           }
-        </div>
         @if (s.skyDays?.[0]; as sky) {
           @let solar = solarPosition(sky, s.place.timezone);
-          <div class="metrics sky-cards">
+
             <button
               type="button"
-              class="weather-card solar-card"
+              class="weather-card full-width sky-card solar-card"
               (click)="detailDate.set(sky.date); skyDetail.set('solar')"
             >
               <h3>
@@ -349,7 +395,7 @@
             </button>
             <button
               type="button"
-              class="weather-card"
+              class="weather-card full-width sky-card moon-card"
               (click)="detailDate.set(sky.date); skyDetail.set('moon')"
             >
               <h3>
@@ -367,15 +413,21 @@
               }
               <p>{{ "Moonrise" | nativeText }} {{ clock(sky.moonrise) }}</p>
             </button>
-          </div>
         }
+        </div>
         <a
           class="weather-credit"
-          href="https://open-meteo.com/"
+          [href]="s.source ? 'https://weatherkit.apple.com/legal-attribution.html' : 'https://open-meteo.com/'"
           target="_blank"
           rel="noopener"
-          >{{ "Weather data by Open-Meteo" | nativeText }}</a
+          >{{ (s.source ? "Data provided by Apple Weather" : "Weather data by Open-Meteo") | nativeText }}</a
         >
+      } @else if (!loading()) {
+        <section class="weather-location-prompt">
+          <cc-symbol name="location.magnifyingglass" />
+          <h1>{{ "Weather" | nativeText }}</h1>
+          <button type="button" (click)="beginSearch()"><cc-symbol name="magnifyingglass" />{{ "Search for a city…" | nativeText }}</button>
+        </section>
       }
     }
     @if (loading()) {
@@ -461,8 +513,9 @@
       </p>
       <div
         class="detail-chart"
+        (pointerdown)="beginChartInspection($event)"
         (pointermove)="inspectChart($event)"
-        (pointerleave)="selectedHour.set(null)"
+        (lostpointercapture)="selectedHour.set(null)"
       >
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
           <path

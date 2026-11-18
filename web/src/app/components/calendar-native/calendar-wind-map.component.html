@@ -1,0 +1,60 @@
+<ng-template #map>
+  <svg viewBox="0 0 310 286" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="wind-field-smoothing"><feGaussianBlur stdDeviation="5" edgeMode="duplicate" /></filter>
+    </defs>
+    <g filter="url(#wind-field-smoothing)">
+      @for (p of samples(); track $index) {
+        <rect [attr.x]="p.x - 12" [attr.y]="p.y - 12" width="24" height="25" [attr.fill]="p.color" />
+      }
+    </g>
+    <path [attr.d]="outlines()" fill="#fff1" fill-rule="evenodd" stroke="#ffffff9c" stroke-width=".85" vector-effect="non-scaling-stroke" />
+    @if (layer() === 'wind') {
+      @for (p of samples(); track $index) {
+        @if (p.speed > .5) {
+          <g [attr.transform]="'translate('+p.x+' '+p.y+') rotate('+p.direction+')'">
+            <path class="flow" d="M0 -6v8l-1.4 -2 M0 2l1.4 -2" [style.animation-delay.s]="-($index % 7) / 6" />
+          </g>
+        }
+      }
+    }
+  </svg>
+  <span class="map-pin" [style.--pin-x]="marker().x - 155" [style.--pin-y]="marker().y - 143">
+    <span>{{ place().name }}</span>
+  </span>
+  @if (loading()) { <span class="status" role="status">{{ 'Loading forecast…' | nativeText }}</span> }
+</ng-template>
+<section class="wind-card">
+  <h3><cc-symbol name="wind" />{{ 'Wind Map' | nativeText }}</h3>
+  <button class="map" type="button" aria-label="Open wind map" (click)="open()">
+    @if (!expanded()) { <ng-container *ngTemplateOutlet="map" /> }
+  </button>
+  @if (error()) { <button type="button" class="retry" (click)="retry()">{{ 'Wind data unavailable' | nativeText }} · {{ 'Retry' | nativeText }}</button> }
+</section>
+<dialog #mapDialog (close)="resetView()" aria-label="Weather map">
+  @if (expanded()) {
+    <div class="map fullscreen" (pointerdown)="panStart($event)" (pointerup)="panEnd($event)" (pointercancel)="cancelPan()">
+      <ng-container *ngTemplateOutlet="map" />
+    </div>
+    <header>
+      <button type="button" aria-label="Close map" (click)="close()"><cc-symbol name="xmark"/></button>
+      <select aria-label="Map layer" [value]="layer()" (change)="setLayer($any($event.target).value)">
+        <option value="wind">{{ 'Wind' | nativeText }}</option><option value="temperature">{{ 'Temperature' | nativeText }}</option>
+      </select>
+      <button type="button" aria-label="Recenter map" (click)="recenter()"><cc-symbol name="location.fill"/></button>
+    </header>
+    <div class="zoom">
+      <button type="button" aria-label="Zoom in" (click)="zoom(.5)">+</button>
+      <button type="button" aria-label="Zoom out" (click)="zoom(2)">−</button>
+    </div>
+    @if (error()) { <button type="button" class="retry" (click)="retry()">{{ 'Wind data unavailable' | nativeText }} · {{ 'Retry' | nativeText }}</button> }
+    @if (dates().length && layer() === 'wind') {
+      <footer>
+        <button type="button" [attr.aria-label]="playing() ? 'Pause' : 'Play'" (click)="togglePlay()">{{ playing() ? 'Ⅱ' : '▶' }}</button>
+        <div><output>{{ timeLabel() }}</output>
+          <input type="range" aria-label="Forecast hour" min="0" [max]="dates().length-1" [value]="hour()" (input)="hour.set(+$any($event.target).value); stop()"/>
+        </div>
+      </footer>
+    }
+  }
+</dialog>

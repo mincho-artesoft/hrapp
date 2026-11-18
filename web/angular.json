@@ -28,6 +28,21 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                "glob": "*.png",
+                "input": "../native/Calendar/Assets.xcassets/weather_cloud_fair_sprite.imageset",
+                "output": "weather-scene"
+              },
+              {
+                "glob": "*.png",
+                "input": "../native/Calendar/Assets.xcassets/weather_cloud_storm_sprite.imageset",
+                "output": "weather-scene"
+              },
+              {
+                "glob": "WeatherMapBoundaries*",
+                "input": "../native/Calendar/WeatherView/WindMap",
+                "output": "weather-map"
+              },
+              {
                 "glob": "**/*",
                 "input": "public",
                 "ignore": [

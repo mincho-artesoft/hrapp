@@ -1,0 +1,32 @@
+:host { display: block; }
+.wind-card { background: #25292f60; backdrop-filter: blur(20px); border-radius: 12px; padding: 12px 15px; margin-bottom: 20px; }
+h3 { display: flex; align-items: center; gap: 5px; margin: 0 0 5px; color: #ffffffa6; font-size: 12px; font-weight: 500; text-transform: uppercase; }
+button, select, input { font: inherit; }
+button { cursor: pointer; color: white; border: none; }
+.map { container-type: size; display: block; position: relative; padding: 0; width: 100%; aspect-ratio: 310 / 286; border-radius: 11px; overflow: hidden; background: #105978; }
+svg { width: 100%; height: 100%; display: block; }
+.map-pin {
+  --map-unit: max(calc(100cqw / 310), calc(100cqh / 286));
+  position: absolute;
+  left: calc(50% + var(--pin-x) * var(--map-unit));
+  top: calc(50% + var(--pin-y) * var(--map-unit));
+  transform: translate(-50%, -50%);
+  width: 9px; height: 9px; border: 2px solid white; border-radius: 50%; background: #1586ff;
+  pointer-events: none;
+}
+.map-pin span { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); color: white; font-size: 12px; font-weight: 600; text-shadow: 0 1px 3px #16475b; white-space: nowrap; }
+.flow { fill: none; stroke: #fff9; stroke-width: 1; vector-effect: non-scaling-stroke; animation: drift 1.7s linear infinite; }
+@keyframes drift { from { transform: translateY(-3px); opacity: .3; } 50% { opacity: .9; } to { transform: translateY(4px); opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+.status, .retry { padding: 8px 12px; border-radius: 20px; background: #163343d9; color: white; }
+.status, dialog .retry { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.wind-card .retry { margin-top: 8px; }
+dialog { inset: 0; padding: 0; width: 100dvw; height: 100dvh; max-width: none; max-height: none; border: 0; color: white; background: #105978; }
+.fullscreen { height: 100%; border-radius: 0; touch-action: none; cursor: grab; }
+header, footer, .zoom { position: absolute; display: flex; gap: 8px; align-items: center; }
+header { inset: max(16px, env(safe-area-inset-top)) 16px auto; justify-content: space-between; pointer-events: none; }
+header > * { pointer-events: auto; }
+dialog button, select { display: grid; place-items: center; background: #193b4bdc; color: white; min-width: 38px; height: 38px; border-radius: 24px; padding: 0 10px; border: 0; }
+.zoom { right: 16px; top: 80px; flex-direction: column; }
+footer { bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(460px, 88%); background: #193b4be0; border-radius: 18px; padding: 12px; }
+footer div { flex: 1; display: grid; text-align: center; gap: 5px; }

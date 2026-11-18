@@ -1,3 +1,4 @@
+import { appleConditionSymbol, calendarForecastSeries, type AppleForecast, type CalendarWeatherAlert } from './weatherkit-forecast';
 import { Injectable } from '@angular/core';
 
 /**
@@ -44,7 +45,7 @@ export interface HourSample {
 }
 
 export interface ForecastHour {
-  iso:string; temperature:number; feelsLike:number; precipitation:number; precipitationChance:number;
+  iso:string; instant?:string; temperature:number; feelsLike:number; precipitation:number; precipitationChance:number;
   uv:number; wind:number; gust:number; direction:number; humidity:number; visibility:number; pressure:number;
   icon:HourSample['icon']; symbol?:string;
 }
@@ -60,6 +61,7 @@ export interface MetricSample {
 
 export interface DaySample {
   iso: string;
+  instant?: string;
   /** "Today", "Sat". */
   day: string;
   /** "2 Aug". */
@@ -84,6 +86,12 @@ export interface DaySample {
 }
 
 export interface Snapshot {
+  source?: 'Apple Weather';
+  alerts?: CalendarWeatherAlert[];
+  currentWeatherCode?: number;
+  isDaylight?: boolean;
+  cloudCover?: number;
+  precipitationToday?: number; dewPoint?: number;
   forecastHours?:ForecastHour[]; skyDays?:SkyDay[]; visibilityUnit?:string;
   place: Place;
   temp: string;
@@ -245,9 +253,9 @@ export class WeatherService {
     const params = new URLSearchParams({
       latitude: String(place.latitude),
       longitude: String(place.longitude),
-      current: 'temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl',
-      hourly: 'temperature_2m,apparent_temperature,precipitation_probability,precipitation,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,visibility,pressure_msl,uv_index,weather_code,is_day',
-      daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,uv_index_max,sunrise,sunset,moonrise,moonset,moon_phase',
+      current: 'temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m,pressure_msl',
+      hourly: 'temperature_2m,apparent_temperature,dew_point_2m,precipitation_probability,precipitation,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,wind_direction_10m,visibility,pressure_msl,uv_index,weather_code,is_day',
+      daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,uv_index_max,sunrise,sunset,moonrise,moonset,moon_phase',
       timezone: place.timezone || 'auto',
       // Fourteen, for the long-range view. It also means the hourly series
       // always extends well past a twelve-hour window whatever time it is.
@@ -262,6 +270,36 @@ export class WeatherService {
 
     const snapshot = this.shape(place, json, imperial);
     this.cache.set(key, { at: Date.now(), snapshot });
+    return snapshot;
+  }
+
+  async loadCalendar(place: Place, units: 'metric' | 'imperial', language: string,
+    fetchForecast: (parameters: URLSearchParams) => Promise<AppleForecast>): Promise<Snapshot> {
+    const timezone = place.timezone && place.timezone !== 'auto' ? place.timezone : Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const key = ['apple', place.latitude.toFixed(3), place.longitude.toFixed(3), timezone, units, language, place.countryCode].join(',');
+    const hit = this.cache.get(key);
+    if (hit && Date.now() - hit.at < TTL_MS) return {...hit.snapshot, place};
+    const params = new URLSearchParams({latitude: String(place.latitude), longitude: String(place.longitude),
+      timezone, language, country: place.countryCode || ''});
+    const data = await fetchForecast(params);
+    if (!data?.forecastHourly?.hours?.length || !data?.forecastDaily?.days?.length || !data.currentWeather)
+      throw new Error('Forecast unavailable.');
+    const imperial = units === 'imperial';
+    const snapshot = this.shape({...place, timezone}, calendarForecastSeries(data, timezone, imperial), imperial);
+    snapshot.forecastHours?.forEach((hour, i) => {
+      const reading = data.forecastHourly.hours[i];
+      hour.instant = reading.forecastStart;
+      hour.symbol = appleConditionSymbol(reading.conditionCode, reading.daylight, hour.symbol!);
+    });
+    snapshot.daily.forEach((day, i) => {
+      const reading = data.forecastDaily.days[i];
+      day.instant = reading.forecastStart;
+      day.symbol = appleConditionSymbol(reading.conditionCode, true, day.symbol!);
+    });
+    snapshot.source = 'Apple Weather';
+    snapshot.condition = data.currentWeather.conditionCode.replace(/([a-z])([A-Z])/g, '$1 $2');
+    snapshot.alerts = (data.weatherAlerts?.alerts ?? []).filter(a => /^https:\/\/weatherkit\.apple\.com\//.test(a.detailsUrl));
+    this.cache.set(key, {at: Date.now(), snapshot});
     return snapshot;
   }
 
@@ -365,6 +403,11 @@ export class WeatherService {
       visibilityUnit:imperial?'mi':'km',
       forecastHours:times.map((iso,i)=>({iso,temperature:h.temperature_2m?.[i],feelsLike:h.apparent_temperature?.[i],precipitation:h.precipitation?.[i],precipitationChance:h.precipitation_probability?.[i],uv:h.uv_index?.[i],wind:h.wind_speed_10m?.[i],gust:h.wind_gusts_10m?.[i],direction:h.wind_direction_10m?.[i],humidity:h.relative_humidity_2m?.[i],visibility:h.visibility?.[i]/(imperial?1609.344:1000),pressure:h.pressure_msl?.[i],icon:glyph(Number(h.weather_code?.[i]),h.is_day?.[i]===1),symbol:nativeWeatherSymbol(Number(h.weather_code?.[i]),h.is_day?.[i]===1)})),
       skyDays:(d.time??[]).map((date:string,i:number)=>({date,sunrise:d.sunrise?.[i]??null,sunset:d.sunset?.[i]??null,moonrise:d.moonrise?.[i]??null,moonset:d.moonset?.[i]??null,moonPhase:d.moon_phase?.[i]??null})),
+      currentWeatherCode: cur.weather_code ?? undefined,
+      isDaylight: cur.is_day == null ? undefined : cur.is_day === 1,
+      cloudCover: cur.cloud_cover == null ? undefined : Math.max(0, Math.min(1, cur.cloud_cover / 100)),
+      precipitationToday: d.precipitation_sum?.[0] == null ? undefined : d.precipitation_sum[0] / (imperial ? 25.4 : 1),
+      dewPoint: h.dew_point_2m?.[start],
       temp: round(cur.temperature_2m),
       condition: cond.text,
       high: round(d.temperature_2m_max?.[0]),

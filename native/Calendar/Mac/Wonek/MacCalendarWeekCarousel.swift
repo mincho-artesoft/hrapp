@@ -70,6 +70,7 @@ final class MacCalendarWeekCarouselSurface: NSView {
         weekday.timeZone = calendar.timeZone; weekday.setLocalizedDateFormatFromTemplate("EEEEE")
         let number = DateFormatter(); number.locale = .appFormatting; number.calendar = calendar
         number.timeZone = calendar.timeZone; number.setLocalizedDateFormatFromTemplate("d")
+        let selectedFill = NSColor(AppColorPalette.blueViolet.primary)
         let first = Int(floor(offset / dayWidth)) - 1
         for index in first...(first + 9) {
             let date = CalendarWeekCarouselMath.date(from: visibleWeekStart, offset: index, calendar: calendar)
@@ -79,7 +80,7 @@ final class MacCalendarWeekCarouselSurface: NSView {
             let isSelected = calendar.isDate(date, inSameDayAs: selected)
             let circle = NSRect(x: x + (dayWidth - 35) / 2, y: bounds.height / 2 - 2, width: 35, height: 35)
             if isSelected {
-                (today ? NSColor.appRed : .black).setFill()
+                (today ? NSColor.appRed : selectedFill).setFill()
                 NSBezierPath(ovalIn: circle).fill()
             }
             drawText(weekday.string(from: date).uppercased(),

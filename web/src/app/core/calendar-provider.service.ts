@@ -28,7 +28,7 @@ export class CalendarProviderService{
  }
  perform<T=any>(provider:'google'|'microsoft',body:unknown):Promise<T>{return this.api.providerCalendarRequest<T>(provider,body);}
  async saveCalendar(provider:'google'|'microsoft',calendar:DeviceCalendar|null,title:string,color:string){await this.perform(provider,{action:calendar?'update-calendar':'create-calendar',calendarID:calendar?.remoteID,title:!calendar||calendar.providerOwner&&title!==calendar.title?title:undefined,color,etag:calendar?.etag});await this.refresh(true);}
- async deleteCalendar(calendar:DeviceCalendar){await this.perform(calendar.provider!,{action:'delete-calendar',calendarID:calendar.remoteID,etag:calendar.etag});await this.refresh(true);}
+ async deleteCalendar(calendar:DeviceCalendar){await this.perform(calendar.provider!,{action:calendar.providerOwner?'delete-calendar':'unsubscribe-calendar',calendarID:calendar.remoteID,etag:calendar.etag});await this.refresh(true);}
  async saveEvent(calendar:DeviceCalendar,event:WebCalendarEvent|undefined,values:any,clientRequestID?:string):Promise<WebCalendarEvent>{
   const result=await this.perform<{eventID:string}>(calendar.provider!,{action:'save-event',calendarID:calendar.remoteID,eventID:event?.remoteID,etag:event?.providerEtag,event:values,clientRequestID});
   await this.refresh(true);const stored=this.events().find(e=>e.provider===calendar.provider&&e.providerCalendarID===calendar.remoteID&&e.remoteID===result.eventID);
