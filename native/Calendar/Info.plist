@@ -65,6 +65,8 @@
 	<true/>
 	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
 	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Cloud Calendars uses this identifier to deliver more relevant ads and support free calendar syncing and widgets.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

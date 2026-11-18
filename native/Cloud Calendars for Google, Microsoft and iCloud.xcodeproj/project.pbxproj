@@ -765,7 +765,7 @@
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = Calendar/Mac/CalendarMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
 				"ENABLE_APP_SANDBOX[sdk=macosx*]" = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -822,7 +822,7 @@
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = Calendar/Mac/CalendarMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
 				"ENABLE_APP_SANDBOX[sdk=macosx*]" = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -878,7 +878,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CalendarWidget/CalendarWidgetMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -915,7 +915,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CalendarWidget/CalendarWidgetMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -951,7 +951,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Cloud Calendars Icon";
 				CODE_SIGN_ENTITLEMENTS = CalendarAppClip/CalendarAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -982,7 +982,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Cloud Calendars Icon";
 				CODE_SIGN_ENTITLEMENTS = CalendarAppClip/CalendarAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
