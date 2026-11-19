@@ -1,0 +1,142 @@
+:host {
+  display: block;
+  color: #fff;
+  margin: 12px 0 18px;
+  font-variant-numeric: tabular-nums;
+}
+.sample-strip {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  margin: 0 35px 0 25px;
+  height: 20px;
+  gap: 1px;
+}
+.sample-strip span {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  flex: 1;
+  font-size: clamp(9px, 1.2vw, 12px);
+  color: #b2b2b7;
+}
+.sample-strip cc-symbol {
+  height: 15px;
+  width: 16px;
+  color: white;
+}
+.plot {
+  position: relative;
+  margin: 21px 36px 0 25px;
+  height: 140px;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: crosshair;
+  margin-bottom: 26px;
+}
+svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.rule,
+.line,
+.now {
+  vector-effect: non-scaling-stroke;
+}
+.rule {
+  stroke: #80808065;
+  stroke-width: 0.65;
+}
+.vertical {
+  stroke-dasharray: 3 3;
+}
+.line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.now {
+  stroke: white;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 2;
+}
+.axis,
+.clock,
+.band {
+  position: absolute;
+  pointer-events: none;
+  font-size: 10px;
+  color: #98989d;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+.axis {
+  left: calc(100% + 5px);
+  transform: translateY(-50%);
+}
+.clock {
+  top: calc(100% + 5px);
+  transform: translateX(-50%);
+}
+.band {
+  left: 4px;
+  transform: translateY(-100%);
+  font-size: 9px;
+}
+.dot,
+.hit {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  outline: 2px solid #000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.dot b {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #aaa;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px #000;
+}
+.hit {
+  background: white;
+}
+.probe {
+  position: absolute;
+  inset-block: 0;
+  border-left: 1px solid #fff9;
+  pointer-events: none;
+}
+output {
+  position: absolute;
+  top: 3px;
+  z-index: 2;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #28282aed;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(5px);
+}
+output.left {
+  transform: translateX(calc(-100% - 5px));
+}
+.plot:focus-visible {
+  outline: 2px solid #0a84ff;
+  outline-offset: 4px;
+}
+p {
+  color: #98989d;
+  text-align: center;
+  font-size: 14px;
+}

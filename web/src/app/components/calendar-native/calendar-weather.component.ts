@@ -1,5 +1,11 @@
+import { A11yModule } from '@angular/cdk/a11y';
+import { CalendarWeekStripComponent } from './calendar-week-strip.component';
+import { CalendarWeatherDetailComponent } from './calendar-weather-detail.component';
+import { weatherDetailChoices, WeatherMetric } from '../../core/weather-detail-chart';
+import { CalendarAnchoredMenuDirective } from './calendar-anchored-menu.directive';
+import {CalendarSearchFieldComponent} from './calendar-search-field.component';
 import { CalendarForecastService } from '../../core/calendar-forecast.service';
-import { CalendarLocalization, CalendarNativeTextPipe } from "../../core/calendar-localization";
+import { CalendarLocalization, CalendarNativeDatePipe, CalendarNativeTextPipe } from "../../core/calendar-localization";
 import {
   Component,
   ChangeDetectionStrategy,
@@ -8,6 +14,7 @@ import {
   output,
   signal,
   OnInit,
+  DestroyRef,
   HostListener,
   computed,
   PLATFORM_ID,
@@ -21,7 +28,6 @@ import {
   MetricSample,
   DaySample,
   ForecastHour,
-  SkyDay,
 } from "../../core/weather.service";
 import {
   CalendarChoiceComponent,
@@ -34,8 +40,10 @@ import { CalendarWindMapComponent } from './calendar-wind-map.component';
 @Component({
   selector: "cc-weather",
   standalone: true,
-  imports: [
+  imports: [A11yModule, CalendarWeekStripComponent, CalendarWeatherDetailComponent, CalendarAnchoredMenuDirective,
+    CalendarSearchFieldComponent,
     CalendarNativeTextPipe,
+    CalendarNativeDatePipe,
     CommonModule,
     FormsModule,
     CalendarSymbolComponent,
@@ -55,10 +63,11 @@ export class CalendarWeatherComponent implements OnInit {
   private readonly localization = inject(CalendarLocalization);
   readonly clockPreference = input<string>();
   readonly currentMode = input("weather");
+  readonly firstWeekday = input(0);
   readonly isDesktop = input(true);
   readonly viewChange = output<string>();
   readonly openMenu = output<void>();
-  readonly createEvent = output<{date:string;timeZone:string}>();
+  readonly createEvent = output<{date:string;instant?:string;timeZone:string}>();
 
   readonly weather = signal<Snapshot | null>(null);
   readonly saved = signal<Place[]>([]);
@@ -77,94 +86,107 @@ export class CalendarWeatherComponent implements OnInit {
     x: number;
     y: number;
   } | null>(null);
+  private regionPress?: {id: number; x: number; y: number; timer: ReturnType<typeof setTimeout>};
+  private heldRegion: number | null = null;
   private draggingRegion: number | null = null;
   private generation = 0;
   private searchGeneration = 0;
 
-  readonly metricNames: Record<string, string> = {
-    temp: "Feels Like",
-    precip: "Precipitation",
-    uv: "UV Index",
-    wind: "Wind",
-    humidity: "Humidity",
-    visibility: "Visibility",
-    pressure: "Pressure",
-  };
-  readonly metricIcons: Record<string, string> = {
-    temp: "thermometer.medium",
-    precip: "drop.fill",
-    uv: "sun.max.fill",
-    wind: "wind",
-    humidity: "humidity.fill",
-    visibility: "eye.fill",
-    pressure: "gauge.with.dots.needle.33percent",
-  };
   readonly detailOpen = signal(false);
-  readonly detailMetric = signal("temp");
-  readonly detailDate = signal("");
-  readonly feelsLike = signal(false);
-  readonly selectedHour = signal<number | null>(null);
-  readonly skyDetail = signal<"solar" | "moon" | null>(null);
-  readonly metricChoices = [
-    { value: "temp", label: "Conditions", symbol: "cloud.sun" },
-    { value: "uv", label: "UV Index", symbol: "sun.max" },
-    { value: "wind", label: "Wind", symbol: "wind" },
-    { value: "precip", label: "Precipitation", symbol: "drop.fill" },
-    { value: "humidity", label: "Humidity", symbol: "humidity.fill" },
-    { value: "visibility", label: "Visibility", symbol: "eye.fill" },
-    {
-      value: "pressure",
-      label: "Pressure",
-      symbol: "gauge.with.dots.needle.33percent",
-    },
-  ];
-  readonly detailHours = computed(() =>
-    (this.weather()?.forecastHours ?? []).filter((h) =>
-      h.iso.startsWith(this.detailDate()),
-    ),
+  readonly detailMetric = signal<WeatherMetric>('temp');
+  readonly detailDate = signal('');
+  readonly skyDetail = signal<'solar' | 'moon' | null>(null);
+  readonly metricChoices = [...weatherDetailChoices];
+  changeMetric(value: string) {
+    const choice = this.metricChoices.find(option => option.value === value);
+    if (choice) this.detailMetric.set(choice.value);
+  }
+  readonly activeMetric = computed(() =>
+    this.metricChoices.find(choice => choice.value === this.detailMetric()) ?? this.metricChoices[0]);
+  // The forecast ISO strings are civil dates in the forecast location. Pass the
+  // same civil dates to the calendar strip, which uses the browser's calendar.
+  readonly forecastDays = computed(() =>
+    (this.weather()?.daily.slice(0, 10) ?? []).map(day => new Date(day.iso + 'T00:00:00'))
   );
-  readonly detailValues = computed(() =>
-    this.detailHours().map((h) => this.hourValue(h)),
-  );
-  readonly detailGraph = computed(() => {
-    const values = this.detailValues();
-    if (!values.length) return "";
-    const minimum = Math.min(...values),
-      span = Math.max(...values) - minimum || 1;
-    return values
-      .map(
-        (v, i) =>
-          `${(i * 100) / Math.max(1, values.length - 1)},${90 - ((v - minimum) / span) * 75}`,
-      )
-      .join(" ");
-  });
+  readonly selectedForecastDay = computed(() => new Date(this.detailDate() + 'T00:00:00'));
+  selectForecastDay(date: Date) {
+    const index = this.forecastDays().findIndex(day => day.getTime() === date.getTime());
+    const forecast = this.weather()?.daily[index];
+    if (forecast) this.detailDate.set(forecast.iso);
+  }
   readonly currentHour = computed(() => this.forecastHours()[0]);
-  readonly displayMetrics = computed(() => {
-    const s = this.weather();
-    if (!s) return [];
-    const hours = s.forecastHours ?? [], current = this.currentHour();
-    const visibility: MetricSample = {
-      id: "visibility",
-      value: current ? current.visibility.toFixed(1) : "—",
-      unit: s.visibilityUnit ?? "km",
-      caption: "Distance visible near the surface.",
-      series: hours.slice(0, 12).map((h) => Math.min(1, h.visibility / 50)),
-    };
-    return [
-      "temp",
-      "uv",
-      "wind",
-      "precip",
-      "visibility",
-      "humidity",
-      "pressure",
-    ]
-      .map((id) =>
-        id === "visibility" ? visibility : s.metrics.find((m) => m.id === id)!,
-      )
-      .filter(Boolean);
+  readonly compassTicks = Array.from({length: 60}, (_, i) => i);
+  private readonly destroyRef = inject(DestroyRef);
+  readonly solarMinute = signal(new Date());
+
+  readonly solarPoint = computed(() => {
+    const s = this.weather(), today = s?.skyDays?.[0];
+    if (!s || !today || (!today.sunrise && !today.sunset)) return null;
+    const time = Date.parse(this.localNow(s.place.timezone, this.solarMinute()) + 'Z');
+    const rise = Date.parse((today.sunrise ?? '') + 'Z');
+    const set = Date.parse((today.sunset ?? '') + 'Z');
+    const fraction = set > rise ? Math.min(1, Math.max(0, (time - rise) / (set - rise))) : Number(time >= set);
+    const angle = Math.PI * fraction;
+    return {x: 60 - 60 * Math.cos(angle), y: 60 - 60 * Math.sin(angle)};
   });
 
+  readonly nextMoon = computed(() => {
+    const days = this.weather()?.skyDays;
+    const today = days?.[0];
+    if (!days || today?.moonPhase == null) return null;
+    const phase = this.moonPhase(today.moonPhase);
+    const next = days.find(d => d.date > today.date && d.moonPhase != null && this.moonPhase(d.moonPhase) !== phase);
+    if (!next) return null;
+    return {phase: this.moonPhase(next.moonPhase), days: (Date.parse(next.date) - Date.parse(today.date)) / 86400000};
+  });
+
+  formatWeatherText(format: string, ...values: (number | string)[]) {
+    let index = 0;
+    return this.localization.text(format).replace(/%(?:(\d+)\$)?(?:@|d|\.0f)/g, (_, position) => {
+      const value = values[position ? Number(position) - 1 : index++];
+      return typeof value === 'number' ? this.cardNumber(value, 0) : value;
+    });
+  }
+
+  cardNumber(value: number | null | undefined, digits = 0) {
+    if (value == null || !Number.isFinite(value)) return '—';
+    return new Intl.NumberFormat(this.localization.formattingLocale(), {
+      minimumFractionDigits: digits, maximumFractionDigits: digits, useGrouping: false,
+    }).format(value);
+  }
+
+  feelsCaption(actual: number | null, feels: number | null) {
+    if (actual == null || feels == null) return '';
+    if (Math.abs(feels - actual) < 1.5) return 'Similar to the actual temperature.';
+    return feels < actual ? 'Wind is making it feel cooler.' : 'Humidity is making it feel warmer.';
+  }
+
+  visibilityCaption(value: number | null) {
+    if (value === null) return '—';
+    if (value > 20) return 'Perfectly clear view.';
+    if (value > 15) return 'Excellent visibility.';
+    if (value > 10) return 'Good visibility.';
+    if (value > 5) return 'Moderate visibility.';
+    return value > 1 ? 'Poor visibility.' : 'Very poor visibility.';
+  }
+
+  readonly nextRain = computed(() => {
+    const s = this.weather();
+    if (!s) return '';
+    const day = s.daily.slice(1).find(d => d.precip >= 10 && (d.precipitationAmount ?? 0) > 0);
+    if (!day) return this.localization.text('No precipitation expected soon.');
+    const days = (Date.parse(day.iso) - Date.parse(s.daily[0].iso)) / 86400000;
+    const weekday = new Intl.DateTimeFormat(this.localization.locale(), {weekday:'short', timeZone:'UTC'}).format(new Date(day.iso));
+    const when = days === 1 ? this.localization.text('tomorrow') : days <= 7
+      ? this.formatWeatherText('on %@', weekday) : this.formatWeatherText('in %d days', days);
+    const imperial = s.windUnit === 'mph';
+    return this.formatWeatherText('Next expected is %1$.0f %2$@ %3$@.', this.cardNumber(day.precipitationAmount, imperial ? 1 : 0),
+      this.localization.text(imperial ? '″' : 'mm'), when);
+  });
+
+  pressureValue(hPa: number) {
+    return this.weather()?.windUnit === 'mph' ? hPa * 0.02953 : hPa;
+  }
   windDirection(degrees: number): string {
     return ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(degrees / 22.5) % 16];
   }
@@ -172,14 +194,7 @@ export class CalendarWeatherComponent implements OnInit {
     return uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : uv < 11 ? 'Very High' : 'Extreme';
   }
 
-  selectedHourLabel(): string {
-    const idx = this.selectedHour();
-    const hours = this.detailHours();
-    if (idx === null || idx < 0 || idx >= hours.length) return "";
-    return hours[idx].iso.slice(11, 16);
-  }
-
-  localNow(zone: string) {
+  localNow(zone: string, date = new Date()) {
     try {
       return new Intl.DateTimeFormat("sv-SE", {
         timeZone: zone || "UTC",
@@ -190,7 +205,7 @@ export class CalendarWeatherComponent implements OnInit {
         minute: "2-digit",
         hourCycle: "h23",
       })
-        .format(new Date())
+        .format(date)
         .replace(" ", "T");
     } catch {
       return new Date().toISOString().slice(0, 16);
@@ -237,97 +252,10 @@ export class CalendarWeatherComponent implements OnInit {
     return (day.barStart + day.barWidth * ratio) * 100;
   }
 
-  solarPosition(sky: SkyDay, zone: string): { x: number; y: number; isUpcomingSunrise: boolean } {
-    const nowIso = this.localNow(zone);
-    const toMin = (iso: string | null | undefined) => {
-      if (!iso || iso.length < 16) return null;
-      const [hh, mm] = iso.slice(11, 16).split(":").map(Number);
-      return Number.isFinite(hh) && Number.isFinite(mm) ? hh * 60 + mm : null;
-    };
-    const nowMin = toMin(nowIso) ?? 720;
-    const riseMin = toMin(sky.sunrise) ?? 420;
-    const setMin = toMin(sky.sunset) ?? 1080;
-    const progress =
-      setMin > riseMin
-        ? Math.min(1, Math.max(0, (nowMin - riseMin) / (setMin - riseMin)))
-        : 0.5;
-    // Semi-circular arc from (30, 68) through (150, 14) to (270, 68)
-    const angle = Math.PI * (1 - progress);
-    const x = 150 + 115 * Math.cos(angle);
-    const y = 68 - 54 * Math.sin(angle);
-    return {
-      x,
-      y,
-      isUpcomingSunrise: nowMin < riseMin || nowMin >= setMin,
-    };
-  }
-
-  openDetail(id = "temp", date?: string) {
+  openDetail(id: WeatherMetric = 'temp', date?: string) {
     this.detailMetric.set(id);
     this.detailDate.set(date ?? this.weather()?.daily[0]?.iso ?? "");
-    this.feelsLike.set(false);
-    this.selectedHour.set(null);
     this.detailOpen.set(true);
-  }
-  hourValue(h: ForecastHour) {
-    return (
-      {
-        temp: this.feelsLike() ? h.feelsLike : h.temperature,
-        uv: h.uv,
-        wind: h.wind,
-        precip: h.precipitationChance,
-        humidity: h.humidity,
-        visibility: h.visibility,
-        pressure: h.pressure,
-      } as Record<string, number>
-    )[this.detailMetric()];
-  }
-  detailUnit() {
-    return (
-      (
-        {
-          temp: "°",
-          uv: "",
-          wind: this.weather()?.windUnit,
-          precip: "%",
-          humidity: "%",
-          visibility: this.weather()?.visibilityUnit,
-          pressure: "hPa",
-        } as Record<string, string>
-      )[this.detailMetric()] ?? ""
-    );
-  }
-  detailValue() {
-    const values = this.detailValues(),
-      index = this.selectedHour();
-    if (!values.length) return "—";
-    return (
-      (index === null ? Math.max(...values) : values[index]).toFixed(
-        this.detailMetric() === "visibility" ? 1 : 0,
-      ) + this.detailUnit()
-    );
-  }
-  beginChartInspection(event: PointerEvent) {
-    if (event.button !== 0 || !event.isPrimary) return;
-    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
-    this.inspectChart(event);
-  }
-  inspectChart(event: PointerEvent) {
-    const chart = event.currentTarget as HTMLElement;
-    if (!event.isPrimary || !chart.hasPointerCapture(event.pointerId) || !this.detailHours().length) return;
-    const rect = chart.getBoundingClientRect();
-    this.selectedHour.set(
-      Math.min(
-        this.detailHours().length - 1,
-        Math.max(
-          0,
-          Math.round(
-            ((event.clientX - rect.left) / rect.width) *
-              (this.detailHours().length - 1),
-          ),
-        ),
-      ),
-    );
   }
   skyDay() {
     return (
@@ -400,7 +328,10 @@ export class CalendarWeatherComponent implements OnInit {
     );
   }
   ngOnInit() {
+    this.destroyRef.onDestroy(() => this.endRegionPress());
     if (!this.isBrowser || typeof localStorage === "undefined") return;
+    const timer = setInterval(() => this.solarMinute.set(new Date()), 60000);
+    this.destroyRef.onDestroy(() => clearInterval(timer));
     try {
       const places = JSON.parse(
         localStorage.getItem("cc.mac.regions") || "[]",
@@ -538,23 +469,57 @@ export class CalendarWeatherComponent implements OnInit {
       if (generation === this.generation) this.loading.set(false);
     }
   }
+  beginRegionPress(place: Place, input: PointerEvent) {
+    this.endRegionPress();
+    this.heldRegion = null;
+    if (!input.isPrimary || input.button !== 0 || input.pointerType !== 'touch') return;
+    const x = input.clientX, y = input.clientY;
+    this.regionPress = {id: input.pointerId, x, y, timer: setTimeout(() => {
+      this.heldRegion = place.id;
+      this.regionContext.set({place, x, y});
+    }, 500)};
+  }
+
+  moveRegionPress(input: PointerEvent) {
+    const press = this.regionPress;
+    if (press?.id === input.pointerId && Math.hypot(input.clientX - press.x, input.clientY - press.y) > 8)
+      this.endRegionPress();
+  }
+
+  endRegionPress() {
+    clearTimeout(this.regionPress?.timer);
+    this.regionPress = undefined;
+  }
+
+  finishRegionTouch(place: Place, event: TouchEvent) {
+    // The long press already opened the menu; do not synthesize a tap on it at release.
+    if (this.heldRegion === place.id && event.cancelable) event.preventDefault();
+  }
+
+  selectRegion(place: Place, input: MouseEvent) {
+    if (this.heldRegion === place.id && input.detail !== 0) {
+      input.stopPropagation();
+      this.heldRegion = null;
+      return;
+    }
+    void this.select(place);
+  }
+
   contextRegion(place: Place, event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
-    const w = typeof window !== "undefined" ? window.innerWidth : 800;
-    const h = typeof window !== "undefined" ? window.innerHeight : 600;
-    this.regionContext.set({
-      place,
-      x: Math.min(event.clientX, w - 240),
-      y: Math.min(event.clientY, h - 70),
-    });
+    if (event.type === 'contextmenu' && (this.regionPress || (event as PointerEvent).pointerType === 'touch')) return;
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    const point = event.clientX || event.clientY ? {x: event.clientX, y: event.clientY}
+      : {x: rect.right, y: rect.bottom};
+    this.regionContext.set({place, ...point});
   }
-  @HostListener("document:click") closeContext() {
-    this.regionContext.set(null);
+  @HostListener("document:click") closeModePicker() {
     this.modePicker.set(false);
   }
   @HostListener("document:keydown.escape") closeDetails() {
-    this.closeContext();
+    if (this.regionContext()) { this.regionContext.set(null); return; }
+    this.closeModePicker();
     if (this.searchOpen()) {
       this.closeSearch();
       return;

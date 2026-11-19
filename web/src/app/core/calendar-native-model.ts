@@ -23,6 +23,10 @@ export function webEventDetails(details: any): WebCalendarEvent["details"] {
   return next;
 }
 
+export function withWebEventDetails<T extends WebCalendarEvent>(event: T): T {
+  return event.details ? { ...event, details: webEventDetails(event.details) } : event;
+}
+
 export function nativeEventDetails(details: any): any {
   const next = { ...details };
   if (typeof next.availability === "string")

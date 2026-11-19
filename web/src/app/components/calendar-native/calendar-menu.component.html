@@ -21,6 +21,50 @@
           }}
         </button>
   }
+  @if (section() === "Sharing" && destination()) {
+    <header class="sharing-header">
+      @if (destination() !== "pending" && destinationSearchOpen()) {
+        <cc-calendar-search [value]="search()" (changed)="search.set($event)" (closed)="search.set(''); destinationSearchOpen.set(false)" />
+      } @else {
+        <div class="page-heading">
+          <button
+            type="button"
+            class="round-button"
+            aria-label="Close"
+            (click)="
+              destination.set('');
+              search.set('');
+              destinationSearchOpen.set(false)
+            "
+          >
+            <cc-symbol [pointSize]="17" name="xmark" />
+          </button>
+          <h2>
+            {{
+              (destination() === "pending"
+                ? "Pending invitations"
+                : destination() === "sent"
+                  ? "Shared by me"
+                  : "Shared with me"
+              ) | nativeText
+            }}
+          </h2>
+          @if (destination() !== "pending") {
+            <button
+              type="button"
+              class="icon-button"
+              aria-label="Search events"
+              (click)="destinationSearchOpen.set(!destinationSearchOpen())"
+            >
+              <cc-symbol name="magnifyingglass" />
+            </button>
+          } @else {
+            <span class="round-spacer"></span>
+          }
+        </div>
+      }
+    </header>
+  }
   <div class="menu-scroll">
     @if (section() === "Calendar" || section() === "MultiCalendar") {
       @if (section() === "Calendar") {
@@ -364,61 +408,6 @@
           <cc-symbol name="chevron.right" />
         </button>
       } @else {
-        <div class="page-heading">
-          <button
-            type="button"
-            class="round-button"
-            aria-label="Close"
-            (click)="
-              destination.set('');
-              search.set('');
-              destinationSearchOpen.set(false)
-            "
-          >
-            <cc-symbol [pointSize]="17" name="xmark" />
-          </button>
-          <h2>
-            {{
-              (destination() === "pending"
-                ? "Pending invitations"
-                : destination() === "sent"
-                  ? "Shared by me"
-                  : "Shared with me"
-              ) | nativeText
-            }}
-          </h2>
-          @if (destination() !== "pending") {
-            <button
-              type="button"
-              class="icon-button"
-              aria-label="Search events"
-              (click)="destinationSearchOpen.set(!destinationSearchOpen())"
-            >
-              <cc-symbol name="magnifyingglass" />
-            </button>
-          } @else {
-            <span class="round-spacer"></span>
-          }
-        </div>
-        @if (destination() !== "pending" && (destinationSearchOpen() || search())) {
-          <label class="search-field">
-            <cc-symbol name="magnifyingglass" />
-            <input
-              placeholder="Search events"
-              [ngModel]="search()"
-              (ngModelChange)="search.set($event)"
-            />
-            @if (search()) {
-              <button
-                type="button"
-                aria-label="Clear search"
-                (click)="search.set('')"
-              >
-                <cc-symbol name="xmark.circle.fill" />
-              </button>
-            }
-          </label>
-        }
         @if (destination() === "pending") {
           @for (item of sharing.invitations(); track item.id) {
             <article class="invitation">

@@ -37,11 +37,10 @@ extension LocalStoreTestApp {
         renamed.title = "Changed title"
         check(renamed.shareID == localEvent.shareID, "Renaming does not change an event's share identity")
 
-        let details = CloudCalendarsAPI.Details(notes: localEvent.notes,
-            videoCallURL: localEvent.videoCallURL, timeZone: localEvent.timeZoneIdentifier,
-            alarms: [.init(relativeOffset: -900)], travelTime: localEvent.travelTime,
-            recurrenceRules: localEvent.recurrenceRules, structuredLocation: nil,
-            attachments: localEvent.attachments?.map(\.sharedValue))
+        let details = CloudCalendarsAPI.Details(notes: localEvent.notes, timeZone: localEvent.timeZoneIdentifier,
+            availability: 2, alarms: [.init(relativeOffset: -900), .init(relativeOffset: nil, absoluteDate: "2026-11-19T10:00:00Z")],
+            recurrenceRules: localEvent.recurrenceRules ?? [], videoCallURL: localEvent.videoCallURL,
+            travelTime: localEvent.travelTime, attachments: localEvent.attachments?.map(\.sharedValue))
         let remoteEvent = CloudCalendarsAPI.RemoteEvent(id: localEvent.shareID, title: localEvent.title,
             startDate: localEvent.startDate, endDate: localEvent.endDate, allDay: false,
             location: localEvent.location, url: localEvent.urlString, details: details)
@@ -60,6 +59,8 @@ extension LocalStoreTestApp {
               "Received calendar becomes visible in the selected calendars")
         check(!received.canEditEvents && !received.canManageSharing, "Reader cannot edit or manage sharing")
         check(imported.shareID == localEvent.shareID, "Import preserves the original shared event identity")
+        check(imported.portableDetails.availability == 2 && imported.portableDetails.alarms == details.alarms,
+              "Syncing the local copy preserves availability and absolute alarms from the web")
         check(imported.title == localEvent.title && imported.location == localEvent.location,
               "Arabic and Bulgarian event text survive import")
         check(imported.startDate == localEvent.startDate && imported.endDate == localEvent.endDate,
@@ -107,7 +108,9 @@ extension LocalStoreTestApp {
               && store.events.first { $0.calendarID == received.id }?.id == imported.id,
               "Repeated import does not duplicate the event")
         var noAlarms = remote
-        noAlarms.events?[0].details?.alarms = []
+        var withoutAlarms = localEvent
+        withoutAlarms.alarms = []
+        noAlarms.events?[0].details = withoutAlarms.portableDetails
         _ = store.applyRemoteCalendar(noAlarms)
         check(!store.applyRemoteCalendar(noAlarms),
               "Identical revision without alarms is correctly treated as unchanged")

@@ -97,7 +97,7 @@ struct WeatherDetailView: View {
 
     
     private var displayedSymbol: String {
-        if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
+        if let dayItem = allDailyItems.first(where: { customCalendar.isDate($0.date, inSameDayAs: selectedDate) }) {
             return dayItem.symbol
         }
         return "cloud"
@@ -194,7 +194,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let todayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 precipitationTotalsSection(for: todayForecast)
                                     .padding(.horizontal)
@@ -202,7 +202,7 @@ struct WeatherDetailView: View {
                             }
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastTempSection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -232,7 +232,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastWindSection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -272,7 +272,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let todayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 precipitationTotalsSection(for: todayForecast)
                                     .padding(.horizontal)
@@ -280,7 +280,7 @@ struct WeatherDetailView: View {
                             }
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastPrecipitationSection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -298,7 +298,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastHumiditySection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -325,7 +325,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastVisibilitySection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -348,7 +348,7 @@ struct WeatherDetailView: View {
                                 .padding(.bottom)
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
-                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                                customCalendar.isDate($0.date, inSameDayAs: selectedDate)
                             }) {
                                 forecastPressureSection(for: selectedDayForecast)
                                     .padding(.horizontal)
@@ -445,10 +445,15 @@ struct WeatherDetailView: View {
     }
     
     private var dateCarousel: some View {
-        WeekCarouselView2(
-            today: Date(),
-            selectedDay: $selectedDate
-        )
+        #if os(macOS)
+        var calendar = MacCalendarFormatting.calendar
+        #else
+        var calendar = WeekCarouselView.dayCalendar
+        #endif
+        calendar.timeZone = vm.locationTimeZone
+        let today = calendar.startOfDay(for: Date())
+        let lastDay = calendar.date(byAdding: .day, value: 9, to: today) ?? today
+        return WeatherWeekCarousel(selectedDay: $selectedDate, calendar: calendar, forecastDays: today...lastDay)
         .padding(.bottom, 10)
     }
 

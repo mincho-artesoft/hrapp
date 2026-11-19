@@ -3,35 +3,11 @@ import EventKit
 
 // Service doubles only: the actual on-disk local store and descriptors are
 // compiled from production. This app has its own sandbox and no network code.
-struct SharedEventRecurrenceRule: Codable, Equatable {
-    var frequency: Int; var interval: Int
-    init(rule: EKRecurrenceRule) { frequency = rule.frequency.rawValue; interval = rule.interval }
-    func makeRule() -> EKRecurrenceRule? {
-        EKRecurrenceFrequency(rawValue: frequency).map { EKRecurrenceRule(recurrenceWith: $0, interval: interval, end: nil) }
-    }
-}
-struct SharedEventLocation: Codable, Equatable {
-    var title: String
-    init(location: EKStructuredLocation) { title = location.title ?? "" }
-    func makeLocation(title: String) -> EKStructuredLocation { EKStructuredLocation(title: title) }
-}
 // Provider payloads are opaque to this local-store suite.
 struct DeviceCalendarEvent: Codable, Equatable {}
-struct SharedEventDetails {
-    var travelTime: Double?; var attachments: [SharedEventAttachment]?; var videoCallURL: String?
-}
-struct SharedEventAttachment: Codable, Equatable {
-    var id: String; var fileName: String; var contentType: String?; var dataBase64: String
-}
 enum CloudCalendarsAPI {
     enum EventAccess: String, Codable { case owner, writer, reader }
-    struct Alarm: Equatable { var relativeOffset: Double? }
-    struct Details: Equatable {
-        var notes: String?; var videoCallURL: String?; var timeZone: String?
-        var alarms: [Alarm]?; var travelTime: Double?
-        var recurrenceRules: [SharedEventRecurrenceRule]?
-        var structuredLocation: SharedEventLocation?; var attachments: [SharedEventAttachment]?
-    }
+    typealias Details = SharedEventDetails
     typealias SharedICloudCalendarEvent = RemoteEvent
     struct RemoteEvent: Equatable {
         var id: String; var title: String; var startDate: Date?; var endDate: Date?
@@ -77,20 +53,32 @@ final class FailingSaveStore: EKEventStore {
     }
 }
 
-@main final class LocalStoreTestApp: UIResponder, UIApplicationDelegate {
+final class LocalStoreTestScene: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    func application(_ app: UIApplication, didFinishLaunchingWithOptions options: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options: UIScene.ConnectionOptions) {
+        guard let scene = scene as? UIWindowScene else { return }
+        window = UIWindow(windowScene: scene)
         window?.rootViewController = UIViewController(); window?.makeKeyAndVisible()
+        (UIApplication.shared.delegate as? LocalStoreTestApp)?.runSuite()
+    }
+}
+
+@main final class LocalStoreTestApp: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, configurationForConnecting session: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let configuration = UISceneConfiguration(name: nil, sessionRole: session.role)
+        configuration.delegateClass = LocalStoreTestScene.self
+        return configuration
+    }
+    func runSuite() {
         do {
             if ProcessInfo.processInfo.environment["LOCAL_SHARING_ONLY"] == "1" {
                 try write(runSharingStoreTests())
-                return true
+                return
             }
             let count = try runTests() + runTransferTests()
             try write(["status": "PASS", "checks": count])
         } catch { try? write(["status": "FAIL", "error": error.localizedDescription]) }
-        return true
     }
     func runTransferTests() throws -> Int {
         var checks = 0

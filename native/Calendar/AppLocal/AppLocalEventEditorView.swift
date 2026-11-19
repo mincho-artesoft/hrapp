@@ -1316,7 +1316,7 @@ struct AppLocalEventEditorView: View {
             throw selectedCalendarUnavailableError()
         }
         let now = Date()
-        let event = AppLocalEventRecord(
+        var event = AppLocalEventRecord(
             id: existingLocalEvent?.id ?? "app-local-event:" + UUID().uuidString.lowercased(),
             calendarID: selectedCalendarID,
             title: title.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -1343,8 +1343,13 @@ struct AppLocalEventEditorView: View {
             travelTime: travelTime == .none ? nil : TimeInterval(travelTime.rawValue),
             recurrenceRules: recurrenceRule.map { [SharedEventRecurrenceRule(rule: $0)] },
             structuredLocation: structuredLocation,
-            attachments: attachments
+            attachments: attachments,
+            syncedFields: existingLocalEvent?.syncedFields
         )
+        if existingLocalEvent?.calendarID == selectedCalendarID {
+            event.providerReadOnly = existingLocalEvent?.providerReadOnly
+            event.providerSnapshot = existingLocalEvent?.providerSnapshot
+        }
         localStore.saveEvent(event)
         return event
     }

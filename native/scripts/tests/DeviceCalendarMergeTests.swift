@@ -16,6 +16,19 @@ struct DeviceCalendarMergeTests {
         assert(DeviceCalendarReplica.merge(base: [event], local: [event], remote: []).isEmpty)
         assert(DeviceCalendarReplica.merge(base: [event], local: [], remote: [event]).isEmpty)
         assert(DeviceCalendarReplica.merge(base: [], local: [phone], remote: [second]) == [phone, second])
+        var before = event
+        before.details = ["notes": .string("Old"), "travelTime": .number(600)]
+        var editor = before
+        editor.title = "Renamed"; editor.details?.removeValue(forKey: "travelTime")
+        var detail = before
+        detail.details?["notes"] = .string("New"); detail.start = "2026-11-17T09:00:00.000Z"
+        let concurrent = DeviceCalendarReplica.merge(base: [before], local: [editor], remote: [detail]).first!
+        assert(concurrent.title == editor.title && concurrent.details?["notes"] == .string("New"))
+        assert(concurrent.details?["travelTime"] == nil)
+        var rescheduled = editor
+        rescheduled.start = "2026-11-17T14:00:00Z"; rescheduled.end = "2026-11-17T15:00:00Z"
+        let moved = DeviceCalendarReplica.merge(base: [before], local: [rescheduled], remote: [detail]).first!
+        assert(moved.start == rescheduled.start && moved.end == rescheduled.end)
         var stamped = event; stamped.updatedAt = "2026-11-17T08:00:00Z"
         assert(DeviceCalendarReplica.merge(base: [stamped], local: [phone], remote: [event]) == [phone])
         // Supplementary fields round-trip without being stripped by the client.

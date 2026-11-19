@@ -1,0 +1,123 @@
+@if (day(); as day) {
+  @if (metric() === 'temp') {
+    <div class="temperature-heading" [class.current]="today()">
+      <div>
+        @if (today()) {
+          <small>{{ (apparent() ? 'Feels Like' : 'Actual') | nativeText }}</small>
+        }
+        <div class="values">
+          @if (today()) {
+            <b>{{ temperatures().current }}°</b>
+            @if (!apparent()) {
+              <span
+                >{{ format('H: %d°', +day.max) }}<br /><em>{{ format('L: %d°', +day.min) }}</em></span
+              >
+            }
+          } @else {
+            <b>{{ temperatures().max }}°</b><b class="muted">{{ temperatures().min }}°</b>
+          }
+        </div>
+      </div>
+      <cc-symbol [name]="day.symbol ?? 'cloud'" [multicolor]="true" />
+    </div>
+  }
+  @if (heading(); as header) {
+    <h3 class="metric-heading">{{ header.title }}</h3>
+    @if (header.caption) {
+      <p>{{ header.caption }}</p>
+    }
+  }
+  <cc-weather-chart
+    class="detail-chart"
+    [snapshot]="snapshot()"
+    [date]="date()"
+    [now]="now()"
+    [metric]="metric()"
+    [apparent]="apparent()"
+    [name]="name()"
+  />
+  @if (metric() === 'temp') {
+    <div class="temperature-picker" role="group" [attr.aria-label]="'Conditions' | nativeText">
+      @for (feels of [false, true]; track feels) {
+        <button type="button" [attr.aria-pressed]="apparent() === feels" (click)="apparent.set(feels)">
+          {{ (feels ? 'Feels Like' : 'Actual') | nativeText }}
+        </button>
+      }
+    </div>
+    <small>{{
+      (apparent()
+        ? 'What the temperature feels like as a result of humidity, sunlight or wind.'
+        : 'The actual air temperature.'
+      ) | nativeText
+    }}</small>
+  }
+  @if (metric() === 'temp' || metric() === 'precip') {
+    <section>
+      <h3>{{ 'Chance of Precipitation' | nativeText }}</h3>
+      <p>
+        {{ today() ? format("Today's chance: %d%%", day.precip) : format("%@'s chance: %d%%", weekday(), day.precip) }}
+      </p>
+      <cc-weather-chart
+        [snapshot]="snapshot()"
+        [date]="date()"
+        [now]="now()"
+        metric="chance"
+        name="Chance of Precipitation"
+      />
+      <small>{{
+        'The daily chance of precipitation tends to be higher than the chance for each hour.' | nativeText
+      }}</small>
+    </section>
+    @if (totals().length) {
+      <section>
+        <h3>{{ 'Precipitation Totals' | nativeText }}</h3>
+        @for (group of totals(); track group.label) {
+          <div class="period">{{ group.label | nativeText }}</div>
+          @for (row of group.rows; track row.name) {
+            <div class="total">
+              <span><i [class.snow]="row.name === 'Snow'"></i>{{ row.name | nativeText }}</span>
+              <b>{{ num(row.value, row.value === 0 ? 0 : 1) }} {{ row.unit | nativeText }}</b>
+            </div>
+          }
+        }
+      </section>
+    }
+  }
+  @if (summary()) {
+    <section>
+      @if (metric() !== 'uv') {
+        <h3>{{ (today() ? 'Forecast' : 'Daily Summary') | nativeText }}</h3>
+      }
+      <p>{{ summary() }}</p>
+    </section>
+  }
+  @if (metric() === 'wind') {
+    <section>
+      <h3>{{ 'Beaufort Scale' | nativeText }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>{{ 'bft' | nativeText }}</th>
+            <th>{{ 'Description' | nativeText }}</th>
+            <th>{{ snapshot().windUnit | nativeText }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of beaufort(); track row.i) {
+            <tr>
+              <td><i [style.background]="'hsl(' + (190 - row.i * 14) + ' 74% 59%)'"></i>{{ num(row.i) }}</td>
+              <td>{{ row.name | nativeText }}</td>
+              <td>{{ row.range }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+  }
+  @for (info of explanations(); track info[0]) {
+    <section>
+      <h3>{{ info[0] | nativeText }}</h3>
+      <p>{{ format(info[1], imperial() ? '6.2 mi' : '10 km') }}</p>
+    </section>
+  }
+}

@@ -153,6 +153,31 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
     var recurrenceRules: [SharedEventRecurrenceRule]?
     var structuredLocation: SharedEventLocation?
     var attachments: [AppLocalEventAttachment]?
+    // Fields supplied by other clients that this editor cannot change.
+    struct SyncedFields: Codable, Equatable {
+        var availability: Int
+        var organizer: SharedEventParticipant?
+        var attendees: [SharedEventParticipant]
+        var alarms: [SharedEventAlarm]
+
+        init(_ details: SharedEventDetails) {
+            availability = details.availability; organizer = details.organizer
+            attendees = details.attendees; alarms = details.alarms
+        }
+    }
+    var syncedFields: SyncedFields?
+
+    var portableDetails: SharedEventDetails {
+        let previous = syncedFields?.alarms ?? []
+        let relative = alarms.map(\.relativeOffset)
+        let wireAlarms = previous.compactMap(\.relativeOffset) == relative
+            ? previous : relative.map { SharedEventAlarm(relativeOffset: $0) } + previous.filter { $0.absoluteDate != nil }
+        return SharedEventDetails(notes: notes.isEmpty ? nil : notes, timeZone: timeZoneIdentifier,
+            availability: syncedFields?.availability ?? 0, alarms: wireAlarms, recurrenceRules: recurrenceRules ?? [],
+            structuredLocation: structuredLocation, videoCallURL: videoCallURL, organizer: syncedFields?.organizer,
+            attendees: syncedFields?.attendees ?? [], travelTime: travelTime, attachments: attachments?.map(\.sharedValue))
+    }
+
     var providerSnapshot: DeviceCalendarEvent? = nil
     var providerReadOnly: Bool? = nil
 
@@ -176,7 +201,8 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         travelTime: TimeInterval? = nil,
         recurrenceRules: [SharedEventRecurrenceRule]? = nil,
         structuredLocation: SharedEventLocation? = nil,
-        attachments: [AppLocalEventAttachment]? = nil
+        attachments: [AppLocalEventAttachment]? = nil,
+        syncedFields: SyncedFields? = nil
     ) {
         self.id = id
         self.calendarID = calendarID
@@ -198,6 +224,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         self.recurrenceRules = recurrenceRules
         self.structuredLocation = structuredLocation
         self.attachments = attachments
+        self.syncedFields = syncedFields
     }
 
     var shareID: String {
@@ -373,7 +400,8 @@ final class AppLocalCalendarStore: ObservableObject {
                 travelTime: value.details?.travelTime,
                 recurrenceRules: value.details?.recurrenceRules,
                 structuredLocation: value.details?.structuredLocation,
-                attachments: value.details?.attachments?.map(AppLocalEventAttachment.init)
+                attachments: value.details?.attachments?.map(AppLocalEventAttachment.init),
+                syncedFields: value.details.map(AppLocalEventRecord.SyncedFields.init)
             )
         }
 
@@ -466,7 +494,8 @@ final class AppLocalCalendarStore: ObservableObject {
                 travelTime: value.details?.travelTime,
                 recurrenceRules: value.details?.recurrenceRules,
                 structuredLocation: value.details?.structuredLocation,
-                attachments: value.details?.attachments?.map(AppLocalEventAttachment.init)
+                attachments: value.details?.attachments?.map(AppLocalEventAttachment.init),
+                syncedFields: value.details.map(AppLocalEventRecord.SyncedFields.init)
             )
         }
 

@@ -31,6 +31,13 @@ export async function calendarWeather(query: Record<string, unknown>): Promise<u
   try { timezone = new Intl.DateTimeFormat('en', {timeZone: String(query.timezone || 'UTC')}).resolvedOptions().timeZone; }
   catch { throw new BadRequestException('Invalid forecast time zone.'); }
   const params = new URLSearchParams({timezone, dataSets: 'currentWeather,forecastDaily,forecastHourly,weatherAlerts'});
+  const map = query.view === 'map';
+  if (map) {
+    const hour = Math.floor(Date.now() / 3_600_000) * 3_600_000;
+    params.set('dataSets', 'forecastHourly');
+    params.set('hourlyStart', new Date(hour - 4 * 3_600_000).toISOString());
+    params.set('hourlyEnd', new Date(hour + 13 * 3_600_000).toISOString());
+  }
   if (typeof query.country === 'string' && /^[A-Z]{2}$/.test(query.country)) params.set('country', query.country);
   const url = 'https://weatherkit.apple.com/api/v1/weather/' + language + '/' + lat + '/' + lon + '?' + params;
   const hit = forecasts.get(url);
@@ -39,7 +46,12 @@ export async function calendarWeather(query: Record<string, unknown>): Promise<u
   const result = fetch(url, {headers: {Authorization: 'Bearer ' + authorization()}, signal: AbortSignal.timeout(7000)})
     .then(async response => {
       if (!response.ok) throw new Error('Forecast unavailable');
-      return response.json();
+      const forecast = await response.json() as {forecastHourly: {hours: Record<string, unknown>[]}};
+      if (!map) return forecast;
+      return {forecastHourly: {hours: forecast.forecastHourly.hours.map(
+        ({forecastStart, windSpeed, windDirection, temperature}: Record<string, unknown>) =>
+          ({forecastStart, windSpeed, windDirection, temperature})
+      )}};
     });
   forecasts.set(url, {expires: Date.now() + ttl, result});
   try { return await result; }

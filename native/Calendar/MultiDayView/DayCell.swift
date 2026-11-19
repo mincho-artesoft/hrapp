@@ -69,15 +69,20 @@ class DayCell: UICollectionViewCell {
         dayNumberLabel.layer.cornerRadius = circleSide / 2
     }
     
-    func configure(with date: Date, isSelected: Bool) {
-        let calendar = Calendar.current
+    func configure(with date: Date, isSelected: Bool, calendar: Calendar = .current, enabled: Bool = true) {
+        contentView.alpha = enabled ? 1 : 0.4
+        isAccessibilityElement = true
+        accessibilityLabel = appDateFormatter(template: "EEEEdMMMMy", timeZone: calendar.timeZone).string(from: date)
+        accessibilityTraits = .button
+        if isSelected { accessibilityTraits.insert(.selected) }
+        if !enabled { accessibilityTraits.insert(.notEnabled) }
         
         // Еднобуквен ден: EEEEE
-        let weekdayFormatter = appDateFormatter(template: "EEEEE")
+        let weekdayFormatter = appDateFormatter(template: "EEEEE", timeZone: calendar.timeZone)
         dayOfWeekLabel.text = weekdayFormatter.string(from: date).uppercased()
         
         // Число на датата
-        let dayNumberFormatter = appDateFormatter(template: "d")
+        let dayNumberFormatter = appDateFormatter(template: "d", timeZone: calendar.timeZone)
         dayNumberLabel.text = dayNumberFormatter.string(from: date)
         
         // Проверка дали е „днес“

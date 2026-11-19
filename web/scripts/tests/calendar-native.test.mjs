@@ -138,3 +138,53 @@ test('moving an overnight event by its continuation preserves the whole interval
   assert.equal(timelinePlacement('resize-start', original, day, target, 0, true), null);
   assert.equal(minuteOnDay(+timelineDay(day, 1), day), 1440);
 });
+
+const {forecastGrid, gridCoordinates, makeMapField, mapFrame, mapReading, mapColor, worldY, latitudeAt} =
+  await sourceModule('../../src/app/core/weather-map-field.ts');
+test('wind map interpolates WeatherKit vectors, temperatures and the local timeline across the date line', () => {
+  const now = Date.UTC(2026, 10, 19, 13, 25);
+  const hour = Math.floor(now / 3_600_000) * 3_600_000;
+  const grid = forecastGrid({latitude: 42, longitude: 179.7});
+  const coordinates = gridCoordinates(grid);
+  assert.equal(coordinates.length, 9);
+  assert.ok(coordinates.some(p => p.longitude < 0) && coordinates.some(p => p.longitude > 0));
+  const points = coordinates.map(() => Array.from({length: 20}, (_, i) => ({
+    forecastStart: new Date(hour + (i - 5) * 3_600_000).toISOString(),
+    windSpeed: 36, windDirection: i % 2 ? 350 : 10, temperature: i
+  })));
+  const field = makeMapField(grid, points, now);
+  assert.equal(field.dates.length, 17);
+  assert.equal(field.dates[4], hour);
+  const wind = mapReading(grid, mapFrame(field, 4.5), grid.latitude, 179.7);
+  assert.ok(Math.abs(wind.east) < 1e-8);
+  assert.ok(wind.north < -9, 'a northerly wind travels south');
+  assert.equal(wind.temperature, 5.5);
+  assert.equal(mapReading(grid, field.frames[0], 0, 0), undefined);
+  assert.deepEqual(mapColor(25, 'wind'), [10,148,186]);
+  assert.deepEqual(mapColor(55, 'temperature'), [107,8,28]);
+  assert.ok(Math.abs(latitudeAt(worldY(70)) - 70) < 1e-8);
+});
+
+test('weather details use each metric, preserve local time gaps and exclude the following day from daily totals', async () => {
+  const {weatherChart}=await sourceModule('../../src/app/core/weather-detail-chart.ts');
+  const day='2026-10-25';
+  // In Sofia the 03:00 hour repeats when daylight-saving time ends.
+  const start=Date.parse('2026-10-24T21:00Z');
+  const times=['00','01','02','03','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','00'];
+  const hours=times.map((h,i)=>({iso:(i===25?'2026-10-26':day)+'T'+h+':00', instant:new Date(start+i*3600000).toISOString(),wind:10,gust:21,temperature:12,feelsLike:8,precipitation:25.4,snowfall:2.54,precipitationChance:40,humidity:55,pressure:1000,visibility:5,uv:3}));
+  const snapshot={windUnit:'mph',visibilityUnit:'mi',daily:[{iso:day,instant:hours[0].instant},{iso:'2026-10-26',instant:hours[25].instant}],forecastHours:hours};
+  const chart=(metric,feels=false)=>weatherChart(snapshot,day,metric,feels);
+  assert.deepEqual([chart('temp').max,chart('temp',true).max],[12,8]);
+  assert.deepEqual(chart('wind').points.slice(3,5).map(p=>p.x),[12,16]);
+  assert.equal(chart('wind').extra[0].value,21);
+  assert.equal(chart('temp').points.at(-1).x,100);
+  assert.equal(chart('precip').points.length,25);
+  assert.equal(chart('precip').points[0].value,1);
+  assert.equal(chart('precip').extra[0].value,.1);
+  assert.equal(chart('chance').unit,'%');assert.equal(chart('chance').max,40);
+  assert.equal(chart('pressure').unit,'inHg');assert.ok(Math.abs(chart('pressure').avg-29.53)<1e-8);
+  assert.equal(chart('humidity').high,100);assert.equal(chart('uv').high,12);assert.equal(chart('visibility').unit,'mi');
+  hours.splice(5,2);
+  assert.equal(chart('temp').paths.length,2);
+  assert.equal(weatherChart(snapshot,'2026-10-28','temp'),null);
+});

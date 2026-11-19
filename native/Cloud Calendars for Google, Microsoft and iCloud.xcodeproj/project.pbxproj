@@ -150,7 +150,6 @@
 				Mac/MacCalendarToolbar.swift = (macos, );
 				Mac/Weather/MacWeatherKitView.swift = (macos, );
 				Mac/Weather/MacWindMapCanvas.swift = (macos, );
-				Mac/Weather/WeekCarouselView2.swift = (macos, );
 				Mac/Wonek/AdaptiveControlLabel.swift = (macos, );
 				Mac/Wonek/AppActionButtonStyle.swift = (macos, );
 				Mac/Wonek/AppContextMenu.swift = (macos, );
@@ -258,7 +257,6 @@
 				Sources/EventNotificationNavigation.swift = (ios, );
 				Sources/InvitationPushRegistration.swift = (ios, );
 				Subscriptions.storekit = (ios, );
-				WeatherView/WeatherDetailView/WeekCarouselView2.swift = (ios, );
 				WeatherView/WeatherKitView.swift = (ios, );
 				WeatherView/WindMap/WindMapCanvas.swift = (ios, );
 				YearView/MiniDayCellView.swift = (ios, );

@@ -1,7 +1,11 @@
+import { CalendarAnchoredMenuDirective } from '../../components/calendar-native/calendar-anchored-menu.directive';
+import {CalendarSearchFieldComponent} from '../../components/calendar-native/calendar-search-field.component';
 import { TimelineGesture, TimelineInterval, minuteOnDay, timelineDay, timelinePlacement } from '../../core/calendar-timeline-gesture';
 import {CalendarProviderService} from '../../core/calendar-provider.service';
 import {CalendarDetailTimelineComponent} from '../../components/calendar-native/calendar-detail-timeline.component';
 import {nativeTimelineLayout,NativeTimedBlock} from '../../core/calendar-timeline-layout';
+import {CalendarWeekStripComponent} from '../../components/calendar-native/calendar-week-strip.component';
+import {CalendarDateGridComponent} from '../../components/calendar-native/calendar-date-grid.component';
 import {CalendarDateTimeComponent} from '../../components/calendar-native/calendar-date-time.component';
 import {CalendarRepeatComponent} from '../../components/calendar-native/calendar-repeat.component';
 import {
@@ -112,7 +116,8 @@ interface DragSession {
   startClientX: number;
   startClientY: number;
   anchorY: number;
-  centerOffset: number;
+  anchorX: number;
+  width: number;
   visualX: number;
   visualY: number;
   color?: string;
@@ -166,8 +171,9 @@ const HOUR_PX = 50;
     CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
-  imports: [
-    CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
+  imports: [CalendarAnchoredMenuDirective,
+    CalendarSearchFieldComponent,
+    CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,
     FormsModule,
@@ -272,8 +278,6 @@ export class WebCalendarPageComponent
   readonly drawerDrag = signal(0);
   readonly drawerHeight = computed(() => {const base=this.drawerOpen()?this.viewport().height*.8-60:26;return Math.max(26,Math.min(this.viewport().height-110,base-this.drawerDrag()));});
   private drawerStart: {y:number;open:boolean}|null = null;
-  readonly weekOffset = signal(0);
-  readonly weekDays = computed(() => Array.from({length:7}, (_,i) => this.addDays(this.startOfWeekMonday(this.anchorDate()), i+this.weekOffset()*7)));
   readonly sidebarMonth = signal(new Date());
   private lastCalendarMode: CalendarViewMode = "month";
   private readonly onWindowResize = () => this.updateViewport();
@@ -296,15 +300,12 @@ export class WebCalendarPageComponent
   drawerPointerMove(event:PointerEvent) { if(this.drawerStart) this.drawerDrag.set(event.clientY-this.drawerStart.y); }
   drawerPointerUp(event:PointerEvent) { if(!this.drawerStart)return;const delta=event.clientY-this.drawerStart.y;this.drawerOpen.set(Math.abs(delta)<12?!this.drawerStart.open:delta<0);this.drawerStart=null;this.drawerDrag.set(0); }
   bottomToday() { this.jumpToday();this.setView('day');this.drawerOpen.set(false); }
-  selectWeekDay(day:Date) { this.anchorDate.set(day); this.weekOffset.set(0); }
-  private weekSwipeStart=0;
-  weekPointerDown(event:PointerEvent){this.weekSwipeStart=event.clientX;}
-  weekPointerUp(event:PointerEvent){const distance=event.clientX-this.weekSwipeStart;if(Math.abs(distance)>45)this.weekOffset.update(v=>v+(distance<0?1:-1));}
-
   readonly searchOpen = signal(false);
   readonly searchText = signal("");
   readonly selectedEvent = signal<WebCalendarEvent | null>(null);
   readonly inspectorEvent = signal<WebCalendarEvent | null>(null);
+  private pendingTimelineTap: string | null = null;
+  readonly moreEventActions = signal(false);
   readonly eventContext = signal<{
     event: WebCalendarEvent;
     x: number;
@@ -320,49 +321,11 @@ export class WebCalendarPageComponent
   });
   readonly dayCount = signal(8);
   readonly rangeOpen = signal(false);
-  readonly rangeStart = signal<Date | null>(null);
-  readonly rangeMonths = computed(() =>
-    [0, 1].map((offset) => {
-      const date = new Date(
-          this.anchorDate().getFullYear(),
-          this.anchorDate().getMonth() + offset,
-          1,
-        ),
-        start = this.startOfWeekMonday(date);
-      return {
-        date,
-        days: Array.from({ length: 42 }, (_, i) => this.addDays(start, i)),
-      };
-    }),
-  );
-  pickRange(date: Date) {
-    const start = this.rangeStart();
-    if (!start) {
-      this.rangeStart.set(date);
-      return;
-    }
-    const first = start < date ? start : date,
-      last = start < date ? date : start;
+  applyRange(range: {start: string; end: string}) {
+    const first = new Date(range.start + 'T00:00:00');
+    const last = new Date(range.end + 'T00:00:00');
     this.anchorDate.set(first);
-    this.dayCount.set(
-      Math.min(
-        31,
-        Math.round((last.getTime() - first.getTime()) / 86400000) + 1,
-      ),
-    );
-    this.rangeStart.set(null);
-    this.rangeOpen.set(false);
-  }
-  inRange(date: Date) {
-    const start = this.rangeStart() ?? this.anchorDate();
-    return (
-      date.getTime() >= start.getTime() &&
-      date.getTime() <=
-        this.addDays(
-          start,
-          this.rangeStart() ? 0 : this.dayCount() - 1,
-        ).getTime()
-    );
+    this.dayCount.set(Math.min(31, Math.round((last.getTime() - first.getTime()) / 86400000) + 1));
   }
   readonly canShare = canShareEvent;
   readonly preferences = signal<Record<string, string>>({});
@@ -378,6 +341,15 @@ export class WebCalendarPageComponent
   private hour12() {
     const value = this.preferences()["time"];
     return value === "12" ? true : value === "24" ? false : undefined;
+  }
+  timelineDateLabel(date: Date) {
+    const pref = this.preferences()["date"];
+    const locale = this.dateLocale();
+    const order: Record<string,string> = {dmy:"en-GB",mdy:"en-US",ymd:"sv-SE"};
+    const formatter = new Intl.DateTimeFormat(order[pref] || locale, {
+      day: order[pref] ? "2-digit" : "numeric", month: order[pref] ? "2-digit" : "numeric"
+    });
+    return date.toLocaleDateString(locale, {weekday:"short"}) + ", " + formatter.format(date);
   }
   formatShortDate(value: string) {
     const format = this.preferences()["date"];
@@ -403,9 +375,7 @@ export class WebCalendarPageComponent
   readonly searchResults = computed(() =>
     this.allDisplayEvents()
       .filter((e) =>
-        `${e.title} ${e.location ?? ""} ${e.details?.notes ?? ""}`
-          .toLowerCase()
-          .includes(this.searchText().toLowerCase()),
+        e.title.toLocaleLowerCase(this.dateLocale()).includes(this.searchText().trim().toLocaleLowerCase(this.dateLocale())),
       )
       .sort((a, b) => a.start.localeCompare(b.start)),
   );
@@ -540,12 +510,30 @@ export class WebCalendarPageComponent
   eventAlert(event:WebCalendarEvent,index:number){const a=event.details?.alarms?.[index];return a?Math.round(Math.abs(a.relativeOffsetSeconds)/60):-1;}
   recurrenceDescription(event:WebCalendarEvent){const rule=event.details?.recurrenceRules?.[0];if(!rule)return '';const labels={daily:'day',weekly:'week',monthly:'month',yearly:'year'};const n=rule.interval||1;return `Every ${n>1?n+' ':''}${labels[rule.frequency]}${n>1?'s':''}`;}
   async updateDetailAlert(event:WebCalendarEvent,index:number,value:number){const alarms=[this.eventAlert(event,0),this.eventAlert(event,1)];alarms[index]=value;if(index===0&&value<0)alarms[1]=-1;await this.updateDetail(event,{alarms:[...new Set(alarms.filter(m=>m>=0))].map(m=>({relativeOffsetSeconds:-m*60}))});}
-  async updateDetail(event:WebCalendarEvent,details:Partial<NonNullable<WebCalendarEvent['details']>>){
-    if(event.readOnly||this.savingEvent())return;
+  async updateDetail(event: WebCalendarEvent, details: Partial<NonNullable<WebCalendarEvent["details"]>>) {
+    if (event.readOnly || this.savingEvent()) return;
     this.savingEvent.set(true);
-    try{const result=await this.persistEvent(event.id,{calendarId:event.calendarId,expectedUpdatedAt:event.updatedAt,...details});await this.reloadAllWorkspaceData();this.selectedEvent.set(result.event);this.inspectorEvent.set(result.event);}
-    catch(error){this.handleMutationError(error,'Could not save event.');}
-    finally{this.savingEvent.set(false);}
+    try {
+      const result = await this.persistEvent(event.id, {
+        calendarId: event.calendarId, expectedUpdatedAt: event.updatedAt, ...details,
+      }, event);
+      await this.applyDetailSave(event, result.event);
+    } catch (error) {
+      this.handleMutationError(error, "Could not save event.");
+    } finally {
+      this.savingEvent.set(false);
+    }
+  }
+
+  private async applyDetailSave(original: WebCalendarEvent, saved: WebCalendarEvent) {
+    // The user can dismiss the sheet or select another event during a save.
+    this.selectedEvent.update(current => current?.id === original.id ? saved : current);
+    this.inspectorEvent.update(current => current?.id === original.id ? saved : current);
+    try {
+      await this.reloadAllWorkspaceData();
+    } catch (error) {
+      this.workspaceError.set(error instanceof Error ? error.message : "Could not refresh the calendar.");
+    }
   }
   readonly pendingDelete = signal(false);
   readonly detailPendingDelete = signal(false);
@@ -626,7 +614,7 @@ export class WebCalendarPageComponent
   meetingUrlForEvent(event: WebCalendarEvent): string | null {
     const direct = this.safeLink(event.details?.videoCallURL);
     if (direct) return direct;
-    const candidates = [event.details?.url, event.details?.notes]
+    const candidates = [event.url ?? event.details?.url, event.details?.notes]
       .filter(Boolean)
       .join("\n");
     if (!candidates) return null;
@@ -665,15 +653,23 @@ export class WebCalendarPageComponent
       const result = await this.persistEvent(event.id, {
         calendarId: nextCalendarId,
         expectedUpdatedAt: event.updatedAt,
-      });
-      await this.reloadAllWorkspaceData();
-      this.selectedEvent.set(result.event);
-      this.inspectorEvent.set(result.event);
+      }, event);
+      await this.applyDetailSave(event, result.event);
     } catch (error) {
       this.handleMutationError(error, "Could not move event to calendar.");
     } finally {
       this.savingEvent.set(false);
     }
+  }
+
+  eventRemovalLabel(event: WebCalendarEvent): string | null {
+    if (event.receivedFeedId) return event.receivedAccess === 'owner' ? 'Cancel for Everyone' : 'Remove from My Calendar';
+    return event.readOnly ? null : 'Delete';
+  }
+
+  private async removeReceivedEvent(event: WebCalendarEvent) {
+    const resource = event.receivedAccess === 'owner' ? 'events' : 'received-invites';
+    await this.native.request(`/${resource}/${encodeURIComponent(event.id)}`, 'DELETE');
   }
 
   async deleteEventInstance(event: WebCalendarEvent): Promise<void> {
@@ -687,18 +683,18 @@ export class WebCalendarPageComponent
           end: occurrence.masterEnd!,
         }
       : event;
-    if (target.readOnly || this.savingEvent()) return;
+    if (!this.eventRemovalLabel(target) || this.savingEvent()) return;
     this.savingEvent.set(true);
     try {
       if (target.provider) await this.providerWorkspace.deleteEvent(target);
       else if (target.id.startsWith("sharedcal."))
         await this.native.updateCalendarEvent(target, {}, undefined, true);
       else if (target.receivedFeedId)
-        await this.native.request(`/received-invites/${target.id}`, "DELETE");
+        await this.removeReceivedEvent(target);
       else {
         await this.api.deleteCalendarEvent(target.id, { notifyGuest: true });
         if (target.calendarId)
-          await this.native.syncOwnedCalendar(target.calendarId);
+          await this.native.syncOwnedCalendar(target.calendarId, target.id);
       }
       await this.reloadAllWorkspaceData();
       this.ownedEvents.update((list) => list.filter((x) => x.id !== target.id));
@@ -785,7 +781,7 @@ export class WebCalendarPageComponent
     if(value==='menu'&&!this.isDesktop()){this.drawerOpen.set(true);this.modePicker.set(false);return;}
     if(this.viewMode()!=='menu'&&this.viewMode()!=='weather')this.lastCalendarMode=this.viewMode();
     this.viewMode.set(value as CalendarViewMode);
-    this.drawerOpen.set(false);this.searchOpen.set(false);this.searchText.set('');this.rangeOpen.set(false);this.weekOffset.set(0);
+    this.drawerOpen.set(false);this.searchOpen.set(false);this.searchText.set('');this.rangeOpen.set(false);
     this.modePicker.set(false);
     if (this.isBrowser) localStorage.setItem("cc.mac.view", value);
     if (["day", "week", "multi"].includes(value))
@@ -826,31 +822,51 @@ export class WebCalendarPageComponent
         ...event,
         receivedFeedId: shared.feedId,
         receivedAccess: shared.access,
-        readOnly: shared.access !== "writer" && shared.access !== "owner",
+        readOnly: event.readOnly || (shared.access !== "writer" && shared.access !== "owner"),
       };
     this.detailPendingDelete.set(false);
     this.selectedEvent.set(event);
     this.inspectorEvent.set(event);
     this.eventContext.set(null);
   }
-  contextEvent(event: WebCalendarEvent, e: MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (this.drag()?.touch && !event.readOnly) return;
+  timedEventClick(event: WebCalendarEvent, input: Event) {
+    if (this.isDesktop()) {
+      if (input instanceof KeyboardEvent || (input instanceof MouseEvent && input.detail === 0)) {
+        input.preventDefault();
+        this.showEvent(event);
+      }
+      return;
+    }
+    if (input instanceof MouseEvent && input.detail !== 0 && this.pendingTimelineTap !== event.id) return;
+    this.pendingTimelineTap = null;
+    this.openEventActions(event, input);
+  }
+
+  contextEvent(event: WebCalendarEvent, input: MouseEvent) {
+    input.preventDefault();
+    input.stopPropagation();
+    // Browsers synthesize contextmenu during a touch hold. The timeline owns that drag.
+    if (this.drag()?.touch || this.monthPointer?.touch || (input as PointerEvent).pointerType === 'touch') return;
+    this.openEventActions(event, input);
+  }
+
+  private openEventActions(event: WebCalendarEvent, input: Event) {
+    input.preventDefault();
+    input.stopPropagation();
+    const rect = (input.currentTarget as HTMLElement).getBoundingClientRect();
+    const point = input instanceof MouseEvent && (input.clientX || input.clientY)
+      ? {x: input.clientX, y: input.clientY}
+      : {x: rect.left + rect.width / 2, y: rect.top + rect.height / 2};
     this.inspectorEvent.set(event);
-    const w = typeof window !== "undefined" ? window.innerWidth : 1280;
-    const h = typeof window !== "undefined" ? window.innerHeight : 800;
-    this.eventContext.set({
-      event,
-      x: Math.min(e.clientX, w - 260),
-      y: Math.min(e.clientY, h - 310),
-    });
+    this.moreEventActions.set(false);
+    this.eventContext.set({event, ...point});
   }
   @HostListener("document:click") closeMenus() {
+    this.rangeOpen.set(false);
     this.modePicker.set(false);
-    this.eventContext.set(null);
   }
   @HostListener("document:keydown.escape") closeOverlays() {
+    if (this.rangeOpen()) { this.rangeOpen.set(false); return; }
     this.cancelDrag();
     this.modePicker.set(false);
     this.eventContext.set(null);
@@ -894,13 +910,7 @@ export class WebCalendarPageComponent
     });
   }
   private lastSharingRefresh = 0;
-  readonly toast = signal<{
-    message: string;
-    undoEventId?: string;
-    undoStart?: string;
-    undoEnd?: string;
-    undoAllDay?: boolean;
-  } | null>(null);
+  readonly toast = signal<string | null>(null);
   private toastTimer: any = null;
   private clockTimer: any = null;
   private liveSyncTimer: any = null;
@@ -1020,26 +1030,44 @@ export class WebCalendarPageComponent
 
   // Unified display events across owned + shared + external busy
   private readonly calendarOccurrences = computed<WebCalendarEvent[]>(() => {
+    const calendars = new Map(this.displayCalendars().map(c => [c.id, c]));
+    const receivedCopies = new Map(this.native.received()
+      .filter(e => e.localEventIdentifier)
+      .map(e => [e.localEventIdentifier!, e]));
+    const sharedById = new Map(this.sharedEvents().map(event => [event.id, event]));
+    const copiedShared = new Set<string>();
     const owned = this.ownedEvents()
       .filter(
         (e) =>
           e.status !== "cancelled" &&
           (!e.calendarId ||
-            this.displayCalendars().some((c) => c.id === e.calendarId)) &&
+            calendars.has(e.calendarId)) &&
           (!e.calendarId || !this.hiddenCalendarIDs().has(e.calendarId)),
       )
-      .map((e) => ({
-        ...e,
-        color: this.native.colorOverrides()[e.calendarId ?? ""] ?? e.color,
-        sourceKind: "owned" as const,
-        readOnly: e.readOnly ?? false,
-      }));
+      .map((e) => {
+        const calendar = e.calendarId ? calendars.get(e.calendarId) : undefined;
+        const prefix = `native.${e.calendarId}.`;
+        const copy = e.id.startsWith(prefix) ? receivedCopies.get(e.id.slice(prefix.length)) : undefined;
+        if (copy) copiedShared.add(copy.id);
+        return {
+          ...e,
+          ...(copy ? {
+            ...(sharedById.get(copy.id) ?? copy),
+            id: copy.id, calendarId: e.calendarId, receivedFeedId: copy.feedId,
+          } : {}),
+          color: this.native.colorOverrides()[e.calendarId ?? ""] ?? e.color,
+          sourceKind: copy ? "shared" as const : "owned" as const,
+          receivedAccess: copy?.access ?? e.receivedAccess,
+          readOnly: e.readOnly === true || calendar?.allowsChanges === false || calendar?.available === false ||
+            (copy ? (copy.access ?? "reader") === "reader" : e.receivedAccess === "reader"),
+        };
+      }).filter(e => e.status !== "cancelled");
     const shared = this.sharedEvents()
       .filter((e) => e.status !== "cancelled")
       .map((e) => ({
         ...e,
         sourceKind: "shared" as const,
-        readOnly: (e.receivedAccess ?? "reader") === "reader",
+        readOnly: e.readOnly === true || (e.receivedAccess ?? "reader") === "reader",
       }));
     const connections = this.api.profile()?.connectedProviders;
     const ext = (this.externalBusy().events ?? []).filter(b =>
@@ -1067,25 +1095,12 @@ export class WebCalendarPageComponent
           calendarId: c.id,
           calendarTitle: c.title,
           receivedAccess: c.access,
+          sharedCalendarRevision: c.eventsUpdatedAt,
           color: this.native.colorOverrides()[c.id] ?? c.color,
-          readOnly: c.access === "reader" || c.isRevoked,
+          readOnly: e.readOnly === true || (c.access ?? "reader") === "reader" || c.isRevoked === true,
           sourceKind: "shared" as const,
         })),
       );
-    const nativeIDs = new Set(
-      owned
-        .filter((e) => e.id.startsWith("native."))
-        .map((e) => e.id.split(".")[2]),
-    );
-    const copiedShared = new Set(
-      this.native
-        .received()
-        .filter(
-          (e) =>
-            e.localEventIdentifier && nativeIDs.has(e.localEventIdentifier),
-        )
-        .map((e) => e.id),
-    );
     const events = [
       ...this.providerWorkspace.events().filter(e=>!this.hiddenCalendarIDs().has(e.calendarId||'')),
       ...owned,
@@ -1197,15 +1212,14 @@ export class WebCalendarPageComponent
       const date = this.addDays(gridStart, idx);
       const key = this.dayKey(date);
       const dayStartMs = date.getTime();
-      const dayEndMs = dayStartMs + 86_400_000;
+      const dayEndMs = this.addDays(date, 1).getTime();
       const dots: string[] = [];
       for (const ev of events) {
         const s = Date.parse(ev.start);
         const e = Date.parse(ev.end);
-        if (e > dayStartMs && s < dayEndMs) {
+        if (e > s && e > dayStartMs && s < dayEndMs) {
           if (!dots.includes(ev.color || "#0A84FF"))
             dots.push(ev.color || "#0A84FF");
-          if (dots.length >= 3) break;
         }
       }
       return {
@@ -1568,13 +1582,19 @@ export class WebCalendarPageComponent
   }
 
   async signOut(): Promise<void> {
-    this.api.signOut();
-    this.showToast("Signed out.");
+    try {
+      await this.api.signOutBrowser();
+      this.showToast("Signed out.");
+    } catch {
+      this.showToast("Signed out of this browser. Server confirmation was unavailable.");
+    }
   }
 
   private clearWorkspace(): void {
     ++this.stateVersion;
     this.cancelDrag();
+    this.pendingTimelineTap = null;
+    this.eventContext.set(null);
     this.loadingWorkspace.set(false);
     this.workspaceError.set("");
     this.native.clear();
@@ -1671,10 +1691,10 @@ export class WebCalendarPageComponent
 
   // ── Visual Helpers (Exact iOS `EventTimelineColors.swift` math) ──────────
 
-  cardStyle(hex?: string | null, isDragging = false, depth=0) {
+  cardStyle(hex?: string | null, depth = 0) {
     const st = computeIosEventStyle(hex, this.surfaceTheme(),depth);
     return {
-      background: isDragging ? st.fillDragging : st.fill,
+      background: st.fill,
       borderColor: st.borderColor,
       color: st.titleColor,
       "--ev-accent": st.accentBar,
@@ -1786,13 +1806,12 @@ export class WebCalendarPageComponent
   readonly allDayHeight = computed(() => Math.max(36, (this.expandedAllDay() ? this.maxAllDay() : Math.min(3, this.maxAllDay())) * 24 + 8));
 
   blockPositionStyle(b: NativeTimedBlock<WebCalendarEvent>) {
-    const selected = this.inspectorEvent()?.id === b.id;
     return {
       top: (b.startMinutes / 60) * HOUR_PX + 'px',
       height: Math.max(20, (b.endMinutes - b.startMinutes) / 60 * HOUR_PX - 2) + 'px',
-      zIndex: b.depth + (selected ? 10 : 1),
+      zIndex: b.depth + 1,
       left: 'calc(' + b.leftPct + '% + 2px)', width: 'calc(' + b.widthPct + '% - 4px)',
-      ...this.cardStyle(b.data.color, selected, b.depth),
+      ...this.cardStyle(b.data.color, b.depth),
     };
   }
 
@@ -1801,7 +1820,7 @@ export class WebCalendarPageComponent
   private pointerFrame = 0;
   private pointer = {x: 0, y: 0};
   private preventHeldTouchScroll = (event: TouchEvent) => {
-    if (this.drag()?.active && event.cancelable) event.preventDefault();
+    if ((this.drag()?.active || this.monthPreview()) && event.cancelable) event.preventDefault();
   };
 
   startTimelineGesture(ev: PointerEvent, mode: TimelineGesture, index: number, event?: WebCalendarEvent, allDay = false): void {
@@ -1809,6 +1828,7 @@ export class WebCalendarPageComponent
     ev.stopPropagation();
     if (this.drag()?.active) return;
     this.cancelDrag();
+    this.pendingTimelineTap = null;
     if (ev.pointerType === 'mouse') ev.preventDefault();
     const columns = this.daysColumnsRef?.nativeElement;
     const day = this.visibleDays()[index];
@@ -1832,7 +1852,8 @@ export class WebCalendarPageComponent
     this.drag.set({
       mode, event, original, originDayIdx: index, pointerId: ev.pointerId,
       startClientX: ev.clientX, startClientY: ev.clientY, touch: ev.pointerType === 'touch',
-      centerOffset: mode === 'move' ? col.left + col.width / 2 - ev.clientX : 0, anchorY,
+      anchorX: mode === 'create' ? (col.width - 4) / 2 : ev.clientX - col.left - 2,
+      width: Math.max(1, col.width - (mode === 'move' ? 6 : 4)), anchorY,
       active: false, valid: false, preview: original, previewDayIdx: index,
       color: event?.color ?? destination?.color, visualX: 0, visualY: 0,
     });
@@ -1887,7 +1908,9 @@ export class WebCalendarPageComponent
     const first = columns.children[0]?.getBoundingClientRect();
     if (!first?.width) return;
     const rtl = getComputedStyle(columns).direction === 'rtl';
-    const center = x + state.centerOffset;
+    const rawLeft = x - state.anchorX;
+    const left = state.mode === 'create' ? Math.max(bounds.left, Math.min(bounds.right - state.width, rawLeft)) : rawLeft;
+    const center = state.mode.startsWith('resize-') ? x : left + state.width / 2;
     const hitIndex = Math.floor((rtl ? first.right - center : center - first.left) / first.width);
     const resizing = state.mode === 'resize-start' || state.mode === 'resize-end';
     const columnIndex = resizing && this.viewMode() === 'multi' ? state.originDayIdx : hitIndex;
@@ -1898,18 +1921,16 @@ export class WebCalendarPageComponent
     const sameCalendar = this.viewMode() !== 'multi' || !state.event || columnIndex === state.originDayIdx;
     const canCreate = state.mode !== 'create' || this.viewMode() !== 'multi' || this.multiCalendars()[columnIndex]?.allowsChanges;
     const minute = (y - bounds.top - state.anchorY) / HOUR_PX * 60;
-    const interval = dates[columnIndex] && !onGutter && (allDay || withinView) && sameCalendar && canCreate
+    const interval = dates[columnIndex] && !onGutter && (allDay || withinView)
       ? timelinePlacement(state.mode, state.original, dates[state.originDayIdx], dates[columnIndex], minute, allDay) : null;
     if (interval) {
       const column = columns.children[columnIndex].getBoundingClientRect();
-      const freeX = x + state.centerOffset - column.width / 2 + 2;
-      const left = state.mode === 'create' ? Math.max(bounds.left + 2, Math.min(bounds.right - column.width + 2, freeX)) : freeX;
       const visualX = resizing ? 0 : left - column.left - 2;
       const edge = state.mode === 'resize-end' ? interval.end : interval.start;
       const snappedY = minuteOnDay(edge, dates[columnIndex]) * HOUR_PX / 60;
       const visualY = allDay || state.mode === 'create' ? 0 : y - bounds.top - state.anchorY - snappedY;
-      const color = state.mode === 'create' && this.viewMode() === 'multi' ? this.multiCalendars()[columnIndex]?.color : state.color;
-      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: true, visualX, visualY, color});
+      const color = this.viewMode() === 'multi' ? this.multiCalendars()[columnIndex]?.color : state.color;
+      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: Boolean(sameCalendar && canCreate), visualX, visualY, color});
     } else if (state.valid) this.drag.set({...state, valid: false});
     if ((withinView || allDay) && !this.scrollFrame) {
       const edgeSpeed = (position: number, low: number, high: number) =>
@@ -1931,6 +1952,7 @@ export class WebCalendarPageComponent
   @HostListener('window:blur')
   cancelDrag(): void {
     this.cancelMonthPress();
+    this.endMonthDrag();
     if (this.holdTimer) clearTimeout(this.holdTimer);
     if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
     this.pointerFrame = 0;
@@ -1943,9 +1965,17 @@ export class WebCalendarPageComponent
   }
 
   @HostListener('document:pointercancel', ['$event'])
-  pointerCancelled(ev: PointerEvent): void { this.cancelMonthPress(ev); if (this.drag()?.pointerId === ev.pointerId) this.cancelDrag(); }
+  pointerCancelled(ev: PointerEvent): void { if (this.monthPointer?.id===ev.pointerId) this.endMonthDrag(); this.cancelMonthPress(ev); if (this.drag()?.pointerId === ev.pointerId) this.cancelDrag(); }
 
   private readonly onGlobalPointerMove = (ev: PointerEvent): void => {
+    if (this.monthPointer?.id === ev.pointerId) {
+      const g=this.monthPointer;
+      if (this.monthPreview() || Math.hypot(ev.clientX-g.x,ev.clientY-g.y)>5) {
+        if (!this.monthPreview() && g.touch) this.endMonthDrag();
+        else this.zone.run(()=>this.moveMonthPreview(ev.clientX,ev.clientY));
+      }
+      return;
+    }
     if (this.monthPress && Math.hypot(ev.clientX - this.monthPress.x, ev.clientY - this.monthPress.y) > 8) this.cancelMonthPress(ev);
     const state = this.drag();
     if (!state || ev.pointerId !== state.pointerId) return;
@@ -1963,6 +1993,7 @@ export class WebCalendarPageComponent
 
   @HostListener('document:pointerup', ['$event'])
   async onGlobalPointerUp(ev: PointerEvent): Promise<void> {
+    if (this.monthPointer?.id === ev.pointerId) { await this.finishMonthMove(ev); return; }
     this.cancelMonthPress(ev);
     if (this.drag()?.pointerId !== ev.pointerId) return;
     this.pointer = {x: ev.clientX, y: ev.clientY};
@@ -1970,7 +2001,9 @@ export class WebCalendarPageComponent
     const state = this.drag()!;
     this.cancelDrag();
     if (!state.active) {
-      if (state.event) this.selectEvent(state.event);
+      if (state.event && state.mode === 'move' && !state.original.allDay && !this.isDesktop()) {
+        this.pendingTimelineTap = state.event.id;
+      } else if (state.event) this.selectEvent(state.event);
       else this.inspectorEvent.set(null);
       return;
     }
@@ -2013,7 +2046,8 @@ export class WebCalendarPageComponent
 
   previewColors(state: DragSession) {
     const accent = state.color || '#0088ff';
-    return { color: accent, background: `color-mix(in srgb, ${accent} 30%, transparent)`,
+    return { color: accent, '--ev-bg': `color-mix(in srgb, ${accent} 30%, transparent)`,
+      width: state.mode.startsWith('resize-') ? 'calc(100% - 4px)' : state.width + 'px',
       borderColor: state.valid ? 'transparent' : '#ff453a', '--ev-accent': accent, '--ev-detail': accent };
   }
 
@@ -2035,6 +2069,9 @@ export class WebCalendarPageComponent
   private monthClickTimer?: ReturnType<typeof setTimeout>;
   private monthPress?: { id: number; x: number; y: number; timer: ReturnType<typeof setTimeout> };
   private monthHeld = false;
+  private monthPointer?: {item:WebCalendarEvent; source:HTMLElement; id:number; x:number; y:number; touch:boolean; timer?:ReturnType<typeof setTimeout>};
+  readonly monthPreview = signal<{item:WebCalendarEvent; left:number; top:number; width:number} | null>(null);
+  private suppressMonthClick = false;
 
   startMonthPress(event: PointerEvent, day: Date) {
     this.cancelMonthPress();
@@ -2071,34 +2108,52 @@ export class WebCalendarPageComponent
   }
 
   endMonthDrag(): void {
+    clearTimeout(this.monthPointer?.timer);
+    this.monthPointer = undefined;
+    this.monthPreview.set(null);
     this.monthDragEventId.set(null);
     this.monthDropTargetKey.set(null);
   }
 
-  onMonthPillDragStart(ev: DragEvent, item: WebCalendarEvent): void {
-    if (item.readOnly) {
-      ev.preventDefault();
-      return;
-    }
-    this.monthDragEventId.set(item.id);
-    ev.dataTransfer?.setData("text/plain", item.id);
-  }
-
-  onMonthCellDragOver(ev: DragEvent, cellKey: string): void {
-    if (!this.monthDragEventId()) return;
-    ev.preventDefault();
-    this.monthDropTargetKey.set(cellKey);
-  }
-
-  async onMonthCellDrop(ev: DragEvent, targetDate: Date): Promise<void> {
-    ev.preventDefault();
-    const evId = this.monthDragEventId();
+  beginMonthMove(e: PointerEvent, item: WebCalendarEvent) {
+    if (!e.isPrimary || e.button !== 0) return;
+    e.stopPropagation();
     this.endMonthDrag();
-    if (!evId || ev.dataTransfer?.getData("text/plain") !== evId) return;
+    this.suppressMonthClick = false;
+    if (item.readOnly || this.savingEvent()) return;
+    const source = e.currentTarget as HTMLElement;
+    this.monthPointer = {
+      item, source, id: e.pointerId, x: e.clientX, y: e.clientY, touch: e.pointerType === 'touch',
+      timer: setTimeout(() => this.moveMonthPreview(e.clientX, e.clientY), 300),
+    };
+  }
 
-    const item = this.allDisplayEvents().find((x) => x.id === evId);
-    if (!item) return;
+  private moveMonthPreview(x:number, y:number) {
+    const g=this.monthPointer;
+    if (!g || !g.source.isConnected) { this.endMonthDrag(); return; }
+    const rect=g.source.getBoundingClientRect();
+    if (!g.source.hasPointerCapture(g.id)) g.source.setPointerCapture(g.id);
+    const key=this.doc.elementFromPoint(x,y)?.closest<HTMLElement>('[data-month-day]')?.dataset['monthDay'];
+    this.monthDropTargetKey.set(key ?? null);
+    this.monthDragEventId.set(g.item.id);
+    this.suppressMonthClick=true;
+    this.monthPreview.set({item:g.item, left:x-(g.x-rect.left), top:y-(g.y-rect.top), width:rect.width});
+  }
 
+  monthEventClick(e:MouseEvent, item:WebCalendarEvent) {
+    e.stopPropagation();
+    if (!this.suppressMonthClick || e.detail===0) this.showEvent(item);
+    this.suppressMonthClick=false;
+  }
+
+  private async finishMonthMove(e:PointerEvent) {
+    const gesture=this.monthPointer;
+    if (!gesture || gesture.id !== e.pointerId) return;
+    if (this.monthPreview()) this.moveMonthPreview(e.clientX,e.clientY);
+    const key=this.monthDropTargetKey();
+    this.endMonthDrag();
+    if (!key) return;
+    const targetDate=new Date(key+'T00:00:00'), item=gesture.item;
     const oldStart = new Date(item.start);
     if (this.dayKey(oldStart) === this.dayKey(targetDate)) return;
     const durationMs = Date.parse(item.end) - oldStart.getTime();
@@ -2136,14 +2191,6 @@ export class WebCalendarPageComponent
       this.ownedEvents.update((list) =>
         list.map((e) => (e.id === res.event.id ? res.event : e)),
       );
-      const timeText = this.formatFullDateTime(newStartIso);
-      const suffix = res.notifiedGuest ? " · Guest notified by email" : "";
-      this.showToast(`Moved "${original.title}" to ${timeText}${suffix}`, {
-        undoEventId: res.event.id,
-        undoAllDay: !!original.allDay,
-        undoStart: (original as CalendarOccurrence).masterStart ?? original.start,
-        undoEnd: (original as CalendarOccurrence).masterEnd ?? original.end,
-      });
     } catch (e) {
       this.pendingTimelineEdit.set(null);
       this.handleMutationError(e, "Could not move event to that time.");
@@ -2152,16 +2199,6 @@ export class WebCalendarPageComponent
       this.pendingTimelineEdit.set(null);
       this.savingEvent.set(false);
     }
-  }
-
-  async undoLastMove(): Promise<void> {
-    const t = this.toast();
-    if (!t?.undoEventId || !t.undoStart || !t.undoEnd) return;
-    const item = this.allDisplayEvents().find((x) => x.id === t.undoEventId);
-    this.toast.set(null);
-    if (!item) return;
-    await this.commitDraggedEventChange(item, t.undoStart, t.undoEnd, t.undoAllDay);
-    this.showToast(`Restored "${item.title}" to its original slot.`);
   }
 
   // ── Navigation & Modal Editors ────────────────────────────────────────────
@@ -2231,12 +2268,12 @@ export class WebCalendarPageComponent
 
   jumpToday(): void {
     this.anchorDate.set(this.startOfLocalDay(new Date()));
-    this.sidebarMonth.set(new Date());this.weekOffset.set(0);
+    this.sidebarMonth.set(new Date());
   }
 
   selectMiniDay(d: Date): void {
     this.anchorDate.set(this.startOfLocalDay(d));
-    this.weekOffset.set(0);
+
     this.inspectorEvent.set(null);
     if (!["day", "week", "multi", "agenda"].includes(this.viewMode()))
       this.setView("day");
@@ -2247,8 +2284,8 @@ export class WebCalendarPageComponent
     this.selectEvent(ev);
   }
 
-  openWeatherEvent(value:{date:string;timeZone:string}):void {
-    const start=instant(new Date(value.date+'Z'),value.timeZone);
+  openWeatherEvent(value:{date:string;instant?:string;timeZone:string}):void {
+    const start = value.instant ? new Date(value.instant) : instant(new Date(value.date + 'Z'), value.timeZone);
     if(!start)return;
     this.openNewEventModal(start,new Date(start.getTime()+3600000),false);
     const draft=this.editorDraft();
@@ -2308,14 +2345,7 @@ export class WebCalendarPageComponent
   }
 
   openEditEventModal(ev: WebCalendarEvent): void {
-    const occurrence = ev as CalendarOccurrence;
-    if (occurrence.occurrenceOf)
-      ev = {
-        ...ev,
-        id: occurrence.occurrenceOf,
-        start: occurrence.masterStart!,
-        end: occurrence.masterEnd!,
-      };
+    ev = calendarSeries(ev);
     this.selectedEvent.set(null);
     if (ev.readOnly) {
       this.showEvent(ev);
@@ -2361,7 +2391,7 @@ export class WebCalendarPageComponent
         ? Math.round(Math.abs(ev.details.alarms[1].relativeOffsetSeconds) / 60)
         : -1,
       travelTime: ev.details?.travelTime ?? 0,
-      url: ev.details?.url ?? "",
+      url: ev.url ?? ev.details?.url ?? "",
       attachments: [...(ev.details?.attachments ?? [])],
       reminderMin,
     });
@@ -2424,7 +2454,7 @@ export class WebCalendarPageComponent
               ]
             : [],
         notifyGuest: true,
-      });
+      }, d.original);
 
       if (!res.event.provider && !res.event.id.startsWith("sharedcal.") && !res.event.receivedFeedId)
         this.ownedEvents.update((list) => {
@@ -2576,7 +2606,7 @@ export class WebCalendarPageComponent
       this.allDisplayEvents().find((e) => e.id === id) ??
       this.editorDraft()?.original;
     const providerCalendar=this.providerWorkspace.calendars().find(c=>c.id===(body.calendarId||original?.calendarId));
-    if(providerCalendar)return {event:await this.providerWorkspace.saveEvent(providerCalendar,original,body,id)};
+    if(providerCalendar && !original?.receivedFeedId)return {event:await this.providerWorkspace.saveEvent(providerCalendar,original,body,id)};
     const occurrence = original as CalendarOccurrence | undefined;
     if (occurrence?.occurrenceOf) {
       id = occurrence.occurrenceOf;
@@ -2657,10 +2687,14 @@ export class WebCalendarPageComponent
       );
       return { event };
     }
-    const response = await this.persistReplicaEvent(id, body);
+    // The original web endpoint also serves older backends that require the
+    // complete interval on every write, including a detail-only edit.
+    const payload = !body.calendarId && original
+      ? { start: original.start, end: original.end, ...body } : body;
+    const response = await this.persistReplicaEvent(id, payload);
     if (response.event.calendarId) {
       try {
-        await this.native.syncOwnedCalendar(response.event.calendarId);
+        await this.native.syncOwnedCalendar(response.event.calendarId, response.event.id);
       } catch (error) {
         this.ownedEvents.update((events) =>
           events.map((e) => (e.id === response.event.id ? response.event : e)),
@@ -2675,7 +2709,7 @@ export class WebCalendarPageComponent
     const outgoing = this.native
       .outgoing()
       .find((e) => e.localEventIdentifier === localID);
-    if (outgoing)
+    if (outgoing && outgoing.id !== response.event.id)
       await this.native.updateSharedEvent(
         outgoing,
         response.event,
@@ -2695,10 +2729,10 @@ export class WebCalendarPageComponent
       else if (d.id.startsWith("sharedcal.") && d.original)
         await this.native.updateCalendarEvent(d.original, {}, undefined, true);
       else if (d.original?.receivedFeedId)
-        await this.native.request(`/received-invites/${d.id}`, "DELETE");
+        await this.removeReceivedEvent(d.original);
       else {
         await this.api.deleteCalendarEvent(d.id, { notifyGuest: true });
-        if (d.calendarId) await this.native.syncOwnedCalendar(d.calendarId);
+        if (d.calendarId) await this.native.syncOwnedCalendar(d.calendarId, d.id);
       }
       await this.reloadAllWorkspaceData();
       this.ownedEvents.update((list) => list.filter((x) => x.id !== d.id));
@@ -2831,12 +2865,9 @@ export class WebCalendarPageComponent
 
   // ── Date & Toast Utilities ────────────────────────────────────────────────
 
-  private showToast(
-    message: string,
-    undo?: { undoEventId: string; undoStart: string; undoEnd: string; undoAllDay?: boolean },
-  ): void {
+  private showToast(message: string): void {
     if (this.toastTimer) clearTimeout(this.toastTimer);
-    this.toast.set({ message, ...undo });
+    this.toast.set(message);
     this.toastTimer = setTimeout(() => this.toast.set(null), 6500);
   }
 
@@ -2862,7 +2893,7 @@ export class WebCalendarPageComponent
     );
   }
 
-  private dayKey(d: Date): string {
+  dayKey(d: Date): string {
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, "0");
     const day = String(d.getDate()).padStart(2, "0");

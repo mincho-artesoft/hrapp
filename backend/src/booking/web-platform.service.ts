@@ -1,3 +1,4 @@
+import { nextRevisionTimestamp } from '../util/revision';
 import {ProviderCalendarWorkspace,ProviderCalendarError} from './provider-calendar-workspace';
 import { NativeCalendarStore } from './native-calendar-store';
 import { Injectable } from '@nestjs/common';
@@ -7,7 +8,7 @@ import { CoreService } from '../core/core.service';
 import { EmailService } from '../email/email.service';
 import { CalendarService } from '../calendar/calendar.service';
 import { ApiResult, result } from '../common/api-result';
-import { randomId } from '../util/ids';
+import { hashKey, randomId } from '../util/ids';
 import { buildFeed } from '../util/ics';
 import { verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import {
@@ -229,6 +230,10 @@ export class WebPlatformService {
   }
 
   // ── 1. Auth Providers, Email OTP & Enriched Profile ──────────────────────
+
+  async endWebSession(token: string): Promise<void> {
+    await this.store.del(this.store.keys.token(hashKey(token)));
+  }
 
   async getAuthProviders(): Promise<ApiResult> {
     const settings = (await this.store.getJSON(this.keys.adminSettings())) ?? {};
@@ -652,12 +657,6 @@ export class WebPlatformService {
     if (!eventId || !/^[A-Za-z0-9_-]{3,128}$/.test(eventId)) {
       return result(400, { error: 'Invalid event id.' });
     }
-    const startMs = Date.parse(String(body?.start ?? ''));
-    const endMs = Date.parse(String(body?.end ?? ''));
-    if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || endMs <= startMs) {
-      return result(400, { error: 'Valid start and end ISO timestamps (end > start) are required.' });
-    }
-
     const [principalDoc, meta] = await Promise.all([
       this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
@@ -672,6 +671,17 @@ export class WebPlatformService {
     const existing = existingWithEtag?.value ?? null;
     if (existing?.status === 'cancelled') {
       return result(409, { error: 'Cancelled events cannot be edited.' });
+    }
+
+    if (body?.expectedUpdatedAt && existing?.updatedAt !== body.expectedUpdatedAt) {
+      return result(409, { error: 'This event changed on another device. Reopen it before saving.' });
+    }
+    // A detail edit only supplies the changed fields. New events still need a
+    // complete interval, and an explicitly invalid time is never defaulted.
+    const startMs = Date.parse(body?.start === undefined ? existing?.start : body.start);
+    const endMs = Date.parse(body?.end === undefined ? existing?.end : body.end);
+    if (!Number.isFinite(startMs) || !Number.isFinite(endMs) || endMs <= startMs) {
+      return result(400, { error: 'Valid start and end ISO timestamps (end > start) are required.' });
     }
 
     const isBooking = Boolean(existing?.booking?.bookingId);
@@ -722,8 +732,8 @@ export class WebPlatformService {
 
     const alarms = Array.isArray(body?.alarms ?? body?.details?.alarms)
       ? (body.alarms ?? body.details.alarms).slice(0, 8).map((al: any) => ({
-          relativeOffset: typeof al?.relativeOffset === 'number' ? al.relativeOffset : -900,
-          absoluteDate: null,
+          relativeOffset: al?.absoluteDate ? null : (al?.relativeOffset ?? al?.relativeOffsetSeconds ?? -900),
+          absoluteDate: al?.absoluteDate ?? null,
         }))
       : (existing?.details?.alarms ?? [{ relativeOffset: -900, absoluteDate: null }]);
 
@@ -731,7 +741,7 @@ export class WebPlatformService {
       ? (body.recurrenceRules ?? body.details.recurrenceRules)
       : (existing?.details?.recurrenceRules ?? []);
 
-    const nowIso = new Date().toISOString();
+    const nowIso = nextRevisionTimestamp(existing?.updatedAt);
     const startIso = new Date(startMs).toISOString();
     const endIso = new Date(endMs).toISOString();
 
@@ -810,7 +820,15 @@ export class WebPlatformService {
       };
     }
 
-    await this.store.putJSON(this.keys.event(calId, eventId), nextEvent);
+    const eventKey = this.keys.event(calId, eventId);
+    if (isBooking && timeChanged) {
+      await this.store.putJSON(eventKey, nextEvent);
+    } else {
+      const saved = existingWithEtag
+        ? await this.store.putJSONIfMatch(eventKey, nextEvent, existingWithEtag.etag)
+        : await this.store.putJSONIfAbsent(eventKey, nextEvent);
+      if (!saved) return result(409, { error: 'This event changed during the save. Reopen it before saving.' });
+    }
 
     // 2-Way Sync: push newly created or dragged/edited event to connected Google / Microsoft calendars!
     await this.mirrorEventToConnectedProviders(calId, nextEvent, 'upsert').catch(() => {});

@@ -15,19 +15,7 @@
   @if (!regions()) {
     <div class="weather-topbar">
       @if (searchOpen()) {
-        <div class="weather-search-bar">
-          <cc-symbol name="magnifyingglass" />
-          <input
-            autofocus
-            placeholder="Search for a city…"
-            aria-label="Search for a city"
-            [ngModel]="query()"
-            (ngModelChange)="search($event)"
-          />
-          <button type="button" aria-label="Close search" (click)="closeSearch()">
-            <cc-symbol name="xmark" />
-          </button>
-        </div>
+        <cc-calendar-search placeholder="Search for a city…" [value]="query()" (changed)="search($event)" (closed)="closeSearch()" />
       } @else {
         <div class="weather-topbar__left">
           <button
@@ -54,15 +42,15 @@
               <button
                 type="button"
                 class="weather-icon-btn mode-button"
-                aria-label="Calendar views"
+                #viewPickerButton aria-haspopup="menu" aria-label="Calendar views"
                 [attr.aria-expanded]="modePicker()"
                 (click)="modePicker.set(!modePicker()); $event.stopPropagation()"
               >
                 <cc-symbol name="cloud.sun" [pointSize]="isDesktop() ? 20 : 22" />
               </button>
               @if (modePicker()) {
-                <div
-                  class="weather-mode-menu"
+                <dialog
+                  class="weather-mode-menu" [ccAnchoredMenu]="viewPickerButton" (dismissMenu)="modePicker.set(false)"
                   role="menu"
                   (click)="$event.stopPropagation()"
                 >
@@ -85,7 +73,7 @@
                       <span>{{ mode.label | nativeText }}</span>
                     </button>
                   }
-                </div>
+                </dialog>
               }
             </div>
           }
@@ -185,7 +173,7 @@
       </article>
       @for (place of saved(); track place.id) {
         <article
-          draggable="true"
+          [draggable]="isDesktop()"
           (dragstart)="dragRegion(place, $event)"
           (dragover)="$event.preventDefault()"
           (drop)="dropRegion(place, $event)"
@@ -193,7 +181,11 @@
           class="region-card"
           [class.selected]="weather()?.place?.id === place.id"
         >
-          <button type="button" class="region-main" (click)="select(place)">
+          <button type="button" class="region-main" aria-haspopup="menu"
+            (pointerdown)="beginRegionPress(place, $event)" (pointermove)="moveRegionPress($event)"
+            (pointerup)="endRegionPress()" (pointercancel)="endRegionPress()"
+            (touchend)="finishRegionTouch(place, $event)"
+            (click)="selectRegion(place, $event)">
             <strong>{{ place.name }}</strong>
             @if (snapshots()[place.id]; as s) {
               <b>{{ s.temp }}°</b>
@@ -204,7 +196,7 @@
           </button>
           <button
             type="button"
-            class="delete-region"
+            class="delete-region" draggable="true" aria-haspopup="menu"
             aria-label="Region options"
             (click)="contextRegion(place, $event)"
           >
@@ -233,12 +225,12 @@
           </div>
         }
         <section class="weather-card hourly-card" [attr.aria-label]="'Hourly forecast' | nativeText">
-          <div class="hourly" [class.with-rain]="hasHourlyPrecipitation()">
-            @for (entry of hourlyStrip(); track entry.iso + (entry.solar || 'hour')) {
+          <div class="hourly hide-scroll-indicators" [class.with-rain]="hasHourlyPrecipitation()">
+            @for (entry of hourlyStrip(); track (entry.hour?.instant || entry.iso) + (entry.solar || 'hour')) {
               @if (entry.hour; as hour) {
-                <button type="button" (click)="createEvent.emit({date:hour.iso,timeZone:s.place.timezone})">
+                <button type="button" (click)="createEvent.emit({date:hour.iso,instant:hour.instant,timeZone:s.place.timezone})">
                   <span>{{ entry.now ? ("Now" | nativeText) : clock(hour.iso, true) }}</span>
-                  <cc-symbol [multicolor]="true" [name]="hour.symbol || icon(hour.icon)" />
+                  <cc-symbol [multicolor]="true" [name]="hour.symbol || icon(hour.icon)" [class.cloud-glyph]="hour.symbol === 'cloud' || hour.symbol === 'cloud.fill'" />
                   @if (hasHourlyPrecipitation()) {
                     <small class="precip-chance">{{ hour.precipitationChance >= 10 ? (hour.precipitationChance | number:'1.0-0') + '%' : '' }}</small>
                   }
@@ -256,7 +248,7 @@
           </div>
           <p class="hourly-hint"><cc-symbol name="info.circle" />{{ "Tap an hour to quickly add a calendar event." | nativeText }}</p>
         </section>
-        <section class="weather-card">
+        <section class="weather-card daily-card">
           <h3>
             <cc-symbol name="calendar" />{{ "10-DAY FORECAST" | nativeText }}
           </h3>
@@ -280,12 +272,12 @@
               <i>
                 <em
                   [attr.data-band]="temperatureBand(d, s.windUnit === 'mph')"
-                  [style.left.%]="d.barStart * 100"
+                  [style.inset-inline-start.%]="d.barStart * 100"
                   [style.width.%]="d.barWidth * 100"
                 ></em>
                 @let dotPct = todayDotPct(d, s);
                 @if (dotPct !== null) {
-                  <b class="today-dot" [style.left.%]="dotPct"></b>
+                  <b class="today-dot" [style.inset-inline-start]="'clamp(3.5px, ' + dotPct + '%, calc(100% - 3.5px))'"></b>
                 }
               </i>
               <span class="high">{{ d.max }}°</span>
@@ -293,127 +285,125 @@
           }
         </section>
         @defer (on viewport) {
-          <cc-wind-map [place]="s.place" [imperial]="s.windUnit === 'mph'" />
+          <cc-wind-map [snapshot]="s" [saved]="saved()" />
         } @placeholder { <div class="map-placeholder"></div> }
+        @let c = s.conditions;
+        @let imperial = s.windUnit === 'mph';
         <div class="metrics">
-          @for (m of displayMetrics(); track m.id) {
-            <button
-              type="button"
-              class="weather-card metric" [style.order]="m.id === 'temp' ? 0 : m.id === 'uv' ? 1 : m.id === 'wind' ? 2 : 5" [class.full-width]="m.id === 'wind'"
-              (click)="openDetail(m.id)"
-            >
-              <h3>
-                <cc-symbol [name]="metricIcons[m.id]" />{{
-                  metricNames[m.id] | nativeText
-                }}
-              </h3>
-              @let now = currentHour();
-              @switch (m.id) {
-                @case ('wind') {
-                  @if (now) {
-                    <div class="wind-reading">
-                      <div>
-                        <p><span>{{ "Wind" | nativeText }}</span><b>{{ now.wind | number:'1.0-0' }} {{ s.windUnit }}</b></p>
-                        @if (now.gust > now.wind + 1) { <p><span>{{ "Gusts" | nativeText }}</span><b>{{ now.gust | number:'1.0-0' }} {{ s.windUnit }}</b></p> }
-                        <p><span>{{ "Direction" | nativeText }}</span><b>{{ now.direction | number:'1.0-0' }}° {{ windDirection(now.direction) }}</b></p>
-                      </div>
-                      <span class="compass"><b>N</b><i [style.transform]="'rotate('+now.direction+'deg)'">↑</i><small>S</small></span>
-                    </div>
+          <button type="button" class="weather-card metric" (click)="openDetail('temp')">
+            <h3><cc-symbol name="thermometer" />{{ "FEELS LIKE" | nativeText }}</h3>
+            <strong>{{ cardNumber(c.feelsLike) }}°</strong>
+            <p class="card-caption">{{ feelsCaption(c.temperature, c.feelsLike) | nativeText }}</p>
+          </button>
+          <button type="button" class="weather-card metric uv-card" (click)="openDetail('uv')">
+            <h3><cc-symbol name="sun.max.fill" [multicolor]="true" />{{ "UV INDEX" | nativeText }}</h3>
+            <strong>{{ cardNumber(c.uv) }}</strong>
+            <span class="uv-category">{{ (c.uv == null ? '—' : uvCategory(c.uv)) | nativeText }}</span>
+            <div class="uv-track" aria-hidden="true"><div class="uv-scale">
+              @if (c.uv != null) { <i [style.inset-inline-start.%]="Math.min(100, Math.max(0, c.uv / 11 * 100))"></i> }
+            </div></div>
+          </button>
+          <button type="button" class="weather-card metric full-width instrument-card" (click)="openDetail('wind')">
+            <h3><cc-symbol name="wind" />{{ "WIND" | nativeText }}</h3>
+            <div class="wind-reading">
+              <div class="reading-rows">
+                <p><span>{{ "Wind" | nativeText }}</span><span>{{ cardNumber(c.wind) }} {{ s.windUnit | nativeText }}</span></p>
+                @if (c.gust != null && c.wind != null && c.gust > c.wind + 1) {
+                  <p><span>{{ "Gusts" | nativeText }}</span><span>{{ cardNumber(c.gust) }} {{ s.windUnit | nativeText }}</span></p>
+                }
+                <p><span>{{ "Direction" | nativeText }}</span><span>{{ c.direction == null ? '—' : cardNumber(c.direction) + '° ' + (windDirection(c.direction) | nativeText) }}</span></p>
+              </div>
+              <svg class="compass" viewBox="0 0 90 90" aria-hidden="true">
+                <g stroke="currentColor" stroke-width="1">
+                  @for (tick of compassTicks; track tick) {
+                    <line x1="45" y1="8" x2="45" [attr.y2]="tick % 5 === 0 ? 14 : 12" [attr.transform]="'rotate(' + (tick * 6) + ' 45 45)'" />
                   }
+                </g>
+                <g fill="currentColor" text-anchor="middle" dominant-baseline="central">
+                  <text x="45" y="1">{{ 'N' | nativeText }}</text><text x="45" y="89">{{ 'S' | nativeText }}</text>
+                  <text x="1" y="45">{{ 'W' | nativeText }}</text><text x="89" y="45">{{ 'E' | nativeText }}</text>
+                </g>
+                @if (c.direction != null) {
+                  <g fill="white" [attr.transform]="'rotate(' + c.direction + ' 45 45)'">
+                    <rect x="43.75" y="20" width="2.5" height="50" rx="1.25" />
+                    <circle cx="45" cy="17" r="5" /><path d="M40 69 L50 69 L45 78 Z" />
+                  </g>
                 }
-                @case ('uv') {
-                  @if (now) {
-                    <strong>{{ now.uv | number:'1.0-0' }}</strong><span>{{ uvCategory(now.uv) | nativeText }}</span>
-                    <div class="uv-scale"><i [style.inset-inline-start.%]="Math.min(100, now.uv / 11 * 100)"></i></div>
+                <circle cx="45" cy="45" r="14.625" fill="#33404d" />
+                <text x="45" y="48" class="compass-speed">{{ cardNumber(c.wind) }}</text>
+                <text x="45" y="55" class="compass-unit">{{ s.windUnit | nativeText }}</text>
+              </svg>
+            </div>
+          </button>
+          @if (s.skyDays?.[0]; as sky) {
+            <button type="button" class="weather-card metric full-width solar-card" (click)="detailDate.set(sky.date); skyDetail.set('solar')">
+              <h3><cc-symbol name="sunrise.fill" [multicolor]="true" />{{ "SUNRISE" | nativeText }}</h3>
+              <div class="compact-solar">
+                <svg viewBox="0 0 120 60" aria-hidden="true" class="solar-arc">
+                  <path d="M0 60 A60 60 0 0 1 120 60" fill="none" stroke="currentColor" stroke-dasharray="3 3" />
+                  @if (solarPoint(); as point) {
+                    <image href="/icons/calendar-native/artwork/weather_sun_realistic.png"
+                      [attr.x]="point.x - 32" [attr.y]="point.y - 32" width="64" height="64" />
                   }
-                }
-                @case ('precip') {
-                  <strong>{{ s.precipitationToday == null ? '—' : (s.precipitationToday | number:'1.0-1') }} <small>{{ s.windUnit === 'mph' ? 'in' : 'mm' }}</small></strong>
-                  <p>{{ "Today" | nativeText }}</p>
-                }
-                @case ('humidity') {
-                  <strong>{{ m.value }}{{ m.unit }}</strong>
-                  @if (s.dewPoint != null) { <p>{{ "Dew Point" | nativeText }} {{ s.dewPoint | number:'1.0-0' }}°</p> }
-                }
-                @default {
-                  <strong>{{ m.value }}{{ m.unit }}</strong>
-                  <p>{{ m.caption | nativeText }}</p>
-                }
-              }
+                </svg>
+                <div class="solar-times-row">
+                  <span><small>{{ "Sunrise" | nativeText }}</small><b>{{ clock(sky.sunrise) }}</b></span>
+                  <span><small>{{ "Sunset" | nativeText }}</small><b>{{ clock(sky.sunset) }}</b></span>
+                </div>
+              </div>
+            </button>
+            <button type="button" class="weather-card metric full-width instrument-card moon-card" (click)="detailDate.set(sky.date); skyDetail.set('moon')">
+              <h3><cc-symbol [name]="moonSymbol(sky.moonPhase)" />{{ "MOON PHASE" | nativeText }}</h3>
+              <div class="moon-reading">
+                <div class="reading-rows">
+                  <p><span>{{ "Moonrise" | nativeText }}</span><span>{{ clock(sky.moonrise) }}</span></p>
+                  <p><span>{{ "Moonset" | nativeText }}</span><span>{{ clock(sky.moonset) }}</span></p>
+                  @if (nextMoon(); as next) {
+                    <p><span>{{ formatWeatherText('Next %@', next.phase | nativeText) }}</span><span>{{ formatWeatherText(next.days === 1 ? '%d day' : '%d days', next.days) }}</span></p>
+                  } @else {
+                    <p><span>{{ "Next" | nativeText }}</span><span>{{ "Data unavailable" | nativeText }}</span></p>
+                  }
+                </div>
+                <div class="moon-phase">
+                  @if (moonArtwork(sky.moonPhase); as art) { <img [src]="art" alt="" /> }
+                  @else { <cc-symbol name="moon" /> }
+                  <span>{{ moonPhase(sky.moonPhase) | nativeText }}</span>
+                </div>
+              </div>
             </button>
           }
-        @if (s.skyDays?.[0]; as sky) {
-          @let solar = solarPosition(sky, s.place.timezone);
-
-            <button
-              type="button"
-              class="weather-card full-width sky-card solar-card"
-              (click)="detailDate.set(sky.date); skyDetail.set('solar')"
-            >
-              <h3>
-                <cc-symbol
-                  [multicolor]="true"
-                  [name]="
-                    solar.isUpcomingSunrise ? 'sunrise.fill' : 'sunset.fill'
-                  "
-                />{{
-                  (solar.isUpcomingSunrise ? "SUNRISE" : "SUNSET") | nativeText
-                }}
-              </h3>
-              <strong>{{
-                solar.isUpcomingSunrise ? clock(sky.sunrise) : clock(sky.sunset)
-              }}</strong>
-              <div class="solar-arc-wrap">
-                <svg viewBox="0 0 300 84" aria-hidden="true">
-                  <path
-                    d="M 35 68 A 115 54 0 0 1 265 68"
-                    fill="none"
-                    stroke="#ffffff66"
-                    stroke-width="1.5"
-                    stroke-dasharray="4 4"
-                  />
-                  <path d="M 10 68 H 290" stroke="#ffffff35" stroke-width="1" />
-                </svg>
-                <img
-                  class="solar-arc-sun"
-                  src="/icons/calendar-native/artwork/weather_sun_realistic.png"
-                  alt=""
-                  [style.left.%]="(solar.x / 300) * 100"
-                  [style.top.%]="(solar.y / 84) * 100"
-                />
-              </div>
-              <div class="solar-times-row">
-                <span>
-                  <small>{{ "Sunrise" | nativeText }}</small>
-                  <b>{{ clock(sky.sunrise) }}</b>
-                </span>
-                <span>
-                  <small>{{ "Sunset" | nativeText }}</small>
-                  <b>{{ clock(sky.sunset) }}</b>
-                </span>
-              </div>
-            </button>
-            <button
-              type="button"
-              class="weather-card full-width sky-card moon-card"
-              (click)="detailDate.set(sky.date); skyDetail.set('moon')"
-            >
-              <h3>
-                <cc-symbol [name]="moonSymbol(sky.moonPhase)" />{{
-                  "MOON PHASE" | nativeText
-                }}
-              </h3>
-              <strong>{{ moonPhase(sky.moonPhase) | nativeText }}</strong>
-              @if (moonArtwork(sky.moonPhase); as artwork) {
-                <img
-                  class="moon-illustration"
-                  [src]="artwork"
-                  [alt]="moonPhase(sky.moonPhase)"
-                />
-              }
-              <p>{{ "Moonrise" | nativeText }} {{ clock(sky.moonrise) }}</p>
-            </button>
-        }
+          <button type="button" class="weather-card metric" (click)="openDetail('precip')">
+            <h3><cc-symbol name="drop.fill" [multicolor]="true" />{{ "PRECIPITATION" | nativeText }}</h3>
+            <div class="metric-number rain-number" [class.imperial]="imperial">
+              <strong>{{ cardNumber(s.precipitationToday, imperial && s.precipitationToday ? 1 : 0) }}</strong>
+              <small>{{ (imperial ? '″' : 'mm') | nativeText }}</small><span>{{ "today" | nativeText }}</span>
+            </div>
+            <p class="card-caption">{{ nextRain() }}</p>
+          </button>
+          <button type="button" class="weather-card metric" (click)="openDetail('visibility')">
+            <h3><cc-symbol name="eye.fill" />{{ "VISIBILITY" | nativeText }}</h3>
+            <div class="metric-number"><strong>{{ cardNumber(c.visibility) }}</strong><small>{{ s.visibilityUnit | nativeText }}</small></div>
+            <p class="card-caption">{{ visibilityCaption(c.visibility) | nativeText }}</p>
+          </button>
+          <button type="button" class="weather-card metric" (click)="openDetail('humidity')">
+            <h3><cc-symbol name="humidity.fill" [multicolor]="true" />{{ "HUMIDITY" | nativeText }}</h3>
+            <strong>{{ cardNumber(c.humidity) }}%</strong>
+            @if (s.dewPoint != null) { <p class="card-caption">{{ formatWeatherText('The dew point is %d° right now.', s.dewPoint) }}</p> }
+          </button>
+          <button type="button" class="weather-card metric pressure-card" (click)="openDetail('pressure')">
+            <h3><cc-symbol name="gauge.medium" />{{ "PRESSURE" | nativeText }}</h3>
+            <div class="metric-number"><strong>{{ cardNumber(c.pressure == null ? null : pressureValue(c.pressure), imperial ? 2 : 0) }}</strong><small>{{ (imperial ? 'inHg' : 'hPa') | nativeText }}</small></div>
+            <div class="pressure-gauge">
+              <svg viewBox="0 0 80 60" aria-hidden="true">
+                <path d="M23.03 46.97 A24 24 0 1 1 56.97 46.97" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                @if (c.pressure != null) {
+                  <path d="M37.6 30 L40 8.4 L42.4 30 Z" fill="white" [attr.transform]="'rotate(' + (-135 + 270 * Math.min(1, Math.max(0, (c.pressure - 960) / 100))) + ' 40 30)'" />
+                  <circle cx="40" cy="30" r="1.8" fill="white" />
+                }
+              </svg>
+              <span>{{ 'Low' | nativeText }}</span><span>{{ 'High' | nativeText }}</span>
+            </div>
+          </button>
         </div>
         <a
           class="weather-credit"
@@ -444,107 +434,37 @@
   <div class="weather-modal" (click)="detailOpen.set(false)">
     <section
       class="forecast-detail"
-      role="dialog"
+      role="dialog" cdkTrapFocus [cdkTrapFocusAutoCapture]="true"
       aria-modal="true"
-      aria-label="Weather details"
+      [attr.aria-label]="'Weather details' | nativeText"
       (click)="$event.stopPropagation()"
     >
       <header>
         <button
           type="button"
           class="done"
-          aria-label="Close"
+          [attr.aria-label]="'Close' | nativeText"
           (click)="detailOpen.set(false)"
         >
           <cc-symbol [pointSize]="17" name="xmark" />
         </button>
-        <h2>{{ "Weather" | nativeText }}</h2>
+        <h2><cc-symbol [name]="activeMetric().symbol" />{{ activeMetric().label | nativeText }}</h2>
         <span class="header-spacer"></span>
       </header>
-      <div class="detail-days">
-        @for (d of weather()?.daily?.slice(0, 10); track d.iso) {
-          <button
-            type="button"
-            [class.selected]="detailDate() === d.iso"
-            (click)="detailDate.set(d.iso); selectedHour.set(null)"
-          >
-            <small>{{ d.day | nativeText }}</small>
-            <strong>{{ d.iso.slice(8) }}</strong>
-            <cc-symbol
-              [multicolor]="true"
-              [name]="d.symbol || icon(d.icon)"
-            />
-          </button>
-        }
-      </div>
-      <div class="detail-picker">
-        <cc-choice
-          label="Weather metric"
-          [value]="detailMetric()"
-          [options]="metricChoices"
-          (valueChange)="detailMetric.set($event); selectedHour.set(null)"
-        />
-      </div>
-      @if (detailMetric() === "temp") {
-        <div class="temperature-picker">
-          <button
-            type="button"
-            [class.selected]="!feelsLike()"
-            (click)="feelsLike.set(false)"
-          >
-            {{ "Actual" | nativeText }}
-          </button>
-          <button
-            type="button"
-            [class.selected]="feelsLike()"
-            (click)="feelsLike.set(true)"
-          >
-            {{ "Feels Like" | nativeText }}
-          </button>
-        </div>
+      <div class="forecast-scroll hide-scroll-indicators">
+      @if (forecastDays()[0]; as today) {
+        <cc-week-strip [selected]="selectedForecastDay()" [today]="today" [firstWeekday]="firstWeekday()"
+          [availableDays]="forecastDays()" (choose)="selectForecastDay($event)" />
       }
-      <strong class="detail-value">{{ detailValue() }}</strong>
-      <p>
-        {{
-          selectedHour() === null
-            ? ("Daily maximum" | nativeText)
-            : selectedHourLabel()
-        }}
-      </p>
-      <div
-        class="detail-chart"
-        (pointerdown)="beginChartInspection($event)"
-        (pointermove)="inspectChart($event)"
-        (lostpointercapture)="selectedHour.set(null)"
-      >
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path
-            d="M0 25 H100 M0 50 H100 M0 75 H100"
-            stroke="#ffffff20"
-            fill="none"
-          />
-          <polyline [attr.points]="detailGraph()" />
-          @if (selectedHour() !== null) {
-            <line
-              [attr.x1]="(selectedHour()! * 100) / Math.max(1, detailHours().length - 1)"
-              [attr.x2]="(selectedHour()! * 100) / Math.max(1, detailHours().length - 1)"
-              y1="0"
-              y2="100"
-              stroke="#ffffffaa"
-              stroke-width=".3"
-            />
-          }
-        </svg>
+      <p class="detail-date">{{ detailDate() | nativeDate:'fullDate' }}</p>
+      <div class="detail-picker">
+        <cc-choice [label]="'Weather views'|nativeText" [value]="detailMetric()" [triggerSymbol]="activeMetric().symbol"
+          [options]="metricChoices" (valueChange)="changeMetric($event)"/>
       </div>
-      <div class="chart-hours">
-        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span
-        ><span>23:00</span>
+      @if(weather(); as forecast){
+        <cc-weather-detail-body [snapshot]="forecast" [date]="detailDate()" [metric]="detailMetric()" [name]="activeMetric().label" [now]="solarMinute().getTime()"/>
+      }
       </div>
-      <h3>{{ metricNames[detailMetric()] | nativeText }}</h3>
-      <p>
-        {{ "Hourly forecast" | nativeText }} · {{ weather()?.place?.name }} ·
-        {{ detailDate() }}
-      </p>
     </section>
   </div>
 }
@@ -571,7 +491,7 @@
         </h2>
         <span class="header-spacer"></span>
       </header>
-      <div class="detail-days">
+      <div class="detail-days hide-scroll-indicators">
         @for (d of weather()?.skyDays?.slice(0, 10); track d.date) {
           <button
             type="button"
@@ -616,18 +536,17 @@
   </div>
 }
 @if (regionContext(); as context) {
-  <div
+  <dialog
     class="region-context"
     role="menu"
-    [style.left.px]="context.x"
-    [style.top.px]="context.y"
+    [ccAnchoredMenu]="context" [above]="!isDesktop()" (dismissMenu)="regionContext.set(null)"
   >
     <button
       type="button"
       role="menuitem"
-      (click)="remove(context.place); closeContext()"
+      (click)="remove(context.place); regionContext.set(null)"
     >
       <cc-symbol name="trash" />{{ "Delete" | nativeText }}
     </button>
-  </div>
+  </dialog>
 }

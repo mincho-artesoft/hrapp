@@ -9,11 +9,14 @@ import AppKit
 struct MacCalendarWeekCarousel: NSViewRepresentable {
     @ObservedObject private var appPreferences = AppPreferences.shared
     @Binding var selectedDate: Date
+    var displayCalendar: Calendar? = nil
+    var selectableDays: ClosedRange<Date>? = nil
     @Environment(\.layoutDirection) private var layoutDirection
     func makeNSView(context: Context) -> MacCalendarWeekCarouselSurface { MacCalendarWeekCarouselSurface() }
     func updateNSView(_ view: MacCalendarWeekCarouselSurface, context: Context) {
         view.onSelect = { selectedDate = $0 }
-        view.update(date: selectedDate, calendar: MacCalendarFormatting.calendar,
+        view.selectableDays = selectableDays
+        view.update(date: selectedDate, calendar: displayCalendar ?? MacCalendarFormatting.calendar,
                     rightToLeft: layoutDirection == .rightToLeft)
     }
     static func dismantleNSView(_ view: MacCalendarWeekCarouselSurface, coordinator: ()) { view.stop() }
@@ -23,6 +26,7 @@ final class MacCalendarWeekCarouselSurface: NSView {
     override var isFlipped: Bool { true }
     override var acceptsFirstResponder: Bool { true }
     var onSelect: ((Date) -> Void)?
+    var selectableDays: ClosedRange<Date>?
     private var calendar = Calendar.current
     private var selected = Date.distantPast
     private var visibleWeekStart = Date.distantPast
@@ -78,6 +82,7 @@ final class MacCalendarWeekCarouselSurface: NSView {
             let x = rightToLeft ? bounds.width - dayWidth - logicalX : logicalX
             let today = calendar.isDateInToday(date)
             let isSelected = calendar.isDate(date, inSameDayAs: selected)
+            let enabled = selectableDays?.contains(date) ?? true
             let circle = NSRect(x: x + (dayWidth - 35) / 2, y: bounds.height / 2 - 2, width: 35, height: 35)
             if isSelected {
                 (today ? NSColor.appRed : selectedFill).setFill()
@@ -85,9 +90,9 @@ final class MacCalendarWeekCarouselSurface: NSView {
             }
             drawText(weekday.string(from: date).uppercased(),
                 in: NSRect(x: x, y: 0, width: dayWidth, height: bounds.height / 2),
-                font: .systemFont(ofSize: 12), color: today ? .appRed : isSelected ? .labelColor : .secondaryLabelColor)
+                font: .systemFont(ofSize: 12), color: !enabled ? .disabledControlTextColor : today ? .appRed : isSelected ? .labelColor : .secondaryLabelColor)
             drawText(number.string(from: date), in: circle,
-                font: .systemFont(ofSize: 18, weight: .semibold), color: isSelected ? .white : today ? .appRed : .labelColor)
+                font: .systemFont(ofSize: 18, weight: .semibold), color: !enabled ? .disabledControlTextColor : isSelected ? .white : today ? .appRed : .labelColor)
         }
     }
     private func drawText(_ text: String, in rect: NSRect, font: NSFont, color: NSColor) {
@@ -143,6 +148,7 @@ final class MacCalendarWeekCarouselSurface: NSView {
             if event.modifierFlags.contains(.option) { settle(days: direction * 7) }
             else {
                 let date = CalendarWeekCarouselMath.date(from: selected, offset: direction, calendar: calendar)
+                guard selectableDays?.contains(date) != false else { return }
                 update(date: date, calendar: calendar, rightToLeft: rightToLeft)
                 onSelect?(selected)
             }
@@ -151,14 +157,20 @@ final class MacCalendarWeekCarouselSurface: NSView {
     }
     private func selectDay(at index: Int) {
         stop(); offset = 0
-        selected = CalendarWeekCarouselMath.date(from: visibleWeekStart, offset: index, calendar: calendar)
+        let date = CalendarWeekCarouselMath.date(from: visibleWeekStart, offset: index, calendar: calendar)
+        guard selectableDays?.contains(date) != false else { return }
+        selected = date
         needsDisplay = true
         updateAccessibility()
         onSelect?(selected)
     }
     private func settle(days: Int) {
         stop()
-        let target = CGFloat(days) * dayWidth
+        let proposed = CalendarWeekCarouselMath.date(from: selected, offset: days, calendar: calendar)
+        let destination = selectableDays.map { min(max(proposed, $0.lowerBound), $0.upperBound) } ?? proposed
+        let week = CalendarWeekCarouselMath.weekStart(containing: destination, calendar: calendar)
+        let changedWeek = week != visibleWeekStart
+        let target = changedWeek ? CGFloat(days) * dayWidth : 0
         let start = offset
         let began = Date.timeIntervalSinceReferenceDate
         let duration = NSWorkspace.shared.accessibilityDisplayShouldReduceMotion ? 0.001 : 0.22
@@ -170,8 +182,10 @@ final class MacCalendarWeekCarouselSurface: NSView {
                 self.needsDisplay = true
                 if progress == 1 {
                     self.animation?.invalidate(); self.animation = nil
-                    self.selected = CalendarWeekCarouselMath.date(from: self.selected, offset: days, calendar: self.calendar)
-                    self.visibleWeekStart = CalendarWeekCarouselMath.date(from: self.visibleWeekStart, offset: days, calendar: self.calendar)
+                    if changedWeek {
+                        self.selected = destination
+                        self.visibleWeekStart = week
+                    }
                     self.offset = 0
                     self.onSelect?(self.selected)
                     self.updateAccessibility()
@@ -188,9 +202,12 @@ final class MacCalendarWeekCarouselSurface: NSView {
             let day = CalendarWeekCarouselMath.date(from: visibleWeekStart, offset: index, calendar: calendar)
             let element = MacCalendarAccessibleDay()
             element.setAccessibilityParent(self); element.setAccessibilityRole(.button)
-            element.setAccessibilityEnabled(true)
+            let enabled = selectableDays?.contains(day) ?? true
+            element.setAccessibilityEnabled(enabled)
             element.setAccessibilityIdentifier("week-carousel-day-\(index)")
-            element.setAccessibilityLabel(day.appFormatted(time: false))
+            let label = selectableDays == nil ? day.appFormatted(time: false)
+                : appDateFormatter(template: "EEEEdMMMMy", timeZone: calendar.timeZone).string(from: day)
+            element.setAccessibilityLabel(label)
             element.setAccessibilityValue(calendar.isDate(day, inSameDayAs: selected) ? NSLocalizedString("Selected", comment: "") : "")
             element.setAccessibilityFrameInParentSpace(NSRect(
                 x: CGFloat(CalendarWeekCarouselMath.visualDay(index, rightToLeft: rightToLeft)) * dayWidth,

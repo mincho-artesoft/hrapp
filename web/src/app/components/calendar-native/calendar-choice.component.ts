@@ -1,3 +1,4 @@
+import { CalendarAnchoredMenuDirective } from './calendar-anchored-menu.directive';
 import { CalendarNativeTextPipe } from "../../core/calendar-localization";
 import {
   ChangeDetectionStrategy,
@@ -5,7 +6,6 @@ import {
   input,
   output,
   signal,
-  HostListener,
   ElementRef,
   inject,
 } from "@angular/core";
@@ -19,11 +19,11 @@ export interface CalendarChoice {
 @Component({
   selector: "cc-choice",
   standalone: true,
-  imports: [CalendarSymbolComponent, CalendarNativeTextPipe],
+  imports: [CalendarAnchoredMenuDirective,CalendarSymbolComponent, CalendarNativeTextPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<button
       type="button"
-      class="choice-value"
+      #trigger class="choice-value" [class.symbol-choice]="!!triggerSymbol()"
       [attr.aria-label]="label()"
       [disabled]="disabled()"
       aria-haspopup="menu"
@@ -31,16 +31,14 @@ export interface CalendarChoice {
       (click)="toggle(); $event.stopPropagation()"
       (keydown)="onTriggerKey($event)"
     >
-      {{ selectedLabel() | nativeText
-      }}<cc-symbol name="chevron.up.chevron.down" />
+      @if(triggerSymbol()){<cc-symbol class="trigger-icon" [name]="triggerSymbol()!" /><cc-symbol name="chevron.down" />}
+      @else { {{ selectedLabel() | nativeText }}<cc-symbol name="chevron.up.chevron.down" /> }
     </button>
     @if (open()) {
-      <div
+      <dialog
         class="choice-menu"
         role="menu"
-        [style.top.px]="position().top"
-        [style.left.px]="position().left"
-        (keydown)="onMenuKey($event)"
+        [ccAnchoredMenu]="trigger" (dismissMenu)="close()"
         (click)="$event.stopPropagation()"
       >
         @for (option of options(); track option.value) {
@@ -62,7 +60,7 @@ export interface CalendarChoice {
             <span>{{ option.label | nativeText }}</span>
           </button>
         }
-      </div>
+      </dialog>
     }`,
   styles: [
     `
@@ -82,6 +80,8 @@ export interface CalendarChoice {
         cursor: pointer;
         padding: 8px 0;
       }
+      .choice-value.symbol-choice { background: #1c1c1e; color:white; border-radius:15px; padding:6px; gap:4px; }
+      .choice-value.symbol-choice .trigger-icon {width:20px; height:18px;}
       .choice-value:disabled {color:var(--cal-muted);cursor:default;}
       .choice-value:disabled cc-symbol {display:none;}
       .choice-value cc-symbol {
@@ -133,6 +133,7 @@ export interface CalendarChoice {
   ],
 })
 export class CalendarChoiceComponent {
+  readonly triggerSymbol = input<string>();
   readonly options = input.required<CalendarChoice[]>();
   readonly value = input.required<string>();
   readonly label = input("Choose");
@@ -140,72 +141,18 @@ export class CalendarChoiceComponent {
   readonly valueChange = output<string>();
   readonly open = signal(false);
   private readonly host: ElementRef<HTMLElement> = inject(ElementRef);
-  readonly position = signal({ top: 0, left: 0 });
   toggle() {
     if (this.disabled() || typeof window === "undefined") return;
     if (this.open()) {
       this.close();
       return;
     }
-    const rect = this.host.nativeElement.getBoundingClientRect();
-    const height = Math.min(
-      this.options().length * 44 + 16,
-      400,
-      window.innerHeight * 0.6,
-    );
-    this.position.set({
-      left: Math.max(8, Math.min(rect.right - 260, window.innerWidth - 268)),
-      top:
-        rect.bottom + height + 8 < window.innerHeight
-          ? rect.bottom + 4
-          : Math.max(8, rect.top - height - 4),
-    });
     this.open.set(true);
-  }
-  private focusOption(index: number) {
-    setTimeout(() => {
-      const buttons =
-        this.host.nativeElement.querySelectorAll<HTMLButtonElement>(
-          "[role=menuitemradio]",
-        );
-      buttons[(index + buttons.length) % buttons.length]?.focus();
-    }, 0);
   }
   onTriggerKey(event: KeyboardEvent) {
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();
       if (!this.open()) this.toggle();
-      this.focusOption(
-        Math.max(
-          0,
-          this.options().findIndex((o) => o.value === this.value()),
-        ),
-      );
-    }
-  }
-  onMenuKey(event: KeyboardEvent) {
-    const buttons = [
-      ...this.host.nativeElement.querySelectorAll<HTMLButtonElement>(
-        "[role=menuitemradio]",
-      ),
-    ];
-    const current = buttons.indexOf(
-      document.activeElement as HTMLButtonElement,
-    );
-    if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
-      event.preventDefault();
-      this.focusOption(
-        event.key === "Home"
-          ? 0
-          : event.key === "End"
-            ? buttons.length - 1
-            : current + (event.key === "ArrowDown" ? 1 : -1),
-      );
-    }
-    if (event.key === "Tab") this.close();
-    if (event.key === "Escape") {
-      event.stopPropagation();
-      this.escape();
     }
   }
   choose(value: string) {
@@ -218,10 +165,10 @@ export class CalendarChoiceComponent {
       this.value()
     );
   }
-  @HostListener("document:click") close() {
+  close() {
     this.open.set(false);
   }
-  @HostListener("document:keydown.escape") escape() {
+  private escape() {
     if (this.open()) {
       this.open.set(false);
       this.host.nativeElement

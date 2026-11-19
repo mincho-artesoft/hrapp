@@ -324,6 +324,10 @@ export class CalendarService {
     let missingReceivedEvent = false;
     let cancelledEventUpdate = false;
     const saved = await this.mutateEvent(calId, eventId, (existing) => {
+      if ((body.expectedUpdatedAt && existing?.updatedAt !== body.expectedUpdatedAt)
+          || (body.expectedSequence !== undefined && existing?.sequence !== body.expectedSequence)) {
+        return null;
+      }
       if (!existing && recipientWriter) {
         missingReceivedEvent = true;
         return null;
@@ -381,7 +385,7 @@ export class CalendarService {
           recipientWriter
             ? existing?.ownerLocalEventIdentifier ?? null
             : localEventIdentifier ?? existing?.ownerLocalEventIdentifier ?? null,
-        updatedAt: new Date().toISOString(),
+        updatedAt: nextRevisionTimestamp(existing?.updatedAt),
       };
     });
     if (!saved && contributorForbidden) {
@@ -391,7 +395,7 @@ export class CalendarService {
       return result(409, { error: 'cancelled events cannot be edited or reactivated' });
     }
     if (!saved && missingReceivedEvent) return result(404, { error: 'shared event no longer exists' });
-    if (!saved) return result(409, { error: 'event could not be updated' });
+    if (!saved) return result(409, { error: 'This event changed during the save. Reopen it before saving.' });
 
     await this.core.regenerate(calId, eventId);
     return result(saved.previous ? 200 : 201, { event: saved.event });
@@ -576,9 +580,11 @@ export class CalendarService {
     const identities = await this.identitiesFor(principal);
     const primaryIdentity = this.primaryIdentity(principal, identities);
     const eventKeys = await this.store.listKeys(this.keys.events(principal.calId));
-    const events = await Promise.all(eventKeys.map((key) => this.store.getJSON(key)));
+    const events = await Promise.all(eventKeys.map((key) => this.store.getJSONWithETag(key)));
     const outgoing: any[] = [];
-    for (const event of events.filter(Boolean)) {
+    for (const stored of events) {
+      if (!stored) continue;
+      let event = stored.value;
       const feed = await this.store.getJSON(this.keys.eventFeed(principal.calId, event.id));
       if (!feed?.feedId) continue;
       let identityBackfilled = false;
@@ -600,7 +606,13 @@ export class CalendarService {
         identityBackfilled = true;
       }
       if (identityBackfilled) {
-        await this.store.putJSON(this.keys.event(principal.calId, event.id), event);
+        const key = this.keys.event(principal.calId, event.id);
+        if (!await this.store.putJSONIfMatch(key, event, stored.etag)) {
+          // A save won the race with this metadata backfill. Return its
+          // canonical record and let a future poll finish the backfill.
+          event = await this.store.getJSON(key);
+          if (!event) continue;
+        }
       }
       const { ownerLocalEventIdentifier, ...publicEvent } = event;
       outgoing.push({

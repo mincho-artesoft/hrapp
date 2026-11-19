@@ -269,18 +269,7 @@ enum AppLocalCalendarSyncService {
                 allDay: event.isAllDay,
                 location: event.location.isEmpty ? nil : event.location,
                 url: event.urlString.isEmpty ? nil : event.urlString,
-                details: SharedEventDetails(
-                    notes: event.notes.isEmpty ? nil : event.notes,
-                    timeZone: event.timeZoneIdentifier,
-                    alarms: event.alarms.map {
-                        SharedEventAlarm(relativeOffset: $0.relativeOffset)
-                    },
-                    recurrenceRules: event.recurrenceRules ?? [],
-                    structuredLocation: event.structuredLocation,
-                    videoCallURL: event.videoCallURL,
-                    travelTime: event.travelTime,
-                    attachments: event.attachments?.map(\.sharedValue)
-                )
+                details: event.portableDetails
             )
         })
     }

@@ -1,0 +1,77 @@
+<div class="picker" [class.range]="range()">
+  <div class="month-heading">
+    <button
+      type="button"
+      class="month-title"
+      aria-label="Choose month and year"
+      [attr.aria-expanded]="wheels()"
+      (click)="wheels.set(!wheels())"
+    >
+      <strong>{{ month() | nativeDate: "MMMM yyyy" }}</strong
+      ><cc-symbol [name]="wheels() ? 'chevron.down' : 'chevron.forward'" />
+    </button>
+    <button type="button" aria-label="Previous month" (click)="step(-1)">
+      <cc-symbol name="chevron.backward" />
+    </button>
+    <button type="button" aria-label="Next month" (click)="step(1)">
+      <cc-symbol name="chevron.forward" />
+    </button>
+  </div>
+  @if (wheels()) {
+    <div class="month-wheels">
+      <cc-date-wheel
+        label="Month"
+        [min]="1"
+        [max]="12"
+        [value]="month().getMonth() + 1"
+        [names]="monthNames()"
+        (changeValue)="setMonth(month().getFullYear(), $event - 1)"
+      />
+      <cc-date-wheel
+        label="Year"
+        [min]="yearMin()"
+        [max]="yearMax()"
+        [value]="month().getFullYear()"
+        (changeValue)="setMonth($event, month().getMonth())"
+      />
+    </div>
+  } @else {
+    <div
+      class="date-grid"
+      (pointerdown)="begin($event)"
+      (pointermove)="move($event)"
+      (pointerup)="finish($event)"
+      (pointercancel)="cancel()"
+      (lostpointercapture)="$event.target === $event.currentTarget && cancel()"
+      (pointerleave)="!sweep() && cancel()"
+    >
+      @for (weekday of weekdays(); track $index) {
+        <small>{{ weekday | nativeDate: "EEE" }}</small>
+      }
+      @for (day of days(); track $index) {
+        @if (day) {
+          <button
+            type="button"
+            [attr.data-day]="day"
+            [class.today]="day === today"
+            [class.in-range]="
+              !!to() && day >= from() && day <= to() && from() !== to()
+            "
+            [class.start]="day === from()"
+            [class.end]="day === to()"
+            [disabled]="!!minimum() && day < minimum()"
+            [attr.aria-label]="day | nativeDate: 'fullDate'"
+            [attr.aria-pressed]="
+              day === from() || (!!to() && day >= from() && day <= to())
+            "
+            (click)="select(day)"
+          >
+            <span>{{ +day.slice(-2) }}</span>
+          </button>
+        } @else {
+          <span aria-hidden="true"></span>
+        }
+      }
+    </div>
+  }
+</div>

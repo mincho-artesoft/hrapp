@@ -1,0 +1,150 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.picker {
+  max-width: 420px;
+  margin-inline: auto;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.month-heading {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.month-heading button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 44px;
+  color: var(--cal-blue);
+}
+.month-heading .month-title {
+  width: auto;
+  gap: 5px;
+  margin-inline-end: auto;
+  font-size: 17px;
+}
+.month-title strong {
+  color: var(--cal-text);
+}
+.month-title[aria-expanded="true"] strong {
+  color: var(--cal-blue);
+}
+cc-symbol {
+  width: 17px;
+  height: 17px;
+}
+:host-context([dir="rtl"]) .month-heading cc-symbol:not([name="chevron.down"]) {
+  transform: scaleX(-1);
+}
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  row-gap: 4px;
+  user-select: none;
+}
+.date-grid small {
+  display: grid;
+  place-items: center;
+  height: 26px;
+  text-transform: uppercase;
+  color: var(--cal-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.date-grid button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 40px;
+  min-width: 0;
+  font:
+    18px "Helvetica Neue",
+    Helvetica,
+    sans-serif;
+}
+.date-grid button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.date-grid button span {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: min(100%, 40px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.today {
+  color: var(--cal-orange, #ff9f0a);
+}
+.start span,
+.end span {
+  background: var(--cal-blue);
+  color: white;
+}
+.today.start span,
+.today.end span {
+  background: var(--cal-red, #ff5969);
+}
+.month-wheels {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 195px) minmax(0, 105px);
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+.month-wheels::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  border-radius: 99px;
+  background: var(--picker-fill, rgba(118, 118, 128, 0.24));
+  z-index: -1;
+}
+.range .month-heading {
+  height: 50px;
+  padding-inline: 16px;
+  margin: 0;
+}
+.range .date-grid {
+  row-gap: 0;
+  touch-action: none;
+}
+.range .date-grid small {
+  height: 40px;
+  text-transform: none;
+  font:
+    18px "Helvetica Neue",
+    Helvetica,
+    sans-serif;
+}
+.in-range::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--picker-fill, rgba(118, 118, 128, 0.24));
+}
+.in-range.start::before {
+  inset-inline-start: 50%;
+}
+.in-range.end::before {
+  inset-inline-end: 50%;
+}
+.range .month-wheels {
+  height: 280px;
+}

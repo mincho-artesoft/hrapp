@@ -1,60 +1,116 @@
-<ng-template #map>
-  <svg viewBox="0 0 310 286" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <filter id="wind-field-smoothing"><feGaussianBlur stdDeviation="5" edgeMode="duplicate" /></filter>
-    </defs>
-    <g filter="url(#wind-field-smoothing)">
-      @for (p of samples(); track $index) {
-        <rect [attr.x]="p.x - 12" [attr.y]="p.y - 12" width="24" height="25" [attr.fill]="p.color" />
-      }
-    </g>
-    <path [attr.d]="outlines()" fill="#fff1" fill-rule="evenodd" stroke="#ffffff9c" stroke-width=".85" vector-effect="non-scaling-stroke" />
-    @if (layer() === 'wind') {
-      @for (p of samples(); track $index) {
-        @if (p.speed > .5) {
-          <g [attr.transform]="'translate('+p.x+' '+p.y+') rotate('+p.direction+')'">
-            <path class="flow" d="M0 -6v8l-1.4 -2 M0 2l1.4 -2" [style.animation-delay.s]="-($index % 7) / 6" />
-          </g>
-        }
-      }
-    }
-  </svg>
-  <span class="map-pin" [style.--pin-x]="marker().x - 155" [style.--pin-y]="marker().y - 143">
-    <span>{{ place().name }}</span>
-  </span>
-  @if (loading()) { <span class="status" role="status">{{ 'Loading forecast…' | nativeText }}</span> }
-</ng-template>
 <section class="wind-card">
   <h3><cc-symbol name="wind" />{{ 'Wind Map' | nativeText }}</h3>
-  <button class="map" type="button" aria-label="Open wind map" (click)="open()">
-    @if (!expanded()) { <ng-container *ngTemplateOutlet="map" /> }
-  </button>
-  @if (error()) { <button type="button" class="retry" (click)="retry()">{{ 'Wind data unavailable' | nativeText }} · {{ 'Retry' | nativeText }}</button> }
+  <div class="map preview" role="button" tabindex="0" [attr.aria-label]="'Open wind map' | nativeText"
+    (click)="open($event)" (keydown.enter)="open($event)" (keydown.space)="$event.preventDefault(); open($event)">
+    @if (!expanded()) {
+      <cc-weather-map-surface [place]="place()" [field]="field()" [position]="nowIndex()">
+        <div class="pin compact"><span class="bubble">{{ marker().value }}</span>
+          <span class="caption">{{ place().name | nativeText }}</span></div>
+      </cc-weather-map-surface>
+      @if (loading()) { <span class="status spinner" role="status" [attr.aria-label]="'Loading wind forecast…' | nativeText"></span> }
+      @if (error()) { <span class="status"><cc-symbol name="exclamationmark.icloud"/>{{ 'Wind data unavailable' | nativeText }}</span> }
+    }
+  </div>
 </section>
-<dialog #mapDialog (close)="resetView()" aria-label="Weather map">
+
+<dialog #mapDialog (close)="resetView()" (cancel)="cancel($event)" [attr.aria-label]="'Map layers' | nativeText" [class.temperature]="layer()==='temperature'">
   @if (expanded()) {
-    <div class="map fullscreen" (pointerdown)="panStart($event)" (pointerup)="panEnd($event)" (pointercancel)="cancelPan()">
-      <ng-container *ngTemplateOutlet="map" />
-    </div>
+    <cc-weather-map-surface #surface class="map fullscreen" tabindex="0" [place]="place()" [field]="field()" [interactive]="true"
+      [layer]="layer()" [position]="layer()==='wind'?position():nowIndex()" [animated]="!panel()"
+      (viewportChange)="viewport.set($event)" (mapTap)="mapTap()">
+      <button type="button" class="pin" [class.compact]="!markerExpanded()" [class.temp-pin]="layer()==='temperature'"
+        [attr.aria-label]="(place().name | nativeText)+' '+marker().value+' '+unit()"
+        [attr.aria-expanded]="markerExpanded()" (click)="markerExpanded.set(!markerExpanded())">
+        <span class="bubble">
+          @if (markerExpanded() && layer()==='wind') { <small>{{ marker().direction }}</small> }
+          <b>{{ marker().value }}@if (layer()==='temperature') {<small>{{ markerExpanded()?unit():'°' }}</small>}</b>
+          @if (markerExpanded() && layer()==='wind') { <small>{{ unit().toUpperCase() }}</small> }
+          @if (markerExpanded() && layer()==='temperature' && marker().range; as range) {
+            <span class="temp-arc" aria-hidden="true" [style.--low]="range.lowColor" [style.--high]="range.highColor"></span>
+            <i class="temp-indicator" [style.--angle]="range.angle+'deg'" [style.background]="range.currentColor"></i>
+            <small class="extremes"><span [style.color]="range.lowColor">{{ range.low }}</span> &nbsp; <span [style.color]="range.highColor">{{ range.high }}</span></small>
+          }
+        </span><span class="caption">{{ place().name | nativeText }}</span>
+      </button>
+    </cc-weather-map-surface>
+
     <header>
-      <button type="button" aria-label="Close map" (click)="close()"><cc-symbol name="xmark"/></button>
-      <select aria-label="Map layer" [value]="layer()" (change)="setLayer($any($event.target).value)">
-        <option value="wind">{{ 'Wind' | nativeText }}</option><option value="temperature">{{ 'Temperature' | nativeText }}</option>
-      </select>
-      <button type="button" aria-label="Recenter map" (click)="recenter()"><cc-symbol name="location.fill"/></button>
-    </header>
-    <div class="zoom">
-      <button type="button" aria-label="Zoom in" (click)="zoom(.5)">+</button>
-      <button type="button" aria-label="Zoom out" (click)="zoom(2)">−</button>
-    </div>
-    @if (error()) { <button type="button" class="retry" (click)="retry()">{{ 'Wind data unavailable' | nativeText }} · {{ 'Retry' | nativeText }}</button> }
-    @if (dates().length && layer() === 'wind') {
-      <footer>
-        <button type="button" [attr.aria-label]="playing() ? 'Pause' : 'Play'" (click)="togglePlay()">{{ playing() ? 'Ⅱ' : '▶' }}</button>
-        <div><output>{{ timeLabel() }}</output>
-          <input type="range" aria-label="Forecast hour" min="0" [max]="dates().length-1" [value]="hour()" (input)="hour.set(+$any($event.target).value); stop()"/>
+      <div class="left-stack">
+        <button class="round" type="button" [attr.aria-label]="'Close map' | nativeText" (click)="close()"><cc-symbol name="xmark"/></button>
+        <aside class="legend">
+          <div class="legend-title"><b>{{ (layer()==='wind'?'Wind':'Temperature') | nativeText }}</b><small>{{ unit() }}</small></div>
+          <div class="legend-scale"><i [style.background]="legendColors()"></i><div>
+            @for (n of legendValues(); track n) { <span>{{ legendValue(n) }}</span> }
+          </div></div>
+        </aside>
+        <button type="button" class="map-data" (click)="togglePanel('info')">{{ 'Map Data' | nativeText }}</button>
+      </div>
+      <div class="right-stack">
+        <div class="tools">
+          <button type="button" [attr.aria-label]="'Map layers' | nativeText" aria-haspopup="menu" [attr.aria-expanded]="panel()==='layers'" (click)="togglePanel('layers')"><cc-symbol name="square.3.layers.3d.top.filled"/></button>
+          <button type="button" [attr.aria-label]="'Center on location' | nativeText" (click)="recenter()"><cc-symbol name="location"/></button>
         </div>
-      </footer>
+        <button type="button" class="round" [attr.aria-label]="'Your Locations' | nativeText" (click)="togglePanel('locations')"><cc-symbol name="list.bullet"/></button>
+        @if (loading()) {<span class="spinner" role="status" [attr.aria-label]="'Loading wind forecast…' | nativeText"></span>}
+      </div>
+    </header>
+
+    <div class="bottom-controls">
+      @if (error()) {<button class="retry" type="button" (click)="retry()"><cc-symbol name="arrow.clockwise"/>{{ 'Retry' | nativeText }}</button>}
+      @if (timelineVisible() && dates().length && layer()==='wind') {
+        <footer>
+          <div class="play-row">
+            <button type="button" [attr.aria-label]="(playing()?'Pause':'Play') | nativeText" (click)="togglePlay()"><span><cc-symbol [name]="playing()?'pause.fill':'play.fill'"/></span></button>
+            <div><b>{{ 'Wind Speed' | nativeText }}</b><small>{{ dateLabel() }}</small></div>
+          </div>
+          <div class="time-track" dir="ltr">
+            <div class="track-rail" [style.--steps]="Math.max(1,dates().length-1)"><i [style.width.%]="100*position() / (dates().length-1 || 1)"></i></div>
+            <input type="range" min="0" [max]="dates().length-1" step=".01" [value]="position()" [attr.aria-label]="'Forecast time' | nativeText"
+              [attr.aria-valuetext]="hourLabel(displayTime())" (input)="setPosition(+$any($event.target).value)" (keydown.arrowright)="$event.preventDefault();setPosition(Math.min(dates().length-1,position()+1))" (keydown.arrowleft)="$event.preventDefault();setPosition(Math.max(0,position()-1))"/>
+            <div class="time-labels">@for(t of ticks();track t.i){<span [class.now]="t.i===nowHour()">{{ t.i===nowHour()?('Now' | nativeText):hourLabel(t.time) }}</span>}</div>
+          </div>
+        </footer>
+      }
+    </div>
+
+    @if (panel(); as active) {
+      <div class="scrim" [class.menu-scrim]="active==='layers'" (click)="panel.set(null)"></div>
+      @if (active==='layers') {
+        <div class="layer-menu" role="menu" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" [attr.aria-label]="'Map layers' | nativeText">
+          @for (item of layers; track item) {
+            <button type="button" role="menuitemradio" [attr.aria-checked]="layer()===item" (click)="setLayer(item)">
+              <cc-symbol [name]="layer()===item?'checkmark':item==='wind'?'wind':'thermometer.medium'"/>
+              {{ (item==='wind'?'Wind':'Temperature') | nativeText }}</button>
+          }
+        </div>
+      } @else {
+        <section class="sheet" role="dialog" aria-modal="true" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" [attr.aria-label]="(active==='info'?'Map Data':'Your Locations') | nativeText">
+          @if(active==='info'){
+            <div class="sheet-head info-head"><b>{{ 'Map Data' | nativeText }}</b><button type="button" (click)="panel.set(null)">{{ 'Done' | nativeText }}</button></div>
+            <div class="info-body">
+              <h2><cc-symbol [name]="layer()==='wind'?'wind':'thermometer.medium'"/>{{ (layer()==='wind'?'Wind':'Temperature') | nativeText }}</h2>
+              @if(layer()==='wind'){
+                <p>{{ 'Wind between forecast locations is estimated. Local conditions can differ, especially near mountains and coasts.' | nativeText }}</p>
+                <p>{{ 'The arrows move in the direction the wind travels. The direction label shows where the wind comes from.' | nativeText }}</p>
+              }
+              <small>{{ 'Weather data provided by Apple has been modified to create forecast maps.' | nativeText }}</small>
+              <a href="https://weatherkit.apple.com/legal-attribution.html" target="_blank" rel="noopener"> Weather · {{ 'Data sources' | nativeText }}</a>
+              <a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener">Natural Earth · {{ 'Map Data' | nativeText }}</a>
+            </div>
+          } @else {
+            <div class="sheet-head"><cc-symbol [name]="layer()==='wind'?'wind':'thermometer.medium'"/><div><b>{{ (layer()==='wind'?'Wind':'Temperature') | nativeText }}</b><small>{{ 'Your Locations' | nativeText }}</small></div>
+              <button type="button" class="round" [attr.aria-label]="'Close' | nativeText" (click)="panel.set(null)"><cc-symbol name="xmark"/></button></div>
+            <div class="place-list">
+              @for(p of places();track p.id){
+                <button type="button" (click)="selectPlace(p)"><span>{{ p.name | nativeText }}
+                  <small>@if(conditionsFor(p);as s){ {{ number(layer()==='wind'?s.conditions.wind:s.conditions.temperature) }} {{ unit() }} }@else{ {{ 'Data unavailable' | nativeText }} }</small></span>
+                  @if(layer()==='wind' && conditionsFor(p);as s){<span class="bearing"><cc-symbol name="arrow.down" [style.transform]="'rotate('+s.conditions.direction+'deg)'"/>{{ direction(s.conditions.direction) }}</span>}
+                </button>
+              }
+            </div>
+          }
+        </section>
+      }
     }
   }
 </dialog>

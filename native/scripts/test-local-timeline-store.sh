@@ -8,11 +8,14 @@ test_bundle="com.hrapp.local-timeline-store-tests"
 mkdir "$test_app"
 cp "$repo_dir/scripts/tests/EventViewRenderingTests-Info.plist" "$test_app/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $test_bundle" "$test_app/Info.plist"
+/usr/libexec/PlistBuddy -c 'Add :UIApplicationSceneManifest dict' "$test_app/Info.plist"
 /usr/libexec/PlistBuddy -c 'Add :NSCalendarsFullAccessUsageDescription string Test calendar transfers in an isolated regression calendar.' "$test_app/Info.plist"
 xcrun swiftc -sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" \
     -target "$(uname -m)-apple-ios18.0-simulator" \
     "$repo_dir/Calendar/CalendarKit/EventDescriptor.swift" \
     "$repo_dir/Calendar/AppLocal/AppLocalCalendarStore.swift" \
+    "$repo_dir/Calendar/Sharing/SharedEventWireCompatibility.swift" \
+    "$repo_dir/Calendar/Sharing/SharedEventData.swift" \
     "$repo_dir/Calendar/Sharing/ReceivedSharingVisibility.swift" \
     "$repo_dir/Calendar/AppLocal/AppLocalCalendarMerge.swift" \
     "$repo_dir/Calendar/Sources/EKMultiDayWrapper.swift" \

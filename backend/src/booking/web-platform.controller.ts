@@ -30,6 +30,13 @@ export class WebPlatformController {
     return reply(res, await this.svc.getAuthProviders());
   }
 
+  @Delete('auth/web-session')
+  @UseGuards(AuthGuard)
+  async signOutBrowser(@Headers('authorization') authorization: string) {
+    await this.svc.endWebSession(authorization.slice('Bearer '.length).trim());
+    return { signedOut: true };
+  }
+
   @Post('auth/email/request-code')
   async requestEmailCode(@Body() body: any, @Res({ passthrough: true }) res: Response) {
     return reply(res, await this.svc.requestEmailAuthCode(body ?? {}));

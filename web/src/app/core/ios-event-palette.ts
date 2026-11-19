@@ -20,7 +20,7 @@ export const IOS_EVENT_COLORS: readonly IosColorPreset[] = [
 export interface IosEventVisualStyle {
   readonly hex: string;
   readonly fill: string;
-  readonly fillDragging: string;
+  readonly selectedFill: string;
   readonly accentBar: string;
   readonly titleColor: string;
   readonly detailColor: string;
@@ -55,7 +55,7 @@ export function computeIosEventStyle(hex?:string|null,surface:'dark'|'light'='da
   return {
     hex:normalized,
     fill:dark?rgb(.33+Math.min(Math.max(depth,0),2)*.025):`rgba(${r}, ${g}, ${b}, ${depth===0?.15:depth===1?.09:.07})`,
-    fillDragging:dark?rgb(.9):rgb(.9,.1),
+    selectedFill:dark?rgb(.9):rgb(.9,.1),
     accentBar:normalized,
     titleColor:rgb(dark?1:.58),
     detailColor:rgb(.82),

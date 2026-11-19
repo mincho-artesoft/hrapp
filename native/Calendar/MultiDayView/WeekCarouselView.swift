@@ -6,14 +6,38 @@ public class WeekCarouselView: UIView,
                                UICollectionViewDelegateFlowLayout,
                                UIScrollViewDelegate
 {
+    private var displayCalendar: Calendar?
+    private var selectableDays: ClosedRange<Date>?
+
+    static var dayCalendar: Calendar {
+        var calendar = Calendar.current
+        if (1...7).contains(GlobalState.firstWeekday) {
+            calendar.firstWeekday = GlobalState.firstWeekday
+        }
+        return calendar
+    }
+
     private var customCalendar: Calendar {
-        var cal = Calendar.current
-        cal.firstWeekday = GlobalState.firstWeekday
-        return cal
+        displayCalendar ?? Self.dayCalendar
     }
 
     // MARK: - Публични пропъртита
     public var onDaySelected: ((Date) -> Void)?
+
+    func displayDays(in range: ClosedRange<Date>, calendar: Calendar, selected: Date) {
+        if selectableDays != range || displayCalendar != calendar {
+            displayCalendar = calendar
+            selectableDays = range
+            let start = alignToFirstWeekday(range.lowerBound)
+            let lastWeek = alignToFirstWeekday(range.upperBound)
+            let count = (calendar.dateComponents([.day], from: start, to: lastWeek).day ?? 0) + 7
+            dates = (0..<count).compactMap { calendar.date(byAdding: .day, value: $0, to: start) }
+            selectedIndex = dates.firstIndex(where: { isSameDay($0, selected) }) ?? 0
+            setNeedsLayout()
+        } else if !isSameDay(selectedDate, selected) {
+            selectedDate = selected
+        }
+    }
     
     public var selectedDate: Date {
         get {
@@ -183,8 +207,9 @@ public class WeekCarouselView: UIView,
     
     // MARK: - Скролване до избран ден
     private func scrollToSelectedIndex(animated: Bool) {
-        guard selectedIndex < dates.count else { return }
-        let ip = IndexPath(item: selectedIndex, section: 0)
+        guard selectedIndex < dates.count, bounds.width > 0 else { return }
+        let item = selectableDays == nil ? selectedIndex : selectedIndex - selectedIndex % 7
+        let ip = IndexPath(item: item, section: 0)
         collectionView.scrollToItem(at: ip, at: .left, animated: animated)
     }
     
@@ -206,7 +231,8 @@ public class WeekCarouselView: UIView,
         
         let date = dates[indexPath.item]
         let isSel = (indexPath.item == selectedIndex)
-        cell.configure(with: date, isSelected: isSel)
+        cell.configure(with: date, isSelected: isSel, calendar: customCalendar,
+                       enabled: selectableDays?.contains(date) ?? true)
         return cell
     }
     
@@ -220,6 +246,11 @@ public class WeekCarouselView: UIView,
     }
     
     public func collectionView(_ collectionView: UICollectionView,
+                               shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        selectableDays?.contains(dates[indexPath.item]) ?? true
+    }
+
+    public func collectionView(_ collectionView: UICollectionView,
                                didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
         let d = dates[indexPath.item]
@@ -229,6 +260,7 @@ public class WeekCarouselView: UIView,
     
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView.bounds.width > 0 else { return }
         // Намираме "страницата" (всеки 7 елемента = 1 страница)
         let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
         
@@ -240,6 +272,14 @@ public class WeekCarouselView: UIView,
         
         // Нов индекс (кандидат) = начало на страницата + позицията в седмицата
         var newIndex = pageStartIndex + oldPosWithinPage
+
+        if let selectableDays {
+            let proposed = dates[min(max(0, newIndex), dates.count - 1)]
+            let day = min(max(proposed, selectableDays.lowerBound), selectableDays.upperBound)
+            selectedDate = day
+            onDaySelected?(day)
+            return
+        }
         
         // 1) Проверяваме дали сме близо до ляв край → добавяме още седмици назад
         if page < 2 {
@@ -303,6 +343,6 @@ public class WeekCarouselView: UIView,
 
     
     private func isSameDay(_ d1: Date, _ d2: Date) -> Bool {
-        return Calendar.current.isDate(d1, inSameDayAs: d2)
+        return customCalendar.isDate(d1, inSameDayAs: d2)
     }
 }

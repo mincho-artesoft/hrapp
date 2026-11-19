@@ -1,172 +1,410 @@
-import { ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, OnDestroy, signal, viewChild } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
-import { CalendarNativeTextPipe } from '../../core/calendar-localization';
-import { Place } from '../../core/weather.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnDestroy,
+  computed,
+  effect,
+  inject,
+  input,
+  signal,
+  untracked,
+  viewChild,
+} from '@angular/core';
+import { CalendarLocalization, CalendarNativeTextPipe } from '../../core/calendar-localization';
+import { CalendarPlatformApiService } from '../../core/calendar-platform-api.service';
+import { CalendarForecastService } from '../../core/calendar-forecast.service';
+import { Place, Snapshot } from '../../core/weather.service';
+import {
+  MapField,
+  MapHour,
+  MapLayer,
+  MapViewport,
+  clamp,
+  forecastGrid,
+  gridCoordinates,
+  makeMapField,
+  mapColor,
+  mapFrame,
+  mapReading,
+  wrap,
+} from '../../core/weather-map-field';
+import { CalendarWeatherMapSurfaceComponent } from './calendar-weather-map-surface.component';
 import { CalendarSymbolComponent } from './calendar-symbol.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
-type Coordinate = [number, number];
-type Boundary = { points: Coordinate[]; south: number; north: number; west: number; east: number };
-type GridPoint = { hourly: { time: number[]; temperature_2m: number[]; wind_speed_10m: number[]; wind_direction_10m: number[] } };
-type Center = { lat: number; lon: number; span: number };
-const width = 310, height = 286, gridSize = 3;
-let boundaries: Promise<Boundary[]> | undefined;
-
-function loadBoundaries(): Promise<Boundary[]> {
-  return boundaries ??= fetch('/weather-map/WeatherMapBoundaries.geojson').then(async response => {
-    if (!response.ok) throw new Error('Map unavailable');
-    const data = await response.json() as { features: { geometry:
-      {type: 'Polygon'; coordinates: Coordinate[][]} | {type: 'MultiPolygon'; coordinates: Coordinate[][][]} }[] };
-    return data.features.flatMap(({geometry}) => {
-      const polygons = geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
-      return polygons.flatMap(polygon => polygon.map(points => {
-        const lat = points.map(p => p[1]), lon = points.map(p => p[0]);
-        return {points, south: Math.min(...lat), north: Math.max(...lat), west: Math.min(...lon), east: Math.max(...lon)};
-      }));
-    });
-  }).catch(error => { boundaries = undefined; throw error; });
-}
-
-function longitude(value: number) { return ((value + 540) % 360) - 180; }
-function longitudeSpan(center: Center) { return center.span * width / height / Math.max(.2, Math.cos(center.lat * Math.PI / 180)); }
+const hourMs = 3_600_000;
+const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+type Panel = 'layers' | 'locations' | 'info';
 
 @Component({
-  selector: 'cc-wind-map', standalone: true, imports: [CalendarSymbolComponent, CalendarNativeTextPipe, NgTemplateOutlet],
+  selector: 'cc-wind-map',
+  standalone: true,
+  imports: [A11yModule, CalendarSymbolComponent, CalendarNativeTextPipe, CalendarWeatherMapSurfaceComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './calendar-wind-map.component.html', styleUrl: './calendar-wind-map.component.scss',
+  templateUrl: './calendar-wind-map.component.html',
+  styleUrl: './calendar-wind-map.component.scss',
 })
 export class CalendarWindMapComponent implements OnDestroy {
-  readonly place = input.required<Place>();
-  readonly imperial = input(false);
+  readonly Math = Math;
+  readonly layers = ['temperature', 'wind'] as const;
+  readonly snapshot = input.required<Snapshot>();
+  readonly saved = input<Place[]>([]);
+  readonly imperial = computed(() => this.snapshot().windUnit === 'mph');
+  readonly selection = signal<Place | null>(null);
+  readonly place = computed(() => this.selection() ?? this.snapshot().place);
   readonly expanded = signal(false);
-  readonly layer = signal<'wind'|'temperature'>('wind');
-  readonly hour = signal(4);
+  readonly layer = signal<MapLayer>('wind');
+  readonly panel = signal<Panel | null>(null);
+  readonly markerExpanded = signal(true);
+  readonly timelineVisible = signal(true);
+  readonly position = signal(4);
   readonly playing = signal(false);
   readonly loading = signal(false);
   readonly error = signal(false);
-  readonly center = signal<Center>({lat: 0, lon: 0, span: 8});
-  private readonly polygons = signal<Boundary[]>([]);
-  private readonly field = signal<GridPoint[]>([]);
-  private readonly retryCount = signal(0);
+  readonly field = signal<MapField | null>(null);
+  readonly viewport = signal<MapViewport | undefined>(undefined);
+  readonly surface = viewChild<CalendarWeatherMapSurfaceComponent>('surface');
   private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('mapDialog');
+  private readonly local = inject(CalendarLocalization);
+  private readonly api = inject(CalendarPlatformApiService);
+  private readonly weather = inject(CalendarForecastService);
+  private readonly retryCount = signal(0);
+  private readonly conditions = signal<Record<number, Snapshot>>({});
+  private readonly cache = new Map<string, { expires: number; data: Promise<MapHour[]> }>();
+  private readonly locationCache = signal<Place | null>(null);
   private playback?: ReturnType<typeof setInterval>;
-  private down?: Coordinate;
-
-  constructor() {
-    effect(() => {
-      const place = this.place();
-      this.center.set({lat: place.latitude, lon: place.longitude, span: 8});
-      this.hour.set(4);
-    });
-    effect(onCleanup => {
-      const at = this.center(), imperial = this.imperial();
-      this.retryCount();
-      const controller = new AbortController();
-      this.loading.set(true);
-      this.error.set(false);
-      this.field.set([]);
-      const timer = setTimeout(async () => {
-        try {
-          const lat: string[] = [], lon: string[] = [];
-          for (let y = 0; y < gridSize; y++) for (let x = 0; x < gridSize; x++) {
-            lat.push(Math.max(-89, Math.min(89, at.lat + (.5 - y / (gridSize - 1)) * at.span)).toFixed(3));
-            lon.push(longitude(at.lon + (x / (gridSize - 1) - .5) * longitudeSpan(at)).toFixed(3));
-          }
-          const params = new URLSearchParams({latitude: lat.join(','), longitude: lon.join(','),
-            hourly: 'wind_speed_10m,wind_direction_10m,temperature_2m', past_hours: '4', forecast_hours: '13',
-            timeformat: 'unixtime', temperature_unit: imperial ? 'fahrenheit' : 'celsius', wind_speed_unit: imperial ? 'mph' : 'kmh'});
-          const [rings, response] = await Promise.all([loadBoundaries(), fetch('https://api.open-meteo.com/v1/forecast?' + params, {signal: controller.signal})]);
-          if (!response.ok) throw new Error('Forecast unavailable');
-          const points: GridPoint[] = await response.json();
-          if (points.length !== gridSize ** 2 || !points.every(p => p.hourly?.time?.length)) throw new Error('Empty field');
-          if (!controller.signal.aborted) { this.polygons.set(rings); this.field.set(points); }
-        } catch { if (!controller.signal.aborted) this.error.set(true); }
-        finally { if (!controller.signal.aborted) this.loading.set(false); }
-      }, 100);
-      onCleanup(() => { clearTimeout(timer); controller.abort(); });
-    });
-  }
-
-  readonly outlines = computed(() => {
-    const c = this.center(), dx = longitudeSpan(c);
-    const paths: string[] = [];
-    for (const b of this.polygons()) {
-      if (b.south > c.lat + c.span / 2 || b.north < c.lat - c.span / 2) continue;
-      for (const shift of [-360, 0, 360]) {
-        if (b.west + shift > c.lon + dx / 2 || b.east + shift < c.lon - dx / 2) continue;
-        paths.push('M' + b.points.map(([lon, lat]) => ((lon + shift - c.lon) / dx * width + width / 2).toFixed(1)
-          + ',' + ((c.lat - lat) / c.span * height + height / 2).toFixed(1)).join('L') + 'Z');
-      }
+  private readonly grid = computed(
+    () => {
+      const full = this.expanded(),
+        v = this.viewport();
+      return full && !v ? null : forecastGrid(this.place(), full ? v : undefined);
+    },
+    {
+      equal: (a, b) =>
+        a?.side === b?.side &&
+        a?.latitude === b?.latitude &&
+        a?.longitude === b?.longitude &&
+        a?.latRadius === b?.latRadius &&
+        a?.lonRadius === b?.lonRadius,
     }
-    return paths.join('');
+  );
+
+  readonly dates = computed(() => this.field()?.dates ?? []);
+  readonly places = computed(() => {
+    const current = this.locationCache();
+    const entries = [this.snapshot().place, ...(current ? [current] : []), ...this.saved()];
+    return entries.filter(
+      (p, i) =>
+        entries.findIndex(
+          (other) =>
+            Math.abs(p.latitude - other.latitude) < 0.01 && Math.abs(wrap(p.longitude - other.longitude)) < 0.01
+        ) === i
+    );
   });
-  readonly samples = computed(() => {
-    const index = this.layer() === 'temperature' ? 4 : this.hour();
-    const field = this.field();
-    if (!field.length) return [];
-    return Array.from({length: 14 * 12}, (_, i) => {
-      const x = (i % 14 + .5) / 14, y = (Math.floor(i / 14) + .5) / 12;
-      const gx = x * (gridSize - 1), gy = y * (gridSize - 1);
-      const ix = Math.floor(gx), iy = Math.floor(gy);
-      let east = 0, north = 0, temperature = 0;
-      for (const row of [0, 1]) for (const col of [0, 1]) {
-        const weight = (col ? gx - ix : 1 - gx + ix) * (row ? gy - iy : 1 - gy + iy);
-        const h = field[(iy + row) * gridSize + ix + col].hourly;
-        const direction = h.wind_direction_10m[index] * Math.PI / 180;
-        east += weight * h.wind_speed_10m[index] * Math.sin(direction);
-        north += weight * h.wind_speed_10m[index] * Math.cos(direction);
-        temperature += weight * h.temperature_2m[index];
-      }
-      const speed = Math.hypot(east, north);
-      const celsius = this.imperial() ? (temperature - 32) / 1.8 : temperature;
-      const kmh = this.imperial() ? speed * 1.609 : speed;
-      const hue = this.layer() === 'wind' ? Math.max(40, 202 - kmh * 2) : Math.max(0, Math.min(260, 170 - celsius * 5));
-      return {x: x * width, y: y * height, direction: Math.atan2(east, north) * 180 / Math.PI,
-        color: 'hsl(' + hue + ' 72% 36%)', speed};
-    });
+  readonly legendValues = computed(() => (this.layer() === 'wind' ? [120, 80, 40, 0] : [55, 30, 20, 10, 0, -20, -40]));
+  readonly legendColors = computed(
+    () =>
+      'linear-gradient(to bottom,' +
+      this.legendValues()
+        .map((v) => 'rgb(' + mapColor(v, this.layer()).join(',') + ')')
+        .join(',') +
+      ')'
+  );
+  readonly unit = computed(() =>
+    this.layer() === 'wind' ? (this.imperial() ? 'mph' : 'km/h') : this.imperial() ? '°F' : '°C'
+  );
+  readonly nowIndex = computed(() => {
+    const dates = this.dates();
+    return dates.length ? clamp((Date.now() - dates[0]) / hourMs, 0, dates.length - 1) : 0;
+  });
+  readonly nowHour = computed(() =>
+    this.dates().findIndex((t) => Math.floor(t / hourMs) === Math.floor(Date.now() / hourMs))
+  );
+  readonly displayTime = computed(() => {
+    const dates = this.dates();
+    return dates.length ? dates[0] + this.position() * hourMs : Date.now();
+  });
+  readonly dateLabel = computed(() =>
+    new Intl.DateTimeFormat(this.local.formattingLocale(), {
+      dateStyle: 'full',
+      timeZone: this.place().timezone,
+    }).format(this.displayTime())
+  );
+  readonly ticks = computed(() =>
+    this.dates()
+      .map((time, i) => ({ i, time }))
+      .filter((t) => t.i >= 2 && t.i % 2 === 0 && t.i < this.dates().length - 1)
+  );
+  readonly focusData = computed(() => {
+    const p = this.place();
+    return p.id === this.snapshot().place.id ? this.snapshot() : this.conditions()[p.id];
   });
   readonly marker = computed(() => {
-    const c = this.center(), p = this.place();
-    return {x: width * (.5 + longitude(p.longitude - c.lon) / longitudeSpan(c)), y: height * (.5 + (c.lat - p.latitude) / c.span)};
+    const data = this.focusData(),
+      field = this.field(),
+      p = this.place(),
+      position = this.layer() === 'wind' ? this.position() : this.nowIndex();
+    const grid = field ? mapReading(field.grid, mapFrame(field, position), p.latitude, p.longitude) : undefined;
+    const at = this.displayTime(),
+      hour = data?.forecastHours?.find(
+        (h) => h.instant && Math.floor(Date.parse(h.instant) / hourMs) === Math.floor(at / hourMs)
+      );
+    const current = this.layer() === 'temperature' || !this.expanded() || Math.abs(at - Date.now()) < 30 * 60_000;
+    const point = current ? data?.conditions : hour;
+    const wind = point?.wind ?? (grid ? Math.hypot(grid.east, grid.north) * (this.imperial() ? 2.236936 : 3.6) : null);
+    const bearing = point?.direction ?? (grid ? (Math.atan2(-grid.east, -grid.north) * 180) / Math.PI : null);
+    const temp = point?.temperature ?? (grid ? this.temperature(grid.temperature) : null);
+    const low = Number(data?.low),
+      high = Number(data?.high);
+    const inCelsius = (value: number) => (this.imperial() ? (value - 32) / 1.8 : value);
+    const color = (value: number) => 'rgb(' + mapColor(inCelsius(value), 'temperature').join(',') + ')';
+    const range =
+      Number.isFinite(low) && Number.isFinite(high) && temp != null
+        ? {
+            low: this.number(low) + '°',
+            high: this.number(high) + '°',
+            lowColor: color(low),
+            highColor: color(high),
+            currentColor: color(temp),
+            angle: 153 + 234 * (high > low ? clamp((temp - low) / (high - low), 0, 1) : 0.5),
+          }
+        : null;
+    return { value: this.number(this.layer() === 'wind' ? wind : temp), direction: this.direction(bearing), range };
   });
-  readonly dates = computed(() => this.field()[0]?.hourly.time ?? []);
-  readonly timeLabel = computed(() => {
-    const time = this.dates()[this.hour()];
-    return time ? new Date(time * 1000).toLocaleString(undefined, {weekday:'short',hour:'numeric',minute:'2-digit',timeZone:this.place().timezone || undefined}) : '';
-  });
-  open() { this.expanded.set(true); this.dialog().nativeElement.showModal(); }
-  close() { this.dialog().nativeElement.close(); }
+  constructor() {
+    effect(() => {
+      const p = this.snapshot().place;
+      if (p.id === 0) this.locationCache.set(p);
+    });
+    effect((cleanup) => {
+      const grid = this.grid();
+      this.retryCount();
+      if (!grid) return;
+      let active = true;
+      this.loading.set(true);
+      this.error.set(false);
+      const timer = setTimeout(
+        async () => {
+          try {
+            const coordinates = gridCoordinates(grid),
+              points: MapHour[][] = new Array(coordinates.length);
+            let i = 0;
+            const worker = async () => {
+              while (active && i < coordinates.length) {
+                const n = i++,
+                  p = coordinates[n];
+                points[n] = await this.pointForecast(p.latitude, p.longitude);
+              }
+            };
+            await Promise.all(Array.from({ length: 3 }, worker));
+            if (!active) return;
+            const field = makeMapField(grid, points),
+              previous = this.field();
+            const time = this.position();
+            this.field.set(field);
+            const start = previous?.dates[0];
+            this.position.set(
+              start ? clamp(time + (start - field.dates[0]) / hourMs, 0, field.dates.length - 1) : this.nowIndex()
+            );
+            this.loading.set(false);
+          } catch {
+            if (active) {
+              active = false;
+              this.error.set(true);
+              this.loading.set(false);
+            }
+          }
+        },
+        untracked(() => this.expanded()) ? 550 : 0
+      );
+      cleanup(() => {
+        active = false;
+        clearTimeout(timer);
+      });
+    });
+    effect((cleanup) => {
+      const p = this.place(),
+        locations = this.panel() === 'locations' ? this.places() : [p];
+      const main = this.snapshot(),
+        units = this.imperial() ? 'imperial' : 'metric',
+        locale = this.local.locale();
+      let active = true;
+      void (async () => {
+        for (const row of locations) {
+          if (!active) break;
+          if (row.id === main.place.id || untracked(() => this.conditions()[row.id]?.windUnit) === main.windUnit)
+            continue;
+          try {
+            const s = await this.weather.load(row, units, locale);
+            if (active) this.conditions.update((values) => ({ ...values, [row.id]: s }));
+          } catch {
+            /* A place with unavailable conditions can still be selected. */
+          }
+        }
+      })();
+      cleanup(() => {
+        active = false;
+      });
+    });
+  }
+  private pointForecast(lat: number, lon: number) {
+    const key = lat.toFixed(2) + ',' + lon.toFixed(2),
+      now = Date.now(),
+      cached = this.cache.get(key);
+    if (cached && cached.expires > now) return cached.data;
+    const params = new URLSearchParams({
+      latitude: lat.toFixed(2),
+      longitude: lon.toFixed(2),
+      language: 'en',
+      timezone: 'UTC',
+      view: 'map',
+    });
+    const data = this.api.getCalendarForecast(params).then((r) => r.forecastHourly.hours);
+    const entry = { expires: Math.min(now + 30 * 60_000, (Math.floor(now / hourMs) + 1) * hourMs), data };
+    this.cache.set(key, entry);
+    if (this.cache.size > 240) this.cache.delete(this.cache.keys().next().value!);
+    void data.catch(() => {
+      if (this.cache.get(key) === entry) this.cache.delete(key);
+    });
+    return data;
+  }
+  direction(degrees: number | null | undefined) {
+    if (degrees == null) return '';
+    const d = directions[Math.round((degrees + 360) / 22.5) % 16],
+      k = 'cardinal.' + d,
+      translated = this.local.text(k);
+    return translated === k ? d : translated;
+  }
+  number(value: number | null | undefined) {
+    return value == null
+      ? '—'
+      : new Intl.NumberFormat(this.local.formattingLocale(), { maximumFractionDigits: 0 }).format(value);
+  }
+  temperature(c: number) {
+    return this.imperial() ? c * 1.8 + 32 : c;
+  }
+  legendValue(value: number) {
+    return this.number(
+      this.layer() === 'wind' ? (this.imperial() ? value / 1.609344 : value) : this.temperature(value)
+    );
+  }
+  hourLabel(time: number) {
+    return new Intl.DateTimeFormat(this.local.formattingLocale(), {
+      hour: 'numeric',
+      timeZone: this.place().timezone,
+    }).format(time);
+  }
+  conditionsFor(p: Place) {
+    return p.id === this.snapshot().place.id ? this.snapshot() : this.conditions()[p.id];
+  }
+  open(event?: Event) {
+    if (event?.composedPath().some((node) => node instanceof Element && node.matches('a,button,[role="link"]'))) return;
+    this.panel.set(null);
+    this.markerExpanded.set(true);
+    this.timelineVisible.set(true);
+    this.position.set(this.nowIndex());
+    this.expanded.set(true);
+    this.dialog().nativeElement.showModal();
+    // Use an already granted browser location, as native does with its last known fix.
+    if (!this.locationCache() && navigator.permissions && navigator.geolocation) {
+      void navigator.permissions
+        .query({ name: 'geolocation' })
+        .then((permission) => {
+          if (permission.state !== 'granted' || !this.expanded()) return;
+          navigator.geolocation.getCurrentPosition(
+            ({ coords }) => {
+              this.locationCache.set({
+                id: 0,
+                name: 'My Location',
+                country: '',
+                countryCode: '',
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+              });
+            },
+            () => {},
+            { maximumAge: 600_000, timeout: 5000 }
+          );
+        })
+        .catch(() => {});
+    }
+  }
+  close() {
+    this.dialog().nativeElement.close();
+  }
   resetView() {
-    this.stop(); this.expanded.set(false); this.layer.set('wind'); this.hour.set(4);
-    this.recenter();
+    this.stop();
+    this.expanded.set(false);
+    this.selection.set(null);
+    this.layer.set('wind');
+    this.viewport.set(undefined);
+    this.panel.set(null);
+    this.position.set(this.nowIndex());
+  }
+  togglePanel(panel: Panel) {
+    this.stop();
+    this.panel.update((value) => (value === panel ? null : panel));
+  }
+  selectPlace(p: Place) {
+    this.selection.set(p);
+    this.surface()?.recenter();
+    this.panel.set(null);
+    this.markerExpanded.set(true);
+    this.timelineVisible.set(true);
   }
   recenter() {
-    const p = this.place(), c = this.center();
-    if (c.lat !== p.latitude || c.lon !== p.longitude || c.span !== 8) this.center.set({lat:p.latitude, lon:p.longitude, span:8});
+    this.selectPlace(this.locationCache() ?? this.snapshot().place);
   }
-  setLayer(layer: 'wind'|'temperature') { this.stop(); this.layer.set(layer); }
-  zoom(factor: number) { this.center.update(c => ({...c, span: Math.max(.5, Math.min(40, c.span * factor))})); }
-  panStart(event: PointerEvent) {
-    if (event.button !== 0 || !event.isPrimary) return;
-    (event.currentTarget as Element).setPointerCapture(event.pointerId);
-    this.down = [event.clientX, event.clientY];
+  mapTap() {
+    if (this.panel()) {
+      this.panel.set(null);
+      return;
+    }
+    if (this.markerExpanded()) this.markerExpanded.set(false);
+    else this.timelineVisible.update((v) => !v);
   }
-  panEnd(event: PointerEvent) {
-    if (!this.down) return;
-    const dx = event.clientX - this.down[0], dy = event.clientY - this.down[1];
-    this.down = undefined;
-    if (Math.hypot(dx,dy) < 4) return;
-    const bounds = (event.currentTarget as Element).getBoundingClientRect();
-    const scale = Math.max(bounds.width / width, bounds.height / height);
-    this.center.update(c => ({...c, lat: Math.max(-84, Math.min(84, c.lat + dy / (height * scale) * c.span)),
-      lon: longitude(c.lon - dx / (width * scale) * longitudeSpan(c))}));
+  setLayer(layer: MapLayer) {
+    this.stop();
+    this.layer.set(layer);
+    this.panel.set(null);
+    this.position.set(this.nowIndex());
+    this.markerExpanded.set(true);
   }
-  cancelPan() { this.down = undefined; }
-  retry() { this.retryCount.update(n => n + 1); }
+  setPosition(n: number) {
+    this.stop();
+    this.position.set(n);
+  }
+  retry() {
+    this.retryCount.update((n) => n + 1);
+  }
   togglePlay() {
-    if (this.playing()) { this.stop(); return; }
+    if (this.playing()) {
+      this.stop();
+      return;
+    }
+    const last = this.dates().length - 1;
+    if (last < 1) return;
+    const start = this.position(),
+      since = performance.now();
     this.playing.set(true);
-    this.playback = setInterval(() => this.hour.update(h => (h + 1) % Math.max(1, this.dates().length)), 650);
+    this.playback = setInterval(
+      () => this.position.set((start + ((performance.now() - since) * last) / 8000) % last),
+      100
+    );
   }
-  stop() { clearInterval(this.playback); this.playing.set(false); }
-  ngOnDestroy() { this.stop(); }
+  stop() {
+    clearInterval(this.playback);
+    this.playing.set(false);
+  }
+  cancel(e: Event) {
+    if (this.panel()) {
+      e.preventDefault();
+      this.panel.set(null);
+    }
+  }
+  ngOnDestroy() {
+    this.stop();
+  }
 }

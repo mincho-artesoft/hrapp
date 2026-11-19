@@ -250,7 +250,7 @@ function calendarEvent(title: string): any {
   };
 }
 
-async function testEventSharing(service: CalendarService, email: FakeEmailService): Promise<void> {
+async function testEventSharing(service: CalendarService, email: FakeEmailService, store: MemoryStore): Promise<void> {
   const eventId = 'event-sharing-roles';
   expectStatus(await service.upsertEvent(owner, eventId, eventPayload('Original event')), 201, 'create event');
 
@@ -349,10 +349,32 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
 
   const ownerState = expectStatus(await service.sharedState(owner), 200, 'owner shared state');
   const updated = ownerState.outgoing.find((value: any) => value.id === eventId);
+  expectStatus(await service.upsertEvent(recipient, eventId, {
+    ...eventPayload('Stale writer upload'), feedId: grant.feedId, expectedSequence: updated.sequence - 1,
+  }), 409, 'an earlier sync cannot replace a newer event edit');
   assert.equal(updated.title, 'Writer updated event');
   assert.equal(updated.location, 'Varna\nBulgaria');
   assert.equal(updated.url, 'https://example.com/meeting');
   assert.equal(updated.details.notes, 'Complete shared event notes');
+
+  const eventKey = keys.event(owner.calId, eventId);
+  const legacy = await store.getJSON(eventKey);
+  delete legacy.ownerId;
+  await store.putJSON(eventKey, legacy);
+  const compareAndSet = store.putJSONIfMatch.bind(store);
+  store.putJSONIfMatch = async (key, value, etag) => {
+    if (key === eventKey) {
+      await store.putJSON(key, { ...legacy, title: 'Edited while restoring sharing information', sequence: legacy.sequence + 1 });
+    }
+    return compareAndSet(key, value, etag);
+  };
+  try {
+    const concurrent = expectStatus(await service.sharedState(owner), 200, 'concurrent sharing metadata restore');
+    assert.equal(concurrent.outgoing.find((event: any) => event.id === eventId).title, 'Edited while restoring sharing information');
+    assert.equal((await store.getJSON(eventKey)).title, 'Edited while restoring sharing information');
+  } finally {
+    store.putJSONIfMatch = compareAndSet;
+  }
 
   expectStatus(await service.updateEventRecipientAccess(
     owner,
@@ -378,7 +400,7 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
   const cancelled = expectStatus(await service.sharedState(owner), 200, 'cancelled owner state')
     .outgoing.find((value: any) => value.id === eventId);
   assert.equal(cancelled.status, 'cancelled');
-  assert.equal(cancelled.title, 'Writer updated event');
+  assert.equal(cancelled.title, 'Edited while restoring sharing information');
   expectStatus(await service.upsertEvent(owner, eventId, eventPayload('Must stay cancelled')), 409, 'cancel is terminal');
 
   const removedEventId = 'event-recipient-removal';
@@ -826,7 +848,7 @@ async function main(): Promise<void> {
   await seedAccount(store, core, owner, ownerEmail);
   await seedAccount(store, core, recipient, recipientEmail);
 
-  await testEventSharing(service, email);
+  await testEventSharing(service, email, store);
   await testPastEventInvitations(service, store);
   await testCalendarSharing(service, email, kind);
   await testLegacySharingWrites(service, store, kind);

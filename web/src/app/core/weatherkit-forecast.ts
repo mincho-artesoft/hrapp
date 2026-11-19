@@ -15,11 +15,15 @@ interface Reading {
   visibility: number;
 }
 interface WeatherHour extends Reading {
+  precipitationType?: string;
+  snowfallAmount?: number;
   forecastStart: string;
   precipitationAmount: number;
   precipitationChance: number;
 }
 interface WeatherDay {
+  precipitationType?: string;
+  snowfallAmount?: number;
   forecastStart: string;
   temperatureMax: number;
   temperatureMin: number;
@@ -92,7 +96,8 @@ export function calendarForecastSeries(data: AppleForecast, timezone: string, im
     current: {time: local(c.asOf), weather_code: code(c.conditionCode), is_day: Number(c.daylight), cloud_cover: c.cloudCover * 100,
       temperature_2m: temperature(c.temperature), apparent_temperature: temperature(c.temperatureApparent),
       relative_humidity_2m: c.humidity * 100, wind_speed_10m: speed(c.windSpeed), wind_direction_10m: c.windDirection,
-      pressure_msl: c.pressure},
+      pressure_msl: c.pressure, uv_index: c.uvIndex, wind_gusts_10m: speed(c.windGust),
+      visibility: c.visibility, dew_point_2m: temperature(c.temperatureDewPoint)},
     hourly: {
       time: hours.map(h => local(h.forecastStart)), weather_code: hours.map(h => code(h.conditionCode)), is_day: hours.map(h => Number(h.daylight)),
       temperature_2m: hours.map(h => temperature(h.temperature)), apparent_temperature: hours.map(h => temperature(h.temperatureApparent)),

@@ -16,6 +16,7 @@ struct MacCalendarEventCard: NSViewRepresentable {
     var textHeight: CGFloat? = nil
     var isCreation = false
     var isCancelled = false
+    var isReadOnly = false
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var direction
 
@@ -138,6 +139,7 @@ struct MacCalendarEventCard: NSViewRepresentable {
             }
             if !c.isCreation, let event = c.event,
                let icon = CalendarEventSymbol.name(calendar: event.calendar, allDay: c.isAllDay) { symbol(icon) }
+            if c.isReadOnly { symbol("lock.fill") }
             let title = c.isCreation ? NSLocalizedString("New event", comment: "Default event title")
                 : c.event?.title ?? NSLocalizedString("New Event", comment: "")
             append(c.isAllDay ? title : twoLineTitle(title, font: font, width: width), color: titleColor)

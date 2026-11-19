@@ -121,6 +121,9 @@ final class MacAppLocalCalendarBridge {
         value.location = record.location; value.notes = record.details?["notes"]?.string
         value.url = record.url.flatMap(URL.init(string:)); value.timeZone = record.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:))
         let alarms: [SharedEventAlarm] = record.decodedDetail("alarms") ?? []
+        if let raw = record.details?["availability"]?.number, let availability = EKEventAvailability(rawValue: Int(raw)), availability != .notSupported {
+            value.availability = availability
+        }
         value.alarms = alarms.compactMap { $0.makeAlarm() }
         value.recurrenceRules = record.macRecurrenceRules.compactMap { $0.makeRule() }
         let location: SharedEventLocation? = record.decodedDetail("structuredLocation")
@@ -157,7 +160,9 @@ final class MacAppLocalCalendarBridge {
             item.title = draft.title ?? ""; item.start = DeviceCalendarEvent.iso(draft.startDate); item.end = DeviceCalendarEvent.iso(draft.endDate)
             item.allDay = draft.isAllDay; item.location = draft.location; item.url = draft.url?.absoluteString
             var details = item.details ?? [:]
-            details["availability"] = .number(Double(draft.availability.rawValue))
+            if draft.availability != .notSupported {
+                details["availability"] = .number(Double(draft.availability.rawValue))
+            }
             details["attendees"] = details["attendees"] ?? .array([])
             details["notes"] = .string(draft.notes ?? ""); details["timeZone"] = .string(draft.timeZone?.identifier ?? TimeZone.current.identifier)
             details["alarms"] = .array(try (draft.alarms ?? []).map { .object(try CalendarJSON.object(encoding: SharedEventAlarm(alarm: $0))) })
@@ -171,7 +176,10 @@ final class MacAppLocalCalendarBridge {
                 item.start = DeviceCalendarEvent.iso(anchor)
                 item.end = DeviceCalendarEvent.iso(anchor.addingTimeInterval(draft.endDate.timeIntervalSince(draft.startDate)))
             }
-            if let metadata { details.merge(try CalendarJSON.object(encoding: metadata)) { _, new in new } }
+            if let metadata {
+                let fields = try CalendarJSON.object(encoding: metadata)
+                for key in ["travelTime", "videoCallURL", "attachments"] { details[key] = fields[key] }
+            }
             item.details = details
             var documents = store.calendars
             if let original, let source = record(for: original.calendar), let old {

@@ -5,6 +5,7 @@ import languages from "../components/calendar-native/native-languages.json";
 export class CalendarLocalization {
   readonly languages = languages;
   readonly locale = signal("en");
+  readonly formattingLocale = signal("en");
   private readonly strings = signal<Record<string, string>>({});
   private request = 0;
   constructor() {
@@ -29,6 +30,7 @@ export class CalendarLocalization {
       languages.find((l) => l.value === requested.split("-")[0])?.value ??
       "en";
     this.locale.set(locale);
+    this.formattingLocale.set(value === "system" ? requested : locale);
     this.strings.set({});
     const request = ++this.request;
     if (locale === "en") return;
@@ -78,7 +80,7 @@ export class CalendarNativeDatePipe implements PipeTransform {
       "EEEE, MMMM d, y": { dateStyle: "full" },
     };
     return new Intl.DateTimeFormat(
-      this.localization.locale(),
+      this.localization.formattingLocale(),
       formats[format] ?? { dateStyle: "medium" },
     ).format(date);
   }

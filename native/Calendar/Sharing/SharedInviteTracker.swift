@@ -135,15 +135,17 @@ enum SharedInviteTracker {
     ) {
         var all = allTracked()
         let previous = all[remote.id]
+        let sameCopy = previous?.localEventIdentifier == localEventIdentifier && previous?.feedID == remote.feedId
         all[remote.id] = Invite(
             eventID: remote.id,
             feedID: remote.feedId,
             localEventIdentifier: localEventIdentifier,
-            isCancelled: remote.isCancelled,
+            isCancelled: sameCopy ? (previous?.isCancelled ?? false) : false,
             isRevoked: false,
-            lastSequence: remote.sequence ?? 0,
+            // Finding a server receipt does not apply its event to EventKit.
+            lastSequence: sameCopy ? (previous?.lastSequence ?? -1) : -1,
             access: remote.access ?? previous?.access ?? .reader,
-            lastSyncedSnapshot: previous?.lastSyncedSnapshot,
+            lastSyncedSnapshot: sameCopy ? previous?.lastSyncedSnapshot : nil,
             receiptRecorded: true
         )
         if let session = CalendarFeedSession.existing {

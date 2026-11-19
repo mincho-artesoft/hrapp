@@ -1,5 +1,5 @@
 import { Injectable, computed, inject, signal } from "@angular/core";
-import { webEventDetails, nativeEventDetails } from "./calendar-native-model";
+import { webEventDetails, nativeEventDetails, withWebEventDetails } from "./calendar-native-model";
 import {
   CalendarPlatformApiService,
   DeviceCalendar,
@@ -51,13 +51,16 @@ export interface PendingInvitation {
   access: CalendarAccess;
 }
 export function isWebCalendar(calendar: {
+  accountLocal?: boolean;
+  ownerId?: string;
   source?: string;
   calendarKind?: string;
   providerMirrorID?: string;
 }): boolean {
   const source = (calendar.source ?? "").trim();
   // Older device replicas identify provider accounts only by their source label.
-  return !calendar.providerMirrorID &&
+  const deviceOnlyLocal = !calendar.accountLocal && !calendar.ownerId && /^(local calendars?|локални календари)$/i.test(source);
+  return !deviceOnlyLocal && !calendar.providerMirrorID &&
     !/^(google|microsoft)\s*·/i.test(source) &&
     !["icloud", "eventkit", "subscription", "subscribed"].includes(calendar.calendarKind?.toLowerCase() ?? "") &&
     !/^(subscribed( calendars)?|абонирани календари|абонаментни календари)$/i.test(source) &&
@@ -150,8 +153,8 @@ export class CalendarNativeService {
         "/shared-state",
       ).then((s) => {
         if (current()) {
-          this.outgoing.set(s.outgoing ?? []);
-          this.received.set(s.received ?? []);
+          this.outgoing.set((s.outgoing ?? []).map(withWebEventDetails));
+          this.received.set((s.received ?? []).map(withWebEventDetails));
         }
       }),
       Promise.all([
@@ -391,7 +394,8 @@ export class CalendarNativeService {
         end: event.end,
         allDay: event.allDay,
         location: event.location,
-        details: event.details,
+        url: event.url,
+        details: nativeEventDetails(event.details),
         localEventIdentifier: localID,
       });
     const feed =
@@ -422,18 +426,21 @@ export class CalendarNativeService {
     const feedId = event.receivedFeedId ?? received?.feedId;
     if (feedId && (event.receivedAccess ?? received?.access) === "reader")
       throw new Error("Reader access cannot edit this event.");
-    const next = { ...event, ...patch, details: details ?? event.details };
-    await this.request(`/events/${encodeURIComponent(event.id)}`, "PUT", {
+    const next = { ...event, ...patch, id: event.id, details: details ?? event.details };
+    const saved = await this.request<{ event: WebCalendarEvent }>(`/events/${encodeURIComponent(event.id)}`, "PUT", {
       title: next.title,
       start: next.start,
       end: next.end,
       allDay: next.allDay,
       location: next.location,
-      details: next.details,
+      url: next.url,
+      details: nativeEventDetails(next.details),
+      expectedSequence: event.sequence,
+      expectedUpdatedAt: event.updatedAt,
       ...(feedId ? { feedId } : {}),
     });
     await this.refreshAfterEventWrite();
-    return { ...next, ...this.received().find((e) => e.id === event.id) };
+    return { ...next, ...withWebEventDetails(saved.event), receivedFeedId: feedId, receivedAccess: event.receivedAccess ?? received?.access };
   }
   async updateCalendarEvent(
     event: WebCalendarEvent,
@@ -447,6 +454,9 @@ export class CalendarNativeService {
     if (!calendar || calendar.access === "reader" || calendar.isRevoked)
       throw new Error("This calendar is read-only.");
     const id = event.id.split(".").at(-1)!;
+    if (event.sharedCalendarRevision && event.sharedCalendarRevision !== calendar.eventsUpdatedAt) {
+      throw new Error("This calendar changed on another device. Reopen the event before saving.");
+    }
     const next = { ...event, ...patch, id, details: details ?? event.details };
     const events = (calendar.events ?? []).filter((e) => e.id !== id);
     if (!deleting)
@@ -466,14 +476,15 @@ export class CalendarNativeService {
       },
     );
     await this.refreshAfterEventWrite();
-    return { ...next, id: event.id };
+    const refreshed = this.sharedCalendars().find(c => c.id === calendar.id);
+    return { ...next, id: event.id, sharedCalendarRevision: refreshed?.eventsUpdatedAt };
   }
   private async refreshAfterEventWrite(): Promise<void> {
     // A refresh started before the write can contain the old event.
     if (this.inFlight) await this.inFlight;
     await this.refresh();
   }
-  async syncOwnedCalendar(calendarID: string) {
+  async syncOwnedCalendar(calendarID: string, changedEventId: string) {
     const { calendars } = await this.request<{ calendars: any[] }>(
       "/ios/calendars/account",
     );
@@ -482,12 +493,13 @@ export class CalendarNativeService {
     const { calendar } = await this.request<{ calendar: SharedCalendar }>(
       `/icloud-calendars/${stored.sharingCalendarID}/sharing`,
     );
-    const events = await Promise.all(
-      stored.events.map(async (e: any) => ({
-        ...e,
-        id: /^[a-f0-9]{64}$/i.test(e.id) ? e.id : await this.sharingID(e.id),
-      })),
-    );
+    const localID = changedEventId.split(".").at(-1)!;
+    const sharedID = /^[a-f0-9]{64}$/i.test(localID) ? localID : await this.sharingID(localID);
+    const changed = stored.events.find((event: WebCalendarEvent) => event.id === localID);
+    // The sharing snapshot can already contain other devices' newer events.
+    // Replace only the event affected by this edit or deletion.
+    const events = (calendar.events ?? []).filter(event => event.id !== sharedID);
+    if (changed) events.push({ ...changed, id: sharedID });
     await this.request(
       `/icloud-calendars/${stored.sharingCalendarID}/events`,
       "PUT",

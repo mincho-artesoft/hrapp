@@ -29,6 +29,7 @@ extension WeatherMapLayer {
 }
 
 struct WindMapCard: View {
+    let viewportHeight: CGFloat
     let coordinate: CLLocationCoordinate2D?
     let name: String
     let timeZone: TimeZone
@@ -56,22 +57,10 @@ struct WindMapCard: View {
                 .font(.caption.weight(.medium)).foregroundStyle(.white.opacity(0.65))
                 .frame(maxWidth: .infinity, alignment: .leading)
             Button { expanded = true } label: {
-                ZStack {
-                    if let coordinate {
-                        WindMapCanvas(field: matchingField, date: matchingField?.forecastDates().first ?? Date(),
-                            coordinate: coordinate, name: name, interactive: false,
-                            animated: visible && !expanded && scenePhase == .active && !reduceMotion,
-                            recenterID: 0, imperial: GlobalState.measurementSystem == "Imperial", pointForecast: pointForecast)
-                            .allowsHitTesting(false)
-                    } else { Color(red: 0.04, green: 0.32, blue: 0.48) }
-                    if store.isLoading {
-                        ProgressView().tint(.white).padding(12).background(.ultraThinMaterial, in: Capsule())
-                    } else if store.failed {
-                        Label(WindMapLabels.text("Wind data unavailable"), systemImage: "exclamationmark.icloud")
-                            .font(.caption).padding(10).background(.ultraThinMaterial, in: Capsule())
-                    }
-                }
-                .aspectRatio(310.0 / 286, contentMode: .fit)
+                Color.clear
+                    .aspectRatio(310.0 / 286, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .overlay { preview }
                 .clipShape(RoundedRectangle(cornerRadius: 11))
                 .contentShape(Rectangle())
             }
@@ -79,6 +68,7 @@ struct WindMapCard: View {
             .accessibilityLabel(WindMapLabels.text("Open wind map"))
             .accessibilityIdentifier("weather.windMap.open")
         }
+        .frame(maxHeight: viewportHeight * 0.8)
         .onScrollVisibilityChange(threshold: 0.1) { visible = $0 }
         .task(id: requestKey) {
             guard requestKey != "inactive", let coordinate else { return }
@@ -101,6 +91,24 @@ struct WindMapCard: View {
                     .environment(\.colorScheme, fullScreenColorScheme ?? .dark)
                     .environment(\.layoutDirection, AppPreferences.shared.layoutDirection)
                     .environment(\.locale, .appFormatting)
+            }
+        }
+    }
+
+    private var preview: some View {
+        ZStack {
+            if let coordinate {
+                WindMapCanvas(field: matchingField, date: matchingField?.forecastDates().first ?? Date(),
+                    coordinate: coordinate, name: name, interactive: false,
+                    animated: visible && !expanded && scenePhase == .active && !reduceMotion,
+                    recenterID: 0, imperial: GlobalState.measurementSystem == "Imperial", pointForecast: pointForecast)
+                    .allowsHitTesting(false)
+            } else { Color(red: 0.04, green: 0.32, blue: 0.48) }
+            if store.isLoading {
+                ProgressView().tint(.white).padding(12).background(.ultraThinMaterial, in: Capsule())
+            } else if store.failed {
+                Label(WindMapLabels.text("Wind data unavailable"), systemImage: "exclamationmark.icloud")
+                    .font(.caption).padding(10).background(.ultraThinMaterial, in: Capsule())
             }
         }
     }

@@ -200,15 +200,31 @@ enum SharedInviteRefresher {
                     try await CloudCalendarsAPI.upsertEvent(
                         upload,
                         session: session,
-                        receivedFeedId: invite.feedID
+                        receivedFeedId: invite.feedID,
+                        expectedSequence: remote.sequence
                     )
+                    guard CalendarFeedSession.isCurrent(session),
+                          let tracked = SharedInviteTracker.invite(eventID: invite.eventID),
+                          tracked.localEventIdentifier == invite.localEventIdentifier,
+                          tracked.lastSequence <= remote.sequence, tracked.isRevoked != true else { return false }
+                    invite = tracked
                     invite.lastSequence = remote.sequence + 1
                     invite.lastSyncedSnapshot = current
                     SharedInviteTracker.update(invite)
 
                     if let latest = try? await fetchRemote(invite),
-                       latest.sequence >= invite.lastSequence {
-                        _ = apply(latest, to: invite)
+                       CalendarFeedSession.isCurrent(session),
+                       let tracked = SharedInviteTracker.invite(eventID: invite.eventID),
+                       tracked.localEventIdentifier == invite.localEventIdentifier, tracked.isRevoked != true,
+                       latest.sequence >= tracked.lastSequence {
+                        // A second edit may have been saved while the upload or
+                        // feed read was in flight. Leave it pending for the next pass.
+                        if !latest.isCancelled, tracked.effectiveAccess != .reader,
+                           let event = CalendarViewModel.shared.eventStore.event(withIdentifier: tracked.localEventIdentifier),
+                           SharedOutgoingEventTracker.snapshot(for: event) != current {
+                            return true
+                        }
+                        _ = apply(latest, to: tracked)
                         return true
                     }
                     NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
@@ -272,8 +288,9 @@ enum SharedInviteRefresher {
         // revision is intentionally still compared with EventKit: recipients
         // can edit this writable local copy from another calendar app, and the
         // organiser's S3 version must win again on the next refresh.
-        guard SharedInviteTracker.invite(eventID: invite.eventID) != nil,
-              remote.sequence >= invite.lastSequence else { return false }
+        guard let tracked = SharedInviteTracker.invite(eventID: invite.eventID),
+              tracked.localEventIdentifier == invite.localEventIdentifier, tracked.isRevoked != true,
+              remote.sequence >= max(invite.lastSequence, tracked.lastSequence) else { return false }
 
         let store = CalendarViewModel.shared.eventStore
         guard let event = store.event(withIdentifier: invite.localEventIdentifier) else {

@@ -34,7 +34,9 @@ enum NativeCalendarSyncService {
                         eventKitKind: calendar.type == .birthday ? "birthdays" : "regular")
                     try await replica.sync(doc) { result in
                         guard CalendarFeedSession.existing?.calendarId == session.calendarId else { throw CancellationError() }
-                        try adapter.apply(result, calendar: calendar, original: original, base: replica.baseline(id)?.events ?? [])
+                        let latest = adapter.events(in: calendar)
+                        let retained = DeviceCalendarReplica.merge(base: items, local: result, remote: latest.map(adapter.snapshot))
+                        try adapter.apply(retained, calendar: calendar, original: latest, base: replica.baseline(id)?.events ?? [])
                     }
                     succeeded = true
                 } catch { print("Calendar web sync: \(error.localizedDescription)") }
@@ -93,12 +95,8 @@ enum NativeCalendarSyncService {
         if record.providerSnapshot != nil || AppLocalCalendarStore.shared.calendar(id: record.calendarID)?.isProvider == true {
             var value = AppLocalProviderCalendarStore.snapshot(record); value.id = record.shareID; return value
         }
-        let details = SharedEventDetails(notes: record.notes, timeZone: record.timeZoneIdentifier,
-            alarms: record.alarms.map { SharedEventAlarm(relativeOffset: $0.relativeOffset) },
-            recurrenceRules: record.recurrenceRules ?? [], structuredLocation: record.structuredLocation,
-            videoCallURL: record.videoCallURL, travelTime: record.travelTime, attachments: record.attachments?.map(\.sharedValue))
         return DeviceCalendarEvent(id: record.shareID, title: record.title, start: DeviceCalendarEvent.iso(record.startDate), end: DeviceCalendarEvent.iso(record.endDate),
-            allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: details), readOnly: record.providerReadOnly)
+            allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: record.portableDetails), readOnly: record.providerReadOnly)
     }
 
 }

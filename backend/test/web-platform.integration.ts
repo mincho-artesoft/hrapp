@@ -103,6 +103,10 @@ async function main() {
   const hostToken = verifyHost.body.deviceToken;
   const hostPrincipal = await core.resolveToken(hostToken);
   assert.ok(hostPrincipal?.calId);
+  const browserSession = await core.issueToken(hostPrincipal.principalId, hostPrincipal.calId);
+  await svc.endWebSession(browserSession);
+  assert.equal(await core.resolveToken(browserSession), null);
+  assert.deepEqual(await core.resolveToken(hostToken), hostPrincipal);
   assert.equal(verifyHost.body.profile.isAdmin, true);
 
   // 3. Host creates an event on Web Calendar and checks CloudCalendars wire + ICS compatibility
@@ -124,6 +128,21 @@ async function main() {
   assert.equal(evCreate.status, 201);
   assert.equal(evCreate.body.event.details.color, '#30D158');
   assert.equal(evCreate.body.event.details.videoCallURL, 'https://meet.google.com/abc-defg-hij');
+
+  const detailEdit = await svc.upsertWebCalendarEvent(hostPrincipal, 'ev_test_1', {
+    expectedUpdatedAt: evCreate.body.event.updatedAt,
+    alarms: [{relativeOffsetSeconds: -1800}], travelTime: 600,
+  });
+  assert.equal(detailEdit.status, 200);
+  assert.equal(detailEdit.body.event.start, evCreate.body.event.start);
+  assert.equal(detailEdit.body.event.end, evCreate.body.event.end);
+  assert.equal(detailEdit.body.event.details.alarms[0].relativeOffset, -1800);
+  assert.equal(detailEdit.body.event.details.travelTime, 600);
+  assert.equal((await svc.upsertWebCalendarEvent(hostPrincipal, 'ev_test_1', {
+    expectedUpdatedAt: evCreate.body.event.updatedAt, notes: 'An older open editor',
+  })).status, 409);
+  assert.equal((await svc.upsertWebCalendarEvent(hostPrincipal, 'ev_test_1', {end: null})).status, 400);
+  assert.equal((await svc.upsertWebCalendarEvent(hostPrincipal, 'no_dates', {title: 'No interval'})).status, 400);
 
   // Verify owner's .ics feed contains X-CLOUD-CALENDARS-METADATA with base64 lossless JSON!
   const ownerIcs = await store.getText(`f/${verifyHost.body.feedId}.ics`);

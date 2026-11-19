@@ -32,6 +32,7 @@ final class AppLocalAccountCalendarStorage: AccountLocalCalendarStorage {
             event.providerReadOnly = item.readOnly
             if let details = item.details {
                 let decoded = try JSONDecoder().decode(SharedEventDetails.self, from: JSONEncoder().encode(details))
+                event.syncedFields = .init(decoded)
                 event.notes = decoded.notes ?? ""; event.timeZoneIdentifier = decoded.timeZone ?? calendar.timeZoneIdentifier
                 event.alarms = decoded.alarms.compactMap { $0.relativeOffset.map { AppLocalEventAlarm(relativeOffset: $0) } }
                 event.recurrenceRules = decoded.recurrenceRules; event.videoCallURL = decoded.videoCallURL

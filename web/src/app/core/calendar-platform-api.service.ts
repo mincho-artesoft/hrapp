@@ -1,5 +1,6 @@
-import { Injectable, InjectionToken, isDevMode, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { DestroyRef, Injectable, InjectionToken, isDevMode, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { nativeEventDetails, withWebEventDetails } from './calendar-native-model';
 import { SITE_URL } from './app-facts';
 import { detectBrowserTimeZone } from './ios-event-palette';
 
@@ -147,6 +148,7 @@ export interface WebCalendarEvent {
   start: string;
   end: string;
   allDay?: boolean;
+  url?: string | null;
   location?: string | null;
   color?: string;
   status?: 'confirmed' | 'cancelled' | 'tentative';
@@ -168,6 +170,7 @@ export interface WebCalendarEvent {
   sourceKind?: 'owned' | 'shared' | 'external';
   externalSource?: string;
   readOnly?: boolean;
+  sharedCalendarRevision?: string;
   receivedFeedId?: string;
   receivedAccess?: 'reader' | 'writer' | 'owner';
 }
@@ -457,12 +460,24 @@ export class CalendarPlatformApiService {
     return Boolean(p && (p.verifiedEmails.length > 0 || p.identities.length > 0));
   });
 
+  private sessionGeneration = 0;
   private initPromise: Promise<void> | null = null;
   private gisScriptPromise: Promise<void> | null = null;
   private appleScriptPromise: Promise<void> | null = null;
 
   constructor() {
     if (this.isBrowser) {
+      const synchronizeSession = (event: StorageEvent) => {
+        if (event.storageArea !== localStorage || (event.key !== null && event.key !== this.sessionKey)) return;
+        const saved = this.readSavedToken();
+        if (saved === this.token()) return;
+        this.sessionGeneration++;
+        this.profile.set(null);
+        this.token.set(saved);
+        if (saved) void this.refreshProfile().catch(() => {});
+      };
+      window.addEventListener('storage', synchronizeSession);
+      inject(DestroyRef).onDestroy(() => window.removeEventListener('storage', synchronizeSession));
       const saved = this.readSavedToken();
       if (saved) {
         this.token.set(saved);
@@ -506,7 +521,23 @@ export class CalendarPlatformApiService {
     }
   }
 
+  private verifySession(generation: number): void {
+    if (generation !== this.sessionGeneration) throw new Error('Sign-in session changed.');
+  }
+
+  async signOutBrowser(): Promise<void> {
+    const token = this.token();
+    this.signOut();
+    if (!token) return;
+    const response = await fetch(this.apiBaseURL + '/auth/web-session', {
+      method: 'DELETE', headers: {Authorization: 'Bearer ' + token},
+      cache: 'no-store', keepalive: true, signal: AbortSignal.timeout(10000)
+    });
+    if (!response.ok && response.status !== 401) throw new Error('Could not confirm sign-out with the server.');
+  }
+
   signOut(): void {
+    this.sessionGeneration++;
     this.loadingProfile.set(false);
     this.token.set(null);
     this.profile.set(null);
@@ -526,6 +557,7 @@ export class CalendarPlatformApiService {
     if (opts.body !== undefined) {
       headers['Content-Type'] = 'application/json';
     }
+    const generation = this.sessionGeneration;
     const tok = this.token();
     if ((opts.auth || opts.optionalAuth) && tok) {
       headers['Authorization'] = `Bearer ${tok}`;
@@ -549,6 +581,7 @@ export class CalendarPlatformApiService {
       }
     }
 
+    this.verifySession(generation);
     if (!res.ok) {
       if (res.status === 401 && opts.auth && this.token() === tok) {
         this.signOut();
@@ -708,6 +741,7 @@ export class CalendarPlatformApiService {
     idToken: string;
     profile: UserProfile;
   }> {
+    const generation = this.sessionGeneration;
     if (!this.isBrowser) throw new Error('Browser required');
     const prov = this.providers() ?? (await this.loadAuthProviders());
     const clientId = (prov.appleWebClientId || '').trim();
@@ -765,6 +799,7 @@ export class CalendarPlatformApiService {
       .filter(Boolean)
       .join(' ');
 
+    this.verifySession(generation);
     const profile = await this.signInWithProviderToken(
       'apple',
       idToken,
@@ -786,6 +821,7 @@ export class CalendarPlatformApiService {
     accessToken: string;
     profile: UserProfile;
   }> {
+    const generation = this.sessionGeneration;
     const prov = this.providers() ?? (await this.loadAuthProviders());
     if (!prov.googleWebClientId) {
       throw new CalendarApiError(
@@ -831,6 +867,7 @@ export class CalendarPlatformApiService {
         codeClient.requestCode();
       });
 
+      this.verifySession(generation);
       const codeRes = await this.request<{
         deviceToken: string;
         profile: UserProfile;
@@ -876,6 +913,7 @@ export class CalendarPlatformApiService {
       client.requestAccessToken({ prompt: wantCalendarSync ? 'consent' : '' });
     });
 
+    this.verifySession(generation);
     let profile = this.profile();
     try {
       profile = await this.signInWithProviderToken('google', accessToken);
@@ -908,6 +946,7 @@ export class CalendarPlatformApiService {
     idToken: string;
     profile: UserProfile;
   }> {
+    const generation = this.sessionGeneration;
     if (!this.isBrowser) throw new Error('Browser required');
     const prov = this.providers() ?? (await this.loadAuthProviders());
     if (!prov.microsoftWebClientId) {
@@ -971,6 +1010,7 @@ export class CalendarPlatformApiService {
     }
 
     // Backend `verifyMicrosoftToken` validates the Graph `access_token` against `GET /v1.0/me`
+    this.verifySession(generation);
     let profile = this.profile();
     try {
       profile = await this.signInWithProviderToken('microsoft', tokenJson.access_token);
@@ -1135,7 +1175,8 @@ export class CalendarPlatformApiService {
 
   async getCalendarState(opts: { sync?: boolean } = {}): Promise<WebCalendarStateResponse> {
     const suffix = opts.sync ? '?sync=1' : '';
-    return this.request<WebCalendarStateResponse>(`/web-calendar/state${suffix}`, { auth: true });
+    const state = await this.request<WebCalendarStateResponse>(`/web-calendar/state${suffix}`, { auth: true });
+    return { ...state, events: (state.events ?? []).map(withWebEventDetails), receivedEvents: (state.receivedEvents ?? []).map(withWebEventDetails) };
   }
 
   async upsertCalendarEvent(
@@ -1166,11 +1207,12 @@ export class CalendarPlatformApiService {
       reason?: string;
     },
   ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
-    return this.request(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
+    const result = await this.request<{ event: WebCalendarEvent; notifiedGuest?: boolean }>(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
       method: 'PUT',
       auth: true,
-      body: payload,
+      body: nativeEventDetails(payload),
     });
+    return { ...result, event: withWebEventDetails(result.event) };
   }
 
   async deleteCalendarEvent(

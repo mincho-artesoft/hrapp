@@ -1,0 +1,128 @@
+@if (chart(); as c) {
+  @if (topRow().length) {
+    <div class="sample-strip" aria-hidden="true">
+      @for (cell of topRow(); track $index) {
+        <span>
+          @if (cell) {
+            @if (cell.symbol) {
+              <cc-symbol
+                [name]="cell.symbol"
+                [multicolor]="metric() === 'temp'"
+                [style.transform]="'rotate(' + cell.rotation + 'deg)'"
+              />
+            } @else {
+              {{ cell.text }}
+            }
+          }
+        </span>
+      }
+    </div>
+  }
+  <div
+    class="plot"
+    role="slider"
+    tabindex="0"
+    dir="ltr"
+    [attr.aria-label]="name() | nativeText"
+    [attr.aria-valuemin]="0"
+    [attr.aria-valuemax]="24"
+    [attr.aria-valuenow]="(((target() ?? 0) * 24) / 100).toFixed(1)"
+    [attr.aria-valuetext]="reading() ? reading()!.time + ' ' + format(reading()!.value) + ' ' + c.unit : null"
+    (pointerdown)="down($event)"
+    (pointermove)="move($event)"
+    (lostpointercapture)="target.set(null)"
+    (blur)="target.set(null)"
+    (keydown)="key($event)"
+  >
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient [attr.id]="colorId()" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="100" y2="0">
+          @for (s of c.colors; track $index) {
+            <stop [attr.offset]="s.offset" [attr.stop-color]="s.color" />
+          }
+        </linearGradient>
+      </defs>
+      @for (t of c.ticks; track $index) {
+        <line class="rule" x1="0" x2="100" [attr.y1]="t.y" [attr.y2]="t.y" />
+      }
+      @for (t of c.axes; track t.hour) {
+        <line class="rule vertical" [attr.x1]="t.x" [attr.x2]="t.x" y1="0" y2="100" />
+      }
+      @if (metric() === 'precip') {
+        @for (p of c.points; track $index) {
+          <rect
+            fill="#0a84ff"
+            [attr.x]="p.x + c.columnWidth * 0.1"
+            [attr.y]="p.y"
+            [attr.width]="c.columnWidth * 0.4"
+            [attr.height]="100 - p.y"
+          />
+        }
+        @for (p of c.extra; track $index) {
+          <rect
+            fill="white"
+            [attr.x]="p.x + c.columnWidth * 0.5"
+            [attr.y]="p.y"
+            [attr.width]="c.columnWidth * 0.4"
+            [attr.height]="100 - p.y"
+          />
+        }
+      } @else {
+        @for (path of c.paths; track $index) {
+          <path [attr.d]="path.area" [attr.fill]="'url(#' + colorId() + ')'" fill-opacity=".38" />
+          <path class="line" [attr.d]="path.line" [attr.stroke]="'url(#' + colorId() + ')'" />
+        }
+        @if (metric() === 'wind') {
+          @for (path of c.extraPaths; track $index) {
+            <path class="line" [attr.d]="path.line" stroke="#30d158" />
+          }
+        }
+      }
+      @if (nowX() !== null) {
+        <rect x="0" y="0" [attr.width]="nowX()" height="100" fill="#000" fill-opacity=".4" />
+        <line class="now" [attr.x1]="nowX()" [attr.x2]="nowX()" y1="0" y2="100" />
+      }
+    </svg>
+    @for (t of c.ticks; track $index) {
+      <small class="axis" [style.top.%]="t.y">{{ axisValue(t.value) }}</small>
+    }
+    @for (t of c.axes; track t.hour) {
+      <small class="clock" [style.left.%]="t.x">{{ t.hour.toString().padStart(2, '0') }}</small>
+    }
+    @if (metric() === 'uv') {
+      @for (b of uvBands; track b.value) {
+        <small class="band" [style.top.%]="c.y(b.value)">{{ b.label | nativeText }}</small>
+      }
+    }
+    @if (metric() === 'precip') {
+      @for (b of [1, 4, 10]; track b) {
+        <small class="band" [style.top.%]="c.y(b / (snapshot().windUnit === 'mph' ? 25.4 : 1))">{{
+          ['Light', 'Moderate', 'Heavy'][$index] | nativeText
+        }}</small>
+      }
+    }
+    @for (m of c.markers; track $index) {
+      <span
+        class="dot"
+        [style.left.%]="m.point.x"
+        [style.top.%]="m.point.y"
+        [style.background]="m.color ?? c.colors[0].color"
+        ><b>{{ m.label | nativeText }}</b></span
+      >
+    }
+    @if (reading(); as r) {
+      <i class="probe" [style.left.%]="r.x"></i><i class="hit" [style.left.%]="r.x" [style.top.%]="r.y"></i>
+      <output [class.left]="r.x > 62" [style.left.%]="r.x"
+        >{{ r.time }}<br />{{
+          metric() === 'wind' ? ('Wind' | nativeText) : metric() === 'precip' ? ('Rain' | nativeText) : ''
+        }}
+        {{ format(r.value) }}{{ c.unit }}
+        @if (r.second !== null) {
+          <br />{{ (metric() === 'wind' ? 'Gusts' : 'Snow') | nativeText }} {{ format(r.second) }}{{ c.unit }}
+        }
+      </output>
+    }
+  </div>
+} @else {
+  <p>{{ 'No hourly data available for this day.' | nativeText }}</p>
+}

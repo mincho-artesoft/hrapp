@@ -165,7 +165,29 @@ final class DeviceCalendarReplica {
         let l = Dictionary(local.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
         let r = Dictionary(remote.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
         return Set(b.keys).union(l.keys).union(r.keys).compactMap { id in
-            r[id]?.content == b[id]?.content ? l[id] : r[id]
+            if r[id]?.content == b[id]?.content { return l[id] }
+            guard let original = b[id], let edited = l[id], var merged = r[id],
+                  edited.content != original.content, merged.readOnly != true else { return r[id] }
+            // Concurrent edits to independent fields coexist. The remote revision
+            // wins a conflict on the same field, including the time range as a unit.
+            if merged.title == original.title { merged.title = edited.title }
+            if merged.startDate == original.startDate && merged.endDate == original.endDate && merged.allDay == original.allDay {
+                merged.start = edited.start; merged.end = edited.end; merged.allDay = edited.allDay
+            }
+            if merged.url == original.url { merged.url = edited.url }
+            let oldDetails = original.details ?? [:]
+            let localDetails = edited.details ?? [:]
+            var nextDetails = merged.details ?? [:]
+            if merged.location == original.location && nextDetails["structuredLocation"] == oldDetails["structuredLocation"] {
+                merged.location = edited.location
+                nextDetails["structuredLocation"] = localDetails["structuredLocation"]
+            }
+            for key in Set(oldDetails.keys).union(localDetails.keys) where key != "structuredLocation"
+                && nextDetails[key] == oldDetails[key] && localDetails[key] != oldDetails[key] {
+                nextDetails[key] = localDetails[key]
+            }
+            if !nextDetails.isEmpty || merged.details != nil || edited.details != nil { merged.details = nextDetails }
+            return merged
         }.sorted { $0.id < $1.id }
     }
     func send(_ body: Data) async throws -> DeviceCalendarDocument? {

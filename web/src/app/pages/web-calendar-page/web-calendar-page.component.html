@@ -56,7 +56,6 @@
           <div class="side-card__hdr">{{ "UP NEXT" | nativeText }}</div>
           <div class="up-next-slot">
             @if (upNextEvent(); as nextEv) {
-              <p class="up-next-date">{{ formatShortDate(nextEv.start) }}</p>
               <button
                 type="button"
                 class="up-next"
@@ -64,17 +63,14 @@
                 (click)="selectUpNext(nextEv)"
                 (dblclick)="showEvent(nextEv)"
               >
-                <span class="up-next__bar"></span>
-                <strong>{{ nextEv.title }}</strong>
-                <span class="up-next-time">
-                  {{
-                    nextEv.allDay
-                      ? ("all-day" | nativeText)
-                      : formatEventClock(nextEv.start)
-                  }}
-                  @if (!nextEv.allDay) {
-                    <br />{{ formatEventClock(nextEv.end) }}
-                  }
+                <span class="up-next-date">{{ formatShortDate(nextEv.start) }}</span>
+                <span class="up-next-row">
+                  <span class="up-next__bar" aria-hidden="true"></span>
+                  <span class="up-next-title">{{ nextEv.title }}</span>
+                  <span class="up-next-time">
+                    <span>{{ formatEventClock(nextEv.start) }}</span>
+                    <span>{{ formatEventClock(nextEv.end) }}</span>
+                  </span>
                 </span>
               </button>
             } @else {
@@ -118,13 +114,11 @@
                 (click)="selectMiniDay(cell.date)"
               >
                 <span>{{ cell.dayNum }}</span>
-                @if (cell.dots.length) {
-                  <i class="mini-dots">
-                    @for (c of cell.dots; track $index) {
-                      <em [style.background]="c"></em>
-                    }
-                  </i>
-                }
+                <i class="mini-dots" aria-hidden="true">
+                  @for (c of cell.dots; track c) {
+                    <em [style.background]="c"></em>
+                  }
+                </i>
               </button>
             }
           </div>
@@ -186,65 +180,18 @@
                   <div class="range-anchor">
                     <button
                       type="button"
-                      class="month-link range-pill"
+                      class="month-link range-pill" aria-label="Choose date range" [attr.aria-expanded]="rangeOpen()"
                       (click)="rangeOpen.set(!rangeOpen()); $event.stopPropagation()"
                     >
-                      {{ anchorDate() | nativeDate: "MMM d" }} –
-                      {{
-                        visibleDays()[visibleDays().length - 1]
-                          | nativeDate: "MMM d"
-                      }}
+                      {{ formatShortDate(anchorDate().toISOString()) }} - {{ formatShortDate(visibleDays()[visibleDays().length-1].toISOString()) }}
                     </button>
                     @if (rangeOpen()) {
                       <div
                         class="range-popover"
                         (click)="$event.stopPropagation()"
                       >
-                        <h2>{{ "Choose Date Range" | nativeText }}</h2>
-                        <p>
-                          {{
-                            (rangeStart()
-                              ? "Choose the last day"
-                              : "Choose the first day"
-                            ) | nativeText
-                          }}
-                        </p>
-                        <div class="range-months">
-                          @for (month of rangeMonths(); track month.date) {
-                            <section>
-                              <h3>
-                                {{ month.date | nativeDate: "MMMM yyyy" }}
-                              </h3>
-                              <div class="mini-dow">
-                                @for (day of dayNames(); track $index) {
-                                  <span>{{ day[0] }}</span>
-                                }
-                              </div>
-                              <div class="mini-grid">
-                                @for (day of month.days; track day) {
-                                  <button
-                                    type="button"
-                                    class="mini-day"
-                                    [class.is-muted]="
-                                      day.getMonth() !== month.date.getMonth()
-                                    "
-                                    [class.in-range]="inRange(day)"
-                                    (click)="pickRange(day)"
-                                  >
-                                    {{ day.getDate() }}
-                                  </button>
-                                }
-                              </div>
-                            </section>
-                          }
-                        </div>
-                        <button
-                          type="button"
-                          class="native-pill"
-                          (click)="rangeOpen.set(false); rangeStart.set(null)"
-                        >
-                          {{ "Cancel" | nativeText }}
-                        </button>
+                        <cc-date-grid [range]="true" [start]="dayKey(anchorDate())" [end]="dayKey(visibleDays()[visibleDays().length-1])"
+                          [firstWeekday]="firstWeekday()" (chooseRange)="applyRange($event)" />
                       </div>
                     }
                   </div>
@@ -274,7 +221,7 @@
                 <button
                   type="button"
                   class="toolbar-icon"
-                  aria-label="Calendar views"
+                  #viewPickerButton aria-haspopup="menu" aria-label="Calendar views"
                   [attr.aria-expanded]="modePicker()"
                   (click)="
                     modePicker.set(!modePicker()); $event.stopPropagation()
@@ -283,8 +230,8 @@
                   <cc-symbol [pointSize]="isDesktop() ? 20 : 22" [name]="activeModeIcon()" />
                 </button>
                 @if (modePicker()) {
-                  <div
-                    class="native-mode-menu"
+                  <dialog
+                    class="native-mode-menu" [ccAnchoredMenu]="viewPickerButton" (dismissMenu)="modePicker.set(false)"
                     role="menu"
                     (click)="$event.stopPropagation()"
                   >
@@ -305,7 +252,7 @@
                         }}
                       </button>
                     }
-                  </div>
+                  </dialog>
                 }
               </div>
               <button
@@ -369,69 +316,18 @@
           }
         </ng-template>
         @if ((viewMode() === "day" || viewMode() === "multi") && !searchOpen()) {
-          <div
-            class="week-carousel"
-            (pointerdown)="weekPointerDown($event)"
-            (pointerup)="weekPointerUp($event)"
-          >
-            <button
-              type="button"
-              class="week-step"
-              aria-label="Previous week"
-              (click)="weekOffset.set(weekOffset() - 1)"
-            >
-              <cc-symbol name="chevron.left" />
-            </button>
-            @for (day of weekDays(); track day) {
-              <button
-                type="button"
-                class="week-day"
-                [attr.aria-pressed]="day.toDateString() === anchorDate().toDateString()"
-                [class.today]="isTodayDay(day)"
-                [class.selected]="
-                  day.toDateString() === anchorDate().toDateString()
-                "
-                (click)="selectWeekDay(day)"
-              >
-                <small>{{ day | nativeDate: "EEEEE" }}</small>
-                <span>{{ day.getDate() }}</span>
-              </button>
-            }
-            <button
-              type="button"
-              class="week-step"
-              aria-label="Next week"
-              (click)="weekOffset.set(weekOffset() + 1)"
-            >
-              <cc-symbol name="chevron.right" />
-            </button>
-          </div>
+          <cc-week-strip [selected]="anchorDate()" [today]="nowTick()" [firstWeekday]="firstWeekday()" (choose)="anchorDate.set($event)" />
           <div
             class="selected-day-heading" [class.multi]="viewMode() === 'multi'"
             [class.today]="isTodayDay(anchorDate())"
           >
-            <span>{{ anchorDate() | nativeDate: "EEE dd.MM.yy" }}</span>
+            <span>{{ timelineDateLabel(anchorDate()) }}</span>
             <ng-container *ngTemplateOutlet="forecastLine; context: {$implicit: anchorDate()}" />
           </div>
         }
 
         @if (searchOpen() && viewMode() !== "menu" && viewMode() !== "weather") {
-          <div class="native-search">
-            <cc-symbol name="magnifyingglass" />
-            <input
-              autofocus
-              placeholder="Search events"
-              [ngModel]="searchText()"
-              (ngModelChange)="searchText.set($event)"
-            />
-            <button
-              type="button"
-              aria-label="Close search"
-              (click)="searchOpen.set(false); searchText.set('')"
-            >
-              <cc-symbol name="xmark.circle.fill" />
-            </button>
-          </div>
+          <cc-calendar-search [value]="searchText()" (changed)="searchText.set($event)" (closed)="searchOpen.set(false); searchText.set('')" />
           @if (searchText()) {
             <div class="agenda-wrap native-list-wrap">
               @for (grp of searchGroups(); track grp.key) {
@@ -452,11 +348,11 @@
                         [style.background]="row.event.color || '#0A84FF'"
                       ></span>
                       <span class="native-list-row__main">
-                        <strong>{{
+                        <strong>@if (row.event.readOnly) {<cc-symbol name="lock.fill" />}{{
                           row.event.title || ("No Title" | nativeText)
                         }}</strong>
                         @if (row.event.location) {
-                          <small>{{ row.event.location }}</small>
+                          <small><cc-symbol name="location" />{{ row.event.location }}</small>
                         }
                       </span>
                       <span class="native-list-row__times">
@@ -499,7 +395,7 @@
 
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
-            <cc-weather
+            <cc-weather [firstWeekday]="firstWeekday()"
               [clockPreference]="preferences()['time']"
               [modes]="modes"
               [currentMode]="viewMode()"
@@ -582,7 +478,7 @@
                       <strong class="column-calendar" [style.color]="multiCalendars()[di].color">{{ multiCalendars()[di].title }}</strong>
                     } @else {
                       <button class="column-date" type="button" [class.today]="isTodayDay(d)" (click)="selectMiniDay(d); setView('day')">
-                        <span>{{ d | nativeDate: "EEE dd.MM.yy" }}</span>
+                        <span>{{ timelineDateLabel(d) }}</span>
                         <ng-container *ngTemplateOutlet="forecastLine; context: {$implicit: d}" />
                       </button>
                     }
@@ -608,13 +504,13 @@
                         (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="$event.detail === 0 && selectEvent(adev)"
                         (dblclick)="activateEvent(adev)" (contextmenu)="contextEvent(adev, $event)">
                         <cc-symbol name="calendar.circle.fill" />
-                        @if (!isDesktop() && adev.receivedAccess === 'reader') { <cc-symbol name="lock.fill" /> }
+                        @if (adev.readOnly) { <cc-symbol name="lock.fill" /> }
                         <span class="allday-pill__txt">{{ adev.title }}</span>
                       </button>
                     }
                     @if (drag(); as g) {
                       @if (g.preview.allDay && previewCoversDay(g, d, di)) {
-                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">{{ g.event?.title || ('New event' | nativeText) }}</span>
+                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">@if (g.event) {<cc-symbol name="calendar.circle.fill" />}{{ g.event?.title || ('New event' | nativeText) }}</span>
                       }
                     }
                   </div>
@@ -679,7 +575,7 @@
 
                       @if (drag(); as g) {
                         @if (!g.preview.allDay && previewCoversDay(g, d, di)) {
-                          <div class="ev-block ev-block--creating" [ngStyle]="ghostStyle(g, di)">
+                          <div class="ev-block ev-block--creating" [class.ev-block--new]="!g.event" [ngStyle]="ghostStyle(g, di)">
                             <span class="ev-block__bar" aria-hidden="true"></span>
                             <div class="ev-block__inner">
                               <strong class="ev-block__title">{{ g.event?.title || ('New event' | nativeText) }}</strong>
@@ -702,16 +598,22 @@
                           class="ev-block"
                           [class.ghost-source]="drag()?.active && drag()?.event?.id === blk.id"
                           [class.is-selected]="isSelected"
+                          [attr.aria-pressed]="isSelected"
                           [class.is-cancelled]="blk.data.status === 'cancelled'"
                           [class.is-readonly]="blk.data.readOnly"
                           [ngStyle]="blockPositionStyle(blk)"
                           (pointerdown)="startTimelineGesture($event, 'move', di, blk.data)"
                           (contextmenu)="contextEvent(blk.data, $event)"
                           (dblclick)="activateEvent(blk.data)"
-                          (keydown.enter)="showEvent(blk.data)"
+                          (click)="timedEventClick(blk.data, $event)"
+                          (keydown.enter)="timedEventClick(blk.data, $event)"
+                          (keydown.space)="timedEventClick(blk.data, $event)"
+                          [attr.aria-haspopup]="isDesktop() ? null : 'menu'"
+                          [attr.aria-expanded]="isDesktop() ? null : eventContext()?.event?.id === blk.id"
                           role="button"
                           tabindex="0"
                           [attr.aria-label]="blk.data.title"
+                          [attr.aria-description]="blk.data.readOnly ? ('Read only' | nativeText) : null"
                         >
                           <span class="ev-block__bar" aria-hidden="true"></span>
                           <div
@@ -724,7 +626,7 @@
                             "
                           >
                             <div class="ev-block__toprow">
-                              <strong class="ev-block__title">@if (!isDesktop() && blk.data.receivedAccess === 'reader') {<cc-symbol name="lock.fill" />}{{ blk.data.title }}</strong>
+                              <strong class="ev-block__title">@if (blk.data.readOnly) {<cc-symbol name="lock.fill" />}{{ blk.data.title }}</strong>
                             </div>
                             @if (timelineVideoLabel(blk.data); as videoLabel) {
                               <span class="ev-block__loc"><cc-symbol name="video" />{{ videoLabel }}</span>
@@ -785,6 +687,12 @@
                   <span>{{ day[0] }}</span>
                 }
               </div>
+              @if (monthPreview(); as preview) {
+                <div class="month-pill month-preview" [style.left.px]="preview.left" [style.top.px]="preview.top"
+                  [style.width.px]="preview.width" [ngStyle]="cardStyle(preview.item.color)" aria-hidden="true">
+                  {{preview.item.title}}
+                </div>
+              }
               <div class="month-grid">
                 @for (cell of monthGridCells(); track cell.key) {
                   <div
@@ -792,9 +700,7 @@
                     [class.is-muted]="!cell.inMonth"
                     [class.is-today]="cell.isToday"
                     [class.is-drop-target]="monthDropTargetKey() === cell.key"
-                    (dragover)="onMonthCellDragOver($event, cell.key)"
-                    (dragleave)="monthDropTargetKey.set(null)"
-                    (drop)="onMonthCellDrop($event, cell.date)"
+                    [attr.data-month-day]="cell.key"
                     (pointerdown)="startMonthPress($event, cell.date)"
                     (contextmenu)="$event.preventDefault()"
                     (click)="openMonthDay($event, cell.date)"
@@ -808,13 +714,13 @@
                         <div
                           class="month-pill"
                           [class.is-cancelled]="ev.status === 'cancelled'"
-                          [attr.draggable]="!ev.readOnly"
+                          [class.ghost-source]="monthDragEventId() === ev.id" role="button" tabindex="0" (keydown.enter)="showEvent(ev)"
                           [ngStyle]="cardStyle(ev.color)"
-                          (dragstart)="onMonthPillDragStart($event, ev)" (dragend)="endMonthDrag()"
+                          (pointerdown)="beginMonthMove($event,ev)"
                           (contextmenu)="contextEvent(ev, $event)"
-                          (click)="$event.stopPropagation(); showEvent(ev)"
+                          (click)="monthEventClick($event,ev)"
                         >
-                          <span class="month-pill__title">{{ ev.title }}</span>
+                          <span class="month-pill__title">@if (ev.readOnly) {<cc-symbol name="lock.fill" />}{{ ev.title }}</span>
                         </div>
                       }
                       @if (cell.moreCount > 0) {
@@ -867,7 +773,7 @@
                           [style.background]="row.event.color || '#0A84FF'"
                         ></span>
                         <span class="native-list-row__main">
-                          <strong>{{
+                          <strong>@if (row.event.readOnly) {<cc-symbol name="lock.fill" />}{{
                             row.event.title || ("No Title" | nativeText)
                           }}</strong>
                           @if (row.event.location) {
@@ -1116,75 +1022,88 @@
       </div>
     }
 
-    <!-- Context Menu (MacTabletEventInteractions parity) -->
+    <!-- Timed-event edit menu on touch layouts, secondary-click menu on desktop. -->
     @if (eventContext(); as context) {
-      <div
+      @let compact = !isDesktop();
+      @let paged = compact && isPhone() && !context.event.readOnly;
+      <dialog
         class="native-context"
         role="menu"
-        [style.left.px]="context.x"
-        [style.top.px]="context.y"
+        [ccAnchoredMenu]="context" [above]="compact" (dismissMenu)="eventContext.set(null)"
+        [class.touch-edit-menu]="compact" [attr.aria-label]="context.event.title"
         (click)="$event.stopPropagation()"
       >
-        @if (meetingUrlForEvent(context.event); as meetUrl) {
-          <a
-            class="context-link"
-            role="menuitem"
-            [href]="meetUrl"
-            target="_blank"
-            rel="noopener"
-            (click)="eventContext.set(null)"
-          >
-            <cc-symbol name="video.fill" />{{ "Join Meeting" | nativeText }}
-          </a>
-        }
-        <button
-          type="button"
-          role="menuitem"
-          (click)="showEvent(context.event)"
-        >
-          <cc-symbol name="info.circle" />{{ "Detail" | nativeText }}
-        </button>
-        @if (!context.event.readOnly) {
+        @if (!paged || !moreEventActions()) {
+          @if (meetingUrlForEvent(context.event); as meetUrl) {
+            <a
+              class="context-link"
+              role="menuitem"
+              [href]="meetUrl"
+              target="_blank"
+              rel="noopener"
+              (click)="eventContext.set(null)"
+            >
+              <cc-symbol name="video.fill" />{{ "Join Meeting" | nativeText }}
+            </a>
+          }
           <button
             type="button"
             role="menuitem"
-            (click)="openEditEventModal(context.event); eventContext.set(null)"
+            (click)="showEvent(context.event)"
           >
-            <cc-symbol name="square.and.pencil" />{{ "Edit" | nativeText }}
+            <cc-symbol name="info.circle" />{{ "Detail" | nativeText }}
           </button>
+          @if (!context.event.readOnly) {
+            <button
+              type="button"
+              role="menuitem"
+              (click)="openEditEventModal(context.event); eventContext.set(null)"
+            >
+              <cc-symbol name="square.and.pencil" />{{ "Edit" | nativeText }}
+            </button>
+          }
         }
-        @if (canShare(context.event)) {
-          <button
-            type="button"
-            role="menuitem"
-            (click)="openShareEvent(context.event); eventContext.set(null)"
-          >
-            <cc-symbol name="square.and.arrow.up" />{{ "Share" | nativeText }}
-          </button>
+        @if (paged && moreEventActions()) {
+          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'Back' | nativeText" (click)="moreEventActions.set(false)"><cc-symbol name="chevron.left" /></button>
         }
-        @if (!context.event.readOnly) {
-          <button
-            type="button"
-            role="menuitem"
-            (click)="duplicateEvent(context.event); eventContext.set(null)"
-          >
-            <cc-symbol name="doc.on.doc" />{{ "Duplicate" | nativeText }}
-          </button>
-          <hr class="context-sep" />
-          <button
-            type="button"
-            role="menuitem"
-            class="danger-text"
-            (click)="
-              openEditEventModal(context.event);
-              pendingDelete.set(true);
-              eventContext.set(null)
-            "
-          >
-            <cc-symbol name="trash" />{{ "Delete" | nativeText }}
-          </button>
+        @if (!paged || moreEventActions()) {
+          @if (canShare(context.event)) {
+            <button
+              type="button"
+              role="menuitem"
+              (click)="openShareEvent(context.event); eventContext.set(null)"
+            >
+              <cc-symbol name="square.and.arrow.up" />{{ "Share" | nativeText }}
+            </button>
+          }
+          @if (!context.event.readOnly) {
+            <button
+              type="button"
+              role="menuitem"
+              (click)="duplicateEvent(context.event); eventContext.set(null)"
+            >
+              <cc-symbol name="doc.on.doc" />{{ "Duplicate" | nativeText }}
+            </button>
+          }
+          @if (eventRemovalLabel(context.event); as action) {
+            <hr class="context-sep" />
+            <button
+              type="button"
+              role="menuitem"
+              class="danger-text"
+              (click)="
+                showEvent(context.event);
+                detailPendingDelete.set(true)
+              "
+            >
+              <cc-symbol name="trash" />{{ action | nativeText }}
+            </button>
+          }
         }
-      </div>
+        @if (paged && !moreEventActions()) {
+          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'More' | nativeText" (click)="moreEventActions.set(true)"><cc-symbol name="chevron.right" /></button>
+        }
+      </dialog>
     }
 
     <!-- Event Details Sheet (MacTabletEventEditor detailForm parity) -->
@@ -1346,7 +1265,7 @@
 
             @if (
               event.details?.videoCallURL ||
-              event.details?.url ||
+              event.url || event.details?.url ||
               event.details?.notes
             ) {
               <div class="native-form-group">
@@ -1358,11 +1277,11 @@
                     }}</a>
                   </div>
                 }
-                @if (safeLink(event.details?.url); as urlHref) {
+                @if (safeLink(event.url ?? event.details?.url); as urlHref) {
                   <div class="native-form-row detail-stacked-row">
                     <span>{{ "URL" | nativeText }}</span>
                     <a [href]="urlHref" target="_blank" rel="noopener">{{
-                      event.details?.url
+                      event.url ?? event.details?.url
                     }}</a>
                   </div>
                 }
@@ -1382,10 +1301,10 @@
                   [desktop]="isDesktop()" [dark]="surfaceTheme() === 'dark'" />
               }
             }
-            @if (!event.readOnly) {
+            @if (eventRemovalLabel(event); as action) {
               @if (detailPendingDelete()) {
                 <div class="delete-confirm">
-                  <p>{{ "Delete this event?" | nativeText }}</p>
+                  <p>{{ (action === "Delete" ? "Delete this event?" : action) | nativeText }}</p>
                   <button
                     type="button"
                     class="native-pill"
@@ -1399,7 +1318,7 @@
                     [disabled]="savingEvent()"
                     (click)="deleteEventInstance(event)"
                   >
-                    {{ "Delete Event" | nativeText }}
+                    {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
                   </button>
                 </div>
               } @else {
@@ -1408,7 +1327,7 @@
                   class="native-pill danger full"
                   (click)="detailPendingDelete.set(true)"
                 >
-                  {{ "Delete Event" | nativeText }}
+                  {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
                 </button>
               }
             }
@@ -1419,9 +1338,10 @@
 
     <!-- Event Editor & Location / Custom Repeat Sub-Sheets (MacTabletEventEditor parity) -->
     @if (editorDraft(); as d) {
-      <div class="modal-backdrop" (click)="closeEditor()">
+      <div class="modal-backdrop">
         <section
-          class="modal-sheet native-event-sheet"
+          class="modal-sheet native-event-sheet event-editor-sheet"
+          [class.event-location-sheet]="editorPage() === 'location'"
           role="dialog"
           aria-modal="true"
           [attr.aria-label]="editorPage() === 'location' ? 'Location' : editorPage() === 'recurrence' ? 'Custom Repeat' : d.isNew ? 'New Event' : 'Edit Event'"
@@ -1597,6 +1517,7 @@
                 </label>
                 <cc-date-time
                   label="Starts"
+                  [otherDate]="d.endDate" [otherTime]="d.endTime"
                   [(focus)]="expandedEventDate"
                   [date]="d.startDate"
                   [time]="d.startTime"
@@ -1608,6 +1529,7 @@
                 />
                 <cc-date-time
                   label="Ends"
+                  [otherDate]="d.startDate" [otherTime]="d.startTime"
                   [(focus)]="expandedEventDate"
                   [date]="d.endDate"
                   [time]="d.endTime"
@@ -1750,10 +1672,10 @@
                 </label>
               </div>
 
-              @if (!d.isNew) {
+              @if (d.original && eventRemovalLabel(d.original); as action) {
                 @if (pendingDelete()) {
                   <div class="delete-confirm">
-                    <p>{{ "Delete this event?" | nativeText }}</p>
+                    <p>{{ (action === "Delete" ? "Delete this event?" : action) | nativeText }}</p>
                     <button
                       type="button"
                       class="native-pill"
@@ -1767,7 +1689,7 @@
                       [disabled]="savingEvent()"
                       (click)="deleteDraftEvent()"
                     >
-                      {{ "Delete Event" | nativeText }}
+                      {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
                     </button>
                   </div>
                 } @else {
@@ -1776,7 +1698,7 @@
                     class="native-pill danger full"
                     (click)="pendingDelete.set(true)"
                   >
-                    {{ "Delete Event" | nativeText }}
+                    {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
                   </button>
                 }
               }
@@ -1787,19 +1709,7 @@
     }
   }
 
-  <!-- Undo / Feedback Toast -->
-  @if (toast(); as t) {
-    <div class="studio-toast" role="status">
-      <span>{{ t.message }}</span>
-      @if (t.undoEventId) {
-        <button
-          type="button"
-          class="studio-toast__undo"
-          (click)="undoLastMove()"
-        >
-          {{ "Undo" | nativeText }}
-        </button>
-      }
-    </div>
+  @if (toast(); as message) {
+    <div class="studio-toast" role="status">{{ message }}</div>
   }
 </section>

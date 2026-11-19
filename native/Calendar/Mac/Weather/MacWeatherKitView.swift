@@ -90,11 +90,11 @@ struct MacWeatherKitView: View {
     var body: some View {
         GeometryReader { geometry in
             weatherContent(columnWidth: geometry.size.width * 0.70,
-                           detailWidth: geometry.size.width * 0.60)
+                           detailWidth: geometry.size.width * 0.60, viewportHeight: geometry.size.height)
         }
     }
 
-    private func weatherContent(columnWidth: CGFloat, detailWidth: CGFloat) -> some View {
+    private func weatherContent(columnWidth: CGFloat, detailWidth: CGFloat, viewportHeight: CGFloat) -> some View {
         ZStack(alignment: .top) {
             // 1) Динамичен фон
             dynamicBackground
@@ -111,7 +111,7 @@ struct MacWeatherKitView: View {
                             weatherErrorPanel(error)
                         }
                         if vm.currentTemp != nil || !vm.dailyForecast.isEmpty || weatherPreviewIsActive {
-                            weatherForecastCards
+                            weatherForecastCards(viewportHeight: viewportHeight)
                         } else if vm.isLoading {
                             ProgressView(NSLocalizedString("Loading...", comment: "Weather loading"))
                                 .tint(.white).foregroundStyle(.white)
@@ -458,7 +458,7 @@ struct MacWeatherKitView: View {
         .colorScheme(.dark)
     }
 
-    private var weatherForecastCards: some View {
+    private func weatherForecastCards(viewportHeight: CGFloat) -> some View {
         VStack(spacing: 20) {
             if !vm.weatherAlerts.isEmpty {
                 weatherAlertsSection.padding(.horizontal, 16)
@@ -466,6 +466,7 @@ struct MacWeatherKitView: View {
             hourlyForecastCard.padding(.horizontal, 16)
             tenDayForecastCard.padding(.horizontal, 16)
             WindMapCard(
+                viewportHeight: viewportHeight,
                 coordinate: vm.locationCoordinate,
                 name: displayedCityName(),
                 timeZone: vm.locationTimeZone,

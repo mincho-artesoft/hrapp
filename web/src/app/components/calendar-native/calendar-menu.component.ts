@@ -1,3 +1,4 @@
+import {CalendarSearchFieldComponent} from './calendar-search-field.component';
 import { CalendarProviderService } from "../../core/calendar-provider.service";
 import {
   CalendarNativeTextPipe,
@@ -54,6 +55,7 @@ type Panel =
   selector: "cc-calendar-menu",
   standalone: true,
   imports: [
+    CalendarSearchFieldComponent,
     CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,

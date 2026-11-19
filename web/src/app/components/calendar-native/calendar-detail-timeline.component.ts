@@ -23,13 +23,13 @@ const hourHeight = 40;
       <div class="events">
         @for (block of blocks(); track block.id) {
           <div class="event" [class.selected]="block.id === selected().id"
-               [ngStyle]="style(block.data)" [style.left.%]="block.leftPct" [style.width.%]="block.widthPct"
+               [ngStyle]="style(block.data, block.depth)" [style.left.%]="block.leftPct" [style.width.%]="block.widthPct"
                [style.top.px]="Math.max(0, block.startMinutes) * hourHeight / 60"
                [style.height.px]="Math.max(16, (Math.min(hours() * 60, block.endMinutes) - Math.max(0, block.startMinutes)) * hourHeight / 60 - 2)"
-               [style.z-index]="block.depth">
+               [style.z-index]="block.depth * 2 + (block.id === selected().id ? 1 : 0)">
             <div class="content" [style.max-height.px]="Math.max(0, (block.contentEndMinutes - Math.max(0, block.startMinutes)) * hourHeight / 60 - 2)">
               @if (block.startMinutes >= 0 || block.id === selected().id) {
-                <strong>{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" />}</strong>
+                <strong>@if (block.data.readOnly) {<cc-symbol name="lock.fill" /> }{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" />}</strong>
                 @if (block.data.location) {
                   <span><cc-symbol name="location" /> {{block.data.location}}</span>
                 }
@@ -49,15 +49,15 @@ const hourHeight = 40;
     .hour > span {width:58px; text-align:end; white-space:nowrap; font-size:11px; color:var(--cal-muted); transform:translateY(-7px); flex-shrink:0}
     .hour i {flex:1; border-top:.5px solid var(--cal-line)}
     .events {position:absolute; inset:0 26px 0 70px}
-    .event {position:absolute; overflow:hidden; border-radius:5px; padding:3px 8px 3px 12px;
+    .event {position:absolute; overflow:hidden; border-radius:5px; padding-block:3px; padding-inline:12px 8px;
       background:var(--event-bg); color:var(--event-text); font-size:10px; text-align:start}
-    .event:before {content:''; position:absolute; left:5px; top:5px; bottom:5px; width:3px;
+    .event:before {content:''; position:absolute; inset-inline-start:5px; top:5px; bottom:5px; width:3px;
       border-radius:99px; background:var(--event-accent)}
-    .selected {color:white; background:var(--event-accent); padding-left:8px}
+    .selected {padding-inline-start:8px}
     .selected:before {display:none}
     .content {overflow:hidden; line-height:1.2}
     .content strong, .content span {display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden}
-    strong {font-weight:600}
+    strong {font-weight:600; color:var(--event-title)}
     cc-symbol {width:9px; height:9px; vertical-align:baseline}
   `],
 })
@@ -106,9 +106,15 @@ export class CalendarDetailTimelineComponent {
     hour12: this.timeFormat() === 'system' ? undefined : this.timeFormat() === '12',
   }));
   clock(value: string | number) { return this.formatter().format(new Date(value)); }
-  style(event: WebCalendarEvent) {
+  style(event: WebCalendarEvent, depth: number) {
     const color = event.color || '#0A84FF';
-    const style = computeIosEventStyle(color, this.dark() ? 'dark' : 'light');
-    return {'--event-bg': style.fill, '--event-text': style.titleColor, '--event-accent': color};
+    const style = computeIosEventStyle(color, this.dark() ? 'dark' : 'light', depth);
+    const selected = event.id === this.selected().id;
+    return {
+      '--event-bg': selected ? style.selectedFill : style.fill,
+      '--event-text': selected ? 'white' : style.detailColor,
+      '--event-title': selected ? 'white' : style.titleColor,
+      '--event-accent': color,
+    };
   }
 }

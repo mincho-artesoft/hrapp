@@ -99,6 +99,7 @@ struct CalendarEventRowContent<Times: View>: View {
     let allDay: Bool
     let symbol: String?
     let isCancelled: Bool
+    var isReadOnly = false
     @ViewBuilder var times: () -> Times
 
     var body: some View {
@@ -108,6 +109,11 @@ struct CalendarEventRowContent<Times: View>: View {
                     .fill(color).frame(width: 3)
             }
             if let symbol { Image(systemName: symbol).foregroundStyle(color) }
+            if isReadOnly {
+                Image(systemName: "lock.fill")
+                    .font(CalendarTypography.caption).foregroundStyle(color)
+                    .accessibilityLabel(Text("Read only"))
+            }
             Text(title)
                 .font(CalendarTypography.body)
                 .foregroundStyle(.primary)

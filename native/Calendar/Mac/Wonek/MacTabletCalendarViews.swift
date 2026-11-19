@@ -343,11 +343,13 @@ struct MacTabletTimedEventBlock: View {
     }
 
     var body: some View {
+        let isReadOnly = !store.canEdit(event)
         Button {
             activate()
         } label: {
             MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
-                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight, isCancelled: store.isCancelled(event))
+                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight,
+                isCancelled: store.isCancelled(event), isReadOnly: isReadOnly)
                 .frame(width: width, height: height)
                 .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
         }
@@ -355,6 +357,7 @@ struct MacTabletTimedEventBlock: View {
         .accessibilityLabel((event.title ?? "") + ", " + MacCalendarFormatting.time(event.startDate)
             + " - " + MacCalendarFormatting.time(event.endDate))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityValue(isReadOnly ? Text("Read only") : Text(""))
         .macTabletEventInteractions(store: store, event: event,
             defaultDate: defaultDate, editorTarget: $editorTarget,
             timelineActivate: activate, timelineSelect: select)
@@ -950,11 +953,18 @@ struct MacTabletMonthView: View {
         let color = event.calendar.cgColor.flatMap(NSColor.init(cgColor:)) ?? .systemBlue
         let dark = colorScheme == .dark
         let textColor = Color(nsColor: EventTimelineColors.text(color, strength: 0.58, dark: dark))
-        return Text(event.title)
-            .font(CalendarTypography.caption2).lineLimit(1)
-            .strikethrough(store.isCancelled(event), color: textColor)
+        return HStack(spacing: 2) {
+            if !store.canEdit(event) {
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 7, weight: .semibold))
+                    .accessibilityLabel(Text("Read only"))
+            }
+            Text(event.title)
+                .font(CalendarTypography.caption2).lineLimit(1)
+                .strikethrough(store.isCancelled(event), color: textColor)
+                .minimumScaleFactor(0.45).allowsTightening(true)
+        }
             .foregroundStyle(textColor)
-            .minimumScaleFactor(0.45).allowsTightening(true)
             .padding(.horizontal, 6).padding(.vertical, 2)
             .background(Color(nsColor: EventTimelineColors.background(color, selected: false, depth: 0, dark: dark)), in: Capsule())
     }
@@ -1165,7 +1175,7 @@ struct MacTabletEventList: View {
                                         title: event.title.isEmpty ? NSLocalizedString("No Title", comment: "") : event.title,
                                         color: store.color(for: event.calendar), allDay: event.isAllDay,
                                         symbol: CalendarEventSymbol.name(calendar: event.calendar, allDay: event.isAllDay),
-                                        isCancelled: store.isCancelled(event)
+                                        isCancelled: store.isCancelled(event), isReadOnly: !store.canEdit(event)
                                     ) {
                                         if event.isAllDay || (!row.segment.isFirst && !row.segment.isLast) {
                                             Text("all-day")

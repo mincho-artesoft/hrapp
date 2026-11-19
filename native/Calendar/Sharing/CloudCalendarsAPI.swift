@@ -391,9 +391,11 @@ enum CloudCalendarsAPI {
     static func upsertEvent(
         _ event: SharedEventUpload,
         session: Session,
-        receivedFeedId: String? = nil
+        receivedFeedId: String? = nil,
+        expectedSequence: Int? = nil
     ) async throws {
         var body = event.payload
+        if let expectedSequence { body["expectedSequence"] = expectedSequence }
         if let receivedFeedId { body["feedId"] = receivedFeedId }
         try await sendIgnoringResponse(
             "/events/\(event.id)",

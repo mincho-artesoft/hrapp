@@ -47,6 +47,7 @@ export interface HourSample {
 export interface ForecastHour {
   iso:string; instant?:string; temperature:number; feelsLike:number; precipitation:number; precipitationChance:number;
   uv:number; wind:number; gust:number; direction:number; humidity:number; visibility:number; pressure:number;
+  dewPoint?: number; snowfall?: number; precipitationType?: string;
   icon:HourSample['icon']; symbol?:string;
 }
 export interface SkyDay { date:string; sunrise:string|null; sunset:string|null; moonrise:string|null; moonset:string|null; moonPhase:number|null; }
@@ -73,6 +74,9 @@ export interface DaySample {
   min: string;
   /** Chance of precipitation, 0..100. */
   precip: number;
+  precipitationAmount?: number;
+  snowfallMm?: number;
+  precipitationType?: string;
   windMax: string;
   uvMax: string;
   weekend: boolean;
@@ -91,6 +95,11 @@ export interface Snapshot {
   currentWeatherCode?: number;
   isDaylight?: boolean;
   cloudCover?: number;
+  conditions: {
+    temperature: number | null; feelsLike: number | null; uv: number | null;
+    wind: number | null; gust: number | null; direction: number | null;
+    visibility: number | null; pressure: number | null; humidity: number | null;
+  };
   precipitationToday?: number; dewPoint?: number;
   forecastHours?:ForecastHour[]; skyDays?:SkyDay[]; visibilityUnit?:string;
   place: Place;
@@ -289,11 +298,17 @@ export class WeatherService {
     snapshot.forecastHours?.forEach((hour, i) => {
       const reading = data.forecastHourly.hours[i];
       hour.instant = reading.forecastStart;
+      hour.snowfall = reading.snowfallAmount;
+      hour.precipitationType = reading.precipitationType;
+      if (Number.isFinite(reading.temperatureDewPoint))
+        hour.dewPoint = imperial ? reading.temperatureDewPoint * 1.8 + 32 : reading.temperatureDewPoint;
       hour.symbol = appleConditionSymbol(reading.conditionCode, reading.daylight, hour.symbol!);
     });
     snapshot.daily.forEach((day, i) => {
       const reading = data.forecastDaily.days[i];
       day.instant = reading.forecastStart;
+      day.snowfallMm = reading.snowfallAmount;
+      day.precipitationType = reading.precipitationType;
       day.symbol = appleConditionSymbol(reading.conditionCode, true, day.symbol!);
     });
     snapshot.source = 'Apple Weather';
@@ -397,9 +412,20 @@ export class WeatherService {
     ];
 
     const d = json.daily ?? {};
-
+    const current = (key: string): number | null => {
+      const value = cur[key] ?? h[key]?.[nowAt];
+      return Number.isFinite(value) ? value : null;
+    };
+    const visibility = current('visibility');
     return {
       place,
+      conditions: {
+        temperature: current('temperature_2m'), feelsLike: current('apparent_temperature'),
+        uv: current('uv_index'), wind: current('wind_speed_10m'), gust: current('wind_gusts_10m'),
+        direction: current('wind_direction_10m'), humidity: current('relative_humidity_2m'),
+        visibility: visibility === null ? null : visibility / (imperial ? 1609.344 : 1000),
+        pressure: current('pressure_msl'),
+      },
       visibilityUnit:imperial?'mi':'km',
       forecastHours:times.map((iso,i)=>({iso,temperature:h.temperature_2m?.[i],feelsLike:h.apparent_temperature?.[i],precipitation:h.precipitation?.[i],precipitationChance:h.precipitation_probability?.[i],uv:h.uv_index?.[i],wind:h.wind_speed_10m?.[i],gust:h.wind_gusts_10m?.[i],direction:h.wind_direction_10m?.[i],humidity:h.relative_humidity_2m?.[i],visibility:h.visibility?.[i]/(imperial?1609.344:1000),pressure:h.pressure_msl?.[i],icon:glyph(Number(h.weather_code?.[i]),h.is_day?.[i]===1),symbol:nativeWeatherSymbol(Number(h.weather_code?.[i]),h.is_day?.[i]===1)})),
       skyDays:(d.time??[]).map((date:string,i:number)=>({date,sunrise:d.sunrise?.[i]??null,sunset:d.sunset?.[i]??null,moonrise:d.moonrise?.[i]??null,moonset:d.moonset?.[i]??null,moonPhase:d.moon_phase?.[i]??null})),
@@ -407,7 +433,7 @@ export class WeatherService {
       isDaylight: cur.is_day == null ? undefined : cur.is_day === 1,
       cloudCover: cur.cloud_cover == null ? undefined : Math.max(0, Math.min(1, cur.cloud_cover / 100)),
       precipitationToday: d.precipitation_sum?.[0] == null ? undefined : d.precipitation_sum[0] / (imperial ? 25.4 : 1),
-      dewPoint: h.dew_point_2m?.[start],
+      dewPoint: current('dew_point_2m') ?? undefined,
       temp: round(cur.temperature_2m),
       condition: cond.text,
       high: round(d.temperature_2m_max?.[0]),
@@ -454,6 +480,8 @@ export class WeatherService {
         max: round(dayMax),
         min: round(dayMin),
         precip: Math.round(Number(d.precipitation_probability_max?.[i]) || 0),
+        precipitationAmount: d.precipitation_sum?.[i] == null ? undefined :
+          d.precipitation_sum[i] / (windUnit === 'mph' ? 25.4 : 1),
         windMax: `${round(d.wind_speed_10m_max?.[i])} ${windUnit}`,
         uvMax: round(d.uv_index_max?.[i]),
         weekend: dow === 0 || dow === 6,
