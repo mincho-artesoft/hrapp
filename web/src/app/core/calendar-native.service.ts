@@ -286,21 +286,23 @@ export class CalendarNativeService {
     }
     this.refreshAfterChange();
   }
+  private async readAccountCalendar(id: string) {
+    const result = await this.request<{calendar: any}>("/ios/calendars/sync", "POST", {
+      id, deviceId: "web", readOnly: true,
+    });
+    return result.calendar;
+  }
+
   async saveCalendar(
     calendar: DeviceCalendar | null,
     title: string,
     color: string,
   ) {
-    const all = await this.request<{ calendars: any[] }>(
-      "/ios/calendars/account",
-    );
-    const stored = calendar
-      ? all.calendars.find((c) => c.id === calendar.id)
-      : null;
+    const stored = calendar ? await this.readAccountCalendar(calendar.id) : null;
     if (calendar && !stored)
       throw new Error("This calendar is managed by its provider.");
     const id = stored?.id ?? crypto.randomUUID();
-    return this.request("/ios/calendars/sync", "POST", {
+    return this.request<{calendar: DeviceCalendar}>("/ios/calendars/sync", "POST", {
       ...stored,
       id,
       deviceId: stored?.deviceId ?? "web",
@@ -323,10 +325,7 @@ export class CalendarNativeService {
       );
     if (!calendar.accountLocal)
       return this.api.removeDeviceCalendarFromWeb(calendar.id);
-    const all = await this.request<{ calendars: any[] }>(
-      "/ios/calendars/account",
-    );
-    const stored = all.calendars.find((c) => c.id === calendar.id);
+    const stored = await this.readAccountCalendar(calendar.id);
     if (!stored) throw new Error("This calendar is managed by its provider.");
     return this.request("/ios/calendars/sync", "POST", {
       ...stored,
@@ -389,10 +388,7 @@ export class CalendarNativeService {
       },
     );
     if (calendar.replicaID) {
-      const all = await this.request<{ calendars: any[] }>(
-        "/ios/calendars/account",
-      );
-      const stored = all.calendars.find((c) => c.id === calendar.replicaID);
+      const stored = await this.readAccountCalendar(calendar.replicaID);
       if (stored) {
         const events = await Promise.all(
           stored.events.map(async (e: any) => ({
@@ -547,10 +543,7 @@ export class CalendarNativeService {
     return { ...next, id: event.id, sharedCalendarRevision: result.updatedAt };
   }
   async syncOwnedCalendar(calendarID: string, changedEventId: string) {
-    const { calendars } = await this.request<{ calendars: any[] }>(
-      "/ios/calendars/account",
-    );
-    const stored = calendars.find((c) => c.id === calendarID);
+    const stored = await this.readAccountCalendar(calendarID);
     if (!stored?.sharingCalendarID) return;
     const { calendar } = await this.request<{ calendar: SharedCalendar }>(
       `/icloud-calendars/${stored.sharingCalendarID}/sharing`,

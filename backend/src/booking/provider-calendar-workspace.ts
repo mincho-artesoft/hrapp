@@ -109,13 +109,18 @@ export class ProviderCalendarWorkspace {
     if(action==='create-calendar') {
       if(!title)throw new ProviderCalendarError(400,'Enter a calendar name.');
       const c=await this.request('calendars','POST',google?{summary:title}:{name:title});
-      if(google&&input.color)await this.request(`users/me/calendarList/${encode(c.id)}?colorRgbFormat=true`,'PATCH',{backgroundColor:hex(input.color),foregroundColor:'#ffffff'});
-      return {created:true};
+      const entry = google
+        ? await this.request(`users/me/calendarList/${encode(c.id)}?colorRgbFormat=true`, input.color ? 'PATCH' : 'GET',
+            input.color ? {backgroundColor:hex(input.color),foregroundColor:'#ffffff'} : undefined)
+        : c;
+      return {created:true, calendar:this.mapCalendar(entry)};
     }
     if(action==='update-calendar') {
-      if(title)await this.request(calendarPath,'PATCH',google?{summary:title}:{name:title},input.etag);
-      if(google&&input.color)await this.request(`users/me/calendarList/${encode(id)}?colorRgbFormat=true`,'PATCH',{backgroundColor:hex(input.color),foregroundColor:'#ffffff'});
-      return {updated:true};
+      let entry = title ? await this.request(calendarPath,'PATCH',google?{summary:title}:{name:title},input.etag) : null;
+      if (google) entry = await this.request(`users/me/calendarList/${encode(id)}?colorRgbFormat=true`,input.color?'PATCH':'GET',
+        input.color ? {backgroundColor:hex(input.color),foregroundColor:'#ffffff'} : undefined);
+      else if (!entry?.id) entry = await this.request(calendarPath);
+      return {updated:true, calendar:this.mapCalendar(entry)};
     }
     if(action==='delete-calendar'||action==='unsubscribe-calendar'){
       const entryPath=google?`users/me/calendarList/${encode(id)}`:calendarPath;
@@ -195,7 +200,7 @@ export class ProviderCalendarWorkspace {
           result=await this.request(path+'/'+encode(payload.id));
         } else throw error;
       }
-      const calendar = {id:`provider.${this.provider}.${key(id)}`,remoteID:id,allowsChanges:true};
+      const calendar = {id:`provider.${this.provider}.${key(id)}`,remoteID:id,allowsChanges:true,timeZone:input.calendarTimeZone};
       return {saved:true,eventID:result.id,event:result.start && result.end ? this.mapEvent(result,calendar,e.timeZone || 'UTC') : undefined};
     }
     throw new ProviderCalendarError(400,'Unsupported calendar action.');

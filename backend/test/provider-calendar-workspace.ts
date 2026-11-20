@@ -68,6 +68,12 @@ async function main(){
    return ok(entry);
  };
  const lists=new ProviderCalendarWorkspace('google','test-only',transportRemoval);
+ const created = new ProviderCalendarWorkspace('google','test-only',async(_url,init) =>
+   ok(init?.method === 'POST' ? {id:'new-calendar',summary:'New'} :
+     {id:'new-calendar',summary:'New',accessRole:'owner',backgroundColor:'#123456',etag:'saved'}));
+ const {calendar:newCalendar} = await created.perform({action:'create-calendar',title:'New',color:'#123456'});
+ assert.equal(newCalendar.remoteID,'new-calendar'); assert.equal(newCalendar.providerOwner,true);
+ assert.equal(newCalendar.color,'#123456'); assert.equal(newCalendar.etag,'saved');
  await lists.perform({action:'unsubscribe-calendar',calendarID:entry.id,etag:entry.etag});
  assert.ok(removals[0].endsWith('/users/me/calendarList/public-holidays'));
  await assert.rejects(()=>lists.perform({action:'delete-calendar',calendarID:entry.id}),/cannot be removed/);

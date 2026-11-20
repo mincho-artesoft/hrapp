@@ -36,6 +36,25 @@ async function main() {
     const inventory = await fetch(accountURL, { headers: { Authorization: 'Bearer route-test' } });
     assert.equal(inventory.status, 200);
     assert.deepEqual(await inventory.json(), { ownerID: 'route-test', calendars: [{ id: 'account', accountLocal: true }] });
+    const saveEvent = (token?: string) => fetch(accountURL + '/account/events/one', {
+      method: 'PUT', headers: {'Content-Type':'application/json', ...(token ? {Authorization:'Bearer ' + token} : {})},
+      body: JSON.stringify({title:'Only one event', start:'2026-01-01T12:00:00Z', end:'2026-01-01T13:00:00Z'}),
+    });
+    assert.equal((await saveEvent()).status, 401);
+    let listing = false;
+    store.listKeys = async () => { listing = true; return []; };
+    let stored:any = {id:'account', accountLocal:false, allowsChanges:true, revision:1, events:[]};
+    store.getJSONWithETag = async key => key === 'principal/route-test/native-calendars/account.json'
+      ? {value:stored, etag:'revision'} : null;
+    store.putJSONIfMatch = async (_key, value) => { stored = value; return true; };
+    assert.equal((await saveEvent('route-test')).status, 403);
+    stored.accountLocal = true;
+    const savedEvent = await saveEvent('route-test');
+    assert.equal(savedEvent.status, 201);
+    assert.equal((await savedEvent.json() as any).event.id, 'native.account.one');
+    assert.equal((await saveEvent('route-test')).status, 200);
+    assert.equal(stored.events.length, 1);
+    assert.equal(listing, false);
     const web=app.get(WebPlatformService);
     const removedKeys: string[] = [];
     store.putJSONIfAbsent = async key => { removedKeys.push(key); return true; };

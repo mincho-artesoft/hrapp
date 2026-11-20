@@ -79,7 +79,6 @@ import {
 } from "../../core/calendar-recurrence";
 import {
   webEventDetails,
-  nativeEventDetails,
   canShareEvent,
 } from "../../core/calendar-native-model";
 import { CalendarWeatherComponent } from "../../components/calendar-native/calendar-weather.component";
@@ -767,11 +766,13 @@ export class WebCalendarPageComponent
       else if (target.receivedFeedId)
         await this.removeReceivedEvent(target);
       else {
-        await this.api.deleteCalendarEvent(target.id, { notifyGuest: true });
-        if (target.calendarId)
+        const removed = await this.api.deleteCalendarEvent(target.id, { notifyGuest: true });
+        if (removed.sharingCalendarID && target.calendarId)
           await this.native.syncOwnedCalendar(target.calendarId, target.id);
       }
-      await this.reloadAllWorkspaceData();
+      ++this.stateVersion;
+      if (!target.provider && !target.id.startsWith("native.") && !target.id.startsWith("sharedcal."))
+        await this.reloadAllWorkspaceData();
       this.ownedEvents.update((list) => list.filter((x) => x.id !== target.id));
       this.selectedEvent.set(null);
       this.inspectorEvent.set(null);
@@ -1213,6 +1214,22 @@ export class WebCalendarPageComponent
         calendars.find((c) => c.allowsChanges)?.id ??
         "",
     );
+  }
+
+  applyLocalCalendarChange({id, calendar}: {id: string; calendar?: DeviceCalendar}) {
+    ++this.stateVersion;
+    const calendars = this.deviceCalendars();
+    if (calendar) {
+      this.updateCalendars(calendars.some(c => c.id === id)
+        ? calendars.map(c => c.id === id ? calendar : c) : [...calendars, calendar]);
+      this.ownedEvents.update(events => events.map(event => event.calendarId === id
+        ? {...event, calendarTitle: calendar.title, color: calendar.color} : event));
+    } else {
+      this.updateCalendars(calendars.filter(c => c.id !== id));
+      this.ownedEvents.update(events => events.filter(event => event.calendarId !== id));
+      if (this.inspectorEvent()?.calendarId === id) this.inspectorEvent.set(null);
+      if (this.selectedEvent()?.calendarId === id) this.selectedEvent.set(null);
+    }
   }
 
   // Pointer Drag State
@@ -1843,7 +1860,7 @@ export class WebCalendarPageComponent
     void this.native.refresh();
     const state = await this.api.getCalendarState();
     if (token !== this.api.token() || version !== this.stateVersion) return;
-    void this.providerWorkspace.refresh(true);
+    void this.providerWorkspace.refresh();
 
     this.updateCalendars(state.calendars ?? []);
     this.ownedEvents.set(state.events ?? []);
@@ -2516,8 +2533,10 @@ export class WebCalendarPageComponent
   }
 
   selectUpNext(ev: WebCalendarEvent): void {
-    this.selectMiniDay(new Date(ev.start));
-    this.selectEvent(ev);
+    const date = new Date(ev.start);
+    this.sidebarMonth.set(date);
+    this.selectMiniDay(date);
+    this.inspectorEvent.set(ev);
   }
 
   openWeatherEvent(value:{date:string;instant?:string;timeZone:string}):void {
@@ -2765,80 +2784,15 @@ export class WebCalendarPageComponent
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  private async persistReplicaEvent(
-    id: string,
-    body: any,
-  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
-    const calendarID = id.startsWith("native.")
-      ? id.split(".")[1]
-      : body.calendarId;
-    if (!calendarID) return this.api.upsertCalendarEvent(id, body);
-    const { calendars } = await this.native.request<{ calendars: any[] }>(
-      "/ios/calendars/account",
+  private async persistReplicaEvent(id: string, body: any) {
+    const calendarId = id.startsWith("native.") ? id.split(".")[1] : body.calendarId;
+    if (!this.deviceCalendars().some(c => c.id === calendarId && c.accountLocal))
+      return this.api.upsertCalendarEvent(id, body);
+    const eventId = id.startsWith("native.") ? id.split(".")[2] : await this.native.sharingID(id);
+    return this.native.request<{event: WebCalendarEvent; sharingCalendarID: string | null; notifiedGuest?: boolean}>(
+      `/ios/calendars/account/${encodeURIComponent(calendarId)}/events/${encodeURIComponent(eventId)}`,
+      "PUT", body,
     );
-    const calendar = calendars.find((c) => c.id === calendarID);
-    // Device-owned provider replicas use the existing event mutation endpoint.
-    if (!calendar) return this.api.upsertCalendarEvent(id, body);
-    if (!calendar.allowsChanges || calendar.available === false)
-      throw new Error("This calendar is read-only.");
-    const eventID = id.startsWith("native.") ? id.split(".")[2] : await this.native.sharingID(id);
-    const previous = calendar.events.find((e: any) => e.id === eventID);
-    if (previous?.readOnly) throw new Error("This event is read-only.");
-    if (
-      body.expectedUpdatedAt &&
-      previous?.updatedAt !== body.expectedUpdatedAt
-    )
-      throw new Error(
-        "This event changed on another device. Reopen it to see the latest version.",
-      );
-    const details = {
-      ...webEventDetails(previous?.details),
-      ...Object.fromEntries(
-        [
-          "notes",
-          "timeZone",
-          "availability",
-          "videoCallURL",
-          "providerPrivacy",
-          "providerShowAs",
-          "providerDefaultReminders",
-          "providerOtherReminders",
-          "alarms",
-          "recurrenceRules",
-          "travelTime",
-          "structuredLocation",
-          "attachments",
-          "url",
-        ]
-          .filter((k) => body[k] !== undefined)
-          .map((k) => [k, body[k]]),
-      ),
-    };
-    const event = {
-      ...previous,
-      id: eventID,
-      details: nativeEventDetails(details),
-    };
-    for (const key of ["title", "start", "end", "allDay", "location", "url"])
-      if (body[key] !== undefined) event[key] = body[key];
-    const events = calendar.events.filter((e: any) => e.id !== eventID);
-    events.push(event);
-    const result = await this.native.request<{ calendar: any }>(
-      "/ios/calendars/sync",
-      "POST",
-      { ...calendar, events, expectedRevision: calendar.revision },
-    );
-    const stored = result.calendar.events.find((e: any) => e.id === eventID);
-    return {
-      event: {
-        ...stored,
-        details: webEventDetails(stored.details),
-        id: `native.${calendarID}.${eventID}`,
-        calendarId: calendarID,
-        readOnly: false,
-        color: calendar.color,
-      },
-    };
   }
 
   private async persistEvent(
@@ -2935,7 +2889,7 @@ export class WebCalendarPageComponent
     const payload = original
       ? { start: original.start, end: original.end, ...body } : body;
     const response = await this.persistReplicaEvent(id, payload);
-    if (response.event.calendarId) {
+    if (response.sharingCalendarID && response.event.calendarId) {
       try {
         await this.native.syncOwnedCalendar(response.event.calendarId, response.event.id);
       } catch (error) {
@@ -2971,10 +2925,12 @@ export class WebCalendarPageComponent
       else if (d.original?.receivedFeedId)
         await this.removeReceivedEvent(d.original);
       else {
-        await this.api.deleteCalendarEvent(d.id, { notifyGuest: true });
-        if (d.calendarId) await this.native.syncOwnedCalendar(d.calendarId, d.id);
+        const removed = await this.api.deleteCalendarEvent(d.id, { notifyGuest: true });
+        if (removed.sharingCalendarID && d.calendarId) await this.native.syncOwnedCalendar(d.calendarId, d.id);
       }
-      await this.reloadAllWorkspaceData();
+      ++this.stateVersion;
+      if (!d.original?.provider && !d.id.startsWith("native.") && !d.id.startsWith("sharedcal."))
+        await this.reloadAllWorkspaceData();
       this.ownedEvents.update((list) => list.filter((x) => x.id !== d.id));
       if (this.selectedEvent() && calendarSeries(this.selectedEvent()!).id === d.id) this.selectedEvent.set(null);
       if (this.inspectorEvent() && calendarSeries(this.inspectorEvent()!).id === d.id) this.inspectorEvent.set(null);

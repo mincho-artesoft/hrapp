@@ -113,6 +113,13 @@ export class WebPlatformController {
     return reply(res, await this.svc.syncNativeCalendar(req.principal, body ?? {}));
   }
 
+  @Put('ios/calendars/account/:calendarId/events/:eventId')
+  @UseGuards(AuthGuard)
+  async saveAccountEvent(@Req() req: any, @Param('calendarId') calendarId: string, @Param('eventId') eventId: string,
+    @Body() body: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.saveAccountEvent(req.principal, calendarId, eventId, body ?? {}));
+  }
+
   @Post('ios/personal-calendar/sync')
   @UseGuards(AuthGuard)
   async syncIosPersonalCalendar(

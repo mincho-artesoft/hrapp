@@ -143,7 +143,7 @@ export interface DeviceCalendar {
   eventKitKind?: "birthdays" | "regular";
   providerMirrorID?: string;
   provider?:'google'|'microsoft';remoteID?:string;providerOwner?:boolean;etag?:string;primary?:boolean;isRemovable?:boolean;
-  deviceName: string; allowsChanges: boolean; updatedAt?: string;
+  deviceName: string; allowsChanges: boolean; updatedAt?: string; timeZone?: string;
   accountLocal?: boolean; sharingCalendarID?: string; ownerId?: string; ownerEmail?: string;
   access?: 'reader' | 'writer' | 'owner'; calendarKind?: string; available?: boolean;
 }
@@ -1216,8 +1216,8 @@ export class CalendarPlatformApiService {
       notifyGuest?: boolean;
       reason?: string;
     },
-  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
-    const result = await this.request<{ event: WebCalendarEvent; notifiedGuest?: boolean }>(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
+  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean; sharingCalendarID?: string | null }> {
+    const result = await this.request<{ event: WebCalendarEvent; notifiedGuest?: boolean; sharingCalendarID?: string | null }>(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
       method: 'PUT',
       auth: true,
       body: nativeEventDetails(payload),
@@ -1228,7 +1228,7 @@ export class CalendarPlatformApiService {
   async deleteCalendarEvent(
     eventId: string,
     opts: { notifyGuest?: boolean; reason?: string } = {},
-  ): Promise<{ deleted: boolean; sequence: number }> {
+  ): Promise<{ deleted: boolean; sequence: number; sharingCalendarID?: string | null }> {
     const qs = new URLSearchParams();
     if (opts.notifyGuest === false) qs.set('notifyGuest', '0');
     if (opts.reason) qs.set('reason', opts.reason);

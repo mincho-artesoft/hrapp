@@ -153,6 +153,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   readonly toggleCalendar = output<string>();
   readonly toggleMulti = output<string>();
   readonly changed = output<void>();
+  readonly localCalendarChanged = output<{id: string; calendar?: DeviceCalendar}>();
   readonly connect = output<"google" | "microsoft">();
   readonly disconnect = output<"google" | "microsoft">();
   readonly settingsChanged = output<void>();
@@ -528,6 +529,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
   saveCalendar() {
     void this.run(async () => {
+      const token = this.api.token();
       if (this.calendarProvider) {
         await this.providerWorkspace.saveCalendar(
           this.calendarProvider,
@@ -560,24 +562,34 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
             },
           );
           this.sharing.refreshAfterChange();
+          this.changed.emit();
         }
-      } else
-        await this.sharing.saveCalendar(
+      } else {
+        const { calendar } = await this.sharing.saveCalendar(
           this.calendar,
           this.calendarTitle,
           this.calendarColor,
         );
-      this.changed.emit();
+        if (this.api.token() !== token) return;
+        this.localCalendarChanged.emit({id: calendar.id, calendar});
+      }
       this.closePanel();
     });
   }
   deleteCalendar() {
     void this.run(async () => {
       if (!this.calendar || !this.calendarRemoval) return;
-      if (this.calendar.provider)
-        await this.providerWorkspace.deleteCalendar(this.calendar);
-      else await this.sharing.removeCalendar(this.calendar);
-      this.changed.emit();
+      const calendar = this.calendar, token = this.api.token();
+      if (calendar.provider) await this.providerWorkspace.deleteCalendar(calendar);
+      else {
+        await this.sharing.removeCalendar(calendar);
+        if (this.api.token() !== token) return;
+        if (calendar.ownerId) this.changed.emit();
+        else {
+          this.localCalendarChanged.emit({id: calendar.id});
+          this.sharing.refreshAfterChange();
+        }
+      }
       this.closePanel();
     });
   }

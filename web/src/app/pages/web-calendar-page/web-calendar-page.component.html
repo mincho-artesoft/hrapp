@@ -51,20 +51,20 @@
       <aside class="cal-side" aria-label="Calendar sidebar">
         <!-- Up Next Card (CalendarSidebarView parity) -->
         <div class="side-card up-next-card">
-          <div class="side-card__hdr">{{ "UP NEXT" | nativeText }}</div>
+          <div class="side-card__hdr">{{ "Up next" | nativeText }}</div>
           <div class="up-next-slot">
             @if (upNextEvent(); as nextEv) {
               <button
                 type="button"
                 class="up-next"
-                [ngStyle]="cardStyle(nextEv.color)"
+                [style.--ev-accent]="nextEv.color || '#0a84ff'"
                 (click)="selectUpNext(nextEv)"
                 (dblclick)="showEvent(nextEv)"
               >
                 <span class="up-next-date">{{ formatShortDate(nextEv.start) }}</span>
                 <span class="up-next-row">
                   <span class="up-next__bar" aria-hidden="true"></span>
-                  <span class="up-next-title" [class.struck-title]="nextEv.status === 'cancelled'">{{ nextEv.title }}</span>
+                  <span class="up-next-title" [class.struck-title]="nextEv.status === 'cancelled'">{{ nextEv.title || ("No Title" | nativeText) }}</span>
                   <span class="up-next-time">
                     <span>{{ formatEventClock(nextEv.start) }}</span>
                     <span>{{ formatEventClock(nextEv.end) }}</span>
@@ -127,7 +127,7 @@
 
         @if (inspectedOccurrence(); as event) {
           <article class="side-inspector">
-            <h2 [class.struck-title]="event.status === 'cancelled'"><i [style.background]="event.color"></i>{{ event.title }}</h2>
+            <h2 [class.struck-title]="event.status === 'cancelled'"><i [style.background]="event.color"></i>{{ event.title || ("No Title" | nativeText) }}</h2>
             <p class="inspector-date">{{ formatShortDate(event.start) }}</p>
             <h3>{{ formatEventTimeSpan(event) }}</h3>
             @if (detailCalendarName(event); as name) {
@@ -274,6 +274,7 @@
             (toggleCalendar)="toggleCalendar($event)"
             (toggleMulti)="toggleMulti($event)"
             (changed)="reloadAllWorkspaceData()"
+            (localCalendarChanged)="applyLocalCalendarChange($event)"
             (connect)="
               $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
             "
@@ -828,6 +829,7 @@
             (toggleCalendar)="toggleCalendar($event)"
             (toggleMulti)="toggleMulti($event)"
             (changed)="reloadAllWorkspaceData()"
+            (localCalendarChanged)="applyLocalCalendarChange($event)"
             (connect)="
               $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
             "

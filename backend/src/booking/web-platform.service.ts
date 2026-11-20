@@ -133,6 +133,10 @@ export class WebPlatformService {
 
   private get nativeCalendars() { return new NativeCalendarStore(this.store); }
 
+  saveAccountEvent(principal: any, calendarId: string, eventId: string, body: any) {
+    return this.nativeCalendars.mutate(principal, `native.${calendarId}.${eventId}`, body, false, true);
+  }
+
   async listAccountLocalCalendars(principal: any): Promise<ApiResult> {
     const calendars = (await this.nativeCalendars.list(principal)).filter(calendar => calendar.accountLocal === true);
     for (const calendar of calendars.filter(c => c.available === false && !c.deletionReconciled)) {
@@ -566,25 +570,37 @@ export class WebPlatformService {
 
   async getWebCalendarState(principal: any, query: any): Promise<ApiResult> {
     const { principalId, calId } = principal;
-    // Automatically refresh connected Google / Microsoft busy events if stale (> 60s, or forced via ?sync=1)
-    await this.refreshConnectedBusyEventsIfNeeded(calId, {
-      force: query?.sync === '1',
-    }).catch(() => {});
-
-    const [principalDoc, meta, eventKeys, receivedKeys, busyDoc, bookingCfg, connDoc] = await Promise.all([
+    const documents = async (prefix: string) => {
+      const keys = await this.store.listKeys(prefix);
+      return (await Promise.all(keys.map(key => this.store.getJSON(key)))).filter(Boolean);
+    };
+    const providerState = async () => {
+      await this.refreshConnectedBusyEventsIfNeeded(calId, {force: query?.sync === '1'}).catch(() => {});
+      return Promise.all([this.store.getJSON(this.keys.bookingBusy(calId)), this.store.getJSON(this.keys.oauthConnections(calId))]);
+    };
+    const received = async () => {
+      const refs = await documents(this.keys.receivedInvites(principalId));
+      return (await Promise.all(refs.map(async ref => {
+        if (!ref?.ownerCalId || !ref?.eventId) return null;
+        const ev = await this.store.getJSON(this.keys.event(ref.ownerCalId, ref.eventId));
+        if (!ev || ev.status === 'cancelled') return null;
+        return {...ev, color: validHexColor(ev.color ?? ev.details?.color, '#BF5AF2'),
+          isReceivedShared: true, receivedFeedId: ref.feedId, receivedAccess: ref.access ?? 'reader'};
+      }))).filter(Boolean);
+    };
+    const [principalDoc, meta, rawEvents, receivedEvents, activeCalendars, bookingCfg, [busyDoc, connDoc]] = await Promise.all([
       this.store.getJSON(this.keys.principal(principalId)),
       this.store.getJSON(this.keys.meta(calId)),
-      this.store.listKeys(this.keys.events(calId)),
-      this.store.listKeys(this.keys.receivedInvites(principalId)),
-      this.store.getJSON(this.keys.bookingBusy(calId)),
+      documents(this.keys.events(calId)),
+      received(),
+      this.nativeCalendars.listForWeb(principal),
       this.store.getJSON(this.keys.bookingConfig(calId)),
-      this.store.getJSON(this.keys.oauthConnections(calId)),
+      providerState(),
     ]);
 
     const fromMs = query?.from && Number.isFinite(Date.parse(query.from)) ? Date.parse(query.from) : null;
     const toMs = query?.to && Number.isFinite(Date.parse(query.to)) ? Date.parse(query.to) : null;
 
-    const rawEvents = (await Promise.all(eventKeys.map((k) => this.store.getJSON(k)))).filter(Boolean);
     const events = rawEvents
       .filter((ev) => {
         if (ev.sourceCalendarDeleted) return false;
@@ -602,26 +618,6 @@ export class WebPlatformService {
       }))
       .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
 
-    // Also include shared events accepted by this principal (`receivedInvites`)
-    const receivedRefs = (await Promise.all(receivedKeys.map((k) => this.store.getJSON(k)))).filter(Boolean);
-    const receivedEvents = (
-      await Promise.all(
-        receivedRefs.map(async (ref) => {
-          if (!ref?.ownerCalId || !ref?.eventId) return null;
-          const ev = await this.store.getJSON(this.keys.event(ref.ownerCalId, ref.eventId));
-          if (!ev || ev.status === 'cancelled') return null;
-          return {
-            ...ev,
-            color: validHexColor(ev.color ?? ev.details?.color, '#BF5AF2'),
-            isReceivedShared: true,
-            receivedFeedId: ref.feedId,
-            receivedAccess: ref.access ?? 'reader',
-          };
-        }),
-      )
-    ).filter(Boolean);
-
-    const activeCalendars = await this.nativeCalendars.listForWeb(principal);
     const nativeEvents = activeCalendars.flatMap(c => c.events.map((e: any) => this.nativeCalendars.eventForWeb(c, e)));
 
     return result(200, {

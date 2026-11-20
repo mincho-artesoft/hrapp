@@ -1584,7 +1584,7 @@
   margin: 0;
 }
 .up-next {
-  background: transparent !important;
+  background: transparent;
   border: 0;
   border-radius: 0;
   padding: 0 8px;
@@ -2408,10 +2408,12 @@ cc-calendar-menu {
 }
 .cal-shell.shell {
   min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
 }
 .cal-side {
   max-height: none;
   min-height: 0;
+  align-self: stretch;
 }
 .cal-main {
   min-height: 0;
@@ -2558,6 +2560,12 @@ cc-calendar-menu {
 .up-next__bar {
   inset-inline: 0 auto;
   inset-block: 6px;
+}
+.up-next-card .side-card__hdr {
+  text-transform: uppercase;
+}
+.up-next-title.struck-title {
+  text-decoration-color: var(--ev-accent);
 }
 .up-next-title {
   flex: 1;
@@ -2736,6 +2744,9 @@ cc-calendar-menu {
 .no-sidebar .cal-shell.shell{grid-template-columns:minmax(0,1fr);}
 .no-sidebar .cal-side{display:none;}
 .ios-layout .cal-shell{padding-bottom:78px;}
+.ios-layout:not(.no-sidebar) .cal-shell {
+  padding-bottom: calc(86px + env(safe-area-inset-bottom));
+}
 .ios-layout .desktop-add,.ios-layout .desktop-menu{display:none;}
 .ios-layout .cal-toolbar__left{flex:1;min-width:0;}
 .ios-layout .month-link{font-size:16px;font-weight:500;}

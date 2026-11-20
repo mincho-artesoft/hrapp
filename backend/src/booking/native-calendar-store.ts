@@ -218,7 +218,7 @@ export class NativeCalendarStore {
       readOnly: !calendar.allowsChanges || event.readOnly === true || calendar.available === false };
   }
 
-  async mutate(principal: any, compositeID: string, body: any, deleting = false): Promise<ApiResult> {
+  async mutate(principal: any, compositeID: string, body: any, deleting = false, accountLocalOnly = false): Promise<ApiResult> {
     const parts = compositeID.split('.');
     const calendarID = parts[0] === 'native' ? parts[1] : body?.calendarId;
     const eventID = parts[0] === 'native' ? parts[2] : compositeID;
@@ -229,6 +229,7 @@ export class NativeCalendarStore {
       const stored = await this.store.getJSONWithETag(key);
       if (!stored) return result(404, { error: 'Calendar not found.' });
       const calendar = stored.value;
+      if (accountLocalOnly && !calendar.accountLocal) return result(403, {error: 'Choose an account calendar.'});
       const previous = calendar.events.find((event: any) => event.id === eventID);
       if (!calendar.allowsChanges || calendar.available === false || previous?.readOnly) return result(403, { error: 'This calendar or event is read-only.' });
       if (deleting && !previous) return result(404, { error: 'Event not found.' });
@@ -245,6 +246,7 @@ export class NativeCalendarStore {
         }
         event.title = event.title.trim().slice(0, 1000);
         event.details = { availability: 0, alarms: [], recurrenceRules: [], attendees: [], ...previous?.details };
+        if (body.url !== undefined && (accountLocalOnly || 'url' in event.details)) event.details.url = body.url;
         for (const field of ['notes', 'timeZone', 'availability', 'providerPrivacy', 'providerShowAs', 'providerDefaultReminders', 'providerOtherReminders', 'videoCallURL', 'travelTime', 'attachments', 'structuredLocation', 'alarms', 'recurrenceRules']) {
           if (body[field] !== undefined) event.details[field] = body[field];
         }
@@ -261,8 +263,9 @@ export class NativeCalendarStore {
         events: calendar.events.filter((item: any) => item.id !== eventID) };
       if (!deleting) next.events.push(event);
       if (await this.store.putJSONIfMatch(key, next, stored.etag)) {
-        return deleting ? result(200, { deleted: true, sequence: next.revision })
-          : result(previous ? 200 : 201, { event: this.eventForWeb(next, event) });
+        const sharingCalendarID = calendar.sharingCalendarID ?? null;
+        return deleting ? result(200, { deleted: true, sequence: next.revision, sharingCalendarID })
+          : result(previous ? 200 : 201, { event: this.eventForWeb(next, event), sharingCalendarID });
       }
     }
     return result(409, { error: 'Calendar changed. Please retry.' });
