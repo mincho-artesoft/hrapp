@@ -1,0 +1,73 @@
+<header class="sheet-heading">
+  <button type="button" class="close" [attr.aria-label]="'Close' | nativeText" (click)="dismiss.emit()"><cc-symbol name="xmark" /></button>
+  <h2 id="moon-detail-title"><cc-symbol [name]="summary().phase.symbol" [multicolor]="true" />{{ title() }}</h2>
+</header>
+<div class="scroll-body">
+  <section class="summary card">
+    <img class="phase-image" [src]="summary().phase.artwork" alt="" />
+    <div class="day-heading">
+      <h3>{{ summary().phase.name | nativeText }}</h3>
+      <p>{{ summary().date }}</p>
+      @if (selected() !== today()) {
+        <button type="button" class="today" [class.later]="selected() < today()" [attr.aria-label]="'Today' | nativeText" (click)="select(today())">
+          <cc-symbol [name]="selected() < today() ? 'chevron.forward' : 'chevron.backward'" />
+        </button>
+      }
+    </div>
+    <div class="ruler" tabindex="0" role="spinbutton" [attr.aria-label]="title()" [attr.aria-valuenow]="selected() / 86400000"
+      [attr.aria-valuetext]="summary().date + ', ' + (summary().phase.name | nativeText)"
+      (pointerdown)="startRuler($event)" (pointermove)="moveRuler($event)" (pointerup)="endRuler($event)"
+      (pointercancel)="endRuler($event)" (lostpointercapture)="endRuler($event)" (keydown)="rulerKey($event)">
+      <div class="ruler-track" aria-hidden="true" [style.transform]="'translateX(' + remainder() + 'px)'">
+        @for (tick of ticks(); track tick.offset) {
+          <span class="day-tick" [class.selected]="tick.offset === 0" [class.current]="tick.today"
+            [style.inset-inline-start]="'calc(50% + ' + tick.x + 'px)'">{{ tick.label }}</span>
+        }
+      </div>
+      <cc-symbol class="indicator" [class.current]="selected() === today()" name="triangle.fill" />
+    </div>
+    <div class="metrics">
+      <div><small>{{ 'Illumination' | nativeText }}</small><strong>{{ summary().illumination }}</strong></div>
+      <div><small>{{ 'Moonrise' | nativeText }}</small><strong>{{ summary().rise }}</strong></div>
+      <div><small>{{ 'Moonset' | nativeText }}</small><strong>{{ summary().set }}</strong></div>
+    </div>
+    <div class="phase-events">
+      @for (event of summary().events; track event.phase.name) {
+        <div><img [src]="event.phase.artwork" alt="" /><b>{{ event.phase.name | nativeText }}</b><span>{{ event.date }}</span></div>
+      }
+    </div>
+  </section>
+
+  <section class="month card" (pointerdown)="startMonth($event)" (pointermove)="moveMonthPointer($event)"
+    (pointerup)="endMonth($event)" (pointercancel)="endMonth($event)">
+    <div class="month-heading">
+      <button type="button" [attr.aria-label]="monthTitle(-1)" (click)="moveMonth(-1)"><cc-symbol name="chevron.backward" /></button>
+      <h3>{{ monthTitle() }}</h3>
+      <button type="button" [attr.aria-label]="monthTitle(1)" (click)="moveMonth(1)"><cc-symbol name="chevron.forward" /></button>
+    </div>
+    <div class="month-grid">
+      @for (weekday of weekdayHeaders(); track $index) { <small aria-hidden="true">{{ weekday }}</small> }
+      @for (cell of monthCells(); track cell.day) {
+        @if (cell.phase; as phase) {
+          <button type="button" [class.current]="cell.day === today()" [class.observed]="cell.observed"
+            [attr.aria-pressed]="cell.day === selected()" [attr.aria-label]="cell.date + ', ' + (phase.name | nativeText)" (click)="select(cell.day)">
+            {{ cell.number }}<img [src]="phase.artwork" alt="" />
+          </button>
+        } @else { <span aria-hidden="true">{{ cell.number }}</span> }
+      }
+    </div>
+  </section>
+
+  <section class="forecast card">
+    <h3><cc-symbol name="calendar" />{{ '10-DAY FORECAST' | nativeText }}</h3>
+    @for (row of forecastRows(); track row.day) {
+      <button type="button" (click)="select(row.day)">
+        <b>{{ row.title }}</b><img [src]="row.phase.artwork" alt="" /><span class="phase-name">{{ row.phase.name | nativeText }}</span>
+        <span class="times">
+          <span><cc-symbol name="moonrise.fill" /><span [attr.aria-label]="('Moonrise' | nativeText) + ' ' + row.rise">{{ row.rise }}</span></span>
+          <span><cc-symbol name="moonset.fill" /><span [attr.aria-label]="('Moonset' | nativeText) + ' ' + row.set">{{ row.set }}</span></span>
+        </span>
+      </button>
+    } @empty { <p>{{ 'Data unavailable' | nativeText }}</p> }
+  </section>
+</div>

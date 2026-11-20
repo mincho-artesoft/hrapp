@@ -62,15 +62,27 @@ export class ProviderCalendarWorkspace {
     return new Date(/[zZ]|[+-]\d\d:\d\d$/.test(raw)?raw:raw+'Z').toISOString();
   }
   private mapEvent(e: any,c: any,displayZone:string) {
-    const google=this.provider==='google';const allDay=google?!!e.start?.date:!!e.isAllDay,zone=allDay?(c.timeZone||displayZone):(e.start?.timeZone||'UTC');const alarms=google?(e.reminders?.overrides??[]).filter((a:any)=>a.method==='popup').map((a:any)=>({relativeOffsetSeconds:-a.minutes*60})):(e.isReminderOn?[{relativeOffsetSeconds:-e.reminderMinutesBeforeStart*60}]:[]);
+    const google = this.provider === 'google';
+    const allDay = google ? !!e.start?.date : !!e.isAllDay;
+    let zone = allDay ? (c.timeZone || displayZone) : (e.start?.timeZone || 'UTC');
+    if (!google && e.originalStartTimeZone) {
+      try { zone = new Intl.DateTimeFormat('en', {timeZone:e.originalStartTimeZone}).resolvedOptions().timeZone; }
+      catch { /* Graph can return a Windows-only time zone. */ }
+    }
+    const ownsMeeting = google ? e.organizer?.self === true : e.isOrganizer === true;
+    const alarms=google?(e.reminders?.overrides??[]).filter((a:any)=>a.method==='popup').map((a:any)=>({relativeOffsetSeconds:-a.minutes*60})):(e.isReminderOn?[{relativeOffsetSeconds:-e.reminderMinutesBeforeStart*60}]:[]);
     return {id:`provider.${this.provider}.${key(c.remoteID)}.${key(e.id)}`,provider:this.provider,remoteID:e.id,providerCalendarID:c.remoteID,
-      providerEtag:e.etag||e['@odata.etag'],calendarId:c.id,calendarTitle:c.title,title:(google?e.summary:e.subject)||'New Event',
+      providerSeriesID:google?e.recurringEventId:e.seriesMasterId,providerEtag:e.etag||e['@odata.etag'],calendarId:c.id,calendarTitle:c.title,title:(google?e.summary:e.subject)||'New Event',
       start:this.iso(e.start,allDay,zone),end:this.iso(e.end,allDay,zone),allDay,
-      location:google?e.location:e.location?.displayName,color:c.color,readOnly:!c.allowsChanges || !!e.attendees?.length,
+      location:google?e.location:e.location?.displayName,color:c.color,readOnly:!c.allowsChanges || (!!e.attendees?.length && !ownsMeeting) || e.locked === true || e.status === 'cancelled' || e.isCancelled === true,
       status:google?e.status:e.isCancelled?'cancelled':'confirmed',updatedAt:google?e.updated:e.lastModifiedDateTime,
-      sourceKind:'external',details:{notes:google?e.description:e.body?.content,timeZone:zone,
+      sourceKind:'external',details:{
+        providerPrivacy:e[google?'visibility':'sensitivity'] ?? (google?'default':'normal'),
+        ...(google ? {providerDefaultReminders:e.reminders?.useDefault ?? !e.reminders?.overrides,
+          providerOtherReminders:(e.reminders?.overrides ?? []).filter((item:any)=>item.method !== 'popup')} : {providerShowAs:e.showAs || 'busy'}),
+        notes:google?e.description:e.body?.content,timeZone:zone,
         videoCallURL:google?e.hangoutLink:e.onlineMeeting?.joinUrl,url:google?e.source?.url:e.webLink,
-        availability:google?(e.transparency==='transparent'?'free':'busy'):e.showAs==='free'?'free':'busy',alarms,
+        availability:google?(e.transparency==='transparent'?'free':'busy'):({free:'free',tentative:'tentative',oof:'unavailable'} as Record<string,string>)[e.showAs]??'busy',alarms,
         organizer:google?e.organizer:{email:e.organizer?.emailAddress?.address,name:e.organizer?.emailAddress?.name},
         attendees:(e.attendees??[]).map((a:any)=>google?{email:a.email,name:a.displayName,status:a.responseStatus}:{email:a.emailAddress?.address,name:a.emailAddress?.name,status:a.status?.response})}};
   }
@@ -84,7 +96,7 @@ export class ProviderCalendarWorkspace {
       const query=new URLSearchParams(this.provider==='google'?{timeMin:start,timeMax:end,singleEvents:'true',showDeleted:'false',maxResults:'2500'}:{startDateTime:start,endDateTime:end,$top:'1000'});
       const path=`${this.provider==='google'?'calendars/':'calendars/'}${encode(c.remoteID)}/${this.provider==='google'?'events':'calendarView'}?${query}`;
       const items=await this.pages(path,this.provider==='google'?'items':'value');
-      events.push(...items.filter(e=>e.status!=='cancelled'&&!e.isCancelled&&e.start&&e.end).map(e=>this.mapEvent(e,c,zone)));
+      events.push(...items.filter(e=>e.start&&e.end).map(e=>this.mapEvent(e,c,zone)));
     }));
     return {calendars,events};
   }
@@ -134,15 +146,47 @@ export class ProviderCalendarWorkspace {
       if(!eventID&&clientRequestID)payload[google?'id':'transactionId']=google?createHash('sha256').update(clientRequestID).digest('hex'):clientRequestID;
       if(e.title!==undefined)payload[google?'summary':'subject']=String(e.title).slice(0,1000);
       if(e.start!==undefined||e.end!==undefined){if(!Number.isFinite(Date.parse(e.start))||!Number.isFinite(Date.parse(e.end))||Date.parse(e.end)<=Date.parse(e.start))throw new ProviderCalendarError(400,'Choose valid event dates.');
-        for(const field of ['start','end'])payload[field]=google?(e.allDay?{date:providerDate(e[field],e.timeZone||'UTC')}:{dateTime:e[field],timeZone:e.timeZone||'UTC'}):(e.allDay?{dateTime:providerDate(e[field],e.timeZone||'UTC')+'T00:00:00',timeZone:e.timeZone||'UTC'}:{dateTime:new Date(e[field]).toISOString().replace('Z',''),timeZone:'UTC'});
+        const timeZone = e.timeZone || 'UTC';
+        for (const field of ['start','end']) {
+          const day = providerDate(e[field], timeZone);
+          if (google) payload[field] = e.allDay ? {date:day} : {dateTime:e[field],timeZone};
+          else {
+            const clock = e.allDay ? '00:00:00' : new Intl.DateTimeFormat('en-GB', {timeZone, hour:'2-digit',
+              minute:'2-digit', second:'2-digit', fractionalSecondDigits:3, hourCycle:'h23'}).format(new Date(e[field]));
+            payload[field] = {dateTime:day+'T'+clock, timeZone};
+          }
+        }
         if(!google)payload.isAllDay=!!e.allDay;
       }
       if(e.location!==undefined)payload.location=google?String(e.location||''):{displayName:String(e.location||'')};
       if(e.notes!==undefined)payload[google?'description':'body']=google?String(e.notes):{contentType:'text',content:String(e.notes)};
-      if(e.availability!==undefined)payload[google?'transparency':'showAs']=google?(e.availability==='free'?'transparent':'opaque'):e.availability==='free'?'free':'busy';
-      if(e.alarms!==undefined){if(google)payload.reminders={useDefault:false,overrides:e.alarms.slice(0,5).map((a:any)=>({method:'popup',minutes:Math.min(40320,Math.max(0,Math.round(-a.relativeOffsetSeconds/60)))}))};else{payload.isReminderOn=!!e.alarms.length;payload.reminderMinutesBeforeStart=Math.max(0,Math.round(-(e.alarms[0]?.relativeOffsetSeconds||0)/60));}}
+      if(e.availability!==undefined)payload[google?'transparency':'showAs']=google?(e.availability==='free'?'transparent':'opaque'):({free:'free',tentative:'tentative',unavailable:'oof'} as Record<string,string>)[e.availability]??'busy';
+      if(e.providerPrivacy!==undefined){
+        const choices=google?['default','public','private']:['normal','personal','private','confidential'];
+        if(!choices.includes(e.providerPrivacy))throw new ProviderCalendarError(400,'Choose a valid event privacy setting.');
+        payload[google?'visibility':'sensitivity']=e.providerPrivacy;
+      }
+      if(!google && e.providerShowAs!==undefined) {
+        if(!['busy','free','tentative','oof','workingElsewhere','unknown'].includes(e.providerShowAs))throw new ProviderCalendarError(400,'Choose a valid availability.');
+        payload.showAs=e.providerShowAs;
+      }
+      if(e.alarms!==undefined || (google && (e.providerDefaultReminders !== undefined || e.providerOtherReminders !== undefined))) {
+        const minutes = (e.alarms ?? []).map((alarm:any) => {
+          const seconds = alarm.absoluteDate ? (Date.parse(alarm.absoluteDate) - Date.parse(e.start)) / 1000 :
+            alarm.relativeOffsetSeconds ?? alarm.relativeOffset;
+          if (!Number.isFinite(seconds)) throw new ProviderCalendarError(400,'Choose a valid reminder time.');
+          return Math.max(0,Math.round(-seconds / 60));
+        });
+        if (google) {
+          const other = (e.providerOtherReminders ?? []).filter((item:any)=>item.method === 'email' && Number.isInteger(item.minutes) && item.minutes >= 0 && item.minutes <= 40320);
+          payload.reminders = e.providerDefaultReminders ? {useDefault:true} : {useDefault:false,
+            overrides:[...other, ...minutes.map((value:number)=>({method:'popup',minutes:Math.min(40320,value)}))].slice(0,5)};
+        }
+        else {payload.isReminderOn = minutes.length > 0; payload.reminderMinutesBeforeStart = minutes[0] ?? 0;}
+      }
       if(!eventID&&e.recurrenceRules?.length){try{payload.recurrence=providerRecurrence(e.recurrenceRules,google,e.start,e.timeZone||'UTC');}catch(error){throw new ProviderCalendarError(400,(error as Error).message);}}
       // Like the native provider adapter, patch existing occurrences without overwriting the series or attendees.
+      if (eventID && !Object.keys(payload).length) return {eventID};
       let result:any;
       try {result=await this.request(path,eventID?'PATCH':'POST',payload,input.etag);}
       catch(error){
@@ -151,7 +195,8 @@ export class ProviderCalendarWorkspace {
           result=await this.request(path+'/'+encode(payload.id));
         } else throw error;
       }
-      return {saved:true,eventID:result.id};
+      const calendar = {id:`provider.${this.provider}.${key(id)}`,remoteID:id,allowsChanges:true};
+      return {saved:true,eventID:result.id,event:result.start && result.end ? this.mapEvent(result,calendar,e.timeZone || 'UTC') : undefined};
     }
     throw new ProviderCalendarError(400,'Unsupported calendar action.');
   }

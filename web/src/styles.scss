@@ -248,7 +248,12 @@ html[data-theme='light'] ::selection {
 /* ------------------------------------------------------------
    3. Native Scrollbar
 ------------------------------------------------------------ */
-:where(:not(.hide-scroll-indicators)) {
+// The calendar scrolls like the native app. Only a scrolling list opts in to a
+// visible indicator. Include the viewport when the calendar is the active route.
+$hidden-scrollbars: ".hide-scroll-indicators", ":is(html, body):has(app-web-calendar-page)",
+  "app-web-calendar-page", "app-web-calendar-page :not(.calendar-scroll-list)";
+
+:where(:not(#{$hidden-scrollbars})) {
   &::-webkit-scrollbar { width: 10px; height: 10px; }
   &::-webkit-scrollbar-track { background: var(--void); }
   &::-webkit-scrollbar-thumb {
@@ -259,7 +264,7 @@ html[data-theme='light'] ::selection {
   &::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
 }
 
-.hide-scroll-indicators {
+#{$hidden-scrollbars} {
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

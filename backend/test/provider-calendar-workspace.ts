@@ -35,6 +35,32 @@ async function main(){
  assert.match(generated,/^[a-f0-9]{64}$/);assert.ok(duplicateCalls[1].url.endsWith('/events/'+generated));assert.equal(retried.eventID,'already-created');
  await graph.perform({action:'save-event',calendarID:'c',clientRequestID:'same-draft-id',event:{title:'One event'}});
  assert.equal(JSON.parse(calls.at(-1)!.init.body).transactionId,'same-draft-id');
+ await graph.perform({action:'save-event',calendarID:'c',eventID:'meeting',event:{availability:'tentative',alarms:[{relativeOffsetSeconds:-1800}]}});
+ assert.deepEqual(JSON.parse(calls.at(-1)!.init.body),{showAs:'tentative',isReminderOn:true,reminderMinutesBeforeStart:30});
+ await graph.perform({action:'save-event',calendarID:'c',eventID:'meeting',event:{providerPrivacy:'confidential',providerShowAs:'workingElsewhere',alarms:[]}});
+ assert.deepEqual(JSON.parse(calls.at(-1)!.init.body),{sensitivity:'confidential',showAs:'workingElsewhere',isReminderOn:false,reminderMinutesBeforeStart:0});
+ await google.perform({action:'save-event',calendarID:'c',eventID:'meeting',event:{providerPrivacy:'private',providerDefaultReminders:false,
+   providerOtherReminders:[{method:'email',minutes:45}],alarms:[{relativeOffsetSeconds:-600}]}});
+ assert.deepEqual(JSON.parse(calls.at(-1)!.init.body),{visibility:'private',reminders:{useDefault:false,overrides:[{method:'email',minutes:45},{method:'popup',minutes:10}]}});
+ await google.perform({action:'save-event',calendarID:'c',eventID:'meeting',event:{providerDefaultReminders:true}});
+ assert.deepEqual(JSON.parse(calls.at(-1)!.init.body),{reminders:{useDefault:true}});
+ await assert.rejects(()=>graph.perform({action:'save-event',calendarID:'c',event:{providerPrivacy:'public'}}),/valid/i);
+ let graphCalls = 0;
+ const received = new ProviderCalendarWorkspace('microsoft','test-only',async()=>ok(++graphCalls === 1 ?
+   {value:[{id:'work',name:'Work',canEdit:true}]} : {value:[{id:'meeting',subject:'Cancelled meeting',showAs:'oof',isCancelled:true,
+     start:{dateTime:'2026-03-01T11:00:00',timeZone:'UTC'},end:{dateTime:'2026-03-01T12:00:00',timeZone:'UTC'}}]}));
+ const outlook = await received.perform({action:'state',start:'2026-03-01',end:'2026-04-01'});
+ assert.equal(outlook.events[0].details.availability,'unavailable');
+ assert.equal(outlook.events[0].status,'cancelled');
+ assert.equal(outlook.events[0].readOnly,true);
+ let ownerRequest = 0;
+ const own = new ProviderCalendarWorkspace('microsoft','test-only',async()=>ok(++ownerRequest===1?
+   {value:[{id:'work',canEdit:true}]}:{value:[{id:'occurrence',seriesMasterId:'series',isOrganizer:true,
+     attendees:[{emailAddress:{address:'somebody@example.invalid'}}],sensitivity:'confidential',showAs:'workingElsewhere',
+     start:{dateTime:'2026-03-01T11:00:00',timeZone:'UTC'},end:{dateTime:'2026-03-01T12:00:00',timeZone:'UTC'}}]}));
+ const ownerMeeting=(await own.perform({action:'state',start:'2026-03-01',end:'2026-04-01'})).events[0];
+ assert.equal(ownerMeeting.readOnly,false);assert.equal(ownerMeeting.providerSeriesID,'series');
+ assert.equal(ownerMeeting.details.providerPrivacy,'confidential');assert.equal(ownerMeeting.details.providerShowAs,'workingElsewhere');
  const removals: string[]=[];
  let entry:any={id:'public-holidays',accessRole:'reader',etag:'list-version'};
  const transportRemoval:typeof fetch=async(url,init)=>{

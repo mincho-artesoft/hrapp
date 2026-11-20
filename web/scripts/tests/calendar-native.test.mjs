@@ -139,12 +139,12 @@ test('moving an overnight event by its continuation preserves the whole interval
   assert.equal(minuteOnDay(+timelineDay(day, 1), day), 1440);
 });
 
-const {forecastGrid, gridCoordinates, makeMapField, mapFrame, mapReading, mapColor, worldY, latitudeAt} =
+const {forecastGrid, gridCoversViewport, gridCoordinates, makeMapField, mapFrame, mapReading, mapColor, worldY, latitudeAt} =
   await sourceModule('../../src/app/core/weather-map-field.ts');
 test('wind map interpolates WeatherKit vectors, temperatures and the local timeline across the date line', () => {
   const now = Date.UTC(2026, 10, 19, 13, 25);
   const hour = Math.floor(now / 3_600_000) * 3_600_000;
-  const grid = forecastGrid({latitude: 42, longitude: 179.7});
+  const grid = forecastGrid({x: 0.99, y: worldY(44), width: 0.02, height: worldY(40) - worldY(44)}, 3);
   const coordinates = gridCoordinates(grid);
   assert.equal(coordinates.length, 9);
   assert.ok(coordinates.some(p => p.longitude < 0) && coordinates.some(p => p.longitude > 0));
@@ -163,6 +163,43 @@ test('wind map interpolates WeatherKit vectors, temperatures and the local timel
   assert.deepEqual(mapColor(25, 'wind'), [10,148,186]);
   assert.deepEqual(mapColor(55, 'temperature'), [107,8,28]);
   assert.ok(Math.abs(latitudeAt(worldY(70)) - 70) < 1e-8);
+});
+
+test('preview and fullscreen forecast grids cover every visible edge after resize, pan and zoom', () => {
+  for (const [latitude, longitude, width, height] of [
+    [42.7, 23.3, 0.04, 0.019], [42.7, 23.3, 0.11, 0.03], [68, 179.8, 0.2, 0.6], [0, -179.8, 1, 1]
+  ]) {
+    const view = {x: longitude / 360 + 0.5 - width / 2, y: Math.min(1 - height, Math.max(0, worldY(latitude) - height / 2)), width, height};
+    for (const side of [3, 7]) {
+      const grid = forecastGrid(view, side);
+      assert.equal(grid.side, side);
+      assert.ok(gridCoversViewport(grid, view));
+      const frame = Array(side ** 2).fill({east: 1, north: 2, temperature: 12});
+      for (const fx of [0, 0.25, 0.5, 0.75, 1]) {
+        for (const fy of [0, 0.5, 1]) {
+          assert.ok(mapReading(grid, frame, latitudeAt(view.y + height * fy), (view.x + width * fx) * 360 - 180));
+        }
+      }
+      if (width < 0.5) assert.equal(gridCoversViewport(grid, {...view, x: view.x + 0.5}), false);
+    }
+  }
+});
+
+test('the lunar calendar keeps the native phase boundaries and advances past an exact new or full moon', async () => {
+  const {lunarFraction, lunarIllumination, moonPhaseInfo, nextLunarEvent} = await sourceModule('../../src/app/core/weather-moon.ts');
+  const reference = 947182440000;
+  const period = 29.530588853 * 86400000;
+  assert.equal(lunarIllumination(reference), 0);
+  assert.equal(lunarIllumination(reference + period / 2), 1);
+  assert.equal(moonPhaseInfo(lunarFraction(reference - period / 8)).name, 'Waning Crescent');
+  assert.equal(moonPhaseInfo(0.0625).name, 'Waxing Crescent');
+  assert.equal(moonPhaseInfo(0.9375).name, 'New Moon');
+  assert.equal(moonPhaseInfo(null), undefined);
+  for (const phase of [0, 0.5]) {
+    const event = nextLunarEvent(Date.UTC(2026, 10, 19), phase);
+    assert.equal(nextLunarEvent(event - 1, phase), event);
+    assert.ok(Math.abs(nextLunarEvent(event, phase) - event - period) < 1);
+  }
 });
 
 test('weather details use each metric, preserve local time gaps and exclude the following day from daily totals', async () => {

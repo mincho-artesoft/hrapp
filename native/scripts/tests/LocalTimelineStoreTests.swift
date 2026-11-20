@@ -5,6 +5,9 @@ import EventKit
 // compiled from production. This app has its own sandbox and no network code.
 // Provider payloads are opaque to this local-store suite.
 struct DeviceCalendarEvent: Codable, Equatable {}
+enum AccountLocalCalendarSync {
+    static func isVisible(_ localID: String) -> Bool { true }
+}
 enum CloudCalendarsAPI {
     enum EventAccess: String, Codable { case owner, writer, reader }
     typealias Details = SharedEventDetails

@@ -151,7 +151,7 @@ final class MacAppLocalCalendarBridge {
         return value
     }
     @discardableResult
-    func persist(_ draft: EKEvent, replacing original: EKEvent?, span: EKSpan, supplement: EventKitEventSupplement? = nil) throws -> EKEvent {
+    func persist(_ draft: EKEvent, replacing original: EKEvent?, span: EKSpan, supplement: EventKitEventSupplement? = nil, providerOptions: CalendarProviderEventOptions? = nil) throws -> EKEvent {
         guard canEdit(draft.calendar), original == nil || canEdit(original?.calendar) else { throw MacTabletCalendarError.readOnlyEvent }
         let metadata = supplement ?? original.flatMap(self.supplement)
         if let destination = record(for: draft.calendar) {
@@ -181,6 +181,16 @@ final class MacAppLocalCalendarBridge {
                 for key in ["travelTime", "videoCallURL", "attachments"] { details[key] = fields[key] }
             }
             item.details = details
+            if let providerOptions, let provider = CalendarEditorProvider(id: destination.id, source: destination.source) {
+                if original.flatMap({ record(for: $0.calendar)?.id }) != destination.id {
+                    for key in ["videoCallURL", "attachments", "travelTime"] { item.details?.removeValue(forKey: key) }
+                    item.url = nil
+                }
+                providerOptions.applying(to: &item, provider: provider)
+                if original.flatMap({ record(for: $0.calendar)?.id }) != destination.id {
+                    _ = try MacCalendarProviderEventWire.body(item, previous: nil, google: provider == .google)
+                }
+            }
             var documents = store.calendars
             if let original, let source = record(for: original.calendar), let old {
                 for index in documents.indices where documents[index].id == source.id { documents[index].events.removeAll { $0.id == old.id } }

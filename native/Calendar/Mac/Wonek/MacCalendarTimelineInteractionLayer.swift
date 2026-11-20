@@ -379,7 +379,7 @@ struct MacCalendarTimelineInteractionLayer: View {
               preview.interval.start < end, preview.interval.end > start else { return nil }
         let col = columnFrame(column)
         if preview.isAllDay {
-            return CGRect(x: col.minX + 2, y: allDay.minY + 4, width: max(1, col.width - 4), height: 22)
+            return CGRect(x: col.minX + 2, y: allDay.minY + 8, width: max(1, col.width - 4), height: columnCalendars == nil ? 20 : 18)
         }
         let top = MacCalendarTimelineGeometry.offset(of: max(preview.interval.start, start), on: start,
             calendar: calendar, hourHeight: hourHeight, margin: margin)

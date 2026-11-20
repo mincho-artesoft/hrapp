@@ -13,6 +13,8 @@ struct EventKitEventSupplement: Codable, Equatable {
 enum EventKitEventSupplementStore {
     private static let fileName = "eventkit-event-supplements.json"
 
+    private static var cachedSupplements: (url: URL, values: [String: EventKitEventSupplement])?
+
     static func supplement(for event: EKEvent) -> EventKitEventSupplement? {
         let values = load()
         return identifiers(for: event).lazy.compactMap { values[$0] }.first
@@ -80,13 +82,20 @@ enum EventKitEventSupplementStore {
     }
 
     private static func load() -> [String: EventKitEventSupplement] {
-        guard let fileURL,
-              let data = try? Data(contentsOf: fileURL),
+        guard let fileURL else { return [:] }
+        if let cached = cachedSupplements, cached.url == fileURL {
+            return cached.values
+        }
+        guard let data = try? Data(contentsOf: fileURL),
               let values = try? JSONDecoder().decode(
                 [String: EventKitEventSupplement].self,
                 from: data
               )
-        else { return [:] }
+        else {
+            cachedSupplements = (fileURL, [:])
+            return [:]
+        }
+        cachedSupplements = (fileURL, values)
         return values
     }
 
@@ -94,6 +103,10 @@ enum EventKitEventSupplementStore {
         guard let fileURL,
               let data = try? JSONEncoder().encode(values)
         else { return }
-        try? data.write(to: fileURL, options: .atomic)
+        if (try? data.write(to: fileURL, options: .atomic)) != nil {
+            cachedSupplements = (fileURL, values)
+        } else {
+            cachedSupplements = nil
+        }
     }
 }

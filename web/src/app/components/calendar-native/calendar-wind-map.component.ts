@@ -78,7 +78,7 @@ export class CalendarWindMapComponent implements OnDestroy {
     () => {
       const full = this.expanded(),
         v = this.viewport();
-      return full && !v ? null : forecastGrid(this.place(), full ? v : undefined);
+      return v ? forecastGrid(v, full ? 7 : 3) : null;
     },
     {
       equal: (a, b) =>
@@ -304,6 +304,7 @@ export class CalendarWindMapComponent implements OnDestroy {
     this.markerExpanded.set(true);
     this.timelineVisible.set(true);
     this.position.set(this.nowIndex());
+    this.viewport.set(undefined);
     this.expanded.set(true);
     this.dialog().nativeElement.showModal();
     // Use an already granted browser location, as native does with its last known fix.

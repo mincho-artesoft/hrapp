@@ -3,7 +3,7 @@
   <div class="map preview" role="button" tabindex="0" [attr.aria-label]="'Open wind map' | nativeText"
     (click)="open($event)" (keydown.enter)="open($event)" (keydown.space)="$event.preventDefault(); open($event)">
     @if (!expanded()) {
-      <cc-weather-map-surface [place]="place()" [field]="field()" [position]="nowIndex()">
+      <cc-weather-map-surface [place]="place()" [field]="field()" [position]="nowIndex()" (viewportChange)="viewport.set($event)">
         <div class="pin compact"><span class="bubble">{{ marker().value }}</span>
           <span class="caption">{{ place().name | nativeText }}</span></div>
       </cc-weather-map-surface>
@@ -84,7 +84,7 @@
           }
         </div>
       } @else {
-        <section class="sheet" role="dialog" aria-modal="true" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" [attr.aria-label]="(active==='info'?'Map Data':'Your Locations') | nativeText">
+        <section class="sheet" [class.calendar-scroll-list]="active==='locations'" role="dialog" aria-modal="true" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" [attr.aria-label]="(active==='info'?'Map Data':'Your Locations') | nativeText">
           @if(active==='info'){
             <div class="sheet-head info-head"><b>{{ 'Map Data' | nativeText }}</b><button type="button" (click)="panel.set(null)">{{ 'Done' | nativeText }}</button></div>
             <div class="info-body">

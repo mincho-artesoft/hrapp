@@ -53,6 +53,6 @@
     flex: 1;
     overflow: auto;
     padding: 16px;
-    scrollbar-width: thin;
+    &.calendar-scroll-list { scrollbar-width: thin; }
   }
 }

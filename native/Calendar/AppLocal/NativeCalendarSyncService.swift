@@ -65,14 +65,10 @@ enum NativeCalendarSyncService {
                         var event = latest.first { $0.shareID == item.id } ?? AppLocalEventRecord(calendarID: calendar.id, title: item.title, startDate: item.startDate, endDate: item.endDate, remoteEventID: item.id)
                         event.title = item.title; event.startDate = item.startDate; event.endDate = item.endDate; event.isAllDay = item.allDay
                         event.location = item.location ?? ""; event.urlString = item.url ?? ""
-                        if let details = item.details {
-                            let decoded = try JSONDecoder().decode(SharedEventDetails.self, from: JSONEncoder().encode(details))
-                            event.notes = decoded.notes ?? ""; event.timeZoneIdentifier = decoded.timeZone ?? calendar.timeZoneIdentifier
-                            event.alarms = decoded.alarms.compactMap { $0.relativeOffset.map { AppLocalEventAlarm(relativeOffset: $0) } }
-                            event.recurrenceRules = decoded.recurrenceRules; event.videoCallURL = decoded.videoCallURL
-                            event.travelTime = decoded.travelTime; event.structuredLocation = decoded.structuredLocation
-                            event.attachments = decoded.attachments?.map(AppLocalEventAttachment.init)
-                        }
+                        event.providerReadOnly = item.readOnly
+                        event.isCancelled = item.status == "cancelled"
+                        event.providerSnapshot = item
+                        event.applySharedDetails(try MacEventShareSnapshot.details(item))
                         try local.saveTransferredEvent(event)
                     }
                 }
@@ -96,7 +92,7 @@ enum NativeCalendarSyncService {
             var value = AppLocalProviderCalendarStore.snapshot(record); value.id = record.shareID; return value
         }
         return DeviceCalendarEvent(id: record.shareID, title: record.title, start: DeviceCalendarEvent.iso(record.startDate), end: DeviceCalendarEvent.iso(record.endDate),
-            allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: record.portableDetails), readOnly: record.providerReadOnly)
+            allDay: record.isAllDay, location: record.location, url: record.urlString, details: try CalendarJSON.object(encoding: record.portableDetails), readOnly: record.providerReadOnly, status: record.isCancelled ? "cancelled" : nil)
     }
 
 }

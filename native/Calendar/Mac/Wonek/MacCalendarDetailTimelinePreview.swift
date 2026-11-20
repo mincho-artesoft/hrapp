@@ -22,6 +22,7 @@ struct MacCalendarDetailTimelineItem: Identifiable {
     let isRecurring: Bool
     let color: NSColor
     let isSelected: Bool
+    var isCancelled = false
 }
 
 @MainActor
@@ -213,6 +214,7 @@ struct MacCalendarDetailTimelinePreview: View {
         let timeLines = max(0, lineCount - titleLines - locationLines)
         return VStack(alignment: .leading, spacing: 0) {
             (Text(item.title).fontWeight(.semibold) + (item.isRecurring ? Text(" ") + Text(Image(systemName: "repeat")) : Text("")))
+                .strikethrough(item.isCancelled)
                 .foregroundColor(titleColor)
                 .lineLimit(titleLines)
             if locationLines > 0 {

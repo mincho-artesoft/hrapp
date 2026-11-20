@@ -1,4 +1,4 @@
-@if (authReady() && api.token()) {
+@if (api.token() && (api.profile() || authReady())) {
   <ng-template #accountAction>
     @if (api.isSignedInWithAccount()) {
       <button #accountButton type="button" class="calendar-header-action calendar-account-action"
@@ -22,11 +22,9 @@
   [class.no-sidebar]="!showsSidebar()"
   [class.studio--light]="surfaceTheme() === 'light'"
 >
-  @if (!authReady() || (api.token() && !api.profile() && api.loadingProfile())) {
+  @if ((!authReady() && !api.profile()) || (api.token() && !api.profile() && api.loadingProfile())) {
     <div class="cal-login-screen">
-      <div class="cal-auth-loading" aria-live="polite">
-        {{ "Loading…" | nativeText }}
-      </div>
+      <cc-calendar-progress class="cal-auth-loading" />
     </div>
   } @else if (api.token() && !api.profile()) {
     <div class="cal-login-screen">
@@ -66,7 +64,7 @@
                 <span class="up-next-date">{{ formatShortDate(nextEv.start) }}</span>
                 <span class="up-next-row">
                   <span class="up-next__bar" aria-hidden="true"></span>
-                  <span class="up-next-title">{{ nextEv.title }}</span>
+                  <span class="up-next-title" [class.struck-title]="nextEv.status === 'cancelled'">{{ nextEv.title }}</span>
                   <span class="up-next-time">
                     <span>{{ formatEventClock(nextEv.start) }}</span>
                     <span>{{ formatEventClock(nextEv.end) }}</span>
@@ -100,7 +98,7 @@
           </div>
           <div class="mini-dow">
             @for (day of dayNames(); track $index) {
-              <span>{{ day[0] }}</span>
+              <span>{{ day }}</span>
             }
           </div>
           <div class="mini-grid">
@@ -127,14 +125,14 @@
           </button>
         </div>
 
-        @if (inspectorEvent(); as event) {
+        @if (inspectedOccurrence(); as event) {
           <article class="side-inspector">
-            <h2><i [style.background]="event.color"></i>{{ event.title }}</h2>
+            <h2 [class.struck-title]="event.status === 'cancelled'"><i [style.background]="event.color"></i>{{ event.title }}</h2>
             <p class="inspector-date">{{ formatShortDate(event.start) }}</p>
             <h3>{{ formatEventTimeSpan(event) }}</h3>
-            <p>
-              <cc-symbol name="calendar" />{{ calendarName(event.calendarId) }}
-            </p>
+            @if (detailCalendarName(event); as name) {
+              <p><cc-symbol name="calendar" />{{ name }}</p>
+            }
             @if (event.location) {
               <p><cc-symbol name="mappin.and.ellipse" />{{ event.location }}</p>
             }
@@ -281,14 +279,20 @@
             "
             (disconnect)="disconnectExternal($event)"
             (settingsChanged)="readPreferences()"
-            (openEvent)="showEvent($event)"
+            [sharedListEvent]="sharedListEvent"
+            (openEvent)="showEvent(sharedListEvent($event))"
+            [iosLayout]="!isDesktop()"
+            [accessEventTarget]="accessEventTarget"
+            [eventActionOpen]="!!editorDraft() || !!shareEvent()"
+            (editEvent)="openEditEventModal($event)"
+            (shareEvent)="openShareEvent($event)"
           />
         }
 
         @if (
           (viewMode() === "month" || viewMode() === "year") && !searchOpen()
         ) {
-          <div class="period-heading">
+          <div class="period-heading" [class.year-heading]="viewMode() === 'year'">
             <button
               type="button"
               aria-label="Previous period"
@@ -329,7 +333,7 @@
         @if (searchOpen() && viewMode() !== "menu" && viewMode() !== "weather") {
           <cc-calendar-search [value]="searchText()" (changed)="searchText.set($event)" (closed)="searchOpen.set(false); searchText.set('')" />
           @if (searchText()) {
-            <div class="agenda-wrap native-list-wrap">
+            <div class="agenda-wrap native-list-wrap calendar-scroll-list">
               @for (grp of searchGroups(); track grp.key) {
                 <section class="native-list-day">
                   <h3 class="native-list-day__hdr" [class.is-today]="grp.isToday">
@@ -408,41 +412,28 @@
 
           @if (viewMode() === "year") {
             <div class="year-grid">
-              @for (month of yearMonths(); track month.date) {
-                <section>
-                  <button
-                    type="button"
-                    class="year-month"
-                    (click)="selectMiniDay(month.date); setView('month')"
-                  >
-                    {{ month.date | nativeDate: "MMM" }}
-                  </button>
-                  <div class="mini-dow">
+              @for (month of yearMonths(); track month.date.getTime()) {
+                <button type="button" class="year-card" [attr.aria-label]="month.date | nativeDate: 'MMMM yyyy'"
+                  (click)="anchorDate.set(month.date); setView('month')">
+                  <span class="year-month">{{ month.date | nativeDate: "MMM" }}</span>
+                  <span class="year-days" aria-hidden="true">
                     @for (day of dayNames(); track $index) {
-                      <span>{{ day[0] }}</span>
+                      <span class="year-weekday">{{ day }}</span>
                     }
-                  </div>
-                  <div class="mini-grid">
-                    @for (cell of month.days; track cell.day) {
-                      <button
-                        type="button"
-                        class="mini-day"
-                        [class.is-muted]="!cell.inMonth"
-                        [class.is-today]="cell.inMonth && isTodayDay(cell.day)"
-                        (click)="selectMiniDay(cell.day); setView('day')"
-                      >
-                        <span>{{ cell.day.getDate() }}</span>
-                        @if (cell.dots.length) {
-                          <i class="mini-dots">
-                            @for (c of cell.dots; track $index) {
-                              <em [style.background]="c"></em>
-                            }
-                          </i>
+                    @for (cell of month.days; track cell.day.getTime()) {
+                      <span class="year-day">
+                        @if (cell.inMonth) {
+                          <span class="year-number" [class.is-today]="isTodayDay(cell.day)">{{ calendarNumbers().format(cell.day.getDate()) }}</span>
+                          @if (cell.dots.length) {
+                            <span class="year-dots">
+                              @for (color of cell.dots; track color) { <i [style.background]="color"></i> }
+                            </span>
+                          }
                         }
-                      </button>
+                      </span>
                     }
-                  </div>
-                </section>
+                  </span>
+                </button>
               }
             </div>
           }
@@ -486,31 +477,27 @@
                 </div>
               </div>
             }
-            <div class="tl-head all-day-head" [style.height.px]="allDayHeight()">
+            <div class="tl-head all-day-head" [class.multi-calendar]="viewMode() === 'multi'" [style.height.px]="allDayHeight()">
               <div class="tl-gutter tl-gutter--head">
                 <span>{{ 'all-day' | nativeText }}</span>
-                @if (maxAllDay() > 3) {
-                  <button type="button" [attr.aria-expanded]="expandedAllDay()" aria-label="Show all-day events" (click)="expandedAllDay.set(!expandedAllDay())">
-                    <cc-symbol [name]="expandedAllDay() ? 'chevron.up' : 'chevron.down'" />
-                  </button>
-                }
+
               </div>
               <div class="tl-day-headers" (scroll)="syncTimelineScroll($event)" [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(100px, 1fr))'">
                 @for (d of visibleDays(); track $index; let di = $index) {
                   <div class="tl-allday-zone" [class.is-drop-col]="drag()?.preview?.allDay && previewCoversDay(drag()!, d, di)" (contextmenu)="$event.preventDefault()" (pointerdown)="startTimelineGesture($event, 'create', di, undefined, true)" (dblclick)="doubleClickSlot($event, di, true)">
-                    @for (adev of timelineColumns()[di].allDay.slice(0, expandedAllDay() ? undefined : 3); track adev.id) {
+                    @for (adev of timelineColumns()[di].allDay; track adev.id) {
                       <button type="button" class="allday-pill" [class.ghost-source]="drag()?.active && drag()?.event?.id === adev.id"
-                        [class.is-cancelled]="adev.status === 'cancelled'" [ngStyle]="cardStyle(adev.color)"
+                        [class.is-cancelled]="adev.status === 'cancelled'" [style.--ev-accent]="adev.color || '#0a84ff'"
                         (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="$event.detail === 0 && selectEvent(adev)"
                         (dblclick)="activateEvent(adev)" (contextmenu)="contextEvent(adev, $event)">
-                        <cc-symbol name="calendar.circle.fill" />
+                        <cc-symbol [name]="eventSymbol(adev) || 'calendar.circle.fill'" />
                         @if (adev.readOnly) { <cc-symbol name="lock.fill" /> }
                         <span class="allday-pill__txt">{{ adev.title }}</span>
                       </button>
                     }
                     @if (drag(); as g) {
                       @if (g.preview.allDay && previewCoversDay(g, d, di)) {
-                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">@if (g.event) {<cc-symbol name="calendar.circle.fill" />}{{ g.event?.title || ('New event' | nativeText) }}</span>
+                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">@if (g.event) {<cc-symbol [name]="eventSymbol(g.event) || 'calendar.circle.fill'" />}{{ g.event?.title || ('New event' | nativeText) }}</span>
                       }
                     }
                   </div>
@@ -683,8 +670,8 @@
           @if (viewMode() === "month") {
             <div class="month-wrap">
               <div class="month-dow">
-                @for (day of dayNames(); track $index) {
-                  <span>{{ day[0] }}</span>
+                @for (day of monthWeekdays(); track $index) {
+                  <span>{{ day }}</span>
                 }
               </div>
               @if (monthPreview(); as preview) {
@@ -707,7 +694,7 @@
                     (dblclick)="createFromMonth($event, cell.date)"
                   >
                     <div class="month-cell__hdr">
-                      <span class="month-cell__num">{{ cell.dayNum }}</span>
+                      <span class="month-cell__num">{{ calendarNumbers().format(cell.dayNum) }}</span>
                     </div>
                     <div class="month-cell__list">
                       @for (ev of cell.events; track ev.id) {
@@ -720,7 +707,8 @@
                           (contextmenu)="contextEvent(ev, $event)"
                           (click)="monthEventClick($event,ev)"
                         >
-                          <span class="month-pill__title">@if (ev.readOnly) {<cc-symbol name="lock.fill" />}{{ ev.title }}</span>
+                          @if (ev.readOnly) { <cc-symbol name="lock.fill" /> }
+                          <span class="month-pill__title" [ccMonthTitle]="ev.title" [locked]="!!ev.readOnly">{{ ev.title }}</span>
                         </div>
                       }
                       @if (cell.moreCount > 0) {
@@ -745,7 +733,7 @@
 
           <!-- LIST VIEW (MacTabletEventList parity) -->
           @if (viewMode() === "agenda") {
-            <div class="agenda-wrap native-list-wrap">
+            <div #agendaList class="agenda-wrap native-list-wrap calendar-scroll-list">
               @if (agendaGroups().length === 0) {
                 <div class="empty-state native-empty">
                   <cc-symbol name="calendar" />
@@ -753,7 +741,7 @@
                 </div>
               } @else {
                 @for (grp of agendaGroups(); track grp.key) {
-                  <section class="native-list-day">
+                  <section class="native-list-day" [attr.data-list-day]="grp.key">
                     <h3
                       class="native-list-day__hdr"
                       [class.is-today]="grp.isToday"
@@ -768,17 +756,15 @@
                         (click)="showEvent(row.event)"
                         (contextmenu)="contextEvent(row.event, $event)"
                       >
-                        <span
-                          class="native-list-row__bar"
-                          [style.background]="row.event.color || '#0A84FF'"
-                        ></span>
+                        @if (!row.event.allDay) {
+                          <span class="native-list-row__bar" [style.background]="row.event.color || '#0A84FF'"></span>
+                        }
+                        @if (row.symbol) { <cc-symbol [name]="row.symbol" [pointSize]="17" [style.color]="row.event.color || '#0A84FF'" /> }
+                        @if (row.event.readOnly && isDesktop()) {
+                          <cc-symbol name="lock.fill" [pointSize]="12" [style.color]="row.event.color || '#0A84FF'" />
+                        }
                         <span class="native-list-row__main">
-                          <strong>@if (row.event.readOnly) {<cc-symbol name="lock.fill" />}{{
-                            row.event.title || ("No Title" | nativeText)
-                          }}</strong>
-                          @if (row.event.location) {
-                            <small>{{ row.event.location }}</small>
-                          }
+                          <strong>{{ row.event.title || ("No Title" | nativeText) }}</strong>
                         </span>
                         <span class="native-list-row__times">
                           <span>{{
@@ -793,6 +779,8 @@
                           }
                         </span>
                       </button>
+                    } @empty {
+                      <p class="list-empty-day">{{ "No events found" | nativeText }}</p>
                     }
                   </section>
                 }
@@ -845,7 +833,13 @@
             "
             (disconnect)="disconnectExternal($event)"
             (settingsChanged)="readPreferences()"
-            (openEvent)="showEvent($event)"
+            [sharedListEvent]="sharedListEvent"
+            (openEvent)="showEvent(sharedListEvent($event))"
+            [iosLayout]="!isDesktop()"
+            [accessEventTarget]="accessEventTarget"
+            [eventActionOpen]="!!editorDraft() || !!shareEvent()"
+            (editEvent)="openEditEventModal($event)"
+            (shareEvent)="openShareEvent($event)"
           />
         </div>
       </div>
@@ -1012,7 +1006,7 @@
               </button>
             }
             @if (shareBusy()) {
-              <p role="status">{{ "Preparing…" | nativeText }}</p>
+              <cc-calendar-progress label="Preparing…" />
             }
             @if (shareError()) {
               <p class="share-error" role="alert">{{ shareError() }}</p>
@@ -1107,11 +1101,12 @@
     }
 
     <!-- Event Details Sheet (MacTabletEventEditor detailForm parity) -->
-    @if (selectedEvent(); as event) {
+    @if (!editorDraft() && !shareEvent() && detailEvent(); as event) {
+      @let detailProvider = providerForCalendar(event.calendarId, event);
       @let hasHeaderActions = !event.readOnly || canShare(event);
       <div class="modal-backdrop" (click)="selectedEvent.set(null)">
         <section
-          class="modal-sheet native-event-sheet"
+          class="modal-sheet native-event-sheet event-detail-sheet"
           role="dialog"
           aria-modal="true"
           aria-label="Event Details"
@@ -1124,7 +1119,8 @@
                   <button
                     type="button"
                     aria-label="Edit event"
-                    (click)="openEditEventModal(event)"
+                    [disabled]="savingEvent()"
+                    (click)="openEditEventModal(event, true)"
                   >
                     <cc-symbol [pointSize]="17" name="pencil" />
                   </button>
@@ -1133,13 +1129,14 @@
                   <button
                     type="button"
                     aria-label="Share event"
-                    (click)="openShareEvent(event)"
+                    [disabled]="savingEvent()"
+                    (click)="openShareEvent(event, true)"
                   >
                     <cc-symbol [pointSize]="17" name="square.and.arrow.up" />
                   </button>
                 }
               </div>
-            } @else {
+            } @else if (isDesktop()) {
               <button
                 type="button"
                 class="round-button"
@@ -1148,9 +1145,9 @@
               >
                 <cc-symbol [pointSize]="17" name="xmark" />
               </button>
-            }
+            } @else { <span></span> }
             <h2>{{ "Event Details" | nativeText }}</h2>
-            @if (hasHeaderActions) {
+            @if (hasHeaderActions || !isDesktop()) {
               <button
                 type="button"
                 class="round-button"
@@ -1165,7 +1162,7 @@
           </header>
           <div class="modal-body native-details">
             <div class="native-form-group detail-title">
-              <h1>{{ event.title }}</h1>
+              <h1 [class.struck-title]="event.status === 'cancelled'">{{ event.title }}</h1>
               @if (event.location) {
                 <p
                   class="detail-location"
@@ -1174,7 +1171,9 @@
                   {{ event.location }}
                 </p>
               }
-              @for (line of detailDateLines(event); track $index) { <p>{{ line }}</p> }
+              <div class="detail-date-summary">
+                @for (line of detailDateLines(event); track $index) { <p>{{ line }}</p> }
+              </div>
               @if (event.details?.recurrenceRules?.length) {
                 <p class="detail-repeat">{{ recurrenceDescription(event) }}</p>
               }
@@ -1191,60 +1190,69 @@
             </div>
 
             <div class="native-form-group">
+              @if (detailCalendarName(event); as name) {
               <div class="native-form-row">
                 <span>{{ "Calendar" | nativeText }}</span>
                 <span class="detail-calendar-val">
-                  <i [style.background]="event.color"></i>
-                  @if (!event.readOnly && calendarChoices().length > 1) {
+                  <i [style.background]="event.color || event.details?.color || '#0A84FF'"></i>
+                  @if (detailCalendarChoices(event).length) {
                     <cc-choice
                       label="Calendar"
-                      [value]="event.calendarId || ''"
-                      [options]="calendarChoices()"
-                      [disabled]="savingEvent()"
+                      [value]="event.calendarId || name"
+                      [options]="detailCalendarChoices(event)"
+                      [disabled]="savingEvent() && !pendingDetailWrites()"
                       (valueChange)="updateEventCalendar(event, $event)"
                     />
                   } @else {
-                    <span>{{ calendarName(event.calendarId) }}</span>
+                    <span>{{ name }}</span>
                   }
                 </span>
               </div>
+              }
+            @if (!detailProvider) {
               <div class="native-form-row">
                 <span>{{ "Travel Time" | nativeText }}</span>
                 <cc-choice
                   label="Travel Time"
                   [value]="'' + (event.details?.travelTime || 0)"
                   [options]="travelChoices"
-                  [disabled]="!!event.readOnly || savingEvent()"
+                  [disabled]="!!event.readOnly || (savingEvent() && !pendingDetailWrites())"
                   (valueChange)="updateDetail(event, { travelTime: +$event })"
                 />
               </div>
+            }
+
             </div>
 
+            @if (detailProvider) {
+              <ng-container *ngTemplateOutlet="providerOptions; context: {$implicit:detailProvider, event:event}" />
+            } @else {
             <div class="native-form-group">
               <div class="native-form-row">
                 <span>{{ "Alert" | nativeText }}</span>
                 <cc-choice
                   label="Alert"
-                  [value]="'' + eventAlert(event, 0)"
-                  [options]="alertChoices"
-                  [disabled]="!!event.readOnly || savingEvent()"
-                  (valueChange)="updateDetailAlert(event, 0, +$event)"
+                  [value]="alertValue(event.details?.alarms?.[0])"
+                  [options]="choicesForAlarm(event.details?.alarms?.[0])"
+                  [disabled]="!!event.readOnly || (savingEvent() && !pendingDetailWrites())"
+                  (valueChange)="updateDetailAlert(event, 0, $event)"
                 />
               </div>
-              @if (eventAlert(event, 0) >= 0) {
+              @if (event.details?.alarms?.[0] && (!event.readOnly || isDesktop() || event.details?.alarms?.[1])) {
                 <div class="native-form-row">
                   <span>{{ "Second Alert" | nativeText }}</span>
                   <cc-choice
                     label="Second Alert"
-                    [value]="'' + eventAlert(event, 1)"
-                    [options]="alertChoices"
-                    [disabled]="!!event.readOnly || savingEvent()"
-                    (valueChange)="updateDetailAlert(event, 1, +$event)"
+                    [value]="alertValue(event.details?.alarms?.[1])"
+                    [options]="choicesForAlarm(event.details?.alarms?.[1])"
+                    [disabled]="!!event.readOnly || (savingEvent() && !pendingDetailWrites())"
+                    (valueChange)="updateDetailAlert(event, 1, $event)"
                   />
                 </div>
               }
             </div>
 
+            }
             @if ((event.details?.attachments ?? []).length) {
               <div class="native-form-group">
                 @for (
@@ -1336,8 +1344,49 @@
       </div>
     }
 
+    <ng-template #providerOptions let-provider let-draft="draft" let-event="event">
+      @let data = draft || event?.details || {};
+      @let alarms = data.alarms || [];
+      <div class="native-form-group">
+        <div class="native-form-row"><span>{{ "Show As" | nativeText }}</span>
+          <cc-choice label="Show As" [options]="providerAvailability[provider === 'google' ? 'google' : 'microsoft']"
+            [value]="data.providerShowAs || (data.availability === 'unavailable' ? 'oof' : data.availability) || 'busy'"
+            [disabled]="!!event?.readOnly" (valueChange)="changeProviderField(draft,event,'providerShowAs',$event)" />
+        </div>
+        <div class="native-form-row"><span>{{ (provider === 'google' ? 'Visibility' : 'Sensitivity') | nativeText }}</span>
+          <cc-choice [label]="provider === 'google' ? 'Visibility' : 'Sensitivity'" [options]="providerPrivacyChoices[provider === 'google' ? 'google' : 'microsoft']"
+            [value]="data.providerPrivacy || (provider === 'google' ? 'default' : 'normal')" [disabled]="!!event?.readOnly"
+            (valueChange)="changeProviderField(draft,event,'providerPrivacy',$event)" />
+        </div>
+        @if (provider === 'google') {
+          <label class="native-form-row"><span>{{ 'Use calendar reminders' | nativeText }}</span>
+            <input class="native-switch" type="checkbox" [disabled]="!!event?.readOnly"
+              [ngModel]="data.providerDefaultReminders ?? !alarms.length" (ngModelChange)="changeProviderField(draft,event,'providerDefaultReminders',$event)" />
+          </label>
+        }
+        @if (provider !== 'google' || !(data.providerDefaultReminders ?? !alarms.length)) {
+          @for (i of providerAlertRows(provider, alarms, data.providerOtherReminders?.length); track i) {
+            <div class="native-form-row"><span>{{ (i === 0 ? 'Alert' : 'Additional reminder') | nativeText }}</span>
+              <cc-choice [label]="i === 0 ? 'Alert' : 'Additional reminder'" [value]="alertValue(alarms[i])" [options]="choicesForAlarm(alarms[i])"
+                [disabled]="!!event?.readOnly" (valueChange)="setProviderAlarm(draft,event,i,$event,false)" />
+            </div>
+          }
+          @if (provider === 'google') {
+            @let emails = providerEmailAlarms(data.providerOtherReminders);
+            @for (i of providerAlertRows(provider,emails,alarms.length); track i) {
+              <div class="native-form-row"><span>{{ 'Email reminder' | nativeText }}</span>
+                <cc-choice label="Email reminder" [value]="alertValue(emails[i])" [options]="choicesForAlarm(emails[i])"
+                  [disabled]="!!event?.readOnly" (valueChange)="setProviderAlarm(draft,event,i,$event,true)" />
+              </div>
+            }
+          }
+        }
+      </div>
+    </ng-template>
+
     <!-- Event Editor & Location / Custom Repeat Sub-Sheets (MacTabletEventEditor parity) -->
     @if (editorDraft(); as d) {
+      @let provider = providerForCalendar(d.calendarId, d.original);
       <div class="modal-backdrop">
         <section
           class="modal-sheet native-event-sheet event-editor-sheet"
@@ -1352,6 +1401,7 @@
               type="button"
               class="round-button"
               [attr.aria-label]="editorPage() === 'main' ? 'Cancel' : 'Close'"
+              [disabled]="savingEvent()"
               (click)="
                 editorPage() === 'location'
                   ? commitLocationDraft()
@@ -1396,7 +1446,7 @@
             @if (editorPage() === "recurrence") {
               <cc-repeat
                 [rule]="repeatRule(d)"
-                [start]="d.startDate"
+                [start]="d.startDate" [singleMonthDay]="provider === 'microsoft'"
                 (ruleChange)="changeRepeatRule($event)"
               />
             } @else if (editorPage() === "location") {
@@ -1424,6 +1474,7 @@
                     </button>
                   }
                 </label>
+                @if (!provider) {
                 <label class="native-form-row location-field-row">
                   <span class="field-prefix"
                     >{{ "Video Call" | nativeText }}:</span
@@ -1434,6 +1485,8 @@
                     [(ngModel)]="d.videoCallURL"
                   />
                 </label>
+                }
+
               </div>
               @if (d.location.trim()) {
                 <div class="native-form-group">
@@ -1490,7 +1543,7 @@
                     (click)="openLocationPage(d)"
                   >
                     <span [class.placeholder]="!d.location">{{
-                      d.location || ("Location or Video Call" | nativeText)
+                      d.location || ((provider ? "Location" : "Location or Video Call") | nativeText)
                     }}</span>
                   </button>
                   @if (d.location) {
@@ -1540,6 +1593,7 @@
                   (dateChange)="d.endDate = $event"
                   (timeChange)="d.endTime = $event"
                 />
+                @if (!provider) {
                 <div class="native-form-row">
                   <span>{{ "Travel Time" | nativeText }}</span>
                   <cc-choice
@@ -1549,8 +1603,11 @@
                     (valueChange)="d.travelTime = +$event"
                   />
                 </div>
+                }
+
               </div>
 
+              @if (!provider || d.isNew) {
               <div class="native-form-group">
                 <div class="native-form-row">
                   <span>{{ "Repeat" | nativeText }}</span>
@@ -1587,35 +1644,43 @@
                 }
               </div>
 
+              }
               <div class="native-form-group">
                 <div class="native-form-row">
                   <span>{{ "Calendar" | nativeText }}</span>
                   <span class="detail-calendar-val">
                     <i [style.background]="d.color"></i>
-                    <cc-choice label="Calendar" [value]="d.calendarId || ''"
-                      [options]="calendarChoices()" (valueChange)="setDraftCalendar(d, $event)" />
+                    @if (d.isNew || (d.calendarId && !d.original?.receivedFeedId && !d.original?.provider)) {
+                      <cc-choice label="Calendar" [value]="d.calendarId || ''"
+                        [options]="d.original ? detailCalendarChoices(d.original) : calendarChoices()" (valueChange)="setDraftCalendar(d, $event)" />
+                    } @else {
+                      <span>{{ d.original ? detailCalendarName(d.original) : calendarName(d.calendarId) }}</span>
+                    }
                   </span>
                 </div>
               </div>
 
+              @if (provider) {
+                <ng-container *ngTemplateOutlet="providerOptions; context: {$implicit:provider, draft:d}" />
+              } @else {
               <div class="native-form-group">
                 <div class="native-form-row">
                   <span>{{ "Alert" | nativeText }}</span>
                   <cc-choice
                     label="Alert"
-                    [value]="'' + d.reminderMin"
-                    [options]="alertChoices"
-                    (valueChange)="d.alertsEdited = true; d.reminderMin = +$event; d.secondReminderMin = d.reminderMin < 0 ? -1 : d.secondReminderMin"
+                    [value]="alertValue(d.alarms[0])"
+                    [options]="choicesForAlarm(d.alarms[0])"
+                    (valueChange)="d.alarms = replaceAlarm(d.alarms, 0, $event)"
                   />
                 </div>
-                @if (d.reminderMin >= 0) {
+                @if (d.alarms.length) {
                   <div class="native-form-row">
                     <span>{{ "Second Alert" | nativeText }}</span>
                     <cc-choice
                       label="Second Alert"
-                      [value]="'' + d.secondReminderMin"
-                      [options]="alertChoices"
-                      (valueChange)="d.alertsEdited = true; d.secondReminderMin = +$event"
+                      [value]="alertValue(d.alarms[1])"
+                      [options]="choicesForAlarm(d.alarms[1])"
+                      (valueChange)="d.alarms = replaceAlarm(d.alarms, 1, $event)"
                     />
                   </div>
                 }
@@ -1653,7 +1718,9 @@
               @if (!isDesktop() && d.recurrence !== "none") {
                 <p class="form-footnote">{{ "Attachments will be applied to all occurrences" | nativeText }}</p>
               }
+              }
               <div class="native-form-group">
+                @if (!provider) {
                 <label class="native-form-row">
                   <input
                     type="url"
@@ -1662,6 +1729,8 @@
                     [(ngModel)]="d.url"
                   />
                 </label>
+                }
+
                 <label class="native-form-row">
                   <textarea
                     rows="3"

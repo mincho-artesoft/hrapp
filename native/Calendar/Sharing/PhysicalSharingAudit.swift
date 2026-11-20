@@ -205,6 +205,53 @@ enum PhysicalSharingAudit {
             }
             return try snapshot(prefix)
         }
+        if action == "calendar-inventory" {
+            let calendars = ek.calendars(for: .event).map { calendar in
+                ["id": calendar.calendarIdentifier, "title": calendar.title, "source": calendar.source.title,
+                 "writable": calendar.allowsContentModifications] as [String: Any]
+            }
+            return ["calendars": calendars]
+        }
+        if action == "create-icloud-invitation" {
+            let title = prefix + " " + (try string(r, "label"))
+            let recipient = try string(r, "recipient")
+            guard let role = CloudCalendarsAPI.EventAccess(rawValue: try string(r, "role")),
+                  let source = ek.sources.first(where: { $0.sourceType == .calDAV && $0.title.caseInsensitiveCompare("iCloud") == .orderedSame })
+            else { throw CloudCalendarsAPI.Failure.malformedResponse }
+            // Reuse only this fixture on retry so reopening the audit cannot duplicate an iCloud calendar.
+            let calendar: EKCalendar
+            if let existing = ek.calendars(for: .event).first(where: { $0.source.sourceIdentifier == source.sourceIdentifier && $0.title == title }) {
+                calendar = existing
+            } else {
+                calendar = EKCalendar(for: .event, eventStore: ek)
+                calendar.source = source
+                calendar.title = title
+                try ek.saveCalendar(calendar, commit: true)
+            }
+            let id = calendar.calendarIdentifier
+            let start = Calendar.current.startOfDay(for: Date()).addingTimeInterval(36 * 3600)
+            let predicate = ek.predicateForEvents(withStart: start, end: start.addingTimeInterval(3600), calendars: [calendar])
+            if ek.events(matching: predicate).isEmpty {
+                let event = EKEvent(eventStore: ek)
+                event.calendar = calendar
+                event.title = title + " · iCloud"
+                event.startDate = start
+                event.endDate = start.addingTimeInterval(3600)
+                try ek.save(event, span: .thisEvent, commit: true)
+            }
+            let shareID = DeviceCalendarReplica.hash(id)
+            let sharing = try await CloudCalendarsAPI.saveICloudCalendarSharing(calendarId: shareID, title: title, color: "#007AFF",
+                timeZone: TimeZone.current.identifier, calendarKind: "eventkit", recipients: [(email: recipient, access: role)], session: session)
+            #if os(macOS)
+            backend.reload()
+            try await backend.ownedSharing.registerAndSync(localID: id, shareID: shareID)
+            #else
+            SharedICloudCalendarLocalStore.registerOwnedCalendar(shareID: shareID, localCalendarIdentifier: id)
+            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: ek, onlyShareID: shareID)
+            #endif
+            _ = try await CloudCalendarsAPI.inviteICloudCalendarRecipients(calendarId: shareID, emails: [recipient], session: session)
+            return ["calendarID": shareID, "ownerID": sharing.ownerId ?? "", "localID": id]
+        }
         if action == "create-calendar" || action == "create-personal-calendar" {
             let title = prefix + " " + (try string(r, "label"))
             let role = CloudCalendarsAPI.EventAccess(rawValue: r["role"] as? String ?? "owner")!

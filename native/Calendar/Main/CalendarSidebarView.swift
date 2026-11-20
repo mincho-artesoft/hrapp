@@ -19,7 +19,9 @@ struct CalendarSidebarEvent: Identifiable {
     // enabled in MultiCalendar rather than in the sidebar's upcoming list.
     let nativeEvent: EKEvent?
 
-    init(event: EKEvent) {
+    init(event: EKEvent) { self.init(event: event, isCancelled: event.status == .canceled) }
+
+    init(event: EKEvent, isCancelled: Bool) {
         id = Self.identity(for: event)
         title = event.title ?? ""
         start = event.startDate
@@ -29,7 +31,7 @@ struct CalendarSidebarEvent: Identifiable {
         calendarTitle = event.calendar.title
         location = event.location ?? ""
         notes = event.notes ?? ""
-        isCancelled = event.status == .canceled
+        self.isCancelled = isCancelled
         nativeEvent = event
     }
 
@@ -206,6 +208,7 @@ struct CalendarSidebarView: View {
             HStack(alignment: .top, spacing: 8) {
                 Circle().fill(event.color).frame(width: 10, height: 10).padding(.top, 5)
                 Text(event.displayTitle).font(CalendarTypography.title3.weight(.semibold))
+                    .strikethrough(event.isCancelled, color: event.color)
                     .accessibilityIdentifier("calendar.sidebar.selectedTitle")
             }
             Text(eventDateLabel(event.start)).font(CalendarTypography.caption).foregroundStyle(.secondary)

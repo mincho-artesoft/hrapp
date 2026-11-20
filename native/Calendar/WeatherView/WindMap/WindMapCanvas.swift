@@ -13,7 +13,7 @@ struct WindMapCanvas: UIViewRepresentable {
     var layer: WeatherMapLayer = .wind
     var dark: Bool = true
     var pointForecast: WindMapPointForecast?
-    var onRegionChanged: ((MKCoordinateRegion) -> Void)?
+    var onViewportChanged: ((WindMapGrid) -> Void)?
     var onTap: (() -> Void)?
     var markerExpanded = true
     var onMarkerTap: (() -> Void)?
@@ -36,6 +36,7 @@ final class WindMapContainer: UIView, MKMapViewDelegate, UIGestureRecognizerDele
     private var input: WindMapCanvas?
     private var lastFocus: CLLocationCoordinate2D?
     private var lastRecenter = -1
+    private var reportedGrid: WindMapGrid?
     private var redraw: DispatchWorkItem?
     private var heatOverlay: WindMapHeatOverlay?
     private var heatTask: Task<Void, Never>?
@@ -226,13 +227,24 @@ final class WindMapContainer: UIView, MKMapViewDelegate, UIGestureRecognizerDele
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         updateField()
-        input?.onRegionChanged?(mapView.region)
     }
 
     private func updateField() {
         guard let input, map.bounds.width > 0, map.bounds.height > 0 else { return }
+        let rect = map.visibleMapRect
+        if let grid = WindMapGrid(visibleRect: rect, interactive: input.interactive), grid != reportedGrid {
+            reportedGrid = grid
+            // MapKit can update its bounds during SwiftUI layout.
+            DispatchQueue.main.async { [weak self] in
+                guard let self, self.reportedGrid == grid else { return }
+                self.input?.onViewportChanged?(grid)
+            }
+        }
         heatView.project(map: map)
-        if input.layer == .wind { particles.prepare(field: input.field, date: input.date, map: map) }
+        if input.layer == .wind {
+            let field = input.field.flatMap { $0.grid.covers(rect) ? $0 : nil }
+            particles.prepare(field: field, date: input.date, map: map)
+        }
     }
 
     @objc private func mapTapped(_ gesture: UITapGestureRecognizer) {
@@ -310,7 +322,7 @@ private final class WeatherMapHeatView: UIView {
         setNeedsDisplay()
     }
     override func draw(_ rect: CGRect) {
-        guard let heat, let image = heat.image, let context = UIGraphicsGetCurrentContext(),
+        guard let heat, heat.grid.covers(visibleRect), let image = heat.image, let context = UIGraphicsGetCurrentContext(),
               visibleRect.width > 0, visibleRect.height > 0 else { return }
         context.interpolationQuality = .high
         let field = heat.boundingMapRect
@@ -671,12 +683,13 @@ enum WindMapPalette {
 private final class WindMapHeatOverlay: NSObject, MKOverlay, @unchecked Sendable {
     let coordinate: CLLocationCoordinate2D
     let boundingMapRect: MKMapRect
+    let grid: WindMapGrid
     let image: CGImage?
     let layer: WeatherMapLayer
 
     init(field: WindMapField, date: Date, layer: WeatherMapLayer, fullScreen: Bool = false) {
         self.layer = layer
-        let grid = field.grid
+        grid = field.grid
         coordinate = CLLocationCoordinate2D(latitude: grid.latitude, longitude: grid.longitude)
         let north = MKMapPoint(CLLocationCoordinate2D(latitude: grid.latitude + grid.latitudeStep, longitude: grid.longitude))
         let south = MKMapPoint(CLLocationCoordinate2D(latitude: grid.latitude - grid.latitudeStep, longitude: grid.longitude))

@@ -66,7 +66,7 @@ a {
   flex: 1;
   overflow: auto;
   padding: 8px 16px 30px;
-  scrollbar-width: thin;
+  &.calendar-scroll-list { scrollbar-width: thin; }
 }
 .grouped,
 .form-group {
@@ -284,6 +284,13 @@ a {
   font-weight: 600;
   margin: 0;
 }
+.page-heading .sharing-close, .page-heading .icon-button, .page-heading .round-spacer {
+  width: 72px;
+  min-height: 38px;
+  flex: none;
+}
+.page-heading .sharing-close { text-align: start; padding: 0; color: var(--cal-blue); }
+.page-heading .icon-button { display: flex; justify-content: flex-end; align-items: center; padding: 0; }
 .page-heading > cc-symbol {
   color: var(--cal-blue);
 }
@@ -384,59 +391,71 @@ textarea {
   flex: 1;
 }
 .day-label {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 8px 0 4px;
+  margin: 0;
+  background: var(--cal-bg);
   font-size: 17px;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--cal-muted);
-  margin: 18px 0 8px;
 }
+.day-label.today { color: var(--cal-red, #ff3b30); }
 .shared-event {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   border-bottom: 1px solid var(--cal-line);
-  padding: 8px 0 35px;
-  min-height: 90px;
+  padding: 6px 0;
+  padding-inline-start: 11px;
+}
+.shared-event::before {
+  position: absolute;
+  content: "";
+  inset-block: 6px;
+  inset-inline-start: 0;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--row-color);
 }
 .shared-event-main {
-  display: flex;
-  width: 100%;
-  text-align: left;
-  gap: 10px;
-}
-.event-line {
-  width: 3px;
-  border-radius: 3px;
-  align-self: stretch;
-  background: var(--cal-blue);
-}
-.shared-event-main > span:nth-child(2) {
   flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  align-content: start;
+  display: grid;
+  text-align: start;
+  gap: 3px;
+  padding: 0;
 }
-.shared-event strong {
-  font-weight: 500;
-}
+.shared-event strong { font-size: 17px; font-weight: 400; overflow-wrap: anywhere; }
 .shared-event small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--cal-muted);
+  font-size: 13px;
+}
+.shared-event small cc-symbol { width: 13px; height: 13px; margin-inline-end: 5px; }
+.event-time {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
   color: var(--cal-muted);
   font-size: 15px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
-.event-time {
-  text-align: right;
-  color: var(--cal-muted);
-}
-.event-time .role {
-  display: block;
-  width: max-content;
-  margin: 4px 0 0 auto;
-}
-.access-button {
-  position: absolute;
-  bottom: 5px;
-  right: 0;
-}
-.cancelled strong {
-  text-decoration: line-through;
-}
+.event-time .role { margin-top: 3px; font-size: 13px; padding: 4px 8px; }
+.shared-event-actions { display: flex; gap: 2px; margin-top: 3px; }
+.shared-event-actions button { display: grid; place-items: center; padding: 0; width: 30px; height: 30px; color: var(--cal-blue); }
+.shared-event-actions cc-symbol { width: 20px; height: 20px; }
+.cancelled strong { text-decoration: line-through; text-decoration-color: var(--row-color); }
 .setting-row {
   display: flex;
   align-items: center;
@@ -1109,3 +1128,36 @@ textarea {
 .select-all + .menu-scroll { border-top: 0; }
 
 :host-context(.studio:not(.ios-layout)) .calendar-editor-sheet { height: min(680px, calc(100dvh - 48px)); }
+
+.access-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 4px;
+  .round-button { justify-self: end; }
+}
+
+.access-toolbar {
+  display: inline-flex;
+  justify-self: start;
+  width: max-content;
+  height: 38px;
+  border-radius: 19px;
+  overflow: hidden;
+  background: var(--cal-blue);
+  button { width: 44px; display: grid; place-items: center; color: white; padding: 0; }
+  button + button { border-inline-start: 1px solid #ffffff4d; }
+}
+
+.menu-scroll > .list-loading, .sheet-body > .list-loading { min-height: 100%; }
+.event-access-people .person-row { gap: 10px; }
+.recipient-identity {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  > span, small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  small { color: var(--cal-muted); font-size: 12px; }
+  button { justify-self: start; font-size: 13px; padding: 2px 0; }
+}
+.fixed-role { display: inline-flex; align-items: center; gap: 4px; color: var(--cal-muted); font-size: 15px; }
+.fixed-role cc-symbol { width: 14px; height: 14px; }

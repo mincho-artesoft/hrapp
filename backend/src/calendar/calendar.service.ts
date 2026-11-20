@@ -4,6 +4,7 @@ import { StoreService } from '../store/store.service';
 import { CoreService } from '../core/core.service';
 import { ApiResult, result } from '../common/api-result';
 import { randomId, hashKey } from '../util/ids';
+import { NativeCalendarStore } from '../booking/native-calendar-store';
 import { nextRevisionTimestamp } from '../util/revision';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
@@ -17,6 +18,18 @@ const APPLE_CLIENT_IDS = (process.env.APPLE_CLIENT_IDS ?? 'Deksan.CalendarASD')
   .filter(Boolean);
 
 type EventAccessRole = 'reader' | 'writer' | 'owner';
+
+// DeviceEventKitAdapter keys expanded occurrences by local identifier and UTC occurrence date.
+function calendarCopyIdentifiers(local: string | undefined, start?: string): Set<string> {
+  if (!local) return new Set();
+  const ids = new Set([local, hashKey(local), hashKey(local + ':')]);
+  const millis = start ? Date.parse(start) : NaN;
+  if (Number.isFinite(millis)) {
+    const occurrence = new Date(millis).toISOString().replace(/\.000Z$/, 'Z');
+    ids.add(hashKey(local + ':' + occurrence));
+  }
+  return ids;
+}
 
 type EventManagementContext = {
   calId: string;
@@ -570,6 +583,131 @@ export class CalendarService {
     });
   }
 
+  /** Change this user's calendar membership without editing the shared event or its access list. */
+  async placeEvent(principal: any, eventId: string, body: any): Promise<ApiResult> {
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') return result(403, {error: 'Sign in to your own calendar account.'});
+    const ownFeed = await this.store.getJSON(this.keys.eventFeed(principal.calId, eventId));
+    const ref = ownFeed?.feedId ? null : await this.store.getJSON(this.keys.receivedInvite(principal.principalId, eventId));
+    const feedId = ownFeed?.feedId ?? ref?.feedId;
+    if (!feedId || feedId !== body.feedId) return result(404, {error: 'Shared event not found.'});
+    const event = await this.store.getJSON(this.keys.event(ref?.ownerCalId ?? principal.calId, eventId));
+    const recipient = ref && event?.recipients?.find((r: any) => r.userId === principal.principalId);
+    if (!event || event.status === 'cancelled' || (ref && !recipient)) return result(403, {error: 'Event is no longer available.'});
+    const key = this.keys.eventPlacement(principal.principalId, feedId);
+    if (body.localEventIdentifier !== undefined) {
+      const nativeIdentifier = boundedPlainText(body.localEventIdentifier, 512);
+      const calendarTitle = boundedPlainText(body.calendarTitle, 200);
+      if (!nativeIdentifier || !calendarTitle || body.calendarId) return result(400, {error: 'Invalid local event binding.'});
+      const current = await this.store.getJSONWithETag(key);
+      if (current?.value.pending) return result(409, {error: 'Calendar move in progress.'});
+      const binding = {nativeIdentifier, calendarTitle};
+      const saved = current ? await this.store.putJSONIfMatch(key, binding, current.etag) : await this.store.putJSONIfAbsent(key, binding);
+      return saved ? result(200, binding) : result(409, {error: 'Event binding changed. Retry.'});
+    }
+    const replicas = new NativeCalendarStore(this.store);
+    const calendars = await replicas.listForWeb(principal);
+    const destination = calendars.find(c => c.id === body.calendarId && c.allowsChanges && c.available !== false);
+    if (!destination) return result(400, {error: 'Choose a writable calendar.'});
+    let row = await this.store.getJSONWithETag(key);
+    if (row?.value.pending && row.value.pending !== destination.id) return result(409, {error: 'Finish the previous calendar move first.'});
+    const bound = row?.value.nativeIdentifier ?? (ref ? ref.localEventIdentifier : event.ownerLocalEventIdentifier);
+    const sourceCalendarId = row?.value.calendarId || row?.value.sourceCalendarId;
+    const boundIDs = calendarCopyIdentifiers(bound, event.start);
+    const matches = calendars.flatMap(c => (c.events ?? []).filter((e: any) => sourceCalendarId
+      ? c.id === sourceCalendarId && e.id === row!.value.eventId
+      : (bound && (bound === `native.${c.id}.${e.id}` || boundIDs.has(e.id))))
+      .map((item: any) => ({calendar: c, item})));
+    if (matches.length > 1 || matches.some(s => !s.calendar.allowsChanges)) return result(409, {error: 'Cannot uniquely move the source event.'});
+    const source = matches[0];
+    if (source?.calendar.id === destination.id && !row?.value.pending) return result(200, {calendarId: destination.id, calendarTitle: destination.title, localEventIdentifier: source.item.id});
+    const copyId = row?.value.eventId ?? source?.item.id ?? hashKey('share:' + feedId);
+    const occupied = destination.events?.find((e: any) => e.id === copyId);
+    const placementId = hashKey(feedId);
+    if (occupied && occupied.placementId !== placementId) return result(409, {error: 'Destination already contains a different event.'});
+    const claim = {...row?.value, pending: destination.id, eventId: copyId, sourceCalendarId: source?.calendar.id};
+    if (!row?.value.pending) {
+      const claimed = row ? await this.store.putJSONIfMatch(key, claim, row.etag) : await this.store.putJSONIfAbsent(key, claim);
+      if (!claimed) return result(409, {error: 'Event moved concurrently. Refresh and retry.'});
+      row = await this.store.getJSONWithETag(key);
+    }
+    if (row?.value.pending !== destination.id) return result(409, {error: 'Event moved concurrently.'});
+    const copy = {...source?.item, title: event.title, start: event.start, end: event.end, allDay: event.allDay,
+      location: event.location, url: event.url, details: {...source?.item.details, ...event.details},
+      readOnly: !!ref && this.recipientAccess(recipient) === 'reader', placementId};
+    try {
+      await replicas.setSharedCopy(principal, destination.id, copyId, copy, null);
+      if (source && source.calendar.id !== destination.id) await replicas.setSharedCopy(principal, source.calendar.id, source.item.id, null, source.item);
+    } catch (e) {
+      // Keep an incomplete move retryable. If nothing landed, allow a different destination immediately.
+      const latest = (await replicas.list(principal)).find(c => c.id === destination.id);
+      if (!latest?.events?.some((item: any) => item.id === copyId && item.placementId === placementId)) {
+        await this.store.putJSONIfMatch(key, {calendarId: source?.calendar.id, eventId: source?.item.id}, row.etag);
+      }
+      return result(409, {error: (e as Error).message});
+    }
+    const placement = {calendarId: destination.id, eventId: copyId};
+    if (!await this.store.putJSONIfMatch(key, placement, row.etag)) {
+      const latest = await this.store.getJSON(key);
+      if (latest?.calendarId !== destination.id || latest.pending) return result(409, {error: 'Calendar move changed.'});
+    }
+    return result(200, {calendarId: destination.id, calendarTitle: destination.title, localEventIdentifier: copyId});
+  }
+
+  async finishAccountCalendarDeletion(principal: any, calendar: any) {
+    if (!calendar.accountLocal || calendar.available !== false) return;
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') throw new Error('Account owner required.');
+    if (calendar.sharingCalendarID) await this.deleteICloudCalendarSharing(principal, calendar.sharingCalendarID);
+    const deleted = new Set<string>(calendar.deletedEventIds ?? []);
+    const replicas = new NativeCalendarStore(this.store);
+    const others = await replicas.list(principal);
+    for (const other of others) {
+      if (other.id !== calendar.id && other.available !== false) {
+        for (const event of other.events ?? []) deleted.delete(event.id);
+      }
+    }
+    const belongs = (event: any) => {
+      if (!event) return false;
+      const id = event.ownerLocalEventIdentifier;
+      return typeof id === 'string' && (id.startsWith('native.' + calendar.id + '.') ||
+        deleted.has(id) || deleted.has(hashKey(id)) || deleted.has(hashKey(id + ':')));
+    };
+    for (const key of await this.store.listKeys(this.keys.receivedInvites(principal.principalId))) {
+      const receipt = await this.store.getJSON(key);
+      if (!receipt?.feedId) continue;
+      const placement = await this.store.getJSON(this.keys.eventPlacement(principal.principalId, receipt.feedId));
+      if (!placement?.pending && (placement?.calendarId ? placement.calendarId === calendar.id : belongs({ownerLocalEventIdentifier: placement?.nativeIdentifier ?? receipt.localEventIdentifier}))) {
+        await this.forgetReceivedInvite(principal, receipt.eventId);
+      }
+    }
+    const events = await this.store.listKeys(this.keys.events(principal.calId));
+    await Promise.all(events.map(async key => {
+      const original = await this.store.getJSON(key);
+      const feed = original && await this.store.getJSON(this.keys.eventFeed(principal.calId, original.id));
+      const placement = feed && await this.store.getJSON(this.keys.eventPlacement(principal.principalId, feed.feedId));
+      if (placement?.pending || (placement?.calendarId ? placement.calendarId !== calendar.id : !belongs(placement?.nativeIdentifier ? {ownerLocalEventIdentifier: placement.nativeIdentifier} : original))) return;
+      if (!original.sourceCalendarDeleted) {
+        const saved = await this.mutateEvent(principal.calId, original.id, event => event && (placement || belongs(event)) ? {
+          ...event, sourceCalendarDeleted: true, status: 'cancelled', sequence: (event.sequence ?? 0) + 1,
+          updatedAt: nextRevisionTimestamp(event.updatedAt),
+        } : null);
+        if (!saved) return;
+      }
+      await this.core.regenerate(principal.calId, original.id);
+      if (feed?.feedId) {
+        await Promise.all((original.recipients ?? []).map(async (recipient: any) => {
+          if (!recipient.userId) return;
+          const copy = await this.store.getJSON(this.keys.eventPlacement(recipient.userId, feed.feedId));
+          if (!copy?.eventId) return;
+          for (const id of new Set([copy.calendarId, copy.pending, copy.sourceCalendarId])) {
+            if (typeof id === 'string') await replicas.removeDeletedShare(recipient.userId, id, copy.eventId, hashKey(feed.feedId));
+          }
+        }));
+      }
+    }));
+  }
+
   /** All App Clip share metadata owned by this authenticated account. */
   async sharedState(principal: any): Promise<ApiResult> {
     const acl = await this.store.getJSON(this.keys.acl(principal.calId));
@@ -579,14 +717,35 @@ export class CalendarService {
 
     const identities = await this.identitiesFor(principal);
     const primaryIdentity = this.primaryIdentity(principal, identities);
+    // Individual invitations do not grant access to the sender's calendar.
+    // Resolve membership from this account's live copies, including legacy native IDs.
+    let inventory: Promise<any[]> | undefined;
+    const currentCalendarTitle = async (placement: any, localIdentifier: string | undefined, start: string) => {
+      const local = placement?.nativeIdentifier ?? placement?.eventId ?? localIdentifier;
+      if (!local) return undefined;
+      inventory ??= new NativeCalendarStore(this.store).list(principal);
+      const identifiers = calendarCopyIdentifiers(local, start);
+      const titles = new Set<string>();
+      for (const calendar of await inventory) {
+        if (calendar.available === false || (placement?.calendarId && calendar.id !== placement.calendarId)) continue;
+        if ((calendar.events ?? []).some((item: any) =>
+          identifiers.has(item.id) || local === `native.${calendar.id}.${item.id}`)) titles.add(calendar.title);
+      }
+      return titles.size === 1 ? titles.values().next().value : undefined;
+    };
     const eventKeys = await this.store.listKeys(this.keys.events(principal.calId));
-    const events = await Promise.all(eventKeys.map((key) => this.store.getJSONWithETag(key)));
+    const events = await Promise.all(eventKeys.map(async key => {
+      const stored = await this.store.getJSONWithETag(key);
+      if (!stored) return undefined;
+      const feed = await this.store.getJSON(this.keys.eventFeed(principal.calId, stored.value.id));
+      return {stored, feed};
+    }));
     const outgoing: any[] = [];
-    for (const stored of events) {
-      if (!stored) continue;
+    for (const entry of events) {
+      if (!entry) continue;
+      const {stored, feed} = entry;
       let event = stored.value;
-      const feed = await this.store.getJSON(this.keys.eventFeed(principal.calId, event.id));
-      if (!feed?.feedId) continue;
+      if (!feed?.feedId || event.sourceCalendarDeleted) continue;
       let identityBackfilled = false;
       if (!event.ownerId) {
         event.ownerId = principal.principalId;
@@ -615,10 +774,13 @@ export class CalendarService {
         }
       }
       const { ownerLocalEventIdentifier, ...publicEvent } = event;
+      const placement = await this.store.getJSON(this.keys.eventPlacement(principal.principalId, feed.feedId));
       outgoing.push({
         ...publicEvent,
         feedId: feed.feedId,
-        localEventIdentifier: ownerLocalEventIdentifier ?? null,
+        placementCalendarId: placement?.calendarId,
+        localEventIdentifier: placement?.nativeIdentifier ?? placement?.eventId ?? ownerLocalEventIdentifier ?? null,
+        calendarTitle: await currentCalendarTitle(placement, ownerLocalEventIdentifier, event.start),
       });
     }
 
@@ -627,7 +789,7 @@ export class CalendarService {
     const received: any[] = [];
     for (const ref of refs.filter(Boolean)) {
       const event = await this.store.getJSON(this.keys.event(ref.ownerCalId, ref.eventId));
-      if (event) {
+      if (event && !event.sourceCalendarDeleted) {
         // A recipient may read the event itself, never the other recipients'
         // account IDs or email addresses. That list is owner-only metadata.
         const {
@@ -639,10 +801,13 @@ export class CalendarService {
         } = event;
         const recipient = (Array.isArray(event.recipients) ? event.recipients : [])
           .find((value: any) => value?.userId === principal.principalId);
+        const placement = await this.store.getJSON(this.keys.eventPlacement(principal.principalId, ref.feedId));
         received.push({
           ...publicEvent,
           feedId: ref.feedId,
-          localEventIdentifier: ref.localEventIdentifier ?? null,
+          placementCalendarId: placement?.calendarId,
+          localEventIdentifier: placement?.nativeIdentifier ?? placement?.eventId ?? ref.localEventIdentifier ?? null,
+          calendarTitle: await currentCalendarTitle(placement, ref.localEventIdentifier, event.start),
           access: this.recipientAccess(recipient),
         });
       }
@@ -1400,6 +1565,7 @@ export class CalendarService {
       return result(403, { error: 'Owner access is required to manage calendar sharing' });
     }
     const record = context.calendar;
+    if (record?.deletedAt) return result(410, {error: 'Calendar was deleted.'});
     if (record && record.schemaVersion !== 2) {
       return this.saveICloudCalendarSharing(principal, calendarId, {
         ownerId: context.ownerId,
@@ -1465,8 +1631,7 @@ export class CalendarService {
       );
       const revokedReason = revokedAt
         ? boundedPlainText(
-          indexedValue.ref?.revokedReason
-            ?? (calendar?.deletedAt ? 'owner_deleted' : 'access_removed'),
+          calendar?.deletedAt ? 'owner_deleted' : indexedValue.ref?.revokedReason ?? 'access_removed',
           64,
         ) ?? 'access_removed'
         : null;
@@ -1488,7 +1653,7 @@ export class CalendarService {
       }
 
       const identity = `${ownerId}:${calendarId}`;
-      const calendarEvents = calendar
+      const calendarEvents = calendar && !calendar.deletedAt
         ? await this.store.getJSON(this.keys.icloudCalendarEvents(ownerId, calendarId))
         : null;
       const sharedCalendar = {
@@ -1863,7 +2028,10 @@ export class CalendarService {
     }
 
     const key = this.keys.icloudCalendarSharing(ownerId, calendarId);
-    const existing = context.calendar;
+    const storedMetadata = await this.store.getJSONWithETag(key);
+    const existing = storedMetadata?.value;
+    if (existing?.updatedAt !== context.calendar?.updatedAt) return result(409, { error: 'Calendar changed. Refresh and retry.' });
+    if (existing?.deletedAt) return result(410, { error: 'Calendar was deleted.' });
     const requestedCalendarKind = boundedPlainText(body.calendarKind, 32);
     const calendarKind = existing?.calendarKind === 'app_local'
       || (!existing && requestedCalendarKind === 'app_local')
@@ -1981,7 +2149,10 @@ export class CalendarService {
       updatedAt: now,
       deletedAt: null,
     };
-    await this.store.putJSON(key, calendar);
+    const savedMetadata = storedMetadata
+      ? await this.store.putJSONIfMatch(key, calendar, storedMetadata.etag)
+      : await this.store.putJSONIfAbsent(key, calendar);
+    if (!savedMetadata) return result(409, { error: 'Calendar changed. Refresh and retry.' });
 
     const previousEmails = new Set<string>(existingByEmail.keys());
     const currentEmails = new Set<string>(recipients.map((recipient) => recipient.email));
@@ -2315,9 +2486,7 @@ export class CalendarService {
     return result(200, { declined: true });
   }
 
-  /** Keeps the last shared snapshot as a tombstone when the owner deletes the
-   * local calendar. Recipients retain a frozen, struck-through copy instead of
-   * seeing the calendar and all of its events disappear without explanation. */
+  /** Keep the deletion marker so offline clients can remove their local copy. */
   async deleteICloudCalendarSharing(
     principal: any,
     calendarId: string,
@@ -2345,7 +2514,10 @@ export class CalendarService {
       deletedAt: now,
       updatedAt: now,
     };
-    const indexes: Promise<any>[] = [this.store.putJSON(key, deletedCalendar)];
+    await this.store.putJSON(key, deletedCalendar);
+    // The empty snapshot also prevents an in-flight conditional event upload from restoring old contents.
+    const indexes: Promise<any>[] = [this.store.putJSON(this.keys.icloudCalendarEvents(principal.principalId, calendarId),
+      {ownerId: principal.principalId, calendarId, events: [], updatedAt: now})];
 
     for (const recipient of Array.isArray(calendar.recipients) ? calendar.recipients : []) {
       const email = normalizeEmail(recipient?.email);
@@ -2817,6 +2989,7 @@ export class CalendarService {
       });
     }
     await this.store.del(refKey);
+    if (ref?.feedId) await this.store.del(this.keys.eventPlacement(principal.principalId, ref.feedId));
     return result(200, { forgotten: true });
   }
 
@@ -2831,6 +3004,20 @@ export class CalendarService {
       return result(403, { error: 'Owner access is required to cancel this event' });
     }
     const calId = context.calId;
+    if (query?.missingCopy) {
+      const feed = await this.store.getJSON(this.keys.eventFeed(calId, eventId));
+      const placement = feed && await this.store.getJSON(this.keys.eventPlacement(principal.principalId, feed.feedId));
+      if (placement?.pending || (placement?.nativeIdentifier && hashKey(placement.nativeIdentifier) !== query.missingCopy)) {
+        return result(409, {error: 'The event was moved to another calendar.'});
+      }
+      if (placement?.calendarId) {
+        const calendars = await new NativeCalendarStore(this.store).list(principal);
+        const destination = calendars.find(c => c.id === placement.calendarId);
+        if (!destination || destination.available === false || destination.events.some((e: any) => e.id === placement.eventId)) {
+          return result(409, {error: 'The event is tracked in another calendar.'});
+        }
+      }
+    }
 
     const saved = await this.mutateEvent(calId, eventId, (existing) => existing ? {
       ...existing,

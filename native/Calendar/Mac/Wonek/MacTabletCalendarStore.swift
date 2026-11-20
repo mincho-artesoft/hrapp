@@ -40,7 +40,7 @@ final class MacTabletCalendarStore: ObservableObject {
         // Activation can still request permission, but reopening must not flash
         // an empty Up next row and then push the month card down.
         reload()
-        backendObserver = backend.$events.combineLatest(backend.$calendars).dropFirst().debounce(for: .milliseconds(50), scheduler: RunLoop.main).sink { [weak self] _ in self?.reload() }
+        backendObserver = backend.$events.combineLatest(backend.$calendars, backend.$receivedEventUnavailable, backend.$cancelledOutgoingEventIDs).dropFirst().debounce(for: .milliseconds(50), scheduler: RunLoop.main).sink { [weak self] _ in self?.reload() }
     }
 
 
@@ -56,18 +56,22 @@ final class MacTabletCalendarStore: ObservableObject {
     func canEdit(_ event: EKEvent?) -> Bool {
         guard let event else { return false }
         let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
-        return !backend.receivedEventUnavailable.contains(id) && backend.receivedEventAccess[id] != .reader && canEdit(event.calendar) && !event.hasAttendees && local.record(for: event)?.readOnly != true
+        return !isCancelled(event) && backend.receivedEventAccess[id] != .reader && canEdit(event.calendar) && !event.hasAttendees && local.record(for: event)?.readOnly != true
     }
     func canShare(_ event: EKEvent) -> Bool {
         let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
-        if backend.receivedEventUnavailable.contains(id) { return false }
+        if isCancelled(event) { return false }
         if let access = backend.receivedEventAccess[id] { return access == .owner }
         if let calendar = local.record(for: event.calendar) { return calendar.canManageSharing }
         return canEdit(event)
     }
     func isCancelled(_ event: EKEvent) -> Bool {
         let id = local.record(for: event)?.id ?? backend.adapter.identity(event)
-        return event.status == .canceled || backend.receivedEventUnavailable.contains(id)
+        return event.status == .canceled || local.record(for: event)?.status == "cancelled"
+            || backend.receivedEventUnavailable.contains(id) || backend.cancelledOutgoingEventIDs.contains(id)
+    }
+    func sidebarEvent(_ event: EKEvent) -> CalendarSidebarEvent {
+        CalendarSidebarEvent(event: event, isCancelled: isCancelled(event))
     }
     func canManage(_ calendar: EKCalendar) -> Bool {
         if let record = local.record(for: calendar) { return record.canManageSharing }
@@ -147,10 +151,10 @@ final class MacTabletCalendarStore: ObservableObject {
         refreshWidgetSnapshot()
         if let selected = selectedSidebarEvent?.nativeEvent {
             if local.isLocal(selected) {
-                selectedSidebarEvent = events.first { $0 === selected }.map(CalendarSidebarEvent.init(event:))
+                selectedSidebarEvent = events.first { $0 === selected }.map(sidebarEvent)
             } else {
                 selectedSidebarEvent = ReceivedSharingVisibility.isVisible(backend.adapter.identity(selected), kind: "event")
-                    && selected.refresh() ? CalendarSidebarEvent(event: selected) : nil
+                    && selected.refresh() ? sidebarEvent(selected) : nil
             }
         }
     }
@@ -167,7 +171,7 @@ final class MacTabletCalendarStore: ObservableObject {
             (!requiresVisibility || visibleCalendarIDs.contains(event.calendar.calendarIdentifier))
                 && (calendarID == nil || event.calendar.calendarIdentifier == calendarID)
                 && event.startDate < dayEnd
-                && event.endDate > dayStart
+                && (event.endDate > dayStart || (event.isAllDay && event.startDate == dayStart && event.endDate == dayStart))
         }
     }
 
@@ -241,7 +245,8 @@ final class MacTabletCalendarStore: ObservableObject {
         structuredLocation: EKStructuredLocation?,
         calendarIdentifier: String,
         supplement: EventKitEventSupplement? = nil,
-        recurrencePattern: CalendarRecurrencePattern? = nil
+        recurrencePattern: CalendarRecurrencePattern? = nil,
+        providerOptions: CalendarProviderEventOptions? = nil
     ) throws -> EKEvent {
         if let existingEvent, !canEdit(existingEvent) {
             throw MacTabletCalendarError.readOnlyEvent
@@ -282,7 +287,7 @@ final class MacTabletCalendarStore: ObservableObject {
         do {
             let saved = try local.persist(event, replacing: existingEvent,
                 span: existingEvent != nil && event.hasRecurrenceRules ? .futureEvents : .thisEvent,
-                supplement: supplement)
+                supplement: supplement, providerOptions: providerOptions)
             reload()
             return saved
         } catch {
@@ -380,16 +385,21 @@ final class MacTabletCalendarStore: ObservableObject {
     func deleteCalendar(_ calendar: EKCalendar) async throws {
         if let record = local.record(for: calendar) {
             if record.origin == .received { try await backend.leaveReceivedCalendar(id: record.id) }
-            else { try local.store.removeCalendar(id: record.id) }
+            else {
+                try local.store.removeCalendar(id: record.id)
+                try backend.ownedSharing.recordDeletion(localID: record.id)
+            }
             reload()
             return
         }
         guard calendar.allowsContentModifications, !calendar.isSubscribed else { throw MacTabletCalendarError.readOnlyEvent }
         let id = calendar.calendarIdentifier
         try eventStore.removeCalendar(calendar, commit: true)
+        try backend.ownedSharing.recordDeletion(localID: id)
         visibleCalendarIDs.remove(id)
         multiCalendarIDs.remove(id)
         reload()
+        Task { await backend.sync() }
     }
 
     func saveCalendar(_ existing: EKCalendar?, title: String, color: NSColor,

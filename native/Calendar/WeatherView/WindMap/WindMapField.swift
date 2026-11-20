@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 
 enum WeatherMapLayer: String, CaseIterable, Sendable {
     case temperature, wind
@@ -53,7 +54,7 @@ struct WindMapCoordinate: Codable, Equatable, Sendable {
     var longitude: Double
 
     static func wrappedLongitude(_ value: Double) -> Double {
-        (value + 540).truncatingRemainder(dividingBy: 360) - 180
+        ((value.truncatingRemainder(dividingBy: 360) + 540).truncatingRemainder(dividingBy: 360)) - 180
     }
 }
 
@@ -67,18 +68,10 @@ struct WindMapGrid: Codable, Equatable, Sendable {
     let side: Int
     var pointCount: Int { side * side }
 
-    init(latitude: Double, longitude: Double) {
-        side = 3
-        self.latitude = min(76, max(-76, (latitude / 2).rounded() * 2))
-        self.longitude = WindMapCoordinate.wrappedLongitude((longitude / 2).rounded() * 2)
-        latitudeStep = 4
-        longitudeStep = 4 / max(0.3, cos(self.latitude * .pi / 180))
-    }
-
     /// Quantized coverage grows with the viewport, including at world scale.
     /// The extra margin avoids a new request for every small pan.
-    init(latitude: Double, longitude: Double, latitudeSpan: Double, longitudeSpan: Double) {
-        side = 7
+    init(latitude: Double, longitude: Double, latitudeSpan: Double, longitudeSpan: Double, side: Int = 7) {
+        self.side = side
         let mercatorLimit = 85.05112878
         let latStep = min(mercatorLimit, pow(2, ceil(log2(max(0.125, abs(latitudeSpan) * 0.65)) * 2) / 2))
         let lonStep = min(180, pow(2, ceil(log2(max(0.125, abs(longitudeSpan) * 0.65)) * 2) / 2))
@@ -86,6 +79,30 @@ struct WindMapGrid: Codable, Equatable, Sendable {
         longitudeStep = lonStep
         self.latitude = min(mercatorLimit - latStep, max(-mercatorLimit + latStep, (latitude / (latStep / 3)).rounded() * latStep / 3))
         self.longitude = lonStep == 180 ? 0 : WindMapCoordinate.wrappedLongitude((longitude / (lonStep / 3)).rounded() * lonStep / 3)
+    }
+
+    init?(visibleRect: MKMapRect, interactive: Bool) {
+        let world = MKMapRect.world
+        guard visibleRect.width.isFinite, visibleRect.height.isFinite, visibleRect.width > 0, visibleRect.height > 0,
+              visibleRect.midX.isFinite, visibleRect.midY.isFinite else { return nil }
+        let north = MKMapPoint(x: 0, y: min(world.maxY, max(0, visibleRect.minY))).coordinate.latitude
+        let south = MKMapPoint(x: 0, y: min(world.maxY, max(0, visibleRect.maxY))).coordinate.latitude
+        // Latitude samples are evenly spaced in degrees, not in projected map points.
+        self.init(latitude: (north + south) / 2,
+                  longitude: WindMapCoordinate.wrappedLongitude(visibleRect.midX / world.width * 360 - 180),
+                  latitudeSpan: north - south, longitudeSpan: min(1, visibleRect.width / world.width) * 360,
+                  side: interactive ? 7 : 3)
+    }
+
+    func covers(_ visibleRect: MKMapRect) -> Bool {
+        let world = MKMapRect.world
+        let center = visibleRect.midX / world.width * 360 - 180
+        let north = MKMapPoint(x: 0, y: min(world.maxY, max(0, visibleRect.minY))).coordinate.latitude
+        let south = MKMapPoint(x: 0, y: min(world.maxY, max(0, visibleRect.maxY))).coordinate.latitude
+        let epsilon = 1e-8
+        return (longitudeStep == 180 || abs(WindMapCoordinate.wrappedLongitude(center - longitude))
+                + visibleRect.width / world.width * 180 <= longitudeStep + epsilon)
+            && north <= latitude + latitudeStep + epsilon && south >= latitude - latitudeStep - epsilon
     }
 
     var key: String { "\(latitude):\(longitude):\(latitudeStep):\(longitudeStep):\(side)" }

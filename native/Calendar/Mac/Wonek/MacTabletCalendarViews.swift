@@ -14,6 +14,9 @@ struct MacTabletEventEditorTarget: Identifiable {
     let usesExactStart: Bool
     var initialInterval: DateInterval?
     var preferredCalendarID: String?
+    var readOnly = false
+    var displaySupplement: EventKitEventSupplement?
+    var sharedSource: SharedEventDetailSource?
     var defaultIsAllDay = false
 
     init(event: EKEvent?, defaultDate: Date, startsInEditingMode: Bool = true, usesExactStart: Bool = false) {
@@ -348,14 +351,14 @@ struct MacTabletTimedEventBlock: View {
             activate()
         } label: {
             MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
-                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight,
+                isAllDay: event.isAllDay, color: nativeColor, depth: event.isAllDay ? nil : depth, textHeight: textHeight,
                 isCancelled: store.isCancelled(event), isReadOnly: isReadOnly)
                 .frame(width: width, height: height)
                 .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
         }
         .buttonStyle(.plain)
-        .accessibilityLabel((event.title ?? "") + ", " + MacCalendarFormatting.time(event.startDate)
-            + " - " + MacCalendarFormatting.time(event.endDate))
+        .accessibilityLabel((event.title ?? "") + ", " + (event.isAllDay ? NSLocalizedString("all-day", comment: "") :
+            MacCalendarFormatting.time(event.startDate) + " - " + MacCalendarFormatting.time(event.endDate)))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
         .accessibilityValue(isReadOnly ? Text("Read only") : Text(""))
         .macTabletEventInteractions(store: store, event: event,
@@ -372,7 +375,6 @@ struct MacTabletTimelineView: View {
     var scrollRequest: CalendarTimelineScrollRequest? = nil
     var onDayTap: ((Date) -> Void)? = nil
     @Environment(\.layoutDirection) private var layoutDirection
-    @State private var expandsAllDay = false
     @State private var interactionSpace = UUID()
     @State private var documentSpace = UUID()
     @State private var viewportState = MacCalendarTimelineViewport()
@@ -400,7 +402,9 @@ struct MacTabletTimelineView: View {
         (0..<columnCount).map { eventsForColumn($0).filter(\.isAllDay).count }.max() ?? 0
     }
     private var allDayHeight: CGFloat {
-        max(36, CGFloat(expandsAllDay ? maximumAllDayCount : min(3, maximumAllDayCount)) * 24 + 8)
+        let rows = CGFloat(maximumAllDayCount)
+        if calendars != nil { return rows == 0 ? 40 : min(6 + rows * 24, 3.3 * 24) }
+        return max(40, 6 + min(rows, 3.3) * 24)
     }
 
     var body: some View {
@@ -476,7 +480,6 @@ struct MacTabletTimelineView: View {
                         // Let AppKit finish attaching its scroll view first.
                         await Task.yield()
                         guard !Task.isCancelled else { return }
-                        expandsAllDay = true
                         proxy.scrollTo("hour-\(calendar.component(.hour, from: request.date))", anchor: .center)
                         if let scrollView = scrollHandle.scrollView {
                             let viewportHeight = scrollView.contentView.bounds.height
@@ -559,7 +562,7 @@ struct MacTabletTimelineView: View {
     }
 
     private func inspectEvent(_ event: EKEvent) {
-        let snapshot = CalendarSidebarEvent(event: event)
+        let snapshot = store.sidebarEvent(event)
         if inspectedTimelineEventID != snapshot.id { inspectedTimelineEventID = snapshot.id }
         // A selected all-day card can move horizontally without changing its
         // content. Do not publish the same inspector to every calendar view.
@@ -604,7 +607,7 @@ struct MacTabletTimelineView: View {
             .background {
                 if let frameName { MacCalendarFrameReader(name: frameName, space: interactionSpace) }
             }
-            .overlay { MacCalendarWheelForwarder(handle: scrollHandle) }
+            .overlay { MacCalendarWheelForwarder(handle: scrollHandle, horizontalOnly: frameName == "allDay" && maximumAllDayCount > 3) }
             if columns.rightToLeft { gutter().frame(width: timeWidth) }
         }
         .frame(height: height)
@@ -661,48 +664,42 @@ struct MacTabletTimelineView: View {
     }
 
     private var allDayLabel: some View {
-        VStack(spacing: 2) {
-            Text("all-day").font(.system(size: 14, weight: .semibold))
-            if maximumAllDayCount > 3 {
-                Button {
-                    expandsAllDay.toggle()
-                } label: {
-                    Image(systemName: expandsAllDay ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 10, weight: .semibold))
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel(LocalizedStringKey(expandsAllDay ? "Collapse all-day events" : "Show all all-day events"))
-            }
-        }
-        .frame(width: timeWidth)
+        Text("all-day").font(.system(size: 14, weight: .semibold))
+            .padding(.leading, 4)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .background(CalendarPalette.gray6)
     }
 
     @ViewBuilder
     private func allDayColumns(columns: MacCalendarTimelineColumns) -> some View {
         let width = columns.columnWidth
-        HStack(spacing: 0) {
-            ForEach(columns.indices, id: \.self) { column in
-                VStack(spacing: 4) {
-                    let events = eventsForColumn(column).filter(\.isAllDay)
-                    ForEach(Array(events.prefix(expandsAllDay ? events.count : 3).enumerated()), id: \.offset) { _, event in
-                        MacTabletTimedEventBlock(store: store, event: event, defaultDate: columnDate(column),
-                            width: max(1, width - 4), height: 20, editorTarget: $editorTarget,
-                            isSelected: selectedEventID == MacCalendarTimelineItem.identity(event),
-                            activate: { activateEvent(event) },
-                            select: { selectEventForContextMenu(event) })
-                            .opacity(activeEventID == MacCalendarTimelineItem.identity(event) ? 0 : 1)
-                            .background(MacCalendarEventFrameReader(event: event, column: column, depth: 0, space: interactionSpace))
-                            .environment(\.layoutDirection, layoutDirection)
+        let rowHeight: CGFloat = calendars == nil ? 20 : 18
+        let contentHeight = max(allDayHeight, 6 + CGFloat(maximumAllDayCount) * (rowHeight + 4))
+        ScrollView(.vertical, showsIndicators: false) {
+            HStack(spacing: 0) {
+                ForEach(columns.indices, id: \.self) { column in
+                    VStack(spacing: 4) {
+                        let events = eventsForColumn(column).filter(\.isAllDay)
+                        ForEach(events, id: \.self) { event in
+                            MacTabletTimedEventBlock(store: store, event: event, defaultDate: columnDate(column),
+                                width: max(1, width - 4), height: rowHeight, editorTarget: $editorTarget,
+                                isSelected: selectedEventID == MacCalendarTimelineItem.identity(event),
+                                activate: { activateEvent(event) },
+                                select: { selectEventForContextMenu(event) })
+                                .opacity(activeEventID == MacCalendarTimelineItem.identity(event) ? 0 : 1)
+                                .background(MacCalendarEventFrameReader(event: event, column: column, depth: 0, space: interactionSpace))
+                                .environment(\.layoutDirection, layoutDirection)
+                        }
+                        Spacer(minLength: 0)
                     }
-                    Spacer(minLength: 0)
+                    .padding(.horizontal, 2).padding(.top, 8).padding(.bottom, 2)
+                    .frame(width: width, height: contentHeight, alignment: .top)
+                    .background(MacCalendarFrameReader(name: "column-\(column)", space: interactionSpace))
+                    .overlay(alignment: .leading) { Rectangle().fill(.gray.opacity(0.3)).frame(width: 0.5) }
                 }
-                .padding(.horizontal, 2).padding(.vertical, 4)
-                .frame(width: width, height: allDayHeight, alignment: .top)
-                .background(MacCalendarFrameReader(name: "column-\(column)", space: interactionSpace))
-                .overlay(alignment: .leading) { Rectangle().fill(.gray.opacity(0.3)).frame(width: 0.5) }
             }
         }
-        .background(CalendarPalette.tertiaryFill)
+        .background(CalendarPalette.gray5)
         .frame(height: allDayHeight)
     }
 
@@ -1297,6 +1294,7 @@ struct MacTabletEventEditor: View {
     @State private var videoCallURL: String
     @State private var notes: String
     @State private var urlString: String
+    @State private var providerOptions: CalendarProviderEventOptions
     @State private var calendarIdentifier: String
     @State private var isEditing: Bool
     @State private var repeatChoice: RepeatChoice
@@ -1319,6 +1317,10 @@ struct MacTabletEventEditor: View {
     @State private var showFileImporter = false
     @State private var showsLocationSheet = false
     @State private var showsChatInvitation = false
+    @State private var remoteSequence: Int?
+    @State private var savingRemote = false
+    @State private var savedRemoteEvent: EKEvent?
+    @State private var savedRemoteSupplement: EventKitEventSupplement?
     @State private var initialFingerprint: [String]?
     @State private var replacesAlerts = false
     @State private var replacesRecurrence = false
@@ -1330,6 +1332,7 @@ struct MacTabletEventEditor: View {
         self.store = store
         self.target = target
         self.onClose = onClose
+        _remoteSequence = State(initialValue: target.sharedSource?.event.sequence)
         let event = target.event
         let cal = MacCalendarFormatting.calendar
         let start = event?.startDate ?? (target.usesExactStart ? target.defaultDate
@@ -1338,7 +1341,7 @@ struct MacTabletEventEditor: View {
         let persistedEnd = event?.endDate ?? target.initialInterval?.end
             ?? (allDay ? cal.date(byAdding: .day, value: 1, to: start) ?? start : start.addingTimeInterval(3600))
         let end = allDay ? max(start, cal.date(byAdding: .day, value: -1, to: persistedEnd) ?? start) : persistedEnd
-        let supplement = event.flatMap(store.local.supplement)
+        let supplement = target.displaySupplement ?? event.flatMap(store.local.supplement)
         _title = State(initialValue: event?.title ?? NSLocalizedString("New Event", comment: ""))
         _startDate = State(initialValue: start)
         _endDate = State(initialValue: end)
@@ -1348,10 +1351,11 @@ struct MacTabletEventEditor: View {
         _videoCallURL = State(initialValue: supplement?.videoCallURL ?? "")
         _notes = State(initialValue: event?.notes ?? "")
         _urlString = State(initialValue: event?.url?.absoluteString ?? "")
+        _providerOptions = State(initialValue: CalendarProviderEventOptions(event.flatMap(store.local.record(for:))))
         _calendarIdentifier = State(initialValue: event?.calendar.calendarIdentifier
             ?? target.preferredCalendarID
             ?? store.defaultWritableCalendar?.calendarIdentifier ?? "")
-        _isEditing = State(initialValue: event == nil || (target.startsInEditingMode && store.canEdit(event)))
+        _isEditing = State(initialValue: !target.readOnly && (event == nil || (target.startsInEditingMode && store.canEdit(event))))
         _recurrencePattern = State(initialValue: CalendarRecurrencePattern(rule: event?.recurrenceRules?.first, start: start, calendar: cal))
         _repeatChoice = State(initialValue: RepeatChoice(event?.recurrenceRules?.first?.frequency))
         _repeatInterval = State(initialValue: event?.recurrenceRules?.first?.interval ?? 1)
@@ -1371,6 +1375,8 @@ struct MacTabletEventEditor: View {
                 }
         }
         .background(CalendarPalette.groupedBackground)
+        .disabled(savingRemote)
+        .interactiveDismissDisabled(savingRemote)
         .onAppear { initialFingerprint = fingerprint }
         .onChange(of: target.event.flatMap { store.local.record(for: $0) }) { _, record in
             guard record != nil, !isEditing || initialFingerprint == fingerprint,
@@ -1379,7 +1385,7 @@ struct MacTabletEventEditor: View {
         }
         .onDisappear { searchTask?.cancel() }
         .appSheet(isPresented: $showsChatInvitation) {
-            if let event = target.event { HRAppMacEventShareView(store: store, event: event) }
+            if let event = savedRemoteEvent ?? target.event { HRAppMacEventShareView(store: store, event: event, sharedSource: target.sharedSource) }
         }
         .appSheet(isPresented: $showsLocationSheet) {
             VStack(spacing: 0) {
@@ -1428,8 +1434,15 @@ struct MacTabletEventEditor: View {
         .background(CalendarPalette.groupedBackground)
     }
 
+    private var usesServerRecord: Bool { target.sharedSource?.usesServerRecord == true }
+    private var canEditEvent: Bool { !target.readOnly && (usesServerRecord || store.canEdit(target.event)) }
+    private var canShareEvent: Bool {
+        if let source = target.sharedSource { return source.canShare && !target.readOnly }
+        return target.event.map(store.canShare) ?? false
+    }
+
     private var hasEventHeaderActions: Bool {
-        store.canEdit(target.event) || target.event.map { store.canShare($0) } == true
+        canEditEvent || canShareEvent
     }
 
     private var topBar: some View {
@@ -1443,12 +1456,12 @@ struct MacTabletEventEditor: View {
                     AppToolbarTextButton("Done", isStandaloneDone: true, action: onClose)
                 } else {
                     MacCalendarToolbarIconGroup {
-                        if store.canEdit(target.event) {
+                        if canEditEvent {
                             MacCalendarToolbarIconButton(icon: "pencil", title: "Edit") {
                                 isEditing = true; initialFingerprint = fingerprint
                             }
                         }
-                        if let event = target.event, store.canShare(event) {
+                        if canShareEvent {
                             MacCalendarToolbarIconButton(icon: "square.and.arrow.up", title: "Share") {
                                 showsChatInvitation = true
                             }.accessibilityIdentifier("calendar-event-share")
@@ -1482,7 +1495,7 @@ struct MacTabletEventEditor: View {
                             locationDraft = location; videoCallDraft = videoCallURL
                             showsLocationSheet = true; searchLocation(locationDraft)
                         } label: {
-                            Text(location.isEmpty ? NSLocalizedString("Location or Video Call", comment: "") : location)
+                            Text(location.isEmpty ? NSLocalizedString(editorProvider == nil ? "Location or Video Call" : "Location", comment: "") : location)
                                 .foregroundStyle(location.isEmpty ? AnyShapeStyle(.tertiary) : AnyShapeStyle(.primary))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .contentShape(Rectangle())
@@ -1510,9 +1523,10 @@ struct MacTabletEventEditor: View {
                     endDate = value.addingTimeInterval(duration)
                 }))
                 dateRow("Ends", id: "end", date: $endDate, range: startDate...Date.distantFuture)
-                travelTimeRow
+                if editorProvider == nil { travelTimeRow }
             }
             .calendarDatePickerColumns([startDate, endDate])
+            if editorProvider == nil || target.event == nil {
             MacCalendarFormSection {
                 MacCalendarFormRow(separator: repeatChoice != .never) {
                     menuRow("Repeat", value: repeatTitle) {
@@ -1543,7 +1557,9 @@ struct MacTabletEventEditor: View {
                     }
                 }
             }
+            }
             MacCalendarFormSection { calendarRow }
+            if editorProvider == nil {
             MacCalendarFormSection {
                 alertRow("Alert", selection: $firstAlert, separator: firstAlert != nil)
                 if firstAlert != nil { alertRow("Second Alert", selection: $secondAlert, separator: false) }
@@ -1554,14 +1570,16 @@ struct MacTabletEventEditor: View {
                 }
                 attachmentRows(editable: true)
             }
+            }
+            if let editorProvider { providerFields(editorProvider) }
             MacCalendarFormSection {
-                MacCalendarFormRow { TextField("URL", text: $urlString).appTextInputAlignment().textFieldStyle(.plain) }
+                if editorProvider == nil { MacCalendarFormRow { TextField("URL", text: $urlString).appTextInputAlignment().textFieldStyle(.plain) } }
                 MacCalendarFormRow(separator: false) {
                     TextField("Notes", text: $notes, axis: .vertical).appTextInputAlignment().textFieldStyle(.plain)
                         .lineLimit(3...8).padding(.vertical, 10)
                 }
             }
-            if store.canEdit(target.event) { deleteSection }
+            if canEditEvent && !usesServerRecord { deleteSection }
         }
     }
 
@@ -1569,7 +1587,7 @@ struct MacTabletEventEditor: View {
         MacCalendarForm {
             MacCalendarFormSection {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(title).font(CalendarTypography.title2.bold())
+                    Text(title).font(CalendarTypography.title2.bold()).strikethrough(selectedEventIsCancelled)
                     if !location.isEmpty { Text(location).foregroundStyle(eventColor) }
                     Text(startDate.appFormatted(time: false))
                     if isAllDay { Text("All-day") }
@@ -1586,11 +1604,19 @@ struct MacTabletEventEditor: View {
             }
             MacCalendarFormSection {
                 calendarRow
-                travelTimeRow
+                if editorProvider == nil { travelTimeRow }
             }
+            if let editorProvider {
+                providerFields(editorProvider)
+                    .disabled(!canEditEvent)
+                    .onChange(of: providerOptions) { _, _ in
+                        if !isEditing && canEditEvent && initialFingerprint != fingerprint { save(closeEditor: false) }
+                    }
+            } else {
             MacCalendarFormSection {
                 alertRow("Alert", selection: $firstAlert, separator: firstAlert != nil)
                 if firstAlert != nil { alertRow("Second Alert", selection: $secondAlert, separator: false) }
+            }
             }
             if !attachments.isEmpty { MacCalendarFormSection { attachmentRows(editable: false) } }
             if !videoCallURL.isEmpty || !urlString.isEmpty || !notes.isEmpty {
@@ -1626,7 +1652,13 @@ struct MacTabletEventEditor: View {
                     .frame(height: 170).clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
-            if store.canEdit(target.event) { deleteSection }
+            if canEditEvent && !usesServerRecord { deleteSection }
+        }
+    }
+
+    private func providerFields(_ provider: CalendarEditorProvider) -> some View {
+        MacCalendarFormSection {
+            CalendarProviderEventFields(provider: provider, options: $providerOptions)
         }
     }
 
@@ -1635,7 +1667,23 @@ struct MacTabletEventEditor: View {
             HStack {
                 Text("Calendar"); Spacer()
                 Circle().fill(eventColor).frame(width: 11, height: 11)
-                Menu {
+                if let source = target.sharedSource, !isEditing && !source.event.isCancelled {
+                    Menu {
+                        ForEach(store.writableCalendars, id: \.calendarIdentifier) { calendar in
+                            Button(calendar.title) {
+                                guard let event = savedRemoteEvent ?? target.event else { return }
+                                do {
+                                    try MacEventSharing.move(source, event: event, to: calendar, store: store,
+                                                             supplement: savedRemoteSupplement ?? target.displaySupplement)
+                                    onClose()
+                                } catch { errorMessage = error.localizedDescription }
+                            }
+                        }
+                    } label: { menuValue(calendarDisplayTitle) }
+                    .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize().tint(.secondary)
+                } else if usesServerRecord {
+                    Text(calendarDisplayTitle).foregroundStyle(.secondary)
+                } else { Menu {
                     ForEach(store.writableCalendars, id: \.calendarIdentifier) { calendar in
                         Button {
                             calendarIdentifier = calendar.calendarIdentifier
@@ -1645,9 +1693,10 @@ struct MacTabletEventEditor: View {
                             else { Text(calendar.title) }
                         }
                     }
-                } label: { menuValue(selectedCalendar?.title ?? "") }
+                } label: { menuValue(calendarDisplayTitle) }
                 .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize().tint(.secondary)
-                .disabled(target.event != nil && !store.canEdit(target.event))
+                .disabled(target.event != nil && !canEditEvent)
+                }
             }
         }
     }
@@ -1679,12 +1728,8 @@ struct MacTabletEventEditor: View {
         }.buttonStyle(.plain)
     }
 
-    private func menuRow<Options: View>(_ title: LocalizedStringKey, value: String, @ViewBuilder options: () -> Options) -> some View {
-        HStack {
-            Text(title); Spacer()
-            Menu(content: options) { menuValue(value) }
-                .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize().tint(.secondary)
-        }
+    private func menuRow<Options: View>(_ title: LocalizedStringKey, value: String, @ViewBuilder options: @escaping () -> Options) -> some View {
+        CalendarEventEditorMenuRow(title: title, value: value, options: options)
     }
 
     private func menuValue(_ value: String) -> some View {
@@ -1705,7 +1750,7 @@ struct MacTabletEventEditor: View {
                     }
                 }
             }
-            .disabled(target.event != nil && !store.canEdit(target.event))
+            .disabled(target.event != nil && !canEditEvent)
         }
     }
 
@@ -1722,7 +1767,8 @@ struct MacTabletEventEditor: View {
             get: { repeatChoice.frequency ?? .daily },
             set: { value in repeatChoice = RepeatChoice(value); replacesRecurrence = true }),
             interval: $repeatInterval, pattern: $recurrencePattern,
-            startDate: startDate, timeZone: target.event?.timeZone ?? MacCalendarFormatting.calendar.timeZone)
+            startDate: startDate, timeZone: target.event?.timeZone ?? MacCalendarFormatting.calendar.timeZone,
+            singleMonthDay: editorProvider == .microsoft)
             .onChange(of: repeatInterval) { _, _ in replacesRecurrence = true }
             .onChange(of: recurrencePattern) { _, _ in replacesRecurrence = true }
     }
@@ -1744,7 +1790,7 @@ struct MacTabletEventEditor: View {
                     if option == .none { Divider() }
                 }
             }
-            .disabled(target.event != nil && !store.canEdit(target.event))
+            .disabled(target.event != nil && !canEditEvent)
         }
     }
 
@@ -1765,12 +1811,12 @@ struct MacTabletEventEditor: View {
                         }
                     }
                 }
-                MacCalendarFormRow(separator: false) {
+                if editorProvider == nil { MacCalendarFormRow(separator: false) {
                     HStack(spacing: 0) {
                         Text(NSLocalizedString("Video Call", comment: "") + ": ").foregroundStyle(.secondary)
                         TextField("", text: $videoCallDraft).appTextInputAlignment().textFieldStyle(.plain)
                     }
-                }
+                } }
             }
             if !locationDraft.isEmpty {
                 MacCalendarFormSection {
@@ -1874,6 +1920,10 @@ struct MacTabletEventEditor: View {
         } catch { errorMessage = error.localizedDescription }
     }
 
+    private var selectedEventIsCancelled: Bool {
+        target.sharedSource?.event.isCancelled == true || target.event.map(store.isCancelled) == true
+    }
+
     private var previewItems: [MacCalendarDetailTimelineItem] {
         let context = store.events(on: startDate)
         var result = context.filter { event in
@@ -1883,17 +1933,25 @@ struct MacTabletEventEditor: View {
             MacCalendarDetailTimelineItem(id: "context-\(index)", calendarTitle: event.calendar.title,
                 title: event.title, location: event.location ?? "", startDate: event.startDate, endDate: event.endDate,
                 isAllDay: event.isAllDay, isRecurring: event.hasRecurrenceRules,
-                color: event.calendar.cgColor.flatMap(NSColor.init(cgColor:)) ?? .systemBlue, isSelected: false)
+                color: event.calendar.cgColor.flatMap(NSColor.init(cgColor:)) ?? .systemBlue, isSelected: false, isCancelled: store.isCancelled(event))
         }
         result.append(.init(id: "selected", calendarTitle: selectedCalendar?.title ?? "", title: title,
             location: location, startDate: startDate, endDate: persistedEndDate,
             isAllDay: isAllDay, isRecurring: repeatChoice != .never,
-            color: selectedCalendar?.cgColor.flatMap(NSColor.init(cgColor:)) ?? .systemBlue, isSelected: true))
+            color: selectedCalendar?.cgColor.flatMap(NSColor.init(cgColor:)) ?? .systemBlue, isSelected: true, isCancelled: selectedEventIsCancelled))
         return result
     }
 
     private var selectedCalendar: EKCalendar? {
         store.calendars.first { $0.calendarIdentifier == calendarIdentifier } ?? target.event?.calendar
+    }
+    private var editorProvider: CalendarEditorProvider? {
+        guard target.sharedSource == nil, let calendar = selectedCalendar, let record = store.local.record(for: calendar) else { return nil }
+        return CalendarEditorProvider(id: record.id, source: record.source)
+    }
+    private var calendarDisplayTitle: String {
+        if let name = selectedCalendar?.title, !name.isEmpty { return name }
+        return target.sharedSource?.event.calendarTitle ?? NSLocalizedString("Choose Calendar", comment: "")
     }
     private var eventColor: Color { store.color(for: selectedCalendar) }
     private var travelTitle: String {
@@ -1919,11 +1977,11 @@ struct MacTabletEventEditor: View {
             String(isAllDay), repeatChoice.rawValue, String(repeatInterval), recurrencePattern.signature,
             String(recurrenceEnd?.timeIntervalSinceReferenceDate ?? 0),
             String(firstAlert ?? .infinity), String(secondAlert ?? .infinity), String(travelTime)]
-            + attachments.map(\.id)
+            + attachments.map(\.id) + providerOptions.signature
     }
     private var canSave: Bool {
         !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            && store.canEdit(selectedCalendar)
+            && (usesServerRecord ? canEditEvent : store.canEdit(selectedCalendar))
             && (target.event == nil || initialFingerprint != fingerprint)
     }
     private var shareText: String {
@@ -1934,6 +1992,11 @@ struct MacTabletEventEditor: View {
     private func save() { save(closeEditor: true) }
 
     private func save(closeEditor: Bool) {
+        guard !target.readOnly, !savingRemote else { return }
+        if usesServerRecord, let source = target.sharedSource {
+            saveSharedEvent(source, closeEditor: closeEditor)
+            return
+        }
         do {
             let saved = try store.save(existingEvent: target.event, title: title,
                 startDate: persistedStartDate, endDate: persistedEndDate, isAllDay: isAllDay,
@@ -1944,7 +2007,7 @@ struct MacTabletEventEditor: View {
                 structuredLocation: structuredLocation, calendarIdentifier: calendarIdentifier,
                 supplement: .init(travelTime: travelTime == 0 ? nil : travelTime,
                     attachments: attachments, videoCallURL: videoCallURL.isEmpty ? nil : videoCallURL),
-                recurrencePattern: recurrencePattern)
+                recurrencePattern: recurrencePattern, providerOptions: editorProvider == nil ? nil : providerOptions)
             initialFingerprint = fingerprint
             replacesAlerts = false; replacesRecurrence = false
             if closeEditor {
@@ -1954,15 +2017,53 @@ struct MacTabletEventEditor: View {
         } catch { errorMessage = error.localizedDescription }
     }
 
+    private func saveSharedEvent(_ source: SharedEventDetailSource, closeEditor: Bool) {
+        guard source.canEdit, CalendarFeedSession.isCurrent(source.session), let event = savedRemoteEvent ?? target.event else { return }
+        let previous = source.event.details
+        let alarms = replacesAlerts ? [firstAlert, secondAlert].compactMap { $0.map { SharedEventAlarm(relativeOffset: $0) } }
+            + Array((event.alarms ?? []).dropFirst(2)).map(SharedEventAlarm.init(alarm:)) : (event.alarms ?? []).map(SharedEventAlarm.init(alarm:))
+        let recurrence = replacesRecurrence ? repeatChoice.frequency.map {
+            [SharedEventRecurrenceRule(rule: recurrencePattern.rule(frequency: $0, interval: repeatInterval, end: recurrenceEnd))]
+        } ?? [] : (event.recurrenceRules ?? []).map(SharedEventRecurrenceRule.init(rule:))
+        let details = SharedEventDetails(notes: notes, timeZone: event.timeZone?.identifier ?? previous?.timeZone,
+            availability: previous?.availability ?? event.availability.rawValue, alarms: alarms, recurrenceRules: recurrence,
+            structuredLocation: structuredLocation.map(SharedEventLocation.init(location:)), videoCallURL: videoCallURL,
+            organizer: previous?.organizer, attendees: previous?.attendees ?? [], travelTime: travelTime,
+            attachments: attachments.map { .init(id: $0.id, fileName: $0.fileName, contentType: $0.contentType, dataBase64: $0.dataBase64) })
+        let snapshot = SharedEventDetailSnapshot(title: title, start: persistedStartDate, end: persistedEndDate,
+            isAllDay: isAllDay, location: location, url: urlString.isEmpty ? nil : urlString, details: details,
+            calendarTitle: event.calendar.title)
+        let upload = SharedEventUpload(id: source.event.id, title: title, start: snapshot.start, end: snapshot.end,
+            isAllDay: isAllDay, location: location, url: snapshot.url.flatMap(URL.init(string:)), details: details,
+            localEventIdentifier: nil, organizerName: nil, organizerEmail: nil)
+        savingRemote = true
+        Task { @MainActor in
+            defer { savingRemote = false }
+            do {
+                remoteSequence = try await CloudCalendarsAPI.upsertEvent(upload, session: source.session,
+                    receivedFeedId: source.received ? source.event.feedId : nil, expectedSequence: remoteSequence)
+                savedRemoteEvent = snapshot.displayEvent(in: store.eventStore)
+                savedRemoteSupplement = snapshot.supplement
+                replacesAlerts = false
+                replacesRecurrence = false
+                initialFingerprint = fingerprint
+                if closeEditor { isEditing = false }
+            } catch {
+                if !isEditing { restorePersistedValues(from: event) }
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+
     private func cancel() {
         // Never save merely because the user dismisses the editor.
-        guard let event = target.event, !target.startsInEditingMode else { onClose(); return }
+        guard let event = savedRemoteEvent ?? target.event, !target.startsInEditingMode else { onClose(); return }
         restorePersistedValues(from: event)
         isEditing = false
     }
 
     private func restorePersistedValues(from event: EKEvent) {
-        let supplement = store.local.supplement(for: event)
+        let supplement = savedRemoteSupplement ?? target.displaySupplement ?? store.local.supplement(for: event)
         title = event.title
         startDate = event.startDate
         isAllDay = event.isAllDay
@@ -1974,6 +2075,7 @@ struct MacTabletEventEditor: View {
         notes = event.notes ?? ""
         urlString = event.url?.absoluteString ?? ""
         calendarIdentifier = event.calendar.calendarIdentifier
+        providerOptions = CalendarProviderEventOptions(store.local.record(for: event))
         recurrencePattern = CalendarRecurrencePattern(rule: event.recurrenceRules?.first, start: startDate, calendar: MacCalendarFormatting.calendar)
         repeatChoice = RepeatChoice(event.recurrenceRules?.first?.frequency)
         repeatInterval = event.recurrenceRules?.first?.interval ?? 1

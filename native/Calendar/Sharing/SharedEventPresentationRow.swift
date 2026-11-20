@@ -1,4 +1,49 @@
 import SwiftUI
+import EventKit
+
+struct SharedEventDetailSource {
+    let event: CloudCalendarsAPI.RemoteSharedEvent
+    let received: Bool
+    let session: CloudCalendarsAPI.Session
+    let usesServerRecord: Bool
+
+    var canEdit: Bool { !event.isCancelled && (!received || event.access == .writer || event.access == .owner) }
+    var canShare: Bool { !event.isCancelled && (!received || event.access == .owner) }
+}
+
+/// Shared events can originate on a different device with no matching local record.
+struct SharedEventDetailSnapshot {
+    let title: String
+    let start: Date
+    let end: Date
+    let isAllDay: Bool
+    let location: String?
+    var url: String?
+    var details: SharedEventDetails?
+    var calendarTitle: String?
+
+    func displayEvent(in store: EKEventStore) -> EKEvent {
+        let calendar = EKCalendar(for: .event, eventStore: store)
+        calendar.title = calendarTitle ?? ""
+        let event = EKEvent(eventStore: store)
+        event.calendar = calendar
+        event.title = title
+        event.isAllDay = isAllDay
+        event.startDate = start
+        event.endDate = end
+        event.location = location
+        event.url = url.flatMap(URL.init(string:))
+        details?.applyWritableFields(to: event, canonicalLocation: location)
+        return event
+    }
+
+    var supplement: EventKitEventSupplement {
+        .init(travelTime: details?.travelTime, attachments: (details?.attachments ?? []).map {
+            AppLocalEventAttachment(id: $0.id, fileName: $0.fileName, contentType: $0.contentType, dataBase64: $0.dataBase64)
+        }, videoCallURL: details?.videoCallURL)
+    }
+}
+
 
 /// Event list content shared verbatim by iOS and native Mac Sharing.
 struct SharedEventPresentationRow: View {
@@ -80,7 +125,7 @@ struct SharedEventPresentationRow: View {
                                 .frame(width: 30, height: 30)
                         }
                         .buttonStyle(.borderless)
-            .accessibilityLabel("Event Details")
+                        .accessibilityLabel("Event Details")
                     }
                 }
             }
@@ -88,6 +133,26 @@ struct SharedEventPresentationRow: View {
         .calendarEventRowAccent(color)
         .padding(.vertical, 6)
         .contentShape(Rectangle())
+    }
+}
+
+struct SharedEventsDayHeader: View {
+    let day: Date
+    var body: some View {
+        let calendar = Calendar.current
+        let includesYear = calendar.component(.year, from: day)
+            != calendar.component(.year, from: Date())
+        let title = appShortDateFormatter(
+            includesYear: includesYear,
+            includesWeekday: true,
+            usesFullWeekday: true
+        ).string(from: day).uppercased(with: .appFormatting)
+
+        Text(title)
+            .font(.headline)
+            .foregroundStyle(calendar.isDateInToday(day) ? Color.red : Color.secondary)
+            .padding(.bottom, 4)
+            .textCase(nil)
     }
 }
 

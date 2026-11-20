@@ -74,7 +74,7 @@ final class ProviderCalendarSyncEngine {
             let editable = google ? (role == "writer" || role == "owner") : (remote["canEdit"] as? Bool ?? false)
             let title = (remote["summaryOverride"] ?? remote["summary"] ?? remote["name"]) as? String ?? NSLocalizedString("Calendar", comment: "")
             let color = (remote["backgroundColor"] ?? remote["hexColor"]) as? String ?? "#2168DE"
-            try await syncCalendar(id: id, remoteID: remoteID, title: title, color: color, editable: editable, account: account, legacy: legacy[remoteID])
+            try await syncCalendar(id: id, remoteID: remoteID, title: title, color: color, calendarTimeZone: remote["timeZone"] as? String, editable: editable, account: account, legacy: legacy[remoteID])
         }
         var documents = storage.providerDocuments
         for index in documents.indices where states[documents[index].id]?.accountID == account.id && !known.contains(documents[index].id) {
@@ -82,7 +82,7 @@ final class ProviderCalendarSyncEngine {
         }
         try storage.applyProviderDocuments(documents)
     }
-    private func syncCalendar(id: String, remoteID: String, title: String, color: String, editable: Bool, account: Account, legacy: [LegacyEvent]?) async throws {
+    private func syncCalendar(id: String, remoteID: String, title: String, color: String, calendarTimeZone: String?, editable: Bool, account: Account, legacy: [LegacyEvent]?) async throws {
         var state = states[id] ?? CalendarState(accountID: account.id, remoteID: remoteID)
         let google = account.provider == "google"
         let start = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
@@ -97,9 +97,13 @@ final class ProviderCalendarSyncEngine {
         var fetched: [String: RemoteEvent] = [:]
         for raw in rawEvents {
             guard let remoteEventID = raw["id"] as? String else { throw Failure.invalidResponse }
-            if raw["status"] as? String == "cancelled" || raw["isCancelled"] as? Bool == true { continue }
+            // Deleted occurrences can arrive as ID-only tombstones. Dated cancelled
+            // meetings remain visible in the calendar with their original schedule.
+            if raw["status"] as? String == "cancelled" || raw["isCancelled"] as? Bool == true {
+                if raw["start"] == nil || raw["end"] == nil { continue }
+            }
             let localID = state.events.first { $0.value.remoteID == remoteEventID }?.key ?? DeviceCalendarReplica.hash(id + ":" + remoteEventID)
-            let snapshot = try MacCalendarProviderEventWire.event(raw, id: localID, google: google)
+            let snapshot = try MacCalendarProviderEventWire.event(raw, id: localID, google: google, calendarTimeZone: calendarTimeZone)
             fetched[localID] = RemoteEvent(remoteID: remoteEventID, version: (raw["etag"] ?? raw["@odata.etag"]) as? String, snapshot: snapshot)
         }
         let documentBeforeFetch = storage.providerDocuments.first { $0.id == id }
@@ -134,6 +138,7 @@ final class ProviderCalendarSyncEngine {
                 if let old = existing, old.snapshot.readOnly == true { continue }
                 let url = existing.map { eventURL($0.remoteID, calendar: remoteID, account: account) } ?? base.appendingPathComponent("events")
                 let body = try MacCalendarProviderEventWire.body(event, previous: existing?.snapshot, google: google)
+                if body.isEmpty { continue }
                 let saved: [String: Any]
                 do {
                     saved = try await request(url, token: account.accessToken, method: existing == nil ? "POST" : "PATCH", body: body, version: existing?.version)
@@ -143,12 +148,19 @@ final class ProviderCalendarSyncEngine {
                     saved = try await request(eventURL(retryID, calendar: remoteID, account: account), token: account.accessToken)
                 }
                 guard let savedID = saved["id"] as? String else { throw Failure.invalidResponse }
-                let snapshot = try MacCalendarProviderEventWire.event(saved, id: event.id, google: google)
+                let snapshot = try MacCalendarProviderEventWire.event(saved, id: event.id, google: google, calendarTimeZone: calendarTimeZone)
                 fetched[event.id] = .init(remoteID: savedID, version: (saved["etag"] ?? saved["@odata.etag"]) as? String, snapshot: snapshot)
                 // Persist each successful write's ID before the next request. A retry
                 // must never turn an already-created event into a duplicate.
                 state.events[event.id] = fetched[event.id]; states[id] = state; try saveState()
-                if let index = merged.firstIndex(where: { $0.id == event.id }) { merged[index] = snapshot }
+                if let index = merged.firstIndex(where: { $0.id == event.id }) {
+                    var display = snapshot
+                    display.url = event.url
+                    for key in ["travelTime", "attachments", "structuredLocation", "videoCallURL"] where snapshot.details?[key] == nil {
+                        display.details?[key] = event.details?[key]
+                    }
+                    merged[index] = display
+                }
             }
             for (localID, remote) in fetched where !merged.contains(where: { $0.id == localID }) && state.events[localID] != nil {
                 guard remote.snapshot.readOnly != true else { continue }

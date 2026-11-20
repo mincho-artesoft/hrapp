@@ -145,11 +145,6 @@ final class WindMapStore: ObservableObject {
     }
     var selectedDate: Date { dates.isEmpty ? Date() : dates[min(max(0, hour), dates.count - 1)] }
 
-    func load(_ coordinate: CLLocationCoordinate2D) async {
-        guard CLLocationCoordinate2DIsValid(coordinate) else { return }
-        await load(WindMapGrid(latitude: coordinate.latitude, longitude: coordinate.longitude))
-    }
-
     func load(_ grid: WindMapGrid) async {
         let request = UUID()
         generation = request

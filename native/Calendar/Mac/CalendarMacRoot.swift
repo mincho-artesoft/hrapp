@@ -216,7 +216,7 @@ struct CalendarMacRoot: View {
     }
     private var sidebar: some View {
         CalendarSidebarView(selectedDate: selectedTab == 0 ? displayedMonth : selectedDate, month: $sidebarMonth,
-            events: store.sidebarEvents(in: sidebarMonth).map(CalendarSidebarEvent.init(event:)),
+            events: store.sidebarEvents(in: sidebarMonth).map(store.sidebarEvent),
             selectedEvent: $store.selectedSidebarEvent, calendar: calendar,
             timeLabel: { MacCalendarFormatting.time($0) }, onSelectDate: selectDate, onOpenEvent: { item in
                 guard let event = item.nativeEvent else { return }

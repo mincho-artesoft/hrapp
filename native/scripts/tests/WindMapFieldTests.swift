@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 
 @main
 struct WindMapFieldTests {
@@ -21,7 +22,7 @@ struct WindMapFieldTests {
         let opposing = WindMapVector.blend(.init(speed: 10, direction: 0), .init(speed: 10, direction: 180), fraction: 0.5)
         close(opposing.speed, 0, "Opposing wind cancels without a fabricated direction")
 
-        let grid = WindMapGrid(latitude: 48, longitude: 24)
+        let grid = WindMapGrid(latitude: 48, longitude: 24, latitudeSpan: 5, longitudeSpan: 5, side: 3)
         let date = Date(timeIntervalSince1970: 1_800_000_000)
         let points = grid.coordinates.enumerated().map { index, coordinate in
             let x = Double(index % 3), y = Double(index / 3)
@@ -46,12 +47,12 @@ struct WindMapFieldTests {
         precondition(incomplete.dates.isEmpty && incomplete.vector(latitude: 48, longitude: 24, date: date) == nil)
         let gap = WindMapPointForecast(coordinate: grid.center, dates: [date, date.addingTimeInterval(10_800)], vectors: [north, east])
         precondition(gap.vector(at: date.addingTimeInterval(3_600)) == nil, "Do not bridge missing hourly forecasts")
-        let dateLine = WindMapGrid(latitude: 0, longitude: 179.9)
+        let dateLine = WindMapGrid(latitude: 0, longitude: 179.9, latitudeSpan: 5, longitudeSpan: 7, side: 3)
         precondition(dateLine.position(latitude: 0, longitude: 179) != nil)
         precondition(dateLine.position(latitude: 0, longitude: -179) != nil)
         precondition(dateLine.coordinates.allSatisfy { (-180..<180).contains($0.longitude) })
-        let polar = WindMapGrid(latitude: 90, longitude: -180)
-        precondition(polar.coordinates.allSatisfy { abs($0.latitude) <= 80 && $0.longitude.isFinite })
+        let polar = WindMapGrid(latitude: 90, longitude: -180, latitudeSpan: 5, longitudeSpan: 7, side: 3)
+        precondition(polar.coordinates.allSatisfy { abs($0.latitude) <= 85.051129 && $0.longitude.isFinite })
 
         // Visible corners must be covered after panning or changing zoom, even
         // across the date line and up to MapKit's Mercator latitude boundary.
@@ -69,6 +70,33 @@ struct WindMapFieldTests {
                         }
                     }
                     precondition(viewport.coordinates.allSatisfy { abs($0.latitude) <= 85.051129 && (-180..<180).contains($0.longitude) })
+                }
+            }
+        }
+        let world = MKMapRect.world
+        for (latitude, longitude, width, height) in [
+            (42.7, 23.3, 0.040, 0.019),   // Sofia in a wide card
+            (42.7, 23.3, 0.11, 0.03),     // resized landscape window
+            (68, 179.8, 0.20, 0.60),      // portrait, Mercator and date line
+            (0, -179.8, 1, 1)             // a world view crossing the date line
+        ] {
+            let center = MKMapPoint(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+            let rect = MKMapRect(x: center.x - width * world.width / 2,
+                                 y: min(max(0, center.y - height * world.height / 2), (1 - height) * world.height),
+                                 width: width * world.width, height: height * world.height)
+            for interactive in [false, true] {
+                let fitted = WindMapGrid(visibleRect: rect, interactive: interactive)!
+                precondition(fitted.side == (interactive ? 7 : 3) && fitted.covers(rect))
+                for x in [rect.minX, rect.midX, rect.maxX] {
+                    for y in [rect.minY, rect.midY, rect.maxY] {
+                        let point = MKMapPoint(x: x, y: y).coordinate
+                        precondition(fitted.position(latitude: point.latitude, longitude: point.longitude) != nil)
+                    }
+                }
+                if width < 0.5 {
+                    let panned = MKMapRect(x: rect.minX + world.width / 2, y: rect.minY,
+                                           width: rect.width, height: rect.height)
+                    precondition(!fitted.covers(panned), "Do not display a partial field while a new area loads")
                 }
             }
         }

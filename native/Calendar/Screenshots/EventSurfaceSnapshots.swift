@@ -4,7 +4,32 @@ import EventKit
 
 struct EventSurfaceSnapshots: View {
     var body: some View {
-        Text("Rendering event surface snapshots…").task { render() }
+        Text("Rendering event surface snapshots…").task {
+            if ProcessInfo.processInfo.environment["EVENT_SURFACE_PROVIDER_FIELDS"] == "1" {
+                await renderProviderFields()
+            } else { render() }
+        }
+    }
+
+    @MainActor private func renderProviderFields() async {
+        let width = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first?.screen.bounds.width ?? 375
+        for (name, provider, custom) in [("google-default", CalendarEditorProvider.google, false),
+                                        ("google-custom", .google, true), ("outlook", .microsoft, false)] {
+            var fields = CalendarProviderEventOptions()
+            if custom {
+                fields.calendarReminders = false; fields.availability = "free"; fields.privacy = "private"
+                fields.reminders = [15]; fields.emailReminders = [60]
+            } else if provider == .microsoft {
+                fields.availability = "workingElsewhere"; fields.privacy = "confidential"; fields.reminders = [30]
+            }
+            let form = Form {
+                Section { CalendarProviderEventFields(provider: provider, options: .constant(fields)) }
+            }
+            .contentMargins(.horizontal, 20, for: .scrollContent)
+            .tint(.appBlue)
+            await EventSurfaceSnapshotSupport.saveHosted("provider-" + name, theme: .dark,
+                width: min(width, 620), height: custom ? 510 : 295, view: form)
+        }
     }
 
     @MainActor private func render() {

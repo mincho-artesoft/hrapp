@@ -295,6 +295,7 @@ export class WebglBackdropComponent implements AfterViewInit, OnDestroy {
   private setVisible(value: boolean): void {
     if (value === this.visible) return;
     this.visible = value;
+    if (value) this.scroll.requestFrame();
     this.worker?.postMessage({ type: 'running', value: value && !document.hidden });
   }
 

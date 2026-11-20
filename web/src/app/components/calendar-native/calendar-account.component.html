@@ -7,7 +7,7 @@
     <h2 id="calendar-account-title">{{ "Cloud Calendars account" | nativeText }}</h2>
     <span class="round-spacer"></span>
   </header>
-  <div class="sheet-body" [attr.aria-busy]="busy()">
+  <div class="sheet-body calendar-scroll-list" [attr.aria-busy]="busy()">
     <div class="account-intro" [class.signed-out]="!api.profile()?.identities?.length">
       <cc-symbol [name]="api.profile()?.identities?.length ? 'person.crop.circle.badge.checkmark' : 'person.crop.circle.badge.exclamationmark'" />
       <div>
@@ -67,7 +67,7 @@
       }
     }
     @if (busy()) {
-      <p class="status" role="status">{{ "Loading…" | nativeText }}</p>
+      <cc-calendar-progress [label]="signingIn() ? 'Signing in…' : 'Loading…'" />
     }
     @if (error()) {
       <p class="error" role="alert">{{ error() }}</p>

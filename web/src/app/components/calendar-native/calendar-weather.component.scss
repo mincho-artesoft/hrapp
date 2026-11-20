@@ -608,7 +608,8 @@ header cc-symbol {
 .forecast-detail header {flex:none; position:relative; display:flex; align-items:center; justify-content:center; height:49px; margin:0; padding:5px 16px 0}
 .forecast-detail header h2 {display:flex; align-items:center; gap:6px; font-size:17px; margin:0}
 .forecast-detail header h2 cc-symbol {width:20px;height:20px}
-.forecast-detail header .done {position:absolute;inset-inline-start:16px;display:grid;place-items:center;width:30px;height:30px;padding:6px;background:#ffffff26;color:#aaa;border-radius:50%;border:0}
+.forecast-detail header .done {position:absolute;inset-inline-start:16px;display:grid;place-items:center;width:30px;height:30px;padding:0;background:#ffffff26;color:#aaa;border-radius:50%;border:0}
+.forecast-detail header .done cc-symbol {width:22px;height:22px}
 .forecast-detail .header-spacer {display:none}
 :host { --weather-calendar-accent: var(--cal-blue); }
 .forecast-detail cc-week-strip {

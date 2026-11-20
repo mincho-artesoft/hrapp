@@ -36,6 +36,12 @@ export class CalendarController {
     return reply(res, await this.svc.upsertEvent(req.principal, id, body ?? {}));
   }
 
+  @Put('events/:id/calendar')
+  @UseGuards(AuthGuard)
+  async placeEvent(@Req() req: any, @Param('id') id: string, @Body() body: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.placeEvent(req.principal, id, body ?? {}));
+  }
+
   @Delete('events/:id')
   @UseGuards(AuthGuard)
   async cancelEvent(@Req() req: any, @Param('id') id: string, @Query() query: any, @Res({ passthrough: true }) res: Response) {

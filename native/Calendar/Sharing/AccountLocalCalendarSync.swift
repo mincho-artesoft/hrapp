@@ -33,6 +33,15 @@ enum AccountLocalCalendarSync {
         }
     }
     #endif
+    private static var namespace: String {
+        "accountLocal.v1.\(DeviceCalendarReplica.storageHost(for: CloudCalendarsAPI.baseURL))."
+    }
+    static func isVisible(_ localID: String) -> Bool {
+        guard let owner = UserDefaults.standard.dictionary(forKey: namespace + "owners")?[localID] as? String else { return true }
+        guard let session = CalendarFeedSession.existing else { return false }
+        return owner == (session.ownerId ?? UserDefaults.standard.string(forKey: namespace + "session." + session.calendarId))
+    }
+
     static func sync(storage: any AccountLocalCalendarStorage) async throws {
         guard !busy, let session = CalendarFeedSession.existing else { return }
         busy = true; defer { busy = false }
@@ -45,6 +54,7 @@ enum AccountLocalCalendarSync {
         let inventory = try JSONDecoder().decode(Inventory.self, from: data)
         try verify(session)
         let namespace = "accountLocal.v1.\(DeviceCalendarReplica.storageHost(for: CloudCalendarsAPI.baseURL))."
+        UserDefaults.standard.set(inventory.ownerID, forKey: namespace + "session." + session.calendarId)
         let key = namespace + inventory.ownerID
         var bindings = UserDefaults.standard.data(forKey: key).flatMap { try? JSONDecoder().decode([String: Binding].self, from: $0) } ?? [:]
         var owners = UserDefaults.standard.dictionary(forKey: namespace + "owners") as? [String: String] ?? [:]
@@ -97,7 +107,7 @@ enum AccountLocalCalendarSync {
                     }
                 } else {
                     guard let old = remote ?? binding.baseline else { break }
-                    proposed = old; proposed.available = false
+                    proposed = old; proposed.available = false; proposed.events = []
                 }
                 proposed.revision = remote?.revision ?? 0; proposed.updatedAt = remote?.updatedAt
                 let existingEvents = Dictionary((remote?.events ?? []).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })

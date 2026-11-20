@@ -21,10 +21,14 @@ private struct SharedEventAccessTarget: Identifiable {
     let feedID: String?
     let localEventIdentifier: String?
     let title: String
+    var remote: CloudCalendarsAPI.RemoteSharedEvent?
+    var cancelled = false
 
     var id: String { eventID }
 
     init(_ event: SharedOutgoingEventTracker.SentEvent) {
+        remote = event.serverEvent
+        cancelled = event.isCancelled == true
         eventID = event.eventID
         feedID = event.feedID
         localEventIdentifier = event.localEventIdentifier
@@ -32,6 +36,7 @@ private struct SharedEventAccessTarget: Identifiable {
     }
 
     init(_ event: ReceivedSharedEvent) {
+        cancelled = event.isCancelled
         eventID = event.id
         feedID = event.feedID
         localEventIdentifier = event.localEventIdentifier
@@ -71,7 +76,7 @@ struct SharingSheetView: View {
     @State private var sentEvents: [SharedOutgoingEventTracker.SentEvent] = []
     @State private var receivedEvents: [ReceivedSharedEvent] = []
     @State private var selectedEventAccessTarget: SharedEventAccessTarget?
-    @State private var selectedReceivedEvent: EKEvent?
+    @State private var selectedEventDetails: AppLocalEventEditorTarget?
     @State private var selectedPendingInvitation: SharedEventImportPayload?
     @State private var selectedPendingCalendarInvitation: SharedCalendarInvitationPayload?
     @State private var pendingInvitationActionIDs: Set<String> = []
@@ -172,7 +177,14 @@ struct SharingSheetView: View {
         .onReceive(expiryRefreshTimer) { _ in
             reloadSharedEvents()
         }
+        .task(id: CalendarFeedSession.existing?.calendarId) {
+            guard !isSurfaceFixture else { return }
+            _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: viewModel.eventStore)
+            reloadSharedEvents()
+        }
         .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
+            selectedEventDetails = nil
+            selectedEventAccessTarget = nil
             reloadSharedEvents()
             Task { await pendingInvitationManager.refresh() }
         }
@@ -382,8 +394,8 @@ struct SharingSheetView: View {
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
             }
-            .appSheet(item: $selectedReceivedEvent, onDismiss: reloadSharedEvents) { event in
-                EventDetailViewWrapper(event: event)
+            .appSheet(item: $selectedEventDetails, onDismiss: reloadSharedEvents) { target in
+                AppLocalEventEditorView(target: target)
             }
             .appSheet(item: $selectedPendingInvitation, onDismiss: {
                 Task { await pendingInvitationManager.refresh() }
@@ -497,11 +509,18 @@ struct SharingSheetView: View {
                                     ),
                                     optionsAction: {
                                         selectedEventAccessTarget = SharedEventAccessTarget(event)
+                                    },
+                                    infoAction: {
+                                        openSharedDetails(identifier: event.localEventIdentifier, received: false,
+                                            readOnly: event.isCancelled == true, remote: event.serverEvent, snapshot: .init(title: event.title,
+                                                start: event.start, end: event.end, isAllDay: event.isAllDay,
+                                                location: event.location, url: event.serverEvent?.url ?? event.lastUploadedSnapshot?.url,
+                                                details: event.serverEvent?.details ?? event.lastUploadedSnapshot?.details))
                                     }
                                 )
                             }
                         } header: {
-                            sharedEventsDayHeader(group.day)
+                            SharedEventsDayHeader(day: group.day)
                         }
                     }
                 }
@@ -553,14 +572,15 @@ struct SharingSheetView: View {
                                         }
                                         : nil,
                                     infoAction: {
-                                        selectedReceivedEvent = viewModel.eventStore.event(
-                                            withIdentifier: event.localEventIdentifier
-                                        )
+                                        openSharedDetails(identifier: event.localEventIdentifier, received: true,
+                                            readOnly: event.isRevoked || event.isCancelled || event.access == .reader,
+                                            snapshot: .init(title: event.title, start: event.start, end: event.end,
+                                                isAllDay: event.isAllDay, location: event.location))
                                     }
                                 )
                             }
                         } header: {
-                            sharedEventsDayHeader(group.day)
+                            SharedEventsDayHeader(day: group.day)
                         }
                     }
                 }
@@ -656,27 +676,46 @@ struct SharingSheetView: View {
         }
     }
 
-    private func sharedEventsDayHeader(_ date: Date) -> some View {
-        let calendar = Calendar.current
-        let includesYear = calendar.component(.year, from: date)
-            != calendar.component(.year, from: Date())
-        let title = appShortDateFormatter(
-            includesYear: includesYear,
-            includesWeekday: true,
-            usesFullWeekday: true
-        ).string(from: date).uppercased()
+    private func openSharedDetails(identifier: String?, received: Bool, readOnly: Bool,
+                                   remote: CloudCalendarsAPI.RemoteSharedEvent? = nil, snapshot: SharedEventDetailSnapshot) {
+        selectedEventDetails = Self.detailTarget(identifier: identifier, received: received, readOnly: readOnly,
+                                                  remote: remote, snapshot: snapshot, eventStore: viewModel.eventStore)
+    }
 
-        return Text(title)
-            .font(.headline)
-            .foregroundStyle(calendar.isDateInToday(date) ? Color.red : Color.secondary)
-            .padding(.bottom, 4)
-            .textCase(nil)
+    fileprivate static func detailTarget(identifier: String?, received: Bool, readOnly: Bool,
+                                         remote: CloudCalendarsAPI.RemoteSharedEvent?, snapshot: SharedEventDetailSnapshot,
+                                         eventStore: EKEventStore, editing: Bool = false) -> AppLocalEventEditorTarget {
+        var target: AppLocalEventEditorTarget
+        var cloudOnly = false
+        let localStore = AppLocalCalendarStore.shared
+        if let local = identifier.flatMap(localStore.event(id:)) {
+            target = .init(eventID: local.id, startsInEditingMode: editing)
+        } else if let identifier, let event = eventStore.event(withIdentifier: identifier) {
+            target = .init(eventKitEvent: event, startsInEditingMode: editing)
+        } else {
+            cloudOnly = true
+            var snapshot = snapshot
+            snapshot.calendarTitle = remote?.calendarTitle
+            target = .init(eventKitEvent: snapshot.displayEvent(in: eventStore),
+                           startsInEditingMode: editing)
+            target.displaySupplement = snapshot.supplement
+            target.readOnly = remote == nil || CalendarFeedSession.existing == nil
+        }
+        if let remote, let session = CalendarFeedSession.existing {
+            target.sharedSource = .init(event: remote, received: received, session: session, usesServerRecord: cloudOnly)
+        }
+        target.readOnly = target.readOnly || readOnly
+        return target
     }
 
     private func sharedEventCalendarColor(
         localEventIdentifier: String?,
         fallback: Color
     ) -> Color {
+        if let id = localEventIdentifier, let local = AppLocalCalendarStore.shared.event(id: id),
+           let calendar = AppLocalCalendarStore.shared.calendar(id: local.calendarID) {
+            return Color(uiColor: AppLocalCalendarStore.color(calendar.displayColorHex))
+        }
         guard let localEventIdentifier,
               let event = viewModel.eventStore.event(withIdentifier: localEventIdentifier),
               let calendarColor = event.calendar.cgColor
@@ -805,6 +844,12 @@ struct SharingSheetView: View {
             }
 
         receivedEvents = SharedInviteTracker.tracked().values.compactMap { invite in
+            if let record = AppLocalCalendarStore.shared.event(id: invite.localEventIdentifier) {
+                return ReceivedSharedEvent(id: invite.eventID, feedID: invite.feedID, localEventIdentifier: record.id,
+                    title: record.title, start: record.startDate, end: record.endDate, isAllDay: record.isAllDay,
+                    location: record.location, isCancelled: invite.shouldAppearStruckThrough,
+                    isRevoked: invite.isRevoked == true, access: invite.effectiveAccess)
+            }
             guard let event = viewModel.eventStore.event(withIdentifier: invite.localEventIdentifier),
                   let start = event.startDate,
                   let end = event.endDate
@@ -845,13 +890,14 @@ private struct SharedEventAccessSheet: View {
     @State private var recipientPendingRemoval: CloudCalendarsAPI.EventRecipient?
     @State private var errorMessage: String?
     @State private var showEventEditor = false
+    @State private var refreshedSource: CloudCalendarsAPI.RemoteSharedEvent?
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(editableEvent?.title ?? event.title)
+                        Text(event.title)
                             .font(.headline)
                         Text("Choose Reader, Writer, or Owner. Owners can also share this event and manage access.")
                             .font(.footnote)
@@ -891,21 +937,29 @@ private struct SharedEventAccessSheet: View {
             .navigationTitle("Event Access")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItemGroup(placement: .cancellationAction) {
+                AppSheetToolbarItem(placement: .topBarLeading) {
+                    AppSheetHeaderIconGroup {
                     Button { showEventEditor = true } label: {
                         Image(systemName: "pencil")
                     }
                     .accessibilityLabel("Edit Event")
-                    .disabled(editableEvent == nil || isSaving)
+                    .disabled(editorTarget == nil || isSaving)
 
                     Button {
-                        guard let editableEvent else { return }
-                        EventAppClipSharing.present(for: editableEvent)
+                        guard let target = editorTarget else { return }
+                        if let remote = target.sharedSource {
+                            EventAppClipSharing.presentConfirmed(remote, event: target.eventKitEvent)
+                        } else if let id = target.eventID, let local = AppLocalCalendarStore.shared.event(id: id) {
+                            EventAppClipSharing.present(for: AppLocalEventDescriptor(eventID: id, partialStart: local.startDate, partialEnd: local.endDate))
+                        } else if let local = target.eventKitEvent {
+                            EventAppClipSharing.present(for: local)
+                        }
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
                     .accessibilityLabel("Share Event")
-                    .disabled(editableEvent == nil || isSaving)
+                    .disabled(editorTarget == nil || isSaving)
+                    }
                 }
                 AppSheetToolbarItem(placement: .confirmationAction) {
                     AppToolbarTextButton("Done") { dismiss() }
@@ -913,6 +967,9 @@ private struct SharedEventAccessSheet: View {
                 }
             }
             .task { await loadRecipients() }
+            .onReceive(NotificationCenter.default.publisher(for: .sharedEventsTrackingChanged)) { _ in
+                if event.remote != nil { refreshedSource = SharedOutgoingEventTracker.sentEvent(id: event.eventID)?.serverEvent }
+            }
             .onReceive(
                 NotificationCenter.default.publisher(for: .sharedEventRecipientsChanged)
             ) { notification in
@@ -934,13 +991,8 @@ private struct SharedEventAccessSheet: View {
                 Text(recipient.displayEmail)
             }
             .appSheet(isPresented: $showEventEditor) {
-                if let editableEvent {
-                    AppLocalEventEditorView(
-                        target: AppLocalEventEditorTarget(
-                            eventKitEvent: editableEvent,
-                            startsInEditingMode: true
-                        )
-                    ) {
+                if let editorTarget {
+                    AppLocalEventEditorView(target: editorTarget) {
                         showEventEditor = false
                         SharedEventSyncManager.eventStoreDidChange()
                         NotificationCenter.default.post(
@@ -953,9 +1005,19 @@ private struct SharedEventAccessSheet: View {
         }
     }
 
-    private var editableEvent: EKEvent? {
-        guard let identifier = event.localEventIdentifier else { return nil }
-        return CalendarViewModel.shared.eventStore.event(withIdentifier: identifier)
+    private var editorTarget: AppLocalEventEditorTarget? {
+        guard !event.cancelled else { return nil }
+        let store = CalendarViewModel.shared.eventStore
+        if let remote = refreshedSource ?? event.remote, !remote.isCancelled, let start = remote.startDate, let end = remote.endDate {
+            return SharingSheetView.detailTarget(identifier: event.localEventIdentifier,
+                received: false, readOnly: false, remote: remote,
+                snapshot: .init(title: remote.title, start: start, end: end, isAllDay: remote.allDay,
+                    location: remote.location, url: remote.url, details: remote.details),
+                eventStore: store, editing: true)
+        }
+        guard let id = event.localEventIdentifier else { return nil }
+        if let local = AppLocalCalendarStore.shared.event(id: id) { return .init(eventID: local.id, startsInEditingMode: true) }
+        return store.event(withIdentifier: id).map { .init(eventKitEvent: $0, startsInEditingMode: true) }
     }
 
     private func recipientRow(_ recipient: CloudCalendarsAPI.EventRecipient) -> some View {
@@ -1182,8 +1244,20 @@ private struct SharedEventAccessSheet: View {
         }
     }
 
+    private func invitationURL(feedID: String) -> URL? {
+        guard let target = editorTarget else { return nil }
+        if let local = target.eventKitEvent {
+            return EventAppClipSharing.invocationURL(for: local, feedID: feedID, shareID: event.eventID)
+        }
+        guard let id = target.eventID, let local = AppLocalCalendarStore.shared.event(id: id) else { return nil }
+        let snapshot = SharedEventDetailSnapshot(title: local.title, start: local.startDate, end: local.endDate,
+            isAllDay: local.isAllDay, location: local.location, url: local.urlString)
+        return EventAppClipSharing.invocationURL(for: snapshot.displayEvent(in: CalendarViewModel.shared.eventStore),
+                                                feedID: feedID, shareID: event.eventID)
+    }
+
     private var canResendInvitation: Bool {
-        event.feedID != nil && editableEvent != nil
+        event.feedID != nil && editorTarget != nil
     }
 
     @MainActor
@@ -1192,12 +1266,7 @@ private struct SharedEventAccessSheet: View {
         guard persistedRecipient.isPendingInvitation,
               let email = persistedRecipient.emails.first,
               let feedID = event.feedID,
-              let editableEvent,
-              let url = EventAppClipSharing.invocationURL(
-                for: editableEvent,
-                feedID: feedID,
-                shareID: event.eventID
-              ),
+              let url = invitationURL(feedID: feedID),
               let session = CalendarFeedSession.existing
         else { return }
 

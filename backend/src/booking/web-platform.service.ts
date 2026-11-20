@@ -134,12 +134,20 @@ export class WebPlatformService {
   private get nativeCalendars() { return new NativeCalendarStore(this.store); }
 
   async listAccountLocalCalendars(principal: any): Promise<ApiResult> {
-    return result(200, { ownerID: principal.principalId,
-      calendars: (await this.nativeCalendars.list(principal)).filter(calendar => calendar.accountLocal === true) });
+    const calendars = (await this.nativeCalendars.list(principal)).filter(calendar => calendar.accountLocal === true);
+    for (const calendar of calendars.filter(c => c.available === false && !c.deletionReconciled)) {
+      await this.nativeCalendars.reconcileDeletion(principal, calendar, () => this.calendarService.finishAccountCalendarDeletion(principal, calendar));
+    }
+    return result(200, {ownerID: principal.principalId, calendars});
   }
 
   async syncNativeCalendar(principal: any, body: any): Promise<ApiResult> {
-    return this.nativeCalendars.sync(principal, body);
+    const response = await this.nativeCalendars.sync(principal, body);
+    const calendar = response.body?.calendar;
+    if (!body?.readOnly && response.status === 200 && calendar?.accountLocal && calendar.available === false) {
+      await this.nativeCalendars.reconcileDeletion(principal, calendar, () => this.calendarService.finishAccountCalendarDeletion(principal, calendar));
+    }
+    return response;
   }
 
   async removeDeviceCalendarFromWeb(principal: any, id: string): Promise<ApiResult> {
@@ -579,6 +587,7 @@ export class WebPlatformService {
     const rawEvents = (await Promise.all(eventKeys.map((k) => this.store.getJSON(k)))).filter(Boolean);
     const events = rawEvents
       .filter((ev) => {
+        if (ev.sourceCalendarDeleted) return false;
         if (ev.status === 'cancelled' && query?.includeCancelled !== '1') return false;
         if (fromMs != null && toMs != null && !ev.details?.recurrenceRules?.length) {
           const s = Date.parse(ev.start);

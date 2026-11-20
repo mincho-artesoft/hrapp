@@ -14,29 +14,32 @@ export const worldY = (lat: number) =>
   0.5 - Math.asinh(Math.tan((clamp(lat, -85.051129, 85.051129) * Math.PI) / 180)) / (2 * Math.PI);
 export const latitudeAt = (y: number) => (Math.atan(Math.sinh(Math.PI * (1 - 2 * y))) * 180) / Math.PI;
 
-export function forecastGrid(place: MapLocation, viewport?: MapViewport): MapGrid {
-  if (!viewport) {
-    const lat = clamp(Math.round(place.latitude / 2) * 2, -76, 76);
-    return {
-      latitude: lat,
-      longitude: wrap(Math.round(place.longitude / 2) * 2),
-      latRadius: 4,
-      lonRadius: 4 / Math.max(0.3, Math.cos((lat * Math.PI) / 180)),
-      side: 3,
-    };
-  }
+const mercatorLimit = latitudeAt(0);
+export function forecastGrid(viewport: MapViewport, side: 3 | 7): MapGrid {
+  const north = latitudeAt(clamp(viewport.y, 0, 1));
+  const south = latitudeAt(clamp(viewport.y + viewport.height, 0, 1));
   const radius = (span: number, max: number) =>
     Math.min(max, 2 ** (Math.ceil(Math.log2(Math.max(0.125, span * 0.65)) * 2) / 2));
-  const latRadius = radius(latitudeAt(viewport.y) - latitudeAt(viewport.y + viewport.height), 85);
+  const latRadius = radius(north - south, mercatorLimit);
   const lonRadius = radius(viewport.width * 360, 180);
   const snap = (value: number, step: number) => (Math.round(value / (step / 3)) * step) / 3;
   return {
-    latitude: clamp(snap(latitudeAt(viewport.y + viewport.height / 2), latRadius), -85 + latRadius, 85 - latRadius),
+    latitude: clamp(snap((north + south) / 2, latRadius), -mercatorLimit + latRadius, mercatorLimit - latRadius),
     longitude: lonRadius === 180 ? 0 : wrap(snap((viewport.x + viewport.width / 2) * 360 - 180, lonRadius)),
     latRadius,
     lonRadius,
-    side: 7,
+    side,
   };
+}
+
+// Test the whole longitude interval, including viewports that cross the date line.
+export function gridCoversViewport(grid: MapGrid, viewport: MapViewport): boolean {
+  const longitude = (viewport.x + viewport.width / 2) * 360 - 180;
+  const epsilon = 1e-9;
+  return (grid.lonRadius === 180 ||
+      Math.abs(wrap(longitude - grid.longitude)) + viewport.width * 180 <= grid.lonRadius + epsilon)
+    && latitudeAt(clamp(viewport.y, 0, 1)) <= grid.latitude + grid.latRadius + epsilon
+    && latitudeAt(clamp(viewport.y + viewport.height, 0, 1)) >= grid.latitude - grid.latRadius - epsilon;
 }
 
 export function gridCoordinates(grid: MapGrid): MapLocation[] {

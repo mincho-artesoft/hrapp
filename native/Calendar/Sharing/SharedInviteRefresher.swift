@@ -41,44 +41,45 @@ enum SharedInviteRefresher {
         return (try? await requests.run(key) { await performRefresh(original) }) ?? false
     }
 
-    private static func performRefresh(_ original: SharedInviteTracker.Invite) async -> Bool {
-        // Revocation freezes the recipient's copy. It remains in their chosen
-        // calendar until they delete it locally, but no longer talks to S3.
-        guard original.isRevoked != true,
-              let activeSession = CalendarFeedSession.existing,
-              SharedInviteTracker.invite(eventID: original.eventID) != nil else { return false }
+    private static func performRefresh(_ requested: SharedInviteTracker.Invite) async -> Bool {
+        guard let activeSession = CalendarFeedSession.existing,
+              var invite = SharedInviteTracker.invite(eventID: requested.eventID),
+              invite.isRevoked != true else { return false }
 
-        // Removing a received Writer/Reader copy is strictly local. Removing a
-        // delegated Owner copy is different: Owner is allowed to call off the
-        // canonical event for everybody, including the first sharer. Handle
-        // this before fetching the feed so the missing EventKit copy is not
-        // mistaken for an ordinary local opt-out.
-        if CalendarViewModel.shared.eventStore.event(
-            withIdentifier: original.localEventIdentifier
-        ) == nil {
-            if original.effectiveAccess == .owner,
-               let session = CalendarFeedSession.existing {
-                do {
-                    try await CloudCalendarsAPI.cancelEvent(
-                        id: original.eventID,
-                        session: session
-                    )
-                    SharedInviteTracker.forget(eventID: original.eventID)
-                    return true
-                } catch {
-                    print("Delegated Owner cancellation failed for \(original.eventID) - \(error.localizedDescription)")
-                    // Keep the tracking record so the next sync can retry the
-                    // cancellation instead of silently degrading to a local
-                    // removal.
-                    return false
-                }
+        if invite.cancellationRequested == true {
+            do {
+                try await CloudCalendarsAPI.cancelEvent(id: invite.eventID, session: activeSession)
+                guard CalendarFeedSession.isCurrent(activeSession),
+                      SharedInviteTracker.invite(eventID: invite.eventID)?.cancellationRequested == true else { return false }
+                SharedInviteTracker.forget(eventID: invite.eventID)
+                return true
+            } catch {
+                return false
             }
-            if original.effectiveAccess == .owner { return false }
-            SharedInviteTracker.forget(eventID: original.eventID)
-            return true
         }
 
-        var invite = original
+        if AppLocalCalendarStore.shared.event(id: invite.localEventIdentifier) == nil {
+            let store = CalendarViewModel.shared.eventStore
+            guard EKEventStore.authorizationStatus(for: .event) == .fullAccess else { return false }
+            if let event = store.event(withIdentifier: invite.localEventIdentifier) {
+                if let external = event.calendarItemExternalIdentifier, external != invite.externalIdentifier {
+                    invite.externalIdentifier = external
+                    SharedInviteTracker.update(invite)
+                }
+            } else {
+                // iCloud may replace local identifiers during a calendar move. One device
+                // missing a copy does not authorize cancelling or forgetting an account invitation.
+                guard let external = invite.externalIdentifier, !external.isEmpty else { return false }
+                let matches = store.calendarItems(withExternalIdentifier: external).compactMap { $0 as? EKEvent }
+                guard matches.count == 1, let event = matches.first, !event.hasRecurrenceRules,
+                      let id = event.eventIdentifier else { return false }
+                invite.localEventIdentifier = id
+                invite.receiptRecorded = false
+                ReceivedSharingVisibility.register([id], kind: "event", accountID: activeSession.calendarId)
+                SharedInviteTracker.update(invite)
+            }
+        }
+
         var accessChanged = false
 
         if invite.receiptRecorded != true {
@@ -178,10 +179,8 @@ enum SharedInviteRefresher {
                invite.effectiveAccess == .writer || invite.effectiveAccess == .owner,
                remote.sequence == invite.lastSequence,
                let session = CalendarFeedSession.existing,
-               let event = CalendarViewModel.shared.eventStore
-                .event(withIdentifier: invite.localEventIdentifier),
-               let current = SharedOutgoingEventTracker.snapshot(for: event),
-               let baseline = invite.lastSyncedSnapshot,
+               let current = SharedOutgoingEventTracker.snapshot(localEventIdentifier: invite.localEventIdentifier),
+               let details = current.details, let baseline = invite.lastSyncedSnapshot,
                current != baseline {
                 let upload = SharedEventUpload(
                     id: invite.eventID,
@@ -191,7 +190,7 @@ enum SharedInviteRefresher {
                     isAllDay: current.isAllDay,
                     location: current.location,
                     url: current.url.flatMap(URL.init(string:)),
-                    details: current.details ?? SharedEventDetails(event: event),
+                    details: details,
                     localEventIdentifier: nil,
                     organizerName: nil,
                     organizerEmail: nil
@@ -220,8 +219,7 @@ enum SharedInviteRefresher {
                         // A second edit may have been saved while the upload or
                         // feed read was in flight. Leave it pending for the next pass.
                         if !latest.isCancelled, tracked.effectiveAccess != .reader,
-                           let event = CalendarViewModel.shared.eventStore.event(withIdentifier: tracked.localEventIdentifier),
-                           SharedOutgoingEventTracker.snapshot(for: event) != current {
+                           SharedOutgoingEventTracker.snapshot(localEventIdentifier: tracked.localEventIdentifier) != current {
                             return true
                         }
                         _ = apply(latest, to: tracked)
@@ -250,6 +248,10 @@ enum SharedInviteRefresher {
         guard SharedInviteTracker.invite(eventID: invite.eventID) != nil,
               invite.isRevoked != true else { return false }
         var updated = invite
+        if var local = AppLocalCalendarStore.shared.event(id: invite.localEventIdentifier) {
+            local.providerReadOnly = true
+            do { try AppLocalCalendarStore.shared.saveTransferredEvent(local) } catch { return false }
+        }
         updated.isRevoked = true
         updated.access = .reader
         SharedInviteTracker.update(updated)
@@ -292,13 +294,29 @@ enum SharedInviteRefresher {
               tracked.localEventIdentifier == invite.localEventIdentifier, tracked.isRevoked != true,
               remote.sequence >= max(invite.lastSequence, tracked.lastSequence) else { return false }
 
-        let store = CalendarViewModel.shared.eventStore
-        guard let event = store.event(withIdentifier: invite.localEventIdentifier) else {
-            // The person deleted it themselves; stop tracking rather than
-            // resurrecting an event they threw away.
-            SharedInviteTracker.forget(eventID: invite.eventID)
-            return false
+        if var local = AppLocalCalendarStore.shared.event(id: invite.localEventIdentifier) {
+            let before = local
+            if let title = remote.summary { local.title = title }
+            if let start = remote.start { local.startDate = start }
+            if let end = remote.end { local.endDate = max(local.startDate, end) }
+            if let allDay = remote.isAllDay { local.isAllDay = allDay }
+            local.location = remote.location ?? ""
+            local.urlString = remote.url?.absoluteString ?? ""
+            if let details = remote.details { local.applySharedDetails(details) }
+            local.isCancelled = remote.isCancelled
+            local.providerReadOnly = invite.effectiveAccess == .reader || remote.isCancelled ? true : nil
+            var updated = invite
+            updated.lastSequence = remote.sequence; updated.isCancelled = remote.isCancelled
+            updated.lastSyncedSnapshot = SharedOutgoingEventTracker.snapshot(for: local)
+            guard updated != invite || local != before else { return false }
+            do {
+                if local != before { try AppLocalCalendarStore.shared.saveTransferredEvent(local) }
+                SharedInviteTracker.update(updated)
+                return true
+            } catch { return false }
         }
+        let store = CalendarViewModel.shared.eventStore
+        guard let event = store.event(withIdentifier: invite.localEventIdentifier) else { return false }
         EventShareIdentity.removeLegacyMarker(from: event, store: store)
 
         // A poll with the same server revision must not write the same values
@@ -442,8 +460,11 @@ enum SharedEventRecovery {
         do {
             // One-time migration for invites accepted before account-backed
             // recovery existed.
-            for invite in SharedInviteTracker.tracked().values {
+            for invite in SharedInviteTracker.tracked().values where invite.receiptRecorded != true {
                 guard CalendarFeedSession.isCurrent(session) else { return }
+                guard invite.cancellationRequested != true,
+                      AppLocalCalendarStore.shared.event(id: invite.localEventIdentifier) != nil
+                        || CalendarViewModel.shared.eventStore.event(withIdentifier: invite.localEventIdentifier) != nil else { continue }
                 try? await CloudCalendarsAPI.rememberReceivedInvite(
                     eventId: invite.eventID,
                     feedId: invite.feedID,
@@ -453,31 +474,35 @@ enum SharedEventRecovery {
                 )
             }
 
+            let beforeFetch = SharedOutgoingEventTracker.indexedIDs
             let state = try await CloudCalendarsAPI.sharedState(session: session)
             guard CalendarFeedSession.isCurrent(session) else { return }
+            SharedOutgoingEventTracker.reconcileMembership(state.outgoing, beforeFetch: beforeFetch)
             let store = CalendarViewModel.shared.eventStore
 
             for remote in state.outgoing {
-                let local = findEvent(
-                    remote,
-                    preferredIdentifier: outgoingIdentifier(for: remote.id, in: store)
-                        ?? remote.localEventIdentifier,
-                    store: store
-                )
-                SharedOutgoingEventTracker.restore(
-                    remote,
-                    localEventIdentifier: local?.eventIdentifier
-                )
+                let identifier = outgoingIdentifier(for: remote.id) ?? remote.localEventIdentifier
+                let local = accountLocalCopy(remote, preferred: identifier) ?? identifier.flatMap { id -> String? in
+                    if AppLocalCalendarStore.shared.event(id: id) != nil { return id }
+                    return store.event(withIdentifier: id)?.eventIdentifier
+                }
+                SharedOutgoingEventTracker.restore(remote, localEventIdentifier: local)
             }
 
             for remote in state.received {
                 guard CalendarFeedSession.isCurrent(session) else { return }
-                let preferred = SharedInviteTracker.invite(eventID: remote.id)?.localEventIdentifier
+                let tracked = SharedInviteTracker.invite(eventID: remote.id)
+                if tracked?.cancellationRequested == true { continue }
+                let preferred = tracked?.localEventIdentifier
+                if let id = accountLocalCopy(remote, preferred: preferred) {
+                    SharedInviteTracker.restore(remote, localEventIdentifier: id)
+                    continue
+                }
                 let local = findEvent(
                     remote,
                     preferredIdentifier: preferred ?? remote.localEventIdentifier,
                     store: store
-                ) ?? createReceivedEvent(remote, store: store)
+                ) ?? (tracked == nil ? createReceivedEvent(remote, store: store) : nil)
 
                 if let identifier = local?.eventIdentifier {
                     SharedInviteTracker.restore(remote, localEventIdentifier: identifier)
@@ -500,17 +525,22 @@ enum SharedEventRecovery {
         }
     }
 
+    private static func accountLocalCopy(_ remote: CloudCalendarsAPI.RemoteSharedEvent, preferred: String?) -> String? {
+        let store = AppLocalCalendarStore.shared
+        let visible = Set(store.visibleCalendars.map(\.id))
+        let candidates = store.events.filter { visible.contains($0.calendarID) }
+        if let preferred, let own = candidates.first(where: { $0.id == preferred }) { return own.id }
+        guard let binding = remote.localEventIdentifier else { return nil }
+        let exact = candidates.filter { $0.id == binding || $0.shareID == binding }
+        return exact.count == 1 ? exact[0].id : nil
+    }
+
     private static var hasCalendarAccess: Bool {
         EKEventStore.authorizationStatus(for: .event) == .fullAccess
     }
 
-    private static func outgoingIdentifier(
-        for eventID: String,
-        in store: EKEventStore
-    ) -> String? {
-        if let identifier = SharedOutgoingEventTracker.sentEvents(in: store)
-            .first(where: { $0.eventID == eventID })?
-            .localEventIdentifier {
+    private static func outgoingIdentifier(for eventID: String) -> String? {
+        if let identifier = SharedOutgoingEventTracker.sentEvent(id: eventID)?.localEventIdentifier {
             return identifier
         }
         return EventShareIdentity.knownShareIDsByEvent
@@ -537,7 +567,7 @@ enum SharedEventRecovery {
         )
         let candidates = store.events(matching: predicate)
 
-        let matched = candidates.first { event in
+        let matches = candidates.filter { event in
             let title = (event.title ?? "")
                 .replacingOccurrences(
                     of: "\(NSLocalizedString("Cancelled", comment: "")): ",
@@ -549,9 +579,8 @@ enum SharedEventRecovery {
                 && event.isAllDay == remote.allDay
                 && normalized(event.location) == normalized(remote.location)
         }
-        if let matched {
-            EventShareIdentity.removeLegacyMarker(from: matched, store: store)
-        }
+        guard matches.count == 1, let matched = matches.first else { return nil }
+        EventShareIdentity.removeLegacyMarker(from: matched, store: store)
         return matched
     }
 

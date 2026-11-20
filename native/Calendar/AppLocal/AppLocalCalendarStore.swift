@@ -167,6 +167,20 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
     }
     var syncedFields: SyncedFields?
 
+    mutating func applySharedDetails(_ details: SharedEventDetails) {
+        syncedFields = SyncedFields(details)
+        notes = details.notes ?? ""
+        timeZoneIdentifier = details.timeZone ?? timeZoneIdentifier
+        if alarms.map(\.relativeOffset) != details.alarms.compactMap(\.relativeOffset) {
+            alarms = details.alarms.compactMap { $0.relativeOffset.map { AppLocalEventAlarm(relativeOffset: $0) } }
+        }
+        recurrenceRules = details.recurrenceRules
+        structuredLocation = details.structuredLocation
+        videoCallURL = details.videoCallURL
+        travelTime = details.travelTime
+        attachments = details.attachments?.map(AppLocalEventAttachment.init)
+    }
+
     var portableDetails: SharedEventDetails {
         let previous = syncedFields?.alarms ?? []
         let relative = alarms.map(\.relativeOffset)
@@ -266,12 +280,12 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     var visibleCalendars: [AppLocalCalendarRecord] {
-        calendars.filter { $0.origin != .received || ReceivedSharingVisibility.isVisible(
-            $0.id, kind: "calendar", requiresAccount: true) }
+        calendars.filter { $0.origin == .received ? ($0.revokedReason != "owner_deleted" && ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true)) : AccountLocalCalendarSync.isVisible($0.id) }
     }
 
     var ownedCalendars: [AppLocalCalendarRecord] {
-        calendars.filter { $0.origin == .owned && !$0.isProvider }
+        visibleCalendars.filter { $0.origin == .owned && !$0.isProvider }
             .sorted { lhs, rhs in
                 if lhs.isPersonalCloud != rhs.isPersonalCloud {
                     return lhs.isPersonalCloud

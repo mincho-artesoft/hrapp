@@ -12,24 +12,74 @@ enum MacCalendarProviderEventWire {
             }
         }
     }
-    static func event(_ raw: [String: Any], id: String, google: Bool) throws -> DeviceCalendarEvent {
+    static func event(_ raw: [String: Any], id: String, google: Bool, calendarTimeZone: String? = nil) throws -> DeviceCalendarEvent {
         guard let start = raw["start"] as? [String: Any], let end = raw["end"] as? [String: Any] else { throw Failure.invalidResponse }
         let allDay = google ? start["date"] != nil : raw["isAllDay"] as? Bool ?? false
-        let zone = start["timeZone"] as? String ?? (allDay ? TimeZone.current.identifier : "UTC")
-        guard let startDate = providerDate(start, allDay: allDay), let endDate = providerDate(end, allDay: allDay), endDate > startDate else { throw Failure.invalidResponse }
+        let originalZone = (raw["originalStartTimeZone"] as? String).flatMap(TimeZone.init(identifier:))
+        let zone = (!google ? originalZone?.identifier : nil) ?? start["timeZone"] as? String
+            ?? (allDay ? calendarTimeZone ?? TimeZone.current.identifier : "UTC")
+        guard let startDate = providerDate(start, allDay: allDay, fallbackZone: zone), let endDate = providerDate(end, allDay: allDay, fallbackZone: zone), endDate > startDate else { throw Failure.invalidResponse }
         let notes = google ? raw["description"] as? String : (raw["body"] as? [String: Any])?["content"] as? String
         let location = google ? raw["location"] as? String : (raw["location"] as? [String: Any])?["displayName"] as? String
-        var details: [String: CalendarJSON] = ["timeZone": .string(zone), "notes": .string(notes ?? "")]
+        var details: [String: CalendarJSON] = ["timeZone": .string(zone), "notes": .string(notes ?? ""),
+            "availability": .number(0), "alarms": .array([])]
         if let video = raw["hangoutLink"] as? String ?? (raw["onlineMeeting"] as? [String: Any])?["joinUrl"] as? String { details["videoCallURL"] = .string(video) }
+        details["providerPrivacy"] = .string(raw[google ? "visibility" : "sensitivity"] as? String ?? (google ? "default" : "normal"))
+        if google {
+            let reminders = raw["reminders"] as? [String: Any]
+            details["providerDefaultReminders"] = .bool(reminders?["useDefault"] as? Bool ?? (reminders?["overrides"] == nil))
+            let other = (reminders?["overrides"] as? [[String: Any]] ?? []).filter { $0["method"] as? String != "popup" }
+            if !other.isEmpty { details["providerOtherReminders"] = try JSONDecoder().decode(CalendarJSON.self, from: JSONSerialization.data(withJSONObject: other)) }
+        } else {
+            details["providerShowAs"] = .string(raw["showAs"] as? String ?? "busy")
+        }
+        if google, let reminders = raw["reminders"] as? [String: Any], reminders["useDefault"] as? Bool != true {
+            let overrides = reminders["overrides"] as? [[String: Any]] ?? []
+            details["alarms"] = .array(overrides.compactMap { item in
+                guard item["method"] as? String == "popup", let minutes = item["minutes"] as? Int else { return nil }
+                return .object(["relativeOffset": .number(-Double(minutes) * 60)])
+            })
+        } else if !google, let enabled = raw["isReminderOn"] as? Bool {
+            let minutes = raw["reminderMinutesBeforeStart"] as? Int ?? 0
+            details["alarms"] = .array(enabled ? [.object(["relativeOffset": .number(-Double(minutes) * 60)])] : [])
+        }
+        if google, let transparency = raw["transparency"] as? String {
+            details["availability"] = .number(transparency == "transparent" ? 1 : 0)
+        } else if !google, let showAs = raw["showAs"] as? String {
+            details["availability"] = .number(["free": 1, "tentative": 2, "oof": 3][showAs] ?? 0)
+        }
         let attendees = raw["attendees"] as? [[String: Any]] ?? []
+        let ownsMeeting = google ? (raw["organizer"] as? [String: Any])?["self"] as? Bool == true : raw["isOrganizer"] as? Bool == true
+        let cancelled = raw["status"] as? String == "cancelled" || raw["isCancelled"] as? Bool == true
+        if let organizer = raw["organizer"] as? [String: Any] {
+            details["organizer"] = participant(organizer, google: google, organizer: true)
+        }
+        if !attendees.isEmpty {
+            details["attendees"] = .array(attendees.map { participant($0, google: google, organizer: false) })
+        }
         return DeviceCalendarEvent(id: id, title: (raw[google ? "summary" : "subject"] as? String) ?? "",
             start: DeviceCalendarEvent.iso(startDate), end: DeviceCalendarEvent.iso(endDate), allDay: allDay,
-            location: location?.isEmpty == true ? nil : location, details: details, readOnly: !attendees.isEmpty, updatedAt: (raw[google ? "updated" : "lastModifiedDateTime"] as? String))
+            location: location?.isEmpty == true ? nil : location, details: details, readOnly: cancelled || (!attendees.isEmpty && !ownsMeeting) || raw["locked"] as? Bool == true, updatedAt: (raw[google ? "updated" : "lastModifiedDateTime"] as? String),
+            status: cancelled ? "cancelled" : nil)
     }
-    private static func providerDate(_ value: [String: Any], allDay: Bool) -> Date? {
+    private static func participant(_ raw: [String: Any], google: Bool, organizer: Bool) -> CalendarJSON {
+        let address = (raw["emailAddress"] as? [String: Any]) ?? raw
+        let response = raw["responseStatus"] as? String ?? (raw["status"] as? [String: Any])?["response"] as? String ?? ""
+        let optional = google ? raw["optional"] as? Bool == true : raw["type"] as? String == "optional"
+        var fields: [String: CalendarJSON] = [
+            "role": .number(organizer ? 3 : optional ? 2 : 1),
+            "type": .number(raw["resource"] as? Bool == true || raw["type"] as? String == "resource" ? 3 : 1),
+            "status": .number(["needsAction": 1, "notResponded": 1, "accepted": 2, "organizer": 2, "declined": 3, "tentative": 4, "tentativelyAccepted": 4][response] ?? 0),
+            "isCurrentUser": .bool(raw["self"] as? Bool == true),
+        ]
+        fields["email"] = (address[google ? "email" : "address"] as? String).map(CalendarJSON.string)
+        fields["name"] = (address[google ? "displayName" : "name"] as? String).map(CalendarJSON.string)
+        return .object(fields)
+    }
+    private static func providerDate(_ value: [String: Any], allDay: Bool, fallbackZone: String) -> Date? {
         if let date = value["date"] as? String ?? (allDay ? (value["dateTime"] as? String).map { String($0.prefix(10)) } : nil) {
             let formatter = DateFormatter(); formatter.locale = Locale(identifier: "en_US_POSIX"); formatter.dateFormat = "yyyy-MM-dd"
-            formatter.timeZone = (value["timeZone"] as? String).flatMap(TimeZone.init(identifier:)) ?? .current
+            formatter.timeZone = TimeZone(identifier: fallbackZone) ?? .current
             return formatter.date(from: date)
         }
         guard let date = value["dateTime"] as? String else { return nil }
@@ -52,7 +102,38 @@ enum MacCalendarProviderEventWire {
             result[google ? "description" : "body"] = google ? notes as Any : ["contentType": "text", "content": notes]
         }
         if previous?.location != event.location { result["location"] = google ? (event.location ?? "") as Any : ["displayName": event.location ?? ""] }
-        if previous == nil || previous?.start != event.start || previous?.end != event.end || previous?.allDay != event.allDay {
+        if let privacy = event.details?["providerPrivacy"]?.string, privacy != previous?.details?["providerPrivacy"]?.string {
+            result[google ? "visibility" : "sensitivity"] = privacy
+        }
+        if event.details?["availability"] != previous?.details?["availability"] || event.details?["providerShowAs"] != previous?.details?["providerShowAs"] {
+            let value = Int(event.details?["availability"]?.number ?? 0)
+            result[google ? "transparency" : "showAs"] = google ? (value == 1 ? "transparent" : "opaque")
+                : (event.details?["providerShowAs"]?.string ?? [1: "free", 2: "tentative", 3: "oof"][value] ?? "busy")
+        }
+        if event.details?["alarms"] != previous?.details?["alarms"] ||
+            event.details?["providerDefaultReminders"] != previous?.details?["providerDefaultReminders"] ||
+            (google && event.details?["providerOtherReminders"] != previous?.details?["providerOtherReminders"]) {
+            let alarms: [SharedEventAlarm] = event.decodedDetail("alarms") ?? []
+            let minutes = alarms.compactMap { alarm -> Int? in
+                let offset = alarm.relativeOffset ?? alarm.absoluteDate.flatMap(DeviceCalendarEvent.date)?.timeIntervalSince(event.startDate)
+                return offset.map { max(0, Int((-$0 / 60).rounded())) }
+            }
+            if google {
+                if event.details?["providerDefaultReminders"] == .bool(true) {
+                    result["reminders"] = ["useDefault": true]
+                } else {
+                    let preserved: [[String: Any]] = try event.details?["providerOtherReminders"].map {
+                        try JSONSerialization.jsonObject(with: JSONEncoder().encode($0)) as? [[String: Any]] ?? []
+                    } ?? []
+                    let overrides = minutes.prefix(max(0, 5 - preserved.count)).map { ["method": "popup", "minutes": min(40320, $0)] as [String: Any] }
+                    result["reminders"] = ["useDefault": false, "overrides": preserved + overrides]
+                }
+            } else {
+                result["isReminderOn"] = !minutes.isEmpty
+                result["reminderMinutesBeforeStart"] = minutes.first ?? 0
+            }
+        }
+        if previous == nil || previous?.details?["timeZone"] != event.details?["timeZone"] || previous?.start != event.start || previous?.end != event.end || previous?.allDay != event.allDay {
             if google, event.allDay {
                 let formatter = DateFormatter(); formatter.locale = Locale(identifier: "en_US_POSIX"); formatter.dateFormat = "yyyy-MM-dd"
                 formatter.timeZone = event.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:)) ?? .current
@@ -63,10 +144,19 @@ enum MacCalendarProviderEventWire {
                 result["start"] = ["dateTime": formatter.string(from: event.startDate) + "T00:00:00", "timeZone": formatter.timeZone.identifier]
                 result["end"] = ["dateTime": formatter.string(from: event.endDate) + "T00:00:00", "timeZone": formatter.timeZone.identifier]
             } else {
-                let zone = google ? event.details?["timeZone"]?.string ?? TimeZone.current.identifier : "UTC"
-                let start = google ? event.start : String(event.start.dropLast(event.start.hasSuffix("Z") ? 1 : 0))
-                let end = google ? event.end : String(event.end.dropLast(event.end.hasSuffix("Z") ? 1 : 0))
-                result["start"] = ["dateTime": start, "timeZone": zone]; result["end"] = ["dateTime": end, "timeZone": zone]
+                let zone = event.details?["timeZone"]?.string ?? "UTC"
+                if google {
+                    result["start"] = ["dateTime": event.start, "timeZone": zone]
+                    result["end"] = ["dateTime": event.end, "timeZone": zone]
+                } else {
+                    let formatter = DateFormatter()
+                    formatter.locale = Locale(identifier: "en_US_POSIX")
+                    formatter.timeZone = TimeZone(identifier: zone) ?? TimeZone(secondsFromGMT: 0)
+                    for (key, date) in [("start", event.startDate), ("end", event.endDate)] {
+                        formatter.dateFormat = DeviceCalendarEvent.iso(date).contains(".") ? "yyyy-MM-dd'T'HH:mm:ss.SSS" : "yyyy-MM-dd'T'HH:mm:ss"
+                        result[key] = ["dateTime": formatter.string(from: date), "timeZone": zone]
+                    }
+                }
             }
             if !google { result["isAllDay"] = event.allDay }
         }

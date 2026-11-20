@@ -11,6 +11,7 @@ final class MacCalendarOwnedSharing {
         let localID: String
         let shareID: String
         var baseline: [DeviceCalendarEvent]
+        var deletionPending: Bool? = nil
     }
     private unowned let backend: CalendarMacStore
     private let file: URL
@@ -42,14 +43,46 @@ final class MacCalendarOwnedSharing {
         }
     }
 
+    func recordDeletion(localID: String) throws {
+        guard let session = backend.cloudSession else { return }
+        let key = session.calendarId + ":" + localID
+        var bindings = try read()
+        guard bindings[key] != nil else { return }
+        bindings[key]?.deletionPending = true
+        try write(bindings)
+    }
+
     private func sync(key: String, session: CloudCalendarsAPI.Session) async throws {
         try await requests.run(key) { [self] in try await performSync(key: key, session: session) }
     }
 
     private func performSync(key: String, session: CloudCalendarsAPI.Session) async throws {
-        guard let binding = try read()[key],
-              let calendar = backend.calendars.first(where: { $0.id == binding.localID }), calendar.writable else { return }
-        let remote = try await CloudCalendarsAPI.iCloudCalendarSharing(calendarId: binding.shareID, session: session)
+        guard let binding = try read()[key] else { return }
+        if binding.deletionPending == true {
+            try await CloudCalendarsAPI.deleteICloudCalendarSharing(calendarId: binding.shareID, session: session)
+            var bindings = try read()
+            bindings.removeValue(forKey: key)
+            try write(bindings)
+            return
+        }
+        guard let calendar = backend.calendars.first(where: { $0.id == binding.localID }), calendar.writable else { return }
+        let remote: CloudCalendarsAPI.ICloudCalendarSharing
+        do {
+            remote = try await CloudCalendarsAPI.iCloudCalendarSharing(calendarId: binding.shareID, session: session)
+        } catch CloudCalendarsAPI.Failure.http(410, _) {
+            guard backend.cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
+            var bindings = try read()
+            if bindings[key]?.shareID == binding.shareID {
+                bindings.removeValue(forKey: key)
+                try write(bindings)
+                if let index = backend.local.firstIndex(where: { $0.id == binding.localID && $0.sharingCalendarID == binding.shareID }) {
+                    var documents = backend.local
+                    documents[index].sharingCalendarID = nil
+                    try backend.applyProviderDocuments(documents)
+                }
+            }
+            return
+        }
         guard backend.cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
         // A missing/revoked share must not be silently recreated by background sync.
         guard !remote.title.isEmpty else { return }
@@ -68,11 +101,12 @@ final class MacCalendarOwnedSharing {
         // Preserve edits made locally while the upload was in flight.
         let currentSnapshot = snapshot(calendar)
         let current = try currentSnapshot.map(MacCalendarSharingMerge.wireSnapshot)
-        let flags = Dictionary(currentSnapshot.map { ($0.id, $0.readOnly) }, uniquingKeysWith: { _, last in last })
+        let flags = Dictionary(currentSnapshot.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
         let applied = try MacCalendarSharingMerge.preservingInFlightEdits(beforeUpload: local, uploaded: merged, current: current)
             .map { event in
                 var result = event
-                result.readOnly = flags[event.id] ?? nil
+                result.readOnly = flags[event.id]?.readOnly
+                result.status = flags[event.id]?.status
                 return result
             }
         if let native = calendar.native {

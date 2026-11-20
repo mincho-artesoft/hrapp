@@ -27,17 +27,9 @@
         <cc-calendar-search [value]="search()" (changed)="search.set($event)" (closed)="search.set(''); destinationSearchOpen.set(false)" />
       } @else {
         <div class="page-heading">
-          <button
-            type="button"
-            class="round-button"
-            aria-label="Close"
-            (click)="
-              destination.set('');
-              search.set('');
-              destinationSearchOpen.set(false)
-            "
-          >
-            <cc-symbol [pointSize]="17" name="xmark" />
+          <button type="button" class="sharing-close"
+            (click)="destination.set(''); search.set(''); destinationSearchOpen.set(false)">
+            {{ "Close" | nativeText }}
           </button>
           <h2>
             {{
@@ -65,7 +57,7 @@
       }
     </header>
   }
-  <div class="menu-scroll">
+  <div class="menu-scroll" [class.calendar-scroll-list]="section() !== 'Subscriptions'">
     @if (section() === "Calendar" || section() === "MultiCalendar") {
       @if (section() === "Calendar") {
         @for (group of groups(); track group.source) {
@@ -408,7 +400,12 @@
           <cc-symbol name="chevron.right" />
         </button>
       } @else {
-        @if (destination() === "pending") {
+        @let waitingForInvites = destination() === "pending" && !sharing.invitations().length &&
+          (sharing.pendingSections().has("eventInvites") || sharing.pendingSections().has("calendarInvites"));
+        @let waitingForEvents = destination() !== "pending" && !currentEvents().length && sharing.pendingSections().has("shared");
+        @if (waitingForInvites || waitingForEvents) {
+          <cc-calendar-progress class="list-loading" />
+        } @else if (destination() === "pending") {
           @for (item of sharing.invitations(); track item.id) {
             <article class="invitation">
               <div class="row">
@@ -460,82 +457,66 @@
               </div>
             </article>
           } @empty {
-            <div class="empty">
-              <cc-symbol name="envelope.open" />
-              <strong>{{ "No pending invitations." | nativeText }}</strong>
-            </div>
+            @if (!sharingSectionError()) {
+              <div class="empty">
+                <cc-symbol name="envelope.open" />
+                <strong>{{ "No pending invitations." | nativeText }}</strong>
+              </div>
+            }
           }
         } @else {
           @for (group of eventGroups(); track group.date) {
-            <h3 class="day-label">
-              {{ group.date | nativeDate: "EEEE, MMMM d, y" }}
-            </h3>
-            @for (event of group.events; track event.id) {
-              <div
-                class="shared-event"
-                [class.cancelled]="event.status === 'cancelled'"
-              >
-                <button
-                  type="button"
-                  class="shared-event-main"
-                  (click)="openEvent.emit(event)"
-                >
-                  <span
-                    class="event-line"
-                    [style.background]="event.color || '#2168de'"
-                  ></span>
-                  <span>
+            <section class="shared-day">
+              <h3 class="day-label" [class.today]="group.today">{{ group.label }}</h3>
+              @for (event of group.events; track event.id) {
+                @let received = destination() === "received";
+                @let color = sharedListEvent()(event).color || (received ? '#5856d6' : '#007aff');
+                <article class="shared-event" [style.--row-color]="color" [class.cancelled]="event.status === 'cancelled'">
+                  <button type="button" class="shared-event-main" (click)="openEvent.emit(event)">
                     <strong>{{ event.title }}</strong>
                     @if (event.location) {
-                      <small>
-                        <cc-symbol name="location" />{{
-                          event.location
-                        }}
-                      </small>
+                      <small><cc-symbol name="location" />{{ event.location }}</small>
                     }
-                  </span>
-                  <span class="event-time">
-                    {{
-                      event.allDay
-                        ? ("all-day" | nativeText)
-                        : (event.start | nativeDate: "shortTime")
-                    }}
-                    @if (!event.allDay) {
-                      <br />{{ event.end | nativeDate: "shortTime" }}
-                    }
-                    @if (event.access) {
-                      <span class="role">{{
-                        displayRole(event.access) | nativeText
-                      }}</span>
-                    }
-                  </span>
-                </button>
-                @if (destination() === "sent" || event.access === "owner") {
-                  <button
-                    type="button"
-                    class="icon-button access-button"
-                    aria-label="Event access"
-                    (click)="recipients(event)"
-                  >
-                    <cc-symbol name="person.2.fill" />
                   </button>
-                }
+                  <div class="event-time">
+                    @if (event.allDay) { <span>{{ "all-day" | nativeText }}</span> }
+                    @else {
+                      <span>{{ event.start | nativeDate: "shortTime" }}</span>
+                      <span>{{ event.end | nativeDate: "shortTime" }}</span>
+                    }
+                    @if (received && event.access) {
+                      <span class="role">{{ displayRole(event.access) | nativeText }}</span>
+                    }
+                    <div class="shared-event-actions">
+                      @if (!received || event.access === "owner") {
+                        <button type="button" aria-label="Event access" (click)="recipients(event)">
+                          <cc-symbol name="person.2.fill" />
+                        </button>
+                      }
+                      <button type="button" [attr.aria-label]="'Event Details' | nativeText" (click)="openEvent.emit(event)">
+                        <cc-symbol name="info.circle" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              }
+            </section>
+          } @empty {
+            @if (!sharingSectionError()) {
+              <div class="empty">
+                <cc-symbol [name]="search() ? 'magnifyingglass' : destination() === 'sent' ? 'paperplane' : 'tray.and.arrow.down'" />
+                <strong>{{ (search() ? "No matching events." : destination() === "received" ? "No one has shared an event with you yet." : "No shared events yet.") | nativeText }}</strong>
               </div>
             }
-          } @empty {
-            <div class="empty">
-              <cc-symbol [name]="search() ? 'magnifyingglass' : destination() === 'sent' ? 'paperplane' : 'tray.and.arrow.down'" />
-              <strong>{{ (search() ? "No matching events." : "No shared events yet.") | nativeText }}</strong>
-            </div>
           }
         }
       }
-      @if (sharing.loading()) {
-        <p class="status" role="status">{{ "Refreshing…" | nativeText }}</p>
+      @if (!destination() && sharing.pendingSections().size) {
+        <cc-calendar-progress class="access-progress" />
       }
-      @if (sharing.error()) {
+      @if (sharingSectionError(); as message) {
         <div class="error" role="alert">
-          {{ sharing.error() }}
+          {{ message }}
           <button type="button" (click)="sharing.refresh()">
             {{ "Try Again" | nativeText }}
           </button>
@@ -773,8 +754,8 @@
     }
   </div>
 </div>
-@if (panel()) {
-  <div class="native-backdrop" (click)="closePanel()">
+@if (panel() && !(panel() === "recipients" && eventActionOpen())) {
+  <div class="native-backdrop" (click)="!busy() && closePanel()">
     <section
       class="native-sheet" [class.calendar-editor-sheet]="panel() === 'calendar' || panel() === 'color'"
       role="dialog"
@@ -782,15 +763,30 @@
       [attr.aria-label]="panel()"
       (click)="$event.stopPropagation()"
     >
-      <header class="sheet-heading">
-        <button
-          type="button"
-          class="round-button"
-          [attr.aria-label]="panel() === 'color' ? 'Back' : 'Close'"
-          (click)="panel() === 'color' ? panel.set('calendar') : closePanel()"
-        >
-          <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.left' : 'xmark'" />
-        </button>
+      @let target = sharedEvent && panel() === "recipients" ? accessEventTarget()(sharedEvent) : null;
+      <header class="sheet-heading" [class.access-heading]="panel() === 'recipients'">
+        @if (panel() === "recipients") {
+          <div class="access-toolbar">
+            <button type="button" [attr.aria-label]="'Edit Event' | nativeText" [title]="'Edit Event' | nativeText"
+              [disabled]="!target || busy() || accessFailed()" (click)="target && editEvent.emit(target)">
+              <cc-symbol [pointSize]="17" name="pencil" />
+            </button>
+            <button type="button" [attr.aria-label]="'Share Event' | nativeText" [title]="'Share Event' | nativeText"
+              [disabled]="!target || busy() || accessFailed()" (click)="target && shareEvent.emit(target)">
+              <cc-symbol [pointSize]="17" name="square.and.arrow.up" />
+            </button>
+          </div>
+        } @else {
+          <button
+            type="button"
+            class="round-button"
+            [disabled]="busy()"
+            [attr.aria-label]="panel() === 'color' ? 'Back' : 'Close'"
+            (click)="panel() === 'color' ? panel.set('calendar') : closePanel()"
+          >
+            <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.left' : 'xmark'" />
+          </button>
+        }
         <h2>
           {{
             (panel() === "scan"
@@ -803,7 +799,7 @@
                     ? "Event Access"
                     : panel() === "provider-sharing"
                       ? "Sharing: " + (providerCalendar?.title ?? "")
-                      : "Sharing: " + (sharedCalendar?.title ?? "Calendar")
+                      : "Sharing: " + (sharedCalendar?.title ?? accessCalendar?.title ?? "Calendar")
             ) | nativeText
           }}
         </h2>
@@ -817,14 +813,17 @@
           >
             <cc-symbol [pointSize]="17" name="checkmark" />
           </button>
-        } @else if (
-          panel() === "calendar-sharing" || panel() === "recipients"
-        ) {
+        } @else if (panel() === "recipients") {
+          <button type="button" class="round-button" [attr.aria-label]="'Done' | nativeText"
+            [disabled]="busy() || (accessLoading() && iosLayout())" (click)="closePanel()">
+            <cc-symbol [pointSize]="17" name="checkmark" />
+          </button>
+        } @else if (panel() === "calendar-sharing") {
           <button
             type="button"
             class="round-button"
             aria-label="Save sharing"
-            [disabled]="busy() || !validPeople()"
+            [disabled]="busy() || accessLoading() || accessFailed() || !sharedCalendar || !validPeople()"
             (click)="savePeople()"
           >
             <cc-symbol [pointSize]="17" name="checkmark" />
@@ -833,7 +832,8 @@
           <span class="round-spacer"></span>
         }
       </header>
-      <div class="sheet-body" [class.calendar-form]="panel() === 'calendar' || panel() === 'color'">
+      <div class="sheet-body" [class.calendar-form]="panel() === 'calendar' || panel() === 'color'"
+        [class.calendar-scroll-list]="panel() !== 'calendar' && panel() !== 'scan'">
         @if (panel() === "calendar") {
           <div class="form-group">
             <label class="form-row">
@@ -923,66 +923,69 @@
             }
           }
         }
-        @if (panel() === "provider-sharing") {
-          <h3 class="form-label">
-            {{ "People with this calendar" | nativeText }}
-          </h3>
-          <div class="form-group">
-            @for (person of providerAccess(); track $index) {
-              <div class="form-row">
-                <cc-symbol name="person.crop.circle" />
-                <input
-                  placeholder="Email address"
-                  [(ngModel)]="person.email"
-                  [readonly]="!!person.id"
-                />
-                <cc-choice
-                  label="Access"
-                  [value]="person.access"
-                  [options]="sharing.roles"
-                  [disabled]="!!person.isOriginalOwner"
-                  (valueChange)="person.access = $event"
-                />
-                @if (!person.isOriginalOwner) {
-                  <button
-                    type="button"
-                    class="icon-button"
-                    aria-label="Save access"
-                    [disabled]="busy()"
-                    (click)="saveProviderPerson(person)"
-                  >
-                    <cc-symbol name="checkmark" />
-                  </button>
-                  <button
-                    type="button"
-                    class="icon-button danger-text"
-                    aria-label="Remove person"
-                    [disabled]="busy()"
-                    (click)="
-                      person.id
-                        ? deleteProviderPerson(person)
-                        : providerAccess.set(
-                            providerAccess().filter(
-                              removeProviderDraftPerson(person)
+        @if (accessLoading() && (panel() === "provider-sharing" || panel() === "calendar-sharing")) {
+          <cc-calendar-progress class="list-loading" label="Loading sharing settings…" />
+        }
+        @if (panel() === "provider-sharing" && !accessLoading()) {
+          <h3 class="form-label">{{ "People with this calendar" | nativeText }}</h3>
+          @if (!accessFailed()) {
+            <div class="form-group">
+              @for (person of providerAccess(); track $index) {
+                <div class="form-row">
+                  <cc-symbol name="person.crop.circle" />
+                  <input
+                    placeholder="Email address"
+                    [(ngModel)]="person.email"
+                    [readonly]="!!person.id"
+                  />
+                  <cc-choice
+                    label="Access"
+                    [value]="person.access"
+                    [options]="sharing.roles"
+                    [disabled]="!!person.isOriginalOwner"
+                    (valueChange)="person.access = $event"
+                  />
+                  @if (!person.isOriginalOwner) {
+                    <button
+                      type="button"
+                      class="icon-button"
+                      aria-label="Save access"
+                      [disabled]="busy()"
+                      (click)="saveProviderPerson(person)"
+                    >
+                      <cc-symbol name="checkmark" />
+                    </button>
+                    <button
+                      type="button"
+                      class="icon-button danger-text"
+                      aria-label="Remove person"
+                      [disabled]="busy()"
+                      (click)="
+                        person.id
+                          ? deleteProviderPerson(person)
+                          : providerAccess.set(
+                              providerAccess().filter(
+                                removeProviderDraftPerson(person)
+                              )
                             )
-                          )
-                    "
-                  >
-                    <cc-symbol name="minus.circle.fill" />
-                  </button>
-                }
-              </div>
-            }
-          </div>
-          <button
-            type="button"
-            class="action tinted"
-            (click)="addProviderPerson()"
-          >
-            <cc-symbol name="person.badge.plus" />{{
-              "Add Person" | nativeText
-            }}
-          </button>
+                      "
+                    >
+                      <cc-symbol name="minus.circle.fill" />
+                    </button>
+                  }
+                </div>
+              }
+            </div>
+            <button
+              type="button"
+              class="action tinted"
+              (click)="addProviderPerson()"
+            >
+              <cc-symbol name="person.badge.plus" />{{
+                "Add Person" | nativeText
+              }}
+            </button>
+          }
         }
         @if (panel() === "color") {
           <div class="form-group">
@@ -1038,67 +1041,111 @@
             </label>
           </div>
         }
-        @if (panel() === "calendar-sharing" || panel() === "recipients") {
+        @if ((panel() === "calendar-sharing" && !accessLoading()) || panel() === "recipients") {
           <div class="form-group intro">
-            <strong>{{ sharedCalendar?.title || sharedEvent?.title }}</strong>
+            <strong>{{ panel() === "recipients" ? target?.title || sharedEvent?.title : accessCalendar?.title }}</strong>
             <p>
               {{
-                "Choose Reader, Writer, or Owner. Owners can also share and manage access."
+                (panel() === "recipients" ? "Choose Reader, Writer, or Owner. Owners can also share this event and manage access." : "Choose Reader, Writer, or Owner. Owners can also share and manage access.")
                   | nativeText
               }}
             </p>
           </div>
           <h3 class="form-label">
-            {{ "People with this" | nativeText }}
-            {{ (sharedCalendar ? "calendar" : "event") | nativeText }}
+            {{ (panel() === "recipients" ? "People with this event" : "People with this calendar") | nativeText }}
           </h3>
-          <div class="form-group">
-            @for (person of people; track $index; let index = $index) {
-              <div class="form-row person-row">
-                <cc-symbol class="blue" name="person.crop.circle" />
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  [(ngModel)]="person.email"
-                  [readonly]="panel() === 'recipients'"
-                />
-                @if (!person.isOriginalOwner) {
-                  <cc-choice
-                    label="Access"
-                    [value]="person.access"
-                    [options]="sharing.roles"
-                    (valueChange)="person.access = $any($event)"
+          @if (accessLoading()) {
+            <cc-calendar-progress class="form-group access-progress" />
+          } @else if (!accessFailed() && panel() === "recipients") {
+            <div class="form-group event-access-people">
+              @for (person of people; track person.id) {
+                <div class="form-row person-row">
+                  <cc-symbol class="blue" [pointSize]="22" name="person.crop.circle.fill" />
+                  <div class="recipient-identity">
+                    <span [title]="recipientEmail(person)">{{ recipientEmail(person) }}</span>
+                    <small>{{ recipientSubtitle(person) }}</small>
+                    @if (!person.userId && !person.isOriginalOwner && !person.isAnonymous) {
+                      <button type="button" class="blue" [disabled]="busy() || !target || !sharedEvent?.feedId" (click)="resendRecipient(person)">
+                        <cc-symbol name="arrow.clockwise" /> {{ "Resend" | nativeText }}
+                      </button>
+                    }
+                  </div>
+                  @if (person.isOriginalOwner) {
+                    <span class="fixed-role"><cc-symbol name="lock.fill" />{{ "Owner" | nativeText }}</span>
+                  } @else {
+                    @if (person.isAnonymous) {
+                      <span class="fixed-role">{{ "Reader" | nativeText }}</span>
+                    } @else {
+                      <cc-choice label="Access" [value]="person.access" [options]="sharing.roles"
+                        [disabled]="busy()" (valueChange)="changeRecipient(person, $any($event))" />
+                    }
+                    <button type="button" class="icon-button danger-text" [attr.aria-label]="'Remove Access' | nativeText"
+                      [disabled]="busy()" (click)="pendingRemoval.set(person)"><cc-symbol name="person.crop.circle.badge.minus" /></button>
+                  }
+                </div>
+              } @empty {
+                <div class="empty"><cc-symbol name="person.2.slash" /><strong>{{ "No recipients yet" | nativeText }}</strong>
+                  <small>{{ "People appear here after they add the event." | nativeText }}</small>
+                </div>
+              }
+            </div>
+            @if (pendingRemoval(); as person) {
+              <div class="form-group confirmation" role="alertdialog" [attr.aria-label]="'Remove Access?' | nativeText">
+                <strong>{{ "Remove Access?" | nativeText }}</strong><p>{{ recipientEmail(person) }}</p>
+                <div class="equal-actions">
+                  <button type="button" class="action tinted" (click)="pendingRemoval.set(null)">{{ "Cancel" | nativeText }}</button>
+                  <button type="button" class="action danger" (click)="changeRecipient(person)">{{ "Remove Access" | nativeText }}</button>
+                </div>
+              </div>
+            }
+          } @else if (!accessFailed()) {
+            <div class="form-group">
+              @for (person of people; track $index; let index = $index) {
+                <div class="form-row person-row">
+                  <cc-symbol class="blue" name="person.crop.circle" />
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    [(ngModel)]="person.email"
                   />
-                  <button
-                    type="button"
-                    class="icon-button danger-text"
-                    aria-label="Remove person"
-                    (click)="removePerson(index)"
-                  >
-                    <cc-symbol name="minus.circle.fill" />
-                  </button>
-                } @else {
-                  <span class="role">{{ "Owner" | nativeText }}</span>
-                }
-              </div>
-            } @empty {
-              <div class="empty">
-                <cc-symbol name="person.2.slash" />
-                <strong>{{ "No recipients yet" | nativeText }}</strong>
-              </div>
-            }
-            @if (sharedCalendar) {
-              <button
-                type="button"
-                class="action tinted add-person"
-                (click)="addPerson()"
-              >
-                <cc-symbol name="person.badge.plus" />{{
-                  "Add Person" | nativeText
-                }}
-              </button>
-            }
-          </div>
+                  @if (!person.isOriginalOwner) {
+                    <cc-choice
+                      label="Access"
+                      [value]="person.access"
+                      [options]="sharing.roles"
+                      (valueChange)="person.access = $any($event)"
+                    />
+                    <button
+                      type="button"
+                      class="icon-button danger-text"
+                      aria-label="Remove person"
+                      (click)="removePerson(index)"
+                    >
+                      <cc-symbol name="minus.circle.fill" />
+                    </button>
+                  } @else {
+                    <span class="role">{{ "Owner" | nativeText }}</span>
+                  }
+                </div>
+              } @empty {
+                <div class="empty">
+                  <cc-symbol name="person.2.slash" />
+                  <strong>{{ "No recipients yet" | nativeText }}</strong>
+                </div>
+              }
+              @if (sharedCalendar) {
+                <button
+                  type="button"
+                  class="action tinted add-person"
+                  (click)="addPerson()"
+                >
+                  <cc-symbol name="person.badge.plus" />{{
+                    "Add Person" | nativeText
+                  }}
+                </button>
+              }
+            </div>
+          }
         }
         @if (panel() === "scan") {
           @if (challenge(); as login) {
@@ -1167,10 +1214,12 @@
           </button>
         }
         @if (busy()) {
-          <p class="status" role="status">{{ "Loading…" | nativeText }}</p>
+          <cc-calendar-progress class="access-progress" />
         }
         @if (error()) {
-          <p class="error" role="alert">{{ error() }}</p>
+          <div class="error" role="alert">{{ error() }}
+            @if (accessFailed()) { <button type="button" (click)="retryAccess()">{{ "Try Again" | nativeText }}</button> }
+          </div>
         }
       </div>
     </section>

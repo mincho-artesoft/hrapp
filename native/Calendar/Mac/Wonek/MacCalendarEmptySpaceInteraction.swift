@@ -15,10 +15,12 @@ final class MacCalendarScrollHandle {
 struct MacCalendarWheelForwarder: NSViewRepresentable {
     let handle: MacCalendarScrollHandle
     var blocksClicks = false
+    var horizontalOnly = false
     func makeNSView(context: Context) -> Surface { Surface(handle: handle, blocksClicks: blocksClicks) }
-    func updateNSView(_ view: Surface, context: Context) {}
+    func updateNSView(_ view: Surface, context: Context) { view.horizontalOnly = horizontalOnly }
     final class Surface: NSView {
         let handle: MacCalendarScrollHandle
+        var horizontalOnly = false
         let blocksClicks: Bool
         init(handle: MacCalendarScrollHandle, blocksClicks: Bool) {
             self.handle = handle; self.blocksClicks = blocksClicks
@@ -27,6 +29,8 @@ struct MacCalendarWheelForwarder: NSViewRepresentable {
         }
         required init?(coder: NSCoder) { fatalError() }
         override func hitTest(_ point: NSPoint) -> NSView? {
+            if horizontalOnly, let event = NSApp.currentEvent, event.type == .scrollWheel,
+               abs(event.scrollingDeltaY) > abs(event.scrollingDeltaX) { return nil }
             guard blocksClicks || NSApp.currentEvent?.type == .scrollWheel,
                   bounds.contains(convert(point, from: superview)) else { return nil }
             return self

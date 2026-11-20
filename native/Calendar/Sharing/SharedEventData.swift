@@ -2,6 +2,11 @@ import Foundation
 import EventKit
 import CoreLocation
 
+private func sharedEventDate(_ value: String) -> Date? {
+    (try? Date.ISO8601FormatStyle(includingFractionalSeconds: true).parse(value))
+        ?? (try? Date.ISO8601FormatStyle().parse(value))
+}
+
 struct SharedEventAlarm: Codable, Equatable {
     let relativeOffset: TimeInterval?
     let absoluteDate: String?
@@ -23,7 +28,7 @@ struct SharedEventAlarm: Codable, Equatable {
 
     func makeAlarm() -> EKAlarm? {
         if let absoluteDate,
-           let date = ISO8601DateFormatter().date(from: absoluteDate) {
+           let date = sharedEventDate(absoluteDate) {
             return EKAlarm(absoluteDate: date)
         }
         if let relativeOffset { return EKAlarm(relativeOffset: relativeOffset) }
@@ -112,7 +117,7 @@ struct SharedEventRecurrenceRule: Codable, Equatable {
             return EKRecurrenceDayOfWeek(dayOfTheWeek: weekday, weekNumber: value.weekNumber)
         }
         let recurrenceEnd: EKRecurrenceEnd?
-        if let endDate, let date = ISO8601DateFormatter().date(from: endDate) {
+        if let endDate, let date = sharedEventDate(endDate) {
             recurrenceEnd = EKRecurrenceEnd(end: date)
         } else if let occurrenceCount, occurrenceCount > 0 {
             recurrenceEnd = EKRecurrenceEnd(occurrenceCount: occurrenceCount)

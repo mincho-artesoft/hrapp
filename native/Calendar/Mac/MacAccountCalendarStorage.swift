@@ -7,7 +7,10 @@ extension CalendarMacStore: AccountLocalCalendarStorage {
             var value = document
             value.events = try document.events.map(MacCalendarSharingMerge.wireSnapshot)
             // Read-only received event copies remain read-only on every device.
-            for index in value.events.indices { value.events[index].readOnly = document.events[index].readOnly }
+            for index in value.events.indices {
+                value.events[index].readOnly = document.events[index].readOnly
+                value.events[index].status = document.events[index].status
+            }
             value.sharingCalendarID = try ownedSharing.shareID(localID: document.id) ?? document.sharingCalendarID
             return value
         }

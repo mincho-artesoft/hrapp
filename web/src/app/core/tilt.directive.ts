@@ -94,12 +94,14 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
 
     el.style.setProperty('--mx', nx.toFixed(4));
     el.style.setProperty('--my', ny.toFixed(4));
+    this.startLoop();
   };
 
   private readonly onLeave = (): void => {
     this.targetAmount = 0;
     this.targetX = 0;
     this.targetY = 0;
+    this.startLoop();
   };
 
   private startLoop(): void {
@@ -112,6 +114,16 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
       this.curY = lerp(this.curY, this.targetY, this.tiltEase);
       this.curAmount = lerp(this.curAmount, this.targetAmount, this.tiltEase);
 
+      const settled =
+        Math.abs(this.targetAmount - this.curAmount) < 0.002 &&
+        Math.abs(this.targetX - this.curX) < 0.002 &&
+        Math.abs(this.targetY - this.curY) < 0.002;
+      if (settled) {
+        this.curAmount = this.targetAmount;
+        this.curX = this.targetX;
+        this.curY = this.targetY;
+      }
+
       const rx = (this.curX * this.tiltMax).toFixed(3);
       const ry = (this.curY * this.tiltMax).toFixed(3);
       const z = (this.curAmount * this.tiltLift).toFixed(2);
@@ -121,16 +133,11 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
         `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) translate3d(0,0,${z}px) scale(${s})`;
       el.style.setProperty('--tilt', this.curAmount.toFixed(4));
 
-      const settled =
-        this.targetAmount === 0 &&
-        Math.abs(this.curAmount) < 0.002 &&
-        Math.abs(this.curX) < 0.002 &&
-        Math.abs(this.curY) < 0.002;
-
       if (settled) {
-        el.style.transform = '';
-        el.style.willChange = '';
-        el.style.setProperty('--tilt', '0');
+        if (this.targetAmount === 0) {
+          el.style.transform = '';
+          el.style.willChange = '';
+        }
         this.active = false;
         return;
       }

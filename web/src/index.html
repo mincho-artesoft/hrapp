@@ -70,64 +70,16 @@
   </script>
 
   <style>
-    /* Inline boot styles so there is never a flash before the
-       stylesheet and the app bundle arrive. */
+    /* Apply the saved theme before the main stylesheet loads. */
     html { background: #000000; }
     body { margin: 0; background: #000000; }
     html[data-theme='light'] { background: #f2f2f7; color-scheme: light; }
     html[data-theme='light'] body { background: #f2f2f7; }
 
-    .boot {
-      position: fixed;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      background: #000000;
-      z-index: 99999;
-      transition: opacity 0.4s ease, visibility 0.4s;
-    }
-    html[data-theme='light'] .boot { background: #f2f2f7; }
-    .boot--gone { opacity: 0; visibility: hidden; }
-
-    .boot__mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      animation: boot-pulse 1.2s ease-in-out infinite alternate;
-    }
-
-    @keyframes boot-pulse {
-      from { transform: scale(0.86); opacity: 0.55; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .boot__mark { animation: none; }
-    }
   </style>
 </head>
 
 <body>
-  <div class="boot" id="boot"><img class="boot__mark" src="icons/mark-128.webp" alt="" width="52" height="52" /></div>
-
   <app-root></app-root>
-
-  <script>
-    // Remove the boot screen once Angular has rendered something.
-    (function () {
-      var boot = document.getElementById('boot');
-      if (!boot) return;
-      var done = function () {
-        boot.classList.add('boot--gone');
-        setTimeout(function () { boot.remove(); }, 700);
-      };
-      var observer = new MutationObserver(function () {
-        if (document.querySelector('app-root main')) { observer.disconnect(); done(); }
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-      setTimeout(done, 4000); // hard fallback
-    })();
-  </script>
-
 </body>
 </html>

@@ -23,6 +23,8 @@ enum SharedInviteTracker {
         var access: CloudCalendarsAPI.EventAccess? = nil
         var lastSyncedSnapshot: SharedOutgoingEventTracker.Snapshot? = nil
         var receiptRecorded: Bool? = nil
+        var externalIdentifier: String? = nil
+        var cancellationRequested: Bool? = nil
 
         var effectiveAccess: CloudCalendarsAPI.EventAccess { access ?? .reader }
         /// Owner cancellation and revoked recipient access both leave a frozen
@@ -53,9 +55,8 @@ enum SharedInviteTracker {
         let previous = all[eventID]
         let sameLocalCopy = previous?.localEventIdentifier == localEventIdentifier
             && previous?.feedID == feedID
-        let localSnapshot = CalendarViewModel.shared.eventStore
-            .event(withIdentifier: localEventIdentifier)
-            .flatMap(SharedOutgoingEventTracker.snapshot(for:))
+        let localEvent = CalendarViewModel.shared.eventStore.event(withIdentifier: localEventIdentifier)
+        let localSnapshot = localEvent.flatMap(SharedOutgoingEventTracker.snapshot(for:))
         all[eventID] = Invite(
             eventID: eventID,
             feedID: feedID,
@@ -67,7 +68,9 @@ enum SharedInviteTracker {
             lastSequence: sameLocalCopy ? (previous?.lastSequence ?? -1) : -1,
             access: previous?.access ?? .reader,
             lastSyncedSnapshot: sameLocalCopy ? (previous?.lastSyncedSnapshot ?? localSnapshot) : nil,
-            receiptRecorded: sameLocalCopy ? previous?.receiptRecorded : nil
+            receiptRecorded: sameLocalCopy ? previous?.receiptRecorded : nil,
+            externalIdentifier: localEvent?.calendarItemExternalIdentifier,
+            cancellationRequested: sameLocalCopy ? previous?.cancellationRequested : nil
         )
         if let session = CalendarFeedSession.existing {
             ReceivedSharingVisibility.register([localEventIdentifier], kind: "event", accountID: session.calendarId)
@@ -104,7 +107,9 @@ enum SharedInviteTracker {
 
     static func update(_ invite: Invite) {
         var all = allTracked()
-        all[invite.eventID] = invite
+        var updated = invite
+        if all[invite.eventID]?.cancellationRequested == true { updated.cancellationRequested = true }
+        all[invite.eventID] = updated
         save(all)
     }
 
@@ -146,7 +151,9 @@ enum SharedInviteTracker {
             lastSequence: sameCopy ? (previous?.lastSequence ?? -1) : -1,
             access: remote.access ?? previous?.access ?? .reader,
             lastSyncedSnapshot: sameCopy ? previous?.lastSyncedSnapshot : nil,
-            receiptRecorded: true
+            receiptRecorded: true,
+            externalIdentifier: CalendarViewModel.shared.eventStore.event(withIdentifier: localEventIdentifier)?.calendarItemExternalIdentifier,
+            cancellationRequested: sameCopy ? previous?.cancellationRequested : nil
         )
         if let session = CalendarFeedSession.existing {
             ReceivedSharingVisibility.register([localEventIdentifier], kind: "event", accountID: session.calendarId)
@@ -284,7 +291,10 @@ enum SharedInviteTracker {
         }
 
         if invite.isRevoked != true, invite.effectiveAccess == .owner {
-            Task { await SharedInviteRefresher.refreshAll() }
+            var pending = invite
+            pending.cancellationRequested = true
+            update(pending)
+            Task { await SharedInviteRefresher.refresh(eventID: invite.eventID) }
         } else {
             forget(eventID: invite.eventID)
         }

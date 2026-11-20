@@ -195,7 +195,7 @@ enum PersonalCloudCalendarSyncService {
                 if localEvent.calendarID != excludingLocalCalendarID {
                     excluded.insert(item.eventID)
                 }
-            } else {
+            } else if CalendarViewModel.shared.eventStore.event(withIdentifier: localID) != nil {
                 excluded.insert(item.eventID)
             }
         }

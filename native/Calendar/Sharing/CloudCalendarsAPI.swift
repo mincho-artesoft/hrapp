@@ -281,7 +281,7 @@ enum CloudCalendarsAPI {
         var identities: [AccountIdentity]?
     }
 
-    struct RemoteSharedEvent: Decodable, Equatable, Identifiable {
+    struct RemoteSharedEvent: Codable, Equatable, Identifiable {
         let id: String
         let title: String
         let start: String
@@ -295,6 +295,8 @@ enum CloudCalendarsAPI {
         let feedId: String
         let localEventIdentifier: String?
         let access: EventAccess?
+
+        var calendarTitle: String? = nil
 
         var startDate: Date? { Self.date(start) }
         var endDate: Date? { Self.date(end) }
@@ -388,21 +390,28 @@ enum CloudCalendarsAPI {
 
     // MARK: - Events
 
+    private struct SavedEventRevision: Decodable {
+        struct Event: Decodable { let sequence: Int }
+        let event: Event
+    }
+
+    @discardableResult
     static func upsertEvent(
         _ event: SharedEventUpload,
         session: Session,
         receivedFeedId: String? = nil,
         expectedSequence: Int? = nil
-    ) async throws {
+    ) async throws -> Int {
         var body = event.payload
         if let expectedSequence { body["expectedSequence"] = expectedSequence }
         if let receivedFeedId { body["feedId"] = receivedFeedId }
-        try await sendIgnoringResponse(
+        let saved: SavedEventRevision = try await send(
             "/events/\(event.id)",
             method: "PUT",
             body: body,
             bearer: session.deviceToken
         )
+        return saved.event.sequence
     }
 
     static func eventRecipients(
@@ -689,9 +698,10 @@ enum CloudCalendarsAPI {
         return response.updatedAt
     }
 
-    static func cancelEvent(id: String, session: Session) async throws {
+    static func cancelEvent(id: String, session: Session, missingLocalIdentifier: String? = nil) async throws {
+        let check = missingLocalIdentifier.map { "?missingCopy=" + DeviceCalendarReplica.hash($0) } ?? ""
         try await sendIgnoringResponse(
-            "/events/\(id)",
+            "/events/\(id)" + check,
             method: "DELETE",
             body: nil,
             bearer: session.deviceToken
@@ -731,8 +741,39 @@ enum CloudCalendarsAPI {
         )
     }
 
+    @MainActor static func rememberMovedCopy(_ event: RemoteSharedEvent, identifier: String, calendarTitle: String, session: Session) {
+        let key = moveQueueKey(session)
+        var pending = UserDefaults.standard.dictionary(forKey: key) as? [String: [String: String]] ?? [:]
+        pending[event.id] = ["feedId": event.feedId, "localEventIdentifier": identifier, "calendarTitle": calendarTitle]
+        UserDefaults.standard.set(pending, forKey: key)
+        Task { await sendMovedCopies(session) }
+    }
+
+    @MainActor private static func moveQueueKey(_ session: Session) -> String {
+        "sharedEventMoves." + DeviceCalendarReplica.storageHost(for: baseURL) + "." + session.calendarId
+    }
+    @MainActor private static var flushingMoves = Set<String>()
+    @MainActor private static func sendMovedCopies(_ session: Session) async {
+        let key = moveQueueKey(session)
+        guard flushingMoves.insert(key).inserted else { return }
+        defer { flushingMoves.remove(key) }
+        let pending = UserDefaults.standard.dictionary(forKey: key) as? [String: [String: String]] ?? [:]
+        for (id, body) in pending {
+            guard CalendarFeedSession.isCurrent(session) else { return }
+            do { try await sendIgnoringResponse("/events/\(id)/calendar", method: "PUT", body: body, bearer: session.deviceToken) }
+            catch Failure.http(let status, _) where status == 403 || status == 410 { }
+            catch { continue }
+            var latest = UserDefaults.standard.dictionary(forKey: key) as? [String: [String: String]] ?? [:]
+            if latest[id] == body {
+                latest.removeValue(forKey: id)
+                UserDefaults.standard.set(latest, forKey: key)
+            }
+        }
+    }
+
     static func sharedState(session: Session) async throws -> SharedState {
-        try await send("/shared-state", method: "GET", body: nil, bearer: session.deviceToken)
+        await sendMovedCopies(session)
+        return try await send("/shared-state", method: "GET", body: nil, bearer: session.deviceToken)
     }
 
     static func rememberReceivedInvite(

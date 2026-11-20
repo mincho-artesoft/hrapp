@@ -116,6 +116,7 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
           const at = this.pos;
           this.pos = -1; // force a re-layout at the new spread
           this.layout(Math.max(0, at));
+          this.scroll.requestFrame();
         });
         this.resizeObserver.observe(flow);
       }
@@ -141,6 +142,7 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
     this.observer = new IntersectionObserver(([e]) => {
       this.onScreen = e.isIntersecting;
       flow?.classList.toggle('is-live', e.isIntersecting);
+      if (e.isIntersecting) this.scroll.requestFrame();
     });
     this.observer.observe(track);
 

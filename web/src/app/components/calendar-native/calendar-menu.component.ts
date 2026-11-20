@@ -12,6 +12,8 @@ import {
   OnInit,
   PLATFORM_ID,
   computed,
+  effect,
+  untracked,
   inject,
   input,
   output,
@@ -19,6 +21,7 @@ import {
 } from "@angular/core";
 import { CommonModule, isPlatformBrowser } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { CalendarProgressComponent } from "./calendar-progress.component";
 import { CalendarSymbolComponent } from "./calendar-symbol.component";
 import { CalendarChoiceComponent } from "./calendar-choice.component";
 import {
@@ -27,10 +30,13 @@ import {
   SharedCalendar,
   SharedEvent,
   SharingPerson,
+  CalendarAccess,
 } from "../../core/calendar-native.service";
 import {
   CalendarPlatformApiService,
+  CalendarApiError,
   DeviceCalendar,
+  WebCalendarEvent,
 } from "../../core/calendar-platform-api.service";
 import { ThemeService } from "../../core/theme.service";
 import catalog from "./native-app-catalog.json";
@@ -51,6 +57,13 @@ type Panel =
   | "recipients"
   | "provider-sharing";
 
+const accessCacheLifetimeMs = 30_000;
+
+interface AccessSnapshot {
+  people: SharingPerson[];
+  calendar?: SharedCalendar;
+}
+
 @Component({
   selector: "cc-calendar-menu",
   standalone: true,
@@ -61,6 +74,7 @@ type Panel =
     CommonModule,
     FormsModule,
     CalendarSymbolComponent,
+    CalendarProgressComponent,
     CalendarChoiceComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -95,37 +109,35 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   readonly confirmingDisconnect = signal<"google" | "microsoft" | null>(null);
   readonly subscriptionNotice = signal("");
 
-  async openProviderAccess(calendar: DeviceCalendar) {
+  openProviderAccess(calendar: DeviceCalendar) {
     this.providerCalendar = calendar;
+    this.providerAccess.set([]);
     this.panel.set("provider-sharing");
-    await this.run(async () => {
-      const r = await this.providerWorkspace.perform(calendar.provider!, {
-        action: "list-access",
-        calendarID: calendar.remoteID,
-      });
-      this.providerAccess.set(r.people);
-    });
+    void this.readAccess(["provider", calendar.provider, calendar.remoteID,
+      this.connectedProviderEmail(calendar.provider!), calendar.etag], () =>
+      this.providerWorkspace.perform<AccessSnapshot>(calendar.provider!, {
+        action: "list-access", calendarID: calendar.remoteID,
+      }));
   }
   saveProviderPerson(person: { id?: string; email: string; access: string }) {
+    const calendar = this.providerCalendar!;
     void this.run(async () => {
-      await this.providerWorkspace.perform(this.providerCalendar!.provider!, {
-        action: "save-access",
-        calendarID: this.providerCalendar!.remoteID,
-        personID: person.id,
-        email: person.email,
-        access: person.access,
+      await this.providerWorkspace.perform(calendar.provider!, {
+        action: "save-access", calendarID: calendar.remoteID, personID: person.id,
+        email: person.email, access: person.access,
       });
-      await this.openProviderAccess(this.providerCalendar!);
+      this.accessReads.delete(this.accessKey);
+      this.openProviderAccess(calendar);
     });
   }
   deleteProviderPerson(person: { id?: string }) {
+    const calendar = this.providerCalendar!;
     void this.run(async () => {
-      await this.providerWorkspace.perform(this.providerCalendar!.provider!, {
-        action: "delete-access",
-        calendarID: this.providerCalendar!.remoteID,
-        personID: person.id,
+      await this.providerWorkspace.perform(calendar.provider!, {
+        action: "delete-access", calendarID: calendar.remoteID, personID: person.id,
       });
-      this.providerAccess.update((list) => list.filter((p) => p !== person));
+      this.accessReads.delete(this.accessKey);
+      this.providerAccess.update(list => list.filter(p => p !== person));
     });
   }
   addProviderCalendar(provider: "google" | "microsoft") {
@@ -145,6 +157,12 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   readonly disconnect = output<"google" | "microsoft">();
   readonly settingsChanged = output<void>();
   readonly openEvent = output<SharedEvent>();
+  readonly sharedListEvent = input.required<(event: SharedEvent) => WebCalendarEvent>();
+  readonly accessEventTarget = input.required<(event: SharedEvent) => WebCalendarEvent | undefined>();
+  readonly eventActionOpen = input(false);
+  readonly iosLayout = input(false);
+  readonly editEvent = output<WebCalendarEvent>();
+  readonly shareEvent = output<WebCalendarEvent>();
   readonly section = signal<Section>("Calendar");
   readonly sections: Section[] = [
     "Calendar",
@@ -229,17 +247,31 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     ),
   );
   readonly eventGroups = computed(() => {
-    const groups = new Map<string, SharedEvent[]>();
-    for (const e of this.currentEvents()) {
-      const day = e.start.slice(0, 10);
-      groups.set(day, [...(groups.get(day) ?? []), e]);
+    const groups = new Map<number, SharedEvent[]>();
+    for (const event of this.currentEvents()) {
+      const day = new Date(event.start);
+      if (!Number.isFinite(day.getTime())) continue;
+      day.setHours(0, 0, 0, 0);
+      const entries = groups.get(+day);
+      if (entries) entries.push(event);
+      else groups.set(+day, [event]);
     }
-    return [...groups]
-      .sort((a, b) => a[0].localeCompare(b[0]))
-      .map(([date, events]) => ({
-        date,
-        events: events.sort((a, b) => a.start.localeCompare(b.start)),
-      }));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const locale = this.localization.formattingLocale();
+    const dateLocales: Record<string, string> = {dmy: "en-GB", mdy: "en-US", ymd: "sv-SE"};
+    const preference = dateLocales[this.prefs()["date"]];
+    const weekday = new Intl.DateTimeFormat(locale, {weekday: "long"});
+    const dateLabel = (year: boolean) => new Intl.DateTimeFormat(preference || locale, {
+      day: preference ? "2-digit" : "numeric", month: preference ? "2-digit" : "numeric",
+      year: year ? "numeric" : undefined,
+    });
+    const withYear = dateLabel(true), withoutYear = dateLabel(false);
+    return [...groups].sort(([a], [b]) => a - b).map(([date, events]) => ({
+      date, today: date === +today,
+      label: weekday.format(date) + ", " + (new Date(date).getFullYear() === today.getFullYear() ? withoutYear : withYear).format(date),
+      events: events.sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || Date.parse(a.end) - Date.parse(b.end)),
+    }));
   });
   readonly planFeatures: Record<string, string[]> = {
     Base: [
@@ -393,9 +425,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
         }));
       } catch {}
     }
-    if (this.isBrowser) {
-      void this.sharing.refresh();
-    }
+
   }
   selectSection(s: Section) {
     this.section.set(s);
@@ -414,6 +444,13 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     try {
       await action();
     } catch (e) {
+      if (["calendar-sharing", "provider-sharing", "recipients"].includes(this.panel()) &&
+          e instanceof CalendarApiError && [403, 404, 409].includes(e.status)) {
+        this.accessReads.delete(this.accessKey);
+        this.people = [];
+        this.providerAccess.set([]);
+        this.accessFailed.set(true);
+      }
       this.error.set(e instanceof Error ? e.message : "Please try again.");
     } finally {
       this.busy.set(false);
@@ -481,6 +518,10 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     );
   }
   closePanel() {
+    ++this.readGeneration;
+    this.accessLoading.set(false);
+    this.accessFailed.set(false);
+    this.pendingRemoval.set(null);
     this.panel.set("");
     this.error.set("");
     this.stopCamera();
@@ -518,7 +559,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
               preserveUnmentionedRecipients: true,
             },
           );
-          await this.sharing.refresh();
+          this.sharing.refreshAfterChange();
         }
       } else
         await this.sharing.saveCalendar(
@@ -540,16 +581,90 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
       this.closePanel();
     });
   }
+  readonly accessLoading = signal(false);
+  readonly accessFailed = signal(false);
+  readonly pendingRemoval = signal<SharingPerson | null>(null);
+  accessCalendar: DeviceCalendar | null = null;
+  private accessKey = "";
+  private accessSession: string | null = null;
+  private readGeneration = 0;
+  private accessReads = new Map<string, { expires: number; result: Promise<AccessSnapshot> }>();
+  readonly sharingSectionError = computed(() => {
+    const errors = this.sharing.sectionErrors();
+    if (this.destination() === "pending") return errors["eventInvites"] || errors["calendarInvites"];
+    if (this.destination()) return errors["shared"];
+    return Object.values(errors).find(Boolean);
+  });
+
+  constructor() {
+    effect(() => {
+      const change = this.sharing.recipientsChanged();
+      if (change) untracked(() => {
+        this.accessReads.clear();
+        if (this.panel() === "recipients" && this.sharedEvent?.id === change.id) this.recipients(this.sharedEvent);
+      });
+    });
+  }
+
+  private async readAccess(parts: unknown[], load: () => Promise<AccessSnapshot>) {
+    const generation = ++this.readGeneration;
+    const token = this.api.token();
+    if (this.accessSession !== token) {
+      this.accessReads.clear();
+      this.accessSession = token;
+    }
+    const key = JSON.stringify(parts);
+    this.accessKey = key;
+    this.error.set("");
+    this.accessFailed.set(false);
+    this.pendingRemoval.set(null);
+    const now = Date.now();
+    for (const [id, entry] of this.accessReads) {
+      if (entry.expires <= now) this.accessReads.delete(id);
+    }
+    let entry = this.accessReads.get(key);
+    if (!entry) {
+      entry = { expires: now + accessCacheLifetimeMs, result: load() };
+      this.accessReads.set(key, entry);
+    }
+    this.accessLoading.set(true);
+    const current = () => this.readGeneration === generation && this.api.token() === token;
+    try {
+      const snapshot = await entry.result;
+      if (!current()) return;
+      const rows = snapshot.people.map(p => ({ ...p }));
+      if (this.panel() === "provider-sharing") this.providerAccess.set(rows);
+      else {
+        this.people = rows;
+        this.sharedCalendar = snapshot.calendar ?? null;
+      }
+    } catch (error) {
+      if (this.accessReads.get(key) === entry) this.accessReads.delete(key);
+      if (current()) {
+        this.accessFailed.set(true);
+        this.error.set(error instanceof Error ? error.message : "Please try again.");
+      }
+    } finally {
+      if (current()) this.accessLoading.set(false);
+    }
+  }
+
+  retryAccess() {
+    this.accessReads.delete(this.accessKey);
+    if (this.panel() === "recipients" && this.sharedEvent) this.recipients(this.sharedEvent);
+    if (this.panel() === "calendar-sharing" && this.accessCalendar) this.shareCalendar(this.accessCalendar);
+    if (this.panel() === "provider-sharing" && this.providerCalendar) this.openProviderAccess(this.providerCalendar);
+  }
   shareCalendar(calendar: DeviceCalendar) {
-    this.panel.set("calendar-sharing");
+    this.accessCalendar = calendar;
     this.sharedCalendar = null;
+    this.sharedEvent = null;
     this.people = [];
     this.removedPeople = [];
-    void this.run(async () => {
-      this.sharedCalendar = await this.sharing.calendarSharing(calendar);
-      this.people = (this.sharedCalendar.recipients ?? []).map((p) => ({
-        ...p,
-      }));
+    this.panel.set("calendar-sharing");
+    void this.readAccess(["calendar", calendar.ownerId, calendar.id, calendar.updatedAt], async () => {
+      const shared = await this.sharing.calendarSharing(calendar);
+      return { calendar: shared, people: shared.recipients ?? [] };
     });
   }
   addPerson() {
@@ -565,43 +680,60 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     return this.people.every((p) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email));
   }
   savePeople() {
+    const calendar = this.sharedCalendar;
+    if (!calendar || this.accessLoading() || this.accessFailed()) return;
     void this.run(async () => {
-      if (this.sharedCalendar)
-        await this.sharing.saveCalendarSharing(
-          this.sharedCalendar,
-          this.people,
-          this.removedPeople,
-        );
-      else if (this.sharedEvent)
-        await this.sharing.request(
-          `/events/${encodeURIComponent(this.sharedEvent.id)}/recipients`,
-          "PUT",
-          {
-            updates: this.people
-              .filter((p) => p.id && !p.isOriginalOwner)
-              .map((p) => ({ id: p.id, access: p.access })),
-            removedIds: this.removedPeople,
-          },
-        );
-      await this.sharing.refresh();
+      await this.sharing.saveCalendarSharing(calendar, this.people, this.removedPeople);
+      this.accessReads.delete(this.accessKey);
+      this.sharing.refreshAfterChange();
       this.closePanel();
     });
   }
   recipients(event: SharedEvent) {
-    if (event.access && event.access !== "owner") return;
+    if (this.destination() !== "sent" && event.access !== "owner") return;
     this.sharedEvent = event;
     this.sharedCalendar = null;
     this.people = [];
-    this.removedPeople = [];
     this.panel.set("recipients");
+    void this.readAccess(["event", event.id, event.feedId, event.recipientsUpdatedAt], async () => {
+      const { recipients } = await this.sharing.request<{ recipients: SharingPerson[] }>(
+        `/events/${encodeURIComponent(event.id)}/recipients`);
+      return { people: recipients };
+    });
+  }
+  changeRecipient(person: SharingPerson, access?: CalendarAccess) {
+    const event = this.sharedEvent;
+    if (!event || !person.id || person.isOriginalOwner || (access && (person.isAnonymous || person.access === access))) return;
+    this.pendingRemoval.set(null);
     void this.run(async () => {
-      const r = await this.sharing.request<{ recipients: SharingPerson[] }>(
-        `/events/${encodeURIComponent(event.id)}/recipients`,
-      );
-      this.people = r.recipients.map((p) => ({
-        ...p,
-        email: p.email ?? p.emails?.[0] ?? "Anonymous recipient",
-      }));
+      const result = await this.sharing.request<{ recipients: SharingPerson[] }>(
+        `/events/${encodeURIComponent(event.id)}/recipients`, "PUT", {
+          updates: access ? [{ id: person.id, access }] : [], removedIds: access ? [] : [person.id],
+        });
+      this.accessReads.set(this.accessKey, {
+        expires: Date.now() + accessCacheLifetimeMs,
+        result: Promise.resolve({ people: result.recipients }),
+      });
+      this.people = result.recipients;
+    });
+  }
+  recipientEmail(person: SharingPerson) {
+    return person.isAnonymous ? this.localization.text("Anonymous recipient") :
+      person.emails?.[0] || person.email || person.identities?.find(i => i.email)?.email || this.localization.text("Cloud Calendars user");
+  }
+  recipientSubtitle(person: SharingPerson) {
+    if (person.isAnonymous) return this.localization.text("Not signed in");
+    if (person.isOriginalOwner) return this.localization.text("Original creator");
+    if (!person.userId) return this.localization.text("Invitation pending");
+    return person.identities?.map(i => this.displayRole(i.provider)).join(", ");
+  }
+  resendRecipient(person: SharingPerson) {
+    const event = this.sharedEvent, email = person.emails?.[0] || person.email;
+    if (!event?.feedId || !email || person.isAnonymous || person.userId || person.isOriginalOwner) return;
+    void this.run(async () => {
+      const url = new URL(this.api.apiBaseURL + "/event-invites/open");
+      url.search = new URLSearchParams({ e: event.id, c: event.feedId, title: event.title }).toString();
+      await this.sharing.inviteEventRecipients(event.id, url.href, [{ email, access: person.access }]);
     });
   }
   respond(item: PendingInvitation, accept: boolean) {
@@ -699,7 +831,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
           feedId,
         });
       }
-      await this.sharing.refresh();
+      this.sharing.refreshAfterChange();
       this.changed.emit();
       this.closePanel();
     });
@@ -771,6 +903,8 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     if (this.scanTimer) clearInterval(this.scanTimer);
   }
   ngOnDestroy() {
+    ++this.readGeneration;
+    this.accessReads.clear();
     this.stopCamera();
   }
 }

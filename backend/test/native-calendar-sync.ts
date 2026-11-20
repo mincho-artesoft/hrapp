@@ -58,6 +58,10 @@ async function main() {
   const removed = await api.sync(owner, { ...otherDevice.body.calendar, deviceId: 'mac', available: false, expectedRevision: 2 });
   assert.equal(removed.status, 200);
   assert.equal(removed.body.calendar.available, false);
+  assert.deepEqual(removed.body.calendar.events, []);
+  assert.deepEqual(removed.body.calendar.deletedEventIds, [event.id]);
+  assert.equal((await api.sync(owner, {...personal, expectedRevision: 3})).status, 409);
+  assert.equal((await api.listForWeb(owner)).some(c => c.id === personal.id), false);
   const mirrorID = 'a'.repeat(64);
   const replica = await api.sync(owner, { ...calendar, id: 'provider_phone', source: 'Google · test@example.com', providerMirrorID: mirrorID });
   assert.equal(replica.body.calendar.providerMirrorID, mirrorID);
@@ -106,6 +110,44 @@ async function main() {
   const extraEdit = await api.mutate(owner, 'native.provider_phone.event_one', { travelTime: 900, attachments: [{ id: 'file', dataBase64: 'dGVzdA==' }] });
   assert.equal(extraEdit.body.event.details.travelTime, 900);
   assert.deepEqual(extraEdit.body.event.details.attachments, [{ id: 'file', dataBase64: 'dGVzdA==' }]);
+  const details = {
+    notes: 'Line 1\nLine 2', timeZone: 'Europe/Sofia', availability: 2,
+    alarms: [{relativeOffset: -1800}, {absoluteDate: '2026-11-17T07:15:45.123Z', relativeOffset: null}],
+    recurrenceRules: [{frequency: 2, interval: 2, daysOfTheWeek: [{weekday: 2, weekNumber: 0}], setPositions: [-1], occurrenceCount: 8}],
+    structuredLocation: {title: 'Office', latitude: 42.6977, longitude: 23.3219, radius: 25},
+    videoCallURL: 'https://example.invalid/meet', travelTime: 900,
+    attachments: [{id: 'document', fileName: 'notes.txt', contentType: 'text/plain', dataBase64: 'YQ=='}],
+    organizer: {name: 'Organizer', email: 'owner@example.invalid', role: 3, type: 1, status: 2, isCurrentUser: true},
+    attendees: [{name: 'Guest', email: 'guest@example.invalid', role: 1, type: 1, status: 1, isCurrentUser: false}],
+    futureField: {key: 1},
+  };
+  const sample = {...event, location: 'Office', url: 'https://example.invalid/event', details};
+  const fieldsCalendar = {...personal, id: 'all_fields', events: [sample]};
+  assert.equal((await api.sync(owner, fieldsCalendar)).status, 200);
+  const projected = api.eventForWeb(fieldsCalendar, sample);
+  assert.equal(projected.details.availability, 'tentative');
+  assert.equal(projected.details.recurrenceRules[0].frequency, 'monthly');
+  assert.equal((await api.mutate(owner, projected.id, {title: 'Renamed', alarms: projected.details.alarms,
+    recurrenceRules: projected.details.recurrenceRules, availability: projected.details.availability})).status, 200);
+  const readFromMac = async () => (await api.sync(owner, {id: fieldsCalendar.id, deviceId: 'mac', readOnly: true})).body.calendar;
+  const afterWeb = await readFromMac();
+  const {updatedAt: revision, ...persisted} = afterWeb.events[0];
+  assert.deepEqual(persisted, {...sample, title: 'Renamed'});
+  assert.equal((await api.mutate(owner, projected.id, {expectedUpdatedAt: revision, attachments: [], alarms: [],
+    travelTime: null, videoCallURL: null, structuredLocation: null, location: null, url: null, recurrenceRules: []})).status, 200);
+  const cleared = await readFromMac();
+  assert.deepEqual(cleared.events[0].details, {...details, alarms: [], attachments: [], recurrenceRules: [],
+    travelTime: null, videoCallURL: null, structuredLocation: null});
+  assert.equal(cleared.events[0].url, null);
+  const cancelled = {...cleared.events[0], allDay: true, status: 'cancelled', readOnly: true,
+    start: '2026-03-28T22:00:00Z', end: '2026-03-29T21:00:00Z'};
+  assert.equal((await api.sync(owner, {...cleared, deviceId: 'ipad', expectedRevision: cleared.revision, events: [cancelled]})).status, 200);
+  const final = await readFromMac();
+  assert.equal(final.events[0].status, 'cancelled');
+  assert.equal(final.events[0].allDay, true);
+  assert.equal(api.eventForWeb(final, final.events[0]).readOnly, true);
+  assert.equal((await api.mutate(owner, projected.id, {title: 'read-only'})).status, 403);
+  console.log('PASS: native → web → second device field round-trip, explicit clears, cancellation and read-only');
   console.log('PASS: account-local cross-device edits, immutable scope, account isolation, conflict and tombstone');
   console.log('PASS: native calendars, isolation, read-only access, CAS conflicts, metadata preservation, concurrent edits and deletion');
 }

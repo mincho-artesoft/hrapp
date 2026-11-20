@@ -60,6 +60,9 @@ import Foundation
             let writes = network.writes
             try await engine.sync(account)
             precondition(network.writes == writes, "An unchanged poll must not upload again")
+            storage.providerDocuments[0].events[0].details?["travelTime"] = .number(1800)
+            try await engine.sync(account)
+            precondition(network.writes == writes && storage.providerDocuments[0].events[0].details?["travelTime"] == .number(1800))
             storage.providerDocuments[0].events[0].title = "Offline edit"
             network.failWrite = true
             do { try await engine.sync(account); preconditionFailure("Expected network failure") } catch is URLError {}
@@ -68,6 +71,7 @@ import Foundation
             let restarted = ProviderCalendarSyncEngine(storage: storage, directory: directory, identifierPrefix: "app-local:provider-", deviceName: "Test", transport: network.request)
             try await restarted.sync(account)
             precondition(network.title == "Offline edit" && storage.providerDocuments[0].events[0].id == id)
+            precondition(storage.providerDocuments[0].events[0].details?["travelTime"] == .number(1800), "A provider response must preserve app-owned fields")
             try restarted.disconnect(account.id)
             precondition(!storage.providerDocuments[0].available && storage.providerDocuments[0].events.count == 1)
             try await restarted.sync(account)

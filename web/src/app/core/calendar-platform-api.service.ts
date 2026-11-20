@@ -114,7 +114,15 @@ export interface CalendarRepeatRule {
   daysOfTheWeek?:Array<{weekday:number;weekNumber?:number}>; daysOfTheMonth?:number[];
   monthsOfTheYear?:number[]; weeksOfTheYear?:number[]; daysOfTheYear?:number[]; setPositions?:number[];
 }
+export interface CalendarAlarm {
+  absoluteDate?: string | null;
+  relativeOffsetSeconds?: number | null;
+}
 export interface WebCalendarEventDetails {
+  providerPrivacy?: string;
+  providerShowAs?: string;
+  providerDefaultReminders?: boolean;
+  providerOtherReminders?: Array<{method: string; minutes: number}>;
   structuredLocation?: { title: string; latitude?: number | null; longitude?: number | null; radius: number } | null;
   notes?: string;
   timeZone?: string;
@@ -124,7 +132,7 @@ export interface WebCalendarEventDetails {
   attachments?:Array<{id:string;fileName:string;contentType?:string;dataBase64:string}>;
   color?: string;
   availability?: 'busy' | 'free' | 'tentative' | 'unavailable';
-  alarms?: Array<{ relativeOffsetSeconds: number }>;
+  alarms?: CalendarAlarm[];
   recurrenceRules?: CalendarRepeatRule[];
   organizer?: { name?: string; email?: string };
   attendees?: Array<{ name?: string; email?: string; status?: string }>;
@@ -132,6 +140,7 @@ export interface WebCalendarEventDetails {
 
 export interface DeviceCalendar {
   id: string; title: string; source: string; color: string;
+  eventKitKind?: "birthdays" | "regular";
   providerMirrorID?: string;
   provider?:'google'|'microsoft';remoteID?:string;providerOwner?:boolean;etag?:string;primary?:boolean;isRemovable?:boolean;
   deviceName: string; allowsChanges: boolean; updatedAt?: string;
@@ -140,9 +149,10 @@ export interface DeviceCalendar {
 }
 
 export interface WebCalendarEvent {
-  provider?:'google'|'microsoft';remoteID?:string;providerCalendarID?:string;providerEtag?:string;
+  provider?:'google'|'microsoft';remoteID?:string;providerCalendarID?:string;providerSeriesID?:string;providerEtag?:string;
   calendarId?: string;
   calendarTitle?: string;
+  sharingEventId?: string;
   id: string;
   title: string;
   start: string;
@@ -1195,7 +1205,7 @@ export class CalendarPlatformApiService {
       videoCallURL?: string | null;
       url?: string | null;
       availability?: 'busy' | 'free' | 'tentative' | 'unavailable';
-      alarms?: Array<{ relativeOffsetSeconds: number }>;
+      alarms?: CalendarAlarm[];
       recurrenceRules?: Array<{
         frequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
         interval?: number;

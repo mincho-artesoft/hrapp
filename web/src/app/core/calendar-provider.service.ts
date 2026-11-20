@@ -30,8 +30,37 @@ export class CalendarProviderService{
  async saveCalendar(provider:'google'|'microsoft',calendar:DeviceCalendar|null,title:string,color:string){await this.perform(provider,{action:calendar?'update-calendar':'create-calendar',calendarID:calendar?.remoteID,title:!calendar||calendar.providerOwner&&title!==calendar.title?title:undefined,color,etag:calendar?.etag});await this.refresh(true);}
  async deleteCalendar(calendar:DeviceCalendar){await this.perform(calendar.provider!,{action:calendar.providerOwner?'delete-calendar':'unsubscribe-calendar',calendarID:calendar.remoteID,etag:calendar.etag});await this.refresh(true);}
  async saveEvent(calendar:DeviceCalendar,event:WebCalendarEvent|undefined,values:any,clientRequestID?:string):Promise<WebCalendarEvent>{
-  const result=await this.perform<{eventID:string}>(calendar.provider!,{action:'save-event',calendarID:calendar.remoteID,eventID:event?.remoteID,etag:event?.providerEtag,event:values,clientRequestID});
-  await this.refresh(true);const stored=this.events().find(e=>e.provider===calendar.provider&&e.providerCalendarID===calendar.remoteID&&e.remoteID===result.eventID);
+  const patch = {...values};
+  if (event) {
+    // A full editor form also contains untouched display values. Sending them can replace
+    // a provider's inherited reminders or rewrite the body of a formatted invitation.
+    if (values.title === event.title) delete patch.title;
+    if ((values.location || '') === (event.location || '')) delete patch.location;
+    if ((values.notes || '') === (event.details?.notes || '')) delete patch.notes;
+    for (const key of ['providerPrivacy','providerShowAs','providerDefaultReminders'] as const) {
+      if (values[key] === event.details?.[key]) delete patch[key];
+    }
+    if (JSON.stringify(values.providerOtherReminders ?? []) === JSON.stringify(event.details?.providerOtherReminders ?? [])) delete patch.providerOtherReminders;
+    if (values.availability === event.details?.availability) delete patch.availability;
+    if (JSON.stringify(values.alarms) === JSON.stringify(event.details?.alarms)) delete patch.alarms;
+    if (values.start && values.end && Date.parse(values.start) === Date.parse(event.start) &&
+        Date.parse(values.end) === Date.parse(event.end) && !!values.allDay === !!event.allDay &&
+        values.timeZone === event.details?.timeZone) {
+      delete patch.start;
+      delete patch.end;
+    }
+  }
+  if (calendar.provider === 'google' && (patch.alarms !== undefined || patch.providerDefaultReminders !== undefined || patch.providerOtherReminders !== undefined)) {
+    patch.providerOtherReminders = values.providerOtherReminders ?? event?.details?.providerOtherReminders ?? [];
+    patch.providerDefaultReminders = values.providerDefaultReminders ?? event?.details?.providerDefaultReminders ?? false;
+    if (!patch.providerDefaultReminders) patch.alarms ??= event?.details?.alarms ?? [];
+  }
+  const result=await this.perform<{eventID:string;event?:WebCalendarEvent}>(calendar.provider!,{action:'save-event',calendarID:calendar.remoteID,eventID:event?.remoteID,etag:event?.providerEtag,event:patch,clientRequestID});
+  await this.refresh(true);
+  const sameCalendar = this.events().filter(item => item.provider === calendar.provider && item.providerCalendarID === calendar.remoteID);
+  const stored = sameCalendar.find(item => item.remoteID === result.eventID)
+    ?? sameCalendar.find(item => item.providerSeriesID === result.eventID)
+    ?? (result.event && {...result.event, calendarTitle:calendar.title, color:calendar.color});
   if(!stored)throw new Error('Saved to the provider. Refresh this calendar to view the event.');return stored;
  }
  async deleteEvent(event:WebCalendarEvent){await this.perform(event.provider!,{action:'delete-event',calendarID:event.providerCalendarID,eventID:event.remoteID,etag:event.providerEtag});await this.refresh(true);}

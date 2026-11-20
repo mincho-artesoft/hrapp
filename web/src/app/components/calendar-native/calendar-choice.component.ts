@@ -36,7 +36,7 @@ export interface CalendarChoice {
     </button>
     @if (open()) {
       <dialog
-        class="choice-menu"
+        class="choice-menu calendar-scroll-list"
         role="menu"
         [ccAnchoredMenu]="trigger" (dismissMenu)="close()"
         (click)="$event.stopPropagation()"

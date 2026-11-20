@@ -35,6 +35,8 @@ import {
 } from "./calendar-choice.component";
 import { CalendarSymbolComponent } from "./calendar-symbol.component";
 
+import { moonPhaseInfo } from '../../core/weather-moon';
+import { CalendarMoonDetailComponent } from './calendar-moon-detail.component';
 import { CalendarWindMapComponent } from './calendar-wind-map.component';
 
 @Component({
@@ -48,7 +50,7 @@ import { CalendarWindMapComponent } from './calendar-wind-map.component';
     FormsModule,
     CalendarSymbolComponent,
     CalendarChoiceComponent,
-    CalendarWindMapComponent,
+    CalendarWindMapComponent, CalendarMoonDetailComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./calendar-weather.component.html",
@@ -272,61 +274,17 @@ export class CalendarWeatherComponent implements OnInit {
       minutes: new Intl.DateTimeFormat(locale, {...options, minute: '2-digit'})};
   });
 
-  clock(value: string | null | undefined, hoursOnly = false) {
+  readonly clock = (value: string | null | undefined, hoursOnly = false) => {
     if (!value) return '—';
     // The service returns local clock values for the forecast city.
     const time = Date.parse(value + 'Z');
     if (!Number.isFinite(time)) return '—';
     const clocks = this.weatherClocks();
     return (hoursOnly ? clocks.hours : clocks.minutes).format(time);
-  }
-  moonPhase(value: number | null | undefined) {
-    if (value == null) return "—";
-    return [
-      "New Moon",
-      "Waxing Crescent",
-      "First Quarter",
-      "Waxing Gibbous",
-      "Full Moon",
-      "Waning Gibbous",
-      "Last Quarter",
-      "Waning Crescent",
-    ][Math.round(value * 8) % 8];
-  }
-  moonArtwork(value: number | null | undefined) {
-    if (value == null) return "";
-    const names = [
-      "new",
-      "waxing_crescent",
-      "first_quarter",
-      "waxing_gibbous",
-      "full",
-      "waning_gibbous",
-      "third_quarter",
-      "waning_crescent",
-    ];
-    return (
-      "/icons/calendar-native/artwork/phase_" +
-      names[Math.round(value * 8) % 8] +
-      ".png"
-    );
-  }
-  moonSymbol(value: number | null | undefined) {
-    if (value == null) return "moon";
-    return (
-      "moonphase." +
-      [
-        "new.moon",
-        "waxing.crescent",
-        "first.quarter",
-        "waxing.gibbous",
-        "full.moon",
-        "waning.gibbous",
-        "last.quarter",
-        "waning.crescent",
-      ][Math.round(value * 8) % 8]
-    );
-  }
+  };
+  moonPhase(value: number | null | undefined) { return moonPhaseInfo(value)?.name ?? '—'; }
+  moonArtwork(value: number | null | undefined) { return moonPhaseInfo(value)?.artwork ?? ''; }
+  moonSymbol(value: number | null | undefined) { return moonPhaseInfo(value)?.symbol ?? 'moon'; }
   ngOnInit() {
     this.destroyRef.onDestroy(() => this.endRegionPress());
     if (!this.isBrowser || typeof localStorage === "undefined") return;

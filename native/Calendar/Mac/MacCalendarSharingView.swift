@@ -11,6 +11,7 @@ struct MacCalendarSharingView: View {
     @ObservedObject var account: CalendarMacStore
     var openAccount: () -> Void
     @State private var destination = 0
+    @State private var detailTarget: MacTabletEventEditorTarget?
     @State private var searchOpen = false
     @State private var searchText = ""
     @State private var invitations: [CloudCalendarsAPI.PendingEventInvitation] = []
@@ -77,6 +78,10 @@ struct MacCalendarSharingView: View {
                 calendarID: $calendarID, busy: busy, error: error,
                 close: { importEvent = nil }, add: { saveInvitation(payload) })
         }
+        .appSheet(item: $detailTarget, onDismiss: { Task { await refresh() } }) { target in
+            MacTabletEventEditor(store: store, target: target) { detailTarget = nil }
+                .frame(width: 600, height: 720)
+        }
         .appSheet(item: $accessEvent) { event in
             MacEventRecipientsView(store: store, event: event, isOutgoing: destination == 2, session: account.cloudSession)
         }
@@ -118,17 +123,23 @@ struct MacCalendarSharingView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 0) {
+                    LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
                         ForEach(groups.keys.sorted(), id: \.self) { day in
-                            Text(day.formatted(.dateTime.weekday(.wide).day().month(.wide).year().locale(.appFormatting)).uppercased(with: .appFormatting))
-                                .font(CalendarTypography.headline).foregroundStyle(MacCalendarFormatting.calendar.isDateInToday(day) ? .red : .secondary)
-                                .padding(.top, 16).padding(.bottom, 8)
-                            ForEach((groups[day] ?? []).sorted { $0.start < $1.start }) { event in
-                                SharedEventPresentationRow(title: event.title, start: event.startDate ?? day, end: event.endDate ?? day,
-                                    isAllDay: event.allDay, location: event.location, isCancelled: event.isCancelled,
-                                    color: .blue, access: destination == 3 ? event.access : nil,
-                                    optionsAction: destination == 2 || event.access == .owner ? { accessEvent = event } : nil)
-                                Divider()
+                            Section {
+                                ForEach((groups[day] ?? []).sorted { ($0.start, $0.end) < ($1.start, $1.end) }) { event in
+                                    let local = MacEventSharing.localEvent(for: event, received: destination == 3, store: store)
+                                    SharedEventPresentationRow(title: event.title, start: event.startDate ?? day, end: event.endDate ?? day,
+                                        isAllDay: event.allDay, location: event.location, isCancelled: event.isCancelled,
+                                        color: local.map { store.color(for: $0.calendar) } ?? (destination == 3 ? .indigo : .blue),
+                                        access: destination == 3 ? event.access : nil,
+                                        optionsAction: destination == 2 || event.access == .owner ? { accessEvent = event } : nil,
+                                        infoAction: { openDetails(event, local: local, received: destination == 3) })
+                                    Divider()
+                                }
+                            } header: {
+                                SharedEventsDayHeader(day: day)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.top, 8).background(CalendarPalette.background)
                             }
                         }
                     }.padding(.horizontal, 16)
@@ -137,6 +148,19 @@ struct MacCalendarSharingView: View {
         }
         if let error { Text(error).font(CalendarTypography.footnote).foregroundStyle(.red).padding(16) }
     }
+    private func openDetails(_ remote: CloudCalendarsAPI.RemoteSharedEvent, local: EKEvent?, received: Bool) {
+        guard let session = account.cloudSession, let start = remote.startDate, let end = remote.endDate else { return }
+        let snapshot = SharedEventDetailSnapshot(title: remote.title, start: start, end: end,
+            isAllDay: remote.allDay, location: remote.location, url: remote.url, details: remote.details, calendarTitle: remote.calendarTitle)
+        let event = local ?? snapshot.displayEvent(in: store.eventStore)
+        var target = MacTabletEventEditorTarget(event: event, defaultDate: start, startsInEditingMode: false)
+        let source = SharedEventDetailSource(event: remote, received: received, session: session, usesServerRecord: local == nil)
+        target.sharedSource = source
+        target.readOnly = !source.canEdit
+        if local == nil { target.displaySupplement = snapshot.supplement }
+        detailTarget = target
+    }
+
     private var destinationIsLoading: Bool {
         destination == 1 ? !loadingSections.isDisjoint(with: ["events", "calendars"]) : loadingSections.contains("shared")
     }

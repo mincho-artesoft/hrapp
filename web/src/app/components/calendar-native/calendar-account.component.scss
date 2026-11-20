@@ -30,7 +30,7 @@ button:focus-visible { outline: 2px solid var(--cal-blue); outline-offset: 3px; 
   color: #ff453a;
   font-weight: 600;
 }
-.status { color: var(--cal-muted); font-size: 13px; }
+
 .error { color: #ff453a; }
 .account-intro.signed-out > cc-symbol { color: var(--cal-blue); }
 .account-intro {

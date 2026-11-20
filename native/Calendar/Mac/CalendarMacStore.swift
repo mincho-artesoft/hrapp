@@ -42,7 +42,8 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
     }
     private var syncRequested = false
     private var eventKitRefresh: Task<Void, Never>?
-    var receivedEventUnavailable = Set<String>()
+    @Published var cancelledOutgoingEventIDs = Set<String>()
+    @Published var receivedEventUnavailable = Set<String>()
     var receivedEventAccess: [String: CloudCalendarsAPI.EventAccess] = [:]
     private var observers: [NSObjectProtocol] = []
     var adapter: DeviceEventKitAdapter { DeviceEventKitAdapter(store: eventStore) }
@@ -80,6 +81,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
                 self.accountEmail = CalendarFeedSession.existing?.email ?? ""
                 self.receivedEventAccess = [:]
                 self.receivedEventUnavailable = []
+                self.cancelledOutgoingEventIDs = []
                 if let session = CalendarFeedSession.existing {
                     MacEventSharing.restoreReceivedPermissions(backend: self, session: session)
                 }
@@ -104,8 +106,8 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         }
     }
     var visibleLocalCalendars: [DeviceCalendarDocument] {
-        local.filter { !$0.isReceivedSharedCalendar || ReceivedSharingVisibility.isVisible(
-            $0.id, kind: "calendar", requiresAccount: true) }
+        local.filter { $0.isReceivedSharedCalendar ? ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true) : AccountLocalCalendarSync.isVisible($0.id) }
     }
     private func registerReceivedAccountScopes() {
         for (id, binding) in (try? loadSharedBindings()) ?? [:] {
@@ -141,9 +143,17 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
     }
     func event(matchingLocalIdentifier identifier: String) -> DeviceCalendarEvent? {
         if let event = events.first(where: { $0.id == identifier }) { return event }
+        let parts = identifier.split(separator: ".", maxSplits: 2)
+        if parts.count == 3, parts[0] == "native",
+           let item = events.first(where: { $0.id == String(parts[2]) }),
+           let source = calendar(for: item),
+           [source.id, DeviceCalendarReplica.calendarID(source.id)].contains(String(parts[1])) { return item }
+        let hashes = [DeviceCalendarReplica.hash(identifier), DeviceCalendarReplica.hash(identifier + ":")]
+        if let item = events.first(where: { hashes.contains($0.id) }) { return item }
         guard let id = nativeEvents.first(where: { $0.value.eventIdentifier == identifier || $0.value.calendarItemIdentifier == identifier })?.key else { return nil }
         return events.first { $0.id == id }
     }
+    func nativeEvent(for id: String) -> EKEvent? { nativeEvents[id] }
     func calendar(for event: DeviceCalendarEvent) -> MacCalendarItem? { calendars.first { $0.id == eventCalendars[event.id] } }
     func visibleEvents(on date: Date) -> [DeviceCalendarEvent] {
         let start = Calendar.current.startOfDay(for: date), end = Calendar.current.date(byAdding: .day, value: 1, to: start)!
@@ -204,7 +214,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         catch { failure = failure ?? error.localizedDescription }
         do {
             try await AccountLocalCalendarSync.sync(storage: self)
-            for calendar in local where !calendar.isReceivedSharedCalendar {
+            for calendar in visibleLocalCalendars where !calendar.isReceivedSharedCalendar {
                 if let id = calendar.sharingCalendarID, try ownedSharing.shareID(localID: calendar.id) == nil {
                     try await ownedSharing.registerAndSync(localID: calendar.id, shareID: id)
                 }
@@ -345,9 +355,20 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         }
         let snapshotBindings = try loadSharedBindings()
         for (id, binding) in snapshotBindings where binding.accountID == session.calendarId {
+            guard cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
+            let matchingCalendar = remoteCalendars.first { $0.ownerId == binding.ownerID && $0.calendarId == binding.calendarID }
+            // A successful inventory omits calendars left from another device. Drop
+            // their cached events too, so event details cannot resolve an old copy.
+            guard let remote = matchingCalendar, !remote.wasDeletedByOwner else {
+                try removeAccountLocalDocument(localID: id)
+                var remaining = try loadSharedBindings()
+                remaining.removeValue(forKey: id)
+                try saveSharedBindings(remaining)
+                continue
+            }
             guard let before = local.first(where: { $0.id == id }),
                   try loadSharedBindings()[id] != nil else { continue }
-            guard let remote = remoteCalendars.first(where: { $0.ownerId == binding.ownerID && $0.calendarId == binding.calendarID }), !remote.isRevoked else {
+            guard !remote.isRevoked else {
                 if let index = local.firstIndex(where: { $0.id == id }) {
                     local[index].available = false; local[index].allowsChanges = false
                     try persistThrowing()

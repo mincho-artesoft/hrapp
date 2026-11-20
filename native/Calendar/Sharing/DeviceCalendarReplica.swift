@@ -43,6 +43,7 @@ struct DeviceCalendarEvent: Codable, Equatable, Identifiable, Sendable {
     var details: [String: CalendarJSON]?
     var readOnly: Bool?
     var updatedAt: String?
+    var status: String?
     var content: Self { var copy = self; copy.updatedAt = nil; return copy }
     var startDate: Date { Self.date(start) ?? .distantPast }
     var endDate: Date { Self.date(end) ?? .distantPast }
@@ -73,7 +74,8 @@ private final class CalendarDateCodec: @unchecked Sendable {
     }
     func string(_ date: Date) -> String {
         lock.lock(); defer { lock.unlock() }
-        return standard.string(from: date)
+        let milliseconds = (date.timeIntervalSince1970 * 1000).rounded()
+        return milliseconds.truncatingRemainder(dividingBy: 1000) == 0 ? standard.string(from: date) : fractional.string(from: date)
     }
 }
 
@@ -170,6 +172,8 @@ final class DeviceCalendarReplica {
                   edited.content != original.content, merged.readOnly != true else { return r[id] }
             // Concurrent edits to independent fields coexist. The remote revision
             // wins a conflict on the same field, including the time range as a unit.
+            if merged.status == original.status { merged.status = edited.status }
+            if merged.readOnly == original.readOnly { merged.readOnly = edited.readOnly }
             if merged.title == original.title { merged.title = edited.title }
             if merged.startDate == original.startDate && merged.endDate == original.endDate && merged.allDay == original.allDay {
                 merged.start = edited.start; merged.end = edited.end; merged.allDay = edited.allDay
@@ -256,14 +260,26 @@ final class DeviceEventKitAdapter {
     }
     func snapshot(_ event: EKEvent) -> DeviceCalendarEvent {
         // EventKit expands series in this bounded window; each occurrence is edited independently.
-        let alarms: [CalendarJSON] = (event.alarms ?? []).map { .object(["relativeOffset": .number($0.absoluteDate?.timeIntervalSince(event.startDate) ?? $0.relativeOffset)]) }
-        var details = supplementaryDetails(identity(event))
-        details.merge(["notes": .string(event.notes ?? ""), "timeZone": .string(event.timeZone?.identifier ?? TimeZone.current.identifier),
-            "alarms": .array(alarms), "recurrenceRules": .array([]), "availability": .number(Double(event.availability.rawValue))]) { _, current in current }
-        return DeviceCalendarEvent(id: identity(event), title: event.title ?? "", start: DeviceCalendarEvent.iso(event.startDate), end: DeviceCalendarEvent.iso(event.endDate), allDay: event.isAllDay,
+        let id = identity(event)
+        var details = supplementaryDetails(id)
+        let observed = SharedEventDetails(event: event)
+        if let fields = try? CalendarJSON.object(encoding: observed) {
+            details.merge(fields) { _, updated in updated }
+        }
+        details["notes"] = .string(event.notes ?? "")
+        details["timeZone"] = .string(event.timeZone?.identifier ?? TimeZone.current.identifier)
+        details["structuredLocation"] = observed.structuredLocation.flatMap { try? .object(CalendarJSON.object(encoding: $0)) }
+        details["recurrenceRules"] = .array([])
+        if let supplement = EventKitEventSupplementStore.supplement(for: event) {
+            details["travelTime"] = supplement.travelTime.map(CalendarJSON.number)
+            details["videoCallURL"] = supplement.videoCallURL.map(CalendarJSON.string)
+            details["attachments"] = .array(supplement.attachments.compactMap { try? .object(CalendarJSON.object(encoding: $0)) })
+        }
+        return DeviceCalendarEvent(id: id, title: event.title ?? "", start: DeviceCalendarEvent.iso(event.startDate), end: DeviceCalendarEvent.iso(event.endDate), allDay: event.isAllDay,
             location: event.location, url: event.url?.absoluteString,
             details: details,
-            readOnly: !event.calendar.allowsContentModifications || event.hasAttendees)
+            readOnly: !event.calendar.allowsContentModifications || event.hasAttendees || event.status == .canceled,
+            status: event.status == .canceled ? "cancelled" : nil)
     }
     func apply(_ items: [DeviceCalendarEvent], calendar: EKCalendar, original: [EKEvent], base: [DeviceCalendarEvent]) throws {
         guard calendar.allowsContentModifications else { return }
@@ -284,20 +300,33 @@ final class DeviceEventKitAdapter {
             event.notes = item.details?["notes"]?.string
             event.timeZone = item.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:))
             if case .array(let alarms) = item.details?["alarms"] {
-                event.alarms = alarms.compactMap { if case .object(let a) = $0, let offset = a["relativeOffset"]?.number { return EKAlarm(relativeOffset: offset) }; return nil }
+                event.alarms = try alarms.compactMap { value in
+                    try JSONDecoder().decode(SharedEventAlarm.self, from: JSONEncoder().encode(value)).makeAlarm()
+                }
             }
             if let raw = item.details?["availability"]?.number, let availability = EKEventAvailability(rawValue: Int(raw)) {
-                event.availability = availability
+                if availability != .notSupported { event.availability = availability }
             }
             if existing == nil, case .array(let rules) = item.details?["recurrenceRules"] {
-                event.recurrenceRules = rules.compactMap {
-                    guard case .object(let rule) = $0, let raw = rule["frequency"]?.number,
-                          let frequency = EKRecurrenceFrequency(rawValue: Int(raw)) else { return nil }
-                    return EKRecurrenceRule(recurrenceWith: frequency, interval: max(1, Int(rule["interval"]?.number ?? 1)), end: nil)
+                event.recurrenceRules = try rules.compactMap { value in
+                    try JSONDecoder().decode(SharedEventRecurrenceRule.self, from: JSONEncoder().encode(value)).makeRule()
                 }
+            }
+            if case .object(let fields) = item.details?["structuredLocation"] {
+                let place = try JSONDecoder().decode(SharedEventLocation.self, from: JSONEncoder().encode(fields))
+                event.structuredLocation = place.makeLocation(title: item.location)
             }
             try store.save(event, span: .thisEvent, commit: true)
             if let details = item.details {
+                if ["travelTime", "attachments", "videoCallURL"].contains(where: { details[$0] != nil }) ||
+                    EventKitEventSupplementStore.supplement(for: event) != nil {
+                    let attachments = try details["attachments"].flatMap { value -> [AppLocalEventAttachment]? in
+                        if case .null = value { return nil }
+                        return try JSONDecoder().decode([AppLocalEventAttachment].self, from: JSONEncoder().encode(value))
+                    } ?? []
+                    EventKitEventSupplementStore.update(travelTime: details["travelTime"]?.number, attachments: attachments,
+                        videoCallURL: details["videoCallURL"]?.string, for: event)
+                }
                 UserDefaults.standard.set(try JSONEncoder().encode(details), forKey: "calendarReplica.details." + item.id)
             }
             var map = mapping

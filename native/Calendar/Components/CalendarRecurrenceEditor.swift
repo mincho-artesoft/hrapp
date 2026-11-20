@@ -10,6 +10,7 @@ struct CalendarRecurrenceEditor: View {
     @Binding var pattern: CalendarRecurrencePattern
     let startDate: Date
     let timeZone: TimeZone
+    var singleMonthDay = false
     @ObservedObject private var preferences = AppPreferences.shared
     @State private var showsInterval = false
     private var calendar: Calendar {
@@ -113,7 +114,7 @@ struct CalendarRecurrenceEditor: View {
                 RecurrenceRow(separator: false, insetContent: pattern.usesOrdinal) {
                     if pattern.usesOrdinal { ordinalWheels }
                     else { selectionGrid(values: Array(1...31), columns: 7,
-                        selected: pattern.monthDays, dayNumbers: true, title: { number($0) }) { pattern.monthDays = toggled($0, in: pattern.monthDays); pattern.edited = true } }
+                        selected: pattern.monthDays, dayNumbers: true, title: { number($0) }) { pattern.monthDays = singleMonthDay ? [$0] : toggled($0, in: pattern.monthDays); pattern.edited = true } }
                 }
             }
         }
@@ -121,7 +122,7 @@ struct CalendarRecurrenceEditor: View {
             RecurrenceSection {
                 RecurrenceRow(separator: false, insetContent: false) {
                     selectionGrid(values: Array(1...12), columns: 4, selected: pattern.months,
-                        title: { calendar.shortStandaloneMonthSymbols[$0 - 1] }) { pattern.months = toggled($0, in: pattern.months); pattern.edited = true }
+                        title: { calendar.shortStandaloneMonthSymbols[$0 - 1] }) { pattern.months = singleMonthDay ? [$0] : toggled($0, in: pattern.months); pattern.edited = true }
                 }
             }
             RecurrenceSection {

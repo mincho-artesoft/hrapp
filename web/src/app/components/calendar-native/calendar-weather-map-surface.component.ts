@@ -21,6 +21,7 @@ import {
   clamp,
   latitudeAt,
   mapColor,
+  gridCoversViewport,
   mapFrame,
   mapReading,
   worldX,
@@ -161,7 +162,7 @@ export class CalendarWeatherMapSurfaceComponent {
       full = this.interactive(),
       c = this.camera();
     const ys = worldY(p.latitude - (full ? 3 : 2.5)) - worldY(p.latitude + (full ? 3 : 2.5));
-    const width = clamp(Math.max((full ? 4 : 7) / 360, (ys * w) / h) * (c?.zoom ?? 1), 0.001, 1);
+    const width = clamp(Math.max((full ? 4 : 7) / 360, (ys * w) / h) * (c?.zoom ?? 1), Math.min(0.001, w / h), Math.min(1, w / h));
     const height = (width * h) / w;
     const x = c?.x ?? worldX(p.longitude),
       y = c?.y ?? worldY(p.latitude);
@@ -180,7 +181,7 @@ export class CalendarWeatherMapSurfaceComponent {
   });
   private readonly frame = computed(() => {
     const f = this.field();
-    return f ? mapFrame(f, this.position()) : null;
+    return f && gridCoversViewport(f.grid, this.viewport()) ? mapFrame(f, this.position()) : null;
   });
 
   constructor() {
@@ -260,7 +261,7 @@ export class CalendarWeatherMapSurfaceComponent {
       const v = this.viewport(),
         m = this.map();
       if (m) m.setVisibleMapRectAnimated(this.kitRect(mapkit, v), false);
-      if (this.size().w > 1) this.viewportChange.emit(v);
+      if (this.measured()) this.viewportChange.emit(v);
     });
     effect(() => {
       const el = this.heat().nativeElement,
@@ -417,7 +418,7 @@ export class CalendarWeatherMapSurfaceComponent {
         s.w) /
         s.h
     );
-    const width = clamp(v.width * zoomFactor, 0.001, 1),
+    const width = clamp(v.width * zoomFactor, Math.min(0.001, s.w / s.h), Math.min(1, s.w / s.h)),
       height = (width * s.h) / s.w;
     const x = v.x + 0.5 * v.width + (anchorX - 0.5) * (v.width - width) - (dx * v.width) / s.w;
     const y = v.y + 0.5 * v.height + (anchorY - 0.5) * (v.height - height) - (dy * v.height) / s.h;

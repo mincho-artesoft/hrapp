@@ -15,6 +15,8 @@ export interface SharingPerson {
   access: CalendarAccess;
   isOriginalOwner?: boolean;
   isPending?: boolean;
+  isAnonymous?: boolean;
+  identities?: { provider: string; email?: string }[];
 }
 export interface SharedCalendar extends DeviceCalendar {
   ownerId: string;
@@ -26,13 +28,43 @@ export interface SharedCalendar extends DeviceCalendar {
   windowStart?: string;
   windowEnd?: string;
   isRevoked?: boolean;
+  revokedReason?: string;
   replicaID?: string;
 }
 export interface SharedEvent extends WebCalendarEvent {
   localEventIdentifier?: string;
+  replicaIdentifiers?: string[];
+  placementCalendarId?: string;
   feedId: string;
   access?: CalendarAccess;
+  recipientsUpdatedAt?: string;
 }
+// A share keeps its own identity when its local copy moves, or is shared again.
+function indexSharedCopies(shares: SharedEvent[]) {
+  const byId = new Map(shares.map(share => [share.id, share]));
+  const byAlias = new Map<string, SharedEvent>();
+  for (const share of shares) {
+    for (const alias of [share.localEventIdentifier, ...(share.replicaIdentifiers ?? [])]) {
+      if (!alias) continue;
+      const key = (share.placementCalendarId ?? "") + "/" + alias;
+      const previous = byAlias.get(key);
+      if (!previous || (previous.status === "cancelled" && share.status !== "cancelled")) byAlias.set(key, share);
+    }
+  }
+  return (event: WebCalendarEvent): SharedEvent | undefined => {
+    const exact = byId.get(event.sharingEventId ?? event.id);
+    if (exact) return exact;
+    const prefix = `native.${event.calendarId}.`;
+    const local = event.id.startsWith(prefix) ? event.id.slice(prefix.length) : event.id;
+    for (const alias of [event.id, local, event.remoteID]) {
+      if (!alias) continue;
+      const copy = byAlias.get((event.calendarId ?? "") + "/" + alias) ?? byAlias.get("/" + alias);
+      if (copy) return copy;
+    }
+    return undefined;
+  };
+}
+
 export interface PendingInvitation {
   id: string;
   eventId?: string;
@@ -72,10 +104,14 @@ export class CalendarNativeService {
   readonly api = inject(CalendarPlatformApiService);
   readonly outgoing = signal<SharedEvent[]>([]);
   readonly received = signal<SharedEvent[]>([]);
-  readonly invitations = signal<PendingInvitation[]>([]);
+  private readonly eventInvites = signal<PendingInvitation[]>([]);
+  private readonly calendarInvites = signal<PendingInvitation[]>([]);
+  readonly invitations = computed(() => [...this.calendarInvites(), ...this.eventInvites()]);
+  private readonly loadedSections = new Set<string>();
+  readonly pendingSections = signal<ReadonlySet<string>>(new Set());
   readonly sharedCalendars = signal<SharedCalendar[]>([]);
-  readonly loading = signal(false);
-  readonly error = signal("");
+  readonly sectionErrors = signal<Record<string, string>>({});
+  readonly recipientsChanged = signal<{ id: string } | null>(null);
   readonly colorOverrides = signal<Record<string, string>>({});
   private colorsKey() {
     return "cc.mac.calendarColors." + (this.api.profile()?.principalId ?? "");
@@ -118,12 +154,15 @@ export class CalendarNativeService {
     this.inFlight = undefined;
     this.outgoing.set([]);
     this.received.set([]);
-    this.invitations.set([]);
+    this.eventInvites.set([]);
+    this.calendarInvites.set([]);
+    this.loadedSections.clear();
+    this.pendingSections.set(new Set());
     this.sharedCalendars.set([]);
-    this.error.set("");
-    this.loading.set(false);
+    this.sectionErrors.set({});
+    this.recipientsChanged.set(null);
   }
-  refresh(): Promise<void> {
+  refresh({ background = false } = {}): Promise<void> {
     if (this.sessionToken !== this.api.token()) {
       this.clear();
       this.sessionToken = this.api.token();
@@ -144,42 +183,63 @@ export class CalendarNativeService {
       this.clear();
       return Promise.resolve();
     }
-    this.loading.set(true);
-    this.error.set("");
+    if (!background) this.sectionErrors.set({});
     const current = () =>
       generation === this.generation && this.api.token() === token;
+    this.pendingSections.set(new Set(["shared", "eventInvites", "calendarInvites"].filter(section => !this.loadedSections.has(section))));
+    const track = (section: string, task: Promise<void>) => task.then(() => {
+      if (!current()) return;
+      this.loadedSections.add(section);
+      if (this.sectionErrors()[section]) this.sectionErrors.update(errors => ({ ...errors, [section]: "" }));
+    }).catch(error => {
+      if (current()) this.sectionErrors.update(errors => ({
+        ...errors, [section]: error instanceof Error ? error.message : "Could not refresh sharing.",
+      }));
+    }).finally(() => {
+      if (current()) this.pendingSections.update(sections => {
+        const remaining = new Set(sections);
+        remaining.delete(section);
+        return remaining;
+      });
+    });
     const tasks = [
-      this.request<{ outgoing: SharedEvent[]; received: SharedEvent[] }>(
+      track("shared", this.request<{ outgoing: SharedEvent[]; received: SharedEvent[] }>(
         "/shared-state",
-      ).then((s) => {
+      ).then(async s => {
+        const normalize = async (event: SharedEvent) => {
+          const local = event.localEventIdentifier;
+          if (!local) return { ...withWebEventDetails(event), replicaIdentifiers: [] };
+          const keys = [local, local + ":"];
+          const start = Date.parse(event.start);
+          if (Number.isFinite(start)) keys.push(local + ":" + new Date(start).toISOString().replace(/\.000Z$/, "Z"));
+          const replicaIdentifiers = [local, ...await Promise.all(keys.map(key => this.sharingID(key)))];
+          return { ...withWebEventDetails(event), replicaIdentifiers };
+        };
+        const [sent, received] = await Promise.all([
+          Promise.all((s.outgoing ?? []).map(normalize)), Promise.all((s.received ?? []).map(normalize)),
+        ]);
         if (current()) {
-          this.outgoing.set((s.outgoing ?? []).map(withWebEventDetails));
-          this.received.set((s.received ?? []).map(withWebEventDetails));
+          this.outgoing.set(sent);
+          this.received.set(received);
         }
-      }),
-      Promise.all([
-        this.request<{ invitations: PendingInvitation[] }>(
-          "/event-invitations/pending",
-        ),
-        this.request<{ invitations: PendingInvitation[] }>(
-          "/icloud-calendar-invitations/pending",
-        ),
-      ]).then(([e, c]) => {
-        if (current())
-          this.invitations.set([
-            ...(c.invitations ?? []).filter(
-              (i) => i.calendarKind === "app_local",
-            ),
-            ...(e.invitations ?? []),
-          ]);
-      }),
-      this.request<{ calendars: SharedCalendar[] }>(
+      })),
+      track("eventInvites", this.request<{ invitations: PendingInvitation[] }>(
+        "/event-invitations/pending",
+      ).then(result => {
+        if (current()) this.eventInvites.set(result.invitations ?? []);
+      })),
+      track("calendarInvites", this.request<{ invitations: PendingInvitation[] }>(
+        "/icloud-calendar-invitations/pending",
+      ).then(result => {
+        if (current()) this.calendarInvites.set((result.invitations ?? []).filter(i => i.calendarKind === "app_local"));
+      })),
+      track("calendars", this.request<{ calendars: SharedCalendar[] }>(
         "/icloud-calendars-shared-with-me",
       ).then((s) => {
         if (current())
           this.sharedCalendars.set(
             (s.calendars ?? [])
-              .filter((c) => c.calendarKind === "app_local")
+              .filter((c) => c.calendarKind === "app_local" && c.revokedReason !== "owner_deleted")
               .map((c) => ({
                 ...c,
                 access: c.currentAccess ?? c.access,
@@ -189,28 +249,22 @@ export class CalendarNativeService {
                 })),
               })),
           );
-      }),
+      })),
     ];
-    const work = Promise.allSettled(tasks)
-      .then((results) => {
-        if (current()) {
-          const failure = results.find((r) => r.status === "rejected");
-          if (failure?.status === "rejected")
-            this.error.set(
-              failure.reason instanceof Error
-                ? failure.reason.message
-                : "Could not refresh sharing.",
-            );
-        }
-      })
-      .finally(() => {
-        if (current()) {
-          this.loading.set(false);
-          this.inFlight = undefined;
-        }
-      });
+    const work = Promise.all(tasks).then(() => {
+      if (current()) this.inFlight = undefined;
+    });
     this.inFlight = work;
     return work;
+  }
+  refreshAfterChange() {
+    ++this.generation;
+    this.inFlight = undefined;
+    void this.refresh({ background: true });
+  }
+  async inviteEventRecipients(id: string, eventUrl: string, invitations: { email: string; access: string }[]) {
+    await this.request(`/events/${encodeURIComponent(id)}/invitations`, "POST", { eventUrl, invitations });
+    this.recipientsChanged.set({ id });
   }
   async respond(invitation: PendingInvitation, accept: boolean) {
     if (invitation.calendarId) {
@@ -230,7 +284,7 @@ export class CalendarNativeService {
         { eventId: invitation.eventId, feedId: invitation.feedId },
       );
     }
-    await this.refresh();
+    this.refreshAfterChange();
   }
   async saveCalendar(
     calendar: DeviceCalendar | null,
@@ -370,6 +424,11 @@ export class CalendarNativeService {
     }
     return response;
   }
+  private readonly outgoingIndex = computed(() => indexSharedCopies(this.outgoing()));
+  private readonly receivedIndex = computed(() => indexSharedCopies(this.received()));
+  outgoingForEvent(event: WebCalendarEvent): SharedEvent | undefined { return this.outgoingIndex()(event); }
+  receivedForEvent(event: WebCalendarEvent): SharedEvent | undefined { return this.receivedIndex()(event); }
+
   async prepareEvent(
     event: WebCalendarEvent,
   ): Promise<{ id: string; url: string }> {
@@ -379,15 +438,13 @@ export class CalendarNativeService {
     const localID = event.id.startsWith("native.")
       ? event.id.split(".")[2]
       : event.id;
-    const existing = this.outgoing().find(
-      (e) => e.id === event.id || e.localEventIdentifier === localID,
-    );
+    const existing = this.outgoingForEvent(event);
     const id =
       existing?.id ??
       (/^(native|sharedcal)\./.test(event.id)
         ? "web_" + (await this.sharingID(event.id))
         : event.id);
-    if (!received)
+    if (!received && !existing?.feedId)
       await this.request(`/events/${id}`, "PUT", {
         title: event.title,
         start: event.start,
@@ -413,7 +470,7 @@ export class CalendarNativeService {
     url.searchParams.set("e", id);
     url.searchParams.set("c", feed);
     url.searchParams.set("title", event.title);
-    await this.refresh();
+    void this.refresh({ background: true });
     return { id, url: url.href };
   }
 
@@ -422,6 +479,7 @@ export class CalendarNativeService {
     patch: Partial<WebCalendarEvent>,
     details?: WebCalendarEvent["details"],
   ): Promise<WebCalendarEvent> {
+    const token = this.api.token();
     const received = this.received().find((e) => e.id === event.id);
     const feedId = event.receivedFeedId ?? received?.feedId;
     if (feedId && (event.receivedAccess ?? received?.access) === "reader")
@@ -439,8 +497,14 @@ export class CalendarNativeService {
       expectedUpdatedAt: event.updatedAt,
       ...(feedId ? { feedId } : {}),
     });
-    await this.refreshAfterEventWrite();
-    return { ...next, ...withWebEventDetails(saved.event), receivedFeedId: feedId, receivedAccess: event.receivedAccess ?? received?.access };
+    const updated = { ...next, ...withWebEventDetails(saved.event), receivedFeedId: feedId, receivedAccess: event.receivedAccess ?? received?.access };
+    if (token === this.api.token()) {
+      const replace = (items: SharedEvent[]) => items.map(item => item.id === event.id ? { ...item, ...updated } : item);
+      this.received.update(replace);
+      this.outgoing.update(replace);
+      this.refreshAfterChange();
+    }
+    return updated;
   }
   async updateCalendarEvent(
     event: WebCalendarEvent,
@@ -448,6 +512,7 @@ export class CalendarNativeService {
     details?: WebCalendarEvent["details"],
     deleting = false,
   ): Promise<WebCalendarEvent> {
+    const token = this.api.token();
     const calendar = this.sharedCalendars().find(
       (c) => c.id === event.calendarId,
     );
@@ -459,9 +524,8 @@ export class CalendarNativeService {
     }
     const next = { ...event, ...patch, id, details: details ?? event.details };
     const events = (calendar.events ?? []).filter((e) => e.id !== id);
-    if (!deleting)
-      events.push({ ...next, details: nativeEventDetails(next.details) });
-    await this.request(
+    if (!deleting) events.push(next);
+    const result = await this.request<{ updatedAt: string }>(
       `/icloud-calendars/${calendar.calendarId}/events`,
       "PUT",
       {
@@ -475,14 +539,12 @@ export class CalendarNativeService {
         windowEnd: calendar.windowEnd,
       },
     );
-    await this.refreshAfterEventWrite();
-    const refreshed = this.sharedCalendars().find(c => c.id === calendar.id);
-    return { ...next, id: event.id, sharedCalendarRevision: refreshed?.eventsUpdatedAt };
-  }
-  private async refreshAfterEventWrite(): Promise<void> {
-    // A refresh started before the write can contain the old event.
-    if (this.inFlight) await this.inFlight;
-    await this.refresh();
+    if (token === this.api.token()) {
+      this.sharedCalendars.update(calendars => calendars.map(item => item.id === calendar.id
+        ? { ...item, events, eventsUpdatedAt: result.updatedAt } : item));
+      this.refreshAfterChange();
+    }
+    return { ...next, id: event.id, sharedCalendarRevision: result.updatedAt };
   }
   async syncOwnedCalendar(calendarID: string, changedEventId: string) {
     const { calendars } = await this.request<{ calendars: any[] }>(

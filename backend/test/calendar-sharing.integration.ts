@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
+import { NativeCalendarStore } from '../src/booking/native-calendar-store';
 import { CalendarService } from '../src/calendar/calendar.service';
 import { CoreService } from '../src/core/core.service';
 import { EmailService } from '../src/email/email.service';
 import { keys } from '../src/store/keys';
 import { nextRevisionTimestamp } from '../src/util/revision';
+import { hashKey } from '../src/util/ids';
 
 type JsonValue = Record<string, any>;
 
@@ -347,11 +349,21 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
   }), 200, 'writer updates canonical event');
   expectStatus(await service.eventRecipients(recipient, eventId), 403, 'writer cannot manage recipients');
 
+  // The original device can be offline. A Writer update retains the owner's binding.
+  const mirrorID = hashKey('local-Original event:');
+  for (const [account, title] of [[owner, 'Work'], [recipient, 'Different account']] as const) {
+    await store.putJSON(`principal/${account.principalId}/native-calendars/source.json`, {
+      id: 'source', title, available: true, events: [{ id: mirrorID }],
+    });
+  }
   const ownerState = expectStatus(await service.sharedState(owner), 200, 'owner shared state');
   const updated = ownerState.outgoing.find((value: any) => value.id === eventId);
   expectStatus(await service.upsertEvent(recipient, eventId, {
     ...eventPayload('Stale writer upload'), feedId: grant.feedId, expectedSequence: updated.sequence - 1,
   }), 409, 'an earlier sync cannot replace a newer event edit');
+  assert.equal(updated.calendarTitle, 'Work');
+  const recipientState = expectStatus(await service.sharedState(recipient), 200, 'recipient shared state');
+  assert.equal(recipientState.received.find((event: any) => event.id === eventId).calendarTitle, undefined);
   assert.equal(updated.title, 'Writer updated event');
   assert.equal(updated.location, 'Varna\nBulgaria');
   assert.equal(updated.url, 'https://example.com/meeting');
@@ -639,6 +651,7 @@ async function testCalendarSharing(service: CalendarService, email: FakeEmailSer
     recipients: [{ email: recipientEmail, access: 'reader' }],
   });
   expectStatus(await service.deleteICloudCalendarSharing(owner, deletedCalendarId), 200, 'creator deletes calendar');
+  expectStatus(await service.iCloudCalendarSharing(owner, deletedCalendarId), 410, 'deleted calendar is unavailable in the editor');
   const deleted = expectStatus(
     await service.iCloudCalendarsSharedWithMe(recipient),
     200,
@@ -794,6 +807,70 @@ async function testLegacySharingWrites(service: CalendarService, store: MemorySt
   console.log(`PASS legacy sharing compatibility: ${kind}, all rights, extension preservation, explicit clear, calendar kind and conflict protection`);
 }
 
+async function testCalendarPlacement(service: CalendarService, store: MemoryStore) {
+  const replicas = new NativeCalendarStore(store as any);
+  const create = async (account: typeof owner, id: string, allowsChanges = true) => {
+    return expectStatus(await replicas.sync(account, {id, deviceId: 'qa', accountLocal: true, allowsChanges,
+      available: true, expectedRevision: 0, title: id, events: []}), 200, 'create test calendar').calendar;
+  };
+  const eventId = 'move-test';
+  await service.upsertEvent(owner, eventId, eventPayload('Calendar move'));
+  const {feedId} = expectStatus(await service.createGrant(owner, {role: 'viewer', eventId}), 201, 'share');
+  await service.rememberReceivedInvite(recipient, {eventId, feedId});
+  const before = await store.getJSON(keys.event(owner.calId, eventId));
+  assert.equal((await service.sharedState(recipient)).body.received.find((e: any) => e.id === eventId).calendarTitle, undefined);
+  expectStatus(await service.placeEvent(recipient, eventId, {feedId, localEventIdentifier: 'old-device-event', calendarTitle: 'Deleted calendar'}), 200, 'legacy device binding');
+  assert.equal((await service.sharedState(recipient)).body.received.find((e: any) => e.id === eventId).calendarTitle, undefined);
+  const imported = await create(recipient, 'imported');
+  const occurrenceID = hashKey('old-device-event:' + new Date(before.start).toISOString().replace(/\.000Z$/, 'Z'));
+  expectStatus(await replicas.sync(recipient, {...imported, expectedRevision: imported.revision,
+    events: [{id: occurrenceID, title: before.title, start: before.start, end: before.end}]}), 200, 'sync EventKit occurrence');
+  assert.equal((await service.sharedState(recipient)).body.received.find((e: any) => e.id === eventId).calendarTitle, 'imported');
+  for (const account of [owner, recipient]) {
+    await create(account, 'first');
+    await create(account, 'second');
+    await create(account, 'locked', false);
+    expectStatus(await service.placeEvent(account, eventId, {feedId, calendarId: 'locked'}), 400, 'read-only destination');
+    for (const calendarId of ['first', 'second', 'second']) {
+      expectStatus(await service.placeEvent(account, eventId, {feedId, calendarId}), 200, 'place and retry');
+    }
+    const docs = await replicas.list(account);
+    assert.equal(docs.find(c => c.id === 'first').events.length, 0);
+    if (account === recipient) assert.equal(docs.find(c => c.id === 'imported').events.length, 0);
+    const [copy] = docs.find(c => c.id === 'second').events;
+    assert.equal(copy.readOnly, account === recipient);
+    assert.equal(copy.details.travelTime, before.details.travelTime);
+    assert.equal(JSON.stringify(copy).includes(feedId), false);
+    const state = (await service.sharedState(account)).body;
+    const sharedCopy = (account === owner ? state.outgoing : state.received).find((e: any) => e.id === eventId);
+    assert.equal(sharedCopy.localEventIdentifier, copy.id);
+    assert.equal(sharedCopy.calendarTitle, 'second');
+  }
+  assert.deepEqual(await store.getJSON(keys.event(owner.calId, eventId)), before);
+  const remove = async (account: typeof owner) => {
+    const doc = (await replicas.list(account)).find(c => c.id === 'second');
+    const tombstone = expectStatus(await replicas.sync(account, {...doc, expectedRevision: doc.revision, available: false}), 200, 'delete calendar').calendar;
+    assert.deepEqual(tombstone.events, []);
+    await service.finishAccountCalendarDeletion(account, tombstone);
+  };
+  await remove(recipient);
+  assert.equal((await service.sharedState(recipient)).body.received.some((e: any) => e.id === eventId), false);
+  assert.equal((await store.getJSON(keys.event(owner.calId, eventId))).status, 'confirmed');
+  expectStatus(await service.rememberReceivedInvite(recipient, {eventId, feedId}), 201, 'accept the shared event again');
+  expectStatus(await service.placeEvent(recipient, eventId, {feedId, calendarId: 'first'}), 200, 'place the newly accepted copy');
+  const first = (await replicas.list(recipient)).find(c => c.id === 'first');
+  const [{placementId, readOnly, ...nativeFields}] = first.events;
+  assert.ok(placementId && readOnly);
+  const synced = expectStatus(await replicas.sync(recipient, {...first, expectedRevision: first.revision, events: [nativeFields]}), 200, 'native refresh').calendar;
+  assert.equal(synced.events[0].placementId, placementId);
+  assert.equal(synced.events[0].readOnly, true);
+  await remove(owner);
+  assert.equal((await service.sharedState(owner)).body.outgoing.some((e: any) => e.id === eventId), false);
+  assert.equal((await store.getJSON(keys.event(owner.calId, eventId))).status, 'cancelled');
+  assert.equal((await replicas.list(recipient)).find(c => c.id === 'first').events.length, 0);
+  console.log('PASS isolated sender/Reader moves, durable selection, retry, protected content and deletion scope');
+}
+
 async function testHetznerInvitationRoutes(): Promise<void> {
   const previousAPI = process.env.API_URL;
   process.env.API_URL = 'https://storage.wonek.com/cloud-calendars-debug';
@@ -848,6 +925,7 @@ async function main(): Promise<void> {
   await seedAccount(store, core, owner, ownerEmail);
   await seedAccount(store, core, recipient, recipientEmail);
 
+  await testCalendarPlacement(service, store);
   await testEventSharing(service, email, store);
   await testPastEventInvitations(service, store);
   await testCalendarSharing(service, email, kind);

@@ -94,7 +94,7 @@ enum AppLocalCalendarSyncService {
                 .iCloudCalendarsSharedWithMe(session: session)
             guard CalendarFeedSession.isCurrent(session) else { return 0 }
             var remoteKeys = Set<String>()
-            for fetched in remote where !SharedICloudCalendarLocalStore.isRemovedLocally(shareID: fetched.id) {
+            for fetched in remote where !fetched.wasDeletedByOwner && !SharedICloudCalendarLocalStore.isRemovedLocally(shareID: fetched.id) {
                 let calendar = try await SharedICloudCalendarLocalStore.migrateReceivedCalendarIfNeeded(fetched, session: session)
                 remoteKeys.insert(AppLocalCalendarStore.remoteKey(
                     ownerID: calendar.ownerId,

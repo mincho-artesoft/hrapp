@@ -84,6 +84,9 @@ enum CalendarPalette {
         NSColor(srgbRed: 0.949, green: 0.949, blue: 0.969, alpha: 1), .black)
     static let secondaryGroupedBackground = adaptive(.white,
         NSColor(srgbRed: 0.110, green: 0.110, blue: 0.118, alpha: 1))
+    static let gray5 = adaptive(
+        NSColor(srgbRed: 0.898, green: 0.898, blue: 0.918, alpha: 1),
+        NSColor(srgbRed: 0.173, green: 0.173, blue: 0.180, alpha: 1))
     static let gray6 = adaptive(
         NSColor(srgbRed: 0.949, green: 0.949, blue: 0.969, alpha: 1),
         NSColor(srgbRed: 0.110, green: 0.110, blue: 0.118, alpha: 1))
@@ -97,6 +100,7 @@ enum CalendarPalette {
     static let background = Color(uiColor: .systemBackground)
     static let groupedBackground = Color(uiColor: .systemGroupedBackground)
     static let secondaryGroupedBackground = Color(uiColor: .secondarySystemGroupedBackground)
+    static let gray5 = Color(uiColor: .systemGray5)
     static let gray6 = Color(uiColor: .systemGray6)
     static let tertiaryFill = Color(uiColor: .tertiarySystemFill)
     static let selectedCalendar = Color(uiColor: .systemGray4.withAlphaComponent(0.5))

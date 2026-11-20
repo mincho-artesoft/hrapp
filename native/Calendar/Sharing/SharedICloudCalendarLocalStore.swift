@@ -250,11 +250,26 @@ enum SharedICloudCalendarLocalStore {
 
     static func markOwnedCalendarDeleted(shareID: String) async {
         guard let session = CalendarFeedSession.existing else { return }
+        let key = deletionQueueKey(session)
+        var pending = Set(UserDefaults.standard.stringArray(forKey: key) ?? [])
+        pending.insert(shareID)
+        UserDefaults.standard.set(Array(pending), forKey: key)
+        await sendOwnedCalendarDeletion(shareID, session: session)
+    }
+
+    private static func deletionQueueKey(_ session: CloudCalendarsAPI.Session) -> String {
+        "ownedCalendarDeletions." + DeviceCalendarReplica.storageHost(for: CloudCalendarsAPI.baseURL) + "." + session.calendarId
+    }
+
+    private static func sendOwnedCalendarDeletion(_ shareID: String, session: CloudCalendarsAPI.Session) async {
+        let key = deletionQueueKey(session)
         do {
             try await CloudCalendarsAPI.deleteICloudCalendarSharing(
                 calendarId: shareID,
                 session: session
             )
+            UserDefaults.standard.set((UserDefaults.standard.stringArray(forKey: key) ?? []).filter { $0 != shareID }, forKey: key)
+            guard CalendarFeedSession.isCurrent(session) else { return }
             var values = ownedIdentifiers
             values.removeValue(forKey: shareID)
             ownedIdentifiers = values
@@ -283,6 +298,10 @@ enum SharedICloudCalendarLocalStore {
         isUploading = true
         defer { isUploading = false }
 
+        for shareID in UserDefaults.standard.stringArray(forKey: deletionQueueKey(session)) ?? [] {
+            await sendOwnedCalendarDeletion(shareID, session: session)
+        }
+        guard CalendarFeedSession.isCurrent(session) else { return 0 }
         if onlyShareID == nil { await discoverOwnedCalendars(in: eventStore, session: session) }
 
         let calendar = Calendar.current
@@ -292,21 +311,8 @@ enum SharedICloudCalendarLocalStore {
         var validMappings = ownedIdentifiers
 
         for (shareID, localIdentifier) in ownedIdentifiers where onlyShareID == nil || shareID == onlyShareID {
-            guard let localCalendar = eventStore.calendar(withIdentifier: localIdentifier) else {
-                do {
-                    try await CloudCalendarsAPI.deleteICloudCalendarSharing(
-                        calendarId: shareID,
-                        session: session
-                    )
-                    validMappings.removeValue(forKey: shareID)
-                } catch {
-                    print(
-                        "Shared calendar deletion sync failed for \(shareID): "
-                            + error.localizedDescription
-                    )
-                }
-                continue
-            }
+            // EventKit may temporarily lose access to a provider or return an incomplete inventory.
+            guard let localCalendar = eventStore.calendar(withIdentifier: localIdentifier) else { continue }
 
             do {
                 let existing = try await CloudCalendarsAPI.iCloudCalendarSharing(

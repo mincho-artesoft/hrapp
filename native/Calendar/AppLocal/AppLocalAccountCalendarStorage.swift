@@ -30,15 +30,8 @@ final class AppLocalAccountCalendarStorage: AccountLocalCalendarStorage {
             event.title = item.title; event.startDate = item.startDate; event.endDate = item.endDate
             event.isAllDay = item.allDay; event.location = item.location ?? ""; event.urlString = item.url ?? ""
             event.providerReadOnly = item.readOnly
-            if let details = item.details {
-                let decoded = try JSONDecoder().decode(SharedEventDetails.self, from: JSONEncoder().encode(details))
-                event.syncedFields = .init(decoded)
-                event.notes = decoded.notes ?? ""; event.timeZoneIdentifier = decoded.timeZone ?? calendar.timeZoneIdentifier
-                event.alarms = decoded.alarms.compactMap { $0.relativeOffset.map { AppLocalEventAlarm(relativeOffset: $0) } }
-                event.recurrenceRules = decoded.recurrenceRules; event.videoCallURL = decoded.videoCallURL
-                event.travelTime = decoded.travelTime; event.structuredLocation = decoded.structuredLocation
-                event.attachments = decoded.attachments?.map(AppLocalEventAttachment.init)
-            }
+            event.isCancelled = item.status == "cancelled"
+            event.applySharedDetails(try MacEventShareSnapshot.details(item))
             try store.saveTransferredEvent(event)
         }
         CalendarViewModel.shared.selectedCalendarIDs.insert(id)

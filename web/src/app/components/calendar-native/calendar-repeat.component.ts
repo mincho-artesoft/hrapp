@@ -13,7 +13,7 @@ import type {CalendarRepeatRule} from '../../core/calendar-platform-api.service'
  <p class="summary">{{summary()}}</p>`,
  styles:[`:host{display:block}.group{background:var(--cal-panel);border-radius:16px;padding:0 16px;margin-bottom:24px}.row{display:flex;align-items:center;width:100%;gap:12px;min-height:46px;background:none;border:0;color:var(--cal-text);font:17px var(--font-body);padding:10px 0;text-align:left}.row+.row{border-top:1px solid var(--cal-line)}.row>span:first-child{flex:1}.row input[type=number]{width:60px;text-align:right;background:transparent;border:0;color:var(--cal-blue);font:inherit;outline:none}.unit{color:var(--cal-muted)}cc-symbol{width:19px;height:19px;color:var(--cal-blue)}button{cursor:pointer}.grid{display:grid;gap:4px;padding:12px}.days{grid-template-columns:repeat(7,1fr)}.months{grid-template-columns:repeat(4,1fr)}.grid button{background:none;color:var(--cal-text);border:0;border-radius:8px;font:17px var(--font-body);min-height:40px}.grid button.selected{background:var(--cal-blue);color:white}.ordinal{justify-content:center;gap:24px;padding:16px}.summary{font-size:13px;color:var(--cal-muted);padding:0 16px;line-height:1.5}.switch{appearance:none;width:51px;height:31px;background:#78788055;border-radius:99px;position:relative;cursor:pointer}.switch:checked{background:var(--cal-blue)}.switch:after{content:'';position:absolute;width:27px;height:27px;left:2px;top:2px;border-radius:50%;background:white;transition:transform .18s}.switch:checked:after{transform:translateX(20px)}`]})
 export class CalendarRepeatComponent{
- rule=input.required<CalendarRepeatRule>();start=input.required<string>();ruleChange=output<CalendarRepeatRule>();
+ singleMonthDay=input(false);rule=input.required<CalendarRepeatRule>();start=input.required<string>();ruleChange=output<CalendarRepeatRule>();
  frequencies=[{value:'daily',label:'Daily'},{value:'weekly',label:'Weekly'},{value:'monthly',label:'Monthly'},{value:'yearly',label:'Yearly'}];
  weekdays=Array.from({length:7},(_,i)=>({value:i+1,label:new Date(2026,10,1+i).toLocaleString(undefined,{weekday:'long'})}));
  monthDays=Array.from({length:31},(_,i)=>i+1);months=Array.from({length:12},(_,i)=>({value:i+1,label:new Date(2026,i,1).toLocaleString(undefined,{month:'short'})}));
@@ -30,8 +30,8 @@ export class CalendarRepeatComponent{
  frequency(value:string){this.ruleChange.emit({frequency:value as CalendarRepeatRule['frequency'],interval:this.rule().interval||1,endDate:this.rule().endDate});}
  toggle(values:number[],value:number){const next=values.includes(value)?values.filter(v=>v!==value):[...values,value];return next.length?next.sort((a,b)=>a-b):values;}
  toggleWeekday(value:number){this.patch({daysOfTheWeek:this.toggle(this.selectedWeekdays(),value).map(weekday=>({weekday}))});}
- toggleMonthDay(value:number){this.patch({daysOfTheMonth:this.toggle(this.selectedMonthDays(),value)});}
- toggleMonth(value:number){this.patch({monthsOfTheYear:this.toggle(this.selectedMonths(),value)});}
+ toggleMonthDay(value:number){this.patch({daysOfTheMonth:this.singleMonthDay()?[value]:this.toggle(this.selectedMonthDays(),value)});}
+ toggleMonth(value:number){this.patch({monthsOfTheYear:this.singleMonthDay()?[value]:this.toggle(this.selectedMonths(),value)});}
  ordinal(enabled:boolean){this.patch({daysOfTheWeek:enabled?[{weekday:new Date(this.start()+'T12:00').getDay()+1}]:undefined,setPositions:enabled?[1]:undefined,daysOfTheMonth:undefined});}
  ordinalDay(){const days=this.rule().daysOfTheWeek?.map(d=>d.weekday)??[1];return days.length===7?'8':days.length===5?'9':days.length===2&&days.includes(1)&&days.includes(7)?'10':''+days[0];}
  setOrdinalDay(value:string){const n=+value;this.patch({daysOfTheWeek:(n===8?[1,2,3,4,5,6,7]:n===9?[2,3,4,5,6]:n===10?[1,7]:[n]).map(weekday=>({weekday})),setPositions:this.rule().setPositions??[1]});}

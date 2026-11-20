@@ -29,7 +29,7 @@ const hourHeight = 40;
                [style.z-index]="block.depth * 2 + (block.id === selected().id ? 1 : 0)">
             <div class="content" [style.max-height.px]="Math.max(0, (block.contentEndMinutes - Math.max(0, block.startMinutes)) * hourHeight / 60 - 2)">
               @if (block.startMinutes >= 0 || block.id === selected().id) {
-                <strong>@if (block.data.readOnly) {<cc-symbol name="lock.fill" /> }{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" />}</strong>
+                <strong [class.cancelled]="block.data.status === 'cancelled'">@if (block.data.readOnly) {<cc-symbol name="lock.fill" /> }{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" />}</strong>
                 @if (block.data.location) {
                   <span><cc-symbol name="location" /> {{block.data.location}}</span>
                 }
@@ -57,6 +57,7 @@ const hourHeight = 40;
     .selected:before {display:none}
     .content {overflow:hidden; line-height:1.2}
     .content strong, .content span {display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden}
+    strong.cancelled {text-decoration:line-through}
     strong {font-weight:600; color:var(--event-title)}
     cc-symbol {width:9px; height:9px; vertical-align:baseline}
   `],

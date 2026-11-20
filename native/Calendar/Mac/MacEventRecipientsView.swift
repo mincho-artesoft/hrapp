@@ -20,11 +20,7 @@ struct MacEventRecipientsView: View {
     @State private var accessDenied = false
 
     private var localEvent: EKEvent? {
-        guard let identifier = event.localEventIdentifier else { return nil }
-        return store.events.first { candidate in
-            store.local.record(for: candidate)?.id == identifier || candidate.eventIdentifier == identifier ||
-            candidate.calendarItemIdentifier == identifier || store.backend.adapter.identity(candidate) == identifier
-        }
+        MacEventSharing.localEvent(for: event, received: !isOutgoing, store: store)
     }
 
     var body: some View {

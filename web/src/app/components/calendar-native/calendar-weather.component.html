@@ -10,7 +10,7 @@
       [style.animation-direction]="cloud.reverse ? 'reverse' : 'normal'"></i>
   }
 </div>
-<div class="weather-background" [class.touch-layout]="!isDesktop()">
+<div class="weather-background" [class.touch-layout]="!isDesktop()" [class.calendar-scroll-list]="regions()">
   <!-- Unified CalendarScreenHeader (white tint on Weather sky, matching native Mac & iOS) -->
   @if (!regions()) {
     <div class="weather-topbar">
@@ -352,7 +352,7 @@
                 </div>
               </div>
             </button>
-            <button type="button" class="weather-card metric full-width instrument-card moon-card" (click)="detailDate.set(sky.date); skyDetail.set('moon')">
+            <button type="button" class="weather-card metric full-width instrument-card moon-card" (click)="skyDetail.set('moon')">
               <h3><cc-symbol [name]="moonSymbol(sky.moonPhase)" />{{ "MOON PHASE" | nativeText }}</h3>
               <div class="moon-reading">
                 <div class="reading-rows">
@@ -446,7 +446,7 @@
           [attr.aria-label]="'Close' | nativeText"
           (click)="detailOpen.set(false)"
         >
-          <cc-symbol [pointSize]="17" name="xmark" />
+          <cc-symbol name="xmark" />
         </button>
         <h2><cc-symbol [name]="activeMetric().symbol" />{{ activeMetric().label | nativeText }}</h2>
         <span class="header-spacer"></span>
@@ -468,68 +468,41 @@
     </section>
   </div>
 }
-@if (skyDetail(); as kind) {
+@if (skyDetail() === 'moon') {
+  @if (weather(); as forecast) {
+    <div class="weather-modal" (click)="skyDetail.set(null)">
+      <section class="forecast-detail moon-detail" role="dialog" aria-modal="true" aria-labelledby="moon-detail-title"
+        cdkTrapFocus [cdkTrapFocusAutoCapture]="true" (click)="$event.stopPropagation()">
+        <cc-moon-detail [snapshot]="forecast" [now]="solarMinute()" [firstWeekday]="firstWeekday()" [clock]="clock"
+          (dismiss)="skyDetail.set(null)" />
+      </section>
+    </div>
+  }
+} @else if (skyDetail() === 'solar') {
   <div class="weather-modal" (click)="skyDetail.set(null)">
     <section role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
       <header>
-        <button
-          type="button"
-          class="done"
-          aria-label="Close"
-          (click)="skyDetail.set(null)"
-        >
+        <button type="button" class="done" [attr.aria-label]="'Close' | nativeText" (click)="skyDetail.set(null)">
           <cc-symbol [pointSize]="17" name="xmark" />
         </button>
         <h2 class="sky-modal-title">
-          @if (kind === "solar") {
-            <cc-symbol [multicolor]="true" name="sunrise.fill" />
-            <span>{{ "Sunrise and Sunset" | nativeText }}</span>
-            <cc-symbol [multicolor]="true" name="sunset.fill" />
-          } @else {
-            <span>{{ "Moon" | nativeText }}</span>
-          }
+          <cc-symbol [multicolor]="true" name="sunrise.fill" />
+          <span>{{ "Sunrise and Sunset" | nativeText }}</span>
+          <cc-symbol [multicolor]="true" name="sunset.fill" />
         </h2>
         <span class="header-spacer"></span>
       </header>
       <div class="detail-days hide-scroll-indicators">
         @for (d of weather()?.skyDays?.slice(0, 10); track d.date) {
-          <button
-            type="button"
-            [class.selected]="detailDate() === d.date"
-            (click)="detailDate.set(d.date)"
-          >
-            {{ d.date.slice(8) }}
-          </button>
+          <button type="button" [class.selected]="detailDate() === d.date" (click)="detailDate.set(d.date)">{{ d.date.slice(8) }}</button>
         }
       </div>
       @if (skyDay(); as sky) {
-        @if (kind === "solar" || moonArtwork(sky.moonPhase)) {
-          <img
-            class="sky-illustration"
-            [src]="
-              kind === 'solar'
-                ? '/icons/calendar-native/artwork/weather_sun_realistic.png'
-                : moonArtwork(sky.moonPhase)
-            "
-            alt=""
-          />
-        }
-        <h2>
-          {{
-            kind === "solar"
-              ? ("Sunrise" | nativeText)
-              : (moonPhase(sky.moonPhase) | nativeText)
-          }}
-        </h2>
-        <p>
-          {{
-            kind === "solar"
-              ? clock(sky.sunrise)
-              : ("Moonrise" | nativeText) + " " + clock(sky.moonrise)
-          }}
-        </p>
-        <h2>{{ (kind === "solar" ? "Sunset" : "Moonset") | nativeText }}</h2>
-        <p>{{ kind === "solar" ? clock(sky.sunset) : clock(sky.moonset) }}</p>
+        <img class="sky-illustration" src="/icons/calendar-native/artwork/weather_sun_realistic.png" alt="" />
+        <h2>{{ "Sunrise" | nativeText }}</h2>
+        <p>{{ clock(sky.sunrise) }}</p>
+        <h2>{{ "Sunset" | nativeText }}</h2>
+        <p>{{ clock(sky.sunset) }}</p>
         <p>{{ weather()?.place?.name }} · {{ detailDate() }}</p>
       }
     </section>

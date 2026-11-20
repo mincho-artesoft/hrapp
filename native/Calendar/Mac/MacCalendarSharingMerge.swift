@@ -24,6 +24,7 @@ enum MacCalendarSharingMerge {
         // The sharing API has calendar-level access and does not carry this
         // device/provider flag. It must not trigger a change on every poll.
         value.readOnly = nil
+        value.status = nil
         return value
     }
 

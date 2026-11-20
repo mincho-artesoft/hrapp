@@ -11,7 +11,7 @@ export interface PointerState {
 }
 
 /**
- * A single requestAnimationFrame loop for the whole site.
+ * One frame scheduler for scroll- and pointer-driven effects across the site.
  *
  * Every scroll- or pointer-driven effect subscribes here instead of adding its
  * own listener, so we pay for exactly one rAF, one scroll listener and one
@@ -40,8 +40,7 @@ export class ScrollService {
 
   private readonly listeners = new Set<(t: number) => void>();
 
-  private rafId = 0;
-  private running = false;
+  private rafId: number | null = null;
   private lastY = 0;
   private smoothVel = 0;
   private targetPX = 0.5;
@@ -62,49 +61,41 @@ export class ScrollService {
         window.addEventListener('pointermove', this.onPointerMove, { passive: true });
       }
       this.onScroll();
-      this.start();
     });
 
     this.destroyRef.onDestroy(() => this.dispose());
   }
 
-  /** Register a per-frame callback. Returns an unsubscribe function. */
+  /** Notify a scroll effect when input, layout or easing changes. */
   onFrame(fn: (time: number) => void): () => void {
     this.listeners.add(fn);
+    this.requestFrame();
     return () => this.listeners.delete(fn);
   }
 
-  // ---------------------------------------------------------------- internals
-
-  private start(): void {
-    if (this.running) return;
-    this.running = true;
-    const tick = (time: number) => {
-      this.rafId = requestAnimationFrame(tick);
-
-      // Ease the pointer so parallax glides instead of snapping.
-      this.easedPX = lerp(this.easedPX, this.targetPX, 0.075);
-      this.easedPY = lerp(this.easedPY, this.targetPY, 0.075);
-
-      const px = this.easedPX;
-      const py = this.easedPY;
-
-      const prev = this.pointer();
-      if (Math.abs(prev.x - px) > 0.0008 || Math.abs(prev.y - py) > 0.0008) {
-        this.pointer.set({ x: px, y: py, ex: (px - 0.5) * 2, ey: (py - 0.5) * 2 });
-      }
-
-      // Decay velocity so it settles to zero when scrolling stops.
-      this.smoothVel = lerp(this.smoothVel, 0, 0.08);
-      if (Math.abs(this.smoothVel) < 0.01) this.smoothVel = 0;
-      if (Math.abs(this.velocity() - this.smoothVel) > 0.05) {
-        this.velocity.set(this.smoothVel);
-      }
-
-      for (const fn of this.listeners) fn(time);
-    };
-    this.rafId = requestAnimationFrame(tick);
+  requestFrame(): void {
+    if (!this.browser || this.rafId !== null) return;
+    this.rafId = this.zone.runOutsideAngular(() => requestAnimationFrame(this.tick));
   }
+
+  private readonly tick = (time: number): void => {
+    this.rafId = null;
+    const easing = Math.abs(this.targetPX - this.easedPX) > 0.0008 ||
+      Math.abs(this.targetPY - this.easedPY) > 0.0008;
+    const x = this.easedPX = easing ? lerp(this.easedPX, this.targetPX, 0.075) : this.targetPX;
+    const y = this.easedPY = easing ? lerp(this.easedPY, this.targetPY, 0.075) : this.targetPY;
+    const previous = this.pointer();
+    if (previous.x !== x || previous.y !== y) {
+      this.pointer.set({ x, y, ex: (x - 0.5) * 2, ey: (y - 0.5) * 2 });
+    }
+    this.smoothVel = lerp(this.smoothVel, 0, 0.08);
+    if (Math.abs(this.smoothVel) < 0.01) this.smoothVel = 0;
+    if (!this.smoothVel || Math.abs(this.velocity() - this.smoothVel) > 0.05) {
+      this.velocity.set(this.smoothVel);
+    }
+    for (const fn of this.listeners) fn(time);
+    if (easing || this.smoothVel !== 0) this.requestFrame();
+  };
 
   private readonly onScroll = (): void => {
     const y = window.scrollY || window.pageYOffset || 0;
@@ -118,17 +109,19 @@ export class ScrollService {
 
     const scrolled = y > 24;
     if (scrolled !== this.isScrolled()) this.isScrolled.set(scrolled);
+    this.requestFrame();
   };
 
   private readonly onPointerMove = (e: PointerEvent): void => {
     this.targetPX = clamp(e.clientX / Math.max(1, window.innerWidth));
     this.targetPY = clamp(e.clientY / Math.max(1, window.innerHeight));
+    this.requestFrame();
   };
 
   private dispose(): void {
     if (!this.browser) return;
-    cancelAnimationFrame(this.rafId);
-    this.running = false;
+    if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+    this.rafId = null;
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('resize', this.onScroll);
     window.removeEventListener('pointermove', this.onPointerMove);

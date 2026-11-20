@@ -21,6 +21,9 @@ struct AppLocalEventEditorTarget: Identifiable {
     let initialEventKitCalendarID: String?
     let initialIsAllDay: Bool
     let startsInEditingMode: Bool
+    var sharedSource: SharedEventDetailSource?
+    var readOnly = false
+    var displaySupplement: EventKitEventSupplement?
 
     init(eventID: String, startsInEditingMode: Bool = false) {
         self.eventID = eventID
@@ -132,6 +135,7 @@ struct AppLocalEventEditorView: View {
         let endDate: Date
         let isAllDay: Bool
         let selectedCalendarID: String
+        let providerOptions: CalendarProviderEventOptions
         let alertOffset: String
         let secondAlertOffset: String
         let repeatOption: String
@@ -243,6 +247,7 @@ struct AppLocalEventEditorView: View {
     @State private var startDate: Date
     @State private var endDate: Date
     @State private var isAllDay: Bool
+    @State private var providerOptions: CalendarProviderEventOptions
     @State private var selectedCalendarID: String
     @State private var alertOffset: AlertOffset
     @State private var secondAlertOffset: AlertOffset
@@ -255,6 +260,9 @@ struct AppLocalEventEditorView: View {
     @State private var videoCallURL: String
     @State private var notes: String
     @State private var attachments: [AppLocalEventAttachment]
+    @State private var remoteSequence: Int?
+    @State private var savedRemoteSnapshot: SharedEventDetailSnapshot?
+    @State private var savingRemote = false
     @State private var isEditing: Bool
     @State private var showDeleteConfirmation = false
     @State private var showFileImporter = false
@@ -295,7 +303,7 @@ struct AppLocalEventEditorView: View {
             ?? ""
         let systemAlarms = (system?.alarms ?? []).sorted { $0.relativeOffset > $1.relativeOffset }
         let localAlarms = local?.alarms.map(\.relativeOffset) ?? []
-        let systemSupplement = MainActor.assumeIsolated {
+        let systemSupplement = target.displaySupplement ?? MainActor.assumeIsolated {
             system.flatMap(EventKitEventSupplementStore.supplement(for:))
         }
 
@@ -306,6 +314,7 @@ struct AppLocalEventEditorView: View {
         _endDate = State(initialValue: initialEnd)
         _isAllDay = State(initialValue: initialAllDay)
         _selectedCalendarID = State(initialValue: initialCalendar)
+        _providerOptions = State(initialValue: CalendarProviderEventOptions(local?.providerSnapshot))
         _alertOffset = State(initialValue: Self.alert(for: localAlarms.first ?? systemAlarms.first?.relativeOffset))
         _secondAlertOffset = State(initialValue: Self.alert(for: localAlarms.dropFirst().first ?? systemAlarms.dropFirst().first?.relativeOffset))
         _recurrencePattern = State(initialValue: CalendarRecurrencePattern(
@@ -319,7 +328,7 @@ struct AppLocalEventEditorView: View {
                 ?? 1
         ))
         _recurrenceEndDate = State(initialValue:
-            local?.recurrenceRules?.first?.endDate.flatMap(ISO8601DateFormatter().date(from:))
+            local?.recurrenceRules?.first?.endDate.flatMap(DeviceCalendarEvent.date)
                 ?? system?.recurrenceRules?.first?.recurrenceEnd?.endDate
         )
         // EventKit's public EKEvent API does not expose Calendar.app's travel-time value.
@@ -331,7 +340,9 @@ struct AppLocalEventEditorView: View {
         _videoCallURL = State(initialValue: local?.videoCallURL ?? systemSupplement?.videoCallURL ?? "")
         _notes = State(initialValue: local?.notes ?? system?.notes ?? "")
         _attachments = State(initialValue: local?.attachments ?? systemSupplement?.attachments ?? [])
-        _isEditing = State(initialValue: target.startsInEditingMode || (local == nil && system?.eventIdentifier == nil))
+        _remoteSequence = State(initialValue: target.sharedSource?.event.sequence)
+        _isEditing = State(initialValue: !target.readOnly && (target.startsInEditingMode ||
+            (target.sharedSource == nil && local == nil && system?.eventIdentifier == nil)))
 #if DEBUG
         _showLocationEditor = State(
             initialValue: UserDefaults.standard.bool(forKey: "EventEditorReferencePreview")
@@ -344,8 +355,13 @@ struct AppLocalEventEditorView: View {
         target.eventID.flatMap(localStore.event(id:))
     }
 
+    private var editorProvider: CalendarEditorProvider? {
+        guard target.sharedSource == nil, let calendar = localStore.calendar(id: selectedCalendarID) else { return nil }
+        return CalendarEditorProvider(id: calendar.id, source: calendar.providerSource)
+    }
+
     private var isNew: Bool {
-        target.eventID == nil && target.eventKitEvent?.eventIdentifier == nil
+        !target.readOnly && target.sharedSource == nil && target.eventID == nil && target.eventKitEvent?.eventIdentifier == nil
     }
 
     private var choices: [CalendarChoice] {
@@ -388,6 +404,12 @@ struct AppLocalEventEditorView: View {
 
     private var selectedChoice: CalendarChoice? { choices.first { $0.id == selectedCalendarID } }
 
+    private var calendarDisplayTitle: String {
+        if let title = selectedChoice?.title, !title.isEmpty { return title }
+        if let title = target.eventKitEvent?.calendar?.title, !title.isEmpty { return title }
+        return target.sharedSource?.event.calendarTitle ?? localizedEventEditorString("Choose Calendar")
+    }
+
     private var existingCalendarKind: CalendarKind? {
         if target.eventID != nil { return .appLocal }
         if target.eventKitEvent?.eventIdentifier != nil { return .eventKit }
@@ -395,6 +417,8 @@ struct AppLocalEventEditorView: View {
     }
 
     private var payloadIsReadOnly: Bool {
+        if target.readOnly { return true }
+        if let source = target.sharedSource, source.usesServerRecord { return !source.canEdit }
         if let event = target.eventKitEvent, event.eventIdentifier != nil {
             return event.calendar?.allowsContentModifications != true
                 || SharedInviteTracker.isReadOnly(event)
@@ -407,6 +431,8 @@ struct AppLocalEventEditorView: View {
     }
 
     private var canShare: Bool {
+        if target.readOnly { return false }
+        if let source = target.sharedSource { return source.canShare }
         if let event = target.eventKitEvent, event.eventIdentifier != nil {
             return SharedInviteTracker.canShare(event)
         }
@@ -417,6 +443,7 @@ struct AppLocalEventEditorView: View {
     }
 
     private var canDelete: Bool {
+        if target.sharedSource?.usesServerRecord == true || target.readOnly { return false }
         if let event = target.eventKitEvent, event.eventIdentifier != nil {
             return event.calendar?.allowsContentModifications == true
                 && !SharedInviteTracker.isReadOnly(event)
@@ -434,6 +461,7 @@ struct AppLocalEventEditorView: View {
             endDate: endDate,
             isAllDay: isAllDay,
             selectedCalendarID: selectedCalendarID,
+            providerOptions: providerOptions,
             alertOffset: alertOffset.rawValue,
             secondAlertOffset: secondAlertOffset.rawValue,
             repeatOption: repeatOption.rawValue,
@@ -465,6 +493,8 @@ struct AppLocalEventEditorView: View {
             .navigationTitle(LocalizedStringKey(isNew ? "New Event" : (isEditing ? "Edit Event" : "Event Details")))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbarContent }
+            .disabled(savingRemote)
+            .interactiveDismissDisabled(savingRemote)
             .fileImporter(
                 isPresented: $showFileImporter,
                 allowedContentTypes: [.data],
@@ -475,7 +505,7 @@ struct AppLocalEventEditorView: View {
                 EventLocationEditorSheet(
                     location: $location,
                     structuredLocation: $structuredLocation,
-                    videoCallURL: $videoCallURL,
+                    videoCallURL: $videoCallURL, allowsVideoLink: editorProvider == nil,
                     searchModel: locationSearch
                 )
                 .presentationDetents([.large])
@@ -521,7 +551,7 @@ struct AppLocalEventEditorView: View {
                     Button {
                         showLocationEditor = true
                     } label: {
-                        Text(location.isEmpty ? localizedEventEditorString("Location or Video Call") : location)
+                        Text(location.isEmpty ? localizedEventEditorString(editorProvider == nil ? "Location or Video Call" : "Location") : location)
                             .foregroundStyle(location.isEmpty ? AnyShapeStyle(.tertiary) : AnyShapeStyle(.primary))
                             .lineLimit(1)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -553,11 +583,12 @@ struct AppLocalEventEditorView: View {
                 CalendarDateTimePickerRow(title: "Ends", id: "end", selection: $endDate,
                     range: startDate...Date.distantFuture, showsTime: !isAllDay,
                     expanded: $expandedDatePicker)
-                travelTimeMenu
+                if editorProvider == nil { travelTimeMenu }
             }
             .calendarDatePickerColumns([startDate, endDate])
             .environment(\.timeZone, eventTimeZone)
 
+            if editorProvider == nil || isNew {
             Section {
                 LabeledContent("Repeat") {
                     Menu {
@@ -645,7 +676,11 @@ struct AppLocalEventEditorView: View {
                 }
             }
 
+            }
             Section {
+                if target.sharedSource?.usesServerRecord == true {
+                    LabeledContent("Calendar", value: calendarDisplayTitle)
+                } else {
                 LabeledContent("Calendar") {
                     Menu {
                         Picker("Calendar", selection: $selectedCalendarID) {
@@ -660,13 +695,15 @@ struct AppLocalEventEditorView: View {
                             Circle()
                                 .fill(eventColor)
                                 .frame(width: 11, height: 11)
-                            menuValueLabel(Text(selectedChoice?.title ?? ""))
+                            menuValueLabel(Text(calendarDisplayTitle))
                         }
                     }
                     .tint(.secondary)
                 }
+                }
             }
 
+            if editorProvider == nil {
             Section {
                 alertMenu(label: "Alert", selection: $alertOffset)
                 .onChange(of: alertOffset) { _, value in
@@ -697,10 +734,14 @@ struct AppLocalEventEditorView: View {
                 }
             }
 
+            }
+            if let editorProvider {
+                Section { CalendarProviderEventFields(provider: editorProvider, options: $providerOptions) }
+            }
             Section {
-                TextField("URL", text: $urlString)
+                if editorProvider == nil { TextField("URL", text: $urlString)
                     .keyboardType(.URL)
-                    .textInputAutocapitalization(.never)
+                    .textInputAutocapitalization(.never) }
                 TextField("Notes", text: $notes, axis: .vertical).lineLimit(3...8)
             }
 
@@ -775,7 +816,7 @@ struct AppLocalEventEditorView: View {
             }
 
             Section {
-                if choices.contains(where: \.canEdit) {
+                if (individualShare.map { !$0.event.isCancelled } ?? (!payloadIsReadOnly || canMoveReadOnlySystemCopy)) && choices.contains(where: \.canEdit) {
                     LabeledContent("Calendar") {
                         Menu {
                             Picker(
@@ -795,23 +836,24 @@ struct AppLocalEventEditorView: View {
                         } label: {
                             HStack(spacing: 8) {
                                 Circle().fill(eventColor).frame(width: 11, height: 11)
-                                menuValueLabel(Text(selectedChoice?.title ?? ""))
+                                menuValueLabel(Text(calendarDisplayTitle))
                             }
                         }
                         .tint(.secondary)
                     }
-                } else {
+                } else if !(selectedChoice?.title ?? target.eventKitEvent?.calendar?.title ?? "").isEmpty {
                     LabeledContent("Calendar") {
                         HStack(spacing: 8) {
                             Circle()
                                 .fill(eventColor)
                                 .frame(width: 11, height: 11)
-                            Text(selectedChoice?.title ?? "")
+                            Text(selectedChoice?.title ?? target.eventKitEvent?.calendar?.title ?? "")
                                 .foregroundStyle(.secondary)
                         }
                     }
                 }
 
+                if editorProvider == nil {
                 if payloadIsReadOnly || selectedChoice?.canEdit != true {
                     LabeledContent("Travel Time", value: travelTime.title)
                 } else {
@@ -819,9 +861,14 @@ struct AppLocalEventEditorView: View {
                         .onChange(of: travelTime) { _, _ in saveDetailChanges() }
                 }
 
+                }
             }
 
-            Section {
+            if let editorProvider {
+                Section { CalendarProviderEventFields(provider: editorProvider, options: $providerOptions) }
+                    .disabled(payloadIsReadOnly)
+                    .onChange(of: providerOptions) { _, _ in if !payloadIsReadOnly && hasUnsavedChanges { saveDetailChanges() } }
+            } else { Section {
                 if payloadIsReadOnly {
                     LabeledContent("Alert") {
                         Text(alertOffset.title).foregroundStyle(.secondary)
@@ -844,6 +891,7 @@ struct AppLocalEventEditorView: View {
                 }
             }
 
+            }
             if !attachments.isEmpty {
                 Section {
                     ForEach(attachments) { attachment in
@@ -992,14 +1040,7 @@ struct AppLocalEventEditorView: View {
     }
 
     private func menuValueLabel(_ text: Text) -> some View {
-        HStack(spacing: 4) {
-            text
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-            Image(systemName: "chevron.up.chevron.down")
-                .font(.caption2.weight(.semibold))
-                .foregroundStyle(.secondary)
-        }
+        CalendarEventEditorMenuValue(text: text)
     }
 
     private var repeatDisplayText: Text {
@@ -1034,7 +1075,7 @@ struct AppLocalEventEditorView: View {
             get: { repeatOption.frequency ?? .daily },
             set: { value in repeatOption = RepeatOption.allCases.first { $0.frequency == value } ?? .daily }),
             interval: $repeatInterval, pattern: $recurrencePattern,
-            startDate: startDate, timeZone: eventTimeZone)
+            startDate: startDate, timeZone: eventTimeZone, singleMonthDay: editorProvider == .microsoft)
     }
 
     private func alertMenu(
@@ -1133,7 +1174,7 @@ struct AppLocalEventEditorView: View {
     private var detailTimelineItems: [EventDetailTimelineItem] {
         let selectedItem = EventDetailTimelineItem(
             id: "selected-event",
-            calendarTitle: selectedChoice?.title ?? "",
+            calendarTitle: selectedChoice?.title ?? target.eventKitEvent?.calendar?.title ?? "",
             title: title,
             location: location,
             startDate: startDate,
@@ -1225,40 +1266,31 @@ struct AppLocalEventEditorView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         if isEditing || isNew {
-            ToolbarItem(placement: .topBarLeading) {
-                Button { cancelOrClose() } label: { Image(systemName: "xmark") }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .tint(.secondary)
-                    .accessibilityLabel("Close")
+            AppSheetToolbarItem(placement: .topBarLeading) {
+                AppToolbarTextButton("Close", action: cancelOrClose)
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Button { save() } label: { Image(systemName: "checkmark") }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .accessibilityLabel("Done")
-                    .disabled(
-                        title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                            || selectedChoice?.canEdit != true
-                            || (!isNew && !hasUnsavedChanges)
-                    )
+            AppSheetToolbarItem(placement: .confirmationAction) {
+                AppToolbarTextButton("Done", action: save)
+                    .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                        || selectedChoice?.canEdit != true || (!isNew && !hasUnsavedChanges))
             }
         } else {
-            ToolbarItemGroup(placement: .topBarLeading) {
-                if !payloadIsReadOnly {
-                    Button { isEditing = true } label: { Image(systemName: "pencil") }
-                        .accessibilityLabel("Edit")
-                }
-                if canShare {
-                    Button { shareEvent() } label: { Image(systemName: "square.and.arrow.up") }
-                        .accessibilityLabel("Share")
+            if !payloadIsReadOnly || canShare {
+                AppSheetToolbarItem(placement: .topBarLeading) {
+                    AppSheetHeaderIconGroup {
+                        if !payloadIsReadOnly {
+                            Button { isEditing = true } label: { Image(systemName: "pencil") }
+                                .accessibilityLabel("Edit")
+                        }
+                        if canShare {
+                            Button(action: shareEvent) { Image(systemName: "square.and.arrow.up") }
+                                .accessibilityLabel("Share")
+                        }
+                    }
                 }
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Button { close() } label: { Image(systemName: "checkmark") }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.circle)
-                    .accessibilityLabel("Done")
+            AppSheetToolbarItem(placement: .confirmationAction) {
+                AppToolbarTextButton("Done", action: close)
             }
         }
     }
@@ -1290,6 +1322,7 @@ struct AppLocalEventEditorView: View {
     }
 
     private func save() {
+        if let source = target.sharedSource, source.usesServerRecord { saveRemote(source, endEditing: true); return }
         guard selectedChoice?.canEdit == true else { return }
         do {
             let migratedBetweenStores = try persistSelectedDestination()
@@ -1311,7 +1344,7 @@ struct AppLocalEventEditorView: View {
     }
 
     @discardableResult
-    private func saveAppLocalEvent() throws -> AppLocalEventRecord {
+    private func saveAppLocalEvent(shared: SharedEventDetailSource? = nil) throws -> AppLocalEventRecord {
         guard localStore.calendar(id: selectedCalendarID)?.canEditEvents == true else {
             throw selectedCalendarUnavailableError()
         }
@@ -1350,7 +1383,26 @@ struct AppLocalEventEditorView: View {
             event.providerReadOnly = existingLocalEvent?.providerReadOnly
             event.providerSnapshot = existingLocalEvent?.providerSnapshot
         }
-        localStore.saveEvent(event)
+        if let shared {
+            let details = savedRemoteSnapshot?.details ?? shared.event.details ?? target.eventKitEvent.map { SharedEventDetails(event: $0) }
+            if let details {
+                event.applySharedDetails(details)
+            }
+            event.providerReadOnly = shared.received && !shared.canEdit ? true : nil
+        }
+        if let editorProvider {
+            if existingLocalEvent?.calendarID != selectedCalendarID {
+                event.travelTime = nil; event.attachments = nil; event.videoCallURL = nil; event.urlString = ""
+            }
+            var wire = AppLocalProviderCalendarStore.snapshot(event)
+            providerOptions.applying(to: &wire, provider: editorProvider)
+            if existingLocalEvent?.calendarID != selectedCalendarID {
+                _ = try MacCalendarProviderEventWire.body(wire, previous: nil, google: editorProvider == .google)
+            }
+            event.providerSnapshot = wire
+            event.applySharedDetails(try MacEventShareSnapshot.details(wire))
+        }
+        try localStore.saveTransferredEvent(event)
         return event
     }
 
@@ -1470,16 +1522,38 @@ struct AppLocalEventEditorView: View {
         }
     }
 
+    private var individualShare: SharedEventDetailSource? {
+        if let source = target.sharedSource { return source }
+        guard let session = CalendarFeedSession.existing,
+              let id = target.eventID ?? target.eventKitEvent?.eventIdentifier,
+              let invite = SharedInviteTracker.invite(localEventIdentifier: id),
+              let snapshot = SharedOutgoingEventTracker.snapshot(localEventIdentifier: id) else { return nil }
+        let event = CloudCalendarsAPI.RemoteSharedEvent(id: invite.eventID, title: snapshot.title,
+            start: DeviceCalendarEvent.iso(snapshot.start), end: DeviceCalendarEvent.iso(snapshot.end),
+            allDay: snapshot.isAllDay, location: snapshot.location, url: snapshot.url, details: snapshot.details,
+            status: invite.shouldAppearStruckThrough ? "cancelled" : "confirmed", sequence: invite.lastSequence,
+            feedId: invite.feedID, localEventIdentifier: id, access: invite.effectiveAccess)
+        return .init(event: event, received: true, session: session, usesServerRecord: false)
+    }
+
     private var canMoveReadOnlySystemCopy: Bool {
         guard target.eventID == nil,
               let event = target.eventKitEvent,
               event.eventIdentifier != nil
         else { return false }
-        return SharedInviteTracker.isReadOnly(event)
+        guard let invite = SharedInviteTracker.invite(localEventIdentifier: event.eventIdentifier),
+              !invite.shouldAppearStruckThrough, event.calendar?.allowsContentModifications == true else { return false }
+        return invite.effectiveAccess == .reader
     }
 
     private func moveExistingEvent(to newCalendarID: String) {
-        guard newCalendarID != selectedCalendarID,
+        if let source = individualShare {
+            guard CalendarFeedSession.isCurrent(source.session), !source.event.isCancelled,
+                  newCalendarID != selectedCalendarID, let destination = choices.first(where: { $0.id == newCalendarID && $0.canEdit }) else { return }
+            moveIndividualShare(source, to: destination)
+            return
+        }
+        guard (!payloadIsReadOnly || canMoveReadOnlySystemCopy), newCalendarID != selectedCalendarID,
               choices.first(where: { $0.id == newCalendarID })?.canEdit == true
         else { return }
 
@@ -1502,7 +1576,67 @@ struct AppLocalEventEditorView: View {
         }
     }
 
+    private func moveIndividualShare(_ source: SharedEventDetailSource, to destination: CalendarChoice) {
+        let oldID = selectedCalendarID
+        selectedCalendarID = destination.id
+        do {
+            let identifier: String
+            if destination.kind == .eventKit {
+                guard let calendar = eventStore.calendar(withIdentifier: destination.id), calendar.allowsContentModifications else { throw selectedCalendarUnavailableError() }
+                let previous = target.eventKitEvent
+                // Use the last saved draft if the canonical record was edited in this sheet.
+                let event = savedRemoteSnapshot?.displayEvent(in: eventStore) ?? previous ?? EKEvent(eventStore: eventStore)
+                if previous == nil, let local = existingLocalEvent {
+                    let snapshot = try NativeCalendarSyncService.snapshot(local)
+                    event.title = local.title; event.startDate = local.startDate; event.endDate = local.endDate
+                    event.isAllDay = local.isAllDay; event.location = local.location; event.url = URL(string: local.urlString)
+                    if let details = snapshot.details {
+                        try JSONDecoder().decode(SharedEventDetails.self, from: JSONEncoder().encode(details))
+                            .applyWritableFields(to: event, canonicalLocation: local.location)
+                    }
+                }
+                let previousCalendar = event.calendar
+                event.calendar = calendar
+                do { try eventStore.save(event, span: event.hasRecurrenceRules ? .futureEvents : .thisEvent, commit: true) }
+                catch { event.calendar = previousCalendar; throw error }
+                if let local = existingLocalEvent {
+                    do { try localStore.deleteTransferredEvent(id: local.id) }
+                    catch { try eventStore.remove(event, span: .futureEvents, commit: true); throw error }
+                }
+                EventKitEventSupplementStore.update(travelTime: travelTime == .none ? nil : TimeInterval(travelTime.rawValue),
+                    attachments: attachments, videoCallURL: normalizedVideoCallURL, for: event)
+                identifier = event.eventIdentifier
+            } else {
+                if var local = existingLocalEvent {
+                    local.calendarID = destination.id
+                    try localStore.saveTransferredEvent(local)
+                    identifier = local.id
+                } else {
+                    let saved = try saveAppLocalEvent(shared: source)
+                    if let original = target.eventKitEvent, original.eventIdentifier != nil {
+                        do { try eventStore.remove(original, span: original.hasRecurrenceRules ? .futureEvents : .thisEvent, commit: true) }
+                        catch { try localStore.deleteTransferredEvent(id: saved.id); throw error }
+                    }
+                    identifier = saved.id
+                }
+            }
+            if source.received {
+                SharedInviteTracker.restore(source.event, localEventIdentifier: identifier)
+                if var invite = SharedInviteTracker.invite(eventID: source.event.id) {
+                    invite.receiptRecorded = false
+                    SharedInviteTracker.update(invite)
+                }
+            } else { SharedOutgoingEventTracker.restore(source.event, localEventIdentifier: identifier) }
+            CloudCalendarsAPI.rememberMovedCopy(source.event, identifier: identifier, calendarTitle: destination.title, session: source.session)
+            SharedEventSyncManager.eventStoreDidChange()
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+            NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+            close()
+        } catch { selectedCalendarID = oldID; errorMessage = error.localizedDescription }
+    }
+
     private func saveDetailChanges() {
+        if let source = target.sharedSource, source.usesServerRecord { saveRemote(source, endEditing: false); return }
         guard !payloadIsReadOnly, selectedChoice?.canEdit == true else { return }
         do {
             let migratedBetweenStores = try persistSelectedDestination()
@@ -1541,6 +1675,10 @@ struct AppLocalEventEditorView: View {
             }
             let newEventIdentifier = event.eventIdentifier ?? oldEventIdentifier
             invite.localEventIdentifier = newEventIdentifier
+            invite.receiptRecorded = false
+            if let session = CalendarFeedSession.existing {
+                ReceivedSharingVisibility.register([newEventIdentifier], kind: "event", accountID: session.calendarId)
+            }
             SharedInviteTracker.update(invite)
             NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
@@ -1563,7 +1701,52 @@ struct AppLocalEventEditorView: View {
         }
     }
 
+    private func saveRemote(_ source: SharedEventDetailSource, endEditing: Bool) {
+        guard !savingRemote, source.canEdit, CalendarFeedSession.isCurrent(source.session) else { return }
+        let original = savedRemoteSnapshot?.details ?? source.event.details
+        let baseline = initialEditorFingerprint
+        let alertsChanged = baseline?.alertOffset != alertOffset.rawValue || baseline?.secondAlertOffset != secondAlertOffset.rawValue
+        let recurrenceChanged = baseline?.repeatOption != repeatOption.rawValue || baseline?.repeatInterval != repeatInterval
+            || baseline?.recurrenceEndDate != recurrenceEndDate || baseline?.recurrencePattern != recurrencePattern
+        let alarms = alertsChanged
+            ? [alertOffset.seconds, secondAlertOffset.seconds].compactMap { $0.map { SharedEventAlarm(relativeOffset: $0) } }
+                + Array((original?.alarms ?? []).dropFirst(2)) : original?.alarms ?? []
+        let rules = recurrenceChanged ? recurrenceRule.map { [SharedEventRecurrenceRule(rule: $0)] } ?? [] : original?.recurrenceRules ?? []
+        let details = SharedEventDetails(notes: notes, timeZone: original?.timeZone ?? eventTimeZone.identifier,
+            availability: original?.availability ?? 0, alarms: alarms, recurrenceRules: rules,
+            structuredLocation: structuredLocation, videoCallURL: normalizedVideoCallURL,
+            organizer: original?.organizer, attendees: original?.attendees ?? [],
+            travelTime: travelTime == .none ? nil : TimeInterval(travelTime.rawValue), attachments: attachments.map(\.sharedValue))
+        let snapshot = SharedEventDetailSnapshot(title: title, start: persistedStartDate, end: persistedEndDate, isAllDay: isAllDay,
+            location: location, url: urlString.isEmpty ? nil : urlString, details: details, calendarTitle: source.event.calendarTitle)
+        let upload = SharedEventUpload(id: source.event.id, title: title, start: snapshot.start, end: snapshot.end,
+            isAllDay: isAllDay, location: location, url: snapshot.url.flatMap(URL.init(string:)), details: details,
+            localEventIdentifier: nil, organizerName: nil, organizerEmail: nil)
+        savingRemote = true
+        Task { @MainActor in
+            defer { savingRemote = false }
+            do {
+                remoteSequence = try await CloudCalendarsAPI.upsertEvent(upload, session: source.session,
+                    receivedFeedId: source.received ? source.event.feedId : nil, expectedSequence: remoteSequence)
+                guard CalendarFeedSession.isCurrent(source.session) else { close(); return }
+                savedRemoteSnapshot = snapshot
+                initialEditorFingerprint = currentEditorFingerprint
+                if endEditing {
+                    if target.startsInEditingMode { close() } else { isEditing = false }
+                }
+                Task { await SharedOutgoingEventTracker.pullRemoteChanges(in: eventStore) }
+            } catch {
+                if !isEditing { restorePersistedValues() }
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+
     private func shareEvent() {
+        if let source = target.sharedSource {
+            EventAppClipSharing.presentConfirmed(source, event: savedRemoteSnapshot?.displayEvent(in: eventStore) ?? target.eventKitEvent)
+            return
+        }
         if let event = target.eventKitEvent {
             EventAppClipSharing.present(for: event)
         } else if let event = existingLocalEvent {
@@ -1616,10 +1799,10 @@ struct AppLocalEventEditorView: View {
 
     private func restorePersistedValues() {
         let local = existingLocalEvent
-        let system = target.eventKitEvent
+        let system = savedRemoteSnapshot?.displayEvent(in: eventStore) ?? target.eventKitEvent
         let systemAlarms = (system?.alarms ?? []).sorted { $0.relativeOffset > $1.relativeOffset }
         let localAlarms = local?.alarms.map(\.relativeOffset) ?? []
-        let systemSupplement = system.flatMap(EventKitEventSupplementStore.supplement(for:))
+        let systemSupplement = savedRemoteSnapshot?.supplement ?? target.displaySupplement ?? system.flatMap(EventKitEventSupplementStore.supplement(for:))
 
         title = local?.title ?? system?.title ?? localizedEventEditorString("New Event")
         location = local?.location ?? system?.location ?? ""
@@ -1636,6 +1819,7 @@ struct AppLocalEventEditorView: View {
         selectedCalendarID = local?.calendarID
             ?? system?.calendar?.calendarIdentifier
             ?? selectedCalendarID
+        providerOptions = CalendarProviderEventOptions(local?.providerSnapshot)
         alertOffset = Self.alert(for: localAlarms.first ?? systemAlarms.first?.relativeOffset)
         secondAlertOffset = Self.alert(
             for: localAlarms.dropFirst().first ?? systemAlarms.dropFirst().first?.relativeOffset
@@ -1652,7 +1836,7 @@ struct AppLocalEventEditorView: View {
                 ?? 1
         )
         recurrenceEndDate = local?.recurrenceRules?.first?.endDate
-            .flatMap(ISO8601DateFormatter().date(from:))
+            .flatMap(DeviceCalendarEvent.date)
             ?? system?.recurrenceRules?.first?.recurrenceEnd?.endDate
         travelTime = TravelTimeOption(seconds: local?.travelTime ?? systemSupplement?.travelTime)
         urlString = local?.urlString ?? system?.url?.absoluteString ?? ""
@@ -1677,6 +1861,7 @@ private struct EventLocationEditorSheet: View {
     @Binding var location: String
     @Binding var structuredLocation: SharedEventLocation?
     @Binding var videoCallURL: String
+    let allowsVideoLink: Bool
     @ObservedObject var searchModel: EventLocationSearchModel
 
     @Environment(\.dismiss) private var dismiss
@@ -1687,12 +1872,14 @@ private struct EventLocationEditorSheet: View {
         location: Binding<String>,
         structuredLocation: Binding<SharedEventLocation?>,
         videoCallURL: Binding<String>,
+        allowsVideoLink: Bool,
         searchModel: EventLocationSearchModel
     ) {
         _location = location
         _structuredLocation = structuredLocation
         _videoCallURL = videoCallURL
         self.searchModel = searchModel
+        self.allowsVideoLink = allowsVideoLink
         _draftLocation = State(initialValue: location.wrappedValue)
         _draftVideoCallURL = State(initialValue: videoCallURL.wrappedValue)
     }
@@ -1722,7 +1909,7 @@ private struct EventLocationEditorSheet: View {
                         }
                     }
 
-                    HStack(spacing: 0) {
+                    if allowsVideoLink { HStack(spacing: 0) {
                         Text("Video Call")
                             .foregroundStyle(.secondary)
                         Text(": ")
@@ -1731,7 +1918,7 @@ private struct EventLocationEditorSheet: View {
                             .keyboardType(.URL)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
-                    }
+                    } }
                 }
 
                 let trimmed = draftLocation.trimmingCharacters(in: .whitespacesAndNewlines)

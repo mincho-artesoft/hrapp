@@ -15,6 +15,7 @@ export const keys = {
   identity: (provider: string, hash: string) => `idx/${provider}/${hash}.json`,
   accountEmail: (hash: string) => `idx/account-email/${hash}.json`,
   eventFeed: (calId: string, eventId: string) => `idx/eventfeed/${calId}/${eventId}.json`,
+  eventPlacement: (principalId: string, feedId: string) => `principal/${principalId}/event-placement/${encodeURIComponent(feedId)}.json`,
   receivedInvites: (principalId: string) => `principal/${principalId}/received/`,
   receivedInvite: (principalId: string, eventId: string) => `principal/${principalId}/received/${eventId}.json`,
   receivedICloudCalendars: (principalId: string) =>

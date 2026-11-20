@@ -89,6 +89,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
 
     this.observer = new IntersectionObserver(([e]) => {
       this.visible = e.isIntersecting;
+      if (this.visible) this.scroll.requestFrame();
     });
     this.observer.observe(el);
 

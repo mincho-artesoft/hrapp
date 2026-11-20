@@ -45,13 +45,17 @@ final class AppLocalProviderCalendarStore: ProviderCalendarStorage {
         value.location = record.location.isEmpty ? nil : record.location; value.url = record.urlString.isEmpty ? nil : record.urlString
         var details = value.details ?? [:]
         details["notes"] = .string(record.notes); details["timeZone"] = .string(record.timeZoneIdentifier)
-        if !record.alarms.isEmpty || details["alarms"] != nil {
-            details["alarms"] = try? JSONDecoder().decode(CalendarJSON.self, from: JSONEncoder().encode(record.alarms.map { SharedEventAlarm(relativeOffset: $0.relativeOffset) }))
-        }
-        if let rules = record.recurrenceRules, !rules.isEmpty || details["recurrenceRules"] != nil {
-            details["recurrenceRules"] = try? JSONDecoder().decode(CalendarJSON.self, from: JSONEncoder().encode(rules))
+        // Keep unknown provider metadata and use the same portable fields as account calendars.
+        let portable = record.portableDetails
+        if let fields = try? CalendarJSON.object(encoding: portable) {
+            for key in ["alarms", "recurrenceRules", "availability", "structuredLocation", "videoCallURL", "travelTime", "attachments", "organizer", "attendees"] {
+                let field = fields[key]
+                if details[key] == nil && (field == .array([]) || (key == "availability" && field == .number(0))) { continue }
+                details[key] = field
+            }
         }
         value.details = details; value.readOnly = record.providerReadOnly
+        value.status = record.isCancelled ? "cancelled" : value.status
         return value
     }
     func applyProviderDocuments(_ documents: [DeviceCalendarDocument]) throws {
@@ -67,13 +71,8 @@ final class AppLocalProviderCalendarStore: ProviderCalendarStorage {
                 var event = store.event(id: item.id) ?? AppLocalEventRecord(id: item.id, calendarID: document.id,
                     title: item.title, startDate: item.startDate, endDate: item.endDate)
                 event.title = item.title; event.startDate = item.startDate; event.endDate = item.endDate; event.isAllDay = item.allDay
-                event.location = item.location ?? ""; event.urlString = item.url ?? ""; event.notes = item.details?["notes"]?.string ?? ""
-                event.timeZoneIdentifier = item.details?["timeZone"]?.string ?? TimeZone.current.identifier
-                event.videoCallURL = item.details?["videoCallURL"]?.string
-                let alarms: [SharedEventAlarm] = item.decodedDetail("alarms") ?? []
-                let offsets = alarms.compactMap(\.relativeOffset)
-                if event.alarms.map(\.relativeOffset) != offsets { event.alarms = offsets.map { AppLocalEventAlarm(relativeOffset: $0) } }
-                event.recurrenceRules = item.macRecurrenceRules
+                event.location = item.location ?? ""; event.urlString = item.url ?? ""; event.applySharedDetails(try MacEventShareSnapshot.details(item))
+                event.isCancelled = item.status == "cancelled"
                 event.providerReadOnly = item.readOnly; event.providerSnapshot = item
                 events.append(event)
             }

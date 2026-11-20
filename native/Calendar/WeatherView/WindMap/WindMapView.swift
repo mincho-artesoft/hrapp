@@ -38,17 +38,17 @@ struct WindMapCard: View {
     let allowsNetwork: Bool
     let fullScreenColorScheme: ColorScheme?
     @StateObject private var store = WindMapStore()
+    @State private var previewGrid: WindMapGrid?
     @State private var expanded = false
     @State private var visible = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private var requestKey: String {
-        guard visible, !expanded, allowsNetwork, let coordinate else { return "inactive" }
-        return WindMapGrid(latitude: coordinate.latitude, longitude: coordinate.longitude).key
+    private var requestedGrid: WindMapGrid? {
+        visible && !expanded && allowsNetwork && coordinate != nil ? previewGrid : nil
     }
     private var matchingField: WindMapField? {
-        guard let coordinate, store.field?.grid == WindMapGrid(latitude: coordinate.latitude, longitude: coordinate.longitude) else { return nil }
+        guard let previewGrid, store.field?.grid == previewGrid else { return nil }
         return store.field
     }
     var body: some View {
@@ -70,19 +70,15 @@ struct WindMapCard: View {
         }
         .frame(maxHeight: viewportHeight * 0.8)
         .onScrollVisibilityChange(threshold: 0.1) { visible = $0 }
-        .task(id: requestKey) {
-            guard requestKey != "inactive", let coordinate else { return }
-            await store.load(coordinate)
+        .task(id: requestedGrid?.key) {
+            if let requestedGrid { await store.load(requestedGrid) }
         }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active, visible, !expanded, allowsNetwork, let coordinate {
-                Task { await store.load(coordinate) }
-            }
+            if phase == .active, let requestedGrid { Task { await store.load(requestedGrid) } }
         }
         .weatherMapPresentation(isPresented: $expanded, onDismiss: {
             store.isPlaying = false
             store.hour = 0
-            if allowsNetwork, let coordinate { Task { await store.load(coordinate) } }
         }) {
             if let coordinate {
                 WindMapFullScreen(store: store, initialCoordinate: coordinate, initialName: name,
@@ -101,7 +97,8 @@ struct WindMapCard: View {
                 WindMapCanvas(field: matchingField, date: matchingField?.forecastDates().first ?? Date(),
                     coordinate: coordinate, name: name, interactive: false,
                     animated: visible && !expanded && scenePhase == .active && !reduceMotion,
-                    recenterID: 0, imperial: GlobalState.measurementSystem == "Imperial", pointForecast: pointForecast)
+                    recenterID: 0, imperial: GlobalState.measurementSystem == "Imperial", pointForecast: pointForecast,
+                    onViewportChanged: { previewGrid = $0 })
                     .allowsHitTesting(false)
             } else { Color(red: 0.04, green: 0.32, blue: 0.48) }
             if store.isLoading {
@@ -180,11 +177,7 @@ private struct WindMapFullScreen: View {
                 animated: scenePhase == .active && !reduceMotion && !placesVisible && !infoVisible,
                 recenterID: recenterID, imperial: imperial, layer: layer, dark: colorScheme == .dark,
                 pointForecast: selectedPointForecast ?? (selection == nil || place.id == "initial" ? initialPointForecast : nil),
-                onRegionChanged: { region in
-                    let grid = WindMapGrid(latitude: region.center.latitude, longitude: region.center.longitude,
-                                           latitudeSpan: region.span.latitudeDelta, longitudeSpan: region.span.longitudeDelta)
-                    if viewportGrid != grid { viewportGrid = grid }
-                },
+                onViewportChanged: { viewportGrid = $0 },
                 onTap: { withAnimation(.easeInOut(duration: 0.2)) {
                     if markerExpanded { markerExpanded = false } else { timelineVisible.toggle() }
                 } }, markerExpanded: markerExpanded,
