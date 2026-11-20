@@ -14,6 +14,7 @@ export interface CalendarChoice {
   value: string;
   label: string;
   symbol?: string;
+  color?: string;
 }
 
 @Component({
@@ -31,7 +32,11 @@ export interface CalendarChoice {
       (click)="toggle(); $event.stopPropagation()"
       (keydown)="onTriggerKey($event)"
     >
+      @if (rowLabel()) { <span class="row-label">{{ label() | nativeText }}</span> }
       @if(triggerSymbol()){<cc-symbol class="trigger-icon" [name]="triggerSymbol()!" /><cc-symbol name="chevron.down" />}
+      @else if (selectedOption()?.color) {
+        <i class="color-dot" [style.background]="selectedOption()?.color"></i><span class="calendar-name">{{ selectedLabel() }}</span><cc-symbol name="chevron.up.chevron.down" />
+      }
       @else { {{ selectedLabel() | nativeText }}<cc-symbol name="chevron.up.chevron.down" /> }
     </button>
     @if (open()) {
@@ -57,7 +62,8 @@ export interface CalendarChoice {
             @if (option.symbol) {
               <cc-symbol [name]="option.symbol" />
             }
-            <span>{{ option.label | nativeText }}</span>
+            @if (option.color) { <i class="color-dot" [style.background]="option.color"></i><span>{{ option.label }}</span> }
+            @else { <span>{{ option.label | nativeText }}</span> }
           </button>
         }
       </dialog>
@@ -69,6 +75,10 @@ export interface CalendarChoice {
         display: inline-block;
         max-width: 100%;
       }
+      .color-dot { width:18px; height:18px; flex:none; border-radius:50%; }
+      .calendar-name { color:var(--cal-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .choice-value:has(.color-dot) { max-width:100%; }
+      .choice-menu button:has(.color-dot) { overflow-wrap:anywhere; }
       .choice-value {
         color: var(--choice-tint, var(--cal-blue, #2168de));
         display: flex;
@@ -80,6 +90,9 @@ export interface CalendarChoice {
         cursor: pointer;
         padding: 8px 0;
       }
+      :host:has(.row-label), .choice-value:has(.row-label) { width: 100%; }
+      .choice-value:has(.row-label) { min-height: 44px; padding: 0; }
+      .row-label { flex: 1; text-align: start; color: var(--cal-text); }
       .choice-value.symbol-choice { background: #1c1c1e; color:white; border-radius:15px; padding:6px; gap:4px; }
       .choice-value.symbol-choice .trigger-icon {width:20px; height:18px;}
       .choice-value:disabled {color:var(--cal-muted);cursor:default;}
@@ -133,6 +146,7 @@ export interface CalendarChoice {
   ],
 })
 export class CalendarChoiceComponent {
+  readonly rowLabel = input(false);
   readonly triggerSymbol = input<string>();
   readonly options = input.required<CalendarChoice[]>();
   readonly value = input.required<string>();
@@ -159,12 +173,8 @@ export class CalendarChoiceComponent {
     this.valueChange.emit(value);
     this.escape();
   }
-  selectedLabel() {
-    return (
-      this.options().find((o) => o.value === this.value())?.label ??
-      this.value()
-    );
-  }
+  selectedOption() { return this.options().find(option => option.value === this.value()); }
+  selectedLabel() { return this.selectedOption()?.label ?? this.value(); }
   close() {
     this.open.set(false);
   }

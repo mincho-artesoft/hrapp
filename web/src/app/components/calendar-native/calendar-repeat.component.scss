@@ -1,0 +1,28 @@
+:host { display: block; font: 17px var(--font-body); }
+.group { background: var(--cal-panel); border-radius: 12px; overflow: clip; }
+.group + .group { margin-top: 24px; }
+cc-choice { --choice-tint: var(--cal-muted); display: block; padding-inline: 16px; box-sizing: border-box; }
+.row { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 44px;
+  padding: 0 16px; background: none; border: 0; color: var(--cal-text); font: inherit; text-align: start; }
+.row + .row, .interval { position: relative; }
+.row + .row::before, .interval::before { content: ''; position: absolute; inset: 0 0 auto 16px; height: 1px; background: var(--cal-line); }
+button, .switch { cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--cal-blue); outline-offset: -2px; }
+.value { color: var(--cal-muted); }
+.value.active, cc-symbol { color: var(--cal-blue); }
+cc-symbol { width: 19px; height: 19px; }
+.summary { margin: 6px 16px 24px; color: var(--cal-muted); font-size: 13px; line-height: 1.4; }
+.wheels { display: flex; align-items: center; position: relative; isolation: isolate; margin-inline: 16px; border-top: 1px solid var(--cal-line); }
+.wheels::before { content: ''; z-index: -1; position: absolute; inset-inline: 0; top: 50%; transform: translateY(-50%);
+  height: 32px; border-radius: 16px; background: var(--picker-fill, rgba(118,118,128,.24)); }
+.fixed-unit { flex: 1; text-align: center; font-size: 22px; }
+.grid { display: grid; }
+.days { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.months { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid button { min-height: 40px; border: 0; background: transparent; color: var(--cal-text); font: inherit;
+  box-shadow: inset 0 0 0 .5px color-mix(in srgb, var(--cal-text) 8%, transparent); }
+.grid button[aria-pressed=true] { background: var(--cal-blue); color: white; }
+.switch { appearance: none; width: 51px; height: 31px; border: 0; border-radius: 99px; background: #78788055; position: relative; }
+.switch:checked { background: var(--cal-blue); }
+.switch::after { content:''; position:absolute; width:27px; height:27px; inset:2px auto auto 2px; border-radius:50%; background:white; }
+.switch:checked::after { transform:translateX(20px); }

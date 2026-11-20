@@ -117,9 +117,10 @@ final class MacAppLocalCalendarBridge {
         if eventSnapshots[displayID] == record, value.calendar === destination { return value }
         eventSnapshots[displayID] = record
         value.calendar = destination; value.title = record.title
-        value.startDate = record.startDate; value.endDate = record.endDate; value.isAllDay = record.allDay
+        value.applyCalendarSchedule(start: record.startDate, end: record.endDate, allDay: record.allDay,
+            timeZone: record.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:)))
         value.location = record.location; value.notes = record.details?["notes"]?.string
-        value.url = record.url.flatMap(URL.init(string:)); value.timeZone = record.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:))
+        value.url = record.url.flatMap(URL.init(string:))
         let alarms: [SharedEventAlarm] = record.decodedDetail("alarms") ?? []
         if let raw = record.details?["availability"]?.number, let availability = EKEventAvailability(rawValue: Int(raw)), availability != .notSupported {
             value.availability = availability
@@ -144,9 +145,10 @@ final class MacAppLocalCalendarBridge {
     }
     func copy(_ source: EKEvent) -> EKEvent {
         let value = EKEvent(eventStore: eventStore)
-        value.calendar = source.calendar; value.title = source.title; value.startDate = source.startDate; value.endDate = source.endDate
-        value.isAllDay = source.isAllDay; value.location = source.location; value.structuredLocation = source.structuredLocation
-        value.notes = source.notes; value.url = source.url; value.timeZone = source.timeZone; value.alarms = source.alarms
+        value.calendar = source.calendar; value.title = source.title
+        value.applyCalendarSchedule(start: source.startDate, end: source.calendarRangeEnd, allDay: source.isAllDay, timeZone: source.timeZone)
+        value.location = source.location; value.structuredLocation = source.structuredLocation
+        value.notes = source.notes; value.url = source.url; value.alarms = source.alarms
         value.recurrenceRules = source.recurrenceRules; value.availability = source.availability
         return value
     }
@@ -157,7 +159,7 @@ final class MacAppLocalCalendarBridge {
         if let destination = record(for: draft.calendar) {
             let old = original.flatMap { record(for: $0) }
             var item = old ?? DeviceCalendarEvent(id: UUID().uuidString.lowercased(), title: "", start: "", end: "", allDay: false)
-            item.title = draft.title ?? ""; item.start = DeviceCalendarEvent.iso(draft.startDate); item.end = DeviceCalendarEvent.iso(draft.endDate)
+            item.title = draft.title ?? ""; item.start = DeviceCalendarEvent.iso(draft.startDate); item.end = DeviceCalendarEvent.iso(draft.calendarRangeEnd)
             item.allDay = draft.isAllDay; item.location = draft.location; item.url = draft.url?.absoluteString
             var details = item.details ?? [:]
             if draft.availability != .notSupported {
@@ -174,7 +176,7 @@ final class MacAppLocalCalendarBridge {
             if let old, let original, !old.macRecurrenceRules.isEmpty {
                 let anchor = old.startDate.addingTimeInterval(draft.startDate.timeIntervalSince(original.startDate))
                 item.start = DeviceCalendarEvent.iso(anchor)
-                item.end = DeviceCalendarEvent.iso(anchor.addingTimeInterval(draft.endDate.timeIntervalSince(draft.startDate)))
+                item.end = DeviceCalendarEvent.iso(anchor.addingTimeInterval(draft.calendarRangeEnd.timeIntervalSince(draft.startDate)))
             }
             if let metadata {
                 let fields = try CalendarJSON.object(encoding: metadata)
@@ -205,7 +207,7 @@ final class MacAppLocalCalendarBridge {
                 }); throw error }
             }
             var display = item
-            if old != nil && !item.macRecurrenceRules.isEmpty { display.start = DeviceCalendarEvent.iso(draft.startDate); display.end = DeviceCalendarEvent.iso(draft.endDate) }
+            if old != nil && !item.macRecurrenceRules.isEmpty { display.start = DeviceCalendarEvent.iso(draft.startDate); display.end = DeviceCalendarEvent.iso(draft.calendarRangeEnd) }
             prepareSnapshot()
             return event(display) ?? draft
         }

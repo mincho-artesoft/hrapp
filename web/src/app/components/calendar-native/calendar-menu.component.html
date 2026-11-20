@@ -571,7 +571,7 @@
             | nativeText
         }}
       </p>
-      @for (setting of settings; track setting.key) {
+      @for (setting of settings(); track setting.key) {
         <div class="setting-row">
           <cc-symbol [name]="setting.icon" />
           <strong>{{ setting.label | nativeText }}</strong>

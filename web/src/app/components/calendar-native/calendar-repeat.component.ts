@@ -1,38 +1,140 @@
-import {Component,ChangeDetectionStrategy,input,output,computed} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {CalendarNativeTextPipe} from '../../core/calendar-localization';
-import {CalendarSymbolComponent} from './calendar-symbol.component';
-import {CalendarChoiceComponent} from './calendar-choice.component';
-import type {CalendarRepeatRule} from '../../core/calendar-platform-api.service';
-@Component({selector:'cc-repeat',standalone:true,imports:[FormsModule,CalendarNativeTextPipe,CalendarSymbolComponent,CalendarChoiceComponent],changeDetection:ChangeDetectionStrategy.OnPush,
- template:`<div class="group"><div class="row"><span>{{'Frequency'|nativeText}}</span><cc-choice label="Frequency" [value]="rule().frequency" [options]="frequencies" (valueChange)="frequency($event)"/></div><label class="row"><span>{{'Every'|nativeText}}</span><input type="number" min="1" max="999" [ngModel]="rule().interval||1" (ngModelChange)="patch({interval:clamp($event)})"/><span class="unit">{{unit()|nativeText}}</span></label></div>
- @if(rule().frequency==='weekly'){<div class="group">@for(day of weekdays;track day.value){<button class="row" (click)="toggleWeekday(day.value)"><span>{{day.label|nativeText}}</span>@if(selectedWeekdays().includes(day.value)){<cc-symbol name="checkmark"/>}</button>}</div>}
- @if(rule().frequency==='monthly'){<div class="group"><button class="row" (click)="ordinal(false)"><span>{{'Each'|nativeText}}</span>@if(!usesOrdinal()){<cc-symbol name="checkmark"/>}</button><button class="row" (click)="ordinal(true)"><span>{{'On the…'|nativeText}}</span>@if(usesOrdinal()){<cc-symbol name="checkmark"/>}</button>@if(!usesOrdinal()){<div class="grid days">@for(day of monthDays;track day){<button [class.selected]="selectedMonthDays().includes(day)" (click)="toggleMonthDay(day)">{{day}}</button>}</div>}</div>}
- @if(rule().frequency==='yearly'){<div class="group grid months">@for(month of months;track month.value){<button [class.selected]="selectedMonths().includes(month.value)" (click)="toggleMonth(month.value)">{{month.label}}</button>}</div><div class="group"><label class="row"><span>{{'Days of Week'|nativeText}}</span><input class="switch" type="checkbox" [checked]="usesOrdinal()" (change)="ordinal($any($event.target).checked)"/></label></div>}
- @if((rule().frequency==='monthly'||rule().frequency==='yearly')&&usesOrdinal()){<div class="group row ordinal"><cc-choice label="Ordinal" [value]="''+(rule().setPositions?.[0]||1)" [options]="ordinals" (valueChange)="patch({setPositions:[+$event]})"/><cc-choice label="Day" [value]="ordinalDay()" [options]="ordinalDays" (valueChange)="setOrdinalDay($event)"/></div>}
- <p class="summary">{{summary()}}</p>`,
- styles:[`:host{display:block}.group{background:var(--cal-panel);border-radius:16px;padding:0 16px;margin-bottom:24px}.row{display:flex;align-items:center;width:100%;gap:12px;min-height:46px;background:none;border:0;color:var(--cal-text);font:17px var(--font-body);padding:10px 0;text-align:left}.row+.row{border-top:1px solid var(--cal-line)}.row>span:first-child{flex:1}.row input[type=number]{width:60px;text-align:right;background:transparent;border:0;color:var(--cal-blue);font:inherit;outline:none}.unit{color:var(--cal-muted)}cc-symbol{width:19px;height:19px;color:var(--cal-blue)}button{cursor:pointer}.grid{display:grid;gap:4px;padding:12px}.days{grid-template-columns:repeat(7,1fr)}.months{grid-template-columns:repeat(4,1fr)}.grid button{background:none;color:var(--cal-text);border:0;border-radius:8px;font:17px var(--font-body);min-height:40px}.grid button.selected{background:var(--cal-blue);color:white}.ordinal{justify-content:center;gap:24px;padding:16px}.summary{font-size:13px;color:var(--cal-muted);padding:0 16px;line-height:1.5}.switch{appearance:none;width:51px;height:31px;background:#78788055;border-radius:99px;position:relative;cursor:pointer}.switch:checked{background:var(--cal-blue)}.switch:after{content:'';position:absolute;width:27px;height:27px;left:2px;top:2px;border-radius:50%;background:white;transition:transform .18s}.switch:checked:after{transform:translateX(20px)}`]})
-export class CalendarRepeatComponent{
- singleMonthDay=input(false);rule=input.required<CalendarRepeatRule>();start=input.required<string>();ruleChange=output<CalendarRepeatRule>();
- frequencies=[{value:'daily',label:'Daily'},{value:'weekly',label:'Weekly'},{value:'monthly',label:'Monthly'},{value:'yearly',label:'Yearly'}];
- weekdays=Array.from({length:7},(_,i)=>({value:i+1,label:new Date(2026,10,1+i).toLocaleString(undefined,{weekday:'long'})}));
- monthDays=Array.from({length:31},(_,i)=>i+1);months=Array.from({length:12},(_,i)=>({value:i+1,label:new Date(2026,i,1).toLocaleString(undefined,{month:'short'})}));
- ordinals=[{value:'1',label:'First'},{value:'2',label:'Second'},{value:'3',label:'Third'},{value:'4',label:'Fourth'},{value:'5',label:'Fifth'},{value:'-1',label:'Last'}];
- ordinalDays=[...this.weekdays.map(d=>({value:''+d.value,label:d.label})),{value:'8',label:'Day'},{value:'9',label:'Weekday'},{value:'10',label:'Weekend day'}];
- selectedWeekdays=computed(()=>this.rule().daysOfTheWeek?.map(d=>d.weekday)??[new Date(this.start()+'T12:00').getDay()+1]);
- selectedMonthDays=computed(()=>this.rule().daysOfTheMonth??[new Date(this.start()+'T12:00').getDate()]);
- selectedMonths=computed(()=>this.rule().monthsOfTheYear??[new Date(this.start()+'T12:00').getMonth()+1]);
- usesOrdinal=computed(()=>!!this.rule().daysOfTheWeek?.length);
- unit=computed(()=>({daily:'days',weekly:'weeks',monthly:'months',yearly:'years'})[this.rule().frequency]);
- summary=computed(()=>`Every ${this.rule().interval||1} ${this.unit()}.`);
- clamp(n:number){return Math.min(999,Math.max(1,Math.floor(n)||1));}
- patch(values:Partial<CalendarRepeatRule>){this.ruleChange.emit({...this.rule(),...values});}
- frequency(value:string){this.ruleChange.emit({frequency:value as CalendarRepeatRule['frequency'],interval:this.rule().interval||1,endDate:this.rule().endDate});}
- toggle(values:number[],value:number){const next=values.includes(value)?values.filter(v=>v!==value):[...values,value];return next.length?next.sort((a,b)=>a-b):values;}
- toggleWeekday(value:number){this.patch({daysOfTheWeek:this.toggle(this.selectedWeekdays(),value).map(weekday=>({weekday}))});}
- toggleMonthDay(value:number){this.patch({daysOfTheMonth:this.singleMonthDay()?[value]:this.toggle(this.selectedMonthDays(),value)});}
- toggleMonth(value:number){this.patch({monthsOfTheYear:this.singleMonthDay()?[value]:this.toggle(this.selectedMonths(),value)});}
- ordinal(enabled:boolean){this.patch({daysOfTheWeek:enabled?[{weekday:new Date(this.start()+'T12:00').getDay()+1}]:undefined,setPositions:enabled?[1]:undefined,daysOfTheMonth:undefined});}
- ordinalDay(){const days=this.rule().daysOfTheWeek?.map(d=>d.weekday)??[1];return days.length===7?'8':days.length===5?'9':days.length===2&&days.includes(1)&&days.includes(7)?'10':''+days[0];}
- setOrdinalDay(value:string){const n=+value;this.patch({daysOfTheWeek:(n===8?[1,2,3,4,5,6,7]:n===9?[2,3,4,5,6]:n===10?[1,7]:[n]).map(weekday=>({weekday})),setPositions:this.rule().setPositions??[1]});}
+import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
+import { CalendarLocalization, CalendarNativeTextPipe } from '../../core/calendar-localization';
+import type { CalendarRepeatRule } from '../../core/calendar-platform-api.service';
+import { CalendarChoiceComponent } from './calendar-choice.component';
+import { CalendarRepeatWheelComponent } from './calendar-repeat-wheel.component';
+import { CalendarSymbolComponent } from './calendar-symbol.component';
+
+@Component({
+  selector: 'cc-repeat',
+  standalone: true,
+  imports: [CalendarNativeTextPipe, CalendarSymbolComponent, CalendarChoiceComponent, CalendarRepeatWheelComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './calendar-repeat.component.html',
+  styleUrl: './calendar-repeat.component.scss',
+})
+export class CalendarRepeatComponent {
+  readonly singleMonthDay = input(false);
+  readonly firstWeekday = input(0);
+  readonly rule = input.required<CalendarRepeatRule>();
+  readonly start = input.required<string>();
+  readonly ruleChange = output<CalendarRepeatRule>();
+  readonly expanded = signal(false);
+  private readonly localization = inject(CalendarLocalization);
+  private readonly locale = this.localization.formattingLocale;
+  private readonly startDate = computed(() => new Date(this.start() + 'T12:00'));
+  readonly frequencies = ['Daily', 'Weekly', 'Monthly', 'Yearly'].map(label => ({label, value: label.toLowerCase()}));
+  readonly weekdays = computed(() => this.dateOptions('weekday', 'long'));
+  readonly orderedWeekdays = computed(() => [...this.weekdays().slice(this.firstWeekday()), ...this.weekdays().slice(0, this.firstWeekday())]);
+  readonly months = computed(() => this.dateOptions('month', 'short'));
+  private readonly longMonths = computed(() => this.dateOptions('month', 'long'));
+  private readonly numbers = computed(() => new Intl.NumberFormat(this.locale(), {useGrouping: false}));
+  readonly monthDays = Array.from({length: 31}, (_, index) => index + 1);
+  readonly intervals = computed(() => Array.from({length: 999}, (_, i) => ({value: i + 1, label: this.number(i + 1)})));
+  readonly interval = computed(() => this.rule().interval || 1);
+  private readonly formatter = computed(() => new Intl.NumberFormat(this.locale(), {
+    style: 'unit', unitDisplay: 'long', unit: {daily: 'day', weekly: 'week', monthly: 'month', yearly: 'year'}[this.rule().frequency],
+  }));
+  readonly unit = computed(() => this.formatter().formatToParts(this.interval()).find(part => part.type === 'unit')?.value ?? '');
+  readonly intervalLabel = computed(() => this.interval() === 1 ? this.capitalize(this.unit()) : this.formatter().format(this.interval()));
+  readonly selectedWeekdays = computed(() => this.rule().daysOfTheWeek?.map(d => d.weekday) ?? [this.startDate().getDay() + 1]);
+  readonly selectedMonthDays = computed(() => this.rule().daysOfTheMonth ?? [this.startDate().getDate()]);
+  readonly selectedMonths = computed(() => this.rule().monthsOfTheYear ?? [this.startDate().getMonth() + 1]);
+  readonly usesOrdinal = computed(() => !!this.rule().daysOfTheWeek?.length);
+  readonly ordinals = computed(() => [1, 2, 3, 4, 5, -1, -2].map(value => ({value, label: this.capitalize(this.ordinalName(value))})));
+  readonly position = computed(() => this.rule().setPositions?.[0] || this.rule().daysOfTheWeek?.[0]?.weekNumber || 1);
+  readonly ordinalDays = computed(() => [...this.weekdays(), ...['Day', 'Weekday', 'Weekend day'].map((key,i) => ({value: 8 + i, label: this.localization.text(key)}))]);
+  readonly ordinalDay = computed(() => {
+    const days = this.selectedWeekdays();
+    if (days.length === 7) return 8;
+    if (days.length === 5 && days.every(d => d >= 2 && d <= 6)) return 9;
+    if (days.length === 2 && days.includes(1) && days.includes(7)) return 10;
+    return days[0];
+  });
+
+  private dateOptions(unit: 'weekday' | 'month', width: 'short' | 'long') {
+    const format = new Intl.DateTimeFormat(this.locale(), {[unit]: width});
+    return Array.from({length: unit === 'weekday' ? 7 : 12}, (_, i) => ({
+      value: i + 1, label: format.format(unit === 'weekday' ? new Date(2023, 0, 1 + i) : new Date(2023, i, 1)),
+    }));
+  }
+  number(value: number) { return this.numbers().format(value); }
+  private capitalize(text: string) { return text.slice(0, 1).toLocaleUpperCase(this.locale()) + text.slice(1); }
+  private translation(key: string, fallback = key) {
+    const lookup = 'repeat.' + key;
+    const value = this.localization.text(lookup);
+    return value === lookup ? fallback : value;
+  }
+  private ordinalName(value: number) {
+    if (value < 0) return this.translation(value === -2 ? 'next to last' : 'last');
+    const category = new Intl.PluralRules('en', {type: 'ordinal'}).select(value);
+    const suffix = {one: 'st', two: 'nd', few: 'rd'}[category as 'one'|'two'|'few'] ?? 'th';
+    return this.translation('ordinal.' + value, this.number(value) + suffix);
+  }
+  private list(values: string[]) { return new Intl.ListFormat(this.locale()).format(values); }
+  private sentence(single: string, multiple: string, ...args: string[]) {
+    const n = this.interval();
+    let template = this.translation(single);
+    if (n > 1) {
+      const key = multiple === 'Event will occur every %ld years on the %@ %@ %@.' ? 'every n years on a specific day of months' : multiple;
+      template = this.translation(key + '#' + new Intl.PluralRules(this.locale()).select(n), this.translation(key + '#other', multiple));
+      args.unshift(this.number(n));
+    }
+    let index = 0;
+    return template.replace(/%(?:(\d+)\$)?(?:ld|@)/g, (_, position) => args[position ? Number(position) - 1 : index++] ?? '');
+  }
+  readonly summary = computed(() => {
+    const start = this.startDate(), frequency = this.rule().frequency;
+    if (frequency === 'daily') return this.sentence('Event will occur every day.', 'Event will occur every %ld days.');
+    if (frequency === 'weekly') {
+      const days = this.orderedWeekdays().filter(day => this.selectedWeekdays().includes(day.value));
+      if (this.interval() === 1 && days.length === 7) return this.translation('Event will occur every day.');
+      if (this.interval() === 1 && days.length === 5 && days.every(d => d.value >= 2 && d.value <= 6)) return this.translation('Event will occur every weekday.');
+      if (!days.length || (days.length === 1 && days[0].value === start.getDay() + 1))
+        return this.sentence('Event will occur every week.', 'Event will occur every %ld weeks.');
+      return this.sentence('Event will occur every week on %@.', 'Event will occur every %ld weeks on %@.', this.list(days.map(d => d.label)));
+    }
+    const day = this.ordinalDay();
+    const dayName = day <= 7 ? this.weekdays()[day - 1]?.label : this.translation(['day','weekday','weekend day'][day - 8]);
+    if (frequency === 'monthly') {
+      if (this.usesOrdinal()) return this.sentence('Event will occur every month on the %@ %@.', 'Event will occur every %ld months on the %@ %@.', this.ordinalName(this.position()), dayName);
+      const days = [...this.selectedMonthDays()].filter(d => d >= 1 && d <= 31).sort((a,b) => a-b);
+      if (!days.length || (days.length === 1 && days[0] === start.getDate())) return this.sentence('Event will occur every month.', 'Event will occur every %ld months.');
+      const ordinals = this.translation('1: ordinal | 0: cardinal', '1') === '1';
+      return this.sentence('Event will occur every month on the %@.', 'Event will occur every %ld months on the %@.', this.list(days.map(d => ordinals ? this.ordinalName(d) : this.number(d))));
+    }
+    const months = this.longMonths().filter(m => this.selectedMonths().includes(m.value));
+    if (this.usesOrdinal()) {
+      const [first, ...rest] = months.length ? months : [this.longMonths()[start.getMonth()]];
+      const english = new Intl.DateTimeFormat('en', {month:'long'}).format(new Date(2023, first.value-1, 1));
+      const mark = '{first-month}';
+      const [prefix, tail] = this.list([mark, ...rest.map(m => m.label)]).split(mark);
+      const qualified = prefix + this.translation('of ' + english + '%@').replace(/%(?:1\$)?@/, tail);
+      return this.sentence('Event will occur every year on the %@ %@ %@.', 'Event will occur every %ld years on the %@ %@ %@.', this.ordinalName(this.position()), dayName, qualified);
+    }
+    if (!months.length || (months.length === 1 && months[0].value === start.getMonth() + 1)) return this.sentence('Event will occur every year.', 'Event will occur every %ld years.');
+    return this.sentence('Event will occur every year in %@.', 'Event will occur every %ld years in %@.', this.list(months.map(m => m.label)));
+  });
+
+  patch(values: Partial<CalendarRepeatRule>) { this.ruleChange.emit({...this.rule(), ...values}); }
+  frequency(value: string) {
+    if (value === this.rule().frequency) return;
+    const {interval, endDate, occurrenceCount} = this.rule();
+    this.ruleChange.emit({frequency: value as CalendarRepeatRule['frequency'], interval, endDate, occurrenceCount});
+  }
+  private toggle(values: number[], value: number) {
+    const next = values.includes(value) ? values.filter(v => v !== value) : [...values, value];
+    return next.length ? next.sort((a,b) => a-b) : values;
+  }
+  toggleWeekday(value: number) { this.patch({daysOfTheWeek: this.toggle(this.selectedWeekdays(), value).map(weekday => ({weekday}))}); }
+  toggleMonthDay(value: number) { this.patch({daysOfTheMonth: this.singleMonthDay() ? [value] : this.toggle(this.selectedMonthDays(), value)}); }
+  toggleMonth(value: number) { this.patch({monthsOfTheYear: this.singleMonthDay() ? [value] : this.toggle(this.selectedMonths(), value)}); }
+  ordinal(enabled: boolean) {
+    if (this.usesOrdinal() === enabled) return;
+    this.patch({daysOfTheWeek: enabled ? [{weekday:this.startDate().getDay()+1}] : undefined, setPositions: enabled ? [1] : undefined, daysOfTheMonth: undefined});
+  }
+  setOrdinal(position: number, day: number) {
+    const days = day === 8 ? [1,2,3,4,5,6,7] : day === 9 ? [2,3,4,5,6] : day === 10 ? [1,7] : [day];
+    this.patch({daysOfTheWeek: days.map(weekday => ({weekday})), setPositions: [position]});
+  }
 }

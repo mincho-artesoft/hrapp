@@ -130,7 +130,7 @@ async function testInvitationEmailLinks(): Promise<void> {
   };
 
   const eventServerURL = 'https://api.cloud-calendars.com/event-invites/open?e=event-id&c=feed-id&title=New%20event&start=1977972000&end=1977977400&allDay=0&timeZone=Europe%2FSofia&color=%230088FF';
-  await emailService.sendSharedEventInvitation({
+  await emailService.sendSharedEventInvitation({ ownerCalId: 'test-owner-calendar',
     email: recipientEmail,
     access: 'reader',
     event: eventPayload('New event'),
@@ -142,8 +142,11 @@ async function testInvitationEmailLinks(): Promise<void> {
   });
   assert.equal(sent.length, 1);
   const eventButtonURL = invitationButtonURL(sent[0].html, 'Open event');
-  assert.equal(eventButtonURL.origin + eventButtonURL.pathname, 'https://api.cloud-calendars.com/event-invites/open');
+  assert.equal(eventButtonURL.origin + eventButtonURL.pathname, 'https://www.cloud-calendars.com/invite/event-invites/open');
   assert.equal(eventButtonURL.searchParams.get('e'), 'event-id');
+  const eventWeb = invitationButtonURL(sent[0].html, 'Open in Web Calendar');
+  assert.equal(eventWeb.pathname, '/calendar/');
+  assert.equal(eventWeb.hash, '#invite=event&id=' + hashKey('test-owner-calendar' + ':' + 'event-id'));
   assert.equal(eventButtonURL.searchParams.get('c'), 'feed-id');
   assert.equal(
     invitationQRCodeTarget(sent[0].html, 'QR code to open the event'),
@@ -164,8 +167,11 @@ async function testInvitationEmailLinks(): Promise<void> {
   });
   assert.equal(sent.length, 1);
   const calendarButtonURL = invitationButtonURL(sent[0].html, 'Open calendar');
-  assert.equal(calendarButtonURL.origin + calendarButtonURL.pathname, 'https://api.cloud-calendars.com/icloud-calendar-invites/open');
+  assert.equal(calendarButtonURL.origin + calendarButtonURL.pathname, 'https://www.cloud-calendars.com/invite/icloud-calendar-invites/open');
   assert.equal(calendarButtonURL.searchParams.get('o'), owner.principalId);
+  const calendarWeb = invitationButtonURL(sent[0].html, 'Open in Web Calendar');
+  assert.equal(calendarWeb.pathname, '/calendar/');
+  assert.equal(calendarWeb.hash, '#invite=calendar&id=' + hashKey(owner.principalId + ':' + calendarId));
   assert.equal(calendarButtonURL.searchParams.get('c'), calendarId);
   assert.equal(
     invitationQRCodeTarget(sent[0].html, 'QR code to open the calendar'),

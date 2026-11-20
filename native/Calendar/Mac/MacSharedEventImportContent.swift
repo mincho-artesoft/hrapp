@@ -19,60 +19,99 @@ struct MacSharedEventImportContent: View {
             } trailing: { EmptyView() }
             ScrollView {
                 VStack(spacing: 22) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Label(dateText, systemImage: "calendar").font(CalendarTypography.subheadline.weight(.semibold)).foregroundStyle(.secondary)
-                        CalendarEventCard(title: payload.title, color: payload.eventColor, timeText: timeText,
-                            location: payload.location, isAllDay: payload.isAllDay, titleSize: 16, detailSize: 14, titleLines: 3, detailLines: 3)
-                    }.frame(maxWidth: .infinity, alignment: .leading)
-                    HStack(spacing: 12) {
-                        Label("Calendar", systemImage: "calendar").font(CalendarTypography.headline)
-                        Spacer(minLength: 8)
-                        if calendars.isEmpty { Text("Add a writable calendar first.").foregroundStyle(.secondary) }
-                        else {
-                            AppPicker("Calendar", selection: $calendarID) {
-                                ForEach(calendars, id: \.calendarIdentifier) { calendar in
-                                    Label {
-                                        Text(calendar.title)
-                                    } icon: {
-                                        Circle().fill(Color(cgColor: calendar.cgColor)).frame(width: 16, height: 16)
-                                    }.tag(calendar.calendarIdentifier)
-                                }
-                            }.labelsHidden().fixedSize()
-                        }
-                    }.padding(16)
-                        .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 14))
+                    SharedInvitationEventPreview(payload: payload)
+                    SharedInvitationCalendarPicker(writableCalendars: calendars, selectedCalendarIdentifier: $calendarID)
                     if let error {
                         Label(error, systemImage: "exclamationmark.triangle.fill")
                             .foregroundStyle(.red).font(CalendarTypography.footnote).textSelection(.enabled)
                     }
-                    Button(action: add) {
-                        HStack(spacing: 10) {
-                            if busy { ProgressView() }
-                            Label(LocalizedStringKey(busy ? "Adding…" : "Add to Calendar"), systemImage: "calendar.badge.plus")
-                        }.font(CalendarTypography.headline).frame(maxWidth: .infinity)
-                    }.buttonStyle(AppActionButtonStyle(prominent: true, tint: .appBlue)).controlSize(.large).disabled(busy || calendarID.isEmpty || calendars.isEmpty)
-                }.padding(24)
+                    SharedInvitationAddButton(busy: busy, disabled: calendarID.isEmpty || calendars.isEmpty, action: add)
+                }.padding(.horizontal, 22).padding(.vertical, 24)
             }
         }.font(CalendarTypography.body)
             .background(CalendarPalette.groupedBackground)
             .frame(width: 600, height: 520)
             .interactiveDismissDisabled(busy)
     }
-    private var dateText: String {
-        let formatter = DateFormatter()
-        formatter.locale = .appFormatting; formatter.timeZone = payload.timeZone
-        formatter.setLocalizedDateFormatFromTemplate("EEEEyMMMMd")
-        return formatter.string(from: payload.start)
-    }
-    private var timeText: String {
-        guard !payload.isAllDay else { return NSLocalizedString("All-day event", comment: "") }
-        let formatter = appTimeFormatter(); formatter.timeZone = payload.timeZone
-        var calendar = Calendar.current; calendar.timeZone = payload.timeZone
-        if !calendar.isDate(payload.start, inSameDayAs: payload.end) {
-            let date = appShortDateFormatter(includesYear: false); date.timeZone = payload.timeZone
-            return "\(date.string(from: payload.start)) \(formatter.string(from: payload.start)) – \(date.string(from: payload.end)) \(formatter.string(from: payload.end))"
+
+}
+
+enum MacEmailInvitation: Identifiable {
+    case event(SharedEventImportPayload)
+    case calendar(SharedCalendarInvitationPayload)
+
+    var id: String {
+        switch self {
+        case let .event(event): return "event-" + event.id
+        case let .calendar(calendar): return "calendar-" + calendar.id
         }
-        return "\(formatter.string(from: payload.start)) – \(formatter.string(from: payload.end))"
+    }
+}
+
+struct MacEmailInvitationSheet: View {
+    let invitation: MacEmailInvitation
+    @ObservedObject var store: MacTabletCalendarStore
+    let close: () -> Void
+    @State private var calendarID = ""
+    @State private var busy = false
+    @State private var error: String?
+    @State private var showSignIn = false
+
+    var body: some View {
+        switch invitation {
+        case let .event(payload):
+            MacSharedEventImportContent(payload: payload, calendars: store.writableCalendars,
+                calendarID: $calendarID, busy: busy, error: error, close: close, add: {
+                    guard let target = store.writableCalendars.first(where: { $0.calendarIdentifier == calendarID }) else { return }
+                    save {
+                        let session = try await CalendarFeedSession.current()
+                        try await MacEventSharing.accept(payload, target: target, bridge: store.local, session: session)
+                    }
+                })
+                .onChange(of: store.defaultWritableCalendar?.calendarIdentifier, initial: true) { _, id in
+                    if calendarID.isEmpty { calendarID = id ?? "" }
+                }
+        case let .calendar(payload):
+            VStack(spacing: 0) {
+                MacCalendarSheetHeader(title: Text("Calendar invitation")) {
+                    AppToolbarTextButton("Close", action: close).disabled(busy)
+                } trailing: { EmptyView() }
+                VStack(spacing: 22) {
+                    SharedInvitationCalendarPreview(payload: payload)
+                    if let error { Text(error).foregroundStyle(.red) }
+                    SharedInvitationAddButton(isCalendar: true, busy: busy) {
+                        guard let session = store.backend.cloudSession else { showSignIn = true; return }
+                        save {
+                            let calendar = try await CloudCalendarsAPI.acceptICloudCalendarInvitation(
+                                ownerId: payload.ownerID, calendarId: payload.calendarID, session: session)
+                            guard store.backend.cloudSession?.calendarId == session.calendarId else { throw CancellationError() }
+                            try store.backend.installSharedCalendar(calendar)
+                        }
+                    }
+                }.padding(.horizontal, 22).padding(.vertical, 24)
+                Spacer()
+            }
+            .background(CalendarPalette.groupedBackground).frame(width: 540, height: 320)
+            .interactiveDismissDisabled(busy)
+            .appSheet(isPresented: $showSignIn) {
+                MacCalendarAccountView(store: store.backend)
+            }
+        }
+    }
+
+    private func save(_ action: @escaping @MainActor () async throws -> Void) {
+        guard !busy else { return }
+        busy = true
+        error = nil
+        Task { @MainActor in
+            defer { busy = false }
+            do {
+                try await action()
+                store.reload()
+                Task { await store.backend.sync() }
+                close()
+            } catch { self.error = error.localizedDescription }
+        }
     }
 }
 #endif

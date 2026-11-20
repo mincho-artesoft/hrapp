@@ -8,7 +8,8 @@ import {
   signal,
   type TemplateRef,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Location, NgTemplateOutlet } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
@@ -37,6 +38,7 @@ export class HeaderComponent {
   private readonly scroll = inject(ScrollService);
   private readonly themeService = inject(ThemeService);
   private readonly active = inject(ActiveLocaleService);
+  private readonly router = inject(Router);
 
   readonly theme = this.themeService.theme;
 
@@ -58,7 +60,16 @@ export class HeaderComponent {
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
   readonly isArticlesRoute = computed(() => this.active.currentPath().includes('/articles/'));
   readonly isCompareRoute = computed(() => this.active.currentPath().startsWith('/compare/'));
-  readonly isCalendarRoute = computed(() => this.active.currentPath().includes('/calendar'));
+  readonly isCalendarRoute = computed(() => this.active.currentPath().endsWith('/calendar/'));
+  isActivePage(key: string): boolean {
+    switch (key) {
+      case 'articles': return this.isArticlesRoute();
+      case 'compare': return this.isCompareRoute();
+      case 'calendar': return this.isCalendarRoute();
+      case 'bookings': return this.active.currentPath().endsWith('/calendar/bookings/');
+      default: return false;
+    }
+  }
 
   /** Labels come from the active language; the fragments never change. */
   readonly nav = computed<NavItem[]>(() => {
@@ -66,9 +77,10 @@ export class HeaderComponent {
     const base = this.homePath();
     const locale = this.active.locale();
     const articlesHref = linkPath(locale, '/articles');
-    const calendarHref = linkPath(locale, '/calendar');
+    const calendarHref = this.active.calendarHref('/calendar');
     const items: NavItem[] = [
       { label: 'Web Calendar', href: calendarHref, key: 'calendar', isRoute: true },
+      { label: 'Bookings', href: this.active.calendarHref('/calendar/bookings'), key: 'bookings', isRoute: true },
       { label: n.widgets, href: `${base}#widgets`, key: 'widgets' },
       { label: n.features, href: `${base}#features`, key: 'features' },
       { label: n.pricing, href: `${base}#pricing`, key: 'pricing' },
@@ -79,6 +91,15 @@ export class HeaderComponent {
     items.push({ label: n.articles, href: articlesHref, key: 'articles', isRoute: true });
     return items;
   });
+
+  followLink(event: MouseEvent, item: NavItem): void {
+    this.closeMenu();
+    if (item.key !== 'calendar' && item.key !== 'bookings') return;
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    if (!this.isActivePage(item.key)) void this.router.navigateByUrl(Location.stripTrailingSlash(item.href));
+  }
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);

@@ -16,7 +16,7 @@ extension SharedEventImportPayload {
         }
         guard validID(values["e"]), validID(values["c"]),
               let eventID = values["e"], let feedID = values["c"] else { return nil }
-        let base = url.host == "api.cloud-calendars.com"
+        let base = serverBase.host == "api.cloud-calendars.com"
             ? URL(string: "https://cal.cloud-calendars.com")! : serverBase
         let feed = base.appendingPathComponent("f").appendingPathComponent(feedID + ".ics")
         do {

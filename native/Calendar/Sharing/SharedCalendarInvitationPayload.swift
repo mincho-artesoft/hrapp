@@ -18,9 +18,7 @@ struct SharedCalendarInvitationPayload: Identifiable, Equatable {
         guard isFullAppLink || isServerLink || isAppClipLink,
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { return nil }
-        let values = Dictionary(
-            uniqueKeysWithValues: (components.queryItems ?? []).map { ($0.name, $0.value ?? "") }
-        )
+        let values = components.sharedEventFormQueryValues
         if isAppClipLink {
             guard values["calendarShare"] == "1" else { return nil }
         }

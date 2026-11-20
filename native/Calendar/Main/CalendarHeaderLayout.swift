@@ -12,7 +12,7 @@ enum CalendarHeaderLayout {
 }
 
 enum CalendarHeaderMode: Int, CaseIterable {
-    case day = 1, multiDay = 3, month = 0, year = 2, list = 4, multiCalendar = 5, weather = 6
+    case day = 1, multiDay = 3, month = 0, year = 2, list = 4, multiCalendar = 5, weather = 6, bookings = 8
 
     var title: String {
         switch self {
@@ -23,6 +23,7 @@ enum CalendarHeaderMode: Int, CaseIterable {
         case .list: "List"
         case .multiCalendar: "MultiCalendar"
         case .weather: "Weather"
+        case .bookings: "Bookings"
         }
     }
 
@@ -35,6 +36,7 @@ enum CalendarHeaderMode: Int, CaseIterable {
         case .list: "list.bullet"
         case .multiCalendar: "align.vertical.top"
         case .weather: "cloud.sun"
+        case .bookings: "calendar.badge.checkmark"
         }
     }
 }

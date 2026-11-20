@@ -66,6 +66,8 @@ function indexSharedCopies(shares: SharedEvent[]) {
 }
 
 export interface PendingInvitation {
+  eventUrl?: string;
+  location?: string;
   id: string;
   eventId?: string;
   feedId?: string;

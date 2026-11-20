@@ -61,6 +61,7 @@ const eventRoutes: Routes = LOCALES.flatMap((locale) => {
       path: p('calendar'),
       loadComponent: () => import('./pages/web-calendar-page/web-calendar-page.component').then((m) => m.WebCalendarPageComponent),
       data: { locale },
+      children: [{ path: 'bookings', data: { bookings: true }, children: [] }],
     },
     {
       path: p('admin'),

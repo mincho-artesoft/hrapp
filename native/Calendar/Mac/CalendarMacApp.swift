@@ -15,11 +15,6 @@ struct CalendarMacApp: App {
                 #endif
             }.frame(minWidth: 1280, minHeight: 720).tint(.appBlue)
                 .handlesExternalEvents(preferring: ["*"], allowing: ["*"])
-                .onOpenURL { url in
-                    if !CloudAccountManager.shared.handleBrowserCallback(url) {
-                        CloudAccountManager.calendarConnections.handleBrowserCallback(url)
-                    }
-                }
                 // Set preferences at the scene content boundary so sheets,
                 // including sheets opened by nested views, inherit them too.
                 .environmentObject(weatherLocation)

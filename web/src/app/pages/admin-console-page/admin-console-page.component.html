@@ -38,30 +38,6 @@
       <p class="adm-loading">Loading live telemetry…</p>
     } @else if (data()) {
       @let d = data()!;
-      <!-- KPI Strip -->
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <span>Published Hosts</span>
-          <strong>{{ d.kpis.totalHosts }}</strong>
-          <small>{{ d.kpis.activeHosts }} active · {{ d.kpis.suspendedHosts }} suspended</small>
-        </div>
-        <div class="kpi-card">
-          <span>Total Bookings</span>
-          <strong>{{ d.kpis.totalBookings }}</strong>
-          <small>{{ d.kpis.confirmedBookings }} confirmed</small>
-        </div>
-        <div class="kpi-card">
-          <span>Upcoming (7 Days)</span>
-          <strong>{{ d.kpis.upcomingNext7Days }}</strong>
-          <small>Active scheduled calls</small>
-        </div>
-        <div class="kpi-card">
-          <span>Rescheduled / Cancelled</span>
-          <strong>{{ d.kpis.rescheduledBookings }} / {{ d.kpis.cancelledBookings }}</strong>
-          <small>Lifecycle updates</small>
-        </div>
-      </div>
-
       <!-- System Health -->
       <div class="health-strip">
         <span [class.is-ok]="d.system.emailConfigured">
@@ -81,82 +57,6 @@
         </span>
       </div>
 
-      <!-- Admin Sub-Tabs -->
-      <div class="adm-bar">
-        <div class="adm-tabs">
-          <button type="button" [class.is-on]="tab() === 'hosts'" (click)="tab.set('hosts')">
-            Accounts Directory ({{ d.hosts.length }})
-          </button>
-          <button type="button" [class.is-on]="tab() === 'oauth'" (click)="tab.set('oauth')">
-            OAuth &amp; Platform Settings
-          </button>
-        </div>
-
-        @if (tab() !== 'oauth') {
-          <input
-            type="search"
-            class="adm-search"
-            placeholder="Filter by handle, name, or email…"
-            [ngModel]="searchQuery()"
-            (ngModelChange)="searchQuery.set($event)"
-          />
-        }
-      </div>
-
-      <!-- TAB 1: HOSTS -->
-      @if (tab() === 'hosts') {
-        <div class="adm-panel">
-          @if (filteredHosts().length === 0) {
-            <p class="adm-empty">No matching accounts found.</p>
-          } @else {
-            <div class="table-wrap">
-              <table class="adm-table">
-                <thead>
-                  <tr>
-                    <th>Handle</th>
-                    <th>Display Name</th>
-                    <th>Owner Email</th>
-                    <th>Types / TZ</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (h of filteredHosts(); track h.calId) {
-                    <tr>
-                      <td>&#64;{{ h.handle }}</td>
-                      <td>{{ h.displayName }}</td>
-                      <td>{{ h.email || '—' }}</td>
-                      <td>{{ h.meetingTypeCount }} · {{ h.timeZone }}</td>
-                      <td>
-                        @if (h.disabledByAdmin) {
-                          <span class="pill pill--err">Suspended</span>
-                        } @else if (h.enabled) {
-                          <span class="pill pill--ok">Live</span>
-                        } @else {
-                          <span class="pill">Paused</span>
-                        }
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          class="tbl-btn"
-                          (click)="toggleHostModeration(h.calId, h.disabledByAdmin)"
-                        >
-                          {{ h.disabledByAdmin ? 'Re-enable' : 'Suspend' }}
-                        </button>
-                      </td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
-            </div>
-          }
-        </div>
-      }
-
-      <!-- TAB 3: LIVE OAUTH & PLATFORM SETTINGS -->
-      @if (tab() === 'oauth') {
         <div class="adm-panel oauth-settings">
           <h2>Apple, Google &amp; Microsoft Web Sign-In Configuration</h2>
           <p class="oauth-lead">
@@ -236,15 +136,6 @@
                 />
               </label>
 
-              <label class="adm-field">
-                <span>Homepage Featured Demo Handle</span>
-                <input
-                  type="text"
-                  placeholder="demo"
-                  [ngModel]="featuredDemoHandle()"
-                  (ngModelChange)="featuredDemoHandle.set($event)"
-                />
-              </label>
             </div>
 
             <button
@@ -257,7 +148,6 @@
             </button>
           </div>
         </div>
-      }
     }
   </div>
 

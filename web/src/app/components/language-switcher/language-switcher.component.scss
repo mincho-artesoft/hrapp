@@ -57,8 +57,6 @@ summary {
   font-variant-numeric: tabular-nums;
 }
 
-/* Twenty-nine languages do not fit in a column, so the menu scrolls and is
-   capped to something a laptop can show without covering the page. */
 .lang__menu {
   position: absolute;
   top: calc(100% + 0.5rem);
@@ -95,5 +93,14 @@ summary {
       color: var(--aurora-2);
       font-weight: 600;
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .lang { position: static; }
+  .lang__menu {
+    inset-inline: 1rem;
+    top: calc(100% + 0.25rem);
+    min-width: 0;
   }
 }

@@ -25,7 +25,6 @@ struct MacCalendarSharingView: View {
     @State private var link = ""
     @State private var importOpen = false
     @State private var importEvent: SharedEventImportPayload?
-    @State private var calendarID = ""
     @State private var accessEvent: CloudCalendarsAPI.RemoteSharedEvent?
     @State private var authenticatorOpen = false
     @State private var webChallenge: WebAuthChallengePayload?
@@ -73,10 +72,8 @@ struct MacCalendarSharingView: View {
         .font(CalendarTypography.body)
         .task(id: account.accountEmail) { await refresh() }
         .appSheet(isPresented: $importOpen) { importSheet }
-        .appSheet(item: $importEvent) { payload in
-            MacSharedEventImportContent(payload: payload, calendars: store.writableCalendars,
-                calendarID: $calendarID, busy: busy, error: error,
-                close: { importEvent = nil }, add: { saveInvitation(payload) })
+        .appSheet(item: $importEvent, onDismiss: { Task { await refresh() } }) { payload in
+            MacEmailInvitationSheet(invitation: .event(payload), store: store) { importEvent = nil }
         }
         .appSheet(item: $detailTarget, onDismiss: { Task { await refresh() } }) { target in
             MacTabletEventEditor(store: store, target: target) { detailTarget = nil }
@@ -107,7 +104,7 @@ struct MacCalendarSharingView: View {
                     }
                     ForEach(invitations) { item in
                         PendingEventInvitationRow(invitation: item, isUpdating: busy,
-                            accept: { importEvent = item.importPayload; calendarID = store.defaultWritableCalendar?.calendarIdentifier ?? "" },
+                            accept: { importEvent = item.importPayload },
                             decline: { perform { session in try await CloudCalendarsAPI.declinePendingEventInvitation(eventId: item.eventId, feedId: item.feedId, session: session) } })
                     }
                 }.refreshable { await refresh() }
@@ -195,26 +192,13 @@ struct MacCalendarSharingView: View {
         error = nil
         guard let url = URL(string: link.trimmingCharacters(in: .whitespacesAndNewlines)) else { error = NSLocalizedString("Invalid invitation link.", comment: ""); return }
         if let payload = SharedEventImportPayload(url: url) {
-            importOpen = false; calendarID = store.defaultWritableCalendar?.calendarIdentifier ?? ""
+            importOpen = false
             DispatchQueue.main.async { importEvent = payload }
         } else if let payload = SharedCalendarInvitationPayload(url: url) {
             importOpen = false; acceptCalendar(owner: payload.ownerID, id: payload.calendarID)
         } else if let challenge = WebAuthChallengePayload(url: url) {
             importOpen = false; webChallenge = challenge
         } else { error = NSLocalizedString("Invalid invitation link.", comment: "") }
-    }
-    private func saveInvitation(_ payload: SharedEventImportPayload) {
-        guard let target = store.writableCalendars.first(where: { $0.calendarIdentifier == calendarID }) else { return }
-        busy = true; error = nil
-        Task { @MainActor in
-            defer { busy = false }
-            do {
-                let session = try await CalendarFeedSession.current()
-                try await MacEventSharing.accept(payload, target: target, bridge: store.local, session: session)
-                Task { await store.backend.sync() }
-                store.reload(); importEvent = nil; await refresh()
-            } catch { self.error = error.localizedDescription }
-        }
     }
     private func acceptCalendar(owner: String, id: String) {
         perform { session in

@@ -31,7 +31,7 @@ async function main() {
           await service.sendSharedCalendarInvitation({ email: 'qa@example.com', access,
             calendar: { title: 'QA calendar', color: '#AF52DE' }, ownerId: 'qa-owner', calendarId: 'qa-calendar' });
         } else {
-          await service.sendSharedEventInvitation({ email: 'qa@example.com', access, eventUrl,
+          await service.sendSharedEventInvitation({ ownerCalId: 'test-owner-calendar', email: 'qa@example.com', access, eventUrl,
             event, timeZone: 'Asia/Dubai' });
         }
         const command = captured.pop(); assert.ok(command);
@@ -47,8 +47,8 @@ async function main() {
         const preview = kind === 'calendar' ? null : eventInvitationURLWithPreview(canonicalInvitationURL(eventUrl, api)!, event)!;
         const expected = kind === 'calendar' ? `${api}/icloud-calendar-invites/open?o=qa-owner&c=qa-calendar`
           : canonicalInvitationURL(preview!.toString(), api, true)!.toString();
-        assert.ok(email.Body.Text.Data.includes(kind === 'calendar' ? expected
-          : preview!.toString()), 'Plain text keeps a usable invitation URL');
+        assert.ok(email.Body.Text.Data.includes('/invite/' + (api.includes('api.cloud-calendars.com') ? '' : 'debug/')));
+        assert.ok(email.Body.Text.Data.includes('#invite=' + (kind === 'calendar' ? 'calendar' : 'event') + '&id='));
         if (kind !== 'calendar') {
           const values = new URL(expected).searchParams;
           assert.equal(values.get('title'), event.title, 'old scanner requires a nonempty title');

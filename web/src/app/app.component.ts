@@ -46,7 +46,7 @@ export class AppComponent {
   private readonly active = inject(ActiveLocaleService);
   private readonly router = inject(Router);
   private readonly browser = isBrowser();
-  readonly isCalendarWorkspace = computed(() => /(^|\/)calendar\/?$/.test(this.active.currentPath().split(/[?#]/)[0]));
+  readonly isCalendarWorkspace = this.active.calendarSection;
   readonly mainHref = computed(() => `${this.active.currentPath()}#main`);
   private readonly adsense = inject(AdsenseService);
 

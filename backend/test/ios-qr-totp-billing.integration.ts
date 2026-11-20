@@ -69,7 +69,6 @@ class FakeEmailService {
   async sendVerificationCodeEmail(v: any): Promise<void> {
     this.codes.push({ email: v.email, code: v.code });
   }
-  async sendBookingInviteeNotification(): Promise<void> {}
   async sendSharedEventInvitation(): Promise<void> {}
   async sendSharedCalendarInvitation(): Promise<void> {}
   sharedEventIconPng(): Buffer { return Buffer.from('icon'); }
@@ -133,12 +132,7 @@ async function main() {
   );
   assert.equal(blockedEvent.code, 'subscription_required');
 
-  const blockedBooking = expectStatus(
-    await webSvc.saveBookingConfig(webPrincipal, { handle: 'webonly-host' }),
-    402,
-    'unentitled booking config blocked',
-  );
-  assert.equal(blockedBooking.code, 'subscription_required');
+
 
   // 2. Stripe Webhook activates $1.99/mo Web Studio subscription (and ignores other apps on shared Stripe account)
   const ignoredEvent = signStripeWebhook(
@@ -297,7 +291,7 @@ async function main() {
   );
   assert.equal(replayPoll.status, 'expired');
 
-  // iOS-unlocked user creates events & saves booking config for FREE forever!
+  // iOS-unlocked user creates events for FREE forever!
   expectStatus(
     await webSvc.upsertWebCalendarEvent(iosPrincipal, 'evt_ios_free_1', {
       title: 'Free Forever via iOS',

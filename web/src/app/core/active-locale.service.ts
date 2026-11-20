@@ -12,6 +12,7 @@ import {
   LOCALES,
   Locale,
   campaignFor,
+  linkPath,
   localePath,
   storeUrl,
 } from './locales';
@@ -95,6 +96,7 @@ export class ActiveLocaleService {
    * language's home page instead of the page the reader was on.
    */
   private readonly url = signal('/');
+  private readonly workspaceLanguage = signal<string | null>(null);
   private readonly browser = isBrowser();
   private readonly source = signal(this.browser ? readSource() : '');
 
@@ -106,6 +108,16 @@ export class ActiveLocaleService {
     const path = this.url() || '/';
     return path.endsWith('.html') ? path : withSlash(path);
   });
+  readonly calendarSection = computed(() => {
+    const calendar = localePath(this.current(), '/calendar');
+    if (this.url() === calendar) return '/calendar';
+    return this.url() === calendar + '/bookings' ? '/calendar/bookings' : null;
+  });
+
+  calendarHref(section: string, target = this.current(), language = this.workspaceLanguage()): string {
+    const href = linkPath(target, section);
+    return language ? href + '?lang=' + encodeURIComponent(language) : href;
+  }
 
   /**
    * Which page of this site the reader is on, as a campaign token: `home`,
@@ -172,6 +184,8 @@ export class ActiveLocaleService {
       const has = ARTICLE_SLUGS[target.code]?.includes(slug);
       return withSlash(localePath(target, has ? `/articles/${slug}` : '/articles'));
     }
+    const section = this.calendarSection();
+    if (section) return this.calendarHref(section, target, null);
     if (url.endsWith('/articles')) return withSlash(localePath(target, '/articles'));
 
     // The home page, and anything else that is not language-specific.
@@ -192,6 +206,7 @@ export class ActiveLocaleService {
     const requestedLocale = LOCALES.find(locale => locale.slug === prefix) ?? DEFAULT_LOCALE;
     this.current.set((route.snapshot.data['locale'] as Locale | undefined) ?? requestedLocale);
     this.url.set(path);
+    this.workspaceLanguage.set(this.calendarSection() ? this.router.parseUrl(requested).queryParamMap.get('lang') : null);
     if (this.browser) {
       const nextSource = readSource();
       if (nextSource && nextSource !== this.source()) {

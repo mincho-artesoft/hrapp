@@ -275,7 +275,7 @@ final class DeviceEventKitAdapter {
             details["videoCallURL"] = supplement.videoCallURL.map(CalendarJSON.string)
             details["attachments"] = .array(supplement.attachments.compactMap { try? .object(CalendarJSON.object(encoding: $0)) })
         }
-        return DeviceCalendarEvent(id: id, title: event.title ?? "", start: DeviceCalendarEvent.iso(event.startDate), end: DeviceCalendarEvent.iso(event.endDate), allDay: event.isAllDay,
+        return DeviceCalendarEvent(id: id, title: event.title ?? "", start: DeviceCalendarEvent.iso(event.startDate), end: DeviceCalendarEvent.iso(event.calendarRangeEnd), allDay: event.isAllDay,
             location: event.location, url: event.url?.absoluteString,
             details: details,
             readOnly: !event.calendar.allowsContentModifications || event.hasAttendees || event.status == .canceled,
@@ -295,10 +295,10 @@ final class DeviceEventKitAdapter {
             guard item.readOnly != true, existing?.hasAttendees != true else { continue }
             if let existing, snapshot(existing).content == item.content { continue }
             let event = existing ?? EKEvent(eventStore: store)
-            event.calendar = calendar; event.title = item.title; event.startDate = item.startDate; event.endDate = item.endDate
-            event.isAllDay = item.allDay; event.location = item.location; event.url = item.url.flatMap(URL.init(string:))
+            event.calendar = calendar; event.title = item.title; event.applyCalendarSchedule(start: item.startDate, end: item.endDate, allDay: item.allDay,
+                timeZone: item.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:)))
+            event.location = item.location; event.url = item.url.flatMap(URL.init(string:))
             event.notes = item.details?["notes"]?.string
-            event.timeZone = item.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:))
             if case .array(let alarms) = item.details?["alarms"] {
                 event.alarms = try alarms.compactMap { value in
                     try JSONDecoder().decode(SharedEventAlarm.self, from: JSONEncoder().encode(value)).makeAlarm()

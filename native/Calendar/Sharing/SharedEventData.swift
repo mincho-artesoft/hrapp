@@ -2,6 +2,28 @@ import Foundation
 import EventKit
 import CoreLocation
 
+extension EKEvent {
+    /// EventKit clears isAllDay when a time zone is assigned. Set wall times
+    /// in timed mode first, including when reusing a previously all-day event.
+    func applyCalendarSchedule(start: Date, end: Date, allDay: Bool, timeZone zone: TimeZone?) {
+        if isAllDay { isAllDay = false }
+        timeZone = zone
+        startDate = start
+        endDate = end
+        isAllDay = allDay
+    }
+
+    /// The calendar wire format and timeline use a half-open range. AppKit
+    /// EventKit can return the last second of the final day for all-day items.
+    var calendarRangeEnd: Date {
+        guard isAllDay else { return endDate }
+        let calendar = Calendar.current
+        let midnight = calendar.startOfDay(for: endDate)
+        if endDate == midnight && endDate > startDate { return endDate }
+        return calendar.dateInterval(of: .day, for: max(startDate, endDate))?.end ?? endDate
+    }
+}
+
 private func sharedEventDate(_ value: String) -> Date? {
     (try? Date.ISO8601FormatStyle(includingFractionalSeconds: true).parse(value))
         ?? (try? Date.ISO8601FormatStyle().parse(value))
@@ -245,7 +267,7 @@ struct SharedEventDetails: Codable, Equatable {
         canonicalLocation: String? = nil
     ) {
         event.notes = notes
-        event.timeZone = timeZone.flatMap(TimeZone.init(identifier:))
+        if !event.isAllDay { event.timeZone = timeZone.flatMap(TimeZone.init(identifier:)) }
         if let availability = EKEventAvailability(rawValue: availability),
            availability != .notSupported {
             event.availability = availability
@@ -291,7 +313,7 @@ struct SharedEventDetails: Codable, Equatable {
             )
         }
         return notes == current.notes
-            && timeZone == current.timeZone
+            && (event.isAllDay || timeZone == current.timeZone)
             && availabilityMatches
             && alarms == current.alarms
             && recurrenceRules == current.recurrenceRules

@@ -1,3 +1,4 @@
+import { calendarHourCycle } from '../../core/calendar-format-preferences';
 import {Component,ChangeDetectionStrategy,computed,input,model,output,ElementRef,inject,OnDestroy} from '@angular/core';
 import {CalendarNativeTextPipe,CalendarNativeDatePipe,CalendarLocalization} from '../../core/calendar-localization';
 import {CalendarDateGridComponent} from './calendar-date-grid.component';
@@ -37,7 +38,7 @@ export class CalendarDateTimeComponent implements OnDestroy {
  otherDate = input('');
  otherTime = input('');
  timeFormat=input('system');
- twelveHour=computed(()=>this.timeFormat()==='12'||(this.timeFormat()==='system'&&!!new Intl.DateTimeFormat(this.localization.locale(),{hour:'numeric'}).resolvedOptions().hour12));
+ twelveHour=computed(()=>calendarHourCycle(this.timeFormat()) === 'h12');
  wheelParts=computed(():Array<'hour'|'minute'|'period'>=>this.twelveHour()?['hour','minute','period']:['hour','minute']);
  wheelValues(part:'hour'|'minute'|'period'):string[]{return part==='period'?['AM','PM']:part==='minute'?this.minutes:this.twelveHour()?Array.from({length:12},(_,i)=>String(i+1)):this.hours;}
  selectedValue(part:'hour'|'minute'|'period'):string{const hour=Number(this.time().slice(0,2));return part==='minute'?this.time().slice(3,5):part==='period'?(hour<12?'AM':'PM'):this.twelveHour()?String(hour%12||12):this.time().slice(0,2);}
@@ -57,6 +58,6 @@ export class CalendarDateTimeComponent implements OnDestroy {
    return null;
  });
  hours=Array.from({length:24},(_,i)=>(''+i).padStart(2,'0'));minutes=Array.from({length:60},(_,i)=>(''+i).padStart(2,'0'));
- timeLabel(time: string){return new Date('2000-01-01T'+time).toLocaleTimeString(this.localization.locale(),{hour:'numeric',minute:'2-digit',hour12:this.twelveHour()});}
+ timeLabel(time: string){return new Date('2000-01-01T'+time).toLocaleTimeString(this.localization.formattingLocale(),{hour:'numeric',minute:'2-digit',hourCycle:calendarHourCycle(this.timeFormat())});}
  toggle(kind:'date'|'time'){this.focus.set(this.expanded()===kind?null:this.label()+'-'+kind);if(kind==='time'&&this.expanded()==='time')this.openTimer=setTimeout(()=>this.host.nativeElement.querySelectorAll<HTMLElement>('.wheel').forEach((wheel,i)=>{const part=this.wheelParts()[i];wheel.scrollTop=this.wheelValues(part).indexOf(this.selectedValue(part))*36;}));}
 }

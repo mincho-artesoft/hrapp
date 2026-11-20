@@ -69,8 +69,6 @@ struct AppLocalCalendarEditView: View {
                 if calendar?.isPersonalCloud == true {
                     Section {
                         Label("Web & Events Sync", systemImage: "icloud.fill").foregroundStyle(.secondary)
-                    } footer: {
-                        Text("Synced automatically with Cloud Calendars on the web, Event RSVP pages, and Booking links.")
                     }
                 }
             }

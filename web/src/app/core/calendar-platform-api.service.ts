@@ -31,7 +31,6 @@ export interface AuthProvidersInfo {
   microsoftTenant: string;
   appleWebClientId?: string | null;
   emailOtpEnabled: boolean;
-  featuredDemoHandle: string;
 }
 
 export interface ConnectedProviderStatus {
@@ -101,11 +100,6 @@ export interface UserProfile {
   identities: Array<{ provider: string; email?: string | null; linkedAt?: string }>;
   connectedProviders?: ConnectedProvidersMap;
   isAdmin: boolean;
-  isHost: boolean;
-  bookingEnabled: boolean;
-  bookingHandle: string | null;
-  bookingShareUrl: string | null;
-  guestBookingsCount: number;
   webAccess?: WebStudioAccess;
 }
 
@@ -165,18 +159,6 @@ export interface WebCalendarEvent {
   sequence?: number;
   updatedAt?: string;
   details?: WebCalendarEventDetails;
-  booking?: {
-    bookingId: string;
-    manageToken?: string;
-    meetingTypeId?: string;
-    meetingTypeName?: string;
-    guestName?: string;
-    guestEmail?: string;
-    guestTimeZone?: string;
-    guestNotes?: string | null;
-    status?: string;
-    rescheduledCount?: number;
-  };
   sourceKind?: 'owned' | 'shared' | 'external';
   externalSource?: string;
   readOnly?: boolean;
@@ -199,45 +181,6 @@ export interface ExternalBusyState {
   }>;
 }
 
-export interface TimeWindow {
-  start: number;
-  end: number;
-}
-
-export interface MeetingTypeConfig {
-  id: string;
-  slug: string;
-  name: string;
-  durationMinutes: number;
-  color: string;
-  bufferBeforeMinutes: number;
-  bufferAfterMinutes: number;
-  locationKind: 'google_meet' | 'microsoft_teams' | 'teams' | 'zoom' | 'phone' | 'in_person' | 'custom';
-  locationValue: string;
-  description: string;
-  active: boolean;
-}
-
-export interface BookingScheduleConfig {
-  enabled: boolean;
-  disabledByAdmin?: boolean;
-  handle: string;
-  displayName: string;
-  headline: string;
-  bio: string;
-  avatarColor: string;
-  timeZone: string;
-  slotIntervalMinutes: number;
-  minNoticeMinutes: number;
-  maxAdvanceDays: number;
-  maxBookingsPerDay: number;
-  requireEmailVerification: boolean;
-  weekly: Record<string, TimeWindow[]>;
-  dateOverrides: Record<string, TimeWindow[]>;
-  meetingTypes: MeetingTypeConfig[];
-  updatedAt?: string;
-}
-
 export interface WebCalendarStateResponse {
   calendars?: DeviceCalendar[];
   calendar: {
@@ -253,145 +196,10 @@ export interface WebCalendarStateResponse {
   receivedEvents: WebCalendarEvent[];
   externalBusy: ExternalBusyState;
   connectedProviders?: ConnectedProvidersMap;
-  bookingConfig: BookingScheduleConfig | null;
   webAccess?: WebStudioAccess;
 }
 
-export interface BookingInviteLink {
-  token: string;
-  label: string;
-  meetingTypeId: string | null;
-  expiresAt: string;
-  maxUses: number;
-  usedCount: number;
-  requireEmailConfirmIfUnauthenticated: boolean;
-  revoked: boolean;
-  state: 'active' | 'expired' | 'exhausted' | 'revoked';
-  createdAt: string;
-  lastUsedAt: string | null;
-  shareUrl: string;
-}
-
-export interface PublicBookingPageData {
-  handle: string;
-  displayName: string;
-  headline: string;
-  bio: string;
-  avatarColor: string;
-  timeZone: string;
-  slotIntervalMinutes: number;
-  maxAdvanceDays: number;
-  requireEmailVerification: boolean;
-  isDemo: boolean;
-  inviteLink?: {
-    token: string;
-    label: string;
-    expiresAt: string;
-    maxUses: number;
-    usedCount: number;
-    remainingUses: number | null;
-  } | null;
-  meetingTypes: Array<{
-    id: string;
-    slug: string;
-    name: string;
-    durationMinutes: number;
-    color: string;
-    locationKind: string;
-    locationValue: string;
-    description: string;
-  }>;
-}
-
-export interface BookingSlot {
-  start: string;
-  end: string;
-}
-
-export interface PublicSlotsResponse {
-  handle: string;
-  meetingTypeId: string;
-  durationMinutes: number;
-  hostTimeZone: string;
-  slots: BookingSlot[];
-}
-
-export interface CreatedBookingResponse {
-  bookingId: string;
-  isDemo?: boolean;
-  manageToken: string | null;
-  manageUrl: string | null;
-  guestPortalUrl?: string;
-  feedUrl: string | null;
-  webcalUrl: string | null;
-  icsContent: string;
-  event: WebCalendarEvent;
-  hostName?: string;
-  host?: {
-    displayName: string;
-    handle: string;
-    timeZone: string;
-  };
-}
-
-export interface HostBookingItem {
-  eventId: string;
-  bookingId: string;
-  title: string;
-  start: string;
-  end: string;
-  status: string;
-  color: string;
-  location: string | null;
-  videoCallURL: string | null;
-  meetingTypeId: string;
-  meetingTypeName: string;
-  guestName: string;
-  guestEmail: string;
-  guestTimeZone: string;
-  guestNotes: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface ManagedBookingRecord {
-  bookingId: string;
-  manageToken: string;
-  manageUrl?: string;
-  eventId?: string;
-  title: string;
-  start: string;
-  end: string;
-  status: string;
-  color: string;
-  location: string | null;
-  videoCallURL: string | null;
-  hostName: string;
-  hostHandle: string;
-  hostTimeZone?: string;
-  meetingTypeId: string;
-  meetingTypeName: string;
-  durationMinutes?: number;
-  guestName: string;
-  guestEmail: string;
-  guestTimeZone: string;
-  guestNotes?: string | null;
-  feedUrl: string | null;
-  webcalUrl: string | null;
-  icsContent?: string;
-}
-
 export interface AdminOverviewResponse {
-  kpis: {
-    totalHosts: number;
-    activeHosts: number;
-    suspendedHosts: number;
-    totalBookings: number;
-    confirmedBookings: number;
-    cancelledBookings: number;
-    rescheduledBookings: number;
-    upcomingNext7Days: number;
-  };
   system: {
     emailConfigured: boolean;
     emailGuardTable: string | null;
@@ -408,37 +216,8 @@ export interface AdminOverviewResponse {
     microsoftWebClientId: string;
     microsoftTenant: string;
     appleWebClientId?: string;
-    featuredDemoHandle: string;
   };
-  hosts: Array<{
-    calId: string;
-    principalId: string;
-    handle: string;
-    displayName: string;
-    email: string | null;
-    enabled: boolean;
-    disabledByAdmin: boolean;
-    meetingTypeCount: number;
-    timeZone: string;
-    updatedAt: string;
-  }>;
-  recentBookings: Array<{
-    bookingId: string;
-    calId: string;
-    eventId: string;
-    hostHandle: string;
-    hostName: string;
-    guestName: string;
-    guestEmail: string;
-    meetingTypeName: string;
-    title: string;
-    start: string;
-    end: string;
-    status: string;
-    lastChangeKind?: string;
-    createdAt: string;
-    updatedAt?: string;
-  }>;
+
 }
 
 declare global {
@@ -822,7 +601,7 @@ export class CalendarPlatformApiService {
    * Launches Google OAuth popup using the CloudCalendars Google Cloud Project (`540859420644`).
    * Requests the minimal least-privilege event scope `https://www.googleapis.com/auth/calendar.events.owned`
    * ("See, create, change, and delete events on Google calendars you own") when `includeCalendarReadonly !== false`,
-   * or strictly non-sensitive `openid email profile` for account-only sign-in (`/admin/`, `/bookings/`).
+   * or strictly non-sensitive `openid email profile` for account-only sign-in (`/admin/`, `/calendar/bookings/`).
    * - When `googleOfflineCapable` is true (`googleWebClientSecret` configured), uses `initCodeClient` (`access_type: 'offline'`)
    *   so the backend stores a permanent `refresh_token` for 24/7 background sync even while the browser is closed!
    * - Otherwise uses `initTokenClient` and stores the live token on the backend for immediate 2-way read+write sync!
@@ -1213,11 +992,10 @@ export class CalendarPlatformApiService {
         occurrenceCount?: number;
       }>;
       attendees?: Array<{ name?: string; email?: string; status?: string }>;
-      notifyGuest?: boolean;
       reason?: string;
     },
-  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean; sharingCalendarID?: string | null }> {
-    const result = await this.request<{ event: WebCalendarEvent; notifiedGuest?: boolean; sharingCalendarID?: string | null }>(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
+  ): Promise<{ event: WebCalendarEvent; sharingCalendarID?: string | null }> {
+    const result = await this.request<{ event: WebCalendarEvent; sharingCalendarID?: string | null }>(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
       method: 'PUT',
       auth: true,
       body: nativeEventDetails(payload),
@@ -1227,13 +1005,8 @@ export class CalendarPlatformApiService {
 
   async deleteCalendarEvent(
     eventId: string,
-    opts: { notifyGuest?: boolean; reason?: string } = {},
   ): Promise<{ deleted: boolean; sequence: number; sharingCalendarID?: string | null }> {
-    const qs = new URLSearchParams();
-    if (opts.notifyGuest === false) qs.set('notifyGuest', '0');
-    if (opts.reason) qs.set('reason', opts.reason);
-    const suffix = qs.toString() ? `?${qs.toString()}` : '';
-    return this.request(`/web-calendar/events/${encodeURIComponent(eventId)}${suffix}`, {
+    return this.request(`/web-calendar/events/${encodeURIComponent(eventId)}`, {
       method: 'DELETE',
       auth: true,
     });
@@ -1257,166 +1030,6 @@ export class CalendarPlatformApiService {
         body: payload,
       },
     );
-  }
-
-  // ── Host Booking Configuration & Queue ────────────────────────────────────
-
-  async checkHandle(handle: string): Promise<{ handle: string; available: boolean; reason?: string }> {
-    return this.request(`/booking/check-handle?h=${encodeURIComponent(handle)}`, { auth: true });
-  }
-
-  async getBookingConfig(): Promise<{ config: BookingScheduleConfig; shareUrl: string }> {
-    return this.request('/booking/config', { auth: true });
-  }
-
-  async saveBookingConfig(config: Partial<BookingScheduleConfig>): Promise<{
-    config: BookingScheduleConfig;
-    shareUrl: string;
-  }> {
-    const res = await this.request<{ config: BookingScheduleConfig; shareUrl: string }>(
-      '/booking/config',
-      {
-        method: 'PUT',
-        auth: true,
-        body: config,
-      },
-    );
-    await this.refreshProfile().catch(() => null);
-    return res;
-  }
-
-  async getHostBookings(): Promise<{ bookings: HostBookingItem[] }> {
-    return this.request('/booking/host-bookings', { auth: true });
-  }
-
-  async rescheduleHostBooking(
-    eventId: string,
-    payload: { start: string; end?: string; reason?: string; notifyGuest?: boolean },
-  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
-    return this.request(`/booking/host-bookings/${encodeURIComponent(eventId)}/reschedule`, {
-      method: 'POST',
-      auth: true,
-      body: payload,
-    });
-  }
-
-  async cancelHostBooking(
-    eventId: string,
-    payload: { reason?: string; notifyGuest?: boolean } = {},
-  ): Promise<{ deleted: boolean }> {
-    return this.request(`/booking/host-bookings/${encodeURIComponent(eventId)}/cancel`, {
-      method: 'POST',
-      auth: true,
-      body: payload,
-    });
-  }
-
-  async getBookingInviteLinks(): Promise<{ links: BookingInviteLink[] }> {
-    return this.request('/booking/invite-links', { auth: true });
-  }
-
-  async createBookingInviteLink(payload: {
-    label?: string;
-    expiresInHours?: number;
-    expiresAt?: string;
-    maxUses?: number;
-    meetingTypeId?: string | null;
-    requireEmailConfirmIfUnauthenticated?: boolean;
-  }): Promise<{ link: BookingInviteLink }> {
-    return this.request('/booking/invite-links', {
-      method: 'POST',
-      auth: true,
-      body: payload,
-    });
-  }
-
-  async revokeBookingInviteLink(token: string): Promise<{ link: BookingInviteLink }> {
-    return this.request(`/booking/invite-links/${encodeURIComponent(token)}`, {
-      method: 'DELETE',
-      auth: true,
-    });
-  }
-
-  // ── Public Booking Surface ────────────────────────────────────────────────
-
-  async getPublicBookingPage(handle: string): Promise<PublicBookingPageData> {
-    return this.request<PublicBookingPageData>(`/book/${encodeURIComponent(handle)}`);
-  }
-
-  async getPublicBookingSlots(
-    handle: string,
-    opts: { type?: string; from?: string; to?: string; excludeEventId?: string } = {},
-  ): Promise<PublicSlotsResponse> {
-    const qs = new URLSearchParams();
-    if (opts.type) qs.set('type', opts.type);
-    if (opts.from) qs.set('from', opts.from);
-    if (opts.to) qs.set('to', opts.to);
-    if (opts.excludeEventId) qs.set('excludeEventId', opts.excludeEventId);
-    const suffix = qs.toString() ? `?${qs.toString()}` : '';
-    return this.request<PublicSlotsResponse>(`/book/${encodeURIComponent(handle)}/slots${suffix}`);
-  }
-
-  async requestBookingVerificationCode(handle: string, email: string): Promise<{ sent: boolean }> {
-    return this.request(`/book/${encodeURIComponent(handle)}/request-code`, {
-      method: 'POST',
-      body: { email: email.trim().toLowerCase() },
-    });
-  }
-
-  async createPublicBooking(
-    handle: string,
-    payload: {
-      typeId: string;
-      start: string;
-      name: string;
-      email: string;
-      timeZone: string;
-      notes?: string;
-      verificationCode?: string;
-    },
-  ): Promise<CreatedBookingResponse> {
-    return this.request<CreatedBookingResponse>(`/book/${encodeURIComponent(handle)}`, {
-      method: 'POST',
-      optionalAuth: true,
-      body: payload,
-    });
-  }
-
-  // ── Guest Self-Service & Portal ───────────────────────────────────────────
-
-  async getManagedBooking(token: string): Promise<{ booking: ManagedBookingRecord }> {
-    return this.request(`/manage/${encodeURIComponent(token)}`);
-  }
-
-  async rescheduleManagedBooking(
-    token: string,
-    payload: { start: string; reason?: string },
-  ): Promise<{ booking: ManagedBookingRecord }> {
-    return this.request(`/manage/${encodeURIComponent(token)}/reschedule`, {
-      method: 'POST',
-      body: payload,
-    });
-  }
-
-  async cancelManagedBooking(
-    token: string,
-    payload: { reason?: string } = {},
-  ): Promise<{ booking: ManagedBookingRecord }> {
-    return this.request(`/manage/${encodeURIComponent(token)}/cancel`, {
-      method: 'POST',
-      body: payload,
-    });
-  }
-
-  async syncManagedBookingToMyCalendar(token: string): Promise<{
-    synced: boolean;
-    linkedToCloudCalendar: boolean;
-    syncedProviders: string[];
-  }> {
-    return this.request(`/manage/${encodeURIComponent(token)}/sync-to-my-calendar`, {
-      method: 'POST',
-      auth: true,
-    });
   }
 
   buildGoogleCalendarAddUrl(ev: {
@@ -1463,25 +1076,10 @@ export class CalendarPlatformApiService {
     return url.toString();
   }
 
-  async getGuestBookings(): Promise<{ emails: string[]; bookings: ManagedBookingRecord[] }> {
-    return this.request('/guest/bookings', { auth: true });
-  }
-
   // ── Platform Admin Console ────────────────────────────────────────────────
 
   async getAdminOverview(): Promise<AdminOverviewResponse> {
     return this.request('/admin/overview', { auth: true });
-  }
-
-  async moderateHost(
-    calId: string,
-    disabledByAdmin: boolean,
-  ): Promise<{ calId: string; disabledByAdmin: boolean }> {
-    return this.request(`/admin/hosts/${encodeURIComponent(calId)}`, {
-      method: 'PATCH',
-      auth: true,
-      body: { disabledByAdmin },
-    });
   }
 
   async updateAdminSettings(settings: {
@@ -1490,7 +1088,6 @@ export class CalendarPlatformApiService {
     microsoftWebClientId?: string;
     microsoftTenant?: string;
     appleWebClientId?: string;
-    featuredDemoHandle?: string;
   }): Promise<{ settings: AdminOverviewResponse['settings'] }> {
     const res = await this.request<{ settings: AdminOverviewResponse['settings'] }>(
       '/admin/settings',

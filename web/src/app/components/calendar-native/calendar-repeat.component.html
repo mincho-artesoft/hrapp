@@ -1,0 +1,62 @@
+<section class="group">
+  <cc-choice [rowLabel]="true" [label]="'Frequency' | nativeText" [value]="rule().frequency"
+    [options]="frequencies" (valueChange)="frequency($event)" />
+  <button class="row interval" type="button" [attr.aria-expanded]="expanded()" (click)="expanded.set(!expanded())">
+    <span>{{'Every' | nativeText}}</span><span class="value" [class.active]="expanded()">{{intervalLabel()}}</span>
+  </button>
+  @if (expanded()) {
+    <div class="wheels" role="group" [attr.aria-label]="'Every' | nativeText">
+      <cc-repeat-wheel id="repeat-interval" [label]="'Every' | nativeText" [options]="intervals()"
+        [selected]="interval()" (selectedChange)="patch({interval: $event})" />
+      <span class="fixed-unit">{{unit()}}</span>
+    </div>
+  }
+</section>
+<p class="summary">{{summary()}}</p>
+
+@if (rule().frequency === 'weekly') {
+  <section class="group">
+    @for (day of orderedWeekdays(); track day.value) {
+      <button class="row" type="button" [attr.aria-pressed]="selectedWeekdays().includes(day.value)" (click)="toggleWeekday(day.value)">
+        <span>{{day.label}}</span>@if (selectedWeekdays().includes(day.value)) { <cc-symbol name="checkmark" /> }
+      </button>
+    }
+  </section>
+}
+@if (rule().frequency === 'monthly' || rule().frequency === 'yearly') {
+  @if (rule().frequency === 'yearly') {
+    <section class="group grid months">
+      @for (month of months(); track month.value) {
+        <button type="button" [attr.aria-pressed]="selectedMonths().includes(month.value)" (click)="toggleMonth(month.value)">{{month.label}}</button>
+      }
+    </section>
+  }
+  <section class="group">
+    @if (rule().frequency === 'monthly') {
+      @for (enabled of [false, true]; track enabled) {
+        <button class="row" type="button" [attr.aria-pressed]="usesOrdinal() === enabled" (click)="ordinal(enabled)">
+          <span>{{(enabled ? 'On the…' : 'Each') | nativeText}}</span>@if (usesOrdinal() === enabled) { <cc-symbol name="checkmark" /> }
+        </button>
+      }
+      @if (!usesOrdinal()) {
+        <div class="grid days">
+          @for (day of monthDays; track day) {
+            <button type="button" [attr.aria-pressed]="selectedMonthDays().includes(day)" (click)="toggleMonthDay(day)">{{number(day)}}</button>
+          }
+        </div>
+      }
+    } @else {
+      <label class="row"><span>{{'Days of Week' | nativeText}}</span>
+        <input class="switch" type="checkbox" [checked]="usesOrdinal()" (change)="ordinal($any($event.target).checked)" />
+      </label>
+    }
+    @if (usesOrdinal()) {
+      <div class="wheels">
+        <cc-repeat-wheel id="repeat-ordinal" [label]="'Ordinal' | nativeText" [options]="ordinals()"
+          [selected]="position()" (selectedChange)="setOrdinal($event, ordinalDay())" />
+        <cc-repeat-wheel id="repeat-weekday" [label]="'Day' | nativeText" [options]="ordinalDays()"
+          [selected]="ordinalDay()" (selectedChange)="setOrdinal(position(), $event)" />
+      </div>
+    }
+  </section>
+}

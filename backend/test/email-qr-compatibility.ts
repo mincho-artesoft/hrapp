@@ -31,7 +31,7 @@ async function inspectTemplate(label: string, api: string, eventURL: string, cal
     await service.sendSharedCalendarInvitation({ email: 'qa@example.com', access: 'reader',
       calendar: { title: 'QA Local Calendar', color: '#AF52DE' }, ownerId: 'qa-owner', calendarId: 'd'.repeat(64) });
   } else {
-    await service.sendSharedEventInvitation({ email: 'qa@example.com', access: 'reader',
+    await service.sendSharedEventInvitation({ ownerCalId: 'test-owner-calendar', email: 'qa@example.com', access: 'reader',
       event: { title: 'QA Local Event', start: '2026-09-09T12:00:00Z', end: '2026-09-09T13:30:00Z' },
       eventUrl: eventURL, timeZone: 'Europe/Sofia', senderEmail: 'qa-owner@example.com', eventColor: '#AF52DE' });
   }

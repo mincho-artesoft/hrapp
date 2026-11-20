@@ -102,7 +102,7 @@ struct RootView: View {
         #endif
         // Ако няма нищо записано, по подразбиране ще е 1
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
-        if (0...6).contains(saved) { // Assuming 0-7 are your valid tab indices
+        if CalendarHeaderMode(rawValue: saved) != nil {
             _selectedTab = State(initialValue: saved)
         }else{
             _selectedTab = State(initialValue: 1)
@@ -121,7 +121,7 @@ struct RootView: View {
                     ) && selectedTab != 7
 
                     HStack(spacing: 0) {
-                        if selectedTab != 6 && selectedTab != 7 && CalendarSidebarLayout.isVisible(isMac: false,
+                        if selectedTab != 6 && selectedTab != 7 && selectedTab != CalendarHeaderMode.bookings.rawValue && CalendarSidebarLayout.isVisible(isMac: false,
                             isTablet: UIDevice.current.userInterfaceIdiom == .pad,
                             windowSize: calendarWindowSize ?? CalendarSidebarLayout.viewportSize(
                                 contentSize: geometry.size,
@@ -860,6 +860,13 @@ extension RootView {
         }
         .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
 
+    case CalendarHeaderMode.bookings.rawValue:
+        VStack(spacing: 0) {
+            CalendarScreenHeader(currentView: selectedTab, title: NSLocalizedString("Bookings", comment: ""),
+                                 onSearch: nil, onViewChange: { selectedTab = $0 })
+            Divider()
+            Spacer()
+        }
     case 6:
         WeatherKitView(
             selectedTab: selectedTab,

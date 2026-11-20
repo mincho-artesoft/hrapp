@@ -74,8 +74,14 @@ struct MacCalendarEventCard: NSViewRepresentable {
             guard let c = configuration, bounds.width > 0, bounds.height > 0 else { return }
             let fill = c.depth.map { EventTimelineColors.background(c.color, selected: false, depth: $0, dark: dark) }
                 ?? c.color.withAlphaComponent(0.3)
+            let radius: CGFloat = c.isAllDay ? 9 : 5
+            let shape = NSBezierPath(roundedRect: bounds, xRadius: radius, yRadius: radius)
+            if c.isAllDay && fill.alphaComponent < 1 {
+                NSColor(CalendarPalette.gray6).setFill()
+                shape.fill()
+            }
             fill.setFill()
-            NSBezierPath(roundedRect: bounds, xRadius: c.isAllDay ? 9 : 5, yRadius: c.isAllDay ? 9 : 5).fill()
+            shape.fill()
             if !c.isAllDay {
                 c.color.setStroke()
                 let bar = NSBezierPath(); bar.lineWidth = 3; bar.lineCapStyle = .round

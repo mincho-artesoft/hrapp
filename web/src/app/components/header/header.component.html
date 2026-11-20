@@ -17,9 +17,10 @@
         <a
           class="hdr__link"
           [class.hdr__link--route]="item.isRoute"
-          [class.is-active]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute())"
+          [class.is-active]="isActivePage(item.key)"
           [href]="item.href"
-          [attr.aria-current]="(item.key === 'articles' && isArticlesRoute()) || (item.key === 'compare' && isCompareRoute()) || (item.key === 'calendar' && isCalendarRoute()) ? 'page' : null"
+          (click)="followLink($event, item)"
+          [attr.aria-current]="isActivePage(item.key) ? 'page' : null"
         >
           <span>{{ item.label }}</span>
         </a>
@@ -79,8 +80,9 @@
       @for (item of nav(); track item.key) {
         <a
           class="sheet__link"
+          [attr.aria-current]="isActivePage(item.key) ? 'page' : null"
           [href]="item.href"
-          (click)="closeMenu()"
+          (click)="followLink($event, item)"
         >
           <span>{{ item.label }}</span>
           <span class="sheet__chev" aria-hidden="true">›</span>

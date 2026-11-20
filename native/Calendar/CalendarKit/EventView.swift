@@ -240,7 +240,7 @@ open class EventView: UIView {
         textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : (bounds.width < 70 ? 2 : 0)
         textView.textContainer.lineBreakMode = event.isAllDay ? .byTruncatingTail : .byWordWrapping
         backgroundColor = .clear
-        layer.backgroundColor = (previewColor?.withAlphaComponent(0.3) ?? event.backgroundColor).cgColor
+        layer.backgroundColor = event.isAllDay ? nil : (previewColor?.withAlphaComponent(0.3) ?? event.backgroundColor).cgColor
         layer.cornerRadius = event.isAllDay ? 9 : 5
         color = eventColor
         eventResizeHandles.forEach {
@@ -281,10 +281,12 @@ open class EventView: UIView {
     }
 
     private func applyTimelineColors() {
-        guard let depth = timelineDepth, let descriptor else { return }
+        guard let descriptor, timelineDepth != nil || (descriptor.isAllDay && previewColor == nil) else { return }
         let dark = traitCollection.userInterfaceStyle == .dark
-        layer.backgroundColor = EventTimelineColors.background(descriptor.color,
-            selected: false, depth: depth, dark: dark).cgColor
+        if let depth = timelineDepth {
+            layer.backgroundColor = EventTimelineColors.background(descriptor.color,
+                selected: false, depth: depth, dark: dark).cgColor
+        }
         let text = NSMutableAttributedString(attributedString: textView.attributedText ?? NSAttributedString())
         let fullRange = NSRange(location: 0, length: text.length)
         text.addAttribute(.foregroundColor, value: EventTimelineColors.text(descriptor.color,
@@ -331,10 +333,16 @@ open class EventView: UIView {
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        // Премахваме лявата черта, ако е all-day
-        guard let context = UIGraphicsGetCurrentContext(),
-              let descriptor = descriptor,
-              !descriptor.isAllDay else {
+        guard let context = UIGraphicsGetCurrentContext(), let descriptor else { return }
+        if descriptor.isAllDay {
+            // The header is gray5. Composite translucent fills over the same gray6 as the hours grid.
+            let pill = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius)
+            UIColor.systemGray6.setFill()
+            pill.fill()
+            let fill = previewColor?.withAlphaComponent(0.3) ?? EventTimelineColors.background(
+                descriptor.color, selected: false, depth: 0, dark: traitCollection.userInterfaceStyle == .dark)
+            fill.setFill()
+            pill.fill()
             return
         }
         
@@ -503,7 +511,9 @@ open class EventView: UIView {
         layer.cornerRadius = 9
         clipsToBounds = true
         color = event.color
-        backgroundColor = event.color.withAlphaComponent(0.3)
+        previewColor = event.color
+        backgroundColor = .clear
+        setNeedsDisplay()
         
         // Създаваме NSTextAttachment за иконата
         let calendarAttachment = NSTextAttachment()

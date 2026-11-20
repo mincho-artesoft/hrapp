@@ -45,7 +45,7 @@ async function main() {
   const event = { title: 'Product Launch Planning', start: new Date(1788953400000).toISOString(),
     end: new Date(1788958800000).toISOString(), location: 'Apple Park Visitor Center, Cupertino' };
   currentName = 'email-event-invitation';
-  await email.sendSharedEventInvitation({ email: 'guest@example.com', access: 'writer', event, eventUrl: eventURL,
+  await email.sendSharedEventInvitation({ ownerCalId: 'test-owner-calendar', email: 'guest@example.com', access: 'writer', event, eventUrl: eventURL,
     timeZone: 'Europe/Sofia', senderName: 'Alex', senderEmail: 'alex@example.com', eventColor: '#0A84FF' });
   for (const kind of ['registered', 'moved', 'cancelled']) {
     currentName = `email-registration-${kind}`;
@@ -55,7 +55,7 @@ async function main() {
   for (const cancelled of [false, true]) {
     save('shared-link' + (cancelled ? '-cancelled' : ''), eventInvitationPage({ title: event.title,
       date: 'Wednesday, September 9, 2026', time: '2:30 PM – 4:00 PM', location: event.location,
-      color: '#0A84FF', fullAppURL: 'cloudcalendars://shared-event', sender: 'Alex', cancelled }));
+      color: '#0A84FF', fullAppURL: 'cloudcalendars://shared-event', webURL: 'https://www.cloud-calendars.com/calendar/', sender: 'Alex', cancelled }));
   }
   const calendarId = 'a'.repeat(64);
   const memoryStore = {keys, getJSON:async (key:string) => key === keys.icloudCalendarSharing('fixture',calendarId)
@@ -68,7 +68,7 @@ async function main() {
   save('shared-calendar-link', calendarLanding);
   save('shared-link-unavailable', (await calendarService.iCloudCalendarInvitationLanding({})).html);
   const evil = eventInvitationPage({title:'<script>alert(1)</script>',date:'Today',time:null,location:'<img src=x>',
-    color:'red; background:url(https://example.com)',fullAppURL:'cloudcalendars://shared-event',sender:'Test',cancelled:false});
+    color:'red; background:url(https://example.com)',fullAppURL:'cloudcalendars://shared-event',webURL:'https://www.cloud-calendars.com/calendar/',sender:'Test',cancelled:false});
   assert(!evil.includes('<script>')); assert(evil.includes('&lt;script&gt;')); assert(evil.includes('--event-color:#0A84FF'));
   assert.deepEqual(eventPalette('#0A84FF'), {color:'#0A84FF',title:'#064D94',detail:'#086CD1',light:'#DAEDFF',dark:'#032C54'});
   assert(!('session' in keys)); assert(!('inviteeIndex' in keys)); assert(!('inviteeBooking' in keys));

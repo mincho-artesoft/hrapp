@@ -29,7 +29,7 @@ struct SharedCalendarInvitationView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 22) {
-                    calendarPreview
+                    SharedInvitationCalendarPreview(payload: payload)
                     primaryButton
                 }
                 .padding(.horizontal, 22)
@@ -69,58 +69,10 @@ struct SharedCalendarInvitationView: View {
         .presentationDragIndicator(.visible)
     }
 
-    private var calendarPreview: some View {
-        HStack(spacing: 14) {
-            Image(systemName: "calendar")
-                .font(.title2.weight(.semibold))
-                .foregroundStyle(payload.color)
-                .frame(width: 48, height: 48)
-                .background(
-                    payload.color.opacity(0.14),
-                    in: RoundedRectangle(cornerRadius: 13, style: .continuous)
-                )
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(payload.title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Text("Shared calendar")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-
-            Spacer(minLength: 0)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
-        .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
-        )
-    }
-
     @ViewBuilder
     private var primaryButton: some View {
         if importState == .ready || importState == .adding {
-            Button { acceptCalendar() } label: {
-                Group {
-                    if importState == .adding {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            Text("Adding…")
-                        }
-                    } else {
-                        Label("Add to Shared with me", systemImage: "person.2.badge.plus")
-                    }
-                }
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(importState == .adding)
+            SharedInvitationAddButton(isCalendar: true, busy: importState == .adding, action: acceptCalendar)
         }
     }
 

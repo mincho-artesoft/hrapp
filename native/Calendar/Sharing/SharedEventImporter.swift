@@ -67,11 +67,8 @@ enum SharedEventImporter {
 
         let event = EKEvent(eventStore: store)
         event.title = payload.title
-        event.startDate = payload.start
-        event.endDate = payload.end
-        event.isAllDay = payload.isAllDay
+        event.applyCalendarSchedule(start: payload.start, end: payload.end, allDay: payload.isAllDay, timeZone: payload.timeZone)
         event.location = payload.location
-        event.timeZone = payload.timeZone
         event.url = payload.eventURL
         event.calendar = destination
 

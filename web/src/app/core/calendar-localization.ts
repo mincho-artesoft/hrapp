@@ -1,48 +1,78 @@
-import { Injectable, Pipe, PipeTransform, inject, signal } from "@angular/core";
+import { Injectable, Pipe, PipeTransform, computed, inject, signal } from "@angular/core";
 import languages from "../components/calendar-native/native-languages.json";
+
+import { DEFAULT_LOCALE, LOCALES, Locale } from "./locales";
+
+import { calendarDateFormatter, calendarHourCycle } from "./calendar-format-preferences";
+
+const supported = new Set(languages.map(language => language.value));
+
+function dictionaryCode(tag: string): string {
+  if (supported.has(tag)) return tag;
+  const base = tag.split("-")[0];
+  if (base === "no") return "nb";
+  if (base === "zh") return new Intl.Locale(tag).maximize().script === "Hant" ? "zh-Hant" : "zh-Hans";
+  return supported.has(base) ? base : "en";
+}
+
+const siteLanguages = new Map(LOCALES.map(locale => [dictionaryCode(locale.hreflang), locale]));
+
+export function siteForCalendarLanguage(code: string): Locale {
+  const family = code === "zh-HK" ? "zh-Hant" : code.split("-")[0];
+  return siteLanguages.get(code) ?? siteLanguages.get(family) ?? DEFAULT_LOCALE;
+}
+
+export function calendarLanguageDirection(code: string): "rtl" | "ltr" {
+  return ["ar", "he", "ur"].includes(code) ? "rtl" : "ltr";
+}
 
 @Injectable({ providedIn: "root" })
 export class CalendarLocalization {
   readonly languages = languages;
   readonly locale = signal("en");
   readonly formattingLocale = signal("en");
+  readonly direction = computed(() => calendarLanguageDirection(this.locale()));
+  readonly preferences = signal<Record<string, string>>({});
+  readonly datePreference = computed(() => this.preferences()["date"] ?? "system");
+  readonly shortDate = computed(() => calendarDateFormatter(this.formattingLocale(), this.datePreference()));
+  readonly shortTime = computed(() => new Intl.DateTimeFormat(this.formattingLocale(), {
+    hour: "numeric", minute: "2-digit", hourCycle: calendarHourCycle(this.preferences()["time"]),
+  }));
   private readonly strings = signal<Record<string, string>>({});
   private request = 0;
-  constructor() {
-    if (typeof localStorage !== "undefined") {
+
+  async usePageLanguage(site: Locale, explicit: string | null) {
+    const browser = typeof window !== "undefined";
+    let tag = site.code;
+    if (browser) {
       try {
-        void this.setLanguage(
-          JSON.parse(localStorage.getItem("cc.mac.preferences") || "{}")
-            .language ?? "system",
-        );
+        const saved = localStorage.getItem("cc.calendar.language") ??
+          JSON.parse(localStorage.getItem("cc.mac.preferences") || "{}").language;
+        if (supported.has(saved) && (!site.slug || siteForCalendarLanguage(saved).code === site.code)) tag = saved;
+        else if (!site.slug && (!saved || saved === "system")) tag = navigator.language;
       } catch {}
     }
-  }
-  async setLanguage(value: string) {
-    const requested =
-      value === "system"
-        ? typeof navigator !== "undefined"
-          ? navigator.language
-          : "en"
-        : value;
-    const locale =
-      languages.find((l) => l.value === requested)?.value ??
-      languages.find((l) => l.value === requested.split("-")[0])?.value ??
-      "en";
-    this.locale.set(locale);
-    this.formattingLocale.set(value === "system" ? requested : locale);
-    this.strings.set({});
+    const selected = explicit !== null && supported.has(explicit);
+    if (selected) tag = explicit;
+    const code = dictionaryCode(tag);
     const request = ++this.request;
-    if (locale === "en") return;
-    try {
-      const response = await fetch(
-        `/calendar-locales/${encodeURIComponent(locale)}.json`,
-      );
-      if (response.ok) {
-        const strings = await response.json();
-        if (request === this.request) this.strings.set(strings);
+    if (code !== this.locale()) {
+      let strings: Record<string, string> = {};
+      if (browser && code !== "en") {
+        try {
+          const response = await fetch(`/calendar-locales/${code}.json`);
+          if (!response.ok) return;
+          strings = await response.json();
+        } catch { return; }
       }
-    } catch {}
+      if (request !== this.request) return;
+      this.strings.set(strings);
+      this.locale.set(code);
+    }
+    this.formattingLocale.set(tag);
+    if (selected && browser) {
+      try { localStorage.setItem("cc.calendar.language", code); } catch {}
+    }
   }
   text(value: unknown): string {
     const text = String(value ?? "");
@@ -66,6 +96,8 @@ export class CalendarNativeDatePipe implements PipeTransform {
         ? new Date(value + "T12:00:00")
         : new Date(value);
     if (!Number.isFinite(date.getTime())) return "";
+    if (format === "shortDate") return this.localization.shortDate()(date);
+    if (format === "shortTime") return this.localization.shortTime().format(date);
     const formats: Record<string, Intl.DateTimeFormatOptions> = {
       "MMMM yyyy": { month: "long", year: "numeric" },
       MMMM: { month: "long" },
@@ -74,8 +106,6 @@ export class CalendarNativeDatePipe implements PipeTransform {
       mediumDate:{dateStyle:'medium'},
       "MMM d": { month: "short", day: "numeric" },
       fullDate: { dateStyle: "full" },
-      shortDate: { dateStyle: "short" },
-      shortTime: { hour: "numeric", minute: "2-digit" },
       medium: { dateStyle: "medium", timeStyle: "short" },
       "EEEE, MMMM d, y": { dateStyle: "full" },
     };

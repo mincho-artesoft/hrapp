@@ -1,3 +1,4 @@
+import { calendarHourCycle } from '../../core/calendar-format-preferences';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import type { WebCalendarEvent } from '../../core/calendar-platform-api.service';
@@ -102,9 +103,9 @@ export class CalendarDetailTimelineComponent {
       endMinutes: data.allDay ? 58.5 : (Date.parse(data.end) - this.origin()) / 60_000,
     })), {start: 0, end: this.hours() * 60, minimumDuration: 27, minimumHeaderDuration: 27});
   });
-  private readonly formatter = computed(() => new Intl.DateTimeFormat(this.localization.locale(), {
+  private readonly formatter = computed(() => new Intl.DateTimeFormat(this.localization.formattingLocale(), {
     timeZone: this.timeZone(), hour: 'numeric', minute: '2-digit',
-    hour12: this.timeFormat() === 'system' ? undefined : this.timeFormat() === '12',
+    hourCycle: calendarHourCycle(this.timeFormat()),
   }));
   clock(value: string | number) { return this.formatter().format(new Date(value)); }
   style(event: WebCalendarEvent, depth: number) {

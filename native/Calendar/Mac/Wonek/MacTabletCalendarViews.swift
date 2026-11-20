@@ -351,7 +351,7 @@ struct MacTabletTimedEventBlock: View {
             activate()
         } label: {
             MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
-                isAllDay: event.isAllDay, color: nativeColor, depth: event.isAllDay ? nil : depth, textHeight: textHeight,
+                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight,
                 isCancelled: store.isCancelled(event), isReadOnly: isReadOnly)
                 .frame(width: width, height: height)
                 .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
@@ -1338,7 +1338,7 @@ struct MacTabletEventEditor: View {
         let start = event?.startDate ?? (target.usesExactStart ? target.defaultDate
             : cal.date(bySettingHour: 9, minute: 0, second: 0, of: target.defaultDate) ?? target.defaultDate)
         let allDay = event?.isAllDay ?? target.defaultIsAllDay
-        let persistedEnd = event?.endDate ?? target.initialInterval?.end
+        let persistedEnd = event?.calendarRangeEnd ?? target.initialInterval?.end
             ?? (allDay ? cal.date(byAdding: .day, value: 1, to: start) ?? start : start.addingTimeInterval(3600))
         let end = allDay ? max(start, cal.date(byAdding: .day, value: -1, to: persistedEnd) ?? start) : persistedEnd
         let supplement = target.displaySupplement ?? event.flatMap(store.local.supplement)
@@ -2068,7 +2068,7 @@ struct MacTabletEventEditor: View {
         startDate = event.startDate
         isAllDay = event.isAllDay
         endDate = isAllDay
-            ? max(startDate, MacCalendarFormatting.calendar.date(byAdding: .day, value: -1, to: event.endDate) ?? startDate)
+            ? max(startDate, MacCalendarFormatting.calendar.date(byAdding: .day, value: -1, to: event.calendarRangeEnd) ?? startDate)
             : event.endDate
         location = event.location ?? ""
         structuredLocation = event.structuredLocation

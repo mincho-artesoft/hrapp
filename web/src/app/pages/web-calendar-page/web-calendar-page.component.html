@@ -17,9 +17,11 @@
 }
 <section
   class="studio"
+  [attr.lang]="localization.formattingLocale()"
+  [attr.dir]="localization.direction()"
   [class.ios-layout]="!isDesktop()"
   [class.phone-layout]="isPhone()"
-  [class.no-sidebar]="!showsSidebar()"
+  [class.no-sidebar]="!showsSidebar() || bookingsRoute"
   [class.studio--light]="surfaceTheme() === 'light'"
 >
   @if ((!authReady() && !api.profile()) || (api.token() && !api.profile() && api.loadingProfile())) {
@@ -38,12 +40,17 @@
       <app-platform-auth-card
         badgeText="Cloud Calendars"
         class="calendar-auth"
-        [title]="'Sign in to Web Calendar'"
+        [title]="bookingsRoute ? ('Bookings' | nativeText) : 'Sign in to Web Calendar'"
         [includeCalendarScopeOnOAuth]="false"
       />
     </div>
   } @else {
     <cc-calendar-account />
+    @if (invitationFragment(); as fragment) {
+      @if (fragment.startsWith('invite=')) {
+        <cc-email-invitation [link]="fragment" [calendars]="deviceCalendars()" [preferred]="destinationCalendarID()" [theme]="surfaceTheme()" (closed)="closeEmailInvitation()" (changed)="reloadAllWorkspaceData()" />
+      }
+    }
     <div
       class="cal-shell shell"
       [class.weather-shell]="viewMode() === 'weather'"
@@ -164,11 +171,13 @@
         @if (viewMode() !== "weather") {
           <header class="cal-toolbar" [class.searching]="searchOpen()">
             <div class="cal-toolbar__left">
-              @if (viewMode() !== "menu") {
+              @if (bookingsRoute) {
+                <h1 class="cal-toolbar__title">{{ "Bookings" | nativeText }}</h1>
+              } @else {
                 @if (viewMode() === "day" || viewMode() === "multi") {
                   <button
                     type="button"
-                    class="month-link"
+                    class="month-link cal-toolbar__title"
                     (click)="setView('month')"
                   >
                     {{ anchorDate() | nativeDate: "MMMM" }}
@@ -488,7 +497,7 @@
                   <div class="tl-allday-zone" [class.is-drop-col]="drag()?.preview?.allDay && previewCoversDay(drag()!, d, di)" (contextmenu)="$event.preventDefault()" (pointerdown)="startTimelineGesture($event, 'create', di, undefined, true)" (dblclick)="doubleClickSlot($event, di, true)">
                     @for (adev of timelineColumns()[di].allDay; track adev.id) {
                       <button type="button" class="allday-pill" [class.ghost-source]="drag()?.active && drag()?.event?.id === adev.id"
-                        [class.is-cancelled]="adev.status === 'cancelled'" [style.--ev-accent]="adev.color || '#0a84ff'"
+                        [class.is-cancelled]="adev.status === 'cancelled'" [ngStyle]="cardStyle(adev.color, 0, true)"
                         (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="$event.detail === 0 && selectEvent(adev)"
                         (dblclick)="activateEvent(adev)" (contextmenu)="contextEvent(adev, $event)">
                         <cc-symbol [name]="eventSymbol(adev) || 'calendar.circle.fill'" />
@@ -1447,7 +1456,7 @@
           <div class="modal-body native-editor">
             @if (editorPage() === "recurrence") {
               <cc-repeat
-                [rule]="repeatRule(d)"
+                [rule]="repeatRule(d)" [firstWeekday]="firstWeekday()"
                 [start]="d.startDate" [singleMonthDay]="provider === 'microsoft'"
                 (ruleChange)="changeRepeatRule($event)"
               />
@@ -1636,6 +1645,7 @@
                   @if (d.repeatUntil) {
                     <cc-date-time
                       label="End Date"
+                      [firstWeekday]="firstWeekday()"
                       [(focus)]="expandedEventDate"
                       [date]="d.repeatUntil"
                       [showsTime]="false"

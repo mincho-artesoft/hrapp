@@ -1495,6 +1495,7 @@
   margin: 0.75rem 0 0 !important;
 }
 
+
 /* Mac application canvas. Tokens follow CalendarVisualComponents. */
 .studio {
   --cal-bg: #000;
@@ -1783,12 +1784,19 @@
   border-radius: 8px;
   background: var(--cal-panel-2);
 }
+.cal-toolbar .cal-toolbar__title,
+.month-link {
+  margin: 0;
+  color: var(--cal-blue);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
 .month-link {
   border: 0;
   background: none;
-  color: var(--cal-blue);
-  font-size: 20px;
-  font-weight: 600;
   padding: 0;
   cursor: pointer;
 }
@@ -2629,7 +2637,6 @@ cc-calendar-menu {
 .toolbar-icon { width: 30px; height: 30px; }
 .studio:not(.ios-layout) .cal-toolbar { min-height: 46px; border-bottom: none; }
 .studio:not(.ios-layout) .toolbar-icon cc-symbol { width: 21px; height: 21px; }
-.month-link{font-size:17px;}
 .period-heading{justify-content:space-between;min-height:44px;padding:16px 16px 8px;}
 .period-heading h1{font-size:17px;flex:1;text-align:center;}
 .cal-toolbar.searching{display:none;}
@@ -2749,6 +2756,7 @@ cc-calendar-menu {
 }
 .ios-layout .desktop-add,.ios-layout .desktop-menu{display:none;}
 .ios-layout .cal-toolbar__left{flex:1;min-width:0;}
+.ios-layout .cal-toolbar__title,
 .ios-layout .month-link{font-size:16px;font-weight:500;}
 .ios-layout .cal-toolbar__right{gap:9px;}
 .ios-layout .toolbar-icon{width:36px;height:36px;}
@@ -3165,8 +3173,8 @@ cc-calendar-menu {
 .tl-allday-zone { position: relative; padding: 8px 2px 2px; gap: 4px; border-inline-start: .5px solid var(--cal-line); min-width: 0; user-select: none; }
 .all-day-head .allday-pill {
   height: 20px; flex: none; min-width: 0; border: 0; border-radius: 9px;
-  color: var(--ev-accent); background: color-mix(in srgb, var(--ev-accent) 30%, transparent);
 }
+.allday-pill cc-symbol { color: var(--ev-accent); }
 .all-day-head.multi-calendar .allday-pill { height: 18px; }
 .all-day-ghost { position: absolute; inset: 8px 2px auto; pointer-events: none; }
 .ev-block--creating { left: 2px; right: 2px; pointer-events: none; z-index: 35; overflow: visible; }
@@ -3188,6 +3196,7 @@ cc-calendar-menu {
 }
 .tl-col.is-drop-col,.tl-allday-zone.is-drop-col {background:transparent}
 .ev-block--creating,.all-day-ghost {background:var(--ev-bg);color:var(--ev-accent)}
+.all-day-ghost { background: linear-gradient(var(--ev-bg), var(--ev-bg)) var(--cal-bg); }
 .ev-block--creating .ev-handle {box-shadow:none}
 .month-preview {position:fixed;z-index:90;pointer-events:none;box-sizing:border-box;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .all-day-ghost { z-index: 35; border: 1px solid transparent; }

@@ -1,3 +1,6 @@
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
+import { calendarDateFormatter, calendarHourCycle, calendarWeekStart } from "../../core/calendar-format-preferences";
 import { CalendarAnchoredMenuDirective } from '../../components/calendar-native/calendar-anchored-menu.directive';
 import {CalendarSearchFieldComponent} from '../../components/calendar-native/calendar-search-field.component';
 import { TimelineGesture, TimelineInterval, minuteOnDay, timelineDay, timelinePlacement } from '../../core/calendar-timeline-gesture';
@@ -33,12 +36,14 @@ import {
   inject,
   signal,
 } from "@angular/core";
-import { CommonModule, DOCUMENT, isPlatformBrowser } from "@angular/common";
+import { CommonModule, DOCUMENT, Location, isPlatformBrowser } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 import { SeoService, absolute } from "../../core/seo.service";
 import { ThemeService } from "../../core/theme.service";
+import { ActiveLocaleService } from "../../core/active-locale.service";
 import {
   APP_DEVELOPER,
   SITE_URL,
@@ -108,6 +113,7 @@ type CalendarViewMode =
   | "year"
   | "multi"
   | "weather"
+  | "bookings"
   | "menu";
 
 interface DragSession {
@@ -175,7 +181,11 @@ const HOUR_PX = 50;
 @Component({
   selector: "app-web-calendar-page",
   providers: [
-    { provide: CALENDAR_API_BASE, useValue: CALENDAR_DEBUG_API },
+    { provide: CALENDAR_API_BASE, useFactory: () => {
+      const route = inject(ActivatedRoute).snapshot;
+      return route.queryParamMap.get('invitationServer') === 'production' && route.fragment?.startsWith('invite=')
+        ? 'https://api.cloud-calendars.com' : CALENDAR_DEBUG_API;
+    } },
     CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
@@ -191,7 +201,7 @@ const HOUR_PX = 50;
     CalendarMonthTitleDirective,
     CalendarChoiceComponent,
     CalendarMenuComponent,
-    CalendarAccountComponent,
+    CalendarAccountComponent, CalendarEmailInvitationComponent,
     CalendarWeatherComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -207,6 +217,14 @@ export class WebCalendarPageComponent
   @ViewChild("daysColumnsEl") daysColumnsRef?: ElementRef<HTMLElement>;
 
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  readonly invitationFragment = toSignal(this.route.fragment);
+
+  closeEmailInvitation() {
+    void this.router.navigate([], { relativeTo: this.route, queryParamsHandling: 'merge',
+      queryParams: { invitationServer: null }, replaceUrl: true });
+  }
+  get bookingsRoute(): boolean { return this.viewMode() === "bookings"; }
   private readonly seo = inject(SeoService);
   private readonly zone = inject(NgZone);
   private readonly doc = inject(DOCUMENT);
@@ -215,7 +233,8 @@ export class WebCalendarPageComponent
   readonly api = inject(CalendarPlatformApiService);
 
   readonly colors = IOS_EVENT_COLORS;
-  private readonly localization = inject(CalendarLocalization);
+  readonly localization = inject(CalendarLocalization);
+  private readonly activeLocale = inject(ActiveLocaleService);
   readonly hours = Array.from({ length: 25 }, (_, i) => i);
   readonly hourPx = HOUR_PX;
 
@@ -270,6 +289,7 @@ export class WebCalendarPageComponent
     { value: "agenda", label: "List", symbol: "list.bullet" },
     { value: "multi", label: "MultiCalendar", symbol: "align.vertical.top" },
     { value: "weather", label: "Weather", symbol: "cloud.sun" },
+    { value: "bookings", label: "Bookings", symbol: "calendar.badge.checkmark" },
   ];
   readonly modePicker = signal(false);
   readonly viewport = signal({width:1280,height:800,touch:false});
@@ -290,6 +310,7 @@ export class WebCalendarPageComponent
   private drawerStart: {y:number;open:boolean}|null = null;
   readonly sidebarMonth = signal(new Date());
   private lastCalendarMode: CalendarViewMode = "month";
+  private calendarReturnView: CalendarViewMode = "month";
   private readonly onWindowResize = () => this.updateViewport();
   updateViewport() {
     if (!this.isBrowser || typeof window === "undefined") return;
@@ -338,40 +359,20 @@ export class WebCalendarPageComponent
     this.dayCount.set(Math.min(31, Math.round((last.getTime() - first.getTime()) / 86400000) + 1));
   }
   readonly canShare = canShareEvent;
-  readonly preferences = signal<Record<string, string>>({});
-  readonly firstWeekday = signal(0);
+  readonly preferences = this.localization.preferences;
+  readonly firstWeekday = computed(() => calendarWeekStart(this.preferences()["firstWeekday"]));
   private dateLocale() {
-    const language = this.preferences()["language"];
-    return language && language !== "system"
-      ? language
-      : typeof navigator !== "undefined"
-        ? navigator.language
-        : "en-US";
+    return this.localization.formattingLocale();
   }
-  private hour12() {
-    const value = this.preferences()["time"];
-    return value === "12" ? true : value === "24" ? false : undefined;
-  }
+  private readonly hourCycle = computed(() => calendarHourCycle(this.preferences()["time"]));
+  private readonly timelineDayFormat = computed(() => calendarDateFormatter(this.dateLocale(), this.localization.datePreference(), {
+    includeYear: false, weekday: "short",
+  }));
   timelineDateLabel(date: Date) {
-    const pref = this.preferences()["date"];
-    const locale = this.dateLocale();
-    const order: Record<string,string> = {dmy:"en-GB",mdy:"en-US",ymd:"sv-SE"};
-    const formatter = new Intl.DateTimeFormat(order[pref] || locale, {
-      day: order[pref] ? "2-digit" : "numeric", month: order[pref] ? "2-digit" : "numeric"
-    });
-    return date.toLocaleDateString(locale, {weekday:"short"}) + ", " + formatter.format(date);
+    return this.timelineDayFormat()(date);
   }
   formatShortDate(value: string) {
-    const format = this.preferences()["date"];
-    return new Intl.DateTimeFormat(
-      format === "dmy"
-        ? "en-GB"
-        : format === "mdy"
-          ? "en-US"
-          : format === "ymd"
-            ? "sv-SE"
-            : this.dateLocale(),
-    ).format(new Date(value));
+    return this.localization.shortDate()(new Date(value));
   }
   private weekdayLabels(width: "narrow" | "short") {
     const formatter = new Intl.DateTimeFormat(this.dateLocale(), { weekday: width });
@@ -766,7 +767,7 @@ export class WebCalendarPageComponent
       else if (target.receivedFeedId)
         await this.removeReceivedEvent(target);
       else {
-        const removed = await this.api.deleteCalendarEvent(target.id, { notifyGuest: true });
+        const removed = await this.api.deleteCalendarEvent(target.id);
         if (removed.sharingCalendarID && target.calendarId)
           await this.native.syncOwnedCalendar(target.calendarId, target.id);
       }
@@ -874,10 +875,13 @@ export class WebCalendarPageComponent
   changeRepeatRule(rule: CalendarRepeatRule) {
     const draft = this.editorDraft();
     if (!draft) return;
-    draft.repeatEdited = true;
-    draft.repeatRule = rule;
-    draft.recurrence = rule.frequency;
-    draft.repeatInterval = rule.interval || 1;
+    this.editorDraft.set({
+      ...draft,
+      repeatEdited: true,
+      repeatRule: rule,
+      recurrence: rule.frequency,
+      repeatInterval: rule.interval || 1,
+    });
   }
 
   chooseRepeat(value: string) {
@@ -904,16 +908,27 @@ export class WebCalendarPageComponent
   setStartPart(key:'startDate'|'startTime',value:string){const d=this.editorDraft();if(!d)return;const before=new Date(d.startDate+'T'+d.startTime),end=new Date(d.endDate+'T'+d.endTime);const duration=Math.max(0,end.getTime()-before.getTime());d[key]=value;const after=new Date(new Date(d.startDate+'T'+d.startTime).getTime()+duration);d.endDate=this.toInputDate(after);d.endTime=this.toInputTime(after);}
 
   setView(value: string) {
+    if(value==='menu'&&!this.isDesktop()){this.drawerOpen.set(true);this.modePicker.set(false);return;}
+    if ((value === "bookings") !== this.bookingsRoute) {
+      if (this.bookingsRoute) this.calendarReturnView = value as CalendarViewMode;
+      this.modePicker.set(false);
+      const href = this.activeLocale.calendarHref(value === "bookings" ? "/calendar/bookings" : "/calendar", this.locale);
+      void this.router.navigateByUrl(Location.stripTrailingSlash(href));
+      return;
+    }
+    this.showView(value as CalendarViewMode);
+  }
+
+  private showView(value: CalendarViewMode) {
     if (value !== "agenda") this.agendaDateRequest.set(null);
     if (this.monthClickTimer) clearTimeout(this.monthClickTimer);
     this.endMonthDrag();
     this.cancelDrag();
-    if(value==='menu'&&!this.isDesktop()){this.drawerOpen.set(true);this.modePicker.set(false);return;}
-    if(this.viewMode()!=='menu'&&this.viewMode()!=='weather')this.lastCalendarMode=this.viewMode();
-    this.viewMode.set(value as CalendarViewMode);
+    if (!this.bookingsRoute && this.viewMode() !== 'menu' && this.viewMode() !== 'weather') this.lastCalendarMode = this.viewMode();
+    this.viewMode.set(value);
     this.drawerOpen.set(false);this.searchOpen.set(false);this.searchText.set('');this.rangeOpen.set(false);
     this.modePicker.set(false);
-    if (this.isBrowser) localStorage.setItem("cc.mac.view", value);
+    if (this.isBrowser && value !== "bookings") localStorage.setItem("cc.mac.view", value);
     if (["day", "week", "multi"].includes(value))
       setTimeout(() => this.scrollToWorkingHours(), 0);
   }
@@ -934,7 +949,6 @@ export class WebCalendarPageComponent
         localStorage.getItem("cc.mac.preferences") || "{}",
       );
       this.preferences.set(prefs);
-      this.firstWeekday.set(Number(prefs.firstWeekday ?? 0));
     } catch {}
   }
   selectEvent(event: WebCalendarEvent) {
@@ -1070,6 +1084,14 @@ export class WebCalendarPageComponent
   private workspaceSession: string | null = null;
 
   constructor() {
+    this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(params => {
+      void this.localization.usePageLanguage(this.route.snapshot.data["locale"] ?? DEFAULT_LOCALE, params.get("lang"));
+    });
+    this.router.events.pipe(takeUntilDestroyed()).subscribe(event => {
+      if (event instanceof NavigationEnd && this.routeShowsBookings() !== this.bookingsRoute) {
+        this.updateWorkspaceSection();
+      }
+    });
     let lastList: HTMLElement | undefined;
     let lastRequest: Date | null = null;
     let lastTarget = "";
@@ -1505,6 +1527,8 @@ export class WebCalendarPageComponent
   private readonly agendaElement = viewChild<ElementRef<HTMLElement>>("agendaList");
   private readonly agendaDateRequest = signal<Date | null>(null);
 
+  private readonly listDateFormats = computed(() => [false, true].map(includeYear =>
+    calendarDateFormatter(this.dateLocale(), this.localization.datePreference(), {weekday: "long", includeYear})));
   private listDayLabel(date: Date, now: Date) {
     const locale = this.dateLocale();
     const desktop = this.isDesktop();
@@ -1513,14 +1537,8 @@ export class WebCalendarPageComponent
       const yesterday = new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(-1, "day");
       return yesterday.charAt(0).toLocaleUpperCase(locale) + yesterday.slice(1);
     }
-    const pref = this.preferences()["date"];
-    const formats: Record<string, string> = { dmy: "en-GB", mdy: "en-US", ymd: "sv-SE" };
     const includeYear = desktop || date.getFullYear() !== now.getFullYear();
-    const format = new Intl.DateTimeFormat(formats[pref] ?? locale, {
-      day: formats[pref] ? "2-digit" : "numeric", month: formats[pref] ? "2-digit" : "numeric",
-      year: includeYear ? (pref === "ymd" ? "numeric" : "2-digit") : undefined,
-    });
-    const label = date.toLocaleDateString(locale, { weekday: "long" }) + ", " + format.format(date);
+    const label = this.listDateFormats()[Number(includeYear)](date);
     return desktop ? label : label.toLocaleUpperCase(locale);
   }
 
@@ -1619,7 +1637,7 @@ export class WebCalendarPageComponent
       try {
         const saved = localStorage.getItem("cc.mac.view");
         if (
-          saved &&
+          saved && saved !== "bookings" &&
           [...this.modes.map((m) => m.value), "menu"].includes(saved)
         )
           this.viewMode.set(saved as CalendarViewMode);
@@ -1633,43 +1651,7 @@ export class WebCalendarPageComponent
 
     this.locale =
       (this.route.snapshot.data["locale"] as Locale) ?? DEFAULT_LOCALE;
-    const calPath = localePath(this.locale, "/calendar");
-    const calTitle = "Cloud Calendars Web Studio — Free Online Calendar";
-    const calDesc =
-      "Free drag-and-drop web calendar synced with Google Calendar, Microsoft Outlook, and Cloud Calendars on iOS.";
-    this.seo.apply({
-      title: calTitle,
-      description: calDesc,
-      path: calPath,
-      locale: this.locale,
-      robots: "index,follow",
-      alternates: LOCALES.map((l) => ({
-        hreflang: l.hreflang,
-        path: localePath(l, "/calendar"),
-      })),
-    });
-    this.doc.getElementById("web-calendar-jsonld")?.remove();
-    const ld = this.doc.createElement("script");
-    ld.id = "web-calendar-jsonld";
-    ld.type = "application/ld+json";
-    ld.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Cloud Calendars Web Studio",
-      url: absolute(calPath),
-      inLanguage: this.locale.hreflang,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, macOS, Windows, iOS, iPadOS, Android",
-      description: calDesc,
-      author: { "@type": "Organization", name: APP_DEVELOPER, url: SITE_URL },
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-        name: "Free Web Calendar",
-      },
-    });
-    this.doc.head.appendChild(ld);
+    this.updateWorkspaceSection();
 
     if (!this.isBrowser) return;
     this.iosQrEnabled.set(isIosQrAuthEnabled());
@@ -1697,19 +1679,17 @@ export class WebCalendarPageComponent
       return;
     }
 
+    window.addEventListener("resize", this.onWindowResize);
+
     // Tick current red time line every 30s
     this.clockTimer = setInterval(() => {
+      if (this.bookingsRoute) return;
       this.nowTick.set(new Date());
       this.deliverEventAlerts();
     }, 30_000);
 
-    await this.api.ensureInitialized();
-    this.authReady.set(true);
-
-
     // Lightweight visibility-aware live sync while user is viewing the site (20s active interval, 0 requests when hidden)
     document.addEventListener("visibilitychange", this.onVisibilityOrFocus);
-    window.addEventListener("resize", this.onWindowResize);
     this.zone.runOutsideAngular(() => document.addEventListener("pointermove", this.onGlobalPointerMove));
     window.addEventListener("touchmove",this.preventHeldTouchScroll,{passive:false});
     window.addEventListener("focus", this.onVisibilityOrFocus);
@@ -1722,6 +1702,60 @@ export class WebCalendarPageComponent
         this.pollLiveCalendarUpdates(false).catch(() => null);
       }
     }, 20_000);
+    await this.api.ensureInitialized();
+    this.authReady.set(true);
+  }
+
+  private routeShowsBookings(): boolean {
+    return this.route.snapshot.firstChild?.data["bookings"] === true;
+  }
+
+  private updateWorkspaceSection(): void {
+    const bookings = this.routeShowsBookings();
+    if (bookings !== this.bookingsRoute) {
+      if (bookings) this.calendarReturnView = this.viewMode();
+      this.showView(bookings ? "bookings" : this.calendarReturnView);
+    }
+    const sectionPath = this.bookingsRoute ? "/calendar/bookings" : "/calendar";
+    const calPath = localePath(this.locale, sectionPath);
+    const calTitle = this.bookingsRoute ? "Bookings — Cloud Calendars" : "Cloud Calendars Web Studio — Free Online Calendar";
+    const calDesc = this.bookingsRoute ? "Bookings in Cloud Calendars." :
+      "Free drag-and-drop web calendar synced with Google Calendar, Microsoft Outlook, and Cloud Calendars on iOS.";
+    this.seo.apply({
+      title: calTitle,
+      description: calDesc,
+      path: calPath,
+      locale: this.locale,
+      robots: this.bookingsRoute ? "noindex,follow" : "index,follow",
+      alternates: LOCALES.map((l) => ({
+        hreflang: l.hreflang,
+        path: localePath(l, sectionPath),
+      })),
+    });
+    this.doc.getElementById("web-calendar-jsonld")?.remove();
+    if (!this.bookingsRoute) {
+      const ld = this.doc.createElement("script");
+      ld.id = "web-calendar-jsonld";
+      ld.type = "application/ld+json";
+      ld.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Cloud Calendars Web Studio",
+        url: absolute(calPath),
+        inLanguage: this.locale.hreflang,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web, macOS, Windows, iOS, iPadOS, Android",
+        description: calDesc,
+        author: { "@type": "Organization", name: APP_DEVELOPER, url: SITE_URL },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          name: "Free Web Calendar",
+        },
+      });
+      this.doc.head.appendChild(ld);
+    }
   }
 
   private deliveredAlerts = new Set<string>();
@@ -1892,6 +1926,7 @@ export class WebCalendarPageComponent
     forceProviderSync = false,
   ): Promise<void> {
     if (
+      (this.bookingsRoute && !this.searchOpen()) ||
       this.liveSyncInFlight ||
       this.loadingWorkspace() ||
       Boolean(this.drag()) ||
@@ -1933,10 +1968,10 @@ export class WebCalendarPageComponent
 
   // ── Visual Helpers (Exact iOS `EventTimelineColors.swift` math) ──────────
 
-  cardStyle(hex?: string | null, depth = 0) {
+  cardStyle(hex?: string | null, depth = 0, allDayBand = false) {
     const st = computeIosEventStyle(hex, this.surfaceTheme(),depth);
     return {
-      background: st.fill,
+      background: allDayBand ? `linear-gradient(${st.fill}, ${st.fill}) var(--cal-bg)` : st.fill,
       borderColor: st.borderColor,
       color: st.titleColor,
       "--ev-accent": st.accentBar,
@@ -1953,13 +1988,13 @@ export class WebCalendarPageComponent
   }
 
   private readonly wallClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
-    timeZone: "UTC", hour: "numeric", minute: "2-digit", hour12: this.hour12(),
+    timeZone: "UTC", hour: "numeric", minute: "2-digit", hourCycle: this.hourCycle(),
   }));
   private readonly eventClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
-    hour: "numeric", minute: "2-digit", hour12: this.hour12(),
+    hour: "numeric", minute: "2-digit", hourCycle: this.hourCycle(),
   }));
   private readonly intervalClock = computed(() => new Intl.DateTimeFormat(this.dateLocale(), {
-    hour: "2-digit", minute: "2-digit", hour12: this.hour12(),
+    hour: "2-digit", minute: "2-digit", hourCycle: this.hourCycle(),
   }));
 
   formatMinutesHm(totalMinutes: number): string {
@@ -1979,11 +2014,11 @@ export class WebCalendarPageComponent
   timelineTimeSpan(event: WebCalendarEvent): string {
     const start = new Date(event.start), end = new Date(event.end);
     if (start.toDateString() === end.toDateString()) return this.formatEventTimeSpan(event);
-    const day = new Intl.DateTimeFormat(this.dateLocale(), {
-      weekday: this.isDesktop() ? undefined : 'short', month: 'numeric', day: 'numeric',
+    const day = calendarDateFormatter(this.dateLocale(), this.localization.datePreference(), {
+      weekday: this.isDesktop() ? undefined : 'short', includeYear: false,
     });
-    return day.format(start) + ' ' + this.formatEventClock(event.start) + ' – '
-      + day.format(end) + ' ' + this.formatEventClock(event.end);
+    return day(start) + ' ' + this.formatEventClock(event.start) + ' – '
+      + day(end) + ' ' + this.formatEventClock(event.end);
   }
 
   formatEventTimeSpan(ev: WebCalendarEvent): string {
@@ -1996,14 +2031,14 @@ export class WebCalendarPageComponent
     const timeZone = event.details?.timeZone || this.calendarTimeZone();
     const start = new Date(event.start);
     const end = new Date(Math.max(start.getTime(), Date.parse(event.end) - (event.allDay ? 1 : 0)));
-    const date = new Intl.DateTimeFormat(this.dateLocale(), {
-      timeZone, weekday: this.isDesktop() ? undefined : 'long', year: 'numeric', month: 'numeric', day: 'numeric',
+    const date = calendarDateFormatter(this.dateLocale(), this.localization.datePreference(), {
+      timeZone, weekday: this.isDesktop() ? undefined : 'long',
     });
     const time = new Intl.DateTimeFormat(this.dateLocale(), {
-      hour: 'numeric', minute: '2-digit', hour12: this.hour12(), timeZone,
+      hour: 'numeric', minute: '2-digit', hourCycle: this.hourCycle(), timeZone,
     });
-    const startDay = date.format(start);
-    const endDay = date.format(end);
+    const startDay = date(start);
+    const endDay = date(end);
     const spansDates = startDay !== endDay;
     if (event.allDay) {
       const dates = spansDates && !this.isDesktop() ? [startDay, endDay] : [startDay];
@@ -2020,7 +2055,7 @@ export class WebCalendarPageComponent
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-      hour12: this.hour12(),
+      hourCycle: this.hourCycle(),
     }).format(new Date(iso));
   }
 
@@ -2436,7 +2471,6 @@ export class WebCalendarPageComponent
         start: newStartIso,
         end: newEndIso,
         allDay,
-        notifyGuest: true,
       }, original);
       this.ownedEvents.update((list) =>
         list.map((e) => (e.id === res.event.id ? res.event : e)),
@@ -2718,7 +2752,6 @@ export class WebCalendarPageComponent
                 },
               ]
             : [],
-        notifyGuest: true,
       }, d.original);
 
       if (this.api.token() !== token) return;
@@ -2789,7 +2822,7 @@ export class WebCalendarPageComponent
     if (!this.deviceCalendars().some(c => c.id === calendarId && c.accountLocal))
       return this.api.upsertCalendarEvent(id, body);
     const eventId = id.startsWith("native.") ? id.split(".")[2] : await this.native.sharingID(id);
-    return this.native.request<{event: WebCalendarEvent; sharingCalendarID: string | null; notifiedGuest?: boolean}>(
+    return this.native.request<{event: WebCalendarEvent; sharingCalendarID: string | null}>(
       `/ios/calendars/account/${encodeURIComponent(calendarId)}/events/${encodeURIComponent(eventId)}`,
       "PUT", body,
     );
@@ -2799,7 +2832,7 @@ export class WebCalendarPageComponent
     id: string,
     body: any,
     source?: WebCalendarEvent,
-  ): Promise<{ event: WebCalendarEvent; notifiedGuest?: boolean }> {
+  ): Promise<{ event: WebCalendarEvent }> {
     ++this.stateVersion;
     let original = source ??
       this.allDisplayEvents().find((e) => e.id === id) ??
@@ -2925,7 +2958,7 @@ export class WebCalendarPageComponent
       else if (d.original?.receivedFeedId)
         await this.removeReceivedEvent(d.original);
       else {
-        const removed = await this.api.deleteCalendarEvent(d.id, { notifyGuest: true });
+        const removed = await this.api.deleteCalendarEvent(d.id);
         if (removed.sharingCalendarID && d.calendarId) await this.native.syncOwnedCalendar(d.calendarId, d.id);
       }
       ++this.stateVersion;

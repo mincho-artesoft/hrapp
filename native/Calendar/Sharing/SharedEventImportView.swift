@@ -31,36 +31,13 @@ struct SharedEventImportView: View {
     @State private var importAlert: ImportAlert?
     @State private var writableCalendars: [EKCalendar] = []
     @State private var selectedCalendarIdentifier = ""
-    @State private var isCalendarPickerPresented = false
-
-    private var dateText: String {
-        let formatter = DateFormatter()
-        formatter.locale = .appFormatting
-        formatter.timeZone = payload.timeZone
-        formatter.setLocalizedDateFormatFromTemplate("EEEEyMMMMd")
-        return formatter.string(from: payload.start)
-    }
-
-    private var timeText: String {
-        guard !payload.isAllDay else { return NSLocalizedString("All-day event", comment: "") }
-        let formatter = appTimeFormatter()
-        formatter.timeZone = payload.timeZone
-        var calendar = Calendar.current
-        calendar.timeZone = payload.timeZone
-        if !calendar.isDate(payload.start, inSameDayAs: payload.end) {
-            let date = appShortDateFormatter(includesYear: false)
-            date.timeZone = payload.timeZone
-            return "\(date.string(from: payload.start)) \(formatter.string(from: payload.start)) – \(date.string(from: payload.end)) \(formatter.string(from: payload.end))"
-        }
-        return "\(formatter.string(from: payload.start)) – \(formatter.string(from: payload.end))"
-    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 22) {
                     eventPreview
-                    calendarPicker
+                    SharedInvitationCalendarPicker(writableCalendars: writableCalendars, selectedCalendarIdentifier: $selectedCalendarIdentifier, loading: writableCalendars.isEmpty)
                     statusView
                     primaryButton
                 }
@@ -114,114 +91,7 @@ struct SharedEventImportView: View {
         .presentationDragIndicator(.visible)
     }
 
-    private var calendarPicker: some View {
-        HStack(spacing: 12) {
-            Label("Calendar", systemImage: "calendar")
-                .font(.headline)
-
-            Spacer(minLength: 8)
-
-            if writableCalendars.isEmpty {
-                ProgressView()
-            } else {
-                Button {
-                    isCalendarPickerPresented = true
-                } label: {
-                    HStack(spacing: 8) {
-                        if let calendar = selectedCalendar {
-                            Circle()
-                                .fill(calendarColor(calendar))
-                                .frame(width: 18, height: 18)
-
-                            Text(calendar.title)
-                                .lineLimit(1)
-                                .foregroundStyle(.primary)
-                        }
-
-                        Image(systemName: "chevron.up.chevron.down")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.tint)
-                    }
-                }
-                .buttonStyle(.plain)
-                .popover(isPresented: $isCalendarPickerPresented, arrowEdge: .bottom) {
-                    calendarPickerPopover
-                        .presentationCompactAdaptation(.popover)
-                }
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
-        )
-    }
-
-    private var selectedCalendar: EKCalendar? {
-        writableCalendars.first {
-            $0.calendarIdentifier == selectedCalendarIdentifier
-        }
-    }
-
-    private var calendarPickerPopover: some View {
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ForEach(writableCalendars) { calendar in
-                    Button {
-                        selectedCalendarIdentifier = calendar.calendarIdentifier
-                        isCalendarPickerPresented = false
-                    } label: {
-                        HStack(spacing: 12) {
-                            Circle()
-                                .fill(calendarColor(calendar))
-                                .frame(width: 18, height: 18)
-
-                            Text(calendar.title)
-                                .foregroundStyle(.primary)
-                                .multilineTextAlignment(.leading)
-
-                            Spacer(minLength: 12)
-
-                            if selectedCalendarIdentifier == calendar.calendarIdentifier {
-                                Image(systemName: "checkmark")
-                                    .font(.body.weight(.semibold))
-                                    .foregroundStyle(.primary)
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-
-                    if calendar.calendarIdentifier != writableCalendars.last?.calendarIdentifier {
-                        Divider()
-                            .padding(.leading, 46)
-                    }
-                }
-            }
-        }
-        .frame(
-            width: 320,
-            height: min(CGFloat(writableCalendars.count) * 52, 390)
-        )
-        .padding(.vertical, 6)
-    }
-
-    private var eventPreview: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label(dateText, systemImage: "calendar")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 4)
-
-            CalendarEventCard(title: payload.title, color: payload.eventColor,
-                timeText: timeText, location: payload.location, isAllDay: payload.isAllDay,
-                titleSize: 16, detailSize: 14, titleLines: 3, detailLines: 3)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
+    private var eventPreview: some View { SharedInvitationEventPreview(payload: payload) }
 
     #if DEBUG
     var eventSurfacePreview: some View { eventPreview }
@@ -246,25 +116,7 @@ struct SharedEventImportView: View {
     @ViewBuilder
     private var primaryButton: some View {
         if importState == .ready || importState == .adding {
-            Button {
-                addEvent()
-            } label: {
-                Group {
-                    if importState == .adding {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            Text("Adding…")
-                        }
-                    } else {
-                        Label("Add to Calendar", systemImage: "calendar.badge.plus")
-                    }
-                }
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(importState == .adding)
+            SharedInvitationAddButton(busy: importState == .adding, action: addEvent)
         }
     }
 
@@ -329,8 +181,4 @@ struct SharedEventImportView: View {
             ?? ""
     }
 
-    private func calendarColor(_ calendar: EKCalendar) -> Color {
-        guard let color = calendar.cgColor else { return .gray }
-        return Color(uiColor: UIColor(cgColor: color))
-    }
 }

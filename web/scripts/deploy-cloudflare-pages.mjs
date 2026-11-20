@@ -227,7 +227,7 @@ async function main() {
   if (process.argv.includes('--self-test')) {
     for (const [f, expected] of [
       ['public/app-ads.txt', '099894dabd27b7975875d263536610a6'],
-      ['public/.well-known/apple-app-site-association', 'f0cf29ac04223d08c64e1295ac071e8d'],
+      ['public/.well-known/apple-app-site-association', 'ce9a1b401fabae5dd5f6e76674f7072c'],
       ['public/.well-known/microsoft-identity-association.json', '29218ae9844e73518ad75a43308f2d1e'],
     ]) {
       const full = path.join(ROOT_DIR, f);
@@ -398,6 +398,10 @@ async function main() {
   const redirectsContent = [
     '/.well-known/apple-app-site-association/ /.well-known/apple-app-site-association 200',
     '/apple-app-site-association/ /.well-known/apple-app-site-association 200',
+    '/invite/debug/event-invites/open https://storage.wonek.com/cloud-calendars-debug/event-invites/open 302',
+    '/invite/debug/icloud-calendar-invites/open https://storage.wonek.com/cloud-calendars-debug/icloud-calendar-invites/open 302',
+    '/invite/event-invites/open https://api.cloud-calendars.com/event-invites/open 302',
+    '/invite/icloud-calendar-invites/open https://api.cloud-calendars.com/icloud-calendar-invites/open 302',
     '/event/* /index.csr.html 200',
     '',
   ].join('\n');

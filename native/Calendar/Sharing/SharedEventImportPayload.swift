@@ -172,6 +172,13 @@ private extension Color {
 enum SharedInvitationServer {
     static func baseURL(for url: URL, route: String) -> URL? {
         guard url.scheme == "https", url.user == nil, url.password == nil, url.port == nil else { return nil }
+        if url.host == "www.cloud-calendars.com" {
+            if url.path == "/invite/" + route { return URL(string: "https://api.cloud-calendars.com") }
+            #if DEBUG
+            if url.path == "/invite/debug/" + route { return URL(string: "https://storage.wonek.com/cloud-calendars-debug") }
+            #endif
+            return nil
+        }
         var bases = ["https://api.cloud-calendars.com"]
         #if DEBUG
         bases += ["https://63yo3ore3c.execute-api.us-east-1.amazonaws.com",

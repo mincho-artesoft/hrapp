@@ -127,6 +127,42 @@ final class AppLocalEventDescriptor: TestDescriptor {
         let day = calendar.startOfDay(for: Date())
         let dayEnd = calendar.date(byAdding: .day, value: 1, to: day)!
         func date(_ hour: Double) -> Date { day.addingTimeInterval(hour * 3_600) }
+        for style in [UIUserInterfaceStyle.light, .dark] {
+            let interval = DateInterval(start: day, end: dayEnd)
+            func sample(allDay: Bool) -> (pixel: Data?, title: UIColor?) {
+                let item = AppLocalEventDescriptor(interval, slice: interval)
+                item.isAllDay = allDay
+                let card = EventView(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+                card.overrideUserInterfaceStyle = style
+                var sample: (pixel: Data?, title: UIColor?) = (nil, nil)
+                card.traitCollection.performAsCurrent {
+                    card.updateWithDescriptor(event: item)
+                    if !allDay {
+                        let placements = TimedEventLayout.place([EventLayoutAttributes(item)], day: day,
+                            originX: 0, width: 300, top: 0, hourHeight: 50, gap: 2, rightToLeft: false)
+                        card.applyTimelinePlacement(placements[0])
+                    }
+                    card.layoutIfNeeded()
+                    card.layer.displayIfNeeded()
+                    let format = UIGraphicsImageRendererFormat()
+                    format.scale = 1
+                    format.opaque = true
+                    let pixel = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1), format: format).image { ctx in
+                        (allDay ? UIColor.systemGray5 : UIColor.systemGray6).setFill()
+                        ctx.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+                        ctx.cgContext.translateBy(x: -280, y: -20)
+                        card.layer.render(in: ctx.cgContext)
+                    }
+                    let text = card.textView.attributedText!
+                    let titleIndex = (text.string as NSString).range(of: item.text).location
+                    sample = (pixel.pngData(), text.attribute(.foregroundColor, at: titleIndex, effectiveRange: nil) as? UIColor)
+                }
+                return sample
+            }
+            let timed = sample(allDay: false), allDay = sample(allDay: true)
+            try check(timed.pixel != nil && allDay.pixel == timed.pixel, "All-day fill differs from timed fill on its backing surface")
+            try check(timed.title != nil && allDay.title == timed.title, "All-day title differs from timed title")
+        }
         // The same view must use the CURRENT selected calendar, not a color
         // cached at launch / EventKit reload. Explicit MC columns override it.
         for rtl in [false, true] {

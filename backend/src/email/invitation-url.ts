@@ -1,3 +1,27 @@
+import { hashKey } from '../util/ids';
+
+const siteURL = () => process.env.SITE_URL ?? 'https://www.cloud-calendars.com';
+
+export function appInvitationURL(canonical: URL, kind: 'event' | 'calendar'): URL {
+  const production = canonical.origin === 'https://api.cloud-calendars.com';
+  const debug = ['https://storage.wonek.com', 'https://63yo3ore3c.execute-api.us-east-1.amazonaws.com'].includes(canonical.origin);
+  if (!production && !debug) return canonical;
+  const route = kind === 'event' ? 'event-invites/open' : 'icloud-calendar-invites/open';
+  const result = new URL('/invite/' + (debug ? 'debug/' : '') + route, siteURL());
+  result.search = canonical.search;
+  return result;
+}
+
+// Match the authenticated pending record without putting the readable feed token in the web link.
+export function webInvitationURL(kind: 'event' | 'calendar', owner: string, item: string): string {
+  const result = new URL('/calendar/', siteURL());
+  if (!process.env.API_URL || new URL(process.env.API_URL).origin === 'https://api.cloud-calendars.com') {
+    result.searchParams.set('invitationServer', 'production');
+  }
+  result.hash = 'invite=' + kind + '&id=' + hashKey(owner + ':' + item);
+  return result.href;
+}
+
 /** Normalize only our invitation routes. Compact QR payloads retain the small
  * preview required by older scanners; long optional content comes from the feed. */
 export function apiEndpoint(path: string, apiURL: string): URL {

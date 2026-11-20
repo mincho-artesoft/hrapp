@@ -1,3 +1,4 @@
+import { calendarHourCycle } from '../../core/calendar-format-preferences';
 import { A11yModule } from '@angular/cdk/a11y';
 import { CalendarWeekStripComponent } from './calendar-week-strip.component';
 import { CalendarWeatherDetailComponent } from './calendar-weather-detail.component';
@@ -268,8 +269,8 @@ export class CalendarWeatherComponent implements OnInit {
   private readonly weatherClocks = computed(() => {
     const preference = this.clockPreference();
     const options: Intl.DateTimeFormatOptions = {timeZone: 'UTC', hour: 'numeric',
-      hour12: preference === '12' ? true : preference === '24' ? false : undefined};
-    const locale = this.localization.locale();
+      hourCycle: calendarHourCycle(preference)};
+    const locale = this.localization.formattingLocale();
     return {hours: new Intl.DateTimeFormat(locale, options),
       minutes: new Intl.DateTimeFormat(locale, {...options, minute: '2-digit'})};
   });

@@ -16,7 +16,7 @@ struct CalendarScreenHeader: View {
     var onTitle: (() -> Void)? = nil
     var onRange: (() -> Void)? = nil
     var onSavedRegions: (() -> Void)? = nil
-    let onSearch: () -> Void
+    let onSearch: (() -> Void)?
     let onViewChange: (Int) -> Void
 
     var body: some View {
@@ -37,8 +37,8 @@ struct CalendarScreenHeader: View {
                             .background(CalendarSurfaceColors.tertiaryFill, in: RoundedRectangle(cornerRadius: 8))
                     }
                     .accessibilityIdentifier("calendar-header-date-range")
-                } else if let title {
-                    Button { onTitle?() } label: {
+                } else if let title, let onTitle {
+                    Button(action: onTitle) {
                         Text(title).font(.system(size: 16, weight: .medium))
                             .lineLimit(1).minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -46,12 +46,17 @@ struct CalendarScreenHeader: View {
                             .contentShape(Rectangle())
                     }
                     .accessibilityIdentifier("calendar-header-month")
+                } else if let title {
+                    Text(title).font(CalendarTypography.headline).foregroundStyle(.primary)
+                    Spacer(minLength: 0)
                 } else {
                     Spacer(minLength: 0)
                 }
-                Button(action: onSearch) { icon("magnifyingglass") }
-                    .accessibilityLabel(currentView == 6 ? Text("Search for a city…") : Text("Search events..."))
-                    .accessibilityIdentifier("calendar-header-search")
+                if let onSearch {
+                    Button(action: onSearch) { icon("magnifyingglass") }
+                        .accessibilityLabel(currentView == 6 ? Text("Search for a city…") : Text("Search events..."))
+                        .accessibilityIdentifier("calendar-header-search")
+                }
                 #if os(macOS)
                 MacCalendarViewPicker(selectedTab: currentView, tint: tint, onSelect: onViewChange)
                 MacCalendarMenuButton(tint: tint) { onViewChange(MacCalendarMode.menu.rawValue) }

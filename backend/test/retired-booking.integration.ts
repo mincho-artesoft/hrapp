@@ -10,7 +10,12 @@ const retired: [string, string][] = [
   ['POST', '/booking/events/test/reschedule'], ['GET', '/manage/test'],
   ['POST', '/manage/test/cancel'], ['POST', '/manage/test/reschedule'],
   ['POST', '/pair/start'], ['GET', '/pair/status'], ['POST', '/pair/approve'],
-  ['POST', '/billing/checkout'], ['POST', '/billing/webhook'],
+  ['GET', '/booking/check-handle'], ['GET', '/booking/config'], ['PUT', '/booking/config'],
+  ['GET', '/booking/host-bookings'], ['POST', '/booking/host-bookings/test/cancel'],
+  ['POST', '/booking/host-bookings/test/reschedule'], ['GET', '/booking/invite-links'],
+  ['POST', '/booking/invite-links'], ['DELETE', '/booking/invite-links/test'],
+  ['POST', '/book/test/request-code'], ['POST', '/manage/test/sync-to-my-calendar'],
+  ['GET', '/guest/bookings'], ['PATCH', '/admin/hosts/test'],
   ['POST', '/me/login'], ['GET', '/me/bookings'],
 ];
 

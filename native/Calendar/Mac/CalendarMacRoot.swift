@@ -20,6 +20,8 @@ struct CalendarMacRoot: View {
     @AppStorage("MacSelectedMenuSection") private var menuSection = 0
     @State private var editorTarget: MacTabletEventEditorTarget?
     @State private var calendarEditorTarget: MacCalendarEditorTarget?
+    @State private var invitation: MacEmailInvitation?
+    @State private var webChallenge: WebAuthChallengePayload?
     @State private var accountOpen = false
     @AppStorage("MacLastCalendarTab") private var lastCalendarTab = 0
     @AppStorage("EventNotificationsEnabled") private var eventNotifications = false
@@ -38,8 +40,10 @@ struct CalendarMacRoot: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 HStack(spacing: 0) {
-                    sidebar.frame(width: CalendarSidebarLayout.width(availableWidth: geometry.size.width))
-                    Divider()
+                    if selectedTab != MacCalendarMode.bookings.rawValue {
+                        sidebar.frame(width: CalendarSidebarLayout.width(availableWidth: geometry.size.width))
+                        Divider()
+                    }
                     ZStack(alignment: .topTrailing) {
                         VStack(spacing: 0) {
                             CalendarSearchHeader(isSearching: searching, height: CalendarHeaderLayout.height) {
@@ -79,6 +83,15 @@ struct CalendarMacRoot: View {
             MacTabletCalendarEditor(store: store, target: target) { calendarEditorTarget = nil }
                 .frame(width: 600, height: 680).interactiveDismissDisabled()
         }
+        .onOpenURL(perform: openExternalURL)
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+            if let url = activity.webpageURL { openExternalURL(url) }
+        }
+        .appSheet(item: $invitation) { item in
+            MacEmailInvitationSheet(invitation: item, store: store) { invitation = nil }
+                .id(item.id)
+        }
+        .appSheet(item: $webChallenge) { challenge in WebStudioAuthSheetView(initialChallenge: challenge) }
         .appSheet(isPresented: $accountOpen) { MacCalendarAccountView(store: store.backend) }
         .alert("Calendar", isPresented: Binding(get: { store.errorMessage != nil || store.backend.error != nil }, set: { if !$0 { store.errorMessage = nil; store.backend.error = nil } })) {
             Button("OK") { store.errorMessage = nil; store.backend.error = nil }
@@ -107,12 +120,25 @@ struct CalendarMacRoot: View {
         .environment(\.appContextMenuFocusEnabled, false)
     }
 
+    private func openExternalURL(_ url: URL) {
+        if CloudAccountManager.shared.handleBrowserCallback(url) ||
+            CloudAccountManager.calendarConnections.handleBrowserCallback(url) { return }
+        if let challenge = WebAuthChallengePayload(url: url) {
+            webChallenge = challenge
+        } else if let calendar = SharedCalendarInvitationPayload(url: url) {
+            invitation = .calendar(calendar)
+        } else if let event = SharedEventImportPayload(url: url) {
+            invitation = .event(event)
+        }
+    }
+
     @ViewBuilder private var activeView: some View {
         switch selectedTab {
         case 1: MacTabletDayView(store: store, selectedDate: $selectedDate, editorTarget: $editorTarget)
         case 2: MacTabletYearView(store: store, year: $displayedYear, month: $displayedMonth, selectedTab: $selectedTab)
         case 3: MacTabletMultiDayView(store: store, startDate: $selectedDate, dayCount: multiDayCount, selectedTab: $selectedTab, editorTarget: $editorTarget)
         case 4: MacTabletListView(store: store, scrollRequest: listScrollRequest, editorTarget: $editorTarget)
+        case MacCalendarMode.bookings.rawValue: Color.clear.frame(maxWidth: .infinity, maxHeight: .infinity)
         case 5: MacTabletMultiCalendarView(store: store, selectedDate: $selectedDate, editorTarget: $editorTarget)
         default: MacTabletMonthView(store: store, month: $displayedMonth, selectedDate: $selectedDate, selectedTab: $selectedTab, editorTarget: $editorTarget)
         }
@@ -120,6 +146,8 @@ struct CalendarMacRoot: View {
     private var header: some View {
         HStack(spacing: 9) {
             switch selectedTab {
+            case MacCalendarMode.bookings.rawValue:
+                Text("Bookings").font(CalendarTypography.headline)
             case 1, 5:
                 Button {
                     displayedMonth = calendar.dateInterval(of: .month, for: selectedDate)?.start ?? selectedDate
@@ -154,7 +182,7 @@ struct CalendarMacRoot: View {
 
             Spacer(minLength: 8)
 
-            if selectedTab != 7 {
+            if selectedTab != 7 && selectedTab != MacCalendarMode.bookings.rawValue {
                 Button(action: newEvent) {
                     Image(systemName: "plus")
                         .font(.system(size: 21, weight: .medium))
@@ -266,7 +294,7 @@ struct CalendarMacRoot: View {
 
 }
 
-private struct MacCalendarAccountView: View {
+struct MacCalendarAccountView: View {
     @ObservedObject var store: CalendarMacStore
     @Environment(\.dismiss) private var dismiss
     var body: some View {
@@ -287,7 +315,7 @@ private struct MacCalendarAccountView: View {
 }
 
 enum MacCalendarMode: Int, CaseIterable {
-    case day = 1, multiDay = 3, month = 0, year = 2, list = 4, multiCalendar = 5, weather = 6, menu = 7
+    case day = 1, multiDay = 3, month = 0, year = 2, list = 4, multiCalendar = 5, weather = 6, bookings = 8, menu = 7
     var title: String { self == .menu ? "Menu" : CalendarHeaderMode(rawValue: rawValue)!.title }
     var symbol: String { self == .menu ? "line.3.horizontal" : CalendarHeaderMode(rawValue: rawValue)!.symbol }
 }

@@ -259,9 +259,8 @@ final class MacTabletCalendarStore: ObservableObject {
         let event = existingEvent.map { local.isLocal($0) || crossesProvider ? local.copy($0) : $0 }
             ?? EKEvent(eventStore: eventStore)
         event.title = title.trimmingCharacters(in: .whitespacesAndNewlines)
-        event.startDate = startDate
-        event.endDate = max(endDate, startDate.addingTimeInterval(60))
-        event.isAllDay = isAllDay
+        event.applyCalendarSchedule(start: startDate, end: max(endDate, startDate.addingTimeInterval(60)),
+            allDay: isAllDay, timeZone: event.timeZone ?? .current)
         event.location = location.trimmingCharacters(in: .whitespacesAndNewlines)
         event.structuredLocation = structuredLocation
         event.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -283,7 +282,6 @@ final class MacTabletCalendarStore: ObservableObject {
         }
 
         event.calendar = selectedCalendar
-        if event.timeZone == nil { event.timeZone = .current }
         do {
             let saved = try local.persist(event, replacing: existingEvent,
                 span: existingEvent != nil && event.hasRecurrenceRules ? .futureEvents : .thisEvent,
@@ -306,26 +304,25 @@ final class MacTabletCalendarStore: ObservableObject {
         guard let destination = writableCalendars.first(where: { $0.calendarIdentifier == calendarID }) else { throw MacTabletCalendarError.noWritableCalendar }
         if local.isLocal(event) || local.isLocal(destination) {
             let draft = local.copy(event)
-            draft.startDate = interval.start; draft.endDate = interval.end
-            draft.isAllDay = isAllDay; draft.calendar = destination
+            draft.applyCalendarSchedule(start: interval.start, end: interval.end, allDay: isAllDay, timeZone: draft.timeZone)
+            draft.calendar = destination
             try local.persist(draft, replacing: event, span: span)
             reload()
             return
         }
         let supplement = EventKitEventSupplementStore.supplement(for: event)
-        let originalStart = event.startDate
-        let originalEnd = event.endDate
+        let originalStart: Date = event.startDate
+        let originalEnd = event.calendarRangeEnd
+        let originalZone = event.timeZone
         let originalAllDay = event.isAllDay
         let originalCalendar = event.calendar
-        event.startDate = interval.start
-        event.endDate = interval.end
-        event.isAllDay = isAllDay
+        event.applyCalendarSchedule(start: interval.start, end: interval.end, allDay: isAllDay, timeZone: originalZone)
         event.calendar = destination
         do {
             try eventStore.save(event, span: span, commit: true)
         } catch {
-            event.startDate = originalStart; event.endDate = originalEnd
-            event.isAllDay = originalAllDay; event.calendar = originalCalendar
+            event.applyCalendarSchedule(start: originalStart, end: originalEnd, allDay: originalAllDay, timeZone: originalZone)
+            event.calendar = originalCalendar
             _ = event.refresh()
             reload()
             throw error
@@ -350,14 +347,11 @@ final class MacTabletCalendarStore: ObservableObject {
 
         let copy = EKEvent(eventStore: eventStore)
         copy.title = event.title
-        copy.startDate = event.startDate
-        copy.endDate = event.endDate
-        copy.isAllDay = event.isAllDay
+        copy.applyCalendarSchedule(start: event.startDate, end: event.calendarRangeEnd, allDay: event.isAllDay, timeZone: event.timeZone)
         copy.location = event.location
         copy.structuredLocation = event.structuredLocation
         copy.notes = event.notes
         copy.url = event.url
-        copy.timeZone = event.timeZone
         copy.availability = event.availability
         copy.calendar = event.calendar
         copy.recurrenceRules = event.recurrenceRules

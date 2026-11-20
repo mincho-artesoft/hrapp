@@ -212,7 +212,7 @@ struct MacCalendarTimelineInteractionLayer: View {
             } else {
                 anchorY = item.event.isAllDay ? hourHeight / 2 : point.y - item.frame.minY
             }
-            let originalInterval = DateInterval(start: item.event.startDate, end: item.event.endDate)
+            let originalInterval = DateInterval(start: item.event.startDate, end: item.event.calendarRangeEnd)
             let anchorX: CGFloat = point.x - sourceFrame.minX - 2
             let dragWidth: CGFloat = max(1, sourceFrame.width - 6)
             drag = .init(operation: operation, event: item.event,

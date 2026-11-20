@@ -40,8 +40,6 @@ export class AdminConsolePageComponent implements OnInit {
   readonly loading = signal(false);
   readonly forbiddenMsg = signal<string | null>(null);
   readonly data = signal<AdminOverviewResponse | null>(null);
-  readonly tab = signal<'hosts' | 'oauth'>('hosts');
-  readonly searchQuery = signal('');
 
   // Editable OAuth Settings
   readonly googleWebClientId = signal('');
@@ -49,23 +47,10 @@ export class AdminConsolePageComponent implements OnInit {
   readonly microsoftWebClientId = signal('');
   readonly microsoftTenant = signal('common');
   readonly appleWebClientId = signal('');
-  readonly featuredDemoHandle = signal('demo');
   readonly savingSettings = signal(false);
   readonly toast = signal<string | null>(null);
 
   readonly calendarHref = computed(() => linkPath(this.locale, '/calendar'));
-
-  readonly filteredHosts = computed(() => {
-    const list = this.data()?.hosts ?? [];
-    const q = this.searchQuery().trim().toLowerCase();
-    if (!q) return list;
-    return list.filter(
-      (h) =>
-        h.handle?.toLowerCase().includes(q) ||
-        h.displayName?.toLowerCase().includes(q) ||
-        (h.email || '').toLowerCase().includes(q),
-    );
-  });
 
   async ngOnInit(): Promise<void> {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
@@ -99,7 +84,6 @@ export class AdminConsolePageComponent implements OnInit {
       this.microsoftWebClientId.set(ov.settings.microsoftWebClientId || '');
       this.microsoftTenant.set(ov.settings.microsoftTenant || 'common');
       this.appleWebClientId.set(ov.settings.appleWebClientId || '');
-      this.featuredDemoHandle.set(ov.settings.featuredDemoHandle || 'demo');
     } catch (e) {
       if (e instanceof CalendarApiError && e.status === 403) {
         this.forbiddenMsg.set(
@@ -110,16 +94,6 @@ export class AdminConsolePageComponent implements OnInit {
       }
     } finally {
       this.loading.set(false);
-    }
-  }
-
-  async toggleHostModeration(calId: string, currentlyDisabled: boolean): Promise<void> {
-    try {
-      await this.api.moderateHost(calId, !currentlyDisabled);
-      await this.loadOverview();
-      this.notify(!currentlyDisabled ? 'Host schedule suspended.' : 'Host schedule re-enabled.');
-    } catch (e) {
-      this.notify(e instanceof Error ? e.message : 'Action failed.');
     }
   }
 
@@ -134,7 +108,6 @@ export class AdminConsolePageComponent implements OnInit {
         microsoftWebClientId: this.microsoftWebClientId().trim(),
         microsoftTenant: this.microsoftTenant().trim() || 'common',
         appleWebClientId: this.appleWebClientId().trim(),
-        featuredDemoHandle: this.featuredDemoHandle().trim() || 'demo',
       });
       this.googleWebClientSecret.set('');
       await this.loadOverview();

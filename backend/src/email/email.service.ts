@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { SESv2Client, SendEmailCommand, Attachment } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
 import { eventPalette } from '../presentation/event-card';
-import { apiEndpoint, canonicalInvitationURL, eventInvitationURLWithPreview } from './invitation-url';
+import { apiEndpoint, appInvitationURL, canonicalInvitationURL, eventInvitationURLWithPreview, webInvitationURL } from './invitation-url';
 import { EmailSendGuard } from './send-guard';
 
 const PNGJS: any = require('pngjs');
@@ -398,6 +398,7 @@ export class EmailService {
     access,
     event,
     eventUrl,
+    ownerCalId,
     timeZone,
     senderName,
     senderEmail,
@@ -412,6 +413,7 @@ export class EmailService {
     if (!previewURL.searchParams.has('color') && eventColor) {
       previewURL.searchParams.set('color', this.validEventColor(eventColor));
     }
+    if (!ownerCalId) throw new Error('Missing invitation calendar');
     eventUrl = previewURL.toString();
     const qrAttachment = await this.invitationQRAttachment(eventUrl);
     const eventDateTime = this.fmtAppClipEvent(
@@ -447,7 +449,8 @@ export class EmailService {
       location: event.location,
       eventColor: color,
     })}
-    <div style="text-align:center;margin:24px 0 0;">${this.button(eventUrl, 'Open event')}</div>
+    <div style="text-align:center;margin:24px 0 0;">${this.button(appInvitationURL(previewURL, 'event').href, 'Open event')}</div>
+    <div style="text-align:center;margin:12px 0 0;">${this.button(webInvitationURL('event', ownerCalId, previewURL.searchParams.get('e')!), 'Open in Web Calendar')}</div>
     ${qrBlock}
     <p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.48);font-size:12px;">Sign in with ${this.esc(email)} to use the assigned access.</p>`;
     await this.sendEmail(
@@ -482,6 +485,9 @@ export class EmailService {
         ? 'You can view and edit its events after accepting.'
         : 'You can view its synchronized events after accepting.';
     const qrAttachment = await this.invitationQRAttachment(invitationURL.toString());
+    const appURL = appInvitationURL(invitationURL, 'calendar');
+    appURL.searchParams.set('title', title);
+    appURL.searchParams.set('color', color);
     const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Calendar invitation</h1>
     <p style="margin:0 auto 8px;max-width:44ch;color:rgba(255,255,255,0.78);font-size:15px;text-align:center;">From <strong style="color:#ffffff;">${this.esc(sender)}</strong></p>
     <p style="margin:0 auto 22px;max-width:42ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">You were invited as <strong style="color:#ffffff;">${role}</strong>. ${permission}</p>
@@ -494,7 +500,8 @@ export class EmailService {
         </td>
       </tr>
     </table>
-    <div style="text-align:center;margin:24px 0 0;">${this.button(invitationURL.toString(), 'Open calendar')}</div>
+    <div style="text-align:center;margin:24px 0 0;">${this.button(appURL.href, 'Open calendar')}</div>
+    <div style="text-align:center;margin:12px 0 0;">${this.button(webInvitationURL('calendar', ownerId, calendarId), 'Open in Web Calendar')}</div>
     <div style="margin:24px auto 0;text-align:center;">
       <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
         <img src="cid:invitation-qr" width="240" height="240" alt="QR code to open the calendar" style="display:block;width:240px;height:240px;" />
@@ -510,7 +517,7 @@ export class EmailService {
     );
   }
 
-  /** Sends a 6-digit verification code for passwordless Web sign-in or booking confirmation. */
+  /** Sends a 6-digit verification code for passwordless Web sign-in. */
   async sendVerificationCodeEmail({
     email,
     code,
@@ -519,15 +526,11 @@ export class EmailService {
   }: {
     email: string;
     code: string;
-    purpose: 'login' | 'booking';
+    purpose: 'login';
     hostName?: string | null;
   }): Promise<void> {
-    const heading = purpose === 'booking'
-      ? 'Confirm your booking'
-      : 'Your Cloud Calendars sign-in code';
-    const intro = purpose === 'booking'
-      ? `Enter this 6-digit verification code to confirm your appointment${hostName ? ` with ${hostName}` : ''}.`
-      : 'Enter this 6-digit code in Cloud Calendars Web to access your calendar and bookings.';
+    const heading = 'Sign in to Cloud Calendars';
+    const intro = 'Enter this 6-digit code in Cloud Calendars Web to access your calendar.';
     const body = `<h1 style="margin:4px 0 10px;font-size:25px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(heading)}</h1>
     <p style="margin:0 auto 22px;max-width:42ch;color:rgba(255,255,255,0.72);font-size:15px;text-align:center;">${this.esc(intro)}</p>
     <div style="margin:0 auto 22px;max-width:280px;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);text-align:center;">
@@ -535,172 +538,8 @@ export class EmailService {
     </div>
     <p style="margin:0;text-align:center;color:rgba(255,255,255,0.5);font-size:12px;">Valid for 10 minutes. If you didn’t request this code, you can safely ignore this message.</p>`;
 
-    const subject = purpose === 'booking'
-      ? `${code} is your Cloud Calendars booking verification code`
-      : `${code} is your Cloud Calendars sign-in code`;
+    const subject = `${code} is your Cloud Calendars sign-in code`;
     await this.sendEmail(email, subject, this.shell(body));
   }
 
-  /** Sends booking confirmation, reschedule, or cancellation notice to the invitee/guest. */
-  async sendBookingInviteeNotification({
-    kind,
-    event,
-    hostName,
-    hostEmail,
-    guestName,
-    guestEmail,
-    timeZone,
-    webcalUrl,
-    icsContent,
-    manageUrl,
-    guestPortalUrl,
-    videoCallURL,
-    reason,
-  }: {
-    kind: 'confirmed' | 'rescheduled' | 'cancelled';
-    event: any;
-    hostName: string;
-    hostEmail?: string | null;
-    guestName: string;
-    guestEmail: string;
-    timeZone?: string;
-    webcalUrl?: string | null;
-    icsContent?: string | null;
-    manageUrl: string;
-    guestPortalUrl?: string | null;
-    videoCallURL?: string | null;
-    reason?: string | null;
-  }): Promise<void> {
-    const dt = this.fmtAppClipEvent(event.start, event.end, timeZone, Boolean(event.allDay));
-    const tzLabel = timeZone || 'UTC';
-    const timeText = dt.time ? `${dt.time} (${tzLabel})` : tzLabel;
-    const color = this.validEventColor(event.color ?? event.details?.color ?? this.ACCENT);
-
-    const headingMap = {
-      confirmed: 'Meeting confirmed',
-      rescheduled: 'Meeting rescheduled',
-      cancelled: 'Meeting cancelled',
-    };
-    const introMap = {
-      confirmed: `Hi ${guestName}, your meeting with ${hostName} is scheduled and locked in.`,
-      rescheduled: `Hi ${guestName}, your meeting with ${hostName} has been moved to a new time.`,
-      cancelled: `Hi ${guestName}, this meeting with ${hostName} has been cancelled.`,
-    };
-    const subjectMap = {
-      confirmed: `Confirmed: ${event.title} with ${hostName}`,
-      rescheduled: `Rescheduled: ${event.title} with ${hostName}`,
-      cancelled: `Cancelled: ${event.title} with ${hostName}`,
-    };
-
-    const locText = videoCallURL || event.location || null;
-    let body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(headingMap[kind])}</h1>
-    <p style="margin:0 auto 20px;max-width:44ch;color:rgba(255,255,255,0.74);font-size:15px;text-align:center;">${this.esc(introMap[kind])}</p>
-    ${this.appClipEventBlock({
-      title: event.title,
-      date: dt.date,
-      time: timeText,
-      location: locText,
-      eventColor: color,
-    })}`;
-
-    if (reason) {
-      body += `<div style="margin:14px 0 0;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.82);font-size:13px;"><strong>Note:</strong> ${this.esc(reason)}</div>`;
-    }
-
-    if (kind !== 'cancelled') {
-      body += `<div style="text-align:center;margin:24px 0 0;">
-        ${videoCallURL ? `<div style="margin-bottom:12px;">${this.button(videoCallURL, 'Join video call')}</div>` : ''}
-        ${webcalUrl ? `<div>${this.button(webcalUrl, 'Subscribe in Calendar')}</div>` : ''}
-      </div>
-      <p style="margin:18px 0 0;text-align:center;color:rgba(255,255,255,0.62);font-size:13px;">
-        Need to change plans? <a href="${this.esc(manageUrl)}" style="color:${this.ACCENT};text-decoration:underline;">Reschedule or cancel</a>
-        ${guestPortalUrl ? ` · <a href="${this.esc(guestPortalUrl)}" style="color:${this.ACCENT};text-decoration:underline;">All my bookings</a>` : ''}
-      </p>`;
-    } else if (guestPortalUrl) {
-      body += `<p style="margin:18px 0 0;text-align:center;color:rgba(255,255,255,0.62);font-size:13px;">
-        <a href="${this.esc(guestPortalUrl)}" style="color:${this.ACCENT};text-decoration:underline;">View my bookings or book a new time</a>
-      </p>`;
-    }
-
-    const attachments: Attachment[] = [];
-    if (icsContent) {
-      attachments.push({
-        RawContent: Buffer.from(icsContent, 'utf8'),
-        FileName: 'meeting.ics',
-        ContentType: 'text/calendar; charset=utf-8; method=PUBLISH',
-        ContentDisposition: 'ATTACHMENT',
-      });
-    }
-
-    await this.sendEmail(guestEmail, subjectMap[kind], this.shell(body), {
-      replyTo: hostEmail ?? undefined,
-      attachments: attachments.length ? attachments : undefined,
-    });
-  }
-
-  /** Sends booking activity notification to the calendar owner/host. */
-  async sendBookingHostNotification({
-    kind,
-    event,
-    hostEmail,
-    guestName,
-    guestEmail,
-    guestNotes,
-    timeZone,
-    studioUrl,
-    reason,
-  }: {
-    kind: 'confirmed' | 'rescheduled' | 'cancelled';
-    event: any;
-    hostEmail: string;
-    guestName: string;
-    guestEmail: string;
-    guestNotes?: string | null;
-    timeZone?: string;
-    studioUrl: string;
-    reason?: string | null;
-  }): Promise<void> {
-    const dt = this.fmtAppClipEvent(event.start, event.end, timeZone, Boolean(event.allDay));
-    const tzLabel = timeZone || 'UTC';
-    const timeText = dt.time ? `${dt.time} (${tzLabel})` : tzLabel;
-    const color = this.validEventColor(event.color ?? event.details?.color ?? this.ACCENT);
-
-    const headingMap = {
-      confirmed: 'New booking received',
-      rescheduled: 'Booking moved',
-      cancelled: 'Booking cancelled',
-    };
-    const introMap = {
-      confirmed: `${guestName} (${guestEmail}) booked a time on your Cloud Calendars schedule.`,
-      rescheduled: `Your meeting with ${guestName} (${guestEmail}) was moved to a new slot.`,
-      cancelled: `Your meeting with ${guestName} (${guestEmail}) was cancelled.`,
-    };
-    const subjectMap = {
-      confirmed: `New booking: ${guestName} — ${event.title}`,
-      rescheduled: `Moved: ${guestName} — ${event.title}`,
-      cancelled: `Cancelled: ${guestName} — ${event.title}`,
-    };
-
-    let body = `<h1 style="margin:4px 0 8px;font-size:25px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(headingMap[kind])}</h1>
-    <p style="margin:0 auto 20px;max-width:44ch;color:rgba(255,255,255,0.74);font-size:15px;text-align:center;">${this.esc(introMap[kind])}</p>
-    ${this.appClipEventBlock({
-      title: event.title,
-      date: dt.date,
-      time: timeText,
-      location: event.details?.videoCallURL ?? event.location ?? null,
-      eventColor: color,
-    })}`;
-
-    if (guestNotes) {
-      body += `<div style="margin:14px 0 0;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.86);font-size:13px;"><strong>Guest notes:</strong> ${this.esc(guestNotes)}</div>`;
-    }
-    if (reason) {
-      body += `<div style="margin:10px 0 0;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.86);font-size:13px;"><strong>Reason:</strong> ${this.esc(reason)}</div>`;
-    }
-    body += `<div style="text-align:center;margin:24px 0 0;">${this.button(studioUrl, 'Open Web Calendar')}</div>`;
-
-    await this.sendEmail(hostEmail, subjectMap[kind], this.shell(body), {
-      replyTo: guestEmail,
-    });
-  }
 }

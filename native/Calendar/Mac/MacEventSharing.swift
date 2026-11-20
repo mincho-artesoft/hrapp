@@ -78,7 +78,7 @@ struct HRAppMacEventShareView: View {
                     .init(name: "e", value: eventID), .init(name: "c", value: feedID),
                     .init(name: "title", value: String((event.title ?? "").prefix(120))),
                     .init(name: "start", value: String(event.startDate.timeIntervalSince1970)),
-                    .init(name: "end", value: String(event.endDate.timeIntervalSince1970)),
+                    .init(name: "end", value: String(event.calendarRangeEnd.timeIntervalSince1970)),
                     .init(name: "allDay", value: event.isAllDay ? "1" : "0"),
                     .init(name: "timeZone", value: event.timeZone?.identifier ?? TimeZone.current.identifier),
                     .init(name: "color", value: NSColor(store.color(for: event.calendar)).hex),
@@ -178,8 +178,9 @@ enum MacEventSharing {
             localID = existing.id
         } else {
             let event = EKEvent(eventStore: backend.eventStore)
-            event.calendar = target; event.title = payload.title; event.startDate = payload.start; event.endDate = payload.end
-            event.isAllDay = payload.isAllDay; event.location = payload.location; event.url = payload.eventURL; event.timeZone = payload.timeZone
+            event.calendar = target; event.title = payload.title
+            event.applyCalendarSchedule(start: payload.start, end: payload.end, allDay: payload.isAllDay, timeZone: payload.timeZone)
+            event.location = payload.location; event.url = payload.eventURL
             let saved = try bridge.persist(event, replacing: nil, span: .thisEvent)
             localID = bridge.record(for: saved)?.id ?? backend.adapter.identity(saved)
             if let id = payload.eventID, let preview = backend.event(matchingLocalIdentifier: localID) {

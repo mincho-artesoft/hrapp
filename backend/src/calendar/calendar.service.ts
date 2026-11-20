@@ -8,7 +8,7 @@ import { NativeCalendarStore } from '../booking/native-calendar-store';
 import { nextRevisionTimestamp } from '../util/revision';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
-import { apiEndpoint, canonicalInvitationURL, eventInvitationURLWithPreview } from '../email/invitation-url';
+import { apiEndpoint, canonicalInvitationURL, eventInvitationURLWithPreview, webInvitationURL } from '../email/invitation-url';
 import { EVENT_CARD_CSS, eventIcon, eventPalette } from '../presentation/event-card';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
@@ -514,6 +514,7 @@ export class CalendarService {
         location,
         color,
         fullAppURL,
+        webURL: webInvitationURL('event', feedIndex.calId, eventId),
         sender,
         cancelled,
       }),
@@ -1276,6 +1277,7 @@ export class CalendarService {
       access: invitation.access,
       event: saved.event,
       eventUrl: rawEventURL,
+      ownerCalId: context.calId,
       timeZone,
       senderName,
       senderEmail,
@@ -1754,6 +1756,7 @@ export class CalendarService {
           </div>
           <div class="actions">
             <a class="primary" href="${escapeHTML(deepLink.toString())}">Open in Cloud Calendars</a>
+            <a class="secondary" href="${escapeHTML(webInvitationURL('calendar', ownerId, calendarId))}">Open in Web Calendar</a>
             <a class="secondary" href="${escapeHTML(CLOUD_CALENDARS_APP_STORE_URL)}">Download Cloud Calendars</a>
           </div>
           <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the calendar invitation. Open Cloud Calendars to add it to Shared with me.</span></div>
@@ -3308,6 +3311,7 @@ export function eventInvitationPage(input: {
   location: string | null;
   color: string;
   fullAppURL: string;
+  webURL: string;
   sender: string;
   cancelled: boolean;
 }): string {
@@ -3327,6 +3331,7 @@ export function eventInvitationPage(input: {
       </div>
       <div class="actions">
         <a class="primary" href="${escapeHTML(input.fullAppURL)}">Open in Cloud Calendars</a>
+        <a class="secondary" href="${escapeHTML(input.webURL)}">Open in Web Calendar</a>
         <a class="secondary" href="${escapeHTML(CLOUD_CALENDARS_APP_STORE_URL)}">Download Cloud Calendars</a>
       </div>
       <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the event. Open Cloud Calendars to add and synchronize it.</span></div>

@@ -225,3 +225,32 @@ test('weather details use each metric, preserve local time gaps and exclude the 
   assert.equal(chart('temp').paths.length,2);
   assert.equal(weatherChart(snapshot,'2026-10-28','temp'),null);
 });
+
+const {calendarDateChoices, calendarDateFormatter, calendarWeekStart, systemWeekStart, calendarHourCycle} =
+  await sourceModule('../../src/app/core/calendar-format-preferences.ts');
+
+test('date picker exposes every iOS date format in order and applies it to event dates', () => {
+  const date = new Date('2026-12-31T13:45:00Z');
+  const labels = calendarDateChoices.map(preference => calendarDateFormatter('en-US', preference, {timeZone: 'UTC'})(date));
+  assert.deepEqual(labels, [
+    new Intl.DateTimeFormat(undefined, {dateStyle: 'short', timeZone: 'UTC'}).format(date),
+    'Dec 31, 2026', 'December 31, 2026', 'Thursday, December 31, 2026',
+    '31/12/2026', '12/31/2026', '2026-12-31', '31.12.2026', '12.31.2026', '2026.12.31',
+    '31-12-2026', '12-31-2026', '2026/12/31', '31 Dec 2026', 'Dec 31, 2026', '2026 Dec 31',
+    '31 December 2026', 'December 31, 2026', '2026 December 31',
+  ]);
+  assert.equal(calendarDateFormatter('en-US', 'yearMonthDayDot', {timeZone: 'Asia/Tokyo'})(Date.parse('2026-12-31T23:00Z')), '2027.01.01');
+  assert.equal(calendarDateFormatter('en-US', 'yearMonthDayDot', {includeYear: false, weekday: 'short', timeZone: 'UTC'})(date), 'Thu, 12.31');
+});
+
+test('first weekday and clock settings preserve explicit choices and follow the browser in System mode', () => {
+  assert.deepEqual(Array.from({length: 7}, (_, day) => calendarWeekStart(String(day))), [0,1,2,3,4,5,6]);
+  assert.equal(systemWeekStart('en-US'), 0);
+  assert.equal(systemWeekStart('bg-BG'), 1);
+  assert.equal(systemWeekStart('ar-EG'), 6);
+  assert.equal(calendarWeekStart('system'), systemWeekStart());
+  assert.equal(calendarWeekStart(), systemWeekStart());
+  assert.equal(calendarHourCycle('12'), 'h12');
+  assert.equal(calendarHourCycle('24'), 'h23');
+  assert.equal(calendarHourCycle('system'), new Intl.DateTimeFormat(undefined, {hour:'numeric'}).resolvedOptions().hour12 ? 'h12' : 'h23');
+});

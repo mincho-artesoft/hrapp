@@ -1,3 +1,4 @@
+import { calendarDateChoices, calendarDateFormatter, calendarHourCycle, systemWeekStart } from "../../core/calendar-format-preferences";
 import {CalendarSearchFieldComponent} from './calendar-search-field.component';
 import { CalendarProviderService } from "../../core/calendar-provider.service";
 import {
@@ -38,7 +39,6 @@ import {
   DeviceCalendar,
   WebCalendarEvent,
 } from "../../core/calendar-platform-api.service";
-import { ThemeService } from "../../core/theme.service";
 import catalog from "./native-app-catalog.json";
 
 type Section =
@@ -146,7 +146,6 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
 
   readonly sharing = inject(CalendarNativeService);
-  readonly theme = inject(ThemeService);
   readonly calendars = input<DeviceCalendar[]>([]);
   readonly hiddenIDs = input<Set<string>>(new Set());
   readonly multiIDs = input<Set<string>>(new Set());
@@ -260,17 +259,11 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const locale = this.localization.formattingLocale();
-    const dateLocales: Record<string, string> = {dmy: "en-GB", mdy: "en-US", ymd: "sv-SE"};
-    const preference = dateLocales[this.prefs()["date"]];
-    const weekday = new Intl.DateTimeFormat(locale, {weekday: "long"});
-    const dateLabel = (year: boolean) => new Intl.DateTimeFormat(preference || locale, {
-      day: preference ? "2-digit" : "numeric", month: preference ? "2-digit" : "numeric",
-      year: year ? "numeric" : undefined,
-    });
+    const dateLabel = (includeYear: boolean) => calendarDateFormatter(locale, this.prefs()["date"], {weekday: "long", includeYear});
     const withYear = dateLabel(true), withoutYear = dateLabel(false);
     return [...groups].sort(([a], [b]) => a - b).map(([date, events]) => ({
       date, today: date === +today,
-      label: weekday.format(date) + ", " + (new Date(date).getFullYear() === today.getFullYear() ? withoutYear : withYear).format(date),
+      label: (new Date(date).getFullYear() === today.getFullYear() ? withoutYear : withYear)(date),
       events: events.sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || Date.parse(a.end) - Date.parse(b.end)),
     }));
   });
@@ -308,83 +301,50 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
 
   readonly prefs = signal<Record<string, string>>({
-    theme: "system",
-    language: "system",
     units: "system",
     date: "system",
     time: "system",
-    firstWeekday: "0",
+    firstWeekday: "system",
     eventNotifications: "false",
     weatherNotifications: "false",
   });
-  readonly settings = [
-    {
-      key: "theme",
-      label: "Theme",
-      icon: "circle.lefthalf.filled",
-      options: [
-        { value: "system", label: "System" },
-        { value: "light", label: "Light" },
-        { value: "dark", label: "Dark" },
-      ],
-    },
-    {
-      key: "language",
-      label: "Language",
-      icon: "globe",
-      options: [
-        { value: "system", label: "System" },
-        ...this.localization.languages.map((l) => ({
-          value: l.value,
-          label:
-            new Intl.DisplayNames([l.value], { type: "language" }).of(
-              l.value,
-            ) ?? l.value,
-        })),
-      ],
-    },
-    {
-      key: "units",
-      label: "Measurement Units",
-      icon: "ruler",
-      options: [
-        { value: "system", label: "System" },
-        { value: "metric", label: "Metric" },
-        { value: "imperial", label: "Imperial" },
-      ],
-    },
-    {
-      key: "date",
-      label: "Date Format",
-      icon: "calendar",
-      options: [
-        { value: "system", label: "System" },
-        { value: "dmy", label: "31/12/26" },
-        { value: "mdy", label: "12/31/26" },
-        { value: "ymd", label: "2026-12-31" },
-      ],
-    },
-    {
-      key: "time",
-      label: "Time Format",
-      icon: "clock",
-      options: [
-        { value: "system", label: "System" },
-        { value: "12", label: "1:45 PM" },
-        { value: "24", label: "13:45" },
-      ],
-    },
-    {
-      key: "firstWeekday",
-      label: "First Day of Week",
-      icon: "calendar.day.timeline.left",
-      options: [
-        { value: "0", label: "Sunday" },
-        { value: "1", label: "Monday" },
-        { value: "6", label: "Saturday" },
-      ],
-    },
-  ];
+  readonly settings = computed(() => {
+    const locale = this.localization.formattingLocale();
+    const system = this.localization.text("System");
+    const example = Date.UTC(2026, 11, 31, 13, 45);
+    const option = (value: string, label: string) => ({
+      value, label: value === "system" ? system + " (\u2068" + label + "\u2069)" : label,
+    });
+    const weekday = new Intl.DateTimeFormat(locale, {weekday: "long", timeZone: "UTC"});
+    const weekdayName = (day: number) => weekday.format(Date.UTC(2024, 0, 7 + day));
+    return [
+      {
+        key: "units",
+        label: "Measurement Units",
+        icon: "ruler",
+        options: [
+          { value: "system", label: "System" },
+          { value: "metric", label: "Metric" },
+          { value: "imperial", label: "Imperial" },
+        ],
+      },
+      {
+        key: "date", label: "Date Format", icon: "calendar",
+        options: calendarDateChoices.map(value => option(value, calendarDateFormatter(locale, value, {timeZone: "UTC"})(example))),
+      },
+      {
+        key: "time", label: "Time Format", icon: "clock",
+        options: ["system", "12", "24"].map(value => option(value, new Intl.DateTimeFormat(locale, {
+          hour: "numeric", minute: "2-digit", hourCycle: calendarHourCycle(value), timeZone: "UTC",
+        }).format(example))),
+      },
+      {
+        key: "firstWeekday", label: "First Day of Week", icon: "calendar.day.timeline.left",
+        options: [option("system", weekdayName(systemWeekStart())),
+          ...Array.from({length: 7}, (_, day) => option(String(day), weekdayName(day)))],
+      },
+    ];
+  });
   calendar: DeviceCalendar | null = null;
   get calendarRemoval() {
     const cal = this.calendar;
@@ -476,15 +436,6 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     if (this.isBrowser && typeof localStorage !== "undefined") {
       localStorage.setItem("cc.mac.preferences", JSON.stringify(this.prefs()));
     }
-    if (key === "language") await this.localization.setLanguage(value);
-    if (key === "theme" && typeof matchMedia !== "undefined")
-      this.theme.setTheme(
-        value === "system"
-          ? matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light"
-          : (value as "dark" | "light"),
-      );
     this.settingsChanged.emit();
   }
   openCalendar(calendar: DeviceCalendar | null) {
