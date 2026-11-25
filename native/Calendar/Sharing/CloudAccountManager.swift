@@ -203,11 +203,18 @@ final class CloudAccountManager: NSObject, ObservableObject {
         // Capture the account sheet's actual window before the system login
         // makes the scene inactive. Never start against a new, invisible window.
         #if os(macOS)
-        let window = accountPresentationWindow ?? NSApp.keyWindow ?? NSApp.mainWindow
+        let candidate = accountPresentationWindow.flatMap { $0.isVisible ? $0 : nil }
+            ?? NSApp.keyWindow ?? NSApp.mainWindow
             ?? NSApp.windows.first(where: { $0.isVisible && $0.canBecomeKey })
-        guard let window, window.isVisible else {
+        guard var window = candidate, window.isVisible else {
             setError(OAuthError.couldNotStart.localizedDescription, for: provider)
             return nil
+        }
+        if provider == "apple" {
+            // AppKit queues another sheet on the parent until the account sheet closes.
+            while let sheet = window.attachedSheet, sheet.isVisible {
+                window = sheet
+            }
         }
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
@@ -220,8 +227,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         #endif
         guard let attempt = signInState.begin(provider: provider) else { return nil }
         #if os(macOS)
-        // Anchor browser authentication to the app window, not its account sheet.
-        authenticationWindow = window.sheetParent ?? window
+        authenticationWindow = provider == "apple" ? window : (window.sheetParent ?? window)
         #else
         authenticationWindow = window
         #endif
