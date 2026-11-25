@@ -439,7 +439,11 @@ extension Color {
     }
 }
 extension NSColor {
-    var hex: String { let c = usingColorSpace(.sRGB) ?? .systemBlue; return String(format: "#%02X%02X%02X", Int(c.redComponent * 255), Int(c.greenComponent * 255), Int(c.blueComponent * 255)) }
+    var hex: String {
+        guard let rgb = usingColorSpace(.sRGB) else { return "#0A84FF" }
+        func byte(_ channel: CGFloat) -> Int { Int((min(1, max(0, channel)) * 255).rounded()) }
+        return String(format: "#%02X%02X%02X", byte(rgb.redComponent), byte(rgb.greenComponent), byte(rgb.blueComponent))
+    }
 }
 
 extension CloudCalendarsAPI.SharedICloudCalendarEvent {

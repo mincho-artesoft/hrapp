@@ -1,0 +1,78 @@
+@let d = draft();
+<div class="native-form-group">
+  <label class="native-form-row location-field-row">
+    <span class="field-prefix"
+      >{{ "Location" | nativeText }}:</span
+    >
+    <input
+      autofocus
+      aria-label="Location"
+      [ngModel]="d.location"
+      (ngModelChange)="
+        changeLocation($event)
+      "
+    />
+    @if (d.location) {
+      <button
+        type="button"
+        class="clear-location"
+        aria-label="Clear location"
+        (click)="changeLocation('')"
+      >
+        <cc-symbol name="xmark.circle.fill" />
+      </button>
+    }
+  </label>
+  @if (allowsVideo()) {
+  <label class="native-form-row location-field-row">
+    <span class="field-prefix"
+      >{{ "Video Call" | nativeText }}:</span
+    >
+    <input
+      type="url"
+      aria-label="Video Call"
+      [(ngModel)]="d.videoCallURL"
+    />
+  </label>
+  }
+
+</div>
+@if (d.location.trim()) {
+  <div class="native-form-group">
+    <button
+      type="button"
+      class="native-form-row location-commit-btn"
+      (click)="finish()"
+    >
+      “{{ d.location.trim() }}”
+    </button>
+  </div>
+}
+@if (desktop() && searchingLocation()) {
+  <p class="location-searching">
+    {{ "Searching…" | nativeText }}
+  </p>
+}
+@if (locationResults().length) {
+  <h3 class="editor-section-label">
+    {{ "Map Locations" | nativeText }}
+  </h3>
+  <div class="native-form-group">
+    @for (place of locationResults(); track place) {
+      <button
+        type="button"
+        class="native-form-row map-result-row"
+        (click)="pick(place)"
+      >
+        <cc-symbol
+          class="map-pin-icon"
+          name="mappin.and.ellipse"
+        />
+        <span class="map-result-text">
+          <strong>{{ place.title }}</strong>
+          @if (place.subtitle) { <small>{{ place.subtitle }}</small> }
+        </span>
+      </button>
+    }
+  </div>
+}

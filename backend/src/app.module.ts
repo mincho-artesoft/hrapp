@@ -1,4 +1,5 @@
 import { EmailRelayController } from './email/email-relay.controller';
+import { BookingCalendarsController } from './booking/booking-calendars.controller';
 import { Module } from '@nestjs/common';
 import { CoreModule } from './core/core.module';
 import { CalendarController } from './calendar/calendar.controller';
@@ -20,6 +21,7 @@ import { WebPlatformService } from './booking/web-platform.service';
     MeController,
     SharedEventController,
     WebPlatformController,
+    BookingCalendarsController,
   ],
   providers: [
     CalendarService,

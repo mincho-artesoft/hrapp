@@ -10,6 +10,9 @@ struct CalendarMacRoot: View {
     @State private var displayedMonth = Date()
     @State private var displayedYear = Calendar.current.component(.year, from: Date())
     @AppStorage("selectedTabRoot") private var selectedTab = 0
+    @ObservedObject private var bookingAccount = CloudAccountManager.shared
+    @State private var bookingAdd = 0
+    @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var multiDayCount = 8
     @State private var rangePickerIsOpen = false
     @State private var viewMenuIsOpen = false
@@ -102,7 +105,7 @@ struct CalendarMacRoot: View {
         .onReceive(store.$events) { _ in MacCalendarReminderScheduler.shared.refresh(store: store) }
         .onChange(of: eventNotifications) { _, enabled in MacCalendarReminderScheduler.shared.refresh(store: store, requestPermission: enabled) }
         .onChange(of: selectedTab) { oldTab, _ in
-            if oldTab < 6 { lastCalendarTab = oldTab }
+            if MacCalendarMode(rawValue: oldTab)?.canReturnFromMenu == true { lastCalendarTab = oldTab }
             searching = false; search = ""; rangePickerIsOpen = false; viewMenuIsOpen = false
         }
         .onChange(of: scenePhase) { _, phase in if phase == .active { store.reload() } }
@@ -112,7 +115,7 @@ struct CalendarMacRoot: View {
         }
         .task {
             if MacCalendarMode(rawValue: selectedTab) == nil { selectedTab = 0 }
-            if !(0...5).contains(lastCalendarTab) { lastCalendarTab = 0 }
+            if MacCalendarMode(rawValue: lastCalendarTab)?.canReturnFromMenu != true { lastCalendarTab = 0 }
             if !(0...5).contains(menuSection) { menuSection = 0 }
             if store.includesSystemCalendars { await store.activate() }
             while !Task.isCancelled { await store.backend.sync(); try? await Task.sleep(for: .seconds(30)) }
@@ -138,7 +141,7 @@ struct CalendarMacRoot: View {
         case 2: MacTabletYearView(store: store, year: $displayedYear, month: $displayedMonth, selectedTab: $selectedTab)
         case 3: MacTabletMultiDayView(store: store, startDate: $selectedDate, dayCount: multiDayCount, selectedTab: $selectedTab, editorTarget: $editorTarget)
         case 4: MacTabletListView(store: store, scrollRequest: listScrollRequest, editorTarget: $editorTarget)
-        case MacCalendarMode.bookings.rawValue: Color.clear.frame(maxWidth: .infinity, maxHeight: .infinity)
+        case MacCalendarMode.bookings.rawValue: BookingsContent(mode: bookingMode, addAction: bookingAdd)
         case 5: MacTabletMultiCalendarView(store: store, selectedDate: $selectedDate, editorTarget: $editorTarget)
         default: MacTabletMonthView(store: store, month: $displayedMonth, selectedDate: $selectedDate, selectedTab: $selectedTab, editorTarget: $editorTarget)
         }
@@ -147,7 +150,7 @@ struct CalendarMacRoot: View {
         HStack(spacing: 9) {
             switch selectedTab {
             case MacCalendarMode.bookings.rawValue:
-                Text("Bookings").font(CalendarTypography.headline)
+                BookingModePicker(selection: $bookingMode)
             case 1, 5:
                 Button {
                     displayedMonth = calendar.dateInterval(of: .month, for: selectedDate)?.start ?? selectedDate
@@ -182,6 +185,11 @@ struct CalendarMacRoot: View {
 
             Spacer(minLength: 8)
 
+            if selectedTab == MacCalendarMode.bookings.rawValue && bookingAccount.isSignedIn {
+                Button { bookingAdd += 1 } label: {
+                    Image(systemName: "plus").font(.system(size: 21, weight: .medium)).frame(width: 30, height: 30)
+                }.buttonStyle(.plain).foregroundStyle(Color.appBlue).accessibilityLabel("Add")
+            }
             if selectedTab != 7 && selectedTab != MacCalendarMode.bookings.rawValue {
                 Button(action: newEvent) {
                     Image(systemName: "plus")
@@ -316,6 +324,7 @@ struct MacCalendarAccountView: View {
 
 enum MacCalendarMode: Int, CaseIterable {
     case day = 1, multiDay = 3, month = 0, year = 2, list = 4, multiCalendar = 5, weather = 6, bookings = 8, menu = 7
+    var canReturnFromMenu: Bool { self != .menu && self != .weather }
     var title: String { self == .menu ? "Menu" : CalendarHeaderMode(rawValue: rawValue)!.title }
     var symbol: String { self == .menu ? "line.3.horizontal" : CalendarHeaderMode(rawValue: rawValue)!.symbol }
 }

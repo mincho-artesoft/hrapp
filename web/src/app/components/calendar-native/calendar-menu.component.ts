@@ -1,3 +1,4 @@
+import {CalendarColorOptionsComponent, calendarColorName} from './calendar-color-options.component';
 import { calendarDateChoices, calendarDateFormatter, calendarHourCycle, systemWeekStart } from "../../core/calendar-format-preferences";
 import {CalendarSearchFieldComponent} from './calendar-search-field.component';
 import { CalendarProviderService } from "../../core/calendar-provider.service";
@@ -24,6 +25,7 @@ import { CommonModule, isPlatformBrowser } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { CalendarProgressComponent } from "./calendar-progress.component";
 import { CalendarSymbolComponent } from "./calendar-symbol.component";
+import { CalendarSectionPickerComponent } from "./calendar-section-picker.component";
 import { CalendarChoiceComponent } from "./calendar-choice.component";
 import {
   CalendarNativeService,
@@ -75,7 +77,7 @@ interface AccessSnapshot {
     FormsModule,
     CalendarSymbolComponent,
     CalendarProgressComponent,
-    CalendarChoiceComponent,
+    CalendarChoiceComponent, CalendarSectionPickerComponent, CalendarColorOptionsComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./calendar-menu.component.html",
@@ -164,29 +166,20 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   readonly editEvent = output<WebCalendarEvent>();
   readonly shareEvent = output<WebCalendarEvent>();
   readonly section = signal<Section>("Calendar");
-  readonly sections: Section[] = [
+  readonly sections = ([
     "Calendar",
     "MultiCalendar",
     "Subscriptions",
     "Sharing",
     "Settings",
     "Apps",
-  ];
+  ] as const satisfies readonly Section[]).map(value => ({ value, label: value }));
   readonly panel = signal<Panel>("");
   readonly destination = signal<"pending" | "sent" | "received" | "">("");
   readonly search = signal("");
   readonly destinationSearchOpen = signal(false);
   readonly busy = signal(false);
   readonly error = signal("");
-  readonly colors = [
-    { label: "Red", hex: "#FF453A" },
-    { label: "Orange", hex: "#FF9F0A" },
-    { label: "Yellow", hex: "#FFD60A" },
-    { label: "Green", hex: "#30D158" },
-    { label: "Blue", hex: "#0A84FF" },
-    { label: "Purple", hex: "#BF5AF2" },
-    { label: "Brown", hex: "#996633" },
-  ];
   readonly apps = catalog;
 
   readonly allManagedCalendars = computed(() => [
@@ -451,11 +444,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
   colorName() {
     if (this.usesCreatorDefault) return "Default from creator";
-    return (
-      this.colors.find(
-        (c) => c.hex.toLowerCase() === this.calendarColor.toLowerCase(),
-      )?.label ?? "Custom"
-    );
+    return calendarColorName(this.calendarColor);
   }
   selectColor(color: string) {
     this.calendarColor = color;

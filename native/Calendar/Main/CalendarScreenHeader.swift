@@ -9,6 +9,7 @@ import UIKit
 struct CalendarScreenHeader: View {
     let currentView: Int
     var title: String? = nil
+    var bookingMode: Binding<BookingViewMode>? = nil
     var rangeTitle: String? = nil
     var rangeIsSelected = false
     var tint: Color = .appBlue
@@ -27,7 +28,10 @@ struct CalendarScreenHeader: View {
                         .accessibilityLabel(Text("Saved Regions"))
                         .accessibilityIdentifier("calendar-header-saved-regions")
                 }
-                if let rangeTitle {
+                if let bookingMode {
+                    BookingModePicker(selection: bookingMode)
+                    Spacer(minLength: 0)
+                } else if let rangeTitle {
                     Button { onRange?() } label: {
                         Text(rangeTitle)
                             .font(.system(size: 16, weight: .medium))

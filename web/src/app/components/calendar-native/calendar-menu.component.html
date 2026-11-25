@@ -1,15 +1,6 @@
 <div class="native-menu">
-  <nav class="section-picker" aria-label="Menu sections">
-    @for (s of sections; track s) {
-      <button
-        type="button"
-        [class.selected]="section() === s"
-        (click)="selectSection(s)"
-      >
-        {{ s | nativeText }}
-      </button>
-    }
-  </nav>
+  <cc-section-picker class="section-picker" label="Menu sections" [options]="sections" [value]="section()"
+    (valueChange)="selectSection($event)" />
   @if (section() === "Calendar") {
         <button
           type="button"
@@ -1007,38 +998,7 @@
                 }
               </button>
             }
-            @for (color of colors; track color.hex) {
-              <button
-                type="button"
-                class="form-row"
-                (click)="selectColor(color.hex)"
-              >
-                <span
-                  class="calendar-dot"
-                  [style.background]="color.hex"
-                ></span>
-                <span>{{ color.label | nativeText }}</span>
-                @if (
-                  !usesCreatorDefault &&
-                  calendarColor.toUpperCase() === color.hex
-                ) {
-                  <cc-symbol class="blue" name="checkmark" />
-                }
-              </button>
-            }
-            <label class="form-row custom-color">
-              <span class="calendar-dot" [style.background]="calendarColor"></span>
-              <span>{{ "Custom..." | nativeText }}</span>
-              @if (!usesCreatorDefault && colorName() === "Custom") {
-                <cc-symbol class="blue" name="checkmark" />
-              }
-              <input
-                type="color"
-                aria-label="Choose custom color"
-                [ngModel]="calendarColor"
-                (ngModelChange)="selectColor($event)"
-              />
-            </label>
+            <cc-calendar-color-options [value]="calendarColor" [usesDefault]="usesCreatorDefault" (picked)="selectColor($event)" />
           </div>
         }
         @if ((panel() === "calendar-sharing" && !accessLoading()) || panel() === "recipients") {

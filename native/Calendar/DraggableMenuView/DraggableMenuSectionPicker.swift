@@ -1,25 +1,24 @@
 import SwiftUI
 
 struct DraggableMenuSectionPicker: View {
-    private struct Item: Identifiable {
-        let id: Int
+    @Binding var selection: Int
+
+    var body: some View {
+        CalendarSectionPicker(selection: $selection, rows: [
+            [.init(id: 0, title: "Calendar"), .init(id: 1, title: "MultiCalendar"), .init(id: 2, title: "Subscriptions")],
+            [.init(id: 4, title: "Sharing"), .init(id: 5, title: "Settings"), .init(id: 3, title: "Apps")]
+        ])
+    }
+}
+
+struct CalendarSectionPicker<Selection: Hashable>: View {
+    struct Item: Identifiable {
+        let id: Selection
         let title: LocalizedStringKey
     }
 
-    @Binding var selection: Int
-
-    private let rows: [[Item]] = [
-        [
-            Item(id: 0, title: "Calendar"),
-            Item(id: 1, title: "MultiCalendar"),
-            Item(id: 2, title: "Subscriptions")
-        ],
-        [
-            Item(id: 4, title: "Sharing"),
-            Item(id: 5, title: "Settings"),
-            Item(id: 3, title: "Apps")
-        ]
-    ]
+    @Binding var selection: Selection
+    let rows: [[Item]]
 
     var body: some View {
         VStack(spacing: 0) {

@@ -599,9 +599,8 @@ export class CalendarPlatformApiService {
 
   /**
    * Launches Google OAuth popup using the CloudCalendars Google Cloud Project (`540859420644`).
-   * Requests the minimal least-privilege event scope `https://www.googleapis.com/auth/calendar.events.owned`
-   * ("See, create, change, and delete events on Google calendars you own") when `includeCalendarReadonly !== false`,
-   * or strictly non-sensitive `openid email profile` for account-only sign-in (`/admin/`, `/calendar/bookings/`).
+   * Account sign-in requests openid, email and profile. Connecting Google Calendar additionally
+   * requests https://www.googleapis.com/auth/calendar for calendar, event and sharing operations.
    * - When `googleOfflineCapable` is true (`googleWebClientSecret` configured), uses `initCodeClient` (`access_type: 'offline'`)
    *   so the backend stores a permanent `refresh_token` for 24/7 background sync even while the browser is closed!
    * - Otherwise uses `initTokenClient` and stores the live token on the backend for immediate 2-way read+write sync!
@@ -944,7 +943,7 @@ export class CalendarPlatformApiService {
 
   /** Uses the same authenticated endpoints as the native app. Never accepts an external URL. */
   nativeCalendarRequest<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
-    if (!/^\/(?:events|grants|shared-state|received-invites|event-invitations|icloud-calendars|icloud-calendar|ios\/calendars|identities|auth\/ios-qr|billing\/plans)(?:[/?-]|$)/.test(path)) {
+    if (!/^\/(?:booking-calendars|events|grants|shared-state|received-invites|event-invitations|icloud-calendars|icloud-calendar|ios\/calendars|identities|auth\/ios-qr|billing\/plans)(?:[/?-]|$)/.test(path)) {
       return Promise.reject(new Error('Unsupported calendar operation.'));
     }
     return this.request<T>(path, { method, body, auth: true });

@@ -723,12 +723,8 @@ final class AppLocalCalendarStore: ObservableObject {
         guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
             return "#0088FF"
         }
-        return String(
-            format: "#%02X%02X%02X",
-            Int((red * 255).rounded()),
-            Int((green * 255).rounded()),
-            Int((blue * 255).rounded())
-        )
+        func byte(_ channel: CGFloat) -> Int { Int((min(1, max(0, channel)) * 255).rounded()) }
+        return String(format: "#%02X%02X%02X", byte(red), byte(green), byte(blue))
     }
 
     nonisolated static func color(_ value: String) -> UIColor {

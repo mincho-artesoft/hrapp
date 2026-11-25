@@ -57,6 +57,8 @@ struct RootView: View {
     let timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
 
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
+    @State private var bookingAdd = 0
+    @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var selectedTab = 1
     @State private var oldSelectedTab = 1
 
@@ -181,7 +183,12 @@ struct RootView: View {
                                         })
                                         Spacer()
                                         bottomBarButton(title: "Add", image: "calendar.badge.plus", action: {
-                                            createAndEditNewEvent(on: Date()) // Or use a relevant date
+                                            if selectedTab == CalendarHeaderMode.bookings.rawValue {
+                                                menuState = .collapsed
+                                                bookingAdd += 1
+                                                return
+                                            }
+                                            createAndEditNewEvent(on: Date())
                                             menuState = .collapsed
                                             ReviewManager.eventCreated()
                                         })
@@ -862,10 +869,10 @@ extension RootView {
 
     case CalendarHeaderMode.bookings.rawValue:
         VStack(spacing: 0) {
-            CalendarScreenHeader(currentView: selectedTab, title: NSLocalizedString("Bookings", comment: ""),
+            CalendarScreenHeader(currentView: selectedTab, bookingMode: $bookingMode,
                                  onSearch: nil, onViewChange: { selectedTab = $0 })
             Divider()
-            Spacer()
+            BookingsContent(mode: bookingMode, addAction: bookingAdd)
         }
     case 6:
         WeatherKitView(

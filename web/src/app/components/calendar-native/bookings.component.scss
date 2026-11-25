@@ -1,0 +1,153 @@
+@use './event-form' as eventForm;
+
+:host {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  color: var(--cal-text);
+  background: var(--cal-bg);
+  --group-radius: 10px;
+  --form-inset: 20px;
+  --inactive-fill: #8f8f8f;
+  --inactive-text: white;
+}
+
+:host-context(.studio--light) {
+  --cal-bg: #f2f2f7;
+  --cal-panel: white;
+  --picker-fill: rgba(118, 118, 128, .12);
+  --inactive-fill: #ebebeb;
+  --inactive-text: black;
+}
+
+.workspace {
+  max-width: 780px;
+  margin-inline: auto;
+  padding: var(--form-inset);
+}
+
+button, input { font: inherit; color: inherit; }
+button { padding: 0; border: 0; background: none; cursor: pointer; text-align: start; }
+button:disabled { opacity: .45; cursor: default; }
+button:focus-visible, .native-form-group:has(> label:only-child input:focus-visible),
+.native-form-row:not(:only-child):has(input:focus-visible) {
+  outline: 2px solid var(--cal-blue);
+  outline-offset: -2px;
+}
+
+@include eventForm.header;
+@include eventForm.rows;
+
+.native-form-group { border-radius: var(--group-radius); }
+.native-form-row { text-align: start; overflow-wrap: anywhere; }
+.native-form-row input { padding: 0; }
+.native-form-group > cc-choice { display: block; }
+.native-form-group > cc-choice + *, .native-form-group > cc-date-time + * {
+  border-top: 1px solid var(--cal-line);
+}
+.native-form-row.action, .inline-action, .calendar-actions, .decisions button { color: var(--cal-blue); }
+.native-form-row.danger, .error { color: #ff453a; }
+p { margin: 0; }
+.empty, small, .value { color: var(--cal-muted); }
+small, .reservation-summary { font-size: 15px; }
+strong { font-size: 17px; font-weight: 600; }
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.event-color { position: relative; padding-inline-start: 9px; }
+.event-color::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--booking-color, #0a84ff);
+}
+.native-form-row.calendar-summary { justify-content: space-between; }
+.name { flex: 1; }
+.calendar-actions { display: flex; flex: none; }
+.calendar-actions button, .clear-location { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.native-form-row.request { align-items: stretch; flex-direction: column; gap: 5px; }
+.status, .repeat { color: var(--cal-muted); font-size: 12px; }
+.status { font-weight: 600; }
+.repeat, .decisions { display: flex; align-items: center; gap: 6px; }
+.decisions { flex-wrap: wrap; }
+.decisions button { padding: 5px 12px; border-radius: 8px; background: var(--picker-fill, #7676803d); }
+.inline-action { min-height: 44px; flex-shrink: 0; }
+
+dialog {
+  margin: auto;
+  padding: 0;
+  width: min(650px, calc(100% - 40px));
+  height: min(680px, calc(100dvh - 48px));
+  max-width: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+  color: var(--cal-text);
+  background: var(--cal-bg);
+  border: 1px solid var(--cal-line);
+  border-radius: 24px;
+  box-shadow: 0 20px 80px #0005;
+  font: inherit;
+}
+dialog[open] { display: flex; flex-direction: column; }
+dialog::backdrop { background: #0006; }
+.native-sheet-header .round-button { color: white; background: var(--cal-blue); }
+.native-sheet-header .round-button:disabled {
+  opacity: 1;
+  color: var(--inactive-text);
+  background: var(--inactive-fill);
+}
+.sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--form-inset);
+}
+.sheet-body fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.sheet-body .group-heading {
+  color: var(--cal-muted);
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 16px 8px;
+}
+.type-option .value { text-align: end; }
+.native-form-row .disclosure, .native-form-row.type-search cc-symbol { color: var(--cal-muted); }
+.color-choice cc-symbol { margin-inline-start: auto; }
+.color-options { padding-inline: 0; }
+.dot { width: 20px; height: 20px; border-radius: 50%; flex: none; }
+.location-row { padding-block: 0; }
+.venue { min-width: 0; min-height: 44px; flex: 1; overflow-wrap: anywhere; }
+.venue.placeholder, .clear-location cc-symbol { color: var(--cal-muted); }
+:host-context([dir=rtl]) .disclosure,
+:host-context([dir=rtl]) .back cc-symbol { transform: scaleX(-1); }
+
+:host-context(.ios-layout) {
+  --group-radius: 12px;
+  dialog { width: min(600px, calc(100% - 40px)); height: min(720px, calc(100dvh - 48px)); }
+}
+
+@mixin compact-sheet {
+  dialog {
+    width: 100%;
+    height: calc(100dvh - 32px);
+    margin: auto 0 0;
+    border-radius: 20px 20px 0 0;
+  }
+  .sheet-body { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+}
+:host-context(.phone-layout) { @include compact-sheet; }
+@media (orientation: landscape) and (max-height: 500px) {
+  :host-context(.ios-layout) { @include compact-sheet; }
+}

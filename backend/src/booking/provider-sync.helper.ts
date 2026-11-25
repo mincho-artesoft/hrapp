@@ -2,7 +2,7 @@
  * Bi-Directional (2-Way) Google Calendar v3 & Microsoft Graph Calendar Sync Engine
  *
  * Reuses the CloudCalendars OAuth applications:
- *  - Google Cloud Project `540859420644` (`https://www.googleapis.com/auth/calendar.events.owned`)
+ *  - Google Cloud Project `540859420644` (calendar connections use `https://www.googleapis.com/auth/calendar`)
  *  - Microsoft Entra App `5b1a5159-948f-4b5b-ac6a-009df927c665` (`Calendars.ReadWrite offline_access User.Read`)
  *
  * Capabilities:

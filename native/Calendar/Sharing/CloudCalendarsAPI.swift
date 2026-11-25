@@ -991,6 +991,10 @@ enum CloudCalendarsAPI {
         )
     }
 
+    static func bookingRequest<T: Decodable>(_ path: String, method: String = "GET", body: [String: any Sendable]? = nil, session: Session) async throws -> T {
+        try await send("/booking-calendars" + path, method: method, body: body, bearer: session.deviceToken)
+    }
+
     // MARK: - Transport
 
     /// Decoding wrapper. Split from `sendIgnoringResponse` so that calls with

@@ -1,0 +1,10 @@
+@use './event-form' as eventForm;
+@include eventForm.rows;
+:host {display:block;}
+.location-field-row .field-prefix {flex:0 0 auto; color:var(--cal-muted);}
+.clear-location {border:0; background:none; color:var(--cal-muted); cursor:pointer;}
+.location-commit-btn,.map-result-row {cursor:pointer; text-align:start;}
+.editor-section-label,.location-searching {font-size:13px; color:var(--cal-muted); margin:0 16px 8px;}
+.map-pin-icon {color:#ff453a !important;}
+.map-result-text {display:flex;flex-direction:column;gap:2px;}
+.map-result-text small {color:var(--cal-muted);}

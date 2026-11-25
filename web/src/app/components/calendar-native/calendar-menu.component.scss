@@ -41,25 +41,9 @@ a {
 }
 .section-picker {
   margin: 16px auto;
-  padding: 3px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: calc(100% - 32px);
   max-width: 820px;
-  border-radius: 21px;
-  background: var(--cal-panel);
-  gap: 0;
   flex-shrink: 0;
-}
-.section-picker button {
-  min-height: 32px;
-  border-radius: 17px;
-  font-size: 15px;
-}
-.section-picker .selected {
-  background: var(--cal-bg);
-  font-weight: 600;
-  box-shadow: 0 1px 2px #0001;
 }
 .menu-scroll {
   border-top: 1px solid var(--cal-line);
@@ -842,9 +826,6 @@ textarea {
 .menu-scroll {
   min-height: 0;
 }
-.section-picker button {
-  font-size: 16px;
-}
 .invitation {
   border-bottom: 1px solid var(--cal-line);
   background: transparent;
@@ -883,8 +864,7 @@ textarea {
 }
 
 :host-context(.ios-layout) .native-menu{background:var(--cal-panel);}
-:host-context(.ios-layout) .section-picker{background:var(--cal-panel-2);margin:8px auto 16px;width:calc(100% - 16px);}
-:host-context(.ios-layout) .section-picker button{font-size:16px;}
+:host-context(.ios-layout) .section-picker{margin:8px auto 16px;width:calc(100% - 16px);}
 :host-context(.phone-layout) .native-backdrop{padding:0;align-items:flex-end;}
 :host-context(.phone-layout) .native-sheet{width:100%;max-height:calc(100dvh - 32px);height:calc(100dvh - 32px);border-radius:20px 20px 0 0;}
 :host-context(.phone-layout) .sheet-body{padding:16px;}
@@ -1092,15 +1072,6 @@ textarea {
   width: 16px;
   height: 16px;
 }
-
-.section-picker button {
-  padding: 4px 6px;
-  font-size: clamp(12px, 1.35vw, 15px);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 
 .tile.blue, .setting-row > cc-symbol { color: var(--cal-system-blue); }
 .setting-row > cc-symbol.orange { color: #ff9f0a; }

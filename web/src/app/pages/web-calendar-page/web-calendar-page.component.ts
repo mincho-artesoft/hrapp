@@ -1,3 +1,6 @@
+import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
+import { BookingsComponent } from '../../components/calendar-native/bookings.component';
+import { BookingWorkspace, bookingID } from '../../core/booking-workspace';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
 import { calendarDateFormatter, calendarHourCycle, calendarWeekStart } from "../../core/calendar-format-preferences";
@@ -21,6 +24,7 @@ import {
   afterRenderEffect,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
   HostListener,
   NgZone,
@@ -99,7 +103,7 @@ import {
   isWebCalendar,
 } from "../../core/calendar-native.service";
 import { PlatformAuthCardComponent } from "../../components/platform-auth-card/platform-auth-card.component";
-import { CalendarAppleMapsService, EventPlaceSuggestion } from "../../core/calendar-apple-maps.service";
+import {CalendarLocationEditorComponent, finishLocation} from '../../components/calendar-native/calendar-location-editor.component';
 import { CalendarLocationMapComponent } from "../../components/calendar-native/calendar-location-map.component";
 import { CalendarForecastService } from "../../core/calendar-forecast.service";
 import { Snapshot, WeatherService } from "../../core/weather.service";
@@ -183,15 +187,24 @@ const HOUR_PX = 50;
   providers: [
     { provide: CALENDAR_API_BASE, useFactory: () => {
       const route = inject(ActivatedRoute).snapshot;
-      return route.queryParamMap.get('invitationServer') === 'production' && route.fragment?.startsWith('invite=')
-        ? 'https://api.cloud-calendars.com' : CALENDAR_DEBUG_API;
+      if (route.fragment?.startsWith('invite=')) {
+        // Existing Debug invitation links omit the server parameter.
+        return route.queryParamMap.get('invitationServer') === 'production'
+          ? 'https://api.cloud-calendars.com' : CALENDAR_DEBUG_API;
+      }
+      if (bookingID.test(route.queryParamMap.get('bookingCalendar') ?? '')) {
+        const server = route.queryParamMap.get('bookingServer');
+        if (server === 'production') return 'https://api.cloud-calendars.com';
+        if (server === 'debug') return CALENDAR_DEBUG_API;
+      }
+      return inject(CALENDAR_API_BASE, { skipSelf: true });
     } },
-    CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
+    BookingWorkspace, CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
   imports: [CalendarAnchoredMenuDirective,
     CalendarSearchFieldComponent,
-    CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
+    CalendarLocationEditorComponent,CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,
     FormsModule,
@@ -200,7 +213,7 @@ const HOUR_PX = 50;
     CalendarProgressComponent,
     CalendarMonthTitleDirective,
     CalendarChoiceComponent,
-    CalendarMenuComponent,
+    CalendarMenuComponent, BookingsComponent, CalendarSectionPickerComponent,
     CalendarAccountComponent, CalendarEmailInvitationComponent,
     CalendarWeatherComponent,
   ],
@@ -218,6 +231,7 @@ export class WebCalendarPageComponent
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
   readonly invitationFragment = toSignal(this.route.fragment);
 
   closeEmailInvitation() {
@@ -291,6 +305,17 @@ export class WebCalendarPageComponent
     { value: "weather", label: "Weather", symbol: "cloud.sun" },
     { value: "bookings", label: "Bookings", symbol: "calendar.badge.checkmark" },
   ];
+  readonly bookingPanel = viewChild(BookingsComponent);
+  readonly bookingMode = signal("appointments");
+  readonly bookingModes = [
+    {value: "appointments", label: "My bookings"},
+    {value: "availability", label: "Booking calendars"},
+  ];
+  selectBookingMode(mode: string) {
+    if (!this.bookingModes.some(option => option.value === mode)) return;
+    this.bookingMode.set(mode);
+    this.rememberView("cc.bookings.mode", mode);
+  }
   readonly modePicker = signal(false);
   readonly viewport = signal({width:1280,height:800,touch:false});
   readonly isDesktop = computed(
@@ -322,7 +347,8 @@ export class WebCalendarPageComponent
         matchMedia("(pointer:coarse)").matches,
     });
     if (!this.isDesktop() && this.viewMode() === "menu") {
-      this.viewMode.set(this.lastCalendarMode);
+      if (this.lastCalendarMode === "bookings") this.setView("bookings");
+      else this.viewMode.set(this.lastCalendarMode);
       this.drawerOpen.set(true);
     }
   }
@@ -599,77 +625,11 @@ export class WebCalendarPageComponent
   readonly pendingDelete = signal(false);
   readonly detailPendingDelete = signal(false);
   readonly editorPage = signal<"main" | "location" | "recurrence">("main");
-  private readonly appleMaps = inject(CalendarAppleMapsService);
-  readonly locationResults = signal<EventPlaceSuggestion[]>([]);
-  readonly searchingLocation = signal(false);
-  private locationSearchSeq = 0;
-  private locationTimer?: ReturnType<typeof setTimeout>;
-
-  searchEditorLocation(query: string) {
-    this.resetLocationSearch();
-    const seq = this.locationSearchSeq;
-    const trimmed = query.trim();
-    if (trimmed.length < 2) return;
-    this.searchingLocation.set(true);
-    this.locationTimer = setTimeout(async () => {
-      try {
-        const places = this.appleMaps.available
-          ? await this.appleMaps.suggestions(trimmed, this.isDesktop())
-          : (await this.weatherService.search(trimmed)).slice(0, 6).map(place => ({
-              title: place.name, subtitle: [place.admin1, place.country].filter(Boolean).join(', '),
-              coordinate: {latitude: place.latitude, longitude: place.longitude},
-            }));
-        if (seq === this.locationSearchSeq) this.locationResults.set(places);
-      } catch {
-        // The typed address can still be saved if the map service is unavailable.
-      } finally {
-        if (seq === this.locationSearchSeq) this.searchingLocation.set(false);
-      }
-    }, 250);
-  }
-
-  private resetLocationSearch() {
-    ++this.locationSearchSeq;
-    clearTimeout(this.locationTimer);
-    this.locationResults.set([]);
-    this.searchingLocation.set(false);
-  }
-
-  openLocationPage(draft: EventDraft) {
-    this.editorPage.set('location');
-    this.searchEditorLocation(draft.location);
-  }
-
-  changeLocation(draft: EventDraft, value: string) {
-    draft.location = value;
-    draft.structuredLocation = null;
-    this.searchEditorLocation(value);
-  }
-
-  async pickLocationPlace(place: EventPlaceSuggestion) {
-    const draft = this.editorDraft();
-    if (!draft) return;
-    this.resetLocationSearch();
-    const seq = this.locationSearchSeq;
-    const title = this.isDesktop() ? place.title : [place.title, place.subtitle].filter(Boolean).join(', ');
-    let coordinate = place.coordinate;
-    try { coordinate = await this.appleMaps.coordinateFor(place); } catch { /* Keep the selected address. */ }
-    if (seq !== this.locationSearchSeq || this.editorDraft() !== draft || this.editorPage() !== 'location') return;
-    draft.location = title;
-    draft.structuredLocation = {title, latitude: coordinate?.latitude, longitude: coordinate?.longitude, radius: 0};
-    draft.videoCallURL = draft.videoCallURL.trim();
-    this.editorPage.set('main');
-  }
-
+  openLocationPage() { this.editorPage.set('location'); }
   commitLocationDraft() {
-    const d = this.editorDraft();
-    if (d) {
-      d.location = d.location.trim();
-      if (!d.structuredLocation && d.location) d.structuredLocation = {title: d.location, radius: 0};
-      d.videoCallURL = d.videoCallURL.trim();
-    }
-    this.resetLocationSearch();
-    this.editorPage.set("main");
+    const draft=this.editorDraft();
+    if (draft) finishLocation(draft);
+    this.editorPage.set('main');
   }
 
   meetingUrlForEvent(event: WebCalendarEvent): string | null {
@@ -924,11 +884,13 @@ export class WebCalendarPageComponent
     if (this.monthClickTimer) clearTimeout(this.monthClickTimer);
     this.endMonthDrag();
     this.cancelDrag();
-    if (!this.bookingsRoute && this.viewMode() !== 'menu' && this.viewMode() !== 'weather') this.lastCalendarMode = this.viewMode();
+    if (this.viewMode() !== 'menu' && this.viewMode() !== 'weather') this.lastCalendarMode = this.viewMode();
     this.viewMode.set(value);
     this.drawerOpen.set(false);this.searchOpen.set(false);this.searchText.set('');this.rangeOpen.set(false);
     this.modePicker.set(false);
-    if (this.isBrowser && value !== "bookings") localStorage.setItem("cc.mac.view", value);
+    if (value === "bookings") this.rememberView("cc.mac.calendarReturnView", this.calendarReturnView);
+    if (value === "menu") this.rememberView("cc.mac.menuReturnView", this.lastCalendarMode);
+    this.rememberView("cc.mac.view", value);
     if (["day", "week", "multi"].includes(value))
       setTimeout(() => this.scrollToWorkingHours(), 0);
   }
@@ -1086,11 +1048,6 @@ export class WebCalendarPageComponent
   constructor() {
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(params => {
       void this.localization.usePageLanguage(this.route.snapshot.data["locale"] ?? DEFAULT_LOCALE, params.get("lang"));
-    });
-    this.router.events.pipe(takeUntilDestroyed()).subscribe(event => {
-      if (event instanceof NavigationEnd && this.routeShowsBookings() !== this.bookingsRoute) {
-        this.updateWorkspaceSection();
-      }
     });
     let lastList: HTMLElement | undefined;
     let lastRequest: Date | null = null;
@@ -1631,16 +1588,33 @@ export class WebCalendarPageComponent
     return !this.timelineIncludesToday() || Math.abs(hour * 60 - this.currentMinute()) >= 15;
   }
 
+  private rememberView(key: string, value: string) {
+    if (this.isBrowser) {
+      try { localStorage.setItem(key, value); } catch { /* Browser storage is optional. */ }
+    }
+  }
+
+  private storedView(key: string): CalendarViewMode | null {
+    const value = localStorage.getItem(key);
+    return value === "menu" || this.modes.some(m => m.value === value) ? value as CalendarViewMode : null;
+  }
+
   async ngOnInit(): Promise<void> {
+    let restoreBookings = false;
     this.updateViewport();
     if (this.isBrowser) {
       try {
-        const saved = localStorage.getItem("cc.mac.view");
-        if (
-          saved && saved !== "bookings" &&
-          [...this.modes.map((m) => m.value), "menu"].includes(saved)
-        )
-          this.viewMode.set(saved as CalendarViewMode);
+        const mode = localStorage.getItem("cc.bookings.mode");
+        if (mode && this.bookingModes.some(option => option.value === mode)) this.bookingMode.set(mode);
+        const menuReturn = this.storedView("cc.mac.menuReturnView");
+        if (menuReturn && menuReturn !== "menu" && menuReturn !== "weather") this.lastCalendarMode = menuReturn;
+        const saved = this.storedView("cc.mac.view");
+        const previous = saved === "bookings" ? this.storedView("cc.mac.calendarReturnView") : saved;
+        if (previous && previous !== "bookings") this.viewMode.set(previous);
+        const entry = this.route.snapshot;
+        // Invitations and OAuth callbacks own their landing URL.
+        restoreBookings = saved === "bookings" && !this.routeShowsBookings() && !entry.fragment &&
+          entry.queryParamMap.keys.every(key => key === "lang") && this.router.getCurrentNavigation()?.trigger !== "popstate";
         this.multiIDs.set(
           new Set(JSON.parse(localStorage.getItem("cc.mac.multi") || "[]")),
         );
@@ -1652,6 +1626,14 @@ export class WebCalendarPageComponent
     this.locale =
       (this.route.snapshot.data["locale"] as Locale) ?? DEFAULT_LOCALE;
     this.updateWorkspaceSection();
+    this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(event => {
+      if (event instanceof NavigationEnd && this.routeShowsBookings() !== this.bookingsRoute) {
+        this.updateWorkspaceSection();
+      }
+    });
+    if (restoreBookings) {
+      void this.router.navigate(["bookings"], {relativeTo: this.route, queryParamsHandling: "preserve", replaceUrl: true});
+    }
 
     if (!this.isBrowser) return;
     this.iosQrEnabled.set(isIosQrAuthEnabled());
@@ -1799,7 +1781,6 @@ export class WebCalendarPageComponent
   }
   ngOnDestroy(): void {
     if (this.monthClickTimer) clearTimeout(this.monthClickTimer);
-    this.resetLocationSearch();
     this.cancelDrag();
     if (this.isBrowser && typeof window !== "undefined") {
       window.removeEventListener("resize", this.onWindowResize);
@@ -2582,6 +2563,7 @@ export class WebCalendarPageComponent
   }
 
   openNewEventDefault(): void {
+    if (this.bookingsRoute) { this.bookingPanel()?.add(); return; }
     const base = new Date(this.anchorDate());
     base.setHours(9, 0, 0, 0);
     this.drawerOpen.set(false);

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Health and wellness",
+    "types": [
+      "General appointment",
+      "Medical consultation",
+      "Dental appointment",
+      "Eye examination",
+      "Physiotherapy",
+      "Psychotherapy",
+      "Nutrition consultation",
+      "Massage",
+      "Follow-up visit",
+      "Veterinary care"
+    ]
+  },
+  {
+    "title": "Beauty and grooming",
+    "types": [
+      "Haircut",
+      "Hair colouring",
+      "Barber appointment",
+      "Manicure",
+      "Pedicure",
+      "Facial treatment",
+      "Makeup",
+      "Brow and lash treatment",
+      "Tattoo consultation"
+    ]
+  },
+  {
+    "title": "Education and training",
+    "types": [
+      "Tutoring",
+      "Language lesson",
+      "Music lesson",
+      "Driving lesson",
+      "Workshop",
+      "Office hours",
+      "Exam preparation"
+    ]
+  },
+  {
+    "title": "Sports and fitness",
+    "types": [
+      "Personal training",
+      "Yoga class",
+      "Pilates class",
+      "Swimming lesson",
+      "Dance lesson",
+      "Sports coaching"
+    ]
+  },
+  {
+    "title": "Business and advice",
+    "types": [
+      "Business consultation",
+      "Legal consultation",
+      "Accounting consultation",
+      "Career coaching",
+      "Interview",
+      "Client meeting",
+      "Product demonstration",
+      "Technical support",
+      "Financial consultation"
+    ]
+  },
+  {
+    "title": "Home and vehicles",
+    "types": [
+      "Home maintenance",
+      "House cleaning",
+      "Property viewing",
+      "Appliance repair",
+      "Car servicing",
+      "Tyre change",
+      "Car detailing"
+    ]
+  },
+  {
+    "title": "Creative and personal services",
+    "types": [
+      "Photo session",
+      "Design consultation",
+      "Recording session",
+      "Tailoring",
+      "Event planning",
+      "Pet grooming",
+      "Other"
+    ]
+  }
+]

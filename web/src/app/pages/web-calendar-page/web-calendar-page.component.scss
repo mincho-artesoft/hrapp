@@ -1,3 +1,4 @@
+@use '../../components/calendar-native/event-form' as eventForm;
 @use "mixins" as *;
 
 :host {
@@ -2103,47 +2104,7 @@ cc-calendar-menu {
   --cal-panel: #fff;
   --picker-fill: rgba(118, 118, 128, .12);
 }
-.native-sheet-header {
-  height: 64px;
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: minmax(max-content, 1fr) minmax(0, max-content) minmax(max-content, 1fr);
-  column-gap: 12px;
-  align-items: center;
-  padding: 12px 16px;
-  background: var(--cal-bg);
-}
-.native-sheet-header h2 {
-  text-align: center;
-  font-size: 17px;
-  margin: 0;
-  font-weight: 600;
-}
-.native-sheet-header > .round-button:last-child {
-  justify-self: end;
-}
-.round-button {
-  position: relative;
-  margin-inline: 3px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px;
-  cursor: pointer;
-}
-.round-button::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; }
-.round-button cc-symbol {
-  width: 22px;
-  height: 22px;
-}
-.round-button:disabled {
-  background: #8e8e93;
-  cursor: default;
-}
+@include eventForm.header;
 .event-toolbar {
   display: flex;
   align-items: center;
@@ -2175,50 +2136,7 @@ cc-calendar-menu {
   flex: 1;
   display: block;
 }
-.native-form-group {
-  border-radius: 10px;
-  background: var(--cal-panel);
-  padding: 0 16px;
-  margin: 0 0 28px;
-}
-.native-form-row {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  font-size: 17px;
-  padding: 10px 0;
-  border: 0;
-  background: none;
-  color: var(--cal-text);
-}
-.native-form-row + .native-form-row {
-  border-top: 1px solid var(--cal-line);
-}
-.native-form-row > span:first-child {
-  flex: 1;
-}
-.native-form-row cc-symbol {
-  color: var(--cal-blue);
-  width: 20px;
-}
-.native-form-row input:not([type="checkbox"]):not([type="color"]),
-.native-form-row textarea {
-  border: 0;
-  background: transparent;
-  color: var(--cal-text);
-  font: inherit;
-  min-width: 0;
-  outline: 0;
-}
-.native-form-row
-  input:not([type="date"]):not([type="time"]):not([type="color"]):not(
-    [type="checkbox"]
-  ),
-.native-form-row textarea {
-  width: 100%;
-}
+@include eventForm.rows;
 .native-form-row input[type="date"],
 .native-form-row input[type="time"] {
   color: var(--cal-blue);
@@ -3226,3 +3144,15 @@ cc-calendar-menu {
 .touch-edit-menu .edit-menu-page cc-symbol { width: 12px; height: 16px; }
 [dir=rtl] .edit-menu-page cc-symbol { transform: scaleX(-1); }
 .ev-block, .allday-pill, .month-pill, .native-list-row { -webkit-touch-callout: none; }
+
+.cal-toolbar__left.bookings-picker-container {
+  flex: 1;
+  min-width: 0;
+  max-width: 400px;
+}
+.bookings-picker {
+  width: 100%;
+  --section-fill: color-mix(in srgb, currentColor 12%, transparent);
+  container-type: inline-size;
+  --section-mobile-size: clamp(12px, 4.8cqi, 15px);
+}

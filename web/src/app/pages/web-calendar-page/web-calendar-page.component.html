@@ -170,9 +170,10 @@
         }
         @if (viewMode() !== "weather") {
           <header class="cal-toolbar" [class.searching]="searchOpen()">
-            <div class="cal-toolbar__left">
+            <div class="cal-toolbar__left" [class.bookings-picker-container]="bookingsRoute">
               @if (bookingsRoute) {
-                <h1 class="cal-toolbar__title">{{ "Bookings" | nativeText }}</h1>
+                <cc-section-picker class="bookings-picker" label="Bookings" [columns]="2" [options]="bookingModes"
+                  [value]="bookingMode()" (valueChange)="selectBookingMode($event)" />
               } @else {
                 @if (viewMode() === "day" || viewMode() === "multi") {
                   <button
@@ -210,7 +211,7 @@
                 <button
                   type="button"
                   class="toolbar-icon desktop-add"
-                  aria-label="Add event" [disabled]="loadingWorkspace()"
+                  [attr.aria-label]="bookingsRoute ? ((bookingMode()==='availability'?'Create booking calendar':'Open booking calendar')|nativeText) : 'Add event'" [disabled]="loadingWorkspace()"
                   (click)="openNewEventDefault()"
                 >
                   <cc-symbol [pointSize]="21" name="plus" />
@@ -218,7 +219,7 @@
                 <button
                   type="button"
                   class="toolbar-icon"
-                  aria-label="Search events"
+                  [attr.aria-label]="bookingsRoute ? ('Search bookings'|nativeText) : 'Search events'"
                   (click)="searchOpen.set(!searchOpen())"
                 >
                   <cc-symbol [pointSize]="isDesktop() ? 21 : 22" name="magnifyingglass" />
@@ -342,7 +343,7 @@
 
         @if (searchOpen() && viewMode() !== "menu" && viewMode() !== "weather") {
           <cc-calendar-search [value]="searchText()" (changed)="searchText.set($event)" (closed)="searchOpen.set(false); searchText.set('')" />
-          @if (searchText()) {
+          @if (searchText() && !bookingsRoute) {
             <div class="agenda-wrap native-list-wrap calendar-scroll-list">
               @for (grp of searchGroups(); track grp.key) {
                 <section class="native-list-day">
@@ -407,6 +408,9 @@
           </div>
         }
 
+        @if (bookingsRoute) {
+          <cc-bookings [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
+        }
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
             <cc-weather [firstWeekday]="firstWeekday()"
@@ -1461,83 +1465,7 @@
                 (ruleChange)="changeRepeatRule($event)"
               />
             } @else if (editorPage() === "location") {
-              <div class="native-form-group">
-                <label class="native-form-row location-field-row">
-                  <span class="field-prefix"
-                    >{{ "Location" | nativeText }}:</span
-                  >
-                  <input
-                    autofocus
-                    aria-label="Location"
-                    [ngModel]="d.location"
-                    (ngModelChange)="
-                      changeLocation(d, $event)
-                    "
-                  />
-                  @if (d.location) {
-                    <button
-                      type="button"
-                      class="clear-location"
-                      aria-label="Clear location"
-                      (click)="changeLocation(d, '')"
-                    >
-                      <cc-symbol name="xmark.circle.fill" />
-                    </button>
-                  }
-                </label>
-                @if (!provider) {
-                <label class="native-form-row location-field-row">
-                  <span class="field-prefix"
-                    >{{ "Video Call" | nativeText }}:</span
-                  >
-                  <input
-                    type="url"
-                    aria-label="Video Call"
-                    [(ngModel)]="d.videoCallURL"
-                  />
-                </label>
-                }
-
-              </div>
-              @if (d.location.trim()) {
-                <div class="native-form-group">
-                  <button
-                    type="button"
-                    class="native-form-row location-commit-btn"
-                    (click)="commitLocationDraft()"
-                  >
-                    “{{ d.location.trim() }}”
-                  </button>
-                </div>
-              }
-              @if (isDesktop() && searchingLocation()) {
-                <p class="location-searching">
-                  {{ "Searching…" | nativeText }}
-                </p>
-              }
-              @if (locationResults().length) {
-                <h3 class="editor-section-label">
-                  {{ "Map Locations" | nativeText }}
-                </h3>
-                <div class="native-form-group">
-                  @for (place of locationResults(); track place) {
-                    <button
-                      type="button"
-                      class="native-form-row map-result-row"
-                      (click)="pickLocationPlace(place)"
-                    >
-                      <cc-symbol
-                        class="map-pin-icon"
-                        name="mappin.and.ellipse"
-                      />
-                      <span class="map-result-text">
-                        <strong>{{ place.title }}</strong>
-                        @if (place.subtitle) { <small>{{ place.subtitle }}</small> }
-                      </span>
-                    </button>
-                  }
-                </div>
-              }
+              <cc-location-editor [draft]="d" [allowsVideo]="!provider" [desktop]="isDesktop()" (done)="commitLocationDraft()" />
             } @else {
               <div class="native-form-group">
                 <label class="native-form-row">
@@ -1551,7 +1479,7 @@
                   <button
                     type="button"
                     class="location-row"
-                    (click)="openLocationPage(d)"
+                    (click)="openLocationPage()"
                   >
                     <span [class.placeholder]="!d.location">{{
                       d.location || ((provider ? "Location" : "Location or Video Call") | nativeText)

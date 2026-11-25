@@ -2110,12 +2110,6 @@ struct MacTabletCalendarEditor: View {
     @State private var confirmsDeletion = false
     @State private var isSaving = false
     @State private var createdGoogleCalendarID: String?
-    @StateObject private var customColorPanel = MacCalendarCustomColorPanel()
-    private let colors: [(String, Color)] = [
-        ("Red", Color(nsColor: .systemRed)), ("Orange", Color(nsColor: .systemOrange)),
-        ("Yellow", Color(nsColor: .systemYellow)), ("Green", Color(nsColor: .systemGreen)),
-        ("Blue", Color(nsColor: .systemBlue)), ("Purple", Color(nsColor: .systemPurple)), ("Brown", Color(nsColor: .brown))
-    ]
 
     init(store: MacTabletCalendarStore, target: MacCalendarEditorTarget, onClose: @escaping () -> Void) {
         self.store = store; self.target = target; self.onClose = onClose
@@ -2131,7 +2125,7 @@ struct MacTabletCalendarEditor: View {
     private var removalTitle: LocalizedStringKey { isReceivedLocal ? "Remove from My Calendars" : "Delete Calendar" }
 
     private var colorName: String {
-        colors.first { NSColor($0.1).hex == NSColor(color).hex }?.0 ?? "Custom"
+        MacCalendarColorChoices.name(for: color)
     }
     private var pageTitle: LocalizedStringKey {
         colorPage ? "Calendar Color" : target.calendar != nil ? "Edit Calendar"
@@ -2146,10 +2140,6 @@ struct MacTabletCalendarEditor: View {
                     pageContent(colorPage: true).navigationBarBackButtonHidden()
                 }
         }
-        .onChange(of: colorPage) { _, visible in
-            if !visible { customColorPanel.close() }
-        }
-        .onDisappear { customColorPanel.close() }
         .confirmationDialog(LocalizedStringKey(isReceivedLocal ? "Remove Shared Calendar?" : "Delete Calendar?"), isPresented: $confirmsDeletion, titleVisibility: .visible) {
             Button(LocalizedStringKey(isReceivedLocal ? "Remove" : "Delete Calendar"), role: .destructive) {
                 guard let existing = target.calendar else { return }
@@ -2168,18 +2158,6 @@ struct MacTabletCalendarEditor: View {
         } message: { Text(errorMessage ?? "") }
     }
 
-    private func colorChoiceRow(_ title: LocalizedStringKey, swatch: Color, selected: Bool) -> some View {
-        HStack(spacing: 12) {
-            Circle().fill(swatch).frame(width: 20, height: 20)
-            Text(title).foregroundStyle(Color.primary)
-            Spacer()
-            if selected { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
-        }
-        .frame(maxWidth: .infinity, minHeight: 44)
-        .contentShape(Rectangle())
-        .accessibilityAddTraits(selected ? .isSelected : [])
-    }
-
     private func pageContent(colorPage: Bool) -> some View {
         VStack(spacing: 0) {
             MacCalendarSheetHeader(title: Text(pageTitle)) {
@@ -2196,35 +2174,8 @@ struct MacTabletCalendarEditor: View {
             }
             MacCalendarForm {
                 if colorPage {
-                    CalendarSharingSection(rows: true) {
-                        if isReceivedLocal, let localCalendar {
-                            Button {
-                                usesCreatorDefault = true
-                                color = Color(nsColor: MacLocalDocuments.color(localCalendar.colorHex))
-                                customColorPanel.close()
-                            } label: {
-                                colorChoiceRow("Default from creator",
-                                    swatch: Color(nsColor: MacLocalDocuments.color(localCalendar.colorHex)), selected: usesCreatorDefault)
-                            }.calendarSharingRowAction()
-                        }
-                        ForEach(colors, id: \.0) { name, value in
-                            Button {
-                                color = value; usesCreatorDefault = false
-                                customColorPanel.close()
-                            } label: {
-                                colorChoiceRow(LocalizedStringKey(name), swatch: value, selected: colorName == name && !usesCreatorDefault)
-                            }.calendarSharingRowAction()
-                        }
-                        Button {
-                            customColorPanel.show(color: color) { selected in
-                                color = selected; usesCreatorDefault = false
-                            }
-                        } label: {
-                            colorChoiceRow("Custom...", swatch: color, selected: colorName == "Custom" && !usesCreatorDefault)
-                        }
-                        .calendarSharingRowAction()
-                        .accessibilityIdentifier("calendar.color.custom")
-                    }
+                    MacCalendarColorChoices(color: $color, usesCreatorDefault: $usesCreatorDefault,
+                        creatorColor: isReceivedLocal ? localCalendar.map { Color(nsColor: MacLocalDocuments.color($0.colorHex)) } : nil)
                 } else if target.calendar != nil {
                     CalendarEditorSections(title: $title,
                         canEditTitle: !isReceivedLocal || localCalendar?.canManageSharing == true,
@@ -2324,6 +2275,67 @@ struct MacTabletCalendarEditor: View {
             } catch { errorMessage = error.localizedDescription }
         }
     }
+}
+
+struct MacCalendarColorChoices: View {
+    @Binding var color: Color
+    @Binding var usesCreatorDefault: Bool
+    var creatorColor: Color? = nil
+    @StateObject private var customColorPanel = MacCalendarCustomColorPanel()
+    private static let colors: [(String, Color)] = [
+        ("Red", Color(nsColor: .systemRed)), ("Orange", Color(nsColor: .systemOrange)),
+        ("Yellow", Color(nsColor: .systemYellow)), ("Green", Color(nsColor: .systemGreen)),
+        ("Blue", Color(nsColor: .systemBlue)), ("Purple", Color(nsColor: .systemPurple)), ("Brown", Color(nsColor: .brown))
+    ]
+
+    static func name(for color: Color) -> String {
+        colors.first { NSColor($0.1).hex == NSColor(color).hex }?.0 ?? "Custom"
+    }
+    var body: some View {
+        CalendarSharingSection(rows: true) {
+            if let creatorColor {
+                Button {
+                    usesCreatorDefault = true
+                    color = creatorColor
+                    customColorPanel.close()
+                } label: {
+                    colorChoiceRow("Default from creator",
+                        swatch: creatorColor, selected: usesCreatorDefault)
+                }.calendarSharingRowAction()
+            }
+            ForEach(Self.colors, id: \.0) { name, value in
+                Button {
+                    color = value; usesCreatorDefault = false
+                    customColorPanel.close()
+                } label: {
+                    colorChoiceRow(LocalizedStringKey(name), swatch: value, selected: Self.name(for: color) == name && !usesCreatorDefault)
+                }.calendarSharingRowAction()
+            }
+            Button {
+                customColorPanel.show(color: color) { selected in
+                    color = selected; usesCreatorDefault = false
+                }
+            } label: {
+                colorChoiceRow("Custom...", swatch: color, selected: Self.name(for: color) == "Custom" && !usesCreatorDefault)
+            }
+            .calendarSharingRowAction()
+            .accessibilityIdentifier("calendar.color.custom")
+        }
+        .onDisappear { customColorPanel.close() }
+    }
+
+    private func colorChoiceRow(_ title: LocalizedStringKey, swatch: Color, selected: Bool) -> some View {
+        HStack(spacing: 12) {
+            Circle().fill(swatch).frame(width: 20, height: 20)
+            Text(title).foregroundStyle(Color.primary)
+            Spacer()
+            if selected { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
+        }
+        .frame(maxWidth: .infinity, minHeight: 44)
+        .contentShape(Rectangle())
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
 }
 
 @MainActor
