@@ -25,6 +25,8 @@ export const keys = {
   pendingEventInvitations: (emailHash: string) => `idx/event-invite-email/${emailHash}/`,
   pendingEventInvitation: (emailHash: string, calId: string, eventId: string) =>
     `idx/event-invite-email/${emailHash}/${encodeURIComponent(calId)}--${encodeURIComponent(eventId)}.json`,
+  migratedCalendarOwner: (owner: string, calendar: string) =>
+    `idx/migrated-calendar-owner/${encodeURIComponent(owner)}/${encodeURIComponent(calendar)}.json`,
   icloudCalendarSharing: (principalId: string, calendarId: string) =>
     `principal/${principalId}/icloud-calendars/${calendarId}.json`,
   icloudCalendarEvents: (principalId: string, calendarId: string) =>

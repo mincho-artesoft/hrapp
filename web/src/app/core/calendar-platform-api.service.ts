@@ -4,10 +4,9 @@ import { nativeEventDetails, withWebEventDetails } from './calendar-native-model
 import { SITE_URL } from './app-facts';
 import { detectBrowserTimeZone } from './ios-event-palette';
 
-export const CALENDAR_DEBUG_API = 'https://storage.wonek.com/cloud-calendars-debug';
 export const CALENDAR_API_BASE = new InjectionToken<string>('Calendar API base URL', {
   providedIn: 'root',
-  factory: () => isDevMode() ? CALENDAR_DEBUG_API : 'https://api.cloud-calendars.com',
+  factory: () => 'https://api.cloud-calendars.com',
 });
 const SESSION_STORAGE_KEY = 'cc_web_session_v1';
 
@@ -230,9 +229,8 @@ declare global {
 @Injectable({ providedIn: 'root' })
 export class CalendarPlatformApiService {
   readonly apiBaseURL = inject(CALENDAR_API_BASE);
-  // Existing localhost sessions already belong to Debug. On the public origin the legacy key is production.
-  private readonly sessionKey = this.apiBaseURL === CALENDAR_DEBUG_API && !isDevMode()
-    ? SESSION_STORAGE_KEY + '_debug' : SESSION_STORAGE_KEY;
+  // Older development builds saved Debug credentials under the public site's key.
+  private readonly sessionKey = isDevMode() ? SESSION_STORAGE_KEY + '_production' : SESSION_STORAGE_KEY;
 
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);

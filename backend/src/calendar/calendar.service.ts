@@ -1367,6 +1367,7 @@ export class CalendarService {
       const identity = `${ownerCalId}:${eventId}`;
       const invitation = {
         id: hashKey(identity),
+        ...(ref.previousInvitationId ? { previousId: ref.previousInvitationId } : {}),
         eventId,
         feedId,
         title: String(event.title ?? 'Shared event').slice(0, 120),
@@ -1710,17 +1711,23 @@ export class CalendarService {
     });
   }
 
+  private async invitationOwner(owner: string, calendar: string): Promise<string> {
+    const alias = await this.store.getJSON(this.keys.migratedCalendarOwner(owner, calendar));
+    return alias?.ownerId ?? owner;
+  }
+
   async iCloudCalendarInvitationLanding(
     query: any,
   ): Promise<{ status: number; html: string }> {
-    const ownerId = boundedQueryValue(query?.o, 128);
+    const previousOwner = boundedQueryValue(query?.o, 128);
     const calendarId = boundedQueryValue(query?.c, 128);
-    if (!ownerId || !calendarId || !validICloudCalendarShareId(calendarId)) {
+    if (!previousOwner || !calendarId || !validICloudCalendarShareId(calendarId)) {
       return {
         status: 400,
         html: eventInvitationErrorPage('Invalid calendar invitation'),
       };
     }
+    const ownerId = await this.invitationOwner(previousOwner, calendarId);
     const calendar = await this.store.getJSON(
       this.keys.icloudCalendarSharing(ownerId, calendarId),
     );
@@ -1769,11 +1776,12 @@ export class CalendarService {
    * create a new EventKit calendar on the device: the canonical S3 share and
    * the recipient's "Shared with me" index remain the source of truth. */
   async acceptICloudCalendarInvitation(principal: any, body: any): Promise<ApiResult> {
-    const ownerId = boundedPlainText(body.ownerId, 128);
+    const previousOwner = boundedPlainText(body.ownerId, 128);
     const calendarId = boundedPlainText(body.calendarId, 128);
-    if (!ownerId || !calendarId || !validICloudCalendarShareId(calendarId)) {
+    if (!previousOwner || !calendarId || !validICloudCalendarShareId(calendarId)) {
       return result(400, { error: 'ownerId and a valid calendarId are required' });
     }
+    const ownerId = await this.invitationOwner(previousOwner, calendarId);
     if (ownerId === principal.principalId) {
       return result(409, { error: 'the owner already has full calendar access' });
     }
@@ -2432,6 +2440,7 @@ export class CalendarService {
       const identity = `${ownerId}:${calendarId}`;
       invitations.set(identity, {
         id: hashKey(identity),
+        ...(value.ref.previousInvitationId ? { previousId: value.ref.previousInvitationId } : {}),
         ownerId,
         ownerEmail,
         calendarId,

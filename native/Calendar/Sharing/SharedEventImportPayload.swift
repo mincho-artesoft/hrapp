@@ -172,20 +172,17 @@ private extension Color {
 enum SharedInvitationServer {
     static func baseURL(for url: URL, route: String) -> URL? {
         guard url.scheme == "https", url.user == nil, url.password == nil, url.port == nil else { return nil }
-        if url.host == "www.cloud-calendars.com" {
-            if url.path == "/invite/" + route { return URL(string: "https://api.cloud-calendars.com") }
-            #if DEBUG
-            if url.path == "/invite/debug/" + route { return URL(string: "https://storage.wonek.com/cloud-calendars-debug") }
-            #endif
+        let production = URL(string: "https://api.cloud-calendars.com")!
+        switch url.host {
+        case "www.cloud-calendars.com":
+            guard ["/invite/" + route, "/invite/debug/" + route].contains(url.path) else { return nil }
+        case "api.cloud-calendars.com", "63yo3ore3c.execute-api.us-east-1.amazonaws.com":
+            guard url.path == "/" + route else { return nil }
+        case "storage.wonek.com":
+            guard url.path == "/cloud-calendars-debug/" + route else { return nil }
+        default:
             return nil
         }
-        var bases = ["https://api.cloud-calendars.com"]
-        #if DEBUG
-        bases += ["https://63yo3ore3c.execute-api.us-east-1.amazonaws.com",
-                  "https://storage.wonek.com/cloud-calendars-debug"]
-        #endif
-        return bases.compactMap(URL.init(string:)).first {
-            $0.host == url.host && $0.appendingPathComponent(route).path == url.path
-        }
+        return production
     }
 }

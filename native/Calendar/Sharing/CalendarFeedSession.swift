@@ -38,11 +38,7 @@ enum CalendarFeedSession {
     }
 
     private static let storageDirectoryName = "CloudCalendars"
-    #if DEBUG
-    private static let storageFileName = "feed-session-debug.json"
-    #else
     private static let storageFileName = "feed-session.json"
-    #endif
 
     private static var cached: CloudCalendarsAPI.Session?
     private static var didLoad = false

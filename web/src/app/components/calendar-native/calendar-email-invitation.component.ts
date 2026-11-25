@@ -129,7 +129,7 @@ export class CalendarEmailInvitationComponent {
       const path = kind === 'event' ? '/event-invitations/pending' : '/icloud-calendar-invitations/pending';
       this.loading.set(true);
       this.sharing.request<{ invitations: PendingInvitation[] }>(path)
-        .then(result => { if (current) this.invitation.set(result.invitations.find(item => item.id === id) ?? null); })
+        .then(result => { if (current) this.invitation.set(result.invitations.find(item => item.id === id || item.previousId === id) ?? null); })
         .catch(error => { if (current) this.failed.set(error.message || 'Could not load invitations.'); })
         .finally(() => { if (current) this.loading.set(false); });
     });

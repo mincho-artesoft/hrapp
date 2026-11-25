@@ -15,13 +15,7 @@ enum CloudCalendarsAPI {
     /// That hostname belongs to one API in one region, so anything shipped
     /// against it is pinned to today's deployment; this one can be pointed
     /// elsewhere without another App Store release.
-    #if DEBUG
-    static let baseURL = URL(
-        string: "https://storage.wonek.com/cloud-calendars-debug"
-    )!
-    #else
     static let baseURL = URL(string: "https://api.cloud-calendars.com")!
-    #endif
 
     struct AccountIdentity: Codable, Equatable, Identifiable {
         let provider: String

@@ -57,7 +57,7 @@ export class BookingWorkspace {
   link(id: string) {
     const url = new URL('/calendar/bookings/', 'https://www.cloud-calendars.com');
     url.searchParams.set('bookingCalendar', id);
-    url.searchParams.set('bookingServer', this.api.apiBaseURL === 'https://api.cloud-calendars.com' ? 'production' : 'debug');
+    url.searchParams.set('bookingServer', 'production');
     return url;
   }
 }

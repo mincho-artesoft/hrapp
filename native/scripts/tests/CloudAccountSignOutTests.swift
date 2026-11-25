@@ -37,13 +37,17 @@ enum CloudCalendarsAPI {
         // Reproduce the real iPad's persisted state after the visible providers
         // were removed but the server's web email identity remained.
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        let oldDebugFile = root.appendingPathComponent("feed-session-debug.json")
+        try JSONEncoder().encode(session("debug", providers: ["google"], token: "test-debug"))
+            .write(to: oldDebugFile)
         let orphan = session("A", providers: ["email"], token: "orphan")
-        let orphanFile = root.appendingPathComponent("feed-session-debug.json")
+        let orphanFile = root.appendingPathComponent("feed-session.json")
         try JSONEncoder().encode(orphan).write(to: orphanFile)
         ReceivedSharingVisibility.activate(accountID: "A")
         ReceivedSharingVisibility.register(["legacy-received"], kind: "calendar", accountID: "A")
         check(CalendarFeedSession.existing == nil, "Web email alone does not keep the app connected")
         check(!FileManager.default.fileExists(atPath: orphanFile.path), "Orphan persisted session is migrated on launch")
+        check(FileManager.default.fileExists(atPath: oldDebugFile.path), "Production ignores the previous Debug session")
         check(!ReceivedSharingVisibility.isVisible("legacy-received", kind: "calendar"), "Migration hides previously received calendars")
         check(WebStudioAuthenticatorStore.shared.clearCount == 1, "Migration clears the stale authenticator")
         WebStudioAuthenticatorStore.shared.clearCount = 0
@@ -90,7 +94,7 @@ enum CloudCalendarsAPI {
         }
         check(providerDefaults.string(forKey: "test.google.calendar.connection") != nil, "Google connection retained")
         check(providerDefaults.string(forKey: "test.microsoft.calendar.connection") != nil, "Microsoft connection retained")
-        let file = root.appendingPathComponent("feed-session-debug.json")
+        let file = root.appendingPathComponent("feed-session.json")
         check(!FileManager.default.fileExists(atPath: file.path), "Persisted session removed")
         try JSONEncoder().encode(remaining).write(to: file)
         check(CalendarFeedSession.existing == nil, "A stale disk file cannot repopulate a logged-out in-memory session")

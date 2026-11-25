@@ -91,7 +91,7 @@ private struct BookingSlotTarget: Identifiable {
 private func bookingLink(_ id: String) -> URL {
     URL(string: "https://www.cloud-calendars.com/calendar/bookings/")!.appending(queryItems: [
         URLQueryItem(name: "bookingCalendar", value: id),
-        URLQueryItem(name: "bookingServer", value: CloudCalendarsAPI.baseURL.host == "api.cloud-calendars.com" ? "production" : "debug")
+        URLQueryItem(name: "bookingServer", value: "production")
     ])
 }
 
@@ -824,7 +824,6 @@ private extension View {
 
 private struct BookingLookupSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.openURL) private var openURL
     @State private var address = ""
     @State private var offer: BookingOffer?
     @State private var busy = false
@@ -871,13 +870,6 @@ private struct BookingLookupSheet: View {
               let value = url.queryItems?.first(where: { $0.name == "bookingCalendar" })?.value,
               let id = UUID(uuidString: value)?.uuidString.lowercased() else {
             error = NSLocalizedString("Enter a booking calendar link.", comment: ""); return
-        }
-        if (url.queryItems?.first(where: { $0.name == "bookingServer" })?.value == "production") != (CloudCalendarsAPI.baseURL.host == "api.cloud-calendars.com") {
-            if var destination = URLComponents(string: "https://www.cloud-calendars.com/calendar/bookings/") {
-                destination.queryItems = url.queryItems
-                if let link = destination.url { openURL(link) }
-            }
-            return
         }
         load(id: id)
     }

@@ -57,8 +57,7 @@ The deploy script preserves these variables across subsequent Debug deployments:
 - `PUSH_QUEUE_URL`, `APNS_ALLOWED_ENVIRONMENTS=sandbox`
 
 ```sh
-bash deploy.sh debug
-node configure-debug-push.mjs .local-secrets/AuthKey_KEYID.p8 KEYID 8293TNMX6S
+# Historical Debug configuration, retired on 2026-11-25.
 ```
 
 Calling the configuration script without arguments reuses the existing Lambda key.

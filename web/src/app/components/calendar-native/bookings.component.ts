@@ -296,15 +296,9 @@ export class BookingsComponent implements OnInit, OnDestroy {
       const id=url.searchParams.get('bookingCalendar');
       if (!['www.cloud-calendars.com','cloud-calendars.com'].includes(url.hostname) || url.protocol!=='https:' || !id || !bookingID.test(id))
         throw Error(this.locale.text('Enter a booking calendar link.'));
-      if ((url.searchParams.get('bookingServer')==='production') !== (this.store.api.apiBaseURL==='https://api.cloud-calendars.com')) {
-        location.assign(url.origin+'/calendar/bookings/?'+this.storeParams(url,id));return;
-      }
       this.offer.set(await this.store.request<Availability>('/'+id));
       this.show('offer');
     });
-  }
-  private storeParams(url:URL,id:string) {
-    return new URLSearchParams({bookingCalendar:id,bookingServer:url.searchParams.get('bookingServer')==='production'?'production':'debug'}).toString();
   }
   book(slot:BookingSlot) {
     return this.perform(async()=>{

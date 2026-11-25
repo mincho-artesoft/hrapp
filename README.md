@@ -6,7 +6,7 @@ Complete codebase for **Cloud Calendars** (`iOS`, `iPadOS`, `macOS`, `watchOS`, 
 
 - **[`native/`](./native)** — Native Swift / SwiftUI application (`Cloud Calendars for Google, Microsoft and iCloud.xcodeproj`), WidgetKit extensions (`CalendarWidget`), and App Clip (`CalendarAppClip`).
 - **[`web/`](./web)** — Angular web application and marketing/documentation portal (`www.cloud-calendars.com`, `/calendar/`, `/book/`).
-- **[`backend/`](./backend)** — NestJS API. Debug runs on Hetzner at `storage.wonek.com/cloud-calendars-debug`; production remains `api.cloud-calendars.com` on Lambda pending a separately authorized deployment. Calendar data is stored on Hetzner; email delivery remains Amazon SES. Legacy AWS Debug clients remain supported.
+- **[`backend/`](./backend)** — NestJS API. All clients use `api.cloud-calendars.com` on Lambda. Calendar data is stored on Hetzner. The former Debug endpoints support migrated invitation and calendar feed links.
 
 ## Local Symlinks
 
@@ -29,4 +29,4 @@ bash native/scripts/build-simulator-app.sh -derivedDataPath /tmp/hrapp-calendar-
 xcodebuild -project 'native/Cloud Calendars for Google, Microsoft and iCloud.xcodeproj' -scheme Calendar -configuration Debug -destination 'platform=macOS' -derivedDataPath /tmp/hrapp-mac-build -allowProvisioningUpdates CODE_SIGN_STYLE=Automatic CODE_SIGN_IDENTITY='Apple Development' DEVELOPMENT_TEAM=8293TNMX6S
 ```
 
-The device-calendar web replica requires the backend `/ios/calendars/sync` endpoint. Debug native and development web builds use the Debug API; production deployment is separate. EventKit sync covers the previous year and next two years, retains records outside that window, and keeps subscribed or attendee-managed events read-only on the web.
+The device-calendar web replica requires the backend `/ios/calendars/sync` endpoint. Development and release builds use the same Production accounts and calendars. EventKit sync covers the previous year and next two years, retains records outside that window, and keeps subscribed or attendee-managed events read-only on the web.

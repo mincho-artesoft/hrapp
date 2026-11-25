@@ -1,6 +1,14 @@
 # Cloud Calendars storage and deployment
 
-## Debug API migration, 2026-11-16
+## Production cutover, 2026-11-25
+
+The Mac, iPhone, iPad and browser clients use `https://api.cloud-calendars.com` for development and release builds. Account data is in `cal.cloud-calendars.com`. Users sign in to Production when upgrading an installation that only had a Debug session. The old HTTP endpoints forward public invitation and scoped feed links to Production.
+
+The two merged owners use their existing Production subscription URLs. Existing event-specific subscriptions retain their individual permissions. The six private demo copies belong to the requesting account. All seven cancelled demo events remain in its private history.
+
+The dedicated Hetzner calendar container was stopped with its restart policy disabled. The former AWS Debug Lambda has reserved concurrency zero. The storage service and unrelated workloads continue to run. A private, integrity-checked snapshot of both namespaces is retained in the server backup directory `cloud-calendars-cutover-20261125T143316Z`. Production Lambda version 7 retains the previous route contract.
+
+## Historical Debug deployment, 2026-11-16
 
 The current Debug native app and development web app use
 `https://storage.wonek.com/cloud-calendars-debug`. NestJS runs as the isolated
@@ -42,7 +50,7 @@ its name as the logical namespace. The service keeps each namespace in its own
 directory under `/srv/calendar-storage/` on `punch-eu`, with transactional object
 versions and metadata. No calendar S3 bucket is created during deployment.
 
-## Deploy from this repository only
+## Historical deployment commands
 
 ```sh
 npm run build

@@ -1,6 +1,6 @@
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
-import { BookingWorkspace, bookingID } from '../../core/booking-workspace';
+import { BookingWorkspace } from '../../core/booking-workspace';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
 import { calendarDateFormatter, calendarHourCycle, calendarWeekStart } from "../../core/calendar-format-preferences";
@@ -61,8 +61,6 @@ import {
   localePath,
 } from "../../core/locales";
 import {
-  CALENDAR_API_BASE,
-  CALENDAR_DEBUG_API,
   CalendarPlatformApiService,
   ExternalBusyState,
   WebCalendarEvent,
@@ -185,20 +183,6 @@ const HOUR_PX = 50;
 @Component({
   selector: "app-web-calendar-page",
   providers: [
-    { provide: CALENDAR_API_BASE, useFactory: () => {
-      const route = inject(ActivatedRoute).snapshot;
-      if (route.fragment?.startsWith('invite=')) {
-        // Existing Debug invitation links omit the server parameter.
-        return route.queryParamMap.get('invitationServer') === 'production'
-          ? 'https://api.cloud-calendars.com' : CALENDAR_DEBUG_API;
-      }
-      if (bookingID.test(route.queryParamMap.get('bookingCalendar') ?? '')) {
-        const server = route.queryParamMap.get('bookingServer');
-        if (server === 'production') return 'https://api.cloud-calendars.com';
-        if (server === 'debug') return CALENDAR_DEBUG_API;
-      }
-      return inject(CALENDAR_API_BASE, { skipSelf: true });
-    } },
     BookingWorkspace, CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,

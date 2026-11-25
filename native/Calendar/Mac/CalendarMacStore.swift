@@ -50,11 +50,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
     var signedIn: Bool { cloudSession != nil }
     var writable: [MacCalendarItem] { calendars.filter(\.writable) }
     static let endpoint = CloudCalendarsAPI.baseURL
-    #if DEBUG
-    private static let accountStorageHost = "63yo3ore3c.execute-api.us-east-1.amazonaws.com"
-    #else
     private static let accountStorageHost = "api.cloud-calendars.com"
-    #endif
     init(directory storageDirectory: URL? = nil, loadsAccount: Bool = true) {
         allowsAccountConnections = loadsAccount
         let directory = storageDirectory ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("CloudCalendarsMac")
