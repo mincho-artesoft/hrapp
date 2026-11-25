@@ -634,6 +634,7 @@ export class CalendarPlatformApiService {
         const codeClient = window.google.accounts.oauth2.initCodeClient({
           client_id: prov.googleWebClientId,
           scope: scopes,
+          include_granted_scopes: false,
           ux_mode: 'popup',
           access_type: 'offline',
           prompt: 'consent',
@@ -683,6 +684,7 @@ export class CalendarPlatformApiService {
       const client = window.google.accounts.oauth2.initTokenClient({
         client_id: prov.googleWebClientId,
         scope: scopes,
+        include_granted_scopes: false,
         callback: (resp: any) => {
           if (resp?.error) {
             reject(new Error(resp.error_description || resp.error || 'Google authorization cancelled.'));
