@@ -198,14 +198,11 @@ private struct SignedInBookingsContent: View {
                 ForEach(store.data.calendars) { calendar in
                     CalendarSharingSection(rows: true) {
                         HStack(spacing: 12) {
-                            Button { editing = calendar } label: {
-                                VStack(alignment: .leading) {
-                                    Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
-                                    Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .contentShape(Rectangle())
-                            }.buttonStyle(.plain)
+                            VStack(alignment: .leading) {
+                                Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
+                                Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             HStack(spacing: 0) {
                                 Button { editing = calendar } label: {
                                     Label("Edit Calendar", systemImage: "pencil")

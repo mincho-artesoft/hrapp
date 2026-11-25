@@ -29,10 +29,10 @@
       @if (matches(c.title, purpose(c))) {
         <article class="native-form-group" [attr.aria-label]="c.title" [style.--booking-color]="c.color">
           <div class="native-form-row calendar-summary">
-            <button class="name details" [attr.aria-label]="c.title" (click)="edit(c)">
+            <div class="name details">
               <strong class="event-color">{{ c.title }}</strong>
               <small>{{ purpose(c) }}</small>
-            </button>
+            </div>
             <div class="calendar-actions">
               <button type="button" [attr.aria-label]="'Edit Calendar' | nativeText" [title]="'Edit Calendar' | nativeText" (click)="edit(c)">
                 <cc-symbol [pointSize]="17" name="pencil" />
