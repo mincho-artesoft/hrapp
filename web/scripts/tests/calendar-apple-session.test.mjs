@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const origin = 'https://www.cloud-calendars.com';
-const debug = 'https://storage.wonek.com/cloud-calendars-debug';
+const apiOrigin = 'https://api.cloud-calendars.com';
 const dist = new URL('../../dist/arte-calendar/browser/', import.meta.url);
 
 async function serveSite(route, url) {
@@ -17,7 +17,7 @@ async function serveSite(route, url) {
   return route.fulfill({path: file});
 }
 
-test('Apple sign-in opens the existing Debug workspace even when profile loading needs a retry', async () => {
+test('Apple sign-in opens the existing calendar workspace even when profile loading needs a retry', async () => {
   const browser = await chromium.launch(process.env.CHROME_CHANNEL ? {channel: process.env.CHROME_CHANNEL} : {});
   try {
     const context = await browser.newContext({viewport: {width: 1200, height: 850}});
@@ -28,29 +28,32 @@ test('Apple sign-in opens the existing Debug workspace even when profile loading
       if (url.origin === origin) {
         return serveSite(route, url);
       }
-      if (!request.url().startsWith(debug + '/')) return route.abort();
-      const path = url.pathname.slice(new URL(debug).pathname.length);
+      if (url.origin !== apiOrigin) return route.abort();
+      const path = url.pathname;
       if (path === '/auth/providers') return route.fulfill({json: {appleWebClientId: 'calendar-test-client'}});
+      if (path === '/identities/apple' && request.method() === 'DELETE') {
+        return route.fulfill({status: 409, json: {error: 'Keep the test account connected'}});
+      }
       if (path === '/auth/web-session') {
         signOutRequests++;
         assert.equal(request.method(), 'DELETE');
-        assert.equal(request.headers().authorization, 'Bearer test-debug-session');
+        assert.equal(request.headers().authorization, 'Bearer test-apple-session');
         return route.fulfill({json: {signedOut: true}});
       }
       if (path === '/resolve') {
         assert.equal(request.postDataJSON().provider, 'apple');
         assert.equal(request.headers().authorization, undefined);
-        return route.fulfill({json: {deviceToken: 'test-debug-session', calendarId: 'account-calendar'}});
+        return route.fulfill({json: {deviceToken: 'test-apple-session', calendarId: 'account-calendar'}});
       }
       if (path === '/me/profile') {
-        assert.equal(request.headers().authorization, 'Bearer test-debug-session');
+        assert.equal(request.headers().authorization, 'Bearer test-apple-session');
         if (++profileRequests === 1) return route.fulfill({status: 503, json: {error: 'Temporary error'}});
         return route.fulfill({json: {principalId: 'existing-account', calendarId: 'account-calendar',
           email: 'calendar@example.invalid', verifiedEmails: ['calendar@example.invalid'], identities: [{provider:'apple'}]}});
       }
       if (path === '/web-calendar/state') {
         calendarRequests++;
-        assert.equal(request.headers().authorization, 'Bearer test-debug-session');
+        assert.equal(request.headers().authorization, 'Bearer test-apple-session');
         const start = new Date(Date.now() + 3600000), end = new Date(+start + 3600000);
         return route.fulfill({json: {calendar: {id: 'account-calendar'}, calendars: [
           {id: 'existing-local', title: 'Local calendar', source: 'Local Calendars', accountLocal:true, allowsChanges: true}],
@@ -81,7 +84,9 @@ test('Apple sign-in opens the existing Debug workspace even when profile loading
     const dialog = page.getByRole('dialog', {name: 'Cloud Calendars account', exact: true});
     await account.click();
     await dialog.getByText('Connected', {exact: true}).waitFor();
-    assert.equal(await dialog.getByRole('button', {name: 'Connect', exact: true}).count(), 2);
+    for (const name of ['Google Connect', 'Microsoft Connect']) {
+      await dialog.getByRole('button', {name, exact: true}).waitFor();
+    }
     await page.keyboard.press('Escape');
     await dialog.waitFor({state: 'hidden'});
     assert.equal(await account.evaluate(el => el === document.activeElement), true);
@@ -95,6 +100,15 @@ test('Apple sign-in opens the existing Debug workspace even when profile loading
     for (const width of [1440, 768, 375, 320]) {
       await page.setViewportSize({width, height: 850});
       await account.click();
+      const google = dialog.getByRole('button', {name: 'Google Connect', exact: true});
+      const unlink = dialog.getByRole('button', {name: 'Sign Out', exact: true});
+      const row = await unlink.boundingBox();
+      const connect = await google.boundingBox();
+      assert.ok(row && connect && Math.abs(connect.width - row.width) < 1);
+      await google.click({position: {x: 4, y: connect.height / 2}});
+      await dialog.getByRole('alert').filter({hasText: 'Google Web OAuth Client ID'}).waitFor();
+      await unlink.click({position: {x: row.width - 4, y: row.height / 2}});
+      await dialog.getByRole('alert').filter({hasText: 'Keep the test account connected'}).waitFor();
       await dialog.getByRole('button', {name: 'Close', exact: true}).click();
       await signOut.click({trial: true});
       const accountBounds = await account.boundingBox();
@@ -116,7 +130,7 @@ test('Apple sign-in opens the existing Debug workspace even when profile loading
     assert.equal(await signOut.count(), 0);
     assert.equal(await account.count(), 0);
     assert.equal(await page.locator('.cal-shell').count(), 0);
-    assert.equal(await page.evaluate(() => localStorage.getItem('cc_web_session_v1_debug')), null);
+    assert.equal(await page.evaluate(() => localStorage.getItem('cc_web_session_v1')), null);
     await page.reload({waitUntil: 'domcontentloaded'});
     await signIn.waitFor();
     assert.equal(await signOut.count(), 0);
@@ -137,8 +151,8 @@ test('calendar controls stay aligned, and only web provider connections appear i
     await page.route('**/*', async route => {
       const url = new URL(route.request().url());
       if (url.origin === origin) return serveSite(route, url);
-      if (!url.href.startsWith(debug + '/')) return route.abort();
-      const path = url.pathname.slice(new URL(debug).pathname.length);
+      if (url.origin !== apiOrigin) return route.abort();
+      const path = url.pathname;
       if (path === '/me/profile') return route.fulfill({json: {principalId: 'test', identities: [{provider:'apple'}],
         verifiedEmails: ['calendar@example.invalid'], connectedProviders: statuses()}});
       if (path === '/web-calendar/state') return route.fulfill({json: {calendar: {}, calendars: [
@@ -163,7 +177,7 @@ test('calendar controls stay aligned, and only web provider connections appear i
       return route.fulfill({json: {}});
     });
     await page.addInitScript(() => {
-      localStorage.setItem('cc_web_session_v1_debug', 'isolated-test-session');
+      localStorage.setItem('cc_web_session_v1', 'isolated-test-session');
       localStorage.setItem('cc.mac.view', 'day');
       localStorage.setItem('cc.mac.preferences', JSON.stringify({time:'12'}));
     });

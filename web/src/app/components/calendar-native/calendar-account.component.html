@@ -24,36 +24,29 @@
       </div>
     </div>
     @for (provider of providers; track provider) {
-      <div class="account-provider">
+      @let linked = identity(provider);
+      <ng-template #providerDetails>
         @if (provider === "apple") {
           <cc-symbol name="apple.logo" />
         } @else {
           <img [src]="'/icons/' + provider + '_icon.png'" alt="" />
         }
-        <span>
+        <span class="provider-name">
           <strong>{{ provider | titlecase }}</strong>
-          @if (identity(provider)?.email; as email) {
+          @if (linked?.email; as email) {
             <small>{{ email }}</small>
           }
         </span>
-        @if (identity(provider)) {
+      </ng-template>
+      @if (linked) {
+        <div class="account-provider">
+          <ng-container [ngTemplateOutlet]="providerDetails" />
           <strong class="connected">
             <cc-symbol name="checkmark.circle.fill" />{{
               "Connected" | nativeText
             }}
           </strong>
-        } @else {
-          <button
-            type="button"
-            class="text-action"
-            [disabled]="busy()"
-            (click)="connectIdentity(provider)"
-          >
-            {{ "Connect" | nativeText }}
-          </button>
-        }
-      </div>
-      @if (identity(provider)) {
+        </div>
         <button
           type="button"
           class="unlink"
@@ -63,6 +56,12 @@
           <cc-symbol name="rectangle.portrait.and.arrow.right" />{{
             "Sign Out" | nativeText
           }}
+        </button>
+      } @else {
+        <button type="button" class="account-provider"
+          [disabled]="busy()" (click)="connectIdentity(provider)">
+          <ng-container [ngTemplateOutlet]="providerDetails" />
+          <span class="text-action">{{ "Connect" | nativeText }}</span>
         </button>
       }
     }

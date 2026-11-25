@@ -1,4 +1,4 @@
-import { TitleCasePipe } from "@angular/common";
+import { NgTemplateOutlet, TitleCasePipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from "@angular/core";
 import { CalendarNativeTextPipe } from "../../core/calendar-localization";
 import { CalendarNativeService } from "../../core/calendar-native.service";
@@ -11,7 +11,7 @@ type Provider = "apple" | "google" | "microsoft";
 @Component({
   selector: "cc-calendar-account",
   standalone: true,
-  imports: [CalendarNativeTextPipe, CalendarSymbolComponent, CalendarProgressComponent, TitleCasePipe],
+  imports: [CalendarNativeTextPipe, CalendarSymbolComponent, CalendarProgressComponent, NgTemplateOutlet, TitleCasePipe],
   templateUrl: "./calendar-account.component.html",
   styleUrl: "./calendar-account.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

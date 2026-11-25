@@ -1063,6 +1063,7 @@ struct CloudAccountSignInContent: View {
                     .font(CalendarTypography.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
+                    .contentShape(.interaction, RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
             .buttonStyle(.plain)
             .foregroundStyle(.red)
@@ -1117,6 +1118,7 @@ struct CloudAccountSignInContent: View {
         .overlay {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(Color.primary.opacity(0.06), lineWidth: 1)
+                .allowsHitTesting(false)
         }
     }
 }

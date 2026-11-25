@@ -6,6 +6,7 @@ struct HighlightOnPressButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(tint)                        // текст в избрания цвят
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 6)
             .padding(.horizontal, 12)
             .background(
