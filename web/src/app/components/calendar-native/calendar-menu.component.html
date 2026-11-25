@@ -880,38 +880,8 @@
             </div>
           }
           @if (calendarRemoval; as removal) {
-            @if (confirmDelete) {
-              <div class="form-group confirmation">
-                <p>
-                  {{ removal.prompt | nativeText }}
-                </p>
-                <div class="equal-actions">
-                  <button
-                    type="button"
-                    class="action tinted"
-                    (click)="confirmDelete = false"
-                  >
-                    {{ "Cancel" | nativeText }}
-                  </button>
-                  <button
-                    type="button"
-                    class="action danger"
-                    [disabled]="busy()"
-                    (click)="deleteCalendar()"
-                  >
-                    {{ removal.confirm | nativeText }}
-                  </button>
-                </div>
-              </div>
-            } @else {
-              <button
-                type="button"
-                class="form-row form-group remove-calendar"
-                (click)="confirmDelete = true"
-              >
-                {{ removal.label | nativeText }}
-              </button>
-            }
+            <cc-calendar-removal [label]="removal.label" [prompt]="removal.prompt" [confirmLabel]="removal.confirm"
+              [busy]="busy()" [(confirming)]="confirmDelete" (confirmed)="deleteCalendar()" />
           }
         }
         @if (accessLoading() && (panel() === "provider-sharing" || panel() === "calendar-sharing")) {

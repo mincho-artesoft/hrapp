@@ -1,3 +1,4 @@
+import { CalendarRemovalComponent } from './calendar-removal.component';
 import {CalendarColorOptionsComponent, calendarColorName} from './calendar-color-options.component';
 import { calendarDateChoices, calendarDateFormatter, calendarHourCycle, systemWeekStart } from "../../core/calendar-format-preferences";
 import {CalendarSearchFieldComponent} from './calendar-search-field.component';
@@ -76,7 +77,7 @@ interface AccessSnapshot {
     CommonModule,
     FormsModule,
     CalendarSymbolComponent,
-    CalendarProgressComponent,
+    CalendarProgressComponent, CalendarRemovalComponent,
     CalendarChoiceComponent, CalendarSectionPickerComponent, CalendarColorOptionsComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

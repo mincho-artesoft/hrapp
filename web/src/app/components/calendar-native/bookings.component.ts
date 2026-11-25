@@ -1,3 +1,4 @@
+import { CalendarRemovalComponent } from './calendar-removal.component';
 import {NgTemplateOutlet} from '@angular/common';
 import {CalendarProgressComponent} from './calendar-progress.component';
 import {CalendarColorOptionsComponent} from './calendar-color-options.component';
@@ -35,7 +36,7 @@ function inputSlot(s:BookingSlot):InputSlot {
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarChoiceComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarChoiceComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
@@ -56,6 +57,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   readonly status = {pending:'Pending', accepted:'Accepted', declined:'Declined', past:'Past'};
   statusLabel(appointment: Appointment) { return this.status[appointment.status]; }
 
+  confirmingRemoval = false;
   editing: BookingCalendar|null = null;
   draftID = '';
   title = '';
@@ -153,6 +155,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if (!this.dialog().nativeElement.open) this.dialog().nativeElement.showModal();
   }
   edit(calendar:BookingCalendar|null) {
+    this.confirmingRemoval = false;
     this.type=calendar ? (calendar.appointmentType || 'General appointment') : '';
     this.customType=calendar?.customType || '';this.choosingType=false;
     this.editing=calendar;this.draftID=calendar?.id ?? crypto.randomUUID();
@@ -267,7 +270,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   remove() {
     const calendar=this.editing;
-    if (!calendar || !confirm(this.locale.text('Delete booking calendar?'))) return;
+    if (!calendar || !this.confirmingRemoval || this.busy()) return;
     return this.perform(async()=>{
       await this.store.request('/'+calendar.id+'?revision='+calendar.revision,'DELETE');
       this.dialog().nativeElement.close();await this.store.refresh();

@@ -62,15 +62,7 @@ struct EditCalendarView: View {
                 // calendar. Delegated Owners can edit and manage access, but
                 // deliberately never receive a destructive calendar action.
                 if sharedContext?.isOriginalCreator != false {
-                    Section {
-                        Button(role: .destructive) {
-                            deleteCalendar()
-                        } label: {
-                            // Вместо "Delete Calendar" ползвате локализиран ключ
-                            Text(LocalizedStringKey("Delete Calendar"))
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        }
-                    }
+                    CalendarRemovalSection { deleteCalendar() }
                 }
             }
             // Вместо "Edit Calendar" ползвате локализиран ключ

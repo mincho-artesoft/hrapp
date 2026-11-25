@@ -142,6 +142,31 @@ struct CalendarSharingAccessPicker: View {
     }
 }
 
+struct CalendarRemovalSection: View {
+    var title: LocalizedStringKey = "Delete Calendar"
+    var removing = false
+    var errorMessage: String?
+    let remove: () -> Void
+
+    var body: some View {
+        CalendarSharingSection(rows: true) {
+            Button(role: .destructive, action: remove) {
+                Text(title)
+                    .foregroundStyle(.red)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
+            }
+            .calendarSharingRowAction()
+            .disabled(removing)
+            if let errorMessage {
+                Label(errorMessage, systemImage: "exclamationmark.circle.fill")
+                    .font(CalendarTypography.footnote).foregroundStyle(.red)
+            }
+        }
+    }
+}
+
 /// The calendar editor rows are shared by iOS and Mac, including received roles.
 struct CalendarEditorSections<ColorDestination: View>: View {
     @Binding var title: String
@@ -179,17 +204,7 @@ struct CalendarEditorSections<ColorDestination: View>: View {
             }
         }
         if let removalTitle {
-            CalendarSharingSection(rows: true) {
-                Button(role: .destructive, action: remove) {
-                    Text(removalTitle).foregroundStyle(.red).frame(maxWidth: .infinity)
-                }
-                .calendarSharingRowAction()
-                .disabled(removing)
-                if let errorMessage {
-                    Label(errorMessage, systemImage: "exclamationmark.circle.fill")
-                        .font(CalendarTypography.footnote).foregroundStyle(.red)
-                }
-            }
+            CalendarRemovalSection(title: removalTitle, removing: removing, errorMessage: errorMessage, remove: remove)
         }
     }
     private var colorRow: some View {

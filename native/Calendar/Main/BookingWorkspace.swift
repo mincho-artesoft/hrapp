@@ -544,8 +544,9 @@ private struct BookingCalendarEditor: View {
         }
         .calendarSharingSheetSize()
         .disabled(busy).interactiveDismissDisabled(busy)
-        .confirmationDialog("Delete booking calendar?", isPresented: $confirming) {
+        .confirmationDialog("Delete booking calendar?", isPresented: $confirming, titleVisibility: .visible) {
             Button("Delete", role: .destructive) { persist(true) }
+            Button("Cancel", role: .cancel) {}
         }
     }
     @ViewBuilder
@@ -616,7 +617,7 @@ private struct BookingCalendarEditor: View {
                 }.buttonStyle(.plain)
             }
             if calendar.revision > 0 {
-                CalendarSharingSection(rows: true) { Button("Delete booking calendar", role: .destructive) { confirming = true }.buttonStyle(.borderless) }
+                CalendarRemovalSection { confirming = true }
             }
             if let error { CalendarSharingSection { Text(verbatim: error).foregroundStyle(.red) } }
         }

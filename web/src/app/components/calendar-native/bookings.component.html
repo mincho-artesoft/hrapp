@@ -135,7 +135,8 @@
         </button>
       </div>
       @if(editing) {
-        <div class="native-form-group"><button class="native-form-row danger" [disabled]="busy()" (click)="remove()">{{ 'Delete booking calendar' | nativeText }}</button></div>
+        <cc-calendar-removal prompt="Delete booking calendar?" [busy]="busy()"
+          [(confirming)]="confirmingRemoval" (confirmed)="remove()" />
       }
       }
     }
