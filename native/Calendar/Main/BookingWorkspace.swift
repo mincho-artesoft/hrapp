@@ -175,6 +175,7 @@ private struct SignedInBookingsContent: View {
     let addAction: Int
     let session: CloudCalendarsAPI.Session
     @ObservedObject private var store = BookingStore.shared
+    @State private var timeline: HostedBookingCalendar?
     @State private var editing: HostedBookingCalendar?
     @State private var slotTarget: BookingSlotTarget?
     @State private var lookup = false
@@ -197,12 +198,17 @@ private struct SignedInBookingsContent: View {
                 if store.data.calendars.isEmpty { Text("No booking calendars yet.").foregroundStyle(.secondary) }
                 ForEach(store.data.calendars) { calendar in
                     CalendarSharingSection(rows: true) {
-                        HStack(spacing: 12) {
-                            VStack(alignment: .leading) {
-                                Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
-                                Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
+                        HStack(spacing: 0) {
+                            Button { timeline = calendar } label: {
+                                VStack(alignment: .leading) {
+                                    Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
+                                    Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
+                                }
+                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                .contentShape(Rectangle())
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .buttonStyle(.plain)
+                            .accessibilityHint(Text("Multi-day calendar view"))
                             HStack(spacing: 0) {
                                 Button { editing = calendar } label: {
                                     Label("Edit Calendar", systemImage: "pencil")
@@ -265,6 +271,16 @@ private struct SignedInBookingsContent: View {
             } while !Task.isCancelled
         }
         .onChange(of: addAction) { add() }
+        .onChange(of: store.data.calendars.map(\.id)) { _, ids in
+            if let timeline, !ids.contains(timeline.id) { self.timeline = nil }
+        }
+        .sheet(item: $timeline) { selected in
+            BookingSheet(title: "Multi-day calendar view", leading: "Close", back: { timeline = nil }) {
+                if let current = store.data.calendars.first(where: { $0.id == selected.id }) {
+                    BookingCalendarTimeline(schedule: current, color: bookingColor(current.color))
+                }
+            }
+        }
         .sheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
         .sheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
         .sheet(isPresented: $lookup) { BookingLookupSheet() }

@@ -40,6 +40,7 @@ export function wallDate(date: Date, timeZone: string): Date {
       n("hour"),
       n("minute"),
       n("second"),
+      date.getUTCMilliseconds(),
     ),
   );
 }

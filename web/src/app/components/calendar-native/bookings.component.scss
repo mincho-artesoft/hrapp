@@ -72,8 +72,8 @@ strong { font-size: 17px; font-weight: 600; }
   border-radius: 3px;
   background: var(--booking-color, #0a84ff);
 }
-.native-form-row.calendar-summary { justify-content: space-between; }
-.name { flex: 1; }
+.native-form-row.calendar-summary { justify-content: space-between; gap: 0; padding-block: 0; }
+.name { flex: 1; align-self: stretch; justify-content: center; min-height: 64px; padding-block: 10px; }
 .calendar-actions { display: flex; flex: none; }
 .calendar-actions button, .clear-location { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
 .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -116,6 +116,10 @@ dialog::backdrop { background: #0006; }
   padding: var(--form-inset);
 }
 .sheet-body fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.sheet-body.timeline-body { display: flex; padding: 0; overflow: hidden; }
+@media (min-width: 760px) {
+  :host dialog.timeline-sheet { width: min(960px, calc(100% - 40px)); }
+}
 .sheet-body .group-heading {
   color: var(--cal-muted);
   font-size: 13px;

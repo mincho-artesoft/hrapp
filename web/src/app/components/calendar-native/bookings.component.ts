@@ -1,4 +1,5 @@
 import { CalendarRemovalComponent } from './calendar-removal.component';
+import { BookingCalendarTimelineComponent } from './booking-calendar-timeline.component';
 import {NgTemplateOutlet} from '@angular/common';
 import {CalendarProgressComponent} from './calendar-progress.component';
 import {CalendarColorOptionsComponent} from './calendar-color-options.component';
@@ -10,7 +11,7 @@ import { CalendarRepeatComponent } from './calendar-repeat.component';
 import { CalendarChoiceComponent } from './calendar-choice.component';
 import { CalendarRepeatRule } from '../../core/calendar-platform-api.service';
 import { instant, wallDate } from '../../core/calendar-recurrence';
-import { ChangeDetectorRef, Component, computed, ElementRef, inject, input, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
+import { afterRenderEffect, ChangeDetectorRef, Component, computed, ElementRef, inject, input, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalendarNativeTextPipe, CalendarLocalization } from '../../core/calendar-localization';
@@ -18,6 +19,7 @@ import { BookingWorkspace, BookingPurpose, BookingCalendar, BookingSlot, Availab
 
 interface InputSlot extends LocationDraft {id:string; title:string; date:string; start:string; end:string; endDate:string; choice:string; rule?:CalendarRepeatRule; zone:string; original?:BookingSlot}
 const frequencies = ['daily','weekly','monthly','yearly'] as const;
+type BookingPanel = 'edit'|'slot'|'lookup'|'offer'|'share'|'timeline';
 function localTime(date:Date, zone:string) {
   return wallDate(date,zone).toISOString().slice(0,16);
 }
@@ -36,7 +38,7 @@ function inputSlot(s:BookingSlot):InputSlot {
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarChoiceComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, BookingCalendarTimelineComponent, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarChoiceComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
@@ -50,7 +52,9 @@ export class BookingsComponent implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly changeDetector = inject(ChangeDetectorRef);
   readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('sheet');
-  readonly panel = signal<'edit'|'slot'|'lookup'|'offer'|'share'>('lookup');
+  readonly panel = signal<BookingPanel>('lookup');
+  readonly timelineId = signal<string|null>(null);
+  readonly timelineCalendar = computed(() => this.store.data().calendars.find(c => c.id === this.timelineId()));
   readonly message = signal('');
   readonly busy = signal(false);
   readonly offer = signal<Availability|null>(null);
@@ -122,6 +126,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
   private timer?: ReturnType<typeof setInterval>;
   private operation = 0;
 
+  constructor() {
+    afterRenderEffect(() => {
+      if (this.panel() === 'timeline' && this.timelineId() && this.store.loaded() && !this.timelineCalendar()) {
+        this.dialog().nativeElement.close();
+      }
+    });
+  }
+
   ngOnInit() {
     const id = this.route.snapshot.queryParamMap.get('bookingCalendar');
     if (id && bookingID.test(id)) {
@@ -148,7 +160,11 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if (this.mode()==='availability') this.edit(null);
     else {this.address='';this.offer.set(null);this.show('lookup');}
   }
-  show(panel:'edit'|'slot'|'lookup'|'offer'|'share') {
+  openTimeline(calendar: BookingCalendar) {
+    this.timelineId.set(calendar.id);
+    this.show('timeline');
+  }
+  show(panel:BookingPanel) {
     this.locationDraft=undefined;this.customRepeat=false;this.choosingType=false;this.choosingColor=false;this.dateFocus.set(null);
     this.panel.set(panel);this.message.set('');
     this.changeDetector.detectChanges();
@@ -210,6 +226,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if(this.choosingColor) return 'Calendar Color';
     if(this.choosingType) return 'Appointment type';
     switch(this.panel()) {
+      case 'timeline':return 'Multi-day calendar view';
       case 'edit':return 'Booking calendar';
       case 'slot':return this.slot?.original ? 'Available time' : 'Add time slot';
       case 'share':return 'Share';

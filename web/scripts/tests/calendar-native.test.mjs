@@ -70,6 +70,15 @@ test('recurrence keeps event wall time across daylight-saving changes',()=>{
   assert.equal(values.length,5);assert.equal(values[2].start,'2026-03-29T06:00:00.000Z');
   assert.equal(values[2].occurrenceOf,'series');assert.equal(event.start,'2026-03-27T07:00:00Z');
 });
+test('recurring bookings retain the server occurrence ID for fractional-second starts', () => {
+  const start = '2026-10-24T06:00:00.275Z';
+  const next = '2026-10-25T07:00:00.275Z';
+  const slot = {id: 'slot', title: '', start, end: '2026-10-24T07:00:00.275Z',
+    details: {timeZone: 'Europe/Sofia', recurrenceRules: [{frequency: 'daily', occurrenceCount: 2}]}};
+  const occurrences = calendarOccurrences(slot, new Date('2026-10-24'), new Date('2026-10-26'));
+  assert.deepEqual(occurrences.map(o => o.id), ['slot', 'slot@' + Date.parse(next)]);
+  assert.deepEqual(occurrences.map(o => o.start), [start, next]);
+});
 test('monthly recurrence skips dates that do not exist',()=>{
   const event={id:'month',title:'Month end',start:'2026-01-31T10:00:00Z',end:'2026-01-31T11:00:00Z',details:{timeZone:'UTC',recurrenceRules:[{frequency:'monthly',interval:1,occurrenceCount:3}]}};
   const values=calendarOccurrences(event,new Date('2026-01-01'),new Date('2026-07-01'));

@@ -8,6 +8,7 @@
   - Native macOS, the same `Calendar` target and `Deksan.CalendarASD` bundle ID.
 - Build only HRApp from this repository. Do not build, install, launch, or change the Wonek app or its simulators; its repository is a read-only design reference.
 - Preserve device and Mac application data. Use normal launch arguments listed below.
+- Restart Cloud Calendars as needed for these updates without asking for confirmation. If normal quit stalls on Mac, terminate the running Cloud Calendars process and launch the updated copy.
 - Native Mac requires Apple Development signing with its WeatherKit capability; use automatic provisioning, not ad-hoc signing.
 - Update-install the signed Mac build into `/Users/aleksandarsvinarov/Applications/Cloud Calendars.app` and launch that installed copy. Do not launch the build directly from `/tmp`: Launch Services excludes apps in temporary directories from OAuth/deep-link handler resolution. Keep the same bundle ID and container data, and quit the running app before replacing its bundle. Register the installed bundle with `lsregister -f` after updating it.
 - Do not reset permissions in routine cycles. The explicit one-time Mac permission reset requested on 2026-11-16 was completed after verification with `tccutil reset All Deksan.CalendarASD`; the app was left closed. Do not repeat this reset without a new user request.
