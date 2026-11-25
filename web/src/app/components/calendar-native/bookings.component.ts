@@ -8,7 +8,7 @@ import {CalendarDateTimeComponent} from './calendar-date-time.component';
 import {CalendarSymbolComponent} from './calendar-symbol.component';
 import catalog from '../../../../../native/Calendar/BookingTypes.json';
 import { CalendarRepeatComponent } from './calendar-repeat.component';
-import { CalendarChoiceComponent } from './calendar-choice.component';
+import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, eventRepeatChoices } from './calendar-event-editor-fields';
 import { CalendarRepeatRule } from '../../core/calendar-platform-api.service';
 import { instant, wallDate } from '../../core/calendar-recurrence';
 import { afterRenderEffect, ChangeDetectorRef, Component, computed, ElementRef, inject, input, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
@@ -38,7 +38,7 @@ function inputSlot(s:BookingSlot):InputSlot {
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, BookingCalendarTimelineComponent, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarChoiceComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, BookingCalendarTimelineComponent, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
@@ -77,11 +77,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
   color = '#0A84FF';
   typeSearch = '';
   readonly catalog = catalog;
-  readonly repeatOptions = [
-    {value:'none',label:'Never'}, {value:'daily',label:'Every Day'}, {value:'weekly',label:'Every Week'},
-    {value:'fortnightly',label:'Every 2 Weeks'}, {value:'monthly',label:'Every Month'},
-    {value:'yearly',label:'Every Year'}, {value:'custom',label:'Custom…'}
-  ];
   get filteredTypes() {
     const query=this.typeSearch.trim().toLocaleLowerCase();
     if (!query) return this.catalog;
@@ -101,7 +96,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   repeatName(slot:BookingSlot) {
     const choice=repeatChoice(slot.rule && {...slot.rule,frequency:frequencies[slot.rule.frequency]});
-    return this.repeatOptions.find(o=>o.value===choice)?.label;
+    return eventRepeatChoices.find(o=>o.value===choice)?.label;
   }
   selectRepeat(s:InputSlot,value:string) {
     const endDate=s.rule?.endDate;
@@ -180,6 +175,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     this.show('edit');
   }
   openSlot(calendar:BookingCalendar, existing?:BookingSlot) {
+    this.confirmingRemoval = false;
     this.editing=calendar;
     const tomorrow=new Date();
     tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(9,0,0,0);
@@ -270,7 +266,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   saveSlot(remove=false) {
     const calendar=this.editing, s=this.slot;
     if (!calendar || !s || this.locked(s.id)) return;
-    if (remove && !confirm(this.locale.text('Remove time slot?'))) return;
+    if (remove && (!s.original || !this.confirmingRemoval)) return;
     return this.perform(async()=>{
       const slots:unknown[]=calendar.slots.filter(slot=>slot.id!==s.id);
       if (!remove) {

@@ -1,3 +1,4 @@
+import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent } from '../../components/calendar-native/calendar-event-editor-fields';
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
 import { BookingWorkspace } from '../../core/booking-workspace';
@@ -186,7 +187,7 @@ const HOUR_PX = 50;
     BookingWorkspace, CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
-  imports: [CalendarAnchoredMenuDirective,
+  imports: [CalendarAnchoredMenuDirective, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent,
     CalendarSearchFieldComponent,
     CalendarLocationEditorComponent,CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
     CalendarNativeDatePipe,
@@ -432,14 +433,6 @@ export class WebCalendarPageComponent
   readonly calendarChoices = computed(() =>
     this.writableCalendars().map((c) => ({ value: c.id, label: c.title })),
   );
-  readonly repeatChoices = [
-    { value: "none", label: "Never" },
-    { value: "daily", label: "Every Day" },
-    { value: "weekly", label: "Every Week" },
-    { value: "monthly", label: "Every Month" },
-    { value: "yearly", label: "Every Year" },
-    {value:"fortnightly",label:"Every 2 Weeks"},{value:"custom",label:"Custom…"},
-  ];
   readonly travelChoices = [
     { value: "0", label: "None" },
     { value: "300", label: "5 minutes" },

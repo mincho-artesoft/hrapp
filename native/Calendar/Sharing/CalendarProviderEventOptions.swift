@@ -162,8 +162,18 @@ struct CalendarProviderEventFields: View {
 
 struct CalendarEventEditorMenuRow<Options: View>: View {
     let title: LocalizedStringKey
-    let value: String
+    let value: Text
     @ViewBuilder var options: () -> Options
+
+    init(title: LocalizedStringKey, value: String, @ViewBuilder options: @escaping () -> Options) {
+        self.init(title: title, displayValue: Text(verbatim: value), options: options)
+    }
+
+    init(title: LocalizedStringKey, displayValue: Text, @ViewBuilder options: @escaping () -> Options) {
+        self.title = title
+        self.value = displayValue
+        self.options = options
+    }
 
     var body: some View {
         #if os(macOS)
@@ -175,13 +185,13 @@ struct CalendarEventEditorMenuRow<Options: View>: View {
                     .font(CalendarTypography.body).foregroundStyle(.secondary)
             }
             .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize().tint(.secondary)
-            .accessibilityLabel(Text(title)).accessibilityValue(Text(verbatim: value))
+            .accessibilityLabel(Text(title)).accessibilityValue(value)
         }
         #else
         LabeledContent(title) {
-            Menu(content: options) { CalendarEventEditorMenuValue(text: Text(verbatim: value)) }
+            Menu(content: options) { CalendarEventEditorMenuValue(text: value) }
                 .tint(.secondary)
-                .accessibilityLabel(Text(title)).accessibilityValue(Text(verbatim: value))
+                .accessibilityLabel(Text(title)).accessibilityValue(value)
         }
         #endif
     }

@@ -1252,7 +1252,7 @@ struct MacTabletEventEditor: View {
     let target: MacTabletEventEditorTarget
     let onClose: () -> Void
 
-    private enum Page: Hashable { case main, location, recurrence }
+    private enum Page: Hashable { case main, recurrence }
     private enum RepeatChoice: String, CaseIterable {
         case never, daily, weekly, monthly, yearly
         var title: String {
@@ -1310,8 +1310,6 @@ struct MacTabletEventEditor: View {
         get { navigationPath.last ?? .main }
         nonmutating set { navigationPath = newValue == .main ? [] : [newValue] }
     }
-    @State private var locationDraft = ""
-    @State private var videoCallDraft = ""
     @State private var errorMessage: String?
     @State private var showDeleteConfirmation = false
     @State private var showFileImporter = false
@@ -1324,9 +1322,6 @@ struct MacTabletEventEditor: View {
     @State private var initialFingerprint: [String]?
     @State private var replacesAlerts = false
     @State private var replacesRecurrence = false
-    @State private var mapResults: [MKMapItem] = []
-    @State private var isSearchingLocation = false
-    @State private var searchTask: Task<Void, Never>?
 
     init(store: MacTabletCalendarStore, target: MacTabletEventEditorTarget, onClose: @escaping () -> Void) {
         self.store = store
@@ -1383,23 +1378,14 @@ struct MacTabletEventEditor: View {
                   let event = target.event.flatMap(store.local.refreshedEvent) else { return }
             restorePersistedValues(from: event)
         }
-        .onDisappear { searchTask?.cancel() }
         .appSheet(isPresented: $showsChatInvitation) {
             if let event = savedRemoteEvent ?? target.event { HRAppMacEventShareView(store: store, event: event, sharedSource: target.sharedSource) }
         }
         .appSheet(isPresented: $showsLocationSheet) {
-            VStack(spacing: 0) {
-                MacCalendarSheetHeader(title: Text("Location")) {
-                    MacCalendarToolbarIconButton(icon: "xmark", title: "Close", prominentTint: .appBlue) {
-                        commitLocationDraft()
-                    }
-                } trailing: {
-                    EmptyView()
-                }
-                locationForm
+            MacEventLocationEditorSheet(location: $location, structuredLocation: $structuredLocation,
+                                       videoCallURL: $videoCallURL, allowsVideoLink: editorProvider == nil) {
+                showsLocationSheet = false
             }
-            .frame(width: 560, height: 650)
-            .background(CalendarPalette.groupedBackground)
         }
         .fileImporter(isPresented: $showFileImporter, allowedContentTypes: [.data], allowsMultipleSelection: true,
             onCompletion: importFiles)
@@ -1427,7 +1413,6 @@ struct MacTabletEventEditor: View {
             switch destination {
             case .main:
                 if isEditing { editorForm } else { detailForm }
-            case .location: locationForm
             case .recurrence: recurrenceForm
             }
         }
@@ -1480,36 +1465,14 @@ struct MacTabletEventEditor: View {
     private var pageTitle: LocalizedStringKey {
         switch page {
         case .main: target.event == nil ? "New Event" : isEditing ? "Edit Event" : "Event Details"
-        case .location: "Location"
         case .recurrence: "Custom"
         }
     }
 
     private var editorForm: some View {
         MacCalendarForm {
-            MacCalendarFormSection {
-                MacCalendarFormRow { TextField("Title", text: $title).appTextInputAlignment().textFieldStyle(.plain) }
-                MacCalendarFormRow(separator: false) {
-                    HStack {
-                        Button {
-                            locationDraft = location; videoCallDraft = videoCallURL
-                            showsLocationSheet = true; searchLocation(locationDraft)
-                        } label: {
-                            Text(location.isEmpty ? NSLocalizedString(editorProvider == nil ? "Location or Video Call" : "Location", comment: "") : location)
-                                .foregroundStyle(location.isEmpty ? AnyShapeStyle(.tertiary) : AnyShapeStyle(.primary))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .contentShape(Rectangle())
-                        }
-                        .buttonStyle(.plain)
-                        if !location.isEmpty {
-                            Button { location = ""; structuredLocation = nil } label: {
-                                Image(systemName: "xmark.circle.fill").foregroundStyle(.tertiary)
-                            }
-                            .buttonStyle(.plain).help("Clear")
-                        }
-                    }
-                }
-            }
+            CalendarEventTitleLocationSection(title: $title, location: location, allowsVideoLink: editorProvider == nil,
+                editLocation: { showsLocationSheet = true }, clearLocation: { location = ""; structuredLocation = nil })
             MacCalendarFormSection {
                 MacCalendarFormRow {
                     HStack {
@@ -1702,11 +1665,7 @@ struct MacTabletEventEditor: View {
     }
 
     private var deleteSection: some View {
-        Button(role: .destructive) { showDeleteConfirmation = true } label: {
-            Text("Delete Event").frame(maxWidth: .infinity)
-        }
-        .buttonStyle(AppActionButtonStyle())
-        .controlSize(.large)
+        CalendarEventRemovalSection { showDeleteConfirmation = true }
     }
 
     private func dateRow(_ title: LocalizedStringKey, id: String, date: Binding<Date>,
@@ -1791,99 +1750,6 @@ struct MacTabletEventEditor: View {
                 }
             }
             .disabled(target.event != nil && !canEditEvent)
-        }
-    }
-
-    private var locationForm: some View {
-        MacCalendarForm {
-            MacCalendarFormSection {
-                MacCalendarFormRow {
-                    HStack(spacing: 0) {
-                        Text(NSLocalizedString("Location", comment: "") + ": ").foregroundStyle(.secondary)
-                        TextField("", text: $locationDraft).appTextInputAlignment().textFieldStyle(.plain)
-                            .onChange(of: locationDraft) { _, value in
-                                if showsLocationSheet && structuredLocation?.title != value { searchLocation(value) }
-                            }
-                        if !locationDraft.isEmpty {
-                            Button { locationDraft = ""; mapResults = [] } label: {
-                                Image(systemName: "xmark.circle.fill").foregroundStyle(.tertiary)
-                            }.buttonStyle(.plain)
-                        }
-                    }
-                }
-                if editorProvider == nil { MacCalendarFormRow(separator: false) {
-                    HStack(spacing: 0) {
-                        Text(NSLocalizedString("Video Call", comment: "") + ": ").foregroundStyle(.secondary)
-                        TextField("", text: $videoCallDraft).appTextInputAlignment().textFieldStyle(.plain)
-                    }
-                } }
-            }
-            if !locationDraft.isEmpty {
-                MacCalendarFormSection {
-                    MacCalendarFormRow(separator: false) {
-                        Button("“" + locationDraft + "”") {
-                            commitLocationDraft()
-                        }.buttonStyle(.plain)
-                    }
-                }
-            }
-            if isSearchingLocation { CalendarProgressView() }
-            if !mapResults.isEmpty {
-                MacCalendarFormSection(title: "Map Locations") {
-                    ForEach(Array(mapResults.enumerated()), id: \.offset) { index, item in
-                        MacCalendarFormRow(separator: index != mapResults.count - 1) {
-                            Button {
-                                location = item.name ?? locationDraft
-                                videoCallURL = videoCallDraft.trimmingCharacters(in: .whitespacesAndNewlines)
-                                let value = EKStructuredLocation(title: location)
-                                value.geoLocation = item.placemark.location
-                                structuredLocation = value
-                                searchTask?.cancel(); mapResults = []; showsLocationSheet = false
-                            } label: {
-                                HStack(spacing: 12) {
-                                    Image(systemName: "mappin.and.ellipse").foregroundStyle(.appRed)
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(item.name ?? "")
-                                        Text(item.placemark.title ?? "").font(CalendarTypography.footnote).foregroundStyle(.secondary)
-                                    }
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, 8)
-                                .contentShape(Rectangle())
-                            }.buttonStyle(.plain)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private func commitLocationDraft() {
-        let trimmed = locationDraft.trimmingCharacters(in: .whitespacesAndNewlines)
-        if trimmed != location {
-            location = trimmed
-            structuredLocation = trimmed.isEmpty ? nil : EKStructuredLocation(title: trimmed)
-        }
-        videoCallURL = videoCallDraft.trimmingCharacters(in: .whitespacesAndNewlines)
-        searchTask?.cancel(); mapResults = []; showsLocationSheet = false
-    }
-
-    private func searchLocation(_ query: String) {
-        searchTask?.cancel()
-        guard !query.trimmingCharacters(in: .whitespaces).isEmpty else { mapResults = []; return }
-        searchTask = Task { @MainActor in
-            do {
-                try await Task.sleep(for: .milliseconds(300))
-                isSearchingLocation = true
-                defer { isSearchingLocation = false }
-                let request = MKLocalSearch.Request()
-                request.naturalLanguageQuery = query
-                let response = try await MKLocalSearch(request: request).start()
-                guard !Task.isCancelled else { return }
-                mapResults = Array(response.mapItems.prefix(6))
-            } catch {
-                if !Task.isCancelled { mapResults = [] }
-            }
         }
     }
 

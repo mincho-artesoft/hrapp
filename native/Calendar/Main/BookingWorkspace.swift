@@ -346,8 +346,8 @@ private struct BookingTypeGroup: Decodable {
 }
 
 private enum BookingRepeat: String, CaseIterable {
-    case never = "Never", daily = "Every Day", weekly = "Every Week", fortnightly = "Every 2 Weeks"
-    case monthly = "Every Month", yearly = "Every Year", custom = "Custom…"
+    case never = "Never", daily = "Every Day", weekly = "Every Week", monthly = "Every Month"
+    case yearly = "Every Year", fortnightly = "Every 2 Weeks", custom = "Custom…"
 
     init(_ rule: SharedEventRecurrenceRule?) {
         guard let rule else { self = .never; return }
@@ -437,6 +437,7 @@ private struct BookingTimeDraft: Identifiable {
             interval = value == .fortnightly ? 2 : 1
             pattern = .init(rule: nil, start: start, calendar: calendar)
         }
+        if value == .never { until = nil; count = nil }
         choice = value
     }
     var payload: [String: any Sendable] {
@@ -474,9 +475,9 @@ private struct BookingSheet<Content: View>: View {
         VStack(spacing: 0) {
             #if os(macOS)
             MacCalendarSheetHeader(title: Text(title)) {
-                AppToolbarTextButton(leading, action: back)
+                MacCalendarToolbarIconButton(icon: leading == "Back" ? "chevron.backward" : "xmark", title: leading, action: back)
             } trailing: {
-                if let save { AppToolbarTextButton("Save", action: save).disabled(!canSave) }
+                if let save { MacCalendarToolbarIconButton(icon: "checkmark", title: "Save", action: save).disabled(!canSave) }
             }
             #endif
             content()
@@ -666,30 +667,6 @@ private struct BookingCalendarEditor: View {
     }
 }
 
-private struct BookingLocationRow: View {
-    @Binding var location: String
-    @Binding var point: SharedEventLocation?
-    @State private var choosing = false
-    @StateObject private var search = EventLocationSearchModel()
-    var body: some View {
-        HStack {
-            Button { choosing = true } label: {
-                Text(verbatim: location.isEmpty ? NSLocalizedString("Location", comment: "") : location)
-                    .foregroundStyle(location.isEmpty ? AnyShapeStyle(.secondary) : AnyShapeStyle(.primary))
-                    .frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
-            }.buttonStyle(.plain).accessibilityLabel("Location").accessibilityValue(location)
-            if !location.isEmpty {
-                Button { location = ""; point = nil } label: { Image(systemName: "xmark.circle.fill").foregroundStyle(.tertiary) }
-                    .buttonStyle(.plain).accessibilityLabel("Clear location")
-            }
-        }
-        .appSheet(isPresented: $choosing) {
-            EventLocationEditorSheet(location: $location, structuredLocation: $point, videoCallURL: .constant(""),
-                                     allowsVideoLink: false, searchModel: search)
-        }
-    }
-}
-
 // Use the event editor's platform rows so date chips, separators and menus have
 // the same height and alignment as Starts, Ends and Repeat on a regular event.
 private struct BookingEventSection<Content: View>: View {
@@ -712,6 +689,10 @@ private struct BookingTimeEditor: View {
     let original: BookingInterval?
     @Environment(\.dismiss) private var dismiss
     @State private var slot: BookingTimeDraft
+    @State private var choosingLocation = false
+    #if os(iOS)
+    @StateObject private var locationSearch = EventLocationSearchModel()
+    #endif
     @State private var customRepeat = false
     @State private var expanded: CalendarDatePickerFocus?
     @State private var busy = false
@@ -742,16 +723,15 @@ private struct BookingTimeEditor: View {
             } else { form }
         }
         .disabled(busy).interactiveDismissDisabled(busy)
-        .confirmationDialog("Remove time slot?", isPresented: $confirmRemove) {
-            Button("Remove",role: .destructive) { persist(remove: true) }
+        .confirmationDialog("Remove time slot?", isPresented: $confirmRemove, titleVisibility: .visible) {
+            Button("Remove", role: .destructive) { persist(remove: true) }
+            Button("Cancel", role: .cancel) {}
         }
     }
     private var form: some View {
         CalendarSharingForm {
-            BookingEventSection {
-                TextField("Title", text: $slot.title).textFieldStyle(.plain)
-                BookingLocationRow(location: $slot.location, point: $slot.structuredLocation)
-            }
+            CalendarEventTitleLocationSection(title: $slot.title, location: slot.location,
+                editLocation: { choosingLocation = true }, clearLocation: { slot.location = ""; slot.structuredLocation = nil })
             BookingEventSection {
                     CalendarDateTimePickerRow(title: "Starts", id: slot.id + "-start",
                         selection: Binding(get: { slot.start }, set: { slot.setStart($0) }), expanded: $expanded)
@@ -759,54 +739,56 @@ private struct BookingTimeEditor: View {
                         selection: $slot.end, range: slot.start...Date.distantFuture, expanded: $expanded)
             }.calendarDatePickerColumns([slot.start,slot.end])
             BookingEventSection {
-                    HStack {
-                        Text("Repeat")
-                        Spacer()
-                        Menu {
-                            ForEach(BookingRepeat.allCases, id: \.self) { choice in
-                                Button {
-                                    slot.select(choice)
-                                    if choice == .custom { customRepeat = true }
-                                } label: {
-                                    if choice == slot.choice { Label(LocalizedStringKey(choice.rawValue), systemImage: "checkmark") }
-                                    else { Text(LocalizedStringKey(choice.rawValue)) }
-                                }
-                            }
-                        } label: { Text(LocalizedStringKey(slot.choice.rawValue)) }
-                        .bookingMenuStyle()
-                    }
-                    if slot.choice != .never {
-                        HStack {
-                            Text("End Repeat")
-                            Spacer()
-                            Menu {
-                                Button("Never") { slot.until = nil; slot.count = nil }
-                                Button("On Date") {
-                                    let proposed = slot.until ?? slot.calendar.date(byAdding: .month, value: 1, to: slot.start) ?? slot.start
-                                    slot.until = slot.calendar.dateInterval(of: .day, for: proposed)?.end.addingTimeInterval(-1)
-                                    slot.count = nil
-                                }
-                            } label: {
-                                if let n = slot.count { Text(verbatim: String(n)) }
-                                else { Text(slot.until == nil ? LocalizedStringKey("Never") : "On Date") }
-                            }.bookingMenuStyle()
-                        }
-                        if slot.until != nil {
-                            CalendarDateTimePickerRow(title: "End Date", id: slot.id + "-until", selection: Binding(
-                                get: { slot.until ?? slot.start }, set: { value in
-                                    slot.until = slot.calendar.dateInterval(of: .day, for: value)?.end.addingTimeInterval(-1)
-                                }), range: slot.start...Date.distantFuture, showsTime: false, expanded: $expanded)
+                CalendarEventEditorMenuRow(title: "Repeat", value: NSLocalizedString(slot.choice == .custom ? "Custom" : slot.choice.rawValue, comment: "")) {
+                    ForEach(BookingRepeat.allCases, id: \.self) { choice in
+                        if choice == .custom { Divider() }
+                        Button {
+                            slot.select(choice)
+                            expanded = nil
+                            if choice == .custom { customRepeat = true }
+                        } label: {
+                            if choice == slot.choice { Label(LocalizedStringKey(choice.rawValue), systemImage: "checkmark") }
+                            else { Text(LocalizedStringKey(choice.rawValue)) }
                         }
                     }
-
-            }
-            if original != nil && !locked {
-                BookingEventSection {
-                    Button("Remove time slot",role: .destructive) { confirmRemove = true }.buttonStyle(.borderless)
+                }
+                if slot.choice != .never {
+                    CalendarEventEditorMenuRow(title: "End Repeat", value: slot.count.map(String.init)
+                        ?? NSLocalizedString(slot.until == nil ? "Never" : "On Date", comment: "")) {
+                        Button("Never") { slot.until = nil; slot.count = nil; expanded = nil }
+                        Button("On Date") {
+                            let proposed = slot.until ?? slot.calendar.date(byAdding: .month, value: 1, to: slot.start) ?? slot.start
+                            slot.until = slot.calendar.dateInterval(of: .day, for: proposed)?.end.addingTimeInterval(-1)
+                            slot.count = nil
+                        }
+                    }
+                    if slot.until != nil {
+                        CalendarDateTimePickerRow(title: "End Date", id: slot.id + "-until", selection: Binding(
+                            get: { slot.until ?? slot.start }, set: { value in
+                                slot.until = slot.calendar.dateInterval(of: .day, for: value)?.end.addingTimeInterval(-1)
+                            }), range: slot.start...Date.distantFuture, showsTime: false, expanded: $expanded)
+                    }
                 }
             }
+            if original != nil && !locked {
+                CalendarEventRemovalSection(title: "Remove time slot") { confirmRemove = true }
+            }
             if let error { CalendarSharingSection { Text(verbatim: error).foregroundStyle(.red) } }
-        }.environment(\.timeZone, slot.zone).disabled(locked)
+        }
+        .environment(\.timeZone, slot.zone)
+        .disabled(locked)
+        .appSheet(isPresented: $choosingLocation) {
+            #if os(macOS)
+            MacEventLocationEditorSheet(location: $slot.location, structuredLocation: Binding(
+                get: { slot.structuredLocation?.makeLocation() },
+                set: { slot.structuredLocation = $0.map(SharedEventLocation.init(location:)) }),
+                videoCallURL: .constant(""), allowsVideoLink: false) { choosingLocation = false }
+            #else
+            EventLocationEditorSheet(location: $slot.location, structuredLocation: $slot.structuredLocation,
+                videoCallURL: .constant(""), allowsVideoLink: false, searchModel: locationSearch)
+                .presentationDetents([.large]).presentationDragIndicator(.hidden)
+            #endif
+        }
     }
 
     private func persist(remove: Bool) {
@@ -823,16 +805,6 @@ private struct BookingTimeEditor: View {
                 dismiss()
             } catch { self.error = error.localizedDescription }
         }
-    }
-}
-
-private extension View {
-    @ViewBuilder func bookingMenuStyle() -> some View {
-        #if os(macOS)
-        self.menuStyle(.borderlessButton).fixedSize().foregroundStyle(.secondary)
-        #else
-        self.tint(.secondary)
-        #endif
     }
 }
 

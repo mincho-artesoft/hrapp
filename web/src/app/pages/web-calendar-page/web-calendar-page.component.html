@@ -1467,36 +1467,8 @@
             } @else if (editorPage() === "location") {
               <cc-location-editor [draft]="d" [allowsVideo]="!provider" [desktop]="isDesktop()" (done)="commitLocationDraft()" />
             } @else {
-              <div class="native-form-group">
-                <label class="native-form-row">
-                  <input
-                    aria-label="Title"
-                    [placeholder]="'Title' | nativeText"
-                    [(ngModel)]="d.title"
-                  />
-                </label>
-                <div class="native-form-row location-row-wrap">
-                  <button
-                    type="button"
-                    class="location-row"
-                    (click)="openLocationPage()"
-                  >
-                    <span [class.placeholder]="!d.location">{{
-                      d.location || ((provider ? "Location" : "Location or Video Call") | nativeText)
-                    }}</span>
-                  </button>
-                  @if (d.location) {
-                    <button
-                      type="button"
-                      class="clear-location"
-                      aria-label="Clear"
-                      (click)="d.location = ''; d.structuredLocation = null"
-                    >
-                      <cc-symbol name="xmark.circle.fill" />
-                    </button>
-                  }
-                </div>
-              </div>
+              <cc-event-title-location [(title)]="d.title" [location]="d.location" [allowsVideo]="!provider"
+                (editLocation)="openLocationPage()" (clearLocation)="d.location = ''; d.structuredLocation = null" />
 
               <div class="native-form-group">
                 <label class="native-form-row">
@@ -1547,43 +1519,10 @@
               </div>
 
               @if (!provider || d.isNew) {
-              <div class="native-form-group">
-                <div class="native-form-row">
-                  <span>{{ "Repeat" | nativeText }}</span>
-                  <cc-choice
-                    label="Repeat"
-                    [value]="repeatChoice(d)"
-                    [options]="repeatChoices"
-                    (valueChange)="chooseRepeat($event)"
-                  />
-                </div>
-                @if (d.recurrence !== "none") {
-                  <div class="native-form-row">
-                    <span>{{ "End Repeat" | nativeText }}</span>
-                    <cc-choice
-                      label="End Repeat"
-                      [value]="d.repeatUntil ? 'date' : 'never'"
-                      [options]="[
-                        { value: 'never', label: 'Never' },
-                        { value: 'date', label: 'On Date' },
-                      ]"
-                      (valueChange)="setRepeatEnd(d, $event)"
-                    />
-                  </div>
-                  @if (d.repeatUntil) {
-                    <cc-date-time
-                      label="End Date"
-                      [firstWeekday]="firstWeekday()"
-                      [(focus)]="expandedEventDate"
-                      [date]="d.repeatUntil"
-                      [showsTime]="false"
-                      [minimum]="d.startDate"
-                      (dateChange)="d.repeatEdited = true; d.repeatUntil = $event"
-                    />
-                  }
-                }
-              </div>
-
+              <cc-event-repeat-fields [choice]="repeatChoice(d)" [endChoice]="d.repeatUntil ? 'date' : 'never'"
+                [start]="d.startDate" [until]="d.repeatUntil" [firstWeekday]="firstWeekday()" [(focus)]="expandedEventDate"
+                (repeatChange)="chooseRepeat($event)" (endChange)="setRepeatEnd(d, $event)"
+                (untilChange)="d.repeatEdited = true; d.repeatUntil = $event" />
               }
               <div class="native-form-group">
                 <div class="native-form-row">
@@ -1682,34 +1621,9 @@
               </div>
 
               @if (d.original && eventRemovalLabel(d.original); as action) {
-                @if (pendingDelete()) {
-                  <div class="delete-confirm">
-                    <p>{{ (action === "Delete" ? "Delete this event?" : action) | nativeText }}</p>
-                    <button
-                      type="button"
-                      class="native-pill"
-                      (click)="pendingDelete.set(false)"
-                    >
-                      {{ "Cancel" | nativeText }}
-                    </button>
-                    <button
-                      type="button"
-                      class="native-pill danger"
-                      [disabled]="savingEvent()"
-                      (click)="deleteDraftEvent()"
-                    >
-                      {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
-                    </button>
-                  </div>
-                } @else {
-                  <button
-                    type="button"
-                    class="native-pill danger full"
-                    (click)="pendingDelete.set(true)"
-                  >
-                    {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
-                  </button>
-                }
+                <cc-event-removal [label]="action === 'Delete' ? 'Delete Event' : action"
+                  [prompt]="action === 'Delete' ? 'Delete this event?' : action"
+                  [(confirming)]="pendingDelete" [busy]="savingEvent()" (confirmed)="deleteDraftEvent()" />
               }
             }
           </div>

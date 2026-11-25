@@ -495,33 +495,8 @@ struct AppLocalEventEditorView: View {
     private var editorForm: some View {
         ScrollViewReader { proxy in
             Form {
-            Section {
-                TextField("Title", text: $title)
-
-                HStack(spacing: 10) {
-                    Button {
-                        showLocationEditor = true
-                    } label: {
-                        Text(location.isEmpty ? localizedEventEditorString(editorProvider == nil ? "Location or Video Call" : "Location") : location)
-                            .foregroundStyle(location.isEmpty ? AnyShapeStyle(.tertiary) : AnyShapeStyle(.primary))
-                            .lineLimit(1)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .buttonStyle(.plain)
-
-                    if !location.isEmpty {
-                        Button {
-                            location = ""
-                            structuredLocation = nil
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundStyle(.tertiary)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Clear")
-                    }
-                }
-            }
+            CalendarEventTitleLocationSection(title: $title, location: location, allowsVideoLink: editorProvider == nil,
+                editLocation: { showLocationEditor = true }, clearLocation: { location = ""; structuredLocation = nil })
 
             Section {
                 Toggle("All-day", isOn: $isAllDay)
@@ -541,79 +516,69 @@ struct AppLocalEventEditorView: View {
 
             if editorProvider == nil || isNew {
             Section {
-                LabeledContent("Repeat") {
-                    Menu {
-                        ForEach(RepeatOption.allCases) { option in
-                            Button {
-                                recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)
-                                repeatOption = option
-                                repeatInterval = 1
-                                if option == .never {
-                                    recurrenceEndDate = nil
-                                    expandedDatePicker = nil
-                                }
-                            } label: {
-                                if option == repeatOption && repeatInterval == 1 {
-                                    Label(option.title, systemImage: "checkmark")
-                                } else {
-                                    Text(option.title)
-                                }
-                            }
-                        }
+                CalendarEventEditorMenuRow(title: "Repeat", displayValue: repeatDisplayText) {
+                    ForEach(RepeatOption.allCases) { option in
                         Button {
                             recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)
-                            repeatOption = .weekly
-                            repeatInterval = 2
+                            repeatOption = option
+                            repeatInterval = 1
+                            if option == .never {
+                                recurrenceEndDate = nil
+                                expandedDatePicker = nil
+                            }
                         } label: {
-                            if repeatOption == .weekly && repeatInterval == 2 {
-                                Label("Every 2 Weeks", systemImage: "checkmark")
+                            if option == repeatOption && repeatInterval == 1 {
+                                Label(option.title, systemImage: "checkmark")
                             } else {
-                                Text("Every 2 Weeks")
+                                Text(option.title)
                             }
                         }
-                        Divider()
-                        Button("Custom…") {
-                            if repeatOption == .never { repeatOption = .daily }
-                            showCustomRecurrenceEditor = true
-                        }
-                    } label: {
-                        menuValueLabel(repeatDisplayText)
                     }
-                    .tint(.secondary)
+                    Button {
+                        recurrencePattern = CalendarRecurrencePattern(rule: nil, start: startDate, calendar: eventCalendar)
+                        repeatOption = .weekly
+                        repeatInterval = 2
+                    } label: {
+                        if repeatOption == .weekly && repeatInterval == 2 {
+                            Label("Every 2 Weeks", systemImage: "checkmark")
+                        } else {
+                            Text("Every 2 Weeks")
+                        }
+                    }
+                    Divider()
+                    Button("Custom…") {
+                        if repeatOption == .never { repeatOption = .daily }
+                        showCustomRecurrenceEditor = true
+                    }
                 }
 
                 if repeatOption != .never {
-                    LabeledContent("End Repeat") {
-                        Menu {
-                            Button {
-                                recurrenceEndDate = nil
-                                expandedDatePicker = nil
-                            } label: {
-                                if recurrenceEndDate == nil {
-                                    Label("Never", systemImage: "checkmark")
-                                } else {
-                                    Text("Never")
-                                }
+                    CalendarEventEditorMenuRow(title: "End Repeat", displayValue: endRepeatDisplayText) {
+                        Button {
+                            recurrenceEndDate = nil
+                            expandedDatePicker = nil
+                        } label: {
+                            if recurrenceEndDate == nil {
+                                Label("Never", systemImage: "checkmark")
+                            } else {
+                                Text("Never")
                             }
-                            Button {
-                                if recurrenceEndDate == nil {
-                                    recurrenceEndDate = eventCalendar.date(
-                                        byAdding: .month,
-                                        value: 1,
-                                        to: startDate
-                                    ) ?? startDate
-                                }
-                            } label: {
-                                if recurrenceEndDate != nil {
-                                    Label("On Date", systemImage: "checkmark")
-                                } else {
-                                    Text("On Date")
-                                }
+                        }
+                        Button {
+                            if recurrenceEndDate == nil {
+                                recurrenceEndDate = eventCalendar.date(
+                                    byAdding: .month,
+                                    value: 1,
+                                    to: startDate
+                                ) ?? startDate
                             }
                         } label: {
-                            menuValueLabel(endRepeatDisplayText)
+                            if recurrenceEndDate != nil {
+                                Label("On Date", systemImage: "checkmark")
+                            } else {
+                                Text("On Date")
+                            }
                         }
-                        .tint(.secondary)
                     }
 
                     if recurrenceEndDate != nil {
@@ -697,11 +662,8 @@ struct AppLocalEventEditorView: View {
             }
 
                 if !isNew && canDelete {
-                    Section {
-                        Button("Delete Event", role: .destructive) { showDeleteConfirmation = true }
-                            .frame(maxWidth: .infinity)
-                    }
-                    .id("event-editor-bottom")
+                    CalendarEventRemovalSection { showDeleteConfirmation = true }
+                        .id("event-editor-bottom")
                 }
             }
             .onChange(of: expandedDatePicker) { _, focus in

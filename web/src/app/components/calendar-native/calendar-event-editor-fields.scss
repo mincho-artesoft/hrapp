@@ -1,0 +1,11 @@
+@use './event-form' as eventForm;
+
+:host { display: block; --choice-tint: var(--cal-muted); }
+@include eventForm.rows;
+button, input { font: inherit; color: inherit; }
+.location-row-wrap { gap: 8px; }
+.location-row { flex: 1; min-width: 0; text-align: start; overflow-wrap: anywhere; }
+.location-row, .clear-location { border: 0; padding: 0; background: transparent; cursor: pointer; }
+.placeholder, .clear-location { color: var(--cal-muted); }
+.clear-location cc-symbol { width: 16px; color: inherit; }
+cc-date-time { display: block; border-top: 1px solid var(--cal-line); }

@@ -148,33 +148,21 @@
     @case ('slot') {
       @if (slot;as s) {
         <fieldset [disabled]="busy() || locked(s.id)">
-          <div class="native-form-group">
-            <label class="native-form-row"><input [attr.aria-label]="'Title'|nativeText" [placeholder]="'Title'|nativeText" [(ngModel)]="s.title" maxlength="200"></label>
-            <div class="native-form-row location-row">
-              <button class="venue" [class.placeholder]="!s.location" [attr.aria-label]="'Location'|nativeText" (click)="locationDraft=s">{{s.location || ('Location'|nativeText)}}</button>
-              @if (s.location) {
-                <button class="clear-location" [attr.aria-label]="'Clear location' | nativeText" (click)="s.location='';s.structuredLocation=undefined">
-                  <cc-symbol name="xmark.circle.fill" [pointSize]="16" />
-                </button>
-              }
-            </div>
-          </div>
+          <cc-event-title-location [(title)]="s.title" [location]="s.location" [maxLength]="200"
+            (editLocation)="locationDraft=s" (clearLocation)="s.location='';s.structuredLocation=undefined" />
           <div class="native-form-group">
             <cc-date-time label="Starts" [(focus)]="dateFocus" [date]="s.date" [time]="s.start" [otherDate]="s.endDate" [otherTime]="s.end"
               [firstWeekday]="firstWeekday()" [timeFormat]="locale.preferences()['time'] || 'system'" (dateChange)="changeStart(s,$event,s.start)" (timeChange)="changeStart(s,s.date,$event)" />
             <cc-date-time label="Ends" [(focus)]="dateFocus" [date]="s.endDate" [time]="s.end" [otherDate]="s.date" [otherTime]="s.start" [minimum]="s.date"
               [firstWeekday]="firstWeekday()" [timeFormat]="locale.preferences()['time'] || 'system'" (dateChange)="s.endDate=$event" (timeChange)="s.end=$event" />
           </div>
-          <div class="native-form-group">
-            <cc-choice [rowLabel]="true" [label]="'Repeat'|nativeText" [value]="s.choice" [options]="repeatOptions" (valueChange)="chooseRepeat(s,$event)" />
-            @if (s.rule) {
-              <cc-choice [rowLabel]="true" [label]="'End Repeat'|nativeText" [value]="endOnDate?'date':'never'"
-                [options]="[{value:'never',label:'Never'},{value:'date',label:'On Date'}]" (valueChange)="chooseEnd(s,$event)" />
-              @if(endOnDate){<cc-date-time label="End Date" [(focus)]="dateFocus" [date]="until(s) || s.date" [minimum]="s.date" [showsTime]="false"
-                [firstWeekday]="firstWeekday()" (dateChange)="setUntil(s,$event)" />}
-            }
-          </div>
-          @if(s.original && !locked(s.id)){<div class="native-form-group"><button class="native-form-row danger" (click)="saveSlot(true)">{{ 'Remove time slot' | nativeText }}</button></div>}
+          <cc-event-repeat-fields [choice]="s.choice" [endChoice]="endOnDate ? 'date' : s.rule?.occurrenceCount?.toString() || 'never'"
+            [start]="s.date" [until]="until(s)" [firstWeekday]="firstWeekday()" [(focus)]="dateFocus"
+            (repeatChange)="chooseRepeat(s,$event)" (endChange)="chooseEnd(s,$event)" (untilChange)="setUntil(s,$event)" />
+          @if (s.original && !locked(s.id)) {
+            <cc-event-removal label="Remove time slot" prompt="Remove time slot?" [(confirming)]="confirmingRemoval"
+              [busy]="busy()" (confirmed)="saveSlot(true)" />
+          }
         </fieldset>
       }
     }

@@ -43,12 +43,11 @@ button:focus-visible, .native-form-group:has(> label:only-child input:focus-visi
 .native-form-group { border-radius: var(--group-radius); }
 .native-form-row { text-align: start; overflow-wrap: anywhere; }
 .native-form-row input { padding: 0; }
-.native-form-group > cc-choice { display: block; }
-.native-form-group > cc-choice + *, .native-form-group > cc-date-time + * {
+.native-form-group > cc-date-time + * {
   border-top: 1px solid var(--cal-line);
 }
 .native-form-row.action, .inline-action, .calendar-actions, .decisions button { color: var(--cal-blue); }
-.native-form-row.danger, .error { color: #ff453a; }
+.error { color: #ff453a; }
 p { margin: 0; }
 .empty, small, .value { color: var(--cal-muted); }
 small, .reservation-summary { font-size: 15px; }
@@ -75,7 +74,7 @@ strong { font-size: 17px; font-weight: 600; }
 .native-form-row.calendar-summary { justify-content: space-between; gap: 0; padding-block: 0; }
 .name { flex: 1; align-self: stretch; justify-content: center; min-height: 64px; padding-block: 10px; }
 .calendar-actions { display: flex; flex: none; }
-.calendar-actions button, .clear-location { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
+.calendar-actions button { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
 .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .native-form-row.request { align-items: stretch; flex-direction: column; gap: 5px; }
 .status, .repeat { color: var(--cal-muted); font-size: 12px; }
@@ -131,9 +130,6 @@ dialog::backdrop { background: #0006; }
 .color-choice cc-symbol { margin-inline-start: auto; }
 .color-options { padding-inline: 0; }
 .dot { width: 20px; height: 20px; border-radius: 50%; flex: none; }
-.location-row { padding-block: 0; }
-.venue { min-width: 0; min-height: 44px; flex: 1; overflow-wrap: anywhere; }
-.venue.placeholder, .clear-location cc-symbol { color: var(--cal-muted); }
 :host-context([dir=rtl]) .disclosure,
 :host-context([dir=rtl]) .back cc-symbol { transform: scaleX(-1); }
 
