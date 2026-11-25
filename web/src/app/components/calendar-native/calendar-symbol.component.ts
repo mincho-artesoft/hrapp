@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from "@angular/co
 // 80 pixels on a 96-pixel canvas (tools/export-calendar-symbols.swift).
 const nativeExtent: Record<string, number> = {
   plus: 18, magnifyingglass: 21, gearshape: 22, "calendar.day.timeline.leading": 26,
-  "distribute.horizontal.left": 27, calendar: 21, "12.lane": 20, "list.bullet": 22,
+  "distribute.horizontal.left": 27, calendar: 21, "calendar.badge.checkmark": 24, "12.lane": 20, "list.bullet": 22,
   "align.vertical.top": 24, "cloud.sun": 26, xmark: 18, checkmark: 19,
   "chevron.left": 18, pencil: 18, "square.and.arrow.up": 24, trash: 22,
 };
