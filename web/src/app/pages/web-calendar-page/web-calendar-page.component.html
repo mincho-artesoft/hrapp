@@ -20,6 +20,7 @@
   [attr.lang]="localization.formattingLocale()"
   [attr.dir]="localization.direction()"
   [class.ios-layout]="!isDesktop()"
+  [class.booking-timeline]="!!bookingCalendar()"
   [class.phone-layout]="isPhone()"
   [class.no-sidebar]="!showsSidebar() || bookingsRoute"
   [class.studio--light]="surfaceTheme() === 'light'"
@@ -170,8 +171,12 @@
         }
         @if (viewMode() !== "weather") {
           <header class="cal-toolbar" [class.searching]="searchOpen()">
-            <div class="cal-toolbar__left" [class.bookings-picker-container]="bookingsRoute">
-              @if (bookingsRoute) {
+            <div class="cal-toolbar__left" [class.bookings-picker-container]="bookingsRoute && !bookingCalendar()">
+              @if (bookingCalendar(); as schedule) {
+                <button class="toolbar-icon" type="button" [attr.aria-label]="'Back' | nativeText" (click)="closeBookingTimeline()"><cc-symbol name="chevron.backward" /></button>
+                <h2 class="booking-calendar-title">{{ schedule.title }}</h2>
+              }
+              @if (bookingsRoute && !bookingCalendar()) {
                 <cc-section-picker class="bookings-picker" label="Bookings" [columns]="2" [options]="bookingModes"
                   [value]="bookingMode()" (valueChange)="selectBookingMode($event)" />
               } @else {
@@ -184,21 +189,21 @@
                     {{ anchorDate() | nativeDate: "MMMM" }}
                   </button>
                 }
-                @if (viewMode() === "week") {
+                @if (viewMode() === "week" || bookingCalendar()) {
                   <div class="range-anchor">
                     <button
                       type="button"
                       class="month-link range-pill" aria-label="Choose date range" [attr.aria-expanded]="rangeOpen()"
                       (click)="rangeOpen.set(!rangeOpen()); $event.stopPropagation()"
                     >
-                      {{ formatShortDate(anchorDate().toISOString()) }} - {{ formatShortDate(visibleDays()[visibleDays().length-1].toISOString()) }}
+                      {{ formatShortDate(visibleDays()[0].toISOString()) }} - {{ formatShortDate(visibleDays()[visibleDays().length-1].toISOString()) }}
                     </button>
                     @if (rangeOpen()) {
                       <div
                         class="range-popover"
                         (click)="$event.stopPropagation()"
                       >
-                        <cc-date-grid [range]="true" [start]="dayKey(anchorDate())" [end]="dayKey(visibleDays()[visibleDays().length-1])"
+                        <cc-date-grid [range]="true" [start]="dayKey(visibleDays()[0])" [end]="dayKey(visibleDays()[visibleDays().length-1])"
                           [firstWeekday]="firstWeekday()" (chooseRange)="applyRange($event)" />
                       </div>
                     }
@@ -206,6 +211,7 @@
                 }
               }
             </div>
+            @if (!bookingCalendar()) {
             <div class="cal-toolbar__right">
               @if (viewMode() !== "menu") {
                 <button
@@ -273,6 +279,7 @@
                 <cc-symbol [pointSize]="20" name="gearshape" />
               </button>
             </div>
+            }
           </header>
         }
 
@@ -409,7 +416,7 @@
         }
 
         @if (bookingsRoute) {
-          <cc-bookings [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
+          <cc-bookings [style.display]="bookingCalendar() ? 'none' : null" (timelineRequested)="openBookingTimeline($event)" [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
         }
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
@@ -471,7 +478,7 @@
           <!-- TIMELINE GRID (DAY / MULTI-DAY / MULTI-CALENDAR) -->
           @if (
             viewMode() === "day" ||
-            viewMode() === "workweek" ||
+            bookingCalendar() || viewMode() === "workweek" ||
             viewMode() === "week" ||
             (viewMode() === "multi" && multiCalendars().length)
           ) {
@@ -482,7 +489,7 @@
                     @if (viewMode() === 'multi') {
                       <strong class="column-calendar" [style.color]="multiCalendars()[di].color">{{ multiCalendars()[di].title }}</strong>
                     } @else {
-                      <button class="column-date" type="button" [class.today]="isTodayDay(d)" (click)="selectMiniDay(d); setView('day')">
+                      <button class="column-date" type="button" [attr.data-date]="dayKey(d)" [class.today]="isTodayDay(d)" (click)="openTimelineDay(d)">
                         <span>{{ timelineDateLabel(d) }}</span>
                         <ng-container *ngTemplateOutlet="forecastLine; context: {$implicit: d}" />
                       </button>
@@ -599,7 +606,7 @@
                           class="ev-block"
                           [class.ghost-source]="drag()?.active && drag()?.event?.id === blk.id"
                           [class.is-selected]="isSelected"
-                          [attr.aria-pressed]="isSelected"
+                          [attr.aria-pressed]="bookingCalendar() ? null : isSelected"
                           [class.is-cancelled]="blk.data.status === 'cancelled'"
                           [class.is-readonly]="blk.data.readOnly"
                           [ngStyle]="blockPositionStyle(blk)"
@@ -609,10 +616,10 @@
                           (click)="timedEventClick(blk.data, $event)"
                           (keydown.enter)="timedEventClick(blk.data, $event)"
                           (keydown.space)="timedEventClick(blk.data, $event)"
-                          [attr.aria-haspopup]="isDesktop() ? null : 'menu'"
-                          [attr.aria-expanded]="isDesktop() ? null : eventContext()?.event?.id === blk.id"
-                          role="button"
-                          tabindex="0"
+                          [attr.aria-haspopup]="bookingCalendar() || isDesktop() ? null : 'menu'"
+                          [attr.aria-expanded]="bookingCalendar() || isDesktop() ? null : eventContext()?.event?.id === blk.id"
+                          [attr.role]="bookingCalendar() ? 'group' : 'button'"
+                          [attr.tabindex]="bookingCalendar() ? null : 0"
                           [attr.aria-label]="blk.data.title"
                           [attr.aria-description]="blk.data.readOnly ? ('Read only' | nativeText) : null"
                         >
@@ -805,7 +812,7 @@
       </div>
     </div>
 
-    @if (!isDesktop()) {
+    @if (!isDesktop() && !bookingCalendar()) {
       @if (drawerOpen()) {
         <button
           type="button"

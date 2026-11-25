@@ -1,10 +1,12 @@
 import SwiftUI
+import EventKit
 
 // Display occurrences only. Both the slots and the reservations belong to this host calendar.
-struct BookingTimelineEntry: Identifiable {
+struct BookingTimelineEntry: Identifiable, Equatable {
     let id: String
     let title: String
     let status: String
+    let location: String?
     let start: Date
     let end: Date
 
@@ -15,7 +17,7 @@ struct BookingTimelineEntry: Identifiable {
             let start = BookingInterval.date(booking.start), end = BookingInterval.date(booking.end)
             guard start < upper, end > lower, end > start else { return nil }
             let title = [booking.title, booking.guestName].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")
-            return Self(id: "request-" + booking.id, title: title, status: booking.status.capitalized, start: start, end: end)
+            return Self(id: "request-" + booking.id, title: title, status: booking.status.capitalized, location: booking.location, start: start, end: end)
         }
         var result = reservations
         for slot in schedule.slots {
@@ -32,7 +34,7 @@ struct BookingTimelineEntry: Identifiable {
                 guard start >= seed, end > lower else { continue }
                 let id = start == seed ? slot.id : "\(slot.id)@\(Int64((start.timeIntervalSince1970 * 1000).rounded()))"
                 guard !occupied.contains(id), !reservations.contains(where: { $0.start < end && $0.end > start }) else { continue }
-                result.append(Self(id: "slot-" + id, title: slot.title ?? "", status: "Available time", start: start, end: end))
+                result.append(Self(id: "slot-" + id, title: slot.title ?? "", status: "Available time", location: slot.location, start: start, end: end))
             }
         }
         return result.sorted { ($0.start, $0.id) < ($1.start, $1.id) }
@@ -68,113 +70,124 @@ private extension SharedEventRecurrenceRule {
 struct BookingCalendarTimeline: View {
     let schedule: HostedBookingCalendar
     let color: Color
+    let onBack: () -> Void
     @Environment(\.calendar) private var calendar
-    @Environment(\.layoutDirection) private var layoutDirection
-    @State private var anchor = Date.now
+    @Environment(\.locale) private var locale
+    @State private var start = Calendar.current.startOfDay(for: .now)
+    @State private var end = Calendar.current.date(byAdding: .day, value: 7, to: Calendar.current.startOfDay(for: .now))!
+    @State private var events: [EKEvent] = []
+    #if os(macOS)
+    @EnvironmentObject private var store: MacTabletCalendarStore
+    @State private var pickingRange = false
+    #endif
 
-    private let hourHeight: CGFloat = 52
-    private let gutter: CGFloat = 56
+    private struct Projection: Equatable {
+        let title: String
+        let color: Color
+        let locale: Locale
+        let entries: [BookingTimelineEntry]
+    }
 
     var body: some View {
-        GeometryReader { geometry in
-            let count = max(2, min(8, Int((geometry.size.width - gutter) / 100)))
-            let first = calendar.startOfDay(for: anchor)
-            let days = (0..<count).map { shifted(first, $0) }
-            let entries = BookingTimelineEntry.entries(in: schedule, from: first, to: shifted(first, count))
-            VStack(spacing: 0) {
-                Text(verbatim: schedule.title).font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal).padding(.top, 8)
-                HStack {
-                    DatePicker("Date", selection: $anchor, displayedComponents: .date).labelsHidden()
-                    Spacer()
-                    Button("Today") { anchor = .now }
-                    Button { anchor = shifted(first, -count) } label: {
-                        Label("Back", systemImage: "chevron.backward").frame(minWidth: 40, minHeight: 44).contentShape(Rectangle())
-                    }.buttonStyle(.plain)
-                    Button { anchor = shifted(first, count) } label: {
-                        Label("Next", systemImage: "chevron.forward").frame(minWidth: 40, minHeight: 44).contentShape(Rectangle())
-                    }.buttonStyle(.plain)
-                }
-                .labelStyle(.iconOnly).padding(.horizontal).frame(minHeight: 48)
-                HStack(spacing: 0) {
-                    Color.clear.frame(width: gutter)
-                    ForEach(days, id: \.self) { day in
-                        Text(day, format: .dateTime.weekday(.abbreviated).day().month(.abbreviated))
-                            .font(.caption.weight(.semibold)).foregroundStyle(calendar.isDateInToday(day) ? Color.appBlue : .primary)
-                            .frame(maxWidth: .infinity).multilineTextAlignment(.center)
-                    }
-                }.frame(minHeight: 36)
-                Divider()
-                ScrollViewReader { proxy in
-                    ScrollView {
-                        HStack(alignment: .top, spacing: 0) {
-                            VStack(alignment: .trailing, spacing: 0) {
-                                ForEach(0..<24, id: \.self) { hour in
-                                    // A fixed reference day gives the ruler all 24 labels even on a clock-change day.
-                                    Text(Date(timeIntervalSince1970: Double(hour) * 3600),
-                                         format: Date.FormatStyle(timeZone: TimeZone(secondsFromGMT: 0)!).hour().minute())
-                                        .font(.caption2).foregroundStyle(.secondary).monospacedDigit()
-                                        .padding(.trailing, 4).frame(width: gutter, height: hourHeight, alignment: .topTrailing)
-                                        .id(hour)
-                                }
-                            }
-                            ForEach(days, id: \.self) { day in
-                                dayColumn(day, entries: entries, width: (geometry.size.width - gutter) / CGFloat(count))
-                            }
-                        }
-                    }
-                    .onChange(of: first, initial: true) { _, _ in
-                        let hour = entries.first.map { calendar.component(.hour, from: max(first, $0.start)) } ?? 9
-                        proxy.scrollTo(max(0, hour - 1), anchor: .top)
-                    }
+        let upper = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: end)) ?? end
+        let projection = Projection(title: schedule.title, color: color, locale: locale,
+            entries: BookingTimelineEntry.entries(in: schedule, from: calendar.startOfDay(for: start), to: upper))
+        timeline
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onChange(of: projection, initial: true) { _, value in
+                // These unsaved objects only supply the existing event-card renderers with their display model.
+                #if os(macOS)
+                let displayStore = store.eventStore
+                #else
+                let displayStore = CalendarViewModel.shared.eventStore
+                #endif
+                let displayCalendar = EKCalendar(for: .event, eventStore: displayStore)
+                displayCalendar.title = value.title
+                #if os(macOS)
+                displayCalendar.cgColor = NSColor(value.color).cgColor
+                #else
+                displayCalendar.cgColor = UIColor(value.color).cgColor
+                #endif
+                events = value.entries.map { entry in
+                    let event = EKEvent(eventStore: displayStore)
+                    event.calendar = displayCalendar
+                    event.startDate = entry.start
+                    event.endDate = entry.end
+                    event.location = entry.location
+                    event.title = [entry.title, NSLocalizedString(entry.status, comment: "")].filter { !$0.isEmpty }.joined(separator: " · ")
+                    return event
                 }
             }
-            .background(CalendarPalette.background)
+    }
+
+    @ViewBuilder private var timeline: some View {
+        #if os(macOS)
+        let dayCount = max(1, (calendar.dateComponents([.day], from: start, to: end).day ?? 0) + 1)
+        let formatter = MacCalendarFormatting.dateFormatter()
+        let rangeTitle = formatter.string(from: start) + " - " + formatter.string(from: end)
+        VStack(spacing: 0) {
+            CalendarScreenHeader(currentView: 3, rangeTitle: rangeTitle, rangeIsSelected: pickingRange,
+                scopedTitle: schedule.title, onBack: onBack, onRange: { pickingRange.toggle() },
+                onSearch: nil, onViewChange: { _ in })
+            Divider()
+            MacTabletMultiDayView(store: store, startDate: Binding(get: { start }, set: { day in
+                start = day
+                end = day
+            }), dayCount: dayCount, selectedTab: .constant(3), editorTarget: .constant(nil), scopedEvents: events)
         }
-    }
-
-    private func shifted(_ date: Date, _ days: Int) -> Date {
-        calendar.date(byAdding: .day, value: days, to: date) ?? date
-    }
-
-    private func minute(_ instant: Date) -> CGFloat {
-        CGFloat(calendar.component(.hour, from: instant) * 60 + calendar.component(.minute, from: instant))
-    }
-
-    private func dayColumn(_ day: Date, entries: [BookingTimelineEntry], width: CGFloat) -> some View {
-        let next = shifted(day, 1)
-        let visible = entries.filter { $0.start < next && $0.end > day }
-        let items = visible.map { EventDetailTimelineLayout.Item(id: $0.id, title: $0.title, calendarTitle: schedule.title,
-                                                                 start: max(day, $0.start), end: min(next, $0.end)) }
-        let positions = EventDetailTimelineLayout(width: width, minimumHeaderDuration: 900).place(items)
-        let byID = Dictionary(uniqueKeysWithValues: visible.map { ($0.id, $0) })
-        return ZStack(alignment: .topLeading) {
-            VStack(spacing: 0) {
-                ForEach(0..<24, id: \.self) { _ in
-                    Divider().frame(height: hourHeight, alignment: .top)
-                }
-            }
-            ForEach(positions, id: \.id) { placement in
-                if let entry = byID[placement.id] {
-                    let top = entry.start <= day ? 0 : minute(entry.start)
-                    let bottom = entry.end >= next ? 1440 : minute(entry.end)
-                    let height = min((1440 - top) * hourHeight / 60, max(18, (bottom - top) * hourHeight / 60 - 1))
-                    VStack(alignment: .leading, spacing: 1) {
-                        if !entry.title.isEmpty { Text(verbatim: entry.title).bold().lineLimit(2) }
-                        Text(LocalizedStringKey(entry.status)).lineLimit(1)
-                        Text("\(entry.start, style: .time) – \(entry.end, style: .time)").lineLimit(1)
-                    }
-                    .font(.caption2).padding(3)
-                    .frame(width: max(1, placement.width - 2), height: height, alignment: .topLeading)
-                    .clipped().background(color.opacity(0.18), in: RoundedRectangle(cornerRadius: 4))
-                    .overlay(alignment: .leading) { Capsule().fill(color).frame(width: 2) }
-                    .accessibilityElement(children: .combine)
-                    .offset(x: (layoutDirection == .rightToLeft ? -1 : 1) * placement.leading, y: top * hourHeight / 60)
-                }
+        .overlay(alignment: .topLeading) {
+            if pickingRange {
+                Color.clear.contentShape(Rectangle()).onTapGesture { pickingRange = false }
+                MacCalendarDateRangePicker(start: start, end: end, onDismiss: { pickingRange = false }) { first, last in
+                    start = first
+                    end = last
+                }.padding(.top, CalendarHeaderLayout.height).padding(.leading, 16)
             }
         }
-        .frame(width: width, height: 24 * hourHeight, alignment: .topLeading)
-        .overlay(alignment: .leading) { Divider() }
-        .clipped()
+        #else
+        BookingPinnedTimeline(title: schedule.title, start: $start, end: $end, events: events, onBack: onBack)
+        #endif
     }
 }
+
+#if os(iOS)
+private struct BookingPinnedTimeline: UIViewRepresentable {
+    let title: String
+    @Binding var start: Date
+    @Binding var end: Date
+    let events: [EKEvent]
+    let onBack: () -> Void
+
+    func makeUIView(context: Context) -> TwoWayPinnedMultiDayContainerView {
+        let view = TwoWayPinnedMultiDayContainerView()
+        view.weekView.isUserInteractionEnabled = false
+        view.allDayView.isUserInteractionEnabled = false
+        view.onRangeChange = { start = $0; end = $1 }
+        view.onDayLabelTap = { start = $0; end = $0 }
+        return view
+    }
+
+    func updateUIView(_ view: TwoWayPinnedMultiDayContainerView, context: Context) {
+        let calendar = Calendar.current
+        view.scopedTitle = title
+        view.onScopeBack = onBack
+        view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        if view.fromDate != start { view.fromDate = start }
+        if view.toDate != end { view.toDate = end }
+        let upper = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: end)) ?? end
+        view.weekView.regularLayoutAttributes = events.flatMap { event -> [EventLayoutAttributes] in
+            var cursor = max(start, event.startDate)
+            let last = min(upper, event.endDate)
+            var parts: [EventLayoutAttributes] = []
+            while cursor < last, let day = calendar.dateInterval(of: .day, for: cursor) {
+                let next = min(last, day.end)
+                let part = EKMultiDayWrapper(realEvent: event, partialStart: cursor, partialEnd: next)
+                parts.append(EventLayoutAttributes(part))
+                cursor = next
+            }
+            return parts
+        }
+        view.setNeedsLayout()
+    }
+}
+#endif

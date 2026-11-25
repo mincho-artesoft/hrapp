@@ -57,6 +57,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
 
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
+    @State private var bookingTimelineID: String?
     @State private var bookingAdd = 0
     @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var selectedTab = 1
@@ -120,7 +121,7 @@ struct RootView: View {
                     let isPortrait = geometry.size.height > geometry.size.width
                     let showsDraggableMenu = (
                         isPortrait || UIDevice.current.userInterfaceIdiom == .pad
-                    ) && selectedTab != 7
+                    ) && selectedTab != 7 && bookingTimelineID == nil
 
                     HStack(spacing: 0) {
                         if selectedTab != 6 && selectedTab != 7 && selectedTab != CalendarHeaderMode.bookings.rawValue && CalendarSidebarLayout.isVisible(isMac: false,
@@ -448,6 +449,7 @@ struct RootView: View {
             .presentationDragIndicator(.visible)
         }
         .onChange(of: selectedTab) { oldValue, newValue in
+            bookingTimelineID = nil
             self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
             if newValue == 6 {
@@ -869,10 +871,12 @@ extension RootView {
 
     case CalendarHeaderMode.bookings.rawValue:
         VStack(spacing: 0) {
-            CalendarScreenHeader(currentView: selectedTab, bookingMode: $bookingMode,
-                                 onSearch: nil, onViewChange: { selectedTab = $0 })
-            Divider()
-            BookingsContent(mode: bookingMode, addAction: bookingAdd)
+            if bookingTimelineID == nil {
+                CalendarScreenHeader(currentView: selectedTab, bookingMode: $bookingMode,
+                                     onSearch: nil, onViewChange: { selectedTab = $0 })
+                Divider()
+            }
+            BookingsContent(mode: bookingMode, addAction: bookingAdd, timelineID: $bookingTimelineID)
         }
     case 6:
         WeatherKitView(

@@ -120,6 +120,8 @@ struct MacTabletMultiDayView: View {
     @Binding var selectedTab: Int
     @Binding var editorTarget: MacTabletEventEditorTarget?
 
+    var scopedEvents: [EKEvent]? = nil
+
     private var calendar: Calendar { MacCalendarFormatting.calendar }
 
     private var dates: [Date] {
@@ -128,9 +130,9 @@ struct MacTabletMultiDayView: View {
 
     var body: some View {
         MacTabletTimelineView(store: store, dates: dates, calendars: nil,
-            editorTarget: $editorTarget, onDayTap: { date in
+            editorTarget: $editorTarget, scopedEvents: scopedEvents, onDayTap: { date in
                 startDate = date
-                selectedTab = 1
+                if scopedEvents == nil { selectedTab = 1 }
             })
     }
 }
@@ -335,6 +337,7 @@ struct MacTabletTimedEventBlock: View {
     let height: CGFloat
     var textHeight: CGFloat? = nil
     var depth = 0
+    var displayOnly = false
     @Binding var editorTarget: MacTabletEventEditorTarget?
     let isSelected: Bool
     let activate: () -> Void
@@ -346,15 +349,27 @@ struct MacTabletTimedEventBlock: View {
     }
 
     var body: some View {
+        if displayOnly {
+            card(isReadOnly: true)
+        } else {
+            interactiveCard
+        }
+    }
+
+    private func card(isReadOnly: Bool) -> some View {
+        MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
+            isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight,
+            isCancelled: displayOnly ? false : store.isCancelled(event), isReadOnly: isReadOnly)
+            .frame(width: width, height: height)
+            .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
+    }
+
+    private var interactiveCard: some View {
         let isReadOnly = !store.canEdit(event)
-        Button {
+        return Button {
             activate()
         } label: {
-            MacCalendarEventCard(event: event, interval: .init(start: event.startDate, end: event.endDate),
-                isAllDay: event.isAllDay, color: nativeColor, depth: depth, textHeight: textHeight,
-                isCancelled: store.isCancelled(event), isReadOnly: isReadOnly)
-                .frame(width: width, height: height)
-                .contentShape(RoundedRectangle(cornerRadius: event.isAllDay ? 9 : 5))
+            card(isReadOnly: isReadOnly)
         }
         .buttonStyle(.plain)
         .accessibilityLabel((event.title ?? "") + ", " + (event.isAllDay ? NSLocalizedString("all-day", comment: "") :
@@ -373,6 +388,7 @@ struct MacTabletTimelineView: View {
     let calendars: [EKCalendar]?
     @Binding var editorTarget: MacTabletEventEditorTarget?
     var scrollRequest: CalendarTimelineScrollRequest? = nil
+    var scopedEvents: [EKEvent]? = nil
     var onDayTap: ((Date) -> Void)? = nil
     @Environment(\.layoutDirection) private var layoutDirection
     @State private var interactionSpace = UUID()
@@ -505,27 +521,29 @@ struct MacTabletTimelineView: View {
             if viewportState.items != $0 { viewportState.items = $0 }
         }
         .overlay {
-            MacCalendarTimelineViewportReader(viewport: viewportState, itemsChanged: {
-                if let selectedEventID { updateSidebarSelection(selectedEventID) }
-            }) { items, frames in
-            MacCalendarTimelineInteractionLayer(items: items, frames: frames,
-                dates: dates, columnCalendars: calendars,
-                defaultCalendar: defaultCalendar,
-                calendar: calendar, hourHeight: hourHeight, margin: timelineMargin,
-                scrollHandle: scrollHandle, activeEventID: $activeEventID,
-                selectedID: $selectedEventID,
-                selectEvent: { activateEvent($0.event) },
-                create: { interval, allDay, calendarID in
-                    var target = MacTabletEventEditorTarget(event: nil, defaultDate: interval.start, usesExactStart: true)
-                    target.initialInterval = interval
-                    target.preferredCalendarID = calendarID
-                    target.defaultIsAllDay = allDay
-                    editorTarget = target
-                }, commit: { event, interval, allDay, calendarID in
-                    let change = TimelineChange(event: event, interval: interval, allDay: allDay, calendarID: calendarID)
-                    if event.hasRecurrenceRules { pendingTimelineChange = change }
-                    else { saveTimelineChange(change, span: .thisEvent) }
-                }, reportError: { store.errorMessage = $0 }, canEditEvent: store.canEdit, canEdit: store.canEdit)
+            if scopedEvents == nil {
+                MacCalendarTimelineViewportReader(viewport: viewportState, itemsChanged: {
+                    if let selectedEventID { updateSidebarSelection(selectedEventID) }
+                }) { items, frames in
+                MacCalendarTimelineInteractionLayer(items: items, frames: frames,
+                    dates: dates, columnCalendars: calendars,
+                    defaultCalendar: defaultCalendar,
+                    calendar: calendar, hourHeight: hourHeight, margin: timelineMargin,
+                    scrollHandle: scrollHandle, activeEventID: $activeEventID,
+                    selectedID: $selectedEventID,
+                    selectEvent: { activateEvent($0.event) },
+                    create: { interval, allDay, calendarID in
+                        var target = MacTabletEventEditorTarget(event: nil, defaultDate: interval.start, usesExactStart: true)
+                        target.initialInterval = interval
+                        target.preferredCalendarID = calendarID
+                        target.defaultIsAllDay = allDay
+                        editorTarget = target
+                    }, commit: { event, interval, allDay, calendarID in
+                        let change = TimelineChange(event: event, interval: interval, allDay: allDay, calendarID: calendarID)
+                        if event.hasRecurrenceRules { pendingTimelineChange = change }
+                        else { saveTimelineChange(change, span: .thisEvent) }
+                    }, reportError: { store.errorMessage = $0 }, canEditEvent: store.canEdit, canEdit: store.canEdit)
+                }
             }
         }
         .onChange(of: activeEventID) { _, id in store.setInteractionActive(id != nil) }
@@ -727,7 +745,7 @@ struct MacTabletTimelineView: View {
                     MacTabletTimedEventBlock(store: store, event: placement.event,
                         defaultDate: columnDate(column), width: placement.frame.width,
                         height: placement.frame.height, textHeight: placement.textHeight,
-                        depth: placement.depth, editorTarget: $editorTarget,
+                        depth: placement.depth, displayOnly: scopedEvents != nil, editorTarget: $editorTarget,
                         isSelected: selectedEventID == MacCalendarTimelineItem.identity(placement.event),
                         activate: { activateEvent(placement.event) },
                         select: { selectEventForContextMenu(placement.event) })
@@ -846,6 +864,10 @@ struct MacTabletTimelineView: View {
     }
 
     private func eventsForColumn(_ index: Int) -> [EKEvent] {
+        if let scopedEvents {
+            guard let day = calendar.dateInterval(of: .day, for: columnDate(index)) else { return [] }
+            return scopedEvents.filter { $0.startDate < day.end && $0.endDate > day.start }
+        }
         if let calendars, calendars.indices.contains(index) {
             return store.events(on: dates.first ?? Date(), calendarID: calendars[index].calendarIdentifier, requiresVisibility: false)
         }

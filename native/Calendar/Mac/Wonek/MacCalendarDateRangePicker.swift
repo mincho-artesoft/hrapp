@@ -3,6 +3,28 @@
 #if os(macOS)
 import SwiftUI
 
+struct MacCalendarRangeButton: View {
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(CalendarTypography.headline)
+                .foregroundStyle(Color.primary)
+                .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: false)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 7)
+                .background(Color.secondary.opacity(0.09), in: RoundedRectangle(cornerRadius: 8))
+                .contentShape(RoundedRectangle(cornerRadius: 8))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Choose date range")
+        .accessibilityValue(title)
+    }
+}
+
 /// Same 350-point floating calendar, 40-point day cells, range selection and
 /// month/year wheel hierarchy as CalendarDateRangePickerViewController on iPad.
 struct MacCalendarDateRangePicker: View {

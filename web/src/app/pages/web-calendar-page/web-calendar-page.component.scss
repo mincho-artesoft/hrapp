@@ -3156,3 +3156,10 @@ cc-calendar-menu {
   container-type: inline-size;
   --section-mobile-size: clamp(12px, 4.8cqi, 15px);
 }
+
+.booking-timeline .cal-toolbar__left { flex: 1; min-width: 0; }
+.booking-calendar-title { min-width: 0; margin: 0; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.booking-timeline .range-anchor { margin-inline-start: auto; flex-shrink: 0; }
+.booking-timeline .range-popover { inset-inline: auto 0; }
+.ios-layout.booking-timeline .cal-shell { padding-bottom: env(safe-area-inset-bottom); }
+.booking-timeline .ev-block { cursor: default; }

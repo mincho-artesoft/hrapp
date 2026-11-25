@@ -1,6 +1,7 @@
 import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent } from '../../components/calendar-native/calendar-event-editor-fields';
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
+import { bookingTimelineEvents } from '../../core/booking-timeline';
 import { BookingWorkspace } from '../../core/booking-workspace';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
@@ -291,6 +292,33 @@ export class WebCalendarPageComponent
     { value: "bookings", label: "Bookings", symbol: "calendar.badge.checkmark" },
   ];
   readonly bookingPanel = viewChild(BookingsComponent);
+  private readonly bookingStore = inject(BookingWorkspace);
+  private readonly queryParams = toSignal(this.route.queryParamMap);
+  readonly bookingCalendar = computed(() => {
+    const id = this.bookingsRoute && this.queryParams()?.get('bookingSchedule');
+    return id ? this.bookingStore.data().calendars.find(calendar => calendar.id === id) : undefined;
+  });
+  private readonly bookingCalendarID = computed(() => this.bookingCalendar()?.id);
+  private readonly bookingRange = signal({start: this.startOfLocalDay(new Date()), count: 8});
+  openBookingTimeline(id: string) {
+    this.bookingRange.set({start: this.startOfLocalDay(new Date()), count: this.dayCount()});
+    this.searchOpen.set(false);
+    this.searchText.set('');
+    this.rangeOpen.set(false);
+    this.drawerOpen.set(false);
+    void this.router.navigate([], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {bookingSchedule: id},
+      state: {fromBookingList: true}});
+  }
+  closeBookingTimeline() {
+    this.rangeOpen.set(false);
+    this.selectBookingMode('availability');
+    if (window.history.state?.fromBookingList) window.history.back();
+    else void this.router.navigate([], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {bookingSchedule: null}, replaceUrl: true});
+  }
+  openTimelineDay(day: Date) {
+    if (this.bookingCalendar()) this.bookingRange.set({start: day, count: 1});
+    else { this.selectMiniDay(day); this.setView('day'); }
+  }
   readonly bookingMode = signal("appointments");
   readonly bookingModes = [
     {value: "appointments", label: "My bookings"},
@@ -366,8 +394,9 @@ export class WebCalendarPageComponent
   applyRange(range: {start: string; end: string}) {
     const first = new Date(range.start + 'T00:00:00');
     const last = new Date(range.end + 'T00:00:00');
-    this.anchorDate.set(first);
-    this.dayCount.set(Math.min(31, Math.round((last.getTime() - first.getTime()) / 86400000) + 1));
+    const count = Math.min(31, Math.round((last.getTime() - first.getTime()) / 86400000) + 1);
+    if (this.bookingCalendar()) this.bookingRange.set({start: first, count});
+    else { this.anchorDate.set(first); this.dayCount.set(count); }
   }
   readonly canShare = canShareEvent;
   readonly preferences = this.localization.preferences;
@@ -895,6 +924,7 @@ export class WebCalendarPageComponent
     if (!this.isDesktop()) this.showEvent(event);
   }
   activateEvent(event: WebCalendarEvent) {
+    if (this.bookingCalendar()) return;
     if (event.readOnly) this.showEvent(event);
     else this.openEditEventModal(event);
   }
@@ -965,6 +995,7 @@ export class WebCalendarPageComponent
     this.eventContext.set(null);
   }
   timedEventClick(event: WebCalendarEvent, input: Event) {
+    if (this.bookingCalendar()) return;
     if (this.isDesktop()) {
       if (input instanceof KeyboardEvent || (input instanceof MouseEvent && input.detail === 0)) {
         input.preventDefault();
@@ -980,6 +1011,7 @@ export class WebCalendarPageComponent
   contextEvent(event: WebCalendarEvent, input: MouseEvent) {
     input.preventDefault();
     input.stopPropagation();
+    if (this.bookingCalendar()) return;
     // Browsers synthesize contextmenu during a touch hold. The timeline owns that drag.
     if (this.drag()?.touch || this.monthPointer?.touch || (input as PointerEvent).pointerType === 'touch') return;
     this.openEventActions(event, input);
@@ -1002,6 +1034,7 @@ export class WebCalendarPageComponent
   }
   @HostListener("document:keydown.escape") closeOverlays() {
     if (this.rangeOpen()) { this.rangeOpen.set(false); return; }
+    if (this.bookingCalendar()) { this.closeBookingTimeline(); return; }
     if (this.editorDraft()) {
       if (!this.savingEvent()) this.closeEditor();
       return;
@@ -1026,6 +1059,12 @@ export class WebCalendarPageComponent
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(params => {
       void this.localization.usePageLanguage(this.route.snapshot.data["locale"] ?? DEFAULT_LOCALE, params.get("lang"));
     });
+    effect(onCleanup => {
+      const id = this.bookingCalendarID();
+      if (!id || !this.isBrowser) return;
+      const timer = setTimeout(() => this.scrollToWorkingHours(), 0);
+      onCleanup(() => clearTimeout(timer));
+    });
     let lastList: HTMLElement | undefined;
     let lastRequest: Date | null = null;
     let lastTarget = "";
@@ -1048,7 +1087,7 @@ export class WebCalendarPageComponent
       lastTarget = target.key;
     });
     effect(onCleanup => {
-      if (!this.isBrowser || !this.api.isSignedInWithAccount() || !['day', 'multi', 'week', 'workweek'].includes(this.viewMode())) return;
+      if (!this.isBrowser || !this.api.isSignedInWithAccount() || (!this.bookingCalendar() && !['day', 'multi', 'week', 'workweek'].includes(this.viewMode()))) return;
       const selected = this.forecastSource.selectedPlace();
       const units = this.preferences()['units'];
       const locale = this.localization.locale();
@@ -1328,6 +1367,10 @@ export class WebCalendarPageComponent
 
   // Visible columns for Day / Workweek / Week
   readonly visibleDays = computed<Date[]>(() => {
+    if (this.bookingCalendar()) {
+      const {start, count} = this.bookingRange();
+      return Array.from({length: count}, (_, index) => this.addDays(start, index));
+    }
     const anchor = this.anchorDate();
     const mode = this.viewMode();
     if (mode === "day") return [anchor];
@@ -1642,8 +1685,9 @@ export class WebCalendarPageComponent
 
     // Tick current red time line every 30s
     this.clockTimer = setInterval(() => {
-      if (this.bookingsRoute) return;
+      if (this.bookingsRoute && !this.bookingCalendar()) return;
       this.nowTick.set(new Date());
+      if (this.bookingsRoute) return;
       this.deliverEventAlerts();
     }, 30_000);
 
@@ -2018,8 +2062,12 @@ export class WebCalendarPageComponent
   }
 
   readonly timelineColumns = computed(() => {
-    const events = this.allDisplayEvents();
-    return this.visibleDays().map((day, index) => {
+    const days = this.visibleDays();
+    const schedule = this.bookingCalendar();
+    const events = schedule
+      ? bookingTimelineEvents(schedule, days[0], timelineDay(days[days.length - 1], 1), label => this.localization.text(label))
+      : this.allDisplayEvents();
+    return days.map((day, index) => {
       const next = timelineDay(day, 1);
       const items = events.filter(event =>
         (this.viewMode() !== 'multi' || event.calendarId === this.multiCalendars()[index]?.id) &&
@@ -2067,6 +2115,7 @@ export class WebCalendarPageComponent
   };
 
   startTimelineGesture(ev: PointerEvent, mode: TimelineGesture, index: number, event?: WebCalendarEvent, allDay = false): void {
+    if (this.bookingCalendar()) return;
     if (ev.button !== 0 || !ev.isPrimary || this.savingEvent()) return;
     ev.stopPropagation();
     if (this.drag()?.active) return;
@@ -2191,7 +2240,6 @@ export class WebCalendarPageComponent
     }
   }
 
-  @HostListener('document:keydown.escape')
   @HostListener('window:blur')
   cancelDrag(): void {
     this.cancelMonthPress();
@@ -2261,6 +2309,7 @@ export class WebCalendarPageComponent
   }
 
   doubleClickSlot(ev: MouseEvent, index: number, allDay = false): void {
+    if (this.bookingCalendar()) return;
     if ((ev.target as Element).closest('.ev-block,.allday-pill')) return;
     const day = this.visibleDays()[index];
     const top = this.daysColumnsRef!.nativeElement.getBoundingClientRect().top;

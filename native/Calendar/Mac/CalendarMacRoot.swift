@@ -11,6 +11,7 @@ struct CalendarMacRoot: View {
     @State private var displayedYear = Calendar.current.component(.year, from: Date())
     @AppStorage("selectedTabRoot") private var selectedTab = 0
     @ObservedObject private var bookingAccount = CloudAccountManager.shared
+    @State private var bookingTimelineID: String?
     @State private var bookingAdd = 0
     @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var multiDayCount = 8
@@ -49,12 +50,14 @@ struct CalendarMacRoot: View {
                     }
                     ZStack(alignment: .topTrailing) {
                         VStack(spacing: 0) {
-                            CalendarSearchHeader(isSearching: searching, height: CalendarHeaderLayout.height) {
-                                header
-                            } search: {
-                                searchBar
+                            if bookingTimelineID == nil {
+                                CalendarSearchHeader(isSearching: searching, height: CalendarHeaderLayout.height) {
+                                    header
+                                } search: {
+                                    searchBar
+                                }
+                                Divider()
                             }
-                            Divider()
                             if selectedTab == 7 { menuPage }
                             else if searching && !search.isEmpty {
                                 MacTabletSearchResultsView(store: store, query: search, editorTarget: $editorTarget)
@@ -105,12 +108,14 @@ struct CalendarMacRoot: View {
         .onReceive(store.$events) { _ in MacCalendarReminderScheduler.shared.refresh(store: store) }
         .onChange(of: eventNotifications) { _, enabled in MacCalendarReminderScheduler.shared.refresh(store: store, requestPermission: enabled) }
         .onChange(of: selectedTab) { oldTab, _ in
+            bookingTimelineID = nil
             if MacCalendarMode(rawValue: oldTab)?.canReturnFromMenu == true { lastCalendarTab = oldTab }
             searching = false; search = ""; rangePickerIsOpen = false; viewMenuIsOpen = false
         }
         .onChange(of: scenePhase) { _, phase in if phase == .active { store.reload() } }
         .onExitCommand {
             if viewMenuIsOpen || rangePickerIsOpen { rangePickerIsOpen = false; viewMenuIsOpen = false }
+            else if bookingTimelineID != nil { bookingTimelineID = nil }
             else if selectedTab >= 6 { selectedTab = lastCalendarTab }
         }
         .task {
@@ -141,7 +146,8 @@ struct CalendarMacRoot: View {
         case 2: MacTabletYearView(store: store, year: $displayedYear, month: $displayedMonth, selectedTab: $selectedTab)
         case 3: MacTabletMultiDayView(store: store, startDate: $selectedDate, dayCount: multiDayCount, selectedTab: $selectedTab, editorTarget: $editorTarget)
         case 4: MacTabletListView(store: store, scrollRequest: listScrollRequest, editorTarget: $editorTarget)
-        case MacCalendarMode.bookings.rawValue: BookingsContent(mode: bookingMode, addAction: bookingAdd)
+        case MacCalendarMode.bookings.rawValue: BookingsContent(mode: bookingMode, addAction: bookingAdd, timelineID: $bookingTimelineID)
+                .environmentObject(store)
         case 5: MacTabletMultiCalendarView(store: store, selectedDate: $selectedDate, editorTarget: $editorTarget)
         default: MacTabletMonthView(store: store, month: $displayedMonth, selectedDate: $selectedDate, selectedTab: $selectedTab, editorTarget: $editorTarget)
         }
@@ -162,23 +168,10 @@ struct CalendarMacRoot: View {
                 }
                 .buttonStyle(.plain)
             case 3:
-                Button {
+                MacCalendarRangeButton(title: multiDayRangeTitle) {
                     viewMenuIsOpen = false
                     rangePickerIsOpen.toggle()
-                } label: {
-                    Text(multiDayRangeTitle)
-                        .font(CalendarTypography.headline)
-                        .foregroundStyle(Color.primary)
-                        .lineLimit(1)
-                        .fixedSize(horizontal: true, vertical: false)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 7)
-                        .background(Color.secondary.opacity(0.09), in: RoundedRectangle(cornerRadius: 8))
-                        .contentShape(RoundedRectangle(cornerRadius: 8))
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Choose date range")
-                .accessibilityValue(multiDayRangeTitle)
             default:
                 EmptyView()
             }

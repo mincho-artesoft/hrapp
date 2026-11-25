@@ -12,6 +12,8 @@ struct CalendarScreenHeader: View {
     var bookingMode: Binding<BookingViewMode>? = nil
     var rangeTitle: String? = nil
     var rangeIsSelected = false
+    var scopedTitle: String? = nil
+    var onBack: (() -> Void)? = nil
     var tint: Color = .appBlue
     var controlsHidden = false
     var onTitle: (() -> Void)? = nil
@@ -23,6 +25,13 @@ struct CalendarScreenHeader: View {
     var body: some View {
         HStack(spacing: CalendarHeaderLayout.spacing) {
             if !controlsHidden {
+                if let scopedTitle, let onBack {
+                    Button(action: onBack) { icon("chevron.backward") }
+                        .accessibilityLabel(Text("Back"))
+                    Text(verbatim: scopedTitle).font(CalendarTypography.headline).lineLimit(1)
+                        .foregroundStyle(.primary)
+                        .accessibilityAddTraits(.isHeader)
+                }
                 if let onSavedRegions {
                     Button(action: onSavedRegions) { icon("list.bullet") }
                         .accessibilityLabel(Text("Saved Regions"))
@@ -32,6 +41,10 @@ struct CalendarScreenHeader: View {
                     BookingModePicker(selection: bookingMode)
                     Spacer(minLength: 0)
                 } else if let rangeTitle {
+                    #if os(macOS)
+                    MacCalendarRangeButton(title: rangeTitle) { onRange?() }
+                    Spacer(minLength: 0)
+                    #else
                     Button { onRange?() } label: {
                         Text(rangeTitle)
                             .font(.system(size: 16, weight: .medium))
@@ -41,6 +54,7 @@ struct CalendarScreenHeader: View {
                             .background(CalendarSurfaceColors.tertiaryFill, in: RoundedRectangle(cornerRadius: 8))
                     }
                     .accessibilityIdentifier("calendar-header-date-range")
+                    #endif
                 } else if let title, let onTitle {
                     Button(action: onTitle) {
                         Text(title).font(.system(size: 16, weight: .medium))
@@ -61,27 +75,29 @@ struct CalendarScreenHeader: View {
                         .accessibilityLabel(currentView == 6 ? Text("Search for a city…") : Text("Search events..."))
                         .accessibilityIdentifier("calendar-header-search")
                 }
-                #if os(macOS)
-                MacCalendarViewPicker(selectedTab: currentView, tint: tint, onSelect: onViewChange)
-                MacCalendarMenuButton(tint: tint) { onViewChange(MacCalendarMode.menu.rawValue) }
-                #else
-                Menu {
-                    Picker("", selection: Binding(get: { currentView }, set: { onViewChange($0) })) {
-                        ForEach(CalendarHeaderMode.allCases, id: \.rawValue) { mode in
-                            Label(LocalizedStringKey(mode.title), systemImage: mode.symbol).tag(mode.rawValue)
+                if scopedTitle == nil {
+                    #if os(macOS)
+                    MacCalendarViewPicker(selectedTab: currentView, tint: tint, onSelect: onViewChange)
+                    MacCalendarMenuButton(tint: tint) { onViewChange(MacCalendarMode.menu.rawValue) }
+                    #else
+                    Menu {
+                        Picker("", selection: Binding(get: { currentView }, set: { onViewChange($0) })) {
+                            ForEach(CalendarHeaderMode.allCases, id: \.rawValue) { mode in
+                                Label(LocalizedStringKey(mode.title), systemImage: mode.symbol).tag(mode.rawValue)
+                            }
                         }
+                        .pickerStyle(.inline)
+                        .foregroundStyle(.primary)
+                    } label: {
+                        icon(CalendarHeaderMode(rawValue: currentView)?.symbol ?? "calendar")
+                            .foregroundStyle(tint)
                     }
-                    .pickerStyle(.inline)
-                    .foregroundStyle(.primary)
-                } label: {
-                    icon(CalendarHeaderMode(rawValue: currentView)?.symbol ?? "calendar")
-                        .foregroundStyle(tint)
+                    .tint(.primary)
+                    .menuIndicator(.hidden)
+                    .accessibilityLabel(Text("Menu"))
+                    .accessibilityIdentifier("calendar-view-menu")
+                    #endif
                 }
-                .tint(.primary)
-                .menuIndicator(.hidden)
-                .accessibilityLabel(Text("Menu"))
-                .accessibilityIdentifier("calendar-view-menu")
-                #endif
             } else {
                 Spacer(minLength: 0)
             }
@@ -125,18 +141,20 @@ final class CalendarScreenHeaderHost {
         let rangeIsSelected: Bool
         let rtl: Bool
         let localeIdentifier: String
+        var scopedTitle: String? = nil
     }
     private var snapshot: Snapshot?
     private var controller: UIHostingController<AnyView>?
 
     func update(in container: UIView, snapshot: Snapshot, hidden: Bool,
                 onTitle: @escaping () -> Void, onRange: @escaping () -> Void,
-                onSearch: @escaping () -> Void, onViewChange: @escaping (Int) -> Void) {
+                onBack: (() -> Void)? = nil, onSearch: @escaping () -> Void, onViewChange: @escaping (Int) -> Void) {
         if self.snapshot != snapshot || controller == nil {
             self.snapshot = snapshot
             let root = AnyView(CalendarScreenHeader(currentView: snapshot.mode,
                 title: snapshot.title, rangeTitle: snapshot.range, rangeIsSelected: snapshot.rangeIsSelected,
-                onTitle: onTitle, onRange: onRange, onSearch: onSearch, onViewChange: onViewChange)
+                scopedTitle: snapshot.scopedTitle, onBack: onBack,
+                onTitle: onTitle, onRange: onRange, onSearch: snapshot.scopedTitle == nil ? onSearch : nil, onViewChange: onViewChange)
                 .environment(\.locale, Locale(identifier: snapshot.localeIdentifier))
                 .environment(\.layoutDirection, snapshot.rtl ? .rightToLeft : .leftToRight))
             if let controller { controller.rootView = root }

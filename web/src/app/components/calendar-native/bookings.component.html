@@ -29,7 +29,7 @@
       @if (matches(c.title, purpose(c))) {
         <article class="native-form-group" [attr.aria-label]="c.title" [style.--booking-color]="c.color">
           <div class="native-form-row calendar-summary">
-            <button class="name details" type="button" [attr.aria-label]="c.title + ' · ' + ('Multi-day calendar view' | nativeText)" (click)="openTimeline(c)">
+            <button class="name details" type="button" [attr.aria-label]="c.title + ' · ' + ('Multi-day calendar view' | nativeText)" (click)="timelineRequested.emit(c.id)">
               <strong class="event-color">{{ c.title }}</strong>
               <small>{{ purpose(c) }}</small>
             </button>
@@ -83,7 +83,7 @@
   }
   @if (message() && !sheet.open) { <p role="alert">{{ message() }}</p> }
 </section>
-<dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)" (close)="timelineId.set(null)" [class.timeline-sheet]="panel() === 'timeline'">
+<dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)">
   @let subpage = !!locationDraft || choosingType || choosingColor || customRepeat;
   <header class="native-sheet-header">
     <button class="round-button" [class.back]="subpage" [disabled]="busy()" [attr.aria-label]="(subpage?'Back':'Close')|nativeText" (click)="back()">
@@ -95,16 +95,11 @@
         (click)="panel()==='edit' ? saveCalendar() : saveSlot()"><cc-symbol [pointSize]="17" name="checkmark" /></button>
     }
   </header>
-  <div class="sheet-body" [class.timeline-body]="panel() === 'timeline'">
+  <div class="sheet-body">
   @if(locationDraft;as venue){<cc-location-editor [draft]="venue" [desktop]="desktop()" (done)="back()" />}
   @else if(customRepeat && slot?.rule){<cc-repeat [start]="slot!.date" [firstWeekday]="firstWeekday()" [rule]="slot!.rule!" (ruleChange)="slot!.rule=$event" />}
   @else {
   @switch(panel()){
-    @case ('timeline') {
-      @if (timelineCalendar(); as calendar) {
-        <cc-booking-calendar-timeline [calendar]="calendar" />
-      }
-    }
     @case ('edit') {
       @if(choosingColor){
         <div class="native-form-group color-options"><cc-calendar-color-options [value]="color" (picked)="color=$event" /></div>

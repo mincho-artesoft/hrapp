@@ -23,6 +23,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     public var currentView: Int = 3 { didSet { setNeedsLayout() } }
 
+    var scopedTitle: String?
+    var onScopeBack: (() -> Void)?
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
@@ -523,11 +525,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         headerHost.update(in: navBar, snapshot: .init(mode: currentView,
             title: showSingleDay && !isLandscape ? appDateFormatter(template: "LLLL").string(from: fromDate) : nil,
             range: showSingleDay ? nil : dateRangeTitle, rangeIsSelected: showCalendar,
-            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier),
+            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier, scopedTitle: scopedTitle),
             hidden: isSearching,
             onTitle: { [weak self] in self?.monthLabelTapped() },
             onRange: { [weak self] in self?.didTapDateRangeButton() },
-            onSearch: { [weak self] in self?.searchButtonTapped() },
+            onBack: onScopeBack, onSearch: { [weak self] in self?.searchButtonTapped() },
             onViewChange: { [weak self] mode in
                 self?.currentView = mode
                 self?.onViewChange?(mode)

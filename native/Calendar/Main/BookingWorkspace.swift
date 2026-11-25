@@ -158,14 +158,16 @@ private final class BookingStore: ObservableObject {
 struct BookingsContent: View {
     let mode: BookingViewMode
     let addAction: Int
+    @Binding var timelineID: String?
     @ObservedObject private var manager = CloudAccountManager.shared
 
     var body: some View {
         if manager.isSignedIn, let session = CalendarFeedSession.existing {
-            SignedInBookingsContent(mode: mode, addAction: addAction, session: session)
+            SignedInBookingsContent(mode: mode, addAction: addAction, session: session, timelineID: $timelineID)
                 .id(session.calendarId)
         } else {
             CalendarSharingForm { CalendarSharingSection { CloudAccountSignInContent() } }
+                .onAppear { timelineID = nil }
         }
     }
 }
@@ -175,13 +177,43 @@ private struct SignedInBookingsContent: View {
     let addAction: Int
     let session: CloudCalendarsAPI.Session
     @ObservedObject private var store = BookingStore.shared
-    @State private var timeline: HostedBookingCalendar?
+    @Binding var timelineID: String?
     @State private var editing: HostedBookingCalendar?
     @State private var slotTarget: BookingSlotTarget?
     @State private var lookup = false
     @State private var deciding = false
     @State private var failure: String?
     var body: some View {
+        Group {
+            if let timelineID, mode == .availability, store.belongs(to: session),
+               let schedule = store.data.calendars.first(where: { $0.id == timelineID }) {
+                BookingCalendarTimeline(schedule: schedule, color: bookingColor(schedule.color),
+                                        onBack: { self.timelineID = nil })
+                    .id(schedule.id)
+            } else {
+                bookingList
+            }
+        }
+        .task {
+            repeat {
+                await store.refresh()
+                do { try await Task.sleep(for: .seconds(30)) } catch { return }
+            } while !Task.isCancelled
+        }
+        .onChange(of: store.data.calendars.map(\.id)) { _, ids in
+            if let timelineID, !ids.contains(timelineID) { self.timelineID = nil }
+        }
+        .onChange(of: mode) { timelineID = nil }
+        .onChange(of: addAction) { add() }
+        .sheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
+        .sheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
+        .sheet(isPresented: $lookup) { BookingLookupSheet() }
+        .alert("Bookings", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
+            Button("OK") { failure = nil }
+        } message: { Text(verbatim: failure ?? "") }
+    }
+
+    private var bookingList: some View {
         CalendarSharingForm {
             CalendarSharingSection(rows: true) {
             Button { add() } label: {
@@ -199,7 +231,7 @@ private struct SignedInBookingsContent: View {
                 ForEach(store.data.calendars) { calendar in
                     CalendarSharingSection(rows: true) {
                         HStack(spacing: 0) {
-                            Button { timeline = calendar } label: {
+                            Button { timelineID = calendar.id } label: {
                                 VStack(alignment: .leading) {
                                     Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
                                     Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
@@ -264,29 +296,6 @@ private struct SignedInBookingsContent: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .task {
-            repeat {
-                await store.refresh()
-                do { try await Task.sleep(for: .seconds(30)) } catch { return }
-            } while !Task.isCancelled
-        }
-        .onChange(of: addAction) { add() }
-        .onChange(of: store.data.calendars.map(\.id)) { _, ids in
-            if let timeline, !ids.contains(timeline.id) { self.timeline = nil }
-        }
-        .sheet(item: $timeline) { selected in
-            BookingSheet(title: "Multi-day calendar view", leading: "Close", back: { timeline = nil }) {
-                if let current = store.data.calendars.first(where: { $0.id == selected.id }) {
-                    BookingCalendarTimeline(schedule: current, color: bookingColor(current.color))
-                }
-            }
-        }
-        .sheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
-        .sheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
-        .sheet(isPresented: $lookup) { BookingLookupSheet() }
-        .alert("Bookings", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
-            Button("OK") { failure = nil }
-        } message: { Text(verbatim: failure ?? "") }
     }
     private func add() {
         guard CalendarFeedSession.existing != nil else {
