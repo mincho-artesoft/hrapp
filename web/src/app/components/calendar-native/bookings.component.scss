@@ -142,13 +142,7 @@ dialog::backdrop { background: #0006; }
   :host-context(.ios-layout) { @include compact-sheet; }
 }
 
-.type-option select {
-  margin-inline-start: auto;
-  max-width: 70%;
-  font: inherit;
-  color: var(--cal-text);
-  background: var(--cal-panel);
-}
+.native-form-row.booking-category { padding-block: 0; }
 .booking-visibility {
   min-height: 52px;
   cursor: pointer;

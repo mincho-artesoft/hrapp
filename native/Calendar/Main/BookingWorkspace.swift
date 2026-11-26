@@ -612,6 +612,80 @@ private struct BookingSheet<Content: View>: View {
     }
 }
 
+private struct BookingTypeRow: View {
+    let selection: String
+    let open: () -> Void
+
+    var body: some View {
+        Button(action: open) {
+            HStack {
+                Text("Appointment type")
+                Spacer()
+                Text(verbatim: selection.isEmpty ? NSLocalizedString("Choose type", comment: "") : bookingPurpose(selection, nil))
+                    .foregroundStyle(.secondary)
+                Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
+            }.contentShape(Rectangle())
+        }.buttonStyle(.plain)
+    }
+}
+
+private struct BookingTypePicker: View {
+    let selection: String
+    var category = ""
+    var allowsClear = false
+    let back: () -> Void
+    let choose: (String) -> Void
+    @State private var search = ""
+
+    var body: some View {
+        #if os(macOS)
+        VStack(spacing: 0) {
+            MacCalendarSheetHeader(title: Text("Appointment type")) {
+                MacCalendarToolbarIconButton(icon: "chevron.backward", title: "Back", action: back)
+            } trailing: { EmptyView() }
+            form
+        }
+        .background(CalendarPalette.groupedBackground)
+        .navigationBarBackButtonHidden()
+        #else
+        form.navigationTitle("Appointment type").navigationBarTitleDisplayMode(.inline)
+        #endif
+    }
+
+    private var form: some View {
+        CalendarSharingForm {
+            CalendarSharingSection(rows: true) {
+                HStack { Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                    TextField("Search appointment types", text: $search).textFieldStyle(.plain)
+                }
+            }
+            if allowsClear && !selection.isEmpty {
+                CalendarSharingSection(rows: true) {
+                    Button("Clear") { choose("") }.calendarSharingRowAction()
+                }
+            }
+            let groups = BookingTypeGroup.matching(search).filter { category.isEmpty || $0.title == category }
+            if groups.isEmpty { CalendarSharingSection { Text("No matching types").foregroundStyle(.secondary) } }
+            ForEach(groups, id: \.title) { group in
+                CalendarSharingSection(LocalizedStringKey(group.title), rows: true) {
+                    ForEach(group.types, id: \.self) { item in
+                        Button {
+                            choose(item)
+                        } label: {
+                            HStack {
+                                Text(verbatim: bookingPurpose(item, nil))
+                                Spacer()
+                                if selection == item { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
+                            }.contentShape(Rectangle())
+                        }.buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 private struct BookingCalendarEditor: View {
     let calendar: HostedBookingCalendar
     @Environment(\.dismiss) private var dismiss
@@ -621,7 +695,6 @@ private struct BookingCalendarEditor: View {
     @State private var customType: String
     @State private var listed: Bool
     @State private var created: HostedBookingCalendar?
-    @State private var search = ""
     @State private var choosingType = false
     @State private var busy = false
     @State private var error: String?
@@ -651,20 +724,10 @@ private struct BookingCalendarEditor: View {
             .toolbar(.hidden, for: .windowToolbar)
             #endif
             .navigationDestination(isPresented: $choosingType) {
-                #if os(macOS)
-                VStack(spacing: 0) {
-                    MacCalendarSheetHeader(title: Text("Appointment type")) {
-                        MacCalendarToolbarIconButton(icon: "chevron.backward", title: "Back") { choosingType = false }
-                    } trailing: { EmptyView() }
-                    typePicker
+                BookingTypePicker(selection: type, back: { choosingType = false }) { item in
+                    type = item
+                    choosingType = false
                 }
-                .background(CalendarPalette.groupedBackground)
-                .navigationBarBackButtonHidden()
-                #else
-                typePicker
-                    .navigationTitle("Appointment type")
-                    .navigationBarTitleDisplayMode(.inline)
-                #endif
             }
         }
         .calendarSharingSheetSize()
@@ -674,47 +737,11 @@ private struct BookingCalendarEditor: View {
             Button("Cancel", role: .cancel) {}
         }
     }
-    private var typePicker: some View {
-        CalendarSharingForm {
-            CalendarSharingSection(rows: true) {
-                HStack { Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-                    TextField("Search appointment types", text: $search).textFieldStyle(.plain)
-                }
-            }
-            let groups = BookingTypeGroup.matching(search)
-            if groups.isEmpty { CalendarSharingSection { Text("No matching types").foregroundStyle(.secondary) } }
-            ForEach(groups, id: \.title) { group in
-                CalendarSharingSection(LocalizedStringKey(group.title), rows: true) {
-                    ForEach(group.types, id: \.self) { item in
-                        Button {
-                            type = item
-                            choosingType = false
-                        } label: {
-                            HStack {
-                                Text(verbatim: bookingPurpose(item, nil))
-                                Spacer()
-                                if type == item { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
-                            }.contentShape(Rectangle())
-                        }.buttonStyle(.plain)
-                    }
-                }
-            }
-        }
-    }
-
     private var editor: some View {
         CalendarSharingForm {
             CalendarSharingSection(rows: true) {
                 TextField("Name", text: $title).textFieldStyle(.plain)
-                Button { search = ""; choosingType = true } label: {
-                    HStack {
-                        Text("Appointment type")
-                        Spacer()
-                        Text(verbatim: type.isEmpty ? NSLocalizedString("Choose type", comment: "") : bookingPurpose(type, nil))
-                            .foregroundStyle(.secondary)
-                        Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
-                    }.contentShape(Rectangle())
-                }.buttonStyle(.plain)
+                BookingTypeRow(selection: type) { choosingType = true }
                 if type == "Other" { TextField("Custom type (optional)", text: $customType).textFieldStyle(.plain) }
                 Toggle(isOn: $listed) {
                     Text("Show in booking search")
@@ -930,6 +957,8 @@ private struct BookingLookupSheet: View {
     @State private var error: String?
     @State private var search = ""
     @State private var category = ""
+    @State private var appointmentType = ""
+    @State private var choosingType = false
     @State private var directory: [BookingListing] = []
     @State private var loading = true
     @State private var directoryError: String?
@@ -940,13 +969,38 @@ private struct BookingLookupSheet: View {
         let types = BookingTypeGroup.catalog.first { $0.title == category }?.types
         let matchingTypes = Set(BookingTypeGroup.matching(query).flatMap(\.types))
         return directory.filter { item in
-            (types?.contains(item.appointmentType) ?? true) &&
+            (appointmentType.isEmpty || item.appointmentType == appointmentType) && (types?.contains(item.appointmentType) ?? true) &&
                 (query.isEmpty || matchingTypes.contains(item.appointmentType) ||
                  [item.title, item.hostName, item.appointmentType, item.customType ?? ""].contains { $0.localizedStandardContains(query) })
         }.sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
     }
 
     var body: some View {
+        NavigationStack {
+            lookupPage
+                #if os(macOS)
+                .toolbar(.hidden, for: .windowToolbar)
+                #endif
+                .navigationDestination(isPresented: $choosingType) {
+                    BookingTypePicker(selection: appointmentType, category: category, allowsClear: true, back: { choosingType = false }) { item in
+                        appointmentType = item
+                        choosingType = false
+                    }
+                }
+        }
+        .calendarSharingSheetSize()
+        .disabled(busy).interactiveDismissDisabled(busy)
+        .task(id: attempt) { await loadDirectory() }
+    }
+
+    @ViewBuilder private var categoryOptions: some View {
+        Text("All categories").tag("")
+        ForEach(BookingTypeGroup.catalog, id: \.title) { group in
+            Text(LocalizedStringKey(group.title)).tag(group.title)
+        }
+    }
+
+    private var lookupPage: some View {
         BookingSheet(title: "Open booking calendar", leading: offer == nil ? "Close" : "Back", back: {
             if offer == nil { dismiss() } else { offer = nil; error = nil }
         }) {
@@ -983,12 +1037,12 @@ private struct BookingLookupSheet: View {
                                 .onChange(of: search) { _, _ in openSearchLink() }
                                 .onSubmit { openSearchLink(submitted: true) }
                         }
-                        Picker("Category", selection: $category) {
-                            Text("All categories").tag("")
-                            ForEach(BookingTypeGroup.catalog, id: \.title) { group in
-                                Text(LocalizedStringKey(group.title)).tag(group.title)
-                            }
-                        }.pickerStyle(.menu)
+                        #if os(macOS)
+                        AppPicker("Category", selection: $category) { categoryOptions }
+                        #else
+                        Picker("Category", selection: $category) { categoryOptions }.pickerStyle(.menu)
+                        #endif
+                        BookingTypeRow(selection: appointmentType) { choosingType = true }
                     }
                     CalendarSharingSection("Booking calendars", rows: true) {
                         let results = matches
@@ -1014,9 +1068,8 @@ private struct BookingLookupSheet: View {
                 }
                 if let error { Text(verbatim: error).foregroundStyle(.red) }
             }
-        }
-        .disabled(busy).interactiveDismissDisabled(busy)
-        .task(id: attempt) { await loadDirectory() }
+        }.page
+        .onChange(of: category) { _, _ in appointmentType = "" }
     }
     private func loadDirectory() async {
         directory = []; directoryError = nil; loading = true

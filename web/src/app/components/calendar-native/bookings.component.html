@@ -94,6 +94,13 @@
   }
   @if (message() && !sheet.open) { <p role="alert">{{ message() }}</p> }
 </section>
+<ng-template #typeRow>
+  <button type="button" class="native-form-row type-option" [disabled]="busy()" (click)="typeSearch=''; choosingType=true">
+    <span>{{ 'Appointment type' | nativeText }}</span>
+    <span class="value">{{ panel()==='edit' && type==='Other' && customType.trim() ? customType : typeLabel(selectedType || 'Choose type') }}</span>
+    <cc-symbol class="disclosure" [pointSize]="12" name="chevron.right" />
+  </button>
+</ng-template>
 <dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)" (close)="sheetClosed()">
   @let subpage = !!locationDraft || choosingType || customRepeat || (fromDirectory && panel()==='offer');
   <header class="native-sheet-header">
@@ -109,32 +116,37 @@
   <div class="sheet-body">
   @if(locationDraft;as venue){<cc-location-editor [draft]="venue" [desktop]="desktop()" (done)="back()" />}
   @else if(customRepeat && slot?.rule){<cc-repeat [start]="slot!.date" [firstWeekday]="firstWeekday()" [rule]="slot!.rule!" (ruleChange)="slot!.rule=$event" />}
+  @else if (choosingType) {
+    <div class="native-form-group">
+      <label class="native-form-row type-search">
+        <cc-symbol name="magnifyingglass" [pointSize]="17" />
+        <input type="search" [attr.aria-label]="'Search appointment types' | nativeText"
+          [placeholder]="'Search appointment types' | nativeText" [(ngModel)]="typeSearch">
+      </label>
+    </div>
+    @if (panel() === 'lookup' && filterType()) {
+      <div class="native-form-group">
+        <button type="button" class="native-form-row action" (click)="selectType('')">{{ 'Clear' | nativeText }}</button>
+      </div>
+    }
+    @for (group of filteredTypes; track group.title) {
+      <h3 class="group-heading">{{ group.title | nativeText }}</h3>
+      <div class="native-form-group">
+        @for (item of group.types; track item) {
+          <button class="native-form-row type-option" [attr.aria-pressed]="item === selectedType" (click)="selectType(item)">
+            <span>{{ typeLabel(item) }}</span>
+            @if (item === selectedType) { <cc-symbol [pointSize]="15" name="checkmark" /> }
+          </button>
+        }
+      </div>
+    } @empty { <p class="empty">{{ 'No matching types' | nativeText }}</p> }
+  }
   @else {
   @switch(panel()){
     @case ('edit') {
-      @if(choosingType){
-        <div class="native-form-group">
-          <label class="native-form-row type-search">
-            <cc-symbol name="magnifyingglass" [pointSize]="17" />
-            <input type="search" [attr.aria-label]="'Search appointment types' | nativeText"
-              [placeholder]="'Search appointment types' | nativeText" [(ngModel)]="typeSearch">
-          </label>
-        </div>
-        @for (group of filteredTypes; track group.title) {
-          <h3 class="group-heading">{{ group.title | nativeText }}</h3>
-          <div class="native-form-group">
-            @for (item of group.types; track item) {
-              <button class="native-form-row type-option" [attr.aria-pressed]="item === type" (click)="type=item;choosingType=false">
-                <span>{{ typeLabel(item) }}</span>
-                @if (item === type) { <cc-symbol [pointSize]="15" name="checkmark" /> }
-              </button>
-            }
-          </div>
-        } @empty { <p class="empty">{{ 'No matching types' | nativeText }}</p> }
-      } @else {
       <div class="native-form-group">
         <label class="native-form-row"><input [attr.aria-label]="'Name'|nativeText" [placeholder]="'Name'|nativeText" [(ngModel)]="title" maxlength="200"></label>
-        <button class="native-form-row type-option" (click)="typeSearch='';choosingType=true"><span>{{'Appointment type'|nativeText}}</span><span class="value">{{ type === 'Other' && customType.trim() ? customType : typeLabel(type || 'Choose type') }}</span><cc-symbol class="disclosure" [pointSize]="12" name="chevron.right" /></button>
+        <ng-container [ngTemplateOutlet]="typeRow" />
         @if(type==='Other'){<label class="native-form-row"><input [attr.aria-label]="'Custom type (optional)'|nativeText" [placeholder]="'Custom type (optional)'|nativeText" maxlength="100" [(ngModel)]="customType"></label>}
         <label class="native-form-row booking-visibility">
           <span>{{ 'Show in booking search' | nativeText }}</span>
@@ -144,7 +156,6 @@
       @if(editing) {
         <cc-calendar-removal prompt="Delete booking calendar?" [busy]="busy()"
           [(confirming)]="confirmingRemoval" (confirmed)="remove()" />
-      }
       }
     }
     @case ('slot') {
@@ -175,12 +186,11 @@
           <input type="search" [attr.aria-label]="'Search by name, category, or link' | nativeText" [placeholder]="'Search by name, category, or link' | nativeText"
             [ngModel]="search()" [readOnly]="busy()" (ngModelChange)="updateSearch($event)" (keydown.enter)="updateSearch(search(), true)">
         </label>
-        <label class="native-form-row type-option">{{ 'Category' | nativeText }}
-          <select [ngModel]="category()" (ngModelChange)="category.set($event)">
-            <option value="">{{ 'All categories' | nativeText }}</option>
-            @for (group of catalog; track group.title) { <option [value]="group.title">{{ group.title | nativeText }}</option> }
-          </select>
-        </label>
+        <div class="native-form-row booking-category">
+          <cc-choice [rowLabel]="true" [label]="'Category' | nativeText" [options]="categories" [value]="category()"
+            [disabled]="busy()" (valueChange)="setCategory($event)" />
+        </div>
+        <ng-container [ngTemplateOutlet]="typeRow" />
       </div>
       <h3 class="group-heading">{{ 'Booking calendars' | nativeText }}</h3>
       <div class="native-form-group">

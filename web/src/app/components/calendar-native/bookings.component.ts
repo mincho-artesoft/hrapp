@@ -1,5 +1,6 @@
 import { CalendarRemovalComponent } from './calendar-removal.component';
 import {NgTemplateOutlet} from '@angular/common';
+import {CalendarChoiceComponent} from './calendar-choice.component';
 import {CalendarProgressComponent} from './calendar-progress.component';
 import { bookingStatus, slotReservation, slotStatus } from '../../core/booking-status';
 import {CalendarLocationEditorComponent, LocationDraft, finishLocation} from './calendar-location-editor.component';
@@ -37,7 +38,7 @@ function inputSlot(s:BookingSlot):InputSlot {
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarRemovalComponent, CalendarProgressComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarChoiceComponent, CalendarRemovalComponent, CalendarProgressComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
@@ -61,6 +62,8 @@ export class BookingsComponent implements OnInit, OnDestroy {
   readonly directoryError = signal('');
   readonly search = signal('');
   readonly category = signal('');
+  readonly filterType = signal('');
+  readonly categories = [{value: '', label: 'All categories'}, ...catalog.map(group => ({value: group.title, label: group.title}))];
   private directoryVersion = 0;
   fromDirectory = false;
   listed = true;
@@ -99,16 +102,29 @@ export class BookingsComponent implements OnInit, OnDestroy {
     }
     return this.directory().filter(item => {
       const type = item.appointmentType || 'General appointment';
-      return (!allowedTypes || allowedTypes.includes(type)) &&
+      return (!allowedTypes || allowedTypes.includes(type)) && (!this.filterType() || type === this.filterType()) &&
         (!query || matchingTypes.has(type) || [item.title,item.hostName,type,item.customType ?? ''].some(value => fold(value).includes(query)));
     }).sort((a,b) => a.title.localeCompare(b.title, this.locale.locale()));
   });
   get filteredTypes() {
     const query=this.typeSearch.trim().toLocaleLowerCase();
-    if (!query) return this.catalog;
-    return this.catalog.map(group=>({...group, types:group.types.filter(type=>
+    const category = this.panel() === 'lookup' ? this.category() : '';
+    const groups = category ? this.catalog.filter(group => group.title === category) : this.catalog;
+    if (!query) return groups;
+    return groups.map(group=>({...group, types:group.types.filter(type=>
       [type,group.title,this.typeLabel(type),this.locale.text(group.title)].some(text=>text.toLocaleLowerCase().includes(query)))
     })).filter(group=>group.types.length);
+  }
+  get selectedType() { return this.panel() === 'lookup' ? this.filterType() : this.type; }
+  selectType(value: string) {
+    if (this.panel() === 'lookup') this.filterType.set(value);
+    else this.type = value;
+    this.choosingType = false;
+  }
+  setCategory(value: string) {
+    if (value === this.category()) return;
+    this.category.set(value);
+    this.filterType.set('');
   }
   typeLabel(type:string) {
     if (type==='Other') {
@@ -178,7 +194,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   add() {
     if (this.mode()==='availability') this.edit(null);
     else {
-      this.offer.set(null); this.search.set(''); this.category.set('');
+      this.offer.set(null); this.search.set(''); this.category.set(''); this.filterType.set('');
       this.fromDirectory=true; this.show('lookup'); void this.loadDirectory();
     }
   }
