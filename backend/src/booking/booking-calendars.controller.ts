@@ -7,7 +7,7 @@ type Decision = 'pending' | 'accepted' | 'declined';
 type Booking = Slot & {slotId: string; guestId: string; guestName: string; decision: Decision};
 type BookCalendar = {
   id: string; title: string; owner: string; hostName: string; revision: number;
-  color?: string; appointmentType?: string; customType?: string; slots: Slot[]; requests: Booking[]; archived?: boolean; listed?: boolean;
+  appointmentType?: string; customType?: string; slots: Slot[]; requests: Booking[]; archived?: boolean; listed?: boolean;
 };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 function fail(status: number, error: string): never { throw new HttpException({error}, status); }
@@ -16,9 +16,8 @@ function calendarKey(id: string) {
   return `booking-calendars/${id}.json`;
 }
 function index(actor: string) { return `principal/${actor}/booking-calendars/`; }
-const defaultCalendarColor = '#0A84FF';
 function calendarDetails(c: BookCalendar) {
-  return {color:c.color ?? defaultCalendarColor, appointmentType:c.appointmentType ?? 'General appointment', customType:c.customType ?? ''};
+  return {appointmentType:c.appointmentType ?? 'General appointment', customType:c.customType ?? ''};
 }
 function guestSummary(c: BookCalendar, actor: string) {
   // Older calendars can have the account email as their fallback display name.
@@ -110,8 +109,6 @@ export class BookingCalendarsController {
     const customType = appointmentType === 'Other' ? (body.customType ?? old?.customType ?? '') : '';
     if (typeof appointmentType !== 'string' || !appointmentType.trim() || appointmentType.length>100 ||
         typeof customType !== 'string' || customType.length>100) fail(400,'Invalid appointment type.');
-    const color = body.color === undefined ? (old?.color ?? defaultCalendarColor) : body.color;
-    if (typeof color !== 'string' || !/^#[0-9a-f]{6}$/i.test(color)) fail(400,'Invalid calendar color.');
     const seen = new Set<string>();
     const slots: Slot[] = body.slots.map((s: any) => {
       if (!s || typeof s.id !== 'string' || !uuid.test(s.id) || seen.has(s.id) || typeof s.start !== 'string' || typeof s.end !== 'string'
@@ -137,7 +134,7 @@ export class BookingCalendarsController {
         && (protectedSlot?.start !== r.start || protectedSlot?.end !== r.end)) fail(409,'A requested slot cannot be changed.');
     }
     if (body.listed !== undefined && typeof body.listed !== 'boolean') fail(400,'Invalid search visibility.');
-    const doc: BookCalendar = {id, owner:actor, listed:body.listed ?? old?.listed ?? true, title:body.title.trim(), color:color.toUpperCase(), appointmentType:appointmentType.trim(), customType:customType.trim(), slots, revision:(old?.revision ?? 0)+1,
+    const doc: BookCalendar = {id, owner:actor, listed:body.listed ?? old?.listed ?? true, title:body.title.trim(), appointmentType:appointmentType.trim(), customType:customType.trim(), slots, revision:(old?.revision ?? 0)+1,
       hostName:old?.hostName ?? await this.displayName(actor), requests:old?.requests ?? []};
     if (!old) await this.store.putJSONIfAbsent(index(actor)+id+'.json', {id});
     const saved = row ? await this.store.putJSONIfMatch(key,doc,row.etag) : await this.store.putJSONIfAbsent(key,doc);

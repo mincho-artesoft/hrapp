@@ -1,6 +1,6 @@
 <ng-template #reservation let-r let-name="name">
   <div class="row reservation-summary">
-    <div class="event-color details">
+    <div class="status-marker details" [style.--status-color]="statusColor(r)">
       <strong>{{ name }}</strong>
       @if (r.title) { <span>{{ r.title }}</span> }
       <span>{{ range(r) }}</span>
@@ -27,10 +27,10 @@
   } @else if (mode() === 'availability') {
     @for (c of store.data().calendars; track c.id) {
       @if (matches(c.title, purpose(c))) {
-        <article class="native-form-group" [attr.aria-label]="c.title" [style.--booking-color]="c.color">
+        <article class="native-form-group" [attr.aria-label]="c.title">
           <div class="native-form-row calendar-summary">
             <button class="name details" type="button" [attr.aria-label]="c.title + ' · ' + ('Multi-day calendar view' | nativeText)" (click)="timelineRequested.emit(c.id)">
-              <strong class="event-color">{{ c.title }}</strong>
+              <strong>{{ c.title }}</strong>
               <small>{{ purpose(c) }}</small>
             </button>
             <div class="calendar-actions">
@@ -45,7 +45,7 @@
           <button class="native-form-row action" (click)="openSlot(c)">{{ 'Add time slot' | nativeText }}</button>
           @for (s of c.slots; track s.id) {
             <button class="native-form-row slot-row" (click)="openSlot(c, s)">
-              <span class="event-color details">
+              <span class="status-marker details" [style.--status-color]="status[slotStatus(c, s)].color">
                 @if (s.title) { <strong>{{ s.title }}</strong> }
                 <span>{{ range(s) }}</span>
                 @if (s.location) { <small>{{ s.location }}</small> }
@@ -71,8 +71,8 @@
     } @empty { <p class="empty">{{ 'No booking calendars yet.' | nativeText }}</p> }
   } @else {
     @for (r of store.data().appointments; track r.id) {
-      @if (matches(r.calendarTitle, r.hostName, status[r.status], locale.text(status[r.status]))) {
-        <article class="native-form-group" [style.--booking-color]="r.color">
+      @if (matches(r.calendarTitle, r.hostName, statusLabel(r), locale.text(statusLabel(r)))) {
+        <article class="native-form-group">
           <div class="native-form-row request">
             <ng-container [ngTemplateOutlet]="reservation" [ngTemplateOutletContext]="{ $implicit: r, name: r.calendarTitle }" />
             <small>{{ purpose(r) }} · {{ r.hostName }}</small>
@@ -84,7 +84,7 @@
   @if (message() && !sheet.open) { <p role="alert">{{ message() }}</p> }
 </section>
 <dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)" (close)="sheetClosed()">
-  @let subpage = !!locationDraft || choosingType || choosingColor || customRepeat || (fromDirectory && panel()==='offer');
+  @let subpage = !!locationDraft || choosingType || customRepeat || (fromDirectory && panel()==='offer');
   <header class="native-sheet-header">
     <button class="round-button" [class.back]="subpage" [disabled]="busy()" [attr.aria-label]="(subpage?'Back':'Close')|nativeText" (click)="back()">
       <cc-symbol [pointSize]="17" [name]="subpage?'chevron.left':'xmark'" />
@@ -101,9 +101,7 @@
   @else {
   @switch(panel()){
     @case ('edit') {
-      @if(choosingColor){
-        <div class="native-form-group color-options"><cc-calendar-color-options [value]="color" (picked)="color=$event" /></div>
-      } @else if(choosingType){
+      @if(choosingType){
         <div class="native-form-group">
           <label class="native-form-row type-search">
             <cc-symbol name="magnifyingglass" [pointSize]="17" />
@@ -131,12 +129,6 @@
           <span>{{ 'Show in booking search' | nativeText }}</span>
           <input type="checkbox" role="switch" [(ngModel)]="listed">
         </label>
-      </div>
-      <div class="native-form-group">
-        <button class="native-form-row color-choice" (click)="choosingColor=true">
-          <i class="dot" [style.background]="color"></i>{{ 'Color' | nativeText }}
-          <cc-symbol class="disclosure" [pointSize]="12" name="chevron.right" />
-        </button>
       </div>
       @if(editing) {
         <cc-calendar-removal prompt="Delete booking calendar?" [busy]="busy()"
@@ -181,8 +173,8 @@
       <h3 class="group-heading">{{ 'Booking calendars' | nativeText }}</h3>
       <div class="native-form-group">
         @for (item of results(); track item.id) {
-          <button type="button" class="native-form-row type-option" [style.--booking-color]="item.color" [disabled]="busy()" (click)="preview(item.id)">
-            <span class="event-color details"><strong>{{ item.title }}</strong><small>{{ purpose(item) }} · {{ item.hostName }}</small></span>
+          <button type="button" class="native-form-row type-option" [disabled]="busy()" (click)="preview(item.id)">
+            <span class="details"><strong>{{ item.title }}</strong><small>{{ purpose(item) }} · {{ item.hostName }}</small></span>
             <cc-symbol class="disclosure" name="chevron.right" [pointSize]="12" />
           </button>
         }
@@ -201,17 +193,17 @@
     }
     @case ('offer') {
       @if (offer(); as calendar) {
-        <div class="native-form-group" [style.--booking-color]="calendar.color">
-          <div class="native-form-row"><strong class="event-color">{{ calendar.title }}</strong></div>
+        <div class="native-form-group">
+          <div class="native-form-row"><strong>{{ calendar.title }}</strong></div>
           <div class="native-form-row">{{ purpose(calendar) }}</div>
           <div class="native-form-row">{{ calendar.hostName }}</div>
           @if (calendar.isOwner) { <div class="native-form-row value">{{ 'Your booking calendar' | nativeText }}</div> }
         </div>
         <h3 class="group-heading">{{ 'Available times' | nativeText }}</h3>
-        <div class="native-form-group" [style.--booking-color]="calendar.color">
+        <div class="native-form-group">
           @for (s of calendar.slots; track s.id) {
             <div class="native-form-row row">
-              <div class="event-color details">
+              <div class="status-marker details" [style.--status-color]="status.available.color">
                 @if (s.title) { <strong>{{ s.title }}</strong> }
                 <span>{{ range(s) }}</span>
                 @if (s.location) { <small>{{ s.location }}</small> }

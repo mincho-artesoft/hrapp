@@ -150,12 +150,12 @@ async function main() {
   const host = {principal: hostPrincipal}, guest = {principal: guestPrincipal};
   // A pre-directory calendar remains discoverable until its owner chooses link-only access.
   const legacy = randomUUID(), legacyKey = 'booking-calendars/' + legacy + '.json';
-  const legacyDoc = {id:legacy, title:'Studio', hostName:'owner@example.invalid', owner:hostPrincipal.principalId,
+  const legacyDoc = {id:legacy, title:'Studio', color:'#BF5AF2', hostName:'owner@example.invalid', owner:hostPrincipal.principalId,
     slots:[], requests:[], revision:1};
   await store.putJSON(legacyKey, legacyDoc);
   const listed = (await bookings.directory(guest)).calendars.find(c => c.id === legacy);
   assert.deepEqual(listed, {id:legacy, title:'Studio', hostName:'Cloud Calendars user', isOwner:false,
-    appointmentType:'General appointment', customType:'', color:'#0A84FF'});
+    appointmentType:'General appointment', customType:''});
   assert.ok(!(await bookings.directory(host)).calendars.some(c => c.id === legacy));
   assert.equal((await bookings.availability(host, legacy)).isOwner,true);
   await assert.rejects(bookings.save(guest, legacy,{...legacyDoc, listed:false}));
@@ -199,15 +199,15 @@ async function main() {
     await bookings.save(host,weeklyCal,{title:'Lessons',appointmentType:'Other',customType:'Ceramics',...venue,slots:[],revision:0});
     const emptyOffer = await bookings.availability(guest, weeklyCal);
     assert.equal(emptyOffer.slots.length,0);
-    assert.equal(emptyOffer.color,'#0A84FF');
-    await assert.rejects(bookings.save(host,weeklyCal,{title:'Lessons',color:'red',slots:[],revision:1}));
+    assert.ok(!('color' in emptyOffer));
     assert.ok(!('location' in emptyOffer));
     assert.ok(!('structuredLocation' in (await bookings.workspace(host)).calendars[0]));
     await bookings.save(host,weeklyCal,{title:'Lessons',color:'#bf5af2',slots:[{...weekly,...venue,color:'#000000'}],revision:1});
     let offer = await bookings.availability(guest, weeklyCal);
     assert.equal(offer.customType,'Ceramics');
     assert.equal(offer.slots.length,4);
-    assert.equal(offer.color,'#BF5AF2');
+    assert.ok(!('color' in offer));
+    assert.ok(!('color' in await store.getJSON('booking-calendars/'+weeklyCal+'.json')));
     assert.ok(!('color' in offer.slots[0]));
     assert.equal(offer.slots[1].start,'2030-03-31T06:00:00.000Z');
     assert.deepEqual(offer.slots[1].structuredLocation, venue.structuredLocation);
@@ -221,10 +221,12 @@ async function main() {
     // A legacy client omits purpose and recurrence while editing a title.
     await bookings.save(host,weeklyCal,{title:'Lesson',slots:[{id:series,start:weekly.start,end:weekly.end}],revision:3});
     assert.equal((await bookings.availability(guest, weeklyCal)).customType,'Ceramics');
-    assert.equal((await bookings.workspace(repeatGuest)).appointments[0].color,'#BF5AF2');
+    assert.equal((await bookings.workspace(repeatGuest)).appointments[0].status,'pending');
     await bookings.save(host,weeklyCal,{title:'Lesson',color:'#123456',slots:[weekly],revision:4});
-    assert.equal((await bookings.workspace(repeatGuest)).appointments[0].color,'#123456');
-    assert.equal((await bookings.workspace(host)).calendars[0].requests[0].color,'#123456');
+    assert.ok(!('color' in (await bookings.workspace(repeatGuest)).appointments[0]));
+    const weeklyWorkspace = (await bookings.workspace(host)).calendars.find(c => c.id === weeklyCal)!;
+    assert.ok(!('color' in weeklyWorkspace));
+    assert.ok(!('color' in weeklyWorkspace.requests[0]));
     await bookings.decide(host,weeklyCal,request,{status:'declined'});
     await bookings.remove(host,weeklyCal,'6');
     const laterCal = randomUUID();

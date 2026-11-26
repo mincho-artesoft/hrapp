@@ -1,7 +1,7 @@
 import { CalendarRemovalComponent } from './calendar-removal.component';
 import {NgTemplateOutlet} from '@angular/common';
 import {CalendarProgressComponent} from './calendar-progress.component';
-import {CalendarColorOptionsComponent} from './calendar-color-options.component';
+import { bookingStatus, slotStatus } from '../../core/booking-status';
 import {CalendarLocationEditorComponent, LocationDraft, finishLocation} from './calendar-location-editor.component';
 import {CalendarDateTimeComponent} from './calendar-date-time.component';
 import {CalendarSymbolComponent} from './calendar-symbol.component';
@@ -37,7 +37,7 @@ function inputSlot(s:BookingSlot):InputSlot {
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarRemovalComponent, CalendarProgressComponent, CalendarColorOptionsComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarRemovalComponent, CalendarProgressComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
@@ -64,8 +64,10 @@ export class BookingsComponent implements OnInit, OnDestroy {
   private directoryVersion = 0;
   fromDirectory = false;
   listed = true;
-  readonly status = {pending:'Pending', accepted:'Accepted', declined:'Declined', past:'Past'};
-  statusLabel(appointment: Appointment) { return this.status[appointment.status]; }
+  readonly status = bookingStatus;
+  readonly slotStatus = slotStatus;
+  statusLabel(appointment: Appointment) { return this.status[appointment.status].label; }
+  statusColor(appointment: Appointment) { return this.status[appointment.status].color; }
 
   confirmingRemoval = false;
   editing: BookingCalendar|null = null;
@@ -79,8 +81,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
   type = '';
   customType = '';
   choosingType = false;
-  choosingColor = false;
-  color = '#0A84FF';
   typeSearch = '';
   readonly catalog = catalog;
   readonly results = computed(() => {
@@ -199,7 +199,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   sheetClosed() { ++this.directoryVersion; this.fromDirectory=false; }
   show(panel:BookingPanel) {
-    this.locationDraft=undefined;this.customRepeat=false;this.choosingType=false;this.choosingColor=false;this.dateFocus.set(null);
+    this.locationDraft=undefined;this.customRepeat=false;this.choosingType=false;this.dateFocus.set(null);
     this.panel.set(panel);this.message.set('');
     this.changeDetector.detectChanges();
     if (!this.dialog().nativeElement.open) this.dialog().nativeElement.showModal();
@@ -211,7 +211,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
     this.editing=calendar;this.draftID=calendar?.id ?? crypto.randomUUID();
     this.title=calendar?.title ?? '';
     this.listed=calendar?.listed ?? true;
-    this.color=calendar?.color ?? '#0A84FF';
     this.show('edit');
   }
   openSlot(calendar:BookingCalendar, existing?:BookingSlot) {
@@ -247,12 +246,11 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   onCancel(event:Event) {
     if(this.busy()){event.preventDefault();return;}
-    if(this.choosingType || this.choosingColor || this.customRepeat || this.locationDraft || (this.fromDirectory && this.panel()==='offer')){event.preventDefault();this.back();}
+    if(this.choosingType || this.customRepeat || this.locationDraft || (this.fromDirectory && this.panel()==='offer')){event.preventDefault();this.back();}
   }
   back() {
     if (this.locationDraft) { finishLocation(this.locationDraft);this.locationDraft=undefined; }
     else if (this.customRepeat) this.customRepeat=false;
-    else if (this.choosingColor) this.choosingColor=false;
     else if (this.choosingType) this.choosingType=false;
     else if (this.fromDirectory && this.panel()==='offer') this.show('lookup');
     else this.dialog().nativeElement.close();
@@ -260,7 +258,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
   get sheetTitle() {
     if(this.locationDraft) return 'Location';
     if(this.customRepeat) return 'Custom';
-    if(this.choosingColor) return 'Calendar Color';
     if(this.choosingType) return 'Appointment type';
     switch(this.panel()) {
       case 'edit':return 'Booking calendar';
@@ -283,7 +280,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     return this.perform(async()=>{
       const old=this.editing;
       const id=this.draftID;
-      const values={title:this.title,color:this.color,listed:this.listed,appointmentType:this.type,customType:this.type==='Other'?this.customType.trim():'',
+      const values={title:this.title,listed:this.listed,appointmentType:this.type,customType:this.type==='Other'?this.customType.trim():'',
         slots:old?.slots ?? []};
       const receipt=await this.store.request<{revision:number}>('/'+id,'PUT',{...values,revision:old?.revision ?? 0});
       if (old) this.dialog().nativeElement.close();

@@ -5,7 +5,7 @@ import EventKit
 struct BookingTimelineEntry: Identifiable, Equatable {
     let id: String
     let title: String
-    let status: String
+    let status: BookingEventStatus
     let location: String?
     let start: Date
     let end: Date
@@ -17,7 +17,7 @@ struct BookingTimelineEntry: Identifiable, Equatable {
             let start = BookingInterval.date(booking.start), end = BookingInterval.date(booking.end)
             guard start < upper, end > lower, end > start else { return nil }
             let title = [booking.title, booking.guestName].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")
-            return Self(id: "request-" + booking.id, title: title, status: booking.status.capitalized, location: booking.location, start: start, end: end)
+            return Self(id: "request-" + booking.id, title: title, status: booking.eventStatus, location: booking.location, start: start, end: end)
         }
         var result = reservations
         for slot in schedule.slots {
@@ -34,7 +34,7 @@ struct BookingTimelineEntry: Identifiable, Equatable {
                 guard start >= seed, end > lower else { continue }
                 let id = start == seed ? slot.id : "\(slot.id)@\(Int64((start.timeIntervalSince1970 * 1000).rounded()))"
                 guard !occupied.contains(id), !reservations.contains(where: { $0.start < end && $0.end > start }) else { continue }
-                result.append(Self(id: "slot-" + id, title: slot.title ?? "", status: "Available time", location: slot.location, start: start, end: end))
+                result.append(Self(id: "slot-" + id, title: slot.title ?? "", status: .unreserved(ending: end), location: slot.location, start: start, end: end))
             }
         }
         return result.sorted { ($0.start, $0.id) < ($1.start, $1.id) }
@@ -69,7 +69,6 @@ private extension SharedEventRecurrenceRule {
 
 struct BookingCalendarTimeline: View {
     let schedule: HostedBookingCalendar
-    let color: Color
     let onBack: () -> Void
     @Environment(\.calendar) private var calendar
     @Environment(\.locale) private var locale
@@ -83,14 +82,13 @@ struct BookingCalendarTimeline: View {
 
     private struct Projection: Equatable {
         let title: String
-        let color: Color
         let locale: Locale
         let entries: [BookingTimelineEntry]
     }
 
     var body: some View {
         let upper = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: end)) ?? end
-        let projection = Projection(title: schedule.title, color: color, locale: locale,
+        let projection = Projection(title: schedule.title, locale: locale,
             entries: BookingTimelineEntry.entries(in: schedule, from: calendar.startOfDay(for: start), to: upper))
         timeline
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -101,20 +99,24 @@ struct BookingCalendarTimeline: View {
                 #else
                 let displayStore = CalendarViewModel.shared.eventStore
                 #endif
-                let displayCalendar = EKCalendar(for: .event, eventStore: displayStore)
-                displayCalendar.title = value.title
-                #if os(macOS)
-                displayCalendar.cgColor = NSColor(value.color).cgColor
-                #else
-                displayCalendar.cgColor = UIColor(value.color).cgColor
-                #endif
+                var calendars: [BookingEventStatus: EKCalendar] = [:]
+                for status in Set(value.entries.map(\.status)) {
+                    let calendar = EKCalendar(for: .event, eventStore: displayStore)
+                    calendar.title = value.title
+                    #if os(macOS)
+                    calendar.cgColor = NSColor(status.color).cgColor
+                    #else
+                    calendar.cgColor = UIColor(status.color).cgColor
+                    #endif
+                    calendars[status] = calendar
+                }
                 events = value.entries.map { entry in
                     let event = EKEvent(eventStore: displayStore)
-                    event.calendar = displayCalendar
+                    event.calendar = calendars[entry.status]
                     event.startDate = entry.start
                     event.endDate = entry.end
                     event.location = entry.location
-                    event.title = [entry.title, NSLocalizedString(entry.status, comment: "")].filter { !$0.isEmpty }.joined(separator: " · ")
+                    event.title = [entry.title, NSLocalizedString(entry.status.label, comment: "")].filter { !$0.isEmpty }.joined(separator: " · ")
                     return event
                 }
             }

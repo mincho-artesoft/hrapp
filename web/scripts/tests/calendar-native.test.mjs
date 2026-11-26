@@ -70,6 +70,24 @@ test('recurrence keeps event wall time across daylight-saving changes',()=>{
   assert.equal(values.length,5);assert.equal(values[2].start,'2026-03-29T06:00:00.000Z');
   assert.equal(values[2].occurrenceOf,'series');assert.equal(event.start,'2026-03-27T07:00:00Z');
 });
+const {bookingStatus, slotStatus} = await sourceModule('../../src/app/core/booking-status.ts');
+test('booking markers follow the occurrence status and ignore legacy calendar colors', () => {
+  const slot = {id: 'slot', end: '2099-01-01T11:00:00Z'};
+  const calendar = {color: '#123456', requests: []};
+  assert.equal(new Set(Object.values(bookingStatus).map(s => s.color)).size, 5);
+  assert.equal(slotStatus(calendar, slot), 'available');
+  const request = {slotId: slot.id, status: 'pending'};
+  calendar.requests.push(request);
+  assert.equal(slotStatus(calendar, slot), 'pending');
+  request.status = 'accepted';
+  assert.equal(slotStatus(calendar, slot), 'accepted');
+  assert.equal(slotStatus(calendar, {...slot, rule: {frequency: 0}}), 'available');
+  request.status = 'declined';
+  assert.equal(slotStatus(calendar, slot), 'available');
+  calendar.requests.push({slotId: slot.id, status: 'accepted'});
+  assert.equal(slotStatus(calendar, slot), 'accepted');
+  assert.equal(slotStatus(calendar, {id: 'expired', end: '2000-01-01T11:00:00Z'}), 'past');
+});
 test('recurring bookings retain the server occurrence ID for fractional-second starts', () => {
   const start = '2026-10-24T06:00:00.275Z';
   const next = '2026-10-25T07:00:00.275Z';

@@ -1,7 +1,7 @@
 import { DestroyRef, effect, inject, Injectable, signal, untracked } from '@angular/core';
 import { CalendarPlatformApiService, CalendarRepeatRule, WebCalendarEventDetails } from './calendar-platform-api.service';
 
-export interface BookingPurpose { appointmentType?:string; customType?:string; color?:string }
+export interface BookingPurpose { appointmentType?:string; customType?:string }
 export interface BookingVenue { location?: string; structuredLocation?: WebCalendarEventDetails['structuredLocation'] }
 export interface BookingSlot extends BookingVenue {
   title?:string;

@@ -29,19 +29,28 @@ struct BookingInterval: Codable, Identifiable {
 
 struct BookingAppointment: Codable, Identifiable {
     let id, slotId, start, end, guestName, hostName, calendarTitle, status: String
-    var appointmentType, customType, color: String?
+    var appointmentType, customType: String?
     var title, location: String?
     var interval: BookingInterval { .init(id: slotId, start: start, end: end, title: title, location: location) }
+    var eventStatus: BookingEventStatus { BookingEventStatus(rawValue: status) ?? .unknown }
     var active: Bool { status == "pending" || status == "accepted" }
 }
 struct HostedBookingCalendar: Codable, Identifiable {
     var id = UUID().uuidString.lowercased()
     var title = ""
-    var appointmentType, customType, color: String?
+    var appointmentType, customType: String?
     var revision = 0
     var listed: Bool?
     var slots: [BookingInterval] = []
     var requests: [BookingAppointment] = []
+
+    func status(for slot: BookingInterval) -> BookingEventStatus {
+        if slot.rule != nil { return .available }
+        if let reservation = requests.first(where: { $0.slotId == slot.id && $0.status != "declined" }) {
+            return reservation.eventStatus
+        }
+        return BookingEventStatus.unreserved(ending: BookingInterval.date(slot.end))
+    }
 }
 private struct BookingData: Codable {
     var calendars: [HostedBookingCalendar] = []
@@ -51,12 +60,12 @@ private struct BookingOffer: Decodable {
     let id, title, hostName: String
     let isOwner: Bool
     var slots: [BookingInterval]
-    let appointmentType, customType, color: String?
+    let appointmentType, customType: String?
     var nextFrom: String?
 }
 private struct BookingListing: Decodable, Identifiable {
     let id, title, hostName, appointmentType: String
-    let customType, color: String?
+    let customType: String?
     let isOwner: Bool
 }
 private struct BookingDirectoryPage: Decodable {
@@ -65,20 +74,36 @@ private struct BookingDirectoryPage: Decodable {
 }
 private struct BookingReceipt: Decodable { let id: String; var revision: Int? }
 
-private let defaultBookingColor = "#0A84FF"
+enum BookingEventStatus: String {
+    case available, pending, accepted, declined, past, unknown
 
-private func bookingColor(_ hex: String?) -> Color {
-    #if os(macOS)
-    Color(hex: hex ?? defaultBookingColor)
-    #else
-    Color(uiColor: AppLocalCalendarStore.color(hex ?? defaultBookingColor))
-    #endif
+    static func unreserved(ending end: Date) -> Self { end <= .now ? .past : .available }
+
+    var label: String {
+        self == .available ? "Available time" : rawValue.capitalized
+    }
+
+    var color: Color {
+        let hex: String
+        switch self {
+        case .available: hex = "#0A84FF"
+        case .pending: hex = "#FF9F0A"
+        case .accepted: hex = "#34C759"
+        case .declined: hex = "#FF453A"
+        case .past, .unknown: hex = "#8E8E93"
+        }
+        #if os(macOS)
+        return Color(hex: hex)
+        #else
+        return Color(uiColor: AppLocalCalendarStore.color(hex))
+        #endif
+    }
 }
 
 private extension View {
-    func bookingColorBar(_ hex: String?) -> some View {
+    func bookingStatusBar(_ status: BookingEventStatus) -> some View {
         padding(.leading, 9).overlay(alignment: .leading) {
-            Capsule().fill(bookingColor(hex)).frame(width: 3).accessibilityHidden(true)
+            Capsule().fill(status.color).frame(width: 3).accessibilityHidden(true)
         }
     }
 }
@@ -198,8 +223,7 @@ private struct SignedInBookingsContent: View {
         Group {
             if let timelineID, mode == .availability, store.belongs(to: session),
                let schedule = store.data.calendars.first(where: { $0.id == timelineID }) {
-                BookingCalendarTimeline(schedule: schedule, color: bookingColor(schedule.color),
-                                        onBack: { self.timelineID = nil })
+                BookingCalendarTimeline(schedule: schedule, onBack: { self.timelineID = nil })
                     .id(schedule.id)
             } else {
                 bookingList
@@ -244,7 +268,7 @@ private struct SignedInBookingsContent: View {
                         HStack(spacing: 0) {
                             Button { timelineID = calendar.id } label: {
                                 VStack(alignment: .leading) {
-                                    Text(verbatim: calendar.title).font(.headline).bookingColorBar(calendar.color)
+                                    Text(verbatim: calendar.title).font(.headline)
                                     Text(verbatim: bookingPurpose(calendar.appointmentType, calendar.customType)).font(.subheadline).foregroundStyle(.secondary)
                                 }
                                 .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
@@ -278,7 +302,7 @@ private struct SignedInBookingsContent: View {
                                 Text(verbatim: slot.label)
                                 if let location = slot.location { Text(verbatim: location).font(.subheadline).foregroundStyle(.secondary) }
                                 if let rule = slot.rule { Label(LocalizedStringKey(BookingRepeat(rule).rawValue), systemImage: "repeat").font(.caption).foregroundStyle(.secondary) }
-                              }.bookingColorBar(calendar.color).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+                              }.bookingStatusBar(calendar.status(for: slot)).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
                             }.buttonStyle(.plain)
                         }
                         ForEach(calendar.requests) { request in
@@ -323,7 +347,7 @@ private struct SignedInBookingsContent: View {
                 Text(verbatim: r.interval.label).font(.subheadline)
                 if let location = r.location, !location.isEmpty { Text(verbatim: location).font(.subheadline).foregroundStyle(.secondary) }
             }
-            .bookingColorBar(r.color)
+            .bookingStatusBar(r.eventStatus)
             Spacer()
             Text(LocalizedStringKey(r.status.capitalized)).font(.caption.bold()).foregroundStyle(.secondary)
         }
@@ -517,11 +541,6 @@ private struct BookingSheet<Content: View>: View {
 }
 
 private struct BookingCalendarEditor: View {
-    private enum PickerPage: Hashable {
-        case color, type
-        var title: LocalizedStringKey { self == .color ? "Calendar Color" : "Appointment type" }
-    }
-
     let calendar: HostedBookingCalendar
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var store = BookingStore.shared
@@ -531,8 +550,7 @@ private struct BookingCalendarEditor: View {
     @State private var listed: Bool
     @State private var created: HostedBookingCalendar?
     @State private var search = ""
-    @State private var picker: PickerPage?
-    @State private var hex: String
+    @State private var choosingType = false
     @State private var busy = false
     @State private var error: String?
     @State private var confirming = false
@@ -541,7 +559,6 @@ private struct BookingCalendarEditor: View {
         self.calendar = calendar
         _title = State(initialValue: calendar.title)
         _type = State(initialValue: calendar.appointmentType ?? (calendar.revision == 0 ? "" : "General appointment"))
-        _hex = State(initialValue: calendar.color ?? defaultBookingColor)
         _customType = State(initialValue: calendar.customType ?? "")
         _listed = State(initialValue: calendar.listed ?? true)
     }
@@ -561,19 +578,19 @@ private struct BookingCalendarEditor: View {
             #if os(macOS)
             .toolbar(.hidden, for: .windowToolbar)
             #endif
-            .navigationDestination(item: $picker) { page in
+            .navigationDestination(isPresented: $choosingType) {
                 #if os(macOS)
                 VStack(spacing: 0) {
-                    MacCalendarSheetHeader(title: Text(page.title)) {
-                        MacCalendarToolbarIconButton(icon: "chevron.backward", title: "Back") { picker = nil }
+                    MacCalendarSheetHeader(title: Text("Appointment type")) {
+                        MacCalendarToolbarIconButton(icon: "chevron.backward", title: "Back") { choosingType = false }
                     } trailing: { EmptyView() }
-                    pickerContent(page)
+                    typePicker
                 }
                 .background(CalendarPalette.groupedBackground)
                 .navigationBarBackButtonHidden()
                 #else
-                pickerContent(page)
-                    .navigationTitle(page.title)
+                typePicker
+                    .navigationTitle("Appointment type")
                     .navigationBarTitleDisplayMode(.inline)
                 #endif
             }
@@ -585,42 +602,28 @@ private struct BookingCalendarEditor: View {
             Button("Cancel", role: .cancel) {}
         }
     }
-    @ViewBuilder
-    private func pickerContent(_ page: PickerPage) -> some View {
-        switch page {
-        case .color:
-            #if os(macOS)
-            CalendarSharingForm {
-                MacCalendarColorChoices(color: Binding(get: { bookingColor(hex) }, set: { hex = NSColor($0).hex }),
-                                        usesCreatorDefault: .constant(false))
-            }
-            #else
-            CalendarColorSelectionView(selectedColor: Binding(get: { AppLocalCalendarStore.color(hex) },
-                                                              set: { hex = AppLocalCalendarStore.colorHex($0) }))
-            #endif
-        case .type:
-            CalendarSharingForm {
-                CalendarSharingSection(rows: true) {
-                    HStack { Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-                        TextField("Search appointment types", text: $search).textFieldStyle(.plain)
-                    }
+    private var typePicker: some View {
+        CalendarSharingForm {
+            CalendarSharingSection(rows: true) {
+                HStack { Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                    TextField("Search appointment types", text: $search).textFieldStyle(.plain)
                 }
-                let groups = BookingTypeGroup.matching(search)
-                if groups.isEmpty { CalendarSharingSection { Text("No matching types").foregroundStyle(.secondary) } }
-                ForEach(groups, id: \.title) { group in
-                    CalendarSharingSection(LocalizedStringKey(group.title), rows: true) {
-                        ForEach(group.types, id: \.self) { item in
-                            Button {
-                                type = item
-                                picker = nil
-                            } label: {
-                                HStack {
-                                    Text(verbatim: bookingPurpose(item, nil))
-                                    Spacer()
-                                    if type == item { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
-                                }.contentShape(Rectangle())
-                            }.buttonStyle(.plain)
-                        }
+            }
+            let groups = BookingTypeGroup.matching(search)
+            if groups.isEmpty { CalendarSharingSection { Text("No matching types").foregroundStyle(.secondary) } }
+            ForEach(groups, id: \.title) { group in
+                CalendarSharingSection(LocalizedStringKey(group.title), rows: true) {
+                    ForEach(group.types, id: \.self) { item in
+                        Button {
+                            type = item
+                            choosingType = false
+                        } label: {
+                            HStack {
+                                Text(verbatim: bookingPurpose(item, nil))
+                                Spacer()
+                                if type == item { Image(systemName: "checkmark").foregroundStyle(Color.appBlue) }
+                            }.contentShape(Rectangle())
+                        }.buttonStyle(.plain)
                     }
                 }
             }
@@ -631,7 +634,7 @@ private struct BookingCalendarEditor: View {
         CalendarSharingForm {
             CalendarSharingSection(rows: true) {
                 TextField("Name", text: $title).textFieldStyle(.plain)
-                Button { search = ""; picker = .type } label: {
+                Button { search = ""; choosingType = true } label: {
                     HStack {
                         Text("Appointment type")
                         Spacer()
@@ -651,16 +654,6 @@ private struct BookingCalendarEditor: View {
                 .controlSize(.large)
                 #endif
             }
-            CalendarSharingSection(rows: true) {
-                Button { picker = .color } label: {
-                    HStack {
-                        Circle().fill(bookingColor(hex)).frame(width: 20, height: 20)
-                        Text("Color")
-                        Spacer()
-                        Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
-                    }.contentShape(Rectangle())
-                }.buttonStyle(.plain)
-            }
             if calendar.revision > 0 {
                 CalendarRemovalSection { confirming = true }
             }
@@ -675,7 +668,7 @@ private struct BookingCalendarEditor: View {
             do {
                 if remove { try await store.mutate("/" + calendar.id + "?revision=" + String(calendar.revision), method: "DELETE") }
                 else {
-                    var body: [String: any Sendable] = ["title": title, "color": hex]
+                    var body: [String: any Sendable] = ["title": title]
                     body["revision"] = calendar.revision
                     body["appointmentType"] = type
                     body["listed"] = listed
@@ -684,7 +677,6 @@ private struct BookingCalendarEditor: View {
                     let receipt = try await store.mutate("/" + calendar.id, body: body)
                     if calendar.revision == 0 {
                         var saved = calendar
-                        saved.color = hex
                         saved.title = title
                         saved.appointmentType = type
                         saved.listed = listed
@@ -871,7 +863,7 @@ private struct BookingLookupSheet: View {
             CalendarSharingForm {
                 if let offer {
                     CalendarSharingSection(rows: true) {
-                        Text(verbatim: offer.title).font(.headline).bookingColorBar(offer.color)
+                        Text(verbatim: offer.title).font(.headline)
                         Text(verbatim: bookingPurpose(offer.appointmentType, offer.customType))
                         Text(verbatim: offer.hostName)
                         if offer.isOwner { Text("Your booking calendar").foregroundStyle(.secondary) }
@@ -885,7 +877,7 @@ private struct BookingLookupSheet: View {
                                     Text(verbatim: slot.label)
                                     if let location = slot.location { Text(verbatim: location).font(.subheadline).foregroundStyle(.secondary) }
                                 }
-                                .bookingColorBar(offer.color)
+                                .bookingStatusBar(.available)
                                 Spacer()
                                 if !offer.isOwner { Button("Book") { book(offer, slot) } }
                             }
@@ -917,7 +909,7 @@ private struct BookingLookupSheet: View {
                                         Text(verbatim: item.title).font(.headline)
                                         Text(verbatim: bookingPurpose(item.appointmentType, item.customType) + " · " + item.hostName)
                                             .font(.subheadline).foregroundStyle(.secondary)
-                                    }.bookingColorBar(item.color)
+                                    }
                                     Spacer()
                                     Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
                                 }.contentShape(Rectangle())

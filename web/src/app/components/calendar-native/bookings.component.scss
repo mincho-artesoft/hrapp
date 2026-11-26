@@ -59,15 +59,15 @@ strong { font-size: 17px; font-weight: 600; }
   min-width: 0;
   overflow-wrap: anywhere;
 }
-.event-color { position: relative; padding-inline-start: 9px; }
-.event-color::before {
+.status-marker { position: relative; padding-inline-start: 9px; }
+.status-marker::before {
   content: '';
   position: absolute;
   inset-inline-start: 0;
   inset-block: 0;
   width: 3px;
   border-radius: 3px;
-  background: var(--booking-color, #0a84ff);
+  background: var(--status-color);
 }
 .native-form-row.calendar-summary { justify-content: space-between; gap: 0; padding-block: 0; }
 .name { flex: 1; align-self: stretch; justify-content: center; min-height: 64px; padding-block: 10px; }
@@ -121,9 +121,6 @@ dialog::backdrop { background: #0006; }
 }
 .type-option .value { text-align: end; }
 .native-form-row .disclosure, .native-form-row.type-search cc-symbol { color: var(--cal-muted); }
-.color-choice cc-symbol { margin-inline-start: auto; }
-.color-options { padding-inline: 0; }
-.dot { width: 20px; height: 20px; border-radius: 50%; flex: none; }
 :host-context([dir=rtl]) .disclosure,
 :host-context([dir=rtl]) .back cc-symbol { transform: scaleX(-1); }
 
