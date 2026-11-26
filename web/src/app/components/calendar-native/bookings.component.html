@@ -1,9 +1,14 @@
-<ng-template #reservation let-r let-name="name">
+<ng-template #reservationRow let-r let-name="name">
   <div class="row reservation-summary">
     <div class="status-marker details" [style.--status-color]="statusColor(r)">
       <strong>{{ name }}</strong>
       @if (r.title) { <span>{{ r.title }}</span> }
       <span>{{ range(r) }}</span>
+      @if (r.proposal; as proposal) {
+        <strong>{{ 'Proposed change' | nativeText }}</strong><span>{{ range(proposal) }}</span>
+        @if (proposal.title) { <span>{{ proposal.title }}</span> }
+        @if (proposal.location) { <small>{{ proposal.location }}</small> }
+      }
       @if (r.location) { <small>{{ r.location }}</small> }
     </div>
     <span class="status">{{ statusLabel(r) | nativeText }}</span>
@@ -57,8 +62,8 @@
           }
           @for (r of c.requests; track r.id) {
             <div class="native-form-row request">
-              <ng-container [ngTemplateOutlet]="reservation" [ngTemplateOutletContext]="{ $implicit: r, name: r.guestName }" />
-              @if (r.status === 'pending') {
+              <ng-container [ngTemplateOutlet]="reservationRow" [ngTemplateOutletContext]="{ $implicit: r, name: r.guestName }" />
+              @if (r.status === 'pending' && !r.proposal) {
                 <div class="decisions">
                   <button [disabled]="busy()" (click)="decide(c, r, 'accepted')">{{ 'Accept' | nativeText }}</button>
                   <button [disabled]="busy()" (click)="decide(c, r, 'declined')">{{ 'Decline' | nativeText }}</button>
@@ -74,7 +79,13 @@
       @if (matches(r.calendarTitle, r.hostName, statusLabel(r), locale.text(statusLabel(r)))) {
         <article class="native-form-group">
           <div class="native-form-row request">
-            <ng-container [ngTemplateOutlet]="reservation" [ngTemplateOutletContext]="{ $implicit: r, name: r.calendarTitle }" />
+            <ng-container [ngTemplateOutlet]="reservationRow" [ngTemplateOutletContext]="{ $implicit: r, name: r.calendarTitle }" />
+            @if (r.proposal) {
+              <div class="decisions">
+                <button [disabled]="busy()" (click)="answerChange(r,'accepted')">{{ 'Accept' | nativeText }}</button>
+                <button [disabled]="busy()" (click)="answerChange(r,'declined')">{{ 'Decline' | nativeText }}</button>
+              </div>
+            }
             <small>{{ purpose(r) }} · {{ r.hostName }}</small>
           </div>
         </article>
@@ -138,6 +149,7 @@
     }
     @case ('slot') {
       @if (slot;as s) {
+        @if (reservation) { <p>{{ (reservation.proposal ? 'Awaiting guest response' : reservation.status==='past' ? 'Past' : 'The guest will be asked to accept this change.') | nativeText }}</p> }
         <fieldset [disabled]="busy() || locked(s.id)">
           <cc-event-title-location [(title)]="s.title" [location]="s.location" [maxLength]="200"
             (editLocation)="locationDraft=s" (clearLocation)="s.location='';s.structuredLocation=undefined" />
@@ -147,10 +159,10 @@
             <cc-date-time label="Ends" [(focus)]="dateFocus" [date]="s.endDate" [time]="s.end" [otherDate]="s.date" [otherTime]="s.start" [minimum]="s.date"
               [firstWeekday]="firstWeekday()" [timeFormat]="locale.preferences()['time'] || 'system'" (dateChange)="s.endDate=$event" (timeChange)="s.end=$event" />
           </div>
-          <cc-event-repeat-fields [choice]="s.choice" [endChoice]="endOnDate ? 'date' : s.rule?.occurrenceCount?.toString() || 'never'"
+          @if (!occurrence) { <cc-event-repeat-fields [choice]="s.choice" [endChoice]="endOnDate ? 'date' : s.rule?.occurrenceCount?.toString() || 'never'"
             [start]="s.date" [until]="until(s)" [firstWeekday]="firstWeekday()" [(focus)]="dateFocus"
-            (repeatChange)="chooseRepeat(s,$event)" (endChange)="chooseEnd(s,$event)" (untilChange)="setUntil(s,$event)" />
-          @if (s.original && !locked(s.id)) {
+            (repeatChange)="chooseRepeat(s,$event)" (endChange)="chooseEnd(s,$event)" (untilChange)="setUntil(s,$event)" /> }
+          @if (s.original && !reservation && !locked(s.id)) {
             <cc-event-removal label="Remove time slot" prompt="Remove time slot?" [(confirming)]="confirmingRemoval"
               [busy]="busy()" (confirmed)="saveSlot(true)" />
           }

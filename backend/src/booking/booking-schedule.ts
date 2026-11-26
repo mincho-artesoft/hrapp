@@ -11,8 +11,8 @@ export type BookingPlace = {
   location?: string;
   structuredLocation?: {title: string; latitude?: number; longitude?: number; radius: number};
 };
-export type Slot = BookingPlace & { title?: string; id: string; start: string; end: string; rule?: BookingRule; timeZone?: string };
-export type Occurrence = Omit<Slot, 'rule' | 'timeZone'>;
+export type Slot = BookingPlace & { title?: string; id: string; start: string; end: string; rule?: BookingRule; timeZone?: string; excludedStarts?: string[] };
+export type Occurrence = Omit<Slot, 'rule' | 'timeZone' | 'excludedStarts'>;
 export const day = 86400000;
 const formatters = new Map<string, Intl.DateTimeFormat>();
 function formatter(zone: string) {
@@ -108,12 +108,12 @@ function recurrence(slot: Slot, from: number) {
 export function occurrences(slot: Slot, from: number, to: number): Occurrence[] {
   const start = Date.parse(slot.start), duration = Date.parse(slot.end)-start;
   const result: Occurrence[] = [];
-  if (start >= from && start < to) result.push(slotOccurrence(slot,slot.id,slot.start,slot.end));
+  if (start >= from && start < to && !slot.excludedStarts?.includes(slot.start)) result.push(slotOccurrence(slot,slot.id,slot.start,slot.end));
   if (!slot.rule || start >= to || (slot.rule.endDate && Date.parse(slot.rule.endDate)<from)) return result;
   const dates = recurrence(slot,from).between(new Date(wall(from,slot.timeZone)-day),new Date(wall(to,slot.timeZone)+day),true);
   for (const date of dates) {
     const t = instant(date.getTime(),slot.timeZone);
-    if (Number.isFinite(t) && t>start && t>=from && t<to) {
+    if (Number.isFinite(t) && t>start && t>=from && t<to && !slot.excludedStarts?.includes(new Date(t).toISOString())) {
       result.push(slotOccurrence(slot,slot.id+'@'+t,new Date(t).toISOString(),new Date(t+duration).toISOString()));
     }
   }
@@ -125,7 +125,7 @@ export function occurrenceByID(slots: Slot[], id: string): Occurrence | undefine
   const [series, timestamp] = id.split('@');
   const slot = slots.find(s=>s.id===series);
   if (!slot) return;
-  if (id === series) return slotOccurrence(slot,id,slot.start,slot.end);
+  if (id === series) return slot.excludedStarts?.includes(slot.start) ? undefined : slotOccurrence(slot,id,slot.start,slot.end);
   const t = Number(timestamp);
   if (!slot.rule || !Number.isSafeInteger(t) || Math.abs(t)>253402300799999) return;
   return occurrences(slot,t,t+1).find(s=>s.id === id);
@@ -136,13 +136,14 @@ export function overlaps(a: Omit<Occurrence,'id'>, b: Omit<Occurrence,'id'>) {
 
 export function nextOccurrenceStart(slot: Slot, from: number): number | undefined {
   const seed = Date.parse(slot.start);
-  if (seed >= from) return seed;
+  if (seed >= from && !slot.excludedStarts?.includes(slot.start)) return seed;
   if (!slot.rule || (slot.rule.endDate && Date.parse(slot.rule.endDate) < from)) return;
+  from = Math.max(seed, from);
   const schedule = recurrence(slot, from);
   let candidate = schedule.after(new Date(wall(from, slot.timeZone)), true);
   while (candidate) {
     const time = instant(candidate.getTime(), slot.timeZone);
-    if (Number.isFinite(time) && time >= from) return time;
+    if (Number.isFinite(time) && time >= from && !slot.excludedStarts?.includes(new Date(time).toISOString())) return time;
     candidate = schedule.after(candidate);
   }
 }

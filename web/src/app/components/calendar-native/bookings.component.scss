@@ -184,3 +184,6 @@ dialog::backdrop { background: #0006; }
     input::before { content: none; }
   }
 }
+
+:host(.in-timeline) { display: contents; }
+:host(.in-timeline) .workspace { display: none; }

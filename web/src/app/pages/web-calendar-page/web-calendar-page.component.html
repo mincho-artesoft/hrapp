@@ -418,7 +418,7 @@
         }
 
         @if (bookingsRoute) {
-          <cc-bookings [style.display]="bookingCalendar() ? 'none' : null" (timelineRequested)="openBookingTimeline($event)" [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
+          <cc-bookings [class.in-timeline]="!!bookingCalendar()" (timelineRequested)="openBookingTimeline($event)" [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
         }
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
@@ -620,8 +620,8 @@
                           (keydown.space)="timedEventClick(blk.data, $event)"
                           [attr.aria-haspopup]="bookingCalendar() || isDesktop() ? null : 'menu'"
                           [attr.aria-expanded]="bookingCalendar() || isDesktop() ? null : eventContext()?.event?.id === blk.id"
-                          [attr.role]="bookingCalendar() ? 'group' : 'button'"
-                          [attr.tabindex]="bookingCalendar() ? null : 0"
+                          role="button"
+                          tabindex="0"
                           [attr.aria-label]="blk.data.title"
                           [attr.aria-description]="blk.data.readOnly ? ('Read only' | nativeText) : null"
                         >

@@ -41,6 +41,12 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     public weak var hoursColumnView: HoursColumnView?
     
     // MARK: - Public Callbacks
+    var scopedEditable: ((EventDescriptor) -> Bool)?
+    private func eventIsReadOnly(_ descriptor: EventDescriptor) -> Bool {
+        if let scopedEditable { return !scopedEditable(descriptor) }
+        return SharedInviteTracker.isReadOnly(descriptor)
+    }
+
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEventSelectionChanged: ((EventDescriptor?) -> Void)?
     public var onEventEdit: ((EventDescriptor) -> Void)?
@@ -123,7 +129,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                 ?? (gestureRecognizer.view?.superview as? EventView)
             if let eventView,
                let descriptor = eventViewToDescriptor[eventView],
-               SharedInviteTracker.isReadOnly(descriptor) {
+               eventIsReadOnly(descriptor) {
                 return false
             }
         }
@@ -137,7 +143,14 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         suggestedActions: [UIMenuElement]
     ) -> UIMenu? {
         guard let descriptor = currentTappedDescriptor else { return nil }
-        let isReadOnly = SharedInviteTracker.isReadOnly(descriptor)
+        let isReadOnly = eventIsReadOnly(descriptor)
+        if scopedEditable != nil {
+            let action = UIAction(title: NSLocalizedString(isReadOnly ? "Detail" : "Edit", comment: ""),
+                                  image: UIImage(systemName: isReadOnly ? "info.circle" : "square.and.pencil")) { [weak self] _ in
+                self?.onEventEdit?(descriptor)
+            }
+            return UIMenu(children: [action])
+        }
         let canShare = SharedInviteTracker.canShare(descriptor)
         
         // ------------------------------------------------
@@ -826,7 +839,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         // 2) Активираме „edit“ режима за ново-селектирания
         guard let descriptor = eventViewToDescriptor[evView] else { return }
         onEventSelectionChanged?(descriptor)
-        guard !SharedInviteTracker.isReadOnly(descriptor) else {
+        guard !eventIsReadOnly(descriptor) else {
             setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
             return
         }
@@ -883,7 +896,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
 
     private func updateResizeHandles(_ view: EventView, descriptor: EventDescriptor) {
         let selected = currentlyEditedEventViewID == descriptor.timelineEventIdentity
-            && !SharedInviteTracker.isReadOnly(descriptor)
+            && !eventIsReadOnly(descriptor)
         let interval = descriptor.timelineOriginalInterval
         view.eventResizeHandles[0].isHidden = !selected || descriptor.dateInterval.start > interval.start
         view.eventResizeHandles[1].isHidden = !selected || descriptor.dateInterval.end < interval.end
@@ -924,7 +937,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     @objc private func handleEventViewPan(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView],
-              !SharedInviteTracker.isReadOnly(descriptor)
+              !eventIsReadOnly(descriptor)
         else { return }
         
         var minsingEvent: [EventView] = []
@@ -1366,7 +1379,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let handleView = gesture.view as? EventResizeHandleView,
             let eventView = handleView.superview as? EventView,
             let desc = eventViewToDescriptor[eventView],
-            !SharedInviteTracker.isReadOnly(desc)
+            !eventIsReadOnly(desc)
         else { return }
         isFirstResize = false
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1

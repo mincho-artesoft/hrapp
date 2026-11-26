@@ -125,6 +125,8 @@ struct MacCalendarTimelineInteractionLayer: View {
     @Binding var activeEventID: String?
     @Binding var selectedID: String?
     var selectEvent: (MacCalendarTimelineItem) -> Void
+    var openEvent: ((EKEvent) -> Void)? = nil
+    var allowsAllDay = true
     var create: (DateInterval, Bool, String) -> Void
     var commit: (EKEvent, DateInterval, Bool, String) -> Void
     var reportError: (String) -> Void
@@ -164,7 +166,7 @@ struct MacCalendarTimelineInteractionLayer: View {
         (0..<count).first { columnFrame($0).minX <= point.x && point.x < columnFrame($0).maxX }
     }
     private func accepts(_ point: CGPoint) -> Bool {
-        column(at: point) != nil && (viewport.contains(point) || allDay.contains(point))
+        column(at: point) != nil && (viewport.contains(point) || (allowsAllDay && allDay.contains(point)))
     }
     private func hit(_ point: CGPoint) -> MacCalendarTimelineItem? {
         items.sorted { $0.depth > $1.depth }.first {
@@ -290,7 +292,7 @@ struct MacCalendarTimelineInteractionLayer: View {
             // Desktop left click only selects. Right click is handled by the
             // event's context-menu surface, including all-day slices.
             selectedID = item.id
-            selectEvent(item)
+            if double, let openEvent { openEvent(item.event) } else { selectEvent(item) }
         }
         else {
             selectedID = nil

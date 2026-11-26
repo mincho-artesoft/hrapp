@@ -3166,4 +3166,4 @@ cc-calendar-menu {
 .booking-timeline .cal-toolbar:has(.sidebar-space) { column-gap: 0; }
 .booking-timeline .range-anchor { flex-shrink: 0; }
 .ios-layout.booking-timeline .cal-shell { padding-bottom: env(safe-area-inset-bottom); }
-.booking-timeline .ev-block { cursor: default; }
+.booking-timeline .ev-block:not(.is-readonly) { cursor: grab; }

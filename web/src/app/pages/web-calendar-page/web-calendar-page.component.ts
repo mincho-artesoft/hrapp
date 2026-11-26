@@ -121,6 +121,8 @@ type CalendarViewMode =
   | "menu";
 
 interface DragSession {
+  bookingId?: string;
+  bookingRevision?: number;
   mode: TimelineGesture;
   event?: WebCalendarEvent;
   original: TimelineInterval;
@@ -924,7 +926,8 @@ export class WebCalendarPageComponent
     if (!this.isDesktop()) this.showEvent(event);
   }
   activateEvent(event: WebCalendarEvent) {
-    if (this.bookingCalendar()) return;
+    const schedule = this.bookingCalendar();
+    if (schedule) { this.bookingPanel()?.openTimelineSlot(schedule,event); return; }
     if (event.readOnly) this.showEvent(event);
     else this.openEditEventModal(event);
   }
@@ -995,7 +998,12 @@ export class WebCalendarPageComponent
     this.eventContext.set(null);
   }
   timedEventClick(event: WebCalendarEvent, input: Event) {
-    if (this.bookingCalendar()) return;
+    if (this.bookingCalendar()) {
+      if (input instanceof KeyboardEvent || !(input instanceof MouseEvent) || input.detail===0 || this.pendingTimelineTap===event.id) {
+        input.preventDefault(); this.pendingTimelineTap=null; this.activateEvent(event);
+      }
+      return;
+    }
     if (this.isDesktop()) {
       if (input instanceof KeyboardEvent || (input instanceof MouseEvent && input.detail === 0)) {
         input.preventDefault();
@@ -1011,7 +1019,7 @@ export class WebCalendarPageComponent
   contextEvent(event: WebCalendarEvent, input: MouseEvent) {
     input.preventDefault();
     input.stopPropagation();
-    if (this.bookingCalendar()) return;
+    if (this.bookingCalendar()) { if ((input as PointerEvent).pointerType!=='touch') this.activateEvent(event); return; }
     // Browsers synthesize contextmenu during a touch hold. The timeline owns that drag.
     if (this.drag()?.touch || this.monthPointer?.touch || (input as PointerEvent).pointerType === 'touch') return;
     this.openEventActions(event, input);
@@ -1034,6 +1042,7 @@ export class WebCalendarPageComponent
   }
   @HostListener("document:keydown.escape") closeOverlays() {
     if (this.rangeOpen()) { this.rangeOpen.set(false); return; }
+    if (this.bookingPanel()?.dialog().nativeElement.open) return;
     if (this.bookingCalendar()) { this.closeBookingTimeline(); return; }
     if (this.editorDraft()) {
       if (!this.savingEvent()) this.closeEditor();
@@ -1625,7 +1634,8 @@ export class WebCalendarPageComponent
     if (this.isBrowser) {
       try {
         const mode = localStorage.getItem("cc.bookings.mode");
-        if (mode && this.bookingModes.some(option => option.value === mode)) this.bookingMode.set(mode);
+        if (this.route.snapshot.queryParamMap.has('bookingResponse')) this.selectBookingMode('appointments');
+        else if (mode && this.bookingModes.some(option => option.value === mode)) this.bookingMode.set(mode);
         const menuReturn = this.storedView("cc.mac.menuReturnView");
         if (menuReturn && menuReturn !== "menu" && menuReturn !== "weather") this.lastCalendarMode = menuReturn;
         const saved = this.storedView("cc.mac.view");
@@ -2115,7 +2125,7 @@ export class WebCalendarPageComponent
   };
 
   startTimelineGesture(ev: PointerEvent, mode: TimelineGesture, index: number, event?: WebCalendarEvent, allDay = false): void {
-    if (this.bookingCalendar()) return;
+    if (this.bookingCalendar() && allDay) return;
     if (ev.button !== 0 || !ev.isPrimary || this.savingEvent()) return;
     ev.stopPropagation();
     if (this.drag()?.active) return;
@@ -2142,6 +2152,7 @@ export class WebCalendarPageComponent
     if (mode === 'create') this.inspectorEvent.set(null);
     this.pointer = {x: ev.clientX, y: ev.clientY};
     this.drag.set({
+      bookingId: this.bookingCalendar()?.id, bookingRevision: this.bookingCalendar()?.revision,
       mode, event, original, originDayIdx: index, pointerId: ev.pointerId,
       startClientX: ev.clientX, startClientY: ev.clientY, touch: ev.pointerType === 'touch',
       anchorX: mode === 'create' ? (col.width - 4) / 2 : ev.clientX - col.left - 2,
@@ -2177,7 +2188,7 @@ export class WebCalendarPageComponent
     if (this.holdTimer) clearTimeout(this.holdTimer);
     const columns = this.daysColumnsRef?.nativeElement;
     if (!columns?.isConnected) { this.cancelDrag(); return; }
-    if (current.mode === 'create' && (this.viewMode() === 'multi'
+    if (!this.bookingCalendar() && current.mode === 'create' && (this.viewMode() === 'multi'
       ? !this.multiCalendars()[current.originDayIdx]?.allowsChanges : !this.writableCalendars().length)) {
       this.cancelDrag();
       this.showToast("Open Menu to allow calendar access or add a writable calendar.");
@@ -2205,13 +2216,14 @@ export class WebCalendarPageComponent
     const center = state.mode.startsWith('resize-') ? x : left + state.width / 2;
     const hitIndex = Math.floor((rtl ? first.right - center : center - first.left) / first.width);
     const resizing = state.mode === 'resize-start' || state.mode === 'resize-end';
-    const columnIndex = resizing && this.viewMode() === 'multi' ? state.originDayIdx : hitIndex;
+    const multiCalendar = !state.bookingId && this.viewMode() === 'multi';
+    const columnIndex = resizing && multiCalendar ? state.originDayIdx : hitIndex;
     const target = this.doc.elementFromPoint(x,y);
     const allDay = !!target?.closest('.tl-allday-zone');
     const withinView = y >= viewport.top && y < viewport.bottom && x >= viewport.left && x < viewport.right;
     const onGutter = !!target?.closest('.tl-gutter') || !!target?.closest('.calendar-column-head');
-    const sameCalendar = this.viewMode() !== 'multi' || !state.event || columnIndex === state.originDayIdx;
-    const canCreate = state.mode !== 'create' || this.viewMode() !== 'multi' || this.multiCalendars()[columnIndex]?.allowsChanges;
+    const sameCalendar = !multiCalendar || !state.event || columnIndex === state.originDayIdx;
+    const canCreate = state.mode !== 'create' || !multiCalendar || this.multiCalendars()[columnIndex]?.allowsChanges;
     const minute = (y - bounds.top - state.anchorY) / HOUR_PX * 60;
     const interval = dates[columnIndex] && !onGutter && (allDay || withinView)
       ? timelinePlacement(state.mode, state.original, dates[state.originDayIdx], dates[columnIndex], minute, allDay) : null;
@@ -2221,8 +2233,8 @@ export class WebCalendarPageComponent
       const edge = state.mode === 'resize-end' ? interval.end : interval.start;
       const snappedY = minuteOnDay(edge, dates[columnIndex]) * HOUR_PX / 60;
       const visualY = allDay || state.mode === 'create' ? 0 : y - bounds.top - state.anchorY - snappedY;
-      const color = this.viewMode() === 'multi' ? this.multiCalendars()[columnIndex]?.color : state.color;
-      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: Boolean(sameCalendar && canCreate), visualX, visualY, color});
+      const color = multiCalendar ? this.multiCalendars()[columnIndex]?.color : state.color;
+      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: this.bookingCalendar() ? !allDay : Boolean(sameCalendar && canCreate), visualX, visualY, color});
     } else if (state.valid) this.drag.set({...state, valid: false});
     if ((withinView || allDay) && !this.scrollFrame) {
       const edgeSpeed = (position: number, low: number, high: number) =>
@@ -2291,7 +2303,13 @@ export class WebCalendarPageComponent
     this.updatePlacement();
     const state = this.drag()!;
     this.cancelDrag();
+    if (this.bookingCalendar()?.id !== state.bookingId) return;
     if (!state.active) {
+      if (state.event && this.bookingCalendar()) {
+        this.inspectorEvent.set(state.event);
+        if (!this.isDesktop()) this.pendingTimelineTap = state.event.id;
+        return;
+      }
       if (state.event && state.mode === 'move' && !state.original.allDay && !this.isDesktop()) {
         this.pendingTimelineTap = state.event.id;
       } else if (state.event) this.selectEvent(state.event);
@@ -2303,13 +2321,26 @@ export class WebCalendarPageComponent
     if (state.event && Math.hypot(ev.clientX - state.startClientX, ev.clientY - state.startClientY) < 3) return;
     const {start, end, allDay} = state.preview;
     if (state.event) {
-      if (start !== state.original.start || end !== state.original.end || allDay !== state.original.allDay)
-        await this.commitDraggedEventChange(state.event, new Date(start).toISOString(), new Date(end).toISOString(), allDay);
+      if (start === state.original.start && end === state.original.end && allDay === state.original.allDay) return;
+      const event=state.event, schedule=this.bookingCalendar();
+      if (schedule) {
+        const slotId = event.id.startsWith('slot-') ? event.id.slice(5)
+          : schedule.requests.find(r => 'request-'+r.id === event.id)?.slotId;
+        if (!slotId || event.readOnly) return;
+        try {
+          await this.bookingStore.request('/'+schedule.id+'/occurrences/'+encodeURIComponent(slotId),'PUT',
+            {revision:state.bookingRevision,start:new Date(start).toISOString(),end:new Date(end).toISOString()});
+          if (event.id.startsWith('request-')) this.showToast(this.localization.text('Awaiting guest response'));
+        } catch(e) { this.showToast((e as Error).message); }
+        await this.bookingStore.refresh();
+      } else {
+        await this.commitDraggedEventChange(event,new Date(start).toISOString(),new Date(end).toISOString(),allDay);
+      }
     } else this.createTimelineEvent(state.preview, state.previewDayIdx);
   }
 
   doubleClickSlot(ev: MouseEvent, index: number, allDay = false): void {
-    if (this.bookingCalendar()) return;
+    if (this.bookingCalendar() && allDay) return;
     if ((ev.target as Element).closest('.ev-block,.allday-pill')) return;
     const day = this.visibleDays()[index];
     const top = this.daysColumnsRef!.nativeElement.getBoundingClientRect().top;
@@ -2319,6 +2350,12 @@ export class WebCalendarPageComponent
   }
 
   private createTimelineEvent(interval: TimelineInterval, index: number): void {
+    const calendar=this.bookingCalendar();
+    if (calendar) {
+      if (!interval.allDay) this.bookingPanel()?.openSlot(calendar,undefined,false,{id:crypto.randomUUID(),
+        start:new Date(interval.start).toISOString(),end:new Date(interval.end).toISOString()});
+      return;
+    }
     const column = this.viewMode() === 'multi' ? this.multiCalendars()[index] : undefined;
     if (column && !column.allowsChanges) return;
     this.openNewEventModal(new Date(interval.start), new Date(interval.end), interval.allDay, column?.id);
@@ -2332,7 +2369,7 @@ export class WebCalendarPageComponent
   }
 
   previewCoversDay(state: DragSession, day: Date, index: number): boolean {
-    return state.active && (this.viewMode() !== 'multi' || state.previewDayIdx === index)
+    return state.active && (!!state.bookingId || this.viewMode() !== 'multi' || state.previewDayIdx === index)
       && state.preview.start < timelineDay(day, 1).getTime() && state.preview.end > day.getTime();
   }
 

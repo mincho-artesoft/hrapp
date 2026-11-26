@@ -8,6 +8,7 @@ struct BookingInterval: Codable, Identifiable {
     var title: String?
     var location: String?
     var structuredLocation: SharedEventLocation?
+    var excludedStarts: [String]?
     var rule: SharedEventRecurrenceRule?
     var timeZone: String?
     var payload: [String: any Sendable] {
@@ -30,8 +31,10 @@ struct BookingInterval: Codable, Identifiable {
 struct BookingAppointment: Codable, Identifiable {
     let id, slotId, start, end, guestName, hostName, calendarTitle, status: String
     var appointmentType, customType: String?
-    var title, location: String?
-    var interval: BookingInterval { .init(id: slotId, start: start, end: end, title: title, location: location) }
+    var title, location, calendarId: String?
+    var structuredLocation: SharedEventLocation?
+    var proposal: BookingInterval?
+    var interval: BookingInterval { .init(id: slotId, start: start, end: end, title: title, location: location, structuredLocation: structuredLocation) }
     var eventStatus: BookingEventStatus { BookingEventStatus(rawValue: status) ?? .unknown }
     var active: Bool { status == "pending" || status == "accepted" }
 }
@@ -44,9 +47,17 @@ struct HostedBookingCalendar: Codable, Identifiable {
     var slots: [BookingInterval] = []
     var requests: [BookingAppointment] = []
 
+    func reservation(for slot: BookingInterval) -> BookingAppointment? {
+        guard slot.rule == nil else { return nil }
+        return requests.first {
+            let held = $0.proposal ?? $0.interval
+            return $0.status != "declined" && $0.slotId == slot.id && held.start == slot.start && held.end == slot.end
+        }
+    }
+
     func status(for slot: BookingInterval) -> BookingEventStatus {
         if slot.rule != nil { return .available }
-        if let reservation = requests.first(where: { $0.slotId == slot.id && $0.status != "declined" }) {
+        if let reservation = reservation(for: slot) {
             return reservation.eventStatus
         }
         return BookingEventStatus.unreserved(ending: BookingInterval.date(slot.end))
@@ -122,6 +133,9 @@ private func bookingVenue(_ location: String?, _ point: SharedEventLocation?) ->
 private struct BookingSlotTarget: Identifiable {
     let calendar: HostedBookingCalendar
     var slot: BookingInterval?
+    var occurrence = false
+    var reservation: BookingAppointment?
+    var initialInterval: DateInterval?
     var id: String { calendar.id + (slot?.id ?? "-new") }
 }
 private func bookingLink(_ id: String) -> URL {
@@ -223,7 +237,22 @@ private struct SignedInBookingsContent: View {
         Group {
             if let timelineID, mode == .availability, store.belongs(to: session),
                let schedule = store.data.calendars.first(where: { $0.id == timelineID }) {
-                BookingCalendarTimeline(schedule: schedule, onBack: { self.timelineID = nil })
+                BookingCalendarTimeline(schedule: schedule, onBack: { self.timelineID = nil }, onEdit: { entry in
+                    let base = schedule.slots.first { $0.id == entry.slotID.components(separatedBy: "@")[0] }
+                    let request = schedule.requests.first { $0.id == entry.requestID }
+                    let source = entry.proposed ? request?.proposal : request?.interval
+                    let slot = BookingInterval(id: entry.slotID, start: DeviceCalendarEvent.iso(entry.start), end: DeviceCalendarEvent.iso(entry.end),
+                        title: source?.title ?? base?.title, location: entry.location,
+                        structuredLocation: source == nil ? base?.structuredLocation : source?.structuredLocation, timeZone: base?.timeZone)
+                    slotTarget = .init(calendar: schedule, slot: slot, occurrence: true, reservation: request)
+                }, onMove: { entry, interval in
+                    Task {
+                        do {
+                            try await store.mutate("/" + schedule.id + "/occurrences/" + entry.slotID, body: [
+                                "revision": schedule.revision, "start": DeviceCalendarEvent.iso(interval.start), "end": DeviceCalendarEvent.iso(interval.end)])
+                        } catch { failure = error.localizedDescription; await store.refresh() }
+                    }
+                }, onCreate: { interval in slotTarget = .init(calendar: schedule, initialInterval: interval) })
                     .id(schedule.id)
             } else {
                 bookingList
@@ -241,7 +270,7 @@ private struct SignedInBookingsContent: View {
         .onChange(of: mode) { timelineID = nil }
         .onChange(of: addAction) { add() }
         .appSheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
-        .appSheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
+        .appSheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot, occurrence: target.occurrence, reservation: target.reservation, initialInterval: target.initialInterval) }
         .appSheet(isPresented: $lookup) { BookingLookupSheet() }
         .alert("Bookings", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
             Button("OK") { failure = nil }
@@ -308,7 +337,7 @@ private struct SignedInBookingsContent: View {
                         ForEach(calendar.requests) { request in
                             VStack(alignment: .leading, spacing: 5) {
                                 bookingRow(request.guestName, request)
-                                if request.status == "pending" {
+                                if request.status == "pending" && request.proposal == nil {
                                     HStack {
                                         Button("Accept") { decide(calendar, request, "accepted") }
                                         Button("Decline") { decide(calendar, request, "declined") }
@@ -324,6 +353,12 @@ private struct SignedInBookingsContent: View {
                     CalendarSharingSection(rows: true) {
                       VStack(alignment: .leading) {
                         bookingRow(r.calendarTitle, r)
+                        if let proposal = r.proposal, let id = r.calendarId {
+                            HStack {
+                                Button("Accept") { respond(id, r.id, proposal.id, "accepted") }
+                                Button("Decline") { respond(id, r.id, proposal.id, "declined") }
+                            }.buttonStyle(.bordered).disabled(deciding)
+                        }
                         Text(verbatim: bookingPurpose(r.appointmentType, r.customType) + " · " + r.hostName).font(.subheadline).foregroundStyle(.secondary)
                       }
                     }
@@ -346,10 +381,26 @@ private struct SignedInBookingsContent: View {
                 if let title = r.title, !title.isEmpty { Text(verbatim: title).font(.subheadline) }
                 Text(verbatim: r.interval.label).font(.subheadline)
                 if let location = r.location, !location.isEmpty { Text(verbatim: location).font(.subheadline).foregroundStyle(.secondary) }
+                if let proposal = r.proposal {
+                    Text("Proposed change").font(.headline)
+                    Text(verbatim: proposal.label)
+                    if let title = proposal.title { Text(verbatim: title) }
+                    if let location = proposal.location { Text(verbatim: location) }
+                }
             }
             .bookingStatusBar(r.eventStatus)
             Spacer()
             Text(LocalizedStringKey(r.status.capitalized)).font(.caption.bold()).foregroundStyle(.secondary)
+        }
+    }
+    private func respond(_ calendarID: String, _ requestID: String, _ proposalID: String, _ status: String) {
+        deciding = true
+        Task {
+            defer { deciding = false }
+            do {
+                try await store.mutate("/" + calendarID + "/requests/" + requestID + "/change-response",
+                    body: ["status": status, "proposalId": proposalID])
+            } catch { failure = error.localizedDescription; await store.refresh() }
         }
     }
     private func decide(_ calendar: HostedBookingCalendar, _ r: BookingAppointment, _ status: String) {
@@ -712,6 +763,8 @@ private struct BookingEventSection<Content: View>: View {
 private struct BookingTimeEditor: View {
     let calendar: HostedBookingCalendar
     let original: BookingInterval?
+    let occurrence: Bool
+    let reservation: BookingAppointment?
     @Environment(\.dismiss) private var dismiss
     @State private var slot: BookingTimeDraft
     @State private var choosingLocation = false
@@ -724,21 +777,28 @@ private struct BookingTimeEditor: View {
     @State private var confirmRemove = false
     @State private var error: String?
 
-    init(calendar: HostedBookingCalendar, original: BookingInterval?) {
+    init(calendar: HostedBookingCalendar, original: BookingInterval?, occurrence: Bool = false,
+         reservation: BookingAppointment? = nil, initialInterval: DateInterval? = nil) {
         self.calendar = calendar
         self.original = original
+        let booked = reservation ?? original.flatMap(calendar.reservation(for:))
+        self.occurrence = occurrence || booked != nil
+        self.reservation = booked
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
         let start = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: tomorrow) ?? tomorrow
         let lastEnd = calendar.slots.last.map { BookingInterval.date($0.end) }
-        _slot = State(initialValue: original.map(BookingTimeDraft.init) ?? .init(start: max(start,lastEnd ?? start)))
+        var draft = original.map(BookingTimeDraft.init) ?? .init(start: initialInterval?.start ?? max(start,lastEnd ?? start))
+        if let initialInterval { draft.end = initialInterval.end }
+        _slot = State(initialValue: draft)
     }
 
     private var locked: Bool {
-        calendar.requests.contains { $0.active && ($0.slotId == slot.id || $0.slotId.hasPrefix(slot.id + "@")) }
+        if occurrence { return reservation?.proposal != nil || reservation?.status == "past" }
+        return calendar.requests.contains { $0.active && ($0.slotId == slot.id || $0.slotId.hasPrefix(slot.id + "@")) }
     }
 
     var body: some View {
-        BookingSheet(title: customRepeat ? "Custom" : (original == nil ? "Add time slot" : "Available time"),
+        BookingSheet(title: customRepeat ? "Custom" : (reservation != nil ? "Booking" : original == nil ? "Add time slot" : "Available time"),
                      leading: customRepeat ? "Back" : "Close", back: {
             if customRepeat { customRepeat = false } else { dismiss() }
         }, save: (customRepeat || locked) ? nil : { persist(remove: false) }, canSave: slot.end > slot.start) {
@@ -755,6 +815,10 @@ private struct BookingTimeEditor: View {
     }
     private var form: some View {
         CalendarSharingForm {
+            if let reservation {
+                Text(reservation.proposal != nil ? LocalizedStringKey("Awaiting guest response") :
+                     reservation.status == "past" ? "Past" : "The guest will be asked to accept this change.")
+            }
             CalendarEventTitleLocationSection(title: $slot.title, location: slot.location,
                 editLocation: { choosingLocation = true }, clearLocation: { slot.location = ""; slot.structuredLocation = nil })
             BookingEventSection {
@@ -763,7 +827,7 @@ private struct BookingTimeEditor: View {
                     CalendarDateTimePickerRow(title: "Ends", id: slot.id + "-end",
                         selection: $slot.end, range: slot.start...Date.distantFuture, expanded: $expanded)
             }.calendarDatePickerColumns([slot.start,slot.end])
-            BookingEventSection {
+            if !occurrence { BookingEventSection {
                 CalendarEventEditorMenuRow(title: "Repeat", value: NSLocalizedString(slot.choice == .custom ? "Custom" : slot.choice.rawValue, comment: "")) {
                     ForEach(BookingRepeat.allCases, id: \.self) { choice in
                         if choice == .custom { Divider() }
@@ -795,7 +859,8 @@ private struct BookingTimeEditor: View {
                     }
                 }
             }
-            if original != nil && !locked {
+            }
+            if original != nil && reservation == nil && !locked {
                 CalendarEventRemovalSection(title: "Remove time slot") { confirmRemove = true }
             }
             if let error { CalendarSharingSection { Text(verbatim: error).foregroundStyle(.red) } }
@@ -824,9 +889,13 @@ private struct BookingTimeEditor: View {
             var slots = calendar.slots.filter { $0.id != slot.id }.map(\.payload)
             if !remove { slots.append(slot.payload) }
             do {
-                try await BookingStore.shared.mutate("/" + calendar.id, body: [
+                if occurrence {
+                    var body = remove ? ["remove": true] as [String:any Sendable] : slot.payload
+                    body["revision"] = calendar.revision
+                    try await BookingStore.shared.mutate("/" + calendar.id + "/occurrences/" + slot.id, body: body)
+                } else { try await BookingStore.shared.mutate("/" + calendar.id, body: [
                     "revision": calendar.revision, "title": calendar.title, "slots": slots
-                ])
+                ]) }
                 dismiss()
             } catch { self.error = error.localizedDescription }
         }

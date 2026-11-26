@@ -113,6 +113,14 @@ struct MacTabletDayView: View {
     }
 }
 
+struct MacScopedTimelineActions {
+    let destination: EKCalendar?
+    let editable: (EKEvent) -> Bool
+    let edit: (EKEvent) -> Void
+    let move: (EKEvent, DateInterval) -> Void
+    let create: (DateInterval) -> Void
+}
+
 struct MacTabletMultiDayView: View {
     @ObservedObject var store: MacTabletCalendarStore
     @Binding var startDate: Date
@@ -121,6 +129,7 @@ struct MacTabletMultiDayView: View {
     @Binding var editorTarget: MacTabletEventEditorTarget?
 
     var scopedEvents: [EKEvent]? = nil
+    var scopedActions: MacScopedTimelineActions? = nil
 
     private var calendar: Calendar { MacCalendarFormatting.calendar }
 
@@ -130,7 +139,7 @@ struct MacTabletMultiDayView: View {
 
     var body: some View {
         MacTabletTimelineView(store: store, dates: dates, calendars: nil,
-            editorTarget: $editorTarget, scopedEvents: scopedEvents, onDayTap: { date in
+            editorTarget: $editorTarget, scopedEvents: scopedEvents, scopedActions: scopedActions, onDayTap: { date in
                 startDate = date
                 if scopedEvents == nil { selectedTab = 1 }
             })
@@ -338,6 +347,7 @@ struct MacTabletTimedEventBlock: View {
     var textHeight: CGFloat? = nil
     var depth = 0
     var displayOnly = false
+    var scopedActions: MacScopedTimelineActions? = nil
     @Binding var editorTarget: MacTabletEventEditorTarget?
     let isSelected: Bool
     let activate: () -> Void
@@ -349,7 +359,12 @@ struct MacTabletTimedEventBlock: View {
     }
 
     var body: some View {
-        if displayOnly {
+        if let scopedActions {
+            Button { scopedActions.edit(event) } label: { card(isReadOnly: !scopedActions.editable(event)) }
+                .buttonStyle(.plain)
+                .accessibilityLabel(event.title ?? "")
+                .contextMenu { Button(scopedActions.editable(event) ? "Edit" : "Detail") { scopedActions.edit(event) } }
+        } else if displayOnly {
             card(isReadOnly: true)
         } else {
             interactiveCard
@@ -389,6 +404,7 @@ struct MacTabletTimelineView: View {
     @Binding var editorTarget: MacTabletEventEditorTarget?
     var scrollRequest: CalendarTimelineScrollRequest? = nil
     var scopedEvents: [EKEvent]? = nil
+    var scopedActions: MacScopedTimelineActions? = nil
     var onDayTap: ((Date) -> Void)? = nil
     @Environment(\.layoutDirection) private var layoutDirection
     @State private var interactionSpace = UUID()
@@ -521,28 +537,31 @@ struct MacTabletTimelineView: View {
             if viewportState.items != $0 { viewportState.items = $0 }
         }
         .overlay {
-            if scopedEvents == nil {
+            if scopedEvents == nil || scopedActions != nil {
                 MacCalendarTimelineViewportReader(viewport: viewportState, itemsChanged: {
                     if let selectedEventID { updateSidebarSelection(selectedEventID) }
                 }) { items, frames in
                 MacCalendarTimelineInteractionLayer(items: items, frames: frames,
                     dates: dates, columnCalendars: calendars,
-                    defaultCalendar: defaultCalendar,
+                    defaultCalendar: scopedActions?.destination ?? defaultCalendar,
                     calendar: calendar, hourHeight: hourHeight, margin: timelineMargin,
                     scrollHandle: scrollHandle, activeEventID: $activeEventID,
                     selectedID: $selectedEventID,
-                    selectEvent: { activateEvent($0.event) },
+                    selectEvent: { if scopedActions == nil { activateEvent($0.event) } },
+                    openEvent: scopedActions?.edit, allowsAllDay: scopedActions == nil,
                     create: { interval, allDay, calendarID in
+                        if let scopedActions { scopedActions.create(interval); return }
                         var target = MacTabletEventEditorTarget(event: nil, defaultDate: interval.start, usesExactStart: true)
                         target.initialInterval = interval
                         target.preferredCalendarID = calendarID
                         target.defaultIsAllDay = allDay
                         editorTarget = target
                     }, commit: { event, interval, allDay, calendarID in
+                        if let scopedActions { scopedActions.move(event, interval); return }
                         let change = TimelineChange(event: event, interval: interval, allDay: allDay, calendarID: calendarID)
                         if event.hasRecurrenceRules { pendingTimelineChange = change }
                         else { saveTimelineChange(change, span: .thisEvent) }
-                    }, reportError: { store.errorMessage = $0 }, canEditEvent: store.canEdit, canEdit: store.canEdit)
+                    }, reportError: { store.errorMessage = $0 }, canEditEvent: scopedActions?.editable ?? store.canEdit, canEdit: { scopedActions != nil || store.canEdit($0) })
                 }
             }
         }
@@ -567,6 +586,7 @@ struct MacTabletTimelineView: View {
     }
 
     private func updateSidebarSelection(_ id: String?) {
+        guard scopedEvents == nil else { return }
         if let id, let item = interactionItems.first(where: { $0.id == id }) {
             inspectEvent(item.event)
         } else {
@@ -745,7 +765,7 @@ struct MacTabletTimelineView: View {
                     MacTabletTimedEventBlock(store: store, event: placement.event,
                         defaultDate: columnDate(column), width: placement.frame.width,
                         height: placement.frame.height, textHeight: placement.textHeight,
-                        depth: placement.depth, displayOnly: scopedEvents != nil, editorTarget: $editorTarget,
+                        depth: placement.depth, displayOnly: scopedEvents != nil, scopedActions: scopedActions, editorTarget: $editorTarget,
                         isSelected: selectedEventID == MacCalendarTimelineItem.identity(placement.event),
                         activate: { activateEvent(placement.event) },
                         select: { selectEventForContextMenu(placement.event) })

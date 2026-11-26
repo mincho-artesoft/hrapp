@@ -4,6 +4,10 @@ import EventKit
 // Display occurrences only. Both the slots and the reservations belong to this host calendar.
 struct BookingTimelineEntry: Identifiable, Equatable {
     let id: String
+    let slotID: String
+    var requestID: String? = nil
+    var readOnly = false
+    var proposed = false
     let title: String
     let status: BookingEventStatus
     let location: String?
@@ -12,12 +16,20 @@ struct BookingTimelineEntry: Identifiable, Equatable {
 
     static func entries(in schedule: HostedBookingCalendar, from lower: Date, to upper: Date) -> [Self] {
         let bookings = schedule.requests.filter { $0.status != "declined" }
-        let occupied = Set(bookings.map(\.slotId))
-        let reservations = bookings.compactMap { booking -> Self? in
-            let start = BookingInterval.date(booking.start), end = BookingInterval.date(booking.end)
-            guard start < upper, end > lower, end > start else { return nil }
-            let title = [booking.title, booking.guestName].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")
-            return Self(id: "request-" + booking.id, title: title, status: booking.eventStatus, location: booking.location, start: start, end: end)
+        let reservations = bookings.flatMap { booking -> [Self] in
+            func entry(_ slot: BookingInterval, proposed: Bool) -> Self? {
+                let start = BookingInterval.date(slot.start), end = BookingInterval.date(slot.end)
+                guard start < upper, end > lower, end > start else { return nil }
+                let title = [slot.title, booking.guestName].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")
+                return Self(id: (proposed ? "proposal-" : "request-") + booking.id, slotID: booking.slotId,
+                    requestID: booking.id, readOnly: booking.proposal != nil || booking.status == "past", proposed: proposed,
+                    title: title, status: proposed ? .pending : booking.eventStatus, location: slot.location, start: start, end: end)
+            }
+            var values: [Self] = []
+            if booking.proposal?.start != booking.start || booking.proposal?.end != booking.end,
+               let original = entry(booking.interval, proposed: false) { values.append(original) }
+            if let proposal = booking.proposal, let next = entry(proposal, proposed: true) { values.append(next) }
+            return values
         }
         var result = reservations
         for slot in schedule.slots {
@@ -29,12 +41,13 @@ struct BookingTimelineEntry: Identifiable, Equatable {
                 let lowerStart = max(seed, lower.addingTimeInterval(-duration))
                 starts.formUnion(rule.recurrences(of: seed, in: lowerStart..<upper))
             }
-            for start in starts {
+            let excluded = Set((slot.excludedStarts ?? []).map(BookingInterval.date))
+            for start in starts where !excluded.contains(start) {
                 let end = start.addingTimeInterval(duration)
                 guard start >= seed, end > lower else { continue }
                 let id = start == seed ? slot.id : "\(slot.id)@\(Int64((start.timeIntervalSince1970 * 1000).rounded()))"
-                guard !occupied.contains(id), !reservations.contains(where: { $0.start < end && $0.end > start }) else { continue }
-                result.append(Self(id: "slot-" + id, title: slot.title ?? "", status: .unreserved(ending: end), location: slot.location, start: start, end: end))
+                guard !reservations.contains(where: { $0.start < end && $0.end > start }) else { continue }
+                result.append(Self(id: "slot-" + id, slotID: id, title: slot.title ?? "", status: .unreserved(ending: end), location: slot.location, start: start, end: end))
             }
         }
         return result.sorted { ($0.start, $0.id) < ($1.start, $1.id) }
@@ -70,6 +83,10 @@ private extension SharedEventRecurrenceRule {
 struct BookingCalendarTimeline: View {
     let schedule: HostedBookingCalendar
     let onBack: () -> Void
+    let onEdit: (BookingTimelineEntry) -> Void
+    let onMove: (BookingTimelineEntry, DateInterval) -> Void
+    let onCreate: (DateInterval) -> Void
+    @State private var eventEntries: [ObjectIdentifier: BookingTimelineEntry] = [:]
     @Environment(\.calendar) private var calendar
     @Environment(\.locale) private var locale
     @State private var start = Calendar.current.startOfDay(for: .now)
@@ -78,6 +95,7 @@ struct BookingCalendarTimeline: View {
     #if os(macOS)
     @EnvironmentObject private var store: MacTabletCalendarStore
     @State private var pickingRange = false
+    @State private var creationCalendar: EKCalendar?
     #endif
 
     private struct Projection: Equatable {
@@ -110,15 +128,25 @@ struct BookingCalendarTimeline: View {
                     #endif
                     calendars[status] = calendar
                 }
+                var lookup: [ObjectIdentifier: BookingTimelineEntry] = [:]
                 events = value.entries.map { entry in
                     let event = EKEvent(eventStore: displayStore)
                     event.calendar = calendars[entry.status]
                     event.startDate = entry.start
                     event.endDate = entry.end
                     event.location = entry.location
-                    event.title = [entry.title, NSLocalizedString(entry.status.label, comment: "")].filter { !$0.isEmpty }.joined(separator: " · ")
+                    event.title = [entry.title, NSLocalizedString(entry.proposed ? "Proposed change" : entry.status.label, comment: "")].filter { !$0.isEmpty }.joined(separator: " · ")
+                    lookup[ObjectIdentifier(event)] = entry
                     return event
                 }
+                eventEntries = lookup
+                #if os(macOS)
+                if creationCalendar == nil {
+                    let destination = EKCalendar(for: .event, eventStore: displayStore)
+                    destination.cgColor = NSColor(BookingEventStatus.available.color).cgColor
+                    creationCalendar = destination
+                }
+                #endif
             }
     }
 
@@ -154,17 +182,26 @@ struct BookingCalendarTimeline: View {
             MacTabletMultiDayView(store: store, startDate: Binding(get: { start }, set: { day in
                 start = day
                 end = day
-            }), dayCount: dayCount, selectedTab: .constant(3), editorTarget: .constant(nil), scopedEvents: events)
+            }), dayCount: dayCount, selectedTab: .constant(3), editorTarget: .constant(nil), scopedEvents: events,
+                scopedActions: .init(destination: creationCalendar, editable: editable, edit: edit, move: move, create: onCreate))
         }
         .macCalendarRangePicker(isPresented: $pickingRange, start: start, end: end) { first, last in
             start = first
             end = last
         }
         #else
-        BookingPinnedTimeline(title: schedule.title, start: $start, end: $end, events: events, onBack: onBack)
+        BookingPinnedTimeline(title: schedule.title, start: $start, end: $end, events: events, onBack: onBack, editable: editable, edit: edit, move: move, create: onCreate)
             .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
         #endif
     }
+    private func editable(_ event: EKEvent) -> Bool { eventEntries[ObjectIdentifier(event)]?.readOnly == false }
+    private func edit(_ event: EKEvent) {
+        if let entry = eventEntries[ObjectIdentifier(event)] { onEdit(entry) }
+    }
+    private func move(_ event: EKEvent, _ interval: DateInterval) {
+        if let entry = eventEntries[ObjectIdentifier(event)], !entry.readOnly { onMove(entry, interval) }
+    }
+
 }
 
 #if os(iOS)
@@ -175,9 +212,14 @@ private struct BookingPinnedTimeline: UIViewRepresentable {
     let events: [EKEvent]
     let onBack: () -> Void
 
+    let editable: (EKEvent) -> Bool
+    let edit: (EKEvent) -> Void
+    let move: (EKEvent, DateInterval) -> Void
+    let create: (DateInterval) -> Void
+
     func makeUIView(context: Context) -> TwoWayPinnedMultiDayContainerView {
         let view = TwoWayPinnedMultiDayContainerView()
-        view.weekView.isUserInteractionEnabled = false
+        view.weekView.onEventConvertToAllDay = nil
         view.allDayView.isUserInteractionEnabled = false
         view.onRangeChange = { start = $0; end = $1 }
         view.onDayLabelTap = { start = $0; end = $0 }
@@ -186,6 +228,16 @@ private struct BookingPinnedTimeline: UIViewRepresentable {
 
     func updateUIView(_ view: TwoWayPinnedMultiDayContainerView, context: Context) {
         let calendar = Calendar.current
+        view.weekView.scopedEditable = { descriptor in (descriptor as? EKMultiDayWrapper).map { editable($0.realEvent) } ?? false }
+        view.onEventEdit = { descriptor in if let part = descriptor as? EKMultiDayWrapper { edit(part.realEvent) } }
+        view.onEventTap = view.onEventEdit
+        view.onEventDragEnded = { descriptor, _, allDay in
+            if !allDay, let part = descriptor as? EKMultiDayWrapper { move(part.realEvent, part.dateInterval) }
+        }
+        view.onEventDragResizeEnded = { descriptor, _ in
+            if let part = descriptor as? EKMultiDayWrapper { move(part.realEvent, part.dateInterval) }
+        }
+        view.onEmptyLongPress = { interval, _ in create(interval) }
         view.scopedTitle = title
         view.onScopeBack = onBack
         view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight

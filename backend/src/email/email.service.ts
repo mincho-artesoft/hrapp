@@ -372,6 +372,15 @@ export class EmailService {
     return this.shell(body);
   }
 
+  async bookingChange(to: string, calendar: string, original: {start:string; end:string}, proposed: {start:string; end:string; title?:string; location?:string}, zone?: string) {
+    const when = (value: {start:string; end:string}) => this.esc(this.fmtWhen(value.start, value.end, zone));
+    const details = [proposed.title, proposed.location].filter(Boolean).map(value => this.esc(value)).join(' · ');
+    const html = this.shell(`<h2>Booking change proposed</h2><p>The owner of ${this.esc(calendar)} has proposed a change to your booking.</p>
+      <p>Current time: ${when(original)}<br>Proposed time: ${when(proposed)}</p><p>${details}</p>
+      <p>Accept to keep the new appointment, or decline to release the time.</p>${this.button(this.SITE_URL+'/calendar/bookings/?bookingResponse=1','Review in My bookings')}`);
+    await this.sendEmail(to, 'Booking change proposed', html);
+  }
+
   /**
    * Notify one registrant of a shareable fixed-date event. `kind` is
    * 'registered' | 'moved' | 'cancelled'. Guarded like every send: a no-op with

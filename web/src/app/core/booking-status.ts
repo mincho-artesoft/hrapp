@@ -16,6 +16,14 @@ export function unreservedStatus(end: Date): BookingEventStatus {
 
 export function slotStatus(calendar: BookingCalendar, slot: BookingSlot): BookingEventStatus {
   if (slot.rule) return 'available';
-  const reservation = calendar.requests.find(r => r.slotId === slot.id && r.status !== 'declined');
+  const reservation = slotReservation(calendar, slot);
   return reservation?.status ?? unreservedStatus(new Date(slot.end));
+}
+
+export function slotReservation(calendar: BookingCalendar, slot: BookingSlot): Appointment | undefined {
+  if (slot.rule) return undefined;
+  return calendar.requests.find(r => {
+    const held = r.proposal ?? r;
+    return r.slotId === slot.id && r.status !== 'declined' && held.start === slot.start && held.end === slot.end;
+  });
 }

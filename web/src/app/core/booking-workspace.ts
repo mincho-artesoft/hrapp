@@ -4,12 +4,12 @@ import { CalendarPlatformApiService, CalendarRepeatRule, WebCalendarEventDetails
 export interface BookingPurpose { appointmentType?:string; customType?:string }
 export interface BookingVenue { location?: string; structuredLocation?: WebCalendarEventDetails['structuredLocation'] }
 export interface BookingSlot extends BookingVenue {
-  title?:string;
+  title?:string; excludedStarts?:string[];
   id: string; start: string; end: string; timeZone?:string;
   rule?: Omit<CalendarRepeatRule,'frequency'> & {frequency:number};
 }
 export interface Appointment extends BookingSlot, BookingPurpose {
-  slotId: string; hostName: string; guestName: string; calendarTitle: string;
+  proposal?: BookingSlot; calendarId: string; slotId: string; hostName: string; guestName: string; calendarTitle: string;
   status: 'pending' | 'accepted' | 'declined' | 'past';
 }
 export interface BookingCalendar extends BookingPurpose { id: string; title: string; listed?: boolean; revision: number; slots: BookingSlot[]; requests: Appointment[] }

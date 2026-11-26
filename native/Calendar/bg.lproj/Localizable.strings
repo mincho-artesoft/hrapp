@@ -1352,3 +1352,6 @@
 "Show in booking search" = "Показвай в търсенето на календари за резервации";
 "Your booking calendar" = "Твой календар за резервации";
 "No matching calendars." = "Няма намерени календари.";
+"Proposed change" = "Предложена промяна";
+"Awaiting guest response" = "Очаква се отговор от госта";
+"The guest will be asked to accept this change." = "Гостът ще получи предложение да приеме промяната.";

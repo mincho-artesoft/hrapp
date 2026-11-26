@@ -76,7 +76,7 @@ test('booking markers follow the occurrence status and ignore legacy calendar co
   const calendar = {color: '#123456', requests: []};
   assert.equal(new Set(Object.values(bookingStatus).map(s => s.color)).size, 5);
   assert.equal(slotStatus(calendar, slot), 'available');
-  const request = {slotId: slot.id, status: 'pending'};
+  const request = {...slot, slotId: slot.id, status: 'pending'};
   calendar.requests.push(request);
   assert.equal(slotStatus(calendar, slot), 'pending');
   request.status = 'accepted';
@@ -84,8 +84,9 @@ test('booking markers follow the occurrence status and ignore legacy calendar co
   assert.equal(slotStatus(calendar, {...slot, rule: {frequency: 0}}), 'available');
   request.status = 'declined';
   assert.equal(slotStatus(calendar, slot), 'available');
-  calendar.requests.push({slotId: slot.id, status: 'accepted'});
+  calendar.requests.push({...slot, slotId: slot.id, status: 'accepted'});
   assert.equal(slotStatus(calendar, slot), 'accepted');
+  assert.equal(slotStatus(calendar, {...slot, end: '2099-02-01T11:00:00Z'}), 'available');
   assert.equal(slotStatus(calendar, {id: 'expired', end: '2000-01-01T11:00:00Z'}), 'past');
 });
 test('recurring bookings retain the server occurrence ID for fractional-second starts', () => {

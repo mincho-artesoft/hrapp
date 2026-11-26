@@ -146,7 +146,8 @@ async function main() {
     code: guestLoginCode,
   });
   const guestPrincipal = await core.resolveToken(guestSession.body.deviceToken);
-  const bookings = new BookingCalendarsController(store as any);
+  const notices: unknown[][] = [];
+  const bookings = new BookingCalendarsController(store as any, {bookingChange: async (...args: unknown[]) => notices.push(args)} as any);
   const host = {principal: hostPrincipal}, guest = {principal: guestPrincipal};
   // A pre-directory calendar remains discoverable until its owner chooses link-only access.
   const legacy = randomUUID(), legacyKey = 'booking-calendars/' + legacy + '.json';
@@ -169,7 +170,7 @@ async function main() {
   assert.ok(!(await bookings.directory(guest)).calendars.some(c => c.id === legacy));
   // Owned and unlisted calendars must not consume a place on either results page.
   const directoryStore = new MemoryStore();
-  const directoryAPI = new BookingCalendarsController(directoryStore as any);
+  const directoryAPI = new BookingCalendarsController(directoryStore as any, {} as any);
   const visible: string[] = [];
   for (let i = 0; i < 70; i++) {
     const id = '00000000-0000-4000-8000-' + String(i).padStart(12, '0');
@@ -263,6 +264,77 @@ async function main() {
     await bookings.decide(host,laterCal,bookingID,{status:'declined'});
     await bookings.remove(host,laterCal,'6');
   } finally { Date.now = repeatNow; }
+  {
+    const isolated = new MemoryStore();
+    await isolated.putJSON(store.keys.principal(guestPrincipal.principalId), {accountEmail:'elena@example.com'});
+    const api = new BookingCalendarsController(isolated as any, {bookingChange: async (...args:unknown[]) => notices.push(args)} as any);
+    const id=randomUUID(), series=randomUUID(), request=randomUUID(), other={principal:{principalId:randomUUID()}};
+    const start=Date.parse('2099-01-01T10:00:00Z'), hour=3600000, day=24*hour;
+    const bounds=(ms:number)=>({start:new Date(ms).toISOString(),end:new Date(ms+hour).toISOString()});
+    const seed={id:series,...bounds(start),title:'Lesson',timeZone:'UTC',rule:{frequency:0,interval:1,occurrenceCount:3}};
+    await api.save(host,id,{title:'Lessons',revision:0,slots:[seed]});
+    const original=(await api.availability(guest,id)).slots;
+    const source=original[1];
+    await assert.rejects(api.editOccurrence(guest,id,source.id,{revision:1,...bounds(start+day+hour)}));
+    await assert.rejects(api.editOccurrence(host,id,source.id,{revision:1,...bounds(start+2*day)}));
+    await api.editOccurrence(host,id,source.id,{revision:1,...bounds(start+day+hour),title:'Later lesson'});
+    let offer=await api.availability(guest,id);
+    assert.deepEqual(offer.slots.map(s=>s.start),[seed.start,bounds(start+day+hour).start,original[2].start]);
+    assert.equal(offer.slots[0].id,series);
+    const moved=offer.slots[1];
+    await assert.rejects(api.book(guest,id,request,{slotId:source.id}));
+    await api.book(guest,id,request,{slotId:moved.id});
+    await api.decide(host,id,request,{status:'accepted'});
+    assert.equal(notices.length,0);
+    const proposed=bounds(start+day+3*hour);
+    await api.editOccurrence(host,id,moved.id,{revision:4,...proposed,title:'Proposed title',location:'Room 2'});
+    const current=async()=>(await api.workspace(guest)).appointments[0];
+    const pending=await current();
+    assert.equal(pending.start,moved.start);
+    assert.equal(pending.proposal.start,proposed.start);
+    assert.equal(pending.calendarId,id);
+    assert.equal(notices.length,1);
+    assert.equal(notices[0][0],'elena@example.com');
+    assert.deepEqual((await api.availability(other,id)).slots.map(s=>s.id),[series,original[2].id]);
+    await assert.rejects(api.book(other,id,randomUUID(),{slotId:moved.id}));
+    await assert.rejects(api.editOccurrence(host,id,series,{revision:5,...bounds(start+day+hour)}));
+    await assert.rejects(api.editOccurrence(host,id,moved.id,{revision:5,...bounds(start+3*day)}));
+    const answer={proposalId:pending.proposal.id,status:'accepted'};
+    await assert.rejects(api.answerChange(host,id,request,answer));
+    await assert.rejects(api.answerChange(other,id,request,answer));
+    await assert.rejects(api.answerChange(guest,id,request,{...answer,proposalId:randomUUID()}));
+    await api.answerChange(guest,id,request,answer);
+    await api.answerChange(guest,id,request,answer);
+    assert.equal((await current()).start,proposed.start);
+    assert.equal((await current()).title,'Proposed title');
+    assert.equal((await current()).location,'Room 2');
+    assert.equal((await current()).status,'accepted');
+    await api.editOccurrence(host,id,moved.id,{revision:6,...bounds(start+3*day)});
+    const second=(await current()).proposal;
+    await api.answerChange(guest,id,request,{proposalId:second.id,status:'declined'});
+    assert.equal((await current()).proposal,undefined);
+    assert.equal((await current()).status,'declined');
+    await api.book(other,id,randomUUID(),{slotId:moved.id});
+    // Removing the first occurrence must also advance the public availability cursor.
+    await api.editOccurrence(host,id,series,{revision:9,remove:true});
+    offer=await api.availability(guest,id);
+    assert.deepEqual(offer.slots.map(s=>s.id),[original[2].id]);
+    const schedule=(await api.workspace(host)).calendars[0];
+    await api.save(host,id,{...schedule,slots:schedule.slots.map(({excludedStarts,...rest})=>rest)});
+    assert.deepEqual((await api.availability(guest,id)).slots.map(s=>s.id),[original[2].id]);
+    const reused=randomUUID(), oldSlot=randomUUID(), oldRequest=randomUUID();
+    await api.save(host,reused,{title:'Reused slot',revision:0,slots:[{id:oldSlot,...bounds(start)}]});
+    await api.book(guest,reused,oldRequest,{slotId:oldSlot});
+    const now=Date.now;
+    try {
+      Date.now=()=> start+day;
+      await api.save(host,reused,{title:'Reused slot',revision:2,slots:[{id:oldSlot,...bounds(start+2*day)}]});
+      await api.editOccurrence(host,reused,oldSlot,{revision:3,...bounds(start+3*day)});
+      assert.equal((await api.availability(guest,reused)).slots[0].start,bounds(start+3*day).start);
+      assert.equal((await current()).proposal,undefined);
+      assert.equal(notices.length,2);
+    } finally { Date.now=now; }
+  }
   const slots = [interval(0), interval(60000)];
   const draft = {title: 'Availability', revision: 0, slots};
   assert.deepEqual(await bookings.workspace(guest), {calendars: [], appointments: []});

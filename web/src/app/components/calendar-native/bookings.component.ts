@@ -1,7 +1,7 @@
 import { CalendarRemovalComponent } from './calendar-removal.component';
 import {NgTemplateOutlet} from '@angular/common';
 import {CalendarProgressComponent} from './calendar-progress.component';
-import { bookingStatus, slotStatus } from '../../core/booking-status';
+import { bookingStatus, slotReservation, slotStatus } from '../../core/booking-status';
 import {CalendarLocationEditorComponent, LocationDraft, finishLocation} from './calendar-location-editor.component';
 import {CalendarDateTimeComponent} from './calendar-date-time.component';
 import {CalendarSymbolComponent} from './calendar-symbol.component';
@@ -74,6 +74,8 @@ export class BookingsComponent implements OnInit, OnDestroy {
   draftID = '';
   title = '';
   slot?: InputSlot;
+  occurrence = false;
+  reservation?: Appointment;
   locationDraft?: LocationDraft;
   customRepeat = false;
   endOnDate = false;
@@ -213,17 +215,36 @@ export class BookingsComponent implements OnInit, OnDestroy {
     this.listed=calendar?.listed ?? true;
     this.show('edit');
   }
-  openSlot(calendar:BookingCalendar, existing?:BookingSlot) {
+  openSlot(calendar:BookingCalendar, existing?:BookingSlot, occurrence=false, seed?:BookingSlot, reservation?:Appointment) {
+    this.reservation=reservation ?? (existing && slotReservation(calendar, existing));
+    this.occurrence=occurrence || !!this.reservation;
     this.confirmingRemoval = false;
     this.editing=calendar;
     const tomorrow=new Date();
     tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(9,0,0,0);
     const last=calendar.slots.at(-1);
     const start=last ? Math.max(+tomorrow,Date.parse(last.end)) : +tomorrow;
-    this.slot=inputSlot(existing ?? {id:crypto.randomUUID(),start:new Date(start).toISOString(),end:new Date(start+3600000).toISOString()});
+    this.slot=inputSlot(existing ?? seed ?? {id:crypto.randomUUID(),start:new Date(start).toISOString(),end:new Date(start+3600000).toISOString()});
     if (!existing) this.slot.original=undefined;
     this.endOnDate=!!this.slot.rule?.endDate;
     this.show('slot');
+  }
+  openTimelineSlot(calendar:BookingCalendar, event:{id:string; start:string; end:string}) {
+    const [kind, ...rest] = event.id.split('-'), id = rest.join('-');
+    const request = kind === 'slot' ? undefined : calendar.requests.find(r => r.id === id);
+    const slotId = request?.slotId ?? id;
+    const base = calendar.slots.find(s => s.id === slotId.split('@')[0]);
+    if (!base && !request) return;
+    const source = (kind === 'proposal' ? request?.proposal : request) ?? base;
+    this.openSlot(calendar, {...source,id:slotId,start:event.start,end:event.end,timeZone:base?.timeZone,rule:undefined},true,undefined,request);
+  }
+  async answerChange(r:Appointment, status:'accepted'|'declined') {
+    const proposal = r.proposal;
+    if (!proposal) return;
+    await this.perform(async () => {
+      await this.store.request('/'+r.calendarId+'/requests/'+r.id+'/change-response','PUT',{status,proposalId:proposal.id});
+      await this.store.refresh();
+    });
   }
   changeStart(s:InputSlot,date:string,time:string) {
     const before=Date.parse(s.date+'T'+s.start+'Z');
@@ -261,13 +282,13 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if(this.choosingType) return 'Appointment type';
     switch(this.panel()) {
       case 'edit':return 'Booking calendar';
-      case 'slot':return this.slot?.original ? 'Available time' : 'Add time slot';
+      case 'slot':if(this.reservation) return this.reservation.proposal ? 'Proposed change' : 'Booking'; return this.slot?.original ? 'Available time' : 'Add time slot';
       case 'share':return 'Share';
       case 'lookup':
       case 'offer':return 'Open booking calendar';
     }
   }
-  locked(id:string) {return !!this.editing?.requests.some(r=>(r.slotId===id || r.slotId.startsWith(id+'@')) && (r.status==='pending'||r.status==='accepted'));}
+  locked(id:string) {if (this.occurrence) return !!this.reservation?.proposal || this.reservation?.status==='past'; return !!this.editing?.requests.some(r=>(r.slotId===id || r.slotId.startsWith(id+'@')) && (r.status==='pending'||r.status==='accepted'));}
   async perform(action:()=>Promise<void>) {
     if(this.busy()) return;
     const sequence=++this.operation;
@@ -305,6 +326,17 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if (!calendar || !s || this.locked(s.id)) return;
     if (remove && (!s.original || !this.confirmingRemoval)) return;
     return this.perform(async()=>{
+      if (this.occurrence) {
+        const bounds=this.intervalFor(s);
+        if (!bounds && !remove) throw Error(this.locale.text('End time must be after start time.'));
+        await this.store.request('/'+calendar.id+'/occurrences/'+encodeURIComponent(s.id),'PUT',remove
+          ? {revision:calendar.revision,remove:true}
+          : {revision:calendar.revision,start:bounds!.start.toISOString(),end:bounds!.end.toISOString(),
+             title:s.title.trim(),location:s.location.trim(),structuredLocation:s.structuredLocation ?? null});
+        this.dialog().nativeElement.close();
+        await this.store.refresh();
+        return;
+      }
       const slots:unknown[]=calendar.slots.filter(slot=>slot.id!==s.id);
       if (!remove) {
         const bounds = this.intervalFor(s);
