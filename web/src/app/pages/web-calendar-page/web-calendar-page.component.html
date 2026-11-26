@@ -1052,15 +1052,20 @@
       </div>
     }
 
-    @if (recurringMove(); as choice) {
-      <dialog class="native-context recurring-booking-menu" role="menu" [ccAnchoredMenu]="choice"
-        [attr.aria-label]="'Recurring Event' | nativeText" aria-describedby="booking-scope-description"
-        (dismissMenu)="recurringMove.set(null)">
-        <strong>{{ 'Recurring Event' | nativeText }}</strong>
-        <p id="booking-scope-description">{{ 'This event is part of a series. Update which events?' | nativeText }}</p>
-        <button type="button" role="menuitem" (click)="chooseRecurringMove(false)">{{ 'This Event Only' | nativeText }}</button>
-        <button type="button" role="menuitem" (click)="chooseRecurringMove(true)">{{ 'All Future Events' | nativeText }}</button>
-        <button type="button" role="menuitem" (click)="recurringMove.set(null)">{{ 'Cancel' | nativeText }}</button>
+    @if (recurringMove()) {
+      <dialog #recurrenceSheet class="recurrence-sheet"
+        aria-labelledby="recurrence-title" aria-describedby="recurrence-description"
+        (cancel)="recurringMove.set(null)" (keydown.escape)="$event.stopPropagation()"
+        (click)="$event.target === recurrenceSheet && recurringMove.set(null)">
+        <div class="recurrence-sheet__body">
+          <header>
+            <h2 id="recurrence-title" tabindex="-1" autofocus>{{ 'Recurring Event' | nativeText }}</h2>
+            <p id="recurrence-description">{{ 'This event is part of a series. Update which events?' | nativeText }}</p>
+          </header>
+          <button type="button" (click)="chooseRecurringMove(false)">{{ 'This Event Only' | nativeText }}</button>
+          <button type="button" (click)="chooseRecurringMove(true)">{{ 'All Future Events' | nativeText }}</button>
+          <button type="button" class="recurrence-sheet__cancel" (click)="recurringMove.set(null)">{{ 'Cancel' | nativeText }}</button>
+        </div>
       </dialog>
     }
 

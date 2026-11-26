@@ -295,7 +295,8 @@ export class WebCalendarPageComponent
   ];
   readonly bookingPanel = viewChild(BookingsComponent);
   private readonly bookingStore = inject(BookingWorkspace);
-  readonly recurringMove = signal<{x: number; y: number; apply: (future: boolean) => Promise<void>} | null>(null);
+  readonly recurringMove = signal<((future: boolean) => Promise<void>) | null>(null);
+  private readonly recurrenceSheet = viewChild<ElementRef<HTMLDialogElement>>('recurrenceSheet');
   readonly bookingChanges = this.bookingStore.pendingChanges;
   private readonly queryParams = toSignal(this.route.queryParamMap);
   readonly bookingCalendar = computed(() => {
@@ -1083,6 +1084,12 @@ export class WebCalendarPageComponent
   private workspaceSession: string | null = null;
 
   constructor() {
+    afterRenderEffect(onCleanup => {
+      const sheet = this.recurrenceSheet()?.nativeElement;
+      if (!sheet) return;
+      sheet.showModal();
+      onCleanup(() => sheet.close());
+    });
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(params => {
       void this.localization.usePageLanguage(this.route.snapshot.data["locale"] ?? DEFAULT_LOCALE, params.get("lang"));
     });
@@ -2350,12 +2357,12 @@ export class WebCalendarPageComponent
         const move = {calendarId: schedule.id, revision: state.bookingRevision, slotId, requestId: request?.id,
           start: new Date(start).toISOString(), end: new Date(end).toISOString()};
         if (schedule.slots.find(slot => slot.id === slotId.split('@')[0])?.rule) {
-          this.recurringMove.set({x: ev.clientX, y: ev.clientY, apply: future => this.commitBookingMove(move, future)});
+          this.recurringMove.set(future => this.commitBookingMove(move, future));
         } else {
           await this.commitBookingMove(move, false);
         }
       } else {
-        await this.commitDraggedEventChange(event,new Date(start).toISOString(),new Date(end).toISOString(),allDay, ev);
+        await this.commitDraggedEventChange(event,new Date(start).toISOString(),new Date(end).toISOString(),allDay);
       }
     } else this.createTimelineEvent(state.preview, state.previewDayIdx);
   }
@@ -2363,7 +2370,7 @@ export class WebCalendarPageComponent
   chooseRecurringMove(future: boolean) {
     const choice = this.recurringMove();
     this.recurringMove.set(null);
-    if (choice) void choice.apply(future);
+    if (choice) void choice(future);
   }
 
   private async commitBookingMove(move: BookingTimelineMove, future: boolean) {
@@ -2530,7 +2537,7 @@ export class WebCalendarPageComponent
     await this.commitDraggedEventChange(
       item,
       nextStart.toISOString(),
-      nextEnd.toISOString(), !!item.allDay, e,
+      nextEnd.toISOString(), !!item.allDay,
     );
   }
 
@@ -2539,34 +2546,32 @@ export class WebCalendarPageComponent
     newStartIso: string,
     newEndIso: string,
     allDay = !!original.allDay,
-    point?: PointerEvent,
   ): Promise<void> {
     if (this.savingEvent()) return;
     const occurrence = original as CalendarOccurrence;
     if (occurrence.occurrenceOf && this.deviceCalendars().some(c => c.accountLocal && c.id === original.calendarId)) {
       const token = this.api.token();
-      this.recurringMove.set({x: point?.clientX ?? window.innerWidth / 2, y: point?.clientY ?? window.innerHeight / 2,
-        apply: async future => {
+      this.recurringMove.set(async future => {
+        if (token !== this.api.token()) return;
+        const calendarId = original.calendarId!, master = occurrence.occurrenceOf!;
+        const id = master.split('.').at(-1)!;
+        this.savingEvent.set(true);
+        ++this.stateVersion;
+        try {
+          const reply = await this.native.request<{changedEvents: WebCalendarEvent[]; sharingCalendarID?:string}>(
+            '/ios/calendars/account/' + encodeURIComponent(calendarId) + '/events/' + encodeURIComponent(id), 'PUT', {
+              expectedUpdatedAt: original.updatedAt, occurrenceMove: {scope: future ? 'future' : 'this',
+                originalStart: original.start, start:newStartIso, end:newEndIso, allDay}
+            });
           if (token !== this.api.token()) return;
-          const calendarId = original.calendarId!, master = occurrence.occurrenceOf!;
-          const id = master.split('.').at(-1)!;
-          this.savingEvent.set(true);
-          ++this.stateVersion;
-          try {
-            const reply = await this.native.request<{changedEvents: WebCalendarEvent[]; sharingCalendarID?:string}>(
-              '/ios/calendars/account/' + encodeURIComponent(calendarId) + '/events/' + encodeURIComponent(id), 'PUT', {
-                expectedUpdatedAt: original.updatedAt, occurrenceMove: {scope: future ? 'future' : 'this',
-                  originalStart: original.start, start:newStartIso, end:newEndIso, allDay}
-              });
-            if (token !== this.api.token()) return;
-            const ids = reply.changedEvents.map(event => event.id);
-            this.ownedEvents.update(events => [...events.filter(event => !ids.includes(event.id)), ...reply.changedEvents]);
-            if (reply.sharingCalendarID) await this.native.syncOwnedCalendar(calendarId, ids);
-          } catch (error) {
-            this.handleMutationError(error, "Could not move event to that time.");
-            if (token === this.api.token()) await this.reloadAllWorkspaceData();
-          } finally { this.savingEvent.set(false); }
-        }});
+          const ids = reply.changedEvents.map(event => event.id);
+          this.ownedEvents.update(events => [...events.filter(event => !ids.includes(event.id)), ...reply.changedEvents]);
+          if (reply.sharingCalendarID) await this.native.syncOwnedCalendar(calendarId, ids);
+        } catch (error) {
+          this.handleMutationError(error, "Could not move event to that time.");
+          if (token === this.api.token()) await this.reloadAllWorkspaceData();
+        } finally { this.savingEvent.set(false); }
+      });
       return;
     }
     this.savingEvent.set(true);
