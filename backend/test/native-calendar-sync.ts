@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import { NativeCalendarStore } from '../src/booking/native-calendar-store';
+import { createApp } from '../src/bootstrap';
+import { StoreService } from '../src/store/store.service';
+import { hashKey } from '../src/util/ids';
 class MemoryStore {
   data = new Map<string, { value: any; etag: string }>();
   async listKeys(p: string) { return [...this.data.keys()].filter(k => k.startsWith(p)); }
@@ -7,6 +10,33 @@ class MemoryStore {
   async getJSONWithETag(k: string) { return structuredClone(this.data.get(k) ?? null); }
   async putJSONIfAbsent(k: string, v: any) { if (this.data.has(k)) return false; this.data.set(k, { value: structuredClone(v), etag: '1' }); return true; }
   async putJSONIfMatch(k: string, v: any, etag: string) { if (this.data.get(k)?.etag !== etag) return false; this.data.set(k, { value: structuredClone(v), etag: String(Number(etag) + 1) }); return true; }
+}
+async function testCalendarUploadHTTP() {
+  const app = await createApp();
+  try {
+    const storage = app.get(StoreService);
+    const memory = new MemoryStore();
+    storage.getJSONWithETag = memory.getJSONWithETag.bind(memory);
+    storage.putJSONIfAbsent = memory.putJSONIfAbsent.bind(memory);
+    const token = 'calendar-sync-http-fixture';
+    await memory.putJSONIfAbsent(storage.keys.token(hashKey(token)), { principalId: 'test-owner', calId: 'test-account' });
+    await app.listen(0, '127.0.0.1');
+    const endpoint = (await app.getUrl()) + '/ios/calendars/sync';
+    const events = Array.from({length: 1200}, (_, i) => ({
+      id: 'event-' + i, title: 'Calendar event ' + i, start: '2026-11-26T09:00:00Z', end: '2026-11-26T10:00:00Z', allDay: false,
+    }));
+    const body = JSON.stringify({ id: 'calendar', deviceId: 'mac', title: 'Local', allowsChanges: true, accountLocal: true, expectedRevision: 0, events });
+    assert.ok(Buffer.byteLength(body) > 100 * 1024);
+    const headers = { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' };
+    const saved = await fetch(endpoint, {method: 'POST', headers, body});
+    assert.equal(saved.status, 200);
+    const read = await fetch(endpoint, {method: 'POST', headers, body: JSON.stringify({id: 'calendar', deviceId: 'ipad', readOnly: true})});
+    assert.equal(read.status, 200);
+    const snapshot = await read.json() as {calendar: {events: unknown[]}};
+    assert.equal(snapshot.calendar.events.length, events.length);
+  } finally {
+    await app.close();
+  }
 }
 async function testLargeCalendarInventory() {
   const keys = Array.from({length: 65}, (_, i) => `principal/alice/native-calendars/${i}.json`);
@@ -37,6 +67,7 @@ async function testLargeCalendarInventory() {
   assert.ok(peakReads <= 4, `Calendar inventory started ${peakReads} simultaneous reads`);
 }
 async function main() {
+  await testCalendarUploadHTTP();
   await testLargeCalendarInventory();
   const store = new MemoryStore(), api = new NativeCalendarStore(store as any);
   const owner = { principalId: 'alice' }, stranger = { principalId: 'bob' };

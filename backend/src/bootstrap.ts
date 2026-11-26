@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import type { Express } from 'express';
+import { json, Router, type Express } from 'express';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/all-exceptions.filter';
 
@@ -28,6 +28,8 @@ export async function createApp(expressApp?: Express): Promise<INestApplication>
     allowedHeaders: 'authorization,content-type,cache-control,stripe-signature',
     maxAge: 86400,
   });
+  // A replica upload contains the calendar's events, including recurrence and attachments.
+  app.use(Router().post('/ios/calendars/sync', json({ limit: '5mb' })));
   app.useGlobalFilters(new AllExceptionsFilter());
   return app;
 }

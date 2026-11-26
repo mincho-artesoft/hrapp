@@ -24,6 +24,10 @@ export class AllExceptionsFilter implements ExceptionFilter {
       res.status(status).json(typeof body === 'object' ? body : { error: body });
       return;
     }
+    if (exception instanceof Error && 'type' in exception && exception.type === 'entity.too.large') {
+      res.status(413).json({ error: 'Request body is too large.' });
+      return;
+    }
     console.error('unhandled', exception);
     res.status(500).json({ error: 'internal error' });
   }

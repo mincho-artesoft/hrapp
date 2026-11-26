@@ -84,14 +84,18 @@ enum AccountLocalCalendarSync {
             owners[document.id] = inventory.ownerID
         }
         if oldBindingCount != bindings.count { try save() }
+        var firstFailure: Error?
         for document in inventory.calendars where bindings[document.id] == nil && document.available {
-            let id = try storage.applyAccountLocalDocument(document, localID: nil)
-            bindings[document.id] = .init(localID: id, baseline: document)
-            owners[id] = inventory.ownerID
-            try save()
+            do {
+                let id = try storage.applyAccountLocalDocument(document, localID: nil)
+                bindings[document.id] = .init(localID: id, baseline: document)
+                owners[id] = inventory.ownerID
+                try save()
+            } catch {
+                firstFailure = firstFailure ?? error
+            }
         }
-        for (id, originalBinding) in bindings {
-            try verify(session)
+        func reconcile(id: String, originalBinding: Binding) async throws {
             var binding = originalBinding
             var remote = inventory.calendars.first { $0.id == id }
             for attempt in 0..<3 {
@@ -162,6 +166,14 @@ enum AccountLocalCalendarSync {
                 break
             }
         }
+        for (id, binding) in bindings {
+            try verify(session)
+            try Task.checkCancellation()
+            do { try await reconcile(id: id, originalBinding: binding) }
+            catch is CancellationError { throw CancellationError() }
+            catch { firstFailure = firstFailure ?? error }
+        }
+        if let firstFailure { throw firstFailure }
     }
     private static func verify(_ session: CloudCalendarsAPI.Session) throws {
         guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
