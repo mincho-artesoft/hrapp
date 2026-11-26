@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, input, model, output, viewChild } from '@angular/core';
+import { CalendarActionSheetComponent } from './calendar-action-sheet.component';
+import { ChangeDetectionStrategy, Component, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalendarNativeTextPipe } from '../../core/calendar-localization';
 import { CalendarChoiceComponent } from './calendar-choice.component';
@@ -80,17 +81,13 @@ export class CalendarEventRepeatFieldsComponent {
 }
 
 @Component({
-  selector: 'cc-event-removal', standalone: true, imports: [CalendarNativeTextPipe],
+  selector: 'cc-event-removal', standalone: true, imports: [CalendarNativeTextPipe, CalendarActionSheetComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
+    <button #trigger type="button" class="native-pill danger full" [disabled]="busy()" (click)="confirming.set(true)">{{ label() | nativeText }}</button>
     @if (confirming()) {
-      <div class="delete-confirm" role="group" [attr.aria-label]="prompt() | nativeText">
-        <p>{{ prompt() | nativeText }}</p>
-        <button #cancel type="button" class="native-pill" (click)="toggle(false)">{{ 'Cancel' | nativeText }}</button>
-        <button type="button" class="native-pill danger" [disabled]="busy()" (click)="confirmed.emit()">{{ label() | nativeText }}</button>
-      </div>
-    } @else {
-      <button #trigger type="button" class="native-pill danger full" [disabled]="busy()" (click)="toggle(true)">{{ label() | nativeText }}</button>
+      <cc-calendar-action-sheet [anchor]="trigger" [heading]="prompt()" [primaryLabel]="confirmLabel() || label()" [destructive]="true" [busy]="busy()"
+        (primary)="confirmed.emit(); confirming.set(false)" (dismissed)="confirming.set(false)" />
     }`,
   styles: `
     :host { display: block; }
@@ -99,7 +96,7 @@ export class CalendarEventRepeatFieldsComponent {
     .native-pill.danger { color: #ff453a; background: #ff3b3017; }
     .native-pill.full { width: 100%; margin: 8px 0; }
     .native-pill:disabled { opacity: .45; cursor: default; }
-    .delete-confirm { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }`,
+  `,
 })
 export class CalendarEventRemovalComponent {
   readonly label = input.required<string>();
@@ -107,12 +104,5 @@ export class CalendarEventRemovalComponent {
   readonly busy = input(false);
   readonly confirming = model(false);
   readonly confirmed = output<void>();
-  private readonly cancel = viewChild<ElementRef<HTMLButtonElement>>('cancel');
-  private readonly trigger = viewChild<ElementRef<HTMLButtonElement>>('trigger');
-  private readonly changeDetector = inject(ChangeDetectorRef);
-  toggle(value: boolean) {
-    this.confirming.set(value);
-    this.changeDetector.detectChanges();
-    (value ? this.cancel() : this.trigger())?.nativeElement.focus();
-  }
+  readonly confirmLabel = input('');
 }

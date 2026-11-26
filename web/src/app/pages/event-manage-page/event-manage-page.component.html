@@ -18,9 +18,13 @@
             @if (r.event.location) { <div class="ev__row"><span class="ev__k">{{ copy.whereLabel }}</span><span class="ev__v">{{ r.event.location }}</span></div> }
           </div>
 
-          <button type="button" class="btn btn--ghost btn--lg ev__submit" [disabled]="working()" (click)="cancel()">
+          <button #cancelSpot type="button" class="btn btn--ghost btn--lg ev__submit" [disabled]="working()" (click)="confirming.set(true)">
             {{ copy.cancelSpot }}
           </button>
+          @if (confirming()) {
+            <cc-calendar-action-sheet [anchor]="cancelSpot" [heading]="copy.cancelSpotConfirm" [primaryLabel]="copy.cancelSpot"
+              [cancelLabel]="copy.keepSpot" [destructive]="true" (primary)="cancel()" (dismissed)="confirming.set(false)" />
+          }
           <a class="ev__back" [href]="homeHref">{{ copy.keepSpot }}</a>
         }
       }

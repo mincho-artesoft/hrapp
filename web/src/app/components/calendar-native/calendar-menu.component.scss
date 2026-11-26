@@ -692,9 +692,6 @@ textarea {
   width: auto;
   margin: 12px 16px;
 }
-.confirmation {
-  padding: 16px;
-}
 .camera-frame {
   position: relative;
   background: #151515;
@@ -927,15 +924,6 @@ textarea {
   padding: 10px 6px;
   font-size: 16px;
   font-weight: 500;
-}
-.disconnect-confirm {
-  padding: 12px 6px;
-  border-top: 1px solid var(--cal-line);
-}
-.disconnect-confirm p {
-  font-size: 14px;
-  color: var(--cal-muted);
-  margin: 0 0 12px;
 }
 .custom-color {
   position: relative;

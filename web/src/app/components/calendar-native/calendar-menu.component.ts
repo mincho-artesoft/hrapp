@@ -1,3 +1,4 @@
+import { CalendarActionSheetComponent } from './calendar-action-sheet.component';
 import { CalendarRemovalComponent } from './calendar-removal.component';
 import {CalendarColorOptionsComponent, calendarColorName} from './calendar-color-options.component';
 import { calendarDateChoices, calendarDateFormatter, calendarHourCycle, systemWeekStart } from "../../core/calendar-format-preferences";
@@ -71,7 +72,7 @@ interface AccessSnapshot {
   selector: "cc-calendar-menu",
   standalone: true,
   imports: [
-    CalendarSearchFieldComponent,
+    CalendarSearchFieldComponent, CalendarActionSheetComponent,
     CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,
@@ -343,7 +344,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   get calendarRemoval() {
     const cal = this.calendar;
     if (!cal) return null;
-    if (cal.ownerId) return {label: "Remove from My Calendars", prompt: "Remove this shared calendar from your calendars?", confirm: "Remove"};
+    if (cal.ownerId) return {label: "Remove from My Calendars", prompt: "Remove Shared Calendar?", confirm: "Remove"};
     if (cal.provider) {
       if (cal.primary || cal.isRemovable === false) return null;
       if (!cal.providerOwner) {
@@ -353,7 +354,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     } else if (!cal.accountLocal) {
       return {label: "Remove from Web Calendar", prompt: "Remove this calendar and its events from the website? The calendar stays on your device.", confirm: "Remove"};
     }
-    return {label: "Delete Calendar", prompt: "Delete this calendar and its events?", confirm: "Delete"};
+    return {label: "Delete Calendar", prompt: "Delete Calendar?", confirm: "Delete Calendar"};
   }
   calendarTitle = "";
   calendarColor = "#0A84FF";
@@ -362,6 +363,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   sharedCalendar: SharedCalendar | null = null;
   people: SharingPerson[] = [];
   removedPeople: string[] = [];
+  private readonly savedCalendarRecipients = new WeakMap<SharingPerson, string>();
   sharedEvent: SharedEvent | null = null;
   qrInput = "";
   qrMessage = "";
@@ -536,7 +538,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   }
   readonly accessLoading = signal(false);
   readonly accessFailed = signal(false);
-  readonly pendingRemoval = signal<SharingPerson | null>(null);
+  readonly pendingRemoval = signal<{ person: SharingPerson; anchor: HTMLElement } | null>(null);
   accessCalendar: DeviceCalendar | null = null;
   private accessKey = "";
   private accessSession: string | null = null;
@@ -590,6 +592,9 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
       else {
         this.people = rows;
         this.sharedCalendar = snapshot.calendar ?? null;
+        if (snapshot.calendar) {
+          for (const person of rows) this.savedCalendarRecipients.set(person, person.email || person.id || '');
+        }
       }
     } catch (error) {
       if (this.accessReads.get(key) === entry) this.accessReads.delete(key);
@@ -623,11 +628,17 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   addPerson() {
     this.people = [...this.people, { email: "", access: "reader" }];
   }
-  removePerson(index: number) {
-    const p = this.people[index];
-    if (this.sharedCalendar && p.email) this.removedPeople.push(p.email);
-    else if (p.id) this.removedPeople.push(p.id);
-    this.people = this.people.filter((_, i) => i !== index);
+  requestCalendarRecipientRemoval(person: SharingPerson, anchor: HTMLElement) {
+    if (person.isOriginalOwner) return;
+    if (this.savedCalendarRecipients.has(person)) this.pendingRemoval.set({person, anchor});
+    else this.people = this.people.filter(p => p !== person);
+  }
+  removeCalendarRecipient(person: SharingPerson) {
+    if (person !== this.pendingRemoval()?.person || !this.people.includes(person) || person.isOriginalOwner) return;
+    const email = this.savedCalendarRecipients.get(person);
+    if (email) this.removedPeople.push(email);
+    this.people = this.people.filter(p => p !== person);
+    this.pendingRemoval.set(null);
   }
   validPeople() {
     return this.people.every((p) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email));

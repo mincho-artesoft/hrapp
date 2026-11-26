@@ -1,0 +1,89 @@
+:host { display: contents; }
+.action-sheet {
+  --sheet-surface: rgb(35 35 35 / 90%);
+  --sheet-label: white;
+  --sheet-danger: #ff453a;
+  --sheet-secondary: rgb(235 235 245 / 60%);
+  --sheet-action: rgb(255 255 255 / 13%);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 32px;
+  width: min(240px, calc(100% - 16px));
+  max-height: calc(100dvh - 16px);
+  overflow: visible;
+  color: var(--sheet-label);
+  background: transparent;
+  font-family: var(--font-body);
+  &::backdrop { background: transparent; }
+
+  .action-sheet__body {
+    box-sizing: border-box;
+    padding: 22px 16px 16px;
+    border-radius: inherit;
+    max-height: inherit;
+    overflow: auto;
+    overscroll-behavior: contain;
+    background: var(--sheet-surface);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    backdrop-filter: blur(22px) saturate(140%);
+    box-shadow: inset 0 1px 1px rgb(255 255 255 / 14%), 0 4px 24px rgb(0 0 0 / 14%);
+  }
+  &[data-side] { inset: var(--sheet-y) auto auto var(--sheet-x); margin: 0; }
+  &[data-side]::after {
+    content: "";
+    position: absolute;
+    left: var(--tip-x);
+    transform: translateX(-50%);
+    width: 24px;
+    height: 12px;
+    background: var(--sheet-surface);
+    pointer-events: none;
+  }
+  &[data-side="above"]::after { top: 100%; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  &[data-side="below"]::after { bottom: 100%; clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+  header { margin: 0 14px 20px; text-align: start; }
+  header.title-only { text-align: center; margin-bottom: 18px; }
+  h2 { margin: 0; color: inherit; font: 600 1.0625rem/1.2 var(--font-body); letter-spacing: normal; }
+  h2:focus { outline: none; }
+  p { margin: 8px 0 0; font-size: .9375rem; line-height: 1.29; color: var(--sheet-secondary); text-wrap: wrap; }
+  button {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--sheet-action);
+    color: inherit;
+    font: 500 1.0625rem/1.2 var(--font-body);
+    text-align: center;
+    cursor: pointer;
+  }
+  button + button { margin-top: 8px; }
+  .destructive { color: var(--sheet-danger); }
+  button:disabled { opacity: .45; cursor: default; }
+  button:active { background: color-mix(in srgb, var(--sheet-action), var(--sheet-label) 14%); }
+  button:focus-visible { outline: 2px solid var(--cal-system-blue, #007aff); outline-offset: 2px; }
+  // Keep the popover’s implicit cancel action accessible by keyboard.
+  .action-sheet__cancel:not(:focus-visible) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  @media (min-width: 768px) { width: 288px; }
+}
+:host-context([data-theme="light"]) .action-sheet {
+  --sheet-surface: rgb(250 250 250 / 90%);
+  --sheet-label: black;
+  --sheet-danger: #d70015;
+  --sheet-secondary: rgb(60 60 67 / 60%);
+  --sheet-action: rgb(0 0 0 / 11%);
+}

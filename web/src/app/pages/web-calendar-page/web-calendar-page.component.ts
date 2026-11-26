@@ -1,3 +1,4 @@
+import { CalendarActionSheetComponent } from '../../components/calendar-native/calendar-action-sheet.component';
 import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent } from '../../components/calendar-native/calendar-event-editor-fields';
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
@@ -190,7 +191,7 @@ const HOUR_PX = 50;
     BookingWorkspace, CalendarPlatformApiService, CalendarNativeService, CalendarProviderService, CalendarForecastService,
   ],
   standalone: true,
-  imports: [CalendarAnchoredMenuDirective, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent,
+  imports: [CalendarActionSheetComponent, CalendarAnchoredMenuDirective, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent,
     CalendarSearchFieldComponent,
     CalendarLocationEditorComponent,CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
     CalendarNativeDatePipe,
@@ -296,7 +297,6 @@ export class WebCalendarPageComponent
   readonly bookingPanel = viewChild(BookingsComponent);
   private readonly bookingStore = inject(BookingWorkspace);
   readonly recurringMove = signal<((future: boolean) => Promise<void>) | null>(null);
-  private readonly recurrenceSheet = viewChild<ElementRef<HTMLDialogElement>>('recurrenceSheet');
   readonly bookingChanges = this.bookingStore.pendingChanges;
   private readonly queryParams = toSignal(this.route.queryParamMap);
   readonly bookingCalendar = computed(() => {
@@ -1084,12 +1084,6 @@ export class WebCalendarPageComponent
   private workspaceSession: string | null = null;
 
   constructor() {
-    afterRenderEffect(onCleanup => {
-      const sheet = this.recurrenceSheet()?.nativeElement;
-      if (!sheet) return;
-      sheet.showModal();
-      onCleanup(() => sheet.close());
-    });
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(params => {
       void this.localization.usePageLanguage(this.route.snapshot.data["locale"] ?? DEFAULT_LOCALE, params.get("lang"));
     });

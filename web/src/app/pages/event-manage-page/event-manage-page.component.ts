@@ -1,3 +1,4 @@
+import { CalendarActionSheetComponent } from '../../components/calendar-native/calendar-action-sheet.component';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,7 +19,7 @@ type Mode = 'loading' | 'view' | 'cancelled' | 'notfound';
 @Component({
   selector: 'app-event-manage-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CalendarActionSheetComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './event-manage-page.component.html',
   styleUrl: '../event-page/event-page.component.scss',
@@ -34,6 +35,7 @@ export class EventManagePageComponent implements OnInit {
   protected readonly mode = signal<Mode>('loading');
   protected readonly reg = signal<RegistrationView | null>(null);
   protected readonly working = signal(false);
+  protected readonly confirming = signal(false);
 
   private token = '';
 
@@ -61,7 +63,8 @@ export class EventManagePageComponent implements OnInit {
   }
 
   protected async cancel(): Promise<void> {
-    if (typeof confirm === 'function' && !confirm(this.copy.cancelSpotConfirm)) return;
+    if (!this.confirming() || this.working()) return;
+    this.confirming.set(false);
     this.working.set(true);
     try {
       await this.api.cancelRegistration(this.token);

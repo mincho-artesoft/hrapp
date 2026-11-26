@@ -174,7 +174,7 @@
             [start]="s.date" [until]="until(s)" [firstWeekday]="firstWeekday()" [(focus)]="dateFocus"
             (repeatChange)="chooseRepeat(s,$event)" (endChange)="chooseEnd(s,$event)" (untilChange)="setUntil(s,$event)" /> }
           @if (s.original && !reservation && !locked(s.id)) {
-            <cc-event-removal label="Remove time slot" prompt="Remove time slot?" [(confirming)]="confirmingRemoval"
+            <cc-event-removal label="Remove time slot" prompt="Remove time slot?" confirmLabel="Remove" [(confirming)]="confirmingRemoval"
               [busy]="busy()" (confirmed)="saveSlot(true)" />
           }
         </fieldset>

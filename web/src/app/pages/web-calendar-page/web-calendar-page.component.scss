@@ -1851,69 +1851,6 @@
   right: auto;
   min-width: 240px;
 }
-.recurrence-sheet {
-  --sheet-surface: rgb(35 35 35 / 90%);
-  --sheet-label: white;
-  --sheet-secondary: rgb(235 235 245 / 60%);
-  --sheet-action: rgb(255 255 255 / 13%);
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  padding: 0;
-  border: 0;
-  border-radius: 32px;
-  width: min(240px, calc(100% - 16px));
-  max-height: calc(100dvh - 16px);
-  overflow: auto;
-  overscroll-behavior: contain;
-  color: var(--sheet-label);
-  background: var(--sheet-surface);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
-  backdrop-filter: blur(22px) saturate(140%);
-  box-shadow: inset 0 1px 1px rgb(255 255 255 / 14%), 0 4px 24px rgb(0 0 0 / 14%);
-  font-family: var(--font-body);
-  &::backdrop { background: transparent; }
-
-  .recurrence-sheet__body { padding: 22px 16px 16px; }
-  header { margin: 0 14px 20px; text-align: start; }
-  h2 { margin: 0; color: inherit; font: 600 1.0625rem/1.2 var(--font-body); letter-spacing: normal; }
-  h2:focus { outline: none; }
-  p { margin: 8px 0 0; font-size: .9375rem; line-height: 1.29; color: var(--sheet-secondary); text-wrap: wrap; }
-  button {
-    display: block;
-    width: 100%;
-    min-height: 48px;
-    padding: 8px 12px;
-    border: 0;
-    border-radius: 24px;
-    background: var(--sheet-action);
-    color: inherit;
-    font: 500 1.0625rem/1.2 var(--font-body);
-    text-align: center;
-    cursor: pointer;
-  }
-  button + button { margin-top: 8px; }
-  button:active { background: color-mix(in srgb, var(--sheet-action), var(--sheet-label) 14%); }
-  button:focus-visible { outline: 2px solid var(--cal-system-blue); outline-offset: 2px; }
-  // UIKit dismisses this popover by tapping outside. Offer an explicit action to keyboard and screen reader users.
-  .recurrence-sheet__cancel:not(:focus-visible) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    min-height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-  }
-  @media (min-width: 768px) { width: 288px; }
-}
-.studio--light .recurrence-sheet {
-  --sheet-surface: rgb(250 250 250 / 90%);
-  --sheet-label: black;
-  --sheet-secondary: rgb(60 60 67 / 60%);
-  --sheet-action: rgb(0 0 0 / 11%);
-}
 .period-heading {
   display: flex;
   align-items: center;
@@ -2265,12 +2202,6 @@ cc-calendar-menu {
 }
 .native-details .notes {
   white-space: pre-wrap;
-}
-.delete-confirm {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
 }
 .studio-toast {
   z-index: 300;

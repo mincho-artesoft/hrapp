@@ -1053,20 +1053,13 @@
     }
 
     @if (recurringMove()) {
-      <dialog #recurrenceSheet class="recurrence-sheet"
-        aria-labelledby="recurrence-title" aria-describedby="recurrence-description"
-        (cancel)="recurringMove.set(null)" (keydown.escape)="$event.stopPropagation()"
-        (click)="$event.target === recurrenceSheet && recurringMove.set(null)">
-        <div class="recurrence-sheet__body">
-          <header>
-            <h2 id="recurrence-title" tabindex="-1" autofocus>{{ 'Recurring Event' | nativeText }}</h2>
-            <p id="recurrence-description">{{ 'This event is part of a series. Update which events?' | nativeText }}</p>
-          </header>
-          <button type="button" (click)="chooseRecurringMove(false)">{{ 'This Event Only' | nativeText }}</button>
-          <button type="button" (click)="chooseRecurringMove(true)">{{ 'All Future Events' | nativeText }}</button>
-          <button type="button" class="recurrence-sheet__cancel" (click)="recurringMove.set(null)">{{ 'Cancel' | nativeText }}</button>
-        </div>
-      </dialog>
+      <cc-calendar-action-sheet
+        [heading]="viewMode() === 'month' ? 'This is a repeating event.' : 'Recurring Event'"
+        [message]="viewMode() === 'month' ? '' : 'This event is part of a series. Update which events?'"
+        [primaryLabel]="viewMode() === 'month' ? 'Save for This Event Only' : 'This Event Only'"
+        [secondaryLabel]="viewMode() === 'month' ? 'Save for Future Events' : 'All Future Events'"
+        (primary)="chooseRecurringMove(false)" (secondary)="chooseRecurringMove(true)"
+        (dismissed)="recurringMove.set(null)" />
     }
 
     <!-- Timed-event edit menu on touch layouts, secondary-click menu on desktop. -->
@@ -1363,34 +1356,9 @@
               }
             }
             @if (eventRemovalLabel(event); as action) {
-              @if (detailPendingDelete()) {
-                <div class="delete-confirm">
-                  <p>{{ (action === "Delete" ? "Delete this event?" : action) | nativeText }}</p>
-                  <button
-                    type="button"
-                    class="native-pill"
-                    (click)="detailPendingDelete.set(false)"
-                  >
-                    {{ "Cancel" | nativeText }}
-                  </button>
-                  <button
-                    type="button"
-                    class="native-pill danger"
-                    [disabled]="savingEvent()"
-                    (click)="deleteEventInstance(event)"
-                  >
-                    {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
-                  </button>
-                </div>
-              } @else {
-                <button
-                  type="button"
-                  class="native-pill danger full"
-                  (click)="detailPendingDelete.set(true)"
-                >
-                  {{ (action === "Delete" ? "Delete Event" : action) | nativeText }}
-                </button>
-              }
+              <cc-event-removal [label]="action === 'Delete' ? 'Delete Event' : action"
+                [prompt]="action === 'Delete' ? 'Delete Event?' : action"
+                [(confirming)]="detailPendingDelete" [busy]="savingEvent()" (confirmed)="deleteEventInstance(event)" />
             }
           </div>
         </section>
@@ -1660,7 +1628,7 @@
 
               @if (d.original && eventRemovalLabel(d.original); as action) {
                 <cc-event-removal [label]="action === 'Delete' ? 'Delete Event' : action"
-                  [prompt]="action === 'Delete' ? 'Delete this event?' : action"
+                  [prompt]="action === 'Delete' ? 'Delete Event?' : action"
                   [(confirming)]="pendingDelete" [busy]="savingEvent()" (confirmed)="deleteDraftEvent()" />
               }
             }

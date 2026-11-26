@@ -233,42 +233,13 @@
                   {{ "Add Google Calendar" | nativeText }}
                 </button>
               }
+              <button #disconnectButton type="button" class="provider-inline-action danger-text" (click)="confirmingDisconnect.set($any(provider))">
+                {{ "Sign out" | nativeText }}
+              </button>
               @if (confirmingDisconnect() === provider) {
-                <div class="disconnect-confirm">
-                  <p>
-                    {{
-                      "This stops calendar syncing here. Calendars in your Google or Microsoft account are kept."
-                        | nativeText
-                    }}
-                  </p>
-                  <div class="equal-actions">
-                    <button
-                      type="button"
-                      class="action tinted"
-                      (click)="confirmingDisconnect.set(null)"
-                    >
-                      {{ "Cancel" | nativeText }}
-                    </button>
-                    <button
-                      type="button"
-                      class="action danger"
-                      (click)="
-                        confirmingDisconnect.set(null);
-                        disconnect.emit($any(provider))
-                      "
-                    >
-                      {{ "Sign out" | nativeText }}
-                    </button>
-                  </div>
-                </div>
-              } @else {
-                <button
-                  type="button"
-                  class="provider-inline-action danger-text"
-                  (click)="confirmingDisconnect.set($any(provider))"
-                >
-                  {{ "Sign out" | nativeText }}
-                </button>
+                <cc-calendar-action-sheet [anchor]="disconnectButton" heading="Sign out" primaryLabel="Sign out" [destructive]="true"
+                  message="This stops calendar syncing here. Calendars in your Google or Microsoft account are kept."
+                  (dismissed)="confirmingDisconnect.set(null)" (primary)="confirmingDisconnect.set(null); disconnect.emit($any(provider))" />
               }
             </details>
           }
@@ -1009,8 +980,8 @@
                       <cc-choice label="Access" [value]="person.access" [options]="sharing.roles"
                         [disabled]="busy()" (valueChange)="changeRecipient(person, $any($event))" />
                     }
-                    <button type="button" class="icon-button danger-text" [attr.aria-label]="'Remove Access' | nativeText"
-                      [disabled]="busy()" (click)="pendingRemoval.set(person)"><cc-symbol name="person.crop.circle.badge.minus" /></button>
+                    <button #removeAccess type="button" class="icon-button danger-text" [attr.aria-label]="'Remove Access' | nativeText"
+                      [disabled]="busy()" (click)="pendingRemoval.set({person, anchor: removeAccess})"><cc-symbol name="person.crop.circle.badge.minus" /></button>
                   }
                 </div>
               } @empty {
@@ -1019,18 +990,9 @@
                 </div>
               }
             </div>
-            @if (pendingRemoval(); as person) {
-              <div class="form-group confirmation" role="alertdialog" [attr.aria-label]="'Remove Access?' | nativeText">
-                <strong>{{ "Remove Access?" | nativeText }}</strong><p>{{ recipientEmail(person) }}</p>
-                <div class="equal-actions">
-                  <button type="button" class="action tinted" (click)="pendingRemoval.set(null)">{{ "Cancel" | nativeText }}</button>
-                  <button type="button" class="action danger" (click)="changeRecipient(person)">{{ "Remove Access" | nativeText }}</button>
-                </div>
-              </div>
-            }
           } @else if (!accessFailed()) {
             <div class="form-group">
-              @for (person of people; track $index; let index = $index) {
+              @for (person of people; track person) {
                 <div class="form-row person-row">
                   <cc-symbol class="blue" name="person.crop.circle" />
                   <input
@@ -1048,8 +1010,8 @@
                     <button
                       type="button"
                       class="icon-button danger-text"
-                      aria-label="Remove person"
-                      (click)="removePerson(index)"
+                      #removeAccess [attr.aria-label]="'Remove Access' | nativeText"
+                      (click)="requestCalendarRecipientRemoval(person, removeAccess)"
                     >
                       <cc-symbol name="minus.circle.fill" />
                     </button>
@@ -1075,6 +1037,11 @@
                 </button>
               }
             </div>
+          }
+          @if (pendingRemoval(); as removal) {
+            <cc-calendar-action-sheet [anchor]="removal.anchor" [heading]="sharedCalendar ? 'Remove calendar access?' : 'Remove Access?'"
+              [message]="recipientEmail(removal.person)" primaryLabel="Remove Access" [destructive]="true" [busy]="busy()"
+              (dismissed)="pendingRemoval.set(null)" (primary)="sharedCalendar ? removeCalendarRecipient(removal.person) : changeRecipient(removal.person)" />
           }
         }
         @if (panel() === "scan") {
