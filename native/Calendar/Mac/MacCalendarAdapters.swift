@@ -113,7 +113,7 @@ final class MacAppLocalCalendarBridge {
         let anchor = recordsByID[record.id]
         let displayID = anchor?.startDate == record.startDate ? record.id : record.id + ":" + record.start
         let value = eventsByID[displayID] ?? EKEvent(eventStore: eventStore)
-        let destination = calendar(source)
+        let destination = calendarsByID[source.id] ?? calendar(source)
         if eventSnapshots[displayID] == record, value.calendar === destination { return value }
         eventSnapshots[displayID] = record
         value.calendar = destination; value.title = record.title

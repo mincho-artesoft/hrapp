@@ -6,7 +6,7 @@ import UIKit
 enum NativeCalendarSyncService {
     private static var syncing = false
     @discardableResult
-    static func syncNow() async -> Bool {
+    static func syncNow(includeAccountLocal: Bool = true) async -> Bool {
         guard !syncing, let session = CalendarFeedSession.existing else { return false }
         syncing = true
         defer { syncing = false }
@@ -15,8 +15,10 @@ enum NativeCalendarSyncService {
         let replica = DeviceCalendarReplica(baseURL: CloudCalendarsAPI.baseURL, token: session.deviceToken, accountID: session.calendarId)
         let adapter = DeviceEventKitAdapter(store: vm.eventStore)
         var succeeded = false
-        do { try await AccountLocalCalendarSync.sync(storage: AppLocalAccountCalendarStorage.shared); succeeded = true }
-        catch { print("Account local calendar sync: \(error.localizedDescription)") }
+        if includeAccountLocal {
+            do { try await AccountLocalCalendarSync.sync(storage: AppLocalAccountCalendarStorage.shared); succeeded = true }
+            catch { print("Account local calendar sync: \(error.localizedDescription)") }
+        }
         if EKEventStore.authorizationStatus(for: .event) == .fullAccess {
             for calendar in vm.eventStore.calendars(for: .event) where !SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers.contains(calendar.calendarIdentifier) && !vm.hiddenLegacyProviderCalendarIDs.contains(calendar.calendarIdentifier) {
                 do {

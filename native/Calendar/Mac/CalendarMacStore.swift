@@ -36,9 +36,14 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
     private let file: URL
     private var interactionActive = false
     private var reloadPending = false
+    private var systemRefreshPending = false
+    private var systemRows: [(calendarID: String, item: DeviceCalendarEvent, event: EKEvent)] = []
     func setTimelineInteractionActive(_ active: Bool) {
         interactionActive = active
-        if !active && reloadPending { reloadPending = false; reload() }
+        if !active && reloadPending {
+            reloadPending = false
+            reload(refreshSystemEvents: systemRefreshPending)
+        }
     }
     private var syncRequested = false
     private var eventKitRefresh: Task<Void, Never>?
@@ -102,8 +107,9 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         }
     }
     var visibleLocalCalendars: [DeviceCalendarDocument] {
-        local.filter { $0.isReceivedSharedCalendar ? ReceivedSharingVisibility.isVisible(
-            $0.id, kind: "calendar", requiresAccount: true) : AccountLocalCalendarSync.isVisible($0.id) }
+        let visible = AccountLocalCalendarSync.visibilityFilter()
+        return local.filter { $0.isReceivedSharedCalendar ? ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true) : visible($0.id) }
     }
     private func registerReceivedAccountScopes() {
         for (id, binding) in (try? loadSharedBindings()) ?? [:] {
@@ -111,23 +117,29 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         }
         MacEventSharing.registerReceivedAccountScopes()
     }
-    func reload() {
+    func reload(refreshSystemEvents: Bool = true) {
+        systemRefreshPending = systemRefreshPending || refreshSystemEvents
         guard !interactionActive else { reloadPending = true; return }
         let previous = Set(calendars.map(\.id))
         let native = EKEventStore.authorizationStatus(for: .event) == .fullAccess ? eventStore.calendars(for: .event) : []
+        let visibleLocal = visibleLocalCalendars
         let nextCalendars = native.map { c in MacCalendarItem(id: c.calendarIdentifier, title: c.title, source: c.source.title,
             color: Color(cgColor: c.cgColor ?? NSColor.systemBlue.cgColor), writable: c.allowsContentModifications, native: c) }
-            + visibleLocalCalendars.filter(\.available).map { MacCalendarItem(id: $0.id, title: $0.title, source: $0.source, color: Color(hex: $0.displayColorHex), writable: $0.canEditEvents, native: nil) }
+            + visibleLocal.filter(\.available).map { MacCalendarItem(id: $0.id, title: $0.title, source: $0.source, color: Color(hex: $0.displayColorHex), writable: $0.canEditEvents, native: nil) }
         var nextNative: [String: EKEvent] = [:], nextEventCalendars: [String: String] = [:]
         var nextEvents: [DeviceCalendarEvent] = []
-        for calendar in native {
-            for event in adapter.events(in: calendar) {
-                let item = adapter.snapshot(event)
-                guard ReceivedSharingVisibility.isVisible(item.id, kind: "event") else { continue }
-                nextNative[item.id] = event; nextEventCalendars[item.id] = calendar.calendarIdentifier; nextEvents.append(item)
+        if systemRefreshPending {
+            systemRows = native.flatMap { calendar in
+                adapter.events(in: calendar).map { (calendar.calendarIdentifier, adapter.snapshot($0), $0) }
             }
+            systemRefreshPending = false
         }
-        for calendar in visibleLocalCalendars where calendar.available {
+        for row in systemRows where ReceivedSharingVisibility.isVisible(row.item.id, kind: "event") {
+            nextNative[row.item.id] = row.event
+            nextEventCalendars[row.item.id] = row.calendarID
+            nextEvents.append(row.item)
+        }
+        for calendar in visibleLocal where calendar.available {
             for event in calendar.events where ReceivedSharingVisibility.isVisible(event.id, kind: "event") { nextEventCalendars[event.id] = calendar.id; nextEvents.append(event) }
         }
         nativeEvents = nextNative; eventCalendars = nextEventCalendars
@@ -158,7 +170,7 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
     func createCalendar(title: String) {
         guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
         local.append(DeviceCalendarDocument(id: UUID().uuidString.lowercased(), deviceId: DeviceCalendarReplica.deviceID, deviceName: Host.current().localizedName ?? "Mac", title: title, source: "Local Calendars", color: "#2168DE", allowsChanges: true, events: []))
-        persist(); reload(); Task { await sync() }
+        persist(); reload(refreshSystemEvents: false); Task { await sync() }
     }
     func save(_ item: DeviceCalendarEvent, calendarID: String, scheduleSync: Bool = true) throws {
         guard let calendar = calendars.first(where: { $0.id == calendarID }), calendar.writable else { return }
@@ -167,29 +179,50 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         } else if let index = local.firstIndex(where: { $0.id == calendarID }) {
             local[index].events.removeAll { $0.id == item.id }; local[index].events.append(item); try persistThrowing()
         }
-        reload(); if scheduleSync { Task { await sync() } }
+        reload(refreshSystemEvents: calendar.native != nil); if scheduleSync { Task { await sync() } }
     }
     func delete(_ item: DeviceCalendarEvent) throws {
         if let native = nativeEvents[item.id] { try eventStore.remove(native, span: .thisEvent, commit: true) }
         else { for i in local.indices { local[i].events.removeAll { $0.id == item.id } }; try persistThrowing() }
-        reload(); Task { await sync() }
+        reload(refreshSystemEvents: nativeEvents[item.id] != nil); Task { await sync() }
     }
     func replaceLocalCalendars(_ documents: [DeviceCalendarDocument]) throws {
         try JSONEncoder().encode(documents).write(to: file, options: .atomic)
         local = documents
-        reload()
+        reload(refreshSystemEvents: false)
         Task { await sync() }
     }
     func applyProviderDocuments(_ documents: [DeviceCalendarDocument]) throws {
         guard documents != local else { return }
         try JSONEncoder().encode(documents).write(to: file, options: .atomic)
-        local = documents; reload()
+        local = documents; reload(refreshSystemEvents: false)
     }
     private func persistThrowing() throws { try JSONEncoder().encode(local).write(to: file, options: .atomic) }
     private func persist() { do { try persistThrowing() } catch { self.error = error.localizedDescription } }
+    func pollWhileOpen() async {
+        guard allowsAccountConnections else { return }
+        var backgroundSync: Task<Void, Never>?
+        defer { backgroundSync?.cancel() }
+        while !Task.isCancelled {
+            if syncing {
+                await refreshAccountDuringSync()
+            } else {
+                backgroundSync = Task { await sync() }
+            }
+            try? await Task.sleep(for: .seconds(20))
+        }
+    }
+    private func refreshAccountDuringSync() async {
+        do { try await AccountLocalCalendarSync.sync(storage: self) }
+        catch { syncError = error.localizedDescription }
+    }
     func sync() async {
         guard allowsAccountConnections else { return }
-        guard !syncing else { syncRequested = true; return }
+        guard !syncing else {
+            syncRequested = true
+            await refreshAccountDuringSync()
+            return
+        }
         syncing = true
         defer { syncing = false }
         repeat {
@@ -198,18 +231,19 @@ final class CalendarMacStore: ObservableObject, ProviderCalendarStorage {
         } while syncRequested && !Task.isCancelled
     }
     private func syncPass() async {
+        var failure: String?
+        do { try await AccountLocalCalendarSync.sync(storage: self) }
+        catch { failure = error.localizedDescription }
         await providers.sync()
         guard let authenticated = cloudSession else { syncError = nil; return }
-        var failure: String?
         let token = authenticated.deviceToken, account = authenticated.calendarId
-        do { try await refreshSharedCalendars(); reload() }
+        do { try await refreshSharedCalendars(); reload(refreshSystemEvents: false) }
         catch { failure = failure ?? error.localizedDescription }
         do { try await ownedSharing.syncAll(session: authenticated) }
         catch { failure = failure ?? error.localizedDescription }
         do { try await MacEventSharing.sync(backend: self, session: authenticated) }
         catch { failure = failure ?? error.localizedDescription }
         do {
-            try await AccountLocalCalendarSync.sync(storage: self)
             for calendar in visibleLocalCalendars where !calendar.isReceivedSharedCalendar {
                 if let id = calendar.sharingCalendarID, try ownedSharing.shareID(localID: calendar.id) == nil {
                     try await ownedSharing.registerAndSync(localID: calendar.id, shareID: id)

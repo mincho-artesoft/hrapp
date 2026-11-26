@@ -285,8 +285,9 @@ final class AppLocalCalendarStore: ObservableObject {
     }
 
     var visibleCalendars: [AppLocalCalendarRecord] {
-        calendars.filter { $0.origin == .received ? ($0.revokedReason != "owner_deleted" && ReceivedSharingVisibility.isVisible(
-            $0.id, kind: "calendar", requiresAccount: true)) : AccountLocalCalendarSync.isVisible($0.id) }
+        let visible = AccountLocalCalendarSync.visibilityFilter()
+        return calendars.filter { $0.origin == .received ? ($0.revokedReason != "owner_deleted" && ReceivedSharingVisibility.isVisible(
+            $0.id, kind: "calendar", requiresAccount: true)) : visible($0.id) }
     }
 
     var ownedCalendars: [AppLocalCalendarRecord] {

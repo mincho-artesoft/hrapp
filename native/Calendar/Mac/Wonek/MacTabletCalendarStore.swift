@@ -10,7 +10,7 @@ final class MacTabletCalendarStore: ObservableObject {
     @Published private(set) var events: [EKEvent] = []
     @Published private(set) var calendars: [EKCalendar] = []
     @Published private(set) var visibleCalendarIDs: Set<String> = [] {
-        didSet { refreshWidgetSnapshot() }
+        didSet { if !isReloading && oldValue != visibleCalendarIDs { refreshWidgetSnapshot() } }
     }
     @Published private(set) var multiCalendarIDs: Set<String> = []
     @Published var isRequestingAccess = false
@@ -21,6 +21,9 @@ final class MacTabletCalendarStore: ObservableObject {
     let local: MacAppLocalCalendarBridge
     let includesSystemCalendars: Bool
     private var calendar: Calendar { MacCalendarFormatting.calendar }
+    private var eventsByDay: [Date: [EKEvent]] = [:]
+    private var dayIndexRange: (interval: DateInterval, timeZoneID: String)?
+    private var isReloading = false
     private var didInitializeVisibility = false
     private var backendObserver: AnyCancellable?
     private var interactionActive = false
@@ -109,6 +112,8 @@ final class MacTabletCalendarStore: ObservableObject {
 
     func reload() {
         guard !interactionActive else { reloadPending = true; return }
+        isReloading = true
+        defer { isReloading = false }
         local.prepareSnapshot()
         authorizationStatus = EKEventStore.authorizationStatus(for: .event)
         let systemCalendars = (hasFullAccess && includesSystemCalendars ? eventStore.calendars(for: .event) : []).sorted {
@@ -133,6 +138,7 @@ final class MacTabletCalendarStore: ObservableObject {
             multiCalendarIDs.formUnion(ids.subtracting(previousIDs))
         }
 
+        let calendar = self.calendar
         let today = calendar.startOfDay(for: Date())
         let start = calendar.date(byAdding: .year, value: -1, to: today) ?? today
         let end = calendar.date(byAdding: .year, value: 3, to: today) ?? today
@@ -147,6 +153,17 @@ final class MacTabletCalendarStore: ObservableObject {
                 return $0.title.localizedStandardCompare($1.title) == .orderedAscending
             }
             return $0.startDate < $1.startDate
+        }
+        dayIndexRange = (DateInterval(start: start, end: end), calendar.timeZone.identifier)
+        eventsByDay.removeAll(keepingCapacity: true)
+        for event in events {
+            var day = max(start, calendar.startOfDay(for: event.startDate))
+            repeat {
+                guard day < end, event.endDate > day || (event.isAllDay && event.startDate == day && event.endDate == day) else { break }
+                eventsByDay[day, default: []].append(event)
+                guard let next = calendar.date(byAdding: .day, value: 1, to: day), next > day else { break }
+                day = next
+            } while day < event.endDate
         }
         refreshWidgetSnapshot()
         if let selected = selectedSidebarEvent?.nativeEvent {
@@ -165,9 +182,17 @@ final class MacTabletCalendarStore: ObservableObject {
     }
 
     func events(on date: Date, calendarID: String? = nil, requiresVisibility: Bool = true) -> [EKEvent] {
+        let calendar = self.calendar
         let dayStart = calendar.startOfDay(for: date)
         let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart) ?? dayStart
-        return events.filter { event in
+        let candidates: [EKEvent]
+        if let range = dayIndexRange, range.timeZoneID == calendar.timeZone.identifier,
+           dayStart >= range.interval.start, dayEnd <= range.interval.end {
+            candidates = eventsByDay[dayStart] ?? []
+        } else {
+            candidates = events
+        }
+        return candidates.filter { event in
             (!requiresVisibility || visibleCalendarIDs.contains(event.calendar.calendarIdentifier))
                 && (calendarID == nil || event.calendar.calendarIdentifier == calendarID)
                 && event.startDate < dayEnd

@@ -264,22 +264,12 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
             dragOffset = CGPoint(x: loc.x - evView.frame.minX,
                                  y: loc.y - evView.frame.minY)
             
-            // Ако е многодневно EKMultiDayWrapper, пазим позициите и на останалите slice-ове:
-            if let multi = descriptor as? EKMultiDayWrapper {
-                multiDayDraggingOriginalFrames.removeAll()
-                let eventID = multi.realEvent.eventIdentifier
-                for (otherView, otherDesc) in eventViewToDescriptor {
-                    if let otherMulti = otherDesc as? EKMultiDayWrapper,
-                       otherMulti.realEvent.eventIdentifier == eventID {
-                        multiDayDraggingOriginalFrames[otherView] = otherView.frame
-                    }
-                }
-            } else {
-                // Single day => just track this single eventView
-                multiDayDraggingOriginalFrames.removeAll()
-                multiDayDraggingOriginalFrames[evView] = evView.frame
+            let identity = descriptor.timelineEventIdentity
+            multiDayDraggingOriginalFrames.removeAll(keepingCapacity: true)
+            for (view, slice) in eventViewToDescriptor where slice.timelineEventIdentity == identity {
+                multiDayDraggingOriginalFrames[view] = view.frame
             }
-            
+
             var dayIndexes = Set<Int>()
             for (sliceView, _) in multiDayDraggingOriginalFrames {
                 let sliceMidX = sliceView.frame.midX

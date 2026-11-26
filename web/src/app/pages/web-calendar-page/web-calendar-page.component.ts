@@ -984,8 +984,12 @@ export class WebCalendarPageComponent
   readonly detailEvent = computed(() => {
     const selected = this.selectedEvent();
     const current = this.currentOccurrence(selected);
-    if (!selected?.sharingEventId) return selected && current
-      ? { ...selected, status: current.status, readOnly: current.readOnly } : selected;
+    if (!selected?.sharingEventId) {
+      if (selected?.updatedAt && current?.updatedAt && Date.parse(current.updatedAt) < Date.parse(selected.updatedAt)) {
+        return { ...selected, status: current.status, readOnly: current.readOnly };
+      }
+      return current;
+    }
     const shared = [...this.native.outgoing(), ...this.native.received()].find(item => item.id === selected.sharingEventId);
     if (!shared) return selected;
     const resolved = this.sharedListEvent(shared);

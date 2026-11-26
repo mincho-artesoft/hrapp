@@ -34,9 +34,14 @@ extension EventDescriptor {
     /// Slices are presentation objects. Gestures must operate on the whole
     /// event, regardless of which backing store or day was pressed.
     var timelineEventIdentity: String {
-        if let local = self as? AppLocalEventDescriptor { return "local:" + local.eventID }
+        if let local = self as? AppLocalEventDescriptor { return "local:" + local.gridID }
         if let native = self as? EKMultiDayWrapper {
-            return "ek:" + (native.realEvent.eventIdentifier ?? native.realEvent.calendarItemIdentifier)
+            let event = native.realEvent
+            let id = "ek:" + (event.eventIdentifier ?? event.calendarItemIdentifier)
+            if let occurrence = event.occurrenceDate ?? (event.hasRecurrenceRules ? event.startDate : nil) {
+                return id + "@" + String(occurrence.timeIntervalSinceReferenceDate)
+            }
+            return id
         }
         return String(describing: ObjectIdentifier(self))
     }

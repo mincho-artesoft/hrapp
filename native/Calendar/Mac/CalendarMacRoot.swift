@@ -130,7 +130,7 @@ struct CalendarMacRoot: View {
             if MacCalendarMode(rawValue: lastCalendarTab)?.canReturnFromMenu != true { lastCalendarTab = 0 }
             if !(0...5).contains(menuSection) { menuSection = 0 }
             if store.includesSystemCalendars { await store.activate() }
-            while !Task.isCancelled { await store.backend.sync(); try? await Task.sleep(for: .seconds(30)) }
+            await store.backend.pollWhileOpen()
         }
         .environment(\.appContextMenuFocusEnabled, false)
     }

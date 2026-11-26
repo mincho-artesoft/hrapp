@@ -997,11 +997,14 @@ enum SharedEventSyncManager {
         changeTask = Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(700))
             guard !Task.isCancelled else { return }
+            changeTask = nil
             await syncNow()
         }
     }
 
     static func syncNow() async {
+        do { try await AccountLocalCalendarSync.sync(storage: AppLocalAccountCalendarStorage.shared) }
+        catch { print("Account local calendar sync: \(error.localizedDescription)") }
         guard !isSyncing else { return }
         isSyncing = true
         defer { isSyncing = false }
@@ -1009,7 +1012,7 @@ enum SharedEventSyncManager {
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
         _ = await AppLocalCalendarSyncService.syncAll()
-        _ = await NativeCalendarSyncService.syncNow()
+        _ = await NativeCalendarSyncService.syncNow(includeAccountLocal: false)
         _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: store)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
         _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: store)

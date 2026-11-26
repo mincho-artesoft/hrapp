@@ -3,6 +3,7 @@ import Foundation
 @main
 struct DeviceCalendarMergeTests {
     @MainActor static func main() throws {
+        assert(DeviceCalendarReplica.hash("abc") == "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad")
         assert(DeviceCalendarReplica.storageHost(for: URL(string: "https://storage.wonek.com/cloud-calendars-debug")!)
             == DeviceCalendarReplica.storageHost(for: URL(string: "https://63yo3ore3c.execute-api.us-east-1.amazonaws.com")!))
         assert(DeviceCalendarReplica.storageHost(for: URL(string: "https://api.cloud-calendars.com")!) == "api.cloud-calendars.com")

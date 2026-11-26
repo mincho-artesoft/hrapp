@@ -14,6 +14,7 @@ enum AccountLocalCalendarSync {
     private struct Inventory: Decodable { let ownerID: String; let calendars: [DeviceCalendarDocument] }
     private struct Binding: Codable { var localID: String; var baseline: DeviceCalendarDocument? }
     private static var busy = false
+    private static var pending = false
     #if DEBUG
     /// Test cleanup is limited to the explicit audit prefix; ordinary calendars
     /// and their tombstones must retain their account bindings.
@@ -36,15 +37,26 @@ enum AccountLocalCalendarSync {
     private static var namespace: String {
         "accountLocal.v1.\(DeviceCalendarReplica.storageHost(for: CloudCalendarsAPI.baseURL))."
     }
-    static func isVisible(_ localID: String) -> Bool {
-        guard let owner = UserDefaults.standard.dictionary(forKey: namespace + "owners")?[localID] as? String else { return true }
-        guard let session = CalendarFeedSession.existing else { return false }
-        return owner == (session.ownerId ?? UserDefaults.standard.string(forKey: namespace + "session." + session.calendarId))
+    static func visibilityFilter() -> (String) -> Bool {
+        let owners = UserDefaults.standard.dictionary(forKey: namespace + "owners") as? [String: String] ?? [:]
+        let active = CalendarFeedSession.existing.flatMap { session in
+            session.ownerId ?? UserDefaults.standard.string(forKey: namespace + "session." + session.calendarId)
+        }
+        return { id in owners[id].map { $0 == active } ?? true }
     }
 
     static func sync(storage: any AccountLocalCalendarStorage) async throws {
-        guard !busy, let session = CalendarFeedSession.existing else { return }
-        busy = true; defer { busy = false }
+        if busy { pending = true; return }
+        busy = true
+        defer { busy = false }
+        repeat {
+            pending = false
+            guard let session = CalendarFeedSession.existing else { return }
+            try await syncPass(storage: storage, session: session)
+        } while pending
+    }
+
+    private static func syncPass(storage: any AccountLocalCalendarStorage, session: CloudCalendarsAPI.Session) async throws {
         var request = URLRequest(url: CloudCalendarsAPI.baseURL.appendingPathComponent("ios/calendars/account"))
         request.setValue("Bearer \(session.deviceToken)", forHTTPHeaderField: "Authorization")
         request.cachePolicy = .reloadIgnoringLocalCacheData
@@ -64,13 +76,14 @@ enum AccountLocalCalendarSync {
             UserDefaults.standard.set(owners, forKey: namespace + "owners")
         }
         let local = try storage.accountLocalDocuments(matching: nil)
+        let oldBindingCount = bindings.count
         for document in local where owners[document.id] == nil || owners[document.id] == inventory.ownerID {
             if bindings.values.contains(where: { $0.localID == document.id }) { continue }
             let id = DeviceCalendarReplica.hash(document.id)
             bindings[id] = .init(localID: document.id, baseline: nil)
             owners[document.id] = inventory.ownerID
         }
-        try save()
+        if oldBindingCount != bindings.count { try save() }
         for document in inventory.calendars where bindings[document.id] == nil && document.available {
             let id = try storage.applyAccountLocalDocument(document, localID: nil)
             bindings[document.id] = .init(localID: id, baseline: document)
@@ -85,7 +98,10 @@ enum AccountLocalCalendarSync {
                 let before = try storage.accountLocalDocuments(matching: binding.localID).first
                 if let remote, !remote.available {
                     if before != nil { try storage.removeAccountLocalDocument(localID: binding.localID) }
-                    binding.baseline = remote; bindings[id] = binding; try save(); break
+                    if binding.baseline != remote {
+                        binding.baseline = remote; bindings[id] = binding; try save()
+                    }
+                    break
                 }
                 guard before != nil || binding.baseline != nil else { break }
                 var proposed: DeviceCalendarDocument
@@ -93,6 +109,12 @@ enum AccountLocalCalendarSync {
                     proposed = try canonical(before, id: id)
                     if let remote {
                         proposed.deviceId = remote.deviceId; proposed.deviceName = remote.deviceName
+                        if binding.baseline == remote,
+                           proposed.title == remote.title, proposed.color == remote.color,
+                           proposed.sharingCalendarID == remote.sharingCalendarID,
+                           proposed.events == (try canonical(remote, id: id)).events {
+                            break
+                        }
                         let base = binding.baseline
                         proposed.events = DeviceCalendarReplica.merge(base: base?.events ?? [], local: proposed.events, remote: remote.events)
                         if let base {
@@ -134,7 +156,10 @@ enum AccountLocalCalendarSync {
                     if latest.color != before.color { applied.color = latest.color }
                     _ = try storage.applyAccountLocalDocument(applied, localID: binding.localID)
                 }
-                binding.baseline = saved; bindings[id] = binding; try save(); break
+                if binding.baseline != saved {
+                    binding.baseline = saved; bindings[id] = binding; try save()
+                }
+                break
             }
         }
     }

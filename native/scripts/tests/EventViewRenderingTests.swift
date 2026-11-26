@@ -54,6 +54,7 @@ final class EKMultiDayWrapper: TestDescriptor {
 }
 final class AppLocalEventDescriptor: TestDescriptor {
     let originalInterval: DateInterval
+    var gridID: String { eventID + "@" + String(originalInterval.start.timeIntervalSinceReferenceDate) }
     let eventID = "test-local-event"
     var location = "Sofia Expo Center"
     var notes = ""
@@ -127,6 +128,13 @@ final class AppLocalEventDescriptor: TestDescriptor {
         let day = calendar.startOfDay(for: Date())
         let dayEnd = calendar.date(byAdding: .day, value: 1, to: day)!
         func date(_ hour: Double) -> Date { day.addingTimeInterval(hour * 3_600) }
+        let overnight = DateInterval(start: date(22), end: date(27))
+        let evening = AppLocalEventDescriptor(overnight, slice: DateInterval(start: overnight.start, end: dayEnd))
+        let morning = AppLocalEventDescriptor(overnight, slice: DateInterval(start: dayEnd, end: overnight.end))
+        let following = DateInterval(start: date(46), end: date(51))
+        let next = AppLocalEventDescriptor(following, slice: following)
+        try check(evening.timelineEventIdentity == morning.timelineEventIdentity, "Drag separated the slices of one occurrence")
+        try check(evening.timelineEventIdentity != next.timelineEventIdentity, "Drag selected a second occurrence from the same series")
         for style in [UIUserInterfaceStyle.light, .dark] {
             let interval = DateInterval(start: day, end: dayEnd)
             func sample(allDay: Bool) -> (pixel: Data?, title: UIColor?) {

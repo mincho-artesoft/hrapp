@@ -14,6 +14,7 @@ func appTimeFormatter() -> DateFormatter {
     return formatter
 }
 final class AppLocalEventDescriptor: EventDescriptor {
+    var gridID: String { eventID }
     let eventID = "unsaved-test-event"
     let location = ""
     let isCancelled = false

@@ -121,7 +121,17 @@ final class DeviceCalendarReplica {
         case server(Int)
         var errorDescription: String? { if case .server(let status) = self { return "Calendar sync failed (\(status))." }; return nil }
     }
-    nonisolated static func hash(_ string: String) -> String { SHA256.hash(data: Data(string.utf8)).map { String(format: "%02x", $0) }.joined() }
+    private nonisolated static let hexDigits = Array("0123456789abcdef".utf8)
+    nonisolated static func hash(_ string: String) -> String {
+        let digest = SHA256.hash(data: Data(string.utf8))
+        var hex: [UInt8] = []
+        hex.reserveCapacity(64)
+        for byte in digest {
+            hex.append(hexDigits[Int(byte >> 4)])
+            hex.append(hexDigits[Int(byte & 15)])
+        }
+        return String(decoding: hex, as: UTF8.self)
+    }
     static var deviceID: String {
         if let saved = UserDefaults.standard.string(forKey: "calendarReplica.deviceID") { return saved }
         let id = UUID().uuidString.lowercased(); UserDefaults.standard.set(id, forKey: "calendarReplica.deviceID"); return id
@@ -241,13 +251,14 @@ final class DeviceCalendarReplica {
 final class DeviceEventKitAdapter {
     let store: EKEventStore
     init(store: EKEventStore) { self.store = store }
-    private var mapping: [String: String] {
-        get { UserDefaults.standard.dictionary(forKey: "calendarReplica.eventIdentifiers") as? [String: String] ?? [:] }
-        set { UserDefaults.standard.set(newValue, forKey: "calendarReplica.eventIdentifiers") }
+    private static var mappedIDs = UserDefaults.standard.dictionary(forKey: "calendarReplica.eventIdentifiers") as? [String: String] ?? [:]
+    private static var replicaIDsByEvent = reverseMapping(mappedIDs)
+    private static func reverseMapping(_ map: [String: String]) -> [String: String] {
+        Dictionary(map.map { ($0.value, $0.key) }, uniquingKeysWith: { first, _ in first })
     }
     func identity(_ event: EKEvent) -> String {
         let key = (event.eventIdentifier ?? event.calendarItemIdentifier) + ":" + (event.occurrenceDate.map(DeviceCalendarEvent.iso) ?? "")
-        return mapping.first(where: { $0.value == key })?.key ?? DeviceCalendarReplica.hash(key)
+        return Self.replicaIDsByEvent[key] ?? DeviceCalendarReplica.hash(key)
     }
     func events(in calendar: EKCalendar) -> [EKEvent] {
         let now = Date(), c = Calendar.current
@@ -329,9 +340,12 @@ final class DeviceEventKitAdapter {
                 }
                 UserDefaults.standard.set(try JSONEncoder().encode(details), forKey: "calendarReplica.details." + item.id)
             }
-            var map = mapping
-            map[item.id] = (event.eventIdentifier ?? event.calendarItemIdentifier) + ":" + (event.occurrenceDate.map(DeviceCalendarEvent.iso) ?? "")
-            mapping = map
+            let key = (event.eventIdentifier ?? event.calendarItemIdentifier) + ":" + (event.occurrenceDate.map(DeviceCalendarEvent.iso) ?? "")
+            if Self.mappedIDs[item.id] != key {
+                Self.mappedIDs[item.id] = key
+                Self.replicaIDsByEvent = Self.reverseMapping(Self.mappedIDs)
+                UserDefaults.standard.set(Self.mappedIDs, forKey: "calendarReplica.eventIdentifiers")
+            }
         }
     }
 }
