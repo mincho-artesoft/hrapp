@@ -402,7 +402,6 @@ async function main() {
     '/invite/debug/icloud-calendar-invites/open https://api.cloud-calendars.com/icloud-calendar-invites/open 302',
     '/invite/event-invites/open https://api.cloud-calendars.com/event-invites/open 302',
     '/invite/icloud-calendar-invites/open https://api.cloud-calendars.com/icloud-calendar-invites/open 302',
-    '/event/* /index.csr.html 200',
     '',
   ].join('\n');
 
