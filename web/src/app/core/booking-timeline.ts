@@ -52,20 +52,15 @@ export function bookingTimelineEvents(calendar: BookingCalendar, first: Date, en
   }
   for (const move of moves) {
     if (move.calendarId !== calendar.id || move.revision !== calendar.revision) continue;
-    const request = move.requestId ? bookings.find(r => r.id === move.requestId) : undefined;
-    const source = request ?? calendar.slots.find(slot => slot.id === move.slotId.split('@')[0]);
-    if (!source) continue;
-    const originalId = request ? 'request-' + request.id : 'slot-' + move.slotId;
-    const original = entries.findIndex(entry => entry.id === originalId);
-    if (original >= 0) {
-      if (request) entries[original].readOnly = true;
-      else entries.splice(original, 1);
-    }
+    const request = bookings.find(r => r.id === move.requestId);
+    if (!request) continue;
+    const original = entries.find(entry => entry.id === 'request-' + request.id);
+    if (original) original.readOnly = true;
     const start = new Date(move.start), finish = new Date(move.end);
     if (start >= end || finish <= first) continue;
-    entries.push({id: request ? 'proposal-' + request.id : originalId,
-      title: [source.title, request?.guestName].filter(Boolean).join(' · '), location: source.location,
-      proposed: !!request, status: request ? 'pending' : unreservedStatus(finish), readOnly: true, start, end: finish});
+    entries.push({id: 'proposal-' + request.id,
+      title: [request.title, request.guestName].filter(Boolean).join(' · '), location: request.location,
+      proposed: true, status: 'pending', readOnly: true, start, end: finish});
   }
   return entries.map(entry => ({
     id: entry.id, calendarId: calendar.id, calendarTitle: calendar.title, color: bookingStatus[entry.status].color,

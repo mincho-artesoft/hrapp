@@ -60,19 +60,15 @@ struct BookingTimelineEntry: Identifiable, Equatable {
         }
         for move in moves where move.calendarID == schedule.id && move.revision == schedule.revision {
             let entry = move.entry
+            guard let requestID = entry.requestID else { continue }
             if let original = result.firstIndex(where: { $0.id == entry.id }) {
-                if entry.requestID == nil {
-                    result.remove(at: original)
-                } else {
-                    result[original].saving = true
-                }
+                result[original].saving = true
             }
             let interval = move.interval
             guard interval.start < upper, interval.end > lower else { continue }
-            let booked = entry.requestID != nil
-            result.append(Self(id: entry.requestID.map { "proposal-" + $0 } ?? entry.id, slotID: entry.slotID,
-                requestID: entry.requestID, proposed: booked, saving: true, title: entry.title,
-                status: booked ? .pending : .unreserved(ending: interval.end), location: entry.location,
+            result.append(Self(id: "proposal-" + requestID, slotID: entry.slotID,
+                requestID: requestID, proposed: true, saving: true, title: entry.title,
+                status: .pending, location: entry.location,
                 start: interval.start, end: interval.end))
         }
         return result.sorted { ($0.start, $0.id) < ($1.start, $1.id) }
@@ -236,6 +232,12 @@ struct BookingCalendarTimeline: View {
 
 #if os(iOS)
 private struct BookingPinnedTimeline: UIViewRepresentable {
+    final class Coordinator {
+        var renderedEvents: [ObjectIdentifier] = []
+        var range: DateInterval?
+        var timeZone: TimeZone?
+    }
+    func makeCoordinator() -> Coordinator { Coordinator() }
     let title: String
     @Binding var start: Date
     @Binding var end: Date
@@ -274,6 +276,13 @@ private struct BookingPinnedTimeline: UIViewRepresentable {
         if view.fromDate != start { view.fromDate = start }
         if view.toDate != end { view.toDate = end }
         let upper = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: end)) ?? end
+        let range = DateInterval(start: start, end: upper)
+        let identifiers = events.map(ObjectIdentifier.init)
+        let cache = context.coordinator
+        guard cache.range != range || cache.timeZone != calendar.timeZone || cache.renderedEvents != identifiers else { return }
+        cache.range = range
+        cache.timeZone = calendar.timeZone
+        cache.renderedEvents = identifiers
         view.weekView.regularLayoutAttributes = events.flatMap { event -> [EventLayoutAttributes] in
             var cursor = max(start, event.startDate)
             let last = min(upper, event.endDate)

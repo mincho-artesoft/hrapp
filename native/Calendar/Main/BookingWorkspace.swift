@@ -2,9 +2,9 @@ import SwiftUI
 import EventKit
 
 struct BookingInterval: Codable, Identifiable {
-    let id: String
-    let start: String
-    let end: String
+    var id: String
+    var start: String
+    var end: String
     var title: String?
     var location: String?
     var structuredLocation: SharedEventLocation?
@@ -151,7 +151,13 @@ private func bookingLink(_ id: String) -> URL {
 @MainActor
 private final class BookingStore: ObservableObject {
     static let shared = BookingStore()
-    @Published var data = BookingData()
+    @Published private var confirmed = BookingData()
+    @Published private var freePreviews: [String: HostedBookingCalendar] = [:]
+    private var freeWrites: [String: Task<Void, Error>] = [:]
+    var data: BookingData {
+        guard !freePreviews.isEmpty else { return confirmed }
+        return BookingData(calendars: confirmed.calendars.map { freePreviews[$0.id] ?? $0 }, appointments: confirmed.appointments)
+    }
     @Published var error: String?
     @Published var loaded = false
     @Published private(set) var pendingMoves: [BookingTimelineMove] = []
@@ -172,14 +178,16 @@ private final class BookingStore: ObservableObject {
     func refresh() async {
         let session = CalendarFeedSession.existing
         if account != session {
+            freeWrites.removeAll()
+            freePreviews.removeAll()
             pendingMoves.removeAll()
-            data = BookingData()
+            confirmed = BookingData()
             loaded = false
             error = nil
             account = session
             if let session, let saved = UserDefaults.standard.data(forKey: cacheKey(for: session)),
                let cached = try? JSONDecoder().decode(BookingData.self, from: saved) {
-                data = cached
+                confirmed = cached
                 loaded = true
             }
         }
@@ -187,15 +195,21 @@ private final class BookingStore: ObservableObject {
         let version = generation
         guard let session else { loaded = true; return }
         do {
-            let updated: BookingData = try await CloudCalendarsAPI.bookingRequest("", session: session)
+            var updated: BookingData = try await CloudCalendarsAPI.bookingRequest("", session: session)
             guard generation == version, CalendarFeedSession.isCurrent(session) else { return }
+            // A read started before a successful drop can arrive after its receipt.
+            for (index, calendar) in updated.calendars.enumerated() {
+                if let newer = confirmed.calendars.first(where: { $0.id == calendar.id && $0.revision > calendar.revision }) {
+                    updated.calendars[index] = newer
+                }
+            }
             if let encoded = try? JSONEncoder().encode(updated) {
                 let key = cacheKey(for: session)
                 if UserDefaults.standard.data(forKey: key) != encoded { UserDefaults.standard.set(encoded, forKey: key) }
             }
-            data = updated
+            confirmed = updated
             let stillPending = pendingMoves.filter { move in
-                updated.calendars.contains { $0.id == move.calendarID && $0.revision == move.revision }
+                data.calendars.contains { $0.id == move.calendarID && $0.revision == move.revision }
             }
             if stillPending.count != pendingMoves.count { pendingMoves = stillPending }
             loaded = true
@@ -208,10 +222,16 @@ private final class BookingStore: ObservableObject {
               session: CloudCalendarsAPI.Session, onFailure: @escaping (String) -> Void) {
         guard belongs(to: session), data.calendars.contains(where: { $0.id == calendar.id && $0.revision == calendar.revision }),
               !pendingMoves.contains(where: { $0.calendarID == calendar.id && $0.entry.id == entry.id }) else { return }
+        if entry.requestID == nil {
+            moveFreeSlot(entry, to: interval, in: calendar, session: session, onFailure: onFailure)
+            return
+        }
         let move = BookingTimelineMove(calendarID: calendar.id, revision: calendar.revision, entry: entry, interval: interval)
         pendingMoves.append(move)
         Task {
             do {
+                try await freeWrites[calendar.id]?.value
+                guard belongs(to: session) else { return }
                 let receipt: BookingReceipt = try await CloudCalendarsAPI.bookingRequest("/" + calendar.id + "/occurrences/" + entry.slotID,
                     method: "PUT", body: ["revision": calendar.revision, "start": DeviceCalendarEvent.iso(interval.start),
                         "end": DeviceCalendarEvent.iso(interval.end)], session: session)
@@ -224,9 +244,58 @@ private final class BookingStore: ObservableObject {
             if belongs(to: session) { await refresh() }
         }
     }
+
+    private func moveFreeSlot(_ entry: BookingTimelineEntry, to interval: DateInterval, in calendar: HostedBookingCalendar,
+                              session: CloudCalendarsAPI.Session, onFailure: @escaping (String) -> Void) {
+        let baseID = entry.slotID.components(separatedBy: "@")[0]
+        guard let index = calendar.slots.firstIndex(where: { $0.id == baseID }) else { return }
+        var next = calendar
+        var slot = calendar.slots[index]
+        slot.start = DeviceCalendarEvent.iso(interval.start)
+        slot.end = DeviceCalendarEvent.iso(interval.end)
+        var body: [String: any Sendable] = ["revision": calendar.revision, "freeOnly": true, "start": slot.start, "end": slot.end]
+        if slot.rule != nil {
+            next.slots[index].excludedStarts = (slot.excludedStarts ?? []) + [DeviceCalendarEvent.iso(entry.start)]
+            slot.id = UUID().uuidString.lowercased()
+            slot.rule = nil
+            slot.excludedStarts = nil
+            next.slots.append(slot)
+            body["detachedId"] = slot.id
+        } else {
+            next.slots[index] = slot
+        }
+        next.slots.sort { $0.start < $1.start }
+        next.revision += 1
+        freePreviews[calendar.id] = next
+        let previous = freeWrites[calendar.id]
+        let write = Task<Void, Error> {
+            try await previous?.value
+            guard belongs(to: session) else { throw CancellationError() }
+            let receipt: BookingReceipt = try await CloudCalendarsAPI.bookingRequest("/" + calendar.id + "/occurrences/" + entry.slotID,
+                method: "PUT", body: body, session: session)
+            guard belongs(to: session) else { throw CancellationError() }
+            guard receipt.revision == next.revision else {
+                throw NSError(domain: "Bookings", code: 409, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("This calendar changed. Refresh and try again.", comment: "")])
+            }
+            if let i = confirmed.calendars.firstIndex(where: { $0.id == calendar.id && $0.revision < next.revision }) {
+                confirmed.calendars[i] = next
+            }
+        }
+        freeWrites[calendar.id] = write
+        Task {
+            let result = await write.result
+            guard belongs(to: session), freeWrites[calendar.id] == write else { return }
+            freeWrites[calendar.id] = nil
+            freePreviews[calendar.id] = nil
+            if case .failure(let error) = result { onFailure(error.localizedDescription) }
+            await refresh()
+        }
+    }
     @discardableResult
     func mutate(_ path: String, method: String = "PUT", body: [String: any Sendable]? = nil) async throws -> BookingReceipt {
         let session = try await CalendarFeedSession.current()
+        if let id = path.split(separator: "/").first { try await freeWrites[String(id)]?.value }
+        guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
         let receipt: BookingReceipt = try await CloudCalendarsAPI.bookingRequest(path, method: method, body: body, session: session)
         guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
         await refresh()

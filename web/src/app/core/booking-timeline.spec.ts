@@ -56,9 +56,68 @@ describe('booking timeline drops', () => {
     TestBed.flushEffects();
     await workspace.refresh();
     const saving = workspace.moveOccurrence(move);
-    expect(events(schedule, workspace.pendingMoves())[0].start).toBe(move.start);
+    const displayed = () => events(workspace.data().calendars[0], workspace.pendingMoves())[0];
+    expect(displayed().start).toBe(move.start);
+    expect(displayed().readOnly).toBeFalse();
     await expectAsync(saving).toBeRejectedWithError('Time slots overlap.');
-    expect(events(schedule, workspace.pendingMoves())[0].start).toBe(slot.start);
+    expect(displayed().start).toBe(slot.start);
+  });
+
+  it('keeps a detached free occurrence editable and orders writes before an editor save', async () => {
+    const series = {...slot, rule: {frequency: 0, interval: 1, occurrenceCount: 3}};
+    const calendar = {...schedule, slots: [series]};
+    type Update = {revision: number; detachedId?: string};
+    const writes: {path: string; body: Update}[] = [];
+    let acknowledge!: (value: {revision: number}) => void;
+    const firstWrite = new Promise(resolve => { acknowledge = resolve; });
+    const api = {token: signal('test'), nativeCalendarRequest: async (path: string, method: string, body: Update) => {
+      if (method === 'GET') return {calendars: [calendar], appointments: []};
+      writes.push({path, body});
+      return writes.length === 1 ? firstWrite : {revision: body.revision + 1};
+    }};
+    TestBed.configureTestingModule({providers: [BookingWorkspace, {provide: CalendarPlatformApiService, useValue: api}]});
+    const workspace = TestBed.inject(BookingWorkspace);
+    TestBed.flushEffects();
+    await workspace.refresh();
+    const first = workspace.moveOccurrence(move);
+    const id = writes[0].body.detachedId;
+    if (!id) throw new Error('Missing detached occurrence ID');
+    const preview = () => events(workspace.data().calendars[0], workspace.pendingMoves());
+    expect(preview().map(r => [r.id, r.start, r.readOnly])).toEqual([['slot-' + id, move.start, false]]);
+    const second = workspace.moveOccurrence({...move, slotId: id, revision: 2, ...interval(15)});
+    const editor = workspace.request('/studio/occurrences/' + id, 'PUT', {revision: 3, title: 'Updated'});
+    await workspace.refresh();
+    expect(preview()[0].start).toBe(interval(15).start);
+    expect(writes.length).toBe(1);
+    acknowledge({revision: 2});
+    await Promise.all([first, second, editor]);
+    expect(writes.map(w => w.body.revision)).toEqual([1, 2, 3]);
+    expect(writes[1].path).toBe('/booking-calendars/studio/occurrences/' + id);
+    expect(preview()[0].start).toBe(interval(15).start);
+  });
+
+  it('restores the first saved move when a subsequent move overlaps another slot', async () => {
+    let acknowledge!: (receipt: {revision: number}) => void;
+    const firstWrite = new Promise(resolve => { acknowledge = resolve; });
+    const api = {token: signal('test'), nativeCalendarRequest: async (_: string, method: string, body?: {revision: number}) => {
+      if (method === 'GET') return {calendars: [schedule], appointments: []};
+      if (body?.revision === 1) return firstWrite;
+      throw new Error('Time slots overlap.');
+    }};
+    TestBed.configureTestingModule({providers: [BookingWorkspace, {provide: CalendarPlatformApiService, useValue: api}]});
+    const workspace = TestBed.inject(BookingWorkspace);
+    TestBed.flushEffects();
+    await workspace.refresh();
+    const first = workspace.moveOccurrence(move);
+    const second = workspace.moveOccurrence({...move, ...interval(15), revision: 2});
+    const displayed = () => events(workspace.data().calendars[0], workspace.pendingMoves())[0];
+    expect(displayed().start).toBe(interval(15).start);
+    acknowledge({revision: 2});
+    await first;
+    await expectAsync(second).toBeRejectedWithError('Time slots overlap.');
+    await workspace.refresh();
+    expect(displayed().start).toBe(move.start);
+    expect(displayed().readOnly).toBeFalse();
   });
 
   it('holds the original reservation and shows the proposed time at the drop location', () => {

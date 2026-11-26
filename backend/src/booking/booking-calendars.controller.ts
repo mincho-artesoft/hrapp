@@ -161,6 +161,7 @@ export class BookingCalendarsController {
     const series = c.slots.find(s => s.id === slotId.split('@')[0])!;
     const booking = c.requests.find(r => r.slotId === slotId && r.decision !== 'declined'
       && (r.proposal ?? r).start === original.start && (r.proposal ?? r).end === original.end);
+    if (body.freeOnly === true && booking) conflict();
     if (booking && (body.remove || booking.proposal || Date.parse(booking.end) <= Date.now())) conflict();
     // Detach just this occurrence. The series rule and the identities of its other bookings stay valid.
     const slots = c.slots.filter(s => s.id !== series.id);
@@ -175,7 +176,10 @@ export class BookingCalendarsController {
       const title = body.title === undefined ? original.title : body.title;
       if (title != null && (typeof title !== 'string' || title.length > 200)) fail(400,'Invalid slot title.');
       const start = new Date(body.start).toISOString(), end = new Date(body.end).toISOString();
-      const edited: Slot = {id:series.rule ? randomUUID() : series.id, start, end, timeZone:series.timeZone,
+      const detachedId = body.detachedId;
+      if (detachedId !== undefined && (!series.rule || typeof detachedId !== 'string' || !uuid.test(detachedId)
+        || c.slots.some(s => s.id === detachedId) || c.requests.some(r => r.slotId === detachedId))) conflict();
+      const edited: Slot = {id:series.rule ? detachedId ?? randomUUID() : series.id, start, end, timeZone:series.timeZone,
         ...(title?.trim() ? {title:title.trim()} : {}), ...bookingPlace(body, original)};
       if (start === original.start && end === original.end && edited.title === original.title &&
           edited.location === original.location && JSON.stringify(edited.structuredLocation) === JSON.stringify(original.structuredLocation)) {

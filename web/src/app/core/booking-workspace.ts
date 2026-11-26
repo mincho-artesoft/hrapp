@@ -29,7 +29,13 @@ export const bookingID = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 @Injectable()
 export class BookingWorkspace {
   readonly api = inject(CalendarPlatformApiService);
-  readonly data = signal<Workspace>({ calendars: [], appointments: [] });
+  private readonly confirmed = signal<Workspace>({ calendars: [], appointments: [] });
+  private readonly freePreviews = signal<Record<string, BookingCalendar>>({});
+  private readonly freeWrites = new Map<string, Promise<void>>();
+  readonly data = computed(() => {
+    const confirmed = this.confirmed(), previews = this.freePreviews();
+    return {...confirmed, calendars: confirmed.calendars.map(calendar => previews[calendar.id] ?? calendar)};
+  });
   readonly pendingChanges = computed(() => this.data().appointments.filter(r =>
     r.proposal && r.calendarId && (r.status === 'accepted' || r.status === 'pending')));
   readonly appointmentsForReview = computed(() => {
@@ -45,8 +51,10 @@ export class BookingWorkspace {
       const token = this.api.token();
       untracked(() => {
         ++this.generation;
+        this.freeWrites.clear();
+        this.freePreviews.set({});
         this.pendingMoves.set([]);
-        this.data.set({calendars: [], appointments: []});
+        this.confirmed.set({calendars: [], appointments: []});
         this.loaded.set(false);
         this.error.set('');
         if (!token) return;
@@ -71,9 +79,12 @@ export class BookingWorkspace {
     try {
       const value = await this.request<Workspace>('');
       if (sequence === this.generation && token === this.api.token()) {
-        this.data.set(value);
+        this.confirmed.update(previous => ({...value, calendars: value.calendars.map(calendar => {
+          const local = previous.calendars.find(c => c.id === calendar.id);
+          return local && local.revision > calendar.revision ? local : calendar;
+        })}));
         this.pendingMoves.update(moves => moves.filter(move =>
-          value.calendars.some(calendar => calendar.id === move.calendarId && calendar.revision === move.revision)));
+          this.data().calendars.some(calendar => calendar.id === move.calendarId && calendar.revision === move.revision)));
         this.loaded.set(true);
         this.error.set('');
       }
@@ -82,6 +93,7 @@ export class BookingWorkspace {
     }
   }
   async moveOccurrence(move: BookingTimelineMove) {
+    if (!move.requestId) return this.moveFreeSlot(move);
     if (this.pendingMoves().some(other => other.calendarId === move.calendarId && other.slotId === move.slotId)) return;
     const token = this.api.token();
     this.pendingMoves.update(moves => [...moves, move]);
@@ -97,7 +109,55 @@ export class BookingWorkspace {
       if (token === this.api.token()) void this.refresh();
     }
   }
-  request<T>(suffix: string, method = 'GET', body?: unknown) {
+  private async moveFreeSlot(move: BookingTimelineMove) {
+    const calendar = this.data().calendars.find(c => c.id === move.calendarId);
+    const [baseId, occurrenceMillis] = move.slotId.split('@');
+    const base = calendar?.slots.find(slot => slot.id === baseId);
+    const conflict = 'This calendar changed. Refresh and try again.';
+    if (!calendar || calendar.revision !== move.revision || !base) throw new Error(conflict);
+    const detachedId = base.rule ? crypto.randomUUID() : undefined;
+    const slot = {...base, id: detachedId ?? base.id, start: move.start, end: move.end, rule: undefined, excludedStarts: undefined};
+    const slots = calendar.slots.filter(s => s.id !== base.id);
+    if (detachedId) {
+      const originalStart = occurrenceMillis ? new Date(Number(occurrenceMillis)).toISOString() : base.start;
+      slots.push({...base, excludedStarts: [...(base.excludedStarts ?? []), originalStart]});
+    }
+    slots.push(slot);
+    slots.sort((a, b) => a.start.localeCompare(b.start));
+    const next = {...calendar, slots, revision: calendar.revision + 1};
+    const token = this.api.token();
+    this.freePreviews.update(previews => ({...previews, [calendar.id]: next}));
+    // Each gesture is already visible. Persist in calendar revision order, including gestures on other slots.
+    const previous = this.freeWrites.get(calendar.id);
+    const write = (async () => {
+      if (previous) await previous;
+      if (token !== this.api.token()) throw new Error(conflict);
+      const receipt = await this.api.nativeCalendarRequest<{revision: number}>('/booking-calendars/' + calendar.id +
+        '/occurrences/' + encodeURIComponent(move.slotId), 'PUT',
+        {revision: move.revision, start: move.start, end: move.end, freeOnly: true, detachedId});
+      if (receipt.revision !== next.revision || token !== this.api.token()) throw new Error(conflict);
+      this.confirmed.update(data => ({...data, calendars: data.calendars.map(c =>
+        c.id === calendar.id && c.revision < next.revision ? next : c)}));
+    })();
+    this.freeWrites.set(calendar.id, write);
+    try {
+      await write;
+    } catch (error) {
+      if (this.freeWrites.get(calendar.id) === write) throw error;
+    } finally {
+      if (this.freeWrites.get(calendar.id) === write) {
+        this.freeWrites.delete(calendar.id);
+        this.freePreviews.update(({[calendar.id]: done, ...remaining}) => remaining);
+        void this.refresh();
+      }
+    }
+  }
+  async request<T>(suffix: string, method = 'GET', body?: unknown) {
+    if (method !== 'GET') {
+      const token = this.api.token(), queued = this.freeWrites.get(suffix.split('/')[1]);
+      if (queued) await queued;
+      if (token !== this.api.token()) throw new Error('Sign in to continue.');
+    }
     return this.api.nativeCalendarRequest<T>('/booking-calendars' + suffix, method, body);
   }
   link(id: string) {
