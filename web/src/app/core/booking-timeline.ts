@@ -29,7 +29,7 @@ export function bookingTimelineEvents(calendar: BookingCalendar, first: Date, en
     if (request.proposal) {
       const p = request.proposal, start = new Date(p.start), finish = new Date(p.end);
       if (start < end && finish > first) {
-        if (p.start === request.start && p.end === request.end) {
+        if (+start === Date.parse(request.start) && +finish === Date.parse(request.end)) {
           const original = reservations.findIndex(r => r.id === 'request-' + request.id);
           if (original >= 0) reservations.splice(original, 1);
         }
@@ -42,9 +42,10 @@ export function bookingTimelineEvents(calendar: BookingCalendar, first: Date, en
   for (const slot of calendar.slots) {
     const event: WebCalendarEvent = {id: slot.id, start: slot.start, end: slot.end, title: slot.title ?? '',
       details: {timeZone: slot.timeZone, recurrenceRules: slot.rule ? [{...slot.rule, frequency: frequencies[slot.rule.frequency]}] : []}};
+    const excluded = new Set(slot.excludedStarts?.map(value => Date.parse(value)));
     for (const occurrence of calendarOccurrences(event, first, end)) {
       const start = new Date(occurrence.start), finish = new Date(occurrence.end);
-      if (start < end && finish > first && finish > start && !slot.excludedStarts?.includes(start.toISOString())
+      if (start < end && finish > first && finish > start && !excluded.has(start.getTime())
           && !reservations.some(r => r.start < finish && r.end > start)) {
         entries.push({id: 'slot-' + occurrence.id, title: event.title, location: slot.location, status: unreservedStatus(finish), start, end: finish});
       }

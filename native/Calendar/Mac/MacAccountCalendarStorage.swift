@@ -12,7 +12,7 @@ extension CalendarMacStore: AccountLocalCalendarStorage {
         }
     }
     func applyAccountLocalDocument(_ document: DeviceCalendarDocument, localID: String?) throws -> String {
-        let id = localID ?? "app-local:account:" + document.id
+        let id = localID ?? AccountLocalCalendarSync.importedPrefix + document.id
         let existing = local.first { $0.id == id }
         var value = document
         value.id = id; value.source = "Local Calendars"; value.accountLocal = nil

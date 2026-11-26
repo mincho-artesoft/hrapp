@@ -34,9 +34,10 @@ struct BookingTimelineEntry: Identifiable, Equatable {
                     title: title, status: proposed ? .pending : booking.eventStatus, location: slot.location, start: start, end: end)
             }
             var values: [Self] = []
-            if booking.proposal?.start != booking.start || booking.proposal?.end != booking.end,
-               let original = entry(booking.interval, proposed: false) { values.append(original) }
-            if let proposal = booking.proposal, let next = entry(proposal, proposed: true) { values.append(next) }
+            let next = booking.proposal.flatMap { entry($0, proposed: true) }
+            if let original = entry(booking.interval, proposed: false),
+               original.start != next?.start || original.end != next?.end { values.append(original) }
+            if let next { values.append(next) }
             return values
         }
         var result = reservations

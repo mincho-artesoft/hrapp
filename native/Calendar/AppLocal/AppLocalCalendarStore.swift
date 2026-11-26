@@ -673,11 +673,15 @@ final class AppLocalCalendarStore: ObservableObject {
         let series = try NativeCalendarSyncService.snapshot(current)
         let newID = "app-local-event:" + UUID().uuidString.lowercased()
         let plan = try AppLocalRecurrence.reschedule(series, occurrence: originalStart, interval: interval, allDay: allDay,
-            span: span, newID: newID)
+            span: span)
+        if let destination, plan.moved.id != series.id,
+           events.contains(where: { $0.calendarID == destination && $0.shareID == plan.moved.id }) {
+            throw CalendarTimelineTransfer.unavailable()
+        }
         func record(_ item: DeviceCalendarEvent, calendarID: String) -> AppLocalEventRecord {
             var copy = current
             copy.calendarID = calendarID
-            if item.id != series.id { copy.id = newID; copy.remoteEventID = nil; copy.createdAt = Date() }
+            if item.id != series.id { copy.id = newID; copy.remoteEventID = item.id; copy.createdAt = Date() }
             copy.startDate = item.startDate; copy.endDate = item.endDate; copy.isAllDay = item.allDay
             copy.recurrenceRules = item.macRecurrenceRules
             copy.excludedStarts = item.decodedDetail("excludedStarts")

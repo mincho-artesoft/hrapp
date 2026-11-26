@@ -35,7 +35,7 @@ enum CalendarTimelineTransfer {
         if descriptor.isLocalSeries {
             let plan = try AppLocalRecurrence.reschedule(NativeCalendarSyncService.snapshot(record),
                 occurrence: descriptor.originalInterval.start, interval: DateInterval(start: event.startDate, end: event.endDate),
-                allDay: event.isAllDay, span: span, newID: UUID().uuidString)
+                allDay: event.isAllDay, span: span)
             event.recurrenceRules = plan.moved.macRecurrenceRules.compactMap { $0.makeRule() }
         } else { event.recurrenceRules = record.recurrenceRules?.compactMap { $0.makeRule() } }
         try eventStore.save(event, span: .thisEvent, commit: true)

@@ -39,9 +39,13 @@ final class MacLocalDocuments {
     var calendars: [DeviceCalendarDocument] { backend.local }
     var ownedCalendars: [DeviceCalendarDocument] { backend.visibleLocalCalendars.filter { $0.available && $0.origin == .owned } }
     var receivedCalendars: [DeviceCalendarDocument] { backend.visibleLocalCalendars.filter { $0.available && $0.origin == .received } }
-    func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [DeviceCalendarEvent] {
+    func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [(DeviceCalendarDocument, DeviceCalendarEvent)] {
         backend.visibleLocalCalendars.filter { $0.available && selectedCalendarIDs.contains($0.id) }
-            .flatMap(\.events).filter { ReceivedSharingVisibility.isVisible($0.id, kind: "event") }.flatMap { AppLocalRecurrence.occurrences(of: $0, from: start, to: end) }
+            .flatMap { calendar in
+                calendar.events.filter { ReceivedSharingVisibility.isVisible($0.id, kind: "event") }.flatMap { series in
+                    AppLocalRecurrence.occurrences(of: series, from: start, to: end).map { (calendar, $0) }
+                }
+            }
     }
     func createCalendar(title: String, color: NSColor) throws -> DeviceCalendarDocument {
         let record = DeviceCalendarDocument(id: UUID().uuidString.lowercased(), deviceId: DeviceCalendarReplica.deviceID,
@@ -71,13 +75,15 @@ final class MacAppLocalCalendarBridge {
     private var eventSnapshots: [String: DeviceCalendarEvent] = [:]
     private var indexedDocuments: [DeviceCalendarDocument] = []
     private var sourcesByEventID: [String: DeviceCalendarDocument] = [:]
-    private var recordsByID: [String: DeviceCalendarEvent] = [:]
+    private var recordsByCalendar: [String: [String: DeviceCalendarEvent]] = [:]
     private func refreshIndex() {
-        guard indexedDocuments != store.calendars else { return }
-        indexedDocuments = store.calendars
-        sourcesByEventID.removeAll(keepingCapacity: true); recordsByID.removeAll(keepingCapacity: true)
+        let visible = store.backend.visibleLocalCalendars
+        guard indexedDocuments != visible else { return }
+        indexedDocuments = visible
+        sourcesByEventID.removeAll(keepingCapacity: true); recordsByCalendar.removeAll(keepingCapacity: true)
         for document in indexedDocuments {
-            for event in document.events { sourcesByEventID[event.id] = document; recordsByID[event.id] = event }
+            recordsByCalendar[document.id] = Dictionary(document.events.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+            for event in document.events { sourcesByEventID[event.id] = document }
         }
     }
     func prepareSnapshot() { refreshIndex() }
@@ -110,8 +116,12 @@ final class MacAppLocalCalendarBridge {
         // of all calendars and events for every expanded recurrence.
         if sourcesByEventID[record.id] == nil { refreshIndex() }
         guard let source = sourcesByEventID[record.id] else { return nil }
-        let anchor = recordsByID[record.id]
-        let displayID = anchor?.startDate == record.startDate ? record.id : record.id + ":" + record.start
+        return event(record, in: source)
+    }
+    func event(_ record: DeviceCalendarEvent, in source: DeviceCalendarDocument) -> EKEvent {
+        let anchor = recordsByCalendar[source.id]?[record.id]
+        let occurrenceID = anchor?.startDate == record.startDate ? record.id : record.id + ":" + record.start
+        let displayID = source.id + "/" + occurrenceID
         let value = eventsByID[displayID] ?? EKEvent(eventStore: eventStore)
         let destination = calendarsByID[source.id] ?? calendar(source)
         if eventSnapshots[displayID] == record, value.calendar === destination { return value }
@@ -133,8 +143,8 @@ final class MacAppLocalCalendarBridge {
         return value
     }
     func refreshedEvent(_ value: EKEvent) -> EKEvent? {
-        guard let record = record(for: value), let start = value.startDate else { return nil }
-        return event(AppLocalRecurrence.occurrences(of: record, from: start, to: start.addingTimeInterval(1)).first ?? record)
+        guard let record = record(for: value), let source = self.record(for: value.calendar), let start = value.startDate else { return nil }
+        return event(AppLocalRecurrence.occurrences(of: record, from: start, to: start.addingTimeInterval(1)).first ?? record, in: source)
     }
     func supplement(for event: EKEvent) -> EventKitEventSupplement? {
         guard let record = record(for: event) else { return EventKitEventSupplementStore.supplement(for: event) }
@@ -158,6 +168,7 @@ final class MacAppLocalCalendarBridge {
         let metadata = supplement ?? original.flatMap(self.supplement)
         if let destination = record(for: draft.calendar) {
             let old = original.flatMap { record(for: $0) }
+            if let original, isLocal(original), old == nil { throw MacTabletCalendarError.staleEvent }
             var item = old ?? DeviceCalendarEvent(id: UUID().uuidString.lowercased(), title: "", start: "", end: "", allDay: false)
             item.title = draft.title ?? ""; item.start = DeviceCalendarEvent.iso(draft.startDate); item.end = DeviceCalendarEvent.iso(draft.calendarRangeEnd)
             item.allDay = draft.isAllDay; item.location = draft.location; item.url = draft.url?.absoluteString
@@ -209,7 +220,7 @@ final class MacAppLocalCalendarBridge {
             var display = item
             if old != nil && !item.macRecurrenceRules.isEmpty { display.start = DeviceCalendarEvent.iso(draft.startDate); display.end = DeviceCalendarEvent.iso(draft.calendarRangeEnd) }
             prepareSnapshot()
-            return event(display) ?? draft
+            return event(display, in: destination)
         }
         try eventStore.save(draft, span: span, commit: true)
         if let metadata { EventKitEventSupplementStore.update(travelTime: metadata.travelTime, attachments: metadata.attachments, videoCallURL: metadata.videoCallURL, for: draft) }

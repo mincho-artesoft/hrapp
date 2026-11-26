@@ -18,7 +18,7 @@ final class AppLocalAccountCalendarStorage: AccountLocalCalendarStorage {
         }
     }
     func applyAccountLocalDocument(_ document: DeviceCalendarDocument, localID: String?) throws -> String {
-        let id = localID ?? "app-local:account:" + document.id
+        let id = localID ?? AccountLocalCalendarSync.importedPrefix + document.id
         var calendar = store.calendar(id: id) ?? AppLocalCalendarRecord(id: id, title: document.title, colorHex: document.color)
         calendar.title = document.title; calendar.colorHex = document.color
         calendar.remoteCalendarID = document.sharingCalendarID

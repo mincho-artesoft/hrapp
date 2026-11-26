@@ -23,16 +23,44 @@ struct MacCalendarPortTests {
         let selected = expanded[1]
         let newTime = DateInterval(start: selected.startDate.addingTimeInterval(7_200), duration: 5_400)
         let move = try AppLocalRecurrence.reschedule(anchor, occurrence: selected.startDate,
-            interval: newTime, allDay: false, span: .thisEvent, newID: "detached")
+            interval: newTime, allDay: false, span: .thisEvent)
         let stored = try JSONEncoder().encode([move.retained!, move.moved])
         let reloaded = try JSONDecoder().decode([DeviceCalendarEvent].self, from: stored)
         let remaining = AppLocalRecurrence.occurrences(of: reloaded[0], from: anchor.startDate,
             to: DeviceCalendarEvent.date("2027-01-01T00:00:00Z")!)
         assert(remaining.map(\.start) == expanded.filter { $0.start != selected.start }.map(\.start))
         assert(reloaded[0].start == anchor.start && reloaded[0].macRecurrenceRules == anchor.macRecurrenceRules)
-        assert(reloaded[1].id == "detached" && reloaded[1].macRecurrenceRules.isEmpty)
+        assert(reloaded[1].id != anchor.id && reloaded[1].macRecurrenceRules.isEmpty)
         assert(reloaded[1].startDate == newTime.start && reloaded[1].endDate == newTime.end)
         assert(reloaded[1].details?["futureField"] == .bool(true))
+        // Independent clients must detach the same occurrence under one wire ID.
+        var lesson = anchor
+        lesson.id = "lesson"
+        lesson.start = "2032-03-24T09:00:00Z"
+        lesson.end = "2032-03-24T10:00:00Z"
+        lesson.details?["recurrenceRules"] = .array([.object(["frequency": .number(0), "interval": .number(2), "occurrenceCount": .number(5)])])
+        let dates = AppLocalRecurrence.occurrences(of: lesson, from: lesson.startDate,
+            to: lesson.startDate.addingTimeInterval(10 * 86400))
+        func detach(_ event: DeviceCalendarEvent, index: Int, offset: Double) throws -> [DeviceCalendarEvent] {
+            let start = dates[index].startDate
+            let move = try AppLocalRecurrence.reschedule(event, occurrence: start,
+                interval: DateInterval(start: start.addingTimeInterval(offset), duration: 3600), allDay: false, span: .thisEvent)
+            return [move.retained!, move.moved]
+        }
+        let first = try detach(lesson, index: 2, offset: 3600)
+        var imported = lesson
+        imported.id = DeviceCalendarReplica.accountEventID(lesson.id)
+        let retry = try detach(imported, index: 2, offset: 7200)
+        assert(first[1].id == "ecd6b4bb580e50e8caa1ffbe74a2b42ee2d3dd419f52247656bf53bb46046a85")
+        assert(first[1].id == retry[1].id)
+        let other = try detach(lesson, index: 3, offset: 7200)
+        let merged = DeviceCalendarReplica.merge(base: [lesson], local: first, remote: other)
+        let shown = merged.flatMap { AppLocalRecurrence.occurrences(of: $0, from: lesson.startDate,
+            to: lesson.startDate.addingTimeInterval(10 * 86400)) }.map(\.startDate)
+        assert(shown.count == 5 && !shown.contains(dates[2].startDate) && !shown.contains(dates[3].startDate))
+        let same = try detach(lesson, index: 2, offset: 10800)
+        let sameOccurrence = DeviceCalendarReplica.merge(base: [lesson], local: first, remote: same)
+        assert(sameOccurrence.count == 2 && sameOccurrence.contains(same[1]))
         // All-day recurrence keeps local midnight through the spring DST change.
         var allDay = DeviceCalendarEvent(id: "dst", title: "All day", start: "2026-03-28T22:00:00Z", end: "2026-03-29T21:00:00Z", allDay: true)
         let daily = SharedEventRecurrenceRule(rule: EKRecurrenceRule(recurrenceWith: .daily, interval: 1, end: EKRecurrenceEnd(occurrenceCount: 2)))

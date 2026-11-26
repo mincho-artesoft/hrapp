@@ -46,6 +46,12 @@ describe('booking timeline drops', () => {
     expect(displayed()).toEqual([move.start]);
   });
 
+  it('keeps a native exclusion when its timestamp omits fractional seconds', () => {
+    const series = {...slot, rule: {frequency: 0, interval: 1}, excludedStarts: [slot.start.replace('.000Z', 'Z')]};
+    const moved = {...slot, id: 'detached', ...interval(13)};
+    expect(events({...schedule, slots: [series, moved]}, []).map(e => e.start)).toEqual([moved.start]);
+  });
+
   it('restores the saved time when the server rejects the drop', async () => {
     const api = {token: signal('test'), nativeCalendarRequest: async (_: string, method: string) => {
       if (method === 'PUT') throw new Error('Time slots overlap.');

@@ -1,6 +1,6 @@
 import { nextRevisionTimestamp } from '../util/revision';
 import { isDeepStrictEqual } from 'node:util';
-import { createHash, randomUUID } from 'node:crypto';
+import { createHash } from 'node:crypto';
 import { StoreService } from '../store/store.service';
 import { occurrenceByID, Slot, splitBookingSeries } from './booking-schedule';
 import { ApiResult, result } from '../common/api-result';
@@ -83,6 +83,24 @@ export class NativeCalendarStore {
         if (read.value) calendars.push(read.value);
       }
     }
+    // A client that lost its binding used to hash its imported local ID again.
+    // Confirm an exact copy before remembering the relationship. Keep the
+    // complete snapshot so independent edits on an older client can recover it.
+    const byID = new Map(calendars.map(calendar => [calendar.id, calendar]));
+    for (const original of calendars) {
+      if (!original.accountLocal || original.available === false) continue;
+      const copyID = createHash('sha256').update('app-local:account:' + original.id).digest('hex');
+      const copy = byID.get(copyID);
+      if (!copy?.accountLocal || copy.available === false || copy.duplicateOf ||
+          copy.title !== original.title || copy.color !== original.color || copy.sharingCalendarID !== original.sharingCalendarID ||
+          copy.allowsChanges !== original.allowsChanges || copy.events.length !== original.events.length) continue;
+      const events = new Map(original.events.map(({updatedAt, ...event}) => [event.id, event]));
+      if (!copy.events.every(({updatedAt, ...event}) => isDeepStrictEqual(event, events.get(event.id)))) continue;
+      const key = this.key(principal, copyID);
+      const current = await this.store.getJSONWithETag(key);
+      if (!current || current.value.revision !== copy.revision) continue;
+      if (await this.store.putJSONIfMatch(key, {...current.value, duplicateOf: original.id}, current.etag)) copy.duplicateOf = original.id;
+    }
     return calendars;
   }
 
@@ -91,7 +109,7 @@ export class NativeCalendarStore {
   webCalendars(calendars: any[], removed: ReadonlySet<string> = new Set()): any[] {
     const seen = new Map<string, any>();
     const birthdays: any[] = [];
-    for (const calendar of calendars.filter(c => c.available !== false)) {
+    for (const calendar of calendars.filter(c => c.available !== false && !c.duplicateOf)) {
       if (isAppleBirthdays(calendar)) {
         birthdays.push(calendar);
         continue;
@@ -139,6 +157,7 @@ export class NativeCalendarStore {
     if (stored && (body.accountLocal === true) !== (stored.value.accountLocal === true) && body.readOnly !== true) return result(403, { error: 'Calendar scope cannot be changed.' });
     if (body.readOnly === true) return result(200, { calendar: stored?.value.accountLocal && stored.value.available === false
       ? await this.readCalendar(key) : stored?.value ?? null });
+    if (stored?.value.duplicateOf && body.available === false) return result(409, {error: 'Use the original calendar.'});
     if (stored?.value.accountLocal && stored.value.available === false) {
       if (body.available === false) return result(200, {calendar: await this.readCalendar(key)});
       return result(409, {error: 'This account calendar was deleted.'});
@@ -179,6 +198,11 @@ export class NativeCalendarStore {
         ? {deletedEventIds: [...oldEvents.keys()], events: []} : {events}),
       revision: (stored?.value.revision ?? 0) + 1, updatedAt: new Date().toISOString(),
     };
+    if (stored?.value.duplicateOf && calendar.title === stored.value.title && calendar.color === stored.value.color &&
+        calendar.sharingCalendarID === stored.value.sharingCalendarID && calendar.allowsChanges === stored.value.allowsChanges &&
+        events.length === oldEvents.size && events.every(event => event.updatedAt === oldEvents.get(event.id)?.updatedAt)) {
+      return result(200, {calendar: stored.value});
+    }
     const saved = stored
       ? await this.store.putJSONIfMatch(key, calendar, stored.etag)
       : await this.store.putJSONIfAbsent(key, calendar);
@@ -244,7 +268,9 @@ export class NativeCalendarStore {
       rule:{...Object.fromEntries(Object.entries(rule).filter(([,v]) => v != null)), frequency:rule.frequency, interval:rule.interval ?? 1}}));
     if (!series.some(s => occurrenceByID([s],id))) return;
     const stamp = nextRevisionTimestamp(previous.updatedAt);
-    const moved = {...previous, id:createHash('sha256').update(randomUUID()).digest('hex'), start, end, allDay:move.allDay,
+    const seriesID = /^[0-9a-f]{64}$/i.test(previous.id) ? previous.id : createHash('sha256').update(previous.id).digest('hex');
+    const occurrenceID = createHash('sha256').update('occurrence:' + seriesID + ':' + Date.parse(original)).digest('hex');
+    const moved = {...previous, id:occurrenceID, start, end, allDay:move.allDay,
       updatedAt:stamp, details:{...previous.details,recurrenceRules:[]}};
     delete moved.placementId;
     delete moved.details.excludedStarts;
@@ -276,6 +302,7 @@ export class NativeCalendarStore {
       const stored = await this.store.getJSONWithETag(key);
       if (!stored) return result(404, { error: 'Calendar not found.' });
       const calendar = stored.value;
+      if (calendar.duplicateOf) return result(409, {error: 'Refresh to edit the original calendar.'});
       if (accountLocalOnly && !calendar.accountLocal) return result(403, {error: 'Choose an account calendar.'});
       const previous = calendar.events.find((event: any) => event.id === eventID);
       if (!calendar.allowsChanges || calendar.available === false || previous?.readOnly) return result(403, { error: 'This calendar or event is read-only.' });
@@ -287,6 +314,9 @@ export class NativeCalendarStore {
         let changed: any[];
         try { changed = this.planOccurrenceMove(previous,body.occurrenceMove); } catch { /* Unsupported or stale recurrence. */ }
         if (!changed) return result(409,{error:'This occurrence changed. Refresh before editing.'});
+        if (changed.some(item => item.id !== eventID && calendar.events.some(e => e.id === item.id))) {
+          return result(409,{error:'This occurrence was already moved. Refresh before editing.'});
+        }
         if (calendar.events.length + changed.length - 1 > 10000) return result(400,{error:'This calendar has reached the event limit.'});
         const next = {...calendar, revision:calendar.revision+1, updatedAt:new Date().toISOString(),
           events:[...calendar.events.filter((e:any) => e.id !== eventID), ...changed]};

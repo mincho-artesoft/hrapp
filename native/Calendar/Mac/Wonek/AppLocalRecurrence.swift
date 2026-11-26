@@ -39,7 +39,7 @@ enum AppLocalRecurrence {
     /// Keeps generated occurrences out of storage. The original date identifies the
     /// exception, even when the dragged event is a clipped slice of a multi-day event.
     static func reschedule(_ series: DeviceCalendarEvent, occurrence: Date, interval: DateInterval,
-                           allDay: Bool, span: EKSpan, newID: String) throws -> (retained: DeviceCalendarEvent?, moved: DeviceCalendarEvent) {
+                           allDay: Bool, span: EKSpan) throws -> (retained: DeviceCalendarEvent?, moved: DeviceCalendarEvent) {
         let rules = series.macRecurrenceRules
         guard !rules.isEmpty, occurrences(of: series, from: occurrence, to: occurrence.addingTimeInterval(1))
                 .contains(where: { $0.startDate == occurrence }) else {
@@ -49,7 +49,9 @@ enum AppLocalRecurrence {
         moved.start = DeviceCalendarEvent.iso(interval.start)
         moved.end = DeviceCalendarEvent.iso(interval.end)
         moved.allDay = allDay
-        moved.id = newID
+        let wireID = DeviceCalendarReplica.accountEventID(series.id)
+        let milliseconds = Int64((occurrence.timeIntervalSince1970 * 1000).rounded())
+        moved.id = DeviceCalendarReplica.hash("occurrence:\(wireID):\(milliseconds)")
         moved.updatedAt = nil
         if span == .thisEvent {
             retained.localExcludedStarts.insert(occurrence)
@@ -191,19 +193,5 @@ enum AppLocalRecurrence {
         if rule.frequency == 3, (rule.monthsOfTheYear ?? []).isEmpty, !hasDaySelection,
            month != original.month { return false }
         return true
-    }
-}
-
-
-extension DeviceCalendarEvent {
-    var localExcludedStarts: Set<Date> {
-        get {
-            let strings: [String] = decodedDetail("excludedStarts") ?? []
-            return Set(strings.compactMap(Self.date))
-        }
-        set {
-            if newValue.isEmpty { details?.removeValue(forKey: "excludedStarts") }
-            else { details?["excludedStarts"] = .array(newValue.sorted().map { .string(Self.iso($0)) }) }
-        }
     }
 }

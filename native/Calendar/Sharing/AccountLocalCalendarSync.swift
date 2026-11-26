@@ -42,7 +42,13 @@ enum AccountLocalCalendarSync {
         let active = CalendarFeedSession.existing.flatMap { session in
             session.ownerId ?? UserDefaults.standard.string(forKey: namespace + "session." + session.calendarId)
         }
-        return { id in owners[id].map { $0 == active } ?? true }
+        let copies = active.map { Set(UserDefaults.standard.stringArray(forKey: namespace + "copies." + $0) ?? []) } ?? []
+        return { id in !copies.contains(id) && (owners[id].map { $0 == active } ?? true) }
+    }
+
+    static let importedPrefix = "app-local:account:"
+    static func accountCalendarID(for localID: String) -> String {
+        localID.hasPrefix(importedPrefix) ? String(localID.dropFirst(importedPrefix.count)) : DeviceCalendarReplica.hash(localID)
     }
 
     static func sync(storage: any AccountLocalCalendarStorage) async throws {
@@ -76,16 +82,48 @@ enum AccountLocalCalendarSync {
             UserDefaults.standard.set(owners, forKey: namespace + "owners")
         }
         let local = try storage.accountLocalDocuments(matching: nil)
-        let oldBindingCount = bindings.count
+        let documents = Dictionary(uniqueKeysWithValues: inventory.calendars.map { ($0.id, $0) })
+        var bindingsChanged = false
         for document in local where owners[document.id] == nil || owners[document.id] == inventory.ownerID {
+            let id = accountCalendarID(for: document.id)
+            if document.id.hasPrefix(importedPrefix) {
+                guard documents[id] != nil else { continue }
+                // Repair a binding created by hashing the imported local ID.
+                let oldID = DeviceCalendarReplica.hash(document.id)
+                if bindings[oldID]?.localID == document.id {
+                    bindings.removeValue(forKey: oldID)
+                    bindingsChanged = true
+                }
+            }
             if bindings.values.contains(where: { $0.localID == document.id }) { continue }
-            let id = DeviceCalendarReplica.hash(document.id)
+            guard bindings[id] == nil else { continue }
             bindings[id] = .init(localID: document.id, baseline: nil)
             owners[document.id] = inventory.ownerID
+            bindingsChanged = true
         }
-        if oldBindingCount != bindings.count { try save() }
+        if bindingsChanged { try save() }
+        // Keep verified legacy copies on disk. If an offline edit is pending,
+        // publish it through its existing binding before hiding anything.
+        var hiddenCopies = Set<String>()
+        var idleCopies = Set<String>()
+        let localByID = Dictionary(uniqueKeysWithValues: local.map { ($0.id, $0) })
+        for copy in inventory.calendars where copy.duplicateOf != nil {
+            guard let binding = bindings[copy.id] else { continue }
+            if let current = localByID[binding.localID] {
+                let baseline = binding.baseline ?? copy
+                guard current.title == baseline.title, current.color == baseline.color,
+                      current.sharingCalendarID == baseline.sharingCalendarID,
+                      try canonical(current, id: copy.id).events == canonical(baseline, id: copy.id).events else { continue }
+                hiddenCopies.insert(current.id)
+            }
+            idleCopies.insert(copy.id)
+        }
+        let copiesKey = namespace + "copies." + inventory.ownerID
+        if hiddenCopies != Set(UserDefaults.standard.stringArray(forKey: copiesKey) ?? []) {
+            UserDefaults.standard.set(hiddenCopies.sorted(), forKey: copiesKey)
+        }
         var firstFailure: Error?
-        for document in inventory.calendars where bindings[document.id] == nil && document.available {
+        for document in inventory.calendars where bindings[document.id] == nil && document.available && document.duplicateOf == nil {
             do {
                 let id = try storage.applyAccountLocalDocument(document, localID: nil)
                 bindings[document.id] = .init(localID: id, baseline: document)
@@ -97,7 +135,7 @@ enum AccountLocalCalendarSync {
         }
         func reconcile(id: String, originalBinding: Binding) async throws {
             var binding = originalBinding
-            var remote = inventory.calendars.first { $0.id == id }
+            var remote = documents[id]
             for attempt in 0..<3 {
                 let before = try storage.accountLocalDocuments(matching: binding.localID).first
                 if let remote, !remote.available {
@@ -166,7 +204,7 @@ enum AccountLocalCalendarSync {
                 break
             }
         }
-        for (id, binding) in bindings {
+        for (id, binding) in bindings where !idleCopies.contains(id) {
             try verify(session)
             try Task.checkCancellation()
             do { try await reconcile(id: id, originalBinding: binding) }
@@ -183,7 +221,7 @@ enum AccountLocalCalendarSync {
         result.location = result.location?.isEmpty == true ? nil : result.location
         result.url = result.url?.isEmpty == true ? nil : result.url
         result.readOnly = result.readOnly == true ? true : nil
-        if !(result.id.count == 64 && result.id.allSatisfy(\.isHexDigit)) { result.id = DeviceCalendarReplica.hash(result.id) }
+        result.id = DeviceCalendarReplica.accountEventID(result.id)
         return result
     }
     private static func canonical(_ document: DeviceCalendarDocument, id: String) throws -> DeviceCalendarDocument {

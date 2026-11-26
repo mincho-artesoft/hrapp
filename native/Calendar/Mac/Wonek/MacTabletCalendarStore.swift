@@ -148,7 +148,7 @@ final class MacTabletCalendarStore: ObservableObject {
         }
         let localEvents = local.store.events(from: start, to: end,
             selectedCalendarIDs: Set(local.store.calendars.map(\.id)))
-        events = (nativeEvents + localEvents.compactMap(local.event)).sorted {
+        events = (nativeEvents + localEvents.map { local.event($0.1, in: $0.0) }).sorted {
             if $0.startDate == $1.startDate {
                 return $0.title.localizedStandardCompare($1.title) == .orderedAscending
             }
@@ -330,9 +330,11 @@ final class MacTabletCalendarStore: ObservableObject {
         if let source = local.record(for: event.calendar), let series = local.record(for: event),
            CalendarEditorProvider(id: source.id, source: source.source) == nil, !series.macRecurrenceRules.isEmpty {
             let plan = try AppLocalRecurrence.reschedule(series, occurrence: event.startDate, interval: interval,
-                allDay: isAllDay, span: span, newID: DeviceCalendarReplica.hash(UUID().uuidString))
+                allDay: isAllDay, span: span)
             var documents = local.store.calendars
             guard let index = documents.firstIndex(where: { $0.id == source.id }) else { throw MacTabletCalendarError.noWritableCalendar }
+            if let target = local.record(for: destination), plan.moved.id != series.id,
+               target.events.contains(where: { $0.id == plan.moved.id }) { throw MacTabletCalendarError.staleEvent }
             documents[index].events.removeAll { $0.id == series.id }
             if let retained = plan.retained { documents[index].events.append(retained) }
             if let target = local.record(for: destination), let i = documents.firstIndex(where: { $0.id == target.id }) {
@@ -499,11 +501,14 @@ final class MacTabletCalendarStore: ObservableObject {
 
 enum MacTabletCalendarError: LocalizedError {
     case noWritableCalendar
+    case staleEvent
     case readOnlyEvent
     case missingAccount(String)
 
     var errorDescription: String? {
         switch self {
+        case .staleEvent:
+            NSLocalizedString("This calendar changed. Refresh and try again.", comment: "")
         case .noWritableCalendar:
             NSLocalizedString("There is no writable calendar available.", comment: "")
         case .readOnlyEvent:

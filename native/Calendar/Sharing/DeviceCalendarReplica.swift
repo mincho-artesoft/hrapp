@@ -44,6 +44,16 @@ struct DeviceCalendarEvent: Codable, Equatable, Identifiable, Sendable {
     var readOnly: Bool?
     var updatedAt: String?
     var status: String?
+    var localExcludedStarts: Set<Date> {
+        get {
+            guard case .array(let dates) = details?["excludedStarts"] else { return [] }
+            return Set(dates.compactMap { $0.string.flatMap(Self.date) })
+        }
+        set {
+            if newValue.isEmpty { details?.removeValue(forKey: "excludedStarts") }
+            else { details?["excludedStarts"] = .array(newValue.sorted().map { .string(Self.iso($0)) }) }
+        }
+    }
     var content: Self { var copy = self; copy.updatedAt = nil; return copy }
     var startDate: Date { Self.date(start) ?? .distantPast }
     var endDate: Date { Self.date(end) ?? .distantPast }
@@ -101,6 +111,7 @@ struct DeviceCalendarDocument: Codable, Equatable, Identifiable {
     var revision: Int = 0
     var sharing: DeviceCalendarSharing? = nil
     var accountLocal: Bool? = nil
+    var duplicateOf: String? = nil
     var sharingCalendarID: String? = nil
     // Stable provider identity across device-specific replicas; never derived from a title.
     var providerMirrorID: String? = nil
@@ -131,6 +142,9 @@ final class DeviceCalendarReplica {
             hex.append(hexDigits[Int(byte & 15)])
         }
         return String(decoding: hex, as: UTF8.self)
+    }
+    nonisolated static func accountEventID(_ id: String) -> String {
+        id.count == 64 && id.allSatisfy(\.isHexDigit) ? id : hash(id)
     }
     static var deviceID: String {
         if let saved = UserDefaults.standard.string(forKey: "calendarReplica.deviceID") { return saved }
@@ -178,8 +192,9 @@ final class DeviceCalendarReplica {
         let r = Dictionary(remote.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
         return Set(b.keys).union(l.keys).union(r.keys).compactMap { id in
             if r[id]?.content == b[id]?.content { return l[id] }
-            guard let original = b[id], let edited = l[id], var merged = r[id],
-                  edited.content != original.content, merged.readOnly != true else { return r[id] }
+            guard let original = b[id], let edited = l[id], let received = r[id],
+                  edited.content != original.content, received.readOnly != true else { return r[id] }
+            var merged = received
             // Concurrent edits to independent fields coexist. The remote revision
             // wins a conflict on the same field, including the time range as a unit.
             if merged.status == original.status { merged.status = edited.status }
@@ -199,6 +214,21 @@ final class DeviceCalendarReplica {
             for key in Set(oldDetails.keys).union(localDetails.keys) where key != "structuredLocation"
                 && nextDetails[key] == oldDetails[key] && localDetails[key] != oldDetails[key] {
                 nextDetails[key] = localDetails[key]
+            }
+            // Each detached occurrence excludes its old start. Concurrent moves
+            // of different occurrences must keep both exclusions. Only combine
+            // them on the same schedule; a split reanchors the future series.
+            if edited.startDate == original.startDate, merged.startDate == original.startDate,
+               localDetails["recurrenceRules"] == oldDetails["recurrenceRules"],
+               nextDetails["recurrenceRules"] == oldDetails["recurrenceRules"],
+               edited.details?["excludedStarts"] != original.details?["excludedStarts"],
+               received.details?["excludedStarts"] != original.details?["excludedStarts"] {
+                let baseDates = original.localExcludedStarts
+                let localDates = edited.localExcludedStarts
+                let remoteDates = received.localExcludedStarts
+                let dates = localDates.intersection(remoteDates)
+                    .union(localDates.subtracting(baseDates)).union(remoteDates.subtracting(baseDates))
+                nextDetails["excludedStarts"] = dates.isEmpty ? nil : .array(dates.sorted().map { .string(DeviceCalendarEvent.iso($0)) })
             }
             if !nextDetails.isEmpty || merged.details != nil || edited.details != nil { merged.details = nextDetails }
             return merged
