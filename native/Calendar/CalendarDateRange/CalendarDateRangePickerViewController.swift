@@ -171,6 +171,10 @@ public class CalendarDateRangePickerViewController: UIViewController {
         rightStack.isLayoutMarginsRelativeArrangement = true
 
         let rightBarButtonItem = UIBarButtonItem(customView: rightStack)
+        if #available(iOS 26.0, *) {
+            labelItem.hidesSharedBackground = true
+            rightBarButtonItem.hidesSharedBackground = true
+        }
         if usesRightToLeftLayout {
             navigationItem.rightBarButtonItem = labelItem
             navigationItem.leftBarButtonItem = rightBarButtonItem
