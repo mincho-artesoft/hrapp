@@ -264,10 +264,16 @@ private struct BookingPinnedTimeline: UIViewRepresentable {
         view.onEventEdit = { descriptor in if let part = descriptor as? EKMultiDayWrapper { edit(part.realEvent) } }
         view.onEventTap = view.onEventEdit
         view.onEventDragEnded = { descriptor, _, allDay in
-            if !allDay, let part = descriptor as? EKMultiDayWrapper { move(part.realEvent, part.dateInterval) }
+            if !allDay, let part = descriptor as? EKMultiDayWrapper {
+                context.coordinator.range = nil
+                move(part.realEvent, part.dateInterval)
+            }
         }
         view.onEventDragResizeEnded = { descriptor, _ in
-            if let part = descriptor as? EKMultiDayWrapper { move(part.realEvent, part.dateInterval) }
+            if let part = descriptor as? EKMultiDayWrapper {
+                context.coordinator.range = nil
+                move(part.realEvent, part.dateInterval)
+            }
         }
         view.onEmptyLongPress = { interval, _ in create(interval) }
         view.scopedTitle = title

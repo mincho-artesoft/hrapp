@@ -147,3 +147,67 @@ export function nextOccurrenceStart(slot: Slot, from: number): number | undefine
     candidate = schedule.after(candidate);
   }
 }
+
+// Split at a real occurrence in the series time zone. Existing exceptions must
+// follow their occurrence even when a monthly rule skips different months.
+export function splitBookingSeries(series: Slot, pivot: string, start: string, end: string, futureID: string) {
+  const zone = series.timeZone, first = Date.parse(series.start), cut = Date.parse(pivot);
+  const oldWall = wall(cut, zone), newWall = wall(Date.parse(start), zone), delta = newWall - oldWall;
+  const shift = (time: number) => instant(wall(time, zone) + delta, zone);
+  const originalRule = recurrence(series, first);
+  const rule = {...series.rule};
+  if (rule.occurrenceCount && cut > first) {
+    const consumed = originalRule.between(new Date(wall(first, zone)), new Date(oldWall - 1), true).length;
+    rule.occurrenceCount -= consumed;
+  }
+  if (rule.endDate) {
+    const until = Date.parse(rule.endDate), moved = shift(until);
+    rule.endDate = new Date(Number.isFinite(moved) ? moved : until + Date.parse(start) - cut).toISOString();
+  }
+  const dayShift = Math.floor(newWall / day) - Math.floor(oldWall / day);
+  if (rule.frequency <= 1 && dayShift && rule.daysOfTheWeek) {
+    rule.daysOfTheWeek = rule.daysOfTheWeek.map(d => ({...d, weekday: ((d.weekday - 1 + dayShift) % 7 + 7) % 7 + 1}));
+  }
+
+  const future: Slot = {...series, id:futureID, start, end, rule, excludedStarts:[]};
+  if (rule.occurrenceCount) {
+    // DTSTART is always a displayed slot, even when a custom RRULE excludes its weekday.
+    const oldIncludesPivot = originalRule.after(new Date(oldWall), true)?.getTime() === oldWall;
+    const newIncludesSeed = recurrence(future, Date.parse(start)).after(new Date(newWall), true)?.getTime() === newWall;
+    rule.occurrenceCount += Number(newIncludesSeed) - Number(oldIncludesPivot);
+    if (!rule.occurrenceCount) delete future.rule;
+  }
+  const past: Slot | undefined = cut === first ? undefined : {...series,
+    rule:{...series.rule, occurrenceCount:undefined, endDate:new Date(cut - 1).toISOString()},
+    excludedStarts:series.excludedStarts?.filter(s => s < pivot)};
+  const raw = {...future, excludedStarts:[]};
+  function corresponding(time: string): Occurrence | undefined {
+    if (time === pivot) return slotOccurrence(raw, raw.id, start, end);
+    if (!raw.rule) return;
+    const timeMs = Date.parse(time), guess = shift(timeMs);
+    // A time-only change normally keeps the same dates. Reanchoring on a different
+    // day can change which months are skipped, so map those exceptions by position.
+    if (dayShift === 0 && Number.isFinite(guess)) {
+      const direct = occurrenceByID([raw], raw.id + '@' + guess);
+      if (direct) return direct;
+    }
+    const index = originalRule.between(new Date(oldWall + 1), new Date(wall(timeMs, zone)), true).length;
+    if (!index) return;
+    const nextRule = recurrence(raw, Date.parse(start));
+    let following = 0, target: Date | undefined;
+    nextRule.all(date => {
+      if (date.getTime() > newWall && ++following === index) { target = date; return false; }
+      return true;
+    });
+    if (!target) return;
+    const t = instant(target.getTime(), zone);
+    if (Number.isFinite(t)) return slotOccurrence(raw, raw.id + '@' + t, new Date(t).toISOString(),
+      new Date(t + Date.parse(end) - Date.parse(start)).toISOString());
+  }
+  for (const exception of series.excludedStarts ?? []) {
+    if (exception < pivot) continue;
+    const moved = corresponding(exception);
+    if (moved) future.excludedStarts.push(moved.start);
+  }
+  return {past, future, corresponding};
+}

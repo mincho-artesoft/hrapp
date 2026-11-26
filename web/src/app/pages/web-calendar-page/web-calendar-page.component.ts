@@ -2,7 +2,7 @@ import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
 import { bookingTimelineEvents } from '../../core/booking-timeline';
-import { BookingWorkspace } from '../../core/booking-workspace';
+import { BookingTimelineMove, BookingWorkspace } from '../../core/booking-workspace';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
 import { calendarDateFormatter, calendarHourCycle, calendarWeekStart } from "../../core/calendar-format-preferences";
@@ -295,6 +295,7 @@ export class WebCalendarPageComponent
   ];
   readonly bookingPanel = viewChild(BookingsComponent);
   private readonly bookingStore = inject(BookingWorkspace);
+  readonly recurringBookingMove = signal<{move: BookingTimelineMove; x: number; y: number} | null>(null);
   readonly bookingChanges = this.bookingStore.pendingChanges;
   private readonly queryParams = toSignal(this.route.queryParamMap);
   readonly bookingCalendar = computed(() => {
@@ -1057,6 +1058,7 @@ export class WebCalendarPageComponent
     this.modePicker.set(false);
   }
   @HostListener("document:keydown.escape") closeOverlays() {
+    if (this.recurringBookingMove()) { this.recurringBookingMove.set(null); return; }
     if (this.rangeOpen()) { this.rangeOpen.set(false); return; }
     if (this.bookingPanel()?.dialog().nativeElement.open) return;
     if (this.bookingCalendar()) { this.closeBookingTimeline(); return; }
@@ -1086,6 +1088,7 @@ export class WebCalendarPageComponent
     });
     effect(onCleanup => {
       const id = this.bookingCalendarID();
+      this.recurringBookingMove.set(null);
       if (!id || !this.isBrowser) return;
       const timer = setTimeout(() => this.scrollToWorkingHours(), 0);
       onCleanup(() => clearTimeout(timer));
@@ -2344,15 +2347,27 @@ export class WebCalendarPageComponent
         const request = schedule.requests.find(r => 'request-' + r.id === event.id);
         const slotId = request?.slotId ?? (event.id.startsWith('slot-') ? event.id.slice(5) : undefined);
         if (!slotId || event.readOnly || state.bookingRevision === undefined) return;
-        try {
-          await this.bookingStore.moveOccurrence({calendarId: schedule.id, revision: state.bookingRevision,
-            slotId, requestId: request?.id, start: new Date(start).toISOString(), end: new Date(end).toISOString()});
-          if (request && this.bookingCalendarID() === schedule.id) this.showToast(this.localization.text('Awaiting guest response'));
-        } catch(e) { this.showToast((e as Error).message); }
+        const move = {calendarId: schedule.id, revision: state.bookingRevision, slotId, requestId: request?.id,
+          start: new Date(start).toISOString(), end: new Date(end).toISOString()};
+        if (schedule.slots.find(slot => slot.id === slotId.split('@')[0])?.rule) {
+          this.recurringBookingMove.set({move, x: ev.clientX, y: ev.clientY});
+        } else {
+          await this.commitBookingMove(move, false);
+        }
       } else {
         await this.commitDraggedEventChange(event,new Date(start).toISOString(),new Date(end).toISOString(),allDay);
       }
     } else this.createTimelineEvent(state.preview, state.previewDayIdx);
+  }
+
+  async commitBookingMove(move: BookingTimelineMove, future: boolean) {
+    this.recurringBookingMove.set(null);
+    if (this.bookingCalendarID() !== move.calendarId) return;
+    try {
+      if (future) await this.bookingStore.moveFuture(move);
+      else await this.bookingStore.moveOccurrence(move);
+      if (move.requestId && this.bookingCalendarID() === move.calendarId) this.showToast(this.localization.text('Awaiting guest response'));
+    } catch (e) { this.showToast((e as Error).message); }
   }
 
   doubleClickSlot(ev: MouseEvent, index: number, allDay = false): void {

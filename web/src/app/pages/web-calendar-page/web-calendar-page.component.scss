@@ -1851,6 +1851,12 @@
   right: auto;
   min-width: 240px;
 }
+.recurring-booking-menu {
+  max-width: min(320px, calc(100vw - 24px));
+  color: var(--cal-text);
+  strong, p { display: block; margin: 6px 10px; }
+  p { color: var(--cal-muted); font-size: 0.875rem; }
+}
 .period-heading {
   display: flex;
   align-items: center;

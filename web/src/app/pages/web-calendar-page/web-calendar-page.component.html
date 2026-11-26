@@ -1052,6 +1052,18 @@
       </div>
     }
 
+    @if (recurringBookingMove(); as choice) {
+      <dialog class="native-context recurring-booking-menu" role="menu" [ccAnchoredMenu]="choice"
+        [attr.aria-label]="'Recurring Event' | nativeText" aria-describedby="booking-scope-description"
+        (dismissMenu)="recurringBookingMove.set(null)">
+        <strong>{{ 'Recurring Event' | nativeText }}</strong>
+        <p id="booking-scope-description">{{ 'This event is part of a series. Update which events?' | nativeText }}</p>
+        <button type="button" role="menuitem" (click)="commitBookingMove(choice.move, false)">{{ 'This Event Only' | nativeText }}</button>
+        <button type="button" role="menuitem" (click)="commitBookingMove(choice.move, true)">{{ 'All Future Events' | nativeText }}</button>
+        <button type="button" role="menuitem" (click)="recurringBookingMove.set(null)">{{ 'Cancel' | nativeText }}</button>
+      </dialog>
+    }
+
     <!-- Timed-event edit menu on touch layouts, secondary-click menu on desktop. -->
     @if (eventContext(); as context) {
       @let compact = !isDesktop();

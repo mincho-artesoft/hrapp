@@ -245,6 +245,20 @@ private final class BookingStore: ObservableObject {
         }
     }
 
+    func moveFuture(_ change: BookingTimelineMove, session: CloudCalendarsAPI.Session) async throws {
+        let id = change.calendarID
+        try await freeWrites[id]?.value
+        guard belongs(to: session) else { throw CancellationError() }
+        let updated: HostedBookingCalendar = try await CloudCalendarsAPI.bookingRequest("/" + id + "/future-occurrences/" + change.entry.slotID,
+            method: "PUT", body: ["revision": change.revision, "start": DeviceCalendarEvent.iso(change.interval.start),
+                "end": DeviceCalendarEvent.iso(change.interval.end), "freeOnly": change.entry.requestID == nil], session: session)
+        guard belongs(to: session) else { return }
+        if let i = confirmed.calendars.firstIndex(where: { $0.id == id && $0.revision <= updated.revision }) {
+            confirmed.calendars[i] = updated
+        }
+        await refresh()
+    }
+
     private func moveFreeSlot(_ entry: BookingTimelineEntry, to interval: DateInterval, in calendar: HostedBookingCalendar,
                               session: CloudCalendarsAPI.Session, onFailure: @escaping (String) -> Void) {
         let baseID = entry.slotID.components(separatedBy: "@")[0]
@@ -367,6 +381,7 @@ private struct SignedInBookingsContent: View {
     let addAction: Int
     let session: CloudCalendarsAPI.Session
     @ObservedObject private var store = BookingStore.shared
+    @State private var recurringMove: BookingTimelineMove?
     @Binding var timelineID: String?
     @State private var editing: HostedBookingCalendar?
     @State private var slotTarget: BookingSlotTarget?
@@ -386,9 +401,21 @@ private struct SignedInBookingsContent: View {
                         structuredLocation: source == nil ? base?.structuredLocation : source?.structuredLocation, timeZone: base?.timeZone)
                     slotTarget = .init(calendar: schedule, slot: slot, occurrence: true, reservation: request)
                 }, onMove: { entry, interval in
-                    store.move(entry, to: interval, in: schedule, session: session) { failure = $0 }
+                    let baseID = entry.slotID.components(separatedBy: "@")[0]
+                    if schedule.slots.first(where: { $0.id == baseID })?.rule != nil {
+                        recurringMove = .init(calendarID: schedule.id, revision: schedule.revision, entry: entry, interval: interval)
+                    } else {
+                        store.move(entry, to: interval, in: schedule, session: session) { failure = $0 }
+                    }
                 }, onCreate: { interval in slotTarget = .init(calendar: schedule, initialInterval: interval) })
                     .id(schedule.id)
+                    .confirmationDialog("Recurring Event", isPresented: Binding(
+                        get: { recurringMove != nil }, set: { if !$0 { recurringMove = nil } }),
+                        titleVisibility: .visible, presenting: recurringMove) { change in
+                        Button("This Event Only") { apply(change, future: false) }
+                        Button("All Future Events") { apply(change, future: true) }
+                        Button("Cancel", role: .cancel) { recurringMove = nil }
+                    } message: { _ in Text("This event is part of a series. Update which events?") }
             } else {
                 bookingList
             }
@@ -396,6 +423,7 @@ private struct SignedInBookingsContent: View {
         .onChange(of: store.data.calendars.map(\.id)) { _, ids in
             if let timelineID, !ids.contains(timelineID) { self.timelineID = nil }
         }
+        .onChange(of: timelineID) { recurringMove = nil }
         .onChange(of: mode) { timelineID = nil }
         .onChange(of: addAction) { add() }
         .appSheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
@@ -404,6 +432,27 @@ private struct SignedInBookingsContent: View {
         .alert("Bookings", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
             Button("OK") { failure = nil }
         } message: { Text(verbatim: failure ?? "") }
+    }
+
+    private func apply(_ change: BookingTimelineMove, future: Bool) {
+        recurringMove = nil
+        guard timelineID == change.calendarID, store.belongs(to: session) else { return }
+        guard let schedule = store.data.calendars.first(where: { $0.id == change.calendarID && $0.revision == change.revision }) else {
+            failure = NSLocalizedString("This calendar changed. Refresh and try again.", comment: "")
+            return
+        }
+        if future {
+            Task {
+                do { try await store.moveFuture(change, session: session) }
+                catch {
+                    guard store.belongs(to: session) else { return }
+                    failure = error.localizedDescription
+                    await store.refresh()
+                }
+            }
+        } else {
+            store.move(change.entry, to: change.interval, in: schedule, session: session) { failure = $0 }
+        }
     }
 
     private var bookingList: some View {

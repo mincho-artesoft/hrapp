@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { EmailService } from '../email/email.service';
 import { StoreService } from '../store/store.service';
 
-import { bookingPlace, day, occurrenceByID, occurrences, overlaps, scheduleFields, nextOccurrenceStart, Occurrence, Slot } from './booking-schedule';
+import { bookingPlace, day, occurrenceByID, occurrences, overlaps, scheduleFields, splitBookingSeries, nextOccurrenceStart, Occurrence, Slot } from './booking-schedule';
 type Decision = 'pending' | 'accepted' | 'declined';
 type Booking = Slot & { proposal?: Occurrence; answeredProposal?: {id:string; decision:Decision};slotId: string; guestId: string; guestName: string; decision: Decision};
 type BookCalendar = {
@@ -35,6 +35,16 @@ function heldTimes(requests: Booking[]) {
   return requests.filter(r => r.decision !== 'declined').flatMap(r => r.proposal ? [r, r.proposal] : [r]);
 }
 
+function hostCalendar(c: BookCalendar, now: number) {
+  return {id:c.id, title:c.title, ...calendarDetails(c), listed:c.listed ?? true, revision:c.revision,
+    slots:c.slots, requests:c.requests.map(r => presentation(c,r,now))};
+}
+function slotOverlaps(slot: Slot, interval: Occurrence) {
+  const duration = Date.parse(slot.end) - Date.parse(slot.start);
+  const next = nextOccurrenceStart(slot, Date.parse(interval.start) - duration + 1);
+  return next !== undefined && next < Date.parse(interval.end);
+}
+
 const missing = () => fail(404, 'Booking calendar not found.');
 const conflict = () => fail(409, 'This calendar changed. Refresh and try again.');
 
@@ -55,8 +65,7 @@ export class BookingCalendarsController {
     const docs = (await Promise.all(keys.map(k => this.store.getJSON(calendarKey(k.slice(prefix.length, -5))))))
       .filter((c): c is BookCalendar => !!c);
     const calendars = docs.filter(c => c.owner === actor && !c.archived)
-      .map(c => ({id:c.id, title:c.title, ...calendarDetails(c), listed:c.listed ?? true, revision:c.revision, slots:c.slots,
-        requests:c.requests.map(r => presentation(c,r,now))})).sort((a,b) => a.title.localeCompare(b.title));
+      .map(c => hostCalendar(c,now)).sort((a,b) => a.title.localeCompare(b.title));
     const appointments = docs.flatMap(c => c.requests.filter(r => r.guestId === actor).map(r => presentation(c,r,now)))
       .sort((a,b) => a.start.localeCompare(b.start));
     return {calendars, appointments};
@@ -150,6 +159,73 @@ export class BookingCalendarsController {
     return {id, revision:doc.revision};
   }
 
+  @Put(':id/future-occurrences/:slotId')
+  async moveFuture(@Req() req: any, @Param('id') id: string, @Param('slotId') slotId: string, @Body() body: any) {
+    const key = calendarKey(id), row = await this.store.getJSONWithETag(key), c: BookCalendar = row?.value;
+    if (!c || c.archived || c.owner !== req.principal.principalId) missing();
+    if (body?.revision !== c.revision) conflict();
+    const original = occurrenceByID(c.slots, slotId), series = c.slots.find(s => s.id === slotId.split('@')[0]);
+    if (!original || !series?.rule) conflict();
+    const valid = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T.*(?:Z|[+-]\d{2}:\d{2})$/.test(v) && Number.isFinite(Date.parse(v));
+    if (!valid(body.start) || !valid(body.end) || Date.parse(body.end) <= Date.parse(body.start)) fail(400,'Invalid time slot.');
+    const start = new Date(body.start).toISOString(), end = new Date(body.end).toISOString();
+    const now = Date.now();
+    if (start === original.start && end === original.end) return hostCalendar(c,now);
+    const {past, future, corresponding} = splitBookingSeries(series,original.start,start,end,original.start === series.start ? series.id : randomUUID());
+    const slots = c.slots.filter(s => s !== series);
+    if (past) slots.push(past);
+    const changed: Booking[] = [];
+    const requests = c.requests.map(r => {
+      const held = r.proposal ?? r;
+      if (r.decision === 'declined' || r.slotId.split('@')[0] !== series.id || held.start < original.start) return r;
+      if (r.slotId === slotId && (body.freeOnly === true || r.proposal || Date.parse(r.end) <= now)) conflict();
+      const target = corresponding(held.start);
+      if (r.proposal || Date.parse(r.end) <= now || !target) {
+        // Retain a historical booking or an outstanding proposal as an independent slot.
+        const keep: Slot = {id:randomUUID(), start:held.start, end:held.end, title:held.title, ...bookingPlace(held), timeZone:series.timeZone};
+        slots.push(keep);
+        if (target) future.excludedStarts.push(target.start);
+        return {...r, slotId:keep.id};
+      }
+      if (target.start === r.start && target.end === r.end) return {...r,slotId:target.id};
+      if (Date.parse(target.start) <= now) fail(409,'Choose a future time for this booking.');
+      const updated = {...r,slotId:target.id,proposal:{...target,id:randomUUID()}};
+      changed.push(updated);
+      return updated;
+    });
+    if (slots.length >= 1000) fail(400,'Too many time slots.');
+    // Match the calendar editor's opening-window check and check every existing
+    // one-off slot and guest hold, including those beyond that window.
+    const from = Date.parse(start);
+    const window = occurrences(future, from, from + 31 * day);
+    if (window.some((o,i) => (i > 0 && overlaps(window[i-1],o)) || slots.some(s => slotOverlaps(s,o)))
+      || slots.some(s => !s.rule && slotOverlaps(future,s))) fail(409,'Time slots overlap.');
+    for (const r of requests.filter(r => r.decision !== 'declined')) {
+      const target = r.proposal ?? r;
+      const own = occurrenceByID([future],r.slotId);
+      // The future occurrence can hold this guest's proposed time. Both their
+      // original and proposed times remain protected against other bookings.
+      for (const hold of r.proposal ? [r, target] : [r]) {
+        const available = own ? {...future,excludedStarts:[...future.excludedStarts,own.start]} : future;
+        if (slotOverlaps(available,hold)) fail(409,'Time slots overlap.');
+      }
+      if (changed.includes(r) && (slots.some(s => slotOverlaps(s,target)) ||
+          heldTimes(requests.filter(other => other !== r)).some(other => overlaps(other,target)))) fail(409,'Time slots overlap.');
+    }
+    slots.push(future);
+    slots.sort((a,b) => a.start.localeCompare(b.start));
+    const updated = {...c,slots,requests,revision:c.revision + 1};
+    if (!await this.store.putJSONIfMatch(key,updated,row.etag)) conflict();
+    await Promise.all(changed.map(r => this.notifyChange(c,r,r.proposal,series.timeZone)));
+    return hostCalendar(updated,now);
+  }
+
+  private async notifyChange(c: BookCalendar, booking: Booking, proposal: Occurrence, zone?: string) {
+    const recipient = await this.store.getJSON(this.store.keys.principal(booking.guestId));
+    const email = recipient?.accountEmail ?? Object.values(recipient?.identities ?? {}).map((i:any) => i.email).find(Boolean);
+    if (email) await this.email.bookingChange(email, c.title, booking, proposal, zone);
+  }
+
   @Put(':id/occurrences/:slotId')
   async editOccurrence(@Req() req: any, @Param('id') id: string, @Param('slotId') slotId: string, @Body() body: any) {
     const key = calendarKey(id), row = await this.store.getJSONWithETag(key);
@@ -200,11 +276,7 @@ export class BookingCalendarsController {
     slots.sort((a,b) => a.start.localeCompare(b.start));
     const revision = c.revision+1;
     if (!await this.store.putJSONIfMatch(key,{...c,slots,requests,revision},row.etag)) conflict();
-    if (booking && proposal) {
-      const recipient = await this.store.getJSON(this.store.keys.principal(booking.guestId));
-      const email = recipient?.accountEmail ?? Object.values(recipient?.identities ?? {}).map((i:any) => i.email).find(Boolean);
-      if (email) await this.email.bookingChange(email, c.title, booking, proposal, series.timeZone);
-    }
+    if (booking && proposal) await this.notifyChange(c,booking,proposal,series.timeZone);
     return {id, revision};
   }
 

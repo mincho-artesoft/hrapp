@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { occurrences, splitBookingSeries, Slot } from '../src/booking/booking-schedule';
 import { BookingCalendarsController } from '../src/booking/booking-calendars.controller';
 import assert from 'node:assert/strict';
 import { CoreService } from '../src/core/core.service';
@@ -334,6 +335,54 @@ async function main() {
       assert.equal((await current()).proposal,undefined);
       assert.equal(notices.length,2);
     } finally { Date.now=now; }
+  }
+  {
+    const isolated = new MemoryStore(), sent: string[] = [];
+    await isolated.putJSON(store.keys.principal(guestPrincipal.principalId), {accountEmail:'elena@example.com'});
+    const api = new BookingCalendarsController(isolated as any, {bookingChange: async (to:string) => sent.push(to)} as any);
+    const id = randomUUID(), series = randomUUID(), request = randomUUID();
+    const time = (day:number,hour:number) => new Date(Date.UTC(2099,0,day,hour)).toISOString();
+    const bounds = (day:number,hour:number) => ({start:time(day,hour),end:time(day,hour+1)});
+    await api.save(host,id,{title:'Classes',revision:0,slots:[{id:series,...bounds(1,9),timeZone:'UTC',
+      rule:{frequency:0,interval:1,occurrenceCount:6}}]});
+    const original = (await api.availability(guest,id)).slots;
+    await api.editOccurrence(host,id,original[3].id,{revision:1,...bounds(4,15)});
+    await api.book(guest,id,request,{slotId:original[4].id});
+    await api.decide(host,id,request,{status:'accepted'});
+    const move = {revision:4,freeOnly:true,...bounds(3,12)};
+    await assert.rejects(api.moveFuture(guest,id,original[2].id,move));
+    await assert.rejects(api.moveFuture(host,id,original[4].id,move));
+    const updated = await api.moveFuture(host,id,original[2].id,move);
+    assert.equal(updated.revision,5);
+    assert.deepEqual((await api.availability(guest,id)).slots.map(s=>s.start),[time(1,9),time(2,9),time(3,12),time(4,15),time(6,12)]);
+    const changed = (await api.workspace(guest)).appointments[0];
+    assert.equal(changed.start,time(5,9));
+    assert.equal(changed.proposal.start,time(5,12));
+    assert.deepEqual(sent,['elena@example.com']);
+    await assert.rejects(api.moveFuture(host,id,original[2].id,move));
+    assert.deepEqual(sent,['elena@example.com']);
+    await api.answerChange(guest,id,request,{proposalId:changed.proposal.id,status:'declined'});
+    assert.ok((await api.availability(guest,id)).slots.some(s=>s.start===time(5,12)));
+  }
+  {
+    const days = (series: Slot) => occurrences(series,Date.UTC(2026,0,1),Date.UTC(2027,0,1)).map(s=>s.start);
+    const iso = (value: string) => new Date(value).toISOString();
+    const slot = (start: string, rule: Slot['rule']): Slot => ({id:'series', start:iso(start),
+      end:new Date(Date.parse(start)+3600000).toISOString(), timeZone:'America/New_York',rule});
+    const weekly = slot('2026-03-01T15:00Z',{frequency:1,interval:1,occurrenceCount:5,daysOfTheWeek:[{weekday:1,weekNumber:0}]});
+    const old = days(weekly);
+    const moved = splitBookingSeries({...weekly,excludedStarts:[old[3]]},old[1],iso('2026-03-09T15:00Z'),iso('2026-03-09T16:00Z'),'future');
+    assert.deepEqual(days(moved.past),[old[0]]);
+    assert.deepEqual(days(moved.future),['2026-03-09T15:00Z','2026-03-16T15:00Z','2026-03-30T15:00Z'].map(iso));
+    const monthly = slot('2026-01-31T15:00Z',{frequency:2,interval:1,occurrenceCount:4});
+    const original = days(monthly);
+    const split = splitBookingSeries({...monthly,excludedStarts:[original[2]]},original[1],iso('2026-03-30T14:00Z'),iso('2026-03-30T15:00Z'),'future');
+    assert.deepEqual(days(split.future),['2026-03-30T14:00Z','2026-05-30T14:00Z'].map(iso));
+    const limited = slot('2026-03-01T15:00Z',{frequency:1,interval:1,endDate:iso('2026-03-22T14:00Z')});
+    const later = splitBookingSeries(limited,limited.start,iso('2026-03-01T17:00Z'),iso('2026-03-01T18:00Z'),limited.id);
+    assert.equal(later.past,undefined);
+    assert.equal(days(later.future).length,days(limited).length);
+    assert.equal(days(later.future).slice(-1)[0],iso('2026-03-22T16:00Z'));
   }
   const slots = [interval(0), interval(60000)];
   const draft = {title: 'Availability', revision: 0, slots};

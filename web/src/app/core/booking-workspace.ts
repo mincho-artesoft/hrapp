@@ -109,6 +109,19 @@ export class BookingWorkspace {
       if (token === this.api.token()) void this.refresh();
     }
   }
+  async moveFuture(move: BookingTimelineMove) {
+    const token = this.api.token();
+    const path = '/' + move.calendarId + '/future-occurrences/' + encodeURIComponent(move.slotId);
+    try {
+      const updated = await this.request<BookingCalendar>(path, 'PUT', {revision: move.revision, start: move.start,
+        end: move.end, freeOnly: !move.requestId});
+      if (token !== this.api.token()) return;
+      this.confirmed.update(data => ({...data, calendars: data.calendars.map(calendar =>
+        calendar.id === updated.id && calendar.revision <= updated.revision ? updated : calendar)}));
+    } finally {
+      if (token === this.api.token()) void this.refresh();
+    }
+  }
   private async moveFreeSlot(move: BookingTimelineMove) {
     const calendar = this.data().calendars.find(c => c.id === move.calendarId);
     const [baseId, occurrenceMillis] = move.slotId.split('@');
