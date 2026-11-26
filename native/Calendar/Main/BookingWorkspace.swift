@@ -39,6 +39,7 @@ struct HostedBookingCalendar: Codable, Identifiable {
     var title = ""
     var appointmentType, customType, color: String?
     var revision = 0
+    var listed: Bool?
     var slots: [BookingInterval] = []
     var requests: [BookingAppointment] = []
 }
@@ -48,9 +49,19 @@ private struct BookingData: Codable {
 }
 private struct BookingOffer: Decodable {
     let id, title, hostName: String
+    let isOwner: Bool
     var slots: [BookingInterval]
     let appointmentType, customType, color: String?
     var nextFrom: String?
+}
+private struct BookingListing: Decodable, Identifiable {
+    let id, title, hostName, appointmentType: String
+    let customType, color: String?
+    let isOwner: Bool
+}
+private struct BookingDirectoryPage: Decodable {
+    let calendars: [BookingListing]
+    let next: String?
 }
 private struct BookingReceipt: Decodable { let id: String; var revision: Int? }
 
@@ -217,7 +228,7 @@ private struct SignedInBookingsContent: View {
         CalendarSharingForm {
             CalendarSharingSection(rows: true) {
             Button { add() } label: {
-                Label(mode == .availability ? LocalizedStringKey("Create booking calendar") : "Open booking calendar", systemImage: mode == .availability ? "calendar.badge.plus" : "link")
+                Label(mode == .availability ? LocalizedStringKey("Create booking calendar") : "Open booking calendar", systemImage: mode == .availability ? "calendar.badge.plus" : "magnifyingglass")
             }
             .calendarSharingRowAction()
             }
@@ -517,6 +528,7 @@ private struct BookingCalendarEditor: View {
     @State private var title: String
     @State private var type: String
     @State private var customType: String
+    @State private var listed: Bool
     @State private var created: HostedBookingCalendar?
     @State private var search = ""
     @State private var picker: PickerPage?
@@ -531,6 +543,7 @@ private struct BookingCalendarEditor: View {
         _type = State(initialValue: calendar.appointmentType ?? (calendar.revision == 0 ? "" : "General appointment"))
         _hex = State(initialValue: calendar.color ?? defaultBookingColor)
         _customType = State(initialValue: calendar.customType ?? "")
+        _listed = State(initialValue: calendar.listed ?? true)
     }
     var body: some View {
         if let created {
@@ -628,6 +641,7 @@ private struct BookingCalendarEditor: View {
                     }.contentShape(Rectangle())
                 }.buttonStyle(.plain)
                 if type == "Other" { TextField("Custom type (optional)", text: $customType).textFieldStyle(.plain) }
+                Toggle("Show in booking search", isOn: $listed)
             }
             CalendarSharingSection(rows: true) {
                 Button { picker = .color } label: {
@@ -656,6 +670,7 @@ private struct BookingCalendarEditor: View {
                     var body: [String: any Sendable] = ["title": title, "color": hex]
                     body["revision"] = calendar.revision
                     body["appointmentType"] = type
+                    body["listed"] = listed
                     body["customType"] = type == "Other" ? customType : ""
                     body["slots"] = calendar.slots.map(\.payload)
                     let receipt = try await store.mutate("/" + calendar.id, body: body)
@@ -664,6 +679,7 @@ private struct BookingCalendarEditor: View {
                         saved.color = hex
                         saved.title = title
                         saved.appointmentType = type
+                        saved.listed = listed
                         saved.customType = customType
                         saved.revision = receipt.revision ?? 1
                         created = saved
@@ -823,14 +839,35 @@ private struct BookingLookupSheet: View {
     @State private var offer: BookingOffer?
     @State private var busy = false
     @State private var error: String?
+    @State private var search = ""
+    @State private var category = ""
+    @State private var directory: [BookingListing] = []
+    @State private var loading = true
+    @State private var directoryError: String?
+    @State private var attempt = 0
+
+    private var matches: [BookingListing] {
+        let query = search.trimmingCharacters(in: .whitespacesAndNewlines)
+        let types = BookingTypeGroup.catalog.first { $0.title == category }?.types
+        let matchingTypes = Set(BookingTypeGroup.matching(query).flatMap(\.types))
+        return directory.filter { item in
+            (types?.contains(item.appointmentType) ?? true) &&
+                (query.isEmpty || matchingTypes.contains(item.appointmentType) ||
+                 [item.title, item.hostName, item.appointmentType, item.customType ?? ""].contains { $0.localizedStandardContains(query) })
+        }.sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
+    }
+
     var body: some View {
-        BookingSheet(title: "Open booking calendar", leading: "Close", back: { dismiss() }) {
+        BookingSheet(title: "Open booking calendar", leading: offer == nil ? "Close" : "Back", back: {
+            if offer == nil { dismiss() } else { offer = nil; error = nil }
+        }) {
             CalendarSharingForm {
                 if let offer {
                     CalendarSharingSection(rows: true) {
                         Text(verbatim: offer.title).font(.headline).bookingColorBar(offer.color)
                         Text(verbatim: bookingPurpose(offer.appointmentType, offer.customType))
                         Text(verbatim: offer.hostName)
+                        if offer.isOwner { Text("Your booking calendar").foregroundStyle(.secondary) }
                     }
                     CalendarSharingSection("Available times", rows: true) {
                         if offer.slots.isEmpty { Text("No available times.") }
@@ -843,21 +880,72 @@ private struct BookingLookupSheet: View {
                                 }
                                 .bookingColorBar(offer.color)
                                 Spacer()
-                                Button("Book") { book(offer, slot) }
+                                if !offer.isOwner { Button("Book") { book(offer, slot) } }
                             }
                         }
                         if let next = offer.nextFrom { Button("More available times") { load(id: offer.id, from: next) }.calendarSharingRowAction() }
                     }
                 } else {
                     CalendarSharingSection(rows: true) {
-                    TextField("Booking calendar link", text: $address).textFieldStyle(.plain)
-                    Button("Open") { lookup() }.calendarSharingRowAction().disabled(address.isEmpty)
+                        HStack {
+                            Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                            TextField("Search by name or category", text: $search).textFieldStyle(.plain)
+                        }
+                        Picker("Category", selection: $category) {
+                            Text("All categories").tag("")
+                            ForEach(BookingTypeGroup.catalog, id: \.title) { group in
+                                Text(LocalizedStringKey(group.title)).tag(group.title)
+                            }
+                        }.pickerStyle(.menu)
+                    }
+                    CalendarSharingSection(rows: true) {
+                        DisclosureGroup("Booking calendar link") {
+                            TextField("Booking calendar link", text: $address).textFieldStyle(.plain)
+                            Button("Open") { lookup() }.calendarSharingRowAction().disabled(address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        }
+                    }
+                    CalendarSharingSection("Booking calendars", rows: true) {
+                        let results = matches
+                        ForEach(results) { item in
+                            Button { load(id: item.id) } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(verbatim: item.title).font(.headline)
+                                        Text(verbatim: bookingPurpose(item.appointmentType, item.customType) + " · " + item.hostName)
+                                            .font(.subheadline).foregroundStyle(.secondary)
+                                    }.bookingColorBar(item.color)
+                                    Spacer()
+                                    Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
+                                }.contentShape(Rectangle())
+                            }.buttonStyle(.plain)
+                        }
+                        if loading { ProgressView() }
+                        else if let directoryError {
+                            Text(verbatim: directoryError).foregroundStyle(.red)
+                            Button("Try Again") { attempt += 1 }
+                        } else if results.isEmpty { Text("No matching calendars.").foregroundStyle(.secondary) }
                     }
                 }
                 if let error { Text(verbatim: error).foregroundStyle(.red) }
             }
         }
         .disabled(busy).interactiveDismissDisabled(busy)
+        .task(id: attempt) { await loadDirectory() }
+    }
+    private func loadDirectory() async {
+        directory = []; directoryError = nil; loading = true
+        defer { loading = false }
+        do {
+            let session = try await CalendarFeedSession.current()
+            var after: String?
+            repeat {
+                let path = "/directory" + (after.map { "?after=" + $0 } ?? "")
+                let page: BookingDirectoryPage = try await CloudCalendarsAPI.bookingRequest(path, session: session)
+                guard !Task.isCancelled, CalendarFeedSession.isCurrent(session) else { return }
+                directory.append(contentsOf: page.calendars)
+                after = page.next
+            } while after != nil
+        } catch { if !Task.isCancelled { directoryError = error.localizedDescription } }
     }
     private func lookup() {
         guard let url = URLComponents(string: address.trimmingCharacters(in: .whitespacesAndNewlines)), url.scheme == "https",
@@ -886,6 +974,7 @@ private struct BookingLookupSheet: View {
         }
     }
     private func book(_ offer: BookingOffer, _ slot: BookingInterval) {
+        guard !offer.isOwner, !busy else { return }
         busy = true
         Task {
             defer { busy = false }

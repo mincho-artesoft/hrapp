@@ -14,7 +14,7 @@ import { ChangeDetectorRef, Component, computed, ElementRef, inject, input, outp
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalendarNativeTextPipe, CalendarLocalization } from '../../core/calendar-localization';
-import { BookingWorkspace, BookingPurpose, BookingCalendar, BookingSlot, Availability, Appointment, bookingID } from '../../core/booking-workspace';
+import { BookingWorkspace, BookingPurpose, BookingCalendar, BookingListing, BookingSlot, Availability, Appointment, bookingID } from '../../core/booking-workspace';
 
 interface InputSlot extends LocationDraft {id:string; title:string; date:string; start:string; end:string; endDate:string; choice:string; rule?:CalendarRepeatRule; zone:string; original?:BookingSlot}
 const frequencies = ['daily','weekly','monthly','yearly'] as const;
@@ -56,6 +56,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
   readonly message = signal('');
   readonly busy = signal(false);
   readonly offer = signal<Availability|null>(null);
+  private readonly directory = signal<BookingListing[]>([]);
+  readonly directoryLoading = signal(false);
+  readonly directoryError = signal('');
+  readonly search = signal('');
+  readonly category = signal('');
+  private directoryVersion = 0;
+  fromDirectory = false;
+  listed = true;
   readonly status = {pending:'Pending', accepted:'Accepted', declined:'Declined', past:'Past'};
   statusLabel(appointment: Appointment) { return this.status[appointment.status]; }
 
@@ -75,6 +83,24 @@ export class BookingsComponent implements OnInit, OnDestroy {
   color = '#0A84FF';
   typeSearch = '';
   readonly catalog = catalog;
+  readonly results = computed(() => {
+    const fold = (value:string) => value.normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase();
+    const query = fold(this.search().trim());
+    const category = this.category();
+    const matchingTypes = new Set<string>();
+    const allowedTypes = this.catalog.find(group => group.title === category)?.types;
+    for (const group of this.catalog) {
+      const groupMatches = [group.title, this.locale.text(group.title)].some(value => fold(value).includes(query));
+      for (const type of group.types) {
+        if (groupMatches || [type, this.typeLabel(type)].some(value => fold(value).includes(query))) matchingTypes.add(type);
+      }
+    }
+    return this.directory().filter(item => {
+      const type = item.appointmentType || 'General appointment';
+      return (!allowedTypes || allowedTypes.includes(type)) &&
+        (!query || matchingTypes.has(type) || [item.title,item.hostName,type,item.customType ?? ''].some(value => fold(value).includes(query)));
+    }).sort((a,b) => a.title.localeCompare(b.title, this.locale.locale()));
+  });
   get filteredTypes() {
     const query=this.typeSearch.trim().toLocaleLowerCase();
     if (!query) return this.catalog;
@@ -128,7 +154,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     this.timer = setInterval(() => {if (!document.hidden) void this.store.refresh();}, 30000);
     void this.store.refresh();
   }
-  ngOnDestroy() {clearInterval(this.timer); ++this.operation;}
+  ngOnDestroy() {clearInterval(this.timer); ++this.operation; ++this.directoryVersion;}
   matches(...values:string[]) {return values.join(' ').toLocaleLowerCase().includes(this.query().trim().toLocaleLowerCase());}
   private readonly rangeDate = computed(() =>
     new Intl.DateTimeFormat(this.locale.formattingLocale(), {dateStyle: 'medium'}));
@@ -143,8 +169,29 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   add() {
     if (this.mode()==='availability') this.edit(null);
-    else {this.address='';this.offer.set(null);this.show('lookup');}
+    else {
+      this.address=''; this.offer.set(null); this.search.set(''); this.category.set('');
+      this.fromDirectory=true; this.show('lookup'); void this.loadDirectory();
+    }
   }
+  async loadDirectory() {
+    const version = ++this.directoryVersion, token = this.store.api.token();
+    this.directory.set([]); this.directoryLoading.set(true); this.directoryError.set('');
+    try {
+      let after: string|null = null;
+      do {
+        const page: {calendars:BookingListing[]; next:string|null} = await this.store.request('/directory' + (after ? '?after='+encodeURIComponent(after) : ''));
+        if (version !== this.directoryVersion || token !== this.store.api.token()) return;
+        this.directory.update(items => [...items,...page.calendars]);
+        after = page.next;
+      } while (after);
+    } catch (error) {
+      if (version === this.directoryVersion) this.directoryError.set((error as Error).message);
+    } finally {
+      if (version === this.directoryVersion) this.directoryLoading.set(false);
+    }
+  }
+  sheetClosed() { ++this.directoryVersion; this.fromDirectory=false; }
   show(panel:BookingPanel) {
     this.locationDraft=undefined;this.customRepeat=false;this.choosingType=false;this.choosingColor=false;this.dateFocus.set(null);
     this.panel.set(panel);this.message.set('');
@@ -157,6 +204,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     this.customType=calendar?.customType || '';this.choosingType=false;
     this.editing=calendar;this.draftID=calendar?.id ?? crypto.randomUUID();
     this.title=calendar?.title ?? '';
+    this.listed=calendar?.listed ?? true;
     this.color=calendar?.color ?? '#0A84FF';
     this.show('edit');
   }
@@ -193,13 +241,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   onCancel(event:Event) {
     if(this.busy()){event.preventDefault();return;}
-    if(this.choosingType || this.choosingColor || this.customRepeat || this.locationDraft){event.preventDefault();this.back();}
+    if(this.choosingType || this.choosingColor || this.customRepeat || this.locationDraft || (this.fromDirectory && this.panel()==='offer')){event.preventDefault();this.back();}
   }
   back() {
     if (this.locationDraft) { finishLocation(this.locationDraft);this.locationDraft=undefined; }
     else if (this.customRepeat) this.customRepeat=false;
     else if (this.choosingColor) this.choosingColor=false;
     else if (this.choosingType) this.choosingType=false;
+    else if (this.fromDirectory && this.panel()==='offer') this.show('lookup');
     else this.dialog().nativeElement.close();
   }
   get sheetTitle() {
@@ -228,7 +277,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
     return this.perform(async()=>{
       const old=this.editing;
       const id=this.draftID;
-      const values={title:this.title,color:this.color,appointmentType:this.type,customType:this.type==='Other'?this.customType.trim():'',
+      const values={title:this.title,color:this.color,listed:this.listed,appointmentType:this.type,customType:this.type==='Other'?this.customType.trim():'',
         slots:old?.slots ?? []};
       const receipt=await this.store.request<{revision:number}>('/'+id,'PUT',{...values,revision:old?.revision ?? 0});
       if (old) this.dialog().nativeElement.close();
@@ -297,13 +346,19 @@ export class BookingsComponent implements OnInit, OnDestroy {
       const id=url.searchParams.get('bookingCalendar');
       if (!['www.cloud-calendars.com','cloud-calendars.com'].includes(url.hostname) || url.protocol!=='https:' || !id || !bookingID.test(id))
         throw Error(this.locale.text('Enter a booking calendar link.'));
-      this.offer.set(await this.store.request<Availability>('/'+id));
-      this.show('offer');
+      await this.openOffer(id);
     });
   }
+  async openOffer(id:string) {
+    this.offer.set(await this.store.request<Availability>('/'+id));
+    this.show('offer');
+  }
+  preview(id:string) { return this.perform(() => this.openOffer(id)); }
   book(slot:BookingSlot) {
+    const calendar = this.offer();
+    if (!calendar || calendar.isOwner) return;
     return this.perform(async()=>{
-      await this.store.request('/'+this.offer()!.id+'/requests/'+crypto.randomUUID(),'PUT',{slotId:slot.id});
+      await this.store.request('/'+calendar.id+'/requests/'+crypto.randomUUID(),'PUT',{slotId:slot.id});
       this.dialog().nativeElement.close();await this.store.refresh();
     });
   }

@@ -1221,3 +1221,9 @@
 "Open Web Calendar" = "เปิดปฏิทินบนเว็บ";
 
 "Bookings" = "การจอง";
+"Search by name or category" = "ค้นหาตามชื่อหรือหมวดหมู่";
+"Category" = "หมวดหมู่";
+"All categories" = "ทุกหมวดหมู่";
+"Show in booking search" = "แสดงในการค้นหาปฏิทินการจอง";
+"Your booking calendar" = "ปฏิทินการจองของคุณ";
+"No matching calendars." = "ไม่พบปฏิทินที่ตรงกัน";

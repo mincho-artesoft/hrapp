@@ -12,8 +12,9 @@ export interface Appointment extends BookingSlot, BookingPurpose {
   slotId: string; hostName: string; guestName: string; calendarTitle: string;
   status: 'pending' | 'accepted' | 'declined' | 'past';
 }
-export interface BookingCalendar extends BookingPurpose { id: string; title: string; revision: number; slots: BookingSlot[]; requests: Appointment[] }
-export interface Availability extends BookingPurpose { nextFrom?: string; id: string; title: string; hostName: string; slots: BookingSlot[] }
+export interface BookingCalendar extends BookingPurpose { id: string; title: string; listed?: boolean; revision: number; slots: BookingSlot[]; requests: Appointment[] }
+export interface BookingListing extends BookingPurpose { id: string; title: string; hostName: string; isOwner: boolean }
+export interface Availability extends BookingListing { nextFrom?: string; slots: BookingSlot[] }
 interface Workspace { calendars: BookingCalendar[]; appointments: Appointment[] }
 export const bookingID = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 

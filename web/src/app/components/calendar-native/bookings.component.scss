@@ -147,3 +147,17 @@ dialog::backdrop { background: #0006; }
 @media (orientation: landscape) and (max-height: 500px) {
   :host-context(.ios-layout) { @include compact-sheet; }
 }
+
+.booking-link summary {
+  padding: 12px 16px;
+  color: var(--cal-blue);
+  cursor: pointer;
+}
+.type-option select {
+  margin-inline-start: auto;
+  max-width: 70%;
+  font: inherit;
+  color: var(--cal-text);
+  background: var(--cal-panel);
+}
+.type-option input[type="checkbox"] { margin-inline-start: auto; accent-color: var(--cal-blue); }

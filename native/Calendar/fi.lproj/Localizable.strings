@@ -1221,3 +1221,9 @@
 "Open Web Calendar" = "Avaa verkkokalenteri";
 
 "Bookings" = "Varaukset";
+"Search by name or category" = "Hae nimellä tai luokalla";
+"Category" = "Luokka";
+"All categories" = "Kaikki luokat";
+"Show in booking search" = "Näytä varausten haussa";
+"Your booking calendar" = "Oma varauskalenterisi";
+"No matching calendars." = "Vastaavia kalentereita ei löytynyt.";

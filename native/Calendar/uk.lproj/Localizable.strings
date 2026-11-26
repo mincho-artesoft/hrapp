@@ -1223,3 +1223,9 @@
 "Open Web Calendar" = "Відкрити вебкалендар";
 
 "Bookings" = "Бронювання";
+"Search by name or category" = "Пошук за іменем або категорією";
+"Category" = "Категорія";
+"All categories" = "Усі категорії";
+"Show in booking search" = "Показувати в пошуку календарів для запису";
+"Your booking calendar" = "Ваш календар для запису";
+"No matching calendars." = "Відповідних календарів не знайдено.";

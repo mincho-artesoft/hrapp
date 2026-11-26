@@ -13,7 +13,7 @@
 <section class="workspace">
   <div class="native-form-group">
     <button class="native-form-row action" (click)="add()">
-      <cc-symbol [pointSize]="18" [name]="mode() === 'availability' ? 'calendar.badge.plus' : 'link'" />
+      <cc-symbol [pointSize]="18" [name]="mode() === 'availability' ? 'calendar.badge.plus' : 'magnifyingglass'" />
       {{ (mode() === 'availability' ? 'Create booking calendar' : 'Open booking calendar') | nativeText }}
     </button>
   </div>
@@ -83,8 +83,8 @@
   }
   @if (message() && !sheet.open) { <p role="alert">{{ message() }}</p> }
 </section>
-<dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)">
-  @let subpage = !!locationDraft || choosingType || choosingColor || customRepeat;
+<dialog #sheet aria-labelledby="bookings-sheet-title" (cancel)="onCancel($event)" (close)="sheetClosed()">
+  @let subpage = !!locationDraft || choosingType || choosingColor || customRepeat || (fromDirectory && panel()==='offer');
   <header class="native-sheet-header">
     <button class="round-button" [class.back]="subpage" [disabled]="busy()" [attr.aria-label]="(subpage?'Back':'Close')|nativeText" (click)="back()">
       <cc-symbol [pointSize]="17" [name]="subpage?'chevron.left':'xmark'" />
@@ -127,6 +127,7 @@
         <label class="native-form-row"><input [attr.aria-label]="'Name'|nativeText" [placeholder]="'Name'|nativeText" [(ngModel)]="title" maxlength="200"></label>
         <button class="native-form-row type-option" (click)="typeSearch='';choosingType=true"><span>{{'Appointment type'|nativeText}}</span><span class="value">{{ type === 'Other' && customType.trim() ? customType : typeLabel(type || 'Choose type') }}</span><cc-symbol class="disclosure" [pointSize]="12" name="chevron.right" /></button>
         @if(type==='Other'){<label class="native-form-row"><input [attr.aria-label]="'Custom type (optional)'|nativeText" [placeholder]="'Custom type (optional)'|nativeText" maxlength="100" [(ngModel)]="customType"></label>}
+        <label class="native-form-row type-option">{{ 'Show in booking search' | nativeText }}<input type="checkbox" [(ngModel)]="listed"></label>
       </div>
       <div class="native-form-group">
         <button class="native-form-row color-choice" (click)="choosingColor=true">
@@ -162,11 +163,39 @@
       }
     }
     @case ('lookup') {
-      <form class="native-form-group" (ngSubmit)="lookup()">
-        <label class="native-form-row"><input type="url" name="address" required
-          [attr.aria-label]="'Booking calendar link' | nativeText" [placeholder]="'Booking calendar link' | nativeText" [(ngModel)]="address"></label>
-        <button class="native-form-row action" [disabled]="busy() || !address.trim()">{{ 'Open' | nativeText }}</button>
-      </form>
+      <div class="native-form-group">
+        <label class="native-form-row type-search"><cc-symbol name="magnifyingglass" [pointSize]="17" />
+          <input type="search" [attr.aria-label]="'Search by name or category' | nativeText" [placeholder]="'Search by name or category' | nativeText" [ngModel]="search()" (ngModelChange)="search.set($event)">
+        </label>
+        <label class="native-form-row type-option">{{ 'Category' | nativeText }}
+          <select [ngModel]="category()" (ngModelChange)="category.set($event)">
+            <option value="">{{ 'All categories' | nativeText }}</option>
+            @for (group of catalog; track group.title) { <option [value]="group.title">{{ group.title | nativeText }}</option> }
+          </select>
+        </label>
+      </div>
+      <details class="native-form-group booking-link">
+        <summary>{{ 'Booking calendar link' | nativeText }}</summary>
+        <form (ngSubmit)="lookup()">
+          <label class="native-form-row"><input type="url" name="address" required
+            [attr.aria-label]="'Booking calendar link' | nativeText" [placeholder]="'Booking calendar link' | nativeText" [(ngModel)]="address"></label>
+          <button class="native-form-row action" [disabled]="busy() || !address.trim()">{{ 'Open' | nativeText }}</button>
+        </form>
+      </details>
+      <h3 class="group-heading">{{ 'Booking calendars' | nativeText }}</h3>
+      <div class="native-form-group">
+        @for (item of results(); track item.id) {
+          <button type="button" class="native-form-row type-option" [style.--booking-color]="item.color" [disabled]="busy()" (click)="preview(item.id)">
+            <span class="event-color details"><strong>{{ item.title }}</strong><small>{{ purpose(item) }} · {{ item.hostName }}</small></span>
+            <cc-symbol class="disclosure" name="chevron.right" [pointSize]="12" />
+          </button>
+        }
+        @if (directoryLoading()) { <cc-calendar-progress /> }
+        @else if (directoryError()) {
+          <p class="native-form-row error" role="alert">{{ directoryError() }}</p>
+          <button class="native-form-row action" (click)="loadDirectory()">{{ 'Try Again' | nativeText }}</button>
+        } @else if (!results().length) { <p class="native-form-row empty">{{ 'No matching calendars.' | nativeText }}</p> }
+      </div>
     }
     @case ('share') {
       <div class="native-form-group">
@@ -180,6 +209,7 @@
           <div class="native-form-row"><strong class="event-color">{{ calendar.title }}</strong></div>
           <div class="native-form-row">{{ purpose(calendar) }}</div>
           <div class="native-form-row">{{ calendar.hostName }}</div>
+          @if (calendar.isOwner) { <div class="native-form-row value">{{ 'Your booking calendar' | nativeText }}</div> }
         </div>
         <h3 class="group-heading">{{ 'Available times' | nativeText }}</h3>
         <div class="native-form-group" [style.--booking-color]="calendar.color">
@@ -190,7 +220,7 @@
                 <span>{{ range(s) }}</span>
                 @if (s.location) { <small>{{ s.location }}</small> }
               </div>
-              <button class="inline-action" [disabled]="busy()" (click)="book(s)">{{ 'Book' | nativeText }}</button>
+              @if (!calendar.isOwner) { <button class="inline-action" [disabled]="busy()" (click)="book(s)">{{ 'Book' | nativeText }}</button> }
             </div>
           } @empty { <p class="native-form-row">{{ 'No available times.' | nativeText }}</p> }
           @if (calendar.nextFrom) {
