@@ -1,4 +1,4 @@
-import type { BookingCalendar } from './booking-workspace';
+import type { BookingCalendar, BookingTimelineMove } from './booking-workspace';
 import type { CalendarRepeatRule, WebCalendarEvent } from './calendar-platform-api.service';
 import { bookingStatus, BookingEventStatus, unreservedStatus } from './booking-status';
 import { calendarOccurrences } from './calendar-recurrence';
@@ -17,7 +17,7 @@ interface TimelineEntry {
 const frequencies: CalendarRepeatRule['frequency'][] = ['daily', 'weekly', 'monthly', 'yearly'];
 
 export function bookingTimelineEvents(calendar: BookingCalendar, first: Date, end: Date,
-                                     text: (label: string) => string): WebCalendarEvent[] {
+                                     text: (label: string) => string, moves: BookingTimelineMove[] = []): WebCalendarEvent[] {
   const bookings = calendar.requests.filter(request => request.status !== 'declined');
   const reservations: TimelineEntry[] = [];
   for (const request of bookings) {
@@ -49,6 +49,23 @@ export function bookingTimelineEvents(calendar: BookingCalendar, first: Date, en
         entries.push({id: 'slot-' + occurrence.id, title: event.title, location: slot.location, status: unreservedStatus(finish), start, end: finish});
       }
     }
+  }
+  for (const move of moves) {
+    if (move.calendarId !== calendar.id || move.revision !== calendar.revision) continue;
+    const request = move.requestId ? bookings.find(r => r.id === move.requestId) : undefined;
+    const source = request ?? calendar.slots.find(slot => slot.id === move.slotId.split('@')[0]);
+    if (!source) continue;
+    const originalId = request ? 'request-' + request.id : 'slot-' + move.slotId;
+    const original = entries.findIndex(entry => entry.id === originalId);
+    if (original >= 0) {
+      if (request) entries[original].readOnly = true;
+      else entries.splice(original, 1);
+    }
+    const start = new Date(move.start), finish = new Date(move.end);
+    if (start >= end || finish <= first) continue;
+    entries.push({id: request ? 'proposal-' + request.id : originalId,
+      title: [source.title, request?.guestName].filter(Boolean).join(' · '), location: source.location,
+      proposed: !!request, status: request ? 'pending' : unreservedStatus(finish), readOnly: true, start, end: finish});
   }
   return entries.map(entry => ({
     id: entry.id, calendarId: calendar.id, calendarTitle: calendar.title, color: bookingStatus[entry.status].color,

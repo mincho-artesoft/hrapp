@@ -1,6 +1,13 @@
 import SwiftUI
 import EventKit
 
+struct BookingTimelineMove: Equatable {
+    let calendarID: String
+    let revision: Int
+    let entry: BookingTimelineEntry
+    let interval: DateInterval
+}
+
 // Display occurrences only. Both the slots and the reservations belong to this host calendar.
 struct BookingTimelineEntry: Identifiable, Equatable {
     let id: String
@@ -8,13 +15,14 @@ struct BookingTimelineEntry: Identifiable, Equatable {
     var requestID: String? = nil
     var readOnly = false
     var proposed = false
+    var saving = false
     let title: String
     let status: BookingEventStatus
     let location: String?
     let start: Date
     let end: Date
 
-    static func entries(in schedule: HostedBookingCalendar, from lower: Date, to upper: Date) -> [Self] {
+    static func entries(in schedule: HostedBookingCalendar, from lower: Date, to upper: Date, moves: [BookingTimelineMove] = []) -> [Self] {
         let bookings = schedule.requests.filter { $0.status != "declined" }
         let reservations = bookings.flatMap { booking -> [Self] in
             func entry(_ slot: BookingInterval, proposed: Bool) -> Self? {
@@ -50,6 +58,23 @@ struct BookingTimelineEntry: Identifiable, Equatable {
                 result.append(Self(id: "slot-" + id, slotID: id, title: slot.title ?? "", status: .unreserved(ending: end), location: slot.location, start: start, end: end))
             }
         }
+        for move in moves where move.calendarID == schedule.id && move.revision == schedule.revision {
+            let entry = move.entry
+            if let original = result.firstIndex(where: { $0.id == entry.id }) {
+                if entry.requestID == nil {
+                    result.remove(at: original)
+                } else {
+                    result[original].saving = true
+                }
+            }
+            let interval = move.interval
+            guard interval.start < upper, interval.end > lower else { continue }
+            let booked = entry.requestID != nil
+            result.append(Self(id: entry.requestID.map { "proposal-" + $0 } ?? entry.id, slotID: entry.slotID,
+                requestID: entry.requestID, proposed: booked, saving: true, title: entry.title,
+                status: booked ? .pending : .unreserved(ending: interval.end), location: entry.location,
+                start: interval.start, end: interval.end))
+        }
         return result.sorted { ($0.start, $0.id) < ($1.start, $1.id) }
     }
 }
@@ -82,6 +107,7 @@ private extension SharedEventRecurrenceRule {
 
 struct BookingCalendarTimeline: View {
     let schedule: HostedBookingCalendar
+    let moves: [BookingTimelineMove]
     let onBack: () -> Void
     let onEdit: (BookingTimelineEntry) -> Void
     let onMove: (BookingTimelineEntry, DateInterval) -> Void
@@ -107,7 +133,7 @@ struct BookingCalendarTimeline: View {
     var body: some View {
         let upper = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: end)) ?? end
         let projection = Projection(title: schedule.title, locale: locale,
-            entries: BookingTimelineEntry.entries(in: schedule, from: calendar.startOfDay(for: start), to: upper))
+            entries: BookingTimelineEntry.entries(in: schedule, from: calendar.startOfDay(for: start), to: upper, moves: moves))
         timeline
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onChange(of: projection, initial: true) { _, value in
@@ -194,12 +220,16 @@ struct BookingCalendarTimeline: View {
             .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
         #endif
     }
-    private func editable(_ event: EKEvent) -> Bool { eventEntries[ObjectIdentifier(event)]?.readOnly == false }
+    private func editable(_ event: EKEvent) -> Bool {
+        guard let entry = eventEntries[ObjectIdentifier(event)] else { return false }
+        return !entry.readOnly && !entry.saving
+    }
     private func edit(_ event: EKEvent) {
-        if let entry = eventEntries[ObjectIdentifier(event)] { onEdit(entry) }
+        if let entry = eventEntries[ObjectIdentifier(event)], !entry.saving { onEdit(entry) }
     }
     private func move(_ event: EKEvent, _ interval: DateInterval) {
-        if let entry = eventEntries[ObjectIdentifier(event)], !entry.readOnly { onMove(entry, interval) }
+        if let entry = eventEntries[ObjectIdentifier(event)], editable(event),
+           entry.start != interval.start || entry.end != interval.end { onMove(entry, interval) }
     }
 
 }

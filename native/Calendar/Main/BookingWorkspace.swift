@@ -151,6 +151,7 @@ private final class BookingStore: ObservableObject {
     @Published var data = BookingData()
     @Published var error: String?
     @Published var loaded = false
+    @Published private(set) var pendingMoves: [BookingTimelineMove] = []
     private var account: CloudCalendarsAPI.Session?
     func belongs(to session: CloudCalendarsAPI.Session) -> Bool {
         CalendarFeedSession.isCurrent(session) && account == session
@@ -168,6 +169,7 @@ private final class BookingStore: ObservableObject {
     func refresh() async {
         let session = CalendarFeedSession.existing
         if account != session {
+            pendingMoves.removeAll()
             data = BookingData()
             loaded = false
             error = nil
@@ -189,10 +191,34 @@ private final class BookingStore: ObservableObject {
                 if UserDefaults.standard.data(forKey: key) != encoded { UserDefaults.standard.set(encoded, forKey: key) }
             }
             data = updated
+            let stillPending = pendingMoves.filter { move in
+                updated.calendars.contains { $0.id == move.calendarID && $0.revision == move.revision }
+            }
+            if stillPending.count != pendingMoves.count { pendingMoves = stillPending }
             loaded = true
             error = nil
         } catch {
             if generation == version && CalendarFeedSession.isCurrent(session) { self.error = error.localizedDescription }
+        }
+    }
+    func move(_ entry: BookingTimelineEntry, to interval: DateInterval, in calendar: HostedBookingCalendar,
+              session: CloudCalendarsAPI.Session, onFailure: @escaping (String) -> Void) {
+        guard belongs(to: session), data.calendars.contains(where: { $0.id == calendar.id && $0.revision == calendar.revision }),
+              !pendingMoves.contains(where: { $0.calendarID == calendar.id && $0.entry.id == entry.id }) else { return }
+        let move = BookingTimelineMove(calendarID: calendar.id, revision: calendar.revision, entry: entry, interval: interval)
+        pendingMoves.append(move)
+        Task {
+            do {
+                let receipt: BookingReceipt = try await CloudCalendarsAPI.bookingRequest("/" + calendar.id + "/occurrences/" + entry.slotID,
+                    method: "PUT", body: ["revision": calendar.revision, "start": DeviceCalendarEvent.iso(interval.start),
+                        "end": DeviceCalendarEvent.iso(interval.end)], session: session)
+                if belongs(to: session), receipt.revision == move.revision { pendingMoves.removeAll { $0 == move } }
+            } catch {
+                guard belongs(to: session) else { return }
+                pendingMoves.removeAll { $0 == move }
+                onFailure(error.localizedDescription)
+            }
+            if belongs(to: session) { await refresh() }
         }
     }
     @discardableResult
@@ -237,7 +263,7 @@ private struct SignedInBookingsContent: View {
         Group {
             if let timelineID, mode == .availability, store.belongs(to: session),
                let schedule = store.data.calendars.first(where: { $0.id == timelineID }) {
-                BookingCalendarTimeline(schedule: schedule, onBack: { self.timelineID = nil }, onEdit: { entry in
+                BookingCalendarTimeline(schedule: schedule, moves: store.pendingMoves, onBack: { self.timelineID = nil }, onEdit: { entry in
                     let base = schedule.slots.first { $0.id == entry.slotID.components(separatedBy: "@")[0] }
                     let request = schedule.requests.first { $0.id == entry.requestID }
                     let source = entry.proposed ? request?.proposal : request?.interval
@@ -246,12 +272,7 @@ private struct SignedInBookingsContent: View {
                         structuredLocation: source == nil ? base?.structuredLocation : source?.structuredLocation, timeZone: base?.timeZone)
                     slotTarget = .init(calendar: schedule, slot: slot, occurrence: true, reservation: request)
                 }, onMove: { entry, interval in
-                    Task {
-                        do {
-                            try await store.mutate("/" + schedule.id + "/occurrences/" + entry.slotID, body: [
-                                "revision": schedule.revision, "start": DeviceCalendarEvent.iso(interval.start), "end": DeviceCalendarEvent.iso(interval.end)])
-                        } catch { failure = error.localizedDescription; await store.refresh() }
-                    }
+                    store.move(entry, to: interval, in: schedule, session: session) { failure = $0 }
                 }, onCreate: { interval in slotTarget = .init(calendar: schedule, initialInterval: interval) })
                     .id(schedule.id)
             } else {

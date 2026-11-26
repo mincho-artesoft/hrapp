@@ -927,7 +927,12 @@ export class WebCalendarPageComponent
   }
   activateEvent(event: WebCalendarEvent) {
     const schedule = this.bookingCalendar();
-    if (schedule) { this.bookingPanel()?.openTimelineSlot(schedule,event); return; }
+    if (schedule) {
+      const saving = this.bookingStore.pendingMoves().some(move => move.calendarId === schedule.id && move.revision === schedule.revision &&
+        (event.id === 'slot-' + move.slotId || (move.requestId && (event.id === 'request-' + move.requestId || event.id === 'proposal-' + move.requestId))));
+      if (!saving) this.bookingPanel()?.openTimelineSlot(schedule,event);
+      return;
+    }
     if (event.readOnly) this.showEvent(event);
     else this.openEditEventModal(event);
   }
@@ -2075,7 +2080,8 @@ export class WebCalendarPageComponent
     const days = this.visibleDays();
     const schedule = this.bookingCalendar();
     const events = schedule
-      ? bookingTimelineEvents(schedule, days[0], timelineDay(days[days.length - 1], 1), label => this.localization.text(label))
+      ? bookingTimelineEvents(schedule, days[0], timelineDay(days[days.length - 1], 1),
+          label => this.localization.text(label), this.bookingStore.pendingMoves())
       : this.allDisplayEvents();
     return days.map((day, index) => {
       const next = timelineDay(day, 1);
@@ -2324,15 +2330,14 @@ export class WebCalendarPageComponent
       if (start === state.original.start && end === state.original.end && allDay === state.original.allDay) return;
       const event=state.event, schedule=this.bookingCalendar();
       if (schedule) {
-        const slotId = event.id.startsWith('slot-') ? event.id.slice(5)
-          : schedule.requests.find(r => 'request-'+r.id === event.id)?.slotId;
-        if (!slotId || event.readOnly) return;
+        const request = schedule.requests.find(r => 'request-' + r.id === event.id);
+        const slotId = request?.slotId ?? (event.id.startsWith('slot-') ? event.id.slice(5) : undefined);
+        if (!slotId || event.readOnly || state.bookingRevision === undefined) return;
         try {
-          await this.bookingStore.request('/'+schedule.id+'/occurrences/'+encodeURIComponent(slotId),'PUT',
-            {revision:state.bookingRevision,start:new Date(start).toISOString(),end:new Date(end).toISOString()});
-          if (event.id.startsWith('request-')) this.showToast(this.localization.text('Awaiting guest response'));
+          await this.bookingStore.moveOccurrence({calendarId: schedule.id, revision: state.bookingRevision,
+            slotId, requestId: request?.id, start: new Date(start).toISOString(), end: new Date(end).toISOString()});
+          if (request && this.bookingCalendarID() === schedule.id) this.showToast(this.localization.text('Awaiting guest response'));
         } catch(e) { this.showToast((e as Error).message); }
-        await this.bookingStore.refresh();
       } else {
         await this.commitDraggedEventChange(event,new Date(start).toISOString(),new Date(end).toISOString(),allDay);
       }

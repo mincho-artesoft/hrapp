@@ -13,6 +13,14 @@ export interface Appointment extends BookingSlot, BookingPurpose {
   status: 'pending' | 'accepted' | 'declined' | 'past';
 }
 export interface BookingCalendar extends BookingPurpose { id: string; title: string; listed?: boolean; revision: number; slots: BookingSlot[]; requests: Appointment[] }
+export interface BookingTimelineMove {
+  calendarId: string;
+  revision: number;
+  slotId: string;
+  requestId?: string;
+  start: string;
+  end: string;
+}
 export interface BookingListing extends BookingPurpose { id: string; title: string; hostName: string; isOwner: boolean }
 export interface Availability extends BookingListing { nextFrom?: string; slots: BookingSlot[] }
 interface Workspace { calendars: BookingCalendar[]; appointments: Appointment[] }
@@ -24,12 +32,14 @@ export class BookingWorkspace {
   readonly data = signal<Workspace>({ calendars: [], appointments: [] });
   readonly error = signal('');
   readonly loaded = signal(false);
+  readonly pendingMoves = signal<BookingTimelineMove[]>([]);
   private generation = 0;
   constructor() {
     effect(() => {
       const token = this.api.token();
       untracked(() => {
         ++this.generation;
+        this.pendingMoves.set([]);
         this.data.set({calendars: [], appointments: []});
         this.loaded.set(false);
         this.error.set('');
@@ -45,11 +55,29 @@ export class BookingWorkspace {
       const value = await this.request<Workspace>('');
       if (sequence === this.generation && token === this.api.token()) {
         this.data.set(value);
+        this.pendingMoves.update(moves => moves.filter(move =>
+          value.calendars.some(calendar => calendar.id === move.calendarId && calendar.revision === move.revision)));
         this.loaded.set(true);
         this.error.set('');
       }
     } catch (e) {
       if (sequence === this.generation && token === this.api.token()) this.error.set((e as Error).message);
+    }
+  }
+  async moveOccurrence(move: BookingTimelineMove) {
+    if (this.pendingMoves().some(other => other.calendarId === move.calendarId && other.slotId === move.slotId)) return;
+    const token = this.api.token();
+    this.pendingMoves.update(moves => [...moves, move]);
+    const discard = () => this.pendingMoves.update(moves => moves.filter(other => other !== move));
+    try {
+      const receipt = await this.request<{revision: number}>('/' + move.calendarId + '/occurrences/' + encodeURIComponent(move.slotId),
+        'PUT', {revision: move.revision, start: move.start, end: move.end});
+      if (receipt.revision === move.revision) discard();
+    } catch (error) {
+      discard();
+      throw error;
+    } finally {
+      if (token === this.api.token()) void this.refresh();
     }
   }
   request<T>(suffix: string, method = 'GET', body?: unknown) {
