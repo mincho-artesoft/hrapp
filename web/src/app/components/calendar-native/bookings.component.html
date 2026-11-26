@@ -127,7 +127,10 @@
         <label class="native-form-row"><input [attr.aria-label]="'Name'|nativeText" [placeholder]="'Name'|nativeText" [(ngModel)]="title" maxlength="200"></label>
         <button class="native-form-row type-option" (click)="typeSearch='';choosingType=true"><span>{{'Appointment type'|nativeText}}</span><span class="value">{{ type === 'Other' && customType.trim() ? customType : typeLabel(type || 'Choose type') }}</span><cc-symbol class="disclosure" [pointSize]="12" name="chevron.right" /></button>
         @if(type==='Other'){<label class="native-form-row"><input [attr.aria-label]="'Custom type (optional)'|nativeText" [placeholder]="'Custom type (optional)'|nativeText" maxlength="100" [(ngModel)]="customType"></label>}
-        <label class="native-form-row type-option">{{ 'Show in booking search' | nativeText }}<input type="checkbox" [(ngModel)]="listed"></label>
+        <label class="native-form-row booking-visibility">
+          <span>{{ 'Show in booking search' | nativeText }}</span>
+          <input type="checkbox" role="switch" [(ngModel)]="listed">
+        </label>
       </div>
       <div class="native-form-group">
         <button class="native-form-row color-choice" (click)="choosingColor=true">

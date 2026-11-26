@@ -155,4 +155,38 @@ dialog::backdrop { background: #0006; }
   color: var(--cal-text);
   background: var(--cal-panel);
 }
-.type-option input[type="checkbox"] { margin-inline-start: auto; accent-color: var(--cal-blue); }
+.booking-visibility {
+  min-height: 52px;
+  cursor: pointer;
+
+  input {
+    appearance: none;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex: none;
+    width: 63px;
+    height: 28px;
+    margin: 0;
+    padding: 2px;
+    border: 0;
+    border-radius: 14px;
+    background: rgb(120 120 128 / 43%);
+    cursor: inherit;
+  }
+  input::before {
+    content: '';
+    width: 37px;
+    height: 24px;
+    border-radius: 12px;
+    background: white;
+  }
+  input:checked {
+    justify-content: flex-end;
+    background: var(--cal-blue);
+  }
+  @media (forced-colors: active) {
+    input { appearance: auto; }
+    input::before { content: none; }
+  }
+}

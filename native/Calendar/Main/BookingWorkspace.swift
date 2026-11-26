@@ -641,7 +641,15 @@ private struct BookingCalendarEditor: View {
                     }.contentShape(Rectangle())
                 }.buttonStyle(.plain)
                 if type == "Other" { TextField("Custom type (optional)", text: $customType).textFieldStyle(.plain) }
-                Toggle("Show in booking search", isOn: $listed)
+                Toggle(isOn: $listed) {
+                    Text("Show in booking search")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                #if os(macOS)
+                .toggleStyle(.switch)
+                .controlSize(.large)
+                #endif
             }
             CalendarSharingSection(rows: true) {
                 Button { picker = .color } label: {
