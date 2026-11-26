@@ -44,7 +44,7 @@
 
 @mixin rows {
 .native-form-group {
-  border-radius: 10px;
+  border-radius: var(--calendar-section-radius);
   background: var(--cal-panel);
   padding: 0 16px;
   margin: 0 0 28px;

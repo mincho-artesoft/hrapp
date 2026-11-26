@@ -10,6 +10,9 @@ private struct AppPresentationPreferences: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            #if os(macOS)
+            .presentationCornerRadius(CalendarCorners.sheet)
+            #endif
             .environment(\.locale, preferences.presentationLocale)
             .environment(\.calendar, preferences.presentationCalendar)
             .environment(\.layoutDirection, preferences.layoutDirection)

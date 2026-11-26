@@ -862,7 +862,7 @@ struct AppLocalEventEditorView: View {
                         Marker(location.isEmpty ? structuredLocation?.title ?? "" : location, coordinate: coordinate)
                     }
                     .frame(height: 170)
-                    .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: CalendarCorners.locationPreview, style: .continuous))
                 }
                 .listRowInsets(EdgeInsets())
             }

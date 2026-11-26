@@ -427,7 +427,7 @@ header cc-symbol {
 .city-result {
   width: 100%;
   padding: 16px;
-  border-radius: 14px;
+  border-radius: 18px;
   background: #ffffff15;
   text-align: left;
   margin: 8px 0;
@@ -441,7 +441,7 @@ header cc-symbol {
 }
 .region-card {
   position: relative;
-  border-radius: 28px;
+  border-radius: 27px;
   margin: 16px 0;
   background: linear-gradient(120deg, #64a5c6a0, #2b5c8190);
   border: 1px solid #ffffff30;
@@ -486,7 +486,7 @@ header cc-symbol {
   right: 16px;
   bottom: 14px;
   background: #001b3340;
-  border-radius: 18px;
+  border-radius: var(--r-pill);
   padding: 7px;
   color: #fff;
 }
@@ -523,7 +523,7 @@ header cc-symbol {
   background: var(--cal-bg);
   color: var(--cal-text);
   border: 1px solid var(--cal-line);
-  border-radius: 24px;
+  border-radius: var(--calendar-sheet-radius);
   padding: 16px 24px;
   width: 580px;
   max-width: 100%;
@@ -560,7 +560,7 @@ header cc-symbol {
   background: var(--cal-panel, #1c1c1e);
   color: var(--cal-text, #fff);
   border: 1px solid var(--cal-line, #555);
-  border-radius: 16px;
+  border-radius: var(--calendar-context-radius);
   box-shadow: 0 8px 30px #0005;
 }
 .region-context button {
@@ -572,7 +572,7 @@ header cc-symbol {
   align-items: center;
   width: 100%;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   font: inherit;
 }
 .city-search {
@@ -624,7 +624,7 @@ header cc-symbol {
 cc-weather-detail-body {display:block; padding-top:2px;}
 @media(max-width:600px){
   .weather-modal:has(.forecast-detail){align-items:end;padding:0}
-  .weather-modal > .forecast-detail{max-height:calc(100dvh - env(safe-area-inset-top) - 12px);border-radius:18px 18px 0 0;}
+  .weather-modal > .forecast-detail{max-height:calc(100dvh - env(safe-area-inset-top) - 12px);border-radius:var(--calendar-compact-sheet-corners);}
   .forecast-scroll {padding-bottom:max(24px,env(safe-area-inset-bottom))}
 }
 .sky-modal-title {

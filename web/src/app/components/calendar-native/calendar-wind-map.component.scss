@@ -486,7 +486,7 @@ footer {
   width: min(420px, 96%);
   max-height: 85%;
   overflow: auto;
-  border-radius: 18px;
+  border-radius: var(--calendar-sheet-radius);
   padding: 16px;
   box-shadow: 0 12px 60px #0005;
 }
@@ -561,7 +561,7 @@ footer {
     transform: none;
     width: 100%;
     min-height: min(50dvh, 440px);
-    border-radius: 20px 20px 0 0;
+    border-radius: var(--calendar-compact-sheet-corners);
     padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
 }

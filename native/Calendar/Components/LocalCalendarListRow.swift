@@ -81,7 +81,7 @@ struct LocalCalendarListRow: View {
         .font(CalendarTypography.body)
         .padding(.vertical, 4).padding(.horizontal, 5)
         .background(isSelected ? CalendarPalette.selectedCalendar : .clear,
-                    in: RoundedRectangle(cornerRadius: 24))
+                    in: RoundedRectangle(cornerRadius: CalendarCorners.selectedCalendar))
         .padding(.leading, -32)
     }
 }

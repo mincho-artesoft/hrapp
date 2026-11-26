@@ -19,7 +19,7 @@ struct MacCalendarSyncStatus: View {
                     .disabled(store.syncing)
             }
             .padding(16)
-            .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+            .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             .accessibilityIdentifier("calendar-sync-status")
         }
     }

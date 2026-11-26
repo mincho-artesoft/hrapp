@@ -1119,7 +1119,7 @@
   max-width: 560px;
   max-height: 90vh;
   overflow-y: auto;
-  border-radius: 24px;
+  border-radius: var(--calendar-sheet-radius);
   background: var(--cal-panel);
   border: 1px solid var(--cal-line);
   padding: 1.35rem;
@@ -1844,7 +1844,9 @@
   width: 16px;
   height: 16px;
 }
+.native-context button { border-radius: 6px; }
 .native-context {
+  border-radius: var(--calendar-context-radius);
   position: fixed;
   right: auto;
   min-width: 240px;
@@ -1953,7 +1955,6 @@ cc-calendar-menu {
   max-height: 8lh;
   field-sizing: content;
 }
-.ios-layout .native-form-group { border-radius: 12px; }
 .ios-layout .native-event-sheet .modal-body { padding-inline: 20px; }
 .ios-layout .native-details .native-form-group { margin-bottom: 19px; }
 .ios-layout .native-details .detail-title { background: transparent; padding: 6px 16px 0; }
@@ -2090,7 +2091,7 @@ cc-calendar-menu {
   max-height: calc(100dvh - 40px);
   background: var(--cal-bg);
   border: 1px solid var(--cal-line);
-  border-radius: 24px;
+  border-radius: var(--calendar-sheet-radius);
   box-shadow: 0 24px 80px #0005;
   overflow: hidden;
   display: flex;
@@ -2279,7 +2280,7 @@ cc-calendar-menu {
 .share-icon {
   background: #2168de22;
   color: var(--cal-blue);
-  border-radius: 14px;
+  border-radius: 12px;
   width: 48px;
   height: 48px;
   display: grid;
@@ -2299,7 +2300,7 @@ cc-calendar-menu {
   width: 300px;
   max-width: 90%;
   background: white;
-  border-radius: 18px;
+  border-radius: 24px;
   padding: 16px;
 }
 .share-error {
@@ -2707,7 +2708,7 @@ cc-calendar-menu {
 .drawer-content cc-calendar-menu{flex:1;min-width:0;}
 .drawer-scrim{position:fixed;inset:60px 0 60px;z-index:89;background:#00000003;border:0;}
 .phone-layout .modal-backdrop{padding:0;align-items:flex-end;}
-.phone-layout .modal-sheet.native-event-sheet{width:100%;height:calc(100dvh - 32px);max-height:calc(100dvh - 32px);border-radius:20px 20px 0 0;}
+.phone-layout .modal-sheet.native-event-sheet{width:100%;height:calc(100dvh - 32px);max-height:calc(100dvh - 32px);border-radius:var(--calendar-compact-sheet-corners);}
 .phone-layout .native-sheet-header{height:64px;}
 @media(prefers-reduced-motion:reduce){.ios-drawer{transition:none;}}
 
@@ -3103,8 +3104,7 @@ cc-calendar-menu {
 .ev-handle--top { right: 23px; }
 .ev-handle--bottom { left: 23px; }
 .form-footnote { margin: -20px 16px 28px; font-size: 13px; color: var(--cal-muted); }
-.native-form-group.location-preview { padding: 0; overflow: hidden; }
-.ios-layout .native-form-group.location-preview { border-radius: 26px; }
+.native-form-group.location-preview { padding: 0; overflow: hidden; border-radius: var(--calendar-location-radius); }
 .detail-calendar-val i { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
 
 .month-cell, .tl-col, .tl-allday-zone { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }

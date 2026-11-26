@@ -23,7 +23,7 @@ import { CalendarNativeTextPipe } from '../../core/calendar-localization';
     button { border: 0; font: inherit; min-height: 44px; cursor: pointer; }
     button:focus-visible { outline: 2px solid var(--cal-blue); outline-offset: -2px; }
     button:disabled { opacity: .45; cursor: default; }
-    .remove-calendar, .confirmation { border-radius: 10px; background: var(--cal-panel); }
+    .remove-calendar, .confirmation { border-radius: var(--calendar-section-radius); background: var(--cal-panel); }
     .remove-calendar {
       display: block; width: 100%; padding: 0 16px; text-align: center;
       color: #ff453a; font-size: 17px; overflow-wrap: anywhere;

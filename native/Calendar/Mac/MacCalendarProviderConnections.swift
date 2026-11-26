@@ -25,7 +25,7 @@ struct MacCalendarProviderConnections: View {
             Button { providers.connect(provider) } label: {
                 CalendarProviderActionLabel(title: title, icon: icon).padding(.horizontal, 16).padding(.vertical, 8)
             }.buttonStyle(.plain).disabled(authentication.isSigningIn)
-                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             if let error = authentication.errorMessage(for: provider) {
                 Text(error).font(CalendarTypography.footnote).foregroundStyle(.red).padding(.horizontal, 16)
             }

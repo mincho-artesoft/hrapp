@@ -8,7 +8,6 @@
   overflow: auto;
   color: var(--cal-text);
   background: var(--cal-bg);
-  --group-radius: 10px;
   --form-inset: 20px;
   --inactive-fill: #8f8f8f;
   --inactive-text: white;
@@ -40,7 +39,6 @@ button:focus-visible, .native-form-group:has(> label:only-child input:focus-visi
 @include eventForm.header;
 @include eventForm.rows;
 
-.native-form-group { border-radius: var(--group-radius); }
 .native-form-row { text-align: start; overflow-wrap: anywhere; }
 .native-form-row input { padding: 0; }
 .native-form-group > cc-date-time + * {
@@ -95,7 +93,7 @@ dialog {
   color: var(--cal-text);
   background: var(--cal-bg);
   border: 1px solid var(--cal-line);
-  border-radius: 24px;
+  border-radius: var(--calendar-sheet-radius);
   box-shadow: 0 20px 80px #0005;
   font: inherit;
 }
@@ -130,7 +128,6 @@ dialog::backdrop { background: #0006; }
 :host-context([dir=rtl]) .back cc-symbol { transform: scaleX(-1); }
 
 :host-context(.ios-layout) {
-  --group-radius: 12px;
   dialog { width: min(600px, calc(100% - 40px)); height: min(720px, calc(100dvh - 48px)); }
 }
 
@@ -139,7 +136,7 @@ dialog::backdrop { background: #0006; }
     width: 100%;
     height: calc(100dvh - 32px);
     margin: auto 0 0;
-    border-radius: 20px 20px 0 0;
+    border-radius: var(--calendar-compact-sheet-corners);
   }
   .sheet-body { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
 }

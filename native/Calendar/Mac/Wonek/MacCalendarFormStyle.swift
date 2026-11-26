@@ -30,7 +30,7 @@ struct MacCalendarFormSection<Content: View>: View {
                     .padding(.horizontal, 16)
             }
             VStack(spacing: 0, content: content)
-                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 10))
+                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
         }
     }
 }

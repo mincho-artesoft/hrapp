@@ -90,7 +90,7 @@ struct MacCalendarProviderSections: View {
                 }
                 .disclosureGroupStyle(AppCalendarDisclosureStyle())
                 .padding(16)
-                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             }
         }
     }

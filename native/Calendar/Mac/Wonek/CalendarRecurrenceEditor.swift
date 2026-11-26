@@ -346,7 +346,7 @@ private struct RecurrenceSection<Content: View>: View {
         VStack(alignment: .leading, spacing: 6) {
             VStack(spacing: 0, content: content)
                 .background(CalendarPalette.secondaryGroupedBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .clipShape(RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             if !footer.isEmpty { Text(verbatim: footer).font(.footnote).foregroundStyle(.secondary).padding(.horizontal, 16) }
         }
         #else

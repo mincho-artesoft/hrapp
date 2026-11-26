@@ -527,7 +527,7 @@ struct CalendarsSheetView: View {
                                 .padding(.vertical, 4)
                                 .padding(.horizontal, 5)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 24)
+                                    RoundedRectangle(cornerRadius: CalendarCorners.selectedCalendar)
                                         .fill(Color.clear)
                                 )
                                 .padding(.leading, -32)
@@ -852,7 +852,7 @@ private struct SharedICloudCalendarRow: View {
         .padding(.vertical, 4)
         .padding(.horizontal, 5)
         .background(
-            RoundedRectangle(cornerRadius: 24)
+            RoundedRectangle(cornerRadius: CalendarCorners.selectedCalendar)
                 .fill(
                     isSelected
                         ? Color(uiColor: UIColor.systemGray4.withAlphaComponent(0.5))

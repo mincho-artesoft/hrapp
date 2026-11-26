@@ -60,7 +60,7 @@ struct CalendarRowView: View {
         .padding(.vertical, 4)
         .padding(.horizontal, 5)
         .background(
-            RoundedRectangle(cornerRadius: 24)
+            RoundedRectangle(cornerRadius: CalendarCorners.selectedCalendar)
                 .fill(isSelected
                       ? CalendarPalette.selectedCalendar
                       : Color.clear)

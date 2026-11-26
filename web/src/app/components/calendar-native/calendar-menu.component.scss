@@ -54,13 +54,13 @@ a {
 }
 .grouped,
 .form-group {
-  border-radius: 20px;
+  border-radius: var(--calendar-section-radius);
   background: var(--cal-panel);
   margin: 8px 0 16px;
 }
 .calendar-group {
   padding: 10px 16px;
-  border-radius: 20px;
+  border-radius: var(--calendar-section-radius);
   background: var(--cal-panel);
   margin-bottom: 8px;
 }
@@ -88,7 +88,7 @@ a {
   gap: 12px;
   min-height: 36px;
   margin: 12px 0 0;
-  border-radius: 24px;
+  border-radius: var(--calendar-selection-radius);
   padding: 4px 5px;
   overflow: hidden;
 }
@@ -210,7 +210,7 @@ a {
   justify-content: center;
   width: 38px;
   height: 38px;
-  border-radius: 11px;
+  border-radius: 10px;
   background: color-mix(in srgb, currentColor 10%, transparent);
   flex-shrink: 0;
 }
@@ -523,12 +523,12 @@ textarea {
   display: flex;
   padding: 3px;
   background: var(--cal-panel);
-  border-radius: 24px;
+  border-radius: 21px;
   margin-bottom: 20px;
 }
 .plan-picker button {
   flex: 1;
-  border-radius: 21px;
+  border-radius: 17px;
   min-height: 36px;
   font-weight: 600;
 }
@@ -539,7 +539,7 @@ textarea {
 .plan-card {
   border: 1px solid var(--cal-line);
   background: var(--cal-panel);
-  border-radius: 26px;
+  border-radius: 20px;
   padding: 20px;
   display: flex;
   gap: 16px;
@@ -555,6 +555,7 @@ textarea {
   flex: 1;
 }
 .plan-card .tile {
+  border-radius: 13px;
   color: var(--cal-blue);
   width: 42px;
   height: 42px;
@@ -718,7 +719,7 @@ textarea {
   position: absolute;
   inset: 20px 20% 80px;
   border: 3px dashed white;
-  border-radius: 26px;
+  border-radius: 28px;
 }
 .image-input {
   position: relative;
@@ -795,7 +796,7 @@ textarea {
 .subscription-features {
   padding: 18px;
   border: 1px solid var(--cal-line);
-  border-radius: 24px;
+  border-radius: 22px;
   background: var(--cal-panel);
   margin: 20px 0;
 }
@@ -866,7 +867,7 @@ textarea {
 :host-context(.ios-layout) .native-menu{background:var(--cal-panel);}
 :host-context(.ios-layout) .section-picker{margin:8px auto 16px;width:calc(100% - 16px);}
 :host-context(.phone-layout) .native-backdrop{padding:0;align-items:flex-end;}
-:host-context(.phone-layout) .native-sheet{width:100%;max-height:calc(100dvh - 32px);height:calc(100dvh - 32px);border-radius:20px 20px 0 0;}
+:host-context(.phone-layout) .native-sheet{width:100%;max-height:calc(100dvh - 32px);height:calc(100dvh - 32px);border-radius:var(--calendar-compact-sheet-corners);}
 :host-context(.phone-layout) .sheet-body{padding:16px;}
 :host-context(.phone-layout) .setting-row{gap:10px;font-size:17px;}
 :host-context(.phone-layout) .setting-row strong{font-weight:600;}
@@ -1005,7 +1006,6 @@ textarea {
   text-decoration: none;
 }
 .plan-card {
-  border-radius: 20px;
   padding: 16px;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
@@ -1083,7 +1083,7 @@ textarea {
 .calendar-item .calendar-dot cc-symbol { width: 17px; height: 17px; }
 .calendar-group summary > cc-symbol:last-child { color: var(--cal-muted); width: 13px; height: 13px; }
 .calendar-form.sheet-body { padding: 20px; }
-.calendar-form .form-group { margin: 0 0 28px; border-radius: 10px; overflow: hidden; }
+.calendar-form .form-group { margin: 0 0 28px; overflow: hidden; }
 .calendar-form .form-row { min-height: 44px; padding-block: 0; }
 .calendar-form .form-row + .form-row { position: relative; border: 0; }
 .calendar-form .form-row + .form-row::before {

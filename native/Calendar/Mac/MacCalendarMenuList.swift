@@ -75,7 +75,7 @@ struct MacCalendarMenuList: View {
                             }
                             .disclosureGroupStyle(AppCalendarDisclosureStyle())
                             .padding(.horizontal, 16).padding(.vertical, 10)
-                            .background(group == "Shared with me" ? .clear : CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                            .background(group == "Shared with me" ? .clear : CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
                         }
                         MacCalendarProviderSections(store: store, providers: store.backend.providers,
                             editCalendar: editCalendar)
@@ -85,11 +85,11 @@ struct MacCalendarMenuList: View {
                             actionRow("Add iCloud Calendar", icon: .iCloud) {
                                 handleAddICloudCalendar()
                             }
-                        }.padding(.horizontal, 16).background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                        }.padding(.horizontal, 16).background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
                         MacCalendarProviderConnections(providers: store.backend.providers)
                         actionRow("Share calendars with iCloud Calendar", icon: .iCloudSharing) {
                             NSWorkspace.shared.open(URL(string: "https://www.icloud.com/calendar/")!)
-                        }.padding(.horizontal, 16).background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+                        }.padding(.horizontal, 16).background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
 
                     }.padding(.horizontal, 16).padding(.vertical, 8)
                 }
@@ -117,7 +117,7 @@ struct MacCalendarMenuList: View {
                             Text(item.title).font(.system(size: 16)).foregroundStyle(.primary).lineLimit(1).minimumScaleFactor(0.45)
                             Spacer()
                         }.padding(.vertical, 10).padding(.horizontal, 12)
-                            .background(selected ? CalendarPalette.selectedCalendar.opacity(2) : .clear, in: RoundedRectangle(cornerRadius: 16))
+                            .background(selected ? CalendarPalette.selectedCalendar.opacity(2) : .clear, in: RoundedRectangle(cornerRadius: CalendarCorners.selectedCalendar))
                     }.buttonStyle(.plain)
                 }
             }.padding(.horizontal, 16).padding(.vertical, 8)

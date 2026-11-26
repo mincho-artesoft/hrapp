@@ -71,6 +71,14 @@
   --r-xl: 28px;
   --r-pill: 999px;
 
+  /* Inset-grouped forms, sheets and custom surfaces in the iOS calendar. */
+  --calendar-section-radius: 26px;
+  --calendar-sheet-radius: 32px;
+  --calendar-compact-sheet-corners: 38px 38px 0 0;
+  --calendar-selection-radius: 24px;
+  --calendar-location-radius: 26px;
+  --calendar-context-radius: 22px;
+
   /* --- Clean Elevation --- */
   --shadow-near: 0 4px 14px rgba(0, 0, 0, 0.35);
   --shadow-mid: 0 16px 40px -12px rgba(0, 0, 0, 0.65);

@@ -14,7 +14,7 @@
   max-width: 460px;
   margin-inline: auto;
   padding: 1.35rem 1.5rem;
-  border-radius: 20px;
+  border-radius: 22px;
   background: var(--surface, #1c1c1e);
   border: 1px solid var(--hair, #2c2c2e);
   box-shadow: var(--shadow-mid);
@@ -61,7 +61,7 @@
 
 .auth-alert {
   padding: 0.62rem 0.85rem;
-  border-radius: 11px;
+  border-radius: 14px;
   font-size: 0.9375rem;
   line-height: 1.4;
   margin-bottom: 0.9rem;
@@ -118,7 +118,7 @@
   width: 100%;
   min-height: 42px;
   padding: 0.5rem 0.55rem;
-  border-radius: 11px;
+  border-radius: 12px;
   background: var(--surface-2, #2c2c2e);
   border: 1px solid var(--hair, #2c2c2e);
   color: var(--ink);

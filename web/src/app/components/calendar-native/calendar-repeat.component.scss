@@ -1,5 +1,5 @@
 :host { display: block; font: 17px var(--font-body); }
-.group { background: var(--cal-panel); border-radius: 12px; overflow: clip; }
+.group { background: var(--cal-panel); border-radius: var(--calendar-section-radius); overflow: clip; }
 .group + .group { margin-top: 24px; }
 cc-choice { --choice-tint: var(--cal-muted); display: block; padding-inline: 16px; box-sizing: border-box; }
 .row { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 44px;

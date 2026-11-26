@@ -1634,7 +1634,7 @@ struct MacTabletEventEditor: View {
                         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
                         Marker(location, coordinate: coordinate)
                     }
-                    .frame(height: 170).clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(height: 170).clipShape(RoundedRectangle(cornerRadius: CalendarCorners.locationPreview))
                 }
             }
             if canEditEvent && !usesServerRecord { deleteSection }

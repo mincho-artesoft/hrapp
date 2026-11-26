@@ -216,9 +216,9 @@ private struct SignedInBookingsContent: View {
         }
         .onChange(of: mode) { timelineID = nil }
         .onChange(of: addAction) { add() }
-        .sheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
-        .sheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
-        .sheet(isPresented: $lookup) { BookingLookupSheet() }
+        .appSheet(item: $editing) { BookingCalendarEditor(calendar: $0) }
+        .appSheet(item: $slotTarget) { target in BookingTimeEditor(calendar: target.calendar, original: target.slot) }
+        .appSheet(isPresented: $lookup) { BookingLookupSheet() }
         .alert("Bookings", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
             Button("OK") { failure = nil }
         } message: { Text(verbatim: failure ?? "") }

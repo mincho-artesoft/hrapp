@@ -45,13 +45,13 @@ struct CalendarSharingSection<Content: View>: View {
                         }
                     }
                 }
-                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 10))
+                .background(CalendarPalette.secondaryGroupedBackground, in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             } else {
                 VStack(alignment: .leading, spacing: 14, content: content)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(cards ? 0 : 16)
                     .background(cards ? Color.clear : CalendarPalette.secondaryGroupedBackground,
-                                in: RoundedRectangle(cornerRadius: 18))
+                                in: RoundedRectangle(cornerRadius: CalendarCorners.formSection))
             }
             if let footer {
                 Text(footer).font(CalendarTypography.footnote).foregroundStyle(.secondary)
