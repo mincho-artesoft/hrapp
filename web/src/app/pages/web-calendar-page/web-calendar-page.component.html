@@ -172,10 +172,6 @@
         @if (viewMode() !== "weather") {
           <header class="cal-toolbar" [class.searching]="searchOpen()">
             <div class="cal-toolbar__left" [class.bookings-picker-container]="bookingsRoute && !bookingCalendar()">
-              @if (bookingCalendar(); as schedule) {
-                <button class="toolbar-icon" type="button" [attr.aria-label]="'Back' | nativeText" (click)="closeBookingTimeline()"><cc-symbol name="chevron.backward" /></button>
-                <h2 class="booking-calendar-title">{{ schedule.title }}</h2>
-              }
               @if (bookingsRoute && !bookingCalendar()) {
                 <cc-section-picker class="bookings-picker" label="Bookings" [columns]="2" [options]="bookingModes"
                   [value]="bookingMode()" (valueChange)="selectBookingMode($event)" />
@@ -211,6 +207,12 @@
                 }
               }
             </div>
+            @if (bookingCalendar(); as schedule) {
+              <div class="booking-calendar-context" [class.sidebar-space]="showsSidebar()">
+                <button class="toolbar-icon" type="button" [attr.aria-label]="'Back' | nativeText" (click)="closeBookingTimeline()"><cc-symbol name="chevron.backward" /></button>
+                <h2 class="booking-calendar-title">{{ schedule.title }}</h2>
+              </div>
+            }
             @if (!bookingCalendar()) {
             <div class="cal-toolbar__right">
               @if (viewMode() !== "menu") {

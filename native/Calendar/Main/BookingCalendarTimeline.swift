@@ -126,26 +126,41 @@ struct BookingCalendarTimeline: View {
         let formatter = MacCalendarFormatting.dateFormatter()
         let rangeTitle = formatter.string(from: start) + " - " + formatter.string(from: end)
         VStack(spacing: 0) {
-            CalendarScreenHeader(currentView: 3, rangeTitle: rangeTitle, rangeIsSelected: pickingRange,
-                scopedTitle: schedule.title, onBack: onBack, onRange: { pickingRange.toggle() },
-                onSearch: nil, onViewChange: { _ in })
+            GeometryReader { geometry in
+                HStack(spacing: 0) {
+                    HStack(spacing: CalendarHeaderLayout.spacing) {
+                        Button(action: onBack) {
+                            Image(systemName: "chevron.backward")
+                                .frame(width: CalendarHeaderLayout.buttonSize, height: CalendarHeaderLayout.buttonSize)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain).foregroundStyle(Color.appBlue).accessibilityLabel("Back")
+                        Text(verbatim: schedule.title).font(CalendarTypography.headline).lineLimit(1)
+                            .accessibilityAddTraits(.isHeader)
+                    }
+                    .padding(.horizontal, CalendarHeaderLayout.horizontalInset)
+                    .frame(width: CalendarSidebarLayout.width(availableWidth: geometry.size.width), alignment: .leading)
+                    Divider().hidden()
+                    MacCalendarRangeButton(title: rangeTitle) { pickingRange.toggle() }
+                        .padding(.horizontal, CalendarHeaderLayout.horizontalInset)
+                    Spacer(minLength: 0)
+                }
+                .frame(maxHeight: .infinity)
+            }
+            .frame(height: CalendarHeaderLayout.height)
             Divider()
             MacTabletMultiDayView(store: store, startDate: Binding(get: { start }, set: { day in
                 start = day
                 end = day
             }), dayCount: dayCount, selectedTab: .constant(3), editorTarget: .constant(nil), scopedEvents: events)
         }
-        .overlay(alignment: .topLeading) {
-            if pickingRange {
-                Color.clear.contentShape(Rectangle()).onTapGesture { pickingRange = false }
-                MacCalendarDateRangePicker(start: start, end: end, onDismiss: { pickingRange = false }) { first, last in
-                    start = first
-                    end = last
-                }.padding(.top, CalendarHeaderLayout.height).padding(.leading, 16)
-            }
+        .macCalendarRangePicker(isPresented: $pickingRange, start: start, end: end) { first, last in
+            start = first
+            end = last
         }
         #else
         BookingPinnedTimeline(title: schedule.title, start: $start, end: $end, events: events, onBack: onBack)
+            .ignoresSafeArea(.all, edges: CalendarSafeAreaLayout.ignoredEdges(.all))
         #endif
     }
 }

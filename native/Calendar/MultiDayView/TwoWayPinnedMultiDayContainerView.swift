@@ -550,6 +550,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 2. NavBar
         navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
+        layoutRangePicker()
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
         updateScreenHeader()
@@ -803,68 +804,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hc.view.layer.zPosition = 9999
         self.calendarHostingController = hc
         
-        // Размер на календара
-        let calendarWidth: CGFloat  = 350
-        let calendarHeight: CGFloat = 350
-        
-        // Координати на бутона в прозореца
-        let buttonFrameInWindow = navBar.convert(navBar.bounds, to: window)
-        
-        // Първоначално центриране по X
-        var finalX = (window.bounds.width - calendarWidth) / 2
-        
-        // "Под бутона" по Y (с малък отстъп)
-        let belowButtonY = buttonFrameInWindow.maxY + 8
-        
-        // Опитваме първо да го поставим отдолу
-        var finalY = belowButtonY
-        var placed = false
-        
-        // 1) Ако излиза извън екрана надолу,
-        //    пробваме над бутона
-        if finalY + calendarHeight > window.bounds.maxY - 10 {
-            let aboveButtonY = buttonFrameInWindow.minY - calendarHeight - 8
-            if aboveButtonY >= 10 {
-                finalY = aboveButtonY
-                placed = true
-            }
-        } else {
-            placed = true
-        }
-        
-        // 2) Ако все още не е сложен (няма място нито отдолу, нито отгоре),
-        //    го центрираме по вертикала
-        if !placed {
-            finalY = (window.bounds.height - calendarHeight) / 2
-        }
-        
-        // --- Офсет при пейзажен режим (ако width > height)
-        let isLandscape = window.bounds.width > window.bounds.height
-        if isLandscape {
-            // Примерно 80 точки надясно и 20 надолу
-            finalX += finalX/2
-            finalY += 20
-        }
-        // -------------------------------
-        
-        // „Clamping” по хоризонтала (да не излезе вляво или вдясно)
-        if finalX < 10 {
-            finalX = 10
-        } else if finalX + calendarWidth > window.bounds.width - 10 {
-            finalX = window.bounds.width - calendarWidth - 10
-        }
-        
-        // „Clamping” по вертикала (да не излезе горе или долу)
-        if finalY < 10 {
-            finalY = 10
-        } else if finalY + calendarHeight > window.bounds.height - 10 {
-            finalY = window.bounds.height - calendarHeight - 10
-        }
-        
-        // Поставяме календара
-        hc.view.frame = CGRect(x: finalX, y: finalY, width: calendarWidth, height: calendarHeight)
         backgroundView.addSubview(hc.view)
-        
+        layoutRangePicker()
+
         // Анимация при поява
         hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         hc.view.alpha = 0
@@ -884,8 +826,30 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         updateScreenHeader()
     }
 
+    private func layoutRangePicker() {
+        guard showCalendar, let background = calendarBackgroundView,
+              let picker = calendarHostingController?.view else { return }
+        let bounds = background.bounds
+        let margin: CGFloat = 10
+        let width = min(350, max(0, bounds.width - 2 * margin))
+        let height = min(350, max(0, bounds.height - 2 * margin))
+        let header = navBar.convert(navBar.bounds, to: background)
+        let landscape = bounds.width > bounds.height
+        let below = header.maxY + 8
+        let above = header.minY - height - 8
+        var y = below
+        if below + height > bounds.maxY - margin {
+            y = above >= bounds.minY + margin ? above : bounds.midY - height / 2
+        }
+        // MultiDay centers the picker in portrait and shifts it toward the trailing half in landscape.
+        let x = bounds.minX + (bounds.width - width) * (landscape ? 0.75 : 0.5)
+        y += landscape ? 20 : 0
+        let left = max(bounds.minX + margin, min(x, bounds.maxX - margin - width))
+        let top = max(bounds.minY + margin, min(y, bounds.maxY - margin - height))
+        picker.bounds.size = CGSize(width: width, height: height)
+        picker.center = CGPoint(x: left + width / 2, y: top + height / 2)
+    }
 
-    
     private func hideCalendarPopup() {
         guard showCalendar else { return }
         showCalendar = false

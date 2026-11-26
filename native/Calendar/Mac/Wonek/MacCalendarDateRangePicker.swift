@@ -1,7 +1,13 @@
 // Ported from Wonek Main/MacCalendarDateRangePicker.swift. HRApp data adapters are in MacCalendarAdapters.swift.
 #if os(macOS)
-#if os(macOS)
 import SwiftUI
+
+private struct MacCalendarRangeButtonBounds: PreferenceKey {
+    static let defaultValue: Anchor<CGRect>? = nil
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        if let next = nextValue() { value = next }
+    }
+}
 
 struct MacCalendarRangeButton: View {
     let title: String
@@ -22,6 +28,42 @@ struct MacCalendarRangeButton: View {
         .buttonStyle(.plain)
         .accessibilityLabel("Choose date range")
         .accessibilityValue(title)
+        .anchorPreference(key: MacCalendarRangeButtonBounds.self, value: .bounds) { $0 }
+    }
+}
+
+extension View {
+    func macCalendarRangePicker(isPresented: Binding<Bool>, start: Date, end: Date,
+                                onRangeChange: @escaping (Date, Date) -> Void) -> some View {
+        modifier(MacCalendarRangePresentation(isPresented: isPresented, start: start, end: end, onRangeChange: onRangeChange))
+    }
+}
+
+private struct MacCalendarRangePresentation: ViewModifier {
+    @Environment(\.layoutDirection) private var direction
+    @Binding var isPresented: Bool
+    let start: Date
+    let end: Date
+    let onRangeChange: (Date, Date) -> Void
+
+    func body(content: Content) -> some View {
+        content.accessibilityHidden(isPresented)
+            .overlayPreferenceValue(MacCalendarRangeButtonBounds.self) { anchor in
+                if isPresented, let anchor {
+                    GeometryReader { geometry in
+                        let button = geometry[anchor]
+                        let leading = direction == .rightToLeft ? geometry.size.width - button.maxX : button.minX
+                        ZStack(alignment: .topLeading) {
+                            Color.clear.contentShape(Rectangle())
+                                .onTapGesture { isPresented = false }
+                            MacCalendarDateRangePicker(start: start, end: end,
+                                onDismiss: { isPresented = false }, onRangeChange: onRangeChange)
+                                .padding(.leading, leading)
+                                .padding(.top, CalendarHeaderLayout.height + 2)
+                        }
+                    }
+                }
+            }
     }
 }
 
@@ -195,6 +237,4 @@ struct MacCalendarDateRangePicker: View {
         if let next = calendar.date(byAdding: .month, value: offset, to: month) { month = next }
     }
 }
-#endif
-
 #endif

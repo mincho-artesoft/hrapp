@@ -1536,13 +1536,14 @@
   font-family: inherit;
 }
 .cal-shell.shell {
+  --calendar-sidebar-width: clamp(280px, 28vw, 360px);
   width: 100%;
   max-width: none;
   margin: 0;
   padding: 0;
   height: 100%;
   display: grid;
-  grid-template-columns: clamp(280px, 28vw, 360px) minmax(0, 1fr);
+  grid-template-columns: var(--calendar-sidebar-width) minmax(0, 1fr);
   gap: 0;
   border: 0;
   border-radius: 0;
@@ -3013,7 +3014,7 @@ cc-calendar-menu {
 }
 
 .cal-shell.shell {
-  grid-template-columns: clamp(280px, 28vw, 360px) minmax(0, 1fr);
+  grid-template-columns: var(--calendar-sidebar-width) minmax(0, 1fr);
 }
 .no-sidebar .cal-shell.shell {
   grid-template-columns: minmax(0, 1fr);
@@ -3159,7 +3160,10 @@ cc-calendar-menu {
 
 .booking-timeline .cal-toolbar__left { flex: 1; min-width: 0; }
 .booking-calendar-title { min-width: 0; margin: 0; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.booking-timeline .range-anchor { margin-inline-start: auto; flex-shrink: 0; }
-.booking-timeline .range-popover { inset-inline: auto 0; }
+.booking-calendar-context { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.booking-calendar-context .toolbar-icon { flex-shrink: 0; }
+.booking-calendar-context.sidebar-space { order: -1; flex: 0 0 var(--calendar-sidebar-width); padding-inline-end: 16px; box-sizing: border-box; }
+.booking-timeline .cal-toolbar:has(.sidebar-space) { column-gap: 0; }
+.booking-timeline .range-anchor { flex-shrink: 0; }
 .ios-layout.booking-timeline .cal-shell { padding-bottom: env(safe-area-inset-bottom); }
 .booking-timeline .ev-block { cursor: default; }

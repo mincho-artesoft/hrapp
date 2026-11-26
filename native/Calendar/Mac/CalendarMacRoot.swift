@@ -63,18 +63,16 @@ struct CalendarMacRoot: View {
                                 MacTabletSearchResultsView(store: store, query: search, editorTarget: $editorTarget)
                             } else { activeView }
                         }
-                        .accessibilityHidden(viewMenuIsOpen || rangePickerIsOpen)
-                        if viewMenuIsOpen || rangePickerIsOpen {
+                        .accessibilityHidden(viewMenuIsOpen)
+                        if viewMenuIsOpen {
                             Color.black.opacity(0.001).contentShape(Rectangle())
-                                .onTapGesture { viewMenuIsOpen = false; rangePickerIsOpen = false }
+                                .onTapGesture { viewMenuIsOpen = false }
                         }
                         if viewMenuIsOpen { viewMenu.padding(.top, 48).padding(.trailing, 53) }
-                        if rangePickerIsOpen {
-                            MacCalendarDateRangePicker(start: selectedDate, end: rangeEnd, onDismiss: { rangePickerIsOpen = false }) { start, end in
-                                selectedDate = start
-                                multiDayCount = MacCalendarRangeSelection(start: start, end: end).dayCount(calendar: calendar) ?? 8
-                            }.padding(.top, 54).padding(.leading, 16).frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                    }
+                    .macCalendarRangePicker(isPresented: $rangePickerIsOpen, start: selectedDate, end: rangeEnd) { start, end in
+                        selectedDate = start
+                        multiDayCount = MacCalendarRangeSelection(start: start, end: end).dayCount(calendar: calendar) ?? 8
                     }
                 }
             }
