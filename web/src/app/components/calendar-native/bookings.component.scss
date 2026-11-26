@@ -148,11 +148,6 @@ dialog::backdrop { background: #0006; }
   :host-context(.ios-layout) { @include compact-sheet; }
 }
 
-.booking-link summary {
-  padding: 12px 16px;
-  color: var(--cal-blue);
-  cursor: pointer;
-}
 .type-option select {
   margin-inline-start: auto;
   max-width: 70%;

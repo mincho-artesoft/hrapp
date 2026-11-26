@@ -1346,7 +1346,7 @@
 "Available time" = "Свободен час";
 "Remove time slot?" = "Премахване на свободния час?";
 "Remove time slot" = "Премахни свободния час";
-"Search by name or category" = "Търси по име или категория";
+"Search by name, category, or link" = "Търси по име, категория или линк";
 "Category" = "Категория";
 "All categories" = "Всички категории";
 "Show in booking search" = "Показвай в търсенето на календари за резервации";

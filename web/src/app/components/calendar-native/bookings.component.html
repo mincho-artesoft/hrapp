@@ -165,7 +165,8 @@
     @case ('lookup') {
       <div class="native-form-group">
         <label class="native-form-row type-search"><cc-symbol name="magnifyingglass" [pointSize]="17" />
-          <input type="search" [attr.aria-label]="'Search by name or category' | nativeText" [placeholder]="'Search by name or category' | nativeText" [ngModel]="search()" (ngModelChange)="search.set($event)">
+          <input type="search" [attr.aria-label]="'Search by name, category, or link' | nativeText" [placeholder]="'Search by name, category, or link' | nativeText"
+            [ngModel]="search()" [readOnly]="busy()" (ngModelChange)="updateSearch($event)" (keydown.enter)="updateSearch(search(), true)">
         </label>
         <label class="native-form-row type-option">{{ 'Category' | nativeText }}
           <select [ngModel]="category()" (ngModelChange)="category.set($event)">
@@ -174,14 +175,6 @@
           </select>
         </label>
       </div>
-      <details class="native-form-group booking-link">
-        <summary>{{ 'Booking calendar link' | nativeText }}</summary>
-        <form (ngSubmit)="lookup()">
-          <label class="native-form-row"><input type="url" name="address" required
-            [attr.aria-label]="'Booking calendar link' | nativeText" [placeholder]="'Booking calendar link' | nativeText" [(ngModel)]="address"></label>
-          <button class="native-form-row action" [disabled]="busy() || !address.trim()">{{ 'Open' | nativeText }}</button>
-        </form>
-      </details>
       <h3 class="group-heading">{{ 'Booking calendars' | nativeText }}</h3>
       <div class="native-form-group">
         @for (item of results(); track item.id) {

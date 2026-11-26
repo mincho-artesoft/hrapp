@@ -1221,7 +1221,7 @@
 "Open Web Calendar" = "Webes naptár megnyitása";
 
 "Bookings" = "Foglalások";
-"Search by name or category" = "Keresés név vagy kategória szerint";
+"Search by name, category, or link" = "Keresés név, kategória vagy hivatkozás szerint";
 "Category" = "Kategória";
 "All categories" = "Minden kategória";
 "Show in booking search" = "Megjelenítés a foglalási keresésben";

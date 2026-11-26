@@ -1221,7 +1221,7 @@
 "Open Web Calendar" = "打开网页日历";
 
 "Bookings" = "预订";
-"Search by name or category" = "按名称或类别搜索";
+"Search by name, category, or link" = "按名称、类别或链接搜索";
 "Category" = "类别";
 "All categories" = "所有类别";
 "Show in booking search" = "在预约搜索中显示";

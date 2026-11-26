@@ -835,7 +835,6 @@ private struct BookingTimeEditor: View {
 
 private struct BookingLookupSheet: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var address = ""
     @State private var offer: BookingOffer?
     @State private var busy = false
     @State private var error: String?
@@ -889,7 +888,10 @@ private struct BookingLookupSheet: View {
                     CalendarSharingSection(rows: true) {
                         HStack {
                             Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-                            TextField("Search by name or category", text: $search).textFieldStyle(.plain)
+                            TextField("Search by name, category, or link", text: $search)
+                                .textFieldStyle(.plain)
+                                .onChange(of: search) { _, _ in openSearchLink() }
+                                .onSubmit { openSearchLink(submitted: true) }
                         }
                         Picker("Category", selection: $category) {
                             Text("All categories").tag("")
@@ -897,12 +899,6 @@ private struct BookingLookupSheet: View {
                                 Text(LocalizedStringKey(group.title)).tag(group.title)
                             }
                         }.pickerStyle(.menu)
-                    }
-                    CalendarSharingSection(rows: true) {
-                        DisclosureGroup("Booking calendar link") {
-                            TextField("Booking calendar link", text: $address).textFieldStyle(.plain)
-                            Button("Open") { lookup() }.calendarSharingRowAction().disabled(address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                        }
                     }
                     CalendarSharingSection("Booking calendars", rows: true) {
                         let results = matches
@@ -947,16 +943,21 @@ private struct BookingLookupSheet: View {
             } while after != nil
         } catch { if !Task.isCancelled { directoryError = error.localizedDescription } }
     }
-    private func lookup() {
-        guard let url = URLComponents(string: address.trimmingCharacters(in: .whitespacesAndNewlines)), url.scheme == "https",
-              ["www.cloud-calendars.com", "cloud-calendars.com"].contains(url.host ?? ""),
+    private func openSearchLink(submitted: Bool = false) {
+        guard !busy else { return }
+        error = nil
+        let text = search.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let url = URLComponents(string: text), let scheme = url.scheme?.lowercased(),
+              ["https", "http"].contains(scheme) else { return }
+        guard scheme == "https", ["www.cloud-calendars.com", "cloud-calendars.com"].contains(url.host?.lowercased() ?? ""),
               let value = url.queryItems?.first(where: { $0.name == "bookingCalendar" })?.value,
               let id = UUID(uuidString: value)?.uuidString.lowercased() else {
-            error = NSLocalizedString("Enter a booking calendar link.", comment: ""); return
+            if submitted { error = NSLocalizedString("Enter a booking calendar link.", comment: "") }
+            return
         }
-        load(id: id)
+        load(id: id, fromSearchLink: true)
     }
-    private func load(id: String, from: String? = nil) {
+    private func load(id: String, from: String? = nil, fromSearchLink: Bool = false) {
         var route = URLComponents()
         route.path = "/" + id
         if let from { route.queryItems = [.init(name: "from", value: from)] }
@@ -969,6 +970,7 @@ private struct BookingLookupSheet: View {
                 var value: BookingOffer = try await CloudCalendarsAPI.bookingRequest(path, session: session)
                 guard CalendarFeedSession.isCurrent(session) else { return }
                 if from != nil { value.slots = (offer?.slots ?? []) + value.slots }
+                if fromSearchLink { search = "" }
                 offer = value; error = nil
             } catch { self.error = error.localizedDescription }
         }

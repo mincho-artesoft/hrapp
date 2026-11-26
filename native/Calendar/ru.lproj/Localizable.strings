@@ -1217,7 +1217,7 @@
 "Open Web Calendar" = "Открыть веб-календарь";
 
 "Bookings" = "Бронирования";
-"Search by name or category" = "Поиск по имени или категории";
+"Search by name, category, or link" = "Поиск по имени, категории или ссылке";
 "Category" = "Категория";
 "All categories" = "Все категории";
 "Show in booking search" = "Показывать в поиске календарей для записи";

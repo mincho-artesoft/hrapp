@@ -146,10 +146,16 @@ export class BookingsComponent implements OnInit, OnDestroy {
   private operation = 0;
 
   ngOnInit() {
-    const id = this.route.snapshot.queryParamMap.get('bookingCalendar');
+    const id = this.route.snapshot.queryParamMap.get('bookingCalendar')?.toLowerCase();
     if (id && bookingID.test(id)) {
-      this.address = this.store.link(id).href;
-      queueMicrotask(() => {this.show('lookup'); void this.lookup();});
+      queueMicrotask(async () => {
+        this.show('lookup');
+        await this.preview(id);
+        if (this.panel() === 'lookup' && this.dialog().nativeElement.open) {
+          this.fromDirectory = true;
+          void this.loadDirectory();
+        }
+      });
     }
     this.timer = setInterval(() => {if (!document.hidden) void this.store.refresh();}, 30000);
     void this.store.refresh();
@@ -170,7 +176,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
   add() {
     if (this.mode()==='availability') this.edit(null);
     else {
-      this.address=''; this.offer.set(null); this.search.set(''); this.category.set('');
+      this.offer.set(null); this.search.set(''); this.category.set('');
       this.fromDirectory=true; this.show('lookup'); void this.loadDirectory();
     }
   }
@@ -339,14 +345,21 @@ export class BookingsComponent implements OnInit, OnDestroy {
   copyLink() {
     return this.perform(async()=>{await navigator.clipboard.writeText(this.address); this.message.set(this.locale.text('Copied'));});
   }
-  lookup() {
-    return this.perform(async()=>{
-      let url:URL;
-      try {url=new URL(this.address);} catch {throw Error(this.locale.text('Enter a booking calendar link.'));}
-      const id=url.searchParams.get('bookingCalendar');
-      if (!['www.cloud-calendars.com','cloud-calendars.com'].includes(url.hostname) || url.protocol!=='https:' || !id || !bookingID.test(id))
-        throw Error(this.locale.text('Enter a booking calendar link.'));
+  updateSearch(value:string, submitted = false) {
+    if (this.busy()) return;
+    this.search.set(value);
+    this.message.set('');
+    const text = value.trim();
+    if (!/^https?:\/\//i.test(text)) return;
+    const url = URL.canParse(text) ? new URL(text) : null;
+    const id = url?.searchParams.get('bookingCalendar')?.toLowerCase();
+    if (url?.protocol !== 'https:' || !['www.cloud-calendars.com','cloud-calendars.com'].includes(url.hostname) || !id || !bookingID.test(id)) {
+      if (submitted) this.message.set(this.locale.text('Enter a booking calendar link.'));
+      return;
+    }
+    void this.perform(async () => {
       await this.openOffer(id);
+      this.search.set('');
     });
   }
   async openOffer(id:string) {
