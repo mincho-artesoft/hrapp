@@ -59,6 +59,7 @@ export class BookingCalendarsController {
 
   @Get('directory')
   async directory(@Req() req: any, @Query('after') after?: string) {
+    const actor = req.principal.principalId;
     const prefix = 'booking-calendars/', limit = 32;
     const cursor = after === undefined ? '' : calendarKey(after);
     const keys = (await this.store.listKeys(prefix))
@@ -67,9 +68,9 @@ export class BookingCalendarsController {
     for (let offset = 0; offset < keys.length; offset += limit) {
       const batch: BookCalendar[] = await Promise.all(keys.slice(offset, offset + limit).map(key => this.store.getJSON(key)));
       for (const calendar of batch) {
-        if (!calendar || calendar.archived || calendar.listed === false) continue;
+        if (!calendar || calendar.archived || calendar.listed === false || calendar.owner === actor) continue;
         if (calendars.length === limit) return {calendars, next:calendars[limit-1].id};
-        calendars.push(guestSummary(calendar, req.principal.principalId));
+        calendars.push(guestSummary(calendar, actor));
       }
     }
     return {calendars, next:null};

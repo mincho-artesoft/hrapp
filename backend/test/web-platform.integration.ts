@@ -156,6 +156,7 @@ async function main() {
   const listed = (await bookings.directory(guest)).calendars.find(c => c.id === legacy);
   assert.deepEqual(listed, {id:legacy, title:'Studio', hostName:'Cloud Calendars user', isOwner:false,
     appointmentType:'General appointment', customType:'', color:'#0A84FF'});
+  assert.ok(!(await bookings.directory(host)).calendars.some(c => c.id === legacy));
   assert.equal((await bookings.availability(host, legacy)).isOwner,true);
   await assert.rejects(bookings.save(guest, legacy,{...legacyDoc, listed:false}));
   await bookings.save(host, legacy,{...legacyDoc, listed:false});
@@ -165,16 +166,17 @@ async function main() {
   await bookings.save(host, legacy,{title:'Studio', revision:3, slots:[], listed:true});
   assert.ok((await bookings.directory(guest)).calendars.some(c => c.id === legacy));
   await bookings.remove(host,legacy,'4');
-  assert.ok(!(await bookings.directory(host)).calendars.some(c => c.id === legacy));
-  // Cursor boundaries must account for hidden rows without disclosing their IDs.
+  assert.ok(!(await bookings.directory(guest)).calendars.some(c => c.id === legacy));
+  // Owned and unlisted calendars must not consume a place on either results page.
   const directoryStore = new MemoryStore();
   const directoryAPI = new BookingCalendarsController(directoryStore as any);
   const visible: string[] = [];
   for (let i = 0; i < 70; i++) {
     const id = '00000000-0000-4000-8000-' + String(i).padStart(12, '0');
     const listed = i % 2 === 0;
-    await directoryStore.putJSON('booking-calendars/' + id + '.json', {...legacyDoc, id, listed});
-    if (listed) visible.push(id);
+    const owner = i === 0 || i === 62 || i === 69 ? guestPrincipal.principalId : hostPrincipal.principalId;
+    await directoryStore.putJSON('booking-calendars/' + id + '.json', {...legacyDoc, id, listed, owner});
+    if (listed && owner !== guestPrincipal.principalId) visible.push(id);
   }
   const firstPage = await directoryAPI.directory(guest);
   const secondPage = await directoryAPI.directory(guest, firstPage.next);
