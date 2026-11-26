@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 protocol AccountLocalCalendarStorage: AnyObject {
-    func accountLocalDocuments() throws -> [DeviceCalendarDocument]
+    func accountLocalDocuments(matching localID: String?) throws -> [DeviceCalendarDocument]
     func applyAccountLocalDocument(_ document: DeviceCalendarDocument, localID: String?) throws -> String
     func removeAccountLocalDocument(localID: String) throws
 }
@@ -63,7 +63,7 @@ enum AccountLocalCalendarSync {
             UserDefaults.standard.set(try JSONEncoder().encode(bindings), forKey: key)
             UserDefaults.standard.set(owners, forKey: namespace + "owners")
         }
-        var local = try storage.accountLocalDocuments()
+        let local = try storage.accountLocalDocuments(matching: nil)
         for document in local where owners[document.id] == nil || owners[document.id] == inventory.ownerID {
             if bindings.values.contains(where: { $0.localID == document.id }) { continue }
             let id = DeviceCalendarReplica.hash(document.id)
@@ -82,8 +82,7 @@ enum AccountLocalCalendarSync {
             var binding = originalBinding
             var remote = inventory.calendars.first { $0.id == id }
             for attempt in 0..<3 {
-                local = try storage.accountLocalDocuments()
-                let before = local.first { $0.id == binding.localID }
+                let before = try storage.accountLocalDocuments(matching: binding.localID).first
                 if let remote, !remote.available {
                     if before != nil { try storage.removeAccountLocalDocument(localID: binding.localID) }
                     binding.baseline = remote; bindings[id] = binding; try save(); break
@@ -128,7 +127,7 @@ enum AccountLocalCalendarSync {
                     remote = try await replica.send(JSONEncoder().encode(body)); continue
                 }
                 try verify(session)
-                if let before, let latest = try storage.accountLocalDocuments().first(where: { $0.id == binding.localID }) {
+                if let before, let latest = try storage.accountLocalDocuments(matching: binding.localID).first {
                     var applied = saved
                     applied.events = try DeviceCalendarReplica.merge(base: canonical(before, id: id).events, local: saved.events, remote: canonical(latest, id: id).events)
                     if latest.title != before.title { applied.title = latest.title }

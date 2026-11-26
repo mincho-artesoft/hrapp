@@ -2,8 +2,10 @@
 import Foundation
 
 extension CalendarMacStore: AccountLocalCalendarStorage {
-    func accountLocalDocuments() throws -> [DeviceCalendarDocument] {
-        try local.filter { !$0.isReceivedSharedCalendar && !$0.id.hasPrefix("provider-") && $0.available }.map { document in
+    func accountLocalDocuments(matching localID: String?) throws -> [DeviceCalendarDocument] {
+        try local.filter {
+            (localID == nil || $0.id == localID) && !$0.isReceivedSharedCalendar && !$0.id.hasPrefix("provider-") && $0.available
+        }.map { document in
             var value = document
             value.events = try document.events.map(MacCalendarSharingMerge.wireSnapshot)
             // Read-only received event copies remain read-only on every device.

@@ -5,6 +5,7 @@ import { StoreService } from '../store/store.service';
 import { ApiResult, result } from '../common/api-result';
 
 const webBirthdaysID = 'system:birthdays';
+const inventoryReadBatchSize = 4;
 
 function isAppleBirthdays(calendar: any): boolean {
   if (calendar.allowsChanges !== false || calendar.accountLocal || calendar.providerMirrorID) return false;
@@ -70,7 +71,18 @@ export class NativeCalendarStore {
 
   async list(principal: any): Promise<any[]> {
     const keys = await this.store.listKeys(this.prefix(principal));
-    return (await Promise.all(keys.map(key => this.readCalendar(key)))).filter(Boolean);
+    const calendars: any[] = [];
+    // Each object is a separate storage request. Drain each batch, including on
+    // failure, so a retry cannot overlap the outstanding reads from this list.
+    for (let offset = 0; offset < keys.length; offset += inventoryReadBatchSize) {
+      const batch = keys.slice(offset, offset + inventoryReadBatchSize);
+      const reads = await Promise.allSettled(batch.map(key => this.readCalendar(key)));
+      for (const read of reads) {
+        if (read.status === 'rejected') throw read.reason;
+        if (read.value) calendars.push(read.value);
+      }
+    }
+    return calendars;
   }
 
   /** One provider calendar can have a replica on each device. Keep their storage

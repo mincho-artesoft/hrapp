@@ -8,7 +8,36 @@ class MemoryStore {
   async putJSONIfAbsent(k: string, v: any) { if (this.data.has(k)) return false; this.data.set(k, { value: structuredClone(v), etag: '1' }); return true; }
   async putJSONIfMatch(k: string, v: any, etag: string) { if (this.data.get(k)?.etag !== etag) return false; this.data.set(k, { value: structuredClone(v), etag: String(Number(etag) + 1) }); return true; }
 }
+async function testLargeCalendarInventory() {
+  const keys = Array.from({length: 65}, (_, i) => `principal/alice/native-calendars/${i}.json`);
+  let activeReads = 0;
+  let peakReads = 0;
+  let failingKey: string | undefined;
+  const storage = {
+    async listKeys() { return keys; },
+    async getJSON(key: string) {
+      activeReads++;
+      peakReads = Math.max(peakReads, activeReads);
+      try {
+        await new Promise<void>(resolve => setImmediate(resolve));
+        if (key === failingKey) throw new Error('Storage unavailable');
+        return key === keys[2] ? null : {id: key};
+      } finally {
+        activeReads--;
+      }
+    },
+  };
+  const calendars = new NativeCalendarStore(storage as any);
+  const owner = {principalId: 'alice'};
+  failingKey = keys[17];
+  await assert.rejects(calendars.list(owner), /Storage unavailable/);
+  failingKey = undefined;
+  const inventory = await calendars.list(owner);
+  assert.deepEqual(inventory.map(c => c.id), keys.filter(key => key !== keys[2]));
+  assert.ok(peakReads <= 4, `Calendar inventory started ${peakReads} simultaneous reads`);
+}
 async function main() {
+  await testLargeCalendarInventory();
   const store = new MemoryStore(), api = new NativeCalendarStore(store as any);
   const owner = { principalId: 'alice' }, stranger = { principalId: 'bob' };
   const event = { id: 'event_one', title: 'From phone', start: '2026-11-17T10:00:00Z', end: '2026-11-17T11:00:00Z', allDay: false, details: { notes: 'preserve', attachments: [{ data: 'keep' }] } };

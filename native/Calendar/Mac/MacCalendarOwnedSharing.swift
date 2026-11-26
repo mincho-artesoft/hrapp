@@ -23,7 +23,8 @@ final class MacCalendarOwnedSharing {
     }
 
     func shareID(localID: String) throws -> String? {
-        try read().values.first { $0.accountID == backend.cloudSession?.calendarId && $0.localID == localID }?.shareID
+        guard let session = backend.cloudSession else { return nil }
+        return try read()[session.calendarId + ":" + localID]?.shareID
     }
 
     func registerAndSync(localID: String, shareID: String) async throws {

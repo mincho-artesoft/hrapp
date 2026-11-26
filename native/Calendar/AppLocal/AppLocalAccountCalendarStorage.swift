@@ -6,8 +6,10 @@ import UIKit
 final class AppLocalAccountCalendarStorage: AccountLocalCalendarStorage {
     static let shared = AppLocalAccountCalendarStorage()
     private var store: AppLocalCalendarStore { .shared }
-    func accountLocalDocuments() throws -> [DeviceCalendarDocument] {
-        try store.ownedCalendars.filter { !$0.isPersonalCloud && !$0.isRevoked }.map { calendar in
+    func accountLocalDocuments(matching localID: String?) throws -> [DeviceCalendarDocument] {
+        try store.ownedCalendars.filter {
+            (localID == nil || $0.id == localID) && !$0.isPersonalCloud && !$0.isRevoked
+        }.map { calendar in
             var document = DeviceCalendarDocument(id: calendar.id, deviceId: DeviceCalendarReplica.deviceID, deviceName: UIDevice.current.name,
                 title: calendar.title, source: "Local Calendars", color: calendar.colorHex, allowsChanges: true,
                 events: try store.events.filter { $0.calendarID == calendar.id }.map(NativeCalendarSyncService.snapshot))
