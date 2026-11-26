@@ -160,7 +160,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
       this.offer.set({...page,slots:[...previous.slots,...page.slots]});
     });
   }
-  private timer?: ReturnType<typeof setInterval>;
   private operation = 0;
 
   ngOnInit() {
@@ -175,10 +174,8 @@ export class BookingsComponent implements OnInit, OnDestroy {
         }
       });
     }
-    this.timer = setInterval(() => {if (!document.hidden) void this.store.refresh();}, 30000);
-    void this.store.refresh();
   }
-  ngOnDestroy() {clearInterval(this.timer); ++this.operation; ++this.directoryVersion;}
+  ngOnDestroy() {++this.operation; ++this.directoryVersion;}
   matches(...values:string[]) {return values.join(' ').toLocaleLowerCase().includes(this.query().trim().toLocaleLowerCase());}
   private readonly rangeDate = computed(() =>
     new Intl.DateTimeFormat(this.locale.formattingLocale(), {dateStyle: 'medium'}));

@@ -2,7 +2,7 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { CalendarPlatformApiService } from './calendar-platform-api.service';
 import { bookingTimelineEvents } from './booking-timeline';
-import { BookingCalendar, BookingTimelineMove, BookingWorkspace } from './booking-workspace';
+import { Appointment, BookingCalendar, BookingTimelineMove, BookingWorkspace } from './booking-workspace';
 
 describe('booking timeline drops', () => {
   const interval = (hour: number) => ({
@@ -70,5 +70,27 @@ describe('booking timeline drops', () => {
       ['request-reservation', slot.start], ['proposal-reservation', move.start],
     ]);
     expect(events(reserved, []).map(row => row.start)).toEqual([slot.start]);
+  });
+});
+
+describe('in-app booking change notices', () => {
+  it('surfaces outstanding guest proposals first and clears them on sign-out', async () => {
+    const token = signal<string | null>('guest');
+    const slot = {id: 'slot', start: '2099-01-01T09:00:00Z', end: '2099-01-01T10:00:00Z'};
+    const booking: Appointment = {...slot, id: 'booking', slotId: slot.id, status: 'accepted', hostName: 'Host',
+      guestName: 'Guest', calendarId: 'studio', calendarTitle: 'Studio'};
+    const changed = {...booking, id: 'changed', proposal: {...slot, id: 'proposal'}};
+    const past = {...changed, id: 'past', status: 'past' as const};
+    const owned = {id: 'owned', title: 'Owned', revision: 1, slots: [], requests: [{...changed, id: 'outgoing'}]};
+    const api = {token, nativeCalendarRequest: async () => ({calendars: [owned], appointments: [booking, past, changed]})};
+    TestBed.configureTestingModule({providers: [BookingWorkspace, {provide: CalendarPlatformApiService, useValue: api}]});
+    const workspace = TestBed.inject(BookingWorkspace);
+    TestBed.flushEffects();
+    await workspace.refresh();
+    expect(workspace.pendingChanges().map(r => r.id)).toEqual(['changed']);
+    expect(workspace.appointmentsForReview().map(r => r.id)).toEqual(['changed', 'booking', 'past']);
+    token.set(null);
+    TestBed.flushEffects();
+    expect(workspace.pendingChanges()).toEqual([]);
   });
 });

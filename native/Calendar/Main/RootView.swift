@@ -300,6 +300,14 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
         }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            BookingChangeNotice(reviewing: selectedTab == CalendarHeaderMode.bookings.rawValue && bookingMode == .appointments && bookingTimelineID == nil && menuState == .collapsed) {
+                menuState = .collapsed
+                bookingTimelineID = nil
+                bookingMode = .appointments
+                selectedTab = CalendarHeaderMode.bookings.rawValue
+            }
+        }
         .overlay(alignment: .top) {
             if eventSharePromptManager.event != nil {
                 EventSharePromptView(manager: eventSharePromptManager)

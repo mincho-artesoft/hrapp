@@ -75,7 +75,7 @@
       }
     } @empty { <p class="empty">{{ 'No booking calendars yet.' | nativeText }}</p> }
   } @else {
-    @for (r of store.data().appointments; track r.id) {
+    @for (r of store.appointmentsForReview(); track r.id) {
       @if (matches(r.calendarTitle, r.hostName, statusLabel(r), locale.text(statusLabel(r)))) {
         <article class="native-form-group">
           <div class="native-form-row request">

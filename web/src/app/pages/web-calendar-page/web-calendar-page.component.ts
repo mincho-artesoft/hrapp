@@ -295,6 +295,7 @@ export class WebCalendarPageComponent
   ];
   readonly bookingPanel = viewChild(BookingsComponent);
   private readonly bookingStore = inject(BookingWorkspace);
+  readonly bookingChanges = this.bookingStore.pendingChanges;
   private readonly queryParams = toSignal(this.route.queryParamMap);
   readonly bookingCalendar = computed(() => {
     const id = this.bookingsRoute && this.queryParams()?.get('bookingSchedule');
@@ -330,6 +331,16 @@ export class WebCalendarPageComponent
     if (!this.bookingModes.some(option => option.value === mode)) return;
     this.bookingMode.set(mode);
     this.rememberView("cc.bookings.mode", mode);
+  }
+  openBookingChanges() {
+    this.selectBookingMode('appointments');
+    this.searchOpen.set(false);
+    this.searchText.set('');
+    this.drawerOpen.set(false);
+    this.rangeOpen.set(false);
+    this.modePicker.set(false);
+    const href = this.activeLocale.calendarHref('/calendar/bookings', this.locale);
+    void this.router.navigateByUrl(Location.stripTrailingSlash(href));
   }
   readonly modePicker = signal(false);
   readonly viewport = signal({width:1280,height:800,touch:false});

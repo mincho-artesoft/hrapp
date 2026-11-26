@@ -3167,3 +3167,27 @@ cc-calendar-menu {
 .booking-timeline .range-anchor { flex-shrink: 0; }
 .ios-layout.booking-timeline .cal-shell { padding-bottom: env(safe-area-inset-bottom); }
 .booking-timeline .ev-block:not(.is-readonly) { cursor: grab; }
+.booking-change-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--cal-line);
+  background: var(--cal-panel);
+  color: var(--cal-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.booking-change-notice > cc-symbol { color: var(--cal-blue); }
+.booking-change-label { display: grid; flex: 1; min-width: 0; }
+.booking-change-label > span {
+  overflow: hidden;
+  color: var(--cal-muted);
+  font-size: 0.9em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

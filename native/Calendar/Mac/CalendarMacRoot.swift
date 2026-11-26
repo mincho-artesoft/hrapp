@@ -78,6 +78,15 @@ struct CalendarMacRoot: View {
             }
         }
         .background(CalendarPalette.background)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            BookingChangeNotice(reviewing: selectedTab == MacCalendarMode.bookings.rawValue && bookingMode == .appointments && bookingTimelineID == nil && !searching) {
+                search = ""; searching = false
+                viewMenuIsOpen = false; rangePickerIsOpen = false
+                bookingTimelineID = nil
+                bookingMode = .appointments
+                selectedTab = MacCalendarMode.bookings.rawValue
+            }
+        }
         .preferredColorScheme(appPreferences.theme.preferredColorScheme)
         .appSheet(item: $editorTarget) { target in
             MacTabletEventEditor(store: store, target: target) { editorTarget = nil }

@@ -163,6 +163,18 @@
 
       <!-- Main Calendar Canvas -->
       <div class="cal-main">
+        <div aria-live="polite">
+          @if (bookingChanges()[0]; as first) {
+            @if (!bookingsRoute || bookingMode() !== 'appointments' || bookingCalendar() || (searchOpen() && searchText())) {
+              <button class="booking-change-notice" type="button" (click)="openBookingChanges()">
+                <cc-symbol name="bell.fill" [pointSize]="18" />
+                <span class="booking-change-label"><strong>{{ 'Proposed change' | nativeText }}</strong><span>{{ first.calendarTitle }}</span></span>
+                @if (bookingChanges().length > 1) { <span>{{ bookingChanges().length }}</span> }
+                <cc-symbol name="chevron.forward" [pointSize]="14" />
+              </button>
+            }
+          }
+        </div>
         @if (workspaceError()) {
           <div class="workspace-status" role="alert">
             <span>{{ workspaceError() }}</span>

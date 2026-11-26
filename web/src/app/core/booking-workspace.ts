@@ -1,4 +1,4 @@
-import { DestroyRef, effect, inject, Injectable, signal, untracked } from '@angular/core';
+import { DestroyRef, computed, effect, inject, Injectable, signal, untracked } from '@angular/core';
 import { CalendarPlatformApiService, CalendarRepeatRule, WebCalendarEventDetails } from './calendar-platform-api.service';
 
 export interface BookingPurpose { appointmentType?:string; customType?:string }
@@ -30,12 +30,18 @@ export const bookingID = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 export class BookingWorkspace {
   readonly api = inject(CalendarPlatformApiService);
   readonly data = signal<Workspace>({ calendars: [], appointments: [] });
+  readonly pendingChanges = computed(() => this.data().appointments.filter(r =>
+    r.proposal && r.calendarId && (r.status === 'accepted' || r.status === 'pending')));
+  readonly appointmentsForReview = computed(() => {
+    const pending = new Set(this.pendingChanges());
+    return [...pending, ...this.data().appointments.filter(r => !pending.has(r))];
+  });
   readonly error = signal('');
   readonly loaded = signal(false);
   readonly pendingMoves = signal<BookingTimelineMove[]>([]);
   private generation = 0;
   constructor() {
-    effect(() => {
+    effect(onCleanup => {
       const token = this.api.token();
       untracked(() => {
         ++this.generation;
@@ -43,7 +49,18 @@ export class BookingWorkspace {
         this.data.set({calendars: [], appointments: []});
         this.loaded.set(false);
         this.error.set('');
-        if (token) void this.refresh();
+        if (!token) return;
+        void this.refresh();
+        if (typeof document === 'undefined') return;
+        const refreshVisible = () => {
+          if (document.visibilityState === 'visible') void this.refresh();
+        };
+        const timer = setInterval(refreshVisible, 30_000);
+        document.addEventListener('visibilitychange', refreshVisible);
+        onCleanup(() => {
+          clearInterval(timer);
+          document.removeEventListener('visibilitychange', refreshVisible);
+        });
       });
     });
     inject(DestroyRef).onDestroy(() => ++this.generation);

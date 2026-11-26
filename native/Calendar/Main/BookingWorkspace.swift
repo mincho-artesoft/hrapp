@@ -37,6 +37,7 @@ struct BookingAppointment: Codable, Identifiable {
     var interval: BookingInterval { .init(id: slotId, start: start, end: end, title: title, location: location, structuredLocation: structuredLocation) }
     var eventStatus: BookingEventStatus { BookingEventStatus(rawValue: status) ?? .unknown }
     var active: Bool { status == "pending" || status == "accepted" }
+    var needsChangeResponse: Bool { active && proposal != nil && calendarId != nil }
 }
 struct HostedBookingCalendar: Codable, Identifiable {
     var id = UUID().uuidString.lowercased()
@@ -66,6 +67,8 @@ struct HostedBookingCalendar: Codable, Identifiable {
 private struct BookingData: Codable {
     var calendars: [HostedBookingCalendar] = []
     var appointments: [BookingAppointment] = []
+    var pendingChanges: [BookingAppointment] { appointments.filter(\.needsChangeResponse) }
+    var appointmentsForReview: [BookingAppointment] { pendingChanges + appointments.filter { !$0.needsChangeResponse } }
 }
 private struct BookingOffer: Decodable {
     let id, title, hostName: String
@@ -198,7 +201,7 @@ private final class BookingStore: ObservableObject {
             loaded = true
             error = nil
         } catch {
-            if generation == version && CalendarFeedSession.isCurrent(session) { self.error = error.localizedDescription }
+            if !Task.isCancelled && generation == version && CalendarFeedSession.isCurrent(session) { self.error = error.localizedDescription }
         }
     }
     func move(_ entry: BookingTimelineEntry, to interval: DateInterval, in calendar: HostedBookingCalendar,
@@ -228,6 +231,48 @@ private final class BookingStore: ObservableObject {
         guard CalendarFeedSession.isCurrent(session) else { throw CancellationError() }
         await refresh()
         return receipt
+    }
+}
+
+struct BookingChangeNotice: View {
+    let reviewing: Bool
+    let open: () -> Void
+    @Environment(\.scenePhase) private var scenePhase
+    @ObservedObject private var account = CloudAccountManager.shared
+    @ObservedObject private var store = BookingStore.shared
+
+    var body: some View {
+        VStack(spacing: 0) {
+            if !reviewing, account.isSignedIn, let session = CalendarFeedSession.existing, store.belongs(to: session),
+               let first = store.data.pendingChanges.first {
+                Button(action: open) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "bell.fill").foregroundStyle(Color.appBlue)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Proposed change").font(.headline)
+                            Text(verbatim: first.calendarTitle).font(.subheadline).foregroundStyle(.secondary).lineLimit(1)
+                        }
+                        Spacer()
+                        if store.data.pendingChanges.count > 1 {
+                            Text(verbatim: String(store.data.pendingChanges.count)).monospacedDigit()
+                        }
+                        Image(systemName: "chevron.forward").font(.caption).foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal, 16).padding(.vertical, 6)
+                    .frame(minHeight: 44).contentShape(Rectangle())
+                }
+                .buttonStyle(.plain).accessibilityHint(Text("My bookings"))
+                .background(CalendarPalette.secondaryGroupedBackground)
+                Divider()
+            }
+        }
+        .task(id: scenePhase == .active && account.isSignedIn) {
+            guard scenePhase == .active, account.isSignedIn else { return }
+            while !Task.isCancelled {
+                await store.refresh()
+                do { try await Task.sleep(for: .seconds(30)) } catch { return }
+            }
+        }
     }
 }
 
@@ -278,12 +323,6 @@ private struct SignedInBookingsContent: View {
             } else {
                 bookingList
             }
-        }
-        .task {
-            repeat {
-                await store.refresh()
-                do { try await Task.sleep(for: .seconds(30)) } catch { return }
-            } while !Task.isCancelled
         }
         .onChange(of: store.data.calendars.map(\.id)) { _, ids in
             if let timelineID, !ids.contains(timelineID) { self.timelineID = nil }
@@ -370,7 +409,7 @@ private struct SignedInBookingsContent: View {
                 }
             } else {
                 if store.data.appointments.isEmpty { Text("No bookings yet.").foregroundStyle(.secondary) }
-                ForEach(store.data.appointments) { r in
+                ForEach(store.data.appointmentsForReview) { r in
                     CalendarSharingSection(rows: true) {
                       VStack(alignment: .leading) {
                         bookingRow(r.calendarTitle, r)
