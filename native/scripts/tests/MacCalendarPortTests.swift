@@ -20,6 +20,19 @@ struct MacCalendarPortTests {
         assert(expanded.map(\.start) == ["2026-01-26T10:00:00Z", "2026-03-30T10:00:00Z", "2026-05-25T10:00:00Z", "2026-07-27T10:00:00Z"])
         assert(expanded.allSatisfy { $0.id == anchor.id && $0.details?["futureField"] == .bool(true) })
         assert(anchor.start == "2026-01-26T10:00:00Z")
+        let selected = expanded[1]
+        let newTime = DateInterval(start: selected.startDate.addingTimeInterval(7_200), duration: 5_400)
+        let move = try AppLocalRecurrence.reschedule(anchor, occurrence: selected.startDate,
+            interval: newTime, allDay: false, span: .thisEvent, newID: "detached")
+        let stored = try JSONEncoder().encode([move.retained!, move.moved])
+        let reloaded = try JSONDecoder().decode([DeviceCalendarEvent].self, from: stored)
+        let remaining = AppLocalRecurrence.occurrences(of: reloaded[0], from: anchor.startDate,
+            to: DeviceCalendarEvent.date("2027-01-01T00:00:00Z")!)
+        assert(remaining.map(\.start) == expanded.filter { $0.start != selected.start }.map(\.start))
+        assert(reloaded[0].start == anchor.start && reloaded[0].macRecurrenceRules == anchor.macRecurrenceRules)
+        assert(reloaded[1].id == "detached" && reloaded[1].macRecurrenceRules.isEmpty)
+        assert(reloaded[1].startDate == newTime.start && reloaded[1].endDate == newTime.end)
+        assert(reloaded[1].details?["futureField"] == .bool(true))
         // All-day recurrence keeps local midnight through the spring DST change.
         var allDay = DeviceCalendarEvent(id: "dst", title: "All day", start: "2026-03-28T22:00:00Z", end: "2026-03-29T21:00:00Z", allDay: true)
         let daily = SharedEventRecurrenceRule(rule: EKRecurrenceRule(recurrenceWith: .daily, interval: 1, end: EKRecurrenceEnd(occurrenceCount: 2)))

@@ -1,19 +1,10 @@
 // Ported from Wonek AppLocal/AppLocalRecurrence.swift, adapted to HRApp documents.
-#if os(macOS)
 import Foundation
+import EventKit
 
 /// Expands display occurrences without creating stored events or publishing
 /// derived copies. Recurrence dates use the event's zone, not the device's zone.
 enum AppLocalRecurrence {
-    private static let endDateFormatterLock = NSLock()
-    nonisolated(unsafe) private static let endDateFormatter = ISO8601DateFormatter()
-
-    private static func parseEndDate(_ value: String) -> Date? {
-        endDateFormatterLock.lock()
-        defer { endDateFormatterLock.unlock() }
-        return endDateFormatter.date(from: value)
-    }
-
     static func occurrences(of event: DeviceCalendarEvent, from lower: Date, to upper: Date) -> [DeviceCalendarEvent] {
         guard lower < upper, event.startDate < upper else { return [] }
         var calendar = Calendar(identifier: .gregorian)
@@ -42,7 +33,70 @@ enum AppLocalRecurrence {
             starts.formUnion(dates(rule, start: event.startDate, lower: min(searchStart, lower.addingTimeInterval(-duration)),
                 upper: upper, calendar: calendar))
         }
-        return starts.sorted().map(occurrence).filter(overlaps)
+        return starts.subtracting(event.localExcludedStarts).sorted().map(occurrence).filter(overlaps)
+    }
+
+    /// Keeps generated occurrences out of storage. The original date identifies the
+    /// exception, even when the dragged event is a clipped slice of a multi-day event.
+    static func reschedule(_ series: DeviceCalendarEvent, occurrence: Date, interval: DateInterval,
+                           allDay: Bool, span: EKSpan, newID: String) throws -> (retained: DeviceCalendarEvent?, moved: DeviceCalendarEvent) {
+        let rules = series.macRecurrenceRules
+        guard !rules.isEmpty, occurrences(of: series, from: occurrence, to: occurrence.addingTimeInterval(1))
+                .contains(where: { $0.startDate == occurrence }) else {
+            throw NSError(domain: "CalendarRecurrence", code: 409, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("This calendar changed. Refresh and try again.", comment: "")])
+        }
+        var retained = series, moved = series
+        moved.start = DeviceCalendarEvent.iso(interval.start)
+        moved.end = DeviceCalendarEvent.iso(interval.end)
+        moved.allDay = allDay
+        moved.id = newID
+        moved.updatedAt = nil
+        if span == .thisEvent {
+            retained.localExcludedStarts.insert(occurrence)
+            moved.details?["recurrenceRules"] = .array([])
+            moved.localExcludedStarts = []
+            return (retained, moved)
+        }
+
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = series.details?["timeZone"]?.string.flatMap(TimeZone.init(identifier:)) ?? .current
+        calendar.firstWeekday = 2
+        calendar.minimumDaysInFirstWeek = 4
+        let dayShift = calendar.dateComponents([.day], from: calendar.startOfDay(for: occurrence), to: calendar.startOfDay(for: interval.start)).day ?? 0
+        let clockShift = calendar.dateComponents([.day,.hour,.minute,.second], from: occurrence, to: interval.start)
+        func shifted(_ date: Date) -> Date { calendar.date(byAdding: clockShift, to: date) ?? date.addingTimeInterval(interval.start.timeIntervalSince(occurrence)) }
+        var pastRules: [CalendarJSON] = [], futureRules: [CalendarJSON] = []
+        for rule in rules {
+            var future = try CalendarJSON.object(encoding: rule), past = future
+            let cutoff = occurrence.addingTimeInterval(-1)
+            if rule.endDate.flatMap(DeviceCalendarEvent.date).map({ $0 < occurrence }) == true {
+                pastRules.append(.object(past))
+                continue
+            }
+            past["endDate"] = .string(DeviceCalendarEvent.iso(cutoff))
+            past.removeValue(forKey: "occurrenceCount")
+            pastRules.append(.object(past))
+            if let count = rule.occurrenceCount, count > 0, occurrence > series.startDate {
+                let used = 1 + dates(rule, start: series.startDate, lower: series.startDate, upper: occurrence, calendar: calendar).count
+                guard count > used else { continue }
+                future["occurrenceCount"] = .number(Double(count - used))
+            }
+            if let until = rule.endDate.flatMap(DeviceCalendarEvent.date) {
+                future["endDate"] = .string(DeviceCalendarEvent.iso(shifted(until)))
+            }
+            if rule.frequency <= 1, dayShift != 0, let weekdays = rule.daysOfTheWeek {
+                future["daysOfTheWeek"] = .array(weekdays.map {
+                    .object(["weekday": .number(Double((($0.weekday - 1 + dayShift) % 7 + 7) % 7 + 1)), "weekNumber": .number(Double($0.weekNumber))])
+                })
+            }
+            futureRules.append(.object(future))
+        }
+        moved.details?["recurrenceRules"] = .array(futureRules)
+        moved.localExcludedStarts = Set(series.localExcludedStarts.filter { $0 >= occurrence }.map(shifted))
+        if occurrence == series.startDate { moved.id = series.id; return (nil, moved) }
+        retained.details?["recurrenceRules"] = .array(pastRules)
+        retained.localExcludedStarts = series.localExcludedStarts.filter { $0 < occurrence }
+        return (retained, moved)
     }
 
     private static func dates(_ rule: SharedEventRecurrenceRule, start: Date, lower: Date,
@@ -51,7 +105,7 @@ enum AppLocalRecurrence {
         let usesWeekYear = rule.frequency == 3 && !(rule.weeksOfTheYear ?? []).isEmpty
         let component: Calendar.Component = usesWeekYear ? .yearForWeekOfYear : [.day, .weekOfYear, .month, .year][rule.frequency]
         guard let initialPeriod = calendar.dateInterval(of: component, for: start)?.start else { return [] }
-        let until = rule.endDate.flatMap { parseEndDate($0) }
+        let until = rule.endDate.flatMap(DeviceCalendarEvent.date)
         let limit = rule.occurrenceCount.flatMap { $0 > 0 ? $0 : nil }
         if limit == 1 { return [] }
         let time = calendar.dateComponents([.hour, .minute, .second], from: start)
@@ -140,4 +194,16 @@ enum AppLocalRecurrence {
     }
 }
 
-#endif
+
+extension DeviceCalendarEvent {
+    var localExcludedStarts: Set<Date> {
+        get {
+            let strings: [String] = decodedDetail("excludedStarts") ?? []
+            return Set(strings.compactMap(Self.date))
+        }
+        set {
+            if newValue.isEmpty { details?.removeValue(forKey: "excludedStarts") }
+            else { details?["excludedStarts"] = .array(newValue.sorted().map { .string(Self.iso($0)) }) }
+        }
+    }
+}

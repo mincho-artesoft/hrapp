@@ -1,4 +1,5 @@
 import Combine
+import EventKit
 import CryptoKit
 import Foundation
 import UIKit
@@ -150,6 +151,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
     var isCancelled: Bool
     /// Optional fields keep snapshots from earlier app versions decodable.
     var travelTime: TimeInterval?
+    var excludedStarts: [String]?
     var recurrenceRules: [SharedEventRecurrenceRule]?
     var structuredLocation: SharedEventLocation?
     var attachments: [AppLocalEventAttachment]?
@@ -174,6 +176,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         if alarms.map(\.relativeOffset) != details.alarms.compactMap(\.relativeOffset) {
             alarms = details.alarms.compactMap { $0.relativeOffset.map { AppLocalEventAlarm(relativeOffset: $0) } }
         }
+        excludedStarts = details.excludedStarts
         recurrenceRules = details.recurrenceRules
         structuredLocation = details.structuredLocation
         videoCallURL = details.videoCallURL
@@ -187,7 +190,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         let wireAlarms = previous.compactMap(\.relativeOffset) == relative
             ? previous : relative.map { SharedEventAlarm(relativeOffset: $0) } + previous.filter { $0.absoluteDate != nil }
         return SharedEventDetails(notes: notes.isEmpty ? nil : notes, timeZone: timeZoneIdentifier,
-            availability: syncedFields?.availability ?? 0, alarms: wireAlarms, recurrenceRules: recurrenceRules ?? [],
+            availability: syncedFields?.availability ?? 0, alarms: wireAlarms, recurrenceRules: recurrenceRules ?? [], excludedStarts: excludedStarts,
             structuredLocation: structuredLocation, videoCallURL: videoCallURL, organizer: syncedFields?.organizer,
             attendees: syncedFields?.attendees ?? [], travelTime: travelTime, attachments: attachments?.map(\.sharedValue))
     }
@@ -214,6 +217,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         isCancelled: Bool = false,
         travelTime: TimeInterval? = nil,
         recurrenceRules: [SharedEventRecurrenceRule]? = nil,
+        excludedStarts: [String]? = nil,
         structuredLocation: SharedEventLocation? = nil,
         attachments: [AppLocalEventAttachment]? = nil,
         syncedFields: SyncedFields? = nil
@@ -236,6 +240,7 @@ struct AppLocalEventRecord: Codable, Equatable, Identifiable {
         self.isCancelled = isCancelled
         self.travelTime = travelTime
         self.recurrenceRules = recurrenceRules
+        self.excludedStarts = excludedStarts
         self.structuredLocation = structuredLocation
         self.attachments = attachments
         self.syncedFields = syncedFields
@@ -413,6 +418,7 @@ final class AppLocalCalendarStore: ObservableObject {
                 isCancelled: remote.isRevoked,
                 travelTime: value.details?.travelTime,
                 recurrenceRules: value.details?.recurrenceRules,
+                excludedStarts: value.details?.excludedStarts,
                 structuredLocation: value.details?.structuredLocation,
                 attachments: value.details?.attachments?.map(AppLocalEventAttachment.init),
                 syncedFields: value.details.map(AppLocalEventRecord.SyncedFields.init)
@@ -507,6 +513,7 @@ final class AppLocalCalendarStore: ObservableObject {
                 isCancelled: false,
                 travelTime: value.details?.travelTime,
                 recurrenceRules: value.details?.recurrenceRules,
+                excludedStarts: value.details?.excludedStarts,
                 structuredLocation: value.details?.structuredLocation,
                 attachments: value.details?.attachments?.map(AppLocalEventAttachment.init),
                 syncedFields: value.details.map(AppLocalEventRecord.SyncedFields.init)
@@ -597,12 +604,19 @@ final class AppLocalCalendarStore: ObservableObject {
 
     func events(from start: Date, to end: Date, selectedCalendarIDs: Set<String>) -> [AppLocalEventRecord] {
         let visibleIDs = Set(visibleCalendars.map(\.id))
-        return events.filter {
-            visibleIDs.contains($0.calendarID)
-                && ReceivedSharingVisibility.isVisible($0.id, kind: "event")
-                && selectedCalendarIDs.contains($0.calendarID)
-                && $0.startDate < end
-                && $0.endDate > start
+        return events.flatMap { event -> [AppLocalEventRecord] in
+            guard visibleIDs.contains(event.calendarID), selectedCalendarIDs.contains(event.calendarID),
+                  ReceivedSharingVisibility.isVisible(event.id, kind: "event") else { return [] }
+            guard !(event.recurrenceRules ?? []).isEmpty, calendar(id: event.calendarID)?.isProvider != true,
+                  let series = try? NativeCalendarSyncService.snapshot(event) else {
+                return event.startDate < end && event.endDate > start ? [event] : []
+            }
+            return AppLocalRecurrence.occurrences(of: series, from: start, to: end).map { occurrence in
+                var displayed = event
+                displayed.startDate = occurrence.startDate
+                displayed.endDate = occurrence.endDate
+                return displayed
+            }
         }
     }
 
@@ -650,6 +664,31 @@ final class AppLocalCalendarStore: ObservableObject {
         SharedEventSyncManager.eventStoreDidChange()
     }
 
+    func moveOccurrence(of event: AppLocalEventRecord, originalStart: Date, interval: DateInterval,
+                        allDay: Bool, destination: String?, span: EKSpan) throws {
+        guard let current = self.event(id: event.id), current.updatedAt == event.updatedAt,
+              current.providerReadOnly != true, calendar(id: current.calendarID)?.canEditEvents == true,
+              destination.map({ calendar(id: $0)?.canEditEvents == true }) ?? true else { throw CalendarTimelineTransfer.unavailable() }
+        let series = try NativeCalendarSyncService.snapshot(current)
+        let newID = "app-local-event:" + UUID().uuidString.lowercased()
+        let plan = try AppLocalRecurrence.reschedule(series, occurrence: originalStart, interval: interval, allDay: allDay,
+            span: span, newID: newID)
+        func record(_ item: DeviceCalendarEvent, calendarID: String) -> AppLocalEventRecord {
+            var copy = current
+            copy.calendarID = calendarID
+            if item.id != series.id { copy.id = newID; copy.remoteEventID = nil; copy.createdAt = Date() }
+            copy.startDate = item.startDate; copy.endDate = item.endDate; copy.isAllDay = item.allDay
+            copy.recurrenceRules = item.macRecurrenceRules
+            copy.excludedStarts = item.decodedDetail("excludedStarts")
+            copy.updatedAt = Date()
+            return copy
+        }
+        var updated = events.filter { $0.id != current.id }
+        if let retained = plan.retained { updated.append(record(retained, calendarID: current.calendarID)) }
+        if let destination { updated.append(record(plan.moved, calendarID: destination)) }
+        try persistTransferredEvents(updated)
+    }
+
     func moveEvent(id: String, startDate: Date, endDate: Date) {
         guard let index = events.firstIndex(where: { $0.id == id }),
               calendar(id: events[index].calendarID)?.canEditEvents == true else { return }
@@ -677,7 +716,7 @@ final class AppLocalCalendarStore: ObservableObject {
                 result.append(AppLocalEventDescriptor(
                     eventID: event.id,
                     partialStart: sliceStart,
-                    partialEnd: sliceEnd
+                    partialEnd: sliceEnd, occurrenceInterval: DateInterval(start: event.startDate, end: event.endDate)
                 ))
                 sliceStart = sliceEnd
             }
@@ -765,6 +804,8 @@ final class AppLocalCalendarStore: ObservableObject {
 
 final class AppLocalEventDescriptor: EventDescriptor {
     let eventID: String
+    let occurrenceInterval: DateInterval?
+    var gridID: String { occurrenceInterval.map { eventID + "@" + DeviceCalendarEvent.iso($0.start) } ?? eventID }
     var partialStart: Date
     var partialEnd: Date
     weak var editedEvent: EventDescriptor?
@@ -773,7 +814,8 @@ final class AppLocalEventDescriptor: EventDescriptor {
     private var pendingAllDay: Bool?
     var pendingCalendarID: String?
 
-    init(eventID: String, partialStart: Date, partialEnd: Date) {
+    init(eventID: String, partialStart: Date, partialEnd: Date, occurrenceInterval: DateInterval? = nil) {
+        self.occurrenceInterval = occurrenceInterval
         self.eventID = eventID
         self.partialStart = partialStart
         self.partialEnd = partialEnd
@@ -802,7 +844,32 @@ final class AppLocalEventDescriptor: EventDescriptor {
     }
 
     @MainActor
-    func commitTimelineChange(isResize: Bool) {
+    var isLocalSeries: Bool { !(event?.recurrenceRules ?? []).isEmpty && calendar?.isProvider == false }
+
+    @MainActor
+    func finishDrop(in controller: UIViewController?, reload: @escaping () -> Void, commit: @escaping (EKSpan) throws -> Void) {
+        func apply(_ span: EKSpan) {
+            do { try commit(span) }
+            catch {
+                let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+                controller?.present(alert, animated: true)
+            }
+            reload()
+        }
+        guard isLocalSeries else { apply(.thisEvent); return }
+        reload()
+        let alert = UIAlertController(title: NSLocalizedString("Recurring Event", comment: ""),
+            message: NSLocalizedString("This event is part of a series. Update which events?", comment: ""), preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("This Event Only", comment: ""), style: .default) { _ in apply(.thisEvent) })
+        alert.addAction(UIAlertAction(title: NSLocalizedString("All Future Events", comment: ""), style: .default) { _ in apply(.futureEvents) })
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+        alert.popoverPresentationController?.sourceView = controller?.view
+        controller?.present(alert, animated: true)
+    }
+
+    @MainActor
+    func commitTimelineChange(isResize: Bool, span: EKSpan = .thisEvent) throws {
         let store = AppLocalCalendarStore.shared
         guard var value = store.event(id: eventID), !isReadOnly else { return }
         if let destination = pendingCalendarID {
@@ -816,7 +883,10 @@ final class AppLocalEventDescriptor: EventDescriptor {
             ? value.startDate.addingTimeInterval(oldDuration)
             : dateInterval.end
         value.isAllDay = isAllDay
-        store.saveEvent(value)
+        if isLocalSeries, let original = event {
+            try store.moveOccurrence(of: original, originalStart: originalInterval.start,
+                interval: DateInterval(start: value.startDate, end: value.endDate), allDay: isAllDay, destination: value.calendarID, span: span)
+        } else { store.saveEvent(value) }
         pendingAllDay = nil
         pendingCalendarID = nil
     }
@@ -833,6 +903,7 @@ final class AppLocalEventDescriptor: EventDescriptor {
     var calendarID: String? { event?.calendarID }
     var location: String { event?.location ?? "" }
     var originalInterval: DateInterval {
+        if let occurrenceInterval { return occurrenceInterval }
         guard let event else { return dateInterval }
         return DateInterval(start: event.startDate, end: event.endDate)
     }
@@ -841,23 +912,21 @@ final class AppLocalEventDescriptor: EventDescriptor {
     var isReadOnly: Bool { calendar?.canEditEvents != true || event?.providerReadOnly == true }
 
     func makeEditable() -> Self {
-        let copy = Self(eventID: eventID, partialStart: partialStart, partialEnd: partialEnd)
+        let copy = Self(eventID: eventID, partialStart: partialStart, partialEnd: partialEnd, occurrenceInterval: occurrenceInterval)
         copy.editedEvent = self
         return copy
     }
 
     func commitEditing() {
-        guard let edited = editedEvent as? AppLocalEventDescriptor,
-              let old = event else { return }
-        let duration = old.endDate.timeIntervalSince(old.startDate)
-        let id = eventID
-        let newStart = edited.partialStart
+        guard editedEvent is AppLocalEventDescriptor, !isReadOnly else { return }
+        let id = eventID, start = originalInterval.start, interval = dateInterval, allDay = isAllDay
         MainActor.assumeIsolated {
-            AppLocalCalendarStore.shared.moveEvent(
-                id: id,
-                startDate: newStart,
-                endDate: newStart.addingTimeInterval(duration)
-            )
+            let store = AppLocalCalendarStore.shared
+            guard let record = store.event(id: id) else { return }
+            if !(record.recurrenceRules ?? []).isEmpty, store.calendar(id: record.calendarID)?.isProvider == false {
+                try? store.moveOccurrence(of: record, originalStart: start, interval: interval, allDay: allDay,
+                    destination: record.calendarID, span: .thisEvent)
+            } else { store.moveEvent(id: id, startDate: interval.start, endDate: interval.end) }
         }
     }
 }

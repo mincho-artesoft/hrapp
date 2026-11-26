@@ -127,6 +127,7 @@ export interface WebCalendarEventDetails {
   availability?: 'busy' | 'free' | 'tentative' | 'unavailable';
   alarms?: CalendarAlarm[];
   recurrenceRules?: CalendarRepeatRule[];
+  excludedStarts?: string[];
   organizer?: { name?: string; email?: string };
   attendees?: Array<{ name?: string; email?: string; status?: string }>;
 }

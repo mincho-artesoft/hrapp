@@ -1052,15 +1052,15 @@
       </div>
     }
 
-    @if (recurringBookingMove(); as choice) {
+    @if (recurringMove(); as choice) {
       <dialog class="native-context recurring-booking-menu" role="menu" [ccAnchoredMenu]="choice"
         [attr.aria-label]="'Recurring Event' | nativeText" aria-describedby="booking-scope-description"
-        (dismissMenu)="recurringBookingMove.set(null)">
+        (dismissMenu)="recurringMove.set(null)">
         <strong>{{ 'Recurring Event' | nativeText }}</strong>
         <p id="booking-scope-description">{{ 'This event is part of a series. Update which events?' | nativeText }}</p>
-        <button type="button" role="menuitem" (click)="commitBookingMove(choice.move, false)">{{ 'This Event Only' | nativeText }}</button>
-        <button type="button" role="menuitem" (click)="commitBookingMove(choice.move, true)">{{ 'All Future Events' | nativeText }}</button>
-        <button type="button" role="menuitem" (click)="recurringBookingMove.set(null)">{{ 'Cancel' | nativeText }}</button>
+        <button type="button" role="menuitem" (click)="chooseRecurringMove(false)">{{ 'This Event Only' | nativeText }}</button>
+        <button type="button" role="menuitem" (click)="chooseRecurringMove(true)">{{ 'All Future Events' | nativeText }}</button>
+        <button type="button" role="menuitem" (click)="recurringMove.set(null)">{{ 'Cancel' | nativeText }}</button>
       </dialog>
     }
 

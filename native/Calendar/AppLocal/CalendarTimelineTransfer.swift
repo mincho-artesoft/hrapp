@@ -13,7 +13,7 @@ enum CalendarTimelineTransfer {
 
     static func move(
         local descriptor: AppLocalEventDescriptor, to destination: EKCalendar,
-        eventStore: EKEventStore, isResize: Bool
+        eventStore: EKEventStore, isResize: Bool, span: EKSpan
     ) throws {
         let store = AppLocalCalendarStore.shared
         guard let record = store.event(id: descriptor.eventID), !descriptor.isReadOnly,
@@ -32,7 +32,12 @@ enum CalendarTimelineTransfer {
         event.notes = record.notes
         event.url = URL(string: record.urlString)
         event.alarms = record.alarms.map { EKAlarm(relativeOffset: $0.relativeOffset) }
-        event.recurrenceRules = record.recurrenceRules?.compactMap { $0.makeRule() }
+        if descriptor.isLocalSeries {
+            let plan = try AppLocalRecurrence.reschedule(NativeCalendarSyncService.snapshot(record),
+                occurrence: descriptor.originalInterval.start, interval: DateInterval(start: event.startDate, end: event.endDate),
+                allDay: event.isAllDay, span: span, newID: UUID().uuidString)
+            event.recurrenceRules = plan.moved.macRecurrenceRules.compactMap { $0.makeRule() }
+        } else { event.recurrenceRules = record.recurrenceRules?.compactMap { $0.makeRule() } }
         try eventStore.save(event, span: .thisEvent, commit: true)
         EventKitEventSupplementStore.update(
             travelTime: record.travelTime, attachments: record.attachments ?? [],
@@ -46,7 +51,10 @@ enum CalendarTimelineTransfer {
             throw unavailable()
         }
         do {
-            try store.deleteTransferredEvent(id: record.id)
+            if descriptor.isLocalSeries {
+                try store.moveOccurrence(of: record, originalStart: descriptor.originalInterval.start,
+                    interval: DateInterval(start: event.startDate, end: event.endDate), allDay: event.isAllDay, destination: nil, span: span)
+            } else { try store.deleteTransferredEvent(id: record.id) }
         } catch {
             try eventStore.remove(event, span: .futureEvents, commit: true)
             EventKitEventSupplementStore.remove(for: event)

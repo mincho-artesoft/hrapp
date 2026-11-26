@@ -154,7 +154,6 @@
 				Mac/Wonek/AppActionButtonStyle.swift = (macos, );
 				Mac/Wonek/AppContextMenu.swift = (macos, );
 				Mac/Wonek/AppFormatting.swift = (macos, );
-				Mac/Wonek/AppLocalRecurrence.swift = (macos, );
 				Mac/Wonek/AppLocalization.swift = (macos, );
 				Mac/Wonek/AppMenuValueLabel.swift = (macos, );
 				Mac/Wonek/AppPicker.swift = (macos, );

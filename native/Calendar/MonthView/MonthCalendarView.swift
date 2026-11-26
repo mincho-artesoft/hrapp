@@ -16,6 +16,8 @@ struct MonthCalendarView: View {
     @State private var appLocalEventTarget: AppLocalEventEditorTarget? = nil
     
     @State private var showRepeatingDialog = false
+    @State private var repeatError: String?
+    @State private var repeatingLocal: AppLocalEventDescriptor?
     @State private var repeatingEvent: EKEvent? = nil
     @State private var repeatingNewDate: Date? = nil
     
@@ -188,15 +190,22 @@ struct MonthCalendarView: View {
             Button(LocalizedStringKey("Save for This Event Only")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .thisEvent)
+                } else if let local = repeatingLocal, let day = repeatingNewDate {
+                    moveAppLocalEvent(local, to: day, span: .thisEvent)
                 }
             }
             Button(LocalizedStringKey("Save for Future Events")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .futureEvents)
+                } else if let local = repeatingLocal, let day = repeatingNewDate {
+                    moveAppLocalEvent(local, to: day, span: .futureEvents)
                 }
             }
             Button(LocalizedStringKey("Cancel"), role: .cancel) {}
         }
+        .alert("Calendar", isPresented: Binding(get: { repeatError != nil }, set: { if !$0 { repeatError = nil } })) {
+            Button("OK") { repeatError = nil }
+        } message: { Text(repeatError ?? "") }
     }
 
     private var topBar: some View {
@@ -229,7 +238,10 @@ extension MonthCalendarView {
         else { return }
 
         if let local = droppedEvent as? AppLocalEventDescriptor {
-            moveAppLocalEvent(local, to: newDate)
+            if local.isLocalSeries {
+                repeatingEvent = nil; repeatingLocal = local; repeatingNewDate = newDate
+                showRepeatingDialog = true
+            } else { moveAppLocalEvent(local, to: newDate, span: .thisEvent) }
             return
         }
 
@@ -237,6 +249,7 @@ extension MonthCalendarView {
         let event = wrapper.ekEvent
         
         if event.hasRecurrenceRules {
+            repeatingLocal = nil
             repeatingEvent = event
             repeatingNewDate = newDate
             showRepeatingDialog = true
@@ -245,23 +258,21 @@ extension MonthCalendarView {
         }
     }
 
-    private func moveAppLocalEvent(_ descriptor: AppLocalEventDescriptor, to newDate: Date) {
+    private func moveAppLocalEvent(_ descriptor: AppLocalEventDescriptor, to newDate: Date, span: EKSpan) {
         guard let event = AppLocalCalendarStore.shared.event(id: descriptor.eventID),
               AppLocalCalendarStore.shared.calendar(id: event.calendarID)?.canEditEvents == true
         else { return }
-        let duration = event.endDate.timeIntervalSince(event.startDate)
-        let components = calendar.dateComponents([.hour, .minute, .second], from: event.startDate)
+        let duration = descriptor.originalInterval.duration
+        let components = calendar.dateComponents([.hour, .minute, .second], from: descriptor.originalInterval.start)
         guard let newStart = calendar.date(
             bySettingHour: components.hour ?? 0,
             minute: components.minute ?? 0,
             second: components.second ?? 0,
             of: newDate
         ) else { return }
-        AppLocalCalendarStore.shared.moveEvent(
-            id: event.id,
-            startDate: newStart,
-            endDate: newStart.addingTimeInterval(duration)
-        )
+        descriptor.dateInterval = DateInterval(start: newStart, duration: duration)
+        do { try descriptor.commitTimelineChange(isResize: false, span: span) }
+        catch { repeatError = error.localizedDescription }
         viewModel.loadEvents(for: currentMonth)
     }
 

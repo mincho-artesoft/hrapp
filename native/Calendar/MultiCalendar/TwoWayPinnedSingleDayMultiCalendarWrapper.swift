@@ -436,21 +436,16 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             isAllDay: Bool
         ) {
             if let local = descriptor as? AppLocalEventDescriptor {
-                if let destinationID = local.pendingCalendarID,
-                   let destination = parent.eventStore.calendar(withIdentifier: destinationID) {
-                    finishTimelineTransfer {
-                        try CalendarTimelineTransfer.move(local: local, to: destination,
-                            eventStore: parent.eventStore, isResize: isResize)
+                local.finishDrop(in: presentationController, reload: {
+                    self.lastRenderedEvents = []
+                    self.reloadCurrentRange(debug: false)
+                }) { span in
+                    if let id = local.pendingCalendarID, let destination = self.parent.eventStore.calendar(withIdentifier: id) {
+                        try CalendarTimelineTransfer.move(local: local, to: destination, eventStore: self.parent.eventStore, isResize: isResize, span: span)
+                        return
                     }
-                    return
+                    try local.commitTimelineChange(isResize: isResize, span: span)
                 }
-                // The timeline already resolved BOTH edges, including top-
-                // handle resizing and conversions between timed/all-day.
-                local.commitTimelineChange(isResize: isResize)
-                // Replace gesture-mutated slices even after a no-op or a
-                // rejected destination; the store remains authoritative.
-                lastRenderedEvents = []
-                reloadCurrentRange(debug: false)
                 return
             }
             if let multi = descriptor as? EKMultiDayWrapper {

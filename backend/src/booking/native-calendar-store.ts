@@ -1,7 +1,8 @@
 import { nextRevisionTimestamp } from '../util/revision';
 import { isDeepStrictEqual } from 'node:util';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { StoreService } from '../store/store.service';
+import { occurrenceByID, Slot, splitBookingSeries } from './booking-schedule';
 import { ApiResult, result } from '../common/api-result';
 
 const webBirthdaysID = 'system:birthdays';
@@ -230,6 +231,40 @@ export class NativeCalendarStore {
       readOnly: !calendar.allowsChanges || event.readOnly === true || calendar.available === false };
   }
 
+  private planOccurrenceMove(previous: any, move: any) {
+    const rules = previous?.details?.recurrenceRules;
+    if (!Array.isArray(rules) || !rules.length || !['this','future'].includes(move.scope) || typeof move.allDay !== 'boolean') return;
+    const stamps = [move.originalStart, move.start, move.end];
+    if (!stamps.every(value => typeof value === 'string' && Number.isFinite(Date.parse(value))) || Date.parse(move.start) >= Date.parse(move.end)) return;
+    const [original, start, end] = stamps.map(value => new Date(value).toISOString());
+    const seed = new Date(previous.start).toISOString(), excluded: string[] = (previous.details.excludedStarts ?? []).map((v:string) => new Date(v).toISOString());
+    const id = original === seed ? previous.id : previous.id + '@' + Date.parse(original);
+    const series: Slot[] = rules.map(rule => ({id:previous.id, start:seed, end:new Date(previous.end).toISOString(),
+      timeZone:previous.details.timeZone || 'UTC', excludedStarts:excluded,
+      rule:{...Object.fromEntries(Object.entries(rule).filter(([,v]) => v != null)), frequency:rule.frequency, interval:rule.interval ?? 1}}));
+    if (!series.some(s => occurrenceByID([s],id))) return;
+    const stamp = nextRevisionTimestamp(previous.updatedAt);
+    const moved = {...previous, id:createHash('sha256').update(randomUUID()).digest('hex'), start, end, allDay:move.allDay,
+      updatedAt:stamp, details:{...previous.details,recurrenceRules:[]}};
+    delete moved.placementId;
+    delete moved.details.excludedStarts;
+    const retained = {...previous, updatedAt:stamp, details:{...previous.details}};
+    if (move.scope === 'this') {
+      retained.details.excludedStarts = [...new Set([...excluded,original])].sort();
+      return [retained,moved];
+    }
+    const splits = series.filter(s => !s.rule.endDate || Date.parse(s.rule.endDate) >= Date.parse(original))
+      .map(s => splitBookingSeries(s,original,start,end,moved.id));
+    moved.details.recurrenceRules = splits.flatMap(s => s.future.rule ? [s.future.rule] : []);
+    const shifted = [...new Set(splits.flatMap(s => s.future.excludedStarts ?? []))].sort();
+    if (shifted.length) moved.details.excludedStarts = shifted;
+    if (original === seed) return [{...moved,id:previous.id, ...(previous.placementId ? {placementId:previous.placementId} : {})}];
+    retained.details.recurrenceRules = rules.map(rule => rule.endDate && Date.parse(rule.endDate) < Date.parse(original) ? rule :
+      {...rule, occurrenceCount:null, endDate:new Date(Date.parse(original)-1000).toISOString()});
+    retained.details.excludedStarts = excluded.filter(date => date < original);
+    return [retained,moved];
+  }
+
   async mutate(principal: any, compositeID: string, body: any, deleting = false, accountLocalOnly = false): Promise<ApiResult> {
     const parts = compositeID.split('.');
     const calendarID = parts[0] === 'native' ? parts[1] : body?.calendarId;
@@ -247,6 +282,18 @@ export class NativeCalendarStore {
       if (deleting && !previous) return result(404, { error: 'Event not found.' });
       if (body?.expectedUpdatedAt && previous?.updatedAt !== body.expectedUpdatedAt) return result(409, { error: 'This event changed. Refresh before editing.' });
       if (!deleting && !previous && calendar.events.length >= 10000) return result(400, { error: 'This calendar has reached the event limit.' });
+      if (body?.occurrenceMove && !deleting) {
+        if (!accountLocalOnly || !calendar.accountLocal || !previous) return result(400,{error:'Choose a local recurring event.'});
+        let changed: any[];
+        try { changed = this.planOccurrenceMove(previous,body.occurrenceMove); } catch { /* Unsupported or stale recurrence. */ }
+        if (!changed) return result(409,{error:'This occurrence changed. Refresh before editing.'});
+        if (calendar.events.length + changed.length - 1 > 10000) return result(400,{error:'This calendar has reached the event limit.'});
+        const next = {...calendar, revision:calendar.revision+1, updatedAt:new Date().toISOString(),
+          events:[...calendar.events.filter((e:any) => e.id !== eventID), ...changed]};
+        if (await this.store.putJSONIfMatch(key,next,stored.etag)) return result(200,{
+          changedEvents:changed.map(e => this.eventForWeb(next,e)), sharingCalendarID:calendar.sharingCalendarID ?? null});
+        continue;
+      }
       const event = { ...previous, id: eventID };
       if (!deleting) {
         for (const field of ['title', 'start', 'end', 'allDay', 'location', 'url']) {

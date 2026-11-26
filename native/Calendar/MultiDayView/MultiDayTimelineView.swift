@@ -743,7 +743,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let partialWrapper: EventDescriptor
             if let local = multi as? AppLocalEventDescriptor {
                 partialWrapper = AppLocalEventDescriptor(eventID: local.eventID,
-                    partialStart: partialDayStart, partialEnd: partialDayEnd)
+                    partialStart: partialDayStart, partialEnd: partialDayEnd, occurrenceInterval: local.originalInterval)
             } else if let native = multi as? EKMultiDayWrapper {
                 partialWrapper = EKMultiDayWrapper(realEvent: native.realEvent,
                     partialStart: partialDayStart, partialEnd: partialDayEnd)

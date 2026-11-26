@@ -302,6 +302,33 @@ final class MacTabletCalendarStore: ObservableObject {
                     calendarID: String, span: EKSpan) throws {
         guard canEdit(event) else { throw MacTabletCalendarError.readOnlyEvent }
         guard let destination = writableCalendars.first(where: { $0.calendarIdentifier == calendarID }) else { throw MacTabletCalendarError.noWritableCalendar }
+        if let source = local.record(for: event.calendar), let series = local.record(for: event),
+           CalendarEditorProvider(id: source.id, source: source.source) == nil, !series.macRecurrenceRules.isEmpty {
+            let plan = try AppLocalRecurrence.reschedule(series, occurrence: event.startDate, interval: interval,
+                allDay: isAllDay, span: span, newID: DeviceCalendarReplica.hash(UUID().uuidString))
+            var documents = local.store.calendars
+            guard let index = documents.firstIndex(where: { $0.id == source.id }) else { throw MacTabletCalendarError.noWritableCalendar }
+            documents[index].events.removeAll { $0.id == series.id }
+            if let retained = plan.retained { documents[index].events.append(retained) }
+            if let target = local.record(for: destination), let i = documents.firstIndex(where: { $0.id == target.id }) {
+                documents[i].events.append(plan.moved)
+                try local.store.backend.replaceLocalCalendars(documents)
+            } else {
+                let supplement = local.supplement(for: event)
+                let draft = local.copy(event)
+                draft.applyCalendarSchedule(start: interval.start, end: interval.end, allDay: isAllDay, timeZone: draft.timeZone)
+                draft.calendar = destination
+                draft.recurrenceRules = plan.moved.macRecurrenceRules.compactMap { $0.makeRule() }
+                try eventStore.save(draft, span: .thisEvent, commit: true)
+                do { try local.store.backend.replaceLocalCalendars(documents) }
+                catch { try eventStore.remove(draft, span: .futureEvents, commit: true); throw error }
+                if let data = supplement {
+                    EventKitEventSupplementStore.update(travelTime: data.travelTime, attachments: data.attachments, videoCallURL: data.videoCallURL, for: draft)
+                }
+            }
+            reload()
+            return
+        }
         if local.isLocal(event) || local.isLocal(destination) {
             let draft = local.copy(event)
             draft.applyCalendarSchedule(start: interval.start, end: interval.end, allDay: isAllDay, timeZone: draft.timeZone)

@@ -194,7 +194,7 @@ struct SharedEventDetails: Codable, Equatable {
         // a stale owner upload over a Writer's canonical revision.
         lhs.notes == rhs.notes && lhs.timeZone == rhs.timeZone
             && lhs.availability == rhs.availability && lhs.alarms == rhs.alarms
-            && lhs.recurrenceRules == rhs.recurrenceRules
+            && lhs.recurrenceRules == rhs.recurrenceRules && (lhs.excludedStarts ?? []) == (rhs.excludedStarts ?? [])
             && lhs.structuredLocation == rhs.structuredLocation
             && lhs.videoCallURL == rhs.videoCallURL && lhs.organizer == rhs.organizer
             && lhs.attendees == rhs.attendees && lhs.travelTime == rhs.travelTime
@@ -205,6 +205,7 @@ struct SharedEventDetails: Codable, Equatable {
     let availability: Int
     let alarms: [SharedEventAlarm]
     let recurrenceRules: [SharedEventRecurrenceRule]
+    var excludedStarts: [String]?
     let structuredLocation: SharedEventLocation?
     let videoCallURL: String?
     let organizer: SharedEventParticipant?
@@ -217,7 +218,7 @@ struct SharedEventDetails: Codable, Equatable {
     private var hasCompleteExtensionFields = false
 
     private enum CodingKeys: String, CodingKey {
-        case notes, timeZone, availability, alarms, recurrenceRules, structuredLocation
+        case notes, timeZone, availability, alarms, recurrenceRules, excludedStarts, structuredLocation
         case videoCallURL, organizer, attendees, travelTime, attachments
     }
 
@@ -227,6 +228,7 @@ struct SharedEventDetails: Codable, Equatable {
         availability: Int = 0,
         alarms: [SharedEventAlarm] = [],
         recurrenceRules: [SharedEventRecurrenceRule] = [],
+        excludedStarts: [String]? = nil,
         structuredLocation: SharedEventLocation? = nil,
         videoCallURL: String? = nil,
         organizer: SharedEventParticipant? = nil,
@@ -239,6 +241,7 @@ struct SharedEventDetails: Codable, Equatable {
         self.availability = availability
         self.alarms = alarms
         self.recurrenceRules = recurrenceRules
+        self.excludedStarts = excludedStarts
         self.structuredLocation = structuredLocation
         self.videoCallURL = videoCallURL
         self.organizer = organizer

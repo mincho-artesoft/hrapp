@@ -146,7 +146,7 @@ struct DayCellView: View {
 
 private extension EventDescriptor {
     var calendarGridIdentifier: String {
-        if let local = self as? AppLocalEventDescriptor { return local.eventID }
+        if let local = self as? AppLocalEventDescriptor { return local.gridID }
         if let wrapper = self as? EKMultiDayWrapper {
             return wrapper.realEvent.eventIdentifier ?? wrapper.realEvent.calendarItemIdentifier
         }

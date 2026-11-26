@@ -3354,7 +3354,7 @@ function mergeEventDetailsForWrite(value: any, previous: any): any {
   if (value === undefined) return previous ?? null;
   const sanitized = sanitizeEventDetails(value);
   if (!sanitized || !previous) return sanitized;
-  for (const field of ['travelTime', 'attachments', 'videoCallURL', 'color']) {
+  for (const field of ['travelTime', 'attachments', 'videoCallURL', 'color', 'excludedStarts']) {
     if (!Object.prototype.hasOwnProperty.call(value, field)
         && Object.prototype.hasOwnProperty.call(previous, field)) {
       sanitized[field] = previous[field];
@@ -3475,6 +3475,9 @@ function sanitizeEventDetails(value: any): any {
     availability: Math.max(-1, Math.min(3, integer(value.availability))),
     alarms,
     recurrenceRules,
+    ...(Array.isArray(value.excludedStarts) ? {excludedStarts:[...new Set(value.excludedStarts
+      .filter((date: unknown) => typeof date === 'string' && date.length <= 64 && Number.isFinite(Date.parse(date)))
+      .map((date: string) => new Date(date).toISOString()))].sort()} : {}),
     structuredLocation,
     videoCallURL: optionalEventURL(value.videoCallURL) ?? null,
     travelTime,

@@ -20,6 +20,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     public var onEventSelectionChanged: ((EventDescriptor?) -> Void)? = nil
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
+        context.coordinator.presentationController = vc
         let semanticDirection: UISemanticContentAttribute =
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
         vc.view.semanticContentAttribute = semanticDirection
@@ -214,6 +215,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 }
         }
         
+        weak var presentationController: UIViewController?
         var parent: TwoWayPinnedMultiDayWrapper
         var lastRenderedEvents: [EventDescriptorPresentationKey] = []
         var currentlyViewingEventID: String?
@@ -464,13 +466,12 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             isAllDay: Bool
         ) {
             if let local = descriptor as? AppLocalEventDescriptor {
-                // The timeline already resolved BOTH edges, including top-
-                // handle resizing and conversions between timed/all-day.
-                local.commitTimelineChange(isResize: isResize)
-                // Replace gesture-mutated slices even after a no-op or a
-                // rejected destination; the store remains authoritative.
-                lastRenderedEvents = []
-                reloadCurrentRange()
+                local.finishDrop(in: presentationController, reload: {
+                    self.lastRenderedEvents = []
+                    self.reloadCurrentRange()
+                }) { span in
+                    try local.commitTimelineChange(isResize: isResize, span: span)
+                }
                 return
             }
             if let multi = descriptor as? EKMultiDayWrapper {

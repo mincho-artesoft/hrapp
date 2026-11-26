@@ -14,7 +14,7 @@ enum MacEventShareSnapshot {
         let value = try JSONDecoder().decode(SharedEventDetails.self, from: JSONEncoder().encode(object))
         return SharedEventDetails(notes: value.notes?.isEmpty == true ? nil : value.notes,
             timeZone: value.timeZone, availability: value.availability, alarms: value.alarms,
-            recurrenceRules: value.recurrenceRules, structuredLocation: value.structuredLocation,
+            recurrenceRules: value.recurrenceRules, excludedStarts: value.excludedStarts, structuredLocation: value.structuredLocation,
             videoCallURL: value.videoCallURL, organizer: value.organizer, attendees: value.attendees,
             travelTime: value.travelTime, attachments: value.attachments ?? [])
     }

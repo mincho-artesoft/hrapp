@@ -545,19 +545,20 @@ export class CalendarNativeService {
     }
     return { ...next, id: event.id, sharedCalendarRevision: result.updatedAt };
   }
-  async syncOwnedCalendar(calendarID: string, changedEventId: string) {
+  async syncOwnedCalendar(calendarID: string, changedEventId: string | string[]) {
     const stored = await this.readAccountCalendar(calendarID);
     if (!stored?.sharingCalendarID) return;
     const { calendar } = await this.request<{ calendar: SharedCalendar }>(
       `/icloud-calendars/${stored.sharingCalendarID}/sharing`,
     );
-    const localID = changedEventId.split(".").at(-1)!;
-    const sharedID = /^[a-f0-9]{64}$/i.test(localID) ? localID : await this.sharingID(localID);
-    const changed = stored.events.find((event: WebCalendarEvent) => event.id === localID);
-    // The sharing snapshot can already contain other devices' newer events.
-    // Replace only the event affected by this edit or deletion.
-    const events = (calendar.events ?? []).filter(event => event.id !== sharedID);
-    if (changed) events.push({ ...changed, id: sharedID });
+    const changedIDs = Array.isArray(changedEventId) ? changedEventId : [changedEventId];
+    const localIDs = changedIDs.map(id => id.split(".").at(-1)!);
+    const sharedIDs = await Promise.all(localIDs.map(id => /^[a-f0-9]{64}$/i.test(id) ? id : this.sharingID(id)));
+    const events = (calendar.events ?? []).filter(event => !sharedIDs.includes(event.id));
+    for (const [i, id] of localIDs.entries()) {
+      const changed = stored.events.find((event: WebCalendarEvent) => event.id === id);
+      if (changed) events.push({...changed,id:sharedIDs[i]});
+    }
     await this.request(
       `/icloud-calendars/${stored.sharingCalendarID}/events`,
       "PUT",

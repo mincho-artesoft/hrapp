@@ -751,7 +751,7 @@ final class CalendarViewModel: ObservableObject {
             let day = calendar.startOfDay(for: descriptor.dateInterval.start)
             combined[day, default: []].append(descriptor)
             if let local = descriptor as? AppLocalEventDescriptor {
-                byID[local.eventID] = local
+                byID[local.gridID] = local
             }
         }
 
@@ -877,7 +877,7 @@ final class CalendarViewModel: ObservableObject {
             let dayKey = calendar.startOfDay(for: descriptor.dateInterval.start)
             dict[dayKey, default: []].append(descriptor)
             if let local = descriptor as? AppLocalEventDescriptor {
-                byID[local.eventID] = local
+                byID[local.gridID] = local
             }
         }
         for key in dict.keys {

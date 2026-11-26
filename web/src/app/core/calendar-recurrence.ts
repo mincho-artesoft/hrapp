@@ -123,7 +123,9 @@ export function calendarOccurrences(
       /* An unknown imported recurrence leaves its original event visible. */
     }
   }
+  const excluded = new Set(event.details?.excludedStarts?.map(value => Date.parse(value)));
   return [...dates.values()]
+    .filter(date => !excluded.has(+date))
     .sort((a, b) => a.getTime() - b.getTime())
     .flatMap((date) => {
       const occurrenceEnd = event.allDay
