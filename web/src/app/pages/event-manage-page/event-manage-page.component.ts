@@ -1,3 +1,4 @@
+import { CalendarLocalization } from '../../core/calendar-localization';
 import { CalendarActionSheetComponent } from '../../components/calendar-native/calendar-action-sheet.component';
 import {
   ChangeDetectionStrategy,
@@ -26,6 +27,7 @@ type Mode = 'loading' | 'view' | 'cancelled' | 'notfound';
 })
 export class EventManagePageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly calendar = inject(CalendarLocalization);
   private readonly seo = inject(SeoService);
   private readonly api = inject(EventRegistrationApiService);
 
@@ -42,6 +44,7 @@ export class EventManagePageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
     this.copy = eventCopyFor(this.locale.code);
+    this.calendar.readPreferences();
     this.seo.apply({
       title: this.copy.yourSpotTitle + ' — Cloud Calendars',
       description: this.copy.seoDescription,
@@ -78,15 +81,7 @@ export class EventManagePageComponent implements OnInit {
 
   protected whenText(ev: RegistrationView['event']): string {
     const tz = this.reg()?.timeZone || 'UTC';
-    try {
-      const day = new Intl.DateTimeFormat(this.locale.code, {
-        timeZone: tz, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
-      }).format(new Date(ev.start));
-      const t = (iso: string) => new Intl.DateTimeFormat(this.locale.code, { timeZone: tz, hour: 'numeric', minute: '2-digit' }).format(new Date(iso));
-      return `${day} · ${t(ev.start)} – ${t(ev.end)}`;
-    } catch {
-      return ev.start;
-    }
+    return this.calendar.eventRange(ev.start, ev.end, this.locale.code, tz);
   }
 
   protected get homeHref(): string {

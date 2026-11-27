@@ -110,24 +110,27 @@ struct CalendarSidebarView: View {
 
     private func miniCalendar(events: [CalendarSidebarEvent]) -> some View {
         let days = CalendarSidebarLayout.monthDays(containing: month, calendar: calendar)
+        let dayFormatter = dateFormatter(template: "EEEE d MMMM y")
+        let weekdaySymbols = calendar.veryShortStandaloneWeekdaySymbols
         return VStack(spacing: 10) {
             HStack {
-                Button { moveMonth(-1) } label: { Image(systemName: "chevron.left").frame(width: 28, height: 28) }
+                Button { moveMonth(-1) } label: { Image(systemName: "chevron.backward").frame(width: 28, height: 28) }
                     .accessibilityLabel("Previous month").accessibilityIdentifier("calendar.sidebar.previousMonth")
                 Spacer(minLength: 0)
-                Text(dateLabel(month, template: "MMMM y")).font(CalendarTypography.subheadline.weight(.semibold))
+                Text(dateFormatter(template: "MMMM y").string(from: month)).font(CalendarTypography.subheadline.weight(.semibold))
                     .lineLimit(1).minimumScaleFactor(0.7)
                 Spacer(minLength: 0)
-                Button { moveMonth(1) } label: { Image(systemName: "chevron.right").frame(width: 28, height: 28) }
+                Button { moveMonth(1) } label: { Image(systemName: "chevron.forward").frame(width: 28, height: 28) }
                     .accessibilityLabel("Next month").accessibilityIdentifier("calendar.sidebar.nextMonth")
             }.buttonStyle(.plain)
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4, alignment: .top), count: 7), spacing: 6) {
                 ForEach(0..<7, id: \.self) { offset in
-                    Text(calendar.veryShortStandaloneWeekdaySymbols[(calendar.firstWeekday - 1 + offset) % 7])
+                    Text(weekdaySymbols[(calendar.firstWeekday - 1 + offset) % 7])
                         .font(CalendarTypography.caption2.weight(.semibold)).foregroundStyle(.secondary)
                 }
                 ForEach(days, id: \.self) { day in
                     dayButton(day, colors: eventColors(on: day, events: events))
+                        .accessibilityLabel(dayFormatter.string(from: day))
                 }
             }
             Button("Today") { selectDate(Date()) }
@@ -167,7 +170,6 @@ struct CalendarSidebarView: View {
             .frame(maxWidth: .infinity, minHeight: 34).contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(dateLabel(day, template: "EEEE d MMMM y"))
         .accessibilityAddTraits(selected ? [.isSelected] : [])
         .accessibilityIdentifier("calendar.sidebar.day.\(calendar.component(.year, from: day))-\(calendar.component(.month, from: day))-\(calendar.component(.day, from: day))")
     }
@@ -241,7 +243,7 @@ struct CalendarSidebarView: View {
         month = calendar.date(byAdding: .month, value: offset, to: start) ?? start
     }
 
-    private func dateLabel(_ date: Date, template: String) -> String {
+    private func dateFormatter(template: String) -> DateFormatter {
         #if os(iOS)
         let formatter = appDateFormatter(template: template, timeZone: calendar.timeZone)
         #else
@@ -250,18 +252,12 @@ struct CalendarSidebarView: View {
         formatter.timeZone = calendar.timeZone
         formatter.setLocalizedDateFormatFromTemplate(template)
         #endif
-        return formatter.string(from: date)
+        return formatter
     }
 
     /// Event dates use the exact Settings format, not a sidebar-only template.
     private func eventDateLabel(_ date: Date) -> String {
-        #if os(macOS)
-        let formatter = DateFormatter(); formatter.dateStyle = .short
-        formatter.timeZone = calendar.timeZone
-        #else
-        let formatter = appShortDateFormatter(timeZone: calendar.timeZone)
-        #endif
-        return formatter.string(from: date)
+        appShortDateFormatter(timeZone: calendar.timeZone).string(from: date)
     }
 
     private func eventTime(_ event: CalendarSidebarEvent) -> String {

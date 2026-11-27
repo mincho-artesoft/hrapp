@@ -29,8 +29,10 @@ export class CalendarAnchoredMenuDirective implements AfterViewInit, OnDestroy {
   private position = () => {
     const anchor = this.anchor();
     const isControl = anchor instanceof HTMLElement;
-    const {top, bottom, right: x} = isControl ? anchor.getBoundingClientRect()
-      : {top: anchor.y, bottom: anchor.y, right: anchor.x};
+    const rect = isControl ? anchor.getBoundingClientRect()
+      : {top: anchor.y, bottom: anchor.y, left: anchor.x, right: anchor.x};
+    const {top, bottom} = rect;
+    const rtl = getComputedStyle(this.menu).direction === 'rtl';
     const viewport = window.visualViewport;
     const leftEdge = (viewport?.offsetLeft ?? 0) + 8;
     const topEdge = (viewport?.offsetTop ?? 0) + 8;
@@ -40,7 +42,8 @@ export class CalendarAnchoredMenuDirective implements AfterViewInit, OnDestroy {
     const above = top - height - 8;
     const below = bottom + 6;
     const useAbove = this.above() ? above >= topEdge || below + height > bottomEdge : below + height > bottomEdge;
-    const left = isControl ? x - width : this.above() ? x - width / 2 : x;
+    const left = isControl ? (rtl ? rect.left : rect.right - width)
+      : this.above() ? rect.left - width / 2 : (rtl ? rect.left - width : rect.left);
     this.menu.style.left = Math.max(leftEdge, Math.min(left, rightEdge - width)) + 'px';
     this.menu.style.top = Math.max(topEdge, Math.min(useAbove ? above : below, bottomEdge - height)) + 'px';
   };

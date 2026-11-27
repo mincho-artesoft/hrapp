@@ -1,3 +1,4 @@
+import { bookingMinutes, civilDayStart, dailyBookingRule, type BookingDailyPattern } from '../../../../backend/src/booking/booking-daily-pattern';
 import { RRule, Weekday } from "rrule";
 import type { WebCalendarEvent } from "./calendar-platform-api.service";
 
@@ -20,8 +21,11 @@ export function calendarSeries(event: CalendarOccurrence): WebCalendarEvent {
 }
 
 const dayMs = 86400000;
-export function wallDate(date: Date, timeZone: string): Date {
-  const parts = new Intl.DateTimeFormat("en-CA", {
+const wallFormatters = new Map<string, Intl.DateTimeFormat>();
+function wallFormatter(timeZone: string) {
+  const cached = wallFormatters.get(timeZone);
+  if (cached) return cached;
+  const formatter = new Intl.DateTimeFormat("en-CA", {
     timeZone,
     year: "numeric",
     month: "2-digit",
@@ -30,7 +34,13 @@ export function wallDate(date: Date, timeZone: string): Date {
     minute: "2-digit",
     second: "2-digit",
     hourCycle: "h23",
-  }).formatToParts(date);
+  });
+  if (wallFormatters.size >= 64) wallFormatters.clear();
+  wallFormatters.set(timeZone, formatter);
+  return formatter;
+}
+export function wallDate(date: Date, timeZone: string): Date {
+  const parts = wallFormatter(timeZone).formatToParts(date);
   const n = (type: string) => Number(parts.find((p) => p.type === type)?.value);
   return new Date(
     Date.UTC(
@@ -54,10 +64,17 @@ export function instant(wall: Date, timeZone: string): Date | null {
   }
   return null; // No such wall time during a spring-forward gap.
 }
+export function calendarDayStart(local: Date, zone: string): Date {
+  if (!Number.isFinite(+local)) return new Date(NaN);
+  return new Date(civilDayStart(+local, t => instant(new Date(t),zone)?.getTime() ?? NaN,
+    t => +wallDate(new Date(t),zone)));
+}
 export function calendarOccurrences(
   event: WebCalendarEvent,
   lower: Date,
   upper: Date,
+  hoursOfDay?: number[],
+  pattern?: BookingDailyPattern,
 ): CalendarOccurrence[] {
   const rules = event.details?.recurrenceRules as any[] | undefined;
   if (!rules?.length) return [event];
@@ -75,6 +92,8 @@ export function calendarOccurrences(
   const wallStart = wallDate(start, zone),
     wallEnd = wallDate(end, zone),
     dates = new Map<number, Date>([[start.getTime(), start]]);
+  const minutes = pattern ? bookingMinutes(pattern, duration / 60000) : undefined;
+  if (pattern) dates.clear();
   for (const rule of rules) {
     const frequency =
       typeof rule.frequency === "number"
@@ -86,13 +105,16 @@ export function calendarOccurrences(
       return d.weekNumber ? weekday.nth(d.weekNumber) : weekday;
     });
     try {
-      const recurrence = new RRule({
+      const width = hoursOfDay?.length ?? 1;
+      const positions = rule.setPositions?.flatMap((p: number) =>
+        Array.from({length: width}, (_, i) => p > 0 ? (p - 1) * width + i + 1 : p * width + i));
+      const dateRule = new RRule({
         freq: [RRule.DAILY, RRule.WEEKLY, RRule.MONTHLY, RRule.YEARLY][
           frequency
         ],
-        dtstart: wallStart,
+        dtstart: (pattern || event.allDay) ? new Date(Math.floor(+wallStart/dayMs)*dayMs) : wallStart,
         interval: Math.max(1, rule.interval || 1),
-        count: rule.occurrenceCount > 0 ? rule.occurrenceCount : undefined,
+        count: !pattern && rule.occurrenceCount > 0 ? rule.occurrenceCount : undefined,
         until: rule.endDate
           ? wallDate(new Date(rule.endDate), zone)
           : undefined,
@@ -105,9 +127,12 @@ export function calendarOccurrences(
           : undefined,
         byyearday: rule.daysOfTheYear?.length ? rule.daysOfTheYear : undefined,
         byweekno: rule.weeksOfTheYear?.length ? rule.weeksOfTheYear : undefined,
-        bysetpos: rule.setPositions?.length ? rule.setPositions : undefined,
+        bysetpos: positions?.length ? positions : undefined,
+        byhour: hoursOfDay,
         wkst: RRule.MO,
       });
+      const recurrence = minutes ? dailyBookingRule(dateRule,minutes,+wallStart,
+        rule.endDate ? +wallDate(new Date(rule.endDate),zone) : undefined,rule.occurrenceCount) : dateRule;
       const from = wallDate(new Date(lower.getTime() - duration - dayMs), zone),
         to = wallDate(new Date(upper.getTime() + dayMs), zone);
       for (const wall of recurrence.between(
@@ -116,7 +141,8 @@ export function calendarOccurrences(
         true,
         (_, i) => i < 10000,
       )) {
-        const date = instant(wall, zone);
+        const date = event.allDay ? calendarDayStart(wall,zone) :
+          (hoursOfDay || pattern) && +wall === +wallStart ? start : instant(wall, zone);
         if (date) dates.set(date.getTime(), date);
       }
     } catch {
@@ -129,13 +155,8 @@ export function calendarOccurrences(
     .sort((a, b) => a.getTime() - b.getTime())
     .flatMap((date) => {
       const occurrenceEnd = event.allDay
-        ? instant(
-            new Date(
-              wallDate(date, zone).getTime() +
-                Math.max(dayMs, wallEnd.getTime() - wallStart.getTime()),
-            ),
-            zone,
-          )
+        ? calendarDayStart(new Date((Math.floor(+wallDate(date,zone)/dayMs) +
+            Math.max(1, Math.floor(+wallEnd/dayMs) - Math.floor(+wallStart/dayMs)))*dayMs),zone)
         : new Date(date.getTime() + duration);
       if (!occurrenceEnd || date >= upper || occurrenceEnd <= lower) return [];
       return [

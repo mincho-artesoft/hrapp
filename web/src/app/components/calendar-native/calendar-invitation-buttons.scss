@@ -1,0 +1,13 @@
+button {
+  display: grid; min-height: 44px; align-items: center; min-width: 0; padding: 4px 0; border: 0;
+  background: transparent; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+span {
+  display: grid; place-items: center; min-height: 36px; box-sizing: border-box;
+  padding: 6px 14px; border-radius: 999px; overflow-wrap: anywhere;
+}
+.decline span { color: var(--cal-red, #ff453a); background: color-mix(in srgb, currentColor 14%, transparent); }
+.accept span { color: white; background: var(--cal-blue); }
+button:focus-visible { outline: 2px solid var(--cal-blue); outline-offset: 2px; border-radius: 999px; }
+button:active:enabled { opacity: .8; }
+button:disabled { opacity: .45; cursor: default; }

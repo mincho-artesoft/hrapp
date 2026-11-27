@@ -1,0 +1,25 @@
+:host { display:flex; flex-direction:column; min-height:0; flex:1; background:var(--cal-bg); color:var(--cal-text); }
+button,input {font:inherit; color:inherit}
+button {border:0; background:none; cursor:pointer}
+.navigation {display:flex; align-items:center; gap:6px; padding:6px 12px; border-bottom:1px solid var(--cal-line)}
+.block strong,.block span {display:block}
+.scroll {flex:1; overflow:auto; min-height:0; overscroll-behavior:contain}
+.grid {min-width:calc(50px + var(--columns)*74px);display:grid; grid-template-columns:clamp(44px,7vw,68px) repeat(var(--columns),minmax(0,1fr))}
+.heading {position:sticky; top:0; z-index:10; background:var(--cal-panel); border-bottom:1px solid var(--cal-line); align-items:stretch}
+.heading strong,.heading small {align-self:center; padding:8px 2px; text-align:center; font-size:12px}
+.today {color:var(--cal-blue)}
+.day,.allday {position:relative; border-inline-start:1px solid var(--cal-line)}
+.day {background:repeating-linear-gradient(to bottom,var(--cal-line) 0 1px,transparent 1px 56px)}
+.axis small {box-sizing:border-box; height:56px; display:block; color:var(--cal-muted); font-size:10px; padding:2px 3px; text-align:end}
+.block {--accent:#0a84ff; box-sizing:border-box; overflow:hidden; text-align:start; color:var(--cal-text); font-size:12px; line-height:1.2;
+  background:color-mix(in srgb,var(--accent) 19%,var(--cal-bg)); border:1px solid var(--cal-bg); border-inline-start:3px solid var(--accent); border-radius:5px; padding:3px 4px}
+.day .block {position:absolute}
+.block.busy {--accent:#8e8e93}
+.block:disabled {cursor:default; opacity:1}
+.allday .block {width:100%}
+button:focus-visible,input:focus-visible {outline:2px solid var(--cal-blue); outline-offset:-2px}
+
+.navigation {min-height:44px; gap:12px}
+.navigation strong {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+
+:host-context(.ios-layout) .navigation cc-range-picker {flex:1; --range-width:100%; --range-height:40px}

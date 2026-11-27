@@ -1,16 +1,27 @@
+import type { BookingDailyPattern } from '../../../../backend/src/booking/booking-daily-pattern';
 import { DestroyRef, computed, effect, inject, Injectable, signal, untracked } from '@angular/core';
 import { CalendarPlatformApiService, CalendarRepeatRule, WebCalendarEventDetails } from './calendar-platform-api.service';
 
 export interface BookingPurpose { appointmentType?:string; customType?:string }
-export interface BookingVenue { location?: string; structuredLocation?: WebCalendarEventDetails['structuredLocation'] }
+export interface BookingVenue {
+  location?: string;
+  structuredLocation?: WebCalendarEventDetails['structuredLocation'];
+  videoCallURL?: string;
+  hasVideoCall?: boolean;
+}
 export interface BookingSlot extends BookingVenue {
-  title?:string; excludedStarts?:string[];
+  myBookingId?: string;
+  title?:string; excludedStarts?:string[]; hoursOfDay?:number[]; dailyPattern?:BookingDailyPattern; allDay?:boolean;
   id: string; start: string; end: string; timeZone?:string;
   rule?: Omit<CalendarRepeatRule,'frequency'> & {frequency:number};
 }
 export interface Appointment extends BookingSlot, BookingPurpose {
+  cancelledByGuest?:boolean;
   proposal?: BookingSlot; calendarId: string; slotId: string; hostName: string; guestName: string; calendarTitle: string;
   status: 'pending' | 'accepted' | 'declined' | 'past';
+}
+export function isBookingHistory(r: Appointment) {
+  return r.status === 'declined' || r.status === 'past' || !!r.cancelledByGuest || Date.parse((r.proposal ?? r).end) <= Date.now();
 }
 export interface BookingCalendar extends BookingPurpose { id: string; title: string; listed?: boolean; revision: number; slots: BookingSlot[]; requests: Appointment[] }
 export interface BookingTimelineMove {
@@ -18,11 +29,17 @@ export interface BookingTimelineMove {
   revision: number;
   slotId: string;
   requestId?: string;
+  allDay?: boolean;
+  timeZone?: string;
   start: string;
   end: string;
 }
 export interface BookingListing extends BookingPurpose { id: string; title: string; hostName: string; isOwner: boolean }
-export interface Availability extends BookingListing { nextFrom?: string; slots: BookingSlot[] }
+export interface Availability extends BookingListing { nextFrom?: string; slots: BookingSlot[]; busy?: BookingSlot[] }
+export function guestBookingSlots(offer: Availability): BookingSlot[] {
+  return [...offer.slots, ...(offer.busy ?? [])].sort((a,b) => a.start.localeCompare(b.start) || a.id.localeCompare(b.id));
+}
+export function isBusySlot(slot: BookingSlot) { return slot.id.startsWith('busy/'); }
 interface Workspace { calendars: BookingCalendar[]; appointments: Appointment[] }
 export const bookingID = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 
@@ -38,10 +55,10 @@ export class BookingWorkspace {
   });
   readonly pendingChanges = computed(() => this.data().appointments.filter(r =>
     r.proposal && r.calendarId && (r.status === 'accepted' || r.status === 'pending')));
-  readonly appointmentsForReview = computed(() => {
-    const pending = new Set(this.pendingChanges());
-    return [...pending, ...this.data().appointments.filter(r => !pending.has(r))];
-  });
+  readonly upcoming = computed(() => this.data().appointments.filter(r => !isBookingHistory(r)).sort((a, b) =>
+    Number(!!b.proposal) - Number(!!a.proposal) || Date.parse((a.proposal ?? a).start) - Date.parse((b.proposal ?? b).start)));
+  readonly history = computed(() => this.data().appointments.filter(isBookingHistory).sort((a, b) =>
+    Date.parse((b.proposal ?? b).start) - Date.parse((a.proposal ?? a).start)));
   readonly error = signal('');
   readonly loaded = signal(false);
   readonly pendingMoves = signal<BookingTimelineMove[]>([]);
@@ -100,7 +117,7 @@ export class BookingWorkspace {
     const discard = () => this.pendingMoves.update(moves => moves.filter(other => other !== move));
     try {
       const receipt = await this.request<{revision: number}>('/' + move.calendarId + '/occurrences/' + encodeURIComponent(move.slotId),
-        'PUT', {revision: move.revision, start: move.start, end: move.end});
+        'PUT', {revision: move.revision, start: move.start, end: move.end, allDay: move.allDay, timeZone: move.timeZone});
       if (receipt.revision === move.revision) discard();
     } catch (error) {
       discard();
@@ -113,7 +130,7 @@ export class BookingWorkspace {
     const token = this.api.token();
     const path = '/' + move.calendarId + '/future-occurrences/' + encodeURIComponent(move.slotId);
     try {
-      const updated = await this.request<BookingCalendar>(path, 'PUT', {revision: move.revision, start: move.start,
+      const updated = await this.request<BookingCalendar>(path, 'PUT', {revision: move.revision, start: move.start, allDay: move.allDay, timeZone: move.timeZone,
         end: move.end, freeOnly: !move.requestId});
       if (token !== this.api.token()) return;
       this.confirmed.update(data => ({...data, calendars: data.calendars.map(calendar =>
@@ -129,7 +146,7 @@ export class BookingWorkspace {
     const conflict = 'This calendar changed. Refresh and try again.';
     if (!calendar || calendar.revision !== move.revision || !base) throw new Error(conflict);
     const detachedId = base.rule ? crypto.randomUUID() : undefined;
-    const slot = {...base, id: detachedId ?? base.id, start: move.start, end: move.end, rule: undefined, excludedStarts: undefined};
+    const slot = {...base, id: detachedId ?? base.id, start: move.start, end: move.end, allDay: move.allDay, timeZone: move.timeZone ?? base.timeZone, rule: undefined, dailyPattern: undefined, hoursOfDay: undefined, excludedStarts: undefined};
     const slots = calendar.slots.filter(s => s.id !== base.id);
     if (detachedId) {
       const originalStart = occurrenceMillis ? new Date(Number(occurrenceMillis)).toISOString() : base.start;
@@ -147,7 +164,7 @@ export class BookingWorkspace {
       if (token !== this.api.token()) throw new Error(conflict);
       const receipt = await this.api.nativeCalendarRequest<{revision: number}>('/booking-calendars/' + calendar.id +
         '/occurrences/' + encodeURIComponent(move.slotId), 'PUT',
-        {revision: move.revision, start: move.start, end: move.end, freeOnly: true, detachedId});
+        {revision: move.revision, start: move.start, end: move.end, allDay: move.allDay, timeZone: move.timeZone, freeOnly: true, detachedId});
       if (receipt.revision !== next.revision || token !== this.api.token()) throw new Error(conflict);
       this.confirmed.update(data => ({...data, calendars: data.calendars.map(c =>
         c.id === calendar.id && c.revision < next.revision ? next : c)}));

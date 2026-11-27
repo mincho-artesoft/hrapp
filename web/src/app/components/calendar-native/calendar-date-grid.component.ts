@@ -13,6 +13,7 @@ import {
 import {
   CalendarLocalization,
   CalendarNativeDatePipe,
+  CalendarNativeTextPipe,
 } from "../../core/calendar-localization";
 import { CalendarSymbolComponent } from "./calendar-symbol.component";
 
@@ -108,7 +109,7 @@ export class CalendarDateWheel {
   name(n: number) {
     return (
       this.names()[n - this.min()] ??
-      n.toLocaleString(this.locale.locale(), { useGrouping: false })
+      n.toLocaleString(this.locale.formattingLocale(), { useGrouping: false })
     );
   }
   scrolled(el: HTMLElement) {
@@ -153,7 +154,7 @@ function dateKey(date: Date) {
 @Component({
   selector: "cc-date-grid",
   standalone: true,
-  imports: [CalendarNativeDatePipe, CalendarSymbolComponent, CalendarDateWheel],
+  imports: [CalendarNativeTextPipe, CalendarNativeDatePipe, CalendarSymbolComponent, CalendarDateWheel],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./calendar-date-grid.component.html",
   styleUrl: "./calendar-date-grid.component.scss",
@@ -179,11 +180,12 @@ export class CalendarDateGridComponent {
   );
   readonly monthNames = computed(() =>
     Array.from({ length: 12 }, (_, i) =>
-      monthDate(2020, i).toLocaleString(this.locale.locale(), {
+      monthDate(2020, i).toLocaleString(this.locale.formattingLocale(), {
         month: "long",
       }),
     ),
   );
+  readonly number = this.locale.integer;
   readonly today = dateKey(new Date());
   readonly days = computed(() => {
     const m = this.month(),

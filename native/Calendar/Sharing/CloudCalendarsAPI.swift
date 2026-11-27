@@ -327,6 +327,13 @@ enum CloudCalendarsAPI {
         var errorDescription: String? {
             switch self {
             case .http(let code, let body):
+                if let data = body.data(using: .utf8),
+                   let fields = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                   let message = fields["error"] as? String, !message.isEmpty {
+                    let missing = "\u{0}"
+                    let translated = Bundle.main.localizedString(forKey: message, value: missing, table: nil)
+                    if translated != missing { return translated }
+                }
                 return String.localizedStringWithFormat(
                     NSLocalizedString("Server returned %lld: %@", comment: ""),
                     Int64(code),

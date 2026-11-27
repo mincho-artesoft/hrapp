@@ -55,6 +55,7 @@ export const eventRepeatChoices = [
       <span>{{ 'Repeat' | nativeText }}</span>
       <cc-choice label="Repeat" [value]="choice()" [options]="repeatChoices" (valueChange)="repeatChange.emit($event)" />
     </div>
+    <ng-content />
     @if (choice() !== 'none') {
       <div class="native-form-row">
         <span>{{ 'End Repeat' | nativeText }}</span>
@@ -81,14 +82,9 @@ export class CalendarEventRepeatFieldsComponent {
 }
 
 @Component({
-  selector: 'cc-event-removal', standalone: true, imports: [CalendarNativeTextPipe, CalendarActionSheetComponent],
+  selector: 'cc-event-removal-button', standalone: true, imports: [CalendarNativeTextPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <button #trigger type="button" class="native-pill danger full" [disabled]="busy()" (click)="confirming.set(true)">{{ label() | nativeText }}</button>
-    @if (confirming()) {
-      <cc-calendar-action-sheet [anchor]="trigger" [heading]="prompt()" [primaryLabel]="confirmLabel() || label()" [destructive]="true" [busy]="busy()"
-        (primary)="confirmed.emit(); confirming.set(false)" (dismissed)="confirming.set(false)" />
-    }`,
+  template: `<button #trigger type="button" class="native-pill danger full" [disabled]="busy()" (click)="pressed.emit(trigger)">{{ label() | nativeText }}</button>`,
   styles: `
     :host { display: block; }
     .native-pill { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 24px;
@@ -98,7 +94,25 @@ export class CalendarEventRepeatFieldsComponent {
     .native-pill:disabled { opacity: .45; cursor: default; }
   `,
 })
+export class CalendarEventRemovalButtonComponent {
+  readonly label = input.required<string>();
+  readonly busy = input(false);
+  readonly pressed = output<HTMLButtonElement>();
+}
+
+@Component({
+  selector: 'cc-event-removal', standalone: true, imports: [CalendarEventRemovalButtonComponent, CalendarActionSheetComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <cc-event-removal-button [label]="label()" [busy]="busy()" (pressed)="anchor=$event; confirming.set(true)" />
+    @if (confirming()) {
+      <cc-calendar-action-sheet [anchor]="anchor" [heading]="prompt()" [primaryLabel]="confirmLabel() || label()" [destructive]="true" [busy]="busy()"
+        (primary)="confirmed.emit(); confirming.set(false)" (dismissed)="confirming.set(false)" />
+    }`,
+  styles: ':host { display: block; }',
+})
 export class CalendarEventRemovalComponent {
+  protected anchor?: HTMLButtonElement;
   readonly label = input.required<string>();
   readonly prompt = input.required<string>();
   readonly busy = input(false);

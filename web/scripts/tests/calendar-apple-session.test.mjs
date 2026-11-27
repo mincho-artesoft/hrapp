@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
@@ -207,8 +207,8 @@ test('calendar controls stay aligned, and only web provider connections appear i
       const group = menu.locator('details').filter({hasText: provider + '@example.invalid'});
       await group.getByText(provider + ' web calendar', {exact:true}).waitFor();
       await group.getByRole('button', {name: 'Sign out', exact: true}).click();
-      await group.getByRole('button', {name: 'Sign out', exact: true}).click();
       await menu.getByRole('button', {name: new RegExp('^sign in with ' + provider + '$','i')}).waitFor();
+      assert.equal(await menu.locator('cc-calendar-action-sheet').count(), 0);
     }
     assert.deepEqual(disconnects, ['google','microsoft']);
     await page.reload({waitUntil: 'domcontentloaded'});
@@ -276,6 +276,49 @@ test('a restored session loads events during profile verification and displays t
   } finally {
     releaseBundle();
     releaseProfile();
+    await browser.close();
+  }
+});
+
+test('Arabic calendar settings mirror menus and update the visible clock immediately', async () => {
+  const browser = await chromium.launch(process.env.CHROME_CHANNEL ? {channel: process.env.CHROME_CHANNEL} : {});
+  try {
+    const page = await browser.newPage({viewport: {width: 1280, height: 840}, locale: 'en-US'});
+    await page.route('**/*', async route => {
+      const url = new URL(route.request().url());
+      if (url.origin === origin) return serveSite(route, url);
+      if (url.origin !== apiOrigin) return route.abort();
+      if (url.pathname === '/me/profile') return route.fulfill({json: {
+        principalId: 'fixture', verifiedEmails: ['test@example.invalid'],
+        identities: [{provider:'google', email:'test@example.invalid'}],
+      }});
+      if (url.pathname === '/web-calendar/state') return route.fulfill({json: {calendars: [], events: []}});
+      return route.fulfill({json: {}});
+    });
+    await page.addInitScript(() => {
+      localStorage.setItem('cc_web_session_v1', 'isolated-test-session');
+      localStorage.setItem('cc.mac.view', 'day');
+      localStorage.setItem('cc.mac.preferences', JSON.stringify({time: '24', date:'yearMonthDayDot', firstWeekday:'1'}));
+    });
+    await page.goto(origin + '/calendar/?lang=ar', {waitUntil: 'domcontentloaded'});
+    await page.locator('.studio[dir=rtl] .tl-hour-lbl').first().waitFor();
+    const toggleMenu = page.locator('.cal-toolbar__right button.desktop-menu');
+    await toggleMenu.click();
+    const menu = page.locator('cc-calendar-menu').filter({visible:true}).first();
+    const translations = JSON.parse(await readFile(new URL('calendar-locales/ar.json', dist), 'utf8'));
+    await menu.getByRole('button', {name:translations['Settings'], exact:true}).click();
+    const clock = menu.getByRole('button', {name:translations['Time Format'], exact:true});
+    await clock.click();
+    const popup = menu.locator('dialog[open]');
+    await popup.waitFor();
+    const bounds = await popup.boundingBox(), anchor = await clock.boundingBox();
+    const expectedLeft = Math.max(8, Math.min(anchor.x, page.viewportSize().width - 8 - bounds.width));
+    assert.ok(Math.abs(bounds.x - expectedLeft) < 2);
+    await popup.getByRole('menuitemradio').nth(1).click();
+    await toggleMenu.click();
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('.tl-hour-lbl')).some(el => /[صم]/.test(el.textContent)));
+    assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('cc.mac.preferences')).time), '12');
+  } finally {
     await browser.close();
   }
 });

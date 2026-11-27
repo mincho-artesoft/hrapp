@@ -68,7 +68,7 @@
   button:active { background: color-mix(in srgb, var(--sheet-action), var(--sheet-label) 14%); }
   button:focus-visible { outline: 2px solid var(--cal-system-blue, #007aff); outline-offset: 2px; }
   // Keep the popover’s implicit cancel action accessible by keyboard.
-  .action-sheet__cancel:not(:focus-visible) {
+  :host(:not(.explicit-cancel)) & .action-sheet__cancel:not(:focus-visible) {
     position: absolute;
     width: 1px;
     height: 1px;

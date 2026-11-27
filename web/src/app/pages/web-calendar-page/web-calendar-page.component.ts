@@ -2,7 +2,7 @@ import { CalendarActionSheetComponent } from '../../components/calendar-native/c
 import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent } from '../../components/calendar-native/calendar-event-editor-fields';
 import { CalendarSectionPickerComponent } from "../../components/calendar-native/calendar-section-picker.component";
 import { BookingsComponent } from '../../components/calendar-native/bookings.component';
-import { bookingTimelineEvents } from '../../core/booking-timeline';
+import { bookingTimelineEvents, bookingDisplayDate, bookingMidnight } from '../../core/booking-timeline';
 import { BookingTimelineMove, BookingWorkspace } from '../../core/booking-workspace';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CalendarEmailInvitationComponent } from '../../components/calendar-native/calendar-email-invitation.component';
@@ -14,7 +14,7 @@ import {CalendarProviderService} from '../../core/calendar-provider.service';
 import {CalendarDetailTimelineComponent} from '../../components/calendar-native/calendar-detail-timeline.component';
 import {nativeTimelineLayout,NativeTimedBlock} from '../../core/calendar-timeline-layout';
 import {CalendarWeekStripComponent} from '../../components/calendar-native/calendar-week-strip.component';
-import {CalendarDateGridComponent} from '../../components/calendar-native/calendar-date-grid.component';
+import {CalendarRangePickerComponent} from '../../components/calendar-native/calendar-range-picker.component';
 import {CalendarDateTimeComponent} from '../../components/calendar-native/calendar-date-time.component';
 import {CalendarRepeatComponent} from '../../components/calendar-native/calendar-repeat.component';
 import {
@@ -194,7 +194,7 @@ const HOUR_PX = 50;
   standalone: true,
   imports: [CalendarActionSheetComponent, CalendarAnchoredMenuDirective, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent,
     CalendarSearchFieldComponent,
-    CalendarLocationEditorComponent,CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarDateGridComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
+    CalendarLocationEditorComponent,CalendarLocationMapComponent,CalendarDetailTimelineComponent,CalendarWeekStripComponent,CalendarRangePickerComponent,CalendarDateTimeComponent,CalendarRepeatComponent,CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,
     FormsModule,
@@ -298,6 +298,7 @@ export class WebCalendarPageComponent
   readonly bookingPanel = viewChild(BookingsComponent);
   private readonly bookingStore = inject(BookingWorkspace);
   readonly recurringMove = signal<((future: boolean) => Promise<void>) | null>(null);
+  readonly bookingRemoval = signal<{calendarId: string; revision: number; slotId: string; recurring: boolean} | null>(null);
   readonly bookingChanges = this.bookingStore.pendingChanges;
   private readonly queryParams = toSignal(this.route.queryParamMap);
   readonly bookingCalendar = computed(() => {
@@ -336,6 +337,7 @@ export class WebCalendarPageComponent
     this.rememberView("cc.bookings.mode", mode);
   }
   openBookingChanges() {
+    this.bookingPanel()?.myMode.set('list');
     this.selectBookingMode('appointments');
     this.searchOpen.set(false);
     this.searchText.set('');
@@ -350,6 +352,11 @@ export class WebCalendarPageComponent
   readonly isDesktop = computed(
     () => !this.viewport().touch && this.viewport().width >= 768,
   );
+  readonly showsBottomActions = computed(() => {
+    const {width, height} = this.viewport();
+    const compactLandscape = width > height && height <= 500;
+    return !this.isDesktop() && !(this.bookingCalendar() && compactLandscape);
+  });
   readonly isPhone = computed(() => this.viewport().width < 768);
   readonly showsSidebar = computed(() =>
     this.isDesktop()
@@ -394,6 +401,7 @@ export class WebCalendarPageComponent
   readonly moreEventActions = signal(false);
   readonly eventContext = signal<{
     event: WebCalendarEvent;
+    bookingRevision?: number;
     x: number;
     y: number;
   } | null>(null);
@@ -927,13 +935,7 @@ export class WebCalendarPageComponent
     }
   }
   readPreferences() {
-    if (!this.isBrowser || typeof localStorage === "undefined") return;
-    try {
-      const prefs = JSON.parse(
-        localStorage.getItem("cc.mac.preferences") || "{}",
-      );
-      this.preferences.set(prefs);
-    } catch {}
+    this.localization.readPreferences();
   }
   selectEvent(event: WebCalendarEvent) {
     this.inspectorEvent.set(event);
@@ -943,7 +945,7 @@ export class WebCalendarPageComponent
     const schedule = this.bookingCalendar();
     if (schedule) {
       const saving = this.bookingStore.pendingMoves().some(move => move.calendarId === schedule.id && move.revision === schedule.revision &&
-        (event.id === 'slot-' + move.slotId || (move.requestId && (event.id === 'request-' + move.requestId || event.id === 'proposal-' + move.requestId))));
+        (event.id === 'slot-' + move.slotId || (move.requestId && event.id === 'request-' + move.requestId)));
       if (!saving) this.bookingPanel()?.openTimelineSlot(schedule,event);
       return;
     }
@@ -1023,7 +1025,8 @@ export class WebCalendarPageComponent
   timedEventClick(event: WebCalendarEvent, input: Event) {
     if (this.bookingCalendar()) {
       if (input instanceof KeyboardEvent || !(input instanceof MouseEvent) || input.detail===0 || this.pendingTimelineTap===event.id) {
-        input.preventDefault(); this.pendingTimelineTap=null; this.activateEvent(event);
+        this.pendingTimelineTap=null;
+        this.openEventActions(event, input);
       }
       return;
     }
@@ -1042,7 +1045,6 @@ export class WebCalendarPageComponent
   contextEvent(event: WebCalendarEvent, input: MouseEvent) {
     input.preventDefault();
     input.stopPropagation();
-    if (this.bookingCalendar()) { if ((input as PointerEvent).pointerType!=='touch') this.activateEvent(event); return; }
     // Browsers synthesize contextmenu during a touch hold. The timeline owns that drag.
     if (this.drag()?.touch || this.monthPointer?.touch || (input as PointerEvent).pointerType === 'touch') return;
     this.openEventActions(event, input);
@@ -1057,7 +1059,43 @@ export class WebCalendarPageComponent
       : {x: rect.left + rect.width / 2, y: rect.top + rect.height / 2};
     this.inspectorEvent.set(event);
     this.moreEventActions.set(false);
-    this.eventContext.set({event, ...point});
+    this.eventContext.set({event, ...point, bookingRevision:this.bookingCalendar()?.revision});
+  }
+  decideBookingRequest(event: WebCalendarEvent, status: 'accepted' | 'declined') {
+    this.eventContext.set(null);
+    const panel = this.bookingPanel(), calendar = this.bookingCalendar();
+    const request = panel?.pendingRequestForEvent(event);
+    if (!calendar || !panel || !request || panel.busy()) return;
+    panel.requestDecision(request, status, calendar, message => {
+      if (this.bookingCalendarID() === calendar.id) this.showToast(message);
+    });
+  }
+
+  requestBookingRemoval(event: WebCalendarEvent) {
+    const revision = this.eventContext()?.bookingRevision, calendar = this.bookingCalendar();
+    this.eventContext.set(null);
+    if (!calendar || event.calendarId !== calendar.id || event.readOnly || !event.id.startsWith('slot-')) return;
+    const slotId = event.id.slice(5), source = calendar.slots.find(s => s.id === slotId.split('@')[0]);
+    if (!source || calendar.revision !== revision) {
+      this.showToast(this.localization.text('This calendar changed. Refresh and try again.'));
+      return;
+    }
+    this.bookingRemoval.set({calendarId:calendar.id, revision, slotId, recurring:!!source.rule});
+  }
+
+  async deleteBookingSlot(future: boolean) {
+    const target = this.bookingRemoval();
+    this.bookingRemoval.set(null);
+    if (!target || this.bookingCalendarID() !== target.calendarId || (future && !target.recurring)) return;
+    const path = future ? '/future-occurrences/' : '/occurrences/';
+    try {
+      await this.bookingStore.request('/' + target.calendarId + path + encodeURIComponent(target.slotId),
+        'PUT', {revision:target.revision, remove:true, freeOnly:true});
+    } catch (error) {
+      if (this.bookingCalendarID() === target.calendarId) this.showToast((error as Error).message);
+    } finally {
+      await this.bookingStore.refresh();
+    }
   }
   @HostListener("document:click") closeMenus() {
     this.rangeOpen.set(false);
@@ -1066,7 +1104,7 @@ export class WebCalendarPageComponent
   @HostListener("document:keydown.escape") closeOverlays() {
     if (this.recurringMove()) { this.recurringMove.set(null); return; }
     if (this.rangeOpen()) { this.rangeOpen.set(false); return; }
-    if (this.bookingPanel()?.dialog().nativeElement.open) return;
+    if (this.bookingPanel()?.hasOpenSheet) return;
     if (this.bookingCalendar()) { this.closeBookingTimeline(); return; }
     if (this.editorDraft()) {
       if (!this.savingEvent()) this.closeEditor();
@@ -1096,6 +1134,8 @@ export class WebCalendarPageComponent
     effect(onCleanup => {
       const id = this.bookingCalendarID();
       this.recurringMove.set(null);
+      this.bookingRemoval.set(null);
+      this.eventContext.set(null);
       if (!id || !this.isBrowser) return;
       const timer = setTimeout(() => this.scrollToWorkingHours(), 0);
       onCleanup(() => clearTimeout(timer));
@@ -1274,7 +1314,7 @@ export class WebCalendarPageComponent
 
   // External ICS input
   readonly icsFeedInput = signal("");
-  readonly syncingExternal = signal<string | null>(null);
+  readonly externalSyncAction = signal<"connect" | "disconnect" | null>(null);
   readonly syncFeedback = signal<string | null>(null);
 
   // Navigation Links (trailing-slash compliant for postbuild)
@@ -1429,33 +1469,20 @@ export class WebCalendarPageComponent
         year: "numeric",
       }).format(anchor);
     }
+    const preference = this.localization.datePreference();
+    const locale = this.dateLocale();
     if (mode === "day" || mode === "multi") {
-      return new Intl.DateTimeFormat(this.dateLocale(), {
-        weekday: "short",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      }).format(anchor);
+      return preference === "system"
+        ? new Intl.DateTimeFormat(locale, {weekday: "short", month: "long", day: "numeric", year: "numeric"}).format(anchor)
+        : calendarDateFormatter(locale, preference, {weekday: "short"})(anchor);
     }
-    const days = this.visibleDays();
-    const first = days[0];
-    const last = days[days.length - 1];
-    const m1 = new Intl.DateTimeFormat(this.dateLocale(), {
-      month: "short",
-      day: "numeric",
-    }).format(first);
-    if (
-      first.getMonth() === last.getMonth() &&
-      first.getFullYear() === last.getFullYear()
-    ) {
-      return `${m1} – ${last.getDate()}, ${last.getFullYear()}`;
+    const days = this.visibleDays(), first = days[0], last = days[days.length - 1];
+    if (!first || !last) return "";
+    if (preference === "system") {
+      return new Intl.DateTimeFormat(locale, {month: "short", day: "numeric", year: "numeric"}).formatRange(first, last);
     }
-    const m2 = new Intl.DateTimeFormat(this.dateLocale(), {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }).format(last);
-    return `${m1} – ${m2}`;
+    const format = this.localization.shortDate();
+    return first.getTime() === last.getTime() ? format(first) : format(first) + " – " + format(last);
   });
 
   // Mini month 42 cells for sidebar
@@ -2110,15 +2137,20 @@ export class WebCalendarPageComponent
     const days = this.visibleDays();
     const schedule = this.bookingCalendar();
     const events = schedule
-      ? bookingTimelineEvents(schedule, days[0], timelineDay(days[days.length - 1], 1),
+      ? bookingTimelineEvents(schedule, timelineDay(days[0], -2), timelineDay(days[days.length - 1], 3),
           label => this.localization.text(label), this.bookingStore.pendingMoves())
       : this.allDisplayEvents();
+    const bounds = events.map(event => {
+      const zone = schedule && event.allDay && event.details?.timeZone;
+      return {event, start:zone ? bookingDisplayDate(event.start, zone) : Date.parse(event.start),
+        end:zone ? bookingDisplayDate(event.end, zone) : Date.parse(event.end)};
+    });
     return days.map((day, index) => {
       const next = timelineDay(day, 1);
-      const items = events.filter(event =>
+      const items = bounds.filter(({event,start,end}) =>
         (this.viewMode() !== 'multi' || event.calendarId === this.multiCalendars()[index]?.id) &&
-        (Date.parse(event.end) > day.getTime() || (event.allDay && Date.parse(event.start) === day.getTime() && Date.parse(event.end) === day.getTime())) && Date.parse(event.start) < next.getTime()
-      );
+        (end > +day || (event.allDay && start === +day && end === +day)) && start < +next
+      ).map(item => item.event);
       const inputs = items.filter(event => !event.allDay).map(event => ({
         id: event.id, data: event,
         startMinutes: minuteOnDay(Date.parse(event.start), day),
@@ -2147,7 +2179,7 @@ export class WebCalendarPageComponent
       top: (b.startMinutes / 60) * HOUR_PX + 'px',
       height: Math.max(20, (b.endMinutes - b.startMinutes) / 60 * HOUR_PX - 2) + 'px',
       zIndex: b.depth + 1,
-      left: 'calc(' + b.leftPct + '% + 2px)', width: 'calc(' + b.widthPct + '% - 4px)',
+      'inset-inline-start': 'calc(' + b.leftPct + '% + 2px)', width: 'calc(' + b.widthPct + '% - 4px)',
       ...this.cardStyle(b.data.color, b.depth),
     };
   }
@@ -2161,7 +2193,6 @@ export class WebCalendarPageComponent
   };
 
   startTimelineGesture(ev: PointerEvent, mode: TimelineGesture, index: number, event?: WebCalendarEvent, allDay = false): void {
-    if (this.bookingCalendar() && allDay) return;
     if (ev.button !== 0 || !ev.isPrimary || this.savingEvent()) return;
     ev.stopPropagation();
     if (this.drag()?.active) return;
@@ -2172,8 +2203,10 @@ export class WebCalendarPageComponent
     const day = this.visibleDays()[index];
     if (!columns || !day) return;
     const rect = (ev.currentTarget as HTMLElement).getBoundingClientRect();
+    const zone = this.bookingCalendar() && event?.allDay && event.details?.timeZone;
     const original = event
-      ? {start: Date.parse(event.start), end: Date.parse(event.end), allDay: !!event.allDay}
+      ? {start: zone ? bookingDisplayDate(event.start,zone) : Date.parse(event.start),
+        end: zone ? bookingDisplayDate(event.end,zone) : Date.parse(event.end), allDay: !!event.allDay}
       : {start: day.getTime(), end: timelineDay(day, 1).getTime(), allDay};
     const resize = mode === 'resize-start' || mode === 'resize-end';
     let anchorY = HOUR_PX / 2;
@@ -2270,7 +2303,7 @@ export class WebCalendarPageComponent
       const snappedY = minuteOnDay(edge, dates[columnIndex]) * HOUR_PX / 60;
       const visualY = allDay || state.mode === 'create' ? 0 : y - bounds.top - state.anchorY - snappedY;
       const color = multiCalendar ? this.multiCalendars()[columnIndex]?.color : state.color;
-      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: this.bookingCalendar() ? !allDay : Boolean(sameCalendar && canCreate), visualX, visualY, color});
+      this.drag.set({...state, previewDayIdx: columnIndex, preview: interval, valid: this.bookingCalendar() ? true : Boolean(sameCalendar && canCreate), visualX, visualY, color});
     } else if (state.valid) this.drag.set({...state, valid: false});
     if ((withinView || allDay) && !this.scrollFrame) {
       const edgeSpeed = (position: number, low: number, high: number) =>
@@ -2363,9 +2396,14 @@ export class WebCalendarPageComponent
         const request = schedule.requests.find(r => 'request-' + r.id === event.id);
         const slotId = request?.slotId ?? (event.id.startsWith('slot-') ? event.id.slice(5) : undefined);
         if (!slotId || event.readOnly || state.bookingRevision === undefined) return;
-        const move = {calendarId: schedule.id, revision: state.bookingRevision, slotId, requestId: request?.id,
-          start: new Date(start).toISOString(), end: new Date(end).toISOString()};
-        if (schedule.slots.find(slot => slot.id === slotId.split('@')[0])?.rule) {
+        const source = schedule.slots.find(slot => slot.id === slotId.split('@')[0]);
+        const timeZone = request?.timeZone ?? source?.timeZone ?? Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const from = allDay ? bookingMidnight(start,timeZone) : new Date(start);
+        const to = allDay ? bookingMidnight(end,timeZone) : new Date(end);
+        if (!from || !to) return;
+        const move = {calendarId: schedule.id, revision: state.bookingRevision, slotId, allDay, timeZone,
+          requestId: request?.id, start: from.toISOString(), end: to.toISOString()};
+        if (source?.rule) {
           this.recurringMove.set(future => this.commitBookingMove(move, future));
         } else {
           await this.commitBookingMove(move, false);
@@ -2392,7 +2430,6 @@ export class WebCalendarPageComponent
   }
 
   doubleClickSlot(ev: MouseEvent, index: number, allDay = false): void {
-    if (this.bookingCalendar() && allDay) return;
     if ((ev.target as Element).closest('.ev-block,.allday-pill')) return;
     const day = this.visibleDays()[index];
     const top = this.daysColumnsRef!.nativeElement.getBoundingClientRect().top;
@@ -2404,7 +2441,7 @@ export class WebCalendarPageComponent
   private createTimelineEvent(interval: TimelineInterval, index: number): void {
     const calendar=this.bookingCalendar();
     if (calendar) {
-      if (!interval.allDay) this.bookingPanel()?.openSlot(calendar,undefined,false,{id:crypto.randomUUID(),
+      this.bookingPanel()?.openSlot(calendar,undefined,false,{id:crypto.randomUUID(),allDay:interval.allDay,
         start:new Date(interval.start).toISOString(),end:new Date(interval.end).toISOString()});
       return;
     }
@@ -2704,10 +2741,14 @@ export class WebCalendarPageComponent
   }
 
   openNewEventDefault(): void {
-    if (this.bookingsRoute) { this.bookingPanel()?.add(); return; }
+    this.drawerOpen.set(false);
+    const schedule = this.bookingCalendar();
+    if (schedule) {
+      this.bookingPanel()?.openSlot(schedule);
+      return;
+    }
     const base = new Date(this.anchorDate());
     base.setHours(9, 0, 0, 0);
-    this.drawerOpen.set(false);
     const end = new Date(base.getTime() + 60 * 60_000);
     this.openNewEventModal(base, end, false);
   }
@@ -3123,7 +3164,7 @@ export class WebCalendarPageComponent
   // ── External Busy Calendar Sync ───────────────────────────────────────────
 
   async syncGoogleBusy(): Promise<void> {
-    this.syncingExternal.set("google");
+    this.externalSyncAction.set("connect");
     this.syncFeedback.set(null);
     try {
       await this.api.signInWithGooglePopup({ includeCalendarReadonly: true });
@@ -3137,12 +3178,12 @@ export class WebCalendarPageComponent
           : "Paste your Google Calendar Secret .ics URL below for instant sync.",
       );
     } finally {
-      this.syncingExternal.set(null);
+      this.externalSyncAction.set(null);
     }
   }
 
   async syncMicrosoftBusy(): Promise<void> {
-    this.syncingExternal.set("microsoft");
+    this.externalSyncAction.set("connect");
     this.syncFeedback.set(null);
     try {
       await this.api.signInWithMicrosoftPopup({
@@ -3158,14 +3199,14 @@ export class WebCalendarPageComponent
           : "Paste your Outlook .ics feed URL below for instant sync.",
       );
     } finally {
-      this.syncingExternal.set(null);
+      this.externalSyncAction.set(null);
     }
   }
 
   async syncIcsUrl(): Promise<void> {
     const url = this.icsFeedInput().trim();
     if (!url) return;
-    this.syncingExternal.set("ics");
+    this.externalSyncAction.set("connect");
     this.syncFeedback.set(null);
     try {
       const nextBusy = await this.api.syncExternalProvider({
@@ -3180,16 +3221,16 @@ export class WebCalendarPageComponent
         e instanceof Error ? e.message : "Could not sync .ics URL.",
       );
     } finally {
-      this.syncingExternal.set(null);
+      this.externalSyncAction.set(null);
     }
   }
 
   async disconnectExternal(
     provider: "google" | "microsoft" | "ics",
   ): Promise<void> {
-    if (this.syncingExternal()) return;
+    if (this.externalSyncAction()) return;
     const token = this.api.token();
-    this.syncingExternal.set(provider);
+    this.externalSyncAction.set("disconnect");
     this.syncFeedback.set(null);
     try {
       const result = await this.api.syncExternalProvider({ provider, disconnect: true });
@@ -3202,11 +3243,11 @@ export class WebCalendarPageComponent
       }
       await this.providerWorkspace.refresh(true);
       await this.reloadAllWorkspaceData();
-      this.showToast(`Disconnected ${provider} calendar sync.`);
+      if (provider === "ics") this.showToast("Disconnected ics calendar sync.");
     } catch (error) {
       if (this.api.token() === token) this.handleMutationError(error, "Could not refresh the calendar connection.");
     } finally {
-      this.syncingExternal.set(null);
+      this.externalSyncAction.set(null);
     }
   }
 

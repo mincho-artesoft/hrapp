@@ -7,12 +7,14 @@ import {CalendarDateGridComponent} from './calendar-date-grid.component';
 @Component({selector:'cc-date-time',standalone:true,imports:[CalendarNativeTextPipe,CalendarNativeDatePipe,CalendarDateGridComponent],changeDetection:ChangeDetectionStrategy.OnPush,
  template:`<div class="date-row">
    <span>{{label()|nativeText}}</span>
+   @if(showsDate()){
    <button type="button" [class.active]="expanded()==='date'" [attr.aria-expanded]="expanded()==='date'" (click)="toggle('date')">
      @if(otherDate()){<span aria-hidden="true" class="measure">{{otherDate()|nativeDate:'shortDate'}}</span>}
      <span>{{date()|nativeDate:'shortDate'}}</span>
    </button>
+   }
    @if(showsTime()){
-     <button type="button" [class.active]="expanded()==='time'" [attr.aria-expanded]="expanded()==='time'" (click)="toggle('time')">
+     <button type="button" [attr.aria-label]="showsDate() ? null : (label() | nativeText) + ' · ' + timeLabel(time())" [class.active]="expanded()==='time'" [attr.aria-expanded]="expanded()==='time'" (click)="toggle('time')">
        @if(otherTime()){<span aria-hidden="true" class="measure">{{timeLabel(otherTime())}}</span>}
        <span>{{timeLabel(time())}}</span>
      </button>
@@ -22,10 +24,10 @@ import {CalendarDateGridComponent} from './calendar-date-grid.component';
  <div class="date-calendar"><cc-date-grid [start]="date()" [minimum]="minimum()" [firstWeekday]="firstWeekday()" (choose)="dateChange.emit($event)" /></div>
  }
  @if(expanded()==='time'){
- <div class="time-wheels" role="group" [attr.aria-label]="label()+' time'">
+ <div class="time-wheels" role="group" [attr.aria-label]="label() | nativeText">
  @for(part of wheelParts();track part){
- <div class="wheel" role="listbox" tabindex="0" [attr.aria-label]="part==='hour'?'Hour':part==='minute'?'Minute':'AM/PM'" (scroll)="wheelScroll($event,part)" (keydown)="wheelKey($event,part)">
- @for(value of wheelValues(part);track value){<button type="button" role="option" tabindex="-1" [attr.aria-selected]="value===selectedValue(part)" [class.selected]="value===selectedValue(part)" (click)="chooseWheel($event,part,value)">{{value}}</button>}
+ <div class="wheel" role="listbox" tabindex="0" [attr.aria-label]="(part==='hour'?'Hour':part==='minute'?'Minute':'AM/PM') | nativeText" (scroll)="wheelScroll($event,part)" (keydown)="wheelKey($event,part)">
+ @for(value of wheelValues(part);track value){<button type="button" role="option" tabindex="-1" [attr.aria-selected]="value===selectedValue(part)" [class.selected]="value===selectedValue(part)" (click)="chooseWheel($event,part,value)">{{wheelLabel(part,value)}}</button>}
  </div>}
  </div>
  }`,
@@ -40,6 +42,16 @@ export class CalendarDateTimeComponent implements OnDestroy {
  timeFormat=input('system');
  twelveHour=computed(()=>calendarHourCycle(this.timeFormat()) === 'h12');
  wheelParts=computed(():Array<'hour'|'minute'|'period'>=>this.twelveHour()?['hour','minute','period']:['hour','minute']);
+ private readonly twoDigits = computed(() => new Intl.NumberFormat(this.localization.formattingLocale(), {minimumIntegerDigits:2, useGrouping:false}));
+ private readonly periods = computed(() => {
+   const clock = new Intl.DateTimeFormat(this.localization.formattingLocale(), {hour:'numeric', hourCycle:'h12', timeZone:'UTC'});
+   return [0,12].map(hour => clock.formatToParts(Date.UTC(2000,0,1,hour)).find(part => part.type==='dayPeriod')?.value);
+ });
+ wheelLabel(part:'hour'|'minute'|'period', value:string) {
+   if (part==='period') return this.periods()[value==='PM'?1:0] ?? value;
+   const format = part==='minute' || !this.twelveHour() ? this.twoDigits() : this.localization.integer();
+   return format.format(Number(value));
+ }
  wheelValues(part:'hour'|'minute'|'period'):string[]{return part==='period'?['AM','PM']:part==='minute'?this.minutes:this.twelveHour()?Array.from({length:12},(_,i)=>String(i+1)):this.hours;}
  selectedValue(part:'hour'|'minute'|'period'):string{const hour=Number(this.time().slice(0,2));return part==='minute'?this.time().slice(3,5):part==='period'?(hour<12?'AM':'PM'):this.twelveHour()?String(hour%12||12):this.time().slice(0,2);}
  private setWheel(part:'hour'|'minute'|'period',value:string){let hour=Number(this.time().slice(0,2));let minute=this.time().slice(3,5);if(part==='minute')minute=value;else if(part==='period')hour=hour%12+(value==='PM'?12:0);else hour=this.twelveHour()?Number(value)%12+(hour>=12?12:0):Number(value);const next=String(hour).padStart(2,'0')+':'+minute;if(next!==this.time())this.timeChange.emit(next);}
@@ -49,15 +61,17 @@ export class CalendarDateTimeComponent implements OnDestroy {
  ngOnDestroy(){clearTimeout(this.openTimer);this.scrollTimers.forEach(clearTimeout);}
 
  private host:ElementRef<HTMLElement>=inject(ElementRef);
- label=input('Date');date=input.required<string>();time=input('09:00');showsTime=input(true);minimum=input('');firstWeekday=input(0);
+ label=input('Date');date=input.required<string>();time=input('09:00');showsDate=input(true);showsTime=input(true);minimum=input('');firstWeekday=input(0);
  dateChange=output<string>();timeChange=output<string>();
  focus = model<string | null>(null);
+ fieldKey = input<string>();
+ private focusKey = computed(() => this.fieldKey() ?? this.label());
  expanded = computed(() => {
-   if (this.focus() === this.label() + '-date') return 'date';
-   if (this.showsTime() && this.focus() === this.label() + '-time') return 'time';
+   if (this.showsDate() && this.focus() === this.focusKey() + '-date') return 'date';
+   if (this.showsTime() && this.focus() === this.focusKey() + '-time') return 'time';
    return null;
  });
  hours=Array.from({length:24},(_,i)=>(''+i).padStart(2,'0'));minutes=Array.from({length:60},(_,i)=>(''+i).padStart(2,'0'));
  timeLabel(time: string){return new Date('2000-01-01T'+time).toLocaleTimeString(this.localization.formattingLocale(),{hour:'numeric',minute:'2-digit',hourCycle:calendarHourCycle(this.timeFormat())});}
- toggle(kind:'date'|'time'){this.focus.set(this.expanded()===kind?null:this.label()+'-'+kind);if(kind==='time'&&this.expanded()==='time')this.openTimer=setTimeout(()=>this.host.nativeElement.querySelectorAll<HTMLElement>('.wheel').forEach((wheel,i)=>{const part=this.wheelParts()[i];wheel.scrollTop=this.wheelValues(part).indexOf(this.selectedValue(part))*36;}));}
+ toggle(kind:'date'|'time'){this.focus.set(this.expanded()===kind?null:this.focusKey()+'-'+kind);if(kind==='time'&&this.expanded()==='time')this.openTimer=setTimeout(()=>this.host.nativeElement.querySelectorAll<HTMLElement>('.wheel').forEach((wheel,i)=>{const part=this.wheelParts()[i];wheel.scrollTop=this.wheelValues(part).indexOf(this.selectedValue(part))*36;}));}
 }

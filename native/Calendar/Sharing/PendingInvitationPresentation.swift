@@ -103,16 +103,8 @@ private struct PendingInvitationRow: View {
                     Label(location, systemImage: "location")
                         .font(CalendarTypography.footnote).foregroundStyle(.secondary).lineLimit(1)
                 }
-                HStack(spacing: 10) {
-                    Button(role: .destructive, action: decline) {
-                        Text("Decline").frame(maxWidth: .infinity)
-                    }.buttonStyle(PendingInvitationActionStyle(prominent: false))
-                    Button(action: accept) {
-                        Text("Accept").frame(maxWidth: .infinity)
-                    }.buttonStyle(PendingInvitationActionStyle(prominent: true))
-                        .disabled(!canAccept)
-                }
-                .disabled(isUpdating)
+                PendingInvitationActions(canAccept: canAccept, accept: accept, decline: decline)
+                    .disabled(isUpdating)
             }
             .padding(.vertical, 12)
             Divider()
@@ -120,8 +112,28 @@ private struct PendingInvitationRow: View {
     }
 }
 
+struct PendingInvitationActions: View {
+    var canAccept = true
+    let accept: () -> Void
+    let decline: () -> Void
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Button(role: .destructive, action: decline) {
+                Text("Decline").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(PendingInvitationActionStyle(prominent: false))
+            Button(action: accept) {
+                Text("Accept").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(PendingInvitationActionStyle(prominent: true))
+            .disabled(!canAccept)
+        }
+    }
+}
+
 /// Native bordered styles resolve to different bezels and heights on Mac.
-private struct PendingInvitationActionStyle: ButtonStyle {
+struct PendingInvitationActionStyle: ButtonStyle {
     let prominent: Bool
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.accessibilityReduceMotion) private var reduceMotion

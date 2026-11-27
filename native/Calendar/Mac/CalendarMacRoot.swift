@@ -10,9 +10,9 @@ struct CalendarMacRoot: View {
     @State private var displayedMonth = Date()
     @State private var displayedYear = Calendar.current.component(.year, from: Date())
     @AppStorage("selectedTabRoot") private var selectedTab = 0
-    @ObservedObject private var bookingAccount = CloudAccountManager.shared
     @State private var bookingTimelineID: String?
-    @State private var bookingAdd = 0
+    @State private var addingBookingSlot = false
+    @State private var bookingOffer: BookingOffer?
     @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var multiDayCount = 8
     @State private var rangePickerIsOpen = false
@@ -36,7 +36,10 @@ struct CalendarMacRoot: View {
 
     var body: some View {
         GeometryReader { geometry in
-            if selectedTab == 6 {
+            if let bookingOffer {
+                BookingOfferScreen(offer: bookingOffer) { self.bookingOffer = nil }
+                    .environmentObject(store)
+            } else if selectedTab == 6 {
                 MacWeatherKitView(selectedTab: selectedTab, onCreateEvent: { date in
                     guard store.defaultWritableCalendar != nil else { store.errorMessage = NSLocalizedString("Add a writable calendar first.", comment: ""); return }
                     editorTarget = .init(event: nil, defaultDate: date, usesExactStart: true)
@@ -56,7 +59,7 @@ struct CalendarMacRoot: View {
                                 } search: {
                                     searchBar
                                 }
-                                Divider()
+                                if selectedTab != MacCalendarMode.bookings.rawValue { Divider() }
                             }
                             if selectedTab == 7 { menuPage }
                             else if searching && !search.isEmpty {
@@ -79,7 +82,7 @@ struct CalendarMacRoot: View {
         }
         .background(CalendarPalette.background)
         .safeAreaInset(edge: .top, spacing: 0) {
-            BookingChangeNotice(reviewing: selectedTab == MacCalendarMode.bookings.rawValue && bookingMode == .appointments && bookingTimelineID == nil && !searching) {
+            BookingChangeNotice(reviewing: bookingOffer != nil || (selectedTab == MacCalendarMode.bookings.rawValue && bookingMode == .appointments && bookingTimelineID == nil && !searching)) {
                 search = ""; searching = false
                 viewMenuIsOpen = false; rangePickerIsOpen = false
                 bookingTimelineID = nil
@@ -115,6 +118,7 @@ struct CalendarMacRoot: View {
         .onReceive(store.$events) { _ in MacCalendarReminderScheduler.shared.refresh(store: store) }
         .onChange(of: eventNotifications) { _, enabled in MacCalendarReminderScheduler.shared.refresh(store: store, requestPermission: enabled) }
         .onChange(of: selectedTab) { oldTab, _ in
+            bookingOffer = nil
             bookingTimelineID = nil
             if MacCalendarMode(rawValue: oldTab)?.canReturnFromMenu == true { lastCalendarTab = oldTab }
             searching = false; search = ""; rangePickerIsOpen = false; viewMenuIsOpen = false
@@ -123,7 +127,7 @@ struct CalendarMacRoot: View {
         .onExitCommand {
             if viewMenuIsOpen || rangePickerIsOpen { rangePickerIsOpen = false; viewMenuIsOpen = false }
             else if bookingTimelineID != nil { bookingTimelineID = nil }
-            else if selectedTab >= 6 { selectedTab = lastCalendarTab }
+            else if bookingOffer == nil && selectedTab >= 6 { selectedTab = lastCalendarTab }
         }
         .task {
             if MacCalendarMode(rawValue: selectedTab) == nil { selectedTab = 0 }
@@ -153,7 +157,7 @@ struct CalendarMacRoot: View {
         case 2: MacTabletYearView(store: store, year: $displayedYear, month: $displayedMonth, selectedTab: $selectedTab)
         case 3: MacTabletMultiDayView(store: store, startDate: $selectedDate, dayCount: multiDayCount, selectedTab: $selectedTab, editorTarget: $editorTarget)
         case 4: MacTabletListView(store: store, scrollRequest: listScrollRequest, editorTarget: $editorTarget)
-        case MacCalendarMode.bookings.rawValue: BookingsContent(mode: bookingMode, addAction: bookingAdd, timelineID: $bookingTimelineID)
+        case MacCalendarMode.bookings.rawValue: BookingsContent(mode: bookingMode, timelineID: $bookingTimelineID, addingSlot: $addingBookingSlot) { bookingOffer = $0 }
                 .environmentObject(store)
         case 5: MacTabletMultiCalendarView(store: store, selectedDate: $selectedDate, editorTarget: $editorTarget)
         default: MacTabletMonthView(store: store, month: $displayedMonth, selectedDate: $selectedDate, selectedTab: $selectedTab, editorTarget: $editorTarget)
@@ -185,11 +189,6 @@ struct CalendarMacRoot: View {
 
             Spacer(minLength: 8)
 
-            if selectedTab == MacCalendarMode.bookings.rawValue && bookingAccount.isSignedIn {
-                Button { bookingAdd += 1 } label: {
-                    Image(systemName: "plus").font(.system(size: 21, weight: .medium)).frame(width: 30, height: 30)
-                }.buttonStyle(.plain).foregroundStyle(Color.appBlue).accessibilityLabel("Add")
-            }
             if selectedTab != 7 && selectedTab != MacCalendarMode.bookings.rawValue {
                 Button(action: newEvent) {
                     Image(systemName: "plus")

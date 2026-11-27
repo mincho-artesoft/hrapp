@@ -21,7 +21,7 @@
           <button
             type="button"
             class="weather-icon-btn"
-            aria-label="Saved Regions"
+            [attr.aria-label]="'Saved Regions' | nativeText"
             (click)="showRegions()"
           >
             <cc-symbol name="list.bullet" [pointSize]="22" />
@@ -32,7 +32,7 @@
           <button
             type="button"
             class="weather-icon-btn"
-            aria-label="Search for a city…"
+            [attr.aria-label]="'Search for a city…' | nativeText"
             (click)="beginSearch()"
           >
             <cc-symbol name="magnifyingglass" [pointSize]="22" />
@@ -42,7 +42,7 @@
               <button
                 type="button"
                 class="weather-icon-btn mode-button"
-                #viewPickerButton aria-haspopup="menu" aria-label="Calendar views"
+                #viewPickerButton aria-haspopup="menu" [attr.aria-label]="'Calendar views' | nativeText"
                 [attr.aria-expanded]="modePicker()"
                 (click)="modePicker.set(!modePicker()); $event.stopPropagation()"
               >
@@ -81,7 +81,7 @@
             <button
               type="button"
               class="weather-icon-btn mode-button"
-              aria-label="Menu"
+              [attr.aria-label]="'Menu' | nativeText"
               (click)="openMenu.emit()"
             >
               <cc-symbol name="gearshape" [pointSize]="20" />
@@ -107,7 +107,7 @@
 
     @if (regions()) {
       <header class="regions-header">
-        <button type="button" class="weather-icon-btn" aria-label="Current location" (click)="currentLocation()">
+        <button type="button" class="weather-icon-btn" [attr.aria-label]="'Current location' | nativeText" (click)="currentLocation()">
           <cc-symbol name="location.fill" />
         </button>
         <h1>{{ "Saved Regions" | nativeText }}</h1>
@@ -115,7 +115,7 @@
           <button
             type="button"
             class="done"
-            aria-label="Done"
+            [attr.aria-label]="'Done' | nativeText"
             (click)="regions.set(false)"
           >
             <cc-symbol [pointSize]="17" name="checkmark" />
@@ -124,7 +124,7 @@
           <button
             type="button"
             class="done"
-            aria-label="Close saved regions"
+            [attr.aria-label]="'Close saved regions' | nativeText"
             (click)="regions.set(false); closeSearch()"
           >
             <cc-symbol [pointSize]="17" name="xmark" />
@@ -136,8 +136,8 @@
       <label class="city-search">
         <cc-symbol name="magnifyingglass" />
         <input
-          placeholder="Search for a city…"
-          aria-label="Search for a city"
+          [placeholder]="'Search for a city…' | nativeText"
+          [attr.aria-label]="'Search for a city' | nativeText"
           [ngModel]="query()"
           (ngModelChange)="search($event)"
         />
@@ -145,7 +145,7 @@
           <button
             type="button"
             class="clear-city"
-            aria-label="Clear search"
+            [attr.aria-label]="'Clear search' | nativeText"
             (click)="query.set(''); results.set([])"
           >
             <cc-symbol name="xmark.circle.fill" />
@@ -197,7 +197,7 @@
           <button
             type="button"
             class="delete-region" draggable="true" aria-haspopup="menu"
-            aria-label="Region options"
+            [attr.aria-label]="'Region options' | nativeText"
             (click)="contextRegion(place, $event)"
           >
             <cc-symbol name="line.3.horizontal" />
@@ -246,11 +246,11 @@
               }
             }
           </div>
-          <p class="hourly-hint"><cc-symbol name="info.circle" />{{ "Tap an hour to quickly add a calendar event." | nativeText }}</p>
+          <p class="hourly-hint"><cc-symbol [pointSize]="12" name="info.circle" />{{ "Tap an hour to quickly add a calendar event." | nativeText }}</p>
         </section>
         <section class="weather-card daily-card">
           <h3>
-            <cc-symbol name="calendar" />{{ "10-DAY FORECAST" | nativeText }}
+            <cc-symbol [pointSize]="10" name="calendar" />{{ "10-DAY FORECAST" | nativeText }}
           </h3>
           @for (d of s.daily.slice(0, 10); track d.iso) {
             <button
@@ -426,7 +426,7 @@
       </p>
     }
     @if (error()) {
-      <p class="weather-status" role="alert">{{ error() }}</p>
+      <p class="weather-status" role="alert">{{ error() | nativeText }}</p>
     }
   </div>
 </div>

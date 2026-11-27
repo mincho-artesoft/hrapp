@@ -44,9 +44,6 @@ cc-symbol {
   width: 17px;
   height: 17px;
 }
-:host-context([dir="rtl"]) .month-heading cc-symbol:not([name="chevron.down"]) {
-  transform: scaleX(-1);
-}
 .date-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));

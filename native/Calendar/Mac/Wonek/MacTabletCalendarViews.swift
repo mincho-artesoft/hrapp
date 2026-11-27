@@ -117,8 +117,11 @@ struct MacScopedTimelineActions {
     let destination: EKCalendar?
     let editable: (EKEvent) -> Bool
     let edit: (EKEvent) -> Void
-    let move: (EKEvent, DateInterval) -> Void
-    let create: (DateInterval) -> Void
+    let deletable: (EKEvent) -> Bool
+    let delete: (EKEvent) -> Void
+    let response: (EKEvent) -> ((BookingDecision) -> Void)?
+    let move: (EKEvent, DateInterval, Bool) -> Void
+    let create: (DateInterval, Bool) -> Void
 }
 
 struct MacTabletMultiDayView: View {
@@ -348,6 +351,7 @@ struct MacTabletTimedEventBlock: View {
     var depth = 0
     var displayOnly = false
     var scopedActions: MacScopedTimelineActions? = nil
+    var guestAction: ((EKEvent) -> (() -> Void)?)? = nil
     @Binding var editorTarget: MacTabletEventEditorTarget?
     let isSelected: Bool
     let activate: () -> Void
@@ -363,7 +367,31 @@ struct MacTabletTimedEventBlock: View {
             Button { scopedActions.edit(event) } label: { card(isReadOnly: !scopedActions.editable(event)) }
                 .buttonStyle(.plain)
                 .accessibilityLabel(event.title ?? "")
-                .contextMenu { Button(scopedActions.editable(event) ? "Edit" : "Detail") { scopedActions.edit(event) } }
+                .appMacContextMenu {
+                    let editable = scopedActions.editable(event)
+                    var items = [MacCalendarLazyContextMenu.Item(title: NSLocalizedString(editable ? "Edit" : "Detail", comment: ""),
+                        symbol: editable ? "square.and.pencil" : "info.circle", action: { scopedActions.edit(event) })]
+                    if let respond = scopedActions.response(event) {
+                        items.append(.separator)
+                        items.append(.init(title: NSLocalizedString("Decline", comment: ""), symbol: "xmark", tint: .appRed,
+                                           action: { respond(.declined) }))
+                        items.append(.init(title: NSLocalizedString("Accept", comment: ""), symbol: "checkmark",
+                                           action: { respond(.accepted) }))
+                    }
+                    if scopedActions.deletable(event) {
+                        items.append(.separator)
+                        items.append(.init(title: NSLocalizedString("Delete", comment: ""), symbol: "trash",
+                                           tint: .appRed, action: { scopedActions.delete(event) }))
+                    }
+                    return items
+                }
+        } else if let guestAction {
+            if let book = guestAction(event) {
+                Button(action: book) { card(isReadOnly: false) }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel([event.title ?? "", event.isAllDay ? NSLocalizedString("All-day", comment: "") :
+                        MacCalendarFormatting.time(event.startDate) + " – " + MacCalendarFormatting.time(event.endDate)].joined(separator: ", "))
+            } else { card(isReadOnly: true) }
         } else if displayOnly {
             card(isReadOnly: true)
         } else {
@@ -405,6 +433,8 @@ struct MacTabletTimelineView: View {
     var scrollRequest: CalendarTimelineScrollRequest? = nil
     var scopedEvents: [EKEvent]? = nil
     var scopedActions: MacScopedTimelineActions? = nil
+    var guestAction: ((EKEvent) -> (() -> Void)?)? = nil
+    var focusHour: Int? = nil
     var onDayTap: ((Date) -> Void)? = nil
     @Environment(\.layoutDirection) private var layoutDirection
     @State private var interactionSpace = UUID()
@@ -447,7 +477,7 @@ struct MacTabletTimelineView: View {
             let columns = MacCalendarTimelineColumns(viewportWidth: viewport.size.width,
                 count: columnCount, rightToLeft: layoutDirection == .rightToLeft)
             VStack(spacing: 0) {
-                if calendars != nil || onDayTap != nil {
+                if calendars != nil || onDayTap != nil || guestAction != nil {
                     pinnedRow(columns: columns, height: calendars == nil ? 40 : 30) {
                         Color.clear
                     } content: {
@@ -487,7 +517,7 @@ struct MacTabletTimelineView: View {
                             .offset(x: columns.hoursX)
                     }
                     .overlay(alignment: columns.rightToLeft ? .topLeading : .topTrailing) {
-                        if onDayTap == nil, let date = dates.first {
+                        if onDayTap == nil, guestAction == nil, let date = dates.first {
                             MacTimelineHourlyWeather(date: date, hourHeight: hourHeight, margin: timelineMargin)
                                 .modifier(MacCalendarPinnedScrollOffset(viewport: viewportState, axis: .vertical))
                                 .frame(maxHeight: .infinity, alignment: .top)
@@ -503,7 +533,8 @@ struct MacTabletTimelineView: View {
                     }
                     .onAppear {
                         if scrollRequest == nil {
-                            proxy.scrollTo("hour-\(max(0, calendar.component(.hour, from: Date()) - 2))",
+                            let hour = focusHour ?? (calendar.component(.hour, from: Date()) - 2)
+                            proxy.scrollTo("hour-\(max(0, hour))",
                                 anchor: columns.rightToLeft ? .topTrailing : .topLeading)
                         }
                     }
@@ -548,16 +579,16 @@ struct MacTabletTimelineView: View {
                     scrollHandle: scrollHandle, activeEventID: $activeEventID,
                     selectedID: $selectedEventID,
                     selectEvent: { if scopedActions == nil { activateEvent($0.event) } },
-                    openEvent: scopedActions?.edit, allowsAllDay: scopedActions == nil,
+                    openEvent: scopedActions?.edit,
                     create: { interval, allDay, calendarID in
-                        if let scopedActions { scopedActions.create(interval); return }
+                        if let scopedActions { scopedActions.create(interval,allDay); return }
                         var target = MacTabletEventEditorTarget(event: nil, defaultDate: interval.start, usesExactStart: true)
                         target.initialInterval = interval
                         target.preferredCalendarID = calendarID
                         target.defaultIsAllDay = allDay
                         editorTarget = target
                     }, commit: { event, interval, allDay, calendarID in
-                        if let scopedActions { scopedActions.move(event, interval); return }
+                        if let scopedActions { scopedActions.move(event,interval,allDay); return }
                         let change = TimelineChange(event: event, interval: interval, allDay: allDay, calendarID: calendarID)
                         if event.hasRecurrenceRules { pendingTimelineChange = change }
                         else { saveTimelineChange(change, span: .thisEvent) }
@@ -661,6 +692,8 @@ struct MacTabletTimelineView: View {
                             .lineLimit(1).minimumScaleFactor(0.4).allowsTightening(true)
                             .foregroundStyle(store.color(for: calendars[column]))
                             .frame(width: max(0, columns.columnWidth - 8))
+                    } else if guestAction != nil {
+                        MacCalendarDayHeader(date: columnDate(column))
                     } else if calendars == nil {
                         Button { onDayTap?(columnDate(column)) } label: {
                             MacCalendarDayHeader(date: columnDate(column))
@@ -679,7 +712,7 @@ struct MacTabletTimelineView: View {
 
     private var pinnedHours: some View {
         GeometryReader { _ in
-            TimelineView(.periodic(from: .now, by: 60)) { context in
+            TimelineView(.everyMinute) { context in
                 let currentTime = dates.contains(where: calendar.isDateInToday) ? context.date : nil
                 ZStack(alignment: .topLeading) {
                     hourGrid(currentTime: currentTime, pinned: true)
@@ -720,7 +753,7 @@ struct MacTabletTimelineView: View {
                         let events = eventsForColumn(column).filter(\.isAllDay)
                         ForEach(events, id: \.self) { event in
                             MacTabletTimedEventBlock(store: store, event: event, defaultDate: columnDate(column),
-                                width: max(1, width - 4), height: rowHeight, editorTarget: $editorTarget,
+                                width: max(1, width - 4), height: rowHeight, displayOnly: scopedEvents != nil, scopedActions: scopedActions, guestAction: guestAction, editorTarget: $editorTarget,
                                 isSelected: selectedEventID == MacCalendarTimelineItem.identity(event),
                                 activate: { activateEvent(event) },
                                 select: { selectEventForContextMenu(event) })
@@ -746,7 +779,7 @@ struct MacTabletTimelineView: View {
         let availableWidth = columns.columnsWidth
         let columnWidth = columns.columnWidth
         ZStack(alignment: .topLeading) {
-            TimelineView(.periodic(from: .now, by: 60)) { context in
+            TimelineView(.everyMinute) { context in
                 hourGrid(currentTime: dates.contains(where: calendar.isDateInToday) ? context.date : nil,
                     showsSeparators: false)
             }
@@ -765,7 +798,7 @@ struct MacTabletTimelineView: View {
                     MacTabletTimedEventBlock(store: store, event: placement.event,
                         defaultDate: columnDate(column), width: placement.frame.width,
                         height: placement.frame.height, textHeight: placement.textHeight,
-                        depth: placement.depth, displayOnly: scopedEvents != nil, scopedActions: scopedActions, editorTarget: $editorTarget,
+                        depth: placement.depth, displayOnly: scopedEvents != nil, scopedActions: scopedActions, guestAction: guestAction, editorTarget: $editorTarget,
                         isSelected: selectedEventID == MacCalendarTimelineItem.identity(placement.event),
                         activate: { activateEvent(placement.event) },
                         select: { selectEventForContextMenu(placement.event) })
@@ -791,7 +824,7 @@ struct MacTabletTimelineView: View {
                         .offset(x: columns.rightToLeft ? 0 : timeWidth,
                             y: timelineMargin + CGFloat(hour) * hourHeight - 0.25)
                 }
-                TimelineView(.periodic(from: .now, by: 60)) { context in
+                TimelineView(.everyMinute) { context in
                     if dates.contains(where: calendar.isDateInToday) {
                         currentTimeLine(context.date, width: availableWidth, columnWidth: columnWidth)
                     }
@@ -804,14 +837,17 @@ struct MacTabletTimelineView: View {
     }
 
     private func hourGrid(currentTime: Date?, pinned: Bool = false, showsSeparators: Bool = true) -> some View {
-        VStack(spacing: 0) {
+        let formatter = MacCalendarFormatting.timeFormatter()
+        let calendar = self.calendar
+        let day = Date()
+        return VStack(spacing: 0) {
             ForEach(0...24, id: \.self) { hour in
                 HStack(spacing: 0) {
                     if layoutDirection == .rightToLeft {
                         Rectangle().fill(Color.gray.opacity(0.35)).frame(height: 0.5)
                             .opacity(showsSeparators ? 1 : 0)
                     }
-                    Text(hourLabel(hour % 24))
+                    Text(formatter.string(from: calendar.date(bySettingHour: hour % 24, minute: 0, second: 0, of: day) ?? day))
                         .font(.system(size: 11, weight: .medium))
                         .foregroundStyle(.primary)
                         .opacity(TimelineTimeLabels.showsHour(hour, near: currentTime, calendar: calendar) ? 1 : 0)
@@ -904,9 +940,6 @@ struct MacTabletTimelineView: View {
             hourHeight: hourHeight, margin: timelineMargin)
     }
 
-    private func hourLabel(_ hour: Int) -> String {
-        MacCalendarFormatting.time(calendar.date(bySettingHour: hour % 24, minute: 0, second: 0, of: Date()) ?? Date())
-    }
 }
 
 struct MacTabletMonthView: View {

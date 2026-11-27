@@ -3,11 +3,13 @@ import {
   Component,
   OnDestroy,
   computed,
+  inject,
   input,
   output,
   signal,
 } from "@angular/core";
 import {
+  CalendarLocalization,
   CalendarNativeDatePipe,
   CalendarNativeTextPipe,
 } from "../../core/calendar-localization";
@@ -52,7 +54,7 @@ function offsetDay(date: Date, offset: number): Date {
           (click)="select(day)"
         >
           <small>{{ day | nativeDate: "EEEEE" }}</small
-          ><span>{{ day.getDate() }}</span>
+          ><span>{{ number().format(day.getDate()) }}</span>
         </button>
       }
     </div>
@@ -150,6 +152,7 @@ function offsetDay(date: Date, offset: number): Date {
   ],
 })
 export class CalendarWeekStripComponent implements OnDestroy {
+  readonly number = inject(CalendarLocalization).integer;
   selected = input.required<Date>();
   today = input.required<Date>();
   firstWeekday = input(0);

@@ -14,6 +14,7 @@ struct CalendarDateTimePickerRow: View {
     let id: String
     @Binding var selection: Date
     var range: ClosedRange<Date> = Date.distantPast...Date.distantFuture
+    var showsDate = true
     var showsTime = true
     @Binding var expanded: CalendarDatePickerFocus?
     var onExpansionCompleted: (() -> Void)? = nil
@@ -33,7 +34,7 @@ struct CalendarDateTimePickerRow: View {
                 Text(title).foregroundStyle(.primary)
                 Spacer(minLength: 8)
                 HStack(spacing: 6) {
-                    valueButton(.date)
+                    if showsDate { valueButton(.date) }
                     if showsTime { valueButton(.time) }
                 }
                 .layoutPriority(1)

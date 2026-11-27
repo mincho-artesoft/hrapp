@@ -58,7 +58,8 @@ struct RootView: View {
 
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
     @State private var bookingTimelineID: String?
-    @State private var bookingAdd = 0
+    @State private var addingBookingSlot = false
+    @State private var bookingOffer: BookingOffer?
     @AppStorage(BookingViewMode.preferenceKey) private var bookingMode: BookingViewMode = .appointments
     @State private var selectedTab = 1
     @State private var oldSelectedTab = 1
@@ -121,7 +122,7 @@ struct RootView: View {
                     let isPortrait = geometry.size.height > geometry.size.width
                     let showsDraggableMenu = (
                         isPortrait || UIDevice.current.userInterfaceIdiom == .pad
-                    ) && selectedTab != 7 && bookingTimelineID == nil
+                    ) && selectedTab != 7
 
                     HStack(spacing: 0) {
                         if selectedTab != 6 && selectedTab != 7 && selectedTab != CalendarHeaderMode.bookings.rawValue && CalendarSidebarLayout.isVisible(isMac: false,
@@ -184,14 +185,13 @@ struct RootView: View {
                                         })
                                         Spacer()
                                         bottomBarButton(title: "Add", image: "calendar.badge.plus", action: {
-                                            if selectedTab == CalendarHeaderMode.bookings.rawValue {
-                                                menuState = .collapsed
-                                                bookingAdd += 1
-                                                return
-                                            }
-                                            createAndEditNewEvent(on: Date())
                                             menuState = .collapsed
-                                            ReviewManager.eventCreated()
+                                            if selectedTab == CalendarHeaderMode.bookings.rawValue, bookingTimelineID != nil {
+                                                addingBookingSlot = true
+                                            } else {
+                                                createAndEditNewEvent(on: Date())
+                                                ReviewManager.eventCreated()
+                                            }
                                         })
                                         Spacer()
                                         if liveActivityManager.isSupported {
@@ -457,6 +457,7 @@ struct RootView: View {
             .presentationDragIndicator(.visible)
         }
         .onChange(of: selectedTab) { oldValue, newValue in
+            bookingOffer = nil
             bookingTimelineID = nil
             self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
@@ -882,9 +883,11 @@ extension RootView {
             if bookingTimelineID == nil {
                 CalendarScreenHeader(currentView: selectedTab, bookingMode: $bookingMode,
                                      onSearch: nil, onViewChange: { selectedTab = $0 })
-                Divider()
             }
-            BookingsContent(mode: bookingMode, addAction: bookingAdd, timelineID: $bookingTimelineID)
+            BookingsContent(mode: bookingMode, timelineID: $bookingTimelineID, addingSlot: $addingBookingSlot) { bookingOffer = $0 }
+                .appFullScreenCover(item: $bookingOffer) { offer in
+                    BookingOfferScreen(offer: offer) { bookingOffer = nil }
+                }
         }
     case 6:
         WeatherKitView(

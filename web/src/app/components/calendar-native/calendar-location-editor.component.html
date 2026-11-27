@@ -6,7 +6,7 @@
     >
     <input
       autofocus
-      aria-label="Location"
+      [attr.aria-label]="'Location' | nativeText"
       [ngModel]="d.location"
       (ngModelChange)="
         changeLocation($event)
@@ -16,7 +16,7 @@
       <button
         type="button"
         class="clear-location"
-        aria-label="Clear location"
+        [attr.aria-label]="'Clear location' | nativeText"
         (click)="changeLocation('')"
       >
         <cc-symbol name="xmark.circle.fill" />
@@ -30,7 +30,7 @@
     >
     <input
       type="url"
-      aria-label="Video Call"
+      [attr.aria-label]="'Video Call' | nativeText"
       [(ngModel)]="d.videoCallURL"
     />
   </label>

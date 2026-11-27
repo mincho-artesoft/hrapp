@@ -1,5 +1,9 @@
 import type { Appointment, BookingCalendar, BookingSlot } from './booking-workspace';
 
+export function bookingParticipantName(name: string, text: (key: string) => string): string {
+  return name === 'Cloud Calendars user' ? text(name) : name;
+}
+
 export type BookingEventStatus = 'available' | Appointment['status'];
 
 export const bookingStatus = {

@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
+import extents from "./calendar-symbol-extents.json";
 
-// AppKit symbol image bounds at 17 pt. The export fits the longest side in
-// 80 pixels on a 96-pixel canvas (tools/export-calendar-symbols.swift).
-const nativeExtent: Record<string, number> = {
-  plus: 18, magnifyingglass: 21, gearshape: 22, "calendar.day.timeline.leading": 26,
-  "distribute.horizontal.left": 27, calendar: 21, "calendar.badge.checkmark": 24, "12.lane": 20, "list.bullet": 22,
-  "align.vertical.top": 24, "cloud.sun": 26, xmark: 18, checkmark: 19,
-  "chevron.left": 18, pencil: 18, "square.and.arrow.up": 24, trash: 22,
-};
+// [AppKit image extent at 17 pt, visible ink extent in the 96 px PNG].
+// The exporter fits each AppKit image into 80 px before centering it.
+const symbolExtents: Readonly<Record<string, readonly number[]>> = extents;
 
 /** The app's exported symbols, not a second web icon set. */
 @Component({
   selector: "cc-symbol",
   standalone: true,
-  host: { "[style.width.px]": "canvasSize()", "[style.height.px]": "canvasSize()" },
+  host: {
+    "[class.directional]": "directional()",
+    "[style.--symbol-default-size.em]": "canvasScale()",
+    "[style.--symbol-canvas.px]": "canvasSize()",
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `@if(multicolor()){<img aria-hidden="true" [src]="'/icons/calendar-native/weather/'+name()+'.png'" alt=""/>}@else{<span
     aria-hidden="true"
@@ -26,15 +26,20 @@ const nativeExtent: Record<string, number> = {
     `
       :host {
         display: inline-flex;
-        width: 1.35em;
-        height: 1.35em;
+        width: var(--symbol-canvas, var(--symbol-default-size));
+        height: var(--symbol-canvas, var(--symbol-default-size));
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
         vertical-align: middle;
       }
+      :host(.directional):dir(rtl) span { transform: scaleX(-1); }
       img {width:100%;height:100%;object-fit:contain;}
       span {
-        width: 100%;
-        height: 100%;
+        width: var(--symbol-canvas, 100%);
+        height: var(--symbol-canvas, 100%);
+        flex: none;
+        pointer-events: none;
         background: currentColor;
         mask-size: contain;
         mask-repeat: no-repeat;
@@ -45,10 +50,19 @@ const nativeExtent: Record<string, number> = {
 })
 export class CalendarSymbolComponent {
   readonly name = input.required<string>();
+  readonly directional = computed(() => ["chevron.forward", "chevron.backward"].includes(this.name()));
   readonly pointSize = input<number>();
-  readonly canvasSize = computed(() => {
-    const points = this.pointSize();
-    return points === undefined ? null : points * (nativeExtent[this.name()] ?? 17) / 17 * 96 / 80;
-  });
+  readonly fitSize = input<number>();
   readonly multicolor = input(false);
+  readonly canvasScale = computed(() => {
+    const extent = symbolExtents[this.name()]?.[0];
+    return extent && !this.multicolor() ? extent / 17 * 96 / 80 : 1.35;
+  });
+  readonly canvasSize = computed(() => {
+    const fit = this.fitSize();
+    const ink = symbolExtents[this.name()]?.[1];
+    if (fit !== undefined && ink && !this.multicolor()) return fit * 96 / ink;
+    const points = this.pointSize();
+    return points === undefined ? null : points * this.canvasScale();
+  });
 }

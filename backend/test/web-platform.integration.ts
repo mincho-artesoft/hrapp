@@ -266,6 +266,70 @@ async function main() {
     await bookings.remove(host,laterCal,'6');
   } finally { Date.now = repeatNow; }
   {
+    const api = new BookingCalendarsController(new MemoryStore() as any, {bookingChange: async () => {}} as any);
+    const id = randomUUID(), slotId = randomUUID(), request = randomUUID();
+    const bounds = {start:'2099-05-01T10:00:00.000Z', end:'2099-05-01T11:00:00.000Z'};
+    const slot = {id:slotId, ...bounds, rule:{frequency:0, interval:1, occurrenceCount:2}, timeZone:'UTC'};
+    const link = 'https://meet.example.org/rooms/lesson?join=1';
+    const save = (revision:number, fields:object) => api.save(host,id,{title:'Online lessons',revision,slots:[{...slot,...fields}]});
+    for (const videoCallURL of ['invalid', 'javascript:void(0)', 'https://user:pass@example.org']) {
+      await assert.rejects(save(0,{videoCallURL}), (error: any) => error.getStatus() === 400 && error.getResponse().error === 'Invalid video call link.');
+    }
+    await save(0,{videoCallURL:link});
+    await save(1,{location:'Room 2'});
+    const offer = await api.availability(guest,id);
+    assert.equal(offer.slots.length,2);
+    for (const item of offer.slots) {
+      assert.equal(item.location,'Room 2');
+      assert.ok('hasVideoCall' in item && item.hasVideoCall);
+      assert.ok(!('videoCallURL' in item));
+    }
+    const later = offer.slots[1];
+    await api.book(guest,id,request,{slotId:later.id});
+    const appointment = async () => (await api.workspace(guest)).appointments[0];
+    assert.ok(!('videoCallURL' in await appointment()));
+    const owned = (await api.workspace(host)).calendars[0];
+    assert.equal(owned.slots[0].videoCallURL,link);
+    assert.equal(Reflect.get(owned.requests[0],'videoCallURL'),link);
+    await api.decide(host,id,request,{status:'accepted'});
+    const readWindow = () => api.availability(guest,id,'2099-05-01T00:00:00Z','2099-05-05T00:00:00Z');
+    const bookedWindow = await api.availability(host,id,'2099-05-01T00:00:00Z','2099-05-05T00:00:00Z');
+    assert.equal((await readWindow()).busy[0].myBookingId,request);
+    assert.deepEqual(bookedWindow.busy?.map(({id,...rest}) => rest),[{start:later.start,end:later.end}]);
+    assert.ok(!bookedWindow.slots.some(s => s.id === later.id));
+    assert.ok(!JSON.stringify(bookedWindow.busy).includes(request));
+    assert.ok(!('busy' in await api.availability(guest,id)));
+    await assert.rejects(api.availability(guest,id,bounds.start,'2099-08-01T00:00:00Z'));
+    assert.equal(Reflect.get(await appointment(),'videoCallURL'),link);
+    await api.editOccurrence(host,id,later.id,{revision:4,start:later.start,end:later.end,videoCallURL:''});
+    const changed = await appointment();
+    assert.equal(Reflect.get(changed,'videoCallURL'),link);
+    assert.ok(changed.proposal && !('videoCallURL' in changed.proposal));
+    await api.answerChange(guest,id,request,{proposalId:changed.proposal.id,status:'accepted'});
+    assert.ok(!('videoCallURL' in await appointment()));
+    assert.equal((await api.workspace(host)).calendars[0].slots.find(s=>s.id===slotId)?.videoCallURL,link);
+    await assert.rejects(api.cancelBooking(host,id,request));
+    await assert.rejects(api.cancelBooking({principal:{principalId:randomUUID()}},id,request));
+    await api.cancelBooking(guest,id,request);
+    await api.cancelBooking(guest,id,request);
+    assert.equal((await appointment()).status,'declined');
+    assert.equal((await appointment()).cancelledByGuest,true);
+    assert.deepEqual((await readWindow()).busy,[]);
+    assert.ok((await readWindow()).slots.some(s=>s.start===later.start));
+    // A new guest may immediately claim the released occurrence. Cancelling one booking
+    // of a recurring slot never clears the other guest's holds.
+    const other = {principal:{principalId:randomUUID()}}, replacement = randomUUID(), firstRequest = randomUUID();
+    const released = (await readWindow()).slots.find(s=>s.start===later.start)!;
+    await api.book(other,id,replacement,{slotId:released.id});
+    await api.book(guest,id,firstRequest,{slotId:slotId});
+    await assert.rejects(api.cancelBooking(guest,id,replacement));
+    const mine = (await readWindow()).busy;
+    assert.equal(mine.find(s=>s.start===later.start)?.myBookingId,undefined);
+    assert.equal(mine.find(s=>s.start===bounds.start)?.myBookingId,firstRequest);
+    await api.cancelBooking(guest,id,firstRequest);
+    assert.deepEqual((await readWindow()).busy.map(s=>s.start),[later.start]);
+  }
+  {
     const isolated = new MemoryStore();
     await isolated.putJSON(store.keys.principal(guestPrincipal.principalId), {accountEmail:'elena@example.com'});
     const api = new BookingCalendarsController(isolated as any, {bookingChange: async (...args:unknown[]) => notices.push(args)} as any);
@@ -293,6 +357,16 @@ async function main() {
     const pending=await current();
     assert.equal(pending.start,moved.start);
     assert.equal(pending.proposal.start,proposed.start);
+    const visibleBusy = async () => (await api.availability(other,id,seed.start,bounds(start+3*day).end)).busy;
+    assert.deepEqual((await visibleBusy()).map(({id,...times})=>times),[
+      {start:moved.start,end:moved.end},proposed,
+    ]);
+    for (const [viewer, expected] of [[host, proposed], [guest, moved]] as const) {
+      const page = await api.availability(viewer,id,seed.start,bounds(start+3*day).end);
+      assert.deepEqual(page.busy.map(row => row.start),[expected.start]);
+      assert.ok(!page.slots.some(slot => slot.start === moved.start || slot.start === proposed.start));
+    }
+    assert.equal((await api.availability(guest,id,proposed.start,proposed.end)).busy.length,0);
     assert.equal(pending.calendarId,id);
     assert.equal(notices.length,1);
     assert.equal(notices[0][0],'elena@example.com');
@@ -306,6 +380,7 @@ async function main() {
     await assert.rejects(api.answerChange(guest,id,request,{...answer,proposalId:randomUUID()}));
     await api.answerChange(guest,id,request,answer);
     await api.answerChange(guest,id,request,answer);
+    assert.deepEqual((await visibleBusy()).map(({id,...times})=>times),[proposed]);
     assert.equal((await current()).start,proposed.start);
     assert.equal((await current()).title,'Proposed title');
     assert.equal((await current()).location,'Room 2');
@@ -365,6 +440,79 @@ async function main() {
     assert.ok((await api.availability(guest,id)).slots.some(s=>s.start===time(5,12)));
   }
   {
+    const api = new BookingCalendarsController(new MemoryStore() as any, {} as any);
+    const id = randomUUID(), series = randomUUID(), request = randomUUID();
+    const slot = {id:series, start:'2099-02-02T09:00:00.000Z', end:'2099-02-02T10:00:00.000Z',
+      timeZone:'UTC', hoursOfDay:[9,10,11], rule:{frequency:0,interval:1,occurrenceCount:9}};
+    await api.save(host,id,{title:'Availability',revision:0,slots:[slot]});
+    const original = (await api.availability(guest,id)).slots;
+    const remove = (revision: number) => ({revision,remove:true,freeOnly:true});
+    await api.editOccurrence(host,id,original[1].id,remove(1));
+    await api.book(guest,id,request,{slotId:original[3].id});
+    await assert.rejects(api.moveFuture(guest,id,original[5].id,remove(3)));
+    await assert.rejects(api.moveFuture(host,id,original[5].id,remove(2)));
+    await assert.rejects(api.moveFuture(host,id,original[2].id,remove(3)));
+    await assert.rejects(api.editOccurrence(host,id,original[3].id,remove(3)));
+    await api.moveFuture(host,id,original[5].id,remove(3));
+    assert.deepEqual((await api.availability(guest,id)).slots.map(s=>s.id),[original[0].id,original[2].id,original[4].id]);
+    assert.equal((await api.workspace(guest)).appointments[0].slotId,original[3].id);
+    await api.decide(host,id,request,{status:'declined'});
+    await api.moveFuture(host,id,series,remove(5));
+    assert.equal((await api.workspace(host)).calendars[0].slots.length,0);
+  }
+  {
+    const api = new BookingCalendarsController(new MemoryStore() as any, {} as any);
+    const id=randomUUID(), series=randomUUID();
+    const dailyPattern={first:540,last:1035,step:55,breaks:[{start:720,end:765},{start:900,end:915}]};
+    const slot={id:series,start:'2099-02-02T09:00:00.000Z',end:'2099-02-02T09:45:00.000Z',
+      dailyPattern,timeZone:'UTC',rule:{frequency:0,interval:1,occurrenceCount:12}};
+    await api.save(host,id,{title:'Office hours',revision:0,slots:[slot]});
+    const available=(await api.availability(guest,id)).slots;
+    assert.equal(available.length,12);
+    assert.deepEqual(available.filter(o=>o.start.startsWith('2099-02-02')).map(o=>o.start.slice(11,16)),
+      ['09:00','09:55','10:50','13:35','15:25','16:20','17:15']);
+    const blocked=series+'@'+Date.parse('2099-02-02T11:45:00Z');
+    await assert.rejects(api.book(guest,id,randomUUID(),{slotId:blocked}));
+    await api.book(guest,id,randomUUID(),{slotId:available[1].id});
+    const breaks=[...dailyPattern.breaks,{start:565,end:640}];
+    await assert.rejects(api.save(host,id,{title:'Office hours',revision:2,slots:[{...slot,dailyPattern:{...dailyPattern,breaks}}]}));
+    const firstDayOff={...slot,rule:{frequency:1,interval:1,daysOfTheWeek:[{weekday:2,weekNumber:0}]}};
+    const saturdayStart='2099-01-31T09:00:00.000Z';
+    const weekdays=occurrences({...firstDayOff,start:saturdayStart,end:'2099-01-31T09:45:00.000Z'},Date.parse(saturdayStart),Date.parse('2099-02-08'));
+    assert(weekdays.length>0 && weekdays.every(o=>new Date(o.start).getUTCDay()===1));
+    const clipped={...slot,dailyPattern:{...dailyPattern,breaks:[{start:540,end:585}]}};
+    assert.equal(occurrences(clipped,Date.parse(slot.start),Date.parse(slot.start)+86400000)[0].start.slice(11,16),'09:55');
+    const cut = splitBookingSeries(slot,available[3].start,'2099-02-02T13:45:00Z','2099-02-02T14:30:00Z',randomUUID());
+    assert.deepEqual(cut.future.dailyPattern.breaks,[{start:730,end:775},{start:910,end:925}]);
+  }
+  {
+    const api = new BookingCalendarsController(new MemoryStore() as any, {} as any);
+    const id=randomUUID(), series=randomUUID(), zone='Europe/Sofia';
+    for (const [start, end] of [['2027-03-26T22:00:00.000Z','2027-03-27T22:00:00.000Z'],
+        ['2027-10-29T21:00:00.000Z','2027-10-30T21:00:00.000Z']]) {
+      const slot={id:series,start,end,timeZone:zone,allDay:true,rule:{frequency:0,interval:1,occurrenceCount:3}};
+      const values=occurrences(slot,Date.parse(start),Date.parse(start)+4*86400000);
+      assert.equal(values.length,3);
+      assert(values.every(o=>o.allDay && o.timeZone===zone));
+      assert.equal(values[0].end,values[1].start);
+      assert.equal(values[1].end,values[2].start);
+      assert.equal((Date.parse(values[1].end)-Date.parse(values[1].start))/3600000, start.includes('-03-') ? 23 : 25);
+    }
+    const midnightShift = {id:series,allDay:true,timeZone:'America/Santiago',start:'2027-09-02T04:00:00.000Z',
+      end:'2027-09-03T04:00:00.000Z',rule:{frequency:0,interval:1,occurrenceCount:6}};
+    const chile = occurrences(midnightShift,Date.parse('2027-09-01'),Date.parse('2027-09-09'));
+    assert.equal(chile.length,6);
+    assert.deepEqual(chile.slice(1,-1).map(day=>day.end),chile.slice(2).map(day=>day.start));
+    assert(chile.some(day=>Date.parse(day.end)-Date.parse(day.start)===23*3600000));
+    const slot={id:series,start:'2099-02-01T22:00:00Z',end:'2099-02-02T22:00:00Z',timeZone:zone,allDay:true};
+    await api.save(host,id,{title:'Day booking',revision:0,slots:[slot]});
+    assert.equal((await api.availability(guest,id)).slots[0].allDay,true);
+    await api.book(guest,id,randomUUID(),{slotId:series});
+    assert.equal((await api.workspace(guest)).appointments[0].allDay,true);
+    await assert.rejects(api.save(host,id,{title:'Day booking',revision:2,slots:[{...slot,allDay:false}]}));
+    await assert.rejects(api.editOccurrence(host,id,series,{revision:2,start:'2099-02-01T22:15:00Z',end:slot.end,allDay:true}));
+  }
+  {
     const days = (series: Slot) => occurrences(series,Date.UTC(2026,0,1),Date.UTC(2027,0,1)).map(s=>s.start);
     const iso = (value: string) => new Date(value).toISOString();
     const slot = (start: string, rule: Slot['rule']): Slot => ({id:'series', start:iso(start),
@@ -383,6 +531,29 @@ async function main() {
     assert.equal(later.past,undefined);
     assert.equal(days(later.future).length,days(limited).length);
     assert.equal(days(later.future).slice(-1)[0],iso('2026-03-22T16:00Z'));
+  }
+  {
+    const api = new BookingCalendarsController(new MemoryStore() as any, {bookingChange: async () => {}} as any);
+    const id = randomUUID(), seriesId = randomUUID();
+    const slot = {id: seriesId, start:'2099-02-02T09:00:00.000Z', end:'2099-02-02T09:30:00.000Z',
+      timeZone:'UTC', hoursOfDay:[9,10,11], rule:{frequency:1,interval:1,occurrenceCount:6}};
+    await api.save(host,id,{title:'Appointments',revision:0,slots:[slot]});
+    const initial = (await api.availability(guest,id)).slots;
+    assert.equal(initial.length,6);
+    assert.equal(new Set(initial.map(s=>s.id)).size,6);
+    await api.book(guest,id,randomUUID(),{slotId:initial[1].id});
+    let master = (await api.workspace(host)).calendars[0];
+    assert.equal(master.slots.length,1);
+    const changed = {...slot,hoursOfDay:[9,10,11,12]};
+    await api.save(host,id,{revision:master.revision,title:master.title,slots:[changed]});
+    master = (await api.workspace(host)).calendars[0];
+    await api.editOccurrence(host,id,initial[2].id,{revision:master.revision,start:'2099-02-02T15:00:00Z',end:'2099-02-02T15:30:00Z'});
+    const available = (await api.availability(guest,id)).slots;
+    assert.deepEqual(available.map(s=>s.start.slice(11,16)),['09:00','12:00','15:00','09:00','10:00']);
+    const saved = (await api.workspace(host)).calendars[0];
+    assert.equal(saved.slots.filter(s=>s.rule).length,1);
+    assert.equal(saved.requests[0].slotId,initial[1].id);
+    await assert.rejects(api.save(host,id,{revision:saved.revision,title:saved.title,slots:[{...changed,hoursOfDay:[9,11]}]}));
   }
   const slots = [interval(0), interval(60000)];
   const draft = {title: 'Availability', revision: 0, slots};

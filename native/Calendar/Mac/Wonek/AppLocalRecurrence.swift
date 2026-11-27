@@ -156,7 +156,7 @@ enum AppLocalRecurrence {
         return result
     }
 
-    private static func matches(_ date: Date, rule: SharedEventRecurrenceRule,
+    static func matches(_ date: Date, rule: SharedEventRecurrenceRule,
         original: DateComponents, calendar: Calendar) -> Bool {
         let values = calendar.dateComponents([.year, .month, .day, .weekday, .weekOfYear, .yearForWeekOfYear], from: date)
         let month = values.month!, day = values.day!, weekday = values.weekday!

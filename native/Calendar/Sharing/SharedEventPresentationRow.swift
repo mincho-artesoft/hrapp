@@ -83,8 +83,9 @@ struct SharedEventPresentationRow: View {
                         .foregroundStyle(.secondary)
                 } else {
                     VStack(alignment: .trailing, spacing: 2) {
-                        Text(start.formatted(date: .omitted, time: .shortened))
-                        Text(end.formatted(date: .omitted, time: .shortened))
+                        let time = appTimeFormatter()
+                        Text(time.string(from: start))
+                        Text(time.string(from: end))
                     }
                     .font(CalendarTypography.subheadline)
                     .foregroundStyle(.secondary)

@@ -1,4 +1,4 @@
-import {readFile} from 'node:fs/promises';
+import {readFile, readdir} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
@@ -62,13 +62,43 @@ const recurrenceSource=await readFile(new URL('../../src/app/core/calendar-recur
 const {createRequire}=await import('node:module');const {pathToFileURL}=await import('node:url');
 const require=createRequire(import.meta.url);
 const {outputText:recurrenceJS}=ts.transpileModule(recurrenceSource,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}});
-const recurrenceModule=recurrenceJS.replace(/import \{ RRule, Weekday \} from ['"]rrule['"];[ \n]*/,`import rrule from '${pathToFileURL(require.resolve('rrule')).href}'; const {RRule,Weekday}=rrule;`);
+const dailySource = await readFile(new URL('../../../backend/src/booking/booking-daily-pattern.ts',import.meta.url),'utf8');
+const dailyModule = 'data:text/javascript;base64,'+Buffer.from(ts.transpileModule(dailySource,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText).toString('base64');
+const recurrenceModule=recurrenceJS.replace('../../../../backend/src/booking/booking-daily-pattern',dailyModule).replace(/import \{ RRule, Weekday \} from ['"]rrule['"];[ \n]*/,`import rrule from '${pathToFileURL(require.resolve('rrule')).href}'; const {RRule,Weekday}=rrule;`);
 const {calendarOccurrences,calendarSeries,wallDate,instant}=await import(`data:text/javascript;base64,${Buffer.from(recurrenceModule).toString('base64')}`);
 test('recurrence keeps event wall time across daylight-saving changes',()=>{
   const event={id:'series',title:'Standup',start:'2026-03-27T07:00:00Z',end:'2026-03-27T08:00:00Z',details:{timeZone:'Europe/Sofia',recurrenceRules:[{frequency:'daily',interval:1,occurrenceCount:5}]}};
   const values=calendarOccurrences(event,new Date('2026-03-27'),new Date('2026-04-02'));
   assert.equal(values.length,5);assert.equal(values[2].start,'2026-03-29T06:00:00.000Z');
   assert.equal(values[2].occurrenceOf,'series');assert.equal(event.start,'2026-03-27T07:00:00Z');
+});
+test('hourly booking slots keep their own IDs on the last weekday of each month', () => {
+  const rule = {frequency:'monthly', interval:1, setPositions:[-1],
+    daysOfTheWeek:[2,3,4,5,6].map(weekday=>({weekday,weekNumber:0}))};
+  const event = {id:'group', start:'2027-01-29T09:00:00.000Z', end:'2027-01-29T09:30:00.000Z',
+    details:{timeZone:'UTC', recurrenceRules:[rule], excludedStarts:['2027-02-26T10:00:00Z']}};
+  const results = calendarOccurrences(event,new Date('2027-01-01'),new Date('2027-03-01'),[9,10,11]);
+  assert.deepEqual(results.map(o=>o.start.slice(5,16)),['01-29T09:00','01-29T10:00','01-29T11:00','02-26T09:00','02-26T11:00']);
+  assert.equal(new Set(results.map(o=>o.id)).size,5);
+});
+test('all-day booking spans the first valid local instant when midnight is skipped', () => {
+  const slot = {id:'day',allDay:true,start:'2027-09-02T04:00:00Z',end:'2027-09-03T04:00:00Z',
+    details:{timeZone:'America/Santiago',recurrenceRules:[{frequency:'daily',interval:1,occurrenceCount:6}]}};
+  const days = calendarOccurrences(slot,new Date('2027-09-01'),new Date('2027-09-09'));
+  assert.equal(days.length,6);
+  assert.deepEqual(days.slice(0,-1).map(day=>day.end),days.slice(1).map(day=>day.start));
+  assert(days.some(day=>Date.parse(day.end)-Date.parse(day.start)===23*3600000));
+});
+test('custom booking grid skips overlapping breaks and starts on a selected weekday', () => {
+  const weekdays = [2,3,4,5,6].map(weekday => ({weekday,weekNumber:0}));
+  const event = {id:'practice',start:'2027-03-27T07:00:00Z',end:'2027-03-27T07:45:00Z',
+    details:{timeZone:'Europe/Sofia',recurrenceRules:[{frequency:'weekly',interval:1,daysOfTheWeek:weekdays}]}};
+  const pattern = {first:540,last:1035,step:55,breaks:[{start:720,end:765},{start:900,end:915}]};
+  const values = calendarOccurrences(event,new Date('2027-03-27'),new Date('2027-03-30'),undefined,pattern);
+  assert.deepEqual(values.map(slot => wallDate(new Date(slot.start),'Europe/Sofia').toISOString().slice(0,16)),
+    ['09:00','09:55','10:50','13:35','15:25','16:20','17:15'].map(clock => '2027-03-29T'+clock));
+  assert(values.every(slot => Date.parse(slot.end)-Date.parse(slot.start) === 45*60000));
+  assert.equal(new Set(values.map(slot => slot.id)).size,values.length);
 });
 const {bookingStatus, slotStatus} = await sourceModule('../../src/app/core/booking-status.ts');
 test('booking markers follow the occurrence status and ignore legacy calendar colors', () => {
@@ -254,7 +284,7 @@ test('weather details use each metric, preserve local time gaps and exclude the 
   assert.equal(weatherChart(snapshot,'2026-10-28','temp'),null);
 });
 
-const {calendarDateChoices, calendarDateFormatter, calendarWeekStart, systemWeekStart, calendarHourCycle} =
+const {calendarDateChoices, calendarFormattingLocale, calendarDateFormatter, calendarWeekStart, systemWeekStart, calendarHourCycle} =
   await sourceModule('../../src/app/core/calendar-format-preferences.ts');
 
 test('date picker exposes every iOS date format in order and applies it to event dates', () => {
@@ -281,4 +311,35 @@ test('first weekday and clock settings preserve explicit choices and follow the 
   assert.equal(calendarHourCycle('12'), 'h12');
   assert.equal(calendarHourCycle('24'), 'h23');
   assert.equal(calendarHourCycle('system'), new Intl.DateTimeFormat(undefined, {hour:'numeric'}).resolvedOptions().hour12 ? 'h12' : 'h23');
+});
+
+test('calendar display uses the chosen numerals and Gregorian dates across system and explicit formats', () => {
+  const date = Date.parse('2026-12-31T23:00:00Z');
+  const arabic = calendarFormattingLocale('ar-SA');
+  assert.equal(new Intl.DateTimeFormat(arabic).resolvedOptions().calendar, 'gregory');
+  assert.match(calendarDateFormatter(arabic, 'system', {timeZone:'UTC'})(date), /[٠-٩]/);
+  assert.equal(calendarDateFormatter(arabic, 'ymd', {timeZone:'Asia/Tokyo'})(date), '٢٠٢٧-٠١-٠١');
+  assert.equal(calendarDateFormatter(calendarFormattingLocale('th'), 'ymd', {timeZone:'UTC'})(date), '2026-12-31');
+});
+
+test('every supported calendar language covers the English dictionary and booking categories', async () => {
+  const directory = new URL('../../public/calendar-locales/', import.meta.url);
+  const dictionary = async name => JSON.parse(await readFile(new URL(name, directory), 'utf8'));
+  const english = await dictionary('en.json');
+  const catalog = JSON.parse(await readFile(new URL('../../../native/Calendar/BookingTypes.json', import.meta.url), 'utf8'));
+  const languages = JSON.parse(await readFile(new URL('../../src/app/components/calendar-native/native-languages.json', import.meta.url), 'utf8'));
+  const files = new Set(await readdir(directory));
+  const keys = new Set([...Object.keys(english), ...catalog.flatMap(group => [group.title, ...group.types])]);
+  const calendar = new URL('../../src/app/components/calendar-native/', import.meta.url);
+  for (const file of await readdir(calendar)) {
+    if (!file.endsWith('.ts') && !file.endsWith('.html')) continue;
+    const source = await readFile(new URL(file, calendar), 'utf8');
+    for (const match of source.matchAll(/\b(?:aria-label|placeholder)="([A-Za-z][^"{\n]*)"/g)) keys.add(match[1]);
+    for (const match of source.matchAll(/(?:\.error\.set\(|\.notice\.set\(|\.showToast\()(["'])([A-Z][^"'\n]+)\1/g)) keys.add(match[2]);
+  }
+  for (const {value} of languages) {
+    assert.ok(files.has(value + '.json'), value);
+    const translations = await dictionary(value + '.json');
+    for (const key of keys) assert.ok(translations[key]?.trim(), value + ': ' + key);
+  }
 });

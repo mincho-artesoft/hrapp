@@ -18,7 +18,7 @@
   <section class="group">
     @for (day of orderedWeekdays(); track day.value) {
       <button class="row" type="button" [attr.aria-pressed]="selectedWeekdays().includes(day.value)" (click)="toggleWeekday(day.value)">
-        <span>{{day.label}}</span>@if (selectedWeekdays().includes(day.value)) { <cc-symbol name="checkmark" /> }
+        <span>{{day.label}}</span>@if (selectedWeekdays().includes(day.value)) { <cc-symbol name="checkmark" [pointSize]="17" /> }
       </button>
     }
   </section>
@@ -35,7 +35,7 @@
     @if (rule().frequency === 'monthly') {
       @for (enabled of [false, true]; track enabled) {
         <button class="row" type="button" [attr.aria-pressed]="usesOrdinal() === enabled" (click)="ordinal(enabled)">
-          <span>{{(enabled ? 'On the…' : 'Each') | nativeText}}</span>@if (usesOrdinal() === enabled) { <cc-symbol name="checkmark" /> }
+          <span>{{(enabled ? 'On the…' : 'Each') | nativeText}}</span>@if (usesOrdinal() === enabled) { <cc-symbol name="checkmark" [pointSize]="17" /> }
         </button>
       }
       @if (!usesOrdinal()) {

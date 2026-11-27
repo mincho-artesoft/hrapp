@@ -9,6 +9,14 @@ const datePatterns = {
 export const calendarDateChoices = ['system', 'medium', 'long', 'full', ...Object.keys(datePatterns)];
 
 export const systemLocale = new Intl.DateTimeFormat().resolvedOptions().locale;
+export function calendarFormattingLocale(tag: string): string {
+  const language = new Intl.Locale(tag);
+  return new Intl.Locale(language, {
+    calendar: 'gregory',
+    ...(language.language === 'ar' ? {numberingSystem: 'arab'} : {}),
+  }).toString();
+}
+
 const systemHour12 = !!new Intl.DateTimeFormat(undefined, {hour: 'numeric'}).resolvedOptions().hour12;
 
 export function calendarHourCycle(preference?: string): 'h12' | 'h23' {
@@ -71,7 +79,13 @@ export function calendarDateFormatter(locale: string, preference = 'system', {
       day: 'numeric', month: style === 'short' ? 'numeric' : style === 'medium' ? 'short' : 'long',
       weekday: style === 'full' ? 'long' : undefined,
     };
-    format = new Intl.DateTimeFormat(style === 'short' ? systemLocale : locale, {...options, timeZone}).format;
+    const sourceLocale = style === 'short'
+      ? new Intl.Locale(systemLocale, {
+          calendar: 'gregory',
+          numberingSystem: new Intl.NumberFormat(locale).resolvedOptions().numberingSystem,
+        })
+      : locale;
+    format = new Intl.DateTimeFormat(sourceLocale, {...options, timeZone}).format;
   }
   return withWeekday ? date => withWeekday.format(date) + ', ' + format(date) : format;
 }

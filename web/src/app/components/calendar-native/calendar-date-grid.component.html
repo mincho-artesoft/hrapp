@@ -3,24 +3,24 @@
     <button
       type="button"
       class="month-title"
-      aria-label="Choose month and year"
+      [attr.aria-label]="'Choose month and year' | nativeText"
       [attr.aria-expanded]="wheels()"
       (click)="wheels.set(!wheels())"
     >
       <strong>{{ month() | nativeDate: "MMMM yyyy" }}</strong
-      ><cc-symbol [name]="wheels() ? 'chevron.down' : 'chevron.forward'" />
+      ><cc-symbol [pointSize]="17" [name]="wheels() ? 'chevron.down' : 'chevron.forward'" />
     </button>
-    <button type="button" aria-label="Previous month" (click)="step(-1)">
-      <cc-symbol name="chevron.backward" />
+    <button type="button" [attr.aria-label]="'Previous month' | nativeText" (click)="step(-1)">
+      <cc-symbol [pointSize]="17" name="chevron.backward" />
     </button>
-    <button type="button" aria-label="Next month" (click)="step(1)">
-      <cc-symbol name="chevron.forward" />
+    <button type="button" [attr.aria-label]="'Next month' | nativeText" (click)="step(1)">
+      <cc-symbol [pointSize]="17" name="chevron.forward" />
     </button>
   </div>
   @if (wheels()) {
     <div class="month-wheels">
       <cc-date-wheel
-        label="Month"
+        [label]="'Month' | nativeText"
         [min]="1"
         [max]="12"
         [value]="month().getMonth() + 1"
@@ -28,7 +28,7 @@
         (changeValue)="setMonth(month().getFullYear(), $event - 1)"
       />
       <cc-date-wheel
-        label="Year"
+        [label]="'Year' | nativeText"
         [min]="yearMin()"
         [max]="yearMax()"
         [value]="month().getFullYear()"
@@ -66,7 +66,7 @@
             "
             (click)="select(day)"
           >
-            <span>{{ +day.slice(-2) }}</span>
+            <span>{{ number().format(+day.slice(-2)) }}</span>
           </button>
         } @else {
           <span aria-hidden="true"></span>

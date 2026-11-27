@@ -1,4 +1,5 @@
 import { CalendarActionSheetComponent } from './calendar-action-sheet.component';
+import { CalendarInvitationActionsComponent } from './calendar-invitation-actions.component';
 import { CalendarRemovalComponent } from './calendar-removal.component';
 import {CalendarColorOptionsComponent, calendarColorName} from './calendar-color-options.component';
 import { calendarDateChoices, calendarDateFormatter, calendarHourCycle, systemWeekStart } from "../../core/calendar-format-preferences";
@@ -72,7 +73,7 @@ interface AccessSnapshot {
   selector: "cc-calendar-menu",
   standalone: true,
   imports: [
-    CalendarSearchFieldComponent, CalendarActionSheetComponent,
+    CalendarSearchFieldComponent, CalendarActionSheetComponent, CalendarInvitationActionsComponent,
     CalendarNativeTextPipe,
     CalendarNativeDatePipe,
     CommonModule,
@@ -110,7 +111,6 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
     }>
   >([]);
   providerCalendar: DeviceCalendar | null = null;
-  readonly confirmingDisconnect = signal<"google" | "microsoft" | null>(null);
   readonly subscriptionNotice = signal("");
 
   openProviderAccess(calendar: DeviceCalendar) {
@@ -159,6 +159,7 @@ export class CalendarMenuComponent implements OnInit, OnDestroy {
   readonly localCalendarChanged = output<{id: string; calendar?: DeviceCalendar}>();
   readonly connect = output<"google" | "microsoft">();
   readonly disconnect = output<"google" | "microsoft">();
+  readonly providerSyncBusy = input(false);
   readonly settingsChanged = output<void>();
   readonly openEvent = output<SharedEvent>();
   readonly sharedListEvent = input.required<(event: SharedEvent) => WebCalendarEvent>();

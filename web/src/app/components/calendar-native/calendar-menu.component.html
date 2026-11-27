@@ -36,10 +36,10 @@
             <button
               type="button"
               class="icon-button"
-              aria-label="Search events"
+              [attr.aria-label]="'Search events' | nativeText"
               (click)="destinationSearchOpen.set(!destinationSearchOpen())"
             >
-              <cc-symbol name="magnifyingglass" />
+              <cc-symbol name="magnifyingglass" [pointSize]="20" />
             </button>
           } @else {
             <span class="round-spacer"></span>
@@ -52,13 +52,14 @@
     @if (section() === "Calendar" || section() === "MultiCalendar") {
       @if (section() === "Calendar") {
         @for (group of groups(); track group.source) {
+          @let received = group.source === "Shared with me";
           <details
             class="calendar-group"
-            [class.shared-group]="group.source === 'Shared with me'"
+            [class.shared-group]="received"
             open
           >
             <summary>
-              {{ group.source | nativeText }}<cc-symbol name="chevron.down" />
+              {{ group.source | nativeText }}<cc-symbol name="chevron.down" [pointSize]="13" />
             </summary>
             @for (c of group.calendars; track c.id) {
               <div
@@ -73,7 +74,7 @@
                 >
                   <span class="calendar-dot" [style.background]="c.color">
                     @if (!hiddenIDs().has(c.id)) {
-                      <cc-symbol name="checkmark" />
+                      <cc-symbol name="checkmark" [pointSize]="14" />
                     }
                   </span>
                 </button>
@@ -88,20 +89,15 @@
                       [class.revoked]="c.available === false"
                     >
                       {{ c.title }}
-                      @if (c.accountLocal && !c.ownerId) {
-                        <cc-symbol class="cloud-badge" name="icloud.fill" />
-                      }
                     </span>
-                    @if (c.accountLocal && !c.ownerId) {
-                      <small>{{ "Web & Events Sync" | nativeText }}</small>
-                    } @else if (c.ownerEmail || c.access) {
+                    @if (received && c.access) {
                       <small>{{
                         c.ownerEmail || ("Shared calendar" | nativeText)
                       }}</small>
                     }
                   </span>
                 </button>
-                @if (c.access) {
+                @if (received && c.access) {
                   <span class="role" [class.revoked]="c.available === false">{{
                     (c.available === false
                       ? "Access removed"
@@ -116,19 +112,19 @@
                   <button
                     type="button"
                     class="icon-button"
-                    aria-label="Share calendar"
+                    [attr.aria-label]="'Share calendar' | nativeText"
                     (click)="shareCalendar(c)"
                   >
-                    <cc-symbol name="person.2.fill" />
+                    <cc-symbol name="person.2.fill" [pointSize]="18" />
                   </button>
                 }
                 <button
                   type="button"
                   class="icon-button"
-                  aria-label="Edit calendar"
+                  [attr.aria-label]="'Edit calendar' | nativeText"
                   (click)="openCalendar(c)"
                 >
-                  <cc-symbol name="info.circle" />
+                  <cc-symbol name="info.circle" [pointSize]="18" />
                 </button>
               </div>
             } @empty {
@@ -161,6 +157,7 @@
               <summary>
                 <span class="provider-account-hdr">
                   <cc-symbol
+                    [fitSize]="28"
                     [name]="
                       provider === 'google'
                         ? 'person.crop.circle'
@@ -169,7 +166,7 @@
                   />
                   <span>{{ connectedProviderEmail($any(provider)) }}</span>
                 </span>
-                <cc-symbol name="chevron.down" />
+                <cc-symbol name="chevron.down" [pointSize]="13" />
               </summary>
               @for (c of providerCalendars($any(provider)); track c.id) {
                 <div
@@ -184,7 +181,7 @@
                   >
                     <span class="calendar-dot" [style.background]="c.color">
                       @if (!hiddenIDs().has(c.id)) {
-                        <cc-symbol name="checkmark" />
+                        <cc-symbol name="checkmark" [pointSize]="14" />
                       }
                     </span>
                   </button>
@@ -199,19 +196,19 @@
                     <button
                       type="button"
                       class="icon-button"
-                      aria-label="Share Google Calendar"
+                      [attr.aria-label]="'Share Google Calendar' | nativeText"
                       (click)="openProviderAccess(c)"
                     >
-                      <cc-symbol name="person.2.fill" />
+                      <cc-symbol name="person.2.fill" [pointSize]="18" />
                     </button>
                   }
                   <button
                     type="button"
                     class="icon-button"
-                    aria-label="Edit calendar"
+                    [attr.aria-label]="'Edit calendar' | nativeText"
                     (click)="openCalendar(c)"
                   >
-                    <cc-symbol name="info.circle" />
+                    <cc-symbol name="info.circle" [pointSize]="18" />
                   </button>
                 </div>
               } @empty {
@@ -233,14 +230,10 @@
                   {{ "Add Google Calendar" | nativeText }}
                 </button>
               }
-              <button #disconnectButton type="button" class="provider-inline-action danger-text" (click)="confirmingDisconnect.set($any(provider))">
+              <button type="button" class="provider-inline-action danger-text" [disabled]="providerSyncBusy()"
+                (click)="disconnect.emit($any(provider))">
                 {{ "Sign out" | nativeText }}
               </button>
-              @if (confirmingDisconnect() === provider) {
-                <cc-calendar-action-sheet [anchor]="disconnectButton" heading="Sign out" primaryLabel="Sign out" [destructive]="true"
-                  message="This stops calendar syncing here. Calendars in your Google or Microsoft account are kept."
-                  (dismissed)="confirmingDisconnect.set(null)" (primary)="confirmingDisconnect.set(null); disconnect.emit($any(provider))" />
-              }
             </details>
           }
         }
@@ -250,14 +243,14 @@
           class="action-row grouped"
           (click)="openCalendar(null)"
         >
-          <cc-symbol name="calendar.badge.plus" />{{
+          <cc-symbol name="calendar.badge.plus" [pointSize]="17" />{{
             "Add Local Calendar" | nativeText
           }}
         </button>
 
         @if (providerWorkspace.error()) {
           <div class="error">
-            {{ providerWorkspace.error() }}
+            {{ providerWorkspace.error() | nativeText }}
             <button type="button" (click)="providerWorkspace.refresh(true)">
               {{ "Try Again" | nativeText }}
             </button>
@@ -271,6 +264,7 @@
               <button
                 type="button"
                 class="action-row"
+                [disabled]="providerSyncBusy()"
                 (click)="connect.emit($any(provider))"
               >
                 <img [src]="'/icons/' + provider + '_icon.png'" alt="" />{{
@@ -293,7 +287,7 @@
           >
             <span class="calendar-dot" [style.background]="c.color">
               @if (multiIDs().has(c.id)) {
-                <cc-symbol name="checkmark" />
+                <cc-symbol name="checkmark" [pointSize]="14" />
               }
             </span>
             <span>{{ c.title }}</span>
@@ -304,14 +298,14 @@
     @if (section() === "Sharing") {
       @if (!destination()) {
         <button type="button" class="nav-row" (click)="openImport()">
-          <span class="tile blue"><cc-symbol name="qrcode.viewfinder" /></span>
+          <span class="tile blue"><cc-symbol name="qrcode.viewfinder" [pointSize]="17" /></span>
           <span>
             <strong>{{ "Scan QR Code" | nativeText }}</strong>
             <small>{{
               "Open a shared event or calendar" | nativeText
             }}</small>
           </span>
-          <cc-symbol name="chevron.right" />
+          <cc-symbol name="chevron.forward" [pointSize]="13" />
         </button>
         <button
           type="button"
@@ -319,30 +313,30 @@
           (click)="destination.set('pending')"
         >
           <span class="tile orange"
-            ><cc-symbol name="envelope.badge.fill"
+            ><cc-symbol name="envelope.badge.fill" [pointSize]="17"
           /></span>
           <span>
             <strong>{{ "Pending invitations" | nativeText }}</strong>
             <small
-              >{{ sharing.invitations().length }}
+              >{{ localization.integer().format(sharing.invitations().length) }}
               {{ "pending invitations" | nativeText }}</small
             >
           </span>
           @if (sharing.invitations().length) {
-            <b class="badge">{{ sharing.invitations().length }}</b>
+            <b class="badge">{{ localization.integer().format(sharing.invitations().length) }}</b>
           }
-          <cc-symbol name="chevron.right" />
+          <cc-symbol name="chevron.forward" [pointSize]="13" />
         </button>
         <button type="button" class="nav-row" (click)="destination.set('sent')">
-          <span class="tile blue"><cc-symbol name="paperplane.fill" /></span>
+          <span class="tile blue"><cc-symbol name="paperplane.fill" [pointSize]="17" /></span>
           <span>
             <strong>{{ "Shared by me" | nativeText }}</strong>
             <small
-              >{{ sharing.outgoing().length }}
+              >{{ localization.integer().format(sharing.outgoing().length) }}
               {{ "events" | nativeText }}</small
             >
           </span>
-          <cc-symbol name="chevron.right" />
+          <cc-symbol name="chevron.forward" [pointSize]="13" />
         </button>
         <button
           type="button"
@@ -350,16 +344,16 @@
           (click)="destination.set('received')"
         >
           <span class="tile indigo"
-            ><cc-symbol name="tray.and.arrow.down.fill"
+            ><cc-symbol name="tray.and.arrow.down.fill" [pointSize]="17"
           /></span>
           <span>
             <strong>{{ "Shared with me" | nativeText }}</strong>
             <small
-              >{{ sharing.received().length }}
+              >{{ localization.integer().format(sharing.received().length) }}
               {{ "events" | nativeText }}</small
             >
           </span>
-          <cc-symbol name="chevron.right" />
+          <cc-symbol name="chevron.forward" [pointSize]="13" />
         </button>
       } @else {
         @let waitingForInvites = destination() === "pending" && !sharing.invitations().length &&
@@ -399,24 +393,7 @@
                   }
                 </p>
               }
-              <div class="equal-actions">
-                <button
-                  type="button"
-                  class="action danger"
-                  [disabled]="busy()"
-                  (click)="respond(item, false)"
-                >
-                  {{ "Decline" | nativeText }}
-                </button>
-                <button
-                  type="button"
-                  class="action primary"
-                  [disabled]="busy()"
-                  (click)="respond(item, true)"
-                >
-                  {{ "Accept" | nativeText }}
-                </button>
-              </div>
+              <cc-invitation-actions [disabled]="busy()" (decline)="respond(item, false)" (accept)="respond(item, true)" />
             </article>
           } @empty {
             @if (!sharingSectionError()) {
@@ -437,7 +414,7 @@
                   <button type="button" class="shared-event-main" (click)="openEvent.emit(event)">
                     <strong>{{ event.title }}</strong>
                     @if (event.location) {
-                      <small><cc-symbol name="location" />{{ event.location }}</small>
+                      <small><cc-symbol name="location" [pointSize]="13" />{{ event.location }}</small>
                     }
                   </button>
                   <div class="event-time">
@@ -451,12 +428,12 @@
                     }
                     <div class="shared-event-actions">
                       @if (!received || event.access === "owner") {
-                        <button type="button" aria-label="Event access" (click)="recipients(event)">
-                          <cc-symbol name="person.2.fill" />
+                        <button type="button" [attr.aria-label]="'Event access' | nativeText" (click)="recipients(event)">
+                          <cc-symbol name="person.2.fill" [pointSize]="17" />
                         </button>
                       }
                       <button type="button" [attr.aria-label]="'Event Details' | nativeText" (click)="openEvent.emit(event)">
-                        <cc-symbol name="info.circle" />
+                        <cc-symbol name="info.circle" [pointSize]="17" />
                       </button>
                     </div>
                   </div>
@@ -478,7 +455,7 @@
       }
       @if (sharingSectionError(); as message) {
         <div class="error" role="alert">
-          {{ message }}
+          {{ message | nativeText }}
           <button type="button" (click)="sharing.refresh()">
             {{ "Try Again" | nativeText }}
           </button>
@@ -508,7 +485,7 @@
         track notification.key
       ) {
         <label class="setting-row">
-          <cc-symbol [name]="notification.icon" [class.orange]="notification.key === 'weatherNotifications'" />
+          <cc-symbol [pointSize]="20" [name]="notification.icon" [class.orange]="notification.key === 'weatherNotifications'" />
           <strong>{{ notification.label | nativeText }}</strong>
           <input
             class="switch"
@@ -535,7 +512,7 @@
       </p>
       @for (setting of settings(); track setting.key) {
         <div class="setting-row">
-          <cc-symbol [name]="setting.icon" />
+          <cc-symbol [pointSize]="20" [name]="setting.icon" />
           <strong>{{ setting.label | nativeText }}</strong>
           <cc-choice
             [label]="setting.label"
@@ -549,7 +526,7 @@
     @if (section() === "Subscriptions") {
       <!-- Visual 1:1 replica of SubscriptionView.swift / SubscriptionListView.swift (not wired to payments) -->
       <div class="subscription-content">
-        <nav class="plan-picker" aria-label="Subscription tier">
+        <nav class="plan-picker" [attr.aria-label]="'Subscription tier' | nativeText">
           @for (tier of ["Base", "Advanced", "Premium"]; track tier) {
             <button
               type="button"
@@ -599,7 +576,7 @@
               [class.selected]="duration() === plan.id"
               (click)="duration.set(plan.id); subscriptionNotice.set('')"
             >
-              <span class="tile"><cc-symbol name="creditcard" /></span>
+              <span class="tile"><cc-symbol [pointSize]="18" name="creditcard" /></span>
               <span>
                 <strong>{{ plan.title | nativeText }}</strong>
                 <b>{{
@@ -614,6 +591,7 @@
                 }
               </span>
               <cc-symbol
+                [pointSize]="24"
                 [class.selected-check]="duration() === plan.id"
                 [name]="
                   duration() === plan.id ? 'checkmark.circle.fill' : 'circle'
@@ -663,24 +641,24 @@
           <div class="subscription-links">
             <div class="subscription-links__col">
               <button type="button" (click)="showVisualOnlySubscriptionNotice()">
-                <cc-symbol name="creditcard" />{{
+                <cc-symbol [pointSize]="13" name="creditcard" />{{
                   "Manage Subscription" | nativeText
                 }}
               </button>
               <a href="/privacy-policy/" target="_blank" rel="noopener">
-                <cc-symbol name="lock.shield" />{{
+                <cc-symbol [pointSize]="13" name="lock.shield" />{{
                   "Privacy Policy" | nativeText
                 }}
               </a>
             </div>
             <div class="subscription-links__col">
               <button type="button" (click)="showVisualOnlySubscriptionNotice()">
-                <cc-symbol name="arrow.trianglehead.2.clockwise" />{{
+                <cc-symbol [pointSize]="13" name="arrow.trianglehead.2.clockwise" />{{
                   "Restore Purchases" | nativeText
                 }}
               </button>
               <a href="/terms-of-service/" target="_blank" rel="noopener">
-                <cc-symbol name="doc.text" />{{
+                <cc-symbol [pointSize]="13" name="doc.text" />{{
                   "Terms of Service" | nativeText
                 }}
               </a>
@@ -712,7 +690,7 @@
       </div>
     }
     @if (error() && !panel()) {
-      <div class="error" role="alert">{{ error() }}</div>
+      <div class="error" role="alert">{{ error() | nativeText }}</div>
     }
   </div>
 </div>
@@ -746,7 +724,7 @@
             [attr.aria-label]="panel() === 'color' ? 'Back' : 'Close'"
             (click)="panel() === 'color' ? panel.set('calendar') : closePanel()"
           >
-            <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.left' : 'xmark'" />
+            <cc-symbol [pointSize]="17" [name]="panel() === 'color' ? 'chevron.backward' : 'xmark'" />
           </button>
         }
         <h2>
@@ -769,7 +747,7 @@
           <button
             type="button"
             class="round-button"
-            aria-label="Save calendar"
+            [attr.aria-label]="'Save calendar' | nativeText"
             [disabled]="busy() || !calendarTitle.trim()"
             (click)="saveCalendar()"
           >
@@ -784,7 +762,7 @@
           <button
             type="button"
             class="round-button"
-            aria-label="Save sharing"
+            [attr.aria-label]="'Save sharing' | nativeText"
             [disabled]="busy() || accessLoading() || accessFailed() || !sharedCalendar || !validPeople()"
             (click)="savePeople()"
           >
@@ -800,7 +778,7 @@
           <div class="form-group">
             <label class="form-row">
               <input
-                placeholder="Calendar name"
+                [placeholder]="'Calendar name' | nativeText"
                 [(ngModel)]="calendarTitle"
                 [readonly]="
                   !!calendar &&
@@ -835,7 +813,7 @@
               [style.background]="calendarColor"
             ></span>
             <span>{{ (calendar && (calendar.accountLocal || calendar.ownerId) ? "Color" : colorName()) | nativeText }}</span>
-            <cc-symbol name="chevron.right" />
+            <cc-symbol name="chevron.forward" />
           </button>
           @if (calendar?.ownerId) {
             <p class="color-footer">{{ (usesCreatorDefault ? "Default from creator" : "Custom on this device") | nativeText }}</p>
@@ -866,7 +844,7 @@
                 <div class="form-row">
                   <cc-symbol name="person.crop.circle" />
                   <input
-                    placeholder="Email address"
+                    [placeholder]="'Email address' | nativeText"
                     [(ngModel)]="person.email"
                     [readonly]="!!person.id"
                   />
@@ -881,7 +859,7 @@
                     <button
                       type="button"
                       class="icon-button"
-                      aria-label="Save access"
+                      [attr.aria-label]="'Save access' | nativeText"
                       [disabled]="busy()"
                       (click)="saveProviderPerson(person)"
                     >
@@ -890,7 +868,7 @@
                     <button
                       type="button"
                       class="icon-button danger-text"
-                      aria-label="Remove person"
+                      [attr.aria-label]="'Remove person' | nativeText"
                       [disabled]="busy()"
                       (click)="
                         person.id
@@ -997,7 +975,7 @@
                   <cc-symbol class="blue" name="person.crop.circle" />
                   <input
                     type="email"
-                    placeholder="Email address"
+                    [placeholder]="'Email address' | nativeText"
                     [(ngModel)]="person.email"
                   />
                   @if (!person.isOriginalOwner) {
@@ -1096,7 +1074,7 @@
             <input type="file" accept="image/*" (change)="scanImage($event)" />
           </label>
           <label class="form-group form-row">
-            <input placeholder="Invitation link" [(ngModel)]="qrInput" />
+            <input [placeholder]="'Invitation link' | nativeText" [(ngModel)]="qrInput" />
           </label>
           @if (qrMessage) {
             <p>{{ qrMessage }}</p>
@@ -1114,7 +1092,7 @@
           <cc-calendar-progress class="access-progress" />
         }
         @if (error()) {
-          <div class="error" role="alert">{{ error() }}
+          <div class="error" role="alert">{{ error() | nativeText }}
             @if (accessFailed()) { <button type="button" (click)="retryAccess()">{{ "Try Again" | nativeText }}</button> }
           </div>
         }

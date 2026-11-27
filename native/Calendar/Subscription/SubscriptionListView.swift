@@ -98,12 +98,7 @@ struct SubscriptionListView: View {
         }.padding(.top, 10)
     }
     private func expirationLabel(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .appFormatting
-        formatter.calendar = AppPreferences.shared.presentationCalendar
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter.string(from: date)
+        appShortDateFormatter().string(from: date)
     }
 
     private func purchaseTitle(_ quote: SubscriptionPurchaseQuote) -> LocalizedStringKey {

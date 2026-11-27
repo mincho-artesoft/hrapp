@@ -18,7 +18,7 @@ import { CalendarNativeTextPipe } from '../../core/calendar-localization';
         </header>
         <button type="button" [class.destructive]="destructive()" [disabled]="busy()" (click)="primary.emit()">{{ primaryLabel() | nativeText }}</button>
         @if (secondaryLabel()) {
-          <button type="button" [disabled]="busy()" (click)="secondary.emit()">{{ secondaryLabel() | nativeText }}</button>
+          <button type="button" [class.destructive]="destructive()" [disabled]="busy()" (click)="secondary.emit()">{{ secondaryLabel() | nativeText }}</button>
         }
         <button type="button" class="action-sheet__cancel" [disabled]="busy()" (click)="dismiss()">{{ cancelLabel() | nativeText }}</button>
       </div>

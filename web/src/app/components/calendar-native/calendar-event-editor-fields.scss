@@ -9,3 +9,5 @@ button, input { font: inherit; color: inherit; }
 .placeholder, .clear-location { color: var(--cal-muted); }
 .clear-location cc-symbol { width: 16px; color: inherit; }
 cc-date-time { display: block; border-top: 1px solid var(--cal-line); }
+
+:host > .native-form-row:not(:first-child) { border-block-start: 1px solid var(--cal-line); }

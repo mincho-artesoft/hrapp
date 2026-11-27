@@ -30,10 +30,14 @@ async function testCalendarUploadHTTP() {
     const headers = { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' };
     const saved = await fetch(endpoint, {method: 'POST', headers, body});
     assert.equal(saved.status, 200);
-    const read = await fetch(endpoint, {method: 'POST', headers, body: JSON.stringify({id: 'calendar', deviceId: 'ipad', readOnly: true})});
-    assert.equal(read.status, 200);
-    const snapshot = await read.json() as {calendar: {events: unknown[]}};
-    assert.equal(snapshot.calendar.events.length, events.length);
+    for (const encoding of ['gzip', 'br', 'identity']) {
+      const read = await fetch(endpoint, {method: 'POST', headers: {...headers, 'Accept-Encoding': encoding},
+        body: JSON.stringify({id: 'calendar', deviceId: 'ipad', readOnly: true})});
+      assert.equal(read.status, 200);
+      assert.equal(read.headers.get('content-encoding'), encoding === 'identity' ? null : encoding);
+      const snapshot = await read.json() as {calendar: {events: unknown[]}};
+      assert.equal(snapshot.calendar.events.length, events.length);
+    }
   } finally {
     await app.close();
   }

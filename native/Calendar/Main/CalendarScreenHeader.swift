@@ -3,9 +3,23 @@ import SwiftUI
 import UIKit
 #endif
 
+struct BookingCalendarHeaderTitle: View {
+    let name: String
+
+    var body: some View {
+        Text(verbatim: name)
+            .font(CalendarTypography.headline)
+            .lineLimit(1)
+            #if os(iOS)
+            .foregroundStyle(Color(uiColor: .label))
+            #else
+            .foregroundStyle(Color.primary)
+            #endif
+            .accessibilityAddTraits(.isHeader)
+    }
+}
+
 /// One header for every calendar mode, including the UIKit-owned timelines.
-/// HRApp intentionally has no add-event button here. Weather retains its white
-/// controls and saved-regions action instead of inheriting another app's header.
 struct CalendarScreenHeader: View {
     let currentView: Int
     var title: String? = nil
@@ -14,6 +28,8 @@ struct CalendarScreenHeader: View {
     var rangeIsSelected = false
     var scopedTitle: String? = nil
     var onBack: (() -> Void)? = nil
+    var onAddSlot: (() -> Void)? = nil
+    var onAvailability: (() -> Void)? = nil
     var tint: Color = .appBlue
     var controlsHidden = false
     var onTitle: (() -> Void)? = nil
@@ -25,12 +41,12 @@ struct CalendarScreenHeader: View {
     var body: some View {
         HStack(spacing: CalendarHeaderLayout.spacing) {
             if !controlsHidden {
-                if let scopedTitle, let onBack {
-                    Button(action: onBack) { icon("chevron.backward") }
-                        .accessibilityLabel(Text("Back"))
-                    Text(verbatim: scopedTitle).font(CalendarTypography.headline).lineLimit(1)
-                        .foregroundStyle(.primary)
-                        .accessibilityAddTraits(.isHeader)
+                if let scopedTitle {
+                    if let onBack {
+                        Button(action: onBack) { icon("chevron.backward") }
+                            .accessibilityLabel(Text("Back"))
+                    }
+                    BookingCalendarHeaderTitle(name: scopedTitle)
                 }
                 if let onSavedRegions {
                     Button(action: onSavedRegions) { icon("list.bullet") }
@@ -69,6 +85,14 @@ struct CalendarScreenHeader: View {
                     Spacer(minLength: 0)
                 } else {
                     Spacer(minLength: 0)
+                }
+                if let onAddSlot {
+                    Button(action: onAddSlot) { icon("plus") }
+                        .accessibilityLabel(Text("Add time slot"))
+                }
+                if let onAvailability {
+                    Button(action: onAvailability) { icon("list.bullet") }
+                        .accessibilityLabel(Text("Available times"))
                 }
                 if let onSearch {
                     Button(action: onSearch) { icon("magnifyingglass") }
@@ -142,18 +166,21 @@ final class CalendarScreenHeaderHost {
         let rtl: Bool
         let localeIdentifier: String
         var scopedTitle: String? = nil
+        var showsAddSlot = false
     }
     private var snapshot: Snapshot?
     private var controller: UIHostingController<AnyView>?
 
     func update(in container: UIView, snapshot: Snapshot, hidden: Bool,
                 onTitle: @escaping () -> Void, onRange: @escaping () -> Void,
-                onBack: (() -> Void)? = nil, onSearch: @escaping () -> Void, onViewChange: @escaping (Int) -> Void) {
+                onBack: (() -> Void)? = nil, onAddSlot: (() -> Void)? = nil, onAvailability: (() -> Void)? = nil,
+                onSearch: @escaping () -> Void, onViewChange: @escaping (Int) -> Void) {
         if self.snapshot != snapshot || controller == nil {
             self.snapshot = snapshot
             let root = AnyView(CalendarScreenHeader(currentView: snapshot.mode,
                 title: snapshot.title, rangeTitle: snapshot.range, rangeIsSelected: snapshot.rangeIsSelected,
                 scopedTitle: snapshot.scopedTitle, onBack: onBack,
+                onAddSlot: snapshot.showsAddSlot ? onAddSlot : nil, onAvailability: onAvailability,
                 onTitle: onTitle, onRange: onRange, onSearch: snapshot.scopedTitle == nil ? onSearch : nil, onViewChange: onViewChange)
                 .environment(\.locale, Locale(identifier: snapshot.localeIdentifier))
                 .environment(\.layoutDirection, snapshot.rtl ? .rightToLeft : .leftToRight))

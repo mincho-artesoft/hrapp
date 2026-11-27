@@ -4,9 +4,9 @@ import { randomUUID } from 'node:crypto';
 import { EmailService } from '../email/email.service';
 import { StoreService } from '../store/store.service';
 
-import { bookingPlace, day, occurrenceByID, occurrences, overlaps, scheduleFields, splitBookingSeries, nextOccurrenceStart, Occurrence, Slot } from './booking-schedule';
+import { bookingDayFields, bookingPlace, bookingSeriesBefore, day, occurrenceByID, occurrences, overlaps, scheduleFields, splitBookingSeries, nextOccurrenceStart, Occurrence, Slot } from './booking-schedule';
 type Decision = 'pending' | 'accepted' | 'declined';
-type Booking = Slot & { proposal?: Occurrence; answeredProposal?: {id:string; decision:Decision};slotId: string; guestId: string; guestName: string; decision: Decision};
+type Booking = Slot & { cancelledByGuest?: boolean; proposal?: Occurrence; answeredProposal?: {id:string; decision:Decision};slotId: string; guestId: string; guestName: string; decision: Decision};
 type BookCalendar = {
   id: string; title: string; owner: string; hostName: string; revision: number;
   appointmentType?: string; customType?: string; slots: Slot[]; requests: Booking[]; archived?: boolean; listed?: boolean;
@@ -26,9 +26,15 @@ function guestSummary(c: BookCalendar, actor: string) {
   const hostName = c.hostName && !c.hostName.includes('@') ? c.hostName : 'Cloud Calendars user';
   return {id:c.id, title:c.title, ...calendarDetails(c), hostName, isOwner:c.owner === actor};
 }
-function presentation(c: BookCalendar, r: Booking, now: number) {
-  const {guestId, decision, answeredProposal, ...item} = r;
-  return {...item, ...calendarDetails(c), calendarId:c.id, calendarTitle: c.title, hostName: c.hostName,
+function withoutMeetingLink<T extends {videoCallURL?: string}>({videoCallURL, ...fields}: T) {
+  return videoCallURL ? {...fields, hasVideoCall:true} : fields;
+}
+function presentation(c: BookCalendar, r: Booking, now: number, actor: string) {
+  const {guestId, decision, answeredProposal, proposal, ...item} = r;
+  const showLink = c.owner === actor || decision === 'accepted';
+  return {...(showLink ? item : withoutMeetingLink(item)),
+    ...(proposal && {proposal:showLink ? proposal : withoutMeetingLink(proposal)}),
+    ...calendarDetails(c), calendarId:c.id, calendarTitle: c.title, hostName: c.hostName,
     status: decision !== 'declined' && Date.parse(r.proposal?.end ?? r.end) <= now ? 'past' : decision};
 }
 function heldTimes(requests: Booking[]) {
@@ -37,10 +43,11 @@ function heldTimes(requests: Booking[]) {
 
 function hostCalendar(c: BookCalendar, now: number) {
   return {id:c.id, title:c.title, ...calendarDetails(c), listed:c.listed ?? true, revision:c.revision,
-    slots:c.slots, requests:c.requests.map(r => presentation(c,r,now))};
+    slots:c.slots, requests:c.requests.map(r => presentation(c,r,now,c.owner))};
 }
 function slotOverlaps(slot: Slot, interval: Occurrence) {
   const duration = Date.parse(slot.end) - Date.parse(slot.start);
+  if (slot.allDay) return occurrences(slot, Date.parse(interval.start) - duration - day, Date.parse(interval.end)).some(o => overlaps(o,interval));
   const next = nextOccurrenceStart(slot, Date.parse(interval.start) - duration + 1);
   return next !== undefined && next < Date.parse(interval.end);
 }
@@ -66,7 +73,7 @@ export class BookingCalendarsController {
       .filter((c): c is BookCalendar => !!c);
     const calendars = docs.filter(c => c.owner === actor && !c.archived)
       .map(c => hostCalendar(c,now)).sort((a,b) => a.title.localeCompare(b.title));
-    const appointments = docs.flatMap(c => c.requests.filter(r => r.guestId === actor).map(r => presentation(c,r,now)))
+    const appointments = docs.flatMap(c => c.requests.filter(r => r.guestId === actor).map(r => presentation(c,r,now,actor)))
       .sort((a,b) => a.start.localeCompare(b.start));
     return {calendars, appointments};
   }
@@ -91,24 +98,61 @@ export class BookingCalendarsController {
   }
 
   @Get(':id')
-  async availability(@Req() req: any, @Param('id') id: string, @Query('from') from?: string) {
+  async availability(@Req() req: any, @Param('id') id: string, @Query('from') from?: string,
+                     @Query('to') to?: string, @Query('includeBusy') includeBusy?: string) {
     const c: BookCalendar = await this.store.getJSON(calendarKey(id));
     if (!c || c.archived) missing();
-    const now = Date.now(), lower = from ? Math.max(now+1, Date.parse(from)) : now+1;
+    const now = Date.now(), start = from ? Date.parse(from) : now + 1;
+    const lower = Math.max(now + 1, start);
     if (!Number.isFinite(lower) || lower > Date.UTC(9999,0,1)) fail(400,'Invalid availability date.');
-    const requests = heldTimes(c.requests).filter(r => Date.parse(r.end) > now);
-    const paged = !!from || c.slots.some(s=>s.rule);
-    const nextStart = (fromTime: number) => c.slots.reduce((first,slot) => {
-      const candidate = nextOccurrenceStart(slot,fromTime);
-      return candidate === undefined ? first : Math.min(first,candidate);
-    }, Infinity);
-    // A calendar may start months away or repeat annually. Start at a real date.
-    const first = paged ? nextStart(lower) : lower;
-    const upper = paged ? first + 31*day : Date.UTC(9999,0,1);
-    const slots = Number.isFinite(first) ? c.slots.flatMap(s=>occurrences(s,first,upper))
-      .filter(s=>!requests.some(r=>overlaps(r,s))).sort((a,b)=>a.start.localeCompare(b.start)) : [];
+    const bounded = to !== undefined, showBusy = bounded || includeBusy === 'true';
+    const end = bounded ? Date.parse(to) : Infinity;
+    if (bounded && (!from || !Number.isFinite(end) || end <= start || end - start > 35 * day)) fail(400,'Invalid availability date.');
+    const held = heldTimes(c.requests).filter(r => Date.parse(r.end) > now);
+    // Both intervals stay protected while the guest decides. Show the host's proposed
+    // time and the guest's agreed time as a single appointment in their calendars.
+    const mine = new Map<Occurrence,string>(), hidden = new Set<Occurrence>();
+    if (showBusy) for (const request of c.requests) {
+      if (request.decision === 'declined') continue;
+      const proposal = request.proposal;
+      if (req.principal.principalId === c.owner && proposal) hidden.add(request);
+      if (request.guestId !== req.principal.principalId) continue;
+      const shown = proposal && Date.parse(request.end) <= now ? proposal : request;
+      if (proposal) hidden.add(shown === request ? proposal : request);
+      if (Math.max(Date.parse(request.start), Date.parse(proposal?.start ?? request.start)) > now) mine.set(shown,request.id);
+    }
+    const visibleBusy = showBusy ? held.filter(interval => !hidden.has(interval)) : [];
+    const paged = !bounded && (!!from || c.slots.some(s => s.rule));
+    const nextStart = (time: number) => {
+      let first = Infinity;
+      for (const slot of c.slots) first = Math.min(first, nextOccurrenceStart(slot,time) ?? Infinity);
+      for (const interval of visibleBusy) {
+        const heldStart = Date.parse(interval.start);
+        if (heldStart >= time) first = Math.min(first, heldStart);
+      }
+      return first;
+    };
+    const ongoing = visibleBusy.some(r => Date.parse(r.start) < lower && Date.parse(r.end) > lower);
+    const first = paged && !ongoing ? nextStart(lower) : lower;
+    const upper = bounded ? end : paged ? first + 31 * day : Date.UTC(9999,0,1);
+    const slots = first < upper ? c.slots.flatMap(slot => {
+      // Include a bookable slot crossing the first midnight of the displayed window.
+      const duration = Date.parse(slot.end) - Date.parse(slot.start) + (slot.allDay ? day : 0);
+      const searchFrom = bounded ? Math.max(now + 1, first - duration) : first;
+      return occurrences(slot,searchFrom,upper).filter(s => Date.parse(s.end) > first && !held.some(r => overlaps(r,s)));
+    }).sort((a,b) => a.start.localeCompare(b.start)) : [];
+    const busy = new Map<string, Pick<Slot,'id'|'start'|'end'|'allDay'|'timeZone'> & {myBookingId?:string}>();
+    if (first < upper) for (const interval of visibleBusy) {
+      if (Date.parse(interval.start) >= upper || Date.parse(interval.end) <= first) continue;
+      const allDay = !!interval.allDay;
+      const key = ['busy', interval.start, interval.end, allDay ? interval.timeZone || 'UTC' : ''].join('/');
+      busy.set(key, {id:key, start:interval.start, end:interval.end, ...(allDay && {allDay:true,timeZone:interval.timeZone}),
+        ...(mine.has(interval) && {myBookingId:mine.get(interval)})});
+    }
     const next = paged && Number.isFinite(upper) ? nextStart(upper) : Infinity;
-    return {...guestSummary(c, req.principal.principalId), slots, nextFrom:Number.isFinite(next) ? new Date(next).toISOString() : null};
+    return {...guestSummary(c, req.principal.principalId), slots:slots.map(withoutMeetingLink),
+      ...(showBusy && {busy:[...busy.values()].sort((a,b) => a.start.localeCompare(b.start))}),
+      nextFrom:Number.isFinite(next) ? new Date(next).toISOString() : null};
   }
 
   @Put(':id')
@@ -133,9 +177,9 @@ export class BookingCalendarsController {
       const previous = old?.slots.find(slot=>slot.id===s.id);
       const title = s.title === undefined ? previous?.title : s.title;
       if (title != null && (typeof title !== 'string' || title.length > 200)) fail(400,'Invalid slot title.');
-      return {...(previous?.excludedStarts && s.rule !== null ? {excludedStarts:previous.excludedStarts} : {}), ...bookingPlace(s,previous), ...(title?.trim() ? {title:title.trim()} : {}), id:s.id, start:new Date(s.start).toISOString(), end:new Date(s.end).toISOString(),...scheduleFields(s,previous)};
+      return {...(previous?.excludedStarts && s.rule !== null ? {excludedStarts:previous.excludedStarts} : {}), ...bookingPlace(s,previous), ...(title?.trim() ? {title:title.trim()} : {}), id:s.id, start:new Date(s.start).toISOString(), end:new Date(s.end).toISOString(),...scheduleFields(s,previous),...bookingDayFields(s,previous)};
     }).sort((a: Slot,b: Slot) => a.start.localeCompare(b.start));
-    const seeds = slots.filter(s => !s.excludedStarts?.includes(s.start));
+    const seeds = slots.filter(s => occurrenceByID([s],s.id));
     if (seeds.some((s,i) => i > 0 && s.start < seeds[i-1].end)) fail(400,'Time slots overlap.');
     if (slots.some(s=>s.rule)) {
       // Validate the opening booking window. The reservation write also checks all
@@ -148,7 +192,7 @@ export class BookingCalendarsController {
       const protectedSlot = occurrenceByID(slots,r.slotId);
       const expected = r.proposal ?? r;
       if (r.decision !== 'declined' && Date.parse(expected.end) > Date.now()
-        && (protectedSlot?.start !== expected.start || protectedSlot?.end !== expected.end)) fail(409,'A requested slot cannot be changed.');
+        && (protectedSlot?.start !== expected.start || protectedSlot?.end !== expected.end || !!protectedSlot?.allDay !== !!expected.allDay)) fail(409,'A requested slot cannot be changed.');
     }
     if (body.listed !== undefined && typeof body.listed !== 'boolean') fail(400,'Invalid search visibility.');
     const doc: BookCalendar = {id, owner:actor, listed:body.listed ?? old?.listed ?? true, title:body.title.trim(), appointmentType:appointmentType.trim(), customType:customType.trim(), slots, revision:(old?.revision ?? 0)+1,
@@ -166,12 +210,23 @@ export class BookingCalendarsController {
     if (body?.revision !== c.revision) conflict();
     const original = occurrenceByID(c.slots, slotId), series = c.slots.find(s => s.id === slotId.split('@')[0]);
     if (!original || !series?.rule) conflict();
+    if (body.remove === true) {
+      if (c.requests.some(r => r.decision !== 'declined' && r.slotId.split('@')[0] === series.id
+        && (r.proposal ?? r).start >= original.start)) fail(409,'A requested slot cannot be changed.');
+      const past = bookingSeriesBefore(series, original.start);
+      const slots = c.slots.flatMap(slot => slot !== series ? [slot] : past ? [past] : []);
+      const updated = {...c, slots, revision:c.revision + 1};
+      if (!await this.store.putJSONIfMatch(key, updated, row.etag)) conflict();
+      return hostCalendar(updated, Date.now());
+    }
     const valid = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T.*(?:Z|[+-]\d{2}:\d{2})$/.test(v) && Number.isFinite(Date.parse(v));
     if (!valid(body.start) || !valid(body.end) || Date.parse(body.end) <= Date.parse(body.start)) fail(400,'Invalid time slot.');
     const start = new Date(body.start).toISOString(), end = new Date(body.end).toISOString();
     const now = Date.now();
-    if (start === original.start && end === original.end) return hostCalendar(c,now);
-    const {past, future, corresponding} = splitBookingSeries(series,original.start,start,end,original.start === series.start ? series.id : randomUUID());
+    const dayFields = bookingDayFields({...body,start,end},series);
+    if (dayFields.allDay && (series.hoursOfDay || series.dailyPattern)) fail(400,'An intraday schedule cannot contain all-day appointments.');
+    if (start === original.start && end === original.end && !!dayFields.allDay === !!original.allDay) return hostCalendar(c,now);
+    const {past, future, corresponding} = splitBookingSeries(series,original.start,start,end,original.start === series.start ? series.id : randomUUID(), !!dayFields.allDay);
     const slots = c.slots.filter(s => s !== series);
     if (past) slots.push(past);
     const changed: Booking[] = [];
@@ -182,12 +237,12 @@ export class BookingCalendarsController {
       const target = corresponding(held.start);
       if (r.proposal || Date.parse(r.end) <= now || !target) {
         // Retain a historical booking or an outstanding proposal as an independent slot.
-        const keep: Slot = {id:randomUUID(), start:held.start, end:held.end, title:held.title, ...bookingPlace(held), timeZone:series.timeZone};
+        const keep: Slot = {id:randomUUID(), start:held.start, end:held.end, title:held.title, allDay:held.allDay, ...bookingPlace(held), timeZone:series.timeZone};
         slots.push(keep);
         if (target) future.excludedStarts.push(target.start);
         return {...r, slotId:keep.id};
       }
-      if (target.start === r.start && target.end === r.end) return {...r,slotId:target.id};
+      if (target.start === r.start && target.end === r.end && !!target.allDay === !!r.allDay) return {...r,slotId:target.id};
       if (Date.parse(target.start) <= now) fail(409,'Choose a future time for this booking.');
       const updated = {...r,slotId:target.id,proposal:{...target,id:randomUUID()}};
       changed.push(updated);
@@ -256,16 +311,13 @@ export class BookingCalendarsController {
       if (detachedId !== undefined && (!series.rule || typeof detachedId !== 'string' || !uuid.test(detachedId)
         || c.slots.some(s => s.id === detachedId) || c.requests.some(r => r.slotId === detachedId))) conflict();
       const edited: Slot = {id:series.rule ? detachedId ?? randomUUID() : series.id, start, end, timeZone:series.timeZone,
-        ...(title?.trim() ? {title:title.trim()} : {}), ...bookingPlace(body, original)};
-      if (start === original.start && end === original.end && edited.title === original.title &&
-          edited.location === original.location && JSON.stringify(edited.structuredLocation) === JSON.stringify(original.structuredLocation)) {
+        ...(title?.trim() ? {title:title.trim()} : {}), ...bookingPlace(body, original), ...bookingDayFields({...body,start,end},series)};
+      if (start === original.start && end === original.end && edited.title === original.title && !!edited.allDay === !!original.allDay &&
+          edited.location === original.location && edited.videoCallURL === original.videoCallURL &&
+          JSON.stringify(edited.structuredLocation) === JSON.stringify(original.structuredLocation)) {
         return {id, revision:c.revision};
       }
-      if (slots.some(s => {
-        const duration = Date.parse(s.end) - Date.parse(s.start);
-        const next = nextOccurrenceStart(s, Date.parse(start) - duration + 1);
-        return next !== undefined && next < Date.parse(end);
-      }) || heldTimes(c.requests.filter(r => r !== booking)).some(r => overlaps(edited, r))) fail(409, 'Time slots overlap.');
+      if (slots.some(s => slotOverlaps(s,edited)) || heldTimes(c.requests.filter(r => r !== booking)).some(r => overlaps(edited, r))) fail(409, 'Time slots overlap.');
       if (slots.length >= 1000) fail(400, 'Too many time slots.');
       slots.push(edited);
       if (booking) {
@@ -291,7 +343,7 @@ export class BookingCalendarsController {
     if (booking.answeredProposal?.id === body.proposalId && booking.answeredProposal.decision === decision) return {id:requestId};
     const proposed = booking.proposal;
     if (!proposed || proposed.id !== body.proposalId || (decision === 'accepted' && Date.parse(proposed.start) <= Date.now())) conflict();
-    const {proposal, title, location, structuredLocation, ...previous} = booking;
+    const {proposal, title, location, structuredLocation, videoCallURL, allDay, timeZone, ...previous} = booking;
     const updated: Booking = {...previous, ...proposed, id:booking.id, decision, answeredProposal:{id:proposed.id, decision}};
     const requests = c.requests.map(r => r === booking ? updated : r);
     if (!await this.store.putJSONIfMatch(key,{...c,requests,revision:c.revision+1},row.etag)) conflict();
@@ -327,6 +379,21 @@ export class BookingCalendarsController {
     const booking: Booking = {...slot,id:requestId,slotId:slot.id,guestId:actor,guestName:await this.displayName(actor),decision:'pending'};
     await this.store.putJSONIfAbsent(index(actor)+id+'.json',{id});
     if (!await this.store.putJSONIfMatch(key,{...c,revision:c.revision+1,requests:[...c.requests,booking]},row.etag)) conflict();
+    return {id:requestId};
+  }
+
+  @Put(':id/requests/:requestId/cancel')
+  async cancelBooking(@Req() req: any, @Param('id') id: string, @Param('requestId') requestId: string) {
+    const key = calendarKey(id);
+    const row = await this.store.getJSONWithETag(key), c: BookCalendar = row?.value;
+    const booking = c?.requests.find(r => r.id === requestId && r.guestId === req.principal.principalId);
+    if (!booking || c.archived) missing();
+    if (booking.decision === 'declined') return {id:requestId};
+    if (Math.max(Date.parse(booking.start),Date.parse(booking.proposal?.start ?? booking.start)) <= Date.now()) conflict();
+    const {proposal, ...original} = booking;
+    const cancelled: Booking = {...original, decision:'declined', cancelledByGuest:true};
+    const requests = c.requests.map(r => r === booking ? cancelled : r);
+    if (!await this.store.putJSONIfMatch(key,{...c,requests,revision:c.revision+1},row.etag)) conflict();
     return {id:requestId};
   }
 

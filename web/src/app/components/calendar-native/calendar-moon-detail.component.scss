@@ -32,7 +32,6 @@ img { object-fit: contain; pointer-events: none; user-select: none; }
 .today { width: 36px; height: 36px; inset-inline-start: 0; background: #ffffff1a; color: var(--orange); }
 .today.later { inset-inline-start: auto; inset-inline-end: 0; }
 .today cc-symbol { width: 18px; height: 18px; }
-:host-context([dir=rtl]) :is(.today,.month-heading) cc-symbol { transform: scaleX(-1); }
 .ruler { position: relative; width: 100%; margin-block: 4px; height: 72px; overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; }
 .ruler:active { cursor: grabbing; }
 .ruler-track { position: absolute; inset: 0 -72px;

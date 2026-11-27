@@ -23,8 +23,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     public var currentView: Int = 3 { didSet { setNeedsLayout() } }
 
+    var focusHour: Int?
     var scopedTitle: String?
     var onScopeBack: (() -> Void)?
+    var onScopeAdd: (() -> Void)?
+    var onScopeAvailability: (() -> Void)?
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
@@ -525,11 +528,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         headerHost.update(in: navBar, snapshot: .init(mode: currentView,
             title: showSingleDay && !isLandscape ? appDateFormatter(template: "LLLL").string(from: fromDate) : nil,
             range: showSingleDay ? nil : dateRangeTitle, rangeIsSelected: showCalendar,
-            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier, scopedTitle: scopedTitle),
+            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier, scopedTitle: scopedTitle,
+            showsAddSlot: onScopeAdd != nil && bottomScrollPadding == 0),
             hidden: isSearching,
             onTitle: { [weak self] in self?.monthLabelTapped() },
             onRange: { [weak self] in self?.didTapDateRangeButton() },
-            onBack: onScopeBack, onSearch: { [weak self] in self?.searchButtonTapped() },
+            onBack: onScopeBack, onAddSlot: onScopeAdd, onAvailability: onScopeAvailability, onSearch: { [weak self] in self?.searchButtonTapped() },
             onViewChange: { [weak self] mode in
                 self?.currentView = mode
                 self?.onViewChange?(mode)
@@ -930,6 +934,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 
     /// Where the timeline sits on first layout.
     private func initialVerticalOffset() -> CGFloat? {
+        if let focusHour { return CGFloat(focusHour) * weekView.hourHeight }
         #if DEBUG
         if let pinnedHour = ScreenshotMode.pinnedScrollHour {
             // A marketing capture pins the timeline so that every language

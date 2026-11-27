@@ -30,6 +30,12 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     public private(set) var contentHeight: CGFloat = 0
 
     // Callback-и
+    var onScopedMenuTap: ((EventDescriptor, CGPoint) -> Bool)?
+    var scopedEditable: ((EventDescriptor) -> Bool)?
+    private func isReadOnly(_ descriptor: EventDescriptor) -> Bool {
+        if let scopedEditable { return !scopedEditable(descriptor) }
+        return SharedInviteTracker.isReadOnly(descriptor)
+    }
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
@@ -224,7 +230,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         if gestureRecognizer is UILongPressGestureRecognizer,
            let eventView = gestureRecognizer.view as? EventView,
            let descriptor = eventViewToDescriptor[eventView],
-           SharedInviteTracker.isReadOnly(descriptor) {
+           isReadOnly(descriptor) {
             return false
         }
         return true
@@ -235,6 +241,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[tappedView] else { return }
+        if onScopedMenuTap?(descriptor, gesture.location(in: self)) == true { return }
         onEventTap?(descriptor)
     }
     private struct GhostDragData {
@@ -247,7 +254,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView],
-              !SharedInviteTracker.isReadOnly(descriptor)
+              !isReadOnly(descriptor)
         else { return }
         let point = gesture.location(in: self)
         switch gesture.state {

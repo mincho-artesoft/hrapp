@@ -1,25 +1,37 @@
+import { CalendarActionSheetComponent } from './calendar-action-sheet.component';
+import { bookingRange, CalendarGuestBookingActionComponent } from './calendar-guest-booking-action.component';
+import {bookingMinutes, type BookingBreak, type BookingDailyPattern} from '../../../../../backend/src/booking/booking-daily-pattern';
+import { CalendarGuestBookingGridComponent } from './calendar-guest-booking-grid.component';
+import { CalendarSectionPickerComponent } from './calendar-section-picker.component';
 import { CalendarRemovalComponent } from './calendar-removal.component';
+import { CalendarInvitationActionsComponent } from './calendar-invitation-actions.component';
 import {NgTemplateOutlet} from '@angular/common';
 import {CalendarChoiceComponent} from './calendar-choice.component';
 import {CalendarProgressComponent} from './calendar-progress.component';
-import { bookingStatus, slotReservation, slotStatus } from '../../core/booking-status';
+import { bookingParticipantName, bookingStatus, slotReservation, slotStatus } from '../../core/booking-status';
 import {CalendarLocationEditorComponent, LocationDraft, finishLocation} from './calendar-location-editor.component';
 import {CalendarDateTimeComponent} from './calendar-date-time.component';
 import {CalendarSymbolComponent} from './calendar-symbol.component';
 import catalog from '../../../../../native/Calendar/BookingTypes.json';
 import { CalendarRepeatComponent } from './calendar-repeat.component';
 import { CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, eventRepeatChoices } from './calendar-event-editor-fields';
-import { CalendarRepeatRule } from '../../core/calendar-platform-api.service';
-import { instant, wallDate } from '../../core/calendar-recurrence';
+import { CalendarRepeatRule, WebCalendarEvent } from '../../core/calendar-platform-api.service';
+import { calendarDayStart, instant, wallDate } from '../../core/calendar-recurrence';
 import { ChangeDetectorRef, Component, computed, ElementRef, inject, input, output, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalendarNativeTextPipe, CalendarLocalization } from '../../core/calendar-localization';
-import { BookingWorkspace, BookingPurpose, BookingCalendar, BookingListing, BookingSlot, Availability, Appointment, bookingID } from '../../core/booking-workspace';
+import { BookingWorkspace, BookingPurpose, BookingCalendar, BookingListing, BookingSlot, Availability, Appointment, isBookingHistory, bookingID, guestBookingSlots, isBusySlot } from '../../core/booking-workspace';
 
-interface InputSlot extends LocationDraft {id:string; title:string; date:string; start:string; end:string; endDate:string; choice:string; rule?:CalendarRepeatRule; zone:string; original?:BookingSlot}
+function clockMinutes(value:string) {
+  return /^\d{2}:\d{2}$/.test(value) ? Number(value.slice(0,2))*60 + Number(value.slice(3,5)) : NaN;
+}
+function clockText(value:number) {
+  return [Math.floor(value/60),value%60].map(n=>String(n).padStart(2,'0')).join(':');
+}
+interface InputSlot extends LocationDraft {allDay:boolean; breaks:BookingBreak[]; gap:number; closeMinute:number; firstMinute:number;hourStep:number; firstHour:number; lastHour:number; id:string; title:string; date:string; start:string; end:string; endDate:string; choice:string; rule?:CalendarRepeatRule; zone:string; original?:BookingSlot}
 const frequencies = ['daily','weekly','monthly','yearly'] as const;
-type BookingPanel = 'edit'|'slot'|'lookup'|'offer'|'share';
+type BookingPanel = 'edit'|'slot'|'lookup'|'offer'|'share'|'appointment';
 function localTime(date:Date, zone:string) {
   return wallDate(date,zone).toISOString().slice(0,16);
 }
@@ -34,16 +46,34 @@ function inputSlot(s:BookingSlot):InputSlot {
   const zone=s.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone;
   const start=localTime(new Date(s.start),zone), end=localTime(new Date(s.end),zone);
   const rule=s.rule ? {...s.rule,frequency:frequencies[s.rule.frequency]} : undefined;
-  return {id:s.id,original:s,rule,choice:repeatChoice(rule),zone,date:start.slice(0,10),start:start.slice(11),end:end.slice(11),endDate:end.slice(0,10),title:s.title ?? '',location:s.location ?? '',structuredLocation:s.structuredLocation};
+  const hours = s.hoursOfDay ?? [];
+  const pattern=s.dailyPattern, duration=(Date.parse(s.end)-Date.parse(s.start))/60000;
+  const justToday = (hours.length > 1 || !!pattern) && rule?.frequency === 'daily' && rule.endDate &&
+    localTime(new Date(rule.endDate),zone).slice(0,10) === start.slice(0,10);
+  return {id:s.id,original:s,rule:justToday ? undefined : rule,choice:justToday ? 'none' : repeatChoice(rule),zone,
+    allDay:!!s.allDay, breaks:pattern?.breaks.map(b=>({...b})) ?? [], gap:pattern ? pattern.step-duration : 0,
+    closeMinute:pattern ? pattern.last+duration : 18*60, firstMinute:pattern?.first ?? clockMinutes(start.slice(11)),
+    firstHour:hours[0] ?? Number(start.slice(11,13)), lastHour:hours.at(-1) ?? 17,
+    hourStep:pattern ? -1 : hours.length > 1 ? hours[1] - hours[0] : 0,date:start.slice(0,10),start:start.slice(11),end:end.slice(11),endDate:s.allDay ? localTime(new Date(Date.parse(s.end)-1),zone).slice(0,10) : end.slice(0,10),
+    title:s.title ?? '',location:s.location ?? '',structuredLocation:s.structuredLocation,videoCallURL:s.videoCallURL ?? ''};
+}
+
+interface BookingDecisionPrompt {
+  request: Appointment;
+  status: 'accepted' | 'declined';
+  calendar: BookingCalendar | null;
+  session: string;
+  onError?: (message: string) => void;
 }
 
 @Component({
-  selector:'cc-bookings', standalone:true, imports:[NgTemplateOutlet, CalendarChoiceComponent, CalendarRemovalComponent, CalendarProgressComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
+  selector:'cc-bookings', standalone:true, imports:[CalendarActionSheetComponent, CalendarGuestBookingActionComponent, NgTemplateOutlet, CalendarGuestBookingGridComponent, CalendarSectionPickerComponent, CalendarInvitationActionsComponent, CalendarChoiceComponent, CalendarRemovalComponent, CalendarProgressComponent, FormsModule, CalendarNativeTextPipe, CalendarRepeatComponent, CalendarEventTitleLocationComponent, CalendarEventRepeatFieldsComponent, CalendarEventRemovalComponent, CalendarDateTimeComponent, CalendarLocationEditorComponent, CalendarSymbolComponent],
   templateUrl:'./bookings.component.html', styleUrl:'./bookings.component.scss',
 })
 export class BookingsComponent implements OnInit, OnDestroy {
   readonly store = inject(BookingWorkspace);
   readonly mode = input.required<string>();
+  readonly timelineCalendar = input<BookingCalendar|null>(null);
   readonly firstWeekday = input(0);
   readonly desktop = input(false);
   readonly dateFocus = signal<string|null>(null);
@@ -52,10 +82,31 @@ export class BookingsComponent implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly changeDetector = inject(ChangeDetectorRef);
   readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('sheet');
+  private readonly timesSheet = viewChild<ElementRef<HTMLDialogElement>>('timesSheet');
   readonly panel = signal<BookingPanel>('lookup');
   readonly timelineRequested = output<string>();
   readonly message = signal('');
+  readonly decisionPrompt = signal<BookingDecisionPrompt|null>(null);
   readonly busy = signal(false);
+  readonly offerMode = signal<'list'|'grid'>('list');
+  readonly myMode = signal<'list'|'grid'|'history'>('list');
+  readonly inspectedId = signal('');
+  readonly inspected = computed(() => this.store.data().appointments.find(r => r.id === this.inspectedId()));
+  readonly myAppointments = computed(() => this.store.data().appointments.filter(r => this.matchesAppointment(r)));
+  readonly listedAppointments = computed(() => {
+    const rows = this.myMode() === 'history' ? this.store.history() : this.store.upcoming();
+    return rows.filter(r => this.matchesAppointment(r));
+  });
+  readonly isHistory = isBookingHistory;
+  private matchesAppointment(r: Appointment) {
+    return this.matches(r.calendarTitle, r.title ?? '', r.hostName, this.statusLabel(r), this.locale.text(this.statusLabel(r)));
+  }
+  inspect(r: Appointment) { this.inspectedId.set(r.id); this.show('appointment'); }
+  readonly offerModes = [{value:'list',label:'List'}, {value:'grid',label:'MultiDay'}] as const;
+  readonly myModes = [...this.offerModes, {value:'history',label:'History'}] as const;
+  readonly offerRevision = signal(0);
+  readonly isBusySlot = isBusySlot;
+  readonly displaySlots = computed(() => { const page=this.offer(); return page ? guestBookingSlots(page) : []; });
   readonly offer = signal<Availability|null>(null);
   private readonly directory = signal<BookingListing[]>([]);
   readonly directoryLoading = signal(false);
@@ -65,11 +116,33 @@ export class BookingsComponent implements OnInit, OnDestroy {
   readonly filterType = signal('');
   readonly categories = [{value: '', label: 'All categories'}, ...catalog.map(group => ({value: group.title, label: group.title}))];
   private directoryVersion = 0;
-  fromDirectory = false;
   listed = true;
   readonly status = bookingStatus;
   readonly slotStatus = slotStatus;
-  statusLabel(appointment: Appointment) { return this.status[appointment.status].label; }
+  readonly pendingTimelineRequests = computed(() => this.timelineCalendar()?.requests.filter(r => this.needsHostResponse(r)) ?? []);
+  needsHostResponse(request: Appointment) {
+    return request.status === 'pending' && !request.proposal && Date.parse(request.end) > Date.now();
+  }
+  canCancel(r:Appointment) {
+    return (r.status==='pending'||r.status==='accepted') && Math.max(Date.parse(r.start), Date.parse(r.proposal?.start ?? r.start)) > Date.now();
+  }
+  cancelFromList(r:Appointment) {
+    if (!this.canCancel(r)) return;
+    return this.perform(async()=>{
+      try { await this.store.request('/'+r.calendarId+'/requests/'+r.id+'/cancel','PUT'); }
+      finally { await this.store.refresh(); }
+    });
+  }
+  movingRequest(calendar: BookingCalendar, request: Appointment) {
+    return this.store.pendingMoves().some(move => move.calendarId === calendar.id && move.revision === calendar.revision && move.requestId === request.id);
+  }
+  pendingRequestForEvent(event: WebCalendarEvent) {
+    const calendar = this.timelineCalendar();
+    if (!calendar || event.calendarId !== calendar.id || event.readOnly || !event.id.startsWith('request-')) return;
+    return this.pendingTimelineRequests().find(r => 'request-' + r.id === event.id && !this.movingRequest(calendar, r));
+  }
+  participantName(name:string) { return bookingParticipantName(name, key => this.locale.text(key)); }
+  statusLabel(appointment: Appointment) { return appointment.cancelledByGuest ? 'Cancelled' : this.status[appointment.status].label; }
   statusColor(appointment: Appointment) { return this.status[appointment.status].color; }
 
   confirmingRemoval = false;
@@ -138,7 +211,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   repeatName(slot:BookingSlot) {
     const choice=repeatChoice(slot.rule && {...slot.rule,frequency:frequencies[slot.rule.frequency]});
-    return eventRepeatChoices.find(o=>o.value===choice)?.label;
+    const label = eventRepeatChoices.find(o=>o.value===choice)?.label ?? '';
+    if (slot.dailyPattern) return [this.locale.text(label),this.locale.text('Custom schedule')].filter(Boolean).join(' · ');
+    if (!slot.hoursOfDay?.length) return this.locale.text(label);
+    const draft = inputSlot(slot);
+    const times = this.lastHourOptions(draft);
+    const first = this.locale.shortTime().format(new Date(2000,0,1,draft.firstHour,Number(draft.start.slice(3,5))));
+    return [draft.choice === 'none' ? '' : this.locale.text(label), this.hourSteps()[draft.hourStep].label,
+      first + ' – ' + times.at(-1)?.label].filter(Boolean).join(' · ');
   }
   selectRepeat(s:InputSlot,value:string) {
     const endDate=s.rule?.endDate;
@@ -156,8 +236,9 @@ export class BookingsComponent implements OnInit, OnDestroy {
     const previous=this.offer();
     if(!previous?.nextFrom)return;
     await this.perform(async()=>{
-      const page=await this.store.request<Availability>('/'+previous.id+'?from='+encodeURIComponent(previous.nextFrom!));
-      this.offer.set({...page,slots:[...previous.slots,...page.slots]});
+      const page=await this.store.request<Availability>('/'+previous.id+'?includeBusy=true&from='+encodeURIComponent(previous.nextFrom!));
+      const oldBusy = previous.busy ?? [], seen = new Set(oldBusy.map(s=>s.id));
+      this.offer.set({...page,slots:[...previous.slots,...page.slots],busy:[...oldBusy,...(page.busy ?? []).filter(s=>!seen.has(s.id))]});
     });
   }
   private operation = 0;
@@ -169,7 +250,6 @@ export class BookingsComponent implements OnInit, OnDestroy {
         this.show('lookup');
         await this.preview(id);
         if (this.panel() === 'lookup' && this.dialog().nativeElement.open) {
-          this.fromDirectory = true;
           void this.loadDirectory();
         }
       });
@@ -177,23 +257,16 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {++this.operation; ++this.directoryVersion;}
   matches(...values:string[]) {return values.join(' ').toLocaleLowerCase().includes(this.query().trim().toLocaleLowerCase());}
-  private readonly rangeDate = computed(() =>
-    new Intl.DateTimeFormat(this.locale.formattingLocale(), {dateStyle: 'medium'}));
 
   range(slot: BookingSlot) {
-    const start = new Date(slot.start);
-    const end = new Date(slot.end);
-    const date = this.rangeDate();
-    const time = this.locale.shortTime();
-    const endDate = start.toDateString() === end.toDateString() ? '' : date.format(end) + ', ';
-    return date.format(start) + ', ' + time.format(start) + ' – ' + endDate + time.format(end);
+    return bookingRange(slot, this.locale);
   }
-  add() {
-    if (this.mode()==='availability') this.edit(null);
-    else {
-      this.offer.set(null); this.search.set(''); this.category.set(''); this.filterType.set('');
-      this.fromDirectory=true; this.show('lookup'); void this.loadDirectory();
-    }
+  slotDetail(title:string, slot:BookingSlot) { return [title,slot.title,this.range(slot),slot.location].filter(Boolean).join(' · '); }
+  openTimes() { this.message.set(''); this.timesSheet()?.nativeElement.showModal(); }
+  get hasOpenSheet() { return this.dialog().nativeElement.open || !!this.timesSheet()?.nativeElement.open; }
+  openLookup() {
+    this.offer.set(null); this.search.set(''); this.category.set(''); this.filterType.set('');
+    this.show('lookup'); void this.loadDirectory();
   }
   async loadDirectory() {
     const version = ++this.directoryVersion, token = this.store.api.token();
@@ -212,7 +285,7 @@ export class BookingsComponent implements OnInit, OnDestroy {
       if (version === this.directoryVersion) this.directoryLoading.set(false);
     }
   }
-  sheetClosed() { ++this.directoryVersion; this.fromDirectory=false; }
+  sheetClosed() { ++this.directoryVersion; this.offerMode.set('list'); }
   show(panel:BookingPanel) {
     this.locationDraft=undefined;this.customRepeat=false;this.choosingType=false;this.dateFocus.set(null);
     this.panel.set(panel);this.message.set('');
@@ -248,24 +321,118 @@ export class BookingsComponent implements OnInit, OnDestroy {
     const slotId = request?.slotId ?? id;
     const base = calendar.slots.find(s => s.id === slotId.split('@')[0]);
     if (!base && !request) return;
-    const source = (kind === 'proposal' ? request?.proposal : request) ?? base;
-    this.openSlot(calendar, {...source,id:slotId,start:event.start,end:event.end,timeZone:base?.timeZone,rule:undefined},true,undefined,request);
+    if (base && !base.rule && !request) { this.openSlot(calendar, base); return; }
+    const source = request?.proposal ?? request ?? base;
+    this.openSlot(calendar, {...source,id:slotId,start:event.start,end:event.end,timeZone:source?.timeZone ?? base?.timeZone,rule:undefined,hoursOfDay:undefined,dailyPattern:undefined},true,undefined,request);
   }
-  async answerChange(r:Appointment, status:'accepted'|'declined') {
-    const proposal = r.proposal;
-    if (!proposal) return;
+  requestDecision(request: Appointment, status: BookingDecisionPrompt['status'], calendar: BookingCalendar | null, onError?: (message: string) => void) {
+    const session = this.store.api.token();
+    if (!session || this.busy() || this.decisionPrompt()) return;
+    this.decisionPrompt.set({request, status, calendar, session, onError});
+  }
+  decisionDetails({request, calendar}: BookingDecisionPrompt) {
+    const proposal = request.proposal;
+    const details = calendar ? [calendar.title, this.participantName(request.guestName)] : [request.calendarTitle];
+    details.push(this.range(request));
+    if (proposal) details.push(this.locale.text('Proposed change'), this.range(proposal));
+    return details.join(' · ');
+  }
+  async confirmDecision(choice: BookingDecisionPrompt) {
+    if (this.decisionPrompt() !== choice) return;
+    this.decisionPrompt.set(null);
+    if (this.busy() || this.store.api.token() !== choice.session) return;
+    const {request, status, calendar} = choice;
     await this.perform(async () => {
-      await this.store.request('/'+r.calendarId+'/requests/'+r.id+'/change-response','PUT',{status,proposalId:proposal.id});
-      await this.store.refresh();
+      if (calendar) {
+        const current = this.store.data().calendars.find(c => c.id === calendar.id);
+        const latest = current?.requests.find(r => r.id === request.id);
+        if (!current || !latest || !this.needsHostResponse(latest) || this.movingRequest(current,latest)) return;
+      } else {
+        const current = this.store.data().appointments.find(r => r.calendarId === request.calendarId && r.id === request.id);
+        if (!request.proposal || current?.proposal?.id !== request.proposal.id) return;
+      }
+      const path = '/' + request.calendarId + '/requests/' + request.id;
+      try {
+        if (calendar) await this.store.request(path+'/decision','PUT',{status});
+        else await this.store.request(path+'/change-response','PUT',{status,proposalId:request.proposal!.id});
+      } finally { await this.store.refresh(); }
     });
+    if (this.message() && choice.session === this.store.api.token()) choice.onError?.(this.message());
   }
   changeStart(s:InputSlot,date:string,time:string) {
     const before=Date.parse(s.date+'T'+s.start+'Z');
     const after=Date.parse(date+'T'+time+'Z');
     const end=Date.parse(s.endDate+'T'+s.end+'Z');
     const moved=new Date(end+after-before).toISOString();
+    const hourChanged=s.start.slice(0,2)!==time.slice(0,2);
     s.date=date;s.start=time;s.endDate=moved.slice(0,10);s.end=moved.slice(11,16);
+    if (s.hourStep===-1) s.firstMinute=clockMinutes(time);
+    else if (hourChanged) this.setHourStep(s,s.hourStep);
     if(s.rule?.endDate && this.until(s)<date) this.setUntil(s,date);
+  }
+  readonly hourSteps = computed(() => {
+    const format = new Intl.NumberFormat(this.locale.locale(), {style:'unit',unit:'hour',unitDisplay:'long'});
+    return [...Array.from({length:24}, (_, step) => ({value:String(step),label:step ? format.format(step) : 'Never'})), {value:'-1',label:'Custom schedule'}];
+  });
+  lastHourOptions(s:InputSlot) {
+    if (!s.hourStep) return [];
+    const format = new Intl.DateTimeFormat(this.locale.formattingLocale(),
+      {hour:'numeric',minute:'2-digit',hourCycle:this.locale.shortTime().resolvedOptions().hourCycle,timeZone:'UTC'});
+    const options = [];
+    for (let hour=s.firstHour+s.hourStep; hour<24; hour+=s.hourStep) {
+      if (hour>=Number(s.start.slice(0,2))) options.push({value:String(hour),
+        label:format.format(Date.UTC(2000,0,1,hour,Number(s.start.slice(3,5))))});
+    }
+    return options;
+  }
+  setHourStep(s:InputSlot, step:number) {
+    if (step===-1 && s.hourStep!==-1) {
+      const duration=this.duration(s), first=clockMinutes(s.start);
+      s.gap=s.hourStep ? Math.max(0,s.hourStep*60-duration) : 0;
+      s.firstMinute=s.hourStep ? s.firstHour*60+first%60 : first;
+      s.closeMinute=Math.min(1440,s.hourStep ? s.lastHour*60+first%60+duration : Math.max(1080,first+duration));
+    }
+    s.hourStep=step;
+    if (step===-1) return;
+    s.firstHour=Number(s.start.slice(0,2));
+    if (!step) return;
+    const last = Math.min(23,Math.max(s.lastHour,s.firstHour+step));
+    s.lastHour = s.firstHour + Math.floor((last-s.firstHour)/step)*step;
+  }
+  readonly clockText = clockText;
+  readonly clockMinutes = clockMinutes;
+  duration(s:InputSlot) {
+    const bounds=this.intervalFor(s);
+    return bounds ? (+bounds.end-+bounds.start)/60000 : 0;
+  }
+  setDuration(s:InputSlot,minutes:number) {
+    if (!Number.isInteger(minutes) || minutes<1 || minutes>1440) return;
+    const end=new Date(Date.parse(s.date+'T'+s.start+'Z')+minutes*60000).toISOString();
+    s.endDate=end.slice(0,10); s.end=end.slice(11,16);
+  }
+  addBreak(s:InputSlot) {
+    this.setHourStep(s,-1);
+    const start=Math.min(23*60,s.breaks.at(-1)?.end ?? 720);
+    s.breaks.push({start,end:Math.min(1440,start+60)});
+  }
+  setAllDay(s:InputSlot,checked:boolean) {
+    this.dateFocus.set(null);
+    if (!checked && s.start===s.end) { s.start='09:00'; s.end='10:00'; }
+    if (checked && !s.allDay && s.end==='00:00' && s.endDate>s.date)
+      s.endDate=new Date(Date.parse(s.endDate+'T00:00Z')-86400000).toISOString().slice(0,10);
+    s.allDay=checked;
+  }
+  private pattern(s:InputSlot):BookingDailyPattern {
+    const duration=this.duration(s);
+    return {first:s.firstMinute,last:s.closeMinute-duration,step:duration+s.gap,breaks:s.breaks};
+  }
+  validDailyHours(s:InputSlot) {
+    if (s.allDay) return !!this.intervalFor(s);
+    if (s.hourStep===-1) return Number.isInteger(s.gap) && s.gap>=0 && bookingMinutes(this.pattern(s),this.duration(s)).length>0;
+    if (!s.hourStep) return true;
+    const interval = this.intervalFor(s);
+    return s.lastHour>=s.firstHour+s.hourStep && s.lastHour<24 && !!interval &&
+      +interval.end-+interval.start<=s.hourStep*3600000;
   }
   chooseRepeat(s:InputSlot,value:string) {
     this.selectRepeat(s,value);
@@ -280,13 +447,12 @@ export class BookingsComponent implements OnInit, OnDestroy {
   }
   onCancel(event:Event) {
     if(this.busy()){event.preventDefault();return;}
-    if(this.choosingType || this.customRepeat || this.locationDraft || (this.fromDirectory && this.panel()==='offer')){event.preventDefault();this.back();}
+    if(this.choosingType || this.customRepeat || this.locationDraft){event.preventDefault();this.back();}
   }
   back() {
     if (this.locationDraft) { finishLocation(this.locationDraft);this.locationDraft=undefined; }
     else if (this.customRepeat) this.customRepeat=false;
     else if (this.choosingType) this.choosingType=false;
-    else if (this.fromDirectory && this.panel()==='offer') this.show('lookup');
     else this.dialog().nativeElement.close();
   }
   get sheetTitle() {
@@ -297,11 +463,12 @@ export class BookingsComponent implements OnInit, OnDestroy {
       case 'edit':return 'Booking calendar';
       case 'slot':if(this.reservation) return this.reservation.proposal ? 'Proposed change' : 'Booking'; return this.slot?.original ? 'Available time' : 'Add time slot';
       case 'share':return 'Share';
+      case 'appointment':return 'My booking';
       case 'lookup':
       case 'offer':return 'Open booking calendar';
     }
   }
-  locked(id:string) {if (this.occurrence) return !!this.reservation?.proposal || this.reservation?.status==='past'; return !!this.editing?.requests.some(r=>(r.slotId===id || r.slotId.startsWith(id+'@')) && (r.status==='pending'||r.status==='accepted'));}
+  locked(id:string) {if (this.occurrence) return !!this.reservation?.proposal || this.reservation?.status==='past'; if (this.slot?.original?.hoursOfDay || this.slot?.original?.dailyPattern) return false; return !!this.editing?.requests.some(r=>(r.slotId===id || r.slotId.startsWith(id+'@')) && (r.status==='pending'||r.status==='accepted'));}
   async perform(action:()=>Promise<void>) {
     if(this.busy()) return;
     const sequence=++this.operation;
@@ -316,9 +483,8 @@ export class BookingsComponent implements OnInit, OnDestroy {
       const id=this.draftID;
       const values={title:this.title,listed:this.listed,appointmentType:this.type,customType:this.type==='Other'?this.customType.trim():'',
         slots:old?.slots ?? []};
-      const receipt=await this.store.request<{revision:number}>('/'+id,'PUT',{...values,revision:old?.revision ?? 0});
-      if (old) this.dialog().nativeElement.close();
-      else this.openSlot({id,...values,revision:receipt.revision,requests:[]});
+      await this.store.request('/'+id,'PUT',{...values,revision:old?.revision ?? 0});
+      this.dialog().nativeElement.close();
       await this.store.refresh();
     });
   }
@@ -330,6 +496,13 @@ export class BookingsComponent implements OnInit, OnDestroy {
       const wall = new Date(date + 'T' + time + 'Z');
       return Number.isFinite(wall.getTime()) ? instant(wall, slot.zone) : null;
     };
+    if (slot.allDay) {
+      const exclusive=new Date(slot.endDate+'T00:00Z');
+      if (!Number.isFinite(+exclusive)) return null;
+      exclusive.setUTCDate(exclusive.getUTCDate()+1);
+      const start=calendarDayStart(new Date(slot.date+'T00:00Z'),slot.zone), end=calendarDayStart(exclusive,slot.zone);
+      return start && end && end>start ? {start,end} : null;
+    }
     const start = resolve(slot.date, slot.start, slot.original?.start);
     const end = resolve(slot.endDate, slot.end, slot.original?.end);
     return start && end && end > start ? {start, end} : null;
@@ -339,13 +512,14 @@ export class BookingsComponent implements OnInit, OnDestroy {
     if (!calendar || !s || this.locked(s.id)) return;
     if (remove && (!s.original || !this.confirmingRemoval)) return;
     return this.perform(async()=>{
+      const venue = {location:s.location.trim(), structuredLocation:s.structuredLocation ?? null, videoCallURL:s.videoCallURL?.trim() || null};
       if (this.occurrence) {
         const bounds=this.intervalFor(s);
         if (!bounds && !remove) throw Error(this.locale.text('End time must be after start time.'));
         await this.store.request('/'+calendar.id+'/occurrences/'+encodeURIComponent(s.id),'PUT',remove
           ? {revision:calendar.revision,remove:true}
           : {revision:calendar.revision,start:bounds!.start.toISOString(),end:bounds!.end.toISOString(),
-             title:s.title.trim(),location:s.location.trim(),structuredLocation:s.structuredLocation ?? null});
+             allDay:s.allDay,timeZone:s.zone,title:s.title.trim(),...venue});
         this.dialog().nativeElement.close();
         await this.store.refresh();
         return;
@@ -355,8 +529,13 @@ export class BookingsComponent implements OnInit, OnDestroy {
         const bounds = this.intervalFor(s);
         if (!bounds) throw Error(this.locale.text('End time must be after start time.'));
         const {start, end} = bounds;
-        slots.push({id:s.id,title:s.title.trim(),location:s.location.trim(),structuredLocation:s.structuredLocation ?? null,
-          start:start.toISOString(),end:end.toISOString(),rule:s.rule ? {...s.rule,frequency:frequencies.indexOf(s.rule.frequency)} : null,timeZone:s.zone});
+        if (!this.validDailyHours(s)) throw Error(this.locale.text('Choose an interval that fits at least two non-overlapping slots in the day.'));
+        const dailyPattern=!s.allDay && s.hourStep===-1 ? this.pattern(s) : null;
+        const hoursOfDay = !s.allDay && s.hourStep>0 ? Array.from({length:1+(s.lastHour-s.firstHour)/s.hourStep}, (_,i)=>s.firstHour+i*s.hourStep) : null;
+        const rule = s.rule ? {...s.rule,frequency:frequencies.indexOf(s.rule.frequency)} : hoursOfDay || dailyPattern ?
+          {frequency:0,interval:1,endDate:instant(new Date(s.date+'T23:59:59.999Z'),s.zone)!.toISOString()} : null;
+        slots.push({id:s.id,title:s.title.trim(),...venue, hoursOfDay, dailyPattern, allDay:s.allDay, rule,
+          start:start.toISOString(),end:end.toISOString(),timeZone:s.zone});
       }
       await this.store.request('/'+calendar.id,'PUT',{title:calendar.title,slots,revision:calendar.revision});
       this.dialog().nativeElement.close();
@@ -405,22 +584,33 @@ export class BookingsComponent implements OnInit, OnDestroy {
     });
   }
   async openOffer(id:string) {
-    this.offer.set(await this.store.request<Availability>('/'+id));
+    this.offer.set(await this.store.request<Availability>('/'+id+'?includeBusy=true'));
+    this.offerMode.set('list');
     this.show('offer');
   }
   preview(id:string) { return this.perform(() => this.openOffer(id)); }
   book(slot:BookingSlot) {
     const calendar = this.offer();
-    if (!calendar || calendar.isOwner) return;
+    if (!calendar || calendar.isOwner || (isBusySlot(slot) && !slot.myBookingId)) return;
     return this.perform(async()=>{
-      await this.store.request('/'+calendar.id+'/requests/'+crypto.randomUUID(),'PUT',{slotId:slot.id});
-      this.dialog().nativeElement.close();await this.store.refresh();
+      try {
+        const path='/'+calendar.id+'/requests/';
+        if (slot.myBookingId) {
+          await this.store.request(path+slot.myBookingId+'/cancel','PUT');
+          this.message.set(this.locale.text('Cancelled')+' · '+this.range(slot));
+        } else {
+          await this.store.request(path+crypto.randomUUID(),'PUT',{slotId:slot.id});
+          this.message.set(this.locale.text('Pending')+' · '+this.range(slot));
+        }
+      } finally {
+        this.offerRevision.update(n=>n+1);
+        void this.store.refresh();
+        if (this.dialog().nativeElement.open) {
+          const page=await this.store.request<Availability>('/'+calendar.id+'?includeBusy=true');
+          if (this.offer()?.id===calendar.id) this.offer.set(page);
+        }
+      }
     });
   }
-  decide(c:BookingCalendar,r:Appointment,status:'accepted'|'declined') {
-    return this.perform(async()=>{
-      await this.store.request('/'+c.id+'/requests/'+r.id+'/decision','PUT',{status});
-      await this.store.refresh();
-    });
-  }
+
 }

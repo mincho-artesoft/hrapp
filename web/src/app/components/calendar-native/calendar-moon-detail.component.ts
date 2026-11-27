@@ -1,3 +1,4 @@
+import { calendarDateFormatter } from '../../core/calendar-format-preferences';
 import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { CalendarLocalization, CalendarNativeTextPipe } from '../../core/calendar-localization';
 import { instant, wallDate } from '../../core/calendar-recurrence';
@@ -44,10 +45,10 @@ export class CalendarMoonDetailComponent {
     const locale = this.local.formattingLocale();
     const date = (options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(locale, {timeZone: 'UTC', ...options});
     return {
-      full: date({dateStyle: 'full'}), month: date({month: 'long', year: 'numeric'}),
+      full: calendarDateFormatter(locale, this.local.datePreference(), {weekday:'long', timeZone:'UTC'}), month: date({month: 'long', year: 'numeric'}),
       short: date({weekday: 'short', day: 'numeric'}), weekday: date({weekday: 'narrow'}),
       day: date({day: 'numeric'}),
-      event: date({timeZone: this.zone(), weekday: 'long', month: 'short', day: 'numeric'}),
+      event: calendarDateFormatter(locale, this.local.datePreference(), {weekday:'long', timeZone:this.zone(), includeYear:false}),
       percent: new Intl.NumberFormat(locale, {style: 'percent', maximumFractionDigits: 0}),
     };
   });
@@ -68,11 +69,11 @@ export class CalendarMoonDetailComponent {
     const day = this.selected(), midnight = this.midnight(day);
     const row = this.forecasts().get(day), formats = this.formats();
     return {
-      phase: this.phase(day), date: formats.full.format(day),
+      phase: this.phase(day), date: formats.full(day),
       illumination: formats.percent.format(lunarIllumination(midnight)),
       rise: this.clock()(row?.moonrise), set: this.clock()(row?.moonset),
       events: ([0, 0.5] as const).map(fraction => ({
-        phase: moonPhaseInfo(fraction)!, date: formats.event.format(nextLunarEvent(midnight, fraction)),
+        phase: moonPhaseInfo(fraction)!, date: formats.event(nextLunarEvent(midnight, fraction)),
       })),
     };
   });
@@ -86,7 +87,7 @@ export class CalendarMoonDetailComponent {
     return Array.from({length: count}, (_, i) => {
       const day = month + (i - leading) * dayMs;
       return {
-        day, number: this.formats().day.format(day), date: this.formats().full.format(day),
+        day, number: this.formats().day.format(day), date: this.formats().full(day),
         phase: day >= month && day < next ? this.phase(day) : null,
         observed: this.forecasts().get(day)?.moonPhase != null,
       };

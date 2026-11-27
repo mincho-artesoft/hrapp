@@ -3,7 +3,7 @@ import languages from "../components/calendar-native/native-languages.json";
 
 import { DEFAULT_LOCALE, LOCALES, Locale } from "./locales";
 
-import { calendarDateFormatter, calendarHourCycle } from "./calendar-format-preferences";
+import { calendarDateFormatter, calendarFormattingLocale, calendarHourCycle } from "./calendar-format-preferences";
 
 const supported = new Set(languages.map(language => language.value));
 
@@ -23,14 +23,15 @@ export function siteForCalendarLanguage(code: string): Locale {
 }
 
 export function calendarLanguageDirection(code: string): "rtl" | "ltr" {
-  return ["ar", "he", "ur"].includes(code) ? "rtl" : "ltr";
+  return ["ar", "he", "ur"].includes(new Intl.Locale(code).language) ? "rtl" : "ltr";
 }
 
 @Injectable({ providedIn: "root" })
 export class CalendarLocalization {
   readonly languages = languages;
   readonly locale = signal("en");
-  readonly formattingLocale = signal("en");
+  readonly formattingLocale = signal(calendarFormattingLocale("en"));
+  readonly integer = computed(() => new Intl.NumberFormat(this.formattingLocale(), {useGrouping: false}));
   readonly direction = computed(() => calendarLanguageDirection(this.locale()));
   readonly preferences = signal<Record<string, string>>({});
   readonly datePreference = computed(() => this.preferences()["date"] ?? "system");
@@ -40,6 +41,27 @@ export class CalendarLocalization {
   }));
   private readonly strings = signal<Record<string, string>>({});
   private request = 0;
+
+  readPreferences() {
+    if (typeof localStorage === 'undefined') return;
+    try { this.preferences.set(JSON.parse(localStorage.getItem("cc.mac.preferences") || "{}")); } catch {}
+  }
+
+  eventRange(startValue: string, endValue: string, language: string, timeZone: string): string {
+    const start = new Date(startValue), end = new Date(endValue);
+    if (!Number.isFinite(+start) || !Number.isFinite(+end)) return startValue;
+    try {
+      const locale = calendarFormattingLocale(language);
+      const date = calendarDateFormatter(locale, this.datePreference(), {timeZone, weekday: "long"});
+      const time = new Intl.DateTimeFormat(locale, {
+        timeZone, hour: "numeric", minute: "2-digit", hourCycle: calendarHourCycle(this.preferences()["time"]),
+      });
+      const firstDay = date(start), lastDay = date(end);
+      return firstDay + " · " + time.format(start) + " – " + (firstDay === lastDay ? "" : lastDay + " · ") + time.format(end);
+    } catch {
+      return startValue;
+    }
+  }
 
   async usePageLanguage(site: Locale, explicit: string | null) {
     const browser = typeof window !== "undefined";
@@ -69,7 +91,7 @@ export class CalendarLocalization {
       this.strings.set(strings);
       this.locale.set(code);
     }
-    this.formattingLocale.set(tag);
+    this.formattingLocale.set(calendarFormattingLocale(tag));
     if (selected && browser) {
       try { localStorage.setItem("cc.calendar.language", code); } catch {}
     }
@@ -98,6 +120,16 @@ export class CalendarNativeDatePipe implements PipeTransform {
     if (!Number.isFinite(date.getTime())) return "";
     if (format === "shortDate") return this.localization.shortDate()(date);
     if (format === "shortTime") return this.localization.shortTime().format(date);
+    const preference = this.localization.datePreference();
+    if (preference !== "system" && ["fullDate","mediumDate","EEEE, MMMM d, y","medium"].includes(format)) {
+      const day = calendarDateFormatter(this.localization.formattingLocale(), preference,
+        {weekday: format === "fullDate" || format === "EEEE, MMMM d, y" ? "long" : undefined})(date);
+      return format === "medium" ? day + " · " + this.localization.shortTime().format(date) : day;
+    }
+    if (format === "medium") {
+      const day = new Intl.DateTimeFormat(this.localization.formattingLocale(), {dateStyle:"medium"}).format(date);
+      return day + " · " + this.localization.shortTime().format(date);
+    }
     const formats: Record<string, Intl.DateTimeFormatOptions> = {
       "MMMM yyyy": { month: "long", year: "numeric" },
       MMMM: { month: "long" },
@@ -106,7 +138,6 @@ export class CalendarNativeDatePipe implements PipeTransform {
       mediumDate:{dateStyle:'medium'},
       "MMM d": { month: "short", day: "numeric" },
       fullDate: { dateStyle: "full" },
-      medium: { dateStyle: "medium", timeStyle: "short" },
       "EEEE, MMMM d, y": { dateStyle: "full" },
     };
     return new Intl.DateTimeFormat(

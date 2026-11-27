@@ -76,7 +76,7 @@ export class CalendarWeatherChartComponent {
     const start = Date.parse(a.hour.instant ?? a.hour.iso + 'Z');
     const instant = start + (bars ? 0 : ((x - a.x) / 100) * c.duration * 3_600_000);
     const time = new Intl.DateTimeFormat(this.local.formattingLocale(), {
-      hour: 'numeric',
+      hour: 'numeric', hourCycle: this.local.shortTime().resolvedOptions().hourCycle,
       minute: '2-digit',
       timeZone: a.hour.instant ? this.snapshot().place.timezone : 'UTC',
     }).format(instant);

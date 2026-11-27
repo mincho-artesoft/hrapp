@@ -21,6 +21,7 @@
   [attr.dir]="localization.direction()"
   [class.ios-layout]="!isDesktop()"
   [class.booking-timeline]="!!bookingCalendar()"
+  [class.has-bottom-actions]="showsBottomActions()"
   [class.phone-layout]="isPhone()"
   [class.no-sidebar]="!showsSidebar() || bookingsRoute"
   [class.studio--light]="surfaceTheme() === 'light'"
@@ -56,7 +57,7 @@
       class="cal-shell shell"
       [class.weather-shell]="viewMode() === 'weather'"
     >
-      <aside class="cal-side" aria-label="Calendar sidebar">
+      <aside class="cal-side" [attr.aria-label]="'Calendar sidebar' | nativeText">
         <!-- Up Next Card (CalendarSidebarView parity) -->
         <div class="side-card up-next-card">
           <div class="side-card__hdr">{{ "Up next" | nativeText }}</div>
@@ -91,17 +92,17 @@
             <button
               type="button"
               (click)="stepMiniMonth(-1)"
-              aria-label="Previous month"
+              [attr.aria-label]="'Previous month' | nativeText"
             >
-              <cc-symbol name="chevron.left" />
+              <cc-symbol name="chevron.backward" />
             </button>
             <strong>{{ sidebarMonth() | nativeDate: "MMMM yyyy" }}</strong>
             <button
               type="button"
               (click)="stepMiniMonth(1)"
-              aria-label="Next month"
+              [attr.aria-label]="'Next month' | nativeText"
             >
-              <cc-symbol name="chevron.right" />
+              <cc-symbol name="chevron.forward" />
             </button>
           </div>
           <div class="mini-dow">
@@ -119,7 +120,7 @@
                 [class.is-selected]="cell.isSelected"
                 (click)="selectMiniDay(cell.date)"
               >
-                <span>{{ cell.dayNum }}</span>
+                <span>{{ calendarNumbers().format(cell.dayNum) }}</span>
                 <i class="mini-dots" aria-hidden="true">
                   @for (c of cell.dots; track c) {
                     <em [style.background]="c"></em>
@@ -169,7 +170,7 @@
               <button class="booking-change-notice" type="button" (click)="openBookingChanges()">
                 <cc-symbol name="bell.fill" [pointSize]="18" />
                 <span class="booking-change-label"><strong>{{ 'Proposed change' | nativeText }}</strong><span>{{ first.calendarTitle }}</span></span>
-                @if (bookingChanges().length > 1) { <span>{{ bookingChanges().length }}</span> }
+                @if (bookingChanges().length > 1) { <span>{{ calendarNumbers().format(bookingChanges().length) }}</span> }
                 <cc-symbol name="chevron.forward" [pointSize]="14" />
               </button>
             }
@@ -198,44 +199,40 @@
                   </button>
                 }
                 @if (viewMode() === "week" || bookingCalendar()) {
-                  <div class="range-anchor">
-                    <button
-                      type="button"
-                      class="month-link range-pill" aria-label="Choose date range" [attr.aria-expanded]="rangeOpen()"
-                      (click)="rangeOpen.set(!rangeOpen()); $event.stopPropagation()"
-                    >
-                      {{ formatShortDate(visibleDays()[0].toISOString()) }} - {{ formatShortDate(visibleDays()[visibleDays().length-1].toISOString()) }}
-                    </button>
-                    @if (rangeOpen()) {
-                      <div
-                        class="range-popover"
-                        (click)="$event.stopPropagation()"
-                      >
-                        <cc-date-grid [range]="true" [start]="dayKey(visibleDays()[0])" [end]="dayKey(visibleDays()[visibleDays().length-1])"
-                          [firstWeekday]="firstWeekday()" (chooseRange)="applyRange($event)" />
-                      </div>
-                    }
-                  </div>
+                  <cc-range-picker [start]="dayKey(visibleDays()[0])" [end]="dayKey(visibleDays()[visibleDays().length-1])"
+                    [firstWeekday]="firstWeekday()" [(open)]="rangeOpen" (chooseRange)="applyRange($event)" />
                 }
               }
             </div>
             @if (bookingCalendar(); as schedule) {
               <div class="booking-calendar-context" [class.sidebar-space]="showsSidebar()">
-                <button class="toolbar-icon" type="button" [attr.aria-label]="'Back' | nativeText" (click)="closeBookingTimeline()"><cc-symbol name="chevron.backward" /></button>
+                <button class="toolbar-icon" type="button" [attr.aria-label]="'Back' | nativeText" (click)="closeBookingTimeline()"><cc-symbol name="chevron.backward" [fitSize]="isDesktop() ? 18 : undefined" [pointSize]="22" /></button>
                 <h2 class="booking-calendar-title">{{ schedule.title }}</h2>
               </div>
+              @if (!showsBottomActions()) {
+                <button type="button" class="toolbar-icon" [attr.aria-label]="'Add time slot' | nativeText"
+                  [title]="'Add time slot' | nativeText" (click)="openNewEventDefault()">
+                  <cc-symbol name="plus" [fitSize]="isDesktop() ? 18 : undefined" [pointSize]="22" />
+                </button>
+              }
+              <button type="button" class="toolbar-icon" [attr.aria-label]="'Available times' | nativeText"
+                [title]="'Available times' | nativeText" (click)="bookingPanel()?.openTimes()">
+                <cc-symbol name="list.bullet" [fitSize]="isDesktop() ? 18 : undefined" [pointSize]="22" />
+              </button>
             }
             @if (!bookingCalendar()) {
             <div class="cal-toolbar__right">
               @if (viewMode() !== "menu") {
-                <button
-                  type="button"
-                  class="toolbar-icon desktop-add"
-                  [attr.aria-label]="bookingsRoute ? ((bookingMode()==='availability'?'Create booking calendar':'Open booking calendar')|nativeText) : 'Add event'" [disabled]="loadingWorkspace()"
-                  (click)="openNewEventDefault()"
-                >
-                  <cc-symbol [pointSize]="21" name="plus" />
-                </button>
+                @if (!bookingsRoute) {
+                  <button
+                    type="button"
+                    class="toolbar-icon desktop-add"
+                    [attr.aria-label]="'Add event' | nativeText" [disabled]="loadingWorkspace()"
+                    (click)="openNewEventDefault()"
+                  >
+                    <cc-symbol [pointSize]="21" name="plus" />
+                  </button>
+                }
                 <button
                   type="button"
                   class="toolbar-icon"
@@ -249,7 +246,7 @@
                 <button
                   type="button"
                   class="toolbar-icon"
-                  #viewPickerButton aria-haspopup="menu" aria-label="Calendar views"
+                  #viewPickerButton aria-haspopup="menu" [attr.aria-label]="'Calendar views' | nativeText"
                   [attr.aria-expanded]="modePicker()"
                   (click)="
                     modePicker.set(!modePicker()); $event.stopPropagation()
@@ -287,7 +284,7 @@
                 type="button"
                 class="toolbar-icon desktop-menu"
                 [class.active]="viewMode() === 'menu'"
-                aria-label="Menu"
+                [attr.aria-label]="'Menu' | nativeText"
                 (click)="toggleMenu()"
               >
                 <cc-symbol [pointSize]="20" name="gearshape" />
@@ -309,6 +306,7 @@
             (connect)="
               $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
             "
+            [providerSyncBusy]="!!externalSyncAction()"
             (disconnect)="disconnectExternal($event)"
             (settingsChanged)="readPreferences()"
             [sharedListEvent]="sharedListEvent"
@@ -327,18 +325,18 @@
           <div class="period-heading" [class.year-heading]="viewMode() === 'year'">
             <button
               type="button"
-              aria-label="Previous period"
+              [attr.aria-label]="'Previous period' | nativeText"
               (click)="stepPeriod(-1)"
             >
-              <cc-symbol name="chevron.left" />
+              <cc-symbol name="chevron.backward" />
             </button>
             <h1>{{ headerRangeLabel() }}</h1>
             <button
               type="button"
-              aria-label="Next period"
+              [attr.aria-label]="'Next period' | nativeText"
               (click)="stepPeriod(1)"
             >
-              <cc-symbol name="chevron.right" />
+              <cc-symbol name="chevron.forward" />
             </button>
           </div>
         }
@@ -384,7 +382,7 @@
                         [style.background]="row.event.color || '#0A84FF'"
                       ></span>
                       <span class="native-list-row__main">
-                        <strong>@if (row.event.readOnly) {<cc-symbol name="lock.fill" />}{{
+                        <strong>@if (row.event.readOnly) {<cc-symbol [pointSize]="12" name="lock.fill" />}{{
                           row.event.title || ("No Title" | nativeText)
                         }}</strong>
                         @if (row.event.location) {
@@ -416,12 +414,12 @@
           }
         }
 
-        @if (syncingExternal() || syncFeedback()) {
+        @if (externalSyncAction() === 'connect' || syncFeedback()) {
           <div class="sync-feedback" role="status">
-            {{ syncingExternal() ? ("Connecting…" | nativeText) : syncFeedback() }}
+            {{ externalSyncAction() === 'connect' ? ("Connecting…" | nativeText) : syncFeedback() }}
             <button
               type="button"
-              aria-label="Close status"
+              [attr.aria-label]="'Close status' | nativeText"
               (click)="syncFeedback.set(null)"
             >
               <cc-symbol name="xmark" />
@@ -430,7 +428,7 @@
         }
 
         @if (bookingsRoute) {
-          <cc-bookings [class.in-timeline]="!!bookingCalendar()" (timelineRequested)="openBookingTimeline($event)" [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
+          <cc-bookings [class.in-timeline]="!!bookingCalendar()" [timelineCalendar]="bookingCalendar() ?? null" (timelineRequested)="openBookingTimeline($event)" [firstWeekday]="firstWeekday()" [desktop]="isDesktop()" [mode]="bookingMode()" [query]="searchOpen() ? searchText() : ''" />
         }
         @if (!searchOpen() || !searchText()) {
           @if (viewMode() === "weather") {
@@ -523,16 +521,16 @@
                     @for (adev of timelineColumns()[di].allDay; track adev.id) {
                       <button type="button" class="allday-pill" [class.ghost-source]="drag()?.active && drag()?.event?.id === adev.id"
                         [class.is-cancelled]="adev.status === 'cancelled'" [ngStyle]="cardStyle(adev.color, 0, true)"
-                        (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="$event.detail === 0 && selectEvent(adev)"
+                        (pointerdown)="startTimelineGesture($event, 'move', di, adev, true)" (click)="bookingCalendar() ? timedEventClick(adev,$event) : $event.detail === 0 && selectEvent(adev)"
                         (dblclick)="activateEvent(adev)" (contextmenu)="contextEvent(adev, $event)">
-                        <cc-symbol [name]="eventSymbol(adev) || 'calendar.circle.fill'" />
-                        @if (adev.readOnly) { <cc-symbol name="lock.fill" /> }
+                        <cc-symbol [pointSize]="12" [name]="eventSymbol(adev) || 'calendar.circle.fill'" />
+                        @if (adev.readOnly) { <cc-symbol [pointSize]="12" name="lock.fill" /> }
                         <span class="allday-pill__txt">{{ adev.title }}</span>
                       </button>
                     }
                     @if (drag(); as g) {
                       @if (g.preview.allDay && previewCoversDay(g, d, di)) {
-                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">@if (g.event) {<cc-symbol [name]="eventSymbol(g.event) || 'calendar.circle.fill'" />}{{ g.event?.title || ('New event' | nativeText) }}</span>
+                        <span class="allday-pill all-day-ghost" [style.transform]="'translateX(' + g.visualX + 'px)'" [ngStyle]="previewColors(g)">@if (g.event) {<cc-symbol [pointSize]="12" [name]="eventSymbol(g.event) || 'calendar.circle.fill'" />}{{ g.event?.title || ('New event' | nativeText) }}</span>
                       }
                     }
                   </div>
@@ -602,9 +600,9 @@
                             <div class="ev-block__inner">
                               <strong class="ev-block__title">{{ g.event?.title || ('New event' | nativeText) }}</strong>
                               @if (g.event; as event) {
-                                @if (timelineVideoLabel(event); as video) { <span class="ev-block__loc"><cc-symbol name="video" />{{ video }}</span> }
-                                <span class="ev-block__time"><cc-symbol name="clock" />{{ formatEventClock(g.preview.start) }} – {{ formatEventClock(g.preview.end) }}</span>
-                                @if (event.location) { <span class="ev-block__loc"><cc-symbol name="location" />{{ event.location }}</span> }
+                                @if (timelineVideoLabel(event); as video) { <span class="ev-block__loc"><cc-symbol [pointSize]="12" name="video" />{{ video }}</span> }
+                                <span class="ev-block__time"><cc-symbol [pointSize]="12" name="clock" />{{ formatEventClock(g.preview.start) }} – {{ formatEventClock(g.preview.end) }}</span>
+                                @if (event.location) { <span class="ev-block__loc"><cc-symbol [pointSize]="12" name="location" />{{ event.location }}</span> }
                               }
                             </div>
                             @if (g.event) {
@@ -630,8 +628,8 @@
                           (click)="timedEventClick(blk.data, $event)"
                           (keydown.enter)="timedEventClick(blk.data, $event)"
                           (keydown.space)="timedEventClick(blk.data, $event)"
-                          [attr.aria-haspopup]="bookingCalendar() || isDesktop() ? null : 'menu'"
-                          [attr.aria-expanded]="bookingCalendar() || isDesktop() ? null : eventContext()?.event?.id === blk.id"
+                          [attr.aria-haspopup]="isDesktop() && !bookingCalendar() ? null : 'menu'"
+                          [attr.aria-expanded]="isDesktop() && !bookingCalendar() ? null : eventContext()?.event?.id === blk.id"
                           role="button"
                           tabindex="0"
                           [attr.aria-label]="blk.data.title"
@@ -648,20 +646,20 @@
                             "
                           >
                             <div class="ev-block__toprow">
-                              <strong class="ev-block__title">@if (blk.data.readOnly) {<cc-symbol name="lock.fill" />}{{ blk.data.title }}</strong>
+                              <strong class="ev-block__title">@if (blk.data.readOnly) {<cc-symbol [pointSize]="12" name="lock.fill" />}{{ blk.data.title }}</strong>
                             </div>
                             @if (timelineVideoLabel(blk.data); as videoLabel) {
-                              <span class="ev-block__loc"><cc-symbol name="video" />{{ videoLabel }}</span>
+                              <span class="ev-block__loc"><cc-symbol [pointSize]="12" name="video" />{{ videoLabel }}</span>
                             }
                             <span class="ev-block__time">
-                              <cc-symbol name="clock" />
+                              <cc-symbol [pointSize]="12" name="clock" />
                               {{ timelineTimeSpan(blk.data) }}
                             </span>
                             @if (
                               blk.data.location
                             ) {
                               <span class="ev-block__loc">
-                                <cc-symbol name="location" />{{ blk.data.location }}
+                                <cc-symbol [pointSize]="12" name="location" />{{ blk.data.location }}
                               </span>
                             }
                           </div>
@@ -669,14 +667,14 @@
                           @if (!blk.data.readOnly && isSelected) {
                             <span
                               class="ev-handle ev-handle--top" [hidden]="!startsOnDay(blk.data, d)"
-                              aria-label="Drag to adjust start time"
+                              [attr.aria-label]="'Drag to adjust start time' | nativeText"
                               (pointerdown)="
                                 startTimelineGesture($event, 'resize-start', di, blk.data)
                               "
                             ></span>
                             <span
                               class="ev-handle ev-handle--bottom" [hidden]="!endsOnDay(blk.data, d)"
-                              aria-label="Drag to adjust end time"
+                              [attr.aria-label]="'Drag to adjust end time' | nativeText"
                               (pointerdown)="
                                 startTimelineGesture($event, 'resize-end', di, blk.data)
                               "
@@ -742,7 +740,7 @@
                           (contextmenu)="contextEvent(ev, $event)"
                           (click)="monthEventClick($event,ev)"
                         >
-                          @if (ev.readOnly) { <cc-symbol name="lock.fill" /> }
+                          @if (ev.readOnly) { <cc-symbol [pointSize]="7" name="lock.fill" /> }
                           <span class="month-pill__title" [ccMonthTitle]="ev.title" [locked]="!!ev.readOnly">{{ ev.title }}</span>
                         </div>
                       }
@@ -826,12 +824,12 @@
       </div>
     </div>
 
-    @if (!isDesktop() && !bookingCalendar()) {
+    @if (showsBottomActions()) {
       @if (drawerOpen()) {
         <button
           type="button"
           class="drawer-scrim"
-          aria-label="Close menu"
+          [attr.aria-label]="'Close menu' | nativeText"
           (click)="drawerOpen.set(false)"
         ></button>
       }
@@ -845,7 +843,7 @@
         <button
           type="button"
           class="drawer-handle"
-          aria-label="Menu"
+          [attr.aria-label]="'Menu' | nativeText"
           [attr.aria-expanded]="drawerOpen()"
           (pointerdown)="drawerPointerDown($event)"
           (pointermove)="drawerPointerMove($event)"
@@ -867,6 +865,7 @@
             (connect)="
               $event === 'google' ? syncGoogleBusy() : syncMicrosoftBusy()
             "
+            [providerSyncBusy]="!!externalSyncAction()"
             (disconnect)="disconnectExternal($event)"
             (settingsChanged)="readPreferences()"
             [sharedListEvent]="sharedListEvent"
@@ -882,20 +881,20 @@
       <nav
         class="ios-bottom-bar"
         [class.weather-dimmed]="viewMode() === 'weather' && !drawerOpen()"
-        aria-label="Calendar actions"
+        [attr.aria-label]="'Calendar actions' | nativeText"
       >
         <button type="button" (click)="bottomToday()">
-          <cc-symbol name="calendar.badge.checkmark" /><span>{{
+          <cc-symbol name="calendar.badge.checkmark" [pointSize]="18" /><span>{{
             "Today" | nativeText
           }}</span>
         </button>
         <button type="button" (click)="openNewEventDefault()">
-          <cc-symbol name="calendar.badge.plus" /><span>{{
+          <cc-symbol name="calendar.badge.plus" [pointSize]="18" /><span>{{
             "Add" | nativeText
           }}</span>
         </button>
         <button type="button" (click)="setView('weather')">
-          <cc-symbol name="cloud.sun.fill" /><span>{{
+          <cc-symbol name="cloud.sun.fill" [pointSize]="18" /><span>{{
             "Weather" | nativeText
           }}</span>
         </button>
@@ -912,14 +911,14 @@
           class="modal-sheet native-event-sheet share-sheet"
           role="dialog"
           aria-modal="true"
-          aria-label="Share Event"
+          [attr.aria-label]="'Share Event' | nativeText"
           (click)="$event.stopPropagation()"
         >
           <header class="native-sheet-header">
             <button
               type="button"
               class="round-button"
-              aria-label="Close"
+              [attr.aria-label]="'Close' | nativeText"
               (click)="
                 shareDelivery() === 'methods'
                   ? shareEvent.set(null)
@@ -927,7 +926,7 @@
               "
             >
               <cc-symbol [pointSize]="17"
-                [name]="shareDelivery() === 'methods' ? 'xmark' : 'chevron.left'"
+                [name]="shareDelivery() === 'methods' ? 'xmark' : 'chevron.backward'"
               />
             </button>
             <h2>
@@ -981,7 +980,7 @@
                     <strong>{{ method.title | nativeText }}</strong>
                     <small>{{ method.subtitle | nativeText }}</small>
                   </span>
-                  <cc-symbol name="chevron.right" />
+                  <cc-symbol name="chevron.forward" />
                 </button>
               }
             }
@@ -1008,7 +1007,7 @@
                   <div class="native-form-row">
                     <cc-symbol name="person.crop.circle" />
                     <input
-                      placeholder="Email address"
+                      [placeholder]="'Email address' | nativeText"
                       type="email"
                       [(ngModel)]="person.email"
                     />
@@ -1062,6 +1061,14 @@
         (dismissed)="recurringMove.set(null)" />
     }
 
+    @if (bookingRemoval(); as removal) {
+      <cc-calendar-action-sheet heading="Remove time slot?" [destructive]="true"
+        [primaryLabel]="removal.recurring ? 'This Event Only' : 'Delete'"
+        [secondaryLabel]="removal.recurring ? 'All Future Events' : ''"
+        (primary)="deleteBookingSlot(false)" (secondary)="deleteBookingSlot(true)"
+        (dismissed)="bookingRemoval.set(null)" />
+    }
+
     <!-- Timed-event edit menu on touch layouts, secondary-click menu on desktop. -->
     @if (eventContext(); as context) {
       @let compact = !isDesktop();
@@ -1073,6 +1080,27 @@
         [class.touch-edit-menu]="compact" [attr.aria-label]="context.event.title"
         (click)="$event.stopPropagation()"
       >
+        @if (context.bookingRevision !== undefined) {
+          <button type="button" role="menuitem" (click)="eventContext.set(null); activateEvent(context.event)">
+            <cc-symbol [name]="context.event.readOnly ? 'info.circle' : 'square.and.pencil'" />
+            {{ (context.event.readOnly ? 'Detail' : 'Edit') | nativeText }}
+          </button>
+          @if (bookingPanel()?.pendingRequestForEvent(context.event)) {
+            <hr class="context-sep" />
+            <button type="button" role="menuitem" class="danger-text" [disabled]="bookingPanel()?.busy()" (click)="decideBookingRequest(context.event, 'declined')">
+              <cc-symbol name="xmark" />{{ 'Decline' | nativeText }}
+            </button>
+            <button type="button" role="menuitem" [disabled]="bookingPanel()?.busy()" (click)="decideBookingRequest(context.event, 'accepted')">
+              <cc-symbol name="checkmark" />{{ 'Accept' | nativeText }}
+            </button>
+          }
+          @if (!context.event.readOnly && context.event.id.startsWith('slot-')) {
+            <hr class="context-sep" />
+            <button type="button" role="menuitem" class="danger-text" (click)="requestBookingRemoval(context.event)">
+              <cc-symbol name="trash" />{{ 'Delete' | nativeText }}
+            </button>
+          }
+        } @else {
         @if (!paged || !moreEventActions()) {
           @if (meetingUrlForEvent(context.event); as meetUrl) {
             <a
@@ -1104,7 +1132,7 @@
           }
         }
         @if (paged && moreEventActions()) {
-          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'Back' | nativeText" (click)="moreEventActions.set(false)"><cc-symbol name="chevron.left" /></button>
+          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'Back' | nativeText" (click)="moreEventActions.set(false)"><cc-symbol name="chevron.backward" /></button>
         }
         @if (!paged || moreEventActions()) {
           @if (canShare(context.event)) {
@@ -1141,7 +1169,8 @@
           }
         }
         @if (paged && !moreEventActions()) {
-          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'More' | nativeText" (click)="moreEventActions.set(true)"><cc-symbol name="chevron.right" /></button>
+          <button type="button" role="menuitem" class="edit-menu-page" [attr.aria-label]="'More' | nativeText" (click)="moreEventActions.set(true)"><cc-symbol name="chevron.forward" /></button>
+        }
         }
       </dialog>
     }
@@ -1155,7 +1184,7 @@
           class="modal-sheet native-event-sheet event-detail-sheet"
           role="dialog"
           aria-modal="true"
-          aria-label="Event Details"
+          [attr.aria-label]="'Event Details' | nativeText"
           (click)="$event.stopPropagation()"
         >
           <header class="native-sheet-header">
@@ -1164,7 +1193,7 @@
                 @if (!event.readOnly) {
                   <button
                     type="button"
-                    aria-label="Edit event"
+                    [attr.aria-label]="'Edit event' | nativeText"
                     [disabled]="savingEvent()"
                     (click)="openEditEventModal(event, true)"
                   >
@@ -1174,7 +1203,7 @@
                 @if (canShare(event)) {
                   <button
                     type="button"
-                    aria-label="Share event"
+                    [attr.aria-label]="'Share event' | nativeText"
                     [disabled]="savingEvent()"
                     (click)="openShareEvent(event, true)"
                   >
@@ -1186,7 +1215,7 @@
               <button
                 type="button"
                 class="round-button"
-                aria-label="Close"
+                [attr.aria-label]="'Close' | nativeText"
                 (click)="selectedEvent.set(null)"
               >
                 <cc-symbol [pointSize]="17" name="xmark" />
@@ -1197,7 +1226,7 @@
               <button
                 type="button"
                 class="round-button"
-                aria-label="Done"
+                [attr.aria-label]="'Done' | nativeText"
                 (click)="selectedEvent.set(null)"
               >
                 <cc-symbol [pointSize]="17" name="checkmark" />
@@ -1433,7 +1462,7 @@
             >
               <cc-symbol [pointSize]="17"
                 [name]="
-                  editorPage() === 'recurrence' ? 'chevron.left' : 'xmark'
+                  editorPage() === 'recurrence' ? 'chevron.backward' : 'xmark'
                 "
               />
             </button>
@@ -1453,7 +1482,7 @@
               <button
                 type="button"
                 class="round-button"
-                aria-label="Save event"
+                [attr.aria-label]="'Save event' | nativeText"
                 [disabled]="savingEvent() || !d.title.trim()"
                 (click)="saveDraftEvent()"
               >
@@ -1591,7 +1620,7 @@
                     <button
                       type="button"
                       class="toolbar-icon danger-text"
-                      aria-label="Remove attachment"
+                      [attr.aria-label]="'Remove attachment' | nativeText"
                       (click)="removeAttachment(i)"
                     >
                       <cc-symbol [pointSize]="20" name="xmark.circle.fill" />
@@ -1609,7 +1638,7 @@
                 <label class="native-form-row">
                   <input
                     type="url"
-                    aria-label="URL"
+                    [attr.aria-label]="'URL' | nativeText"
                     [placeholder]="'URL' | nativeText"
                     [(ngModel)]="d.url"
                   />
@@ -1619,7 +1648,7 @@
                 <label class="native-form-row">
                   <textarea
                     rows="3"
-                    aria-label="Notes"
+                    [attr.aria-label]="'Notes' | nativeText"
                     [placeholder]="'Notes' | nativeText"
                     [(ngModel)]="d.notes"
                   ></textarea>
@@ -1639,6 +1668,6 @@
   }
 
   @if (toast(); as message) {
-    <div class="studio-toast" role="status">{{ message }}</div>
+    <div class="studio-toast" role="status">{{ message | nativeText }}</div>
   }
 </section>

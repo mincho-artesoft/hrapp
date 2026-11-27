@@ -46,15 +46,25 @@ struct CalendarEventRemovalSection: View {
 
     var body: some View {
         #if os(macOS)
-        button.buttonStyle(AppActionButtonStyle()).controlSize(.large)
+        CalendarEventRemovalButton(title: title, action: requestConfirmation)
         #else
-        Section { button }
+        Section { CalendarEventRemovalButton(title: title, action: requestConfirmation) }
         #endif
     }
+}
 
-    private var button: some View {
-        Button(role: .destructive, action: requestConfirmation) {
-            Text(title).frame(maxWidth: .infinity).contentShape(Rectangle())
+struct CalendarEventRemovalButton: View {
+    let title: LocalizedStringKey
+    let action: () -> Void
+
+    var body: some View {
+        Button(role: .destructive, action: action) {
+            Text(title).multilineTextAlignment(.center).frame(maxWidth: .infinity).contentShape(Rectangle())
         }
+        #if os(macOS)
+        .buttonStyle(AppActionButtonStyle()).controlSize(.large)
+        #else
+        .buttonStyle(.borderless)
+        #endif
     }
 }

@@ -1,3 +1,4 @@
+import { calendarDateFormatter } from '../../core/calendar-format-preferences';
 import { afterNextRender, computed, Component, effect, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
 import { CalendarLocalization, CalendarNativeTextPipe } from '../../core/calendar-localization';
 import { CalendarNativeService, PendingInvitation } from '../../core/calendar-native.service';
@@ -88,12 +89,12 @@ export class CalendarEmailInvitationComponent {
       const tz = item.eventUrl && new URL(item.eventUrl).searchParams.get('timeZone');
       if (tz) timeZone = new Intl.DateTimeFormat(locale, {timeZone: tz}).resolvedOptions().timeZone;
     } catch { /* Older invitations may omit the time zone. */ }
-    const date = new Intl.DateTimeFormat(locale, {dateStyle:'full', timeZone});
-    const short = new Intl.DateTimeFormat(locale, {month:'numeric', day:'numeric', timeZone});
+    const date = calendarDateFormatter(locale, this.localization.datePreference(), {weekday:'long', timeZone});
+    const short = calendarDateFormatter(locale, this.localization.datePreference(), {includeYear:false, timeZone});
     const time = new Intl.DateTimeFormat(locale, {hour:'numeric', minute:'2-digit', hourCycle:this.localization.shortTime().resolvedOptions().hourCycle, timeZone});
-    const multiDay = date.format(start) !== date.format(end);
-    const label = (value: Date) => (multiDay ? short.format(value) + ' ' : '') + time.format(value);
-    return {day:date.format(start), time:item.allDay ? this.localization.text('All-day event') : label(start) + ' – ' + label(end)};
+    const multiDay = date(start) !== date(end);
+    const label = (value: Date) => (multiDay ? short(value) + ' ' : '') + time.format(value);
+    return {day:date(start), time:item.allDay ? this.localization.text('All-day event') : label(start) + ' – ' + label(end)};
   });
   readonly closed = output<void>();
   readonly changed = output<void>();

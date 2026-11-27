@@ -2,6 +2,34 @@ import AppKit
 import Foundation
 import SwiftUI
 
+// swift tools/export-calendar-symbols.swift --metrics public/icons/calendar-native > src/app/components/calendar-native/calendar-symbol-extents.json
+if CommandLine.arguments.count == 3 && CommandLine.arguments[1] == "--metrics" {
+    let directory = URL(fileURLWithPath: CommandLine.arguments[2])
+    let files = try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+    let configuration = NSImage.SymbolConfiguration(pointSize: 17, weight: .regular)
+    var rows: [String] = []
+    for file in files.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }) where file.pathExtension == "png" {
+        let name = file.deletingPathExtension().lastPathComponent
+        guard let image = NSImage(systemSymbolName: name, accessibilityDescription: nil)?
+            .withSymbolConfiguration(configuration) else { continue }
+        let data = try Data(contentsOf: file)
+        guard let bitmap = NSBitmapImageRep(data: data), bitmap.pixelsWide == 96, bitmap.pixelsHigh == 96 else {
+            throw CocoaError(.fileReadCorruptFile)
+        }
+        var ink = CGRect.null
+        for y in 0..<bitmap.pixelsHigh {
+            for x in 0..<bitmap.pixelsWide where (bitmap.colorAt(x: x, y: y)?.alphaComponent ?? 0) > 0.15 {
+                ink = ink.union(CGRect(x: x, y: y, width: 1, height: 1))
+            }
+        }
+        guard !ink.isNull else { throw CocoaError(.fileReadCorruptFile) }
+        let key = String(decoding: try JSONEncoder().encode(name), as: UTF8.self)
+        rows.append("  \(key): [\(Int(max(image.size.width, image.size.height).rounded())), \(Int(max(ink.width, ink.height)))]")
+    }
+    print("{\n" + rows.joined(separator: ",\n") + "\n}")
+    exit(0)
+}
+
 // Render the exact SF Symbols used by CalendarMacRoot, iOS RootView, and WeatherKitView.
 // Monochrome UI symbols are tinted via CSS mask-image; --multicolor renders SwiftUI's
 // native .symbolRenderingMode(.multicolor) palette on a dark canvas so suns, clouds,

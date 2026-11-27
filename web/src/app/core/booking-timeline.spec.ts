@@ -2,7 +2,7 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { CalendarPlatformApiService } from './calendar-platform-api.service';
 import { bookingTimelineEvents } from './booking-timeline';
-import { Appointment, BookingCalendar, BookingTimelineMove, BookingWorkspace } from './booking-workspace';
+import { Appointment, BookingCalendar, BookingTimelineMove, BookingWorkspace, isBookingHistory } from './booking-workspace';
 
 describe('booking timeline drops', () => {
   const interval = (hour: number) => ({
@@ -126,19 +126,34 @@ describe('booking timeline drops', () => {
     expect(displayed().readOnly).toBeFalse();
   });
 
-  it('holds the original reservation and shows the proposed time at the drop location', () => {
+  it('renders one reservation at the proposed time while holding both intervals', () => {
     const request = {...slot, id: 'reservation', slotId: slot.id, status: 'accepted' as const,
       hostName: 'Host', guestName: 'Guest', calendarId: schedule.id, calendarTitle: schedule.title};
     const reserved = {...schedule, requests: [request]};
     const rows = events(reserved, [{...move, requestId: request.id}]);
     expect(rows.map(row => [row.id, row.start])).toEqual([
-      ['request-reservation', slot.start], ['proposal-reservation', move.start],
+      ['request-reservation', move.start],
     ]);
+    const persisted = {...reserved, requests: [{...request, proposal: {...slot, ...move}}]};
+    expect(events(persisted, []).map(e => [e.id, e.start, e.readOnly])).toEqual([['request-reservation', move.start, true]]);
+    expect(events(persisted, [{...move, requestId: request.id}]).length).toBe(1);
     expect(events(reserved, []).map(row => row.start)).toEqual([slot.start]);
   });
 });
 
 describe('in-app booking change notices', () => {
+  it('moves ended or declined reservations to history using the effective end of a proposed time', () => {
+    const end = new Date(Date.now() - 60_000).toISOString();
+    const later = new Date(Date.now() + 3_600_000).toISOString();
+    const r: Appointment = {id:'request', slotId:'slot', start:end, end, calendarId:'studio', calendarTitle:'Studio',
+      guestName:'Guest', hostName:'Host', status:'accepted'};
+    expect(isBookingHistory(r)).toBeTrue();
+    expect(isBookingHistory({...r, end:later})).toBeFalse();
+    expect(isBookingHistory({...r, proposal:{id:'change',start:end,end:later}})).toBeFalse();
+    expect(isBookingHistory({...r, status:'declined',end:later})).toBeTrue();
+    expect(isBookingHistory({...r, cancelledByGuest:true,end:later})).toBeTrue();
+  });
+
   it('surfaces outstanding guest proposals first and clears them on sign-out', async () => {
     const token = signal<string | null>('guest');
     const slot = {id: 'slot', start: '2099-01-01T09:00:00Z', end: '2099-01-01T10:00:00Z'};
@@ -153,7 +168,8 @@ describe('in-app booking change notices', () => {
     TestBed.flushEffects();
     await workspace.refresh();
     expect(workspace.pendingChanges().map(r => r.id)).toEqual(['changed']);
-    expect(workspace.appointmentsForReview().map(r => r.id)).toEqual(['changed', 'booking', 'past']);
+    expect(workspace.upcoming().map(r => r.id)).toEqual(['changed', 'booking']);
+    expect(workspace.history().map(r => r.id)).toEqual(['past']);
     token.set(null);
     TestBed.flushEffects();
     expect(workspace.pendingChanges()).toEqual([]);

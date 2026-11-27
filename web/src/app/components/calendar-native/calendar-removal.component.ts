@@ -9,7 +9,7 @@ import { CalendarNativeTextPipe } from '../../core/calendar-localization';
   template: `
     <button #trigger type="button" class="remove-calendar" [disabled]="busy()" (click)="confirming.set(true)">{{ label() | nativeText }}</button>
     @if (confirming()) {
-      <cc-calendar-action-sheet [anchor]="trigger" [heading]="prompt()" [primaryLabel]="confirmLabel()" [destructive]="true" [busy]="busy()"
+      <cc-calendar-action-sheet [anchor]="trigger" [heading]="prompt()" [message]="detail()" [cancelLabel]="cancelLabel()" [primaryLabel]="confirmLabel()" [destructive]="true" [busy]="busy()"
         (primary)="confirmed.emit(); confirming.set(false)" (dismissed)="confirming.set(false)" />
     }
   `,
@@ -29,6 +29,8 @@ export class CalendarRemovalComponent {
   readonly label = input('Delete Calendar');
   readonly prompt = input.required<string>();
   readonly confirmLabel = input('Delete');
+  readonly cancelLabel = input('Cancel');
+  readonly detail = input('');
   readonly busy = input(false);
   readonly confirming = model(false);
   readonly confirmed = output<void>();

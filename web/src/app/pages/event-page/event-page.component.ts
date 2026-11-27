@@ -1,3 +1,4 @@
+import { CalendarLocalization } from '../../core/calendar-localization';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,6 +28,7 @@ type Mode = 'loading' | 'view' | 'done' | 'notfound' | 'error';
 })
 export class EventPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly calendar = inject(CalendarLocalization);
   private readonly seo = inject(SeoService);
   private readonly api = inject(EventRegistrationApiService);
 
@@ -51,6 +53,7 @@ export class EventPageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
     this.copy = eventCopyFor(this.locale.code);
+    this.calendar.readPreferences();
     this.seo.apply({
       title: this.copy.seoTitle,
       description: this.copy.seoDescription,
@@ -102,15 +105,7 @@ export class EventPageComponent implements OnInit {
   // --- formatting ---
   protected whenText(ev: PublicEvent | EventRegisterResult['event']): string {
     const tz = (this.event()?.timeZone) || 'UTC';
-    try {
-      const day = new Intl.DateTimeFormat(this.locale.code, {
-        timeZone: tz, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
-      }).format(new Date(ev.start));
-      const t = (iso: string) => new Intl.DateTimeFormat(this.locale.code, { timeZone: tz, hour: 'numeric', minute: '2-digit' }).format(new Date(iso));
-      return `${day} · ${t(ev.start)} – ${t(ev.end)}`;
-    } catch {
-      return ev.start;
-    }
+    return this.calendar.eventRange(ev.start, ev.end, this.locale.code, tz);
   }
 
   protected get webcal(): string {

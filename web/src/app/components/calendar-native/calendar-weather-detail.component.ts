@@ -309,7 +309,7 @@ export class CalendarWeatherDetailComponent {
         if (!higher.length) return this.local.text('No moderate or higher UV levels are expected for this day.');
         const time = (h: ForecastHour) =>
           new Intl.DateTimeFormat(this.local.formattingLocale(), {
-            hour: 'numeric',
+            hour: 'numeric', hourCycle: this.local.shortTime().resolvedOptions().hourCycle,
             timeZone: h.instant ? s.place.timezone : 'UTC',
           }).format(new Date(h.instant ?? h.iso + 'Z'));
         return this.format(

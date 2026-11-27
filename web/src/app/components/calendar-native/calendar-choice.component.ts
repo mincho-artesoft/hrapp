@@ -25,7 +25,7 @@ export interface CalendarChoice {
   template: `<button
       type="button"
       #trigger class="choice-value" [class.symbol-choice]="!!triggerSymbol()"
-      [attr.aria-label]="label()"
+      [attr.aria-label]="label() | nativeText"
       [disabled]="disabled()"
       aria-haspopup="menu"
       [attr.aria-expanded]="open()"
@@ -125,7 +125,7 @@ export interface CalendarChoice {
         display: flex;
         align-items: center;
         gap: 12px;
-        text-align: left;
+        text-align: start;
         font: inherit;
         color: var(--cal-text);
         background: transparent;

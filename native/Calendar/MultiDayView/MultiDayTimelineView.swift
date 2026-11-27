@@ -41,7 +41,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     public weak var hoursColumnView: HoursColumnView?
     
     // MARK: - Public Callbacks
+    var guestSlotTap: ((EventDescriptor) -> Void)?
     var scopedEditable: ((EventDescriptor) -> Bool)?
+    var scopedResponse: ((EventDescriptor) -> ((BookingDecision) -> Void)?)?
+    var scopedDeletable: ((EventDescriptor) -> Bool)?
     private func eventIsReadOnly(_ descriptor: EventDescriptor) -> Bool {
         if let scopedEditable { return !scopedEditable(descriptor) }
         return SharedInviteTracker.isReadOnly(descriptor)
@@ -149,7 +152,17 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                                   image: UIImage(systemName: isReadOnly ? "info.circle" : "square.and.pencil")) { [weak self] _ in
                 self?.onEventEdit?(descriptor)
             }
-            return UIMenu(children: [action])
+            var actions = [action]
+            if let respond = scopedResponse?(descriptor) {
+                actions.append(UIAction(title: NSLocalizedString("Decline", comment: ""), image: UIImage(systemName: "xmark"),
+                                        attributes: .destructive) { _ in respond(.declined) })
+                actions.append(UIAction(title: NSLocalizedString("Accept", comment: ""), image: UIImage(systemName: "checkmark")) { _ in respond(.accepted) })
+            }
+            if scopedDeletable?(descriptor) == true {
+                actions.append(UIAction(title: NSLocalizedString("Delete", comment: ""), image: UIImage(systemName: "trash"),
+                                        attributes: .destructive) { [weak self] _ in self?.onEventDeleted?(descriptor) })
+            }
+            return UIMenu(children: actions)
         }
         let canShare = SharedInviteTracker.canShare(descriptor)
         
@@ -799,23 +812,19 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
               let descriptor = eventViewToDescriptor[tappedView]
           else { return }
           
-          // Запомняме кой евент е „кликнат“
-          self.currentTappedDescriptor = descriptor
-          
-          // Ако имате някаква логика за „select“
+          if let guestSlotTap { guestSlotTap(descriptor); return }
           selectEventView(tappedView)
-          
-          // Сега казваме на `UIEditMenuInteraction`: „Покажи меню на точно тази точка“
-          let location = gesture.location(in: self)
-          
-          // Трябва ни конфигурация, в която задаваме къде точно да се покаже менюто
-          let menuConfig = UIEditMenuConfiguration(identifier: nil, sourcePoint: location)
-          
-          // `presentEditMenu(...)` казва на iOS да изрисува меню (чрез delegate метод)
-          editMenuInteraction?.presentEditMenu(with: menuConfig)
+          if let editMenuInteraction {
+              presentEventMenu(for: descriptor, using: editMenuInteraction, at: gesture.location(in: self))
+          }
       }
 
     
+    func presentEventMenu(for descriptor: EventDescriptor, using interaction: UIEditMenuInteraction, at point: CGPoint) {
+        currentTappedDescriptor = descriptor
+        interaction.presentEditMenu(with: UIEditMenuConfiguration(identifier: nil, sourcePoint: point))
+    }
+
     // [MODIFIED] - Клик (tap) върху slice от многодневно събитие → всички slice-ове в edit режим
     private func selectEventView(_ evView: EventView) {
         // 1) Махаме edit режима от всички евенти (както е по условие)

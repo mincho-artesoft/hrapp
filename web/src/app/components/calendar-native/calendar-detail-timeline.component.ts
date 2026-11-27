@@ -2,7 +2,7 @@ import { calendarHourCycle } from '../../core/calendar-format-preferences';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import type { WebCalendarEvent } from '../../core/calendar-platform-api.service';
-import { CalendarLocalization } from '../../core/calendar-localization';
+import { CalendarLocalization, CalendarNativeTextPipe } from '../../core/calendar-localization';
 import { nativeTimelineLayout } from '../../core/calendar-timeline-layout';
 import { computeIosEventStyle } from '../../core/ios-event-palette';
 import { wallDate } from '../../core/calendar-recurrence';
@@ -14,28 +14,28 @@ const hourHeight = 40;
 @Component({
   selector: 'cc-detail-timeline',
   standalone: true,
-  imports: [NgStyle, CalendarSymbolComponent],
+  imports: [CalendarNativeTextPipe, NgStyle, CalendarSymbolComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="preview" [style.height.px]="hours() * hourHeight" aria-label="Event timeline">
+    <div class="preview" [style.height.px]="hours() * hourHeight" [attr.aria-label]="'Event timeline' | nativeText">
       @for (hour of labels(); track $index) {
         <div class="hour" [style.top.px]="hour.top"><span>{{hour.text}}</span><i></i></div>
       }
       <div class="events">
         @for (block of blocks(); track block.id) {
           <div class="event" [class.selected]="block.id === selected().id"
-               [ngStyle]="style(block.data, block.depth)" [style.left.%]="block.leftPct" [style.width.%]="block.widthPct"
+               [ngStyle]="style(block.data, block.depth)" [style.inset-inline-start.%]="block.leftPct" [style.width.%]="block.widthPct"
                [style.top.px]="Math.max(0, block.startMinutes) * hourHeight / 60"
                [style.height.px]="Math.max(16, (Math.min(hours() * 60, block.endMinutes) - Math.max(0, block.startMinutes)) * hourHeight / 60 - 2)"
                [style.z-index]="block.depth * 2 + (block.id === selected().id ? 1 : 0)">
             <div class="content" [style.max-height.px]="Math.max(0, (block.contentEndMinutes - Math.max(0, block.startMinutes)) * hourHeight / 60 - 2)">
               @if (block.startMinutes >= 0 || block.id === selected().id) {
-                <strong [class.cancelled]="block.data.status === 'cancelled'">@if (block.data.readOnly) {<cc-symbol name="lock.fill" /> }{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" />}</strong>
+                <strong [class.cancelled]="block.data.status === 'cancelled'">@if (block.data.readOnly) {<cc-symbol name="lock.fill" /> }{{block.data.title}} @if (block.data.details?.recurrenceRules?.length) {<cc-symbol name="repeat" [pointSize]="10" />}</strong>
                 @if (block.data.location) {
-                  <span><cc-symbol name="location" /> {{block.data.location}}</span>
+                  <span><cc-symbol name="location" [pointSize]="8" /> {{block.data.location}}</span>
                 }
                 @if (!block.data.allDay) {
-                  <span><cc-symbol name="clock" /> {{clock(block.data.start)}} – {{clock(block.data.end)}}</span>
+                  <span><cc-symbol name="clock" [pointSize]="8" /> {{clock(block.data.start)}} – {{clock(block.data.end)}}</span>
                 }
               }
             </div>
@@ -49,7 +49,7 @@ const hourHeight = 40;
     .hour {position:absolute; inset-inline:0; display:flex; gap:8px; height:40px}
     .hour > span {width:58px; text-align:end; white-space:nowrap; font-size:11px; color:var(--cal-muted); transform:translateY(-7px); flex-shrink:0}
     .hour i {flex:1; border-top:.5px solid var(--cal-line)}
-    .events {position:absolute; inset:0 26px 0 70px}
+    .events {position:absolute; inset-block:0; inset-inline:70px 26px}
     .event {position:absolute; overflow:hidden; border-radius:5px; padding-block:3px; padding-inline:12px 8px;
       background:var(--event-bg); color:var(--event-text); font-size:10px; text-align:start}
     .event:before {content:''; position:absolute; inset-inline-start:5px; top:5px; bottom:5px; width:3px;

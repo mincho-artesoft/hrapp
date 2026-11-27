@@ -1,0 +1,46 @@
+<div class="navigation">
+  <strong>{{title()}}</strong>
+  @if(first()) {
+    <cc-range-picker [start]="first()" [end]="last()" [firstWeekday]="firstWeekday()" (chooseRange)="changeRange($event)" />
+  }
+</div>
+@if (selected(); as s) {
+  <cc-guest-booking-action [tile]="tile" [cancelling]="!!s.myBookingId" [detail]="detail(s)" [busy]="saving()"
+    (confirmed)="selected.set(null); reserve.emit(s)" (dismissed)="selected.set(null)" />
+}
+@if (error()) {
+  <p role="alert">{{error() | nativeText}} <button (click)="attempt.set(attempt()+1)">{{'Try Again' | nativeText}}</button></p>
+} @else if (!page() && !appointments()) { <cc-calendar-progress /> }
+@else {
+  <div class="scroll" [style.--columns]="count()" [attr.aria-label]="'Multi-day calendar view' | nativeText">
+    <div class="heading grid"><span></span>
+      @for (c of columns(); track c.key) { <strong [class.today]="c.key===today">{{dayFormat()(c.day)}}</strong> }
+      @if (hasAllDay()) {
+        <small>{{'All-day' | nativeText}}</small>
+        @for (c of columns(); track c.key) {
+          <div class="allday">
+            @for (s of c.allDay; track s.id) {
+              <button type="button" class="block" [class.busy]="busy(s)" [style.--accent]="color(s)" [disabled]="disabled(s)" (click)="select(s,$event)">{{name(s)}}</button>
+            }
+          </div>
+        }
+      }
+    </div>
+    <div class="days grid" [style.height.px]="hours().length*56">
+      <div class="axis">@for (h of hours(); track h) { <small>{{hour(h)}}</small> }</div>
+      @for (c of columns(); track c.key) {
+        <div class="day">
+          @for (b of c.blocks; track b.id) {
+            <button type="button" class="block" [class.busy]="busy(b.data)" [style.--accent]="color(b.data)" [disabled]="disabled(b.data)"
+              [attr.aria-label]="name(b.data)+' · '+dayFormat()(c.day)+' · '+time(b.data)"
+              [style.inset-inline-start.%]="b.leftPct" [style.width.%]="b.widthPct" [style.z-index]="b.depth+1"
+              [style.top.px]="(b.startMinutes-hours()[0]*60)*56/60" [style.height.px]="(b.endMinutes-b.startMinutes)*56/60"
+              (click)="select(b.data,$event)">
+              <strong>{{name(b.data)}}</strong><span>{{time(b.data)}}</span>
+            </button>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

@@ -1,3 +1,4 @@
+import { calendarDateFormatter } from '../../core/calendar-format-preferences';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -126,10 +127,7 @@ export class CalendarWindMapComponent implements OnDestroy {
     return dates.length ? dates[0] + this.position() * hourMs : Date.now();
   });
   readonly dateLabel = computed(() =>
-    new Intl.DateTimeFormat(this.local.formattingLocale(), {
-      dateStyle: 'full',
-      timeZone: this.place().timezone,
-    }).format(this.displayTime())
+    calendarDateFormatter(this.local.formattingLocale(), this.local.datePreference(), {weekday:'long', timeZone:this.place().timezone})(this.displayTime())
   );
   readonly ticks = computed(() =>
     this.dates()
@@ -291,7 +289,7 @@ export class CalendarWindMapComponent implements OnDestroy {
   }
   hourLabel(time: number) {
     return new Intl.DateTimeFormat(this.local.formattingLocale(), {
-      hour: 'numeric',
+      hour: 'numeric', hourCycle: this.local.shortTime().resolvedOptions().hourCycle,
       timeZone: this.place().timezone,
     }).format(time);
   }
