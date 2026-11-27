@@ -22,7 +22,7 @@ def main():
     token = os.environ.get('CALENDAR_FEED_ORIGIN_TOKEN')
     if not token:
         operator = Path(os.environ.get('CALENDAR_FEED_OPERATOR_DIR', str(Path.home()/'Library/Application Support/CloudCalendarsInfrastructure')))
-        token = json.loads((operator/'feed-origin.json').read_text())['originToken']
+        token = json.loads((operator/'production-storage.json').read_text())['originToken']
     if len(token) < 32:
         raise ValueError('A private feed-origin credential is required')
     distribution_id = 'E38UB52KWYH6V6'
@@ -31,7 +31,7 @@ def main():
     if distribution['Aliases'].get('Items') != ['cal.cloud-calendars.com']:
         raise ValueError('Refusing to change another distribution')
     origin = next(o for o in distribution['Origins']['Items'] if o['Id'] == 's3-cal')
-    origin.update(DomainName='storage.wonek.com', OriginPath='/feeds/cal.cloud-calendars.com',
+    origin.update(DomainName='storage.cloud-calendars.com', OriginPath='/feeds/cal.cloud-calendars.com',
                   CustomHeaders={'Quantity': 1, 'Items': [{'HeaderName': 'X-Calendar-Origin', 'HeaderValue': token}]},
                   CustomOriginConfig={'HTTPPort': 80, 'HTTPSPort': 443, 'OriginProtocolPolicy': 'https-only',
                       'OriginSslProtocols': {'Quantity': 1, 'Items': ['TLSv1.2']},

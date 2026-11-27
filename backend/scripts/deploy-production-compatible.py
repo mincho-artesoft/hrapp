@@ -70,7 +70,7 @@ def main():
     configuration = current['Configuration']
     environment = configuration.get('Environment', {}).get('Variables', {})
     assert configuration['FunctionArn'] == ARN
-    assert environment.get('CALENDAR_STORAGE_URL') == 'https://storage.wonek.com'
+    assert environment.get('CALENDAR_STORAGE_URL') == 'https://storage.cloud-calendars.com'
     assert environment.get('CAL_BUCKET') == 'cal.cloud-calendars.com'
     assert configuration['Handler'] == 'dist/lambda.handler'
     directory = Path.home() / 'Library/Application Support/CloudCalendarsInfrastructure' / (

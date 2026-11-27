@@ -1,6 +1,20 @@
 # Cloud Calendars storage and deployment
 
-## Production cutover, 2026-11-25
+## Production storage
+
+Cloud Calendars runs its own service on the existing Hetzner host. The production Lambda and the calendar feed CDN connect to `https://storage.cloud-calendars.com`. The worker runs as `cloud-cal-store` with its own credentials, SQLite database and backup timer. The public API and subscription URLs stay the same.
+
+The [storage directory](storage/) contains the Python server, test suite, nginx configuration, backup program and systemd units. Run the tests with `cd backend/storage && python3 -m unittest`. The runtime requires Python 3.9 or later and SQLite with JSON support.
+
+To deploy an update, copy this repository's `backend/storage/` directory to the host and run its `install.sh` as root there. It restarts the Cloud Calendars worker. Nginx uses `storage/nginx.conf` with the Let's Encrypt certificate for the storage host. The worker listens on loopback port 9467.
+
+The operator configuration lives outside Git in `~/Library/Application Support/CloudCalendarsInfrastructure/production-storage.json`. On the host, install it as `/etc/cloud-calendars-storage/config.json`, readable by root and the service group. It contains `root` (`/srv/cloud-calendars-storage`), `port`, and three independently generated secrets for `adminToken`, `originToken`, and `bucketTokens["cal.cloud-calendars.com"]`. Configure the last two on the feed origin and Lambda respectively. To restore, stop the Cloud Calendars worker, restore a verified SQLite snapshot to `/srv/cloud-calendars-storage/cal.cloud-calendars.com/objects.sqlite3` in a clean directory owned by the worker, then start the service.
+
+The daily backup uses SQLite's online backup API and verifies integrity locally and checksums offsite. It retains two local copies under `/var/backups/cloud-calendars-storage` and fourteen in the separate `server-backups/cloud-calendars-storage` directory on the mounted Storage Box.
+
+On 2026-11-27 the live database moved with its existing inode after the API and CDN switched to the new service. Both endpoints read and wrote the same database throughout the transition. The former service account lost filesystem access to the production calendar database.
+
+## Historical production cutover, 2026-11-25
 
 The Mac, iPhone, iPad and browser clients use `https://api.cloud-calendars.com` for development and release builds. Account data is in `cal.cloud-calendars.com`. Users sign in to Production when upgrading an installation that only had a Debug session. The old HTTP endpoints forward public invitation and scoped feed links to Production.
 
@@ -64,7 +78,7 @@ still requires explicit user authorization. Debug deployment requires the
 existing Hetzner configuration and fails instead of recreating an S3 bucket.
 This repository does not deploy Wonek or read Wonek's source or credentials.
 
-The common Hetzner service is deployed from the separate
+Before the 2026-11-27 separation, the common Hetzner service was deployed from the separate
 `calendar-storage-infra` repository. CDN configuration belongs here:
 `deploy-feed-origin.py` points the existing feed distribution at the HTTPS
 origin without changing public feed URLs. Its private origin credential comes

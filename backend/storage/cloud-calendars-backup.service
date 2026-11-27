@@ -1,0 +1,7 @@
+[Unit]
+Description=Verified Cloud Calendars database backup
+After=cloud-calendars-storage.service
+[Service]
+Type=oneshot
+UMask=0077
+ExecStart=/usr/bin/python3 /opt/cloud-calendars-storage/backup.py

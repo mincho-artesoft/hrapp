@@ -1,7 +1,7 @@
 # cloud-calendars-api (NestJS serverless)
 
 All clients use the production Lambda and the Hetzner namespace `cal.cloud-calendars.com`.
-The shared storage service is maintained in `calendar-storage-infra`. See the [cutover and storage history](HETZNER_STORAGE.md).
+The dedicated [storage service, tests and systemd units](storage/) are maintained here. See the [cutover and storage history](HETZNER_STORAGE.md).
 
 The NestJS port of the Cloud Calendars API. It **replaces** the original single
 `index.mjs` Lambda while preserving the whole architecture:

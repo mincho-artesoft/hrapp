@@ -6,7 +6,7 @@ Complete codebase for **Cloud Calendars** (`iOS`, `iPadOS`, `macOS`, `watchOS`, 
 
 - **[`native/`](./native)** — Native Swift / SwiftUI application (`Cloud Calendars for Google, Microsoft and iCloud.xcodeproj`), WidgetKit extensions (`CalendarWidget`), and App Clip (`CalendarAppClip`).
 - **[`web/`](./web)** — Angular web application and marketing/documentation portal (`www.cloud-calendars.com`, `/calendar/`, `/book/`).
-- **[`backend/`](./backend)** — NestJS API. All clients use `api.cloud-calendars.com` on Lambda. Calendar data is stored on Hetzner. The former Debug endpoints support migrated invitation and calendar feed links.
+- **[`backend/`](./backend)** — NestJS API. All clients use `api.cloud-calendars.com` on Lambda. The [Cloud Calendars storage service](backend/storage/) runs independently on Hetzner. The former Debug endpoints support migrated invitation and calendar feed links.
 
 ## Local Symlinks
 

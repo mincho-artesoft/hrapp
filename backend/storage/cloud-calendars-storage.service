@@ -1,0 +1,19 @@
+[Unit]
+Description=Cloud Calendars object storage
+After=network.target
+
+[Service]
+User=cloud-cal-store
+Group=cloud-cal-store
+UMask=0077
+ExecStart=/usr/bin/python3 /opt/cloud-calendars-storage/server.py --config /etc/cloud-calendars-storage/config.json
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/cloud-calendars-storage
+
+[Install]
+WantedBy=multi-user.target
