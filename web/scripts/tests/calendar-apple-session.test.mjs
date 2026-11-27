@@ -224,15 +224,20 @@ test('calendar controls stay aligned, and only web provider connections appear i
 
 test('a restored session loads events during profile verification and displays them only after it succeeds', async () => {
   const browser = await chromium.launch(process.env.CHROME_CHANNEL ? {channel: process.env.CHROME_CHANNEL} : {});
-  let releaseProfile;
+  let releaseProfile, releaseBundle;
+  const bundle = new Promise(resolve => { releaseBundle = resolve; });
   const verification = new Promise(resolve => { releaseProfile = resolve; });
   try {
     const page = await browser.newPage({viewport: {width: 1200, height: 850}});
+    await page.clock.install();
     await page.addInitScript(() => localStorage.setItem('cc_web_session_v1', 'restored-test-session'));
     let stateRequests = 0;
     await page.route('**/*', async route => {
       const url = new URL(route.request().url());
-      if (url.origin === origin) return serveSite(route, url);
+      if (url.origin === origin) {
+        if (/^\/main-[^/]+\.js$/.test(url.pathname)) await bundle;
+        return serveSite(route, url);
+      }
       if (url.origin !== apiOrigin) return route.abort();
       if (url.pathname === '/me/profile') {
         await verification;
@@ -241,22 +246,35 @@ test('a restored session loads events during profile verification and displays t
       if (url.pathname === '/web-calendar/state') {
         assert.equal(route.request().headers().authorization, 'Bearer restored-test-session');
         stateRequests++;
-        return route.fulfill({json: {
+        const tag = 'W/"workspace-one"';
+        if (stateRequests > 1) assert.equal(route.request().headers()['if-none-match'], tag);
+        if (stateRequests === 2) return route.fulfill({status: 304, headers: {etag: tag}});
+        return route.fulfill({headers: {etag: stateRequests === 1 ? tag : 'W/"workspace-two"', 'access-control-expose-headers': 'ETag'}, json: {
           calendar: {id: 'cal'}, calendars: [{id: 'local', title: 'Local calendar', accountLocal: true, allowsChanges: true}],
-          events: [{id: 'native.local.example', calendarId: 'local', title: 'Restored appointment',
+          events: [{id: 'native.local.example', calendarId: 'local', title: stateRequests === 1 ? 'Restored appointment' : 'Moved appointment',
             start: new Date(Date.now() + 3600000), end: new Date(Date.now() + 7200000)}],
         }});
       }
       return route.fulfill({json: {}});
     });
     const state = page.waitForResponse(response => new URL(response.url()).pathname === '/web-calendar/state');
-    await page.goto(origin + '/calendar/', {waitUntil: 'domcontentloaded'});
-    await state;
+    const navigation = page.goto(origin + '/calendar/', {waitUntil: 'domcontentloaded'});
+    await state; // The real HTML starts the read before Angular's main bundle is allowed to load.
+    releaseBundle();
+    await navigation;
     assert.equal(await page.locator('.cal-shell').count(), 0);
     releaseProfile();
     await page.locator('.up-next', {hasText: 'Restored appointment'}).waitFor();
     assert.equal(stateRequests, 1);
+    const unchanged = page.waitForResponse(r => r.status() === 304 && new URL(r.url()).pathname === '/web-calendar/state');
+    await page.clock.fastForward(21000);
+    await unchanged;
+    await page.locator('.up-next', {hasText: 'Restored appointment'}).waitFor();
+    await page.clock.fastForward(21000);
+    await page.locator('.up-next', {hasText: 'Moved appointment'}).waitFor();
+    assert.equal(stateRequests, 3);
   } finally {
+    releaseBundle();
     releaseProfile();
     await browser.close();
   }

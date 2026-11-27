@@ -12,7 +12,7 @@ import json
 import re
 import sqlite3
 import uuid
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -44,6 +44,16 @@ class Storage:
                     CREATE TABLE IF NOT EXISTS heads (
                         key TEXT PRIMARY KEY, version TEXT NOT NULL
                     );
+                    CREATE TABLE IF NOT EXISTS workspace_revision (
+                        id INTEGER PRIMARY KEY CHECK(id=1), value TEXT NOT NULL
+                    );
+                    INSERT OR IGNORE INTO workspace_revision VALUES(1, hex(randomblob(16)));
+                    CREATE TRIGGER IF NOT EXISTS heads_revision_insert AFTER INSERT ON heads
+                    BEGIN UPDATE workspace_revision SET value=hex(randomblob(16)) WHERE id=1; END;
+                    CREATE TRIGGER IF NOT EXISTS heads_revision_update AFTER UPDATE ON heads
+                    BEGIN UPDATE workspace_revision SET value=hex(randomblob(16)) WHERE id=1; END;
+                    CREATE TRIGGER IF NOT EXISTS heads_revision_delete AFTER DELETE ON heads
+                    BEGIN UPDATE workspace_revision SET value=hex(randomblob(16)) WHERE id=1; END;
                 ''')
 
     @contextmanager
@@ -67,12 +77,14 @@ class Storage:
 
     @staticmethod
     def calendar_inventory(db, prefix, after, scope, known):
-        if (scope not in ('all', 'account') or not isinstance(known, dict)
-                or not re.fullmatch(r'principal/[^/]+/native-calendars/', prefix)):
+        valid_prefix = (scope in ('all', 'account') and re.fullmatch(r'principal/[^/]+/native-calendars/', prefix)
+                        or scope == 'documents' and re.fullmatch(r'(?:cal/[^/]+/events|principal/[^/]+/received)/', prefix))
+        if not valid_prefix or not isinstance(known, dict):
             return 400, {'error': 'InvalidCalendarInventory'}
         # Read bodies and ETags from the same SQLite snapshot. The upper bound
         # is the first string after all keys starting with this slash-ended prefix.
-        db.execute('BEGIN')
+        if not db.in_transaction:
+            db.execute('BEGIN')
         query = ('SELECT h.key, v.version, v.etag, length(v.body) size, v.modified '
                  'FROM heads h JOIN versions v ON h.key=v.key AND h.version=v.version '
                  'WHERE h.key>=? AND h.key<? AND h.key>? AND v.deleted=0 ')
@@ -98,25 +110,54 @@ class Storage:
         return 200, {'Contents': items, 'IsTruncated': more,
                      'NextContinuationToken': items[-1]['Key'] if more else None}
 
-    def execute(self, request, admin=False):
+    def execute(self, request, admin=False, batch_db=None):
         bucket = request.get('Bucket')
         operation = request.get('Operation')
         key = request.get('Key', '')
         if not isinstance(key, str) or len(key.encode('utf-8')) > 1024 or '\x00' in key:
             return 400, {'error': 'InvalidKey'}
-        with self.connect(bucket) as db:
+        if operation == 'readBatch':
+            reads = request.get('Reads')
+            if not isinstance(reads, list) or not 1 <= len(reads) <= 16:
+                return 400, {'error': 'InvalidReadBatch'}
+            if not all(isinstance(r, dict) and r.get('Operation') in ('get', 'list')
+                       and r.get('Bucket', bucket) == bucket for r in reads):
+                return 400, {'error': 'InvalidReadBatch'}
+            remaining = 2 * 1024 * 1024
+            results = []
+            with self.connect(bucket) as snapshot:
+                snapshot.execute('BEGIN')
+                for read in reads:
+                    if remaining <= 0:
+                        results.append(None)
+                        continue
+                    status, value = self.execute({**read, 'Bucket': bucket}, batch_db=snapshot)
+                    size = len(json.dumps(value, separators=(',', ':')))
+                    if size > remaining:
+                        results.append(None)  # fetched individually by the client
+                    else:
+                        remaining -= size
+                        results.append({'Status': status, 'Result': value})
+            return 200, {'Results': results}
+        with (nullcontext(batch_db) if batch_db is not None else self.connect(bucket)) as db:
             if operation in ('put', 'delete', 'import'):
                 if not key:
                     return 400, {'error': 'InvalidKey'}
                 db.execute('BEGIN IMMEDIATE')
             if operation == 'get':
+                stamp = {}
+                if key.startswith('idx/token/') and request.get('VersionId') is None:
+                    # The authorization record and revision must describe one committed snapshot.
+                    if not db.in_transaction:
+                        db.execute('BEGIN')
+                    stamp['StorageRevision'] = db.execute('SELECT value FROM workspace_revision WHERE id=1').fetchone()[0]
                 row = self.current(db, key)
                 if request.get('VersionId') is not None:
                     row = db.execute('SELECT * FROM versions WHERE key=? AND version=?',
                                      (key, request['VersionId'])).fetchone()
                 if row is None or row['deleted']:
                     return 404, {'error': 'NoSuchKey'}
-                return 200, {'Body': base64.b64encode(row['body']).decode(),
+                return 200, {**stamp, 'Body': base64.b64encode(row['body']).decode(),
                              'ETag': row['etag'], 'ContentLength': len(row['body']),
                              'ContentType': row['content_type'], 'CacheControl': row['cache_control'],
                              'VersionId': row['version'], 'LastModified': row['modified']}

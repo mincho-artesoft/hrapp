@@ -1,0 +1,4 @@
+{
+  "apiBase": "https://api.cloud-calendars.com",
+  "storageKey": "cc_web_session_v1"
+}

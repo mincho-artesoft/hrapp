@@ -51,13 +51,44 @@ function pages(dir, out = []) {
 const attr = (html, re) => [...html.matchAll(re)];
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
+// Start authenticated reads while the calendar's Angular bundles download.
+// This function is inlined only in the prerendered calendar documents.
+function startCalendarSession({apiBase, storageKey}) {
+  if (location.hash || [...new URLSearchParams(location.search).keys()].some(key => key !== 'lang')) return;
+  let token;
+  try { token = localStorage.getItem(storageKey); } catch { return; }
+  if (!token) return;
+  const pending = new Map();
+  for (const path of ['/me/profile', '/web-calendar/state?sync=0']) {
+    const url = apiBase + path;
+    pending.set(url, fetch(url, {
+      headers: {Authorization: 'Bearer ' + token}, cache: 'no-store', redirect: 'error',
+      signal: AbortSignal.timeout(30000),
+    }).catch(() => null));
+  }
+  window.takeCalendarOpeningResponse = (url, currentToken) => {
+    if (currentToken !== token) {
+      delete window.takeCalendarOpeningResponse;
+      return;
+    }
+    const response = pending.get(url);
+    pending.delete(url);
+    if (!pending.size) delete window.takeCalendarOpeningResponse;
+    return response;
+  };
+}
+
+const calendarSession = JSON.parse(readFileSync(join(ROOT, 'src/app/core/calendar-session.json'), 'utf8'));
+const calendarOpening = `<link rel="preconnect" href="${calendarSession.apiBase}" crossorigin><script id="calendar-opening">(${startCalendarSession.toString()})(${JSON.stringify(calendarSession)})</script>`;
+
 const entries = [];
 for (const file of pages(DIST)) {
   let html = readFileSync(file, 'utf8');
   // Pages also sends these links in HTTP headers, where the HTML base URL does not apply.
   const isCalendar = /\/calendar\/(?:bookings\/)?index\.html$/.test(file);
   const documentHtml = isCalendar
-    ? html.replace(/<link\b[^>]*\brel="preload"[^>]*\bhref="[^"]*\/single-day-view\.webp"[^>]*>/g, '')
+    ? html.replace('<head>', html.includes('id="calendar-opening"') ? '<head>' : '<head>' + calendarOpening)
+      .replace(/<link\b[^>]*\brel="preload"[^>]*\bhref="[^"]*\/single-day-view\.webp"[^>]*>/g, '')
     : html;
   const normalisedHtml = documentHtml
     .replace(/(<link rel="modulepreload" href=")(chunk-[\w-]+\.js")/g, '$1/$2')

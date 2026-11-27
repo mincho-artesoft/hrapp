@@ -6,11 +6,11 @@
       "account": "303803840503",
       "calendarNamespace": "cal.cloud-calendars.com",
       "storageEndpoint": "https://storage.cloud-calendars.com",
-      "codeSHA256": "02c4166cc1efe12ff7324375fd3b8df099b6272c584da43a9077417a9f5a5ee0",
-      "deployedAt": "2026-11-27T08:58:21.000+0000",
+      "codeSHA256": "6683b32147033a17e10011e31ba1fcaf9cc3196fcdaa22ccdd062e5ee27f0350",
+      "deployedAt": "2026-11-27T09:24:31.000+0000",
       "state": "Active",
       "lastUpdateStatus": "Successful",
-      "version": "23"
+      "version": "24"
     }
   ],
   "feedDistribution": "E38UB52KWYH6V6",

@@ -79,6 +79,36 @@ class StorageTests(unittest.TestCase):
         self.assertEqual(len(ordinary), 5)
         self.assertTrue(all('Body' not in item for item in ordinary))
 
+    def test_revision_is_transactional_across_processes_and_read_batches(self):
+        token = 'idx/token/test'
+        self.call('put', token, Body='e30=')
+        stamp = lambda: self.call('get', token)[1]['StorageRevision']
+        before = stamp()
+        other = Storage(self.directory.name, [self.bucket])
+        self.assertEqual(stamp(), before)
+        key = 'cal/test/events/one.json'
+        self.assertEqual(other.execute(dict(Operation='put', Bucket=self.bucket, Key=key, Body='e30='))[0], 200)
+        after_write = stamp()
+        self.assertNotEqual(after_write, before)
+        status, batch = self.call('readBatch', Reads=[
+            dict(Operation='get', Key='missing'),
+            dict(Operation='list', Prefix='cal/test/events/', CalendarInventory='documents'),
+            dict(Operation='get', Key=key)])
+        self.assertEqual(status, 200)
+        missing, listing, stored = batch['Results']
+        self.assertEqual(missing['Status'], 404)
+        self.assertEqual(listing['Result']['Contents'][0]['Body'], stored['Result']['Body'])
+        self.assertEqual(self.call('readBatch', Reads=[dict(Operation='delete', Key=key)])[0], 400)
+        self.assertEqual(self.call('readBatch', Reads=[dict(Operation='get', Key=key, Bucket='other-calendar')])[0], 400)
+        self.assertEqual(stamp(), after_write)
+        marker = self.call('delete', key)[1]['VersionId']
+        after_delete = stamp()
+        self.assertNotEqual(after_delete, after_write)
+        self.call('delete', key, VersionId=marker)
+        self.assertNotEqual(stamp(), after_delete)
+        self.call('delete', token)
+        self.assertEqual(self.call('get', token)[0], 404)
+
     def test_import_retains_etag_and_deleted_state(self):
         self.call('import', VersionId='original-v1', Body='YWJj', ETag='"original"', LastModified='2026-09-01', IsLatest=False)
         self.call('import', VersionId='original-marker', DeleteMarker=True, LastModified='2026-09-02', IsLatest=True)

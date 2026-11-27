@@ -524,7 +524,7 @@ export class WebPlatformService {
     const { principalId, calId } = principal;
     const documents = async (prefix: string) => {
       const versions = new Map<string, string>();
-      const keys = await this.store.listKeys(prefix, versions);
+      const keys = await this.store.listKeys(prefix, versions, 'documents');
       return (await Promise.all(keys.map(key => this.store.getJSON(key, versions.get(key))))).filter(Boolean);
     };
     const providerState = async () => {

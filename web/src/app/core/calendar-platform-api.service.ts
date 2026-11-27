@@ -1,14 +1,21 @@
 import { DestroyRef, Injectable, InjectionToken, isDevMode, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { nativeEventDetails, withWebEventDetails } from './calendar-native-model';
+import calendarSession from './calendar-session.json';
 import { SITE_URL } from './app-facts';
 import { detectBrowserTimeZone } from './ios-event-palette';
 
+declare global {
+  interface Window {
+    takeCalendarOpeningResponse?: (url: string, token: string) => Promise<Response | null> | undefined;
+  }
+}
+
 export const CALENDAR_API_BASE = new InjectionToken<string>('Calendar API base URL', {
   providedIn: 'root',
-  factory: () => 'https://api.cloud-calendars.com',
+  factory: () => calendarSession.apiBase,
 });
-const SESSION_STORAGE_KEY = 'cc_web_session_v1';
+const SESSION_STORAGE_KEY = calendarSession.storageKey;
 
 export class CalendarApiError extends Error {
   constructor(
@@ -249,6 +256,9 @@ export class CalendarPlatformApiService {
   });
 
   private sessionGeneration = 0;
+  // Keep one immutable response in this tab only. A 304 reuses the exact body
+  // whose ETag was sent, even if another request finishes in the meantime.
+  private lastCalendarState?: {token: string; etag: string; json: string};
   private initPromise: Promise<void> | null = null;
   private gisScriptPromise: Promise<void> | null = null;
   private appleScriptPromise: Promise<void> | null = null;
@@ -259,6 +269,8 @@ export class CalendarPlatformApiService {
         if (event.storageArea !== localStorage || (event.key !== null && event.key !== this.sessionKey)) return;
         const saved = this.readSavedToken();
         if (saved === this.token()) return;
+        delete window.takeCalendarOpeningResponse;
+        this.lastCalendarState = undefined;
         this.sessionGeneration++;
         this.profile.set(null);
         this.token.set(saved);
@@ -325,6 +337,8 @@ export class CalendarPlatformApiService {
   }
 
   signOut(): void {
+    if (this.isBrowser) delete window.takeCalendarOpeningResponse;
+    this.lastCalendarState = undefined;
     this.sessionGeneration++;
     this.loadingProfile.set(false);
     this.token.set(null);
@@ -339,6 +353,7 @@ export class CalendarPlatformApiService {
       body?: unknown;
       auth?: boolean;
       optionalAuth?: boolean;
+      revalidateCalendarState?: boolean;
     } = {},
   ): Promise<T> {
     const headers: Record<string, string> = {};
@@ -351,7 +366,14 @@ export class CalendarPlatformApiService {
       headers['Authorization'] = `Bearer ${tok}`;
     }
 
-    const res = await fetch(`${this.apiBaseURL}${path}`, {
+    const previous = opts.revalidateCalendarState && tok && this.lastCalendarState?.token === tok
+      ? this.lastCalendarState : undefined;
+    if (previous) headers['If-None-Match'] = previous.etag;
+
+    const url = this.apiBaseURL + path;
+    const opening = this.isBrowser && tok && opts.auth && !opts.method && !previous
+      ? window.takeCalendarOpeningResponse?.(url, tok) : undefined;
+    const res = (opening && await opening) ?? await fetch(url, {
       method: opts.method ?? 'GET',
       headers,
       body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
@@ -359,6 +381,10 @@ export class CalendarPlatformApiService {
       signal: AbortSignal.timeout(30_000),
     });
 
+    if (res.status === 304 && previous) {
+      this.verifySession(generation);
+      return JSON.parse(previous.json) as T;
+    }
     let data: any = null;
     const text = await res.text();
     if (text) {
@@ -379,6 +405,10 @@ export class CalendarPlatformApiService {
         data?.message ||
         (res.status === 409 ? 'This time slot is no longer available.' : `Request failed (${res.status})`);
       throw new CalendarApiError(res.status, message, data?.code, data);
+    }
+    if (opts.revalidateCalendarState && tok && tok === this.token()) {
+      const etag = res.headers.get('etag');
+      this.lastCalendarState = etag && text.length <= 2 * 1024 * 1024 ? {token: tok, etag, json: text} : undefined;
     }
     return data as T;
   }
@@ -963,8 +993,8 @@ export class CalendarPlatformApiService {
   }
 
   async getCalendarState(opts: { sync?: boolean } = {}): Promise<WebCalendarStateResponse> {
-    const suffix = opts.sync ? '?sync=1' : '';
-    const state = await this.request<WebCalendarStateResponse>(`/web-calendar/state${suffix}`, { auth: true });
+    const suffix = opts.sync === undefined ? '' : opts.sync ? '?sync=1' : '?sync=0';
+    const state = await this.request<WebCalendarStateResponse>(`/web-calendar/state${suffix}`, { auth: true, revalidateCalendarState: true });
     return { ...state, events: (state.events ?? []).map(withWebEventDetails), receivedEvents: (state.receivedEvents ?? []).map(withWebEventDetails) };
   }
 

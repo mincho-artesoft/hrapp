@@ -17,10 +17,13 @@ import type { Response } from 'express';
 import { AuthGuard } from '../common/auth.guard';
 import { reply } from '../common/api-result';
 import { calendarWeather } from './calendar-weather';
+import { WebStateResponses } from './web-state-responses';
 import { WebPlatformService } from './web-platform.service';
 
 @Controller()
 export class WebPlatformController {
+  private readonly stateResponses = new WebStateResponses();
+
   constructor(private readonly svc: WebPlatformService) {}
 
   // ── Auth & Profile ────────────────────────────────────────────────────────
@@ -207,7 +210,8 @@ export class WebPlatformController {
   @Get('web-calendar/state')
   @UseGuards(AuthGuard)
   async webCalendarState(@Req() req: any, @Query() query: any, @Res({ passthrough: true }) res: Response) {
-    return reply(res, await this.svc.getWebCalendarState(req.principal, query ?? {}));
+    return this.stateResponses.reply(req.principal, query ?? {}, req.headers['if-none-match'], res,
+      () => this.svc.getWebCalendarState(req.principal, query ?? {}));
   }
 
   @Put('web-calendar/settings')

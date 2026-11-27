@@ -8,6 +8,9 @@ import {
 import { CalendarStorageClient } from './calendar-storage-client';
 import { keys } from './keys';
 
+// Metadata from the authenticated storage read. This never becomes a JSON field.
+export const storageReadRevisions = new WeakMap<object, string>();
+
 /**
  * S3-as-DB. A thin, injectable wrapper around the exact operations the original
  * Lambda's lib/store.mjs performed — same bucket, same key layout, same
@@ -73,10 +76,11 @@ export class StoreService {
     try {
       const res = await this.s3.send(new GetObjectCommand({ Bucket: this.bucket, Key: key }));
       if (!res.ETag) throw new Error(`S3 returned no ETag for ${key}`);
-      return {
-        value: JSON.parse(await res.Body.transformToString()),
-        etag: res.ETag,
-      };
+      const value = JSON.parse(await res.Body.transformToString());
+      if (typeof res.StorageRevision === 'string' && value && typeof value === 'object') {
+        storageReadRevisions.set(value, res.StorageRevision);
+      }
+      return {value, etag: res.ETag};
     } catch (err: any) {
       if (err.name === 'NoSuchKey' || err.$metadata?.httpStatusCode === 404) return null;
       throw err;
@@ -153,7 +157,7 @@ export class StoreService {
     await this.s3.send(new DeleteObjectCommand({ Bucket: this.bucket, Key: key }));
   }
 
-  async listKeys(prefix: string, versions?: Map<string, string>, inventory?: 'all' | 'account'): Promise<string[]> {
+  async listKeys(prefix: string, versions?: Map<string, string>, inventory?: 'all' | 'account' | 'documents'): Promise<string[]> {
     const out: string[] = [];
     const options = inventory ? {
       CalendarInventory: inventory,
