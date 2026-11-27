@@ -1,29 +1,38 @@
 # Cloud Calendars — https://www.cloud-calendars.com
 #
-# Everything here is a public marketing site. There is nothing to hide from a
-# crawler and no admin surface, so the only rules are the ones that stop bots
-# wasting their budget on files that are not pages.
-#
-# Note: do not disallow /ads.txt, /app-ads.txt or the JS/CSS bundles. AdSense
-# and AdMob crawlers obey robots.txt, so disallowing them fails authorization.
+# Do not disallow /ads.txt, /app-ads.txt or the JS/CSS bundles. AdSense and
+# AdMob crawlers obey robots.txt, so disallowing them fails authorization.
 
 User-agent: Mediapartners-Google
 Allow: /
-#
-# The pages are prerendered now -- every route ships as real HTML, so a crawler
-# that never runs JavaScript still sees the words. The bundles stay allowed
-# anyway: blocking them makes a page look broken to a renderer that does run
-# them, which is a worse signal than the bandwidth is worth.
+Disallow: /calendar/
+Disallow: /*/calendar/
+Disallow: /event/
+Disallow: /*/event/
+Disallow: /admin/
+Disallow: /*/admin/
+Disallow: /app-auth/
+Disallow: /*/app-auth/
 
 User-agent: OAI-SearchBot
 Allow: /
 Allow: /media/panel/
 Disallow: /media/
+Disallow: /calendar/
+Disallow: /*/calendar/
+Disallow: /event/
+Disallow: /*/event/
+Disallow: /admin/
+Disallow: /*/admin/
+Disallow: /app-auth/
+Disallow: /*/app-auth/
 
 User-agent: GPTBot
 Allow: /
 Allow: /media/panel/
 Disallow: /media/
+Disallow: /calendar/
+Disallow: /*/calendar/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -57,12 +66,19 @@ Disallow: /media/
 
 User-agent: *
 Allow: /
-# Public screenshot renditions are embedded in article and product pages.
-# Allow crawlers to read those images; keep other media paths excluded.
 Allow: /media/panel/
 Disallow: /media/
+Disallow: /calendar/
+Disallow: /*/calendar/
+Disallow: /event/
+Disallow: /*/event/
+Disallow: /admin/
+Disallow: /*/admin/
+Disallow: /app-auth/
+Disallow: /*/app-auth/
 
 Sitemap: https://www.cloud-calendars.com/sitemap.xml
+Sitemap: https://www.cloud-calendars.com/sitemap-tools.xml
 
 # Plain-language summary and Markdown exports for LLM crawlers:
 # https://www.cloud-calendars.com/llms.txt

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICS file viewer and validator | Cloud Calendars</title><meta name="description" content="Open an iCalendar file or paste its text to see event titles, start dates and recurrence rules. Check the file structure before you import it."><link rel="canonical" href="https://www.cloud-calendars.com/tools/ics-file-viewer-and-validator/">
+<meta property="og:title" content="ICS file viewer and validator"><meta property="og:description" content="Open an iCalendar file or paste its text to see event titles, start dates and recurrence rules. Check the file structure before you import it."><meta property="og:url" content="https://www.cloud-calendars.com/tools/ics-file-viewer-and-validator/">
+<meta name="google-adsense-account" content="ca-pub-3759868960530173">
+<link rel="stylesheet" href="/tools/calendar-tools.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "ICS file viewer and validator", "url": "https://www.cloud-calendars.com/tools/ics-file-viewer-and-validator/", "description": "Open an iCalendar file or paste its text to see event titles, start dates and recurrence rules. Check the file structure before you import it.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web"}</script>
+<script>
+(function(){
+  var loadAds = function() {
+    if (document.getElementById('cc-adsense-script')) return;
+    var s = document.createElement('script');
+    s.id = 'cc-adsense-script';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3759868960530173';
+    document.head.appendChild(s);
+  };
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(loadAds, { timeout: 2000 });
+  else setTimeout(loadAds, 1200);
+})();
+</script>
+</head><body><header><nav aria-label="Main"><a class="brand" href="/">Cloud Calendars</a><a href="/tools/">Calendar tools</a><a href="/compare/">Compare</a><a href="/articles/">Guides</a><a href="/about/">About</a><a href="/calendar/">Web calendar</a></nav></header>
+<main><h1>ICS file viewer and validator</h1><p class="intro">Open an iCalendar file or paste its text to see event titles, start dates and recurrence rules. Check the file structure before you import it.</p><div class="tool" style="display:grid;gap:12px;">
+<input accept=".ics,text/calendar" id="icsFile" type="file"/>
+<textarea id="icsRaw" rows="6">BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cloud Calendars//EN
+BEGIN:VEVENT
+UID:demo-2026@cloud-calendars.com
+DTSTAMP:20261101T120000Z
+SUMMARY:Quarterly Product Roadmap Review
+DTSTART:20261124T150000Z
+DTEND:20261124T160000Z
+LOCATION:Zoom / Conference Room B
+END:VEVENT
+END:VCALENDAR</textarea>
+<button class="btn" id="icsBtn" type="button">Parse &amp; Validate .ICS Locally</button>
+<div id="icsOut"></div>
+</div>
+<section class="ref-doc"><p class="byline">Verified by the <strong>Cloud Calendars Engineering Team</strong> (<a href="/about/">Editorial Policy</a>) · 100% client-side browser tool</p><h2>How RFC 5545 iCalendar (.ics) Validation Works</h2><p>An iCalendar file (.ics) is a plain-text UTF-8 document governed by IETF RFC 5545 (and extended by RFC 7986 for modern calendar properties such as COLOR and IMAGE). Every valid calendar stream must open with BEGIN:VCALENDAR, declare VERSION:2.0 and a vendor PRODID identifier, wrap each calendar item inside BEGIN:VEVENT and END:VEVENT, and close cleanly with END:VCALENDAR.</p><p>When an import fails silently in Apple Calendar, Google Calendar, or Microsoft Outlook, the root cause is almost always one of four structural errors: a missing UID or DTSTAMP on one VEVENT block, unescaped commas or newlines inside DESCRIPTION, broken CRLF line folding (RFC 5545 wraps lines longer than 75 octets using a leading space or tab on the continuation line), or mixing floating local timestamps with UTC Z suffixes inside the same recurring series.</p><h2>How to Inspect and Fix a Broken .ICS File Before Importing</h2><ol><li>Select your .ics file from disk or paste the raw VCALENDAR text directly into the editor above. All parsing executes in local browser memory—private appointments and meeting join links are never uploaded.</li><li>Click Parse & Validate .ICS Locally to unfold wrapped lines, verify envelope matching, and inspect every extracted VEVENT summary, DTSTART, DTEND, UID, and RRULE.</li><li>Check timestamp suffixes: timestamps ending in Z are anchored in UTC, timestamps carrying TZID=... rely on a matching VTIMEZONE definition, and bare timestamps (such as 20261124T090000) float in the viewer's local time zone.</li><li>Once verified, import into a dedicated secondary calendar first (File → Import on macOS Calendar, or Settings → Import & export in Google Calendar web) so you can preview placement before merging into your primary schedule.</li></ol><h2>Platform Differences Across iCloud, Google Calendar & Outlook</h2><p>Google Calendar's web importer rejects .ics files larger than approximately 1–2 MB or files where a single VEVENT omits UID, often displaying a generic 'Processed zero events' banner without naming the offending line. Splitting oversized exports or validating missing UIDs here pinpoints the exact event.</p><p>Apple Calendar (EventKit) tolerates missing DTSTAMP values during manual file imports on macOS, whereas subscribed webcal:// feeds cached through iCloud require strict VERSION:2.0 headers and unique UIDs across updates so modified events update in place instead of duplicating.</p><h2>Frequently Asked Questions</h2><dl><dt>Is it safe to open a confidential work .ics file in this viewer?</dt><dd>Yes. The file reader uses the browser's FileReader API in local memory and performs zero network requests with your calendar data.</dd><dt>Why does my .ics file import one hour off in March or November?</dt><dd>Either the file uses a bare floating timestamp without a TZID, or its VTIMEZONE block contains outdated daylight-saving transition rules for that region.</dd><dt>What is the difference between importing an .ics file and subscribing to a URL?</dt><dd>Importing copies a static snapshot of events once; subscribing via webcal:// or https:// polls the feed periodically for future changes.</dd></dl><h2>Related Tools &amp; Guides</h2><ul><li><a href="/tools/ics-calendar-merger-and-deduplicator/">Merge multiple ICS files and deduplicate by UID</a></li><li><a href="/articles/calendar-export-ics-pdf-and-backup/">Complete guide to exporting, backing up, and restoring ICS calendars</a></li><li><a href="/tools/">Browse all 12 free zero-upload calendar utilities →</a></li></ul><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is it safe to open a confidential work .ics file in this viewer?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The file reader uses the browser's FileReader API in local memory and performs zero network requests with your calendar data."}}, {"@type": "Question", "name": "Why does my .ics file import one hour off in March or November?", "acceptedAnswer": {"@type": "Answer", "text": "Either the file uses a bare floating timestamp without a TZID, or its VTIMEZONE block contains outdated daylight-saving transition rules for that region."}}, {"@type": "Question", "name": "What is the difference between importing an .ics file and subscribing to a URL?", "acceptedAnswer": {"@type": "Answer", "text": "Importing copies a static snapshot of events once; subscribing via webcal:// or https:// polls the feed periodically for future changes."}}]}</script></section>
+</main>
+<footer><p><strong>Cloud Calendars</strong> by <a href="https://arte-soft.com/">Arte Soft EOOD</a> · 100% client-side browser utilities (files never leave your device).</p><p><a href="/">Home</a> · <a href="/tools/">All 12 Tools</a> · <a href="/articles/">Sync Guides</a> · <a href="/compare/">Comparisons</a> · <a href="/about/">About &amp; Editorial Policy</a> · <a href="/contact/">Contact Us</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-of-service/">Terms of Service</a> · <a href="https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?pt=127093297&amp;ct=cc-calendar-tools&amp;mt=8">App Store</a></p></footer><script src="/tools/calendar-tools.js"></script></body></html>

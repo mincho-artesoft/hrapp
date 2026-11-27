@@ -86,11 +86,18 @@ for (const file of pages(DIST)) {
   let html = readFileSync(file, 'utf8');
   // Pages also sends these links in HTTP headers, where the HTML base URL does not apply.
   const isCalendar = /\/calendar\/(?:bookings\/)?index\.html$/.test(file);
+  const relPath = '/' + relative(DIST, file).replace(/\\/g, '/');
+  const isNoAdsRoute =
+    isCalendar ||
+    /<meta name="(?:robots|googlebot)" content="noindex/i.test(html) ||
+    /(^|\/)(calendar|book|bookings|booking|event|admin|app-auth|privacy-policy|terms-of-service|about|contact|404)(\/|$)/i.test(relPath);
   const documentHtml = isCalendar
     ? html.replace('<head>', html.includes('id="calendar-opening"') ? '<head>' : '<head>' + calendarOpening)
       .replace(/<link\b[^>]*\brel="preload"[^>]*\bhref="[^"]*\/single-day-view\.webp"[^>]*>/g, '')
     : html;
-  const normalisedHtml = documentHtml
+  const normalisedHtml = (isNoAdsRoute
+    ? documentHtml.replace(/\s*<meta name="google-adsense-account"[^>]*>/gi, '')
+    : documentHtml)
     .replace(/(<link rel="modulepreload" href=")(chunk-[\w-]+\.js")/g, '$1/$2')
     .replace(
       /href="(https:\/\/apps\.apple\.com\/[^"]+)"/g,
@@ -101,8 +108,8 @@ for (const file of pages(DIST)) {
     writeFileSync(file, html);
   }
 
-  // Private tools, tokenized invitation pages, and non-Google-indexed locales must stay out of the sitemap.
-  if (/<meta name="(?:robots|googlebot)" content="noindex/i.test(html)) continue;
+  // Private tools, workspace shells, tokenized invitation pages, and non-Google-indexed locales must stay out of the sitemap.
+  if (isCalendar || /<meta name="(?:robots|googlebot)" content="noindex/i.test(html)) continue;
 
   // The canonical is what the page says its own address is. Trusting it rather
   // than deriving one from the file path means a canonical bug shows up here
@@ -249,7 +256,7 @@ for (const file of pages(DIST)) {
   for (const [, href] of html.matchAll(/href="(\/[^"#?]*)"/g)) {
     // Non-page assets are served straight from the bucket and are not in the
     // page set; only routes are checked here.
-    if (/\.(js|css|xml|txt|ico|png|jpe?g|webp|avif|svg|mp4|webm|woff2?)$/.test(href)) continue;
+    if (/\.(js|css|xml|txt|ics|ico|png|jpe?g|webp|avif|svg|mp4|webm|woff2?)$/.test(href)) continue;
     if (href.startsWith('/media/') || href.startsWith('/assets/')) continue;
     const target = href.endsWith('/') ? href : `${href}/`;
     if (!built.has(target) && !built.has(href)) {

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISO week number calculator | Cloud Calendars</title><meta name="description" content="Look up the ISO week and week-year for any date. ISO weeks start on Monday, and week 1 contains the first Thursday."><link rel="canonical" href="https://www.cloud-calendars.com/tools/iso-8601-week-number-calendar-lookup/">
+<meta property="og:title" content="ISO week number calculator"><meta property="og:description" content="Look up the ISO week and week-year for any date. ISO weeks start on Monday, and week 1 contains the first Thursday."><meta property="og:url" content="https://www.cloud-calendars.com/tools/iso-8601-week-number-calendar-lookup/">
+<meta name="google-adsense-account" content="ca-pub-3759868960530173">
+<link rel="stylesheet" href="/tools/calendar-tools.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "ISO week number calculator", "url": "https://www.cloud-calendars.com/tools/iso-8601-week-number-calendar-lookup/", "description": "Look up the ISO week and week-year for any date. ISO weeks start on Monday, and week 1 contains the first Thursday.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web"}</script>
+<script>
+(function(){
+  var loadAds = function() {
+    if (document.getElementById('cc-adsense-script')) return;
+    var s = document.createElement('script');
+    s.id = 'cc-adsense-script';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3759868960530173';
+    document.head.appendChild(s);
+  };
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(loadAds, { timeout: 2000 });
+  else setTimeout(loadAds, 1200);
+})();
+</script>
+</head><body><header><nav aria-label="Main"><a class="brand" href="/">Cloud Calendars</a><a href="/tools/">Calendar tools</a><a href="/compare/">Compare</a><a href="/articles/">Guides</a><a href="/about/">About</a><a href="/calendar/">Web calendar</a></nav></header>
+<main><h1>ISO week number calculator</h1><p class="intro">Look up the ISO week and week-year for any date. ISO weeks start on Monday, and week 1 contains the first Thursday.</p><div class="tool" style="display:grid;gap:12px;">
+<label>Pick Any Date:<input id="wkDate" type="date"/></label>
+<div id="wkOut"></div>
+</div>
+<section class="ref-doc"><p class="byline">Verified by the <strong>Cloud Calendars Engineering Team</strong> (<a href="/about/">Editorial Policy</a>) · 100% client-side browser tool</p><h2>How ISO 8601 Week Numbers (Monday Start & First Thursday Rule) Work</h2><p>Across European manufacturing, logistics, retail supply chains, aviation scheduling, and software engineering roadmaps, dates are routinely referenced by week number—such as 'delivery in W48' or '2026-W01'. However, North American Sunday-start calendars and ISO 8601 calendars frequently disagree by an entire week at the turn of the year!</p><p>Under ISO 8601-1:2019, every week begins strictly on Monday, and Week 01 of any year is defined in three mathematically equivalent ways: the week containing the year's first Thursday, the week containing January 4th, or the first week with at least four days (majority of days) in the new calendar year.</p><h2>Checking ISO Week Numbers and 53-Week Boundary Years</h2><ol><li>Pick any calendar date in the date selector above to compute both its two-digit ISO week number (W01–W53) and its four-digit ISO week-numbering year.</li><li>Pay special attention to December 29–31 and January 1–3: because ISO weeks never split mid-week, December 31 can belong to W01 of the next ISO year, or January 1–3 can belong to W52/W53 of the previous ISO year!</li><li>Enable native week numbers in your calendar client and verify its 'Start week on Monday' setting so desktop and mobile views match your team's convention.</li></ol><h2>Why Apple Calendar, Outlook, and Google Disagree on Week 1</h2><p>In the United States, Canada, and Japan, consumer calendars default to starting the week on Sunday and counting January 1st as Week 1 even if January 1st is a Saturday. When collaborating internationally, always write the explicit ISO format (e.g., 2026-W48) or pair week numbers with the Monday calendar date (e.g., 'W48 — Mon 23 Nov 2026') to prevent one-week scheduling mismatches.</p><h2>Frequently Asked Questions</h2><dl><dt>When does a year have 53 ISO weeks?</dt><dd>Any year in which January 1st falls on a Thursday—and any leap year in which January 1st falls on a Wednesday—has 53 ISO weeks (for example, 2020 and 2026 both have 53 ISO weeks!).</dd><dt>Why can January 1st show as Week 52 or Week 53 of the previous year?</dt><dd>If January 1st falls on Friday, Saturday, or Sunday, fewer than four days of that Monday–Sunday week lie in the new year, so ISO 8601 assigns those days to the final week of the preceding year.</dd><dt>How do I fix mismatched week numbers on my iPhone?</dt><dd>Go to iOS Settings → Apps → Calendar, turn on Week Numbers, and set Start Week On to Monday so EventKit applies ISO-8601 rules.</dd></dl><h2>Related Tools &amp; Guides</h2><ul><li><a href="/articles/calendar-week-numbers-iso-monday-versus-sunday-start-mismatch/">Deep dive: fixing ISO Monday vs. US Sunday week-number mismatches</a></li><li><a href="/tools/business-working-days-date-calculator/">Calculate Monday–Friday working days between two dates</a></li><li><a href="/tools/">Browse all 12 free zero-upload calendar utilities →</a></li></ul><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When does a year have 53 ISO weeks?", "acceptedAnswer": {"@type": "Answer", "text": "Any year in which January 1st falls on a Thursday\u2014and any leap year in which January 1st falls on a Wednesday\u2014has 53 ISO weeks (for example, 2020 and 2026 both have 53 ISO weeks!)."}}, {"@type": "Question", "name": "Why can January 1st show as Week 52 or Week 53 of the previous year?", "acceptedAnswer": {"@type": "Answer", "text": "If January 1st falls on Friday, Saturday, or Sunday, fewer than four days of that Monday\u2013Sunday week lie in the new year, so ISO 8601 assigns those days to the final week of the preceding year."}}, {"@type": "Question", "name": "How do I fix mismatched week numbers on my iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Go to iOS Settings \u2192 Apps \u2192 Calendar, turn on Week Numbers, and set Start Week On to Monday so EventKit applies ISO-8601 rules."}}]}</script></section>
+</main>
+<footer><p><strong>Cloud Calendars</strong> by <a href="https://arte-soft.com/">Arte Soft EOOD</a> · 100% client-side browser utilities (files never leave your device).</p><p><a href="/">Home</a> · <a href="/tools/">All 12 Tools</a> · <a href="/articles/">Sync Guides</a> · <a href="/compare/">Comparisons</a> · <a href="/about/">About &amp; Editorial Policy</a> · <a href="/contact/">Contact Us</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-of-service/">Terms of Service</a> · <a href="https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?pt=127093297&amp;ct=cc-calendar-tools&amp;mt=8">App Store</a></p></footer><script src="/tools/calendar-tools.js"></script><script>
+          (function(){
+            const inp=document.getElementById('wkDate'), out=document.getElementById('wkOut');
+            const isoWeek=(dt)=>{
+              const d=new Date(Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate()));
+              const dayNum=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-dayNum);
+              const yearStart=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+              return [d.getUTCFullYear(), Math.ceil((((d-yearStart)/86400000)+1)/7)];
+            };
+            const run=()=>{
+              const dt=new Date(inp.value+'T00:00:00');
+              if(isNaN(dt)){out.textContent='Choose a date.';return;} const [yr,wk]=isoWeek(dt);
+              out.innerHTML='ISO-8601 Week (Monday Start): <strong style="color:#38bdf8;font-size:1.25rem;">'+yr+'-W'+String(wk).padStart(2,'0')+'</strong> (Week '+wk+')';
+            };
+            inp.onchange=run; run();
+          })();
+          </script></body></html>

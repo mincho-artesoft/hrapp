@@ -18,8 +18,7 @@ export class PrivacyPolicyPageComponent implements OnInit {
     this.seo.apply({
       title: 'Privacy Policy — Cloud Calendars',
       description:
-        'How Cloud Calendars collects, uses and shares information, including calendar ' +
-        'data, location used for weather forecasts, and third-party account connections.',
+        'How Cloud Calendars and www.cloud-calendars.com handle calendar data, weather location, browser tools, cookies, Google AdSense advertising, and GDPR rights.',
       path: '/privacy-policy',
     });
   }

@@ -1,0 +1,15 @@
+{
+  "name": "cloud-calendars-public-tools",
+  "compatibility_date": "2026-11-18",
+  "workers_dev": true,
+  "routes": [
+    // The tools and the 24/48 guide are deployed with wrangler.guides.jsonc.
+    { "pattern": "www.cloud-calendars.com/sitemap-tools.xml*", "zone_name": "cloud-calendars.com" }
+  ],
+  "preview_urls": false,
+  "assets": {
+    "directory": "../../dist/calendar-tools",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

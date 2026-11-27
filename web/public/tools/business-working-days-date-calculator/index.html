@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working days between two dates | Cloud Calendars</title><meta name="description" content="Count weekdays and weekends, including both dates. Public holidays are counted as ordinary weekdays."><link rel="canonical" href="https://www.cloud-calendars.com/tools/business-working-days-date-calculator/">
+<meta property="og:title" content="Working days between two dates"><meta property="og:description" content="Count weekdays and weekends, including both dates. Public holidays are counted as ordinary weekdays."><meta property="og:url" content="https://www.cloud-calendars.com/tools/business-working-days-date-calculator/">
+<meta name="google-adsense-account" content="ca-pub-3759868960530173">
+<link rel="stylesheet" href="/tools/calendar-tools.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Working days between two dates", "url": "https://www.cloud-calendars.com/tools/business-working-days-date-calculator/", "description": "Count weekdays and weekends, including both dates. Public holidays are counted as ordinary weekdays.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web"}</script>
+<script>
+(function(){
+  var loadAds = function() {
+    if (document.getElementById('cc-adsense-script')) return;
+    var s = document.createElement('script');
+    s.id = 'cc-adsense-script';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3759868960530173';
+    document.head.appendChild(s);
+  };
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(loadAds, { timeout: 2000 });
+  else setTimeout(loadAds, 1200);
+})();
+</script>
+</head><body><header><nav aria-label="Main"><a class="brand" href="/">Cloud Calendars</a><a href="/tools/">Calendar tools</a><a href="/compare/">Compare</a><a href="/articles/">Guides</a><a href="/about/">About</a><a href="/calendar/">Web calendar</a></nav></header>
+<main><h1>Working days between two dates</h1><p class="intro">Count weekdays and weekends, including both dates. Public holidays are counted as ordinary weekdays.</p><div class="tool" style="display:grid;gap:12px;">
+<div>
+<label>Start Date:<input id="wdS" type="date"/></label>
+<label>End Date:<input id="wdE" type="date"/></label>
+</div>
+<section class="ref-doc"><p class="byline">Verified by the <strong>Cloud Calendars Engineering Team</strong> (<a href="/about/">Editorial Policy</a>) · 100% client-side browser tool</p><h2>How Inclusive Business Working-Day Counts Are Calculated</h2><p>Contractual notice periods, procurement SLAs, software sprint capacities, invoice net-business-day deadlines, and visa processing windows distinguish between calendar days (all 7 days of the week) and business working days (Monday through Friday). Off-by-one mistakes frequently happen when one party counts inclusively (counting both the start date and end date) and the other counts elapsed 24-hour intervals.</p><p>This calculator performs an inclusive day-by-day traversal from your Start Date through your End Date, reporting Monday–Friday working days, Saturday–Sunday weekend days, and total calendar days side by side so capacity estimates are unambiguous.</p><h2>Using the Working-Days Calculator for Sprints & Deadlines</h2><ol><li>Select the inclusive Start Date (for example, the first Monday of a quarter or sprint) and the inclusive End Date.</li><li>Read the three figures immediately: Working Days (Monday–Friday), Weekend Days (Saturday–Sunday), and Total Calendar Days.</li><li>Subtract statutory public holidays and planned team PTO days that fall on Monday–Friday in your jurisdiction—public holidays vary not only by country, but often by state, canton, or municipality.</li></ol><h2>Accounting for Regional Bank Holidays and Observed Substitutes</h2><p>When a statutory holiday lands on a Saturday or Sunday, many jurisdictions (including the United Kingdom, Australia, Canada, and US federal schedules) designate the following Monday—or preceding Friday—as an observed substitute bank holiday, reducing the following week from 5 working days to 4. Always cross-check regional holiday .ics feeds when signing fixed-date delivery commitments.</p><h2>Frequently Asked Questions</h2><dl><dt>Are both the Start Date and End Date included in the count?</dt><dd>Yes. Selecting Monday through Friday of the same week returns 5 working days, 0 weekend days, and 5 total calendar days.</dd><dt>Does this calculator automatically subtract national holidays?</dt><dd>No—public holidays are counted as ordinary weekdays because bank holidays differ across countries, states, and even cities (such as Brisbane's August Ekka holiday). Subtract local weekday holidays from the weekday total.</dd><dt>How many working days are in a typical calendar year?</dt><dd>A standard 365-day year contains 260 or 261 Monday–Friday weekdays before subtracting public holidays and annual leave (typically leaving ~220–235 net working days).</dd></dl><h2>Related Tools &amp; Guides</h2><ul><li><a href="/tools/guides/brisbane-queensland-public-holidays-2027-ics/">Example regional holiday feed: Brisbane 2027 public holidays (.ics)</a></li><li><a href="/tools/iso-8601-week-number-calendar-lookup/">Look up ISO 8601 week numbers for sprint and fiscal planning</a></li><li><a href="/tools/">Browse all 12 free zero-upload calendar utilities →</a></li></ul><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are both the Start Date and End Date included in the count?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Selecting Monday through Friday of the same week returns 5 working days, 0 weekend days, and 5 total calendar days."}}, {"@type": "Question", "name": "Does this calculator automatically subtract national holidays?", "acceptedAnswer": {"@type": "Answer", "text": "No\u2014public holidays are counted as ordinary weekdays because bank holidays differ across countries, states, and even cities (such as Brisbane's August Ekka holiday). Subtract local weekday holidays from the weekday total."}}, {"@type": "Question", "name": "How many working days are in a typical calendar year?", "acceptedAnswer": {"@type": "Answer", "text": "A standard 365-day year contains 260 or 261 Monday\u2013Friday weekdays before subtracting public holidays and annual leave (typically leaving ~220\u2013235 net working days)."}}]}</script></section>
+</main>
+<footer><p><strong>Cloud Calendars</strong> by <a href="https://arte-soft.com/">Arte Soft EOOD</a> · 100% client-side browser utilities (files never leave your device).</p><p><a href="/">Home</a> · <a href="/tools/">All 12 Tools</a> · <a href="/articles/">Sync Guides</a> · <a href="/compare/">Comparisons</a> · <a href="/about/">About &amp; Editorial Policy</a> · <a href="/contact/">Contact Us</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-of-service/">Terms of Service</a> · <a href="https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?pt=127093297&amp;ct=cc-calendar-tools&amp;mt=8">App Store</a></p></footer><script src="/tools/calendar-tools.js"></script><script>
+          (function(){
+            const s=document.getElementById('wdS'),e=document.getElementById('wdE'),out=document.getElementById('wdOut');
+            const run=()=>{
+              const d1=new Date(s.value+'T00:00:00'), d2=new Date(e.value+'T00:00:00');
+              if(isNaN(d1)||isNaN(d2)||d2<d1){out.textContent='Pick an End Date on or after Start Date.';return;}
+              let work=0,wknd=0,tot=0;
+              for(let cur=new Date(d1);cur<=d2;cur.setDate(cur.getDate()+1)){
+                tot++; const day=cur.getDay(); if(day===0||day===6)wknd++; else work++;
+              }
+              out.innerHTML='Working Days (Mon–Fri): <strong style="color:#38bdf8;font-size:1.2rem;">'+work+'</strong> &middot; Weekend Days: <strong>'+wknd+'</strong> &middot; Total Calendar Days: <strong>'+tot+'</strong>';
+            };
+            s.onchange=run; e.onchange=run; run();
+          })();
+          </script></body></html>

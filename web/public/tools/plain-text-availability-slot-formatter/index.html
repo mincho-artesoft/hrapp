@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meeting availability in two time zones | Cloud Calendars</title><meta name="description" content="Turn a UTC date and time into a plain-text email line showing both local dates, times and time zones."><link rel="canonical" href="https://www.cloud-calendars.com/tools/plain-text-availability-slot-formatter/">
+<meta property="og:title" content="Meeting availability in two time zones"><meta property="og:description" content="Turn a UTC date and time into a plain-text email line showing both local dates, times and time zones."><meta property="og:url" content="https://www.cloud-calendars.com/tools/plain-text-availability-slot-formatter/">
+<meta name="google-adsense-account" content="ca-pub-3759868960530173">
+<link rel="stylesheet" href="/tools/calendar-tools.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Meeting availability in two time zones", "url": "https://www.cloud-calendars.com/tools/plain-text-availability-slot-formatter/", "description": "Turn a UTC date and time into a plain-text email line showing both local dates, times and time zones.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web"}</script>
+<script>
+(function(){
+  var loadAds = function() {
+    if (document.getElementById('cc-adsense-script')) return;
+    var s = document.createElement('script');
+    s.id = 'cc-adsense-script';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3759868960530173';
+    document.head.appendChild(s);
+  };
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(loadAds, { timeout: 2000 });
+  else setTimeout(loadAds, 1200);
+})();
+</script>
+</head><body><header><nav aria-label="Main"><a class="brand" href="/">Cloud Calendars</a><a href="/tools/">Calendar tools</a><a href="/compare/">Compare</a><a href="/articles/">Guides</a><a href="/about/">About</a><a href="/calendar/">Web calendar</a></nav></header>
+<main><h1>Meeting availability in two time zones</h1><p class="intro">Turn a UTC date and time into a plain-text email line showing both local dates, times and time zones.</p><div class="tool" style="display:grid;gap:12px;">
+<div>
+<label>Proposed Slot (UTC):<input id="avDt" type="datetime-local"/></label>
+<label>Your TZ:<select id="avTz1"><option value="America/New_York">ET (New York)</option><option value="Europe/London">UK (London)</option><option value="Europe/Sofia">EET (Sofia)</option></select></label>
+<label>Guest TZ:<select id="avTz2"><option value="America/Los_Angeles">PT (San Francisco)</option><option selected="" value="Europe/Berlin">CET (Berlin)</option><option value="Asia/Tokyo">JST (Tokyo)</option></select></label>
+</div>
+<section class="ref-doc"><p class="byline">Verified by the <strong>Cloud Calendars Engineering Team</strong> (<a href="/about/">Editorial Policy</a>) · 100% client-side browser tool</p><h2>Writing Unambiguous Cross-Timezone Meeting Proposals in Plain Text</h2><p>Not every scheduling conversation needs an external booking portal link. When emailing an executive, enterprise client, journalist, or external counsel, proposing two or three crisp plain-text time slots directly in your message body feels personal and avoids friction—provided there is zero ambiguity about which date and time zone you mean.</p><p>Writing 'Tuesday at 2pm EST' in July (when New York actually observes EDT, UTC-4) or omitting the recipient's local equivalent forces your guest to do mental offset math and risks a one-hour no-show. Formatting every proposed slot with the weekday, calendar date, and both local IANA time zones eliminates misunderstandings immediately.</p><h2>How to Format Dual-Timezone Slots for Email or Slack</h2><ol><li>Pick the exact Proposed Slot in UTC (including the calendar date so seasonal daylight-saving offsets for both cities are exact).</li><li>Select Your Time Zone and your Guest's Time Zone.</li><li>Copy the formatted bullet line—which includes weekday, month, day, local clock time, and short zone label for both sides—and paste it directly into Mail, Gmail, Outlook, or Slack.</li></ol><h2>Handling International Date-Line Crossings Cleanly</h2><p>When scheduling between North America and East Asia or Oceania, a Thursday 17:00 Pacific Time call is already Friday morning in Tokyo or Sydney. Because this formatter outputs the full weekday and calendar date inside both halves of the line, neither participant books the wrong calendar day.</p><h2>Frequently Asked Questions</h2><dl><dt>Why enter the anchor slot in UTC?</dt><dd>UTC never jumps forward or backward for Daylight Saving Time, providing a single unambiguous instant from which both local wall-clock times and dates are derived.</dd><dt>Should I include both time zones even if my guest knows where I live?</dt><dd>Yes—showing the guest's own local time first or alongside yours saves them a lookup and immediately catches date-line or DST discrepancies before an invite is sent.</dd><dt>Once they reply with a chosen slot, how do I send the invite?</dt><dd>Create the event on your calendar in your local IANA time zone (or generate a universal .ics in our Add-to-Calendar tool) so both calendars lock onto the exact instant.</dd></dl><h2>Related Tools &amp; Guides</h2><ul><li><a href="/tools/multi-timezone-meeting-overlap-planner/">Find 08:00–18:00 overlap across three cities first</a></li><li><a href="/tools/add-to-calendar-link-and-ics-generator/">Turn your confirmed UTC slot into Google, Outlook & ICS links</a></li><li><a href="/tools/">Browse all 12 free zero-upload calendar utilities →</a></li></ul><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why enter the anchor slot in UTC?", "acceptedAnswer": {"@type": "Answer", "text": "UTC never jumps forward or backward for Daylight Saving Time, providing a single unambiguous instant from which both local wall-clock times and dates are derived."}}, {"@type": "Question", "name": "Should I include both time zones even if my guest knows where I live?", "acceptedAnswer": {"@type": "Answer", "text": "Yes\u2014showing the guest's own local time first or alongside yours saves them a lookup and immediately catches date-line or DST discrepancies before an invite is sent."}}, {"@type": "Question", "name": "Once they reply with a chosen slot, how do I send the invite?", "acceptedAnswer": {"@type": "Answer", "text": "Create the event on your calendar in your local IANA time zone (or generate a universal .ics in our Add-to-Calendar tool) so both calendars lock onto the exact instant."}}]}</script></section>
+</main>
+<footer><p><strong>Cloud Calendars</strong> by <a href="https://arte-soft.com/">Arte Soft EOOD</a> · 100% client-side browser utilities (files never leave your device).</p><p><a href="/">Home</a> · <a href="/tools/">All 12 Tools</a> · <a href="/articles/">Sync Guides</a> · <a href="/compare/">Comparisons</a> · <a href="/about/">About &amp; Editorial Policy</a> · <a href="/contact/">Contact Us</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-of-service/">Terms of Service</a> · <a href="https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319?pt=127093297&amp;ct=cc-calendar-tools&amp;mt=8">App Store</a></p></footer><script src="/tools/calendar-tools.js"></script><script>
+          (function(){
+            const dt=document.getElementById('avDt'),t1=document.getElementById('avTz1'),t2=document.getElementById('avTz2'),out=document.getElementById('avOut');
+            const f=(d,tz)=>new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short',timeZone:tz}).format(d);
+            const run=()=>{
+              const d=new Date(dt.value+'Z'); if(isNaN(d)){out.value='';return;}
+              out.value='• '+f(d,t1.value)+' ('+f(d,t2.value)+')';
+            };
+            [dt,t1,t2].forEach(x=>x.oninput=run); run();
+          })();
+          </script></body></html>

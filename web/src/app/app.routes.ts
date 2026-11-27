@@ -123,6 +123,8 @@ export const routes: Routes = [
     data: { locale: DEFAULT_LOCALE, isComparison: true },
     resolve: { articleContent: resolveComparisonContent },
   },
+  { path: 'about', loadComponent: () => import('./pages/about-page/about-page.component').then(m => m.AboutPageComponent) },
+  { path: 'contact', loadComponent: () => import('./pages/contact-page/contact-page.component').then(m => m.ContactPageComponent) },
   { path: 'privacy-policy', loadComponent: () => import('./pages/privacy-policy-page/privacy-policy-page.component').then(m => m.PrivacyPolicyPageComponent) },
   { path: 'terms-of-service', loadComponent: () => import('./pages/terms-page/terms-page.component').then(m => m.TermsPageComponent) },
 ];

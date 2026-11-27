@@ -65,6 +65,7 @@ export class HeaderComponent {
     switch (key) {
       case 'articles': return this.isArticlesRoute();
       case 'compare': return this.isCompareRoute();
+      case 'about': return this.active.currentPath().startsWith('/about/');
       case 'calendar': return this.isCalendarRoute();
       case 'bookings': return this.active.currentPath().endsWith('/calendar/bookings/');
       default: return false;
@@ -86,9 +87,13 @@ export class HeaderComponent {
       { label: n.pricing, href: `${base}#pricing`, key: 'pricing' },
     ];
     if (locale.code === 'en-US') {
+      items.push({ label: 'Tools', href: '/tools/', key: 'tools', isRoute: true });
       items.push({ label: 'Compare', href: '/compare/', key: 'compare', isRoute: true });
     }
     items.push({ label: n.articles, href: articlesHref, key: 'articles', isRoute: true });
+    if (locale.code === 'en-US') {
+      items.push({ label: 'About', href: '/about/', key: 'about', isRoute: true });
+    }
     return items;
   });
 

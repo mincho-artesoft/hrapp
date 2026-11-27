@@ -1,0 +1,14 @@
+{
+  "name": "cloud-calendars-guides",
+  "compatibility_date": "2026-11-18",
+  "workers_dev": false,
+  "preview_urls": false,
+  "build": { "command": "node scripts/calendar-tools/build-guides.mjs" },
+  "routes": [
+    { "pattern": "www.cloud-calendars.com/tools/*", "zone_name": "cloud-calendars.com" },
+    { "pattern": "www.cloud-calendars.com/tools", "zone_name": "cloud-calendars.com" },
+    { "pattern": "www.cloud-calendars.com/articles/24-48-firefighter-shift-calendar-ics-download/*", "zone_name": "cloud-calendars.com" },
+    { "pattern": "www.cloud-calendars.com/articles/24-48-firefighter-shift-calendar-ics-download", "zone_name": "cloud-calendars.com" }
+  ],
+  "assets": { "directory": "../../dist/calendar-guide-routes" }
+}

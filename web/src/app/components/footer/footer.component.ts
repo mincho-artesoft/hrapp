@@ -49,6 +49,7 @@ export class FooterComponent {
       { label: n.faq, href: `${base}#faq` },
     ];
     if (locale.code === 'en-US') {
+      links.push({ label: 'Calendar Tools', href: '/tools/' });
       links.push({ label: 'Comparisons', href: '/compare/' });
     }
     links.push({ label: n.articles, href: linkPath(locale, '/articles') });

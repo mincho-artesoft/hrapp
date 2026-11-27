@@ -13,7 +13,7 @@ const ADSENSE_SCRIPT_ID = 'cc-adsense-script';
  * to protect user workflow UX and comply with Google AdSense publisher-content policies.
  */
 const AD_FREE_ROUTE_RE =
-  /(^|\/)(calendar|book|bookings|booking|event|admin|app-auth|privacy-policy|terms-of-service)(\/|$)/i;
+  /(^|\/)(calendar|book|bookings|booking|event|admin|app-auth|privacy-policy|terms-of-service|about|contact)(\/|$)/i;
 
 @Injectable({ providedIn: 'root' })
 export class AdsenseService {

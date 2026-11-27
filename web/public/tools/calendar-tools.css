@@ -1,0 +1,13 @@
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#0b1224;color:#e5ebfa;line-height:1.6}*{box-sizing:border-box}body{margin:0}header,footer{background:#101b32}nav,main,footer{padding:1.1rem max(1.25rem,calc((100vw - 56rem)/2))}nav{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}a{color:#9ad8ff;text-underline-offset:.2em}.brand{color:#fff;font-size:1.2rem;font-weight:730;margin-right:auto}main{min-height:70vh;padding-top:2.5rem;padding-bottom:3rem}h1{font-size:clamp(2rem,6vw,3.3rem);line-height:1.12;letter-spacing:-.035em;margin:.4rem 0 1rem}h2{margin:2rem 0 .5rem}.intro{font-size:1.15rem;color:#c6d5eb}.tool,.cards li{background:#152139;border:1px solid #33445e;border-radius:.8rem;padding:1.15rem}.tool{margin:1.5rem 0;overflow:auto}.cards{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem}.cards a{font-size:1.1rem;font-weight:650}.cards p{margin:.35rem 0}label{display:block;margin:.65rem 0}input,select,textarea,button{font:inherit;color:inherit;border:1px solid #566b86;background:#10192a;border-radius:.4rem;padding:.45rem .65rem;max-width:100%}input,select{margin:.2rem .45rem}textarea{display:block;width:100%;margin:.5rem 0}button,.btn,.btn-sec{display:inline-block;margin:.4rem .4rem .4rem 0;padding:.55rem .9rem;background:#204e74;border-radius:.45rem;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffc778;outline-offset:2px}[hidden]{display:none!important}table{border-collapse:collapse;width:100%;margin:.7rem 0;font-variant-numeric:tabular-nums}td,th{padding:.45rem;border-bottom:1px solid #485970;text-align:left}.scroll{overflow:auto}footer{color:#bbc9e1}.tool output{display:block;margin:.65rem 0}
+
+.ref-doc{margin-top:2.2rem;border-top:1px solid #33445e;padding-top:1.5rem}
+.ref-doc h2{font-size:1.45rem;margin:1.8rem 0 .65rem;color:#f4f7ff}
+.ref-doc h3{font-size:1.1rem;margin:1.2rem 0 .35rem;color:#d6e4ff}
+.ref-doc p,.ref-doc li,.ref-doc dd{color:#cbd8ee;line-height:1.72}
+.ref-doc ul,.ref-doc ol{padding-left:1.35rem}
+.ref-doc li{margin:.45rem 0}
+.ref-doc code{background:#10192a;border:1px solid #2e405b;border-radius:.3rem;padding:.1rem .35rem;font-size:.92em}
+.ref-doc dl{margin:1rem 0}
+.ref-doc dt{font-weight:700;color:#fff;margin-top:1rem}
+.ref-doc dd{margin:.3rem 0 0 0}
+.byline{font-size:.9rem;color:#9eb2d0;margin:.4rem 0 1.2rem}
