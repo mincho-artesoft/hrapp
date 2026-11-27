@@ -105,7 +105,7 @@ export class WebPlatformService {
   }
 
   async listAccountLocalCalendars(principal: any): Promise<ApiResult> {
-    const calendars = (await this.nativeCalendars.list(principal)).filter(calendar => calendar.accountLocal === true);
+    const calendars = (await this.nativeCalendars.list(principal, 'account')).filter(calendar => calendar.accountLocal === true);
     for (const calendar of calendars.filter(c => c.available === false && !c.deletionReconciled)) {
       await this.nativeCalendars.reconcileDeletion(principal, calendar, () => this.calendarService.finishAccountCalendarDeletion(principal, calendar));
     }
@@ -523,11 +523,14 @@ export class WebPlatformService {
   async getWebCalendarState(principal: any, query: any): Promise<ApiResult> {
     const { principalId, calId } = principal;
     const documents = async (prefix: string) => {
-      const keys = await this.store.listKeys(prefix);
-      return (await Promise.all(keys.map(key => this.store.getJSON(key)))).filter(Boolean);
+      const versions = new Map<string, string>();
+      const keys = await this.store.listKeys(prefix, versions);
+      return (await Promise.all(keys.map(key => this.store.getJSON(key, versions.get(key))))).filter(Boolean);
     };
     const providerState = async () => {
-      await this.refreshConnectedBusyEventsIfNeeded(calId, {force: query?.sync === '1'}).catch(() => {});
+      if (query?.sync !== '0') {
+        await this.refreshConnectedBusyEventsIfNeeded(calId, {force: query?.sync === '1'}).catch(() => {});
+      }
       return Promise.all([this.store.getJSON(this.keys.providerBusy(calId)), this.store.getJSON(this.keys.oauthConnections(calId))]);
     };
     const received = async () => {

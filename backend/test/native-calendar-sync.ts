@@ -66,9 +66,61 @@ async function testLargeCalendarInventory() {
   assert.deepEqual(inventory.map(c => c.id), keys.filter(key => key !== keys[2]));
   assert.ok(peakReads <= 4, `Calendar inventory started ${peakReads} simultaneous reads`);
 }
+
+async function testRevalidatedInventory() {
+  const store = new StoreService();
+  const objects = new Map([
+    ['principal/alice/native-calendars/one.json', {title: 'Original', etag: 'v1'}],
+    ['principal/bob/native-calendars/one.json', {title: 'Other owner', etag: 'v1'}],
+  ]);
+  let bodyReads = 0;
+  (store as any).s3 = {send: async ({input}: any) => {
+    if (input.Prefix) return {Contents: [...objects].filter(([key]) => key.startsWith(input.Prefix))
+      .map(([Key, row]) => ({Key, ETag: row.etag}))};
+    bodyReads++;
+    const row = objects.get(input.Key)!;
+    return {ETag: row.etag, Body: {transformToString: async () => JSON.stringify({id: 'one', title: row.title})}};
+  }};
+  const api = new NativeCalendarStore(store), alice = {principalId: 'alice'}, bob = {principalId: 'bob'};
+  (await api.list(alice))[0].title = 'Modified by caller';
+  assert.equal((await api.list(alice))[0].title, 'Original');
+  assert.equal(bodyReads, 1, 'An unchanged calendar needs only the fresh listing');
+  assert.equal((await api.list(bob))[0].title, 'Other owner');
+  const key = 'principal/alice/native-calendars/one.json';
+  objects.set(key, {title: 'Edited elsewhere', etag: 'v2'});
+  assert.equal((await api.list(alice))[0].title, 'Edited elsewhere');
+  assert.equal(bodyReads, 3);
+  objects.delete(key);
+  assert.deepEqual(await api.list(alice), []);
+}
+
+async function testInlineCalendarInventory() {
+  const store = new StoreService();
+  const prefix = 'principal/alice/native-calendars/', key = prefix + 'one.json';
+  let etag = 'v1', requests = 0;
+  (store as any).s3 = {send: async ({input}: any, options: any) => {
+    assert.equal(input.Prefix, prefix, 'No per-calendar GET required');
+    assert.equal(options.CalendarInventory, 'account');
+    requests++;
+    const object = {Key: key, ETag: etag};
+    if (options.KnownETags[key] === etag) return {Contents: [object]};
+    const body = Buffer.from(JSON.stringify({id: 'one', accountLocal: true, title: etag}));
+    return {Contents: [{...object, Body: body.toString('base64')}]};
+  }};
+  const calendars = new NativeCalendarStore(store);
+  const list = () => calendars.list({principalId: 'alice'}, 'account');
+  (await list())[0].title = 'changed by caller';
+  assert.equal((await list())[0].title, 'v1');
+  etag = 'v2';
+  assert.equal((await list())[0].title, 'v2');
+  assert.equal(requests, 3);
+}
+
 async function main() {
   await testCalendarUploadHTTP();
   await testLargeCalendarInventory();
+  await testRevalidatedInventory();
+  await testInlineCalendarInventory();
   const store = new MemoryStore(), api = new NativeCalendarStore(store as any);
   const owner = { principalId: 'alice' }, stranger = { principalId: 'bob' };
   const event = { id: 'event_one', title: 'From phone', start: '2026-11-17T10:00:00Z', end: '2026-11-17T11:00:00Z', allDay: false, details: { notes: 'preserve', attachments: [{ data: 'keep' }] } };

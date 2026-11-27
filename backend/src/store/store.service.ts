@@ -18,9 +18,42 @@ export class StoreService {
   readonly keys = keys;
   private readonly bucket = process.env.CAL_BUCKET as string;
   private readonly s3 = new CalendarStorageClient();
+  // Only inventory readers supply an ETag from a fresh listing. Keep immutable
+  // JSON bytes so a caller editing its result cannot change a later read.
+  private readonly listedJSON = new Map<string, { etag: string; bytes: Buffer }>();
+  private listedBytes = 0;
 
-  async getJSON(key: string): Promise<any> {
-    return (await this.getJSONWithETag(key))?.value ?? null;
+  async getJSON(key: string, listedETag?: string): Promise<any> {
+    if (!listedETag) return (await this.getJSONWithETag(key))?.value ?? null;
+    const cached = this.listedJSON.get(key);
+    if (cached?.etag === listedETag) {
+      this.listedJSON.delete(key);
+      this.listedJSON.set(key, cached);
+      return JSON.parse(cached.bytes.toString('utf8'));
+    }
+    const row = await this.getJSONWithETag(key);
+    if (row?.etag === listedETag) {
+      this.rememberListedJSON(key, row.etag, Buffer.from(JSON.stringify(row.value)));
+    }
+    return row?.value ?? null;
+  }
+
+  private rememberListedJSON(key: string, etag: string, bytes: Buffer): void {
+    if (bytes.length > 2 * 1024 * 1024) return;
+    this.discardListedJSON(key);
+    while (this.listedJSON.size >= 512 || this.listedBytes + bytes.length > 8 * 1024 * 1024) {
+      this.discardListedJSON(this.listedJSON.keys().next().value);
+    }
+    this.listedJSON.set(key, { etag, bytes });
+    this.listedBytes += bytes.length;
+  }
+
+  private discardListedJSON(key: string): void {
+    const entry = this.listedJSON.get(key);
+    if (entry) {
+      this.listedBytes -= entry.bytes.length;
+      this.listedJSON.delete(key);
+    }
   }
 
   /** Reads a generated text asset such as a subscribable `.ics` feed. */
@@ -120,14 +153,24 @@ export class StoreService {
     await this.s3.send(new DeleteObjectCommand({ Bucket: this.bucket, Key: key }));
   }
 
-  async listKeys(prefix: string): Promise<string[]> {
+  async listKeys(prefix: string, versions?: Map<string, string>, inventory?: 'all' | 'account'): Promise<string[]> {
     const out: string[] = [];
+    const options = inventory ? {
+      CalendarInventory: inventory,
+      KnownETags: Object.fromEntries([...this.listedJSON].filter(([key]) => key.startsWith(prefix)).map(([key, entry]) => [key, entry.etag])),
+    } : undefined;
     let token: string | undefined;
     do {
       const res = await this.s3.send(new ListObjectsV2Command({
         Bucket: this.bucket, Prefix: prefix, ContinuationToken: token,
-      }));
-      for (const obj of res.Contents ?? []) out.push(obj.Key);
+      }), options);
+      for (const obj of res.Contents ?? []) {
+        out.push(obj.Key);
+        if (inventory && obj.ETag && typeof obj.Body === 'string') {
+          this.rememberListedJSON(obj.Key, obj.ETag, Buffer.from(obj.Body, 'base64'));
+        }
+        if (versions && obj.ETag) versions.set(obj.Key, obj.ETag);
+      }
       token = res.IsTruncated ? res.NextContinuationToken : undefined;
     } while (token);
     return out;

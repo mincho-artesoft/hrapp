@@ -59,9 +59,9 @@ export class NativeCalendarStore {
   private removedPrefix(principal: any) { return `principal/${principal.principalId}/web-calendar-removed/`; }
   private validID(id: unknown): id is string { return typeof id === 'string' && /^[a-zA-Z0-9_-]{1,128}$/.test(id); }
 
-  private async readCalendar(key: string) {
+  private async readCalendar(key: string, listedETag?: string) {
     // Earlier clients archived the whole last snapshot when deleting an account calendar.
-    const calendar = await this.store.getJSON(key);
+    const calendar = await this.store.getJSON(key, listedETag);
     if (!calendar?.accountLocal || calendar.available !== false || !calendar.events?.length) return calendar;
     const row = await this.store.getJSONWithETag(key);
     if (!row?.value.accountLocal || row.value.available !== false || !row.value.events?.length) return row?.value;
@@ -70,19 +70,28 @@ export class NativeCalendarStore {
     return this.readCalendar(key);
   }
 
-  async list(principal: any): Promise<any[]> {
-    const keys = await this.store.listKeys(this.prefix(principal));
-    const calendars: any[] = [];
-    // Each object is a separate storage request. Drain each batch, including on
-    // failure, so a retry cannot overlap the outstanding reads from this list.
-    for (let offset = 0; offset < keys.length; offset += inventoryReadBatchSize) {
-      const batch = keys.slice(offset, offset + inventoryReadBatchSize);
-      const reads = await Promise.allSettled(batch.map(key => this.readCalendar(key)));
-      for (const read of reads) {
-        if (read.status === 'rejected') throw read.reason;
-        if (read.value) calendars.push(read.value);
+  async list(principal: any, scope: 'all' | 'account' = 'all'): Promise<any[]> {
+    const versions = new Map<string, string>();
+    const keys = await this.store.listKeys(this.prefix(principal), versions, scope);
+    const rows = new Array<any>(keys.length);
+    let next = 0;
+    // Keep the storage concurrency limit while slower documents are in flight.
+    // On failure stop taking work and drain active reads before a caller retries.
+    let stopped = false;
+    const readNext = async () => {
+      while (!stopped && next < keys.length) {
+        const index = next++, key = keys[index];
+        try {
+          rows[index] = await this.readCalendar(key, versions.get(key));
+        } catch (error) {
+          stopped = true;
+          throw error;
+        }
       }
-    }
+    };
+    const workers = await Promise.allSettled(Array.from({length: Math.min(keys.length, inventoryReadBatchSize)}, readNext));
+    for (const worker of workers) if (worker.status === 'rejected') throw worker.reason;
+    const calendars = rows.filter(Boolean);
     // A client that lost its binding used to hash its imported local ID again.
     // Confirm an exact copy before remembering the relationship. Keep the
     // complete snapshot so independent edits on an older client can recover it.

@@ -55,7 +55,11 @@ const entries = [];
 for (const file of pages(DIST)) {
   let html = readFileSync(file, 'utf8');
   // Pages also sends these links in HTTP headers, where the HTML base URL does not apply.
-  const normalisedHtml = html
+  const isCalendar = /\/calendar\/(?:bookings\/)?index\.html$/.test(file);
+  const documentHtml = isCalendar
+    ? html.replace(/<link\b[^>]*\brel="preload"[^>]*\bhref="[^"]*\/single-day-view\.webp"[^>]*>/g, '')
+    : html;
+  const normalisedHtml = documentHtml
     .replace(/(<link rel="modulepreload" href=")(chunk-[\w-]+\.js")/g, '$1/$2')
     .replace(
       /href="(https:\/\/apps\.apple\.com\/[^"]+)"/g,

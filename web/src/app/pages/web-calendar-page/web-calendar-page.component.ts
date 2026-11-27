@@ -66,6 +66,7 @@ import {
 import {
   CalendarPlatformApiService,
   ExternalBusyState,
+  WebCalendarStateResponse,
   WebCalendarEvent,
   DeviceCalendar,
   CalendarRepeatRule,
@@ -1085,6 +1086,7 @@ export class WebCalendarPageComponent
   readonly loadingWorkspace = signal(false);
   readonly workspaceError = signal("");
   private stateVersion = 0;
+  private openingState?: { token: string; result: Promise<WebCalendarStateResponse | null> };
   private workspaceSession: string | null = null;
 
   constructor() {
@@ -1739,7 +1741,12 @@ export class WebCalendarPageComponent
         this.pollLiveCalendarUpdates(false).catch(() => null);
       }
     }, 20_000);
+    const savedToken = this.api.token();
+    if (savedToken && !this.api.profile()) {
+      this.openingState = {token: savedToken, result: this.api.getCalendarState({sync: false}).catch(() => null)};
+    }
     await this.api.ensureInitialized();
+    if (!this.api.isSignedInWithAccount()) this.openingState = undefined;
     this.authReady.set(true);
   }
 
@@ -1876,7 +1883,9 @@ export class WebCalendarPageComponent
     this.loadingWorkspace.set(true);
     this.workspaceError.set("");
     try {
-      await this.reloadAllWorkspaceData();
+      const opening = this.openingState;
+      this.openingState = undefined;
+      await this.reloadAllWorkspaceData(opening?.token === token ? opening.result : undefined);
       if (this.api.token() === token) setTimeout(() => this.scrollToWorkingHours(), 80);
     } catch (error) {
       if (this.api.token() === token) this.workspaceError.set(error instanceof Error ? error.message : "Could not load your calendars.");
@@ -1923,14 +1932,16 @@ export class WebCalendarPageComponent
     this.externalBusy.set({ updatedAt: null, sources: {}, events: [] });
   }
 
-  async reloadAllWorkspaceData(): Promise<void> {
+  async reloadAllWorkspaceData(opening?: Promise<WebCalendarStateResponse | null>): Promise<void> {
     const token = this.api.token();
     const version = ++this.stateVersion;
     this.lastSharingRefresh = Date.now();
     void this.native.refresh();
-    const state = await this.api.getCalendarState();
-    if (token !== this.api.token() || version !== this.stateVersion) return;
     void this.providerWorkspace.refresh();
+    const prefetched = opening ? await opening : null;
+    if (token !== this.api.token() || version !== this.stateVersion) return;
+    const state = prefetched ?? await this.api.getCalendarState({sync: false});
+    if (token !== this.api.token() || version !== this.stateVersion) return;
 
     this.updateCalendars(state.calendars ?? []);
     this.ownedEvents.set(state.events ?? []);
@@ -1974,8 +1985,9 @@ export class WebCalendarPageComponent
     this.liveSyncInFlight = true;
     try {
       const token = this.api.token(), version = this.stateVersion;
+      void this.providerWorkspace.refresh(forceProviderSync);
       const state = await this.api.getCalendarState({
-        sync: forceProviderSync,
+        sync: forceProviderSync ? true : undefined,
       });
       if (token !== this.api.token() || version !== this.stateVersion) return;
       this.workspaceError.set("");
@@ -1993,7 +2005,6 @@ export class WebCalendarPageComponent
         this.lastSharingRefresh = Date.now();
         void this.native.refresh({background: true});
       }
-      void this.providerWorkspace.refresh(forceProviderSync);
       this.lastLiveSyncAt = Date.now();
     } catch {
       // Ignore transient network blips during silent poll

@@ -4,9 +4,6 @@ import { LIVE_LOCALES } from './content/article-index';
 import { loadArticleContentFor, loadComparisonContentFor } from './content/registry';
 import type { ArticleLocale } from './content/types';
 import { DEFAULT_LOCALE, LOCALES } from './core/locales';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
-import { TermsPageComponent } from './pages/terms-page/terms-page.component';
 
 /**
  * Routes, one set per published language.
@@ -32,7 +29,7 @@ const resolveComparisonContent: ResolveFn<ArticleLocale> = route => loadComparis
 
 const homeRoutes: Routes = LOCALES.map((locale) => ({
   path: locale.slug,
-  component: HomePageComponent,
+  loadComponent: () => import('./pages/home-page/home-page.component').then(m => m.HomePageComponent),
   pathMatch: 'full' as const,
   data: { locale },
   resolve: { articleContent: resolveArticleContent },
@@ -101,7 +98,7 @@ const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
 export const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    loadComponent: () => import('./pages/home-page/home-page.component').then(m => m.HomePageComponent),
     pathMatch: 'full',
     data: { locale: DEFAULT_LOCALE },
     resolve: { articleContent: resolveArticleContent },
@@ -126,6 +123,6 @@ export const routes: Routes = [
     data: { locale: DEFAULT_LOCALE, isComparison: true },
     resolve: { articleContent: resolveComparisonContent },
   },
-  { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
-  { path: 'terms-of-service', component: TermsPageComponent },
+  { path: 'privacy-policy', loadComponent: () => import('./pages/privacy-policy-page/privacy-policy-page.component').then(m => m.PrivacyPolicyPageComponent) },
+  { path: 'terms-of-service', loadComponent: () => import('./pages/terms-page/terms-page.component').then(m => m.TermsPageComponent) },
 ];

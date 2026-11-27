@@ -1,6 +1,6 @@
 import { S3Client } from '@aws-sdk/client-s3';
 
-/** Calendar namespaces live in Hetzner; Wonek application objects stay in AWS. */
+/** Bridge private calendar operations to the configured HTTPS storage service. */
 export class CalendarStorageClient {
   private readonly aws = new S3Client({});
   private readonly endpoint = process.env.CALENDAR_STORAGE_URL;
@@ -12,7 +12,7 @@ export class CalendarStorageClient {
     }
   }
 
-  async send(command: any): Promise<any> {
+  async send(command: any, inventory?: { CalendarInventory: 'all' | 'account'; KnownETags: Record<string, string> }): Promise<any> {
     if (!this.endpoint || command?.input?.Bucket !== process.env.CAL_BUCKET) {
       return this.aws.send(command);
     }
@@ -22,7 +22,7 @@ export class CalendarStorageClient {
     };
     const operation = operations[command?.constructor?.name];
     if (!operation) throw new Error('Unsupported calendar storage operation');
-    const input: any = { ...command.input, Operation: operation };
+    const input: any = { ...command.input, ...inventory, Operation: operation };
     if (input.Body !== undefined) input.Body = Buffer.from(input.Body).toString('base64');
     const response = await fetch(new URL('/v1/objects', this.endpoint), {
       method: 'POST', headers: { Authorization: `Bearer ${this.token}`, 'Content-Type': 'application/json' },
